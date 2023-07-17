@@ -38,7 +38,6 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
     const targetPath = path.normalize(`./dist/fonts/${filename}`);
 
     const nameKey = camelCase(name);
-    const formatKey = camelCase(ext.substring(1));
     manifest[nameKey] = filename;
 
     fs.writeFileSync(targetPath, font, { encoding: 'binary' });

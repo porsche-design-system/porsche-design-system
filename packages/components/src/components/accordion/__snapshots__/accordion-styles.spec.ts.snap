@@ -69,15 +69,15 @@ button:not(:focus-visible)::before {
 }
 .collapsible {
   color: #010205;
-  overflow: hidden;
-  height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
 }
-@keyframes keyframes-open {
-  to {
-    overflow: visible;
-  }
+.collapsible div {
+  overflow: hidden;
+  padding: 4px;
+  margin: -4px;
 }"
 `;
 
@@ -150,17 +150,16 @@ button:not(:focus-visible)::before {
 }
 .collapsible {
   color: #010205;
-  overflow: hidden;
-  height: auto;
-  padding-bottom: 24px;
+  display: grid;
+  grid-template-rows: 1fr;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
-  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
+  padding-bottom: 24px;
 }
-@keyframes keyframes-open {
-  to {
-    overflow: visible;
-  }
+.collapsible div {
+  overflow: hidden;
+  padding: 4px;
+  margin: -4px;
 }"
 `;
 
@@ -232,15 +231,15 @@ button:not(:focus-visible)::before {
 }
 .collapsible {
   color: #FBFCFF;
-  overflow: hidden;
-  height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
 }
-@keyframes keyframes-open {
-  to {
-    overflow: visible;
-  }
+.collapsible div {
+  overflow: hidden;
+  padding: 4px;
+  margin: -4px;
 }"
 `;
 
@@ -312,15 +311,15 @@ button:not(:focus-visible)::before {
 }
 .collapsible {
   color: #010205;
-  overflow: hidden;
-  height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
 }
-@keyframes keyframes-open {
-  to {
-    overflow: visible;
-  }
+.collapsible div {
+  overflow: hidden;
+  padding: 4px;
+  margin: -4px;
 }"
 `;
 
@@ -392,17 +391,16 @@ button:not(:focus-visible)::before {
 }
 .collapsible {
   color: #010205;
-  overflow: hidden;
-  height: auto;
-  padding-bottom: 8px;
+  display: grid;
+  grid-template-rows: 1fr;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
-  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
+  padding-bottom: 8px;
 }
-@keyframes keyframes-open {
-  to {
-    overflow: visible;
-  }
+.collapsible div {
+  overflow: hidden;
+  padding: 4px;
+  margin: -4px;
 }"
 `;
 
@@ -475,15 +473,15 @@ button:not(:focus-visible)::before {
 }
 .collapsible {
   color: #010205;
-  overflow: hidden;
-  height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
 }
-@keyframes keyframes-open {
-  to {
-    overflow: visible;
-  }
+.collapsible div {
+  overflow: hidden;
+  padding: 4px;
+  margin: -4px;
 }"
 `;
 
@@ -556,17 +554,16 @@ button:not(:focus-visible)::before {
 }
 .collapsible {
   color: #FBFCFF;
-  overflow: hidden;
-  height: auto;
-  padding-bottom: 24px;
+  display: grid;
+  grid-template-rows: 1fr;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
-  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
+  padding-bottom: 24px;
 }
-@keyframes keyframes-open {
-  to {
-    overflow: visible;
-  }
+.collapsible div {
+  overflow: hidden;
+  padding: 4px;
+  margin: -4px;
 }"
 `;
 
@@ -639,17 +636,16 @@ button:not(:focus-visible)::before {
 }
 .collapsible {
   color: #010205;
-  overflow: hidden;
-  height: auto;
-  padding-bottom: 24px;
+  display: grid;
+  grid-template-rows: 1fr;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
-  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
+  padding-bottom: 24px;
 }
-@keyframes keyframes-open {
-  to {
-    overflow: visible;
-  }
+.collapsible div {
+  overflow: hidden;
+  padding: 4px;
+  margin: -4px;
 }"
 `;
 
@@ -721,15 +717,15 @@ button:not(:focus-visible)::before {
 }
 .collapsible {
   color: #010205;
-  overflow: hidden;
-  height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   visibility: hidden;
-  transition: height var(--p-transition-duration, .24s) ease,visibility 0s linear var(--p-transition-duration, .24s);
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
 }
-@keyframes keyframes-open {
-  to {
-    overflow: visible;
-  }
+.collapsible div {
+  overflow: hidden;
+  padding: 4px;
+  margin: -4px;
 }"
 `;
 
@@ -801,17 +797,16 @@ button:not(:focus-visible)::before {
 }
 .collapsible {
   color: #010205;
-  overflow: hidden;
-  height: auto;
-  padding-bottom: 8px;
+  display: grid;
+  grid-template-rows: 1fr;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
-  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
+  padding-bottom: 8px;
 }
-@keyframes keyframes-open {
-  to {
-    overflow: visible;
-  }
+.collapsible div {
+  overflow: hidden;
+  padding: 4px;
+  margin: -4px;
 }"
 `;
 
@@ -919,16 +914,15 @@ button:not(:focus-visible)::before {
 }
 .collapsible {
   color: #FBFCFF;
-  overflow: hidden;
-  height: auto;
-  padding-bottom: 24px;
+  display: grid;
+  grid-template-rows: 1fr;
   visibility: visible;
-  transition: height var(--p-transition-duration, .24s) ease,padding-bottom var(--p-transition-duration, .24s) ease;
-  animation: keyframes-open 0s var(--p-transition-duration, .24s) forwards;
+  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
+  padding-bottom: 24px;
 }
-@keyframes keyframes-open {
-  to {
-    overflow: visible;
-  }
+.collapsible div {
+  overflow: hidden;
+  padding: 4px;
+  margin: -4px;
 }"
 `;

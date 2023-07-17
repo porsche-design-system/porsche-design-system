@@ -8,7 +8,7 @@ export const generateBrowserSupportFallbackScriptPartial = (): string => {
 };`;
 
   const fallbacksFilePath = require.resolve('@porsche-design-system/fallbacks');
-  const packageDir = path.resolve(path.dirname(fallbacksFilePath), '../..');
+  const packageDir = path.resolve(path.dirname(fallbacksFilePath), '..');
   const tmpFilePath = path.resolve(packageDir, 'dist/loader', 'browser-support.js');
   const fileContent = fs
     .readFileSync(tmpFilePath, 'utf8')

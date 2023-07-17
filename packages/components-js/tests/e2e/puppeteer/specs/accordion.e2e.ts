@@ -49,38 +49,42 @@ const getButton = () => selectNode(page, 'p-accordion >>> button');
 const getInput = () => selectNode(page, 'input');
 const getCollapsible = () => selectNode(page, 'p-accordion >>> .collapsible');
 const getBody = () => selectNode(page, 'body');
+const getCollapseVisibility = async () => getElementStyle(await getCollapsible(), 'visibility');
+const getCollapseGridTemplateRows = async () => getElementStyle(await getCollapsible(), 'gridTemplateRows');
 
-const getOverflowOnCollapsible = async () => getElementStyle(await getCollapsible(), 'overflow');
-const getVisibilityOnCollapsible = async () => getElementStyle(await getCollapsible(), 'visibility');
-
-it('should set "visibility: visible" on collapsible on initial open', async () => {
+it('should set "gridTemplateRows: 1fr" and "visibility: visible" on collapsible on initial open', async () => {
   await initAccordion({ isOpen: true });
-  expect(await getVisibilityOnCollapsible()).toBe('visible');
+  expect(await getCollapseGridTemplateRows()).not.toBe('0px');
+  expect(await getCollapseVisibility()).toBe('visible');
 });
 
-it('should set "visibility: visible" on collapsible on initial close', async () => {
+it('should set "gridTemplateRows: 0fr" (0px) and "visibility: hidden" on collapsible on initial close', async () => {
   await initAccordion();
-  expect(await getVisibilityOnCollapsible()).toBe('hidden');
+  expect(await getCollapseGridTemplateRows()).toBe('0px');
+  expect(await getCollapseVisibility()).toBe('hidden');
 });
 
-it('should set "visibility: visible" on collapsible on open change', async () => {
+it('should set correct gridTemplateRows and visibility on collapsible on open change', async () => {
   await initAccordion();
   const host = await getHost();
 
-  expect(await getVisibilityOnCollapsible(), 'initially').toBe('hidden');
+  expect(await getCollapseGridTemplateRows(), 'initially').toBe('0px');
+  expect(await getCollapseVisibility()).toBe('hidden');
 
   await setProperty(host, 'open', true);
   await waitForStencilLifecycle(page);
 
-  expect(await getVisibilityOnCollapsible(), 'after open=true').toBe('visible');
+  expect(await getCollapseGridTemplateRows(), 'after open=true').not.toBe('0px');
+  expect(await getCollapseVisibility()).toBe('visible');
 
   await setProperty(host, 'open', false);
   await waitForStencilLifecycle(page);
 
-  expect(await getVisibilityOnCollapsible(), 'after open=false').toBe('hidden');
+  expect(await getCollapseGridTemplateRows(), 'after open=false').toBe('0px');
+  expect(await getCollapseVisibility()).toBe('hidden');
 });
 
-it('should have correct visibility after fast open/close re-trigger', async () => {
+it('should have correct gridTemplateRows and visibility after fast open/close re-trigger', async () => {
   await initAccordion({ otherMarkup: clickHandlerScript });
   const button = await getButton();
 
@@ -90,10 +94,11 @@ it('should have correct visibility after fast open/close re-trigger', async () =
   await button.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getVisibilityOnCollapsible()).toBe('visible');
+  expect(await getCollapseGridTemplateRows()).not.toBe('0px');
+  expect(await getCollapseVisibility()).toBe('visible');
 });
 
-it('should have correct visibility after fast close/open re-trigger', async () => {
+it('should have correct gridTemplateRows and visibility after fast close/open re-trigger', async () => {
   await initAccordion({ isOpen: true, otherMarkup: clickHandlerScript });
   const button = await getButton();
 
@@ -103,41 +108,8 @@ it('should have correct visibility after fast close/open re-trigger', async () =
   await button.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getVisibilityOnCollapsible()).toBe('hidden');
-});
-
-it('should have correct overflow when changed from closed to opened to closed', async () => {
-  await initAccordion({ otherMarkup: clickHandlerScript });
-  const button = await getButton();
-
-  expect(await getOverflowOnCollapsible(), 'initial closed').toBe('hidden');
-
-  await button.click();
-  await waitForStencilLifecycle(page);
-
-  expect(await getOverflowOnCollapsible(), 'after click to open').toBe('visible');
-
-  await button.click();
-  await waitForStencilLifecycle(page);
-
-  expect(await getOverflowOnCollapsible(), 'after click to close').toBe('hidden');
-});
-
-it('should have correct overflow when changed from opened to closed to opened', async () => {
-  await initAccordion({ isOpen: true, otherMarkup: clickHandlerScript });
-  const button = await getButton();
-
-  expect(await getOverflowOnCollapsible(), 'initial opened').toBe('visible');
-
-  await button.click();
-  await waitForStencilLifecycle(page);
-
-  expect(await getOverflowOnCollapsible(), 'after click to close').toBe('hidden');
-
-  await button.click();
-  await waitForStencilLifecycle(page);
-
-  expect(await getOverflowOnCollapsible(), 'after click to open').toBe('visible');
+  expect(await getCollapseGridTemplateRows()).toBe('0px');
+  expect(await getCollapseVisibility()).toBe('hidden');
 });
 
 it('should show aria-expanded true when open and false when closed', async () => {
@@ -155,42 +127,6 @@ it('should show aria-expanded true when open and false when closed', async () =>
   await waitForStencilLifecycle(page);
 
   expect(await getAttribute(button, 'aria-expanded'), 'after click to close').toBe('false');
-});
-
-xit('should set correct inline content height using ResizeObserver', async () => {
-  await initAccordion({ otherMarkup: clickHandlerScript });
-
-  const button = await getButton();
-
-  await button.click();
-  await waitForStencilLifecycle(page);
-
-  const inlineStyle = await page.evaluate(() => {
-    const content = document.querySelector('p-accordion').shadowRoot.querySelector('.collapsible') as HTMLElement;
-    return content.style.cssText;
-  });
-
-  expect(inlineStyle).toMatchInlineSnapshot(`"height: 1rem;"`);
-});
-
-xit('should set correct inline content height using MutationObserver and window resize listener', async () => {
-  await page.evaluate(() => {
-    delete window.ResizeObserver;
-  });
-
-  await initAccordion({ otherMarkup: clickHandlerScript });
-
-  const button = await getButton();
-
-  await button.click();
-  await waitForStencilLifecycle(page);
-
-  const inlineStyle = await page.evaluate(() => {
-    const content = document.querySelector('p-accordion').shadowRoot.querySelector('.collapsible') as HTMLElement;
-    return content.style.cssText;
-  });
-
-  expect(inlineStyle).toMatchInlineSnapshot(`"height: 1rem;"`);
 });
 
 describe('events', () => {

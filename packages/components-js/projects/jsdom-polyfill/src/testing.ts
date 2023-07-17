@@ -36,12 +36,12 @@ const shadowFactory =
       }
     }
 
-    return resultElement;
+    return resultElement!;
   };
 
 type RemoveFirst<T extends any[]> = T['length'] extends 0
   ? undefined
-  : ((...b: T) => void) extends (a, ...b: infer I) => void
+  : ((...b: T) => void) extends (a: any, ...b: infer I) => void
   ? I
   : [];
 

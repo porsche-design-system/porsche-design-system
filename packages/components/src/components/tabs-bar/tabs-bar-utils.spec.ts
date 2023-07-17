@@ -1,17 +1,11 @@
 import {
-  addEnableTransitionClass,
-  determineEnableTransitionClass,
   getFocusedTabIndex,
   getPrevNextTabIndex,
-  getTransformationToActive,
-  getTransformationToInactive,
-  removeEnableTransitionClass,
+  getTransformation,
   sanitizeActiveTabIndex,
   setBarStyle,
 } from './tabs-bar-utils';
-import * as tabBarUtils from './tabs-bar-utils';
-
-const enableTransitionClass = 'bar--enable-transition';
+import * as tabsBarUtils from './tabs-bar-utils';
 
 describe('sanitizeActiveTabIndex()', () => {
   it.each([
@@ -21,83 +15,28 @@ describe('sanitizeActiveTabIndex()', () => {
     [-5, 2, undefined],
     [5, 2, undefined],
     [3, 5, 3],
-  ])('should for index %s and tabElementsCount %s return %s', (index, tabElementsCount, expected) => {
+  ])('should for index: %s and tabElementsCount: %s return: %s', (index, tabElementsCount, expected) => {
     expect(sanitizeActiveTabIndex(index as number, tabElementsCount)).toBe(expected);
   });
 });
 
-describe('getTransformationToInactive()', () => {
-  it.each([
-    [{}, 'transform: translate3d(0px,0,0); width: 0;'],
-    [{ offsetWidth: 0 }, 'transform: translate3d(0px,0,0); width: 0;'],
-    [{ offsetLeft: 0 }, 'transform: translate3d(0px,0,0); width: 0;'],
-    [{ offsetWidth: 0, offsetLeft: 0 }, 'transform: translate3d(0px,0,0); width: 0;'],
-    [{ offsetWidth: 15, offsetLeft: 30 }, 'transform: translate3d(37.5px,0,0); width: 0;'],
-    [{ offsetWidth: 15, offsetLeft: 0 }, 'transform: translate3d(7.5px,0,0); width: 0;'],
-  ])('should for %s return %s', (elementOffset, expected) => {
-    expect(getTransformationToInactive(elementOffset as HTMLElement)).toBe(expected);
-  });
-});
+type Rect = Partial<Pick<DOMRect, 'width' | 'height' | 'top' | 'left' | 'bottom' | 'right'> & { offsetLeft: number }>;
+const mockBoundingClientRect = (element: HTMLElement, opts: Rect): void => {
+  jest.spyOn(element, 'getBoundingClientRect').mockImplementation(() => opts as DOMRect);
+  jest.spyOn(element, 'offsetLeft', 'get').mockReturnValue(opts.offsetLeft);
+};
 
-describe('getTransformationToActive()', () => {
-  it.each([
-    [{}, 'transform: translate3d(0px,0,0); width: 0px;'],
-    [{ offsetWidth: 0 }, 'transform: translate3d(0px,0,0); width: 0px;'],
-    [{ offsetLeft: 0 }, 'transform: translate3d(0px,0,0); width: 0px;'],
-    [{ offsetWidth: 0, offsetLeft: 0 }, 'transform: translate3d(0px,0,0); width: 0px;'],
-    [{ offsetWidth: 15, offsetLeft: 30 }, 'transform: translate3d(30px,0,0); width: 15px;'],
-    [{ offsetWidth: 15, offsetLeft: 0 }, 'transform: translate3d(0px,0,0); width: 15px;'],
-  ])('should for %s return %s', (elementOffset, expected) => {
-    expect(getTransformationToActive(elementOffset as HTMLElement)).toBe(expected);
-  });
-});
-
-describe('addEnableTransitionClass()', () => {
-  it('should add "bar--enable-transition" class', () => {
-    const div = document.createElement('div');
-    expect(div.classList.contains(enableTransitionClass)).toBe(false);
-
-    addEnableTransitionClass(div);
-    expect(div.classList.contains(enableTransitionClass)).toBe(true);
-  });
-
-  it('should add only one "bar--enable-transition" class', () => {
-    const div = document.createElement('div');
-    expect(div.className).toBe('');
-    addEnableTransitionClass(div);
-    expect(div.className).toBe(enableTransitionClass);
-    addEnableTransitionClass(div);
-    expect(div.className).toBe(enableTransitionClass);
-  });
-});
-
-describe('removeEnableTransitionClass()', () => {
-  it('should remove "bar--enable-transition" class', () => {
-    const div = document.createElement('div');
-    addEnableTransitionClass(div);
-    expect(div.classList.contains(enableTransitionClass)).toBe(true);
-
-    removeEnableTransitionClass(div);
-    expect(div.classList.contains(enableTransitionClass)).toBe(false);
-  });
-});
-
-describe('determineEnableTransitionClass()', () => {
-  it('should remove "bar--enable-transition" class if activeTabIndex is defined and prevActiveTabIndex is undefined', () => {
-    const div = document.createElement('div');
-    addEnableTransitionClass(div);
-    expect(div.classList.contains(enableTransitionClass)).toBe(true);
-
-    determineEnableTransitionClass(0, undefined, div);
-    expect(div.classList.contains(enableTransitionClass)).toBe(false);
-  });
-
-  it('should add "bar--enable-transition" class if activeTabIndex is undefined', () => {
-    const div = document.createElement('div');
-    expect(div.classList.contains(enableTransitionClass)).toBe(false);
-
-    determineEnableTransitionClass(undefined, 0, div);
-    expect(div.classList.contains(enableTransitionClass)).toBe(true);
+describe('getTransformation()', () => {
+  it.each<[Rect, string]>([
+    [{ width: 0 }, 'transform: translate3d(0px,0,0);width: 0px'],
+    [{ width: 0, offsetLeft: 0 }, 'transform: translate3d(0px,0,0);width: 0px'],
+    [{ width: 0, offsetLeft: 0 }, 'transform: translate3d(0px,0,0);width: 0px'],
+    [{ width: 15.12, offsetLeft: 30 }, 'transform: translate3d(30px,0,0);width: 15.12px'],
+    [{ width: 15.13, offsetLeft: 0 }, 'transform: translate3d(0px,0,0);width: 15.13px'],
+  ])('should for %s return: %s', (elSize, expected) => {
+    const el = document.createElement('div');
+    mockBoundingClientRect(el, elSize);
+    expect(getTransformation(el)).toBe(expected);
   });
 });
 
@@ -139,65 +78,69 @@ describe('getFocusedTabIndex()', () => {
 });
 
 describe('setBarStyle()', () => {
-  let barElement;
+  const el1 = document.createElement('div');
+  mockBoundingClientRect(el1, { width: 15, offsetLeft: 0 });
+  const el2 = document.createElement('div');
+  mockBoundingClientRect(el2, { width: 15, offsetLeft: 30 });
 
+  let barElement: HTMLElement;
   beforeEach(() => {
     barElement = document.createElement('span');
   });
 
-  it(`should remove ${enableTransitionClass} class and set transformation on barElement handling active to removed case`, () => {
-    const spy = jest.spyOn(tabBarUtils, 'removeEnableTransitionClass');
+  it('should not call getTransformation() if there is no active tabElement', () => {
+    const spy = jest.spyOn(tabsBarUtils, 'getTransformation');
+    setBarStyle([el1, el2], undefined, barElement);
 
-    barElement.classList.add(enableTransitionClass);
-    setBarStyle(
-      [
-        { offsetWidth: 15, offsetLeft: 0 },
-        { offsetWidth: 15, offsetLeft: 30 },
-      ] as HTMLElement[],
-      undefined,
-      barElement,
-      undefined
-    );
-
-    expect(spy).toBeCalledWith(barElement);
-    expect(barElement.classList.contains(enableTransitionClass)).toBe(false);
-    expect(barElement.style.cssText).toBe('transform: translate3d(0px,0,0); width: 0px;');
+    expect(spy).not.toBeCalled();
   });
 
-  it(`should add ${enableTransitionClass} class and set transformation on barElement handling initial inactive + active to inactive cases`, () => {
-    const spy = jest.spyOn(tabBarUtils, 'addEnableTransitionClass');
+  it('should call getTransformation() with correct parameters if there is an active tabElement ', () => {
+    const spy = jest.spyOn(tabsBarUtils, 'getTransformation');
+    setBarStyle([el1, el2], 1, barElement);
 
-    setBarStyle(
-      [
-        { offsetWidth: 15, offsetLeft: 0 },
-        { offsetWidth: 15, offsetLeft: 30 },
-      ] as HTMLElement[],
-      undefined,
-      barElement,
-      1
-    );
-
-    expect(spy).toBeCalledWith(barElement);
-    expect(barElement.classList.contains(enableTransitionClass)).toBe(true);
-    expect(barElement.style.cssText).toBe('transform: translate3d(37.5px,0,0); width: 0px;');
+    expect(spy).toBeCalledWith(el1);
+    expect(spy).toBeCalledWith(el2);
+    expect(spy.mock.calls[0][0]).toBe(el2); // toBeCalledWith doesn't deep compare 🤷‍
   });
 
-  it(`should call determineEnableTransitionClass and set transformation on barElement handling initial active + active to active + inactive to active cases`, () => {
-    const spy = jest.spyOn(tabBarUtils, 'determineEnableTransitionClass');
+  it('should set result of getTransformation() as style on barElement', () => {
+    jest.spyOn(tabsBarUtils, 'getTransformation').mockReturnValue('transform: translate3d(0px,0,0);width: 15px');
+    setBarStyle([el1, el2], 0, barElement);
 
-    setBarStyle(
-      [
-        { offsetWidth: 15, offsetLeft: 0 },
-        { offsetWidth: 15, offsetLeft: 30 },
-      ] as HTMLElement[],
-      0,
-      barElement,
-      1
-    );
-
-    expect(spy).toBeCalledWith(0, 1, barElement);
-    expect(barElement.classList.contains(enableTransitionClass)).toBe(true);
     expect(barElement.style.cssText).toBe('transform: translate3d(0px,0,0); width: 15px;');
+  });
+
+  it('should not reset animation on barElement when there is no selected tabElement', () => {
+    const spy = jest.spyOn(global, 'setTimeout');
+    expect(barElement.style.animation).toBe('');
+
+    setBarStyle([el1, el2], 0, barElement);
+
+    expect(spy).not.toBeCalled();
+  });
+
+  it('should reset animation on barElement when there is a selected tabElement', () => {
+    jest.useFakeTimers();
+    let count = 0;
+    const spy = jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => {
+      // we can then use fake timers to preserve the async nature of this call
+      // @ts-ignore
+      setTimeout(() => cb(100 * ++count), 100);
+      return 0;
+    });
+    expect(barElement.style.animation).toBe('');
+
+    el1.setAttribute('aria-selected', 'true');
+    setBarStyle([el1, el2], 0, barElement);
+
+    expect(barElement.style.animation).toBe('none');
+
+    jest.runAllTimers();
+
+    expect(spy).toBeCalledWith(expect.any(Function));
+    expect(barElement.style.animation).toBe('');
+    jest.useRealTimers();
   });
 });
 

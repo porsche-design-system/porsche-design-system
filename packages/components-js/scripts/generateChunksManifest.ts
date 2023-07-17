@@ -10,14 +10,14 @@ type Manifest = {
 const createManifest = (indexJsFile: string): Manifest => {
   // read web components manager to retrieve url to stencil core entrypoint
   const indexJsCode = fs.readFileSync(indexJsFile, 'utf8');
-  const [, coreFileName] = /\/components\/(porsche-design-system\.v.*\.js)/.exec(indexJsCode);
+  const [, coreFileName] = /\/components\/(porsche-design-system\.v.*\.js)/.exec(indexJsCode) || [];
 
   // read stencil core entrypoint to retrieve component chunk mapping
   const chunksDir = path.resolve(indexJsFile, '../../components');
   const coreJsFile = path.resolve(chunksDir, coreFileName);
   const coreJsCode = fs.readFileSync(coreJsFile, 'utf8');
 
-  const [, rawChunkFileMapping] = /porsche-design-system\.".*?({.*?})/.exec(coreJsCode);
+  const [, rawChunkFileMapping] = /porsche-design-system\.".*?({.*?})/.exec(coreJsCode) || [];
   const chunkFileMapping = eval(`(${rawChunkFileMapping})`); // convert object string to real js object
   const chunkFileNames = Object.entries(chunkFileMapping).map(
     ([chunk, hash]) => `porsche-design-system.${chunk}.${hash}.js`
@@ -29,8 +29,8 @@ const createManifest = (indexJsFile: string): Manifest => {
   };
 
   chunkFileNames.forEach((chunkFileName) => {
-    const [, componentName] = /\.([a-z-]+)\./.exec(chunkFileName);
-    manifest[paramCase(componentName)] = chunkFileName;
+    const [, componentName] = /\.([a-z-]+)\./.exec(chunkFileName) || [];
+    manifest[paramCase(componentName) as keyof Manifest] = chunkFileName;
   });
 
   return manifest;

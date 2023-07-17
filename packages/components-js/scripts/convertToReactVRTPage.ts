@@ -25,10 +25,9 @@ export const convertToReactVRTPage = (
 
   // imports
   const reactImports = [
-    (usesSetAllReady || usesQuerySelector) && !isIconPage && !usesToast && 'useEffect',
-    usesSetAllReady && 'useState',
+    ...((usesSetAllReady || usesQuerySelector) && !isIconPage && !usesToast ? ['useEffect'] : []),
+    ...(usesSetAllReady ? ['useState'] : []),
   ]
-    .filter(Boolean)
     .sort(byAlphabet)
     .join(', ');
 
@@ -37,7 +36,7 @@ export const convertToReactVRTPage = (
     .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
     .map((tagName) => pascalCase(tagName));
 
-  const pdsImports = [...componentImports, usesPrefixing && 'PorscheDesignSystemProvider']
+  const pdsImports = [...componentImports, ...(usesPrefixing ? ['PorscheDesignSystemProvider'] : [])]
     .filter((x) => x && x !== 'PToast')
     .sort(byAlphabet)
     .join(', ');

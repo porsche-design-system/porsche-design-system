@@ -5,7 +5,6 @@ import {
   replaceSharedImportsWithConstants,
   dependencyMap,
   getIndexTsx,
-  getTsconfigJson,
   getAppTsx,
   applyStackBlitzFixForReact,
 } from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
@@ -162,12 +161,6 @@ describe('getIndexTsx()', () => {
   });
 });
 
-describe('getTsconfigJson()', () => {
-  it('should return correct values', () => {
-    expect(getTsconfigJson()).toMatchSnapshot();
-  });
-});
-
 describe('getDependencies()', () => {
   const expectedDefaultDependencies = {
     react: '0.0.0',
@@ -264,7 +257,6 @@ describe('getReactProjectAndOpenOptions()', () => {
     const isStableStorefrontReleaseSpy = jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease');
     const getAppTsxSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getAppTsx');
     const getIndexTsxSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getIndexTsx');
-    const getTsconfigJsonSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getTsconfigJson');
     const getDependenciesSpy = jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getDependencies');
 
     getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
@@ -277,7 +269,6 @@ describe('getReactProjectAndOpenOptions()', () => {
       ''
     );
     expect(getIndexTsxSpy).toBeCalledWith('');
-    expect(getTsconfigJsonSpy).toBeCalled();
     expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
   });
 
@@ -285,12 +276,10 @@ describe('getReactProjectAndOpenOptions()', () => {
     const mockedDependencies = { mockedDependency: '0.0.0' };
     const mockedAppTsx = 'Some mocked app markup';
     const mockedIndexTsx = 'Some mocked index markup';
-    const mockedTsConfigJson = 'Some mocked ts config';
 
     jest.spyOn(stackBlitzHelperUtils, 'isStableStorefrontRelease').mockReturnValue(true);
     jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getAppTsx').mockReturnValue(mockedAppTsx);
     jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getIndexTsx').mockReturnValue(mockedIndexTsx);
-    jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getTsconfigJson').mockReturnValue(mockedTsConfigJson);
     jest.spyOn(getReactProjectAndOpenOptionsUtils, 'getDependencies').mockReturnValue(mockedDependencies);
 
     const result = getReactProjectAndOpenOptions(stackBlitzFrameworkOpts);
@@ -301,7 +290,6 @@ describe('getReactProjectAndOpenOptions()', () => {
         'App.tsx': mockedAppTsx,
         'index.html': '<div id="root"></div>',
         'index.tsx': mockedIndexTsx,
-        'tsconfig.json': mockedTsConfigJson,
         'style.css': 'html, body { margin: 0; padding: 0; } ' + stackBlitzFrameworkOpts.globalStyles,
       },
       template: 'create-react-app',

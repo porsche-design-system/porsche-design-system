@@ -21,13 +21,12 @@ communication channels to get in contact or ask for support or submit support re
 ## How can I access the Porsche Design System files?
 
 **Developer**  
-The source code of the Porsche Design System is stored and developed within a private GitHub repository and distributed
-via a private NPM registry. Both managed by the Porsche Design System team. If you are not yet registered, please sign
-up via [Start Developing](developing/introduction).
+The source code of the Porsche Design System is stored and developed within a public GitHub repository and distributed
+via npm packages. For further information, have a look at [Start Developing](developing/introduction).
 
 **Designer**  
-The Porsche Design System Sketch library is created and maintained within a private Abstract project. If you are not yet
-registered, please sign up via [Start Designing](designing/introduction).
+There is a Figma and a UXPin library available. For access and more details, have a look at
+[Start Designing](designing/introduction).
 
 ## What is the release strategy and how are the issues prioritized?
 

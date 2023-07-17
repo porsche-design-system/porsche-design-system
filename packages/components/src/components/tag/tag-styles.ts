@@ -7,7 +7,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  ThemedColors,
+  type ThemedColors,
 } from '../../styles';
 import { borderRadiusSmall, textXSmallStyle } from '@porsche-design-system/utilities-v2';
 import type { TagColor, TagColorDeprecated } from './tag-utils';
@@ -49,6 +49,7 @@ export const getComponentCss = (
       ':host': {
         display: 'inline-flex',
         verticalAlign: 'top',
+        whiteSpace: 'nowrap',
         ...addImportantToEachRule(hostHiddenStyles),
       },
       span: {
@@ -61,7 +62,6 @@ export const getComponentCss = (
         background: backgroundColor,
         color: primaryColor,
         font: textXSmallStyle.font,
-        whiteSpace: 'nowrap',
         ...(isHighContrastMode && {
           outline: '1px solid transparent',
         }),
@@ -81,12 +81,8 @@ export const getComponentCss = (
           textDecoration: 'underline',
           cursor: 'pointer',
           font: 'inherit',
-          outline: 0, // reset native blue outline
           color: 'inherit',
           appearance: 'none',
-          margin: 0,
-          padding: 0,
-          background: 0,
           border: 0,
           textAlign: 'left',
         },
@@ -102,6 +98,7 @@ export const getComponentCss = (
     },
     icon: {
       marginLeft: '-2px', // optimize visual alignment
+      alignSelf: 'flex-start',
     },
   });
 };

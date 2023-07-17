@@ -27,7 +27,7 @@ If the `state` property is `undefined` the step renders as stateless and disable
 This can be used to prevent the user from navigating to a step which is not yet reachable. This is to be used for future
 steps which cannot yet be processed at the time.
 
-By clicking on a previous step, the `p-stepper-horizontal` emits the `change` event, which contains the index of the
+By clicking on a previous step, the `p-stepper-horizontal` emits the `update` event, which contains the index of the
 clicked step.
 
 <p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">

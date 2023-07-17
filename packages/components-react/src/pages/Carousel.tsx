@@ -13,6 +13,9 @@ export const CarouselPage = (): JSX.Element => {
     .playground {
       padding: 1rem 0;
     }
+    .change-border-radius {
+      --p-carousel-border-radius: 4px;
+    }
   `;
 
   return (
@@ -455,7 +458,7 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div className="playground light" title="should render carousel with infinite pagination with active slide at the ened">
+      <div className="playground light" title="should render carousel with infinite pagination with active slide at the end">
         <PCarousel heading="Infinite pagination end" activeSlideIndex={5}>
           <div>Slide 1</div>
           <div>Slide 2</div>
@@ -463,6 +466,14 @@ export const CarouselPage = (): JSX.Element => {
           <div>Slide 4</div>
           <div>Slide 5</div>
           <div>Slide 6</div>
+        </PCarousel>
+      </div>
+
+      <div className="playground light" title="should render carousel on light background with custom border-radius">
+        <PCarousel heading="Slides with custom border radius" className="change-border-radius">
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
         </PCarousel>
       </div>
     </>

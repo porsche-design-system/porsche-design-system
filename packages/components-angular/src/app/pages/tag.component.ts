@@ -170,6 +170,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </p-tag>
       </div>
     </div>
+
+    <div class="playground light" title="should break into multiline if not enough space is given">
+      <div style="width: 100px; overflow: auto; border: 1px solid deeppink">
+        <p-tag [color]="'primary'" style="white-space: normal">Text that is very long</p-tag>
+        <p-tag [color]="'primary'" [icon]="'car'" style="white-space: normal">Text with icon that is very long</p-tag>
+        <p-tag [color]="'notification-success-soft'" [icon]="'car'" style="white-space: normal">
+          <a [href]="'#'">Link with icon that is very long</a>
+        </p-tag>
+        <p-tag [color]="'notification-success-soft'" [icon]="'car'" style="white-space: normal">
+          <button>Button with icon that is very long</button>
+        </p-tag>
+      </div>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

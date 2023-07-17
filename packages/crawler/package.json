@@ -16,11 +16,11 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components-js": "3.2.0",
+    "@porsche-design-system/components-js": "3.4.0",
     "@porsche-design-system/shared": "0.0.0"
   },
   "devDependencies": {
     "ts-node": "^10.9.1",
-    "typescript": "~5.0.4"
+    "typescript": "~5.1.6"
   }
 }

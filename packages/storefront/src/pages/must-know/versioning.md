@@ -1,15 +1,14 @@
 # Versioning
 
-We value stability and transparency. Thus we strive to ensure that our reusable components, Sketch Libraries and
-familiar practices don't become obsolete often and unexpectedly.
+We value stability and transparency. Thus we strive to ensure that our reusable components and libraries don't become outdated and obsolete.
 
 <TableOfContents></TableOfContents>
 
 ## General information
 
-The Porsche Design System components and Sketch Libraries are released separately following
-[semantic versioning](http://semver.org/) whereby the numbers indicate the level of changes that are introduced. It
-should help you understand and plan the potential impact of updating.
+The Porsche Design System Libraries are released separately following [semantic versioning](http://semver.org/) whereby
+the numbers indicate the level of changes that are introduced. It should help you understand and plan the potential
+impact of updating.
 
 MAJOR.MINOR.PATCH e.g. v1.0.1
 
@@ -32,6 +31,4 @@ In general, we will mark removed, renamed or changed interfaces or elements as d
 before we will delete them. Updates must be scheduled and integrated within 6 months.
 
 We try to keep our major releases as easy to update as possible. Thus we only provide bug fixes for the latest major
-release. Support for older major releases is stopped as soon as a new one is released.  
-In comparison to the component releases, the Sketch Libraries will only be provided as major versions to download
-without deprecated elements and bug fix support for outdated versions.
+release. Support for older major releases is stopped as soon as a new one is released.

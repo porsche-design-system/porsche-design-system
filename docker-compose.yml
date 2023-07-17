@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   design-system:
-    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.34.3-focal
+    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.35.1-focal
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -18,7 +18,7 @@ services:
       - PORSCHE_NPM_REGISTRY_TOKEN
       - NPMJS_REGISTRY_TOKEN
       - GITHUB_SHA
-      - GITHUB_REF
+      - GITHUB_REF_NAME
       - GITHUB_TOKEN
       - BROWSERSTACK_ACCESS_KEY
       - BROWSERSTACK_USER_NAME
@@ -63,10 +63,8 @@ services:
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
       - utilities-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/utilities/node_modules
       - utilities-styles-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/styles/node_modules
-      - utilities-deprecated-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/node_modules
-      - utilities-deprecated-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities-deprecated/projects/utilities/node_modules
   change-volume-owner:
-    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.34.3-focal
+    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.35.1-focal
     volumes:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
@@ -98,8 +96,6 @@ services:
       - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
       - utilities-utilities-node-modules:/opt/porsche-design-system-volumes/utilities-utilities-node_modules
       - utilities-styles-node-modules:/opt/porsche-design-system-volumes/utilities-styles-node_modules
-      - utilities-deprecated-node-modules:/opt/porsche-design-system-volumes/utilities-deprecated-node_modules
-      - utilities-deprecated-utilities-node-modules:/opt/porsche-design-system-volumes/utilities-deprecated-utilities-node_modules
     command: |
       sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-design-system-volumes/*"
 volumes:
@@ -133,5 +129,3 @@ volumes:
   utilities-node-modules:
   utilities-utilities-node-modules:
   utilities-styles-node-modules:
-  utilities-deprecated-node-modules:
-  utilities-deprecated-utilities-node-modules:

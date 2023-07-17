@@ -11,7 +11,7 @@ exports[`should have no basic DOM regression for p-accordion 1`] = `
     </span>
   </button>
 </h2>
-<div id="accordion-panel" class="collapsible" role="region" aria-labelledby="accordion-control" style="height: 0px;">
+<div id="accordion-panel" class="collapsible" role="region" aria-labelledby="accordion-control">
   <div>
     <slot>
     </slot>
@@ -181,7 +181,7 @@ exports[`should have no basic DOM regression for p-headline 1`] = `
 </h1>"
 `;
 
-exports[`should have no basic DOM regression for p-icon 1`] = `"<img src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg" alt="">"`;
+exports[`should have no basic DOM regression for p-icon 1`] = `"<img src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg" width="24" height="24" loading="lazy" alt="">"`;
 
 exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 "<p-icon class="icon hydrated" aria-hidden="true">
@@ -471,7 +471,7 @@ exports[`should have no basic DOM regression for p-tabs-bar 1`] = `
 "<p-scroller class="scroller hydrated">
   <slot>
   </slot>
-  <span class="bar" style="transform: translate3d(0px,0,0); width: 0;">
+  <span class="bar">
   </span>
 </p-scroller>"
 `;

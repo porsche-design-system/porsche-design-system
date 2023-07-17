@@ -8,7 +8,7 @@ import {
   ITEM_PADDING,
   LABEL_FONT,
 } from '../segmented-control-item/segmented-control-item-styles';
-import { fontFamily } from '@porsche-design-system/utilities-v2';
+import { borderWidthBase, fontFamily } from '@porsche-design-system/utilities-v2';
 import { forceUpdate } from '@stencil/core';
 import { hasDocument } from '../../../utils';
 
@@ -17,15 +17,17 @@ export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROU
 
 export type SegmentedControlUpdateEvent = { value: string | number };
 
-// wide font for safety buffer, Porsche Next might not be available or not used and cause wrong calculation
-const tempFont = 'sans-serif';
+// Expect Porsche Next to be available and use sans-serif (wide font for safety buffer) as fallback
+const tempFont = 'Porsche Next, sans-serif';
 
 // temporary dom node to measure max-width of children content
+// All width relevant styling has to be kept in sync with the button of the p-segmented-control-item
 export const tempDiv = hasDocument ? document.createElement('div') : undefined;
 if (tempDiv) {
   tempDiv.style.position = 'absolute';
   tempDiv.style.visibility = 'hidden';
-  tempDiv.style.padding = `0 ${ITEM_PADDING}`;
+  tempDiv.style.padding = `0 ${ITEM_PADDING}`; // Uses the largest possible padding of the item
+  tempDiv.style.border = `${borderWidthBase} solid`;
   tempDiv.style.boxSizing = 'border-box';
   tempDiv.style.font = BUTTON_FONT.replace(fontFamily, tempFont);
 }

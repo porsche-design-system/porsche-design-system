@@ -23,9 +23,11 @@ const copyAssets = (): void => {
   for (const cdnPath of Object.keys(cdnPathPackageMap)) {
     const packageName = cdnPathPackageMap[cdnPath as keyof typeof cdnPathPackageMap];
     try {
-      const pathToPackage = require.resolve(packageName!);
-      const relativePathToPackageFiles = `../${cdnPath}`;
-      const pathToFiles = path.resolve(path.dirname(pathToPackage), relativePathToPackageFiles);
+      const packageEntryPath = require.resolve(packageName!);
+      const packageEntryDir = path.dirname(packageEntryPath);
+      // because of inconsistent package structures we maybe right in dist folder or one level deeper
+      const relativePathToPackageAssetFiles = packageEntryDir.endsWith('dist') ? cdnPath : `../${cdnPath}`;
+      const pathToFiles = path.resolve(packageEntryDir, relativePathToPackageAssetFiles);
 
       const files = fs.readdirSync(pathToFiles);
       const targetDirectory = path.resolve(__dirname, TARGET_DIRECTORY, cdnPath);

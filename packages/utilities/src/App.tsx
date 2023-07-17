@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment, type JSX } from 'react';
 import styled from 'styled-components';
 import {
   getMediaQueryMax,
@@ -164,7 +164,7 @@ const GridNarrowColumnHalfRight = styled.div({
   gridColumn: `${gridNarrowSpanOneHalf} / ${gridNarrowColumnEnd}`,
 });
 
-function App() {
+export const App = (): JSX.Element => {
   return (
     <Fragment>
       <Grid>
@@ -202,6 +202,4 @@ function App() {
       </Grid>
     </Fragment>
   );
-}
-
-export default App;
+};

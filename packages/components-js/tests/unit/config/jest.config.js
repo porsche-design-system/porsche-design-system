@@ -11,9 +11,10 @@ module.exports = {
     '^.+\\.tsx?$': [
       'ts-jest',
       {
-        // override tsconfig.json in package root
+        isolatedModules: true, // disable type-checking and compile each file as an isolated module
+        diagnostics: false,
         tsconfig: {
-          esModuleInterop: false,
+          esModuleInterop: false, // would produce default export in partials.spec.ts
         },
       },
     ],

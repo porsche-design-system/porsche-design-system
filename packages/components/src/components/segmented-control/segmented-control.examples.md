@@ -51,7 +51,7 @@ property.
 
 ## Event Handling
 
-Whenever the selected item changes, a `change` event gets emitted by the `p-segmented-control`.  
+Whenever the selected item changes, an `update` event gets emitted by the `p-segmented-control`.  
 Each event instance contains the newly selected value at `event.detail.value`.
 
 <p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">

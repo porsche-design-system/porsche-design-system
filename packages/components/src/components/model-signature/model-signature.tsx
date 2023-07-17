@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../utils';
 import type { PropTypes, Theme } from '../../types';
 import type { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from './model-signature-utils';

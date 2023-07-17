@@ -12,7 +12,7 @@ const Document = (): JSX.Element => {
   return (
     <Html lang="en">
       <Head>
-        <link rel="icon" href="http://localhost:3001/meta-icons/favicon-32x32.10be24507223bc4ef63effe0eb750e58.png" />
+        <link rel="icon" href="http://localhost:3001/meta-icons/favicon-32x32.5638ae59e85b68cac7febfffe555dbe7.png" />
 
         {getInitialStyles({ format: 'jsx' })}
         <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />

@@ -7,7 +7,7 @@ import { ALGOLIA_RESPONSE_MOCK } from '../helpers/algolia-response-mock';
 let page: Page;
 beforeEach(async () => {
   page = await browser.newPage();
-  await page.goto(baseURL, { waitUntil: 'networkidle0' });
+  await page.goto(baseURL);
   await page.evaluate(() => (window as any).componentsReady());
 
   await page.setRequestInterception(true);
@@ -49,6 +49,7 @@ const sendAlgoliaRequest = async () =>
   Promise.all([
     page.type(searchInputSelector, searchTerm),
     page.waitForResponse((response) => response.status() === 200),
+    page.waitForSelector('.ais-Hits-item'),
   ]);
 
 describe('search', () => {

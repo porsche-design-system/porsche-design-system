@@ -21,7 +21,7 @@
     "build:components-manager-cli": "yarn --cwd ./projects/components-manager-cli build",
     "build:components-manager-core": "yarn --cwd ./projects/components-manager-core build",
     "build:components-wrapper": "yarn build:components-wrapper:environment && yarn build:components-wrapper:webpack && yarn build:components-wrapper:cm && yarn build:components-wrapper:replaceCdnBaseUrlDynamicPlaceholder && yarn build:components-wrapper:generateChunksManifest && yarn build:components-wrapper:copyUtilitiesBuildToComponentsJs && yarn build:components-wrapper:createUtilitiesScssEntryPoint",
-    "build:components-wrapper:environment": "tsc --project tsconfig.json",
+    "build:components-wrapper:environment": "tsc --project tsconfig.json --module commonjs --moduleResolution node --verbatimModuleSyntax false",
     "build:components-wrapper:webpack": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} webpack --config ./projects/components-wrapper/webpack.config.ts",
     "build:components-wrapper:cm": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} cm build && PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} IIFE_BUILD=1 cm build && PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} ESM_BUILD=1 cm build",
     "build:components-wrapper:replaceCdnBaseUrlDynamicPlaceholder": "ts-node scripts/replaceCdnBaseUrlDynamicPlaceholder.ts",
@@ -65,28 +65,28 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components": "3.2.0",
-    "@porsche-design-system/components-js": "3.2.0",
+    "@porsche-design-system/components": "3.4.0",
+    "@porsche-design-system/components-js": "3.4.0",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0",
-    "imask": "^6.6.0"
+    "imask": "^6.6.3"
   },
   "devDependencies": {
-    "@playwright/test": "1.34.3",
+    "@playwright/test": "1.35.1",
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.13.3",
-    "@types/node": "^20.2.5",
-    "concurrently": "^8.1.0",
-    "devtools-protocol": "^0.0.1157354",
+    "@types/node": "^20.3.3",
+    "concurrently": "^8.2.0",
+    "devtools-protocol": "^0.0.1165014",
     "globby": "^11.0.4",
-    "js-beautify": "^1.14.7",
+    "js-beautify": "^1.14.8",
     "jsdom": "^22.1.0",
     "local-web-server": "^5.3.0",
     "terser-webpack-plugin": "^5.3.9",
     "ts-node": "^10.9.1",
-    "typescript": "~5.0.4",
-    "webpack": "^5.85.0",
+    "typescript": "~5.1.6",
+    "webpack": "^5.88.1",
     "webpack-bundle-analyzer": "^4.9.0",
-    "webpack-cli": "^5.1.1"
+    "webpack-cli": "^5.1.4"
   }
 }

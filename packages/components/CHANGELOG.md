@@ -14,6 +14,58 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.4.0] - 2023-07-14
+
+### [3.4.0-rc.0] - 2023-07-13
+
+#### Added
+
+- React: `'use client';` directive is applied on all components for main and `ssr` sub-package
+  ([#2654](https://github.com/porsche-design-system/porsche-design-system/pull/2654))
+
+#### Fixed
+
+- Fixes regression in `observeChildren` that affected nested components (e.g. incorrect rendering of nested `Tabs`).
+  ([#2649](https://github.com/porsche-design-system/porsche-design-system/pull/2649))
+- Click behaviour of slotted interactive elements of `Carousel`
+  ([#2663](https://github.com/porsche-design-system/porsche-design-system/pull/2663))
+
+### [3.3.0] - 2023-07-07
+
+### [3.3.0-rc.0] - 2023-07-06
+
+#### Added
+
+- `Tabs` and `Tabs Bar` support SSR ([#2611](https://github.com/porsche-design-system/porsche-design-system/pull/2611))
+- Contents of `Tag` component can now be wrapped in multiple lines
+  ([#2625](https://github.com/porsche-design-system/porsche-design-system/pull/2625))
+- `Carousel`: Possibility to set custom border-radius of slide items
+  ([#2645](https://github.com/porsche-design-system/porsche-design-system/pull/2645))
+- native lazy loading attribute to `img` tag of `Icon`
+  ([#2644](https://github.com/porsche-design-system/porsche-design-system/pull/2644))
+
+#### Fixed
+
+- `Stepper Horizontal` navigation between 2 pages is not working as expected in angular
+  ([#2641](https://github.com/porsche-design-system/porsche-design-system/pull/2641))
+- `Segmented Control` text is not centered / causing unintended line-breaks
+  ([#2614](https://github.com/porsche-design-system/porsche-design-system/pull/2614))
+- `jsdom-polyfill` fixes validation errors in unit tests during SSR hydration
+  ([#2613](https://github.com/porsche-design-system/porsche-design-system/pull/2613))
+- `Accordion` collapsable content is overflowing when used with multiple prefixes  
+  ([#2612](https://github.com/porsche-design-system/porsche-design-system/pull/2612))
+- `Tabs Bar` position of underline for fluid font-size with `size="medium` when resizing
+  ([#2611](https://github.com/porsche-design-system/porsche-design-system/pull/2611))
+- `Button Pure`, `Link Pure`: `:hover` bug on Firefox
+  ([#2630](https://github.com/porsche-design-system/porsche-design-system/pull/2630))
+- `Carousel`: Removed `overflow:hidden` of slide items
+  ([#2645](https://github.com/porsche-design-system/porsche-design-system/pull/2645))
+
+#### Changed
+
+- Improved bootstrapping behaviour of `Icon`
+  ([#2644](https://github.com/porsche-design-system/porsche-design-system/pull/2644))
+
 ### [3.2.0] - 2023-06-19
 
 ### [3.2.0-rc.0] - 2023-06-19

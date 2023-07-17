@@ -26,7 +26,7 @@ export type LoadComponentLibraryOptions = {
  * @param options - LoadComponentLibraryOptions
  */
 export function loadComponentLibrary({ script, version, prefix }: LoadComponentLibraryOptions): void {
-  const data = getLibraryHandlerData(version) || {};
+  const data = getLibraryHandlerData(version);
   const { isInjected, prefixes = [], registerCustomElements } = data;
 
   const [collidingVersion] = Object.entries(getComponentsManagerData()).filter(
@@ -63,27 +63,24 @@ Take a look at document.${CM_KEY} for more details.`
 export function setRegisterComponentsCallback(callback: RegisterCustomElementsCallback, version: string): void {
   const data = getLibraryHandlerData(version);
   data.registerCustomElements = callback;
-  for (const prefix of data.prefixes) {
-    callback(prefix);
-  }
+  data.prefixes.forEach((p) => callback(p));
 }
 
 function getLibraryHandlerData(version: string): LibraryHandlerData {
   const cmData = getComponentsManagerData();
-  const { [version]: libraryHandlerData = null } = cmData;
+  const { [version]: libraryHandlerData } = cmData;
 
-  if (libraryHandlerData === null) {
+  if (!libraryHandlerData) {
     let readyPromiseResolve: ReadyResolve = () => {};
     const readyPromise: Promise<void> = new Promise((resolve: ReadyResolve) => (readyPromiseResolve = resolve));
-    const newLibraryHandlerData: LibraryHandlerData = {
+
+    cmData[version] = {
       isInjected: false,
       isReady: () => readyPromise,
       readyResolve: readyPromiseResolve,
       prefixes: [],
       registerCustomElements: null,
     };
-
-    cmData[version] = newLibraryHandlerData;
   }
 
   return cmData[version];

@@ -6,7 +6,7 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 it('should have no leading and trailing whitespace in framework buttons of tabs-bar', async () => {
-  await page.goto(`${baseURL}/components/button/examples`, { waitUntil: 'networkidle0' });
+  await page.goto(`${baseURL}/components/button/examples`);
 
   const buttons = await Promise.all([
     page.$x("//button[text() = 'Vanilla JS']"),

@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
+import { type JSX, Component, Prop, h, Element } from '@stencil/core';
 import type {
   FlexItemAlignSelf,
   FlexItemFlex,

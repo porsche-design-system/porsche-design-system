@@ -1,6 +1,6 @@
 import type { GridItemOffset, GridItemSize } from './grid-item-utils';
 import type { BreakpointCustomizable, PropTypes } from '../../../types';
-import { Component, Element, h, JSX, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { GRID_ITEM_OFFSETS, GRID_ITEM_SIZES } from './grid-item-utils';
 import { getComponentCss } from './grid-item-styles';
 import {

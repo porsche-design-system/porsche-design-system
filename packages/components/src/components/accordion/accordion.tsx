@@ -1,23 +1,16 @@
-import { Component, Element, Event, EventEmitter, h, Host, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  HEADING_TAGS,
   hasPropValueChanged,
+  HEADING_TAGS,
   THEMES,
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { AccordionUpdateEvent, AccordionSize } from './accordion-utils';
-import {
-  ACCORDION_SIZES,
-  AccordionTag,
-  getContentHeight,
-  observeResize,
-  setCollapsibleElementHeight,
-  unobserveResize,
-} from './accordion-utils';
+import type { AccordionSize, AccordionUpdateEvent } from './accordion-utils';
+import { ACCORDION_SIZES, type AccordionTag } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
 
 const propTypes: PropTypes<typeof Accordion> = {
@@ -62,31 +55,8 @@ export class Accordion {
   /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEvent>;
 
-  private collapsibleElement: HTMLDivElement;
-  private content: HTMLDivElement;
-  private contentHeight: string;
-
-  @Watch('open')
-  public openChangeHandler(): void {
-    this.setCollapsibleElementHeight();
-  }
-
-  public connectedCallback(): void {
-    if (this.content) {
-      this.observeResize(); // for reconnect
-    }
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
-  }
-
-  public componentDidLoad(): void {
-    this.observeResize(); // for first init
-  }
-
-  public disconnectedCallback(): void {
-    unobserveResize(this.content);
   }
 
   public render(): JSX.Element {
@@ -121,14 +91,8 @@ export class Accordion {
             </span>
           </button>
         </Heading>
-        <div
-          id={contentId}
-          class="collapsible"
-          role="region"
-          aria-labelledby={buttonId}
-          ref={(el) => (this.collapsibleElement = el)}
-        >
-          <div ref={(el) => (this.content = el)}>
+        <div id={contentId} class="collapsible" role="region" aria-labelledby={buttonId}>
+          <div>
             <slot />
           </div>
         </div>
@@ -140,19 +104,4 @@ export class Accordion {
     this.update.emit({ open: !this.open });
     this.accordionChange.emit({ open: !this.open });
   };
-
-  private observeResize(): void {
-    observeResize(
-      this.content,
-      ({ contentRect }) => {
-        this.contentHeight = getContentHeight(contentRect);
-        this.setCollapsibleElementHeight();
-      },
-      { box: 'border-box' }
-    );
-  }
-
-  private setCollapsibleElementHeight(): void {
-    setCollapsibleElementHeight(this.collapsibleElement, this.open, this.contentHeight);
-  }
 }

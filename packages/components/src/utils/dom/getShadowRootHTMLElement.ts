@@ -1,5 +1,5 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
-import { HTMLElementOrShadowRoot } from './dom-types';
+import type { HTMLElementOrShadowRoot } from './dom-types';
 import { getHTMLElement } from './getHTMLElement';
 
 // prettier-ignore

@@ -1,4 +1,4 @@
-import { Component, Element, h, JSX, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, type JSX, Listen, Prop, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -67,6 +67,7 @@ export class SegmentedControlItem {
     // this additional validation is still needed because undefined is allowed with current propTypes
     throwIfPropIsUndefined(this.host, 'value', this.value);
     const hasIcon = !!this.icon || !!this.iconSource;
+    const hasSlottedContent = !!this.host.innerHTML;
 
     attachComponentCss(
       this.host,
@@ -74,6 +75,7 @@ export class SegmentedControlItem {
       this.disabled,
       this.host.selected,
       hasIcon,
+      hasSlottedContent,
       this.host.theme || 'light' // default as fallback
     );
 

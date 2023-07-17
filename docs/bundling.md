@@ -2,6 +2,8 @@
 
 ## Status Quo
 
+TODO: update this
+
 | Package                         | UMD | CJS | ESM |
 | ------------------------------- | --- | --- | --- |
 | components-js                   | ✓   |     |     |
@@ -15,7 +17,6 @@
 | components-angular/partials     |     | ✓   | ✓   |
 | components-angular/utilities/js |     | ✓   | ✓   |
 | assets                          | ✗   | (✓) | ✓   |
-| utilities-deprecated            | ✗   | (✓) | ✓   |
 
 ✗ = currently released  
 (✓) = not released

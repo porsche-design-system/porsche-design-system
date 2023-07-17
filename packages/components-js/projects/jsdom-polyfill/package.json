@@ -14,7 +14,6 @@
     "clean:build": "rm -rf ../../dist/jsdom-polyfill"
   },
   "dependencies": {
-    "@juggle/resize-observer": "^3.4.0",
     "construct-style-sheets-polyfill": "^3.1.0",
     "intersection-observer": "^0.12.2",
     "matchmedia-polyfill": "^0.3.2",
@@ -23,14 +22,8 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@rollup/plugin-commonjs": "^25.0.0",
-    "@rollup/plugin-node-resolve": "^15.1.0",
-    "@rollup/plugin-typescript": "^11.1.0",
-    "@testing-library/dom": "^9.3.0",
+    "@testing-library/dom": "^9.3.1",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/user-event": "^14.4.3",
-    "rollup": "^3.23.0",
-    "rollup-plugin-generate-package-json": "^3.2.0",
-    "rollup-plugin-modify": "^3.0.0"
+    "@testing-library/user-event": "^14.4.3"
   }
 }

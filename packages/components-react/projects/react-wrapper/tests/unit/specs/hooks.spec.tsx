@@ -1,13 +1,12 @@
 import { render } from '@testing-library/react';
-import type { ToastMessage } from '../../../src/public-api';
-import { PButton, useToastManager } from '../../../src/public-api';
+import { PButton, useToastManager, type ToastMessage } from '../../../src/public-api';
 import * as hooks from '../../../src/hooks';
 import {
   skipCheckForPorscheDesignSystemProviderDuringTests,
   useBrowserLayoutEffect,
   usePrefix,
 } from '../../../src/hooks';
-import { useContext, useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import * as React from 'react';
 import { PorscheDesignSystemContext } from '../../../src/provider';
 
@@ -19,7 +18,7 @@ jest.mock('react', () => ({
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix() to throw exception', () => {
-    const spy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
+    const spy = jest.spyOn(global.console, 'error').mockImplementation();
     let error1, error2;
 
     try {
@@ -85,7 +84,7 @@ describe('usePrefix()', () => {
     });
 
     it('should throw error if useContext() returns undefined ', () => {
-      jest.spyOn(global.console, 'error').mockImplementation(() => {});
+      jest.spyOn(global.console, 'error').mockImplementation();
       jest.spyOn(React, 'useContext').mockReturnValue(undefined);
 
       expect(() => usePrefix('p-text')).toThrow();

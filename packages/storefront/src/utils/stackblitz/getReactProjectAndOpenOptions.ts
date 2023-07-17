@@ -1,5 +1,4 @@
 import { devDependencies, dependencies } from '../../../../components-react/package.json';
-import { default as tsconfig } from '../../../../components-react/tsconfig.json';
 import {
   convertImportPaths,
   getExternalDependencies,
@@ -96,8 +95,6 @@ root.render(
   );
 };
 
-export const getTsconfigJson = (): string => JSON.stringify(tsconfig, null, 2);
-
 export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
   imask: {
     'react-imask': dependencies['react-imask'],
@@ -142,7 +139,6 @@ export const getReactProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions =
       'App.tsx': getAppTsx(markup, !!markup.match(componentNameRegex), sharedImportKeys, pdsVersion),
       'index.html': '<div id="root"></div>',
       'index.tsx': getIndexTsx(pdsVersion),
-      'tsconfig.json': getTsconfigJson(),
       'style.css': `html, body { margin: 0; padding: 0; } ${globalStyles}`,
     },
     template: 'create-react-app',

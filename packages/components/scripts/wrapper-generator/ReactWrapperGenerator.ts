@@ -15,10 +15,10 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
 
     const reactImports = [
-      'ForwardedRef',
+      'type ForwardedRef',
       'forwardRef',
-      'HTMLAttributes',
-      ...(this.inputParser.canHaveChildren(component) ? ['PropsWithChildren'] : []),
+      'type HTMLAttributes',
+      ...(this.inputParser.canHaveChildren(component) ? ['type PropsWithChildren'] : []),
       'useRef',
     ];
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
@@ -38,7 +38,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ? `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`
       : '';
 
-    return [importsFromReact, importsFromHooks, importsFromUtils, importsFromTypes].filter((x) => x).join('\n');
+    return ["'use client';\n", importsFromReact, importsFromHooks, importsFromUtils, importsFromTypes]
+      .filter((x) => x)
+      .join('\n');
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {

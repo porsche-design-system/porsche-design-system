@@ -44,7 +44,16 @@ export const getColors = (
   };
 };
 
-export const getComponentCss = (isDisabled: boolean, isSelected: boolean, hasIcon: boolean, theme: Theme): string => {
+export const getItemPadding = (hasIconAndSlottedContent: boolean): string =>
+  hasIconAndSlottedContent ? `13px ${ITEM_PADDING} 13px 13px` : `13px ${ITEM_PADDING}`;
+
+export const getComponentCss = (
+  isDisabled: boolean,
+  isSelected: boolean,
+  hasIcon: boolean,
+  hasSlottedContent: boolean,
+  theme: Theme
+): string => {
   const { focusColor } = getThemedColors(theme);
   const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, theme);
 
@@ -55,11 +64,12 @@ export const getComponentCss = (isDisabled: boolean, isSelected: boolean, hasIco
         outline: 0,
         ...hostHiddenStyles,
       }),
+      // All width relevant styling has to be kept in sync with the tempDiv of the p-segmented-control utils
       button: {
         display: 'block',
         height: '100%',
         width: '100%',
-        padding: hasIcon ? `13px ${ITEM_PADDING} 13px 13px` : `13px ${ITEM_PADDING}`,
+        padding: getItemPadding(hasIcon && hasSlottedContent),
         margin: 0,
         border: `${borderWidthBase} solid ${borderColor}`,
         borderRadius: borderRadiusSmall,
@@ -105,10 +115,14 @@ export const getComponentCss = (isDisabled: boolean, isSelected: boolean, hasIco
         color: labelColor,
       },
     },
-    icon: {
-      height: ICON_SIZE,
-      width: ICON_SIZE,
-      marginRight: ICON_MARGIN,
-    },
+    ...(hasIcon && {
+      icon: {
+        height: ICON_SIZE,
+        width: ICON_SIZE,
+        ...(hasSlottedContent && {
+          marginRight: ICON_MARGIN,
+        }),
+      },
+    }),
   });
 };

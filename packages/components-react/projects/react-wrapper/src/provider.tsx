@@ -1,9 +1,9 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, JSX } from 'react';
 import { createContext, useEffect } from 'react';
 import { load } from '@porsche-design-system/components-js';
 
 // to warn users about missing PorscheDesignSystemProvider, we set the default values as undefined
-export const PorscheDesignSystemContext = createContext({
+export const PorscheDesignSystemContext = createContext<{ prefix?: string }>({
   prefix: undefined,
 });
 

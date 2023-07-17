@@ -1,4 +1,4 @@
-import { JssStyle } from 'jss';
+import type { JssStyle } from 'jss';
 
 export const getSchemedHighContrastMediaQuery = (light: JssStyle, dark: JssStyle): JssStyle => {
   return {

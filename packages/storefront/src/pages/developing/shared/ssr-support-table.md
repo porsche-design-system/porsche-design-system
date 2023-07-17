@@ -11,6 +11,7 @@
 | ✅ **Divider**              |                                                                                                                                                                                    |
 | ✅ **Fieldset Wrapper**     |                                                                                                                                                                                    |
 | ✅ **Flex**                 |                                                                                                                                                                                    |
+| ✅ **Flyout**               |                                                                                                                                                                                    |
 | ✅ **Grid**                 |                                                                                                                                                                                    |
 | ✅ **Headline**             |                                                                                                                                                                                    |
 | ✅ **Icon**                 |                                                                                                                                                                                    |
@@ -24,14 +25,14 @@
 | ✅ **Pagination**           | - `max-number-of-page-links` is not supported                                                                                                                                      |
 | ✅ **Popover**              |                                                                                                                                                                                    |
 | ✅ **Radio Button Wrapper** | - Required state is not supported                                                                                                                                                  |
-| ✅ **Scroller**             | - Optional prev/next arrows aren't supported                                                                                                                                       |
+| ✅ **Scroller**             | - Optional scroll prev/next arrows aren't supported                                                                                                                                |
 | ✅ **Segmented Control**    | - Auto width calculation is not supported<br />- Icons provided by `icon-source` won't be shown in disabled color when element is disabled                                         |
 | ✅ **Select Wrapper**       |                                                                                                                                                                                    |
 | ✅ **Spinner**              |                                                                                                                                                                                    |
-| ✅ **Stepper Horizontal**   | - Optional scroll prev/next arrow isn't supported                                                                                                                                  |
+| ✅ **Stepper Horizontal**   | - Optional scroll prev/next arrows aren't supported                                                                                                                                |
 | ✅ **Switch**               |                                                                                                                                                                                    |
-| ✅ **Table**                | - Optional scroll next arrow isn't supported                                                                                                                                       |
-| ✅ **Tabs** / **Tabs Bar**  | - Optional prev/next arrows aren't supported<br />- `active-tab-index` is not supported                                                                                            |
+| ✅ **Table**                | - Optional scroll prev/next arrows aren't supported                                                                                                                                |
+| ✅ **Tabs** / **Tabs Bar**  | - Optional scroll prev/next arrows aren't supported                                                                                                                                |
 | ✅ **Tag**                  |                                                                                                                                                                                    |
 | ✅ **Tag Dismissible**      |                                                                                                                                                                                    |
 | ✅ **Text**                 |                                                                                                                                                                                    |

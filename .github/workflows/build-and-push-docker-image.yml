@@ -16,6 +16,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build and Push Docker Image'
+      - name: 'Build and Push Docker Image Playwright'
         run: cd docker/node && ./build-and-push-base-image-playwright.sh
         shell: bash

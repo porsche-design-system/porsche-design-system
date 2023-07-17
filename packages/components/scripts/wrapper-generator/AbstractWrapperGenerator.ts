@@ -154,7 +154,7 @@ export abstract class AbstractWrapperGenerator {
   }
 
   // helper that can be used to have wrapper generated into separate folder
-  public shouldGenerateFolderPerComponent(component: TagName): boolean {
+  public shouldGenerateFolderPerComponent(_: TagName): boolean {
     return false;
   }
 

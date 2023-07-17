@@ -22,8 +22,7 @@ if
   [[ "--fallbacks" == "${1}" ]] ||
   [[ "--shared" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]] ||
-  [[ "--utilities" == "${1}" ]] ||
-  [[ "--utilities-deprecated" == "${1}" ]]
+  [[ "--utilities" == "${1}" ]]
 then
   yarn test:unit:${1:2} --ci
 elif [[ "--components-angular:karma" == "${1}" ]]; then

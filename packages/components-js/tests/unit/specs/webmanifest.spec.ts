@@ -8,7 +8,7 @@ describe('webmanifest', () => {
   const manifestPathCN = META_ICONS_MANIFEST.webManifest.cn;
 
   const indexJsFile = require.resolve('@porsche-design-system/meta-icons');
-  const distDir = path.resolve(indexJsFile, '../..');
+  const distDir = path.resolve(indexJsFile, '..');
   const metaIconsDir = path.resolve(distDir, 'meta-icons');
 
   const getManifestContent = (manifestFileName: string): string => {

@@ -1,4 +1,4 @@
-import { JSX, Component, Prop, h, Element } from '@stencil/core';
+import { type JSX, Component, Prop, h, Element } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import type { SpinnerSize, SpinnerAriaAttribute } from './spinner-utils';
 import { SPINNER_ARIA_ATTRIBUTES, SPINNER_SIZES } from './spinner-utils';

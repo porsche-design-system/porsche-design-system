@@ -1,7 +1,7 @@
 import { componentsReady, PToast, useToastManager } from '@porsche-design-system/components-react';
 import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 import '@porsche-design-system/components-react/jsdom-polyfill';
 
 const Sample = (): JSX.Element => {
@@ -41,5 +41,7 @@ it('should have working useToastManager hook', async () => {
   const button = getByRole('button');
   await userEvent.click(button);
   await waitFor(() => expect(debug.innerHTML).toBe('Event Counter: 1;'));
-  await waitFor(() => expect(getByTestId('host').shadowRoot.querySelector('p-toast-item').shadowRoot).not.toBeNull());
+  await waitFor(() =>
+    expect(getByTestId('host')!.shadowRoot!.querySelector('p-toast-item')!.shadowRoot).not.toBeNull()
+  );
 });

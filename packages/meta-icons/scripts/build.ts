@@ -62,7 +62,7 @@ const writeWebManifest = (androidIconPaths: string[], cdn: Cdn): string => {
   return manifestFileName;
 };
 
-const copyMetaIconsAndBuildIconManifest = (cdn: string, files: string[]): MetaIconsManifest => {
+const copyMetaIconsAndBuildIconManifest = (files: string[]): MetaIconsManifest => {
   fs.mkdirSync(path.normalize('./dist/meta-icons'), { recursive: true });
 
   const manifest: MetaIconsManifest = {};
@@ -107,7 +107,7 @@ export const META_ICONS_MANIFEST = ${JSON.stringify(manifest)};`
 const generate = (): void => {
   const cdnMetaIconsUrl = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_META_ICONS}'`;
   const icons = globby.sync('./src/**/*').sort();
-  const metaIconsManifest = copyMetaIconsAndBuildIconManifest(cdnMetaIconsUrl, icons);
+  const metaIconsManifest = copyMetaIconsAndBuildIconManifest(icons);
   const metaIconsManifestWithWebManifest = generateWebManifestAndExtendIconManifest(metaIconsManifest);
 
   writeMetaIconManifest(cdnMetaIconsUrl, metaIconsManifestWithWebManifest);

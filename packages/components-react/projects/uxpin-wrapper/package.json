@@ -17,16 +17,16 @@
     "dump": "./node_modules/.bin/uxpin-merge dump"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "3.2.0",
+    "@porsche-design-system/components-js": "3.4.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.21.5",
+    "@babel/preset-typescript": "^7.22.5",
     "@porsche-design-system/assets": "5.0.2",
-    "@types/react": "^18.2.7",
-    "@uxpin/merge-cli": "3.0.3",
+    "@types/react": "^18.2.14",
+    "@uxpin/merge-cli": "3.0.6",
     "babel-loader": "^9.1.2",
-    "typescript": "~5.0.4",
-    "webpack": "^5.85.0"
+    "typescript": "~5.1.6",
+    "webpack": "^5.88.1"
   }
 }

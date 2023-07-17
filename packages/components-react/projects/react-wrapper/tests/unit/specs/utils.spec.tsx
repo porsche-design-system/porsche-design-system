@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, type JSX } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { PButton } from '../../../src/public-api';
@@ -38,7 +38,7 @@ const CLASS_NAME = 'someClass1 hydrated';
 
 type Props = { isRefCallback?: boolean };
 const Sample = ({ isRefCallback }: Props): JSX.Element => {
-  const buttonRef = useRef(undefined);
+  const buttonRef = useRef<HTMLElement | null>(null);
 
   return (
     <PButton
@@ -46,7 +46,7 @@ const Sample = ({ isRefCallback }: Props): JSX.Element => {
       data-testid="button"
       ref={isRefCallback ? (el) => (buttonRef.current = el) : buttonRef}
       onClick={() => {
-        buttonRef.current.className = CLASS_NAME;
+        buttonRef.current!.className = CLASS_NAME;
       }}
     >
       Some Button

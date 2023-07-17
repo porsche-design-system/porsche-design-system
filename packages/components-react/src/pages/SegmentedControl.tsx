@@ -172,6 +172,34 @@ export const SegmentedControlPage = (): JSX.Element => {
           <PSegmentedControlItem value={6} icon="truck" disabled={true} />
         </PSegmentedControl>
       </div>
+
+      <div className="playground light" title="should render segmented-control with icons only">
+        <PSegmentedControl value={1}>
+          <PSegmentedControlItem value={1} icon="truck" />
+          <PSegmentedControlItem value={2} icon="car" />
+          <PSegmentedControlItem value={3} icon="bell" />
+          <PSegmentedControlItem value={4} icon="garage" />
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground light" title="should render segmented-control without wrapping the content onto a new line">
+        <PSegmentedControl value={2}>
+          <PSegmentedControlItem value={1}>Option 1</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>Option 2</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>Option 3</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} disabled={true}>Option 4</PSegmentedControlItem>
+          <PSegmentedControlItem value={5}>Option 5</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground light" title="should render segmented-control with centered content">
+        <PSegmentedControl value={1}>
+          <PSegmentedControlItem value={1}>12:00</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>13:00</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>14:00</PSegmentedControlItem>
+          <PSegmentedControlItem value={4}>15:00</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
     </>
   );
 };

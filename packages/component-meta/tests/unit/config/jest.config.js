@@ -7,4 +7,14 @@ module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   clearMocks: true,
   restoreMocks: true,
+  transform: {
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: {
+          verbatimModuleSyntax: false,
+        },
+      },
+    ],
+  },
 };
