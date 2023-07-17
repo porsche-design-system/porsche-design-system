@@ -65,6 +65,7 @@ export const getComponentCss = (
       padding: '13px 15px',
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
       transition: getTransition('transform'),
+      cursor: isDisabled ? 'not-allowed' : 'pointer',
       '&--open': {
         transform: 'rotate3d(0,0,1,180deg)',
       },

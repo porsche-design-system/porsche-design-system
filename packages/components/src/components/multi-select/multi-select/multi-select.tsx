@@ -66,6 +66,8 @@ export class MultiSelect {
 
   private nativeSelect: HTMLSelectElement = document.createElement('select');
   private multiSelectOptions: HTMLPMultiSelectOptionElement[];
+  private inputContainer: HTMLDivElement;
+  private multiSelectDropdown: HTMLElement;
 
   @Listen('update')
   public updateOptionHandler(event: CustomEvent<MultiSelectOptionUpdateEvent>): void {
@@ -119,7 +121,7 @@ export class MultiSelect {
               </span>
             )}
           </label>
-          <div class="input-container">
+          <div class="input-container" ref={(el) => (this.inputContainer = el)}>
             <input
               placeholder={this.selectedString || null}
               autoComplete="off"
@@ -127,18 +129,19 @@ export class MultiSelect {
               onClick={this.onInputClick}
             />
             <PrefixedTagNames.pIcon
-              class="icon"
+              class={{ icon: true, ['icon--open']: this.isOpen }}
               name="arrow-head-down"
               theme={this.theme}
               color={this.disabled ? 'state-disabled' : 'primary'}
+              onClick={this.onIconClick}
               aria-hidden="true"
-              // ref={(el) => (this.iconElement = el)}
             />
           </div>
           <PrefixedTagNames.pMultiSelectDropdown
             isOpen={this.isOpen}
             onOpenChange={this.onDropdownOpenChange}
             theme={this.theme}
+            ref={(el) => (this.multiSelectDropdown = el)}
           >
             <slot onSlotchange={() => this.updateOptions()} />
           </PrefixedTagNames.pMultiSelectDropdown>
@@ -173,6 +176,10 @@ export class MultiSelect {
     this.isOpen = true;
   };
 
+  private onIconClick = (): void => {
+    this.isOpen = !this.isOpen;
+  };
+
   private onDropdownOpenChange = (isOpen: boolean): void => {
     this.isOpen = isOpen;
   };
@@ -182,7 +189,7 @@ export class MultiSelect {
   }
 
   private onClickOutside = (e: MouseEvent): void => {
-    if (this.isOpen && isClickOutside(e, this.host)) {
+    if (this.isOpen && isClickOutside(e, this.inputContainer) && isClickOutside(e, this.multiSelectDropdown)) {
       this.isOpen = false;
     }
   };
