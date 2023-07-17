@@ -93,6 +93,7 @@ export class Scroller {
 
   @Watch('scrollToPosition')
   public scrollToPositionHandler(): void {
+    // TODO: does this.scrollToPosition already have the new value? or why aren't we using the first parameter of this function
     this.scrollToPosition = parseJSONAttribute(this.scrollToPosition);
 
     // watcher might trigger before ref is defined with ssr
