@@ -269,7 +269,6 @@ const consoleMessages: ConsoleMessage[] = [];
 // Use to track console errors, excluding custom thrown errors
 export const initConsoleObserver = (page: Page): void => {
   consoleMessages.length = 0; // reset
-
   page.on('console', (msg) => {
     consoleMessages.push(msg);
     if (msg.type() === 'error') {

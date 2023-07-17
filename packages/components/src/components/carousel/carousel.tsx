@@ -284,6 +284,7 @@ export class Carousel {
           class="splide"
           aria-label={this.heading || getSlotTextContent(this.host, 'heading')}
           ref={(ref) => (this.container = ref)}
+          onMouseDown={(e) => e.preventDefault()} // enables native click events on slotted interactive elements
           onFocusin={this.onSplideFocusIn}
         >
           <div class="splide__track">
@@ -354,9 +355,11 @@ export class Carousel {
     const { target } = e;
     const { index: splideIndex } = this.splide;
     const slideIndexOfFocusedElement = this.slides.findIndex((slide) => slide.contains(target)); // focussed element is slot or within slide, e.g. link or button
+    const slideIsVisible =
+      this.splide.Components.Elements.slides[slideIndexOfFocusedElement].classList.contains('is-visible');
 
     if (splideIndex !== slideIndexOfFocusedElement) {
-      if (slideIndexOfFocusedElement < this.amountOfPages && slideIndexOfFocusedElement > splideIndex) {
+      if (slideIndexOfFocusedElement > splideIndex && !slideIsVisible) {
         slideNext(this.splide, this.amountOfPages);
       } else if (slideIndexOfFocusedElement < splideIndex) {
         slidePrev(this.splide, this.amountOfPages);
