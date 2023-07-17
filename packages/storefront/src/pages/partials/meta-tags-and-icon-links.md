@@ -28,7 +28,7 @@ The following showcases the most common ways.
 
 The result of this partial looks like this:
 
-<Playground :config="config" :showCodeEditor="false" :frameworkMarkup="[this.metaTagsAndIconLinks]"></Playground>
+<Playground :showCodeEditor="false" :frameworkMarkup="[this.metaTagsAndIconLinks]"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
