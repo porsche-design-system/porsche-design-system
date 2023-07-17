@@ -298,7 +298,7 @@ export namespace Components {
         /**
           * Adapts the description and button theme when used on light background image.
          */
-        "background"?: BreakpointCustomizable<TileBackground>;
+        "background"?: TileBackground;
         /**
           * Displays the button-tile as compact version with description and button icon only.
          */
@@ -942,7 +942,7 @@ export namespace Components {
         /**
           * Adapts the description and link theme when used on light background image.
          */
-        "background"?: BreakpointCustomizable<TileBackground>;
+        "background"?: TileBackground;
         /**
           * Displays the link-tile as compact version with description and link icon only.
          */
@@ -2398,7 +2398,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the description and button theme when used on light background image.
          */
-        "background"?: BreakpointCustomizable<TileBackground>;
+        "background"?: TileBackground;
         /**
           * Displays the button-tile as compact version with description and button icon only.
          */
@@ -3062,7 +3062,7 @@ declare namespace LocalJSX {
         /**
           * Adapts the description and link theme when used on light background image.
          */
-        "background"?: BreakpointCustomizable<TileBackground>;
+        "background"?: TileBackground;
         /**
           * Displays the link-tile as compact version with description and link icon only.
          */

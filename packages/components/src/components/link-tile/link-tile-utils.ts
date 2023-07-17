@@ -25,7 +25,7 @@ type CommonButtonAndLinkTileProps = {
 
 export const sharedTilePropTypes: Omit<CommonButtonAndLinkTileProps, 'aria' | 'weight'> = {
   size: AllowedTypes.breakpoint<TileSize>(TILE_SIZES),
-  background: AllowedTypes.breakpoint<TileBackground>(THEMES),
+  background: AllowedTypes.oneOf<TileBackground>(THEMES),
   aspectRatio: AllowedTypes.breakpoint<TileAspectRatio>(TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
   description: AllowedTypes.string,

@@ -48,7 +48,7 @@ export class LinkTile implements ITileProps {
   @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
 
   /** Adapts the description and link theme when used on light background image. */
-  @Prop() public background?: BreakpointCustomizable<TileBackground> = 'dark';
+  @Prop() public background?: TileBackground = 'dark';
 
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';

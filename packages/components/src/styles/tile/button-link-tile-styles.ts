@@ -61,6 +61,7 @@ export const getButtonLinkTileStyles = (
           : `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`,
         ...mergeDeep(
           hasGradient &&
+            background === 'dark' &&
             buildResponsiveStyles(compact, (isCompact: boolean) =>
               isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle
             ),

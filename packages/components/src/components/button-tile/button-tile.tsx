@@ -57,7 +57,7 @@ export class ButtonTile implements ITileProps {
   @Prop() public weight?: BreakpointCustomizable<ButtonTileWeight> = 'semi-bold';
 
   /** Adapts the description and button theme when used on light background image. */
-  @Prop() public background?: BreakpointCustomizable<TileBackground> = 'dark';
+  @Prop() public background?: TileBackground = 'dark';
 
   /** Aspect ratio of the button-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio> = '4:3';
