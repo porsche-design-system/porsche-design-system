@@ -1,7 +1,7 @@
 # Link Pure
 
 The `p-link-pure` component is essential for performing changes in **page routes**. A Link Pure can be used with or
-without a label, but it's recommended to keep the **label visible** for better ** usability** whenever possible. When
+without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible. When
 used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
 
 In case you want the user to execute an action, you should select the [Button](components/button) or
@@ -79,8 +79,8 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ## Framework routing (anchor nesting)
 
-To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** (
-recommended) of the component.
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element**
+(recommended) of the component.
 
 <Playground :markup="routing" :config="config"></Playground>
 
