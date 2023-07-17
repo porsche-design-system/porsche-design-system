@@ -37,10 +37,15 @@
     </header>
 
     <main>
-      <form id="myForm">
+      <form id="myForm" method="post">
         <p-multi-select name="name" label="Some Label">
           <p-multi-select-option value="Test">Test</p-multi-select-option>
         </p-multi-select>
+        <!--        <select name="name" multiple>-->
+        <!--          <option value="a">Option A</option>-->
+        <!--          <option value="b">Option B</option>-->
+        <!--          <option value="c">Option C</option>-->
+        <!--        </select>-->
         <!--        <p-fieldset required>-->
         <!--          <p-select-wrapper label="Some label">-->
         <!--            <select name="some-name" required>-->
@@ -82,9 +87,14 @@
       // });
 
       form.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent the form from being submitted
+        // event.preventDefault(); // Prevent the form from being submitted
         // console.log(document.getElementById('cars').value);
-        console.log(form.name.value);
+        const formData = new FormData(form);
+        // Display the key/value pairs
+        console.log(formData.values());
+        for (var pair of formData.entries()) {
+          console.log(pair[0] + ', ' + pair[1]);
+        }
       });
 
       setTimeout(() => {
