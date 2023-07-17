@@ -2,6 +2,7 @@ import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/cor
 import {
   attachComponentCss,
   getPrefixedTagNames,
+  isClickOutside,
   isSsrHydration,
   observeChildren,
   observeProperties,
@@ -247,7 +248,7 @@ export class SelectWrapperDropdown {
   }
 
   private onClickOutside = (e: MouseEvent): void => {
-    if (this.isOpen && !e.composedPath().includes(this.host)) {
+    if (this.isOpen && isClickOutside(e, this.host)) {
       this.setDropdownVisibility('hide');
     }
   };

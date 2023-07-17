@@ -16,11 +16,11 @@ import {
   observeAttributes,
   THEMES,
   validateProps,
+  isClickOutside,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
-import { MultiSelectDropdownOpenChangeEvent } from '../multi-select-dropdown/multi-select-dropdown-utils';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -69,11 +69,6 @@ export class MultiSelect {
     this.updateSelectedString();
   }
 
-  @Listen('openChange')
-  public updateDropdownOpen(event: CustomEvent<MultiSelectDropdownOpenChangeEvent>): void {
-    this.isOpen = event.detail.isOpen;
-  }
-
   public connectedCallback(): void {
     this.observeAttributes(); // on every reconnect
     createNativeSelect(this.host, this.name, this.disabled, this.required);
@@ -81,10 +76,16 @@ export class MultiSelect {
 
   public componentWillLoad(): void {
     this.observeAttributes(); // on every reconnect
+    // TODO: registered only once?
+    document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
   public componentDidLoad(): void {
     this.updateOptions();
+  }
+
+  public disconnectedCallback(): void {
+    document.removeEventListener('mousedown', this.onClickOutside, true);
   }
 
   public render(): JSX.Element {
@@ -165,4 +166,10 @@ export class MultiSelect {
   private observeAttributes(): void {
     observeAttributes(nativeSelect, ['disabled', 'required'], () => forceUpdate(this.host));
   }
+
+  private onClickOutside = (e: MouseEvent): void => {
+    if (this.isOpen && isClickOutside(e, this.host)) {
+      this.isOpen = false;
+    }
+  };
 }

@@ -12,6 +12,7 @@ export * from './dom';
 export * from './form';
 export * from './inject-global-style'; // to trick bundling and avoid separate jss chunk 🤷
 export { hasPropValueChanged } from './has-prop-value-changed';
+export * from './is-click-outside';
 export * from './is-ssr-hydration';
 export * from './jss';
 export { parseJSONAttribute } from './json';
