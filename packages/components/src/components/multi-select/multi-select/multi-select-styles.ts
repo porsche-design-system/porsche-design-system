@@ -59,6 +59,7 @@ const getInputJSSStyles = (): Styles => {
       border: '0', // done via container
       outline: '0',
       appearance: 'none',
+      background: 'transparent',
       ...textSmallStyle,
     },
   };
