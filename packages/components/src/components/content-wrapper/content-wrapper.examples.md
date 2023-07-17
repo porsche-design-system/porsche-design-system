@@ -40,7 +40,7 @@ import { CONTENT_WRAPPER_BACKGROUND_COLORS, CONTENT_WRAPPER_WIDTHS } from './con
 
 @Component
 export default class Code extends Vue {
-  config = { themeable: true, supportsFullscreen: true };    
+  config = { themeable: true, supportsFullWindow: true };    
   
   width = 'extended';
   widths = CONTENT_WRAPPER_WIDTHS.map(item => item === 'fluid' ? item + ' (deprecated)' : item);

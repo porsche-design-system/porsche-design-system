@@ -150,7 +150,7 @@ import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
 })
 export default class Code extends Vue {
   codeExample = getStylesGridCodeSamples();
-  config = { supportsFullscreen: true };
+  config = { supportsFullWindow: true };
 
   public mounted(): void {
     adjustSelectedFramework(this.codeExample);

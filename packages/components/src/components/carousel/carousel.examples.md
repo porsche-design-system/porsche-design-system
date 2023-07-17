@@ -187,7 +187,7 @@ import { borderRadius } from '@porsche-design-system/components-js/styles';
 
 @Component
 export default class Code extends Vue {
-  config = { themeable: true, supportsFullscreen: true };
+  config = { themeable: true, supportsFullWindow: true };
 
   get theme(): Theme {
     return this.$store.getters.theme;

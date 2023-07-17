@@ -49,7 +49,7 @@
       </template>
 
       <p-button
-        v-if="config.supportsFullscreen"
+        v-if="config.supportsFullWindow"
         class="btn-fullscreen"
         :icon="isFullscreen ? 'zoom-in' : 'zoom-out'"
         @click="toggleFullscreen()"
@@ -78,7 +78,7 @@
     spacing: 'none' | 'inline' | 'block' | 'block-small';
     overflowX: 'auto' | 'visible';
     withoutDemo: boolean;
-    supportsFullscreen: boolean;
+    supportsFullWindow: boolean;
   };
 
   export const initialConfig: PlaygroundConfig = {
@@ -88,7 +88,7 @@
     spacing: 'none',
     overflowX: 'auto',
     withoutDemo: false,
-    supportsFullscreen: false,
+    supportsFullWindow: false,
   };
 
   const themeableComponentsSelector = Object.entries(componentMeta)
