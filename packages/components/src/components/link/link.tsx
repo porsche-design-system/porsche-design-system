@@ -30,7 +30,7 @@ const propTypes: PropTypes<typeof Link> = {
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   href: AllowedTypes.string,
-  theme: AllowedTypes.breakpoint<Theme>(THEMES),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,

@@ -68,6 +68,11 @@ export const getLinkButtonStyles = (
   theme: Theme
 ): Styles => {
   const isPrimary = variant === 'primary';
+  const { textColor, borderColor, borderColorHover, backgroundColor, backgroundColorHover } = getVariantColors(
+    variant,
+    theme
+  );
+  const { focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
   return {
@@ -93,17 +98,11 @@ export const getLinkButtonStyles = (
       textAlign: 'left',
       appearance: 'none',
       textDecoration: 'none',
-      ...buildResponsiveStyles(theme, (theme: Theme) => ({
-        border: `2px solid ${getVariantColors(variant, theme).borderColor}`,
-      })),
+      border: `2px solid ${borderColor}`,
       borderRadius: borderRadiusSmall,
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
-      ...buildResponsiveStyles(theme, (theme: Theme) => ({
-        backgroundColor: getVariantColors(variant, theme).backgroundColor,
-      })),
-      ...buildResponsiveStyles(theme, (theme: Theme) => ({
-        color: getVariantColors(variant, theme).textColor,
-      })),
+      backgroundColor,
+      color: textColor,
       ...textSmallStyle,
       transition: ['background-color', 'border-color', 'color'].map(getTransition).join(),
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
@@ -114,9 +113,7 @@ export const getLinkButtonStyles = (
         '&:focus::before': {
           content: '""',
           position: 'fixed',
-          ...buildResponsiveStyles(theme, (theme: Theme) => ({
-            border: `${borderWidthBase} solid ${getThemedColors(theme).focusColor}`,
-          })),
+          border: `${borderWidthBase} solid ${focusColor}`,
           borderRadius: borderRadiusMedium,
           ...getInsetJssStyle(-6),
         },
@@ -127,14 +124,8 @@ export const getLinkButtonStyles = (
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover': {
-            ...buildResponsiveStyles(theme, (theme: Theme) => ({
-              backgroundColor: getVariantColors(variant, theme).backgroundColorHover,
-            })),
-            ...buildResponsiveStyles(theme, (theme: Theme) => ({
-              borderColor: isHighContrastMode
-                ? getThemedColors(theme).focusColor
-                : getVariantColors(variant, theme).borderColorHover,
-            })),
+            backgroundColor: backgroundColorHover,
+            borderColor: isHighContrastMode ? focusColor : borderColorHover,
             ...(!isPrimary && frostedGlassStyle),
           },
         })),

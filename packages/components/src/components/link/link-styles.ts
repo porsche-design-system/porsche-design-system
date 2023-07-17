@@ -1,4 +1,4 @@
-import { buildResponsiveStyles, getCss, isHighContrastMode, mergeDeep } from '../../utils';
+import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant, Theme } from '../../types';
 import {
@@ -18,6 +18,7 @@ export const getComponentCss = (
   hasSlottedAnchor: boolean,
   theme: Theme
 ): string => {
+  const { focusColor } = getThemedColors(theme);
   const { linkColor } = getHighContrastColors();
 
   return getCss(
@@ -51,9 +52,7 @@ export const getComponentCss = (
               border: 0,
             },
             '&(a:focus)::before': {
-              ...buildResponsiveStyles(theme, (theme: Theme) => ({
-                border: `${borderWidthBase} solid ${getThemedColors(theme).focusColor}`,
-              })),
+              border: `${borderWidthBase} solid ${focusColor}`,
             },
             '&(a:focus:not(:focus-visible))::before': {
               border: 0,
