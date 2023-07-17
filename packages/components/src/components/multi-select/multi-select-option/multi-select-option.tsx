@@ -33,6 +33,7 @@ export class MultiSelectOption {
   /** Disables the option. */
   @Prop() public disabled = false;
 
+  // TODO: Use internal event
   /** Emitted when the option state changes. */
   @Event({ bubbles: true }) public update: EventEmitter<MultiSelectOptionUpdateEvent>;
 
@@ -42,6 +43,7 @@ export class MultiSelectOption {
   public connectedCallback(): void {
     // TODO: Validation
     // TODO: hidden prop?
+    // TODO: use Prop watchers
     observeChildren(this.host, () => {
       this.update.emit({ optionElement: this.host as HTMLPMultiSelectOptionElement });
     });
@@ -73,9 +75,7 @@ export class MultiSelectOption {
         >
           <PrefixedTagNames.pCheckboxWrapper>
             <input type="checkbox" checked={this.selected} disabled={this.disabled} />
-            <span slot="label">
-              <slot />
-            </span>
+            <slot slot="label" />
           </PrefixedTagNames.pCheckboxWrapper>
         </li>
       </Host>

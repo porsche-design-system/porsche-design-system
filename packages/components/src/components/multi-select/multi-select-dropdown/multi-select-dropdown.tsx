@@ -24,6 +24,7 @@ export class MultiSelectDropdown {
   // TODO: Validation children must be options
 
   public componentWillLoad(): void {
+    // TODO: registered only once?
     document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
@@ -49,6 +50,8 @@ export class MultiSelectDropdown {
   }
 
   private onClickOutside = (e: MouseEvent): void => {
+    // TODO: Put in multi-select
+    // TODO: reuse as fn select-wrapper
     if (this.isOpen && !e.composedPath().includes(this.host && this.host.parentElement)) {
       this.openChange.emit({ isOpen: false });
     }

@@ -140,6 +140,7 @@ export class MultiSelect {
 
   private defineMultiSelectOptions(): void {
     // TODO: Validation
+    // TODO: Prefix
     this.multiSelectOptions = getDirectChildHTMLElements(this.host, 'p-multi-select-option');
   }
 
