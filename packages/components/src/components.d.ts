@@ -39,7 +39,7 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { MultiSelectDropdownDirection, MultiSelectDropdownOpenChangeEvent } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
+import { MultiSelectDropdownDirection } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
 import { MultiSelectOptionUpdateEvent } from "./components/multi-select/multi-select-option/multi-select-option-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
@@ -98,7 +98,7 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-export { MultiSelectDropdownDirection, MultiSelectDropdownOpenChangeEvent } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
+export { MultiSelectDropdownDirection } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
 export { MultiSelectOptionUpdateEvent } from "./components/multi-select/multi-select-option/multi-select-option-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
@@ -1740,10 +1740,6 @@ export interface PModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPModalElement;
 }
-export interface PMultiSelectDropdownCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPMultiSelectDropdownElement;
-}
 export interface PMultiSelectOptionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPMultiSelectOptionElement;
@@ -3308,10 +3304,6 @@ declare namespace LocalJSX {
     interface PMultiSelectDropdown {
         "direction"?: MultiSelectDropdownDirection;
         "isOpen"?: boolean;
-        /**
-          * Emitted when the open state should change.
-         */
-        "onOpenChange"?: (event: PMultiSelectDropdownCustomEvent<MultiSelectDropdownOpenChangeEvent>) => void;
         "theme"?: Theme;
     }
     interface PMultiSelectOption {
