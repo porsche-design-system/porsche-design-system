@@ -20,6 +20,8 @@ import {
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
+import { SELECT_DROPDOWN_DIRECTIONS, SelectDropdownDirection } from '../../../utils/select/dropdown';
+import { determineDirection } from '../../select-wrapper/select-wrapper-dropdown/select-wrapper-dropdown-utils';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -28,6 +30,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   disabled: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
 };
 
 @Component({
@@ -54,6 +57,9 @@ export class MultiSelect {
 
   /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  /** Changes the direction to which the dropdown list appears. */
+  @Prop() public dropdownDirection?: SelectDropdownDirection = 'auto';
 
   @State() private selectedString = '';
   @State() private isOpen = false;
@@ -89,7 +95,16 @@ export class MultiSelect {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.disabled, this.hideLabel, 'none', this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.dropdownDirection === 'auto' ? determineDirection(this.host) : this.dropdownDirection,
+      this.isOpen,
+      this.disabled,
+      this.hideLabel,
+      'none',
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

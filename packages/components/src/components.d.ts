@@ -39,6 +39,7 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+import { SelectDropdownDirection } from "./utils/select/dropdown";
 import { MultiSelectDropdownDirection } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
 import { MultiSelectOptionUpdateEvent } from "./components/multi-select/multi-select-option/multi-select-option-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
@@ -98,6 +99,7 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+export { SelectDropdownDirection } from "./utils/select/dropdown";
 export { MultiSelectDropdownDirection } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
 export { MultiSelectOptionUpdateEvent } from "./components/multi-select/multi-select-option/multi-select-option-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
@@ -1090,6 +1092,10 @@ export namespace Components {
           * This Boolean attribute indicates that the user cannot interact with the control. If this attribute is not specified, the control inherits its setting from the containing element, for example <fieldset>; if there is no containing element with the disabled attribute set, then the control is enabled.
          */
         "disabled"?: boolean;
+        /**
+          * Changes the direction to which the dropdown list appears.
+         */
+        "dropdownDirection"?: SelectDropdownDirection;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -3280,6 +3286,10 @@ declare namespace LocalJSX {
           * This Boolean attribute indicates that the user cannot interact with the control. If this attribute is not specified, the control inherits its setting from the containing element, for example <fieldset>; if there is no containing element with the disabled attribute set, then the control is enabled.
          */
         "disabled"?: boolean;
+        /**
+          * Changes the direction to which the dropdown list appears.
+         */
+        "dropdownDirection"?: SelectDropdownDirection;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
