@@ -5,7 +5,7 @@ import type {
   PropTypes,
   SelectedAriaAttributes,
 } from '../../types';
-import type { ITileProps, TileBackground } from '../../utils';
+import type { ITileProps } from '../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -23,6 +23,7 @@ import type {
   ButtonTileAlign,
   ButtonTileAriaAttribute,
   ButtonTileAspectRatio,
+  ButtonTileBackground,
   ButtonTileIcon,
   ButtonTileSize,
   ButtonTileType,
@@ -57,7 +58,7 @@ export class ButtonTile implements ITileProps {
   @Prop() public weight?: BreakpointCustomizable<ButtonTileWeight> = 'semi-bold';
 
   /** Adapts the description and button theme when used on light background image. */
-  @Prop() public background?: TileBackground = 'dark';
+  @Prop() public background?: ButtonTileBackground = 'dark';
 
   /** Aspect ratio of the button-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio> = '4:3';

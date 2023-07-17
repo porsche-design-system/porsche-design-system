@@ -13,6 +13,7 @@ export type LinkTileTarget = LinkTarget;
 export type LinkTileAriaAttribute = LinkAriaAttribute;
 export type LinkTileAspectRatio = TileAspectRatio;
 export type LinkTileSize = TileSize;
+export type LinkTileBackground = TileBackground;
 export type LinkTileAlign = TileAlign;
 export const LINK_TILE_WEIGHTS = [...TILE_WEIGHTS, 'semibold'] as const;
 export type LinkTileWeight = (typeof LINK_TILE_WEIGHTS)[number];

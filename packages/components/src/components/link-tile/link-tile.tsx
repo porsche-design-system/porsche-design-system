@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
-import type { ITileProps, TileBackground } from '../../utils';
+import type { ITileProps, LinkTileBackground } from '../../utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -48,7 +48,7 @@ export class LinkTile implements ITileProps {
   @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
 
   /** Adapts the description and link theme when used on light background image. */
-  @Prop() public background?: TileBackground = 'dark';
+  @Prop() public background?: LinkTileBackground = 'dark';
 
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
