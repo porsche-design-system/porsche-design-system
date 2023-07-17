@@ -25,7 +25,7 @@ export const getButtonLinkTileStyles = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
   size: BreakpointCustomizable<TileSize>,
   weight: BreakpointCustomizable<TileWeight | LinkTileWeight>, // to get deprecated semibold typed
-  background: BreakpointCustomizable<TileBackground>,
+  background: TileBackground,
   align: TileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
@@ -46,11 +46,9 @@ export const getButtonLinkTileStyles = (
               fontWeight: getFontWeight(w === 'semibold' ? 'semi-bold' : w), // mapping of the deprecated weight semibold
             }))
           ),
-          ...buildResponsiveStyles(background, (b: Theme) =>
-            b === 'dark'
-              ? { color: getThemedColors('dark').primaryColor }
-              : { color: getThemedColors('light').primaryColor }
-          ),
+          ...buildResponsiveStyles(background, (b: Theme) => ({
+            color: getThemedColors(b === 'dark' ? 'dark' : 'light').primaryColor,
+          })),
         },
       },
       content: {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "4:3", size: "default", weight: "semi-bold", align: dark, isCompact: "bottom", hasGradient: false and isDisabled: true 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "4:3", size: "default", weight: "semi-bold", background: "dark", align: bottom, isCompact: false, hasGradient: true and isDisabled: false 1`] = `
 ":host {
   display: block;
 }
@@ -81,7 +81,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "9:16", size: "default", weight: "semi-bold", align: dark, isCompact: "bottom", hasGradient: false and isDisabled: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "9:16", size: "default", weight: "semi-bold", background: "dark", align: bottom, isCompact: false, hasGradient: false and isDisabled: false 1`] = `
 ":host {
   display: block;
 }
@@ -161,7 +161,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "16:9", size: "inherit", weight: "regular", align: light, isCompact: "top", hasGradient: true and isDisabled: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "16:9", size: "inherit", weight: "regular", background: "light", align: top, isCompact: true, hasGradient: false and isDisabled: true 1`] = `
 ":host {
   display: block;
 }
@@ -236,7 +236,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, size: {"base":"inherit","xs":"default","s":"inherit","m":"default","l":"inherit","xl":"default"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, align: light, isCompact: "top", hasGradient: { base: true, xs: false, s: true, m: false, l: true, xl: false } and isDisabled: true 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, size: {"base":"inherit","xs":"default","s":"inherit","m":"default","l":"inherit","xl":"default"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, background: "light", align: top, isCompact: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false}, hasGradient: true and isDisabled: false 1`] = `
 ":host {
   display: block;
 }
@@ -436,7 +436,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabledOrLoading: true, aspectRatio: "1:1", size: "inherit", weight: "regular", align: light, isCompact: "bottom", hasGradient: false and isDisabled: true 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: true, aspectRatio: "1:1", size: "inherit", weight: "regular", background: "light", align: bottom, isCompact: false, hasGradient: true and isDisabled: true 1`] = `
 ":host {
   display: block;
 }
@@ -510,7 +510,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabledOrLoading: true, aspectRatio: "3:4", size: "default", weight: "semi-bold", align: dark, isCompact: "top", hasGradient: false and isDisabled: true 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: true, aspectRatio: "3:4", size: "default", weight: "semi-bold", background: "dark", align: top, isCompact: false, hasGradient: true and isDisabled: false 1`] = `
 ":host {
   display: block;
 }

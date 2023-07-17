@@ -17,7 +17,7 @@ describe('getComponentCss()', () => {
       true,
     ],
   ])(
-    'should return correct css for aspectRatio: %j, size: %j, weight: %j, align: %s, isCompact: %j and hasGradient: %s',
+    'should return correct css for aspectRatio: %j, size: %j, weight: %j, background: %j, align: %s, isCompact: %j and hasGradient: %s',
     (...args) => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }
