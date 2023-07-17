@@ -1,7 +1,11 @@
-export const nativeSelect = document.createElement('select');
-nativeSelect.multiple = true;
-
-export const createNativeSelect = (host: HTMLElement, name: string, disabled: boolean, required: boolean): void => {
+export const syncNativeSelect = (
+  nativeSelect: HTMLSelectElement,
+  host: HTMLElement,
+  name: string,
+  disabled: boolean,
+  required: boolean
+): void => {
+  nativeSelect.multiple = true;
   nativeSelect.name = name;
   nativeSelect.disabled = disabled;
   nativeSelect.required = required;
@@ -12,7 +16,10 @@ export const createNativeSelect = (host: HTMLElement, name: string, disabled: bo
 };
 
 // TODO: only update options instead of recreate
-export const updateNativeSelectOptions = (multiSelectOptions: HTMLPMultiSelectOptionElement[]): void => {
+export const updateNativeSelectOptions = (
+  nativeSelect: HTMLSelectElement,
+  multiSelectOptions: HTMLPMultiSelectOptionElement[]
+): void => {
   nativeSelect.innerHTML = '';
   multiSelectOptions.forEach((option) => {
     const selectOption = document.createElement('option');

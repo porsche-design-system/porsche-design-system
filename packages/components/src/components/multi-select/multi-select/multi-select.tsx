@@ -1,8 +1,7 @@
 import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop, State } from '@stencil/core';
 import { MultiSelectOptionUpdateEvent } from '../multi-select-option/multi-select-option-utils';
 import {
-  createNativeSelect,
-  nativeSelect,
+  syncNativeSelect,
   updateMultiSelectOptions,
   updateNativeOption,
   updateNativeSelectOptions,
@@ -13,10 +12,10 @@ import {
   getDirectChildHTMLElements,
   getPrefixedTagNames,
   hasLabel,
+  isClickOutside,
   observeAttributes,
   THEMES,
   validateProps,
-  isClickOutside,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { Required } from '../../common/required/required';
@@ -59,24 +58,24 @@ export class MultiSelect {
   @State() private selectedString = '';
   @State() private isOpen = false;
 
+  private nativeSelect: HTMLSelectElement = document.createElement('select');
   private multiSelectOptions: HTMLPMultiSelectOptionElement[];
 
   @Listen('update')
   public updateOptionHandler(event: CustomEvent<MultiSelectOptionUpdateEvent>): void {
     const index = this.multiSelectOptions.findIndex((el) => el === event.detail.optionElement);
-    const nativeOption = nativeSelect.children[index] as HTMLOptionElement;
+    const nativeOption = this.nativeSelect.children[index] as HTMLOptionElement;
     updateNativeOption(nativeOption, event.detail.optionElement);
     this.updateSelectedString();
   }
 
   public connectedCallback(): void {
     this.observeAttributes(); // on every reconnect
-    createNativeSelect(this.host, this.name, this.disabled, this.required);
+    syncNativeSelect(this.nativeSelect, this.host, this.name, this.disabled, this.required);
   }
 
   public componentWillLoad(): void {
     this.observeAttributes(); // on every reconnect
-    // TODO: registered only once?
     document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
@@ -135,7 +134,7 @@ export class MultiSelect {
 
   private updateOptions = (): void => {
     this.defineMultiSelectOptions();
-    updateNativeSelectOptions(this.multiSelectOptions);
+    updateNativeSelectOptions(this.nativeSelect, this.multiSelectOptions);
     this.updateSelectedString();
   };
 
@@ -150,7 +149,7 @@ export class MultiSelect {
   };
 
   private updateSelectedString = (): void => {
-    this.selectedString = Array.from(nativeSelect.selectedOptions)
+    this.selectedString = Array.from(this.nativeSelect.selectedOptions)
       .map((option) => option.textContent)
       .join(', ');
   };
@@ -164,7 +163,7 @@ export class MultiSelect {
   };
 
   private observeAttributes(): void {
-    observeAttributes(nativeSelect, ['disabled', 'required'], () => forceUpdate(this.host));
+    observeAttributes(this.nativeSelect, ['disabled', 'required'], () => forceUpdate(this.host));
   }
 
   private onClickOutside = (e: MouseEvent): void => {
