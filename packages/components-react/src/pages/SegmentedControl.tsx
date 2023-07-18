@@ -86,11 +86,19 @@ export const SegmentedControlPage = (): JSX.Element => {
         <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
       </PSegmentedControl>
 
+      <PSegmentedControl className="playground light" title="should render segmented-control with columns=5" columns={5}>
+        <PSegmentedControlItem value="s">S</PSegmentedControlItem>
+        <PSegmentedControlItem value="m">M</PSegmentedControlItem>
+        <PSegmentedControlItem value="l">L</PSegmentedControlItem>
+        <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
+      </PSegmentedControl>
+
       <PSegmentedControl
         className="playground light"
         title="should render segmented-control with responsive columns"
-        columns={{ base: 'auto', s: 1, m: 2, l: 3, xl: 4 }}
+        columns={{ base: 'auto', xs: 1, s: 2, m: 3, l: 4, xl: 5 }}
       >
+        <PSegmentedControlItem value="xs">XS</PSegmentedControlItem>
         <PSegmentedControlItem value="s">S</PSegmentedControlItem>
         <PSegmentedControlItem value="m">M</PSegmentedControlItem>
         <PSegmentedControlItem value="l">L</PSegmentedControlItem>
