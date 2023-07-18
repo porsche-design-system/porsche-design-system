@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for aspectRatio: "1:1", size: "inherit", weight: "regular", align: bottom, isCompact: false and hasGradient: true 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: "1:1", size: "inherit", weight: "regular", background: light, align: bottom, isCompact: false and hasGradient: true 1`] = `
 ":host {
   display: block;
 }
@@ -27,6 +27,7 @@ p {
   hyphens: auto;
   font-size: inherit;
   font-weight: 400;
+  color: #010205;
 }
 .root {
   position: relative;
@@ -54,7 +55,6 @@ p {
   border-radius: 12px;
   bottom: 0;
   padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
   grid-template-rows: auto auto;
   grid-template-columns: auto;
 }
@@ -86,7 +86,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: "3:4", size: "default", weight: "semi-bold", align: top, isCompact: false and hasGradient: true 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: "3:4", size: "default", weight: "semi-bold", background: dark, align: top, isCompact: false and hasGradient: true 1`] = `
 ":host {
   display: block;
 }
@@ -113,6 +113,7 @@ p {
   hyphens: auto;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   font-weight: 600;
+  color: #FBFCFF;
 }
 .root {
   position: relative;
@@ -172,7 +173,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: "4:3", size: "default", weight: "semi-bold", align: bottom, isCompact: false and hasGradient: true 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: "4:3", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false and hasGradient: true 1`] = `
 ":host {
   display: block;
 }
@@ -199,6 +200,7 @@ p {
   hyphens: auto;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   font-weight: 600;
+  color: #FBFCFF;
 }
 .root {
   position: relative;
@@ -258,7 +260,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: "9:16", size: "default", weight: "semi-bold", align: bottom, isCompact: false and hasGradient: false 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: "9:16", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false and hasGradient: false 1`] = `
 ":host {
   display: block;
 }
@@ -285,6 +287,7 @@ p {
   hyphens: auto;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   font-weight: 600;
+  color: #FBFCFF;
 }
 .root {
   position: relative;
@@ -343,7 +346,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: "16:9", size: "inherit", weight: "regular", align: top, isCompact: true and hasGradient: false 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: "16:9", size: "inherit", weight: "regular", background: light, align: top, isCompact: true and hasGradient: false 1`] = `
 ":host {
   display: block;
 }
@@ -370,6 +373,7 @@ p {
   hyphens: auto;
   font-size: inherit;
   font-weight: 400;
+  color: #010205;
 }
 .root {
   position: relative;
@@ -429,7 +433,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, size: {"base":"inherit","xs":"default","s":"inherit","m":"default","l":"inherit","xl":"default"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, align: top, isCompact: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false} and hasGradient: true 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, size: {"base":"inherit","xs":"default","s":"inherit","m":"default","l":"inherit","xl":"default"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, background: light, align: top, isCompact: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false} and hasGradient: true 1`] = `
 ":host {
   display: block;
 }
@@ -456,6 +460,7 @@ p {
   hyphens: auto;
   font-size: inherit;
   font-weight: 600;
+  color: #010205;
 }
 @media(min-width:480px) {
   p {
@@ -518,7 +523,6 @@ p {
   border-radius: 12px;
   top: 0;
   padding: clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px);
-  background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
   align-items: center;
   grid-template-columns: auto 24px;
   grid-template-rows: auto;
@@ -542,7 +546,6 @@ p {
     padding-top: 75%;
   }
   .content {
-    background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
     grid-template-rows: auto auto;
     grid-template-columns: auto;
   }
@@ -559,7 +562,6 @@ p {
     padding-top: 133.33%;
   }
   .content {
-    background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
     align-items: center;
     grid-template-columns: auto 24px;
     grid-template-rows: auto;
@@ -578,7 +580,6 @@ p {
     padding-top: 56.25%;
   }
   .content {
-    background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
     grid-template-rows: auto auto;
     grid-template-columns: auto;
   }
@@ -595,7 +596,6 @@ p {
     padding-top: 177.75%;
   }
   .content {
-    background: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
     align-items: center;
     grid-template-columns: auto 24px;
     grid-template-rows: auto;
@@ -614,7 +614,6 @@ p {
     padding-top: 100%;
   }
   .content {
-    background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
     grid-template-rows: auto auto;
     grid-template-columns: auto;
   }
