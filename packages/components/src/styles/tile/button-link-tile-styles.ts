@@ -11,11 +11,10 @@ import {
   spacingFluidMedium,
   textLargeStyle,
 } from '@porsche-design-system/utilities-v2';
-import { buildResponsiveStyles, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, mergeDeep, isThemeDark } from '../../utils';
 import { getFontWeight } from '../font-weight-styles';
 import { getTileBaseStyles } from './tile-base-styles';
 import { getThemedColors } from '../../styles';
-import { isThemeDark } from '../../utils/theme';
 
 const sizeMap: Record<TileSize, { fontSize: string }> = {
   inherit: { fontSize: 'inherit' },
@@ -48,7 +47,7 @@ export const getButtonLinkTileStyles = (
             }))
           ),
           ...buildResponsiveStyles(background, (b: Theme) => ({
-            color: getThemedColors(isThemeDark(b) ? 'dark' : 'light').primaryColor,
+            color: getThemedColors(b).primaryColor,
           })),
         },
       },
