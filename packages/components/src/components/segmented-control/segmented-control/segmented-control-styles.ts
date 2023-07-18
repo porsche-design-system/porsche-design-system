@@ -14,7 +14,7 @@ export const getComponentCss = (maxItemWidth: number, columns: BreakpointCustomi
   const gridGap = '6px';
   const getGapCount = (col: number): string => `calc(${col} - 1)`;
   const getTotalGapWidth = (col: number): string => `calc(${getGapCount(col)} * ${gridGap})`;
-  const gezGridItemMaxWidth = (col: number): string => `calc((100% - ${getTotalGapWidth(col)}) / ${columns})`;
+  const gezGridItemMaxWidth = (col: number): string => `calc((100% - ${getTotalGapWidth(col)}) / ${col})`;
 
   return getCss({
     '@global': {
