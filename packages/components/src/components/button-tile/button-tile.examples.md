@@ -69,6 +69,16 @@ underlying image provides enough contrast, you can choose to disable the gradien
   <SelectOptions v-model="gradient" :values="gradients" name="gradient"></SelectOptions>
 </Playground>
 
+## Background
+
+The `background` property changes the theme of the description and button. If the underlying image is light and provides
+enough contrast, you can choose to set `background="light"`. The component is not provided with a bright gradient, so if
+the property is set to `background="light"`, the gradient is disabled.
+
+<Playground :markup="backgroundMarkup" :config="config">
+  <SelectOptions v-model="background" :values="backgrounds" name="background"></SelectOptions>
+</Playground>
+
 ## Compact
 
 The `label` property stays mandatory when using `compact`, for **accessibility** reasons.
@@ -90,7 +100,7 @@ It is possible to align the description on top of the component.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { TILE_ALIGNS, TILE_ASPECT_RATIOS, TILE_SIZES, TILE_WEIGHTS } from '../../utils'; 
+import { THEMES, TILE_ALIGNS, TILE_ASPECT_RATIOS, TILE_SIZES, TILE_WEIGHTS } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
@@ -169,6 +179,25 @@ export default class Code extends Vue {
   gradient="${this.gradient}"
 >
   <img src="${require('@/assets/image-grid-split.png')}" ${this.imgAttributes} />
+</p-button-tile>`};
+
+  background = 'light';
+  backgrounds = [...THEMES];
+  get backgroundMarkup() { 
+  return `<p-button-tile
+  label="Some label"
+  description="Some Description"
+  background="${this.background}"
+>
+  <img src="${require('@/assets/image-grid-split-light.png')}" ${this.imgAttributes} />
+</p-button-tile>
+<p-button-tile
+  label="Some label"
+  description="Some Description"
+  compact="true"
+  background="${this.background}"
+>
+  <img src="${require('@/assets/image-grid-split-light.png')}" ${this.imgAttributes} />
 </p-button-tile>`};
 
   compact = false;

@@ -14,6 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `background` property to `Button Tile` and `Link Tile` component to adapt the description and link/button theme when
+  used on light background image ([#2669](https://github.com/porsche-design-system/porsche-design-system/pull/2669))
+- Breakpoint customizable property `columns` to `Segmented Control` to control the width of items
+  ([#2652](https://github.com/porsche-design-system/porsche-design-system/pull/2652))
+
+
 ### [3.4.0] - 2023-07-14
 
 ### [3.4.0-rc.0] - 2023-07-13
@@ -22,8 +30,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - React: `'use client';` directive is applied on all components for main and `ssr` sub-package
   ([#2654](https://github.com/porsche-design-system/porsche-design-system/pull/2654))
-- Breakpoint customizable property `columns` to `Segmented Control` to control the width of items
-  ([#2652](https://github.com/porsche-design-system/porsche-design-system/pull/2652))
 
 #### Fixed
 

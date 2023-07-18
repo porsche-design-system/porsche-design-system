@@ -14,6 +14,7 @@ import type {
   LinkTileAlign,
   LinkTileAriaAttribute,
   LinkTileAspectRatio,
+  LinkTileBackground,
   LinkTileSize,
   LinkTileTarget,
   LinkTileWeight,
@@ -46,6 +47,9 @@ export class LinkTile implements ITileProps {
 
   /** Font weight of the description. */
   @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
+
+  /** Adapts the description and link theme when used on light background image. */
+  @Prop() public background?: LinkTileBackground = 'dark';
 
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
@@ -100,6 +104,7 @@ export class LinkTile implements ITileProps {
       this.aspectRatio,
       this.size,
       this.weight, // potentially breakpoint customizable, so we can't easily access the deprecation map
+      this.background,
       this.align,
       this.compact,
       this.gradient
@@ -108,7 +113,7 @@ export class LinkTile implements ITileProps {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const linkProps = {
-      theme: 'dark',
+      theme: this.background,
       variant: 'secondary',
       aria: this.aria,
     };
