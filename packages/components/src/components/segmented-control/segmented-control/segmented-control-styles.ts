@@ -12,9 +12,9 @@ export const getComponentCss = (maxItemWidth: number, columns: BreakpointCustomi
     maxItemWidth;
 
   const gridGap = '6px';
-  const getGapCount = (columns: number): string => `calc(${columns} - 1)`;
-  const getTotalGapWidth = (columns: number): string => `calc(${getGapCount(columns)} * ${gridGap})`;
-  const gezGridItemMaxWidth = (columns: number): string => `calc((100% - ${getTotalGapWidth(columns)}) / ${columns})`;
+  const getGapCount = (col: number): string => `calc(${col} - 1)`;
+  const getTotalGapWidth = (col: number): string => `calc(${getGapCount(col)} * ${gridGap})`;
+  const gezGridItemMaxWidth = (col: number): string => `calc((100% - ${getTotalGapWidth(col)}) / ${columns})`;
 
   return getCss({
     '@global': {
