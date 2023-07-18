@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import type { TileAlign, TileAspectRatio, TileSize, TileWeight } from '../../utils';
+import type { Theme, TileAlign, TileAspectRatio, TileBackground, TileSize, TileWeight } from '../../utils';
 import type { LinkTileWeight } from '../../components/link-tile/link-tile-utils';
 import type { BreakpointCustomizable } from '../../types';
 import { pxToRemWithUnit } from '../';
@@ -11,9 +11,10 @@ import {
   spacingFluidMedium,
   textLargeStyle,
 } from '@porsche-design-system/utilities-v2';
-import { buildResponsiveStyles, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, mergeDeep, isThemeDark } from '../../utils';
 import { getFontWeight } from '../font-weight-styles';
 import { getTileBaseStyles } from './tile-base-styles';
+import { getThemedColors } from '../../styles';
 
 const sizeMap: Record<TileSize, { fontSize: string }> = {
   inherit: { fontSize: 'inherit' },
@@ -24,6 +25,7 @@ export const getButtonLinkTileStyles = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
   size: BreakpointCustomizable<TileSize>,
   weight: BreakpointCustomizable<TileWeight | LinkTileWeight>, // to get deprecated semibold typed
+  background: TileBackground,
   align: TileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
@@ -44,6 +46,9 @@ export const getButtonLinkTileStyles = (
               fontWeight: getFontWeight(w === 'semibold' ? 'semi-bold' : w), // mapping of the deprecated weight semibold
             }))
           ),
+          ...buildResponsiveStyles(background, (b: Theme) => ({
+            color: getThemedColors(b).primaryColor,
+          })),
         },
       },
       content: {
@@ -54,6 +59,7 @@ export const getButtonLinkTileStyles = (
           : `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`,
         ...mergeDeep(
           hasGradient &&
+            isThemeDark(background) &&
             buildResponsiveStyles(compact, (isCompact: boolean) =>
               isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle
             ),

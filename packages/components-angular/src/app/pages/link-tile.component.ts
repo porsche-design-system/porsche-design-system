@@ -75,6 +75,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-tile>
     </div>
 
+    <div class="playground light grid" title="should render background='light' on light background">
+      <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Background light'" [background]="'light'">
+        <img
+          [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
+          [width]="50"
+          [height]="50"
+          [alt]="'Some alt text'"
+        />
+      </p-link-tile>
+    </div>
+
     <div class="playground light grid" title="should render different aspect ratios on light background">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Aspect ratio 16:9'" aspect-ratio="16:9">
         <img
