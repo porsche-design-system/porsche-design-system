@@ -19,6 +19,9 @@ import { getThemedFormStateColors } from '../../../styles/form-state-color-style
 import { FormState } from '../../../utils/form/form-state';
 import { getLabelStyles } from '../../../styles/form-styles';
 import { SelectDropdownDirectionInternal } from '../../../utils/select/dropdown';
+import { getPlaceholderStyles } from '../../../styles/placeholder';
+
+const inputYPadding = '13px';
 
 export const getComponentCss = (
   direction: SelectDropdownDirectionInternal,
@@ -39,7 +42,7 @@ export const getComponentCss = (
         position: 'relative',
         ...hostHiddenStyles,
       },
-      ...getInputJSSStyles(),
+      ...getInputJSSStyles(isDisabled, theme),
     }),
     'input-container': {
       display: 'flex',
@@ -62,7 +65,7 @@ export const getComponentCss = (
     },
     ...getLabelStyles('select', isDisabled, hideLabel, state, theme),
     icon: {
-      padding: '13px 15px',
+      padding: `${inputYPadding} 15px`, // Horizontal padding spacingStaticMedium - 1px for visual balance
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
       transition: getTransition('transform'),
       cursor: isDisabled ? 'not-allowed' : 'pointer',
@@ -73,17 +76,23 @@ export const getComponentCss = (
   });
 };
 
-const getInputJSSStyles = (): Styles => {
+const getInputJSSStyles = (isDisabled: boolean, theme: Theme): Styles => {
+  const { primaryColor, disabledColor } = getThemedColors(theme);
+
   return {
     input: {
       flex: 1,
-      padding: `13px ${spacingStaticMedium}`,
+      padding: `${inputYPadding} ${spacingStaticMedium}`,
       boxSizing: 'border-box',
       border: '0', // done via container
       outline: '0',
       appearance: 'none',
       background: 'transparent',
       ...textSmallStyle,
+      '&:not(:focus)': {
+        ...getPlaceholderStyles({ color: primaryColor }),
+      },
+      ...(isDisabled && getPlaceholderStyles({ color: disabledColor })),
     },
   };
 };
