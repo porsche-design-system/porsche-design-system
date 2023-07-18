@@ -78,7 +78,7 @@ export const getBreakpointCustomizableStructure = <T>(
   allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ): string => {
   if (allowedValues !== 'boolean' && allowedValues !== 'number') {
-    allowedValues = formatArrayOutput(allowedValues.map((val) => (typeof val === 'function' ? val.name : val)))
+    allowedValues = formatArrayOutput(allowedValues)
       .replace(/\[/g, '(') // starting inline type literal array
       .replace(/]/g, ')[]') // ending inline type literal array
       .replace(/,/g, ' |') as any; // replace commas with a pipe
@@ -110,19 +110,12 @@ export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: Validat
 };
 
 export const isBreakpointCustomizableValueInvalid = <T>(
-  name: string,
   value: any,
-  allowedValuesOrValidatorFunctions: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
+  allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ): boolean => {
-  if (allowedValuesOrValidatorFunctions === 'boolean' || allowedValuesOrValidatorFunctions === 'number') {
-    return isValueNotOfType(value, allowedValuesOrValidatorFunctions);
-  } else if (!allowedValuesOrValidatorFunctions.includes(value as T)) {
-    return !allowedValuesOrValidatorFunctions.some((func) =>
-      typeof func === 'function' ? (func as unknown as ValidatorFunction)(name, value) === undefined : false
-    );
-  } else {
-    return false;
-  }
+  return allowedValues === 'boolean' || allowedValues === 'number'
+    ? isValueNotOfType(value, allowedValues)
+    : !allowedValues.includes(value as T);
 };
 
 type AllowedTypeKey = 'string' | 'number' | 'boolean';
@@ -162,7 +155,7 @@ export const AllowedTypes: {
         };
       }
     },
-  breakpoint: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
+  breakpoint: (allowedValues): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function breakpoint(propName, propValue) {
       // TODO: do parseJSON once in the component, currently it is happening multiple times in a single lifecycle
@@ -175,13 +168,11 @@ export const AllowedTypes: {
           // TODO: check for base key
           Object.keys(value).some((key) => !breakpoints.includes(key as Breakpoint)) ||
           // check actual values of keys, e.g. true, false, 'small' or 5
-          Object.values(value).some((val) =>
-            isBreakpointCustomizableValueInvalid(propName, val, allowedValuesOrValidatorFunctions)
-          )
+          Object.values(value).some((val) => isBreakpointCustomizableValueInvalid(val, allowedValues))
         ) {
           isInvalid = true;
         }
-      } else if (isBreakpointCustomizableValueInvalid(propName, value, allowedValuesOrValidatorFunctions)) {
+      } else if (isBreakpointCustomizableValueInvalid(value, allowedValues)) {
         // single flat value like true, false, 'small' or 5, not breakpoint customizable object
         isInvalid = true;
       }
@@ -190,7 +181,7 @@ export const AllowedTypes: {
         return {
           propName,
           propValue: formatObjectOutput(value),
-          propType: getBreakpointCustomizableStructure(allowedValuesOrValidatorFunctions),
+          propType: getBreakpointCustomizableStructure(allowedValues),
         };
       }
     },
