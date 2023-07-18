@@ -44,8 +44,8 @@ export class InputParser {
         /declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n\tconst ROLLUP_REPLACE_VERSION: string;\n}\n/,
         ''
       )
-      // remove global declaration of `PORSCHE_DESIGN_SYSTEM_CDN`
-      .replace(/declare global {\n\tinterface Window {\n\t\tPORSCHE_DESIGN_SYSTEM_CDN: "auto" \| "cn";\n\t}\n}/g, '')
+      // remove global declaration of `window.PORSCHE_DESIGN_SYSTEM_CDN` and `window.PORSCHE_DESIGN_SYSTEM_CDN_URL`
+      .replace(/declare global {\n\tinterface Window {[\S\s]+?}\n}/g, '')
       // remove global declaration of `CSSStyleSheet` and `ShadowRoot`
       .replace(/declare global {\n\tinterface CSSStyleSheet {\n.*\n\t}\n\tinterface ShadowRoot {\n.*\n\t}\n}/, '')
       // fix consumer typing by removing string which is only necessary for stencil
