@@ -15,9 +15,20 @@
         'example--spacing-block': mergedConfig.spacing === 'block',
         'example--spacing-block-small': mergedConfig.spacing === 'block-small',
         'example--overflow-x-visible': mergedConfig.overflowX === 'visible',
-        'example--fullscreen': isFullscreen,
+        'example--fullscreen': isFullWindow,
       }"
     >
+      <p-button
+        v-if="config.supportsFullWindow"
+        class="btn-fullscreen"
+        type="button"
+        :icon="isFullWindow ? 'zoom-in' : 'zoom-out'"
+        :aria="JSON.stringify({ 'aria-expanded': isFullWindow })"
+        @click="toggleFullscreen()"
+      >
+        {{ isFullWindow ? 'Minimize' : 'Maximize' }}
+      </p-button>
+
       <div
         v-if="isSlotSet"
         :class="{
@@ -27,7 +38,9 @@
       >
         <slot :theme="theme" />
       </div>
+
       <div v-if="markup" ref="demo" class="demo" v-html="cleanedDemoMarkup"></div>
+
       <template v-if="codeBlockMarkup">
         <CodeBlock
           :class="{ 'code-block--framework': hasFrameworkMarkup }"
@@ -47,14 +60,6 @@
           :backgroundColor="config.backgroundColor"
         ></CodeEditor>
       </template>
-
-      <p-button
-        v-if="config.supportsFullWindow"
-        class="btn-fullscreen"
-        :icon="isFullscreen ? 'zoom-in' : 'zoom-out'"
-        @click="toggleFullscreen()"
-        >{{ isFullscreen ? 'Minimize' : 'Maximize' }}</p-button
-      >
     </div>
   </div>
 </template>
@@ -110,7 +115,7 @@
     @Prop({ default: '' }) public markup!: string;
 
     getExternalDependenciesOrThrow = getExternalDependenciesOrThrow;
-    isFullscreen = false;
+    isFullWindow = false;
 
     public mounted(): void {
       if (this.config.themeable) {
@@ -129,9 +134,19 @@
     }
 
     public toggleFullscreen(): void {
-      this.isFullscreen = !this.isFullscreen;
-      document.body.style.overflow = this.isFullscreen ? 'hidden' : '';
+      this.isFullWindow = !this.isFullWindow;
+      document.body.style.overflow = this.isFullWindow ? 'hidden' : '';
+      document.body[this.isFullWindow ? 'addEventListener' : 'removeEventListener'](
+        'keydown',
+        this.onFullScreenKeyDown
+      );
     }
+
+    private onFullScreenKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        this.toggleFullscreen();
+      }
+    };
 
     public get cleanedEditorMarkup(): string {
       return this.hasFrameworkMarkup ? this.codeBlockMarkup : cleanMarkup(this.codeBlockMarkup);
@@ -317,6 +332,6 @@
     position: absolute;
     top: $pds-spacing-static-small;
     right: $pds-spacing-static-small;
-    margin: 0 !important;
+    z-index: 1; // to be above certain examples
   }
 </style>
