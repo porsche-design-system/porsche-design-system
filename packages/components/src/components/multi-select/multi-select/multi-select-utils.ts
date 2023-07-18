@@ -16,16 +16,24 @@ export const syncNativeSelect = (
 };
 
 // TODO: only update options instead of recreate
+// TODO: only create selected options
 export const updateNativeSelectOptions = (
   nativeSelect: HTMLSelectElement,
   multiSelectOptions: HTMLPMultiSelectOptionElement[]
 ): void => {
   nativeSelect.innerHTML = '';
-  multiSelectOptions.forEach((option) => {
-    const selectOption = document.createElement('option');
-    updateNativeOption(selectOption, option);
-    nativeSelect.appendChild(selectOption);
-  });
+  multiSelectOptions
+    // .filter((option) => option.selected)
+    .forEach((option) => {
+      const selectOption = createNativeOption(option);
+      nativeSelect.appendChild(selectOption);
+    });
+};
+
+export const createNativeOption = (option: HTMLPMultiSelectOptionElement): HTMLOptionElement => {
+  const selectOption = document.createElement('option');
+  updateNativeOption(selectOption, option);
+  return selectOption;
 };
 
 export const updateNativeOption = (nativeOption: HTMLOptionElement, option: HTMLPMultiSelectOptionElement): void => {
@@ -34,9 +42,15 @@ export const updateNativeOption = (nativeOption: HTMLOptionElement, option: HTML
   nativeOption.textContent = option.textContent;
 };
 
-export const updateMultiSelectOptions = (searchString: string, options: HTMLPMultiSelectOptionElement[]): void => {
-  options.forEach((option) => (option.style.display = optionIncludesSearchString(option, searchString) ? '' : 'none'));
+export const updateMultiSelectOptionsFilterState = (
+  searchString: string,
+  options: HTMLPMultiSelectOptionElement[]
+): void => {
+  options.forEach((option) => (option.hidden = !optionIncludesSearchString(option, searchString)));
 };
 
 export const optionIncludesSearchString = (option: HTMLPMultiSelectOptionElement, searchString: string): boolean =>
   option.value.toLowerCase().includes(searchString.toLowerCase());
+
+export const hasFilterResults = (options: HTMLPMultiSelectOptionElement[]): boolean =>
+  options?.some((item) => !item.hidden);

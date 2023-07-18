@@ -3,7 +3,7 @@ import { getCss } from '../../../utils';
 import { addImportantToEachRule, getThemedColors, getTransition } from '../../../styles';
 import { borderRadiusSmall, spacingStaticSmall, textSmallStyle } from '../../../../../utilities/projects/utilities';
 import { OPTION_HEIGHT } from '../../select-wrapper/select-wrapper/select-wrapper-styles';
-import { SelectDropdownDirectionInternal } from '../../../utils/select/dropdown';
+import { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 
 export const getComponentCss = (isOpen: boolean, direction: SelectDropdownDirectionInternal, theme: Theme): string => {
   const isDirectionDown = direction === 'down';

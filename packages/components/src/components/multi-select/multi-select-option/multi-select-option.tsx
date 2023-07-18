@@ -1,9 +1,8 @@
-import { Component, Element, Event, EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  observeChildren,
   unobserveChildren,
   validateProps,
 } from '../../../utils';
@@ -33,24 +32,22 @@ export class MultiSelectOption {
   /** Disables the option. */
   @Prop() public disabled = false;
 
-  // TODO: Use internal event
-  /** Emitted when the option state changes. */
-  @Event({ bubbles: true }) public update: EventEmitter<MultiSelectOptionUpdateEvent>;
-
   /** Adapts the select color depending on the theme. */
   private theme?: Theme = 'light';
 
-  public connectedCallback(): void {
-    // TODO: Validation
-    // TODO: hidden prop?
-    // TODO: use Prop watchers
-    observeChildren(this.host, () => {
-      this.update.emit({ optionElement: this.host as HTMLPMultiSelectOptionElement });
-    });
-  }
+  /** Hides options which are not matching the searchString **/
+  private hidden = false;
+
+  // TODO: Validation
+  // TODO: hidden prop?
 
   public componentDidUpdate(): void {
-    this.update.emit({ optionElement: this.host as HTMLPMultiSelectOptionElement });
+    this.host.dispatchEvent(
+      new CustomEvent<MultiSelectOptionUpdateEvent>('internalOptionUpdate', {
+        bubbles: true,
+        detail: { optionElement: this.host as HTMLPMultiSelectOptionElement },
+      })
+    );
   }
 
   public disconnectedCallback(): void {
@@ -70,6 +67,7 @@ export class MultiSelectOption {
             ['option']: true,
             ['option--selected']: this.selected,
             ['option--disabled']: this.disabled,
+            ['option--hidden']: this.hidden,
           }}
           onClick={this.onClick}
         >

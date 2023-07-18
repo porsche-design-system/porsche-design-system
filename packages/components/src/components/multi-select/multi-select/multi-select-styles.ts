@@ -12,6 +12,7 @@ import {
   borderRadiusSmall,
   borderWidthBase,
   spacingStaticMedium,
+  spacingStaticSmall,
   textSmallStyle,
 } from '../../../../../utilities/projects/utilities';
 import { Styles } from 'jss';
@@ -20,6 +21,7 @@ import { FormState } from '../../../utils/form/form-state';
 import { getLabelStyles } from '../../../styles/form-styles';
 import { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { getPlaceholderStyles } from '../../../styles/placeholder';
+import { getNoResultsOptionJSSStyles } from '../../../styles/select/option-styles';
 
 const inputYPadding = '13px';
 
@@ -32,7 +34,7 @@ export const getComponentCss = (
   state: FormState,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor, backgroundColor } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, contrastHighColor, backgroundColor } = getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const isDirectionDown = direction === 'down';
 
@@ -78,6 +80,12 @@ export const getComponentCss = (
       '&--open': {
         transform: 'rotate3d(0,0,1,180deg)',
       },
+    },
+    ['no-results']: {
+      padding: `${spacingStaticSmall} 12px`,
+      color: contrastHighColor,
+      boxSizing: 'border-box',
+      ...getNoResultsOptionJSSStyles(),
     },
   });
 };

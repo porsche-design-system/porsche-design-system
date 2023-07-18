@@ -1,8 +1,9 @@
 import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop, State } from '@stencil/core';
 import { MultiSelectOptionUpdateEvent } from '../multi-select-option/multi-select-option-utils';
 import {
+  hasFilterResults,
   syncNativeSelect,
-  updateMultiSelectOptions,
+  updateMultiSelectOptionsFilterState,
   updateNativeOption,
   updateNativeSelectOptions,
 } from './multi-select-utils';
@@ -67,6 +68,7 @@ export class MultiSelect {
   // TODO: only render nativeSelect if isWithinForm
   private nativeSelect: HTMLSelectElement = document.createElement('select');
   private multiSelectOptions: HTMLPMultiSelectOptionElement[];
+  // private filteredMultiSelectOptions: HTMLPMultiSelectOptionElement[] = [];
   private inputContainer: HTMLDivElement;
   private multiSelectDropdown: HTMLElement;
   private inputElement: HTMLInputElement;
@@ -155,6 +157,12 @@ export class MultiSelect {
             theme={this.theme}
             ref={(el) => (this.multiSelectDropdown = el)}
           >
+            {!hasFilterResults(this.multiSelectOptions) && (
+              <li class="no-results" aria-live="polite" role="status">
+                <span aria-hidden="true">---</span>
+                <span class="no-results__sr">No results found</span>
+              </li>
+            )}
             <slot onSlotchange={() => this.updateOptions()} />
           </PrefixedTagNames.pMultiSelectDropdown>
         </div>
@@ -175,7 +183,15 @@ export class MultiSelect {
   }
 
   private onFilterChange = (e: Event): void => {
-    updateMultiSelectOptions((e.target as HTMLInputElement).value, this.multiSelectOptions);
+    if ((e.target as HTMLInputElement).value.startsWith(' ')) {
+      this.resetFilter();
+    } else {
+      updateMultiSelectOptionsFilterState((e.target as HTMLInputElement).value, this.multiSelectOptions);
+      // TODO: Is this necessary?
+      forceUpdate(this.host);
+    }
+    // in case input is focused via tab instead of click
+    this.isOpen = true;
   };
 
   private updateSelectedString = (): void => {
@@ -208,11 +224,6 @@ export class MultiSelect {
     if (this.isOpen && isClickOutside(e, this.inputContainer) && isClickOutside(e, this.multiSelectDropdown)) {
       this.isOpen = false;
     }
-  };
-
-  private setOptionSelected = (option: HTMLPMultiSelectOptionElement): void => {
-    option.selected = true;
-    this.resetFilter();
   };
 
   private resetFilter = (): void => {
