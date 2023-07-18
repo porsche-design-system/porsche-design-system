@@ -258,7 +258,9 @@
   pre {
     max-height: 20rem;
     overflow: auto;
-    margin-top: $pds-spacing-static-medium;
+    &:not(:first-child) {
+      margin-top: $pds-spacing-static-medium;
+    }
     @include pds-focus('small', 1px);
 
     :deep(code) {
