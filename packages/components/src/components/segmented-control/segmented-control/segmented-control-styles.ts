@@ -1,11 +1,15 @@
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import type { BreakpointCustomizable } from '../../../types';
+import { SegmentedControlColumns } from './segmented-control-utils';
 
 const MIN_ITEM_WIDTH = 46;
 const MAX_ITEM_WIDTH = 220;
 
-export const getComponentCss = (maxItemWidth: number, columns: BreakpointCustomizable<number | 'auto'>): string => {
+export const getComponentCss = (
+  maxItemWidth: number,
+  columns: BreakpointCustomizable<SegmentedControlColumns>
+): string => {
   const minWidth =
     (maxItemWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) ||
     (maxItemWidth < MIN_ITEM_WIDTH && MIN_ITEM_WIDTH) ||

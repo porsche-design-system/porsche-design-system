@@ -88,6 +88,7 @@ const SegmentedControlPage: NextPage = (): JSX.Element => {
       </PSegmentedControl>
 
       <PSegmentedControl className="playground light" title="should render segmented-control with columns=5" columns={5}>
+        <PSegmentedControlItem value="xs">XS</PSegmentedControlItem>
         <PSegmentedControlItem value="s">S</PSegmentedControlItem>
         <PSegmentedControlItem value="m">M</PSegmentedControlItem>
         <PSegmentedControlItem value="l">L</PSegmentedControlItem>

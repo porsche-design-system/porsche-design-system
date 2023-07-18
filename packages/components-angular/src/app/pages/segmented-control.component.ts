@@ -87,6 +87,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </p-segmented-control>
 
     <p-segmented-control class="playground light" title="should render segmented-control with columns=5" [columns]="5">
+      <p-segmented-control-item [value]="'xs'">XS</p-segmented-control-item>
       <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
       <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
       <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
