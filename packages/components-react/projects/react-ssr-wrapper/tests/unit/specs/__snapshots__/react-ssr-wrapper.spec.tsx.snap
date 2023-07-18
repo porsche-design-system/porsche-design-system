@@ -1632,8 +1632,10 @@ button:hover::before {
 }
 .icon-container {
   height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .icon {
   width: calc(6px + 2.125ex);
