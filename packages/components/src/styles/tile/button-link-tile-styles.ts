@@ -15,6 +15,7 @@ import { buildResponsiveStyles, mergeDeep } from '../../utils';
 import { getFontWeight } from '../font-weight-styles';
 import { getTileBaseStyles } from './tile-base-styles';
 import { getThemedColors } from '../../styles';
+import { isThemeDark } from '../../utils/theme';
 
 const sizeMap: Record<TileSize, { fontSize: string }> = {
   inherit: { fontSize: 'inherit' },
@@ -47,7 +48,7 @@ export const getButtonLinkTileStyles = (
             }))
           ),
           ...buildResponsiveStyles(background, (b: Theme) => ({
-            color: getThemedColors(b === 'dark' ? 'dark' : 'light').primaryColor,
+            color: getThemedColors(isThemeDark(b) ? 'dark' : 'light').primaryColor,
           })),
         },
       },
@@ -59,7 +60,7 @@ export const getButtonLinkTileStyles = (
           : `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`,
         ...mergeDeep(
           hasGradient &&
-            background === 'dark' &&
+            isThemeDark(background) &&
             buildResponsiveStyles(compact, (isCompact: boolean) =>
               isCompact && isTopAligned ? gradientToBottomStyle : gradientToTopStyle
             ),
