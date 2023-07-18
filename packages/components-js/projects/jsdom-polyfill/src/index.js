@@ -14,8 +14,6 @@ if (!navigator.userAgent.includes('Node.js') && !navigator.userAgent.includes('j
 window.PDS_SKIP_FETCH = true;
 
 // Since DSR conversion does not work in JSDOM render client side markup instead
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 process.browser = true;
 
 // workaround for WebComponentManager not working in JSDOM

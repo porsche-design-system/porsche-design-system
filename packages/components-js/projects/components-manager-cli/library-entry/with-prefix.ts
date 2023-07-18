@@ -22,7 +22,7 @@ export type LoadOptions = {
 };
 
 export const load = (opts: LoadOptions = { prefix: '' }): void => {
-  // backwards compatibility to detect cdn for older pds versions
+  // backwards compatibility to detect cdn for older pds versions that may explicitly be set to 'auto'
   window.PORSCHE_DESIGN_SYSTEM_CDN =
     window.PORSCHE_DESIGN_SYSTEM_CDN || ((window.location.origin.match(/\.cn$/) ? 'cn' : 'com') as any);
   window.PORSCHE_DESIGN_SYSTEM_CDN_URL =

@@ -1,5 +1,8 @@
 // TODO: this file should be part of icon platform itself
 
+// workaround for ReferenceError: window is not defined in `window.PORSCHE_DESIGN_SYSTEM_CDN_URL` because of ICONS_MANIFEST import
+global.window = global.window || {};
+
 import { ICONS_MANIFEST } from '@porsche-design-system/icons';
 import database from './../database/icons.json';
 import * as fs from 'fs';

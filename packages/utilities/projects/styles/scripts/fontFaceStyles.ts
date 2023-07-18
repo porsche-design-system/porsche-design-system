@@ -1,3 +1,6 @@
+// workaround for ReferenceError: window is not defined in `window.PORSCHE_DESIGN_SYSTEM_CDN_URL` because of FONTS_MANIFEST import
+global.window = global.window || {};
+
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
 import { CDN_BASE_PATH_FONTS, CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';

@@ -9,8 +9,8 @@ export const CDN_KEY_TYPE_DEFINITION = `declare global {
 export const CDN_BASE_URL = 'https://cdn.ui.porsche.com';
 export const CDN_BASE_URL_CN = 'https://cdn.ui.porsche.cn';
 
-// window check is needed or several ts-node scripts are failing
-export const CDN_BASE_URL_DYNAMIC = `(typeof window !== "undefined" ? window.PORSCHE_DESIGN_SYSTEM_CDN_URL : '${CDN_BASE_URL}')`;
+// the window variable is defined during component-js load() call
+export const CDN_BASE_URL_DYNAMIC = 'window.PORSCHE_DESIGN_SYSTEM_CDN_URL';
 
 const basePath = 'porsche-design-system';
 export const CDN_BASE_PATH_COMPONENTS = `${basePath}/components`;
