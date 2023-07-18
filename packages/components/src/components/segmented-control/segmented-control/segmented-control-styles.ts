@@ -11,6 +11,11 @@ export const getComponentCss = (maxItemWidth: number, columns: BreakpointCustomi
     (maxItemWidth < MIN_ITEM_WIDTH && MIN_ITEM_WIDTH) ||
     maxItemWidth;
 
+  const gridGap = '6px';
+  const getGapCount = (columns: number): string => `calc(${columns} - 1)`;
+  const getTotalGapWidth = (columns: number): string => `calc(${getGapCount(columns)} * ${gridGap})`;
+  const gezGridItemMaxWidth = (columns: number): string => `calc((100% - ${getTotalGapWidth(columns)}) / ${columns})`;
+
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
@@ -18,9 +23,11 @@ export const getComponentCss = (maxItemWidth: number, columns: BreakpointCustomi
         gridAutoRows: '1fr', // for equal height
         ...buildResponsiveStyles(columns, (col: number | 'auto') => ({
           gridTemplateColumns:
-            col === 'auto' ? `repeat(auto-fit, ${minWidth}px)` : `repeat(${col}, minmax(${minWidth}px, 1fr))`,
+            col === 'auto'
+              ? `repeat(auto-fit, ${minWidth}px)`
+              : `repeat(auto-fill, minmax(max(${minWidth}px, ${gezGridItemMaxWidth(col)}), 1fr))`,
         })),
-        gap: '6px',
+        gap: gridGap,
         ...hostHiddenStyles,
       }),
     },
