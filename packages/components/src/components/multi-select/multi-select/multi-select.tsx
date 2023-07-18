@@ -20,7 +20,7 @@ import {
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
-import { SELECT_DROPDOWN_DIRECTIONS, SelectDropdownDirection } from '../../../utils/select/dropdown';
+import { SELECT_DROPDOWN_DIRECTIONS, SelectDropdownDirection } from '../../../utils/select/select-dropdown';
 import { determineDirection } from '../../select-wrapper/select-wrapper-dropdown/select-wrapper-dropdown-utils';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
@@ -64,12 +64,14 @@ export class MultiSelect {
   @State() private selectedString = '';
   @State() private isOpen = false;
 
+  // TODO: only render nativeSelect if isWithinForm
   private nativeSelect: HTMLSelectElement = document.createElement('select');
   private multiSelectOptions: HTMLPMultiSelectOptionElement[];
   private inputContainer: HTMLDivElement;
   private multiSelectDropdown: HTMLElement;
+  private inputElement: HTMLInputElement;
 
-  @Listen('update')
+  @Listen('internalOptionUpdate')
   public updateOptionHandler(event: CustomEvent<MultiSelectOptionUpdateEvent>): void {
     const index = this.multiSelectOptions.findIndex((el) => el === event.detail.optionElement);
     const nativeOption = this.nativeSelect.children[index] as HTMLOptionElement;
@@ -100,6 +102,7 @@ export class MultiSelect {
     attachComponentCss(
       this.host,
       getComponentCss,
+      this.nativeSelect.selectedOptions.length > 0,
       this.dropdownDirection === 'auto' ? determineDirection(this.host) : this.dropdownDirection,
       this.isOpen,
       this.disabled,
@@ -127,9 +130,18 @@ export class MultiSelect {
               autoComplete="off"
               onInput={this.onFilterChange}
               onClick={this.onInputClick}
+              ref={(el) => (this.inputElement = el)}
             />
             <PrefixedTagNames.pIcon
-              class={{ icon: true, ['icon--open']: this.isOpen }}
+              class="icon reset-icon"
+              name="close"
+              theme={this.theme}
+              color={this.disabled ? 'state-disabled' : 'primary'}
+              onClick={this.onResetClick}
+              aria-hidden="true"
+            />
+            <PrefixedTagNames.pIcon
+              class={{ icon: true, ['toggle-icon']: true, ['toggle-icon--open']: this.isOpen }}
               name="arrow-head-down"
               theme={this.theme}
               color={this.disabled ? 'state-disabled' : 'primary'}
@@ -180,6 +192,10 @@ export class MultiSelect {
     this.isOpen = !this.isOpen;
   };
 
+  private onResetClick = (): void => {
+    this.multiSelectOptions.forEach((option) => (option.selected = false));
+  };
+
   private onDropdownOpenChange = (isOpen: boolean): void => {
     this.isOpen = isOpen;
   };
@@ -192,5 +208,14 @@ export class MultiSelect {
     if (this.isOpen && isClickOutside(e, this.inputContainer) && isClickOutside(e, this.multiSelectDropdown)) {
       this.isOpen = false;
     }
+  };
+
+  private setOptionSelected = (option: HTMLPMultiSelectOptionElement): void => {
+    option.selected = true;
+    this.resetFilter();
+  };
+
+  private resetFilter = (): void => {
+    this.inputElement.value = '';
   };
 }

@@ -18,12 +18,13 @@ import { Styles } from 'jss';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { FormState } from '../../../utils/form/form-state';
 import { getLabelStyles } from '../../../styles/form-styles';
-import { SelectDropdownDirectionInternal } from '../../../utils/select/dropdown';
+import { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { getPlaceholderStyles } from '../../../styles/placeholder';
 
 const inputYPadding = '13px';
 
 export const getComponentCss = (
+  hasSelection: boolean,
   direction: SelectDropdownDirectionInternal,
   isOpen: boolean,
   isDisabled: boolean,
@@ -66,9 +67,14 @@ export const getComponentCss = (
     ...getLabelStyles('select', isDisabled, hideLabel, state, theme),
     icon: {
       padding: `${inputYPadding} 15px`, // Horizontal padding spacingStaticMedium - 1px for visual balance
+      cursor: isDisabled ? 'not-allowed' : 'pointer',
+    },
+    ['reset-icon']: {
+      display: hasSelection ? 'block' : 'none',
+    },
+    ['toggle-icon']: {
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
       transition: getTransition('transform'),
-      cursor: isDisabled ? 'not-allowed' : 'pointer',
       '&--open': {
         transform: 'rotate3d(0,0,1,180deg)',
       },
