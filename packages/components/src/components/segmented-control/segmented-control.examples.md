@@ -85,7 +85,7 @@ import Component from 'vue-class-component';
 import { getSegmentedControlCodeSamples } from '@porsche-design-system/shared';
 import { getAnchorLink } from '@/utils';
 import type { Theme } from '@/models';
-import { SEGMENTED_CONTROL_BACKGROUND_COLORS } from './segmented-control/segmented-control-utils'; 
+import { SEGMENTED_CONTROL_BACKGROUND_COLORS, SEGMENTED_CONTROL_COLUMNS } from './segmented-control/segmented-control-utils'; 
   
 @Component
 export default class Code extends Vue {
@@ -113,7 +113,7 @@ export default class Code extends Vue {
 </p-segmented-control>`;
 
   column = 'auto';
-  columns = ['auto', 1, 2, 3, 4, 5, "{ base: 1, s: 2, m: 'auto' }"];
+  columns = SEGMENTED_CONTROL_COLUMNS;
   get columnsMarkup() {
     return `<p-segmented-control columns="${this.column}" aria-label="Choose a t-shirt size">
   ${this.shirtSizeItems}

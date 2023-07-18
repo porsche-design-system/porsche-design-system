@@ -12,10 +12,15 @@ import {
 } from '../../../utils';
 import type { PropTypes, Theme, ValidatorFunction, BreakpointCustomizable } from '../../../types';
 import { getComponentCss } from './segmented-control-styles';
-import type { SegmentedControlBackgroundColor, SegmentedControlUpdateEvent } from './segmented-control-utils';
+import type {
+  SegmentedControlBackgroundColor,
+  SegmentedControlColumns,
+  SegmentedControlUpdateEvent,
+} from './segmented-control-utils';
 import {
   getItemMaxWidth,
   SEGMENTED_CONTROL_BACKGROUND_COLORS,
+  SEGMENTED_CONTROL_COLUMNS,
   syncSegmentedControlItemsProps,
 } from './segmented-control-utils';
 import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
@@ -28,7 +33,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
   ]),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
-  columns: AllowedTypes.breakpoint<ValidatorFunction | 'auto'>([AllowedTypes.number, 'auto']),
+  columns: AllowedTypes.breakpoint<SegmentedControlColumns>(SEGMENTED_CONTROL_COLUMNS),
 };
 
 @Component({
