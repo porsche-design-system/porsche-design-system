@@ -24,9 +24,18 @@ describe('window.PDS_SKIP_FETCH = true', () => {
 
   it('should not fetch marque asset', async () => {
     document.body.innerHTML = '<p-marque></p-marque>';
-    await componentsReady();
+    expect(await componentsReady()).toBe(1);
 
     const picture = document.querySelector('p-marque').shadowRoot.querySelector('picture');
+
+    expect(picture).toBeNull();
+  });
+
+  it('should not fetch crest asset', async () => {
+    document.body.innerHTML = '<p-crest></p-crest>';
+    expect(await componentsReady()).toBe(1);
+
+    const picture = document.querySelector('p-crest').shadowRoot.querySelector('picture');
 
     expect(picture).toBeNull();
   });
@@ -35,12 +44,12 @@ describe('window.PDS_SKIP_FETCH = true', () => {
     const spy = jest.spyOn(global, 'fetch');
 
     document.body.innerHTML = '<p-icon></p-icon>';
-    await componentsReady();
+    expect(await componentsReady()).toBe(1);
 
-    // let's wait a little for the promise exception
-    await new Promise((resolve) => setTimeout(resolve, 5));
+    const img = document.querySelector('p-icon').shadowRoot.querySelector('img');
 
     expect(spy).not.toBeCalled();
+    expect(img.src).toBe('');
   });
 });
 
@@ -59,23 +68,28 @@ describe('window.PDS_SKIP_FETCH = false', () => {
 
   it('should fetch marque asset', async () => {
     document.body.innerHTML = '<p-marque></p-marque>';
-    await componentsReady();
+    expect(await componentsReady()).toBe(1);
 
     const picture = document.querySelector('p-marque').shadowRoot.querySelector('picture');
 
     expect(picture).not.toBeNull();
   });
 
-  // TODO: requestCache of icon-utils.ts is already set from previous test..
-  xit('should fetch icon asset', async () => {
-    const spy = jest.spyOn(global, 'fetch');
-    console.log('yo', (window as any).PDS_SKIP_FETCH);
+  it('should fetch crest asset', async () => {
+    document.body.innerHTML = '<p-crest></p-crest>';
+    expect(await componentsReady()).toBe(1);
+
+    const picture = document.querySelector('p-crest').shadowRoot.querySelector('picture');
+
+    expect(picture).not.toBeNull();
+  });
+
+  it('should fetch icon asset', async () => {
     document.body.innerHTML = '<p-icon></p-icon>';
-    await componentsReady();
+    expect(await componentsReady()).toBe(1);
 
-    // let's wait a little for the promise exception
-    await new Promise((resolve) => setTimeout(resolve, 5));
+    const img = document.querySelector('p-icon').shadowRoot.querySelector('img');
 
-    expect(spy).toBeCalledWith(`http://localhost:3001/icons/${ICONS_MANIFEST['arrow-right']}`, undefined);
+    expect(img.src).toBe(`http://localhost:3001/icons/${ICONS_MANIFEST['arrow-right']}`);
   });
 });
