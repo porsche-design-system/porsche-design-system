@@ -55,7 +55,7 @@ export class SegmentedControl {
   @Prop() public value?: string | number;
 
   /** Sets the width of the items. */
-  @Prop() public columns?: BreakpointCustomizable<number | 'auto'> = 'auto';
+  @Prop() public columns?: BreakpointCustomizable<SegmentedControlColumns> = 'auto';
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
