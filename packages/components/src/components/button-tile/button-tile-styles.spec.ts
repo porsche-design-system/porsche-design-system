@@ -20,7 +20,7 @@ describe('getComponentCss()', () => {
       false,
     ],
   ])(
-    'should return correct css for isDisabledOrLoading: %s, aspectRatio: %j, size: %j, weight: %j, background: %j, align: %s, isCompact: %j, hasGradient: %s and isDisabled: %s',
+    'should return correct css for isDisabledOrLoading: %s, aspectRatio: %j, size: %j, weight: %j, background: %s, align: %s, isCompact: %j, hasGradient: %s and isDisabled: %s',
     (...args) => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }
