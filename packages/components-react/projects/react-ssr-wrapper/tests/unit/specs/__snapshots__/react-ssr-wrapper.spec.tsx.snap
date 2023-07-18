@@ -744,7 +744,7 @@ exports[`manual test cases should pass internal props correctly to p-segmented-c
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;outline:0 !important}:host([hidden]){display:none !important}button{display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #FBFCFF;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;position:relative;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}
+        :host{display:block !important;outline:0 !important}:host([hidden]){display:none !important}button{display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #FBFCFF;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;position:relative;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}
       </style>
       <button
         aria-pressed="true"
@@ -765,7 +765,7 @@ exports[`manual test cases should pass internal props correctly to p-segmented-c
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;outline:0 !important}:host([hidden]){display:none !important}button{display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #404044;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;position:relative;cursor:pointer;transition:border-color var(--p-transition-duration, .24s) ease}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}button:hover{border-color:#FBFCFF}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}
+        :host{display:block !important;outline:0 !important}:host([hidden]){display:none !important}button{display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #404044;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;position:relative;cursor:pointer;transition:border-color var(--p-transition-duration, .24s) ease}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}button:hover{border-color:#FBFCFF}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}
       </style>
       <button
         aria-pressed="false"
@@ -6100,7 +6100,7 @@ button {
   background: transparent;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
   hyphens: auto;
   position: relative;
   cursor: pointer;
