@@ -8,11 +8,7 @@ const packageDir = path.resolve(__dirname, '..');
 
 const readAndWriteFile = (targetFile: string): void => {
   const oldContent = fs.readFileSync(targetFile, 'utf8');
-  const newContent = oldContent.replace(
-    '"%%%CDN_BASE_URL_DYNAMIC%%%',
-    `${CDN_BASE_URL_DYNAMIC.replace(/\s/g, '') // strip spaces
-      .replace('typeof', 'typeof ')}+"` // recover space after typeof
-  );
+  const newContent = oldContent.replace('"%%%CDN_BASE_URL_DYNAMIC%%%', `${CDN_BASE_URL_DYNAMIC}+"`);
   fs.writeFileSync(targetFile, newContent);
   console.log(`Updated: ${targetFile.replace(packageDir, '.')}`);
 };
