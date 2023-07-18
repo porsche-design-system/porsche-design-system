@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 
 - Alignment of `Icon` inside `Accordion` header
-  ([#2622](https://github.com/porsche-design-system/porsche-design-system/pull/2622))
+  ([#2673](https://github.com/porsche-design-system/porsche-design-system/pull/2673))
 
 ### [3.4.0] - 2023-07-14
 
