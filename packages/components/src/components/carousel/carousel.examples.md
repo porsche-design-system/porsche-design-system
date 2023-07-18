@@ -8,8 +8,9 @@ Therefore, the `p-carousel`'s content has to be divided into multiple parts or s
 The amount of slides visible can be specified on a per-breakpoint basis.
 
 <p-inline-notification heading="Layout hint" state="warning" dismiss-button="false">
- The component can only be used with the full viewport width. The alignment of its content can be controlled 
-by the <code>width</code> prop, which is in sync with the <b><a href="styles/grid">Porsche Grid</a></b>.
+  The component can only be used with the full viewport width. The alignment of its content can be controlled 
+  by the <code>width</code> prop, which is in sync with the <b><a href="styles/grid">Porsche Grid</a></b>.<br><br>
+  Therefore, the following examples only work in fullscreen after clicking the <strong>Maximize</strong> buttons.
 </p-inline-notification>
 
 <TableOfContents></TableOfContents>
@@ -156,8 +157,8 @@ type CarouselInternationalization = {
 
 ## Custom Border Radius
 
-By default, every carousel item gets a predefined border radius of "large" (`12px`). This can be changed via a custom CSS property
-(see also [Border Styles](styles/border#styles)).
+By default, every carousel item gets a predefined border radius of "large" (`12px`). This can be changed via a custom
+CSS property (see also [Border Styles](styles/border#styles)).
 
 <Playground :markup="customBorderRadiusMarkup" :config="config">
   <SelectOptions v-model="customBorderRadius" :values="customBorderRadii" name="borderRadius"></SelectOptions>
@@ -186,7 +187,7 @@ import { borderRadius } from '@porsche-design-system/components-js/styles';
 
 @Component
 export default class Code extends Vue {
-  config = { themeable: true };
+  config = { themeable: true, supportsFullWindow: true };
 
   get theme(): Theme {
     return this.$store.getters.theme;

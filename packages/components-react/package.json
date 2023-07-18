@@ -27,7 +27,7 @@
     "clean:build": "rm -rf ./dist && yarn --cwd projects/nextjs clean:build && yarn --cwd projects/remix clean:build && yarn --cwd projects/uxpin-wrapper clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.3.0",
+    "@porsche-design-system/components-react": "3.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-imask": "^6.6.3",
@@ -37,8 +37,6 @@
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@rollup/plugin-node-resolve": "^15.1.0",
-    "@rollup/plugin-typescript": "^11.1.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -50,10 +48,6 @@
     "globby": "^11.0.4",
     "local-web-server": "^5.3.0",
     "react-scripts": "^5.0.1",
-    "rollup": "^3.26.0",
-    "rollup-plugin-bin": "^1.0.0",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-generate-package-json": "^3.2.0",
     "ts-node": "^10.9.1",
     "typescript": "~5.1.6"
   },
