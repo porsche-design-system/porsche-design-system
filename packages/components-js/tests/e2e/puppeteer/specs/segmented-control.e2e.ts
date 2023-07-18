@@ -46,8 +46,8 @@ const initSegmentedControl = (opts?: { amount?: number; value?: number; columns?
 };
 
 describe('width calculation', () => {
-  it('should recalculate width on resized when columns=6', async () => {
-    await initSegmentedControl({ amount: 6, columns: 1 });
+  it('should recalculate width on resized when columns=5', async () => {
+    await initSegmentedControl({ amount: 5, columns: 1 });
     const initialItemWidth = await getFirstItemOffsetWidth();
 
     await page.setViewport({ width: 800, height: 600 });
