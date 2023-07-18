@@ -20,7 +20,6 @@ export * from './link-button-tile/link-button-tile-utils';
 export * from './tile/tile-utils';
 export * from './log';
 export { paramCaseToCamelCase } from './paramCaseToCamelCase';
-export * from './pds-fetch';
 export * from './property-observer';
 export * from './scrolling';
 export * from './has-document';
