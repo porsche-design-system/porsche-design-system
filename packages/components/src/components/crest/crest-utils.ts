@@ -14,7 +14,7 @@ export const buildCrestSrcSet = (format: 'png' | 'webp'): string => {
 };
 
 export const buildCrestImgSrc = (): string => {
-  return `${getCDNBaseURL()}/crest}/${CRESTS_MANIFEST.porscheCrest['2x'].png}`;
+  return `${getCDNBaseURL()}/crest/${CRESTS_MANIFEST.porscheCrest['2x'].png}`;
 };
 
 export const crestSize: { width: number; height: number } = {
