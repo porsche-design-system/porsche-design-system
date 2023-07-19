@@ -39,9 +39,9 @@ export class InputParser {
       .replace(/.*interface HTMLStencilElement(\s|\S)*?}\n/, '')
       // remove unused EventEmitter interface
       .replace(/.*interface EventEmitter(\s|\S)*?}\n/, '')
-      // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;` and `const ROLLUP_REPLACE_VERSION: string;`
+      // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`, `const ROLLUP_REPLACE_VERSION: string;` and `const ROLLUP_REPLACE_CDN_BASE_URL: string;`
       .replace(
-        /declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n\tconst ROLLUP_REPLACE_VERSION: string;\n}\n/,
+        /declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n\tconst ROLLUP_REPLACE_VERSION: string;\n\tconst ROLLUP_REPLACE_CDN_BASE_URL: string;\n}\n/,
         ''
       )
       // remove global declaration of `window.PORSCHE_DESIGN_SYSTEM_CDN` and `window.PORSCHE_DESIGN_SYSTEM_CDN_URL`
