@@ -2175,7 +2175,6 @@ exports[`should match snapshot 1`] = `
         "background-default",
       ],
       "columns": [
-        0,
         1,
         2,
         3,
@@ -2200,6 +2199,7 @@ exports[`should match snapshot 1`] = `
         22,
         23,
         24,
+        25,
         "auto",
       ],
       "theme": [
