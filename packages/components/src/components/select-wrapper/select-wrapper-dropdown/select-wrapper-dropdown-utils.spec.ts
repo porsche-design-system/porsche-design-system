@@ -151,7 +151,7 @@ describe('determineDirection()', () => {
 
   it('should return down if there is enough space at the bottom', () => {
     const host = getHost();
-    expect(determineDirection(host)).toBe('down');
+    expect(determineDirection(host, 4)).toBe('down');
   });
 
   it('should return up if there is not enough space at the bottom', () => {
@@ -165,7 +165,7 @@ describe('determineDirection()', () => {
         } as DOMRect)
     );
 
-    expect(determineDirection(host)).toBe('up');
+    expect(determineDirection(host, 4)).toBe('up');
   });
 });
 
