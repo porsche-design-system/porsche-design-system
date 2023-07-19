@@ -10,15 +10,10 @@ export const getComponentCss = (
   maxItemWidth: number,
   columns: BreakpointCustomizable<SegmentedControlColumns>
 ): string => {
-  const minWidth =
+  const maxWidth =
     (maxItemWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) ||
     (maxItemWidth < MIN_ITEM_WIDTH && MIN_ITEM_WIDTH) ||
     maxItemWidth;
-
-  const gridGap = '6px';
-  const getGapCount = (col: number): string => `calc(${col} - 1)`;
-  const getTotalGapWidth = (col: number): string => `calc(${getGapCount(col)} * ${gridGap})`;
-  const gezGridItemMaxWidth = (col: number): string => `calc((100% - ${getTotalGapWidth(col)}) / ${col})`;
 
   return getCss({
     '@global': {
@@ -26,12 +21,9 @@ export const getComponentCss = (
         display: 'grid',
         gridAutoRows: '1fr', // for equal height
         ...buildResponsiveStyles(columns, (col: number | 'auto') => ({
-          gridTemplateColumns:
-            col === 'auto'
-              ? `repeat(auto-fit, ${minWidth}px)`
-              : `repeat(auto-fill, minmax(max(${minWidth}px, ${gezGridItemMaxWidth(col)}), 1fr))`,
+          gridTemplateColumns: col === 'auto' ? `repeat(auto-fit, ${maxWidth}px)` : `repeat(${col}, minmax(0, 1fr))`,
         })),
-        gap: gridGap,
+        gap: '6px',
         ...hostHiddenStyles,
       }),
     },

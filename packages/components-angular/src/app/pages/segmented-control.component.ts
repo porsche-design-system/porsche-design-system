@@ -106,12 +106,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-segmented-control-item [value]="5" [disabled]="true">columns responsive</p-segmented-control-item>
     </p-segmented-control>
 
-    <p-segmented-control class="playground light" title="should break word and not overflow content" [columns]="5">
-      <p-segmented-control-item [value]="'xs'">Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item>
-      <p-segmented-control-item [value]="'s'">Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item>
-      <p-segmented-control-item [value]="'m'">Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item>
-      <p-segmented-control-item [value]="'l'">Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item>
-      <p-segmented-control-item [value]="'xl'" [disabled]="true"
+    <p-segmented-control class="playground light" title="should break word" [columns]="5">
+      <p-segmented-control-item [value]="1">Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item>
+      <p-segmented-control-item [value]="2">Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item>
+      <p-segmented-control-item [value]="3">Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item>
+      <p-segmented-control-item [value]="4">Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item>
+      <p-segmented-control-item [value]="5" [disabled]="true"
         >Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item
       >
     </p-segmented-control>

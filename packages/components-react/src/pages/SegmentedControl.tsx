@@ -101,12 +101,12 @@ export const SegmentedControlPage = (): JSX.Element => {
         <PSegmentedControlItem value={5} disabled={true}>columns responsive</PSegmentedControlItem>
       </PSegmentedControl>
 
-      <PSegmentedControl className="playground light" title="should break word and not overflow content" columns={5}>
-        <PSegmentedControlItem value="xs">Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
-        <PSegmentedControlItem value="s">Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
-        <PSegmentedControlItem value="m">Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
-        <PSegmentedControlItem value="l">Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
-        <PSegmentedControlItem value="xl" disabled={true}
+      <PSegmentedControl className="playground light" title="should break word" columns={5}>
+        <PSegmentedControlItem value={1}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
+        <PSegmentedControlItem value={2}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
+        <PSegmentedControlItem value={3}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
+        <PSegmentedControlItem value={4}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
+        <PSegmentedControlItem value={5} disabled={true}
           >Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
         >
       </PSegmentedControl>
