@@ -58,6 +58,79 @@ export const SegmentedControlPage = (): JSX.Element => {
         </PSegmentedControl>
       </div>
 
+      <div className="playground light" title="should render segmented-control with columns=1">
+        <PSegmentedControl columns={1}>
+          <PSegmentedControlItem value="s" label="Size">columns=1</PSegmentedControlItem>
+          <PSegmentedControlItem value="m" label="Size">columns=1</PSegmentedControlItem>
+          <PSegmentedControlItem value="l" label="Size">columns=1</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl" label="Size" disabled={true}>columns=1</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground light" title="should render segmented-control with columns=2">
+        <PSegmentedControl columns={2}>
+          <PSegmentedControlItem value={1}>columns=2</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>columns=2</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>columns=2</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} disabled={true}>columns=2</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground light" title="should render segmented-control with columns=3">
+        <PSegmentedControl columns={3}>
+          <PSegmentedControlItem value={1}>columns=3</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>columns=3</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>columns=3</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} disabled={true}>columns=3</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground light" title="should render segmented-control with columns=4">
+        <PSegmentedControl columns={4}>
+          <PSegmentedControlItem value={1}>columns=4</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>columns=4</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>columns=4</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} disabled={true}>columns=4</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground light" title="should render segmented-control with columns=5">
+        <PSegmentedControl columns={5}>
+          <PSegmentedControlItem value={1}>columns=5</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>columns=5</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>columns=5</PSegmentedControlItem>
+          <PSegmentedControlItem value={4}>columns=5</PSegmentedControlItem>
+          <PSegmentedControlItem value={5} disabled={true}>columns=5</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground light" title="should render segmented-control with responsive columns">
+        <PSegmentedControl columns={{ base: 'auto', xs: 1, s: 2, m: 3, l: 4, xl: 5 }}>
+          <PSegmentedControlItem value={1}>columns responsive</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>columns responsive</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>columns responsive</PSegmentedControlItem>
+          <PSegmentedControlItem value={4}>columns responsive</PSegmentedControlItem>
+          <PSegmentedControlItem value={5} disabled={true}>columns responsive</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
+
+      <div className="playground light" title="should break word">
+        <PSegmentedControl>
+          <PSegmentedControlItem value={1}
+            >Break long word Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
+          >
+          <PSegmentedControlItem value={2}
+            >Break long word Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
+          >
+          <PSegmentedControlItem value={3}
+            >Break long word Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
+          >
+          <PSegmentedControlItem value={3}
+            >Break long word Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
+          >
+        </PSegmentedControl>
+      </div>
+
       <div className="playground dark" title="should render segmented-control with labels on dark theme">
         <PSegmentedControl value="s" theme="dark">
           <PSegmentedControlItem value="s" label="Size">S</PSegmentedControlItem>

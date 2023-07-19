@@ -77,7 +77,6 @@ export const getComponentCss = (
         background: 'transparent',
         color: buttonColor,
         ...textSmallStyle,
-        overflowWrap: 'normal',
         position: 'relative',
         '&::before': {
           content: '""',
