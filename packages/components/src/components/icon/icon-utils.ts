@@ -1,4 +1,4 @@
-import { ICONS_MANIFEST } from '@porsche-design-system/assets';
+import { ICONS_MANIFEST } from '@porsche-design-system/icons'; // TODO: import from assets once it is treeshakable
 import type { IconName, TextSize } from '../../types';
 import { TEXT_COLORS, type TextColorDeprecated } from '../text/text-color';
 import { getCDNBaseURL } from '../../utils';

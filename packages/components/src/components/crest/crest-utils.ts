@@ -1,4 +1,4 @@
-import { CRESTS_MANIFEST } from '@porsche-design-system/assets';
+import { CRESTS_MANIFEST } from '@porsche-design-system/crest'; // TODO: import from assets once it is treeshakable
 import type { LinkTarget } from '../../utils/link-button/link-target';
 import { getCDNBaseURL } from '../../utils';
 
