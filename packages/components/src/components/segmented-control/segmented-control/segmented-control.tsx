@@ -14,7 +14,7 @@ import type { PropTypes, Theme, ValidatorFunction, BreakpointCustomizable } from
 import { getComponentCss } from './segmented-control-styles';
 import type {
   SegmentedControlBackgroundColor,
-  SegmentedControlColumns,
+  SegmentedControlColumn,
   SegmentedControlUpdateEvent,
 } from './segmented-control-utils';
 import {
@@ -33,7 +33,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
   ]),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
-  columns: AllowedTypes.breakpoint<SegmentedControlColumns>(SEGMENTED_CONTROL_COLUMNS),
+  columns: AllowedTypes.breakpoint<SegmentedControlColumn>(SEGMENTED_CONTROL_COLUMNS),
 };
 
 @Component({
@@ -55,7 +55,7 @@ export class SegmentedControl {
   @Prop() public value?: string | number;
 
   /** Sets the amount of columns. */
-  @Prop() public columns?: BreakpointCustomizable<SegmentedControlColumns> = 'auto';
+  @Prop() public columns?: BreakpointCustomizable<SegmentedControlColumn> = 'auto';
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.

@@ -85,7 +85,7 @@ import Component from 'vue-class-component';
 import { getSegmentedControlCodeSamples } from '@porsche-design-system/shared';
 import { getAnchorLink } from '@/utils';
 import type { Theme } from '@/models';
-import { SEGMENTED_CONTROL_BACKGROUND_COLORS, SEGMENTED_CONTROL_COLUMNS } from './segmented-control/segmented-control-utils'; 
+import { SEGMENTED_CONTROL_BACKGROUND_COLORS } from './segmented-control/segmented-control-utils'; 
   
 @Component
 export default class Code extends Vue {
