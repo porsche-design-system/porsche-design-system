@@ -9,16 +9,6 @@ const glue = '\n\n';
 
 global.ROLLUP_REPLACE_IS_STAGING = 'staging';
 
-// workaround for ReferenceError: window is not defined in `window.PORSCHE_DESIGN_SYSTEM_CDN_URL` because of FONT_FACE_CDN_URL import in some utils or injectGlobalStyle
-// @ts-ignore
-global.window = global.window || { PORSCHE_DESIGN_SYSTEM_CDN_URL: 'http://localhost:3001' };
-// @ts-ignore
-global.MutationObserver =
-  global.MutationObserver ||
-  class {
-    constructor() {}
-  };
-
 // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
 const sourceDirectory = path.resolve('../components/src/components');
 const componentFileNames = globby.sync(`${sourceDirectory}/**/*.tsx`);

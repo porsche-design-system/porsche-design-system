@@ -1,22 +1,20 @@
+import { CRESTS_MANIFEST } from '@porsche-design-system/assets';
 import type { LinkTarget } from '../../utils/link-button/link-target';
-import { CDN_BASE_URL as CRESTS_CDN_BASE_URL, CRESTS_MANIFEST } from '@porsche-design-system/crest';
+import { getCDNBaseURL } from '../../utils';
 
 export type CrestTarget = LinkTarget;
 
 export const CREST_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type CrestAriaAttribute = (typeof CREST_ARIA_ATTRIBUTES)[number];
 
-type CrestManifest = typeof CRESTS_MANIFEST;
-type CrestInnerManifest = CrestManifest['porscheCrest'];
-
-export const crestCdnBaseUrl =
-  ROLLUP_REPLACE_IS_STAGING === 'production' ? CRESTS_CDN_BASE_URL : 'http://localhost:3001/crest';
-export const crestInnerManifest: CrestInnerManifest = CRESTS_MANIFEST.porscheCrest;
-
 export const buildCrestSrcSet = (format: 'png' | 'webp'): string => {
-  return Object.entries(crestInnerManifest)
-    .map(([resolution, fileName]) => `${crestCdnBaseUrl}/${fileName[format]} ${resolution}`)
+  return Object.entries(CRESTS_MANIFEST.porscheCrest)
+    .map(([resolution, fileName]) => `${getCDNBaseURL()}/crest/${fileName[format]} ${resolution}`)
     .join();
+};
+
+export const buildCrestImgSrc = (): string => {
+  return `${getCDNBaseURL()}/crest}/${CRESTS_MANIFEST.porscheCrest['2x'].png}`;
 };
 
 export const crestSize: { width: number; height: number } = {

@@ -40,7 +40,6 @@ const checkIntegrity = (manifest: Manifest): void => {
 };
 
 const createManifestAndCopyCrest = (): void => {
-  const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_CREST}'`;
   const files = globby.sync('./src/**/*.{png,webp}').sort();
 
   fs.rmSync(path.normalize('./dist'), { force: true, recursive: true });
@@ -80,7 +79,8 @@ const createManifestAndCopyCrest = (): void => {
     path.normalize('./index.ts'),
     `${CDN_KEY_TYPE_DEFINITION}
 
-export const CDN_BASE_URL = ${cdn};
+export const CDN_BASE_PATH = '/${CDN_BASE_PATH_CREST}';
+export const CDN_BASE_URL = ${CDN_BASE_URL_DYNAMIC} + CDN_BASE_PATH;
 export const CRESTS_MANIFEST = ${JSON.stringify(manifest)};`
   );
 

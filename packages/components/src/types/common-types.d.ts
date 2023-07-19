@@ -25,10 +25,11 @@ export type { LinkTarget } from '../utils/link-button/link-target';
 
 export type { AlignLabel } from '../utils/link-button/align-label';
 
-// ROLLUP_REPLACE_IS_STAGING will be provided via webpack
+// ROLLUP_REPLACE_VARIABLES are replaced via rollup
 declare global {
   const ROLLUP_REPLACE_IS_STAGING: string;
   const ROLLUP_REPLACE_VERSION: string;
+  const ROLLUP_REPLACE_CDN_BASE_URL: string;
 }
 
 import type { AriaAttributes } from './aria-types';
