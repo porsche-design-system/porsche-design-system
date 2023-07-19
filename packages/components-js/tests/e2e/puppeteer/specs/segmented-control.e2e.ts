@@ -32,13 +32,13 @@ const getAllItemButtons = async () =>
 
 const getFirstItemOffsetWidth = async (): Promise<number> => getOffsetWidth(await getFirstItemHost());
 
-const initSegmentedControl = (opts?: { amount?: number; value?: number; columns?: number }): Promise<void> => {
-  const { amount = 1, value, columns } = opts || {};
+const initSegmentedControl = (opts?: { amount?: number; value?: number }): Promise<void> => {
+  const { amount = 1, value } = opts || {};
   const items = Array.from(Array(amount))
     .map((_, i) => `<p-segmented-control-item value="${i + 1}">Option ${i + 1}</p-segmented-control-item>`)
     .join('\n');
 
-  const content = `<p-segmented-control ${value ? ` value="${value}"` : ''} ${columns ? ` columns="${columns}"` : ''}">
+  const content = `<p-segmented-control${value ? ` value="${value}"` : ''}>
   ${items}
 </p-segmented-control>`;
 
