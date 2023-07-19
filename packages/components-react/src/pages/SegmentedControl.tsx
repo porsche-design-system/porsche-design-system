@@ -59,51 +59,56 @@ export const SegmentedControlPage = (): JSX.Element => {
       </div>
 
       <PSegmentedControl className="playground light" title="should render segmented-control with columns=1" columns={1}>
-        <PSegmentedControlItem value="s">S</PSegmentedControlItem>
-        <PSegmentedControlItem value="m">M</PSegmentedControlItem>
-        <PSegmentedControlItem value="l">L</PSegmentedControlItem>
-        <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
-      </PSegmentedControl>
+        <PSegmentedControlItem value_1Columns={1}</PSegmentedControlItem>
+        <PSegmentedControlItem value_2Columns={1}</PSegmentedControlItem>
+        <PSegmentedControlItem value_3Columns={1}</PSegmentedControlItem>
+        <PSegmentedControlItem value={4} disabledTrueColumns={1}</PSegmentedControlItem />
 
       <PSegmentedControl className="playground light" title="should render segmented-control with columns=2" columns={2}>
-        <PSegmentedControlItem value="s">S</PSegmentedControlItem>
-        <PSegmentedControlItem value="m">M</PSegmentedControlItem>
-        <PSegmentedControlItem value="l">L</PSegmentedControlItem>
-        <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
-      </PSegmentedControl>
+        <PSegmentedControlItem value_1Columns={2}</PSegmentedControlItem>
+        <PSegmentedControlItem value_2Columns={2}</PSegmentedControlItem>
+        <PSegmentedControlItem value_3Columns={2}</PSegmentedControlItem>
+        <PSegmentedControlItem value={4} disabledTrueColumns={2}</PSegmentedControlItem />
 
       <PSegmentedControl className="playground light" title="should render segmented-control with columns=3" columns={3}>
-        <PSegmentedControlItem value="s">S</PSegmentedControlItem>
-        <PSegmentedControlItem value="m">M</PSegmentedControlItem>
-        <PSegmentedControlItem value="l">L</PSegmentedControlItem>
-        <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
-      </PSegmentedControl>
+        <PSegmentedControlItem value_1Columns={3}</PSegmentedControlItem>
+        <PSegmentedControlItem value_2Columns={3}</PSegmentedControlItem>
+        <PSegmentedControlItem value_3Columns={3}</PSegmentedControlItem>
+        <PSegmentedControlItem value={4} disabledTrueColumns={3}</PSegmentedControlItem />
 
       <PSegmentedControl className="playground light" title="should render segmented-control with columns=4" columns={4}>
-        <PSegmentedControlItem value="s">S</PSegmentedControlItem>
-        <PSegmentedControlItem value="m">M</PSegmentedControlItem>
-        <PSegmentedControlItem value="l">L</PSegmentedControlItem>
-        <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
-      </PSegmentedControl>
+        <PSegmentedControlItem value_1Columns={4}</PSegmentedControlItem>
+        <PSegmentedControlItem value_2Columns={4}</PSegmentedControlItem>
+        <PSegmentedControlItem value_3Columns={4}</PSegmentedControlItem>
+        <PSegmentedControlItem value={4} disabledTrueColumns={4}</PSegmentedControlItem />
 
       <PSegmentedControl className="playground light" title="should render segmented-control with columns=5" columns={5}>
-        <PSegmentedControlItem value="xs">XS</PSegmentedControlItem>
-        <PSegmentedControlItem value="s">S</PSegmentedControlItem>
-        <PSegmentedControlItem value="m">M</PSegmentedControlItem>
-        <PSegmentedControlItem value="l">L</PSegmentedControlItem>
-        <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
-      </PSegmentedControl>
+        <PSegmentedControlItem value_1Columns={5}</PSegmentedControlItem>
+        <PSegmentedControlItem value_2Columns={5}</PSegmentedControlItem>
+        <PSegmentedControlItem value_3Columns={5}</PSegmentedControlItem>
+        <PSegmentedControlItem value_4Columns={5}</PSegmentedControlItem>
+        <PSegmentedControlItem value={5} disabledTrueColumns={5}</PSegmentedControlItem />
 
       <PSegmentedControl
         className="playground light"
         title="should render segmented-control with responsive columns"
         columns={{ base: 'auto', xs: 1, s: 2, m: 3, l: 4, xl: 5 }}
       >
-        <PSegmentedControlItem value="xs">XS</PSegmentedControlItem>
-        <PSegmentedControlItem value="s">S</PSegmentedControlItem>
-        <PSegmentedControlItem value="m">M</PSegmentedControlItem>
-        <PSegmentedControlItem value="l">L</PSegmentedControlItem>
-        <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
+        <PSegmentedControlItem value={1}>columns responsive</PSegmentedControlItem>
+        <PSegmentedControlItem value={2}>columns responsive</PSegmentedControlItem>
+        <PSegmentedControlItem value={3}>columns responsive</PSegmentedControlItem>
+        <PSegmentedControlItem value={4}>columns responsive</PSegmentedControlItem>
+        <PSegmentedControlItem value={5} disabled={true}>columns responsive</PSegmentedControlItem>
+      </PSegmentedControl>
+
+      <PSegmentedControl className="playground light" title="should break word and not overflow content" columns={5}>
+        <PSegmentedControlItem value="xs">Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
+        <PSegmentedControlItem value="s">Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
+        <PSegmentedControlItem value="m">Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
+        <PSegmentedControlItem value="l">Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
+        <PSegmentedControlItem value="xl" disabled={true}
+          >Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
+        >
       </PSegmentedControl>
 
       <div className="playground dark" title="should render segmented-control with labels on dark theme">

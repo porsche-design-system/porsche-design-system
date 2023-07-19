@@ -59,39 +59,39 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <p-segmented-control class="playground light" title="should render segmented-control with columns=1" [columns]="1">
-      <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
-      <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
-      <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
-      <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
+      <p-segmented-control-item [value]="1">columns="1"</p-segmented-control-item>
+      <p-segmented-control-item [value]="2">columns="1"</p-segmented-control-item>
+      <p-segmented-control-item [value]="3">columns="1"</p-segmented-control-item>
+      <p-segmented-control-item [value]="4" [disabled]="true">columns="1"</p-segmented-control-item>
     </p-segmented-control>
 
     <p-segmented-control class="playground light" title="should render segmented-control with columns=2" [columns]="2">
-      <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
-      <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
-      <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
-      <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
+      <p-segmented-control-item [value]="1">columns="2"</p-segmented-control-item>
+      <p-segmented-control-item [value]="2">columns="2"</p-segmented-control-item>
+      <p-segmented-control-item [value]="3">columns="2"</p-segmented-control-item>
+      <p-segmented-control-item [value]="4" [disabled]="true">columns="2"</p-segmented-control-item>
     </p-segmented-control>
 
     <p-segmented-control class="playground light" title="should render segmented-control with columns=3" [columns]="3">
-      <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
-      <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
-      <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
-      <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
+      <p-segmented-control-item [value]="1">columns="3"</p-segmented-control-item>
+      <p-segmented-control-item [value]="2">columns="3"</p-segmented-control-item>
+      <p-segmented-control-item [value]="3">columns="3"</p-segmented-control-item>
+      <p-segmented-control-item [value]="4" [disabled]="true">columns="3"</p-segmented-control-item>
     </p-segmented-control>
 
     <p-segmented-control class="playground light" title="should render segmented-control with columns=4" [columns]="4">
-      <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
-      <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
-      <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
-      <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
+      <p-segmented-control-item [value]="1">columns="4"</p-segmented-control-item>
+      <p-segmented-control-item [value]="2">columns="4"</p-segmented-control-item>
+      <p-segmented-control-item [value]="3">columns="4"</p-segmented-control-item>
+      <p-segmented-control-item [value]="4" [disabled]="true">columns="4"</p-segmented-control-item>
     </p-segmented-control>
 
     <p-segmented-control class="playground light" title="should render segmented-control with columns=5" [columns]="5">
-      <p-segmented-control-item [value]="'xs'">XS</p-segmented-control-item>
-      <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
-      <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
-      <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
-      <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
+      <p-segmented-control-item [value]="1">columns="5"</p-segmented-control-item>
+      <p-segmented-control-item [value]="2">columns="5"</p-segmented-control-item>
+      <p-segmented-control-item [value]="3">columns="5"</p-segmented-control-item>
+      <p-segmented-control-item [value]="4">columns="5"</p-segmented-control-item>
+      <p-segmented-control-item [value]="5" [disabled]="true">columns="5"</p-segmented-control-item>
     </p-segmented-control>
 
     <p-segmented-control
@@ -99,11 +99,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render segmented-control with responsive columns"
       [columns]="{ base: 'auto', xs: 1, s: 2, m: 3, l: 4, xl: 5 }"
     >
-      <p-segmented-control-item [value]="'xs'">XS</p-segmented-control-item>
-      <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
-      <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
-      <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
-      <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
+      <p-segmented-control-item [value]="1">columns responsive</p-segmented-control-item>
+      <p-segmented-control-item [value]="2">columns responsive</p-segmented-control-item>
+      <p-segmented-control-item [value]="3">columns responsive</p-segmented-control-item>
+      <p-segmented-control-item [value]="4">columns responsive</p-segmented-control-item>
+      <p-segmented-control-item [value]="5" [disabled]="true">columns responsive</p-segmented-control-item>
+    </p-segmented-control>
+
+    <p-segmented-control class="playground light" title="should break word and not overflow content" [columns]="5">
+      <p-segmented-control-item [value]="'xs'">Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item>
+      <p-segmented-control-item [value]="'s'">Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item>
+      <p-segmented-control-item [value]="'m'">Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item>
+      <p-segmented-control-item [value]="'l'">Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item>
+      <p-segmented-control-item [value]="'xl'" [disabled]="true"
+        >Pneumonoultramicroscopicsilicovolcanoconiosis</p-segmented-control-item
+      >
     </p-segmented-control>
 
     <div class="playground dark" title="should render segmented-control with labels on dark theme">
