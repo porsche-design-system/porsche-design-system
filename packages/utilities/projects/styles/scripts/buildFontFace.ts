@@ -34,7 +34,7 @@ export const CDN_BASE_PATH = '/${CDN_BASE_PATH_STYLES}';
 export const CDN_BASE_URL = ${CDN_BASE_URL_DYNAMIC} + CDN_BASE_PATH;
 export const FONT_FACE_CDN_FILE_COM = '${cdnFontFacePathCom}';
 export const FONT_FACE_CDN_FILE_CN = '${cdnFontFacePathCn}';
-export const FONT_FACE_CDN_URL = CDN_BASE_URL + (${CDN_BASE_URL_DYNAMIC}.match(/\\.com$/) ? FONT_FACE_CDN_FILE_COM : FONT_FACE_CDN_FILE_CN);
+export const FONT_FACE_CDN_URL = CDN_BASE_URL + '/' + (${CDN_BASE_URL_DYNAMIC}.match(/\\.com$/) ? FONT_FACE_CDN_FILE_COM : FONT_FACE_CDN_FILE_CN);
 `;
 
   const targetDirectory = './src';

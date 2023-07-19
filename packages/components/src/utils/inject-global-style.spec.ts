@@ -7,31 +7,44 @@ beforeEach(() => {
 });
 
 describe('if global styles are missing', () => {
-  it.each<[string, string]>([
-    ['staging', 'http://localhost:3001/styles/font-face.min.css'],
-    ['production', FONT_FACE_CDN_URL],
-  ])(
-    'should call document.head.querySelector() with correct parameters when ROLLUP_REPLACE_IS_STAGING is %s',
-    (rollupReplaceIsStaging, parameter) => {
+  describe('for ROLLUP_REPLACE_IS_STAGING="production"', () => {
+    beforeEach(() => {
       // @ts-ignore
-      ROLLUP_REPLACE_IS_STAGING = rollupReplaceIsStaging;
+      ROLLUP_REPLACE_IS_STAGING = 'production';
+    });
+
+    it('should call document.head.querySelector() with correct parameters', () => {
       const spy = jest.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
-      expect(spy).toBeCalledWith(`link[href="${parameter}"]`);
-    }
-  );
+      expect(spy).toBeCalledWith(`link[href="${FONT_FACE_CDN_URL}"]`);
+    });
 
-  it('should inject font-face.min.css', () => {
-    const selector = `link[href="${FONT_FACE_CDN_URL}"]`;
-    expect(document.head.querySelector(selector)).toBeNull();
-    injectGlobalStyle();
+    it('should inject font-face.min.css', () => {
+      const selector = `link[href="${FONT_FACE_CDN_URL}"]`;
+      expect(document.head.querySelector(selector)).toBeNull();
+      injectGlobalStyle();
 
-    const linkEl: HTMLLinkElement = document.head.querySelector(selector);
-    expect(linkEl).not.toBeNull();
-    expect(linkEl.href).toBe(FONT_FACE_CDN_URL);
-    expect(linkEl.type).toBe('text/css');
-    expect(linkEl.rel).toBe('stylesheet');
+      const linkEl: HTMLLinkElement = document.head.querySelector(selector);
+      expect(linkEl).not.toBeNull();
+      expect(linkEl.href).toBe(FONT_FACE_CDN_URL);
+      expect(linkEl.type).toBe('text/css');
+      expect(linkEl.rel).toBe('stylesheet');
+    });
+  });
+
+  describe('for ROLLUP_REPLACE_IS_STAGING="staging"', () => {
+    beforeEach(() => {
+      // @ts-ignore
+      ROLLUP_REPLACE_IS_STAGING = 'staging';
+    });
+
+    it('should not call document.head.querySelector() when ROLLUP_REPLACE_IS_STAGING="staging"', () => {
+      const spy = jest.spyOn(document.head, 'querySelector');
+      injectGlobalStyle();
+
+      expect(spy).not.toBeCalled();
+    });
   });
 });
 
@@ -41,18 +54,31 @@ describe('if global styles are there', () => {
 <style pds-initial-styles>some styles..</style>`;
   });
 
-  it.each<[string, string]>([
-    ['staging', 'http://localhost:3001/styles/font-face.min.css'],
-    ['production', FONT_FACE_CDN_URL],
-  ])(
-    'should call document.head.querySelector() with correct parameters when ROLLUP_REPLACE_IS_STAGING is %s',
-    (rollupReplaceIsStaging, parameter) => {
+  describe('for ROLLUP_REPLACE_IS_STAGING="production"', () => {
+    beforeEach(() => {
       // @ts-ignore
-      ROLLUP_REPLACE_IS_STAGING = rollupReplaceIsStaging;
+      ROLLUP_REPLACE_IS_STAGING = 'production';
+    });
+
+    it('should call document.head.querySelector() with correct parameters when ROLLUP_REPLACE_IS_STAGING is %s', () => {
       const spy = jest.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
-      expect(spy).toBeCalledWith(`link[href="${parameter}"]`);
-    }
-  );
+      expect(spy).toBeCalledWith(`link[href="${FONT_FACE_CDN_URL}"]`);
+    });
+  });
+
+  describe('for ROLLUP_REPLACE_IS_STAGING="staging"', () => {
+    beforeEach(() => {
+      // @ts-ignore
+      ROLLUP_REPLACE_IS_STAGING = 'staging';
+    });
+
+    it('should not call document.head.querySelector() when ROLLUP_REPLACE_IS_STAGING="staging"', () => {
+      const spy = jest.spyOn(document.head, 'querySelector');
+      injectGlobalStyle();
+
+      expect(spy).not.toBeCalled();
+    });
+  });
 });
