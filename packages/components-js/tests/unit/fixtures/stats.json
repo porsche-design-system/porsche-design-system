@@ -26,8 +26,8 @@
   },
   {
     "chunkShortName": "button-tile",
-    "size": 6838,
-    "gzipSize": 2867
+    "size": 6779,
+    "gzipSize": 2847
   },
   {
     "chunkShortName": "carousel",
@@ -46,8 +46,8 @@
   },
   {
     "chunkShortName": "crest",
-    "size": 2109,
-    "gzipSize": 1124
+    "size": 1987,
+    "gzipSize": 1039
   },
   {
     "chunkShortName": "display",
@@ -96,8 +96,8 @@
   },
   {
     "chunkShortName": "icon",
-    "size": 17697,
-    "gzipSize": 8410
+    "size": 17551,
+    "gzipSize": 8302
   },
   {
     "chunkShortName": "inline-notification",
@@ -121,8 +121,8 @@
   },
   {
     "chunkShortName": "link-tile",
-    "size": 6926,
-    "gzipSize": 2928
+    "size": 6867,
+    "gzipSize": 2906
   },
   {
     "chunkShortName": "link-tile-model-signature",
@@ -131,13 +131,13 @@
   },
   {
     "chunkShortName": "main",
-    "size": 69825,
-    "gzipSize": 23559
+    "size": 70072,
+    "gzipSize": 23638
   },
   {
     "chunkShortName": "marque",
-    "size": 5538,
-    "gzipSize": 2262
+    "size": 5423,
+    "gzipSize": 2165
   },
   {
     "chunkShortName": "modal",
@@ -146,8 +146,8 @@
   },
   {
     "chunkShortName": "model-signature",
-    "size": 2832,
-    "gzipSize": 1460
+    "size": 2878,
+    "gzipSize": 1471
   },
   {
     "chunkShortName": "pagination",
