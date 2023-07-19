@@ -4,7 +4,7 @@ import { getHTMLElements, getTagName, hasAttribute } from '../../../utils';
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { INPUT_HEIGHT } from '../../../styles/form-styles';
 
-const MAX_CHILDREN = 10;
+const MAX_CHILDREN = 9;
 
 export const getSelectWrapperDropdownButtonAriaAttributes = (
   isOpen: boolean,
@@ -67,11 +67,9 @@ export const getOptionAriaAttributes = (option: OptionMap): AriaAttributes => ({
   'aria-label': option.value ? null : 'Empty value',
 });
 
-export const determineDirection = (host: HTMLElement): DropdownDirectionInternal => {
-  const { length } = getHTMLElements(host.shadowRoot, '.option:not([aria-hidden="true"])');
+export const determineDirection = (host: HTMLElement, length: number): DropdownDirectionInternal => {
   const { top } = host.getBoundingClientRect();
-
-  const listHeight = OPTION_HEIGHT * (length > MAX_CHILDREN ? MAX_CHILDREN : length) + 14; // 26 = 2 x 6px padding + 2px border
+  const listHeight = OPTION_HEIGHT * (length > MAX_CHILDREN ? MAX_CHILDREN : length) + 64; // 64 = 2 x 6px padding + 2px border + 50px combobox height
   const spaceBottom = window.innerHeight - top - INPUT_HEIGHT;
   return spaceBottom <= listHeight && top >= listHeight ? 'up' : 'down';
 };

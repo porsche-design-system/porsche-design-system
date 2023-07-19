@@ -107,10 +107,14 @@ export class SelectWrapperDropdown {
   }
 
   public render(): JSX.Element {
+    const totalListboxItems =
+      this.optionMaps.filter((option) => !option.hidden && !option.initiallyHidden).length +
+      this.optionMaps.filter((option) => option.title).length;
+
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.direction === 'auto' ? determineDirection(this.host) : this.direction,
+      this.direction === 'auto' ? determineDirection(this.host, totalListboxItems) : this.direction,
       this.isOpen,
       this.state,
       this.disabled,
