@@ -54,7 +54,7 @@ export class SegmentedControl {
   /** Sets the initial value of the segmented-control. */
   @Prop() public value?: string | number;
 
-  /** Sets the width of the items. */
+  /** Sets the amount of columns. */
   @Prop() public columns?: BreakpointCustomizable<SegmentedControlColumns> = 'auto';
 
   /**
