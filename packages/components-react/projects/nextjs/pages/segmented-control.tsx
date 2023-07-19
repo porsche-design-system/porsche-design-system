@@ -117,12 +117,17 @@ const SegmentedControlPage: NextPage = (): JSX.Element => {
 
       <div className="playground light" title="should break word">
         <PSegmentedControl>
-          <PSegmentedControlItem value={1}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
-          <PSegmentedControlItem value={2}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
-          <PSegmentedControlItem value={3}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
-          <PSegmentedControlItem value={4}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
-          <PSegmentedControlItem value={5} disabled={true}
-            >Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
+          <PSegmentedControlItem value={1}
+            >Break long word Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
+          >
+          <PSegmentedControlItem value={2}
+            >Break long word Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
+          >
+          <PSegmentedControlItem value={3}
+            >Break long word Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
+          >
+          <PSegmentedControlItem value={3}
+            >Break long word Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
           >
         </PSegmentedControl>
       </div>

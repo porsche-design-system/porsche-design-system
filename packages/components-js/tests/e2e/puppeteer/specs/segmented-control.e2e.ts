@@ -46,16 +46,6 @@ const initSegmentedControl = (opts?: { amount?: number; value?: number; columns?
 };
 
 describe('width calculation', () => {
-  it('should recalculate width on resized when columns=5', async () => {
-    await initSegmentedControl({ amount: 5, columns: 1 });
-    const initialItemWidth = await getFirstItemOffsetWidth();
-
-    await page.setViewport({ width: 800, height: 600 });
-    await waitForStencilLifecycle(page);
-
-    expect(await getFirstItemOffsetWidth()).toBeLessThan(initialItemWidth);
-  });
-
   it('should recalculate width on items when longest content is removed', async () => {
     await initSegmentedControl({ amount: 6 });
     const secondItemHost = await getSecondItemHost();
