@@ -10,6 +10,8 @@ if (!navigator.userAgent.includes('Node.js') && !navigator.userAgent.includes('j
   throw new Error('This package should only be used in node and jsdom environments');
 }
 
+window.PORSCHE_DESIGN_SYSTEM_CDN_URL = 'https://cdn.ui.porsche.com';
+
 // skip initial stylesheet fetch
 window.PDS_SKIP_FETCH = true;
 
