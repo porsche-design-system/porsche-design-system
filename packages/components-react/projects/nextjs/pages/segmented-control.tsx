@@ -59,58 +59,73 @@ const SegmentedControlPage: NextPage = (): JSX.Element => {
         </PSegmentedControl>
       </div>
 
-      <PSegmentedControl className="playground light" title="should render segmented-control with columns=1" columns={1}>
-        <PSegmentedControlItem value_1Columns={1}</PSegmentedControlItem>
-        <PSegmentedControlItem value_2Columns={1}</PSegmentedControlItem>
-        <PSegmentedControlItem value_3Columns={1}</PSegmentedControlItem>
-        <PSegmentedControlItem value={4} disabledTrueColumns={1}</PSegmentedControlItem />
+      <div className="playground light" title="should render segmented-control with columns=1">
+        <PSegmentedControl columns={1}>
+          <PSegmentedControlItem value="s" label="Size">columns=1</PSegmentedControlItem>
+          <PSegmentedControlItem value="m" label="Size">columns=1</PSegmentedControlItem>
+          <PSegmentedControlItem value="l" label="Size">columns=1</PSegmentedControlItem>
+          <PSegmentedControlItem value="xl" label="Size" disabled={true}>columns=1</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
 
-      <PSegmentedControl className="playground light" title="should render segmented-control with columns=2" columns={2}>
-        <PSegmentedControlItem value_1Columns={2}</PSegmentedControlItem>
-        <PSegmentedControlItem value_2Columns={2}</PSegmentedControlItem>
-        <PSegmentedControlItem value_3Columns={2}</PSegmentedControlItem>
-        <PSegmentedControlItem value={4} disabledTrueColumns={2}</PSegmentedControlItem />
+      <div className="playground light" title="should render segmented-control with columns=2">
+        <PSegmentedControl columns={2}>
+          <PSegmentedControlItem value={1}>columns=2</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>columns=2</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>columns=2</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} disabled={true}>columns=2</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
 
-      <PSegmentedControl className="playground light" title="should render segmented-control with columns=3" columns={3}>
-        <PSegmentedControlItem value_1Columns={3}</PSegmentedControlItem>
-        <PSegmentedControlItem value_2Columns={3}</PSegmentedControlItem>
-        <PSegmentedControlItem value_3Columns={3}</PSegmentedControlItem>
-        <PSegmentedControlItem value={4} disabledTrueColumns={3}</PSegmentedControlItem />
+      <div className="playground light" title="should render segmented-control with columns=3">
+        <PSegmentedControl columns={3}>
+          <PSegmentedControlItem value={1}>columns=3</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>columns=3</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>columns=3</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} disabled={true}>columns=3</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
 
-      <PSegmentedControl className="playground light" title="should render segmented-control with columns=4" columns={4}>
-        <PSegmentedControlItem value_1Columns={4}</PSegmentedControlItem>
-        <PSegmentedControlItem value_2Columns={4}</PSegmentedControlItem>
-        <PSegmentedControlItem value_3Columns={4}</PSegmentedControlItem>
-        <PSegmentedControlItem value={4} disabledTrueColumns={4}</PSegmentedControlItem />
+      <div className="playground light" title="should render segmented-control with columns=4">
+        <PSegmentedControl columns={4}>
+          <PSegmentedControlItem value={1}>columns=4</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>columns=4</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>columns=4</PSegmentedControlItem>
+          <PSegmentedControlItem value={4} disabled={true}>columns=4</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
 
-      <PSegmentedControl className="playground light" title="should render segmented-control with columns=5" columns={5}>
-        <PSegmentedControlItem value_1Columns={5}</PSegmentedControlItem>
-        <PSegmentedControlItem value_2Columns={5}</PSegmentedControlItem>
-        <PSegmentedControlItem value_3Columns={5}</PSegmentedControlItem>
-        <PSegmentedControlItem value_4Columns={5}</PSegmentedControlItem>
-        <PSegmentedControlItem value={5} disabledTrueColumns={5}</PSegmentedControlItem />
+      <div className="playground light" title="should render segmented-control with columns=5">
+        <PSegmentedControl columns={5}>
+          <PSegmentedControlItem value={1}>columns=5</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>columns=5</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>columns=5</PSegmentedControlItem>
+          <PSegmentedControlItem value={4}>columns=5</PSegmentedControlItem>
+          <PSegmentedControlItem value={5} disabled={true}>columns=5</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
 
-      <PSegmentedControl
-        className="playground light"
-        title="should render segmented-control with responsive columns"
-        columns={{ base: 'auto', xs: 1, s: 2, m: 3, l: 4, xl: 5 }}
-      >
-        <PSegmentedControlItem value={1}>columns responsive</PSegmentedControlItem>
-        <PSegmentedControlItem value={2}>columns responsive</PSegmentedControlItem>
-        <PSegmentedControlItem value={3}>columns responsive</PSegmentedControlItem>
-        <PSegmentedControlItem value={4}>columns responsive</PSegmentedControlItem>
-        <PSegmentedControlItem value={5} disabled={true}>columns responsive</PSegmentedControlItem>
-      </PSegmentedControl>
+      <div className="playground light" title="should render segmented-control with responsive columns">
+        <PSegmentedControl columns={{ base: 'auto', xs: 1, s: 2, m: 3, l: 4, xl: 5 }}>
+          <PSegmentedControlItem value={1}>columns responsive</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>columns responsive</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>columns responsive</PSegmentedControlItem>
+          <PSegmentedControlItem value={4}>columns responsive</PSegmentedControlItem>
+          <PSegmentedControlItem value={5} disabled={true}>columns responsive</PSegmentedControlItem>
+        </PSegmentedControl>
+      </div>
 
-      <PSegmentedControl className="playground light" title="should break word" columns={5}>
-        <PSegmentedControlItem value={1}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
-        <PSegmentedControlItem value={2}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
-        <PSegmentedControlItem value={3}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
-        <PSegmentedControlItem value={4}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
-        <PSegmentedControlItem value={5} disabled={true}
-          >Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
-        >
-      </PSegmentedControl>
+      <div className="playground light" title="should break word">
+        <PSegmentedControl>
+          <PSegmentedControlItem value={1}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
+          <PSegmentedControlItem value={4}>Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem>
+          <PSegmentedControlItem value={5} disabled={true}
+            >Pneumonoultramicroscopicsilicovolcanoconiosis</PSegmentedControlItem
+          >
+        </PSegmentedControl>
+      </div>
 
       <div className="playground dark" title="should render segmented-control with labels on dark theme">
         <PSegmentedControl value="s" theme="dark">
