@@ -210,6 +210,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </span>
       </p-accordion>
     </div>
+
+    <div
+      class="playground light"
+      title="should show correct alignment of accordion icon and link-pure icon on light background"
+    >
+      <p-link-pure [stretch]="true" [alignLabel]="'left'" [href]="'https://www.porsche.com'">Some label</p-link-pure>
+      <p-accordion [heading]="'Heading'"></p-accordion>
+    </div>
+
+    <div
+      class="playground dark"
+      title="should show correct alignment of accordion icon and link-pure icon on dark background"
+    >
+      <p-link-pure [stretch]="true" [alignLabel]="'left'" [href]="'https://www.porsche.com'" [theme]="'dark'">Some label</p-link-pure>
+      <p-accordion [heading]="'Heading'" [theme]="'dark'"></p-accordion>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
