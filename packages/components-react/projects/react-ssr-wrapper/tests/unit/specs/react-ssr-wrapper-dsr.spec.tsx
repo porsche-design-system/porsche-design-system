@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import '@porsche-design-system/components-react/jsdom-polyfill';
 import {
   componentsReady,
   PButton,
@@ -7,7 +8,6 @@ import {
   PSegmentedControl,
   PSegmentedControlItem,
 } from '@porsche-design-system/components-react/ssr';
-import '@porsche-design-system/components-react/jsdom-polyfill';
 
 describe('SSR components', () => {
   it('should have working SSR PLink component', async () => {
@@ -20,14 +20,12 @@ describe('SSR components', () => {
     );
 
     // Check for <template> tags
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelectorAll('template')).toHaveLength(0);
 
     const componentsReadyCount = await componentsReady();
     expect(componentsReadyCount).toBe(1);
 
     // Check if shadowRoot is populated
-    // eslint-disable-next-line testing-library/no-node-access
     const shadowRoot = document.querySelector('p-link').shadowRoot;
     expect(shadowRoot.innerHTML.trim()).not.toBe('');
 
@@ -45,14 +43,12 @@ describe('SSR components', () => {
     );
 
     // Check for <template> tags
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelectorAll('template')).toHaveLength(0);
 
     const componentsReadyCount = await componentsReady();
     expect(componentsReadyCount).toBe(1);
 
     // Check if shadowRoot is populated
-    // eslint-disable-next-line testing-library/no-node-access
     const shadowRoot = document.querySelector('p-button').shadowRoot;
     expect(shadowRoot.innerHTML.trim()).not.toBe('');
 
@@ -76,13 +72,11 @@ describe('SSR components', () => {
     );
 
     // Check for <template> tags
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelectorAll('template')).toHaveLength(0);
 
     const componentsReadyCount = await componentsReady();
     expect(componentsReadyCount).toBe(6);
 
-    // eslint-disable-next-line testing-library/no-node-access
     const component = document.querySelector('p-segmented-control');
 
     // Check if shadowRoot is populated

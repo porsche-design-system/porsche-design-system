@@ -1,10 +1,12 @@
+// needs to be before fromComponents import
+window.PORSCHE_DESIGN_SYSTEM_CDN_URL = 'https://cdn.ui.porsche.com';
+
 import { type JSX } from 'react';
 import { render } from '@testing-library/react';
 import * as fromComponents from '../../../src/lib/components';
 import { PorscheDesignSystemProvider } from '../../../src/provider';
 import * as minifyCssUtils from '../../../src/minifyCss';
-import type { TagName } from '@porsche-design-system/shared';
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { paramCase, pascalCase } from 'change-case';
 import Link from 'next/link';
