@@ -108,7 +108,6 @@ export class SelectWrapperDropdown {
   }
 
   public render(): JSX.Element {
-    console.log(getAmountOfVisibleOptionsAndOptgroups(this.optionMaps));
     attachComponentCss(
       this.host,
       getComponentCss,
