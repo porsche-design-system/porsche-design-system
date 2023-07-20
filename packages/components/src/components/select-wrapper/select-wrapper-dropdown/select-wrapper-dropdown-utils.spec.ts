@@ -24,6 +24,7 @@ import {
   setSelectedOptionMaps,
   getFilterInputAriaAttributes,
   getSelectWrapperDropdownButtonAriaAttributes,
+  getLengthOfVisibleOptionsAndOptgroups,
 } from './select-wrapper-dropdown-utils';
 
 const baseOptionMap: OptionMap = {
@@ -336,6 +337,21 @@ describe('getValidOptions()', () => {
     const result2 = getValidOptions(options);
     expect(result2.length).toBe(1);
     expect(result2[0]).toBe(options[3]);
+  });
+});
+
+describe('getLengthOfVisibleOptionsAndOptgroups()', () => {
+  it('should return number of options that are not hidden or initiallyHidden summed with number of optgroups', () => {
+    const options = generateOptionMaps();
+    const result1 = getLengthOfVisibleOptionsAndOptgroups(options);
+    expect(result1).toBe(options.length);
+
+    options[0].hidden = true;
+    options[1].initiallyHidden = true;
+    options[2].title = 'Some title';
+
+    const result2 = getLengthOfVisibleOptionsAndOptgroups(options);
+    expect(result2).toBe(3);
   });
 });
 
