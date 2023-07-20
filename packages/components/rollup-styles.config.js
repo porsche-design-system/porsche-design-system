@@ -46,7 +46,9 @@ const sharedPlugins = [
     preventAssignment: true,
     ROLLUP_REPLACE_IS_STAGING: isDevBuild ? '"staging"' : '"production"',
     ROLLUP_REPLACE_VERSION: `"${version}"`,
-    ROLLUP_REPLACE_CDN_BASE_URL: '"http://localhost:3001"',
+    ROLLUP_REPLACE_CDN_BASE_URL: isDevBuild
+      ? '"http://localhost:3001"'
+      : 'window.PORSCHE_DESIGN_SYSTEM_CDN_URL + "/porsche-design-system"',
     'process.env.NODE_ENV': '"production"',
   }),
   commonjs(),
