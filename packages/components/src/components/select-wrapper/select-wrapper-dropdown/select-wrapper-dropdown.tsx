@@ -37,7 +37,7 @@ import {
   getFilterInputAriaAttributes,
   setFilteredOptionMaps,
   determineDirection,
-  getLengthOfVisibleOptionsAndOptgroups,
+  getAmountOfVisibleOptionsAndOptgroups,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
@@ -108,11 +108,12 @@ export class SelectWrapperDropdown {
   }
 
   public render(): JSX.Element {
+    console.log(getAmountOfVisibleOptionsAndOptgroups(this.optionMaps));
     attachComponentCss(
       this.host,
       getComponentCss,
       this.direction === 'auto'
-        ? determineDirection(this.host, getLengthOfVisibleOptionsAndOptgroups(this.optionMaps))
+        ? determineDirection(this.host, getAmountOfVisibleOptionsAndOptgroups(this.optionMaps))
         : this.direction,
       this.isOpen,
       this.state,

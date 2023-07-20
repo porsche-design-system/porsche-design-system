@@ -154,10 +154,12 @@ export const getHighlightedOptionMap = (arr: OptionMap[]): OptionMap => arr.find
 export const getValidOptions = (options: OptionMap[]): OptionMap[] =>
   options.filter((item) => !item.hidden && !item.initiallyHidden && !item.disabled);
 
-export const getLengthOfVisibleOptionsAndOptgroups = (options: OptionMap[]): number => {
-  const visibleItems = options.filter((item) => !item.hidden && !item.initiallyHidden).length;
-  const itemsWithOptgroups = options.filter((item) => item.title).length;
-  return visibleItems + itemsWithOptgroups;
+export const getAmountOfVisibleOptionsAndOptgroups = (options: OptionMap[]): number => {
+  return options.reduce((count, { hidden, initiallyHidden, title }) => {
+    count += !hidden && !initiallyHidden ? 1 : 0;
+    count += title ? 1 : 0;
+    return count;
+  }, 0);
 };
 
 export const getMatchingOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
