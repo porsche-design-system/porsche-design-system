@@ -5,7 +5,6 @@
     "target": "ESNext",
     "module": "ESNext",
     "strict": true,
-    "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "skipLibCheck": true,
