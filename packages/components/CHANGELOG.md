@@ -21,10 +21,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Breakpoint customizable property `columns` to `Segmented Control` to set the amount of columns
   ([#2652](https://github.com/porsche-design-system/porsche-design-system/pull/2652))
 
-### Fixed
+#### Fixed
 
 - Alignment of `Icon` inside `Accordion` header
   ([#2673](https://github.com/porsche-design-system/porsche-design-system/pull/2673))
+
+#### Changed
+
+- Use China CDN and set window.PORSCHE_DESIGN_SYSTEM_CDN for backwards compatibility based on .CN top level domain
+  before design system initialization
+  ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
 
 ### [3.4.0] - 2023-07-14
 
