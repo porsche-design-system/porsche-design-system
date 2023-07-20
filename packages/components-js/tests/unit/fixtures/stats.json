@@ -26,8 +26,8 @@
   },
   {
     "chunkShortName": "button-tile",
-    "size": 6838,
-    "gzipSize": 2867
+    "size": 6786,
+    "gzipSize": 2852
   },
   {
     "chunkShortName": "carousel",
@@ -121,8 +121,8 @@
   },
   {
     "chunkShortName": "link-tile",
-    "size": 6926,
-    "gzipSize": 2928
+    "size": 6874,
+    "gzipSize": 2912
   },
   {
     "chunkShortName": "link-tile-model-signature",
@@ -131,8 +131,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 69825,
-    "gzipSize": 23559
+    "size": 69837,
+    "gzipSize": 23566
   },
   {
     "chunkShortName": "marque",
@@ -171,8 +171,8 @@
   },
   {
     "chunkShortName": "segmented-control",
-    "size": 7438,
-    "gzipSize": 2908
+    "size": 7725,
+    "gzipSize": 3025
   },
   {
     "chunkShortName": "select-wrapper",

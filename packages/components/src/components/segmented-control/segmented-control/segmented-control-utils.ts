@@ -17,6 +17,9 @@ export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROU
 
 export type SegmentedControlUpdateEvent = { value: string | number };
 
+export const SEGMENTED_CONTROL_COLUMNS = ['auto', ...Array.from({ length: 25 }, (_, i) => i + 1)];
+export type SegmentedControlColumns = (typeof SEGMENTED_CONTROL_COLUMNS)[number];
+
 // Expect Porsche Next to be available and use sans-serif (wide font for safety buffer) as fallback
 const tempFont = 'Porsche Next, sans-serif';
 
