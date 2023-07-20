@@ -154,6 +154,12 @@ export const getHighlightedOptionMap = (arr: OptionMap[]): OptionMap => arr.find
 export const getValidOptions = (options: OptionMap[]): OptionMap[] =>
   options.filter((item) => !item.hidden && !item.initiallyHidden && !item.disabled);
 
+export const getLengthOfVisibleOptionsAndOptgroups = (options: OptionMap[]): number => {
+  const visibleItems = options.filter((item) => !item.hidden && !item.initiallyHidden).length;
+  const itemsWithOptgroups = options.filter((item) => item.title).length;
+  return visibleItems + itemsWithOptgroups;
+};
+
 export const getMatchingOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
   const lowerCaseSearchString = searchString.toLowerCase();
   return lowerCaseSearchString && options.filter((item) => item.value.toLowerCase() === lowerCaseSearchString);
