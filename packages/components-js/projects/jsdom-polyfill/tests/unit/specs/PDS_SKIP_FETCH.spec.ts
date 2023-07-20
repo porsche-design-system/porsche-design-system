@@ -58,7 +58,7 @@ describe('window.PDS_SKIP_FETCH = false', () => {
     (window as any).PDS_SKIP_FETCH = false;
   });
 
-  // TODO: cant' get this since this is skipped in the jsdom-polyfill entry
+  // TODO: can't get this since this is skipped in the jsdom-polyfill entry
   xit('should fetch font-face css', () => {
     const link = document.querySelector('head').querySelector('link[rel="stylesheet"]');
     console.log(link);
@@ -90,6 +90,6 @@ describe('window.PDS_SKIP_FETCH = false', () => {
 
     const img = document.querySelector('p-icon').shadowRoot.querySelector('img');
 
-    expect(img.src).toBe(`http://localhost:3001/icons/${ICONS_MANIFEST['arrow-right']}`);
+    expect(img.src).toBe(`https://cdn.ui.porsche.com/porsche-design-system/icons/${ICONS_MANIFEST['arrow-right']}`);
   });
 });
