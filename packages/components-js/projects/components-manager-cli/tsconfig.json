@@ -8,7 +8,7 @@
     "sourceMap": true,
     "inlineSources": true,
     "outDir": "./dist",
-    "types": ["node"]
+    "types": ["node", "jest"]
   },
   "include": ["bin/cm.ts"]
 }
