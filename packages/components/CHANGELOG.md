@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 
+- Alignment of `Icon` inside `Accordion` header
+  ([#2673](https://github.com/porsche-design-system/porsche-design-system/pull/2673))
 - Direction of `Select Wrapper` dropdown if `direction` property is set to `auto`
   ([#2677](https://github.com/porsche-design-system/porsche-design-system/pull/2677))
 
