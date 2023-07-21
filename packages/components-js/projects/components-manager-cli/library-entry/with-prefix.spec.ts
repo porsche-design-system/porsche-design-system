@@ -32,19 +32,29 @@ describe('load()', () => {
     expect(spy).toBeCalledWith({ prefix: 'my-prefix', ...global.CM_CONFIG });
   });
 
-  it('should set window.PORSCHE_DESIGN_SYSTEM_CDN to "auto" by default', () => {
+  it('should by default set window.PORSCHE_DESIGN_SYSTEM_CDN="auto"', () => {
     load();
     expect(window.PORSCHE_DESIGN_SYSTEM_CDN).toBe('auto');
   });
 
-  it('should set window.PORSCHE_DESIGN_SYSTEM_CDN to "cn" for window.PORSCHE_DESIGN_SYSTEM_CDN="cn" for backwards compatibility', () => {
+  it('should for { cdn: "auto" } set window.PORSCHE_DESIGN_SYSTEM_CDN="auto"', () => {
+    load({ cdn: 'auto' });
+    expect(window.PORSCHE_DESIGN_SYSTEM_CDN).toBe('auto');
+  });
+
+  it('should for { cdn: "cn" } set window.PORSCHE_DESIGN_SYSTEM_CDN="cn"', () => {
+    load({ cdn: 'cn' });
+    expect(window.PORSCHE_DESIGN_SYSTEM_CDN).toBe('cn');
+  });
+
+  it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="cn" set window.PORSCHE_DESIGN_SYSTEM_CDN="cn" for backwards compatibility', () => {
     window.PORSCHE_DESIGN_SYSTEM_CDN = 'cn';
 
     load();
     expect(window.PORSCHE_DESIGN_SYSTEM_CDN).toBe('cn');
   });
 
-  it('should set window.PORSCHE_DESIGN_SYSTEM_CDN to "cn" for .cn top level domain', () => {
+  it('should for .cn top level domain set window.PORSCHE_DESIGN_SYSTEM_CDN="cn"', () => {
     Object.defineProperty(window, 'location', {
       writable: true,
       value: { origin: 'https://finder.porsche.cn' },
@@ -54,14 +64,14 @@ describe('load()', () => {
     expect(window.PORSCHE_DESIGN_SYSTEM_CDN).toBe('cn');
   });
 
-  it('should set window.PORSCHE_DESIGN_SYSTEM_CDN_URL to "https://cdn.ui.porsche.com" for window.PORSCHE_DESIGN_SYSTEM_CDN="auto"', () => {
+  it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="auto" set window.PORSCHE_DESIGN_SYSTEM_CDN_URL="https://cdn.ui.porsche.com"', () => {
     window.PORSCHE_DESIGN_SYSTEM_CDN = 'auto';
 
     load();
     expect(window.PORSCHE_DESIGN_SYSTEM_CDN_URL).toBe('https://cdn.ui.porsche.com');
   });
 
-  it('should set window.PORSCHE_DESIGN_SYSTEM_CDN_URL to "https://cdn.ui.porsche.com" for non .cn top level domain', () => {
+  it('should for non .cn top level domain set window.PORSCHE_DESIGN_SYSTEM_CDN_URL="https://cdn.ui.porsche.com"', () => {
     Object.defineProperty(window, 'location', {
       writable: true,
       value: { origin: 'https://shop.porsche.com' },
@@ -79,14 +89,14 @@ describe('load()', () => {
     expect(window.PORSCHE_DESIGN_SYSTEM_CDN_URL).toBe('https://cdn.ui.porsche.com');
   });
 
-  it('should set window.PORSCHE_DESIGN_SYSTEM_CDN_URL to "https://cdn.ui.porsche.cn" for window.PORSCHE_DESIGN_SYSTEM_CDN="cn"', () => {
+  it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="cn" set window.PORSCHE_DESIGN_SYSTEM_CDN_URL="https://cdn.ui.porsche.cn"', () => {
     window.PORSCHE_DESIGN_SYSTEM_CDN = 'cn';
 
     load();
     expect(window.PORSCHE_DESIGN_SYSTEM_CDN_URL).toBe('https://cdn.ui.porsche.cn');
   });
 
-  it('should set window.PORSCHE_DESIGN_SYSTEM_CDN_URL to "https://cdn.ui.porsche.cn" for .cn top level domain', () => {
+  it('should for .cn top level domain set window.PORSCHE_DESIGN_SYSTEM_CDN_URL="https://cdn.ui.porsche.cn"', () => {
     Object.defineProperty(window, 'location', {
       writable: true,
       value: { origin: 'https://shop.porsche.cn' },
