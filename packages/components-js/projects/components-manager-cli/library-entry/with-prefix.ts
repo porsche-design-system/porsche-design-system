@@ -23,7 +23,7 @@ export type LoadOptions = {
   cdn?: 'auto' | 'cn';
 };
 
-export const load = (opts: LoadOptions = {}): void => {
+export const load = (opts: LoadOptions = { prefix: '' }): void => {
   const cdnKey = 'PORSCHE_DESIGN_SYSTEM_CDN';
   const cdnUrlKey: 'PORSCHE_DESIGN_SYSTEM_CDN_URL' = `${cdnKey}_URL`;
   // backwards compatibility to detect cdn for older/other pds versions
@@ -31,5 +31,5 @@ export const load = (opts: LoadOptions = {}): void => {
   // this value is used at runtime of web components via getCDNBaseURL() util
   window[cdnUrlKey] = `https://cdn.ui.porsche.${window[cdnKey] === 'cn' ? 'cn' : 'com'}`;
 
-  loadComponentLibrary({ ...CM_CONFIG, prefix: opts.prefix || '' });
+  loadComponentLibrary({ ...CM_CONFIG, prefix: opts.prefix });
 };
