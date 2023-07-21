@@ -13,7 +13,7 @@ const toHash = (str: string): string => crypto.createHash('md5').update(str, 'ut
 
 const checkIfDirectoryExists = async (path: string): Promise<boolean> => {
   try {
-    await fs.promises.access(path, fs.constants.F_OK);
+    fs.accessSync(path, fs.constants.F_OK);
     return true;
   } catch {
     return false;
@@ -22,7 +22,7 @@ const checkIfDirectoryExists = async (path: string): Promise<boolean> => {
 
 const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise<void> => {
   if (await checkIfDirectoryExists(path.resolve('./dist'))) {
-    await fs.promises.rmdir(path.resolve('./dist'), { recursive: true });
+    fs.rmSync(path.resolve('./dist'), { recursive: true });
   }
   fs.mkdirSync(path.resolve('./dist/fonts'), { recursive: true });
 
@@ -58,7 +58,9 @@ export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
 
 (async (): Promise<void> => {
   const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_FONTS}'`;
-  const files = (await globby('./src/**/*.@(woff2)')).sort();
+  const files = (await globby('./src/**/*.@(woff2|ttf)')).sort();
+
+  console.log(files);
 
   await createManifestAndCopyFonts(cdn, files).catch((e) => {
     console.error(e);

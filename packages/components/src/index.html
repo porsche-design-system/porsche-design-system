@@ -10,6 +10,9 @@
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       .playground {
         padding: 1rem;
       }
@@ -36,7 +39,98 @@
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main style="display: grid; grid-template-columns: 200px 1fr; gap: 32px">
+      <div style="position: sticky; top: 0; height: 36px">
+        <div id="scroller" style="overflow: auto hidden; display: flex; gap: 30px; letter-spacing: 5px; height: 50px">
+          <a href="#anchor-blue">Blue</a>
+          <a href="#anchor-orange">Orange</a>
+          <a href="#anchor-red">Red</a>
+          <a href="#anchor-purple">Purple</a>
+          <a href="#anchor-green">Green</a>
+        </div>
+        <!--<p-tabs-bar>
+          <a href="#anchor-blue">Blue</a>
+          <a href="#anchor-orange">Orange</a>
+          <a href="#anchor-red">Red</a>
+          <a href="#anchor-purple">Purple</a>
+          <a href="#anchor-green">Green</a>
+        </p-tabs-bar>-->
+      </div>
+      <div>
+        <div id="anchor-blue" style="background: blue; height: 150vh; scroll-margin-top: 20vh"></div>
+        <div id="anchor-orange" style="background: orange; height: 250vh; scroll-margin-top: 20vh"></div>
+        <div id="anchor-red" style="background: red; height: 100vh; scroll-margin-top: 20vh"></div>
+        <div id="anchor-purple" style="background: purple; height: 350vh; scroll-margin-top: 20vh"></div>
+        <div id="anchor-green" style="background: green; height: 150vh; scroll-margin-top: 20vh"></div>
+      </div>
+      <!--<p-text size="large"
+        >膨大な数の文字のデザインに要する時間や、大容量のフォント
+        ファイルをウェブフォントとして提供する際に必要な技術的インフラストラクチャなど、日本語の書体デザインやフォント開発にはさまざまな課題が立ちふさがります。そこで、規格や技術の開発を進めると同時に、Google
+        Fonts を通じてデザイナーやデベロッパーの皆様に日本語のウェブフォントをお試しいただけるようにしました。</p-text
+      >
+      <p>
+        膨大な数の文字のデザインに要する時間や、大容量のフォント
+        ファイルをウェブフォントとして提供する際に必要な技術的インフラストラクチャなど、日本語の書体デザインやフォント開発にはさまざまな課題が立ちふさがります。そこで、規格や技術の開発を進めると同時に、Google
+        Fonts を通じてデザイナーやデベロッパーの皆様に日本語のウェブフォントをお試しいただけるようにしました。
+      </p>-->
+    </main>
+
+    <script>
+      const scroller = document.querySelector('#scroller');
+      const anchors = document.querySelectorAll('a[href^="#"]');
+      const sections = Array.from(document.querySelectorAll('[id^="anchor"]'));
+
+      anchors.forEach((anchor) => {
+        anchor.addEventListener('click', (e) => {
+          // setTimeout(() => {
+
+          const activeSection = sections.find((section) => section.id === anchor.getAttribute('href').substring(1));
+
+          // anchor.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+          // window.requestAnimationFrame(() => {
+          /* scroller.scrollLeft = 100;
+          setTimeout(() => {
+            scroller.scrollLeft = 150;
+          }, 250);*/
+
+          scroller.scrollTo({ left: anchor.offsetLeft, behavior: 'smooth' });
+          window.scrollTo({ top: activeSection.offsetTop, behavior: 'smooth' });
+
+          // });
+          //activeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          // }, 250);
+
+          // location.hash = e.preventDefault();
+          history.pushState({}, '', anchor.getAttribute('href'));
+          e.preventDefault();
+          // e.stopPropagation();
+        });
+      });
+
+      /*const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
+        const { top, left, bottom, right } = el.getBoundingClientRect();
+        const { innerHeight, innerWidth } = window;
+        return partiallyVisible
+          ? ((top > 0 && top < innerHeight) || (bottom > 0 && bottom < innerHeight)) &&
+              ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
+          : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
+      };
+
+      const sections = Array.from(document.querySelectorAll('[id^="anchor"]'));
+      const tabsBar = document.querySelector('p-tabs-bar');
+
+      let activeSectionId = 0;
+
+      window.addEventListener('scroll', () => {
+        for (const section of sections) {
+          if (elementIsVisibleInViewport(section, true)) {
+            activeSectionId = sections.findIndex((el) => el.id === section.id);
+          }
+        }
+        tabsBar.activeTabIndex = activeSectionId;
+      });*/
+    </script>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->

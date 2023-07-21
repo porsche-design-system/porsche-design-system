@@ -23,6 +23,7 @@ export type GetMinifiedPorscheNextFontFaceCssOptions = {
 export const unicodeRangeMap = {
   cy: 'U+0400-04FF', // cyril
   gr: 'U+0370-03FF', // greek
+  jp: 'U+3000-303F, U+3040-309F, U+30A0-30FF, U+4E00-9FAF', // japanese
   la: 'U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0E00-0E7F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF', // latin (includes vietnamese)
 };
 
@@ -37,12 +38,12 @@ export const getMinifiedPorscheNextFontFaceCss = (opts: GetMinifiedPorscheNextFo
 
   const style: Styles = {
     '@font-face': Object.entries(FONTS_MANIFEST).map(([name, resource]) => {
-      const [, charset, weight] = /porscheNextW(La|Gr|Cy)(Regular|SemiBold|Bold)/.exec(name) || [];
+      const [, charset, weight] = /porscheNextW(La|Gr|Cy|Jp)(Regular|SemiBold|Bold)/.exec(name) || [];
       return {
         fontFamily: 'Porsche Next',
         fontStyle: 'normal',
         fontWeight: fontWeight[camelCase(weight) as keyof typeof fontWeight],
-        src: `url('${cdnUrlMap[cdn]}/${resource}') format('woff2')`,
+        src: `url('${cdnUrlMap[cdn]}/${resource}') format('${resource.split('.').pop()}')`,
         unicodeRange: unicodeRangeMap[charset.toLowerCase() as keyof typeof unicodeRangeMap],
         fontDisplay: 'swap',
       };
