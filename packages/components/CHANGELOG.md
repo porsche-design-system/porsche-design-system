@@ -14,6 +14,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- Angular: `cdn: 'auto' | 'cn'` option to `PorscheDesignSystemModule.load()` as alternative to using
+  window.PORSCHE_DESIGN_SYSTEM_CDN
+- React: `cdn: 'auto' | 'cn'` prop to `PorscheDesignSystemProvider` as alternative to using
+  window.PORSCHE_DESIGN_SYSTEM_CDN
+- Vue: `cdn: 'auto' | 'cn'` prop to `PorscheDesignSystemProvider` as alternative to using
+  window.PORSCHE_DESIGN_SYSTEM_CDN
+
+#### Changed
+
+- Use China CDN and set window.PORSCHE_DESIGN_SYSTEM_CDN for backwards compatibility based on .CN top level domain
+  before design system initialization
+  ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
+
 ### [3.5.0-rc.0] - 2023-07-21
 
 #### Added
@@ -27,12 +42,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Alignment of `Icon` inside `Accordion` header
   ([#2673](https://github.com/porsche-design-system/porsche-design-system/pull/2673))
-
-#### Changed
-
-- Use China CDN and set window.PORSCHE_DESIGN_SYSTEM_CDN for backwards compatibility based on .CN top level domain
-  before design system initialization
-  ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
 
 ### [3.4.0] - 2023-07-14
 
