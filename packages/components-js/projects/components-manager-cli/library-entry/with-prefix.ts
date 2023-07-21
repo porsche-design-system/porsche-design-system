@@ -23,7 +23,7 @@ export type LoadOptions = {
   cdn?: 'auto' | 'cn';
 };
 
-export const load = (opts: LoadOptions): void => {
+export const load = (opts: LoadOptions = {}): void => {
   const cdnKey = 'PORSCHE_DESIGN_SYSTEM_CDN';
   const cdnUrlKey: 'PORSCHE_DESIGN_SYSTEM_CDN_URL' = `${cdnKey}_URL`;
   // backwards compatibility to detect cdn for older/other pds versions
