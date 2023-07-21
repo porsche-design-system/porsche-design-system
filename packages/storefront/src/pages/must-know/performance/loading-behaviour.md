@@ -1,8 +1,8 @@
 # Performance
 
 **Unstyled content** when opening an application or website creates a bad first impression. To prevent this, the Porsche
-Design System offers various **partials** as part of the `@porsche-design-system/components-{js|angular|react}` package
-to ensure all necessary Porsche Design System fonts and components are fully loaded.
+Design System offers various **partials** as part of the `@porsche-design-system/components-{js|angular|react|vue}`
+package to ensure all necessary Porsche Design System fonts and components are fully loaded.
 
 Read further on how to prevent **Flash of Unstyled Content** (FOUC) and **Flash of Unstyled Text** (FOUT) to boost your
 application.
