@@ -7,7 +7,7 @@ export const injectGlobalStyle = (): void => {
     const baseUrl = getCDNBaseURL();
     const styleUrl = `${baseUrl}/styles/${baseUrl.match(/\.cn\//) ? FONT_FACE_CDN_FILE_CN : FONT_FACE_CDN_FILE_COM}`;
     const { head } = document;
-    if (!head.querySelector(`link[href="${styleUrl}"]`)) {
+    if (!head.querySelector(`link[href='${styleUrl}']`)) {
       const link = document.createElement('link');
       link.href = styleUrl;
       link.type = 'text/css';
