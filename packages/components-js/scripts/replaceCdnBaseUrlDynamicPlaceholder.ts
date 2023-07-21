@@ -9,7 +9,10 @@ const packageDir = path.resolve(__dirname, '..');
 const readAndWriteFile = (targetFile: string): void => {
   const oldContent = fs.readFileSync(targetFile, 'utf8');
   const [, windowKey] = oldContent.match(/,window\[([a-z])\]=/) || [];
-  const newContent = oldContent.replace('"%%%CDN_BASE_URL_DYNAMIC%%%', `window[${windowKey}]+"`);
+  const newContent = oldContent.replace(
+    '"%%%CDN_BASE_URL_DYNAMIC%%%',
+    `window[${windowKey || '"PORSCHE_DESIGN_SYSTEM_CDN_URL"'}]+"`
+  );
   fs.writeFileSync(targetFile, newContent);
 
   console.log(`Updated: ${targetFile.replace(packageDir, '.')}`);
