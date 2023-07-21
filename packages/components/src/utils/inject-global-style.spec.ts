@@ -17,11 +17,11 @@ describe('if global styles are missing', () => {
       const spy = jest.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
-      expect(spy).toBeCalledWith(`link[href="${FONT_FACE_CDN_URL}"]`);
+      expect(spy).toBeCalledWith(`link[href='${FONT_FACE_CDN_URL}']`);
     });
 
     it('should inject font-face.min.css', () => {
-      const selector = `link[href="${FONT_FACE_CDN_URL}"]`;
+      const selector = `link[href='${FONT_FACE_CDN_URL}']`;
       expect(document.head.querySelector(selector)).toBeNull();
       injectGlobalStyle();
 
@@ -64,7 +64,7 @@ describe('if global styles are there', () => {
       const spy = jest.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
-      expect(spy).toBeCalledWith(`link[href="${FONT_FACE_CDN_URL}"]`);
+      expect(spy).toBeCalledWith(`link[href='${FONT_FACE_CDN_URL}']`);
     });
   });
 
