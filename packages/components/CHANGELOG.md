@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.5.0-rc.0] - 2023-07-21
+
 #### Added
 
 - `background` property to `Button Tile` and `Link Tile` component to adapt the description and link/button theme when
