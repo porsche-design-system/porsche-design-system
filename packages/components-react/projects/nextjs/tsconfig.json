@@ -6,8 +6,27 @@
     "jsx": "preserve",
     "isolatedModules": true, // added by nextjs cli 🤷‍
     "incremental": true, // added by nextjs cli 🤷‍
-    "lib": ["dom", "dom.iterable", "esnext"] // added by nextjs cli 🤷‍
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ] // added by nextjs cli 🤷‍
+    ,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "tests"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "tests"
+  ]
 }

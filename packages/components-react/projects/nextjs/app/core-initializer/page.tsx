@@ -1,3 +1,4 @@
+'use client';
 /* Auto Generated File */
 import type { NextPage } from 'next';
 import { PTextFieldWrapper } from '@porsche-design-system/components-react/ssr';
@@ -8,7 +9,7 @@ import { componentsReady } from '@porsche-design-system/components-react/ssr';
  * Since React 18, using componentsReady() within useEffect() constantly resolves with `0` in headless Chrome.
  * Therefore, we make it poll and check that more than `0` components are ready.
  */
-export const pollComponentsReady = async (): Promise<number> => {
+const pollComponentsReady = async (): Promise<number> => {
   const amount = await componentsReady();
   if (amount === 0) {
     await new Promise((resolve) => setTimeout(resolve, 50));
@@ -17,7 +18,6 @@ export const pollComponentsReady = async (): Promise<number> => {
     return amount;
   }
 };
-
 
 const CoreInitializerPage: NextPage = (): JSX.Element => {
   const [allReady, setAllReady] = useState(false);
