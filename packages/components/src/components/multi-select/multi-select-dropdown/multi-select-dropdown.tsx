@@ -18,8 +18,6 @@ export class MultiSelectDropdown {
 
   @Prop() public theme?: Theme = 'light';
 
-  // TODO: Validation children must be options
-
   public render(): JSX.Element {
     attachComponentCss(
       this.host,

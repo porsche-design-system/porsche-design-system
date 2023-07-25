@@ -38,9 +38,6 @@ export class MultiSelectOption {
   /** Hides options which are not matching the searchString **/
   private hidden = false;
 
-  // TODO: Validation
-  // TODO: hidden prop?
-
   public componentDidUpdate(): void {
     this.host.dispatchEvent(
       new CustomEvent<MultiSelectOptionUpdateEvent>('internalOptionUpdate', {
