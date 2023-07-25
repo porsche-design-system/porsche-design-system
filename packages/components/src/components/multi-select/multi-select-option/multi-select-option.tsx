@@ -63,6 +63,7 @@ export class MultiSelectOption {
           class={{
             ['option']: true,
             ['option--selected']: this.selected,
+            // ['option--highlighted']: this.selected,
             ['option--disabled']: this.disabled,
             ['option--hidden']: this.hidden,
           }}

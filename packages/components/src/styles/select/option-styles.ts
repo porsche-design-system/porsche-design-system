@@ -5,7 +5,7 @@ import { getHiddenTextJssStyle, getTransition } from '../common-styles';
 import { hoverMediaQuery } from '../hover-media-query';
 import { JssStyle, Styles } from 'jss';
 
-export const getSelectOptionStyles = (theme: Theme): Styles => {
+export const getSelectOptionStyles = (theme: Theme, additionalOptionJSSStyle?: JssStyle): Styles => {
   const { primaryColor, contrastHighColor, backgroundSurfaceColor, disabledColor } = getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();
 
@@ -41,6 +41,7 @@ export const getSelectOptionStyles = (theme: Theme): Styles => {
       '&--hidden': {
         display: 'none',
       },
+      ...additionalOptionJSSStyle,
     },
   };
 };

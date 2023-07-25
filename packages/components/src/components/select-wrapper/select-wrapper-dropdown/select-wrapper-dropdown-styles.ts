@@ -2,15 +2,7 @@ import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper
 import type { Theme } from '../../../types';
 import type { JssStyle, Styles } from 'jss';
 import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
-import {
-  getInsetJssStyle,
-  getTransition,
-  getThemedColors,
-  addImportantToRule,
-  hoverMediaQuery,
-  getHighContrastColors,
-  getHiddenTextJssStyle,
-} from '../../../styles';
+import { addImportantToRule, getInsetJssStyle, getThemedColors, getTransition, hoverMediaQuery } from '../../../styles';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -23,6 +15,7 @@ import {
 import { OPTION_HEIGHT } from '../select-wrapper/select-wrapper-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { FormState } from '../../../utils/form/form-state';
+import { getSelectOptionStyles } from '../../../styles/select/option-styles';
 
 const dropdownPositionVar = '--p-internal-dropdown-position';
 
@@ -153,15 +146,7 @@ export const getFilterStyles = (
 
 export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme): Styles => {
   const isDirectionDown = direction === 'down';
-  const {
-    primaryColor,
-    backgroundColor,
-    contrastMediumColor,
-    contrastHighColor,
-    backgroundSurfaceColor,
-    disabledColor,
-  } = getThemedColors(theme);
-  const { highlightColor } = getHighContrastColors();
+  const { primaryColor, backgroundColor, contrastMediumColor } = getThemedColors(theme);
 
   return {
     '@global': {
@@ -195,45 +180,12 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
       },
     },
-    option: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      gap: '12px',
-      padding: `${spacingStaticSmall} 12px`,
-      flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
-      color: contrastHighColor,
-      cursor: 'pointer',
-      textAlign: 'left',
-      wordBreak: 'break-word',
-      boxSizing: 'border-box',
-      borderRadius: borderRadiusSmall,
-      transition: ['background-color', 'color'].map(getTransition).join(),
-      '&[role=status]': {
-        cursor: 'not-allowed',
-      },
-      '&__sr': getHiddenTextJssStyle(),
-      ...hoverMediaQuery({
-        '&:not([aria-disabled]):not([role=status]):hover': {
-          color: isHighContrastMode ? highlightColor : primaryColor,
-          background: backgroundSurfaceColor,
-        },
-      }),
-      '&--highlighted, &--selected': {
-        color: isHighContrastMode ? highlightColor : primaryColor,
-        background: backgroundSurfaceColor,
-      },
+    ...getSelectOptionStyles(theme, {
       '&--selected': {
         cursor: 'default',
         pointerEvents: 'none',
       },
-      '&--disabled': {
-        cursor: 'not-allowed',
-        color: disabledColor,
-      },
-      '&--hidden': {
-        display: 'none',
-      },
-    },
+    }),
     optgroup: {
       display: 'block',
       padding: '3px 14px',
