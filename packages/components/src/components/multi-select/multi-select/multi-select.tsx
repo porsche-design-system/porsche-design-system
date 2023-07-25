@@ -141,7 +141,7 @@ export class MultiSelect {
           <div class="input-container" ref={(el) => (this.inputContainer = el)}>
             <input
               placeholder={this.selectedString || null}
-              autoComplete="off" // TODO: Does not work on newer versions of chrome
+              autoComplete="none" // autoComplete="off" is ignored by newer browser versions but using any non recognized string works
               onInput={this.onFilterChange}
               onClick={this.onInputClick}
               disabled={this.disabled}
