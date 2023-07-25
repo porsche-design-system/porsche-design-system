@@ -71,7 +71,7 @@ export class MultiSelectOption {
           }}
           onClick={this.onClick}
         >
-          <PrefixedTagNames.pCheckboxWrapper>
+          <PrefixedTagNames.pCheckboxWrapper class="checkbox">
             <input type="checkbox" checked={this.selected} disabled={this.disabled} />
             <slot slot="label" />
           </PrefixedTagNames.pCheckboxWrapper>
