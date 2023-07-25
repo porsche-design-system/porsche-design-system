@@ -1,6 +1,6 @@
 import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getThemedColors, getTransition } from '../../../styles';
+import { addImportantToEachRule, getThemedColors, getTransition, hostHiddenStyles } from '../../../styles';
 import { borderRadiusSmall, spacingStaticSmall, textSmallStyle } from '../../../../../utilities/projects/utilities';
 import { OPTION_HEIGHT } from '../../select-wrapper/select-wrapper/select-wrapper-styles';
 import { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
@@ -11,6 +11,10 @@ export const getComponentCss = (isOpen: boolean, direction: SelectDropdownDirect
 
   return getCss({
     '@global': addImportantToEachRule({
+      ':host': {
+        display: 'block',
+        position: 'relative',
+      },
       ul: {
         position: 'absolute',
         margin: '0',

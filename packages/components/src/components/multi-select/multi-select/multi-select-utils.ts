@@ -1,3 +1,7 @@
+import { FormState } from '../../../utils/form/form-state';
+
+export type MultiSelectState = FormState;
+
 export const syncNativeSelect = (
   nativeSelect: HTMLSelectElement,
   host: HTMLElement,

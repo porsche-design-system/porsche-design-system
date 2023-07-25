@@ -23,6 +23,8 @@ import { getLabelStyles } from '../../../styles/form-styles';
 import { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { getPlaceholderStyles } from '../../../styles/placeholder';
 import { getNoResultsOptionJSSStyles } from '../../../styles/select/option-styles';
+import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
+import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
 const inputYPadding = '13px';
 
@@ -88,6 +90,8 @@ export const getComponentCss = (
       boxSizing: 'border-box',
       ...getNoResultsOptionJSSStyles(),
     },
+    ...getFunctionalComponentRequiredStyles(),
+    ...getFunctionalComponentStateMessageStyles(theme, state),
   });
 };
 

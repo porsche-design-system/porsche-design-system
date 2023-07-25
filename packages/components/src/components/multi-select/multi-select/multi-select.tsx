@@ -2,6 +2,7 @@ import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop, State
 import { MultiSelectOptionUpdateEvent } from '../multi-select-option/multi-select-option-utils';
 import {
   hasFilterResults,
+  MultiSelectState,
   syncNativeSelect,
   updateMultiSelectOptionsFilterState,
   updateNativeOption,
@@ -10,9 +11,11 @@ import {
 import {
   AllowedTypes,
   attachComponentCss,
+  FORM_STATES,
   getPrefixedTagNames,
   hasDescription,
   hasLabel,
+  hasMessage,
   isClickOutside,
   isRequiredAndParentNotRequired,
   observeAttributes,
@@ -25,11 +28,14 @@ import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
 import { SELECT_DROPDOWN_DIRECTIONS, SelectDropdownDirection } from '../../../utils/select/select-dropdown';
 import { determineDirection } from '../../select-wrapper/select-wrapper-dropdown/select-wrapper-dropdown-utils';
+import { StateMessage } from '../../common/state-message/state-message';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
+  state: AllowedTypes.oneOf<MultiSelectState>(FORM_STATES),
+  message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   disabled: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
@@ -52,6 +58,12 @@ export class MultiSelect {
 
   /** This attribute is used to specify the name of the control. */
   @Prop() public name: string;
+
+  /** The validation state. */
+  @Prop() public state?: MultiSelectState = 'none';
+
+  /** The message styled depending on validation state. */
+  @Prop() public message?: string = '';
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
@@ -114,7 +126,7 @@ export class MultiSelect {
       this.isOpen,
       this.disabled,
       this.hideLabel,
-      'none',
+      this.state,
       this.theme
     );
 
@@ -180,6 +192,9 @@ export class MultiSelect {
             <slot onSlotchange={() => this.updateOptions()} />
           </PrefixedTagNames.pMultiSelectDropdown>
         </div>
+        {hasMessage(this.host, this.message, this.state) && (
+          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        )}
       </Host>
     );
   }

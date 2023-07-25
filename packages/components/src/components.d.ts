@@ -39,6 +39,7 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+import { MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
 import { SelectDropdownDirection } from "./utils/select/select-dropdown";
 import { MultiSelectDropdownDirection } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
@@ -98,6 +99,7 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+export { MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
 export { SelectDropdownDirection } from "./utils/select/select-dropdown";
 export { MultiSelectDropdownDirection } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
@@ -1107,6 +1109,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
           * This attribute is used to specify the name of the control.
          */
         "name": string;
@@ -1114,6 +1120,10 @@ export namespace Components {
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
          */
         "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: MultiSelectState;
         /**
           * Adapts the select color depending on the theme.
          */
@@ -3301,6 +3311,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
           * This attribute is used to specify the name of the control.
          */
         "name"?: string;
@@ -3308,6 +3322,10 @@ declare namespace LocalJSX {
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
          */
         "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: MultiSelectState;
         /**
           * Adapts the select color depending on the theme.
          */
