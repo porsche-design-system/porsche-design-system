@@ -9,9 +9,12 @@ export const syncNativeSelect = (
   nativeSelect.name = name;
   nativeSelect.disabled = disabled;
   nativeSelect.required = required;
-  nativeSelect.hidden = true;
-  if (!host.querySelector('SELECT')) {
-    host.prepend(nativeSelect);
+  nativeSelect.style.opacity = '0';
+  nativeSelect.style.display = 'block';
+  nativeSelect.style.height = '0px';
+  nativeSelect.ariaHidden = 'true';
+  if (host.nextElementSibling !== nativeSelect) {
+    host.after(nativeSelect);
   }
 };
 

@@ -10,12 +10,12 @@ import {
 import {
   AllowedTypes,
   attachComponentCss,
-  getDirectChildHTMLElements,
   getPrefixedTagNames,
   hasLabel,
   isClickOutside,
   observeAttributes,
   THEMES,
+  throwIfChildrenAreNotOfKind,
   validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
@@ -68,7 +68,6 @@ export class MultiSelect {
   // TODO: only render nativeSelect if isWithinForm
   private nativeSelect: HTMLSelectElement = document.createElement('select');
   private multiSelectOptions: HTMLPMultiSelectOptionElement[];
-  // private filteredMultiSelectOptions: HTMLPMultiSelectOptionElement[] = [];
   private inputContainer: HTMLDivElement;
   private multiSelectDropdown: HTMLElement;
   private inputElement: HTMLInputElement;
@@ -129,9 +128,11 @@ export class MultiSelect {
           <div class="input-container" ref={(el) => (this.inputContainer = el)}>
             <input
               placeholder={this.selectedString || null}
-              autoComplete="off"
+              autoComplete="off" // TODO: Does not work on newer versions of chrome
               onInput={this.onFilterChange}
               onClick={this.onInputClick}
+              disabled={this.disabled}
+              required={this.required}
               ref={(el) => (this.inputElement = el)}
             />
             <PrefixedTagNames.pIcon
@@ -177,9 +178,8 @@ export class MultiSelect {
   };
 
   private defineMultiSelectOptions(): void {
-    // TODO: Validation
-    // TODO: Prefix
-    this.multiSelectOptions = getDirectChildHTMLElements(this.host, 'p-multi-select-option');
+    throwIfChildrenAreNotOfKind(this.host, 'p-multi-select-option');
+    this.multiSelectOptions = Array.from(this.host.children) as HTMLPMultiSelectOptionElement[];
   }
 
   private onFilterChange = (e: Event): void => {

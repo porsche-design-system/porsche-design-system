@@ -103,6 +103,7 @@ const getInputJSSStyles = (isDisabled: boolean, theme: Theme): Styles => {
       appearance: 'none',
       background: 'transparent',
       ...textSmallStyle,
+      textOverflow: 'ellipsis',
       '&:not(:focus)': {
         ...getPlaceholderStyles({ color: primaryColor }),
       },

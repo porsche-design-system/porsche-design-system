@@ -38,8 +38,9 @@
 
     <main>
       <form id="myForm" method="post">
-        <p-multi-select name="name" label="Some Label">
-          <p-multi-select-option value="Test">Test</p-multi-select-option>
+        <p-multi-select name="name" label="Some Label" required>
+          <p-multi-select-option value="Test">Längere Option ausgewhält</p-multi-select-option>
+          <p-multi-select-option value="Test">Test 2</p-multi-select-option>
         </p-multi-select>
 
         <!--        <p-multi-select name="name2" label="Some Label">-->
@@ -62,16 +63,18 @@
         <!--        </p-fieldset>-->
 
         <!--        <button type="button" id="toggle">Toggle required</button>-->
+
+        <p-select-wrapper filter="true" label="Some label" description="Some description">
+          <select name="some-name" required>
+            <option hidden></option>
+            <option value="a">Extra lange option zum test was passiert</option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+          </select>
+        </p-select-wrapper>
+
         <button type="submit">Submit</button>
       </form>
-
-      <p-select-wrapper filter="true" label="Some label" description="Some description">
-        <select name="some-name">
-          <option value="a">Option A</option>
-          <option value="b">Option B</option>
-          <option value="c">Option C</option>
-        </select>
-      </p-select-wrapper>
 
       <!--      <p-select-wrapper filter="true" label="Some label" description="Some description">-->
       <!--        <select name="some-name">-->
