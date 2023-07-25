@@ -14,6 +14,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.5.0] - 2023-07-25
+
+### [3.5.0-rc.0] - 2023-07-21
+
+#### Added
+
+- `background` property to `Button Tile` and `Link Tile` component to adapt the description and link/button theme when
+  used on light background image ([#2669](https://github.com/porsche-design-system/porsche-design-system/pull/2669))
+- Breakpoint customizable property `columns` to `Segmented Control` to set the amount of columns
+  ([#2652](https://github.com/porsche-design-system/porsche-design-system/pull/2652))
+
+### Fixed
+
+- Alignment of `Icon` inside `Accordion` header
+  ([#2673](https://github.com/porsche-design-system/porsche-design-system/pull/2673))
+
+### [3.4.0] - 2023-07-14
+
+### [3.4.0-rc.0] - 2023-07-13
+
 #### Added
 
 - React: `'use client';` directive is applied on all components for main and `ssr` sub-package
@@ -23,6 +43,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Fixes regression in `observeChildren` that affected nested components (e.g. incorrect rendering of nested `Tabs`).
   ([#2649](https://github.com/porsche-design-system/porsche-design-system/pull/2649))
+- Click behaviour of slotted interactive elements of `Carousel`
+  ([#2663](https://github.com/porsche-design-system/porsche-design-system/pull/2663))
 
 ### [3.3.0] - 2023-07-07
 

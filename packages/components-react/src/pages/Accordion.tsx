@@ -211,6 +211,22 @@ export const AccordionPage = (): JSX.Element => {
           </span>
         </PAccordion>
       </div>
+
+      <div
+        className="playground light"
+        title="should show correct alignment of accordion icon and link-pure icon on light background"
+      >
+        <PLinkPure stretch={true} alignLabel="left" href="https://www.porsche.com">Some label</PLinkPure>
+        <PAccordion heading="Heading" />
+      </div>
+
+      <div
+        className="playground dark"
+        title="should show correct alignment of accordion icon and link-pure icon on dark background"
+      >
+        <PLinkPure stretch={true} alignLabel="left" href="https://www.porsche.com" theme="dark">Some label</PLinkPure>
+        <PAccordion heading="Heading" theme="dark" />
+      </div>
     </>
   );
 };

@@ -15,8 +15,20 @@
         'example--spacing-block': mergedConfig.spacing === 'block',
         'example--spacing-block-small': mergedConfig.spacing === 'block-small',
         'example--overflow-x-visible': mergedConfig.overflowX === 'visible',
+        'example--fullscreen': isFullWindow,
       }"
     >
+      <p-button
+        v-if="config.supportsFullWindow"
+        class="btn-fullscreen"
+        type="button"
+        :icon="isFullWindow ? 'zoom-in' : 'zoom-out'"
+        :aria="JSON.stringify({ 'aria-expanded': isFullWindow })"
+        @click="toggleFullscreen()"
+      >
+        {{ isFullWindow ? 'Minimize' : 'Maximize' }}
+      </p-button>
+
       <div
         v-if="isSlotSet"
         :class="{
@@ -26,7 +38,9 @@
       >
         <slot :theme="theme" />
       </div>
+
       <div v-if="markup" ref="demo" class="demo" v-html="cleanedDemoMarkup"></div>
+
       <template v-if="codeBlockMarkup">
         <CodeBlock
           :class="{ 'code-block--framework': hasFrameworkMarkup }"
@@ -69,6 +83,7 @@
     spacing: 'none' | 'inline' | 'block' | 'block-small';
     overflowX: 'auto' | 'visible';
     withoutDemo: boolean;
+    supportsFullWindow: boolean;
   };
 
   export const initialConfig: PlaygroundConfig = {
@@ -78,6 +93,7 @@
     spacing: 'none',
     overflowX: 'auto',
     withoutDemo: false,
+    supportsFullWindow: false,
   };
 
   const themeableComponentsSelector = Object.entries(componentMeta)
@@ -99,6 +115,7 @@
     @Prop({ default: '' }) public markup!: string;
 
     getExternalDependenciesOrThrow = getExternalDependenciesOrThrow;
+    isFullWindow = false;
 
     public mounted(): void {
       if (this.config.themeable) {
@@ -115,6 +132,21 @@
     public switchTheme(theme: Theme): void {
       this.$store.commit('setTheme', theme);
     }
+
+    public toggleFullscreen(): void {
+      this.isFullWindow = !this.isFullWindow;
+      document.body.style.overflow = this.isFullWindow ? 'hidden' : '';
+      document.body[this.isFullWindow ? 'addEventListener' : 'removeEventListener'](
+        'keydown',
+        this.onFullScreenKeyDown
+      );
+    }
+
+    private onFullScreenKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        this.toggleFullscreen();
+      }
+    };
 
     public get cleanedEditorMarkup(): string {
       return this.hasFrameworkMarkup ? this.codeBlockMarkup : cleanMarkup(this.codeBlockMarkup);
@@ -189,6 +221,7 @@
   @import '../styles/internal.variables';
 
   .example {
+    position: relative;
     padding: $pds-spacing-static-large;
     overflow-x: auto;
     margin-top: $pds-spacing-static-small;
@@ -278,5 +311,27 @@
         max-height: 40rem;
       }
     }
+
+    &--fullscreen {
+      position: fixed;
+      inset: 0;
+      overflow: auto;
+      z-index: 999;
+      margin: 0;
+      padding-top: 0;
+      border: 0;
+      border-radius: 0;
+
+      .demo {
+        margin: 0 (-$pds-spacing-static-large);
+      }
+    }
+  }
+
+  .btn-fullscreen {
+    position: absolute;
+    top: $pds-spacing-static-small;
+    right: $pds-spacing-static-small;
+    z-index: 1; // to be above certain examples
   }
 </style>

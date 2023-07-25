@@ -76,6 +76,17 @@ export const LinkTilePage = (): JSX.Element => {
         </PLinkTile>
       </div>
 
+      <div className="playground light grid" title="should render background='light' on light background">
+        <PLinkTile href="#" label="Some label" description="Background light" background="light">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width={50}
+            height={50}
+            alt="Some alt text"
+          />
+        </PLinkTile>
+      </div>
+
       <div className="playground light grid" title="should render different aspect ratios on light background">
         <PLinkTile href="#" label="Some label" description="Aspect ratio 16:9" aspectRatio="16:9">
           <img
