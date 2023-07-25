@@ -39,9 +39,8 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { SelectDropdownDirection } from "./utils/select/dropdown";
+import { SelectDropdownDirection } from "./utils/select/select-dropdown";
 import { MultiSelectDropdownDirection } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
-import { MultiSelectOptionUpdateEvent } from "./components/multi-select/multi-select-option/multi-select-option-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
@@ -99,9 +98,8 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-export { SelectDropdownDirection } from "./utils/select/dropdown";
+export { SelectDropdownDirection } from "./utils/select/select-dropdown";
 export { MultiSelectDropdownDirection } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
-export { MultiSelectOptionUpdateEvent } from "./components/multi-select/multi-select-option/multi-select-option-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
@@ -1746,10 +1744,6 @@ export interface PModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPModalElement;
 }
-export interface PMultiSelectOptionCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPMultiSelectOptionElement;
-}
 export interface PPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPPaginationElement;
@@ -3321,10 +3315,6 @@ declare namespace LocalJSX {
           * Disables the option.
          */
         "disabled"?: boolean;
-        /**
-          * Emitted when the option state changes.
-         */
-        "onUpdate"?: (event: PMultiSelectOptionCustomEvent<MultiSelectOptionUpdateEvent>) => void;
         /**
           * The option selected state.
          */

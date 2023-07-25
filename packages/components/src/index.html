@@ -41,9 +41,13 @@
         <p-multi-select name="name" label="Some Label">
           <p-multi-select-option value="Test">Test</p-multi-select-option>
         </p-multi-select>
+
+        <!--        <p-multi-select name="name2" label="Some Label">-->
+        <!--          <p-multi-select-option value="Test">Test</p-multi-select-option>-->
+        <!--        </p-multi-select>-->
         <!--        <select name="name" multiple>-->
         <!--          <option value="a">Option A</option>-->
-        <!--          <option value="b">Option B</option>-->
+        <!--          <option value="a">Option A</option>-->
         <!--          <option value="c">Option C</option>-->
         <!--        </select>-->
         <!--        <p-fieldset required>-->
@@ -68,6 +72,15 @@
           <option value="c">Option C</option>
         </select>
       </p-select-wrapper>
+
+      <!--      <p-select-wrapper filter="true" label="Some label" description="Some description">-->
+      <!--        <select name="some-name">-->
+      <!--          <option></option>-->
+      <!--          <option value="a">Option A</option>-->
+      <!--          <option value="b">Option B</option>-->
+      <!--          <option value="c">Option C</option>-->
+      <!--        </select>-->
+      <!--      </p-select-wrapper>-->
     </main>
 
     <script>
@@ -97,27 +110,33 @@
         }
       });
 
-      setTimeout(() => {
-        const option = document.createElement('p-multi-select-option');
-        option.value = 'Option 2';
-        option.setAttribute('value', 'Option 2');
-        option.selected = true;
-        option.innerText = 'Option 2';
-        multiSelect.appendChild(option);
-        console.log('Slot of p-multi-select was changed');
-      }, 1000);
-
-      setTimeout(() => {
-        const options = document.querySelectorAll('p-multi-select-option');
-        Array.from(options).at(-1).value = 'New Value';
-        console.log('Value of p-multi-select-option was changed');
-      }, 2000);
-
-      setTimeout(() => {
-        const options = document.querySelectorAll('p-multi-select-option');
-        Array.from(options).at(-1).innerHTML = 'New Value';
-        console.log('Slot content of p-multi-select-option was changed');
-      }, 3000);
+      // setTimeout(() => {
+      //   const option = document.createElement('p-multi-select-option');
+      //   option.value = 'Option 2';
+      //   option.setAttribute('value', 'Option 2');
+      //   option.selected = false;
+      //   option.innerText = 'Option 2';
+      //   multiSelect.appendChild(option);
+      //   console.log('Slot of p-multi-select was changed');
+      // }, 1000);
+      //
+      // setTimeout(() => {
+      //   const options = document.querySelectorAll('p-multi-select-option');
+      //   Array.from(options).at(-1).value = 'New Value';
+      //   console.log('Value of p-multi-select-option was changed');
+      // }, 2000);
+      //
+      // setTimeout(() => {
+      //   const options = document.querySelectorAll('p-multi-select-option');
+      //   Array.from(options).at(-1).selected = true;
+      //   console.log('p-multi-select-option was set selected');
+      // }, 3000);
+      //
+      // setTimeout(() => {
+      //   const options = document.querySelectorAll('p-multi-select-option');
+      //   Array.from(options).at(-1).disabled = true;
+      //   console.log('p-multi-select-option was set disabled');
+      // }, 4000);
 
       // setTimeout(() => {
       //   const options = document.querySelectorAll('p-multi-select-option');
