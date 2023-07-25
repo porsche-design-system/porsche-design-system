@@ -1,5 +1,5 @@
-'use client';
 /* Auto Generated File */
+'use client';
 import type { NextPage } from 'next';
 import { PTextFieldWrapper } from '@porsche-design-system/components-react/ssr';
 import { useEffect, useState } from 'react';
@@ -18,6 +18,7 @@ const pollComponentsReady = async (): Promise<number> => {
     return amount;
   }
 };
+
 
 const CoreInitializerPage: NextPage = (): JSX.Element => {
   const [allReady, setAllReady] = useState(false);

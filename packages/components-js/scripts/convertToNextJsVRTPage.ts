@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { convertToReactVRTPage, ReactCharacteristics } from './convertToReactVRTPage';
+import { paramCase } from 'change-case';
 
 const sourceBasePath = path.resolve(__dirname, '../../components-react/src');
 const pollComponentsReadyFilePath = path.resolve(sourceBasePath, 'pollComponentsReady.ts');
@@ -11,10 +12,17 @@ const pollComponentsReadyFileContent = fs
 export const convertToNextJsVRTPage = (
   ...params: [string, string, string, string, string, string, ReactCharacteristics]
 ): { fileName: string; fileContent: string } => {
-  const { fileContent: convertedFileContent } = convertToReactVRTPage(...params);
+  const { fileName: convertedFileName, fileContent: convertedFileContent } = convertToReactVRTPage(...params);
 
+  const pagesWithClientHooks: string[] = ['checkbox-wrapper', 'core-initializer'];
+  const fileName = paramCase(convertedFileName.replace(/\.tsx/, ''));
   let newFileContent = convertedFileContent
-    .replace(/\/\* Auto Generated File \*\//, "$&\nimport type { NextPage } from 'next';")
+    .replace(
+      /\/\* Auto Generated File \*\//,
+      pagesWithClientHooks.includes(fileName)
+        ? "$&\n'use client';\nimport type { NextPage } from 'next';"
+        : "$&\nimport type { NextPage } from 'next';"
+    )
     .replace(/import { pollComponentsReady } from '\.\.\/pollComponentsReady';/, pollComponentsReadyFileContent)
     .replace(/import { Toast } from '/, '$&../')
     .replace(

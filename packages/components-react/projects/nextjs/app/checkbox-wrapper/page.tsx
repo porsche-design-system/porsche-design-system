@@ -1,5 +1,5 @@
-'use client';
 /* Auto Generated File */
+'use client';
 import type { NextPage } from 'next';
 import { PCheckboxWrapper } from '@porsche-design-system/components-react/ssr';
 import { useEffect } from 'react';
@@ -66,16 +66,10 @@ const CheckboxWrapperPage: NextPage = (): JSX.Element => {
       </div>
 
       <div className="playground light" title="should render with responsive label">
-        <PCheckboxWrapper
-          label="Some label"
-          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
-        >
+        <PCheckboxWrapper label="Some label" hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
           <input type="checkbox" name="some-name" />
         </PCheckboxWrapper>
-        <PCheckboxWrapper
-          label="Some label"
-          hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}
-        >
+        <PCheckboxWrapper label="Some label" hideLabel={{ base: true, xs: false, s: true, m: false, l: true, xl: false }}>
           <input type="checkbox" name="some-name" defaultChecked />
         </PCheckboxWrapper>
       </div>
@@ -275,15 +269,15 @@ const CheckboxWrapperPage: NextPage = (): JSX.Element => {
         <PCheckboxWrapper state="error">
           <span slot="label">
             <span>
-              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,{' '}
-              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <input type="checkbox" name="some-name" />
           <span slot="message">
             <span>
-              Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,{' '}
-              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </PCheckboxWrapper>
@@ -293,15 +287,15 @@ const CheckboxWrapperPage: NextPage = (): JSX.Element => {
         <PCheckboxWrapper theme="dark" state="error">
           <span slot="label">
             <span>
-              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,{' '}
-              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <input type="checkbox" name="some-name" />
           <span slot="message">
             <span>
-              Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,{' '}
-              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </PCheckboxWrapper>
@@ -311,15 +305,15 @@ const CheckboxWrapperPage: NextPage = (): JSX.Element => {
         <PCheckboxWrapper state="success">
           <span slot="label">
             <span>
-              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,{' '}
-              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <input type="checkbox" name="some-name" />
           <span slot="message">
             <span>
-              Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,{' '}
-              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </PCheckboxWrapper>
@@ -329,15 +323,15 @@ const CheckboxWrapperPage: NextPage = (): JSX.Element => {
         <PCheckboxWrapper theme="dark" state="success">
           <span slot="label">
             <span>
-              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,{' '}
-              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+              {' '}<em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
           <input type="checkbox" name="some-name" />
           <span slot="message">
             <span>
-              Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,{' '}
-              <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+              Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
             </span>
           </span>
         </PCheckboxWrapper>
