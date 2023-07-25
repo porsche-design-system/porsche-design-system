@@ -1087,6 +1087,10 @@ export namespace Components {
     }
     interface PMultiSelect {
         /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
           * This Boolean attribute indicates that the user cannot interact with the control. If this attribute is not specified, the control inherits its setting from the containing element, for example <fieldset>; if there is no containing element with the disabled attribute set, then the control is enabled.
          */
         "disabled"?: boolean;
@@ -3276,6 +3280,10 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PMultiSelect {
+        /**
+          * The description text.
+         */
+        "description"?: string;
         /**
           * This Boolean attribute indicates that the user cannot interact with the control. If this attribute is not specified, the control inherits its setting from the containing element, for example <fieldset>; if there is no containing element with the disabled attribute set, then the control is enabled.
          */

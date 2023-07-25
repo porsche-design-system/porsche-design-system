@@ -13,6 +13,7 @@ import {
   borderWidthBase,
   spacingStaticMedium,
   spacingStaticSmall,
+  spacingStaticXSmall,
   textSmallStyle,
 } from '../../../../../utilities/projects/utilities';
 import { Styles } from 'jss';
@@ -66,7 +67,7 @@ export const getComponentCss = (
         [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
       }),
     },
-    ...getLabelStyles('select', isDisabled, hideLabel, state, theme),
+    ...getLabelStyles('select', isDisabled, hideLabel, state, theme, undefined, { marginBottom: spacingStaticXSmall }),
     icon: {
       padding: `${inputYPadding} 15px`, // Horizontal padding spacingStaticMedium - 1px for visual balance
       cursor: isDisabled ? 'not-allowed' : 'pointer',

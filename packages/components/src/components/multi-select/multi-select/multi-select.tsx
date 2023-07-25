@@ -11,6 +11,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasDescription,
   hasLabel,
   isClickOutside,
   observeAttributes,
@@ -26,6 +27,7 @@ import { determineDirection } from '../../select-wrapper/select-wrapper-dropdown
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
+  description: AllowedTypes.string,
   name: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   disabled: AllowedTypes.boolean,
@@ -43,6 +45,9 @@ export class MultiSelect {
 
   /** The label text. */
   @Prop() public label?: string = '';
+
+  /** The description text. */
+  @Prop() public description?: string = '';
 
   /** This attribute is used to specify the name of the control. */
   @Prop() public name: string;
@@ -113,18 +118,25 @@ export class MultiSelect {
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const shouldRenderLabel =
+      (!this.hideLabel && hasLabel(this.host, this.label)) || hasDescription(this.host, this.description);
 
     return (
       <Host>
         <div class="root">
-          <label class="label">
-            {!this.hideLabel && hasLabel(this.host, this.label) && (
-              <span class="label__text">
-                {this.label || <slot name="label" />}
-                {this.required && <Required />}
-              </span>
-            )}
-          </label>
+          {shouldRenderLabel && (
+            <label class="label">
+              {!this.hideLabel && hasLabel(this.host, this.label) && (
+                <span class="label__text">
+                  {this.label || <slot name="label" />}
+                  {this.required && <Required />}
+                </span>
+              )}
+              {hasDescription(this.host, this.description) && (
+                <span class="label__text">{this.description || <slot name="description" />}</span>
+              )}
+            </label>
+          )}
           <div class="input-container" ref={(el) => (this.inputContainer = el)}>
             <input
               placeholder={this.selectedString || null}
