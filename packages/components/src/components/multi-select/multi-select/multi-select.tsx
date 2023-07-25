@@ -14,6 +14,7 @@ import {
   hasDescription,
   hasLabel,
   isClickOutside,
+  isRequiredAndParentNotRequired,
   observeAttributes,
   THEMES,
   throwIfChildrenAreNotOfKind,
@@ -129,7 +130,7 @@ export class MultiSelect {
               {!this.hideLabel && hasLabel(this.host, this.label) && (
                 <span class="label__text">
                   {this.label || <slot name="label" />}
-                  {this.required && <Required />}
+                  {isRequiredAndParentNotRequired(this.host, this.nativeSelect) && <Required />}
                 </span>
               )}
               {hasDescription(this.host, this.description) && (
