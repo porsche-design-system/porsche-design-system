@@ -40,6 +40,7 @@ import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
+import { PinCodeType } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
@@ -97,6 +98,7 @@ export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
+export { PinCodeType } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
@@ -1135,6 +1137,32 @@ export namespace Components {
          */
         "totalItemsCount": number;
     }
+    interface PPinCode {
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * Number of characters of the pin code.
+         */
+        "length": number;
+        /**
+          * Mask the pin code.
+         */
+        "mask"?: boolean;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Pin code type.
+         */
+        "type"?: PinCodeType;
+    }
     interface PPopover {
         /**
           * Add ARIA attributes.
@@ -1959,6 +1987,12 @@ declare global {
         prototype: HTMLPPaginationElement;
         new (): HTMLPPaginationElement;
     };
+    interface HTMLPPinCodeElement extends Components.PPinCode, HTMLStencilElement {
+    }
+    var HTMLPPinCodeElement: {
+        prototype: HTMLPPinCodeElement;
+        new (): HTMLPPinCodeElement;
+    };
     interface HTMLPPopoverElement extends Components.PPopover, HTMLStencilElement {
     }
     var HTMLPPopoverElement: {
@@ -2178,6 +2212,7 @@ declare global {
         "p-modal": HTMLPModalElement;
         "p-model-signature": HTMLPModelSignatureElement;
         "p-pagination": HTMLPPaginationElement;
+        "p-pin-code": HTMLPPinCodeElement;
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-scroller": HTMLPScrollerElement;
@@ -3275,6 +3310,32 @@ declare namespace LocalJSX {
          */
         "totalItemsCount"?: number;
     }
+    interface PPinCode {
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * Number of characters of the pin code.
+         */
+        "length"?: number;
+        /**
+          * Mask the pin code.
+         */
+        "mask"?: boolean;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Pin code type.
+         */
+        "type"?: PinCodeType;
+    }
     interface PPopover {
         /**
           * Add ARIA attributes.
@@ -3906,6 +3967,7 @@ declare namespace LocalJSX {
         "p-modal": PModal;
         "p-model-signature": PModelSignature;
         "p-pagination": PPagination;
+        "p-pin-code": PPinCode;
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-scroller": PScroller;
@@ -4002,6 +4064,7 @@ declare module "@stencil/core" {
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
+            "p-pin-code": LocalJSX.PPinCode & JSXBase.HTMLAttributes<HTMLPPinCodeElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-scroller": LocalJSX.PScroller & JSXBase.HTMLAttributes<HTMLPScrollerElement>;

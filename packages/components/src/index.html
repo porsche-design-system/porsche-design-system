@@ -36,7 +36,17 @@
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main>
+      <p-pin-code length="6" type="number">
+        <span slot="label" id="some-label-id"
+          >Some label with a <a href="https://designsystem.porsche.com">link</a>.</span
+        >
+        <span slot="description" id="some-description-id"
+          >Some description with a <a href="https://designsystem.porsche.com">link</a>.</span
+        >
+        <input type="hidden" />
+      </p-pin-code>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
