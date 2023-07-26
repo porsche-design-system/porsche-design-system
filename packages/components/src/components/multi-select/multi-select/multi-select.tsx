@@ -1,9 +1,15 @@
 import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop, State } from '@stencil/core';
 import { MultiSelectOptionUpdateEvent } from '../multi-select-option/multi-select-option-utils';
 import {
+  getHighlightedOption,
   hasFilterResults,
   MultiSelectState,
+  resetHighlightedOptions,
+  setFirstOptionHighlighted,
+  setHighlightedOption,
+  setLastOptionHighlighted,
   syncNativeSelect,
+  updateHighlightedOption,
   updateMultiSelectOptionsFilterState,
   updateNativeOption,
   updateNativeSelectOptions,
@@ -27,10 +33,10 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
 import {
+  determineDropdownDirection,
   SELECT_DROPDOWN_DIRECTIONS,
   SelectDropdownDirection,
   SelectDropdownDirectionInternal,
-  determineDropdownDirection,
 } from '../../../utils/select/select-dropdown';
 import { StateMessage } from '../../common/state-message/state-message';
 
@@ -162,6 +168,7 @@ export class MultiSelect {
               onClick={this.onInputClick}
               disabled={this.disabled}
               required={this.required}
+              onKeyDown={this.onComboboxKeyDown}
               ref={(el) => (this.inputElement = el)}
             />
             <PrefixedTagNames.pIcon
@@ -273,4 +280,54 @@ export class MultiSelect {
   private resetFilter = (): void => {
     this.inputElement.value = '';
   };
+
+  private onComboboxKeyDown = (e: KeyboardEvent): void => {
+    switch (e.key) {
+      case 'ArrowUp':
+      case 'Up':
+        e.preventDefault();
+        this.cycleDropdown('up');
+        break;
+      case 'ArrowDown':
+      case 'Down':
+        e.preventDefault();
+        this.cycleDropdown('down');
+        break;
+      case ' ':
+      case 'Spacebar':
+      case 'Enter':
+        const highlightedOption = getHighlightedOption(this.multiSelectOptions);
+        if (highlightedOption) {
+          highlightedOption.selected = !highlightedOption.selected;
+        }
+        break;
+      case 'Escape':
+      case 'Tab':
+        this.isOpen = false;
+        resetHighlightedOptions(this.multiSelectOptions);
+        break;
+      case 'PageUp':
+        if (this.isOpen) {
+          e.preventDefault();
+          setFirstOptionHighlighted(this.host, this.multiSelectOptions);
+        }
+        break;
+      case 'PageDown':
+        if (this.isOpen) {
+          e.preventDefault();
+          setLastOptionHighlighted(this.host, this.multiSelectOptions);
+        }
+        break;
+      default:
+      // if (!this.filter) {
+      //   // TODO: seems to be difficult to combine multiple keys as native select does
+      //   this.optionMaps = setHighlightedFirstMatchingOptionMaps(this.optionMaps, e.key);
+      // }
+    }
+  };
+
+  private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
+    this.isOpen = true;
+    updateHighlightedOption(this.host, this.multiSelectOptions, direction);
+  }
 }

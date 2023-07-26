@@ -1,11 +1,5 @@
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getPrefixedTagNames,
-  unobserveChildren,
-  validateProps,
-} from '../../../utils';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../../utils';
 import { MultiSelectOptionUpdateEvent } from './multi-select-option-utils';
 import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './multi-select-option-styles';
@@ -47,10 +41,6 @@ export class MultiSelectOption {
     );
   }
 
-  public disconnectedCallback(): void {
-    unobserveChildren(this.host);
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.theme);
@@ -63,7 +53,6 @@ export class MultiSelectOption {
           class={{
             ['option']: true,
             ['option--selected']: this.selected,
-            // ['option--highlighted']: this.selected,
             ['option--disabled']: this.disabled,
             ['option--hidden']: this.hidden,
           }}

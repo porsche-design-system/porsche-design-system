@@ -35,7 +35,7 @@ export const getComponentCss = (isOpen: boolean, direction: SelectDropdownDirect
         maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
-        scrollBehavior: 'smooth',
+        // scrollBehavior: 'smooth',
         border: `2px solid ${primaryColor}`,
         [isDirectionDown ? 'borderTop' : 'borderBottom']: 'none',
         borderRadius: borderRadiusSmall,

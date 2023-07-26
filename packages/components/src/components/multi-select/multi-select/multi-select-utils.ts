@@ -1,4 +1,6 @@
 import { FormState } from '../../../utils/form/form-state';
+import { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
+import { getPrefixedTagNames } from '../../../utils';
 
 export type MultiSelectState = FormState;
 
@@ -17,6 +19,7 @@ export const syncNativeSelect = (
   nativeSelect.style.display = 'block';
   nativeSelect.style.height = '0px';
   nativeSelect.ariaHidden = 'true';
+  nativeSelect.tabIndex = -1;
   if (host.nextElementSibling !== nativeSelect) {
     host.after(nativeSelect);
   }
@@ -57,7 +60,92 @@ export const updateMultiSelectOptionsFilterState = (
 };
 
 export const optionIncludesSearchString = (option: HTMLPMultiSelectOptionElement, searchString: string): boolean =>
-  option.value.toLowerCase().includes(searchString.toLowerCase());
+  option.textContent.toLowerCase().includes(searchString.toLowerCase());
 
 export const hasFilterResults = (options: HTMLPMultiSelectOptionElement[]): boolean =>
-  options?.some((item) => !item.hidden);
+  options?.some((option) => !option.hidden);
+
+export const getValidOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement[] =>
+  options.filter((option) => !option.hidden && !option.disabled);
+
+export const getHighlightedOption = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement =>
+  options.find((option) => option.shadowRoot.querySelector('.option').classList.contains('option--highlighted'));
+
+export const setHighlightedOption = (option: HTMLPMultiSelectOptionElement, highlighted: boolean): void =>
+  option.shadowRoot.querySelector('.option').classList[highlighted ? 'add' : 'remove']('option--highlighted');
+
+export const getHighlightedOptionIndex = (options: HTMLPMultiSelectOptionElement[]): number =>
+  options.findIndex((option) => option === getHighlightedOption(options));
+
+export const setNextOptionHighlighted = (
+  host: HTMLElement,
+  options: HTMLPMultiSelectOptionElement[],
+  newIndex: number
+): void => {
+  const oldIndex = getHighlightedOptionIndex(options);
+  if (oldIndex !== -1) {
+    setHighlightedOption(options[oldIndex], false);
+  }
+  setHighlightedOption(options[newIndex], true);
+  handleScroll(
+    host.shadowRoot.querySelector(getPrefixedTagNames(host).pMultiSelectDropdown).shadowRoot.querySelector('ul'),
+    options[newIndex]
+  );
+};
+
+export const setFirstOptionHighlighted = (host: HTMLElement, options: HTMLPMultiSelectOptionElement[]): void => {
+  const validOptions = getValidOptions(options);
+  setNextOptionHighlighted(host, options, options.indexOf(validOptions[0]));
+};
+
+export const setLastOptionHighlighted = (host: HTMLElement, options: HTMLPMultiSelectOptionElement[]): void => {
+  const validOptions = getValidOptions(options);
+  setNextOptionHighlighted(host, options, options.indexOf(validOptions.at(-1)));
+};
+
+export const resetHighlightedOptions = (options: HTMLPMultiSelectOptionElement[]): void =>
+  options.forEach((option) => setHighlightedOption(option, false));
+
+export const getNewOptionIndex = (
+  options: HTMLPMultiSelectOptionElement[],
+  direction: SelectDropdownDirectionInternal
+): number => {
+  const validItems = getValidOptions(options);
+  const validMax = validItems.length - 1;
+  // prob. needs to be <= 0
+  if (validMax < 0) {
+    return;
+  }
+  const oldIndex = getHighlightedOptionIndex(options);
+  let newIndex = oldIndex;
+  if (direction === 'down') {
+    newIndex = oldIndex < validMax ? oldIndex + 1 : 0;
+  } else if (direction === 'up') {
+    newIndex = oldIndex > 0 ? oldIndex - 1 : validMax;
+  }
+
+  return options.indexOf(validItems[newIndex]);
+};
+
+export const updateHighlightedOption = (
+  host: HTMLElement,
+  options: HTMLPMultiSelectOptionElement[],
+  direction: SelectDropdownDirectionInternal
+): void => {
+  const newIndex = getNewOptionIndex(options, direction);
+  setNextOptionHighlighted(host, options, newIndex);
+};
+
+/**
+ * Handles scrolling within the list to ensure that the highlighted item is always visible.
+ * @param {HTMLElement} scrollElement - The HTML element to be scrolled.
+ * @param {HTMLElement} element - The element to scroll to.
+ * @returns {void}
+ */
+export const handleScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
+  const { maxHeight } = getComputedStyle(scrollElement);
+  const hostElementHeight = parseInt(maxHeight, 10);
+  if (scrollElement.scrollHeight > hostElementHeight) {
+    element.scrollIntoView();
+  }
+};
