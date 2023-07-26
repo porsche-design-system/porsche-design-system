@@ -5,6 +5,8 @@ import { getHiddenTextJssStyle, getTransition } from '../common-styles';
 import { hoverMediaQuery } from '../hover-media-query';
 import { JssStyle, Styles } from 'jss';
 
+export const OPTION_HEIGHT = 40; // optgroups are higher and ignored
+
 export const getSelectOptionStyles = (theme: Theme, additionalOptionJSSStyle?: JssStyle): Styles => {
   const { primaryColor, contrastHighColor, backgroundSurfaceColor, disabledColor } = getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();

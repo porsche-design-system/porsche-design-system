@@ -40,8 +40,7 @@ import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
-import { SelectDropdownDirection } from "./utils/select/select-dropdown";
-import { MultiSelectDropdownDirection } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
+import { SelectDropdownDirection, SelectDropdownDirectionInternal } from "./utils/select/select-dropdown";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
@@ -100,8 +99,7 @@ export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
-export { SelectDropdownDirection } from "./utils/select/select-dropdown";
-export { MultiSelectDropdownDirection } from "./components/multi-select/multi-select-dropdown/multi-select-dropdown-utils";
+export { SelectDropdownDirection, SelectDropdownDirectionInternal } from "./utils/select/select-dropdown";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
@@ -1138,7 +1136,7 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PMultiSelectDropdown {
-        "direction"?: MultiSelectDropdownDirection;
+        "direction": SelectDropdownDirectionInternal;
         "isOpen": boolean;
         "theme"?: Theme;
     }
@@ -3352,7 +3350,7 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PMultiSelectDropdown {
-        "direction"?: MultiSelectDropdownDirection;
+        "direction"?: SelectDropdownDirectionInternal;
         "isOpen"?: boolean;
         "theme"?: Theme;
     }

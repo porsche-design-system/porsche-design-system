@@ -26,8 +26,12 @@ import {
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
-import { SELECT_DROPDOWN_DIRECTIONS, SelectDropdownDirection } from '../../../utils/select/select-dropdown';
-import { determineDirection } from '../../select-wrapper/select-wrapper-dropdown/select-wrapper-dropdown-utils';
+import {
+  SELECT_DROPDOWN_DIRECTIONS,
+  SelectDropdownDirection,
+  SelectDropdownDirectionInternal,
+  determineDropdownDirection,
+} from '../../../utils/select/select-dropdown';
 import { StateMessage } from '../../common/state-message/state-message';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
@@ -122,7 +126,7 @@ export class MultiSelect {
       this.host,
       getComponentCss,
       this.nativeSelect.selectedOptions.length > 0,
-      this.dropdownDirection === 'auto' ? determineDirection(this.host) : this.dropdownDirection,
+      this.getDropdownDirection(),
       this.isOpen,
       this.disabled,
       this.hideLabel,
@@ -179,6 +183,7 @@ export class MultiSelect {
           </div>
           <PrefixedTagNames.pMultiSelectDropdown
             isOpen={this.isOpen}
+            direction={this.getDropdownDirection()}
             onOpenChange={this.onDropdownOpenChange}
             theme={this.theme}
             ref={(el) => (this.multiSelectDropdown = el)}
@@ -242,6 +247,17 @@ export class MultiSelect {
 
   private onDropdownOpenChange = (isOpen: boolean): void => {
     this.isOpen = isOpen;
+  };
+
+  private getDropdownDirection = (): SelectDropdownDirectionInternal => {
+    if (this.dropdownDirection !== 'auto') {
+      return this.dropdownDirection;
+    }
+    if (this.inputContainer && this.multiSelectOptions) {
+      const visibleOptionsLength = this.multiSelectOptions.filter((option) => !option.hidden).length;
+      return determineDropdownDirection(this.inputContainer, visibleOptionsLength);
+    }
+    return 'down';
   };
 
   private observeAttributes(): void {

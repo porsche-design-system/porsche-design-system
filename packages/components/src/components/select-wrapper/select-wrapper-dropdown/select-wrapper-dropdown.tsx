@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/core';
 import {
   attachComponentCss,
+  getHTMLElements,
   getPrefixedTagNames,
   isClickOutside,
   isSsrHydration,
@@ -16,31 +17,31 @@ import type {
 } from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
 import {
-  getListAriaAttributes,
   getDropdownVisibility,
+  getFilterInputAriaAttributes,
   getHighlightedOptionMapIndex,
+  getListAriaAttributes,
   getMatchingOptionMaps,
   getNewOptionMapIndex,
   getOptionAriaAttributes,
   getOptionMaps,
   getOptionsElements,
   getSelectedOptionMap,
+  getSelectWrapperDropdownButtonAriaAttributes,
   handleScroll,
+  hasFilterResults,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
+  setFilteredOptionMaps,
   setFirstHighlightedOptionMaps,
+  setHighlightedFirstMatchingOptionMaps,
   setHighlightedOptionMaps,
   setLastHighlightedOptionMaps,
   setSelectedOptionMaps,
-  getSelectWrapperDropdownButtonAriaAttributes,
-  setHighlightedFirstMatchingOptionMaps,
-  hasFilterResults,
-  getFilterInputAriaAttributes,
-  setFilteredOptionMaps,
-  determineDirection,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
+import { determineDropdownDirection } from '../../../utils/select/select-dropdown';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
@@ -111,7 +112,12 @@ export class SelectWrapperDropdown {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.direction === 'auto' ? determineDirection(this.host) : this.direction,
+      this.direction === 'auto'
+        ? determineDropdownDirection(
+            this.host,
+            getHTMLElements(this.host.shadowRoot, '.option:not([aria-hidden="true"])').length
+          )
+        : this.direction,
       this.isOpen,
       this.state,
       this.disabled,

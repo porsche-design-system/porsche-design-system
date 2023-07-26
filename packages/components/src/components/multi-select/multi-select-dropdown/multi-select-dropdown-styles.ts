@@ -2,11 +2,14 @@ import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, getThemedColors, getTransition } from '../../../styles';
 import { borderRadiusSmall, spacingStaticSmall, textSmallStyle } from '../../../../../utilities/projects/utilities';
-import { OPTION_HEIGHT } from '../../select-wrapper/select-wrapper/select-wrapper-styles';
 import { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
+import { INPUT_HEIGHT } from '../../../styles/form-styles';
+
+export const OPTION_HEIGHT = 40;
 
 export const getComponentCss = (isOpen: boolean, direction: SelectDropdownDirectionInternal, theme: Theme): string => {
   const isDirectionDown = direction === 'down';
+  console.log(direction);
   const { primaryColor, backgroundColor } = getThemedColors(theme);
 
   return getCss({
@@ -27,7 +30,7 @@ export const getComponentCss = (isOpen: boolean, direction: SelectDropdownDirect
         zIndex: 10,
         left: 0,
         right: 0,
-        [isDirectionDown ? 'top' : 'bottom']: '100%',
+        [isDirectionDown ? 'top' : 'bottom']: isDirectionDown ? '100%' : `${INPUT_HEIGHT - 1}px`,
         boxSizing: 'border-box',
         maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
         overflowY: 'auto',
