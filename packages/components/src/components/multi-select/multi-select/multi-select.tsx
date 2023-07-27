@@ -6,7 +6,6 @@ import {
   MultiSelectState,
   resetHighlightedOptions,
   setFirstOptionHighlighted,
-  setHighlightedOption,
   setLastOptionHighlighted,
   syncNativeSelect,
   updateHighlightedOption,

@@ -9,7 +9,6 @@ export const OPTION_HEIGHT = 40;
 
 export const getComponentCss = (isOpen: boolean, direction: SelectDropdownDirectionInternal, theme: Theme): string => {
   const isDirectionDown = direction === 'down';
-  console.log(direction);
   const { primaryColor, backgroundColor } = getThemedColors(theme);
 
   return getCss({
