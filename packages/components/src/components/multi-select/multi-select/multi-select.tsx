@@ -2,7 +2,7 @@ import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop, State
 import { MultiSelectOptionUpdateEvent } from '../multi-select-option/multi-select-option-utils';
 import {
   getHighlightedOption,
-  hasFilterResults,
+  hasFilterOptionResults,
   MultiSelectState,
   resetHighlightedOptions,
   setFirstOptionHighlighted,
@@ -21,9 +21,9 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
+  hasPropValueChanged,
   isClickOutside,
   isRequiredAndParentNotRequired,
-  observeAttributes,
   THEMES,
   throwIfChildrenAreNotOfKind,
   unobserveAttributes,
@@ -79,10 +79,10 @@ export class MultiSelect {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** This Boolean attribute indicates that the user cannot interact with the control. If this attribute is not specified, the control inherits its setting from the containing element, for example <fieldset>; if there is no containing element with the disabled attribute set, then the control is enabled. */
-  @Prop() public disabled? = false;
+  @Prop() public disabled?: boolean = false;
 
   /** A Boolean attribute indicating that an option with a non-empty string value must be selected. */
-  @Prop() public required? = false;
+  @Prop() public required?: boolean = false;
 
   /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -95,7 +95,7 @@ export class MultiSelect {
 
   // TODO: only render nativeSelect if isWithinForm
   private nativeSelect: HTMLSelectElement = document.createElement('select');
-  private multiSelectOptions: HTMLPMultiSelectOptionElement[];
+  private multiSelectOptions: HTMLPMultiSelectOptionElement[] = [];
   private inputContainer: HTMLDivElement;
   private multiSelectDropdown: HTMLElement;
   private inputElement: HTMLInputElement;
@@ -109,17 +109,19 @@ export class MultiSelect {
   }
 
   public connectedCallback(): void {
-    this.observeAttributes(); // on every reconnect
     syncNativeSelect(this.nativeSelect, this.host, this.name, this.disabled, this.required);
   }
 
   public componentWillLoad(): void {
-    this.observeAttributes(); // on every reconnect
     document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
   public componentDidLoad(): void {
     this.updateOptions();
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public disconnectedCallback(): void {
@@ -151,13 +153,15 @@ export class MultiSelect {
           {shouldRenderLabel && (
             <label class="label">
               {!this.hideLabel && hasLabel(this.host, this.label) && (
-                <span class="label__text">
+                <span class="label__text" onClick={() => this.inputElement.focus()}>
                   {this.label || <slot name="label" />}
                   {isRequiredAndParentNotRequired(this.host, this.nativeSelect) && <Required />}
                 </span>
               )}
               {hasDescription(this.host, this.description) && (
-                <span class="label__text">{this.description || <slot name="description" />}</span>
+                <span class="label__text" onClick={() => this.inputElement.focus()}>
+                  {this.description || <slot name="description" />}
+                </span>
               )}
             </label>
           )}
@@ -196,7 +200,7 @@ export class MultiSelect {
             theme={this.theme}
             ref={(el) => (this.multiSelectDropdown = el)}
           >
-            {!hasFilterResults(this.multiSelectOptions) && (
+            {!hasFilterOptionResults(this.multiSelectOptions) && (
               <li class="no-results" aria-live="polite" role="status">
                 <span aria-hidden="true">---</span>
                 <span class="no-results__sr">No results found</span>
@@ -228,7 +232,7 @@ export class MultiSelect {
       this.resetFilter();
     } else {
       updateMultiSelectOptionsFilterState((e.target as HTMLInputElement).value, this.multiSelectOptions);
-      // TODO: Is this necessary?
+      // TODO: Is this necessary in order to show No results found?
       forceUpdate(this.host);
     }
     // in case input is focused via tab instead of click
@@ -261,16 +265,12 @@ export class MultiSelect {
     if (this.dropdownDirection !== 'auto') {
       return this.dropdownDirection;
     }
-    if (this.inputContainer && this.multiSelectOptions) {
+    if (this.inputContainer) {
       const visibleOptionsLength = this.multiSelectOptions.filter((option) => !option.hidden).length;
       return determineDropdownDirection(this.inputContainer, visibleOptionsLength);
     }
     return 'down';
   };
-
-  private observeAttributes(): void {
-    observeAttributes(this.nativeSelect, ['disabled', 'required'], () => forceUpdate(this.host));
-  }
 
   private onClickOutside = (e: MouseEvent): void => {
     if (this.isOpen && isClickOutside(e, this.inputContainer) && isClickOutside(e, this.multiSelectDropdown)) {
@@ -294,8 +294,6 @@ export class MultiSelect {
         e.preventDefault();
         this.cycleDropdown('down');
         break;
-      case ' ':
-      case 'Spacebar':
       case 'Enter':
         const highlightedOption = getHighlightedOption(this.multiSelectOptions);
         if (highlightedOption) {
@@ -320,15 +318,14 @@ export class MultiSelect {
         }
         break;
       default:
-      // if (!this.filter) {
-      //   // TODO: seems to be difficult to combine multiple keys as native select does
-      //   this.optionMaps = setHighlightedFirstMatchingOptionMaps(this.optionMaps, e.key);
-      // }
+      // TODO: seems to be difficult to combine multiple keys as native select does
     }
   };
 
   private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
     this.isOpen = true;
     updateHighlightedOption(this.host, this.multiSelectOptions, direction);
+    // TODO: Is this necessary only to update aria-activedescendant?
+    forceUpdate(this.host);
   }
 }
