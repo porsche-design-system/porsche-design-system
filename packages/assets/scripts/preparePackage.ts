@@ -5,7 +5,7 @@ const rootDirectory = path.resolve(__dirname, '..');
 const targetDirectory = path.resolve(rootDirectory, 'dist');
 
 // read and remove props from package.json
-const propsToRemove = ['scripts', 'dependencies', 'devDependencies', 'files', 'bin'];
+const propsToRemove = ['scripts', 'dependencies', 'devDependencies', 'files', 'bin', 'volta'];
 const pkgJson = require('../package.json');
 propsToRemove.forEach((prop) => Reflect.deleteProperty(pkgJson, prop));
 

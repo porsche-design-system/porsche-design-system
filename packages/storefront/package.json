@@ -73,5 +73,8 @@
     "vue-template-compiler": "^2.7.10",
     "whatwg-fetch": "^3.6.2"
   },
-  "scope": "@porsche-design-system"
+  "scope": "@porsche-design-system",
+  "volta": {
+    "extends": "../../package.json"
+  }
 }

@@ -17,5 +17,8 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
   }
 }
