@@ -50,6 +50,7 @@ export class MultiSelectOption {
     return (
       <Host>
         <li
+          role="option"
           class={{
             ['option']: true,
             ['option--selected']: this.selected,
