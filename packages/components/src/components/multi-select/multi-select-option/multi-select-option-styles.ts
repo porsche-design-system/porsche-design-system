@@ -1,7 +1,7 @@
 import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
 import { getSelectOptionStyles } from '../../../styles/select/option-styles';
-import { addImportantToEachRule } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { spacingStaticSmall } from '../../../../../utilities/projects/utilities';
 
 export const getComponentCss = (theme: Theme): string => {
@@ -9,6 +9,7 @@ export const getComponentCss = (theme: Theme): string => {
     '@global': addImportantToEachRule({
       ':host': {
         scrollMarginTop: spacingStaticSmall,
+        ...hostHiddenStyles,
       },
     }),
     ...getSelectOptionStyles(theme),
