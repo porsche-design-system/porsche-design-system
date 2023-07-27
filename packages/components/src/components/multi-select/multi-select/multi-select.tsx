@@ -26,6 +26,7 @@ import {
   observeAttributes,
   THEMES,
   throwIfChildrenAreNotOfKind,
+  unobserveAttributes,
   validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
@@ -123,6 +124,7 @@ export class MultiSelect {
 
   public disconnectedCallback(): void {
     document.removeEventListener('mousedown', this.onClickOutside, true);
+    unobserveAttributes(this.nativeSelect);
   }
 
   public render(): JSX.Element {
