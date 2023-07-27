@@ -8,7 +8,8 @@ import { JssStyle, Styles } from 'jss';
 export const OPTION_HEIGHT = 40; // optgroups are higher and ignored
 
 export const getSelectOptionStyles = (theme: Theme, additionalOptionJSSStyle?: JssStyle): Styles => {
-  const { primaryColor, contrastHighColor, backgroundSurfaceColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, contrastHighColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =
+    getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();
 
   return {
@@ -29,12 +30,17 @@ export const getSelectOptionStyles = (theme: Theme, additionalOptionJSSStyle?: J
       ...hoverMediaQuery({
         '&:not([aria-disabled]):not([role=status]):hover': {
           color: isHighContrastMode ? highlightColor : primaryColor,
-          background: backgroundSurfaceColor,
+          background: contrastLowColor,
         },
       }),
+      '&--selected': {
+        background: backgroundSurfaceColor,
+      },
+      '&--highlighted': {
+        background: contrastLowColor,
+      },
       '&--highlighted, &--selected': {
         color: isHighContrastMode ? highlightColor : primaryColor,
-        background: backgroundSurfaceColor,
       },
       '&--disabled': {
         cursor: 'not-allowed',
