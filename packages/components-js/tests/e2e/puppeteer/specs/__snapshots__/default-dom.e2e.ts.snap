@@ -288,6 +288,38 @@ exports[`should have no basic DOM regression for p-modal 1`] = `
 
 exports[`should have no basic DOM regression for p-model-signature 1`] = `"<img src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg" height="36" alt="911">"`;
 
+exports[`should have no basic DOM regression for p-multi-select 1`] = `
+"<div class="root">
+  <div class="input-container">
+    <input autocomplete="none">
+    <p-icon class="icon reset-icon hydrated" aria-hidden="true">
+    </p-icon>
+    <p-icon class="icon toggle-icon hydrated" aria-hidden="true">
+    </p-icon>
+  </div>
+  <p-multi-select-dropdown class="hydrated">
+    <li class="no-results" aria-live="polite" role="status">
+      <span aria-hidden="true">
+        ---</span>
+      <span class="no-results__sr">
+        No results found</span>
+    </li>
+    <slot>
+    </slot>
+  </p-multi-select-dropdown>
+</div>"
+`;
+
+exports[`should have no basic DOM regression for p-multi-select-option 1`] = `
+"<li role="option" class="option">
+  <p-checkbox-wrapper class="checkbox hydrated">
+    <input type="checkbox">
+    <slot slot="label">
+    </slot>
+  </p-checkbox-wrapper>
+</li>"
+`;
+
 exports[`should have no basic DOM regression for p-pagination 1`] = `
 "<nav role="navigation" aria-label="Pagination">
   <ul>
