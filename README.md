@@ -8,8 +8,8 @@
 
 ### Install Volta
 
-We recommend you using [https://volta.sh](Volta) to manage the correct Node and Yarn version. To get started, install
-Volta like this:
+We recommend using [https://volta.sh](Volta) to manage the correct Node and Yarn version. To get started, install Volta
+like this:
 
 ```bash
 curl https://get.volta.sh | bash
