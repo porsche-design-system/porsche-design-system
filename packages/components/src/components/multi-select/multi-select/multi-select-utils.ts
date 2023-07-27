@@ -62,10 +62,10 @@ export const updateMultiSelectOptionsFilterState = (
 export const optionIncludesSearchString = (option: HTMLPMultiSelectOptionElement, searchString: string): boolean =>
   option.textContent.toLowerCase().includes(searchString.toLowerCase());
 
-export const hasFilterResults = (options: HTMLPMultiSelectOptionElement[]): boolean =>
+export const hasFilterOptionResults = (options: HTMLPMultiSelectOptionElement[]): boolean =>
   options?.some((option) => !option.hidden);
 
-export const getValidOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement[] =>
+export const getValidSelectOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement[] =>
   options.filter((option) => !option.hidden && !option.disabled);
 
 export const getHighlightedOption = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement =>
@@ -87,19 +87,19 @@ export const setNextOptionHighlighted = (
     setHighlightedOption(options[oldIndex], false);
   }
   setHighlightedOption(options[newIndex], true);
-  handleScroll(
+  handleDropdownScroll(
     host.shadowRoot.querySelector(getPrefixedTagNames(host).pMultiSelectDropdown).shadowRoot.querySelector('ul'),
     options[newIndex]
   );
 };
 
 export const setFirstOptionHighlighted = (host: HTMLElement, options: HTMLPMultiSelectOptionElement[]): void => {
-  const validOptions = getValidOptions(options);
+  const validOptions = getValidSelectOptions(options);
   setNextOptionHighlighted(host, options, options.indexOf(validOptions[0]));
 };
 
 export const setLastOptionHighlighted = (host: HTMLElement, options: HTMLPMultiSelectOptionElement[]): void => {
-  const validOptions = getValidOptions(options);
+  const validOptions = getValidSelectOptions(options);
   setNextOptionHighlighted(host, options, options.indexOf(validOptions.at(-1)));
 };
 
@@ -110,20 +110,18 @@ export const getNewOptionIndex = (
   options: HTMLPMultiSelectOptionElement[],
   direction: SelectDropdownDirectionInternal
 ): number => {
-  const validItems = getValidOptions(options);
+  const validItems = getValidSelectOptions(options);
   const validMax = validItems.length - 1;
-  // prob. needs to be <= 0
-  if (validMax < 0) {
+  if (validMax <= 0) {
     return;
   }
-  const oldIndex = getHighlightedOptionIndex(options);
+  const oldIndex = getHighlightedOptionIndex(validItems);
   let newIndex = oldIndex;
   if (direction === 'down') {
     newIndex = oldIndex < validMax ? oldIndex + 1 : 0;
   } else if (direction === 'up') {
     newIndex = oldIndex > 0 ? oldIndex - 1 : validMax;
   }
-
   return options.indexOf(validItems[newIndex]);
 };
 
@@ -142,7 +140,7 @@ export const updateHighlightedOption = (
  * @param {HTMLElement} element - The element to scroll to.
  * @returns {void}
  */
-export const handleScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
+export const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
   const { maxHeight } = getComputedStyle(scrollElement);
   const hostElementHeight = parseInt(maxHeight, 10);
   if (scrollElement.scrollHeight > hostElementHeight) {
