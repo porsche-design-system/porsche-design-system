@@ -59,6 +59,21 @@ exports[`should have only high contrast styles for p-link-social 1`] = `
 ]
 `;
 
+exports[`should have only high contrast styles for p-multi-select-option 1`] = `
+[
+  {
+    ".option--highlighted, .option--selected": {
+      "color": "Highlight",
+    },
+    "@media(hover:hover)": {
+      ".option:not([aria-disabled]):not([role=status]):hover": {
+        "color": "Highlight",
+      },
+    },
+  },
+]
+`;
+
 exports[`should have only high contrast styles for p-popover 1`] = `
 [
   {

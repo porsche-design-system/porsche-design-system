@@ -371,6 +371,29 @@ exports[`should call validateProps() with correct parameters via render for p-mo
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-multi-select: propTypes with ValidatorFunctions 1`] = `
+{
+  "description": "string",
+  "disabled": "boolean",
+  "dropdownDirection": "oneOf",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "message": "string",
+  "name": "string",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-multi-select-option: propTypes with ValidatorFunctions 1`] = `
+{
+  "disabled": "boolean",
+  "selected": "boolean",
+  "value": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-pagination: propTypes with ValidatorFunctions 1`] = `
 {
   "activePage": "number",
