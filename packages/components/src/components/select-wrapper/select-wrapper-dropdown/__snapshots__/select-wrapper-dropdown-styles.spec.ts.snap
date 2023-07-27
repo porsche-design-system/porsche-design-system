@@ -727,16 +727,16 @@ ul {
   color: #010205;
   background: #EEEFF2;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #949598;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -896,16 +896,16 @@ ul {
   color: #010205;
   background: #EEEFF2;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #949598;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -1027,16 +1027,16 @@ ul {
   color: #010205;
   background: #EEEFF2;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #949598;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -1193,16 +1193,16 @@ ul {
   color: #010205;
   background: #EEEFF2;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #949598;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -1579,16 +1579,16 @@ ul {
   color: #010205;
   background: #EEEFF2;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #949598;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -1748,16 +1748,16 @@ ul {
   color: #010205;
   background: #EEEFF2;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #949598;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -1879,16 +1879,16 @@ ul {
   color: #010205;
   background: #EEEFF2;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #949598;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -2045,16 +2045,16 @@ ul {
   color: #010205;
   background: #EEEFF2;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #949598;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -3717,16 +3717,16 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   color: #FBFCFF;
   background: #212225;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #7E7F82;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -3805,16 +3805,16 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   color: #FBFCFF;
   background: #212225;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #7E7F82;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -3893,16 +3893,16 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   color: #010205;
   background: #EEEFF2;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #949598;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -3981,16 +3981,16 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   color: #010205;
   background: #EEEFF2;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #949598;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -4069,16 +4069,16 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   color: #FBFCFF;
   background: #212225;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #7E7F82;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -4157,16 +4157,16 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   color: #FBFCFF;
   background: #212225;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #7E7F82;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -4245,16 +4245,16 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   color: #010205;
   background: #EEEFF2;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #949598;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -4333,16 +4333,16 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   color: #010205;
   background: #EEEFF2;
 }
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-}
 .option--disabled {
   cursor: not-allowed;
   color: #949598;
 }
 .option--hidden {
   display: none;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
 }
 .optgroup {
   display: block;
