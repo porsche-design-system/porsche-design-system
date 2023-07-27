@@ -19,7 +19,7 @@ Volta should automatically pick up the correct Node and Yarn version set in `pac
 
 ### Install Node & Yarn
 
-To get Yarn installed, you need to setup a default version of node, run these commands:
+To get Yarn installed, you need to setup a default version of Node, run these commands:
 
 ```bash
 volta install node
