@@ -195,7 +195,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       // fix various issues
       newFileContent = newFileContent
         .replace(/(this\.props)\.host/g, '$1') // general
-        .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)\)/, '$1(100)') // segmented-control
+        .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)/, '$1(100') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
         .replace(/(const\s+TagType)(\s+=)/, '$1: any$2') // fix typing for display, heading, headline, text,
         .replace(
@@ -217,7 +217,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/toastManager\.getToast\(\)/, 'false') // toast
         .replace(/ {\.\.\.toast}/, '') // toast
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
-        .replace(/determineDirection\(this\.props\)/, "'down'") // select-wrapper-dropdown
+        .replace(/determineDirection\(this\.props\,.+\)/, "'down'") // select-wrapper-dropdown
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps

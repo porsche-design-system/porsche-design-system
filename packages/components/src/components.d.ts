@@ -11,7 +11,7 @@ import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
-import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
+import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 import { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -33,7 +33,7 @@ import { InlineNotificationActionIcon, InlineNotificationState } from "./compone
 import { LinkAriaAttribute, LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
-import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBackground, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
@@ -43,7 +43,7 @@ import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, Paginat
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-import { SegmentedControlBackgroundColor, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
+import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -68,7 +68,7 @@ export { BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
-export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
+export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 export { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -90,7 +90,7 @@ export { InlineNotificationActionIcon, InlineNotificationState } from "./compone
 export { LinkAriaAttribute, LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
-export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
+export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBackground, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
@@ -100,7 +100,7 @@ export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, Paginat
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-export { SegmentedControlBackgroundColor, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
+export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -293,6 +293,10 @@ export namespace Components {
           * Aspect ratio of the button-tile.
          */
         "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
+        /**
+          * Adapts the description and button theme when used on light background image.
+         */
+        "background"?: ButtonTileBackground;
         /**
           * Displays the button-tile as compact version with description and button icon only.
          */
@@ -934,6 +938,10 @@ export namespace Components {
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
+          * Adapts the description and link theme when used on light background image.
+         */
+        "background"?: LinkTileBackground;
+        /**
           * Displays the link-tile as compact version with description and link icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
@@ -1206,6 +1214,10 @@ export namespace Components {
           * @deprecated since v3.0.0, will be removed with next major release. Background color variations
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
+        /**
+          * Sets the amount of columns.
+         */
+        "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
@@ -2386,6 +2398,10 @@ declare namespace LocalJSX {
          */
         "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
         /**
+          * Adapts the description and button theme when used on light background image.
+         */
+        "background"?: ButtonTileBackground;
+        /**
           * Displays the button-tile as compact version with description and button icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
@@ -3046,6 +3062,10 @@ declare namespace LocalJSX {
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
+          * Adapts the description and link theme when used on light background image.
+         */
+        "background"?: LinkTileBackground;
+        /**
           * Displays the link-tile as compact version with description and link icon only.
          */
         "compact"?: BreakpointCustomizable<boolean>;
@@ -3334,6 +3354,10 @@ declare namespace LocalJSX {
           * @deprecated since v3.0.0, will be removed with next major release. Background color variations
          */
         "backgroundColor"?: SegmentedControlBackgroundColor;
+        /**
+          * Sets the amount of columns.
+         */
+        "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when selected element changes.
          */
