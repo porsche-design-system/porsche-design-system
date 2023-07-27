@@ -1,7 +1,6 @@
 import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/core';
 import {
   attachComponentCss,
-  getHTMLElements,
   getPrefixedTagNames,
   isClickOutside,
   isSsrHydration,
@@ -17,31 +16,32 @@ import type {
 } from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
 import {
-  getDropdownVisibility,
-  getFilterInputAriaAttributes,
-  getHighlightedOptionMapIndex,
   getListAriaAttributes,
+  getDropdownVisibility,
+  getHighlightedOptionMapIndex,
   getMatchingOptionMaps,
   getNewOptionMapIndex,
   getOptionAriaAttributes,
   getOptionMaps,
   getOptionsElements,
   getSelectedOptionMap,
-  getSelectWrapperDropdownButtonAriaAttributes,
   handleScroll,
-  hasFilterResults,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
-  setFilteredOptionMaps,
   setFirstHighlightedOptionMaps,
-  setHighlightedFirstMatchingOptionMaps,
   setHighlightedOptionMaps,
   setLastHighlightedOptionMaps,
   setSelectedOptionMaps,
+  getSelectWrapperDropdownButtonAriaAttributes,
+  setHighlightedFirstMatchingOptionMaps,
+  hasFilterResults,
+  getFilterInputAriaAttributes,
+  setFilteredOptionMaps,
+  determineDirection,
+  getAmountOfVisibleOptionsAndOptgroups,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
-import { determineDropdownDirection } from '../../../utils/select/select-dropdown';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
@@ -113,10 +113,7 @@ export class SelectWrapperDropdown {
       this.host,
       getComponentCss,
       this.direction === 'auto'
-        ? determineDropdownDirection(
-            this.host,
-            getHTMLElements(this.host.shadowRoot, '.option:not([aria-hidden="true"])').length
-          )
+        ? determineDirection(this.host, getAmountOfVisibleOptionsAndOptgroups(this.optionMaps))
         : this.direction,
       this.isOpen,
       this.state,
