@@ -3,6 +3,7 @@ import { MultiSelectOptionUpdateEvent } from '../multi-select-option/multi-selec
 import {
   getHighlightedOption,
   hasFilterOptionResults,
+  MultiSelectDropdownDirection,
   MultiSelectState,
   resetHighlightedOptions,
   setFirstOptionHighlighted,
@@ -34,7 +35,6 @@ import { getComponentCss } from './multi-select-styles';
 import {
   determineDropdownDirection,
   SELECT_DROPDOWN_DIRECTIONS,
-  SelectDropdownDirection,
   SelectDropdownDirectionInternal,
 } from '../../../utils/select/select-dropdown';
 import { StateMessage } from '../../common/state-message/state-message';
@@ -48,8 +48,8 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   disabled: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
+  dropdownDirection: AllowedTypes.oneOf<MultiSelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
 };
 
 @Component({
@@ -83,11 +83,11 @@ export class MultiSelect {
   /** A Boolean attribute indicating that an option with a non-empty string value must be selected. */
   @Prop() public required?: boolean = false;
 
+  /** Changes the direction to which the dropdown list appears. */
+  @Prop() public dropdownDirection?: MultiSelectDropdownDirection = 'auto';
+
   /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
-
-  /** Changes the direction to which the dropdown list appears. */
-  @Prop() public dropdownDirection?: SelectDropdownDirection = 'auto';
 
   @State() private selectedString = '';
   @State() private isOpen = false;

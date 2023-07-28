@@ -1,8 +1,9 @@
 import { FormState } from '../../../utils/form/form-state';
-import { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
+import { SelectDropdownDirection, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { getPrefixedTagNames } from '../../../utils';
 
 export type MultiSelectState = FormState;
+export type MultiSelectDropdownDirection = SelectDropdownDirection;
 
 export const syncNativeSelect = (
   nativeSelect: HTMLSelectElement,

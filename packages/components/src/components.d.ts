@@ -39,8 +39,8 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
-import { SelectDropdownDirection, SelectDropdownDirectionInternal } from "./utils/select/select-dropdown";
+import { MultiSelectDropdownDirection, MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
+import { SelectDropdownDirectionInternal } from "./utils/select/select-dropdown";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
@@ -98,8 +98,8 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-export { MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
-export { SelectDropdownDirection, SelectDropdownDirectionInternal } from "./utils/select/select-dropdown";
+export { MultiSelectDropdownDirection, MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
+export { SelectDropdownDirectionInternal } from "./utils/select/select-dropdown";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
@@ -1105,7 +1105,7 @@ export namespace Components {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: SelectDropdownDirection;
+        "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -3319,7 +3319,7 @@ declare namespace LocalJSX {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: SelectDropdownDirection;
+        "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
