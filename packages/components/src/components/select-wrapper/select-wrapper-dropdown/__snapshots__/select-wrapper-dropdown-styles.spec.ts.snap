@@ -723,9 +723,15 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--highlighted, .option--selected {
   color: #010205;
-  background: #EEEFF2;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -733,10 +739,6 @@ ul {
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -752,7 +754,7 @@ ul {
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -892,9 +894,15 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--highlighted, .option--selected {
   color: #010205;
-  background: #EEEFF2;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -902,10 +910,6 @@ ul {
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -921,7 +925,7 @@ ul {
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -1023,9 +1027,15 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--highlighted, .option--selected {
   color: #010205;
-  background: #EEEFF2;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -1033,10 +1043,6 @@ ul {
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -1052,7 +1058,7 @@ ul {
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -1189,9 +1195,15 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--highlighted, .option--selected {
   color: #010205;
-  background: #EEEFF2;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -1199,10 +1211,6 @@ ul {
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -1218,7 +1226,7 @@ ul {
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -1575,9 +1583,15 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--highlighted, .option--selected {
   color: #010205;
-  background: #EEEFF2;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -1585,10 +1599,6 @@ ul {
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -1604,7 +1614,7 @@ ul {
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -1744,9 +1754,15 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--highlighted, .option--selected {
   color: #010205;
-  background: #EEEFF2;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -1754,10 +1770,6 @@ ul {
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -1773,7 +1785,7 @@ ul {
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -1875,9 +1887,15 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--highlighted, .option--selected {
   color: #010205;
-  background: #EEEFF2;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -1885,10 +1903,6 @@ ul {
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -1904,7 +1918,7 @@ ul {
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -2041,9 +2055,15 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--highlighted, .option--selected {
   color: #010205;
-  background: #EEEFF2;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -2051,10 +2071,6 @@ ul {
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -2070,7 +2086,7 @@ ul {
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -3713,9 +3729,15 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #404044;
+}
 .option--highlighted, .option--selected {
   color: #FBFCFF;
-  background: #212225;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -3723,10 +3745,6 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -3742,7 +3760,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #FBFCFF;
-    background: #212225;
+    background: #404044;
   }
 }
 "
@@ -3801,9 +3819,15 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #404044;
+}
 .option--highlighted, .option--selected {
   color: #FBFCFF;
-  background: #212225;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -3811,10 +3835,6 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -3830,7 +3850,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #FBFCFF;
-    background: #212225;
+    background: #404044;
   }
 }
 "
@@ -3889,9 +3909,15 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--highlighted, .option--selected {
   color: #010205;
-  background: #EEEFF2;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -3899,10 +3925,6 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -3918,7 +3940,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -3977,9 +3999,15 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--highlighted, .option--selected {
   color: #010205;
-  background: #EEEFF2;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -3987,10 +4015,6 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -4006,7 +4030,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -4065,9 +4089,15 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #404044;
+}
 .option--highlighted, .option--selected {
   color: #FBFCFF;
-  background: #212225;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -4075,10 +4105,6 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -4094,7 +4120,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #FBFCFF;
-    background: #212225;
+    background: #404044;
   }
 }
 "
@@ -4153,9 +4179,15 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #404044;
+}
 .option--highlighted, .option--selected {
   color: #FBFCFF;
-  background: #212225;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -4163,10 +4195,6 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -4182,7 +4210,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #FBFCFF;
-    background: #212225;
+    background: #404044;
   }
 }
 "
@@ -4241,9 +4269,15 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--highlighted, .option--selected {
   color: #010205;
-  background: #EEEFF2;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -4251,10 +4285,6 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -4270,7 +4300,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -4329,9 +4359,15 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   height: 1px;
   text-indent: -999999px;
 }
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--highlighted, .option--selected {
   color: #010205;
-  background: #EEEFF2;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -4339,10 +4375,6 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
 }
 .option--hidden {
   display: none;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
 }
 .optgroup {
   display: block;
@@ -4358,7 +4390,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
 @media(hover:hover) {
   .option:not([aria-disabled]):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
