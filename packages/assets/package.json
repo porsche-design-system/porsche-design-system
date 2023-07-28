@@ -45,5 +45,8 @@
   },
   "bin": {
     "serve-cdn": "./bin/serve-cdn.js"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

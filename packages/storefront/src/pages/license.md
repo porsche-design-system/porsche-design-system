@@ -51,8 +51,8 @@ charged for these services.
 **Note:** your copy of this product may not contain code covered by one or more of the licenses listed here, depending
 on the exact product and version you choose.
 
-## Compulsory statement
+## Open Source Software Notice
 
-This software may or may not contain the following specific Open Source Components:
+This software may or may not contain the following specific Open Source Software:
 
-<p-link-pure icon="download" href="assets/open-source-compulsory-statement.txt" download>Download compulsory statement</p-link-pure>
+<p-link-pure icon="download" href="assets/compulsory-statement.txt" download>Download Compulsory Statement</p-link-pure>

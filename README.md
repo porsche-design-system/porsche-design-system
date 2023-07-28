@@ -6,11 +6,31 @@
 
 ## Setup
 
-### Requirements
+### Install Volta
 
-- [Node.js](https://nodejs.org) - make sure to use the same node version as defined in `./docker/node/Dockerfile`
-- [Yarn](https://yarnpkg.com)
-- [Docker](https://www.docker.com) ([see below](#docker-installation-steps))
+We recommend using [https://volta.sh](Volta) to manage the correct Node and Yarn version. To get started, install Volta
+like this:
+
+```bash
+curl https://get.volta.sh | bash
+```
+
+Volta should automatically pick up the correct Node and Yarn version set in `package.json`.
+
+### Install Node & Yarn
+
+To get Yarn installed, you need to setup a default version of Node, run these commands:
+
+```bash
+volta install node
+volta install yarn
+```
+
+### Install Docker
+
+1. Register your Docker account on [Hub-Docker](https://hub.docker.com)
+1. Download Docker app locally on your machine and login
+1. Start Docker
 
 ### Getting started
 
@@ -44,12 +64,6 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 1. You should be good to go.
 1. If you have to exclude code fom being prettified, see
    [Prettier configuration](https://prettier.io/docs/en/ignore.html#javascript)
-
-### Docker installation steps
-
-1. Register your Docker account on [Hub-Docker](https://hub.docker.com)
-1. Download Docker app locally on your machine and login
-1. Start Docker
 
 ### Build
 
