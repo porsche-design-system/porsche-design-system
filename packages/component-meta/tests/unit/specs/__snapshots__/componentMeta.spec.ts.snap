@@ -2026,6 +2026,45 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-pin-code": {
+    "allowedPropValues": {
+      "description": "string",
+      "label": "string",
+      "length": "number",
+      "mask": "boolean",
+      "theme": [
+        "light",
+        "dark",
+      ],
+      "type": [
+        "alphanumeric",
+        "number",
+      ],
+    },
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "namedSlots": [
+      "label",
+      "description",
+    ],
+    "props": {
+      "description": null,
+      "label": null,
+      "length": 4,
+      "mask": true,
+      "theme": "light",
+      "type": "number",
+    },
+    "requiredChild": "input type=hidden",
+    "requiredChildSelector": "input[type=hidden]",
+    "styling": "jss",
+  },
   "p-popover": {
     "allowedPropValues": {
       "aria": {
