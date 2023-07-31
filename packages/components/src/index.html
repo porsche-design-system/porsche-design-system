@@ -37,7 +37,14 @@
     </header>
 
     <main>
-      <p-pin-code length="6" type="number">
+      <p-pin-code
+        length="6"
+        type="number"
+        hideLabel="true"
+        state="error"
+        state="error"
+        message="Some error validation message."
+      >
         <span slot="label" id="some-label-id"
           >Some label with a <a href="https://designsystem.porsche.com">link</a>.</span
         >

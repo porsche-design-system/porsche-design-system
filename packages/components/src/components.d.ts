@@ -40,7 +40,7 @@ import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
-import { PinCodeType } from "./components/pin-code/pin-code-utils";
+import { PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
@@ -98,7 +98,7 @@ export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
-export { PinCodeType } from "./components/pin-code/pin-code-utils";
+export { PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
@@ -1143,6 +1143,10 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: boolean;
+        /**
           * The label text.
          */
         "label"?: string;
@@ -1154,6 +1158,14 @@ export namespace Components {
           * Mask the pin code.
          */
         "mask"?: boolean;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The validation state.
+         */
+        "state"?: PinCodeState;
         /**
           * Adapts the color depending on the theme.
          */
@@ -3316,6 +3328,10 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: boolean;
+        /**
           * The label text.
          */
         "label"?: string;
@@ -3327,6 +3343,14 @@ declare namespace LocalJSX {
           * Mask the pin code.
          */
         "mask"?: boolean;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The validation state.
+         */
+        "state"?: PinCodeState;
         /**
           * Adapts the color depending on the theme.
          */
