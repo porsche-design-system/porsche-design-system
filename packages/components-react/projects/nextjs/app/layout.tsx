@@ -29,13 +29,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <PorscheDesignSystemProvider>
-          <NextScript />
-          {getDSRPonyfill({ format: 'jsx' })}
-          {getBrowserSupportFallbackScript({ format: 'jsx' })}
-          {getCookiesFallbackScript({ format: 'jsx' })}
           <Select />
-          <main>{children}</main>
+          {children}
         </PorscheDesignSystemProvider>
+        <NextScript />
+        {getDSRPonyfill({ format: 'jsx' })}
+        {getBrowserSupportFallbackScript({ format: 'jsx' })}
+        {getCookiesFallbackScript({ format: 'jsx' })}
       </body>
     </html>
   );
