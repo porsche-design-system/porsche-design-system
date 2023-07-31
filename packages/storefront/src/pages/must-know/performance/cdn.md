@@ -34,13 +34,14 @@ costs each time some milliseconds. That's why the Porsche Design System provides
 which CDN those assets shall be loaded to get maximum performance in China.
 
 To achieve this, a global browser variable `PORSCHE_DESIGN_SYSTEM_CDN` was introduced which needs to be defined before
-initializing the Porsche Design System.  
+initializing the Porsche Design System.
+
 Possible values that can be assigned:
 
 - `auto` (default - using RoW CDN and redirects to Chinese CDN automatically when necessary)
-- `cn` (forces using Chinese CDN directly) This gives the possibility for the consuming application to have either two
-  dedicated builds for their application, one for China and one for RoW (rest of world) or following the build once,
-  deploy many principle, it can be configured at start-up time.
+- `cn` (forces using Chinese CDN directly) This gives the possibility for the consuming application to have either **two
+  dedicated builds** for their application, one for China and one for RoW (rest of world) or following the **build once,
+  deploy many principle**, it can be configured at start-up time.
 
 Since handling the global configuration variable `PORSCHE_DESIGN_SYSTEM_CDN` isn't very nice, the
 `porscheDesignSystem.load()` function accepts a `cdn: 'auto' | 'cn'` option which will then set the
