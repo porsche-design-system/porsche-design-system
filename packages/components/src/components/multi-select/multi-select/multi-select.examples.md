@@ -12,7 +12,7 @@ import Component from 'vue-class-component';
 
 @Component
 export default class Code extends Vue {
-  config = { themeable: true };
+  config = { themeable: false };
 
   basic() {
     return `<p-multi-select name="name" label="Some Label" description="Some description" required>
