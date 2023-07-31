@@ -385,9 +385,12 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           )
           .replace(/onSlotchange=\{\(\) => this.props.updateOptions\(\)}/, '')
           .replace(/onOpenChange=\{this\.props\.onDropdownOpenChange}\s*/, '')
-          .replace(/\{typeof otherChildren.*propsedString}/, '{this.selectedString}');
+          .replace(/\{typeof otherChildren.*propsedString}/, '{this.selectedString}')
+          .replace(/this\.props\.nativeSelect\.selectedOptions\.length > 0/, 'false');
       } else if (tagName === 'p-multi-select-option') {
-        newFileContent = newFileContent.replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>');
+        newFileContent = newFileContent
+          .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
+          .replace(/this\.props\.theme/, 'this.theme');
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
