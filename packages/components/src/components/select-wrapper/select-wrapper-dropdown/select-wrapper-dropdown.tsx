@@ -37,6 +37,7 @@ import {
   getFilterInputAriaAttributes,
   setFilteredOptionMaps,
   determineDirection,
+  getAmountOfVisibleOptionsAndOptgroups,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
@@ -110,7 +111,9 @@ export class SelectWrapperDropdown {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.direction === 'auto' ? determineDirection(this.host) : this.direction,
+      this.direction === 'auto'
+        ? determineDirection(this.host, getAmountOfVisibleOptionsAndOptgroups(this.optionMaps))
+        : this.direction,
       this.isOpen,
       this.state,
       this.disabled,

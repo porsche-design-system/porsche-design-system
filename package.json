@@ -182,5 +182,9 @@
     "**/ng-packagr/rollup": "^3.26.0",
     "**/vite/rollup": "^3.26.0",
     "**/workbox-build/rollup": "^3.26.0"
+  },
+  "volta": {
+    "node": "18.17.0",
+    "yarn": "1.22.19"
   }
 }

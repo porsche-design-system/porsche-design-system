@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@porsche-design-system/browser-notification": "4.1.4",
-    "@porsche-design-system/components-js": "3.5.0-rc.0",
+    "@porsche-design-system/components-js": "3.5.0",
     "@porsche-design-system/shared": "0.0.0",
     "@stackblitz/sdk": "1.8.2",
     "algoliasearch": "^4.18.0",
@@ -73,5 +73,8 @@
     "vue-template-compiler": "^2.7.10",
     "whatwg-fetch": "^3.6.2"
   },
-  "scope": "@porsche-design-system"
+  "scope": "@porsche-design-system",
+  "volta": {
+    "extends": "../../package.json"
+  }
 }
