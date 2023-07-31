@@ -218,6 +218,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/ {\.\.\.toast}/, '') // toast
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDropdownDirection\(this\.props\,.+\)/, "'down'") // select-wrapper-dropdown
+        .replace(/getDropdownDirection\(this\.props.+\)/, "'down'") // multi-selct
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
@@ -366,6 +367,23 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           )
           // Change hasCustomDropdown to use fn instead of prop
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
+      } else if (tagName === 'p-multi-select') {
+        newFileContent = newFileContent
+          // Add PMultiSelectDropdown component import
+          .replace(
+            /(import\s*{\sMultiSelectOptionUpdateEvent\s*}.+\s*)/,
+            "$1import { PMultiSelectDropdown } from '../components/multi-select-dropdown.wrapper';\r"
+          )
+          // Replace dropdown direction
+          .replace(/getDropdownDirection\(this\.props.+\)/, "'down'")
+          // Replace placeholder
+          .replace(/(?<=placeholder=\{)[^}]+/, 'this.selectedString || null')
+          // replace toggle icon className
+          .replace(
+            /className=\{\{ icon: true, \['toggle-icon']: true, \['toggle-icon--open']: this\.props\.isOpen }}/,
+            "className='icon toggle-icon'"
+          )
+          .replace(/onSlotchange=\{\(\) => this.props.updateOptions\(\)}/, '');
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
