@@ -8,7 +8,7 @@ import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'react-ssr-wrapper';
   protected ignoreComponents: TagName[] = INTERNAL_TAG_NAMES.filter(
-    (tagName) => tagName !== 'p-select-wrapper-dropdown'
+    (tagName) => tagName !== 'p-select-wrapper-dropdown' && tagName !== 'p-multi-select-dropdown'
   );
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
