@@ -1149,7 +1149,7 @@ export namespace Components {
         /**
           * Number of characters of the pin code.
          */
-        "length": number;
+        "length"?: number;
         /**
           * Mask the pin code.
          */

@@ -37,7 +37,7 @@ export class PinCode {
   @Prop() public label?: string = '';
 
   /** Number of characters of the pin code. */
-  @Prop() public length: number = 4;
+  @Prop() public length?: number = 4;
 
   /** Mask the pin code. */
   @Prop() public mask?: boolean = true;
@@ -92,8 +92,8 @@ export class PinCode {
               aria-describedby="otpCode"
               autoComplete="one-time-code"
               maxLength={1}
-              onKeyDown={(e) => this.keyDownHandler(e as KeyboardEvent, index)}
-              onKeyUp={(e) => this.keyUpHandler(e as KeyboardEvent, index)}
+              onKeyDown={(e) => this.keyDownHandler(e, index)}
+              onKeyUp={(e) => this.keyUpHandler(e, index)}
               pattern={isTypeNumber(this.type) ? 'd{1}' : '[a-zA-Z0-9]{1}'}
               value=""
             />
