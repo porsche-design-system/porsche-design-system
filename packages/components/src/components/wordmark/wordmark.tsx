@@ -4,12 +4,13 @@ import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
   validateProps,
   THEMES,
   hasPropValueChanged,
 } from '../../utils';
-import { WORDMARK_ARIA_ATTRIBUTES, WORDMARK_SIZES } from './wordmark-utils';
+import { WORDMARK_SIZES } from './wordmark-utils';
 import { getComponentCss } from './wordmark-styles';
 
 const propTypes: PropTypes<typeof Wordmark> = {
@@ -17,7 +18,7 @@ const propTypes: PropTypes<typeof Wordmark> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
-  aria: AllowedTypes.aria<WordmarkAriaAttribute>(WORDMARK_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<WordmarkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
 @Component({

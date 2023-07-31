@@ -1,5 +1,6 @@
 import { CDN_BASE_URL as MARQUES_CDN_BASE_URL, MARQUES_MANIFEST } from '@porsche-design-system/marque';
 import type { LinkTarget } from '../../utils/link-button/link-target';
+import type { LinkAriaAttribute } from '../../utils';
 
 export const MARQUE_VARIANTS = ['75-years', 'default'] as const;
 export type MarqueVariant = (typeof MARQUE_VARIANTS)[number];
@@ -24,5 +25,4 @@ export const buildSrcSet = (innerManifest: InnerManifest, size: MarqueSize, form
     .map(([resolution, fileName]) => `${cdnBaseUrl}/${fileName[format]} ${resolution}`)
     .join();
 
-export const MARQUE_ARIA_ATTRIBUTES = ['aria-label'] as const;
-export type MarqueAriaAttribute = (typeof MARQUE_ARIA_ATTRIBUTES)[number];
+export type MarqueAriaAttribute = LinkAriaAttribute;
