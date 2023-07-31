@@ -21,10 +21,10 @@ export class MultiSelectOption {
   @Prop() public value: string;
 
   /** The option selected state. */
-  @Prop({ mutable: true }) public selected: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop({ mutable: true }) public selected?: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
   /** Disables the option. */
-  @Prop() public disabled: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop() public disabled?: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
   /** Adapts the select color depending on the theme. */
   private theme?: Theme = 'light';

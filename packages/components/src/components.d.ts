@@ -1144,11 +1144,11 @@ export namespace Components {
         /**
           * Disables the option.
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
         /**
           * The option selected state.
          */
-        "selected": boolean;
+        "selected"?: boolean;
         /**
           * The option value.
          */
