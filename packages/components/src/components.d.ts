@@ -1099,7 +1099,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * This Boolean attribute indicates that the user cannot interact with the control. If this attribute is not specified, the control inherits its setting from the containing element, for example <fieldset>; if there is no containing element with the disabled attribute set, then the control is enabled.
+          * Disables the multi-select
          */
         "disabled"?: boolean;
         /**
@@ -3313,7 +3313,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * This Boolean attribute indicates that the user cannot interact with the control. If this attribute is not specified, the control inherits its setting from the containing element, for example <fieldset>; if there is no containing element with the disabled attribute set, then the control is enabled.
+          * Disables the multi-select
          */
         "disabled"?: boolean;
         /**
