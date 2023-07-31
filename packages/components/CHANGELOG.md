@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- New value `aria-current` for `aria` property for linked components (`Link`, `Link Pure`, `Link Tile`, `Crest`,
+  `Marque`) ([#2696](https://github.com/porsche-design-system/porsche-design-system/pull/2696))
+
 ### [3.5.0] - 2023-07-25
 
 ### [3.5.0-rc.0] - 2023-07-21
