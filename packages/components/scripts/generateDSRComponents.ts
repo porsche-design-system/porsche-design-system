@@ -383,7 +383,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /className=\{\{ icon: true, \['toggle-icon']: true, \['toggle-icon--open']: this\.props\.isOpen }}/,
             "className='icon toggle-icon'"
           )
-          .replace(/onSlotchange=\{\(\) => this.props.updateOptions\(\)}/, '');
+          .replace(/onSlotchange=\{\(\) => this.props.updateOptions\(\)}/, '')
+          .replace(/onOpenChange=\{this\.props\.onDropdownOpenChange}\s*/, '');
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
