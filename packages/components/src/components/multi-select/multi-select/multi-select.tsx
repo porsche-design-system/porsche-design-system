@@ -139,27 +139,25 @@ export class MultiSelect {
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const shouldRenderLabel =
-      (!this.hideLabel && hasLabel(this.host, this.label)) || hasDescription(this.host, this.description);
+    const labelId = 'label';
+    const descriptionId = this.description && 'description';
 
     return (
       <Host>
         <div class="root">
-          {shouldRenderLabel && (
-            <label class="label">
-              {!this.hideLabel && hasLabel(this.host, this.label) && (
-                <span class="label__text" onClick={() => this.inputElement.focus()}>
-                  {this.label || <slot name="label" />}
-                  {isRequiredAndParentNotRequired(this.host, this.nativeSelect) && <Required />}
-                </span>
-              )}
-              {hasDescription(this.host, this.description) && (
-                <span class="label__text" onClick={() => this.inputElement.focus()}>
-                  {this.description || <slot name="description" />}
-                </span>
-              )}
-            </label>
-          )}
+          <label class="label">
+            {!this.hideLabel && hasLabel(this.host, this.label) && (
+              <span class="label__text" onClick={() => this.inputElement.focus()}>
+                {this.label || <slot name="label" />}
+                {isRequiredAndParentNotRequired(this.host, this.nativeSelect) && <Required />}
+              </span>
+            )}
+            {hasDescription(this.host, this.description) && (
+              <span class="label__text" onClick={() => this.inputElement.focus()}>
+                {this.description || <slot name="description" />}
+              </span>
+            )}
+          </label>
           <div class="input-container" ref={(el) => (this.inputContainer = el)}>
             <input
               placeholder={this.selectedString || null}
@@ -170,7 +168,8 @@ export class MultiSelect {
               required={this.required}
               onKeyDown={this.onComboboxKeyDown}
               ref={(el) => (this.inputElement = el)}
-              aria-labelledby="label"
+              aria-labelledby={labelId}
+              aria-describedby={descriptionId}
             />
             <PrefixedTagNames.pIcon
               class="icon reset-icon"
@@ -189,6 +188,15 @@ export class MultiSelect {
               aria-hidden="true"
             />
           </div>
+          <div class="sr-text" id={labelId}>
+            {this.selectedString}, {this.label}
+            {!!this.message && `. ${this.message}`}
+          </div>
+          {this.description && (
+            <div class="sr-text" id={descriptionId}>
+              {this.description}
+            </div>
+          )}
           <PrefixedTagNames.pMultiSelectDropdown
             isOpen={this.isOpen}
             direction={getDropdownDirection(this.dropdownDirection, this.inputContainer, this.multiSelectOptions)}

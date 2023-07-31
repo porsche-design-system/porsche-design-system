@@ -95,6 +95,9 @@ export const getComponentCss = (
     },
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
+    'sr-text': {
+      display: 'none',
+    },
   });
 };
 
