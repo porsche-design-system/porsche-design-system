@@ -1,23 +1,29 @@
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
-import type { PinCodeType } from './pin-code-utils';
+import type { PinCodeState, PinCodeType } from './pin-code-utils';
 import {
   AllowedTypes,
   attachComponentCss,
+  FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getShadowRootHTMLElements,
   hasDescription,
   hasLabel,
+  hasMessage,
   THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
 import { isTypeNumber, PIN_CODE_TYPES } from './pin-code-utils';
+import { StateMessage } from '../common/state-message/state-message';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   length: AllowedTypes.number,
+  hideLabel: AllowedTypes.boolean,
+  state: AllowedTypes.oneOf<PinCodeState>(FORM_STATES),
+  message: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
   mask: AllowedTypes.boolean,
@@ -38,6 +44,15 @@ export class PinCode {
 
   /** Number of characters of the pin code. */
   @Prop() public length?: number = 4;
+
+  /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
+  @Prop() public hideLabel?: boolean = false;
+
+  /** The validation state. */
+  @Prop() public state?: PinCodeState = 'none';
+
+  /** The message styled depending on validation state. */
+  @Prop() public message?: string = '';
 
   /** Mask the pin code. */
   @Prop() public mask?: boolean = true;
@@ -67,7 +82,7 @@ export class PinCode {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss);
+    attachComponentCss(this.host, getComponentCss, this.theme, this.type, this.hideLabel, this.state);
 
     const labelProps = {
       onClick: this.onLabelClick,
@@ -86,20 +101,25 @@ export class PinCode {
               {this.description || <slot name="description" />}
             </span>
           )}
-          {...Array.from({ length: this.length }).map((_value, index) => (
-            <input
-              type={isTypeNumber(this.type) ? 'number' : 'text'}
-              aria-describedby="otpCode"
-              autoComplete="one-time-code"
-              maxLength={1}
-              onKeyDown={(e) => this.keyDownHandler(e, index)}
-              onKeyUp={(e) => this.keyUpHandler(e, index)}
-              pattern={isTypeNumber(this.type) ? 'd{1}' : '[a-zA-Z0-9]{1}'}
-              value=""
-            />
-          ))}
-          <slot name="hiddenInput" />
+          <div class="pin-code-container">
+            {...Array.from({ length: this.length }).map((_value, index) => (
+              <input
+                type={isTypeNumber(this.type) ? 'number' : 'text'}
+                aria-describedby="otpCode"
+                autoComplete="one-time-code"
+                maxLength={1}
+                onKeyDown={(e) => this.keyDownHandler(e, index)}
+                onKeyUp={(e) => this.keyUpHandler(e, index)}
+                pattern={isTypeNumber(this.type) ? 'd{1}' : '[a-zA-Z0-9]{1}'}
+                value=""
+              />
+            ))}
+            <slot name="hiddenInput" />
+          </div>
         </label>
+        {hasMessage(this.host, this.message, this.state) && (
+          <StateMessage state={this.state} message={this.message} theme="light" host={this.host} />
+        )}
       </Host>
     );
   }
