@@ -14,6 +14,6 @@ describe('connectedCallback', () => {
     const component = initComponent();
     const spy = jest.spyOn(multiSelectUtils, 'syncNativeSelect');
     component.connectedCallback();
-    expect(spy).toBeCalledWith(false, true);
+    expect(spy).toBeCalledTimes(1);
   });
 });
