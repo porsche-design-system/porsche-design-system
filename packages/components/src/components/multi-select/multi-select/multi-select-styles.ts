@@ -56,6 +56,9 @@ export const getComponentCss = (
       background: backgroundColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states
       cursor: isDisabled ? 'not-allowed' : 'text',
+      '&:not(:disabled):focus': {
+        borderColor: primaryColor,
+      },
       ...hoverMediaQuery({
         '&:not(:disabled):hover': {
           borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
