@@ -53,7 +53,7 @@ The same can be achieved in all supported frameworks via the respective module o
 - React: `<PorscheDesignSystemProvider cdn="cn" />`
 - Vue: `<PorscheDesignSystemProvider cdn="cn" />`
 
-### Example (index.html)
+### Vanilla JS Example
 
 ```html
 <!DOCTYPE html>
@@ -65,19 +65,72 @@ The same can be achieved in all supported frameworks via the respective module o
   </head>
   <body>
     <script>
-      // all requests to the Porsche Design System CDN are forced to use the Chinese CDN directly
       porscheDesignSystem.load({ cdn: 'cn' });
     </script>
   </body>
 </html>
 ```
 
+### Angular Example (app.module.ts)
+
+```ts
+import { BrowserModule } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [],
+  imports: [BrowserModule, PorscheDesignSystemModule.load({ cdn: 'cn' })],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+### React Example (index.tsx)
+
+```ts
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import { App } from './App';
+
+const root = createRoot(document.getElementById('root')!);
+root.render(
+  <StrictMode>
+    <BrowserRouter>
+      <PorscheDesignSystemProvider cdn="cn">
+        <App />
+      </PorscheDesignSystemProvider>
+    </BrowserRouter>
+  </StrictMode>
+);
+```
+
+### Vue Example (App.vue)
+
+```vue
+<script setup lang="ts">
+  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PorscheDesignSystemProvider cdn="cn">
+    <RouterView />
+  </PorscheDesignSystemProvider>
+</template>
+```
+
+### Partials
+
 Also, all CDN related partials of the `@porsche-design-system/components-{js|angular|react|vue}/partials` packages have
 an option `{ cdn: 'auto' | 'cn' }` to force preloading assets from Chinese CDN directly, e.g.:
 
+<!-- prettier-ignore -->
 ```html
 <head>
-  <%= require('@porsche-design-system/components-{js|angular|react|vue}/partials').getFontFaceStylesheet({ cdn: 'cn' })
-  %>
+  <%= require('@porsche-design-system/components-{js|angular|react|vue}/partials').getFontFaceStylesheet({ cdn: 'cn' }) %>
 </head>
 ```
