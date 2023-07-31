@@ -16,11 +16,11 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Roadmap: [() => import('@/pages/news/roadmap.md')],
   },
-  'Designing': {
+  Designing: {
     // @ts-ignore
     Introduction: [() => import('@/pages/designing/introduction.md')],
   },
-  'Developing': {
+  Developing: {
     // @ts-ignore
     Introduction: [() => import('@/pages/developing/introduction.md')],
     'Vanilla Js': {
@@ -311,6 +311,20 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/model-signature/model-signature.props.md')],
     },
+    'Multi Select': {
+      Examples: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/multi-select/multi-select/multi-select.examples.md'),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/multi-select/multi-select/multi-select.usage.md'),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/multi-select/multi-select/multi-select.props.md'),
+      ],
+    },
     Pagination: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/pagination/pagination.examples.md')],
@@ -376,7 +390,7 @@ export const config: StorefrontConfig = {
           import(
             // @ts-ignore
             '@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'
-            ),
+          ),
       ],
     },
     Spinner: {
@@ -573,11 +587,11 @@ export const config: StorefrontConfig = {
     },
   },
   'Must Know': {
-    'Accessibility': {
+    Accessibility: {
       // @ts-ignore
       Introduction: [() => import('@/pages/must-know/accessibility/introduction.md')],
       // @ts-ignore
-      Statement: [() => import('@/pages/must-know/accessibility/statement.md')]
+      Statement: [() => import('@/pages/must-know/accessibility/statement.md')],
     },
     // @ts-ignore
     Security: [() => import('@/pages/must-know/security.md')],
