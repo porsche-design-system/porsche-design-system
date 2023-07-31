@@ -384,7 +384,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             "className='icon toggle-icon'"
           )
           .replace(/onSlotchange=\{\(\) => this.props.updateOptions\(\)}/, '')
-          .replace(/onOpenChange=\{this\.props\.onDropdownOpenChange}\s*/, '');
+          .replace(/onOpenChange=\{this\.props\.onDropdownOpenChange}\s*/, '')
+          .replace(/\{typeof otherChildren.*propsedString}/, '{this.selectedString}');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent.replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>');
       } else if (tagName === 'p-text-field-wrapper') {
