@@ -5310,6 +5310,305 @@ img {
 </p-model-signature>
 `;
 
+exports[`should render dsr component for PMultiSelect 1`] = `
+<p-multi-select
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+input {
+  flex: 1 !important;
+  padding: 13px 16px !important;
+  box-sizing: border-box !important;
+  border: 0 !important;
+  outline: 0 !important;
+  appearance: none !important;
+  background: transparent !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  text-overflow: ellipsis !important;
+}
+.input-container {
+  display: flex;
+  color: #010205;
+  background: #FFF;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+}
+.input-container:not(:disabled):hover {
+  border-color: #010205;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  display: none;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  display: none;
+}
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+      />
+      <div
+        class="input-container"
+      >
+        <input
+          aria-describedby=""
+          aria-labelledby="label"
+          autocomplete="none"
+        />
+        <p-icon
+          aria-hidden="true"
+          class="icon reset-icon ssr"
+        >
+          <template
+            shadowroot="open"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light-primary 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+            </style>
+            <img
+              alt=""
+              height="24"
+              loading="lazy"
+              src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+              width="24"
+            />
+          </template>
+        </p-icon>
+        <p-icon
+          aria-hidden="true"
+          class="icon toggle-icon ssr"
+        >
+          <template
+            shadowroot="open"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light-primary 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+            </style>
+            <img
+              alt=""
+              height="24"
+              loading="lazy"
+              src="http://localhost:3001/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              width="24"
+            />
+          </template>
+        </p-icon>
+      </div>
+      <div
+        class="sr-text"
+        id="label"
+      >
+        , 
+      </div>
+      <p-multi-select-dropdown
+        class="ssr"
+      >
+        <template
+          shadowroot="open"
+          shadowrootmode="open"
+        >
+          <style>
+            :host {
+  display: block !important;
+  position: relative !important;
+}
+ul {
+  position: absolute !important;
+  margin: 0 !important;
+  display: none !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  padding: 6px !important;
+  background: #FFF !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  z-index: 10 !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 100% !important;
+  box-sizing: border-box !important;
+  max-height: 416px !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  border: 2px solid #010205 !important;
+  border-top: none !important;
+  border-radius: 4px !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: auto !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  transform: translate3d(0,0,0) !important;
+}
+          </style>
+          <ul
+            aria-multiselectable="true"
+            role="listbox"
+          >
+            <slot />
+          </ul>
+        </template>
+        <li
+          aria-live="polite"
+          class="no-results"
+          role="status"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ---
+          </span>
+          <span
+            class="no-results__sr"
+          >
+            No results found
+          </span>
+        </li>
+        <slot />
+      </p-multi-select-dropdown>
+    </div>
+  </template>
+  Some child
+</p-multi-select>
+`;
+
+exports[`should render dsr component for PMultiSelectOption 1`] = `
+<p-multi-select-option
+  class="ssr"
+/>
+`;
+
 exports[`should render dsr component for PPagination 1`] = `
 <p-pagination
   class="ssr"
