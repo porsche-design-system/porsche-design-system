@@ -2052,8 +2052,6 @@ exports[`should match snapshot 1`] = `
     },
     "requiredProps": [
       "value",
-      "selected",
-      "disabled",
     ],
     "styling": "jss",
   },
