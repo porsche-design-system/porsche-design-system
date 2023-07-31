@@ -6,6 +6,7 @@ import { npmDistTmpSubPath } from '../projects/components-wrapper/environment';
 
 const packageDir = path.resolve(__dirname, '..');
 
+// TODO: this should happen during webpack build via define plugin
 const readAndWriteFile = (targetFile: string): void => {
   const oldContent = fs.readFileSync(targetFile, 'utf8');
   const [, windowKey] = oldContent.match(/,window\[([a-z])\]=/) || [];
