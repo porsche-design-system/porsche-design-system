@@ -1,5 +1,9 @@
 import { FormState } from '../../../utils/form/form-state';
-import { SelectDropdownDirection, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
+import {
+  determineDropdownDirection,
+  SelectDropdownDirection,
+  SelectDropdownDirectionInternal,
+} from '../../../utils/select/select-dropdown';
 import { getPrefixedTagNames } from '../../../utils';
 
 export type MultiSelectState = FormState;
@@ -147,4 +151,19 @@ export const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLEl
   if (scrollElement.scrollHeight > hostElementHeight) {
     element.scrollIntoView();
   }
+};
+
+export const getDropdownDirection = (
+  direction: SelectDropdownDirection,
+  host: HTMLElement,
+  options: HTMLPMultiSelectOptionElement[]
+): SelectDropdownDirectionInternal => {
+  if (direction !== 'auto') {
+    return direction;
+  }
+  if (host) {
+    const visibleOptionsLength = options.filter((option) => !option.hidden).length;
+    return determineDropdownDirection(host, visibleOptionsLength);
+  }
+  return 'down';
 };

@@ -1,6 +1,7 @@
 import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop, State } from '@stencil/core';
 import { MultiSelectOptionUpdateEvent } from '../multi-select-option/multi-select-option-utils';
 import {
+  getDropdownDirection,
   getHighlightedOption,
   hasFilterOptionResults,
   MultiSelectDropdownDirection,
@@ -32,11 +33,7 @@ import {
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
-import {
-  determineDropdownDirection,
-  SELECT_DROPDOWN_DIRECTIONS,
-  SelectDropdownDirectionInternal,
-} from '../../../utils/select/select-dropdown';
+import { SELECT_DROPDOWN_DIRECTIONS, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { StateMessage } from '../../common/state-message/state-message';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
@@ -133,7 +130,7 @@ export class MultiSelect {
       this.host,
       getComponentCss,
       this.nativeSelect.selectedOptions.length > 0,
-      this.getDropdownDirection(),
+      getDropdownDirection(this.dropdownDirection, this.inputContainer, this.multiSelectOptions),
       this.isOpen,
       this.disabled,
       this.hideLabel,
@@ -193,7 +190,7 @@ export class MultiSelect {
           </div>
           <PrefixedTagNames.pMultiSelectDropdown
             isOpen={this.isOpen}
-            direction={this.getDropdownDirection()}
+            direction={getDropdownDirection(this.dropdownDirection, this.inputContainer, this.multiSelectOptions)}
             onOpenChange={this.onDropdownOpenChange}
             theme={this.theme}
             ref={(el) => (this.multiSelectDropdown = el)}
@@ -257,17 +254,6 @@ export class MultiSelect {
 
   private onDropdownOpenChange = (isOpen: boolean): void => {
     this.isOpen = isOpen;
-  };
-
-  private getDropdownDirection = (): SelectDropdownDirectionInternal => {
-    if (this.dropdownDirection !== 'auto') {
-      return this.dropdownDirection;
-    }
-    if (this.inputContainer) {
-      const visibleOptionsLength = this.multiSelectOptions.filter((option) => !option.hidden).length;
-      return determineDropdownDirection(this.inputContainer, visibleOptionsLength);
-    }
-    return 'down';
   };
 
   private onClickOutside = (e: MouseEvent): void => {
