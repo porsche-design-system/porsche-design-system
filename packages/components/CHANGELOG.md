@@ -29,6 +29,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   before design system initialization
   ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
 
+### [3.5.0] - 2023-07-25
+
 ### [3.5.0-rc.0] - 2023-07-21
 
 #### Added
@@ -42,6 +44,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Alignment of `Icon` inside `Accordion` header
   ([#2673](https://github.com/porsche-design-system/porsche-design-system/pull/2673))
+- Direction of `Select Wrapper` dropdown if `direction` property is set to `auto`
+  ([#2677](https://github.com/porsche-design-system/porsche-design-system/pull/2677))
 
 ### [3.4.0] - 2023-07-14
 

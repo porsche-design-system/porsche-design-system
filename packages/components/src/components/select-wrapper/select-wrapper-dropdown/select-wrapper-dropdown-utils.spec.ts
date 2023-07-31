@@ -24,6 +24,7 @@ import {
   setSelectedOptionMaps,
   getFilterInputAriaAttributes,
   getSelectWrapperDropdownButtonAriaAttributes,
+  getAmountOfVisibleOptionsAndOptgroups,
 } from './select-wrapper-dropdown-utils';
 
 const baseOptionMap: OptionMap = {
@@ -151,7 +152,7 @@ describe('determineDirection()', () => {
 
   it('should return down if there is enough space at the bottom', () => {
     const host = getHost();
-    expect(determineDirection(host)).toBe('down');
+    expect(determineDirection(host, 4)).toBe('down');
   });
 
   it('should return up if there is not enough space at the bottom', () => {
@@ -165,7 +166,7 @@ describe('determineDirection()', () => {
         } as DOMRect)
     );
 
-    expect(determineDirection(host)).toBe('up');
+    expect(determineDirection(host, 4)).toBe('up');
   });
 });
 
@@ -336,6 +337,21 @@ describe('getValidOptions()', () => {
     const result2 = getValidOptions(options);
     expect(result2.length).toBe(1);
     expect(result2[0]).toBe(options[3]);
+  });
+});
+
+describe('getAmountOfVisibleOptionsAndOptgroups()', () => {
+  it('should return number of options that are not hidden or initiallyHidden summed with number of optgroups', () => {
+    const options = generateOptionMaps({ amount: 6, initiallyHiddenIndex: 0 });
+    const result1 = getAmountOfVisibleOptionsAndOptgroups(options);
+    expect(result1).toBe(options.length - 1);
+
+    options[1].hidden = true;
+    options[2].initiallyHidden = true;
+    options[3].title = 'Some title';
+
+    const result2 = getAmountOfVisibleOptionsAndOptgroups(options);
+    expect(result2).toBe(4);
   });
 });
 
