@@ -290,13 +290,17 @@ exports[`should have no basic DOM regression for p-model-signature 1`] = `"<img 
 
 exports[`should have no basic DOM regression for p-multi-select 1`] = `
 "<div class="root">
+  <label class="label">
+  </label>
   <div class="input-container">
-    <input autocomplete="none">
+    <input autocomplete="none" aria-labelledby="label" aria-describedby="">
     <p-icon class="icon reset-icon hydrated" aria-hidden="true">
     </p-icon>
     <p-icon class="icon toggle-icon hydrated" aria-hidden="true">
     </p-icon>
   </div>
+  <div class="sr-text" id="label">
+    , </div>
   <p-multi-select-dropdown class="hydrated">
     <li class="no-results" aria-live="polite" role="status">
       <span aria-hidden="true">
