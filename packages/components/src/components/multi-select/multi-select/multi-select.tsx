@@ -170,6 +170,7 @@ export class MultiSelect {
               required={this.required}
               onKeyDown={this.onComboboxKeyDown}
               ref={(el) => (this.inputElement = el)}
+              aria-labelledby="label"
             />
             <PrefixedTagNames.pIcon
               class="icon reset-icon"
