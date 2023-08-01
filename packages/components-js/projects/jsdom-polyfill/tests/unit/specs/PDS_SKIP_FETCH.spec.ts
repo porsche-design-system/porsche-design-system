@@ -90,6 +90,6 @@ describe('window.PDS_SKIP_FETCH = false', () => {
 
     const img = document.querySelector('p-icon').shadowRoot.querySelector('img');
 
-    expect(img.src).toBe(`https://cdn.ui.porsche.com/porsche-design-system/icons/${ICONS_MANIFEST['arrow-right']}`);
+    expect(img.src).toBe(`http://localhost:3001/icons/${ICONS_MANIFEST['arrow-right']}`);
   });
 });
