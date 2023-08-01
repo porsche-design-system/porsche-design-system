@@ -58,14 +58,14 @@ export const getComponentCss = (
       background: backgroundColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states
       cursor: isDisabled ? 'not-allowed' : 'text',
-      '&:not(:disabled):focus': {
-        borderColor: primaryColor,
-      },
       ...hoverMediaQuery({
-        '&:not(:disabled):hover': {
+        '&:hover:not(.disabled)': {
           borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
         },
       }),
+      '&:focus-within': {
+        borderColor: primaryColor,
+      },
       border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
       ...(isOpen && {
@@ -90,6 +90,7 @@ export const getComponentCss = (
       '&--open': {
         transform: 'rotate3d(0,0,1,180deg)',
       },
+      ...(isDisabled && { pointerEvents: 'none' }),
     },
     ['no-results']: {
       padding: `${spacingStaticSmall} 12px`,
@@ -119,6 +120,9 @@ const getInputJSSStyles = (isDisabled: boolean, theme: Theme): Styles => {
       background: 'transparent',
       ...textSmallStyle,
       textOverflow: 'ellipsis',
+      '&:disabled': {
+        cursor: 'not-allowed',
+      },
       '&:not(:focus)': {
         ...getPlaceholderStyles({ color: primaryColor }),
       },

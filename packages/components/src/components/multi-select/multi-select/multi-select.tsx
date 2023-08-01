@@ -164,7 +164,7 @@ export class MultiSelect {
               </span>
             )}
           </label>
-          <div class="input-container" ref={(el) => (this.inputContainer = el)}>
+          <div class={{ 'input-container': true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
             <input
               placeholder={this.selectedString || null}
               autoComplete="off"
