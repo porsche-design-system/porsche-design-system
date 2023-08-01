@@ -369,13 +369,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
-          // Add PMultiSelectDropdown component import
-          .replace(
-            /(import\s*{\sMultiSelectOptionUpdateEvent\s*}.+\s*)/,
-            "$1import { PMultiSelectDropdown } from '../components/multi-select-dropdown.wrapper';\r"
-          )
-          // Replace dropdown direction
-          .replace(/getDropdownDirection\(this\.props.+\)/, "'down'")
           // Replace placeholder
           .replace(/(?<=placeholder=\{)[^}]+/, 'this.selectedString || null')
           // replace toggle icon className
