@@ -1,4 +1,5 @@
 'use client';
+
 import { PToast, useToastManager } from '@porsche-design-system/components-react/ssr';
 import type { Theme } from '@porsche-design-system/components-react/ssr';
 import { useEffect } from 'react';

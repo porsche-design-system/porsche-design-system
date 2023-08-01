@@ -177,7 +177,6 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
           ? convertToRemixVRTPage(...baseParams, reactCharacteristics)
           : { fileName: '', fileContent: '' };
 
-      // path.resolve(rootDirectory, `../components-react/projects/nextjs/app/${fileName}`)
       writeFile(
         framework === 'nextjs'
           ? path.resolve(
