@@ -4,17 +4,6 @@ import type { EntryConfig } from '../shared-definitions/entry-config';
 
 declare global {
   var CM_CONFIG: EntryConfig;
-
-  interface Document {
-    porscheDesignSystem: {
-      [key: `${number}.${number}.${number}`]: {
-        prefixes: string[];
-        isReady: () => Promise<void>;
-        readyResolve: () => void;
-      };
-      cdn: string;
-    };
-  }
 }
 
 global.CM_CONFIG = {

@@ -6,6 +6,17 @@ declare global {
     /** @deprecated since v3 */
     PORSCHE_DESIGN_SYSTEM_CDN: 'auto' | 'cn';
   }
+
+  interface Document {
+    porscheDesignSystem: {
+      [key: `${number}.${number}.${number}`]: {
+        prefixes: string[];
+        isReady: () => Promise<void>;
+        readyResolve: () => void;
+      };
+      cdn: string;
+    };
+  }
 }
 
 /**
