@@ -71,7 +71,6 @@ export default [
       generatePackageJson({
         baseContents: (pkg) => ({
           ...pkg,
-          type: 'module',
           exports: {
             '.': {
               types: './public-api.d.ts',
