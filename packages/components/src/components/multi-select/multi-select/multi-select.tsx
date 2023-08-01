@@ -180,14 +180,15 @@ export class MultiSelect {
                 getHighlightedOptionIndex(this.multiSelectOptions)
               )}
             />
-            <PrefixedTagNames.pIcon
+            <PrefixedTagNames.pButtonPure
               class="icon reset-icon"
-              name="close"
+              icon="close"
+              hideLabel="true"
               theme={this.theme}
               color={this.disabled ? 'state-disabled' : 'primary'}
               onClick={this.onResetClick}
               aria-hidden="true"
-            />
+            ></PrefixedTagNames.pButtonPure>
             <PrefixedTagNames.pIcon
               class={{ icon: true, ['toggle-icon']: true, ['toggle-icon--open']: this.isOpen }}
               name="arrow-head-down"

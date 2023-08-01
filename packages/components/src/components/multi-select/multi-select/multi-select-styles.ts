@@ -80,6 +80,8 @@ export const getComponentCss = (
       cursor: isDisabled ? 'not-allowed' : 'pointer',
     },
     ['reset-icon']: {
+      padding: '4px',
+      margin: 'auto',
       display: hasSelection ? 'block' : 'none',
     },
     ['toggle-icon']: {
