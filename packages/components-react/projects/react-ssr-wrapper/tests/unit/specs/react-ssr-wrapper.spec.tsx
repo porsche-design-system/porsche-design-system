@@ -1,6 +1,3 @@
-// needs to be before fromComponents import
-window.PORSCHE_DESIGN_SYSTEM_CDN_URL = 'https://cdn.ui.porsche.com';
-
 import { type JSX } from 'react';
 import { render } from '@testing-library/react';
 import * as fromComponents from '../../../src/lib/components';
