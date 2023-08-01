@@ -7,6 +7,7 @@ import {
   hasFilterOptionResults,
   MultiSelectDropdownDirection,
   MultiSelectState,
+  resetFilteredOptions,
   resetHighlightedOptions,
   setFirstOptionHighlighted,
   setLastOptionHighlighted,
@@ -271,11 +272,13 @@ export class MultiSelect {
   private onClickOutside = (e: MouseEvent): void => {
     if (this.isOpen && isClickOutside(e, this.inputContainer) && isClickOutside(e, this.listElement)) {
       this.isOpen = false;
+      this.resetFilter();
     }
   };
 
   private resetFilter = (): void => {
     this.inputElement.value = '';
+    resetFilteredOptions(this.multiSelectOptions);
   };
 
   private onComboboxKeyDown = (e: KeyboardEvent): void => {

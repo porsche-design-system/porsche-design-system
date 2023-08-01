@@ -69,6 +69,9 @@ export const optionIncludesSearchString = (option: HTMLPMultiSelectOptionElement
 export const hasFilterOptionResults = (options: HTMLPMultiSelectOptionElement[]): boolean =>
   options?.some((option) => !option.hidden);
 
+export const resetFilteredOptions = (options: HTMLPMultiSelectOptionElement[]): void =>
+  options.forEach((option) => (option.hidden = false));
+
 export const getValidSelectOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement[] =>
   options.filter((option) => !option.hidden && !option.disabled);
 
@@ -132,7 +135,6 @@ export const updateHighlightedOption = (
   direction: SelectDropdownDirectionInternal
 ): void => {
   const newIndex = getNewOptionIndex(options, direction);
-  console.log(newIndex);
   setNextOptionHighlighted(host, options, newIndex);
 };
 
