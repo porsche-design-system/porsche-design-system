@@ -11,6 +11,7 @@ import {
   resetHighlightedOptions,
   setFirstOptionHighlighted,
   setLastOptionHighlighted,
+  syncMultiSelectOptionProps,
   syncNativeSelect,
   updateHighlightedOption,
   updateMultiSelectOptionsFilterState,
@@ -140,6 +141,7 @@ export class MultiSelect {
       this.state,
       this.theme
     );
+    syncMultiSelectOptionProps(this.host, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const dropdownId = 'list';

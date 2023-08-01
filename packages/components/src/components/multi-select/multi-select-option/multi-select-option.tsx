@@ -1,7 +1,11 @@
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../../utils';
-import { getOptionIndex, MultiSelectOptionUpdateEvent } from './multi-select-option-utils';
-import type { PropTypes, Theme } from '../../../types';
+import {
+  getOptionIndex,
+  MultiSelectOptionInternalHTMLProps,
+  MultiSelectOptionUpdateEvent,
+} from './multi-select-option-utils';
+import type { PropTypes } from '../../../types';
 import { getComponentCss } from './multi-select-option-styles';
 import { getOptionAriaAttributes } from '../../../utils/select/select-aria';
 
@@ -16,7 +20,7 @@ const propTypes: PropTypes<typeof MultiSelectOption> = {
   shadow: true,
 })
 export class MultiSelectOption {
-  @Element() public host!: HTMLElement;
+  @Element() public host!: HTMLElement & MultiSelectOptionInternalHTMLProps;
 
   /** The option value. */
   @Prop() public value: string;
@@ -26,9 +30,6 @@ export class MultiSelectOption {
 
   /** Disables the option. */
   @Prop() public disabled?: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
-
-  /** Adapts the select color depending on the theme. */
-  private theme?: Theme = 'light';
 
   /** Hides options which are not matching the searchString **/
   private hidden = false;
@@ -44,7 +45,7 @@ export class MultiSelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.host.theme || 'light');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -62,7 +63,7 @@ export class MultiSelectOption {
           onClick={this.onClick}
           {...getOptionAriaAttributes(this.selected, this.disabled, this.hidden, !!this.value)}
         >
-          <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={this.theme}>
+          <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={this.host.theme}>
             <input type="checkbox" checked={this.selected} disabled={this.disabled} />
             <slot slot="label" />
           </PrefixedTagNames.pCheckboxWrapper>

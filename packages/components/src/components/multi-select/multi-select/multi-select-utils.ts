@@ -4,9 +4,19 @@ import {
   SelectDropdownDirection,
   SelectDropdownDirectionInternal,
 } from '../../../utils/select/select-dropdown';
+import { Theme } from '../../../utils';
+import { forceUpdate } from '@stencil/core';
+import { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectDropdownDirection;
+
+export const syncMultiSelectOptionProps = (host: HTMLElement, theme: Theme): void => {
+  Array.from(host.children).forEach((item: HTMLElement & MultiSelectOptionInternalHTMLProps) => {
+    item.theme = theme;
+    forceUpdate(item);
+  });
+};
 
 export const syncNativeSelect = (
   nativeSelect: HTMLSelectElement,
