@@ -40,7 +40,6 @@ import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectDropdownDirection, MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
-import { SelectDropdownDirectionInternal } from "./utils/select/select-dropdown";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
@@ -99,7 +98,6 @@ export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectDropdownDirection, MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
-export { SelectDropdownDirectionInternal } from "./utils/select/select-dropdown";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
@@ -1135,11 +1133,6 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
-    interface PMultiSelectDropdown {
-        "direction": SelectDropdownDirectionInternal;
-        "isOpen": boolean;
-        "theme"?: Theme;
-    }
     interface PMultiSelectOption {
         /**
           * Disables the option.
@@ -2024,12 +2017,6 @@ declare global {
         prototype: HTMLPMultiSelectElement;
         new (): HTMLPMultiSelectElement;
     };
-    interface HTMLPMultiSelectDropdownElement extends Components.PMultiSelectDropdown, HTMLStencilElement {
-    }
-    var HTMLPMultiSelectDropdownElement: {
-        prototype: HTMLPMultiSelectDropdownElement;
-        new (): HTMLPMultiSelectDropdownElement;
-    };
     interface HTMLPMultiSelectOptionElement extends Components.PMultiSelectOption, HTMLStencilElement {
     }
     var HTMLPMultiSelectOptionElement: {
@@ -2261,7 +2248,6 @@ declare global {
         "p-modal": HTMLPModalElement;
         "p-model-signature": HTMLPModelSignatureElement;
         "p-multi-select": HTMLPMultiSelectElement;
-        "p-multi-select-dropdown": HTMLPMultiSelectDropdownElement;
         "p-multi-select-option": HTMLPMultiSelectOptionElement;
         "p-pagination": HTMLPPaginationElement;
         "p-popover": HTMLPPopoverElement;
@@ -3349,11 +3335,6 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
-    interface PMultiSelectDropdown {
-        "direction"?: SelectDropdownDirectionInternal;
-        "isOpen"?: boolean;
-        "theme"?: Theme;
-    }
     interface PMultiSelectOption {
         /**
           * Disables the option.
@@ -4053,7 +4034,6 @@ declare namespace LocalJSX {
         "p-modal": PModal;
         "p-model-signature": PModelSignature;
         "p-multi-select": PMultiSelect;
-        "p-multi-select-dropdown": PMultiSelectDropdown;
         "p-multi-select-option": PMultiSelectOption;
         "p-pagination": PPagination;
         "p-popover": PPopover;
@@ -4152,7 +4132,6 @@ declare module "@stencil/core" {
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;
             "p-multi-select": LocalJSX.PMultiSelect & JSXBase.HTMLAttributes<HTMLPMultiSelectElement>;
-            "p-multi-select-dropdown": LocalJSX.PMultiSelectDropdown & JSXBase.HTMLAttributes<HTMLPMultiSelectDropdownElement>;
             "p-multi-select-option": LocalJSX.PMultiSelectOption & JSXBase.HTMLAttributes<HTMLPMultiSelectOptionElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;

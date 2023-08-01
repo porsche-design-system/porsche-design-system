@@ -19,12 +19,13 @@ import {
 import { Styles } from 'jss';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { FormState } from '../../../utils/form/form-state';
-import { getLabelStyles } from '../../../styles/form-styles';
+import { getLabelStyles, INPUT_HEIGHT } from '../../../styles/form-styles';
 import { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { getPlaceholderStyles } from '../../../styles/placeholder';
 import { getNoResultsOptionJSSStyles } from '../../../styles/select/option-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import { OPTION_HEIGHT } from '../multi-select-dropdown/multi-select-dropdown-styles';
 
 const inputYPadding = '13px';
 
@@ -49,6 +50,7 @@ export const getComponentCss = (
         ...hostHiddenStyles,
       },
       ...getInputJSSStyles(isDisabled, theme),
+      ...getListJSSStyles(isOpen, direction, theme),
     }),
     'input-container': {
       display: 'flex',
@@ -119,6 +121,42 @@ const getInputJSSStyles = (isDisabled: boolean, theme: Theme): Styles => {
         ...getPlaceholderStyles({ color: primaryColor }),
       },
       ...(isDisabled && getPlaceholderStyles({ color: disabledColor })),
+    },
+  };
+};
+
+const getListJSSStyles = (isOpen: boolean, direction: SelectDropdownDirectionInternal, theme: Theme): Styles => {
+  const isDirectionDown = direction === 'down';
+  const { primaryColor, backgroundColor } = getThemedColors(theme);
+
+  return {
+    ul: {
+      position: 'absolute',
+      margin: '0',
+      display: isOpen ? 'flex' : 'none',
+      flexDirection: 'column',
+      gap: spacingStaticSmall,
+      padding: '6px',
+      background: backgroundColor,
+      ...textSmallStyle,
+      zIndex: 10,
+      left: 0,
+      right: 0,
+      [isDirectionDown ? 'top' : 'bottom']: isDirectionDown ? '100%' : `${INPUT_HEIGHT - 1}px`,
+      boxSizing: 'border-box',
+      maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
+      overflowY: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      // scrollBehavior: 'smooth',
+      border: `2px solid ${primaryColor}`,
+      [isDirectionDown ? 'borderTop' : 'borderBottom']: 'none',
+      borderRadius: borderRadiusSmall,
+      [isDirectionDown ? 'borderTopLeftRadius' : 'borderBottomLeftRadius']: 0,
+      [isDirectionDown ? 'borderTopRightRadius' : 'borderBottomRightRadius']: 0,
+      scrollbarWidth: 'thin', // firefox
+      scrollbarColor: 'auto', // firefox
+      transition: getTransition('border-color'),
+      transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
     },
   };
 };

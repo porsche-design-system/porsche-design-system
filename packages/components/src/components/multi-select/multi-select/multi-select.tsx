@@ -3,6 +3,7 @@ import { MultiSelectOptionUpdateEvent } from '../multi-select-option/multi-selec
 import {
   getDropdownDirection,
   getHighlightedOption,
+  getHighlightedOptionIndex,
   hasFilterOptionResults,
   MultiSelectDropdownDirection,
   MultiSelectState,
@@ -35,6 +36,7 @@ import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
 import { SELECT_DROPDOWN_DIRECTIONS, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { StateMessage } from '../../common/state-message/state-message';
+import { getFilterInputAriaAttributes, getListAriaAttributes } from '../../../utils/select/select-aria';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -93,8 +95,8 @@ export class MultiSelect {
   private nativeSelect: HTMLSelectElement = document.createElement('select');
   private multiSelectOptions: HTMLPMultiSelectOptionElement[] = [];
   private inputContainer: HTMLDivElement;
-  private multiSelectDropdown: HTMLElement;
   private inputElement: HTMLInputElement;
+  private listElement: HTMLUListElement;
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(event: CustomEvent<MultiSelectOptionUpdateEvent>): void {
@@ -139,6 +141,7 @@ export class MultiSelect {
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const dropdownId = 'list';
     const labelId = 'label';
     const descriptionId = this.description && 'description';
 
@@ -161,15 +164,21 @@ export class MultiSelect {
           <div class="input-container" ref={(el) => (this.inputContainer = el)}>
             <input
               placeholder={this.selectedString || null}
-              autoComplete="none" // autoComplete="off" is ignored by newer browser versions but using any non recognized string works
+              autoComplete="off"
               onInput={this.onFilterChange}
               onClick={this.onInputClick}
               disabled={this.disabled}
               required={this.required}
               onKeyDown={this.onComboboxKeyDown}
               ref={(el) => (this.inputElement = el)}
-              aria-labelledby={labelId}
-              aria-describedby={descriptionId}
+              {...getFilterInputAriaAttributes(
+                this.isOpen,
+                this.required,
+                labelId,
+                descriptionId,
+                dropdownId,
+                getHighlightedOptionIndex(this.multiSelectOptions)
+              )}
             />
             <PrefixedTagNames.pIcon
               class="icon reset-icon"
@@ -197,12 +206,9 @@ export class MultiSelect {
               {this.description}
             </div>
           )}
-          <PrefixedTagNames.pMultiSelectDropdown
-            isOpen={this.isOpen}
-            direction={getDropdownDirection(this.dropdownDirection, this.inputContainer, this.multiSelectOptions)}
-            onOpenChange={this.onDropdownOpenChange}
-            theme={this.theme}
-            ref={(el) => (this.multiSelectDropdown = el)}
+          <ul
+            {...getListAriaAttributes(this.label, this.required, true, this.isOpen, true)}
+            ref={(el) => (this.listElement = el)}
           >
             {!hasFilterOptionResults(this.multiSelectOptions) && (
               <li class="no-results" aria-live="polite" role="status">
@@ -211,7 +217,7 @@ export class MultiSelect {
               </li>
             )}
             <slot onSlotchange={() => this.updateOptions()} />
-          </PrefixedTagNames.pMultiSelectDropdown>
+          </ul>
         </div>
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
@@ -261,12 +267,8 @@ export class MultiSelect {
     this.multiSelectOptions.forEach((option) => (option.selected = false));
   };
 
-  private onDropdownOpenChange = (isOpen: boolean): void => {
-    this.isOpen = isOpen;
-  };
-
   private onClickOutside = (e: MouseEvent): void => {
-    if (this.isOpen && isClickOutside(e, this.inputContainer) && isClickOutside(e, this.multiSelectDropdown)) {
+    if (this.isOpen && isClickOutside(e, this.inputContainer) && isClickOutside(e, this.listElement)) {
       this.isOpen = false;
     }
   };
@@ -301,13 +303,13 @@ export class MultiSelect {
       case 'PageUp':
         if (this.isOpen) {
           e.preventDefault();
-          setFirstOptionHighlighted(this.host, this.multiSelectOptions);
+          setFirstOptionHighlighted(this.listElement, this.multiSelectOptions);
         }
         break;
       case 'PageDown':
         if (this.isOpen) {
           e.preventDefault();
-          setLastOptionHighlighted(this.host, this.multiSelectOptions);
+          setLastOptionHighlighted(this.listElement, this.multiSelectOptions);
         }
         break;
       default:
@@ -317,7 +319,7 @@ export class MultiSelect {
 
   private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
     this.isOpen = true;
-    updateHighlightedOption(this.host, this.multiSelectOptions, direction);
+    updateHighlightedOption(this.listElement, this.multiSelectOptions, direction);
     // TODO: Is this necessary only to update aria-activedescendant?
     forceUpdate(this.host);
   }

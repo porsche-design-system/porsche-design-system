@@ -4,7 +4,6 @@ import {
   SelectDropdownDirection,
   SelectDropdownDirectionInternal,
 } from '../../../utils/select/select-dropdown';
-import { getPrefixedTagNames } from '../../../utils';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectDropdownDirection;
@@ -92,10 +91,7 @@ export const setNextOptionHighlighted = (
     setHighlightedOption(options[oldIndex], false);
   }
   setHighlightedOption(options[newIndex], true);
-  handleDropdownScroll(
-    host.shadowRoot.querySelector(getPrefixedTagNames(host).pMultiSelectDropdown).shadowRoot.querySelector('ul'),
-    options[newIndex]
-  );
+  handleDropdownScroll(host, options[newIndex]);
 };
 
 export const setFirstOptionHighlighted = (host: HTMLElement, options: HTMLPMultiSelectOptionElement[]): void => {
@@ -117,7 +113,7 @@ export const getNewOptionIndex = (
 ): number => {
   const validItems = getValidSelectOptions(options);
   const validMax = validItems.length - 1;
-  if (validMax <= 0) {
+  if (validMax < 0) {
     return;
   }
   const oldIndex = getHighlightedOptionIndex(validItems);
@@ -136,6 +132,7 @@ export const updateHighlightedOption = (
   direction: SelectDropdownDirectionInternal
 ): void => {
   const newIndex = getNewOptionIndex(options, direction);
+  console.log(newIndex);
   setNextOptionHighlighted(host, options, newIndex);
 };
 
