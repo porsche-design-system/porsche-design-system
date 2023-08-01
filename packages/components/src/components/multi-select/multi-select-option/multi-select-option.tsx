@@ -1,8 +1,9 @@
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../../utils';
-import { MultiSelectOptionUpdateEvent } from './multi-select-option-utils';
+import { getOptionIndex, MultiSelectOptionUpdateEvent } from './multi-select-option-utils';
 import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './multi-select-option-styles';
+import { getOptionAriaAttributes } from '../../../utils/select/select-aria';
 
 const propTypes: PropTypes<typeof MultiSelectOption> = {
   value: AllowedTypes.string,
@@ -50,6 +51,7 @@ export class MultiSelectOption {
     return (
       <Host>
         <li
+          id={`option-${getOptionIndex(this.host)}`}
           role="option"
           class={{
             ['option']: true,
@@ -58,6 +60,7 @@ export class MultiSelectOption {
             ['option--hidden']: this.hidden,
           }}
           onClick={this.onClick}
+          {...getOptionAriaAttributes(this.selected, this.disabled, this.hidden, !!this.value)}
         >
           <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={this.theme}>
             <input type="checkbox" checked={this.selected} disabled={this.disabled} />

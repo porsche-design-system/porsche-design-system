@@ -41,7 +41,7 @@ export const getListAriaAttributes = (
   isRequired: boolean,
   hasFilter: boolean,
   isOpen: boolean,
-  multiple: boolean
+  multiple = false
 ): AriaAttributes => {
   return {
     role: 'listbox',
@@ -65,7 +65,7 @@ export const getOptionAriaAttributes = (
   isHidden: boolean,
   hasValue: boolean
 ): AriaAttributes => ({
-  'aria-selected': isSelected ? 'true' : 'false',
+  ...(!isHidden && { 'aria-selected': isSelected ? 'true' : 'false' }),
   'aria-disabled': isDisabled ? 'true' : null,
   'aria-hidden': isHidden ? 'true' : null,
   'aria-label': hasValue ? null : 'Empty value',

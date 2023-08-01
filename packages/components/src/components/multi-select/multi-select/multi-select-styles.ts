@@ -25,7 +25,7 @@ import { getPlaceholderStyles } from '../../../styles/placeholder';
 import { getNoResultsOptionJSSStyles } from '../../../styles/select/option-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { OPTION_HEIGHT } from '../multi-select-dropdown/multi-select-dropdown-styles';
+import { OPTION_HEIGHT } from '../../../styles/select/option-styles';
 
 const inputYPadding = '13px';
 
