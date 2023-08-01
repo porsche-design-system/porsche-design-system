@@ -57,6 +57,7 @@ import { LinkTileModelSignatureComponent } from './link-tile-model-signature.com
 import { MarqueComponent } from './marque.component';
 import { ModalComponent } from './modal.component';
 import { ModelSignatureComponent } from './model-signature.component';
+import { MultiSelectComponent } from './multi-select.component';
 import { OverviewComponent } from './overview.component';
 import { OverviewFlakyComponent } from './overview-flaky.component';
 import { OverviewNotificationsComponent } from './overview-notifications.component';
@@ -120,6 +121,7 @@ export const generatedPages = [
   MarqueComponent,
   ModalComponent,
   ModelSignatureComponent,
+  MultiSelectComponent,
   OverviewComponent,
   OverviewFlakyComponent,
   OverviewNotificationsComponent,
@@ -298,6 +300,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Model Signature',
     path: 'model-signature',
     component: ModelSignatureComponent,
+  },
+  {
+    name: 'Multi Select',
+    path: 'multi-select',
+    component: MultiSelectComponent,
   },
   {
     name: 'Pagination',
