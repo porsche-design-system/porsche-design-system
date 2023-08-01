@@ -1,3 +1,5 @@
+'use client';
+
 import type { MutableRefObject } from 'react';
 import { useContext, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { PorscheDesignSystemContext } from './provider';
