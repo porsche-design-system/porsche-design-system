@@ -18,16 +18,12 @@ import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdo
 import {
   getAmountOfVisibleOptionsAndOptgroups,
   getDropdownVisibility,
-  getFilterInputAriaAttributes,
   getHighlightedOptionMapIndex,
-  getListAriaAttributes,
   getMatchingOptionMaps,
   getNewOptionMapIndex,
-  getOptionAriaAttributes,
   getOptionMaps,
   getOptionsElements,
   getSelectedOptionMap,
-  getSelectWrapperDropdownButtonAriaAttributes,
   handleScroll,
   hasFilterResults,
   resetFilteredOptionMaps,
@@ -42,6 +38,12 @@ import {
 import type { Theme } from '../../../types';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
 import { determineDropdownDirection } from '../../../utils/select/select-dropdown';
+import {
+  getFilterInputAriaAttributes,
+  getListAriaAttributes,
+  getOptionAriaAttributes,
+  getSelectDropdownButtonAriaAttributes,
+} from '../../../utils/select/select-aria';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
@@ -161,7 +163,7 @@ export class SelectWrapperDropdown {
             role="combobox"
             id={buttonId}
             disabled={this.disabled}
-            {...getSelectWrapperDropdownButtonAriaAttributes(
+            {...getSelectDropdownButtonAriaAttributes(
               this.isOpen,
               labelId,
               descriptionId,
@@ -215,7 +217,7 @@ export class SelectWrapperDropdown {
                         ['option--hidden']: hidden || initiallyHidden,
                       }}
                       onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
-                      {...getOptionAriaAttributes(option)}
+                      {...getOptionAriaAttributes(selected, disabled, hidden, !!value)}
                     >
                       {value}
                       {selected && !disabled && (
