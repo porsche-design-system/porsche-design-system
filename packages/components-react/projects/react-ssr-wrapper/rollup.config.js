@@ -42,11 +42,23 @@ export default [
       generatePackageJson({
         baseContents: {
           main: 'components-react/projects/react-ssr-wrapper/src/public-api.js',
+          module: 'esm/components-react/projects/react-ssr-wrapper/src/public-api.js',
           types: 'public-api.d.ts',
           sideEffects: false,
         },
       }),
     ],
+    onwarn,
+  },
+  {
+    input,
+    external,
+    output: {
+      dir: `${outputDir}/esm`,
+      format: 'esm',
+      preserveModules: true,
+    },
+    plugins: [preserveDirectives.default(), resolve(), typescript(typescriptOpts)],
     onwarn,
   },
 ];
