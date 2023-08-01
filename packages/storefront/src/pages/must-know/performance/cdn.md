@@ -36,6 +36,11 @@ which CDN those assets shall be loaded to get maximum performance in China.
 To achieve this, a global browser variable `PORSCHE_DESIGN_SYSTEM_CDN` was introduced which needs to be defined before
 initializing the Porsche Design System.
 
+<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
+  Usually the integrating team that is responsible for the application is in charge of configuring which cdn to use.<br>
+  This means that widget teams shouldn't set it and might even override it.
+</p-inline-notification>
+
 Possible values that can be assigned:
 
 - `auto` (default - using RoW CDN and redirects to Chinese CDN automatically when necessary)
@@ -43,8 +48,8 @@ Possible values that can be assigned:
   dedicated builds** for their application, one for China and one for RoW (rest of world) or following the **build once,
   deploy many principle**, it can be configured at start-up time.
 
-Since handling the global configuration variable `PORSCHE_DESIGN_SYSTEM_CDN` isn't very nice, the
-`porscheDesignSystem.load()` function accepts a `cdn: 'auto' | 'cn'` option which will then set the
+Since handling the global configuration variable `PORSCHE_DESIGN_SYSTEM_CDN` isn't very nice and won't work in a SSR
+context, the `porscheDesignSystem.load()` function accepts a `cdn: 'auto' | 'cn'` option which will then set the
 `PORSCHE_DESIGN_SYSTEM_CDN` for backwards compatibility and therefore affecting other micro frontends within the same
 website or app.
 
