@@ -4,6 +4,17 @@ import type { EntryConfig } from '../shared-definitions/entry-config';
 
 declare global {
   var CM_CONFIG: EntryConfig;
+
+  interface Document {
+    porscheDesignSystem: {
+      [key: `${number}.${number}.${number}`]: {
+        prefixes: string[];
+        isReady: () => Promise<void>;
+        readyResolve: () => void;
+      };
+      cdn: string;
+    };
+  }
 }
 
 global.CM_CONFIG = {
@@ -16,6 +27,7 @@ describe('load()', () => {
   beforeEach(() => {
     // @ts-ignore
     delete window.PORSCHE_DESIGN_SYSTEM_CDN;
+    delete document.porscheDesignSystem;
   });
 
   it('should call loadComponentLibrary() with correct default parameters', () => {
@@ -64,45 +76,53 @@ describe('load()', () => {
     expect(window.PORSCHE_DESIGN_SYSTEM_CDN).toBe('cn');
   });
 
-  it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="auto" set window.PORSCHE_DESIGN_SYSTEM_CDN_URL="https://cdn.ui.porsche.com"', () => {
+  it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="auto" set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.com"', () => {
     window.PORSCHE_DESIGN_SYSTEM_CDN = 'auto';
 
     load();
-    expect(window.PORSCHE_DESIGN_SYSTEM_CDN_URL).toBe('https://cdn.ui.porsche.com');
+    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.com');
   });
 
-  it('should for non .cn top level domain set window.PORSCHE_DESIGN_SYSTEM_CDN_URL="https://cdn.ui.porsche.com"', () => {
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { origin: 'https://shop.porsche.com' },
-    });
-
-    load();
-    expect(window.PORSCHE_DESIGN_SYSTEM_CDN_URL).toBe('https://cdn.ui.porsche.com');
-
+  it('should for non .cn top level domain set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.com"', () => {
     Object.defineProperty(window, 'location', {
       writable: true,
       value: { origin: 'https://shop.porsche.de' },
     });
 
     load();
-    expect(window.PORSCHE_DESIGN_SYSTEM_CDN_URL).toBe('https://cdn.ui.porsche.com');
+    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.com');
   });
 
-  it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="cn" set window.PORSCHE_DESIGN_SYSTEM_CDN_URL="https://cdn.ui.porsche.cn"', () => {
+  it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="cn" set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.cn"', () => {
     window.PORSCHE_DESIGN_SYSTEM_CDN = 'cn';
 
     load();
-    expect(window.PORSCHE_DESIGN_SYSTEM_CDN_URL).toBe('https://cdn.ui.porsche.cn');
+    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.cn');
   });
 
-  it('should for .cn top level domain set window.PORSCHE_DESIGN_SYSTEM_CDN_URL="https://cdn.ui.porsche.cn"', () => {
+  it('should for .cn top level domain set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.cn"', () => {
     Object.defineProperty(window, 'location', {
       writable: true,
       value: { origin: 'https://shop.porsche.cn' },
     });
 
     load();
-    expect(window.PORSCHE_DESIGN_SYSTEM_CDN_URL).toBe('https://cdn.ui.porsche.cn');
+    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.cn');
+  });
+
+  it('should call console.warn with correct parameter if document.porscheDesignSystem.cdn is already set', () => {
+    const spy = jest.spyOn(console, 'warn').mockImplementation();
+    window.PORSCHE_DESIGN_SYSTEM_CDN = 'auto';
+
+    load();
+    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.com');
+
+    window.PORSCHE_DESIGN_SYSTEM_CDN = 'cn';
+
+    load();
+    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.cn');
+    expect(spy).toBeCalledWith(
+      '[Porsche Design System v1.0.0] document.porscheDesignSystem.cdn was already set during a previous initialization which indicates that there might be a conflict.'
+    );
   });
 });

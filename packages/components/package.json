@@ -71,8 +71,7 @@
     "globby": "^11.0.4",
     "tinycolor2": "^1.6.0",
     "ts-node": "^10.9.1",
-    "typescript": "~5.1.6",
-    "whatwg-fetch": "^3.6.2"
+    "typescript": "~5.1.6"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",

@@ -9,9 +9,5 @@ declare global {
 }
 
 export function getComponentsManagerData(): ComponentsManagerData {
-  if (!document[CM_KEY]) {
-    document[CM_KEY] = {};
-  }
-
   return document[CM_KEY];
 }

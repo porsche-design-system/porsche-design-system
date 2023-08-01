@@ -41,7 +41,7 @@
 
     <script>
       // needed for utilities/styles package not being tree shook in dev mode
-      window.PORSCHE_DESIGN_SYSTEM_CDN_URL = '';
+      document.porscheDesignSystem = { cdn: '' };
 
       <!-- START: keep this snippet to log component lifecycle events -->
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
