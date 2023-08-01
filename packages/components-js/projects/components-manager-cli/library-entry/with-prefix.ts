@@ -42,11 +42,11 @@ export const load = (opts: LoadOptions = {}): void => {
 
   if (!document[CM_KEY]) {
     document[CM_KEY] = {} as any;
-  } else if (document[CM_KEY].cdn) {
-    console.warn(
-      `[Porsche Design System v${CM_CONFIG.version}] document.${CM_KEY}.cdn was already set during a previous initialization which indicates that there might be a conflict.`
-    );
   }
+
+  // NOTE: validation if document[CM_KEY].cdn is already set might make sense
+  // but this is tricky when there are multiple load() calls, e.g. with multiple prefixes
+  // so we can't just check if document[CM_KEY].cdn is defined or not
 
   // this value is used at runtime of web components via getCDNBaseURL() util
   document[CM_KEY].cdn = `https://cdn.ui.porsche.${window[cdnKey] === 'cn' ? 'cn' : 'com'}`;

@@ -75,6 +75,14 @@ describe('load()', () => {
   it('should for non .cn top level domain set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.com"', () => {
     Object.defineProperty(window, 'location', {
       writable: true,
+      value: { origin: 'https://shop.porsche.com' },
+    });
+
+    load();
+    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.com');
+
+    Object.defineProperty(window, 'location', {
+      writable: true,
       value: { origin: 'https://shop.porsche.de' },
     });
 
@@ -97,21 +105,5 @@ describe('load()', () => {
 
     load();
     expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.cn');
-  });
-
-  it('should call console.warn with correct parameter if document.porscheDesignSystem.cdn is already set', () => {
-    const spy = jest.spyOn(console, 'warn').mockImplementation();
-    window.PORSCHE_DESIGN_SYSTEM_CDN = 'auto';
-
-    load();
-    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.com');
-
-    window.PORSCHE_DESIGN_SYSTEM_CDN = 'cn';
-
-    load();
-    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.cn');
-    expect(spy).toBeCalledWith(
-      '[Porsche Design System v1.0.0] document.porscheDesignSystem.cdn was already set during a previous initialization which indicates that there might be a conflict.'
-    );
   });
 });
