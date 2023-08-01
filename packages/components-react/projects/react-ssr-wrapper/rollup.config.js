@@ -39,14 +39,6 @@ export default [
         declarationDir: outputDir,
         rootDir: 'src',
       }),
-      generatePackageJson({
-        baseContents: {
-          main: 'components-react/projects/react-ssr-wrapper/src/public-api.js',
-          module: 'esm/components-react/projects/react-ssr-wrapper/src/public-api.js',
-          types: 'public-api.d.ts',
-          sideEffects: false,
-        },
-      }),
     ],
     onwarn,
   },

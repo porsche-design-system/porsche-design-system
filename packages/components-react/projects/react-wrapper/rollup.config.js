@@ -65,9 +65,44 @@ export default [
           { src: `${rootDir}/LICENSE`, dest: outputDir },
           { src: `${rootDir}/OSS_NOTICE`, dest: outputDir },
           { src: `${projectDir}/README.md`, dest: outputDir },
-          { src: `${projectDir}/package.json`, dest: outputDir },
           { src: '../components/CHANGELOG.md', dest: outputDir },
         ],
+      }),
+      generatePackageJson({
+        baseContents: (pkg) => ({
+          ...pkg,
+          type: 'module',
+          exports: {
+            '.': {
+              types: './public-api.d.ts',
+              import: './esm/public-api.js',
+              require: './public-api.js',
+            },
+            './jsdom-polyfill': {
+              types: './jsdom-polyfill/index.d.ts',
+              require: './jsdom-polyfill/index.js',
+            },
+            './partials': {
+              types: './partials/index.d.ts',
+              import: './partials/esm/index.js',
+              require: './partials/index.js',
+            },
+            './ssr': {
+              types: './ssr/public-api.d.ts',
+              import: './ssr/esm/components-react/projects/react-ssr-wrapper/src/public-api.js',
+              require: './ssr/components-react/projects/react-ssr-wrapper/src/public-api.js',
+            },
+            './styles': {
+              types: './styles/index.d.ts',
+              import: './styles/esm/index.js',
+              require: './styles/index.js',
+            },
+            './testing': {
+              types: './testing/index.d.ts',
+              require: './testing/index.js',
+            },
+          },
+        }),
       }),
     ],
     onwarn,
@@ -110,7 +145,6 @@ export default [
       {
         file: `${outputDir}/partials/index.js`,
         format: 'cjs',
-        plugins: [generatePackageJson(subPackageJsonConfig)],
       },
       {
         file: `${outputDir}/partials/esm/index.js`,
@@ -126,7 +160,6 @@ export default [
       {
         file: `${outputDir}/styles/index.js`,
         format: 'cjs',
-        plugins: [generatePackageJson(subPackageJsonConfig)],
       },
       {
         file: `${outputDir}/styles/esm/index.js`,
