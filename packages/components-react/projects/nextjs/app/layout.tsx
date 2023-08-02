@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <PorscheDesignSystemProvider>
           <Select />
-          {children}
+          <div id="app">{children}</div>
         </PorscheDesignSystemProvider>
         <NextScript />
         {getDSRPonyfill({ format: 'jsx' })}
