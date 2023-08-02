@@ -6,7 +6,7 @@ require('matchmedia-polyfill/matchMedia.addListener');
 require('scroll-behavior-polyfill');
 
 if (!navigator.userAgent.includes('Node.js') && !navigator.userAgent.includes('jsdom')) {
-  throw new Error('[Porsche Design System] this package should only be used in node and jsdom environments');
+  throw new Error('[Porsche Design System] the jsdom-polyfill sub package should only be used in node and jsdom environments');
 }
 
 // skip initial stylesheet fetch
