@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
-import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_FONTS, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
+import { CDN_BASE_PATH_FONTS } from '../../../cdn.config';
 
 type Manifest = {
   [name: string]: string;
@@ -36,10 +36,7 @@ const createManifestAndCopyFonts = (files: string[]): void => {
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
-    `${CDN_KEY_TYPE_DEFINITION}
-
-export const CDN_BASE_PATH = '/${CDN_BASE_PATH_FONTS}';
-export const CDN_BASE_URL = ${CDN_BASE_URL_DYNAMIC} + CDN_BASE_PATH;
+    `export const CDN_BASE_PATH = '/${CDN_BASE_PATH_FONTS}';
 export const FONTS_MANIFEST = ${JSON.stringify(manifest)};
 `
   );

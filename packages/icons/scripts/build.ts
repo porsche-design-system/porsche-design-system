@@ -4,7 +4,7 @@ import * as crypto from 'crypto';
 import { optimize, Config } from 'svgo';
 import globby from 'globby';
 import { paramCase } from 'change-case';
-import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_ICONS, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
+import { CDN_BASE_PATH_ICONS } from '../../../cdn.config';
 
 type Manifest = {
   [name: string]: string;
@@ -64,10 +64,7 @@ const createManifestAndOptimizeIcons = (files: string[], config: Config): void =
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
-    `${CDN_KEY_TYPE_DEFINITION}
-
-export const CDN_BASE_PATH = '/${CDN_BASE_PATH_ICONS}';
-export const CDN_BASE_URL = ${CDN_BASE_URL_DYNAMIC} + CDN_BASE_PATH;
+    `export const CDN_BASE_PATH = '/${CDN_BASE_PATH_ICONS}';
 export const ICONS_MANIFEST = ${JSON.stringify(sortedManifest)};
 export const ICON_NAMES = ${JSON.stringify(sortedManifestKeys)} as const;
 export type IconName = typeof ICON_NAMES[number];

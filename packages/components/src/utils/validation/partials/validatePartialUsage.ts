@@ -5,8 +5,9 @@ import {
   getUsedTagNamesWithoutPreloadForVersions,
 } from './helper';
 import type { PartialName } from '@porsche-design-system/shared';
-import { FONT_FACE_CDN_URL } from '@porsche-design-system/styles';
+import { FONT_FACE_CDN_FILE_CN, FONT_FACE_CDN_FILE_COM } from '@porsche-design-system/styles';
 import { consoleWarn } from '../../log';
+import { getCDNBaseURL } from '../../getCDNBaseURL';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
@@ -26,8 +27,7 @@ export const validatePartialUsage = (): void => {
   // Ensure no warning is thrown when started with yarn start except for getFontFaceStylesheet()
   if (ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development') {
     validateGetInitialStylesUsage();
-    // TODO: should be named like validateGetFontFaceStylesheetUsage()
-    validateFontFaceStylesheetUsage();
+    validateGetFontFaceStylesheetUsage();
     validateGetFontLinksUsage();
     // TODO: integration test (real world test) first, before rollout
     // validateGetLoaderScriptUsage();
@@ -35,15 +35,17 @@ export const validatePartialUsage = (): void => {
   }
 };
 
-export const validateFontFaceStylesheetUsage = (): void => {
-  if (!document.head.querySelector(`link[href="${FONT_FACE_CDN_URL}"]`)) {
-    throwPartialValidationWarning('getFontFaceStylesheet');
+export const validateGetFontFaceStylesheetUsage = (): void => {
+  const baseUrl = getCDNBaseURL();
+  const styleUrl = `${baseUrl}/styles/${baseUrl.match(/\.cn\//) ? FONT_FACE_CDN_FILE_CN : FONT_FACE_CDN_FILE_COM}`;
+  if (!document.head.querySelector(`link[href="${styleUrl}"]`)) {
+    logPartialValidationWarning('getFontFaceStylesheet');
   }
 };
 
 export const validateGetFontLinksUsage = (): void => {
   if (!document.head.querySelector('link[rel=preload][as=font][href*=porsche-next-w-la-regular]')) {
-    throwPartialValidationWarning('getFontLinks');
+    logPartialValidationWarning('getFontLinks');
   }
 };
 
@@ -67,17 +69,17 @@ export const validateGetComponentChunkLinksUsage = (): void => {
 
 export const validateGetLoaderScriptUsage = (): void => {
   if (!document.body.querySelector('script[data-pds-loader-script]')) {
-    throwPartialValidationWarning('getLoaderScript');
+    logPartialValidationWarning('getLoaderScript');
   }
 };
 
 export const validateGetInitialStylesUsage = (): void => {
   if (!document.head.querySelector('style[data-pds-initial-styles]')) {
-    throwPartialValidationWarning('getInitialStyles');
+    logPartialValidationWarning('getInitialStyles');
   }
 };
 
-export const throwPartialValidationWarning = (partialName: PartialName, prefix?: string): void => {
+export const logPartialValidationWarning = (partialName: PartialName, prefix?: string): void => {
   consoleWarn(
     `The Porsche Design System ${
       prefix ? `with prefix: '${prefix}' ` : ''
