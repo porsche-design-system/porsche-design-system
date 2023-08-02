@@ -19,13 +19,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Angular: `cdn: 'auto' | 'cn'` option to `PorscheDesignSystemModule.load()` as alternative to using
   `window.PORSCHE_DESIGN_SYSTEM_CDN` ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
 - React: `cdn: 'auto' | 'cn'` prop to `PorscheDesignSystemProvider` as alternative to using
-  `window.PORSCHE_DESIGN_SYSTEM_CDN` ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
+  `window.PORSCHE_DESIGN_SYSTEM_CDN` with SSR support
+  ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
 - Vue: `cdn: 'auto' | 'cn'` prop to `PorscheDesignSystemProvider` as alternative to using
   `window.PORSCHE_DESIGN_SYSTEM_CDN` ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
 
 #### Changed
 
-- Use China CDN and set `window.PORSCHE_DESIGN_SYSTEM_CDN` for backwards compatibility based on .CN top level domain
+- Use China CDN and set `window.PORSCHE_DESIGN_SYSTEM_CDN` for backwards compatibility based on .cn top level domain
   before design system initialization
   ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
 
