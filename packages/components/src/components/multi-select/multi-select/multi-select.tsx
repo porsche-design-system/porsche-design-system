@@ -2,7 +2,6 @@ import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop, State
 import {
   getDropdownDirection,
   getHighlightedOption,
-  getHighlightedOptionIndex,
   getSelectedOptionsString,
   hasFilterOptionResults,
   MultiSelectDropdownDirection,
@@ -147,27 +146,27 @@ export class MultiSelect {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const dropdownId = 'list';
-    const labelId = 'label';
-    const descriptionId = this.description && 'description';
 
     return (
       <Host>
         <div class="root">
-          <label class="label">
+          <label class="label" htmlFor="comboxbox">
             {!this.hideLabel && hasLabel(this.host, this.label) && (
               <span class="label__text" onClick={() => this.inputElement.focus()}>
                 {this.label || <slot name="label" />}
                 {isRequiredAndParentNotRequired(this.host, this.nativeSelect) && <Required />}
               </span>
             )}
-            {hasDescription(this.host, this.description) && (
-              <span class="label__text" onClick={() => this.inputElement.focus()}>
-                {this.description || <slot name="description" />}
-              </span>
-            )}
           </label>
+          {hasDescription(this.host, this.description) && (
+            <span class="label__text" id="description" onClick={() => this.inputElement.focus()}>
+              {this.description || <slot name="description" />}
+            </span>
+          )}
           <div class={{ 'input-container': true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
             <input
+              id="comboxbox"
+              role="combobox"
               placeholder={this.selectedString || null}
               autoComplete="off"
               onInput={this.onFilterChange}
@@ -176,14 +175,7 @@ export class MultiSelect {
               required={this.required}
               onKeyDown={this.onComboboxKeyDown}
               ref={(el) => (this.inputElement = el)}
-              {...getFilterInputAriaAttributes(
-                this.isOpen,
-                this.required,
-                labelId,
-                descriptionId,
-                dropdownId,
-                getHighlightedOptionIndex(this.multiSelectOptions)
-              )}
+              {...getFilterInputAriaAttributes(this.isOpen, this.required, undefined, 'description', dropdownId)}
             />
             <PrefixedTagNames.pButtonPure
               class="icon reset-icon"
@@ -193,6 +185,7 @@ export class MultiSelect {
               color={this.disabled ? 'state-disabled' : 'primary'}
               onClick={this.onResetClick}
               aria-hidden="true"
+              ref={(el) => (this.resetButton = el)}
             ></PrefixedTagNames.pButtonPure>
             <PrefixedTagNames.pIcon
               class={{ icon: true, ['toggle-icon']: true, ['toggle-icon--open']: this.isOpen }}
@@ -203,16 +196,8 @@ export class MultiSelect {
               aria-hidden="true"
             />
           </div>
-          <div class="sr-text" id={labelId}>
-            {this.selectedString}, {this.label}
-            {!!this.message && `. ${this.message}`}
-          </div>
-          {this.description && (
-            <div class="sr-text" id={descriptionId}>
-              {this.description}
-            </div>
-          )}
           <ul
+            id={dropdownId}
             {...getListAriaAttributes(this.label, this.required, true, this.isOpen, true)}
             ref={(el) => (this.listElement = el)}
           >
@@ -307,6 +292,7 @@ export class MultiSelect {
         break;
       case 'Escape':
       case 'Tab':
+        // TODO: only close when on reset button
         this.isOpen = false;
         resetHighlightedOptions(this.multiSelectOptions);
         break;

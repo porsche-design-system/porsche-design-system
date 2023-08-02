@@ -6,7 +6,7 @@ export const getFilterInputAriaAttributes = (
   labelId: string,
   descriptionId: string,
   dropdownId: string,
-  activeDescendantId: number
+  activeDescendantId?: number
 ): AriaAttributes => {
   return {
     ...getSelectDropdownButtonAriaAttributes(isOpen, labelId, descriptionId, dropdownId, activeDescendantId),
@@ -22,17 +22,18 @@ export const getSelectDropdownButtonAriaAttributes = (
   labelId: string,
   descriptionId: string,
   dropdownId: string,
-  activeDescendantId: number
+  activeDescendantId?: number
 ): AriaAttributes => {
   return {
-    'aria-labelledby': labelId,
+    'aria-labelledby': labelId || null,
     'aria-describedby': descriptionId || null,
     'aria-haspopup': 'listbox',
     'aria-expanded': isOpen ? 'true' : 'false',
     'aria-controls': dropdownId,
-    ...(isOpen && {
-      'aria-activedescendant': `option-${activeDescendantId}`,
-    }),
+    ...(isOpen &&
+      activeDescendantId !== undefined && {
+        'aria-activedescendant': `option-${activeDescendantId}`,
+      }),
   };
 };
 

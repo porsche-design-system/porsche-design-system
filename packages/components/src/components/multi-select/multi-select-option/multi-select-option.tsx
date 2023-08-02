@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../../utils';
-import { getOptionIndex, MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
+import { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
 import type { PropTypes } from '../../../types';
 import { getComponentCss } from './multi-select-option-styles';
 import { getOptionAriaAttributes } from '../../../utils/select/select-aria';
@@ -47,7 +47,6 @@ export class MultiSelectOption {
     return (
       <Host>
         <li
-          id={`option-${getOptionIndex(this.host)}`}
           role="option"
           class={{
             ['option']: true,
