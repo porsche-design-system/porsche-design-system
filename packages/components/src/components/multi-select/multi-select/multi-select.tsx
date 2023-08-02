@@ -185,7 +185,6 @@ export class MultiSelect {
               color={this.disabled ? 'state-disabled' : 'primary'}
               onClick={this.onResetClick}
               aria-hidden="true"
-              ref={(el) => (this.resetButton = el)}
             ></PrefixedTagNames.pButtonPure>
             <PrefixedTagNames.pIcon
               class={{ icon: true, ['toggle-icon']: true, ['toggle-icon--open']: this.isOpen }}
