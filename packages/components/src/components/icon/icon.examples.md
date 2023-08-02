@@ -92,7 +92,7 @@ sure that the custom icon serves the specific needs like size and viewbox which 
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { capitalCase } from 'change-case';
-import { ICONS_MANIFEST } from '@porsche-design-system/assets';
+import { ICONS_MANIFEST } from '@porsche-design-system/icons';
 import { TEXT_SIZES } from '../text/text-size';
 import { TEXT_COLORS_DEPRECATED } from '../text/text-color'; 
 import { ICON_COLORS } from './icon-utils';
