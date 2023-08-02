@@ -11,7 +11,7 @@ const readAndWriteFile = (targetFile: string): void => {
   const [, documentKey] = oldContent.match(/,document\[([a-z])]\.cdn=/) || [];
   const newContent = oldContent.replace(
     '"%%%CDN_BASE_URL_DYNAMIC%%%',
-    `document${documentKey ? '[' + documentKey + ']' : 'porscheDesignSystem'}.cdn+"`
+    `document${documentKey ? '[' + documentKey + ']' : '.porscheDesignSystem'}.cdn+"`
   );
   fs.writeFileSync(targetFile, newContent);
 
