@@ -7,7 +7,7 @@ import {
   CDN_BASE_URL_DYNAMIC,
   CDN_BASE_PATH_META_ICONS,
   CDN_KEY_TYPE_DEFINITION,
-  CDN_BASE_URL,
+  CDN_BASE_URL_COM,
   CDN_BASE_URL_CN,
 } from '../../../cdn.config';
 
@@ -40,7 +40,7 @@ const generateWebManifestAndExtendIconManifest = (metaIconsManifest: MetaIconsMa
 };
 
 const writeWebManifest = (androidIconPaths: string[], cdn: Cdn): string => {
-  const cdnURL = cdn === 'auto' ? CDN_BASE_URL : CDN_BASE_URL_CN;
+  const cdnURL = cdn === 'auto' ? CDN_BASE_URL_COM : CDN_BASE_URL_CN;
   const icons = androidIconPaths.map((androidIconPath: string) => {
     const [, size] = androidIconPath.match(/android-chrome-([0-9]+)x\1/) || [];
     if (isNaN(parseInt(size))) {
