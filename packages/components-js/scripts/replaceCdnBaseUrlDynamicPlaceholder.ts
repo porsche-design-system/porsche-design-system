@@ -6,14 +6,16 @@ import { npmDistTmpSubPath } from '../projects/components-wrapper/environment';
 
 const packageDir = path.resolve(__dirname, '..');
 
+// TODO: this should happen during webpack build via define plugin
 const readAndWriteFile = (targetFile: string): void => {
   const oldContent = fs.readFileSync(targetFile, 'utf8');
+  const [, documentKey] = oldContent.match(/,document\[([a-z])]\.cdn=/) || [];
   const newContent = oldContent.replace(
     '"%%%CDN_BASE_URL_DYNAMIC%%%',
-    `${CDN_BASE_URL_DYNAMIC.replace(/\s/g, '') // strip spaces
-      .replace('typeof', 'typeof ')}+"` // recover space after typeof
+    `document[${documentKey || '"porscheDesignSystem"'}].cdn+"`
   );
   fs.writeFileSync(targetFile, newContent);
+
   console.log(`Updated: ${targetFile.replace(packageDir, '.')}`);
 };
 

@@ -1,11 +1,13 @@
 {
   "extends": "@porsche-design-system/shared/tsconfig.json",
   "compilerOptions": {
+    "moduleResolution": "node",
+    "verbatimModuleSyntax": false,
     "declaration": true,
     "sourceMap": true,
     "inlineSources": true,
     "declarationDir": "./dist/types",
-    "outDir": "./dist",
+    "outDir": "./dist/esm",
     "types": ["node", "jest"]
   },
   "include": ["src/index.ts"]

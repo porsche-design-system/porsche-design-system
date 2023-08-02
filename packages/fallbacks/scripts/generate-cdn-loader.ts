@@ -45,13 +45,15 @@ const generateCdnLoader = (fallback: Fallbacks): void => {
   fs.writeFileSync(targetFilePathLoader, newFileContentLoader);
 };
 
-const writeManifest = (cdnPath: string, manifest: Manifest): void => {
+const writeManifest = (manifest: Manifest): void => {
   fs.writeFileSync(
     path.normalize('./index.ts'),
     `${CDN_KEY_TYPE_DEFINITION}
 
-export const CDN_BASE_URL = ${cdnPath};
-export const FALLBACKS_MANIFEST = ${JSON.stringify(manifest)};`
+export const CDN_BASE_PATH = '/${CDN_BASE_PATH_FALLBACKS}';
+export const CDN_BASE_URL = ${CDN_BASE_URL_DYNAMIC} + CDN_BASE_PATH;
+export const FALLBACKS_MANIFEST = ${JSON.stringify(manifest)};
+`
   );
 
   console.log('Created fallbacks manifest.');
@@ -60,6 +62,4 @@ export const FALLBACKS_MANIFEST = ${JSON.stringify(manifest)};`
 [outputDirFallbacks, outputDirLoader].forEach((dir) => createFreshDirectory(dir));
 FALLBACKS.forEach((fallback) => generateCdnLoader(fallback));
 
-const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_FALLBACKS}'`;
-
-writeManifest(cdn, manifest);
+writeManifest(manifest);

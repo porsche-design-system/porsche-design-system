@@ -2,12 +2,12 @@ import { getComponentsManagerData, CM_KEY } from './data-handler';
 import type { ComponentsManagerData } from './components-manager';
 
 afterEach(() => {
-  (document as any)[CM_KEY] = undefined;
+  delete document[CM_KEY];
 });
 
 it("should return the web components manager data if it's available in document", () => {
   const data = {} as ComponentsManagerData;
-  (document as any)[CM_KEY] = data;
+  document[CM_KEY] = data;
   expect(getComponentsManagerData()).toBe(data);
 });
 

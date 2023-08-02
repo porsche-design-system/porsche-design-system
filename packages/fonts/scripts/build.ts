@@ -11,19 +11,8 @@ type Manifest = {
 
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
-const checkIfDirectoryExists = async (path: string): Promise<boolean> => {
-  try {
-    await fs.promises.access(path, fs.constants.F_OK);
-    return true;
-  } catch {
-    return false;
-  }
-};
-
-const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise<void> => {
-  if (await checkIfDirectoryExists(path.resolve('./dist'))) {
-    await fs.promises.rmdir(path.resolve('./dist'), { recursive: true });
-  }
+const createManifestAndCopyFonts = (files: string[]): void => {
+  fs.rmSync(path.resolve('./dist'), { force: true, recursive: true });
   fs.mkdirSync(path.resolve('./dist/fonts'), { recursive: true });
 
   const manifest: Manifest = {};
@@ -49,19 +38,19 @@ const createManifestAndCopyFonts = async (cdn: string, files: string[]): Promise
     path.normalize('./index.ts'),
     `${CDN_KEY_TYPE_DEFINITION}
 
-export const CDN_BASE_URL = ${cdn};
-export const FONTS_MANIFEST = ${JSON.stringify(manifest)};`
+export const CDN_BASE_PATH = '/${CDN_BASE_PATH_FONTS}';
+export const CDN_BASE_URL = ${CDN_BASE_URL_DYNAMIC} + CDN_BASE_PATH;
+export const FONTS_MANIFEST = ${JSON.stringify(manifest)};
+`
   );
 
   console.log('Created fonts manifest.');
 };
 
-(async (): Promise<void> => {
-  const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_FONTS}'`;
-  const files = (await globby('./src/**/*.@(woff2)')).sort();
+const generate = (): void => {
+  const files = globby.sync('./src/**/*.@(woff2)').sort();
 
-  await createManifestAndCopyFonts(cdn, files).catch((e) => {
-    console.error(e);
-    process.exit(1);
-  });
-})();
+  createManifestAndCopyFonts(files);
+};
+
+generate();

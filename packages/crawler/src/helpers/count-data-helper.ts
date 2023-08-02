@@ -35,7 +35,7 @@ export const incrementPropertyValues = (
 };
 
 export const incrementProperties = (
-  propertiesAgregated: PropertiesAggregated,
+  propertiesAggregated: PropertiesAggregated,
   properties: Properties
 ): PropertiesAggregated =>
   Object.entries(properties).reduce(
@@ -52,7 +52,7 @@ export const incrementProperties = (
 
       return result;
     },
-    { ...propertiesAgregated } as PropertiesAggregated
+    { ...propertiesAggregated } as PropertiesAggregated
   );
 
 export const incrementTagName = (tagNameAggregated: TagNameAggregated, tagNameData: TagNameData): TagNameAggregated => {

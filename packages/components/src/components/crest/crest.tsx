@@ -1,6 +1,6 @@
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import type { CrestAriaAttribute, CrestTarget } from './crest-utils';
-import { buildCrestSrcSet, crestCdnBaseUrl, crestInnerManifest, crestSize } from './crest-utils';
+import { buildCrestImgSrc, buildCrestSrcSet, crestSize } from './crest-utils';
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -48,7 +48,7 @@ export class Crest {
       <picture>
         <source key="webp" srcSet={buildCrestSrcSet('webp')} type="image/webp" />
         <source key="png" srcSet={buildCrestSrcSet('png')} type="image/png" />
-        <img src={`${crestCdnBaseUrl}/${crestInnerManifest['2x'].png}`} width={width} height={height} alt="Porsche" />
+        <img src={buildCrestImgSrc()} width={width} height={height} alt="Porsche" />
       </picture>
     );
 
