@@ -38,7 +38,7 @@ describe('load()', () => {
     expect(window.PORSCHE_DESIGN_SYSTEM_CDN).toBe('auto');
   });
 
-  it('should for { cdn: "auto" } set window.PORSCHE_DESIGN_SYSTEM_CDN="auto"', () => {
+  it('should for { cdn: "auto" } set window.PORSCHE_DESIGN_SYSTEM_CDN="auto" for backwards compatibility', () => {
     load({ cdn: 'auto' });
     expect(window.PORSCHE_DESIGN_SYSTEM_CDN).toBe('auto');
   });
