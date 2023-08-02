@@ -179,10 +179,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
 
       writeFile(
         framework === 'nextjs'
-          ? path.resolve(
-              path.resolve(rootDirectory, `../components-react/projects/nextjs/app/${fileName}`),
-              convertedFileName
-            )
+          ? path.resolve(path.resolve(rootDirectory, `${pagesDirectories[framework]}/${fileName}`), convertedFileName)
           : path.resolve(pagesDirectories[framework], convertedFileName),
         convertedFileContent
       );

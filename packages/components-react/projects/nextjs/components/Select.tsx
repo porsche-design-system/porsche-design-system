@@ -11,7 +11,7 @@ export const Select = (): JSX.Element => {
   const [selected, setSelected] = useState(pathname);
   return (
     <select
-      value={selected}
+      value={selected as string}
       onChange={(e) => {
         const { value } = e.target;
         setSelected(value);

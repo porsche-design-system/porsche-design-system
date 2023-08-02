@@ -1,5 +1,5 @@
 import { PTable, PTableHead, PTableHeadCell, PTableHeadRow } from '@porsche-design-system/components-react/ssr';
-import { TableWithCaption } from '../../components';
+import { TableWithCaption } from '../components';
 import type { NextPage } from 'next';
 
 const TablePage: NextPage = (): JSX.Element => {
