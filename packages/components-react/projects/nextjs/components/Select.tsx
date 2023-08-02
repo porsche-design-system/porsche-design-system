@@ -3,6 +3,7 @@
 import { routes } from '../routes';
 import { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { componentsReady } from '@porsche-design-system/components-react';
 
 export const Select = (): JSX.Element => {
   const router = useRouter();
@@ -26,3 +27,7 @@ export const Select = (): JSX.Element => {
     </select>
   );
 };
+
+if (typeof window !== 'undefined') {
+  (window as any).componentsReady = componentsReady; // for vrt
+}

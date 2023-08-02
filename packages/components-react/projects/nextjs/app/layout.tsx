@@ -1,4 +1,4 @@
-import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 import { getSharedStyles } from '../styles/getSharedStyles';
 import {
   getBrowserSupportFallbackScript,
@@ -39,8 +39,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </body>
     </html>
   );
-}
-
-if (typeof window !== 'undefined') {
-  (window as any).componentsReady = componentsReady; // for vrt
 }
