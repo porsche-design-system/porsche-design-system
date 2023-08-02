@@ -1,6 +1,3 @@
-// needs to be before icons import
-document.porscheDesignSystem = { cdn: '' };
-
 import { getIconLinks } from '../../../src';
 import type { IconName } from '@porsche-design-system/icons';
 import { ICON_NAMES } from '@porsche-design-system/icons';
