@@ -3,6 +3,7 @@ import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
+  getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -113,7 +114,7 @@ export const getComponentCss = (
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
     'sr-text': {
-      display: 'none',
+      ...getHiddenTextJssStyle(),
     },
   });
 };

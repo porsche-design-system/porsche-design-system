@@ -2,6 +2,8 @@ import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop, State
 import {
   getDropdownDirection,
   getHighlightedOption,
+  getHighlightedOptionIndex,
+  getSelectedOptions,
   getSelectedOptionsString,
   hasFilterOptionResults,
   MultiSelectDropdownDirection,
@@ -150,7 +152,10 @@ export class MultiSelect {
     return (
       <Host>
         <div class="root">
-          <label class="label" htmlFor="comboxbox">
+          <label class="label" id="label">
+            {this.selectedString && (
+              <span class="sr-text">{getSelectedOptions(this.multiSelectOptions).length} options selected</span>
+            )}
             {!this.hideLabel && hasLabel(this.host, this.label) && (
               <span class="label__text" onClick={() => this.inputElement.focus()}>
                 {this.label || <slot name="label" />}
@@ -175,7 +180,7 @@ export class MultiSelect {
               required={this.required}
               onKeyDown={this.onComboboxKeyDown}
               ref={(el) => (this.inputElement = el)}
-              {...getFilterInputAriaAttributes(this.isOpen, this.required, undefined, 'description', dropdownId)}
+              {...getFilterInputAriaAttributes(this.isOpen, this.required, 'label', 'description', dropdownId)}
             />
             <PrefixedTagNames.pButtonPure
               class="icon reset-icon"
@@ -184,8 +189,9 @@ export class MultiSelect {
               theme={this.theme}
               color={this.disabled ? 'state-disabled' : 'primary'}
               onClick={this.onResetClick}
-              aria-hidden="true"
-            ></PrefixedTagNames.pButtonPure>
+            >
+              Reset selection
+            </PrefixedTagNames.pButtonPure>
             <PrefixedTagNames.pIcon
               class={{ icon: true, ['toggle-icon']: true, ['toggle-icon--open']: this.isOpen }}
               name="arrow-head-down"
@@ -213,6 +219,12 @@ export class MultiSelect {
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
+        <span class="sr-text" role="status" aria-live="assertive" aria-relevant="additions text">
+          {getHighlightedOption(this.multiSelectOptions) &&
+            `${getHighlightedOption(this.multiSelectOptions).textContent} ${
+              getHighlightedOption(this.multiSelectOptions).selected ? ', selected' : ' not selected'
+            } (${getHighlightedOptionIndex(this.multiSelectOptions) + 1} of ${this.multiSelectOptions.length})`}
+        </span>
       </Host>
     );
   }

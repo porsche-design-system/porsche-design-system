@@ -41,8 +41,7 @@ export const updateNativeSelectOptions = (
   nativeSelect: HTMLSelectElement,
   multiSelectOptions: HTMLPMultiSelectOptionElement[]
 ): void => {
-  nativeSelect.innerHTML = multiSelectOptions
-    .filter((option) => option.selected)
+  nativeSelect.innerHTML = getSelectedOptions(multiSelectOptions)
     .map((option) => `<option value="${option.value}" selected="${option.selected}">${option.textContent}</option>`)
     .join('');
 };
@@ -63,9 +62,11 @@ export const hasFilterOptionResults = (options: HTMLPMultiSelectOptionElement[])
 export const resetFilteredOptions = (options: HTMLPMultiSelectOptionElement[]): void =>
   options.forEach((option) => (option.hidden = false));
 
+export const getSelectedOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement[] =>
+  options.filter((option) => option.selected);
+
 export const getSelectedOptionsString = (options: HTMLPMultiSelectOptionElement[]): string =>
-  options
-    .filter((option) => option.selected)
+  getSelectedOptions(options)
     .map((option) => option.textContent)
     .join(', ');
 
