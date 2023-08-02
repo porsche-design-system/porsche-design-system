@@ -1,10 +1,6 @@
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../../utils';
-import {
-  getOptionIndex,
-  MultiSelectOptionInternalHTMLProps,
-  MultiSelectOptionUpdateEvent,
-} from './multi-select-option-utils';
+import { getOptionIndex, MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
 import type { PropTypes } from '../../../types';
 import { getComponentCss } from './multi-select-option-styles';
 import { getOptionAriaAttributes } from '../../../utils/select/select-aria';
@@ -36,9 +32,8 @@ export class MultiSelectOption {
 
   public componentDidUpdate(): void {
     this.host.dispatchEvent(
-      new CustomEvent<MultiSelectOptionUpdateEvent>('internalOptionUpdate', {
+      new CustomEvent('internalOptionUpdate', {
         bubbles: true,
-        detail: { optionElement: this.host as HTMLPMultiSelectOptionElement },
       })
     );
   }

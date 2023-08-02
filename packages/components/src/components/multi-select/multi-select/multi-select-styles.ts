@@ -28,6 +28,7 @@ import { getFunctionalComponentStateMessageStyles } from '../../common/state-mes
 import { OPTION_HEIGHT } from '../../../styles/select/option-styles';
 
 const inputYPadding = '13px';
+const selectorNativeSelect = 'select,::slotted([slot=select])';
 
 export const getComponentCss = (
   hasSelection: boolean,
@@ -36,6 +37,7 @@ export const getComponentCss = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
+  isWithinForm: boolean,
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor, contrastHighColor, backgroundColor } = getThemedColors(theme);
@@ -51,7 +53,17 @@ export const getComponentCss = (
       },
       ...getInputJSSStyles(isDisabled, theme),
       ...getListJSSStyles(isOpen, direction, theme),
+      ...(isWithinForm && {
+        [selectorNativeSelect]: {
+          opacity: 0,
+          display: 'block',
+          height: '0px',
+        },
+      }),
     }),
+    root: {
+      position: 'relative',
+    },
     'input-container': {
       display: 'flex',
       color: primaryColor,

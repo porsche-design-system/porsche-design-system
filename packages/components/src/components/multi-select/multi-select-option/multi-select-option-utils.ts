@@ -1,7 +1,5 @@
 import type { Theme } from '../../../types';
 
-export type MultiSelectOptionUpdateEvent = { optionElement: HTMLPMultiSelectOptionElement };
-
 export type MultiSelectOptionInternalHTMLProps = {
   theme?: Theme;
 };

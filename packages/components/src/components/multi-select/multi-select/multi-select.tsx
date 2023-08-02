@@ -1,9 +1,9 @@
 import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop, State } from '@stencil/core';
-import { MultiSelectOptionUpdateEvent } from '../multi-select-option/multi-select-option-utils';
 import {
   getDropdownDirection,
   getHighlightedOption,
   getHighlightedOptionIndex,
+  getSelectedOptionsString,
   hasFilterOptionResults,
   MultiSelectDropdownDirection,
   MultiSelectState,
@@ -15,7 +15,6 @@ import {
   syncNativeSelect,
   updateHighlightedOption,
   updateMultiSelectOptionsFilterState,
-  updateNativeOption,
   updateNativeSelectOptions,
 } from './multi-select-utils';
 import {
@@ -30,7 +29,7 @@ import {
   isClickOutside,
   isRequiredAndParentNotRequired,
   THEMES,
-  throwIfChildrenAreNotOfKind,
+  throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
@@ -39,6 +38,7 @@ import { getComponentCss } from './multi-select-styles';
 import { SELECT_DROPDOWN_DIRECTIONS, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { StateMessage } from '../../common/state-message/state-message';
 import { getFilterInputAriaAttributes, getListAriaAttributes } from '../../../utils/select/select-aria';
+import { isWithinForm } from '../../text-field-wrapper/text-field-wrapper-utils';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -93,7 +93,6 @@ export class MultiSelect {
   @State() private selectedString = '';
   @State() private isOpen = false;
 
-  // TODO: only render nativeSelect if isWithinForm
   private nativeSelect: HTMLSelectElement = document.createElement('select');
   private multiSelectOptions: HTMLPMultiSelectOptionElement[] = [];
   private inputContainer: HTMLDivElement;
@@ -101,15 +100,17 @@ export class MultiSelect {
   private listElement: HTMLUListElement;
 
   @Listen('internalOptionUpdate')
-  public updateOptionHandler(event: CustomEvent<MultiSelectOptionUpdateEvent>): void {
-    const index = this.multiSelectOptions.findIndex((el) => el === event.detail.optionElement);
-    const nativeOption = this.nativeSelect.children[index] as HTMLOptionElement;
-    updateNativeOption(nativeOption, event.detail.optionElement);
+  public updateOptionHandler(): void {
+    if (isWithinForm(this.host)) {
+      updateNativeSelectOptions(this.nativeSelect, this.multiSelectOptions);
+    }
     this.updateSelectedString();
   }
 
   public connectedCallback(): void {
-    syncNativeSelect(this.nativeSelect, this.host, this.name, this.disabled, this.required);
+    if (isWithinForm(this.host)) {
+      syncNativeSelect(this.nativeSelect, this.host, this.name, this.disabled, this.required);
+    }
   }
 
   public componentWillLoad(): void {
@@ -139,9 +140,10 @@ export class MultiSelect {
       this.disabled,
       this.hideLabel,
       this.state,
+      isWithinForm(this.host),
       this.theme
     );
-    syncMultiSelectOptionProps(this.host, this.theme);
+    syncMultiSelectOptionProps(this.multiSelectOptions, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const dropdownId = 'list';
@@ -223,6 +225,7 @@ export class MultiSelect {
             <slot onSlotchange={() => this.updateOptions()} />
           </ul>
         </div>
+        {isWithinForm(this.host) && <slot name="select"></slot>}
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
@@ -232,13 +235,16 @@ export class MultiSelect {
 
   private updateOptions = (): void => {
     this.defineMultiSelectOptions();
-    updateNativeSelectOptions(this.nativeSelect, this.multiSelectOptions);
+    if (isWithinForm(this.host)) {
+      updateNativeSelectOptions(this.nativeSelect, this.multiSelectOptions);
+    }
     this.updateSelectedString();
   };
 
   private defineMultiSelectOptions(): void {
-    throwIfChildrenAreNotOfKind(this.host, 'p-multi-select-option');
-    this.multiSelectOptions = Array.from(this.host.children) as HTMLPMultiSelectOptionElement[];
+    const children = Array.from(this.host.children).filter((el) => el.tagName !== 'SELECT') as HTMLElement[];
+    children.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
+    this.multiSelectOptions = children as HTMLPMultiSelectOptionElement[];
   }
 
   private onFilterChange = (e: Event): void => {
@@ -246,7 +252,7 @@ export class MultiSelect {
       this.resetFilter();
     } else {
       updateMultiSelectOptionsFilterState((e.target as HTMLInputElement).value, this.multiSelectOptions);
-      // TODO: Is this necessary in order to show No results found?
+      // TODO: Is this necessary in order to show no results found?
       forceUpdate(this.host);
     }
     // in case input is focused via tab instead of click
@@ -254,9 +260,7 @@ export class MultiSelect {
   };
 
   private updateSelectedString = (): void => {
-    this.selectedString = Array.from(this.nativeSelect.selectedOptions)
-      .map((option) => option.textContent)
-      .join(', ');
+    this.selectedString = getSelectedOptionsString(this.multiSelectOptions);
   };
 
   private onInputClick = (): void => {
