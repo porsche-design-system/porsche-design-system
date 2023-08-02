@@ -1,11 +1,12 @@
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import type { CrestAriaAttribute, CrestTarget } from './crest-utils';
-import { buildCrestSrcSet, CREST_ARIA_ATTRIBUTES, crestCdnBaseUrl, crestInnerManifest, crestSize } from './crest-utils';
+import { buildCrestSrcSet, crestCdnBaseUrl, crestInnerManifest, crestSize } from './crest-utils';
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
+  LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
   validateProps,
 } from '../../utils';
@@ -14,7 +15,7 @@ import { getComponentCss } from './crest-styles';
 const propTypes: PropTypes<typeof Crest> = {
   href: AllowedTypes.string,
   target: AllowedTypes.string,
-  aria: AllowedTypes.aria<CrestAriaAttribute>(CREST_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<CrestAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
 const { width, height } = crestSize;

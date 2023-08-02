@@ -1,10 +1,10 @@
 import type { LinkTarget } from '../../utils/link-button/link-target';
+import type { LinkAriaAttribute } from '../../utils';
 import { CDN_BASE_URL as CRESTS_CDN_BASE_URL, CRESTS_MANIFEST } from '@porsche-design-system/crest';
 
 export type CrestTarget = LinkTarget;
 
-export const CREST_ARIA_ATTRIBUTES = ['aria-label'] as const;
-export type CrestAriaAttribute = (typeof CREST_ARIA_ATTRIBUTES)[number];
+export type CrestAriaAttribute = LinkAriaAttribute;
 
 type CrestManifest = typeof CRESTS_MANIFEST;
 type CrestInnerManifest = CrestManifest['porscheCrest'];
