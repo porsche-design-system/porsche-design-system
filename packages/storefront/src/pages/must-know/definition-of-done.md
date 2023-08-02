@@ -29,5 +29,5 @@ Done** (DOD).
 ## Potential Future Criteria
 
 - Auto Dark Theme Support (VRT)
-- Print Support (VRt)
+- Print Support (VRT)
 - Component a11y tests via axe-core (E2E)
