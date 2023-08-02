@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- New value `aria-current` for `aria` property for linked components (`Link`, `Link Pure`, `Link Tile`, `Crest`,
+  `Marque`) ([#2696](https://github.com/porsche-design-system/porsche-design-system/pull/2696))
 - Angular: `cdn: 'auto' | 'cn'` option to `PorscheDesignSystemModule.load()` as alternative to using
   `window.PORSCHE_DESIGN_SYSTEM_CDN` ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
 - React: `cdn: 'auto' | 'cn'` prop to `PorscheDesignSystemProvider` as alternative to using

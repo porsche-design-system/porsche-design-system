@@ -1,5 +1,5 @@
 import type { AlignLabel, LinkButtonIconName, LinkTarget, TextSize, TextWeight } from '../../types';
-import type { LinkAriaAttribute } from '../link/link-utils';
+import type { LinkAriaAttribute } from '../../utils';
 
 export type LinkPureIcon = LinkButtonIconName;
 export type LinkPureAriaAttribute = LinkAriaAttribute;

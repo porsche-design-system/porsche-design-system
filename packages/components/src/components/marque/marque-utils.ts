@@ -1,6 +1,6 @@
 import { MARQUES_MANIFEST } from '@porsche-design-system/marque'; // TODO: import from assets once it is treeshakable
 import type { LinkTarget } from '../../utils/link-button/link-target';
-import { getCDNBaseURL } from '../../utils';
+import { getCDNBaseURL, type LinkAriaAttribute } from '../../utils';
 
 export const MARQUE_VARIANTS = ['75-years', 'default'] as const;
 export type MarqueVariant = (typeof MARQUE_VARIANTS)[number];
@@ -25,5 +25,4 @@ export const buildSrcSet = (innerManifest: InnerManifest, size: MarqueSize, form
 export const buildImgSrc = (innerManifest: InnerManifest): string =>
   `${getCDNBaseURL()}/marque/${innerManifest.medium['2x'].png}`;
 
-export const MARQUE_ARIA_ATTRIBUTES = ['aria-label'] as const;
-export type MarqueAriaAttribute = (typeof MARQUE_ARIA_ATTRIBUTES)[number];
+export type MarqueAriaAttribute = LinkAriaAttribute;

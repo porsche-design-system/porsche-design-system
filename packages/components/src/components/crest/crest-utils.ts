@@ -1,11 +1,10 @@
 import { CRESTS_MANIFEST } from '@porsche-design-system/crest'; // TODO: import from assets once it is treeshakable
 import type { LinkTarget } from '../../utils/link-button/link-target';
-import { getCDNBaseURL } from '../../utils';
+import { getCDNBaseURL, type LinkAriaAttribute } from '../../utils';
 
 export type CrestTarget = LinkTarget;
 
-export const CREST_ARIA_ATTRIBUTES = ['aria-label'] as const;
-export type CrestAriaAttribute = (typeof CREST_ARIA_ATTRIBUTES)[number];
+export type CrestAriaAttribute = LinkAriaAttribute;
 
 export const buildCrestSrcSet = (format: 'png' | 'webp'): string => {
   return Object.entries(CRESTS_MANIFEST.porscheCrest)
