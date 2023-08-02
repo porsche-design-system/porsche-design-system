@@ -560,7 +560,7 @@ describe('dropdown position', () => {
   it('should auto position to up if bottom space is less than dropdown height', async () => {
     await page.setViewport({
       width: 800,
-      height: 600,
+      height: 650,
     });
     await initSelect({ amount: 5, markupBefore: '<div style="height: 550px;"></div>' });
 

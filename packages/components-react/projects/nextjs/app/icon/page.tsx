@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
 import { PIcon, PText } from '@porsche-design-system/components-react/ssr';
-import { ICON_NAMES } from '@porsche-design-system/assets';
+import { ICON_NAMES } from '@porsche-design-system/icons';
 
 const IconPage: NextPage = (): JSX.Element => {
   const style = `

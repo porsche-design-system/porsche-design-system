@@ -50,6 +50,9 @@ component.
 - In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by
   themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional
   information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"`
+- If `Link Pure` is used in a navigation tree, add `aria-current="page"` attribute to the component to indicate which
+  page is currently displayed. This can be done through the `aria` property or by using the **slotted** approach where
+  you can set the `aria-current` attribute directly on the anchor tag.
 
 ## Size
 

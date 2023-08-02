@@ -40,5 +40,8 @@
     "html-minifier": "^4.0.0",
     "tslib": "^2.6.0",
     "typescript": "~5.1.6"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
   }
 }

@@ -11,13 +11,13 @@ import { consoleWarn } from '../../log';
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Document {
-    // Extend Document interface so we don't have to cast it on any
     porscheDesignSystem: {
-      [key: string]: {
+      [key: `${number}.${number}.${number}`]: {
         prefixes: string[];
         isReady: () => Promise<void>;
         readyResolve: () => void;
       };
+      cdn: string;
     };
   }
 }

@@ -17,7 +17,7 @@
     "dump": "./node_modules/.bin/uxpin-merge dump"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "3.5.0-rc.0",
+    "@porsche-design-system/components-js": "3.5.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
@@ -28,5 +28,8 @@
     "babel-loader": "^9.1.2",
     "typescript": "~5.1.6",
     "webpack": "^5.88.1"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
   }
 }

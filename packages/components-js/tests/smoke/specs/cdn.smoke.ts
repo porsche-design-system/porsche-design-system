@@ -17,7 +17,7 @@ import {
 } from '@porsche-design-system/assets';
 import { getFontFaceStylesheet } from '@porsche-design-system/components-js/partials';
 import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper/lib/chunksManifest';
-import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL } from '../../../../../cdn.config';
+import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL_COM } from '../../../../../cdn.config';
 import { setContentWithDesignSystem } from '../helpers';
 
 describe('cdn', () => {
@@ -170,7 +170,7 @@ describe('cdn', () => {
 
     describe('components', () => {
       const chunks = objectToFlatArray(COMPONENT_CHUNKS_MANIFEST);
-      const baseUrl = `${CDN_BASE_URL}/${CDN_BASE_PATH_COMPONENTS}`;
+      const baseUrl = `${CDN_BASE_URL_COM}/${CDN_BASE_PATH_COMPONENTS}`;
       bulkRequestItems(chunks, baseUrl);
     });
 
@@ -221,7 +221,7 @@ describe('cdn', () => {
       };
 
       const styles = [comStyle, cnStyle].map(getFileName);
-      const baseUrl = `${CDN_BASE_URL}/${CDN_BASE_PATH_STYLES}`;
+      const baseUrl = `${CDN_BASE_URL_COM}/${CDN_BASE_PATH_STYLES}`;
       bulkRequestItems(styles, baseUrl);
     });
   });

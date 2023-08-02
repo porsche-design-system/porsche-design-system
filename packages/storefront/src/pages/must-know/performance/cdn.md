@@ -33,15 +33,33 @@ Because of the automatic forwarding strategy the amount of requests increases in
 costs each time some milliseconds. That's why the Porsche Design System provides the optional possibility to define from
 which CDN those assets shall be loaded to get maximum performance in China.
 
-To achieve this, a global browser variable `PORSCHE_DESIGN_SYSTEM_CDN` was introduced which can be defined in the
-projects `index.html`.  
+To achieve this, a global browser variable `PORSCHE_DESIGN_SYSTEM_CDN` was introduced which needs to be defined before
+initializing the Porsche Design System.
+
+<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
+  Usually the integrating team that is responsible for the application is in charge of configuring which cdn to use.<br>
+  This means that widget teams shouldn't set it and might even override it.
+</p-inline-notification>
+
 Possible values that can be assigned:
 
-- `auto` (default - using RoW CDN and forwards to Chinese CDN automatically when necessary)
-- `cn` (forces using Chinese CDN only) This gives the possibility for the consuming application to bundle to separate
-  builds for their application. One for China and one for RoW (rest of world).
+- `auto` (default - using RoW CDN and redirects to Chinese CDN automatically when necessary)
+- `cn` (forces using Chinese CDN directly) This gives the possibility for the consuming application to have either **two
+  dedicated builds** for their application, one for China and one for RoW (rest of world) or following the **build once,
+  deploy many principle**, it can be configured at start-up time.
 
-### Example (index.html)
+Since handling the global configuration variable `PORSCHE_DESIGN_SYSTEM_CDN` isn't very nice and won't work in a SSR
+context, the `porscheDesignSystem.load()` function accepts a `cdn: 'auto' | 'cn'` option which will then set the
+`PORSCHE_DESIGN_SYSTEM_CDN` for backwards compatibility and therefore affecting other micro frontends within the same
+website or app.
+
+The same can be achieved in all supported frameworks via the respective module or provider like
+
+- Angular: `PorscheDesignSystemModule.load({ cdn: 'cn' })`
+- React: `<PorscheDesignSystemProvider cdn="cn" />`
+- Vue: `<PorscheDesignSystemProvider cdn="cn" />`
+
+### Vanilla JS Example
 
 ```html
 <!DOCTYPE html>
@@ -53,21 +71,72 @@ Possible values that can be assigned:
   </head>
   <body>
     <script>
-      // All requests to the Porsche Design System CDN are forced to use the Chinese CDN directly.
-      // It's very important that the variable is defined before the Porsche Design System get initialized!
-      PORSCHE_DESIGN_SYSTEM_CDN = 'cn';
-      porscheDesignSystem.load();
+      porscheDesignSystem.load({ cdn: 'cn' });
     </script>
   </body>
 </html>
 ```
 
-Also, the function `getFontFaceStylesheet()` of the `@porsche-design-system/components-{js|angular|react}/partials`
-packages was extended with the option `{ cdn: 'auto' | 'cn' }` to force loading the font-face style definitions from
-Chinese CDN only, e.g.:
+### Angular Example (app.module.ts)
 
+```ts
+import { BrowserModule } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [],
+  imports: [BrowserModule, PorscheDesignSystemModule.load({ cdn: 'cn' })],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+### React Example (index.tsx)
+
+```ts
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import { App } from './App';
+
+const root = createRoot(document.getElementById('root')!);
+root.render(
+  <StrictMode>
+    <BrowserRouter>
+      <PorscheDesignSystemProvider cdn="cn">
+        <App />
+      </PorscheDesignSystemProvider>
+    </BrowserRouter>
+  </StrictMode>
+);
+```
+
+### Vue Example (App.vue)
+
+```vue
+<script setup lang="ts">
+  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PorscheDesignSystemProvider cdn="cn">
+    <RouterView />
+  </PorscheDesignSystemProvider>
+</template>
+```
+
+### Partials
+
+Also, all CDN related partials of the `@porsche-design-system/components-{js|angular|react|vue}/partials` packages have
+an option `{ cdn: 'auto' | 'cn' }` to force preloading assets from Chinese CDN directly, e.g.:
+
+<!-- prettier-ignore -->
 ```html
 <head>
-  <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontFaceStylesheet({ cdn: 'cn' }) %>
+  <%= require('@porsche-design-system/components-{js|angular|react|vue}/partials').getFontFaceStylesheet({ cdn: 'cn' }) %>
 </head>
 ```
