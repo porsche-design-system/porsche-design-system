@@ -1,19 +1,19 @@
 import type { Page } from 'puppeteer';
 import {
-  CRESTS_CDN_BASE_URL,
+  CRESTS_CDN_BASE_PATH,
   CRESTS_MANIFEST,
   FALLBACKS_MANIFEST,
-  FALLBACKS_CDN_BASE_URL,
-  FONTS_CDN_BASE_URL,
+  FALLBACKS_CDN_BASE_PATH,
+  FONTS_CDN_BASE_PATH,
   FONTS_MANIFEST,
-  ICONS_CDN_BASE_URL,
+  ICONS_CDN_BASE_PATH,
   ICONS_MANIFEST,
-  MARQUES_CDN_BASE_URL,
+  MARQUES_CDN_BASE_PATH,
   MARQUES_MANIFEST,
-  META_ICONS_CDN_BASE_URL,
+  META_ICONS_CDN_BASE_PATH,
   META_ICONS_MANIFEST,
   MODEL_SIGNATURES_MANIFEST,
-  MODEL_SIGNATURES_CDN_BASE_URL,
+  MODEL_SIGNATURES_CDN_BASE_PATH,
 } from '@porsche-design-system/assets';
 import { getFontFaceStylesheet } from '@porsche-design-system/components-js/partials';
 import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper/lib/chunksManifest';
@@ -176,41 +176,41 @@ describe('cdn', () => {
 
     describe('crest', () => {
       const crests = objectToFlatArray(CRESTS_MANIFEST);
-      bulkRequestItems(crests, CRESTS_CDN_BASE_URL);
+      bulkRequestItems(crests, `${CDN_BASE_URL_COM}${CRESTS_CDN_BASE_PATH}`);
     });
 
     describe('fallbacks', () => {
       const fallbacks = objectToFlatArray(FALLBACKS_MANIFEST);
-      bulkRequestItems(fallbacks, FALLBACKS_CDN_BASE_URL);
+      bulkRequestItems(fallbacks, `${CDN_BASE_URL_COM}${FALLBACKS_CDN_BASE_PATH}`);
     });
 
     describe('fonts', () => {
       const fonts = objectToFlatArray(FONTS_MANIFEST);
-      bulkRequestItems(fonts, FONTS_CDN_BASE_URL);
+      bulkRequestItems(fonts, `${CDN_BASE_URL_COM}${FONTS_CDN_BASE_PATH}`);
     });
 
     describe('icons', () => {
       const icons = objectToFlatArray(ICONS_MANIFEST);
-      bulkRequestItems(icons, ICONS_CDN_BASE_URL);
+      bulkRequestItems(icons, `${CDN_BASE_URL_COM}${ICONS_CDN_BASE_PATH}`);
     });
 
     describe('marque', () => {
       const marques = objectToFlatArray(MARQUES_MANIFEST);
-      bulkRequestItems(marques, MARQUES_CDN_BASE_URL);
+      bulkRequestItems(marques, `${CDN_BASE_URL_COM}${MARQUES_CDN_BASE_PATH}`);
     });
 
     describe('meta-icons', () => {
       const metaIcons = objectToFlatArray(META_ICONS_MANIFEST);
-      bulkRequestItems(metaIcons, META_ICONS_CDN_BASE_URL);
+      bulkRequestItems(metaIcons, `${CDN_BASE_URL_COM}${META_ICONS_CDN_BASE_PATH}`);
     });
 
     describe('model-signatures', () => {
       const modelSignatures = objectToFlatArray(MODEL_SIGNATURES_MANIFEST);
-      bulkRequestItems(modelSignatures, MODEL_SIGNATURES_CDN_BASE_URL);
+      bulkRequestItems(modelSignatures, `${CDN_BASE_URL_COM}${MODEL_SIGNATURES_CDN_BASE_PATH}`);
     });
 
     describe('styles', () => {
-      // retrieve css file names via partial since FONT_FACE_CDN_URL returns different value based on flag in window
+      // retrieve css file names via partial
       const comStyle = getFontFaceStylesheet({ cdn: 'auto' });
       const cnStyle = getFontFaceStylesheet({ cdn: 'cn' });
 
