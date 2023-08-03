@@ -369,6 +369,19 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
+          .replace(
+            /(state-message';\s*)/,
+            `$1import {
+            getFilterInputAriaAttributes,
+            getListAriaAttributes,
+      } from '@porsche-design-system/components/src/utils/a11y/select/select-aria';\n`
+          )
+          .replace(
+            /typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?.propsedString/,
+            'this.selectedString'
+          )
+          .replace(/\{\{ 'input-container': true, disabled: this.props.disabled }}/, "'input-container'")
+          .replace(/\s*color=\{this.props.disabled \? 'state-disabled' : 'primary'}\s*/, '')
           // Replace placeholder
           .replace(/(?<=placeholder=\{)[^}]+/, 'this.selectedString || null')
           // replace toggle icon className
@@ -383,7 +396,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
           .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
-          .replace(/this\.props\.theme/, 'this.theme');
+          .replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
