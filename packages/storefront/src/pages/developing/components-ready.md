@@ -23,7 +23,7 @@ The `componentsReady` function is provided as part of the following components p
 By default, it uses the current document's `body` element to look for any web component of the Porsche Design System.
 
 ```tsx
-import { componentsReady } from '@porsche-design-system/components-{js|angular|react}';
+import { componentsReady } from '@porsche-design-system/components-{js|angular|react|vue}';
 
 const doSomeStuff = async () => {
   // doing some changes to the DOM and add new Porsche Design System components to it
@@ -41,7 +41,7 @@ This is useful when you want to show a loading indicator for only a part of your
 sidebar and only care about components inside.
 
 ```tsx
-import { componentsReady } from '@porsche-design-system/components-{js|angular|react}';
+import { componentsReady } from '@porsche-design-system/components-{js|angular|react|vue}';
 
 const initSomeSidebar = async () => {
   const sidebarEl = document.querySelector('.sidebar');
@@ -64,7 +64,7 @@ In this section you can find basic examples for the default test setups of each 
 Other Angular setups can be found further down.
 
 <p-inline-notification heading="Important note" state="warning" dismiss-button="false">
-  All test environments that don't use a real browser typically run in <strong>jsdom</strong> which requires our <strong>@porsche-design-system/components-{js|angular|react}/jsdom-polyfill</strong> subpackage in order to have real working Porsche Design System components.<br>
+  All test environments that don't use a real browser typically run in <strong>jsdom</strong> which requires our <strong>@porsche-design-system/components-{js|angular|react|vue}/jsdom-polyfill</strong> subpackage in order to have real working Porsche Design System components.<br>
   Without it, you are just rendering "dead" component markup without any functionality.
 </p-inline-notification>
 

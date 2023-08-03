@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import { PIcon, PText } from '@porsche-design-system/components-react';
-import { ICON_NAMES } from '@porsche-design-system/assets';
+import { ICON_NAMES } from '@porsche-design-system/icons';
 
 export const IconPage = (): JSX.Element => {
   const style = `

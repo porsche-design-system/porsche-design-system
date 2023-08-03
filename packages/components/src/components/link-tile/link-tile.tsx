@@ -5,6 +5,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
+  LINK_ARIA_ATTRIBUTES,
   parseJSON,
   throwIfAlignTopAndNotCompact,
   validateProps,
@@ -23,7 +24,6 @@ import type {
 import { LINK_TILE_WEIGHTS, sharedTilePropTypes } from './link-tile-utils';
 import { Component, Element, h, Prop } from '@stencil/core';
 import { getComponentCss } from './link-tile-styles';
-import { LINK_ARIA_ATTRIBUTES } from '../link/link-utils';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   ...sharedTilePropTypes,

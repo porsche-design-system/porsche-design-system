@@ -4,12 +4,14 @@ import { load } from '@porsche-design-system/components-js';
 
 export type PorscheDesignSystemModuleConfig = {
   prefix?: string;
+  cdn?: 'auto' | 'cn';
 };
 
-export class DefaultConfig implements Required<PorscheDesignSystemModuleConfig> {
+export class DefaultConfig implements PorscheDesignSystemModuleConfig {
   prefix = '';
 }
 
+// TODO: unit tests are missing
 @NgModule({
   declarations: DECLARATIONS,
   exports: DECLARATIONS,
@@ -17,7 +19,7 @@ export class DefaultConfig implements Required<PorscheDesignSystemModuleConfig> 
 export class PorscheDesignSystemModule {
   constructor(@Optional() configParam: DefaultConfig) {
     const configs = (configParam || ([new DefaultConfig()] as unknown)) as PorscheDesignSystemModuleConfig[];
-    configs.forEach(({ prefix }) => load({ prefix }));
+    configs.forEach(load);
   }
 
   static load(config: PorscheDesignSystemModuleConfig): ModuleWithProviders<PorscheDesignSystemModule> {

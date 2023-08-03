@@ -15,11 +15,12 @@ import * as detectDuplicatesUtils from '../../is-already-in-array';
 declare global {
   interface Document {
     porscheDesignSystem: {
-      [key: string]: {
+      [key: `${number}.${number}.${number}`]: {
         prefixes: string[];
         isReady: () => Promise<void>;
         readyResolve: () => void;
       };
+      cdn: string;
     };
   }
 }
@@ -283,6 +284,7 @@ describe('getPorscheDesignSystemPrefixesForVersions()', () => {
       isReady: Promise.resolve,
     };
     document.porscheDesignSystem = {
+      cdn: 'local',
       '1.2.3': { ...sharedProps, prefixes: [''] },
       '1.2.4': { ...sharedProps, prefixes: ['prefix', 'another-prefix'] },
       '1.2.5': { ...sharedProps, prefixes: ['prefix', 'another-prefix'] },

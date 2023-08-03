@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 import resolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import bin from 'rollup-plugin-bin';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
 
@@ -42,6 +43,15 @@ const onwarn = (warning, warn) => {
   }
 };
 
+const sharedPlugins = [
+  replace({
+    preventAssignment: true,
+    'process.browser': true, // normal react project doesn't have process defined or process.browser replaced, so we need to remove it
+  }),
+  preserveDirectives.default(),
+  resolve(),
+];
+
 export default [
   {
     input,
@@ -52,8 +62,7 @@ export default [
       preserveModules: true,
     },
     plugins: [
-      preserveDirectives.default(),
-      resolve(),
+      ...sharedPlugins,
       typescript({
         ...typescriptOpts,
         declaration: true,
@@ -80,7 +89,7 @@ export default [
       format: 'esm',
       preserveModules: true,
     },
-    plugins: [preserveDirectives.default(), resolve(), typescript(typescriptOpts)],
+    plugins: [...sharedPlugins, typescript(typescriptOpts)],
     onwarn,
   },
   {

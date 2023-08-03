@@ -1,5 +1,4 @@
 // TODO: this file should be part of icon platform itself
-
 import { ICONS_MANIFEST } from '@porsche-design-system/icons';
 import database from './../database/icons.json';
 import * as fs from 'fs';

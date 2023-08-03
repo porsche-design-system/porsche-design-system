@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';
+import { CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 import { generateFontFaceStylesheetPartial } from './generateFontFaceStylesheetPartial';
 import { generateInitialStylesPartial } from './generateInitialStylesPartial';
 import { generateFontLinksPartial } from './generateFontLinksPartial';
@@ -16,7 +16,7 @@ const generateSharedCode = (): string => {
   return `import type { Cdn, Format } from '../shared';
 import { throwIfRunInBrowser } from '../shared';
 
-const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL}');
+const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL_COM}');
 
 const convertPropsToAttributeString = (props: { [p: string]: string }): string =>
   Object.entries(props)

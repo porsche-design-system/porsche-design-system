@@ -552,6 +552,7 @@ exports[`should match snapshot 1`] = `
   "p-crest": {
     "allowedPropValues": {
       "aria": {
+        "aria-current": "string",
         "aria-label": "string",
       },
       "href": "string",
@@ -1464,6 +1465,7 @@ exports[`should match snapshot 1`] = `
   "p-link": {
     "allowedPropValues": {
       "aria": {
+        "aria-current": "string",
         "aria-label": "string",
       },
       "download": "string",
@@ -1522,6 +1524,7 @@ exports[`should match snapshot 1`] = `
         "right",
       ],
       "aria": {
+        "aria-current": "string",
         "aria-label": "string",
       },
       "download": "string",
@@ -1652,6 +1655,7 @@ exports[`should match snapshot 1`] = `
         "bottom",
       ],
       "aria": {
+        "aria-current": "string",
         "aria-label": "string",
       },
       "aspectRatio": [
@@ -1813,6 +1817,7 @@ exports[`should match snapshot 1`] = `
   "p-marque": {
     "allowedPropValues": {
       "aria": {
+        "aria-current": "string",
         "aria-label": "string",
       },
       "href": "string",
@@ -3365,6 +3370,7 @@ exports[`should match snapshot 1`] = `
   "p-wordmark": {
     "allowedPropValues": {
       "aria": {
+        "aria-current": "string",
         "aria-label": "string",
       },
       "href": "string",

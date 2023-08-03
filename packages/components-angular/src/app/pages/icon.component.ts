@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ICON_NAMES } from '@porsche-design-system/assets';
+import { ICON_NAMES } from '@porsche-design-system/icons';
 
 @Component({
   selector: 'page-icon',
