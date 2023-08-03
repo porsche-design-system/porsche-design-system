@@ -4,7 +4,7 @@ import * as crypto from 'crypto';
 import { optimize, Config } from 'svgo';
 import globby from 'globby';
 import { paramCase } from 'change-case';
-import { CDN_BASE_URL_DYNAMIC, CDN_BASE_PATH_ICONS, CDN_KEY_TYPE_DEFINITION } from '../../../cdn.config';
+import { CDN_BASE_PATH_ICONS } from '../../../cdn.config';
 
 type Manifest = {
   [name: string]: string;
@@ -13,7 +13,7 @@ type IconsMap = Manifest;
 
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
-const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Config): void => {
+const createManifestAndOptimizeIcons = (files: string[], config: Config): void => {
   fs.rmSync(path.normalize('./dist'), { force: true, recursive: true });
   fs.mkdirSync(path.normalize('./dist/icons'), { recursive: true });
 
@@ -64,23 +64,21 @@ const createManifestAndOptimizeIcons = (cdn: string, files: string[], config: Co
 
   fs.writeFileSync(
     path.normalize('./index.ts'),
-    `${CDN_KEY_TYPE_DEFINITION}
-
-export const CDN_BASE_URL = ${cdn};
+    `export const CDN_BASE_PATH = '/${CDN_BASE_PATH_ICONS}';
 export const ICONS_MANIFEST = ${JSON.stringify(sortedManifest)};
 export const ICON_NAMES = ${JSON.stringify(sortedManifestKeys)} as const;
-export type IconName = typeof ICON_NAMES[number];`
+export type IconName = typeof ICON_NAMES[number];
+`
   );
 
   console.log('Created icons manifest.');
 };
 
 const generate = (): void => {
-  const cdn = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_ICONS}'`;
   const files = globby.sync('./src/**/*.svg').sort();
   const config: Config = require('../svgo.config.js');
 
-  createManifestAndOptimizeIcons(cdn, files, config);
+  createManifestAndOptimizeIcons(files, config);
 };
 
 generate();

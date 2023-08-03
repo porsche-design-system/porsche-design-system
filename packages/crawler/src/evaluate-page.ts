@@ -6,8 +6,14 @@ import { getPdsTagNamesWithPropertyNames } from './helpers/convert-data-helper';
 declare global {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Document {
-    // Extend Document interface, so we don't have to cast it on any
-    porscheDesignSystem: { [version: string]: { prefixes: string[] } };
+    porscheDesignSystem: {
+      [key: `${number}.${number}.${number}`]: {
+        prefixes: string[];
+        isReady: () => Promise<void>;
+        readyResolve: () => void;
+      };
+      cdn: string;
+    };
   }
 }
 
@@ -135,16 +141,19 @@ export const evaluatePage = async (page: puppeteer.Page): Promise<ConsumedTagNam
       }
 
       return Object.entries(document.porscheDesignSystem).reduce(
-        (result, [version, { prefixes }]) => ({
-          ...result,
-          [version]: prefixes.reduce(
-            (result, prefix: string) => ({
-              ...result,
-              [prefix]: getConsumedTagNamesForPrefix(prefix, getAllPdsElementsForPrefix(prefix)),
-            }),
-            {}
-          ),
-        }),
+        (result, [version, data]) =>
+          typeof data === 'string'
+            ? result // can be 'cdn' key with string value
+            : {
+                ...result,
+                [version]: data.prefixes.reduce(
+                  (result, prefix: string) => ({
+                    ...result,
+                    [prefix]: getConsumedTagNamesForPrefix(prefix, getAllPdsElementsForPrefix(prefix)),
+                  }),
+                  {}
+                ),
+              },
         {}
       );
     },

@@ -1,7 +1,6 @@
 import { TILE_WEIGHTS, AllowedTypes, TILE_SIZES, TILE_ASPECT_RATIOS, TILE_ALIGNS, THEMES } from '../../utils';
-import type { TileAlign, TileAspectRatio, TileSize, TileBackground } from '../../utils';
+import type { LinkAriaAttribute, TileAlign, TileAspectRatio, TileSize, TileBackground } from '../../utils';
 import type { LinkTarget } from '../../utils/link-button/link-target';
-import type { LinkAriaAttribute } from '../link/link-utils';
 import type { PropTypes } from '../../utils/validation/validateProps';
 import { ButtonTile } from '../button-tile/button-tile';
 import { LinkTile } from './link-tile';

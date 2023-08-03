@@ -15,7 +15,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
         <title>Porsche Design System - NextJS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <PorscheDesignSystemProvider>
+      <PorscheDesignSystemProvider cdn="auto">
         <select
           value={selected}
           onChange={(e) => {

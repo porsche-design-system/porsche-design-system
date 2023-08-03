@@ -1,6 +1,6 @@
 import { minifyHTML } from './utils';
 import { META_ICONS_MANIFEST } from '@porsche-design-system/meta-icons';
-import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';
+import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 
 const convertToJSX = (templates: string[]): JSX.Element[] => {
   return templates.map(
@@ -56,7 +56,7 @@ export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): 
   }
 
   const cdnBaseUrl = getCdnBaseUrl(cdn);
-  const manifestUrlCom = '${CDN_BASE_URL}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.auto}';
+  const manifestUrlCom = '${CDN_BASE_URL_COM}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.auto}';
   const manifestUrlCn = '${CDN_BASE_URL_CN}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.cn}';
   const manifestUrl = cdn === 'auto' ? manifestUrlCom : manifestUrlCn;
 

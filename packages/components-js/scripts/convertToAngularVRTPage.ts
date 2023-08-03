@@ -43,7 +43,7 @@ export const convertToAngularVRTPage = (
   const imports = [
     `import { ${angularImports} } from '@angular/core';`,
     pdsImports && `import { ${pdsImports} } from '@porsche-design-system/components-angular';`,
-    isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
+    isIconPage && `import { ICON_NAMES } from '@porsche-design-system/icons';`,
   ]
     .filter(Boolean)
     .join('\n');

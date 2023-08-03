@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LINK_ARIA_ATTRIBUTES should match snapshot 1`] = `
+[
+  "aria-label",
+  "aria-current",
+]
+`;

@@ -2,13 +2,7 @@ import type { GetMinifiedPorscheNextFontFaceCssOptions } from './fontFaceStyles'
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import {
-  CDN_BASE_URL,
-  CDN_BASE_URL_CN,
-  CDN_KEY_TYPE_DEFINITION,
-  CDN_BASE_PATH_STYLES,
-  CDN_BASE_URL_CN_CONDITION,
-} from '../../../../../cdn.config';
+import { CDN_BASE_PATH_STYLES } from '../../../../../cdn.config';
 import { getMinifiedPorscheNextFontFaceCss } from './fontFaceStyles';
 
 const toHash = (str: string): string => {
@@ -31,13 +25,13 @@ const buildFontFaceStylesheet = (opts: GetMinifiedPorscheNextFontFaceCssOptions)
 };
 
 const buildFontFaceManifest = (hashedFontFaceFilenameCom: string, hashedFontFaceFilenameCn: string): void => {
-  const cdnFontFacePathCom = `${CDN_BASE_URL}/${CDN_BASE_PATH_STYLES}/${hashedFontFaceFilenameCom}`;
-  const cdnFontFacePathCn = `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_STYLES}/${hashedFontFaceFilenameCn}`;
+  const cdnFontFacePathCom = `${hashedFontFaceFilenameCom}`;
+  const cdnFontFacePathCn = `${hashedFontFaceFilenameCn}`;
 
-  const content = [
-    CDN_KEY_TYPE_DEFINITION,
-    `export const FONT_FACE_CDN_URL = (${CDN_BASE_URL_CN_CONDITION} ? '${cdnFontFacePathCn}' : '${cdnFontFacePathCom}');`,
-  ].join('\n\n');
+  const content = `export const CDN_BASE_PATH = '/${CDN_BASE_PATH_STYLES}';
+export const FONT_FACE_CDN_FILE_COM = '${cdnFontFacePathCom}';
+export const FONT_FACE_CDN_FILE_CN = '${cdnFontFacePathCn}';
+`;
 
   const targetDirectory = './src';
   const targetPath = path.normalize(`${targetDirectory}/index.ts`);

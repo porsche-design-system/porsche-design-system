@@ -7,6 +7,7 @@ import {
   hasVisibleIcon,
   hasPropValueChanged,
   isSsrHydration,
+  LINK_ARIA_ATTRIBUTES,
   LINK_BUTTON_VARIANTS,
   parseAndGetAriaAttributes,
   THEMES,
@@ -15,6 +16,7 @@ import {
 } from '../../utils';
 import type {
   BreakpointCustomizable,
+  LinkAriaAttribute,
   LinkTarget,
   LinkVariant,
   PropTypes,
@@ -22,8 +24,7 @@ import type {
   Theme,
 } from '../../types';
 import { getComponentCss } from './link-styles';
-import type { LinkAriaAttribute, LinkIcon } from './link-utils';
-import { LINK_ARIA_ATTRIBUTES } from './link-utils';
+import type { LinkIcon } from './link-utils';
 
 const propTypes: PropTypes<typeof Link> = {
   variant: AllowedTypes.oneOf<LinkVariant>(LINK_BUTTON_VARIANTS),

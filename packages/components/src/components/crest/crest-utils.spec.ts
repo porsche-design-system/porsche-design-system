@@ -1,11 +1,4 @@
-import { buildCrestSrcSet, crestInnerManifest } from './crest-utils';
-import { CRESTS_MANIFEST } from '@porsche-design-system/crest';
-
-describe('crestInnerManifest', () => {
-  it('should return correct object', () => {
-    expect(crestInnerManifest).toBe(CRESTS_MANIFEST.porscheCrest);
-  });
-});
+import { buildCrestImgSrc, buildCrestSrcSet } from './crest-utils';
 
 describe('buildCrestSrcSet()', () => {
   it.each<Parameters<typeof buildCrestSrcSet>>([['png'], ['webp']])(
@@ -14,4 +7,10 @@ describe('buildCrestSrcSet()', () => {
       expect(buildCrestSrcSet(...args)).toMatchSnapshot();
     }
   );
+});
+
+describe('buildCrestImgSrc()', () => {
+  it('should return correct url', () => {
+    expect(buildCrestImgSrc()).toMatchSnapshot();
+  });
 });

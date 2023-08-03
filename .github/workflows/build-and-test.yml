@@ -63,6 +63,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js-prod
+      - name: 'Unit Test Components Manager CLI'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --components-js:components-manager-cli
       - name: 'Unit Test Components Wrapper'
         uses: ./.github/actions/docker-run-playwright
         with:
