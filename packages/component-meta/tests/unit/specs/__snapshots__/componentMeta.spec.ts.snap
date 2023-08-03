@@ -1985,11 +1985,12 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "label",
       "description",
+      "select",
       "message",
     ],
     "nestedComponents": [
+      "p-button-pure",
       "p-icon",
-      "p-multi-select-dropdown",
     ],
     "props": {
       "description": null,
@@ -2008,26 +2009,6 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
-  "p-multi-select-dropdown": {
-    "hasAriaProp": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isDelegatingFocus": false,
-    "isInternal": true,
-    "isThemeable": true,
-    "props": {
-      "direction": null,
-      "isOpen": false,
-      "theme": "light",
-    },
-    "requiredProps": [
-      "isOpen",
-      "direction",
-    ],
-    "styling": "jss",
-  },
   "p-multi-select-option": {
     "allowedPropValues": {
       "disabled": "boolean",
@@ -2039,6 +2020,9 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
+    "internalProps": {
+      "theme": "light",
+    },
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
