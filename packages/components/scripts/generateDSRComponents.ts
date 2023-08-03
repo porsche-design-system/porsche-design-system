@@ -371,6 +371,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
+          // Replace document.createElement
+          .replace(/(nativeSelect: any).*/, '$1;')
+          // Replace aria fns
           .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
           .replace(/\{\.\.\.getListAriaAttributes\([^}]*\}\s*/, '')
           .replace(
