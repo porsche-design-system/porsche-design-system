@@ -39,7 +39,7 @@ import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
 import { SELECT_DROPDOWN_DIRECTIONS, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { StateMessage } from '../../common/state-message/state-message';
-import { getFilterInputAriaAttributes, getListAriaAttributes } from '../../../utils/select/select-aria';
+import { getFilterInputAriaAttributes, getListAriaAttributes } from '../../../utils/a11y/select/select-aria';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,

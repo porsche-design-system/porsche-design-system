@@ -43,7 +43,7 @@ import {
   getListAriaAttributes,
   getOptionAriaAttributes,
   getSelectDropdownButtonAriaAttributes,
-} from '../../../utils/select/select-aria';
+} from '../../../utils/a11y/select/select-aria';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
