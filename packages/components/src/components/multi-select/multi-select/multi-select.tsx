@@ -32,6 +32,7 @@ import {
   THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
+  isWithinForm,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { Required } from '../../common/required/required';
@@ -39,7 +40,6 @@ import { getComponentCss } from './multi-select-styles';
 import { SELECT_DROPDOWN_DIRECTIONS, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { StateMessage } from '../../common/state-message/state-message';
 import { getFilterInputAriaAttributes, getListAriaAttributes } from '../../../utils/select/select-aria';
-import { isWithinForm } from '../../text-field-wrapper/text-field-wrapper-utils';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -99,17 +99,19 @@ export class MultiSelect {
   private inputContainer: HTMLDivElement;
   private inputElement: HTMLInputElement;
   private listElement: HTMLUListElement;
+  private isWithinForm: boolean;
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(): void {
-    if (isWithinForm(this.host)) {
+    if (this.isWithinForm) {
       updateNativeSelectOptions(this.nativeSelect, this.multiSelectOptions);
     }
     this.updateSelectedString();
   }
 
   public connectedCallback(): void {
-    if (isWithinForm(this.host)) {
+    this.isWithinForm = isWithinForm(this.host);
+    if (this.isWithinForm) {
       syncNativeSelect(this.nativeSelect, this.host, this.name, this.disabled, this.required);
     }
   }
@@ -141,7 +143,7 @@ export class MultiSelect {
       this.disabled,
       this.hideLabel,
       this.state,
-      isWithinForm(this.host),
+      this.isWithinForm,
       this.theme
     );
     syncMultiSelectOptionProps(this.multiSelectOptions, this.theme);
@@ -215,7 +217,7 @@ export class MultiSelect {
             <slot onSlotchange={() => this.updateOptions()} />
           </ul>
         </div>
-        {isWithinForm(this.host) && <slot name="select"></slot>}
+        {this.isWithinForm && <slot name="select"></slot>}
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
@@ -231,7 +233,7 @@ export class MultiSelect {
 
   private updateOptions = (): void => {
     this.defineMultiSelectOptions();
-    if (isWithinForm(this.host)) {
+    if (this.isWithinForm) {
       updateNativeSelectOptions(this.nativeSelect, this.multiSelectOptions);
     }
     this.updateSelectedString();
