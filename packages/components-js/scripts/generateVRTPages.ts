@@ -178,12 +178,11 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
           : { fileName: '', fileContent: '' };
 
       writeFile(
-        framework === 'nextjs'
-          ? path.resolve(path.resolve(rootDirectory, `${pagesDirectories[framework]}/${fileName}`), convertedFileName)
-          : path.resolve(pagesDirectories[framework], convertedFileName),
+        path.resolve(path.resolve(rootDirectory, pagesDirectories[framework]), convertedFileName),
         convertedFileContent
       );
-      return framework === 'nextjs' ? './' + fileName : './' + path.parse(convertedFileName).name;
+      const { dir, name } = path.parse(convertedFileName);
+      return './' + (dir ? dir : name);
     })
     .sort(byAlphabet);
 

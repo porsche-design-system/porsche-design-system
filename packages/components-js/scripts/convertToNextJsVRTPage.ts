@@ -7,15 +7,17 @@ const sourceBasePath = path.resolve(__dirname, '../../components-react/src');
 const pollComponentsReadyFilePath = path.resolve(sourceBasePath, 'pollComponentsReady.ts');
 const pollComponentsReadyFileContent = fs
   .readFileSync(pollComponentsReadyFilePath, 'utf8')
-  .replace(/export const pollComponentsReady/, 'const pollComponentsReady');
+  .replace(/export (const pollComponentsReady)/, '$1');
 
 export const convertToNextJsVRTPage = (
   ...params: [string, string, string, string, string, string, ReactCharacteristics]
 ): { fileName: string; fileContent: string } => {
   const { fileName: convertedFileName, fileContent: convertedFileContent } = convertToReactVRTPage(...params);
 
-  const pagesWithClientHooks: string[] = ['checkbox-wrapper', 'core-initializer'];
+  const pagesWithClientHooks: string[] = [];
   const fileName = paramCase(convertedFileName.replace(/\.tsx/, ''));
+  convertedFileContent.match(/use[A-Z]/) && pagesWithClientHooks.push(fileName);
+
   let newFileContent = convertedFileContent
     .replace(
       /\/\* Auto Generated File \*\//,
@@ -39,5 +41,8 @@ export const convertToNextJsVRTPage = (
     newFileContent = newFileContent.replace(/\/\* Auto Generated File \*\//, "$&\nimport Image from 'next/image';");
   }
 
-  return { fileName: 'page.tsx', fileContent: newFileContent };
+  return {
+    fileName: `${paramCase(convertedFileName.replace(/\.tsx/, ''))}/page.tsx`,
+    fileContent: newFileContent,
+  };
 };
