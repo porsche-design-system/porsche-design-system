@@ -4911,10 +4911,10 @@
     "@typescript-eslint/types" "5.61.0"
     eslint-visitor-keys "^3.3.0"
 
-"@uxpin/merge-cli@3.0.6":
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/@uxpin/merge-cli/-/merge-cli-3.0.6.tgz#61cc9dc82fadb70531657131735e66e92eaf81c3"
-  integrity sha512-0vE687fQycNjdgst639jcJoJ3Fh4BM1cDwRplkF8jMk+yTn6kmNCJJZF0Kl53ZeeweWW7m+Bc+6JlU5T+A4vZw==
+"@uxpin/merge-cli@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@uxpin/merge-cli/-/merge-cli-3.3.0.tgz#519ad38ef5de681e1a5dce128e15a5e20e5bc29c"
+  integrity sha512-9tRYinNDB4j6emUNBAWhJbKDuUH2h4qtSrCk+eWRVwx/tnsDbis5/a1v/LeK+vPBvMjEVMpO6UUBkg8eX92MNw==
   dependencies:
     "@babel/core" "^7.21.8"
     "@babel/plugin-proposal-class-properties" "^7.2.3"
@@ -4927,6 +4927,7 @@
     "@types/yargs" "^16.0.0"
     "@uxpin/react-docgen-better-proptypes" "^0.1.1"
     acorn-loose "^8.0.2"
+    acorn-walk "^8.2.0"
     ast-types "^0.12.4"
     axios "^1.4.0"
     babel-loader "^8.0.5"
