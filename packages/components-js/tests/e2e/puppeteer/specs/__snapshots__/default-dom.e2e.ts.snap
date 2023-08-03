@@ -290,18 +290,16 @@ exports[`should have no basic DOM regression for p-model-signature 1`] = `"<img 
 
 exports[`should have no basic DOM regression for p-multi-select 1`] = `
 "<div class="root">
-  <label class="label">
+  <label class="label" id="label">
   </label>
   <div class="input-container">
-    <input autocomplete="none" aria-labelledby="label" aria-describedby="">
-    <p-icon class="icon reset-icon hydrated" aria-hidden="true">
-    </p-icon>
+    <input id="comboxbox" role="combobox" autocomplete="off" aria-labelledby="label" aria-describedby="description" aria-haspopup="listbox" aria-expanded="false" aria-controls="list" aria-autocomplete="list">
+    <p-button-pure class="icon reset-icon hydrated" color="primary">
+      Reset selection</p-button-pure>
     <p-icon class="icon toggle-icon hydrated" aria-hidden="true">
     </p-icon>
   </div>
-  <div class="sr-text" id="label">
-    , </div>
-  <p-multi-select-dropdown class="hydrated">
+  <ul id="list" role="listbox" aria-label="" aria-hidden="true" aria-multiselectable="true">
     <li class="no-results" aria-live="polite" role="status">
       <span aria-hidden="true">
         ---</span>
@@ -310,12 +308,14 @@ exports[`should have no basic DOM regression for p-multi-select 1`] = `
     </li>
     <slot>
     </slot>
-  </p-multi-select-dropdown>
-</div>"
+  </ul>
+</div>
+<span class="sr-text" role="status" aria-live="assertive" aria-relevant="additions text">
+</span>"
 `;
 
 exports[`should have no basic DOM regression for p-multi-select-option 1`] = `
-"<li role="option" class="option">
+"<li role="option" class="option" aria-selected="false">
   <p-checkbox-wrapper class="checkbox hydrated">
     <input type="checkbox">
     <slot slot="label">
