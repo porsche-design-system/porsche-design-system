@@ -3,6 +3,7 @@ export * from './getOnlyChildHTMLElementOrThrow';
 export * from './getOnlyChildOfKindHTMLElementOrThrow';
 export * from './throwIfChildCountIsExceeded';
 export * from './throwIfChildrenAreNotOfKind';
+export * from './throwIfChildrenAreNotEqualOfKind';
 export * from './throwIfElementHasAttribute';
 export * from './throwIfElementIsNotOfKind';
 export * from './throwIfInvalidLinkUsage';
