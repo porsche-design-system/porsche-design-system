@@ -564,6 +564,7 @@ export default <${formComponentName} ${stringifiedProps} />;
 
     const content = `module.exports = {
   components: {
+    pageHeadTags: require("@porsche-design-system/components-js/partials").getInitialStyles(),
     categories: [
       {
         name: 'Uncategorized',
