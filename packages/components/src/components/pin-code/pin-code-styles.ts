@@ -1,5 +1,5 @@
 import type { FormState } from '../../utils/form/form-state';
-import type { Theme } from '../../types';
+import type { BreakpointCustomizable, Theme } from '../../types';
 import type { PinCodeType } from './pin-code-utils';
 import type { Styles } from 'jss';
 import { getCss } from '../../utils';
@@ -25,10 +25,10 @@ import {
 } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
-  theme: Theme,
   pinCodeType: PinCodeType,
-  hideLabel: boolean,
-  state: FormState
+  hideLabel: BreakpointCustomizable<boolean>,
+  state: FormState,
+  theme: Theme
 ): string => {
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
@@ -38,10 +38,6 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...hostHiddenStyles,
-      },
-      '.pin-code-container': {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(0, 1fr))',
       },
       input: {
         ...addImportantToEachRule({
@@ -62,16 +58,23 @@ export const getComponentCss = (
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
         }),
-      },
-      ...(hoverMediaQuery({
-        // with the media query the selector has higher priority and overrides disabled styles
-        ['input:not(:disabled):not(:focus):not([readonly]):hover']: {
-          borderColor: addImportantToRule(formStateHoverColor || primaryColor),
+        '&::-webkit-inner-spin-button': {
+          display: 'none',
         },
-      }) as Styles),
-      'input:focus': {
-        borderColor: addImportantToRule(primaryColor),
+        ...(hoverMediaQuery({
+          // with the media query the selector has higher priority and overrides disabled styles
+          ['&:not(:disabled):not(:focus):not([readonly]):hover']: {
+            borderColor: addImportantToRule(formStateHoverColor || primaryColor),
+          },
+        }) as Styles),
+        '&:focus': {
+          borderColor: addImportantToRule(primaryColor),
+        },
       },
+    },
+    '.pin-code-container': {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(0, 1fr))',
     },
     ...getLabelStyles('input', false, hideLabel, state, theme),
     ...getFunctionalComponentRequiredStyles(),
