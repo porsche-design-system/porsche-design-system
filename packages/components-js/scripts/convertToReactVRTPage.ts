@@ -44,7 +44,7 @@ export const convertToReactVRTPage = (
   const imports = [
     pdsImports && `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
     reactImports && `import { ${reactImports} } from 'react';`,
-    isIconPage && `import { ICON_NAMES } from '@porsche-design-system/assets';`,
+    isIconPage && `import { ICON_NAMES } from '@porsche-design-system/icons';`,
     (usesSetAllReady || usesComponentsReady) && `import { pollComponentsReady } from '../pollComponentsReady';`,
     usesToast && `import { Toast } from '../components';`,
   ]

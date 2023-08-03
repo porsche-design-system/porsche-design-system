@@ -3,11 +3,16 @@
   import { provide } from 'vue';
   import { prefixInjectionKey } from './utils';
 
-  const props = withDefaults(defineProps<{ prefix?: string }>(), {
+  type Props = {
+    prefix?: string;
+    cdn?: 'auto' | 'cn';
+  };
+
+  const props = withDefaults(defineProps<Props>(), {
     prefix: '',
   });
 
-  load({ prefix: props.prefix });
+  load(props); // runtime prefix or cdn change is not supported
   provide(prefixInjectionKey, props.prefix);
 </script>
 

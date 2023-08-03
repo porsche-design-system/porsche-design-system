@@ -1,6 +1,6 @@
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import type { MarqueAriaAttribute, MarqueVariant, MarqueTarget } from './marque-utils';
-import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_VARIANTS } from './marque-utils';
+import { buildImgSrc, buildSrcSet, getInnerManifest, MARQUE_VARIANTS } from './marque-utils';
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -86,7 +86,7 @@ export class Marque {
               <source key="webp" srcSet={buildSrcSet(innerManifest, this.size, 'webp')} type="image/webp" />,
               <source key="png" srcSet={buildSrcSet(innerManifest, this.size, 'png')} type="image/png" />,
             ]}
-        <img src={`${cdnBaseUrl}/${innerManifest.medium['2x'].png}`} alt="Porsche" />
+        <img src={buildImgSrc(innerManifest)} alt="Porsche" />
       </picture>
     );
 

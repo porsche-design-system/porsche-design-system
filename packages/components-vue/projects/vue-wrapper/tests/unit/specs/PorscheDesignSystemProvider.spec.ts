@@ -1,6 +1,10 @@
 import { render } from '@testing-library/vue';
 import { PorscheDesignSystemProvider, PButton } from '../../../src/public-api';
 import { h } from 'vue';
+import * as fromComponentsJs from '@porsche-design-system/components-js';
+
+// not sure why we have to mock it but otherwise we can't spy
+jest.mock('@porsche-design-system/components-js');
 
 it('should render default components', () => {
   const { container } = render(PorscheDesignSystemProvider, { slots: { default: PButton } });
@@ -37,4 +41,22 @@ it('should throw error if PorscheDesignSystemProvider is missing ', () => {
   expect(() => render(PButton)).toThrowErrorMatchingInlineSnapshot(
     '"It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it."'
   );
+});
+
+it('should call load() with default parameters once', () => {
+  const spy = jest.spyOn(fromComponentsJs, 'load');
+  const { rerender } = render(PorscheDesignSystemProvider);
+  expect(spy).toBeCalledWith({ prefix: '' });
+
+  rerender({ prefix: 'new-prefix' });
+  expect(spy).toBeCalledTimes(1);
+});
+
+it('should call load() with custom parameters once', () => {
+  const spy = jest.spyOn(fromComponentsJs, 'load');
+  const { rerender } = render(PorscheDesignSystemProvider, { props: { prefix: 'my-prefix', cdn: 'cn' } });
+  expect(spy).toBeCalledWith({ prefix: 'my-prefix', cdn: 'cn' });
+
+  rerender({ prefix: 'new-prefix', cdn: 'cn' });
+  expect(spy).toBeCalledTimes(1);
 });

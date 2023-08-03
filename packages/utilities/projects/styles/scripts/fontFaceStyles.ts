@@ -1,6 +1,6 @@
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { fontWeight } from '@porsche-design-system/utilities-v2';
-import { CDN_BASE_PATH_FONTS, CDN_BASE_URL, CDN_BASE_URL_CN } from '../../../../../cdn.config';
+import { CDN_BASE_PATH_FONTS, CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 import { camelCase } from 'change-case';
 
 import { getMinifiedCss } from '@porsche-design-system/shared';
@@ -27,7 +27,7 @@ export const unicodeRangeMap = {
 };
 
 export const cdnUrlMap: { [key in GetMinifiedPorscheNextFontFaceCssOptions['cdn']]: string } = {
-  com: `${CDN_BASE_URL}/${CDN_BASE_PATH_FONTS}`,
+  com: `${CDN_BASE_URL_COM}/${CDN_BASE_PATH_FONTS}`,
   cn: `${CDN_BASE_URL_CN}/${CDN_BASE_PATH_FONTS}`,
   localhost: 'http://localhost:3001/fonts',
 };

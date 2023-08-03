@@ -79,11 +79,14 @@ export const getUsedTagNamesWithoutPreloadForVersions = (
       : result;
   }, {});
 
-export const getPorscheDesignSystemPrefixesForVersions = (): { [key: string]: [string] } =>
+export const getPorscheDesignSystemPrefixesForVersions = (): { [key: string]: string[] } =>
   Object.entries(document.porscheDesignSystem).reduce(
-    (result, [key, value]) => ({
-      ...result,
-      [key]: value.prefixes,
-    }),
+    (result, [key, value]) =>
+      typeof value === 'string'
+        ? result // can be 'cdn' key with string value
+        : {
+            ...result,
+            [key]: value.prefixes,
+          },
     {}
   );

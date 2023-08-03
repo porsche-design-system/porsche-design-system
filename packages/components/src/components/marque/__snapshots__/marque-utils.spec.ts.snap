@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`buildImgSrc() should return correct url 1`] = `"https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.medium.min.089d6dd560fff7a2bf613ae6d528990e@2x.png"`;
+
 exports[`buildSrcSet() for png should return correct srcSet for innerManifest: {"medium": [Object], "small": [Object]}, size: medium and format: png 1`] = `"https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.da075315857e239ff46bf4c150648ff0@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque-trademark.medium.min.824818d15eaf445f50e0a2391613f214@3x.png 3x"`;
 
 exports[`buildSrcSet() for png should return correct srcSet for innerManifest: {"medium": [Object], "small": [Object]}, size: medium and format: png 2`] = `"https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.medium.min.a98627440b05154565f9f9dfc1ad6187@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.medium.min.089d6dd560fff7a2bf613ae6d528990e@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.medium.min.2cb874345ef290831c929f6caabfeef8@3x.png 3x"`;

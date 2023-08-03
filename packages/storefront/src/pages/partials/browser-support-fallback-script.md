@@ -57,7 +57,7 @@ There always might be a case where something goes wrong. Here are some possible 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { FALLBACKS_CDN_BASE_URL, FALLBACKS_MANIFEST } from '@porsche-design-system/assets';
+import { CDN_BASE_PATH, FALLBACKS_MANIFEST } from '@porsche-design-system/fallbacks';
 
 @Component
 export default class Code extends Vue {
@@ -73,7 +73,7 @@ export default class Code extends Vue {
 
   public showFallback = (): void => {
     const script = document.createElement('script');
-    const src = `${FALLBACKS_CDN_BASE_URL}/${FALLBACKS_MANIFEST.browserSupport}`;
+    const src = `https://cdn.ui.porsche.com${CDN_BASE_PATH}/${FALLBACKS_MANIFEST.browserSupport}`;
     script.src = process.env.NODE_ENV === 'production' ? src : src.replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001');
     document.body.appendChild(script);
   };

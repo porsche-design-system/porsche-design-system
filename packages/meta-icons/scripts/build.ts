@@ -3,13 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
-import {
-  CDN_BASE_URL_DYNAMIC,
-  CDN_BASE_PATH_META_ICONS,
-  CDN_KEY_TYPE_DEFINITION,
-  CDN_BASE_URL,
-  CDN_BASE_URL_CN,
-} from '../../../cdn.config';
+import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../cdn.config';
 
 type Cdn = 'auto' | 'cn';
 
@@ -40,7 +34,7 @@ const generateWebManifestAndExtendIconManifest = (metaIconsManifest: MetaIconsMa
 };
 
 const writeWebManifest = (androidIconPaths: string[], cdn: Cdn): string => {
-  const cdnURL = cdn === 'auto' ? CDN_BASE_URL : CDN_BASE_URL_CN;
+  const cdnURL = cdn === 'auto' ? CDN_BASE_URL_COM : CDN_BASE_URL_CN;
   const icons = androidIconPaths.map((androidIconPath: string) => {
     const [, size] = androidIconPath.match(/android-chrome-([0-9]+)x\1/) || [];
     if (isNaN(parseInt(size))) {
@@ -92,25 +86,23 @@ const copyMetaIconsAndBuildIconManifest = (files: string[]): MetaIconsManifest =
 
   return manifest;
 };
-const writeMetaIconManifest = (cdn: string, manifest: MetaIconsManifest) => {
+const writeMetaIconManifest = (manifest: MetaIconsManifest) => {
   fs.writeFileSync(
     path.normalize('./index.ts'),
-    `${CDN_KEY_TYPE_DEFINITION}
-
-export const CDN_BASE_URL = ${cdn};
-export const META_ICONS_MANIFEST = ${JSON.stringify(manifest)};`
+    `export const CDN_BASE_PATH = '/${CDN_BASE_PATH_META_ICONS}';
+export const META_ICONS_MANIFEST = ${JSON.stringify(manifest)};
+`
   );
 
   console.log('Created meta-icons manifest.');
 };
 
 const generate = (): void => {
-  const cdnMetaIconsUrl = `${CDN_BASE_URL_DYNAMIC} + '/${CDN_BASE_PATH_META_ICONS}'`;
   const icons = globby.sync('./src/**/*').sort();
   const metaIconsManifest = copyMetaIconsAndBuildIconManifest(icons);
   const metaIconsManifestWithWebManifest = generateWebManifestAndExtendIconManifest(metaIconsManifest);
 
-  writeMetaIconManifest(cdnMetaIconsUrl, metaIconsManifestWithWebManifest);
+  writeMetaIconManifest(metaIconsManifestWithWebManifest);
 };
 
 generate();
