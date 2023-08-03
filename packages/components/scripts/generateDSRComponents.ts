@@ -392,7 +392,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/onSlotchange=\{\(\) => this.props.updateOptions\(\)}/, '')
           .replace(/onOpenChange=\{this\.props\.onDropdownOpenChange}\s*/, '')
           .replace(/\{typeof otherChildren.*propsedString}/, '{this.selectedString}')
-          .replace(/this\.props\.nativeSelect\.selectedOptions\.length > 0/, 'false');
+          .replace(/this\.props\.nativeSelect\.selectedOptions\.length > 0/, 'false')
+          .replace(/<span className="sr-text" role="status"[\s\S]*<\/span>/, '');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
           .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
