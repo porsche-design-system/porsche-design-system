@@ -1145,7 +1145,7 @@ export namespace Components {
         /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
          */
-        "hideLabel"?: boolean;
+        "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
          */
@@ -1174,6 +1174,10 @@ export namespace Components {
           * Pin code type.
          */
         "type"?: PinCodeType;
+        /**
+          * Sets the initial value of the pin code.
+         */
+        "value"?: string | number;
     }
     interface PPopover {
         /**
@@ -3330,7 +3334,7 @@ declare namespace LocalJSX {
         /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
          */
-        "hideLabel"?: boolean;
+        "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
          */
@@ -3359,6 +3363,10 @@ declare namespace LocalJSX {
           * Pin code type.
          */
         "type"?: PinCodeType;
+        /**
+          * Sets the initial value of the pin code.
+         */
+        "value"?: string | number;
     }
     interface PPopover {
         /**

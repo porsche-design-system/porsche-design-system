@@ -63,19 +63,21 @@ export class PinCode {
   /** Pin code type. */
   @Prop() public type?: PinCodeType = 'number';
 
+  // TODO: set initial value? length? what if value is too long? take only first caracters?
+  /** Sets the initial value of the pin code. */
+  @Prop() public value?: string | number;
+
   private input: HTMLInputElement;
+  // TODO is it still needed for saving refs?
   private pinCodeElements: HTMLInputElement[] = [];
   // TODO: private ariaElement: HTMLSpanElement;
-  // TODO: private isWithinForm: boolean;
 
+  // TODO: should not be needed with refs
   public connectedCallback(): void {
     this.setPinCodeElements();
   }
 
-  public componentWillLoad(): void {
-    this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, ['hidden'].map((v) => `input[type=${v}]`).join());
-  }
-
+  // TODO: should not be needed with refs
   public componentDidRender(): void {
     this.setPinCodeElements();
   }
@@ -111,7 +113,8 @@ export class PinCode {
                 onKeyDown={(e) => this.keyDownHandler(e, index)}
                 onKeyUp={(e) => this.keyUpHandler(e, index)}
                 pattern={isTypeNumber(this.type) ? 'd{1}' : '[a-zA-Z0-9]{1}'}
-                value=""
+                value="" // TODO: value prop
+                // TODO: use ref
               />
             ))}
             <slot name="hiddenInput" />
@@ -124,14 +127,13 @@ export class PinCode {
     );
   }
 
+  // TODO if possible use utilities instead of private functions
+
   private setPinCodeElements = (): void => {
     this.pinCodeElements = getShadowRootHTMLElements(this.host, 'input');
   };
 
-  private onLabelClick = (): void => {
-    this.pinCodeElements[0].focus();
-  };
-
+  // TODO: index should not be needed with refs
   private keyDownHandler = (e: KeyboardEvent, index: number): void => {
     // delete old value if new input value is valid
     if (this.isValidInput(e.key)) {
@@ -148,6 +150,7 @@ export class PinCode {
     }
   };
 
+  // TODO: index should not be needed with refs
   private keyUpHandler = (e: KeyboardEvent, index: number): void => {
     if (this.isValidInput(e.key) && !this.isLastPinInputField(index)) {
       this.setInputValue();
@@ -171,6 +174,7 @@ export class PinCode {
     return this.pinCodeElements[index].value.length === 0;
   };
 
+  // TODO update event
   private setInputValue = (): void => {
     const pinCode = [];
     for (const pinCodeElement of this.pinCodeElements) {
