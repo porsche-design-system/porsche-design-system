@@ -164,8 +164,9 @@ export class MultiSelect {
                 {isRequiredAndParentNotRequired(this.host, this.nativeSelect) && <Required />}
               </span>
             )}
+            {/* TODO: Description should be separated from the label (affects all form components) */}
             {hasDescription(this.host, this.description) && (
-              <span class="label__text" id="description" onClick={() => this.inputElement.focus()}>
+              <span class="label__text" id="description" onClick={() => this.inputElement.focus()} aria-hidden="true">
                 {this.description || <slot name="description" />}
               </span>
             )}
@@ -250,7 +251,6 @@ export class MultiSelect {
       this.resetFilter();
     } else {
       updateMultiSelectOptionsFilterState((e.target as HTMLInputElement).value, this.multiSelectOptions);
-      // TODO: Is this necessary in order to show no results found?
       forceUpdate(this.host);
     }
     // in case input is focused via tab instead of click
@@ -271,6 +271,7 @@ export class MultiSelect {
 
   private onResetClick = (): void => {
     this.multiSelectOptions.forEach((option) => (option.selected = false));
+    this.inputElement.focus();
   };
 
   private onClickOutside = (e: MouseEvent): void => {
@@ -329,7 +330,5 @@ export class MultiSelect {
   private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
     this.isOpen = true;
     updateHighlightedOption(this.listElement, this.multiSelectOptions, direction);
-    // TODO: Is this necessary only to update aria-activedescendant?
-    forceUpdate(this.host);
   }
 }
