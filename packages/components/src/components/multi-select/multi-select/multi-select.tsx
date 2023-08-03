@@ -162,12 +162,12 @@ export class MultiSelect {
                 {isRequiredAndParentNotRequired(this.host, this.nativeSelect) && <Required />}
               </span>
             )}
+            {hasDescription(this.host, this.description) && (
+              <span class="label__text" id="description" onClick={() => this.inputElement.focus()}>
+                {this.description || <slot name="description" />}
+              </span>
+            )}
           </label>
-          {hasDescription(this.host, this.description) && (
-            <span class="label__text" id="description" onClick={() => this.inputElement.focus()}>
-              {this.description || <slot name="description" />}
-            </span>
-          )}
           <div class={{ 'input-container': true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
             <input
               id="comboxbox"
