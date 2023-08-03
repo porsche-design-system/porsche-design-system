@@ -1,6 +1,3 @@
-// needs to be before fromComponents import
-document.porscheDesignSystem = { cdn: '' };
-
 import { type JSX } from 'react';
 import { render } from '@testing-library/react';
 import * as fromComponents from '../../../src/lib/components';
