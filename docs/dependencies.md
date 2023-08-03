@@ -1,12 +1,12 @@
-# Dependencies 04.07.2023
+# Dependencies 03.08.2023
 
 ## Overview of Framework Versions
 
-|         | Monorepo | Sample Integrations   |
-| ------- | -------- | --------------------- |
-| Angular | 15.2.9   | 16.1.1                |
-| React   | 18.2.0   | 18.2.0                |
-| Next.js | 13.4.8   | 13.4.6 (React 18.2.0) |
+|         | Monorepo | Sample Integrations     |
+| ------- | -------- | ----------------------- |
+| Angular | 15.2.9   | 16.1.6                  |
+| React   | 18.2.0   | 18.2.0                  |
+| Next.js | 13.4.12  | 13.4.12 (React 18.2.16) |
 
 ## Vue
 

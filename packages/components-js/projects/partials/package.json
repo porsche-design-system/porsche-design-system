@@ -38,7 +38,7 @@
   "devDependencies": {
     "@types/html-minifier": "^4.0.2",
     "html-minifier": "^4.0.0",
-    "tslib": "^2.6.0",
+    "tslib": "^2.6.1",
     "typescript": "~5.1.6"
   },
   "volta": {

@@ -23,11 +23,11 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.22.5",
     "@porsche-design-system/assets": "5.0.2",
-    "@types/react": "^18.2.14",
-    "@uxpin/merge-cli": "3.0.6",
-    "babel-loader": "^9.1.2",
+    "@types/react": "^18.2.18",
+    "@uxpin/merge-cli": "3.3.0",
+    "babel-loader": "^9.1.3",
     "typescript": "~5.1.6",
-    "webpack": "^5.88.1"
+    "webpack": "^5.88.2"
   },
   "volta": {
     "extends": "../../../../package.json"
