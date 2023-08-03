@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { PinCodeState, PinCodeType } from './pin-code-utils';
 import {
   AllowedTypes,
@@ -31,7 +31,7 @@ const propTypes: PropTypes<typeof PinCode> = {
 
 @Component({
   tag: 'p-pin-code',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class PinCode {
   @Element() public host!: HTMLElement;
@@ -46,7 +46,7 @@ export class PinCode {
   @Prop() public length?: number = 4;
 
   /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
-  @Prop() public hideLabel?: boolean = false;
+  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** The validation state. */
   @Prop() public state?: PinCodeState = 'none';
@@ -84,24 +84,14 @@ export class PinCode {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.theme, this.type, this.hideLabel, this.state);
-
-    const labelProps = {
-      onClick: this.onLabelClick,
-    };
+    attachComponentCss(this.host, getComponentCss, this.type, this.hideLabel, this.state, this.theme);
 
     return (
       <Host>
         <label class="label">
-          {hasLabel(this.host, this.label) && (
-            <span class="label__text" {...labelProps}>
-              {this.label || <slot name="label" />}
-            </span>
-          )}
+          {hasLabel(this.host, this.label) && <span class="label__text">{this.label || <slot name="label" />}</span>}
           {hasDescription(this.host, this.description) && (
-            <span class="label__text" {...labelProps}>
-              {this.description || <slot name="description" />}
-            </span>
+            <span class="label__text">{this.description || <slot name="description" />}</span>
           )}
           <div class="pin-code-container">
             {...Array.from({ length: this.length }).map((_value, index) => (
