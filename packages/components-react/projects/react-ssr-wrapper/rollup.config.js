@@ -1,5 +1,4 @@
 import typescript from '@rollup/plugin-typescript';
-import generatePackageJson from 'rollup-plugin-generate-package-json';
 import resolve from '@rollup/plugin-node-resolve';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
 
