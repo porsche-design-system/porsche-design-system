@@ -350,7 +350,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // Change isOpen, optionMaps, searchString to not be a prop
           .replace(/this\.props\.(isOpen|optionMaps|searchString)(?=[,)}])/g, 'this.$1')
           // fix warning about read-only field
-          .replace(/value={/, 'defaultValue={');
+          .replace(/value={/, 'defaultValue={')
+          .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
+          .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes\([^}]*\}\s*/, '');
       } else if (tagName === 'p-select-wrapper') {
         newFileContent = newFileContent
           // Add PSelectWrapperDropdown component import
@@ -369,13 +371,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
-          .replace(
-            /(state-message';\s*)/,
-            `$1import {
-            getFilterInputAriaAttributes,
-            getListAriaAttributes,
-      } from '@porsche-design-system/components/src/utils/a11y/select/select-aria';\n`
-          )
+          .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
+          .replace(/\{\.\.\.getListAriaAttributes\([^}]*\}\s*/, '')
           .replace(
             /typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?.propsedString/,
             'this.selectedString'
