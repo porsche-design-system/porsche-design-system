@@ -71,7 +71,7 @@ const patchStencilCore = (): void => {
       )
       // inject cleanup snippet
       .replace(
-        /\s+if \(BUILD\.hydrateServerSide\) {\s+await callRender\(hostRef, instance, elm\);/,
+        /\s+if \(BUILD\.hydrateServerSide\) {\s+await callRender\(hostRef, instance, elm, isInitialLoad\);/,
         `${cleanupSnippet}$&`
       );
 
