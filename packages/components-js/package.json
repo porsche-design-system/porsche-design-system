@@ -78,10 +78,13 @@
     "@types/js-beautify": "^1.14.0",
     "concurrently": "^8.2.0",
     "devtools-protocol": "^0.0.1179426",
+    "globby": "^11.0.4",
     "js-beautify": "^1.14.9",
     "jsdom": "^22.1.0",
     "local-web-server": "^5.3.0",
     "terser-webpack-plugin": "^5.3.9",
+    "ts-node": "^10.9.1",
+    "typescript": "~5.1.6",
     "webpack": "^5.88.2",
     "webpack-bundle-analyzer": "^4.9.0",
     "webpack-cli": "^5.1.4"
