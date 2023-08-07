@@ -40,6 +40,7 @@ import { getComponentCss } from './multi-select-styles';
 import { SELECT_DROPDOWN_DIRECTIONS, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { StateMessage } from '../../common/state-message/state-message';
 import { getFilterInputAriaAttributes, getListAriaAttributes } from '../../../utils/a11y/select/select-aria';
+import type { HTMLElementWithRequiredProp } from '../../../utils/form/isRequired';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -164,7 +165,7 @@ export class MultiSelect {
             {!this.hideLabel && hasLabel(this.host, this.label) && (
               <span class="label__text" onClick={() => this.inputElement.focus()}>
                 {this.label || <slot name="label" />}
-                {isRequiredAndParentNotRequired(this.host, this.nativeSelect) && <Required />}
+                {isRequiredAndParentNotRequired(this.host, this.host as HTMLElementWithRequiredProp) && <Required />}
               </span>
             )}
             {/* TODO: Description should be separated from the label (affects all form components) */}
