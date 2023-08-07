@@ -21,7 +21,8 @@ Done** (DOD).
   - Visual Regression Tests (VRT, via Puppeteer in Chromium and Playwright in WebKit browser engines)
   - Unit tests for/with jsdom-polyfill (if modern browser APIs are used that are not available in jsdom)
   - Smoke tests (if adding new assets to our CDN)
-- Accessibility compliance (WCAG 2.1 level AA)
+- Accessibility compliance
+  - WCAG 2.1 level AA
   - High Contrast Mode
   - 200% Text Zoom Support
 - SSR Support for Next.js and Remix
