@@ -98,7 +98,7 @@ export class Carousel {
   @Prop() public width?: CarouselWidth = 'basic';
 
   /** Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS. */
-  @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> | 'auto' = 1;
+  @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> | 'auto' = 1; // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead.
@@ -183,7 +183,7 @@ export class Carousel {
       speed: carouselTransitionDuration,
       gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>),
+      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
     });
