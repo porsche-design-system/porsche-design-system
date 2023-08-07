@@ -180,10 +180,10 @@ export class MultiSelect {
               role="combobox"
               placeholder={this.selectedString || null}
               autoComplete="off"
-              onInput={this.onInputChange}
-              onClick={this.onInputClick}
               disabled={this.disabled}
               required={this.required}
+              onInput={this.onInputChange}
+              onClick={this.onInputClick}
               onKeyDown={this.onInputKeyDown}
               ref={(el) => (this.inputElement = el)}
               {...getFilterInputAriaAttributes(this.isOpen, this.required, 'label', 'description', dropdownId)}
