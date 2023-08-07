@@ -183,7 +183,7 @@ export class MultiSelect {
               role="combobox"
               placeholder={this.selectedString || null}
               autoComplete="off"
-              onInput={this.onFilterChange}
+              onInput={this.onInputChange}
               onClick={this.onInputClick}
               disabled={this.disabled}
               required={this.required}
@@ -252,7 +252,7 @@ export class MultiSelect {
     this.multiSelectOptions = children as HTMLPMultiSelectOptionElement[];
   }
 
-  private onFilterChange = (e: Event): void => {
+  private onInputChange = (e: Event): void => {
     if ((e.target as HTMLInputElement).value.startsWith(' ')) {
       this.resetFilter();
     } else {
