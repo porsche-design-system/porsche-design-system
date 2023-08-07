@@ -143,7 +143,7 @@ export class MultiSelect {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.nativeSelect.selectedOptions.length > 0,
+      getSelectedOptions(this.multiSelectOptions).length > 0,
       getDropdownDirection(this.dropdownDirection, this.inputContainer, this.multiSelectOptions),
       this.isOpen,
       this.disabled,
