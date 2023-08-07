@@ -599,6 +599,8 @@ export const config: StorefrontConfig = {
     'Browser Compatibility': [() => import('@/pages/must-know/browser-compatibility.md')],
     // @ts-ignore
     Versioning: [() => import('@/pages/must-know/versioning.md')],
+    // @ts-ignore
+    'Definition Of Done': [() => import('@/pages/must-know/definition-of-done.md')],
   },
   Help: {
     // @ts-ignore
