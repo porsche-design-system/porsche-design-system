@@ -128,6 +128,12 @@ export class MultiSelect {
     return hasPropValueChanged(newVal, oldVal);
   }
 
+  public componentWillUpdate(): void {
+    if (this.isWithinForm) {
+      syncNativeSelect(this.nativeSelect, this.host, this.name, this.disabled, this.required);
+    }
+  }
+
   public disconnectedCallback(): void {
     document.removeEventListener('mousedown', this.onClickOutside, true);
   }
