@@ -65,6 +65,8 @@ consuming teams are already on the next major.
 - `@angular/compiler-cli`
 - `@angular/language-service`
 - `ng-packagr`
+- `angular-imask` with v7.0.0 it is bundled for Angular 16 and became incompatible with our Angular 15 setup:
+  https://github.com/uNmAnNeR/imaskjs/releases
 
 ---
 
