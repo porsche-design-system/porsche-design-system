@@ -17,13 +17,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <HeaderPartials cdn={cdn} />
       </head>
       <body>
-        <ComponentsReady></ComponentsReady>
-        <PorscheDesignSystemProvider cdn="auto">
-          <Select />
-          <div id="app">{children}</div>
-        </PorscheDesignSystemProvider>
-        <NextScript />
-        <FooterPartials cdn={cdn} />
+        <ComponentsReady>
+          <PorscheDesignSystemProvider cdn="auto">
+            <Select />
+            <div id="app">{children}</div>
+          </PorscheDesignSystemProvider>
+          <NextScript />
+          <FooterPartials cdn={cdn} />
+        </ComponentsReady>
       </body>
     </html>
   );
