@@ -12,7 +12,7 @@ Done** (DOD).
 - End-to-End Tests (E2E, via puppeteer in Chrome)
   - relevant functionality
   - a11y compliance (a11y tree snapshots)
-- Visual Regression Tests (VRT, via puppeteer in Chrome and playwright in Desktop Safari)
+- Visual Regression Tests (VRT, via Puppeteer in Chromium (Chrome) and Playwright in WebKit (Safari))
   - different prop configurations per component
   - :hover, :focus and :hover:focus states
   - high contrast mode
