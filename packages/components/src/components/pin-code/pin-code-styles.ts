@@ -30,7 +30,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
-
+  const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // we need 10px additionally so input height becomes 54px
   return getCss({
     '@global': {
       ':host': {
@@ -39,9 +39,11 @@ export const getComponentCss = (
       },
       input: {
         ...addImportantToEachRule({
-          height: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so input height becomes 54px
+          height: inputSize,
           margin: 0,
           outline: 0,
+          textAlign: 'center',
+          width: inputSize,
           WebkitAppearance: 'none', // iOS safari
           appearance: 'none',
           boxSizing: 'border-box',
@@ -69,11 +71,14 @@ export const getComponentCss = (
           borderColor: addImportantToRule(primaryColor),
         },
       },
+      '.pin-code-container': {
+        display: 'flex',
+        gap: spacingStaticSmall,
+        justifyContent: 'start',
+        flexWrap: 'wrap',
+      },
     },
-    '.pin-code-container': {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(0, 1fr))',
-    },
+
     ...getLabelStyles('input', false, hideLabel, state, theme),
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
