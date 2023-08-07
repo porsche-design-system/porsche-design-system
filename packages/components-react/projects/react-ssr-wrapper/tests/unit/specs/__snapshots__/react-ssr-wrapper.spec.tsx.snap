@@ -1138,7 +1138,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
         shadowrootmode="open"
       >
         <style>
-          :host{display:block;position:relative !important}:host([hidden]){display:none !important}::slotted(a),::slotted(button){margin:0 0 4px 0 !important;padding:0 !important;outline:0 !important;border-radius:4px !important;background:transparent !important;display:inline-block !important;position:relative !important;vertical-align:top !important;font-family:inherit !important;font-style:inherit !important;font-variant:inherit !important;font-weight:inherit !important;font-size:inherit !important;line-height:inherit !important;white-space:nowrap !important;box-sizing:border-box !important;-webkit-appearance:none !important;appearance:none !important;outline-offset:1px !important;text-decoration:none !important;text-align:left !important;border:0 !important;color:#FBFCFF !important;cursor:pointer !important;z-index:0 !important}::slotted(a)::before, ::slotted(button)::before{content:"" !important;position:absolute !important;inset:-2px -4px !important;border-radius:4px !important;z-index:-1 !important;transition:background-color var(--p-transition-duration, .24s) ease !important}::slotted(a:hover)::before,::slotted(button:hover)::before{-webkit-backdrop-filter:blur(32px) !important;backdrop-filter:blur(32px) !important;background:rgba(148, 149, 152, .18) !important}::slotted(a)::after,::slotted(button)::after{content:"" !important;visibility:hidden !important}::slotted(a[aria-selected="true"])::after,::slotted(button[aria-selected="true"])::after{position:absolute !important;height:2px !important;left:0 !important;background:#FBFCFF !important;right:0px !important;bottom:-6px !important;visibility:visible !important}::slotted(a:not(:last-child)),::slotted(button:not(:last-child)){margin-right:16px !important}.scroller{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:400;font-size:1rem}.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after{transition:visibility 0s linear .4s !important}.bar{position:absolute;height:2px;left:0;background:#FBFCFF;width:0;bottom:-2px;visibility:visible;transition:transform .4s,width .4s;animation:keyframes-hide 0s .5s forwards}@keyframes keyframes-hide{to{visibility:hidden}}
+          :host{display:block;position:relative !important}:host([hidden]){display:none !important}::slotted(a),::slotted(button){margin:0 0 4px 0 !important;padding:0 !important;outline:0 !important;border-radius:4px !important;background:transparent !important;display:inline-block !important;position:relative !important;vertical-align:top !important;font-family:inherit !important;font-style:inherit !important;font-variant:inherit !important;font-weight:inherit !important;font-size:inherit !important;line-height:inherit !important;white-space:nowrap !important;box-sizing:border-box !important;-webkit-appearance:none !important;appearance:none !important;outline-offset:1px !important;text-decoration:none !important;text-align:left !important;border:0 !important;color:#FBFCFF !important;cursor:pointer !important;z-index:0 !important}::slotted(a)::before, ::slotted(button)::before{content:"" !important;position:absolute !important;inset:-2px -4px !important;border-radius:4px !important;z-index:-1 !important;transition:background-color var(--p-transition-duration, .24s) ease !important}::slotted(a:hover)::before,::slotted(button:hover)::before{-webkit-backdrop-filter:blur(32px) !important;backdrop-filter:blur(32px) !important;background:rgba(148, 149, 152, .18) !important}::slotted(a)::after,::slotted(button)::after{content:"" !important;visibility:hidden !important}::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after{position:absolute !important;height:2px !important;left:0 !important;background:#FBFCFF !important;right:0px !important;bottom:-6px !important;visibility:visible !important}::slotted(a:not(:last-child)),::slotted(button:not(:last-child)){margin-right:16px !important}.scroller{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:400;font-size:1rem}.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after{transition:visibility 0s linear .4s !important}.bar{position:absolute;height:2px;left:0;background:#FBFCFF;width:0;bottom:-2px;visibility:visible;transition:transform .4s,width .4s;animation:keyframes-hide 0s .5s forwards}@keyframes keyframes-hide{to{visibility:hidden}}
         </style>
         <p-scroller
           class="scroller ssr"
@@ -1158,7 +1158,6 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
               >
                 <div
                   class="scroll-wrapper"
-                  role="tablist"
                 >
                   <slot />
                   <div
@@ -7451,7 +7450,7 @@ exports[`should render dsr component for PTabs 1`] = `
   content: "" !important;
   visibility: hidden !important;
 }
-::slotted(a[aria-selected="true"])::after,::slotted(button[aria-selected="true"])::after {
+::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
   position: absolute !important;
   height: 2px !important;
   left: 0 !important;
@@ -7470,7 +7469,7 @@ exports[`should render dsr component for PTabs 1`] = `
   font-weight: 400;
   font-size: 1rem;
 }
-.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after {
+.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
   transition: visibility 0s linear .4s !important;
 }
 .bar {
@@ -7620,7 +7619,6 @@ button:hover {
               >
                 <div
                   class="scroll-wrapper"
-                  role="tablist"
                 >
                   <slot />
                   <div
@@ -7827,7 +7825,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   content: "" !important;
   visibility: hidden !important;
 }
-::slotted(a[aria-selected="true"])::after,::slotted(button[aria-selected="true"])::after {
+::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
   position: absolute !important;
   height: 2px !important;
   left: 0 !important;
@@ -7846,7 +7844,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   font-weight: 400;
   font-size: 1rem;
 }
-.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after {
+.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
   transition: visibility 0s linear .4s !important;
 }
 .bar {
@@ -7996,7 +7994,6 @@ button:hover {
           >
             <div
               class="scroll-wrapper"
-              role="tablist"
             >
               <slot />
               <div
