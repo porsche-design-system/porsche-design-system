@@ -12,28 +12,26 @@ Done** (DOD).
 - Code is written with
   - Semantic HTML
   - Smallest possible DOM hierarchy
-  - Modern CSS techniques producing as less CSS as possible
+  - Modern CSS techniques producing as few CSS as possible
   - Performance at runtime
   - Proper typing, abstraction, reusability and maintainability
-- Unit tests (in node/jsdom)
-- End-to-End Tests (E2E, via puppeteer in Chrome)
-  - relevant functionality
-  - accessibility compliant (WACAG 2.1 level AA)
-- Visual Regression Tests (VRT, via Puppeteer in Chromium (Chrome) and Playwright in WebKit (Safari))
-  - different prop configurations per component
-  - :hover, :focus and :hover:focus states
-  - high contrast mode
-  - 200% text zoom support
-- Unit tests for/with jsdom-polyfill (if modern browser APIs are used that are not available in jsdom)
-- SSR support for Next.js and Remix (unit tested, and visually tested via Puppeteer with disabled JavaScript)
+- Code is tested with
+  - Unit tests (in node/jsdom)
+  - End-to-End Tests (E2E, via puppeteer in Chrome)
+  - Visual Regression Tests (VRT, via Puppeteer in Chromium and Playwright in WebKit browser engines)
+  - Unit tests for/with jsdom-polyfill (if modern browser APIs are used that are not available in jsdom)
+  - Smoke tests (if adding new assets to our CDN)
+- Accessibility compliance (WCAG 2.1 level AA)
+  - High Contrast Mode
+  - 200% Text Zoom Support
+- SSR Support for Next.js and Remix
 - Components are available on UXPin
-- Smoke tests (if adding new assets to our CDN)
 - Security vulnerability scan passes (CodeQL of GitHub)
 - Cross Browser Support (last 2 stable versions of Chrome, Edge, Firefox, iOS and macOS Safari)
 - Documentation updated
 - Changelog updated
 - Design reviewed
-- Code reviewed (via pull request)
+- Code reviewed
 
 ## Potential Future Criteria
 
