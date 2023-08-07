@@ -36,6 +36,8 @@ Feature requests can be forwarded to the Porsche Design System team by creating 
 If you want to contribute solutions or fixes, you can create pull requests in the
 [Porsche Design System repository](https://github.com/porsche-design-system/porsche-design-system).
 
+Besides our [Definition of Done](must-know/definition-of-done), there are several things to keep in mind.
+
 To keep the quality high we rely on extensive testing and test automation.  
 Our CI pipeline will report back most issues for already existing features and it is possible to work by trial and
 error. Since this isn't ideal you can use the following high-level checklist to get a better understanding of how, where
