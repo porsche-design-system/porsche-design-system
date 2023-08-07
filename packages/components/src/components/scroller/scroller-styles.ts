@@ -18,15 +18,20 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
+const gradientColorLight: Record<ScrollerGradientColor, string> = {
+  'background-base': '255,255,255',
+  'background-surface': '238,239,242',
+};
+
+const gradientColorDark: Record<ScrollerGradientColor, string> = {
+  'background-base': '14,14,18',
+  'background-surface': '33,34,37',
+};
+
 const gradientColorMap: Record<Theme, Record<ScrollerGradientColor, string>> = {
-  light: {
-    'background-base': '255,255,255',
-    'background-surface': '238,239,242',
-  },
-  dark: {
-    'background-base': '14,14,18',
-    'background-surface': '33,34,37',
-  },
+  auto: gradientColorLight,
+  light: gradientColorLight,
+  dark: gradientColorDark,
 };
 
 const getGradient = (theme: Theme, gradientColorTheme: ScrollerGradientColor): string => {
@@ -51,15 +56,20 @@ export const getComponentCss = (
   const { backgroundColor, backgroundSurfaceColor, focusColor, hoverColor } = getThemedColors(theme);
   const isDarkTheme = isThemeDark(theme);
 
+  const backgroundColorLight: Record<ScrollerGradientColor, string> = {
+    'background-base': backgroundColor,
+    'background-surface': backgroundSurfaceColor,
+  };
+
+  const backgroundColorDark: Record<ScrollerGradientColor, string> = {
+    'background-base': backgroundSurfaceColor,
+    'background-surface': backgroundColor,
+  };
+
   const backgroundColorMap: Record<Theme, Record<ScrollerGradientColor, string>> = {
-    dark: {
-      'background-base': backgroundSurfaceColor,
-      'background-surface': backgroundColor,
-    },
-    light: {
-      'background-base': backgroundColor,
-      'background-surface': backgroundSurfaceColor,
-    },
+    auto: backgroundColorLight,
+    light: backgroundColorLight,
+    dark: backgroundColorDark,
   };
 
   const actionPrevNextStyles = {

@@ -14,19 +14,24 @@ import {
 } from '../../styles/color-filters';
 import { modelSignatureHeight } from './model-signature-utils';
 
+const colorToFilterLight: Record<Exclude<ModelSignatureColor, 'inherit'>, string> = {
+  primary: filterLightPrimary,
+  'contrast-low': filterLightContrastLow,
+  'contrast-medium': filterLightContrastMedium,
+  'contrast-high': filterLightContrastHigh,
+};
+
+const colorToFilterDark: Record<Exclude<ModelSignatureColor, 'inherit'>, string> = {
+  primary: filterDarkPrimary,
+  'contrast-low': filterDarkContrastLow,
+  'contrast-medium': filterDarkContrastMedium,
+  'contrast-high': filterDarkContrastHigh,
+};
+
 const colorToFilterMap: Record<Theme, Record<Exclude<ModelSignatureColor, 'inherit'>, string>> = {
-  light: {
-    primary: filterLightPrimary,
-    'contrast-low': filterLightContrastLow,
-    'contrast-medium': filterLightContrastMedium,
-    'contrast-high': filterLightContrastHigh,
-  },
-  dark: {
-    primary: filterDarkPrimary,
-    'contrast-low': filterDarkContrastLow,
-    'contrast-medium': filterDarkContrastMedium,
-    'contrast-high': filterDarkContrastHigh,
-  },
+  auto: colorToFilterLight,
+  light: colorToFilterLight,
+  dark: colorToFilterDark,
 };
 
 export const getComponentCss = (size: ModelSignatureSize, color: ModelSignatureColor, theme: Theme): string => {

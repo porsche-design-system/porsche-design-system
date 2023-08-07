@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import { buildResponsiveStyles, hasVisibleIcon, isHighContrastMode } from '../utils';
+import { buildResponsiveStyles, hasVisibleIcon, isHighContrastMode, isThemeAuto } from '../utils';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
 import {
   addImportantToEachRule,
@@ -72,6 +72,14 @@ export const getLinkButtonStyles = (
     variant,
     theme
   );
+  const {
+    textColor: textColorDark,
+    borderColor: borderColorDark,
+    borderColorHover: borderColorHoverDark,
+    backgroundColor: backgroundColorDark,
+    backgroundColorHover: backgroundColorHoverDark,
+  } = getVariantColors(variant, 'dark');
+
   const { focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
@@ -80,6 +88,8 @@ export const getLinkButtonStyles = (
       ':host': {
         display: 'inline-block',
         ...addImportantToEachRule({
+          // TODO: add generic unit test, so that all components have a colorScheme defined
+          colorScheme: 'light dark',
           verticalAlign: 'top',
           outline: 0, // custom element is able to delegate the focus
           ...hostHiddenStyles,
@@ -127,8 +137,20 @@ export const getLinkButtonStyles = (
             backgroundColor: backgroundColorHover,
             borderColor: isHighContrastMode ? focusColor : borderColorHover,
             ...(!isPrimary && frostedGlassStyle),
+            // TODO: should be conditional and a helper function
+            '@media (prefers-color-scheme: dark)': {
+              backgroundColor: backgroundColorHoverDark,
+              borderColor: borderColorHoverDark,
+            },
           },
         })),
+      ...(isThemeAuto(theme) && {
+        '@media (prefers-color-scheme: dark)': {
+          borderColor: borderColorDark,
+          backgroundColor: backgroundColorDark,
+          color: textColorDark,
+        },
+      }),
     },
     label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
     ...(hasIcon && {
