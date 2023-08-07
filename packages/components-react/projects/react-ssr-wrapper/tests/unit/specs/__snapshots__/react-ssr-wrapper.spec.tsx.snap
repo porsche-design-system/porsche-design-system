@@ -720,6 +720,141 @@ exports[`manual test cases should pass internal props correctly to p-link-tile-m
 </p-link-tile-model-signature>
 `;
 
+exports[`manual test cases should pass internal props correctly to p-multi-select-option 1`] = `
+<p-multi-select
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host{display:block !important;position:relative !important}:host([hidden]){display:none !important}input{flex:1 !important;padding:13px 16px !important;box-sizing:border-box !important;border:0 !important;outline:0 !important;appearance:none !important;background:transparent !important;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;overflow-wrap:break-word !important;hyphens:auto !important;text-overflow:ellipsis !important}input:disabled{cursor:not-allowed !important}ul{position:absolute !important;margin:0 !important;display:none !important;flex-direction:column !important;gap:8px !important;padding:6px !important;background:#0E0E12 !important;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;overflow-wrap:break-word !important;hyphens:auto !important;z-index:10 !important;left:0 !important;right:0 !important;top:100% !important;box-sizing:border-box !important;max-height:416px !important;overflow-y:auto !important;-webkit-overflow-scrolling:touch !important;border:2px solid #FBFCFF !important;border-top:none !important;border-radius:4px !important;border-top-left-radius:0 !important;border-top-right-radius:0 !important;scrollbar-width:thin !important;scrollbar-color:auto !important;transition:border-color var(--p-transition-duration, .24s) ease !important;transform:translate3d(0,0,0) !important}.root{position:relative}.input-container{display:flex;color:#FBFCFF;background:#0E0E12;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;cursor:text;border:2px solid #88898C;border-radius:4px}.input-container:hover:not(.disabled){border-color:#FBFCFF}.label{display:flex;flex-direction:column;gap:4px;position:relative;margin-bottom:4px}.label__text{display:block;position:static;width:fit-content;height:auto;text-indent:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;color:#FBFCFF;transition:color var(--p-transition-duration, .24s) ease}.label__text+.label__text{margin-top:-4px;font-size:clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);color:#AFB0B3}.icon{padding:13px 15px;cursor:pointer}.reset-icon{padding:4px;margin:auto;display:none}.toggle-icon{transform:rotate3d(0,0,1,0.0001deg);transition:transform var(--p-transition-duration, .24s) ease}.toggle-icon--open{transform:rotate3d(0,0,1,180deg)}.no-results{padding:8px 12px;color:#AFB0B3;box-sizing:border-box}.no-results[role=status]{cursor:not-allowed}.no-results__sr{position:absolute;width:0;height:1px;text-indent:-999999px}.required{user-select:none}.message{display:flex;gap:4px;margin-top:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.sr-text{position:absolute;width:0;height:1px;text-indent:-999999px}
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        id="label"
+      />
+      <div
+        class="input-container"
+      >
+        <input
+          autocomplete="off"
+          id="comboxbox"
+          role="combobox"
+        />
+        <p-button-pure
+          class="icon reset-icon ssr"
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
+          >
+            <style>
+              :host{transform:translate3d(0,0,0) !important;outline:0 !important;display:inline-block;width:auto;vertical-align:top}:host([hidden]){display:none !important}.root{display:flex;gap:4px;width:100%;margin:0;padding:0;color:#FBFCFF;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;justify-content:flex-start;align-items:flex-start;font-size:1rem;appearance:none;background:transparent;text-align:left;border:0;cursor:pointer}.root::before{content:"";position:absolute;top:-2px;bottom:-2px;right:-2px;left:-2px;border-radius:4px;transition:background-color var(--p-transition-duration, .24s) ease}.root:hover::before{-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);background-color:rgba(148, 149, 152, .18)}.label{position:absolute;top:0;left:0;right:0;bottom:0;white-space:nowrap;text-indent:-999999px;order:0}.icon{position:relative;flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}@supports (width:round(down, 1px, 1px)){.icon{width:round(down, calc(6px + 2.125ex), 1px);height:round(down, calc(6px + 2.125ex), 1px)}}
+            </style>
+            <button
+              class="root"
+              type="submit"
+            >
+              <p-icon
+                aria-hidden="true"
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:inherit;height:inherit}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+          </template>
+          Reset selection
+        </p-button-pure>
+        <p-icon
+          aria-hidden="true"
+          class="icon toggle-icon ssr"
+        >
+          <template
+            shadowroot="open"
+            shadowrootmode="open"
+          >
+            <style>
+              :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+            </style>
+            <img
+              alt=""
+              height="24"
+              loading="lazy"
+              src="http://localhost:3001/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              width="24"
+            />
+          </template>
+        </p-icon>
+      </div>
+      <ul
+        id="list"
+      >
+        <li
+          aria-live="polite"
+          class="no-results"
+          role="status"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ---
+          </span>
+          <span
+            class="no-results__sr"
+          >
+            No results found
+          </span>
+        </li>
+        <slot />
+      </ul>
+    </div>
+  </template>
+  <p-multi-select-option
+    class="ssr"
+  />
+  <p-multi-select-option
+    class="ssr"
+  />
+  <p-multi-select-option
+    class="ssr"
+  />
+  <p-multi-select-option
+    class="ssr"
+  />
+  <p-multi-select-option
+    class="ssr"
+  />
+  <p-multi-select-option
+    class="ssr"
+  />
+</p-multi-select>
+`;
+
 exports[`manual test cases should pass internal props correctly to p-segmented-control-item 1`] = `
 <p-segmented-control
   class="ssr"
@@ -834,11 +969,6 @@ exports[`manual test cases should pass internal props correctly to p-select-wrap
             :host{--p-internal-dropdown-position:absolute;display:block;position:var(--p-internal-dropdown-position);font:normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;margin-top:calc(-1 * (calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2));padding-top:calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);left:0;right:0;color:#6B6D70}:host(:hover){color:#010205}input{display:block;position:absolute;z-index:1;bottom:2px;left:2px;width:calc(100% - (calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2));height:calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;padding:13px 16px;outline:0;appearance:none;box-sizing:border-box;border:0;border-radius:4px;opacity:0;overflow-wrap:break-word;hyphens:auto;text-indent:0;cursor:text;color:#010205;background:#FFF}input::placeholder{opacity:1;color:#010205}input::-webkit-input-placeholder{opacity:1;color:#010205}input::-moz-placeholder{opacity:1;color:#010205}input+span{position:absolute;top:0;left:0;right:0;bottom:0;transition:border-color var(--p-transition-duration, .24s) ease;pointer-events:all;cursor:pointer;border:2px solid #6B6D70;border-radius:4px}input:not(:disabled)+span:hover{border-color:#010205}input:not(:disabled):hover+span, input:not(:disabled):hover~ul{border-color:#010205}.sr-text{display:none}
           </style>
           <input
-            aria-autocomplete="list"
-            aria-controls="list"
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-labelledby="label"
             autocomplete="off"
             role="combobox"
             type="text"
@@ -5339,6 +5469,41 @@ input {
   hyphens: auto !important;
   text-overflow: ellipsis !important;
 }
+input:disabled {
+  cursor: not-allowed !important;
+}
+ul {
+  position: absolute !important;
+  margin: 0 !important;
+  display: none !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  padding: 6px !important;
+  background: #FFF !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  z-index: 10 !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 100% !important;
+  box-sizing: border-box !important;
+  max-height: 416px !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  border: 2px solid #010205 !important;
+  border-top: none !important;
+  border-radius: 4px !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: auto !important;
+  transition: border-color var(--p-transition-duration, .24s) ease !important;
+  transform: translate3d(0,0,0) !important;
+}
+.root {
+  position: relative;
+}
 .input-container {
   display: flex;
   color: #010205;
@@ -5348,7 +5513,7 @@ input {
   border: 2px solid #6B6D70;
   border-radius: 4px;
 }
-.input-container:not(:disabled):hover {
+.input-container:hover:not(.disabled) {
   border-color: #010205;
 }
 .label {
@@ -5380,6 +5545,8 @@ input {
   cursor: pointer;
 }
 .reset-icon {
+  padding: 4px;
+  margin: auto;
   display: none;
 }
 .toggle-icon {
@@ -5416,7 +5583,10 @@ input {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .sr-text {
-  display: none;
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
 }
     </style>
     <div
@@ -5424,25 +5594,108 @@ input {
     >
       <label
         class="label"
+        id="label"
       />
       <div
         class="input-container"
       >
         <input
-          aria-describedby=""
-          aria-labelledby="label"
-          autocomplete="none"
+          autocomplete="off"
+          id="comboxbox"
+          role="combobox"
         />
-        <p-icon
-          aria-hidden="true"
+        <p-button-pure
           class="icon reset-icon ssr"
         >
           <template
             shadowroot="open"
+            shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
             <style>
               :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  appearance: none;
+  background: transparent;
+  text-align: left;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+.root:hover::before {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  background-color: rgba(148, 149, 152, .18);
+}
+.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  white-space: nowrap;
+  text-indent: -999999px;
+  order: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+            </style>
+            <button
+              class="root"
+              type="submit"
+            >
+              <p-icon
+                aria-hidden="true"
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
 }
@@ -5456,9 +5709,8 @@ img {
   pointer-events: none;
   filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 @keyframes rerender-light-primary {
   0% {
@@ -5468,16 +5720,25 @@ img {
     transform: rotateZ(0);
   }
 }
-            </style>
-            <img
-              alt=""
-              height="24"
-              loading="lazy"
-              src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
-              width="24"
-            />
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
           </template>
-        </p-icon>
+          Reset selection
+        </p-button-pure>
         <p-icon
           aria-hidden="true"
           class="icon toggle-icon ssr"
@@ -5524,61 +5785,9 @@ img {
           </template>
         </p-icon>
       </div>
-      <div
-        class="sr-text"
-        id="label"
+      <ul
+        id="list"
       >
-        , 
-      </div>
-      <p-multi-select-dropdown
-        class="ssr"
-      >
-        <template
-          shadowroot="open"
-          shadowrootmode="open"
-        >
-          <style>
-            :host {
-  display: block !important;
-  position: relative !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-          </style>
-          <ul
-            aria-multiselectable="true"
-            role="listbox"
-          >
-            <slot />
-          </ul>
-        </template>
         <li
           aria-live="polite"
           class="no-results"
@@ -5596,7 +5805,7 @@ ul {
           </span>
         </li>
         <slot />
-      </p-multi-select-dropdown>
+      </ul>
     </div>
   </template>
   Some child
@@ -6632,10 +6841,6 @@ button:disabled {
 }
           </style>
           <button
-            aria-controls="list"
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-labelledby="label"
             id="value"
             role="combobox"
             type="button"

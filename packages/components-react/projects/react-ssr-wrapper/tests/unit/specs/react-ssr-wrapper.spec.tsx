@@ -166,6 +166,18 @@ describe('manual test cases', () => {
         </fromComponents.PSegmentedControl>
       ),
     ],
+    'p-multi-select-option': [
+      () => (
+        <fromComponents.PMultiSelect name="name" theme="dark">
+          <fromComponents.PMultiSelectOption value="a">Option A</fromComponents.PMultiSelectOption>
+          <fromComponents.PMultiSelectOption value="b">Option B</fromComponents.PMultiSelectOption>
+          <fromComponents.PMultiSelectOption value="c">Option C</fromComponents.PMultiSelectOption>
+          <fromComponents.PMultiSelectOption value="d">Option D</fromComponents.PMultiSelectOption>
+          <fromComponents.PMultiSelectOption value="e">Option E</fromComponents.PMultiSelectOption>
+          <fromComponents.PMultiSelectOption value="f">Option F</fromComponents.PMultiSelectOption>
+        </fromComponents.PMultiSelect>
+      ),
+    ],
     'p-select-wrapper': [
       () => (
         <fromComponents.PSelectWrapper filter={true} label="Some label">
