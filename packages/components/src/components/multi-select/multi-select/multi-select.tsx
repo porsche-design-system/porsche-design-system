@@ -244,9 +244,10 @@ export class MultiSelect {
   };
 
   private defineMultiSelectOptions(): void {
-    const children = Array.from(this.host.children).filter((el) => el.tagName !== 'SELECT') as HTMLElement[];
-    children.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
-    this.multiSelectOptions = children as HTMLPMultiSelectOptionElement[];
+    this.multiSelectOptions = Array.from(this.host.children).filter(
+      (el) => el.tagName !== 'SELECT'
+    ) as HTMLPMultiSelectOptionElement[];
+    this.multiSelectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
   }
 
   private onInputChange = (e: Event): void => {
