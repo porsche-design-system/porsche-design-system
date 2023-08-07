@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import { buildResponsiveStyles, hasVisibleIcon, isHighContrastMode, isThemeAuto } from '../utils';
+import { buildResponsiveStyles, hasVisibleIcon, isHighContrastMode } from '../utils';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
 import {
   addImportantToEachRule,
@@ -10,6 +10,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from './';
 import {
   borderRadiusMedium,
@@ -137,19 +138,16 @@ export const getLinkButtonStyles = (
             backgroundColor: backgroundColorHover,
             borderColor: isHighContrastMode ? focusColor : borderColorHover,
             ...(!isPrimary && frostedGlassStyle),
-            // TODO: should be conditional and a helper function
-            '@media (prefers-color-scheme: dark)': {
+            ...prefersColorSchemeDarkMediaQuery(theme, {
               backgroundColor: backgroundColorHoverDark,
               borderColor: borderColorHoverDark,
-            },
+            }),
           },
         })),
-      ...(isThemeAuto(theme) && {
-        '@media (prefers-color-scheme: dark)': {
-          borderColor: borderColorDark,
-          backgroundColor: backgroundColorDark,
-          color: textColorDark,
-        },
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        borderColor: borderColorDark,
+        backgroundColor: backgroundColorDark,
+        color: textColorDark,
       }),
     },
     label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
