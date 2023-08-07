@@ -41,10 +41,10 @@ import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
+import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -99,10 +99,10 @@ export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 export { PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
+export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -1155,10 +1155,6 @@ export namespace Components {
          */
         "length"?: number;
         /**
-          * Mask the pin code.
-         */
-        "mask"?: boolean;
-        /**
           * The message styled depending on validation state.
          */
         "message"?: string;
@@ -1750,6 +1746,10 @@ export interface PModalCustomEvent<T> extends CustomEvent<T> {
 export interface PPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPPaginationElement;
+}
+export interface PPinCodeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPPinCodeElement;
 }
 export interface PSegmentedControlCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3344,13 +3344,13 @@ declare namespace LocalJSX {
          */
         "length"?: number;
         /**
-          * Mask the pin code.
-         */
-        "mask"?: boolean;
-        /**
           * The message styled depending on validation state.
          */
         "message"?: string;
+        /**
+          * Emitted when selected element changes.
+         */
+        "onUpdate"?: (event: PPinCodeCustomEvent<SegmentedControlUpdateEvent>) => void;
         /**
           * The validation state.
          */

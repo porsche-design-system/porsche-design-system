@@ -1,11 +1,10 @@
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../types';
 import type { PinCodeState, PinCodeType } from './pin-code-utils';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
-  getOnlyChildOfKindHTMLElementOrThrow,
   getShadowRootHTMLElements,
   hasDescription,
   hasLabel,
@@ -14,19 +13,20 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
-import { isTypeNumber, PIN_CODE_TYPES } from './pin-code-utils';
+import { PIN_CODE_TYPES } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
+import { SegmentedControlUpdateEvent } from '../segmented-control/segmented-control/segmented-control-utils';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   length: AllowedTypes.number,
-  hideLabel: AllowedTypes.boolean,
+  hideLabel: AllowedTypes.breakpoint('boolean'),
   state: AllowedTypes.oneOf<PinCodeState>(FORM_STATES),
   message: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
-  mask: AllowedTypes.boolean,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
 };
 
 @Component({
@@ -54,9 +54,6 @@ export class PinCode {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Mask the pin code. */
-  @Prop() public mask?: boolean = true;
-
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
@@ -67,20 +64,11 @@ export class PinCode {
   /** Sets the initial value of the pin code. */
   @Prop() public value?: string | number;
 
-  private input: HTMLInputElement;
-  // TODO is it still needed for saving refs?
+  /** Emitted when selected element changes. */
+  @Event({ bubbles: false }) public update: EventEmitter<SegmentedControlUpdateEvent>;
+
   private pinCodeElements: HTMLInputElement[] = [];
   // TODO: private ariaElement: HTMLSpanElement;
-
-  // TODO: should not be needed with refs
-  public connectedCallback(): void {
-    this.setPinCodeElements();
-  }
-
-  // TODO: should not be needed with refs
-  public componentDidRender(): void {
-    this.setPinCodeElements();
-  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
@@ -96,18 +84,21 @@ export class PinCode {
           <div class="pin-code-container">
             {...Array.from({ length: this.length }).map((_value, index) => (
               <input
-                type={isTypeNumber(this.type) ? 'number' : 'text'}
+                type={this.type}
                 aria-describedby="otpCode"
                 autoComplete="one-time-code"
                 maxLength={1}
                 onKeyDown={(e) => this.keyDownHandler(e, index)}
                 onKeyUp={(e) => this.keyUpHandler(e, index)}
-                pattern={isTypeNumber(this.type) ? 'd{1}' : '[a-zA-Z0-9]{1}'}
-                value="" // TODO: value prop
-                // TODO: use ref
+                // TODO: onpaste
+                pattern="[0-9]"
+                inputMode="numeric"
+                value={this.value ? this.value.toString().slice(index, index + 1) : this.value}
+                ref={(el) => {
+                  this.pinCodeElements.push(el);
+                }}
               />
             ))}
-            <slot name="hiddenInput" />
           </div>
         </label>
         {hasMessage(this.host, this.message, this.state) && (
@@ -119,11 +110,6 @@ export class PinCode {
 
   // TODO if possible use utilities instead of private functions
 
-  private setPinCodeElements = (): void => {
-    this.pinCodeElements = getShadowRootHTMLElements(this.host, 'input');
-  };
-
-  // TODO: index should not be needed with refs
   private keyDownHandler = (e: KeyboardEvent, index: number): void => {
     // delete old value if new input value is valid
     if (this.isValidInput(e.key)) {
@@ -140,16 +126,15 @@ export class PinCode {
     }
   };
 
-  // TODO: index should not be needed with refs
   private keyUpHandler = (e: KeyboardEvent, index: number): void => {
     if (this.isValidInput(e.key) && !this.isLastPinInputField(index)) {
-      this.setInputValue();
       this.pinCodeElements[index + 1].focus();
     }
+    this.updateValue();
   };
 
   private isValidInput = (key: string): boolean => {
-    return key.length === 1 && ((this.type === 'number' && /\d/.test(key)) || this.type === 'alphanumeric');
+    return key.length === 1 && this.type === 'number' && /\d/.test(key);
   };
 
   private isLastPinInputField = (index: number): boolean => {
@@ -164,12 +149,13 @@ export class PinCode {
     return this.pinCodeElements[index].value.length === 0;
   };
 
-  // TODO update event
-  private setInputValue = (): void => {
+  private updateValue = (): void => {
     const pinCode = [];
-    for (const pinCodeElement of this.pinCodeElements) {
+    for (const pinCodeElement of getShadowRootHTMLElements(this.host, 'input')) {
       pinCode.push(pinCodeElement.value);
     }
-    this.input.value = pinCode.join('');
+    this.value = pinCode.join('');
+    this.update.emit({ value: this.value });
+    console.log('value', this.value);
   };
 }

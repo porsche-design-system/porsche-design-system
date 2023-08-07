@@ -1,4 +1,4 @@
-export const PIN_CODE_TYPES = ['alphanumeric', 'number'] as const;
+export const PIN_CODE_TYPES = ['number', 'password'] as const;
 export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
 import type { FormState } from '../../utils/form/form-state';
 
