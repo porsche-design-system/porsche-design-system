@@ -3,11 +3,13 @@ import * as tabsBarUtils from './tabs-bar-utils';
 import * as jssUtils from '../../utils/jss';
 import * as breakpointObserverUtils from '../../utils/breakpoint-observer';
 
-jest.mock('../../utils/dom');
-
 describe('connectedCallback', () => {
   it('should call this.setTabElements()', () => {
     const component = new TabsBar();
+    component.host = document.createElement('p-tabs-bar');
+    const child1 = document.createElement('button');
+    const child2 = document.createElement('button');
+    component.host.append(child1, child2);
     const spy = jest.spyOn(component, 'setTabElements' as any);
 
     component.connectedCallback();
@@ -18,6 +20,9 @@ describe('connectedCallback', () => {
   it('should call this.observeBreakpointChange()', () => {
     const component = new TabsBar();
     component.host = document.createElement('p-tabs-bar');
+    const child1 = document.createElement('button');
+    const child2 = document.createElement('button');
+    component.host.append(child1, child2);
     const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
 
     component.connectedCallback();
