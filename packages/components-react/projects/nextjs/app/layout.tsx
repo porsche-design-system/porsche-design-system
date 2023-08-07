@@ -2,6 +2,7 @@ import { PorscheDesignSystemProvider } from '@porsche-design-system/components-r
 import NextScript from 'next/script';
 import { Select } from '../components/Select';
 import { FooterPartials, HeaderPartials } from '../components';
+import { ComponentsReady } from './components-ready';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const cdn = 'local';
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <HeaderPartials cdn={cdn} />
       </head>
       <body>
+        <ComponentsReady></ComponentsReady>
         <PorscheDesignSystemProvider cdn="auto">
           <Select />
           <div id="app">{children}</div>
