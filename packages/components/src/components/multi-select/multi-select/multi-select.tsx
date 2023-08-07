@@ -110,14 +110,11 @@ export class MultiSelect {
   }
 
   public connectedCallback(): void {
+    document.addEventListener('mousedown', this.onClickOutside, true);
     this.isWithinForm = isWithinForm(this.host);
     if (this.isWithinForm) {
       syncNativeSelect(this.nativeSelect, this.host, this.name, this.disabled, this.required);
     }
-  }
-
-  public componentWillLoad(): void {
-    document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
   public componentDidLoad(): void {
