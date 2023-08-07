@@ -184,7 +184,7 @@ export class MultiSelect {
               onClick={this.onInputClick}
               disabled={this.disabled}
               required={this.required}
-              onKeyDown={this.onComboboxKeyDown}
+              onKeyDown={this.onInputKeyDown}
               ref={(el) => (this.inputElement = el)}
               {...getFilterInputAriaAttributes(this.isOpen, this.required, 'label', 'description', dropdownId)}
             />
@@ -290,7 +290,7 @@ export class MultiSelect {
     resetFilteredOptions(this.multiSelectOptions);
   };
 
-  private onComboboxKeyDown = (e: KeyboardEvent): void => {
+  private onInputKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
       case 'Up':
