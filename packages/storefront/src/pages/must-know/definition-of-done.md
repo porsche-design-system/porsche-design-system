@@ -8,10 +8,17 @@ Done** (DOD).
 
 ## Current Criteria
 
+- Respecting Porsche Brand Identity
+- Code is written with
+  - Semantic HTML
+  - Smallest possible DOM hierarchy
+  - Modern CSS techniques producing as less CSS as possible
+  - Performance at runtime
+  - Proper typing, abstraction, reusability and maintainability
 - Unit tests (in node/jsdom)
 - End-to-End Tests (E2E, via puppeteer in Chrome)
   - relevant functionality
-  - a11y compliance (a11y tree snapshots)
+  - accessibility compliant (WACAG 2.1 level AA)
 - Visual Regression Tests (VRT, via Puppeteer in Chromium (Chrome) and Playwright in WebKit (Safari))
   - different prop configurations per component
   - :hover, :focus and :hover:focus states
@@ -24,6 +31,7 @@ Done** (DOD).
 - Cross Browser Support (last 2 stable versions of Chrome, Edge, Firefox, iOS and macOS Safari)
 - Documentation updated
 - Changelog updated
+- Design reviewed
 - Code reviewed (via pull request)
 
 ## Potential Future Criteria
