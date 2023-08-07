@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop, State } from '@stencil/core';
+import type { MultiSelectDropdownDirection, MultiSelectState } from './multi-select-utils';
 import {
   getDropdownDirection,
   getHighlightedOption,
@@ -6,8 +6,6 @@ import {
   getSelectedOptions,
   getSelectedOptionsString,
   hasFilterOptionResults,
-  MultiSelectDropdownDirection,
-  MultiSelectState,
   resetFilteredOptions,
   resetHighlightedOptions,
   setFirstOptionHighlighted,
@@ -18,6 +16,11 @@ import {
   updateMultiSelectOptionsFilterState,
   updateNativeSelectOptions,
 } from './multi-select-utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import type { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
+import { SELECT_DROPDOWN_DIRECTIONS } from '../../../utils/select/select-dropdown';
+import type { HTMLElementWithRequiredProp } from '../../../utils/form/isRequired';
+import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop, State } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -29,18 +32,15 @@ import {
   hasPropValueChanged,
   isClickOutside,
   isRequiredAndParentNotRequired,
+  isWithinForm,
   THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
-  isWithinForm,
 } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
-import { SELECT_DROPDOWN_DIRECTIONS, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { StateMessage } from '../../common/state-message/state-message';
 import { getFilterInputAriaAttributes, getListAriaAttributes } from '../../../utils/a11y/select/select-aria';
-import type { HTMLElementWithRequiredProp } from '../../../utils/form/isRequired';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,

@@ -1,12 +1,9 @@
-import { FormState } from '../../../utils/form/form-state';
-import {
-  determineDropdownDirection,
-  SelectDropdownDirection,
-  SelectDropdownDirectionInternal,
-} from '../../../utils/select/select-dropdown';
-import { Theme } from '../../../utils';
+import type { FormState } from '../../../utils/form/form-state';
+import type { SelectDropdownDirection, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
+import { determineDropdownDirection } from '../../../utils/select/select-dropdown';
+import type { Theme } from '../../../utils';
+import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
-import { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectDropdownDirection;
