@@ -18,7 +18,7 @@ Done** (DOD).
   - high contrast mode
   - 200% text zoom support
 - Unit tests for/with jsdom-polyfill (if modern browser APIs are used that are not available in jsdom)
-- SSR support for Next.js and Remix (unit tested, and visually tested via puppeteer in Chrome with disabled JavaScript)
+- SSR support for Next.js and Remix (unit tested, and visually tested via Puppeteer with disabled JavaScript)
 - Smoke tests (if adding new assets to our CDN)
 - Security vulnerability scan passes (CodeQL of GitHub)
 - Cross Browser Support (last 2 stable versions of Chrome, Edge, Firefox, iOS and macOS Safari)
