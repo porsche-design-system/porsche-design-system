@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 // Source: https://merge-tech.slack.com/archives/C01SWQ67CSW/p1620356760000200
 module.exports = {
@@ -39,4 +40,9 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      process: JSON.stringify({ browser: true }),
+    }),
+  ],
 };
