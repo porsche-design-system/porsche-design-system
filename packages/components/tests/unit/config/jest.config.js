@@ -15,4 +15,5 @@ module.exports = {
   },
   clearMocks: true,
   restoreMocks: true,
+  prettierPath: null, // because prettier 3 doesn't work with inline snapshots: https://github.com/jestjs/jest/issues/14305
 };
