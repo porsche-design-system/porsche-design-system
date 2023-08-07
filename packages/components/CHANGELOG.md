@@ -25,8 +25,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
 - Vue: `cdn: 'auto' | 'cn'` prop to `PorscheDesignSystemProvider` as alternative to using
   `window.PORSCHE_DESIGN_SYSTEM_CDN` ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
-- Next JS: `app` and `pages` directory setup to ensure the PDS components are working in both environments as expected
-  ([#2687](https://github.com/porsche-design-system/porsche-design-system/pull/2687))
 
 #### Changed
 
