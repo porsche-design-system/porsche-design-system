@@ -17,7 +17,8 @@ Done** (DOD).
   - Proper typing, abstraction, reusability and maintainability
 - Code is tested with
   - Unit tests (in node/jsdom)
-  - End-to-End Tests (E2E, via puppeteer in Chrome)
+  - End-to-End Tests (E2E, via Puppeteer in Chromium)
+  - Accessibility Tests (A11y, via Axe Core)
   - Visual Regression Tests (VRT, via Puppeteer in Chromium and Playwright in WebKit browser engines)
   - Unit tests for/with jsdom-polyfill (if modern browser APIs are used that are not available in jsdom)
   - Smoke tests (if adding new assets to our CDN)
