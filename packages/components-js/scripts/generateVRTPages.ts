@@ -177,10 +177,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
           ? convertToRemixVRTPage(...baseParams, reactCharacteristics)
           : { fileName: '', fileContent: '' };
 
-      writeFile(
-        path.resolve(path.resolve(rootDirectory, pagesDirectories[framework]), convertedFileName),
-        convertedFileContent
-      );
+      writeFile(path.resolve(path.resolve(pagesDirectories[framework]), convertedFileName), convertedFileContent);
       const { dir, name } = path.parse(convertedFileName);
       return './' + (dir ? dir : name);
     })
