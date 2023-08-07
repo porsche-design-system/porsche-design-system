@@ -199,7 +199,7 @@ export class MultiSelect {
               Reset selection
             </PrefixedTagNames.pButtonPure>
             <PrefixedTagNames.pIcon
-              class={{ icon: true, ['toggle-icon']: true, ['toggle-icon--open']: this.isOpen }}
+              class={{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this.isOpen }}
               name="arrow-head-down"
               theme={this.theme}
               color={this.disabled ? 'state-disabled' : 'primary'}
