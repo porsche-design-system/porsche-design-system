@@ -90,7 +90,7 @@ export class TabsBar {
   private scrollerElement: HTMLPScrollerElement;
   private direction: ScrollerDirection = 'next';
   private hasPTabsParent: boolean;
-  private tabsAsLinks: boolean;
+  private tabsAreButtons: boolean;
 
   @Watch('activeTabIndex')
   public activeTabIndexHandler(newValue: number, oldValue: number): void {
@@ -104,7 +104,7 @@ export class TabsBar {
     this.hasPTabsParent = isShadowRootParentOfKind(this.host, 'p-tabs');
     this.setTabElements();
     this.observeBreakpointChange();
-    throwIfChildrenAreNotEqualOfKind(this.host, this.tabElements);
+    throwIfChildrenAreNotEqualOfKind(this.host, ['a', 'button']);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -156,7 +156,7 @@ export class TabsBar {
     return (
       <PrefixedTagNames.pScroller
         class="scroller"
-        aria={{ role: !this.tabsAsLinks ? 'tablist' : null }}
+        aria={{ role: this.tabsAreButtons ? 'tablist' : null }}
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
         gradientColor={this.gradientColor}
@@ -179,17 +179,16 @@ export class TabsBar {
 
   private setAccessibilityAttributes = (): void => {
     this.tabElements.forEach((tab, index) => {
-      const attrs = {
-        ...(!this.tabsAsLinks
-          ? {
-              role: 'tab',
-              tabindex: (this.activeTabIndex || 0) === index ? '0' : '-1',
-              'aria-selected': this.activeTabIndex === index ? 'true' : 'false',
-            }
-          : {
-              'aria-current': this.activeTabIndex === index ? 'true' : 'false',
-            }),
-      };
+      const attrs = this.tabsAreButtons
+        ? {
+            role: 'tab',
+            tabindex: (this.activeTabIndex || 0) === index ? '0' : '-1',
+            'aria-selected': this.activeTabIndex === index ? 'true' : 'false',
+          }
+        : {
+            'aria-current': this.activeTabIndex === index ? 'true' : 'false',
+          };
+
       /* eslint-disable-next-line guard-for-in */
       for (const key in attrs) {
         setAttribute(tab, key, attrs[key] as string);
@@ -199,7 +198,7 @@ export class TabsBar {
 
   private setTabElements = (): void => {
     this.tabElements = getHTMLElements(this.host, 'a,button');
-    this.tabsAsLinks = this.tabElements.every((tab) => tab.matches('a'));
+    this.tabsAreButtons = this.tabElements[0].tagName.toLowerCase() === 'button';
   };
 
   private onClick = (e: MouseEvent): void => {
