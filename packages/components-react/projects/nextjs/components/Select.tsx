@@ -6,7 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 export const Select = (): JSX.Element => {
   const router = useRouter();
   const pathname = usePathname();
-  const selected: string = pathname === null ? '' : pathname;
+  const selected: string = pathname ?? '';
   return (
     <select
       value={selected}
