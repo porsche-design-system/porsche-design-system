@@ -16,9 +16,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
-    "jest": "^29.6.2",
-    "ts-jest": "^29.1.1",
-    "typescript": "~5.1.6"
+    "@porsche-design-system/shared": "0.0.0"
   },
   "volta": {
     "extends": "../../../../package.json"

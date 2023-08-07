@@ -20,15 +20,14 @@
     "web-vitals": "^3.4.0"
   },
   "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^29.5.3",
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
-    "react-scripts": "^5.0.1",
-    "typescript": "~5.1.6"
+    "react-scripts": "^5.0.1"
   },
   "eslintConfig": {
     "extends": [

@@ -44,9 +44,7 @@
     "change-case": "^4.1.2",
     "html-minifier": "^4.0.0",
     "http-server": "^14.1.0",
-    "ts-node": "^10.9.1",
-    "tslib": "^2.6.1",
-    "typescript": "^5.1.6"
+    "tslib": "^2.6.1"
   },
   "volta": {
     "extends": "../../package.json"

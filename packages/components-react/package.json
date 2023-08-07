@@ -44,11 +44,8 @@
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
     "concurrently": "^8.2.0",
-    "globby": "^11.0.4",
     "local-web-server": "^5.3.0",
-    "react-scripts": "^5.0.1",
-    "ts-node": "^10.9.1",
-    "typescript": "~5.1.6"
+    "react-scripts": "^5.0.1"
   },
   "eslintConfig": {
     "extends": [
