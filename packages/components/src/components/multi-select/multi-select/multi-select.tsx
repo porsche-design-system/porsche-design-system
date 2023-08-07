@@ -221,7 +221,7 @@ export class MultiSelect {
                 <span class="no-results__sr">No results found</span>
               </li>
             )}
-            <slot onSlotchange={() => this.updateOptions()} />
+            <slot onSlotchange={this.updateOptions} />
           </ul>
         </div>
         {this.isWithinForm && <slot name="select"></slot>}
