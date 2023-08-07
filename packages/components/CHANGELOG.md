@@ -14,6 +14,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- New value `aria-current` for `aria` property for linked components (`Link`, `Link Pure`, `Link Tile`, `Crest`,
+  `Marque`) ([#2696](https://github.com/porsche-design-system/porsche-design-system/pull/2696))
+- Angular: `cdn: 'auto' | 'cn'` option to `PorscheDesignSystemModule.load()` as alternative to using
+  `window.PORSCHE_DESIGN_SYSTEM_CDN` ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
+- React: `cdn: 'auto' | 'cn'` prop to `PorscheDesignSystemProvider` as alternative to using
+  `window.PORSCHE_DESIGN_SYSTEM_CDN` with SSR support
+  ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
+- Vue: `cdn: 'auto' | 'cn'` prop to `PorscheDesignSystemProvider` as alternative to using
+  `window.PORSCHE_DESIGN_SYSTEM_CDN` ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
+
+#### Changed
+
+- Use China CDN and set `window.PORSCHE_DESIGN_SYSTEM_CDN` for backwards compatibility based on .cn top level domain
+  before design system initialization
+  ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
+
 ### [3.5.0] - 2023-07-25
 
 ### [3.5.0-rc.0] - 2023-07-21
@@ -25,7 +43,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Breakpoint customizable property `columns` to `Segmented Control` to set the amount of columns
   ([#2652](https://github.com/porsche-design-system/porsche-design-system/pull/2652))
 
-### Fixed
+#### Fixed
 
 - Alignment of `Icon` inside `Accordion` header
   ([#2673](https://github.com/porsche-design-system/porsche-design-system/pull/2673))

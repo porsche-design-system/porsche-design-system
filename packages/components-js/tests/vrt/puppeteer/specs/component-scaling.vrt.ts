@@ -21,6 +21,7 @@ const components: Component[] = [
   'fieldset',
   'fieldset-wrapper',
   'flex',
+  'flyout',
   'grid',
   'heading',
   'headline',
@@ -66,8 +67,8 @@ it.each(components)('should have no visual regression for scaled component %s', 
         scenario: async (page) => {
           if (component === 'popover') {
             await openPopoversAndHighlightSpacer(page);
-          } else if (['modal', 'banner'].includes(component)) {
-            await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
+          } else if (['banner', 'flyout', 'modal'].includes(component)) {
+            await page.mouse.click(0, 0); // click top left corner of the page to remove focus from close button
           } else if (component === 'select-wrapper') {
             await page.click('#open-options');
           }

@@ -7,6 +7,7 @@ if
   [[ "--component-meta" == "${1}" ]] ||
   [[ "--components" == "${1}" ]] ||
   [[ "--components-js" == "${1}" ]] ||
+  [[ "--components-js:components-manager-cli" == "${1}" ]] ||
   [[ "--components-js:components-manager-core" == "${1}" ]] ||
   [[ "--components-js:components-wrapper" == "${1}" ]] ||
   [[ "--components-js:jsdom-polyfill" == "${1}" ]] ||

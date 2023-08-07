@@ -4911,10 +4911,10 @@
     "@typescript-eslint/types" "5.61.0"
     eslint-visitor-keys "^3.3.0"
 
-"@uxpin/merge-cli@3.0.6":
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/@uxpin/merge-cli/-/merge-cli-3.0.6.tgz#61cc9dc82fadb70531657131735e66e92eaf81c3"
-  integrity sha512-0vE687fQycNjdgst639jcJoJ3Fh4BM1cDwRplkF8jMk+yTn6kmNCJJZF0Kl53ZeeweWW7m+Bc+6JlU5T+A4vZw==
+"@uxpin/merge-cli@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@uxpin/merge-cli/-/merge-cli-3.3.0.tgz#519ad38ef5de681e1a5dce128e15a5e20e5bc29c"
+  integrity sha512-9tRYinNDB4j6emUNBAWhJbKDuUH2h4qtSrCk+eWRVwx/tnsDbis5/a1v/LeK+vPBvMjEVMpO6UUBkg8eX92MNw==
   dependencies:
     "@babel/core" "^7.21.8"
     "@babel/plugin-proposal-class-properties" "^7.2.3"
@@ -4927,6 +4927,7 @@
     "@types/yargs" "^16.0.0"
     "@uxpin/react-docgen-better-proptypes" "^0.1.1"
     acorn-loose "^8.0.2"
+    acorn-walk "^8.2.0"
     ast-types "^0.12.4"
     axios "^1.4.0"
     babel-loader "^8.0.5"
@@ -24831,10 +24832,10 @@ whatwg-encoding@^2.0.0:
   dependencies:
     iconv-lite "0.6.3"
 
-whatwg-fetch@^3.6.2:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz#dced24f37f2624ed0281725d51d0e2e3fe677f8c"
-  integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==
+whatwg-fetch@^3.6.17, whatwg-fetch@^3.6.2:
+  version "3.6.17"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.17.tgz#009bbbfc122b227b74ba1ff31536b3a1a0e0e212"
+  integrity sha512-c4ghIvG6th0eudYwKZY5keb81wtFz9/WeAHAoy8+r18kcWlitUIrmGFQ2rWEl4UCKUilD3zCLHOIPheHx5ypRQ==
 
 whatwg-mimetype@^2.2.0, whatwg-mimetype@^2.3.0:
   version "2.3.0"

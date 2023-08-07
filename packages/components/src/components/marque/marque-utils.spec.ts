@@ -1,7 +1,7 @@
 import type { InnerManifest } from './marque-utils';
 import type { MarqueSize } from './marque-size';
 import type { MarqueFormat } from './marque-utils';
-import { buildSrcSet, getInnerManifest } from './marque-utils';
+import { buildImgSrc, buildSrcSet, getInnerManifest } from './marque-utils';
 import { MARQUES_MANIFEST } from '@porsche-design-system/marque';
 
 describe('getManifestPath()', () => {
@@ -47,5 +47,12 @@ describe('buildSrcSet()', () => {
     ])('should return correct srcSet for innerManifest: %p, size: %s and format: %s', (innerManifest, size, format) => {
       expect(buildSrcSet(innerManifest, size, format)).toMatchSnapshot();
     });
+  });
+});
+
+describe('buildImgSrc()', () => {
+  it('should return correct url', () => {
+    const innerManifest = getInnerManifest();
+    expect(buildImgSrc(innerManifest)).toMatchSnapshot();
   });
 });

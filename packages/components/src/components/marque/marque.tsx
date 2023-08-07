@@ -1,11 +1,12 @@
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import type { MarqueAriaAttribute, MarqueVariant, MarqueTarget } from './marque-utils';
-import { buildSrcSet, cdnBaseUrl, getInnerManifest, MARQUE_ARIA_ATTRIBUTES, MARQUE_VARIANTS } from './marque-utils';
+import { buildImgSrc, buildSrcSet, getInnerManifest, MARQUE_VARIANTS } from './marque-utils';
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
+  LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
@@ -21,7 +22,7 @@ const propTypes: PropTypes<typeof Marque> = {
   size: AllowedTypes.oneOf<MarqueSize>(MARQUE_SIZES),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
-  aria: AllowedTypes.aria<MarqueAriaAttribute>(MARQUE_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<MarqueAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
 /** @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead. */
@@ -85,7 +86,7 @@ export class Marque {
               <source key="webp" srcSet={buildSrcSet(innerManifest, this.size, 'webp')} type="image/webp" />,
               <source key="png" srcSet={buildSrcSet(innerManifest, this.size, 'png')} type="image/png" />,
             ]}
-        <img src={`${cdnBaseUrl}/${innerManifest.medium['2x'].png}`} alt="Porsche" />
+        <img src={buildImgSrc(innerManifest)} alt="Porsche" />
       </picture>
     );
 
