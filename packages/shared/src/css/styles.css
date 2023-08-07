@@ -13,6 +13,11 @@ body {
 
 /* Playground */
 .playground {
+  /* TODO: we should generate background colors with scss or js styles package */
+  --theme-light-background-base: #fff;
+  --theme-light-background-surface: #eeeff2;
+  --theme-dark-background-base: #0e0e12;
+  --theme-dark-background-surface: #212225;
   padding: 16px;
 }
 
@@ -23,23 +28,39 @@ body {
 }
 
 .playground.light {
-  /* TODO: we should generate background color with scss or js styles package */
-  background: #fff;
+  background: var(--theme-light-background-base);
 }
 
 .playground.light.surface {
-  /* TODO: we should generate background color with scss or js styles package */
-  background: #eeeff2;
+  background: var(--theme-light-background-surface);
+}
+
+@media (prefers-color-scheme: dark) {
+  .auto-dark-mode .playground.light {
+    background: var(--theme-dark-background-base);
+  }
+
+  .auto-dark-mode .playground.light.surface {
+    background: var(--theme-dark-background-surface);
+  }
 }
 
 .playground.dark {
-  /* TODO: we should generate background color with scss or js styles package */
-  background: #0e0e12;
+  background: var(--theme-dark-background-base);
 }
 
 .playground.dark.surface {
-  /* TODO: we should generate background color with scss or js styles package */
-  background: #212225;
+  background: var(--theme-dark-background-surface);
+}
+
+@media (prefers-color-scheme: light) {
+  .auto-dark-mode .playground.dark {
+    background: var(--theme-light-background-base);
+  }
+
+  .auto-dark-mode .playground.dark.surface {
+    background: var(--theme-light-background-surface);
+  }
 }
 
 .playground.hover::before,
@@ -93,10 +114,8 @@ select {
   box-sizing: content-box;
   grid-template-columns:
     [full-start] minmax(0, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))
-    [wide-start extended-start basic-start narrow-start] repeat(
-      6,
-      minmax(0, 1fr)
-    ) [narrow-end basic-end extended-end wide-end] minmax(
+    [wide-start extended-start basic-start narrow-start] repeat(6, minmax(0, 1fr))
+    [narrow-end basic-end extended-end wide-end] minmax(
       0,
       calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
     )
