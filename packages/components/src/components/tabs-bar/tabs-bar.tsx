@@ -198,7 +198,7 @@ export class TabsBar {
 
   private setTabElements = (): void => {
     this.tabElements = getHTMLElements(this.host, 'a,button');
-    this.tabsAreButtons = this.tabElements[0].tagName.toLowerCase() === 'button';
+    this.tabsAreButtons = this.tabElements.length > 0 && this.tabElements[0].tagName.toLowerCase() === 'button';
   };
 
   private onClick = (e: MouseEvent): void => {
