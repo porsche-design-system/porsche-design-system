@@ -38,6 +38,14 @@ depending on the defined `state`.
   <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
 </Playground>
 
+## Disabled
+
+<Playground :markup="disabledMarkup" :config="config"></Playground>
+
+## Required
+
+<Playground :markup="requiredMarkup" :config="config"></Playground>
+
 ## Initial Value
 
 An initial `value` can optionally be set on the parent element, and if desired, also be set upon change event emission
@@ -83,6 +91,10 @@ export default class Code extends Vue {
     const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
     return `<p-pin-code label="Some label" state="${this.state}"  ${attr}></p-pin-code>`;
   }
+
+  disabledMarkup = `<p-pin-code label="Some label" disabled></p-pin-code>`;
+
+  requirededMarkup = `<p-pin-code label="Some label" required></p-pin-code>`;
 
   initialValueMarkup = `<p-pin-code label="Some label" value="1234"></p-pin-code>`;
 

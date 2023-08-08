@@ -27,9 +27,10 @@ export const getComponentCss = (
   pinCodeType: PinCodeType,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
+  isDisabled: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
+  const { contrastMediumColor, disabledColor, primaryColor } = getThemedColors(theme);
   const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // we need 10px additionally so input height becomes 54px
   return getCss({
     '@global': {
@@ -70,6 +71,12 @@ export const getComponentCss = (
         '&:focus': {
           borderColor: addImportantToRule(primaryColor),
         },
+        '&:disabled': {
+          cursor: 'not-allowed',
+          color: disabledColor,
+          borderColor: disabledColor,
+          WebkitTextFillColor: disabledColor,
+        },
       },
       '.pin-code-container': {
         display: 'flex',
@@ -79,7 +86,7 @@ export const getComponentCss = (
       },
     },
 
-    ...getLabelStyles('input', false, hideLabel, state, theme),
+    ...getLabelStyles('input', isDisabled, hideLabel, state, theme),
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });

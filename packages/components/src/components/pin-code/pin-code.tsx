@@ -15,7 +15,7 @@ import {
 import { getComponentCss } from './pin-code-styles';
 import { PIN_CODE_TYPES } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
-import { SegmentedControlUpdateEvent } from '../segmented-control/segmented-control/segmented-control-utils';
+import { Required } from '../common/required/required';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -23,6 +23,8 @@ const propTypes: PropTypes<typeof PinCode> = {
   length: AllowedTypes.number,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   state: AllowedTypes.oneOf<PinCodeState>(FORM_STATES),
+  disabled: AllowedTypes.boolean,
+  required: AllowedTypes.boolean,
   message: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
@@ -42,7 +44,7 @@ export class PinCode {
   /** The label text. */
   @Prop() public label?: string = '';
 
-  /** Number of characters of the pin code. */
+  /** Number of characters of the Pin Code. */
   @Prop() public length?: number = 4;
 
   /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
@@ -51,28 +53,38 @@ export class PinCode {
   /** The validation state. */
   @Prop() public state?: PinCodeState = 'none';
 
+  /** Disables the Pin Code. No events will be triggered while disabled state is active. */
+  @Prop() public disabled?: boolean = false;
+
+  /** Marks the Pin Code as required. */
+  @Prop() public required?: boolean = false;
+
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
+
+  /** Pin Code type. */
+  @Prop() public type?: PinCodeType = 'number';
+
+  /** Sets the initial value of the Pin Code. */
+  @Prop() public value?: string | number;
+
+  /** Emitted when selected element changes. */
+  @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEvent>;
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Pin code type. */
-  @Prop() public type?: PinCodeType = 'number';
-
-  // TODO: set initial value? length? what if value is too long? take only first caracters?
-  /** Sets the initial value of the pin code. */
-  @Prop() public value?: string | number;
-
-  /** Emitted when selected element changes. */
-  @Event({ bubbles: false }) public update: EventEmitter<SegmentedControlUpdateEvent>;
-
   private pinCodeElements: HTMLInputElement[] = [];
   // TODO: private ariaElement: HTMLSpanElement;
 
+  public componentWillRender(): void {
+    // make sure initial value is not too long
+    this.value && this.value.toString().slice(0, this.length);
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.type, this.hideLabel, this.state, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.type, this.hideLabel, this.state, this.disabled, this.theme);
 
     return (
       <Host>
