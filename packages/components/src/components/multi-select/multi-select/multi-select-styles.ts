@@ -29,7 +29,7 @@ import { getFunctionalComponentStateMessageStyles } from '../../common/state-mes
 import { OPTION_HEIGHT } from '../../../styles/select/option-styles';
 
 const inputYPadding = '13px';
-const selectorNativeSelect = 'select,::slotted([slot=select])';
+const selectorNativeSelect = '::slotted([slot=select])';
 
 export const getComponentCss = (
   hasSelection: boolean,
