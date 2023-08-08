@@ -107,7 +107,6 @@ export class MultiSelect {
     e.stopPropagation();
     if (this.isWithinForm) {
       updateNativeSelectOptions(this.nativeSelect, this.multiSelectOptions);
-      resetHighlightedOptions(this.multiSelectOptions);
     }
     this.updateSelectedString();
   }
