@@ -15,13 +15,13 @@ export const syncMultiSelectOptionProps = (options: HTMLPMultiSelectOptionElemen
   });
 };
 
-export const syncNativeSelect = (
-  nativeSelect: HTMLSelectElement,
+export const initNativeSelect = (
   host: HTMLElement,
   name: string,
   disabled: boolean,
   required: boolean
-): void => {
+): HTMLSelectElement => {
+  const nativeSelect = document.createElement('select');
   nativeSelect.multiple = true;
   nativeSelect.name = name;
   nativeSelect.disabled = disabled;
@@ -29,9 +29,19 @@ export const syncNativeSelect = (
   nativeSelect.ariaHidden = 'true';
   nativeSelect.tabIndex = -1;
   nativeSelect.slot = 'select';
-  if (!host.querySelector('SELECT')) {
-    host.prepend(nativeSelect);
-  }
+  host.prepend(nativeSelect);
+  return nativeSelect;
+};
+
+export const syncNativeSelect = (
+  nativeSelect: HTMLSelectElement,
+  name: string,
+  disabled: boolean,
+  required: boolean
+): void => {
+  nativeSelect.name = name;
+  nativeSelect.disabled = disabled;
+  nativeSelect.required = required;
 };
 
 export const updateNativeOptions = (
@@ -68,7 +78,7 @@ const getValidOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSe
   options.filter((option) => !option.hidden && !option.disabled);
 
 export const getHighlightedOption = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement =>
-  options.find((option) => option.shadowRoot.firstElementChild.classList.contains('option--highlighted'));
+  options.find((option) => option.shadowRoot.firstElementChild?.classList.contains('option--highlighted'));
 
 export const setHighlightedOption = (option: HTMLPMultiSelectOptionElement, highlighted: boolean): void =>
   option.shadowRoot.querySelector('.option').classList[highlighted ? 'add' : 'remove']('option--highlighted');

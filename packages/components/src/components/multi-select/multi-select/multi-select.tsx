@@ -11,10 +11,11 @@ import {
   setFirstOptionHighlighted,
   setLastOptionHighlighted,
   syncMultiSelectOptionProps,
-  syncNativeSelect,
+  initNativeSelect,
   updateHighlightedOption,
   updateOptionsFilterState,
   updateNativeOptions,
+  syncNativeSelect,
 } from './multi-select-utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
@@ -95,7 +96,7 @@ export class MultiSelect {
   @State() private selectedString = '';
   @State() private isOpen = false;
 
-  private nativeSelect: HTMLSelectElement = document.createElement('select');
+  private nativeSelect: HTMLSelectElement;
   private multiSelectOptions: HTMLPMultiSelectOptionElement[] = [];
   private inputContainer: HTMLDivElement;
   private inputElement: HTMLInputElement;
@@ -114,8 +115,11 @@ export class MultiSelect {
   public connectedCallback(): void {
     document.addEventListener('mousedown', this.onClickOutside, true);
     this.isWithinForm = isWithinForm(this.host);
+  }
+
+  public componentWillLoad(): void {
     if (this.isWithinForm) {
-      syncNativeSelect(this.nativeSelect, this.host, this.name, this.disabled, this.required);
+      this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
     }
   }
 
@@ -129,7 +133,7 @@ export class MultiSelect {
 
   public componentWillUpdate(): void {
     if (this.isWithinForm) {
-      syncNativeSelect(this.nativeSelect, this.host, this.name, this.disabled, this.required);
+      syncNativeSelect(this.nativeSelect, this.name, this.disabled, this.required);
     }
   }
 

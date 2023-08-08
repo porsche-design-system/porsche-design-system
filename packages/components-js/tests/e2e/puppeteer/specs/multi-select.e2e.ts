@@ -189,7 +189,10 @@ describe('native select', () => {
 
     const host = await getHost();
     await host.evaluate((el) => {
-      el.innerHTML = '<p-multi-select-option value="test" selected>New Option</p-multi-select-option>';
+      const option: any = document.createElement('p-multi-select-option');
+      option.selected = true;
+      option.value = 'test';
+      el.append(option);
     });
     await waitForStencilLifecycle(page);
 

@@ -13,7 +13,7 @@ describe('connectedCallback', () => {
   it('should call syncNativeSelect() if is within form', () => {
     const component = initComponent();
     jest.spyOn(isWithinFormUtils, 'isWithinForm').mockReturnValue(true);
-    const spy = jest.spyOn(multiSelectUtils, 'syncNativeSelect');
+    const spy = jest.spyOn(multiSelectUtils, 'initNativeSelect');
     component.connectedCallback();
     expect(spy).toBeCalledTimes(1);
   });
@@ -21,7 +21,7 @@ describe('connectedCallback', () => {
   it('should not call syncNativeSelect() if is not within form', () => {
     const component = initComponent();
     jest.spyOn(isWithinFormUtils, 'isWithinForm').mockReturnValue(false);
-    const spy = jest.spyOn(multiSelectUtils, 'syncNativeSelect');
+    const spy = jest.spyOn(multiSelectUtils, 'initNativeSelect');
     component.connectedCallback();
     expect(spy).toBeCalledTimes(0);
   });
