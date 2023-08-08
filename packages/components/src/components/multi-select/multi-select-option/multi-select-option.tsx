@@ -48,10 +48,10 @@ export class MultiSelectOption {
       <li
         role="option"
         class={{
-          ['option']: true,
-          ['option--selected']: this.selected,
-          ['option--disabled']: this.disabled,
-          ['option--hidden']: this.hidden,
+          option: true,
+          'option--selected': this.selected,
+          'option--disabled': this.disabled,
+          'option--hidden': this.hidden,
         }}
         onClick={this.onClick}
         {...getOptionAriaAttributes(this.selected, this.disabled, this.hidden, !!this.value)}
