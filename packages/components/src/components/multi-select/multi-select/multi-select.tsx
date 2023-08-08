@@ -182,7 +182,6 @@ export class MultiSelect {
           </label>
           <div class={{ 'input-container': true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
             <input
-              id="comboxbox"
               role="combobox"
               placeholder={this.selectedString || null}
               autoComplete="off"
