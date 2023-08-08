@@ -77,7 +77,7 @@ export const setHighlightedOption = (option: HTMLPMultiSelectOptionElement, high
   option.shadowRoot.querySelector('.option').classList[highlighted ? 'add' : 'remove']('option--highlighted');
 
 export const getHighlightedOptionIndex = (options: HTMLPMultiSelectOptionElement[]): number =>
-  options.findIndex((option) => option === getHighlightedOption(options));
+  options.indexOf(getHighlightedOption(options));
 
 export const setNextOptionHighlighted = (
   host: HTMLElement,
