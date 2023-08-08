@@ -52,8 +52,6 @@ export const getComponentCss = (
         position: 'relative',
         ...hostHiddenStyles,
       },
-      ...getInputJSSStyles(isDisabled, theme),
-      ...getListJSSStyles(isOpen, direction, theme),
       ...(isWithinForm && {
         [selectorNativeSelect]: {
           opacity: 0,
@@ -64,6 +62,7 @@ export const getComponentCss = (
     }),
     root: {
       position: 'relative',
+      ...getListStyles(isOpen, direction, theme),
     },
     'input-container': {
       display: 'flex',
@@ -86,6 +85,7 @@ export const getComponentCss = (
         [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
         [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
       }),
+      ...getInputStyles(isDisabled, theme),
     },
     ...getLabelStyles('select', isDisabled, hideLabel, state, theme, undefined, { marginBottom: spacingStaticXSmall }),
     icon: {
@@ -119,63 +119,66 @@ export const getComponentCss = (
   });
 };
 
-const getInputJSSStyles = (isDisabled: boolean, theme: Theme): Styles => {
+const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
   const { primaryColor, disabledColor } = getThemedColors(theme);
 
   return {
-    input: {
-      flex: 1,
-      padding: `${inputYPadding} ${spacingStaticMedium}`,
-      boxSizing: 'border-box',
-      border: '0', // done via container
-      outline: '0',
-      appearance: 'none',
-      background: 'transparent',
-      ...textSmallStyle,
-      textOverflow: 'ellipsis',
-      '&:disabled': {
-        cursor: 'not-allowed',
+    '@global': {
+      input: {
+        flex: 1,
+        padding: `${inputYPadding} ${spacingStaticMedium}`,
+        boxSizing: 'border-box',
+        border: '0', // done via container
+        outline: '0',
+        appearance: 'none',
+        background: 'transparent',
+        ...textSmallStyle,
+        textOverflow: 'ellipsis',
+        '&:disabled': {
+          cursor: 'not-allowed',
+        },
+        '&:not(:focus)': {
+          ...getPlaceholderStyles({ color: primaryColor }),
+        },
+        ...(isDisabled && getPlaceholderStyles({ color: disabledColor })),
       },
-      '&:not(:focus)': {
-        ...getPlaceholderStyles({ color: primaryColor }),
-      },
-      ...(isDisabled && getPlaceholderStyles({ color: disabledColor })),
     },
   };
 };
 
-const getListJSSStyles = (isOpen: boolean, direction: SelectDropdownDirectionInternal, theme: Theme): Styles => {
+const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionInternal, theme: Theme): Styles => {
   const isDirectionDown = direction === 'down';
   const { primaryColor, backgroundColor } = getThemedColors(theme);
 
   return {
-    ul: {
-      position: 'absolute',
-      margin: '0',
-      display: isOpen ? 'flex' : 'none',
-      flexDirection: 'column',
-      gap: spacingStaticSmall,
-      padding: '6px',
-      background: backgroundColor,
-      ...textSmallStyle,
-      zIndex: 10,
-      left: 0,
-      right: 0,
-      [isDirectionDown ? 'top' : 'bottom']: isDirectionDown ? '100%' : `${INPUT_HEIGHT - 1}px`,
-      boxSizing: 'border-box',
-      maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
-      overflowY: 'auto',
-      WebkitOverflowScrolling: 'touch',
-      // scrollBehavior: 'smooth',
-      border: `2px solid ${primaryColor}`,
-      [isDirectionDown ? 'borderTop' : 'borderBottom']: 'none',
-      borderRadius: borderRadiusSmall,
-      [isDirectionDown ? 'borderTopLeftRadius' : 'borderBottomLeftRadius']: 0,
-      [isDirectionDown ? 'borderTopRightRadius' : 'borderBottomRightRadius']: 0,
-      scrollbarWidth: 'thin', // firefox
-      scrollbarColor: 'auto', // firefox
-      transition: getTransition('border-color'),
-      transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
+    '@global': {
+      ul: {
+        position: 'absolute',
+        margin: '0',
+        display: isOpen ? 'flex' : 'none',
+        flexDirection: 'column',
+        gap: spacingStaticSmall,
+        padding: '6px',
+        background: backgroundColor,
+        ...textSmallStyle,
+        zIndex: 10,
+        left: 0,
+        right: 0,
+        [isDirectionDown ? 'top' : 'bottom']: isDirectionDown ? '100%' : `${INPUT_HEIGHT - 1}px`,
+        boxSizing: 'border-box',
+        maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
+        overflowY: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        border: `2px solid ${primaryColor}`,
+        [isDirectionDown ? 'borderTop' : 'borderBottom']: 'none',
+        borderRadius: borderRadiusSmall,
+        [isDirectionDown ? 'borderTopLeftRadius' : 'borderBottomLeftRadius']: 0,
+        [isDirectionDown ? 'borderTopRightRadius' : 'borderBottomRightRadius']: 0,
+        scrollbarWidth: 'thin', // firefox
+        scrollbarColor: 'auto', // firefox
+        transition: getTransition('border-color'),
+        transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
+      },
     },
   };
 };
