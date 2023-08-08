@@ -90,7 +90,7 @@ export class TabsBar {
   private scrollerElement: HTMLPScrollerElement;
   private direction: ScrollerDirection = 'next';
   private hasPTabsParent: boolean;
-  private tabsAreButtons: boolean;
+  private areTabsButtons: boolean;
 
   @Watch('activeTabIndex')
   public activeTabIndexHandler(newValue: number, oldValue: number): void {
@@ -156,7 +156,7 @@ export class TabsBar {
     return (
       <PrefixedTagNames.pScroller
         class="scroller"
-        {...(this.tabsAreButtons && { aria: { role: 'tablist' } })}
+        {...(this.areTabsButtons && { aria: { role: 'tablist' } })}
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
         gradientColor={this.gradientColor}
@@ -179,7 +179,7 @@ export class TabsBar {
 
   private setAccessibilityAttributes = (): void => {
     this.tabElements.forEach((tab, index) => {
-      const attrs = this.tabsAreButtons
+      const attrs = this.areTabsButtons
         ? {
             role: 'tab',
             tabindex: (this.activeTabIndex || 0) === index ? '0' : '-1',
@@ -198,7 +198,7 @@ export class TabsBar {
 
   private setTabElements = (): void => {
     this.tabElements = getHTMLElements(this.host, 'a,button');
-    this.tabsAreButtons = this.tabElements[0]?.tagName === 'BUTTON';
+    this.areTabsButtons = this.tabElements[0]?.tagName === 'BUTTON';
   };
 
   private onClick = (e: MouseEvent): void => {
