@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../../utils';
 import { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
 import type { PropTypes } from '../../../types';
@@ -56,7 +56,7 @@ export class MultiSelectOption {
         onClick={this.onClick}
         {...getOptionAriaAttributes(this.selected, this.disabled, this.hidden, !!this.value)}
       >
-        <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={this.host.theme}>
+        <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={this.host.theme || 'light'}>
           <input type="checkbox" checked={this.selected} disabled={this.disabled} />
           <slot slot="label" />
         </PrefixedTagNames.pCheckboxWrapper>
