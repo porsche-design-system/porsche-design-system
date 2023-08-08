@@ -78,7 +78,7 @@ const getValidOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSe
   options.filter((option) => !option.hidden && !option.disabled);
 
 export const getHighlightedOption = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement =>
-  options.find((option) => option.shadowRoot.firstElementChild?.classList.contains('option--highlighted'));
+  options.find((option) => option.shadowRoot.firstElementChild.classList.contains('option--highlighted'));
 
 export const setHighlightedOption = (option: HTMLPMultiSelectOptionElement, highlighted: boolean): void =>
   option.shadowRoot.querySelector('.option').classList[highlighted ? 'add' : 'remove']('option--highlighted');

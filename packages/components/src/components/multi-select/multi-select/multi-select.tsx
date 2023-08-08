@@ -95,6 +95,7 @@ export class MultiSelect {
 
   @State() private selectedString = '';
   @State() private isOpen = false;
+  @State() private srHighlightedOptionText = '';
 
   private nativeSelect: HTMLSelectElement;
   private multiSelectOptions: HTMLPMultiSelectOptionElement[] = [];
@@ -231,10 +232,7 @@ export class MultiSelect {
           <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
         <span class="sr-text" role="status" aria-live="assertive" aria-relevant="additions text">
-          {getHighlightedOption(this.multiSelectOptions) &&
-            `${getHighlightedOption(this.multiSelectOptions).textContent} ${
-              getHighlightedOption(this.multiSelectOptions).selected ? ', selected' : ' not selected'
-            } (${getHighlightedOptionIndex(this.multiSelectOptions) + 1} of ${this.multiSelectOptions.length})`}
+          {this.srHighlightedOptionText}
         </span>
       </Host>
     );
@@ -312,6 +310,7 @@ export class MultiSelect {
         if (highlightedOption) {
           highlightedOption.selected = !highlightedOption.selected;
         }
+        this.updateSrHighlightedOptionText();
         break;
       case 'Escape':
       case 'Tab':
@@ -339,5 +338,16 @@ export class MultiSelect {
   private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
     this.isOpen = true;
     updateHighlightedOption(this.listElement, this.multiSelectOptions, direction);
+    this.updateSrHighlightedOptionText();
   }
+
+  private updateSrHighlightedOptionText = (): void => {
+    const highlightedOptionIndex = getHighlightedOptionIndex(this.multiSelectOptions);
+    const highlightedOption = this.multiSelectOptions[highlightedOptionIndex];
+    this.srHighlightedOptionText =
+      highlightedOption &&
+      `${highlightedOption.textContent}${highlightedOption.selected ? ', selected' : ' not selected'} (${
+        highlightedOptionIndex + 1
+      } of ${this.multiSelectOptions.length})`;
+  };
 }
