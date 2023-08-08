@@ -4,9 +4,10 @@ import { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils'
 import type { PropTypes } from '../../../types';
 import { getComponentCss } from './multi-select-option-styles';
 import { getOptionAriaAttributes } from '../../../utils/a11y/select/select-aria';
+import { ValidatorFunction } from '../../../types';
 
 const propTypes: PropTypes<typeof MultiSelectOption> = {
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   selected: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
 };
@@ -19,7 +20,7 @@ export class MultiSelectOption {
   @Element() public host!: HTMLElement & MultiSelectOptionInternalHTMLProps;
 
   /** The option value. */
-  @Prop() public value: string;
+  @Prop() public value: string | number;
 
   /** The option selected state. */
   @Prop({ mutable: true }) public selected?: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types

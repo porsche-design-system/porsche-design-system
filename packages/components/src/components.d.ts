@@ -1145,7 +1145,7 @@ export namespace Components {
         /**
           * The option value.
          */
-        "value": string;
+        "value": string | number;
     }
     interface PPagination {
         /**
@@ -3347,7 +3347,7 @@ declare namespace LocalJSX {
         /**
           * The option value.
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     interface PPagination {
         /**
