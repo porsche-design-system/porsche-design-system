@@ -146,14 +146,37 @@ export class PinCode {
   };
 
   private keyUpHandler = (e: KeyboardEvent, index: number): void => {
-    if (this.isValidInput(e.key) && !this.isLastPinInputField(index)) {
-      this.pinCodeElements[index + 1].focus();
+    // TODO: reminder to remove console.log
+    /* eslint-disable no-console */
+    console.log('keyUp');
+    if (this.isValidInput(e.key)) {
+      this.updateValue();
+      // transfer focus forward, if it is not the last input field
+      console.log(this.value.toString().length);
+      (!this.isLastPinInputField(index) || this.value.toString().length < this.length) &&
+        this.pinCodeElements[index + 1].focus();
     }
-    this.updateValue();
   };
 
+  private pasteHandler = (e: ClipboardEvent): void => {
+    // TODO: reminder to remove console.log
+    /* eslint-disable no-console */
+    console.log('onPaste');
+    // remove whitespaces and cut string if value is too long
+    const pastedData = e.clipboardData.getData('Text').replace(/\s/g, '').slice(0, this.length);
+    if (/^[0-9]+$/.test(pastedData) && pastedData !== this.value) {
+      this.updateValue(pastedData);
+      console.log('lenght', pastedData.length);
+      this.pinCodeElements[pastedData.length === this.length ? pastedData.length - 1 : pastedData.length].focus();
+      e.preventDefault();
+    } else {
+      e.preventDefault();
+    }
+  };
+
+  // input is only valid, if new value is a single digit
   private isValidInput = (key: string): boolean => {
-    return key.length === 1 && this.type === 'number' && /\d/.test(key);
+    return key.length === 1 && /\d/.test(key);
   };
 
   private isLastPinInputField = (index: number): boolean => {

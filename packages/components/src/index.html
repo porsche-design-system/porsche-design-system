@@ -38,7 +38,14 @@
     </header>
 
     <main>
-      <p-pin-code length="6" type="number" hide-label="false" state="success" message="Some error validation message.">
+      <p-pin-code
+        required
+        length="6"
+        type="number"
+        hide-label="false"
+        state="success"
+        message="Some error validation message."
+      >
         <span slot="label" id="some-label-id"
           >Some label with a <a href="https://designsystem.porsche.com">link</a>.</span
         >
@@ -46,6 +53,7 @@
           >Some description with a <a href="https://designsystem.porsche.com">link</a>.</span
         >
       </p-pin-code>
+      <button>Button</button>
     </main>
 
     <script>
