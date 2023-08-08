@@ -103,9 +103,11 @@ export class MultiSelect {
   private isWithinForm: boolean;
 
   @Listen('internalOptionUpdate')
-  public updateOptionHandler(): void {
+  public updateOptionHandler(e: Event): void {
+    e.stopPropagation();
     if (this.isWithinForm) {
       updateNativeSelectOptions(this.nativeSelect, this.multiSelectOptions);
+      resetHighlightedOptions(this.multiSelectOptions);
     }
     this.updateSelectedString();
   }
