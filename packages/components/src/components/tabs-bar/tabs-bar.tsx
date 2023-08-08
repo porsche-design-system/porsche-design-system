@@ -3,7 +3,7 @@ import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core'
 import {
   AllowedTypes,
   attachComponentCss,
-  getHTMLElements,
+  getOnlyChildrenOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   getScrollActivePosition,
   hasPropValueChanged,
@@ -12,7 +12,6 @@ import {
   parseJSON,
   setAttribute,
   THEMES,
-  throwIfChildrenAreNotEqualOfKind,
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
@@ -104,7 +103,6 @@ export class TabsBar {
     this.hasPTabsParent = isShadowRootParentOfKind(this.host, 'p-tabs');
     this.setTabElements();
     this.observeBreakpointChange();
-    throwIfChildrenAreNotEqualOfKind(this.host, ['a', 'button']);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -197,7 +195,7 @@ export class TabsBar {
   };
 
   private setTabElements = (): void => {
-    this.tabElements = getHTMLElements(this.host, 'a,button');
+    this.tabElements = getOnlyChildrenOfKindHTMLElementOrThrow(this.host, 'a,button');
     this.areTabsButtons = this.tabElements[0]?.tagName === 'BUTTON';
   };
 
