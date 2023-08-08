@@ -92,12 +92,12 @@ export const getComponentCss = (
       padding: `${inputYPadding} 15px`, // Horizontal padding spacingStaticMedium - 1px for visual balance
       cursor: isDisabled ? 'not-allowed' : 'pointer',
     },
-    ['reset-icon']: {
+    'reset-icon': {
       padding: '4px',
       margin: 'auto',
       display: hasSelection ? 'block' : 'none',
     },
-    ['toggle-icon']: {
+    'toggle-icon': {
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
       transition: getTransition('transform'),
       '&--open': {
@@ -105,7 +105,7 @@ export const getComponentCss = (
       },
       ...(isDisabled && { pointerEvents: 'none' }),
     },
-    ['no-results']: {
+    'no-results': {
       padding: `${spacingStaticSmall} 12px`,
       color: contrastHighColor,
       boxSizing: 'border-box',
@@ -113,9 +113,7 @@ export const getComponentCss = (
     },
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
-    'sr-text': {
-      ...getHiddenTextJssStyle(),
-    },
+    'sr-text': getHiddenTextJssStyle(),
   });
 };
 
@@ -137,9 +135,7 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
         '&:disabled': {
           cursor: 'not-allowed',
         },
-        '&:not(:focus)': {
-          ...getPlaceholderStyles({ color: primaryColor }),
-        },
+        '&:not(:focus)': getPlaceholderStyles({ color: primaryColor }),
         ...(isDisabled && getPlaceholderStyles({ color: disabledColor })),
       },
     },
