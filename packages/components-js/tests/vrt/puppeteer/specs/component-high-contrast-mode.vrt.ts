@@ -58,20 +58,20 @@ const components: Component[] = [
   'wordmark',
 ];
 
-const scenarioPopover = async (page: Page) => {
+const scenarioPopover = async (page: Page): Promise<void> => {
   await openPopoversAndHighlightSpacer(page);
 };
 
-const scenarioModalOrBannerOrFlyout = async (page: Page) => {
+const scenarioModalOrBannerOrFlyout = async (page: Page): Promise<void> => {
   await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
 };
 
-const scenarioSelectWrapper = async (page: Page) => {
+const scenarioSelectWrapper = async (page: Page): Promise<void> => {
   await page.click('#open-options');
 };
 
-const highContrastTest = async (component: Component, scheme: 'light' | 'dark') => {
-  await vrtTest(
+const highContrastTest = async (component: Component, scheme: 'light' | 'dark'): Promise<boolean> => {
+  return await vrtTest(
     getVisualRegressionStatesTester(),
     `${component === 'fieldset-wrapper' ? 'fieldset' : `${component}`}-high-contrast-${scheme}`,
     `/#${component}`,
