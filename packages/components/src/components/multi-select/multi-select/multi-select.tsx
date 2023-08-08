@@ -239,19 +239,15 @@ export class MultiSelect {
   }
 
   private updateOptions = (): void => {
-    this.defineMultiSelectOptions();
+    this.multiSelectOptions = Array.from(this.host.children).filter(
+      (el) => el.tagName !== 'SELECT'
+    ) as HTMLPMultiSelectOptionElement[];
+    this.multiSelectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
     if (this.isWithinForm) {
       updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }
     this.updateSelectedString();
   };
-
-  private defineMultiSelectOptions(): void {
-    this.multiSelectOptions = Array.from(this.host.children).filter(
-      (el) => el.tagName !== 'SELECT'
-    ) as HTMLPMultiSelectOptionElement[];
-    this.multiSelectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
-  }
 
   private onInputChange = (e: Event): void => {
     if ((e.target as HTMLInputElement).value.startsWith(' ')) {
