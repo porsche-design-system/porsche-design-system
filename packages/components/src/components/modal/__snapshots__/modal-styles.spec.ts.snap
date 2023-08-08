@@ -1057,13 +1057,13 @@ h2 {
   position: sticky;
   background: #FFF;
   padding: 32px;
-  margin-top: -1px;
-  bottom: -1px;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  bottom: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 .footer--shadow {
-  box-shadow: rgba(204, 204, 204, 0.35) 0px -5px 10px;
+  box-shadow: rgba(204, 204, 204, 0.35) 0 -5px 10px;
+  clip-path: inset(-20px 0 0 0);
 }
 @media(min-width:1760px) {
   .root {
@@ -1256,13 +1256,13 @@ h2 {
   position: sticky;
   background: #FFF;
   padding: 32px;
-  margin-top: -1px;
-  bottom: -1px;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  bottom: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 .footer--shadow {
-  box-shadow: rgba(204, 204, 204, 0.35) 0px -5px 10px;
+  box-shadow: rgba(204, 204, 204, 0.35) 0 -5px 10px;
+  clip-path: inset(-20px 0 0 0);
 }
 @media(min-width:1760px) {
   .root {

@@ -4,7 +4,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  getShadowRootHTMLElement,
   hasNamedSlot,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
@@ -84,7 +83,6 @@ export class Modal {
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
     this.updateFocusTrap(isOpen);
-    setScrollLock(isOpen);
 
     if (isOpen) {
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
@@ -101,18 +99,7 @@ export class Modal {
     // in case modal is rendered with open prop
     if (this.open) {
       this.updateFocusTrap(true);
-      setScrollLock(true);
     }
-
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
-      if (this.open) {
-        // 1 tick delay is needed so that web components can be bootstrapped
-        setTimeout(() => {
-          this.updateFocusTrap(true);
-          this.dialog.focus(); // set initial focus
-        });
-      }
-    });
   }
 
   public componentDidRender(): void {
@@ -181,7 +168,7 @@ export class Modal {
             <div class="header">{this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}</div>
           )}
           <div class="content">
-            <slot />
+            <slot onSlotchange={this.onSlotChange} />
           </div>
           {this.hasFooter && (
             <div class="footer" ref={(el) => (this.footer = el)}>
@@ -195,18 +182,37 @@ export class Modal {
 
   private updateFocusTrap(isOpen: boolean): void {
     setFocusTrap(this.host, isOpen, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
+    setScrollLock(isOpen);
 
     if (this.hasFooter) {
       this.observer =
         this.observer ||
-        new IntersectionObserver(([e]) => e.target.classList.toggle(footerShadowClass, !e.isIntersecting), {
-          root: this.host,
-          threshold: 1,
-        });
+        new IntersectionObserver(
+          ([e]) => {
+            // TODO: fix initial change because of scale3d transition
+            // console.log(e.intersectionRatio, e.isIntersecting, new Date().toISOString());
+            e.target.classList.toggle(footerShadowClass, !e.isIntersecting);
+          },
+          {
+            root: this.host,
+            rootMargin: '-1px',
+            threshold: 1, // fully visible
+          }
+        );
 
       this.observer[isOpen ? 'observe' : 'unobserve'](this.footer);
     }
   }
+
+  private onSlotChange = () => {
+    if (this.open) {
+      // 1 tick delay is needed so that web components can be bootstrapped
+      setTimeout(() => {
+        this.updateFocusTrap(true);
+        this.dialog.focus(); // set initial focus
+      });
+    }
+  };
 
   private onMouseDown = (e: MouseEvent): void => {
     if ((e.composedPath() as HTMLElement[])[0] === this.host && !clickStartedInScrollbarTrack(this.host, e)) {

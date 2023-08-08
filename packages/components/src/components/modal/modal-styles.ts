@@ -188,13 +188,15 @@ export const getComponentCss = (
         position: 'sticky',
         background: backgroundColor,
         padding: contentPadding,
-        marginTop: '-1px', // important for intersection observer
-        bottom: '-1px', // important for intersection observer
-        borderBottomLeftRadius: '12px',
-        borderBottomRightRadius: '12px',
+        // marginTop: '-5px',
+        // bottom: '5px',
+        bottom: 0,
+        borderBottomLeftRadius: borderRadiusMedium,
+        borderBottomRightRadius: borderRadiusMedium,
       },
       [footerShadowClass]: {
-        boxShadow: `${scrollShadowColor} 0px -5px 10px`,
+        boxShadow: `${scrollShadowColor} 0 -5px 10px`,
+        clipPath: 'inset(-20px 0 0 0)', // crop leaking box-shadow on left and right side
       },
     }),
     ...(hasDismissButton && {
