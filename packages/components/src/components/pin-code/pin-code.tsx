@@ -78,7 +78,9 @@ export class PinCode {
 
   public componentWillRender(): void {
     // make sure initial value is not too long
-    this.value && this.value.toString().slice(0, this.length);
+    if (this.value) {
+      this.value.toString().slice(0, this.length);
+    }
   }
 
   public render(): JSX.Element {
@@ -152,9 +154,9 @@ export class PinCode {
     if (this.isValidInput(e.key)) {
       this.updateValue();
       // transfer focus forward, if it is not the last input field
-      console.log(this.value.toString().length);
-      (!this.isLastPinInputField(index) || this.value.toString().length < this.length) &&
+      if (!this.isLastPinInputField(index) || this.value.toString().length < this.length) {
         this.pinCodeElements[index + 1].focus();
+      }
     }
   };
 
@@ -166,7 +168,6 @@ export class PinCode {
     const pastedData = e.clipboardData.getData('Text').replace(/\s/g, '').slice(0, this.length);
     if (/^[0-9]+$/.test(pastedData) && pastedData !== this.value) {
       this.updateValue(pastedData);
-      console.log('lenght', pastedData.length);
       this.pinCodeElements[pastedData.length === this.length ? pastedData.length - 1 : pastedData.length].focus();
       e.preventDefault();
     } else {
@@ -192,7 +193,6 @@ export class PinCode {
   };
 
   private updateValue = (value?: string): void => {
-    console.log('value', value);
     if (value) {
       this.value = value;
     } else {
