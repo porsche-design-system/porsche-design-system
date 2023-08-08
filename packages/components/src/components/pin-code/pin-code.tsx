@@ -1,11 +1,10 @@
 import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../types';
-import type { PinCodeState, PinCodeType } from './pin-code-utils';
+import type { PinCodeState, PinCodeType, PinCodeUpdateEvent } from './pin-code-utils';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
-  getShadowRootHTMLElements,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -89,26 +88,34 @@ export class PinCode {
     return (
       <Host>
         <label class="label">
-          {hasLabel(this.host, this.label) && <span class="label__text">{this.label || <slot name="label" />}</span>}
+          {hasLabel(this.host, this.label) && (
+            <span class="label__text">
+              {this.label || <slot name="label" />}
+              {this.required && <Required />}
+            </span>
+          )}
           {hasDescription(this.host, this.description) && (
             <span class="label__text">{this.description || <slot name="description" />}</span>
           )}
-          <div class="pin-code-container">
+          <div
+            class="pin-code-container"
+            ref={(el) => (this.pinCodeElements = el.children as unknown as HTMLInputElement[])}
+          >
             {...Array.from({ length: this.length }).map((_value, index) => (
               <input
-                type={this.type}
-                aria-describedby="otpCode"
+                type={this.type === 'number' ? 'text' : this.type}
+                // aria-label={}
+                // aria-labelledby={}
+                // aria-describedby={}
                 autoComplete="one-time-code"
-                maxLength={1}
+                pattern="\d*"
+                inputMode="numeric" // get numeric keyboard on mobile
+                value={this.value ? this.value.toString().slice(index, index + 1) : this.value}
+                disabled={this.disabled}
+                required={this.required}
                 onKeyDown={(e) => this.keyDownHandler(e, index)}
                 onKeyUp={(e) => this.keyUpHandler(e, index)}
-                // TODO: onpaste
-                pattern="[0-9]"
-                inputMode="numeric"
-                value={this.value ? this.value.toString().slice(index, index + 1) : this.value}
-                ref={(el) => {
-                  this.pinCodeElements.push(el);
-                }}
+                onPaste={(e) => this.pasteHandler(e)}
               />
             ))}
           </div>
@@ -123,18 +130,18 @@ export class PinCode {
   // TODO if possible use utilities instead of private functions
 
   private keyDownHandler = (e: KeyboardEvent, index: number): void => {
-    // delete old value if new input value is valid
+    // TODO: reminder to remove console.log
+    /* eslint-disable no-console */
+    console.log('keyDown', e);
+    // if input is valid, delete previous value in order to overwrite it
     if (this.isValidInput(e.key)) {
       this.pinCodeElements[index].value = '';
-    }
-    // handle backspace
-    if (
-      e.key === 'Backspace' &&
-      this.hasEmptyValue(index) &&
-      !this.isFirstPinInputField(index) &&
-      (!this.isLastPinInputField(index) || this.hasEmptyValue(index))
-    ) {
+      // handle backspace: transfer focus backward, if the input value is empty, and it is not the first input field
+    } else if (e.key === 'Backspace' && this.hasEmptyValue(index) && !this.isFirstPinInputField(index)) {
       this.pinCodeElements[index - 1].focus();
+      // if input is not of type number, except paste
+    } else if (e.key.length === 1 && !/\d/.test(e.key) && !e.metaKey && !e.ctrlKey) {
+      e.preventDefault();
     }
   };
 
@@ -161,13 +168,20 @@ export class PinCode {
     return this.pinCodeElements[index].value.length === 0;
   };
 
-  private updateValue = (): void => {
-    const pinCode = [];
-    for (const pinCodeElement of getShadowRootHTMLElements(this.host, 'input')) {
-      pinCode.push(pinCodeElement.value);
+  private updateValue = (value?: string): void => {
+    console.log('value', value);
+    if (value) {
+      this.value = value;
+    } else {
+      const pinCode = [];
+      for (const pinCodeElement of this.pinCodeElements) {
+        pinCode.push(pinCodeElement.value);
+      }
+      this.value = pinCode.join('');
     }
-    this.value = pinCode.join('');
     this.update.emit({ value: this.value });
+    // TODO: reminder to remove console.log
+    /* eslint-disable no-console */
     console.log('value', this.value);
   };
 }

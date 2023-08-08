@@ -40,11 +40,11 @@ import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
-import { PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
-import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
+import { PinCodeState, PinCodeType, PinCodeUpdateEvent } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -98,11 +98,11 @@ export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
-export { PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
-export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
+export { PinCodeState, PinCodeType, PinCodeUpdateEvent } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
+export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -1143,6 +1143,10 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * Disables the Pin Code. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -1151,13 +1155,17 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Number of characters of the pin code.
+          * Number of characters of the Pin Code.
          */
         "length"?: number;
         /**
           * The message styled depending on validation state.
          */
         "message"?: string;
+        /**
+          * Marks the Pin Code as required.
+         */
+        "required"?: boolean;
         /**
           * The validation state.
          */
@@ -1167,11 +1175,11 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * Pin code type.
+          * Pin Code type.
          */
         "type"?: PinCodeType;
         /**
-          * Sets the initial value of the pin code.
+          * Sets the initial value of the Pin Code.
          */
         "value"?: string | number;
     }
@@ -3332,6 +3340,10 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
+          * Disables the Pin Code. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -3340,7 +3352,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Number of characters of the pin code.
+          * Number of characters of the Pin Code.
          */
         "length"?: number;
         /**
@@ -3350,7 +3362,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when selected element changes.
          */
-        "onUpdate"?: (event: PPinCodeCustomEvent<SegmentedControlUpdateEvent>) => void;
+        "onUpdate"?: (event: PPinCodeCustomEvent<PinCodeUpdateEvent>) => void;
+        /**
+          * Marks the Pin Code as required.
+         */
+        "required"?: boolean;
         /**
           * The validation state.
          */
@@ -3360,11 +3376,11 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * Pin code type.
+          * Pin Code type.
          */
         "type"?: PinCodeType;
         /**
-          * Sets the initial value of the pin code.
+          * Sets the initial value of the Pin Code.
          */
         "value"?: string | number;
     }

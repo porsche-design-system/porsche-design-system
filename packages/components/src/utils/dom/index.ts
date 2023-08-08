@@ -6,7 +6,6 @@ export * from './getDirectChildHTMLElements';
 export * from './getHTMLElement';
 export * from './getHTMLElements';
 export * from './getShadowRootHTMLElement';
-export * from './getShadowRootHTMLElements';
 export * from './getSlotTextContent';
 export * from './hasAttribute';
 export * from './hasNamedSlot';
