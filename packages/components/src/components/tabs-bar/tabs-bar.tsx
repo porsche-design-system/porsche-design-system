@@ -156,7 +156,7 @@ export class TabsBar {
     return (
       <PrefixedTagNames.pScroller
         class="scroller"
-        aria={{ role: this.tabsAreButtons ? 'tablist' : null }}
+        {...(this.tabsAreButtons && { aria: { role: 'tablist' } })}
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
         gradientColor={this.gradientColor}
