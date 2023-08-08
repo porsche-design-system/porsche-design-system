@@ -17,7 +17,7 @@ import {
   warnIfAriaAndHeadingPropsAreUndefined,
   clickStartedInScrollbarTrack,
 } from './modal-utils';
-import { getComponentCss } from './modal-styles';
+import { footerShadowClass, getComponentCss } from './modal-styles';
 import { setFocusTrap } from '../../utils/focusTrap';
 import { setScrollLock } from '../../utils/scrollLock';
 
@@ -72,7 +72,10 @@ export class Modal {
   private focusedElBeforeOpen: HTMLElement;
   private dismissBtn: HTMLElement;
   private hasHeader: boolean;
+  private hasFooter: boolean;
+  private footer: HTMLElement;
   private dialog: HTMLElement;
+  private observer: IntersectionObserver;
 
   private get hasDismissButton(): boolean {
     return this.disableCloseButton ? false : this.dismissButton;
@@ -134,7 +137,17 @@ export class Modal {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
     }
     this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
-    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.hasDismissButton, this.hasHeader);
+    this.hasFooter = hasNamedSlot(this.host, 'footer');
+
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.open,
+      this.fullscreen,
+      this.hasDismissButton,
+      this.hasHeader,
+      this.hasFooter
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -167,7 +180,14 @@ export class Modal {
           {this.hasHeader && (
             <div class="header">{this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}</div>
           )}
-          <slot />
+          <div class="content">
+            <slot />
+          </div>
+          {this.hasFooter && (
+            <div class="footer" ref={(el) => (this.footer = el)}>
+              <slot name="footer" />
+            </div>
+          )}
         </div>
       </Host>
     );
@@ -175,6 +195,17 @@ export class Modal {
 
   private updateFocusTrap(isOpen: boolean): void {
     setFocusTrap(this.host, isOpen, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
+
+    if (this.hasFooter) {
+      this.observer =
+        this.observer ||
+        new IntersectionObserver(([e]) => e.target.classList.toggle(footerShadowClass, !e.isIntersecting), {
+          root: this.host,
+          threshold: 1,
+        });
+
+      this.observer[isOpen ? 'observe' : 'unobserve'](this.footer);
+    }
   }
 
   private onMouseDown = (e: MouseEvent): void => {

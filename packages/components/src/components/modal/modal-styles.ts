@@ -1,6 +1,13 @@
 import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
-import { buildResponsiveStyles, getCss, isHighContrastMode, mergeDeep, parseJSON } from '../../utils';
+import {
+  buildResponsiveStyles,
+  getCss,
+  isHighContrastMode,
+  mergeDeep,
+  parseJSON,
+  scrollShadowColor,
+} from '../../utils';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import {
   borderRadiusMedium,
@@ -28,6 +35,8 @@ const { primaryColor: darkThemePrimaryColor, contrastHighColor: darkThemeContras
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
+
+export const footerShadowClass = 'footer--shadow';
 
 export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean): JssStyle => {
   return fullscreen
@@ -83,10 +92,12 @@ export const getComponentCss = (
   isOpen: boolean,
   isFullscreen: BreakpointCustomizable<boolean>,
   hasDismissButton: boolean,
-  hasHeader: boolean
+  hasHeader: boolean,
+  hasFooter: boolean
 ): string => {
   const isFullscreenForXlAndXxl = isFullscreenForXl(isFullscreen);
   const duration = isOpen ? '.6s' : '.2s';
+  const contentPadding = '32px';
 
   return getCss({
     '@global': {
@@ -112,8 +123,8 @@ export const getComponentCss = (
         }),
         overflowY: 'auto', // overrideable
       },
-      '::slotted': addImportantToEachRule({
-        ...mergeDeep(
+      '::slotted': addImportantToEachRule(
+        mergeDeep(
           getSlottedJssStyle(32, hasHeader, hasDismissButton),
           buildResponsiveStyles(isFullscreen, (fullscreenValue: boolean) => ({
             [`&(.${stretchToFullModalWidthClassName}`]: {
@@ -125,8 +136,8 @@ export const getComponentCss = (
               },
             },
           }))
-        ),
-      }),
+        )
+      ),
       h2: {
         ...headingLargeStyle,
         margin: 0,
@@ -140,7 +151,8 @@ export const getComponentCss = (
         transform: isOpen ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
         opacity: isOpen ? 1 : 0,
         transition: `opacity ${duration} ${transitionTimingFunction},transform ${duration} ${transitionTimingFunction}`,
-        padding: hasDismissButton ? `${pxToRemWithUnit(32)} 32px 32px 32px` : '32px', // rem value needed to prevent overlapping of close button and contents in scaling mode
+        ...(hasDismissButton && { paddingTop: pxToRemWithUnit(32) }), // rem value needed to prevent overlapping of close button and contents in scaling mode
+        ...(!hasFooter && { paddingBottom: contentPadding }),
         background: backgroundColor,
         outline: isHighContrastMode ? '1px solid transparent' : 0,
         '&:focus::before': {
@@ -161,11 +173,28 @@ export const getComponentCss = (
           margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridExtendedOffsetBase}`,
         },
       },
-      buildResponsiveStyles(isFullscreen, getFullscreenJssStyles) as any
+      buildResponsiveStyles(isFullscreen, getFullscreenJssStyles) as any // potentially needs to be merged with mediaQueryXl
     ),
     ...(hasHeader && {
       header: {
-        padding: '0 0 8px',
+        padding: `0 ${contentPadding} 8px`,
+      },
+    }),
+    content: {
+      padding: `0 ${contentPadding}`,
+    },
+    ...(hasFooter && {
+      footer: {
+        position: 'sticky',
+        background: backgroundColor,
+        padding: contentPadding,
+        marginTop: '-1px', // important for intersection observer
+        bottom: '-1px', // important for intersection observer
+        borderBottomLeftRadius: '12px',
+        borderBottomRightRadius: '12px',
+      },
+      [footerShadowClass]: {
+        boxShadow: `${scrollShadowColor} 0px -5px 10px`,
       },
     }),
     ...(hasDismissButton && {

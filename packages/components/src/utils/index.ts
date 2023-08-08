@@ -20,6 +20,7 @@ export * from './link-button/getLinkButtonThemeForIcon';
 export * from './link-button-tile/link-button-tile-utils';
 export * from './tile/tile-utils';
 export * from './log';
+export * from './modal-flyout-utils';
 export { paramCaseToCamelCase } from './paramCaseToCamelCase';
 export * from './property-observer';
 export * from './scrolling';
