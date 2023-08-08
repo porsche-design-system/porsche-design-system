@@ -51,7 +51,7 @@ const optionIncludesSearchString = (option: HTMLPMultiSelectOptionElement, searc
   option.textContent.toLowerCase().includes(searchString.toLowerCase());
 
 export const hasFilterOptionResults = (options: HTMLPMultiSelectOptionElement[]): boolean =>
-  options?.some((option) => !option.hidden);
+  options.some((option) => !option.hidden);
 
 export const resetFilteredOptions = (options: HTMLPMultiSelectOptionElement[]): void =>
   options.forEach((option) => (option.hidden = false));
