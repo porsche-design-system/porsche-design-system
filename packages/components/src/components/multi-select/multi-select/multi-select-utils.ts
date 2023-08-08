@@ -34,7 +34,7 @@ export const syncNativeSelect = (
   }
 };
 
-export const updateNativeSelectOptions = (
+export const updateNativeOptions = (
   nativeSelect: HTMLSelectElement,
   multiSelectOptions: HTMLPMultiSelectOptionElement[]
 ): void => {
@@ -43,14 +43,11 @@ export const updateNativeSelectOptions = (
     .join('');
 };
 
-export const updateMultiSelectOptionsFilterState = (
-  searchString: string,
-  options: HTMLPMultiSelectOptionElement[]
-): void => {
+export const updateOptionsFilterState = (searchString: string, options: HTMLPMultiSelectOptionElement[]): void => {
   options.forEach((option) => (option.hidden = !optionIncludesSearchString(option, searchString)));
 };
 
-export const optionIncludesSearchString = (option: HTMLPMultiSelectOptionElement, searchString: string): boolean =>
+const optionIncludesSearchString = (option: HTMLPMultiSelectOptionElement, searchString: string): boolean =>
   option.textContent.toLowerCase().includes(searchString.toLowerCase());
 
 export const hasFilterOptionResults = (options: HTMLPMultiSelectOptionElement[]): boolean =>
@@ -67,7 +64,7 @@ export const getSelectedOptionsString = (options: HTMLPMultiSelectOptionElement[
     .map((option) => option.textContent)
     .join(', ');
 
-export const getValidSelectOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement[] =>
+const getValidOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement[] =>
   options.filter((option) => !option.hidden && !option.disabled);
 
 export const getHighlightedOption = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement =>
@@ -79,7 +76,7 @@ export const setHighlightedOption = (option: HTMLPMultiSelectOptionElement, high
 export const getHighlightedOptionIndex = (options: HTMLPMultiSelectOptionElement[]): number =>
   options.indexOf(getHighlightedOption(options));
 
-export const setNextOptionHighlighted = (
+const setNextOptionHighlighted = (
   host: HTMLElement,
   options: HTMLPMultiSelectOptionElement[],
   newIndex: number
@@ -93,23 +90,23 @@ export const setNextOptionHighlighted = (
 };
 
 export const setFirstOptionHighlighted = (host: HTMLElement, options: HTMLPMultiSelectOptionElement[]): void => {
-  const validOptions = getValidSelectOptions(options);
+  const validOptions = getValidOptions(options);
   setNextOptionHighlighted(host, options, options.indexOf(validOptions[0]));
 };
 
 export const setLastOptionHighlighted = (host: HTMLElement, options: HTMLPMultiSelectOptionElement[]): void => {
-  const validOptions = getValidSelectOptions(options);
+  const validOptions = getValidOptions(options);
   setNextOptionHighlighted(host, options, options.indexOf(validOptions.at(-1)));
 };
 
 export const resetHighlightedOptions = (options: HTMLPMultiSelectOptionElement[]): void =>
   options.forEach((option) => setHighlightedOption(option, false));
 
-export const getNewOptionIndex = (
+const getNewOptionIndex = (
   options: HTMLPMultiSelectOptionElement[],
   direction: SelectDropdownDirectionInternal
 ): number => {
-  const validItems = getValidSelectOptions(options);
+  const validItems = getValidOptions(options);
   const validMax = validItems.length - 1;
   if (validMax < 0) {
     return;
@@ -139,7 +136,7 @@ export const updateHighlightedOption = (
  * @param {HTMLElement} element - The element to scroll to.
  * @returns {void}
  */
-export const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
+const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
   const { maxHeight } = getComputedStyle(scrollElement);
   const hostElementHeight = parseInt(maxHeight, 10);
   if (scrollElement.scrollHeight > hostElementHeight) {

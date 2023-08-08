@@ -13,8 +13,8 @@ import {
   syncMultiSelectOptionProps,
   syncNativeSelect,
   updateHighlightedOption,
-  updateMultiSelectOptionsFilterState,
-  updateNativeSelectOptions,
+  updateOptionsFilterState,
+  updateNativeOptions,
 } from './multi-select-utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
@@ -106,7 +106,7 @@ export class MultiSelect {
   public updateOptionHandler(e: Event): void {
     e.stopPropagation();
     if (this.isWithinForm) {
-      updateNativeSelectOptions(this.nativeSelect, this.multiSelectOptions);
+      updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }
     this.updateSelectedString();
   }
@@ -240,7 +240,7 @@ export class MultiSelect {
   private updateOptions = (): void => {
     this.defineMultiSelectOptions();
     if (this.isWithinForm) {
-      updateNativeSelectOptions(this.nativeSelect, this.multiSelectOptions);
+      updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }
     this.updateSelectedString();
   };
@@ -256,7 +256,7 @@ export class MultiSelect {
     if ((e.target as HTMLInputElement).value.startsWith(' ')) {
       this.resetFilter();
     } else {
-      updateMultiSelectOptionsFilterState((e.target as HTMLInputElement).value, this.multiSelectOptions);
+      updateOptionsFilterState((e.target as HTMLInputElement).value, this.multiSelectOptions);
       forceUpdate(this.host);
     }
     // in case input is focused via tab instead of click
