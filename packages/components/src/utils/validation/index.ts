@@ -1,6 +1,7 @@
 export * from './getNamedSlotOrThrow';
 export * from './getOnlyChildHTMLElementOrThrow';
 export * from './getOnlyChildOfKindHTMLElementOrThrow';
+export * from './getOnlyChildrenOfKindHTMLElementOrThrow';
 export * from './throwIfChildCountIsExceeded';
 export * from './throwIfChildrenAreNotOfKind';
 export * from './throwIfElementHasAttribute';
