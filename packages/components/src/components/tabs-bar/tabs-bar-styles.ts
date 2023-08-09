@@ -102,7 +102,9 @@ export const getComponentCss = (
           visibility: 'hidden',
         },
         // visible bar for selected tab
-        [transformSelector('::slotted([role][aria-selected="true"])::after')]: {
+        [transformSelector(
+          '::slotted([role][aria-selected="true"])::after, ::slotted([role][aria-current="true"])::after'
+        )]: {
           ...barJssStyle,
           right: '0px',
           bottom: isHighContrastMode ? '-4px' : '-6px',
@@ -124,7 +126,10 @@ export const getComponentCss = (
     },
     // conditionally applied and removed based on if activeTabIndex exists
     [scrollerAnimatedCssClass]: {
-      ['& ' + transformSelector('::slotted([role][aria-selected="true"])::after')]: {
+      ['& ' +
+      transformSelector(
+        '::slotted([role][aria-selected="true"])::after, ::slotted([role][aria-current="true"])::after'
+      )]: {
         transition: addImportantToRule(`visibility 0s linear ${barTransitionDuration}`), // bar appears after transition
       },
     },

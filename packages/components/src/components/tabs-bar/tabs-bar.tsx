@@ -3,7 +3,7 @@ import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core'
 import {
   AllowedTypes,
   attachComponentCss,
-  getHTMLElements,
+  getOnlyChildrenOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   getScrollActivePosition,
   hasPropValueChanged,
@@ -89,6 +89,7 @@ export class TabsBar {
   private scrollerElement: HTMLPScrollerElement;
   private direction: ScrollerDirection = 'next';
   private hasPTabsParent: boolean;
+  private areTabsButtons: boolean;
 
   @Watch('activeTabIndex')
   public activeTabIndexHandler(newValue: number, oldValue: number): void {
@@ -153,7 +154,7 @@ export class TabsBar {
     return (
       <PrefixedTagNames.pScroller
         class="scroller"
-        aria={{ role: 'tablist' }}
+        {...(this.areTabsButtons && { aria: { role: 'tablist' } })}
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
         gradientColor={this.gradientColor}
@@ -176,11 +177,16 @@ export class TabsBar {
 
   private setAccessibilityAttributes = (): void => {
     this.tabElements.forEach((tab, index) => {
-      const attrs = {
-        role: 'tab',
-        tabindex: (this.activeTabIndex || 0) === index ? '0' : '-1',
-        'aria-selected': this.activeTabIndex === index ? 'true' : 'false',
-      };
+      const attrs = this.areTabsButtons
+        ? {
+            role: 'tab',
+            tabindex: (this.activeTabIndex || 0) === index ? '0' : '-1',
+            'aria-selected': this.activeTabIndex === index ? 'true' : 'false',
+          }
+        : {
+            'aria-current': this.activeTabIndex === index ? 'true' : 'false',
+          };
+
       /* eslint-disable-next-line guard-for-in */
       for (const key in attrs) {
         setAttribute(tab, key, attrs[key] as string);
@@ -189,7 +195,8 @@ export class TabsBar {
   };
 
   private setTabElements = (): void => {
-    this.tabElements = getHTMLElements(this.host, 'a,button');
+    this.tabElements = getOnlyChildrenOfKindHTMLElementOrThrow(this.host, 'a,button');
+    this.areTabsButtons = this.tabElements[0]?.tagName === 'BUTTON';
   };
 
   private onClick = (e: MouseEvent): void => {
