@@ -1,5 +1,5 @@
 import type { Page } from 'puppeteer';
-import { goto, initConsoleObserver, getConsoleErrorsAmount, getConsoleWarningsAmount } from '../helpers';
+import { goto, initConsoleObserver, getConsoleErrorsAmount } from '../helpers';
 import { routes } from '../../../routes';
 
 let page: Page;

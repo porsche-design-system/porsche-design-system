@@ -1,5 +1,4 @@
 import typescript from '@rollup/plugin-typescript';
-import generatePackageJson from 'rollup-plugin-generate-package-json';
 import resolve from '@rollup/plugin-node-resolve';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
 
@@ -38,14 +37,6 @@ export default [
         declaration: true,
         declarationDir: outputDir,
         rootDir: 'src',
-      }),
-      generatePackageJson({
-        baseContents: {
-          main: 'components-react/projects/react-ssr-wrapper/src/public-api.js',
-          module: 'esm/components-react/projects/react-ssr-wrapper/src/public-api.js',
-          types: 'public-api.d.ts',
-          sideEffects: false,
-        },
       }),
     ],
     onwarn,
