@@ -39,7 +39,7 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { MultiSelectDropdownDirection, MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
+import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEvent } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
@@ -97,7 +97,7 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-export { MultiSelectDropdownDirection, MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
+export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEvent } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
@@ -1761,6 +1761,10 @@ export interface PModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPModalElement;
 }
+export interface PMultiSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPMultiSelectElement;
+}
 export interface PPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPPaginationElement;
@@ -3322,6 +3326,10 @@ declare namespace LocalJSX {
           * This attribute is used to specify the name of the control.
          */
         "name"?: string;
+        /**
+          * Emitted when sorting is changed.
+         */
+        "onUpdate"?: (event: PMultiSelectCustomEvent<MultiSelectUpdateEvent>) => void;
         /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
          */

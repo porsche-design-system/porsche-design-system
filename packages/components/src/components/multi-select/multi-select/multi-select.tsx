@@ -5,23 +5,37 @@ import {
   getHighlightedOptionIndex,
   getSelectedOptions,
   getSelectedOptionsString,
+  getSelectedOptionValues,
   hasFilterOptionResults,
+  initNativeSelect,
+  MultiSelectUpdateEvent,
   resetFilteredOptions,
   resetHighlightedOptions,
   setFirstOptionHighlighted,
   setLastOptionHighlighted,
   syncMultiSelectOptionProps,
-  initNativeSelect,
-  updateHighlightedOption,
-  updateOptionsFilterState,
-  updateNativeOptions,
   syncNativeSelect,
+  updateHighlightedOption,
+  updateNativeOptions,
+  updateOptionsFilterState,
 } from './multi-select-utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { SELECT_DROPDOWN_DIRECTIONS } from '../../../utils/select/select-dropdown';
 import type { HTMLElementWithRequiredProp } from '../../../utils/form/isRequired';
-import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop, State } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  forceUpdate,
+  h,
+  Host,
+  type JSX,
+  Listen,
+  Prop,
+  State,
+} from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -93,7 +107,10 @@ export class MultiSelect {
   /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  @State() private selectedString = '';
+  /** Emitted when sorting is changed. */
+  @Event({ bubbles: false }) public update: EventEmitter<MultiSelectUpdateEvent>;
+
+  @State() private value = [];
   @State() private isOpen = false;
   @State() private srHighlightedOptionText = '';
 
@@ -110,7 +127,11 @@ export class MultiSelect {
     if (this.isWithinForm) {
       updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }
-    this.updateSelectedString();
+    this.updateValue();
+    this.update.emit({
+      value: this.value,
+      name: this.name,
+    });
   }
 
   public connectedCallback(): void {
@@ -122,9 +143,6 @@ export class MultiSelect {
     if (this.isWithinForm) {
       this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
     }
-  }
-
-  public componentDidLoad(): void {
     this.updateOptions();
   }
 
@@ -165,7 +183,7 @@ export class MultiSelect {
       <Host>
         <div class="root">
           <label class="label" id="label">
-            {this.selectedString && (
+            {this.value && (
               <span class="sr-text">{getSelectedOptions(this.multiSelectOptions).length} options selected</span>
             )}
             {!this.hideLabel && hasLabel(this.host, this.label) && (
@@ -184,7 +202,7 @@ export class MultiSelect {
           <div class={{ 'input-container': true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
             <input
               role="combobox"
-              placeholder={this.selectedString || null}
+              placeholder={getSelectedOptionsString(this.multiSelectOptions) || null}
               autoComplete="off"
               disabled={this.disabled}
               required={this.required}
@@ -246,7 +264,7 @@ export class MultiSelect {
     if (this.isWithinForm) {
       updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }
-    this.updateSelectedString();
+    this.updateValue();
   };
 
   private onInputChange = (e: Event): void => {
@@ -260,8 +278,8 @@ export class MultiSelect {
     this.isOpen = true;
   };
 
-  private updateSelectedString = (): void => {
-    this.selectedString = getSelectedOptionsString(this.multiSelectOptions);
+  private updateValue = (): void => {
+    this.value = getSelectedOptionValues(this.multiSelectOptions);
   };
 
   private onInputClick = (): void => {

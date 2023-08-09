@@ -9,6 +9,11 @@ import { forceUpdate } from '@stencil/core';
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectDropdownDirection;
 
+export type MultiSelectUpdateEvent = {
+  value: (string | number)[];
+  name: string;
+};
+
 export const syncMultiSelectOptionProps = (options: HTMLPMultiSelectOptionElement[], theme: Theme): void => {
   options.forEach((item: MultiSelectOptionInternalHTMLProps) => {
     item.theme = theme;
@@ -71,6 +76,9 @@ export const resetFilteredOptions = (options: HTMLPMultiSelectOptionElement[]): 
 
 export const getSelectedOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement[] =>
   options.filter((option) => option.selected);
+
+export const getSelectedOptionValues = (options: HTMLPMultiSelectOptionElement[]): (string | number)[] =>
+  options.filter((option) => option.selected).map((option) => option.value);
 
 export const getSelectedOptionsString = (options: HTMLPMultiSelectOptionElement[]): string =>
   getSelectedOptions(options)
