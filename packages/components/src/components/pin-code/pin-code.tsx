@@ -13,7 +13,7 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
-import { inputIsSingleDigit, PIN_CODE_TYPES } from './pin-code-utils';
+import { inputIsSingleDigit, isWithinForm, PIN_CODE_TYPES } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
 
@@ -75,7 +75,12 @@ export class PinCode {
   @Prop() public theme?: Theme = 'light';
 
   private pinCodeElements: HTMLInputElement[] = [];
+  private isWithinForm: boolean;
   // TODO: private ariaElement: HTMLSpanElement;
+
+  public componentWillLoad(): void {
+    this.isWithinForm = isWithinForm(this.host);
+  }
 
   public componentWillRender(): void {
     // make sure initial value is not too long
@@ -108,6 +113,7 @@ export class PinCode {
             <span class="label__text">{this.description || <slot name="description" />}</span>
           )}
           <div class="pin-code-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onClick={this.onClick}>
+            {this.isWithinForm && <input name="hiddenInput" type="hidden" value={this.value} />}
             {...Array.from({ length: this.length }).map((_value, index) => (
               <input
                 type={this.type === 'number' ? 'text' : this.type}
