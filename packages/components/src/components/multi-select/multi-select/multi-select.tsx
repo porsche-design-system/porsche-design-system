@@ -8,6 +8,7 @@ import {
   getSelectedOptionValues,
   hasFilterOptionResults,
   initNativeSelect,
+  MultiSelectOption,
   MultiSelectUpdateEvent,
   resetFilteredOptions,
   resetHighlightedOptions,
@@ -57,7 +58,7 @@ import { getComponentCss } from './multi-select-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { getFilterInputAriaAttributes, getListAriaAttributes } from '../../../utils/a11y/select/select-aria';
 
-const propTypes: PropTypes<typeof MultiSelect> = {
+const propTypes: Omit<PropTypes<typeof MultiSelect>, 'value'> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
@@ -86,6 +87,9 @@ export class MultiSelect {
   /** This attribute is used to specify the name of the control. */
   @Prop() public name: string;
 
+  /** The selected values. */
+  @Prop() public value: (string | number)[] = [];
+
   /** The validation state. */
   @Prop() public state?: MultiSelectState = 'none';
 
@@ -110,26 +114,31 @@ export class MultiSelect {
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<MultiSelectUpdateEvent>;
 
-  @State() private value = [];
   @State() private isOpen = false;
   @State() private srHighlightedOptionText = '';
 
   private nativeSelect: HTMLSelectElement;
-  private multiSelectOptions: HTMLPMultiSelectOptionElement[] = [];
+  private multiSelectOptions: MultiSelectOption[] = [];
   private inputContainer: HTMLDivElement;
   private inputElement: HTMLInputElement;
   private listElement: HTMLUListElement;
   private isWithinForm: boolean;
 
+  private get currentValue(): (string | number)[] {
+    return getSelectedOptionValues(this.multiSelectOptions);
+  }
+
   @Listen('internalOptionUpdate')
-  public updateOptionHandler(e: Event): void {
+  public updateOptionHandler(e: Event & { target: MultiSelectOption }): void {
+    e.target.selected = !e.target.selected;
+    forceUpdate(e.target);
+    forceUpdate(this.host);
     e.stopPropagation();
     if (this.isWithinForm) {
       updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }
-    this.updateValue();
     this.update.emit({
-      value: this.value,
+      value: this.currentValue,
       name: this.name,
     });
   }
@@ -183,7 +192,7 @@ export class MultiSelect {
       <Host>
         <div class="root">
           <label class="label" id="label">
-            {this.value && (
+            {this.currentValue && (
               <span class="sr-text">{getSelectedOptions(this.multiSelectOptions).length} options selected</span>
             )}
             {!this.hideLabel && hasLabel(this.host, this.label) && (
@@ -264,7 +273,6 @@ export class MultiSelect {
     if (this.isWithinForm) {
       updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }
-    this.updateValue();
   };
 
   private onInputChange = (e: Event): void => {
@@ -272,14 +280,11 @@ export class MultiSelect {
       this.resetFilter();
     } else {
       updateOptionsFilterState((e.target as HTMLInputElement).value, this.multiSelectOptions);
+      // TODO: Use either state or only update when empty
       forceUpdate(this.host);
     }
     // in case input is focused via tab instead of click
     this.isOpen = true;
-  };
-
-  private updateValue = (): void => {
-    this.value = getSelectedOptionValues(this.multiSelectOptions);
   };
 
   private onInputClick = (): void => {
@@ -291,8 +296,12 @@ export class MultiSelect {
   };
 
   private onResetClick = (): void => {
-    this.multiSelectOptions.forEach((option) => (option.selected = false));
+    this.multiSelectOptions.forEach((option) => {
+      option.selected = false;
+      forceUpdate(option);
+    });
     this.inputElement.focus();
+    forceUpdate(this.host);
   };
 
   private onClickOutside = (e: MouseEvent): void => {

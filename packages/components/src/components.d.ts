@@ -1132,16 +1132,16 @@ export namespace Components {
           * Adapts the select color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * The selected values.
+         */
+        "value": (string | number)[];
     }
     interface PMultiSelectOption {
         /**
           * Disables the option.
          */
         "disabled"?: boolean;
-        /**
-          * The option selected state.
-         */
-        "selected"?: boolean;
         /**
           * The option value.
          */
@@ -3342,16 +3342,16 @@ declare namespace LocalJSX {
           * Adapts the select color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * The selected values.
+         */
+        "value"?: (string | number)[];
     }
     interface PMultiSelectOption {
         /**
           * Disables the option.
          */
         "disabled"?: boolean;
-        /**
-          * The option selected state.
-         */
-        "selected"?: boolean;
         /**
           * The option value.
          */

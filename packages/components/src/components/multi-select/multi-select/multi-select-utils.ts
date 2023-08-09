@@ -8,17 +8,20 @@ import { forceUpdate } from '@stencil/core';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectDropdownDirection;
+export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
 
 export type MultiSelectUpdateEvent = {
   value: (string | number)[];
   name: string;
 };
 
-export const syncMultiSelectOptionProps = (options: HTMLPMultiSelectOptionElement[], theme: Theme): void => {
-  options.forEach((item: MultiSelectOptionInternalHTMLProps) => {
-    item.theme = theme;
-    forceUpdate(item);
-  });
+export const syncMultiSelectOptionProps = (options: MultiSelectOption[], theme: Theme): void => {
+  options
+    .filter((option) => option.theme !== theme)
+    .forEach((option) => {
+      option.theme = theme;
+      forceUpdate(option);
+    });
 };
 
 export const initNativeSelect = (
@@ -52,57 +55,50 @@ export const syncNativeSelect = (
   });
 };
 
-export const updateNativeOptions = (
-  nativeSelect: HTMLSelectElement,
-  multiSelectOptions: HTMLPMultiSelectOptionElement[]
-): void => {
+export const updateNativeOptions = (nativeSelect: HTMLSelectElement, multiSelectOptions: MultiSelectOption[]): void => {
   nativeSelect.innerHTML = getSelectedOptions(multiSelectOptions)
     .map((option) => `<option value="${option.value}" selected="${option.selected}">${option.textContent}</option>`)
     .join('');
 };
 
-export const updateOptionsFilterState = (searchString: string, options: HTMLPMultiSelectOptionElement[]): void => {
+export const updateOptionsFilterState = (searchString: string, options: MultiSelectOption[]): void => {
   options.forEach((option) => (option.hidden = !optionIncludesSearchString(option, searchString)));
 };
 
-const optionIncludesSearchString = (option: HTMLPMultiSelectOptionElement, searchString: string): boolean =>
+const optionIncludesSearchString = (option: MultiSelectOption, searchString: string): boolean =>
   option.textContent.toLowerCase().includes(searchString.toLowerCase());
 
-export const hasFilterOptionResults = (options: HTMLPMultiSelectOptionElement[]): boolean =>
+export const hasFilterOptionResults = (options: MultiSelectOption[]): boolean =>
   options.some((option) => !option.hidden);
 
-export const resetFilteredOptions = (options: HTMLPMultiSelectOptionElement[]): void =>
+export const resetFilteredOptions = (options: MultiSelectOption[]): void =>
   options.forEach((option) => (option.hidden = false));
 
-export const getSelectedOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement[] =>
+export const getSelectedOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
   options.filter((option) => option.selected);
 
-export const getSelectedOptionValues = (options: HTMLPMultiSelectOptionElement[]): (string | number)[] =>
+export const getSelectedOptionValues = (options: MultiSelectOption[]): (string | number)[] =>
   options.filter((option) => option.selected).map((option) => option.value);
 
-export const getSelectedOptionsString = (options: HTMLPMultiSelectOptionElement[]): string =>
+export const getSelectedOptionsString = (options: MultiSelectOption[]): string =>
   getSelectedOptions(options)
     .map((option) => option.textContent)
     .join(', ');
 
-const getValidOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement[] =>
+const getValidOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
   options.filter((option) => !option.hidden && !option.disabled);
 
-export const getHighlightedOption = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement =>
-  options.find((option) => (option as MultiSelectOptionInternalHTMLProps).highlighted);
+export const getHighlightedOption = (options: MultiSelectOption[]): MultiSelectOption =>
+  options.find((option) => option.highlighted);
 
-export const setHighlightedOption = (option: HTMLPMultiSelectOptionElement, highlighted: boolean): void => {
-  (option as MultiSelectOptionInternalHTMLProps).highlighted = highlighted;
+export const setHighlightedOption = (option: MultiSelectOption, highlighted: boolean): void => {
+  option.highlighted = highlighted;
 };
 
-export const getHighlightedOptionIndex = (options: HTMLPMultiSelectOptionElement[]): number =>
+export const getHighlightedOptionIndex = (options: MultiSelectOption[]): number =>
   options.indexOf(getHighlightedOption(options));
 
-const setNextOptionHighlighted = (
-  host: HTMLElement,
-  options: HTMLPMultiSelectOptionElement[],
-  newIndex: number
-): void => {
+const setNextOptionHighlighted = (host: HTMLElement, options: MultiSelectOption[], newIndex: number): void => {
   const oldIndex = getHighlightedOptionIndex(options);
   if (oldIndex !== -1) {
     setHighlightedOption(options[oldIndex], false);
@@ -111,23 +107,20 @@ const setNextOptionHighlighted = (
   handleDropdownScroll(host, options[newIndex]);
 };
 
-export const setFirstOptionHighlighted = (host: HTMLElement, options: HTMLPMultiSelectOptionElement[]): void => {
+export const setFirstOptionHighlighted = (host: HTMLElement, options: MultiSelectOption[]): void => {
   const validOptions = getValidOptions(options);
   setNextOptionHighlighted(host, options, options.indexOf(validOptions[0]));
 };
 
-export const setLastOptionHighlighted = (host: HTMLElement, options: HTMLPMultiSelectOptionElement[]): void => {
+export const setLastOptionHighlighted = (host: HTMLElement, options: MultiSelectOption[]): void => {
   const validOptions = getValidOptions(options);
   setNextOptionHighlighted(host, options, options.indexOf(validOptions.at(-1)));
 };
 
-export const resetHighlightedOptions = (options: HTMLPMultiSelectOptionElement[]): void =>
+export const resetHighlightedOptions = (options: MultiSelectOption[]): void =>
   options.forEach((option) => setHighlightedOption(option, false));
 
-const getNewOptionIndex = (
-  options: HTMLPMultiSelectOptionElement[],
-  direction: SelectDropdownDirectionInternal
-): number => {
+const getNewOptionIndex = (options: MultiSelectOption[], direction: SelectDropdownDirectionInternal): number => {
   const validItems = getValidOptions(options);
   const validMax = validItems.length - 1;
   if (validMax < 0) {
@@ -145,7 +138,7 @@ const getNewOptionIndex = (
 
 export const updateHighlightedOption = (
   host: HTMLElement,
-  options: HTMLPMultiSelectOptionElement[],
+  options: MultiSelectOption[],
   direction: SelectDropdownDirectionInternal
 ): void => {
   const newIndex = getNewOptionIndex(options, direction);
@@ -169,7 +162,7 @@ const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement):
 export const getDropdownDirection = (
   direction: SelectDropdownDirection,
   host: HTMLElement,
-  options: HTMLPMultiSelectOptionElement[]
+  options: MultiSelectOption[]
 ): SelectDropdownDirectionInternal => {
   if (direction !== 'auto') {
     return direction;

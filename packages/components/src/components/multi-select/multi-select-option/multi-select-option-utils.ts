@@ -1,10 +1,10 @@
 import type { Theme } from '../../../types';
 
 export type MultiSelectOptionInternalHTMLProps = {
-  /** Option theme (synchronized from p-multi-select) **/
-  theme?: Theme;
+  /** The option selected state. */
+  selected?: boolean;
   /** Highlights options when navigating with keyboard **/
   highlighted?: boolean;
-  /** Hides options which are not matching the searchString **/
-  hidden?: boolean;
+  /** Option theme (synchronized from p-multi-select) **/
+  theme?: Theme;
 };
