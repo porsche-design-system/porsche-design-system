@@ -74,7 +74,7 @@ export const getComponentCss = (
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          ...(isPrimary && { filter: 'invert(1)' }),
+          ...(isPrimary && !isHighContrastMode && { filter: 'invert(1)' }),
         },
       }),
       label: {
@@ -86,7 +86,8 @@ export const getComponentCss = (
       icon: {
         transition: getTransition('opacity'),
         ...(!disabled &&
-          isPrimary && {
+          isPrimary &&
+          !isHighContrastMode && {
             filter: 'invert(1)',
           }),
         ...(loading && {
