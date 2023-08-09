@@ -1,5 +1,5 @@
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
-import * as formUtils from '../../utils/form/form-utils';
+import * as formUtils from '../../utils/form';
 import { TextFieldWrapper } from './text-field-wrapper';
 import * as a11yUtils from '../../utils/a11y/a11y';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
@@ -54,7 +54,7 @@ describe('componentWillLoad', () => {
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     const component = new TextFieldWrapper();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'isWithinForm');
+    const spy = jest.spyOn(formUtils, 'isWithinForm');
 
     expect(component['isWithinForm']).toBe(undefined);
 

@@ -25,7 +25,7 @@ import {
 } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
-  pinCodeType: PinCodeType,
+  type: PinCodeType,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isDisabled: boolean,
@@ -59,7 +59,7 @@ export const getComponentCss = (
           textIndent: 0,
           color: primaryColor,
           transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states
-          ...(isTypeNumber(pinCodeType) && {
+          ...(isTypeNumber(type) && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
         }),

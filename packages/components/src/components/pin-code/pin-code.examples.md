@@ -87,7 +87,7 @@ export default class Code extends Vue {
 
   disabledMarkup = `<p-pin-code label="Some label" disabled></p-pin-code>`;
 
-  requirededMarkup = `<p-pin-code label="Some label" required></p-pin-code>`;
+  requiredMarkup = `<p-pin-code label="Some label" required></p-pin-code>`;
 
   get theme(): Theme {
     return this.$store.getters.theme;
