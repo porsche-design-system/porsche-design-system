@@ -46,13 +46,6 @@ depending on the defined `state`.
 
 <Playground :markup="requiredMarkup" :config="config"></Playground>
 
-## Initial Value
-
-An initial `value` can optionally be set on the parent element, and if desired, also be set upon change event emission
-as described in the <a :href="eventHandlingUrl">Event Handling</a> section.
-
-<Playground :markup="initialValueMarkup" :config="config"></Playground>
-
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
@@ -95,8 +88,6 @@ export default class Code extends Vue {
   disabledMarkup = `<p-pin-code label="Some label" disabled></p-pin-code>`;
 
   requirededMarkup = `<p-pin-code label="Some label" required></p-pin-code>`;
-
-  initialValueMarkup = `<p-pin-code label="Some label" value="1234"></p-pin-code>`;
 
   get theme(): Theme {
     return this.$store.getters.theme;

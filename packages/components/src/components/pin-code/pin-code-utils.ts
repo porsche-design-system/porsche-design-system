@@ -9,4 +9,8 @@ export const isTypeNumber = (type: string): boolean => {
   return type === 'number';
 };
 
+export const inputIsSingleDigit = (input: string): boolean => {
+  return input.length === 1 && /\d/.test(input);
+};
+
 export type PinCodeState = FormState;

@@ -12,7 +12,7 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
-import { PIN_CODE_TYPES } from './pin-code-utils';
+import { inputIsSingleDigit, PIN_CODE_TYPES } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
 
@@ -87,6 +87,9 @@ export class PinCode {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.type, this.hideLabel, this.state, this.disabled, this.theme);
 
+    // reset array of input elements
+    this.pinCodeElements = [];
+
     return (
       <Host>
         <label class="label">
@@ -101,7 +104,9 @@ export class PinCode {
           )}
           <div
             class="pin-code-container"
-            ref={(el) => (this.pinCodeElements = el.children as unknown as HTMLInputElement[])}
+            onKeyDown={this.keyDownHandler}
+            onPaste={this.pasteHandler}
+            onClick={this.clickHandler}
           >
             {...Array.from({ length: this.length }).map((_value, index) => (
               <input
@@ -112,12 +117,11 @@ export class PinCode {
                 autoComplete="one-time-code"
                 pattern="\d*"
                 inputMode="numeric" // get numeric keyboard on mobile
-                value={this.value ? this.value.toString().slice(index, index + 1) : this.value}
+                maxLength={1}
+                value={this.value?.[index]}
                 disabled={this.disabled}
                 required={this.required}
-                onKeyDown={(e) => this.keyDownHandler(e, index)}
-                onKeyUp={(e) => this.keyUpHandler(e, index)}
-                onPaste={(e) => this.pasteHandler(e)}
+                ref={(el) => this.pinCodeElements.push(el)}
               />
             ))}
           </div>
@@ -129,79 +133,64 @@ export class PinCode {
     );
   }
 
-  // TODO if possible use utilities instead of private functions
-
-  private keyDownHandler = (e: KeyboardEvent, index: number): void => {
-    // TODO: reminder to remove console.log
-    /* eslint-disable no-console */
-    console.log('keyDown', e);
-    // if input is valid, delete previous value in order to overwrite it
-    if (this.isValidInput(e.key)) {
-      this.pinCodeElements[index].value = '';
-      // handle backspace: transfer focus backward, if the input value is empty, and it is not the first input field
-    } else if (e.key === 'Backspace' && this.hasEmptyValue(index) && !this.isFirstPinInputField(index)) {
-      this.pinCodeElements[index - 1].focus();
-      // if input is not of type number, except paste
-    } else if (e.key.length === 1 && !/\d/.test(e.key) && !e.metaKey && !e.ctrlKey) {
-      e.preventDefault();
+  private clickHandler = (
+    e: MouseEvent & { target: HTMLInputElement & { previousElementSibling: HTMLInputElement } }
+  ): void => {
+    // only allow focus on filled or the first empty input
+    if (!e.target.value && e.target.previousElementSibling && !e.target.previousElementSibling.value) {
+      this.pinCodeElements.find((pinCodeElement) => !pinCodeElement.value).focus();
     }
   };
 
-  private keyUpHandler = (e: KeyboardEvent, index: number): void => {
-    // TODO: reminder to remove console.log
-    /* eslint-disable no-console */
-    console.log('keyUp');
-    if (this.isValidInput(e.key)) {
+  private keyDownHandler = (
+    e: KeyboardEvent & {
+      target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
+    }
+  ): void => {
+    // if input is valid overwrite old value
+    if (inputIsSingleDigit(e.key)) {
+      e.target.value = e.key;
+      e.target.nextElementSibling ? e.target.nextElementSibling.focus() : e.target.blur();
+      e.preventDefault();
+      // TODO: could be a utility
+      this.value = this.pinCodeElements.map((pinCodeElement) => pinCodeElement.value).join('');
       this.updateValue();
-      // transfer focus forward, if it is not the last input field
-      if (!this.isLastPinInputField(index) || this.value.toString().length < this.length) {
-        this.pinCodeElements[index + 1].focus();
+      // handle backspace
+    } else if (e.key === 'Backspace') {
+      // transfer focus backward, if the input value is empty, and it is not the first input field
+      if (!e.target.value && e.target.previousElementSibling) {
+        e.target.previousElementSibling.value = '';
+        e.target.previousElementSibling.focus();
+      } else {
+        e.target.value = '';
       }
+      e.preventDefault();
+      // TODO: could be a utility
+      this.value = this.pinCodeElements.map((pinCodeElement) => pinCodeElement.value).join('');
+      this.updateValue();
     }
   };
 
   private pasteHandler = (e: ClipboardEvent): void => {
-    // TODO: reminder to remove console.log
-    /* eslint-disable no-console */
-    console.log('onPaste');
-    // remove whitespaces and cut string if value is too long
-    const pastedData = e.clipboardData.getData('Text').replace(/\s/g, '').slice(0, this.length);
-    if (/^[0-9]+$/.test(pastedData) && pastedData !== this.value) {
-      this.updateValue(pastedData);
-      this.pinCodeElements[pastedData.length === this.length ? pastedData.length - 1 : pastedData.length].focus();
-      e.preventDefault();
-    } else {
-      e.preventDefault();
-    }
-  };
-
-  // input is only valid, if new value is a single digit
-  private isValidInput = (key: string): boolean => {
-    return key.length === 1 && /\d/.test(key);
-  };
-
-  private isLastPinInputField = (index: number): boolean => {
-    return index + 1 === this.length;
-  };
-
-  private isFirstPinInputField = (index: number): boolean => {
-    return index === 0;
-  };
-
-  private hasEmptyValue = (index: number): boolean => {
-    return this.pinCodeElements[index].value.length === 0;
-  };
-
-  private updateValue = (value?: string): void => {
-    if (value) {
-      this.value = value;
-    } else {
-      const pinCode = [];
-      for (const pinCodeElement of this.pinCodeElements) {
-        pinCode.push(pinCodeElement.value);
+    // remove whitespaces and cut string if pasted value is too long
+    const optimizedPastedData = e.clipboardData.getData('Text').replace(/\s/g, '').slice(0, this.length);
+    if (/^[0-9]+$/.test(optimizedPastedData) && optimizedPastedData !== this.value) {
+      this.value = optimizedPastedData;
+      this.updateValue();
+      // blur last input element
+      if (optimizedPastedData.length === this.length) {
+        this.pinCodeElements.map((pinCodeElement) => pinCodeElement.blur());
+      } else {
+        this.pinCodeElements.find((pinCodeElement) => !pinCodeElement.value).focus();
+        this.pinCodeElements[this.value.length].focus();
+        // TODO: Why is value of all elements empty in this check?
+        // this.pinCodeElements.find((pinCodeElement) => !pinCodeElement.value).focus();
       }
-      this.value = pinCode.join('');
     }
+    e.preventDefault();
+  };
+
+  private updateValue = (): void => {
     this.update.emit({ value: this.value });
     // TODO: reminder to remove console.log
     /* eslint-disable no-console */
