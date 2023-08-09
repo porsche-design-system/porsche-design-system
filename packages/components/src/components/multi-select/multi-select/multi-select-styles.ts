@@ -23,10 +23,9 @@ import { FormState } from '../../../utils/form/form-state';
 import { getLabelStyles, INPUT_HEIGHT } from '../../../styles/form-styles';
 import { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { getPlaceholderStyles } from '../../../styles/placeholder';
-import { getNoResultsOptionJSSStyles } from '../../../styles/select/option-styles';
+import { getNoResultsOptionJSSStyles, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/select/option-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { OPTION_HEIGHT } from '../../../styles/select/option-styles';
 
 const inputYPadding = '13px';
 const selectorNativeSelect = '::slotted([slot=select])';
@@ -162,7 +161,7 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
         right: 0,
         [isDirectionDown ? 'top' : 'bottom']: isDirectionDown ? '100%' : `${INPUT_HEIGHT - 1}px`,
         boxSizing: 'border-box',
-        maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
+        maxHeight: `${8.5 * (MULTI_SELECT_OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
         border: `2px solid ${primaryColor}`,

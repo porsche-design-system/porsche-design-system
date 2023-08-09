@@ -6,6 +6,7 @@ import { hoverMediaQuery } from '../hover-media-query';
 import { JssStyle, Styles } from 'jss';
 
 export const OPTION_HEIGHT = 40; // optgroups are higher and ignored
+export const MULTI_SELECT_OPTION_HEIGHT = 44;
 
 export const getSelectOptionStyles = (theme: Theme, additionalOptionJSSStyle?: JssStyle): Styles => {
   const { primaryColor, contrastHighColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =
