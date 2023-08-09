@@ -2,7 +2,7 @@ import type { FormState } from '../../../utils/form/form-state';
 import type { SelectDropdownDirection, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { determineDropdownDirection } from '../../../utils/select/select-dropdown';
 import type { Theme } from '../../../utils';
-import { setAttributes } from '../../../utils';
+import { consoleWarn, setAttributes } from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
 
@@ -91,12 +91,28 @@ const getValidOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
 export const getHighlightedOption = (options: MultiSelectOption[]): MultiSelectOption =>
   options.find((option) => option.highlighted);
 
-export const setSelectedOptions = (options: MultiSelectOption[], value: (string | number)[]): void =>
+export const setSelectedOptions = (options: MultiSelectOption[], value: (string | number)[]): void => {
+  const selectedValues: (string | number)[] = [];
+
   options.forEach((option) => {
     if (value.includes(option.value)) {
       option.selected = true;
+      selectedValues.push(option.value);
+    } else {
+      option.selected = false;
     }
+    forceUpdate(option);
   });
+
+  const valuesNotIncluded = value.filter((val) => !selectedValues.includes(val));
+
+  if (valuesNotIncluded.length > 0) {
+    consoleWarn(
+      'The following values are not included in the options of the p-multi-select:',
+      valuesNotIncluded.join(', ')
+    );
+  }
+};
 
 export const setHighlightedOption = (option: MultiSelectOption, highlighted: boolean): void => {
   option.highlighted = highlighted;

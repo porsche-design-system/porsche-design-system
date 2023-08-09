@@ -38,6 +38,7 @@ import {
   Listen,
   Prop,
   State,
+  Watch,
 } from '@stencil/core';
 import {
   AllowedTypes,
@@ -146,6 +147,14 @@ export class MultiSelect {
     });
   }
 
+  @Watch('value')
+  public onValueChange(): void {
+    setSelectedOptions(this.multiSelectOptions, this.value);
+    if (this.isWithinForm) {
+      updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
+    }
+  }
+
   public connectedCallback(): void {
     document.addEventListener('mousedown', this.onClickOutside, true);
     this.isWithinForm = isWithinForm(this.host);
@@ -156,6 +165,7 @@ export class MultiSelect {
       this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
     }
     this.updateOptions();
+    setSelectedOptions(this.multiSelectOptions, this.value);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -273,7 +283,6 @@ export class MultiSelect {
       (el) => el.tagName !== 'SELECT'
     ) as HTMLPMultiSelectOptionElement[];
     this.multiSelectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
-    setSelectedOptions(this.multiSelectOptions, this.value);
     if (this.isWithinForm) {
       updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }
