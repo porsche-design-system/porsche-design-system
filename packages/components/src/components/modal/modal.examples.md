@@ -97,6 +97,13 @@ attribute.
 
 <Playground :markup="withoutDismissButton"></Playground>
 
+## Sticky Footer
+
+If you need a footer that is always visible for example with a call-to-action button, you can use provide a named
+`slot="footer"`.
+
+<Playground :markup="stickyFooter"></Playground>
+
 ## Full Width Content
 
 It is possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by adding the
@@ -209,6 +216,13 @@ export default class Code extends Vue {
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal heading="Some Heading" dismiss-button="false" open="false">
   <p-text>Some Content</p-text>
+</p-modal>`;
+
+  stickyFooter =
+    `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+<p-modal heading="Some Heading" open="false">
+  <p-text style="height: 110vh">Some Content</p-text>
+  <p-text slot="footer">Sticky footer</p-text>
 </p-modal>`;
 
   fullWidthContent =
