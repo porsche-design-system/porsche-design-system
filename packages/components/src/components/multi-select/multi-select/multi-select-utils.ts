@@ -91,6 +91,13 @@ const getValidOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
 export const getHighlightedOption = (options: MultiSelectOption[]): MultiSelectOption =>
   options.find((option) => option.highlighted);
 
+export const setSelectedOptions = (options: MultiSelectOption[], value: (string | number)[]): void =>
+  options.forEach((option) => {
+    if (value.includes(option.value)) {
+      option.selected = true;
+    }
+  });
+
 export const setHighlightedOption = (option: MultiSelectOption, highlighted: boolean): void => {
   option.highlighted = highlighted;
   forceUpdate(option);

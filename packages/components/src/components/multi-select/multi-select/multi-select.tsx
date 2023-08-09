@@ -15,6 +15,7 @@ import {
   resetSelectedOptions,
   setFirstOptionHighlighted,
   setLastOptionHighlighted,
+  setSelectedOptions,
   syncMultiSelectOptionProps,
   syncNativeSelect,
   updateHighlightedOption,
@@ -88,7 +89,7 @@ export class MultiSelect {
   /** This attribute is used to specify the name of the control. */
   @Prop() public name: string;
 
-  /** The selected values. */
+  /** The initial selected values. */
   @Prop() public value: (string | number)[] = [];
 
   /** The validation state. */
@@ -272,6 +273,7 @@ export class MultiSelect {
       (el) => el.tagName !== 'SELECT'
     ) as HTMLPMultiSelectOptionElement[];
     this.multiSelectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
+    setSelectedOptions(this.multiSelectOptions, this.value);
     if (this.isWithinForm) {
       updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }

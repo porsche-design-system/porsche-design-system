@@ -1133,7 +1133,7 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * The selected values.
+          * The initial selected values.
          */
         "value": (string | number)[];
     }
@@ -3343,7 +3343,7 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * The selected values.
+          * The initial selected values.
          */
         "value"?: (string | number)[];
     }
