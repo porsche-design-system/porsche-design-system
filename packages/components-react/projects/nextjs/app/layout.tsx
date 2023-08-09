@@ -1,6 +1,6 @@
 import NextScript from 'next/script';
-import { Select } from '../components/Select';
-import { FooterPartials, HeaderPartials } from '../components';
+import type { PropsWithChildren } from 'react';
+import { FooterPartials, HeaderPartials, Select } from '../components';
 import { Providers } from './providers';
 
 export default function RootLayout({ children }: PropsWithChildren<{}>): JSX.Element {
