@@ -9,11 +9,12 @@ import {
   hasLabel,
   hasMessage,
   hasPropValueChanged,
+  isWithinForm,
   THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
-import { inputIsSingleDigit, isWithinForm, PIN_CODE_TYPES } from './pin-code-utils';
+import { inputIsSingleDigit, PIN_CODE_TYPES } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
 
