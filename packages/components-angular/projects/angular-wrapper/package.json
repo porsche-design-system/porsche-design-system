@@ -18,7 +18,7 @@
   "homepage": "https://designsystem.porsche.com",
   "dependencies": {
     "@porsche-design-system/components-js": "3.5.0",
-    "tslib": "^2.5.0"
+    "tslib": "^2.6.1"
   },
   "peerDependencies": {
     "@angular/common": ">=15.0.0 <17.0.0",

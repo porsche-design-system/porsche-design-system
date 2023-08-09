@@ -8,7 +8,7 @@ import { getThemedColors } from './colors';
 
 export const getThemedTypographyColor = (
   theme: Theme,
-  textColor: Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor
+  textColor: Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
 ): string => {
   // TODO: don't destructure for better minification
   const {
@@ -23,7 +23,7 @@ export const getThemedTypographyColor = (
   } = getThemedColors(theme);
 
   const colorMap: Record<
-    Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor,
+    Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
     string
   > = {
     primary: primaryColor,
