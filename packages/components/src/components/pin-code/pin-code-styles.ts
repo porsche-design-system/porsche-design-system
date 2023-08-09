@@ -38,7 +38,9 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        ...hostHiddenStyles,
+        ...addImportantToEachRule({
+          ...hostHiddenStyles,
+        }),
       },
       input: {
         ...addImportantToEachRule({
