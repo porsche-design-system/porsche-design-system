@@ -120,6 +120,12 @@ export const setLastOptionHighlighted = (host: HTMLElement, options: MultiSelect
 export const resetHighlightedOptions = (options: MultiSelectOption[]): void =>
   options.forEach((option) => setHighlightedOption(option, false));
 
+export const resetSelectedOptions = (options: MultiSelectOption[]): void =>
+  options.forEach((option) => {
+    option.selected = false;
+    forceUpdate(option);
+  });
+
 const getNewOptionIndex = (options: MultiSelectOption[], direction: SelectDropdownDirectionInternal): number => {
   const validItems = getValidOptions(options);
   const validMax = validItems.length - 1;

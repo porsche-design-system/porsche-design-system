@@ -12,6 +12,7 @@ import {
   MultiSelectUpdateEvent,
   resetFilteredOptions,
   resetHighlightedOptions,
+  resetSelectedOptions,
   setFirstOptionHighlighted,
   setLastOptionHighlighted,
   syncMultiSelectOptionProps,
@@ -116,6 +117,7 @@ export class MultiSelect {
 
   @State() private isOpen = false;
   @State() private srHighlightedOptionText = '';
+  @State() private hasFilterResults = true;
 
   private nativeSelect: HTMLSelectElement;
   private multiSelectOptions: MultiSelectOption[] = [];
@@ -245,7 +247,7 @@ export class MultiSelect {
             {...getListAriaAttributes(this.label, this.required, true, this.isOpen, true)}
             ref={(el) => (this.listElement = el)}
           >
-            {!hasFilterOptionResults(this.multiSelectOptions) && (
+            {!this.hasFilterResults && (
               <li class="no-results" aria-live="polite" role="status">
                 <span aria-hidden="true">---</span>
                 <span class="no-results__sr">No results found</span>
@@ -280,8 +282,7 @@ export class MultiSelect {
       this.resetFilter();
     } else {
       updateOptionsFilterState((e.target as HTMLInputElement).value, this.multiSelectOptions);
-      // TODO: Use either state or only update when empty
-      forceUpdate(this.host);
+      this.hasFilterResults = hasFilterOptionResults(this.multiSelectOptions);
     }
     // in case input is focused via tab instead of click
     this.isOpen = true;
@@ -296,10 +297,7 @@ export class MultiSelect {
   };
 
   private onResetClick = (): void => {
-    this.multiSelectOptions.forEach((option) => {
-      option.selected = false;
-      forceUpdate(option);
-    });
+    resetSelectedOptions(this.multiSelectOptions);
     this.inputElement.focus();
     forceUpdate(this.host);
   };
