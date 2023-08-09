@@ -107,12 +107,7 @@ export class PinCode {
           {hasDescription(this.host, this.description) && (
             <span class="label__text">{this.description || <slot name="description" />}</span>
           )}
-          <div
-            class="pin-code-container"
-            onKeyDown={this.keyDownHandler}
-            onPaste={this.pasteHandler}
-            onClick={this.clickHandler}
-          >
+          <div class="pin-code-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onClick={this.onClick}>
             {...Array.from({ length: this.length }).map((_value, index) => (
               <input
                 type={this.type === 'number' ? 'text' : this.type}
@@ -138,7 +133,7 @@ export class PinCode {
     );
   }
 
-  private clickHandler = (
+  private onClick = (
     e: MouseEvent & { target: HTMLInputElement & { previousElementSibling: HTMLInputElement } }
   ): void => {
     // only allow focus on filled or the first empty input
@@ -147,7 +142,7 @@ export class PinCode {
     }
   };
 
-  private keyDownHandler = (
+  private onKeyDown = (
     e: KeyboardEvent & {
       target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
     }
@@ -180,7 +175,7 @@ export class PinCode {
     }
   };
 
-  private pasteHandler = (e: ClipboardEvent): void => {
+  private onPaste = (e: ClipboardEvent): void => {
     // remove whitespaces and cut string if pasted value is too long
     const optimizedPastedData = e.clipboardData.getData('Text').replace(/\s/g, '').slice(0, this.length);
     if (/^[0-9]+$/.test(optimizedPastedData) && optimizedPastedData !== this.value) {
