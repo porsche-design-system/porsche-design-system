@@ -8,6 +8,7 @@ import {
   hasDescription,
   hasLabel,
   hasMessage,
+  hasPropValueChanged,
   THEMES,
   validateProps,
 } from '../../utils';
@@ -81,6 +82,10 @@ export class PinCode {
     if (this.value) {
       this.value.toString().slice(0, this.length);
     }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
