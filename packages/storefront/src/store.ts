@@ -48,7 +48,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    toggleLoadingAsync({ commit, state }, payload): void {
+    toggleLoadingAsync({ commit }, payload): void {
       commit('setIsLoading', payload);
     },
   },
