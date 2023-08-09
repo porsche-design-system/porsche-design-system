@@ -289,7 +289,25 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `$&
     const manipulatedChildren = children.map((child, i) =>
       typeof child === 'object' && 'props' in child && otherChildren.includes(child)
-        ? { ...child, props: { ...child.props, role: 'tab', tabIndex: (this.props.activeTabIndex || 0) === i ? '0' : '-1', 'aria-selected': this.props.activeTabIndex === i ? 'true' : 'false' } }
+        ? child.type === 'button'
+          ? {
+              ...child,
+              props: {
+                ...child.props,
+                role: 'tab',
+                tabIndex: (this.props.activeTabIndex || 0) === i ? '0' : '-1',
+                'aria-selected': this.props.activeTabIndex === i ? 'true' : 'false',
+              },
+            }
+          : child.type === 'a'
+          ? {
+              ...child,
+              props: {
+                ...child.props,
+                'aria-current': this.props.activeTabIndex === i ? 'true' : 'false',
+              },
+            }
+          : child
         : child
     );`
           )

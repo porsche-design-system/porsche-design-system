@@ -142,6 +142,14 @@ describe('manual test cases', () => {
         </fromComponents.PTabs>
       ),
     ],
+    'p-tabs-bar': [
+      () => (
+        <fromComponents.PTabsBar activeTabIndex={1}>
+          <a href="#">Item 1</a>
+          <a href="#">Item 2</a>
+        </fromComponents.PTabsBar>
+      ),
+    ],
     'p-text-list-item': [
       () => (
         <fromComponents.PTextList listType="ordered" orderType="alphabetically">
