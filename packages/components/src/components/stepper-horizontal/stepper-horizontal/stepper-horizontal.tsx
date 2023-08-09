@@ -5,7 +5,6 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
-  getShadowRootHTMLElement,
   hasPropValueChanged,
   observeBreakpointChange,
   parseJSON,
@@ -87,8 +86,6 @@ export class StepperHorizontal {
         isSmooth: false,
       };
     }
-
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
   }
 
   public componentDidUpdate(): void {
@@ -116,7 +113,7 @@ export class StepperHorizontal {
           onClick={this.onClickScroller}
           ref={(el) => (this.scrollerElement = el)}
         >
-          <slot />
+          <slot onSlotchange={this.onSlotChange} />
         </PrefixedTagNames.pScroller>
       </Host>
     );
@@ -170,7 +167,7 @@ export class StepperHorizontal {
     }
   };
 
-  private onSlotchange = (): void => {
+  private onSlotChange = (): void => {
     this.validateComponent();
     this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
     this.scrollIntoView();

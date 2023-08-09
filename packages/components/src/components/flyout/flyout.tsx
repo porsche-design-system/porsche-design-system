@@ -84,16 +84,6 @@ export class Flyout {
       setScrollLock(true);
       this.updateFocusTrap(true);
     }
-
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
-      if (this.open) {
-        // 1 tick delay is needed so that web components can be bootstrapped
-        setTimeout(() => {
-          this.updateFocusTrap(true);
-          this.dismissBtn.shadowRoot.querySelector('button').focus(); // set initial focus
-        });
-      }
-    });
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -106,7 +96,7 @@ export class Flyout {
         this.onScroll();
       }
       // Necessary to select button to make :focus-visible work
-      this.dismissBtn.shadowRoot.querySelector('button').focus();
+      getShadowRootHTMLElement(this.dismissBtn, 'button').focus();
     }
   }
 
@@ -171,7 +161,7 @@ export class Flyout {
             )}
           </div>
           <div class="content">
-            <slot />
+            <slot onSlotchange={this.onSlotChange} />
           </div>
           {this.hasFooter && (
             <div class="footer" ref={(el) => (this.footer = el)}>
@@ -187,6 +177,16 @@ export class Flyout {
       </Host>
     );
   }
+
+  private onSlotChange = () => {
+    if (this.open) {
+      // 1 tick delay is needed so that web components can be bootstrapped
+      setTimeout(() => {
+        this.updateFocusTrap(true);
+        getShadowRootHTMLElement(this.dismissBtn, 'button').focus(); // set initial focus
+      });
+    }
+  };
 
   private onMouseDown = (e: MouseEvent): void => {
     if ((e.composedPath() as HTMLElement[])[0] === this.host && !clickStartedInScrollbarTrack(this.host, e)) {
