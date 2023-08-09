@@ -387,6 +387,22 @@ exports[`should call validateProps() with correct parameters via render for p-pa
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-pin-code: propTypes with ValidatorFunctions 1`] = `
+{
+  "description": "string",
+  "disabled": "boolean",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "length": "number",
+  "message": "string",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "type": "oneOf",
+  "value": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-popover: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
