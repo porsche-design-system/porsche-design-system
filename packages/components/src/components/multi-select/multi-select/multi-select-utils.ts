@@ -2,6 +2,7 @@ import type { FormState } from '../../../utils/form/form-state';
 import type { SelectDropdownDirection, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { determineDropdownDirection } from '../../../utils/select/select-dropdown';
 import type { Theme } from '../../../utils';
+import { setAttributes } from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
 
@@ -22,13 +23,13 @@ export const initNativeSelect = (
   required: boolean
 ): HTMLSelectElement => {
   const nativeSelect = document.createElement('select');
-  nativeSelect.multiple = true;
-  nativeSelect.name = name;
-  nativeSelect.disabled = disabled;
-  nativeSelect.required = required;
-  nativeSelect.ariaHidden = 'true';
-  nativeSelect.tabIndex = -1;
-  nativeSelect.slot = 'select';
+  setAttributes(nativeSelect, {
+    multiple: 'true',
+    'aria-hidden': 'true',
+    'tab-index': '-1',
+    slot: 'select',
+  });
+  syncNativeSelect(nativeSelect, name, disabled, required);
   host.prepend(nativeSelect);
   return nativeSelect;
 };
@@ -39,9 +40,11 @@ export const syncNativeSelect = (
   disabled: boolean,
   required: boolean
 ): void => {
-  nativeSelect.name = name;
-  nativeSelect.disabled = disabled;
-  nativeSelect.required = required;
+  setAttributes(nativeSelect, {
+    name,
+    disabled: `${disabled}`,
+    required: `${required}`,
+  });
 };
 
 export const updateNativeOptions = (
