@@ -49,7 +49,7 @@ const generateDSRComponents = (): void => {
         .replace(/\n  public componentDidRender\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public disconnectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentShouldUpdate\([\s\S]+?\n  }\n/g, '')
-        .replace(/\n  private (?!get).*{[\s\S]+?\n  };?\n/g, '') // private methods without getters
+        .replace(/\n  private (?!get).*\([\s\S]+?\n  };?\n/g, '') // private methods without getters
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
@@ -62,6 +62,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onClick={.*?}/g, '') // onClick props
         .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
+        .replace(/\s+onPaste={.*?}/g, '') // onPaste props
         .replace(/\s+onInput={.*?}/g, '') // onInput props
         .replace(/\s+on(?:Tab)?Change={.*?}/g, '') // onChange and onTabChange props
         .replace(/ +ref: [\s\S]*?,\n/g, '') // ref props
@@ -134,7 +135,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       newFileContent = newFileContent
         .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
         .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
-        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2'); // revert for certain private members
+        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides|pinCodeElements)/g, '$1$2'); // revert for certain private members
 
       // take care of nested components of PrefixedTagNames
       const componentImports = Array.from(newFileContent.matchAll(/<PrefixedTagNames.p([A-Za-z]+)/g))
