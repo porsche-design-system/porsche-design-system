@@ -113,8 +113,7 @@ export class Modal {
   }
 
   public disconnectedCallback(): void {
-    setFocusTrap(this.host, false);
-    setScrollLock(false);
+    this.updateFocusTrap(false);
   }
 
   public render(): JSX.Element {
