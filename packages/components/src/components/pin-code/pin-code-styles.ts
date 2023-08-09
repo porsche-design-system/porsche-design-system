@@ -6,6 +6,8 @@ import { getCss } from '../../utils';
 import { getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import { isTypeNumber } from './pin-code-utils';
+import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -14,7 +16,6 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
 } from '../../styles';
-import { isTypeNumber } from './pin-code-utils';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -31,6 +32,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { contrastMediumColor, disabledColor, primaryColor } = getThemedColors(theme);
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // we need 10px additionally so input height becomes 54px
   return getCss({
     '@global': {
@@ -48,7 +50,7 @@ export const getComponentCss = (
           WebkitAppearance: 'none', // iOS safari
           appearance: 'none',
           boxSizing: 'border-box',
-          border: `${borderWidthBase} solid ${contrastMediumColor}`,
+          border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
           borderRadius: borderRadiusSmall,
           background: 'transparent',
           font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
@@ -65,7 +67,7 @@ export const getComponentCss = (
         ...(hoverMediaQuery({
           // with the media query the selector has higher priority and overrides disabled styles
           ['&:not(:disabled):not(:focus):not([readonly]):hover']: {
-            borderColor: addImportantToRule(primaryColor),
+            borderColor: addImportantToRule(formStateHoverColor || primaryColor),
           },
         }) as Styles),
         '&:focus': {
