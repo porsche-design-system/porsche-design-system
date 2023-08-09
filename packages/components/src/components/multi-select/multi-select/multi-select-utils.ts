@@ -10,7 +10,7 @@ export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectDropdownDirection;
 
 export const syncMultiSelectOptionProps = (options: HTMLPMultiSelectOptionElement[], theme: Theme): void => {
-  options.forEach((item: HTMLElement & MultiSelectOptionInternalHTMLProps) => {
+  options.forEach((item: MultiSelectOptionInternalHTMLProps) => {
     item.theme = theme;
     forceUpdate(item);
   });
@@ -81,10 +81,11 @@ const getValidOptions = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSe
   options.filter((option) => !option.hidden && !option.disabled);
 
 export const getHighlightedOption = (options: HTMLPMultiSelectOptionElement[]): HTMLPMultiSelectOptionElement =>
-  options.find((option) => option.shadowRoot.firstElementChild.classList.contains('option--highlighted'));
+  options.find((option) => (option as MultiSelectOptionInternalHTMLProps).highlighted);
 
-export const setHighlightedOption = (option: HTMLPMultiSelectOptionElement, highlighted: boolean): void =>
-  option.shadowRoot.querySelector('.option').classList[highlighted ? 'add' : 'remove']('option--highlighted');
+export const setHighlightedOption = (option: HTMLPMultiSelectOptionElement, highlighted: boolean): void => {
+  (option as MultiSelectOptionInternalHTMLProps).highlighted = highlighted;
+};
 
 export const getHighlightedOptionIndex = (options: HTMLPMultiSelectOptionElement[]): number =>
   options.indexOf(getHighlightedOption(options));

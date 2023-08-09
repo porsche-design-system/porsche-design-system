@@ -28,9 +28,6 @@ export class MultiSelectOption {
   /** Disables the option. */
   @Prop() public disabled?: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
-  /** Hides options which are not matching the searchString **/
-  private hidden = false;
-
   public componentDidUpdate(): void {
     this.host.dispatchEvent(
       new CustomEvent('internalOptionUpdate', {
@@ -51,11 +48,12 @@ export class MultiSelectOption {
         class={{
           option: true,
           'option--selected': this.selected,
+          'option--highlighted': this.host.highlighted,
           'option--disabled': this.disabled,
-          'option--hidden': this.hidden,
+          'option--hidden': this.host.hidden,
         }}
         onClick={this.onClick}
-        {...getOptionAriaAttributes(this.selected, this.disabled, this.hidden, !!this.value)}
+        {...getOptionAriaAttributes(this.selected, this.disabled, this.host.hidden, !!this.value)}
       >
         <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={this.host.theme || 'light'}>
           <input type="checkbox" checked={this.selected} disabled={this.disabled} />
