@@ -1,9 +1,9 @@
 # Tabs Bar
 
 The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router
-to ensure your window location updates on tab click, use it for hash routing and displaying content accordingly to the
-hash, to change the state of another element and therefore change the appearance of your content or as skip navigation
-to move on a longer page.
+to ensure your **window location** updates on tab click, use it for **hash routing** and displaying content accordingly
+to the hash, as **skip navigation** to move on a longer page or to **change the state** of another element and therefore
+change the appearance of your content .
 
 The component does not handle the display of your content. If you use the component you have to manually care for the
 content to be rendered beneath. To help with this task the component triggers an event called `update` with the index of
@@ -13,11 +13,13 @@ If you intend to only change content on tab-click without location changes and y
 pre-rendered then we prepared a component which also handles the correct display of content according to the active tab.
 Have a look at the [Tabs](components/tabs) component.
 
-**Note**: We use `<button>` tags in the examples below because you have to use anchor tags with `href` in your
-application! Therefore, we avoid messing with the window location.
-
-It is a controlled component. This means it does not contain any internal state, and you got full control over its
+It is a controlled component. This means it does not contain any internal state, and you are in full control over its
 behavior.
+
+<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
+  For documentation purpose we use <code>&lt;button&gt;</code> tags in the examples below to make them clickable without changing the route. 
+  For route changes it is mandatory to use <code>&lt;a&gt;</code> tags with <code>href</code> in your application. And be aware of that it's not allowed to mix and match <code>&lt;button&gt;</code> with <code>&lt;a&gt;</code> tags as direct children in the component! 
+</p-inline-notification>
 
 <TableOfContents></TableOfContents>
 

@@ -52,7 +52,9 @@ export const setBarStyle = (tabElements: HTMLElement[], activeTabIndex: number, 
   if (barElement) {
     // el.ariaSelected isn't supported in firefox, therefore we need to read the attribute
     // https://caniuse.com/mdn-api_element_ariaselected
-    const currentActiveTabElement = tabElements.find((el) => getAttribute(el, 'aria-selected') === 'true');
+    const currentActiveTabElement = tabElements.find(
+      (el) => getAttribute(el, 'aria-selected') === 'true' || getAttribute(el, 'aria-current') === 'true'
+    );
     if (currentActiveTabElement) {
       // for initial activeTabIndex > 0 and resized window with fluid font-size for size="medium"
       // we need to adjust the starting point of the transition

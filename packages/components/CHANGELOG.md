@@ -32,6 +32,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   before design system initialization
   ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
 
+#### Fixed
+
+- Keyboard behavior and `aria` semantics if either `a` or `button` elements are used as slotted content in `Tabs Bar`
+  component. ([#2713](https://github.com/porsche-design-system/porsche-design-system/pull/2713))
+
 ### [3.5.0] - 2023-07-25
 
 ### [3.5.0-rc.0] - 2023-07-21
