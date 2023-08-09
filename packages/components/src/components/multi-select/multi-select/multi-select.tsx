@@ -227,7 +227,7 @@ export class MultiSelect {
             <slot onSlotchange={this.updateOptions} />
           </ul>
         </div>
-        {this.isWithinForm && <slot name="select"></slot>}
+        {this.isWithinForm && <slot name="select" />}
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
