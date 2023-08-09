@@ -1,12 +1,12 @@
-# Dependencies 04.07.2023
+# Dependencies 07.08.2023
 
 ## Overview of Framework Versions
 
-|         | Monorepo | Sample Integrations   |
-| ------- | -------- | --------------------- |
-| Angular | 15.2.9   | 16.1.1                |
-| React   | 18.2.0   | 18.2.0                |
-| Next.js | 13.4.8   | 13.4.6 (React 18.2.0) |
+|         | Monorepo | Sample Integrations    |
+| ------- | -------- | ---------------------- |
+| Angular | 15.2.9   | 16.1.6                 |
+| React   | 18.2.0   | 18.2.0                 |
+| Next.js | 13.4.13  | 13.4.12 (React 18.2.0) |
 
 ## Vue
 
@@ -65,6 +65,21 @@ consuming teams are already on the next major.
 - `@angular/compiler-cli`
 - `@angular/language-service`
 - `ng-packagr`
+- `angular-imask` with v7.0.0 it is bundled for Angular 16 and became incompatible with our Angular 15 setup:
+  https://github.com/uNmAnNeR/imaskjs/releases
+
+---
+
+## Styled Components
+
+With v6 they are providing their own types and thereby replace `@types/styled-components` but with tons of issues
+especially around style objects that we provide. This seems to be the main issue covering all typing related problems:
+https://github.com/styled-components/styled-components/issues/4062  
+Those issues were not resolved in `6.0.7`, yet.
+
+### Affected dependencies:
+
+- `styled-components`
 
 ---
 

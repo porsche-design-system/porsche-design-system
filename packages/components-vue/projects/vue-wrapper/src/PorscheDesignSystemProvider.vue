@@ -12,8 +12,9 @@
     prefix: '',
   });
 
+  // no need for reactivity to be in sync with Angular and React
   load(props); // runtime prefix or cdn change is not supported
-  provide(prefixInjectionKey, props.prefix);
+  provide(prefixInjectionKey, props.prefix); // eslint-disable-line vue/no-setup-props-destructure
 </script>
 
 <template><slot /></template>
