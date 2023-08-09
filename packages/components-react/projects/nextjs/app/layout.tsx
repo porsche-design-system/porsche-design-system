@@ -3,7 +3,7 @@ import { Select } from '../components/Select';
 import { FooterPartials, HeaderPartials } from '../components';
 import { Providers } from './providers';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: PropsWithChildren<{}>): JSX.Element {
   const cdn = 'local';
 
   return (

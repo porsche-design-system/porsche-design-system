@@ -5,13 +5,11 @@ import type { PropsWithChildren, ReactNode } from 'react';
 import { useEffect } from 'react';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
-export const Providers = ({ children }: PropsWithChildren<{ children: ReactNode }>): JSX.Element => {
+export const Providers = (props: PropsWithChildren<{}>): JSX.Element => {
   useEffect(() => {
     (window as any).componentsReady = componentsReady; // for vrt
   }, []);
   return (
-    <>
-      <PorscheDesignSystemProvider cdn="auto">{children}</PorscheDesignSystemProvider>
-    </>
+    <PorscheDesignSystemProvider cdn="auto" {...props} />
   );
 };
