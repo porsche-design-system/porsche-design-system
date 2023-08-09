@@ -5,6 +5,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   getScrollActivePosition,
+  getShadowRootHTMLElement,
   hasPropValueChanged,
   observeBreakpointChange,
   parseJSON,
@@ -86,6 +87,9 @@ export class StepperHorizontal {
         isSmooth: false,
       };
     }
+
+    // TODO: would be great to use this in jsx but that doesn't work reliable
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotChange);
   }
 
   public componentDidUpdate(): void {
@@ -113,7 +117,7 @@ export class StepperHorizontal {
           onClick={this.onClickScroller}
           ref={(el) => (this.scrollerElement = el)}
         >
-          <slot onSlotchange={this.onSlotChange} />
+          <slot />
         </PrefixedTagNames.pScroller>
       </Host>
     );
