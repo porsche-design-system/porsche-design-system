@@ -151,7 +151,7 @@ export const getComponentCss = (
         transform: isOpen ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
         opacity: isOpen ? 1 : 0,
         transition: `opacity ${duration} ${transitionTimingFunction},transform ${duration} ${transitionTimingFunction}`,
-        ...(hasDismissButton && { paddingTop: pxToRemWithUnit(32) }), // rem value needed to prevent overlapping of close button and contents in scaling mode
+        paddingTop: hasDismissButton ? pxToRemWithUnit(32) : contentPadding, // rem value needed to prevent overlapping of close button and contents in scaling mode
         ...(!hasFooter && { paddingBottom: contentPadding }),
         background: backgroundColor,
         outline: isHighContrastMode ? '1px solid transparent' : 0,
