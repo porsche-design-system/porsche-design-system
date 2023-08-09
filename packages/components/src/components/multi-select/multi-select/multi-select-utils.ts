@@ -93,6 +93,7 @@ export const getHighlightedOption = (options: MultiSelectOption[]): MultiSelectO
 
 export const setHighlightedOption = (option: MultiSelectOption, highlighted: boolean): void => {
   option.highlighted = highlighted;
+  forceUpdate(option);
 };
 
 export const getHighlightedOptionIndex = (options: MultiSelectOption[]): number =>

@@ -330,6 +330,7 @@ export class MultiSelect {
         const highlightedOption = getHighlightedOption(this.multiSelectOptions);
         if (highlightedOption) {
           highlightedOption.selected = !highlightedOption.selected;
+          forceUpdate(highlightedOption);
         }
         this.updateSrHighlightedOptionText();
         break;
