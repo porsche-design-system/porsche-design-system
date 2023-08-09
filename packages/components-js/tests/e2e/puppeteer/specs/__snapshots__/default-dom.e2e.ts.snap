@@ -313,12 +313,12 @@ exports[`should have no basic DOM regression for p-pagination 1`] = `
 
 exports[`should have no basic DOM regression for p-pin-code 1`] = `
 "<label class="label">
-  <input type="number" aria-describedby="otpCode" autocomplete="one-time-code" maxlength="1" pattern="d{1}">
-  <input type="number" aria-describedby="otpCode" autocomplete="one-time-code" maxlength="1" pattern="d{1}">
-  <input type="number" aria-describedby="otpCode" autocomplete="one-time-code" maxlength="1" pattern="d{1}">
-  <input type="number" aria-describedby="otpCode" autocomplete="one-time-code" maxlength="1" pattern="d{1}">
-  <slot name="hiddenInput">
-  </slot>
+  <div class="pin-code-container">
+    <input type="text" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric" maxlength="1">
+    <input type="text" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric" maxlength="1">
+    <input type="text" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric" maxlength="1">
+    <input type="text" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric" maxlength="1">
+  </div>
 </label>"
 `;
 
