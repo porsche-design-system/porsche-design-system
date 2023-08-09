@@ -10,7 +10,12 @@ import {
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
 } from '@porsche-design-system/utilities-v2';
-import { addImportantToEachRule, hostHiddenStyles, getSchemedHighContrastMediaQuery } from '../../styles';
+import {
+  addImportantToEachRule,
+  hostHiddenStyles,
+  getSchemedHighContrastMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../styles';
 import type { IconColor, IconColorDeprecated } from './icon-utils';
 import {
   filterDarkContrastHigh,
@@ -95,6 +100,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
+        colorScheme: 'light dark',
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule(hostHiddenStyles),
@@ -106,6 +112,9 @@ export const getComponentCss = (
         pointerEvents: 'none', // disable dragging/ghosting of images
         ...(!isColorInherit && {
           filter: filterMap[theme][color],
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            filter: filterMap.dark[color],
+          }),
           ...(isHighContrastMode &&
             getSchemedHighContrastMediaQuery(
               {

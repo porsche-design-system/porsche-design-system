@@ -8,6 +8,7 @@ import {
   getHighContrastColors,
   getThemedColors,
   hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 
 const sizeSmall = '48px';
@@ -26,11 +27,13 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
   const animationDuration = 'var(--p-animation-duration, 2s)';
   const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
   const { canvasColor, canvasTextColor } = getHighContrastColors();
 
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
+        colorScheme: 'light dark',
         display: 'inline-flex',
         verticalAlign: 'top',
         ...hostHiddenStyles,
@@ -44,13 +47,21 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       },
       circle: {
         '&:first-child': {
+          // TODO: High Contrast Mode should be handled within a local color helper function
           stroke: isHighContrastMode ? canvasTextColor : contrastMediumColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            stroke: isHighContrastMode ? canvasTextColor : contrastMediumColorDark,
+          }),
           animation: `$rotate ${animationDuration} linear infinite`, // needs to rotate to eliminate stutter in safari
         },
         '&:last-child': {
           transformOrigin: '0 0',
           animation: `$dash ${animationDuration} ease-in-out infinite`,
+          // TODO: High Contrast Mode should be handled within a local color helper function
           stroke: isHighContrastMode ? canvasColor : primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            stroke: isHighContrastMode ? canvasColor : primaryColorDark,
+          }),
           strokeDasharray:
             ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
               ? strokeDasharray
