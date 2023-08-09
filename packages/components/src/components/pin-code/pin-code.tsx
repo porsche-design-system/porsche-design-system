@@ -150,7 +150,11 @@ export class PinCode {
     // if input is valid overwrite old value
     if (inputIsSingleDigit(e.key)) {
       e.target.value = e.key;
-      e.target.nextElementSibling ? e.target.nextElementSibling.focus() : e.target.blur();
+      if (e.target.nextElementSibling) {
+        e.target.nextElementSibling.focus();
+      } else {
+        e.target.blur();
+      }
       e.preventDefault();
       // TODO: could be a utility
       this.value = this.pinCodeElements.map((pinCodeElement) => pinCodeElement.value).join('');
