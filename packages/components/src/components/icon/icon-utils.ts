@@ -17,6 +17,7 @@ export const isUrl = (str: string): boolean => str?.length > 0 && /(\/)/.test(st
 
 const DEFAULT_ICON_NAME: IconName = 'arrow-right';
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_NAME): string => {
   if (iconNameOrSource === null) {
     return buildIconUrl(DEFAULT_ICON_NAME);

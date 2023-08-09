@@ -35,8 +35,9 @@ export const getComponentCss = (
   const { contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
   const isPositionLeft = position === 'left';
   const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidLarge}`;
-  const shadowColor = isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor;
-  const transparentColor = isThemeDark(theme) ? 'rgba(14, 14, 18, 0)' : 'rgba(255, 255, 255, 0)';
+  const isDark = isThemeDark(theme);
+  const shadowColor = isDark ? flyoutBoxShadowColorDark : flyoutBoxShadowColor;
+  const transparentColor = isDark ? 'rgba(14, 14, 18, 0)' : 'rgba(255, 255, 255, 0)';
 
   return getCss({
     '@global': addImportantToEachRule({
@@ -67,8 +68,8 @@ export const getComponentCss = (
       position: 'sticky',
       top: 0,
     },
-    [`${headerShadowClass}`]: {
-      boxShadow: `${isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px 5px 10px`,
+    [headerShadowClass]: {
+      boxShadow: `${isDark ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px 5px 10px`,
     },
     ...(hasHeader && {
       'header-content': {
@@ -132,12 +133,12 @@ export const getComponentCss = (
         position: 'sticky',
         bottom: 0,
       },
-      [`${footerShadowClass}`]: {
-        boxShadow: `${isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px -5px 10px`,
+      [footerShadowClass]: {
+        boxShadow: `${isDark ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px -5px 10px`,
       },
     }),
     ...(hasSubFooter && {
-      ['sub-footer']: {
+      'sub-footer': {
         padding: contentPadding,
       },
     }),
