@@ -1,3 +1,5 @@
+'use client';
+
 import type { PropsWithChildren, JSX } from 'react';
 import { createContext, useEffect } from 'react';
 import { load } from '@porsche-design-system/components-js';

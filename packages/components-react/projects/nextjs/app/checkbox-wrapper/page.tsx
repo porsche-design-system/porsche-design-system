@@ -1,4 +1,5 @@
 /* Auto Generated File */
+'use client';
 import type { NextPage } from 'next';
 import { PCheckboxWrapper } from '@porsche-design-system/components-react/ssr';
 import { useEffect } from 'react';

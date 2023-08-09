@@ -1,7 +1,7 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
-import { Toast } from '../components';
+import { Toast } from '../../components';
 
 const ToastPrefixedPage: NextPage = (): JSX.Element => {
   const style = `

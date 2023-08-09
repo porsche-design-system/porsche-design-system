@@ -18,7 +18,7 @@ const rootDirectory = path.resolve(__dirname, '..');
 const pagesDirectories: { [key in Framework]: string } = {
   angular: path.resolve(rootDirectory, '../components-angular/src/app/pages'),
   react: path.resolve(rootDirectory, '../components-react/src/pages'),
-  nextjs: path.resolve(rootDirectory, '../components-react/projects/nextjs/pages'),
+  nextjs: path.resolve(rootDirectory, '../components-react/projects/nextjs/app'),
   remix: path.resolve(rootDirectory, '../components-react/projects/remix/app/routes'),
 };
 
@@ -178,8 +178,8 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
           : { fileName: '', fileContent: '' };
 
       writeFile(path.resolve(pagesDirectories[framework], convertedFileName), convertedFileContent);
-
-      return './' + path.parse(convertedFileName).name;
+      const { dir, name } = path.parse(convertedFileName);
+      return './' + (dir ? dir : name);
     })
     .sort(byAlphabet);
 
