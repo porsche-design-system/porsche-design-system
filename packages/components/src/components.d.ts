@@ -1193,6 +1193,10 @@ export namespace Components {
          */
         "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
+          * Limits the height of the scrolling area.
+         */
+        "maxHeight"?: string;
+        /**
           * @deprecated since v3.0.0, will be removed with next major release, use `alignScrollIndicator` instead. Sets the vertical position of scroll indicator
          */
         "scrollIndicatorPosition"?: ScrollerScrollIndicatorPosition;
@@ -1370,6 +1374,14 @@ export namespace Components {
           * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
          */
         "caption"?: string;
+        /**
+          * Should this table have sticky column headers.
+         */
+        "sticky"?: boolean;
+        /**
+          * If the table is sticky it must have a fixed height.
+         */
+        "stickyHeight"?: string;
         /**
           * Adapts the color when used on dark background.
          */
@@ -3333,6 +3345,10 @@ declare namespace LocalJSX {
          */
         "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
+          * Limits the height of the scrolling area.
+         */
+        "maxHeight"?: string;
+        /**
           * @deprecated since v3.0.0, will be removed with next major release, use `alignScrollIndicator` instead. Sets the vertical position of scroll indicator
          */
         "scrollIndicatorPosition"?: ScrollerScrollIndicatorPosition;
@@ -3542,6 +3558,14 @@ declare namespace LocalJSX {
           * Emitted when sorting is changed.
          */
         "onUpdate"?: (event: PTableCustomEvent<TableUpdateEvent>) => void;
+        /**
+          * Should this table have sticky column headers.
+         */
+        "sticky"?: boolean;
+        /**
+          * If the table is sticky it must have a fixed height.
+         */
+        "stickyHeight"?: string;
         /**
           * Adapts the color when used on dark background.
          */

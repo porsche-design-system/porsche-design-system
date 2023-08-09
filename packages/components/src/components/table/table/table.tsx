@@ -15,6 +15,8 @@ import { SORT_EVENT_NAME, warnIfCaptionIsMissing } from './table-utils';
 const propTypes: PropTypes<typeof Table> = {
   caption: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  sticky: AllowedTypes.boolean,
+  stickyHeight: AllowedTypes.string,
 };
 
 @Component({
@@ -30,6 +32,12 @@ export class Table {
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
+
+  /** Should this table have sticky column headers. */
+  @Prop() public sticky?: boolean = false;
+
+  /** If the table is sticky it must have a fixed height. */
+  @Prop() public stickyHeight?: string = '';
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
@@ -50,7 +58,7 @@ export class Table {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.theme, this.sticky);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const hasSlottedCaption = hasNamedSlot(this.host, 'caption');
@@ -67,7 +75,11 @@ export class Table {
           </div>
         )}
 
-        <PrefixedTagNames.pScroller scrollbar={true} theme={this.theme}>
+        <PrefixedTagNames.pScroller
+          scrollbar={true}
+          theme={this.theme}
+          maxHeight={this.sticky ? this.stickyHeight : undefined}
+        >
           <div class="table" role="table" {...tableAttr}>
             <slot />
           </div>

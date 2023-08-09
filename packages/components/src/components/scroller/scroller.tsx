@@ -48,6 +48,7 @@ const propTypes: PropTypes<typeof Scroller> = {
   scrollbar: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ScrollerAriaAttribute>(SCROLLER_ARIA_ATTRIBUTES),
+  maxHeight: AllowedTypes.string,
 };
 
 @Component({
@@ -84,6 +85,9 @@ export class Scroller {
 
   /** Add ARIA role. */
   @Prop() public aria?: SelectedAriaAttributes<ScrollerAriaAttribute>;
+
+  /** Limits the height of the scrolling area. */
+  @Prop() public maxHeight?: string = '';
 
   @State() private isPrevHidden = true;
   @State() private isNextHidden = true;
@@ -156,7 +160,8 @@ export class Scroller {
       this.isPrevHidden,
       this.scrollIndicatorPosition || this.alignScrollIndicator,
       this.scrollbar,
-      this.theme
+      this.theme,
+      this.maxHeight
     );
 
     const renderPrevNextButton = (direction: ScrollerDirection): JSX.Element => {

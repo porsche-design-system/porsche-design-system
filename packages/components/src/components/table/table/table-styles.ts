@@ -12,7 +12,7 @@ export const cssVariableTableHoverColor = '--p-internal-table-hover-color';
 export const cssVariableTableBorderColor = '--p-internal-table-border-color';
 export const cssVariableTableHeadCellIconFilter = '--p-internal-table-head-cell-icon-filter';
 
-export const getComponentCss = (theme: Theme): string => {
+export const getComponentCss = (theme: Theme, sticky?: boolean): string => {
   const { primaryColor, hoverColor, contrastLowColor } = doGetThemedColors(theme);
 
   return getCss({
@@ -23,6 +23,7 @@ export const getComponentCss = (theme: Theme): string => {
         color: primaryColor,
         textAlign: 'left',
         ...hostHiddenStyles,
+        '--p-internal-table-head-cell-position': sticky ? 'sticky' : 'initial',
       }),
       '::slotted(*)': addImportantToEachRule({
         [cssVariableTableHoverColor]: hoverColor,

@@ -38,6 +38,8 @@ export const getComponentCss = (
         padding: `2px ${spacingFluidSmall} ${spacingFluidSmall}`,
         verticalAlign: 'bottom',
         whiteSpace: multiline ? 'normal' : 'nowrap',
+        position: 'var(--p-internal-table-head-cell-position)',
+        top: 0,
         ...hostHiddenStyles,
       }),
       ...(sortable
