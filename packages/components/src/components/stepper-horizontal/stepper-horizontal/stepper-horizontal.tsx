@@ -88,7 +88,7 @@ export class StepperHorizontal {
       };
     }
 
-    // TODO: would be great to use this in jsx but that doesn't work reliable
+    // TODO: would be great to use this in jsx but that doesn't work reliable and causes jsdom-polyfill unit test to fail
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotChange);
   }
 

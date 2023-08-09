@@ -85,7 +85,7 @@ export class Flyout {
       this.updateFocusTrap(true);
     }
 
-    // TODO: would be great to use this in jsx but that doesn't work reliable
+    // TODO: would be great to use this in jsx but that doesn't work reliable and causes focus e2e test to fail
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
       if (this.open) {
         // 1 tick delay is needed so that web components can be bootstrapped
