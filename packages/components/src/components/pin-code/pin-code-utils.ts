@@ -14,7 +14,7 @@ export const isTypeNumber = (type: string): boolean => {
 
 export const inputIsSingleDigit = (input: string): boolean => input.length === 1 && /\d/.test(input);
 
-export const joinInputValues = (pinCodeElements: HTMLInputElement[]): string => pinCodeElements.map((el) => el.value).join()
+export const joinInputValues = (pinCodeElements: HTMLInputElement[]): string => pinCodeElements.map((el) => el.value).join('')
 
 export const initHiddenInput = (
   host: HTMLElement,
