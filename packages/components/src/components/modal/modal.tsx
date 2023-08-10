@@ -19,7 +19,6 @@ import {
   clickStartedInScrollbarTrack,
 } from './modal-utils';
 import { footerShadowClass, getComponentCss } from './modal-styles';
-import { throttle } from 'throttle-debounce';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -75,6 +74,8 @@ export class Modal {
   private hasFooter: boolean;
   private footer: HTMLElement;
   private dialog: HTMLElement;
+  private target: HTMLElement; // for intersection observer
+  private observer: IntersectionObserver;
 
   private get hasDismissButton(): boolean {
     return this.disableCloseButton ? false : this.dismissButton;
@@ -138,7 +139,7 @@ export class Modal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown} onScroll={this.hasFooter && this.onScroll}>
+      <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown}>
         <div
           class="root"
           role="dialog"
@@ -175,6 +176,8 @@ export class Modal {
             </div>
           )}
         </div>
+        {/* target has do be outside of scaled .root modal for correct intersections */}
+        {this.hasFooter && <div class="target" ref={(el) => (this.target = el)} />}
       </Host>
     );
   }
@@ -182,6 +185,22 @@ export class Modal {
   private updateFocusTrap(isOpen: boolean): void {
     setFocusTrap(this.host, isOpen, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
     setScrollLock(isOpen);
+
+    if (this.hasFooter) {
+      this.observer =
+        this.observer ||
+        new IntersectionObserver(
+          ([e]) => {
+            this.footer.classList.toggle(footerShadowClass, !e.isIntersecting);
+          },
+          {
+            root: this.host,
+            threshold: 1, // fully visible
+          }
+        );
+
+      this.observer[isOpen ? 'observe' : 'unobserve'](this.target);
+    }
   }
 
   private onSlotChange = () => {
@@ -199,18 +218,6 @@ export class Modal {
       this.dismissModal();
     }
   };
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  private onScroll = throttle(100, () => {
-    // intersection observer would be nicer but only works with small delay after the scale3d transform
-    // is finished which causes the shadow to pop in too late
-    const { clientHeight: hostClientHeight, scrollHeight: hostScrollHeight, scrollTop: hostScrollTop } = this.host;
-    const { clientHeight: footerClientHeight, offsetTop: footerOffsetTop } = this.footer;
-    if (hostClientHeight < hostScrollHeight) {
-      const shouldApplyShadow = footerClientHeight + hostScrollHeight - hostScrollTop > footerOffsetTop;
-      this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
-    }
-  });
 
   private dismissModal = (): void => {
     if (this.hasDismissButton) {

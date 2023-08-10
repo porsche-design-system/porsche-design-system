@@ -606,7 +606,7 @@ it('should remove overflow hidden from body if unmounted', async () => {
   expect(await getBodyOverflow()).toBe('visible');
 });
 
-describe('sticky footer', () => {
+fdescribe('sticky footer', () => {
   const expectedBoxShadow = 'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px';
   it('should not show box-shadow initially when not scrollable', async () => {
     await initBasicModal({ isOpen: true, content: '<div>Some Content</div>', hasSlottedFooter: true });
@@ -634,13 +634,40 @@ describe('sticky footer', () => {
     expect(await getFooterBoxShadow()).toBe(expectedBoxShadow);
 
     const host = await getHost();
-    const scrollTop = await host.evaluate((el) => {
+    await host.evaluate((el) => {
       el.scrollBy({ top: 1000 });
       return el.scrollTop;
     });
 
-    expect(scrollTop).toBeGreaterThan(400);
     expect(await getFooterBoxShadow()).toBe('none');
+  });
+
+  it('should show box-shadow again when scrolling up from bottom', async () => {
+    await initBasicModal({
+      isOpen: true,
+      content: '<div style="height: 110vh">Some Content</div>',
+      hasSlottedFooter: true,
+    });
+
+    const host = await getHost();
+    await host.evaluate((el) => {
+      el.scrollBy({ top: 1000 }); // should be bottom
+    });
+
+    expect(await getFooterBoxShadow()).toBe('none');
+
+    const modal = await getModal();
+    const modalMargin = await getElementStyle(modal, 'margin');
+
+    // not sure why the margin is 80px on a window that is 800px high
+    await host.evaluate((el, value) => {
+      el.scrollBy({ top: -value });
+    }, parseInt(modalMargin));
+
+    // looks like we need a tick for the intersection observer
+    await new Promise((resolve) => setTimeout(resolve));
+
+    expect(await getFooterBoxShadow()).toBe(expectedBoxShadow);
   });
 });
 

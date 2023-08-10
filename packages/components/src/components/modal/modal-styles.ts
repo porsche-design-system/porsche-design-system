@@ -36,6 +36,7 @@ const { primaryColor: darkThemePrimaryColor, contrastHighColor: darkThemeContras
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
+const marginTopBottom = 'clamp(16px, 7vh, 192px)';
 export const footerShadowClass = 'footer--shadow';
 
 export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean): JssStyle => {
@@ -51,7 +52,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         minWidth: '276px', // on viewport 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
         maxWidth: '1535.5px', // on viewport 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
         minHeight: 'auto',
-        margin: `clamp(16px, 7vh, 192px) ${gridExtendedOffsetBase}`,
+        margin: `${marginTopBottom} ${gridExtendedOffsetBase}`,
         borderRadius: borderRadiusMedium,
       };
 };
@@ -109,7 +110,7 @@ export const getComponentCss = (
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          flexWrap: 'wrap',
+          flexDirection: 'column',
           ...(isOpen
             ? {
                 visibility: 'inherit',
@@ -188,8 +189,6 @@ export const getComponentCss = (
         position: 'sticky',
         background: backgroundColor,
         padding: contentPadding,
-        // marginTop: '-5px',
-        // bottom: '5px',
         bottom: 0,
         borderBottomLeftRadius: borderRadiusMedium,
         borderBottomRightRadius: borderRadiusMedium,
@@ -197,6 +196,10 @@ export const getComponentCss = (
       [footerShadowClass]: {
         boxShadow: `${scrollShadowColor} 0 -5px 10px`,
         clipPath: 'inset(-20px 0 0 0)', // crop leaking box-shadow on left and right side
+      },
+      // target for intersection observer
+      target: {
+        marginTop: `calc(-1 * ${marginTopBottom})`,
       },
     }),
     ...(hasDismissButton && {
