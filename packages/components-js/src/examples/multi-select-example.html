@@ -1,0 +1,28 @@
+<form>
+  <p-multi-select name="name">
+    <p-multi-select-option value="a">Option A</p-multi-select-option>
+    <p-multi-select-option value="b">Option B</p-multi-select-option>
+    <p-multi-select-option value="c">Option C</p-multi-select-option>
+    <p-multi-select-option value="d">Option D</p-multi-select-option>
+    <p-multi-select-option value="e">Option E</p-multi-select-option>
+    <p-multi-select-option value="f">Option F</p-multi-select-option>
+  </p-multi-select>
+
+  <p-button type="submit">Submit</p-button>
+</form>
+
+<p-text>Last submitted data: none</p-text>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    debugElement.innerText = `Last submitted data: ${
+      Array.from(formData.entries())
+        .map(([_, value]) => value)
+        .join(', ') || 'none'
+    }`;
+  });
+</script>

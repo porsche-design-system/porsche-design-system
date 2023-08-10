@@ -1,0 +1,27 @@
+<p-multi-select name="name">
+  <p-multi-select-option value="a">Option A</p-multi-select-option>
+  <p-multi-select-option value="b">Option B</p-multi-select-option>
+  <p-multi-select-option value="c">Option C</p-multi-select-option>
+  <p-multi-select-option value="d">Option D</p-multi-select-option>
+  <p-multi-select-option value="e">Option E</p-multi-select-option>
+  <p-multi-select-option value="f">Option F</p-multi-select-option>
+</p-multi-select>
+
+<p-text></p-text>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const multiSelect = document.querySelector('p-multi-select');
+  let selectedValues = ['a', 'b'];
+  multiSelect.value = selectedValues;
+  setDebugText();
+
+  multiSelect.addEventListener('update', (e) => {
+    selectedValues = e.detail.value;
+    setDebugText();
+  });
+
+  function setDebugText() {
+    debugElement.innerText = `Selected values: ${selectedValues.join(', ') || 'none'}`;
+  }
+</script>
