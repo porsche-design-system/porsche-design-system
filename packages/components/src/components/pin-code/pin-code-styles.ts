@@ -82,6 +82,14 @@ export const getComponentCss = (
           WebkitTextFillColor: disabledColor,
         },
       },
+      '::slotted(input)': {
+        ...addImportantToEachRule({
+          position: 'absolute',
+          height: inputSize,
+          width: 0,
+          opacity: 0,
+        }),
+      },
       '.pin-code-container': {
         display: 'flex',
         gap: spacingStaticSmall,

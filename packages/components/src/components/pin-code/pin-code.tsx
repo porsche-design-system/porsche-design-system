@@ -14,7 +14,7 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
-import { inputIsSingleDigit, PIN_CODE_TYPES } from './pin-code-utils';
+import { initHiddenInput, inputIsSingleDigit, PIN_CODE_TYPES, syncHiddenInput } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
 
@@ -67,7 +67,7 @@ export class PinCode {
   @Prop() public type?: PinCodeType = 'number';
 
   /** Sets the initial value of the Pin Code. */
-  @Prop() public value?: string | number;
+  @Prop() public value?: string;
 
   /** Emitted when selected element changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEvent>;
@@ -75,20 +75,31 @@ export class PinCode {
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  private pinCodeElements: HTMLInputElement[] = [];
   private isWithinForm: boolean;
+  private hiddenInput: HTMLInputElement;
+  private pinCodeElements: HTMLInputElement[] = [];
   // TODO: private ariaElement: HTMLSpanElement;
 
-  public componentWillLoad(): void {
+  public connectedCallback(): void {
     this.isWithinForm = isWithinForm(this.host);
   }
 
-  public componentWillRender(): void {
+  public componentWillLoad(): void {
     // make sure initial value is not too long
     if (this.value) {
       this.value.toString().slice(0, this.length);
     }
+    if (this.isWithinForm) {
+      this.hiddenInput = initHiddenInput(this.host, this.value, this.disabled, this.required);
+    }
   }
+
+  public componentWillUpdate(): void {
+    if (this.isWithinForm) {
+      syncHiddenInput(this.hiddenInput, this.value, this.disabled, this.required);
+    }
+  }
+
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -114,7 +125,7 @@ export class PinCode {
             <span class="label__text">{this.description || <slot name="description" />}</span>
           )}
           <div class="pin-code-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onClick={this.onClick}>
-            {this.isWithinForm && <input name="hiddenInput" type="hidden" value={this.value} />}
+            {this.isWithinForm && <slot name="hidden-input"/>}
             {...Array.from({ length: this.length }).map((_value, index) => (
               <input
                 type={this.type === 'number' ? 'text' : this.type}
