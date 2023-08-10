@@ -170,8 +170,6 @@ export class PinCode {
       e.target.value = e.key;
       if (e.target.nextElementSibling) {
         e.target.nextElementSibling.focus();
-      } else {
-        e.target.blur();
       }
       e.preventDefault();
       // TODO: could be a utility
@@ -201,9 +199,8 @@ export class PinCode {
       this.updateValue();
       // blur last input element
       if (optimizedPastedData.length === this.length) {
-        this.pinCodeElements.map((pinCodeElement) => pinCodeElement.blur());
+        this.pinCodeElements.pop().focus();
       } else {
-        this.pinCodeElements.find((pinCodeElement) => !pinCodeElement.value).focus();
         this.pinCodeElements[this.value.length].focus();
         // TODO: Why is value of all elements empty in this check?
         // this.pinCodeElements.find((pinCodeElement) => !pinCodeElement.value).focus();
