@@ -5685,13 +5685,19 @@ input {
   -moz-appearance: textfield !important;
 }
 input::-webkit-inner-spin-button {
-  display: none;
+  display: none !important;
 }
 input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+  cursor: not-allowed !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
+}
+::slotted(input) {
+  position: absolute !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: 0 !important;
+  opacity: 0 !important;
 }
 .pin-code-container {
   display: flex;
@@ -5700,7 +5706,7 @@ input:disabled {
   flex-wrap: wrap;
 }
 .label {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
