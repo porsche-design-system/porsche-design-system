@@ -131,6 +131,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-modal>
     </div>
 
+    <div class="playground light" title="should show modal with sticky footer">
+      <p-modal [open]="true" [heading]="'Sticky footer'">
+        <div style="height: 110vh">Some Content: should show modal with sticky footer</div>
+        <div slot="footer">Sticky footer</div>
+      </p-modal>
+    </div>
+
     <div class="visualize-grid">
       <span></span>
       <span></span>

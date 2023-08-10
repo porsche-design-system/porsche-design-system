@@ -132,6 +132,13 @@ export const ModalPage = (): JSX.Element => {
         </PModal>
       </div>
 
+      <div className="playground light" title="should show modal with sticky footer">
+        <PModal open={true} heading="Sticky footer">
+          <div style={{ height: '110vh' }}>Some Content: should show modal with sticky footer</div>
+          <div slot="footer">Sticky footer</div>
+        </PModal>
+      </div>
+
       <div className="visualize-grid">
         <span />
         <span />
