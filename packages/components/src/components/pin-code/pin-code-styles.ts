@@ -10,7 +10,6 @@ import { isTypeNumber } from './pin-code-utils';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import {
   addImportantToEachRule,
-  addImportantToRule,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -42,8 +41,8 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...addImportantToEachRule({
       input: {
-        ...addImportantToEachRule({
           height: inputSize,
           margin: 0,
           outline: 0,
@@ -61,7 +60,6 @@ export const getComponentCss = (
           transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states
           ...(isTypeNumber(type) && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
-          }),
         }),
         '&::-webkit-inner-spin-button': {
           display: 'none',
@@ -69,11 +67,11 @@ export const getComponentCss = (
         ...(hoverMediaQuery({
           // with the media query the selector has higher priority and overrides disabled styles
           ['&:not(:disabled):not(:focus):not([readonly]):hover']: {
-            borderColor: addImportantToRule(formStateHoverColor || primaryColor),
+            borderColor: formStateHoverColor || primaryColor,
           },
         }) as Styles),
         '&:focus': {
-          borderColor: addImportantToRule(primaryColor),
+          borderColor: primaryColor,
         },
         '&:disabled': {
           cursor: 'not-allowed',
@@ -82,6 +80,7 @@ export const getComponentCss = (
           WebkitTextFillColor: disabledColor,
         },
       },
+      }),
       '::slotted(input)': {
         ...addImportantToEachRule({
           position: 'absolute',

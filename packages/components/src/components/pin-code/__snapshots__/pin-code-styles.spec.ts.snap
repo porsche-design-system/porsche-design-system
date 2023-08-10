@@ -26,16 +26,16 @@ input {
   -moz-appearance: textfield !important;
 }
 input::-webkit-inner-spin-button {
-  display: none;
+  display: none !important;
 }
 input:focus {
   border-color: #010205 !important;
 }
 input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+  cursor: not-allowed !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input) {
   position: absolute !important;
@@ -170,16 +170,16 @@ input {
   -moz-appearance: textfield !important;
 }
 input::-webkit-inner-spin-button {
-  display: none;
+  display: none !important;
 }
 input:focus {
   border-color: #010205 !important;
 }
 input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+  cursor: not-allowed !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 ::slotted(input) {
   position: absolute !important;
@@ -267,16 +267,16 @@ input {
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
 }
 input::-webkit-inner-spin-button {
-  display: none;
+  display: none !important;
 }
 input:focus {
   border-color: #FBFCFF !important;
 }
 input:disabled {
-  cursor: not-allowed;
-  color: #7E7F82;
-  border-color: #7E7F82;
-  -webkit-text-fill-color: #7E7F82;
+  cursor: not-allowed !important;
+  color: #7E7F82 !important;
+  border-color: #7E7F82 !important;
+  -webkit-text-fill-color: #7E7F82 !important;
 }
 ::slotted(input) {
   position: absolute !important;
