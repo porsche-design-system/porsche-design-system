@@ -28,7 +28,9 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-modal');
 const getHeader = () => selectNode(page, 'p-modal >>> .header');
 const getModal = () => selectNode(page, 'p-modal >>> .root');
-const getModalDismissButton = () => selectNode(page, 'p-modal >>> p-button-pure.dismiss');
+const getDismissButton = () => selectNode(page, 'p-modal >>> p-button-pure.dismiss');
+const getFooter = () => selectNode(page, 'p-modal >>> .footer');
+const getFooterBoxShadow = async (): Promise<string> => getElementStyle(await getFooter(), 'boxShadow');
 const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
 
 const initBasicModal = (opts?: {
@@ -37,6 +39,7 @@ const initBasicModal = (opts?: {
   heading?: string;
   aria?: SelectedAriaAttributes<ModalAriaAttribute>;
   hasSlottedHeading?: boolean;
+  hasSlottedFooter?: boolean;
   disableCloseButton?: boolean;
 }): Promise<void> => {
   const {
@@ -45,6 +48,7 @@ const initBasicModal = (opts?: {
     heading = 'Some Heading',
     aria,
     hasSlottedHeading,
+    hasSlottedFooter,
     disableCloseButton,
   } = opts || {};
 
@@ -54,7 +58,7 @@ const initBasicModal = (opts?: {
     aria && `aria="${aria}"`,
     disableCloseButton && 'disable-close-button',
   ]
-    .filter((x) => x)
+    .filter(Boolean)
     .join(' ');
 
   return setContentWithDesignSystem(
@@ -63,6 +67,7 @@ const initBasicModal = (opts?: {
     <p-modal ${attributes}>
       ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
       ${content}
+      ${hasSlottedFooter ? '<div slot="footer">Some Footer</div>' : ''}
     </p-modal>`
   );
 };
@@ -190,7 +195,7 @@ describe('can be dismissed', () => {
   });
 
   it('should be closable via x button', async () => {
-    const dismissBtn = await getModalDismissButton();
+    const dismissBtn = await getDismissButton();
     expect(dismissBtn).not.toBeNull();
 
     const dismissBtnReal = await selectNode(page, 'p-modal >>> p-button-pure.dismiss >>> button');
@@ -278,7 +283,7 @@ describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'close')).counter).toBe(0);
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
 
-    const dismissBtn = await getModalDismissButton();
+    const dismissBtn = await getDismissButton();
     await dismissBtn.click();
     expect((await getEventSummary(host, 'close')).counter).toBe(1);
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
@@ -599,6 +604,44 @@ it('should remove overflow hidden from body if unmounted', async () => {
   await waitForStencilLifecycle(page);
 
   expect(await getBodyOverflow()).toBe('visible');
+});
+
+describe('sticky footer', () => {
+  const expectedBoxShadow = 'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px';
+  it('should not show box-shadow initially when not scrollable', async () => {
+    await initBasicModal({ isOpen: true, content: '<div>Some Content</div>', hasSlottedFooter: true });
+
+    expect(await getFooterBoxShadow()).toBe('none');
+  });
+
+  it('should show box-shadow initially when scrollable', async () => {
+    await initBasicModal({
+      isOpen: true,
+      content: '<div style="height: 110vh">Some Content</div>',
+      hasSlottedFooter: true,
+    });
+
+    expect(await getFooterBoxShadow()).toBe(expectedBoxShadow);
+  });
+
+  it('should remove box-shadow when scrolled to bottom', async () => {
+    await initBasicModal({
+      isOpen: true,
+      content: '<div style="height: 110vh">Some Content</div>',
+      hasSlottedFooter: true,
+    });
+
+    expect(await getFooterBoxShadow()).toBe(expectedBoxShadow);
+
+    const host = await getHost();
+    const scrollTop = await host.evaluate((el) => {
+      el.scrollBy({ top: 1000 });
+      return el.scrollTop;
+    });
+
+    expect(scrollTop).toBeGreaterThan(400);
+    expect(await getFooterBoxShadow()).toBe('none');
+  });
 });
 
 describe('lifecycle', () => {
