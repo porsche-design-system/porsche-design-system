@@ -14,7 +14,7 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
-import { initHiddenInput, inputIsSingleDigit, PIN_CODE_TYPES, syncHiddenInput } from './pin-code-utils';
+import { initHiddenInput, inputIsSingleDigit, joinInputValues, PIN_CODE_TYPES, syncHiddenInput } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
 
@@ -172,8 +172,7 @@ export class PinCode {
         e.target.nextElementSibling.focus();
       }
       e.preventDefault();
-      // TODO: could be a utility
-      this.value = this.pinCodeElements.map((pinCodeElement) => pinCodeElement.value).join('');
+      this.value = joinInputValues(this.pinCodeElements);
       this.updateValue();
       // handle backspace
     } else if (e.key === 'Backspace') {
@@ -185,8 +184,7 @@ export class PinCode {
         e.target.value = '';
       }
       e.preventDefault();
-      // TODO: could be a utility
-      this.value = this.pinCodeElements.map((pinCodeElement) => pinCodeElement.value).join('');
+      this.value = joinInputValues(this.pinCodeElements);
       this.updateValue();
     }
   };
