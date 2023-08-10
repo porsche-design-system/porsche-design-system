@@ -2,7 +2,7 @@ import type { FormState } from '../../utils/form/form-state';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { PinCodeType } from './pin-code-utils';
 import type { Styles } from 'jss';
-import { getCss } from '../../utils';
+import { getCss, mergeDeep } from '../../utils';
 import { getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
@@ -96,8 +96,11 @@ export const getComponentCss = (
         flexWrap: 'wrap',
       },
     },
-
-    ...getLabelStyles('input', isDisabled, hideLabel, state, theme),
+    ...mergeDeep(getLabelStyles('input', isDisabled, hideLabel, state, theme), {
+      label: {
+        display: 'inline-flex',
+      },
+    }),
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });
