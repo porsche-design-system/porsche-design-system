@@ -9,6 +9,7 @@ export * from './checkbox-radio-button-wrapper-utils';
 export * from './children-observer';
 export * from './device-detection';
 export * from './dom';
+export * from './focusTrap';
 export * from './form';
 export * from './getCDNBaseURL';
 export * from './inject-global-style'; // to trick bundling and avoid separate jss chunk 🤷
@@ -24,6 +25,7 @@ export * from './modal-flyout-utils';
 export { paramCaseToCamelCase } from './paramCaseToCamelCase';
 export * from './property-observer';
 export * from './scrolling';
+export * from './scrollLock';
 export * from './has-document';
 export * from './has-window';
 export * from './sync';

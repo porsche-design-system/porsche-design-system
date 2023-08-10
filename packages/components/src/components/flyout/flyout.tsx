@@ -17,11 +17,11 @@ import {
   THEMES,
   AllowedTypes,
   validateProps,
+  setScrollLock,
+  setFocusTrap,
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
-import { setFocusTrap } from '../../utils/focusTrap';
-import { setScrollLock } from '../../utils/scrollLock';
 import { throttle } from 'throttle-debounce';
 
 const propTypes: PropTypes<typeof Flyout> = {
