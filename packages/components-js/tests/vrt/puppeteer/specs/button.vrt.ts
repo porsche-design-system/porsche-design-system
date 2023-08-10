@@ -60,20 +60,16 @@ const statesScenario = async (page: Page, prefersColorScheme: 'light' | 'dark'):
   await forceFocusHoverState(page, '.focus-hover p-button >>> button');
 };
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
-  const vrt = getVisualRegressionStatesTester();
+it.each(['light', 'dark'] as const)(
+  'should have no visual regression for :hover + :focus-visible with prefers-color-scheme: %s',
+  async (prefersColorScheme) => {
+    const vrt = getVisualRegressionStatesTester();
 
-  expect(
-    await vrt.test('button-states-dark', async () => {
-      const page = vrt.getPage();
-      await statesScenario(page, 'dark');
-    })
-  ).toBeFalsy();
-
-  expect(
-    await vrt.test('button-states-light', async () => {
-      const page = vrt.getPage();
-      await statesScenario(page, 'light');
-    })
-  ).toBeFalsy();
-});
+    expect(
+      await vrt.test(`button-states-${prefersColorScheme}`, async () => {
+        const page = vrt.getPage();
+        await statesScenario(page, prefersColorScheme);
+      })
+    ).toBeFalsy();
+  }
+);
