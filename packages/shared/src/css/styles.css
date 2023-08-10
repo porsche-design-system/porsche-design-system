@@ -27,20 +27,24 @@ body {
   gap: 16px;
 }
 
-.playground.light {
+.playground.light,
+.playground.auto {
   background: var(--theme-light-background-base);
 }
 
-.playground.light.surface {
+.playground.light.surface,
+.playground.auto.surface {
   background: var(--theme-light-background-surface);
 }
 
 @media (prefers-color-scheme: dark) {
-  .auto-dark-mode .playground.light {
+  .auto-dark-mode .playground.light,
+  .playground.auto {
     background: var(--theme-dark-background-base);
   }
 
-  .auto-dark-mode .playground.light.surface {
+  .auto-dark-mode .playground.light.surface,
+  .playground.auto.surface {
     background: var(--theme-dark-background-surface);
   }
 }
