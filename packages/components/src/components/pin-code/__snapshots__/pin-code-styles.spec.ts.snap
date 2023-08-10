@@ -56,7 +56,7 @@ input:disabled {
 }
 
 .label {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
@@ -200,7 +200,7 @@ input:disabled {
 }
 
 .label {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
@@ -297,7 +297,7 @@ input:disabled {
 }
 
 .label {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
