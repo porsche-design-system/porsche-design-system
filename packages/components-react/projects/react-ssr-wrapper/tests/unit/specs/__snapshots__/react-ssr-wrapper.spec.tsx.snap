@@ -1119,6 +1119,128 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
 </p-stepper-horizontal>
 `;
 
+exports[`manual test cases should pass internal props correctly to p-tabs-bar 1`] = `
+<p-tabs-bar
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host{display:block;position:relative !important}:host([hidden]){display:none !important}::slotted(a),::slotted(button){margin:0 0 4px 0 !important;padding:0 !important;outline:0 !important;border-radius:4px !important;background:transparent !important;display:inline-block !important;position:relative !important;vertical-align:top !important;font-family:inherit !important;font-style:inherit !important;font-variant:inherit !important;font-weight:inherit !important;font-size:inherit !important;line-height:inherit !important;white-space:nowrap !important;box-sizing:border-box !important;-webkit-appearance:none !important;appearance:none !important;outline-offset:1px !important;text-decoration:none !important;text-align:left !important;border:0 !important;color:#010205 !important;cursor:pointer !important;z-index:0 !important}::slotted(a)::before, ::slotted(button)::before{content:"" !important;position:absolute !important;inset:-2px -4px !important;border-radius:4px !important;z-index:-1 !important;transition:background-color var(--p-transition-duration, .24s) ease !important}::slotted(a:hover)::before,::slotted(button:hover)::before{-webkit-backdrop-filter:blur(32px) !important;backdrop-filter:blur(32px) !important;background:rgba(148, 149, 152, .18) !important}::slotted(a)::after,::slotted(button)::after{content:"" !important;visibility:hidden !important}::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after{position:absolute !important;height:2px !important;left:0 !important;background:#010205 !important;right:0px !important;bottom:-6px !important;visibility:visible !important}::slotted(a:not(:last-child)),::slotted(button:not(:last-child)){margin-right:16px !important}.scroller{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:400;font-size:1rem}.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after{transition:visibility 0s linear .4s !important}.bar{position:absolute;height:2px;left:0;background:#010205;width:0;bottom:-2px;visibility:visible;transition:transform .4s,width .4s;animation:keyframes-hide 0s .5s forwards}@keyframes keyframes-hide{to{visibility:hidden}}
+    </style>
+    <p-scroller
+      class="scroller ssr"
+    >
+      <template
+        shadowroot="open"
+        shadowrootmode="open"
+      >
+        <style>
+          :host{display:block !important;height:inherit !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#FFF;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden;box-shadow:0px 3px 8px rgba(0, 0, 0, 0.16);transition:background-color var(--p-transition-duration, .24s) ease}button:hover{-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);background:rgba(148, 149, 152, .18)}.root{display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;margin-left:-1px;grid-area:1 / 1 / 1 / 1;justify-content:flex-start;background:linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);visibility:hidden}.action-prev button{margin-left:8px;visibility:hidden}.action-next{position:relative;padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;margin-right:-1px;grid-area:1 / 3 / 1 / 3;justify-content:flex-end;background:linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);visibility:hidden}.action-next button{margin-right:8px;visibility:hidden}
+        </style>
+        <div
+          class="root"
+        >
+          <div
+            class="scroll-area"
+          >
+            <div
+              class="scroll-wrapper"
+            >
+              <slot />
+              <div
+                class="trigger"
+              />
+              <div
+                class="trigger"
+              />
+            </div>
+          </div>
+          <div
+            class="action-prev"
+          >
+            <button
+              aria-hidden="true"
+              aria-label="prev"
+              tabindex="-1"
+              type="button"
+            >
+              <p-icon
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+            </button>
+          </div>
+          <div
+            class="action-next"
+          >
+            <button
+              aria-hidden="true"
+              aria-label="next"
+              tabindex="-1"
+              type="button"
+            >
+              <p-icon
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+            </button>
+          </div>
+        </div>
+      </template>
+      <slot />
+      <span
+        class="bar"
+      />
+    </p-scroller>
+  </template>
+  <a
+    aria-current="false"
+    href="#"
+  >
+    Item 1
+  </a>
+  <a
+    aria-current="true"
+    href="#"
+  >
+    Item 2
+  </a>
+</p-tabs-bar>
+`;
+
 exports[`manual test cases should pass internal props correctly to p-tabs-item 1`] = `
 <p-tabs
   class="ssr"
@@ -1138,7 +1260,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
         shadowrootmode="open"
       >
         <style>
-          :host{display:block;position:relative !important}:host([hidden]){display:none !important}::slotted(a),::slotted(button){margin:0 0 4px 0 !important;padding:0 !important;outline:0 !important;border-radius:4px !important;background:transparent !important;display:inline-block !important;position:relative !important;vertical-align:top !important;font-family:inherit !important;font-style:inherit !important;font-variant:inherit !important;font-weight:inherit !important;font-size:inherit !important;line-height:inherit !important;white-space:nowrap !important;box-sizing:border-box !important;-webkit-appearance:none !important;appearance:none !important;outline-offset:1px !important;text-decoration:none !important;text-align:left !important;border:0 !important;color:#FBFCFF !important;cursor:pointer !important;z-index:0 !important}::slotted(a)::before, ::slotted(button)::before{content:"" !important;position:absolute !important;inset:-2px -4px !important;border-radius:4px !important;z-index:-1 !important;transition:background-color var(--p-transition-duration, .24s) ease !important}::slotted(a:hover)::before,::slotted(button:hover)::before{-webkit-backdrop-filter:blur(32px) !important;backdrop-filter:blur(32px) !important;background:rgba(148, 149, 152, .18) !important}::slotted(a)::after,::slotted(button)::after{content:"" !important;visibility:hidden !important}::slotted(a[aria-selected="true"])::after,::slotted(button[aria-selected="true"])::after{position:absolute !important;height:2px !important;left:0 !important;background:#FBFCFF !important;right:0px !important;bottom:-6px !important;visibility:visible !important}::slotted(a:not(:last-child)),::slotted(button:not(:last-child)){margin-right:16px !important}.scroller{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:400;font-size:1rem}.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after{transition:visibility 0s linear .4s !important}.bar{position:absolute;height:2px;left:0;background:#FBFCFF;width:0;bottom:-2px;visibility:visible;transition:transform .4s,width .4s;animation:keyframes-hide 0s .5s forwards}@keyframes keyframes-hide{to{visibility:hidden}}
+          :host{display:block;position:relative !important}:host([hidden]){display:none !important}::slotted(a),::slotted(button){margin:0 0 4px 0 !important;padding:0 !important;outline:0 !important;border-radius:4px !important;background:transparent !important;display:inline-block !important;position:relative !important;vertical-align:top !important;font-family:inherit !important;font-style:inherit !important;font-variant:inherit !important;font-weight:inherit !important;font-size:inherit !important;line-height:inherit !important;white-space:nowrap !important;box-sizing:border-box !important;-webkit-appearance:none !important;appearance:none !important;outline-offset:1px !important;text-decoration:none !important;text-align:left !important;border:0 !important;color:#FBFCFF !important;cursor:pointer !important;z-index:0 !important}::slotted(a)::before, ::slotted(button)::before{content:"" !important;position:absolute !important;inset:-2px -4px !important;border-radius:4px !important;z-index:-1 !important;transition:background-color var(--p-transition-duration, .24s) ease !important}::slotted(a:hover)::before,::slotted(button:hover)::before{-webkit-backdrop-filter:blur(32px) !important;backdrop-filter:blur(32px) !important;background:rgba(148, 149, 152, .18) !important}::slotted(a)::after,::slotted(button)::after{content:"" !important;visibility:hidden !important}::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after{position:absolute !important;height:2px !important;left:0 !important;background:#FBFCFF !important;right:0px !important;bottom:-6px !important;visibility:visible !important}::slotted(a:not(:last-child)),::slotted(button:not(:last-child)){margin-right:16px !important}.scroller{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;font-weight:400;font-size:1rem}.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after{transition:visibility 0s linear .4s !important}.bar{position:absolute;height:2px;left:0;background:#FBFCFF;width:0;bottom:-2px;visibility:visible;transition:transform .4s,width .4s;animation:keyframes-hide 0s .5s forwards}@keyframes keyframes-hide{to{visibility:hidden}}
         </style>
         <p-scroller
           class="scroller ssr"
@@ -1158,7 +1280,6 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
               >
                 <div
                   class="scroll-wrapper"
-                  role="tablist"
                 >
                   <slot />
                   <div
@@ -7459,7 +7580,7 @@ exports[`should render dsr component for PTabs 1`] = `
   content: "" !important;
   visibility: hidden !important;
 }
-::slotted(a[aria-selected="true"])::after,::slotted(button[aria-selected="true"])::after {
+::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
   position: absolute !important;
   height: 2px !important;
   left: 0 !important;
@@ -7478,7 +7599,7 @@ exports[`should render dsr component for PTabs 1`] = `
   font-weight: 400;
   font-size: 1rem;
 }
-.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after {
+.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
   transition: visibility 0s linear .4s !important;
 }
 .bar {
@@ -7628,7 +7749,6 @@ button:hover {
               >
                 <div
                   class="scroll-wrapper"
-                  role="tablist"
                 >
                   <slot />
                   <div
@@ -7835,7 +7955,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   content: "" !important;
   visibility: hidden !important;
 }
-::slotted(a[aria-selected="true"])::after,::slotted(button[aria-selected="true"])::after {
+::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
   position: absolute !important;
   height: 2px !important;
   left: 0 !important;
@@ -7854,7 +7974,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   font-weight: 400;
   font-size: 1rem;
 }
-.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after {
+.scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
   transition: visibility 0s linear .4s !important;
 }
 .bar {
@@ -8004,7 +8124,6 @@ button:hover {
           >
             <div
               class="scroll-wrapper"
-              role="tablist"
             >
               <slot />
               <div

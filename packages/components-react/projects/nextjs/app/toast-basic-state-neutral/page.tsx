@@ -1,8 +1,8 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { Toast } from '../components';
+import { Toast } from '../../components';
 
-const ToastOffsetPage: NextPage = (): JSX.Element => {
+const ToastBasicStateNeutralPage: NextPage = (): JSX.Element => {
   const style = `
     .playground {
       height: 300px;
@@ -10,21 +10,17 @@ const ToastOffsetPage: NextPage = (): JSX.Element => {
       transform: translateX(0);
       border: 1px solid deeppink;
     }
-
-    p-toast {
-      --p-toast-position-bottom: 200px;
-    }
   `;
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="playground light" title="should render toast info on light background with custom bottom position">
+      <div className="playground light" title="should render toast info with state neutral on light background">
         <Toast text="Some message" />
       </div>
     </>
   );
 };
 
-export default ToastOffsetPage;
+export default ToastBasicStateNeutralPage;
