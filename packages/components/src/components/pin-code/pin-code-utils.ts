@@ -27,17 +27,13 @@ export const initHiddenInput = (
   setAttribute(hiddenInput, 'name', 'hidden-input');
   setAttribute(hiddenInput, 'aria-hidden', 'true');
   setAttribute(hiddenInput, 'slot', 'hidden-input');
+  setAttribute(hiddenInput, 'tabindex', '-1');
   syncHiddenInput(hiddenInput, value, disabled, required);
   host.prepend(hiddenInput);
   return hiddenInput;
 };
 
-export const syncHiddenInput = (
-  hiddenInput: HTMLInputElement,
-  value = '',
-  disabled: boolean,
-  required: boolean
-): void => {
+export const syncHiddenInput = (hiddenInput: HTMLInputElement, value, disabled: boolean, required: boolean): void => {
   setAttribute(hiddenInput, 'value', `${value}`);
   if (disabled) {
     setAttribute(hiddenInput, 'disabled');

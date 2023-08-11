@@ -14,7 +14,13 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
-import { initHiddenInput, inputIsSingleDigit, joinInputValues, PIN_CODE_TYPES, syncHiddenInput } from './pin-code-utils';
+import {
+  initHiddenInput,
+  inputIsSingleDigit,
+  joinInputValues,
+  PIN_CODE_TYPES,
+  syncHiddenInput,
+} from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
 
@@ -67,7 +73,7 @@ export class PinCode {
   @Prop() public type?: PinCodeType = 'number';
 
   /** Sets the initial value of the Pin Code. */
-  @Prop() public value?: string;
+  @Prop() public value?: string = '';
 
   /** Emitted when selected element changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEvent>;
@@ -85,7 +91,7 @@ export class PinCode {
   }
 
   public componentWillLoad(): void {
-    // make sure initial value is not too long
+    // make sure initial value is not longer than pin code length
     if (this.value) {
       this.value.toString().slice(0, this.length);
     }
@@ -99,7 +105,6 @@ export class PinCode {
       syncHiddenInput(this.hiddenInput, this.value, this.disabled, this.required);
     }
   }
-
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -125,7 +130,7 @@ export class PinCode {
             <span class="label__text">{this.description || <slot name="description" />}</span>
           )}
           <div class="pin-code-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onClick={this.onClick}>
-            {this.isWithinForm && <slot name="hidden-input"/>}
+            {this.isWithinForm && <slot name="hidden-input" />}
             {...Array.from({ length: this.length }).map((_value, index) => (
               <input
                 type={this.type === 'number' ? 'text' : this.type}
@@ -154,7 +159,7 @@ export class PinCode {
   private onClick = (
     e: MouseEvent & { target: HTMLInputElement & { previousElementSibling: HTMLInputElement } }
   ): void => {
-    // only allow focus on filled or the first empty input
+    // only allow focus on filled inputs or the first empty input
     if (!e.target.value && e.target.previousElementSibling && !e.target.previousElementSibling.value) {
       this.pinCodeElements.find((pinCodeElement) => !pinCodeElement.value).focus();
     }
@@ -190,18 +195,15 @@ export class PinCode {
   };
 
   private onPaste = (e: ClipboardEvent): void => {
-    // remove whitespaces and cut string if pasted value is too long
+    // remove whitespaces and cut string if pasted value is longer than pin code length
     const optimizedPastedData = e.clipboardData.getData('Text').replace(/\s/g, '').slice(0, this.length);
     if (/^[0-9]+$/.test(optimizedPastedData) && optimizedPastedData !== this.value) {
       this.value = optimizedPastedData;
       this.updateValue();
-      // blur last input element
       if (optimizedPastedData.length === this.length) {
         this.pinCodeElements.pop().focus();
       } else {
         this.pinCodeElements[this.value.length].focus();
-        // TODO: Why is value of all elements empty in this check?
-        // this.pinCodeElements.find((pinCodeElement) => !pinCodeElement.value).focus();
       }
     }
     e.preventDefault();
