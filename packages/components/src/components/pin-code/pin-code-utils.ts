@@ -14,7 +14,8 @@ export const isTypeNumber = (type: string): boolean => {
 
 export const inputIsSingleDigit = (input: string): boolean => input.length === 1 && /\d/.test(input);
 
-export const joinInputValues = (pinCodeElements: HTMLInputElement[]): string => pinCodeElements.map((el) => el.value).join('')
+export const joinInputValues = (pinCodeElements: HTMLInputElement[]): string =>
+  pinCodeElements.map((el) => el.value).join('');
 
 export const initHiddenInput = (
   host: HTMLElement,
@@ -38,6 +39,14 @@ export const syncHiddenInput = (
   required: boolean
 ): void => {
   setAttribute(hiddenInput, 'value', `${value}`);
-  disabled ? setAttribute(hiddenInput, 'disabled') : removeAttribute(hiddenInput, 'disabled');
-  required ? setAttribute(hiddenInput, 'required') : removeAttribute(hiddenInput, 'required');
+  if (disabled) {
+    setAttribute(hiddenInput, 'disabled');
+  } else {
+    removeAttribute(hiddenInput, 'disabled');
+  }
+  if (required) {
+    setAttribute(hiddenInput, 'required');
+  } else {
+    removeAttribute(hiddenInput, 'required');
+  }
 };
