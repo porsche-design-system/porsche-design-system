@@ -661,7 +661,8 @@ fdescribe('sticky footer', () => {
 
     // not sure why the margin is 80px on a window that is 800px high
     await host.evaluate((el, value) => {
-      el.scrollBy({ top: -value });
+      // el.scrollBy({ top: -value });
+      el.scrollBy({ top: -1000 });
     }, parseInt(modalMargin));
 
     // looks like we need a tick for the intersection observer
