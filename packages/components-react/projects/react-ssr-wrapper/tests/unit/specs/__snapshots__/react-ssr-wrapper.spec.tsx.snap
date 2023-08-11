@@ -5168,7 +5168,7 @@ exports[`should render dsr component for PModal 1`] = `
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-wrap: wrap !important;
+  flex-direction: column !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
   overflow-y: auto;
