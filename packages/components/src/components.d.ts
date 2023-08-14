@@ -1135,7 +1135,7 @@ export namespace Components {
         /**
           * The initial selected values.
          */
-        "value": (string | number)[];
+        "value"?: (string | number)[];
     }
     interface PMultiSelectOption {
         /**
