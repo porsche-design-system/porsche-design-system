@@ -39,7 +39,7 @@ export class MultiSelectOption {
           'option--highlighted': this.host.highlighted,
           'option--disabled': this.disabled,
         }}
-        onClick={this.onClick}
+        onClick={!this.disabled && this.onClick}
         {...getOptionAriaAttributes(this.host.selected, this.disabled, this.host.hidden, !!this.value)}
       >
         <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={this.host.theme || 'light'}>
