@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { Toast } from '../components';
+import { Toast } from '../../components';
 
 const ToastBasicPage: NextPage = (): JSX.Element => {
   const style = `

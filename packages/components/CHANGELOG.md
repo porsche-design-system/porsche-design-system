@@ -36,6 +36,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Keyboard behavior and `aria` semantics if either `a` or `button` elements are used as slotted content in `Tabs Bar`
   component. ([#2713](https://github.com/porsche-design-system/porsche-design-system/pull/2713))
+- NextJs compatibility with v13 `app router` directory
+  ([#2687](https://github.com/porsche-design-system/porsche-design-system/pull/2687))
 
 ### [3.5.0] - 2023-07-25
 
