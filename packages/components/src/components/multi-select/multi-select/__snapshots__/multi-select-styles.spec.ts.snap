@@ -8,64 +8,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -159,6 +102,63 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -179,64 +179,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -330,6 +273,63 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -350,64 +350,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -501,6 +444,63 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -521,64 +521,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -673,6 +616,63 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -693,76 +693,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #949598 !important;
-}
-input::-webkit-input-placeholder {
-  color: #949598 !important;
-}
-input::-moz-placeholder {
-  color: #949598 !important;
-}
-input:-moz-placeholder {
-  color: #949598 !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -856,6 +787,75 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #949598;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #949598;
+}
+.input-container input::-moz-placeholder {
+  color: #949598;
+}
+.input-container input:-moz-placeholder {
+  color: #949598;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -876,76 +876,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #949598 !important;
-}
-input::-webkit-input-placeholder {
-  color: #949598 !important;
-}
-input::-moz-placeholder {
-  color: #949598 !important;
-}
-input:-moz-placeholder {
-  color: #949598 !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -1040,6 +971,75 @@ select,::slotted([slot=select]) {
   height: 1px;
   text-indent: -999999px;
 }
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #949598;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #949598;
+}
+.input-container input::-moz-placeholder {
+  color: #949598;
+}
+.input-container input:-moz-placeholder {
+  color: #949598;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
+}
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #010205;
@@ -1059,64 +1059,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -1211,6 +1154,63 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -1231,64 +1231,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -1383,6 +1326,63 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -1403,64 +1403,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -1555,6 +1498,63 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -1575,64 +1575,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -1727,6 +1670,63 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -1747,76 +1747,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #7E7F82 !important;
-}
-input::-webkit-input-placeholder {
-  color: #7E7F82 !important;
-}
-input::-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -1911,6 +1842,75 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #7E7F82;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+.input-container input::-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -1931,76 +1931,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #7E7F82 !important;
-}
-input::-webkit-input-placeholder {
-  color: #7E7F82 !important;
-}
-input::-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -2095,6 +2026,75 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #7E7F82;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+.input-container input::-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -2115,76 +2115,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #7E7F82 !important;
-}
-input::-webkit-input-placeholder {
-  color: #7E7F82 !important;
-}
-input::-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -2280,6 +2211,75 @@ select,::slotted([slot=select]) {
   height: 1px;
   text-indent: -999999px;
 }
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #7E7F82;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+.input-container input::-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+}
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #FBFCFF;
@@ -2299,64 +2299,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -2447,6 +2390,63 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -2467,64 +2467,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -2616,6 +2559,63 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -2636,76 +2636,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #949598 !important;
-}
-input::-webkit-input-placeholder {
-  color: #949598 !important;
-}
-input::-moz-placeholder {
-  color: #949598 !important;
-}
-input:-moz-placeholder {
-  color: #949598 !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -2796,6 +2727,75 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #949598;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #949598;
+}
+.input-container input::-moz-placeholder {
+  color: #949598;
+}
+.input-container input:-moz-placeholder {
+  color: #949598;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -2816,76 +2816,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #949598 !important;
-}
-input::-webkit-input-placeholder {
-  color: #949598 !important;
-}
-input::-moz-placeholder {
-  color: #949598 !important;
-}
-input:-moz-placeholder {
-  color: #949598 !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -2977,6 +2908,75 @@ select,::slotted([slot=select]) {
   height: 1px;
   text-indent: -999999px;
 }
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #949598;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #949598;
+}
+.input-container input::-moz-placeholder {
+  color: #949598;
+}
+.input-container input:-moz-placeholder {
+  color: #949598;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
+}
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #010205;
@@ -2996,76 +2996,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #949598 !important;
-}
-input::-webkit-input-placeholder {
-  color: #949598 !important;
-}
-input::-moz-placeholder {
-  color: #949598 !important;
-}
-input:-moz-placeholder {
-  color: #949598 !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -3158,6 +3089,75 @@ select,::slotted([slot=select]) {
   height: 1px;
   text-indent: -999999px;
 }
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #949598;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #949598;
+}
+.input-container input::-moz-placeholder {
+  color: #949598;
+}
+.input-container input:-moz-placeholder {
+  color: #949598;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
+}
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #0E4809;
@@ -3177,76 +3177,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #949598 !important;
-}
-input::-webkit-input-placeholder {
-  color: #949598 !important;
-}
-input::-moz-placeholder {
-  color: #949598 !important;
-}
-input:-moz-placeholder {
-  color: #949598 !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -3337,6 +3268,75 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #949598;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #949598;
+}
+.input-container input::-moz-placeholder {
+  color: #949598;
+}
+.input-container input:-moz-placeholder {
+  color: #949598;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -3357,76 +3357,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #949598 !important;
-}
-input::-webkit-input-placeholder {
-  color: #949598 !important;
-}
-input::-moz-placeholder {
-  color: #949598 !important;
-}
-input:-moz-placeholder {
-  color: #949598 !important;
-}
-input:not(:focus)::placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205 !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205 !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -3518,6 +3449,75 @@ select,::slotted([slot=select]) {
   height: 1px;
   text-indent: -999999px;
 }
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #949598;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #949598;
+}
+.input-container input::-moz-placeholder {
+  color: #949598;
+}
+.input-container input:-moz-placeholder {
+  color: #949598;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
+}
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #010205;
@@ -3537,64 +3537,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -3686,6 +3629,63 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -3706,64 +3706,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -3856,6 +3799,63 @@ select,::slotted([slot=select]) {
   height: 1px;
   text-indent: -999999px;
 }
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+}
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #FB0404;
@@ -3875,76 +3875,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #7E7F82 !important;
-}
-input::-webkit-input-placeholder {
-  color: #7E7F82 !important;
-}
-input::-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -4036,6 +3967,75 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #7E7F82;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+.input-container input::-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
@@ -4056,76 +4056,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #7E7F82 !important;
-}
-input::-webkit-input-placeholder {
-  color: #7E7F82 !important;
-}
-input::-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -4218,6 +4149,75 @@ select,::slotted([slot=select]) {
   height: 1px;
   text-indent: -999999px;
 }
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #7E7F82;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+.input-container input::-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+}
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #FB0404;
@@ -4237,76 +4237,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #7E7F82 !important;
-}
-input::-webkit-input-placeholder {
-  color: #7E7F82 !important;
-}
-input::-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -4399,6 +4330,75 @@ select,::slotted([slot=select]) {
   height: 1px;
   text-indent: -999999px;
 }
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #7E7F82;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+.input-container input::-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+}
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #FB0404;
@@ -4418,76 +4418,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-input::placeholder {
-  color: #7E7F82 !important;
-}
-input::-webkit-input-placeholder {
-  color: #7E7F82 !important;
-}
-input::-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:-moz-placeholder {
-  color: #7E7F82 !important;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF !important;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #0E0E12 !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 53px !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #FBFCFF !important;
-  border-bottom: none !important;
-  border-radius: 4px !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
-select,::slotted([slot=select]) {
+::slotted([slot=select]) {
   opacity: 0 !important;
   display: block !important;
   height: 0px !important;
@@ -4579,6 +4510,75 @@ select,::slotted([slot=select]) {
   width: 0;
   height: 1px;
   text-indent: -999999px;
+}
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 53px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #7E7F82;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+.input-container input::-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
 }
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
