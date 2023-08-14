@@ -1979,8 +1979,11 @@ exports[`should match snapshot 1`] = `
     "breakpointCustomizableProps": [
       "hideLabel",
     ],
+    "eventNames": [
+      "update",
+    ],
     "hasAriaProp": false,
-    "hasEvent": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -2008,6 +2011,7 @@ exports[`should match snapshot 1`] = `
       "required": false,
       "state": "none",
       "theme": "light",
+      "value": "[]",
     },
     "requiredProps": [
       "name",
@@ -2017,8 +2021,10 @@ exports[`should match snapshot 1`] = `
   "p-multi-select-option": {
     "allowedPropValues": {
       "disabled": "boolean",
-      "selected": "boolean",
-      "value": "string",
+      "value": [
+        "string",
+        "number",
+      ],
     },
     "hasAriaProp": false,
     "hasEvent": false,
@@ -2036,7 +2042,6 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "disabled": false,
-      "selected": false,
       "value": null,
     },
     "requiredProps": [
