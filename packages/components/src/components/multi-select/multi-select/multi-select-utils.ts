@@ -2,7 +2,7 @@ import type { FormState } from '../../../utils/form/form-state';
 import type { SelectDropdownDirection, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
 import { determineDropdownDirection } from '../../../utils/select/select-dropdown';
 import type { Theme } from '../../../utils';
-import { consoleWarn, setAttributes } from '../../../utils';
+import { consoleWarn, removeAttribute, setAttribute, setAttributes } from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
 
@@ -48,11 +48,11 @@ export const syncNativeSelect = (
   disabled: boolean,
   required: boolean
 ): void => {
-  setAttributes(nativeSelect, {
-    name,
-    disabled: `${disabled}`,
-    required: `${required}`,
-  });
+  setAttribute(nativeSelect, 'name', name);
+  // eslint-disable-next-line no-unused-expressions
+  disabled ? setAttribute(nativeSelect, 'disabled') : removeAttribute(nativeSelect, 'disabled');
+  // eslint-disable-next-line no-unused-expressions
+  required ? setAttribute(nativeSelect, 'required') : removeAttribute(nativeSelect, 'required');
 };
 
 export const updateNativeOptions = (nativeSelect: HTMLSelectElement, multiSelectOptions: MultiSelectOption[]): void => {
@@ -92,19 +92,17 @@ export const getHighlightedOption = (options: MultiSelectOption[]): MultiSelectO
   options.find((option) => option.highlighted);
 
 export const setSelectedOptions = (options: MultiSelectOption[], value: (string | number)[]): void => {
-  const selectedValues: (string | number)[] = [];
+  const selectedValues = new Set(value);
 
   options.forEach((option) => {
-    if (value.includes(option.value)) {
-      option.selected = true;
-      selectedValues.push(option.value);
-    } else {
-      option.selected = false;
+    const shouldBeSelected = selectedValues.has(option.value);
+    if ((option.selected ?? false) !== shouldBeSelected) {
+      option.selected = shouldBeSelected;
+      forceUpdate(option);
     }
-    forceUpdate(option);
   });
 
-  const valuesNotIncluded = value.filter((val) => !selectedValues.includes(val));
+  const valuesNotIncluded = value.filter((val) => !options.some((option) => option.value === val));
 
   if (valuesNotIncluded.length > 0) {
     consoleWarn(
@@ -146,8 +144,10 @@ export const resetHighlightedOptions = (options: MultiSelectOption[]): void =>
 
 export const resetSelectedOptions = (options: MultiSelectOption[]): void =>
   options.forEach((option) => {
-    option.selected = false;
-    forceUpdate(option);
+    if (option.selected) {
+      option.selected = false;
+      forceUpdate(option);
+    }
   });
 
 const getNewOptionIndex = (options: MultiSelectOption[], direction: SelectDropdownDirectionInternal): number => {

@@ -91,7 +91,7 @@ export class MultiSelect {
   @Prop() public name: string;
 
   /** The initial selected values. */
-  @Prop() public value: (string | number)[] = [];
+  @Prop({ mutable: true }) public value: (string | number)[] = [];
 
   /** The validation state. */
   @Prop() public state?: MultiSelectState = 'none';
@@ -136,11 +136,9 @@ export class MultiSelect {
   public updateOptionHandler(e: Event & { target: MultiSelectOption }): void {
     e.target.selected = !e.target.selected;
     forceUpdate(e.target);
-    forceUpdate(this.host);
+    // TODO: This triggers the value watcher and calls setSelectedOptions unnecessarily
+    this.value = this.currentValue;
     e.stopPropagation();
-    if (this.isWithinForm) {
-      updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
-    }
     this.update.emit({
       value: this.currentValue,
       name: this.name,
@@ -165,6 +163,7 @@ export class MultiSelect {
       this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
     }
     this.updateOptions();
+    // Use initial value to set options
     setSelectedOptions(this.multiSelectOptions, this.value);
   }
 
@@ -264,7 +263,7 @@ export class MultiSelect {
                 <span class="no-results__sr">No results found</span>
               </li>
             )}
-            <slot onSlotchange={this.updateOptions} />
+            <slot onSlotchange={this.onSlotchange} />
           </ul>
         </div>
         {this.isWithinForm && <slot name="select" />}
@@ -278,14 +277,16 @@ export class MultiSelect {
     );
   }
 
+  private onSlotchange = (): void => {
+    this.updateOptions();
+    this.value = this.currentValue;
+  };
+
   private updateOptions = (): void => {
     this.multiSelectOptions = Array.from(this.host.children).filter(
       (el) => el.tagName !== 'SELECT'
     ) as HTMLPMultiSelectOptionElement[];
     this.multiSelectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
-    if (this.isWithinForm) {
-      updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
-    }
   };
 
   private onInputChange = (e: Event): void => {
@@ -309,8 +310,12 @@ export class MultiSelect {
 
   private onResetClick = (): void => {
     resetSelectedOptions(this.multiSelectOptions);
+    this.value = this.currentValue;
     this.inputElement.focus();
-    forceUpdate(this.host);
+    this.update.emit({
+      value: this.currentValue,
+      name: this.name,
+    });
   };
 
   private onClickOutside = (e: MouseEvent): void => {
