@@ -91,7 +91,7 @@ export class MultiSelect {
   @Prop() public name: string;
 
   /** The initial selected values. */
-  @Prop({ mutable: true }) public value: (string | number)[] = [];
+  @Prop({ mutable: true }) public value?: (string | number)[] = [];
 
   /** The validation state. */
   @Prop() public state?: MultiSelectState = 'none';
