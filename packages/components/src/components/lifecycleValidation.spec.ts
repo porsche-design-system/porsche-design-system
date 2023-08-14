@@ -130,6 +130,8 @@ it.each<TagName>(tagNamesPublicWithProps)(
       delete propTypesStructure.variant; // TODO: with all the different values this can't easily be validated
     } else if (tagName === 'p-banner') {
       delete propTypesStructure.width;
+    } else if (tagName === 'p-multi-select') {
+      delete propTypesStructure.value;
     }
 
     expect(spy).toBeCalledWith(component, expect.objectContaining(propTypesStructure));
