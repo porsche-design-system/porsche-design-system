@@ -32,7 +32,6 @@ exports[`should match snapshot 1`] = `
   "p-modal",
   "p-model-signature",
   "p-multi-select",
-  "p-multi-select-option",
   "p-pagination",
   "p-popover",
   "p-radio-button-wrapper",
