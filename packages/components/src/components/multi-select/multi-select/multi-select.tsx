@@ -279,7 +279,11 @@ export class MultiSelect {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    this.value = this.currentValue;
+    setSelectedOptions(this.multiSelectOptions, this.value);
+    if (this.isWithinForm) {
+      updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
+    }
+    forceUpdate(this.host);
   };
 
   private updateOptions = (): void => {
