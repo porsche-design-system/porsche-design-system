@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.22.5",
-    "@porsche-design-system/assets": "5.0.2",
+    "@porsche-design-system/assets": "6.0.0",
     "@types/react": "^18.2.18",
     "@uxpin/merge-cli": "3.3.0",
     "babel-loader": "^9.1.3",
