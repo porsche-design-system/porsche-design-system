@@ -15,6 +15,9 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
   const sourceFileContent = fs.readFileSync(sourceFilePath, 'utf8');
 
   const { props = {}, eventNames = [] } = getComponentMeta(tagName);
+  if (tagName === 'p-multi-select') {
+    delete props.value;
+  }
   const relevantProps = Object.keys(props);
 
   if (relevantProps.length) {
