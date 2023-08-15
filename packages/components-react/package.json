@@ -35,7 +35,7 @@
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "@porsche-design-system/assets": "6.0.0",
+    "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
