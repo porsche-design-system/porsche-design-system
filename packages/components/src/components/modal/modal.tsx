@@ -184,7 +184,7 @@ export class Modal {
     setScrollLock(isOpen);
   }
 
-  private onSlotChange = () => {
+  private onSlotChange = (): void => {
     if (this.open) {
       // 1 tick delay is needed so that web components can be bootstrapped
       setTimeout(() => {
@@ -194,6 +194,7 @@ export class Modal {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   private onScroll = throttle(100, () => {
     // using an intersection observer would be so much easier but very tricky with the current layout
     // also transform scale3d has an impact on the intersection observer, causing it to trigger
@@ -205,7 +206,7 @@ export class Modal {
     const { scrollHeight, clientHeight, scrollTop } = this.host;
     if (scrollHeight > clientHeight) {
       const shouldApplyShadow =
-        scrollHeight - clientHeight > scrollTop + parseInt(getComputedStyle(this.dialog).marginBottom);
+        scrollHeight - clientHeight > scrollTop + parseInt(getComputedStyle(this.dialog).marginBottom, 10);
       this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
     }
   });
