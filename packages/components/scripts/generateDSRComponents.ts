@@ -401,13 +401,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/\{\{ 'input-container': true, disabled: this.props.disabled }}/, "'input-container'")
           .replace(/\s*color=\{this.props.disabled \? 'state-disabled' : 'primary'}\s*/, '')
           // Replace placeholder
-          .replace(/(?<=placeholder=\{)[^}]+/, 'this.selectedString || null')
+          .replace(/(?<=placeholder=\{)[^}]+/, 'getSelectedOptionsString(this.multiSelectOptions) || null')
           // replace toggle icon className
           .replace(
-            /className=\{\{ icon: true, \['toggle-icon']: true, \['toggle-icon--open']: this\.props\.isOpen }}/,
+            /className=\{\{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this.props.isOpen }}/,
             "className='icon toggle-icon'"
           )
-          .replace(/onSlotchange=\{\(\) => this.props.updateOptions\(\)}/, '')
+          .replace(/onSlotchange=\{this\.props\.onSlotchange}/, '')
           .replace(/onOpenChange=\{this\.props\.onDropdownOpenChange}\s*/, '')
           .replace(/\{typeof otherChildren.*propsedString}/, '{this.selectedString}')
           .replace(/this\.props\.nativeSelect\.selectedOptions\.length > 0/, 'false')
