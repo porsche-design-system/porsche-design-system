@@ -11,7 +11,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
   overflow-y: auto;
@@ -107,7 +107,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
   overflow-y: auto;
@@ -218,7 +218,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
   overflow-y: auto;
@@ -329,7 +329,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
   overflow-y: auto;
@@ -425,7 +425,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
   overflow-y: auto;
@@ -521,7 +521,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
   overflow-y: auto;
@@ -632,7 +632,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
   overflow-y: auto;
@@ -743,7 +743,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: inherit !important;
   overflow-y: auto;
 }
@@ -982,7 +982,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: inherit !important;
   overflow-y: auto;
 }
@@ -1055,6 +1055,8 @@ h2 {
   border: 0;
 }
 .content {
+  position: relative;
+  z-index: 0;
   padding: 0 32px;
 }
 .footer {
@@ -1068,9 +1070,6 @@ h2 {
 .footer--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0 -5px 10px;
   clip-path: inset(-20px 0 0 0);
-}
-.target {
-  margin-top: calc(-1 * clamp(16px, 7vh, 192px));
 }
 @media(min-width:1760px) {
   .root {
@@ -1091,7 +1090,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: inherit !important;
   overflow-y: auto;
 }
@@ -1186,7 +1185,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: inherit !important;
   overflow-y: auto;
 }
@@ -1259,6 +1258,8 @@ h2 {
   padding: 0 32px 8px;
 }
 .content {
+  position: relative;
+  z-index: 0;
   padding: 0 32px;
 }
 .footer {
@@ -1272,9 +1273,6 @@ h2 {
 .footer--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0 -5px 10px;
   clip-path: inset(-20px 0 0 0);
-}
-.target {
-  margin-top: calc(-1 * clamp(16px, 7vh, 192px));
 }
 @media(min-width:1760px) {
   .root {
@@ -1295,7 +1293,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: inherit !important;
   overflow-y: auto;
 }
@@ -1405,7 +1403,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: inherit !important;
   overflow-y: auto;
 }
@@ -1515,7 +1513,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: inherit !important;
   overflow-y: auto;
 }
@@ -1610,7 +1608,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: inherit !important;
   overflow-y: auto;
 }
@@ -1705,7 +1703,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: inherit !important;
   overflow-y: auto;
 }
@@ -1815,7 +1813,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: column !important;
+  flex-wrap: wrap !important;
   visibility: inherit !important;
   overflow-y: auto;
 }

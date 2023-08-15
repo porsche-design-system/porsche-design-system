@@ -110,7 +110,7 @@ export const getComponentCss = (
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          flexDirection: 'column',
+          flexWrap: 'wrap',
           ...(isOpen
             ? {
                 visibility: 'inherit',
@@ -182,6 +182,10 @@ export const getComponentCss = (
       },
     }),
     content: {
+      ...(hasFooter && {
+        position: 'relative', // to make sure content isn't above sticky footer, but might affect consumer's absolute positioning
+        zIndex: 0,
+      }),
       padding: `0 ${contentPadding}`,
     },
     ...(hasFooter && {
@@ -196,10 +200,6 @@ export const getComponentCss = (
       [footerShadowClass]: {
         boxShadow: `${scrollShadowColor} 0 -5px 10px`,
         clipPath: 'inset(-20px 0 0 0)', // crop leaking box-shadow on left and right side
-      },
-      // target for intersection observer
-      target: {
-        marginTop: `calc(-1 * ${marginTopBottom})`,
       },
     }),
     ...(hasDismissButton && {

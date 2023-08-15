@@ -19,6 +19,7 @@ import {
   clickStartedInScrollbarTrack,
 } from './modal-utils';
 import { footerShadowClass, getComponentCss } from './modal-styles';
+import { throttle } from 'throttle-debounce';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -74,8 +75,6 @@ export class Modal {
   private hasFooter: boolean;
   private footer: HTMLElement;
   private dialog: HTMLElement;
-  private target: HTMLElement; // for intersection observer
-  private observer: IntersectionObserver;
 
   private get hasDismissButton(): boolean {
     return this.disableCloseButton ? false : this.dismissButton;
@@ -139,7 +138,7 @@ export class Modal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown}>
+      <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown} onScroll={this.hasFooter && this.onScroll}>
         <div
           class="root"
           role="dialog"
@@ -176,8 +175,6 @@ export class Modal {
             </div>
           )}
         </div>
-        {/* target has do be outside of scaled .root modal for correct intersections */}
-        {this.hasFooter && <div class="target" ref={(el) => (this.target = el)} />}
       </Host>
     );
   }
@@ -185,22 +182,6 @@ export class Modal {
   private updateFocusTrap(isOpen: boolean): void {
     setFocusTrap(this.host, isOpen, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
     setScrollLock(isOpen);
-
-    if (this.hasFooter) {
-      this.observer =
-        this.observer ||
-        new IntersectionObserver(
-          ([e]) => {
-            this.footer.classList.toggle(footerShadowClass, !e.isIntersecting);
-          },
-          {
-            root: this.host,
-            threshold: 1, // fully visible
-          }
-        );
-
-      this.observer[isOpen ? 'observe' : 'unobserve'](this.target);
-    }
   }
 
   private onSlotChange = () => {
@@ -212,6 +193,22 @@ export class Modal {
       });
     }
   };
+
+  private onScroll = throttle(100, () => {
+    // using an intersection observer would be so much easier but very tricky with the current layout
+    // also transform scale3d has an impact on the intersection observer, causing it to trigger
+    // initially and after the transition which makes the shadow appear later
+    // using an invisible element after the dialog div would work
+    // but layout with position: fixed and flex for vertical/horizontal centering scrollable content
+    // causes tons of problems, also considering fullscreen mode, etc.
+    // see https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
+    const { scrollHeight, clientHeight, scrollTop } = this.host;
+    if (scrollHeight > clientHeight) {
+      const shouldApplyShadow =
+        scrollHeight - clientHeight > scrollTop + parseInt(getComputedStyle(this.dialog).marginBottom);
+      this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
+    }
+  });
 
   private onMouseDown = (e: MouseEvent): void => {
     if ((e.composedPath() as HTMLElement[])[0] === this.host && !clickStartedInScrollbarTrack(this.host, e)) {
