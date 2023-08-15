@@ -78,6 +78,7 @@ export default [
         ],
       }),
       generatePackageJson({
+        inputFolder: 'projects/react-wrapper', // defaults to current working directory, which is the wrong one
         baseContents: (pkg) => ({
           ...pkg,
           exports: {
