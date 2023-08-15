@@ -13,6 +13,7 @@ beforeEach(async () => {
   initConsoleObserver(browserPage);
 
   await browserPage.goto(baseURL, { waitUntil: 'networkidle0' });
+  await page.keyboard.press('Escape'); // Close Banner
   await injectCSSOverrides();
   await browserPage.evaluate(() => (window as any).componentsReady());
 });

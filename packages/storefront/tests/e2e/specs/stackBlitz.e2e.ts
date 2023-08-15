@@ -17,6 +17,8 @@ it.each(<Framework[]>['vanilla-js', 'angular', 'react'])(
   async (framework) => {
     await page.goto(`${baseURL}/components/button/examples`, { waitUntil: 'networkidle0' });
 
+    await page.keyboard.press('Escape'); // Close Banner
+
     const [frameworkButton] = await page.$x(`//button[text() = '${frameworkToButtonTextMap[framework]}']`);
 
     await frameworkButton.click();

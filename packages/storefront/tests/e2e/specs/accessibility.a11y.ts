@@ -64,6 +64,8 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
 
     await page.goto(baseURL + url, { waitUntil: 'domcontentloaded' });
 
+    await page.keyboard.press('Escape'); // Close Banner
+
     // inject style overrides for css variables
     await page.evaluate((styles) => {
       const styleEl = document.createElement('style');
