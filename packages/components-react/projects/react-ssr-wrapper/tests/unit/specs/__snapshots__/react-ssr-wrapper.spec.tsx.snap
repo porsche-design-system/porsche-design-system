@@ -729,7 +729,7 @@ exports[`manual test cases should pass internal props correctly to p-multi-selec
     shadowrootmode="open"
   >
     <style>
-      :host{display:block !important;position:relative !important}:host([hidden]){display:none !important}input{flex:1 !important;padding:13px 16px !important;box-sizing:border-box !important;border:0 !important;outline:0 !important;appearance:none !important;background:transparent !important;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;overflow-wrap:break-word !important;hyphens:auto !important;text-overflow:ellipsis !important}input:disabled{cursor:not-allowed !important}ul{position:absolute !important;margin:0 !important;display:none !important;flex-direction:column !important;gap:8px !important;padding:6px !important;background:#0E0E12 !important;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;overflow-wrap:break-word !important;hyphens:auto !important;z-index:10 !important;left:0 !important;right:0 !important;top:100% !important;box-sizing:border-box !important;max-height:416px !important;overflow-y:auto !important;-webkit-overflow-scrolling:touch !important;border:2px solid #FBFCFF !important;border-top:none !important;border-radius:4px !important;border-top-left-radius:0 !important;border-top-right-radius:0 !important;scrollbar-width:thin !important;scrollbar-color:auto !important;transition:border-color var(--p-transition-duration, .24s) ease !important;transform:translate3d(0,0,0) !important}.root{position:relative}.input-container{display:flex;color:#FBFCFF;background:#0E0E12;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;cursor:text;border:2px solid #88898C;border-radius:4px}.input-container:hover:not(.disabled){border-color:#FBFCFF}.label{display:flex;flex-direction:column;gap:4px;position:relative;margin-bottom:4px}.label__text{display:block;position:static;width:fit-content;height:auto;text-indent:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;color:#FBFCFF;transition:color var(--p-transition-duration, .24s) ease}.label__text+.label__text{margin-top:-4px;font-size:clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);color:#AFB0B3}.icon{padding:13px 15px;cursor:pointer}.reset-icon{padding:4px;margin:auto;display:none}.toggle-icon{transform:rotate3d(0,0,1,0.0001deg);transition:transform var(--p-transition-duration, .24s) ease}.toggle-icon--open{transform:rotate3d(0,0,1,180deg)}.no-results{padding:8px 12px;color:#AFB0B3;box-sizing:border-box}.no-results[role=status]{cursor:not-allowed}.no-results__sr{position:absolute;width:0;height:1px;text-indent:-999999px}.required{user-select:none}.message{display:flex;gap:4px;margin-top:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.sr-text{position:absolute;width:0;height:1px;text-indent:-999999px}
+      :host{display:block !important;position:relative !important}:host([hidden]){display:none !important}.root{position:relative}.input-container{display:flex;color:#FBFCFF;background:#0E0E12;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;cursor:text;border:2px solid #88898C;border-radius:4px}.input-container:hover:not(.disabled){border-color:#FBFCFF}.label{display:flex;flex-direction:column;gap:4px;position:relative;margin-bottom:4px}.label__text{display:block;position:static;width:fit-content;height:auto;text-indent:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;color:#FBFCFF;transition:color var(--p-transition-duration, .24s) ease}.label__text+.label__text{margin-top:-4px;font-size:clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);color:#AFB0B3}.icon{padding:13px 15px;cursor:pointer}.reset-icon{padding:4px;margin:auto;display:none}.toggle-icon{transform:rotate3d(0,0,1,0.0001deg);transition:transform var(--p-transition-duration, .24s) ease}.toggle-icon--open{transform:rotate3d(0,0,1,180deg)}.no-results{padding:8px 12px;color:#AFB0B3;box-sizing:border-box}.no-results[role=status]{cursor:not-allowed}.no-results__sr{position:absolute;width:0;height:1px;text-indent:-999999px}.required{user-select:none}.message{display:flex;gap:4px;margin-top:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.sr-text{position:absolute;width:0;height:1px;text-indent:-999999px}.root ul{position:absolute;margin:0;display:none;flex-direction:column;gap:8px;padding:6px;background:#0E0E12;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;z-index:10;left:0;right:0;top:100%;box-sizing:border-box;max-height:450px;overflow-y:auto;-webkit-overflow-scrolling:touch;border:2px solid #FBFCFF;border-top:none;border-radius:4px;border-top-left-radius:0;border-top-right-radius:0;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0)}.input-container input{flex:1;padding:13px 16px;box-sizing:border-box;border:0;outline:0;appearance:none;background:transparent;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;text-overflow:ellipsis}.input-container input:disabled{cursor:not-allowed}
     </style>
     <div
       class="root"
@@ -743,7 +743,6 @@ exports[`manual test cases should pass internal props correctly to p-multi-selec
       >
         <input
           autocomplete="off"
-          id="comboxbox"
           role="combobox"
         />
         <p-button-pure
@@ -5577,51 +5576,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-input {
-  flex: 1 !important;
-  padding: 13px 16px !important;
-  box-sizing: border-box !important;
-  border: 0 !important;
-  outline: 0 !important;
-  appearance: none !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  text-overflow: ellipsis !important;
-}
-input:disabled {
-  cursor: not-allowed !important;
-}
-ul {
-  position: absolute !important;
-  margin: 0 !important;
-  display: none !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  padding: 6px !important;
-  background: #FFF !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  z-index: 10 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 100% !important;
-  box-sizing: border-box !important;
-  max-height: 416px !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  border: 2px solid #010205 !important;
-  border-top: none !important;
-  border-radius: 4px !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: auto !important;
-  transition: border-color var(--p-transition-duration, .24s) ease !important;
-  transform: translate3d(0,0,0) !important;
-}
 .root {
   position: relative;
 }
@@ -5709,6 +5663,51 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
+.root ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container input {
+  flex: 1;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
     </style>
     <div
       class="root"
@@ -5722,7 +5721,6 @@ ul {
       >
         <input
           autocomplete="off"
-          id="comboxbox"
           role="combobox"
         />
         <p-button-pure
