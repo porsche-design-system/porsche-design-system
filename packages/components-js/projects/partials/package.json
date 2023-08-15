@@ -29,7 +29,7 @@
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist && rm -rf ./dist-tmp"
   },
   "dependencies": {
-    "@porsche-design-system/assets": "5.0.2",
+    "@porsche-design-system/assets": "6.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/styles": "0.0.0",
     "@porsche-design-system/utilities-v2": "0.0.0",

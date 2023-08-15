@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/assets",
-  "version": "5.0.2",
+  "version": "6.0.0",
   "description": "This package provides manifests and CDN URLs of Porsche assets like fonts, icons, marques, etc.",
   "keywords": [
     "porsche",
