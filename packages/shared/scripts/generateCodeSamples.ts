@@ -140,6 +140,14 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-multi-select',
+      samples: [
+        [componentsJsPath + '/multi-select-example.html'],
+        [componentsJsPath + '/multi-select-example-controlled.html'],
+        [componentsJsPath + '/multi-select-example-dynamic.html'],
+      ],
+    },
+    {
       component: 'p-scroller',
       samples: [
         [

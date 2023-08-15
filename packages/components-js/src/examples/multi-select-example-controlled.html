@@ -7,21 +7,19 @@
   <p-multi-select-option value="f">Option F</p-multi-select-option>
 </p-multi-select>
 
-<p-text></p-text>
+<p></p>
 
 <script>
-  const debugElement = document.querySelector('p-text');
+  const debugElement = document.querySelector('p');
   const multiSelect = document.querySelector('p-multi-select');
-  let selectedValues = ['a', 'b'];
-  multiSelect.value = selectedValues;
-  setDebugText();
 
   multiSelect.addEventListener('update', (e) => {
     selectedValues = e.detail.value;
-    setDebugText();
+    e.target.value = e.detail.value;
+    setDebugText(e.detail.value);
   });
 
-  function setDebugText() {
-    debugElement.innerText = `Selected values: ${selectedValues.join(', ') || 'none'}`;
+  function setDebugText(value) {
+    debugElement.innerText = `Selected values: ${value.join(', ') || 'none'}`;
   }
 </script>
