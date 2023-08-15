@@ -34,7 +34,7 @@ export const initNativeSelect = (
   setAttributes(nativeSelect, {
     multiple: 'true',
     'aria-hidden': 'true',
-    'tab-index': '-1',
+    tabindex: '-1',
     slot: 'select',
   });
   syncNativeSelect(nativeSelect, name, disabled, required);
