@@ -201,7 +201,7 @@ export class Flyout {
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   private onScroll = throttle(100, () => {
-    if (this.dialog.scrollHeight - this.dialog.clientHeight > 0) {
+    if (this.dialog.scrollHeight > this.dialog.clientHeight) {
       this.updateHeaderShadow();
       if (this.hasFooter) {
         this.updateFooterShadow();
@@ -211,12 +211,12 @@ export class Flyout {
 
   private updateHeaderShadow = (): void => {
     const shouldApplyShadow = this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD;
-    this.header.classList[shouldApplyShadow ? 'add' : 'remove'](headerShadowClass);
+    this.header.classList.toggle(headerShadowClass, shouldApplyShadow);
   };
 
   private updateFooterShadow = (): void => {
     const shouldApplyShadow = this.subFooter.offsetTop > this.dialog.clientHeight + this.dialog.scrollTop;
-    this.footer.classList[shouldApplyShadow ? 'add' : 'remove'](footerShadowClass);
+    this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
   };
 
   private dismissFlyout = (): void => {
