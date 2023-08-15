@@ -18,6 +18,7 @@ import {
 import type { ElementHandle, Page } from 'puppeteer';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components/dist/types/bundle';
 import type { TagName } from '@porsche-design-system/shared';
+import { footerShadowClass } from '@porsche-design-system/components/src/components/modal/modal-styles';
 
 let page: Page;
 const CSS_TRANSITION_DURATION = 600;
@@ -606,7 +607,7 @@ it('should remove overflow hidden from body if unmounted', async () => {
   expect(await getBodyOverflow()).toBe('visible');
 });
 
-fdescribe('sticky footer', () => {
+describe('sticky footer', () => {
   const expectedBoxShadow = 'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px';
   it('should not show box-shadow initially when not scrollable', async () => {
     await initBasicModal({ isOpen: true, content: '<div>Some Content</div>', hasSlottedFooter: true });
@@ -636,9 +637,10 @@ fdescribe('sticky footer', () => {
     const host = await getHost();
     await host.evaluate((el) => {
       el.scrollBy({ top: 1000 });
-      return el.scrollTop;
     });
 
+    const footer = await getFooter();
+    await page.waitForFunction((el) => getComputedStyle(el).boxShadow === 'none', {}, footer);
     expect(await getFooterBoxShadow()).toBe('none');
   });
 
@@ -656,17 +658,12 @@ fdescribe('sticky footer', () => {
 
     expect(await getFooterBoxShadow()).toBe('none');
 
-    const modal = await getModal();
-    const modalMargin = await getElementStyle(modal, 'margin');
+    await host.evaluate((el) => {
+      el.scrollBy({ top: -81 }); // margin-bottom of modal is 80px for whatever reason, so this is the edge on when the shadow appears again
+    });
 
-    // not sure why the margin is 80px on a window that is 800px high
-    await host.evaluate((el, value) => {
-      // el.scrollBy({ top: -value });
-      el.scrollBy({ top: -1000 });
-    }, parseInt(modalMargin));
-
-    // looks like we need a tick for the intersection observer
-    await new Promise((resolve) => setTimeout(resolve));
+    const footer = await getFooter();
+    await page.waitForFunction((el) => getComputedStyle(el).boxShadow !== 'none', {}, footer);
 
     expect(await getFooterBoxShadow()).toBe(expectedBoxShadow);
   });
