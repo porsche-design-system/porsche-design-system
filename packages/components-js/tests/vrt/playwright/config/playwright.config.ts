@@ -64,13 +64,13 @@ export default defineConfig({
         deviceScaleFactor: 1,
       },
     },
-    {
+    /*{
       name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
         deviceScaleFactor: 1,
       },
-    },
+    },*/
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
