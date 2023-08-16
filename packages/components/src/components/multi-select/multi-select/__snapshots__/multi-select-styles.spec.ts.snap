@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -171,7 +171,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: light 2`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: true 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -342,7 +342,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: none, isWithinForm: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: none, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -513,7 +513,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -685,7 +685,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -868,7 +868,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1051,7 +1051,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1109,30 +1109,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: static;
-  width: fit-content;
-  height: auto;
-  text-indent: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
 }
 .icon {
   padding: 13px 15px;
@@ -1216,14 +1192,11 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   .input-container:hover:not(.disabled) {
     border-color: #FBFCFF;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #FB0404 !important;
-  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true and theme: dark 2`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true and theme: false 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1281,30 +1254,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: static;
-  width: fit-content;
-  height: auto;
-  text-indent: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
 }
 .icon {
   padding: 13px 15px;
@@ -1388,14 +1337,11 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   .input-container:hover:not(.disabled) {
     border-color: #FBFCFF;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #FB0404 !important;
-  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: error, isWithinForm: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1453,30 +1399,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
 }
 .icon {
   padding: 13px 15px;
@@ -1560,14 +1482,11 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   .input-container:hover:not(.disabled) {
     border-color: #FBFCFF;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #FB0404 !important;
-  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1625,30 +1544,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
 }
 .icon {
   padding: 13px 15px;
@@ -1732,14 +1627,11 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   .input-container:hover:not(.disabled) {
     border-color: #FBFCFF;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #069561 !important;
-  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1797,29 +1689,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: static;
-  width: fit-content;
-  height: auto;
-  text-indent: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 13px 15px;
@@ -1916,14 +1785,11 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   .input-container:hover:not(.disabled) {
     border-color: #FBFCFF;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #FB0404 !important;
-  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isWithinForm: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1981,29 +1847,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: static;
-  width: fit-content;
-  height: auto;
-  text-indent: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 13px 15px;
@@ -2100,14 +1943,11 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   .input-container:hover:not(.disabled) {
     border-color: #FBFCFF;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #069561 !important;
-  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: true, hideLabel: true, state: error, isWithinForm: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: true, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2165,29 +2005,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 13px 15px;
@@ -2284,14 +2101,11 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   .input-container:hover:not(.disabled) {
     border-color: #FBFCFF;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #FB0404 !important;
-  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2459,7 +2273,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2628,7 +2442,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2808,7 +2622,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: light 2`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: true 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2988,7 +2802,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: success, isWithinForm: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: success, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3169,7 +2983,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3349,7 +3163,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: light 2`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: true 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3529,7 +3343,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: false, hideLabel: false, state: success, isWithinForm: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: false, hideLabel: false, state: success, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3584,30 +3398,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: static;
-  width: fit-content;
-  height: auto;
-  text-indent: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
 }
 .icon {
   padding: 13px 15px;
@@ -3691,14 +3481,11 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   .input-container:hover:not(.disabled) {
     border-color: #069561;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #069561 !important;
-  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: false, hideLabel: true, state: error, isWithinForm: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: false, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3753,30 +3540,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
 }
 .icon {
   padding: 13px 15px;
@@ -3860,14 +3623,11 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   .input-container:hover:not(.disabled) {
     border-color: #FB0404;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #FB0404 !important;
-  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3922,29 +3682,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: static;
-  width: fit-content;
-  height: auto;
-  text-indent: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 13px 15px;
@@ -4041,14 +3778,11 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   .input-container:hover:not(.disabled) {
     border-color: #FB0404;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #FB0404 !important;
-  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: dark 2`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: false 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -4103,29 +3837,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: static;
-  width: fit-content;
-  height: auto;
-  text-indent: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 13px 15px;
@@ -4222,14 +3933,11 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   .input-container:hover:not(.disabled) {
     border-color: #FB0404;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #FB0404 !important;
-  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: error, isWithinForm: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -4284,29 +3992,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 13px 15px;
@@ -4403,14 +4088,11 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   .input-container:hover:not(.disabled) {
     border-color: #FB0404;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #FB0404 !important;
-  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: success, isWithinForm: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: success, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -4465,29 +4147,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
   padding: 13px 15px;
@@ -4583,9 +4242,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #069561;
-  }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #069561 !important;
   }
 }
 "
