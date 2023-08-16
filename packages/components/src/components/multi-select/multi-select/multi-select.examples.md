@@ -32,8 +32,7 @@ the component and the form, enabling the selected values to be included in the f
   </p-multi-select>
   <button type="submit" class="my-1">Submit</button>
 </form>
-
-<p>{{ selectedValuesForm }}</p>
+  <p-text :theme="theme">{{ selectedValuesForm }}</p-text>
 </Playground>
 
 ## Controlled
@@ -51,8 +50,7 @@ values.
   <p-multi-select-option value="e">Option E</p-multi-select-option>
   <p-multi-select-option value="f">Option F</p-multi-select-option>
 </p-multi-select>
-
-<p>{{ selectedValuesControlled }}</p>
+<p-text :theme="theme">{{ selectedValuesControlled }}</p-text>
 </Playground>
 
 ## Set Value
@@ -62,8 +60,11 @@ choices, but can also be changed manually by using the value property. This prop
 numbers that represent the selected option values.
 
 <Playground :frameworkMarkup="dynamicExample" :config="{ ...config, withoutDemo: true }">
-  <label for="input-value">Value:</label><br />
-  <input id="input-value" name="input-value" v-model="valueInput" type="text" placeholder="e.g. 1,2" class="my-1" /><br />
+  <label>
+    <p-text :theme="theme">Value</p-text>
+    <input id="input-value" name="input-value" v-model="valueInput" type="text" placeholder="e.g. 1,2" class="my-1" />
+  </label>
+  <br />
   <button id="btn-input-value" @click="setMultiSelectValue()">Set Value</button>
   <button id="btn-reset" type="button" @click="valueInput = '', setMultiSelectValue()">Reset value</button>
   
