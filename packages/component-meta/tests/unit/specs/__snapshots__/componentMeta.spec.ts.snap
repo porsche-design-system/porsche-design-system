@@ -1975,7 +1975,14 @@ exports[`should match snapshot 1`] = `
         "light",
         "dark",
       ],
+      "value": [
+        "string",
+        "number",
+      ],
     },
+    "arrayProps": [
+      "value",
+    ],
     "breakpointCustomizableProps": [
       "hideLabel",
     ],
@@ -2011,7 +2018,7 @@ exports[`should match snapshot 1`] = `
       "required": false,
       "state": "none",
       "theme": "light",
-      "value": "[]",
+      "value": [],
     },
     "requiredProps": [
       "name",
