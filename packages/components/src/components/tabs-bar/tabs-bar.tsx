@@ -125,7 +125,7 @@ export class TabsBar {
   public componentDidRender(): void {
     // 1 tick delay to prevent transition
     window.requestAnimationFrame(() => {
-      this.scrollerElement.classList[this.activeTabIndex !== undefined ? 'add' : 'remove'](scrollerAnimatedCssClass);
+      this.scrollerElement.classList.toggle(scrollerAnimatedCssClass, this.activeTabIndex !== undefined);
     });
   }
 
