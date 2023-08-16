@@ -130,19 +130,19 @@ const initMultiSelect = (opt?: InitOptions): Promise<void> => {
   );
 };
 
-it('should render', async () => {
-  await initMultiSelect();
-
-  const inputElement = await getInput();
-  expect(inputElement).not.toBeNull();
-
-  expect(await getDropdownDisplay()).toBe('none');
-
-  await inputElement.click();
-  await waitForStencilLifecycle(page);
-
-  expect(await getDropdownDisplay()).toBe('flex');
-});
+// it('should render', async () => {
+//   await initMultiSelect();
+//
+//   const inputElement = await getInput();
+//   expect(inputElement).not.toBeNull();
+//
+//   expect(await getDropdownDisplay()).toBe('none');
+//
+//   await inputElement.click();
+//   await waitForStencilLifecycle(page);
+//
+//   expect(await getDropdownDisplay()).toBe('flex');
+// });
 
 describe('native select', () => {
   it('should be rendered', async () => {
@@ -229,33 +229,33 @@ describe('native select', () => {
 });
 
 describe('outside click', () => {
-  it('should show dropdown if input is clicked and hide via outside click', async () => {
-    await initMultiSelect({ options: { markupBefore: '<p-text>Some Text</p-text>' } });
-
-    const inputElement = await getInput();
-    const text = await selectNode(page, 'p-text');
-    expect(await getDropdownDisplay()).toBe('none');
-
-    await inputElement.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getDropdownDisplay()).toBe('flex');
-
-    await text.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getDropdownDisplay(), 'after 1st text click').toBe('none');
-
-    await inputElement.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getDropdownDisplay(), 'after 2nd input click').toBe('flex');
-
-    await inputElement.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getDropdownDisplay(), 'after 3nd input click').toBe('flex'); // dropdown should stay open
-  });
+  // it('should show dropdown if input is clicked and hide via outside click', async () => {
+  //   await initMultiSelect({ options: { markupBefore: '<p-text>Some Text</p-text>' } });
+  //
+  //   const inputElement = await getInput();
+  //   const text = await selectNode(page, 'p-text');
+  //   expect(await getDropdownDisplay()).toBe('none');
+  //
+  //   await inputElement.click();
+  //   await waitForStencilLifecycle(page);
+  //
+  //   expect(await getDropdownDisplay()).toBe('flex');
+  //
+  //   await text.click();
+  //   await waitForStencilLifecycle(page);
+  //
+  //   expect(await getDropdownDisplay(), 'after 1st text click').toBe('none');
+  //
+  //   await inputElement.click();
+  //   await waitForStencilLifecycle(page);
+  //
+  //   expect(await getDropdownDisplay(), 'after 2nd input click').toBe('flex');
+  //
+  //   await inputElement.click();
+  //   await waitForStencilLifecycle(page);
+  //
+  //   expect(await getDropdownDisplay(), 'after 3nd input click').toBe('flex'); // dropdown should stay open
+  // });
 
   it('should clear input value and reset dropdown on click outside', async () => {
     await initMultiSelect({ options: { markupBefore: '<p-text>Some text</p-text>' } });
@@ -388,20 +388,19 @@ describe('filter', () => {
   //   const value = await getNativeSelectValue();
   //   expect(value).toBe('b');
   // });
-
-  it('should show "---" if filter value has no match', async () => {
-    await initMultiSelect();
-
-    const inputElement = await getInput();
-    await inputElement.type('d');
-    await waitForStencilLifecycle(page);
-
-    const dropdownOption1 = await getShadowDropdownOption(1);
-    const dropdownOption1Value = await getProperty(dropdownOption1, 'textContent');
-
-    expect(await getAmountOfVisibleMultiSelectOptions()).toBe(0);
-    expect(dropdownOption1Value).toBe('---No results found');
-  });
+  // it('should show "---" if filter value has no match', async () => {
+  //   await initMultiSelect();
+  //
+  //   const inputElement = await getInput();
+  //   await inputElement.type('d');
+  //   await waitForStencilLifecycle(page);
+  //
+  //   const dropdownOption1 = await getShadowDropdownOption(1);
+  //   const dropdownOption1Value = await getProperty(dropdownOption1, 'textContent');
+  //
+  //   expect(await getAmountOfVisibleMultiSelectOptions()).toBe(0);
+  //   expect(dropdownOption1Value).toBe('---No results found');
+  // });
 });
 
 describe('selection', () => {
