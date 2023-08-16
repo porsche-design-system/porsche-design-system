@@ -37,18 +37,6 @@ body {
   background: var(--theme-light-background-surface);
 }
 
-@media (prefers-color-scheme: dark) {
-  .auto-dark-mode .playground.light,
-  .playground.auto {
-    background: var(--theme-dark-background-base);
-  }
-
-  .auto-dark-mode .playground.light.surface,
-  .playground.auto.surface {
-    background: var(--theme-dark-background-surface);
-  }
-}
-
 .playground.dark {
   background: var(--theme-dark-background-base);
 }
@@ -57,13 +45,13 @@ body {
   background: var(--theme-dark-background-surface);
 }
 
-@media (prefers-color-scheme: light) {
-  .auto-dark-mode .playground.dark {
-    background: var(--theme-light-background-base);
+@media (prefers-color-scheme: dark) {
+  .playground.auto {
+    background: var(--theme-dark-background-base);
   }
 
-  .auto-dark-mode .playground.dark.surface {
-    background: var(--theme-light-background-surface);
+  .playground.auto.surface {
+    background: var(--theme-dark-background-surface);
   }
 }
 

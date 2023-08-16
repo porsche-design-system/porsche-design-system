@@ -45,7 +45,7 @@
     "test:unit:partials": "yarn --cwd ./projects/partials test:unit",
     "test:e2e:puppeteer": "TYPE=E2E PORT=8575 jest --colors -c tests/e2e/puppeteer/config/jest.config.ts",
     "test:e2e:playwright": "playwright test --config=tests/e2e/playwright/config/playwright.config.ts",
-    "test:vrt:puppeteer": "TYPE=VRT PORT=8575 jest --colors -c tests/vrt/puppeteer/config/jest.config.ts",
+    "test:vrt:puppeteer": "TYPE=VRT PORT=8575 jest --colors -c tests/vrt/puppeteer/config/jest.config.ts button.vrt",
     "test:vrt:playwright": "playwright test --config=tests/vrt/playwright/config/playwright.config.ts",
     "test:smoke": "jest --colors -c tests/smoke/config/jest.config.ts",
     "clean": "yarn clean:build && yarn clean:node_modules",
