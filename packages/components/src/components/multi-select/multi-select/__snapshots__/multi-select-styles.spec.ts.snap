@@ -18,7 +18,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: text;
@@ -133,6 +132,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -189,7 +189,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: text;
@@ -304,6 +303,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -360,7 +360,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: text;
@@ -475,6 +474,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -531,7 +531,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: text;
@@ -647,6 +646,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -703,7 +703,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -818,6 +817,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -886,7 +886,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -1001,6 +1000,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -1069,7 +1069,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: text;
@@ -1185,6 +1184,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -1241,7 +1241,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: text;
@@ -1357,6 +1356,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -1413,7 +1413,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: text;
@@ -1529,6 +1528,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -1585,7 +1585,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: text;
@@ -1701,6 +1700,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -1757,7 +1757,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -1873,6 +1872,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -1941,7 +1941,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -2057,6 +2056,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -2125,7 +2125,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -2241,6 +2240,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -2309,7 +2309,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: text;
@@ -2421,6 +2420,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -2477,7 +2477,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: text;
@@ -2590,6 +2589,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -2646,7 +2646,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -2758,6 +2757,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -2826,7 +2826,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -2938,6 +2937,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -3006,7 +3006,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -3119,6 +3118,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -3187,7 +3187,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -3299,6 +3298,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -3367,7 +3367,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #010205;
   background: #FFF;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -3479,6 +3478,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #010205;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -3547,7 +3547,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: text;
@@ -3660,6 +3659,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -3716,7 +3716,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: text;
@@ -3829,6 +3828,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -3885,7 +3885,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -3998,6 +3997,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -4066,7 +4066,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -4179,6 +4178,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -4247,7 +4247,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -4360,6 +4359,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
@@ -4428,7 +4428,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container {
   display: flex;
-  color: #FBFCFF;
   background: #0E0E12;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
   cursor: not-allowed;
@@ -4541,6 +4540,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   transform: translate3d(0,0,0);
 }
 .input-container input {
+  color: #FBFCFF;
   flex: 1;
   padding: 13px 16px;
   box-sizing: border-box;
