@@ -108,6 +108,9 @@ export class Modal {
       for (let i = 0; i < 4; i++) {
         setTimeout(() => (this.host.scrollTop = 0), i * 5);
       }
+      if (this.hasFooter) {
+        this.onScroll();
+      }
       this.dialog.focus(); // needs to happen after render
     }
   }
