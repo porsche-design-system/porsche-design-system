@@ -83,7 +83,7 @@ import type { Theme } from '@/models';
 
 @Component
 export default class Code extends Vue {
-  config = { themeable: true };
+  config = { themeable: true, overflowX: 'visible' };
 
   get theme(): Theme {
     return this.$store.getters.theme;
