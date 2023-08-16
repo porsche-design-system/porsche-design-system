@@ -38,6 +38,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isWithinForm: boolean,
+  hasLabel: boolean,
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor, contrastHighColor, backgroundColor } = getThemedColors(theme);
@@ -85,7 +86,8 @@ export const getComponentCss = (
       }),
       ...getInputStyles(isDisabled, theme),
     },
-    ...getLabelStyles('select', isDisabled, hideLabel, state, theme, undefined, { marginBottom: spacingStaticXSmall }),
+    ...(hasLabel &&
+      getLabelStyles('select', isDisabled, hideLabel, state, theme, undefined, { marginBottom: spacingStaticXSmall })),
     icon: {
       padding: `${inputYPadding} 15px`, // Horizontal padding spacingStaticMedium - 1px for visual balance
       cursor: isDisabled ? 'not-allowed' : 'pointer',

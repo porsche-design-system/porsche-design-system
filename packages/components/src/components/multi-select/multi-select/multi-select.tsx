@@ -197,6 +197,7 @@ export class MultiSelect {
       this.hideLabel,
       this.state,
       this.isWithinForm,
+      hasLabel(this.host, this.label),
       this.theme
     );
     syncMultiSelectOptionProps(this.multiSelectOptions, this.theme);
