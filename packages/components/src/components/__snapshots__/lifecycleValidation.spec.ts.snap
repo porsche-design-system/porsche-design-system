@@ -383,6 +383,7 @@ exports[`should call validateProps() with correct parameters via render for p-mu
   "required": "boolean",
   "state": "oneOf",
   "theme": "oneOf",
+  "value": "array",
 }
 `;
 
