@@ -29,7 +29,7 @@ export const getSelectOptionStyles = (theme: Theme, additionalOptionJSSStyle?: J
       transition: ['background-color', 'color'].map(getTransition).join(),
       ...getNoResultsOptionJSSStyles(),
       ...hoverMediaQuery({
-        '&:not([aria-disabled]):not([role=status]):hover': {
+        '&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover': {
           color: isHighContrastMode ? highlightColor : primaryColor,
           background: contrastLowColor,
         },

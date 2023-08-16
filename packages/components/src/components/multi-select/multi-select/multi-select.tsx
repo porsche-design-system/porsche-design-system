@@ -208,12 +208,9 @@ export class MultiSelect {
     return (
       <Host>
         <div class="root">
-          <label class="label" id="label">
-            {this.currentValue && (
-              <span class="sr-text">{getSelectedOptions(this.multiSelectOptions).length} options selected</span>
-            )}
-            {!this.hideLabel && hasLabel(this.host, this.label) && (
-              <span class="label__text" onClick={() => this.inputElement.focus()}>
+          <label class="label">
+            {hasLabel(this.host, this.label) && (
+              <span class="label__text" id="label" onClick={() => this.inputElement.focus()}>
                 {this.label || <slot name="label" />}
                 {isRequiredAndParentNotRequired(this.host, this.host as HTMLElementWithRequiredProp) && <Required />}
               </span>
@@ -222,6 +219,11 @@ export class MultiSelect {
             {hasDescription(this.host, this.description) && (
               <span class="label__text" id="description" onClick={() => this.inputElement.focus()} aria-hidden="true">
                 {this.description || <slot name="description" />}
+              </span>
+            )}
+            {this.currentValue && (
+              <span class="sr-text" id="options-selected">
+                {getSelectedOptions(this.multiSelectOptions).length} options selected
               </span>
             )}
           </label>
@@ -236,7 +238,13 @@ export class MultiSelect {
               onClick={this.onInputClick}
               onKeyDown={this.onInputKeyDown}
               ref={(el) => (this.inputElement = el)}
-              {...getFilterInputAriaAttributes(this.isOpen, this.required, 'label', 'description', dropdownId)}
+              {...getFilterInputAriaAttributes(
+                this.isOpen,
+                this.required,
+                'label',
+                'description options-selected',
+                dropdownId
+              )}
             />
             <PrefixedTagNames.pButtonPure
               class="icon reset-icon"

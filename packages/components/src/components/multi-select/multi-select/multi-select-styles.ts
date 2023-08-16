@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { getCss } from '../../../utils';
+import { buildResponsiveStyles, getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -86,8 +86,18 @@ export const getComponentCss = (
       }),
       ...getInputStyles(isDisabled, theme),
     },
-    ...(hasLabel &&
-      getLabelStyles('select', isDisabled, hideLabel, state, theme, undefined, { marginBottom: spacingStaticXSmall })),
+    ...buildResponsiveStyles(hideLabel, (isHidden) =>
+      isHidden
+        ? {
+            label: {
+              display: 'none',
+            },
+          }
+        : hasLabel &&
+          getLabelStyles('select', isDisabled, hideLabel, state, theme, undefined, {
+            marginBottom: spacingStaticXSmall,
+          })
+    ),
     icon: {
       padding: `${inputYPadding} 15px`, // Horizontal padding spacingStaticMedium - 1px for visual balance
       cursor: isDisabled ? 'not-allowed' : 'pointer',
