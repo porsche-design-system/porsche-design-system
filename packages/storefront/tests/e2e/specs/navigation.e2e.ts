@@ -14,8 +14,9 @@ beforeEach(async () => {
 
   await browserPage.goto(baseURL);
   await injectCSSOverrides();
-  await browserPage.keyboard.press('Escape'); // Close Banner
+  await browserPage.waitForSelector('html.hydrated');
   await browserPage.evaluate(() => (window as any).componentsReady());
+  await browserPage.keyboard.press('Escape'); // Close Banner
 });
 afterEach(async () => await browserPage.close());
 
