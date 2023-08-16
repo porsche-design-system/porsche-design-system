@@ -22,7 +22,7 @@ the component and the form, enabling the selected values to be included in the f
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
 <form @submit.prevent="onSubmit">
-  <p-multi-select name="options" :theme="theme">
+  <p-multi-select name="options" label="Some Label" :theme="theme">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -42,7 +42,7 @@ custom update event, allowing external code to respond by synchronizing the comp
 values.
 
 <Playground :frameworkMarkup="controlledExample" :config="{ ...config, withoutDemo: true }">
-<p-multi-select :theme="theme" class="mb-1" @update="updateControlledExample">
+<p-multi-select label="Some Label" :theme="theme" class="mb-1" @update="updateControlledExample">
   <p-multi-select-option value="a">Option A</p-multi-select-option>
   <p-multi-select-option value="b">Option B</p-multi-select-option>
   <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -68,7 +68,7 @@ numbers that represent the selected option values.
   <button id="btn-input-value" @click="setMultiSelectValue()">Set Value</button>
   <button id="btn-reset" type="button" @click="valueInput = '', setMultiSelectValue()">Reset value</button>
   
-  <p-multi-select :name="'name'" ref="multiSelect" :theme="theme" v-html="getOptions(amountOfOptions)" @update="(e) => valueInput = e.target.value" style="margin: 1rem 0">
+  <p-multi-select name="name" label="Some Label" ref="multiSelect" :theme="theme" v-html="getOptions(amountOfOptions)" @update="(e) => valueInput = e.target.value" style="margin: 1rem 0">
   </p-multi-select> 
 <button type="button" @click="amountOfOptions++">Add option</button>
   <button type="button" @click="amountOfOptions--">Remove last option</button>
