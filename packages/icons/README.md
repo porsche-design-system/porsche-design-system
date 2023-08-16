@@ -2,7 +2,7 @@
 
 ## Build
 
-Optimize SVG files, create a manifest and generate database for icon platform.
+Optimize SVG files, create a manifest.
 
 ```
 yarn build
