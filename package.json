@@ -175,5 +175,9 @@
     "**/eslint-config-next/eslint-plugin-react-hooks": "^4.3.0",
     "**/ng-packagr/rollup": "^3.9.1",
     "**/workbox-build/rollup": "^3.9.1"
+  },
+  "volta": {
+    "node": "16.15.1",
+    "yarn": "1.22.19"
   }
 }

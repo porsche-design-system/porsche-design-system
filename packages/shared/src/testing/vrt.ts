@@ -85,6 +85,7 @@ export const getVisualRegressionPropTableTester = (): VisualRegressionTester => 
 type VRTestOptions = TestOptions & {
   scenario?: (page: Page) => Promise<void>;
   javaScriptEnabled?: boolean;
+  disableMotion?: boolean;
 };
 
 export const vrtTest = (
@@ -93,9 +94,10 @@ export const vrtTest = (
   url: string,
   options?: VRTestOptions
 ): Promise<boolean> => {
-  const { scenario, javaScriptEnabled, ...otherOptions } = {
+  const { scenario, javaScriptEnabled, disableMotion, ...otherOptions } = {
     scenario: undefined,
     javaScriptEnabled: true,
+    disableMotion: true,
     ...options,
   };
   const { baseUrl } = customOptions || defaultOptions;
@@ -106,6 +108,23 @@ export const vrtTest = (
       const page = vrt.getPage();
       await page.setJavaScriptEnabled(javaScriptEnabled);
       await page.goto(baseUrl + url, { waitUntil: 'networkidle0' });
+
+      if (disableMotion) {
+        await page.evaluate(() => {
+          const style = document.createElement('style');
+          style.innerHTML = `
+            :root {
+              --p-transition-duration: 0s;
+              --p-animation-duration__spinner: 0s;
+              --p-animation-duration__banner: 0s;
+              --p-override-popover-animation-duration: 0s;
+              --p-override-toast-skip-timeout: true;
+              --p-override-toast-animation-duration: 0s;
+            }
+          `;
+          document.head.appendChild(style);
+        });
+      }
 
       // componentsReady is undefined in utilities package
       await page.evaluate(() => (window as any).componentsReady?.());

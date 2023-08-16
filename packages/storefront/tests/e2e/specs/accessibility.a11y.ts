@@ -20,6 +20,11 @@ const [, rootStyles] = /(:root {[\s\S]+?})/.exec(styleOverrides) || [];
 it('should have successfully extracted :root styles', () => {
   expect(rootStyles).toContain(':root');
   expect(rootStyles).toContain('--p-transition-duration: 0s');
+  expect(rootStyles).toContain('--p-animation-duration__spinner: 0s');
+  expect(rootStyles).toContain('--p-animation-duration__banner: 0s');
+  expect(rootStyles).toContain('--p-override-popover-animation-duration: 0s');
+  expect(rootStyles).toContain('--p-override-toast-skip-timeout: true');
+  expect(rootStyles).toContain('--p-override-toast-animation-duration: 0s');
 });
 
 const cycleFrameworkTabs = async (theme: string): Promise<void> => {
@@ -28,6 +33,7 @@ const cycleFrameworkTabs = async (theme: string): Promise<void> => {
       // page.$x("//button[text() = 'Vanilla JS']"),
       page.$x("//button[text() = 'Angular']"),
       page.$x("//button[text() = 'React']"),
+      // TODO: vue is missing
     ])
   )
     .map(([handle]) => handle)
@@ -37,9 +43,14 @@ const cycleFrameworkTabs = async (theme: string): Promise<void> => {
   if (buttons.length) {
     expect(buttons.length).toBe(2);
 
+    const [vanillaJsButton] = await page.$x("//button[text() = 'Vanilla JS']");
+
     for (const button of buttons) {
-      // angular and react can't be selected initially
-      expect(await button.evaluate((el: HTMLElement) => el.getAttribute('aria-selected'))).toBe('false');
+      // pages for styles sub-package don't have vanilla js examples and angular is selected initially
+      if (vanillaJsButton) {
+        // angular and react can't be selected initially
+        expect(await button.evaluate((el: HTMLElement) => el.getAttribute('aria-selected'))).toBe('false');
+      }
 
       await button.click();
       await page.waitForFunction((el: HTMLElement) => el.getAttribute('aria-selected') === 'true', {}, button);
@@ -75,7 +86,8 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
     await page.evaluate(() => (window as any).componentsReady());
 
     await a11yAnalyze(page, 'light'); // page in default/initial state
-    await cycleFrameworkTabs('light');
+    // disabled because highly redundant, instead this should be tested once for light and dark with a good code example for angular, react and vue
+    // await cycleFrameworkTabs('light');
 
     const [darkThemeButton] = await page.$x("//button[text() = 'Dark theme']");
 
@@ -86,13 +98,14 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
       expect(playgroundClassName).toContain('example--dark');
 
       // reset framework to vanilla js if available
-      const [vanillaJsButton] = await page.$x("//button[text() = 'Vanilla JS']");
-      if (vanillaJsButton) {
-        await vanillaJsButton.click();
-      }
+      // const [vanillaJsButton] = await page.$x("//button[text() = 'Vanilla JS']");
+      // if (vanillaJsButton) {
+      //   await vanillaJsButton.click();
+      // }
 
       await a11yAnalyze(page, 'dark');
-      await cycleFrameworkTabs('dark');
+      // disabled because highly redundant, instead this should be tested once for light and dark with a good code example for angular, react and vue
+      // await cycleFrameworkTabs('dark');
     }
   }
 );
