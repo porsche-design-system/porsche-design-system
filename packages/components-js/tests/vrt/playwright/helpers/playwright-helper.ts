@@ -3,30 +3,42 @@ import { expect, test } from '@playwright/test';
 
 type Options = {
   baseUrl?: string;
+  viewportWidths?: number[];
   scenario?: (page: Page) => Promise<void>;
 };
 
 const defaultOptions: Options = {
   baseUrl: 'http://localhost:8575',
+  viewportWidths: [320, 480, 760, 1000, 1300, 1760],
   scenario: undefined,
 };
 
-export const executeVisualRegressionTest = async (route: string, options?: Options): Promise<void> => {
-  const { baseUrl, scenario } = { ...defaultOptions, ...options };
+export const executeVisualRegressionTest = async (
+  snapshotId: string,
+  url: string,
+  options?: Options
+): Promise<void> => {
+  const { baseUrl, viewportWidths, scenario } = { ...defaultOptions, ...options };
 
-  return test(route, async ({ page, viewport: { width } }, testInfo) => {
-    testInfo.snapshotSuffix = ''; // removes system OS names in snapshot
+  viewportWidths.forEach((viewportWidth) => {
+    test(snapshotId + viewportWidth, async ({ page }, testInfo): Promise<void> => {
+      testInfo.snapshotSuffix = ''; // removes system OS names in snapshot
 
-    await page.setViewportSize({ width, height: 1 });
-    await page.goto(`${baseUrl}/#${route}`);
-    await page.evaluate(() => (window as any).componentsReady());
-    await page.setViewportSize({ width, height: await page.evaluate(() => document.body.clientHeight) });
+      // TODO: move to createScenario(snapshotId, url, viewport, options)
+      await page.setViewportSize({ width: viewportWidth, height: 1 });
+      await page.goto(baseUrl + url);
+      await page.evaluate(() => (window as any).componentsReady());
+      await page.setViewportSize({
+        width: viewportWidth,
+        height: await page.evaluate(() => document.body.clientHeight),
+      });
 
-    if (scenario) {
-      await scenario(page);
-    }
+      if (scenario) {
+        await scenario(page);
+      }
 
-    expect(await page.locator('#app').screenshot()).toMatchSnapshot(`${route}.png`);
+      await expect(page.locator('#app')).toHaveScreenshot(`${snapshotId}.${viewportWidth}.png`);
+    });
   });
 };
 
