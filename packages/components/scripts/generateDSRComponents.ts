@@ -248,12 +248,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(
             /const hasFooter = .+\n/,
             '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
-          );
+          )
+          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/, '');
       } else if (tagName === 'p-flyout') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
-          .replace('// eslint-disable-next-line @typescript-eslint/member-ordering', '');
+          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/, '');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
