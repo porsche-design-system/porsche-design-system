@@ -65,7 +65,6 @@ export const getComponentCss = (
     },
     'input-container': {
       display: 'flex',
-      color: primaryColor,
       background: backgroundColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states
       cursor: isDisabled ? 'not-allowed' : 'text',
@@ -122,6 +121,7 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
   return {
     '@global': {
       input: {
+        color: primaryColor,
         flex: 1,
         padding: `${inputYPadding} ${spacingStaticMedium}`,
         boxSizing: 'border-box',
