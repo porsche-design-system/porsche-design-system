@@ -890,6 +890,43 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-flyout>
     </div>
 
+    <div
+      class="playground auto-layout"
+      title="should show scrolled to center flyout with header, footer, scrollable content with relative positioned element to test z-index"
+    >
+      <p-flyout [open]="true" class="scroll-content">
+        <div slot="header">
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
+        </div>
+        <div style="position: relative; z-index: 10; height: 50vh; background-color: #61dafb"></div>
+        <span id="test" class="scroll-to-center"
+          >Some content: should show scrollable flyout to the middle to test z-index</span
+        >
+        <div style="position: relative; z-index: 10; height: 50vh; background-color: #ebddf9"></div>
+        <div slot="footer">
+          <button>Sticky Footer Button</button>
+        </div>
+      </p-flyout>
+    </div>
+    <div
+      class="playground dark auto-layout"
+      title="should show scrolled to center flyout with header, footer, scrollable content with relative positioned element to test z-index"
+    >
+      <p-flyout [open]="true" [theme]="'dark'" class="scroll-content">
+        <div slot="header">
+          <h1>Sticky Heading</h1>
+          <p>Sticky header text</p>
+        </div>
+        <div style="position: relative; z-index: 10; height: 50vh; background-color: #61dafb"></div>
+        <span class="scroll-to-center">Some content: should show scrollable flyout to the middle to test z-index</span>
+        <div style="position: relative; z-index: 10; height: 50vh; background-color: #ebddf9"></div>
+        <div slot="footer">
+          <button>Sticky Footer Button</button>
+        </div>
+      </p-flyout>
+    </div>
+
     <div class="visualize-grid">
       <span></span>
       <span></span>

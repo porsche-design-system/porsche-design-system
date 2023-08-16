@@ -22,6 +22,10 @@ it.each(furtherExtendedViewports)('should have no visual regression for viewport
         await page.$$eval('.scroll-here', (scrollElements) => {
           scrollElements.forEach((el) => el.scrollIntoView());
         });
+        // Scroll to the center
+        await page.$$eval('.scroll-to-center', (scrollElements) => {
+          scrollElements.forEach((el) => el.scrollIntoView({ block: 'center' }));
+        });
       },
     })
   ).toBeFalsy();

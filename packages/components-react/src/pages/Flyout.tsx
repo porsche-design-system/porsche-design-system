@@ -891,6 +891,43 @@ export const FlyoutPage = (): JSX.Element => {
         </PFlyout>
       </div>
 
+      <div
+        className="playground auto-layout"
+        title="should show scrolled to center flyout with header, footer, scrollable content with relative positioned element to test z-index"
+      >
+        <PFlyout open={true} className="scroll-content">
+          <div slot="header">
+            <h1>Sticky Heading</h1>
+            <p>Sticky header text</p>
+          </div>
+          <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#61dafb' }} />
+          <span id="test" className="scroll-to-center"
+            >Some content: should show scrollable flyout to the middle to test z-index</span
+          >
+          <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#ebddf9' }} />
+          <div slot="footer">
+            <button>Sticky Footer Button</button>
+          </div>
+        </PFlyout>
+      </div>
+      <div
+        className="playground dark auto-layout"
+        title="should show scrolled to center flyout with header, footer, scrollable content with relative positioned element to test z-index"
+      >
+        <PFlyout open={true} theme="dark" className="scroll-content">
+          <div slot="header">
+            <h1>Sticky Heading</h1>
+            <p>Sticky header text</p>
+          </div>
+          <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#61dafb' }} />
+          <span className="scroll-to-center">Some content: should show scrollable flyout to the middle to test z-index</span>
+          <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#ebddf9' }} />
+          <div slot="footer">
+            <button>Sticky Footer Button</button>
+          </div>
+        </PFlyout>
+      </div>
+
       <div className="visualize-grid">
         <span />
         <span />
