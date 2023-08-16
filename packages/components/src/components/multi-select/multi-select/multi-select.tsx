@@ -127,6 +127,7 @@ export class MultiSelect {
   private inputElement: HTMLInputElement;
   private listElement: HTMLDivElement;
   private isWithinForm: boolean;
+  private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
 
   private get currentValue(): (string | number)[] {
     return getSelectedOptionValues(this.multiSelectOptions);
@@ -136,8 +137,7 @@ export class MultiSelect {
   public updateOptionHandler(e: Event & { target: MultiSelectOption }): void {
     e.target.selected = !e.target.selected;
     forceUpdate(e.target);
-    // TODO: This triggers the value watcher and calls setSelectedOptions unnecessarily
-    // TODO: Use flag to prevent value watcher
+    this.preventOptionUpdate = true; // Avoid unnecessary looping over options in setSelectedOptions in value watcher
     this.value = this.currentValue;
     e.stopPropagation();
     this.update.emit({
@@ -148,7 +148,10 @@ export class MultiSelect {
 
   @Watch('value')
   public onValueChange(): void {
-    setSelectedOptions(this.multiSelectOptions, this.value);
+    if (!this.preventOptionUpdate) {
+      setSelectedOptions(this.multiSelectOptions, this.value);
+    }
+    this.preventOptionUpdate = false;
     if (this.isWithinForm) {
       updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }
