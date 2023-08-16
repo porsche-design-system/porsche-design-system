@@ -20,6 +20,9 @@ type ValidatorFunctionOrCreator =
   | ValidatorFunctionBreakpointCustomizableCreator
   | ValidatorFunctionShapeCreator;
 
+type AllowedArrayTypes = string | number;
+type ValidatorFunctionArray = <T extends AllowedArrayTypes>(allowedTypes: T[]) => ValidatorFunction;
+
 export type ValidationError = {
   propName: string;
   propValue: string;
@@ -124,6 +127,7 @@ type AllowedTypeKey = 'string' | 'number' | 'boolean';
 export const AllowedTypes: {
   [key in AllowedTypeKey]: ValidatorFunction;
 } & {
+  array: ValidatorFunctionArray;
   oneOf: ValidatorFunctionOneOfCreator;
   aria: ValidatorFunctionOneOfCreator;
   breakpoint: ValidatorFunctionBreakpointCustomizableCreator;
@@ -135,6 +139,17 @@ export const AllowedTypes: {
   number: (...args) => validateValueOfType(...args, 'number'),
   // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
+  array: <T extends AllowedArrayTypes>(allowedTypes: T[]): ValidatorFunction =>
+    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+    function array(propName, propValue) {
+      if (!isValidArray(propValue, allowedTypes)) {
+        return {
+          propName,
+          propValue,
+          propType: `(${allowedTypes.join(' | ')})[]`,
+        };
+      }
+    },
   oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function oneOf(propName, propValue) {
@@ -240,4 +255,18 @@ export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, p
     .forEach((error) =>
       printErrorMessage({ ...error, componentName: getTagNameWithoutPrefix(instance.host as HTMLElement) })
     );
+};
+
+/**
+ * Check if all elements in an array have types that are allowed.
+ * @template T - A union of allowed types for the array elements.
+ * @param {any} arr - The array to be validated.
+ * @param {T[]} allowedTypes - An array of allowed types.
+ * @returns {boolean} - True if all elements have allowed types, false otherwise.
+ */
+export const isValidArray = <T extends AllowedArrayTypes>(arr: any, allowedTypes: T[]): boolean => {
+  if (!Array.isArray(arr)) {
+    return false;
+  }
+  return arr.every((item) => allowedTypes.includes(typeof item as T));
 };
