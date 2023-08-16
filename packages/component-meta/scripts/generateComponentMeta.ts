@@ -53,6 +53,7 @@ const generateComponentMeta = (): void => {
   requiredProps?: string[]; // array of props that are mandatory
   deprecatedProps?: string[]; // array of props that are deprecated
   breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
+  arrayProps?: string[]; // array of props that are of type array
   allowedPropValues?: {
     [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
   };
@@ -97,6 +98,7 @@ const generateComponentMeta = (): void => {
     requiredProps?: string[]; // array of props that are mandatory
     deprecatedProps?: string[]; // array of props that are deprecated
     breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
+    arrayProps?: string[]; // array of props that are of type array
     allowedPropValues?: {
       [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
     };
@@ -124,16 +126,19 @@ const generateComponentMeta = (): void => {
 
   type ComponentsMeta = Record<TagName, ComponentMeta>;
 
-  const componentSourceCode: Record<TagName, string> = componentFileNames.reduce((result, filePath) => {
-    const tagName: TagName = ('p-' + path.basename(filePath).replace('.tsx', '')) as TagName;
+  const componentSourceCode: Record<TagName, string> = componentFileNames.reduce(
+    (result, filePath) => {
+      const tagName: TagName = ('p-' + path.basename(filePath).replace('.tsx', '')) as TagName;
 
-    // get rid of functional components like StateMessage
-    if (TAG_NAMES.includes(tagName)) {
-      result[tagName] = fs.readFileSync(filePath, 'utf8');
-    }
+      // get rid of functional components like StateMessage
+      if (TAG_NAMES.includes(tagName)) {
+        result[tagName] = fs.readFileSync(filePath, 'utf8');
+      }
 
-    return result;
-  }, {} as Record<TagName, string>);
+      return result;
+    },
+    {} as Record<TagName, string>
+  );
 
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
     const source = componentSourceCode[tagName];
@@ -197,45 +202,56 @@ const generateComponentMeta = (): void => {
 
     const deprecatedProps: ComponentMeta['deprecatedProps'] = [];
 
+    const arrayProps: ComponentMeta['arrayProps'] = [];
+
     // props
     const props: ComponentMeta['props'] = Array.from(
       source.matchAll(/(  \/\*\*[\s\S]+?)?@Prop\(.*\) public ([a-zA-Z]+)\??(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
-    ).reduce((result, [, jsdoc, propName, , propValue]) => {
-      let cleanedValue: boolean | number | string | object =
-        propValue === 'true'
-          ? true
-          : propValue === 'false'
-          ? false
-          : // undefined values get lost in JSON.stringify, but null is allowed
-            propValue
-              ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
-              .replace(/\s+/g, ' ') // remove new lines and multiple spaces
-              .replace(/,( })/, '$1') || // remove trailing comma in original multiline objects
-            null;
-
-      if (typeof cleanedValue === 'string') {
-        if (cleanedValue.match(/^\d+$/)) {
-          // parse numbers
-          cleanedValue = parseInt(cleanedValue);
-
-          if (tagName === 'p-model-signature' && cleanedValue === 911) {
-            cleanedValue = `${cleanedValue}`; // convert it back to string
-          }
-        } else if (cleanedValue.match(/^{.+}$/)) {
-          // parse objects
-          cleanedValue = eval(`(${cleanedValue})`);
+    ).reduce(
+      (result, [, jsdoc, propName, , propValue]) => {
+        if (propValue === '[]') {
+          arrayProps.push(propName);
+          return {
+            ...result,
+            [propName]: [],
+          };
         }
-      }
+        let cleanedValue: boolean | number | string | object =
+          propValue === 'true'
+            ? true
+            : propValue === 'false'
+            ? false
+            : // undefined values get lost in JSON.stringify, but null is allowed
+              propValue
+                ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
+                .replace(/\s+/g, ' ') // remove new lines and multiple spaces
+                .replace(/,( })/, '$1') || null; // remove trailing comma in original multiline objects
 
-      if (jsdoc?.match(/@deprecated/)) {
-        deprecatedProps.push(propName);
-      }
+        if (typeof cleanedValue === 'string') {
+          if (cleanedValue.match(/^\d+$/)) {
+            // parse numbers
+            cleanedValue = parseInt(cleanedValue);
 
-      return {
-        ...result,
-        [propName]: cleanedValue,
-      };
-    }, {} as ComponentMeta['props']);
+            if (tagName === 'p-model-signature' && cleanedValue === 911) {
+              cleanedValue = `${cleanedValue}`; // convert it back to string
+            }
+          } else if (cleanedValue.match(/^{.+}$/)) {
+            // parse objects
+            cleanedValue = eval(`(${cleanedValue})`);
+          }
+        }
+
+        if (jsdoc?.match(/@deprecated/)) {
+          deprecatedProps.push(propName);
+        }
+
+        return {
+          ...result,
+          [propName]: cleanedValue,
+        };
+      },
+      {} as ComponentMeta['props']
+    );
 
     // required props
     const requiredProps: ComponentMeta['requiredProps'] = Array.from(
@@ -302,108 +318,117 @@ const generateComponentMeta = (): void => {
     const allowedPropValues: ComponentMeta['allowedPropValues'] =
       isInternal || !propTypes
         ? {} // internal components or ones without propTypes validation don't matter
-        : Object.entries(propTypes).reduce((result, [propName, propType]) => {
-            propType = propType.replace('AllowedTypes.', ''); // replace just the first one
-            if (propType.match(/^(?:breakpoint|oneOf|aria)/)) {
-              if (propType.match('breakpoint')) {
-                breakpointCustomizableProps.push(propName);
-              }
-
-              let [, values] = propType.match(/\(['"]?((?:.|\n)+?)['"]?\)$/);
-              if (values.match(/^\[[\s\S]+?]$/) || values.match(/[A-Z_]{5,}/)) {
-                result[propName] = [];
-                if (values.match(/undefined/)) {
-                  (result[propName] as string[]).push(undefined);
+        : Object.entries(propTypes).reduce(
+            (result, [propName, propType]) => {
+              propType = propType.replace('AllowedTypes.', ''); // replace just the first one
+              if (propType.match(/^(?:breakpoint|oneOf|aria)/)) {
+                if (propType.match('breakpoint')) {
+                  breakpointCustomizableProps.push(propName);
                 }
 
-                const [, variable] = values.match(/([A-Z_]{5,})/) || [];
-                if (variable) {
-                  const variableImportFilePath = getImportFilePath(
-                    source.includes(variable) ? source : sourceWithSharedProps,
-                    variable,
-                    tagName
-                  );
-
-                  // can be shared utils barrel, cross import from other component or component utils
-                  const variableModule = require(variableImportFilePath);
-                  let variableValues: string[] = variableModule[variable];
-
-                  // check if there is a _DEPRECATED array to import
-                  if (variableModule[`${variable}_DEPRECATED`]) {
-                    deprecatedPropValues[propName] = variableModule[`${variable}_DEPRECATED`];
+                let [, values] = propType.match(/\(['"]?((?:.|\n)+?)['"]?\)$/);
+                if (values.match(/^\[[\s\S]+?]$/) || values.match(/[A-Z_]{5,}/)) {
+                  result[propName] = [];
+                  if (values.match(/undefined/)) {
+                    (result[propName] as string[]).push(undefined);
                   }
 
-                  // handle stuff like ICONS_MANIFEST
-                  if (values.match(/^Object\.keys/)) {
-                    variableValues = Object.keys(variableValues);
-                  }
+                  const [, variable] = values.match(/([A-Z_]{5,})/) || [];
+                  if (variable) {
+                    const variableImportFilePath = getImportFilePath(
+                      source.includes(variable) ? source : sourceWithSharedProps,
+                      variable,
+                      tagName
+                    );
 
-                  // aria needs to be converted to object
-                  if (propType.match(/^aria/)) {
-                    result[propName] = variableValues.reduce((res, curr) => ({ ...res, [curr]: 'string' }), {});
-                  } else {
-                    result[propName] = [...(result[propName] as string[]), ...variableValues];
-                  }
-                } else if (propType.match(/^oneOf<ValidatorFunction>/)) {
-                  // e.g. in segmented-control, segmented-control-item or carousel
-                  const [, oneOfParam] = propType.match(/\(((?:.|\n)+)\)/);
-                  const [, oneOfValues] = oneOfParam.match(/^\[((?:.|\n)+)]$/) || [];
+                    // can be shared utils barrel, cross import from other component or component utils
+                    const variableModule = require(variableImportFilePath);
+                    let variableValues: string[] = variableModule[variable];
 
-                  if (oneOfValues) {
-                    // it's an array
-                    const values = oneOfValues
-                      .split(',')
-                      .map(
-                        (val) =>
-                          val
-                            .trim()
-                            .replace(/^AllowedTypes./, '')
-                            .replace(/.*'([a-z]+)'.*/, '$1') // extract string values like 'number' or 'auto' that are passed to a nested validator funnction
-                      )
-                      .filter((val) => val);
-                    result[propName] = values;
-                  } else {
-                    // TODO: support this scenario once it occurs
-                    console.log('unsupported scenario', propType);
-                    result[propName] = ['// TODO'];
-                  }
-                } else if (!variable) {
-                  // must be array of inline values
-                  result[propName] = eval(`(${values})`);
-                } else {
-                  throw new Error(
-                    `Unsupported propType for breakpoint or oneOf in "${tagName}" "${propName}": ${propType}`
-                  );
-                }
-              } else if (values === 'boolean' || values === 'number') {
-                result[propName] = values;
-              }
-            } else if (propType === 'boolean' || propType === 'number' || propType === 'string') {
-              result[propName] = propType;
-            } else if (propType.match(/^shape/)) {
-              const [, shapeValues] = propType.match(/({[\s\S]+?})/) || [];
-              const shapeValuesObject = eval(`(${shapeValues})`) as Record<string, string>;
-              result[propName] = Object.fromEntries(
-                Object.entries(shapeValuesObject).map(([key, val]) => {
-                  val = val.replace('AllowedTypes.', '');
-
-                  if (val.match(/^oneOf/)) {
-                    // extract oneOf parameter
-                    let [, values] = val.match(/\(['"]?((?:.|\n)+?)['"]?\)/);
-                    if (values.match(/^\[.+]$/)) {
-                      // only inline values are supported
-                      val = eval(`(${values})`);
+                    // check if there is a _DEPRECATED array to import
+                    if (variableModule[`${variable}_DEPRECATED`]) {
+                      deprecatedPropValues[propName] = variableModule[`${variable}_DEPRECATED`];
                     }
-                  }
 
-                  return [key, val];
-                })
-              );
-            } else {
-              throw new Error(`Unsupported propType in "${tagName}" "${propName}": ${propType}`);
-            }
-            return result;
-          }, {} as ComponentMeta['allowedPropValues']);
+                    // handle stuff like ICONS_MANIFEST
+                    if (values.match(/^Object\.keys/)) {
+                      variableValues = Object.keys(variableValues);
+                    }
+
+                    // aria needs to be converted to object
+                    if (propType.match(/^aria/)) {
+                      result[propName] = variableValues.reduce((res, curr) => ({ ...res, [curr]: 'string' }), {});
+                    } else {
+                      result[propName] = [...(result[propName] as string[]), ...variableValues];
+                    }
+                  } else if (propType.match(/^oneOf<ValidatorFunction>/)) {
+                    // e.g. in segmented-control, segmented-control-item or carousel
+                    const [, oneOfParam] = propType.match(/\(((?:.|\n)+)\)/);
+                    const [, oneOfValues] = oneOfParam.match(/^\[((?:.|\n)+)]$/) || [];
+
+                    if (oneOfValues) {
+                      // it's an array
+                      const values = oneOfValues
+                        .split(',')
+                        .map(
+                          (val) =>
+                            val
+                              .trim()
+                              .replace(/^AllowedTypes./, '')
+                              .replace(/.*'([a-z]+)'.*/, '$1') // extract string values like 'number' or 'auto' that are passed to a nested validator funnction
+                        )
+                        .filter((val) => val);
+                      result[propName] = values;
+                    } else {
+                      // TODO: support this scenario once it occurs
+                      console.log('unsupported scenario', propType);
+                      result[propName] = ['// TODO'];
+                    }
+                  } else if (!variable) {
+                    // must be array of inline values
+                    result[propName] = eval(`(${values})`);
+                  } else {
+                    throw new Error(
+                      `Unsupported propType for breakpoint or oneOf in "${tagName}" "${propName}": ${propType}`
+                    );
+                  }
+                } else if (values === 'boolean' || values === 'number') {
+                  result[propName] = values;
+                }
+              } else if (propType === 'boolean' || propType === 'number' || propType === 'string') {
+                result[propName] = propType;
+              } else if (propType.match(/^shape/)) {
+                const [, shapeValues] = propType.match(/({[\s\S]+?})/) || [];
+                const shapeValuesObject = eval(`(${shapeValues})`) as Record<string, string>;
+                result[propName] = Object.fromEntries(
+                  Object.entries(shapeValuesObject).map(([key, val]) => {
+                    val = val.replace('AllowedTypes.', '');
+
+                    if (val.match(/^oneOf/)) {
+                      // extract oneOf parameter
+                      let [, values] = val.match(/\(['"]?((?:.|\n)+?)['"]?\)/);
+                      if (values.match(/^\[.+]$/)) {
+                        // only inline values are supported
+                        val = eval(`(${values})`);
+                      }
+                    }
+
+                    return [key, val];
+                  })
+                );
+              } else if (propType.match(/^array/)) {
+                // Extract all array types
+                result[propName] = propType
+                  .match(/(?<=\[).+(?=])/)[0]
+                  .split(', ')
+                  .map((item) => item.replace(/'/g, ''));
+              } else {
+                throw new Error(`Unsupported propType in "${tagName}" "${propName}": ${propType}`);
+              }
+              return result;
+            },
+            {} as ComponentMeta['allowedPropValues']
+          );
 
     // internal props set by parent
     const internalProps: ComponentMeta['internalProps'] = {};
@@ -498,6 +523,7 @@ const generateComponentMeta = (): void => {
       ...(Object.keys(deprecatedPropValues).length && { deprecatedPropValues }),
       ...(Object.keys(internalProps).length && { internalProps }),
       ...(breakpointCustomizableProps.length && { breakpointCustomizableProps }),
+      ...(arrayProps.length && { arrayProps }),
       ...(Object.keys(internalProps).length && { internalProps }),
       ...(Object.keys(hostAttributes).length && { hostAttributes }),
       hasSlot,
