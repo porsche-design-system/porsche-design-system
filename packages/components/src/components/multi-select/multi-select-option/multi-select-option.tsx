@@ -31,8 +31,7 @@ export class MultiSelectOption {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <li
-        role="option"
+      <div
         class={{
           option: true,
           'option--selected': this.host.selected,
@@ -40,13 +39,19 @@ export class MultiSelectOption {
           'option--disabled': this.disabled,
         }}
         onClick={!this.disabled && this.onClick}
-        {...getOptionAriaAttributes(this.host.selected, this.disabled, this.host.hidden, !!this.value)}
       >
         <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={this.host.theme || 'light'}>
-          <input type="checkbox" checked={this.host.selected} disabled={this.disabled} />
+          <input
+            role="option"
+            type="checkbox"
+            checked={this.host.selected}
+            disabled={this.disabled}
+            {...getOptionAriaAttributes(this.host.selected, this.disabled, this.host.hidden, !!this.value)}
+            aria-label={this.host.textContent}
+          />
           <slot slot="label" />
         </PrefixedTagNames.pCheckboxWrapper>
-      </li>
+      </div>
     );
   }
 

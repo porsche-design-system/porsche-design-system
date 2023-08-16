@@ -90,7 +90,7 @@ export class MultiSelect {
   /** This attribute is used to specify the name of the control. */
   @Prop() public name: string;
 
-  /** The initial selected values. */
+  /** The selected values. */
   @Prop({ mutable: true }) public value?: (string | number)[] = [];
 
   /** The validation state. */
@@ -125,7 +125,7 @@ export class MultiSelect {
   private multiSelectOptions: MultiSelectOption[] = [];
   private inputContainer: HTMLDivElement;
   private inputElement: HTMLInputElement;
-  private listElement: HTMLUListElement;
+  private listElement: HTMLDivElement;
   private isWithinForm: boolean;
 
   private get currentValue(): (string | number)[] {
@@ -137,6 +137,7 @@ export class MultiSelect {
     e.target.selected = !e.target.selected;
     forceUpdate(e.target);
     // TODO: This triggers the value watcher and calls setSelectedOptions unnecessarily
+    // TODO: Use flag to prevent value watcher
     this.value = this.currentValue;
     e.stopPropagation();
     this.update.emit({
@@ -252,19 +253,20 @@ export class MultiSelect {
               aria-hidden="true"
             />
           </div>
-          <ul
+          <div
             id={dropdownId}
+            class="listbox"
             {...getListAriaAttributes(this.label, this.required, true, this.isOpen, true)}
             ref={(el) => (this.listElement = el)}
           >
             {!this.hasFilterResults && (
-              <li class="no-results" aria-live="polite" role="status">
+              <div class="no-results" aria-live="polite" role="status">
                 <span aria-hidden="true">---</span>
                 <span class="no-results__sr">No results found</span>
-              </li>
+              </div>
             )}
             <slot onSlotchange={this.onSlotchange} />
-          </ul>
+          </div>
         </div>
         {this.isWithinForm && <slot name="select" />}
         {hasMessage(this.host, this.message, this.state) && (
@@ -320,6 +322,7 @@ export class MultiSelect {
       value: this.currentValue,
       name: this.name,
     });
+    forceUpdate(this.host);
   };
 
   private onClickOutside = (e: MouseEvent): void => {

@@ -61,8 +61,8 @@ export const getComponentCss = (
     }),
     root: {
       position: 'relative',
-      ...getListStyles(isOpen, direction, theme),
     },
+    ...getListStyles(isOpen, direction, theme),
     'input-container': {
       display: 'flex',
       background: backgroundColor,
@@ -146,34 +146,32 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
   const { primaryColor, backgroundColor } = getThemedColors(theme);
 
   return {
-    '@global': {
-      ul: {
-        position: 'absolute',
-        margin: '0',
-        display: isOpen ? 'flex' : 'none',
-        flexDirection: 'column',
-        gap: spacingStaticSmall,
-        padding: '6px',
-        background: backgroundColor,
-        ...textSmallStyle,
-        zIndex: 10,
-        left: 0,
-        right: 0,
-        [isDirectionDown ? 'top' : 'bottom']: isDirectionDown ? '100%' : `${INPUT_HEIGHT - 1}px`,
-        boxSizing: 'border-box',
-        maxHeight: `${8.5 * (MULTI_SELECT_OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
-        overflowY: 'auto',
-        WebkitOverflowScrolling: 'touch',
-        border: `2px solid ${primaryColor}`,
-        [isDirectionDown ? 'borderTop' : 'borderBottom']: 'none',
-        borderRadius: borderRadiusSmall,
-        [isDirectionDown ? 'borderTopLeftRadius' : 'borderBottomLeftRadius']: 0,
-        [isDirectionDown ? 'borderTopRightRadius' : 'borderBottomRightRadius']: 0,
-        scrollbarWidth: 'thin', // firefox
-        scrollbarColor: 'auto', // firefox
-        transition: getTransition('border-color'),
-        transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
-      },
+    listbox: {
+      position: 'absolute',
+      margin: '0',
+      display: isOpen ? 'flex' : 'none',
+      flexDirection: 'column',
+      gap: spacingStaticSmall,
+      padding: '6px',
+      background: backgroundColor,
+      ...textSmallStyle,
+      zIndex: 10,
+      left: 0,
+      right: 0,
+      [isDirectionDown ? 'top' : 'bottom']: isDirectionDown ? '100%' : `${INPUT_HEIGHT - 1}px`,
+      boxSizing: 'border-box',
+      maxHeight: `${8.5 * (MULTI_SELECT_OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
+      overflowY: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      border: `2px solid ${primaryColor}`,
+      [isDirectionDown ? 'borderTop' : 'borderBottom']: 'none',
+      borderRadius: borderRadiusSmall,
+      [isDirectionDown ? 'borderTopLeftRadius' : 'borderBottomLeftRadius']: 0,
+      [isDirectionDown ? 'borderTopRightRadius' : 'borderBottomRightRadius']: 0,
+      scrollbarWidth: 'thin', // firefox
+      scrollbarColor: 'auto', // firefox
+      transition: getTransition('border-color'),
+      transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
     },
   };
 };
