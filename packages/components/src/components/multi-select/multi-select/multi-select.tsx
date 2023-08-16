@@ -61,10 +61,11 @@ import { getComponentCss } from './multi-select-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { getFilterInputAriaAttributes, getListAriaAttributes } from '../../../utils/a11y/select/select-aria';
 
-const propTypes: Omit<PropTypes<typeof MultiSelect>, 'value'> = {
+const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
+  value: AllowedTypes.array(['string', 'number']),
   state: AllowedTypes.oneOf<MultiSelectState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
