@@ -29,7 +29,7 @@ exports[`getSelectOptionStyles() should return correct css for theme: dark and a
       "width": 0,
     },
     "@media(hover:hover)": {
-      "&:not([aria-disabled]):not([role=status]):hover": {
+      "&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover": {
         "background": "#404044",
         "color": "#FBFCFF",
       },
@@ -79,7 +79,7 @@ exports[`getSelectOptionStyles() should return correct css for theme: dark and a
       "width": 0,
     },
     "@media(hover:hover)": {
-      "&:not([aria-disabled]):not([role=status]):hover": {
+      "&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover": {
         "background": "#404044",
         "color": "#FBFCFF",
       },
@@ -129,7 +129,7 @@ exports[`getSelectOptionStyles() should return correct css for theme: light and 
       "width": 0,
     },
     "@media(hover:hover)": {
-      "&:not([aria-disabled]):not([role=status]):hover": {
+      "&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover": {
         "background": "#D8D8DB",
         "color": "#010205",
       },
@@ -179,7 +179,7 @@ exports[`getSelectOptionStyles() should return correct css for theme: light and 
       "width": 0,
     },
     "@media(hover:hover)": {
-      "&:not([aria-disabled]):not([role=status]):hover": {
+      "&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover": {
         "background": "#D8D8DB",
         "color": "#010205",
       },

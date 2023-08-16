@@ -402,28 +402,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   border-color: #010205;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  display: none;
 }
 .icon {
   padding: 13px 15px;
@@ -506,9 +485,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   .input-container:hover:not(.disabled) {
     border-color: #010205;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #010205 !important;
-  }
 }
 "
 `;
@@ -573,28 +549,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   border-color: #010205;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  display: none;
 }
 .icon {
   padding: 13px 15px;
@@ -677,9 +632,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #010205;
-  }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #0E4809 !important;
   }
 }
 "
@@ -928,27 +880,7 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
   border-color: #010205;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  display: none;
 }
 .icon {
   padding: 13px 15px;
@@ -1043,9 +975,6 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #010205;
-  }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #010205 !important;
   }
 }
 "
@@ -1400,6 +1329,9 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 .input-container:focus-within {
   border-color: #FBFCFF;
 }
+.label {
+  display: none;
+}
 .icon {
   padding: 13px 15px;
   cursor: pointer;
@@ -1544,6 +1476,9 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
+}
+.label {
+  display: none;
 }
 .icon {
   padding: 13px 15px;
@@ -2006,6 +1941,9 @@ exports[`getComponentCss() should return correct css for hasSelection: false, di
 .input-container:focus-within {
   border-color: #FBFCFF;
 }
+.label {
+  display: none;
+}
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
@@ -2330,28 +2268,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   border-color: #010205;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  display: none;
 }
 .icon {
   padding: 13px 15px;
@@ -2434,9 +2351,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #0E4809;
-  }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
-    border-color: #0E4809 !important;
   }
 }
 "
@@ -3040,27 +2954,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   border-color: #010205;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  display: none;
 }
 .icon {
   padding: 13px 15px;
@@ -3155,9 +3049,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #010205;
-  }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #010205 !important;
   }
 }
 "
@@ -3220,27 +3111,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
   border-color: #010205;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  display: none;
 }
 .icon {
   padding: 13px 15px;
@@ -3335,9 +3206,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #010205;
-  }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #010205 !important;
   }
 }
 "
@@ -3540,6 +3408,9 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
+}
+.label {
+  display: none;
 }
 .icon {
   padding: 13px 15px;
@@ -3993,6 +3864,9 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .input-container:focus-within {
   border-color: #FBFCFF;
 }
+.label {
+  display: none;
+}
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
@@ -4147,6 +4021,9 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 }
 .input-container:focus-within {
   border-color: #FBFCFF;
+}
+.label {
+  display: none;
 }
 .icon {
   padding: 13px 15px;

@@ -752,7 +752,7 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
     background: #D8D8DB;
   }
@@ -923,7 +923,7 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
     background: #D8D8DB;
   }
@@ -1056,7 +1056,7 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
     background: #D8D8DB;
   }
@@ -1224,7 +1224,7 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
     background: #D8D8DB;
   }
@@ -1612,7 +1612,7 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
     background: #D8D8DB;
   }
@@ -1783,7 +1783,7 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
     background: #D8D8DB;
   }
@@ -1916,7 +1916,7 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
     background: #D8D8DB;
   }
@@ -2084,7 +2084,7 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
     background: #D8D8DB;
   }
@@ -3758,7 +3758,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #FBFCFF;
     background: #404044;
   }
@@ -3848,7 +3848,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #FBFCFF;
     background: #404044;
   }
@@ -3938,7 +3938,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
     background: #D8D8DB;
   }
@@ -4028,7 +4028,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
     background: #D8D8DB;
   }
@@ -4118,7 +4118,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #FBFCFF;
     background: #404044;
   }
@@ -4208,7 +4208,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #FBFCFF;
     background: #404044;
   }
@@ -4298,7 +4298,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
     background: #D8D8DB;
   }
@@ -4388,7 +4388,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
     background: #D8D8DB;
   }
