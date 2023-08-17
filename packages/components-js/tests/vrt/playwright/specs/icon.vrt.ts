@@ -1,6 +1,63 @@
-import { executeVisualRegressionTest } from '../helpers/playwright-helper';
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
+import { baseThemes, baseViewportWidth, baseViewportWidths, setupScenario } from '../helpers/playwright-helper';
 
-test.describe('should have no visual regression', async () => {
-  await executeVisualRegressionTest('icon');
+const component = 'icon';
+
+test.beforeEach(async ({}, testInfo) => {
+  testInfo.snapshotSuffix = '';
+});
+
+// executed in Chrome + Safari
+test.describe(component, async () => {
+  baseThemes.forEach((theme) => {
+    test(`should have no visual regression for viewport ${baseViewportWidth} and theme ${theme}`, async ({ page }) => {
+      await setupScenario(page, `/${component}`, baseViewportWidth, {
+        forceComponentTheme: theme,
+      });
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${theme}.png`);
+    });
+  });
+});
+
+// executed in Chrome only
+test.describe(component, async () => {
+  test.skip(({ browserName }) => browserName !== 'chromium');
+
+  baseViewportWidths.forEach((viewportWidth) => {
+    test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
+      await setupScenario(page, `/${component}`, viewportWidth);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
+    });
+  });
+
+  baseThemes.forEach((theme) => {
+    /*test(`should have no visual regression for viewport ${baseViewportWidth} and theme auto with prefers-color-scheme ${theme}`, async ({
+      page,
+    }) => {
+      await setupScenario(page, `/${component}`, baseViewportWidth, {
+        forceComponentTheme: 'auto',
+        prefersColorScheme: theme,
+      });
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${theme}.png`);
+    });*/
+
+    test(`should have no visual regression for viewport ${baseViewportWidth} and high contrast mode with prefers-color-scheme ${theme}`, async ({
+      page,
+    }) => {
+      await setupScenario(page, `/${component}`, baseViewportWidth, {
+        forcedColorsEnabled: true,
+        prefersColorScheme: theme,
+      });
+      await expect(page.locator('#app')).toHaveScreenshot(
+        `${component}.${baseViewportWidth}-high-contrast-${theme}.png`
+      );
+    });
+  });
+
+  test(`should have no visual regression for viewport ${baseViewportWidth} in scale mode`, async ({ page }) => {
+    await setupScenario(page, `/${component}`, baseViewportWidth, {
+      scalePageFontSize: true,
+    });
+    await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-scale-mode.png`);
+  });
 });

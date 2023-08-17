@@ -1,47 +1,128 @@
 import type { Page, ElementHandle } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 
+export const baseThemes = ['light', 'dark'] as const;
+export const baseViewportWidth = 1000;
+export const baseViewportWidths = [320, 480, 760, 1300, 1760] as const;
+
 type Options = {
+  javaScriptDisabled?: boolean;
+  forcedColorsEnabled?: boolean;
+  prefersColorScheme?: 'light' | 'dark';
+  scalePageFontSize?: boolean;
+  forceComponentTheme?: 'light' | 'dark' | 'auto';
+};
+
+export const setupScenario = async (
+  page: Page,
+  url: string,
+  viewportWidth: number,
+  options?: Options
+): Promise<void> => {
+  const {
+    javaScriptDisabled,
+    forcedColorsEnabled,
+    prefersColorScheme,
+    scalePageFontSize,
+    forceComponentTheme,
+  }: Options = {
+    javaScriptDisabled: false,
+    forcedColorsEnabled: false,
+    prefersColorScheme: undefined,
+    scalePageFontSize: false,
+    forceComponentTheme: undefined,
+    ...options,
+  };
+
+  if (javaScriptDisabled || forcedColorsEnabled || prefersColorScheme) {
+    const cdpSession = await page.context().newCDPSession(page);
+
+    if (javaScriptDisabled) {
+      await cdpSession.send('Emulation.setScriptExecutionDisabled', {
+        value: javaScriptDisabled,
+      });
+    }
+
+    // NOTE: 'forced-colors' isn't supported by page.emulateMediaFeatures, yet https://pptr.dev/api/puppeteer.page.emulatemediafeatures
+    // also it looks like cdpSession.send() can't be combined with page.emulateMediaFeatures since it affects each other
+    // reset or fallback is needed since it is shared across pages, parallel tests are affected by this
+    if (forcedColorsEnabled || prefersColorScheme) {
+      await cdpSession.send('Emulation.setEmulatedMedia', {
+        features: [
+          { name: 'forced-colors', value: forcedColorsEnabled ? 'active' : 'none' },
+          { name: 'prefers-color-scheme', value: prefersColorScheme || 'light' },
+        ],
+      });
+    }
+  }
+
+  await page.setViewportSize({ width: viewportWidth, height: 600 });
+  await page.goto(url);
+  await page.evaluate(() => (window as unknown as Window & { componentsReady: Function }).componentsReady());
+
+  if (forceComponentTheme) {
+    await page.evaluate((theme) => {
+      document.querySelectorAll('*').forEach((el) => el.setAttribute('theme', theme));
+      document.querySelectorAll('.playground').forEach((el) => {
+        el.classList.remove('light', 'dark', 'auto');
+        el.classList.add(theme);
+      });
+      return (window as unknown as Window & { componentsReady: Function }).componentsReady();
+    }, forceComponentTheme);
+  }
+
+  if (scalePageFontSize) {
+    await page.evaluate(() => {
+      document.querySelector('html').style.fontSize = '200%';
+    });
+  }
+};
+
+type VRTOptions = {
   baseUrl?: string;
   viewportWidths?: number[];
   scenario?: (page: Page) => Promise<void>;
 };
 
-const defaultOptions: Options = {
+const defaultOptions: VRTOptions = {
   baseUrl: 'http://localhost:8575',
   viewportWidths: [320, 480, 760, 1000, 1300, 1760],
   scenario: undefined,
 };
 
+// TODO: should be removed asap
 export const executeVisualRegressionTest = async (
   snapshotId: string,
   url: string,
-  options?: Options
+  options?: VRTOptions
 ): Promise<void> => {
   const { baseUrl, viewportWidths, scenario } = { ...defaultOptions, ...options };
 
   viewportWidths.forEach((viewportWidth) => {
-    test(snapshotId + viewportWidth, async ({ page }, testInfo): Promise<void> => {
-      testInfo.snapshotSuffix = ''; // removes system OS names in snapshot
+    test(
+      'should have no visual regression for viewport ' + viewportWidth,
+      async ({ page }, testInfo): Promise<void> => {
+        testInfo.snapshotSuffix = ''; // removes system OS names in snapshot
 
-      // TODO: move to createScenario(snapshotId, url, viewport, options)
-      await page.setViewportSize({ width: viewportWidth, height: 1 });
-      await page.goto(baseUrl + url);
-      await page.evaluate(() => (window as any).componentsReady());
-      await page.setViewportSize({
-        width: viewportWidth,
-        height: await page.evaluate(() => document.body.clientHeight),
-      });
+        await page.setViewportSize({ width: viewportWidth, height: 1 });
+        await page.goto(baseUrl + url);
+        await page.evaluate(() => (window as any).componentsReady());
+        await page.setViewportSize({
+          width: viewportWidth,
+          height: await page.evaluate(() => document.body.clientHeight),
+        });
 
-      if (scenario) {
-        await scenario(page);
+        if (scenario) {
+          await scenario(page);
+        }
+
+        await expect(page.locator('#app')).toHaveScreenshot(`${snapshotId}.${viewportWidth}.png`);
       }
-
-      await expect(page.locator('#app')).toHaveScreenshot(`${snapshotId}.${viewportWidth}.png`);
-    });
+    );
   });
 };
 
+// TODO: should be in local test file
 export const openPopovers = async (page: Page): Promise<void> => {
   const bodyHeightWidth = await page.evaluate(() => {
     return {
@@ -63,6 +144,7 @@ export const openPopovers = async (page: Page): Promise<void> => {
   });
 };
 
+// TODO: should be in local test file
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
   const selectorParts = selector.split('>>>');
   const shadowRootSelectors =
