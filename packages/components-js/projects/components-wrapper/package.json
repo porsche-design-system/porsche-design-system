@@ -16,7 +16,33 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://designsystem.porsche.com",
-  "main": "index.js",
-  "module": "esm/index.js",
-  "types": "index.d.ts"
+  "main": "cjs/index.cjs",
+  "module": "index-legacy.js",
+  "types": "index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./esm/index.mjs",
+      "default": "./cjs/index.cjs"
+    },
+    "./jsdom-polyfill": {
+      "types": "./jsdom-polyfill/index.d.ts",
+      "default": "./jsdom-polyfill/index.cjs"
+    },
+    "./partials": {
+      "types": "./partials/esm/index.d.ts",
+      "import": "./partials/esm/index.mjs",
+      "default": "./partials/cjs/index.cjs"
+    },
+    "./styles": {
+      "types": "./styles/esm/index.d.ts",
+      "import": "./styles/esm/index.mjs",
+      "default": "./styles/cjs/index.cjs"
+    },
+    "./testing": {
+      "types": "./testing/index.d.ts",
+      "default": "./testing/index.cjs"
+    }
+  }
 }

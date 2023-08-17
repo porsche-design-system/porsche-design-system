@@ -3,7 +3,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import modify from 'rollup-plugin-modify';
 import { version } from '../components-wrapper/package.json';
 import typescript from '@rollup/plugin-typescript';
-import generatePackageJson from 'rollup-plugin-generate-package-json';
 import copy from 'rollup-plugin-copy';
 
 const outputDir = '../../dist/components-wrapper';
@@ -12,7 +11,7 @@ export default [
   {
     input: 'src/index.js',
     output: {
-      file: `${outputDir}/jsdom-polyfill/index.js`,
+      file: `${outputDir}/jsdom-polyfill/index.cjs`,
       format: 'cjs',
       exports: 'auto', // fixes rollup warning
     },
@@ -24,7 +23,7 @@ export default [
         find: /'ROLLUP_REPLACE_VERSION'/,
         replace: `'${version}'`,
       }),
-      // patch conditions into build to allow opt out of CDN requests
+      // patch conditions into build to allow opt-out of CDN requests
       modify({
         // font-face css
         find: /appGlobals\.globalScripts\(\);/,
@@ -49,18 +48,9 @@ export default [
     input: 'src/testing.ts',
     external: ['@testing-library/dom'],
     output: {
-      file: `${outputDir}/testing/testing.js`,
+      file: `${outputDir}/testing/testing.cjs`,
       format: 'cjs',
     },
-    plugins: [
-      typescript({ declaration: true, declarationDir: `${outputDir}/testing`, rootDir: 'src' }),
-      generatePackageJson({
-        baseContents: {
-          main: 'testing.js',
-          types: 'testing.d.ts',
-          sideEffects: false,
-        },
-      }),
-    ],
+    plugins: [typescript({ declaration: true, declarationDir: `${outputDir}/testing`, rootDir: 'src' })],
   },
 ];
