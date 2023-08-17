@@ -5,10 +5,10 @@ import { COMPONENT_CHUNKS_MANIFEST, ComponentChunkName } from '../../../projects
 import { TAG_NAMES } from '@porsche-design-system/shared';
 
 const indexJsFile = require.resolve('@porsche-design-system/components-js');
-const { version } = JSON.parse(fs.readFileSync(path.resolve(indexJsFile, '../package.json'), 'utf8')) as {
+const { version } = JSON.parse(fs.readFileSync(path.resolve(indexJsFile, '../../package.json'), 'utf8')) as {
   version: string;
 };
-const chunkDir = path.resolve(indexJsFile, '../../components');
+const chunkDir = path.resolve(indexJsFile, '../../../components');
 const chunkFileNames: string[] = Object.values(COMPONENT_CHUNKS_MANIFEST);
 const chunkFiles = [indexJsFile].concat(chunkFileNames.map((chunkFileName) => path.resolve(chunkDir, chunkFileName)));
 
