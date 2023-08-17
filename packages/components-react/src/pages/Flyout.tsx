@@ -901,7 +901,7 @@ export const FlyoutPage = (): JSX.Element => {
             <p>Sticky header text</p>
           </div>
           <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#61dafb' }} />
-          <span id="test" className="scroll-here vertical-center"
+          <span className="scroll-here vertical-center"
             >Some content: should show scrollable flyout to the middle to test z-index</span
           >
           <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#ebddf9' }} />
