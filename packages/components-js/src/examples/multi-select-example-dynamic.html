@@ -2,7 +2,7 @@
 <button id="btn-input-value" type="button">Set Value</button>
 <button id="btn-reset" type="button">Reset value</button>
 
-<p-multi-select name="name">
+<p-multi-select name="options">
   <p-multi-select-option value="1">Option 1</p-multi-select-option>
   <p-multi-select-option value="2">Option 2</p-multi-select-option>
   <p-multi-select-option value="3">Option 3</p-multi-select-option>
@@ -17,23 +17,23 @@
   const multiSelect = document.querySelector('p-multi-select');
 
   multiSelect.addEventListener('update', () => {
-    input.value = multiSelect.value;
+    input.value = multiSelect.value.join(',');
+  });
+
+  document.querySelector('#btn-input-value').addEventListener('click', () => {
+    multiSelect.value = input.value.split(',');
+  });
+
+  document.querySelector('#btn-reset').addEventListener('click', () => {
+    multiSelect.value = undefined;
   });
 
   document.querySelector('#btn-add').addEventListener('click', () => {
     addOption();
   });
 
-  document.querySelector('#btn-input-value').addEventListener('click', () => {
-    multiSelect.value = input.value;
-  });
-
   document.querySelector('#btn-remove').addEventListener('click', () => {
     multiSelect.lastChild.remove();
-  });
-
-  document.querySelector('#btn-reset').addEventListener('click', () => {
-    multiSelect.value = undefined;
   });
 
   function addOption() {
