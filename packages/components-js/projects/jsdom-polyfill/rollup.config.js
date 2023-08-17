@@ -48,9 +48,11 @@ export default [
     input: 'src/testing.ts',
     external: ['@testing-library/dom'],
     output: {
-      file: `${outputDir}/testing/testing.cjs`,
+      file: `${outputDir}/testing/index.cjs`,
       format: 'cjs',
     },
+    // emitted declarations are named `testing.d.ts` because of input file
+    // this is renamed to `index.d.ts` via npm script for consistency
     plugins: [typescript({ declaration: true, declarationDir: `${outputDir}/testing`, rootDir: 'src' })],
   },
 ];
