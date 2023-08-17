@@ -16,9 +16,9 @@ import {
   MODEL_SIGNATURES_CDN_BASE_PATH,
 } from '@porsche-design-system/assets';
 import { getFontFaceStylesheet } from '@porsche-design-system/components-js/partials';
-import { COMPONENT_CHUNKS_MANIFEST } from '../../../projects/components-wrapper/lib/chunksManifest';
-import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL_COM } from '../../../../../cdn.config';
-import { setContentWithDesignSystem } from '../helpers';
+import { COMPONENT_CHUNKS_MANIFEST } from '../../../../projects/components-wrapper/lib/chunksManifest';
+import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL_COM } from '../../../../../../cdn.config';
+import { setContentWithDesignSystem } from './helpers';
 
 describe('cdn', () => {
   let page: Page;
