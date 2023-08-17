@@ -1,5 +1,11 @@
 import { expect, test } from '@playwright/test';
-import { baseThemes, baseViewportWidth, baseViewportWidths, setupScenario } from '../helpers/playwright-helper';
+import {
+  baseSchemes,
+  baseThemes,
+  baseViewportWidth,
+  baseViewportWidths,
+  setupScenario,
+} from '../helpers/playwright-helper';
 
 const component = 'spinner';
 
@@ -30,26 +36,26 @@ test.describe(component, async () => {
     });
   });
 
-  baseThemes.forEach((theme) => {
-    test(`should have no visual regression for viewport ${baseViewportWidth} and theme auto with prefers-color-scheme ${theme}`, async ({
+  baseSchemes.forEach((scheme) => {
+    test(`should have no visual regression for viewport ${baseViewportWidth} and theme auto with prefers-color-scheme ${scheme}`, async ({
       page,
     }) => {
       await setupScenario(page, `/${component}`, baseViewportWidth, {
         forceComponentTheme: 'auto',
-        prefersColorScheme: theme,
+        prefersColorScheme: scheme,
       });
-      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${theme}.png`);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${scheme}.png`); // fixture is aliased since results have to be equal
     });
 
-    test(`should have no visual regression for viewport ${baseViewportWidth} and high contrast mode with prefers-color-scheme ${theme}`, async ({
+    test(`should have no visual regression for viewport ${baseViewportWidth} and high contrast mode with prefers-color-scheme ${scheme}`, async ({
       page,
     }) => {
       await setupScenario(page, `/${component}`, baseViewportWidth, {
         forcedColorsEnabled: true,
-        prefersColorScheme: theme,
+        prefersColorScheme: scheme,
       });
       await expect(page.locator('#app')).toHaveScreenshot(
-        `${component}.${baseViewportWidth}-high-contrast-${theme}.png`
+        `${component}.${baseViewportWidth}-high-contrast-${scheme}.png`
       );
     });
   });
