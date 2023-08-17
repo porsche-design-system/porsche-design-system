@@ -12,6 +12,7 @@ import {
 import {
   borderRadiusSmall,
   borderWidthBase,
+  fontLineHeight,
   spacingStaticMedium,
   spacingStaticSmall,
   spacingStaticXSmall,
@@ -136,6 +137,8 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
       input: {
         flex: 1,
         minWidth: 0,
+        height: `calc(${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 6px additionally so input height becomes 50px
+        font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
         color: primaryColor,
         padding: `${inputYPadding} ${spacingStaticMedium}`,
         boxSizing: 'border-box',
