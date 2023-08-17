@@ -902,7 +902,7 @@ const FlyoutPage: NextPage = (): JSX.Element => {
             <p>Sticky header text</p>
           </div>
           <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#61dafb' }} />
-          <span id="test" className="scroll-to-center"
+          <span id="test" className="scroll-here vertical-center"
             >Some content: should show scrollable flyout to the middle to test z-index</span
           >
           <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#ebddf9' }} />
@@ -921,7 +921,9 @@ const FlyoutPage: NextPage = (): JSX.Element => {
             <p>Sticky header text</p>
           </div>
           <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#61dafb' }} />
-          <span className="scroll-to-center">Some content: should show scrollable flyout to the middle to test z-index</span>
+          <span className="scroll-here vertical-center"
+            >Some content: should show scrollable flyout to the middle to test z-index</span
+          >
           <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#ebddf9' }} />
           <div slot="footer">
             <button>Sticky Footer Button</button>

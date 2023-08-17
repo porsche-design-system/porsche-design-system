@@ -900,7 +900,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <p>Sticky header text</p>
         </div>
         <div style="position: relative; z-index: 10; height: 50vh; background-color: #61dafb"></div>
-        <span id="test" class="scroll-to-center"
+        <span id="test" class="scroll-here vertical-center"
           >Some content: should show scrollable flyout to the middle to test z-index</span
         >
         <div style="position: relative; z-index: 10; height: 50vh; background-color: #ebddf9"></div>
@@ -919,7 +919,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <p>Sticky header text</p>
         </div>
         <div style="position: relative; z-index: 10; height: 50vh; background-color: #61dafb"></div>
-        <span class="scroll-to-center">Some content: should show scrollable flyout to the middle to test z-index</span>
+        <span class="scroll-here vertical-center"
+          >Some content: should show scrollable flyout to the middle to test z-index</span
+        >
         <div style="position: relative; z-index: 10; height: 50vh; background-color: #ebddf9"></div>
         <div slot="footer">
           <button>Sticky Footer Button</button>
