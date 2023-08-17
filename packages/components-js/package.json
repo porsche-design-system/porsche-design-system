@@ -13,7 +13,7 @@
     "build": "yarn clean:build && yarn build:components-manager-core && yarn build:components-manager-cli && yarn build:components-wrapper && yarn build:jsdom-polyfill && yarn build:partials && yarn build:styles && yarn build-app && yarn build:cleanEnvironment",
     "build-app": "yarn build-app:base && yarn build-app:components && yarn build-app:assets && yarn build-app:shared && yarn build-app:imask && yarn build-app:componentsAngularReact",
     "build-app:base": "mkdir -p ./www && cp -r ./src/. ./www && cp -r ./public/. ./www",
-    "build-app:components": "cp ./dist/components-wrapper/index-legacy.js ./www",
+    "build-app:components": "cp ./dist/components-wrapper/cjs/index.cjs ./www/index.js",
     "build-app:assets": "cp ../assets/dist/esm/index.js ./www/assets/assets.js",
     "build-app:imask": "cp ../../node_modules/imask/dist/imask.min.js ./www/assets/imask.min.js",
     "build-app:shared": "cp ../shared/dist/esm/data/table-data-sorting.js ./www/assets/table-data-sorting.js && cp ../shared/dist/esm/data/table-data-basic.js ./www/assets/table-data-basic.js && cp ../shared/dist/esm/data/table-data-advanced.js ./www/assets/table-data-advanced.js && cp ../shared/dist/esm/data/table-data-vrt.js ./www/assets/table-data-vrt.js && cp ../shared/dist/css/styles.css ./www/assets/styles.css",
