@@ -134,15 +134,15 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
     '@global': {
       input: {
         color: primaryColor,
-        flex: 1,
         padding: `${inputYPadding} ${spacingStaticMedium}`,
         boxSizing: 'border-box',
-        border: '0', // done via container
-        outline: '0',
+        border: 0, // done via container
+        outline: 0,
         appearance: 'none',
         background: 'transparent',
         ...textSmallStyle,
         textOverflow: 'ellipsis',
+        minWidth: 0,
         '&:disabled': {
           cursor: 'not-allowed',
         },
