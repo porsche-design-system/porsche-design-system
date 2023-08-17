@@ -80,6 +80,7 @@ export const getComponentCss = (
       border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
       ...(isOpen && {
+        [isDirectionDown ? 'paddingBottom' : 'paddingTop']: '1px', // Add padding to keep same height when border changes
         [isDirectionDown ? 'borderBottom' : 'borderTop']: addImportantToRule(`1px solid ${contrastMediumColor}`),
         [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
         [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
@@ -133,6 +134,8 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
   return {
     '@global': {
       input: {
+        flex: 1,
+        minWidth: 0,
         color: primaryColor,
         padding: `${inputYPadding} ${spacingStaticMedium}`,
         boxSizing: 'border-box',
@@ -142,7 +145,6 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
         background: 'transparent',
         ...textSmallStyle,
         textOverflow: 'ellipsis',
-        minWidth: 0,
         '&:disabled': {
           cursor: 'not-allowed',
         },
@@ -170,7 +172,7 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
       zIndex: 10,
       left: 0,
       right: 0,
-      [isDirectionDown ? 'top' : 'bottom']: isDirectionDown ? '100%' : `${INPUT_HEIGHT - 1}px`,
+      [isDirectionDown ? 'top' : 'bottom']: isDirectionDown ? '100%' : `${INPUT_HEIGHT}px`,
       boxSizing: 'border-box',
       maxHeight: `${8.5 * (MULTI_SELECT_OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
       overflowY: 'auto',
