@@ -9,7 +9,15 @@ can be used [within a form](components/multi-select/examples#form) or in a
 ## Basic usage
 
 Many of the properties closely resemble those found in the [select-wrapper](components/select-wrapper/examples) and
-other form components (e.g. label, description, state, message, hideLabel, disabled, required & dropdownDirection).
+other form components (e.g. `label`, `description`, `state`, `message`, `hideLabel`, `disabled`, `required` &
+`dropdownDirection`). The `p-multi-select` offers a search field by default. When the user types in a search string, the
+options are reduced by matching the options text.
+
+Options are slotted using the `p-multi-select-option` component. Each option needs to have an assigned value, which can
+be passed via an attribute or property and can be of type number or string. Initial selection states can only be
+achieved using the value property on the `p-multi-select` component
+([More Info](components/multi-select/examples#set-value)). Options don't have a selected attribute or property!. If an
+option should be visible but not selectable, it can be disabled by using the `disabled` attribute.
 
 <Playground :markup="basic()" :config="config"></Playground>
 
@@ -37,12 +45,12 @@ the component and the form, enabling the selected values to be included in the f
 
 ## Controlled
 
-In the controlled approach, the p-multi-select component is externally managed through code. Selected options trigger a
-custom update event, allowing external code to respond by synchronizing the component's state and displaying selected
-values.
+In the controlled approach, the p-multi-select component is externally controlled. Selected options trigger a custom
+update event, allowing you to use the updated value. Internally, the value will be updated automatically but can be
+overwritten by passing in a new value.
 
 <Playground :frameworkMarkup="controlledExample" :config="{ ...config, withoutDemo: true }">
-<p-multi-select label="Some Label" :theme="theme" class="mb-1" @update="updateControlledExample">
+<p-multi-select name="options" label="Some Label" :theme="theme" class="mb-1" @update="updateControlledExample">
   <p-multi-select-option value="a">Option A</p-multi-select-option>
   <p-multi-select-option value="b">Option B</p-multi-select-option>
   <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -68,7 +76,7 @@ numbers that represent the selected option values.
   <button id="btn-input-value" @click="setMultiSelectValue()">Set Value</button>
   <button id="btn-reset" type="button" @click="valueInput = '', setMultiSelectValue()">Reset value</button>
   
-  <p-multi-select name="name" label="Some Label" ref="multiSelect" :theme="theme" v-html="getOptions(amountOfOptions)" @update="(e) => valueInput = e.target.value" style="margin: 1rem 0">
+  <p-multi-select name="options" label="Some Label" ref="multiSelect" :theme="theme" v-html="getOptions(amountOfOptions)" @update="(e) => valueInput = e.target.value" style="margin: 1rem 0">
   </p-multi-select> 
 <button type="button" @click="amountOfOptions++">Add option</button>
   <button type="button" @click="amountOfOptions--">Remove last option</button>
