@@ -20,9 +20,7 @@ it.each(furtherExtendedViewports)('should have no visual regression for viewport
         await page.mouse.click(0, 0); // click top left corner of the page to remove focus on flyout
         // Scroll down flyouts
         await page.$$eval('.scroll-here', (scrollElements) => {
-          scrollElements.forEach((el) =>
-            el.scrollIntoView(el.classList.contains('vertical-center') && { block: 'center' })
-          );
+          scrollElements.forEach((el) => el.scrollIntoView());
         });
       },
     })
