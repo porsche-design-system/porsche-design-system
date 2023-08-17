@@ -25,21 +25,23 @@
     "@angular/core": ">=15.0.0 <17.0.0"
   },
   "exports": {
-    "./jsdom-polyfill": "./jsdom-polyfill/index.js",
+    "./jsdom-polyfill": {
+      "types": "./jsdom-polyfill/index.d.ts",
+      "default": "./jsdom-polyfill/index.cjs"
+    },
     "./partials": {
-      "types": "./partials/index.d.ts",
-      "import": "./partials/esm/index.js",
-      "require": "./partials/index.js"
+      "types": "./partials/esm/index.d.ts",
+      "import": "./partials/esm/index.mjs",
+      "default": "./partials/cjs/index.cjs"
+    },
+    "./styles": {
+      "types": "./styles/esm/index.d.ts",
+      "import": "./styles/esm/index.mjs",
+      "default": "./styles/cjs/index.cjs"
     },
     "./testing": {
       "types": "./testing/index.d.ts",
-      "import": "./testing/index.js",
-      "require": "./testing/index.js"
-    },
-    "./styles": {
-      "types": "./styles/index.d.ts",
-      "import": "./styles/esm/index.js",
-      "require": "./styles/index.js"
+      "default": "./testing/index.cjs"
     }
   }
 }

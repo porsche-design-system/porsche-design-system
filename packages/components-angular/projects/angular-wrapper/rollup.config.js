@@ -26,12 +26,14 @@ const buildConfig = (packagePath) => {
     external,
     output: [
       {
-        dir: `${outputDir}/${packagePath}`,
+        dir: `${outputDir}/${packagePath}/cjs`,
         format: 'cjs',
+        entryFileNames: '[name].cjs',
       },
       {
         dir: `${outputDir}/${packagePath}/esm`,
         format: 'esm',
+        entryFileNames: '[name].mjs',
       },
     ],
     plugins: [
@@ -59,7 +61,7 @@ export default [
     input: `${projectDir}/src/jsdom-polyfill/index.ts`,
     external,
     output: {
-      file: `${outputDir}/jsdom-polyfill/index.js`,
+      file: `${outputDir}/jsdom-polyfill/index.cjs`,
       format: 'cjs',
     },
     plugins: [typescript(typescriptOpts)],
@@ -69,7 +71,7 @@ export default [
     input: `${projectDir}/src/testing/index.ts`,
     external,
     output: {
-      file: `${outputDir}/testing/index.js`,
+      file: `${outputDir}/testing/index.cjs`,
       format: 'cjs',
     },
     plugins: [typescript(typescriptOpts)],
