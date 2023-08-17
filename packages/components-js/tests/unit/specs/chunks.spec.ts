@@ -1,16 +1,19 @@
 import * as gzipSize from 'gzip-size';
 import * as path from 'path';
 import * as fs from 'fs';
-import { COMPONENT_CHUNKS_MANIFEST, ComponentChunkName } from '../../../projects/components-wrapper';
+import { COMPONENT_CHUNKS_MANIFEST, type ComponentChunkName } from '../../../projects/components-wrapper';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 
-const indexJsFile = require.resolve('@porsche-design-system/components-js');
-const { version } = JSON.parse(fs.readFileSync(path.resolve(indexJsFile, '../../package.json'), 'utf8')) as {
+const indexJsFileCjs = require.resolve('@porsche-design-system/components-js');
+const indexJsFileEsm = path.resolve(indexJsFileCjs, '../../esm/index.mjs');
+const { version } = JSON.parse(fs.readFileSync(path.resolve(indexJsFileCjs, '../../package.json'), 'utf8')) as {
   version: string;
 };
-const chunkDir = path.resolve(indexJsFile, '../../../components');
+const chunkDir = path.resolve(indexJsFileCjs, '../../../components');
 const chunkFileNames: string[] = Object.values(COMPONENT_CHUNKS_MANIFEST);
-const chunkFiles = [indexJsFile].concat(chunkFileNames.map((chunkFileName) => path.resolve(chunkDir, chunkFileName)));
+const chunkFiles = [indexJsFileCjs, indexJsFileEsm].concat(
+  chunkFileNames.map((chunkFileName) => path.resolve(chunkDir, chunkFileName))
+);
 
 const getChunkContent = (chunkFileName: string): string => {
   const chunkFile = chunkFiles.find((x) => x.includes(chunkFileName));
@@ -214,8 +217,13 @@ describe('chunk content', () => {
   });
 
   describe('localhost', () => {
-    it('should not contain localhost in web components manager', () => {
-      const content = getChunkContent('index.js');
+    it('should not contain localhost in web components manager cjs', () => {
+      const content = getChunkContent('index.cjs');
+      expect(content).not.toContain('localhost');
+    });
+
+    it('should not contain localhost in web components manager mjs', () => {
+      const content = getChunkContent('index.mjs');
       expect(content).not.toContain('localhost');
     });
 
