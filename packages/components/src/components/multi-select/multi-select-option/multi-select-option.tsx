@@ -48,6 +48,7 @@ export class MultiSelectOption {
             disabled={this.disabled}
             {...getOptionAriaAttributes(this.host.selected, this.disabled, this.host.hidden, !!this.value)}
             aria-label={this.host.textContent}
+            tabindex="-1"
           />
           <slot slot="label" />
         </PrefixedTagNames.pCheckboxWrapper>

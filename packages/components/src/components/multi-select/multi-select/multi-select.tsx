@@ -254,6 +254,7 @@ export class MultiSelect {
               theme={this.theme}
               color={this.disabled ? 'state-disabled' : 'primary'}
               onClick={this.onResetClick}
+              onKeyDown={(e) => e.key === 'Tab' && (this.isOpen = false)}
             >
               Reset selection
             </PrefixedTagNames.pButtonPure>
@@ -372,8 +373,10 @@ export class MultiSelect {
         break;
       case 'Escape':
       case 'Tab':
-        // TODO: only close when on reset button
-        this.isOpen = false;
+        // If there is a value the reset button will be focused and the dropdown stays open
+        if (!this.currentValue.length) {
+          this.isOpen = false;
+        }
         resetHighlightedOptions(this.multiSelectOptions);
         break;
       case 'PageUp':
