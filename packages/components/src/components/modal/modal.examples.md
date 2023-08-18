@@ -220,7 +220,7 @@ export default class Code extends Vue {
 
   stickyFooter =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal heading="Some Heading" open="false">
+<p-modal heading="Some Heading" fullscreen="{ base: true, s: false }" open="false">
   <p-text style="height: 110vh">Some Content</p-text>
   <p-text slot="footer">Sticky footer</p-text>
 </p-modal>`;
@@ -235,7 +235,7 @@ export default class Code extends Vue {
 
   fullscreen =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
+<p-modal heading="Some Heading" fullscreen="{ base: true, s: false }" open="false">
   <p-flex direction="column" class="fullscreen-container">
     <p-flex-item grow="1">
       <p-text>Some Content</p-text>
