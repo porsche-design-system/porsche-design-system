@@ -372,9 +372,9 @@ export const MultiSelectPage = (): JSX.Element => {
       <div
         className="playground light"
         title="should render in focus state and be open"
-        style={{ paddingBottom: 'calc(1rem + 422px)' }}
+        style={{ paddingBottom: 'calc(1rem + 450px)' }}
       >
-        <PMultiSelect label="Some label" className="open">
+        <PMultiSelect label="Opened and focused" dropdownDirection="down" className="open focus">
           <PMultiSelectOption value="a"
             >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
             displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
@@ -397,11 +397,11 @@ export const MultiSelectPage = (): JSX.Element => {
         </PMultiSelect>
       </div>
       <div
-        className="playground light"
+        className="playground dark"
         title="should render in focus state and be open on dark theme"
-        style={{ paddingBottom: 'calc(1rem + 422px)' }}
+        style={{ paddingBottom: 'calc(1rem + 450px)' }}
       >
-        <PMultiSelect label="Some label" theme="dark" className="open">
+        <PMultiSelect label="Opened and focused" dropdownDirection="down" theme="dark" className="open focus">
           <PMultiSelectOption value="a"
             >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
             displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
@@ -414,6 +414,148 @@ export const MultiSelectPage = (): JSX.Element => {
             displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
             top.</PMultiSelectOption
           >
+          <PMultiSelectOption value="e">Option E</PMultiSelectOption>
+          <PMultiSelectOption value="f">Option F</PMultiSelectOption>
+          <PMultiSelectOption value="g">Option G</PMultiSelectOption>
+          <PMultiSelectOption value="h">Option H</PMultiSelectOption>
+          <PMultiSelectOption value="i">Option I</PMultiSelectOption>
+          <PMultiSelectOption value="j">Option J</PMultiSelectOption>
+          <PMultiSelectOption value="k">Option K</PMultiSelectOption>
+        </PMultiSelect>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render with open dropdown direction up"
+        style={{ paddingTop: 'calc(1rem + 450px)' }}
+      >
+        <PMultiSelect label="Opened direction up" dropdownDirection="up" className="open">
+          <PMultiSelectOption value="a"
+            >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+            displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+            top.</PMultiSelectOption
+          >
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+          <PMultiSelectOption value="d"
+            >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+            displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+            top.</PMultiSelectOption
+          >
+          <PMultiSelectOption value="e">Option E</PMultiSelectOption>
+          <PMultiSelectOption value="f">Option F</PMultiSelectOption>
+          <PMultiSelectOption value="g">Option G</PMultiSelectOption>
+          <PMultiSelectOption value="h">Option H</PMultiSelectOption>
+          <PMultiSelectOption value="i">Option I</PMultiSelectOption>
+          <PMultiSelectOption value="j">Option J</PMultiSelectOption>
+          <PMultiSelectOption value="k">Option K</PMultiSelectOption>
+        </PMultiSelect>
+      </div>
+      <div
+        className="playground dark"
+        title="should render with open dropdown direction up on dark theme"
+        style={{ paddingTop: 'calc(1rem + 450px)' }}
+      >
+        <PMultiSelect label="Opened direction up" dropdownDirection="up" theme="dark" className="open">
+          <PMultiSelectOption value="a"
+            >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+            displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+            top.</PMultiSelectOption
+          >
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+          <PMultiSelectOption value="d"
+            >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+            displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+            top.</PMultiSelectOption
+          >
+          <PMultiSelectOption value="e">Option E</PMultiSelectOption>
+          <PMultiSelectOption value="f">Option F</PMultiSelectOption>
+          <PMultiSelectOption value="g">Option G</PMultiSelectOption>
+          <PMultiSelectOption value="h">Option H</PMultiSelectOption>
+          <PMultiSelectOption value="i">Option I</PMultiSelectOption>
+          <PMultiSelectOption value="j">Option J</PMultiSelectOption>
+          <PMultiSelectOption value="k">Option K</PMultiSelectOption>
+        </PMultiSelect>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render opened and with highlighted, selected and disabled option"
+        style={{ paddingBottom: 'calc(1rem + 450px)' }}
+      >
+        <PMultiSelect
+          label="Opened with highlighted, selected and disabled option"
+          dropdownDirection="down"
+          className="open highlight selected"
+        >
+          <PMultiSelectOption value="a" disabled>Option A</PMultiSelectOption>
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+          <PMultiSelectOption value="d">Option D</PMultiSelectOption>
+          <PMultiSelectOption value="e">Option E</PMultiSelectOption>
+          <PMultiSelectOption value="f">Option F</PMultiSelectOption>
+          <PMultiSelectOption value="g">Option G</PMultiSelectOption>
+          <PMultiSelectOption value="h">Option H</PMultiSelectOption>
+          <PMultiSelectOption value="i">Option I</PMultiSelectOption>
+          <PMultiSelectOption value="j">Option J</PMultiSelectOption>
+          <PMultiSelectOption value="k">Option K</PMultiSelectOption>
+        </PMultiSelect>
+      </div>
+      <div
+        className="playground dark"
+        title="should render opened and with highlighted, selected and disabled option on dark theme"
+        style={{ paddingBottom: 'calc(1rem + 450px)' }}
+      >
+        <PMultiSelect
+          label="Opened with highlighted, selected and disabled option"
+          dropdownDirection="down"
+          theme="dark"
+          className="open highlight selected"
+        >
+          <PMultiSelectOption value="a" disabled>Option A</PMultiSelectOption>
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+          <PMultiSelectOption value="d">Option D</PMultiSelectOption>
+          <PMultiSelectOption value="e">Option E</PMultiSelectOption>
+          <PMultiSelectOption value="f">Option F</PMultiSelectOption>
+          <PMultiSelectOption value="g">Option G</PMultiSelectOption>
+          <PMultiSelectOption value="h">Option H</PMultiSelectOption>
+          <PMultiSelectOption value="i">Option I</PMultiSelectOption>
+          <PMultiSelectOption value="j">Option J</PMultiSelectOption>
+          <PMultiSelectOption value="k">Option K</PMultiSelectOption>
+        </PMultiSelect>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render opened with filter input and no results"
+        style={{ paddingBottom: 'calc(1rem + 450px)' }}
+      >
+        <PMultiSelect label="Opened with no results" dropdownDirection="down" className="open no-results">
+          <PMultiSelectOption value="a">Option A</PMultiSelectOption>
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+          <PMultiSelectOption value="d">Option D</PMultiSelectOption>
+          <PMultiSelectOption value="e">Option E</PMultiSelectOption>
+          <PMultiSelectOption value="f">Option F</PMultiSelectOption>
+          <PMultiSelectOption value="g">Option G</PMultiSelectOption>
+          <PMultiSelectOption value="h">Option H</PMultiSelectOption>
+          <PMultiSelectOption value="i">Option I</PMultiSelectOption>
+          <PMultiSelectOption value="j">Option J</PMultiSelectOption>
+          <PMultiSelectOption value="k">Option K</PMultiSelectOption>
+        </PMultiSelect>
+      </div>
+      <div
+        className="playground dark"
+        title="should render opened with filter input and no results on dark theme"
+        style={{ paddingBottom: 'calc(1rem + 450px)' }}
+      >
+        <PMultiSelect label="Opened with no results" dropdownDirection="down" theme="dark" className="open no-results">
+          <PMultiSelectOption value="a">Option A</PMultiSelectOption>
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+          <PMultiSelectOption value="d">Option D</PMultiSelectOption>
           <PMultiSelectOption value="e">Option E</PMultiSelectOption>
           <PMultiSelectOption value="f">Option F</PMultiSelectOption>
           <PMultiSelectOption value="g">Option G</PMultiSelectOption>

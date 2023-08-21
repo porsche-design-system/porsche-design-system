@@ -299,12 +299,13 @@ export class MultiSelect {
     if (this.isWithinForm) {
       updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }
+    // Necessary to update selected options in placeholder
     forceUpdate(this.host);
   };
 
   private updateOptions = (): void => {
     this.multiSelectOptions = Array.from(this.host.children).filter(
-      (el) => el.tagName !== 'SELECT'
+      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
     ) as HTMLPMultiSelectOptionElement[];
     this.multiSelectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
   };

@@ -371,9 +371,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div
       class="playground light"
       title="should render in focus state and be open"
-      style="padding-bottom: calc(1rem + 422px)"
+      style="padding-bottom: calc(1rem + 450px)"
     >
-      <p-multi-select [label]="'Some label'" class="open">
+      <p-multi-select [label]="'Opened and focused'" [dropdownDirection]="'down'" class="open focus">
         <p-multi-select-option [value]="'a'"
           >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
           displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
@@ -396,11 +396,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-multi-select>
     </div>
     <div
-      class="playground light"
+      class="playground dark"
       title="should render in focus state and be open on dark theme"
-      style="padding-bottom: calc(1rem + 422px)"
+      style="padding-bottom: calc(1rem + 450px)"
     >
-      <p-multi-select [label]="'Some label'" [theme]="'dark'" class="open">
+      <p-multi-select [label]="'Opened and focused'" [dropdownDirection]="'down'" [theme]="'dark'" class="open focus">
         <p-multi-select-option [value]="'a'"
           >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
           displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
@@ -413,6 +413,148 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
           top.</p-multi-select-option
         >
+        <p-multi-select-option [value]="'e'">Option E</p-multi-select-option>
+        <p-multi-select-option [value]="'f'">Option F</p-multi-select-option>
+        <p-multi-select-option [value]="'g'">Option G</p-multi-select-option>
+        <p-multi-select-option [value]="'h'">Option H</p-multi-select-option>
+        <p-multi-select-option [value]="'i'">Option I</p-multi-select-option>
+        <p-multi-select-option [value]="'j'">Option J</p-multi-select-option>
+        <p-multi-select-option [value]="'k'">Option K</p-multi-select-option>
+      </p-multi-select>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render with open dropdown direction up"
+      style="padding-top: calc(1rem + 450px)"
+    >
+      <p-multi-select [label]="'Opened direction up'" [dropdownDirection]="'up'" class="open">
+        <p-multi-select-option [value]="'a'"
+          >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+          displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+          top.</p-multi-select-option
+        >
+        <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+        <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+        <p-multi-select-option [value]="'d'"
+          >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+          displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+          top.</p-multi-select-option
+        >
+        <p-multi-select-option [value]="'e'">Option E</p-multi-select-option>
+        <p-multi-select-option [value]="'f'">Option F</p-multi-select-option>
+        <p-multi-select-option [value]="'g'">Option G</p-multi-select-option>
+        <p-multi-select-option [value]="'h'">Option H</p-multi-select-option>
+        <p-multi-select-option [value]="'i'">Option I</p-multi-select-option>
+        <p-multi-select-option [value]="'j'">Option J</p-multi-select-option>
+        <p-multi-select-option [value]="'k'">Option K</p-multi-select-option>
+      </p-multi-select>
+    </div>
+    <div
+      class="playground dark"
+      title="should render with open dropdown direction up on dark theme"
+      style="padding-top: calc(1rem + 450px)"
+    >
+      <p-multi-select [label]="'Opened direction up'" [dropdownDirection]="'up'" [theme]="'dark'" class="open">
+        <p-multi-select-option [value]="'a'"
+          >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+          displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+          top.</p-multi-select-option
+        >
+        <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+        <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+        <p-multi-select-option [value]="'d'"
+          >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+          displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+          top.</p-multi-select-option
+        >
+        <p-multi-select-option [value]="'e'">Option E</p-multi-select-option>
+        <p-multi-select-option [value]="'f'">Option F</p-multi-select-option>
+        <p-multi-select-option [value]="'g'">Option G</p-multi-select-option>
+        <p-multi-select-option [value]="'h'">Option H</p-multi-select-option>
+        <p-multi-select-option [value]="'i'">Option I</p-multi-select-option>
+        <p-multi-select-option [value]="'j'">Option J</p-multi-select-option>
+        <p-multi-select-option [value]="'k'">Option K</p-multi-select-option>
+      </p-multi-select>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render opened and with highlighted, selected and disabled option"
+      style="padding-bottom: calc(1rem + 450px)"
+    >
+      <p-multi-select
+        [label]="'Opened with highlighted, selected and disabled option'"
+        [dropdownDirection]="'down'"
+        class="open highlight selected"
+      >
+        <p-multi-select-option [value]="'a'" disabled>Option A</p-multi-select-option>
+        <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+        <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+        <p-multi-select-option [value]="'d'">Option D</p-multi-select-option>
+        <p-multi-select-option [value]="'e'">Option E</p-multi-select-option>
+        <p-multi-select-option [value]="'f'">Option F</p-multi-select-option>
+        <p-multi-select-option [value]="'g'">Option G</p-multi-select-option>
+        <p-multi-select-option [value]="'h'">Option H</p-multi-select-option>
+        <p-multi-select-option [value]="'i'">Option I</p-multi-select-option>
+        <p-multi-select-option [value]="'j'">Option J</p-multi-select-option>
+        <p-multi-select-option [value]="'k'">Option K</p-multi-select-option>
+      </p-multi-select>
+    </div>
+    <div
+      class="playground dark"
+      title="should render opened and with highlighted, selected and disabled option on dark theme"
+      style="padding-bottom: calc(1rem + 450px)"
+    >
+      <p-multi-select
+        [label]="'Opened with highlighted, selected and disabled option'"
+        [dropdownDirection]="'down'"
+        [theme]="'dark'"
+        class="open highlight selected"
+      >
+        <p-multi-select-option [value]="'a'" disabled>Option A</p-multi-select-option>
+        <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+        <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+        <p-multi-select-option [value]="'d'">Option D</p-multi-select-option>
+        <p-multi-select-option [value]="'e'">Option E</p-multi-select-option>
+        <p-multi-select-option [value]="'f'">Option F</p-multi-select-option>
+        <p-multi-select-option [value]="'g'">Option G</p-multi-select-option>
+        <p-multi-select-option [value]="'h'">Option H</p-multi-select-option>
+        <p-multi-select-option [value]="'i'">Option I</p-multi-select-option>
+        <p-multi-select-option [value]="'j'">Option J</p-multi-select-option>
+        <p-multi-select-option [value]="'k'">Option K</p-multi-select-option>
+      </p-multi-select>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render opened with filter input and no results"
+      style="padding-bottom: calc(1rem + 450px)"
+    >
+      <p-multi-select [label]="'Opened with no results'" [dropdownDirection]="'down'" class="open no-results">
+        <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
+        <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+        <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+        <p-multi-select-option [value]="'d'">Option D</p-multi-select-option>
+        <p-multi-select-option [value]="'e'">Option E</p-multi-select-option>
+        <p-multi-select-option [value]="'f'">Option F</p-multi-select-option>
+        <p-multi-select-option [value]="'g'">Option G</p-multi-select-option>
+        <p-multi-select-option [value]="'h'">Option H</p-multi-select-option>
+        <p-multi-select-option [value]="'i'">Option I</p-multi-select-option>
+        <p-multi-select-option [value]="'j'">Option J</p-multi-select-option>
+        <p-multi-select-option [value]="'k'">Option K</p-multi-select-option>
+      </p-multi-select>
+    </div>
+    <div
+      class="playground dark"
+      title="should render opened with filter input and no results on dark theme"
+      style="padding-bottom: calc(1rem + 450px)"
+    >
+      <p-multi-select [label]="'Opened with no results'" [dropdownDirection]="'down'" [theme]="'dark'" class="open no-results">
+        <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
+        <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+        <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+        <p-multi-select-option [value]="'d'">Option D</p-multi-select-option>
         <p-multi-select-option [value]="'e'">Option E</p-multi-select-option>
         <p-multi-select-option [value]="'f'">Option F</p-multi-select-option>
         <p-multi-select-option [value]="'g'">Option G</p-multi-select-option>
