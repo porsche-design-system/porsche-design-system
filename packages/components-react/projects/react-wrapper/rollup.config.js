@@ -119,6 +119,7 @@ export default [
               types: './styles/esm/index.d.ts',
               import: './styles/esm/index.mjs',
               default: './styles/cjs/index.cjs',
+              sass: './styles/_index.scss',
             },
             './testing': {
               types: './testing/index.d.ts',

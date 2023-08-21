@@ -70,6 +70,7 @@ export default [
   buildConfig('styles'),
   {
     input: `${projectDir}/src/partials/index.ts`,
+    external,
     output: {
       file: `${outputDir}/partials/index.cjs`,
       format: 'cjs',
@@ -82,6 +83,24 @@ export default [
           types: 'index.d.ts',
           sideEffects: false,
         },
+      }),
+      // ugly workaround to align package structure with other packages
+      // unfortunately ng-packagr doesn't support any configuration and we have to postprocess
+      generatePackageJson({
+        inputFolder: outputDir, // defaults to current working directory, which is the wrong one
+        outputFolder: outputDir,
+        baseContents: (pkg) => ({
+          ...pkg,
+          typings: 'esm/index.d.ts',
+          exports: {
+            ...pkg.exports,
+            './package.json': './package.json',
+            '.': {
+              ...pkg.exports['.'],
+              types: './esm/index.d.ts',
+            },
+          },
+        }),
       }),
     ],
   },

@@ -18,11 +18,11 @@
   "homepage": "https://designsystem.porsche.com",
   "main": "cjs/index.cjs",
   "module": "index-legacy.js",
-  "types": "index.d.ts",
+  "types": "esm/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "types": "./index.d.ts",
+      "types": "./esm/index.d.ts",
       "import": "./esm/index.mjs",
       "default": "./cjs/index.cjs"
     },
@@ -37,7 +37,8 @@
     "./styles": {
       "types": "./styles/esm/index.d.ts",
       "import": "./styles/esm/index.mjs",
-      "default": "./styles/cjs/index.cjs"
+      "default": "./styles/cjs/index.cjs",
+      "sass": "./styles/_index.scss"
     },
     "./testing": {
       "types": "./testing/index.d.ts",

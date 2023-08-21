@@ -23,7 +23,7 @@
     "build:components-wrapper:environment": "tsc --project tsconfig.json --module commonjs --moduleResolution node --verbatimModuleSyntax false",
     "build:components-wrapper:webpack": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} webpack --config ./projects/components-wrapper/webpack.config.ts",
     "build:components-wrapper": "yarn build:components-wrapper:environment && yarn build:components-wrapper:webpack && yarn build:components-wrapper:cm && yarn build:components-wrapper:replaceCdnBaseUrlDynamicPlaceholder && yarn build:components-wrapper:generateChunksManifest",
-    "build:components-wrapper:cm": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} cm build && PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} IIFE_BUILD=1 cm build && PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} ESM_BUILD=1 cm build && cp ./dist/components-wrapper/esm/index.mjs ./dist/components-wrapper/index-legacy.js",
+    "build:components-wrapper:cm": "PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} cm build && PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} IIFE_BUILD=1 cm build && PORSCHE_DESIGN_SYSTEM_DEV=${PORSCHE_DESIGN_SYSTEM_DEV:-1} ESM_BUILD=1 cm build && cp ./dist/components-wrapper/esm/index.mjs ./dist/components-wrapper/index-legacy.js && mv ./dist/components-wrapper/index.d.ts ./dist/components-wrapper/esm/index.d.ts",
     "build:components-wrapper:replaceCdnBaseUrlDynamicPlaceholder": "ts-node scripts/replaceCdnBaseUrlDynamicPlaceholder.ts",
     "build:components-wrapper:generateChunksManifest": "ts-node scripts/generateChunksManifest.ts",
     "build:cleanEnvironment": "rm -f ../../cdn.config.js && rm -rf ./projects/components-wrapper/environment.js",
