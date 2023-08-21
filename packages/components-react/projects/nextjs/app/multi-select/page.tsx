@@ -160,12 +160,7 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
         </PMultiSelect>
       </div>
       <div className="playground dark" title="should render with error state and no error message">
-        <PMultiSelect
-          name="options"
-          label="Error state (no message)"
-          state="error"
-          theme="dark"
-        >
+        <PMultiSelect name="options" label="Error state (no message)" state="error" theme="dark">
           <PMultiSelectOption value="a">Option A</PMultiSelectOption>
           <PMultiSelectOption value="b">Option B</PMultiSelectOption>
           <PMultiSelectOption value="c">Option C</PMultiSelectOption>
@@ -195,12 +190,7 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
         </PMultiSelect>
       </div>
       <div className="playground dark" title="should render with success state and no success message on dark theme">
-        <PMultiSelect
-          name="options"
-          label="Success state (no message)"
-          state="success"
-          theme="dark"
-        >
+        <PMultiSelect name="options" label="Success state (no message)" state="success" theme="dark">
           <PMultiSelectOption value="a">Option A</PMultiSelectOption>
           <PMultiSelectOption value="b">Option B</PMultiSelectOption>
           <PMultiSelectOption value="c">Option C</PMultiSelectOption>
@@ -386,22 +376,25 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
         style={{ paddingBottom: 'calc(1rem + 422px)' }}
       >
         <PMultiSelect label="Some label" className="open">
-          <PMultiSelectOption value="a">Multiline options could be quite long, especially on smaller screens. Let&apos;s check if the height of the option is
+          <PMultiSelectOption value="a"
+            >Multiline options could be quite long, especially on smaller screens. Let&apos;s check if the height of the option is
             displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-            top.</PMultiSelectOption>
-            <PMultiSelectOption value="b">Option B</PMultiSelectOption>
-            <PMultiSelectOption value="c">Option C</PMultiSelectOption>
-            <PMultiSelectOption value="d">Multiline options could be quite long, especially on smaller screens. Let&apos;s check if the height of the option is
-              displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-              top.</PMultiSelectOption>
-            <PMultiSelectOption value="e">Option E</PMultiSelectOption>
-            <PMultiSelectOption value="f">Option F</PMultiSelectOption>
-            <PMultiSelectOption value="g">Option G</PMultiSelectOption>
-            <PMultiSelectOption value="h">Option H</PMultiSelectOption>
-            <PMultiSelectOption value="i">Option I</PMultiSelectOption>
-            <PMultiSelectOption value="j">Option J</PMultiSelectOption>
-            <PMultiSelectOption value="k">Option K</PMultiSelectOption>
-          </select>
+            top.</PMultiSelectOption
+          >
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+          <PMultiSelectOption value="d"
+            >Multiline options could be quite long, especially on smaller screens. Let&apos;s check if the height of the option is
+            displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+            top.</PMultiSelectOption
+          >
+          <PMultiSelectOption value="e">Option E</PMultiSelectOption>
+          <PMultiSelectOption value="f">Option F</PMultiSelectOption>
+          <PMultiSelectOption value="g">Option G</PMultiSelectOption>
+          <PMultiSelectOption value="h">Option H</PMultiSelectOption>
+          <PMultiSelectOption value="i">Option I</PMultiSelectOption>
+          <PMultiSelectOption value="j">Option J</PMultiSelectOption>
+          <PMultiSelectOption value="k">Option K</PMultiSelectOption>
         </PMultiSelect>
       </div>
       <div
@@ -410,14 +403,18 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
         style={{ paddingBottom: 'calc(1rem + 422px)' }}
       >
         <PMultiSelect label="Some label" theme="dark" className="open">
-          <PMultiSelectOption value="a">Multiline options could be quite long, especially on smaller screens. Let&apos;s check if the height of the option is
+          <PMultiSelectOption value="a"
+            >Multiline options could be quite long, especially on smaller screens. Let&apos;s check if the height of the option is
             displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-            top.</PMultiSelectOption>
+            top.</PMultiSelectOption
+          >
           <PMultiSelectOption value="b">Option B</PMultiSelectOption>
           <PMultiSelectOption value="c">Option C</PMultiSelectOption>
-          <PMultiSelectOption value="d">Multiline options could be quite long, especially on smaller screens. Let&apos;s check if the height of the option is
+          <PMultiSelectOption value="d"
+            >Multiline options could be quite long, especially on smaller screens. Let&apos;s check if the height of the option is
             displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-            top.</PMultiSelectOption>
+            top.</PMultiSelectOption
+          >
           <PMultiSelectOption value="e">Option E</PMultiSelectOption>
           <PMultiSelectOption value="f">Option F</PMultiSelectOption>
           <PMultiSelectOption value="g">Option G</PMultiSelectOption>
@@ -425,7 +422,6 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
           <PMultiSelectOption value="i">Option I</PMultiSelectOption>
           <PMultiSelectOption value="j">Option J</PMultiSelectOption>
           <PMultiSelectOption value="k">Option K</PMultiSelectOption>
-          </select>
         </PMultiSelect>
       </div>
     </>

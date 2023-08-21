@@ -158,12 +158,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-multi-select>
     </div>
     <div class="playground dark" title="should render with error state and no error message">
-      <p-multi-select
-        [name]="'options'"
-        [label]="'Error state (no message)'"
-        [state]="'error'"
-        [theme]="'dark'"
-      >
+      <p-multi-select [name]="'options'" [label]="'Error state (no message)'" [state]="'error'" [theme]="'dark'">
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
@@ -193,12 +188,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-multi-select>
     </div>
     <div class="playground dark" title="should render with success state and no success message on dark theme">
-      <p-multi-select
-        [name]="'options'"
-        [label]="'Success state (no message)'"
-        [state]="'success'"
-        [theme]="'dark'"
-      >
+      <p-multi-select [name]="'options'" [label]="'Success state (no message)'" [state]="'success'" [theme]="'dark'">
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
@@ -384,22 +374,25 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       style="padding-bottom: calc(1rem + 422px)"
     >
       <p-multi-select [label]="'Some label'" class="open">
-        <p-multi-select-option [value]="'a'">Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+        <p-multi-select-option [value]="'a'"
+          >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
           displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-          top.</p-multi-select-option>
-          <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
-          <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
-          <p-multi-select-option [value]="'d'">Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-            displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-            top.</p-multi-select-option>
-          <p-multi-select-option [value]="'e'">Option E</p-multi-select-option>
-          <p-multi-select-option [value]="'f'">Option F</p-multi-select-option>
-          <p-multi-select-option [value]="'g'">Option G</p-multi-select-option>
-          <p-multi-select-option [value]="'h'">Option H</p-multi-select-option>
-          <p-multi-select-option [value]="'i'">Option I</p-multi-select-option>
-          <p-multi-select-option [value]="'j'">Option J</p-multi-select-option>
-          <p-multi-select-option [value]="'k'">Option K</p-multi-select-option>
-        </select>
+          top.</p-multi-select-option
+        >
+        <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+        <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+        <p-multi-select-option [value]="'d'"
+          >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+          displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+          top.</p-multi-select-option
+        >
+        <p-multi-select-option [value]="'e'">Option E</p-multi-select-option>
+        <p-multi-select-option [value]="'f'">Option F</p-multi-select-option>
+        <p-multi-select-option [value]="'g'">Option G</p-multi-select-option>
+        <p-multi-select-option [value]="'h'">Option H</p-multi-select-option>
+        <p-multi-select-option [value]="'i'">Option I</p-multi-select-option>
+        <p-multi-select-option [value]="'j'">Option J</p-multi-select-option>
+        <p-multi-select-option [value]="'k'">Option K</p-multi-select-option>
       </p-multi-select>
     </div>
     <div
@@ -408,14 +401,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       style="padding-bottom: calc(1rem + 422px)"
     >
       <p-multi-select [label]="'Some label'" [theme]="'dark'" class="open">
-        <p-multi-select-option [value]="'a'">Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+        <p-multi-select-option [value]="'a'"
+          >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
           displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-          top.</p-multi-select-option>
+          top.</p-multi-select-option
+        >
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
-        <p-multi-select-option [value]="'d'">Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+        <p-multi-select-option [value]="'d'"
+          >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
           displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-          top.</p-multi-select-option>
+          top.</p-multi-select-option
+        >
         <p-multi-select-option [value]="'e'">Option E</p-multi-select-option>
         <p-multi-select-option [value]="'f'">Option F</p-multi-select-option>
         <p-multi-select-option [value]="'g'">Option G</p-multi-select-option>
@@ -423,7 +420,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-multi-select-option [value]="'i'">Option I</p-multi-select-option>
         <p-multi-select-option [value]="'j'">Option J</p-multi-select-option>
         <p-multi-select-option [value]="'k'">Option K</p-multi-select-option>
-        </select>
       </p-multi-select>
     </div>
   `,
