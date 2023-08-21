@@ -31,7 +31,7 @@ export default [
         rootDir: 'src/js',
       }),
       copy({
-        targets: [{ src: `src/scss/**/*.scss`, dest: outputDir }],
+        targets: [{ src: ['src/scss/**/*.scss', 'src/_index.scss'], dest: outputDir }],
         flatten: false,
       }),
     ],
