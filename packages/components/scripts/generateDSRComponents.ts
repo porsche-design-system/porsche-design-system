@@ -389,6 +389,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
+          // Replace unused imports which cause warnings
+          .replace(/\s*MultiSelectOption,\s*/, '')
+          .replace(/\s*MultiSelectUpdateEvent,\s*/, '')
           // Replace document.createElement
           .replace(/(nativeSelect: any).*/, '$1;')
           // Replace aria fns
@@ -415,6 +418,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
+          .replace(/(\{ MultiSelectOptionInternalHTMLProps)/, 'type $1')
           .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
           .replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {
