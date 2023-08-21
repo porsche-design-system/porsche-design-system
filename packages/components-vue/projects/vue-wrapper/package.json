@@ -22,7 +22,32 @@
   "peerDependencies": {
     "vue": ">=3.0.0 <4.0.0"
   },
-  "main": "public-api.js",
-  "module": "public-api.js",
-  "types": "public-api.d.ts"
+  "main": "cjs/public-api.cjs",
+  "module": "esm/public-api.mjs",
+  "types": "types/public-api.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./esm/public-api.d.ts",
+      "import": "./esm/public-api.mjs",
+      "default": "./cjs/public-api.cjs"
+    },
+    "./jsdom-polyfill": {
+      "types": "./jsdom-polyfill/index.d.ts",
+      "default": "./jsdom-polyfill/index.cjs"
+    },
+    "./partials": {
+      "types": "./partials/index.d.ts",
+      "default": "./partials/index.cjs"
+    },
+    "./styles": {
+      "types": "./styles/esm/index.d.ts",
+      "import": "./styles/esm/index.mjs",
+      "default": "./styles/cjs/index.cjs"
+    },
+    "./testing": {
+      "types": "./testing/index.d.ts",
+      "default": "./testing/index.cjs"
+    }
+  }
 }

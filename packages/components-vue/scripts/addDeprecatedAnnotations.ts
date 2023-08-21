@@ -6,7 +6,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const addDeprecatedAnnotations = (): void => {
-  const distDir = path.resolve(__dirname, '../dist/vue-wrapper/lib/components');
+  const distDir = path.resolve(__dirname, '../dist/vue-wrapper/types/lib/components');
   const typingFilePaths = globby.sync(`${distDir}/*.vue.d.ts`);
 
   let count = 0;
