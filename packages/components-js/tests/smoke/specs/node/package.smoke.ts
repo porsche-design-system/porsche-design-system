@@ -1,8 +1,9 @@
 import * as path from 'path';
 import * as globby from 'globby';
 import * as fs from 'fs';
-import { checkPackage, createPackageFromNpm, type Analysis } from '@arethetypeswrong/core';
+import { checkPackage, createPackageFromTarballData, type Analysis } from '@arethetypeswrong/core';
 import { createRequire } from 'node:module';
+import { execSync } from 'child_process';
 import componentsJsPackageJson from '../../../../dist/components-wrapper/package.json';
 
 const nodeRequire = createRequire(import.meta.url);
@@ -57,6 +58,7 @@ describe('package.json files', () => {
       );
     }
 
+    // check that version and exports match
     expect(pkgJson.version).toBe(componentsJsPackageJson.version);
     expect(pkgJson.exports).toEqual({
       './package.json': './package.json',
@@ -85,7 +87,20 @@ describe('package.json files', () => {
       },
     });
 
-    const result = (await checkPackage(await createPackageFromNpm(`${pkgJson.name}@${pkgJson.version}`))) as Analysis;
+    // create temporary local package tgz package
+    // inspired by https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/9c6db02a531a797d2ce7b197bca94f82a50064e7/packages/cli/src/index.ts#L152-L155
+    const tarBall = path.resolve(
+      pathName,
+      '..',
+      execSync('npm pack', { cwd: path.dirname(pathName), encoding: 'utf8', stdio: 'pipe' }).trim()
+    );
+
+    const file = fs.readFileSync(tarBall);
+    const data = new Uint8Array(file);
+    const result = (await checkPackage(await createPackageFromTarballData(data), {})) as Analysis;
+
+    // delete temporary package again
+    fs.rmSync(tarBall);
 
     if (result.problems.length) {
       console.error(result.problems);
