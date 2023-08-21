@@ -98,9 +98,9 @@ export default [
           exports: {
             './package.json': './package.json',
             '.': {
-              types: './public-api.d.ts',
-              import: './esm/public-api.js',
-              default: './public-api.js',
+              types: './esm/public-api.d.ts',
+              import: './esm/public-api.mjs',
+              default: './cjs/public-api.cjs',
             },
             './jsdom-polyfill': {
               types: './jsdom-polyfill/index.d.ts',
@@ -111,9 +111,9 @@ export default [
               default: './partials/index.cjs',
             },
             './ssr': {
-              types: './ssr/public-api.d.ts',
+              types: './ssr/esm/public-api.d.ts',
               import: './ssr/esm/components-react/projects/react-ssr-wrapper/src/public-api.mjs',
-              default: './ssr/components-react/projects/react-ssr-wrapper/src/public-api.cjs',
+              default: './ssr/cjs/components-react/projects/react-ssr-wrapper/src/public-api.cjs',
             },
             './styles': {
               types: './styles/esm/index.d.ts',
