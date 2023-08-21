@@ -17,7 +17,6 @@ import {
 } from '../helpers';
 
 import type { Page } from 'puppeteer';
-import { expect } from '@playwright/test';
 import { MultiSelectOption } from '@porsche-design-system/components/src/components/multi-select/multi-select/multi-select-utils';
 
 let page: Page;
@@ -81,6 +80,8 @@ const getLabelText = () => selectNode(page, 'p-multi-select >>> .label__text');
 const getResetButton = () => selectNode(page, 'p-multi-select >>> .reset-icon');
 
 const getResetButtonDisplay = async () => await getElementStyle(await getResetButton(), 'display');
+
+const getAssertiveText = async () => await selectNode(page, 'span[aria-live="assertive"]');
 
 const labelSlotContent =
   '<span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>';
@@ -1077,6 +1078,7 @@ describe('accessibility', () => {
     await waitForStencilLifecycle(page);
 
     const dropDown = await getDropdown();
+    const assertiveText = await getAssertiveText();
 
     await expectA11yToMatchSnapshot(page, dropDown, { interestingOnly: false });
   });
@@ -1086,8 +1088,13 @@ describe('accessibility', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
     await page.keyboard.press('ArrowDown');
+    await waitForStencilLifecycle(page);
+
     const inputElement = await getInput();
+    const assertiveText = await getAssertiveText();
+
     await expectA11yToMatchSnapshot(page, inputElement, { interestingOnly: false });
+    await expectA11yToMatchSnapshot(page, assertiveText, { interestingOnly: false });
   });
 
   it('should expose correct accessibility tree if option is selected', async () => {
@@ -1096,8 +1103,13 @@ describe('accessibility', () => {
     await page.keyboard.press('Space');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
     const inputElement = await getInput();
+    const assertiveText = await getAssertiveText();
+
     await expectA11yToMatchSnapshot(page, inputElement, { interestingOnly: false });
+    await expectA11yToMatchSnapshot(page, assertiveText, { interestingOnly: false });
   });
 
   it('should expose correct accessibility tree if description is set', async () => {
