@@ -9,7 +9,7 @@
     "start": "concurrently -k -s 'first' -n 'cdn,angular' 'serve-cdn' 'ng serve'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 4200 -d ./dist/demo-app'",
     "build": "yarn clean:build && yarn build:angular-wrapper && yarn build:subPackages",
-    "build:angular-wrapper": "ng build angular-wrapper --configuration production",
+    "build:angular-wrapper": "ng build angular-wrapper --configuration production && TARGET=./dist/angular-wrapper/esm && mkdir -p $TARGET && mv ./dist/angular-wrapper/*.d.ts ./dist/angular-wrapper/lib $TARGET/",
     "build:subPackages": "yarn build:subPackages:lib && yarn build:subPackages:typings",
     "build:subPackages:lib": "yarn rollup -c ./projects/angular-wrapper/rollup.config.js --bundleConfigAsCjs",
     "build:subPackages:typings": "yarn build:subPackages:typings:jsdom-polyfill && yarn build:subPackages:typings:partials && yarn build:subPackages:typings:testing && yarn build:subPackages:typings:styles",
