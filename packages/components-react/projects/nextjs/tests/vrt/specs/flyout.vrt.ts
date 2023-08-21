@@ -7,11 +7,9 @@ it.each(furtherExtendedViewports)('should have no visual regression for viewport
       scenario: async (page) => {
         await page.mouse.click(0, 0); // click top left corner of the page to remove focus on flyout
         await page.$$eval('.scroll-here', (scrollElements) => {
-          window.addEventListener('resize', () => {
-            scrollElements.forEach((el) =>
-              el.scrollIntoView(el.classList.contains('vertical-center') ? { block: 'center' } : true)
-            );
-          });
+          scrollElements.forEach((el) =>
+            el.scrollIntoView(el.classList.contains('vertical-center') ? { block: 'center' } : true)
+          );
         });
       },
     })
