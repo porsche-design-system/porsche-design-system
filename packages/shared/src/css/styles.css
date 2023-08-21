@@ -11,6 +11,11 @@ body {
   padding: 0;
 }
 
+#app.auto-layout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 /* Playground */
 .playground {
   /* TODO: we should generate background colors with scss or js styles package */
@@ -65,32 +70,6 @@ body {
   .playground.auto.surface {
     background: var(--theme-dark-background-surface);
   }
-}
-
-.playground.hover::before,
-.playground.focus::before,
-.playground.focus-hover::before {
-  display: block;
-  width: 100%;
-  color: deeppink;
-}
-
-.playground.hover:not(.auto-layout)::before,
-.playground.focus:not(.auto-layout)::before,
-.playground.focus-hover:not(.auto-layout)::before {
-  margin-bottom: 16px;
-}
-
-.playground.hover::before {
-  content: ':hover';
-}
-
-.playground.focus::before {
-  content: ':focus-visible';
-}
-
-.playground.focus-hover::before {
-  content: ':focus-visible:hover';
 }
 
 /* Select */

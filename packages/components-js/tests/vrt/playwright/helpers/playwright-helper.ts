@@ -1,10 +1,14 @@
-import type { Page, ElementHandle } from '@playwright/test';
-import { expect, test } from '@playwright/test';
+import type { Page } from '@playwright/test';
+import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 
 export const baseThemes = ['light', 'dark'] as const;
 export const baseSchemes = ['light', 'dark'] as const;
 export const baseViewportWidth = 1000;
 export const baseViewportWidths = [320, 480, 760, 1300, 1760] as const;
+
+export const waitForComponentsReady = (page: Page): Promise<number> => {
+  return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
+};
 
 type Options = {
   javaScriptDisabled?: boolean;
@@ -59,7 +63,7 @@ export const setupScenario = async (
 
   await page.setViewportSize({ width: viewportWidth, height: 600 });
   await page.goto(url);
-  await page.evaluate(() => (window as unknown as Window & { componentsReady: Function }).componentsReady());
+  await waitForComponentsReady(page);
 
   if (forceComponentTheme) {
     await page.evaluate((theme) => {
@@ -68,8 +72,8 @@ export const setupScenario = async (
         el.classList.remove('light', 'dark', 'auto');
         el.classList.add(theme);
       });
-      return (window as unknown as Window & { componentsReady: Function }).componentsReady();
     }, forceComponentTheme);
+    await waitForComponentsReady(page);
   }
 
   if (scalePageFontSize) {
@@ -79,146 +83,55 @@ export const setupScenario = async (
   }
 };
 
-export const executeBasicVisualComparisonTest = (component: string): void => {
-  test.beforeEach(async ({}, testInfo) => {
-    testInfo.snapshotSuffix = '';
-  });
-
-  // executed in Chrome + Safari
-  test.describe(component, async () => {
-    baseThemes.forEach((theme) => {
-      test(`should have no visual regression for viewport ${baseViewportWidth} and theme ${theme}`, async ({
-        page,
-      }) => {
-        await setupScenario(page, `/${component}`, baseViewportWidth, {
-          forceComponentTheme: theme,
-        });
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${theme}.png`);
-      });
-    });
-  });
-
-  // executed in Chrome only
-  test.describe(component, async () => {
-    test.skip(({ browserName }) => browserName !== 'chromium');
-
-    baseViewportWidths.forEach((viewportWidth) => {
-      test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
-        await setupScenario(page, `/${component}`, viewportWidth);
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
-      });
-    });
-
-    baseThemes.forEach((theme) => {
-      test(`should have no visual regression for viewport ${baseViewportWidth} and theme auto with prefers-color-scheme ${theme}`, async ({
-        page,
-      }) => {
-        await setupScenario(page, `/${component}`, baseViewportWidth, {
-          forceComponentTheme: 'auto',
-          prefersColorScheme: theme,
-        });
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${theme}.png`);
-      });
-
-      test(`should have no visual regression for viewport ${baseViewportWidth} and high contrast mode with prefers-color-scheme ${theme}`, async ({
-        page,
-      }) => {
-        await setupScenario(page, `/${component}`, baseViewportWidth, {
-          forcedColorsEnabled: true,
-          prefersColorScheme: theme,
-        });
-        await expect(page.locator('#app')).toHaveScreenshot(
-          `${component}.${baseViewportWidth}-high-contrast-${theme}.png`
-        );
-      });
-    });
-
-    test(`should have no visual regression for viewport ${baseViewportWidth} in scale mode`, async ({ page }) => {
-      await setupScenario(page, `/${component}`, baseViewportWidth, {
-        scalePageFontSize: true,
-      });
-      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-scale-mode.png`);
-    });
-  });
+type Options2 = {
+  injectIntoHead?: string;
+  prefersColorScheme?: 'light' | 'dark';
 };
 
-// TODO: should be removed asap
-type VRTOptions = {
-  baseUrl?: string;
-  viewportWidths?: number[];
-  scenario?: (page: Page) => Promise<void>;
-};
+export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options2): Promise<void> => {
+  const { injectIntoHead, prefersColorScheme }: Options2 = {
+    injectIntoHead: '',
+    prefersColorScheme: undefined,
+    ...opts,
+  };
 
-const defaultOptions: VRTOptions = {
-  baseUrl: 'http://localhost:8575',
-  viewportWidths: [320, 480, 760, 1000, 1300, 1760],
-  scenario: undefined,
-};
+  if (prefersColorScheme) {
+    const cdpSession = await page.context().newCDPSession(page);
+    await cdpSession.send('Emulation.setEmulatedMedia', {
+      features: [{ name: 'prefers-color-scheme', value: prefersColorScheme || 'light' }],
+    });
+  }
 
-export const executeVisualRegressionTest = async (
-  snapshotId: string,
-  url: string,
-  options?: VRTOptions
-): Promise<void> => {
-  const { baseUrl, viewportWidths, scenario } = { ...defaultOptions, ...options };
-
-  viewportWidths.forEach((viewportWidth) => {
-    test(
-      'should have no visual regression for viewport ' + viewportWidth,
-      async ({ page }, testInfo): Promise<void> => {
-        testInfo.snapshotSuffix = ''; // removes system OS names in snapshot
-
-        await page.setViewportSize({ width: viewportWidth, height: 1 });
-        await page.goto(baseUrl + url);
-        await page.evaluate(() => (window as any).componentsReady());
-        await page.setViewportSize({
-          width: viewportWidth,
-          height: await page.evaluate(() => document.body.clientHeight),
-        });
-
-        if (scenario) {
-          await scenario(page);
-        }
-
-        await expect(page.locator('#app')).toHaveScreenshot(`${snapshotId}.${viewportWidth}.png`);
-      }
+  const initialStyles = getInitialStyles({ format: 'html' });
+  // Unsupported media feature: hover
+  const initialStylesWithoutMediaQuery = initialStyles
+    .replace(/\@media\(hover\:hover\)\{/g, '')
+    .replace(
+      /a\:hover\{background-color\:rgba\(126,127,130,0.20\)\}\}/g,
+      'a:hover{background-color:rgba(126,127,130,0.20)}'
     );
-  });
-};
 
-// TODO: should be in local test file
-export const openPopovers = async (page: Page): Promise<void> => {
-  const bodyHeightWidth = await page.evaluate(() => {
-    return {
-      height: document.body.clientHeight,
-      width: document.body.clientWidth,
-    };
-  });
+  // get rid of spaces as we do during static VRTs
+  content = content.replace(/>(\s)*</g, '><');
 
-  await page.setViewportSize(bodyHeightWidth);
+  await page.setContent(
+    `<!DOCTYPE html>
+    <html>
+      <head>
+        <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
+        <script type="text/javascript" src="http://localhost:8575/index.js"></script>
+        <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
+        <link rel="stylesheet" href="assets/styles.css">
+        ${initialStylesWithoutMediaQuery}
+        ${injectIntoHead}
+      </head>
+      <body>
+        <script type="text/javascript">porscheDesignSystem.load();</script>
+        <div id="app" class="auto-layout">${content}</div>
+      </body>
+    </html>`
+  );
+  await waitForComponentsReady(page);
 
-  await page.evaluate(() => {
-    // Enable multiple open popovers
-    document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
-
-    document.querySelectorAll('p-popover, my-prefix-p-popover').forEach((popover) => {
-      const button = popover.shadowRoot.querySelector('button');
-      button.click();
-    });
-  });
-};
-
-// TODO: should be in local test file
-export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
-  const selectorParts = selector.split('>>>');
-  const shadowRootSelectors =
-    selectorParts.length > 1
-      ? selectorParts
-          .slice(1)
-          .map((x) => `.shadowRoot.querySelector('${x.trim()}')`)
-          .join('')
-      : '';
-  return (
-    await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
-  ).asElement() as ElementHandle;
+  await page.setViewportSize({ width: 1000, height: 600 });
 };

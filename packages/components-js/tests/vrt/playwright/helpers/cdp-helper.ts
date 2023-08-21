@@ -29,16 +29,22 @@ export const getBodyMarkup = (getElements: GetMarkup) =>
 
 export const getThemedBodyMarkup = (
   getThemedElements: GetThemedMarkup,
-  opts?: { states?: StateType[]; withSurface?: boolean; themes?: Theme[] }
+  opts?: { states?: StateType[]; withSurface?: boolean; autoLayout?: boolean; themes?: Theme[] }
 ): string => {
-  const { states = ALL_STATES, withSurface = false, themes = allThemes } = opts || {};
+  const { states = ALL_STATES, withSurface = false, autoLayout = false, themes = allThemes } = opts || {};
 
   return states
     .map((state) =>
       themes.map(
         (theme) =>
-          `<div class="playground ${theme} ${state}">${getThemedElements(theme)}</div>` +
-          (withSurface ? `<div class="playground ${theme} surface ${state}">${getThemedElements(theme)}</div>` : '')
+          `<div class="playground ${theme} ${
+            autoLayout ? 'auto-layout' : ''
+          } ${state}" title="should render with state ${state} and theme ${theme}">${getThemedElements(theme)}</div>` +
+          (withSurface
+            ? `<div class="playground ${theme} surface ${autoLayout ? 'auto-layout' : ''} ${state}">${getThemedElements(
+                theme
+              )}</div>`
+            : '')
       )
     )
     .flat()
