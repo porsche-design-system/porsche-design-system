@@ -7,9 +7,11 @@ test.describe('should have no visual regression', async () => {
       test.setTimeout(60000);
       await page.mouse.click(0, 0); // click top left corner of the page to remove focus on flyout
       // Scroll down flyouts
-      await page.$$eval('.scroll-here', async (scrollElements) => {
+      await page.$$eval('.scroll', async (scrollElements) => {
         scrollElements.forEach((el) => {
-          el.scrollIntoView(el.classList.contains('vertical-center') ? { block: 'center' } : true);
+          const content = el.shadowRoot.querySelector(el.classList.contains('root') ? '.root' : '.content');
+          const scrollHeight = el.classList.contains('center') ? content.scrollHeight / 3 : content.scrollHeight;
+          content.scrollTo(0, scrollHeight);
         });
       });
     },

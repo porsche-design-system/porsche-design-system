@@ -672,7 +672,7 @@ export const FlyoutPage = (): JSX.Element => {
         className="playground auto-layout"
         title="should show scrolled down flyout with header, footer, subFooter and scrollable content"
       >
-        <PFlyout open={true} className="scroll">
+        <PFlyout open={true} className="scroll root">
           <div slot="header">
             <h1>Sticky Heading</h1>
             <p>Sticky header text</p>
@@ -730,7 +730,7 @@ export const FlyoutPage = (): JSX.Element => {
         className="playground dark auto-layout"
         title="should show scrolled down flyout with header, footer, subFooter and scrollable content on dark theme"
       >
-        <PFlyout open={true} theme="dark" className="scroll">
+        <PFlyout open={true} theme="dark" className="scroll root">
           <div slot="header">
             <h1>Sticky Heading</h1>
             <p>Sticky header text</p>
@@ -785,7 +785,7 @@ export const FlyoutPage = (): JSX.Element => {
       </div>
 
       <div className="playground auto-layout" title="should show scrolled down flyout with header, footer and scrollable content">
-        <PFlyout open={true} className="scroll-content">
+        <PFlyout open={true} className="scroll content">
           <div slot="header">
             <h1>Sticky Heading</h1>
             <p>Sticky header text</p>
@@ -840,7 +840,7 @@ export const FlyoutPage = (): JSX.Element => {
         className="playground dark auto-layout"
         title="should show scrolled down flyout with header, footer and scrollable content on dark theme"
       >
-        <PFlyout open={true} theme="dark" className="scroll-content">
+        <PFlyout open={true} theme="dark" className="scroll content">
           <div slot="header">
             <h1>Sticky Heading</h1>
             <p>Sticky header text</p>
@@ -895,16 +895,16 @@ export const FlyoutPage = (): JSX.Element => {
         className="playground auto-layout"
         title="should show scrolled to center flyout with header, footer, scrollable content with relative positioned element to test z-index"
       >
-        <PFlyout open={true} className="scroll-content">
+        <PFlyout open={true} className="scroll content center">
           <div slot="header">
             <h1>Sticky Heading</h1>
             <p>Sticky header text</p>
           </div>
-          <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#61dafb' }} />
+          <div style={{ position: 'relative', zIndex: 10, height: '600px', backgroundColor: '#61dafb' }} />
           <span className="scroll-here vertical-center"
             >Some content: should show scrollable flyout to the middle to test z-index</span
           >
-          <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#ebddf9' }} />
+          <div style={{ position: 'relative', zIndex: 10, height: '600px', backgroundColor: '#ebddf9' }} />
           <div slot="footer">
             <button>Sticky Footer Button</button>
           </div>
@@ -914,16 +914,16 @@ export const FlyoutPage = (): JSX.Element => {
         className="playground dark auto-layout"
         title="should show scrolled to center flyout with header, footer, scrollable content with relative positioned element to test z-index"
       >
-        <PFlyout open={true} theme="dark" className="scroll-content">
+        <PFlyout open={true} theme="dark" className="scroll content center">
           <div slot="header">
             <h1>Sticky Heading</h1>
             <p>Sticky header text</p>
           </div>
-          <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#61dafb' }} />
+          <div style={{ position: 'relative', zIndex: 10, height: '600px', backgroundColor: '#61dafb' }} />
           <span className="scroll-here vertical-center"
             >Some content: should show scrollable flyout to the middle to test z-index</span
           >
-          <div style={{ position: 'relative', zIndex: 10, height: '50vh', backgroundColor: '#ebddf9' }} />
+          <div style={{ position: 'relative', zIndex: 10, height: '600px', backgroundColor: '#ebddf9' }} />
           <div slot="footer">
             <button>Sticky Footer Button</button>
           </div>

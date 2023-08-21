@@ -671,7 +671,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       class="playground auto-layout"
       title="should show scrolled down flyout with header, footer, subFooter and scrollable content"
     >
-      <p-flyout [open]="true" class="scroll">
+      <p-flyout [open]="true" class="scroll root">
         <div slot="header">
           <h1>Sticky Heading</h1>
           <p>Sticky header text</p>
@@ -729,7 +729,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       class="playground dark auto-layout"
       title="should show scrolled down flyout with header, footer, subFooter and scrollable content on dark theme"
     >
-      <p-flyout [open]="true" [theme]="'dark'" class="scroll">
+      <p-flyout [open]="true" [theme]="'dark'" class="scroll root">
         <div slot="header">
           <h1>Sticky Heading</h1>
           <p>Sticky header text</p>
@@ -784,7 +784,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground auto-layout" title="should show scrolled down flyout with header, footer and scrollable content">
-      <p-flyout [open]="true" class="scroll-content">
+      <p-flyout [open]="true" class="scroll content">
         <div slot="header">
           <h1>Sticky Heading</h1>
           <p>Sticky header text</p>
@@ -839,7 +839,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       class="playground dark auto-layout"
       title="should show scrolled down flyout with header, footer and scrollable content on dark theme"
     >
-      <p-flyout [open]="true" [theme]="'dark'" class="scroll-content">
+      <p-flyout [open]="true" [theme]="'dark'" class="scroll content">
         <div slot="header">
           <h1>Sticky Heading</h1>
           <p>Sticky header text</p>
@@ -894,16 +894,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       class="playground auto-layout"
       title="should show scrolled to center flyout with header, footer, scrollable content with relative positioned element to test z-index"
     >
-      <p-flyout [open]="true" class="scroll-content">
+      <p-flyout [open]="true" class="scroll content center">
         <div slot="header">
           <h1>Sticky Heading</h1>
           <p>Sticky header text</p>
         </div>
-        <div style="position: relative; z-index: 10; height: 50vh; background-color: #61dafb"></div>
+        <div style="position: relative; z-index: 10; height: 600px; background-color: #61dafb"></div>
         <span class="scroll-here vertical-center"
           >Some content: should show scrollable flyout to the middle to test z-index</span
         >
-        <div style="position: relative; z-index: 10; height: 50vh; background-color: #ebddf9"></div>
+        <div style="position: relative; z-index: 10; height: 600px; background-color: #ebddf9"></div>
         <div slot="footer">
           <button>Sticky Footer Button</button>
         </div>
@@ -913,16 +913,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       class="playground dark auto-layout"
       title="should show scrolled to center flyout with header, footer, scrollable content with relative positioned element to test z-index"
     >
-      <p-flyout [open]="true" [theme]="'dark'" class="scroll-content">
+      <p-flyout [open]="true" [theme]="'dark'" class="scroll content center">
         <div slot="header">
           <h1>Sticky Heading</h1>
           <p>Sticky header text</p>
         </div>
-        <div style="position: relative; z-index: 10; height: 50vh; background-color: #61dafb"></div>
+        <div style="position: relative; z-index: 10; height: 600px; background-color: #61dafb"></div>
         <span class="scroll-here vertical-center"
           >Some content: should show scrollable flyout to the middle to test z-index</span
         >
-        <div style="position: relative; z-index: 10; height: 50vh; background-color: #ebddf9"></div>
+        <div style="position: relative; z-index: 10; height: 600px; background-color: #ebddf9"></div>
         <div slot="footer">
           <button>Sticky Footer Button</button>
         </div>
