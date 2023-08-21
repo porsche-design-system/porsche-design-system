@@ -1,6 +1,7 @@
 import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const outputDir = '../../dist/react-wrapper/ssr';
 const input = 'src/public-api.ts';
@@ -25,20 +26,12 @@ export default [
     input,
     external,
     output: {
-      dir: outputDir,
+      dir: `${outputDir}/cjs`,
       format: 'cjs',
+      entryFileNames: '[name].cjs',
       preserveModules: true,
     },
-    plugins: [
-      preserveDirectives.default(),
-      resolve(),
-      typescript({
-        ...typescriptOpts,
-        declaration: true,
-        declarationDir: outputDir,
-        rootDir: 'src',
-      }),
-    ],
+    plugins: [preserveDirectives.default(), resolve(), typescript(typescriptOpts)],
     onwarn,
   },
   {
@@ -47,9 +40,23 @@ export default [
     output: {
       dir: `${outputDir}/esm`,
       format: 'esm',
+      entryFileNames: '[name].mjs',
       preserveModules: true,
     },
-    plugins: [preserveDirectives.default(), resolve(), typescript(typescriptOpts)],
+    plugins: [
+      preserveDirectives.default(),
+      resolve(),
+      typescript({ ...typescriptOpts, declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
+      generatePackageJson({
+        outputFolder: outputDir,
+        baseContents: {
+          main: 'cjs/components-react/projects/react-ssr-wrapper/src/public-api.cjs',
+          module: 'esm/components-react/projects/react-ssr-wrapper/src/public-api.mjs',
+          types: 'esm/public-api.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
     onwarn,
   },
 ];
