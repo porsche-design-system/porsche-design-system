@@ -31,9 +31,8 @@
       "default": "./jsdom-polyfill/index.cjs"
     },
     "./partials": {
-      "types": "./partials/esm/index.d.ts",
-      "import": "./partials/esm/index.mjs",
-      "default": "./partials/cjs/index.cjs"
+      "types": "./partials/index.d.ts",
+      "default": "./partials/index.cjs"
     },
     "./styles": {
       "types": "./styles/esm/index.d.ts",
