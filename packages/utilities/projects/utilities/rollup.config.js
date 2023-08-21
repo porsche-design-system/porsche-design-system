@@ -1,5 +1,6 @@
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const input = 'src/js/index.ts';
 const outputDir = 'dist';
@@ -33,6 +34,16 @@ export default [
       copy({
         targets: [{ src: ['src/scss/**/*.scss', 'src/_index.scss'], dest: outputDir }],
         flatten: false,
+      }),
+      // seems to be needed at least for webpack 4 in storefront
+      generatePackageJson({
+        outputFolder: outputDir,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
       }),
     ],
   },
