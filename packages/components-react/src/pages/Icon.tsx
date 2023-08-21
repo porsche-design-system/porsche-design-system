@@ -53,66 +53,30 @@ export const IconPage = (): JSX.Element => {
         <PIcon size="inherit" style={{ width: '60px', height: '60px' }} />
       </div>
 
-      <div className="playground light" title="should render with predefined colors on light theme">
-        <PIcon theme="light" color="primary" />
-        <PIcon theme="light" color="brand" />
-        <PIcon theme="light" color="default" />
-        <PIcon theme="light" color="contrast-low" />
-        <PIcon theme="light" color="neutral-contrast-low" />
-        <PIcon theme="light" color="contrast-medium" />
-        <PIcon theme="light" color="neutral-contrast-medium" />
-        <PIcon theme="light" color="contrast-high" />
-        <PIcon theme="light" color="neutral-contrast-high" />
-        <PIcon theme="light" color="notification-success" />
-        <PIcon theme="light" color="notification-warning" />
-        <PIcon theme="light" color="notification-error" />
-        <PIcon theme="light" color="notification-info" />
-        <PIcon theme="light" color="notification-neutral" />
-        <PIcon theme="light" color="state-disabled" />
+      <div className="playground light" title="should render with predefined colors">
+        <PIcon color="primary" />
+        <PIcon color="brand" />
+        <PIcon color="default" />
+        <PIcon color="contrast-low" />
+        <PIcon color="neutral-contrast-low" />
+        <PIcon color="contrast-medium" />
+        <PIcon color="neutral-contrast-medium" />
+        <PIcon color="contrast-high" />
+        <PIcon color="neutral-contrast-high" />
+        <PIcon color="notification-success" />
+        <PIcon color="notification-warning" />
+        <PIcon color="notification-error" />
+        <PIcon color="notification-info" />
+        <PIcon color="notification-neutral" />
+        <PIcon color="state-disabled" />
         <PIcon
-          theme="light"
-          color="inherit"
-          style={{ filter: 'invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)' }}
-         />
-      </div>
-
-      <div className="playground dark" title="should render with predefined colors on dark theme">
-        <PIcon theme="dark" color="primary" />
-        <PIcon theme="dark" color="brand" />
-        <PIcon theme="dark" color="default" />
-        <PIcon theme="dark" color="contrast-low" />
-        <PIcon theme="dark" color="neutral-contrast-low" />
-        <PIcon theme="dark" color="contrast-medium" />
-        <PIcon theme="dark" color="neutral-contrast-medium" />
-        <PIcon theme="dark" color="contrast-high" />
-        <PIcon theme="dark" color="neutral-contrast-high" />
-        <PIcon theme="dark" color="notification-success" />
-        <PIcon theme="dark" color="notification-warning" />
-        <PIcon theme="dark" color="notification-error" />
-        <PIcon theme="dark" color="notification-info" />
-        <PIcon theme="dark" color="notification-neutral" />
-        <PIcon theme="dark" color="state-disabled" />
-        <PIcon
-          theme="dark"
           color="inherit"
           style={{ filter: 'invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)' }}
          />
       </div>
 
       <div className="playground light" title="should render with custom icon">
-        <PIcon
-          theme="light"
-          source="./assets/icon-custom-kaixin.svg"
-          aria-label="Icon for social media platform Kaixin"
-         />
-      </div>
-
-      <div className="playground dark" title="should render with custom icon on dark theme">
-        <PIcon
-          theme="dark"
-          source="./assets/icon-custom-kaixin.svg"
-          aria-label="Icon for social media platform Kaixin"
-         />
+        <PIcon source="./assets/icon-custom-kaixin.svg" aria-label="Icon for social media platform Kaixin" />
       </div>
 
       <div className="playground light overview" title="should render all available icons and apply coloring programmatically">

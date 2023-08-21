@@ -5,12 +5,8 @@ import { PSpinner } from '@porsche-design-system/components-react/ssr';
 const SpinnerPage: NextPage = (): JSX.Element => {
   return (
     <>
-      <div className="playground light" title="should show spinner on light background">
+      <div className="playground light" title="should show spinner">
         <PSpinner />
-      </div>
-
-      <div className="playground dark" title="should show spinner on dark background">
-        <PSpinner theme="dark" />
       </div>
 
       <div className="playground light" title="should show spinner in different sizes">

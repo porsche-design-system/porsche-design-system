@@ -52,66 +52,30 @@ import { ICON_NAMES } from '@porsche-design-system/icons';
       <p-icon [size]="'inherit'" style="width: 60px; height: 60px"></p-icon>
     </div>
 
-    <div class="playground light" title="should render with predefined colors on light theme">
-      <p-icon [theme]="'light'" [color]="'primary'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'brand'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'default'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'contrast-low'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'neutral-contrast-low'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'contrast-medium'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'neutral-contrast-medium'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'contrast-high'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'neutral-contrast-high'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'notification-success'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'notification-warning'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'notification-error'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'notification-info'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'notification-neutral'"></p-icon>
-      <p-icon [theme]="'light'" [color]="'state-disabled'"></p-icon>
+    <div class="playground light" title="should render with predefined colors">
+      <p-icon [color]="'primary'"></p-icon>
+      <p-icon [color]="'brand'"></p-icon>
+      <p-icon [color]="'default'"></p-icon>
+      <p-icon [color]="'contrast-low'"></p-icon>
+      <p-icon [color]="'neutral-contrast-low'"></p-icon>
+      <p-icon [color]="'contrast-medium'"></p-icon>
+      <p-icon [color]="'neutral-contrast-medium'"></p-icon>
+      <p-icon [color]="'contrast-high'"></p-icon>
+      <p-icon [color]="'neutral-contrast-high'"></p-icon>
+      <p-icon [color]="'notification-success'"></p-icon>
+      <p-icon [color]="'notification-warning'"></p-icon>
+      <p-icon [color]="'notification-error'"></p-icon>
+      <p-icon [color]="'notification-info'"></p-icon>
+      <p-icon [color]="'notification-neutral'"></p-icon>
+      <p-icon [color]="'state-disabled'"></p-icon>
       <p-icon
-        [theme]="'light'"
-        [color]="'inherit'"
-        style="filter: invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)"
-      ></p-icon>
-    </div>
-
-    <div class="playground dark" title="should render with predefined colors on dark theme">
-      <p-icon [theme]="'dark'" [color]="'primary'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'brand'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'default'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'contrast-low'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'neutral-contrast-low'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'contrast-medium'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'neutral-contrast-medium'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'contrast-high'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'neutral-contrast-high'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'notification-success'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'notification-warning'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'notification-error'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'notification-info'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'notification-neutral'"></p-icon>
-      <p-icon [theme]="'dark'" [color]="'state-disabled'"></p-icon>
-      <p-icon
-        [theme]="'dark'"
         [color]="'inherit'"
         style="filter: invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)"
       ></p-icon>
     </div>
 
     <div class="playground light" title="should render with custom icon">
-      <p-icon
-        [theme]="'light'"
-        [source]="'./assets/icon-custom-kaixin.svg'"
-        aria-label="Icon for social media platform Kaixin"
-      ></p-icon>
-    </div>
-
-    <div class="playground dark" title="should render with custom icon on dark theme">
-      <p-icon
-        [theme]="'dark'"
-        [source]="'./assets/icon-custom-kaixin.svg'"
-        aria-label="Icon for social media platform Kaixin"
-      ></p-icon>
+      <p-icon [source]="'./assets/icon-custom-kaixin.svg'" aria-label="Icon for social media platform Kaixin"></p-icon>
     </div>
 
     <div class="playground light overview" title="should render all available icons and apply coloring programmatically">

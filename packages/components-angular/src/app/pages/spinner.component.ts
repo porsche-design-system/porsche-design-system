@@ -4,12 +4,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'page-spinner',
   template: `
-    <div class="playground light" title="should show spinner on light background">
+    <div class="playground light" title="should show spinner">
       <p-spinner></p-spinner>
-    </div>
-
-    <div class="playground dark" title="should show spinner on dark background">
-      <p-spinner [theme]="'dark'"></p-spinner>
     </div>
 
     <div class="playground light" title="should show spinner in different sizes">

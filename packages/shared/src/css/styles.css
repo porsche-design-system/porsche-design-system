@@ -21,6 +21,18 @@ body {
   padding: 16px;
 }
 
+.playground[title]::before {
+  content: attr(title);
+  display: block;
+  width: 100%;
+  font: 12px/16px 'Porsche Next';
+  color: deeppink;
+}
+
+.playground[title]:not(.auto-layout)::before {
+  margin-bottom: 16px;
+}
+
 .playground.auto-layout {
   display: flex;
   flex-wrap: wrap;
