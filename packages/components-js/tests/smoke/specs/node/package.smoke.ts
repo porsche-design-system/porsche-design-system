@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as globby from 'globby';
 import * as fs from 'fs';
-import { checkPackage, createPackageFromTarballData, type Analysis } from '@arethetypeswrong/core';
+import { checkPackage, createPackageFromTarballData, type Analysis, type Problem } from '@arethetypeswrong/core';
 import { createRequire } from 'node:module';
 import { execSync } from 'child_process';
 import componentsJsPackageJson from '../../../../dist/components-wrapper/package.json';
@@ -102,10 +102,21 @@ describe('package.json files', () => {
     // delete temporary package again
     fs.rmSync(tarBall);
 
-    if (result.problems.length) {
-      console.error(result.problems);
+    // ignore FalseCJS issues for certain entrypoints where both
+    // esm and cjs build need their own typings
+    // https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseCJS.md
+    const relevantProblems = result.problems.filter(
+      (prob: Problem) =>
+        !(
+          prob.kind === 'FalseCJS' &&
+          (prob.entrypoint === '.' || prob.entrypoint === './styles' || prob.entrypoint === './ssr')
+        )
+    );
+
+    if (relevantProblems.length) {
+      console.error(relevantProblems);
     }
 
-    expect(result.problems).toHaveLength(0);
+    expect(relevantProblems).toHaveLength(0);
   });
 });
