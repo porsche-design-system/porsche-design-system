@@ -24,6 +24,7 @@ const tagNamesWithSlottedAnchor = joinArrayElementsToString([
   'p-headline',
   'p-inline-notification',
   'p-modal',
+  'p-multi-select',
   'p-popover',
   'p-radio-button-wrapper',
   'p-select-wrapper',
