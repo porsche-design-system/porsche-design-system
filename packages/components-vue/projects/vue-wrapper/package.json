@@ -24,7 +24,7 @@
   },
   "main": "cjs/public-api.cjs",
   "module": "esm/public-api.mjs",
-  "types": "types/public-api.d.ts",
+  "types": "esm/public-api.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
