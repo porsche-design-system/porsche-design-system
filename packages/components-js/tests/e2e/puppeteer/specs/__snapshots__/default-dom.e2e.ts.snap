@@ -313,7 +313,7 @@ exports[`should have no basic DOM regression for p-multi-select 1`] = `
 exports[`should have no basic DOM regression for p-multi-select-option 1`] = `
 "<div class="option">
   <p-checkbox-wrapper class="checkbox hydrated">
-    <input role="option" type="checkbox" aria-selected="false" aria-label="Some child">
+    <input role="option" type="checkbox" aria-selected="false" aria-label="Some child" tabindex="-1">
     <slot slot="label">
     </slot>
   </p-checkbox-wrapper>
