@@ -12,13 +12,32 @@ import {
   getVisualRegressionTester,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
+import { selectNode } from '../../../e2e/puppeteer/helpers';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'multi-select', '/#multi-select', {
       scenario: async (page) => {
-        await page.click('.open');
         await page.evaluate(() => (window as any).componentsReady());
+        // Call click on the shadow root input so isOutsideClick won't close the dropdowns
+        await page.$$eval('p-multi-select.open', async (selects) =>
+          selects.forEach((el: HTMLElement) => (el.shadowRoot.querySelector('INPUT') as HTMLElement).click())
+        );
+        // Focus
+        await forceFocusState(page, 'p-multi-select.focus >>> input');
+        // Highlight second option
+        await page.$$eval('p-multi-select.highlight', async (selects) =>
+          selects.forEach((select) =>
+            select.children[1].shadowRoot.firstElementChild.classList.add('option--highlighted')
+          )
+        );
+        // Select options with value "c"
+        await page.$$eval('p-multi-select.selected', async (selects) =>
+          selects.forEach((select: any) => (select.value = ['c']))
+        );
+        // Input value no results found
+        const input = await selectNode(page, 'p-multi-select.no-results >>> INPUT');
+        await input.type('Input without results');
       },
     })
   ).toBeFalsy();
