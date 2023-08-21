@@ -4,6 +4,7 @@ import modify from 'rollup-plugin-modify';
 import { version } from '../components-wrapper/package.json';
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const outputDir = '../../dist/components-wrapper';
 
@@ -42,6 +43,13 @@ export default [
       copy({
         targets: [{ src: 'src/index.d.ts', dest: `${outputDir}/jsdom-polyfill` }],
       }),
+      generatePackageJson({
+        baseContents: {
+          main: 'index.cjs',
+          types: 'index.d.ts',
+          sideEffects: false,
+        },
+      }),
     ],
   },
   {
@@ -53,6 +61,15 @@ export default [
     },
     // emitted declarations are named `testing.d.ts` because of input file
     // this is renamed to `index.d.ts` via npm script for consistency
-    plugins: [typescript({ declaration: true, declarationDir: `${outputDir}/testing`, rootDir: 'src' })],
+    plugins: [
+      typescript({ declaration: true, declarationDir: `${outputDir}/testing`, rootDir: 'src' }),
+      generatePackageJson({
+        baseContents: {
+          main: 'index.cjs',
+          types: 'index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
   },
 ];
