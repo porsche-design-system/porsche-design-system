@@ -14,7 +14,7 @@
     "build:subPackages:lib": "yarn rollup -c ./projects/angular-wrapper/rollup.config.js --bundleConfigAsCjs",
     "build:subPackages:typings": "yarn build:subPackages:typings:jsdom-polyfill && yarn build:subPackages:typings:partials && yarn build:subPackages:typings:testing && yarn build:subPackages:typings:styles",
     "build:subPackages:typings:jsdom-polyfill": "tsc projects/angular-wrapper/src/jsdom-polyfill/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/jsdom-polyfill --types node",
-    "build:subPackages:typings:partials": "tsc projects/angular-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/partials/esm --types node",
+    "build:subPackages:typings:partials": "tsc projects/angular-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/partials --types node",
     "build:subPackages:typings:testing": "tsc projects/angular-wrapper/src/testing/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/testing --types node",
     "build:subPackages:typings:styles": "tsc projects/angular-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/styles/esm --types node",
     "build-app": "ng build demo-app --configuration production",

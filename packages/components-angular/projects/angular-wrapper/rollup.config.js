@@ -1,5 +1,6 @@
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const rootDir = '../..';
 const projectDir = 'projects/angular-wrapper';
@@ -51,12 +52,38 @@ const buildConfig = (packagePath) => {
         ],
       }),
       typescript(typescriptOpts),
+      generatePackageJson({
+        outputFolder: `${outputDir}/${packagePath}`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
+      }),
     ],
   };
 };
 
 export default [
-  ...['partials', 'styles'].map(buildConfig),
+  buildConfig('styles'),
+  {
+    input: `${projectDir}/src/partials/index.ts`,
+    output: {
+      file: `${outputDir}/partials/index.cjs`,
+      format: 'cjs',
+    },
+    plugins: [
+      typescript(typescriptOpts),
+      generatePackageJson({
+        baseContents: {
+          main: 'index.cjs',
+          types: 'index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
+  },
   {
     input: `${projectDir}/src/jsdom-polyfill/index.ts`,
     external,
@@ -64,7 +91,16 @@ export default [
       file: `${outputDir}/jsdom-polyfill/index.cjs`,
       format: 'cjs',
     },
-    plugins: [typescript(typescriptOpts)],
+    plugins: [
+      typescript(typescriptOpts),
+      generatePackageJson({
+        baseContents: {
+          main: 'index.cjs',
+          types: 'index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
   },
   {
     // typings are generated via separate tsc command
@@ -74,6 +110,15 @@ export default [
       file: `${outputDir}/testing/index.cjs`,
       format: 'cjs',
     },
-    plugins: [typescript(typescriptOpts)],
+    plugins: [
+      typescript(typescriptOpts),
+      generatePackageJson({
+        baseContents: {
+          main: 'index.cjs',
+          types: 'index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
   },
 ];
