@@ -9,7 +9,7 @@ test.describe('should have no visual regression', async () => {
       // Scroll down flyouts
       await page.$$eval('.scroll-here', async (scrollElements) => {
         scrollElements.forEach((el) => {
-          el.scrollIntoView(el.classList.contains('vertical-center') && { block: 'center' });
+          el.scrollIntoView(el.classList.contains('vertical-center') ? { block: 'center' } : true);
         });
       });
     },

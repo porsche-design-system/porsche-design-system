@@ -22,7 +22,7 @@ it.each(furtherExtendedViewports)('should have no visual regression for viewport
         await page.$$eval('.scroll-here', (scrollElements) => {
           window.addEventListener('resize', () => {
             scrollElements.forEach((el) =>
-              el.scrollIntoView(el.classList.contains('vertical-center') && { block: 'center' })
+              el.scrollIntoView(el.classList.contains('vertical-center') ? { block: 'center' } : true)
             );
           });
         });
