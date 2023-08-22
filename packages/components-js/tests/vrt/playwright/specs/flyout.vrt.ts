@@ -9,15 +9,9 @@ test.describe('should have no visual regression', async () => {
       // Scroll down flyouts
       await page.$$eval('.scroll', async (scrollElements) => {
         scrollElements.forEach((el) => {
-          const root = el.shadowRoot.querySelector('.root');
-          root.scrollTo(0, root.scrollHeight);
-        });
-      });
-      // If no sub-footer is provided content is scrollable instead of root
-      await page.$$eval('.scroll-content', async (scrollElements) => {
-        scrollElements.forEach((el) => {
-          const content = el.shadowRoot.querySelector('.content');
-          content.scrollTo(0, content.scrollHeight);
+          const content = el.shadowRoot.querySelector(el.classList.contains('root') ? '.root' : '.content');
+          const scrollHeight = el.classList.contains('center') ? content.scrollHeight / 3 : content.scrollHeight;
+          content.scrollTo(0, scrollHeight);
         });
       });
     },
