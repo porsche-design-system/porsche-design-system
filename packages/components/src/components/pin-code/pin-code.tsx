@@ -211,9 +211,9 @@ export class PinCode {
       this.value = optimizedPastedData;
       this.updateValue();
       if (optimizedPastedData.length === this.length) {
-        this.pinCodeElements.pop().focus();
+        this.pinCodeElements[this.value.length - 1]?.focus();
       } else {
-        this.pinCodeElements[this.value.length].focus();
+        this.pinCodeElements[this.value.length]?.focus();
       }
     }
     e.preventDefault();
