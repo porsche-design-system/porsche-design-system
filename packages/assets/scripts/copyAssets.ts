@@ -17,17 +17,23 @@ const cdnPathPackageMap = {
   }),
 };
 
+type CdnPath = keyof typeof cdnPathPackageMap;
+
 const TARGET_DIRECTORY = '../cdn';
 
 const copyAssets = (): void => {
-  for (const cdnPath of Object.keys(cdnPathPackageMap)) {
+  for (const cdnPath of Object.keys(cdnPathPackageMap) as CdnPath[]) {
     const packageName = cdnPathPackageMap[cdnPath as keyof typeof cdnPathPackageMap];
     try {
       const packageEntryPath = require.resolve(packageName!);
       const packageEntryDir = path.dirname(packageEntryPath);
       // because of inconsistent package structures we maybe right in dist folder or one level deeper
       const relativePathToPackageAssetFiles = packageEntryDir.endsWith('dist') ? cdnPath : `../${cdnPath}`;
-      const pathToFiles = path.resolve(packageEntryDir, relativePathToPackageAssetFiles);
+      const pathToFiles = path.resolve(
+        packageEntryDir,
+        cdnPath === 'components' ? '..' : '', // since we are in cjs folder otherwise
+        relativePathToPackageAssetFiles
+      );
 
       const files = fs.readdirSync(pathToFiles);
       const targetDirectory = path.resolve(__dirname, TARGET_DIRECTORY, cdnPath);
