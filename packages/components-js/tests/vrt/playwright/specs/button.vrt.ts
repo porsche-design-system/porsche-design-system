@@ -13,7 +13,6 @@ import {
 const component = 'button';
 
 // executed in Chrome only
-// TODO: use 1300 vw
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 

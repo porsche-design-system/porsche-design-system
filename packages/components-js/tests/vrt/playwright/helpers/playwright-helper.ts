@@ -133,5 +133,5 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   );
   await waitForComponentsReady(page);
 
-  await page.setViewportSize({ width: 1000, height: 600 });
+  await page.setViewportSize({ width: 1300, height: 600 });
 };

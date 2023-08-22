@@ -22,7 +22,7 @@ export type GetThemedMarkup = (theme: Theme) => string;
 
 export const getBodyMarkup = (getElements: GetMarkup) =>
   ALL_STATES.map(
-    (state) => `<div class="playground light ${state}">
+    (state) => `<div class="playground light">
   ${getElements()}
 </div>`
   ).join('\n');
@@ -33,16 +33,15 @@ export const getThemedBodyMarkup = (
 ): string => {
   const { states = ALL_STATES, withSurface = false, autoLayout = false, themes = allThemes } = opts || {};
 
-  // TODO: use "should render with theme light :hover"
   return states
     .map((state) =>
       themes.map(
         (theme) =>
           `<div class="playground ${theme} ${
             autoLayout ? 'auto-layout' : ''
-          } ${state}" title="should render with state ${state} and theme ${theme}">${getThemedElements(theme)}</div>` +
+          } ${state}" title="should render with theme ${theme} :${state}">${getThemedElements(theme)}</div>` +
           (withSurface
-            ? `<div class="playground ${theme} surface ${autoLayout ? 'auto-layout' : ''} ${state}">${getThemedElements(
+            ? `<div class="playground ${theme} surface ${autoLayout ? 'auto-layout' : ''}">${getThemedElements(
                 theme
               )}</div>`
             : '')
