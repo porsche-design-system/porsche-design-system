@@ -53,7 +53,7 @@ export class PinCode {
   @Prop() public description?: string = '';
 
   /** Name of the control. */
-  @Prop() public name: string;
+  @Prop() public name?: string;
 
   /** Number of characters of the Pin Code. */
   @Prop() public length?: number = 4;
@@ -88,7 +88,6 @@ export class PinCode {
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;
   private pinCodeElements: HTMLInputElement[] = [];
-  // TODO: private ariaElement: HTMLSpanElement;
 
   public connectedCallback(): void {
     this.isWithinForm = isWithinForm(this.host);
@@ -120,7 +119,7 @@ export class PinCode {
 
     return (
       <Host>
-        <label class="label">
+        <label class="label" htmlFor="current-input">
           {hasLabel(this.host, this.label) && (
             <span class="label__text">
               {this.label || <slot name="label" />}
@@ -130,26 +129,27 @@ export class PinCode {
           {hasDescription(this.host, this.description) && (
             <span class="label__text">{this.description || <slot name="description" />}</span>
           )}
-          <div class="pin-code-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onClick={this.onClick}>
-            {this.isWithinForm && <slot name="hidden-input" />}
-            {...Array.from({ length: this.length }).map((_value, index) => (
-              <input
-                type={this.type === 'number' ? 'text' : this.type}
-                // aria-label={}
-                // aria-labelledby={}
-                // aria-describedby={}
-                autoComplete="one-time-code"
-                pattern="\d*"
-                inputMode="numeric" // get numeric keyboard on mobile
-                maxLength={1}
-                value={this.value[index]}
-                disabled={this.disabled}
-                required={this.required}
-                ref={(el) => this.pinCodeElements.push(el)}
-              />
-            ))}
-          </div>
         </label>
+        <div class="pin-code-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onClick={this.onClick}>
+          {this.isWithinForm && <slot name="hidden-input" />}
+          {...Array.from({ length: this.length }).map((_value, index) => (
+            <input
+              id={index === this.value.length ? "current-input" : ""}
+              type={this.type === 'number' ? 'text' : this.type}
+              aria-label={`${this.label} ${index + 1}-${this.length + 1}`}
+              // aria-describedby={}
+              autoComplete="one-time-code"
+              pattern="\d*"
+              inputMode="numeric" // get numeric keyboard on mobile
+              maxLength={1}
+              value={this.value[index]}
+              disabled={this.disabled}
+              required={this.required}
+              aria-invalid={this.state === 'error'}
+              ref={(el) => this.pinCodeElements.push(el)}
+            />
+          ))}
+        </div>
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage state={this.state} message={this.message} theme="light" host={this.host} />
         )}
