@@ -1,4 +1,5 @@
 import type { FormState } from '../../utils/form/form-state';
+import type { Styles } from 'jss';
 import { removeAttribute, setAttribute } from '../../utils';
 
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
@@ -8,11 +9,16 @@ export type PinCodeUpdateEvent = { value: string | number };
 
 export type PinCodeState = FormState;
 
-export const isTypeNumber = (type: string): boolean => {
-  return type === 'number';
+export const getStylesWithoutSlottedSelector = (styles: Styles): Styles => {
+  return Object.fromEntries(
+    Object.entries(styles).map(([key, value]) => {
+      value = typeof value === 'object' ? getStylesWithoutSlottedSelector(value as Styles) : value;
+      return [key.replace(/::slotted\(([^,]+)\)/g, '$1'), value];
+    }, {} as Styles)
+  );
 };
 
-export const inputIsSingleDigit = (input: string): boolean => input.length === 1 && /\d/.test(input);
+export const inputIsSingleDigit = (input: string): boolean => /^\d$/.test(input);
 
 export const joinInputValues = (pinCodeElements: HTMLInputElement[]): string =>
   pinCodeElements.map((el) => el.value).join('');

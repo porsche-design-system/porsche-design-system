@@ -395,6 +395,7 @@ exports[`should call validateProps() with correct parameters via render for p-pi
   "label": "string",
   "length": "number",
   "message": "string",
+  "name": "string",
   "required": "boolean",
   "state": "oneOf",
   "theme": "oneOf",
