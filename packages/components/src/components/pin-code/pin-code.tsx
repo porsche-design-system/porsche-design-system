@@ -97,16 +97,10 @@ export class PinCode {
   public componentWillLoad(): void {
     // make sure initial value is not longer than pin code length
     if (this.value) {
-      this.value.toString().slice(0, this.length);
+      this.value = this.value.toString().slice(0, this.length);
     }
     if (this.isWithinForm) {
-      this.hiddenInput = initHiddenInput(this.host, this.value, this.disabled, this.required);
-    }
-  }
-
-  public componentWillUpdate(): void {
-    if (this.isWithinForm) {
-      syncHiddenInput(this.hiddenInput, this.value, this.disabled, this.required);
+      this.hiddenInput = initHiddenInput(this.host, this.name, this.value, this.disabled, this.required);
     }
   }
 
