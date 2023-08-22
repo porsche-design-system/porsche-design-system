@@ -87,14 +87,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render in disabled state">
-      <p-multi-select [name]="'options'" [label]="'Some Label disabled'" disabled>
+      <p-multi-select [name]="'options'" [label]="'Some Label disabled'" [disabled]="true">
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
       </p-multi-select>
     </div>
     <div class="playground dark" title="should render in disabled state on dark theme">
-      <p-multi-select [name]="'options'" [label]="'Some Label disabled'" disabled [theme]="'dark'">
+      <p-multi-select [name]="'options'" [label]="'Some Label disabled'" [disabled]="true" [theme]="'dark'">
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
@@ -102,7 +102,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render in required state">
-      <p-multi-select [name]="'options'" [label]="'Some label required'" required>
+      <p-multi-select [name]="'options'" [label]="'Some label required'" [required]="true">
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
@@ -110,7 +110,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-multi-select
         [name]="'options'"
         [label]="'This is a very insanely super long label across multiple lines required'"
-        required
+        [required]="true"
       >
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
@@ -118,7 +118,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-multi-select>
     </div>
     <div class="playground dark" title="should render in required state on dark theme">
-      <p-multi-select [name]="'options'" [label]="'Some label required'" required [theme]="'dark'">
+      <p-multi-select [name]="'options'" [label]="'Some label required'" [required]="true" [theme]="'dark'">
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
@@ -126,7 +126,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-multi-select
         [name]="'options'"
         [label]="'This is a very insanely super long label across multiple lines required'"
-        required
+        [required]="true"
         [theme]="'dark'"
       >
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
@@ -371,14 +371,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div class="playground light" title="should render unopened with selection and input focus">
-      <p-multi-select [label]="'Selection with input focus'" class="selected focus">
+      <p-multi-select [name]="'options'" [label]="'Selection with input focus'" class="selected focus">
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
       </p-multi-select>
     </div>
     <div class="playground dark" title="should render unopened with selection and input focus on dark theme">
-      <p-multi-select [label]="'Selection with input focus'" [theme]="'dark'" class="selected focus">
+      <p-multi-select [name]="'options'" [label]="'Selection with input focus'" [theme]="'dark'" class="selected focus">
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
@@ -390,7 +390,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render in focus state and be open"
       style="padding-bottom: calc(1rem + 450px)"
     >
-      <p-multi-select [label]="'Opened and focused'" [dropdownDirection]="'down'" class="open focus">
+      <p-multi-select [name]="'options'" [label]="'Opened and focused'" [dropdownDirection]="'down'" class="open focus">
         <p-multi-select-option [value]="'a'"
           >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
           displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
@@ -417,7 +417,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render in focus state and be open on dark theme"
       style="padding-bottom: calc(1rem + 450px)"
     >
-      <p-multi-select [label]="'Opened and focused'" [dropdownDirection]="'down'" [theme]="'dark'" class="open focus">
+      <p-multi-select [name]="'options'" [label]="'Opened and focused'" [dropdownDirection]="'down'" [theme]="'dark'" class="open focus">
         <p-multi-select-option [value]="'a'"
           >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
           displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
@@ -445,7 +445,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render with open dropdown direction up"
       style="padding-top: calc(1rem + 450px)"
     >
-      <p-multi-select [label]="'Opened direction up'" [dropdownDirection]="'up'" class="open">
+      <p-multi-select [name]="'options'" [label]="'Opened direction up'" [dropdownDirection]="'up'" class="open">
         <p-multi-select-option [value]="'a'">Should show dropdown direction up</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
@@ -468,7 +468,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render with open dropdown direction up on dark theme"
       style="padding-top: calc(1rem + 450px)"
     >
-      <p-multi-select [label]="'Opened direction up'" [dropdownDirection]="'up'" [theme]="'dark'" class="open">
+      <p-multi-select [name]="'options'" [label]="'Opened direction up'" [dropdownDirection]="'up'" [theme]="'dark'" class="open">
         <p-multi-select-option [value]="'a'">Should show dropdown direction up</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
@@ -493,11 +493,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       style="padding-bottom: calc(1rem + 450px)"
     >
       <p-multi-select
+        [name]="'options'"
         [label]="'Opened with disabled (Option A), highlighted (Option B) and selected (Option C)'"
         [dropdownDirection]="'down'"
         class="open highlight selected"
       >
-        <p-multi-select-option [value]="'a'" disabled>Option A</p-multi-select-option>
+        <p-multi-select-option [value]="'a'" [disabled]="true">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
         <p-multi-select-option [value]="'d'">Option D</p-multi-select-option>
@@ -516,12 +517,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       style="padding-bottom: calc(1rem + 450px)"
     >
       <p-multi-select
+        [name]="'options'"
         [label]="'Opened with disabled (Option A), highlighted (Option B) and selected (Option C)'"
         [dropdownDirection]="'down'"
         [theme]="'dark'"
         class="open highlight selected"
       >
-        <p-multi-select-option [value]="'a'" disabled>Option A</p-multi-select-option>
+        <p-multi-select-option [value]="'a'" [disabled]="true">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
         <p-multi-select-option [value]="'d'">Option D</p-multi-select-option>
@@ -541,6 +543,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       style="padding-bottom: calc(1rem + 450px)"
     >
       <p-multi-select
+        [name]="'options'"
         [label]="'Opened with multiple selected options and Option B highlighted'"
         [dropdownDirection]="'down'"
         class="open selected-multiple highlight"
@@ -564,6 +567,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       style="padding-bottom: calc(1rem + 450px)"
     >
       <p-multi-select
+        [name]="'options'"
         [label]="'Opened with multiple selected options and Option B highlighted'"
         [dropdownDirection]="'down'"
         [theme]="'dark'"
@@ -588,7 +592,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render opened with filter input and no results"
       style="padding-bottom: calc(1rem + 60px)"
     >
-      <p-multi-select [label]="'Opened with no results'" [dropdownDirection]="'down'" class="open no-results-1">
+      <p-multi-select [name]="'options'" [label]="'Opened with no results'" [dropdownDirection]="'down'" class="open no-results-1">
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
@@ -607,7 +611,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       title="should render opened with filter input and no results on dark theme"
       style="padding-bottom: calc(1rem + 60px)"
     >
-      <p-multi-select [label]="'Opened with no results'" [dropdownDirection]="'down'" [theme]="'dark'" class="open no-results-2">
+      <p-multi-select
+        [name]="'options'"
+        [label]="'Opened with no results'"
+        [dropdownDirection]="'down'"
+        [theme]="'dark'"
+        class="open no-results-2"
+      >
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>

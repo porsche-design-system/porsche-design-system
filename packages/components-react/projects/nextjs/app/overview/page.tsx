@@ -1,6 +1,6 @@
 /* Auto Generated File */
 import type { NextPage } from 'next';
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PCrest, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PFlyout, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PCrest, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PFlyout, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PMultiSelect, PMultiSelectOption, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
 
 const OverviewPage: NextPage = (): JSX.Element => {
   const style = `
@@ -143,6 +143,14 @@ const OverviewPage: NextPage = (): JSX.Element => {
               <option value="c">Option C</option>
             </select>
           </PSelectWrapper>
+        </div>
+
+        <div className="playground light" title="should render default multi-select">
+          <PMultiSelect name="options" label="Some label">
+            <PMultiSelectOption value="a">Option A</PMultiSelectOption>
+            <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+            <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+          </PMultiSelect>
         </div>
 
         <div className="playground light" title="should render default text-field-wrapper">
@@ -404,6 +412,14 @@ const OverviewPage: NextPage = (): JSX.Element => {
                 <option value="c">Option C</option>
               </select>
             </PSelectWrapper>
+          </div>
+
+          <div className="playground light" title="should render default multi-select with custom prefix">
+            <PMultiSelect name="options" label="Some label">
+              <PMultiSelectOption value="a">Option A</PMultiSelectOption>
+              <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+              <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+            </PMultiSelect>
           </div>
 
           <div className="playground light" title="should render default text-field-wrapper with custom prefix">

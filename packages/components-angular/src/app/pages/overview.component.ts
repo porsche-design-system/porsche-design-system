@@ -143,6 +143,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </p-select-wrapper>
       </div>
 
+      <div class="playground light" title="should render default multi-select">
+        <p-multi-select [name]="'options'" [label]="'Some label'">
+          <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
+          <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+          <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+        </p-multi-select>
+      </div>
+
       <div class="playground light" title="should render default text-field-wrapper">
         <p-text-field-wrapper [label]="'Some label'">
           <input [type]="'text'" />
@@ -401,6 +409,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <option [value]="'c'">Option C</option>
           </select>
         </my-prefix-p-select-wrapper>
+      </div>
+
+      <div class="playground light" title="should render default multi-select with custom prefix">
+        <my-prefix-p-multi-select p-multi-select [name]="'options'" [label]="'Some label'">
+          <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
+          <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+          <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+        </my-prefix-p-multi-select>
       </div>
 
       <div class="playground light" title="should render default text-field-wrapper with custom prefix">
