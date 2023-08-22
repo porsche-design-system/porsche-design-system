@@ -364,14 +364,14 @@
 </div>
 
 <div class="playground light" title="should render unopened with selection and input focus">
-  <p-multi-select label="Selection with input focus" class="selected focus">
+  <p-multi-select name="options" label="Selection with input focus" class="selected focus">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
   </p-multi-select>
 </div>
 <div class="playground dark" title="should render unopened with selection and input focus on dark theme">
-  <p-multi-select label="Selection with input focus" theme="dark" class="selected focus">
+  <p-multi-select name="options" label="Selection with input focus" theme="dark" class="selected focus">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -383,7 +383,7 @@
   title="should render in focus state and be open"
   style="padding-bottom: calc(1rem + 450px)"
 >
-  <p-multi-select label="Opened and focused" dropdown-direction="down" class="open focus">
+  <p-multi-select name="options" label="Opened and focused" dropdown-direction="down" class="open focus">
     <p-multi-select-option value="a"
       >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
       displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
@@ -410,7 +410,7 @@
   title="should render in focus state and be open on dark theme"
   style="padding-bottom: calc(1rem + 450px)"
 >
-  <p-multi-select label="Opened and focused" dropdown-direction="down" theme="dark" class="open focus">
+  <p-multi-select name="options" label="Opened and focused" dropdown-direction="down" theme="dark" class="open focus">
     <p-multi-select-option value="a"
       >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
       displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
@@ -438,7 +438,7 @@
   title="should render with open dropdown direction up"
   style="padding-top: calc(1rem + 450px)"
 >
-  <p-multi-select label="Opened direction up" dropdown-direction="up" class="open">
+  <p-multi-select name="options" label="Opened direction up" dropdown-direction="up" class="open">
     <p-multi-select-option value="a">Should show dropdown direction up</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -461,7 +461,7 @@
   title="should render with open dropdown direction up on dark theme"
   style="padding-top: calc(1rem + 450px)"
 >
-  <p-multi-select label="Opened direction up" dropdown-direction="up" theme="dark" class="open">
+  <p-multi-select name="options" label="Opened direction up" dropdown-direction="up" theme="dark" class="open">
     <p-multi-select-option value="a">Should show dropdown direction up</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -486,6 +486,7 @@
   style="padding-bottom: calc(1rem + 450px)"
 >
   <p-multi-select
+    name="options"
     label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C)"
     dropdown-direction="down"
     class="open highlight selected"
@@ -509,6 +510,7 @@
   style="padding-bottom: calc(1rem + 450px)"
 >
   <p-multi-select
+    name="options"
     label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C)"
     dropdown-direction="down"
     theme="dark"
@@ -534,6 +536,7 @@
   style="padding-bottom: calc(1rem + 450px)"
 >
   <p-multi-select
+    name="options"
     label="Opened with multiple selected options and Option B highlighted"
     dropdown-direction="down"
     class="open selected-multiple highlight"
@@ -557,6 +560,7 @@
   style="padding-bottom: calc(1rem + 450px)"
 >
   <p-multi-select
+    name="options"
     label="Opened with multiple selected options and Option B highlighted"
     dropdown-direction="down"
     theme="dark"
@@ -581,7 +585,7 @@
   title="should render opened with filter input and no results"
   style="padding-bottom: calc(1rem + 60px)"
 >
-  <p-multi-select label="Opened with no results" dropdown-direction="down" class="open no-results-1">
+  <p-multi-select name="options" label="Opened with no results" dropdown-direction="down" class="open no-results-1">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -600,7 +604,13 @@
   title="should render opened with filter input and no results on dark theme"
   style="padding-bottom: calc(1rem + 60px)"
 >
-  <p-multi-select label="Opened with no results" dropdown-direction="down" theme="dark" class="open no-results-2">
+  <p-multi-select
+    name="options"
+    label="Opened with no results"
+    dropdown-direction="down"
+    theme="dark"
+    class="open no-results-2"
+  >
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
