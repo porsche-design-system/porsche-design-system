@@ -1163,6 +1163,10 @@ export namespace Components {
          */
         "message"?: string;
         /**
+          * Name of the control.
+         */
+        "name": string;
+        /**
           * Marks the Pin Code as required.
          */
         "required"?: boolean;
@@ -3359,6 +3363,10 @@ declare namespace LocalJSX {
           * The message styled depending on validation state.
          */
         "message"?: string;
+        /**
+          * Name of the control.
+         */
+        "name"?: string;
         /**
           * Emitted when selected element changes.
          */
