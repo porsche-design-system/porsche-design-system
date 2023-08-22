@@ -80,14 +80,14 @@
 </div>
 
 <div class="playground light" title="should render in disabled state">
-  <p-multi-select name="options" label="Some Label disabled" disabled>
+  <p-multi-select name="options" label="Some Label disabled" disabled="true">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
   </p-multi-select>
 </div>
 <div class="playground dark" title="should render in disabled state on dark theme">
-  <p-multi-select name="options" label="Some Label disabled" disabled theme="dark">
+  <p-multi-select name="options" label="Some Label disabled" disabled="true" theme="dark">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -95,7 +95,7 @@
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-multi-select name="options" label="Some label required" required>
+  <p-multi-select name="options" label="Some label required" required="true">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -103,7 +103,7 @@
   <p-multi-select
     name="options"
     label="This is a very insanely super long label across multiple lines required"
-    required
+    required="true"
   >
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
@@ -111,7 +111,7 @@
   </p-multi-select>
 </div>
 <div class="playground dark" title="should render in required state on dark theme">
-  <p-multi-select name="options" label="Some label required" required theme="dark">
+  <p-multi-select name="options" label="Some label required" required="true" theme="dark">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -119,7 +119,7 @@
   <p-multi-select
     name="options"
     label="This is a very insanely super long label across multiple lines required"
-    required
+    required="true"
     theme="dark"
   >
     <p-multi-select-option value="a">Option A</p-multi-select-option>
@@ -491,7 +491,7 @@
     dropdown-direction="down"
     class="open highlight selected"
   >
-    <p-multi-select-option value="a" disabled>Option A</p-multi-select-option>
+    <p-multi-select-option value="a" disabled="true">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
     <p-multi-select-option value="d">Option D</p-multi-select-option>
@@ -516,7 +516,7 @@
     theme="dark"
     class="open highlight selected"
   >
-    <p-multi-select-option value="a" disabled>Option A</p-multi-select-option>
+    <p-multi-select-option value="a" disabled="true">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
     <p-multi-select-option value="d">Option D</p-multi-select-option>
