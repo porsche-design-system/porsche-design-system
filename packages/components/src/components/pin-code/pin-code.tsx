@@ -142,7 +142,7 @@ export class PinCode {
                 pattern="\d*"
                 inputMode="numeric" // get numeric keyboard on mobile
                 maxLength={1}
-                value={this.value?.[index]}
+                value={this.value[index]}
                 disabled={this.disabled}
                 required={this.required}
                 ref={(el) => this.pinCodeElements.push(el)}
@@ -171,23 +171,32 @@ export class PinCode {
       target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
     }
   ): void => {
+    const {
+      key,
+      target,
+      target: {previousElementSibling, nextElementSibling},
+    } = e;
+
     // if input is valid overwrite old value
-    if (inputIsSingleDigit(e.key)) {
-      e.target.value = e.key;
-      if (e.target.nextElementSibling) {
-        e.target.nextElementSibling.focus();
+    if (inputIsSingleDigit(key)) {
+      target.value = key;
+      if (nextElementSibling) {
+        nextElementSibling.focus();
       }
       e.preventDefault();
       this.value = joinInputValues(this.pinCodeElements);
       this.updateValue();
+      // handle alphanumeric keys
+    } else if (key.length === 1) {
+      e.preventDefault();
       // handle backspace
-    } else if (e.key === 'Backspace') {
+    } else if (key === 'Backspace') {
       // transfer focus backward, if the input value is empty, and it is not the first input field
-      if (!e.target.value && e.target.previousElementSibling) {
-        e.target.previousElementSibling.value = '';
-        e.target.previousElementSibling.focus();
+      if (!target.value && previousElementSibling) {
+        previousElementSibling.value = '';
+        previousElementSibling.focus();
       } else {
-        e.target.value = '';
+        target.value = '';
       }
       e.preventDefault();
       this.value = joinInputValues(this.pinCodeElements);
