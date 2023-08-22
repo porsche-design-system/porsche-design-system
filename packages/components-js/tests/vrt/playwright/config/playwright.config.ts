@@ -26,6 +26,7 @@ export default defineConfig({
       threshold: 0,
     },
   },
+  snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-{projectName}{ext}',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -71,7 +72,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'yarn start',
+    command: 'yarn start-app',
     port: 8575,
   },
 });

@@ -33,6 +33,7 @@ export const getThemedBodyMarkup = (
 ): string => {
   const { states = ALL_STATES, withSurface = false, autoLayout = false, themes = allThemes } = opts || {};
 
+  // TODO: use "should render with theme light :hover"
   return states
     .map((state) =>
       themes.map(
