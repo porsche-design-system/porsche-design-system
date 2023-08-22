@@ -2,7 +2,7 @@ import { executeVisualRegressionTest, selectNode } from '../helpers/playwright-h
 import { test } from '@playwright/test';
 
 test.describe('should have no visual regression', async () => {
-  await executeVisualRegressionTest('select-wrapper', {
+  await executeVisualRegressionTest('multi-select', {
     scenario: async (page) => {
       await page.evaluate(() => (window as any).componentsReady());
       // Call click on the shadow root input so isOutsideClick won't close the dropdowns
