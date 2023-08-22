@@ -1165,7 +1165,7 @@ export namespace Components {
         /**
           * Name of the control.
          */
-        "name": string;
+        "name"?: string;
         /**
           * Marks the Pin Code as required.
          */
