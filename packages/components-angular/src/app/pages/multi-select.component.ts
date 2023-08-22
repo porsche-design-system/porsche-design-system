@@ -338,11 +338,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
       <p-multi-select
         [name]="'options'"
-        [label]="'Lorem ipsum dolor sit amet, consetetur sadipscing'"
+        [label]="'Extra long label and selected option to see the text being cut off'"
         [description]="'Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet'"
         [state]="'error'"
         [message]="'At vero eos et accusam et justo duo dolores et ea rebum.'"
         style="max-width: 15rem"
+        class="selected"
       >
         <p-multi-select-option [value]="'a'">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</p-multi-select-option>
         <p-multi-select-option [value]="'b'">sed diam nonumy eirmod tempor invidunt ut labore</p-multi-select-option>
@@ -355,16 +356,32 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
       <p-multi-select
         [name]="'options'"
-        [label]="'Lorem ipsum dolor sit amet, consetetur sadipscing'"
+        [label]="'Extra long label and selected option to see the text being cut off'"
         [description]="'Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet'"
         [state]="'error'"
         [message]="'At vero eos et accusam et justo duo dolores et ea rebum.'"
         [theme]="'dark'"
         style="max-width: 15rem"
+        class="selected"
       >
         <p-multi-select-option [value]="'a'">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</p-multi-select-option>
         <p-multi-select-option [value]="'b'">sed diam nonumy eirmod tempor invidunt ut labore</p-multi-select-option>
         <p-multi-select-option [value]="'c'">et dolore magna aliquyam erat, sed diam voluptua</p-multi-select-option>
+      </p-multi-select>
+    </div>
+
+    <div class="playground light" title="should render unopened with selection and input focus">
+      <p-multi-select [label]="'Selection with input focus'" class="selected focus">
+        <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
+        <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+        <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+      </p-multi-select>
+    </div>
+    <div class="playground dark" title="should render unopened with selection and input focus on dark theme">
+      <p-multi-select [label]="'Selection with input focus'" [theme]="'dark'" class="selected focus">
+        <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
+        <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+        <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
       </p-multi-select>
     </div>
 
@@ -429,11 +446,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       style="padding-top: calc(1rem + 450px)"
     >
       <p-multi-select [label]="'Opened direction up'" [dropdownDirection]="'up'" class="open">
-        <p-multi-select-option [value]="'a'"
-          >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-          displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-          top.</p-multi-select-option
-        >
+        <p-multi-select-option [value]="'a'">Should show dropdown direction up</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
         <p-multi-select-option [value]="'d'"
@@ -456,11 +469,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       style="padding-top: calc(1rem + 450px)"
     >
       <p-multi-select [label]="'Opened direction up'" [dropdownDirection]="'up'" [theme]="'dark'" class="open">
-        <p-multi-select-option [value]="'a'"
-          >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-          displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-          top.</p-multi-select-option
-        >
+        <p-multi-select-option [value]="'a'">Should show dropdown direction up</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
         <p-multi-select-option [value]="'d'"
@@ -480,11 +489,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render opened and with highlighted, selected and disabled option"
+      title="should render opened and with disabled, highlighted and selected"
       style="padding-bottom: calc(1rem + 450px)"
     >
       <p-multi-select
-        [label]="'Opened with highlighted, selected and disabled option'"
+        [label]="'Opened with disabled (Option A), highlighted (Option B) and selected (Option C)'"
         [dropdownDirection]="'down'"
         class="open highlight selected"
       >
@@ -503,11 +512,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
     <div
       class="playground dark"
-      title="should render opened and with highlighted, selected and disabled option on dark theme"
+      title="should render opened and with disabled, highlighted and selected on dark theme"
       style="padding-bottom: calc(1rem + 450px)"
     >
       <p-multi-select
-        [label]="'Opened with highlighted, selected and disabled option'"
+        [label]="'Opened with disabled (Option A), highlighted (Option B) and selected (Option C)'"
         [dropdownDirection]="'down'"
         [theme]="'dark'"
         class="open highlight selected"
@@ -528,10 +537,58 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render opened with filter input and no results"
+      title="should render opened and with multiple selected options and highlighted"
       style="padding-bottom: calc(1rem + 450px)"
     >
-      <p-multi-select [label]="'Opened with no results'" [dropdownDirection]="'down'" class="open no-results">
+      <p-multi-select
+        [label]="'Opened with multiple selected options and Option B highlighted'"
+        [dropdownDirection]="'down'"
+        class="open selected-multiple highlight"
+      >
+        <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
+        <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+        <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+        <p-multi-select-option [value]="'d'">Option D</p-multi-select-option>
+        <p-multi-select-option [value]="'e'">Option E</p-multi-select-option>
+        <p-multi-select-option [value]="'f'">Option F</p-multi-select-option>
+        <p-multi-select-option [value]="'g'">Option G</p-multi-select-option>
+        <p-multi-select-option [value]="'h'">Option H</p-multi-select-option>
+        <p-multi-select-option [value]="'i'">Option I</p-multi-select-option>
+        <p-multi-select-option [value]="'j'">Option J</p-multi-select-option>
+        <p-multi-select-option [value]="'k'">Option K</p-multi-select-option>
+      </p-multi-select>
+    </div>
+    <div
+      class="playground dark"
+      title="should render opened and with multiple selected options and highlighted on dark theme"
+      style="padding-bottom: calc(1rem + 450px)"
+    >
+      <p-multi-select
+        [label]="'Opened with multiple selected options and Option B highlighted'"
+        [dropdownDirection]="'down'"
+        [theme]="'dark'"
+        class="open selected-multiple highlight"
+      >
+        <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
+        <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
+        <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+        <p-multi-select-option [value]="'d'">Option D</p-multi-select-option>
+        <p-multi-select-option [value]="'e'">Option E</p-multi-select-option>
+        <p-multi-select-option [value]="'f'">Option F</p-multi-select-option>
+        <p-multi-select-option [value]="'g'">Option G</p-multi-select-option>
+        <p-multi-select-option [value]="'h'">Option H</p-multi-select-option>
+        <p-multi-select-option [value]="'i'">Option I</p-multi-select-option>
+        <p-multi-select-option [value]="'j'">Option J</p-multi-select-option>
+        <p-multi-select-option [value]="'k'">Option K</p-multi-select-option>
+      </p-multi-select>
+    </div>
+
+    <div
+      class="playground light"
+      title="should render opened with filter input and no results"
+      style="padding-bottom: calc(1rem + 60px)"
+    >
+      <p-multi-select [label]="'Opened with no results'" [dropdownDirection]="'down'" class="open no-results-1">
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
@@ -548,9 +605,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div
       class="playground dark"
       title="should render opened with filter input and no results on dark theme"
-      style="padding-bottom: calc(1rem + 450px)"
+      style="padding-bottom: calc(1rem + 60px)"
     >
-      <p-multi-select [label]="'Opened with no results'" [dropdownDirection]="'down'" [theme]="'dark'" class="open no-results">
+      <p-multi-select [label]="'Opened with no results'" [dropdownDirection]="'down'" [theme]="'dark'" class="open no-results-2">
         <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
         <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
         <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>

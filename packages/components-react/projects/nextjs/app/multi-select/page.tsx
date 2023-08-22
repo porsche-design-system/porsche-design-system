@@ -340,11 +340,12 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
       >
         <PMultiSelect
           name="options"
-          label="Lorem ipsum dolor sit amet, consetetur sadipscing"
+          label="Extra long label and selected option to see the text being cut off"
           description="Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
           state="error"
           message="At vero eos et accusam et justo duo dolores et ea rebum."
           style={{ maxWidth: '15rem' }}
+          className="selected"
         >
           <PMultiSelectOption value="a">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</PMultiSelectOption>
           <PMultiSelectOption value="b">sed diam nonumy eirmod tempor invidunt ut labore</PMultiSelectOption>
@@ -357,16 +358,32 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
       >
         <PMultiSelect
           name="options"
-          label="Lorem ipsum dolor sit amet, consetetur sadipscing"
+          label="Extra long label and selected option to see the text being cut off"
           description="Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
           state="error"
           message="At vero eos et accusam et justo duo dolores et ea rebum."
           theme="dark"
           style={{ maxWidth: '15rem' }}
+          className="selected"
         >
           <PMultiSelectOption value="a">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</PMultiSelectOption>
           <PMultiSelectOption value="b">sed diam nonumy eirmod tempor invidunt ut labore</PMultiSelectOption>
           <PMultiSelectOption value="c">et dolore magna aliquyam erat, sed diam voluptua</PMultiSelectOption>
+        </PMultiSelect>
+      </div>
+
+      <div className="playground light" title="should render unopened with selection and input focus">
+        <PMultiSelect label="Selection with input focus" className="selected focus">
+          <PMultiSelectOption value="a">Option A</PMultiSelectOption>
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+        </PMultiSelect>
+      </div>
+      <div className="playground dark" title="should render unopened with selection and input focus on dark theme">
+        <PMultiSelect label="Selection with input focus" theme="dark" className="selected focus">
+          <PMultiSelectOption value="a">Option A</PMultiSelectOption>
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
         </PMultiSelect>
       </div>
 
@@ -431,11 +448,7 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
         style={{ paddingTop: 'calc(1rem + 450px)' }}
       >
         <PMultiSelect label="Opened direction up" dropdownDirection="up" className="open">
-          <PMultiSelectOption value="a"
-            >Multiline options could be quite long, especially on smaller screens. Let&apos;s check if the height of the option is
-            displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-            top.</PMultiSelectOption
-          >
+          <PMultiSelectOption value="a">Should show dropdown direction up</PMultiSelectOption>
           <PMultiSelectOption value="b">Option B</PMultiSelectOption>
           <PMultiSelectOption value="c">Option C</PMultiSelectOption>
           <PMultiSelectOption value="d"
@@ -458,11 +471,7 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
         style={{ paddingTop: 'calc(1rem + 450px)' }}
       >
         <PMultiSelect label="Opened direction up" dropdownDirection="up" theme="dark" className="open">
-          <PMultiSelectOption value="a"
-            >Multiline options could be quite long, especially on smaller screens. Let&apos;s check if the height of the option is
-            displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-            top.</PMultiSelectOption
-          >
+          <PMultiSelectOption value="a">Should show dropdown direction up</PMultiSelectOption>
           <PMultiSelectOption value="b">Option B</PMultiSelectOption>
           <PMultiSelectOption value="c">Option C</PMultiSelectOption>
           <PMultiSelectOption value="d"
@@ -482,11 +491,11 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
 
       <div
         className="playground light"
-        title="should render opened and with highlighted, selected and disabled option"
+        title="should render opened and with disabled, highlighted and selected"
         style={{ paddingBottom: 'calc(1rem + 450px)' }}
       >
         <PMultiSelect
-          label="Opened with highlighted, selected and disabled option"
+          label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C)"
           dropdownDirection="down"
           className="open highlight selected"
         >
@@ -505,11 +514,11 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
       </div>
       <div
         className="playground dark"
-        title="should render opened and with highlighted, selected and disabled option on dark theme"
+        title="should render opened and with disabled, highlighted and selected on dark theme"
         style={{ paddingBottom: 'calc(1rem + 450px)' }}
       >
         <PMultiSelect
-          label="Opened with highlighted, selected and disabled option"
+          label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C)"
           dropdownDirection="down"
           theme="dark"
           className="open highlight selected"
@@ -530,10 +539,58 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
 
       <div
         className="playground light"
-        title="should render opened with filter input and no results"
+        title="should render opened and with multiple selected options and highlighted"
         style={{ paddingBottom: 'calc(1rem + 450px)' }}
       >
-        <PMultiSelect label="Opened with no results" dropdownDirection="down" className="open no-results">
+        <PMultiSelect
+          label="Opened with multiple selected options and Option B highlighted"
+          dropdownDirection="down"
+          className="open selected-multiple highlight"
+        >
+          <PMultiSelectOption value="a">Option A</PMultiSelectOption>
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+          <PMultiSelectOption value="d">Option D</PMultiSelectOption>
+          <PMultiSelectOption value="e">Option E</PMultiSelectOption>
+          <PMultiSelectOption value="f">Option F</PMultiSelectOption>
+          <PMultiSelectOption value="g">Option G</PMultiSelectOption>
+          <PMultiSelectOption value="h">Option H</PMultiSelectOption>
+          <PMultiSelectOption value="i">Option I</PMultiSelectOption>
+          <PMultiSelectOption value="j">Option J</PMultiSelectOption>
+          <PMultiSelectOption value="k">Option K</PMultiSelectOption>
+        </PMultiSelect>
+      </div>
+      <div
+        className="playground dark"
+        title="should render opened and with multiple selected options and highlighted on dark theme"
+        style={{ paddingBottom: 'calc(1rem + 450px)' }}
+      >
+        <PMultiSelect
+          label="Opened with multiple selected options and Option B highlighted"
+          dropdownDirection="down"
+          theme="dark"
+          className="open selected-multiple highlight"
+        >
+          <PMultiSelectOption value="a">Option A</PMultiSelectOption>
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+          <PMultiSelectOption value="d">Option D</PMultiSelectOption>
+          <PMultiSelectOption value="e">Option E</PMultiSelectOption>
+          <PMultiSelectOption value="f">Option F</PMultiSelectOption>
+          <PMultiSelectOption value="g">Option G</PMultiSelectOption>
+          <PMultiSelectOption value="h">Option H</PMultiSelectOption>
+          <PMultiSelectOption value="i">Option I</PMultiSelectOption>
+          <PMultiSelectOption value="j">Option J</PMultiSelectOption>
+          <PMultiSelectOption value="k">Option K</PMultiSelectOption>
+        </PMultiSelect>
+      </div>
+
+      <div
+        className="playground light"
+        title="should render opened with filter input and no results"
+        style={{ paddingBottom: 'calc(1rem + 60px)' }}
+      >
+        <PMultiSelect label="Opened with no results" dropdownDirection="down" className="open no-results-1">
           <PMultiSelectOption value="a">Option A</PMultiSelectOption>
           <PMultiSelectOption value="b">Option B</PMultiSelectOption>
           <PMultiSelectOption value="c">Option C</PMultiSelectOption>
@@ -550,9 +607,9 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
       <div
         className="playground dark"
         title="should render opened with filter input and no results on dark theme"
-        style={{ paddingBottom: 'calc(1rem + 450px)' }}
+        style={{ paddingBottom: 'calc(1rem + 60px)' }}
       >
-        <PMultiSelect label="Opened with no results" dropdownDirection="down" theme="dark" className="open no-results">
+        <PMultiSelect label="Opened with no results" dropdownDirection="down" theme="dark" className="open no-results-2">
           <PMultiSelectOption value="a">Option A</PMultiSelectOption>
           <PMultiSelectOption value="b">Option B</PMultiSelectOption>
           <PMultiSelectOption value="c">Option C</PMultiSelectOption>
