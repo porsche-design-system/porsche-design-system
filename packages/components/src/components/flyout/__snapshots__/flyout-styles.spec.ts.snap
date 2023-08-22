@@ -35,6 +35,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #FFF;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -64,6 +65,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
@@ -118,6 +121,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #0E0E12;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -153,6 +157,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
 }
 .sub-footer {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -202,6 +208,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #0E0E12;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -237,11 +244,14 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
 }
 .footer {
   background: #0E0E12;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
+  z-index: 1;
   bottom: 0;
 }
 .footer--shadow {
@@ -294,6 +304,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #FFF;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -323,6 +334,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
@@ -377,6 +390,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #0E0E12;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -412,6 +426,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
 }
 .sub-footer {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -461,6 +477,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #0E0E12;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -496,11 +513,14 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
 }
 .footer {
   background: #0E0E12;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
+  z-index: 1;
   bottom: 0;
 }
 .footer--shadow {
@@ -552,6 +572,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -581,6 +602,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0));
@@ -633,6 +656,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -662,6 +686,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
@@ -675,6 +701,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
+  z-index: 1;
   bottom: 0;
 }
 .footer--shadow {
@@ -724,6 +751,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -757,6 +785,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
@@ -810,6 +840,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -843,6 +874,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0));
@@ -856,6 +889,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
+  z-index: 1;
   bottom: 0;
 }
 .footer--shadow {
@@ -905,6 +939,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -940,11 +975,14 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
 }
 .footer {
   background: #FFF;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
+  z-index: 1;
   bottom: 0;
 }
 .footer--shadow {
@@ -996,6 +1034,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -1025,6 +1064,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0));
@@ -1077,6 +1118,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -1106,6 +1148,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
@@ -1119,6 +1163,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
+  z-index: 1;
   bottom: 0;
 }
 .footer--shadow {
@@ -1168,6 +1213,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -1201,6 +1247,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
@@ -1254,6 +1302,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -1287,6 +1336,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0));
@@ -1300,6 +1351,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
+  z-index: 1;
   bottom: 0;
 }
 .footer--shadow {
@@ -1349,6 +1401,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -1384,11 +1437,14 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .content {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
 }
 .footer {
   background: #FFF;
   padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
+  z-index: 1;
   bottom: 0;
 }
 .footer--shadow {
