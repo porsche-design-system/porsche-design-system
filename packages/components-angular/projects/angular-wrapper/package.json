@@ -31,13 +31,14 @@
     },
     "./partials": {
       "types": "./partials/index.d.ts",
+      "module": "./partials/index.js",
       "default": "./partials/index.cjs"
     },
     "./styles": {
+      "sass": "./styles/_index.scss",
       "types": "./styles/esm/index.d.ts",
       "import": "./styles/esm/index.mjs",
-      "default": "./styles/cjs/index.cjs",
-      "sass": "./styles/_index.scss"
+      "default": "./styles/cjs/index.cjs"
     },
     "./testing": {
       "types": "./testing/index.d.ts",

@@ -80,9 +80,15 @@ export default [
       generatePackageJson({
         baseContents: {
           main: 'index.cjs',
+          module: 'index.js', // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
           types: 'index.d.ts',
           sideEffects: false,
         },
+      }),
+      copy({
+        // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
+        targets: [{ src: `${outputDir}/partials/index.cjs`, dest: `${outputDir}/partials`, rename: () => 'index.js' }],
+        hook: 'writeBundle',
       }),
       // ugly workaround to align package structure with other packages
       // unfortunately ng-packagr doesn't support any configuration and we have to postprocess

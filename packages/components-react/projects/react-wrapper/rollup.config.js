@@ -108,6 +108,7 @@ export default [
             },
             './partials': {
               types: './partials/index.d.ts',
+              module: './partials/index.js', // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
               default: './partials/index.cjs',
             },
             './ssr': {
@@ -116,10 +117,10 @@ export default [
               default: './ssr/cjs/components-react/projects/react-ssr-wrapper/src/public-api.cjs',
             },
             './styles': {
+              sass: './styles/_index.scss',
               types: './styles/esm/index.d.ts',
               import: './styles/esm/index.mjs',
               default: './styles/cjs/index.cjs',
-              sass: './styles/_index.scss',
             },
             './testing': {
               types: './testing/index.d.ts',
@@ -182,9 +183,15 @@ export default [
       generatePackageJson({
         baseContents: {
           main: 'index.cjs',
+          module: 'index.js', // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
           types: 'index.d.ts',
           sideEffects: false,
         },
+      }),
+      copy({
+        // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
+        targets: [{ src: `${outputDir}/partials/index.cjs`, dest: `${outputDir}/partials`, rename: () => 'index.js' }],
+        hook: 'writeBundle',
       }),
     ],
   },
