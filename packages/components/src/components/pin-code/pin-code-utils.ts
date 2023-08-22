@@ -25,6 +25,7 @@ export const joinInputValues = (pinCodeElements: HTMLInputElement[]): string =>
 
 export const initHiddenInput = (
   host: HTMLElement,
+  name: string,
   value: string,
   disabled: boolean,
   required: boolean
@@ -34,12 +35,19 @@ export const initHiddenInput = (
   setAttribute(hiddenInput, 'aria-hidden', 'true');
   setAttribute(hiddenInput, 'slot', 'hidden-input');
   setAttribute(hiddenInput, 'tabindex', '-1');
-  syncHiddenInput(hiddenInput, value, disabled, required);
+  syncHiddenInput(hiddenInput, name, value, disabled, required);
   host.prepend(hiddenInput);
   return hiddenInput;
 };
 
-export const syncHiddenInput = (hiddenInput: HTMLInputElement, value, disabled: boolean, required: boolean): void => {
+export const syncHiddenInput = (
+  hiddenInput: HTMLInputElement,
+  name: string,
+  value: string,
+  disabled: boolean,
+  required: boolean
+): void => {
+  setAttribute(hiddenInput, 'name', name);
   setAttribute(hiddenInput, 'value', `${value}`);
   if (disabled) {
     setAttribute(hiddenInput, 'disabled');

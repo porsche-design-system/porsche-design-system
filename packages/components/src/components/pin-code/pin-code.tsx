@@ -27,15 +27,16 @@ import { Required } from '../common/required/required';
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
+  name: AllowedTypes.string,
   length: AllowedTypes.number,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   state: AllowedTypes.oneOf<PinCodeState>(FORM_STATES),
   disabled: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
   message: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 @Component({
@@ -45,11 +46,14 @@ const propTypes: PropTypes<typeof PinCode> = {
 export class PinCode {
   @Element() public host!: HTMLElement;
 
+  /** The label text. */
+  @Prop() public label?: string = '';
+
   /** The description text. */
   @Prop() public description?: string = '';
 
-  /** The label text. */
-  @Prop() public label?: string = '';
+  /** Name of the control. */
+  @Prop() public name: string;
 
   /** Number of characters of the Pin Code. */
   @Prop() public length?: number = 4;
@@ -75,11 +79,11 @@ export class PinCode {
   /** Sets the initial value of the Pin Code. */
   @Prop() public value?: string = '';
 
-  /** Emitted when selected element changes. */
-  @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEvent>;
-
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  /** Emitted when selected element changes. */
+  @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEvent>;
 
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;
@@ -112,10 +116,13 @@ export class PinCode {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.type, this.hideLabel, this.state, this.disabled, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.disabled, this.theme);
 
     // reset array of input elements
     this.pinCodeElements = [];
+    if (this.isWithinForm) {
+      syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
+    }
 
     return (
       <Host>
