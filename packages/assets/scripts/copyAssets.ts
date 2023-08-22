@@ -46,7 +46,11 @@ const copyAssets = (): void => {
         console.log(` - ${file}`);
       }
     } catch (e) {
-      throw new Error(`Package '${packageName}' doesn't exist and can't be copied`);
+      if (isComponentsOnly) {
+        throw new Error(`Package '${packageName}' doesn't exist and can't be copied`);
+      } else {
+        console.log(`Package '${packageName}' doesn't exist. Skipping...`);
+      }
     }
   }
 };
