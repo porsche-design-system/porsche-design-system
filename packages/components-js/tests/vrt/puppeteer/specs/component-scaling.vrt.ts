@@ -4,6 +4,7 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 import type { Component } from '../helpers';
+import { multiSelectScenario } from './multi-select.vrt';
 
 const components: Component[] = [
   'accordion',
@@ -72,6 +73,8 @@ it.each(components)('should have no visual regression for scaled component %s', 
             await page.mouse.click(0, 0); // click top left corner of the page to remove focus from close button
           } else if (component === 'select-wrapper') {
             await page.click('#open-options');
+          } else if (component === 'multi-select') {
+            await multiSelectScenario(page);
           }
         },
         scalePageFontSize: true,
