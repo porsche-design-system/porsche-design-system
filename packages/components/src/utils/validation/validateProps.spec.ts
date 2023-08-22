@@ -3,6 +3,7 @@ import * as loggerUtils from '../log/logger';
 import * as breakpointCustomizableUtils from '../breakpoint-customizable';
 import * as jsonUtils from '../json';
 import {
+  AllowedArrayTypes,
   AllowedTypes,
   formatArrayOutput,
   formatObjectOutput,
@@ -10,6 +11,7 @@ import {
   getBreakpointCustomizableStructure,
   getShapeStructure,
   isBreakpointCustomizableValueInvalid,
+  isValidArray,
   isValueNotOfType,
   printErrorMessage,
   validateProps,
@@ -155,6 +157,36 @@ describe('isBreakpointCustomizableValueInvalid()', () => {
   });
 });
 
+describe('isValidArray()', () => {
+  it.each<[any, AllowedArrayTypes[], boolean]>([
+    [['a'], ['string'], true],
+    [[], ['string'], true],
+    [[1], ['string'], false],
+    ['non array', ['string'], false],
+    [undefined, ['string'], false],
+    [[{}], ['string'], false],
+    [[null], ['string'], false],
+    [[1], ['number'], true],
+    [[], ['number'], true],
+    [['a'], ['number'], false],
+    ['non array', ['number'], false],
+    [undefined, ['number'], false],
+    [[{}], ['number'], false],
+    [[null], ['number'], false],
+    [['a'], ['string', 'number'], true],
+    [['a', 1], ['string', 'number'], true],
+    [[1], ['string', 'number'], true],
+    [[], ['string', 'number'], true],
+    [[true], ['string', 'number'], false],
+    ['non array', ['string', 'number'], false],
+    [undefined, ['string', 'number'], false],
+    [[{}], ['string', 'number'], false],
+    [[null], ['string', 'number'], false],
+  ])('should return %s for arr: %s and allowedTypes: %s', (arr, allowedTypes, result) => {
+    expect(isValidArray(arr, allowedTypes)).toBe(result);
+  });
+});
+
 describe('validateProps()', () => {
   const instance = {
     prop1: 'value1',
@@ -255,6 +287,34 @@ describe('AllowedTypes', () => {
       jest.spyOn(validatePropsUtils, 'validateValueOfType').mockReturnValue(mockResult);
       const result = AllowedTypes.boolean('propName', 'propValue');
       expect(result).toEqual(mockResult);
+    });
+  });
+
+  describe('.array', () => {
+    const validatorFunctionValues = AllowedTypes.array(['string', 'number']);
+
+    it('should return anonymous ValidatorFunction', () => {
+      expect(validatorFunctionValues).toEqual(expect.any(Function));
+    });
+
+    it('should call isValidArray() via anonymous ValidatorFunction', () => {
+      const spy = jest.spyOn(validatePropsUtils, 'isValidArray');
+      validatorFunctionValues('propName', ['a', 'b']);
+      expect(spy).toBeCalledWith(['a', 'b'], ['string', 'number']);
+    });
+
+    it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array', () => {
+      const result = validatorFunctionValues('propName', false);
+      expect(result).toEqual({
+        propName: 'propName',
+        propValue: false,
+        propType: '(string | number)[]',
+      });
+    });
+
+    it('should return undefined via anonymous ValidatorFunction if value is in allowedValues array', () => {
+      const result = validatorFunctionValues('propName', ['b']);
+      expect(result).toBe(undefined);
     });
   });
 

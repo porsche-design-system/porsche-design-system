@@ -20,7 +20,7 @@ type ValidatorFunctionOrCreator =
   | ValidatorFunctionBreakpointCustomizableCreator
   | ValidatorFunctionShapeCreator;
 
-type AllowedArrayTypes = string | number;
+export type AllowedArrayTypes = string | number;
 type ValidatorFunctionArray = <T extends AllowedArrayTypes>(allowedTypes: T[]) => ValidatorFunction;
 
 export type ValidationError = {
