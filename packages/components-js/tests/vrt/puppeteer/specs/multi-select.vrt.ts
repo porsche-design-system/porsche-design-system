@@ -35,9 +35,14 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
         await page.$$eval('p-multi-select.selected', async (selects) =>
           selects.forEach((select: any) => (select.value = ['c']))
         );
-        // Input value no results found
-        const input = await selectNode(page, 'p-multi-select.no-results >>> INPUT');
-        await input.type('Input without results');
+        // Select multiple options
+        await page.$$eval('p-multi-select.selected-multiple', async (selects) =>
+          selects.forEach((select: any) => (select.value = ['a', 'b', 'c', 'd', 'e', 'f']))
+        );
+
+        // Type into inputs
+        await (await selectNode(page, 'p-multi-select.no-results-1 >>> input')).type('No matching option');
+        await (await selectNode(page, 'p-multi-select.no-results-2 >>> input')).type('No matching option');
       },
     })
   ).toBeFalsy();
