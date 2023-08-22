@@ -236,15 +236,11 @@ export default class Code extends Vue {
   fullscreen =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal heading="Some Heading" fullscreen="{ base: true, s: false }" open="false">
-  <p-flex direction="column" class="fullscreen-container">
-    <p-flex-item grow="1">
-      <p-text>Some Content</p-text>
-    </p-flex-item>
-    <p-button-group class="footer">
-      <p-button>Save</p-button>
-      <p-button type="button" variant="secondary" icon="close">Close</p-button>
-    </p-button-group>
-  </p-flex>
+  <p-text>Some Content</p-text>
+  <p-button-group class="footer">
+    <p-button type="button">Save</p-button>
+    <p-button type="button" variant="secondary">Close</p-button>
+  </p-button-group>
 </p-modal>`;
 
   openModal(index: number): void {
@@ -262,8 +258,5 @@ export default class Code extends Vue {
 
   :deep(.footer) {  
     padding: 2rem 0 0;
-  }
-  :deep(.fullscreen-container) {
-    flex: 1;
   }
 </style>
