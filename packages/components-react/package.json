@@ -36,6 +36,7 @@
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
     "@testing-library/jest-dom": "^5.17.0",
