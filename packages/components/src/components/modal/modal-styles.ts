@@ -156,7 +156,8 @@ export const getComponentCss = (
         ...(!hasFooter && { paddingBottom: contentPadding }),
         background: backgroundColor,
         outline: isHighContrastMode ? '1px solid transparent' : 0,
-        '&:focus::before': {
+        // ::after to be above sticky footer without z-index games
+        '&:focus::after': {
           content: '""',
           position: 'fixed',
           border: `${borderWidthBase} solid`,
