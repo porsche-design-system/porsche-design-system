@@ -65,6 +65,7 @@ export const getComponentCss = (
       background: backgroundColor,
       position: 'sticky',
       top: 0,
+      zIndex: 1,
     },
     [headerShadowClass]: {
       boxShadow: `${isDark ? scrollShadowColorDark : scrollShadowColor} 0px 5px 10px`,
@@ -112,6 +113,8 @@ export const getComponentCss = (
     },
     content: {
       padding: contentPadding,
+      position: 'relative',
+      zIndex: 0,
       // If sub-footer is used scroll shadows have to be done via JS
       ...(!hasSubFooter && {
         overflowY: 'auto',
@@ -129,6 +132,7 @@ export const getComponentCss = (
         background: backgroundColor,
         padding: contentPadding,
         position: 'sticky',
+        zIndex: 1,
         bottom: 0,
       },
       [footerShadowClass]: {

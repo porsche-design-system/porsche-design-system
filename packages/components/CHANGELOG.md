@@ -37,6 +37,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Flyout`: Overlapping of sticky header/footer if slotted content has different z-index
+  ([#2736](https://github.com/porsche-design-system/porsche-design-system/pull/2736))
 - Keyboard behavior and `aria` semantics if either `a` or `button` elements are used as slotted content in `Tabs Bar`
   component. ([#2713](https://github.com/porsche-design-system/porsche-design-system/pull/2713))
 - NextJs compatibility with v13 `app router` directory
