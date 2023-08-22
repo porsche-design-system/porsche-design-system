@@ -41,8 +41,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2736](https://github.com/porsche-design-system/porsche-design-system/pull/2736))
 - Keyboard behavior and `aria` semantics if either `a` or `button` elements are used as slotted content in `Tabs Bar`
   component. ([#2713](https://github.com/porsche-design-system/porsche-design-system/pull/2713))
-- NextJs compatibility with v13 `app router` directory
+- React/SSR: compatibility with Next.js v13 app router
   ([#2687](https://github.com/porsche-design-system/porsche-design-system/pull/2687))
+- Consistent `package.json` ECMAScript module exports for `components-{js|angular|react|vue}`
+  ([#2739](https://github.com/porsche-design-system/porsche-design-system/pull/2739))
 
 ### [3.5.0] - 2023-07-25
 
