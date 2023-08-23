@@ -4,15 +4,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'page-crest',
   template: `
-    <div class="playground" title="should show crest">
+    <div class="playground light" title="should show crest">
       <p-crest></p-crest>
     </div>
 
-    <div class="playground" title="should render with custom click area">
+    <div class="playground light" title="should render with custom click area">
       <p-crest [href]="'#'" style="padding: 1.5rem"></p-crest>
     </div>
 
-    <div class="playground" title="should not exceed parents width">
+    <div class="playground light" title="should not exceed parents width">
       <div style="width: 20px; background: lightsalmon">
         <p-crest style="background: lightblue"></p-crest>
       </div>
@@ -22,7 +22,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
     </div>
 
-    <div class="playground" title="should not exceed max-width of crest itself, although parent provides more width">
+    <div class="playground light" title="should not exceed max-width of crest itself, although parent provides more width">
       <div style="width: 80px; background: lightsalmon">
         <p-crest style="background: lightblue"></p-crest>
       </div>
@@ -32,7 +32,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
     </div>
 
-    <div class="playground" title="should not exceed parents height">
+    <div class="playground light" title="should not exceed parents height">
       <div style="height: 20px; background: lightsalmon">
         <p-crest style="background: lightblue"></p-crest>
       </div>
@@ -42,7 +42,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
     </div>
 
-    <div class="playground" title="should not exceed max-height of crest itself, although parent provides more height">
+    <div
+      class="playground light"
+      title="should not exceed max-height of crest itself, although parent provides more height"
+    >
       <div style="height: 80px; background: lightsalmon">
         <p-crest style="background: lightblue"></p-crest>
       </div>
