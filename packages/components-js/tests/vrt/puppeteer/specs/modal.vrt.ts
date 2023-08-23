@@ -19,10 +19,11 @@ it.each(furtherExtendedViewports)('should have no visual regression for viewport
       scenario: async (page) => {
         await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
 
+        // scroll modal once down and up to apply box-shadow
         await page.evaluate(() => {
           // page is initially 1px high and then resized which affects scroll based behavior
           window.addEventListener('resize', () => {
-            const modal = Array.from(document.querySelectorAll('p-modal')).pop();
+            const modal = document.querySelector('.scroll');
             modal.scrollBy({ top: 5 });
             modal.scrollBy({ top: -5 });
           });
