@@ -142,9 +142,24 @@ const generateCodeSamples = (): void => {
     {
       component: 'p-multi-select',
       samples: [
-        [componentsJsPath + '/multi-select-example.html'],
-        [componentsJsPath + '/multi-select-example-controlled.html'],
-        [componentsJsPath + '/multi-select-example-dynamic.html'],
+        [
+          componentsJsPath + '/multi-select-example.html',
+          componentsAngularPath + '/multi-select-example.component.ts',
+          componentsReactPath + '/MultiSelectExample.tsx',
+          componentsVuePath + '/MultiSelectExample.vue',
+        ],
+        [
+          componentsJsPath + '/multi-select-example-controlled.html',
+          componentsAngularPath + '/multi-select-example-controlled.component.ts',
+          componentsReactPath + '/MultiSelectExampleControlled.tsx',
+          componentsVuePath + '/MultiSelectExampleControlled.vue',
+        ],
+        [
+          componentsJsPath + '/multi-select-example-dynamic.html',
+          componentsAngularPath + '/multi-select-example-dynamic.component.ts',
+          componentsReactPath + '/MultiSelectExampleDynamic.tsx',
+          componentsVuePath + '/MultiSelectExampleDynamic.vue',
+        ],
       ],
     },
     {
