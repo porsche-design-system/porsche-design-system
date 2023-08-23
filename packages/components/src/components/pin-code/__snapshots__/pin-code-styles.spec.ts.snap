@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, theme: false 1`] = `
 ":host {
   display: block !important;
 }
@@ -52,6 +52,8 @@ input[readonly] {
 
 .pin-code-container {
   display: flex;
+  position: relative;
+  width: fit-content;
   gap: 8px;
   justify-content: start;
   flex-wrap: wrap;
@@ -61,6 +63,7 @@ input[readonly] {
   flex-direction: column;
   gap: 4px;
   position: relative;
+  margin-bottom: 4px;
 }
 .label__text {
   display: block;
@@ -145,7 +148,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, theme: false 1`] = `
 ":host {
   display: block !important;
 }
@@ -197,6 +200,8 @@ input[readonly] {
 
 .pin-code-container {
   display: flex;
+  position: relative;
+  width: fit-content;
   gap: 8px;
   justify-content: start;
   flex-wrap: wrap;
@@ -206,6 +211,7 @@ input[readonly] {
   flex-direction: column;
   gap: 4px;
   position: relative;
+  margin-bottom: 4px;
 }
 .label__text {
   display: block;
@@ -244,7 +250,219 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, theme: true 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+input {
+  display: block !important;
+  width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  margin: 0 !important;
+  outline: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 2px solid #6B6D70 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-indent: 0 !important;
+  color: #010205 !important;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  text-align: center !important;
+  opacity: 0.2 !important;
+}
+input:focus {
+  border-color: #010205 !important;
+}
+input:disabled {
+  cursor: not-allowed !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
+}
+input[readonly] {
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
+}
+::slotted(input) {
+  position: absolute !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: 0 !important;
+  opacity: 0 !important;
+}
+@media(hover:hover) {
+  input:not(:disabled):not(:focus):not([readonly]):hover {
+    border-color: #010205 !important;
+  }
+}
+
+.spinner {
+  width: 100%;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.pin-code-container {
+  display: flex;
+  position: relative;
+  width: fit-content;
+  gap: 8px;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+.label {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #949598;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+@media(hover:hover) {
+  .label__text:hover~input:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #010205 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, theme: false 1`] = `
+":host {
+  display: block !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+input {
+  display: block !important;
+  width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  margin: 0 !important;
+  outline: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 2px solid #6B6D70 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-indent: 0 !important;
+  color: #010205 !important;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  text-align: center !important;
+}
+input:focus {
+  border-color: #010205 !important;
+}
+input:disabled {
+  cursor: not-allowed !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
+}
+input[readonly] {
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
+}
+::slotted(input) {
+  position: absolute !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: 0 !important;
+  opacity: 0 !important;
+}
+@media(hover:hover) {
+  input:not(:disabled):not(:focus):not([readonly]):hover {
+    border-color: #010205 !important;
+  }
+}
+
+.pin-code-container {
+  display: flex;
+  position: relative;
+  width: fit-content;
+  gap: 8px;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+.label {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #949598;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+@media(hover:hover) {
+  .label__text:hover~input:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #010205 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, theme: false 1`] = `
 ":host {
   display: block !important;
 }
@@ -296,6 +514,8 @@ input[readonly] {
 
 .pin-code-container {
   display: flex;
+  position: relative;
+  width: fit-content;
   gap: 8px;
   justify-content: start;
   flex-wrap: wrap;
@@ -305,6 +525,7 @@ input[readonly] {
   flex-direction: column;
   gap: 4px;
   position: relative;
+  margin-bottom: 4px;
 }
 .label__text {
   display: block;
@@ -315,12 +536,13 @@ input[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #7E7F82;
+  color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text {
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #AFB0B3;
 }
 .required {
   user-select: none;
