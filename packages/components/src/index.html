@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -32,7 +32,7 @@
       }
     </style>
   </head>
-  <body>
+  <body class="playground">
     <header>
       <h1>Porsche Design System - Playground</h1>
     </header>
@@ -42,48 +42,70 @@
       <!--      <div style="height: 200px"></div>-->
       <!--      <div style="height: 200px"></div>-->
       <!--      <div style="height: 200px"></div>-->
-      <form id="myForm" method="post">
-        <p-multi-select name="name" label="Some Label" description="Some description" required>
-          <p-multi-select-option value="a">Option A</p-multi-select-option>
-          <p-multi-select-option value="b">Option B</p-multi-select-option>
-          <p-multi-select-option value="c">Option C</p-multi-select-option>
-          <p-multi-select-option value="d">Option D</p-multi-select-option>
-          <p-multi-select-option value="e">Option E</p-multi-select-option>
-          <p-multi-select-option value="f">Option F</p-multi-select-option>
-        </p-multi-select>
+      <!--      <form id="myForm" method="post">-->
+      <!--        &lt;!&ndash;        <p-fieldset label="Some legend label" required="true">&ndash;&gt;-->
+      <!--        <p-multi-select name="name" label="Some Label" description="Some description" required>-->
+      <!--          <p-multi-select-option value="a">Option A</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="b">Option B</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="c">Option C</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="d">Option D</p-multi-select-option>-->
+      <!--          &lt;!&ndash;          <p-multi-select-option value="e">Option E</p-multi-select-option>&ndash;&gt;-->
+      <!--          &lt;!&ndash;          <p-multi-select-option value="f"&ndash;&gt;-->
+      <!--          &lt;!&ndash;            >Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.&ndash;&gt;-->
+      <!--          &lt;!&ndash;            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,&ndash;&gt;-->
+      <!--          &lt;!&ndash;            ultricies nec</p-multi-select-option&ndash;&gt;-->
+      <!--          &lt;!&ndash;          >&ndash;&gt;-->
+      <!--          &lt;!&ndash;          <p-multi-select-option value="a"&ndash;&gt;-->
+      <!--          &lt;!&ndash;            >Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.&ndash;&gt;-->
+      <!--          &lt;!&ndash;            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,&ndash;&gt;-->
+      <!--          &lt;!&ndash;            ultricies nec</p-multi-select-option&ndash;&gt;-->
+      <!--          &lt;!&ndash;          >&ndash;&gt;-->
+      <!--          <p-multi-select-option value="b">Option B</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="c">Option C</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="d">Option D</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="e">Option E</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="f">Option F</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="a">Option A</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="b">Option B</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="c">Option C</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="d">Option D</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="e">Option E</p-multi-select-option>-->
+      <!--          <p-multi-select-option value="f">Option F</p-multi-select-option>-->
+      <!--        </p-multi-select>-->
+      <!--        &lt;!&ndash;        </p-fieldset>&ndash;&gt;-->
 
-        <!--        <p-multi-select name="name2" label="Some Label">-->
-        <!--          <p-multi-select-option value="Test">Test</p-multi-select-option>-->
-        <!--        </p-multi-select>-->
-        <!--        <select name="name" multiple>-->
-        <!--          <option value="a">Option A</option>-->
-        <!--          <option value="a">Option A</option>-->
-        <!--          <option value="c">Option C</option>-->
-        <!--        </select>-->
-        <!--        <p-fieldset required>-->
-        <!--          <p-select-wrapper label="Some label">-->
-        <!--            <select name="some-name" required>-->
-        <!--              <option hidden></option>-->
-        <!--              <option value="a">Option A</option>-->
-        <!--              <option value="b">Option B</option>-->
-        <!--              <option value="c">Option C</option>-->
-        <!--            </select>-->
-        <!--          </p-select-wrapper>-->
-        <!--        </p-fieldset>-->
+      <!--        &lt;!&ndash;        <p-multi-select name="name2" label="Some Label">&ndash;&gt;-->
+      <!--        &lt;!&ndash;          <p-multi-select-option value="Test">Test</p-multi-select-option>&ndash;&gt;-->
+      <!--        &lt;!&ndash;        </p-multi-select>&ndash;&gt;-->
+      <!--        &lt;!&ndash;        <select name="name" multiple>&ndash;&gt;-->
+      <!--        &lt;!&ndash;          <option value="a">Option A</option>&ndash;&gt;-->
+      <!--        &lt;!&ndash;          <option value="a">Option A</option>&ndash;&gt;-->
+      <!--        &lt;!&ndash;          <option value="c">Option C</option>&ndash;&gt;-->
+      <!--        &lt;!&ndash;        </select>&ndash;&gt;-->
+      <!--        &lt;!&ndash;        <p-fieldset required>&ndash;&gt;-->
+      <!--        &lt;!&ndash;          <p-select-wrapper label="Some label">&ndash;&gt;-->
+      <!--        &lt;!&ndash;            <select name="some-name" required>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <option hidden></option>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <option value="a">Option A</option>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <option value="b">Option B</option>&ndash;&gt;-->
+      <!--        &lt;!&ndash;              <option value="c">Option C</option>&ndash;&gt;-->
+      <!--        &lt;!&ndash;            </select>&ndash;&gt;-->
+      <!--        &lt;!&ndash;          </p-select-wrapper>&ndash;&gt;-->
+      <!--        &lt;!&ndash;        </p-fieldset>&ndash;&gt;-->
 
-        <!--        <button type="button" id="toggle">Toggle required</button>-->
+      <!--        &lt;!&ndash;        <button type="button" id="toggle">Toggle required</button>&ndash;&gt;-->
 
-        <p-select-wrapper filter="true" label="Some label" description="Some description">
-          <select name="some-name" required>
-            <option value="Test">Längere Option ausgewhält</option>
-            <option value="Test">Test 2</option>
-            <option value="Test">Test 2</option>
-            <option value="Test">Test 2</option>
-          </select>
-        </p-select-wrapper>
+      <!--              <p-select-wrapper filter="true" label="Some label" description="Some description">-->
+      <!--                <select name="some-name" required>-->
+      <!--                  <option value="Test">Längere Option ausgewhält</option>-->
+      <!--                  <option value="Test">Test 2</option>-->
+      <!--                  <option value="Test">Test 2</option>-->
+      <!--                  <option value="Test">Test 2</option>-->
+      <!--                </select>-->
+      <!--              </p-select-wrapper>-->
 
-        <button type="submit">Submit</button>
-      </form>
+      <!--        <button type="submit">Submit</button>-->
+      <!--      </form>-->
 
       <!--      <p-select-wrapper filter="true" label="Some label" description="Some description">-->
       <!--        <select name="some-name">-->
@@ -91,15 +113,77 @@
       <!--          <option value="a">Option A</option>-->
       <!--          <option value="b">Option B</option>-->
       <!--          <option value="c">Option C</option>-->
+      <!--          <option value="d">Option D</option>-->
+      <!--          <option value="e">Option E</option>-->
+      <!--          <option value="f">Option F</option>-->
+      <!--          <option value="g">Option G</option>-->
+      <!--          <option value="h">Option H</option>-->
       <!--        </select>-->
       <!--      </p-select-wrapper>-->
+      <!--      <form>-->
+      <p-multi-select name="name" label="Test">
+        <p-multi-select-option value="1">Option A</p-multi-select-option>
+        <p-multi-select-option value="2">Option B</p-multi-select-option>
+        <p-multi-select-option value="3">Option C</p-multi-select-option>
+      </p-multi-select>
+
+      <!--        <p-button type="submit">Submit</p-button>-->
+      <!--      </form>-->
+
+      <!--      <p-text>Last submitted data: none</p-text>-->
     </main>
 
     <script>
-      const multiSelect = document.querySelector('p-multi-select');
-      // const select = document.querySelector('p-select-wrapper select');
-      // const toggle = document.querySelector('#toggle');
-      const form = document.getElementById('myForm');
+      // const multiSelect = document.querySelector('p-multi-select');
+      // multiSelect.value = 3;
+      // setTimeout(() => {
+      //   multiSelect.value = 'abc';
+      // }, 1000);
+      // setTimeout(() => {
+      //   multiSelect.value = null;
+      // }, 2000);
+      // setTimeout(() => {
+      //   multiSelect.value = [1];
+      // }, 3000);
+      // const debugElement = document.querySelector('p-text');
+      // const form = document.querySelector('form');
+      // form.addEventListener('submit', (e) => {
+      //   e.preventDefault();
+      //   const formData = new FormData(form);
+      //   debugElement.innerText = `Last submitted data: ${
+      //     Array.from(formData.entries())
+      //       .map(([_, value]) => value)
+      //       .join(', ') || 'none'
+      //   }`;
+      // });
+      // form.addEventListener('submit', (e) => {
+      //   // console.log('test');
+      //   // e.preventDefault();
+      //   const formData = new FormData(form);
+      //   let formDataString = '';
+      //
+      //   console.log(Object.fromEntries(formData));
+      //
+      //   for (const [key, value] of formData.entries()) {
+      //     formDataString += `Key: ${key}, Value: ${value}\n`;
+      //   }
+      //
+      //   if (formDataString) {
+      //     debugElement.innerText = `Last submitted data:\n${formDataString}`;
+      //   } else {
+      //     debugElement.innerText = 'Last submitted data: none';
+      //   }
+      // });
+
+      // // const select = document.querySelector('p-select-wrapper select');
+      // // const toggle = document.querySelector('#toggle');
+      // const form = document.querySelector('form');
+      //
+      // multiSelect.addEventListener('update', (e) => {
+      //   // console.log(e, 'Event');
+      //   // console.log(multiSelect.value, 'Value');
+      //   multiSelect.value = e.detail.value;
+      // });
 
       // console.log(toggle);
       //
@@ -111,22 +195,32 @@
       //   }
       // });
 
-      form.addEventListener('submit', (event) => {
-        // event.preventDefault(); // Prevent the form from being submitted
-        // console.log(document.getElementById('cars').value);
-        const formData = new FormData(form);
-        // Display the key/value pairs
-        console.log(formData.values());
-        for (var pair of formData.entries()) {
-          console.log(pair[0] + ', ' + pair[1]);
-        }
-      });
+      // form.addEventListener('submit', (event) => {
+      // event.preventDefault(); // Prevent the form from being submitted
+      // console.log(document.getElementById('cars').value);
+      // const formData = new FormData(form);
+      // // Display the key/value pairs
+      // console.log(formData.values());
+      // for (var pair of formData.entries()) {
+      //   console.log(pair[0] + ', ' + pair[1]);
+      // }
+      // });
+      //
+      // setTimeout(() => {
+      //   // multiSelect.value = ['asrdfsf', 'c'];
+      //   // console.log();
+      //   // Array.from(document.querySelectorAll('p-multi-select-option')).at(-1).remove();
+      //   const option = document.createElement('p-multi-select-option');
+      //   option.value = 4;
+      //   option.textContent = 'Option 4';
+      //   multiSelect.appendChild(option);
+      // }, 2000);
 
       // setTimeout(() => {
       //   const option = document.createElement('p-multi-select-option');
-      //   option.value = 'Option 2';
-      //   option.setAttribute('value', 'Option 2');
-      //   option.selected = false;
+      //   option.value = 123;
+      //   // option.setAttribute('value', 'Option 2');
+      //   option.selected = true;
       //   option.innerText = 'Option 2';
       //   multiSelect.appendChild(option);
       //   console.log('Slot of p-multi-select was changed');
@@ -156,7 +250,7 @@
       //   console.log('Changed p-multi-select-option to disabled');
       // }, 4000);
 
-      [('componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate')].forEach((x) =>
+      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
