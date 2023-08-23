@@ -13,7 +13,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         height: 100px;
       }
       .playground {
-        padding: 1rem 0;
+        padding: 16px 0;
+      }
+      .playground::before {
+        padding: 16px 16px 0;
       }
       .change-border-radius {
         --p-carousel-border-radius: 4px;
@@ -42,7 +45,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <span></span>
     </div>
 
-    <div class="playground light" title="should render carousel on light background">
+    <div class="playground light" title="should render carousel">
       <p-carousel [heading]="'Heading'">
         <div>Slide 1</div>
         <div>Slide 2</div>
@@ -50,15 +53,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <div class="playground dark" title="should render carousel on dark background">
-      <p-carousel [heading]="'Heading'" [theme]="'dark'">
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-      </p-carousel>
-    </div>
-
-    <div class="playground light" title="should render carousel with description on light background">
+    <div class="playground light" title="should render carousel with description">
       <p-carousel [heading]="'Heading'" [description]="'Description'">
         <div>Slide 1</div>
         <div>Slide 2</div>
@@ -66,25 +61,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <div class="playground dark" title="should render carousel with description on dark background">
-      <p-carousel [heading]="'Heading'" [description]="'Description'" [theme]="'dark'">
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-      </p-carousel>
-    </div>
-
-    <div class="playground light" title="should render carousel with slotted heading on light background">
+    <div class="playground light" title="should render carousel with slotted heading">
       <p-carousel>
-        <h2 slot="heading">Slotted heading</h2>
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-      </p-carousel>
-    </div>
-
-    <div class="playground dark" title="should render carousel with slotted heading on dark background">
-      <p-carousel [theme]="'dark'">
         <h2 slot="heading">Slotted heading</h2>
         <div>Slide 1</div>
         <div>Slide 2</div>
@@ -94,7 +72,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render carousel with slotted heading and slotted description with slotted and deeply nested anchor on light background"
+      title="should render carousel with slotted heading and slotted description with slotted and deeply nested anchor"
     >
       <p-carousel>
         <h2 slot="heading">Slotted heading</h2>
@@ -110,28 +88,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <div
-      class="playground dark"
-      title="should render carousel with slotted heading and slotted description with slotted and deeply nested anchor on dark background"
-    >
-      <p-carousel [theme]="'dark'">
-        <h2 slot="heading">Slotted heading</h2>
-        <p slot="description">
-          <span>
-            Slotted description. And some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>,
-            <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
-          </span>
-        </p>
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-      </p-carousel>
-    </div>
-
-    <div
-      class="playground light"
-      title="should render carousel with align-header=center, heading and description on light background"
-    >
+    <div class="playground light" title="should render carousel with align-header=center, heading and description">
       <p-carousel
         [heading]="'Heading (align-header=center)'"
         [description]="'Description (align-header=center)'"
@@ -145,7 +102,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render carousel with align-header=center, slotted heading and slotted description on light background"
+      title="should render carousel with align-header=center, slotted heading and slotted description"
     >
       <p-carousel [alignHeader]="'center'">
         <h2 slot="heading">Slotted heading (align-header=center)</h2>
@@ -241,10 +198,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <div
-      class="playground light"
-      title="should render carousel with width=extended, heading and description on light background"
-    >
+    <div class="playground light" title="should render carousel with width=extended, heading and description">
       <p-carousel [heading]="'Heading (width=extended)'" [description]="'Description (width=extended)'" [width]="'extended'">
         <div>Slide 1</div>
         <div>Slide 2</div>
@@ -254,7 +208,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div
       class="playground light"
-      title="should render carousel with width=extended, slotted heading and slotted description on light background"
+      title="should render carousel with width=extended, slotted heading and slotted description"
     >
       <p-carousel [width]="'extended'">
         <h2 slot="heading">Slotted heading (width=extended)</h2>
@@ -395,16 +349,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <div class="playground light" title="should render carousel with rewind=false on light background">
+    <div class="playground light" title="should render carousel with rewind=false">
       <p-carousel [heading]="'rewind=false'" [rewind]="false">
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-      </p-carousel>
-    </div>
-
-    <div class="playground dark" title="should render carousel with rewind=false on dark background">
-      <p-carousel [heading]="'rewind=false'" [rewind]="false" [theme]="'dark'">
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
@@ -442,21 +388,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <div
-      class="playground dark"
-      title="should render carousel with infinite pagination with active slide in the middle on dark background"
-    >
-      <p-carousel [heading]="'Infinite pagination middle'" [activeSlideIndex]="4" [theme]="'dark'">
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-        <div>Slide 4</div>
-        <div>Slide 5</div>
-        <div>Slide 6</div>
-        <div>Slide 7</div>
-      </p-carousel>
-    </div>
-
     <div class="playground light" title="should render carousel with infinite pagination with active slide at the end">
       <p-carousel [heading]="'Infinite pagination end'" [activeSlideIndex]="5">
         <div>Slide 1</div>
@@ -468,7 +399,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-carousel>
     </div>
 
-    <div class="playground light" title="should render carousel on light background with custom border-radius">
+    <div class="playground light" title="should render carousel with custom border-radius">
       <p-carousel [heading]="'Slides with custom border radius'" class="change-border-radius">
         <div>Slide 1</div>
         <div>Slide 2</div>

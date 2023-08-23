@@ -11,7 +11,10 @@ export const CarouselPage = (): JSX.Element => {
       height: 100px;
     }
     .playground {
-      padding: 1rem 0;
+      padding: 16px 0;
+    }
+    .playground::before {
+      padding: 16px 16px 0;
     }
     .change-border-radius {
       --p-carousel-border-radius: 4px;
@@ -43,7 +46,7 @@ export const CarouselPage = (): JSX.Element => {
         <span />
       </div>
 
-      <div className="playground light" title="should render carousel on light background">
+      <div className="playground light" title="should render carousel">
         <PCarousel heading="Heading">
           <div>Slide 1</div>
           <div>Slide 2</div>
@@ -51,15 +54,7 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div className="playground dark" title="should render carousel on dark background">
-        <PCarousel heading="Heading" theme="dark">
-          <div>Slide 1</div>
-          <div>Slide 2</div>
-          <div>Slide 3</div>
-        </PCarousel>
-      </div>
-
-      <div className="playground light" title="should render carousel with description on light background">
+      <div className="playground light" title="should render carousel with description">
         <PCarousel heading="Heading" description="Description">
           <div>Slide 1</div>
           <div>Slide 2</div>
@@ -67,25 +62,8 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div className="playground dark" title="should render carousel with description on dark background">
-        <PCarousel heading="Heading" description="Description" theme="dark">
-          <div>Slide 1</div>
-          <div>Slide 2</div>
-          <div>Slide 3</div>
-        </PCarousel>
-      </div>
-
-      <div className="playground light" title="should render carousel with slotted heading on light background">
+      <div className="playground light" title="should render carousel with slotted heading">
         <PCarousel>
-          <h2 slot="heading">Slotted heading</h2>
-          <div>Slide 1</div>
-          <div>Slide 2</div>
-          <div>Slide 3</div>
-        </PCarousel>
-      </div>
-
-      <div className="playground dark" title="should render carousel with slotted heading on dark background">
-        <PCarousel theme="dark">
           <h2 slot="heading">Slotted heading</h2>
           <div>Slide 1</div>
           <div>Slide 2</div>
@@ -95,7 +73,7 @@ export const CarouselPage = (): JSX.Element => {
 
       <div
         className="playground light"
-        title="should render carousel with slotted heading and slotted description with slotted and deeply nested anchor on light background"
+        title="should render carousel with slotted heading and slotted description with slotted and deeply nested anchor"
       >
         <PCarousel>
           <h2 slot="heading">Slotted heading</h2>
@@ -111,28 +89,7 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div
-        className="playground dark"
-        title="should render carousel with slotted heading and slotted description with slotted and deeply nested anchor on dark background"
-      >
-        <PCarousel theme="dark">
-          <h2 slot="heading">Slotted heading</h2>
-          <p slot="description">
-            <span>
-              Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
-              {' '}<strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
-            </span>
-          </p>
-          <div>Slide 1</div>
-          <div>Slide 2</div>
-          <div>Slide 3</div>
-        </PCarousel>
-      </div>
-
-      <div
-        className="playground light"
-        title="should render carousel with align-header=center, heading and description on light background"
-      >
+      <div className="playground light" title="should render carousel with align-header=center, heading and description">
         <PCarousel
           heading="Heading (align-header=center)"
           description="Description (align-header=center)"
@@ -146,7 +103,7 @@ export const CarouselPage = (): JSX.Element => {
 
       <div
         className="playground light"
-        title="should render carousel with align-header=center, slotted heading and slotted description on light background"
+        title="should render carousel with align-header=center, slotted heading and slotted description"
       >
         <PCarousel alignHeader="center">
           <h2 slot="heading">Slotted heading (align-header=center)</h2>
@@ -242,10 +199,7 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div
-        className="playground light"
-        title="should render carousel with width=extended, heading and description on light background"
-      >
+      <div className="playground light" title="should render carousel with width=extended, heading and description">
         <PCarousel heading="Heading (width=extended)" description="Description (width=extended)" width="extended">
           <div>Slide 1</div>
           <div>Slide 2</div>
@@ -255,7 +209,7 @@ export const CarouselPage = (): JSX.Element => {
 
       <div
         className="playground light"
-        title="should render carousel with width=extended, slotted heading and slotted description on light background"
+        title="should render carousel with width=extended, slotted heading and slotted description"
       >
         <PCarousel width="extended">
           <h2 slot="heading">Slotted heading (width=extended)</h2>
@@ -396,16 +350,8 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div className="playground light" title="should render carousel with rewind=false on light background">
+      <div className="playground light" title="should render carousel with rewind=false">
         <PCarousel heading="rewind=false" rewind={false}>
-          <div>Slide 1</div>
-          <div>Slide 2</div>
-          <div>Slide 3</div>
-        </PCarousel>
-      </div>
-
-      <div className="playground dark" title="should render carousel with rewind=false on dark background">
-        <PCarousel heading="rewind=false" rewind={false} theme="dark">
           <div>Slide 1</div>
           <div>Slide 2</div>
           <div>Slide 3</div>
@@ -443,21 +389,6 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div
-        className="playground dark"
-        title="should render carousel with infinite pagination with active slide in the middle on dark background"
-      >
-        <PCarousel heading="Infinite pagination middle" activeSlideIndex={4} theme="dark">
-          <div>Slide 1</div>
-          <div>Slide 2</div>
-          <div>Slide 3</div>
-          <div>Slide 4</div>
-          <div>Slide 5</div>
-          <div>Slide 6</div>
-          <div>Slide 7</div>
-        </PCarousel>
-      </div>
-
       <div className="playground light" title="should render carousel with infinite pagination with active slide at the end">
         <PCarousel heading="Infinite pagination end" activeSlideIndex={5}>
           <div>Slide 1</div>
@@ -469,7 +400,7 @@ export const CarouselPage = (): JSX.Element => {
         </PCarousel>
       </div>
 
-      <div className="playground light" title="should render carousel on light background with custom border-radius">
+      <div className="playground light" title="should render carousel with custom border-radius">
         <PCarousel heading="Slides with custom border radius" className="change-border-radius">
           <div>Slide 1</div>
           <div>Slide 2</div>
