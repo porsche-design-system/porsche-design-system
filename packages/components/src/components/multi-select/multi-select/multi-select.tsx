@@ -141,10 +141,7 @@ export class MultiSelect {
     this.preventOptionUpdate = true; // Avoid unnecessary looping over options in setSelectedOptions in value watcher
     this.value = this.currentValue;
     e.stopPropagation();
-    this.update.emit({
-      value: this.currentValue,
-      name: this.name,
-    });
+    this.emitUpdateEvent();
   }
 
   @Watch('value')
@@ -333,10 +330,7 @@ export class MultiSelect {
     resetSelectedOptions(this.multiSelectOptions);
     this.value = this.currentValue;
     this.inputElement.focus();
-    this.update.emit({
-      value: this.currentValue,
-      name: this.name,
-    });
+    this.emitUpdateEvent();
     forceUpdate(this.host);
   };
 
@@ -369,6 +363,7 @@ export class MultiSelect {
         if (highlightedOption) {
           highlightedOption.selected = !highlightedOption.selected;
           this.value = this.currentValue;
+          this.emitUpdateEvent();
           forceUpdate(highlightedOption);
         }
         this.updateSrHighlightedOptionText();
@@ -412,5 +407,12 @@ export class MultiSelect {
       `${highlightedOption.textContent}${highlightedOption.selected ? ', selected' : ' not selected'} (${
         highlightedOptionIndex + 1
       } of ${this.multiSelectOptions.length})`;
+  };
+
+  private emitUpdateEvent = (): void => {
+    this.update.emit({
+      value: this.currentValue,
+      name: this.name,
+    });
   };
 }
