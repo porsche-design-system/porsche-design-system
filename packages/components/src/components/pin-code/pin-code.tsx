@@ -121,37 +121,39 @@ export class PinCode {
       <Host>
         <label class="label" htmlFor="current-input">
           {hasLabel(this.host, this.label) && (
-            <span class="label__text">
+            <span id="label" class="label__text">
               {this.label || <slot name="label" />}
               {this.required && <Required />}
             </span>
           )}
           {hasDescription(this.host, this.description) && (
-            <span class="label__text">{this.description || <slot name="description" />}</span>
+            <span id="description" class="label__text">
+              {this.description || <slot name="description" />}
+            </span>
           )}
         </label>
         <div class="pin-code-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onClick={this.onClick}>
           {this.isWithinForm && <slot name="hidden-input" />}
           {...Array.from({ length: this.length }).map((_value, index) => (
             <input
-              id={index === this.value.length ? "current-input" : ""}
+              id={index === this.value.length ? 'current-input' : null}
               type={this.type === 'number' ? 'text' : this.type}
-              aria-label={`${this.label} ${index + 1}-${this.length + 1}`}
-              // aria-describedby={}
+              aria-label={`${index + 1}-${this.length}`}
+              aria-describedby="label description state-message"
+              aria-invalid={this.state === 'error'}
               autoComplete="one-time-code"
+              maxLength={1}
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
-              maxLength={1}
               value={this.value[index]}
               disabled={this.disabled}
               required={this.required}
-              aria-invalid={this.state === 'error'}
               ref={(el) => this.pinCodeElements.push(el)}
             />
           ))}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} theme="light" host={this.host} />
+          <StateMessage id="state-message" state={this.state} message={this.message} theme="light" host={this.host} />
         )}
       </Host>
     );
@@ -174,7 +176,7 @@ export class PinCode {
     const {
       key,
       target,
-      target: {previousElementSibling, nextElementSibling},
+      target: { previousElementSibling, nextElementSibling },
     } = e;
 
     // if input is valid overwrite old value
