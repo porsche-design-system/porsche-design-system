@@ -81,6 +81,11 @@ export const setupScenario = async (
       document.querySelector('html').style.fontSize = '200%';
     });
   }
+
+  await page.setViewportSize({
+    width: viewportWidth,
+    height: await page.evaluate(() => document.body.clientHeight),
+  });
 };
 
 type Options2 = {
