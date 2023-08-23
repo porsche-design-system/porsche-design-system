@@ -49,10 +49,8 @@ export const syncNativeSelect = (
   required: boolean
 ): void => {
   setAttribute(nativeSelect, 'name', name);
-  // eslint-disable-next-line no-unused-expressions
-  disabled ? setAttribute(nativeSelect, 'disabled') : removeAttribute(nativeSelect, 'disabled');
-  // eslint-disable-next-line no-unused-expressions
-  required ? setAttribute(nativeSelect, 'required') : removeAttribute(nativeSelect, 'required');
+  (disabled ? setAttribute : removeAttribute)(nativeSelect, 'disabled');
+  (required ? setAttribute : removeAttribute)(nativeSelect, 'required');
 };
 
 export const updateNativeOptions = (nativeSelect: HTMLSelectElement, multiSelectOptions: MultiSelectOption[]): void => {
@@ -62,11 +60,8 @@ export const updateNativeOptions = (nativeSelect: HTMLSelectElement, multiSelect
 };
 
 export const updateOptionsFilterState = (searchString: string, options: MultiSelectOption[]): void => {
-  options.forEach((option) => (option.hidden = !optionIncludesSearchString(option, searchString)));
+  options.forEach((option) => (option.hidden = !option.textContent.toLowerCase().includes(searchString.toLowerCase())));
 };
-
-const optionIncludesSearchString = (option: MultiSelectOption, searchString: string): boolean =>
-  option.textContent.toLowerCase().includes(searchString.toLowerCase());
 
 export const hasFilterOptionResults = (options: MultiSelectOption[]): boolean =>
   options.some((option) => !option.hidden);
@@ -85,7 +80,7 @@ export const getSelectedOptionsString = (options: MultiSelectOption[]): string =
     .map((option) => option.textContent)
     .join(', ');
 
-const getValidOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
+export const getUsableOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
   options.filter((option) => !option.hidden && !option.disabled);
 
 export const getHighlightedOption = (options: MultiSelectOption[]): MultiSelectOption =>
@@ -120,7 +115,7 @@ export const setHighlightedOption = (option: MultiSelectOption, highlighted: boo
 export const getHighlightedOptionIndex = (options: MultiSelectOption[]): number =>
   options.indexOf(getHighlightedOption(options));
 
-const setNextOptionHighlighted = (host: HTMLElement, options: MultiSelectOption[], newIndex: number): void => {
+export const setNextOptionHighlighted = (host: HTMLElement, options: MultiSelectOption[], newIndex: number): void => {
   const oldIndex = getHighlightedOptionIndex(options);
   if (oldIndex !== -1) {
     setHighlightedOption(options[oldIndex], false);
@@ -130,12 +125,12 @@ const setNextOptionHighlighted = (host: HTMLElement, options: MultiSelectOption[
 };
 
 export const setFirstOptionHighlighted = (host: HTMLElement, options: MultiSelectOption[]): void => {
-  const validOptions = getValidOptions(options);
+  const validOptions = getUsableOptions(options);
   setNextOptionHighlighted(host, options, options.indexOf(validOptions[0]));
 };
 
 export const setLastOptionHighlighted = (host: HTMLElement, options: MultiSelectOption[]): void => {
-  const validOptions = getValidOptions(options);
+  const validOptions = getUsableOptions(options);
   setNextOptionHighlighted(host, options, options.indexOf(validOptions.at(-1)));
 };
 
@@ -150,8 +145,8 @@ export const resetSelectedOptions = (options: MultiSelectOption[]): void =>
     }
   });
 
-const getNewOptionIndex = (options: MultiSelectOption[], direction: SelectDropdownDirectionInternal): number => {
-  const validItems = getValidOptions(options);
+export const getNewOptionIndex = (options: MultiSelectOption[], direction: SelectDropdownDirectionInternal): number => {
+  const validItems = getUsableOptions(options);
   const validMax = validItems.length - 1;
   if (validMax < 0) {
     return;
@@ -181,7 +176,7 @@ export const updateHighlightedOption = (
  * @param {HTMLElement} element - The element to scroll to.
  * @returns {void}
  */
-const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
+export const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
   const { maxHeight } = getComputedStyle(scrollElement);
   const hostElementHeight = parseInt(maxHeight, 10);
   if (scrollElement.scrollHeight > hostElementHeight) {
