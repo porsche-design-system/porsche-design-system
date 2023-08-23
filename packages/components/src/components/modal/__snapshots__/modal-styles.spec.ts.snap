@@ -67,7 +67,7 @@ h2 {
   margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -166,7 +166,7 @@ h2 {
   margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -274,7 +274,7 @@ h2 {
   margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -388,7 +388,7 @@ h2 {
   margin: 0;
   border-radius: 0;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -481,7 +481,7 @@ h2 {
   margin: 0;
   border-radius: 0;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -580,7 +580,7 @@ h2 {
   margin: 0;
   border-radius: 0;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -688,7 +688,7 @@ h2 {
   margin: 0;
   border-radius: 0;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -846,7 +846,7 @@ h2 {
   margin: 0;
   border-radius: 0;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -880,7 +880,7 @@ h2 {
     margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
     border-radius: 8px;
   }
-  .root:focus::before {
+  .root:focus::after {
     border-radius: 12px;
     border-color: #FBFCFF;
     top: -4px;
@@ -898,7 +898,7 @@ h2 {
     margin: 0;
     border-radius: 0;
   }
-  .root:focus::before {
+  .root:focus::after {
     border-radius: 0;
     border-color: #010205;
     top: 0;
@@ -916,7 +916,7 @@ h2 {
     margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
     border-radius: 8px;
   }
-  .root:focus::before {
+  .root:focus::after {
     border-radius: 12px;
     border-color: #FBFCFF;
     top: -4px;
@@ -934,7 +934,7 @@ h2 {
     margin: 0;
     border-radius: 0;
   }
-  .root:focus::before {
+  .root:focus::after {
     border-radius: 0;
     border-color: #010205;
     top: 0;
@@ -952,7 +952,7 @@ h2 {
     min-height: auto;
     border-radius: 8px;
   }
-  .root:focus::before {
+  .root:focus::after {
     border-radius: 12px;
     border-color: #FBFCFF;
     top: -4px;
@@ -1039,7 +1039,7 @@ h2 {
   margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -1145,7 +1145,7 @@ h2 {
   margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -1239,7 +1239,7 @@ h2 {
   margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -1351,7 +1351,7 @@ h2 {
   margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -1458,7 +1458,7 @@ h2 {
   margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
   border-radius: 8px;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -1571,7 +1571,7 @@ h2 {
   margin: 0;
   border-radius: 0;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -1663,7 +1663,7 @@ h2 {
   margin: 0;
   border-radius: 0;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -1761,7 +1761,7 @@ h2 {
   margin: 0;
   border-radius: 0;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;
@@ -1868,7 +1868,7 @@ h2 {
   margin: 0;
   border-radius: 0;
 }
-.root:focus::before {
+.root:focus::after {
   content: "";
   position: fixed;
   border: 2px solid;

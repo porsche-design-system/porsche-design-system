@@ -99,7 +99,7 @@ attribute.
 
 ## Sticky Footer
 
-If you need a footer that is always visible for example with a call-to-action button, you can use provide a named
+If you need a footer that is always visible, for example with a call-to-action button, you can use a named 
 `slot="footer"`.
 
 <Playground :markup="stickyFooter"></Playground>

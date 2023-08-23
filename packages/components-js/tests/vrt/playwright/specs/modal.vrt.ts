@@ -6,13 +6,10 @@ test.describe('should have no visual regression', async () => {
     scenario: async (page) => {
       await page.mouse.click(0, 0); // click top left corner of the page to remove focus on modal
 
-      await page.evaluate(() => {
-        // page is initially 1px high and then resized which affects scroll based behavior
-        window.addEventListener('resize', () => {
-          const modal = Array.from(document.querySelectorAll('p-modal')).pop();
-          modal.scrollBy({ top: 5 });
-          modal.scrollBy({ top: -5 });
-        });
+      // scroll modal once down and up to apply box-shadow
+      await page.$eval('.scroll', async (scrollElement) => {
+        scrollElement.scrollBy({ top: 5 });
+        scrollElement.scrollBy({ top: -5 });
       });
     },
   });
