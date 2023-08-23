@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.6.0-rc.0] - 2023-08-23
+
 #### Added
 
 - New value `aria-current` for `aria` property for linked components (`Link`, `Link Pure`, `Link Tile`, `Crest`,
