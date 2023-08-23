@@ -9,42 +9,42 @@ export default [
   {
     input,
     output: {
-      dir: `${outputDir}/js`,
+      dir: `${outputDir}/cjs`,
       format: 'cjs',
+      entryFileNames: '[name].cjs',
       preserveModules: true,
-      plugins: [
-        generatePackageJson({
-          baseContents: {
-            main: 'index.js',
-            module: 'esm/index.js',
-            types: 'index.d.ts',
-            sideEffects: false,
-          },
-        }),
-      ],
     },
-    plugins: [
-      typescript({
-        declaration: true,
-        declarationDir: `${outputDir}/js`,
-        exclude: '**.spec.ts',
-        rootDir: 'src/js',
-      }),
-    ],
+    plugins: [typescript()],
   },
   {
     input,
     output: {
-      dir: `${outputDir}/js/esm`,
+      dir: `${outputDir}/esm`,
       format: 'esm',
+      entryFileNames: '[name].mjs',
       preserveModules: true,
     },
     plugins: [
+      typescript({
+        declaration: true,
+        declarationDir: `${outputDir}/esm`,
+        exclude: '**.spec.ts',
+        rootDir: 'src/js',
+      }),
       copy({
-        targets: [{ src: `src/scss/**/*.scss`, dest: outputDir }],
+        targets: [{ src: ['src/scss/**/*.scss', 'src/_index.scss'], dest: outputDir }],
         flatten: false,
       }),
-      typescript(),
+      // seems to be needed at least for webpack 4 in storefront
+      generatePackageJson({
+        outputFolder: outputDir,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
+      }),
     ],
   },
 ];

@@ -36,9 +36,8 @@ export const getIndexHtml = (
   sharedImportKeys: SharedImportKey[],
   pdsVersion: string
 ): string => {
-  const porscheDesignSystemLoaderScript = `<script src="${
-    isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? 'node_modules' : '.'
-  }/@porsche-design-system/components-js/index.js"></script>`;
+  const basePath = isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? 'node_modules' : '.';
+  const porscheDesignSystemLoaderScript = `<script src="${basePath}/@porsche-design-system/components-js/esm/index.mjs"></script>`;
   const externalScripts = externalDependencies
     .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
     .join('\n    ');
@@ -68,10 +67,11 @@ export const getIndexHtml = (
 };
 
 export const getIndexJs = (pdsVersion: string): string => {
+  // workaround to initialize local package
   return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion)
     ? ''
     : `import * as porscheDesignSystem from './@porsche-design-system/components-js';
-window.porscheDesignSystem = porscheDesignSystem`;
+window.porscheDesignSystem = porscheDesignSystem;`; // appears to be using cjs build
 };
 
 export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {

@@ -7,128 +7,141 @@ import type { FirstAndLastFocusableElement } from '../../utils/focusTrap';
 
 jest.mock('../../utils/dom');
 
-describe('modal', () => {
-  let component: Modal;
+let component: Modal;
+
+beforeEach(() => {
+  component = new Modal();
+  component.host = document.createElement('p-modal');
+  component.host.attachShadow({ mode: 'open' });
+  component['closeBtn'] = document.createElement('button');
+  component['dialog'] = document.createElement('div');
+});
+
+describe('componentDidLoad', () => {
+  const focusableElements: FirstAndLastFocusableElement = [
+    document.createElement('button'),
+    document.createElement('button'),
+  ];
 
   beforeEach(() => {
-    component = new Modal();
-    component.host = document.createElement('p-modal');
-    component.host.attachShadow({ mode: 'open' });
-    component['closeBtn'] = document.createElement('button');
-    component['dialog'] = document.createElement('div');
+    jest.spyOn(focusTrapUtils, 'getFirstAndLastFocusableElement').mockImplementation(() => focusableElements);
+    jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
   });
 
-  describe('componentDidLoad', () => {
-    const focusableElements: FirstAndLastFocusableElement = [
-      document.createElement('button'),
-      document.createElement('button'),
-    ];
+  it('should call this.updateFocusTrap() with correct parameters if modal is open', () => {
+    const spy = jest.spyOn(component, 'updateFocusTrap' as any);
+    component.open = true;
+    component.componentDidLoad();
 
-    beforeEach(() => {
-      jest.spyOn(focusTrapUtils, 'getFirstAndLastFocusableElement').mockImplementation(() => focusableElements);
-      jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
-    });
-
-    it('should call setFocusTrap() with correct parameters if modal is open', () => {
-      const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
-      component.open = true;
-      component.componentDidLoad();
-
-      expect(utilsSpy).toBeCalledWith(component.host, true, component['dismissBtn'], component['dismissModal']);
-    });
-
-    it('should call setScrollLock() with correct parameters if modal is open', () => {
-      const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
-      component.open = true;
-      component.componentDidLoad();
-
-      expect(utilsSpy).toBeCalledWith(true);
-    });
-
-    it('should not call setScrollLock() if modal is not open', () => {
-      const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
-      component.componentDidLoad();
-
-      expect(utilsSpy).not.toBeCalled();
-    });
+    expect(spy).toBeCalledWith(true);
   });
 
-  describe('componentDidRender', () => {
-    it('should focus dialog if modal is open', () => {
-      component.open = true;
-      const spy = jest.spyOn(component['dialog'], 'focus');
+  it('should not call this.updateFocusTrap() if modal is not open', () => {
+    const spy = jest.spyOn(component, 'updateFocusTrap' as any);
+    component.componentDidLoad();
 
-      component.componentDidRender();
+    expect(spy).not.toBeCalled();
+  });
+});
 
-      expect(spy).toBeCalledWith();
-    });
-    it('should not focus dialog if modal is not open', () => {
-      component.open = false;
-      const spy = jest.spyOn(component['dialog'], 'focus');
+describe('componentDidRender', () => {
+  it('should focus dialog if modal is open', () => {
+    component.open = true;
+    const spy = jest.spyOn(component['dialog'], 'focus');
 
-      component.componentDidRender();
+    component.componentDidRender();
 
-      expect(spy).not.toBeCalled();
-    });
+    expect(spy).toBeCalledWith();
+  });
+  it('should not focus dialog if modal is not open', () => {
+    component.open = false;
+    const spy = jest.spyOn(component['dialog'], 'focus');
+
+    component.componentDidRender();
+
+    expect(spy).not.toBeCalled();
+  });
+});
+
+describe('render', () => {
+  beforeEach(() => {
+    jest.spyOn(global.console, 'warn').mockImplementation();
   });
 
-  describe('render', () => {
-    beforeEach(() => {
-      jest.spyOn(global.console, 'warn').mockImplementation();
-    });
+  it('should call warnIfAriaAndHeadingPropsAreUndefined() with correct parameters when open="true"', () => {
+    const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
+    component.open = true;
+    component.render();
 
-    it('should call warnIfAriaAndHeadingPropsAreUndefined() with correct parameters when open="true"', () => {
-      const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
-      component.open = true;
-      component.render();
-
-      expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toBeCalledWith(
-        component.host,
-        component.heading,
-        component.aria
-      );
-    });
-
-    it('should not call warnIfAriaAndHeadingPropsAreUndefined() when open="false"', () => {
-      const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
-      component.open = false;
-      component.render();
-
-      expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).not.toBeCalled();
-    });
-
-    it('should not call hasNamedSlot() when heading is provided', () => {
-      const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
-      component.heading = 'Some Heading';
-      component.render();
-
-      expect(hasNamedSlotSpy).not.toBeCalled();
-    });
-
-    it('should call hasNamedSlot() with correct parameters when no heading is provided', () => {
-      const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
-      const header = document.createElement('header');
-      header.slot = 'heading';
-      component.host.appendChild(header);
-      component.render();
-
-      expect(hasNamedSlotSpy).toBeCalledWith(component.host, 'heading');
-    });
+    expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toBeCalledWith(component.host, component.heading, component.aria);
   });
 
-  describe('disconnectedCallback', () => {
-    it('should call setFocusTrap() with correct parameters', () => {
-      const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
-      component.disconnectedCallback();
+  it('should not call warnIfAriaAndHeadingPropsAreUndefined() when open="false"', () => {
+    const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
+    component.open = false;
+    component.render();
 
-      expect(utilsSpy).toBeCalledWith(component.host, false);
-    });
+    expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).not.toBeCalled();
+  });
 
-    it('should call setScrollLock() with correct parameters', () => {
-      const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
-      component.disconnectedCallback();
+  it("should not call hasNamedSlot(this.host, 'heading') when heading is provided via prop", () => {
+    const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
+    component.heading = 'Some Heading';
+    component.render();
 
-      expect(utilsSpy).toBeCalledWith(false);
-    });
+    expect(hasNamedSlotSpy).not.toBeCalledWith(component.host, 'heading');
+    expect(hasNamedSlotSpy).toBeCalledWith(component.host, 'footer');
+    expect(hasNamedSlotSpy).toBeCalledTimes(1);
+  });
+
+  it('should call hasNamedSlot() with correct parameters when no heading is provided via prop', () => {
+    const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
+    const header = document.createElement('header');
+    header.slot = 'heading';
+    component.host.appendChild(header);
+    component.render();
+
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(1, component.host, 'heading');
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(2, component.host, 'footer');
+    expect(hasNamedSlotSpy).toBeCalledTimes(2);
+  });
+});
+
+describe('disconnectedCallback', () => {
+  it('should call this.updateFocusTrap() with correct parameters', () => {
+    const spy = jest.spyOn(component, 'updateFocusTrap' as any);
+    component.disconnectedCallback();
+
+    expect(spy).toBeCalledWith(false);
+  });
+});
+
+describe('this.updateFocusTrap()', () => {
+  it('should call setFocusTrap() with correct parameters for isOpen = true', () => {
+    const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
+    component['updateFocusTrap'](true);
+
+    expect(utilsSpy).toBeCalledWith(component.host, true, component['dismissBtn'], component['dismissModal']);
+  });
+
+  it('should call setScrollLock() with correct parameters for isOpen = true', () => {
+    const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
+    component['updateFocusTrap'](true);
+
+    expect(utilsSpy).toBeCalledWith(true);
+  });
+
+  it('should call setFocusTrap() with correct parameters for isOpen = false', () => {
+    const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
+    component['updateFocusTrap'](false);
+
+    expect(utilsSpy).toBeCalledWith(component.host, false, component['dismissBtn'], component['dismissModal']);
+  });
+
+  it('should call setScrollLock() with correct parameters for isOpen = false', () => {
+    const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
+    component['updateFocusTrap'](false);
+
+    expect(utilsSpy).toBeCalledWith(false);
   });
 });

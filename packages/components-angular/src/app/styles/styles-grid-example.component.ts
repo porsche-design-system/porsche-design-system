@@ -5,7 +5,7 @@ import type { AccordionUpdateEvent } from '@porsche-design-system/components-ang
   selector: 'page-styles-grid-example',
   styles: [
     `
-      @use '@porsche-design-system/components-js/styles' as *;
+      @use '@porsche-design-system/components-angular/styles' as *;
 
       // Visualize Grid
       .visualize-grid {

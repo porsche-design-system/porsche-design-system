@@ -144,12 +144,13 @@ export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: numb
   // Only update bullets around newIndex
   for (let i = newIndex - INFINITE_BULLET_AMOUNT - 1; i < newIndex + INFINITE_BULLET_AMOUNT + 1; i++) {
     const index = (i + amountOfPages) % amountOfPages;
-    paginationEl.children[index].classList[
-      isInfiniteBulletLeft(index) || isInfiniteBulletRight(index) ? 'add' : 'remove'
-    ](bulletInfiniteClass);
+    paginationEl.children[index].classList.toggle(
+      bulletInfiniteClass,
+      isInfiniteBulletLeft(index) || isInfiniteBulletRight(index)
+    );
   }
   // Add/Remove class to pagination in order to style the first bullets when the index is in isStartCase
-  paginationEl.classList[isStartCase ? 'add' : 'remove'](paginationInfiniteStartCaseClass);
+  paginationEl.classList.toggle(paginationInfiniteStartCaseClass, isStartCase);
 };
 
 export const updatePagination = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
