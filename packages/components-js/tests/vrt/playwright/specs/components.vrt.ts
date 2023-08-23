@@ -1,9 +1,10 @@
 import { expect, test } from '@playwright/test';
 import { baseSchemes, baseThemes, baseViewportWidth, baseViewportWidths, setupScenario } from '../helpers';
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const components = TAG_NAMES.filter((el, i, arr) => {
-  return el.endsWith('wrapper') || !el.startsWith(arr[i - 1]);
+  return !/item$|-table-|-select-wrapper-/.test(el);
 })
   .map((el) => {
     return el.substring(2);
@@ -20,6 +21,11 @@ components.forEach((component) => {
       test(`should have no visual regression for viewport ${baseViewportWidth} and theme ${theme}`, async ({
         page,
       }) => {
+        test.skip(
+          !getComponentMeta(`p-${component}` as TagName).isThemeable && theme === 'dark',
+          'This component has no theme support.'
+        );
+
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: theme,
         });
@@ -30,7 +36,7 @@ components.forEach((component) => {
 
   // executed in Chrome only
   test.describe(component, async () => {
-    test.skip(({ browserName }) => browserName !== 'chromium');
+    test.skip(({ browserName }) => browserName !== 'chromium', 'CDP is available in Chromium only.');
 
     baseViewportWidths.forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
@@ -43,6 +49,8 @@ components.forEach((component) => {
       test(`should have no visual regression for viewport ${baseViewportWidth} and theme auto with prefers-color-scheme ${scheme}`, async ({
         page,
       }) => {
+        test.skip(!getComponentMeta(`p-${component}` as TagName).isThemeable, 'This component has no theme support.');
+
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: 'auto',
           prefersColorScheme: scheme,

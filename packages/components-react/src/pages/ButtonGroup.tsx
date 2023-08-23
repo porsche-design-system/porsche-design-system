@@ -24,7 +24,6 @@ export const ButtonGroupPage = (): JSX.Element => {
       <div
         className="playground light"
         title="should render button-group with p-button-pure, long text p-button and p-button with limited max-width and responsive direction"
-        style={{ background: 'deeppink' }}
       >
         <PButtonGroup direction={{ base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' }}>
           <PButtonPure>Some label</PButtonPure>

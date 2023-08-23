@@ -24,7 +24,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div
       class="playground light"
       title="should render button-group with p-button-pure, long text p-button and p-button with limited max-width and responsive direction"
-      style="background: deeppink"
     >
       <p-button-group [direction]="{ base: 'row', xs: 'column', s: 'row', m: 'column', l: 'row', xl: 'column' }">
         <p-button-pure>Some label</p-button-pure>
