@@ -30,7 +30,7 @@ export const getComponentCss = (
       textAlign: 'center',
       width: inputSize,
       ...(isLoading && {
-        opacity: 0.4,
+        opacity: 0.2,
       }),
     })
   );
