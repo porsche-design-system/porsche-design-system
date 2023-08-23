@@ -2092,9 +2092,6 @@ exports[`should match snapshot 1`] = `
       "type": "number",
       "value": null,
     },
-    "requiredProps": [
-      "name",
-    ],
     "styling": "jss",
   },
   "p-popover": {
