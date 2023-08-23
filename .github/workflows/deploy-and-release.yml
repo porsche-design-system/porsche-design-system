@@ -107,11 +107,21 @@ jobs:
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
+      - name: 'Restore Components Angular Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-angular-prod-build
+          path: ./packages/components-angular/dist/angular-wrapper
       - name: 'Restore Components React Build Artifact'
         uses: actions/download-artifact@v3
         with:
           name: components-react-prod-build
           path: ./packages/components-react/dist/react-wrapper
+      - name: 'Restore Components Vue Build Artifact'
+        uses: actions/download-artifact@v3
+        with:
+          name: components-vue-prod-build
+          path: ./packages/components-vue/dist/vue-wrapper
       - name: 'Restore Chunks Manifest Build Artifact'
         uses: actions/download-artifact@v3
         with:

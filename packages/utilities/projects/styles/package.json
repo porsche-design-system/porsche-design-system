@@ -4,9 +4,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "main": "dist/js/index.js",
-  "module": "dist/js/esm/index.js",
-  "types": "dist/js/types/index.d.ts",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/esm/index.d.ts",
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean:build && yarn build:fontFace && yarn build:bundle",

@@ -13,11 +13,20 @@ const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
   const bundle: { [path: string]: string } = {};
   const distSubFolder = framework === 'js' ? 'components-wrapper' : `${framework}-wrapper`;
 
-  // TODO: could filter out more irrelevant sub packages like cjs builds
-  // angular builds are irrelevant since they can be referenced relatively because of ng-packagr
-  const ignoredSubPackages = ['ssr', 'jsdom-polyfill', 'partials', 'testing', 'esm2020', 'fesm2015', 'fesm2020'];
+  const ignoredSubPackages = [
+    'bin',
+    'ssr',
+    'jsdom-polyfill',
+    'partials',
+    'testing',
+    'esm2020', // angular builds are irrelevant since the package can't be loaded from local package
+    'fesm2015', // so we just initialize components-js manually
+    'fesm2020',
+  ];
   const files = globby
-    .sync(`../components-${framework}/dist/${distSubFolder}/**/*.{js,mjs,ts,json,scss}`)
+    // stackblitz doesn't use esm builds (.mjs) files, so we can ignore them
+    // which also results in smaller json manifest and faster stackblitz
+    .sync(`../components-${framework}/dist/${distSubFolder}/**/*.{js,cjs,d.ts,json,scss}`)
     .filter(
       (filePath) =>
         !ignoredSubPackages.some((subPackage) =>

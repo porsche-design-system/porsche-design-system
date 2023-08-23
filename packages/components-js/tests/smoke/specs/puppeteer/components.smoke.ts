@@ -1,5 +1,5 @@
 import type { Page } from 'puppeteer';
-import { setContentWithDesignSystem } from '../helpers';
+import { setContentWithDesignSystem } from './helpers';
 import { getComponentChunkLinks } from '@porsche-design-system/components-js/partials';
 
 describe('components', () => {

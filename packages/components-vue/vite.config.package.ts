@@ -30,18 +30,29 @@ export default defineConfig({
     lib: {
       entry: path.resolve(input),
       name: '@porsche-design-system/components-vue',
-      formats: ['es'],
-      fileName: (format, entryName) => `${entryName}.js`,
     },
     rollupOptions: {
       external: ['vue', '@porsche-design-system/components-js'],
-      output: {
-        dir: destinationDir,
-        preserveModules: true,
-        globals: {
-          vue: 'Vue',
+      output: [
+        {
+          dir: `${destinationDir}/esm`,
+          format: 'esm',
+          entryFileNames: '[name].mjs',
+          preserveModules: true,
+          globals: {
+            vue: 'Vue',
+          },
         },
-      },
+        {
+          dir: `${destinationDir}/cjs`,
+          format: 'cjs',
+          entryFileNames: '[name].cjs',
+          preserveModules: true,
+          globals: {
+            vue: 'Vue',
+          },
+        },
+      ],
     },
   },
 });
