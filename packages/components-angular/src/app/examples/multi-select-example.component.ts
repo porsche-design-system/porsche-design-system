@@ -1,0 +1,29 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'page-multi-select-example',
+  template: `
+    <form (submit)="handleSubmit($event)">
+      <p-multi-select name="options">
+        <p-multi-select-option value="a">Option A</p-multi-select-option>
+        <p-multi-select-option value="b">Option B</p-multi-select-option>
+        <p-multi-select-option value="c">Option C</p-multi-select-option>
+        <p-multi-select-option value="d">Option D</p-multi-select-option>
+        <p-multi-select-option value="e">Option E</p-multi-select-option>
+        <p-multi-select-option value="f">Option F</p-multi-select-option>
+      </p-multi-select>
+      <button type="submit">Submit</button>
+    </form>
+
+    <p>Last submitted data: {{ lastSubmittedData }}</p>
+  `,
+})
+export class MultiSelectExampleComponent {
+  lastSubmittedData: string = 'none';
+
+  handleSubmit(e: Event): void {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    this.lastSubmittedData = Array.from(formData.values()).join(', ') || 'none';
+  }
+}
