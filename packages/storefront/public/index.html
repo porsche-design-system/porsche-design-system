@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -16,7 +16,7 @@
     <% if (process.env.NODE_ENV === 'production') { %>
     <%= require('@porsche-design-system/components-js/partials').getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }) %>
     <%= require('@porsche-design-system/components-js/partials').getFontFaceStylesheet() %>
-    <%= require('@porsche-design-system/components-js/partials').getComponentChunkLinks({ components: ['accordion', 'divider', 'button-pure', 'link', 'link-pure', 'marque', 'icon', 'text', 'headline', 'grid', 'flex' ] }) %>
+    <%= require('@porsche-design-system/components-js/partials').getComponentChunkLinks({ components: ['accordion', 'divider', 'button-pure', 'link', 'link-pure', 'wordmark', 'icon', 'text', 'headline', 'grid', 'flex' ] }) %>
     <%= require('@porsche-design-system/components-js/partials').getMetaTagsAndIconLinks({ appTitle: 'Porsche Design System' }) %>
     <%= require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['plus', 'arrow-right', 'minus' ] }) %>
     <% } else { %>

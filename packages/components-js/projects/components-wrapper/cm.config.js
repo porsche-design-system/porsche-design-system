@@ -34,31 +34,30 @@ module.exports = {
   deployUrl: deployUrl,
   script: `${cdnDistPath}/porsche-design-system.v*.js`,
   format,
-  ...(!isIifeBuild &&
-    !isEsmBuild && {
-      copyFiles: [
-        {
-          pattern: '../components/CHANGELOG.md',
-          targetDirectory,
-        },
-        {
-          pattern: './projects/components-wrapper/package.json',
-          targetDirectory,
-        },
-        {
-          pattern: '../../LICENSE',
-          targetDirectory,
-        },
-        {
-          pattern: '../../OSS_NOTICE',
-          targetDirectory,
-        },
-        {
-          pattern: './projects/components-wrapper/README.md',
-          targetDirectory,
-        },
-      ],
-    }),
+  ...(isEsmBuild && {
+    copyFiles: [
+      {
+        pattern: '../components/CHANGELOG.md',
+        targetDirectory,
+      },
+      {
+        pattern: './projects/components-wrapper/package.json',
+        targetDirectory,
+      },
+      {
+        pattern: '../../LICENSE',
+        targetDirectory,
+      },
+      {
+        pattern: '../../OSS_NOTICE',
+        targetDirectory,
+      },
+      {
+        pattern: './projects/components-wrapper/README.md',
+        targetDirectory,
+      },
+    ],
+  }),
   ...(!isIifeBuild && {
     additionalEntryFiles: [
       {

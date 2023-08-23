@@ -9,12 +9,13 @@
     "build:vue-wrapper": "yarn build:vue-wrapper:lib && yarn build:vue-wrapper:typings",
     "build:vue-wrapper:lib": "vite build -c vite.config.package.ts",
     "build:vue-wrapper:typings": "vue-tsc --emitDeclarationOnly && ts-node scripts/addDeprecatedAnnotations.ts",
-    "build:subPackages": "yarn build:subPackages:lib && yarn build:subPackages:typings:testing && yarn build:subPackages:typings",
+    "build:subPackages": "yarn build:subPackages:lib && yarn build:subPackages:typings",
     "build:subPackages:lib": "yarn rollup -c ./projects/vue-wrapper/rollup.config.js --bundleConfigAsCjs",
-    "build:subPackages:typings": "yarn build:subPackages:typings:partials && yarn build:subPackages:typings:styles",
+    "build:subPackages:typings": "yarn build:subPackages:typings:jsdom-polyfill && yarn build:subPackages:typings:partials && yarn build:subPackages:typings:testing && yarn build:subPackages:typings:styles",
+    "build:subPackages:typings:jsdom-polyfill": "tsc projects/vue-wrapper/src/jsdom-polyfill/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/jsdom-polyfill --types node",
     "build:subPackages:typings:partials": "tsc projects/vue-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials --types node",
     "build:subPackages:typings:testing": "tsc projects/vue-wrapper/src/testing/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/testing --types node",
-    "build:subPackages:typings:styles": "tsc projects/vue-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles --types node",
+    "build:subPackages:typings:styles": "tsc projects/vue-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/esm --types node",
     "build-app": "vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.ts",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore --ignore-pattern **/tests/* ",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
@@ -27,7 +28,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.5.0",
+    "@porsche-design-system/components-vue": "3.6.0-rc.0",
     "vue": "^3.3.4",
     "vue-imask": "^7.1.3",
     "vue-router": "^4.2.4"

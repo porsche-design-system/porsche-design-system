@@ -12,6 +12,7 @@
   "compilerOptions": {
     "outDir": "dist/vue-wrapper",
     "declaration": true,
+    "declarationDir": "dist/vue-wrapper/esm",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./projects/vue-wrapper/src/public-api.ts"]
