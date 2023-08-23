@@ -22,13 +22,13 @@ const replaceCdnBaseUrlDynamicPlaceholder = () => {
   const componentsJsUmdFilePath = require.resolve('@porsche-design-system/components-js');
   const packageDir = path.resolve(componentsJsUmdFilePath, '../..');
   const componentsJsEsmFilePath = path.resolve(packageDir, 'esm/index.mjs');
-  const componentsJsLegacyFilePath = path.resolve(packageDir, 'index-legacy.js');
+  const componentsJsLegacyFilePath = path.resolve(packageDir, 'index.js');
   const componentsJsIifeFilePath = path.resolve(packageDir, '../..', npmDistTmpSubPath, 'index.js');
 
   [
     componentsJsUmdFilePath, // core loader umd build
     componentsJsEsmFilePath, // core loader esm build
-    componentsJsLegacyFilePath, // same es esm build but different extension for webpack 4
+    componentsJsLegacyFilePath, // same as umd build under cjs folder but different file extension for webpack 4
     componentsJsIifeFilePath, // temporary core loader used for getLoaderScript partial
     globby.sync(path.resolve(packageDir, '../components/porsche-design-system.v*'))[0], // core chunk on cdn
   ].forEach(readAndWriteFile);
