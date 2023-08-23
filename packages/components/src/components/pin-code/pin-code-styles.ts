@@ -26,10 +26,10 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-          display: 'block',
-          ...hostHiddenStyles,
-        }),
-      ...inputStyles,
+        display: 'block',
+        ...hostHiddenStyles,
+      }),
+      ...addImportantToEachRule(inputStyles),
       '::slotted(input)': addImportantToEachRule({
         position: 'absolute',
         height: inputSize,
