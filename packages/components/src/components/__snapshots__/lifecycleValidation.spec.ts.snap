@@ -394,6 +394,7 @@ exports[`should call validateProps() with correct parameters via render for p-pi
   "hideLabel": "breakpoint",
   "label": "string",
   "length": "number",
+  "loading": "boolean",
   "message": "string",
   "name": "string",
   "required": "boolean",
