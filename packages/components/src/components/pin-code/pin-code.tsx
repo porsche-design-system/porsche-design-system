@@ -5,10 +5,12 @@ import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
+  getPrefixedTagNames,
   hasDescription,
   hasLabel,
   hasMessage,
   hasPropValueChanged,
+  isDisabledOrLoading,
   isWithinForm,
   THEMES,
   validateProps,
@@ -32,6 +34,7 @@ const propTypes: PropTypes<typeof PinCode> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   state: AllowedTypes.oneOf<PinCodeState>(FORM_STATES),
   disabled: AllowedTypes.boolean,
+  loading: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
   message: AllowedTypes.string,
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
@@ -66,6 +69,9 @@ export class PinCode {
 
   /** Disables the Pin Code. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
+
+  /** Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active. */
+  @Prop() public loading?: boolean = false;
 
   /** Marks the Pin Code as required. */
   @Prop() public required?: boolean = false;
@@ -109,13 +115,15 @@ export class PinCode {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.disabled, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.disabled, this.loading, this.theme);
 
     // reset array of input elements
     this.pinCodeElements = [];
     if (this.isWithinForm) {
       syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
     }
+
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
@@ -133,6 +141,14 @@ export class PinCode {
           )}
         </label>
         <div class="pin-code-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onClick={this.onClick}>
+          {this.loading && (
+            <PrefixedTagNames.pSpinner
+              class="spinner"
+              size="inherit"
+              theme={this.theme}
+              aria={{ 'aria-label': 'Loading state:' }}
+            />
+          )}
           {this.isWithinForm && <slot name="hidden-input" />}
           {...Array.from({ length: this.length }).map((_value, index) => (
             <input
@@ -141,12 +157,13 @@ export class PinCode {
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby="label description state-message"
               aria-invalid={this.state === 'error'}
+              aria-busy={this.loading}
               autoComplete="one-time-code"
               maxLength={1}
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
               value={this.value[index]}
-              disabled={this.disabled}
+              disabled={isDisabledOrLoading(this.disabled, this.loading)}
               required={this.required}
               ref={(el) => this.pinCodeElements.push(el)}
             />

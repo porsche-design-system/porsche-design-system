@@ -1159,6 +1159,10 @@ export namespace Components {
          */
         "length"?: number;
         /**
+          * Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
           * The message styled depending on validation state.
          */
         "message"?: string;
@@ -3359,6 +3363,10 @@ declare namespace LocalJSX {
           * Number of characters of the Pin Code.
          */
         "length"?: number;
+        /**
+          * Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
         /**
           * The message styled depending on validation state.
          */

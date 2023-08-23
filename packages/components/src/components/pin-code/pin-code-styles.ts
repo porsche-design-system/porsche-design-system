@@ -1,25 +1,37 @@
 import type { FormState } from '../../utils/form/form-state';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { getCss, mergeDeep } from '../../utils';
+import { getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { getStylesWithoutSlottedSelector } from './pin-code-utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
-import { borderWidthBase, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
+import {
+  borderWidthBase,
+  fontLineHeight,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+} from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isDisabled: boolean,
+  isLoading: boolean,
   theme: Theme
 ): string => {
+  const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
   const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // we need 10px additionally so input height becomes 54px
-  const labelStyles = getStylesWithoutSlottedSelector(getLabelStyles('input', isDisabled, hideLabel, state, theme));
+  const labelStyles = getStylesWithoutSlottedSelector(
+    getLabelStyles('input', disabledOrLoading, hideLabel, state, theme)
+  );
   const inputStyles = getStylesWithoutSlottedSelector(
     getBaseChildStyles('input', state, theme, {
       textAlign: 'center',
       width: inputSize,
+      ...(isLoading && {
+        opacity: 0.4,
+      }),
     })
   );
 
@@ -37,8 +49,21 @@ export const getComponentCss = (
         opacity: 0,
       }),
     },
+    ...(isLoading && {
+      spinner: {
+        width: '100%',
+        height: inputSize,
+        pointerEvents: 'none',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+      },
+    }),
     'pin-code-container': {
       display: 'flex',
+      position: 'relative',
+      width: 'fit-content',
       gap: spacingStaticSmall,
       justifyContent: 'start',
       flexWrap: 'wrap',
@@ -46,6 +71,7 @@ export const getComponentCss = (
     ...mergeDeep(labelStyles, {
       label: {
         display: 'inline-flex',
+        marginBottom: spacingStaticXSmall,
       },
     }),
     ...getFunctionalComponentRequiredStyles(),
