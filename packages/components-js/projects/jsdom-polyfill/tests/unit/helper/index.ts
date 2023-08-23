@@ -19,7 +19,6 @@ type TagNameWhitelisted = (typeof WHITELISTED_TAG_NAMES)[number];
 
 type TagNameRelevant = Exclude<
   TagName,
-  | 'p-multi-select-dropdown' // from INTERNAL_TAG_NAMES
   | 'p-select-wrapper-dropdown' // from INTERNAL_TAG_NAMES
   | 'p-toast-item' // from INTERNAL_TAG_NAMES
   | TagNameWhitelisted
