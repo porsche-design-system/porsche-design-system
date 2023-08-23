@@ -10,20 +10,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link-pure [underline]="true" [href]="'https://www.porsche.com'">Label default</p-link-pure>
       <p-link-pure [underline]="true"><a [href]="'https://www.porsche.com'">Label slotted</a></p-link-pure>
     </div>
-    <div class="playground dark auto-layout" title="should render with label on dark background">
-      <p-link-pure [href]="'https://www.porsche.com'" [theme]="'dark'">Label default</p-link-pure>
-      <p-link-pure [theme]="'dark'"><a [href]="'https://www.porsche.com'">Label slotted</a></p-link-pure>
-      <p-link-pure [underline]="true" [href]="'https://www.porsche.com'" [theme]="'dark'">Label default</p-link-pure>
-      <p-link-pure [underline]="true" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Label slotted</a></p-link-pure>
-    </div>
 
     <div class="playground light auto-layout" title="should render without label">
       <p-link-pure [href]="'https://www.porsche.com'" [hideLabel]="true">Some label</p-link-pure>
       <p-link-pure [hideLabel]="true"><a [href]="'https://www.porsche.com'">Some label</a></p-link-pure>
-    </div>
-    <div class="playground dark auto-layout" title="should render without label on dark background">
-      <p-link-pure [href]="'https://www.porsche.com'" [hideLabel]="true" [theme]="'dark'">Some label</p-link-pure>
-      <p-link-pure [hideLabel]="true" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Some label</a></p-link-pure>
     </div>
 
     <div class="playground light auto-layout" title="should render with responsive label">
@@ -53,29 +43,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-link-pure [active]="true" [hideLabel]="true"><a [href]="'https://www.porsche.com'">Label slotted active</a></p-link-pure>
     </div>
 
-    <div class="playground dark auto-layout" title="should render with active state on dark background">
-      <p-link-pure [href]="'https://www.porsche.com'" [active]="true" [theme]="'dark'">Label active</p-link-pure>
-      <p-link-pure [active]="true" [theme]="'dark'"><a [href]="'https://www.porsche.com'">Label slotted active</a></p-link-pure>
-      <p-link-pure [href]="'https://www.porsche.com'" [active]="true" [icon]="'none'" [theme]="'dark'">Label active</p-link-pure>
-      <p-link-pure [active]="true" [icon]="'none'" [theme]="'dark'"
-        ><a [href]="'https://www.porsche.com'">Label slotted active</a></p-link-pure
-      >
-      <p-link-pure [href]="'https://www.porsche.com'" [active]="true" [hideLabel]="true" [theme]="'dark'">Label active</p-link-pure>
-      <p-link-pure [active]="true" [hideLabel]="true" [theme]="'dark'"
-        ><a [href]="'https://www.porsche.com'">Label slotted active</a></p-link-pure
-      >
-    </div>
-
     <div class="playground light auto-layout" title="should render with specific icon">
       <p-link-pure [href]="'https://www.porsche.com'" [icon]="'phone'">Label with specific icon</p-link-pure>
       <p-link-pure [href]="'https://www.porsche.com'" [iconSource]="'./assets/icon-custom-kaixin.svg'">
-        Label with iconSource
-      </p-link-pure>
-    </div>
-
-    <div class="playground dark auto-layout" title="should render with specific icon on dark background">
-      <p-link-pure [href]="'https://www.porsche.com'" [icon]="'phone'" [theme]="'dark'">Label with specific icon</p-link-pure>
-      <p-link-pure [href]="'https://www.porsche.com'" [iconSource]="'./assets/icon-custom-kaixin.svg'" [theme]="'dark'">
         Label with iconSource
       </p-link-pure>
     </div>

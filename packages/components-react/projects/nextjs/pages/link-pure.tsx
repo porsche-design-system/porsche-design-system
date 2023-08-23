@@ -11,20 +11,10 @@ const LinkPurePage: NextPage = (): JSX.Element => {
         <PLinkPure underline={true} href="https://www.porsche.com">Label default</PLinkPure>
         <PLinkPure underline={true}><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
       </div>
-      <div className="playground dark auto-layout" title="should render with label on dark background">
-        <PLinkPure href="https://www.porsche.com" theme="dark">Label default</PLinkPure>
-        <PLinkPure theme="dark"><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
-        <PLinkPure underline={true} href="https://www.porsche.com" theme="dark">Label default</PLinkPure>
-        <PLinkPure underline={true} theme="dark"><a href="https://www.porsche.com">Label slotted</a></PLinkPure>
-      </div>
 
       <div className="playground light auto-layout" title="should render without label">
         <PLinkPure href="https://www.porsche.com" hideLabel={true}>Some label</PLinkPure>
         <PLinkPure hideLabel={true}><a href="https://www.porsche.com">Some label</a></PLinkPure>
-      </div>
-      <div className="playground dark auto-layout" title="should render without label on dark background">
-        <PLinkPure href="https://www.porsche.com" hideLabel={true} theme="dark">Some label</PLinkPure>
-        <PLinkPure hideLabel={true} theme="dark"><a href="https://www.porsche.com">Some label</a></PLinkPure>
       </div>
 
       <div className="playground light auto-layout" title="should render with responsive label">
@@ -54,29 +44,9 @@ const LinkPurePage: NextPage = (): JSX.Element => {
         <PLinkPure active={true} hideLabel={true}><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
       </div>
 
-      <div className="playground dark auto-layout" title="should render with active state on dark background">
-        <PLinkPure href="https://www.porsche.com" active={true} theme="dark">Label active</PLinkPure>
-        <PLinkPure active={true} theme="dark"><a href="https://www.porsche.com">Label slotted active</a></PLinkPure>
-        <PLinkPure href="https://www.porsche.com" active={true} icon="none" theme="dark">Label active</PLinkPure>
-        <PLinkPure active={true} icon="none" theme="dark"
-          ><a href="https://www.porsche.com">Label slotted active</a></PLinkPure
-        >
-        <PLinkPure href="https://www.porsche.com" active={true} hideLabel={true} theme="dark">Label active</PLinkPure>
-        <PLinkPure active={true} hideLabel={true} theme="dark"
-          ><a href="https://www.porsche.com">Label slotted active</a></PLinkPure
-        >
-      </div>
-
       <div className="playground light auto-layout" title="should render with specific icon">
         <PLinkPure href="https://www.porsche.com" icon="phone">Label with specific icon</PLinkPure>
         <PLinkPure href="https://www.porsche.com" iconSource="./assets/icon-custom-kaixin.svg">
-          Label with iconSource
-        </PLinkPure>
-      </div>
-
-      <div className="playground dark auto-layout" title="should render with specific icon on dark background">
-        <PLinkPure href="https://www.porsche.com" icon="phone" theme="dark">Label with specific icon</PLinkPure>
-        <PLinkPure href="https://www.porsche.com" iconSource="./assets/icon-custom-kaixin.svg" theme="dark">
           Label with iconSource
         </PLinkPure>
       </div>
