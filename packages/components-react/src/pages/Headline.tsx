@@ -23,18 +23,9 @@ export const HeadlinePage = (): JSX.Element => {
         <PHeadline variant="headline-5"><h6>The quick brown fox jumps over the lazy dog</h6></PHeadline>
       </div>
 
-      <div className="playground light" title="should show headline with different color variants on light background">
+      <div className="playground light" title="should show headline with different color variants">
         <PHeadline color="default" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PHeadline>
         <PHeadline color="inherit" style={{ color: 'deeppink' }}>The quick brown fox jumps over the lazy dog</PHeadline>
-      </div>
-
-      <div className="playground dark" title="should show headline with different color variants on dark background">
-        <PHeadline theme="dark" color="default" style={{ color: 'deeppink' }}>
-          The quick brown fox jumps over the lazy dog
-        </PHeadline>
-        <PHeadline theme="dark" color="inherit" style={{ color: 'deeppink' }}>
-          The quick brown fox jumps over the lazy dog
-        </PHeadline>
       </div>
 
       <div className="playground light" title="should show headlines with different alignments">
@@ -59,7 +50,7 @@ export const HeadlinePage = (): JSX.Element => {
         </PHeadline>
       </div>
 
-      <div className="playground" title="should apply custom styles for dedicated slotted content">
+      <div className="playground light" title="should apply custom styles for dedicated slotted content">
         <PHeadline>
           <span>
             Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
@@ -68,20 +59,11 @@ export const HeadlinePage = (): JSX.Element => {
         </PHeadline>
       </div>
 
-      <div className="playground dark" title="should apply custom styles for dedicated slotted content">
-        <PHeadline theme="dark">
-          <span>
-            Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-            {' '}<em>emphasized</em> and <i>italic</i> text.
-          </span>
-        </PHeadline>
-      </div>
-
-      <div className="playground" title="should show headline for variant customizable">
+      <div className="playground light" title="should show headline for variant customizable">
         <PHeadline variant={{ base: 'large', l: 'x-large' }}>Lorem ipsum dolor sit amet et.</PHeadline>
       </div>
 
-      <div className="playground" title="should not automatically break words/strings by default">
+      <div className="playground light" title="should not automatically break words/strings by default">
         <PHeadline variant={{base: 'inherit', m: 'large'}} style={{ width: '15rem', background: 'deeppink' }}>
           This is the first time I've seen the word Pneumonoultramicroscopicsilicovolcanoconiosis. It's a long one.
         </PHeadline>
@@ -91,7 +73,7 @@ export const HeadlinePage = (): JSX.Element => {
       </div>
 
       <div
-        className="playground"
+        className="playground light"
         title="should be possible to overwrite hyphenation/break words behavior"
         style={{ hyphens: 'auto', overflowWrap: 'break-word' }}
       >
@@ -103,7 +85,7 @@ export const HeadlinePage = (): JSX.Element => {
         </PHeadline>
       </div>
 
-      <div className="playground" title="should consider only font-size definition on host element for variant inherit">
+      <div className="playground light" title="should consider only font-size definition on host element for variant inherit">
         <div style={{ height: '72px', borderLeft: '10px solid deeppink' }}>
           <PHeadline
             variant="inherit"
