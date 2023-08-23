@@ -6,7 +6,7 @@ import {
   type PMultiSelectProps,
 } from '@porsche-design-system/components-react';
 
-export const MultiSelectDynamicExamplePage = () => {
+export const MultiSelectDynamicExamplePage = (): JSX.Element => {
   const [selectedValues, setSelectedValues] = useState<PMultiSelectProps['value']>([]);
   const [inputValue, setInputValue] = useState('');
   const [optionCount, setOptionCount] = useState(3);
