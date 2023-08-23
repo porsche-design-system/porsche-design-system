@@ -45,14 +45,14 @@ export const MultiSelectDynamicExamplePage = () => {
         Value:{' '}
         <input name="input-value" type="text" value={inputValue} onChange={onChangeInput} placeholder="e.g. 1,2" />
       </label>
-      <button id="btn-input-value" type="button" onClick={onSetValue}>
+      <button type="button" onClick={onSetValue}>
         Set Value
       </button>
-      <button id="btn-reset" type="button" onClick={onResetValue}>
+      <button type="button" onClick={onResetValue}>
         Reset value
       </button>
 
-      <PMultiSelect name="options" value={selectedValues} onUpdate={handleUpdate}>
+      <PMultiSelect name="options" label="Some Label" value={selectedValues} onUpdate={handleUpdate}>
         {[...Array(optionCount).keys()].map((idx) => (
           <PMultiSelectOption key={idx} value={`${idx + 1}`}>
             Option {idx + 1}

@@ -17,7 +17,7 @@ export const MultiSelectControlledExamplePage = () => {
 
   return (
     <>
-      <PMultiSelect name="options" value={selectedValues} onUpdate={handleUpdate}>
+      <PMultiSelect name="options" label="Some Label" value={selectedValues} onUpdate={handleUpdate}>
         <PMultiSelectOption value="a">Option A</PMultiSelectOption>
         <PMultiSelectOption value="b">Option B</PMultiSelectOption>
         <PMultiSelectOption value="c">Option C</PMultiSelectOption>

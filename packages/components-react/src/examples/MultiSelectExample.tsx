@@ -13,7 +13,7 @@ export const MultiSelectExamplePage = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <PMultiSelect name="options">
+        <PMultiSelect name="options" label="Some Label">
           <PMultiSelectOption value="a">Option A</PMultiSelectOption>
           <PMultiSelectOption value="b">Option B</PMultiSelectOption>
           <PMultiSelectOption value="c">Option C</PMultiSelectOption>
