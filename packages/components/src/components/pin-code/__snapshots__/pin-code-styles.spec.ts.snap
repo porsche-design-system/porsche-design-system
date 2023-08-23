@@ -8,35 +8,35 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   display: none !important;
 }
 input {
-  display: block;
-  width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: border-box;
-  border: 2px solid #197E10;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  text-align: center;
+  display: block !important;
+  width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  margin: 0 !important;
+  outline: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 2px solid #197E10 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-indent: 0 !important;
+  color: #010205 !important;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  text-align: center !important;
 }
 input:focus {
-  border-color: #010205;
+  border-color: #010205 !important;
 }
 input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+  cursor: not-allowed !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 input[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input) {
   position: absolute !important;
@@ -46,7 +46,7 @@ input[readonly] {
 }
 @media(hover:hover) {
   input:not(:disabled):not(:focus):not([readonly]):hover {
-    border-color: #0E4809;
+    border-color: #0E4809 !important;
   }
 }
 
@@ -153,35 +153,35 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 input {
-  display: block;
-  width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: border-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  text-align: center;
+  display: block !important;
+  width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  margin: 0 !important;
+  outline: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 2px solid #6B6D70 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-indent: 0 !important;
+  color: #010205 !important;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  text-align: center !important;
 }
 input:focus {
-  border-color: #010205;
+  border-color: #010205 !important;
 }
 input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+  cursor: not-allowed !important;
+  color: #949598 !important;
+  border-color: #949598 !important;
+  -webkit-text-fill-color: #949598 !important;
 }
 input[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input) {
   position: absolute !important;
@@ -191,7 +191,7 @@ input[readonly] {
 }
 @media(hover:hover) {
   input:not(:disabled):not(:focus):not([readonly]):hover {
-    border-color: #010205;
+    border-color: #010205 !important;
   }
 }
 
@@ -252,35 +252,35 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 input {
-  display: block;
-  width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: border-box;
-  border: 2px solid #FC4040;
-  border-radius: 4px;
-  background: transparent;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  text-align: center;
+  display: block !important;
+  width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  margin: 0 !important;
+  outline: 0 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+  border: 2px solid #FC4040 !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  text-indent: 0 !important;
+  color: #FBFCFF !important;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  text-align: center !important;
 }
 input:focus {
-  border-color: #FBFCFF;
+  border-color: #FBFCFF !important;
 }
 input:disabled {
-  cursor: not-allowed;
-  color: #7E7F82;
-  border-color: #7E7F82;
-  -webkit-text-fill-color: #7E7F82;
+  cursor: not-allowed !important;
+  color: #7E7F82 !important;
+  border-color: #7E7F82 !important;
+  -webkit-text-fill-color: #7E7F82 !important;
 }
 input[readonly] {
-  border-color: #404044;
-  background: #404044;
+  border-color: #404044 !important;
+  background: #404044 !important;
 }
 ::slotted(input) {
   position: absolute !important;
@@ -290,7 +290,7 @@ input[readonly] {
 }
 @media(hover:hover) {
   input:not(:disabled):not(:focus):not([readonly]):hover {
-    border-color: #FB0404;
+    border-color: #FB0404 !important;
   }
 }
 
