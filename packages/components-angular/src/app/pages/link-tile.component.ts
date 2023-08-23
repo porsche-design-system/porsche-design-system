@@ -5,18 +5,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-link-tile',
   styles: [
     `
-      .container-large {
-        max-width: 800px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 10px;
+      p-link-tile {
+        width: 100%;
+        max-width: 300px;
       }
     `,
   ],
   template: `
-    <div class="playground light grid" title="should render default link-tile on light background">
+    <div class="playground light auto-layout" title="should render default link-tile">
       <p-link-tile [href]="'#'" [label]="'Some Label'" [description]="'Default'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -27,7 +23,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-tile>
     </div>
 
-    <div class="playground light grid" style="font-size: 24px" title="should render different sizes on light background">
+    <div class="playground light auto-layout" style="font-size: 24px" title="should render different sizes">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Size inherit'" [size]="'inherit'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -51,7 +47,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-tile>
     </div>
 
-    <div class="playground light grid" title="should render different weights on light background">
+    <div class="playground light auto-layout" title="should render different weights">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Weight regular'" [weight]="'regular'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -75,7 +71,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-tile>
     </div>
 
-    <div class="playground light grid" title="should render background='light' on light background">
+    <div class="playground light auto-layout" title="should render background='light'">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Background light'" [background]="'light'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -86,7 +82,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-tile>
     </div>
 
-    <div class="playground light grid" title="should render different aspect ratios on light background">
+    <div class="playground light auto-layout" title="should render different aspect ratios">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Aspect ratio 16:9'" aspect-ratio="16:9">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -134,7 +130,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-tile>
     </div>
 
-    <div class="playground light grid" title="should render compact on light background">
+    <div class="playground light auto-layout" title="should render compact">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Compact'" [compact]="true">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -158,7 +154,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-tile>
     </div>
 
-    <div class="playground light grid" title="should render align top on light background">
+    <div class="playground light auto-layout" title="should render align top">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Align top'" [align]="'top'" [compact]="true">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -169,7 +165,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-tile>
     </div>
 
-    <div class="playground light grid" title="should render without gradient">
+    <div class="playground light auto-layout" title="should render without gradient">
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Gradient false'" [gradient]="false">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD/zP9RsvrtAAAAHElEQVQY02Ng4GBgYGFgoBn9HwwOwPhDlqaTPwBKng+1NhhBkgAAAABJRU5ErkJggg=='"
@@ -180,7 +176,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-tile>
     </div>
 
-    <div class="playground light grid" title="should render with readable overflowing text on different backgrounds">
+    <div class="playground light auto-layout" title="should render with readable overflowing text on different backgrounds">
       <p-link-tile
         [href]="'#'"
         [label]="'Some label'"
@@ -221,8 +217,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div
-      class="playground light grid"
-      title="should render with picture tag and multiple sources depending on viewport on light background"
+      class="playground light auto-layout"
+      title="should render with picture tag and multiple sources depending on viewport"
     >
       <p-link-tile [href]="'#'" [label]="'Some label'" [description]="'Picture tag'">
         <picture>
@@ -236,7 +232,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-link-tile>
     </div>
 
-    <div class="playground light container-large" title="should render with max width description text on light background">
+    <div class="playground light" title="should render with max width description text">
       <p-link-tile
         [href]="'#'"
         [label]="'Some label'"
