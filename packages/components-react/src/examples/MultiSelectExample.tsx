@@ -23,6 +23,7 @@ export const MultiSelectExamplePage = () => {
         </PMultiSelect>
         <button type="submit">Submit</button>
       </form>
+
       <p>Last submitted data: {lastSubmittedData}</p>
     </>
   );

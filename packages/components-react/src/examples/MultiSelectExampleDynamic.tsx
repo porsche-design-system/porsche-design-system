@@ -34,7 +34,9 @@ export const MultiSelectDynamicExamplePage = () => {
   };
 
   const onRemoveOption = () => {
-    setOptionCount((prev) => prev - 1);
+    if (optionCount > 0) {
+      setOptionCount((prev) => prev - 1);
+    }
   };
 
   return (

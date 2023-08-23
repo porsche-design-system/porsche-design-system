@@ -13,8 +13,7 @@ export const MultiSelectControlledExamplePage = () => {
     setSelectedValues(e.detail.value);
   };
 
-  const debugText =
-    selectedValues && `Selected values: ${selectedValues.length > 0 ? selectedValues.join(', ') : 'none'}`;
+  const debugText = selectedValues && `Selected values: ${selectedValues.join(', ') || 'none'}`;
 
   return (
     <>
@@ -26,6 +25,7 @@ export const MultiSelectControlledExamplePage = () => {
         <PMultiSelectOption value="e">Option E</PMultiSelectOption>
         <PMultiSelectOption value="f">Option F</PMultiSelectOption>
       </PMultiSelect>
+
       <p>{debugText}</p>
     </>
   );
