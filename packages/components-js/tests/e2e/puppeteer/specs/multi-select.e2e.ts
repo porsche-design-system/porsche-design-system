@@ -306,7 +306,7 @@ describe('native select', () => {
   });
 });
 
-fdescribe('Update Event', () => {
+describe('Update Event', () => {
   it('should emit update event with correct details when option is selected by click', async () => {
     await initMultiSelect({ props: { name: 'options' } });
     const host = await getHost();
