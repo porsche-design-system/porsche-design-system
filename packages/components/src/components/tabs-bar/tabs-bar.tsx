@@ -125,7 +125,7 @@ export class TabsBar {
   public componentDidRender(): void {
     // 1 tick delay to prevent transition
     window.requestAnimationFrame(() => {
-      this.scrollerElement.classList[this.activeTabIndex !== undefined ? 'add' : 'remove'](scrollerAnimatedCssClass);
+      this.scrollerElement.classList.toggle(scrollerAnimatedCssClass, this.activeTabIndex !== undefined);
     });
   }
 
@@ -163,13 +163,13 @@ export class TabsBar {
         onClick={this.onClick}
         onKeyDown={this.onKeydown}
       >
-        <slot onSlotchange={this.onSlotchange} />
+        <slot onSlotchange={this.onSlotChange} />
         <span class="bar" ref={(el) => (this.barElement = el)} />
       </PrefixedTagNames.pScroller>
     );
   }
 
-  private onSlotchange = (): void => {
+  private onSlotChange = (): void => {
     this.setTabElements();
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
     this.setBarStyle();

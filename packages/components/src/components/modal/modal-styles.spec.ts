@@ -3,24 +3,29 @@ import type { BreakpointCustomizable } from '../../types';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    [false, false, true, false],
-    [false, true, true, false],
-    [false, true, false, false],
-    [false, true, false, true],
-    [false, false, false, true],
-    [false, false, true, true],
-    [false, true, true, true],
-    [true, false, true, false],
-    [true, true, true, false],
-    [true, true, false, false],
-    [true, true, false, true],
-    [true, false, false, true],
-    [true, false, true, true],
-    [true, true, true, true],
-    [true, { base: true, xs: false, s: true, m: false, l: true, xl: false }, true, false],
-  ])('should return correct css for open: %s, fullscreen: %o, dismissButton: %s and hasHeader: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
-  });
+    [false, false, true, false, false],
+    [false, true, true, false, false],
+    [false, true, false, false, false],
+    [false, true, false, true, false],
+    [false, false, false, true, false],
+    [false, false, true, true, false],
+    [false, true, true, true, false],
+    [true, false, true, false, false],
+    [true, true, true, false, false],
+    [true, true, false, false, false],
+    [true, true, false, true, false],
+    [true, false, false, true, false],
+    [true, false, true, true, false],
+    [true, true, true, true, false],
+    [true, { base: true, xs: false, s: true, m: false, l: true, xl: false }, true, false, false],
+    [true, false, false, true, true],
+    [true, false, false, false, true],
+  ])(
+    'should return correct css for open: %s, fullscreen: %o, dismissButton: %s, hasHeader: %s and hasFooter: %s',
+    (...args) => {
+      expect(getComponentCss(...args)).toMatchSnapshot();
+    }
+  );
 });
 
 describe('isFullscreenForXL()', () => {

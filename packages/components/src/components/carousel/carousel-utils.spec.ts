@@ -276,7 +276,7 @@ describe('updatePrevNextButtons()', () => {
         } as Splide['options']['i18n'],
         perPage: 1,
       },
-    } as Splide);
+    }) as Splide;
 
   it('should call isFirstPage() with correct parameter', () => {
     const spy = jest.spyOn(carouselUtils, 'isFirstPage');
@@ -426,23 +426,25 @@ describe('updatePagination()', () => {
   it('should remove bullet--active class from child', () => {
     const el = document.createElement('div');
     el.innerHTML = [bulletMarkup, bulletMarkup, bulletActiveMarkup].join('');
-    const spy = jest.spyOn(el.children[2].classList, 'remove');
 
     expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
+    expect(el.children[2].classList).toContain('bullet--active');
+
     updatePagination(el, 3, 0);
-    expect(spy).toBeCalledWith('bullet--active');
     expect(el.children[2].outerHTML).toBe(bulletMarkup);
+    expect(el.children[2].outerHTML).not.toContain('bullet--active');
   });
 
   it('should add bullet--active class to child on newIndex', () => {
     const el = document.createElement('div');
     el.innerHTML = [bulletMarkup, bulletActiveMarkup, bulletMarkup].join('');
-    const spy = jest.spyOn(el.children[2].classList, 'add');
 
     expect(el.children[2].outerHTML).toBe(bulletMarkup);
+    expect(el.children[2].classList).not.toContain('bullet--active');
+
     updatePagination(el, 3, 2);
-    expect(spy).toBeCalledWith('bullet--active');
     expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
+    expect(el.children[2].classList).toContain('bullet--active');
   });
 
   it('should update bullet classes when using more than 5 slides at start', () => {
@@ -455,17 +457,12 @@ describe('updatePagination()', () => {
       bulletInfiniteMarkup,
       bulletMarkup,
     ].join('');
-    const spyInfinite = jest.spyOn(el.children[0].classList, 'add');
-    const spyActiveRemove = jest.spyOn(el.children[1].classList, 'remove');
-    const spyActiveAdd = jest.spyOn(el.children[2].classList, 'add');
 
     expect(el.children[0].outerHTML).toBe(bulletMarkup);
     expect(el.children[1].outerHTML).toBe(bulletActiveMarkup);
     expect(el.children[2].outerHTML).toBe(bulletMarkup);
+
     updatePagination(el, 6, 2);
-    expect(spyInfinite).toBeCalledWith('bullet--infinite');
-    expect(spyActiveRemove).toBeCalledWith('bullet--active');
-    expect(spyActiveAdd).toBeCalledWith('bullet--active');
     expect(el.children[0].outerHTML).toBe(bulletInfiniteMarkup);
     expect(el.children[1].outerHTML).toBe(bulletMarkup);
     expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
@@ -482,25 +479,14 @@ describe('updatePagination()', () => {
       bulletInfiniteMarkup,
       bulletMarkup,
     ].join('');
-    const spyInfiniteStartRemove = jest.spyOn(el.children[1].classList, 'remove');
-    const spyInfiniteStartAdd = jest.spyOn(el.children[2].classList, 'add');
-    const spyActiveRemove = jest.spyOn(el.children[3].classList, 'remove');
-    const spyActiveAdd = jest.spyOn(el.children[4].classList, 'add');
-    const spyInfiniteEndRemove = jest.spyOn(el.children[5].classList, 'remove');
-    const spyInfiniteEndAdd = jest.spyOn(el.children[6].classList, 'add');
 
     expect(el.children[1].outerHTML).toBe(bulletInfiniteMarkup);
     expect(el.children[2].outerHTML).toBe(bulletMarkup);
     expect(el.children[3].outerHTML).toBe(bulletActiveMarkup);
     expect(el.children[4].outerHTML).toBe(bulletMarkup);
     expect(el.children[5].outerHTML).toBe(bulletInfiniteMarkup);
+
     updatePagination(el, 7, 4);
-    expect(spyInfiniteStartRemove).toBeCalledWith('bullet--infinite');
-    expect(spyInfiniteStartAdd).toBeCalledWith('bullet--infinite');
-    expect(spyActiveRemove).toBeCalledWith('bullet--active');
-    expect(spyActiveAdd).toBeCalledWith('bullet--active');
-    expect(spyInfiniteEndRemove).toBeCalledWith('bullet--infinite');
-    expect(spyInfiniteEndAdd).toBeCalledWith('bullet--infinite');
     expect(el.children[2].outerHTML).toBe(bulletInfiniteMarkup);
     expect(el.children[3].outerHTML).toBe(bulletMarkup);
     expect(el.children[4].outerHTML).toBe(bulletActiveMarkup);
@@ -518,17 +504,12 @@ describe('updatePagination()', () => {
       bulletActiveMarkup,
       bulletMarkup,
     ].join('');
-    const spyInfinite = jest.spyOn(el.children[5].classList, 'add');
-    const spyActiveRemove = jest.spyOn(el.children[4].classList, 'remove');
-    const spyActiveAdd = jest.spyOn(el.children[3].classList, 'add');
 
     expect(el.children[5].outerHTML).toBe(bulletMarkup);
     expect(el.children[4].outerHTML).toBe(bulletActiveMarkup);
     expect(el.children[3].outerHTML).toBe(bulletMarkup);
+
     updatePagination(el, 6, 3);
-    expect(spyInfinite).toBeCalledWith('bullet--infinite');
-    expect(spyActiveRemove).toBeCalledWith('bullet--active');
-    expect(spyActiveAdd).toBeCalledWith('bullet--active');
     expect(el.children[5].outerHTML).toBe(bulletInfiniteMarkup);
     expect(el.children[4].outerHTML).toBe(bulletMarkup);
     expect(el.children[3].outerHTML).toBe(bulletActiveMarkup);

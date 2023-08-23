@@ -22,6 +22,8 @@
 
 # auto generated
 styles/getSharedStyles.tsx
+# sub directories only, because we have layout.tsx, page.tsx and providers.tsx in app folder
+app/*/
 
 # debug
 npm-debug.log*

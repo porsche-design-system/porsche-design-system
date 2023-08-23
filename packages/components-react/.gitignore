@@ -9,6 +9,9 @@
 /dist
 /build
 
+# generated
+/src/pages/generated
+
 # testing
 /coverage
 /tests/vrt/results

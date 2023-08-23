@@ -69,10 +69,10 @@ const initBasicFlyout = (
 };
 
 const initAdvancedFlyout = async () => {
-  const header = '<div slot="header"><p-button id="btn-header">Header button</p-button></div>';
-  const footer = '<div slot="footer"><p-button id="btn-footer">Content button</p-button></div>';
-  const content = '<p-button id="btn-content">Content button</p-button>';
-  const subFooter = '<div slot="sub-footer"><p-button id="btn-sub-footer">Content button</p-button></div>';
+  const header = '<div slot="header"><button id="btn-header">Header button</button></div>';
+  const footer = '<div slot="footer"><button id="btn-footer">Content button</button></div>';
+  const content = '<button id="btn-content">Content button</button>';
+  const subFooter = '<div slot="sub-footer"><button id="btn-sub-footer">Content button</button></div>';
   await initBasicFlyout({ open: false }, { header: header, footer: footer, content: content, subFooter: subFooter });
 };
 
@@ -100,9 +100,12 @@ const addButtonsBeforeAndAfterFlyout = () =>
   });
 
 const scrollFlyoutTo = async (selector: string) =>
-  await page.evaluate((el) => {
-    el.scrollIntoView();
-  }, await selectNode(page, selector));
+  await page.evaluate(
+    (el) => {
+      el.scrollIntoView();
+    },
+    await selectNode(page, selector)
+  );
 
 const expectDismissButtonToBeFocused = async (failMessage?: string) => {
   const host = await getHost();

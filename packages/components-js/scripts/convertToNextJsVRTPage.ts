@@ -19,8 +19,7 @@ export const convertToNextJsVRTPage = (
         ? "$&\n'use client';\nimport type { NextPage } from 'next';"
         : "$&\nimport type { NextPage } from 'next';"
     )
-    .replace(/import { pollComponentsReady } from '\.\.\/pollComponentsReady';/, pollComponentsReadyFileContent)
-    .replace(/import { Toast } from '/, '$&../')
+    .replace(/import { pollComponentsReady } from '\.\.\/\.\.\/pollComponentsReady';/, pollComponentsReadyFileContent)
     .replace(/export (const pollComponentsReady)/, '$1')
     .replace(
       /export\s+(const\s+)(.*)(\s+=\s+\(\):\s+JSX\.Element\s+=>\s+{[\s\S]*};)/,
