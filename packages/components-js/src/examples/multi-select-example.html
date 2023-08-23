@@ -18,10 +18,6 @@
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(form);
-    debugElement.innerText = `Last submitted data: ${
-      Array.from(formData.entries())
-        .map(([_, value]) => value)
-        .join(', ') || 'none'
-    }`;
+    debugElement.innerText = `Last submitted data: ${Array.from(formData.values()).join(', ') || 'none'}`;
   });
 </script>
