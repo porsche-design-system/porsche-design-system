@@ -9,21 +9,11 @@ export const ButtonPurePage = (): JSX.Element => {
         <PButtonPure disabled={true}>Label disabled</PButtonPure>
         <PButtonPure loading={true}>Label loading</PButtonPure>
       </div>
-      <div className="playground dark auto-layout" title="should render button with label on dark theme">
-        <PButtonPure theme="dark">Label default</PButtonPure>
-        <PButtonPure disabled={true} theme="dark">Label disabled</PButtonPure>
-        <PButtonPure loading={true} theme="dark">Label loading</PButtonPure>
-      </div>
 
       <div className="playground light auto-layout" title="should render button without label">
         <PButtonPure hideLabel={true}>Some label</PButtonPure>
         <PButtonPure hideLabel={true} disabled={true}>Some label</PButtonPure>
         <PButtonPure hideLabel={true} loading={true}>Some label</PButtonPure>
-      </div>
-      <div className="playground dark auto-layout" title="should render button without label on dark theme">
-        <PButtonPure hideLabel={true} theme="dark">Some label</PButtonPure>
-        <PButtonPure hideLabel={true} disabled={true} theme="dark">Some label</PButtonPure>
-        <PButtonPure hideLabel={true} loading={true} theme="dark">Some label</PButtonPure>
       </div>
 
       <div className="playground light auto-layout" title="should render button with responsive label">
@@ -36,11 +26,6 @@ export const ButtonPurePage = (): JSX.Element => {
         <PButtonPure icon="none">Label default</PButtonPure>
         <PButtonPure icon="none" disabled={true}>Label disabled</PButtonPure>
         <PButtonPure icon="none" loading={true}>Label loading</PButtonPure>
-      </div>
-      <div className="playground dark auto-layout" title="should render button with label on dark theme">
-        <PButtonPure icon="none" theme="dark">Label default</PButtonPure>
-        <PButtonPure icon="none" disabled={true} theme="dark">Label disabled</PButtonPure>
-        <PButtonPure icon="none" loading={true} theme="dark">Label loading</PButtonPure>
       </div>
 
       <div className="playground light auto-layout" title="should not render button with different weight">
@@ -61,28 +46,9 @@ export const ButtonPurePage = (): JSX.Element => {
         <PButtonPure active={true} hideLabel={true} loading={true}>Label active loading</PButtonPure>
       </div>
 
-      <div className="playground dark auto-layout" title="should render with active state on dark background">
-        <PButtonPure active={true} theme="dark">Label active</PButtonPure>
-        <PButtonPure active={true} disabled={true} theme="dark">Label active disabled</PButtonPure>
-        <PButtonPure active={true} loading={true} theme="dark">Label active loading</PButtonPure>
-        <PButtonPure active={true} icon="none" theme="dark">Label active</PButtonPure>
-        <PButtonPure active={true} icon="none" disabled={true} theme="dark">Label active disabled</PButtonPure>
-        <PButtonPure active={true} icon="none" loading={true} theme="dark">Label active loading</PButtonPure>
-        <PButtonPure active={true} hideLabel={true} theme="dark">Label active</PButtonPure>
-        <PButtonPure active={true} hideLabel={true} disabled={true} theme="dark">Label active disabled</PButtonPure>
-        <PButtonPure active={true} hideLabel={true} loading={true} theme="dark">Label active loading</PButtonPure>
-      </div>
-
       <div className="playground light auto-layout" title="should render button with specific icon">
         <PButtonPure icon="delete">Label with specific icon</PButtonPure>
         <PButtonPure iconSource="./assets/icon-custom-kaixin.svg">Label with local icon-source</PButtonPure>
-      </div>
-
-      <div className="playground dark auto-layout" title="should render button with specific icon on dark background">
-        <PButtonPure icon="delete" theme="dark">Label with specific icon</PButtonPure>
-        <PButtonPure iconSource="./assets/icon-custom-kaixin.svg" theme="dark"
-          >Label with local icon-source
-        </PButtonPure>
       </div>
 
       <div className="playground light auto-layout" title="should render button with multiline label">

@@ -9,21 +9,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button-pure [disabled]="true">Label disabled</p-button-pure>
       <p-button-pure [loading]="true">Label loading</p-button-pure>
     </div>
-    <div class="playground dark auto-layout" title="should render button with label on dark theme">
-      <p-button-pure [theme]="'dark'">Label default</p-button-pure>
-      <p-button-pure [disabled]="true" [theme]="'dark'">Label disabled</p-button-pure>
-      <p-button-pure [loading]="true" [theme]="'dark'">Label loading</p-button-pure>
-    </div>
 
     <div class="playground light auto-layout" title="should render button without label">
       <p-button-pure [hideLabel]="true">Some label</p-button-pure>
       <p-button-pure [hideLabel]="true" [disabled]="true">Some label</p-button-pure>
       <p-button-pure [hideLabel]="true" [loading]="true">Some label</p-button-pure>
-    </div>
-    <div class="playground dark auto-layout" title="should render button without label on dark theme">
-      <p-button-pure [hideLabel]="true" [theme]="'dark'">Some label</p-button-pure>
-      <p-button-pure [hideLabel]="true" [disabled]="true" [theme]="'dark'">Some label</p-button-pure>
-      <p-button-pure [hideLabel]="true" [loading]="true" [theme]="'dark'">Some label</p-button-pure>
     </div>
 
     <div class="playground light auto-layout" title="should render button with responsive label">
@@ -36,11 +26,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button-pure [icon]="'none'">Label default</p-button-pure>
       <p-button-pure [icon]="'none'" [disabled]="true">Label disabled</p-button-pure>
       <p-button-pure [icon]="'none'" [loading]="true">Label loading</p-button-pure>
-    </div>
-    <div class="playground dark auto-layout" title="should render button with label on dark theme">
-      <p-button-pure [icon]="'none'" [theme]="'dark'">Label default</p-button-pure>
-      <p-button-pure [icon]="'none'" [disabled]="true" [theme]="'dark'">Label disabled</p-button-pure>
-      <p-button-pure [icon]="'none'" [loading]="true" [theme]="'dark'">Label loading</p-button-pure>
     </div>
 
     <div class="playground light auto-layout" title="should not render button with different weight">
@@ -61,28 +46,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-button-pure [active]="true" [hideLabel]="true" [loading]="true">Label active loading</p-button-pure>
     </div>
 
-    <div class="playground dark auto-layout" title="should render with active state on dark background">
-      <p-button-pure [active]="true" [theme]="'dark'">Label active</p-button-pure>
-      <p-button-pure [active]="true" [disabled]="true" [theme]="'dark'">Label active disabled</p-button-pure>
-      <p-button-pure [active]="true" [loading]="true" [theme]="'dark'">Label active loading</p-button-pure>
-      <p-button-pure [active]="true" [icon]="'none'" [theme]="'dark'">Label active</p-button-pure>
-      <p-button-pure [active]="true" [icon]="'none'" [disabled]="true" [theme]="'dark'">Label active disabled</p-button-pure>
-      <p-button-pure [active]="true" [icon]="'none'" [loading]="true" [theme]="'dark'">Label active loading</p-button-pure>
-      <p-button-pure [active]="true" [hideLabel]="true" [theme]="'dark'">Label active</p-button-pure>
-      <p-button-pure [active]="true" [hideLabel]="true" [disabled]="true" [theme]="'dark'">Label active disabled</p-button-pure>
-      <p-button-pure [active]="true" [hideLabel]="true" [loading]="true" [theme]="'dark'">Label active loading</p-button-pure>
-    </div>
-
     <div class="playground light auto-layout" title="should render button with specific icon">
       <p-button-pure [icon]="'delete'">Label with specific icon</p-button-pure>
       <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'">Label with local icon-source</p-button-pure>
-    </div>
-
-    <div class="playground dark auto-layout" title="should render button with specific icon on dark background">
-      <p-button-pure [icon]="'delete'" [theme]="'dark'">Label with specific icon</p-button-pure>
-      <p-button-pure [iconSource]="'./assets/icon-custom-kaixin.svg'" [theme]="'dark'"
-        >Label with local icon-source
-      </p-button-pure>
     </div>
 
     <div class="playground light auto-layout" title="should render button with multiline label">
