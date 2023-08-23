@@ -5,18 +5,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-button-tile',
   styles: [
     `
-      .container-large {
-        max-width: 800px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 10px;
+      p-button-tile {
+        width: 100%;
+        max-width: 300px;
       }
     `,
   ],
   template: `
-    <div class="playground light grid" title="should render default button-tile on light background">
+    <div class="playground light auto-layout" title="should render default button-tile">
       <p-button-tile [label]="'Some Label'" [description]="'Default'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -27,7 +23,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" style="font-size: 24px" title="should render different sizes on light background">
+    <div class="playground light auto-layout" style="font-size: 24px" title="should render different sizes">
       <p-button-tile [label]="'Some label'" [description]="'Size inherit'" [size]="'inherit'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -50,7 +46,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render different weights on light background">
+    <div class="playground light auto-layout" title="should render different weights">
       <p-button-tile [label]="'Some label'" [description]="'Weight regular'" [weight]="'regular'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -73,7 +69,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render background='light' on light background">
+    <div class="playground light auto-layout" title="should render background='light'">
       <p-button-tile [label]="'Some label'" [description]="'Background light'" [background]="'light'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -84,7 +80,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render different aspect ratios on light background">
+    <div class="playground light auto-layout" title="should render different aspect ratios">
       <p-button-tile [label]="'Some label'" [description]="'Aspect ratio 16:9'" aspect-ratio="16:9">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -131,7 +127,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render compact on light background">
+    <div class="playground light auto-layout" title="should render compact">
       <p-button-tile [label]="'Some label'" [description]="'Compact'" [compact]="true">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -154,7 +150,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render align top on light background">
+    <div class="playground light auto-layout" title="should render align top">
       <p-button-tile [label]="'Some label'" [description]="'Align top'" [align]="'top'" [compact]="true">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -165,7 +161,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render without gradient">
+    <div class="playground light auto-layout" title="should render without gradient">
       <p-button-tile [label]="'Some label'" [description]="'Gradient false'" [gradient]="false">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD/zP9RsvrtAAAAHElEQVQY02Ng4GBgYGFgoBn9HwwOwPhDlqaTPwBKng+1NhhBkgAAAABJRU5ErkJggg=='"
@@ -176,7 +172,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render with readable overflowing text on different backgrounds">
+    <div class="playground light auto-layout" title="should render with readable overflowing text on different backgrounds">
       <p-button-tile
         [label]="'Some label'"
         [description]="'Some long text on white background to overflow the box. Some long text on white background  to overflow the box. Some long text on white background  to overflow the box.'"
@@ -211,8 +207,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
 
     <div
-      class="playground light grid"
-      title="should render with picture tag and multiple sources depending on viewport on light background"
+      class="playground light auto-layout"
+      title="should render with picture tag and multiple sources depending on viewport"
     >
       <p-button-tile [label]="'Some label'" [description]="'Picture tag'">
         <picture>
@@ -226,7 +222,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light container-large" title="should render with max width description text on light background">
+    <div class="playground light" title="should render with max width description text">
       <p-button-tile
         [label]="'Some label'"
         [description]="'Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles.'"
@@ -241,7 +237,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render disabled button-tile on light background">
+    <div class="playground light auto-layout" title="should render disabled button-tile">
       <p-button-tile [label]="'Some Label'" [description]="'Disabled'" [disabled]="true">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -252,7 +248,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render compact disabled button-tile on light background">
+    <div class="playground light auto-layout" title="should render compact disabled button-tile">
       <p-button-tile [label]="'Some Label'" [description]="'Disabled'" [disabled]="true" [compact]="true">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -263,7 +259,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render loading button-tile on light background">
+    <div class="playground light auto-layout" title="should render loading button-tile">
       <p-button-tile [label]="'Some Label'" [description]="'Loading'" [loading]="true">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -274,7 +270,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render loading compact button-tile on light background">
+    <div class="playground light auto-layout" title="should render loading compact button-tile">
       <p-button-tile [label]="'Some Label'" [description]="'Loading'" [loading]="true" [compact]="true">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -285,7 +281,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render button-tile with specific icon on light background">
+    <div class="playground light auto-layout" title="should render button-tile with specific icon">
       <p-button-tile [label]="'Some Label'" [description]="'Icon'" [icon]="'delete'">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
@@ -296,7 +292,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-button-tile>
     </div>
 
-    <div class="playground light grid" title="should render compact button-tile with specific icon on light background">
+    <div class="playground light auto-layout" title="should render compact button-tile with specific icon">
       <p-button-tile [label]="'Some Label'" [description]="'Icon'" [icon]="'delete'" [compact]="true">
         <img
           [src]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='"
