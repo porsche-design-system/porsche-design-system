@@ -32,7 +32,9 @@
   });
 
   document.querySelector('#btn-remove').addEventListener('click', () => {
-    multiSelect.lastChild.remove();
+    if (multiSelect.children > 0) {
+      multiSelect.lastChild.remove();
+    }
   });
 
   function addOption() {
