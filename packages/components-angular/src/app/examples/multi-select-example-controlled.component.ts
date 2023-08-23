@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type { MultiSelectUpdateEvent } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-multi-select-example-controlled',
   template: `
-    <p-multi-select name="options" [value]="selectedValues" (update)="handleUpdate($event)">
+    <p-multi-select name="options" label="Some Label" [value]="selectedValues" (update)="handleUpdate($event)">
       <p-multi-select-option value="a">Option A</p-multi-select-option>
       <p-multi-select-option value="b">Option B</p-multi-select-option>
       <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -16,6 +16,7 @@ import type { MultiSelectUpdateEvent } from '@porsche-design-system/components-a
 
     <p>{{ debugText }}</p>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MultiSelectExampleControlledComponent {
   selectedValues: (string | number)[] = [];

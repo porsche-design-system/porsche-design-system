@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-multi-select-example',
   template: `
     <form (submit)="handleSubmit($event)">
-      <p-multi-select name="options">
+      <p-multi-select name="options" label="Some Label">
         <p-multi-select-option value="a">Option A</p-multi-select-option>
         <p-multi-select-option value="b">Option B</p-multi-select-option>
         <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -17,6 +17,7 @@ import { Component } from '@angular/core';
 
     <p>Last submitted data: {{ lastSubmittedData }}</p>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MultiSelectExampleComponent {
   lastSubmittedData: string = 'none';

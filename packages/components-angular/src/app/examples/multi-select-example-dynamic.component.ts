@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type { MultiSelectUpdateEvent } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -14,10 +14,10 @@ import type { MultiSelectUpdateEvent } from '@porsche-design-system/components-a
         placeholder="e.g. 1,2"
       />
     </label>
-    <button id="btn-input-value" type="button" (click)="onSetValue()">Set Value</button>
-    <button id="btn-reset" type="button" (click)="onResetValue()">Reset value</button>
+    <button type="button" (click)="onSetValue()">Set Value</button>
+    <button type="button" (click)="onResetValue()">Reset value</button>
 
-    <p-multi-select name="options" [value]="selectedValues" (update)="handleUpdate($event)">
+    <p-multi-select name="options" label="Some Label" [value]="selectedValues" (update)="handleUpdate($event)">
       <p-multi-select-option *ngFor="let idx of optionIndices" [value]="(idx + 1).toString()"
         >Option {{ idx + 1 }}</p-multi-select-option
       >
@@ -26,6 +26,7 @@ import type { MultiSelectUpdateEvent } from '@porsche-design-system/components-a
     <button type="button" (click)="onAddOption()">Add option</button>
     <button type="button" (click)="onRemoveOption()">Remove last option</button>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MultiSelectExampleDynamicComponent {
   selectedValues: (string | number)[] = [];
