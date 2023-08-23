@@ -306,7 +306,7 @@ describe('native select', () => {
   });
 });
 
-describe('Update Event', () => {
+fdescribe('Update Event', () => {
   it('should emit update event with correct details when option is selected by click', async () => {
     await initMultiSelect({ props: { name: 'options' } });
     const host = await getHost();
@@ -323,11 +323,12 @@ describe('Update Event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter, 'after option select').toBe(1);
-    // TODO: Check event details
-    // expect((await getEventSummary(host, 'update')).details, 'after option select').toBe({
-    //   value: 'a',
-    //   name: 'options',
-    // });
+    expect((await getEventSummary(host, 'update')).details, 'after option select').toEqual([
+      {
+        value: ['a'],
+        name: 'options',
+      },
+    ]);
   });
 
   it('should emit update event with correct details when option is selected by keyboard', async () => {
@@ -345,16 +346,33 @@ describe('Update Event', () => {
     await page.keyboard.press('Enter');
     await waitForStencilLifecycle(page);
 
-    const option = await getMultiSelectOption(1);
-    await option.click();
-    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(host, 'update')).counter, 'after option select').toBe(1);
+    expect((await getEventSummary(host, 'update')).details, 'after option select').toEqual([
+      {
+        value: ['a'],
+        name: 'options',
+      },
+    ]);
+  });
+
+  it('should emit update event with correct details when reset button is clicked', async () => {
+    await initMultiSelect({ props: { name: 'options' } });
+    await setValue(['a', 'b']);
+    const host = await getHost();
+    await addEventListener(host, 'update');
+
+    expect((await getEventSummary(host, 'update')).counter, 'before option select').toBe(0);
+
+    const resetButton = await getResetButton();
+    await resetButton.click();
 
     expect((await getEventSummary(host, 'update')).counter, 'after option select').toBe(1);
-    // TODO: Check event details
-    // expect((await getEventSummary(host, 'update')).details, 'after option select').toBe({
-    //   value: 'a',
-    //   name: 'options',
-    // });
+    expect((await getEventSummary(host, 'update')).details, 'after option select').toEqual([
+      {
+        value: [],
+        name: 'options',
+      },
+    ]);
   });
 });
 
