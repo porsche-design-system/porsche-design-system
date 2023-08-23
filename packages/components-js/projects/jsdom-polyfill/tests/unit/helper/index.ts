@@ -85,10 +85,10 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-modal': `<p-modal heading="Some heading" open="true"></p-modal>`,
   'p-model-signature': `<p-model-signature></p-model-signature>`,
   'p-multi-select': `<p-multi-select name="name">
-          <p-multi-select-option value="a">Option A</p-multi-select-option>
-          <p-multi-select-option value="b">Option B</p-multi-select-option>
-          <p-multi-select-option value="c">Option C</p-multi-select-option>
-        </p-multi-select>`,
+    <p-multi-select-option value="a">Option A</p-multi-select-option>
+    <p-multi-select-option value="b">Option B</p-multi-select-option>
+    <p-multi-select-option value="c">Option C</p-multi-select-option>
+  </p-multi-select>`,
   'p-pagination': `<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>`,
   'p-popover': `<p-popover>Some Popover Content</p-popover>`,
   'p-radio-button-wrapper': `<p-radio-button-wrapper label="Some label">
