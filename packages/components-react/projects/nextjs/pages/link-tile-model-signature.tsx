@@ -5,13 +5,9 @@ import { PLink, PLinkTileModelSignature } from '@porsche-design-system/component
 
 const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
   const style = `
-    .container-large {
-      max-width: 800px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min-content, 400px));
-      gap: 10px;
+    p-link-tile-model-signature {
+      width: 100%;
+      max-width: 300px;
     }
   `;
 
@@ -19,7 +15,7 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="playground light grid" title="should render default on light background">
+      <div className="playground light auto-layout" title="should render default">
         <PLinkTileModelSignature heading="Default">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -47,7 +43,7 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
         </PLinkTileModelSignature>
       </div>
 
-      <div className="playground light grid" title="should render with description on light background">
+      <div className="playground light auto-layout" title="should render with description">
         <PLinkTileModelSignature heading="With description" description="Some description">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -60,7 +56,7 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
         </PLinkTileModelSignature>
       </div>
 
-      <div className="playground light grid" title="should render different models on light background">
+      <div className="playground light auto-layout" title="should render different models">
         <PLinkTileModelSignature heading="Model 718" model="718">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -161,7 +157,7 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
         </PLinkTileModelSignature>
       </div>
 
-      <div className="playground light grid" title="should render different weights on light background">
+      <div className="playground light auto-layout" title="should render different weights">
         <PLinkTileModelSignature heading="Weight regular" weight="regular">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -187,7 +183,7 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
         </PLinkTileModelSignature>
       </div>
 
-      <div className="playground light grid" title="should render different aspect ratios on light background">
+      <div className="playground light auto-layout" title="should render different aspect ratios">
         <PLinkTileModelSignature heading="Aspect ratio 16:9" aspectRatio="16:9">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -243,7 +239,7 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
         </PLinkTileModelSignature>
       </div>
 
-      <div className="playground light grid" title="should render different link directions on light background">
+      <div className="playground light auto-layout" title="should render different link directions">
         <PLinkTileModelSignature heading="Link direction column" linkDirection="column">
           <Image
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -269,7 +265,7 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
         </PLinkTileModelSignature>
       </div>
 
-      <div className="playground light grid" title="should render with readable overflowing text on different backgrounds">
+      <div className="playground light auto-layout" title="should render with readable overflowing text on different backgrounds">
         <PLinkTileModelSignature
           heading="Some long text on white background to overflow the box. Some long text on white background to overflow the box. Some long text on white background to overflow the box."
         >
@@ -321,8 +317,8 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
       </div>
 
       <div
-        className="playground light grid"
-        title="should render with picture tag and multiple sources depending on viewport on light background"
+        className="playground light auto-layout"
+        title="should render with picture tag and multiple sources depending on viewport"
       >
         <PLinkTileModelSignature heading="Some heading" description="Picture tag">
           <picture>
@@ -338,7 +334,7 @@ const LinkTileModelSignaturePage: NextPage = (): JSX.Element => {
         </PLinkTileModelSignature>
       </div>
 
-      <div className="playground light container-large" title="should render with max width description text on light background">
+      <div className="playground light auto-layout" title="should render with max width description text">
         <PLinkTileModelSignature
           heading="Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles."
         >
