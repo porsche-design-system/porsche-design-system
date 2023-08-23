@@ -17,7 +17,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://designsystem.porsche.com",
   "main": "cjs/index.cjs",
-  "module": "index-legacy.js",
+  "module": "index.js",
   "types": "esm/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
