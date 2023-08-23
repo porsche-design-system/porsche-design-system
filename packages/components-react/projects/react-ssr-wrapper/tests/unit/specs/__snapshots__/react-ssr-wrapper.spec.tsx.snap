@@ -5672,17 +5672,17 @@ exports[`should render dsr component for PPinCode 1`] = `
   >
     <style>
       :host {
-  display: block;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 input {
+  display: block !important;
+  width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   margin: 0 !important;
   outline: 0 !important;
-  text-align: center !important;
-  width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: border-box !important;
@@ -5693,16 +5693,17 @@ input {
   text-indent: 0 !important;
   color: #010205 !important;
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
-  -moz-appearance: textfield !important;
-}
-input::-webkit-inner-spin-button {
-  display: none !important;
+  text-align: center !important;
 }
 input:disabled {
   cursor: not-allowed !important;
   color: #949598 !important;
   border-color: #949598 !important;
   -webkit-text-fill-color: #949598 !important;
+}
+input[readonly] {
+  border-color: #D8D8DB !important;
+  background: #D8D8DB !important;
 }
 ::slotted(input) {
   position: absolute !important;
@@ -5712,6 +5713,8 @@ input:disabled {
 }
 .pin-code-container {
   display: flex;
+  position: relative;
+  width: fit-content;
   gap: 8px;
   justify-content: start;
   flex-wrap: wrap;
@@ -5721,6 +5724,7 @@ input:disabled {
   flex-direction: column;
   gap: 4px;
   position: relative;
+  margin-bottom: 4px;
 }
 .label__text {
   display: block;
@@ -5754,44 +5758,61 @@ input:disabled {
     </style>
     <label
       class="label"
+      for="current-input"
+    />
+    <div
+      class="pin-code-container"
     >
-      <div
-        class="pin-code-container"
-      >
-        <input
-          autocomplete="one-time-code"
-          inputmode="numeric"
-          maxlength="1"
-          pattern="\\d*"
-          type="text"
-          value=""
-        />
-        <input
-          autocomplete="one-time-code"
-          inputmode="numeric"
-          maxlength="1"
-          pattern="\\d*"
-          type="text"
-          value=""
-        />
-        <input
-          autocomplete="one-time-code"
-          inputmode="numeric"
-          maxlength="1"
-          pattern="\\d*"
-          type="text"
-          value=""
-        />
-        <input
-          autocomplete="one-time-code"
-          inputmode="numeric"
-          maxlength="1"
-          pattern="\\d*"
-          type="text"
-          value=""
-        />
-      </div>
-    </label>
+      <input
+        aria-busy="false"
+        aria-describedby="label description state-message"
+        aria-invalid="false"
+        aria-label="1-4"
+        autocomplete="one-time-code"
+        id="current-input"
+        inputmode="numeric"
+        maxlength="1"
+        pattern="\\d*"
+        type="text"
+        value=""
+      />
+      <input
+        aria-busy="false"
+        aria-describedby="label description state-message"
+        aria-invalid="false"
+        aria-label="2-4"
+        autocomplete="one-time-code"
+        inputmode="numeric"
+        maxlength="1"
+        pattern="\\d*"
+        type="text"
+        value=""
+      />
+      <input
+        aria-busy="false"
+        aria-describedby="label description state-message"
+        aria-invalid="false"
+        aria-label="3-4"
+        autocomplete="one-time-code"
+        inputmode="numeric"
+        maxlength="1"
+        pattern="\\d*"
+        type="text"
+        value=""
+      />
+      <input
+        aria-busy="false"
+        aria-describedby="label description state-message"
+        aria-invalid="false"
+        aria-label="4-4"
+        autocomplete="one-time-code"
+        inputmode="numeric"
+        maxlength="1"
+        pattern="\\d*"
+        type="text"
+        value=""
+      />
+    </div>
   </template>
   Some child
 </p-pin-code>
