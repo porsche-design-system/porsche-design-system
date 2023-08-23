@@ -49,7 +49,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
     </div>
 
-    <div class="playground light" title="should show different colors of divider with light theme">
+    <div class="playground light" title="should show different colors of divider">
       <p-divider></p-divider>
       <br />
       <p-divider [color]="'contrast-medium'"></p-divider>
@@ -61,20 +61,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-divider [color]="'neutral-contrast-medium'"></p-divider>
       <br />
       <p-divider [color]="'neutral-contrast-high'"></p-divider>
-    </div>
-
-    <div class="playground dark" title="should show different colors of divider with dark theme">
-      <p-divider [theme]="'dark'"></p-divider>
-      <br />
-      <p-divider [theme]="'dark'" [color]="'contrast-medium'"></p-divider>
-      <br />
-      <p-divider [theme]="'dark'" [color]="'contrast-high'"></p-divider>
-      <br />
-      <p-divider [theme]="'dark'" [color]="'neutral-contrast-low'"></p-divider>
-      <br />
-      <p-divider [theme]="'dark'" [color]="'neutral-contrast-medium'"></p-divider>
-      <br />
-      <p-divider [theme]="'dark'" [color]="'neutral-contrast-high'"></p-divider>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

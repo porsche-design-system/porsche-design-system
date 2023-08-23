@@ -51,7 +51,7 @@ const DividerPage: NextPage = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="playground light" title="should show different colors of divider with light theme">
+      <div className="playground light" title="should show different colors of divider">
         <PDivider />
         <br />
         <PDivider color="contrast-medium" />
@@ -63,20 +63,6 @@ const DividerPage: NextPage = (): JSX.Element => {
         <PDivider color="neutral-contrast-medium" />
         <br />
         <PDivider color="neutral-contrast-high" />
-      </div>
-
-      <div className="playground dark" title="should show different colors of divider with dark theme">
-        <PDivider theme="dark" />
-        <br />
-        <PDivider theme="dark" color="contrast-medium" />
-        <br />
-        <PDivider theme="dark" color="contrast-high" />
-        <br />
-        <PDivider theme="dark" color="neutral-contrast-low" />
-        <br />
-        <PDivider theme="dark" color="neutral-contrast-medium" />
-        <br />
-        <PDivider theme="dark" color="neutral-contrast-high" />
       </div>
     </>
   );
