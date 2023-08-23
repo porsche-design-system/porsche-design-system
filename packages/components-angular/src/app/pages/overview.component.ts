@@ -413,9 +413,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
       <div class="playground light" title="should render default multi-select with custom prefix">
         <my-prefix-p-multi-select p-multi-select [name]="'options'" [label]="'Some label'">
-          <p-multi-select-option [value]="'a'">Option A</p-multi-select-option>
-          <p-multi-select-option [value]="'b'">Option B</p-multi-select-option>
-          <p-multi-select-option [value]="'c'">Option C</p-multi-select-option>
+          <my-prefix-p-multi-select-option p-multi-select-option [value]="'a'">Option A</my-prefix-p-multi-select-option>
+          <my-prefix-p-multi-select-option p-multi-select-option [value]="'b'">Option B</my-prefix-p-multi-select-option>
+          <my-prefix-p-multi-select-option p-multi-select-option [value]="'c'">Option C</my-prefix-p-multi-select-option>
         </my-prefix-p-multi-select>
       </div>
 
