@@ -24,7 +24,7 @@ it('should have working events', async () => {
   const debugEl = document.querySelector('#debug');
   expect(debugEl.innerHTML).toBe('Event Counter: <span>0</span>');
 
-  const input = getByLabelTextShadowed('Some label. 1 of 4');
+  const input = getByLabelTextShadowed('Some label');
   await userEvent.click(input);
   await userEvent.keyboard('1');
   expect(debugEl.innerHTML).toBe('Event Counter: <span>1</span>');
