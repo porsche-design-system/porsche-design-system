@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getSelectOptionStyles() should return correct css for theme: dark and additionalOptionJSSStyle: { color: 'black' } 1`] = `
+exports[`getSelectOptionStyles() should return correct css for theme: dark and additionalOptionJssStyle: { color: 'black' } 1`] = `
 {
   "option": {
     "&--disabled": {
@@ -50,7 +50,7 @@ exports[`getSelectOptionStyles() should return correct css for theme: dark and a
 }
 `;
 
-exports[`getSelectOptionStyles() should return correct css for theme: dark and additionalOptionJSSStyle: undefined 1`] = `
+exports[`getSelectOptionStyles() should return correct css for theme: dark and additionalOptionJssStyle: undefined 1`] = `
 {
   "option": {
     "&--disabled": {
@@ -100,7 +100,7 @@ exports[`getSelectOptionStyles() should return correct css for theme: dark and a
 }
 `;
 
-exports[`getSelectOptionStyles() should return correct css for theme: light and additionalOptionJSSStyle: { color: 'black' } 1`] = `
+exports[`getSelectOptionStyles() should return correct css for theme: light and additionalOptionJssStyle: { color: 'black' } 1`] = `
 {
   "option": {
     "&--disabled": {
@@ -150,7 +150,7 @@ exports[`getSelectOptionStyles() should return correct css for theme: light and 
 }
 `;
 
-exports[`getSelectOptionStyles() should return correct css for theme: light and additionalOptionJSSStyle: undefined 1`] = `
+exports[`getSelectOptionStyles() should return correct css for theme: light and additionalOptionJssStyle: undefined 1`] = `
 {
   "option": {
     "&--disabled": {
