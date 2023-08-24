@@ -1,6 +1,13 @@
 import type { JssStyle } from 'jss';
 import type { GetJssStyleFunction } from '../../utils';
-import { buildResponsiveStyles, getCss, isHighContrastMode, mergeDeep, parseJSON } from '../../utils';
+import {
+  buildResponsiveStyles,
+  getCss,
+  isHighContrastMode,
+  mergeDeep,
+  parseJSON,
+  scrollShadowColor,
+} from '../../utils';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import {
   borderRadiusMedium,
@@ -29,6 +36,9 @@ const { primaryColor: darkThemePrimaryColor, contrastHighColor: darkThemeContras
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
+const marginTopBottom = 'clamp(16px, 7vh, 192px)';
+export const footerShadowClass = 'footer--shadow';
+
 export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean): JssStyle => {
   return fullscreen
     ? {
@@ -42,7 +52,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         minWidth: '276px', // on viewport 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
         maxWidth: '1535.5px', // on viewport 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
         minHeight: 'auto',
-        margin: `clamp(16px, 7vh, 192px) ${gridExtendedOffsetBase}`,
+        margin: `${marginTopBottom} ${gridExtendedOffsetBase}`,
         borderRadius: borderRadiusMedium,
       };
 };
@@ -83,10 +93,12 @@ export const getComponentCss = (
   isOpen: boolean,
   isFullscreen: BreakpointCustomizable<boolean>,
   hasDismissButton: boolean,
-  hasHeader: boolean
+  hasHeader: boolean,
+  hasFooter: boolean
 ): string => {
   const isFullscreenForXlAndXxl = isFullscreenForXl(isFullscreen);
   const duration = isOpen ? '.6s' : '.2s';
+  const contentPadding = '32px';
 
   return getCss({
     '@global': {
@@ -112,8 +124,8 @@ export const getComponentCss = (
         }),
         overflowY: 'auto', // overrideable
       },
-      '::slotted': addImportantToEachRule({
-        ...mergeDeep(
+      '::slotted': addImportantToEachRule(
+        mergeDeep(
           getSlottedJssStyle(32, hasHeader, hasDismissButton),
           buildResponsiveStyles(isFullscreen, (fullscreenValue: boolean) => ({
             [`&(.${stretchToFullModalWidthClassName}`]: {
@@ -125,8 +137,8 @@ export const getComponentCss = (
               },
             },
           }))
-        ),
-      }),
+        )
+      ),
       h2: {
         ...headingLargeStyle,
         margin: 0,
@@ -140,10 +152,12 @@ export const getComponentCss = (
         transform: isOpen ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
         opacity: isOpen ? 1 : 0,
         transition: `opacity ${duration} ${transitionTimingFunction},transform ${duration} ${transitionTimingFunction}`,
-        padding: hasDismissButton ? `${pxToRemWithUnit(32)} 32px 32px 32px` : '32px', // rem value needed to prevent overlapping of close button and contents in scaling mode
+        paddingTop: hasDismissButton ? pxToRemWithUnit(32) : contentPadding, // rem value needed to prevent overlapping of close button and contents in scaling mode
+        ...(!hasFooter && { paddingBottom: contentPadding }),
         background: backgroundColor,
         outline: isHighContrastMode ? '1px solid transparent' : 0,
-        '&:focus::before': {
+        // ::after to be above sticky footer without z-index games
+        '&:focus::after': {
           content: '""',
           position: 'fixed',
           border: `${borderWidthBase} solid`,
@@ -161,11 +175,32 @@ export const getComponentCss = (
           margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridExtendedOffsetBase}`,
         },
       },
-      buildResponsiveStyles(isFullscreen, getFullscreenJssStyles) as any
+      buildResponsiveStyles(isFullscreen, getFullscreenJssStyles) as any // potentially needs to be merged with mediaQueryXl
     ),
     ...(hasHeader && {
       header: {
-        padding: '0 0 8px',
+        padding: `0 ${contentPadding} 8px`,
+      },
+    }),
+    content: {
+      ...(hasFooter && {
+        position: 'relative', // to make sure content isn't above sticky footer, but might affect consumer's absolute positioning
+        zIndex: 0,
+      }),
+      padding: `0 ${contentPadding}`,
+    },
+    ...(hasFooter && {
+      footer: {
+        position: 'sticky',
+        background: backgroundColor,
+        padding: contentPadding,
+        bottom: 0,
+        borderBottomLeftRadius: borderRadiusMedium,
+        borderBottomRightRadius: borderRadiusMedium,
+      },
+      [footerShadowClass]: {
+        boxShadow: `${scrollShadowColor} 0 -5px 10px`,
+        clipPath: 'inset(-20px 0 0 0)', // crop leaking box-shadow on left and right side
       },
     }),
     ...(hasDismissButton && {

@@ -1,4 +1,4 @@
-# Dependencies 07.08.2023
+# Dependencies 23.08.2023
 
 ## Overview of Framework Versions
 
@@ -6,7 +6,7 @@
 | ------- | -------- | ---------------------- |
 | Angular | 15.2.9   | 16.1.6                 |
 | React   | 18.2.0   | 18.2.0                 |
-| Next.js | 13.4.13  | 13.4.12 (React 18.2.0) |
+| Next.js | 13.4.19  | 13.4.12 (React 18.2.0) |
 
 ## Vue
 

@@ -121,12 +121,12 @@ export class Tabs {
             </button>
           ))}
         </PrefixedTagNames.pTabsBar>
-        <slot onSlotchange={this.onSlotchange} />
+        <slot onSlotchange={this.onSlotChange} />
       </Host>
     );
   }
 
-  private onSlotchange = (): void => {
+  private onSlotChange = (): void => {
     this.defineTabsItemElements();
   };
 

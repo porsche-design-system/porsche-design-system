@@ -210,11 +210,11 @@ export class SelectWrapperDropdown {
                       id={`option-${index}`}
                       role="option"
                       class={{
-                        ['option']: true,
-                        ['option--selected']: selected,
-                        ['option--highlighted']: highlighted,
-                        ['option--disabled']: disabled,
-                        ['option--hidden']: hidden || initiallyHidden,
+                        option: true,
+                        'option--selected': selected,
+                        'option--highlighted': highlighted,
+                        'option--disabled': disabled,
+                        'option--hidden': hidden || initiallyHidden,
                       }}
                       onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
                       {...getOptionAriaAttributes(selected, disabled, hidden, !!value)}

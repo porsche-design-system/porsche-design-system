@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-styles-focus-example',
   styles: [
     `
-      @use '@porsche-design-system/components-js/styles' as *;
+      @use '@porsche-design-system/components-angular/styles' as *;
 
       // Wrapper
       .wrapper {

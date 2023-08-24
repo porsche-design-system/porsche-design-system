@@ -11,6 +11,9 @@
 # dependencies
 /node_modules
 
+# generated
+/src/app/pages/generated
+
 # testing
 /tests/vrt/results
 

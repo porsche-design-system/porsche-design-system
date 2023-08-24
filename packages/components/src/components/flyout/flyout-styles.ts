@@ -1,4 +1,4 @@
-import { getCss, isThemeDark, type Theme } from '../../utils';
+import { getCss, isThemeDark, scrollShadowColor, scrollShadowColorDark, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
   getFrostedGlassBackgroundJssStyles,
@@ -11,8 +11,6 @@ import { FLYOUT_Z_INDEX } from '../../constants';
 import { spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import type { FlyoutPosition } from './flyout-utils';
 
-export const flyoutBoxShadowColor = 'rgba(204, 204, 204, 0.35)';
-export const flyoutBoxShadowColorDark = 'rgba(0, 0, 0, 0.6)';
 export const headerShadowClass = 'header--shadow';
 export const footerShadowClass = 'footer--shadow';
 
@@ -36,7 +34,7 @@ export const getComponentCss = (
   const isPositionLeft = position === 'left';
   const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidLarge}`;
   const isDark = isThemeDark(theme);
-  const shadowColor = isDark ? flyoutBoxShadowColorDark : flyoutBoxShadowColor;
+  const shadowColor = isDark ? scrollShadowColorDark : scrollShadowColor;
   const transparentColor = isDark ? 'rgba(14, 14, 18, 0)' : 'rgba(255, 255, 255, 0)';
 
   return getCss({
@@ -70,7 +68,7 @@ export const getComponentCss = (
       zIndex: 1,
     },
     [headerShadowClass]: {
-      boxShadow: `${isDark ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px 5px 10px`,
+      boxShadow: `${isDark ? scrollShadowColorDark : scrollShadowColor} 0px 5px 10px`,
     },
     ...(hasHeader && {
       'header-content': {
@@ -138,7 +136,7 @@ export const getComponentCss = (
         bottom: 0,
       },
       [footerShadowClass]: {
-        boxShadow: `${isDark ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px -5px 10px`,
+        boxShadow: `${isDark ? scrollShadowColorDark : scrollShadowColor} 0px -5px 10px`,
       },
     }),
     ...(hasSubFooter && {

@@ -5,7 +5,7 @@ import { npmDistTmpSubPath } from '../../../../components-wrapper/environment';
 import { render } from '@testing-library/react';
 
 const componentsJsFilePath = require.resolve('@porsche-design-system/components-js');
-const packageDir = path.resolve(path.dirname(componentsJsFilePath), '../..');
+const packageDir = path.resolve(path.dirname(componentsJsFilePath), '../../..');
 const tmpFilePath = path.resolve(packageDir, npmDistTmpSubPath, 'index.js');
 const fileContent = fs.readFileSync(tmpFilePath, 'utf8') + 'porscheDesignSystem.load()';
 
