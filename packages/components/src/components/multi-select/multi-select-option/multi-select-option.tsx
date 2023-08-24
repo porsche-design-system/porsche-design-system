@@ -1,8 +1,7 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../../utils';
 import { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
-import type { PropTypes } from '../../../types';
-import { ValidatorFunction } from '../../../types';
+import type { PropTypes, ValidatorFunction } from '../../../types';
 import { getComponentCss } from './multi-select-option-styles';
 import { getOptionAriaAttributes } from '../../../utils/a11y/select/select-aria';
 
