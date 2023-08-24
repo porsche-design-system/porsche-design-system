@@ -1,9 +1,44 @@
 /* Auto Generated File */
 import { PSelectWrapper } from '@porsche-design-system/components-react';
+import { useEffect, useState } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady';
 
 export const SelectWrapperPage = (): JSX.Element => {
+  const [allReady, setAllReady] = useState(false);
+  useEffect(() => {
+    pollComponentsReady().then(() => {
+      setAllReady(true);
+    });
+  }, []);
+
   return (
     <>
+      <div
+        className="playground light"
+        title="should render in focus state and be open"
+        style={{ paddingBottom: 'calc(1rem + 422px)' }}
+      >
+        <PSelectWrapper label="Some label">
+          <select>
+            <option value="a">
+              Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+              displaying correctly. Also, the selected icon checkmark should show up on the right of the text, aligned to the
+              top.
+            </option>
+            <option value="b">Option B</option>
+            <option value="c">Option C</option>
+            <option value="d">Option D</option>
+            <option value="e">Option E</option>
+            <option value="f">Option F</option>
+            <option value="g">Option G</option>
+            <option value="h">Option H</option>
+            <option value="i">Option I</option>
+            <option value="j">Option J</option>
+            <option value="k">Option K</option>
+          </select>
+        </PSelectWrapper>
+      </div>
+
       <div className="playground light" title="should render native dropdown with label">
         <PSelectWrapper label="Native" native={true}>
           <select>
@@ -251,32 +286,6 @@ export const SelectWrapperPage = (): JSX.Element => {
             <option value="a">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</option>
             <option value="b">sed diam nonumy eirmod tempor invidunt ut labore</option>
             <option value="c">et dolore magna aliquyam erat, sed diam voluptua</option>
-          </select>
-        </PSelectWrapper>
-      </div>
-
-      <div
-        className="playground light"
-        title="should render in focus state and be open"
-        style={{ paddingBottom: 'calc(1rem + 422px)' }}
-      >
-        <PSelectWrapper label="Some label" id="last-select-on-page">
-          <select id="open-options">
-            <option value="a">
-              Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-              displaying correctly. Also, the selected icon checkmark should show up on the right of the text, aligned to the
-              top.
-            </option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
-            <option value="d">Option D</option>
-            <option value="e">Option E</option>
-            <option value="f">Option F</option>
-            <option value="g">Option G</option>
-            <option value="h">Option H</option>
-            <option value="i">Option I</option>
-            <option value="j">Option J</option>
-            <option value="k">Option K</option>
           </select>
         </PSelectWrapper>
       </div>

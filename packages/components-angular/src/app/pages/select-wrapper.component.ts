@@ -1,9 +1,36 @@
 /* Auto Generated File */
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-select-wrapper',
   template: `
+    <div
+      class="playground light"
+      title="should render in focus state and be open"
+      style="padding-bottom: calc(1rem + 422px)"
+    >
+      <p-select-wrapper [label]="'Some label'">
+        <select>
+          <option [value]="'a'">
+            Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+            displaying correctly. Also, the selected icon checkmark should show up on the right of the text, aligned to the
+            top.
+          </option>
+          <option [value]="'b'">Option B</option>
+          <option [value]="'c'">Option C</option>
+          <option [value]="'d'">Option D</option>
+          <option [value]="'e'">Option E</option>
+          <option [value]="'f'">Option F</option>
+          <option [value]="'g'">Option G</option>
+          <option [value]="'h'">Option H</option>
+          <option [value]="'i'">Option I</option>
+          <option [value]="'j'">Option J</option>
+          <option [value]="'k'">Option K</option>
+        </select>
+      </p-select-wrapper>
+    </div>
+
     <div class="playground light" title="should render native dropdown with label">
       <p-select-wrapper [label]="'Native'" [native]="true">
         <select>
@@ -254,33 +281,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </select>
       </p-select-wrapper>
     </div>
-
-    <div
-      class="playground light"
-      title="should render in focus state and be open"
-      style="padding-bottom: calc(1rem + 422px)"
-    >
-      <p-select-wrapper [label]="'Some label'" id="last-select-on-page">
-        <select id="open-options">
-          <option [value]="'a'">
-            Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-            displaying correctly. Also, the selected icon checkmark should show up on the right of the text, aligned to the
-            top.
-          </option>
-          <option [value]="'b'">Option B</option>
-          <option [value]="'c'">Option C</option>
-          <option [value]="'d'">Option D</option>
-          <option [value]="'e'">Option E</option>
-          <option [value]="'f'">Option F</option>
-          <option [value]="'g'">Option G</option>
-          <option [value]="'h'">Option H</option>
-          <option [value]="'i'">Option I</option>
-          <option [value]="'j'">Option J</option>
-          <option [value]="'k'">Option K</option>
-        </select>
-      </p-select-wrapper>
-    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectWrapperComponent {}
+export class SelectWrapperComponent implements OnInit {
+  public allReady: boolean = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnInit() {
+    componentsReady().then(() => {
+      this.allReady = true;
+      this.cdr.markForCheck();
+    });
+  }
+}

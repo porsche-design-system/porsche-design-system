@@ -11,28 +11,6 @@ export const waitForComponentsReady = (page: Page): Promise<number> => {
   return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
 };
 
-export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
-  const selectorParts = selector.split('>>>');
-  const shadowRootSelectors =
-    selectorParts.length > 1
-      ? selectorParts
-          .slice(1)
-          .map((x) => `.shadowRoot.querySelector('${x.trim()}')`)
-          .join('')
-      : '';
-  return (
-    await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
-  ).asElement() as ElementHandle;
-};
-
-export const openSelectOptions = async (page: Page): Promise<void> => {
-  const btn = await selectNode(page, 'p-select-wrapper#last-select-on-page >>> p-select-wrapper-dropdown >>> button');
-  if (btn) {
-    await btn.click();
-    await waitForComponentsReady(page);
-  }
-};
-
 type Options = {
   javaScriptDisabled?: boolean;
   forcedColorsEnabled?: boolean;
@@ -87,8 +65,6 @@ export const setupScenario = async (
   await page.setViewportSize({ width: viewportWidth, height: 600 });
   await page.goto(url);
   await waitForComponentsReady(page);
-
-  // await openSelectOptions(page);
 
   if (forceComponentTheme) {
     await page.evaluate((theme) => {
