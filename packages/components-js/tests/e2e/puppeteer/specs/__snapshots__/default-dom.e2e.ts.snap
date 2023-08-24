@@ -314,7 +314,7 @@ exports[`should have no basic DOM regression for p-pagination 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-pin-code 1`] = `
-"<label class="label" for="current-input">
+"<label class="label">
 </label>
 <div class="pin-code-container">
   <input id="current-input" type="text" aria-label="1-4" aria-describedby="label description state-message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
