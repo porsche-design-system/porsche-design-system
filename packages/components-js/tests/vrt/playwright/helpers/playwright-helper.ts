@@ -10,6 +10,16 @@ export const waitForComponentsReady = (page: Page): Promise<number> => {
   return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
 };
 
+export const openPopovers = async (page: Page): Promise<void> => {
+  await page.evaluate(() => {
+    document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
+    document.querySelectorAll('p-popover, my-prefix-p-popover').forEach((popover) => {
+      const button = popover.shadowRoot.querySelector('button');
+      if (button) button.click();
+    });
+  });
+};
+
 type Options = {
   javaScriptDisabled?: boolean;
   forcedColorsEnabled?: boolean;
@@ -64,6 +74,8 @@ export const setupScenario = async (
   await page.setViewportSize({ width: viewportWidth, height: 600 });
   await page.goto(url);
   await waitForComponentsReady(page);
+
+  await openPopovers(page);
 
   if (forceComponentTheme) {
     await page.evaluate((theme) => {
