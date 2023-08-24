@@ -5672,7 +5672,7 @@ exports[`should render dsr component for PPinCode 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: inline-block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5714,13 +5714,11 @@ input[readonly] {
 .pin-code-container {
   display: flex;
   position: relative;
-  width: fit-content;
   gap: 8px;
-  justify-content: start;
   flex-wrap: wrap;
 }
 .label {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
@@ -5766,12 +5764,10 @@ input[readonly] {
       <input
         aria-busy="false"
         aria-describedby="label description state-message"
-        aria-invalid="false"
         aria-label="1-4"
         autocomplete="one-time-code"
         id="current-input"
         inputmode="numeric"
-        maxlength="1"
         pattern="\\d*"
         type="text"
         value=""
@@ -5779,11 +5775,9 @@ input[readonly] {
       <input
         aria-busy="false"
         aria-describedby="label description state-message"
-        aria-invalid="false"
         aria-label="2-4"
         autocomplete="one-time-code"
         inputmode="numeric"
-        maxlength="1"
         pattern="\\d*"
         type="text"
         value=""
@@ -5791,11 +5785,9 @@ input[readonly] {
       <input
         aria-busy="false"
         aria-describedby="label description state-message"
-        aria-invalid="false"
         aria-label="3-4"
         autocomplete="one-time-code"
         inputmode="numeric"
-        maxlength="1"
         pattern="\\d*"
         type="text"
         value=""
@@ -5803,11 +5795,9 @@ input[readonly] {
       <input
         aria-busy="false"
         aria-describedby="label description state-message"
-        aria-invalid="false"
         aria-label="4-4"
         autocomplete="one-time-code"
         inputmode="numeric"
-        maxlength="1"
         pattern="\\d*"
         type="text"
         value=""
