@@ -1,7 +1,16 @@
 /* Auto Generated File */
+import { useState } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady';
 import { Toast } from '../components';
 
 export const ToastOffsetPage = (): JSX.Element => {
+  const [allReady, setAllReady] = useState(false);
+  useEffect(() => {
+    pollComponentsReady().then(() => {
+      setAllReady(true);
+    });
+  }, []);
+
   const style = `
     .playground {
       height: 300px;
@@ -20,7 +29,7 @@ export const ToastOffsetPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render toast info on light background with custom bottom position">
-        <Toast text="Some message" />
+        <Toast />
       </div>
     </>
   );

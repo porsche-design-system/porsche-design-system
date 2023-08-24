@@ -1,8 +1,17 @@
 /* Auto Generated File */
 import { PBanner, PModal } from '@porsche-design-system/components-react';
+import { useState } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady';
 import { Toast } from '../components';
 
 export const OverviewNotificationsPage = (): JSX.Element => {
+  const [allReady, setAllReady] = useState(false);
+  useEffect(() => {
+    pollComponentsReady().then(() => {
+      setAllReady(true);
+    });
+  }, []);
+
   const style = `
     .playground {
       height: 400px;
@@ -18,7 +27,7 @@ export const OverviewNotificationsPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render notifications in correct stacking order">
-        <Toast text="The quick brown fox jumps over the lazy dog" />
+        <Toast />
 
         <PModal heading="The quick brown fox jumps over the lazy dog" open={true}>Some Content</PModal>
 

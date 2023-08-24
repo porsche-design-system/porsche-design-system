@@ -1,7 +1,16 @@
 /* Auto Generated File */
+import { useState } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady';
 import { Toast } from '../components';
 
 export const ToastBasicDarkPage = (): JSX.Element => {
+  const [allReady, setAllReady] = useState(false);
+  useEffect(() => {
+    pollComponentsReady().then(() => {
+      setAllReady(true);
+    });
+  }, []);
+
   const style = `
     .playground {
       height: 300px;
@@ -16,7 +25,7 @@ export const ToastBasicDarkPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground dark" title="should render toast info on dark background">
-        <Toast text="Some message" theme="dark" />
+        <Toast theme="dark" />
       </div>
     </>
   );

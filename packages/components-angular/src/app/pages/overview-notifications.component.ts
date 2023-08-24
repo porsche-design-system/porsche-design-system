@@ -1,6 +1,6 @@
 /* Auto Generated File */
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ToastManager } from '@porsche-design-system/components-angular';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { componentsReady, ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-overview-notifications',
@@ -30,9 +30,14 @@ import { ToastManager } from '@porsche-design-system/components-angular';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverviewNotificationsComponent implements OnInit {
-  constructor(private toastManager: ToastManager) {}
+  public allReady: boolean = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.toastManager.addMessage({ text: 'The quick brown fox jumps over the lazy dog' });
+    componentsReady().then(() => {
+      this.allReady = true;
+      this.cdr.markForCheck();
+    });
   }
 }

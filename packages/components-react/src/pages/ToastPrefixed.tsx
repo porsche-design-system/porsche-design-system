@@ -1,8 +1,17 @@
 /* Auto Generated File */
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import { useState } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady';
 import { Toast } from '../components';
 
 export const ToastPrefixedPage = (): JSX.Element => {
+  const [allReady, setAllReady] = useState(false);
+  useEffect(() => {
+    pollComponentsReady().then(() => {
+      setAllReady(true);
+    });
+  }, []);
+
   const style = `
     .playground {
       height: 300px;
@@ -18,7 +27,7 @@ export const ToastPrefixedPage = (): JSX.Element => {
 
       <PorscheDesignSystemProvider prefix="my-prefix">
         <div className="playground light" title="should render prefixed toast info on light background">
-          <Toast text="Some message" />
+          <Toast />
         </div>
       </PorscheDesignSystemProvider>
     </>
