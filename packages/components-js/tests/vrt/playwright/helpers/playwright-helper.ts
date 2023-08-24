@@ -99,7 +99,7 @@ export const setupScenario = async (
   await waitForComponentsReady(page);
 
   await openPopovers(page);
-  await openSelectOptions(page);
+  // await openSelectOptions(page);
 
   if (forceComponentTheme) {
     await page.evaluate((theme) => {
