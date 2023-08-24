@@ -1,6 +1,6 @@
 import type { FormState } from '../../../utils/form/form-state';
-import type { SelectDropdownDirection, SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
-import { determineDropdownDirection } from '../../../utils/select/select-dropdown';
+import type { SelectDropdownDirection, SelectDropdownDirectionInternal } from '../../../utils';
+import { determineDropdownDirection } from '../../../utils';
 import type { Theme } from '../../../utils';
 import { consoleWarn, removeAttribute, setAttribute, setAttributes } from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';

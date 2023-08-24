@@ -27,6 +27,7 @@ export { paramCaseToCamelCase } from './paramCaseToCamelCase';
 export * from './property-observer';
 export * from './scrolling';
 export * from './scrollLock';
+export * from './select';
 export * from './has-document';
 export * from './has-window';
 export * from './sync';

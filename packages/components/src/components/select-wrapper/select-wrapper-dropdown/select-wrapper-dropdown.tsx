@@ -37,7 +37,7 @@ import {
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
-import { determineDropdownDirection } from '../../../utils/select/select-dropdown';
+import { determineDropdownDirection } from '../../../utils';
 import {
   getFilterInputAriaAttributes,
   getListAriaAttributes,
