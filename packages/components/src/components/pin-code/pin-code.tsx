@@ -11,6 +11,7 @@ import {
   hasMessage,
   hasPropValueChanged,
   isDisabledOrLoading,
+  isRequiredAndParentNotRequired,
   isWithinForm,
   THEMES,
   validateProps,
@@ -44,7 +45,7 @@ const propTypes: PropTypes<typeof PinCode> = {
 
 @Component({
   tag: 'p-pin-code',
-  shadow: { delegatesFocus: true },
+  shadow: true,
 })
 export class PinCode {
   @Element() public host!: HTMLElement;
@@ -117,25 +118,28 @@ export class PinCode {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.disabled, this.loading, this.theme);
 
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const labelProps = {
+      onClick: this.onLabelClick,
+    };
+
     // reset array of input elements
     this.pinCodeElements = [];
     if (this.isWithinForm) {
       syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
     }
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
       <Host>
-        <label class="label" htmlFor="current-input">
+        <label class="label">
           {hasLabel(this.host, this.label) && (
-            <span id="label" class="label__text">
+            <span id="label" class="label__text" {...labelProps}>
               {this.label || <slot name="label" />}
-              {this.required && <Required />}
+              {isRequiredAndParentNotRequired(this.host, this.pinCodeElements[0]) && <Required />}
             </span>
           )}
           {hasDescription(this.host, this.description) && (
-            <span id="description" class="label__text">
+            <span id="description" class="label__text" {...labelProps}>
               {this.description || <slot name="description" />}
             </span>
           )}
@@ -175,10 +179,19 @@ export class PinCode {
     );
   }
 
+  private onLabelClick = (): void => {
+    const firstEmptyPinCodeElement = this.pinCodeElements.find((pinCodeElement) => !pinCodeElement.value);
+    if (firstEmptyPinCodeElement) {
+      firstEmptyPinCodeElement.focus();
+    } else {
+      this.pinCodeElements[this.length - 1].focus();
+    }
+  };
+
   private onClick = (
     e: MouseEvent & { target: HTMLInputElement & { previousElementSibling: HTMLInputElement } }
   ): void => {
-    if (isDisabledOrLoading(this.disabled, this.loading)) {
+    if (isDisabledOrLoading(this.disabled, this.loading) || e.target.tagName !== 'INPUT') {
       e.preventDefault();
     } // only allow focus on filled inputs or the first empty input
     else if (!e.target.value && e.target.previousElementSibling && !e.target.previousElementSibling.value) {
