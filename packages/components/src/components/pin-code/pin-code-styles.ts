@@ -1,6 +1,6 @@
 import type { FormState } from '../../utils/form/form-state';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
+import { getCss, mergeDeep } from '../../utils';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
@@ -20,11 +20,8 @@ export const getComponentCss = (
   isLoading: boolean,
   theme: Theme
 ): string => {
-  const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
   const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // we need 10px additionally so input height becomes 54px
-  const labelStyles = getStylesWithoutSlottedSelector(
-    getLabelStyles('input', disabledOrLoading, hideLabel, state, theme)
-  );
+  const labelStyles = getStylesWithoutSlottedSelector(getLabelStyles('input', isDisabled, hideLabel, state, theme));
   const inputStyles = getStylesWithoutSlottedSelector(
     getBaseChildStyles('input', state, theme, {
       textAlign: 'center',
@@ -38,7 +35,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        display: 'inline-block',
+        display: 'block',
         ...hostHiddenStyles,
       }),
       ...addImportantToEachRule(inputStyles),
