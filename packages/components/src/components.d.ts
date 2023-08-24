@@ -1135,7 +1135,7 @@ export namespace Components {
         /**
           * The selected values.
          */
-        "value"?: (string | number)[];
+        "value"?: string[];
     }
     interface PMultiSelectOption {
         /**
@@ -1145,7 +1145,7 @@ export namespace Components {
         /**
           * The option value.
          */
-        "value": string | number;
+        "value": string;
     }
     interface PPagination {
         /**
@@ -3345,7 +3345,7 @@ declare namespace LocalJSX {
         /**
           * The selected values.
          */
-        "value"?: (string | number)[];
+        "value"?: string[];
     }
     interface PMultiSelectOption {
         /**
@@ -3355,7 +3355,7 @@ declare namespace LocalJSX {
         /**
           * The option value.
          */
-        "value"?: string | number;
+        "value"?: string;
     }
     interface PPagination {
         /**
