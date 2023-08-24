@@ -7,15 +7,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="playground light auto-layout" title="should render with defaults">
       <p-switch>Some label</p-switch>
     </div>
-    <div class="playground dark auto-layout" title="should render with defaults with dark theme">
-      <p-switch [theme]="'dark'">Some label</p-switch>
-    </div>
 
     <div class="playground light auto-layout" title="should render in state checked">
       <p-switch [checked]="true">Some label</p-switch>
-    </div>
-    <div class="playground dark auto-layout" title="should render in state checked mode with dark theme">
-      <p-switch [checked]="true" [theme]="'dark'">Some label</p-switch>
     </div>
 
     <div class="playground light auto-layout" title="should render in state disabled">
@@ -23,24 +17,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-switch [disabled]="true" [checked]="true">Some label</p-switch>
     </div>
 
-    <div class="playground dark auto-layout" title="should render in state disabled with dark theme">
-      <p-switch [disabled]="true" [theme]="'dark'">Some label</p-switch>
-      <p-switch [disabled]="true" [checked]="true" [theme]="'dark'">Some label</p-switch>
-    </div>
-
     <div class="playground light auto-layout" title="should render in state loading">
       <p-switch [loading]="true">Some label</p-switch>
       <p-switch [loading]="true" [checked]="true">Some label</p-switch>
     </div>
 
-    <div class="playground dark auto-layout" title="should render in state loading with dark theme">
-      <p-switch [loading]="true" [theme]="'dark'">Some label</p-switch>
-      <p-switch [loading]="true" [checked]="true" [theme]="'dark'">Some label</p-switch>
-    </div>
-
     <div class="playground light auto-layout" title="should align label to the left">
       <p-switch [alignLabel]="'left'">Some label</p-switch>
     </div>
+
     <div class="playground light auto-layout" title="should align label to the left or right depending on viewport">
       <p-switch [alignLabel]="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
         Some label
@@ -71,20 +56,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-switch>
     </div>
 
-    <div
-      class="playground light auto-layout"
-      title="should render with slotted and deeply nested anchor on light background"
-    >
+    <div class="playground light auto-layout" title="should render with slotted and deeply nested anchor">
       <p-switch>
-        <span>
-          Some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-          <em>emphasized</em> and <i>italic</i> text.
-        </span>
-      </p-switch>
-    </div>
-
-    <div class="playground dark auto-layout" title="should render with slotted and deeply nested anchor on dark background">
-      <p-switch [theme]="'dark'">
         <span>
           Some slotted and deeply nested <a [href]="'#'">anchor</a>, <b>bold</b>, <strong>strong</strong>,
           <em>emphasized</em> and <i>italic</i> text.
