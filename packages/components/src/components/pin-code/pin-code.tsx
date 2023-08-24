@@ -162,7 +162,7 @@ export class PinCode {
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
               value={this.value[index]}
-              disabled={isDisabledOrLoading(this.disabled, this.loading)}
+              disabled={this.disabled}
               required={this.required}
               ref={(el) => this.pinCodeElements.push(el)}
             />
@@ -178,8 +178,10 @@ export class PinCode {
   private onClick = (
     e: MouseEvent & { target: HTMLInputElement & { previousElementSibling: HTMLInputElement } }
   ): void => {
-    // only allow focus on filled inputs or the first empty input
-    if (!e.target.value && e.target.previousElementSibling && !e.target.previousElementSibling.value) {
+    if (isDisabledOrLoading(this.disabled, this.loading)) {
+      e.preventDefault();
+    } // only allow focus on filled inputs or the first empty input
+    else if (!e.target.value && e.target.previousElementSibling && !e.target.previousElementSibling.value) {
       this.pinCodeElements.find((pinCodeElement) => !pinCodeElement.value).focus();
     }
   };
@@ -194,9 +196,10 @@ export class PinCode {
       target,
       target: { previousElementSibling, nextElementSibling },
     } = e;
-
-    // if input is valid overwrite old value
-    if (inputIsSingleDigit(key)) {
+    if (isDisabledOrLoading(this.disabled, this.loading)) {
+      e.preventDefault();
+    } // if input is valid overwrite old value
+    else if (inputIsSingleDigit(key)) {
       target.value = key;
       if (nextElementSibling) {
         nextElementSibling.focus();
@@ -204,11 +207,11 @@ export class PinCode {
       e.preventDefault();
       this.value = joinInputValues(this.pinCodeElements);
       this.updateValue();
-      // handle alphanumeric keys
-    } else if (key.length === 1) {
+    } // handle alphanumeric keys
+    else if (key.length === 1) {
       e.preventDefault();
-      // handle backspace
-    } else if (key === 'Backspace') {
+    } // handle backspace
+    else if (key === 'Backspace') {
       // transfer focus backward, if the input value is empty, and it is not the first input field
       if (!target.value && previousElementSibling) {
         previousElementSibling.value = '';
@@ -225,7 +228,9 @@ export class PinCode {
   private onPaste = (e: ClipboardEvent): void => {
     // remove whitespaces and cut string if pasted value is longer than pin code length
     const optimizedPastedData = e.clipboardData.getData('Text').replace(/\s/g, '').slice(0, this.length);
-    if (/^[0-9]+$/.test(optimizedPastedData) && optimizedPastedData !== this.value) {
+    if (isDisabledOrLoading(this.disabled, this.loading)) {
+      e.preventDefault();
+    } else if (/^[0-9]+$/.test(optimizedPastedData) && optimizedPastedData !== this.value) {
       this.value = optimizedPastedData;
       this.updateValue();
       if (optimizedPastedData.length === this.length) {
