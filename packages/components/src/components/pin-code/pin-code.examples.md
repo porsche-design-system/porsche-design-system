@@ -42,9 +42,8 @@ depending on the defined `state`.
 
 <Playground :markup="disabledMarkup" :config="config"></Playground>
 
-## Loading
-
-<Playground :markup="loadingMarkup" :config="config"></Playground>
+[//]: # '## Loading'
+[//]: # '<Playground :markup="loadingMarkup" :config="config"></Playground>'
 
 ## Required
 
@@ -91,7 +90,7 @@ export default class Code extends Vue {
 
   disabledMarkup = `<p-pin-code label="Some label" disabled></p-pin-code>`;
 
-  loadingMarkup = `<p-pin-code label="Some label" loading></p-pin-code>`;
+  // loadingMarkup = `<p-pin-code label="Some label" loading></p-pin-code>`;
 
   requiredMarkup = `<p-pin-code label="Some label" required></p-pin-code>`;
 
