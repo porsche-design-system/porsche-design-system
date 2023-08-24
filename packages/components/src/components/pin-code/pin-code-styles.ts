@@ -38,7 +38,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        display: 'block',
+        display: 'inline-block',
         ...hostHiddenStyles,
       }),
       ...addImportantToEachRule(inputStyles),
@@ -63,14 +63,11 @@ export const getComponentCss = (
     'pin-code-container': {
       display: 'flex',
       position: 'relative',
-      width: 'fit-content',
       gap: spacingStaticSmall,
-      justifyContent: 'start',
       flexWrap: 'wrap',
     },
     ...mergeDeep(labelStyles, {
       label: {
-        display: 'inline-flex',
         marginBottom: spacingStaticXSmall,
       },
     }),
