@@ -1,150 +1,78 @@
 <style>
-  .playground {
-    margin-bottom: -0.5rem;
-  }
-
-  p-tag {
-    margin-bottom: 0.5rem;
-  }
-
-  p-tag:not(:last-child) {
-    margin-right: 0.5rem;
+  .playground > div {
+    width: 100px;
+    overflow: auto;
+    border: 1px solid deeppink;
   }
 </style>
 
-<div class="playground light" title="should show default tag on light background">
+<div class="playground light auto-layout" title="should show default tag">
   <p-tag>Default</p-tag>
 </div>
 
-<div class="playground light" title="should show different background colors on light background">
-  <p-tag color="background-default">Color background-default</p-tag>
-  <p-tag color="background-base">Color background-base</p-tag>
-  <p-tag color="background-surface">Color background-surface</p-tag>
-  <p-tag color="neutral-contrast-high">Color neutral-contrast-high</p-tag>
-  <p-tag color="primary">Color primary</p-tag>
-  <p-tag color="notification-neutral">Color notification-neutral</p-tag>
-  <p-tag color="notification-info-soft">Color notification-info-soft</p-tag>
-  <p-tag color="notification-success-soft">Color notification-success-soft</p-tag>
-  <p-tag color="notification-error-soft">Color notification-error-soft</p-tag>
-  <p-tag color="notification-warning-soft">Color notification-warning-soft</p-tag>
+<div class="playground light auto-layout" title="should show different background colors">
+  <p-tag color="background-default">background-default</p-tag>
+  <p-tag color="background-base">background-base</p-tag>
+  <p-tag color="background-surface">background-surface</p-tag>
+  <p-tag color="neutral-contrast-high">neutral-contrast-high</p-tag>
+  <p-tag color="primary">primary</p-tag>
+  <p-tag color="notification-neutral">notification-neutral</p-tag>
+  <p-tag color="notification-info-soft">notification-info-soft</p-tag>
+  <p-tag color="notification-success-soft">notification-success-soft</p-tag>
+  <p-tag color="notification-error-soft">notification-error-soft</p-tag>
+  <p-tag color="notification-warning-soft">notification-warning-soft</p-tag>
 </div>
 
-<div class="playground light surface" title="should show different background colors on light surface background">
-  <p-tag color="background-default">Color background-default</p-tag>
-  <p-tag color="background-base">Color background-base</p-tag>
-  <p-tag color="background-surface">Color background-surface</p-tag>
-  <p-tag color="neutral-contrast-high">Color neutral-contrast-high</p-tag>
-  <p-tag color="primary">Color primary</p-tag>
-  <p-tag color="notification-neutral">Color notification-neutral</p-tag>
-  <p-tag color="notification-info-soft">Color notification-info-soft</p-tag>
-  <p-tag color="notification-success-soft">Color notification-success-soft</p-tag>
-  <p-tag color="notification-error-soft">Color notification-error-soft</p-tag>
-  <p-tag color="notification-warning-soft">Color notification-warning-soft</p-tag>
+<div class="playground light auto-layout surface" title="should show different background colors on surface background">
+  <p-tag color="background-default">background-default</p-tag>
+  <p-tag color="background-base">background-base</p-tag>
+  <p-tag color="background-surface">background-surface</p-tag>
+  <p-tag color="neutral-contrast-high">neutral-contrast-high</p-tag>
+  <p-tag color="primary">primary</p-tag>
+  <p-tag color="notification-neutral">notification-neutral</p-tag>
+  <p-tag color="notification-info-soft">notification-info-soft</p-tag>
+  <p-tag color="notification-success-soft">notification-success-soft</p-tag>
+  <p-tag color="notification-error-soft">notification-error-soft</p-tag>
+  <p-tag color="notification-warning-soft">notification-warning-soft</p-tag>
 </div>
 
-<div class="playground dark" title="should show different background colors on dark background">
-  <p-tag theme="dark" color="background-default">Color background-default</p-tag>
-  <p-tag theme="dark" color="background-base">Color background-base</p-tag>
-  <p-tag theme="dark" color="background-surface">Color background-surface</p-tag>
-  <p-tag theme="dark" color="neutral-contrast-high">Color neutral-contrast-high</p-tag>
-  <p-tag theme="dark" color="primary">Color primary</p-tag>
-  <p-tag theme="dark" color="notification-neutral">Color notification-neutral</p-tag>
-  <p-tag theme="dark" color="notification-info-soft">Color notification-info-soft</p-tag>
-  <p-tag theme="dark" color="notification-success-soft">Color notification-success-soft</p-tag>
-  <p-tag theme="dark" color="notification-error-soft">Color notification-error-soft</p-tag>
-  <p-tag theme="dark" color="notification-warning-soft">Color notification-warning-soft</p-tag>
+<div class="playground light auto-layout" title="should show different background colors and icons">
+  <p-tag icon="car" color="background-default">background-default</p-tag>
+  <p-tag icon="car" color="background-base">background-base</p-tag>
+  <p-tag icon="car" color="background-surface">background-surface</p-tag>
+  <p-tag icon="car" color="neutral-contrast-high">neutral-contrast-high</p-tag>
+  <p-tag icon="car" color="primary">primary</p-tag>
+  <p-tag icon="car" color="notification-neutral">notification-neutral</p-tag>
+  <p-tag icon="car" color="notification-info-soft">notification-info-soft</p-tag>
+  <p-tag icon="car" color="notification-success-soft">notification-success-soft</p-tag>
+  <p-tag icon="car" color="notification-error-soft">notification-error-soft</p-tag>
+  <p-tag icon="car" color="notification-warning-soft">notification-warning-soft</p-tag>
+  <p-tag icon-source="./assets/icon-custom-kaixin.svg" color="background-surface"> background-surface</p-tag>
 </div>
 
-<div class="playground dark surface" title="should show different background colors on dark surface background">
-  <p-tag theme="dark" color="background-default">Color background-default</p-tag>
-  <p-tag theme="dark" color="background-base">Color background-base</p-tag>
-  <p-tag theme="dark" color="background-surface">Color background-surface</p-tag>
-  <p-tag theme="dark" color="neutral-contrast-high">Color neutral-contrast-high</p-tag>
-  <p-tag theme="dark" color="primary">Color primary</p-tag>
-  <p-tag theme="dark" color="notification-neutral">Color notification-neutral</p-tag>
-  <p-tag theme="dark" color="notification-info-soft">Color notification-info-soft</p-tag>
-  <p-tag theme="dark" color="notification-success-soft">Color notification-success-soft</p-tag>
-  <p-tag theme="dark" color="notification-error-soft">Color notification-error-soft</p-tag>
-  <p-tag theme="dark" color="notification-warning-soft">Color notification-warning-soft</p-tag>
-</div>
-
-<div class="playground light" title="should show different background colors and icons on light background">
-  <p-tag icon="car" color="background-default">Color background-default</p-tag>
-  <p-tag icon="car" color="background-base">Color background-base</p-tag>
-  <p-tag icon="car" color="background-surface">Color background-surface</p-tag>
-  <p-tag icon="car" color="neutral-contrast-high">Color neutral-contrast-high</p-tag>
-  <p-tag icon="car" color="primary">Color primary</p-tag>
-  <p-tag icon="car" color="notification-neutral">Color notification-neutral</p-tag>
-  <p-tag icon="car" color="notification-info-soft">Color notification-info-soft</p-tag>
-  <p-tag icon="car" color="notification-success-soft">Color notification-success-soft</p-tag>
-  <p-tag icon="car" color="notification-error-soft">Color notification-error-soft</p-tag>
-  <p-tag icon="car" color="notification-warning-soft">Color notification-warning-soft</p-tag>
-  <p-tag icon-source="./assets/icon-custom-kaixin.svg" color="background-surface"> Color background-surface</p-tag>
-</div>
-
-<div class="playground dark" title="should show different background colors and icons on dark background">
-  <p-tag theme="dark" icon="car" color="background-default">Color background-default</p-tag>
-  <p-tag theme="dark" icon="car" color="background-base">Color background-base</p-tag>
-  <p-tag theme="dark" icon="car" color="background-surface">Color background-surface</p-tag>
-  <p-tag theme="dark" icon="car" color="neutral-contrast-high">Color neutral-contrast-high</p-tag>
-  <p-tag theme="dark" icon="car" color="primary">Color primary</p-tag>
-  <p-tag theme="dark" icon="car" color="notification-neutral">Color notification-neutral</p-tag>
-  <p-tag theme="dark" icon="car" color="notification-info-soft">Color notification-info-soft</p-tag>
-  <p-tag theme="dark" icon="car" color="notification-success-soft">Color notification-success-soft</p-tag>
-  <p-tag theme="dark" icon="car" color="notification-error-soft">Color notification-error-soft</p-tag>
-  <p-tag theme="dark" icon="car" color="notification-warning-soft">Color notification-warning-soft</p-tag>
-  <p-tag theme="dark" icon-source="./assets/icon-custom-kaixin.svg" color="background-surface">
-    Color background-surface</p-tag
-  >
-</div>
-
-<div class="playground light" title="should show different background colors with link on light background">
-  <p-tag color="background-base"><a href="#">Color background-base link</a></p-tag>
-  <p-tag color="background-surface"><a href="#">Color background-surface link</a></p-tag>
-  <p-tag icon="car" color="background-base"><a href="#">Color background-base link</a></p-tag>
-  <p-tag icon="highway" color="background-surface"><a href="#">Color background-surface link</a></p-tag>
+<div class="playground light auto-layout" title="should show different background colors with link">
+  <p-tag color="background-base"><a href="#">background-base link</a></p-tag>
+  <p-tag color="background-surface"><a href="#">background-surface link</a></p-tag>
+  <p-tag icon="car" color="background-base"><a href="#">background-base link</a></p-tag>
+  <p-tag icon="highway" color="background-surface"><a href="#">background-surface link</a></p-tag>
   <p-tag icon-source="./assets/icon-custom-kaixin.svg" color="background-base">
-    <a href="#">Color background-base link</a>
+    <a href="#">background-base link</a>
   </p-tag>
 </div>
 
-<div class="playground dark" title="should show different background colors with link on dark background">
-  <p-tag theme="dark" color="background-base"><a href="#">Color background-base link</a></p-tag>
-  <p-tag theme="dark" color="background-surface"><a href="#">Color background-surface link</a></p-tag>
-  <p-tag theme="dark" icon="car" color="background-base"><a href="#">Color background-base link</a></p-tag>
-  <p-tag theme="dark" icon="highway" color="background-surface">
-    <a href="#">Color background-surface link</a>
-  </p-tag>
-  <p-tag theme="dark" icon-source="./assets/icon-custom-kaixin.svg" color="background-base">
-    <a href="#">Color background-base link</a>
-  </p-tag>
-</div>
-
-<div class="playground light" title="should show different background colors with button on light background">
-  <p-tag color="background-base"><button>Color background-base button</button></p-tag>
-  <p-tag color="background-surface"><button>Color background-surface button</button></p-tag>
-  <p-tag icon="car" color="background-base"><button>Color background-base button</button></p-tag>
+<div class="playground light auto-layout" title="should show different background colors with button">
+  <p-tag color="background-base"><button>background-base button</button></p-tag>
+  <p-tag color="background-surface"><button>background-surface button</button></p-tag>
+  <p-tag icon="car" color="background-base"><button>background-base button</button></p-tag>
   <p-tag icon="highway" color="background-surface">
-    <button>Color background-surface button</button>
+    <button>background-surface button</button>
   </p-tag>
   <p-tag icon-source="./assets/icon-custom-kaixin.svg" color="background-base">
-    <button>Color background-base button</button>
+    <button>background-base button</button>
   </p-tag>
 </div>
 
-<div class="playground dark" title="should show different background colors with button on dark background">
-  <p-tag theme="dark" color="background-base"><button>Color background-base button</button></p-tag>
-  <p-tag theme="dark" color="background-surface"><button>Color background-surface button</button></p-tag>
-  <p-tag theme="dark" icon="car" color="background-base"><button>Color background-base button</button></p-tag>
-  <p-tag theme="dark" icon="highway" color="background-surface">
-    <button>Color background-surface button</button>
-  </p-tag>
-  <p-tag theme="dark" icon-source="./assets/icon-custom-kaixin.svg" color="background-base">
-    <button>Color background-base button</button>
-  </p-tag>
-</div>
-
-<div class="playground light" title="should not render line break">
+<div class="playground light auto-layout" title="should not render line break">
   <p-tag>
     Default <br />
     with line break
@@ -152,7 +80,7 @@
 </div>
 
 <div class="playground light" title="should not break into multiline although not enough space is given">
-  <div style="width: 100px; overflow: auto; border: 1px solid deeppink">
+  <div>
     <p-tag color="primary">Text that is very long</p-tag>
     <p-tag color="primary" icon="car">Text with icon that is very long</p-tag>
     <p-tag color="notification-success-soft" icon="car">
@@ -165,7 +93,7 @@
 </div>
 
 <div class="playground light" title="should break into multiline if not enough space is given">
-  <div style="width: 100px; overflow: auto; border: 1px solid deeppink">
+  <div>
     <p-tag color="primary" style="white-space: normal">Text that is very long</p-tag>
     <p-tag color="primary" icon="car" style="white-space: normal">Text with icon that is very long</p-tag>
     <p-tag color="notification-success-soft" icon="car" style="white-space: normal">
