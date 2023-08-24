@@ -156,7 +156,7 @@ export class PinCode {
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby="label description state-message"
-              aria-invalid={this.state === 'error'}
+              aria-invalid={this.state === 'error' ? 'true' : null}
               aria-busy={this.loading}
               autoComplete="one-time-code"
               maxLength={1}
