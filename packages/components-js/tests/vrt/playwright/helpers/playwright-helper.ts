@@ -1,6 +1,7 @@
-import type { Page } from '@playwright/test';
+import { type Page } from '@playwright/test';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
-import { ElementHandle } from '@playwright/test';
+import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 export const baseThemes = ['light', 'dark'] as const;
 export const baseSchemes = ['light', 'dark'] as const;
@@ -39,6 +40,7 @@ export const setupScenario = async (
     forceComponentTheme: undefined,
     ...options,
   };
+  const themeableComponents: TagName[] = TAG_NAMES.filter((el) => getComponentMeta(el).isThemeable);
 
   if (javaScriptDisabled || forcedColorsEnabled || prefersColorScheme) {
     const cdpSession = await page.context().newCDPSession(page);
@@ -67,13 +69,18 @@ export const setupScenario = async (
   await waitForComponentsReady(page);
 
   if (forceComponentTheme) {
-    await page.evaluate((theme) => {
-      document.querySelectorAll('*').forEach((el) => el.setAttribute('theme', theme));
-      document.querySelectorAll('.playground').forEach((el) => {
-        el.classList.remove('light', 'dark', 'auto');
-        el.classList.add(theme);
-      });
-    }, forceComponentTheme);
+    await page.evaluate(
+      ({ forceComponentTheme, themeableComponents }) => {
+        document
+          .querySelectorAll(themeableComponents.join())
+          .forEach((el) => el.setAttribute('theme', forceComponentTheme));
+        document.querySelectorAll('.playground').forEach((el) => {
+          el.classList.remove('light', 'dark', 'auto');
+          el.classList.add(forceComponentTheme);
+        });
+      },
+      { forceComponentTheme, themeableComponents }
+    );
     await waitForComponentsReady(page);
   }
 
