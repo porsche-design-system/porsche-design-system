@@ -2,139 +2,74 @@
 import { PModelSignature } from '@porsche-design-system/components-react';
 
 export const ModelSignaturePage = (): JSX.Element => {
-  const style = `
-    @media only screen and (min-width: 760px) {
-      #app,
-      :host {
-        display: grid;
-        grid-template-columns: repeat(2, 50%);
-      }
-    }
-  `;
-
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: style }} />
-
-      <div className="playground light" title="should render for model 718 on light background">
+      <div className="playground light" title="should render for model 718">
         <PModelSignature model="718" />
       </div>
-      <div className="playground dark" title="should render for model 718 on dark background">
-        <PModelSignature model="718" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for model 911 on light background">
+      <div className="playground light" title="should render for model 911">
         <PModelSignature model="911" />
       </div>
-      <div className="playground dark" title="should render for model 911 on dark background">
-        <PModelSignature model="911" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for model boxster on light background">
+      <div className="playground light" title="should render for model boxster">
         <PModelSignature model="boxster" />
       </div>
-      <div className="playground dark" title="should render for model boxster on dark background">
-        <PModelSignature model="boxster" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for model cayenne on light background">
+      <div className="playground light" title="should render for model cayenne">
         <PModelSignature model="cayenne" />
       </div>
-      <div className="playground dark" title="should render for model cayenne on dark background">
-        <PModelSignature model="cayenne" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for model cayman on light background">
+      <div className="playground light" title="should render for model cayman">
         <PModelSignature model="cayman" />
       </div>
-      <div className="playground dark" title="should render for model cayman on dark background">
-        <PModelSignature model="cayman" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for model macan on light background">
+      <div className="playground light" title="should render for model macan">
         <PModelSignature model="macan" />
       </div>
-      <div className="playground dark" title="should render for model macan on dark background">
-        <PModelSignature model="macan" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for model panamera on light background">
+      <div className="playground light" title="should render for model panamera">
         <PModelSignature model="panamera" />
       </div>
-      <div className="playground dark" title="should render for model panamera on dark background">
-        <PModelSignature model="panamera" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for model taycan on light background">
+      <div className="playground light" title="should render for model taycan">
         <PModelSignature model="taycan" />
       </div>
-      <div className="playground dark" title="should render for model taycan on dark background">
-        <PModelSignature model="taycan" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for model turbo on light background">
+      <div className="playground light" title="should render for model turbo">
         <PModelSignature model="turbo" />
       </div>
-      <div className="playground dark" title="should render for model turbo on dark background">
-        <PModelSignature model="turbo" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for color primary on light background">
+      <div className="playground light" title="should render for color primary">
         <PModelSignature model="911" color="primary" />
       </div>
-      <div className="playground dark" title="should render for color primary on dark background">
-        <PModelSignature model="911" color="primary" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for color contrast-low on light background">
+      <div className="playground light" title="should render for color contrast-low">
         <PModelSignature model="911" color="contrast-low" />
       </div>
-      <div className="playground dark" title="should render for color contrast-low on dark background">
-        <PModelSignature model="911" color="contrast-low" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for color contrast-medium on light background">
+      <div className="playground light" title="should render for color contrast-medium">
         <PModelSignature model="911" color="contrast-medium" />
       </div>
-      <div className="playground dark" title="should render for color contrast-medium on dark background">
-        <PModelSignature model="911" color="contrast-medium" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for color contrast-high on light background">
+      <div className="playground light" title="should render for color contrast-high">
         <PModelSignature model="911" color="contrast-high" />
       </div>
-      <div className="playground dark" title="should render for color contrast-high on dark background">
-        <PModelSignature model="911" color="contrast-high" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for color inherit on light background">
+      <div className="playground light" title="should render for color inherit">
         <PModelSignature
           model="911"
           color="inherit"
           style={{ filter: 'invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)' }}
          />
       </div>
-      <div className="playground dark" title="should render for color inherit on dark background">
-        <PModelSignature
-          model="911"
-          color="inherit"
-          style={{ filter: 'invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)' }}
-          theme="dark"
-         />
-      </div>
 
-      <div className="playground light" title="should render for size small on light background">
+      <div className="playground light" title="should render for size small">
         <PModelSignature model="911" size="small" />
       </div>
-      <div className="playground dark" title="should render for size small on dark background">
-        <PModelSignature model="911" size="small" theme="dark" />
-      </div>
 
-      <div className="playground light" title="should render for size inherit on light background">
+      <div className="playground light" title="should render for size inherit">
         <PModelSignature model="911" size="inherit" style={{ height: '100px' }} />
-      </div>
-      <div className="playground dark" title="should render for size inherit on dark background">
-        <PModelSignature model="911" size="inherit" style={{ height: '100px' }} theme="dark" />
       </div>
 
       <div className="playground light" title="should not exceed parents width">

@@ -14,6 +14,8 @@ const components = TAG_NAMES.filter((el, i, arr) => {
     return !argv.length || argv.includes(el);
   });
 
+const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
+
 components.forEach((component) => {
   // executed in Chrome + Safari
   test.describe(component, async () => {
@@ -21,13 +23,10 @@ components.forEach((component) => {
       test(`should have no visual regression for viewport ${baseViewportWidth} and theme ${theme}`, async ({
         page,
       }) => {
-        test.skip(
-          !getComponentMeta(`p-${component}` as TagName).isThemeable && theme === 'dark',
-          'This component has no theme support.'
-        );
+        test.skip(!isComponentThemeable(component) && theme === 'dark', 'This component has no theme support.');
 
         await setupScenario(page, `/${component}`, baseViewportWidth, {
-          forceComponentTheme: theme,
+          forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
         });
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${theme}.png`);
       });
@@ -49,7 +48,7 @@ components.forEach((component) => {
       test(`should have no visual regression for viewport ${baseViewportWidth} and theme auto with prefers-color-scheme ${scheme}`, async ({
         page,
       }) => {
-        test.skip(!getComponentMeta(`p-${component}` as TagName).isThemeable, 'This component has no theme support.');
+        test.skip(!isComponentThemeable(component), 'This component has no theme support.');
 
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: 'auto',
