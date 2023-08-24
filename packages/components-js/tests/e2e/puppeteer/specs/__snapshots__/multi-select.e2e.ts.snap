@@ -3,7 +3,7 @@
 exports[`accessibility should expose correct accessibility tree if description is set 1`] = `
 {
   "autocomplete": "list",
-  "description": "Some description 0 options selected",
+  "description": "Some description",
   "haspopup": "listbox",
   "name": "",
   "role": "combobox",
@@ -19,7 +19,6 @@ exports[`accessibility should expose correct accessibility tree if option is hig
       "role": "generic",
     },
   ],
-  "description": "0 options selected",
   "expanded": true,
   "focused": true,
   "haspopup": "listbox",
@@ -42,17 +41,6 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                     {
                       "children": [
                         {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "name": "0 options selected",
-                                  "role": "StaticText",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
                           "name": "",
                           "role": "LabelText",
                         },
@@ -66,43 +54,11 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                                   "role": "generic",
                                 },
                               ],
-                              "description": "0 options selected",
                               "expanded": true,
                               "focused": true,
                               "haspopup": "listbox",
                               "name": "",
                               "role": "combobox",
-                            },
-                            {
-                              "children": [
-                                {
-                                  "children": [
-                                    {
-                                      "children": [
-                                        {
-                                          "role": "none",
-                                        },
-                                      ],
-                                      "role": "none",
-                                    },
-                                    {
-                                      "children": [
-                                        {
-                                          "children": [
-                                            {
-                                              "role": "none",
-                                            },
-                                          ],
-                                          "role": "none",
-                                        },
-                                      ],
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
                             },
                             {
                               "children": [
@@ -665,7 +621,6 @@ exports[`accessibility should expose correct accessibility tree if option is sel
 exports[`accessibility should expose correct accessibility tree in error state 1`] = `
 {
   "autocomplete": "list",
-  "description": "0 options selected",
   "haspopup": "listbox",
   "name": "",
   "role": "combobox",
@@ -858,7 +813,6 @@ exports[`accessibility should expose correct initial accessibility tree and aria
       "role": "generic",
     },
   ],
-  "description": "0 options selected",
   "haspopup": "listbox",
   "name": "",
   "role": "combobox",

@@ -80,8 +80,6 @@ const getLabelText = () => selectNode(page, 'p-multi-select >>> .label__text');
 
 const getResetButton = () => selectNode(page, 'p-multi-select >>> .reset-icon');
 
-const getResetButtonDisplay = async (): Promise<string> => await getElementStyle(await getResetButton(), 'display');
-
 const getAssertiveText = async () => await selectNode(page, 'span[aria-live="assertive"]');
 
 const labelSlotContent =
@@ -478,11 +476,13 @@ describe('focus', () => {
     const button = await selectNode(page, 'p-button');
     await addEventListener(button, 'focus');
 
+    expect(await getResetButton()).toBeNull();
     await setValue(['a']);
     await waitForStencilLifecycle(page);
 
     const inputElement = await getInput();
     const resetButton = await getResetButton();
+    expect(resetButton).not.toBeNull();
     await addEventListener(inputElement, 'focus');
     await addEventListener(resetButton, 'focus');
 
@@ -511,7 +511,7 @@ describe('focus', () => {
     const button = await selectNode(page, 'p-button');
     await addEventListener(button, 'focus');
 
-    expect(await getResetButtonDisplay(), 'initial reset button display').toBe('none');
+    expect(await getResetButton(), 'initial reset button').toBeNull();
 
     const inputElement = await getInput();
     await addEventListener(inputElement, 'focus');
@@ -551,6 +551,7 @@ describe('focus', () => {
     await page.keyboard.press('Enter');
     await waitForStencilLifecycle(page);
 
+    expect(await getResetButton()).toBeNull();
     expect((await getEventSummary(inputElement, 'focus')).counter).toBe(2);
     expect(await getActiveElementTagNameInShadowRoot(host)).toBe('INPUT');
     expect(await getNativeSelectValue()).toStrictEqual('');
@@ -932,6 +933,81 @@ describe('keyboard and click events', () => {
 
     expect(await getDropdownDisplay(), 'after tab').toBe('none');
   });
+  it('should focus reset button and dropdown should stay open when there is a selection', async () => {
+    await initMultiSelect({
+      options: { markupAfter: '<p-button>Button</p-button>' },
+    });
+    const button = await selectNode(page, 'p-button');
+
+    await setValue(['a']);
+    const resetButton = await getResetButton();
+    const inputElement = await getInput();
+
+    await addEventListener(button, 'focus');
+    await addEventListener(resetButton, 'focus');
+    await addEventListener(inputElement, 'focus');
+    expect(resetButton).not.toBeNull();
+    expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
+    expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(0);
+    expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
+    expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(0);
+    expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
+    expect(await getDropdownDisplay(), 'after open').toBe('flex');
+
+    await page.keyboard.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
+    expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(1);
+    expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
+    expect(await getDropdownDisplay(), 'after tab').toBe('flex');
+
+    await page.keyboard.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(1);
+    expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(1);
+    expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
+    expect(await getDropdownDisplay(), 'after tab').toBe('none');
+  });
+
+  it('should close dropdown on Esc', async () => {
+    await initMultiSelect();
+
+    const inputElement = await getInput();
+
+    await addEventListener(inputElement, 'focus');
+    expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
+    expect(await getDropdownDisplay(), 'after open').toBe('flex');
+
+    await page.keyboard.press('Escape');
+    await waitForStencilLifecycle(page);
+
+    expect(await getDropdownDisplay(), 'after Esc').toBe('none');
+    await setValue(['a']);
+
+    await page.keyboard.press('Space');
+    await waitForStencilLifecycle(page);
+
+    expect(await getDropdownDisplay(), 'after second open').toBe('flex');
+
+    await page.keyboard.press('Escape');
+    await waitForStencilLifecycle(page);
+
+    expect(await getDropdownDisplay(), 'after second Esc').toBe('none');
+  });
 });
 
 describe('disabled', () => {
@@ -1007,10 +1083,9 @@ describe('lifecycle', () => {
     expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
     expect(status1.componentDidLoad['p-multi-select-option'], 'componentDidLoad: p-multi-select-option').toBe(3);
     expect(status1.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(3);
-    expect(status1.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // reset button
-    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and reset icon
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
 
-    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(10);
+    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
 
     await inputElement.click();
@@ -1031,10 +1106,9 @@ describe('lifecycle', () => {
     expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
     expect(status1.componentDidLoad['p-multi-select-option'], 'componentDidLoad: p-multi-select-option').toBe(3);
     expect(status1.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(3);
-    expect(status1.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // reset button
-    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and reset icon
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
 
-    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(10);
+    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2); // slotchange forces second update
 
     const option1 = await getMultiSelectOption(1);
@@ -1042,39 +1116,36 @@ describe('lifecycle', () => {
     await waitForStencilLifecycle(page);
 
     const status2 = await getLifecycleStatus(page);
+    expect(status2.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // reset button
     expect(status2.componentDidUpdate['p-multi-select-option'], 'componentDidUpdate: p-multi-select-option').toBe(1);
     expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(3);
     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
   });
-  //
-  //   it('should work without unnecessary round trips on filter input change', async () => {
-  //     await initSelect();
-  //     const host = await getHost();
-  //
-  //     await host.click();
-  //     await waitForStencilLifecycle(page);
-  //
-  //     const statusAfterClick = await getLifecycleStatus(page);
-  //     expect(statusAfterClick.componentDidUpdate['p-select-wrapper'], '1st componentDidUpdate: p-select-wrapper').toBe(0);
-  //     expect(
-  //       statusAfterClick.componentDidUpdate['p-select-wrapper-dropdown'],
-  //       '1st componentDidUpdate: p-select-wrapper-dropdown'
-  //     ).toBe(1);
-  //     expect(statusAfterClick.componentDidUpdate.all, '1st componentDidUpdate: all').toBe(1);
-  //
-  //     await page.keyboard.press('c');
-  //     await waitForStencilLifecycle(page);
-  //
-  //     const status = await getLifecycleStatus(page);
-  //     expect(status.componentDidUpdate['p-select-wrapper'], '2nd componentDidUpdate: p-select-wrapper').toBe(0);
-  //     expect(
-  //       status.componentDidUpdate['p-select-wrapper-dropdown'],
-  //       '2nd componentDidUpdate: p-select-wrapper-dropdown'
-  //     ).toBe(2);
-  //     expect(status.componentDidUpdate.all, '2nd componentDidUpdate: all').toBe(2);
-  //
-  //     expect(status.componentDidLoad.all, '2nd componentDidLoad: all').toBe(4);
-  //   });
+
+  it('should work without unnecessary round trips on filter input change', async () => {
+    await initMultiSelect();
+    const inputElement = await getInput();
+
+    await inputElement.click();
+    await waitForStencilLifecycle(page);
+
+    const status1 = await getLifecycleStatus(page);
+    expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
+    expect(status1.componentDidLoad['p-multi-select-option'], 'componentDidLoad: p-multi-select-option').toBe(3);
+    expect(status1.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(3);
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
+
+    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
+    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2); // slotchange forces second update
+
+    await page.keyboard.press('c');
+    await waitForStencilLifecycle(page);
+
+    const status2 = await getLifecycleStatus(page);
+    expect(status2.componentDidUpdate['p-multi-select-option'], 'componentDidUpdate: p-multi-select-option').toBe(0);
+    expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(2);
+    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+  });
 });
 
 describe('accessibility', () => {
