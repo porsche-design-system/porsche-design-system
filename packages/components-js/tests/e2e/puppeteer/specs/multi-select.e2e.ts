@@ -537,6 +537,7 @@ describe('focus', () => {
   it('should focus input after reset button click', async () => {
     await initMultiSelect();
     await setValue(['a']);
+    await waitForStencilLifecycle(page);
 
     const host = await getHost();
 
