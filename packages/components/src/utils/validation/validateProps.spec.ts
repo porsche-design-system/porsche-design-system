@@ -182,7 +182,7 @@ describe('isValidArray()', () => {
     [undefined, ['string', 'number'], false],
     [[{}], ['string', 'number'], false],
     [[null], ['string', 'number'], false],
-  ])('should return %s for arr: %s and allowedTypes: %s', (arr, allowedTypes, result) => {
+  ])('should for arr: %s and allowedTypes: %s return %s', (arr, allowedTypes, result) => {
     expect(isValidArray(arr, allowedTypes)).toBe(result);
   });
 });
