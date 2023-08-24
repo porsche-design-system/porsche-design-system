@@ -50,7 +50,9 @@ const getAmountOfVisibleMultiSelectOptions = async (): Promise<number> =>
     (options) => options.filter((option: HTMLElement) => !option.hidden).length
   );
 
-const getSelectedMultiSelectOptionProperty = async (property: string): Promise<keyof typeof MultiSelectOption> =>
+const getSelectedMultiSelectOptionProperty = async <T extends keyof MultiSelectOption>(
+  property: T
+): Promise<MultiSelectOption[T]> =>
   await page.$$eval(
     'p-multi-select p-multi-select-option',
     (options, property) =>
