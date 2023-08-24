@@ -5,11 +5,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-typography-greek-and-coptic',
   styles: [
     `
-      h2,
-      h4 {
-        color: deeppink;
-      }
-    
       p-text {
         display: inline-flex;
         vertical-align: top;
@@ -17,16 +12,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         justify-content: center;
         margin: 4px;
         padding: 4px;
-        background: #f1f1f1;
+        background: rgba(125, 125, 125, 0.1);
         width: 36px;
         height: 36px;
       }
     `,
   ],
   template: `
-    <div class="playground" title="should show typography in greek and coptic charset">
-      <h2>Porsche Next Greek & Coptic</h2>
-      <h4>Range: U+0370-03FF</h4>
+    <div class="playground" title="should show typography in greek and coptic charset (U+0370-03FF)">
       <p-text [size]="'medium'" [align]="'center'" title="U+0370 | Dec:880">Ͱ</p-text>
       <p-text [size]="'medium'" [align]="'center'" title="U+0371 | Dec:881">ͱ</p-text>
       <p-text [size]="'medium'" [align]="'center'" title="U+0372 | Dec:882">Ͳ</p-text>

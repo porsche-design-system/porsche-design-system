@@ -4,11 +4,6 @@ import { PText } from '@porsche-design-system/components-react/ssr';
 
 const TypographyGreekAndCopticPage: NextPage = (): JSX.Element => {
   const style = `
-    h2,
-    h4 {
-      color: deeppink;
-    }
-
     p-text {
       display: inline-flex;
       vertical-align: top;
@@ -16,7 +11,7 @@ const TypographyGreekAndCopticPage: NextPage = (): JSX.Element => {
       justify-content: center;
       margin: 4px;
       padding: 4px;
-      background: #f1f1f1;
+      background: rgba(125, 125, 125, 0.1);
       width: 36px;
       height: 36px;
     }
@@ -26,9 +21,7 @@ const TypographyGreekAndCopticPage: NextPage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="playground" title="should show typography in greek and coptic charset">
-        <h2>Porsche Next Greek & Coptic</h2>
-        <h4>Range: U+0370-03FF</h4>
+      <div className="playground" title="should show typography in greek and coptic charset (U+0370-03FF)">
         <PText size="medium" align="center" title="U+0370 | Dec:880">Ͱ</PText>
         <PText size="medium" align="center" title="U+0371 | Dec:881">ͱ</PText>
         <PText size="medium" align="center" title="U+0372 | Dec:882">Ͳ</PText>

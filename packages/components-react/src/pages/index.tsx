@@ -65,7 +65,7 @@ import { ToastBasicStateNeutralPage } from './ToastBasicStateNeutral';
 import { ToastOffsetPage } from './ToastOffset';
 import { ToastPrefixedPage } from './ToastPrefixed';
 import { TypographyCyrilPage } from './TypographyCyril';
-import { TypographyFallbackStrategyPage } from './TypographyFallbackStrategy';
+import { TypographyFallbackPage } from './TypographyFallback';
 import { TypographyGreekAndCopticPage } from './TypographyGreekAndCoptic';
 import { TypographyLatinPage } from './TypographyLatin';
 import { WordmarkPage } from './Wordmark';
@@ -337,9 +337,9 @@ export const generatedRoutes: RouteType[] = [
     element: <TypographyCyrilPage />,
   },
   {
-    name: 'Typography Fallback Strategy',
-    path: '/typography-fallback-strategy',
-    element: <TypographyFallbackStrategyPage />,
+    name: 'Typography Fallback',
+    path: '/typography-fallback',
+    element: <TypographyFallbackPage />,
   },
   {
     name: 'Typography Greek And Coptic',

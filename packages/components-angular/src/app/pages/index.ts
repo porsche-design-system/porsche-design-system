@@ -82,7 +82,7 @@ import { ToastBasicStateNeutralComponent } from './toast-basic-state-neutral.com
 import { ToastOffsetComponent } from './toast-offset.component';
 import { ToastPrefixedComponent } from './toast-prefixed.component';
 import { TypographyCyrilComponent } from './typography-cyril.component';
-import { TypographyFallbackStrategyComponent } from './typography-fallback-strategy.component';
+import { TypographyFallbackComponent } from './typography-fallback.component';
 import { TypographyGreekAndCopticComponent } from './typography-greek-and-coptic.component';
 import { TypographyLatinComponent } from './typography-latin.component';
 import { WordmarkComponent } from './wordmark.component';
@@ -144,7 +144,7 @@ export const generatedPages = [
   ToastOffsetComponent,
   ToastPrefixedComponent,
   TypographyCyrilComponent,
-  TypographyFallbackStrategyComponent,
+  TypographyFallbackComponent,
   TypographyGreekAndCopticComponent,
   TypographyLatinComponent,
   WordmarkComponent,
@@ -417,9 +417,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: TypographyCyrilComponent,
   },
   {
-    name: 'Typography Fallback Strategy',
-    path: 'typography-fallback-strategy',
-    component: TypographyFallbackStrategyComponent,
+    name: 'Typography Fallback',
+    path: 'typography-fallback',
+    component: TypographyFallbackComponent,
   },
   {
     name: 'Typography Greek And Coptic',

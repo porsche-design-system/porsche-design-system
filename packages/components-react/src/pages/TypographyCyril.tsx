@@ -3,11 +3,6 @@ import { PText } from '@porsche-design-system/components-react';
 
 export const TypographyCyrilPage = (): JSX.Element => {
   const style = `
-    h2,
-    h4 {
-      color: deeppink;
-    }
-
     p-text {
       display: inline-flex;
       vertical-align: top;
@@ -15,7 +10,7 @@ export const TypographyCyrilPage = (): JSX.Element => {
       justify-content: center;
       margin: 4px;
       padding: 4px;
-      background: #f1f1f1;
+      background: rgba(125, 125, 125, 0.1);
       width: 36px;
       height: 36px;
     }
@@ -25,9 +20,7 @@ export const TypographyCyrilPage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="playground" title="should show typography in cyril charset">
-        <h2>Porsche Next Cyril</h2>
-        <h4>Range: U+0400-04FF</h4>
+      <div className="playground" title="should show typography in cyril charset (U+0400-04FF)">
         <PText size="medium" align="center" title="U+0400 | Dec:1024">Ѐ</PText>
         <PText size="medium" align="center" title="U+0401 | Dec:1025">Ё</PText>
         <PText size="medium" align="center" title="U+0402 | Dec:1026">Ђ</PText>

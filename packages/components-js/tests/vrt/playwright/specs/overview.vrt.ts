@@ -12,6 +12,7 @@ test.describe('overview', async () => {
   });
 });
 
+// executed in Chrome only
 test.describe('overview notifications', async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 

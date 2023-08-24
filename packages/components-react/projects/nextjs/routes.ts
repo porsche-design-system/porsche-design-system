@@ -224,9 +224,9 @@ const generatedRoutes = {
     "path": "/typography-cyril",
     "name": "TypographyCyril"
   },
-  "typographyFallbackStrategy": {
-    "path": "/typography-fallback-strategy",
-    "name": "TypographyFallbackStrategy"
+  "typographyFallback": {
+    "path": "/typography-fallback",
+    "name": "TypographyFallback"
   },
   "typographyGreekAndCoptic": {
     "path": "/typography-greek-and-coptic",

@@ -3,11 +3,6 @@ import { PText } from '@porsche-design-system/components-react';
 
 export const TypographyLatinPage = (): JSX.Element => {
   const style = `
-    h2,
-    h4 {
-      color: deeppink;
-    }
-
     p-text {
       display: inline-flex;
       vertical-align: top;
@@ -15,7 +10,7 @@ export const TypographyLatinPage = (): JSX.Element => {
       justify-content: center;
       margin: 4px;
       padding: 4px;
-      background: #f1f1f1;
+      background: rgba(125, 125, 125, 0.1);
       width: 36px;
       height: 36px;
     }
@@ -25,9 +20,7 @@ export const TypographyLatinPage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <div className="playground" title="should show typography in basic latin charset">
-        <h2>Porsche Next Latin</h2>
-        <h4>Range: U+0020-007F ("Basic Latin")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+0020-007F 'Basic Latin')">
         <PText size="medium" align="center" title="U++0020 | Dec: 32" />
         <PText size="medium" align="center" title="U++0021 | Dec: 33">!</PText>
         <PText size="medium" align="center" title="U++0022 | Dec: 34">"</PText>
@@ -124,8 +117,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U++007D | Dec: 125">&#125;</PText>
         <PText size="medium" align="center" title="U++007E | Dec: 126">~</PText>
         <PText size="medium" align="center" title="U++007F | Dec: 127">␡</PText>
+      </div>
 
-        <h4>Range: U+0080-00FF ("Latin-1 Supplement")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+0080-00FF 'Latin-1 Supplement')">
         <PText size="medium" align="center" title="U+0080 | Dec: 128"></PText>
         <PText size="medium" align="center" title="U+0081 | Dec: 129"></PText>
         <PText size="medium" align="center" title="U+0082 | Dec: 130"></PText>
@@ -254,8 +248,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+00FD | Dec: 253">ý</PText>
         <PText size="medium" align="center" title="U+00FE | Dec: 254">þ</PText>
         <PText size="medium" align="center" title="U+00FF | Dec: 255">ÿ</PText>
+      </div>
 
-        <h4>Range: U+0100-017F ("Latin Extended-A")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+0100-017F 'Latin Extended-A')">
         <PText size="medium" align="center" title="U+0100 | Dec: 256">Ā</PText>
         <PText size="medium" align="center" title="U+0101 | Dec: 257">ā</PText>
         <PText size="medium" align="center" title="U+0102 | Dec: 258">Ă</PText>
@@ -384,8 +379,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+017D | Dec: 381">Ž</PText>
         <PText size="medium" align="center" title="U+017E | Dec: 382">ž</PText>
         <PText size="medium" align="center" title="U+017F | Dec: 383">ſ</PText>
+      </div>
 
-        <h4>Range: U+0180-024F ("Latin Extended-B")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+0180-024F 'Latin Extended-B')">
         <PText size="medium" align="center" title="U+0180 | Dec: 384">ƀ</PText>
         <PText size="medium" align="center" title="U+0181 | Dec: 385">Ɓ</PText>
         <PText size="medium" align="center" title="U+0182 | Dec: 386">Ƃ</PText>
@@ -514,8 +510,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+01FD | Dec: 509">ǽ</PText>
         <PText size="medium" align="center" title="U+01FE | Dec: 510">Ǿ</PText>
         <PText size="medium" align="center" title="U+01FF | Dec: 511">ǿ</PText>
+      </div>
 
-        <h4>Range: U+0250-02AF ("IPA Extensions")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+0250-02AF 'IPA Extensions')">
         <PText size="medium" align="center" title="U+0250 | Dec:592">ɐ</PText>
         <PText size="medium" align="center" title="U+0251 | Dec:593">ɑ</PText>
         <PText size="medium" align="center" title="U+0252 | Dec:594">ɒ</PText>
@@ -612,8 +609,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+02AD | Dec:685">ʭ</PText>
         <PText size="medium" align="center" title="U+02AE | Dec:686">ʮ</PText>
         <PText size="medium" align="center" title="U+02AF | Dec:687">ʯ</PText>
+      </div>
 
-        <h4>Range: U+02B0-02FF ("Spacing Modifier Letters")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+02B0-02FF 'Spacing Modifier Letters')">
         <PText size="medium" align="center" title="U+02B0 | Dec:688">ʰ</PText>
         <PText size="medium" align="center" title="U+02B1 | Dec:689">ʱ</PText>
         <PText size="medium" align="center" title="U+02B2 | Dec:690">ʲ</PText>
@@ -694,8 +692,12 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+02FD | Dec:765">˽</PText>
         <PText size="medium" align="center" title="U+02FE | Dec:766">˾</PText>
         <PText size="medium" align="center" title="U+02FF | Dec:767">˿</PText>
+      </div>
 
-        <h4>Range: U+0300-036F ("Combining Diacritical Marks")</h4>
+      <div
+        className="playground"
+        title="should show typography in basic latin charset (U+0300-036F 'Combining Diacritical Marks')"
+      >
         <PText size="medium" align="center" title="U+0300 | Dec:768">̀</PText>
         <PText size="medium" align="center" title="U+0301 | Dec:769">́</PText>
         <PText size="medium" align="center" title="U+0302 | Dec:770">̂</PText>
@@ -808,8 +810,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+036D | Dec:877">ͭ</PText>
         <PText size="medium" align="center" title="U+036E | Dec:878">ͮ</PText>
         <PText size="medium" align="center" title="U+036F | Dec:879">ͯ</PText>
+      </div>
 
-        <h4>Range: U+0E00-0E7F ("Thai")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+0E00-0E7F 'Thai')">
         <PText size="medium" align="center" title="U+0E00 | Dec:3584">฀</PText>
         <PText size="medium" align="center" title="U+0E01 | Dec:3585">ก</PText>
         <PText size="medium" align="center" title="U+0E02 | Dec:3586">ข</PText>
@@ -938,8 +941,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+0E7D | Dec:3709">๽</PText>
         <PText size="medium" align="center" title="U+0E7E | Dec:3710">๾</PText>
         <PText size="medium" align="center" title="U+0E7F | Dec:3711">๿</PText>
+      </div>
 
-        <h4>Range: U+1E00-1EFF ("Latin Extended Additional")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+1E00-1EFF 'Latin Extended Additional')">
         <PText size="medium" align="center" title="U+1E00 | Dec:7680">Ḁ</PText>
         <PText size="medium" align="center" title="U+1E01 | Dec:7681">ḁ</PText>
         <PText size="medium" align="center" title="U+1E02 | Dec:7682">Ḃ</PText>
@@ -1196,8 +1200,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+1EFD | Dec:7933">ỽ</PText>
         <PText size="medium" align="center" title="U+1EFE | Dec:7934">Ỿ</PText>
         <PText size="medium" align="center" title="U+1EFF | Dec:7935">ỿ</PText>
+      </div>
 
-        <h4>Range: U+2000-206F ("General Punctuation")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+2000-206F 'General Punctuation')">
         <PText size="medium" align="center" title="U+2000 | Dec:8192" />
         <PText size="medium" align="center" title="U+2001 | Dec:8193" />
         <PText size="medium" align="center" title="U+2002 | Dec:8194">&ensp;</PText>
@@ -1310,7 +1315,12 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+206D | Dec:8301">⁭</PText>
         <PText size="medium" align="center" title="U+206E | Dec:8302">⁮</PText>
         <PText size="medium" align="center" title="U+206F | Dec:8303">⁯</PText>
-        <h4>Range: U+2070-209F ("Superscripts and Subscripts")</h4>
+      </div>
+
+      <div
+        className="playground"
+        title="should show typography in basic latin charset (U+2070-209F 'Superscripts and Subscripts')"
+      >
         <PText size="medium" align="center" title="U+2070 | Dec:8304">⁰</PText>
         <PText size="medium" align="center" title="U+2071 | Dec:8305">ⁱ</PText>
         <PText size="medium" align="center" title="U+2072 | Dec:8306">⁲</PText>
@@ -1359,8 +1369,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+209D | Dec:8349">₝</PText>
         <PText size="medium" align="center" title="U+209E | Dec:8350">₞</PText>
         <PText size="medium" align="center" title="U+209F | Dec:8351">₟</PText>
+      </div>
 
-        <h4>Range: U+20A0-20CF ("Currency Symbols")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+20A0-20CF 'Currency Symbols')">
         <PText size="medium" align="center" title="U+20A0 | Dec:8352">₠</PText>
         <PText size="medium" align="center" title="U+20A1 | Dec:8353">₡</PText>
         <PText size="medium" align="center" title="U+20A2 | Dec:8354">₢</PText>
@@ -1409,8 +1420,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+20CD | Dec:8397">⃍</PText>
         <PText size="medium" align="center" title="U+20CE | Dec:8398">⃎</PText>
         <PText size="medium" align="center" title="U+20CF | Dec:8399">⃏</PText>
+      </div>
 
-        <h4>Range: U+2100-214F ("Letterlike Symbols")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+2100-214F 'Letterlike Symbols')">
         <PText size="medium" align="center" title="U+2100 | Dec:8448">℀</PText>
         <PText size="medium" align="center" title="U+2101 | Dec:8449">℁</PText>
         <PText size="medium" align="center" title="U+2102 | Dec:8450">ℂ</PText>
@@ -1491,8 +1503,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+214D | Dec:8525">⅍</PText>
         <PText size="medium" align="center" title="U+214E | Dec:8526">ⅎ</PText>
         <PText size="medium" align="center" title="U+214F | Dec:8527">⅏</PText>
+      </div>
 
-        <h4>Range: U+2150-218F ("Number Forms")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+2150-218F 'Number Forms')">
         <PText size="medium" align="center" title="U+2150 | Dec:8528">⅐</PText>
         <PText size="medium" align="center" title="U+2151 | Dec:8529">⅑</PText>
         <PText size="medium" align="center" title="U+2152 | Dec:8530">⅒</PText>
@@ -1557,8 +1570,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+218D | Dec:8589">↍</PText>
         <PText size="medium" align="center" title="U+218E | Dec:8590">↎</PText>
         <PText size="medium" align="center" title="U+218F | Dec:8591">↏</PText>
+      </div>
 
-        <h4>Range: U+2190-21FF ("Arrows")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+2190-21FF 'Arrows')">
         <PText size="medium" align="center" title="U+2190 | Dec:8592">←</PText>
         <PText size="medium" align="center" title="U+2191 | Dec:8593">↑</PText>
         <PText size="medium" align="center" title="U+2192 | Dec:8594">→</PText>
@@ -1671,8 +1685,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+21FD | Dec:8701">⇽</PText>
         <PText size="medium" align="center" title="U+21FE | Dec:8702">⇾</PText>
         <PText size="medium" align="center" title="U+21FF | Dec:8703">⇿</PText>
+      </div>
 
-        <h4>Range: U+2200-22FF ("Mathematical Operators")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+2200-22FF 'Mathematical Operators')">
         <PText size="medium" align="center" title="U+2200 | Dec:8704">∀</PText>
         <PText size="medium" align="center" title="U+2201 | Dec:8705">∁</PText>
         <PText size="medium" align="center" title="U+2202 | Dec:8706">∂</PText>
@@ -1929,8 +1944,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+22FD | Dec:8957">⋽</PText>
         <PText size="medium" align="center" title="U+22FE | Dec:8958">⋾</PText>
         <PText size="medium" align="center" title="U+22FF | Dec:8959">⋿</PText>
+      </div>
 
-        <h4>Range: U+25A0-25FF ("Geometric Shapes")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+25A0-25FF 'Geometric Shapes')">
         <PText size="medium" align="center" title="U+25A0 | Dec:9632">■</PText>
         <PText size="medium" align="center" title="U+25A1 | Dec:9633">□</PText>
         <PText size="medium" align="center" title="U+25A2 | Dec:9634">▢</PText>
@@ -2027,8 +2043,9 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+25FD | Dec:9725">◽</PText>
         <PText size="medium" align="center" title="U+25FE | Dec:9726">◾</PText>
         <PText size="medium" align="center" title="U+25FF | Dec:9727">◿</PText>
+      </div>
 
-        <h4>Range: U+2600-26FF ("Miscellaneous Symbols")</h4>
+      <div className="playground" title="should show typography in basic latin charset (U+2600-26FF 'Miscellaneous Symbols')">
         <PText size="medium" align="center" title="U+2600 | Dec:9728">☀</PText>
         <PText size="medium" align="center" title="U+2601 | Dec:9729">☁</PText>
         <PText size="medium" align="center" title="U+2602 | Dec:9730">☂</PText>
@@ -2285,8 +2302,12 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+26FD | Dec:9981">⛽</PText>
         <PText size="medium" align="center" title="U+26FE | Dec:9982">⛾</PText>
         <PText size="medium" align="center" title="U+26FF | Dec:9983">⛿</PText>
+      </div>
 
-        <h4>Range: U+FB00-FB4F ("Alphabetic Presentation Forms")</h4>
+      <div
+        className="playground"
+        title="should show typography in basic latin charset (U+FB00-FB4F 'Alphabetic Presentation Forms')"
+      >
         <PText size="medium" align="center" title="U+FB00 | Dec:64256">ﬀ</PText>
         <PText size="medium" align="center" title="U+FB01 | Dec:64257">ﬁ</PText>
         <PText size="medium" align="center" title="U+FB02 | Dec:64258">ﬂ</PText>
@@ -2367,8 +2388,12 @@ export const TypographyLatinPage = (): JSX.Element => {
         <PText size="medium" align="center" title="U+FB4D | Dec:64333">כֿ</PText>
         <PText size="medium" align="center" title="U+FB4E | Dec:64334">פֿ</PText>
         <PText size="medium" align="center" title="U+FB4F | Dec:64335">ﭏ</PText>
+      </div>
 
-        <h4>Range: U+FE70-FEFF ("Arabic Presentation Forms-B")</h4>
+      <div
+        className="playground"
+        title="should show typography in basic latin charset (U+FE70-FEFF 'Arabic Presentation Forms-B')"
+      >
         <PText size="medium" align="center" title="U+FE70 | Dec:65136">ﹰ</PText>
         <PText size="medium" align="center" title="U+FE71 | Dec:65137">ﹱ</PText>
         <PText size="medium" align="center" title="U+FE72 | Dec:65138">ﹲ</PText>
