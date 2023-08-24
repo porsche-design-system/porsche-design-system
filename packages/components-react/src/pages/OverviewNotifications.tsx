@@ -13,12 +13,10 @@ export const OverviewNotificationsPage = (): JSX.Element => {
   }, []);
 
   const style = `
-    .playground {
-      height: 400px;
-      padding: 0;
-      margin: 0 7vw;
+    .playground > div {
+      height: 300px;
       transform: translateX(0);
-      border: 4px solid deeppink;
+      border: 1px solid deeppink;
     }
   `;
 
@@ -27,14 +25,16 @@ export const OverviewNotificationsPage = (): JSX.Element => {
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
       <div className="playground light" title="should render notifications in correct stacking order">
-        <Toast />
+        <div>
+          <Toast />
 
-        <PModal heading="The quick brown fox jumps over the lazy dog" open={true}>Some Content</PModal>
+          <PModal heading="The quick brown fox jumps over the lazy dog" open={true}>Some Content</PModal>
 
-        <PBanner open={true}>
-          <span slot="title">Default banner component</span>
-          <span slot="description">Some slotted banner description</span>
-        </PBanner>
+          <PBanner open={true}>
+            <span slot="title">Default banner component</span>
+            <span slot="description">Some slotted banner description</span>
+          </PBanner>
+        </div>
       </div>
     </>
   );
