@@ -1,5 +1,6 @@
 /* Auto Generated File */
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-popover',
@@ -23,4 +24,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PopoverComponent {}
+export class PopoverComponent implements OnInit {
+  public allReady: boolean = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnInit() {
+    componentsReady().then(() => {
+      this.allReady = true;
+      this.cdr.markForCheck();
+    });
+  }
+}

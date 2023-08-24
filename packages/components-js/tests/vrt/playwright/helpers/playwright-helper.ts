@@ -25,16 +25,6 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
   ).asElement() as ElementHandle;
 };
 
-export const openPopovers = async (page: Page): Promise<void> => {
-  await page.evaluate(() => {
-    document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
-    document.querySelectorAll('p-popover, my-prefix-p-popover').forEach((popover) => {
-      const button = popover.shadowRoot.querySelector('button');
-      if (button) button.click();
-    });
-  });
-};
-
 export const openSelectOptions = async (page: Page): Promise<void> => {
   const btn = await selectNode(page, 'p-select-wrapper#last-select-on-page >>> p-select-wrapper-dropdown >>> button');
   if (btn) {
@@ -98,7 +88,6 @@ export const setupScenario = async (
   await page.goto(url);
   await waitForComponentsReady(page);
 
-  await openPopovers(page);
   // await openSelectOptions(page);
 
   if (forceComponentTheme) {

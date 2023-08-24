@@ -1,7 +1,16 @@
 /* Auto Generated File */
 import { PPopover } from '@porsche-design-system/components-react';
+import { useEffect, useState } from 'react';
+import { pollComponentsReady } from '../pollComponentsReady';
 
 export const PopoverPage = (): JSX.Element => {
+  const [allReady, setAllReady] = useState(false);
+  useEffect(() => {
+    pollComponentsReady().then(() => {
+      setAllReady(true);
+    });
+  }, []);
+
   return (
     <>
       <div className="playground light" title="should render multiple popovers" style={{ position: 'relative', height: '500px' }}>

@@ -14,3 +14,12 @@
     <p-popover description="Some description via prop"></p-popover>
   </span>
 </div>
+
+<script>
+  window.porscheDesignSystem.componentsReady().then(() => {
+    document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
+    document.querySelectorAll('p-popover').forEach((popover) => {
+      popover.shadowRoot.querySelector('button').click();
+    });
+  });
+</script>
