@@ -4,7 +4,6 @@ import {
   expectA11yToMatchSnapshot,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
-  getElementIndex,
   getElementStyle,
   getEventSummary,
   getHTMLAttributes,
@@ -141,25 +140,20 @@ const initMultiSelect = (opt?: InitOptions): Promise<void> => {
     })
     .join('\n');
 
-  return setContentWithDesignSystem(
-    page,
-    `
-    ${isWithinForm && '<form>'}
-      ${markupBefore}
+  const markup = `${markupBefore}
       <p-multi-select ${getHTMLAttributes(props)}>
         ${label}
         ${description}
         ${selectOptions}
         ${message}
       </p-multi-select>
-      ${markupAfter}
-    ${isWithinForm && '</form>'}`
-  );
+      ${markupAfter}`;
+
+  return setContentWithDesignSystem(page, isWithinForm ? `<form>${markup}</form>` : markup);
 };
 
 it('should render', async () => {
   await initMultiSelect();
-
   const inputElement = await getInput();
   expect(inputElement).not.toBeNull();
 
