@@ -7,6 +7,7 @@ import { parseJSONAttribute } from '../json';
 import { consoleError, getTagNameWithoutPrefix } from '..';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
+type ValidatorFunctionArrayCreator = (allowedType: ValidatorFunction) => ValidatorFunction;
 type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;
 type ValidatorFunctionBreakpointCustomizableCreator = <T>(
   allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
@@ -19,9 +20,6 @@ type ValidatorFunctionOrCreator =
   | ValidatorFunctionOneOfCreator
   | ValidatorFunctionBreakpointCustomizableCreator
   | ValidatorFunctionShapeCreator;
-
-export type AllowedArrayTypes = string | number;
-type ValidatorFunctionArray = <T extends AllowedArrayTypes>(allowedTypes: T[]) => ValidatorFunction;
 
 export type ValidationError = {
   propName: string;
@@ -127,7 +125,7 @@ type AllowedTypeKey = 'string' | 'number' | 'boolean';
 export const AllowedTypes: {
   [key in AllowedTypeKey]: ValidatorFunction;
 } & {
-  array: ValidatorFunctionArray;
+  array: ValidatorFunctionArrayCreator;
   oneOf: ValidatorFunctionOneOfCreator;
   aria: ValidatorFunctionOneOfCreator;
   breakpoint: ValidatorFunctionBreakpointCustomizableCreator;
@@ -139,16 +137,10 @@ export const AllowedTypes: {
   number: (...args) => validateValueOfType(...args, 'number'),
   // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
-  array: <T extends AllowedArrayTypes>(allowedTypes: T[]): ValidatorFunction =>
+  array: (allowedType: ValidatorFunction): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function array(propName, propValue) {
-      if (!isValidArray(propValue, allowedTypes)) {
-        return {
-          propName,
-          propValue,
-          propType: `(${allowedTypes.join(' | ')})[]`,
-        };
-      }
+      return isValidArray(propName, propValue, allowedType);
     },
   oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
@@ -258,15 +250,27 @@ export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, p
 };
 
 /**
- * Check if all elements in an array have types that are allowed.
- * @template T - A union of allowed types for the array elements.
- * @param {any} arr - The array to be validated.
- * @param {T[]} allowedTypes - An array of allowed types.
- * @returns {boolean} - True if all elements have allowed types, false otherwise.
+ * Validates an array using a provided validator function and returns the first encountered validation error.
+ *
+ * @param {string} propName - The name of the property being validated.
+ * @param {any} arr - The input to be validated.
+ * @param {ValidatorFunction} validator - The validator function that checks each array item.
+ * @returns {ValidationError | undefined} The first encountered validation error object, or undefined if the array is valid.
  */
-export const isValidArray = <T extends AllowedArrayTypes>(arr: any, allowedTypes: T[]): boolean => {
+export const isValidArray = (propName: string, arr: any, validator: ValidatorFunction): ValidationError => {
+  // TODO: Would be better to return the expected array type in this case as well
   if (!Array.isArray(arr)) {
-    return false;
+    return {
+      propName,
+      propValue: arr,
+      propType: '[]',
+    };
   }
-  return arr.every((item) => allowedTypes.includes(typeof item as T));
+  for (const item of arr) {
+    const validationError = validator(propName, item);
+    if (validationError) {
+      return { ...validationError, propType: `${validationError.propType}[]` };
+    }
+  }
+  return undefined;
 };
