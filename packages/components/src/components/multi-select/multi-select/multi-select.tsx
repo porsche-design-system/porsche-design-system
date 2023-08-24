@@ -188,7 +188,6 @@ export class MultiSelect {
     attachComponentCss(
       this.host,
       getComponentCss,
-      getSelectedOptions(this.multiSelectOptions).length > 0,
       getDropdownDirection(this.dropdownDirection, this.inputContainer, this.multiSelectOptions),
       this.isOpen,
       this.disabled,
@@ -219,7 +218,7 @@ export class MultiSelect {
                 {this.description || <slot name="description" />}
               </span>
             )}
-            {this.currentValue && (
+            {this.currentValue.length > 0 && (
               <span class="sr-text" id="options-selected">
                 {getSelectedOptions(this.multiSelectOptions).length} options selected
               </span>
@@ -244,17 +243,19 @@ export class MultiSelect {
                 dropdownId
               )}
             />
-            <PrefixedTagNames.pButtonPure
-              class="icon reset-icon"
-              icon="close"
-              hideLabel="true"
-              theme={this.theme}
-              color={this.disabled ? 'state-disabled' : 'primary'}
-              onClick={this.onResetClick}
-              onKeyDown={(e) => e.key === 'Tab' && (this.isOpen = false)}
-            >
-              Reset selection
-            </PrefixedTagNames.pButtonPure>
+            {this.currentValue.length > 0 && (
+              <PrefixedTagNames.pButtonPure
+                class="icon reset-icon"
+                icon="close"
+                hideLabel="true"
+                theme={this.theme}
+                color={this.disabled ? 'state-disabled' : 'primary'}
+                onClick={this.onResetClick}
+                onKeyDown={(e) => e.key === 'Tab' && (this.isOpen = false)}
+              >
+                Reset selection
+              </PrefixedTagNames.pButtonPure>
+            )}
             <PrefixedTagNames.pIcon
               class={{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this.isOpen }}
               name="arrow-head-down"
@@ -369,6 +370,9 @@ export class MultiSelect {
         this.updateSrHighlightedOptionText();
         break;
       case 'Escape':
+        this.isOpen = false;
+        resetHighlightedOptions(this.multiSelectOptions);
+        break;
       case 'Tab':
         // If there is a value the reset button will be focused and the dropdown stays open
         if (!this.currentValue.length) {

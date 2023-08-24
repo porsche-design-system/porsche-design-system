@@ -32,7 +32,6 @@ const inputYPadding = '13px';
 const selectorNativeSelect = '::slotted([slot=select])';
 
 export const getComponentCss = (
-  hasSelection: boolean,
   direction: SelectDropdownDirectionInternal,
   isOpen: boolean,
   isDisabled: boolean,
@@ -107,7 +106,6 @@ export const getComponentCss = (
     'reset-icon': {
       padding: '4px',
       margin: 'auto',
-      display: hasSelection ? 'block' : 'none',
     },
     'toggle-icon': {
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
