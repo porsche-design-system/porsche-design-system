@@ -43,44 +43,53 @@ button:focus::before {
 button:not(:focus-visible)::before {
   border: 0;
 }
+@keyframes overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
 @media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover::before {
-    background: rgba(148, 149, 152, .18);
-  }
+    button::before {
+      transition: background-color var(--p-transition-duration, .24s) ease;
+    }
+    button:hover::before {
+      background: rgba(148, 149, 152, .18);
+    }
 }
 
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.collapsible {
-  color: #010205;
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
-}
-.collapsible div {
-  overflow: hidden;
-  padding: 4px;
-  margin: -4px;
-}"
+  .heading {
+    margin: 0;
+  }
+  .icon-container {
+    height: calc(6px + 2.125ex);
+    width: calc(6px + 2.125ex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
+    font-size: .75rem;
+    transform: rotate3d(0,0,1,90deg);
+    transition: transform var(--p-transition-duration, .24s) ease;
+  }
+  .collapsible {
+    color: #010205;
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
+  }
+  .collapsible div {
+    overflow: hidden;
+    animation: none;
+    padding: 4px;
+    margin: -4px;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: true and theme: light 1`] = `
@@ -126,45 +135,54 @@ button:focus::before {
 button:not(:focus-visible)::before {
   border: 0;
 }
+@keyframes overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
 @media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover::before {
-    background: rgba(148, 149, 152, .18);
-  }
+    button::before {
+      transition: background-color var(--p-transition-duration, .24s) ease;
+    }
+    button:hover::before {
+      background: rgba(148, 149, 152, .18);
+    }
 }
 
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.collapsible {
-  color: #010205;
-  display: grid;
-  grid-template-rows: 1fr;
-  visibility: visible;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
-  padding-bottom: 24px;
-}
-.collapsible div {
-  overflow: hidden;
-  padding: 4px;
-  margin: -4px;
-}"
+  .heading {
+    margin: 0;
+  }
+  .icon-container {
+    height: calc(6px + 2.125ex);
+    width: calc(6px + 2.125ex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
+    font-size: .75rem;
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .24s) ease;
+  }
+  .collapsible {
+    color: #010205;
+    display: grid;
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
+    padding-bottom: 24px;
+  }
+  .collapsible div {
+    overflow: visible;
+    animation: overflow var(--p-transition-duration, .24s);
+    padding: 4px;
+    margin: -4px;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false and theme: dark 1`] = `
@@ -209,44 +227,53 @@ button:focus::before {
 button:not(:focus-visible)::before {
   border: 0;
 }
+@keyframes overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
 @media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover::before {
-    background: rgba(148, 149, 152, .18);
-  }
+    button::before {
+      transition: background-color var(--p-transition-duration, .24s) ease;
+    }
+    button:hover::before {
+      background: rgba(148, 149, 152, .18);
+    }
 }
 
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.collapsible {
-  color: #FBFCFF;
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
-}
-.collapsible div {
-  overflow: hidden;
-  padding: 4px;
-  margin: -4px;
-}"
+  .heading {
+    margin: 0;
+  }
+  .icon-container {
+    height: calc(6px + 2.125ex);
+    width: calc(6px + 2.125ex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
+    font-size: .75rem;
+    transform: rotate3d(0,0,1,90deg);
+    transition: transform var(--p-transition-duration, .24s) ease;
+  }
+  .collapsible {
+    color: #FBFCFF;
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
+  }
+  .collapsible div {
+    overflow: hidden;
+    animation: none;
+    padding: 4px;
+    margin: -4px;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false and theme: light 1`] = `
@@ -291,44 +318,53 @@ button:focus::before {
 button:not(:focus-visible)::before {
   border: 0;
 }
+@keyframes overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
 @media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover::before {
-    background: rgba(148, 149, 152, .18);
-  }
+    button::before {
+      transition: background-color var(--p-transition-duration, .24s) ease;
+    }
+    button:hover::before {
+      background: rgba(148, 149, 152, .18);
+    }
 }
 
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.collapsible {
-  color: #010205;
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
-}
-.collapsible div {
-  overflow: hidden;
-  padding: 4px;
-  margin: -4px;
-}"
+  .heading {
+    margin: 0;
+  }
+  .icon-container {
+    height: calc(6px + 2.125ex);
+    width: calc(6px + 2.125ex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
+    font-size: .75rem;
+    transform: rotate3d(0,0,1,90deg);
+    transition: transform var(--p-transition-duration, .24s) ease;
+  }
+  .collapsible {
+    color: #010205;
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
+  }
+  .collapsible div {
+    overflow: hidden;
+    animation: none;
+    padding: 4px;
+    margin: -4px;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: true and theme: light 1`] = `
@@ -373,45 +409,54 @@ button:focus::before {
 button:not(:focus-visible)::before {
   border: 0;
 }
+@keyframes overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
 @media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover::before {
-    background: rgba(148, 149, 152, .18);
-  }
+    button::before {
+      transition: background-color var(--p-transition-duration, .24s) ease;
+    }
+    button:hover::before {
+      background: rgba(148, 149, 152, .18);
+    }
 }
 
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.collapsible {
-  color: #010205;
-  display: grid;
-  grid-template-rows: 1fr;
-  visibility: visible;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
-  padding-bottom: 8px;
-}
-.collapsible div {
-  overflow: hidden;
-  padding: 4px;
-  margin: -4px;
-}"
+  .heading {
+    margin: 0;
+  }
+  .icon-container {
+    height: calc(6px + 2.125ex);
+    width: calc(6px + 2.125ex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
+    font-size: .75rem;
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .24s) ease;
+  }
+  .collapsible {
+    color: #010205;
+    display: grid;
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
+    padding-bottom: 8px;
+  }
+  .collapsible div {
+    overflow: visible;
+    animation: overflow var(--p-transition-duration, .24s);
+    padding: 4px;
+    margin: -4px;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: false and theme: light 1`] = `
@@ -457,44 +502,53 @@ button:focus::before {
 button:not(:focus-visible)::before {
   border: 0;
 }
+@keyframes overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
 @media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover::before {
-    background: rgba(148, 149, 152, .18);
-  }
+    button::before {
+      transition: background-color var(--p-transition-duration, .24s) ease;
+    }
+    button:hover::before {
+      background: rgba(148, 149, 152, .18);
+    }
 }
 
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.collapsible {
-  color: #010205;
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
-}
-.collapsible div {
-  overflow: hidden;
-  padding: 4px;
-  margin: -4px;
-}"
+  .heading {
+    margin: 0;
+  }
+  .icon-container {
+    height: calc(6px + 2.125ex);
+    width: calc(6px + 2.125ex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
+    font-size: .75rem;
+    transform: rotate3d(0,0,1,90deg);
+    transition: transform var(--p-transition-duration, .24s) ease;
+  }
+  .collapsible {
+    color: #010205;
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
+  }
+  .collapsible div {
+    overflow: hidden;
+    animation: none;
+    padding: 4px;
+    margin: -4px;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: dark 1`] = `
@@ -540,45 +594,54 @@ button:focus::before {
 button:not(:focus-visible)::before {
   border: 0;
 }
+@keyframes overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
 @media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover::before {
-    background: rgba(148, 149, 152, .18);
-  }
+    button::before {
+      transition: background-color var(--p-transition-duration, .24s) ease;
+    }
+    button:hover::before {
+      background: rgba(148, 149, 152, .18);
+    }
 }
 
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.collapsible {
-  color: #FBFCFF;
-  display: grid;
-  grid-template-rows: 1fr;
-  visibility: visible;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
-  padding-bottom: 24px;
-}
-.collapsible div {
-  overflow: hidden;
-  padding: 4px;
-  margin: -4px;
-}"
+  .heading {
+    margin: 0;
+  }
+  .icon-container {
+    height: calc(6px + 2.125ex);
+    width: calc(6px + 2.125ex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
+    font-size: .75rem;
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .24s) ease;
+  }
+  .collapsible {
+    color: #FBFCFF;
+    display: grid;
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
+    padding-bottom: 24px;
+  }
+  .collapsible div {
+    overflow: visible;
+    animation: overflow var(--p-transition-duration, .24s);
+    padding: 4px;
+    margin: -4px;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: light 1`] = `
@@ -624,45 +687,54 @@ button:focus::before {
 button:not(:focus-visible)::before {
   border: 0;
 }
+@keyframes overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
 @media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover::before {
-    background: rgba(148, 149, 152, .18);
-  }
+    button::before {
+      transition: background-color var(--p-transition-duration, .24s) ease;
+    }
+    button:hover::before {
+      background: rgba(148, 149, 152, .18);
+    }
 }
 
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.collapsible {
-  color: #010205;
-  display: grid;
-  grid-template-rows: 1fr;
-  visibility: visible;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
-  padding-bottom: 24px;
-}
-.collapsible div {
-  overflow: hidden;
-  padding: 4px;
-  margin: -4px;
-}"
+  .heading {
+    margin: 0;
+  }
+  .icon-container {
+    height: calc(6px + 2.125ex);
+    width: calc(6px + 2.125ex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
+    font-size: .75rem;
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .24s) ease;
+  }
+  .collapsible {
+    color: #010205;
+    display: grid;
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
+    padding-bottom: 24px;
+  }
+  .collapsible div {
+    overflow: visible;
+    animation: overflow var(--p-transition-duration, .24s);
+    padding: 4px;
+    margin: -4px;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "small", compact: true, open: false and theme: light 1`] = `
@@ -707,44 +779,53 @@ button:focus::before {
 button:not(:focus-visible)::before {
   border: 0;
 }
+@keyframes overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
 @media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover::before {
-    background: rgba(148, 149, 152, .18);
-  }
+    button::before {
+      transition: background-color var(--p-transition-duration, .24s) ease;
+    }
+    button:hover::before {
+      background: rgba(148, 149, 152, .18);
+    }
 }
 
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.collapsible {
-  color: #010205;
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
-}
-.collapsible div {
-  overflow: hidden;
-  padding: 4px;
-  margin: -4px;
-}"
+  .heading {
+    margin: 0;
+  }
+  .icon-container {
+    height: calc(6px + 2.125ex);
+    width: calc(6px + 2.125ex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
+    font-size: .75rem;
+    transform: rotate3d(0,0,1,90deg);
+    transition: transform var(--p-transition-duration, .24s) ease;
+  }
+  .collapsible {
+    color: #010205;
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
+  }
+  .collapsible div {
+    overflow: hidden;
+    animation: none;
+    padding: 4px;
+    margin: -4px;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: "small", compact: true, open: true and theme: light 1`] = `
@@ -789,45 +870,54 @@ button:focus::before {
 button:not(:focus-visible)::before {
   border: 0;
 }
+@keyframes overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
 @media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover::before {
-    background: rgba(148, 149, 152, .18);
-  }
+    button::before {
+      transition: background-color var(--p-transition-duration, .24s) ease;
+    }
+    button:hover::before {
+      background: rgba(148, 149, 152, .18);
+    }
 }
 
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.collapsible {
-  color: #010205;
-  display: grid;
-  grid-template-rows: 1fr;
-  visibility: visible;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
-  padding-bottom: 8px;
-}
-.collapsible div {
-  overflow: hidden;
-  padding: 4px;
-  margin: -4px;
-}"
+  .heading {
+    margin: 0;
+  }
+  .icon-container {
+    height: calc(6px + 2.125ex);
+    width: calc(6px + 2.125ex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
+    font-size: .75rem;
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .24s) ease;
+  }
+  .collapsible {
+    color: #010205;
+    display: grid;
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
+    padding-bottom: 8px;
+  }
+  .collapsible div {
+    overflow: visible;
+    animation: overflow var(--p-transition-duration, .24s);
+    padding: 4px;
+    margin: -4px;
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true and theme: dark 1`] = `
@@ -873,78 +963,87 @@ button:focus::before {
 button:not(:focus-visible)::before {
   border: 0;
 }
-@media(min-width:480px) {
-  button {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-    padding: 20px 0;
+@keyframes overflow {
+  from {
+    overflow: hidden;
   }
+  to {
+    overflow: hidden;
+  }
+}
+@media(min-width:480px) {
+    button {
+      font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+      padding: 20px 0;
+    }
 }
 
 @media(min-width:760px) {
-  button {
-    font-size: 1rem;
-    padding: 15px 0;
-  }
+    button {
+      font-size: 1rem;
+      padding: 15px 0;
+    }
 }
 
 @media(min-width:1000px) {
-  button {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-    padding: 20px 0;
-  }
+    button {
+      font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+      padding: 20px 0;
+    }
 }
 
 @media(min-width:1300px) {
-  button {
-    font-size: 1rem;
-    padding: 15px 0;
-  }
+    button {
+      font-size: 1rem;
+      padding: 15px 0;
+    }
 }
 
 @media(min-width:1760px) {
-  button {
-    font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-    padding: 20px 0;
-  }
+    button {
+      font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+      padding: 20px 0;
+    }
 }
 
 @media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover::before {
-    background: rgba(148, 149, 152, .18);
-  }
+    button::before {
+      transition: background-color var(--p-transition-duration, .24s) ease;
+    }
+    button:hover::before {
+      background: rgba(148, 149, 152, .18);
+    }
 }
 
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.collapsible {
-  color: #FBFCFF;
-  display: grid;
-  grid-template-rows: 1fr;
-  visibility: visible;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
-  padding-bottom: 24px;
-}
-.collapsible div {
-  overflow: hidden;
-  padding: 4px;
-  margin: -4px;
-}"
+  .heading {
+    margin: 0;
+  }
+  .icon-container {
+    height: calc(6px + 2.125ex);
+    width: calc(6px + 2.125ex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
+    font-size: .75rem;
+    transform: rotate3d(0);
+    transition: transform var(--p-transition-duration, .24s) ease;
+  }
+  .collapsible {
+    color: #FBFCFF;
+    display: grid;
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows var(--p-transition-duration, .24s) ease-out;
+    padding-bottom: 24px;
+  }
+  .collapsible div {
+    overflow: visible;
+    animation: overflow var(--p-transition-duration, .24s);
+    padding: 4px;
+    margin: -4px;
+  }"
 `;

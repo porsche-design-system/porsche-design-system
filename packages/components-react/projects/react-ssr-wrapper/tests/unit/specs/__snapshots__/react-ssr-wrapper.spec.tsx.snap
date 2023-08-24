@@ -1748,35 +1748,44 @@ button::before {
 button:hover::before {
   background: rgba(148, 149, 152, .18);
 }
-.heading {
-  margin: 0;
+@keyframes overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.collapsible {
-  color: #010205;
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
-}
-.collapsible div {
-  overflow: hidden;
-  padding: 4px;
-  margin: -4px;
-}
+  .heading {
+    margin: 0;
+  }
+  .icon-container {
+    height: calc(6px + 2.125ex);
+    width: calc(6px + 2.125ex);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: calc(6px + 2.125ex);
+    height: calc(6px + 2.125ex);
+    font-size: .75rem;
+    transform: rotate3d(0,0,1,90deg);
+    transition: transform var(--p-transition-duration, .24s) ease;
+  }
+  .collapsible {
+    color: #010205;
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows var(--p-transition-duration, .24s) ease-out, visibility 0s linear var(--p-transition-duration, .24s);
+  }
+  .collapsible div {
+    overflow: hidden;
+    animation: none;
+    padding: 4px;
+    margin: -4px;
+  }
     </style>
     <h2
       class="heading"
