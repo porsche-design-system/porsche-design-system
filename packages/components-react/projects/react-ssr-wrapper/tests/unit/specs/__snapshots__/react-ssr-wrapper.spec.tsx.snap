@@ -5667,12 +5667,11 @@ exports[`should render dsr component for PPinCode 1`] = `
 >
   <template
     shadowroot="open"
-    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
       :host {
-  display: inline-block !important;
+  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5756,7 +5755,6 @@ input[readonly] {
     </style>
     <label
       class="label"
-      for="current-input"
     />
     <div
       class="pin-code-container"
