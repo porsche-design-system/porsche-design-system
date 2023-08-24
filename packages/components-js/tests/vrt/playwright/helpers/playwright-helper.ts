@@ -1,5 +1,6 @@
 import type { Page } from '@playwright/test';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
+import { ElementHandle } from '@playwright/test';
 
 export const baseThemes = ['light', 'dark'] as const;
 export const baseSchemes = ['light', 'dark'] as const;
@@ -10,6 +11,20 @@ export const waitForComponentsReady = (page: Page): Promise<number> => {
   return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
 };
 
+export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
+  const selectorParts = selector.split('>>>');
+  const shadowRootSelectors =
+    selectorParts.length > 1
+      ? selectorParts
+          .slice(1)
+          .map((x) => `.shadowRoot.querySelector('${x.trim()}')`)
+          .join('')
+      : '';
+  return (
+    await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
+  ).asElement() as ElementHandle;
+};
+
 export const openPopovers = async (page: Page): Promise<void> => {
   await page.evaluate(() => {
     document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
@@ -18,6 +33,14 @@ export const openPopovers = async (page: Page): Promise<void> => {
       if (button) button.click();
     });
   });
+};
+
+export const openSelectOptions = async (page: Page): Promise<void> => {
+  const btn = await selectNode(page, 'p-select-wrapper#last-select-on-page >>> p-select-wrapper-dropdown >>> button');
+  if (btn) {
+    await btn.click();
+    await waitForComponentsReady(page);
+  }
 };
 
 type Options = {
@@ -76,6 +99,7 @@ export const setupScenario = async (
   await waitForComponentsReady(page);
 
   await openPopovers(page);
+  await openSelectOptions(page);
 
   if (forceComponentTheme) {
     await page.evaluate((theme) => {
