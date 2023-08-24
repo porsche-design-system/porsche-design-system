@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- Bundling format and name of `components-js` entrypoint for Vanilla JS integration
+  ([#2745](https://github.com/porsche-design-system/porsche-design-system/pull/2745))
+
 ### [3.6.0-rc.0] - 2023-08-23
 
 #### Added
@@ -45,7 +50,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   component. ([#2713](https://github.com/porsche-design-system/porsche-design-system/pull/2713))
 - React/SSR: compatibility with Next.js v13 app router
   ([#2687](https://github.com/porsche-design-system/porsche-design-system/pull/2687))
-- Consistent `package.json` ECMAScript module exports for `components-{js|angular|react|vue}`
+- Consistent `package.json` ECMAScript module exports with `.mjs` and `.cjs` file extensions for
+  `components-{js|angular|react|vue}`
   ([#2739](https://github.com/porsche-design-system/porsche-design-system/pull/2739))
 
 ### [3.5.0] - 2023-07-25
