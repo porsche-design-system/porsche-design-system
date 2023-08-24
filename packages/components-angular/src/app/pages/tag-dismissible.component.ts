@@ -3,96 +3,44 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-tag-dismissible',
-  styles: [
-    `
-      .playground {
-        margin-bottom: -0.5rem;
-      }
-    
-      p-tag-dismissible {
-        margin-bottom: 0.5rem;
-      }
-    
-      p-tag-dismissible:not(:last-child) {
-        margin-right: 0.5rem;
-      }
-    `,
-  ],
   template: `
-    <div class="playground light" title="should show different background colors on light background">
+    <div class="playground light auto-layout" title="should show different background colors">
       <p-tag-dismissible>Default</p-tag-dismissible>
       <p-tag-dismissible [color]="'background-default'">Color background-default</p-tag-dismissible>
       <p-tag-dismissible [color]="'background-surface'">Color background-surface</p-tag-dismissible>
     </div>
 
-    <div class="playground dark" title="should show different background colors on dark background">
-      <p-tag-dismissible>Default</p-tag-dismissible>
-      <p-tag-dismissible [theme]="'dark'" [color]="'background-default'">Color background-default</p-tag-dismissible>
-      <p-tag-dismissible [theme]="'dark'" [color]="'background-surface'">Color background-surface</p-tag-dismissible>
-    </div>
-
-    <div class="playground light surface" title="should show different background colors on light surface background">
+    <div class="playground light surface auto-layout" title="should show different background colors on surface background">
       <p-tag-dismissible>Default</p-tag-dismissible>
       <p-tag-dismissible [color]="'background-default'">Color background-default</p-tag-dismissible>
       <p-tag-dismissible [color]="'background-surface'">Color background-surface</p-tag-dismissible>
     </div>
 
-    <div class="playground dark surface" title="should show different background colors on dark surface background">
-      <p-tag-dismissible [theme]="'dark'">Default</p-tag-dismissible>
-      <p-tag-dismissible [theme]="'dark'" [color]="'background-default'">Color background-default</p-tag-dismissible>
-      <p-tag-dismissible [theme]="'dark'" [color]="'background-surface'">Color background-surface</p-tag-dismissible>
-    </div>
-
-    <div class="playground light" title="should show different background colors and label on light background">
-      <p-tag-dismissible [label]="'Some label'">Default</p-tag-dismissible>
-      <p-tag-dismissible [label]="'Some label'" [color]="'background-default'">Color background-default</p-tag-dismissible>
-      <p-tag-dismissible [label]="'Some label'" [color]="'background-surface'">Color background-surface</p-tag-dismissible>
-    </div>
-
-    <div class="playground dark" title="should show different background colors and label on dark background">
-      <p-tag-dismissible [theme]="'dark'" [label]="'Some label'">Default</p-tag-dismissible>
-      <p-tag-dismissible [theme]="'dark'" [label]="'Some label'" [color]="'background-default'"
-        >Color background-default</p-tag-dismissible
-      >
-      <p-tag-dismissible [theme]="'dark'" [label]="'Some label'" [color]="'background-surface'"
-        >Color background-surface</p-tag-dismissible
-      >
-    </div>
-
-    <div
-      class="playground light surface"
-      title="should show different background colors and label on light surface background"
-    >
+    <div class="playground light auto-layout" title="should show different background colors and label">
       <p-tag-dismissible [label]="'Some label'">Default</p-tag-dismissible>
       <p-tag-dismissible [label]="'Some label'" [color]="'background-default'">Color background-default</p-tag-dismissible>
       <p-tag-dismissible [label]="'Some label'" [color]="'background-surface'">Color background-surface</p-tag-dismissible>
     </div>
 
     <div
-      class="playground dark surface"
-      title="should show different background colors and label on dark surface background"
+      class="playground light surface auto-layout"
+      title="should show different background colors and label on surface background"
     >
-      <p-tag-dismissible [theme]="'dark'" [label]="'Some label'">Default</p-tag-dismissible>
-      <p-tag-dismissible [theme]="'dark'" [label]="'Some label'" [color]="'background-default'"
-        >Color background-default</p-tag-dismissible
-      >
-      <p-tag-dismissible [theme]="'dark'" [label]="'Some label'" [color]="'background-surface'"
-        >Color background-surface</p-tag-dismissible
-      >
+      <p-tag-dismissible [label]="'Some label'">Default</p-tag-dismissible>
+      <p-tag-dismissible [label]="'Some label'" [color]="'background-default'">Color background-default</p-tag-dismissible>
+      <p-tag-dismissible [label]="'Some label'" [color]="'background-surface'">Color background-surface</p-tag-dismissible>
     </div>
 
-    <div class="playground light" title="should apply custom styles for dedicated slotted content on light background">
+    <div class="playground light auto-layout" title="should apply custom styles for dedicated slotted content">
       <p-tag-dismissible>
         Some <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text
       </p-tag-dismissible>
     </div>
 
-    <div class="playground light" title="should show different multiline tags on light background">
-      <div style="width: 250px; overflow: auto">
-        <p-tag-dismissible>Text that is very long and will break into the next line</p-tag-dismissible>
-        <p-tag-dismissible [label]="'Some label'">Text that is very long and will break into the next line</p-tag-dismissible>
-        <p-tag-dismissible [label]="'Label that is very long and will break into the next line'">Short Text</p-tag-dismissible>
-      </div>
+    <div class="playground light auto-layout" title="should show different multiline tags" style="max-width: 300px">
+      <p-tag-dismissible>Text that is very long and will break into the next line</p-tag-dismissible>
+      <p-tag-dismissible [label]="'Some label'">Text that is very long and will break into the next line</p-tag-dismissible>
+      <p-tag-dismissible [label]="'Label that is very long and will break into the next line'">Short Text</p-tag-dismissible>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
