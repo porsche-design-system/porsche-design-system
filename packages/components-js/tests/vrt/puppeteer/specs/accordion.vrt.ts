@@ -18,7 +18,7 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'accordion', '/#accordion', {
       scenario: async (page) => {
-        await page.click('#open-options');
+        await page.click('#native-select');
         await page.evaluate(() => (window as any).componentsReady());
       },
     })
