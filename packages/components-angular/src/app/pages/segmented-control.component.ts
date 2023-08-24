@@ -22,24 +22,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-segmented-control>
     </div>
 
-    <div class="playground dark" title="should render default segmented-control on dark theme">
-      <p-segmented-control [value]="'s'" [theme]="'dark'">
-        <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
-        <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
-        <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
-      </p-segmented-control>
-    </div>
-
-    <div class="playground dark surface" title="should render default segmented-control on dark theme surface">
-      <p-segmented-control [value]="'s'" [theme]="'dark'" [backgroundColor]="'background-surface'">
-        <p-segmented-control-item [value]="'s'">S</p-segmented-control-item>
-        <p-segmented-control-item [value]="'m'">M</p-segmented-control-item>
-        <p-segmented-control-item [value]="'l'">L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [disabled]="true">XL</p-segmented-control-item>
-      </p-segmented-control>
-    </div>
-
     <div class="playground light" title="should render segmented-control with labels">
       <p-segmented-control [value]="'s'">
         <p-segmented-control-item [value]="'s'" [label]="'Size'">S</p-segmented-control-item>
@@ -131,24 +113,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p-segmented-control>
     </div>
 
-    <div class="playground dark" title="should render segmented-control with labels on dark theme">
-      <p-segmented-control [value]="'s'" [theme]="'dark'">
-        <p-segmented-control-item [value]="'s'" [label]="'Size'">S</p-segmented-control-item>
-        <p-segmented-control-item [value]="'m'" [label]="'Size'">M</p-segmented-control-item>
-        <p-segmented-control-item [value]="'l'" [label]="'Size'">L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [label]="'Size'" [disabled]="true">XL</p-segmented-control-item>
-      </p-segmented-control>
-    </div>
-
-    <div class="playground dark surface" title="should render segmented-control with labels on dark theme surface">
-      <p-segmented-control [value]="'s'" [theme]="'dark'" [backgroundColor]="'background-surface'">
-        <p-segmented-control-item [value]="'s'" [label]="'Size'">S</p-segmented-control-item>
-        <p-segmented-control-item [value]="'m'" [label]="'Size'">M</p-segmented-control-item>
-        <p-segmented-control-item [value]="'l'" [label]="'Size'">L</p-segmented-control-item>
-        <p-segmented-control-item [value]="'xl'" [label]="'Size'" [disabled]="true">XL</p-segmented-control-item>
-      </p-segmented-control>
-    </div>
-
     <div class="playground light" title="should render segmented-control with icons">
       <p-segmented-control [value]="1">
         <p-segmented-control-item [value]="1" [icon]="'increase'">Start</p-segmented-control-item>
@@ -162,28 +126,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
     <div class="playground light surface" title="should render segmented-control with icons on surface">
       <p-segmented-control [value]="1" [backgroundColor]="'background-surface'">
-        <p-segmented-control-item [value]="1" [icon]="'increase'">Start</p-segmented-control-item>
-        <p-segmented-control-item [value]="2" [icon]="'lock'">Stop</p-segmented-control-item>
-        <p-segmented-control-item [value]="3" [icon]="'question'">FAQ</p-segmented-control-item>
-        <p-segmented-control-item [value]="4" [icon]="'shopping-cart'">Checkout</p-segmented-control-item>
-        
-        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">Confirmation</p-segmented-control-item>
-      </p-segmented-control>
-    </div>
-
-    <div class="playground dark" title="should render segmented-control with icons on dark theme">
-      <p-segmented-control [value]="1" [theme]="'dark'">
-        <p-segmented-control-item [value]="1" [icon]="'increase'">Start</p-segmented-control-item>
-        <p-segmented-control-item [value]="2" [icon]="'lock'">Stop</p-segmented-control-item>
-        <p-segmented-control-item [value]="3" [icon]="'question'">FAQ</p-segmented-control-item>
-        <p-segmented-control-item [value]="4" [icon]="'shopping-cart'">Checkout</p-segmented-control-item>
-        
-        <p-segmented-control-item [value]="5" [iconSource]="'./assets/icon-custom-kaixin.svg'" [disabled]="true">Confirmation</p-segmented-control-item>
-      </p-segmented-control>
-    </div>
-
-    <div class="playground dark surface" title="should render segmented-control with icons on dark theme surface">
-      <p-segmented-control [value]="1" [theme]="'dark'" [backgroundColor]="'background-surface'">
         <p-segmented-control-item [value]="1" [icon]="'increase'">Start</p-segmented-control-item>
         <p-segmented-control-item [value]="2" [icon]="'lock'">Stop</p-segmented-control-item>
         <p-segmented-control-item [value]="3" [icon]="'question'">FAQ</p-segmented-control-item>

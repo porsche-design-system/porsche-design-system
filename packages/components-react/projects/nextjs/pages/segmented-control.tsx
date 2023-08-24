@@ -23,24 +23,6 @@ const SegmentedControlPage: NextPage = (): JSX.Element => {
         </PSegmentedControl>
       </div>
 
-      <div className="playground dark" title="should render default segmented-control on dark theme">
-        <PSegmentedControl value="s" theme="dark">
-          <PSegmentedControlItem value="s">S</PSegmentedControlItem>
-          <PSegmentedControlItem value="m">M</PSegmentedControlItem>
-          <PSegmentedControlItem value="l">L</PSegmentedControlItem>
-          <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
-        </PSegmentedControl>
-      </div>
-
-      <div className="playground dark surface" title="should render default segmented-control on dark theme surface">
-        <PSegmentedControl value="s" theme="dark" backgroundColor="background-surface">
-          <PSegmentedControlItem value="s">S</PSegmentedControlItem>
-          <PSegmentedControlItem value="m">M</PSegmentedControlItem>
-          <PSegmentedControlItem value="l">L</PSegmentedControlItem>
-          <PSegmentedControlItem value="xl" disabled={true}>XL</PSegmentedControlItem>
-        </PSegmentedControl>
-      </div>
-
       <div className="playground light" title="should render segmented-control with labels">
         <PSegmentedControl value="s">
           <PSegmentedControlItem value="s" label="Size">S</PSegmentedControlItem>
@@ -132,24 +114,6 @@ const SegmentedControlPage: NextPage = (): JSX.Element => {
         </PSegmentedControl>
       </div>
 
-      <div className="playground dark" title="should render segmented-control with labels on dark theme">
-        <PSegmentedControl value="s" theme="dark">
-          <PSegmentedControlItem value="s" label="Size">S</PSegmentedControlItem>
-          <PSegmentedControlItem value="m" label="Size">M</PSegmentedControlItem>
-          <PSegmentedControlItem value="l" label="Size">L</PSegmentedControlItem>
-          <PSegmentedControlItem value="xl" label="Size" disabled={true}>XL</PSegmentedControlItem>
-        </PSegmentedControl>
-      </div>
-
-      <div className="playground dark surface" title="should render segmented-control with labels on dark theme surface">
-        <PSegmentedControl value="s" theme="dark" backgroundColor="background-surface">
-          <PSegmentedControlItem value="s" label="Size">S</PSegmentedControlItem>
-          <PSegmentedControlItem value="m" label="Size">M</PSegmentedControlItem>
-          <PSegmentedControlItem value="l" label="Size">L</PSegmentedControlItem>
-          <PSegmentedControlItem value="xl" label="Size" disabled={true}>XL</PSegmentedControlItem>
-        </PSegmentedControl>
-      </div>
-
       <div className="playground light" title="should render segmented-control with icons">
         <PSegmentedControl value={1}>
           <PSegmentedControlItem value={1} icon="increase">Start</PSegmentedControlItem>
@@ -163,28 +127,6 @@ const SegmentedControlPage: NextPage = (): JSX.Element => {
 
       <div className="playground light surface" title="should render segmented-control with icons on surface">
         <PSegmentedControl value={1} backgroundColor="background-surface">
-          <PSegmentedControlItem value={1} icon="increase">Start</PSegmentedControlItem>
-          <PSegmentedControlItem value={2} icon="lock">Stop</PSegmentedControlItem>
-          <PSegmentedControlItem value={3} icon="question">FAQ</PSegmentedControlItem>
-          <PSegmentedControlItem value={4} icon="shopping-cart">Checkout</PSegmentedControlItem>
-          
-          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled={true}>Confirmation</PSegmentedControlItem>
-        </PSegmentedControl>
-      </div>
-
-      <div className="playground dark" title="should render segmented-control with icons on dark theme">
-        <PSegmentedControl value={1} theme="dark">
-          <PSegmentedControlItem value={1} icon="increase">Start</PSegmentedControlItem>
-          <PSegmentedControlItem value={2} icon="lock">Stop</PSegmentedControlItem>
-          <PSegmentedControlItem value={3} icon="question">FAQ</PSegmentedControlItem>
-          <PSegmentedControlItem value={4} icon="shopping-cart">Checkout</PSegmentedControlItem>
-          
-          <PSegmentedControlItem value={5} iconSource="./assets/icon-custom-kaixin.svg" disabled={true}>Confirmation</PSegmentedControlItem>
-        </PSegmentedControl>
-      </div>
-
-      <div className="playground dark surface" title="should render segmented-control with icons on dark theme surface">
-        <PSegmentedControl value={1} theme="dark" backgroundColor="background-surface">
           <PSegmentedControlItem value={1} icon="increase">Start</PSegmentedControlItem>
           <PSegmentedControlItem value={2} icon="lock">Stop</PSegmentedControlItem>
           <PSegmentedControlItem value={3} icon="question">FAQ</PSegmentedControlItem>
