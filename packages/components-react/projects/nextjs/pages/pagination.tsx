@@ -5,41 +5,37 @@ import { PPagination } from '@porsche-design-system/components-react/ssr';
 const PaginationPage: NextPage = (): JSX.Element => {
   return (
     <>
-      <div className="playground light" title="should show default pagination on light background">
+      <div className="playground light" title="should show default pagination">
         <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} />
       </div>
 
-      <div className="playground dark" title="should show pagination on dark background">
-        <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} theme="dark" />
-      </div>
-
-      <div className="playground light" title="should show pagination with ellipsis on both sides on light background">
+      <div className="playground light" title="should show pagination with ellipsis on both sides">
         <PPagination totalItemsCount={500} itemsPerPage={25} activePage={10} />
       </div>
 
-      <div className="playground light" title="should show pagination with last page selected on light background">
+      <div className="playground light" title="should show pagination with last page selected">
         <PPagination totalItemsCount={500} itemsPerPage={25} activePage={20} />
       </div>
 
-      <div className="playground light" title="should show pagination with less than maximum pages on light background">
+      <div className="playground light" title="should show pagination with less than maximum pages">
         <PPagination totalItemsCount={75} itemsPerPage={25} activePage={2} />
       </div>
 
-      <div className="playground light" title="should show pagination with 3rd item set as active on light background">
+      <div className="playground light" title="should show pagination with 3rd item set as active">
         <PPagination totalItemsCount={500} itemsPerPage={25} activePage={3} />
       </div>
 
-      <div className="playground light" title="should show pagination with 7 items (including ellipsis) on light background">
+      <div className="playground light" title="should show pagination with 7 items (including ellipsis)">
         <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} maxNumberOfPageLinks={7} />
       </div>
 
-      <div className="playground light" title="should show pagination with 5 items (including ellipsis) on light background">
+      <div className="playground light" title="should show pagination with 5 items (including ellipsis)">
         <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} maxNumberOfPageLinks={5} />
       </div>
 
       <div
         className="playground light"
-        title="should show pagination with 5 or 7 items depending on window size (including ellipsis) on light background"
+        title="should show pagination with 5 or 7 items depending on window size (including ellipsis)"
       >
         <PPagination
           totalItemsCount={500}
@@ -49,14 +45,11 @@ const PaginationPage: NextPage = (): JSX.Element => {
          />
       </div>
 
-      <div className="playground light" title="should show pagination without last page on light background">
+      <div className="playground light" title="should show pagination without last page">
         <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} showLastPage={false} />
       </div>
 
-      <div
-        className="playground light"
-        title="should show pagination with last page selected and without last page on light background"
-      >
+      <div className="playground light" title="should show pagination with last page selected and without last page">
         <PPagination totalItemsCount={500} itemsPerPage={25} activePage={20} showLastPage={false} />
       </div>
     </>
