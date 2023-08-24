@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, theme: false 1`] = `
 ":host {
-  display: block !important;
+  display: inline-block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -53,13 +53,11 @@ input[readonly] {
 .pin-code-container {
   display: flex;
   position: relative;
-  width: fit-content;
   gap: 8px;
-  justify-content: start;
   flex-wrap: wrap;
 }
 .label {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
@@ -150,7 +148,7 @@ input[readonly] {
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, theme: false 1`] = `
 ":host {
-  display: block !important;
+  display: inline-block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -201,13 +199,11 @@ input[readonly] {
 .pin-code-container {
   display: flex;
   position: relative;
-  width: fit-content;
   gap: 8px;
-  justify-content: start;
   flex-wrap: wrap;
 }
 .label {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
@@ -252,7 +248,7 @@ input[readonly] {
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, theme: true 1`] = `
 ":host {
-  display: block !important;
+  display: inline-block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -313,13 +309,11 @@ input[readonly] {
 .pin-code-container {
   display: flex;
   position: relative;
-  width: fit-content;
   gap: 8px;
-  justify-content: start;
   flex-wrap: wrap;
 }
 .label {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
@@ -363,7 +357,7 @@ input[readonly] {
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, theme: false 1`] = `
 ":host {
-  display: block !important;
+  display: inline-block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -414,13 +408,11 @@ input[readonly] {
 .pin-code-container {
   display: flex;
   position: relative;
-  width: fit-content;
   gap: 8px;
-  justify-content: start;
   flex-wrap: wrap;
 }
 .label {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
@@ -464,7 +456,7 @@ input[readonly] {
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, theme: false 1`] = `
 ":host {
-  display: block !important;
+  display: inline-block !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -515,13 +507,11 @@ input[readonly] {
 .pin-code-container {
   display: flex;
   position: relative;
-  width: fit-content;
   gap: 8px;
-  justify-content: start;
   flex-wrap: wrap;
 }
 .label {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
