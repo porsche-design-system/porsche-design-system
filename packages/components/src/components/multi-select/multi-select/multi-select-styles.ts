@@ -23,7 +23,7 @@ import { getThemedFormStateColors } from '../../../styles/form-state-color-style
 import { FormState } from '../../../utils/form/form-state';
 import { getLabelStyles, INPUT_HEIGHT } from '../../../styles/form-styles';
 import { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
-import { getPlaceholderStyles } from '../../../styles/placeholder';
+import { getPlaceholderJssStyles } from '../../../styles/placeholder';
 import { getNoResultsOptionJSSStyles, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/select/option-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
@@ -150,8 +150,8 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
       '&:disabled': {
         cursor: 'not-allowed',
       },
-      '&:not(:focus)': getPlaceholderStyles({ color: primaryColor }),
-      ...(isDisabled && getPlaceholderStyles({ color: disabledColor })),
+      '&:not(:focus)': getPlaceholderJssStyles({ color: primaryColor }),
+      ...(isDisabled && getPlaceholderJssStyles({ color: disabledColor })),
     },
   };
 };
