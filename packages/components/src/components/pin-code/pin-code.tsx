@@ -159,7 +159,6 @@ export class PinCode {
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-busy={this.loading}
               autoComplete="one-time-code"
-              maxLength={1}
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
               value={this.value[index]}
