@@ -8,7 +8,7 @@ import { JssStyle, Styles } from 'jss';
 export const OPTION_HEIGHT = 40; // optgroups are higher and ignored
 export const MULTI_SELECT_OPTION_HEIGHT = 44;
 
-export const getSelectOptionStyles = (theme: Theme, additionalOptionJSSStyle?: JssStyle): Styles => {
+export const getSelectOptionStyles = (theme: Theme, additionalOptionJssStyle?: JssStyle): Styles => {
   const { primaryColor, contrastHighColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =
     getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();
@@ -50,7 +50,7 @@ export const getSelectOptionStyles = (theme: Theme, additionalOptionJSSStyle?: J
       '&--hidden': {
         display: 'none',
       },
-      ...additionalOptionJSSStyle,
+      ...additionalOptionJssStyle,
     },
   };
 };
