@@ -46,20 +46,23 @@ export const getComponentCss = (
   const isDirectionDown = direction === 'down';
 
   return getCss({
-    '@global': addImportantToEachRule({
-      ':host': {
-        display: 'block',
-        position: 'relative',
-        ...hostHiddenStyles,
-      },
-      ...(isWithinForm && {
-        [selectorNativeSelect]: {
-          opacity: 0,
+    '@global': {
+      ...addImportantToEachRule({
+        ':host': {
           display: 'block',
-          height: '0px',
+          position: 'relative',
+          ...hostHiddenStyles,
         },
+        ...(isWithinForm && {
+          [selectorNativeSelect]: {
+            opacity: 0,
+            display: 'block',
+            height: '0px',
+          },
+        }),
       }),
-    }),
+      ...getInputStyles(isDisabled, theme),
+    },
     root: {
       position: 'relative',
     },
@@ -85,7 +88,6 @@ export const getComponentCss = (
         [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
         [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
       }),
-      ...getInputStyles(isDisabled, theme),
     },
     ...buildResponsiveStyles(hideLabel, (isHidden) =>
       isHidden
@@ -131,27 +133,25 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
   const { primaryColor, disabledColor } = getThemedColors(theme);
 
   return {
-    '@global': {
-      input: {
-        flex: 1,
-        minWidth: 0,
-        height: `calc(${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 6px additionally so input height becomes 50px
-        font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
-        color: primaryColor,
-        padding: `${inputYPadding} ${spacingStaticMedium}`,
-        boxSizing: 'border-box',
-        border: 0, // done via container
-        outline: 0,
-        appearance: 'none',
-        background: 'transparent',
-        ...textSmallStyle,
-        textOverflow: 'ellipsis',
-        '&:disabled': {
-          cursor: 'not-allowed',
-        },
-        '&:not(:focus)': getPlaceholderStyles({ color: primaryColor }),
-        ...(isDisabled && getPlaceholderStyles({ color: disabledColor })),
+    input: {
+      flex: 1,
+      minWidth: 0,
+      height: `calc(${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 6px additionally so input height becomes 50px
+      font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
+      color: primaryColor,
+      padding: `${inputYPadding} ${spacingStaticMedium}`,
+      boxSizing: 'border-box',
+      border: 0, // done via container
+      outline: 0,
+      appearance: 'none',
+      background: 'transparent',
+      ...textSmallStyle,
+      textOverflow: 'ellipsis',
+      '&:disabled': {
+        cursor: 'not-allowed',
       },
+      '&:not(:focus)': getPlaceholderStyles({ color: primaryColor }),
+      ...(isDisabled && getPlaceholderStyles({ color: disabledColor })),
     },
   };
 };
