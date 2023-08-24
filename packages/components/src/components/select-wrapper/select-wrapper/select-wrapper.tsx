@@ -177,7 +177,7 @@ export class SelectWrapper {
               theme={this.theme}
               required={isRequiredAndParentNotRequired(this.host, this.select)}
               disabled={disabled}
-              onOpenChange={(isOpen: boolean) => this.iconElement.classList[isOpen ? 'add' : 'remove']('icon--open')}
+              onOpenChange={(isOpen: boolean) => this.iconElement.classList.toggle('icon--open', isOpen)}
             />
           )}
         </div>

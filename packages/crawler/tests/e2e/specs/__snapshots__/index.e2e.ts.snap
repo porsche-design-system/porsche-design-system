@@ -281,10 +281,8 @@ exports[`should retrieve object value from string correctly 1`] = `
       {
         "p-spinner": {
           "children": "
-      
-    
-
-    ",
+  
+",
           "hostPdsComponent": null,
           "properties": {
             "aria": "{"aria-label":"Loading page content"}",

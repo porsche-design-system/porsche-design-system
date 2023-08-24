@@ -221,7 +221,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
-        .replace(/Exclude<any, any>/g, 'any'); // workaround typings of deprecation maps
+        .replace(/Exclude<any, any>/g, 'any') // workaround typings of deprecation maps
+        .replace(/ onSlotchange={this\.props\.onSlotChange}/, ''); // doesn't exist in React JSX and makes no sense
 
       // component based tweaks
       if (tagName === 'p-carousel') {
@@ -241,17 +242,19 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         newFileContent = newFileContent.replace(/parsedIntl/g, 'this.props.intl');
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
-          .replace(/this\.props\.(hasHeader|hasDismissButton)/g, '$1')
+          .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')
           .replace(/hasHeader =/, 'const $&')
+          .replace(/hasFooter =/, 'const $&')
           .replace(
-            /const hasHeader = .+\n/,
+            /const hasFooter = .+\n/,
             '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
-          );
+          )
+          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/, '');
       } else if (tagName === 'p-flyout') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
-          .replace('// eslint-disable-next-line @typescript-eslint/member-ordering', '');
+          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/, '');
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
@@ -268,8 +271,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         : child
     );`
           )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}')
-          .replace(/onSlotchange={this\.props\.onSlotchange}/, '');
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-scroller') {
         newFileContent = newFileContent.replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2');
       } else if (tagName === 'p-popover') {
@@ -288,12 +290,29 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `$&
     const manipulatedChildren = children.map((child, i) =>
       typeof child === 'object' && 'props' in child && otherChildren.includes(child)
-        ? { ...child, props: { ...child.props, role: 'tab', tabIndex: (this.props.activeTabIndex || 0) === i ? '0' : '-1', 'aria-selected': this.props.activeTabIndex === i ? 'true' : 'false' } }
+        ? child.type === 'button'
+          ? {
+              ...child,
+              props: {
+                ...child.props,
+                role: 'tab',
+                tabIndex: (this.props.activeTabIndex || 0) === i ? '0' : '-1',
+                'aria-selected': this.props.activeTabIndex === i ? 'true' : 'false',
+              },
+            }
+          : child.type === 'a'
+          ? {
+              ...child,
+              props: {
+                ...child.props,
+                'aria-current': this.props.activeTabIndex === i ? 'true' : 'false',
+              },
+            }
+          : child
         : child
     );`
           )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}')
-          .replace(/onSlotchange={this\.props\.onSlotchange}/, '');
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-toast') {
         // only keep :host styles
         newFileContent = newFileContent.replace(

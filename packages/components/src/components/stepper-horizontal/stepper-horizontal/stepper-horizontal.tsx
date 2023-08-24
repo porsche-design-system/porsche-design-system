@@ -88,7 +88,8 @@ export class StepperHorizontal {
       };
     }
 
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
+    // TODO: would be great to use this in jsx but that doesn't work reliable and causes jsdom-polyfill unit test to fail
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotChange);
   }
 
   public componentDidUpdate(): void {
@@ -170,7 +171,7 @@ export class StepperHorizontal {
     }
   };
 
-  private onSlotchange = (): void => {
+  private onSlotChange = (): void => {
     this.validateComponent();
     this.currentStepIndex = getIndexOfStepWithStateCurrent(this.stepperHorizontalItems);
     this.scrollIntoView();

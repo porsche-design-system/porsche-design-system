@@ -14,6 +14,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.6.0-rc.1] - 2023-08-24
+
+#### Fixed
+
+- Bundling format and name of `components-js` entrypoint for Vanilla JS integration
+  ([#2745](https://github.com/porsche-design-system/porsche-design-system/pull/2745))
+
+### [3.6.0-rc.0] - 2023-08-23
+
 #### Added
 
 - New value `aria-current` for `aria` property for linked components (`Link`, `Link Pure`, `Link Tile`, `Crest`,
@@ -25,12 +34,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
 - Vue: `cdn: 'auto' | 'cn'` prop to `PorscheDesignSystemProvider` as alternative to using
   `window.PORSCHE_DESIGN_SYSTEM_CDN` ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
+- Support for sticky footer to `Modal`
+  ([#2723](https://github.com/porsche-design-system/porsche-design-system/pull/2723))
 
 #### Changed
 
+- Update of Twitter icon ([#2731](https://github.com/porsche-design-system/porsche-design-system/pull/2731))
 - Use China CDN and set `window.PORSCHE_DESIGN_SYSTEM_CDN` for backwards compatibility based on .cn top level domain
   before design system initialization
   ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
+
+#### Fixed
+
+- `Flyout`: Overlapping of sticky header/footer if slotted content has different z-index
+  ([#2736](https://github.com/porsche-design-system/porsche-design-system/pull/2736))
+- Keyboard behavior and `aria` semantics if either `a` or `button` elements are used as slotted content in `Tabs Bar`
+  component. ([#2713](https://github.com/porsche-design-system/porsche-design-system/pull/2713))
+- React/SSR: compatibility with Next.js v13 app router
+  ([#2687](https://github.com/porsche-design-system/porsche-design-system/pull/2687))
+- Consistent `package.json` ECMAScript module exports with `.mjs` and `.cjs` file extensions for
+  `components-{js|angular|react|vue}`
+  ([#2739](https://github.com/porsche-design-system/porsche-design-system/pull/2739))
 
 ### [3.5.0] - 2023-07-25
 

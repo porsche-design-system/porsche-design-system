@@ -6,64 +6,62 @@ import { FirstAndLastFocusableElement } from '../../utils/focusTrap';
 
 jest.mock('../../utils/dom');
 
-describe('flyout', () => {
-  let component: Flyout;
+let component: Flyout;
+
+beforeEach(() => {
+  component = new Flyout();
+  component.host = document.createElement('p-flyout');
+  component.host.attachShadow({ mode: 'open' });
+  component['closeBtn'] = document.createElement('button');
+});
+
+describe('componentDidLoad', () => {
+  const focusableElements: FirstAndLastFocusableElement = [
+    document.createElement('button'),
+    document.createElement('button'),
+  ];
 
   beforeEach(() => {
-    component = new Flyout();
-    component.host = document.createElement('p-flyout');
-    component.host.attachShadow({ mode: 'open' });
-    component['closeBtn'] = document.createElement('button');
+    jest.spyOn(focusTrapUtils, 'getFirstAndLastFocusableElement').mockImplementation(() => focusableElements);
+    jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
   });
 
-  describe('componentDidLoad', () => {
-    const focusableElements: FirstAndLastFocusableElement = [
-      document.createElement('button'),
-      document.createElement('button'),
-    ];
+  it('should call setFocusTrap() with correct parameters if flyout is open', () => {
+    const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
+    component.open = true;
+    component.componentDidLoad();
 
-    beforeEach(() => {
-      jest.spyOn(focusTrapUtils, 'getFirstAndLastFocusableElement').mockImplementation(() => focusableElements);
-      jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
-    });
-
-    it('should call setFocusTrap() with correct parameters if flyout is open', () => {
-      const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
-      component.open = true;
-      component.componentDidLoad();
-
-      expect(utilsSpy).toBeCalledWith(component.host, true, component['dismissBtn'], component['dismissFlyout']);
-    });
-
-    it('should call setScrollLock() with correct parameters if flyout is open', () => {
-      const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
-      component.open = true;
-      component.componentDidLoad();
-
-      expect(utilsSpy).toBeCalledWith(true);
-    });
-
-    it('should not call setScrollLock() if flyout is not open', () => {
-      const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
-      component.componentDidLoad();
-
-      expect(utilsSpy).not.toBeCalled();
-    });
+    expect(utilsSpy).toBeCalledWith(component.host, true, component['dismissBtn'], component['dismissFlyout']);
   });
 
-  describe('disconnectedCallback', () => {
-    it('should call setFocusTrap() with correct parameters', () => {
-      const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
-      component.disconnectedCallback();
+  it('should call setScrollLock() with correct parameters if flyout is open', () => {
+    const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
+    component.open = true;
+    component.componentDidLoad();
 
-      expect(utilsSpy).toBeCalledWith(component.host, false);
-    });
+    expect(utilsSpy).toBeCalledWith(true);
+  });
 
-    it('should call setScrollLock() with correct parameters', () => {
-      const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
-      component.disconnectedCallback();
+  it('should not call setScrollLock() if flyout is not open', () => {
+    const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
+    component.componentDidLoad();
 
-      expect(utilsSpy).toBeCalledWith(false);
-    });
+    expect(utilsSpy).not.toBeCalled();
+  });
+});
+
+describe('disconnectedCallback', () => {
+  it('should call setFocusTrap() with correct parameters', () => {
+    const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
+    component.disconnectedCallback();
+
+    expect(utilsSpy).toBeCalledWith(component.host, false);
+  });
+
+  it('should call setScrollLock() with correct parameters', () => {
+    const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
+    component.disconnectedCallback();
+
+    expect(utilsSpy).toBeCalledWith(false);
   });
 });

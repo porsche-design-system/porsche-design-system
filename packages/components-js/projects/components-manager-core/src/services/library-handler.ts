@@ -30,7 +30,7 @@ export function loadComponentLibrary({ script, version, prefix }: LoadComponentL
   const { isInjected, prefixes = [], registerCustomElements } = data;
 
   const [collidingVersion] = Object.entries(getComponentsManagerData()).filter(
-    ([v, cmData]) => v !== version && typeof cmData !== 'string' && cmData.prefixes.includes(prefix)
+    ([v, cmData]) => v !== version && typeof cmData === 'object' && cmData.prefixes.includes(prefix)
   );
   if (collidingVersion) {
     throw new Error(

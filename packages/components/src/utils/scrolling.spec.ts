@@ -1,15 +1,8 @@
-import {
-  getScrollActivePosition,
-  getScrollByX,
-  overrideSupportsScrollBehavior,
-  scrollElementBy,
-  scrollElementTo,
-} from './scrolling';
+import { getScrollActivePosition, getScrollByX, scrollElementBy, scrollElementTo } from './scrolling';
 import * as scrollerUtils from '../components/scroller/scroller-utils';
 
 describe('scrollElementTo()', () => {
   it('should call el.scrollTo() with correct parameter if scrollBehavior is supported', () => {
-    overrideSupportsScrollBehavior(true);
     const el = document.createElement('div');
     const spy = jest.fn();
     el.scrollTo = spy;
@@ -17,13 +10,10 @@ describe('scrollElementTo()', () => {
     scrollElementTo(el, 100);
     expect(spy).toBeCalledWith({ left: 100, behavior: 'smooth' });
   });
-
-  xit('should call intervalScroll() with correct parameter if scrollBehavior is not supported', () => {});
 });
 
 describe('scrollElementBy()', () => {
   it('should call el.scrollBy() with correct parameter if scrollBehavior is supported', () => {
-    overrideSupportsScrollBehavior(true);
     const el = document.createElement('div');
     const spy = jest.fn();
     el.scrollBy = spy;
@@ -31,8 +21,6 @@ describe('scrollElementBy()', () => {
     scrollElementBy(el, 100);
     expect(spy).toBeCalledWith({ left: 100, top: 0, behavior: 'smooth' });
   });
-
-  xit('should call intervalScroll() with correct parameter if scrollBehavior is not supported', () => {});
 });
 
 describe('getScrollByX()', () => {

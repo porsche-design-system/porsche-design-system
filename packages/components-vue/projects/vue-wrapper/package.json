@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-vue",
-  "version": "3.5.0",
+  "version": "3.6.0-rc.1",
   "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
   "keywords": [
     "porsche",
@@ -17,12 +17,39 @@
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://designsystem.porsche.com",
   "dependencies": {
-    "@porsche-design-system/components-js": "3.5.0"
+    "@porsche-design-system/components-js": "3.6.0-rc.1"
   },
   "peerDependencies": {
     "vue": ">=3.0.0 <4.0.0"
   },
-  "main": "public-api.js",
-  "module": "public-api.js",
-  "types": "public-api.d.ts"
+  "main": "cjs/public-api.cjs",
+  "module": "esm/public-api.mjs",
+  "types": "esm/public-api.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./esm/public-api.d.ts",
+      "import": "./esm/public-api.mjs",
+      "default": "./cjs/public-api.cjs"
+    },
+    "./jsdom-polyfill": {
+      "types": "./jsdom-polyfill/index.d.ts",
+      "default": "./jsdom-polyfill/index.cjs"
+    },
+    "./partials": {
+      "types": "./partials/index.d.ts",
+      "module": "./partials/index.js",
+      "default": "./partials/index.cjs"
+    },
+    "./styles": {
+      "sass": "./styles/_index.scss",
+      "types": "./styles/esm/index.d.ts",
+      "import": "./styles/esm/index.mjs",
+      "default": "./styles/cjs/index.cjs"
+    },
+    "./testing": {
+      "types": "./testing/index.d.ts",
+      "default": "./testing/index.cjs"
+    }
+  }
 }

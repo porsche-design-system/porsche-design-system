@@ -8,7 +8,7 @@
 
 ### Install Volta
 
-We recommend using [https://volta.sh](Volta) to manage the correct Node and Yarn version. To get started, install Volta
+We recommend using [Volta](https://volta.sh) to manage the correct Node and Yarn version. To get started, install Volta
 like this:
 
 ```bash
@@ -341,11 +341,7 @@ everything works under real conditions.
 ## Porsche Design System - New Icons
 
 1. Copy new Icon-file (eg. `newIcon.svg`) to the correct category **"./packages/icons/src/CHOOSE_RIGHT_CATEGORY"**
-1. run `./docker.sh run-install`
-1. run `./docker.sh run-build --icons`
-1. Switch to **"./packages/icons/database" directory**
-1. Upload file to CDN (`https://cdn.ui.porsche.com/porsche-icons/icons.json`)
-1. Release Assets
+1. Release Assets `@porsche-design-system/assets` (see below)
 
 ---
 

@@ -5,9 +5,9 @@ import { paramCaseToCamelCase } from '../paramCaseToCamelCase';
 
 export const throwIfElementIsNotOfKind = (host: HTMLElement, element: HTMLElement, tagName: TagName): void => {
   const prefixedTagName = getPrefixedTagNames(host)[paramCaseToCamelCase(tagName)];
-  const slotTagName = getTagName(element);
+  const actualTagName = getTagName(element);
 
-  if (slotTagName !== prefixedTagName) {
-    throwException(`slot '${element}' has to be a '${prefixedTagName}' but received '${slotTagName}'.`);
+  if (actualTagName !== prefixedTagName) {
+    throwException(`child ${actualTagName} of ${getTagName(host)} has to be a ${prefixedTagName}.`);
   }
 };

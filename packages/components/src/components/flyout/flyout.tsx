@@ -17,11 +17,11 @@ import {
   THEMES,
   AllowedTypes,
   validateProps,
+  setScrollLock,
+  setFocusTrap,
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
-import { setFocusTrap } from '../../utils/focusTrap';
-import { setScrollLock } from '../../utils/scrollLock';
 import { throttle } from 'throttle-debounce';
 
 const propTypes: PropTypes<typeof Flyout> = {
@@ -85,12 +85,13 @@ export class Flyout {
       this.updateFocusTrap(true);
     }
 
+    // TODO: would be great to use this in jsx but that doesn't work reliable and causes focus e2e test to fail
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
       if (this.open) {
         // 1 tick delay is needed so that web components can be bootstrapped
         setTimeout(() => {
           this.updateFocusTrap(true);
-          this.dismissBtn.shadowRoot.querySelector('button').focus(); // set initial focus
+          getShadowRootHTMLElement(this.dismissBtn, 'button').focus(); // set initial focus
         });
       }
     });
@@ -106,7 +107,7 @@ export class Flyout {
         this.onScroll();
       }
       // Necessary to select button to make :focus-visible work
-      this.dismissBtn.shadowRoot.querySelector('button').focus();
+      getShadowRootHTMLElement(this.dismissBtn, 'button').focus();
     }
   }
 
@@ -200,7 +201,7 @@ export class Flyout {
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   private onScroll = throttle(100, () => {
-    if (this.dialog.scrollHeight - this.dialog.clientHeight > 0) {
+    if (this.dialog.scrollHeight > this.dialog.clientHeight) {
       this.updateHeaderShadow();
       if (this.hasFooter) {
         this.updateFooterShadow();
@@ -210,12 +211,12 @@ export class Flyout {
 
   private updateHeaderShadow = (): void => {
     const shouldApplyShadow = this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD;
-    this.header.classList[shouldApplyShadow ? 'add' : 'remove'](headerShadowClass);
+    this.header.classList.toggle(headerShadowClass, shouldApplyShadow);
   };
 
   private updateFooterShadow = (): void => {
     const shouldApplyShadow = this.subFooter.offsetTop > this.dialog.clientHeight + this.dialog.scrollTop;
-    this.footer.classList[shouldApplyShadow ? 'add' : 'remove'](footerShadowClass);
+    this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
   };
 
   private dismissFlyout = (): void => {

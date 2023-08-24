@@ -26,25 +26,19 @@ const buildConfig = (packagePath) => {
     external,
     output: [
       {
-        dir: `${outputDir}/${packagePath}`,
+        dir: `${outputDir}/${packagePath}/cjs`,
         format: 'cjs',
-        plugins: [
-          generatePackageJson({
-            baseContents: {
-              main: `index.js`,
-              module: `esm/index.js`,
-              types: `index.d.ts`,
-              sideEffects: false,
-            },
-          }),
-        ],
+        entryFileNames: '[name].cjs',
       },
       {
         dir: `${outputDir}/${packagePath}/esm`,
         format: 'esm',
+        entryFileNames: '[name].mjs',
       },
     ],
     plugins: [
+      // typings are generated via separate tsc command
+      typescript(typescriptOpts),
       // TODO: only copy stuff once when needed instead of twice (= for each sub package)
       copy({
         targets: [
@@ -54,30 +48,82 @@ const buildConfig = (packagePath) => {
           },
         ],
       }),
-      typescript(typescriptOpts),
+      generatePackageJson({
+        outputFolder: `${outputDir}/${packagePath}`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
+      }),
     ],
   };
 };
 
 export default [
-  ...['partials', 'styles'].map(buildConfig),
+  buildConfig('styles'),
+  {
+    input: `${projectDir}/src/partials/index.ts`,
+    external,
+    output: {
+      file: `${outputDir}/partials/index.cjs`,
+      format: 'cjs',
+    },
+    plugins: [
+      // typings are generated via separate tsc command
+      typescript(typescriptOpts),
+      generatePackageJson({
+        baseContents: {
+          main: 'index.cjs',
+          module: 'index.js', // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
+          types: 'index.d.ts',
+          sideEffects: false,
+        },
+      }),
+      copy({
+        // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
+        targets: [{ src: `${outputDir}/partials/index.cjs`, dest: `${outputDir}/partials`, rename: () => 'index.js' }],
+        hook: 'writeBundle',
+      }),
+    ],
+  },
   {
     input: `${projectDir}/src/jsdom-polyfill/index.ts`,
     external,
     output: {
-      file: `${outputDir}/jsdom-polyfill/index.js`,
+      file: `${outputDir}/jsdom-polyfill/index.cjs`,
       format: 'cjs',
     },
-    plugins: [typescript(typescriptOpts)],
+    plugins: [
+      // typings are generated via separate tsc command
+      typescript(typescriptOpts),
+      generatePackageJson({
+        baseContents: {
+          main: 'index.cjs',
+          types: 'index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
   },
   {
-    // typings are generated via separate tsc command
     input: `${projectDir}/src/testing/index.ts`,
     external,
     output: {
-      file: `${outputDir}/testing/index.js`,
+      file: `${outputDir}/testing/index.cjs`,
       format: 'cjs',
     },
-    plugins: [typescript(typescriptOpts)],
+    plugins: [
+      // typings are generated via separate tsc command
+      typescript(typescriptOpts),
+      generatePackageJson({
+        baseContents: {
+          main: 'index.cjs',
+          types: 'index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
   },
 ];

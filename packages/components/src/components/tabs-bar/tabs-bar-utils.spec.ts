@@ -140,6 +140,18 @@ describe('setBarStyle()', () => {
 
     expect(spy).toBeCalledWith(expect.any(Function));
     expect(barElement.style.animation).toBe('');
+
+    el1.removeAttribute('aria-selected');
+    el2.setAttribute('aria-current', 'true');
+    setBarStyle([el1, el2], 1, barElement);
+
+    expect(barElement.style.animation).toBe('none');
+
+    jest.runAllTimers();
+
+    expect(spy).toBeCalledWith(expect.any(Function));
+    expect(barElement.style.animation).toBe('');
+
     jest.useRealTimers();
   });
 });

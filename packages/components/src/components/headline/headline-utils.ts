@@ -10,17 +10,17 @@ export const HEADLINE_VARIANTS = [
   'headline-5',
 ] as const;
 
-export type HeadlineVariantType = typeof HEADLINE_VARIANTS[number];
+export type HeadlineVariantType = (typeof HEADLINE_VARIANTS)[number];
 
 type HeadlineVariantCustom = Exclude<BreakpointCustomizable<TextSize>, TextSize>;
 
-export type HeadlineVariant = HeadlineVariantType | HeadlineVariantCustom | Extract<TextSize, 'inherit'>;
+export type HeadlineVariant = HeadlineVariantType | HeadlineVariantCustom | Extract<TextSize, 'inherit'>; // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
 
 export const HEADLINE_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
-export type HeadlineTag = typeof HEADLINE_TAGS[number];
+export type HeadlineTag = (typeof HEADLINE_TAGS)[number];
 
 export const HEADLINE_COLORS = ['primary', 'default', 'inherit'] as const;
-export type HeadlineColor = typeof HEADLINE_COLORS[number];
+export type HeadlineColor = (typeof HEADLINE_COLORS)[number];
 
 export type HeadlineAlign = TextAlign;
 
