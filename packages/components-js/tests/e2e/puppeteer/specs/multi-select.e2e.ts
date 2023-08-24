@@ -17,7 +17,7 @@ import {
 } from '../helpers';
 
 import type { Page } from 'puppeteer';
-import { MultiSelectOption } from '@porsche-design-system/components/src/components/multi-select/multi-select/multi-select-utils';
+import type { MultiSelectOption } from '@porsche-design-system/components/dist/types/components/multi-select/multi-select/multi-select-utils';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -25,18 +25,18 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-multi-select');
 
-const getMultiSelectValue = async () => await getProperty(await getHost(), 'value');
+const getMultiSelectValue = async (): Promise<(string | number)[]> => await getProperty(await getHost(), 'value');
 
 const getInputContainer = () => selectNode(page, 'p-multi-select >>> .input-container');
 
 const getInput = () => selectNode(page, 'p-multi-select >>> input');
 
-const getInputValue = async () => getProperty(await getInput(), 'value');
+const getInputValue = async (): Promise<string> => getProperty(await getInput(), 'value');
 
-const getInputPlaceholder = async () => getAttribute(await getInput(), 'placeholder');
+const getInputPlaceholder = async (): Promise<string> => getAttribute(await getInput(), 'placeholder');
 
 const getDropdown = () => selectNode(page, 'p-multi-select >>> .listbox');
-const getDropdownDisplay = async () => await getElementStyle(await getDropdown(), 'display');
+const getDropdownDisplay = async (): Promise<string> => await getElementStyle(await getDropdown(), 'display');
 
 const getShadowDropdownOption = (n: number) => selectNode(page, `p-multi-select >>> .listbox div:nth-child(${n})`);
 
@@ -45,33 +45,35 @@ const getMultiSelectOption = (n: number) =>
 
 const getMultiSelectOptions = () => page.$$('p-multi-select p-multi-select-option');
 
-const getAmountOfVisibleMultiSelectOptions = async () =>
-  page.$$eval(
+const getAmountOfVisibleMultiSelectOptions = async (): Promise<number> =>
+  await page.$$eval(
     'p-multi-select p-multi-select-option',
     (options) => options.filter((option: HTMLElement) => !option.hidden).length
   );
 
-const getSelectedMultiSelectOptionProperty = async (property: string) =>
-  page.$$eval(
+const getSelectedMultiSelectOptionProperty = async (property: string): Promise<keyof typeof MultiSelectOption> =>
+  await page.$$eval(
     'p-multi-select p-multi-select-option',
     (options, property) =>
-      options.filter((option: MultiSelectOption) => option.selected).map((option: any) => option[property]),
+      options
+        .filter((option: MultiSelectOption) => option.selected)
+        .map((option: MultiSelectOption) => option[property]),
     property
   );
 
-const getHighlightedOptionIndex = async () =>
-  page.$$eval('p-multi-select p-multi-select-option', (options: MultiSelectOption[]) =>
+const getHighlightedOptionIndex = async (): Promise<number> =>
+  await page.$$eval('p-multi-select p-multi-select-option', (options: MultiSelectOption[]) =>
     options.filter((option) => !option.hidden).indexOf(options.find((option: MultiSelectOption) => option.highlighted))
   );
 
-const getSelectedOptionIndicies = async () =>
-  page.$$eval('p-multi-select p-multi-select-option', (options) =>
+const getSelectedOptionIndicies = async (): Promise<number[]> =>
+  await page.$$eval('p-multi-select p-multi-select-option', (options) =>
     options.filter((option: any) => option.selected).map((option) => options.indexOf(option))
   );
 
 const getNativeSelect = () => selectNode(page, 'p-multi-select select');
 
-const getNativeSelectValue = async () => await getProperty(await getNativeSelect(), 'value');
+const getNativeSelectValue = async (): Promise<string> => await getProperty(await getNativeSelect(), 'value');
 
 const getNativeSelectOptions = () => page.$$('p-multi-select select option');
 
@@ -79,7 +81,7 @@ const getLabelText = () => selectNode(page, 'p-multi-select >>> .label__text');
 
 const getResetButton = () => selectNode(page, 'p-multi-select >>> .reset-icon');
 
-const getResetButtonDisplay = async () => await getElementStyle(await getResetButton(), 'display');
+const getResetButtonDisplay = async (): Promise<string> => await getElementStyle(await getResetButton(), 'display');
 
 const getAssertiveText = async () => await selectNode(page, 'span[aria-live="assertive"]');
 
