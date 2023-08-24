@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for theme: dark 1`] = `
+":host {
+  scroll-margin-top: 8px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.option {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+  color: #AFB0B3;
+  cursor: pointer;
+  text-align: left;
+  word-break: break-word;
+  box-sizing: border-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.option--selected {
+  background: #212225;
+}
+.option--highlighted {
+  background: #404044;
+}
+.option--highlighted, .option--selected {
+  color: #FBFCFF;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #7E7F82;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  pointer-events: none;
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #FBFCFF;
+    background: #404044;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for theme: light 1`] = `
+":host {
+  scroll-margin-top: 8px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.option {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+  color: #535457;
+  cursor: pointer;
+  text-align: left;
+  word-break: break-word;
+  box-sizing: border-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.option--selected {
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  pointer-events: none;
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #010205;
+    background: #D8D8DB;
+  }
+}
+"
+`;

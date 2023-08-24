@@ -17,7 +17,7 @@ import {
   spacingStaticSmall,
   spacingStaticXSmall,
   textSmallStyle,
-} from '../../../../../utilities/projects/utilities';
+} from '@porsche-design-system/utilities-v2';
 import { Styles } from 'jss';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { FormState } from '../../../utils/form/form-state';

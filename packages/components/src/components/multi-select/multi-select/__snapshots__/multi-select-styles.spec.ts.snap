@@ -1,2088 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: 100%;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #010205;
-  border-top: none;
-  border-radius: 4px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #FFF;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: text;
-  border: 2px solid #010205;
-  border-radius: 4px;
-  padding-bottom: 1px;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #010205;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: static;
-  width: fit-content;
-  height: auto;
-  text-indent: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
-}
-.icon {
-  padding: 13px 15px;
-  cursor: pointer;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #535457;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #010205;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #010205;
-  }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #010205 !important;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: true 2`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: 100%;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #010205;
-  border-top: none;
-  border-radius: 4px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #FFF;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: text;
-  border: 2px solid #010205;
-  border-radius: 4px;
-  padding-bottom: 1px;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #010205;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: static;
-  width: fit-content;
-  height: auto;
-  text-indent: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
-}
-.icon {
-  padding: 13px 15px;
-  cursor: pointer;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #535457;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #010205;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #010205;
-  }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #010205 !important;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: none, isWithinForm: true and theme: true 1`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: 100%;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #010205;
-  border-top: none;
-  border-radius: 4px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #FFF;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: text;
-  border: 2px solid #010205;
-  border-radius: 4px;
-  padding-bottom: 1px;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #010205;
-}
-.label {
-  display: none;
-}
-.icon {
-  padding: 13px 15px;
-  cursor: pointer;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #535457;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #010205;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #010205;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: true 1`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: 100%;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #010205;
-  border-top: none;
-  border-radius: 4px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #FFF;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: text;
-  border: 2px solid #010205;
-  border-radius: 4px;
-  padding-bottom: 1px;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #010205;
-}
-.label {
-  display: none;
-}
-.icon {
-  padding: 13px 15px;
-  cursor: pointer;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #535457;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #197E10;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #010205;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #010205;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: 100%;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #010205;
-  border-top: none;
-  border-radius: 4px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #FFF;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: not-allowed;
-  border: 2px solid #010205;
-  border-radius: 4px;
-  padding-bottom: 1px;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #010205;
-}
-.label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  margin-bottom: 4px;
-}
-.label__text {
-  display: block;
-  position: static;
-  width: fit-content;
-  height: auto;
-  text-indent: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.label__text+.label__text {
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-}
-.icon {
-  padding: 13px 15px;
-  cursor: not-allowed;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #535457;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input::placeholder {
-  color: #949598;
-}
-.input-container input::-webkit-input-placeholder {
-  color: #949598;
-}
-.input-container input::-moz-placeholder {
-  color: #949598;
-}
-.input-container input:-moz-placeholder {
-  color: #949598;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #010205;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #010205;
-  }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #010205 !important;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: down, isOpen: true, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: true 1`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: 100%;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #010205;
-  border-top: none;
-  border-radius: 4px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #FFF;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: not-allowed;
-  border: 2px solid #010205;
-  border-radius: 4px;
-  padding-bottom: 1px;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #010205;
-}
-.label {
-  display: none;
-}
-.icon {
-  padding: 13px 15px;
-  cursor: not-allowed;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #535457;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input::placeholder {
-  color: #949598;
-}
-.input-container input::-webkit-input-placeholder {
-  color: #949598;
-}
-.input-container input::-moz-placeholder {
-  color: #949598;
-}
-.input-container input:-moz-placeholder {
-  color: #949598;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #010205;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #010205;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #010205;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true and theme: false 1`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #0E0E12;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: 54px;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #FBFCFF;
-  border-bottom: none;
-  border-radius: 4px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #0E0E12;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: text;
-  border: 2px solid #FBFCFF;
-  border-radius: 4px;
-  padding-top: 1px;
-  border-top: 1px solid #88898C !important;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
-}
-.icon {
-  padding: 13px 15px;
-  cursor: pointer;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #AFB0B3;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #FBFCFF;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #FBFCFF;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true and theme: false 2`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #0E0E12;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: 54px;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #FBFCFF;
-  border-bottom: none;
-  border-radius: 4px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #0E0E12;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: text;
-  border: 2px solid #FBFCFF;
-  border-radius: 4px;
-  padding-top: 1px;
-  border-top: 1px solid #88898C !important;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
-}
-.icon {
-  padding: 13px 15px;
-  cursor: pointer;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #AFB0B3;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #FBFCFF;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #FBFCFF;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #0E0E12;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: 54px;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #FBFCFF;
-  border-bottom: none;
-  border-radius: 4px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #0E0E12;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: text;
-  border: 2px solid #FBFCFF;
-  border-radius: 4px;
-  padding-top: 1px;
-  border-top: 1px solid #88898C !important;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
-}
-.label {
-  display: none;
-}
-.icon {
-  padding: 13px 15px;
-  cursor: pointer;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #AFB0B3;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #FBFCFF;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #FBFCFF;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: false 1`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #0E0E12;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: 54px;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #FBFCFF;
-  border-bottom: none;
-  border-radius: 4px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #0E0E12;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: text;
-  border: 2px solid #FBFCFF;
-  border-radius: 4px;
-  padding-top: 1px;
-  border-top: 1px solid #88898C !important;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
-}
-.label {
-  display: none;
-}
-.icon {
-  padding: 13px 15px;
-  cursor: pointer;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #AFB0B3;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #09D087;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #FBFCFF;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #FBFCFF;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: false 1`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #0E0E12;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: 54px;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #FBFCFF;
-  border-bottom: none;
-  border-radius: 4px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #0E0E12;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: not-allowed;
-  border: 2px solid #FBFCFF;
-  border-radius: 4px;
-  padding-top: 1px;
-  border-top: 1px solid #88898C !important;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
-}
-.icon {
-  padding: 13px 15px;
-  cursor: not-allowed;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #AFB0B3;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #FBFCFF;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input::placeholder {
-  color: #7E7F82;
-}
-.input-container input::-webkit-input-placeholder {
-  color: #7E7F82;
-}
-.input-container input::-moz-placeholder {
-  color: #7E7F82;
-}
-.input-container input:-moz-placeholder {
-  color: #7E7F82;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #FBFCFF;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isWithinForm: true and theme: false 1`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #0E0E12;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: 54px;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #FBFCFF;
-  border-bottom: none;
-  border-radius: 4px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #0E0E12;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: not-allowed;
-  border: 2px solid #FBFCFF;
-  border-radius: 4px;
-  padding-top: 1px;
-  border-top: 1px solid #88898C !important;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
-}
-.icon {
-  padding: 13px 15px;
-  cursor: not-allowed;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #AFB0B3;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #09D087;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #FBFCFF;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input::placeholder {
-  color: #7E7F82;
-}
-.input-container input::-webkit-input-placeholder {
-  color: #7E7F82;
-}
-.input-container input::-moz-placeholder {
-  color: #7E7F82;
-}
-.input-container input:-moz-placeholder {
-  color: #7E7F82;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #FBFCFF;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: false, direction: up, isOpen: true, isDisabled: true, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
-":host {
-  display: block !important;
-  position: relative !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted([slot=select]) {
-  opacity: 0 !important;
-  display: block !important;
-  height: 0px !important;
-}
-.root {
-  position: relative;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  background: #0E0E12;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: 54px;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 2px solid #FBFCFF;
-  border-bottom: none;
-  border-radius: 4px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
-  transform: translate3d(0,0,0);
-}
-.input-container {
-  display: flex;
-  background: #0E0E12;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
-  cursor: not-allowed;
-  border: 2px solid #FBFCFF;
-  border-radius: 4px;
-  padding-top: 1px;
-  border-top: 1px solid #88898C !important;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
-}
-.label {
-  display: none;
-}
-.icon {
-  padding: 13px 15px;
-  cursor: not-allowed;
-}
-.reset-icon {
-  padding: 4px;
-  margin: auto;
-  display: none;
-}
-.toggle-icon {
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
-}
-.toggle-icon--open {
-  transform: rotate3d(0,0,1,180deg);
-}
-.no-results {
-  padding: 8px 12px;
-  color: #AFB0B3;
-  box-sizing: border-box;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
-}
-.sr-text {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #FBFCFF;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
-.input-container input::placeholder {
-  color: #7E7F82;
-}
-.input-container input::-webkit-input-placeholder {
-  color: #7E7F82;
-}
-.input-container input::-moz-placeholder {
-  color: #7E7F82;
-}
-.input-container input:-moz-placeholder {
-  color: #7E7F82;
-}
-.input-container input:not(:focus)::placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
-}
-.input-container input:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
-}
-@media(hover:hover) {
-  .input-container:hover:not(.disabled) {
-    border-color: #FBFCFF;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2169,7 +87,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -2252,7 +169,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2318,7 +235,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -2399,7 +315,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2485,7 +401,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -2581,7 +496,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: true 2`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: true 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2667,7 +582,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -2763,7 +677,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: success, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: success, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2849,7 +763,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -2946,7 +859,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: true 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3012,7 +925,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -3105,7 +1017,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: true 2`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: true 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3171,7 +1083,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -3264,7 +1175,999 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: false, hideLabel: false, state: success, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #FFF;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #010205;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: true 2`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #FFF;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #010205;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: none, isWithinForm: true and theme: true 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #FFF;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #010205;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: true 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #FFF;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #010205;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #197E10;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #FFF;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #010205;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #949598;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+  pointer-events: none;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #949598;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #949598;
+}
+.input-container input::-moz-placeholder {
+  color: #949598;
+}
+.input-container input:-moz-placeholder {
+  color: #949598;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: true 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #FFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #FFF;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #010205;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+  pointer-events: none;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #949598;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #949598;
+}
+.input-container input::-moz-placeholder {
+  color: #949598;
+}
+.input-container input:-moz-placeholder {
+  color: #949598;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #010205;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #010205;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: false, state: success, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3327,7 +2230,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -3408,7 +2310,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: false, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3474,7 +2376,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -3555,7 +2456,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3618,7 +2519,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -3712,7 +2612,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: false 2`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: false 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3775,7 +2675,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -3869,7 +2768,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3935,7 +2834,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -4029,7 +2927,7 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSelection: true, direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: success, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: success, isWithinForm: true and theme: false 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -4095,7 +2993,6 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: block;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -4184,6 +3081,1083 @@ exports[`getComponentCss() should return correct css for hasSelection: true, dir
 @media(hover:hover) {
   .input-container:hover:not(.disabled) {
     border-color: #069561;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true and theme: false 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 54px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #0E0E12;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true and theme: false 2`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 54px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #0E0E12;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 54px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #0E0E12;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: false 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 54px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #0E0E12;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #09D087;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: false 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 54px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #0E0E12;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+  pointer-events: none;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #7E7F82;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+.input-container input::-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isWithinForm: true and theme: false 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 54px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #0E0E12;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+  pointer-events: none;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #09D087;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #7E7F82;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+.input-container input::-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  opacity: 0 !important;
+  display: block !important;
+  height: 0px !important;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  background: #0E0E12;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 54px;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  background: #0E0E12;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+  pointer-events: none;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.input-container input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+.input-container input:disabled {
+  cursor: not-allowed;
+}
+.input-container input::placeholder {
+  color: #7E7F82;
+}
+.input-container input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+.input-container input::-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:-moz-placeholder {
+  color: #7E7F82;
+}
+.input-container input:not(:focus)::placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+}
+.input-container input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
   }
 }
 "
