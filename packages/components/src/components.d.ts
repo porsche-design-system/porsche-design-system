@@ -1117,11 +1117,11 @@ export namespace Components {
          */
         "message"?: string;
         /**
-          * This attribute is used to specify the name of the control.
+          * The name of the control.
          */
         "name": string;
         /**
-          * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * A Boolean attribute indicating that an option with a non-empty string or number value must be selected.
          */
         "required"?: boolean;
         /**
@@ -3323,15 +3323,15 @@ declare namespace LocalJSX {
          */
         "message"?: string;
         /**
-          * This attribute is used to specify the name of the control.
+          * The name of the control.
          */
         "name"?: string;
         /**
-          * Emitted when sorting is changed.
+          * Emitted when the selection is changed.
          */
         "onUpdate"?: (event: PMultiSelectCustomEvent<MultiSelectUpdateEvent>) => void;
         /**
-          * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * A Boolean attribute indicating that an option with a non-empty string or number value must be selected.
          */
         "required"?: boolean;
         /**
