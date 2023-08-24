@@ -293,13 +293,9 @@ exports[`should have no basic DOM regression for p-model-signature 1`] = `"<img 
 exports[`should have no basic DOM regression for p-multi-select 1`] = `
 "<div class="root">
   <label class="label">
-    <span class="sr-text" id="options-selected">
-      0 options selected</span>
   </label>
   <div class="input-container">
     <input role="combobox" autocomplete="off" aria-labelledby="label" aria-describedby="description options-selected" aria-haspopup="listbox" aria-expanded="false" aria-controls="list" aria-autocomplete="list">
-    <p-button-pure class="icon reset-icon hydrated" color="primary">
-      Reset selection</p-button-pure>
     <p-icon class="icon toggle-icon hydrated" aria-hidden="true">
     </p-icon>
   </div>
