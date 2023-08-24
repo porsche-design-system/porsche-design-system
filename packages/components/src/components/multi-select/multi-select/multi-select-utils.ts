@@ -11,7 +11,7 @@ export type MultiSelectDropdownDirection = SelectDropdownDirection;
 export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
 
 export type MultiSelectUpdateEvent = {
-  value: (string | number)[];
+  value: string[];
   name: string;
 };
 
@@ -72,7 +72,7 @@ export const resetFilteredOptions = (options: MultiSelectOption[]): void =>
 export const getSelectedOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
   options.filter((option) => option.selected);
 
-export const getSelectedOptionValues = (options: MultiSelectOption[]): (string | number)[] =>
+export const getSelectedOptionValues = (options: MultiSelectOption[]): string[] =>
   options.filter((option) => option.selected).map((option) => option.value);
 
 export const getSelectedOptionsString = (options: MultiSelectOption[]): string =>
@@ -86,7 +86,7 @@ export const getUsableOptions = (options: MultiSelectOption[]): MultiSelectOptio
 export const getHighlightedOption = (options: MultiSelectOption[]): MultiSelectOption =>
   options.find((option) => option.highlighted);
 
-export const setSelectedOptions = (options: MultiSelectOption[], value: (string | number)[]): void => {
+export const setSelectedOptions = (options: MultiSelectOption[], value: string[]): void => {
   const selectedValues = new Set(value);
 
   options.forEach((option) => {

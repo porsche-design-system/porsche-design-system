@@ -65,7 +65,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.array(['string', 'number']),
+  value: AllowedTypes.array(AllowedTypes.string),
   state: AllowedTypes.oneOf<MultiSelectState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -92,7 +92,7 @@ export class MultiSelect {
   @Prop() public name: string;
 
   /** The selected values. */
-  @Prop({ mutable: true }) public value?: (string | number)[] = [];
+  @Prop({ mutable: true }) public value?: string[] = [];
 
   /** The validation state. */
   @Prop() public state?: MultiSelectState = 'none';
@@ -130,7 +130,7 @@ export class MultiSelect {
   private isWithinForm: boolean;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
 
-  private get currentValue(): (string | number)[] {
+  private get currentValue(): string[] {
     return getSelectedOptionValues(this.multiSelectOptions);
   }
 

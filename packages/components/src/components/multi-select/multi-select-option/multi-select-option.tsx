@@ -18,7 +18,7 @@ export class MultiSelectOption {
   @Element() public host!: HTMLElement & MultiSelectOptionInternalHTMLProps;
 
   /** The option value. */
-  @Prop() public value: string | number;
+  @Prop() public value: string;
 
   /** Disables the option. */
   @Prop() public disabled?: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
