@@ -219,3 +219,25 @@
   <p-link-pure stretch="true" align-label="left" href="https://www.porsche.com" theme="dark">Some label</p-link-pure>
   <p-accordion heading="Heading" theme="dark"></p-accordion>
 </div>
+
+<div
+  class="playground light"
+  title="should render accordion in open state with open select component"
+  style="padding-bottom: calc(1rem + 300px)"
+>
+  <p-accordion heading="Heading" open="true">
+    <div>
+      <p-select-wrapper label="Native" id="open-options">
+        <select>
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+          <option value="d">Option D</option>
+          <option value="e">Option E</option>
+          <option value="f">Option F</option>
+        </select>
+      </p-select-wrapper>
+    </div>
+  </p-accordion>
+  <p-accordion heading="Heading"></p-accordion>
+</div>

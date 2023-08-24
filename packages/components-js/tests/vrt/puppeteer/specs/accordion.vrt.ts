@@ -15,7 +15,14 @@ import {
 import type { Theme } from '@porsche-design-system/utilities-v2';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(await vrtTest(getVisualRegressionTester(viewport), 'accordion', '/#accordion')).toBeFalsy();
+  expect(
+    await vrtTest(getVisualRegressionTester(viewport), 'accordion', '/#accordion', {
+      scenario: async (page) => {
+        await page.click('#open-options');
+        await page.evaluate(() => (window as any).componentsReady());
+      },
+    })
+  ).toBeFalsy();
 });
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
