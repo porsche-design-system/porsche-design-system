@@ -2072,7 +2072,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
-    "isDelegatingFocus": true,
+    "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
     "namedSlots": [
