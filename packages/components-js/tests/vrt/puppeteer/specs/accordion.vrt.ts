@@ -15,14 +15,7 @@ import {
 import type { Theme } from '@porsche-design-system/utilities-v2';
 
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(
-    await vrtTest(getVisualRegressionTester(viewport), 'accordion', '/#accordion', {
-      scenario: async (page) => {
-        await page.click('#native-select');
-        await page.evaluate(() => (window as any).componentsReady());
-      },
-    })
-  ).toBeFalsy();
+  expect(await vrtTest(getVisualRegressionTester(viewport), 'accordion', '/#accordion')).toBeFalsy();
 });
 
 it('should have no visual regression for :hover + :focus-visible', async () => {
