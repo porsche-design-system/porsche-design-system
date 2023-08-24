@@ -25,7 +25,8 @@ export class MultiSelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.host.theme || 'light');
+    const { theme = 'light', selected, highlighted, hidden, textContent } = this.host;
+    attachComponentCss(this.host, getComponentCss, theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -33,20 +34,20 @@ export class MultiSelectOption {
       <div
         class={{
           option: true,
-          'option--selected': this.host.selected,
-          'option--highlighted': this.host.highlighted,
+          'option--selected': selected,
+          'option--highlighted': highlighted,
           'option--disabled': this.disabled,
         }}
         onClick={!this.disabled && this.onClick}
       >
-        <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={this.host.theme || 'light'}>
+        <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={theme}>
           <input
             role="option"
             type="checkbox"
-            checked={this.host.selected}
+            checked={selected}
             disabled={this.disabled}
-            {...getOptionAriaAttributes(this.host.selected, this.disabled, this.host.hidden, !!this.value)}
-            aria-label={this.host.textContent}
+            {...getOptionAriaAttributes(selected, this.disabled, hidden, !!this.value)}
+            aria-label={textContent}
             tabindex="-1"
           />
           <slot slot="label" />
