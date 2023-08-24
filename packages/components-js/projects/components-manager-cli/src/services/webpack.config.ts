@@ -55,7 +55,7 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
       : // umd build for "old" npm package
         {
           path: `${distDireactory}/cjs`,
-          filename: 'index.cjs',
+          filename: 'index.cjs', // is copied and renamed to index.js for vanilla-js integration
           libraryTarget: 'umd',
           library: 'porscheDesignSystem', // needs to be same as CM_KEY
           globalObject: "typeof self !== 'undefined' ? self : this",
