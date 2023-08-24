@@ -13,7 +13,7 @@ export const MultiSelectControlledExamplePage = (): JSX.Element => {
     setSelectedValues(e.detail.value);
   };
 
-  const debugText = selectedValues && `Selected values: ${selectedValues.join(', ') || 'none'}`;
+  const debugText = `Selected values: ${selectedValues!.join(', ') || 'none'}`;
 
   return (
     <>
