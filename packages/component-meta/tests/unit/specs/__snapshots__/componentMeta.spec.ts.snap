@@ -2039,9 +2039,6 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
-    "internalProps": {
-      "theme": "light",
-    },
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
