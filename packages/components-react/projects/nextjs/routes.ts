@@ -124,10 +124,6 @@ const generatedRoutes = {
     "path": "/overview",
     "name": "Overview"
   },
-  "overviewFlaky": {
-    "path": "/overview-flaky",
-    "name": "OverviewFlaky"
-  },
   "overviewNotifications": {
     "path": "/overview-notifications",
     "name": "OverviewNotifications"

@@ -11,7 +11,6 @@ export * from './Utilities';
 /* eslint-disable import/first */
 export * from './CoreInitializer';
 export * from './Overview';
-export * from './OverviewFlaky';
 export * from './OverviewNotifications';
 import { AccordionPage } from './Accordion';
 import { BannerPage } from './Banner';
