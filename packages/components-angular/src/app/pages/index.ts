@@ -77,7 +77,7 @@ import { TextComponent } from './text.component';
 import { TextareaWrapperComponent } from './textarea-wrapper.component';
 import { TextFieldWrapperComponent } from './text-field-wrapper.component';
 import { TextListComponent } from './text-list.component';
-import { ToastBasicComponent } from './toast-basic.component';
+import { ToastComponent } from './toast.component';
 import { ToastBasicDarkComponent } from './toast-basic-dark.component';
 import { ToastBasicLongTextComponent } from './toast-basic-long-text.component';
 import { ToastBasicStateNeutralComponent } from './toast-basic-state-neutral.component';
@@ -140,7 +140,7 @@ export const generatedPages = [
   TextareaWrapperComponent,
   TextFieldWrapperComponent,
   TextListComponent,
-  ToastBasicComponent,
+  ToastComponent,
   ToastBasicDarkComponent,
   ToastBasicLongTextComponent,
   ToastBasicStateNeutralComponent,
@@ -385,9 +385,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: TextareaWrapperComponent,
   },
   {
-    name: 'Toast Basic',
-    path: 'toast-basic',
-    component: ToastBasicComponent,
+    name: 'Toast',
+    path: 'toast',
+    component: ToastComponent,
   },
   {
     name: 'Toast Basic Dark',

@@ -200,9 +200,9 @@ const generatedRoutes = {
     "path": "/textarea-wrapper",
     "name": "TextareaWrapper"
   },
-  "toastBasic": {
-    "path": "/toast-basic",
-    "name": "ToastBasic"
+  "toast": {
+    "path": "/toast",
+    "name": "Toast"
   },
   "toastBasicDark": {
     "path": "/toast-basic-dark",

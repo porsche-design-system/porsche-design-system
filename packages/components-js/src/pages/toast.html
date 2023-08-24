@@ -1,10 +1,3 @@
-<style>
-  .playground {
-    height: 300px;
-    padding: 0;
-  }
-</style>
-
 <div class="visualize-grid">
   <span></span>
   <span></span>
@@ -26,12 +19,12 @@
   <span></span>
 </div>
 
-<div class="playground light" title="should render toast info on light background">
+<div class="playground light" title="should render toast" style="height: 300px">
   <p-toast></p-toast>
 </div>
 
 <script>
-  customElements.whenDefined('p-toast').then(() => {
+  window.porscheDesignSystem.componentsReady().then(() => {
     document.querySelector('p-toast').addMessage({ text: 'Some message' });
   });
 </script>

@@ -59,7 +59,7 @@ import { TextPage } from './Text';
 import { TextareaWrapperPage } from './TextareaWrapper';
 import { TextFieldWrapperPage } from './TextFieldWrapper';
 import { TextListPage } from './TextList';
-import { ToastBasicPage } from './ToastBasic';
+import { ToastPage } from './Toast';
 import { ToastBasicDarkPage } from './ToastBasicDark';
 import { ToastBasicLongTextPage } from './ToastBasicLongText';
 import { ToastBasicStateNeutralPage } from './ToastBasicStateNeutral';
@@ -303,9 +303,9 @@ export const generatedRoutes: RouteType[] = [
     element: <TextareaWrapperPage />,
   },
   {
-    name: 'Toast Basic',
-    path: '/toast-basic',
-    element: <ToastBasicPage />,
+    name: 'Toast',
+    path: '/toast',
+    element: <ToastPage />,
   },
   {
     name: 'Toast Basic Dark',
