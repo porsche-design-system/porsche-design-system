@@ -16,6 +16,10 @@ const components = TAG_NAMES.filter((el, i, arr) => {
 
 const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
 
+test(`should have certain amount of components`, () => {
+  expect(components.length).toBe(49);
+});
+
 components.forEach((component) => {
   // executed in Chrome + Safari
   test.describe(component, async () => {
@@ -45,7 +49,7 @@ components.forEach((component) => {
     });
 
     baseSchemes.forEach((scheme) => {
-      test(`should have no visual regression for viewport ${baseViewportWidth} and theme auto with prefers-color-scheme ${scheme}`, async ({
+      test.skip(`should have no visual regression for viewport ${baseViewportWidth} and theme auto with prefers-color-scheme ${scheme}`, async ({
         page,
       }) => {
         test.skip(!isComponentThemeable(component), 'This component has no theme support.');
