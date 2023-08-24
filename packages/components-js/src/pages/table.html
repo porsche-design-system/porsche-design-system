@@ -1,100 +1,50 @@
-<script>
-  const getHeadAndData = async () => {
-    const content = await fetch('assets/table-data-vrt.js').then((res) => res.text());
-    const [, headStr] = /const headVrt = ((\s|\S)*?);/.exec(content) || [];
-    const head = eval(headStr);
-
-    const [, dataStr] = /const dataVrt = ((\s|\S)*?\));/.exec(content) || [];
-    const data = eval(dataStr);
-
-    return { head, data };
-  };
-
-  (async () => {
-    const { head, data } = await getHeadAndData();
-
-    const renderTableHeadRow = (items) =>
-      [
-        '<p-table-head-row>',
-        ...items.map((item) => {
-          const attrs = [item.multiline && 'multiline="true"', item.style?.minWidth && 'style="min-width: 250px;"']
-            .filter((x) => x)
-            .join(' ');
-          return `<p-table-head-cell ${attrs}>${item.name}</p-table-head-cell>`;
-        }),
-        '</p-table-head-row>',
-      ].join('');
-
-    const renderTableBodyRows = (items, theme) =>
-      items
-        .map(
-          (item) => `
-<p-table-row>
-  <p-table-cell>
-    <img
-      src="${item.imageUrl}"
-      width=${item.imageWidth}"
-      height=${item.imageHeight}"
-      style='margin-right: .5rem;'
-      alt=''
-    /><span>${item.html}</span>
-  </p-table-cell>
-  <p-table-cell multiline="true">${item.longText}</p-table-cell>
-  <p-table-cell>${item.shortText}</p-table-cell>
-  <p-table-cell>${item.shortText}</p-table-cell>
-  <p-table-cell>${item.shortText}</p-table-cell>
-  <p-table-cell>
-    <p-button-pure theme="${theme}" icon='edit' style='padding: .5rem;'>Edit</p-button-pure>
-    <p-button-pure theme="${theme}" icon='delete' style='padding: .5rem;'>Delete</p-button-pure>
-  </p-table-cell>
-</p-table-row>`
-        )
-        .join('');
-
-    const markupLight = `
-<p-table caption='Some caption'>
-    <p-table-head>${renderTableHeadRow(head)}</p-table-head>
-    <p-table-body>${renderTableBodyRows(data, 'light')}</p-table-body>
-</p-table>`;
-
-    const markupDark = `
-<p-table caption='Some caption' theme='dark'>
-    <p-table-head>${renderTableHeadRow(head)}</p-table-head>
-    <p-table-body>${renderTableBodyRows(data, 'dark')}</p-table-body>
-</p-table>`;
-
-    document.querySelector('.table.light').innerHTML = markupLight;
-    document.querySelector('.table.dark').innerHTML = markupDark;
-
-    const playground = document.querySelectorAll('.table');
-    playground.forEach((el, index) => {
-      const tableHeadCells = el.querySelectorAll('p-table-head-cell');
-      // pass head item via property
-      tableHeadCells.forEach((el, index) => {
-        el.hideLabel = head[index].hideLabel;
-        el.sort = head[index];
-      });
-    });
-  })();
-</script>
-
-<div class="playground light table" title="should render table on light background"></div>
-<div class="playground dark table" title="should render table on dark background"></div>
-
-<div class="playground light" title="should render table with unstyled slotted caption on light background">
-  <p-table>
-    <span slot="caption">Some unstyled caption <a href="#">with a link</a></span>
+<div class="playground light" title="should render table">
+  <p-table caption="Some caption">
     <p-table-head>
       <p-table-head-row>
-        <p-table-head-cell>Column 1</p-table-head-cell>
-        <p-table-head-cell>Column 2</p-table-head-cell>
+        <p-table-head-cell>Slotted Styles</p-table-head-cell>
+        <p-table-head-cell>Multiline text</p-table-head-cell>
+        <p-table-head-cell style="min-width: 250px">Min width cell</p-table-head-cell>
+        <p-table-head-cell>
+          Forced Multiline<br />
+          header<br />
+          cell
+        </p-table-head-cell>
+        <p-table-head-cell multiline="true">Natural multiline header cell</p-table-head-cell>
+        <p-table-head-cell>Hide header cell</p-table-head-cell>
       </p-table-head-row>
     </p-table-head>
+    <p-table-body>
+      <p-table-row>
+        <p-table-cell>
+          <img
+            src="https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg"
+            width='80"'
+            height='48"'
+            style="margin-right: 8px"
+            alt=""
+          />
+          <span>
+            <a href="#">link</a>&nbsp;<b>bold</b>&nbsp;<i>italic</i>&nbsp;<strong>strong</strong>&nbsp;<em
+              >emphasized</em
+            >
+          </span>
+        </p-table-cell>
+        <p-table-cell multiline="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p-table-cell>
+        <p-table-cell>Some text</p-table-cell>
+        <p-table-cell>Some text</p-table-cell>
+        <p-table-cell>Some text</p-table-cell>
+        <p-table-cell>
+          <p-button-pure icon="edit" style="padding: 8px">Edit</p-button-pure>
+          <p-button-pure icon="delete" style="padding: 8px">Delete</p-button-pure>
+        </p-table-cell>
+      </p-table-row>
+    </p-table-body>
   </p-table>
 </div>
 
-<div class="playground dark" title="should render table with unstyled slotted caption on dark background">
-  <p-table theme="dark">
+<div class="playground light" title="should render table with unstyled slotted caption">
+  <p-table>
     <span slot="caption">Some unstyled caption <a href="#">with a link</a></span>
     <p-table-head>
       <p-table-head-row>
