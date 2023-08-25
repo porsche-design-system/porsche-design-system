@@ -5,6 +5,7 @@ import {
   getOnlyChildrenOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   getScrollActivePosition,
+  getShadowRootHTMLElement,
   hasPropValueChanged,
   isShadowRootParentOfKind,
   observeBreakpointChange,
@@ -90,6 +91,12 @@ export class TabsBar {
 
   @Watch('activeTabIndex')
   public activeTabIndexHandler(newValue: number, oldValue: number): void {
+    // in Angular, when chunk is already loaded and component is rendered almost identical after navigation
+    // (or with hot reloading in stackblitz) this watcher is called between `connectedCallback` and `componentDidLoad`
+    // this resets `this.activeTabIndex` to undefined when `this.tabElements = []`
+    // https://github.com/porsche-design-system/porsche-design-system/issues/2674
+    this.setTabElements();
+
     this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
     this.direction = this.activeTabIndex > oldValue || oldValue === undefined ? 'next' : 'prev';
     this.setBarStyle();
@@ -98,20 +105,28 @@ export class TabsBar {
 
   public connectedCallback(): void {
     this.hasPTabsParent = isShadowRootParentOfKind(this.host, 'p-tabs');
-    this.setTabElements();
-    this.observeBreakpointChange();
+    this.observeBreakpointChange(); // on reconnect
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    // TODO: validation of active element index inside of tabs bar!
-    // TODO: why not do this in connectedCallback?
+  public componentWillLoad(): void {
+    this.setTabElements();
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
+  }
+
+  public componentDidLoad(): void {
     this.scrollActiveTabIntoView(false);
-    this.observeBreakpointChange();
+    this.observeBreakpointChange(); // initially or slow prop binding
+
+    // TODO: would be great to use this in jsx but that doesn't work reliable or triggers initially when component is rendered via framework
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
+      this.setTabElements();
+      this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
+      this.setBarStyle();
+    });
   }
 
   public disconnectedCallback(): void {
@@ -159,17 +174,11 @@ export class TabsBar {
         onClick={this.onClick}
         onKeyDown={this.onKeydown}
       >
-        <slot onSlotchange={this.onSlotChange} />
+        <slot />
         <span class="bar" ref={(el) => (this.barElement = el)} />
       </PrefixedTagNames.pScroller>
     );
   }
-
-  private onSlotChange = (): void => {
-    this.setTabElements();
-    this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
-    this.setBarStyle();
-  };
 
   private setAccessibilityAttributes = (): void => {
     this.tabElements.forEach((tab, index) => {
