@@ -156,13 +156,13 @@ export class PinCode {
           {this.isWithinForm && <slot name="hidden-input" />}
           {...Array.from({ length: this.length }).map((_value, index) => (
             <input
-              id={index === this.value.length ? 'current-input' : null}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby="label description state-message"
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-busy={this.loading}
               autoComplete="one-time-code"
+              maxLength={1}
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
               value={this.value[index]}
@@ -236,6 +236,7 @@ export class PinCode {
       this.value = joinInputValues(this.pinCodeElements);
       this.updateValue();
     }
+    this.value = e.target.value; // needed to update value on auto-complete via keyboard suggestion
   };
 
   private onPaste = (e: ClipboardEvent): void => {
