@@ -1,5 +1,4 @@
-import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -13,7 +12,6 @@ import {
   setAttribute,
   THEMES,
   unobserveBreakpointChange,
-  unobserveChildren,
   validateProps,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
@@ -36,8 +34,7 @@ import {
   TABS_BAR_WEIGHTS,
 } from './tabs-bar-utils';
 import { getComponentCss, scrollerAnimatedCssClass } from './tabs-bar-styles';
-import type { ScrollerDirection } from '../scroller/scroller-utils';
-import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS } from '../scroller/scroller-utils';
+import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS, type ScrollerDirection } from '../scroller/scroller-utils';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabsBarSize>(TABS_BAR_SIZES),
@@ -119,7 +116,6 @@ export class TabsBar {
 
   public disconnectedCallback(): void {
     unobserveBreakpointChange(this.host);
-    unobserveChildren(this.host);
   }
 
   public componentDidRender(): void {
