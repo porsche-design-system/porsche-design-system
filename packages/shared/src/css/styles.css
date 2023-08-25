@@ -11,6 +11,10 @@ body {
   padding: 0;
 }
 
+#app {
+  transform: translate(0);
+}
+
 #app.auto-layout {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -30,7 +34,6 @@ body {
   content: attr(title);
   display: block;
   width: 100%;
-  box-sizing: border-box;
   font: 12px/16px 'Porsche Next';
   color: deeppink;
 }

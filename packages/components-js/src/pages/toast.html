@@ -1,3 +1,11 @@
+<style>
+  .playground > div {
+    transform: translate(0);
+    height: 20rem;
+    margin: 0 -16px;
+  }
+</style>
+
 <div class="visualize-grid">
   <span></span>
   <span></span>
@@ -19,8 +27,10 @@
   <span></span>
 </div>
 
-<div class="playground light" title="should render toast" style="height: 300px">
-  <p-toast></p-toast>
+<div class="playground light" title="should render toast">
+  <div>
+    <p-toast></p-toast>
+  </div>
 </div>
 
 <script>
