@@ -3,7 +3,7 @@
   import { PMultiSelect, PMultiSelectOption } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
-  const selectedValues = ref<(string | number)[]>([]);
+  const selectedValues = ref<string[]>([]);
   const inputValue = ref('');
   const optionCount = ref(3);
 
