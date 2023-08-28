@@ -59,6 +59,9 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         .playground div {
           display: flex;
         }
+        p-multi-select {
+          width: 9rem;
+        }
         p-multi-select:not(:last-child) {
           margin-right: 1rem;
           margin-bottom: 1rem;
@@ -128,16 +131,12 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
 
-      await forceHoverState(page, '.hover p-multi-select');
+      await forceHoverState(page, '.hover p-multi-select >>> .input-container');
       await forceHoverState(page, '.hover p-multi-select span a');
-      await forceHoverState(page, '.hover p-multi-select-option');
-      await forceFocusState(page, '.focus p-multi-select select');
       await forceFocusState(page, '.focus p-multi-select span a');
       await forceFocusState(page, '.focus p-multi-select >>> input');
-      await forceFocusHoverState(page, '.focus-hover p-multi-select select');
+      await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
       await forceFocusHoverState(page, '.focus-hover p-multi-select span a');
-      // actual user interaction happens on multiple nodes that's why forceFocusedHoveredState is wrong
-      await forceHoverState(page, '.focus-hover p-multi-select >>> input');
     })
   ).toBeFalsy();
 });
