@@ -3,6 +3,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  getShadowRootHTMLElement,
   hasPropValueChanged,
   removeAttribute,
   setAttribute,
@@ -71,19 +72,19 @@ export class Tabs {
     this.tabChange.emit({ activeTabIndex: newValue });
   }
 
-  public connectedCallback(): void {
+  public componentWillLoad(): void {
     this.defineTabsItemElements();
   }
 
   public componentDidLoad(): void {
-    this.setAccessibilityAttributes();
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineTabsItemElements);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidUpdate(): void {
+  public componentDidRender(): void {
     this.setAccessibilityAttributes();
   }
 
@@ -91,7 +92,7 @@ export class Tabs {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Tabs>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
     attachComponentCss(this.host, getComponentCss);
-    syncTabsItemsProps(this.host, this.theme);
+    syncTabsItemsProps(this.tabsItemElements, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -114,7 +115,7 @@ export class Tabs {
             </button>
           ))}
         </PrefixedTagNames.pTabsBar>
-        <slot onSlotchange={this.defineTabsItemElements} />
+        <slot />
       </Host>
     );
   }
