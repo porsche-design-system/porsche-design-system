@@ -19,6 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Usage of `getInitialStyles()` partial is required and validated with an exception
   ([#2749](https://github.com/porsche-design-system/porsche-design-system/pull/2749))
 
+### [3.6.0] - 2023-08-28
+
 ### [3.6.0-rc.2] - 2023-08-28
 
 #### Fixed
