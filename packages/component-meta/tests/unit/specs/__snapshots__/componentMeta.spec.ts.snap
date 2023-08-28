@@ -1978,7 +1978,6 @@ exports[`should match snapshot 1`] = `
       ],
       "value": [
         "string",
-        "number",
       ],
     },
     "arrayProps": [
