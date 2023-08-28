@@ -29,6 +29,7 @@
     PModelSignature,
     PorscheDesignSystemProvider,
     PPagination,
+    PPinCode,
     PPopover,
     PRadioButtonWrapper,
     PScroller,
