@@ -292,7 +292,7 @@ describe('AllowedTypes', () => {
     });
   });
 
-  fdescribe('.array', () => {
+  describe('.array', () => {
     const validatorFunctionValues = AllowedTypes.array(AllowedTypes.string);
 
     it('should return anonymous ValidatorFunction', () => {
