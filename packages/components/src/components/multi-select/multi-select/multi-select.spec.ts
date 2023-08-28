@@ -47,13 +47,13 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentWillUpdate', () => {
-  it('should call syncNativeSelect() if is within form', () => {
+  it('should call syncNativeSelect() with correct parameters if is within form', () => {
     const component = initComponent();
     component['nativeSelect'] = document.createElement('select');
     component['isWithinForm'] = true;
     const syncNativeSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeSelect');
     component.componentWillUpdate();
-    expect(syncNativeSelectSpy).toBeCalledTimes(1);
+    expect(syncNativeSelectSpy).toBeCalledWith(component['nativeSelect'], undefined, false, false);
   });
 
   it('should not call syncNativeSelect() if is not within form', () => {
@@ -61,7 +61,7 @@ describe('componentWillUpdate', () => {
     component['isWithinForm'] = false;
     const syncNativeSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeSelect');
     component.componentWillUpdate();
-    expect(syncNativeSelectSpy).toBeCalledTimes(0);
+    expect(syncNativeSelectSpy).not.toBeCalled();
   });
 });
 
