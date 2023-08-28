@@ -6,7 +6,7 @@ import type { JssStyle } from 'jss';
  * @param {JssStyle} styles - The styles to apply to the placeholder.
  * @returns {JssStyle} - The generated placeholder styles.
  */
-export const getPlaceholderJssStyles = (styles: JssStyle): JssStyle => ({
+export const getPlaceholderJssStyle = (styles: JssStyle): JssStyle => ({
   '&::placeholder': styles,
   '&::-webkit-input-placeholder': styles /* Chrome/Opera/Safari */,
   '&::-moz-placeholder': styles /* Firefox 19+ */,
