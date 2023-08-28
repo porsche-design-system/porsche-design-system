@@ -20,8 +20,6 @@ export const multiSelectScenario = async (page): Promise<void> => {
   await page.$$eval('p-multi-select.open', async (selects) =>
     selects.forEach((el: HTMLElement) => (el.shadowRoot.querySelector('INPUT') as HTMLElement).click())
   );
-  // Focus
-  await forceFocusState(page, 'p-multi-select.focus >>> input');
   // Highlight second option
   await page.$$eval('p-multi-select.highlight', async (selects) =>
     selects.forEach((select) => select.children[1].shadowRoot.firstElementChild.classList.add('option--highlighted'))
@@ -60,9 +58,6 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         body { display: grid; grid-template-columns: repeat(2, 50%); }
         .playground div {
           display: flex;
-        }
-        p-multi-select {
-          width: 20rem;
         }
         p-multi-select:not(:last-child) {
           margin-right: 1rem;
