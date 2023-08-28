@@ -1,8 +1,6 @@
 import type { FormState } from '../../../utils/form/form-state';
-import type { SelectDropdownDirection, SelectDropdownDirectionInternal } from '../../../utils';
-import { determineDropdownDirection } from '../../../utils';
-import type { Theme } from '../../../utils';
-import { consoleWarn, removeAttribute, setAttribute, setAttributes } from '../../../utils';
+import type { SelectDropdownDirection, SelectDropdownDirectionInternal, Theme } from '../../../utils';
+import { consoleWarn, determineDropdownDirection, setAttribute, setAttributes } from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
 
@@ -49,8 +47,8 @@ export const syncNativeSelect = (
   required: boolean
 ): void => {
   setAttribute(nativeSelect, 'name', name);
-  (disabled ? setAttribute : removeAttribute)(nativeSelect, 'disabled');
-  (required ? setAttribute : removeAttribute)(nativeSelect, 'required');
+  nativeSelect.toggleAttribute('disabled', disabled);
+  nativeSelect.toggleAttribute('required', required);
 };
 
 export const updateNativeOptions = (nativeSelect: HTMLSelectElement, multiSelectOptions: MultiSelectOption[]): void => {
