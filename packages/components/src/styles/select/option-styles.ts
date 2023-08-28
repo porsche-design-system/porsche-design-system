@@ -27,7 +27,7 @@ export const getSelectOptionStyles = (theme: Theme, additionalOptionJssStyle?: J
       boxSizing: 'border-box',
       borderRadius: borderRadiusSmall,
       transition: ['background-color', 'color'].map(getTransition).join(),
-      ...getNoResultsOptionJssStyles(),
+      ...getNoResultsOptionJssStyle(),
       ...hoverMediaQuery({
         '&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover': {
           color: isHighContrastMode ? highlightColor : primaryColor,
@@ -55,7 +55,7 @@ export const getSelectOptionStyles = (theme: Theme, additionalOptionJssStyle?: J
   };
 };
 
-export const getNoResultsOptionJssStyles = (): JssStyle => ({
+export const getNoResultsOptionJssStyle = (): JssStyle => ({
   '&[role=status]': {
     cursor: 'not-allowed',
   },
