@@ -411,6 +411,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /className=\{\{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this.props.isOpen }}/,
             "className='icon toggle-icon'"
           )
+          .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
           .replace(/onOpenChange=\{this\.props\.onDropdownOpenChange}\s*/, '')
           .replace(/\{typeof otherChildren.*propsedString}/, '{this.selectedString}')
           .replace(/this\.props\.nativeSelect\.selectedOptions\.length > 0/, 'false')
