@@ -52,19 +52,19 @@
 </div>
 
 <div class="playground light" title="should render with value">
-  <p-pin-code label="With Value" value="1234"></p-pin-code>
+  <p-pin-code label="With Value" value="'1234'"></p-pin-code>
 </div>
 
 <div class="playground dark" title="should render with value on dark theme">
-  <p-pin-code label="With Value" value="1234" theme="dark"></p-pin-code>
+  <p-pin-code label="With Value" value="'1234'" theme="dark"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with type=password">
-  <p-pin-code label="Type password" type="password" value="1234"></p-pin-code>
+  <p-pin-code label="Type password" type="password" value="'1234'"></p-pin-code>
 </div>
 
 <div class="playground dark" title="should render with type=password on dark theme">
-  <p-pin-code label="Type password" type="password" value="1234" theme="dark"></p-pin-code>
+  <p-pin-code label="Type password" type="password" value="'1234'" theme="dark"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with success state and no success message">
@@ -100,51 +100,55 @@
 </div>
 
 <div class="playground light" title="should render with required state">
-  <p-pin-code label="Required" required></p-pin-code>
+  <p-pin-code label="Required" required="true"></p-pin-code>
 </div>
 
 <div class="playground dark" title="should render with required state on dark theme">
-  <p-pin-code label="Required" required theme="dark"></p-pin-code>
+  <p-pin-code label="Required" required="true" theme="dark"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with required state">
-  <p-pin-code label="Required and insanely super long label across multiple lines" required></p-pin-code>
+  <p-pin-code label="Required and insanely super long label across multiple lines" required="true"></p-pin-code>
 </div>
 
 <div class="playground dark" title="should render with required state on dark theme">
-  <p-pin-code label="Required and insanely super long label across multiple lines" required theme="dark"></p-pin-code>
+  <p-pin-code
+    label="Required and insanely super long label across multiple lines"
+    required="true"
+    theme="dark"
+  ></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with loading state">
-  <p-pin-code label="Loading" loading></p-pin-code>
+  <p-pin-code label="Loading" loading="true"></p-pin-code>
 </div>
 
 <div class="playground dark" title="should render with loading state on dark theme">
-  <p-pin-code label="Loading" loading theme="dark"></p-pin-code>
+  <p-pin-code label="Loading" loading="true" theme="dark"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with disabled state">
-  <p-pin-code label="Disabled" disabled></p-pin-code>
+  <p-pin-code label="Disabled" disabled="true"></p-pin-code>
 </div>
 
 <div class="playground dark" title="should render with disabled state on dark theme">
-  <p-pin-code label="Disabled" disabled theme="dark"></p-pin-code>
+  <p-pin-code label="Disabled" disabled="true" theme="dark"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with disabled state and value">
-  <p-pin-code label="Disabled" value="1234" disabled></p-pin-code>
+  <p-pin-code label="Disabled" value="'1234'" disabled="true"></p-pin-code>
 </div>
 
 <div class="playground dark" title="should render with disabled state and value on dark theme">
-  <p-pin-code label="Disabled" value="1234" disabled theme="dark"></p-pin-code>
+  <p-pin-code label="Disabled" value="'1234'" disabled="true" theme="dark"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with disabled and type password">
-  <p-pin-code label="Type password disabled" type="password" value="1234" disabled> </p-pin-code>
+  <p-pin-code label="Type password disabled" type="password" value="'1234'" disabled="true"> </p-pin-code>
 </div>
 
 <div class="playground dark" title="should render with disabled and type password on dark theme">
-  <p-pin-code label="Type password disabled" type="password" value="1234" disabled> </p-pin-code>
+  <p-pin-code label="Type password disabled" type="password" value="'1234'" disabled="true"> </p-pin-code>
 </div>
 
 <div class="playground light" title="should render with length=6">
