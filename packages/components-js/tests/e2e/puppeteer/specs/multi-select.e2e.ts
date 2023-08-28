@@ -1089,13 +1089,13 @@ describe('lifecycle', () => {
     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
 
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
-    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     await inputElement.click();
     await waitForStencilLifecycle(page);
     const status2 = await getLifecycleStatus(page);
-    expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(2); // slotchange forces second update
-    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+    expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(1);
+    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
   it('should work without unnecessary round trips when selecting option', async () => {
@@ -1112,7 +1112,7 @@ describe('lifecycle', () => {
     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
 
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
-    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2); // slotchange forces second update
+    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
 
     const option1 = await getMultiSelectOption(1);
     await option1.click();
@@ -1121,8 +1121,8 @@ describe('lifecycle', () => {
     const status2 = await getLifecycleStatus(page);
     expect(status2.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // reset button
     expect(status2.componentDidUpdate['p-multi-select-option'], 'componentDidUpdate: p-multi-select-option').toBe(1);
-    expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(3);
-    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
+    expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(2);
+    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
   });
 
   it('should work without unnecessary round trips on filter input change', async () => {
@@ -1139,15 +1139,15 @@ describe('lifecycle', () => {
     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
 
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
-    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2); // slotchange forces second update
+    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1); // slotchange forces second update
 
     await page.keyboard.press('c');
     await waitForStencilLifecycle(page);
 
     const status2 = await getLifecycleStatus(page);
     expect(status2.componentDidUpdate['p-multi-select-option'], 'componentDidUpdate: p-multi-select-option').toBe(0);
-    expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(2);
-    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+    expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(1);
+    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });
 

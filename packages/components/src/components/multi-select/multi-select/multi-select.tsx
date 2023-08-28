@@ -45,6 +45,7 @@ import {
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  getShadowRootHTMLElement,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -146,12 +147,15 @@ export class MultiSelect {
 
   @Watch('value')
   public onValueChange(): void {
-    if (!this.preventOptionUpdate) {
-      setSelectedOptions(this.multiSelectOptions, this.value);
-    }
-    this.preventOptionUpdate = false;
-    if (this.isWithinForm) {
-      updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
+    // When setting initial value the watcher gets called before the options are defined
+    if (this.multiSelectOptions.length > 0) {
+      if (!this.preventOptionUpdate) {
+        setSelectedOptions(this.multiSelectOptions, this.value);
+      }
+      this.preventOptionUpdate = false;
+      if (this.isWithinForm) {
+        updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
+      }
     }
   }
 
@@ -161,12 +165,17 @@ export class MultiSelect {
   }
 
   public componentWillLoad(): void {
-    if (this.isWithinForm) {
-      this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
-    }
     this.updateOptions();
     // Use initial value to set options
     setSelectedOptions(this.multiSelectOptions, this.value);
+    if (this.isWithinForm) {
+      this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
+      updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
+    }
+  }
+
+  public componentDidLoad(): void {
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -277,7 +286,7 @@ export class MultiSelect {
                 <span class="no-results__sr">No results found</span>
               </div>
             )}
-            <slot onSlotchange={this.onSlotchange} />
+            <slot />
           </div>
         </div>
         {this.isWithinForm && <slot name="select" />}
