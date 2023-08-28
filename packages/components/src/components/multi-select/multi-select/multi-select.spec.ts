@@ -22,12 +22,12 @@ describe('connectedCallback', () => {
 });
 
 describe('componentWillLoad', () => {
-  it('should call initNativeSelect() if is within form', () => {
+  it('should call initNativeSelect() with correct parameters if is within form', () => {
     const component = initComponent();
     component['isWithinForm'] = true;
     const initNativeSelectSpy = jest.spyOn(multiSelectUtils, 'initNativeSelect');
     component.componentWillLoad();
-    expect(initNativeSelectSpy).toBeCalledTimes(1);
+    expect(initNativeSelectSpy).toBeCalledWith(component.host, undefined, false, false);
   });
 
   it('should not call initNativeSelect() if is not within form', () => {
