@@ -93,7 +93,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(<\/?)Host.*(>)/g, '$1$2') // replace Host fragment, TODO: could be removed completely with template tag
         .replace(/(public state)\?(: any)/, '$1$2') // make state required to fix linting issue with React
         .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`) // inline breakpoint value from utilities-v2 for marque
-        .replace(/{(isRequiredAndParentNotRequired\(.*)}/, '{/* $1 */}'); // comment out isRequiredAndParentNotRequired for now
+        .replace(/{(isRequiredAndParentNotRequired\(.*)}/, '{/* $1 */}') // comment out isRequiredAndParentNotRequired for now
+        .replace(/{(!isParentFieldsetRequired\(.*)}/, '{/* $1 */}'); // comment out isParentFieldsetRequired for now
 
       if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
         newFileContent = newFileContent.replace(

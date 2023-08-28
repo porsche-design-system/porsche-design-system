@@ -11,7 +11,7 @@ import {
   hasMessage,
   hasPropValueChanged,
   isDisabledOrLoading,
-  isRequiredAndParentNotRequired,
+  isParentFieldsetRequired,
   isWithinForm,
   THEMES,
   validateProps,
@@ -135,7 +135,7 @@ export class PinCode {
           {hasLabel(this.host, this.label) && (
             <span id="label" class="label__text" {...labelProps}>
               {this.label || <slot name="label" />}
-              {isRequiredAndParentNotRequired(this.host, this.pinCodeElements[0]) && <Required />}
+              {!isParentFieldsetRequired(this.host) && this.required && <Required />}
             </span>
           )}
           {hasDescription(this.host, this.description) && (
