@@ -55,7 +55,7 @@ const generateComponentMeta = (): void => {
   breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
   arrayProps?: string[]; // array of props that are of type array
   allowedPropValues?: {
-    [propName: string]: 'boolean' | 'number' | 'string' | object | string[] | number[] | boolean[];
+    [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
   };
   deprecatedPropValues?: {
     [propName: string]: string[]; // array of values of a prop that are deprecated
@@ -100,7 +100,7 @@ const generateComponentMeta = (): void => {
     breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
     arrayProps?: string[]; // array of props that are of type array
     allowedPropValues?: {
-      [propName: string]: 'boolean' | 'number' | 'string' | object | string[] | number[] | boolean[];
+      [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
     };
     deprecatedPropValues?: {
       [propName: string]: string[]; // array of values of a prop that are deprecated
@@ -422,7 +422,7 @@ const generateComponentMeta = (): void => {
                 if (propType !== 'string' && propType !== 'number' && propType !== 'boolean') {
                   throw new Error(`Unsupported propType in "${tagName}" "${propName}": ${propType}`);
                 }
-                result[propName] = eval(`['${propType}']`);
+                result[propName] = [propType];
               } else {
                 throw new Error(`Unsupported propType in "${tagName}" "${propName}": ${propType}`);
               }
