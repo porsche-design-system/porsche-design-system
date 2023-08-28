@@ -131,7 +131,7 @@ export class PinCode {
 
     return (
       <Host>
-        <label class="label">
+        <label class="label" htmlFor="current-input" onClick={(e) => e.preventDefault()}>
           {hasLabel(this.host, this.label) && (
             <span id="label" class="label__text" {...labelProps}>
               {this.label || <slot name="label" />}
@@ -156,6 +156,7 @@ export class PinCode {
           {this.isWithinForm && <slot name="hidden-input" />}
           {...Array.from({ length: this.length }).map((_value, index) => (
             <input
+              id={index === this.value.length ? 'current-input' : null}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby="label description state-message"
@@ -235,8 +236,9 @@ export class PinCode {
       e.preventDefault();
       this.value = joinInputValues(this.pinCodeElements);
       this.updateValue();
+    } else {
+      this.value = e.target.value; // needed to update value on auto-complete via keyboard suggestion
     }
-    this.value = e.target.value; // needed to update value on auto-complete via keyboard suggestion
   };
 
   private onPaste = (e: ClipboardEvent): void => {
