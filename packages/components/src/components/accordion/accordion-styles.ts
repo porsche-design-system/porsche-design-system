@@ -93,10 +93,6 @@ export const getComponentCss = (
           border: 0,
         },
       },
-      '@keyframes overflow': {
-        from: { overflow: 'hidden' },
-        to: { overflow: 'hidden' },
-      },
     },
     heading: {
       margin: 0,
@@ -133,11 +129,15 @@ export const getComponentCss = (
       '& div': {
         overflow: open ? 'visible' : 'hidden',
         // Fix overflow issues for overlapping content (e.g. select dropdown)
-        animation: open ? `overflow ${transitionDuration}` : 'none',
+        animation: open ? `$overflow ${transitionDuration}` : 'none',
         // Necessary to make focus outlines fully visible
         padding: '4px',
         margin: '-4px',
       },
+    },
+    '@keyframes overflow': {
+      from: { overflow: 'hidden' },
+      to: { overflow: 'hidden' },
     },
   });
 };
