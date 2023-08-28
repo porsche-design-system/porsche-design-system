@@ -19,7 +19,7 @@ import type { MultiSelectUpdateEvent } from '@porsche-design-system/components-a
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MultiSelectExampleControlledComponent {
-  selectedValues: (string | number)[] = [];
+  selectedValues: string[] = [];
   get debugText(): string {
     return `Selected values: ${this.selectedValues.join(', ') || 'none'}`;
   }

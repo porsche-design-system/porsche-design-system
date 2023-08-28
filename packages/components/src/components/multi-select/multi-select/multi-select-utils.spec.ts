@@ -33,7 +33,7 @@ import { Theme } from '../../../utils';
 import { DropdownDirectionInternal } from '../../select-wrapper/select-wrapper/select-wrapper-utils';
 
 type Option = {
-  value: string | number;
+  value: string;
   selected: boolean;
   highlighted: boolean;
   disabled: boolean;
@@ -298,7 +298,7 @@ describe('setSelectedOptions', () => {
     expect(options[3].selected).toBeFalsy();
     expect(options[4].selected).toBeTruthy();
 
-    const value3 = ['Value 2', 3, 'test'];
+    const value3 = ['Value 2', '3', 'test'];
 
     setSelectedOptions(options, value3);
     expect(options[0].selected).toBeFalsy();

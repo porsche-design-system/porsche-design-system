@@ -729,7 +729,7 @@ exports[`manual test cases should pass internal props correctly to p-multi-selec
     shadowrootmode="open"
   >
     <style>
-      :host{display:block !important;position:relative !important}:host([hidden]){display:none !important}.root{position:relative}.listbox{position:absolute;margin:0;display:none;flex-direction:column;gap:8px;padding:6px;background:#0E0E12;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;z-index:10;left:0;right:0;top:100%;box-sizing:border-box;max-height:450px;overflow-y:auto;-webkit-overflow-scrolling:touch;border:2px solid #FBFCFF;border-top:none;border-radius:4px;border-top-left-radius:0;border-top-right-radius:0;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0)}.input-container{display:flex;background:#0E0E12;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;cursor:text;border:2px solid #88898C;border-radius:4px}.input-container:hover:not(.disabled){border-color:#FBFCFF}.icon{padding:13px 15px;cursor:pointer}.reset-icon{padding:4px;margin:auto;display:none}.toggle-icon{transform:rotate3d(0,0,1,0.0001deg);transition:transform var(--p-transition-duration, .24s) ease}.toggle-icon--open{transform:rotate3d(0,0,1,180deg)}.no-results{padding:8px 12px;color:#AFB0B3;box-sizing:border-box}.no-results[role=status]{cursor:not-allowed}.no-results__sr{position:absolute;width:0;height:1px;text-indent:-999999px}.required{user-select:none}.message{display:flex;gap:4px;margin-top:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.sr-text{position:absolute;width:0;height:1px;text-indent:-999999px}.input-container input{flex:1;min-width:0;height:calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;color:#FBFCFF;padding:13px 16px;box-sizing:border-box;border:0;outline:0;appearance:none;background:transparent;overflow-wrap:break-word;hyphens:auto;text-overflow:ellipsis}.input-container input:disabled{cursor:not-allowed}
+      :host{display:block !important;position:relative !important}:host([hidden]){display:none !important}input{flex:1;min-width:0;height:calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;color:#FBFCFF;padding:13px 16px;box-sizing:border-box;border:0;outline:0;appearance:none;background:transparent;overflow-wrap:break-word;hyphens:auto;text-overflow:ellipsis}input:disabled{cursor:not-allowed}.root{position:relative}.listbox{position:absolute;margin:0;display:none;flex-direction:column;gap:8px;padding:6px;background:#0E0E12;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;z-index:10;left:0;right:0;top:100%;box-sizing:border-box;max-height:450px;overflow-y:auto;-webkit-overflow-scrolling:touch;border:2px solid #FBFCFF;border-top:none;border-radius:4px;border-top-left-radius:0;border-top-right-radius:0;scrollbar-width:thin;scrollbar-color:auto;transition:border-color var(--p-transition-duration, .24s) ease;transform:translate3d(0,0,0)}.input-container{display:flex;background:#0E0E12;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;cursor:text;border:2px solid #88898C;border-radius:4px}.input-container:hover:not(.disabled){border-color:#FBFCFF}.icon{padding:13px 15px;cursor:pointer}.reset-icon{padding:4px;margin:auto}.toggle-icon{transform:rotate3d(0,0,1,0.0001deg);transition:transform var(--p-transition-duration, .24s) ease}.toggle-icon--open{transform:rotate3d(0,0,1,180deg)}.no-results{padding:8px 12px;color:#AFB0B3;box-sizing:border-box}.no-results[role=status]{cursor:not-allowed}.no-results__sr{position:absolute;width:0;height:1px;text-indent:-999999px}.required{user-select:none}.message{display:flex;gap:4px;margin-top:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}.sr-text{position:absolute;width:0;height:1px;text-indent:-999999px}
     </style>
     <div
       class="root"
@@ -744,50 +744,6 @@ exports[`manual test cases should pass internal props correctly to p-multi-selec
           autocomplete="off"
           role="combobox"
         />
-        <p-button-pure
-          class="icon reset-icon ssr"
-        >
-          <template
-            shadowroot="open"
-            shadowrootdelegatesfocus="true"
-            shadowrootmode="open"
-          >
-            <style>
-              :host{transform:translate3d(0,0,0) !important;outline:0 !important;display:inline-block;width:auto;vertical-align:top}:host([hidden]){display:none !important}.root{display:flex;gap:4px;width:100%;margin:0;padding:0;color:#FBFCFF;outline:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;justify-content:flex-start;align-items:flex-start;font-size:1rem;appearance:none;background:transparent;text-align:left;border:0;cursor:pointer}.root::before{content:"";position:absolute;top:-2px;bottom:-2px;right:-2px;left:-2px;border-radius:4px;transition:background-color var(--p-transition-duration, .24s) ease}.root:hover::before{-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);background-color:rgba(148, 149, 152, .18)}.label{position:absolute;top:0;left:0;right:0;bottom:0;white-space:nowrap;text-indent:-999999px;order:0}.icon{position:relative;flex-shrink:0;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex)}@supports (width:round(down, 1px, 1px)){.icon{width:round(down, calc(6px + 2.125ex), 1px);height:round(down, calc(6px + 2.125ex), 1px)}}
-            </style>
-            <button
-              class="root"
-              type="submit"
-            >
-              <p-icon
-                aria-hidden="true"
-                class="icon ssr"
-              >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
-                >
-                  <style>
-                    :host{display:inline-block;vertical-align:top}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:inherit;height:inherit}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-              <span
-                class="label"
-              >
-                <slot />
-              </span>
-            </button>
-          </template>
-          Reset selection
-        </p-button-pure>
         <p-icon
           aria-hidden="true"
           class="icon toggle-icon ssr"
@@ -5587,6 +5543,25 @@ exports[`should render dsr component for PMultiSelect 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+}
+input:disabled {
+  cursor: not-allowed;
+}
 .root {
   position: relative;
 }
@@ -5637,7 +5612,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
 .reset-icon {
   padding: 4px;
   margin: auto;
-  display: none;
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
@@ -5678,25 +5652,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   height: 1px;
   text-indent: -999999px;
 }
-.input-container input {
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
-  padding: 13px 16px;
-  box-sizing: border-box;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-}
-.input-container input:disabled {
-  cursor: not-allowed;
-}
     </style>
     <div
       class="root"
@@ -5711,141 +5666,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
           autocomplete="off"
           role="combobox"
         />
-        <p-button-pure
-          class="icon reset-icon ssr"
-        >
-          <template
-            shadowroot="open"
-            shadowrootdelegatesfocus="true"
-            shadowrootmode="open"
-          >
-            <style>
-              :host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  gap: 4px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  color: #010205;
-  outline: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  appearance: none;
-  background: transparent;
-  text-align: left;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
-}
-.root:hover::before {
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  background-color: rgba(148, 149, 152, .18);
-}
-.label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-            </style>
-            <button
-              class="root"
-              type="submit"
-            >
-              <p-icon
-                aria-hidden="true"
-                class="icon ssr"
-              >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
-                >
-                  <style>
-                    :host {
-  display: inline-block;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
-  -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
-}
-@keyframes rerender-light-primary {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
-}
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-              <span
-                class="label"
-              >
-                <slot />
-              </span>
-            </button>
-          </template>
-          Reset selection
-        </p-button-pure>
         <p-icon
           aria-hidden="true"
           class="icon toggle-icon ssr"

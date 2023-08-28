@@ -29,7 +29,7 @@ import type { MultiSelectUpdateEvent } from '@porsche-design-system/components-a
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MultiSelectExampleDynamicComponent {
-  selectedValues: (string | number)[] = [];
+  selectedValues: string[] = [];
   inputValue: string = '';
   optionCount: number = 3;
 

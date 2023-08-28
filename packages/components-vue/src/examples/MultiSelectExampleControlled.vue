@@ -3,7 +3,7 @@
   import { PMultiSelect, PMultiSelectOption } from '@porsche-design-system/components-vue';
   import { computed, ref } from 'vue';
 
-  const selectedValues = ref<(string | number)[]>([]);
+  const selectedValues = ref<string[]>([]);
 
   const onUpdate = (e: MultiSelectUpdateEvent) => {
     selectedValues.value = e.value;
