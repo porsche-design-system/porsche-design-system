@@ -15,9 +15,6 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
   const sourceFileContent = fs.readFileSync(sourceFilePath, 'utf8');
 
   const { props = {}, eventNames = [] } = getComponentMeta(tagName);
-  if (tagName === 'p-multi-select') {
-    delete props.value;
-  }
   const relevantProps = Object.keys(props);
 
   if (relevantProps.length) {
@@ -26,13 +23,20 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
         const [, type] =
           sourceFileContent.match(
             new RegExp(
-              `@Prop\\(.*?\\) public ${prop}\\??: (?:BreakpointCustomizable|SelectedAriaAttributes)?<?([a-zA-Z]+)>?`
+              `@Prop\\(.*?\\) public ${prop}\\??: (?:BreakpointCustomizable|SelectedAriaAttributes)?<?([a-zA-Z\[\\]]+)>?`
             )
           ) || [];
 
         if (prop === 'theme') {
           expect(type).toBe('Theme');
-        } else if (type === 'string' || type === 'boolean' || type === 'number') {
+        } else if (
+          type === 'string' ||
+          type === 'string[]' ||
+          type === 'boolean' ||
+          type === 'boolean[]' ||
+          type === 'number' ||
+          type === 'number[]'
+        ) {
           expect(true).toBe(true);
         } else {
           const propSuffix = prop === 'aria' ? 'Attribute' : '';
