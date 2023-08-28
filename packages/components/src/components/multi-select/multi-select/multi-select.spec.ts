@@ -14,7 +14,6 @@ describe('connectedCallback', () => {
     const component = initComponent();
     const isWithinFormSpy = jest.spyOn(isWithinFormUtils, 'isWithinForm');
     const eventListenerSpy = jest.spyOn(document, 'addEventListener');
-    // const spy = jest.spyOn(multiSelectUtils, 'initNativeSelect');
     component.connectedCallback();
     expect(isWithinFormSpy).toBeCalledTimes(1);
     expect(eventListenerSpy).toBeCalledTimes(1);
@@ -71,7 +70,7 @@ describe('disconnectedCallback', () => {
     const component = initComponent();
     const spy = jest.spyOn(document, 'removeEventListener');
     component.disconnectedCallback();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith('mousedown', component['onClickOutside'], true);
   });
 });
 
