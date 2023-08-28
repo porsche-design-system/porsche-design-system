@@ -55,7 +55,7 @@ const generateComponentMeta = (): void => {
   breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
   arrayProps?: string[]; // array of props that are of type array
   allowedPropValues?: {
-    [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
+    [propName: string]: 'boolean' | 'number' | 'string' | object | string[] | number[] | boolean[];
   };
   deprecatedPropValues?: {
     [propName: string]: string[]; // array of values of a prop that are deprecated
@@ -100,7 +100,7 @@ const generateComponentMeta = (): void => {
     breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
     arrayProps?: string[]; // array of props that are of type array
     allowedPropValues?: {
-      [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
+      [propName: string]: 'boolean' | 'number' | 'string' | object | string[] | number[] | boolean[];
     };
     deprecatedPropValues?: {
       [propName: string]: string[]; // array of values of a prop that are deprecated
@@ -209,13 +209,6 @@ const generateComponentMeta = (): void => {
       source.matchAll(/(  \/\*\*[\s\S]+?)?@Prop\(.*\) public ([a-zA-Z]+)\??(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
     ).reduce(
       (result, [, jsdoc, propName, , propValue]) => {
-        if (propValue === '[]') {
-          arrayProps.push(propName);
-          return {
-            ...result,
-            [propName]: [],
-          };
-        }
         let cleanedValue: boolean | number | string | object =
           propValue === 'true'
             ? true
@@ -238,6 +231,14 @@ const generateComponentMeta = (): void => {
           } else if (cleanedValue.match(/^{.+}$/)) {
             // parse objects
             cleanedValue = eval(`(${cleanedValue})`);
+          } else if (cleanedValue.match(/\[.*]/g)) {
+            // parse arrays
+            if (cleanedValue !== '[]') {
+              // TODO: Support non empty array values
+              throw new Error(`Expected an empty array '[]' for prop '${propName}', but found '${propValue}'`);
+            }
+            arrayProps.push(propName);
+            cleanedValue = [];
           }
         }
 
@@ -417,11 +418,11 @@ const generateComponentMeta = (): void => {
                   })
                 );
               } else if (propType.match(/^array/)) {
-                // Extract all array types
-                result[propName] = propType
-                  .match(/(?<=\[).+(?=])/)[0]
-                  .split(', ')
-                  .map((item) => item.replace(/'/g, ''));
+                propType = propType.replace(/.*AllowedTypes\.(string|number|boolean).*/, '$1');
+                if (propType !== 'string' && propType !== 'number' && propType !== 'boolean') {
+                  throw new Error(`Unsupported propType in "${tagName}" "${propName}": ${propType}`);
+                }
+                result[propName] = eval(`['${propType}']`);
               } else {
                 throw new Error(`Unsupported propType in "${tagName}" "${propName}": ${propType}`);
               }
