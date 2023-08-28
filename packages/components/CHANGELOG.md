@@ -18,6 +18,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Multi-Select` ([#2658](https://github.com/porsche-design-system/porsche-design-system/pull/2658))
 
+### [3.6.0] - 2023-08-28
+
+### [3.6.0-rc.2] - 2023-08-28
+
+#### Fixed
+
+- `Tabs Bar` losing `activeTabIndex` and underline
+  ([#2748](https://github.com/porsche-design-system/porsche-design-system/pull/2748))
+
 ### [3.6.0-rc.1] - 2023-08-24
 
 #### Fixed
@@ -89,7 +98,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- Fixes regression in `observeChildren` that affected nested components (e.g. incorrect rendering of nested `Tabs`).
+- Regression in `observeChildren` that affected nested components (e.g. incorrect rendering of nested `Tabs`).
   ([#2649](https://github.com/porsche-design-system/porsche-design-system/pull/2649))
 - Click behaviour of slotted interactive elements of `Carousel`
   ([#2663](https://github.com/porsche-design-system/porsche-design-system/pull/2663))

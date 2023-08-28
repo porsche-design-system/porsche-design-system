@@ -64,6 +64,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
         .replace(/\s+onInput={.*?}/g, '') // onInput props
         .replace(/\s+on(?:Tab)?Change={.*?}/g, '') // onChange and onTabChange props
+        .replace(/\s+onUpdate={.*?}/g, '') // onUpdate props
         .replace(/ +ref: [\s\S]*?,\n/g, '') // ref props
         .replace(/ +onClick: [\s\S]*?,\n/g, '') // onClick props
         .replace(/ +onKeyDown: [\s\S]*?,\n/g, '') // onKeyDown props
@@ -223,7 +224,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
         .replace(/Exclude<any, any>/g, 'any') // workaround typings of deprecation maps
-        .replace(/ onSlotchange={this\.props\.onSlotChange}/, ''); // doesn't exist in React JSX and makes no sense
+        .replace(/ onSlotchange={this\.props\..+}/, ''); // doesn't exist in React JSX and makes no sense
 
       // component based tweaks
       if (tagName === 'p-carousel') {
