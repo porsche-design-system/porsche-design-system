@@ -216,6 +216,10 @@
         <PPagination :totalItemsCount="500" :itemsPerPage="25" :activePage="1" />
       </div>
 
+      <div class="playground light" title="should render default pin-code">
+        <PPinCode :label="'Some label'" />
+      </div>
+
       <div class="playground light" title="should render default table">
         <PTable>
           <PTableHead>
@@ -474,6 +478,10 @@
 
         <div class="playground light" title="should render default pagination with custom prefix">
           <PPagination :totalItemsCount="500" :itemsPerPage="25" :activePage="1" />
+        </div>
+
+        <div class="playground light" title="should render default pin-code with custom prefix">
+          <PPinCode :label="'Some label'" />
         </div>
 
         <div class="playground light" title="should render default table with custom prefix">
