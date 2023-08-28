@@ -103,7 +103,7 @@ export class PinCode {
   public componentWillLoad(): void {
     // make sure initial value is not longer than pin code length
     if (this.value) {
-      this.value = this.value.toString().slice(0, this.length);
+      this.value = this.value.slice(0, this.length);
     }
     if (this.isWithinForm) {
       this.hiddenInput = initHiddenInput(this.host, this.name, this.value, this.disabled, this.required);
@@ -166,7 +166,7 @@ export class PinCode {
               maxLength={1}
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
-              value={this.value[index]}
+              value={/^\d+$/.test(this.value) ? this.value[index] : ''}
               disabled={this.disabled}
               required={this.required}
               ref={(el) => this.pinCodeElements.push(el)}
