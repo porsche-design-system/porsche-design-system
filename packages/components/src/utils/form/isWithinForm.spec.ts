@@ -1,7 +1,7 @@
 import * as getClosestHTMLElementUtils from '../dom/getClosestHTMLElement';
 import { isWithinForm } from './isWithinForm';
 
-it('should call getClosestHTMLElement()', () => {
+it('should call getClosestHTMLElement() with correct parameters', () => {
   const spy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
   const el = document.createElement('input');
   isWithinForm(el);
