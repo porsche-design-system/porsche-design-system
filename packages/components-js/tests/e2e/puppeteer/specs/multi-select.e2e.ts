@@ -325,6 +325,16 @@ describe('Update Event', () => {
         name: 'options',
       },
     ]);
+    expect((await getEventSummary(host, 'update')).targets, 'after option select').toEqual([
+      {
+        nodeName: 'P-MULTI-SELECT',
+        nodeValue: null,
+        nodeType: 1,
+        tagName: 'P-MULTI-SELECT',
+        className: 'hydrated',
+        id: '',
+      },
+    ]);
   });
 
   it('should emit update event with correct details when option is selected by keyboard', async () => {
@@ -349,6 +359,16 @@ describe('Update Event', () => {
         name: 'options',
       },
     ]);
+    expect((await getEventSummary(host, 'update')).targets, 'after option select').toEqual([
+      {
+        nodeName: 'P-MULTI-SELECT',
+        nodeValue: null,
+        nodeType: 1,
+        tagName: 'P-MULTI-SELECT',
+        className: 'hydrated',
+        id: '',
+      },
+    ]);
   });
 
   it('should emit update event with correct details when reset button is clicked', async () => {
@@ -367,6 +387,16 @@ describe('Update Event', () => {
       {
         value: [],
         name: 'options',
+      },
+    ]);
+    expect((await getEventSummary(host, 'update')).targets, 'after option select').toEqual([
+      {
+        nodeName: 'P-MULTI-SELECT',
+        nodeValue: null,
+        nodeType: 1,
+        tagName: 'P-MULTI-SELECT',
+        className: 'hydrated',
+        id: '',
       },
     ]);
   });
