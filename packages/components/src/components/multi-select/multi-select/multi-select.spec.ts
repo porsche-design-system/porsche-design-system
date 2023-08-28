@@ -38,12 +38,12 @@ describe('componentWillLoad', () => {
     expect(initNativeSelectSpy).not.toBeCalled();
   });
 
-  it('should call setSelectedOptions()', () => {
+  it('should call setSelectedOptions() with correct parameters', () => {
     const component = initComponent();
     jest.spyOn(isWithinFormUtils, 'isWithinForm').mockReturnValueOnce(false);
     const setSelectedOptionsSpy = jest.spyOn(multiSelectUtils, 'setSelectedOptions');
     component.componentWillLoad();
-    expect(setSelectedOptionsSpy).toBeCalledTimes(1);
+    expect(setSelectedOptionsSpy).toBeCalledWith([], []);
   });
 });
 
