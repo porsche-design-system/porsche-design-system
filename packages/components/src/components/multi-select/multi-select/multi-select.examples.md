@@ -131,7 +131,7 @@ export default class Code extends Vue {
     }`;
   }
  
-  valueInput = '1,2';
+  valueInput = '';
   amountOfOptions = 3;
   getOptions = (amount = 3) => Array.from(Array(amount)).map((_, i) => `<p-multi-select-option value="${i + 1}">Option ${i+1}</p-multi-select-option>`).join('\n  ');
 
