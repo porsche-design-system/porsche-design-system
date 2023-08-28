@@ -394,30 +394,19 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // Replace unused imports which cause warnings
           .replace(/\s*MultiSelectOption,\s*/, '')
           .replace(/\s*MultiSelectUpdateEvent,\s*/, '')
-          // Replace document.createElement
-          .replace(/(nativeSelect: any).*/, '$1;')
           // Replace aria fns
           .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
           .replace(/\{\.\.\.getListAriaAttributes\([^}]*\}\s*/, '')
-          .replace(
-            /typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?.propsedString/,
-            'this.selectedString'
-          )
+          // replace input-container className
           .replace(/\{\{ 'input-container': true, disabled: this.props.disabled }}/, "'input-container'")
+          // replace color prop
           .replace(/\s*color=\{this.props.disabled \? 'state-disabled' : 'primary'}\s*/, '')
-          // Replace placeholder
-          .replace(/(?<=placeholder=\{)[^}]+/, 'getSelectedOptionsString(this.multiSelectOptions) || null')
           // replace toggle icon className
           .replace(
             /className=\{\{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this.props.isOpen }}/,
             "className='icon toggle-icon'"
           )
-          .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
-          .replace(/onOpenChange=\{this\.props\.onDropdownOpenChange}\s*/, '')
-          .replace(/\{typeof otherChildren.*propsedString}/, '{this.selectedString}')
-          .replace(/this\.props\.nativeSelect\.selectedOptions\.length > 0/, 'false')
-          .replace(/<span className="sr-text" role="status"[\s\S]*<\/span>/, '')
-          .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false');
+          .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
           .replace(/(\{ MultiSelectOptionInternalHTMLProps)/, 'type $1')
