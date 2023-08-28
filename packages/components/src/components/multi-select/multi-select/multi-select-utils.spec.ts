@@ -27,7 +27,6 @@ import {
 } from './multi-select-utils';
 import * as setAttributesUtils from '../../../utils/dom/setAttributes';
 import * as setAttributeUtils from '../../../utils/dom/setAttribute';
-import * as removeAttributesUtils from '../../../utils/dom/removeAttribute';
 import * as dropdownDirectionUtils from '../../../utils/select/select-dropdown';
 import { Theme } from '../../../utils';
 import { DropdownDirectionInternal } from '../../select-wrapper/select-wrapper/select-wrapper-utils';
@@ -106,9 +105,9 @@ describe('initNativeSelect', () => {
 describe('syncNativeSelect', () => {
   it('should synchronize attributes of native select element', () => {
     const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
-    const removeAttributeSpy = jest.spyOn(removeAttributesUtils, 'removeAttribute');
 
     const nativeSelect = document.createElement('select');
+    const toggleAttributeSpy = jest.spyOn(nativeSelect, 'toggleAttribute');
     const name = 'testSelect';
     const disabled = true;
     const required = false;
@@ -116,14 +115,14 @@ describe('syncNativeSelect', () => {
     syncNativeSelect(nativeSelect, name, disabled, required);
 
     expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'name', name);
-    expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'disabled');
-    expect(removeAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'required');
+    expect(toggleAttributeSpy).toHaveBeenCalledWith('disabled', true);
+    expect(toggleAttributeSpy).toHaveBeenCalledWith('required', false);
   });
 
   it('should remove "disabled" and "required" attributes when not disabled and not required', () => {
     const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
-    const removeAttributeSpy = jest.spyOn(removeAttributesUtils, 'removeAttribute');
     const nativeSelect = document.createElement('select');
+    const toggleAttributeSpy = jest.spyOn(nativeSelect, 'toggleAttribute');
     const name = 'testSelect';
     const disabled = false;
     const required = false;
@@ -131,13 +130,14 @@ describe('syncNativeSelect', () => {
     syncNativeSelect(nativeSelect, name, disabled, required);
 
     expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'name', name);
-    expect(removeAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'disabled');
-    expect(removeAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'required');
+    expect(toggleAttributeSpy).toHaveBeenCalledWith('disabled', false);
+    expect(toggleAttributeSpy).toHaveBeenCalledWith('required', false);
   });
 
   it('should add "required" and "disabled" attributes when required and disabled', () => {
     const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
     const nativeSelect = document.createElement('select');
+    const toggleAttributeSpy = jest.spyOn(nativeSelect, 'toggleAttribute');
     const name = 'testSelect';
     const disabled = true;
     const required = true;
@@ -145,8 +145,8 @@ describe('syncNativeSelect', () => {
     syncNativeSelect(nativeSelect, name, disabled, required);
 
     expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'name', name);
-    expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'disabled');
-    expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'required');
+    expect(toggleAttributeSpy).toHaveBeenCalledWith('disabled', true);
+    expect(toggleAttributeSpy).toHaveBeenCalledWith('required', true);
   });
 });
 
