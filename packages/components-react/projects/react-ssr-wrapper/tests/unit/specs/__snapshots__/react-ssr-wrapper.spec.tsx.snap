@@ -5755,6 +5755,7 @@ input[readonly] {
     </style>
     <label
       class="label"
+      for="current-input"
     />
     <div
       class="pin-code-container"
@@ -5766,6 +5767,7 @@ input[readonly] {
         autocomplete="one-time-code"
         id="current-input"
         inputmode="numeric"
+        maxlength="1"
         pattern="\\d*"
         type="text"
         value=""
@@ -5776,6 +5778,7 @@ input[readonly] {
         aria-label="2-4"
         autocomplete="one-time-code"
         inputmode="numeric"
+        maxlength="1"
         pattern="\\d*"
         type="text"
         value=""
@@ -5786,6 +5789,7 @@ input[readonly] {
         aria-label="3-4"
         autocomplete="one-time-code"
         inputmode="numeric"
+        maxlength="1"
         pattern="\\d*"
         type="text"
         value=""
@@ -5796,6 +5800,7 @@ input[readonly] {
         aria-label="4-4"
         autocomplete="one-time-code"
         inputmode="numeric"
+        maxlength="1"
         pattern="\\d*"
         type="text"
         value=""
