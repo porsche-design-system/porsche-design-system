@@ -401,12 +401,15 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/\{\{ 'input-container': true, disabled: this.props.disabled }}/, "'input-container'")
           // replace color prop
           .replace(/\s*color=\{this.props.disabled \? 'state-disabled' : 'primary'}\s*/, '')
+          // Replace placeholder
+          .replace(/(?<=placeholder=\{)[^}]+/, '""')
           // replace toggle icon className
           .replace(
             /className=\{\{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this.props.isOpen }}/,
             "className='icon toggle-icon'"
           )
-          .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue');
+          .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
+          .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
           .replace(/(\{ MultiSelectOptionInternalHTMLProps)/, 'type $1')
