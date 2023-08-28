@@ -24,7 +24,7 @@ import type { FormState } from '../../../utils/form/form-state';
 import { getLabelStyles, INPUT_HEIGHT } from '../../../styles/form-styles';
 import { SelectDropdownDirectionInternal } from '../../../utils';
 import { getPlaceholderJssStyle } from '../../../styles/placeholder';
-import { getNoResultsOptionJssStyles, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/select/option-styles';
+import { getNoResultsOptionJssStyle, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/select/option-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
@@ -121,7 +121,7 @@ export const getComponentCss = (
       padding: `${spacingStaticSmall} 12px`,
       color: contrastHighColor,
       boxSizing: 'border-box',
-      ...getNoResultsOptionJssStyles(),
+      ...getNoResultsOptionJssStyle(),
     },
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
