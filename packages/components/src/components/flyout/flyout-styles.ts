@@ -1,4 +1,4 @@
-import { getCss, isThemeDark, type Theme } from '../../utils';
+import { getCss, isThemeDark, scrollShadowColor, scrollShadowColorDark, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
   getFrostedGlassBackgroundJssStyles,
@@ -11,8 +11,6 @@ import { FLYOUT_Z_INDEX } from '../../constants';
 import { spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import type { FlyoutPosition } from './flyout-utils';
 
-export const flyoutBoxShadowColor = 'rgba(204, 204, 204, 0.35)';
-export const flyoutBoxShadowColorDark = 'rgba(0, 0, 0, 0.6)';
 export const headerShadowClass = 'header--shadow';
 export const footerShadowClass = 'footer--shadow';
 
@@ -35,8 +33,9 @@ export const getComponentCss = (
   const { contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
   const isPositionLeft = position === 'left';
   const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidLarge}`;
-  const shadowColor = isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor;
-  const transparentColor = isThemeDark(theme) ? 'rgba(14, 14, 18, 0)' : 'rgba(255, 255, 255, 0)';
+  const isDark = isThemeDark(theme);
+  const shadowColor = isDark ? scrollShadowColorDark : scrollShadowColor;
+  const transparentColor = isDark ? 'rgba(14, 14, 18, 0)' : 'rgba(255, 255, 255, 0)';
 
   return getCss({
     '@global': addImportantToEachRule({
@@ -66,9 +65,10 @@ export const getComponentCss = (
       background: backgroundColor,
       position: 'sticky',
       top: 0,
+      zIndex: 1,
     },
-    [`${headerShadowClass}`]: {
-      boxShadow: `${isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px 5px 10px`,
+    [headerShadowClass]: {
+      boxShadow: `${isDark ? scrollShadowColorDark : scrollShadowColor} 0px 5px 10px`,
     },
     ...(hasHeader && {
       'header-content': {
@@ -113,6 +113,8 @@ export const getComponentCss = (
     },
     content: {
       padding: contentPadding,
+      position: 'relative',
+      zIndex: 0,
       // If sub-footer is used scroll shadows have to be done via JS
       ...(!hasSubFooter && {
         overflowY: 'auto',
@@ -130,14 +132,15 @@ export const getComponentCss = (
         background: backgroundColor,
         padding: contentPadding,
         position: 'sticky',
+        zIndex: 1,
         bottom: 0,
       },
-      [`${footerShadowClass}`]: {
-        boxShadow: `${isThemeDark(theme) ? flyoutBoxShadowColorDark : flyoutBoxShadowColor} 0px -5px 10px`,
+      [footerShadowClass]: {
+        boxShadow: `${isDark ? scrollShadowColorDark : scrollShadowColor} 0px -5px 10px`,
       },
     }),
     ...(hasSubFooter && {
-      ['sub-footer']: {
+      'sub-footer': {
         padding: contentPadding,
       },
     }),

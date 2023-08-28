@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.35.1-focal
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.37.1-focal
 jobs:
   components-unit:
     name: 'Components Unit'
@@ -63,6 +63,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-js-prod
+      - name: 'Unit Test Components Manager CLI'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --components-js:components-manager-cli
       - name: 'Unit Test Components Wrapper'
         uses: ./.github/actions/docker-run-playwright
         with:

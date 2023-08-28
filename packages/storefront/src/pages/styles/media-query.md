@@ -31,19 +31,15 @@ JavaScript styles can be imported by
 - `breakpointL`
 - `breakpointXL`
 - `breakpointXXL`
-- `getMediaQueryMin('base'|'xs'|'s'|'m' |'l'|'xl'|'xxl')`
-- `getMediaQueryMax('xs'|'s'|'m' |'l'|'xl'|'xxl')`
-- `getMediaQueryMinMax('base'|'xs'|'s'|'m' |'l'|'xl', 'xs'|'s'|'m' |'l'|'xl'|'xxl')`
+- `getMediaQueryMin('base'|'xs'|'s'|'m'|'l'|'xl'|'xxl')`
+- `getMediaQueryMax('xs'|'s'|'m'|'l'|'xl'|'xxl')`
+- `getMediaQueryMinMax('base'|'xs'|'s'|'m'|'l'|'xl', 'xs'|'s'|'m'|'l'|'xl'|'xxl')`
 
 ---
 
 #### SCSS
 
-SCSS styles can be imported by `@use '@porsche-design-system/components-js/styles' as *;`
-
-<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
- At the moment, importing SCSS styles is only possible from `@porsche-design-system/components-js` npm package.
-</p-inline-notification>
+SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
 
 - `$pds-breakpoint-base`
 - `$pds-breakpoint-xs`
@@ -52,9 +48,9 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-js/style
 - `$pds-breakpoint-l`
 - `$pds-breakpoint-xl`
 - `$pds-breakpoint-xxl`
-- `@mixin pds-media-query-min('base'|'xs'|'s'|'m' |'l'|'xl'|'xxl')`
-- `@mixin pds-media-query-max('xs'|'s'|'m' |'l'|'xl'|'xxl')`
-- `@mixin pds-media-query-min-max('base'|'xs'|'s'|'m' |'l'|'xl', 'xs'|'s'|'m' |'l'|'xl'|'xxl')`
+- `@mixin pds-media-query-min('base'|'xs'|'s'|'m'|'l'|'xl'|'xxl')`
+- `@mixin pds-media-query-max('xs'|'s'|'m'|'l'|'xl'|'xxl')`
+- `@mixin pds-media-query-min-max('base'|'xs'|'s'|'m'|'l'|'xl', 'xs'|'s'|'m'|'l'|'xl'|'xxl')`
 
 <script lang="ts">
 import Vue from 'vue';

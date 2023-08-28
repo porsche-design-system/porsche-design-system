@@ -2,8 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { camelCase, capitalCase, paramCase, pascalCase } from 'change-case';
-import { AngularCharacteristics, convertToAngularVRTPage } from './convertToAngularVRTPage';
-import { convertToReactVRTPage, ReactCharacteristics } from './convertToReactVRTPage';
+import { type AngularCharacteristics, convertToAngularVRTPage } from './convertToAngularVRTPage';
+import { convertToReactVRTPage, type ReactCharacteristics } from './convertToReactVRTPage';
 import { convertToNextJsVRTPage } from './convertToNextJsVRTPage';
 import { convertToRemixVRTPage } from './convertToRemixVRTPage';
 
@@ -15,10 +15,10 @@ const PAGES_WITHOUT_ROUTE: string[] = ['core-initializer', 'overview', 'overview
 type Framework = 'angular' | 'react' | 'nextjs' | 'remix';
 
 const rootDirectory = path.resolve(__dirname, '..');
-const pagesDirectories: { [key in Framework]: string } = {
-  angular: path.resolve(rootDirectory, '../components-angular/src/app/pages'),
-  react: path.resolve(rootDirectory, '../components-react/src/pages'),
-  nextjs: path.resolve(rootDirectory, '../components-react/projects/nextjs/pages'),
+const pagesDirectories: Record<Framework, string> = {
+  angular: path.resolve(rootDirectory, '../components-angular/src/app/pages/generated'),
+  react: path.resolve(rootDirectory, '../components-react/src/pages/generated'),
+  nextjs: path.resolve(rootDirectory, '../components-react/projects/nextjs/app'),
   remix: path.resolve(rootDirectory, '../components-react/projects/remix/app/routes'),
 };
 
@@ -55,7 +55,8 @@ const writeFile = (filePath: string, content: string): void => {
   console.log(`- Generated ${filePath.replace(path.resolve(rootDirectory, '..'), '')}`);
 };
 
-const normalizeImportPath = (input: string): string => paramCase(input.replace('.component', ''));
+const normalizeImportPath = (input: string): string =>
+  paramCase(input.replace('.component', '').replace('generated/', ''));
 const isPageWithoutRoute = (importPath: string): boolean =>
   PAGES_WITHOUT_ROUTE.includes(normalizeImportPath(importPath));
 
@@ -66,32 +67,39 @@ const getRoutes = (importPaths: string[], framework: Framework): string => {
   return (
     importPaths
       .filter((importPath) => !isPageWithoutRoute(importPath))
-      .map(normalizeImportPath)
-      .sort(byAlphabet)
-      .map((importPath) =>
-        [
+      // temporary map to tuple with normalized importPath for sorting
+      .map((importPath) => [importPath, normalizeImportPath(importPath)])
+      .sort(([_, normalizedImportPathA], [__, normalizedImportPathB]) =>
+        byAlphabet(normalizedImportPathA, normalizedImportPathB)
+      )
+      // map it back to importPath only
+      .map(([importPath]) => importPath)
+      .map((importPath) => {
+        const { name } = path.parse(importPath);
+        return [
           '{',
           ...[
-            `name: '${capitalCase(importPath)}'`,
-            `path: '${pathPrefix}${importPath}'`,
-            isAngular ? `component: ${pascalCase(importPath)}Component` : `element: <${pascalCase(importPath)}Page />`,
+            `name: '${capitalCase(name)}'`,
+            `path: '${pathPrefix}${normalizeImportPath(importPath)}'`,
+            isAngular ? `component: ${pascalCase(name)}Component` : `element: <${pascalCase(name)}Page />`,
           ].map((x) => `  ${x},`),
           '}',
         ]
           .map((x) => `  ${x}`)
-          .join('\n')
-      )
+          .join('\n');
+      })
       .join(',\n') + ','
   );
 };
 
 const getImportsAndExports = (importPaths: string[], framework: Framework): string => {
   const isAngular = framework === 'angular';
-  const componentSuffix = isAngular ? '' : 'Page';
+  const componentSuffix = isAngular ? 'Component' : 'Page';
 
   return importPaths
     .map((importPath) => {
-      const componentImport = `import { ${pascalCase(importPath)}${componentSuffix} } from '${importPath}';`;
+      const { name } = path.parse(importPath);
+      const componentImport = `import { ${pascalCase(name)}${componentSuffix} } from '${importPath}';`;
       return isPageWithoutRoute(importPath)
         ? [`export * from '${importPath}';`, ...(isAngular ? [`${componentImport}`] : [])]
         : [componentImport];
@@ -103,6 +111,12 @@ const getImportsAndExports = (importPaths: string[], framework: Framework): stri
 
 const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, string>, framework: Framework): void => {
   console.log(`Generating VRT pages for ${framework}`);
+
+  const hasGeneratedSubFolder = !!pagesDirectories[framework].match(/\/generated$/);
+  if (hasGeneratedSubFolder) {
+    fs.rmSync(pagesDirectories[framework], { force: true, recursive: true });
+    fs.mkdirSync(pagesDirectories[framework]);
+  }
 
   const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
@@ -177,9 +191,16 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
           ? convertToRemixVRTPage(...baseParams, reactCharacteristics)
           : { fileName: '', fileContent: '' };
 
-      writeFile(path.resolve(pagesDirectories[framework], convertedFileName), convertedFileContent);
+      const targetFilePath = path.resolve(pagesDirectories[framework], convertedFileName);
+      if (framework === 'nextjs') {
+        const { dir: componentDir } = path.parse(targetFilePath);
+        fs.rmSync(componentDir, { force: true, recursive: true });
+        fs.mkdirSync(componentDir);
+      }
 
-      return './' + path.parse(convertedFileName).name;
+      writeFile(targetFilePath, convertedFileContent);
+      const { dir, name } = path.parse(convertedFileName);
+      return (hasGeneratedSubFolder ? './generated/' : './') + (dir ? dir : name);
     })
     .sort(byAlphabet);
 
@@ -197,7 +218,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
     frameworkImports = [separatorStart, importsAndExports].join('\n');
     frameworkRoutes = `export const generatedPages = [
   ${importPaths
-    .map((importPath) => pascalCase(importPath))
+    .map((importPath) => pascalCase(importPath.replace('generated/', '')))
     .sort(byAlphabet)
     .join(',\n  ')},
 ];
@@ -219,11 +240,15 @@ export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
     )};`;
     // no imports needed, but we want to inject the routes at the beginning
     frameworkRoutes = [separatorStart, frameworkRoutes, separatorEnd].join('\n');
-    barrelFileName = '../routes.ts';
+    barrelFileName = 'routes.ts';
   }
 
   if (barrelFileName) {
-    const barrelFilePath = path.resolve(pagesDirectories[framework], barrelFileName);
+    const barrelFilePath = path.resolve(
+      pagesDirectories[framework],
+      hasGeneratedSubFolder || framework === 'nextjs' ? '..' : '',
+      barrelFileName
+    );
     const barrelFileContent = fs.readFileSync(barrelFilePath, 'utf8');
     const newBarrelFileContent =
       (framework === 'nextjs'

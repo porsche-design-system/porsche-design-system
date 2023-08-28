@@ -29,6 +29,8 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
   const isIifeBuild = format === 'iife';
   const isEsmBuild = format === 'esm';
 
+  const distDireactory = path.resolve(getProjectRootPath(), targetDirectory);
+
   const finalConfig: webpack.Configuration = {
     entry: tempEntryPointFilePath,
     ...(isEsmBuild && {
@@ -36,17 +38,28 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
         outputModule: true,
       },
     }),
-    output: {
-      path: path.resolve(getProjectRootPath(), targetDirectory, isEsmBuild ? 'esm' : ''),
-      filename: 'index.js',
-      ...(isEsmBuild
-        ? { libraryTarget: 'module' } // esm build for vue
-        : {
-            ...(isIifeBuild ? { iife: true } : { libraryTarget: 'umd' }), // iife build for getLoaderScript partial, umd build for "old" npm package
-            library: 'porscheDesignSystem', // needs to be same as CM_KEY
-            globalObject: "typeof self !== 'undefined' ? self : this",
-          }),
-    },
+    output: isIifeBuild // iife build for getLoaderScript partial
+      ? {
+          path: distDireactory,
+          filename: 'index.js',
+          iife: true,
+          library: 'porscheDesignSystem', // needs to be same as CM_KEY
+          globalObject: "typeof self !== 'undefined' ? self : this",
+        }
+      : isEsmBuild // esm build for vue
+      ? {
+          path: `${distDireactory}/esm`,
+          filename: 'index.mjs',
+          libraryTarget: 'module',
+        }
+      : // umd build for "old" npm package
+        {
+          path: `${distDireactory}/cjs`,
+          filename: 'index.cjs', // is copied and renamed to index.js for vanilla-js integration
+          libraryTarget: 'umd',
+          library: 'porscheDesignSystem', // needs to be same as CM_KEY
+          globalObject: "typeof self !== 'undefined' ? self : this",
+        },
     // great for debugging:
     // https://browsersl.ist/#q=%3E+0.5%25+and+last+2+versions%2C+not+dead%2C+not+op_mini+all%2C+not+opera+%3E+0%2C+not+Samsung+%3E+0%2C+not+and_uc+%3E+0
     target:

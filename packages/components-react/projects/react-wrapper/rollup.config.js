@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 import resolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import bin from 'rollup-plugin-bin';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
 
@@ -42,34 +43,26 @@ const onwarn = (warning, warn) => {
   }
 };
 
+const sharedPlugins = [
+  replace({
+    preventAssignment: true,
+    'process.browser': true, // normal react project doesn't have process defined or process.browser replaced, so we need to remove it
+  }),
+  preserveDirectives.default(),
+  resolve(),
+];
+
 export default [
   {
     input,
     external,
     output: {
-      dir: outputDir,
+      dir: `${outputDir}/cjs`,
       format: 'cjs',
+      entryFileNames: '[name].cjs',
       preserveModules: true,
     },
-    plugins: [
-      preserveDirectives.default(),
-      resolve(),
-      typescript({
-        ...typescriptOpts,
-        declaration: true,
-        declarationDir: outputDir,
-        rootDir: 'src',
-      }),
-      copy({
-        targets: [
-          { src: `${rootDir}/LICENSE`, dest: outputDir },
-          { src: `${rootDir}/OSS_NOTICE`, dest: outputDir },
-          { src: `${projectDir}/README.md`, dest: outputDir },
-          { src: `${projectDir}/package.json`, dest: outputDir },
-          { src: '../components/CHANGELOG.md', dest: outputDir },
-        ],
-      }),
-    ],
+    plugins: [...sharedPlugins, typescript(typescriptOpts)],
     onwarn,
   },
   {
@@ -78,62 +71,145 @@ export default [
     output: {
       dir: `${outputDir}/esm`,
       format: 'esm',
+      entryFileNames: '[name].mjs',
       preserveModules: true,
     },
-    plugins: [preserveDirectives.default(), resolve(), typescript(typescriptOpts)],
+    plugins: [
+      ...sharedPlugins,
+      typescript({ ...typescriptOpts, declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
+      copy({
+        targets: [
+          {
+            src: [
+              `${rootDir}/LICENSE`,
+              `${rootDir}/OSS_NOTICE`,
+              `${projectDir}/README.md`,
+              '../components/CHANGELOG.md',
+            ],
+            dest: outputDir,
+          },
+        ],
+      }),
+      generatePackageJson({
+        inputFolder: 'projects/react-wrapper', // defaults to current working directory, which is the wrong one
+        outputFolder: outputDir,
+        baseContents: (pkg) => ({
+          ...pkg,
+          exports: {
+            './package.json': './package.json',
+            '.': {
+              types: './esm/public-api.d.ts',
+              import: './esm/public-api.mjs',
+              default: './cjs/public-api.cjs',
+            },
+            './jsdom-polyfill': {
+              types: './jsdom-polyfill/index.d.ts',
+              default: './jsdom-polyfill/index.cjs',
+            },
+            './partials': {
+              types: './partials/index.d.ts',
+              module: './partials/index.js', // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
+              default: './partials/index.cjs',
+            },
+            './ssr': {
+              types: './ssr/esm/public-api.d.ts',
+              import: './ssr/esm/components-react/projects/react-ssr-wrapper/src/public-api.mjs',
+              default: './ssr/cjs/components-react/projects/react-ssr-wrapper/src/public-api.cjs',
+            },
+            './styles': {
+              sass: './styles/_index.scss',
+              types: './styles/esm/index.d.ts',
+              import: './styles/esm/index.mjs',
+              default: './styles/cjs/index.cjs',
+            },
+            './testing': {
+              types: './testing/index.d.ts',
+              default: './testing/index.cjs',
+            },
+          },
+        }),
+      }),
+    ],
     onwarn,
   },
   {
     input: `${projectDir}/src/jsdom-polyfill/index.ts`,
     external,
     output: {
-      file: `${outputDir}/jsdom-polyfill/index.js`,
+      file: `${outputDir}/jsdom-polyfill/index.cjs`,
       format: 'cjs',
     },
-    plugins: [typescript(typescriptOpts)],
+    plugins: [
+      // typings are produced by main build
+      typescript(typescriptOpts),
+      generatePackageJson({
+        baseContents: {
+          main: 'index.cjs',
+          types: 'index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
   },
   {
-    // typings are produced by main build
     input: `${projectDir}/src/testing/index.ts`,
     external,
     output: {
-      file: `${outputDir}/testing/index.js`,
+      file: `${outputDir}/testing/index.cjs`,
       format: 'cjs',
     },
-    plugins: [typescript(typescriptOpts)],
+    plugins: [
+      // typings are produced by main build
+      typescript(typescriptOpts),
+      generatePackageJson({
+        baseContents: {
+          main: 'index.cjs',
+          types: 'index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
   },
   {
-    // typings are produced by main build
     input: `${projectDir}/src/partials/index.ts`,
     external,
-    output: [
-      {
-        file: `${outputDir}/partials/index.js`,
-        format: 'cjs',
-        plugins: [generatePackageJson(subPackageJsonConfig)],
-      },
-      {
-        file: `${outputDir}/partials/esm/index.js`,
-        format: 'esm',
-      },
+    output: {
+      file: `${outputDir}/partials/index.cjs`,
+      format: 'cjs',
+    },
+    plugins: [
+      // typings are produced by main build
+      typescript(typescriptOpts),
+      generatePackageJson({
+        baseContents: {
+          main: 'index.cjs',
+          module: 'index.js', // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
+          types: 'index.d.ts',
+          sideEffects: false,
+        },
+      }),
+      copy({
+        // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
+        targets: [{ src: `${outputDir}/partials/index.cjs`, dest: `${outputDir}/partials`, rename: () => 'index.js' }],
+        hook: 'writeBundle',
+      }),
     ],
-    plugins: [typescript(typescriptOpts)],
   },
   {
     input: `${projectDir}/src/styles/index.ts`,
     external,
     output: [
       {
-        file: `${outputDir}/styles/index.js`,
+        file: `${outputDir}/styles/cjs/index.cjs`,
         format: 'cjs',
-        plugins: [generatePackageJson(subPackageJsonConfig)],
       },
       {
-        file: `${outputDir}/styles/esm/index.js`,
+        file: `${outputDir}/styles/esm/index.mjs`,
         format: 'esm',
       },
     ],
     plugins: [
+      // typings are produced by main build
       typescript(typescriptOpts),
       copy({
         targets: [
@@ -142,6 +218,15 @@ export default [
             dest: `${outputDir}/styles`,
           },
         ],
+      }),
+      generatePackageJson({
+        outputFolder: `${outputDir}/styles`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
       }),
     ],
   },

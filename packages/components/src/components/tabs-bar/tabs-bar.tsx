@@ -1,11 +1,11 @@
-import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  getHTMLElements,
+  getOnlyChildrenOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   getScrollActivePosition,
+  getShadowRootHTMLElement,
   hasPropValueChanged,
   isShadowRootParentOfKind,
   observeBreakpointChange,
@@ -13,7 +13,6 @@ import {
   setAttribute,
   THEMES,
   unobserveBreakpointChange,
-  unobserveChildren,
   validateProps,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
@@ -36,8 +35,7 @@ import {
   TABS_BAR_WEIGHTS,
 } from './tabs-bar-utils';
 import { getComponentCss, scrollerAnimatedCssClass } from './tabs-bar-styles';
-import type { ScrollerDirection } from '../scroller/scroller-utils';
-import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS } from '../scroller/scroller-utils';
+import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS, type ScrollerDirection } from '../scroller/scroller-utils';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabsBarSize>(TABS_BAR_SIZES),
@@ -89,9 +87,16 @@ export class TabsBar {
   private scrollerElement: HTMLPScrollerElement;
   private direction: ScrollerDirection = 'next';
   private hasPTabsParent: boolean;
+  private areTabsButtons: boolean;
 
   @Watch('activeTabIndex')
   public activeTabIndexHandler(newValue: number, oldValue: number): void {
+    // in Angular, when chunk is already loaded and component is rendered almost identical after navigation
+    // (or with hot reloading in stackblitz) this watcher is called between `connectedCallback` and `componentDidLoad`
+    // this resets `this.activeTabIndex` to undefined when `this.tabElements = []`
+    // https://github.com/porsche-design-system/porsche-design-system/issues/2674
+    this.setTabElements();
+
     this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
     this.direction = this.activeTabIndex > oldValue || oldValue === undefined ? 'next' : 'prev';
     this.setBarStyle();
@@ -100,31 +105,38 @@ export class TabsBar {
 
   public connectedCallback(): void {
     this.hasPTabsParent = isShadowRootParentOfKind(this.host, 'p-tabs');
-    this.setTabElements();
-    this.observeBreakpointChange();
+    this.observeBreakpointChange(); // on reconnect
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    // TODO: validation of active element index inside of tabs bar!
-    // TODO: why not do this in connectedCallback?
+  public componentWillLoad(): void {
+    this.setTabElements();
     this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
+  }
+
+  public componentDidLoad(): void {
     this.scrollActiveTabIntoView(false);
-    this.observeBreakpointChange();
+    this.observeBreakpointChange(); // initially or slow prop binding
+
+    // TODO: would be great to use this in jsx but that doesn't work reliable or triggers initially when component is rendered via framework
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
+      this.setTabElements();
+      this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
+      this.setBarStyle();
+    });
   }
 
   public disconnectedCallback(): void {
     unobserveBreakpointChange(this.host);
-    unobserveChildren(this.host);
   }
 
   public componentDidRender(): void {
     // 1 tick delay to prevent transition
     window.requestAnimationFrame(() => {
-      this.scrollerElement.classList[this.activeTabIndex !== undefined ? 'add' : 'remove'](scrollerAnimatedCssClass);
+      this.scrollerElement.classList.toggle(scrollerAnimatedCssClass, this.activeTabIndex !== undefined);
     });
   }
 
@@ -153,7 +165,7 @@ export class TabsBar {
     return (
       <PrefixedTagNames.pScroller
         class="scroller"
-        aria={{ role: 'tablist' }}
+        {...(this.areTabsButtons && { aria: { role: 'tablist' } })}
         theme={this.theme}
         gradientColorScheme={this.gradientColorScheme}
         gradientColor={this.gradientColor}
@@ -162,25 +174,24 @@ export class TabsBar {
         onClick={this.onClick}
         onKeyDown={this.onKeydown}
       >
-        <slot onSlotchange={this.onSlotchange} />
+        <slot />
         <span class="bar" ref={(el) => (this.barElement = el)} />
       </PrefixedTagNames.pScroller>
     );
   }
 
-  private onSlotchange = (): void => {
-    this.setTabElements();
-    this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
-    this.setBarStyle();
-  };
-
   private setAccessibilityAttributes = (): void => {
     this.tabElements.forEach((tab, index) => {
-      const attrs = {
-        role: 'tab',
-        tabindex: (this.activeTabIndex || 0) === index ? '0' : '-1',
-        'aria-selected': this.activeTabIndex === index ? 'true' : 'false',
-      };
+      const attrs = this.areTabsButtons
+        ? {
+            role: 'tab',
+            tabindex: (this.activeTabIndex || 0) === index ? '0' : '-1',
+            'aria-selected': this.activeTabIndex === index ? 'true' : 'false',
+          }
+        : {
+            'aria-current': this.activeTabIndex === index ? 'true' : 'false',
+          };
+
       /* eslint-disable-next-line guard-for-in */
       for (const key in attrs) {
         setAttribute(tab, key, attrs[key] as string);
@@ -189,7 +200,8 @@ export class TabsBar {
   };
 
   private setTabElements = (): void => {
-    this.tabElements = getHTMLElements(this.host, 'a,button');
+    this.tabElements = getOnlyChildrenOfKindHTMLElementOrThrow(this.host, 'a,button');
+    this.areTabsButtons = this.tabElements[0]?.tagName === 'BUTTON';
   };
 
   private onClick = (e: MouseEvent): void => {

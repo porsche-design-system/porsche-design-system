@@ -12,7 +12,10 @@ beforeEach(async () => {
 
 afterEach(async () => await page.close());
 
-const filePath = path.resolve(require.resolve('@porsche-design-system/components-vue'), '../../../src/router/index.ts');
+const filePath = path.resolve(
+  require.resolve('@porsche-design-system/components-vue'),
+  '../../../../src/router/index.ts'
+);
 const fileContent = fs.readFileSync(filePath, 'utf8');
 
 const [, rawRoutes] = /const routes.*(\[[\s\S]*\]);/.exec(fileContent) || [];

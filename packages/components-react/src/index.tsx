@@ -9,7 +9,7 @@ const root = createRoot(document.getElementById('root')!);
 root.render(
   <StrictMode>
     <Router>
-      <PorscheDesignSystemProvider>
+      <PorscheDesignSystemProvider cdn="auto">
         <App />
       </PorscheDesignSystemProvider>
     </Router>

@@ -3,8 +3,7 @@ import { render } from '@testing-library/react';
 import * as fromComponents from '../../../src/lib/components';
 import { PorscheDesignSystemProvider } from '../../../src/provider';
 import * as minifyCssUtils from '../../../src/minifyCss';
-import type { TagName } from '@porsche-design-system/shared';
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { paramCase, pascalCase } from 'change-case';
 import Link from 'next/link';
@@ -141,6 +140,14 @@ describe('manual test cases', () => {
           <fromComponents.PTabsItem label="Tab 1" />
           <fromComponents.PTabsItem label="Tab 2" />
         </fromComponents.PTabs>
+      ),
+    ],
+    'p-tabs-bar': [
+      () => (
+        <fromComponents.PTabsBar activeTabIndex={1}>
+          <a href="#">Item 1</a>
+          <a href="#">Item 2</a>
+        </fromComponents.PTabsBar>
       ),
     ],
     'p-text-list-item': [

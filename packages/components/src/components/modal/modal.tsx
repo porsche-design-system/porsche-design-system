@@ -4,10 +4,11 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  getShadowRootHTMLElement,
   hasNamedSlot,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
+  setFocusTrap,
+  setScrollLock,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -17,9 +18,8 @@ import {
   warnIfAriaAndHeadingPropsAreUndefined,
   clickStartedInScrollbarTrack,
 } from './modal-utils';
-import { getComponentCss } from './modal-styles';
-import { setFocusTrap } from '../../utils/focusTrap';
-import { setScrollLock } from '../../utils/scrollLock';
+import { footerShadowClass, getComponentCss } from './modal-styles';
+import { throttle } from 'throttle-debounce';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -72,6 +72,8 @@ export class Modal {
   private focusedElBeforeOpen: HTMLElement;
   private dismissBtn: HTMLElement;
   private hasHeader: boolean;
+  private hasFooter: boolean;
+  private footer: HTMLElement;
   private dialog: HTMLElement;
 
   private get hasDismissButton(): boolean {
@@ -81,7 +83,6 @@ export class Modal {
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
     this.updateFocusTrap(isOpen);
-    setScrollLock(isOpen);
 
     if (isOpen) {
       this.focusedElBeforeOpen = document.activeElement as HTMLElement;
@@ -98,18 +99,7 @@ export class Modal {
     // in case modal is rendered with open prop
     if (this.open) {
       this.updateFocusTrap(true);
-      setScrollLock(true);
     }
-
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
-      if (this.open) {
-        // 1 tick delay is needed so that web components can be bootstrapped
-        setTimeout(() => {
-          this.updateFocusTrap(true);
-          this.dialog.focus(); // set initial focus
-        });
-      }
-    });
   }
 
   public componentDidRender(): void {
@@ -118,13 +108,15 @@ export class Modal {
       for (let i = 0; i < 4; i++) {
         setTimeout(() => (this.host.scrollTop = 0), i * 5);
       }
+      if (this.hasFooter) {
+        this.onScroll();
+      }
       this.dialog.focus(); // needs to happen after render
     }
   }
 
   public disconnectedCallback(): void {
-    setFocusTrap(this.host, false);
-    setScrollLock(false);
+    this.updateFocusTrap(false);
   }
 
   public render(): JSX.Element {
@@ -134,12 +126,22 @@ export class Modal {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
     }
     this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
-    attachComponentCss(this.host, getComponentCss, this.open, this.fullscreen, this.hasDismissButton, this.hasHeader);
+    this.hasFooter = hasNamedSlot(this.host, 'footer');
+
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.open,
+      this.fullscreen,
+      this.hasDismissButton,
+      this.hasHeader,
+      this.hasFooter
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown}>
+      <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown} onScroll={this.hasFooter && this.onScroll}>
         <div
           class="root"
           role="dialog"
@@ -167,7 +169,14 @@ export class Modal {
           {this.hasHeader && (
             <div class="header">{this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}</div>
           )}
-          <slot />
+          <div class="content">
+            <slot onSlotchange={this.onSlotChange} />
+          </div>
+          {this.hasFooter && (
+            <div class="footer" ref={(el) => (this.footer = el)}>
+              <slot name="footer" />
+            </div>
+          )}
         </div>
       </Host>
     );
@@ -175,7 +184,35 @@ export class Modal {
 
   private updateFocusTrap(isOpen: boolean): void {
     setFocusTrap(this.host, isOpen, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
+    setScrollLock(isOpen);
   }
+
+  private onSlotChange = (): void => {
+    if (this.open) {
+      // 1 tick delay is needed so that web components can be bootstrapped
+      setTimeout(() => {
+        this.updateFocusTrap(true);
+        this.dialog.focus(); // set initial focus
+      });
+    }
+  };
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  private onScroll = throttle(100, () => {
+    // using an intersection observer would be so much easier but very tricky with the current layout
+    // also transform scale3d has an impact on the intersection observer, causing it to trigger
+    // initially and after the transition which makes the shadow appear later
+    // using an invisible element after the dialog div would work
+    // but layout with position: fixed and flex for vertical/horizontal centering scrollable content
+    // causes tons of problems, also considering fullscreen mode, etc.
+    // see https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
+    const { scrollHeight, clientHeight, scrollTop } = this.host;
+    if (scrollHeight > clientHeight) {
+      const shouldApplyShadow =
+        scrollHeight - clientHeight > scrollTop + parseInt(getComputedStyle(this.dialog).marginBottom, 10);
+      this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
+    }
+  });
 
   private onMouseDown = (e: MouseEvent): void => {
     if ((e.composedPath() as HTMLElement[])[0] === this.host && !clickStartedInScrollbarTrack(this.host, e)) {

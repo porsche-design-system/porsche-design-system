@@ -16,11 +16,11 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Roadmap: [() => import('@/pages/news/roadmap.md')],
   },
-  'Designing': {
+  Designing: {
     // @ts-ignore
     Introduction: [() => import('@/pages/designing/introduction.md')],
   },
-  'Developing': {
+  Developing: {
     // @ts-ignore
     Introduction: [() => import('@/pages/developing/introduction.md')],
     'Vanilla Js': {
@@ -376,7 +376,7 @@ export const config: StorefrontConfig = {
           import(
             // @ts-ignore
             '@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'
-            ),
+          ),
       ],
     },
     Spinner: {
@@ -573,11 +573,11 @@ export const config: StorefrontConfig = {
     },
   },
   'Must Know': {
-    'Accessibility': {
+    Accessibility: {
       // @ts-ignore
       Introduction: [() => import('@/pages/must-know/accessibility/introduction.md')],
       // @ts-ignore
-      Statement: [() => import('@/pages/must-know/accessibility/statement.md')]
+      Statement: [() => import('@/pages/must-know/accessibility/statement.md')],
     },
     // @ts-ignore
     Security: [() => import('@/pages/must-know/security.md')],
@@ -591,6 +591,8 @@ export const config: StorefrontConfig = {
     'Browser Compatibility': [() => import('@/pages/must-know/browser-compatibility.md')],
     // @ts-ignore
     Versioning: [() => import('@/pages/must-know/versioning.md')],
+    // @ts-ignore
+    'Definition Of Done': [() => import('@/pages/must-know/definition-of-done.md')],
   },
   Help: {
     // @ts-ignore

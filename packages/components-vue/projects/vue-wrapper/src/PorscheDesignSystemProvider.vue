@@ -3,12 +3,18 @@
   import { provide } from 'vue';
   import { prefixInjectionKey } from './utils';
 
-  const props = withDefaults(defineProps<{ prefix?: string }>(), {
+  type Props = {
+    prefix?: string;
+    cdn?: 'auto' | 'cn';
+  };
+
+  const props = withDefaults(defineProps<Props>(), {
     prefix: '',
   });
 
-  load({ prefix: props.prefix });
-  provide(prefixInjectionKey, props.prefix);
+  // no need for reactivity to be in sync with Angular and React
+  load(props); // runtime prefix or cdn change is not supported
+  provide(prefixInjectionKey, props.prefix); // eslint-disable-line vue/no-setup-props-destructure
 </script>
 
 <template><slot /></template>

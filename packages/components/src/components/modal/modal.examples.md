@@ -97,6 +97,13 @@ attribute.
 
 <Playground :markup="withoutDismissButton"></Playground>
 
+## Sticky Footer
+
+If you need a footer that is always visible, for example with a call-to-action button, you can use a named 
+`slot="footer"`.
+
+<Playground :markup="stickyFooter"></Playground>
+
 ## Full Width Content
 
 It is possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by adding the
@@ -211,6 +218,13 @@ export default class Code extends Vue {
   <p-text>Some Content</p-text>
 </p-modal>`;
 
+  stickyFooter =
+    `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+<p-modal heading="Some Heading" fullscreen="{ base: true, s: false }" open="false">
+  <p-text style="height: 110vh">Some Content</p-text>
+  <p-text slot="footer">Sticky footer</p-text>
+</p-modal>`;
+
   fullWidthContent =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
@@ -221,16 +235,12 @@ export default class Code extends Vue {
 
   fullscreen =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal heading="Some Heading" open="false" fullscreen="{ base: true, s: false }">
-  <p-flex direction="column" class="fullscreen-container">
-    <p-flex-item grow="1">
-      <p-text>Some Content</p-text>
-    </p-flex-item>
-    <p-button-group class="footer">
-      <p-button>Save</p-button>
-      <p-button type="button" variant="secondary" icon="close">Close</p-button>
-    </p-button-group>
-  </p-flex>
+<p-modal heading="Some Heading" fullscreen="{ base: true, s: false }" open="false">
+  <p-text>Some Content</p-text>
+  <p-button-group class="footer">
+    <p-button type="button">Save</p-button>
+    <p-button type="button" variant="secondary">Close</p-button>
+  </p-button-group>
 </p-modal>`;
 
   openModal(index: number): void {
@@ -248,8 +258,5 @@ export default class Code extends Vue {
 
   :deep(.footer) {  
     padding: 2rem 0 0;
-  }
-  :deep(.fullscreen-container) {
-    flex: 1;
   }
 </style>

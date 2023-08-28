@@ -4,19 +4,18 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as sass from 'sass';
-import * as prettier from 'prettier';
+import { format } from 'prettier';
 import styled, { StyleSheetManager } from 'styled-components';
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
 import { getFocusStyle, headingMediumStyle } from '../../../src/js';
 import { createUseStyles } from 'react-jss';
 
-const formatAndNeutralizeStyle = (style: string): string => {
+const formatAndNeutralizeStyle = async (style: string): Promise<string> => {
   const STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME: string = 'kKdgGY';
 
   const classRegExp = new RegExp(`(.${STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME} )`, 'g');
-  style = prettier.format(style, { parser: 'scss' });
+  style = await format(style, { parser: 'scss' });
   return style
     .replace(classRegExp, '.') // removes random class name from styled-components
     .replace(/(-[0-9]){3}/g, '') // removes random class name suffix from react-jss
@@ -43,7 +42,7 @@ beforeEach(() => {
 
 // TODO: not necessary anymore since we have VRT test for both implementations
 // TODO: re-enable frostedGlass test to ensure forced vendor prefixing
-xit('should have equal styles for styled-components and jss', () => {
+xit('should have equal styles for styled-components and jss', async () => {
   const SampleStyles = styled.div({
     focus: getFocusStyle(),
     heading: headingMediumStyle,
@@ -56,11 +55,11 @@ xit('should have equal styles for styled-components and jss', () => {
     </StyleSheetManager>
   );
   const styledComponentsStyles = document.querySelector('style[data-styled]')!.innerHTML;
-  expect(formatAndNeutralizeStyle(jssStyles)).toBe(formatAndNeutralizeStyle(styledComponentsStyles));
+  expect(await formatAndNeutralizeStyle(jssStyles)).toBe(await formatAndNeutralizeStyle(styledComponentsStyles));
 });
 
 // TODO: not necessary anymore since we have VRT test for both implementations
-xit('should have equal styles for scss and jss', () => {
+xit('should have equal styles for scss and jss', async () => {
   const focusMixin = fs.readFileSync(path.resolve('./src/scss/_focus.scss'), 'utf8');
   const headingMixin = fs.readFileSync(path.resolve('./src/scss/lib/_heading.scss'), 'utf8');
   const frostedGlassMixin = fs.readFileSync(path.resolve('./src/scss/lib/_frosted-glass.scss'), 'utf8');
@@ -77,5 +76,5 @@ xit('should have equal styles for scss and jss', () => {
   /* .material {
     @include pds-frosted-glass-high;
   } */
-  expect(formatAndNeutralizeStyle(jssStyles)).toBe(formatAndNeutralizeStyle(cssStyles.css));
+  expect(await formatAndNeutralizeStyle(jssStyles)).toBe(await formatAndNeutralizeStyle(cssStyles.css));
 });

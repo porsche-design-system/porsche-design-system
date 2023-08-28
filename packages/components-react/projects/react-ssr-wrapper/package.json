@@ -6,6 +6,7 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
+    "prebuild": "yarn clean:build",
     "build": "yarn build:copy && yarn build:bundle",
     "build:copy": "cp ../react-wrapper/src/public-api.ts ./src && cp ../react-wrapper/src/provider.tsx ./src && cp ../react-wrapper/src/hooks.ts ./src && cp ../react-wrapper/src/utils.ts ./src",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",

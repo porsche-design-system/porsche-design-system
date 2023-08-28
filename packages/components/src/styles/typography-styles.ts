@@ -9,8 +9,8 @@ import { getThemedTypographyColor } from './text-icon-styles';
 export const getTypographyRootJssStyle = (
   baseTextStyle: JssStyle,
   responsiveStyle: JssStyle,
-  align: TextAlign | HeadingAlign | DisplayAlign,
-  color: Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor,
+  align: TextAlign | HeadingAlign | DisplayAlign, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
+  color: Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
   ellipsis: boolean,
   theme: Theme
 ): JssStyle => {

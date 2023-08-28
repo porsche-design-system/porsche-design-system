@@ -14,6 +14,57 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.6.0] - 2023-08-28
+
+### [3.6.0-rc.2] - 2023-08-28
+
+#### Fixed
+
+- `Tabs Bar` losing `activeTabIndex` and underline
+  ([#2748](https://github.com/porsche-design-system/porsche-design-system/pull/2748))
+
+### [3.6.0-rc.1] - 2023-08-24
+
+#### Fixed
+
+- Bundling format and name of `components-js` entrypoint for Vanilla JS integration
+  ([#2745](https://github.com/porsche-design-system/porsche-design-system/pull/2745))
+
+### [3.6.0-rc.0] - 2023-08-23
+
+#### Added
+
+- New value `aria-current` for `aria` property for linked components (`Link`, `Link Pure`, `Link Tile`, `Crest`,
+  `Marque`) ([#2696](https://github.com/porsche-design-system/porsche-design-system/pull/2696))
+- Angular: `cdn: 'auto' | 'cn'` option to `PorscheDesignSystemModule.load()` as alternative to using
+  `window.PORSCHE_DESIGN_SYSTEM_CDN` ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
+- React: `cdn: 'auto' | 'cn'` prop to `PorscheDesignSystemProvider` as alternative to using
+  `window.PORSCHE_DESIGN_SYSTEM_CDN` with SSR support
+  ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
+- Vue: `cdn: 'auto' | 'cn'` prop to `PorscheDesignSystemProvider` as alternative to using
+  `window.PORSCHE_DESIGN_SYSTEM_CDN` ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
+- Support for sticky footer to `Modal`
+  ([#2723](https://github.com/porsche-design-system/porsche-design-system/pull/2723))
+
+#### Changed
+
+- Update of Twitter icon ([#2731](https://github.com/porsche-design-system/porsche-design-system/pull/2731))
+- Use China CDN and set `window.PORSCHE_DESIGN_SYSTEM_CDN` for backwards compatibility based on .cn top level domain
+  before design system initialization
+  ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
+
+#### Fixed
+
+- `Flyout`: Overlapping of sticky header/footer if slotted content has different z-index
+  ([#2736](https://github.com/porsche-design-system/porsche-design-system/pull/2736))
+- Keyboard behavior and `aria` semantics if either `a` or `button` elements are used as slotted content in `Tabs Bar`
+  component. ([#2713](https://github.com/porsche-design-system/porsche-design-system/pull/2713))
+- React/SSR: compatibility with Next.js v13 app router
+  ([#2687](https://github.com/porsche-design-system/porsche-design-system/pull/2687))
+- Consistent `package.json` ECMAScript module exports with `.mjs` and `.cjs` file extensions for
+  `components-{js|angular|react|vue}`
+  ([#2739](https://github.com/porsche-design-system/porsche-design-system/pull/2739))
+
 ### [3.5.0] - 2023-07-25
 
 ### [3.5.0-rc.0] - 2023-07-21
@@ -25,7 +76,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Breakpoint customizable property `columns` to `Segmented Control` to set the amount of columns
   ([#2652](https://github.com/porsche-design-system/porsche-design-system/pull/2652))
 
-### Fixed
+#### Fixed
 
 - Alignment of `Icon` inside `Accordion` header
   ([#2673](https://github.com/porsche-design-system/porsche-design-system/pull/2673))
@@ -43,7 +94,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- Fixes regression in `observeChildren` that affected nested components (e.g. incorrect rendering of nested `Tabs`).
+- Regression in `observeChildren` that affected nested components (e.g. incorrect rendering of nested `Tabs`).
   ([#2649](https://github.com/porsche-design-system/porsche-design-system/pull/2649))
 - Click behaviour of slotted interactive elements of `Carousel`
   ([#2663](https://github.com/porsche-design-system/porsche-design-system/pull/2663))

@@ -26,15 +26,15 @@ export type LoadComponentLibraryOptions = {
  * @param options - LoadComponentLibraryOptions
  */
 export function loadComponentLibrary({ script, version, prefix }: LoadComponentLibraryOptions): void {
-  const data = getLibraryHandlerData(version);
+  const data = getLibraryHandlerData(version as `${number}.${number}.${number}`);
   const { isInjected, prefixes = [], registerCustomElements } = data;
 
   const [collidingVersion] = Object.entries(getComponentsManagerData()).filter(
-    ([v, cmData]) => v !== version && cmData.prefixes.includes(prefix)
+    ([v, cmData]) => v !== version && typeof cmData === 'object' && cmData.prefixes.includes(prefix)
   );
   if (collidingVersion) {
     throw new Error(
-      `[Porsche Design System] prefix '${prefix}' is already registered with version '${collidingVersion[0]}' of the Porsche Design System. Please use a different one.
+      `[Porsche Design System v${version}] prefix '${prefix}' is already registered with version '${collidingVersion[0]}' of the Porsche Design System. Please use a different one.
 Take a look at document.${CM_KEY} for more details.`
     );
   }
@@ -60,13 +60,16 @@ Take a look at document.${CM_KEY} for more details.`
  * @param callback - the callback that has to be called as soon as a new prefix is requested
  * @param version - the version of the library
  */
-export function setRegisterComponentsCallback(callback: RegisterCustomElementsCallback, version: string): void {
+export function setRegisterComponentsCallback(
+  callback: RegisterCustomElementsCallback,
+  version: `${number}.${number}.${number}`
+): void {
   const data = getLibraryHandlerData(version);
   data.registerCustomElements = callback;
   data.prefixes.forEach((p) => callback(p));
 }
 
-function getLibraryHandlerData(version: string): LibraryHandlerData {
+function getLibraryHandlerData(version: `${number}.${number}.${number}`): LibraryHandlerData {
   const cmData = getComponentsManagerData();
   const { [version]: libraryHandlerData } = cmData;
 

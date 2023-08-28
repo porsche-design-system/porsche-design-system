@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { paramCase } from 'change-case';
 import { convertToReactVRTPage, ReactCharacteristics } from './convertToReactVRTPage';
+import { paramCase } from 'change-case';
 
 const sourceBasePath = path.resolve(__dirname, '../../components-react/src');
 const pollComponentsReadyFilePath = path.resolve(sourceBasePath, 'pollComponentsReady.ts');
@@ -13,8 +13,14 @@ export const convertToNextJsVRTPage = (
   const { fileName: convertedFileName, fileContent: convertedFileContent } = convertToReactVRTPage(...params);
 
   let newFileContent = convertedFileContent
-    .replace(/\/\* Auto Generated File \*\//, "$&\nimport type { NextPage } from 'next';")
-    .replace(/import { pollComponentsReady } from '\.\.\/pollComponentsReady';/, pollComponentsReadyFileContent)
+    .replace(
+      /\/\* Auto Generated File \*\//,
+      convertedFileContent.match(/use[A-Z]/)
+        ? "$&\n'use client';\nimport type { NextPage } from 'next';"
+        : "$&\nimport type { NextPage } from 'next';"
+    )
+    .replace(/import { pollComponentsReady } from '\.\.\/\.\.\/pollComponentsReady';/, pollComponentsReadyFileContent)
+    .replace(/export (const pollComponentsReady)/, '$1')
     .replace(
       /export\s+(const\s+)(.*)(\s+=\s+\(\):\s+JSX\.Element\s+=>\s+{[\s\S]*};)/,
       '$1$2: NextPage$3\n\nexport default $2;'
@@ -29,5 +35,8 @@ export const convertToNextJsVRTPage = (
     newFileContent = newFileContent.replace(/\/\* Auto Generated File \*\//, "$&\nimport Image from 'next/image';");
   }
 
-  return { fileName: paramCase(convertedFileName.replace(/\.tsx/, '')) + '.tsx', fileContent: newFileContent };
+  return {
+    fileName: `${paramCase(convertedFileName.replace(/\.tsx/, ''))}/page.tsx`,
+    fileContent: newFileContent,
+  };
 };

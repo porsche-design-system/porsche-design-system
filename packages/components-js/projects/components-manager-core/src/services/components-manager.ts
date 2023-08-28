@@ -1,5 +1,6 @@
 import type { LibraryHandlerData } from './library-handler';
 
 export type ComponentsManagerData = {
-  [version: string]: LibraryHandlerData;
+  [version: `${number}.${number}.${number}`]: LibraryHandlerData;
+  cdn: string;
 };

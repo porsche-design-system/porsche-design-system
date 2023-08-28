@@ -50,10 +50,9 @@ const cleanLib = (): void => {
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
 };
 
-const writeFile = (filename: string, content: string): void => {
+const writeFile = async (filename: string, content: string): Promise<void> => {
   const targetPath = path.normalize(`${targetDirectory}/_${paramCase(filename)}.scss`);
-  const contentFormatted = prettier
-    .format(content, { parser: 'scss', printWidth: 120 })
+  const contentFormatted = (await prettier.format(content, { parser: 'scss', printWidth: 120 }))
     .replace(/calc\s+\(/g, 'calc(') // fix issue with prettier
     .replace(/\s*\/\s*/g, '/'); // fix issue with prettier
   fs.writeFileSync(targetPath, contentFormatted);
@@ -63,21 +62,21 @@ const writeFile = (filename: string, content: string): void => {
 interface Variables {
   [k: string]: {} | Variables;
 }
-const generateVariables = (variables: Variables): void => {
+const generateVariables = async (variables: Variables): Promise<void> => {
   for (const [filename, map] of Object.entries(variables)) {
     const mapFlattened = flattenObject(map);
     const content = Object.entries(mapFlattened)
       .map(([k, v]) => `$pds-${paramCase(k)}: ${v};`)
       .join('\n');
 
-    writeFile(filename, content);
+    await writeFile(filename, content);
   }
 };
 
 interface Mixins {
   [k: string]: {} | Mixins;
 }
-const generateMixins = (mixins: Mixins): void => {
+const generateMixins = async (mixins: Mixins): Promise<void> => {
   for (const [filename, map] of Object.entries(mixins)) {
     const content = Object.entries(map)
       .map(([k, v]) => {
@@ -89,27 +88,39 @@ const generateMixins = (mixins: Mixins): void => {
       })
       .join('\n\n');
 
-    writeFile(filename, content);
+    await writeFile(filename, content);
   }
 };
 
-cleanLib();
-generateVariables({
-  border,
-  font,
-  theme,
-  spacing,
-  breakpoint,
-  gridGap,
-  gridFull,
-  gridFullOffset,
-  gridWide,
-  gridWideOffset,
-  gridExtended,
-  gridExtendedOffset,
-  gridBasic,
-  gridBasicOffset,
-  gridNarrow,
-  gridNarrowOffset,
-});
-generateMixins({ heading, text, display, grid, dropShadow, frostedGlass, gradient });
+(async () => {
+  cleanLib();
+
+  await generateVariables({
+    border,
+    font,
+    theme,
+    spacing,
+    breakpoint,
+    gridGap,
+    gridFull,
+    gridFullOffset,
+    gridWide,
+    gridWideOffset,
+    gridExtended,
+    gridExtendedOffset,
+    gridBasic,
+    gridBasicOffset,
+    gridNarrow,
+    gridNarrowOffset,
+  });
+
+  await generateMixins({
+    heading,
+    text,
+    display,
+    grid,
+    dropShadow,
+    frostedGlass,
+    gradient,
+  });
+})();
