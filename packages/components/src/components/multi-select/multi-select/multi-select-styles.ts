@@ -18,11 +18,11 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { Styles } from 'jss';
+import type { Styles } from 'jss';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
-import { FormState } from '../../../utils/form/form-state';
+import type { FormState } from '../../../utils/form/form-state';
 import { getLabelStyles, INPUT_HEIGHT } from '../../../styles/form-styles';
-import { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
+import { SelectDropdownDirectionInternal } from '../../../utils';
 import { getPlaceholderJssStyles } from '../../../styles/placeholder';
 import { getNoResultsOptionJssStyles, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/select/option-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
