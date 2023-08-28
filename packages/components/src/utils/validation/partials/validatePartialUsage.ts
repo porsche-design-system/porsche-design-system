@@ -24,7 +24,7 @@ declare global {
 }
 
 export const validatePartialUsage = (): void => {
-  // ensure no warning is logged when started with `yarn start`
+  // ensure no validation is happening via `yarn start`
   if (ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development') {
     validateGetInitialStylesUsage();
     validateGetFontFaceStylesheetUsage();
