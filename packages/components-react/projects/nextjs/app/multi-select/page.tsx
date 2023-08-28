@@ -387,12 +387,8 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
         </PMultiSelect>
       </div>
 
-      <div
-        className="playground light"
-        title="should render in focus state and be open"
-        style={{ paddingBottom: 'calc(1rem + 450px)' }}
-      >
-        <PMultiSelect name="options" label="Opened and focused" dropdownDirection="down" className="open focus">
+      <div className="playground light" title="should render opened" style={{ paddingBottom: 'calc(1rem + 450px)' }}>
+        <PMultiSelect name="options" label="Opened" dropdownDirection="down" className="open">
           <PMultiSelectOption value="a"
             >Multiline options could be quite long, especially on smaller screens. Let&apos;s check if the height of the option is
             displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
@@ -414,12 +410,8 @@ const MultiSelectPage: NextPage = (): JSX.Element => {
           <PMultiSelectOption value="k">Option K</PMultiSelectOption>
         </PMultiSelect>
       </div>
-      <div
-        className="playground dark"
-        title="should render in focus state and be open on dark theme"
-        style={{ paddingBottom: 'calc(1rem + 450px)' }}
-      >
-        <PMultiSelect name="options" label="Opened and focused" dropdownDirection="down" theme="dark" className="open focus">
+      <div className="playground dark" title="should render opened on dark theme" style={{ paddingBottom: 'calc(1rem + 450px)' }}>
+        <PMultiSelect name="options" label="Opened" dropdownDirection="down" theme="dark" className="open">
           <PMultiSelectOption value="a"
             >Multiline options could be quite long, especially on smaller screens. Let&apos;s check if the height of the option is
             displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
