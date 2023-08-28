@@ -27,7 +27,7 @@ export const addEventListener = (handle: ElementHandle, eventName: string): Prom
       };
       el[counterKey] = (el[counterKey] || 0) + 1;
       el[detailsKey] = [...(el[detailsKey] || []), detail];
-      el[targetsKey] = [...el[targetsKey], serializedTarget];
+      el[targetsKey] = [...(el[targetsKey] || []), serializedTarget];
     });
   }, eventName);
 };
