@@ -742,6 +742,7 @@ exports[`manual test cases should pass internal props correctly to p-multi-selec
       >
         <input
           autocomplete="off"
+          placeholder=""
           role="combobox"
         />
         <p-icon
@@ -788,6 +789,12 @@ exports[`manual test cases should pass internal props correctly to p-multi-selec
         <slot />
       </div>
     </div>
+    <span
+      aria-live="assertive"
+      aria-relevant="additions text"
+      class="sr-text"
+      role="status"
+    />
   </template>
   <p-multi-select-option
     class="ssr"
@@ -5664,6 +5671,7 @@ input:disabled {
       >
         <input
           autocomplete="off"
+          placeholder=""
           role="combobox"
         />
         <p-icon
@@ -5735,6 +5743,12 @@ img {
         <slot />
       </div>
     </div>
+    <span
+      aria-live="assertive"
+      aria-relevant="additions text"
+      class="sr-text"
+      role="status"
+    />
   </template>
   Some child
 </p-multi-select>

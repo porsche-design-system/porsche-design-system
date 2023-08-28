@@ -621,7 +621,9 @@ exports[`accessibility should expose correct accessibility tree if option is sel
 exports[`accessibility should expose correct accessibility tree in error state 1`] = `
 {
   "autocomplete": "list",
+  "description": "Some error message",
   "haspopup": "listbox",
+  "invalid": "true",
   "name": "",
   "role": "combobox",
 }
