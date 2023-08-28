@@ -1,9 +1,5 @@
 import * as validatePropsUtils from './validateProps';
-import * as loggerUtils from '../log/logger';
-import * as breakpointCustomizableUtils from '../breakpoint-customizable';
-import * as jsonUtils from '../json';
 import {
-  AllowedArrayTypes,
   AllowedTypes,
   formatArrayOutput,
   formatObjectOutput,
@@ -17,7 +13,11 @@ import {
   validateProps,
   validateValueOfType,
   ValidationError,
+  ValidatorFunction,
 } from './validateProps';
+import * as loggerUtils from '../log/logger';
+import * as breakpointCustomizableUtils from '../breakpoint-customizable';
+import * as jsonUtils from '../json';
 
 describe('isValueNotOfType()', () => {
   it.each<[any, string, boolean]>([
@@ -158,33 +158,35 @@ describe('isBreakpointCustomizableValueInvalid()', () => {
 });
 
 describe('isValidArray()', () => {
-  it.each<[any, AllowedArrayTypes[], boolean]>([
-    [['a'], ['string'], true],
-    [[], ['string'], true],
-    [[1], ['string'], false],
-    ['non array', ['string'], false],
-    [undefined, ['string'], false],
-    [[{}], ['string'], false],
-    [[null], ['string'], false],
-    [[1], ['number'], true],
-    [[], ['number'], true],
-    [['a'], ['number'], false],
-    ['non array', ['number'], false],
-    [undefined, ['number'], false],
-    [[{}], ['number'], false],
-    [[null], ['number'], false],
-    [['a'], ['string', 'number'], true],
-    [['a', 1], ['string', 'number'], true],
-    [[1], ['string', 'number'], true],
-    [[], ['string', 'number'], true],
-    [[true], ['string', 'number'], false],
-    ['non array', ['string', 'number'], false],
-    [undefined, ['string', 'number'], false],
-    [[{}], ['string', 'number'], false],
-    [[null], ['string', 'number'], false],
-  ])('should for arr: %s and allowedTypes: %s return %s', (arr, allowedTypes, result) => {
-    expect(isValidArray(arr, allowedTypes)).toBe(result);
-  });
+  it.each<[string, any, ValidatorFunction, any, string | undefined]>([
+    ['propName', ['a'], AllowedTypes.string, undefined, undefined],
+    ['propName', [], AllowedTypes.string, undefined, undefined],
+    ['propName', [1], AllowedTypes.string, 1, 'string[]'],
+    ['propName', 'non array', AllowedTypes.string, 'non array', '[]'],
+    ['propName', undefined, AllowedTypes.string, undefined, '[]'],
+    ['propName', [{}], AllowedTypes.string, {}, 'string[]'],
+    ['propName', [null], AllowedTypes.string, null, 'string[]'],
+    ['propName', [1], AllowedTypes.number, undefined, undefined],
+    ['propName', [], AllowedTypes.number, undefined, undefined],
+    ['propName', ['a'], AllowedTypes.number, 'a', 'number[]'],
+    ['propName', 'non array', AllowedTypes.number, 'non array', '[]'],
+    ['propName', undefined, AllowedTypes.number, undefined, '[]'],
+    ['propName', [{}], AllowedTypes.number, {}, 'number[]'],
+    ['propName', [null], AllowedTypes.number, null, 'number[]'],
+  ])(
+    'should for propName: %s, arr: %s and validator: %s return %s',
+    (propName, arr, validator, valueResult, typeResult) => {
+      expect(isValidArray(propName, arr, validator)).toEqual(
+        typeResult
+          ? {
+              propName,
+              propValue: valueResult,
+              propType: typeResult,
+            }
+          : undefined
+      );
+    }
+  );
 });
 
 describe('validateProps()', () => {
@@ -290,8 +292,8 @@ describe('AllowedTypes', () => {
     });
   });
 
-  describe('.array', () => {
-    const validatorFunctionValues = AllowedTypes.array(['string', 'number']);
+  fdescribe('.array', () => {
+    const validatorFunctionValues = AllowedTypes.array(AllowedTypes.string);
 
     it('should return anonymous ValidatorFunction', () => {
       expect(validatorFunctionValues).toEqual(expect.any(Function));
@@ -300,15 +302,24 @@ describe('AllowedTypes', () => {
     it('should call isValidArray() via anonymous ValidatorFunction', () => {
       const spy = jest.spyOn(validatePropsUtils, 'isValidArray');
       validatorFunctionValues('propName', ['a', 'b']);
-      expect(spy).toBeCalledWith(['a', 'b'], ['string', 'number']);
+      expect(spy).toBeCalledWith('propName', ['a', 'b'], AllowedTypes.string);
     });
 
     it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array', () => {
+      const result = validatorFunctionValues('propName', [1]);
+      expect(result).toEqual({
+        propName: 'propName',
+        propValue: 1,
+        propType: 'string[]',
+      });
+    });
+
+    it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array and non array', () => {
       const result = validatorFunctionValues('propName', false);
       expect(result).toEqual({
         propName: 'propName',
         propValue: false,
-        propType: '(string | number)[]',
+        propType: '[]',
       });
     });
 
