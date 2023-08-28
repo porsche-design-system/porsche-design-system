@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `Multi-Select` ([#2658](https://github.com/porsche-design-system/porsche-design-system/pull/2658))
+- `Multi Select` ([#2658](https://github.com/porsche-design-system/porsche-design-system/pull/2658))
 
 ### [3.6.0] - 2023-08-28
 
