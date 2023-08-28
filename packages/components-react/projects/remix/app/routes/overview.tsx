@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PCrest, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PFlyout, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PorscheDesignSystemProvider, PPagination, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PBanner, PButton, PButtonGroup, PButtonPure, PCarousel, PCheckboxWrapper, PContentWrapper, PCrest, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlex, PFlexItem, PFlyout, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PMarque, PModal, PModelSignature, PorscheDesignSystemProvider, PPagination, PPinCode, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelectWrapper, PSpinner, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
 
 const OverviewPage = (): JSX.Element => {
   const style = `
@@ -214,6 +214,10 @@ const OverviewPage = (): JSX.Element => {
 
         <div className="playground light" title="should render default pagination">
           <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} />
+        </div>
+
+        <div className="playground light" title="should render default pin-code">
+          <PPinCode label="Some label" />
         </div>
 
         <div className="playground light" title="should render default table">
@@ -475,6 +479,10 @@ const OverviewPage = (): JSX.Element => {
 
           <div className="playground light" title="should render default pagination with custom prefix">
             <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1} />
+          </div>
+
+          <div className="playground light" title="should render default pin-code with custom prefix">
+            <PPinCode label="Some label" />
           </div>
 
           <div className="playground light" title="should render default table with custom prefix">

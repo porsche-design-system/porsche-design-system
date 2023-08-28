@@ -136,6 +136,10 @@ const generatedRoutes = {
     "path": "/pagination",
     "name": "Pagination"
   },
+  "pinCode": {
+    "path": "/pin-code",
+    "name": "PinCode"
+  },
   "popover": {
     "path": "/popover",
     "name": "Popover"
