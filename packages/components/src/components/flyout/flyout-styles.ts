@@ -8,7 +8,7 @@ import {
   hoverMediaQuery,
 } from '../../styles';
 import { FLYOUT_Z_INDEX } from '../../constants';
-import { spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
+import { gridGap, spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import type { FlyoutPosition } from './flyout-utils';
 
 export const headerShadowClass = 'header--shadow';
@@ -17,6 +17,7 @@ export const footerShadowClass = 'footer--shadow';
 const flyoutTransitionDuration = '0.5s';
 const flyoutTransitionTimingFunction = 'cubic-bezier(0.77, 0, 0.175, 1)';
 
+const cssVariableWidth = '--p-flyout-width';
 const cssVariableMaxWidth = '--p-flyout-max-width';
 const maxWidthDefault = '1180px';
 const minWidthDefault = '320px';
@@ -32,7 +33,7 @@ export const getComponentCss = (
   const { primaryColor, backgroundColor } = getThemedColors(theme);
   const { contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
   const isPositionLeft = position === 'left';
-  const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge} ${spacingStaticMedium} ${spacingFluidLarge}`;
+  const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge}`;
   const isDark = isThemeDark(theme);
   const shadowColor = isDark ? scrollShadowColorDark : scrollShadowColor;
   const transparentColor = isDark ? 'rgba(14, 14, 18, 0)' : 'rgba(255, 255, 255, 0)';
@@ -40,6 +41,9 @@ export const getComponentCss = (
   return getCss({
     '@global': addImportantToEachRule({
       ':host': {
+        // needed for correct alignment of the Porsche Grid within the Flyout
+        '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
+        '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
         display: 'flex',
         position: 'fixed',
         zIndex: FLYOUT_Z_INDEX,
@@ -100,6 +104,7 @@ export const getComponentCss = (
         overflowY: 'auto',
         overscrollBehaviorY: 'none',
       }),
+      width: `var(${cssVariableWidth}, auto)`,
       height: '100%',
       minWidth: minWidthDefault,
       maxWidth: `var(${cssVariableMaxWidth}, ${maxWidthDefault})`,
