@@ -247,3 +247,31 @@
   </p-accordion>
   <p-accordion heading="Heading"></p-accordion>
 </div>
+
+<div
+  class="playground dark"
+  title="should render accordion in open state with overlapping content on dark background"
+  style="padding-bottom: 200px"
+>
+  <p-accordion heading="Heading" open="true" theme="dark">
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+    <div style="position: relative">
+      <div
+        style="
+          position: absolute;
+          z-index: 10;
+          left: 10%;
+          top: 0;
+          right: 10%;
+          padding: 50px 0;
+          background-color: lightskyblue;
+          text-align: center;
+        "
+      >
+        Some overlapping content
+      </div>
+    </div>
+  </p-accordion>
+  <p-accordion heading="Heading" theme="dark"></p-accordion>
+</div>
