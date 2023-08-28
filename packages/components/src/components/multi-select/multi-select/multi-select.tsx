@@ -244,11 +244,12 @@ export class MultiSelect {
               onClick={this.onInputClick}
               onKeyDown={this.onInputKeyDown}
               ref={(el) => (this.inputElement = el)}
+              aria-invalid={this.state === 'error' ? 'true' : null}
               {...getFilterInputAriaAttributes(
                 this.isOpen,
                 this.required,
                 'label',
-                'description options-selected',
+                'description options-selected state-message',
                 dropdownId
               )}
             />
@@ -291,7 +292,13 @@ export class MultiSelect {
         </div>
         {this.isWithinForm && <slot name="select" />}
         {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+          <StateMessage
+            state={this.state}
+            message={this.message}
+            theme={this.theme}
+            host={this.host}
+            id="state-message"
+          />
         )}
         <span class="sr-text" role="status" aria-live="assertive" aria-relevant="additions text">
           {this.srHighlightedOptionText}
