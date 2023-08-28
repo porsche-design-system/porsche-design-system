@@ -13,10 +13,11 @@ describe('connectedCallback', () => {
   it('should add event listener and set is within form', () => {
     const component = initComponent();
     const isWithinFormSpy = jest.spyOn(isWithinFormUtils, 'isWithinForm');
-    const eventListenerSpy = jest.spyOn(document, 'addEventListener');
+    const addEventListenerSpy = jest.spyOn(document, 'addEventListener');
     component.connectedCallback();
     expect(isWithinFormSpy).toBeCalledTimes(1);
-    expect(eventListenerSpy).toBeCalledTimes(1);
+    expect(component['isWithinForm']).toBe(false);
+    expect(addEventListenerSpy).toBeCalledTimes(1);
   });
 });
 
@@ -34,7 +35,7 @@ describe('componentWillLoad', () => {
     component['isWithinForm'] = false;
     const initNativeSelectSpy = jest.spyOn(multiSelectUtils, 'initNativeSelect');
     component.componentWillLoad();
-    expect(initNativeSelectSpy).toBeCalledTimes(0);
+    expect(initNativeSelectSpy).not.toBeCalled();
   });
 
   it('should call setSelectedOptions()', () => {
