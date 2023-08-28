@@ -1,6 +1,6 @@
 import { setAttributes } from './setAttributes';
 
-it('should set attributes', () => {
+it('should correctly set attributes', () => {
   const element = document.createElement('select');
   const attributes = {
     multiple: 'true',
