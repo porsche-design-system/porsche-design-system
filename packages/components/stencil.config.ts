@@ -71,7 +71,7 @@ export const config: Config = {
         ROLLUP_REPLACE_VERSION: `"${version}"`,
         ROLLUP_REPLACE_CDN_BASE_URL: isDevBuild
           ? '"http://localhost:3001"'
-          : 'document.porscheDesignSystem.cdn + "/porsche-design-system"', // document variable is set via components-js load() call
+          : 'document.porscheDesignSystem.cdn.url + "/porsche-design-system"', // document variable is set via components-js load() call
       }),
     ],
   },

@@ -20,7 +20,10 @@ declare global {
         isReady: () => Promise<void>;
         readyResolve: () => void;
       };
-      cdn: string;
+      cdn: {
+        url: string;
+        prefixes: string[]; // to not break older versions
+      };
     };
   }
 }
@@ -280,7 +283,7 @@ describe('getPorscheDesignSystemPrefixesForVersions()', () => {
       isReady: Promise.resolve,
     };
     document.porscheDesignSystem = {
-      cdn: 'local',
+      cdn: { url: 'local', prefixes: [] },
       '1.2.3': { ...sharedProps, prefixes: [''] },
       '1.2.4': { ...sharedProps, prefixes: ['prefix', 'another-prefix'] },
       '1.2.5': { ...sharedProps, prefixes: ['prefix', 'another-prefix'] },
