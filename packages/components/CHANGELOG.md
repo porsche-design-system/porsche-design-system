@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Overlapping issues of `Accordion` contents when positioned outside of content area
   ([#2746](https://github.com/porsche-design-system/porsche-design-system/pull/2746))
+- Backwards compatibility with previous versions of Porsche Design System
+  ([#2752](https://github.com/porsche-design-system/porsche-design-system/pull/2752))
 
 ### [3.6.0] - 2023-08-28
 
