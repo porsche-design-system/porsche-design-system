@@ -1,6 +1,7 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { getMarkup } from '../helper';
 import userEvent from '@testing-library/user-event';
+import { getByTextShadowed } from '@porsche-design-system/components-js/testing';
 
 it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-multi-select');
@@ -23,7 +24,7 @@ it('should have working events', async () => {
   const debugEl = document.querySelector('#debug');
   expect(debugEl.innerHTML).toBe('Event Counter: <span>0</span>');
 
-  const button = document.querySelector('p-multi-select-option:last-child').shadowRoot.querySelector('div.option');
+  const button = await getByTextShadowed('Option C');
   await userEvent.click(button);
   expect(debugEl.innerHTML).toBe('Event Counter: <span>1</span>');
 });
