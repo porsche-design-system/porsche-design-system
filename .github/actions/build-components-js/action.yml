@@ -23,7 +23,9 @@ runs:
           ./packages/components-react/projects/react-ssr-wrapper/src/lib
           ./packages/components-react/projects/uxpin-wrapper/src/lib
           ./packages/components-vue/projects/vue-wrapper/src/lib
+          ./packages/fallbacks/dist
           ./packages/icons/dist
+          ./packages/model-signatures/dist
           ./packages/shared/dist
           ./packages/utilities/projects/styles/dist
           ./packages/utilities/projects/utilities/dist
@@ -66,6 +68,8 @@ runs:
           ./packages/components-react/projects/react-ssr-wrapper/src/lib
           ./packages/components-react/projects/uxpin-wrapper/src/lib
           ./packages/components-vue/projects/vue-wrapper/src/lib
+          ./packages/fallbacks/dist
+          ./packages/model-signatures/dist
           ./packages/icons/dist
           ./packages/shared/dist
           ./packages/utilities/projects/styles/dist
