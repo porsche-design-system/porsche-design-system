@@ -293,7 +293,8 @@ const generateCodeSamples = (): void => {
       samples: [
         [
           componentsAngularPath + '/../styles/styles-grid-example.component.ts',
-          componentsReactPath + '/../styles/StylesGridExample.tsx',
+          //special path to get the GridLayout component
+          componentsReactPath + '/../components/GridLayout.tsx',
         ],
       ],
     },
