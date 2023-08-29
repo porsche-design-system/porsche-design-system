@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { buildResponsiveStyles, getCss } from '../../../utils';
+import { buildResponsiveStyles, getCss, SelectDropdownDirectionInternal } from '../../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -22,9 +22,8 @@ import type { Styles } from 'jss';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { FormState } from '../../../utils/form/form-state';
 import { getLabelStyles } from '../../../styles/form-styles';
-import { SelectDropdownDirectionInternal } from '../../../utils';
 import { getPlaceholderJssStyle } from '../../../styles/placeholder';
-import { getNoResultsOptionJssStyle, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/select/option-styles';
+import { getNoResultsOptionJssStyle, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/select';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 

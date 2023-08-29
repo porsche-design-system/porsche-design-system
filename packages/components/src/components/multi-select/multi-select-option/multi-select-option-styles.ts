@@ -1,6 +1,6 @@
 import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
-import { getSelectOptionStyles } from '../../../styles/select/option-styles';
+import { getSelectOptionStyles } from '../../../styles/select';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { spacingStaticSmall } from '@porsche-design-system/utilities-v2';
 

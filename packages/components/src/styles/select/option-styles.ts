@@ -1,6 +1,6 @@
 import { isHighContrastMode, Theme } from '../../utils';
 import { getHighContrastColors, getThemedColors } from '../colors';
-import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '../../../../utilities/projects/utilities';
+import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
 import { getHiddenTextJssStyle, getTransition } from '../common-styles';
 import { hoverMediaQuery } from '../hover-media-query';
 import { JssStyle, Styles } from 'jss';

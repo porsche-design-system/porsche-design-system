@@ -11,6 +11,7 @@ import {
   spacingStaticMedium,
   spacingStaticSmall,
 } from '@porsche-design-system/utilities-v2';
+
 export const ICON_SPACE = `${24 + 13 * 2 + 2}px`; // 24px = icon width, 13px * 2 = padding, 2px = border
 
 export const getComponentCss = (

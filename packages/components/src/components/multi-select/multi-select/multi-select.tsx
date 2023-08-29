@@ -23,8 +23,27 @@ import {
   updateOptionsFilterState,
 } from './multi-select-utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { SelectDropdownDirectionInternal } from '../../../utils/select/select-dropdown';
-import { SELECT_DROPDOWN_DIRECTIONS } from '../../../utils/select/select-dropdown';
+import type { SelectDropdownDirectionInternal } from '../../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  FORM_STATES,
+  getFilterInputAriaAttributes,
+  getListAriaAttributes,
+  getPrefixedTagNames,
+  getShadowRootHTMLElement,
+  hasDescription,
+  hasLabel,
+  hasMessage,
+  hasPropValueChanged,
+  isClickOutside,
+  isRequiredAndParentNotRequired,
+  isWithinForm,
+  SELECT_DROPDOWN_DIRECTIONS,
+  THEMES,
+  throwIfElementIsNotOfKind,
+  validateProps,
+} from '../../../utils';
 import type { HTMLElementWithRequiredProp } from '../../../utils/form/isRequired';
 import {
   Component,
@@ -40,27 +59,9 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  FORM_STATES,
-  getPrefixedTagNames,
-  getShadowRootHTMLElement,
-  hasDescription,
-  hasLabel,
-  hasMessage,
-  hasPropValueChanged,
-  isClickOutside,
-  isRequiredAndParentNotRequired,
-  isWithinForm,
-  THEMES,
-  throwIfElementIsNotOfKind,
-  validateProps,
-} from '../../../utils';
 import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
 import { StateMessage } from '../../common/state-message/state-message';
-import { getFilterInputAriaAttributes, getListAriaAttributes } from '../../../utils/a11y/select/select-aria';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,

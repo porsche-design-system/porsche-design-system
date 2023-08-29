@@ -1,7 +1,12 @@
 import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/core';
 import {
   attachComponentCss,
+  determineDropdownDirection,
+  getFilterInputAriaAttributes,
+  getListAriaAttributes,
+  getOptionAriaAttributes,
   getPrefixedTagNames,
+  getSelectDropdownButtonAriaAttributes,
   isClickOutside,
   isSsrHydration,
   observeChildren,
@@ -37,13 +42,6 @@ import {
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
-import { determineDropdownDirection } from '../../../utils';
-import {
-  getFilterInputAriaAttributes,
-  getListAriaAttributes,
-  getOptionAriaAttributes,
-  getSelectDropdownButtonAriaAttributes,
-} from '../../../utils/a11y/select/select-aria';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',

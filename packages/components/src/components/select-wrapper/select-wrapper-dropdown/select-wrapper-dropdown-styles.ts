@@ -13,10 +13,9 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
-import { OPTION_HEIGHT } from '../../../styles/select/option-styles';
+import { getSelectOptionStyles, OPTION_HEIGHT } from '../../../styles/select';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { FormState } from '../../../utils/form/form-state';
-import { getSelectOptionStyles } from '../../../styles/select/option-styles';
 
 const dropdownPositionVar = '--p-internal-dropdown-position';
 
