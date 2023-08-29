@@ -294,7 +294,6 @@ describe('getPorscheDesignSystemPrefixesForVersions()', () => {
     };
 
     expect(getPorscheDesignSystemPrefixesForVersions()).toEqual({
-      cdn: [],
       '1.2.3': [''],
       '1.2.4': ['prefix', 'another-prefix'],
       '1.2.5': ['prefix', 'another-prefix'],
