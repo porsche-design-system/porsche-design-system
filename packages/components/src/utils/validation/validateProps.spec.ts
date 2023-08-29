@@ -162,15 +162,15 @@ describe('isValidArray()', () => {
     ['propName', ['a'], AllowedTypes.string, undefined, undefined],
     ['propName', [], AllowedTypes.string, undefined, undefined],
     ['propName', [1], AllowedTypes.string, 1, 'string[]'],
-    ['propName', 'non array', AllowedTypes.string, 'non array', '[]'],
-    ['propName', undefined, AllowedTypes.string, undefined, '[]'],
+    ['propName', 'non array', AllowedTypes.string, 'non array', 'string[]'],
+    ['propName', undefined, AllowedTypes.string, undefined, 'string[]'],
     ['propName', [{}], AllowedTypes.string, {}, 'string[]'],
     ['propName', [null], AllowedTypes.string, null, 'string[]'],
     ['propName', [1], AllowedTypes.number, undefined, undefined],
     ['propName', [], AllowedTypes.number, undefined, undefined],
     ['propName', ['a'], AllowedTypes.number, 'a', 'number[]'],
-    ['propName', 'non array', AllowedTypes.number, 'non array', '[]'],
-    ['propName', undefined, AllowedTypes.number, undefined, '[]'],
+    ['propName', 'non array', AllowedTypes.number, 'non array', 'number[]'],
+    ['propName', undefined, AllowedTypes.number, undefined, 'number[]'],
     ['propName', [{}], AllowedTypes.number, {}, 'number[]'],
     ['propName', [null], AllowedTypes.number, null, 'number[]'],
   ])(
@@ -319,7 +319,7 @@ describe('AllowedTypes', () => {
       expect(result).toEqual({
         propName: 'propName',
         propValue: false,
-        propType: '[]',
+        propType: 'string[]',
       });
     });
 

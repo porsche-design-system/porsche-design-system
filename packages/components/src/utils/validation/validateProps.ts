@@ -258,19 +258,18 @@ export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, p
  * @returns {ValidationError | undefined} The first encountered validation error object, or undefined if the array is valid.
  */
 export const isValidArray = (propName: string, arr: any, validator: ValidatorFunction): ValidationError => {
-  // TODO: Would be better to return the expected array type in this case as well
-  if (!Array.isArray(arr)) {
-    return {
-      propName,
-      propValue: arr,
-      propType: '[]',
-    };
+  const validationError = Array.isArray(arr)
+    ? validator(
+        propName,
+        arr.find((item) => validator(propName, item))
+      )
+    : {
+        propName,
+        propValue: arr,
+        propType: validator(propName, null).propType, // Get propType by passing in null which will always result in error
+      };
+
+  if (validationError) {
+    return { ...validationError, propType: `${validationError.propType}[]` };
   }
-  for (const item of arr) {
-    const validationError = validator(propName, item);
-    if (validationError) {
-      return { ...validationError, propType: `${validationError.propType}[]` };
-    }
-  }
-  return undefined;
 };
