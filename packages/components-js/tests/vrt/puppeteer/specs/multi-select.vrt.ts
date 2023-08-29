@@ -48,7 +48,7 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   ).toBeFalsy();
 });
 
-fit('should have no visual regression for :hover + :focus-visible', async () => {
+it('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('multi-select-states', async () => {
