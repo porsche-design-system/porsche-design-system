@@ -12,7 +12,10 @@ declare global {
         isReady: () => Promise<void>;
         readyResolve: () => void;
       };
-      cdn: string;
+      cdn: {
+        url: string;
+        prefixes: string[]; // to not break older versions
+      };
     };
   }
 }
@@ -83,7 +86,7 @@ export const evaluatePage = async (page: puppeteer.Page): Promise<ConsumedTagNam
         PComponentName extends keyof HTMLElementTagNameMap,
         PComponentElement extends HTMLElementTagNameMap[PComponentName],
         PComponentPropertyName extends keyof PComponentElement,
-        PComponentPropertyValue extends keyof PComponentElement[PComponentPropertyName]
+        PComponentPropertyValue extends keyof PComponentElement[PComponentPropertyName],
       >(
         el: Element,
         allPdsPropertiesForComponentName: string[]

@@ -6,7 +6,9 @@ require('matchmedia-polyfill/matchMedia.addListener');
 require('scroll-behavior-polyfill');
 
 if (!navigator.userAgent.includes('Node.js') && !navigator.userAgent.includes('jsdom')) {
-  throw new Error('[Porsche Design System] the jsdom-polyfill sub package should only be used in node and jsdom environments');
+  throw new Error(
+    '[Porsche Design System] the jsdom-polyfill sub package should only be used in node and jsdom environments'
+  );
 }
 
 // skip initial stylesheet fetch
@@ -19,7 +21,10 @@ process.browser = true;
 // therefore, we have to setup the document.porscheDesignSystem ourselves here
 // 'ROLLUP_REPLACE_VERSION' is replaced during build
 document.porscheDesignSystem = {
-  cdn: 'https://cdn.ui.porsche.com', // needs to be set because we're not initializing via components-js load() method which would normally set this
+  cdn: {
+    url: 'https://cdn.ui.porsche.com', // needs to be set because we're not initializing via components-js load() method which would normally set this
+    prefixes: [],
+  },
   ['ROLLUP_REPLACE_VERSION']: {
     readyResolve: () => {},
     isReady: () => Promise.resolve(),
