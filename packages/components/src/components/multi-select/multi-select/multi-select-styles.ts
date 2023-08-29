@@ -43,7 +43,8 @@ export const getComponentCss = (
   hasLabel: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor, contrastHighColor, backgroundColor } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, contrastHighColor, backgroundColor, disabledColor } =
+    getThemedColors(theme);
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const isDirectionDown = direction === 'down';
 
@@ -73,7 +74,7 @@ export const getComponentCss = (
       display: 'flex',
       background: backgroundColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states
-      cursor: isDisabled ? 'not-allowed' : 'text',
+      cursor: 'text',
       ...hoverMediaQuery({
         '&:hover:not(.disabled)': {
           borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
@@ -89,6 +90,12 @@ export const getComponentCss = (
         [isDirectionDown ? 'borderBottom' : 'borderTop']: addImportantToRule(`1px solid ${contrastMediumColor}`),
         [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
         [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
+      }),
+      ...(isDisabled && {
+        cursor: 'not-allowed',
+        color: disabledColor,
+        borderColor: disabledColor,
+        WebkitTextFillColor: disabledColor,
       }),
     },
     ...buildResponsiveStyles(hideLabel, (isHidden) =>
@@ -106,6 +113,7 @@ export const getComponentCss = (
     icon: {
       padding: `${inputYPadding} 15px`, // Horizontal padding spacingStaticMedium - 1px for visual balance
       cursor: isDisabled ? 'not-allowed' : 'pointer',
+      ...(isDisabled && { pointerEvents: 'none' }),
     },
     'reset-icon': {
       padding: '4px',
@@ -117,7 +125,6 @@ export const getComponentCss = (
       '&--open': {
         transform: 'rotate3d(0,0,1,180deg)',
       },
-      ...(isDisabled && { pointerEvents: 'none' }),
     },
     'no-results': {
       padding: `${spacingStaticSmall} 12px`,
