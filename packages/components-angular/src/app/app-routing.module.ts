@@ -121,6 +121,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.ModalExampleAccessibilityComponent,
   },
   {
+    name: 'Pin Code Example',
+    path: 'pin-code-example',
+    component: fromExamples.PinCodeExampleComponent,
+  },
+  {
     name: 'Pin Code Example Controlled',
     path: 'pin-code-example-controlled',
     component: fromExamples.PinCodeExampleControlledComponent,

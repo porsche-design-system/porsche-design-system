@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type { PinCodeUpdateEvent } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-pin-code-example',
+  selector: 'page-pin-code-example-controlled',
   template: `
     <p-pin-code [label]="'Some Label'" [length]="length" (update)="onUpdate($event)"></p-pin-code>
     <p-text>Current value: {{ currentValue }}</p-text>

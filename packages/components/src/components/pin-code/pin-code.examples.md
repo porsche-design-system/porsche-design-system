@@ -57,14 +57,22 @@ changes while this process is performed.
 
 ## Framework Implementation (within form)
 
+<Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
+<form @submit.prevent="onSubmit" >
+  <p-pin-code :theme="theme" label="Some Label" name="pin-code"></p-pin-code>
+  <p-button type="submit" style="margin: 1rem 0">Submit</p-button>
+</form>
+  <p-text :theme="theme">Last submitted data: {{ currentValueForm }}</p-text>
+</Playground>
+
 ## Framework implementation (controlled)
 
 <Playground :frameworkMarkup="eventHandlingExample" :config="{ ...config, withoutDemo: true }">
-  <p-pin-code :theme="theme" label="Some label" :legth="length" @update="(e) => {
-    currentValue = e.detail;
+  <p-pin-code :theme="theme" label="Some Label" :legth="length" @update="(e) => {
+    currentValueControlled = e.detail;
     isComplete = e.target.value.length === length;
   }"></p-pin-code>
-  <p-text :theme="theme">Current value: {{currentValue}}</p-text>
+  <p-text :theme="theme" style="margin: 1rem 0">Current value: {{currentValueControlled}}</p-text>
   <p-text :theme="theme">Completely filled: {{isComplete}}</p-text>
 </Playground>
 
@@ -112,9 +120,17 @@ export default class Code extends Vue {
   requiredMarkup = `<p-pin-code label="Some label" required></p-pin-code>`;
 
   length=4;
-  currentValue = '';
+  currentValueControlled = '';
   isComplete = false;
-  eventHandlingExample = getPinCodeCodeSamples('example');
+  eventHandlingExample = getPinCodeCodeSamples('example-controlled');
+
+  currentValueForm = 'none';
+  formExample = getPinCodeCodeSamples('default');
+  onSubmit(e) {
+    this.currentValueForm = e.target.elements['pin-code'].value || 'none';
+  }
+
+
 
   get theme(): Theme {
     return this.$store.getters.theme;

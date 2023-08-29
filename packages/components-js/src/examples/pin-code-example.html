@@ -1,0 +1,15 @@
+<form>
+  <p-pin-code label="Some Label" name="pin-code"></p-pin-code>
+  <p-button type="submit">Submit</p-button>
+</form>
+
+<p-text>Last submitted data: none</p-text>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    debugElement.innerText = `Last submitted data: ${e.target.elements['pin-code'].value || 'none'}`;
+  });
+</script>
