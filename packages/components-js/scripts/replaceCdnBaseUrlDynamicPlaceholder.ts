@@ -11,7 +11,7 @@ const readAndWriteFile = (targetFile: string): void => {
   const [, documentKey] = oldContent.match(/,document\[([a-z])]\.cdn=/) || [];
   const newContent = oldContent.replace(
     '"%%%CDN_BASE_URL_DYNAMIC%%%',
-    `document${documentKey ? '[' + documentKey + ']' : '.porscheDesignSystem'}.cdn+"`
+    `document${documentKey ? '[' + documentKey + ']' : '.porscheDesignSystem'}.cdn.url+"`
   );
   fs.writeFileSync(targetFile, newContent);
 
@@ -33,7 +33,7 @@ const replaceCdnBaseUrlDynamicPlaceholder = () => {
     globby.sync(path.resolve(packageDir, '../components/porsche-design-system.v*'))[0], // core chunk on cdn
   ].forEach(readAndWriteFile);
 
-  console.log(`Replaced: "%%%CDN_BASE_URL_DYNAMIC%%%" –> "document.porscheDesignSystem.cdn"`);
+  console.log(`Replaced: "%%%CDN_BASE_URL_DYNAMIC%%%" –> "document.porscheDesignSystem.cdn.url"`);
 };
 
 replaceCdnBaseUrlDynamicPlaceholder();
