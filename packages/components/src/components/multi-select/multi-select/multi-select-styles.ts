@@ -21,7 +21,7 @@ import {
 import type { Styles } from 'jss';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { FormState } from '../../../utils/form/form-state';
-import { getLabelStyles, INPUT_HEIGHT } from '../../../styles/form-styles';
+import { getLabelStyles } from '../../../styles/form-styles';
 import { SelectDropdownDirectionInternal } from '../../../utils';
 import { getPlaceholderJssStyle } from '../../../styles/placeholder';
 import { getNoResultsOptionJssStyle, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/select/option-styles';
@@ -30,6 +30,8 @@ import { getFunctionalComponentStateMessageStyles } from '../../common/state-mes
 
 const inputYPadding = '13px';
 const selectorNativeSelect = '::slotted([slot=select])';
+
+const INPUT_HEIGHT_CALC = `${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2`;
 
 export const getComponentCss = (
   direction: SelectDropdownDirectionInternal,
@@ -136,7 +138,7 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
     input: {
       flex: 1,
       minWidth: 0,
-      height: `calc(${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 6px additionally so input height becomes 50px
+      height: `calc(${INPUT_HEIGHT_CALC})`, // we need 6px additionally so input height becomes 50px
       font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
       color: primaryColor,
       padding: `${inputYPadding} ${spacingStaticMedium}`,
@@ -173,7 +175,9 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
       zIndex: 10,
       left: 0,
       right: 0,
-      [isDirectionDown ? 'top' : 'bottom']: isDirectionDown ? '100%' : `${INPUT_HEIGHT}px`,
+      [isDirectionDown ? 'top' : 'bottom']: isDirectionDown
+        ? '100%'
+        : `calc((${INPUT_HEIGHT_CALC}) + 2 * ${borderWidthBase})`, // Input height + border top and bottom
       boxSizing: 'border-box',
       maxHeight: `${8.5 * (MULTI_SELECT_OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
       overflowY: 'auto',
