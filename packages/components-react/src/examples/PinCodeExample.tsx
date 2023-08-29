@@ -6,9 +6,8 @@ export const PinCodeExamplePage = (): JSX.Element => {
 
   const onSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLastSubmittedValue(
-      (e.currentTarget.elements['pin-code' as keyof HTMLFormControlsCollection] as HTMLInputElement).value || 'none'
-    );
+    const formData = new FormData(e.currentTarget);
+    setLastSubmittedValue(Array.from(formData.values()).join(', ') || 'none');
   }, []);
 
   return (

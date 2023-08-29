@@ -4,8 +4,9 @@
 
   const lastSubmittedValue = ref('none');
 
-  const onSubmit = (e): void => {
-    lastSubmittedValue.value = e.target.elements['pin-code'].value || 'none';
+  const onSubmit = (e: Event): void => {
+    const formData = new FormData(e.target as HTMLFormElement);
+    lastSubmittedValue.value = Array.from(formData.values()).join(', ') || 'none';
   };
 </script>
 
