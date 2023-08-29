@@ -72,12 +72,13 @@ export const getAppTsx = (
 };
 
 export const getIndexHtml = (globalStyles: string) => {
-  return `<!DOCTYPE html>
+  return `<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - React</title>
 
+    <!-- prettier-ignore -->
     ${initialStyles}
 
     <style>

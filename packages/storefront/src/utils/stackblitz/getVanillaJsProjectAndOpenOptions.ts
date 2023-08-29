@@ -52,13 +52,14 @@ export const getIndexHtml = (
     '$1    '
   );
 
-  return `<!DOCTYPE html>
+  return `<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - Vanilla JS</title>
     ${scripts}
 
+    <!-- prettier-ignore -->
     ${initialStyles}
 
     <style>
