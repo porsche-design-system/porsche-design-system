@@ -14,6 +14,7 @@ import type {
   ExternalDependency,
 } from '../../utils';
 import type { StackBlitzProjectDependencies } from '../../models';
+import { initialStyles } from '@/lib/partialResults';
 
 const componentNameRegex = /(export const )[a-zA-Z]+( = \(\): JSX.Element => {)/;
 
@@ -68,6 +69,26 @@ export const getAppTsx = (
       pdsVersion
     )
   );
+};
+
+export const getIndexHtml = (globalStyles: string) => {
+  return `<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Porsche Design System - React</title>
+
+    ${initialStyles}
+
+    <style>
+      html, body { margin: 0; padding: 0; }
+      ${globalStyles}
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>`;
 };
 
 export const getIndexTsx = (pdsVersion: string): string => {
@@ -137,9 +158,9 @@ export const getReactProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions =
     files: {
       ...porscheDesignSystemBundle,
       'App.tsx': getAppTsx(markup, !!markup.match(componentNameRegex), sharedImportKeys, pdsVersion),
-      'index.html': '<div id="root"></div>',
+      'index.html': getIndexHtml(globalStyles),
       'index.tsx': getIndexTsx(pdsVersion),
-      'style.css': `html, body { margin: 0; padding: 0; } ${globalStyles}`,
+      'style.css': '', // empty file seems to be required
     },
     template: 'create-react-app',
     title,

@@ -6,6 +6,7 @@ import {
 } from './helper';
 import type { StackBlitzProjectDependencies } from '../../models';
 import type { DependencyMap, ExternalDependency, GetStackBlitzProjectAndOpenOptions, SharedImportKey } from './helper';
+import { initialStyles } from '@/lib/partialResults';
 
 // TODO: this entire puzzle should be refactored into an object-oriented way so that there is a clear and clean structure
 // as well as code flow, similar to our WrapperGenerator
@@ -37,10 +38,11 @@ export const getIndexHtml = (
   pdsVersion: string
 ): string => {
   const basePath = isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? 'node_modules' : '.';
-  const porscheDesignSystemLoaderScript = `<script src="${basePath}/@porsche-design-system/components-js/esm/index.mjs"></script>`;
+  const porscheDesignSystemScript = `<script src="${basePath}/@porsche-design-system/components-js/esm/index.mjs"></script>`;
   const externalScripts = externalDependencies
     .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
     .join('\n    ');
+  const scripts = [porscheDesignSystemScript, ...externalScripts].join('\n    ');
 
   const extendedMarkupWithLoadFunction = getExtendedMarkupWithLoadFunction(markup);
 
@@ -53,8 +55,12 @@ export const getIndexHtml = (
   return `<!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
-    ${porscheDesignSystemLoaderScript}
-    ${externalScripts}
+    <meta charset="utf-8" />
+    <title>Porsche Design System - Vanilla JS</title>
+    ${scripts}
+
+    ${initialStyles}
+
     <style>
       html, body { margin: 0; padding: 0; }
       ${globalStyles}

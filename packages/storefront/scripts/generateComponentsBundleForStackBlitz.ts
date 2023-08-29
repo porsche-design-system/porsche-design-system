@@ -34,7 +34,8 @@ const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
         )
     );
 
-  if (files.length <= 0) {
+  // at least package.json is usually there
+  if (files.length <= 3) {
     throw new Error(`No build found for @porsche-design-system/components-${framework}`);
   }
 

@@ -9,6 +9,7 @@ import {
 import { convertMarkup } from '../../utils/formatting';
 import type { DependencyMap, SharedImportKey, GetStackBlitzProjectAndOpenOptions, ExternalDependency } from '@/utils';
 import type { StackBlitzProjectDependencies } from '@/models';
+import { initialStyles } from '@/lib/partialResults';
 
 const classNameRegex = /(export class )[a-zA-Z]+( {)/;
 
@@ -138,6 +139,9 @@ export const getIndexHtml = (globalStyles: string): string => {
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - Angular</title>
+
+    ${initialStyles}
+
     <style>
       html, body { margin: 0; padding: 0; }
       ${globalStyles}
