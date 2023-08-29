@@ -14,7 +14,10 @@ declare global {
         isReady: () => Promise<void>;
         readyResolve: () => void;
       };
-      cdn: string;
+      cdn: {
+        url: string;
+        prefixes: string[]; // to not break older versions
+      };
     };
   }
 }
@@ -49,7 +52,10 @@ export const load = (opts: LoadOptions = {}): void => {
   // so we can't just check if document[CM_KEY].cdn is defined or not
 
   // this value is used at runtime of web components via getCDNBaseURL() util
-  document[CM_KEY].cdn = `https://cdn.ui.porsche.${window[cdnKey] === 'cn' ? 'cn' : 'com'}`;
+  document[CM_KEY].cdn = {
+    url: `https://cdn.ui.porsche.${window[cdnKey] === 'cn' ? 'cn' : 'com'}`,
+    prefixes: [], // to not break older versions
+  };
 
   loadComponentLibrary({ ...CM_CONFIG, prefix: opts.prefix || '' });
 };
