@@ -80,9 +80,11 @@ export const getComponentCss = (
           borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
         },
       }),
-      '&:focus-within': {
-        borderColor: primaryColor,
-      },
+      ...(!isDisabled && {
+        '&:focus-within': {
+          borderColor: primaryColor,
+        },
+      }),
       border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
       ...(isOpen && {
