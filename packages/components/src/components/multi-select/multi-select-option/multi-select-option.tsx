@@ -1,4 +1,4 @@
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -36,28 +36,29 @@ export class MultiSelectOption {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <div
-        class={{
-          option: true,
-          'option--selected': selected,
-          'option--highlighted': highlighted,
-          'option--disabled': this.disabled,
-        }}
-        onClick={!this.disabled && this.onClick}
-      >
-        <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={theme}>
-          <input
-            role="option"
-            type="checkbox"
-            checked={selected}
-            disabled={this.disabled}
-            {...getOptionAriaAttributes(selected, this.disabled, hidden, !!this.value)}
-            aria-label={textContent}
-            tabindex="-1"
-          />
-          <slot slot="label" />
-        </PrefixedTagNames.pCheckboxWrapper>
-      </div>
+      <Host onClick={!this.disabled && this.onClick}>
+        <div
+          class={{
+            option: true,
+            'option--selected': selected,
+            'option--highlighted': highlighted,
+            'option--disabled': this.disabled,
+          }}
+        >
+          <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={theme}>
+            <input
+              role="option"
+              type="checkbox"
+              checked={selected}
+              disabled={this.disabled}
+              {...getOptionAriaAttributes(selected, this.disabled, hidden, !!this.value)}
+              aria-label={textContent}
+              tabindex="-1"
+            />
+            <slot slot="label" />
+          </PrefixedTagNames.pCheckboxWrapper>
+        </div>
+      </Host>
     );
   }
 
