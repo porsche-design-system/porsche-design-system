@@ -2228,7 +2228,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
@@ -2371,7 +2371,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
@@ -2529,7 +2529,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
@@ -2685,7 +2685,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
@@ -2841,7 +2841,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
@@ -3000,7 +3000,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
@@ -3147,7 +3147,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
@@ -3294,7 +3294,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
@@ -3441,7 +3441,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
@@ -3591,7 +3591,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
@@ -3753,7 +3753,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
@@ -3913,7 +3913,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
@@ -4073,7 +4073,7 @@ input:not(:focus):-moz-placeholder {
   z-index: 10;
   left: 0;
   right: 0;
-  bottom: 54px;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
   box-sizing: border-box;
   max-height: 450px;
   overflow-y: auto;
