@@ -410,9 +410,9 @@ input:not(:focus):-moz-placeholder {
   cursor: not-allowed;
   border: 2px solid #6B6D70;
   border-radius: 4px;
-}
-.input-container:focus-within {
-  border-color: #010205;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
 .label {
   display: flex;
@@ -440,6 +440,7 @@ input:not(:focus):-moz-placeholder {
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -448,7 +449,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -591,9 +591,9 @@ input:not(:focus):-moz-placeholder {
   cursor: not-allowed;
   border: 2px solid #6B6D70;
   border-radius: 4px;
-}
-.input-container:focus-within {
-  border-color: #010205;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
 .label {
   display: flex;
@@ -621,6 +621,7 @@ input:not(:focus):-moz-placeholder {
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -629,7 +630,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -772,9 +772,9 @@ input:not(:focus):-moz-placeholder {
   cursor: not-allowed;
   border: 2px solid #197E10;
   border-radius: 4px;
-}
-.input-container:focus-within {
-  border-color: #010205;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
 .label {
   display: flex;
@@ -802,6 +802,7 @@ input:not(:focus):-moz-placeholder {
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -810,7 +811,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -954,9 +954,9 @@ input:not(:focus):-moz-placeholder {
   cursor: not-allowed;
   border: 2px solid #6B6D70;
   border-radius: 4px;
-}
-.input-container:focus-within {
-  border-color: #010205;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
 .label {
   display: none;
@@ -964,6 +964,7 @@ input:not(:focus):-moz-placeholder {
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -972,7 +973,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -1112,9 +1112,9 @@ input:not(:focus):-moz-placeholder {
   cursor: not-allowed;
   border: 2px solid #6B6D70;
   border-radius: 4px;
-}
-.input-container:focus-within {
-  border-color: #010205;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
 .label {
   display: none;
@@ -1122,6 +1122,7 @@ input:not(:focus):-moz-placeholder {
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -1130,7 +1131,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -1919,9 +1919,9 @@ input:not(:focus):-moz-placeholder {
   border-bottom: 1px solid #6B6D70 !important;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #010205;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
 .label {
   display: flex;
@@ -1949,6 +1949,7 @@ input:not(:focus):-moz-placeholder {
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -1957,7 +1958,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -2104,9 +2104,9 @@ input:not(:focus):-moz-placeholder {
   border-bottom: 1px solid #6B6D70 !important;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #010205;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
 .label {
   display: none;
@@ -2114,6 +2114,7 @@ input:not(:focus):-moz-placeholder {
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -2122,7 +2123,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -2551,13 +2551,14 @@ input:not(:focus):-moz-placeholder {
   cursor: not-allowed;
   border: 2px solid #FC4040;
   border-radius: 4px;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
 }
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -2566,7 +2567,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -2707,13 +2707,14 @@ input:not(:focus):-moz-placeholder {
   cursor: not-allowed;
   border: 2px solid #FC4040;
   border-radius: 4px;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
 }
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -2722,7 +2723,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -2863,9 +2863,9 @@ input:not(:focus):-moz-placeholder {
   cursor: not-allowed;
   border: 2px solid #FC4040;
   border-radius: 4px;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
 }
 .label {
   display: none;
@@ -2873,6 +2873,7 @@ input:not(:focus):-moz-placeholder {
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -2881,7 +2882,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -3022,9 +3022,9 @@ input:not(:focus):-moz-placeholder {
   cursor: not-allowed;
   border: 2px solid #09D087;
   border-radius: 4px;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
 }
 .label {
   display: none;
@@ -3032,6 +3032,7 @@ input:not(:focus):-moz-placeholder {
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -3040,7 +3041,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -3779,13 +3779,14 @@ input:not(:focus):-moz-placeholder {
   border-top: 1px solid #88898C !important;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
 }
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -3794,7 +3795,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -3939,13 +3939,14 @@ input:not(:focus):-moz-placeholder {
   border-top: 1px solid #88898C !important;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
 }
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -3954,7 +3955,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -4099,9 +4099,9 @@ input:not(:focus):-moz-placeholder {
   border-top: 1px solid #88898C !important;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
-.input-container:focus-within {
-  border-color: #FBFCFF;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
 }
 .label {
   display: none;
@@ -4109,6 +4109,7 @@ input:not(:focus):-moz-placeholder {
 .icon {
   padding: 13px 15px;
   cursor: not-allowed;
+  pointer-events: none;
 }
 .reset-icon {
   padding: 4px;
@@ -4117,7 +4118,6 @@ input:not(:focus):-moz-placeholder {
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, .24s) ease;
-  pointer-events: none;
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
