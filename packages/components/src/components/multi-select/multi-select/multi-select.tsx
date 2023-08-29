@@ -262,6 +262,7 @@ export class MultiSelect {
                 color={this.disabled ? 'state-disabled' : 'primary'}
                 onClick={this.onResetClick}
                 onKeyDown={(e) => e.key === 'Tab' && (this.isOpen = false)}
+                disabled={this.disabled}
               >
                 Reset selection
               </PrefixedTagNames.pButtonPure>
@@ -273,6 +274,7 @@ export class MultiSelect {
               color={this.disabled ? 'state-disabled' : 'primary'}
               onClick={this.onIconClick}
               aria-hidden="true"
+              disabled={this.disabled}
             />
           </div>
           <div
