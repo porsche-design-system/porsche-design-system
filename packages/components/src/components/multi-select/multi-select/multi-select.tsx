@@ -274,7 +274,6 @@ export class MultiSelect {
               color={this.disabled ? 'state-disabled' : 'primary'}
               onClick={this.onIconClick}
               aria-hidden="true"
-              disabled={this.disabled}
             />
           </div>
           <div
