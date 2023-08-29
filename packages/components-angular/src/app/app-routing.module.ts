@@ -121,6 +121,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.ModalExampleAccessibilityComponent,
   },
   {
+    name: 'Pin Code Example Controlled',
+    path: 'pin-code-example-controlled',
+    component: fromExamples.PinCodeExampleControlledComponent,
+  },
+  {
     name: 'Scroller Example',
     path: 'scroller-example',
     component: fromExamples.ScrollerExampleComponent,

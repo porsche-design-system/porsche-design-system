@@ -117,6 +117,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.ModalExampleAccessibilityPage />,
   },
   {
+    name: 'Pin Code Example Controlled',
+    path: '/pin-code-example-controlled',
+    element: <fromExamples.PinCodeExampleControlledPage />,
+  },
+  {
     name: 'Scroller Example',
     path: '/scroller-example',
     element: <fromExamples.ScrollerExamplePage />,

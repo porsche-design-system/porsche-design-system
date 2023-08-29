@@ -9,6 +9,7 @@ import { FlyoutExampleSlottedSecondaryComponent } from './flyout-example-slotted
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
+import { PinCodeExampleControlledComponent } from './pin-code-example-controlled.component';
 import { ScrollerExampleComponent } from './scroller-example.component';
 import { SegmentedControlExampleComponent } from './segmented-control-example.component';
 import { StepperHorizontalExampleComponent } from './stepper-horizontal-example.component';
@@ -35,6 +36,7 @@ export const examples = [
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
   ModalExampleAccessibilityComponent,
+  PinCodeExampleControlledComponent,
   ScrollerExampleComponent,
   SegmentedControlExampleComponent,
   StepperHorizontalExampleComponent,
@@ -61,6 +63,7 @@ export * from './flyout-example-slotted-secondary.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './modal-example-accessibility.component';
+export * from './pin-code-example-controlled.component';
 export * from './scroller-example.component';
 export * from './segmented-control-example.component';
 export * from './stepper-horizontal-example.component';

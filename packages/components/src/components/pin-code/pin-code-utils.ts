@@ -49,14 +49,6 @@ export const syncHiddenInput = (
 ): void => {
   setAttribute(hiddenInput, 'name', name);
   setAttribute(hiddenInput, 'value', `${value}`);
-  if (disabled) {
-    setAttribute(hiddenInput, 'disabled');
-  } else {
-    removeAttribute(hiddenInput, 'disabled');
-  }
-  if (required) {
-    setAttribute(hiddenInput, 'required');
-  } else {
-    removeAttribute(hiddenInput, 'required');
-  }
+  (disabled ? setAttribute : removeAttribute)(hiddenInput, 'disabled');
+  (required ? setAttribute : removeAttribute)(hiddenInput, 'required');
 };

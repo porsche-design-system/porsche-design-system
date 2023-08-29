@@ -76,6 +76,11 @@ export const routes: RouteType[] = [
     component: fromExamples.ModalExampleAccessibility,
   },
   {
+    path: '/pin-code-example-controlled',
+    name: 'Pin Code Example Controlled',
+    component: fromExamples.PinCodeExampleControlled,
+  },
+  {
     path: '/scroller-example',
     name: 'Scroller Example',
     component: fromExamples.ScrollerExample,

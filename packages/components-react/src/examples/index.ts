@@ -9,6 +9,7 @@ export * from './FlyoutExampleSlottedSecondary';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
 export * from './ModalExampleAccessibility';
+export * from './PinCodeExampleControlled';
 export * from './ScrollerExample';
 export * from './SegmentedControlExample';
 export * from './StepperHorizontalExample';

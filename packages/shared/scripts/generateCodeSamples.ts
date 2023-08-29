@@ -140,6 +140,17 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-pin-code',
+      samples: [
+        [
+          componentsJsPath + '/pin-code-example-controlled.html',
+          componentsAngularPath + '/pin-code-example-controlled.component.ts',
+          componentsReactPath + '/PinCodeExampleControlled.tsx',
+          componentsVuePath + '/PinCodeExampleControlled.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-scroller',
       samples: [
         [

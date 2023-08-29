@@ -55,10 +55,23 @@ changes while this process is performed.
 
 <Playground :markup="requiredMarkup" :config="config"></Playground>
 
+## Framework Implementation (within form)
+
+## Framework implementation (controlled)
+
+<Playground :frameworkMarkup="eventHandlingExample" :config="{ ...config, withoutDemo: true }">
+  <p-pin-code :theme="theme" label="Some label" :legth="length" @update="(e) => {
+    currentValue = e.detail;
+    isComplete = e.target.value.length === length;
+  }"></p-pin-code>
+  <p-text :theme="theme">Current value: {{currentValue}}</p-text>
+  <p-text :theme="theme">Completely filled: {{isComplete}}</p-text>
+</Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import type { Theme } from '@/models';
+import { getPinCodeCodeSamples } from '@porsche-design-system/shared';
 import { FORM_STATES } from '../../utils';
 import { getAnchorLink } from '@/utils';
  
@@ -97,6 +110,11 @@ export default class Code extends Vue {
   disabledMarkup = `<p-pin-code label="Some label" disabled></p-pin-code>`;
 
   requiredMarkup = `<p-pin-code label="Some label" required></p-pin-code>`;
+
+  length=4;
+  currentValue = '';
+  isComplete = false;
+  eventHandlingExample = getPinCodeCodeSamples('example');
 
   get theme(): Theme {
     return this.$store.getters.theme;
