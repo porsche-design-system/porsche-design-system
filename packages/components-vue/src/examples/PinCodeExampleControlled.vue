@@ -8,7 +8,7 @@
   const isComplete = ref(false);
 
   const onUpdate = (e: PinCodeUpdateEvent): void => {
-    currentValue.value = e.value;
+    currentValue.value = e.value as string;
     isComplete.value = (e.value as string).length === length.value;
   };
 </script>
