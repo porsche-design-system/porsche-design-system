@@ -1,4 +1,4 @@
-import { AriaAttributes } from '../../../types';
+import type { AriaAttributes } from '../../../types';
 
 export const getFilterInputAriaAttributes = (
   isOpen: boolean,
