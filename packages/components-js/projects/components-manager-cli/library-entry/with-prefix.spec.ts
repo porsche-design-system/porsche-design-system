@@ -65,45 +65,93 @@ describe('load()', () => {
     expect(window.PORSCHE_DESIGN_SYSTEM_CDN).toBe('cn');
   });
 
-  it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="auto" set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.com"', () => {
-    window.PORSCHE_DESIGN_SYSTEM_CDN = 'auto';
+  // TODO: remove once backwards compatibility with older versions isn't needed anymore
+  describe('for nested structure', () => {
+    it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="auto" set document.porscheDesignSystem.cdn.url="https://cdn.ui.porsche.com"', () => {
+      window.PORSCHE_DESIGN_SYSTEM_CDN = 'auto';
 
-    load();
-    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.com');
-  });
-
-  it('should for non .cn top level domain set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.com"', () => {
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { origin: 'https://shop.porsche.com' },
+      load();
+      expect(document.porscheDesignSystem.cdn.url).toBe('https://cdn.ui.porsche.com');
     });
 
-    load();
-    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.com');
+    it('should for non .cn top level domain set document.porscheDesignSystem.cdn.url="https://cdn.ui.porsche.com"', () => {
+      Object.defineProperty(window, 'location', {
+        writable: true,
+        value: { origin: 'https://shop.porsche.com' },
+      });
 
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { origin: 'https://shop.porsche.de' },
+      load();
+      expect(document.porscheDesignSystem.cdn.url).toBe('https://cdn.ui.porsche.com');
+
+      Object.defineProperty(window, 'location', {
+        writable: true,
+        value: { origin: 'https://shop.porsche.de' },
+      });
+
+      load();
+      expect(document.porscheDesignSystem.cdn.url).toBe('https://cdn.ui.porsche.com');
     });
 
-    load();
-    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.com');
-  });
+    it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="cn" set document.porscheDesignSystem.cdn.url="https://cdn.ui.porsche.cn"', () => {
+      window.PORSCHE_DESIGN_SYSTEM_CDN = 'cn';
 
-  it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="cn" set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.cn"', () => {
-    window.PORSCHE_DESIGN_SYSTEM_CDN = 'cn';
-
-    load();
-    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.cn');
-  });
-
-  it('should for .cn top level domain set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.cn"', () => {
-    Object.defineProperty(window, 'location', {
-      writable: true,
-      value: { origin: 'https://shop.porsche.cn' },
+      load();
+      expect(document.porscheDesignSystem.cdn.url).toBe('https://cdn.ui.porsche.cn');
     });
 
-    load();
-    expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.cn');
+    it('should for .cn top level domain set document.porscheDesignSystem.cdn.url="https://cdn.ui.porsche.cn"', () => {
+      Object.defineProperty(window, 'location', {
+        writable: true,
+        value: { origin: 'https://shop.porsche.cn' },
+      });
+
+      load();
+      expect(document.porscheDesignSystem.cdn.url).toBe('https://cdn.ui.porsche.cn');
+    });
+  });
+
+  // TODO: enable once backwards compatibility with older versions isn't needed anymore
+  xdescribe('for flat structure', () => {
+    it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="auto" set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.com"', () => {
+      window.PORSCHE_DESIGN_SYSTEM_CDN = 'auto';
+
+      load();
+      expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.com');
+    });
+
+    it('should for non .cn top level domain set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.com"', () => {
+      Object.defineProperty(window, 'location', {
+        writable: true,
+        value: { origin: 'https://shop.porsche.com' },
+      });
+
+      load();
+      expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.com');
+
+      Object.defineProperty(window, 'location', {
+        writable: true,
+        value: { origin: 'https://shop.porsche.de' },
+      });
+
+      load();
+      expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.com');
+    });
+
+    it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="cn" set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.cn"', () => {
+      window.PORSCHE_DESIGN_SYSTEM_CDN = 'cn';
+
+      load();
+      expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.cn');
+    });
+
+    it('should for .cn top level domain set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.cn"', () => {
+      Object.defineProperty(window, 'location', {
+        writable: true,
+        value: { origin: 'https://shop.porsche.cn' },
+      });
+
+      load();
+      expect(document.porscheDesignSystem.cdn).toBe('https://cdn.ui.porsche.cn');
+    });
   });
 });

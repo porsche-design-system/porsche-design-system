@@ -1774,8 +1774,17 @@ button:hover::before {
 }
 .collapsible div {
   overflow: hidden;
+  animation: none;
   padding: 4px;
   margin: -4px;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }
     </style>
     <h2
