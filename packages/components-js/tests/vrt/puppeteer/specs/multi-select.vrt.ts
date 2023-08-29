@@ -48,7 +48,7 @@ it.each(defaultViewports)('should have no visual regression for viewport %s', as
   ).toBeFalsy();
 });
 
-it('should have no visual regression for :hover + :focus-visible', async () => {
+fit('should have no visual regression for :hover + :focus-visible', async () => {
   const vrt = getVisualRegressionStatesTester();
   expect(
     await vrt.test('multi-select-states', async () => {
@@ -78,6 +78,17 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
 <span slot="message">Slotted message <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `
+         <div class="value">
+          <p-multi-select name="options" theme="${theme}" label="Some dropdown label">
+            ${getSelectMarkup()}
+          </p-multi-select>
+          <p-multi-select name="options" theme="${theme}" label="Some dropdown label" state="error" message="Some error message.">
+            ${getSelectMarkup()}
+          </p-multi-select>
+          <p-multi-select name="options" theme="${theme}" label="Some dropdown label" state="success" message="Some success message.">
+            ${getSelectMarkup()}
+          </p-multi-select>
+        </div>
         <div>
           <p-multi-select name="options" theme="${theme}" label="Some dropdown label">
             ${getSelectMarkup()}
@@ -86,6 +97,17 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
             ${getSelectMarkup()}
           </p-multi-select>
           <p-multi-select name="options" theme="${theme}" label="Some dropdown label" state="success" message="Some success message.">
+            ${getSelectMarkup()}
+          </p-multi-select>
+        </div>
+        <div class="value">
+          <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" disabled>
+            ${getSelectMarkup()}
+          </p-multi-select>
+          <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" state="error" message="Some error message." disabled>
+            ${getSelectMarkup()}
+          </p-multi-select>
+          <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" state="success" message="Some success message." disabled>
             ${getSelectMarkup()}
           </p-multi-select>
         </div>
@@ -130,6 +152,10 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         </div>`;
 
       await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+
+      await page.$$eval('.value p-multi-select', async (selects) =>
+        selects.forEach((select: any) => (select.value = ['a']))
+      );
 
       await forceHoverState(page, '.hover p-multi-select >>> .input-container');
       await forceHoverState(page, '.hover p-multi-select span a');
