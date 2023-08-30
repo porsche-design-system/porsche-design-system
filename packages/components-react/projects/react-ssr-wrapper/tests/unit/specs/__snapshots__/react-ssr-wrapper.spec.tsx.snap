@@ -5719,14 +5719,21 @@ input[readonly] {
   width: 0 !important;
   opacity: 0 !important;
 }
+@media (max-width: 480px) {
+  input {
+    width: 39px !important;
+  }
+}
+
 .pin-code-container {
   display: flex;
   position: relative;
   gap: 8px;
   flex-wrap: wrap;
+  width: fit-content;
 }
 .label {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
