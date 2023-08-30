@@ -160,7 +160,7 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
       '&:disabled': {
         cursor: 'not-allowed',
       },
-      '&:not(:focus)': getPlaceholderJssStyle({ color: primaryColor }),
+      '&:not(:focus)': getPlaceholderJssStyle({ color: primaryColor, opacity: 1 }), // Opacity fixes placeholder being shown lighter in firefox
       ...(isDisabled && getPlaceholderJssStyle({ color: disabledColor })),
     },
   };
