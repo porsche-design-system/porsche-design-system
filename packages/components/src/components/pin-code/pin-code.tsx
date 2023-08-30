@@ -1,6 +1,6 @@
 import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../types';
-import type { PinCodeState, PinCodeType, PinCodeUpdateEvent } from './pin-code-utils';
+import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEvent } from './pin-code-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -21,6 +21,7 @@ import {
   initHiddenInput,
   inputIsSingleDigit,
   joinInputValues,
+  PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
   syncHiddenInput,
 } from './pin-code-utils';
@@ -31,7 +32,7 @@ const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
-  length: AllowedTypes.number,
+  length: AllowedTypes.oneOf<PinCodeLength>(PIN_CODE_LENGTHS),
   hideLabel: AllowedTypes.breakpoint('boolean'),
   state: AllowedTypes.oneOf<PinCodeState>(FORM_STATES),
   disabled: AllowedTypes.boolean,
@@ -60,7 +61,7 @@ export class PinCode {
   @Prop() public name?: string;
 
   /** Number of characters of the Pin Code. */
-  @Prop() public length?: number = 4;
+  @Prop() public length?: PinCodeLength = 4;
 
   /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
@@ -229,9 +230,9 @@ export class PinCode {
     else if (key?.length === 1) {
       e.preventDefault();
       // workaround since 'Dead' key can not be prevented with e.preventDefault()
-    } else if(key === 'Dead') {
-      target.blur()
-      setTimeout(() => target.focus())
+    } else if (key === 'Dead') {
+      target.blur();
+      setTimeout(() => target.focus());
     }
     // handle backspace
     else if (key === 'Backspace') {

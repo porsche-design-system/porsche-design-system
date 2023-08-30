@@ -151,20 +151,15 @@
   <p-pin-code label="Type password disabled" type="password" value="1234" disabled="true"> </p-pin-code>
 </div>
 
-<div class="playground light" title="should render with length=6">
+<div class="playground light" title="should render with length=6 and reduce input width on smaller viewports">
   <p-pin-code label="Length=6" length="6"></p-pin-code>
 </div>
 
-<div class="playground dark" title="should render with length=6 on dark theme">
+<div
+  class="playground dark"
+  title="should render with length=6 and reduce input width on smaller viewports on dark theme"
+>
   <p-pin-code label="Length=6" length="6" theme="dark"></p-pin-code>
-</div>
-
-<div class="playground light" title="should render with length=10 and break line">
-  <p-pin-code label="Length=10" length="10"></p-pin-code>
-</div>
-
-<div class="playground dark" title="should render with length=10 and break line on dark theme">
-  <p-pin-code label="Length=10" length="10" theme="dark"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">

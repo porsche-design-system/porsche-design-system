@@ -26,6 +26,9 @@ export const getComponentCss = (
     getBaseChildStyles('input', state, theme, {
       textAlign: 'center',
       width: inputSize,
+      '@media (max-width: 480px)': {
+        width: '39px', // max width that fits into grid
+      },
       ...(isLoading && {
         opacity: 0.2,
       }),
@@ -58,7 +61,7 @@ export const getComponentCss = (
       },
     }),
     'pin-code-container': {
-      display: 'flex',
+      display: 'inline-flex',
       position: 'relative',
       gap: spacingStaticSmall,
       flexWrap: 'wrap',

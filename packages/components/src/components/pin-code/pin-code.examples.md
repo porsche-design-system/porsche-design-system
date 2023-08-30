@@ -51,6 +51,8 @@ changes while this process is performed.
 
 ## Loading
 
+<Playground :markup="loadingMarkup" :config="config"></Playground>
+
 ## Required
 
 <Playground :markup="requiredMarkup" :config="config"></Playground>
@@ -81,6 +83,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getPinCodeCodeSamples } from '@porsche-design-system/shared';
 import { FORM_STATES } from '../../utils';
+import { PIN_CODE_LENGTHS } from './pin-code-utils';
 import { getAnchorLink } from '@/utils';
  
 @Component
@@ -97,7 +100,7 @@ export default class Code extends Vue {
   withDescriptionText = `<p-pin-code label="Some label" description="Some description"></p-pin-code>`
 
   length = 4;
-  lengths = [4, 6, 8];
+  lengths = PIN_CODE_LENGTHS;
   get lengthMarkup() {
     return `<p-pin-code label="Some label" length="${this.length}"></p-pin-code>`;
   }
@@ -115,9 +118,11 @@ export default class Code extends Vue {
     return `<p-pin-code label="Some label" state="${this.state}"  ${attr}></p-pin-code>`;
   }
 
-  disabledMarkup = `<p-pin-code label="Some label" disabled></p-pin-code>`;
+  disabledMarkup = `<p-pin-code label="Some label" disabled="true"></p-pin-code>`;
 
-  requiredMarkup = `<p-pin-code label="Some label" required></p-pin-code>`;
+  loadingMarkup = `<p-pin-code label="Some label" loading="true"></p-pin-code>`;
+
+  requiredMarkup = `<p-pin-code label="Some label" required="true"></p-pin-code>`;
 
   length=4;
   currentValueControlled = '';

@@ -40,7 +40,7 @@ import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
-import { PinCodeState, PinCodeType, PinCodeUpdateEvent } from "./components/pin-code/pin-code-utils";
+import { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEvent } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
@@ -98,7 +98,7 @@ export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
-export { PinCodeState, PinCodeType, PinCodeUpdateEvent } from "./components/pin-code/pin-code-utils";
+export { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEvent } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
@@ -1157,7 +1157,7 @@ export namespace Components {
         /**
           * Number of characters of the Pin Code.
          */
-        "length"?: number;
+        "length"?: PinCodeLength;
         /**
           * Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active.
          */
@@ -3362,7 +3362,7 @@ declare namespace LocalJSX {
         /**
           * Number of characters of the Pin Code.
          */
-        "length"?: number;
+        "length"?: PinCodeLength;
         /**
           * Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active.
          */
