@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, theme: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, isLoading: false, theme: light 1`] = `
 ":host {
   display: block !important;
 }
@@ -146,7 +146,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, theme: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, theme: light 1`] = `
 ":host {
   display: block !important;
 }
@@ -246,7 +246,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, theme: true 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: true, theme: light 1`] = `
 ":host {
   display: block !important;
 }
@@ -356,7 +356,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, theme: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, theme: light 1`] = `
 ":host {
   display: block !important;
 }
@@ -455,7 +455,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, theme: false 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false, theme: dark 1`] = `
 ":host {
   display: block !important;
 }

@@ -10,6 +10,7 @@
   const form = document.querySelector('form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    debugElement.innerText = `Last submitted data: ${e.target.elements['pin-code'].value || 'none'}`;
+    const formData = new FormData(e.target);
+    debugElement.innerText = `Last submitted data: ${Array.from(formData.values()).join(', ') || 'none'}`;
   });
 </script>
