@@ -84,7 +84,7 @@ export class PinCode {
   @Prop() public type?: PinCodeType = 'number';
 
   /** Sets the initial value of the Pin Code. */
-  @Prop() public value?: string = '';
+  @Prop({ mutable: true }) public value?: string = '';
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -228,7 +228,12 @@ export class PinCode {
     } // handle alphanumeric keys
     else if (key?.length === 1) {
       e.preventDefault();
-    } // handle backspace
+      // workaround since 'Dead' key can not be prevented with e.preventDefault()
+    } else if(key === 'Dead') {
+      target.blur()
+      setTimeout(() => target.focus())
+    }
+    // handle backspace
     else if (key === 'Backspace') {
       // transfer focus backward, if the input value is empty, and it is not the first input field
       if (!target.value && previousElementSibling) {
