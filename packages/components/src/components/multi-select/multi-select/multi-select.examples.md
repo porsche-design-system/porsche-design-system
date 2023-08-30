@@ -14,10 +14,10 @@ other form components (e.g. `label`, `description`, `state`, `message`, `hideLab
 options are reduced by matching the options text.
 
 Options are slotted using the `p-multi-select-option` component. Each option needs to have an assigned value, which can
-be passed via an attribute or property and can be of type number or string. Initial selection states can only be
-achieved using the value property on the `p-multi-select` component
-([More Info](components/multi-select/examples#set-value)). Options don't have a selected attribute or property!. If an
-option should be visible but not selectable, it can be disabled by using the `disabled` attribute.
+be passed via an attribute or property and needs to be of type string. Initial selection states can only be achieved
+using the value property on the `p-multi-select` component ([More Info](components/multi-select/examples#set-value)).
+Options don't have a selected attribute or property!. If an option should be visible but not selectable, it can be
+disabled by using the `disabled` attribute.
 
 <Playground :markup="basic()" :config="config"></Playground>
 
@@ -64,8 +64,8 @@ overwritten by passing in a new value.
 ## Set Value
 
 The `p-multi-select` component behaves like regular form elements. It updates its value automatically based on user
-choices, but can also be changed manually by using the value property. This property takes an array of strings or
-numbers that represent the selected option values.
+choices, but can also be changed manually by using the value property. This property takes an array of strings that
+represent the selected option values.
 
 <Playground :frameworkMarkup="dynamicExample" :config="{ ...config, withoutDemo: true }">
   <label>
