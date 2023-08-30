@@ -5,7 +5,7 @@ import { removeAttribute, setAttribute } from '../../utils';
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
 export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
 
-export const PIN_CODE_LENGTHS = [4, 6] as const;
+export const PIN_CODE_LENGTHS = [4 as number, 6 as number] as const;
 export type PinCodeLength = (typeof PIN_CODE_LENGTHS)[number];
 
 export type PinCodeUpdateEvent = { value: string | number };
