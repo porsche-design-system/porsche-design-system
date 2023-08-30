@@ -27,8 +27,8 @@ component in various situations.
 
 ### Don't:
 
-- Don't set the default to 'please select' if there's an empty field.
-- Don’t use very long select boxes that require scrolling but if unavoidable make sure that when open there is only a
-  maximum of 7 elements in the field of view without having to scroll.
+- Don't use very long option texts.
 - Don’t use it for less than 6 options (otherwise use Checkboxes).
 - Don’t exceed maximum width so the option labels turn multiline.
+- Don't use the same option value twice.
+- Don't use the same option text twice.
