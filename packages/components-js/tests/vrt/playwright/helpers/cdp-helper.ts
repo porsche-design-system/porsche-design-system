@@ -12,7 +12,7 @@ const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 
-const allThemes: Theme[] = ['light', 'auto', 'dark'];
+const allThemes: Theme[] = ['light', 'dark'];
 const ALL_STATES = ['hover', 'focus', 'focus-hover'] as const;
 
 export type StateType = (typeof ALL_STATES)[number];
@@ -22,7 +22,9 @@ export type GetThemedMarkup = (theme: Theme) => string;
 
 export const getBodyMarkup = (getElements: GetMarkup) =>
   ALL_STATES.map(
-    (state) => `<div class="playground light">
+    (state) => `<div class="playground light ${state}" title="${
+      state === 'hover' ? ':hover' : state === 'focus' ? ':focus-visible' : ':focus-visible:hover'
+    }">
   ${getElements()}
 </div>`
   ).join('\n');
@@ -37,9 +39,9 @@ export const getThemedBodyMarkup = (
     .map((state) =>
       themes.map(
         (theme) =>
-          `<div class="playground ${theme} ${
-            autoLayout ? 'auto-layout' : ''
-          } ${state}" title="should render with theme ${theme} :${state}">${getThemedElements(theme)}</div>` +
+          `<div class="playground ${theme} ${autoLayout ? 'auto-layout' : ''} ${state}" title="${
+            state === 'hover' ? ':hover' : state === 'focus' ? ':focus-visible' : ':focus-visible:hover'
+          }">${getThemedElements(theme)}</div>` +
           (withSurface
             ? `<div class="playground ${theme} surface ${autoLayout ? 'auto-layout' : ''}">${getThemedElements(
                 theme

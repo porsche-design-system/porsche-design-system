@@ -15,11 +15,6 @@ body {
   transform: translate(0);
 }
 
-#app.auto-layout {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 /* Playground */
 .playground {
   /* TODO: we should generate background colors with scss or js styles package */

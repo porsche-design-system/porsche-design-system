@@ -140,11 +140,11 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
       </head>
       <body>
         <script type="text/javascript">porscheDesignSystem.load();</script>
-        <div id="app" class="auto-layout">${content}</div>
+        <div id="app">${content}</div>
       </body>
     </html>`
   );
   await waitForComponentsReady(page);
 
-  await page.setViewportSize({ width: 1300, height: 600 });
+  await page.setViewportSize({ width: 1000, height: 600 });
 };
