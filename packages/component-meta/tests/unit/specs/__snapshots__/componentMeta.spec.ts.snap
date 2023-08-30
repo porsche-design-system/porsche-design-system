@@ -2038,7 +2038,10 @@ exports[`should match snapshot 1`] = `
       "disabled": "boolean",
       "hideLabel": "boolean",
       "label": "string",
-      "length": "number",
+      "length": [
+        4,
+        6,
+      ],
       "loading": "boolean",
       "message": "string",
       "name": "string",
