@@ -21,7 +21,7 @@ beforeAll(() => {
     isReady: Promise.resolve,
   };
   document.porscheDesignSystem = {
-    cdn: '',
+    cdn: { url: '', prefixes: [] },
     '1.2.3': { ...sharedProps, prefixes: [''] },
     '1.2.4': { ...sharedProps, prefixes: ['prefix'] },
     '1.2.5': { ...sharedProps, prefixes: ['my-prefix'] },

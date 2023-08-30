@@ -14,6 +14,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.6.1] - 2023-08-29
+
+### [3.6.1-rc.0] - 2023-08-29
+
+#### Fixed
+
+- Overlapping issues of `Accordion` contents when positioned outside of content area
+  ([#2746](https://github.com/porsche-design-system/porsche-design-system/pull/2746))
+- Backwards compatibility with previous versions of Porsche Design System
+  ([#2752](https://github.com/porsche-design-system/porsche-design-system/pull/2752))
+
+### [3.6.0] - 2023-08-28
+
+### [3.6.0-rc.2] - 2023-08-28
+
+#### Fixed
+
+- `Tabs Bar` losing `activeTabIndex` and underline
+  ([#2748](https://github.com/porsche-design-system/porsche-design-system/pull/2748))
+
 ### [3.6.0-rc.1] - 2023-08-24
 
 #### Fixed
@@ -85,7 +105,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- Fixes regression in `observeChildren` that affected nested components (e.g. incorrect rendering of nested `Tabs`).
+- Regression in `observeChildren` that affected nested components (e.g. incorrect rendering of nested `Tabs`).
   ([#2649](https://github.com/porsche-design-system/porsche-design-system/pull/2649))
 - Click behaviour of slotted interactive elements of `Carousel`
   ([#2663](https://github.com/porsche-design-system/porsche-design-system/pull/2663))

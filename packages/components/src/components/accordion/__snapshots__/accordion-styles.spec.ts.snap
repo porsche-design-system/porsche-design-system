@@ -78,8 +78,17 @@ button:not(:focus-visible)::before {
 }
 .collapsible div {
   overflow: hidden;
+  animation: none;
   padding: 4px;
   margin: -4px;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }"
 `;
 
@@ -161,9 +170,18 @@ button:not(:focus-visible)::before {
   padding-bottom: 24px;
 }
 .collapsible div {
-  overflow: hidden;
+  overflow: visible;
+  animation: keyframes-overflow var(--p-transition-duration, .24s);
   padding: 4px;
   margin: -4px;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }"
 `;
 
@@ -244,8 +262,17 @@ button:not(:focus-visible)::before {
 }
 .collapsible div {
   overflow: hidden;
+  animation: none;
   padding: 4px;
   margin: -4px;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }"
 `;
 
@@ -326,8 +353,17 @@ button:not(:focus-visible)::before {
 }
 .collapsible div {
   overflow: hidden;
+  animation: none;
   padding: 4px;
   margin: -4px;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }"
 `;
 
@@ -408,9 +444,18 @@ button:not(:focus-visible)::before {
   padding-bottom: 8px;
 }
 .collapsible div {
-  overflow: hidden;
+  overflow: visible;
+  animation: keyframes-overflow var(--p-transition-duration, .24s);
   padding: 4px;
   margin: -4px;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }"
 `;
 
@@ -492,8 +537,17 @@ button:not(:focus-visible)::before {
 }
 .collapsible div {
   overflow: hidden;
+  animation: none;
   padding: 4px;
   margin: -4px;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }"
 `;
 
@@ -575,9 +629,18 @@ button:not(:focus-visible)::before {
   padding-bottom: 24px;
 }
 .collapsible div {
-  overflow: hidden;
+  overflow: visible;
+  animation: keyframes-overflow var(--p-transition-duration, .24s);
   padding: 4px;
   margin: -4px;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }"
 `;
 
@@ -659,9 +722,18 @@ button:not(:focus-visible)::before {
   padding-bottom: 24px;
 }
 .collapsible div {
-  overflow: hidden;
+  overflow: visible;
+  animation: keyframes-overflow var(--p-transition-duration, .24s);
   padding: 4px;
   margin: -4px;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }"
 `;
 
@@ -742,8 +814,17 @@ button:not(:focus-visible)::before {
 }
 .collapsible div {
   overflow: hidden;
+  animation: none;
   padding: 4px;
   margin: -4px;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }"
 `;
 
@@ -824,9 +905,18 @@ button:not(:focus-visible)::before {
   padding-bottom: 8px;
 }
 .collapsible div {
-  overflow: hidden;
+  overflow: visible;
+  animation: keyframes-overflow var(--p-transition-duration, .24s);
   padding: 4px;
   margin: -4px;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }"
 `;
 
@@ -943,8 +1033,17 @@ button:not(:focus-visible)::before {
   padding-bottom: 24px;
 }
 .collapsible div {
-  overflow: hidden;
+  overflow: visible;
+  animation: keyframes-overflow var(--p-transition-duration, .24s);
   padding: 4px;
   margin: -4px;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
 }"
 `;

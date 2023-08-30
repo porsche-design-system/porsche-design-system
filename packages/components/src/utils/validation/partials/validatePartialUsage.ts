@@ -18,7 +18,10 @@ declare global {
         isReady: () => Promise<void>;
         readyResolve: () => void;
       };
-      cdn: string;
+      cdn: {
+        url: string;
+        prefixes: string[]; // to not break older versions
+      };
     };
   }
 }
