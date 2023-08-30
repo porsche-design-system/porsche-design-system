@@ -57,8 +57,8 @@ export const getComponentCss = (
         },
         ...(isWithinForm && {
           [selectorNativeSelect]: {
+            position: 'absolute',
             opacity: 0,
-            display: 'block',
             height: '0px',
           },
         }),
