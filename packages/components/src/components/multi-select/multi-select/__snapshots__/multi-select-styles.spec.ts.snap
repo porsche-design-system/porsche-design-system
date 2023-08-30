@@ -34,15 +34,19 @@ input:disabled {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -203,15 +207,19 @@ input:disabled {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -361,15 +369,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -542,15 +554,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -723,15 +739,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -905,15 +925,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -1063,15 +1087,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -1209,15 +1237,19 @@ input:disabled {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -1382,15 +1414,19 @@ input:disabled {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -1555,15 +1591,19 @@ input:disabled {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -1704,15 +1744,19 @@ input:disabled {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -1866,15 +1910,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -2051,15 +2099,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #010205;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -2201,15 +2253,19 @@ input:disabled {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -2344,15 +2400,19 @@ input:disabled {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -2502,15 +2562,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -2658,15 +2722,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -2814,15 +2882,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -2973,15 +3045,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -3120,15 +3196,19 @@ input:disabled {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -3267,15 +3347,19 @@ input:disabled {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -3414,15 +3498,19 @@ input:disabled {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -3564,15 +3652,19 @@ input:disabled {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -3726,15 +3818,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -3886,15 +3982,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
@@ -4046,15 +4146,19 @@ input:-moz-placeholder {
 }
 input:not(:focus)::placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-webkit-input-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus)::-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 input:not(:focus):-moz-placeholder {
   color: #FBFCFF;
+  opacity: 1;
 }
 .root {
   position: relative;
