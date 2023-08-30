@@ -192,6 +192,8 @@ export class PinCode {
   private onClick = (
     e: MouseEvent & { target: HTMLInputElement & { previousElementSibling: HTMLInputElement } }
   ): void => {
+    /* eslint-disable no-console */
+    console.log('onClick', e);
     if (isDisabledOrLoading(this.disabled, this.loading) || e.target.tagName !== 'INPUT') {
       e.preventDefault();
     } // only allow focus on filled inputs or the first empty input
@@ -205,6 +207,8 @@ export class PinCode {
       target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
     }
   ): void => {
+    /* eslint-disable no-console */
+    console.log('onKeyDown', e);
     const {
       key,
       target,
@@ -242,6 +246,8 @@ export class PinCode {
   };
 
   private onPaste = (e: ClipboardEvent): void => {
+    /* eslint-disable no-console */
+    console.log('onPaste', e.clipboardData);
     // remove whitespaces and cut string if pasted value is longer than pin code length
     const optimizedPastedData = e.clipboardData.getData('Text').replace(/\s/g, '').slice(0, this.length);
     if (isDisabledOrLoading(this.disabled, this.loading)) {
