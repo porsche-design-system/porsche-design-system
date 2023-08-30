@@ -1,6 +1,6 @@
 import type { FormState } from '../../utils/form/form-state';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { getCss, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
@@ -61,13 +61,19 @@ export const getComponentCss = (
       },
     }),
     'pin-code-container': {
-      display: 'inline-flex',
+      display: 'flex',
       position: 'relative',
       gap: spacingStaticSmall,
       flexWrap: 'wrap',
+      width: 'fit-content',
     },
     ...mergeDeep(labelStyles, {
       label: {
+        ...buildResponsiveStyles(
+          hideLabel,
+          // workaround: since pin-code component is not wrapped into label tag it behaves differently
+          (isLabelHidden: boolean) => (isLabelHidden ? { display: 'none' } : { display: 'inline-flex' })
+        ),
         marginBottom: spacingStaticXSmall,
       },
     }),

@@ -120,9 +120,6 @@ export class PinCode {
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.disabled, this.loading, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const labelProps = {
-      onClick: this.onLabelClick,
-    };
 
     // reset array of input elements
     this.pinCodeElements = [];
@@ -132,15 +129,15 @@ export class PinCode {
 
     return (
       <Host>
-        <label class="label" htmlFor="current-input" onClick={(e) => e.preventDefault()}>
+        <label class="label" htmlFor="current-input">
           {hasLabel(this.host, this.label) && (
-            <span id="label" class="label__text" {...labelProps}>
+            <span id="label" class="label__text">
               {this.label || <slot name="label" />}
               {!isParentFieldsetRequired(this.host) && this.required && <Required />}
             </span>
           )}
           {hasDescription(this.host, this.description) && (
-            <span id="description" class="label__text" {...labelProps}>
+            <span id="description" class="label__text">
               {this.description || <slot name="description" />}
             </span>
           )}
@@ -180,15 +177,6 @@ export class PinCode {
       </Host>
     );
   }
-
-  private onLabelClick = (): void => {
-    const firstEmptyPinCodeElement = this.pinCodeElements.find((pinCodeElement) => !pinCodeElement.value);
-    if (firstEmptyPinCodeElement) {
-      firstEmptyPinCodeElement.focus();
-    } else {
-      this.pinCodeElements[this.length - 1].focus();
-    }
-  };
 
   private onClick = (
     e: MouseEvent & { target: HTMLInputElement & { previousElementSibling: HTMLInputElement } }
