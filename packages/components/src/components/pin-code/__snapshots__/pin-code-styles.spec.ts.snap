@@ -44,6 +44,12 @@ input[readonly] {
   width: 0 !important;
   opacity: 0 !important;
 }
+@media (max-width: 480px) {
+  input {
+    width: 39px !important;
+  }
+}
+
 @media(hover:hover) {
   input:not(:disabled):not(:focus):not([readonly]):hover {
     border-color: #0E4809 !important;
@@ -55,9 +61,10 @@ input[readonly] {
   position: relative;
   gap: 8px;
   flex-wrap: wrap;
+  width: fit-content;
 }
 .label {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 4px;
   position: relative;
@@ -94,6 +101,9 @@ input[readonly] {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(min-width:480px) {
+  .label {
+    display: inline-flex;
+  }
   .label__text {
     position: static;
     width: fit-content;
@@ -103,6 +113,9 @@ input[readonly] {
 }
 
 @media(min-width:760px) {
+  .label {
+    display: none;
+  }
   .label__text {
     position: absolute;
     width: 0;
@@ -112,6 +125,9 @@ input[readonly] {
 }
 
 @media(min-width:1000px) {
+  .label {
+    display: inline-flex;
+  }
   .label__text {
     position: static;
     width: fit-content;
@@ -121,6 +137,9 @@ input[readonly] {
 }
 
 @media(min-width:1300px) {
+  .label {
+    display: none;
+  }
   .label__text {
     position: absolute;
     width: 0;
@@ -130,6 +149,9 @@ input[readonly] {
 }
 
 @media(min-width:1760px) {
+  .label {
+    display: inline-flex;
+  }
   .label__text {
     position: static;
     width: fit-content;
@@ -190,6 +212,12 @@ input[readonly] {
   width: 0 !important;
   opacity: 0 !important;
 }
+@media (max-width: 480px) {
+  input {
+    width: 39px !important;
+  }
+}
+
 @media(hover:hover) {
   input:not(:disabled):not(:focus):not([readonly]):hover {
     border-color: #010205 !important;
@@ -201,9 +229,10 @@ input[readonly] {
   position: relative;
   gap: 8px;
   flex-wrap: wrap;
+  width: fit-content;
 }
 .label {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
@@ -291,6 +320,12 @@ input[readonly] {
   width: 0 !important;
   opacity: 0 !important;
 }
+@media (max-width: 480px) {
+  input {
+    width: 39px !important;
+  }
+}
+
 @media(hover:hover) {
   input:not(:disabled):not(:focus):not([readonly]):hover {
     border-color: #010205 !important;
@@ -311,9 +346,10 @@ input[readonly] {
   position: relative;
   gap: 8px;
   flex-wrap: wrap;
+  width: fit-content;
 }
 .label {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
@@ -400,6 +436,12 @@ input[readonly] {
   width: 0 !important;
   opacity: 0 !important;
 }
+@media (max-width: 480px) {
+  input {
+    width: 39px !important;
+  }
+}
+
 @media(hover:hover) {
   input:not(:disabled):not(:focus):not([readonly]):hover {
     border-color: #010205 !important;
@@ -411,9 +453,10 @@ input[readonly] {
   position: relative;
   gap: 8px;
   flex-wrap: wrap;
+  width: fit-content;
 }
 .label {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 4px;
   position: relative;
@@ -499,6 +542,12 @@ input[readonly] {
   width: 0 !important;
   opacity: 0 !important;
 }
+@media (max-width: 480px) {
+  input {
+    width: 39px !important;
+  }
+}
+
 @media(hover:hover) {
   input:not(:disabled):not(:focus):not([readonly]):hover {
     border-color: #FB0404 !important;
@@ -510,9 +559,10 @@ input[readonly] {
   position: relative;
   gap: 8px;
   flex-wrap: wrap;
+  width: fit-content;
 }
 .label {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 4px;
   position: relative;
