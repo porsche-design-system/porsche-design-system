@@ -36,6 +36,7 @@ const components: Component[] = [
   'modal',
   'model-signature',
   'pagination',
+  'pin-code',
   'popover',
   'radio-button-wrapper',
   'scroller',
