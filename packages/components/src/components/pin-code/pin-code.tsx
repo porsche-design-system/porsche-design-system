@@ -238,6 +238,8 @@ export class PinCode {
       this.value = joinInputValues(this.pinCodeElements);
       this.updateValue();
     } else {
+      /* eslint-disable no-console */
+      console.log(e.target.value);
       this.value = e.target.value ? e.target.value : this.value; // needed to update value on auto-complete via keyboard suggestion
     }
   };
