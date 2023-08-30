@@ -235,7 +235,7 @@ export class PinCode {
       this.value = joinInputValues(this.pinCodeElements);
       this.updateValue();
     } else {
-      this.value = e.target.value; // needed to update value on auto-complete via keyboard suggestion
+      this.value = e.target.value ? e.target.value : this.value; // needed to update value on auto-complete via keyboard suggestion
     }
   };
 
