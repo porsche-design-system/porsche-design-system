@@ -7,7 +7,7 @@ export const PinCodeExamplePage = (): JSX.Element => {
   const onSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    setLastSubmittedValue(Array.from(formData.values()).join(', ') || 'none');
+    setLastSubmittedValue(Array.from(formData.values()).join() || 'none');
   }, []);
 
   return (

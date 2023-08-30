@@ -17,6 +17,6 @@ export class PinCodeExampleComponent {
   onSubmit(e: Event) {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    this.lastSubmittedValue = Array.from(formData.values()).join(', ') || 'none';
+    this.lastSubmittedValue = Array.from(formData.values()).join() || 'none';
   }
 }

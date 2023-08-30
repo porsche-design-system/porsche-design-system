@@ -133,7 +133,7 @@ export default class Code extends Vue {
   formExample = getPinCodeCodeSamples('default');
   onSubmit(e) {
     const formData = new FormData(e.target);
-    this.currentValueForm = Array.from(formData.values()).join(', ') || 'none';
+    this.currentValueForm = Array.from(formData.values()).join() || 'none';
   }
 
 
