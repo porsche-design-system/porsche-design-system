@@ -23,6 +23,8 @@ export const getStylesWithoutSlottedSelector = (styles: Styles): Styles => {
 
 export const inputIsSingleDigit = (input: string): boolean => /^\d$/.test(input);
 
+export const inputConsistsOfDigits = (input: string): boolean => /^\d+$/.test(input);
+
 export const joinInputValues = (pinCodeElements: HTMLInputElement[]): string =>
   pinCodeElements.map((el) => el.value).join('');
 

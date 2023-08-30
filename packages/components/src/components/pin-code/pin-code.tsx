@@ -6,6 +6,7 @@ import {
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  getTagNameWithoutPrefix,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -19,6 +20,7 @@ import {
 import { getComponentCss } from './pin-code-styles';
 import {
   initHiddenInput,
+  inputConsistsOfDigits,
   inputIsSingleDigit,
   joinInputValues,
   PIN_CODE_LENGTHS,
@@ -27,6 +29,7 @@ import {
 } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
+import { consoleWarn } from '../../utils/log';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -96,6 +99,7 @@ export class PinCode {
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;
   private pinCodeElements: HTMLInputElement[] = [];
+  private warningPrefix = `@Prop() "value" on component <${getTagNameWithoutPrefix(this.host)}>:`;
 
   public connectedCallback(): void {
     this.isWithinForm = isWithinForm(this.host);
@@ -109,8 +113,22 @@ export class PinCode {
 
   public componentWillRender(): void {
     // make sure initial value is not longer than pin code length
-    if (this.value) {
+    if (this.value && this.value.length > this.length) {
       this.value = this.value.slice(0, this.length);
+      this.warnIfValueIsTooLong();
+    }
+
+    // check whether value consists of numbers
+    if (this.value && !inputConsistsOfDigits(this.value)) {
+      this.value = '';
+      consoleWarn(
+        this.warningPrefix,
+        `Provided pin code contains characters that are not of type number and the value has been reset.`
+      );
+    }
+
+    if (this.isWithinForm) {
+      syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
     }
   }
 
@@ -126,9 +144,6 @@ export class PinCode {
 
     // reset array of input elements
     this.pinCodeElements = [];
-    if (this.isWithinForm) {
-      syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
-    }
 
     return (
       <Host>
@@ -145,7 +160,13 @@ export class PinCode {
             </span>
           )}
         </label>
-        <div class="pin-code-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onClick={this.onClick}>
+        <div
+          class="pin-code-container"
+          onKeyDown={this.onKeyDown}
+          onKeyUp={this.onKeyUp}
+          onPaste={this.onPaste}
+          onClick={this.onClick}
+        >
           {this.loading && (
             <PrefixedTagNames.pSpinner
               class="spinner"
@@ -167,7 +188,7 @@ export class PinCode {
               maxLength={1}
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
-              value={/^\d+$/.test(this.value) ? this.value[index] : ''}
+              value={this.value[index]}
               disabled={this.disabled}
               required={this.required}
               ref={(el) => this.pinCodeElements.push(el)}
@@ -184,12 +205,13 @@ export class PinCode {
   private onClick = (
     e: MouseEvent & { target: HTMLInputElement & { previousElementSibling: HTMLInputElement } }
   ): void => {
-    /* eslint-disable no-console */
-    console.log('onClick', e);
-    if (isDisabledOrLoading(this.disabled, this.loading) || e.target.tagName !== 'INPUT') {
+    const {
+      target: { previousElementSibling, tagName, value },
+    } = e;
+    if (isDisabledOrLoading(this.disabled, this.loading) || tagName !== 'INPUT') {
       e.preventDefault();
     } // only allow focus on filled inputs or the first empty input
-    else if (!e.target.value && e.target.previousElementSibling && !e.target.previousElementSibling.value) {
+    else if (!value && previousElementSibling && !previousElementSibling.value) {
       this.pinCodeElements.find((pinCodeElement) => !pinCodeElement.value).focus();
     }
   };
@@ -199,75 +221,90 @@ export class PinCode {
       target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
     }
   ): void => {
-    /* eslint-disable no-console */
-    console.log('onKeyDown', e);
     const {
       key,
       target,
       target: { previousElementSibling, nextElementSibling },
     } = e;
+
+    // disabled or loading and handle alphanumeric keys
     if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.preventDefault();
     } // if input is valid overwrite old value
     else if (inputIsSingleDigit(key)) {
+      e.preventDefault();
       target.value = key;
       if (nextElementSibling) {
         nextElementSibling.focus();
       }
-      e.preventDefault();
       this.value = joinInputValues(this.pinCodeElements);
       this.updateValue();
-    } // handle alphanumeric keys
-    else if (key?.length === 1) {
+    } // disabled or loading and handle alphanumeric keys
+    else if (key?.length === 1 && !(e.ctrlKey || e.metaKey)) {
       e.preventDefault();
-      // workaround since 'Dead' key can not be prevented with e.preventDefault()
-    } else if (key === 'Dead') {
-      target.blur();
-      setTimeout(() => target.focus());
-    }
-    // handle backspace
+    } // handle backspace
     else if (key === 'Backspace') {
       // transfer focus backward, if the input value is empty, and it is not the first input field
       if (!target.value && previousElementSibling) {
+        e.preventDefault();
         previousElementSibling.value = '';
         previousElementSibling.focus();
       } else {
         target.value = '';
       }
-      e.preventDefault();
       this.value = joinInputValues(this.pinCodeElements);
       this.updateValue();
-    } else {
-      /* eslint-disable no-console */
-      console.log(e.target.value);
-      this.value = e.target.value ? e.target.value : this.value; // needed to update value on auto-complete via keyboard suggestion
-      this.updateValue();
+    } // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
+    else if (key === 'Dead') {
+      target.blur();
+      setTimeout(() => target.focus());
     }
   };
 
+  // needed to update value on auto-complete via keyboard suggestion
+  private onKeyUp = (
+    e: KeyboardEvent & {
+      target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
+    }
+  ): void => {
+    const { target } = e;
+    if (target.value?.length >= this.length) {
+      if (target.value?.length >= this.length) {
+        this.warnIfValueIsTooLong();
+      }
+      this.value = target.value;
+      this.updateValue();
+    }
+    this.focusFirstEmptyOrLastElement();
+  };
+
   private onPaste = (e: ClipboardEvent): void => {
-    /* eslint-disable no-console */
-    console.log('onPaste', e.clipboardData);
     // remove whitespaces and cut string if pasted value is longer than pin code length
     const optimizedPastedData = e.clipboardData.getData('Text').replace(/\s/g, '').slice(0, this.length);
-    if (isDisabledOrLoading(this.disabled, this.loading)) {
-      e.preventDefault();
-    } else if (/^[0-9]+$/.test(optimizedPastedData) && optimizedPastedData !== this.value) {
+    if (/^[0-9]+$/.test(optimizedPastedData) && optimizedPastedData !== this.value) {
       this.value = optimizedPastedData;
       this.updateValue();
-      if (optimizedPastedData.length === this.length) {
-        this.pinCodeElements[this.value.length - 1]?.focus();
-      } else {
-        this.pinCodeElements[this.value.length]?.focus();
-      }
+      this.focusFirstEmptyOrLastElement();
     }
     e.preventDefault();
   };
 
   private updateValue = (): void => {
     this.update.emit({ value: this.value });
-    // TODO: reminder to remove console.log
-    /* eslint-disable no-console */
-    console.log('value', this.value);
+  };
+
+  private warnIfValueIsTooLong = (): void => {
+    consoleWarn(
+      this.warningPrefix,
+      `Provided pin code has too many characters and was truncated to the max legth of ${this.length}.`
+    );
+  };
+
+  private focusFirstEmptyOrLastElement = (): void => {
+    if (this.value.length === this.length) {
+      this.pinCodeElements[this.value.length - 1]?.focus();
+    } else {
+      this.pinCodeElements[this.value.length]?.focus();
+    }
   };
 }
