@@ -226,7 +226,7 @@ export class PinCode {
       this.value = joinInputValues(this.pinCodeElements);
       this.updateValue();
     } // handle alphanumeric keys
-    else if (key.length === 1) {
+    else if (key?.length === 1) {
       e.preventDefault();
     } // handle backspace
     else if (key === 'Backspace') {
