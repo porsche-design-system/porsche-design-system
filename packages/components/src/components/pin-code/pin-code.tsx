@@ -241,6 +241,7 @@ export class PinCode {
       /* eslint-disable no-console */
       console.log(e.target.value);
       this.value = e.target.value ? e.target.value : this.value; // needed to update value on auto-complete via keyboard suggestion
+      this.updateValue();
     }
   };
 
