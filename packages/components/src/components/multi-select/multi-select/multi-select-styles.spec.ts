@@ -29,7 +29,7 @@ describe('getComponentCss()', () => {
     ['up', false, true, false, 'error', true, false, 'dark'],
     ['up', true, true, false, 'error', true, false, 'dark'],
   ])(
-    'should return correct css for direction: %s, isOpen: %s, isDisabled: %s, hideLabel: %o, state: %s, isWithinForm: %s and theme: %s',
+    'should return correct css for direction: %s, isOpen: %s, isDisabled: %s, hideLabel: %o, state: %s, isWithinForm: %s, hasLabel: %s and theme: %s',
     (...args) => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }

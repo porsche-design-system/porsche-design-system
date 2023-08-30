@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: false, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -9,8 +9,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -173,7 +173,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: true, state: success, isWithinForm: true, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -182,8 +182,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -323,7 +323,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -332,8 +332,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -508,7 +508,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: true 2`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true, hasLabel: true and theme: light 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -517,8 +517,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -693,7 +693,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: success, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: success, isWithinForm: true, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -702,8 +702,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -879,7 +879,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -888,8 +888,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -1041,7 +1041,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: true 2`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true, hasLabel: true and theme: light 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1050,8 +1050,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -1203,7 +1203,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1212,8 +1212,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -1380,7 +1380,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true and theme: true 2`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true, hasLabel: true and theme: light 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1389,8 +1389,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -1557,7 +1557,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: none, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1566,8 +1566,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -1710,7 +1710,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1719,8 +1719,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -1864,7 +1864,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: false, state: none, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: false, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -1873,8 +1873,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -2053,7 +2053,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: true, state: none, isWithinForm: true and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: true, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2062,8 +2062,8 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -2219,7 +2219,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: false, state: success, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: false, state: success, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2228,8 +2228,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -2366,7 +2366,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: true, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2375,8 +2375,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -2516,7 +2516,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2525,8 +2525,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -2676,7 +2676,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: false 2`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true, hasLabel: false and theme: dark 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2685,8 +2685,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -2836,7 +2836,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -2845,8 +2845,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -2999,7 +2999,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: success, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: success, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3008,8 +3008,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -3162,7 +3162,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3171,8 +3171,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -3313,7 +3313,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true and theme: false 2`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true, hasLabel: false and theme: dark 2`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3322,8 +3322,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -3464,7 +3464,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3473,8 +3473,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -3618,7 +3618,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3627,8 +3627,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -3772,7 +3772,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: error, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3781,8 +3781,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -3936,7 +3936,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -3945,8 +3945,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
@@ -4100,7 +4100,7 @@ input:not(:focus):-moz-placeholder {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: true, state: error, isWithinForm: true and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: true, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
   position: relative !important;
@@ -4109,8 +4109,8 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   display: none !important;
 }
 ::slotted([slot=select]) {
+  position: absolute !important;
   opacity: 0 !important;
-  display: block !important;
   height: 0px !important;
 }
 input {
