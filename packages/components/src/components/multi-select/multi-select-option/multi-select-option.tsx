@@ -26,7 +26,7 @@ export class MultiSelectOption {
   @Prop() public value: string;
 
   /** Disables the option. */
-  @Prop() public disabled?: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop() public disabled?: boolean = false;
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
