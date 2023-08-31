@@ -186,8 +186,8 @@ export const routes: RouteType[] = [
     element: <fromStyles.StylesDropShadowExample />,
   },
   {
-    name: 'Styles Flyout With Grid',
-    path: '/styles-flyout-with-grid',
+    name: 'Styles Flyout Grid',
+    path: '/styles-flyout-grid',
     element: <fromStyles.StylesFlyoutGridExample />,
   },
   {

@@ -4,7 +4,7 @@ import { GridLayout } from '../components';
 export const StylesFlyoutGridExample = (): JSX.Element => {
   return (
     <>
-      <PFlyout className={'flyout'} open={true}>
+      <PFlyout open={true}>
         <GridLayout gridVisualizer={false} />
       </PFlyout>
     </>
