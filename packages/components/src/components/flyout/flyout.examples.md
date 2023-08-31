@@ -55,7 +55,7 @@ scrolling to the end of the flyout or when there is available space to accommoda
 
 Make sure to set the `aria` property with a descriptive `aria-label` value when using slotted heading.
 
-<Playground :frameworkMarkup="codeExampleSlottedGrid" :markup="slottedSample['vanilla-js']" :config="config">
+<Playground :frameworkMarkup="codeExampleSlotted" :markup="slottedSample['vanilla-js']" :config="config">
   <div class="select-container">
     <SelectOptions v-model="scrollable" :values="scrollables" name="scrollable"></SelectOptions>
     <SelectOptions v-model="subFooter" :values="subFooters" name="sub-footer"></SelectOptions>
