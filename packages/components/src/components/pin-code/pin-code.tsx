@@ -159,9 +159,9 @@ export class PinCode {
         <div
           class="pin-code-container"
           onKeyDown={this.onKeyDown}
-          onKeyUp={this.onKeyUp}
           onPaste={this.onPaste}
           onClick={this.onClick}
+          onInput={this.onInput}
         >
           {this.loading && (
             <PrefixedTagNames.pSpinner
@@ -181,7 +181,6 @@ export class PinCode {
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-busy={this.loading}
               autoComplete="one-time-code"
-              maxLength={1}
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
               value={this.value[index]}
@@ -213,6 +212,20 @@ export class PinCode {
     }
   };
 
+  private onInput = (
+    e: InputEvent & {
+      target: HTMLInputElement;
+    }
+  ): void => {
+    // needed to update value on auto-complete via keyboard suggestion
+    const { target } = e;
+    if (target.value?.length >= this.length) {
+      this.value = (target as HTMLInputElement).value;
+      this.updateValue();
+    }
+    this.focusFirstEmptyOrLastElement();
+  };
+
   private onKeyDown = (
     e: KeyboardEvent & {
       target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
@@ -223,7 +236,6 @@ export class PinCode {
       target,
       target: { previousElementSibling, nextElementSibling },
     } = e;
-
     // disabled or loading and handle alphanumeric keys
     if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.preventDefault();
@@ -254,23 +266,13 @@ export class PinCode {
     } // support native submit behavior
     else if (key === 'Enter') {
       if (isWithinForm) {
-        getClosestHTMLElement(this.host, 'form').submit();
+        this.form.requestSubmit();
       }
     } // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
     else if (key === 'Dead') {
       target.blur();
       setTimeout(() => target.focus());
     }
-  };
-
-  private onKeyUp = (e: KeyboardEvent & { target: HTMLInputElement }): void => {
-    // needed to update value on auto-complete via keyboard suggestion
-    const { target } = e;
-    if (target.value?.length >= this.length) {
-      this.value = target.value;
-      this.updateValue();
-    }
-    this.focusFirstEmptyOrLastElement();
   };
 
   private onPaste = (e: ClipboardEvent): void => {
