@@ -4,6 +4,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IMaskModule } from 'angular-imask';
+import * as fromComponents from './components';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 import * as fromStyles from './styles';
@@ -15,6 +16,7 @@ import * as fromStyles from './styles';
     ...fromPages.generatedPages,
     ...fromExamples.examples,
     ...fromStyles.examples,
+    ...fromComponents.examples,
   ],
   imports: [
     BrowserModule,
