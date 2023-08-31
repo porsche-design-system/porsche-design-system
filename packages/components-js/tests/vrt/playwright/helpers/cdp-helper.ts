@@ -21,33 +21,25 @@ export type GetMarkup = () => string;
 export type GetThemedMarkup = (theme: Theme) => string;
 
 export const getBodyMarkup = (getElements: GetMarkup) =>
-  ALL_STATES.map(
-    (state) => `<div class="playground light ${state}" title="${
-      state === 'hover' ? ':hover' : state === 'focus' ? ':focus-visible' : ':focus-visible:hover'
-    }">
+  ALL_STATES.map((state) => {
+    return `<div class="playground light ${state}" title="should render :${state}">
   ${getElements()}
-</div>`
-  ).join('\n');
+</div>`;
+  }).join('\n');
 
 export const getThemedBodyMarkup = (
   getThemedElements: GetThemedMarkup,
-  opts?: { states?: StateType[]; withSurface?: boolean; autoLayout?: boolean; themes?: Theme[] }
+  opts?: { states?: StateType[]; autoLayout?: boolean; themes?: Theme[] }
 ): string => {
-  const { states = ALL_STATES, withSurface = false, autoLayout = false, themes = allThemes } = opts || {};
+  const { states = ALL_STATES, autoLayout = false, themes = allThemes } = opts || {};
 
   return states
     .map((state) =>
-      themes.map(
-        (theme) =>
-          `<div class="playground ${theme} ${autoLayout ? 'auto-layout' : ''} ${state}" title="${
-            state === 'hover' ? ':hover' : state === 'focus' ? ':focus-visible' : ':focus-visible:hover'
-          }">${getThemedElements(theme)}</div>` +
-          (withSurface
-            ? `<div class="playground ${theme} surface ${autoLayout ? 'auto-layout' : ''}">${getThemedElements(
-                theme
-              )}</div>`
-            : '')
-      )
+      themes.map((theme) => {
+        return `<div class="playground ${theme} ${
+          autoLayout ? 'auto-layout' : ''
+        } ${state}" title="should render with theme ${theme} :${state}">${getThemedElements(theme)}</div>`;
+      })
     )
     .flat()
     .join('\n');

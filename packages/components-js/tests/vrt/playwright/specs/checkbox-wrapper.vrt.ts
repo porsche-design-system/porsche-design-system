@@ -26,7 +26,6 @@ test.describe(component, async () => {
         <style>
           #app { display: grid; grid-template-columns: repeat(2, 50%); }
           p-checkbox-wrapper:not(:last-child), .force-label { margin-bottom: 1rem; }
-          .playground[title]::before { font: revert; }
         </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `

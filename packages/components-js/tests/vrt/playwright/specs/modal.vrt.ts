@@ -29,7 +29,6 @@ test.describe(component, async () => {
             height: 300px;
             transform: translate3d(0, 0, 0);
           }
-          .playground[title]::before { font: revert; }
         </style>`;
 
       const getElementsMarkup: GetMarkup = () => `

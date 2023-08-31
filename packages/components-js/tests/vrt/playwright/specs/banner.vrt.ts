@@ -26,7 +26,6 @@ test.describe(component, async () => {
         <style>
           #app { display: grid; grid-template-columns: repeat(2, 50%); }
           .playground { transform: translate3d(0, 0, 0); height: 20rem; }
-          .playground[title]::before { font: revert; }
         </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `

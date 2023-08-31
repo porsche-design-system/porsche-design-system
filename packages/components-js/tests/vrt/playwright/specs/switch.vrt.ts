@@ -27,7 +27,6 @@ test.describe(component, async () => {
       test.skip(scheme === 'dark');
       const head = `<style>
         #app { display: grid; grid-template-columns: repeat(2, 50%); }
-        .playground[title]::before { font: revert; }
         p-switch:not(:last-child) { margin-right: 16px; margin-bottom: 1rem; }
       </style>`;
 

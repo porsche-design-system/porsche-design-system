@@ -27,7 +27,6 @@ test.describe(component, async () => {
       const head = `<style>
         #app { display: grid; grid-template-columns: repeat(2, 50%); }
         p-segmented-control:not(:last-child) { margin-bottom: 0.5rem; }
-        .playground[title]::before { font: revert; }
       </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme) => `

@@ -24,7 +24,6 @@ test.describe(component, async () => {
       test.skip(scheme === 'dark');
       const head = `<style>
         p-pagination { margin-bottom: 1rem; }
-        .playground[title]::before { font: revert; }
 </style>`;
 
       const getElementsMarkup: GetThemedMarkup = (theme: Theme) => `

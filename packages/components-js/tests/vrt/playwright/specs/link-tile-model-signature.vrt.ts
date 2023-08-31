@@ -30,7 +30,6 @@ test.describe(component, async () => {
             grid-template-columns: 1fr 1fr;
             column-gap: 1rem;
           }
-          .playground[title]::before { font: revert; }
         </style>`;
 
       const image =

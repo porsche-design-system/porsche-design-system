@@ -24,7 +24,6 @@ test.describe(component, async () => {
       const head = `
         <style>
           #app { display: grid; grid-template-columns: repeat(2, 50%); }
-          .playground[title]::before { font: revert; }
           p-button:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem; }
         </style>`;
 

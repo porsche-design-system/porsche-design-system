@@ -25,7 +25,6 @@ test.describe(component, async () => {
       test.skip(scheme === 'dark');
       const head = `<style>
   p-marque:not(:last-child) { margin-right: 0.5rem; }
-  .playground[title]::before { font: revert; }
 </style>`;
 
       const getElementsMarkup: GetMarkup = () => `<p-marque href="https://www.porsche.com"></p-marque>

@@ -29,7 +29,6 @@ test.describe(component, async () => {
       const head = `<style>
         p-tag:not(:last-child) { margin-right: 0.5rem; }
         .row:not(:last-child) { margin-bottom: 0.5rem; }
-        .playground[title]::before { font: revert; }
       </style>`;
 
       const getColorVariations = (theme: Theme, child: string): string =>

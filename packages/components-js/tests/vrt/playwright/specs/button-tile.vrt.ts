@@ -24,7 +24,6 @@ test.describe(component, async () => {
       test.skip(scheme === 'dark');
       const head = `
         <style>
-          .playground[title]::before { font: revert; }
           .grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;

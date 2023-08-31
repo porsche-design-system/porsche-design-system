@@ -24,7 +24,6 @@ test.describe(component, async () => {
     }) => {
       test.skip(scheme === 'dark');
       const head = `<style>
-          .playground[title]::before { font: revert; }
   p-crest:not(:last-child) { margin-right: 0.5rem; }
 </style>`;
 

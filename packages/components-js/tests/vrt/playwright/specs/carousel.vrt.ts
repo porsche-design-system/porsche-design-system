@@ -32,7 +32,6 @@ test.describe(component, async () => {
             background: #00b0f4;
             height: 100px;
           }
-          .playground[title]::before { font: revert; }
         </style>`;
 
       const slides = Array.from(Array(6))
