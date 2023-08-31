@@ -317,10 +317,10 @@ exports[`should have no basic DOM regression for p-pin-code 1`] = `
 "<label class="label" for="current-input">
 </label>
 <div class="pin-code-container">
-  <input id="current-input" type="text" aria-label="1-4" aria-describedby="label description state-message" autocomplete="one-time-code" maxlength="1" pattern="\\d*" inputmode="numeric">
-  <input type="text" aria-label="2-4" aria-describedby="label description state-message" autocomplete="one-time-code" maxlength="1" pattern="\\d*" inputmode="numeric">
-  <input type="text" aria-label="3-4" aria-describedby="label description state-message" autocomplete="one-time-code" maxlength="1" pattern="\\d*" inputmode="numeric">
-  <input type="text" aria-label="4-4" aria-describedby="label description state-message" autocomplete="one-time-code" maxlength="1" pattern="\\d*" inputmode="numeric">
+  <input id="current-input" type="text" aria-label="1-4" aria-describedby="label description state-message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
+  <input type="text" aria-label="2-4" aria-describedby="label description state-message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
+  <input type="text" aria-label="3-4" aria-describedby="label description state-message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
+  <input type="text" aria-label="4-4" aria-describedby="label description state-message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
 </div>"
 `;
 
