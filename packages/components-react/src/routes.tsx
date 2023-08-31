@@ -188,7 +188,7 @@ export const routes: RouteType[] = [
   {
     name: 'Styles Flyout With Grid',
     path: '/styles-flyout-with-grid',
-    element: <fromStyles.StylesFlyoutWithGridExample />,
+    element: <fromStyles.StylesFlyoutGridExample />,
   },
   {
     name: 'Styles Focus',

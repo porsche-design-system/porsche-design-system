@@ -1,6 +1,6 @@
 export * from './StylesBorderExample';
 export * from './StylesDropShadowExample';
-export * from './StylesFlyoutWithGridExample';
+export * from './StylesFlyoutGridExample';
 export * from './StylesFocusExample';
 export * from './StylesFrostedGlassExample';
 export * from './StylesGradientExample';
