@@ -2,6 +2,7 @@ import { type Page } from '@playwright/test';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { type Theme } from '@porsche-design-system/utilities-v2';
 
 export const baseThemes = ['light', 'dark'] as const;
 export const baseSchemes = ['light', 'dark'] as const;
@@ -12,12 +13,13 @@ export const waitForComponentsReady = (page: Page): Promise<number> => {
   return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
 };
 
+export type PrefersColorScheme = 'light' | 'dark';
 type Options = {
   javaScriptDisabled?: boolean;
   forcedColorsEnabled?: boolean;
-  prefersColorScheme?: 'light' | 'dark';
+  prefersColorScheme?: PrefersColorScheme;
   scalePageFontSize?: boolean;
-  forceComponentTheme?: 'light' | 'dark' | 'auto';
+  forceComponentTheme?: Theme;
 };
 
 export const setupScenario = async (
@@ -98,15 +100,18 @@ export const setupScenario = async (
 
 type Options2 = {
   injectIntoHead?: string;
-  prefersColorScheme?: 'light' | 'dark';
+  prefersColorScheme?: PrefersColorScheme;
+  forceComponentTheme?: Theme;
 };
 
 export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options2): Promise<void> => {
-  const { injectIntoHead, prefersColorScheme }: Options2 = {
+  const { injectIntoHead, prefersColorScheme, forceComponentTheme }: Options2 = {
     injectIntoHead: '',
     prefersColorScheme: undefined,
+    forceComponentTheme: undefined,
     ...opts,
   };
+  const themeableComponents: TagName[] = TAG_NAMES.filter((el) => getComponentMeta(el).isThemeable);
 
   if (prefersColorScheme) {
     const cdpSession = await page.context().newCDPSession(page);
@@ -146,5 +151,21 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   );
   await waitForComponentsReady(page);
 
-  await page.setViewportSize({ width: 1000, height: 600 });
+  if (forceComponentTheme) {
+    await page.evaluate(
+      ({ forceComponentTheme, themeableComponents }) => {
+        document
+          .querySelectorAll(themeableComponents.join())
+          .forEach((el) => el.setAttribute('theme', forceComponentTheme));
+        document.querySelectorAll('.playground').forEach((el) => {
+          el.classList.remove('light', 'dark', 'auto');
+          el.classList.add(forceComponentTheme);
+        });
+      },
+      { forceComponentTheme, themeableComponents }
+    );
+    await waitForComponentsReady(page);
+  }
+
+  await page.setViewportSize({ width: baseViewportWidth, height: 600 });
 };

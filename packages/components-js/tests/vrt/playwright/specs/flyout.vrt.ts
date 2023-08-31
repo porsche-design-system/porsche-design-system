@@ -1,6 +1,5 @@
-import { expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import {
-  type GetMarkup,
   baseSchemes,
   baseViewportWidth,
   forceFocusHoverState,
@@ -8,60 +7,79 @@ import {
   forceHoverState,
   setContentWithDesignSystem,
   getBodyMarkup,
+  type GetMarkup,
+  type PrefersColorScheme,
+  baseThemes,
 } from '../helpers';
+import { type Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'flyout';
+
+const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
+  const head = `
+    <style>
+      .playground > div {
+        transform: translate(0);
+        height: 300px;
+        margin: 0 -16px;
+      }
+    </style>`;
+
+  const getElementsMarkup: GetMarkup = () => `
+    <div>
+      <p-flyout open="true">
+        <div slot="header">
+          Some slotted heading
+          <span>
+            and some slotted, deeply nested <a href="#">anchor</a>.
+          </span>
+        </div>
+        Some content
+        <span>
+          and some slotted, deeply nested <a href="#">anchor</a>.
+        </span>
+      </p-flyout>
+    </div>`;
+
+  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+    injectIntoHead: head,
+    forceComponentTheme: theme,
+    prefersColorScheme: scheme,
+  });
+
+  await forceHoverState(page, '.hover p-flyout a');
+  // due to custom hover state we need to set hover also on component itself
+  await forceHoverState(page, '.hover p-flyout >>> p-button-pure');
+  await forceHoverState(page, '.hover p-flyout >>> p-button-pure >>> button');
+  await forceFocusState(page, '.focus p-flyout a');
+  await forceFocusState(page, '.focus p-flyout >>> p-button-pure >>> button');
+  await forceFocusHoverState(page, '.focus-hover p-flyout a');
+  // due to custom hover state we need to set hover also on component itself
+  await forceFocusHoverState(page, '.focus-hover p-flyout >>> p-button-pure');
+  await forceFocusHoverState(page, '.focus-hover p-flyout >>> p-button-pure >>> button');
+};
 
 // executed in Chrome only
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
+  baseThemes.forEach((theme) => {
+    test(`should have no visual regression for :hover + :focus-visible with theme ${theme}`, async ({ page }) => {
+      await scenario(page, theme);
+      await expect(page.locator('#app')).toHaveScreenshot(
+        `${component}-${baseViewportWidth}-states-theme-${theme}.png`
+      );
+    });
+  });
+
   baseSchemes.forEach((scheme) => {
-    test(`should have no visual regression for :hover + :focus-visible with prefers-color-scheme ${scheme}`, async ({
+    test.skip(`should have no visual regression for :hover + :focus-visible with theme auto and prefers-color-scheme ${scheme}`, async ({
       page,
     }) => {
-      test.skip(scheme === 'dark');
-
-      const head = `
-        <style>
-          .playground {
-            height: 300px;
-            transform: translate3d(0, 0, 0);
-          }
-        </style>`;
-
-      const getElementsMarkup: GetMarkup = () => `
-        <p-flyout open="true">
-          <div slot="header">
-            Some slotted heading
-            <span>
-              and some slotted, deeply nested <a href="#">anchor</a>.
-            </span>
-          </div>
-          Some content
-          <span>
-            and some slotted, deeply nested <a href="#">anchor</a>.
-          </span>
-        </p-flyout>`;
-
-      await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
-        injectIntoHead: head,
-      });
-
-      await forceHoverState(page, '.hover p-flyout a');
-      // due to custom hover state we need to set hover also on component itself
-      await forceHoverState(page, '.hover p-flyout >>> p-button-pure');
-      await forceHoverState(page, '.hover p-flyout >>> p-button-pure >>> button');
-      await forceFocusState(page, '.focus p-flyout a');
-      await forceFocusState(page, '.focus p-flyout >>> p-button-pure >>> button');
-      await forceFocusHoverState(page, '.focus-hover p-flyout a');
-      // due to custom hover state we need to set hover also on component itself
-      await forceFocusHoverState(page, '.focus-hover p-flyout >>> p-button-pure');
-      await forceFocusHoverState(page, '.focus-hover p-flyout >>> p-button-pure >>> button');
-
+      await scenario(page, 'auto', scheme);
       await expect(page.locator('#app')).toHaveScreenshot(
-        `${component}-${baseViewportWidth}-states-scheme-${scheme}.png`
-      );
+        `${component}-${baseViewportWidth}-states-theme-${scheme}.png`
+      ); // fixture is aliased since result has to be equal
     });
   });
 });

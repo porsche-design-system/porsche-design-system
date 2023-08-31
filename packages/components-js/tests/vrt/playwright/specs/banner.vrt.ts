@@ -1,61 +1,78 @@
-import { expect, test } from '@playwright/test';
+import { expect, Page, test } from '@playwright/test';
 import {
-  type GetThemedMarkup,
   baseSchemes,
+  baseThemes,
   baseViewportWidth,
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getThemedBodyMarkup,
+  getBodyMarkup,
+  type GetMarkup,
+  type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
+import { Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'banner';
+
+const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
+  const head = `
+    <style>
+      .playground { transform: translate3d(0, 0, 0); height: 20rem; }
+    </style>`;
+
+  const getElementsMarkup: GetMarkup = () => `
+    <p-banner open="true" state="neutral">
+      <span slot="title">
+        Slotted title
+        <span>
+          and some slotted, deeply nested <a href="#">anchor</a>.
+        </span>
+      </span>
+      <span slot="description">
+        Slotted description
+        <span>
+          and some slotted, deeply nested <a href="#">anchor</a>.
+        </span>
+      </span>
+    </p-banner>`;
+
+  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+    injectIntoHead: head,
+    forceComponentTheme: theme,
+    prefersColorScheme: scheme,
+  });
+
+  await forceHoverState(page, '.hover p-banner span a');
+  // TODO: support for 3rd level of shadow DOM is missing
+  // await forceHoveredState(page, '.hover p-banner >>> p-inline-notification >>> p-button-pure >>> button');
+  await forceFocusState(page, '.focus p-banner span a');
+  // await forceFocusedState(page, '.focus p-banner >>> p-inline-notification >>> p-button-pure >>> button');
+  await forceFocusHoverState(page, '.focus-hover p-banner span a');
+  // await forceFocusedHoveredState(page, '.focus-hover p-banner >>> p-inline-notification >>> p-button-pure >>> button');
+};
 
 // executed in Chrome only
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
+  baseThemes.forEach((theme) => {
+    test(`should have no visual regression for :hover + :focus-visible with theme ${theme}`, async ({ page }) => {
+      await scenario(page, theme);
+      await expect(page.locator('#app')).toHaveScreenshot(
+        `${component}-${baseViewportWidth}-states-theme-${theme}.png`
+      );
+    });
+  });
+
   baseSchemes.forEach((scheme) => {
-    test(`should have no visual regression for :hover + :focus-visible with prefers-color-scheme ${scheme}`, async ({
+    test.skip(`should have no visual regression for :hover + :focus-visible with theme auto and prefers-color-scheme ${scheme}`, async ({
       page,
     }) => {
-      test.skip(scheme === 'dark');
-      const head = `
-        <style>
-          #app { display: grid; grid-template-columns: repeat(2, 50%); }
-          .playground { transform: translate3d(0, 0, 0); height: 20rem; }
-        </style>`;
-
-      const getElementsMarkup: GetThemedMarkup = (theme) => `
-        <p-banner open="true" state="neutral" theme="${theme}">
-          <span slot="title">
-            Slotted title
-            <span>
-              and some slotted, deeply nested <a href="#">anchor</a>.
-            </span>
-          </span>
-          <span slot="description">
-            Slotted description
-            <span>
-              and some slotted, deeply nested <a href="#">anchor</a>.
-            </span>
-          </span>
-        </p-banner>`;
-
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
-
-      await forceHoverState(page, '.hover p-banner span a');
-      // TODO: support for 3rd level of shadow DOM is missing
-      // await forceHoveredState(page, '.hover p-banner >>> p-inline-notification >>> p-button-pure >>> button');
-      await forceFocusState(page, '.focus p-banner span a');
-      // await forceFocusedState(page, '.focus p-banner >>> p-inline-notification >>> p-button-pure >>> button');
-      await forceFocusHoverState(page, '.focus-hover p-banner span a');
-      // await forceFocusedHoveredState(page, '.focus-hover p-banner >>> p-inline-notification >>> p-button-pure >>> button');
-
+      await scenario(page, 'auto', scheme);
       await expect(page.locator('#app')).toHaveScreenshot(
-        `${component}-${baseViewportWidth}-states-scheme-${scheme}.png`
-      );
+        `${component}-${baseViewportWidth}-states-theme-${scheme}.png`
+      ); // fixture is aliased since result has to be equal
     });
   });
 });
