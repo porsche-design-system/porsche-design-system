@@ -15,11 +15,6 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'link-social';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      p-link-social { margin-right: 1rem; margin-top: 1rem; }
-    </style>`;
-
   const markup = () => `
     <p-link-social href="https://www.porsche.com/">Fallback</p-link-social>
     <p-link-social href="https://www.porsche.com/" hide-label="true">Fallback</p-link-social>
@@ -54,8 +49,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-link-social icon="logo-youtube"><a href="https://www.youtube.com">Slotted Youtube Anchor</a></p-link-social>
     <p-link-social icon="logo-youtube" hide-label="true"><a href="https://www.youtube.com">Slotted Youtube Anchor</a></p-link-social>`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });
@@ -68,8 +62,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceFocusHoverState(page, '.focus-hover p-link-social >>> a');
   await forceHoverState(page, '.focus-hover p-link-social >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
   await forceFocusHoverState(page, '.focus-hover p-link-social a');
-
-  // TODO: scenario like style="width: 200px" on parent missing?
 };
 
 // executed in Chrome only

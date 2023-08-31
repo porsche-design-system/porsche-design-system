@@ -15,18 +15,12 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'tag-dismissible';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      p-tag-dismissible:not(:last-child) { margin-right: 0.5rem; }
-    </style>`;
-
   const markup = () => `
     <p-tag-dismissible>Some Text</p-tag-dismissible>
     <p-tag-dismissible label="Some Label" color="background-base">Some Text</p-tag-dismissible>
     <p-tag-dismissible label="Some Label" color="background-surface">Some Text</p-tag-dismissible>`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

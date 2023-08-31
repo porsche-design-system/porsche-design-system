@@ -5,7 +5,7 @@
   }
 </style>
 
-<div class="playground light auto-layout" title="should render default button-tile">
+<div class="playground light auto-layout-inline" title="should render default button-tile">
   <p-button-tile label="Some Label" description="Default">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -16,7 +16,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" style="font-size: 24px" title="should render different sizes">
+<div class="playground light auto-layout-inline" style="font-size: 24px" title="should render different sizes">
   <p-button-tile label="Some label" description="Size inherit" size="inherit">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -39,7 +39,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render different weights">
+<div class="playground light auto-layout-inline" title="should render different weights">
   <p-button-tile label="Some label" description="Weight regular" weight="regular">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -62,7 +62,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render background='light'">
+<div class="playground light auto-layout-inline" title="should render background='light'">
   <p-button-tile label="Some label" description="Background light" background="light">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -73,7 +73,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render different aspect ratios">
+<div class="playground light auto-layout-inline" title="should render different aspect ratios">
   <p-button-tile label="Some label" description="Aspect ratio 16:9" aspect-ratio="16:9">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -120,7 +120,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render compact">
+<div class="playground light auto-layout-inline" title="should render compact">
   <p-button-tile label="Some label" description="Compact" compact="true">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -143,7 +143,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render align top">
+<div class="playground light auto-layout-inline" title="should render align top">
   <p-button-tile label="Some label" description="Align top" align="top" compact="true">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -154,7 +154,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render without gradient">
+<div class="playground light auto-layout-inline" title="should render without gradient">
   <p-button-tile label="Some label" description="Gradient false" gradient="false">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD/zP9RsvrtAAAAHElEQVQY02Ng4GBgYGFgoBn9HwwOwPhDlqaTPwBKng+1NhhBkgAAAABJRU5ErkJggg=="
@@ -165,7 +165,10 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render with readable overflowing text on different backgrounds">
+<div
+  class="playground light auto-layout-inline"
+  title="should render with readable overflowing text on different backgrounds"
+>
   <p-button-tile
     label="Some label"
     description="Some long text on white background to overflow the box. Some long text on white background  to overflow the box. Some long text on white background  to overflow the box."
@@ -200,7 +203,7 @@
 </div>
 
 <div
-  class="playground light auto-layout"
+  class="playground light auto-layout-inline"
   title="should render with picture tag and multiple sources depending on viewport"
 >
   <p-button-tile label="Some label" description="Picture tag">
@@ -230,7 +233,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render disabled button-tile">
+<div class="playground light auto-layout-inline" title="should render disabled button-tile">
   <p-button-tile label="Some Label" description="Disabled" disabled="true">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -241,7 +244,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render compact disabled button-tile">
+<div class="playground light auto-layout-inline" title="should render compact disabled button-tile">
   <p-button-tile label="Some Label" description="Disabled" disabled="true" compact="true">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -252,7 +255,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render loading button-tile">
+<div class="playground light auto-layout-inline" title="should render loading button-tile">
   <p-button-tile label="Some Label" description="Loading" loading="true">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -263,7 +266,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render loading compact button-tile">
+<div class="playground light auto-layout-inline" title="should render loading compact button-tile">
   <p-button-tile label="Some Label" description="Loading" loading="true" compact="true">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -274,7 +277,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render button-tile with specific icon">
+<div class="playground light auto-layout-inline" title="should render button-tile with specific icon">
   <p-button-tile label="Some Label" description="Icon" icon="delete">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -285,7 +288,7 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout" title="should render compact button-tile with specific icon">
+<div class="playground light auto-layout-inline" title="should render compact button-tile with specific icon">
   <p-button-tile label="Some Label" description="Icon" icon="delete" compact="true">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="

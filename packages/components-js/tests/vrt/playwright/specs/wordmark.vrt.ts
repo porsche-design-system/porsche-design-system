@@ -14,17 +14,11 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'wordmark';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      p-wordmark:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem;  }
-    </style>`;
-
   const markup = () => `
     <p-wordmark href="https://www.porsche.com"></p-wordmark>
     <p-wordmark href="https://www.porsche.com" style="padding: 1rem"></p-wordmark>`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

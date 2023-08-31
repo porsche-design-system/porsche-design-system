@@ -37,7 +37,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </p-tabs-item>
     </p-tabs>`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'block' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

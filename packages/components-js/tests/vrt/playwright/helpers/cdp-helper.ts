@@ -13,10 +13,18 @@ const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 
 const PSEUDO_STATES = ['hover', 'focus', 'focus-hover'] as const;
 
-export const getPlaygroundPseudoStatesMarkup = (markup: () => string) =>
-  PSEUDO_STATES.map((state) => {
-    return `<div class="playground light ${state}" title="should render :${state}">${markup()}</div>`;
+export const getPlaygroundPseudoStatesMarkup = (
+  markup: () => string,
+  opts?: { autoLayout?: 'inline' | 'block' }
+): string => {
+  const { autoLayout = false } = opts || {};
+
+  return PSEUDO_STATES.map((state) => {
+    return `<div class="playground light ${state} ${
+      autoLayout === 'inline' ? 'auto-layout-inline' : autoLayout === 'block' ? 'auto-layout-block' : ''
+    }" title="should render :${state}">${markup()}</div>`;
   }).join('\n');
+};
 
 export const generateGUID = (): string => {
   // return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'

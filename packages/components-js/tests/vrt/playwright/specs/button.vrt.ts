@@ -15,11 +15,6 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'button';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      p-button:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem; }
-    </style>`;
-
   const markup = () => `
     <p-button variant="primary">Primary</p-button>
     <p-button variant="secondary">Secondary</p-button>
@@ -36,8 +31,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-button variant="secondary" loading>Loading Secondary</p-button>
     <p-button variant="tertiary" loading>Loading Tertiary</p-button>`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

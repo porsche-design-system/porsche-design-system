@@ -15,53 +15,27 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'link-pure';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `<style>
-    p-link-pure:not(:last-child) { margin-right: 16px; }
-    #app div div:not(:first-of-type) { margin-top: 16px; }
-  </style>`;
-
   const markup = () => `
-    <div>
-      <p-link-pure href="#">Label default</p-link-pure>
-      <p-link-pure><a href="#">Label slotted</a></p-link-pure>
-    </div>
-    <div>
-      <p-link-pure align-label="left" href="#">Label align left</p-link-pure>
-      <p-link-pure align-label="left"><a href="#">Label slotted align left</a></p-link-pure>
-      <p-link-pure align-label="left" icon="logo-delicious" href="#">Label align left</p-link-pure>
-    </div>
-    <div>
-      <p-link-pure hide-label="true" href="#">Without label</p-link-pure>
-      <p-link-pure hide-label="true"><a href="#">Without label slotted</a></p-link-pure>
-    </div>
-    <div>
-      <p-link-pure active="true" href="#">Label active</p-link-pure>
-      <p-link-pure active="true"><a href="#">Label slotted active</a></p-link-pure>
-    </div>
-    <div>
-      <p-link-pure icon="none" href="#">Label icon none</p-link-pure>
-      <p-link-pure icon="none"><a href="#">Label slotted icon none</a></p-link-pure>
-    </div>
-    <div>
-      <p-link-pure style="padding: 1rem" href="#">Label custom click-area</p-link-pure>
-      <p-link-pure style="padding: 1rem" hide-label="true" href="#">Label custom click-area</p-link-pure>
-      <p-link-pure style="padding: 1rem"><a href="#">Label slotted custom click-area</a></p-link-pure>
-    </div>
-    <div>
-      <p-link-pure stretch="true" href="#">Label stretch</p-link-pure>
-    </div>
-    <div>
-      <p-link-pure stretch="true"><a href="#">Label slotted stretch</a></p-link-pure>
-    </div>
-    <div>
-      <p-link-pure align-label="left" stretch="true" href="#">Label stretch align left</p-link-pure>
-    </div>
-    <div>
-      <p-link-pure align-label="left" stretch="true"><a href="#">Label slotted stretch align left</a></p-link-pure>
-    </div>`;
+    <p-link-pure href="#">Label default</p-link-pure>
+    <p-link-pure><a href="#">Label slotted</a></p-link-pure>
+    <p-link-pure align-label="left" href="#">Label align left</p-link-pure>
+    <p-link-pure align-label="left"><a href="#">Label slotted align left</a></p-link-pure>
+    <p-link-pure align-label="left" icon="logo-delicious" href="#">Label align left</p-link-pure>
+    <p-link-pure hide-label="true" href="#">Without label</p-link-pure>
+    <p-link-pure hide-label="true"><a href="#">Without label slotted</a></p-link-pure>
+    <p-link-pure active="true" href="#">Label active</p-link-pure>
+    <p-link-pure active="true"><a href="#">Label slotted active</a></p-link-pure>
+    <p-link-pure icon="none" href="#">Label icon none</p-link-pure>
+    <p-link-pure icon="none"><a href="#">Label slotted icon none</a></p-link-pure>
+    <p-link-pure style="padding: 1rem" href="#">Label custom click-area</p-link-pure>
+    <p-link-pure style="padding: 1rem" hide-label="true" href="#">Label custom click-area</p-link-pure>
+    <p-link-pure style="padding: 1rem"><a href="#">Label slotted custom click-area</a></p-link-pure>
+    <p-link-pure stretch="true" href="#">Label stretch</p-link-pure>
+    <p-link-pure stretch="true"><a href="#">Label slotted stretch</a></p-link-pure>
+    <p-link-pure align-label="left" stretch="true" href="#">Label stretch align left</p-link-pure>
+    <p-link-pure align-label="left" stretch="true"><a href="#">Label slotted stretch align left</a></p-link-pure>`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

@@ -15,11 +15,6 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'link';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      p-link:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem; }
-    </style>`;
-
   const markup = () => `
     <p-link variant="primary" href="#">Primary</p-link>
     <p-link variant="primary">
@@ -58,8 +53,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       <a href="#">Slotted Tertiary</a>
     </p-link>`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });
@@ -72,8 +66,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceFocusHoverState(page, '.focus-hover p-link >>> a');
   await forceHoverState(page, '.focus-hover p-link >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
   await forceFocusHoverState(page, '.focus-hover p-link a');
-
-  // TODO: scenario like style="width: 200px" on parent missing?
 };
 
 // executed in Chrome only

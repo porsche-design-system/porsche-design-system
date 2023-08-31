@@ -13,17 +13,8 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'modal';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      .playground > div {
-        transform: translate(0);
-        height: 300px;
-        margin: 0 -16px;
-      }
-    </style>`;
-
   const markup = () => `
-    <div>
+    <div style="transform: translate(0); height: 300px; margin: 0 -16px;">
       <p-modal open="true">
         <div slot="heading">
           Some slotted heading
@@ -39,7 +30,8 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
+    forceComponentTheme: theme,
+    prefersColorScheme: scheme,
   });
 
   await forceHoverState(page, '.hover p-modal a');

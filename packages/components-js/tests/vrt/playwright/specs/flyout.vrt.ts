@@ -15,17 +15,8 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'flyout';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      .playground > div {
-        transform: translate(0);
-        height: 300px;
-        margin: 0 -16px;
-      }
-    </style>`;
-
   const markup = () => `
-    <div>
+    <div style="transform: translate(0); height: 300px; margin: 0 -16px;">
       <p-flyout open="true">
         <div slot="header">
           Some slotted heading
@@ -41,7 +32,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

@@ -15,20 +15,22 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'stepper-horizontal';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const stepperHorizontalItems = `
-    <p-stepper-horizontal-item state="warning">Warning</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item state="complete">Complete</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item state="warning" disabled>Warning Disabled</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item state="complete" disabled>Complete Disabled</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item state="current">Current</p-stepper-horizontal-item>
-    <p-stepper-horizontal-item>Default</p-stepper-horizontal-item>`;
-
   const markup = () => `
     <p-stepper-horizontal>
-      ${stepperHorizontalItems}
+      <p-stepper-horizontal-item state="warning">Warning</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="complete">Complete</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="warning" disabled>Warning Disabled</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="complete" disabled>Complete Disabled</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="current">Current</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Default</p-stepper-horizontal-item>
     </p-stepper-horizontal>
     <p-stepper-horizontal size="medium">
-      ${stepperHorizontalItems}
+      <p-stepper-horizontal-item state="warning">Warning</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="complete">Complete</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="warning" disabled>Warning Disabled</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="complete" disabled>Complete Disabled</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item state="current">Current</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Default</p-stepper-horizontal-item>
     </p-stepper-horizontal>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {

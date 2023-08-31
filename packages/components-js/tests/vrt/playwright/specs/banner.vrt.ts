@@ -15,29 +15,25 @@ import { Theme } from '@porsche-design-system/utilities-v2';
 const component = 'banner';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      .playground { transform: translate3d(0, 0, 0); height: 20rem; }
-    </style>`;
-
   const markup = () => `
-    <p-banner open="true" state="neutral">
-      <span slot="title">
-        Slotted title
-        <span>
-          and some slotted, deeply nested <a href="#">anchor</a>.
+    <div style="transform: translate(0); height: 300px; margin: 0 -16px;">
+      <p-banner open="true" state="neutral">
+        <span slot="title">
+          Slotted title
+          <span>
+            and some slotted, deeply nested <a href="#">anchor</a>.
+          </span>
         </span>
-      </span>
-      <span slot="description">
-        Slotted description
-        <span>
-          and some slotted, deeply nested <a href="#">anchor</a>.
+        <span slot="description">
+          Slotted description
+          <span>
+            and some slotted, deeply nested <a href="#">anchor</a>.
+          </span>
         </span>
-      </span>
-    </p-banner>`;
+      </p-banner>
+    </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

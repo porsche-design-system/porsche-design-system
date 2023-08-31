@@ -6,11 +6,11 @@
   }
 </style>
 
-<div class="playground light auto-layout" title="should show default tag">
+<div class="playground light auto-layout-inline" title="should show default tag">
   <p-tag>Default</p-tag>
 </div>
 
-<div class="playground light auto-layout" title="should show different background colors">
+<div class="playground light auto-layout-inline" title="should show different background colors">
   <p-tag color="background-default">background-default</p-tag>
   <p-tag color="background-base">background-base</p-tag>
   <p-tag color="background-surface">background-surface</p-tag>
@@ -23,7 +23,10 @@
   <p-tag color="notification-warning-soft">notification-warning-soft</p-tag>
 </div>
 
-<div class="playground light auto-layout surface" title="should show different background colors on surface background">
+<div
+  class="playground light auto-layout-inline surface"
+  title="should show different background colors on surface background"
+>
   <p-tag color="background-default">background-default</p-tag>
   <p-tag color="background-base">background-base</p-tag>
   <p-tag color="background-surface">background-surface</p-tag>
@@ -36,7 +39,7 @@
   <p-tag color="notification-warning-soft">notification-warning-soft</p-tag>
 </div>
 
-<div class="playground light auto-layout" title="should show different background colors and icons">
+<div class="playground light auto-layout-inline" title="should show different background colors and icons">
   <p-tag icon="car" color="background-default">background-default</p-tag>
   <p-tag icon="car" color="background-base">background-base</p-tag>
   <p-tag icon="car" color="background-surface">background-surface</p-tag>
@@ -50,7 +53,7 @@
   <p-tag icon-source="./assets/icon-custom-kaixin.svg" color="background-surface"> background-surface</p-tag>
 </div>
 
-<div class="playground light auto-layout" title="should show different background colors with link">
+<div class="playground light auto-layout-inline" title="should show different background colors with link">
   <p-tag color="background-base"><a href="#">background-base link</a></p-tag>
   <p-tag color="background-surface"><a href="#">background-surface link</a></p-tag>
   <p-tag icon="car" color="background-base"><a href="#">background-base link</a></p-tag>
@@ -60,7 +63,7 @@
   </p-tag>
 </div>
 
-<div class="playground light auto-layout" title="should show different background colors with button">
+<div class="playground light auto-layout-inline" title="should show different background colors with button">
   <p-tag color="background-base"><button>background-base button</button></p-tag>
   <p-tag color="background-surface"><button>background-surface button</button></p-tag>
   <p-tag icon="car" color="background-base"><button>background-base button</button></p-tag>
@@ -72,7 +75,7 @@
   </p-tag>
 </div>
 
-<div class="playground light auto-layout" title="should not render line break">
+<div class="playground light auto-layout-inline" title="should not render line break">
   <p-tag>
     Default <br />
     with line break

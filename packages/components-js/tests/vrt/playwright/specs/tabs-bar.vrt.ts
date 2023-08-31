@@ -27,7 +27,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       <a href="#">Anchor Tab Three</a>
     </p-tabs-bar>`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'block' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

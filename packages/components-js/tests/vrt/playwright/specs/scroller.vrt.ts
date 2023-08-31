@@ -15,31 +15,22 @@ const component = 'scroller';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const markup = () => `
-    <div style="max-width: 400px">
-      <p-scroller style="white-space: nowrap; line-height: 1.5">
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-      </p-scroller>
-    </div>`;
+    <p-scroller scroll-to-position="{scrollPosition: 10}" style="max-width: 300px;">
+      <a href="#">Anchor</a>
+      <a href="#">Anchor</a>
+      <a href="#">Anchor</a>
+      <a href="#">Anchor</a>
+      <a href="#">Anchor</a>
+      <a href="#">Anchor</a>
+      <a href="#">Anchor</a>
+      <a href="#">Anchor</a>
+      <a href="#">Anchor</a>
+    </p-scroller>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });
-
-  // Scroll a bit to ensure both arrows are visible
-  await page.evaluate(() =>
-    document
-      .querySelectorAll('p-scroller')
-      .forEach((scroller) => ((scroller as any).scrollToPosition = { scrollPosition: 100 }))
-  );
 
   await forceHoverState(page, '.hover p-scroller >>> button'); // Scroll indicator hover
   await forceFocusState(page, '.focus p-scroller >>> .scroll-wrapper');

@@ -15,11 +15,6 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'checkbox-wrapper';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      p-checkbox-wrapper:not(:last-child), .force-label { margin-bottom: 1rem; }
-    </style>`;
-
   const markup = () => `
     <p-checkbox-wrapper label="When input gets hovered or focused">
       <input type="checkbox" name="some-name" />
@@ -72,8 +67,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </span>
     </p-checkbox-wrapper>`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'block' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

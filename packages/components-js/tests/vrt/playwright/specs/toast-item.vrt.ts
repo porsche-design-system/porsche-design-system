@@ -15,16 +15,10 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'toast-item';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      p-toast-item ~ p-toast-item { margin-top: 0.5rem; }
-    </style>`;
-
   const markup = () => `
     <p-toast-item text="Some message"></p-toast-item>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

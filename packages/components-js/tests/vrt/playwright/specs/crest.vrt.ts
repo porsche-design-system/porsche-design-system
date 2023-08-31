@@ -12,17 +12,11 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'crest';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      p-crest:not(:last-child) { margin-right: 0.5rem; }
-    </style>`;
-
   const markup = () => `
     <p-crest href="https://www.porsche.com"></p-crest>
     <p-crest href="https://www.porsche.com" style="padding: 1rem"></p-crest>`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

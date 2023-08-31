@@ -15,17 +15,11 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'pagination';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      p-pagination { margin-bottom: 1rem; }
-    </style>`;
-
   const markup = () => `
     <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
     <p-pagination total-items-count="500" items-per-page="25" active-page="2"></p-pagination>`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'block' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

@@ -15,30 +15,17 @@ import { TAG_COLORS } from '@porsche-design-system/components/src/components/tag
 const component = 'tag';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      p-tag:not(:last-child) { margin-right: 0.5rem; }
-      .row:not(:last-child) { margin-bottom: 0.5rem; }
-    </style>`;
-
-  const getColorVariations = (theme: Theme, child: string): string =>
+  const getTagColorVariations = (child: string): string =>
     [TAG_COLORS[0], ...TAG_COLORS]
       .map((color, i) => `<p-tag color="${color}"${i === 0 ? 'icon="car"' : ''}>${child}</p-tag>`)
       .join('\n');
 
   const markup = () => `
-    <div class="row">
-      ${getColorVariations(theme, 'Text')}
-    </div>
-    <div class="row">
-      ${getColorVariations(theme, '<a href="#">Link</a>')}
-    </div>
-    <div class="row">
-      ${getColorVariations(theme, '<button>Button</button>')}
-    </div>`;
+    ${getTagColorVariations('Text')}
+    ${getTagColorVariations('<a href="#">Link</a>')}
+    ${getTagColorVariations('<button>Button</button>')}`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

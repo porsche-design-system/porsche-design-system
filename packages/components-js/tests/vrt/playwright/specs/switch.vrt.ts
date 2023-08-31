@@ -15,11 +15,6 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'switch';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      p-switch:not(:last-child) { margin-right: 16px; margin-bottom: 1rem; }
-    </style>`;
-
   const markup = () => `
     <p-switch>Label</p-switch>
     <p-switch checked="true">Label</p-switch>
@@ -32,8 +27,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </span>
     </p-switch>`;
 
-  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

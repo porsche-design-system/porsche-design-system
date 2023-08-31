@@ -15,27 +15,25 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'segmented-control';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `
-    <style>
-      p-segmented-control:not(:last-child) { margin-bottom: 0.5rem; }
-    </style>`;
-
   const markup = () => `
     <p-segmented-control value="2">
       <p-segmented-control-item value="1">Default</p-segmented-control-item>
       <p-segmented-control-item value="2">Selected</p-segmented-control-item>
       <p-segmented-control-item value="3" disabled>Disabled</p-segmented-control-item>
     </p-segmented-control>
+    <br>
     <p-segmented-control value="2">
       <p-segmented-control-item value="1" label="Some label">Default</p-segmented-control-item>
       <p-segmented-control-item value="2" label="Some label">Selected</p-segmented-control-item>
       <p-segmented-control-item value="3" label="Some label" disabled>Disabled</p-segmented-control-item>
     </p-segmented-control>
+    <br>
     <p-segmented-control value="2">
       <p-segmented-control-item value="1" icon="arrow-head-right">Default</p-segmented-control-item>
       <p-segmented-control-item value="2" icon="arrow-head-right">Selected</p-segmented-control-item>
       <p-segmented-control-item value="3" icon="arrow-head-right" disabled>Disabled</p-segmented-control-item>
     </p-segmented-control>
+    <br>
     <p-segmented-control value="2">
       <p-segmented-control-item value="1" label="Some label" icon="arrow-head-right">Default</p-segmented-control-item>
       <p-segmented-control-item value="2" label="Some label" icon="arrow-head-right">Selected</p-segmented-control-item>
@@ -43,7 +41,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     </p-segmented-control>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
-    injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });
