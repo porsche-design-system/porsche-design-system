@@ -60,7 +60,7 @@ export const gridStyle = {
   maxWidth: _gridWidthMax,
   // _cssVariableGridMargin is needed in case behaviour needs to be adjusted like when used in Flyout or Modal
   margin: `0 var(${_cssVariableGridMargin}, 0)`,
-  padding: `0 calc(50% - var(${_cssVariableGridMargin}, 0) - ${_gridWidthMax} / 2)`,
+  padding: `0 calc(50% - var(${_cssVariableGridMargin}, 0px) - ${_gridWidthMax} / 2)`,
   boxSizing: 'content-box',
   [getMediaQueryMin('s')]: {
     [_cssVariableGridSafeZone]: _gridSafeZoneS,
