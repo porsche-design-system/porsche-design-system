@@ -14,7 +14,7 @@
 </script>
 
 <template>
-  <PPinCode :label="'Some Label'" :length="length" @update="onUpdate"></PPinCode>
+  <PPinCode :label="'Some Label'" :length="length" :value="currentValue" @update="onUpdate"></PPinCode>
   <PText>Current value: {{ currentValue }}</PText>
   <PText>Completely filled: {{ isComplete }}</PText>
 </template>

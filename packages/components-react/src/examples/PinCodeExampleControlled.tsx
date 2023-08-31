@@ -14,7 +14,7 @@ export const PinCodeExampleControlledPage = (): JSX.Element => {
 
   return (
     <>
-      <PPinCode label="Some Label" length={length} onUpdate={onUpdate}></PPinCode>
+      <PPinCode label="Some Label" length={length} value={currentValue} onUpdate={onUpdate}></PPinCode>
       <PText>Current value: {currentValue}</PText>
       <PText>Completely filled: {isComplete.toString()}</PText>
     </>
