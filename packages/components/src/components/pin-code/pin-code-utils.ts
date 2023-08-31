@@ -1,6 +1,6 @@
 import type { FormState } from '../../utils/form/form-state';
 import type { Styles } from 'jss';
-import { removeAttribute, setAttribute } from '../../utils';
+import { setAttribute } from '../../utils';
 import { consoleWarn } from '../../utils/log';
 
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
