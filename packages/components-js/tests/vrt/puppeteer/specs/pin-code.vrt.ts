@@ -35,6 +35,7 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
         <div class="force-label">
           <p-pin-code theme="${theme}" label="label gets hovered or focused"></p-pin-code>
         </div>
+        <p-pin-code theme="${theme}" label="Disabled" disabled="true"></p-pin-code>
         <p-pin-code theme="${theme}" label="Some label" state="error" message="Some error validation message."></p-pin-code>
         <p-pin-code theme="${theme}" label="Some label" state="success" message="Some success validation message."></p-pin-code>
         <p-pin-code theme="${theme}">
