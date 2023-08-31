@@ -123,7 +123,7 @@ export class PinCode {
       this.value = '';
       consoleWarn(
         this.warningPrefix,
-        `Provided pin code contains characters that are not of type number and the value has been reset.`
+        'Provided pin code contains characters that are not of type number and the value has been reset.'
       );
     }
 
@@ -296,7 +296,7 @@ export class PinCode {
   private warnIfValueIsTooLong = (): void => {
     consoleWarn(
       this.warningPrefix,
-      `Provided pin code has too many characters and was truncated to the max legth of ${this.length}.`
+      'Provided pin code has too many characters and was truncated to the max legth of ${this.length}.'
     );
   };
 
