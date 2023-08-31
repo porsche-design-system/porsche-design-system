@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { setupScenario } from '../helpers';
+import { setupScenario } from '../../helpers';
 
 // executed in Chrome only
 ['latin', 'greek-and-coptic', 'cyril', 'fallback'].forEach((typography) => {

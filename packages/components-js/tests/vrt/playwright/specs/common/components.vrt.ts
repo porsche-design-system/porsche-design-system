@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { baseSchemes, baseThemes, baseViewportWidth, baseViewportWidths, setupScenario } from '../helpers';
+import { baseSchemes, baseThemes, baseViewportWidth, baseViewportWidths, setupScenario } from '../../helpers';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
