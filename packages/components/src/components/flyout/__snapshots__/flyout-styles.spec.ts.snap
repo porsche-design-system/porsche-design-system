@@ -2,6 +2,8 @@
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: left, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -54,6 +56,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   position: relative;
   margin-right: auto;
   box-sizing: border-box;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -64,7 +67,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
   overflow-y: auto;
@@ -87,6 +90,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: left, hasHeader: true, hasFooter: false, hasSubFooter: true, theme: dark 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -146,6 +151,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -156,12 +162,12 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
 }
 .sub-footer {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -174,6 +180,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: left, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: dark 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -233,6 +241,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -243,13 +252,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
 }
 .footer {
   background: #0E0E12;
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
   z-index: 1;
   bottom: 0;
@@ -258,7 +267,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   box-shadow: rgba(0, 0, 0, 0.6) 0px -5px 10px;
 }
 .sub-footer {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -271,6 +280,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: right, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -323,6 +334,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   position: relative;
   margin-left: auto;
   box-sizing: border-box;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -333,7 +345,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
   overflow-y: auto;
@@ -356,6 +368,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: right, hasHeader: true, hasFooter: false, hasSubFooter: true, theme: dark 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -415,6 +429,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -425,12 +440,12 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
 }
 .sub-footer {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -443,6 +458,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: right, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: dark 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -502,6 +519,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -512,13 +530,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
 }
 .footer {
   background: #0E0E12;
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
   z-index: 1;
   bottom: 0;
@@ -527,7 +545,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   box-shadow: rgba(0, 0, 0, 0.6) 0px -5px 10px;
 }
 .sub-footer {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -540,6 +558,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: dark 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -591,6 +611,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-right: auto;
   box-sizing: border-box;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -601,7 +622,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
   overflow-y: auto;
@@ -624,6 +645,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: false, hasFooter: true, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -675,6 +698,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-right: auto;
   box-sizing: border-box;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -685,7 +709,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
   overflow-y: auto;
@@ -699,7 +723,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .footer {
   background: #FFF;
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
   z-index: 1;
   bottom: 0;
@@ -718,6 +742,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: true, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -774,6 +800,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-right: auto;
   box-sizing: border-box;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -784,7 +811,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
   overflow-y: auto;
@@ -807,6 +834,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: true, hasFooter: true, hasSubFooter: false, theme: dark 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -863,6 +892,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-right: auto;
   box-sizing: border-box;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -873,7 +903,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
   overflow-y: auto;
@@ -887,7 +917,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .footer {
   background: #0E0E12;
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
   z-index: 1;
   bottom: 0;
@@ -906,6 +936,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: light 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -964,6 +996,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -974,13 +1007,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
 }
 .footer {
   background: #FFF;
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
   z-index: 1;
   bottom: 0;
@@ -989,7 +1022,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-shadow: rgba(204, 204, 204, 0.35) 0px -5px 10px;
 }
 .sub-footer {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
 }
 @media(hover:hover) {
   .dismiss:hover {
@@ -1002,6 +1035,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: dark 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -1053,6 +1088,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-left: auto;
   box-sizing: border-box;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -1063,7 +1099,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
   overflow-y: auto;
@@ -1086,6 +1122,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: false, hasFooter: true, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -1137,6 +1175,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-left: auto;
   box-sizing: border-box;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -1147,7 +1186,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
   overflow-y: auto;
@@ -1161,7 +1200,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .footer {
   background: #FFF;
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
   z-index: 1;
   bottom: 0;
@@ -1180,6 +1219,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -1236,6 +1277,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-left: auto;
   box-sizing: border-box;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -1246,7 +1288,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
   overflow-y: auto;
@@ -1269,6 +1311,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: true, hasSubFooter: false, theme: dark 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -1325,6 +1369,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: relative;
   margin-left: auto;
   box-sizing: border-box;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -1335,7 +1380,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
   overflow-y: auto;
@@ -1349,7 +1394,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 .footer {
   background: #0E0E12;
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
   z-index: 1;
   bottom: 0;
@@ -1368,6 +1413,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: light 1`] = `
 ":host {
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
@@ -1426,6 +1473,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
+  width: var(--p-flyout-width, auto);
   height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
@@ -1436,13 +1484,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
 }
 .footer {
   background: #FFF;
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: sticky;
   z-index: 1;
   bottom: 0;
@@ -1451,7 +1499,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   box-shadow: rgba(204, 204, 204, 0.35) 0px -5px 10px;
 }
 .sub-footer {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px) 16px clamp(32px, 2.75vw + 23px, 76px);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
 }
 @media(hover:hover) {
   .dismiss:hover {
