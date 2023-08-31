@@ -41,7 +41,7 @@ describe('getStylesWithoutSlottedSelector()', () => {
 });
 
 describe('warnIfValueIsNotValid()', () => {
-  it('should call consoleWarn with correct parameters', () => {
+  it('should call consoleWarn() with correct parameters', () => {
     const warningPrefix = '@Prop() "value" on component <p-pin-code>:';
     const spy = jest.spyOn(consoleWarnUtils, 'consoleWarn');
     jest.spyOn(global.console, 'warn').mockImplementation();
@@ -136,7 +136,7 @@ describe('joinInputValues()', () => {
 });
 
 describe('initHiddenInput()', () => {
-  it('should call syncHiddenInput with correct parameters', () => {
+  it('should call syncHiddenInput() with correct parameters', () => {
     const spy = jest.spyOn(pinCodeUtils, 'syncHiddenInput');
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
@@ -146,7 +146,7 @@ describe('initHiddenInput()', () => {
     expect(spy).toBeCalledWith(hiddenInput, 'name', '1234', false, false);
   });
 
-  it('should call setAttribute with correct parameters', () => {
+  it('should call setAttribute() with correct parameters', () => {
     const spy = jest.spyOn(setAttributeUtils, 'setAttribute');
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
@@ -172,7 +172,7 @@ describe('initHiddenInput()', () => {
 });
 
 describe('syncHiddenInput()', () => {
-  it('should call setAttribute with correct parameters', () => {
+  it('should call setAttribute() with correct parameters', () => {
     const spy = jest.spyOn(setAttributeUtils, 'setAttribute');
     const hiddenInput = document.createElement('input');
 
@@ -183,7 +183,7 @@ describe('syncHiddenInput()', () => {
     expect(spy).toBeCalledWith(hiddenInput, 'value', '4321');
   });
 
-  it('should call toggleAttribute with correct parameters and update "required" and "disabled" attributes', () => {
+  it('should call toggleAttribute() with correct parameters and update "required" and "disabled" attributes', () => {
     const hiddenInput = document.createElement('input');
     const spy = jest.spyOn(hiddenInput, 'toggleAttribute');
 
