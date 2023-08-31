@@ -9,7 +9,6 @@ import {
   getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
-import { type Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'carousel';
 
@@ -38,7 +37,7 @@ test.describe(component, async () => {
         .map((_, i) => `<div>Slide ${i + 1}</div>`)
         .join('');
 
-      const getElementsMarkup: GetThemedMarkup = (theme: Theme) => `
+      const getElementsMarkup: GetThemedMarkup = (theme) => `
         <p-carousel theme="${theme}" skip-link-target="#target">
           <h2 slot="heading">
             Slotted heading

@@ -8,8 +8,6 @@ import {
   forceHoverState,
   getThemedBodyMarkup,
   setContentWithDesignSystem,
-  getBodyMarkup,
-  type GetMarkup,
 } from '../helpers';
 
 const component = 'link';

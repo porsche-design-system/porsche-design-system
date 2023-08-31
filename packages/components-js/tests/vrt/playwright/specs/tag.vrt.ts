@@ -3,15 +3,11 @@ import {
   type GetThemedMarkup,
   baseSchemes,
   baseViewportWidth,
-  forceFocusHoverState,
   forceFocusState,
   forceHoverState,
   getThemedBodyMarkup,
   setContentWithDesignSystem,
-  getBodyMarkup,
-  type GetMarkup,
 } from '../helpers';
-import { generateGUID } from '../../puppeteer/helpers';
 import { Theme } from '@porsche-design-system/utilities-v2';
 import { TAG_COLORS } from '@porsche-design-system/components/src/components/tag/tag-utils';
 

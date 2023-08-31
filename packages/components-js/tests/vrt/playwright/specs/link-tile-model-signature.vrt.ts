@@ -1,15 +1,13 @@
 import { expect, test } from '@playwright/test';
 import {
-  type GetThemedMarkup,
+  type GetMarkup,
   baseSchemes,
   baseViewportWidth,
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getThemedBodyMarkup,
   setContentWithDesignSystem,
   getBodyMarkup,
-  type GetMarkup,
 } from '../helpers';
 
 const component = 'link-tile-model-signature';

@@ -8,10 +8,7 @@ import {
   forceHoverState,
   getThemedBodyMarkup,
   setContentWithDesignSystem,
-  getBodyMarkup,
-  type GetMarkup,
 } from '../helpers';
-import { generateGUID } from '../../puppeteer/helpers';
 
 const component = 'select-wrapper';
 

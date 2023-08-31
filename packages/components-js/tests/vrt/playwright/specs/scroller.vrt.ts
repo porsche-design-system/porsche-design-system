@@ -3,15 +3,11 @@ import {
   type GetThemedMarkup,
   baseSchemes,
   baseViewportWidth,
-  forceFocusHoverState,
   forceFocusState,
   forceHoverState,
   getThemedBodyMarkup,
   setContentWithDesignSystem,
-  getBodyMarkup,
-  type GetMarkup,
 } from '../helpers';
-import { generateGUID } from '../../puppeteer/helpers';
 
 const component = 'scroller';
 

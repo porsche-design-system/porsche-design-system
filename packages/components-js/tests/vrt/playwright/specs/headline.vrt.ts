@@ -9,7 +9,6 @@ import {
   getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
-import { type Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'headline';
 

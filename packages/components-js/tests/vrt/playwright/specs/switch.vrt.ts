@@ -8,11 +8,7 @@ import {
   forceHoverState,
   getThemedBodyMarkup,
   setContentWithDesignSystem,
-  getBodyMarkup,
-  type GetMarkup,
 } from '../helpers';
-import { generateGUID } from '../../puppeteer/helpers';
-import { Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'switch';
 

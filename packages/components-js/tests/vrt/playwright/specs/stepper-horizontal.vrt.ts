@@ -8,11 +8,7 @@ import {
   forceHoverState,
   getThemedBodyMarkup,
   setContentWithDesignSystem,
-  getBodyMarkup,
-  type GetMarkup,
 } from '../helpers';
-import { generateGUID } from '../../puppeteer/helpers';
-import { Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'stepper-horizontal';
 
@@ -37,7 +33,7 @@ test.describe(component, async () => {
         <p-stepper-horizontal-item state="current">Current</p-stepper-horizontal-item>
         <p-stepper-horizontal-item>Default</p-stepper-horizontal-item>`;
 
-      const getElementsMarkup: GetThemedMarkup = (theme: Theme) =>
+      const getElementsMarkup: GetThemedMarkup = (theme) =>
         `<p-stepper-horizontal theme="${theme}">
           ${stepperHorizontalItems}
         </p-stepper-horizontal>

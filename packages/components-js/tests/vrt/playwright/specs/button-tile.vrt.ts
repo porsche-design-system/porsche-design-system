@@ -1,12 +1,11 @@
 import { expect, test } from '@playwright/test';
 import {
-  type GetThemedMarkup,
+  type GetMarkup,
   baseSchemes,
   baseViewportWidth,
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getThemedBodyMarkup,
   setContentWithDesignSystem,
   getBodyMarkup,
 } from '../helpers';
@@ -34,7 +33,7 @@ test.describe(component, async () => {
       const image =
         '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=" alt="Some alt" />';
 
-      const getElementsMarkup = () => `
+      const getElementsMarkup: GetMarkup = () => `
         <div class="grid">
           <p-button-tile label="Some Label" description="Default">
            ${image}

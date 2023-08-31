@@ -8,10 +8,8 @@ import {
   forceHoverState,
   getThemedBodyMarkup,
   setContentWithDesignSystem,
-  getBodyMarkup,
-  type GetMarkup,
+  generateGUID,
 } from '../helpers';
-import { generateGUID } from '../../puppeteer/helpers';
 
 const component = 'radio-button-wrapper';
 
