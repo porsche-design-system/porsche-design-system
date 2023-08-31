@@ -258,11 +258,11 @@ export class PinCode {
         e.preventDefault();
         previousElementSibling.value = '';
         previousElementSibling.focus();
+        this.value = joinInputValues(this.pinCodeElements);
+        this.updateValue();
       } else {
         target.value = '';
       }
-      this.value = joinInputValues(this.pinCodeElements);
-      this.updateValue();
     } // support native submit behavior
     else if (key === 'Enter') {
       if (isWithinForm) {
