@@ -110,7 +110,11 @@ const generateCodeSamples = (): void => {
           componentsReactPath + '/FlyoutExampleSlottedSecondary.tsx',
           componentsVuePath + '/FlyoutExampleSlottedSecondary.vue',
         ],
-        [componentsJsPath + '/flyout-example-slotted-grid.html', componentsReactPath + '/FlyoutExampleSlottedGrid.tsx'],
+        [
+          componentsJsPath + '/flyout-example-slotted-grid.html',
+          componentsAngularPath + '/flyout-example-slotted-grid.component.ts',
+          componentsReactPath + '/FlyoutExampleSlottedGrid.tsx',
+        ],
       ],
     },
     {
@@ -303,8 +307,8 @@ const generateCodeSamples = (): void => {
       component: 'styles-grid',
       samples: [
         [
-          componentsAngularPath + '/../styles/styles-grid-example.component.ts',
-          //special path to get the GridLayout component
+          //special path to get the GridLayout component itself with fully rendered HTML and CSS
+          componentsAngularPath + '/../components/grid-layout.component.ts',
           componentsReactPath + '/../components/GridLayout.tsx',
         ],
       ],
