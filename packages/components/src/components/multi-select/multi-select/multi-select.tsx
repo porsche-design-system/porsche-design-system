@@ -28,6 +28,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
+  getClosestHTMLElement,
   getFilterInputAriaAttributes,
   getListAriaAttributes,
   getPrefixedTagNames,
@@ -38,7 +39,6 @@ import {
   hasPropValueChanged,
   isClickOutside,
   isRequiredAndParentNotRequired,
-  isWithinForm,
   SELECT_DROPDOWN_DIRECTIONS,
   THEMES,
   throwIfElementIsNotOfKind,
@@ -129,6 +129,7 @@ export class MultiSelect {
   private inputContainer: HTMLDivElement;
   private inputElement: HTMLInputElement;
   private listElement: HTMLDivElement;
+  private form: HTMLFormElement;
   private isWithinForm: boolean;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
 
@@ -162,7 +163,8 @@ export class MultiSelect {
 
   public connectedCallback(): void {
     document.addEventListener('mousedown', this.onClickOutside, true);
-    this.isWithinForm = isWithinForm(this.host);
+    this.form = getClosestHTMLElement(this.host, 'form');
+    this.isWithinForm = !!this.form;
   }
 
   public componentWillLoad(): void {
@@ -383,9 +385,13 @@ export class MultiSelect {
           highlightedOption.selected = !highlightedOption.selected;
           this.value = this.currentValue;
           this.emitUpdateEvent();
+          this.updateSrHighlightedOptionText();
           forceUpdate(highlightedOption);
+        } else {
+          if (this.isWithinForm) {
+            this.form.submit(); // Replicates native behavior
+          }
         }
-        this.updateSrHighlightedOptionText();
         break;
       case 'Escape':
         this.isOpen = false;
