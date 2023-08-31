@@ -1,5 +1,6 @@
 import { StylesBorderExampleComponent } from './styles-border-example.component';
 import { StylesDropShadowExampleComponent } from './styles-drop-shadow-example.component';
+import { StylesFlyoutGridExampleComponent } from './styles-flyout-grid-example.component';
 import { StylesFocusExampleComponent } from './styles-focus-example.component';
 import { StylesFrostedGlassExampleComponent } from './styles-frosted-glass-example.component';
 import { StylesGradientExampleComponent } from './styles-gradient-example.component';
@@ -13,6 +14,7 @@ import { StylesTypographyExampleComponent } from './styles-typography-example.co
 export const examples = [
   StylesBorderExampleComponent,
   StylesDropShadowExampleComponent,
+  StylesFlyoutGridExampleComponent,
   StylesFocusExampleComponent,
   StylesFrostedGlassExampleComponent,
   StylesGradientExampleComponent,
@@ -26,6 +28,7 @@ export const examples = [
 
 export * from './styles-border-example.component';
 export * from './styles-drop-shadow-example.component';
+export * from './styles-flyout-grid-example.component';
 export * from './styles-focus-example.component';
 export * from './styles-frosted-glass-example.component';
 export * from './styles-gradient-example.component';
