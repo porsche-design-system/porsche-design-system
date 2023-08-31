@@ -269,7 +269,8 @@ export class PinCode {
         this.form.requestSubmit();
       }
     } // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
-    else if (key === 'Dead') {
+    // workaround for ^ in firefox key: 'Process'
+    else if (key === 'Dead' || key === 'Process') {
       target.blur();
       setTimeout(() => target.focus());
     }
