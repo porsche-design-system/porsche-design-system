@@ -47,7 +47,6 @@ export const initHiddenInput = (
   required: boolean
 ): HTMLInputElement => {
   const hiddenInput = document.createElement('input');
-  setAttribute(hiddenInput, 'name', 'hidden-input');
   setAttribute(hiddenInput, 'aria-hidden', 'true');
   setAttribute(hiddenInput, 'slot', 'hidden-input');
   setAttribute(hiddenInput, 'tabindex', '-1');
