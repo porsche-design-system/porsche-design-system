@@ -1,6 +1,7 @@
 import type { FormState } from '../../utils/form/form-state';
 import type { Styles } from 'jss';
 import { removeAttribute, setAttribute } from '../../utils';
+import { consoleWarn } from '../../utils/log';
 
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
 export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
@@ -18,6 +19,16 @@ export const getStylesWithoutSlottedSelector = (styles: Styles): Styles => {
       value = typeof value === 'object' ? getStylesWithoutSlottedSelector(value as Styles) : value;
       return [key.replace(/::slotted\(([^,]+)\)/g, '$1'), value];
     }, {} as Styles)
+  );
+};
+
+export const warnIfValueIsNotValid = (length?: number): void => {
+  const warningPrefix = '@Prop() "value" on component <p-pin-code>:';
+  consoleWarn(
+    warningPrefix,
+    length
+      ? `Provided pin code has too many characters and was truncated to the max length of ${length}.`
+      : 'Provided pin code contains characters that are not of type number and the value has been reset.'
   );
 };
 

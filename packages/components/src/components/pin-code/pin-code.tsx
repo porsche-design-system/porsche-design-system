@@ -6,7 +6,6 @@ import {
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
-  getTagNameWithoutPrefix,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -26,10 +25,10 @@ import {
   PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
   syncHiddenInput,
+  warnIfValueIsNotValid,
 } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import { consoleWarn } from '../../utils/log';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -99,7 +98,6 @@ export class PinCode {
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;
   private pinCodeElements: HTMLInputElement[] = [];
-  private warningPrefix = `@Prop() "value" on component <${getTagNameWithoutPrefix(this.host)}>:`;
 
   public connectedCallback(): void {
     this.isWithinForm = isWithinForm(this.host);
@@ -113,20 +111,15 @@ export class PinCode {
 
   public componentWillRender(): void {
     // make sure initial value is not longer than pin code length
-    if (this.value && this.value.length > this.length) {
+    if (this.value?.length > this.length) {
       this.value = this.value.slice(0, this.length);
-      this.warnIfValueIsTooLong();
+      warnIfValueIsNotValid(this.length);
     }
-
-    // check whether value consists of numbers
+    // check whether value consists of numbers only
     if (this.value && !inputConsistsOfDigits(this.value)) {
       this.value = '';
-      consoleWarn(
-        this.warningPrefix,
-        'Provided pin code contains characters that are not of type number and the value has been reset.'
-      );
+      warnIfValueIsNotValid();
     }
-
     if (this.isWithinForm) {
       syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
     }
@@ -261,17 +254,10 @@ export class PinCode {
     }
   };
 
-  // needed to update value on auto-complete via keyboard suggestion
-  private onKeyUp = (
-    e: KeyboardEvent & {
-      target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
-    }
-  ): void => {
+  private onKeyUp = (e: KeyboardEvent & { target: HTMLInputElement }): void => {
+    // needed to update value on auto-complete via keyboard suggestion
     const { target } = e;
     if (target.value?.length >= this.length) {
-      if (target.value?.length >= this.length) {
-        this.warnIfValueIsTooLong();
-      }
       this.value = target.value;
       this.updateValue();
     }
@@ -291,13 +277,6 @@ export class PinCode {
 
   private updateValue = (): void => {
     this.update.emit({ value: this.value });
-  };
-
-  private warnIfValueIsTooLong = (): void => {
-    consoleWarn(
-      this.warningPrefix,
-      'Provided pin code has too many characters and was truncated to the max legth of ${this.length}.'
-    );
   };
 
   private focusFirstEmptyOrLastElement = (): void => {
