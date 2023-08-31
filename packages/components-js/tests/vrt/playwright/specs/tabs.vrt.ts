@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -16,7 +15,7 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'tabs';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-tabs active-tab-index="0">
       <p-tabs-item label="Tab One">
         Slotted content
@@ -38,7 +37,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </p-tabs-item>
     </p-tabs>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

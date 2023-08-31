@@ -1,15 +1,14 @@
 import { expect, type Page, test } from '@playwright/test';
 import {
   baseSchemes,
+  baseThemes,
   baseViewportWidth,
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  setContentWithDesignSystem,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
-  baseThemes,
+  setContentWithDesignSystem,
 } from '../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 
@@ -25,7 +24,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       }
     </style>`;
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <div>
       <p-flyout open="true">
         <div slot="header">
@@ -41,7 +40,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </p-flyout>
     </div>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

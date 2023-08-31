@@ -5,8 +5,7 @@ import {
   baseViewportWidth,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -27,7 +26,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       .map((color, i) => `<p-tag color="${color}"${i === 0 ? 'icon="car"' : ''}>${child}</p-tag>`)
       .join('\n');
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <div class="row">
       ${getColorVariations(theme, 'Text')}
     </div>
@@ -38,7 +37,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       ${getColorVariations(theme, '<button>Button</button>')}
     </div>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

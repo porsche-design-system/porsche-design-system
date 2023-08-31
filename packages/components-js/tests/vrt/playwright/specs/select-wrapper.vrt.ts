@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -45,7 +44,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 
   const disabledOptions: GetSelectMarkupOptions = { disabled: true };
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <div class="native">
       <p-select-wrapper label="Some native label" native>
         ${getSelectMarkup()}
@@ -143,7 +142,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </p-select-wrapper>
     </div>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

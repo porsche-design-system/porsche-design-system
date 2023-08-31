@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -16,7 +15,7 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'heading';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-heading size="large">
       Heading
       <span>
@@ -24,7 +23,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </span>
     </p-heading>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

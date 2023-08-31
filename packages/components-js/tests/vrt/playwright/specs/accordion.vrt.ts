@@ -1,38 +1,35 @@
 import { expect, type Page, test } from '@playwright/test';
 import {
-  type GetMarkup,
-  type PrefersColorScheme,
+  baseSchemes,
+  baseThemes,
   baseViewportWidth,
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
+  getPlaygroundPseudoStatesMarkup,
+  type PrefersColorScheme,
   setContentWithDesignSystem,
-  baseThemes,
-  getBodyMarkup,
-  baseSchemes,
 } from '../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'accordion';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const content = `Slotted content`;
-
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-accordion heading="Heading">
-      ${content}
+      Slotted content
     </p-accordion>
     <p-accordion heading="Heading" open="true">
-      ${content}
+      Slotted content
     </p-accordion>
     <p-accordion heading="Heading" open="true">
-      ${content}
+      Slotted content
       <span>
         and some slotted, deeply nested <a href="#">anchor</a>.
       </span>
     </p-accordion>
     <p-accordion heading="Heading (compact=true)" open="true" compact="true">
-       ${content}
+       Slotted content
     </p-accordion>
     <p-accordion heading="Heading (compact=true)" open="true" compact="true">
       <p-link-pure href="https://www.porsche.com">Some link</p-link-pure>
@@ -40,7 +37,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       <p-link-pure href="https://www.porsche.com">Some link</p-link-pure>
     </p-accordion>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

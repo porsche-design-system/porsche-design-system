@@ -1,6 +1,5 @@
-import type { Theme } from '@porsche-design-system/utilities-v2';
-import type { Protocol } from 'devtools-protocol';
-import type { Page, CDPSession } from '@playwright/test';
+import { type Protocol } from 'devtools-protocol';
+import { type Page, type CDPSession } from '@playwright/test';
 
 type NodeId = Protocol.DOM.NodeId;
 type BackendNodeId = Protocol.DOM.BackendNodeId;
@@ -12,43 +11,13 @@ const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 
-const allThemes: Theme[] = ['light', 'dark'];
-const ALL_STATES = ['hover', 'focus', 'focus-hover'] as const;
+const PSEUDO_STATES = ['hover', 'focus', 'focus-hover'] as const;
 
-export type StateType = (typeof ALL_STATES)[number];
-
-export type GetMarkup = () => string;
-export type GetThemedMarkup = (theme: Theme) => string;
-
-export const getBodyMarkup = (getElements: GetMarkup) =>
-  ALL_STATES.map((state) => {
-    return `<div class="playground light ${state}" title="should render :${state}">
-  ${getElements()}
-</div>`;
+export const getPlaygroundPseudoStatesMarkup = (markup: () => string) =>
+  PSEUDO_STATES.map((state) => {
+    return `<div class="playground light ${state}" title="should render :${state}">${markup()}</div>`;
   }).join('\n');
 
-export const getThemedBodyMarkup = (
-  getThemedElements: GetThemedMarkup,
-  opts?: { states?: StateType[]; autoLayout?: boolean; themes?: Theme[] }
-): string => {
-  const { states = ALL_STATES, autoLayout = false, themes = allThemes } = opts || {};
-
-  return states
-    .map((state) =>
-      themes.map((theme) => {
-        return `<div class="playground ${theme} ${
-          autoLayout ? 'auto-layout' : ''
-        } ${state}" title="should render with theme ${theme} :${state}">${getThemedElements(theme)}</div>`;
-      })
-    )
-    .flat()
-    .join('\n');
-};
-
-const s4 = (): string =>
-  Math.floor((1 + Math.random()) * 0x10000)
-    .toString(16)
-    .substring(1);
 export const generateGUID = (): string => {
   // return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
@@ -63,6 +32,11 @@ export const forceFocusState = (page: Page, selector: string): Promise<void> => 
 export const forceFocusHoverState = (page: Page, selector: string): Promise<void> => {
   return forceStateOnElements(page, selector, FOCUS_HOVER_STATE);
 };
+
+const s4 = (): string =>
+  Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
 
 const forceStateOnElements = async (page: Page, selector: string, states: ForcedPseudoClasses[]): Promise<void> => {
   const cdp: CDPSession = await page.context().newCDPSession(page); // each selector needs their own cdp session, otherwise forcedPseudoStates are not persisted
@@ -89,7 +63,7 @@ const forceStateOnElements = async (page: Page, selector: string, states: Forced
     }
   }
 };
-export const resolveSelector = (
+const resolveSelector = (
   selector: string
 ): { hostElementSelector: string; shadowRootNodeName: string; deepShadowRootNodeName: string } => {
   const [hostElementSelector, shadowRootNodeName, deepShadowRootNodeName] = selector.split('>>>').map((x, index) => {
@@ -117,10 +91,7 @@ const getHostElementNodeIds = async (cdp: CDPSession, selector: string): Promise
   ).nodeIds;
 };
 
-export const findBackendNodeIds = (
-  currentNode: Protocol.DOM.Node,
-  localNodeNameOrClassName: string
-): BackendNodeId[] => {
+const findBackendNodeIds = (currentNode: Protocol.DOM.Node, localNodeNameOrClassName: string): BackendNodeId[] => {
   // support tag names & class names
   if (
     currentNode.localName === localNodeNameOrClassName ||

@@ -4,8 +4,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -26,7 +25,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   const image =
     '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=" alt="Some alt" />';
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <div class="grid">
       <p-link-tile-model-signature heading="Some heading">
         ${image}
@@ -42,7 +41,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
        </p-link-tile-model-signature>
     </div>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

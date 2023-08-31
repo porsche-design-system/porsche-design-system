@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -24,16 +23,15 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-stepper-horizontal-item state="current">Current</p-stepper-horizontal-item>
     <p-stepper-horizontal-item>Default</p-stepper-horizontal-item>`;
 
-  const getElementsMarkup: GetMarkup = () =>
-    `<p-stepper-horizontal>
+  const markup = () => `
+    <p-stepper-horizontal>
       ${stepperHorizontalItems}
     </p-stepper-horizontal>
-
     <p-stepper-horizontal size="medium">
       ${stepperHorizontalItems}
     </p-stepper-horizontal>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

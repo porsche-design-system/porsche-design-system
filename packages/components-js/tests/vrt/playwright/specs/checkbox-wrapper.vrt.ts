@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -21,7 +20,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       p-checkbox-wrapper:not(:last-child), .force-label { margin-bottom: 1rem; }
     </style>`;
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-checkbox-wrapper label="When input gets hovered or focused">
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
@@ -73,7 +72,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </span>
     </p-checkbox-wrapper>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

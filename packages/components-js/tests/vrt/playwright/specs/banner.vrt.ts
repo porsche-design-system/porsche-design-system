@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -21,7 +20,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       .playground { transform: translate3d(0, 0, 0); height: 20rem; }
     </style>`;
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-banner open="true" state="neutral">
       <span slot="title">
         Slotted title
@@ -37,7 +36,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </span>
     </p-banner>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

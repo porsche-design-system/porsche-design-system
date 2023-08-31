@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -21,10 +20,10 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       p-toast-item ~ p-toast-item { margin-top: 0.5rem; }
     </style>`;
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-toast-item text="Some message"></p-toast-item>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

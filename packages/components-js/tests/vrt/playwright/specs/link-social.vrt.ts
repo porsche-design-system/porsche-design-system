@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -21,7 +20,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       p-link-social { margin-right: 1rem; margin-top: 1rem; }
     </style>`;
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-link-social href="https://www.porsche.com/">Fallback</p-link-social>
     <p-link-social href="https://www.porsche.com/" hide-label="true">Fallback</p-link-social>
     <p-link-social href="https://www.facebook.com/" icon="logo-facebook">Facebook</p-link-social>
@@ -55,7 +54,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-link-social icon="logo-youtube"><a href="https://www.youtube.com">Slotted Youtube Anchor</a></p-link-social>
     <p-link-social icon="logo-youtube" hide-label="true"><a href="https://www.youtube.com">Slotted Youtube Anchor</a></p-link-social>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

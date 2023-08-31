@@ -5,8 +5,7 @@ import {
   baseViewportWidth,
   forceFocusHoverState,
   forceFocusState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -20,11 +19,11 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       p-wordmark:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem;  }
     </style>`;
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-wordmark href="https://www.porsche.com"></p-wordmark>
     <p-wordmark href="https://www.porsche.com" style="padding: 1rem"></p-wordmark>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

@@ -3,8 +3,7 @@ import {
   baseViewportWidth,
   forceFocusHoverState,
   forceFocusState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -18,11 +17,11 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       p-crest:not(:last-child) { margin-right: 0.5rem; }
     </style>`;
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-crest href="https://www.porsche.com"></p-crest>
     <p-crest href="https://www.porsche.com" style="padding: 1rem"></p-crest>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

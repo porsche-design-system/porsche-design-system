@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -21,7 +20,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       p-button:not(:last-child) { margin-right: 1rem; margin-bottom: 1rem; }
     </style>`;
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-button variant="primary">Primary</p-button>
     <p-button variant="secondary">Secondary</p-button>
     <p-button variant="tertiary">Tertiary</p-button>
@@ -37,7 +36,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-button variant="secondary" loading>Loading Secondary</p-button>
     <p-button variant="tertiary" loading>Loading Tertiary</p-button>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

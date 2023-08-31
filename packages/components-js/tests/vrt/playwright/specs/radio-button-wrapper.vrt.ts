@@ -7,8 +7,7 @@ import {
   forceFocusState,
   forceHoverState,
   generateGUID,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -22,7 +21,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       p-radio-button-wrapper:not(:last-child), .force-label { margin-bottom: 1rem; }
     </style>`;
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-radio-button-wrapper label="When input gets hovered or focused">
       <input type="radio" name="some-name" />
     </p-radio-button-wrapper>
@@ -74,7 +73,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </span>
     </p-radio-button-wrapper>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

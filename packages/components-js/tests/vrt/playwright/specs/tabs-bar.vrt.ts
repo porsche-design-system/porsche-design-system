@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -16,7 +15,7 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'tabs-bar';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-tabs-bar active-tab-index="1">
       <button type="button">Button Tab One</button>
       <button type="button">Button Tab Two</button>
@@ -28,7 +27,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       <a href="#">Anchor Tab Three</a>
     </p-tabs-bar>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });

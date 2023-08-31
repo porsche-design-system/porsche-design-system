@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -21,12 +20,12 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       p-tag-dismissible:not(:last-child) { margin-right: 0.5rem; }
     </style>`;
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-tag-dismissible>Some Text</p-tag-dismissible>
     <p-tag-dismissible label="Some Label" color="background-base">Some Text</p-tag-dismissible>
     <p-tag-dismissible label="Some Label" color="background-surface">Some Text</p-tag-dismissible>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

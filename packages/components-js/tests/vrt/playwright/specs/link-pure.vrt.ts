@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -21,7 +20,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     #app div div:not(:first-of-type) { margin-top: 16px; }
   </style>`;
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <div>
       <p-link-pure href="#">Label default</p-link-pure>
       <p-link-pure><a href="#">Label slotted</a></p-link-pure>
@@ -61,7 +60,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       <p-link-pure align-label="left" stretch="true"><a href="#">Label slotted stretch align left</a></p-link-pure>
     </div>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

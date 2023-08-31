@@ -4,8 +4,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -23,7 +22,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       }
     </style>`;
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <div>
       <p-modal open="true">
         <div slot="heading">
@@ -39,7 +38,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </p-modal>
     </div>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
   });
 

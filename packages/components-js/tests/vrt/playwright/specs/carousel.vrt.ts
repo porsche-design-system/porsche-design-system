@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -31,7 +30,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     .map((_, i) => `<div>Slide ${i + 1}</div>`)
     .join('');
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <p-carousel skip-link-target="#target">
       <h2 slot="heading">
         Slotted heading
@@ -48,7 +47,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       ${slides}
     </p-carousel>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,

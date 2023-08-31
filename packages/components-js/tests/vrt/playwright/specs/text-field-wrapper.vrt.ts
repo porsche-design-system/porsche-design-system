@@ -6,8 +6,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
-  type GetMarkup,
+  getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -30,7 +29,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
   const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
 
-  const getElementsMarkup: GetMarkup = () => `
+  const markup = () => `
     <div>
       <p-text-field-wrapper label="Text empty">
         <input type="text" />
@@ -133,7 +132,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </p-text-field-wrapper>
     </div>`;
 
-  await setContentWithDesignSystem(page, getBodyMarkup(getElementsMarkup), {
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
