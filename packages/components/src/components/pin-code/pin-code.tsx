@@ -5,6 +5,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
+  getClosestHTMLElement,
   getPrefixedTagNames,
   hasDescription,
   hasLabel,
@@ -95,12 +96,14 @@ export class PinCode {
   /** Emitted when selected element changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEvent>;
 
+  private form: HTMLFormElement;
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;
   private pinCodeElements: HTMLInputElement[] = [];
 
   public connectedCallback(): void {
-    this.isWithinForm = isWithinForm(this.host);
+    this.form = getClosestHTMLElement(this.host, 'form');
+    this.isWithinForm = !!this.form;
   }
 
   public componentWillLoad(): void {
@@ -201,6 +204,7 @@ export class PinCode {
     const {
       target: { previousElementSibling, tagName, value },
     } = e;
+
     if (isDisabledOrLoading(this.disabled, this.loading) || tagName !== 'INPUT') {
       e.preventDefault();
     } // only allow focus on filled inputs or the first empty input
@@ -247,6 +251,11 @@ export class PinCode {
       }
       this.value = joinInputValues(this.pinCodeElements);
       this.updateValue();
+    } // support native submit behavior
+    else if (key === 'Enter') {
+      if (isWithinForm) {
+        getClosestHTMLElement(this.host, 'form').submit();
+      }
     } // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
     else if (key === 'Dead') {
       target.blur();
