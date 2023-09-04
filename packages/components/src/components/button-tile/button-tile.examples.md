@@ -97,6 +97,14 @@ It is possible to align the description on top of the component.
   <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
 </Playground>
 
+## Hyphens
+
+It is possible to overwrite the hyphens style on the host element and pass in "soft" hyphens.
+
+<Playground :markup="hyphenMarkup">
+  <SelectOptions v-model="hyphen" :values="hyphens" name="hyphens"></SelectOptions>
+</Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
@@ -222,6 +230,20 @@ export default class Code extends Vue {
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-button-tile>`};
+
+  hyphen = 'manual';
+  hyphens = ['auto', 'manual', 'none'];
+  get hyphenMarkup() {
+    return `<p-button-tile
+  label="Some label"
+  description="An extra&shy;ordinarily Porsche"
+  compact="true"
+  size="inherit" 
+  style="hyphens: ${this.hyphen}; font-size: 40px;"
+>
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+</p-button-tile>`};
+
 }
 </script>
 
