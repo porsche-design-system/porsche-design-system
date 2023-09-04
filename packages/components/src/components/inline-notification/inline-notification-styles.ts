@@ -2,7 +2,12 @@ import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
-import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  getThemedColors,
+  hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../styles';
 import {
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
@@ -28,6 +33,9 @@ export const getComponentCss = (
       'h5,p': {
         margin: 0,
         color: getThemedColors(theme).primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: getThemedColors('dark').primaryColor,
+        }),
       },
     },
     icon: getNotificationIconJssStyle(),
