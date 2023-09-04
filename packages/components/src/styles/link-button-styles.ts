@@ -89,7 +89,6 @@ export const getLinkButtonStyles = (
       ':host': {
         display: 'inline-block',
         ...addImportantToEachRule({
-          // TODO: add generic unit test, so that all components have a colorScheme defined
           colorScheme: 'light dark',
           verticalAlign: 'top',
           outline: 0, // custom element is able to delegate the focus
