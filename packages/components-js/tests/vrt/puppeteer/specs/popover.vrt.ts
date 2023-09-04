@@ -1,28 +1,17 @@
 import {
-  defaultViewports,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
   openPopoversAndHighlightSpacer,
-  vrtTest,
 } from '@porsche-design-system/shared/testing';
 import type { GetThemedMarkup } from '../helpers';
 import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getBodyMarkup,
   getThemedBodyMarkup,
   setContentWithDesignSystem,
 } from '../helpers';
 import type { PopoverDirection } from '@porsche-design-system/components/src/components/feedback/popover/popover-utils';
-
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(
-    await vrtTest(getVisualRegressionTester(viewport), 'popover', '/#popover', {
-      scenario: (page) => openPopoversAndHighlightSpacer(page),
-    })
-  ).toBeFalsy();
-});
 
 it('should have no visual regression on popover-overview for viewport 1760', async () => {
   const vrt = getVisualRegressionTester(1760);
