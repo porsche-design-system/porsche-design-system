@@ -389,7 +389,7 @@ export class MultiSelect {
           forceUpdate(highlightedOption);
         } else {
           if (this.isWithinForm) {
-            this.form.submit(); // Replicates native behavior
+            this.form.requestSubmit(); // Replicates native behavior
           }
         }
         break;
