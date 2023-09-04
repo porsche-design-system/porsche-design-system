@@ -1953,6 +1953,106 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
+  "p-multi-select": {
+    "allowedPropValues": {
+      "description": "string",
+      "disabled": "boolean",
+      "dropdownDirection": [
+        "down",
+        "up",
+        "auto",
+      ],
+      "hideLabel": "boolean",
+      "label": "string",
+      "message": "string",
+      "name": "string",
+      "required": "boolean",
+      "state": [
+        "none",
+        "error",
+        "success",
+      ],
+      "theme": [
+        "light",
+        "dark",
+      ],
+      "value": [
+        "string",
+      ],
+    },
+    "arrayProps": [
+      "value",
+    ],
+    "breakpointCustomizableProps": [
+      "hideLabel",
+    ],
+    "eventNames": [
+      "update",
+    ],
+    "hasAriaProp": false,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "namedSlots": [
+      "label",
+      "description",
+      "select",
+      "message",
+    ],
+    "nestedComponents": [
+      "p-button-pure",
+      "p-icon",
+    ],
+    "props": {
+      "description": null,
+      "disabled": false,
+      "dropdownDirection": "auto",
+      "hideLabel": false,
+      "label": null,
+      "message": null,
+      "name": null,
+      "required": false,
+      "state": "none",
+      "theme": "light",
+      "value": [],
+    },
+    "requiredProps": [
+      "name",
+    ],
+    "styling": "jss",
+  },
+  "p-multi-select-option": {
+    "allowedPropValues": {
+      "disabled": "boolean",
+      "value": [
+        "string",
+        "number",
+      ],
+    },
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": false,
+    "nestedComponents": [
+      "p-checkbox-wrapper",
+    ],
+    "props": {
+      "disabled": false,
+      "value": null,
+    },
+    "requiredProps": [
+      "value",
+    ],
+    "styling": "jss",
+  },
   "p-pagination": {
     "allowedPropValues": {
       "activePage": "number",

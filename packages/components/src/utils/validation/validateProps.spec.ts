@@ -1,7 +1,4 @@
 import * as validatePropsUtils from './validateProps';
-import * as loggerUtils from '../log/logger';
-import * as breakpointCustomizableUtils from '../breakpoint-customizable';
-import * as jsonUtils from '../json';
 import {
   AllowedTypes,
   formatArrayOutput,
@@ -11,6 +8,7 @@ import {
   getBreakpointCustomizableStructure,
   getShapeStructure,
   isBreakpointCustomizableValueInvalid,
+  isValidArray,
   isValueNotOfType,
   printErrorMessage,
   validateProps,
@@ -18,6 +16,9 @@ import {
   ValidationError,
   ValidatorFunction,
 } from './validateProps';
+import * as loggerUtils from '../log/logger';
+import * as breakpointCustomizableUtils from '../breakpoint-customizable';
+import * as jsonUtils from '../json';
 
 describe('isValueNotOfType()', () => {
   it.each<[any, string, boolean]>([

@@ -121,6 +121,21 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.ModalExampleAccessibilityComponent,
   },
   {
+    name: 'Multi-Select Example',
+    path: 'multi-select-example',
+    component: fromExamples.MultiSelectExampleComponent,
+  },
+  {
+    name: 'Multi-Select Example Controlled',
+    path: 'multi-select-example-controlled',
+    component: fromExamples.MultiSelectExampleControlledComponent,
+  },
+  {
+    name: 'Multi-Select Example Dynamic',
+    path: 'multi-select-example-dynamic',
+    component: fromExamples.MultiSelectExampleDynamicComponent,
+  },
+  {
     name: 'Pin Code Example',
     path: 'pin-code-example',
     component: fromExamples.PinCodeExampleComponent,

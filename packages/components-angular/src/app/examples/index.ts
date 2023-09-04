@@ -9,6 +9,9 @@ import { FlyoutExampleSlottedSecondaryComponent } from './flyout-example-slotted
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
+import { MultiSelectExampleComponent } from './multi-select-example.component';
+import { MultiSelectExampleControlledComponent } from './multi-select-example-controlled.component';
+import { MultiSelectExampleDynamicComponent } from './multi-select-example-dynamic.component';
 import { PinCodeExampleComponent } from './pin-code-example.component';
 import { PinCodeExampleControlledComponent } from './pin-code-example-controlled.component';
 import { ScrollerExampleComponent } from './scroller-example.component';
@@ -37,6 +40,9 @@ export const examples = [
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
   ModalExampleAccessibilityComponent,
+  MultiSelectExampleComponent,
+  MultiSelectExampleControlledComponent,
+  MultiSelectExampleDynamicComponent,
   PinCodeExampleComponent,
   PinCodeExampleControlledComponent,
   ScrollerExampleComponent,
@@ -65,6 +71,9 @@ export * from './flyout-example-slotted-secondary.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './modal-example-accessibility.component';
+export * from './multi-select-example.component';
+export * from './multi-select-example-controlled.component';
+export * from './multi-select-example-dynamic.component';
 export * from './pin-code-example.component';
 export * from './pin-code-example-controlled.component';
 export * from './scroller-example.component';

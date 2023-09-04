@@ -5,6 +5,7 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 import type { Component } from '../helpers';
+import { multiSelectScenario } from './multi-select.vrt';
 import { pinCodeScenario } from './pin-code.vrt';
 
 const components: Component[] = [
@@ -37,6 +38,7 @@ const components: Component[] = [
   'marque',
   'modal',
   'model-signature',
+  'multi-select',
   'pagination',
   'pin-code',
   'popover',
@@ -80,6 +82,7 @@ const highContrastTest = async (component: Component, scheme: 'light' | 'dark'):
     {
       ...(component === 'popover' && { scenario: scenarioPopover }),
       ...(component === 'select-wrapper' && { scenario: scenarioSelectWrapper }),
+      ...(component === 'multi-select' && { scenario: multiSelectScenario }),
       ...(component === 'pin-code' && { scenario: pinCodeScenario }),
       ...(['modal', 'banner', 'flyout'].includes(component) && { scenario: scenarioModalOrBannerOrFlyout }),
       forcedColorsEnabled: true,

@@ -220,7 +220,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/toastManager\.getToast\(\)/, 'false') // toast
         .replace(/ {\.\.\.toast}/, '') // toast
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
-        .replace(/determineDirection\(this\.props\,.+\)/, "'down'") // select-wrapper-dropdown
+        .replace(/determineDropdownDirection\(this\.props\,.+\)/, "'down'") // select-wrapper-dropdown
+        .replace(/getDropdownDirection\(this\.props.+\)/, "'down'") // multi-select
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
@@ -371,7 +372,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // Change isOpen, optionMaps, searchString to not be a prop
           .replace(/this\.props\.(isOpen|optionMaps|searchString)(?=[,)}])/g, 'this.$1')
           // fix warning about read-only field
-          .replace(/value={/, 'defaultValue={');
+          .replace(/value={/, 'defaultValue={')
+          .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
+          .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes\([^}]*\}\s*/, '');
       } else if (tagName === 'p-select-wrapper') {
         newFileContent = newFileContent
           // Add PSelectWrapperDropdown component import
@@ -388,6 +391,32 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           )
           // Change hasCustomDropdown to use fn instead of prop
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
+      } else if (tagName === 'p-multi-select') {
+        newFileContent = newFileContent
+          // Replace unused imports which cause warnings
+          .replace(/\s*MultiSelectOption,\s*/, '')
+          .replace(/\s*MultiSelectUpdateEvent,\s*/, '')
+          // Replace aria fns
+          .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
+          .replace(/\{\.\.\.getListAriaAttributes\([^}]*\}\s*/, '')
+          // replace input-container className
+          .replace(/\{\{ 'input-container': true, disabled: this.props.disabled }}/, "'input-container'")
+          // replace color prop
+          .replace(/\s*color=\{this.props.disabled \? 'state-disabled' : 'primary'}\s*/, '')
+          // Replace placeholder
+          .replace(/(?<=placeholder=\{)[^}]+/, '""')
+          // replace toggle icon className
+          .replace(
+            /className=\{\{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this.props.isOpen }}/,
+            "className='icon toggle-icon'"
+          )
+          .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
+          .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false');
+      } else if (tagName === 'p-multi-select-option') {
+        newFileContent = newFileContent
+          .replace(/(\{ MultiSelectOptionInternalHTMLProps)/, 'type $1')
+          .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
+          .replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))

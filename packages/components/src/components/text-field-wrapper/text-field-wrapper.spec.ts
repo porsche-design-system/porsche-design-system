@@ -5,6 +5,7 @@ import { TextFieldWrapper } from './text-field-wrapper';
 import * as a11yUtils from '../../utils/a11y/a11y';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import * as propertyObserverUtils from '../../utils/property-observer';
+import * as isWithinFormUtils from '../../utils/form/isWithinForm';
 
 jest.mock('../../utils/dom');
 
