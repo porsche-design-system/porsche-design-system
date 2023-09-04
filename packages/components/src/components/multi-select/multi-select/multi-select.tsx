@@ -328,8 +328,8 @@ export class MultiSelect {
     this.multiSelectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
   };
 
-  private onInputChange = (e: Event): void => {
-    if ((e.target as HTMLInputElement).value.startsWith(' ')) {
+  private onInputChange = (e: InputEvent & { target: HTMLInputElement }): void => {
+    if (e.target.value.startsWith(' ')) {
       this.resetFilter();
     } else {
       updateOptionsFilterState((e.target as HTMLInputElement).value, this.multiSelectOptions);
