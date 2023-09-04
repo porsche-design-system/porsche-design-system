@@ -1,5 +1,4 @@
 import type { Page, JSHandle } from 'puppeteer';
-
 type Options = { withBackground: boolean };
 
 export const openPopoversAndHighlightSpacer = async (page: Page, opts?: Options): Promise<void> => {
@@ -38,4 +37,12 @@ export const openPopoversAndHighlightSpacer = async (page: Page, opts?: Options)
       })
     );
   }
+};
+
+export const openPinCodeScenario = async (page: Page, opts?: Options): Promise<void> => {
+  await page.evaluate(() => (window as any).componentsReady());
+
+  await page.$$eval('p-pin-code.filled', async (pinCode) =>
+    pinCode.forEach((pin: any) => (pin.value = ['1', '2', '3', '4']))
+  );
 };

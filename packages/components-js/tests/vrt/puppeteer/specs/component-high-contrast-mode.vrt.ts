@@ -5,6 +5,7 @@ import {
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 import type { Component } from '../helpers';
+import { pinCodeScenario } from './pin-code.vrt';
 
 const components: Component[] = [
   'accordion',
@@ -79,6 +80,7 @@ const highContrastTest = async (component: Component, scheme: 'light' | 'dark'):
     {
       ...(component === 'popover' && { scenario: scenarioPopover }),
       ...(component === 'select-wrapper' && { scenario: scenarioSelectWrapper }),
+      ...(component === 'pin-code' && { scenario: pinCodeScenario }),
       ...(['modal', 'banner', 'flyout'].includes(component) && { scenario: scenarioModalOrBannerOrFlyout }),
       forcedColorsEnabled: true,
       prefersColorScheme: scheme,
