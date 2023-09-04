@@ -39,7 +39,7 @@ export const openPopoversAndHighlightSpacer = async (page: Page, opts?: Options)
   }
 };
 
-export const openPinCodeScenario = async (page: Page, opts?: Options): Promise<void> => {
+export const openPinCodeScenario = async (page: Page): Promise<void> => {
   await page.evaluate(() => (window as any).componentsReady());
 
   await page.$$eval('p-pin-code.filled', async (pinCode) =>
