@@ -271,8 +271,8 @@ const generateCodeSamples = (): void => {
       component: 'styles-flyout-grid',
       samples: [
         [
-          //special path to get the GridLayout component
-          componentsReactPath + '/../components/GridLayout.tsx',
+          componentsAngularPath + '/../styles/styles-flyout-grid-example.component.ts',
+          componentsReactPath + '/../styles/StylesFlyoutGridExample.tsx',
         ],
       ],
     },
@@ -307,7 +307,7 @@ const generateCodeSamples = (): void => {
       component: 'styles-grid',
       samples: [
         [
-          //special path to get the GridLayout component itself with fully rendered HTML and CSS
+          // special path to get the Grid-Layout component itself with fully rendered HTML and CSS
           componentsAngularPath + '/../components/grid-layout.component.ts',
           componentsReactPath + '/../components/GridLayout.tsx',
         ],
