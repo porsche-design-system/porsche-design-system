@@ -4,11 +4,13 @@ import {
   expectA11yToMatchSnapshot,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
+  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
+  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -50,15 +52,15 @@ const getAmountOfVisibleMultiSelectOptions = async (): Promise<number> =>
     (options) => options.filter((option: HTMLElement) => !option.hidden).length
   );
 
-const getSelectedMultiSelectOptionProperty = async <T extends keyof MultiSelectOption>(
-  property: T
-): Promise<MultiSelectOption[T]> =>
+const getSelectedMultiSelectOptionProperty = async <K extends keyof MultiSelectOption>(
+  property: K
+): Promise<MultiSelectOption[K][]> =>
   await page.$$eval(
     'p-multi-select p-multi-select-option',
     (options, property) =>
       options
         .filter((option: MultiSelectOption) => option.selected)
-        .map((option: MultiSelectOption) => option[property]),
+        .map((option: MultiSelectOption) => option[property]) as MultiSelectOption[K][],
     property
   );
 
@@ -91,7 +93,7 @@ const descriptionSlotContent =
 const messageSlotContent =
   '<span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>';
 
-const setValue = async (value: (string | number)[]) =>
+const setValue = async (value: string[]) =>
   await page.evaluate((el: HTMLPMultiSelectElement, value) => (el.value = value), await getHost(), value);
 
 const addOption = async (value: string | number, textContent?: string) => {
@@ -149,7 +151,7 @@ const initMultiSelect = (opt?: InitOptions): Promise<void> => {
       </p-multi-select>
       ${markupAfter}`;
 
-  return setContentWithDesignSystem(page, isWithinForm ? `<form>${markup}</form>` : markup);
+  return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };
 
 it('should render', async () => {
@@ -1040,6 +1042,66 @@ describe('keyboard and click events', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getDropdownDisplay(), 'after second Esc').toBe('none');
+  });
+
+  it('should submit form with correct values when is wrapped by form on Enter', async () => {
+    await initMultiSelect();
+    const form = await selectNode(page, 'form');
+    const inputElement = await getInput();
+
+    await addEventListener(form, 'submit');
+    await addEventListener(inputElement, 'focus');
+    expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
+    expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
+    expect(await getMultiSelectValue()).toEqual(['a']);
+
+    await page.keyboard.press('Escape');
+    expect((await getEventSummary(inputElement, 'focus')).counter, 'after escape').toBe(1);
+    expect(await getHighlightedOptionIndex(), 'after escape').toBe(-1);
+
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
+    expect(
+      await form.evaluate((form: HTMLFormElement) => Array.from(new FormData(form).values()).join(',')),
+      'after Enter'
+    ).toEqual('a');
+  });
+
+  it('should not submit form when is not wrapped by form on Enter', async () => {
+    initConsoleObserver(page);
+    await initMultiSelect({ options: { isWithinForm: false } });
+    expect(getConsoleErrorsAmount()).toBe(0);
+    const inputElement = await getInput();
+
+    await addEventListener(inputElement, 'focus');
+    expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect(await getMultiSelectValue()).toEqual(['a']);
+
+    await page.keyboard.press('Escape');
+    expect((await getEventSummary(inputElement, 'focus')).counter, 'after escape').toBe(1);
+    expect(await getHighlightedOptionIndex(), 'after escape').toBe(-1);
+
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 
