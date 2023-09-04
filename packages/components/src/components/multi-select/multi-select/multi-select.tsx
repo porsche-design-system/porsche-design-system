@@ -108,7 +108,7 @@ export class MultiSelect {
   /** Disables the multi-select */
   @Prop() public disabled?: boolean = false;
 
-  /** A Boolean attribute indicating that an option with a non-empty string or number value must be selected. */
+  /** A Boolean attribute indicating that an option with a non-empty string value must be selected. */
   @Prop() public required?: boolean = false;
 
   /** Changes the direction to which the dropdown list appears. */
