@@ -54,9 +54,9 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentWillRender', () => {
-  it('should initialize prop value with array of empty strings and not call warnIfValueIsNotValid() if value is not set', () => {
+  it('should initialize prop value with array of empty strings and not call warnAboutTransformedInitialValue() if value is not set', () => {
     const component = initComponent();
-    const spy = jest.spyOn(pinCodeUtils, 'warnIfValueIsNotValid');
+    const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedInitialValue');
     component['update'] = { emit: jest.fn() };
 
     component.componentWillRender();
@@ -65,10 +65,10 @@ describe('componentWillRender', () => {
     expect(spy).not.toBeCalled();
   });
 
-  it('should reset prop value with array of empty strings and call warnIfValueIsNotValid() if value does not consist of digits only', () => {
+  it('should reset prop value with array of empty strings and call warnAboutTransformedInitialValue() if value does not consist of digits only', () => {
     const component = initComponent();
     component['value'] = ['1', 'a', '&', '^', 'b'];
-    const spy = jest.spyOn(pinCodeUtils, 'warnIfValueIsNotValid');
+    const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedInitialValue');
     component['update'] = { emit: jest.fn() };
 
     component.componentWillRender();
@@ -77,9 +77,9 @@ describe('componentWillRender', () => {
     expect(spy).toBeCalledWith();
   });
 
-  it('should slice prop value and call warnIfValueIsNotValid() with correct parameters if value.length is longer then prop length', () => {
+  it('should slice prop value and call warnAboutTransformedInitialValue() with correct parameters if value.length is longer then prop length', () => {
     const component = initComponent();
-    const spy = jest.spyOn(pinCodeUtils, 'warnIfValueIsNotValid');
+    const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedInitialValue');
     component['value'] = ['1', '2', '3', '4', '5'];
     component['update'] = { emit: jest.fn() };
 
@@ -89,9 +89,9 @@ describe('componentWillRender', () => {
     expect(spy).toBeCalledWith(4);
   });
 
-  it('should not slice prop value and not call warnIfValueIsNotValid() if value.length is equal to prop length', () => {
+  it('should not slice prop value and not call warnAboutTransformedInitialValue() if value.length is equal to prop length', () => {
     const component = initComponent();
-    const spy = jest.spyOn(pinCodeUtils, 'warnIfValueIsNotValid');
+    const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedInitialValue');
     component['value'] = ['1', '2', '3', '4'];
     component['update'] = { emit: jest.fn() };
 

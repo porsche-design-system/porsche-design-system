@@ -22,7 +22,7 @@ export const getStylesWithoutSlottedSelector = (styles: Styles): Styles => {
   );
 };
 
-export const warnIfValueIsNotValid = (length?: number): void => {
+export const warnAboutTransformedInitialValue = (length?: number): void => {
   const warningPrefix = '@Prop() "value" on component <p-pin-code>:';
   consoleWarn(
     warningPrefix,

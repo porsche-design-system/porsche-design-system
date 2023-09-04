@@ -27,7 +27,7 @@ import {
   PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
   syncHiddenInput,
-  warnIfValueIsNotValid,
+  warnAboutTransformedInitialValue,
 } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
@@ -117,7 +117,7 @@ export class PinCode {
     // initialize array of values with empty strings / reset initial value if it does not consist of digits only
     if (!inputConsistsOfDigits(this.value.join(''))) {
       if (this.value.join().length > 0) {
-        warnIfValueIsNotValid();
+        warnAboutTransformedInitialValue();
       }
       this.value = Array(this.length).fill('');
       this.updateValue();
@@ -126,7 +126,7 @@ export class PinCode {
     // make sure initial value is not longer than pin code length
     if (this.value?.length > this.length) {
       this.value = this.value.slice(0, this.length);
-      warnIfValueIsNotValid(this.length);
+      warnAboutTransformedInitialValue(this.length);
       this.updateValue();
     }
 

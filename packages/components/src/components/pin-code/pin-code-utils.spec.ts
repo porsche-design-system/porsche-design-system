@@ -8,7 +8,7 @@ import {
   inputIsSingleDigit,
   getArrayOfInputValues,
   syncHiddenInput,
-  warnIfValueIsNotValid,
+  warnAboutTransformedInitialValue,
 } from './pin-code-utils';
 import { PinCode } from './pin-code';
 
@@ -40,20 +40,20 @@ describe('getStylesWithoutSlottedSelector()', () => {
   });
 });
 
-describe('warnIfValueIsNotValid()', () => {
+describe('warnAboutTransformedInitialValue()', () => {
   it('should call consoleWarn() with correct parameters', () => {
     const warningPrefix = '@Prop() "value" on component <p-pin-code>:';
     const spy = jest.spyOn(consoleWarnUtils, 'consoleWarn');
     jest.spyOn(global.console, 'warn').mockImplementation();
 
-    warnIfValueIsNotValid(4);
+    warnAboutTransformedInitialValue(4);
 
     expect(spy).toBeCalledWith(
       warningPrefix,
       'Provided pin code has too many characters and was truncated to the max length of 4.'
     );
 
-    warnIfValueIsNotValid();
+    warnAboutTransformedInitialValue();
 
     expect(spy).toBeCalledWith(
       warningPrefix,
