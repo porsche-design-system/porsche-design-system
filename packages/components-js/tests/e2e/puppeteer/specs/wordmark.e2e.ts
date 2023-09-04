@@ -71,7 +71,7 @@ describe('with link', () => {
 
     expect(counter).toBe(2);
     for (const target of targets) {
-      expect(target.id).toBe('hostElement');
+      expect(target.id).toBe('my-wordmark');
     }
   });
 

@@ -42,6 +42,7 @@ import { LinkTileModelSignaturePage } from './generated/LinkTileModelSignature';
 import { MarquePage } from './generated/Marque';
 import { ModalPage } from './generated/Modal';
 import { ModelSignaturePage } from './generated/ModelSignature';
+import { MultiSelectPage } from './generated/MultiSelect';
 import { PaginationPage } from './generated/Pagination';
 import { PopoverPage } from './generated/Popover';
 import { RadioButtonWrapperPage } from './generated/RadioButtonWrapper';
@@ -216,6 +217,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Model Signature',
     path: '/model-signature',
     element: <ModelSignaturePage />,
+  },
+  {
+    name: 'Multi Select',
+    path: '/multi-select',
+    element: <MultiSelectPage />,
   },
   {
     name: 'Pagination',

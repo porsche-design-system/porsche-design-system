@@ -311,6 +311,20 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/model-signature/model-signature.props.md')],
     },
+    'Multi Select': {
+      Examples: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/multi-select/multi-select/multi-select.examples.md'),
+      ],
+      Usage: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/multi-select/multi-select/multi-select.usage.md'),
+      ],
+      Props: [
+        // @ts-ignore
+        () => import('@/../../components/src/components/multi-select/multi-select/multi-select.props.md'),
+      ],
+    },
     Pagination: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/pagination/pagination.examples.md')],

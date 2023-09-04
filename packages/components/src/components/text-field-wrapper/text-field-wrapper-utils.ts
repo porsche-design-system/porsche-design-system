@@ -1,5 +1,5 @@
 import type { IconName } from '../../types';
-import { getClosestHTMLElement, hasCounter, hasDocument, throwException } from '../../utils';
+import { hasCounter, hasDocument, throwException } from '../../utils';
 import { borderWidthBase } from '@porsche-design-system/utilities-v2';
 import { cssVariableInputPaddingLeft, cssVariableInputPaddingRight } from './text-field-wrapper-styles';
 import type { FormState } from '../../utils/form/form-state';
@@ -16,7 +16,6 @@ export const hasUnitAndIsTypeTextOrNumber = ({ type }: HTMLInputElement, unit: s
 };
 
 export const isType = (inputType: string, typeToValidate: string): boolean => inputType === typeToValidate;
-export const isWithinForm = (host: HTMLElement): boolean => !!getClosestHTMLElement(host, 'form');
 export const hasLocateAction = (icon: IconName): boolean => icon === 'locate';
 
 export const getInputPaddingLeftOrRight = (unitElementWidth: number): string => {
