@@ -8,6 +8,7 @@ import {
   addImportantToEachRule,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import {
   fontWeightSemiBold,
@@ -28,6 +29,12 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, hoverColor, focusColor, contrastLowColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    hoverColor: hoverColorDark,
+    focusColor: focusColorDark,
+    contrastLowColor: contrastLowColorDark,
+  } = getThemedColors('dark');
 
   return getCss({
     '@global': {
@@ -35,6 +42,9 @@ export const getComponentCss = (
         display: 'block',
         ...(!compact && {
           borderBottom: `1px solid ${contrastLowColor}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: contrastLowColorDark,
+          }),
         }),
         ...hostHiddenStyles,
       }),
@@ -51,6 +61,9 @@ export const getComponentCss = (
         cursor: 'pointer',
         textAlign: 'left',
         color: primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
+        }),
         ...textSmallStyle,
         fontWeight: fontWeightSemiBold,
         ...buildResponsiveStyles(size, (s: AccordionSize) => ({
@@ -83,11 +96,17 @@ export const getComponentCss = (
             },
             '&:hover::before': {
               background: hoverColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                background: hoverColorDark,
+              }),
             },
           })
         ),
         '&:focus::before': {
           border: `${borderWidthBase} solid ${focusColor}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: focusColorDark,
+          }),
         },
         '&:not(:focus-visible)::before': {
           border: 0,
@@ -113,6 +132,9 @@ export const getComponentCss = (
     },
     collapsible: {
       color: primaryColor, // enables color inheritance for slotted content
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: primaryColorDark,
+      }),
       display: 'grid',
       ...(open
         ? {
