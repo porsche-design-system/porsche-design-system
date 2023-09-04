@@ -141,7 +141,16 @@ export class PinCode {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.disabled, this.loading, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.hideLabel,
+      this.state,
+      this.disabled,
+      this.loading,
+      this.isWithinForm,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

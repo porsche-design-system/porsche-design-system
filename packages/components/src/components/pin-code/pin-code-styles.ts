@@ -18,6 +18,7 @@ export const getComponentCss = (
   state: FormState,
   isDisabled: boolean,
   isLoading: boolean,
+  isWithinForm: boolean,
   theme: Theme
 ): string => {
   const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // we need 10px additionally so input height becomes 54px
@@ -41,12 +42,16 @@ export const getComponentCss = (
         display: 'block',
         ...hostHiddenStyles,
       }),
-      ...addImportantToEachRule(inputStyles),
-      '::slotted(input)': addImportantToEachRule({
-        position: 'absolute',
-        height: inputSize,
-        width: 0,
-        opacity: 0,
+      ...addImportantToEachRule({
+        ...inputStyles,
+        ...(isWithinForm && {
+          '::slotted(input)': {
+            position: 'absolute',
+            height: inputSize,
+            width: 0,
+            opacity: 0,
+          },
+        }),
       }),
     },
     ...(isLoading && {

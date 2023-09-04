@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, isLoading: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, isLoading: false, isWithinForm: false,theme: light 1`] = `
 ":host {
   display: block !important;
 }
@@ -37,12 +37,6 @@ input:disabled {
 input[readonly] {
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
-}
-::slotted(input) {
-  position: absolute !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
-  width: 0 !important;
-  opacity: 0 !important;
 }
 @media (max-width: 480px) {
   input {
@@ -168,7 +162,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, isWithinForm: false,theme: light 1`] = `
 ":host {
   display: block !important;
 }
@@ -205,12 +199,6 @@ input:disabled {
 input[readonly] {
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
-}
-::slotted(input) {
-  position: absolute !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
-  width: 0 !important;
-  opacity: 0 !important;
 }
 @media (max-width: 480px) {
   input {
@@ -275,7 +263,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: true, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: true, isWithinForm: true,theme: light 1`] = `
 ":host {
   display: block !important;
 }
@@ -392,7 +380,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, isWithinForm: false,theme: light 1`] = `
 ":host {
   display: block !important;
 }
@@ -429,12 +417,6 @@ input:disabled {
 input[readonly] {
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
-}
-::slotted(input) {
-  position: absolute !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
-  width: 0 !important;
-  opacity: 0 !important;
 }
 @media (max-width: 480px) {
   input {
@@ -498,7 +480,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false, isWithinForm: true,theme: dark 1`] = `
 ":host {
   display: block !important;
 }
