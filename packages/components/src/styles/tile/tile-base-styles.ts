@@ -22,6 +22,7 @@ export const getTileBaseStyles = (
     '@global': {
       ':host': {
         display: 'block',
+        hyphens: 'auto',
         ...addImportantToEachRule(hostHiddenStyles),
       },
       ...addImportantToEachRule({
