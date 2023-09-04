@@ -1,5 +1,5 @@
 import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEvent } from './pin-code-utils';
 import {
   AllowedTypes,
@@ -7,6 +7,7 @@ import {
   FORM_STATES,
   getClosestHTMLElement,
   getPrefixedTagNames,
+  handleButtonEvent,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -22,7 +23,7 @@ import {
   initHiddenInput,
   inputConsistsOfDigits,
   inputIsSingleDigit,
-  joinInputValues,
+  getArrayOfInputValues,
   PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
   syncHiddenInput,
@@ -43,7 +44,7 @@ const propTypes: PropTypes<typeof PinCode> = {
   required: AllowedTypes.boolean,
   message: AllowedTypes.string,
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
-  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
+  value: AllowedTypes.array(AllowedTypes.string),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -88,7 +89,7 @@ export class PinCode {
   @Prop() public type?: PinCodeType = 'number';
 
   /** Sets the initial value of the Pin Code. */
-  @Prop({ mutable: true }) public value?: string = '';
+  @Prop({ mutable: true }) public value?: string[] = [];
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -108,23 +109,29 @@ export class PinCode {
 
   public componentWillLoad(): void {
     if (this.isWithinForm) {
-      this.hiddenInput = initHiddenInput(this.host, this.name, this.value, this.disabled, this.required);
+      this.hiddenInput = initHiddenInput(this.host, this.name, this.value.join(''), this.disabled, this.required);
     }
   }
 
   public componentWillRender(): void {
+    // initialize array of values with empty strings / reset initial value if it does not consist of digits only
+    if (!inputConsistsOfDigits(this.value.join(''))) {
+      if (this.value.length > 0) {
+        warnIfValueIsNotValid();
+      }
+      this.value = Array(this.length).fill('');
+      this.updateValue();
+    }
+
     // make sure initial value is not longer than pin code length
     if (this.value?.length > this.length) {
-      this.value = this.value.slice(0, this.length);
+      this.value = this.value.slice(this.length - 1);
       warnIfValueIsNotValid(this.length);
+      this.updateValue();
     }
-    // check whether value consists of numbers only
-    if (this.value && !inputConsistsOfDigits(this.value)) {
-      this.value = '';
-      warnIfValueIsNotValid();
-    }
+
     if (this.isWithinForm) {
-      syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
+      syncHiddenInput(this.hiddenInput, this.name, this.value.join(''), this.disabled, this.required);
     }
   }
 
@@ -156,13 +163,7 @@ export class PinCode {
             </span>
           )}
         </label>
-        <div
-          class="pin-code-container"
-          onKeyDown={this.onKeyDown}
-          onPaste={this.onPaste}
-          onClick={this.onClick}
-          onInput={this.onInput}
-        >
+        <div class="pin-code-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput}>
           {this.loading && (
             <PrefixedTagNames.pSpinner
               class="spinner"
@@ -197,21 +198,6 @@ export class PinCode {
     );
   }
 
-  private onClick = (
-    e: MouseEvent & { target: HTMLInputElement & { previousElementSibling: HTMLInputElement } }
-  ): void => {
-    const {
-      target: { previousElementSibling, tagName, value },
-    } = e;
-
-    if (isDisabledOrLoading(this.disabled, this.loading) || tagName !== 'INPUT') {
-      e.preventDefault();
-    } // only allow focus on filled inputs or the first empty input
-    else if (!value && previousElementSibling && !previousElementSibling.value) {
-      this.pinCodeElements.find((pinCodeElement) => !pinCodeElement.value).focus();
-    }
-  };
-
   private onInput = (
     e: InputEvent & {
       target: HTMLInputElement;
@@ -220,10 +206,10 @@ export class PinCode {
     // needed to update value on auto-complete via keyboard suggestion
     const { target } = e;
     if (target.value?.length >= this.length) {
-      this.value = (target as HTMLInputElement).value;
+      this.value = (target as HTMLInputElement).value.split('');
       this.updateValue();
+      this.focusFirstEmptyOrLastElement();
     }
-    this.focusFirstEmptyOrLastElement();
   };
 
   private onKeyDown = (
@@ -243,30 +229,47 @@ export class PinCode {
     else if (inputIsSingleDigit(key)) {
       e.preventDefault();
       target.value = key;
+      this.value = getArrayOfInputValues(this.pinCodeElements);
+      this.updateValue();
+
       if (nextElementSibling) {
         nextElementSibling.focus();
       }
-      this.value = joinInputValues(this.pinCodeElements);
-      this.updateValue();
-    } // disabled or loading and handle alphanumeric keys
+    } // handle alphanumeric keys
     else if (key?.length === 1 && !(e.ctrlKey || e.metaKey)) {
       e.preventDefault();
-    } // handle backspace
-    else if (key === 'Backspace') {
-      // transfer focus backward, if the input value is empty, and it is not the first input field
-      if (!target.value && previousElementSibling) {
+    } // handle backspace and delete
+    else if (key === 'Backspace' || key === 'Delete') {
+      // transfer focus backward/forward, if the input value is empty
+      if (!target.value) {
         e.preventDefault();
-        previousElementSibling.value = '';
-        previousElementSibling.focus();
-        this.value = joinInputValues(this.pinCodeElements);
-        this.updateValue();
-      } else {
-        target.value = '';
+        if (key === 'Backspace' && previousElementSibling) {
+          previousElementSibling.value = '';
+          previousElementSibling.focus();
+        } else if (key === 'Delete' && nextElementSibling) {
+          nextElementSibling.value = '';
+          nextElementSibling.focus();
+        }
       }
+      target.value = '';
+      this.pinCodeElements.map((pinCodeElement) => {
+        if (pinCodeElement === e.target) {
+          pinCodeElement.value = '';
+        }
+        return pinCodeElement;
+      });
+
+      this.value = getArrayOfInputValues(this.pinCodeElements);
+      this.updateValue();
     } // support native submit behavior
     else if (key === 'Enter') {
       if (isWithinForm) {
-        this.form.requestSubmit();
+        handleButtonEvent(
+          e,
+          this.host,
+          () => 'submit',
+          () => this.disabled
+        );
       }
     } // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
     // workaround for ^ in firefox key: 'Process'
@@ -279,8 +282,8 @@ export class PinCode {
   private onPaste = (e: ClipboardEvent): void => {
     // remove whitespaces and cut string if pasted value is longer than pin code length
     const optimizedPastedData = e.clipboardData.getData('Text').replace(/\s/g, '').slice(0, this.length);
-    if (/^[0-9]+$/.test(optimizedPastedData) && optimizedPastedData !== this.value) {
-      this.value = optimizedPastedData;
+    if (/^[0-9]+$/.test(optimizedPastedData) && optimizedPastedData !== this.value.join('')) {
+      this.value = optimizedPastedData.split('');
       this.updateValue();
       this.focusFirstEmptyOrLastElement();
     }

@@ -9,7 +9,7 @@ export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
 export const PIN_CODE_LENGTHS = [4 as number, 6 as number] as const;
 export type PinCodeLength = (typeof PIN_CODE_LENGTHS)[number];
 
-export type PinCodeUpdateEvent = { value: string | number };
+export type PinCodeUpdateEvent = { value: string[] };
 
 export type PinCodeState = FormState;
 
@@ -36,8 +36,8 @@ export const inputIsSingleDigit = (input: string): boolean => /^\d$/.test(input)
 
 export const inputConsistsOfDigits = (input: string): boolean => /^\d+$/.test(input);
 
-export const joinInputValues = (pinCodeElements: HTMLInputElement[]): string =>
-  pinCodeElements.map((el) => el.value).join('');
+export const getArrayOfInputValues = (pinCodeElements: HTMLInputElement[]): string[] =>
+  pinCodeElements.map((el) => el.value);
 
 export const initHiddenInput = (
   host: HTMLElement,

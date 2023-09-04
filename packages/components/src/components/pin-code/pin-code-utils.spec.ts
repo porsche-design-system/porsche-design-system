@@ -6,7 +6,7 @@ import {
   initHiddenInput,
   inputConsistsOfDigits,
   inputIsSingleDigit,
-  joinInputValues,
+  getArrayOfInputValues,
   syncHiddenInput,
   warnIfValueIsNotValid,
 } from './pin-code-utils';
@@ -121,17 +121,17 @@ describe('inputConsistsOfDigits()', () => {
   });
 });
 
-describe('joinInputValues()', () => {
-  it('should return joined value of an array of input elements', () => {
+describe('getArrayOfInputValues()', () => {
+  it('should return array of values of an array of input elements', () => {
     const arrayOfInputs = Array.from({ length: 4 }, (_, i) => {
       const input = document.createElement('input');
       input.setAttribute('value', `${i}`);
       return input;
     });
 
-    const joinedValue = joinInputValues(arrayOfInputs);
+    const joinedValue = getArrayOfInputValues(arrayOfInputs);
 
-    expect(joinedValue).toBe('0123');
+    expect(joinedValue).toStrictEqual(['0', '1', '2', '3']);
   });
 });
 

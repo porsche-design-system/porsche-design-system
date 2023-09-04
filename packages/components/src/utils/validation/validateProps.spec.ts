@@ -7,6 +7,7 @@ import {
   formatArrayOutput,
   formatObjectOutput,
   getAriaStructure,
+  isValidArray,
   getBreakpointCustomizableStructure,
   getShapeStructure,
   isBreakpointCustomizableValueInvalid,
@@ -15,6 +16,7 @@ import {
   validateProps,
   validateValueOfType,
   ValidationError,
+  ValidatorFunction,
 } from './validateProps';
 
 describe('isValueNotOfType()', () => {
@@ -155,6 +157,38 @@ describe('isBreakpointCustomizableValueInvalid()', () => {
   });
 });
 
+describe('isValidArray()', () => {
+  it.each<[string, any, ValidatorFunction, any, string | undefined]>([
+    ['propName', ['a'], AllowedTypes.string, undefined, undefined],
+    ['propName', [], AllowedTypes.string, undefined, undefined],
+    ['propName', [1], AllowedTypes.string, 1, 'string[]'],
+    ['propName', 'non array', AllowedTypes.string, 'non array', 'string[]'],
+    ['propName', undefined, AllowedTypes.string, undefined, 'string[]'],
+    ['propName', [{}], AllowedTypes.string, {}, 'string[]'],
+    ['propName', [null], AllowedTypes.string, null, 'string[]'],
+    ['propName', [1], AllowedTypes.number, undefined, undefined],
+    ['propName', [], AllowedTypes.number, undefined, undefined],
+    ['propName', ['a'], AllowedTypes.number, 'a', 'number[]'],
+    ['propName', 'non array', AllowedTypes.number, 'non array', 'number[]'],
+    ['propName', undefined, AllowedTypes.number, undefined, 'number[]'],
+    ['propName', [{}], AllowedTypes.number, {}, 'number[]'],
+    ['propName', [null], AllowedTypes.number, null, 'number[]'],
+  ])(
+    'should for propName: %s, arr: %s and validator: %s return %s',
+    (propName, arr, validator, valueResult, typeResult) => {
+      expect(isValidArray(propName, arr, validator)).toEqual(
+        typeResult
+          ? {
+              propName,
+              propValue: valueResult,
+              propType: typeResult,
+            }
+          : undefined
+      );
+    }
+  );
+});
+
 describe('validateProps()', () => {
   const instance = {
     prop1: 'value1',
@@ -255,6 +289,43 @@ describe('AllowedTypes', () => {
       jest.spyOn(validatePropsUtils, 'validateValueOfType').mockReturnValue(mockResult);
       const result = AllowedTypes.boolean('propName', 'propValue');
       expect(result).toEqual(mockResult);
+    });
+  });
+
+  describe('.array', () => {
+    const validatorFunctionValues = AllowedTypes.array(AllowedTypes.string);
+
+    it('should return anonymous ValidatorFunction', () => {
+      expect(validatorFunctionValues).toEqual(expect.any(Function));
+    });
+
+    it('should call isValidArray() via anonymous ValidatorFunction', () => {
+      const spy = jest.spyOn(validatePropsUtils, 'isValidArray');
+      validatorFunctionValues('propName', ['a', 'b']);
+      expect(spy).toBeCalledWith('propName', ['a', 'b'], AllowedTypes.string);
+    });
+
+    it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array', () => {
+      const result = validatorFunctionValues('propName', [1]);
+      expect(result).toEqual({
+        propName: 'propName',
+        propValue: 1,
+        propType: 'string[]',
+      });
+    });
+
+    it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array and non array', () => {
+      const result = validatorFunctionValues('propName', false);
+      expect(result).toEqual({
+        propName: 'propName',
+        propValue: false,
+        propType: 'string[]',
+      });
+    });
+
+    it('should return undefined via anonymous ValidatorFunction if value is in allowedValues array', () => {
+      const result = validatorFunctionValues('propName', ['b']);
+      expect(result).toBe(undefined);
     });
   });
 

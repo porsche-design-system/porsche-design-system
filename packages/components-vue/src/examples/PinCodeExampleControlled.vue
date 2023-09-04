@@ -4,12 +4,12 @@
   import { ref } from 'vue';
 
   const length = ref(4);
-  const currentValue = ref('');
+  const currentValue = ref(['', '', '', '']);
   const isComplete = ref(false);
 
   const onUpdate = (e: PinCodeUpdateEvent): void => {
-    currentValue.value = e.value as string;
-    isComplete.value = (e.value as string).length === length.value;
+    currentValue.value = e.value;
+    isComplete.value = e.value.join('').length === length.value;
   };
 </script>
 

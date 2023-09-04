@@ -1189,7 +1189,7 @@ export namespace Components {
         /**
           * Sets the initial value of the Pin Code.
          */
-        "value"?: string;
+        "value"?: string[];
     }
     interface PPopover {
         /**
@@ -3398,7 +3398,7 @@ declare namespace LocalJSX {
         /**
           * Sets the initial value of the Pin Code.
          */
-        "value"?: string;
+        "value"?: string[];
     }
     interface PPopover {
         /**
