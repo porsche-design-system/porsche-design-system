@@ -1,6 +1,6 @@
 import { MultiSelect } from './multi-select';
 import * as multiSelectUtils from './multi-select-utils';
-import * as isWithinFormUtils from '../../../utils/form/isWithinForm';
+import * as getClosestHTMLElementUtils from '../../../utils/dom/getClosestHTMLElement';
 
 const initComponent = (): MultiSelect => {
   const component = new MultiSelect();
@@ -12,12 +12,20 @@ const initComponent = (): MultiSelect => {
 describe('connectedCallback', () => {
   it('should add event listener and set is within form', () => {
     const component = initComponent();
-    const isWithinFormSpy = jest.spyOn(isWithinFormUtils, 'isWithinForm');
+    const getClosestHTMLElementSpy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
     const addEventListenerSpy = jest.spyOn(document, 'addEventListener');
     component.connectedCallback();
-    expect(isWithinFormSpy).toBeCalledTimes(1);
+    expect(getClosestHTMLElementSpy).toBeCalledWith(component.host, 'form');
+    expect(component['form']).toBe(null);
     expect(component['isWithinForm']).toBe(false);
     expect(addEventListenerSpy).toBeCalledTimes(1);
+  });
+
+  it('should set isWithinForm if is within form', () => {
+    const component = initComponent();
+    jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement').mockReturnValueOnce(document.createElement('form'));
+    component.connectedCallback();
+    expect(component['isWithinForm']).toBe(true);
   });
 });
 
@@ -40,7 +48,6 @@ describe('componentWillLoad', () => {
 
   it('should call setSelectedOptions() with correct parameters', () => {
     const component = initComponent();
-    jest.spyOn(isWithinFormUtils, 'isWithinForm').mockReturnValueOnce(false);
     const setSelectedOptionsSpy = jest.spyOn(multiSelectUtils, 'setSelectedOptions');
     component.componentWillLoad();
     expect(setSelectedOptionsSpy).toBeCalledWith([], []);
