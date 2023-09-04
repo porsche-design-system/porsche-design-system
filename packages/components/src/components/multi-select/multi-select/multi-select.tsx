@@ -33,6 +33,7 @@ import {
   getListAriaAttributes,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
+  handleButtonEvent,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -389,7 +390,12 @@ export class MultiSelect {
           forceUpdate(highlightedOption);
         } else {
           if (this.isWithinForm) {
-            this.form.requestSubmit(); // Replicates native behavior
+            handleButtonEvent(
+              e,
+              this.host,
+              () => 'submit',
+              () => this.disabled
+            );
           }
         }
         break;
