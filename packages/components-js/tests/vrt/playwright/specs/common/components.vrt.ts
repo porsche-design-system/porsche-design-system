@@ -57,7 +57,7 @@ components.forEach((component) => {
     });
 
     baseSchemes.forEach((scheme) => {
-      test.skip(`should have no visual regression for viewport ${baseViewportWidth} and theme auto with prefers-color-scheme ${scheme}`, async ({
+      test(`should have no visual regression for viewport ${baseViewportWidth} and theme auto with prefers-color-scheme ${scheme}`, async ({
         page,
       }) => {
         test.skip(!isComponentThemeable(component) || component === 'toast', 'This component has no theme support.');

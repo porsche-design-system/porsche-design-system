@@ -43,7 +43,7 @@ test.describe(component, async () => {
   });
 
   baseSchemes.forEach((scheme) => {
-    test.skip(`should have no visual regression for :hover + :focus-visible with theme auto and prefers-color-scheme ${scheme}`, async ({
+    test(`should have no visual regression for :hover + :focus-visible with theme auto and prefers-color-scheme ${scheme}`, async ({
       page,
     }) => {
       await scenario(page, 'auto', scheme);
