@@ -1121,7 +1121,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * A Boolean attribute indicating that an option with a non-empty string or number value must be selected.
+          * A Boolean attribute indicating that an option with a non-empty string value must be selected.
          */
         "required"?: boolean;
         /**
@@ -3331,7 +3331,7 @@ declare namespace LocalJSX {
          */
         "onUpdate"?: (event: PMultiSelectCustomEvent<MultiSelectUpdateEvent>) => void;
         /**
-          * A Boolean attribute indicating that an option with a non-empty string or number value must be selected.
+          * A Boolean attribute indicating that an option with a non-empty string value must be selected.
          */
         "required"?: boolean;
         /**
