@@ -175,7 +175,7 @@ export class PinCode {
           {this.isWithinForm && <slot name="hidden-input" />}
           {...Array.from({ length: this.length }).map((_value, index) => (
             <input
-              id={index === this.value.length ? 'current-input' : null}
+              id={index === this.value.join('').length ? 'current-input' : null}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby="label description state-message"
