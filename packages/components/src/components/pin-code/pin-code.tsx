@@ -125,7 +125,7 @@ export class PinCode {
 
     // make sure initial value is not longer than pin code length
     if (this.value?.length > this.length) {
-      this.value = this.value.slice(this.length - 1);
+      this.value = this.value.slice(0, this.length);
       warnIfValueIsNotValid(this.length);
       this.updateValue();
     }

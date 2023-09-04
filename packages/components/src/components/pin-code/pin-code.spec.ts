@@ -41,7 +41,7 @@ describe('componentWillLoad', () => {
     expect(component['hiddenInput']).not.toBeUndefined();
   });
 
-  it('should not call initHiddenInput() if component is used within form and not set hiddenInput', () => {
+  it('should not call initHiddenInput() if component is not used within form and not set hiddenInput', () => {
     const component = initComponent();
     component['isWithinForm'] = false;
     const spy = jest.spyOn(pinCodeUtils, 'initHiddenInput');
@@ -49,10 +49,81 @@ describe('componentWillLoad', () => {
     component.componentWillLoad();
 
     expect(spy).not.toBeCalled();
+    expect(component['hiddenInput']).toBeUndefined();
   });
 });
 
-describe('componentWillRender', () => {});
+describe('componentWillRender', () => {
+  it('should initialize prop value with array of empty strings and not call warnIfValueIsNotValid() if value is not set', () => {
+    const component = initComponent();
+    const spy = jest.spyOn(pinCodeUtils, 'warnIfValueIsNotValid');
+    component['update'] = { emit: jest.fn() };
+
+    component.componentWillRender();
+
+    expect(component['value']).toStrictEqual(['', '', '', '']);
+    expect(spy).not.toBeCalled();
+  });
+
+  it('should reset prop value with array of empty strings and call warnIfValueIsNotValid() if value does not consist of digits only', () => {
+    const component = initComponent();
+    component['value'] = ['1', 'a', '&', '^', 'b'];
+    const spy = jest.spyOn(pinCodeUtils, 'warnIfValueIsNotValid');
+    component['update'] = { emit: jest.fn() };
+
+    component.componentWillRender();
+
+    expect(component['value']).toStrictEqual(['', '', '', '']);
+    expect(spy).toBeCalledWith();
+  });
+
+  it('should slice prop value and call warnIfValueIsNotValid() with correct parameters if value.length is longer then prop length', () => {
+    const component = initComponent();
+    const spy = jest.spyOn(pinCodeUtils, 'warnIfValueIsNotValid');
+    component['value'] = ['1', '2', '3', '4', '5'];
+    component['update'] = { emit: jest.fn() };
+
+    component.componentWillRender();
+
+    expect(component['value']).toStrictEqual(['1', '2', '3', '4']);
+    expect(spy).toBeCalledWith(4);
+  });
+
+  it('should not slice prop value and not call warnIfValueIsNotValid() if value.length is equal to prop length', () => {
+    const component = initComponent();
+    const spy = jest.spyOn(pinCodeUtils, 'warnIfValueIsNotValid');
+    component['value'] = ['1', '2', '3', '4'];
+    component['update'] = { emit: jest.fn() };
+
+    component.componentWillRender();
+
+    expect(component['value']).toStrictEqual(['1', '2', '3', '4']);
+    expect(spy).not.toBeCalled();
+  });
+
+  it('should call syncHiddenInput() with correct parameters if component is used within form', () => {
+    const component = initComponent();
+    component['isWithinForm'] = true;
+    component['hiddenInput'] = document.createElement('input');
+    component['value'] = ['1', '2', '3', '4'];
+    const spy = jest.spyOn(pinCodeUtils, 'syncHiddenInput');
+
+    component.componentWillRender();
+
+    expect(spy).toBeCalledWith(component['hiddenInput'], undefined, '1234', false, false);
+  });
+
+  it('should not call syncHiddenInput() if component is not used within form', () => {
+    const component = initComponent();
+    component['isWithinForm'] = false;
+    component['value'] = ['1', '2', '3', '4'];
+    const spy = jest.spyOn(pinCodeUtils, 'syncHiddenInput');
+
+    component.componentWillRender();
+
+    expect(spy).not.toBeCalled();
+  });
+});
 
 describe('render', () => {});
 
