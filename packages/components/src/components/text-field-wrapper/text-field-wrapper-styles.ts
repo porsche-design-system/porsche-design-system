@@ -4,7 +4,13 @@ import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss } from '../../utils';
 import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-utils';
-import { addImportantToEachRule, getHiddenTextJssStyle, getThemedColors, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  getHiddenTextJssStyle,
+  getThemedColors,
+  hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
@@ -52,6 +58,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { contrastMediumColor } = getThemedColors(theme);
+  const { contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
   const isSearch = isType(inputType, 'search');
   const isPassword = isType(inputType, 'password');
   const isNumber = isType(inputType, 'number');
@@ -126,6 +133,9 @@ export const getComponentCss = (
           padding: unitPosition === 'suffix' ? `0 ${spacingStaticMedium} 0 10px` : `0 10px 0 ${spacingStaticMedium}`, // padding needed for proper JS calc
           font: textSmallStyle.font,
           color: contrastMediumColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: contrastMediumColorDark,
+          }),
         },
       }
     ),
