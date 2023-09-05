@@ -125,16 +125,16 @@ describe('componentWillRender', () => {
   });
 });
 
-describe('render', () => {});
+describe('updateValue()', () => {
+  it('should call update.emit()', () => {
+    const component = new PinCode();
+    const emitSpy = jest.fn();
+    component.update = { emit: emitSpy };
+    component.value = ['1', '2', '3', '4'];
 
-describe('onClick', () => {});
+    // @ts-ignore
+    component.updateValue();
 
-describe('onInput', () => {});
-
-describe('onKeyDown', () => {});
-
-describe('onPaste', () => {});
-
-describe('updateValue', () => {});
-
-describe('focusFirstEmptyOrLastElement', () => {});
+    expect(emitSpy).toBeCalledWith({ value: component.value });
+  });
+});
