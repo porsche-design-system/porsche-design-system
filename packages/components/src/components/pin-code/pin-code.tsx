@@ -115,7 +115,7 @@ export class PinCode {
 
   public componentWillRender(): void {
     // initialize array of values with empty strings / reset initial value if it does not consist of digits only
-    if (!inputConsistsOfDigits(this.value.join(''))) {
+    if (this.value.join('') && !inputConsistsOfDigits(this.value.join(''))) {
       if (this.value.join().length > 0) {
         warnAboutTransformedInitialValue();
       }
