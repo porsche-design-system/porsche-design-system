@@ -7,6 +7,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -62,6 +63,12 @@ const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColor
 
 export const getComponentCss = (state: StepperHorizontalItemState, disabled: boolean, theme: Theme): string => {
   const { primaryColor, hoverColor, disabledColor, focusColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    hoverColor: hoverColorDark,
+    disabledColor: disabledColorDark,
+    focusColor: focusColorDark,
+  } = getThemedColors('dark');
 
   const isStateCurrent = state === 'current';
   const isStateCurrentOrUndefined = !state || isStateCurrent;
@@ -116,12 +123,21 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
           ...frostedGlassStyle,
           background: hoverColor,
         }),
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: isDisabled ? disabledColorDark : primaryColorDark,
+          ...(isStateCurrent && {
+            background: hoverColorDark,
+          }),
+        }),
         ...(!isDisabled &&
           hoverMediaQuery({
             transition: getTransition('background-color'),
             '&:hover': {
               ...frostedGlassStyle,
               background: hoverColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                background: hoverColorDark,
+              }),
             },
           })),
         ...(isStateCurrentOrUndefined && {
@@ -138,6 +154,9 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
           position: 'absolute',
           ...getInsetJssStyle(),
           border: `${borderWidthBase} solid ${focusColor}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: focusColorDark,
+          }),
           borderRadius: borderRadiusSmall,
         },
         '&:focus:not(:focus-visible)::after': {
