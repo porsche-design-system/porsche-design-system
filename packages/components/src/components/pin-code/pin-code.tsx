@@ -244,7 +244,7 @@ export class PinCode {
       if (nextElementSibling) {
         nextElementSibling.focus();
       }
-    } // handle alphanumeric keys
+    } // handle alphanumeric keys, allow copy/paste shortcut
     else if (key?.length === 1 && !(e.ctrlKey || e.metaKey)) {
       e.preventDefault();
     } // handle backspace and delete
