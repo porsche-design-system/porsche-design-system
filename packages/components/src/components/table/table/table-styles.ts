@@ -6,6 +6,7 @@ import {
   hostHiddenStyles,
   doGetThemedColors,
   getSchemedHighContrastMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
 
 export const cssVariableTableHoverColor = '--p-internal-table-hover-color';
@@ -14,6 +15,11 @@ export const cssVariableTableHeadCellIconFilter = '--p-internal-table-head-cell-
 
 export const getComponentCss = (theme: Theme): string => {
   const { primaryColor, hoverColor, contrastLowColor } = doGetThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    hoverColor: hoverColorDark,
+    contrastLowColor: contrastLowColorDark,
+  } = doGetThemedColors('dark');
 
   return getCss({
     '@global': {
@@ -23,11 +29,19 @@ export const getComponentCss = (theme: Theme): string => {
         color: primaryColor,
         textAlign: 'left',
         ...hostHiddenStyles,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
+        }),
       }),
       '::slotted(*)': addImportantToEachRule({
         [cssVariableTableHoverColor]: hoverColor,
         [cssVariableTableBorderColor]: contrastLowColor,
         [cssVariableTableHeadCellIconFilter]: isThemeDark(theme) ? 'invert(100%)' : 'none',
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          [cssVariableTableHoverColor]: hoverColorDark,
+          [cssVariableTableBorderColor]: contrastLowColorDark,
+          [cssVariableTableHeadCellIconFilter]: 'invert(100%)',
+        }),
         ...(isHighContrastMode &&
           getSchemedHighContrastMediaQuery(
             {
