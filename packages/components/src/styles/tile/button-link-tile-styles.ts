@@ -38,8 +38,8 @@ export const getButtonLinkTileStyles = (
       p: {
         maxWidth: pxToRemWithUnit(550), // in this case rem unit makes sense to scale up available space
         margin: 0,
-        font: textLargeStyle.font,
-        overflowWrap: 'break-word',
+        ...textLargeStyle,
+        hyphens: 'inherit',
         ...mergeDeep(
           buildResponsiveStyles(size, (s: TileSize) => sizeMap[s]),
           buildResponsiveStyles(weight, (w: TileWeight | LinkTileWeight) => ({

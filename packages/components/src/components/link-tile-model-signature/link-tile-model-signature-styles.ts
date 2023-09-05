@@ -50,15 +50,15 @@ export const getComponentCss = (
     },
     heading: {
       margin: 0,
-      font: textLargeStyle.font,
-      overflowWrap: 'break-word',
+      ...textLargeStyle,
+      hyphens: 'inherit',
       ...buildResponsiveStyles(weight, (w: LinkTileModelSignatureWeight) => ({ fontWeight: getFontWeight(w) })),
     },
     ...(hasDescription && {
       description: {
         margin: '-12px 0 0 ', // TODO: perhaps gap should be overridden instead
-        font: textSmallStyle.font,
-        overflowWrap: 'break-word',
+        ...textSmallStyle,
+        hyphens: 'inherit',
       },
     }),
     'link-group': {
