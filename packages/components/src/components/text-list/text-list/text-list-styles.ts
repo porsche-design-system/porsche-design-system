@@ -2,7 +2,12 @@ import type { TextListType } from './text-list-utils';
 import type { Theme } from '../../../types';
 import { isListTypeOrdered, isListTypeNumbered } from './text-list-utils';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../../styles';
+import {
+  addImportantToEachRule,
+  getThemedColors,
+  hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../../styles';
 import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 
 export const cssVariablePseudoSuffix = '--p-internal-text-list-pseudo-suffix';
@@ -27,7 +32,6 @@ export const getComponentCss = (type: TextListType, theme: Theme): string => {
       },
       'ol,ul': {
         ...textSmallStyle,
-        color: getThemedColors(theme).primaryColor,
         margin: 0,
         padding: `var(${cssVariablePaddingTop},0) 0 var(${cssVariablePaddingBottom},0) ${
           isOrderedList
@@ -35,6 +39,10 @@ export const getComponentCss = (type: TextListType, theme: Theme): string => {
             : `var(${cssVariableUnorderedPaddingLeft},.375rem)` // reserves space for ::marker "•" (root unordered list)
         }`,
         listStyleType: isOrderedList ? 'none' : `var(${cssVariableListStyleType},'•')`, // custom ::marker char for root unordered list
+        color: getThemedColors(theme).primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: getThemedColors('dark').primaryColor,
+        }),
       },
       // css selector for text-list-item
       '::slotted(*)': addImportantToEachRule({
