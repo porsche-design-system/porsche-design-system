@@ -69,7 +69,10 @@ can change the dimensions by using different aspect ratios.
 
 ## Hyphens
 
-It is possible to overwrite the hyphens style on the host element and pass in "soft" hyphens.
+It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. However, please note that
+hyphenation behavior can vary depending on the browser and the language of the text. In some cases, it may be necessary
+to set the appropriate lang attribute on your HTML element to ensure that hyphenation works correctly for the desired
+language.
 
 <Playground :markup="hyphenMarkup">
   <SelectOptions v-model="hyphen" :values="hyphens" name="hyphens"></SelectOptions>
@@ -184,7 +187,7 @@ export default class Code extends Vue {
     return `<p-link-tile-model-signature
   heading="A very special limited extra&shy;ordinarily Porsche"
   description="Some Description for a very special limited extra&shy;ordinarily Porsche"
-  style="hyphens: ${this.hyphen}; font-size: 40px;"
+  style="${this.hyphen !== 'auto' ? 'hyphens: ' + this.hyphen + '; ' : ''}font-size: 45px;"
 >
   ${this.img}
   ${this.primaryLink}

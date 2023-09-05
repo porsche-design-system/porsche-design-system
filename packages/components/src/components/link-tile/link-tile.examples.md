@@ -105,7 +105,10 @@ It is possible to align the description on top of the component.
 
 ## Hyphens
 
-It is possible to overwrite the hyphens style on the host element and pass in "soft" hyphens.
+It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. However, please note that
+hyphenation behavior can vary depending on the browser and the language of the text. In some cases, it may be necessary
+to set the appropriate lang attribute on your HTML element to ensure that hyphenation works correctly for the desired
+language.
 
 <Playground :markup="hyphenMarkup">
   <SelectOptions v-model="hyphen" :values="hyphens" name="hyphens"></SelectOptions>
@@ -254,7 +257,7 @@ export default class Code extends Vue {
   description="An extra&shy;ordinarily Porsche"
   compact="true"
   size="inherit" 
-  style="hyphens: ${this.hyphen}; font-size: 45px;"
+  style="${this.hyphen !== 'auto' ? 'hyphens: ' + this.hyphen + '; ' : ''}font-size: 45px;"
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`};
