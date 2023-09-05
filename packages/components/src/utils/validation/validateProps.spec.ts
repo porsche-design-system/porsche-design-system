@@ -4,7 +4,6 @@ import {
   formatArrayOutput,
   formatObjectOutput,
   getAriaStructure,
-  isValidArray,
   getBreakpointCustomizableStructure,
   getShapeStructure,
   isBreakpointCustomizableValueInvalid,

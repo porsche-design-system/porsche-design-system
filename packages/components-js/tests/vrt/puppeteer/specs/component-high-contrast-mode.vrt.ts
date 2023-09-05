@@ -2,11 +2,11 @@ import type { Page } from 'puppeteer';
 import {
   getVisualRegressionStatesTester,
   openPopoversAndHighlightSpacer,
+  pinCodeScenario,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 import type { Component } from '../helpers';
 import { multiSelectScenario } from './multi-select.vrt';
-import { pinCodeScenario } from './pin-code.vrt';
 
 const components: Component[] = [
   'accordion',
