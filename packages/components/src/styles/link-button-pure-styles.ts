@@ -4,6 +4,7 @@ import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../types';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
@@ -70,6 +71,7 @@ export const getLinkButtonPureStyles = (
           colorScheme: 'light dark',
           transform: 'translate3d(0,0,0)', // creates new stacking context
           outline: 0, // custom element is able to delegate the focus
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
         ...buildResponsiveStyles(stretch, (responsiveStretch: boolean) => ({

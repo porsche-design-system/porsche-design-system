@@ -3,6 +3,7 @@ import { buildResponsiveStyles, hasVisibleIcon, isHighContrastMode } from '../ut
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getInsetJssStyle,
@@ -89,9 +90,9 @@ export const getLinkButtonStyles = (
       ':host': {
         display: 'inline-block',
         ...addImportantToEachRule({
-          colorScheme: 'light dark',
           verticalAlign: 'top',
           outline: 0, // custom element is able to delegate the focus
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

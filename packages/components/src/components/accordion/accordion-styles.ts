@@ -9,6 +9,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  colorSchemeStyles,
 } from '../../styles';
 import {
   fontWeightSemiBold,
@@ -46,6 +47,7 @@ export const getComponentCss = (
             borderColor: contrastLowColorDark,
           }),
         }),
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       button: {

@@ -10,6 +10,7 @@ import {
   getHighContrastColors,
   getHiddenTextJssStyle,
   prefersColorSchemeDarkMediaQuery,
+  colorSchemeStyles,
 } from '../../styles';
 import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 
@@ -91,6 +92,7 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         outline: 0, // custom element is able to delegate the focus
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
         ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           display: stretchValue ? 'block' : 'inline-block',

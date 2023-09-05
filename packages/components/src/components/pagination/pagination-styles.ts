@@ -4,6 +4,7 @@ import type { PaginationMaxNumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
@@ -50,7 +51,10 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
       nav: {
         display: 'flex',

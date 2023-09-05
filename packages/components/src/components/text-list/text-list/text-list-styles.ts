@@ -4,6 +4,7 @@ import { isListTypeOrdered, isListTypeNumbered } from './text-list-utils';
 import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
@@ -27,6 +28,7 @@ export const getComponentCss = (type: TextListType, theme: Theme): string => {
         display: 'block',
         ...addImportantToEachRule({
           counterReset: counter,
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

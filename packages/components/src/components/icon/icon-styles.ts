@@ -15,6 +15,7 @@ import {
   hostHiddenStyles,
   getSchemedHighContrastMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  colorSchemeStyles,
 } from '../../styles';
 import type { IconColor, IconColorDeprecated } from './icon-utils';
 import {
@@ -100,10 +101,12 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        colorScheme: 'light dark',
         display: 'inline-block',
         verticalAlign: 'top',
-        ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
       img: {
         display: 'block', // without display, img tag gets some extra spacing

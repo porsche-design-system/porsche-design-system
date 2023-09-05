@@ -1,5 +1,6 @@
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
@@ -35,6 +36,7 @@ export const getComponentCss = (
         display: 'inline-block',
         verticalAlign: 'top',
         outline: 0,
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       button: {

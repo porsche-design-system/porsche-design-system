@@ -4,6 +4,7 @@ import {
   hostHiddenStyles,
   getSchemedHighContrastMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  colorSchemeStyles,
 } from '../../styles';
 import type { ModelSignatureColor, ModelSignatureSize } from './model-signature-utils';
 import type { Theme } from '../../types';
@@ -57,6 +58,7 @@ export const getComponentCss = (size: ModelSignatureSize, color: ModelSignatureC
             // TODO: we need a width map of all signatures to ensure same fluid behavior like implemented fro crest + wordmark
             maxHeight: `${modelSignatureHeight}px`,
           }),
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

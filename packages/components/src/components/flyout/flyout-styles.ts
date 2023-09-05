@@ -1,6 +1,7 @@
 import { getCss, isThemeDark, scrollShadowColor, scrollShadowColorDark, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getFrostedGlassBackgroundJssStyles,
   getInsetJssStyle,
   getThemedColors,
@@ -56,6 +57,7 @@ export const getComponentCss = (
             }),
         ...getInsetJssStyle(),
         ...getFrostedGlassBackgroundJssStyles(isOpen, flyoutTransitionDuration),
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       },
     }),

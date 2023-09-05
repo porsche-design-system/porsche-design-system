@@ -7,6 +7,7 @@ import {
   doGetThemedColors,
   getSchemedHighContrastMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  colorSchemeStyles,
 } from '../../../styles';
 
 export const cssVariableTableHoverColor = '--p-internal-table-hover-color';
@@ -28,6 +29,7 @@ export const getComponentCss = (theme: Theme): string => {
         ...textSmallStyle,
         color: primaryColor,
         textAlign: 'left',
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,

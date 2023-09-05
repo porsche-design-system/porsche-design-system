@@ -1,6 +1,7 @@
 import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getInvertedThemedColors,
   getResetInitialStylesForSlottedAnchor,
   getThemedColors,
@@ -57,7 +58,10 @@ export const getComponentCss = (
         display: 'inline-flex',
         verticalAlign: 'top',
         whiteSpace: 'nowrap',
-        ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
       span: {
         display: 'flex',

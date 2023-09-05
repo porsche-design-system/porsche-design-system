@@ -6,6 +6,7 @@ import { getCss } from '../../utils';
 import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getHiddenTextJssStyle,
   getThemedColors,
   hostHiddenStyles,
@@ -79,6 +80,7 @@ export const getComponentCss = (
             isSearchOrPassword || isCalendarOrTimeWithCustomIndicator
               ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
               : spacingStaticMedium,
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

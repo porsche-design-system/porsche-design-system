@@ -3,6 +3,7 @@ import type { Theme } from '../../types';
 import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   focusPseudoJssStyle,
   getHighContrastColors,
   getThemedColors,
@@ -29,6 +30,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
               height: 'round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px)',
             },
           }),
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

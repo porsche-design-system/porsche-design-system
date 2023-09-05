@@ -3,6 +3,7 @@ import type { Styles } from 'jss';
 import { buildResponsiveStyles, isDisabledOrLoading, isHighContrastMode } from '../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getInsetJssStyle,
@@ -68,6 +69,7 @@ export const getCheckboxRadioJssStyle = (
   return {
     '@global': {
       ':host': addImportantToEachRule({
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
         display: 'block',
       }),

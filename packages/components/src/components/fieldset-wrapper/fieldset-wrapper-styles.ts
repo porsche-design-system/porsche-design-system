@@ -4,6 +4,7 @@ import type { FormState } from '../../utils/form/form-state';
 import { getCss, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
@@ -22,6 +23,7 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         display: 'block',
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       fieldset: {

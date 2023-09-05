@@ -4,6 +4,7 @@ import { getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-de
 import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
@@ -26,6 +27,7 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         ...getNotificationRootJssStyle(state, hasAction, hasClose, theme),
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       h5: headingSmallStyle,

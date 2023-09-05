@@ -4,6 +4,7 @@ import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
+  colorSchemeStyles,
   getHighContrastColors,
   getResetInitialStylesForSlottedAnchor,
   getThemedColors,
@@ -64,6 +65,7 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           position: 'relative',
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

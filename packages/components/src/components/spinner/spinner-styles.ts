@@ -4,6 +4,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getThemedColors,
@@ -33,9 +34,9 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        colorScheme: 'light dark',
         display: 'inline-flex',
         verticalAlign: 'top',
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       svg: {

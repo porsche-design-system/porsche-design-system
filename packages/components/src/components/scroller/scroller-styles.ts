@@ -1,6 +1,7 @@
 import { getCss, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
@@ -88,6 +89,7 @@ export const getComponentCss = (
       ':host': addImportantToEachRule({
         display: 'block',
         height: 'inherit',
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       button: {

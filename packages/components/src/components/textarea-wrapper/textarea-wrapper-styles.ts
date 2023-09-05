@@ -7,6 +7,7 @@ import {
   hostHiddenStyles,
   getHiddenTextJssStyle,
   prefersColorSchemeDarkMediaQuery,
+  colorSchemeStyles,
 } from '../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
@@ -28,6 +29,7 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         display: 'block',
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       ...mergeDeep(

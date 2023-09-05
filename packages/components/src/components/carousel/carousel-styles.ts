@@ -10,6 +10,7 @@ import {
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
+  colorSchemeStyles,
 } from '../../styles';
 import {
   borderRadiusLarge,
@@ -80,6 +81,7 @@ export const getComponentCss = (
         gap: spacingFluidMedium,
         flexDirection: 'column',
         boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       '::slotted(*)': {

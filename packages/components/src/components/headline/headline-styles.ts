@@ -3,7 +3,7 @@ import type { TextSize, Theme } from '../../types';
 import type { HeadlineAlign, HeadlineColor, HeadlineVariant, HeadlineVariantType } from './headline-utils';
 import { HEADLINE_TAGS, isValidVariantType } from './headline-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
   displayMediumStyle,
   fontSizeHeadingLarge,
@@ -65,7 +65,10 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
       '::slotted': {
         [HEADLINE_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),

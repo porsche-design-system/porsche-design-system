@@ -1,6 +1,6 @@
 import { getCss } from '../../utils';
 import { crestSize } from './crest-utils';
-import { addImportantToEachRule, focusPseudoJssStyle, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, focusPseudoJssStyle, hostHiddenStyles } from '../../styles';
 
 const { width, height } = crestSize;
 const getDimensionStyle = {
@@ -21,6 +21,7 @@ export const getComponentCss = (): string => {
           outline: 0,
           boxSizing: 'content-box', // needed for correct height calculation when padding is set on host (e.g. custom click area)
           ...getDimensionStyle,
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
