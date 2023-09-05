@@ -6,6 +6,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import type { Theme } from '../../types';
 import type { ScrollerGradientColor, ScrollerScrollIndicatorPosition } from './scroller-utils';
@@ -54,22 +55,24 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { backgroundColor, backgroundSurfaceColor, focusColor, hoverColor } = getThemedColors(theme);
-  const isDarkTheme = isThemeDark(theme);
-
+  const {
+    backgroundColor: backgroundColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
+    focusColor: focusColorDark,
+    hoverColor: hoverColorDark,
+  } = getThemedColors('dark');
   const backgroundColorLight: Record<ScrollerGradientColor, string> = {
     'background-base': backgroundColor,
     'background-surface': backgroundSurfaceColor,
   };
 
-  const backgroundColorDark: Record<ScrollerGradientColor, string> = {
-    'background-base': backgroundSurfaceColor,
-    'background-surface': backgroundColor,
-  };
-
   const backgroundColorMap: Record<Theme, Record<ScrollerGradientColor, string>> = {
     auto: backgroundColorLight,
     light: backgroundColorLight,
-    dark: backgroundColorDark,
+    dark: {
+      'background-base': backgroundSurfaceColorDark,
+      'background-surface': backgroundColorDark,
+    },
   };
 
   const actionPrevNextStyles = {
@@ -99,15 +102,21 @@ export const getComponentCss = (
         outline: 0,
         cursor: 'pointer',
         background: backgroundColorMap[theme][gradientColor],
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorMap.dark[gradientColor],
+        }),
         borderRadius: borderRadiusSmall,
         ...frostedGlassStyle,
         visibility: 'hidden',
-        ...(!isDarkTheme && dropShadowLowStyle),
+        ...(!isThemeDark(theme) && dropShadowLowStyle),
         ...hoverMediaQuery({
           transition: getTransition('background-color'),
           '&:hover': {
             ...frostedGlassStyle,
             background: hoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              background: hoverColorDark,
+            }),
           },
         }),
       },
@@ -150,6 +159,9 @@ export const getComponentCss = (
       },
       '&:focus::before': {
         borderColor: focusColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: focusColorDark,
+        }),
       },
       '&:focus:not(:focus-visible)::before': {
         borderColor: 'transparent',
@@ -174,6 +186,9 @@ export const getComponentCss = (
       gridArea: '1 / 1 / 1 / 1',
       justifyContent: 'flex-start',
       background: `linear-gradient(to right, ${getGradient(theme, gradientColor)} 100%)`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: `linear-gradient(to right, ${getGradient('dark', gradientColor)} 100%)`,
+      }),
       visibility: isPrevHidden ? 'hidden' : 'visible',
       '& button': {
         marginLeft: '8px',
@@ -189,6 +204,9 @@ export const getComponentCss = (
       gridArea: '1 / 3 / 1 / 3',
       justifyContent: 'flex-end',
       background: `linear-gradient(to left, ${getGradient(theme, gradientColor)} 100%)`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: `linear-gradient(to left, ${getGradient('dark', gradientColor)} 100%)`,
+      }),
       visibility: isNextHidden ? 'hidden' : 'visible',
       '& button': {
         marginRight: '8px',
