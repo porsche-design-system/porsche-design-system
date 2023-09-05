@@ -189,7 +189,7 @@ export class PinCode {
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby="label description state-message"
               aria-invalid={this.state === 'error' ? 'true' : null}
-              aria-busy={this.loading}
+              aria-busy={this.loading ? 'true' : null}
               autoComplete="one-time-code"
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
