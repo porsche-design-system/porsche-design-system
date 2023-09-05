@@ -2,7 +2,12 @@ import type { Theme } from '../../types';
 import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss, mergeDeep } from '../../utils';
-import { addImportantToEachRule, getThemedColors, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  getThemedColors,
+  hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../styles';
 import { headingSmallStyle, headingMediumStyle, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
@@ -30,6 +35,9 @@ export const getComponentCss = (
           padding: 0,
           color: getThemedColors(theme).primaryColor,
           ...(labelSize === 'small' ? headingSmallStyle : headingMediumStyle),
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: getThemedColors('dark').primaryColor,
+          }),
         },
       }),
     },
