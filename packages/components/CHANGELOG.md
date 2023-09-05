@@ -14,9 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.7.0-rc.0] - 2023-09-05
+
 #### Added
 
 - `Multi Select` ([#2658](https://github.com/porsche-design-system/porsche-design-system/pull/2658))
+
+#### Changed
+
+- Partials: `Cdn` and `Format` types are exposed
+  ([#2760](https://github.com/porsche-design-system/porsche-design-system/pull/2760))
 
 ### [3.6.1] - 2023-08-29
 
