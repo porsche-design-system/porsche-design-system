@@ -1,5 +1,4 @@
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
-import * as isWithinFormUtils from '../../utils/form/isWithinForm';
 import * as formUtils from '../../utils/form/form-utils';
 import { TextFieldWrapper } from './text-field-wrapper';
 import * as a11yUtils from '../../utils/a11y/a11y';
