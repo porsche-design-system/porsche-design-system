@@ -49,7 +49,7 @@ export const getComponentCss = (
     primaryColor: primaryColorDark,
     backgroundColor: backgroundColorDark,
     backgroundHoverColor: backgroundHoverColorDark,
-  } = getColors(themedColorsDark, tagColor, theme);
+  } = getColors(themedColorsDark, tagColor, 'dark');
 
   return getCss({
     '@global': {
@@ -113,6 +113,11 @@ export const getComponentCss = (
     icon: {
       marginLeft: '-2px', // optimize visual alignment
       alignSelf: 'flex-start',
+      ...(['neutral-contrast-high', 'primary'].includes(tagColor) && {
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          filter: 'invert(1)',
+        }),
+      }),
     },
   });
 };
