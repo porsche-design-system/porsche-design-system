@@ -14,7 +14,7 @@ import {
 import { buildResponsiveStyles, mergeDeep, isThemeDark } from '../../utils';
 import { getFontWeight } from '../font-weight-styles';
 import { getTileBaseStyles } from './tile-base-styles';
-import { getThemedColors } from '../../styles';
+import { getThemedColors } from '../colors';
 
 const sizeMap: Record<TileSize, { fontSize: string }> = {
   inherit: { fontSize: 'inherit' },
@@ -39,6 +39,7 @@ export const getButtonLinkTileStyles = (
         maxWidth: pxToRemWithUnit(550), // in this case rem unit makes sense to scale up available space
         margin: 0,
         font: textLargeStyle.font,
+        overflowWrap: 'break-word',
         ...mergeDeep(
           buildResponsiveStyles(size, (s: TileSize) => sizeMap[s]),
           buildResponsiveStyles(weight, (w: TileWeight | LinkTileWeight) => ({
