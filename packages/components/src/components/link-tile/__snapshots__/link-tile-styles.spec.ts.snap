@@ -25,6 +25,7 @@ p {
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
+  hyphens: inherit;
   font-size: inherit;
   font-weight: 400;
   color: #010205;
@@ -111,6 +112,7 @@ p {
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
+  hyphens: inherit;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   font-weight: 600;
   color: #FBFCFF;
@@ -198,6 +200,7 @@ p {
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
+  hyphens: inherit;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   font-weight: 600;
   color: #FBFCFF;
@@ -285,6 +288,7 @@ p {
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
+  hyphens: inherit;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   font-weight: 600;
   color: #FBFCFF;
@@ -371,6 +375,7 @@ p {
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
+  hyphens: inherit;
   font-size: inherit;
   font-weight: 400;
   color: #010205;
@@ -458,6 +463,7 @@ p {
   margin: 0;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
+  hyphens: inherit;
   font-size: inherit;
   font-weight: 600;
   color: #010205;
