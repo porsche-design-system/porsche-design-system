@@ -6031,12 +6031,6 @@ input[readonly] {
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
 }
-::slotted(input) {
-  position: absolute !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
-  width: 0 !important;
-  opacity: 0 !important;
-}
 @media (max-width: 480px) {
   input {
     width: 39px !important;
@@ -6095,7 +6089,6 @@ input[readonly] {
       class="pin-code-container"
     >
       <input
-        aria-busy="false"
         aria-describedby="label description state-message"
         aria-label="1-4"
         autocomplete="one-time-code"
@@ -6106,7 +6099,6 @@ input[readonly] {
         value=""
       />
       <input
-        aria-busy="false"
         aria-describedby="label description state-message"
         aria-label="2-4"
         autocomplete="one-time-code"
@@ -6116,7 +6108,6 @@ input[readonly] {
         value=""
       />
       <input
-        aria-busy="false"
         aria-describedby="label description state-message"
         aria-label="3-4"
         autocomplete="one-time-code"
@@ -6126,7 +6117,6 @@ input[readonly] {
         value=""
       />
       <input
-        aria-busy="false"
         aria-describedby="label description state-message"
         aria-label="4-4"
         autocomplete="one-time-code"
