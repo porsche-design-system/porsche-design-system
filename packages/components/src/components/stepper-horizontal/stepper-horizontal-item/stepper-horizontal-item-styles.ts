@@ -93,6 +93,19 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
                     isStateCurrent
                   )
                 ),
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                  backgroundImage: getInlineSVGBackgroundImage(
+                    getSVGPath(
+                      i,
+                      {
+                        primaryColor: primaryColorDark,
+                        invertedBaseColor: getInvertedThemedColors('dark').primaryColor,
+                        disabledColor: disabledColorDark,
+                      },
+                      isStateCurrent
+                    )
+                  ),
+                }),
               },
             }),
             {} as JssStyle
