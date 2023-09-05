@@ -1,5 +1,10 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { addImportantToEachRule, getHighContrastColors, getInvertedThemedColors } from '../../styles';
+import {
+  addImportantToEachRule,
+  getHighContrastColors,
+  getInvertedThemedColors,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../styles';
 import { getCheckboxRadioJssStyle } from '../../styles/checkbox-radio-styles';
 import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -14,6 +19,13 @@ export const getComponentCss = (
   const checkedIconColor = isHighContrastMode
     ? getHighContrastColors().canvasColor
     : getInvertedThemedColors(theme).primaryColor.replace(/#/g, '%23');
+  const checkedIconColorDark = isHighContrastMode
+    ? getHighContrastColors().canvasColor
+    : getInvertedThemedColors('dark').primaryColor.replace(/#/g, '%23');
+
+  const getCheckedSVGBackgroundImage = (fill: string): string => {
+    return getInlineSVGBackgroundImage(`<circle fill="${fill}" cx="12" cy="12" r="6"/>`);
+  };
 
   return getCss(
     mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, false, theme), {
@@ -23,7 +35,10 @@ export const getComponentCss = (
             borderRadius: '50%',
           },
           '&(input:checked)': {
-            backgroundImage: getInlineSVGBackgroundImage(`<circle fill="${checkedIconColor}" cx="12" cy="12" r="6"/>`),
+            backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
+            }),
           },
           ...(!isDisabled && {
             '&(input:focus)::before': {
