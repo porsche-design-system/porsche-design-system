@@ -231,8 +231,8 @@ export class PinCode {
       target,
       target: { previousElementSibling, nextElementSibling },
     } = e;
-    // disabled or loading and handle alphanumeric keys
-    if (isDisabledOrLoading(this.disabled, this.loading)) {
+    // prevent default for disabled or loading, but do not impede tab key
+    if (isDisabledOrLoading(this.disabled, this.loading) && key !== 'Tab') {
       e.preventDefault();
     } // if input is valid overwrite old value
     else if (inputIsSingleDigit(key)) {
