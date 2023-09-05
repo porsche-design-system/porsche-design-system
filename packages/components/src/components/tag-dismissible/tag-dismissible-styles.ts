@@ -5,6 +5,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { getCss, isHighContrastMode } from '../../utils';
 import type { TagDismissibleColor, TagDismissibleColorDeprecated } from './tag-dismissible-utils';
@@ -18,8 +19,15 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const themedColors = getThemedColors(theme);
+  const themedColorsDark = getThemedColors('dark');
   const { primaryColor, hoverColor, contrastHighColor } = themedColors;
+  const {
+    primaryColor: primaryColorDark,
+    hoverColor: hoverColorDark,
+    contrastHighColor: contrastHighColorDark,
+  } = themedColorsDark;
   const backgroundColor = getThemedBackgroundColor(color, themedColors);
+  const backgroundColorDark = getThemedBackgroundColor(color, themedColorsDark);
 
   return getCss({
     '@global': {
@@ -41,6 +49,10 @@ export const getComponentCss = (
         cursor: 'pointer',
         background: backgroundColor,
         color: primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+          color: primaryColorDark,
+        }),
         textAlign: 'left',
         ...textSmallStyle,
         outline: isHighContrastMode ? '1px solid transparent' : 0,
@@ -48,6 +60,9 @@ export const getComponentCss = (
         ...hoverMediaQuery({
           '&:hover > .icon': {
             backgroundColor: hoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              backgroundColor: hoverColorDark,
+            }),
           },
         }),
       },
@@ -57,6 +72,9 @@ export const getComponentCss = (
         display: 'block',
         marginBottom: '-4px',
         color: contrastHighColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: contrastHighColorDark,
+        }),
         fontSize: fontSizeTextXSmall,
       },
     }),
