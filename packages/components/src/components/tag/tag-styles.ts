@@ -7,6 +7,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
   type ThemedColors,
 } from '../../styles';
 import { borderRadiusSmall, textXSmallStyle } from '@porsche-design-system/utilities-v2';
@@ -42,7 +43,13 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const themedColors = getThemedColors(theme);
+  const themedColorsDark = getThemedColors('dark');
   const { primaryColor, backgroundColor, backgroundHoverColor } = getColors(themedColors, tagColor, theme);
+  const {
+    primaryColor: primaryColorDark,
+    backgroundColor: backgroundColorDark,
+    backgroundHoverColor: backgroundHoverColorDark,
+  } = getColors(themedColorsDark, tagColor, theme);
 
   return getCss({
     '@global': {
@@ -61,6 +68,10 @@ export const getComponentCss = (
         borderRadius: borderRadiusSmall,
         background: backgroundColor,
         color: primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+          color: primaryColorDark,
+        }),
         font: textXSmallStyle.font,
         ...(isHighContrastMode && {
           outline: '1px solid transparent',
@@ -70,6 +81,9 @@ export const getComponentCss = (
             transition: getTransition('background-color'),
             '&:hover': {
               background: backgroundHoverColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                background: backgroundHoverColorDark,
+              }),
             },
           })),
       },
