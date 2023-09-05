@@ -2,6 +2,7 @@ import {
   defaultViewports,
   getVisualRegressionStatesTester,
   getVisualRegressionTester,
+  pinCodeScenario,
   vrtTest,
 } from '@porsche-design-system/shared/testing';
 import {
@@ -13,20 +14,10 @@ import {
   setContentWithDesignSystem,
 } from '../helpers';
 
-export const pinCodeScenario = async (page): Promise<void> => {
-  await page.evaluate(() => (window as any).componentsReady());
-
-  await page.$$eval('p-pin-code.filled', async (pinCode) =>
-    pinCode.forEach((pin: any) => (pin.value = ['1', '2', '3', '4']))
-  );
-};
-
 it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
   expect(
     await vrtTest(getVisualRegressionTester(viewport), 'pin-code', '/#pin-code', {
-      scenario: async (page) => {
-        await pinCodeScenario(page);
-      },
+      scenario: (page) => pinCodeScenario(page),
     })
   ).toBeFalsy();
 });

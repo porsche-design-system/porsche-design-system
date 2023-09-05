@@ -39,10 +39,10 @@ export const openPopoversAndHighlightSpacer = async (page: Page, opts?: Options)
   }
 };
 
-export const openPinCodeScenario = async (page: Page): Promise<void> => {
+export const pinCodeScenario = async (page: Page): Promise<void> => {
   await page.evaluate(() => (window as any).componentsReady());
 
-  await page.$$eval('p-pin-code.filled', async (pinCode) =>
-    pinCode.forEach((pin: any) => (pin.value = ['1', '2', '3', '4']))
+  await page.$$eval('p-pin-code.filled', async (pinCodes) =>
+    pinCodes.forEach((pinCode: any) => (pinCode.value = ['1', '2', '3', '4']))
   );
 };
