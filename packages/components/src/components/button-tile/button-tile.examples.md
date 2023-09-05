@@ -239,7 +239,7 @@ export default class Code extends Vue {
   description="An extra&shy;ordinarily Porsche"
   compact="true"
   size="inherit" 
-  style="hyphens: ${this.hyphen}; font-size: 40px;"
+  style="hyphens: ${this.hyphen}; font-size: 45px;"
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-button-tile>`};

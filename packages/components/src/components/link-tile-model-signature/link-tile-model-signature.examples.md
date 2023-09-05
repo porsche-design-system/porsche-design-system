@@ -67,6 +67,14 @@ can change the dimensions by using different aspect ratios.
   <SelectOptions v-model="model" :values="models" name="model"></SelectOptions>
 </Playground>
 
+## Hyphens
+
+It is possible to overwrite the hyphens style on the host element and pass in "soft" hyphens.
+
+<Playground :markup="hyphenMarkup">
+  <SelectOptions v-model="hyphen" :values="hyphens" name="hyphens"></SelectOptions>
+</Playground>
+
 ## Framework Routing
 
 While the `p-link-tile-model-signature` supports slotted `a` links within its required `p-link` children, clicking
@@ -169,6 +177,19 @@ export default class Code extends Vue {
   ${this.secondaryLink}
 </p-link-tile-model-signature>`;
   };
+
+  hyphen = 'manual';
+  hyphens = ['auto', 'manual', 'none'];
+  get hyphenMarkup() {
+    return `<p-link-tile-model-signature
+  heading="A very special limited extra&shy;ordinarily Porsche"
+  description="Some Description for a very special limited extra&shy;ordinarily Porsche"
+  style="hyphens: ${this.hyphen}; font-size: 40px;"
+>
+  ${this.img}
+  ${this.primaryLink}
+  ${this.secondaryLink}
+</p-link-tile-model-signature>`};
 
   clickedHref = '';
   onClick(event){
