@@ -7,6 +7,7 @@ import {
   getHighContrastColors,
   getThemedColors,
   hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 
 export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
@@ -41,9 +42,16 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         textDecoration: 'none',
         ...focusPseudoJssStyle,
       },
-      svg: {
-        fill: isHighContrastMode ? getHighContrastColors().canvasTextColor : getThemedColors(theme).primaryColor,
-      },
+      svg: isHighContrastMode
+        ? {
+            fill: getHighContrastColors().canvasTextColor,
+          }
+        : {
+            fill: getThemedColors(theme).primaryColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              fill: getThemedColors('dark').primaryColor,
+            }),
+          },
     },
   });
 };
