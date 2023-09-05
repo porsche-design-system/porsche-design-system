@@ -1,6 +1,6 @@
 import type { FormState } from '../../utils/form/form-state';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
@@ -22,7 +22,9 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // we need 10px additionally so input height becomes 54px
-  const labelStyles = getStylesWithoutSlottedSelector(getLabelStyles('input', isDisabled, hideLabel, state, theme));
+  const labelStyles = getStylesWithoutSlottedSelector(
+    getLabelStyles('input', isDisabledOrLoading(isDisabled, isLoading), hideLabel, state, theme)
+  );
   const inputStyles = getStylesWithoutSlottedSelector(
     getBaseChildStyles('input', state, theme, {
       textAlign: 'center',
