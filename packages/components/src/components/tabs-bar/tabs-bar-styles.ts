@@ -10,6 +10,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
@@ -35,12 +36,26 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, hoverColor, focusColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    hoverColor: hoverColorDark,
+    focusColor: focusColorDark,
+  } = getThemedColors('dark');
 
   const barJssStyle: JssStyle = {
     position: 'absolute',
     height: '2px',
     left: 0,
-    background: isHighContrastMode ? getHighContrastColors().canvasTextColor : primaryColor,
+    ...(isHighContrastMode
+      ? {
+          background: getHighContrastColors().canvasTextColor,
+        }
+      : {
+          background: primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: primaryColorDark,
+          }),
+        }),
   };
 
   return getCss({
@@ -79,6 +94,9 @@ export const getComponentCss = (
           cursor: 'pointer',
           borderRadius: borderRadiusSmall,
           zIndex: 0, // needed for ::before pseudo element to be visible
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: primaryColorDark,
+          }),
           ...hoverMediaQuery({
             '&::before': {
               content: '""',
@@ -94,6 +112,9 @@ export const getComponentCss = (
           [transformSelector('::slotted([role]:hover)::before')]: {
             ...frostedGlassStyle,
             background: hoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              background: hoverColorDark,
+            }),
           },
         }),
         // basic invisible bar, that will be delayed via transition: visibility
@@ -113,6 +134,9 @@ export const getComponentCss = (
         // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
         [transformSelector('::slotted([role]:focus:focus-visible)::before')]: {
           border: `${borderWidthBase} solid ${focusColor}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: focusColorDark,
+          }),
         },
         [transformSelector('::slotted([role]:not(:last-child))')]: {
           marginRight: spacingStaticMedium,
