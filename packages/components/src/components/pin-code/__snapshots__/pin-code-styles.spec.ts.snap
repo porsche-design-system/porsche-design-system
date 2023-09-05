@@ -288,6 +288,7 @@ input {
   transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   text-align: center !important;
   opacity: 0.2 !important;
+  cursor: not-allowed !important;
 }
 input:focus {
   border-color: #010205 !important;
@@ -352,12 +353,13 @@ input[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #949598;
+  color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .label__text+.label__text {
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
 }
 .required {
   user-select: none;
