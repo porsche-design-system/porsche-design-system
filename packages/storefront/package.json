@@ -31,7 +31,7 @@
     "@porsche-design-system/components-js": "3.7.0-rc.0",
     "@porsche-design-system/fallbacks": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@stackblitz/sdk": "1.8.2",
+    "@stackblitz/sdk": "1.9.0",
     "algoliasearch": "^4.19.1",
     "change-case": "^4.1.2",
     "core-js": "^3.32.1",
