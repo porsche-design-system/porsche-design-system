@@ -5,7 +5,7 @@ const component = 'carousel';
 
 // executed in Chrome only
 test.describe(component, async () => {
-  test.skip(({ browserName }) => browserName !== 'chromium', 'CDP is available in Chromium only.');
+  test.skip(({ browserName }) => browserName !== 'chromium');
 
   [1920, 2560, 3000].forEach((viewportWidth) => {
     test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
