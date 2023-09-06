@@ -46,11 +46,6 @@ components.forEach((component) => {
 
     baseViewportWidths.forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
-        // TODO: For unknown reasons a screenshot can not be taken for Flyout with vw 1760px
-        test.skip(
-          component === 'flyout' && viewportWidth === 1760,
-          'For unknown reasons a screenshot can not be taken.'
-        );
         await setupScenario(page, `/${component}`, viewportWidth);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
       });
