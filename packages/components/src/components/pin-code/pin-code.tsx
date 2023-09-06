@@ -28,6 +28,7 @@ import {
   PIN_CODE_TYPES,
   syncHiddenInput,
   warnAboutTransformedInitialValue,
+  getOptimizedValue,
 } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
@@ -215,7 +216,8 @@ export class PinCode {
     // needed to update value on auto-complete via keyboard suggestion
     const { target } = e;
     if (target.value?.length >= this.length) {
-      this.value = (target as HTMLInputElement).value.split('');
+      const optimizedValue = getOptimizedValue(target.value, this.length);
+      this.value = optimizedValue.split('');
       this.updateValue();
       this.focusFirstEmptyOrLastElement();
     }
@@ -289,10 +291,9 @@ export class PinCode {
   };
 
   private onPaste = (e: ClipboardEvent): void => {
-    // remove whitespaces and cut string if pasted value is longer than pin code length
-    const optimizedPastedData = e.clipboardData.getData('Text').replace(/\s/g, '').slice(0, this.length);
-    if (/^[0-9]+$/.test(optimizedPastedData) && optimizedPastedData !== this.value.join('')) {
-      this.value = optimizedPastedData.split('');
+    const optimizedPastedValue = getOptimizedValue(e.clipboardData.getData('Text'), this.length);
+    if (inputConsistsOfDigits(optimizedPastedValue) && optimizedPastedValue !== this.value.join('')) {
+      this.value = optimizedPastedValue.split('');
       this.updateValue();
       this.focusFirstEmptyOrLastElement();
     }

@@ -9,6 +9,7 @@ import {
   getArrayOfInputValues,
   syncHiddenInput,
   warnAboutTransformedInitialValue,
+  getOptimizedValue,
 } from './pin-code-utils';
 import { PinCode } from './pin-code';
 
@@ -132,6 +133,32 @@ describe('getArrayOfInputValues()', () => {
     const joinedValue = getArrayOfInputValues(arrayOfInputs);
 
     expect(joinedValue).toStrictEqual(['0', '1', '2', '3']);
+  });
+});
+
+describe('getOptimizedValue()', () => {
+  it('should return pin code value if already optimal', () => {
+    const pinCode = '1234';
+
+    const optimizedValue = getOptimizedValue(pinCode, 4);
+
+    expect(optimizedValue).toBe('1234');
+  });
+
+  it('should remove whitespaces from pin code value', () => {
+    const pinCode = ' 1 2 3 4 ';
+
+    const optimizedValue = getOptimizedValue(pinCode, 4);
+
+    expect(optimizedValue).toBe('1234');
+  });
+
+  it('should shorten pin code value if value is too long', () => {
+    const pinCode = ' 12345678';
+
+    const optimizedValue = getOptimizedValue(pinCode, 4);
+
+    expect(optimizedValue).toBe('1234');
   });
 });
 

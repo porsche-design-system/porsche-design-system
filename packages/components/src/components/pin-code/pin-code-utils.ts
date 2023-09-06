@@ -39,6 +39,9 @@ export const inputConsistsOfDigits = (input: string): boolean => /^\d+$/.test(in
 export const getArrayOfInputValues = (pinCodeElements: HTMLInputElement[]): string[] =>
   pinCodeElements.map((el) => el.value);
 
+// remove whitespaces and cut string if pasted value is longer than pin code length
+export const getOptimizedValue = (value: string, length: number): string => value.replace(/\s/g, '').slice(0, length);
+
 export const initHiddenInput = (
   host: HTMLElement,
   name: string,
