@@ -80,7 +80,8 @@ export const getLabelStyles = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   theme: Theme,
-  counterOrUnitOrIconStyles?: Styles<'counter'> | Styles<'unit'> | Styles<'icon'>
+  counterOrUnitOrIconStyles?: Styles<'counter'> | Styles<'unit'> | Styles<'icon'>,
+  additionalLabelJssStyle?: JssStyle
 ): Styles => {
   const { primaryColor, disabledColor, contrastHighColor } = getThemedColors(theme);
   const { formStateHoverColor } = getThemedFormStateColors(theme, state);
@@ -117,6 +118,7 @@ export const getLabelStyles = (
           },
         }),
       },
+      ...additionalLabelJssStyle,
     },
     ...(counterOrUnitOrIconStyles && {
       [counterOrUnitOrIconStylesKey]: {

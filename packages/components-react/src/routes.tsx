@@ -117,6 +117,21 @@ export const routes: RouteType[] = [
     element: <fromExamples.ModalExampleAccessibilityPage />,
   },
   {
+    name: 'Multi-Select Example',
+    path: '/multi-select-example',
+    element: <fromExamples.MultiSelectExamplePage />,
+  },
+  {
+    name: 'Multi-Select Example Controlled',
+    path: '/multi-select-example-controlled',
+    element: <fromExamples.MultiSelectControlledExamplePage />,
+  },
+  {
+    name: 'Multi-Select Example Dynamic',
+    path: '/multi-select-example-dynamic',
+    element: <fromExamples.MultiSelectDynamicExamplePage />,
+  },
+  {
     name: 'Scroller Example',
     path: '/scroller-example',
     element: <fromExamples.ScrollerExamplePage />,

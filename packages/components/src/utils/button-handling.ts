@@ -10,7 +10,7 @@ export const improveButtonHandlingForCustomElement = (
 };
 
 export const handleButtonEvent = (
-  event: MouseEvent,
+  event: MouseEvent | KeyboardEvent,
   element: HTMLElement,
   getType: () => ButtonType,
   getDisabled: () => boolean
