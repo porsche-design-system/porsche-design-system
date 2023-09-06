@@ -424,16 +424,16 @@
     jsonpointer "^5.0.0"
     leven "^3.1.0"
 
-"@arethetypeswrong/core@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@arethetypeswrong/core/-/core-0.7.0.tgz#f2d91d8c61bf5649960e6dbb890fc15413ec4059"
-  integrity sha512-qwWmIm8YNvmSOgDXEDJUEjd1yGX4bTY0838A+wCTHlOm2n/lFhjauZjAxfKu9DHn2TSGnHahD07tGDPp4I7fSg==
+"@arethetypeswrong/core@^0.10.1":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@arethetypeswrong/core/-/core-0.10.1.tgz#8541e27ffb42c9f276b52a87f5df9e3595cda436"
+  integrity sha512-G3YqYJ61XfuA/fSAf2UcjT3y7F35EnGAnV2zpnLimvCv/rwbYsLC0Ak4WJRe7bW0RQjEh8vJdt0tvLCxmGdB5g==
   dependencies:
     "@andrewbranch/untar.js" "^1.0.0"
     fetch-ponyfill "^7.1.0"
     fflate "^0.7.4"
     semver "^7.5.4"
-    typescript "^5.1.3"
+    typescript "^5.2.2"
     validate-npm-package-name "^5.0.0"
 
 "@assemblyscript/loader@^0.10.1":
@@ -10078,10 +10078,10 @@ devtools-protocol@0.0.1159816:
   resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1159816.tgz#b5848e8597de01e4738589e7553674c7312c8d2a"
   integrity sha512-2cZlHxC5IlgkIWe2pSDmCrDiTzbSJWywjbDDnupOImEBcG31CQgBLV8wWE+5t+C4rimcjHsbzy7CBzf9oFjboA==
 
-devtools-protocol@^0.0.1182435:
-  version "0.0.1182435"
-  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1182435.tgz#68155464f987d66390fae28b02782a1b9c153a0c"
-  integrity sha512-EmlkWb62wSbQNE1gRZZsi4KZYRaF5Skpp183LhRU7+sadKR06O1dHCjZmFSEG6Kv7P6S/UYLxcY3NlYwqKM99w==
+devtools-protocol@^0.0.1191157:
+  version "0.0.1191157"
+  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1191157.tgz#2a3e4d95b3fdb8696ab8c486e34d76519eb8715a"
+  integrity sha512-Fu2mUhX7zkzLHMJZk5wQTiHdl1eJrhK0GypUoSzogUt51MmYEv/46pCz4PtGGFlr0f2ZyYDzzx5CPtbEkuvcTA==
 
 di@^0.0.1:
   version "0.0.1"
@@ -24004,7 +24004,7 @@ typescript@4.4.2:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.2.tgz#6d618640d430e3569a1dfb44f7d7e600ced3ee86"
   integrity sha512-gzP+t5W4hdy4c+68bfcv0t400HVJMMd2+H9B7gae1nQlBzCqvrXX+6GL/b3GAgyTH966pzrZ70/fRjwAtZksSQ==
 
-typescript@>=5.0.2, typescript@^5.1.3, typescript@^5.2.2, typescript@~5.2.2:
+typescript@>=5.0.2, typescript@^5.2.2, typescript@~5.2.2:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
   integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
