@@ -1,6 +1,7 @@
 import type { Page } from 'puppeteer';
 import {
   addEventListener,
+  BASE_URL,
   expectA11yToMatchSnapshot,
   getAttribute,
   getElementStyle,
@@ -8,6 +9,7 @@ import {
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
+  goto,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -17,16 +19,24 @@ import { Components } from '@porsche-design-system/components';
 import { ElementHandle } from 'puppeteer';
 
 let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
+beforeEach(async () => {
+  page = await browser.newPage();
+  await browser
+    .defaultBrowserContext()
+    .overridePermissions(`${BASE_URL}/#`, ['clipboard-read', 'clipboard-write', 'clipboard-sanitized-write']);
+});
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-pin-code');
 const getLabel = () => selectNode(page, 'p-pin-code >>> .label__text');
-const getInput = () => selectNode(page, 'p-pin-code >>> input');
 const getCurrentInput = () => selectNode(page, 'p-pin-code >>> #current-input');
 const getMessage = () => selectNode(page, 'p-pin-code >>> .message');
 const getHiddenInput = () => selectNode(page, 'p-pin-code input[slot="hidden-input"]');
-const getActiveElementAriaLableInShadowRoot = (element: ElementHandle): Promise<string> => {
+const getInput1 = () => selectNode(page, 'p-pin-code >>> input[aria-label="1-4"]');
+const getInput2 = () => selectNode(page, 'p-pin-code >>> input[aria-label="2-4"]');
+const getInput3 = () => selectNode(page, 'p-pin-code >>> input[aria-label="3-4"]');
+const getInput4 = () => selectNode(page, 'p-pin-code >>> input[aria-label="4-4"]');
+const getActiveElementsAriaLabelInShadowRoot = (element: ElementHandle): Promise<string> => {
   return element.evaluate((el) => el.shadowRoot.activeElement.ariaLabel);
 };
 
@@ -122,7 +132,7 @@ describe('within form', () => {
       const hiddenInput = await getHiddenInput();
 
       expect(await getProperty(hiddenInput, 'name')).toBe('name');
-      expect(await getAttribute(hiddenInput, 'value')).toBeNull();
+      expect(await getAttribute(hiddenInput, 'value')).toBe('');
       expect(await getProperty(hiddenInput, 'required')).toBeFalsy();
       expect(await getProperty(hiddenInput, 'disabled')).toBeFalsy();
 
@@ -162,11 +172,6 @@ describe('within form', () => {
   });
 });
 
-// TODO
-describe('events', () => {
-  // keyboard, onInput, onPaste etc.
-});
-
 describe('update event', () => {
   it('should not render hidden input', async () => {
     await initPinCode();
@@ -175,24 +180,77 @@ describe('update event', () => {
     expect(hiddenInput).toBeNull();
   });
 
-  it('should emit update event on valid input', async () => {
+  it('should emit update event on valid input and focus next input if there is one', async () => {
     await initPinCode();
     const host = await getHost();
     await addEventListener(host, 'update');
-    const input = await getCurrentInput();
+    const currentInput = await getCurrentInput();
 
-    await input.click();
+    await currentInput.click();
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter, 'before input').toBe(0);
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('1-4');
 
     page.keyboard.press('1');
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter, 'after input').toBe(1);
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('2-4');
     expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([
       {
         value: ['1', '', '', ''],
+      },
+    ]);
+
+    page.keyboard.press('2');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'update')).counter, 'after input').toBe(2);
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('3-4');
+    expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([
+      {
+        value: ['1', '', '', ''],
+      },
+      {
+        value: ['1', '2', '', ''],
+      },
+    ]);
+
+    page.keyboard.press('3');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'update')).counter, 'after input').toBe(3);
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
+    expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([
+      {
+        value: ['1', '', '', ''],
+      },
+      {
+        value: ['1', '2', '', ''],
+      },
+      {
+        value: ['1', '2', '3', ''],
+      },
+    ]);
+
+    page.keyboard.press('4');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'update')).counter, 'after input').toBe(4);
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
+    expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([
+      {
+        value: ['1', '', '', ''],
+      },
+      {
+        value: ['1', '2', '', ''],
+      },
+      {
+        value: ['1', '2', '3', ''],
+      },
+      {
+        value: ['1', '2', '3', '4'],
       },
     ]);
   });
@@ -224,14 +282,14 @@ describe('update event', () => {
     expect(await getProperty(input, 'value')).toBe('');
   });
 
-  it('should emit update event on backspace', async () => {
+  it('should emit update event on backspace and focus correct input element', async () => {
     await initPinCode();
     const host = await getHost();
-    await setProperty(host, 'value', ['1', '2', '3', '']); // last empty input gets id="current-input"
+    await setProperty(host, 'value', ['1', '2', '3', '4']); // last empty input gets id="current-input"
     await addEventListener(host, 'update');
-    const currentInput = await getCurrentInput();
+    const input4 = await getInput4();
 
-    await currentInput.click();
+    await input4.click();
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter, 'before backspace').toBe(0);
@@ -240,21 +298,36 @@ describe('update event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter, 'after backspace').toBe(1);
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
     expect((await getEventSummary(host, 'update')).details, 'after backspace').toEqual([
+      {
+        value: ['1', '2', '3', ''],
+      },
+    ]);
+
+    page.keyboard.press('Backspace');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'update')).counter, 'after backspace').toBe(2);
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('3-4');
+    expect((await getEventSummary(host, 'update')).details, 'after backspace').toEqual([
+      {
+        value: ['1', '2', '3', ''],
+      },
       {
         value: ['1', '2', '', ''],
       },
     ]);
   });
 
-  it('should emit update event on backspace/delete', async () => {
+  it('should emit update event on delete  and focus correct input element', async () => {
     await initPinCode();
     const host = await getHost();
     await setProperty(host, 'value', ['1', '2', '3', '4']);
     await addEventListener(host, 'update');
-    const input = await getInput();
+    const input1 = await getInput1();
 
-    await input.click();
+    await input1.click();
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter, 'before delete').toBe(0);
@@ -263,16 +336,108 @@ describe('update event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter, 'after delete').toBe(1);
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('1-4');
     expect((await getEventSummary(host, 'update')).details, 'after delete').toEqual([
       {
         value: ['', '2', '3', '4'],
       },
     ]);
+
+    page.keyboard.press('Delete');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'update')).counter, 'after delete').toBe(2);
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('2-4');
+    expect((await getEventSummary(host, 'update')).details, 'after delete').toEqual([
+      {
+        value: ['', '2', '3', '4'],
+      },
+      {
+        value: ['', '', '3', '4'],
+      },
+    ]);
   });
 });
 
-// TODO
-describe('focus behavior', () => {});
+describe('events', () => {
+  describe('onInput', () => {
+    it('should spread value on input elements and focus last input element', async () => {
+      await initPinCode();
+      const host = await getHost();
+      const input1 = await getInput1();
+      const input2 = await getInput2();
+      const input3 = await getInput3();
+      const input4 = await getInput4();
+      await addEventListener(input4, 'focus');
+
+      expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
+
+      await input1.type('1234');
+      await waitForStencilLifecycle(page);
+
+      expect(await getProperty(input1, 'value')).toBe('1');
+      expect(await getProperty(input2, 'value')).toBe('2');
+      expect(await getProperty(input3, 'value')).toBe('3');
+      expect(await getProperty(input4, 'value')).toBe('4');
+      expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
+      expect(await getProperty(host, 'value')).toStrictEqual(['1', '2', '3', '4']);
+    });
+
+    it('should spread value on input elements and focus last empty input element if value is too short', async () => {
+      await initPinCode();
+      const host = await getHost();
+      const input1 = await getInput1();
+      const input2 = await getInput2();
+      const input3 = await getInput3();
+      const input4 = await getInput4();
+      await addEventListener(input4, 'focus');
+
+      expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
+
+      await input1.type('12');
+      await waitForStencilLifecycle(page);
+
+      expect(await getProperty(input1, 'value')).toBe('1');
+      expect(await getProperty(input2, 'value')).toBe('2');
+      expect(await getProperty(input3, 'value')).toBe('');
+      expect(await getProperty(input4, 'value')).toBe('');
+      expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('3-4');
+      expect(await getProperty(host, 'value')).toStrictEqual(['1', '2', '', '']);
+    });
+  });
+
+  // onPaste
+  // TODO: support for paste event is very low, therefore this test is commented out
+  xit('should spread value on input elements and focus last input element on paste', async () => {
+    await goto(page, ''); // need to have actual window.location
+    await initPinCode();
+    const host = await getHost();
+    const input1 = await getInput1();
+    const input2 = await getInput2();
+    const input3 = await getInput3();
+    const input4 = await getInput4();
+    await addEventListener(input4, 'focus');
+
+    expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
+
+    await page.bringToFront();
+    await page.evaluate(async () => await navigator.clipboard.writeText('1234'));
+    await input1.focus();
+    await page.evaluate(async () => await navigator.clipboard.readText());
+    await waitForStencilLifecycle(page);
+
+    // await page.keyboard.down('Meta');
+    // await page.keyboard.press('KeyV');
+    // await page.keyboard.up('Meta');
+    // await waitForStencilLifecycle(page);
+
+    expect(await getProperty(input1, 'value')).toBe('1');
+    expect(await getProperty(input2, 'value')).toBe('2');
+    expect(await getProperty(input3, 'value')).toBe('3');
+    expect(await getProperty(input4, 'value')).toBe('4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
+  });
+});
 
 describe('disabled state', () => {
   it('should have not-allowed cursor', async () => {
@@ -325,27 +490,25 @@ describe('loading state', () => {
     const button = await selectNode(page, 'p-button');
     await addEventListener(button, 'focus');
 
-    expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(1);
+    await page.keyboard.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('1-4');
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
 
-    expect(await getActiveElementAriaLableInShadowRoot(host)).toBe('1-4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('2-4');
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
 
-    expect(await getActiveElementAriaLableInShadowRoot(host)).toBe('2-4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('3-4');
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
 
-    expect(await getActiveElementAriaLableInShadowRoot(host)).toBe('3-4');
-
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
-    expect(await getActiveElementAriaLableInShadowRoot(host)).toBe('4-4');
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
