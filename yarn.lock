@@ -3930,10 +3930,10 @@
   resolved "https://registry.yarnpkg.com/@splidejs/splide/-/splide-4.1.4.tgz#02d029360569e7d75d28357a9727fc48322015a3"
   integrity sha512-5I30evTJcAJQXt6vJ26g2xEkG+l1nXcpEw4xpKh0/FWQ8ozmAeTbtniVtVmz2sH1Es3vgfC4SS8B2X4o5JMptA==
 
-"@stackblitz/sdk@1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@stackblitz/sdk/-/sdk-1.9.0.tgz#b5174f3f45a51b6c1b9e67f1ef4e2e783ab105e9"
-  integrity sha512-3m6C7f8pnR5KXys/Hqx2x6ylnpqOak6HtnZI6T5keEO0yT+E4Spkw37VEbdwuC+2oxmjdgq6YZEgiKX7hM1GmQ==
+"@stackblitz/sdk@1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@stackblitz/sdk/-/sdk-1.8.2.tgz#f91c7b35cd5c4523fcacb74b51cee4ec92b608e0"
+  integrity sha512-3aTg0Tb9dNs1huPkpdYxPEX/yc8A28eZneUMOEJzOLi7EJwl5onr9gCAVjIOkN4WLYu1iBSiJiGBYT629bZIJQ==
 
 "@stencil/core@~4.2.0":
   version "4.2.0"
