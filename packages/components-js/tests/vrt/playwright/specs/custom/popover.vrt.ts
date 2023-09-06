@@ -1,5 +1,5 @@
 import { expect, type Page, test } from '@playwright/test';
-import { type PrefersColorScheme, setContentWithDesignSystem } from '../../helpers';
+import { openAllPopover, type PrefersColorScheme, setContentWithDesignSystem } from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'popover';
@@ -121,16 +121,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 
   await setContentWithDesignSystem(page, markup());
   await page.setViewportSize({ width: viewportWidth, height: 600 });
-  await openPopoversAndHighlightSpacer(page);
-};
-
-const openPopoversAndHighlightSpacer = async (page: Page): Promise<void> => {
-  await page.evaluate(() => {
-    document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
-    document.querySelectorAll('p-popover, my-prefix-p-popover').forEach((popover) => {
-      popover.shadowRoot.querySelector('button').click();
-    });
-  });
+  await openAllPopover(page);
 };
 
 // executed in Chrome only
