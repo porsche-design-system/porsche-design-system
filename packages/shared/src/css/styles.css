@@ -11,6 +11,12 @@ body {
   padding: 0;
 }
 
+button,
+a {
+  /* ensure no auto dark mode is applied */
+  color-scheme: light;
+}
+
 #app {
   transform: translate(0);
 }
