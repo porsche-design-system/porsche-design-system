@@ -54,7 +54,7 @@ const normalizeStyles: Styles = {
       letterSpacing: 'normal',
       textSizeAdjust: 'none',
       WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
-      colorScheme: 'light dark', // forced auto dark theme shall not be applied in case it's not defined explicitly
+      // colorScheme: 'light dark', // forced auto dark theme shall not be applied in case it's not defined explicitly
     },
 
     'h1, h2, h3, h4, h5, h6': {
