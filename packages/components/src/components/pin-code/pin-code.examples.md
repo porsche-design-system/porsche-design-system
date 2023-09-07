@@ -1,10 +1,27 @@
 # Pin Code
 
-The `p-pin-code` component ...
+The `p-pin-code` component styles native HTML inputs and is optimized for entering sequences of digits. The most common
+use case is for entering `one-time-passwords` (OTP) or pin codes. The input fields allow only one digit at a time. When
+a digit is entered, the focus shifts automatically to the next input, until every input is filled.
+
+A few things to note:
+
+- Only digits can be entered.
+- Only one digit can be entered per input.
+- To overwrite the value of an input, it is not necessary to select or delete the text in the input. If a digit is typed
+  while the input is focused, the previous input value will be overwritten. This is an optimization for quickly editing
+  the inputs.
+- Pressing `Delete` or `Backspace`: If the focussed input is blank and `Delete`/`Backspace` is pressed the focus
+  transfers to the next/previous input, and clears the value of the next/previous input (if any). This avoids the need
+  to explicitly `Shift+Tab & Delete`/ `Tab & Backspace`.
 
 <TableOfContents></TableOfContents>
 
 ## Basic
+
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-pin-code`
+component can be used with or without a label, but it's recommended to keep the label visible for better accessibility
+whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.
 
 <Playground :markup="hideLabelMarkup" :config="config">
   <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
@@ -12,18 +29,25 @@ The `p-pin-code` component ...
 
 ## With description text
 
-A description text can be added to explain the meaning of the `p-pin-code` component. It's meant to be a textual
-enhancement of the label text and is technically connected with the `hide-label` property.
+A description text can be added to explain the meaning of the form field. It's meant to be a textual enhancement of the
+label text and is technically related to the `hide-label` property.
 
 <Playground :markup="withDescriptionText" :config="config"></Playground>
 
 ## Length
+
+By default, the `p-pin-code` component renders four input fields. For longer security codes you can choose to set the
+prop `length` to `6`.
 
 <Playground :markup="lengthMarkup" :config="config">
   <SelectOptions v-model="length" :values="lengths"></SelectOptions>
 </Playground>
 
 ## Type
+
+When collecting private or sensitive information, the entered value might be masked. The security code can be masked by
+setting `type` to `password`. Even with `type=password`, the input fields of the `p-pin-code` component allow digits
+only.
 
 <Playground :markup="typeMarkup" :config="config">
   <SelectOptions v-model="type" :values="types"></SelectOptions>
@@ -59,6 +83,11 @@ changes while this process is performed.
 
 ## Framework Implementation (within form)
 
+When used within a form element, the `p-pin-code` component creates a native hidden input in light DOM to process the
+pin code value. This is required due to the constraints of shadow DOM boundaries. To ensure proper submission of the
+form, it's required to provide an individual `name` prop to the `p-pin-code` component. The prop will be shared with the
+hidden input in light DOM', enabling the `p-pin-code`'s value to be included in the form's data when it's submitted.
+
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
 <form @submit.prevent="onSubmit" >
   <p-pin-code :theme="theme" label="Some Label" name="pin-code"></p-pin-code>
@@ -69,6 +98,10 @@ changes while this process is performed.
 
 ## Framework implementation (controlled)
 
+We do not envision a lot of scenarios where you would need this level of control, however the `p-pin-code` can be used
+as a controlled component. This means it does not contain any internal state, and you got full control over its
+behavior. Any change of the input's values triggers a custom update event and the value is updated immediately.
+
 <Playground :frameworkMarkup="eventHandlingExample" :config="{ ...config, withoutDemo: true }">
   <p-pin-code :theme="theme" label="Some Label" :legth="length" @update="(e) => {
     currentValueControlled = e.detail;
@@ -76,6 +109,23 @@ changes while this process is performed.
   }"></p-pin-code>
   <p-text :theme="theme" style="margin: 1rem 0">Current value: {{currentValueControlled}}</p-text>
   <p-text :theme="theme">Completely filled: {{isComplete}}</p-text>
+</Playground>
+
+## Copy+Paste and autocomplete
+
+By default, only one input can be changed at a time. The `p-pin-code` component also supports copying and pasting a
+value and OTP auto-suggestion on mobile.
+
+The `p-pin-code` component performs basic validation of the pasted value:
+
+- If the pasted string is too long the `p-pin-code` attempts to fill in the other inputs.
+- If the pasted value contains whitespaces, these will be removed.
+- If the value contains other characters than digits, the value can not be pasted.
+
+Try copy+paste `1234` into any of the inputs in the example below.
+
+<Playground :markup="hideLabelMarkup" :config="config">
+  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
 </Playground>
 
 <script lang="ts">
