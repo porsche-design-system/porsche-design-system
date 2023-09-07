@@ -8,9 +8,9 @@ A few things to note:
 
 - Only digits can be entered.
 - Only one digit can be entered per input.
-- To overwrite the value of an input, it is not necessary to select or delete the text in the input. If a digit is typed
-  while the input is focused, the previous input value will be overwritten. This is an optimization for quickly editing
-  the inputs.
+- To overwrite the value of an input, it is not necessary to select or delete the text in the input. If an input is
+  focused while typing a digit, the previous value will be overwritten. This is an optimization for quickly editing the
+  inputs.
 - Pressing `Delete` or `Backspace`: If the focussed input is blank and `Delete`/`Backspace` is pressed the focus
   transfers to the next/previous input, and clears the value of the next/previous input (if any). This avoids the need
   to explicitly `Shift+Tab & Delete`/ `Tab & Backspace`.
@@ -46,8 +46,8 @@ prop `length` to `6`.
 ## Type
 
 When collecting private or sensitive information, the entered value might be masked. The security code can be masked by
-setting `type` to `password`. Even with `type=password`, the input fields of the `p-pin-code` component allow digits
-only.
+setting the prop `type` to `password`. Even with `type=password`, the input fields of the `p-pin-code` component allow
+digits only.
 
 <Playground :markup="typeMarkup" :config="config">
   <SelectOptions v-model="type" :values="types"></SelectOptions>
@@ -84,9 +84,10 @@ changes while this process is performed.
 ## Framework Implementation (within form)
 
 When used within a form element, the `p-pin-code` component creates a native hidden input in light DOM to process the
-pin code value. This is required due to the constraints of shadow DOM boundaries. To ensure proper submission of the
-form, it's required to provide an individual `name` prop to the `p-pin-code` component. The prop will be shared with the
-hidden input in light DOM', enabling the `p-pin-code`'s value to be included in the form's data when it's submitted.
+`p-pin-code`'s value. This is required due to the constraints of shadow DOM boundaries. To ensure proper submission of
+the form, it's required to provide an individual `name` prop to the `p-pin-code` component. The prop will be shared with
+the hidden input in light DOM', enabling the `p-pin-code`'s value to be included in the form's data when it is
+submitted.
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
 <form @submit.prevent="onSubmit" >
@@ -100,7 +101,8 @@ hidden input in light DOM', enabling the `p-pin-code`'s value to be included in 
 
 We do not envision a lot of scenarios where you would need this level of control, however the `p-pin-code` can be used
 as a controlled component. This means it does not contain any internal state, and you got full control over its
-behavior. Any change of the input's values triggers a custom update event and the value is updated immediately.
+behavior. Any change of the input's values triggers a custom update event and the value is updated immediately. The prop
+`value` is an array of strings synchronized with the input's values.
 
 <Playground :frameworkMarkup="eventHandlingExample" :config="{ ...config, withoutDemo: true }">
   <p-pin-code :theme="theme" label="Some Label" :legth="length" @update="(e) => {
