@@ -2,7 +2,15 @@ import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper
 import type { Theme } from '../../../types';
 import type { JssStyle, Styles } from 'jss';
 import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
-import { addImportantToRule, getInsetJssStyle, getThemedColors, getTransition, hoverMediaQuery, prefersColorSchemeDarkMediaQuery, } from '../../../styles';
+import {
+  addImportantToRule,
+  getHighContrastColors,
+  getInsetJssStyle,
+  getThemedColors,
+  getTransition,
+  hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../../styles';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -13,7 +21,7 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
-import { getSelectOptionStyles, OPTION_HEIGHT } from '../../../styles/select';
+import { getNoResultsOptionJssStyle, OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { FormState } from '../../../utils/form/form-state';
 
@@ -211,8 +219,21 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
     primaryColor: primaryColorDark,
     backgroundColor: backgroundColorDark,
     contrastMediumColor: contrastMediumColorDark,
+    disabledColor: disabledColorDark,
+    contrastHighColor: contrastHighColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
+    contrastLowColor: contrastLowColorDark,
   } = getThemedColors('dark');
-  const { primaryColor, backgroundColor, contrastMediumColor } = getThemedColors(theme);
+  const {
+    primaryColor,
+    backgroundColor,
+    contrastMediumColor,
+    contrastHighColor,
+    backgroundSurfaceColor,
+    disabledColor,
+    contrastLowColor,
+  } = getThemedColors(theme);
+  const { highlightColor } = getHighContrastColors();
 
   return {
     '@global': {
@@ -251,12 +272,64 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
         }),
       },
     },
-    ...getSelectOptionStyles(theme, {
+    option: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      gap: '12px',
+      padding: `${spacingStaticSmall} 12px`,
+      flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
+      color: contrastHighColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastHighColorDark,
+      }),
+      cursor: 'pointer',
+      textAlign: 'left',
+      wordBreak: 'break-word',
+      boxSizing: 'border-box',
+      borderRadius: borderRadiusSmall,
+      transition: ['background-color', 'color'].map(getTransition).join(),
+      ...getNoResultsOptionJssStyle(),
+      ...hoverMediaQuery({
+        '&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover': {
+          color: isHighContrastMode ? highlightColor : primaryColor,
+          background: contrastLowColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: isHighContrastMode ? highlightColor : primaryColorDark,
+            background: contrastLowColorDark,
+          }),
+        },
+      }),
       '&--selected': {
         cursor: 'default',
         pointerEvents: 'none',
+        background: backgroundSurfaceColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundSurfaceColorDark,
+        }),
       },
-    }),
+      '&--highlighted': {
+        background: contrastLowColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: contrastLowColorDark,
+        }),
+      },
+      '&--highlighted, &--selected': {
+        color: isHighContrastMode ? highlightColor : primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: isHighContrastMode ? highlightColor : primaryColorDark,
+        }),
+      },
+      '&--disabled': {
+        cursor: 'not-allowed',
+        color: disabledColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: disabledColorDark,
+        }),
+      },
+      '&--hidden': {
+        display: 'none',
+      },
+    },
     optgroup: {
       display: 'block',
       padding: '3px 14px',

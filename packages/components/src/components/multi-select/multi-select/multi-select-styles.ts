@@ -24,7 +24,7 @@ import { getThemedFormStateColors } from '../../../styles/form-state-color-style
 import type { FormState } from '../../../utils/form/form-state';
 import { getLabelStyles } from '../../../styles/form-styles';
 import { getPlaceholderJssStyle } from '../../../styles/placeholder';
-import { getNoResultsOptionJssStyle, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/select';
+import { getNoResultsOptionJssStyle, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
