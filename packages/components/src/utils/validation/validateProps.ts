@@ -7,6 +7,7 @@ import { parseJSONAttribute } from '../json';
 import { consoleError, getTagNameWithoutPrefix } from '..';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
+type ValidatorFunctionArrayCreator = (allowedType: ValidatorFunction) => ValidatorFunction;
 type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => ValidatorFunction;
 type ValidatorFunctionBreakpointCustomizableCreator = <T>(
   allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
@@ -124,6 +125,7 @@ type AllowedTypeKey = 'string' | 'number' | 'boolean';
 export const AllowedTypes: {
   [key in AllowedTypeKey]: ValidatorFunction;
 } & {
+  array: ValidatorFunctionArrayCreator;
   oneOf: ValidatorFunctionOneOfCreator;
   aria: ValidatorFunctionOneOfCreator;
   breakpoint: ValidatorFunctionBreakpointCustomizableCreator;
@@ -135,6 +137,11 @@ export const AllowedTypes: {
   number: (...args) => validateValueOfType(...args, 'number'),
   // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
+  array: (allowedType: ValidatorFunction): ValidatorFunction =>
+    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+    function array(propName, propValue) {
+      return isValidArray(propName, propValue, allowedType);
+    },
   oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function oneOf(propName, propValue) {
@@ -240,4 +247,29 @@ export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, p
     .forEach((error) =>
       printErrorMessage({ ...error, componentName: getTagNameWithoutPrefix(instance.host as HTMLElement) })
     );
+};
+
+/**
+ * Validates an array using a provided validator function and returns the first encountered validation error.
+ *
+ * @param {string} propName - The name of the property being validated.
+ * @param {any} arr - The input to be validated.
+ * @param {ValidatorFunction} validator - The validator function that checks each array item.
+ * @returns {ValidationError | undefined} The first encountered validation error object, or undefined if the array is valid.
+ */
+export const isValidArray = (propName: string, arr: any, validator: ValidatorFunction): ValidationError => {
+  const validationError = Array.isArray(arr)
+    ? validator(
+        propName,
+        arr.find((item) => validator(propName, item))
+      )
+    : {
+        propName,
+        propValue: arr,
+        propType: validator(propName, null).propType, // Get propType by passing in null which will always result in error
+      };
+
+  if (validationError) {
+    return { ...validationError, propType: `${validationError.propType}[]` };
+  }
 };

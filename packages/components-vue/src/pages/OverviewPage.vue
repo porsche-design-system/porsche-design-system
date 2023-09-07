@@ -27,6 +27,8 @@
     PMarque,
     PModal,
     PModelSignature,
+    PMultiSelect,
+    PMultiSelectOption,
     PorscheDesignSystemProvider,
     PPagination,
     PPopover,
@@ -142,6 +144,14 @@
             <option value="c">Option C</option>
           </select>
         </PSelectWrapper>
+      </div>
+
+      <div class="playground light" title="should render default multi-select">
+        <PMultiSelect :name="'options'" :label="'Some label'">
+          <PMultiSelectOption value="a">Option A</PMultiSelectOption>
+          <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+          <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+        </PMultiSelect>
       </div>
 
       <div class="playground light" title="should render default text-field-wrapper">
@@ -402,6 +412,14 @@
               <option value="c">Option C</option>
             </select>
           </PSelectWrapper>
+        </div>
+
+        <div class="playground light" title="should render default multi-select with custom prefix">
+          <PMultiSelect :name="'options'" :label="'Some label'">
+            <PMultiSelectOption value="a">Option A</PMultiSelectOption>
+            <PMultiSelectOption value="b">Option B</PMultiSelectOption>
+            <PMultiSelectOption value="c">Option C</PMultiSelectOption>
+          </PMultiSelect>
         </div>
 
         <div class="playground light" title="should render default text-field-wrapper with custom prefix">

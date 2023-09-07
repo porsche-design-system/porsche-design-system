@@ -7,12 +7,10 @@ import {
   hasLocateAction,
   hasUnitAndIsTypeTextOrNumber,
   isType,
-  isWithinForm,
   setInputStyles,
   throwIfUnitLengthExceeded,
 } from './text-field-wrapper-utils';
 import * as formUtils from '../../utils/form/form-utils';
-import * as getClosestHTMLElementUtils from '../../utils/dom/getClosestHTMLElement';
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
@@ -116,27 +114,6 @@ describe('isType()', () => {
     expect(isType('password', 'search')).toBe(false);
     expect(isType('text', 'search')).toBe(false);
     expect(isType('password', 'number')).toBe(false);
-  });
-});
-
-describe('isWithinForm()', () => {
-  it('should call getClosestHTMLElement()', () => {
-    const spy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
-    const el = document.createElement('input');
-    isWithinForm(el);
-
-    expect(spy).toBeCalledWith(el, 'form');
-  });
-
-  it('should return true or false based on result of getClosestHTMLElement()', () => {
-    const spy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
-    const el = document.createElement('input');
-
-    spy.mockReturnValue(null);
-    expect(isWithinForm(el)).toBe(false);
-
-    spy.mockReturnValue(document.createElement('form'));
-    expect(isWithinForm(el)).toBe(true);
   });
 });
 

@@ -120,6 +120,10 @@ const generatedRoutes = {
     "path": "/model-signature",
     "name": "ModelSignature"
   },
+  "multiSelect": {
+    "path": "/multi-select",
+    "name": "MultiSelect"
+  },
   "overview": {
     "path": "/overview",
     "name": "Overview"

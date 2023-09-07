@@ -1,5 +1,5 @@
 import { Popover } from './popover';
-import { attachComponentCss } from '../../utils';
+import { attachComponentCss, isClickOutside } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import type { Theme } from '../../types';
 
@@ -142,9 +142,7 @@ export const removeDocumentEventListener = (popover: Popover): void => {
 };
 
 export const onDocumentMousedown = (e: MouseEvent): void => {
-  const popover = registeredPopovers.find(
-    (popoverItem) => popoverItem.open && !e.composedPath().includes(popoverItem.host)
-  );
+  const popover = registeredPopovers.find((popoverItem) => popoverItem.open && isClickOutside(e, popoverItem.host));
   if (popover) {
     popover.open = false;
   }
@@ -155,7 +153,7 @@ export const onDocumentKeydown = (e: KeyboardEvent): void => {
   const isEscape = key === 'Escape';
   if (isEscape || key === 'Enter' || key === 'SpaceBar' || key === ' ') {
     const popover = registeredPopovers.find(
-      (popoverItem) => popoverItem.open && (isEscape || !e.composedPath().includes(popoverItem.host))
+      (popoverItem) => popoverItem.open && (isEscape || isClickOutside(e, popoverItem.host))
     );
     if (popover) {
       popover.open = false;
