@@ -103,17 +103,10 @@ export const getComponentCss = (
       }),
       background: backgroundColor,
       border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: backgroundColorDark,
-        border: `${borderWidthBase} solid ${isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark}`,
-      }),
       borderRadius: borderRadiusSmall,
       ...(isOpen && {
         [isDirectionDown ? 'paddingBottom' : 'paddingTop']: '1px', // Add padding to keep same height when border changes
         [isDirectionDown ? 'borderBottom' : 'borderTop']: addImportantToRule(`1px solid ${contrastMediumColor}`),
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          [isDirectionDown ? 'borderBottom' : 'borderTop']: addImportantToRule(`1px solid ${contrastMediumColorDark}`),
-        }),
         [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
         [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
       }),
@@ -122,7 +115,14 @@ export const getComponentCss = (
         color: disabledColor,
         borderColor: disabledColor,
         WebkitTextFillColor: disabledColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
+      }),
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: backgroundColorDark,
+        border: `${borderWidthBase} solid ${isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark}`,
+        ...(isOpen && {
+          [isDirectionDown ? 'borderBottom' : 'borderTop']: addImportantToRule(`1px solid ${contrastMediumColorDark}`),
+        }),
+        ...(isDisabled && {
           color: disabledColorDark,
           borderColor: disabledColorDark,
           WebkitTextFillColor: disabledColorDark,
@@ -194,13 +194,15 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
         cursor: 'not-allowed',
       },
       color: primaryColor,
-      '&:not(:focus)': getPlaceholderJssStyle({ color: primaryColor, opacity: 1 }), // Opacity fixes placeholder being shown lighter in firefox
       ...(isDisabled && getPlaceholderJssStyle({ color: disabledColor })),
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: primaryColorDark,
-        '&:not(:focus)': getPlaceholderJssStyle({ color: primaryColorDark, opacity: 1 }), // Opacity fixes placeholder being shown lighter in firefox
         ...(isDisabled && getPlaceholderJssStyle({ color: disabledColorDark })),
       }),
+      '&:not(:focus)': {
+        ...getPlaceholderJssStyle({ color: primaryColor, opacity: 1 }),
+        ...prefersColorSchemeDarkMediaQuery(theme, getPlaceholderJssStyle({ color: primaryColorDark, opacity: 1 })),
+      }, // Opacity fixes placeholder being shown lighter in firefox
     },
   };
 };
@@ -231,10 +233,6 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
       WebkitOverflowScrolling: 'touch',
       background: backgroundColor,
       border: `2px solid ${primaryColor}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: backgroundColorDark,
-        border: `2px solid ${primaryColorDark}`,
-      }),
       [isDirectionDown ? 'borderTop' : 'borderBottom']: 'none',
       borderRadius: borderRadiusSmall,
       [isDirectionDown ? 'borderTopLeftRadius' : 'borderBottomLeftRadius']: 0,
@@ -243,6 +241,10 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
       scrollbarColor: 'auto', // firefox
       transition: getTransition('border-color'),
       transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: backgroundColorDark,
+        borderColor: primaryColorDark,
+      }),
     },
   };
 };
