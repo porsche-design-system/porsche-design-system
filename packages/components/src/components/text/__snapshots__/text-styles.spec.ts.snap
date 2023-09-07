@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css for size: "large", weight: semi-bold, align: left, color: notification-info, ellipsis: true and theme: light 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -46,6 +47,7 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
 exports[`getComponentCss() should return correct css for size: "medium", weight: bold, align: right, color: contrast-high, ellipsis: true and theme: dark 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -89,6 +91,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 exports[`getComponentCss() should return correct css for size: "small", weight: regular, align: left, color: primary, ellipsis: false and theme: light 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -129,6 +132,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"large","s":"medium","m":"inherit","l":"x-small","xl":"x-large"}, weight: bold, align: center, color: notification-error, ellipsis: true and theme: dark 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

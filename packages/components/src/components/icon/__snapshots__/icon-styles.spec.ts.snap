@@ -4,6 +4,7 @@ exports[`getComponentCss() should return correct css for color: contrast-high, s
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -33,6 +34,7 @@ exports[`getComponentCss() should return correct css for color: contrast-high, s
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -62,6 +64,7 @@ exports[`getComponentCss() should return correct css for color: contrast-low, si
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -91,6 +94,7 @@ exports[`getComponentCss() should return correct css for color: contrast-low, si
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -120,6 +124,7 @@ exports[`getComponentCss() should return correct css for color: contrast-medium,
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -149,6 +154,7 @@ exports[`getComponentCss() should return correct css for color: contrast-medium,
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -178,6 +184,7 @@ exports[`getComponentCss() should return correct css for color: inherit, size: s
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -197,6 +204,7 @@ exports[`getComponentCss() should return correct css for color: inherit, size: s
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -216,6 +224,7 @@ exports[`getComponentCss() should return correct css for color: notification-err
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -245,6 +254,7 @@ exports[`getComponentCss() should return correct css for color: notification-err
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -274,6 +284,7 @@ exports[`getComponentCss() should return correct css for color: notification-inf
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -303,6 +314,7 @@ exports[`getComponentCss() should return correct css for color: notification-inf
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -332,6 +344,7 @@ exports[`getComponentCss() should return correct css for color: notification-suc
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -361,6 +374,7 @@ exports[`getComponentCss() should return correct css for color: notification-suc
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -390,6 +404,7 @@ exports[`getComponentCss() should return correct css for color: notification-war
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -419,6 +434,7 @@ exports[`getComponentCss() should return correct css for color: notification-war
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -448,6 +464,7 @@ exports[`getComponentCss() should return correct css for color: primary, size: i
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -476,6 +493,7 @@ exports[`getComponentCss() should return correct css for color: primary, size: l
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -505,6 +523,7 @@ exports[`getComponentCss() should return correct css for color: primary, size: m
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -534,6 +553,7 @@ exports[`getComponentCss() should return correct css for color: primary, size: s
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -563,6 +583,7 @@ exports[`getComponentCss() should return correct css for color: primary, size: s
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -592,6 +613,7 @@ exports[`getComponentCss() should return correct css for color: primary, size: x
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -621,6 +643,7 @@ exports[`getComponentCss() should return correct css for color: primary, size: x
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -650,6 +673,7 @@ exports[`getComponentCss() should return correct css for color: primary, size: x
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -679,6 +703,7 @@ exports[`getComponentCss() should return correct css for color: state-disabled, 
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -708,6 +733,7 @@ exports[`getComponentCss() should return correct css for color: state-disabled, 
 ":host {
   display: inline-block;
   vertical-align: top;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

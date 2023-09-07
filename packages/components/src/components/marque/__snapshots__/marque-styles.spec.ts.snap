@@ -6,6 +6,7 @@ exports[`getComponentCss() should return correct css for size: medium 1`] = `
   display: inline-flex;
   vertical-align: top;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -47,6 +48,7 @@ exports[`getComponentCss() should return correct css for size: responsive 1`] = 
   display: inline-flex;
   vertical-align: top;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -95,6 +97,7 @@ exports[`getComponentCss() should return correct css for size: small 1`] = `
   display: inline-flex;
   vertical-align: top;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
