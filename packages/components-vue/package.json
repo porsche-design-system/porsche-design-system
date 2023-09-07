@@ -23,6 +23,7 @@
     "test:unit:vue-wrapper": "jest --colors -c projects/vue-wrapper/tests/unit/config/jest.config.js",
     "test:e2e": "yarn build-app && TYPE=E2E PORT=5173 jest --colors -c tests/e2e/config/jest.config.ts",
     "test:vrt": "if [ \"$CI\" != true ]; then yarn build-app; fi && TYPE=VRT PORT=5173 jest --colors -c tests/vrt/config/jest.config.ts",
+    "test:vrt:playwright": "playwright test --config=tests/vrt/playwright/config/playwright.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
