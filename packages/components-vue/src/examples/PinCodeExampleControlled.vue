@@ -5,7 +5,7 @@
 
   const length = ref(4);
   const currentValue = ref(['', '', '', '']);
-  const isComplete = ref(false);
+  const isComplete = ref(this.currentValue.join().length === this.length);
 
   const onUpdate = (e: PinCodeUpdateEvent): void => {
     currentValue.value = e.value;
