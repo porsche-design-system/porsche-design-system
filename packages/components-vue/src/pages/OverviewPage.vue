@@ -70,7 +70,7 @@
   <div class="root">
     <div>
       <div class="playground light" title="should render default heading">
-        <PHeading>Default Components</PHeading>
+        <PHeading>Some Heading</PHeading>
       </div>
 
       <div class="playground light" title="should render default headline">
@@ -393,7 +393,7 @@
     <PorscheDesignSystemProvider prefix="my-prefix">
       <div>
         <div class="playground light" title="should render default heading with custom prefix">
-          <PHeading>Prefixed Components</PHeading>
+          <PHeading>Some Heading</PHeading>
         </div>
 
         <div class="playground light" title="should render default headline with custom prefix">
@@ -657,7 +657,7 @@
           </PCarousel>
         </div>
 
-        <div class="playground light" title="should render default stepper-horizontal">
+        <div class="playground light" title="should render default stepper-horizontal with custom prefix">
           <PStepperHorizontal>
             <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
             <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
@@ -671,7 +671,7 @@
           </PStepperHorizontal>
         </div>
 
-        <div class="playground light" title="should render default link-tile">
+        <div class="playground light" title="should render default link-tile with custom prefix">
           <PLinkTile :href="'#'" :label="'Some Label'" :description="'Default'">
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -682,7 +682,7 @@
           </PLinkTile>
         </div>
 
-        <div class="playground light" title="should render default button-tile">
+        <div class="playground light" title="should render default button-tile with custom prefix">
           <PButtonTile :label="'Some Label'" :description="'Default'">
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -693,7 +693,7 @@
           </PButtonTile>
         </div>
 
-        <div className="playground light" title="should render default link-tile-model-signature">
+        <div className="playground light" title="should render default link-tile-model-signature with custom prefix">
           <!-- eslint-disable vue/no-deprecated-slot-attribute -->
           <PLinkTileModelSignature :heading="'Some Heading'" :description="'Default'">
             <img
@@ -708,7 +708,7 @@
           <!-- eslint-enable vue/no-deprecated-slot-attribute -->
         </div>
 
-        <div class="playground light" title="should render default switch">
+        <div class="playground light" title="should render default switch with custom prefix">
           <PSwitch>Some label</PSwitch>
         </div>
       </div>
@@ -755,6 +755,15 @@
     background: deepskyblue;
   }
 
+  p-link-tile,
+  p-button-tile,
+  p-link-tile-model-signature,
+  my-prefix-p-link-tile,
+  my-prefix-p-button-tile,
+  my-prefix-p-link-tile-model-signature {
+    max-width: 400px;
+  }
+
   .playground--banner,
   .playground--modal,
   .playground--flyout {
@@ -764,7 +773,10 @@
     margin: 1rem;
   }
 
-  .playground--modal,
+  .playground--modal {
+    height: 20rem;
+  }
+
   .playground--flyout {
     height: 20rem;
   }
