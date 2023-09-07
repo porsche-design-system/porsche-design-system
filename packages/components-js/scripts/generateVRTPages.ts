@@ -136,17 +136,17 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
       fileContent = fileContent.replace(scriptRegEx, '\n');
       script = script?.trim().replace(/([\w.#'()\[\]]+)(\.\w+\s=)/g, '($1 as any)$2'); // handle untyped prop assignments
 
-      const usesComponentsReady = script?.includes('porscheDesignSystem.');
+      const usesComponentsReady = script?.includes('porscheDesignSystem.') && fileName === 'core-initializer';
       script = usesComponentsReady ? script.replace('porscheDesignSystem.', '') : script;
 
-      const usesQuerySelector = script?.includes('querySelector');
+      const usesQuerySelector = script?.includes('querySelector') && fileName === 'core-initializer';
       const usesPrefixing = !!fileContent.match(/<[a-z-]+-p-[\w-]+/);
       const usesToast = script?.includes('p-toast');
       const [, toastText] = (usesToast && script?.match(/text:\s?(['`].*?['`])/)) || [];
 
       const isIconPage = fileName === 'icon';
       const usesOnInit = !!script && !isIconPage;
-      const usesSetAllReady = script?.includes('componentsReady()');
+      const usesSetAllReady = script?.includes('componentsReady()') && fileName === 'core-initializer';
 
       // extract template if there is any, replacing is framework specific
       let [, template] = fileContent.match(templateRegEx) || [];
