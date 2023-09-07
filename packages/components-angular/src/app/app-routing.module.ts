@@ -30,11 +30,6 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.OverviewComponent,
   },
   {
-    name: 'Overview Flaky',
-    path: 'overview-flaky',
-    component: fromPages.OverviewFlakyComponent,
-  },
-  {
     name: 'Overview Notifications',
     path: 'overview-notifications',
     component: fromPages.OverviewNotificationsComponent,
