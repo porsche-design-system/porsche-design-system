@@ -21,7 +21,7 @@ afterEach(async () => await page.close());
 const filePath = path.resolve(require.resolve('@porsche-design-system/components-js'), '../../../../public/index.html');
 const fileContent = fs.readFileSync(filePath, 'utf8');
 
-const [, rawOptions] = /<select onchange.*([\s\S]*?)<\/select>/.exec(fileContent) || [];
+const [, rawOptions] = /<optgroup label="Examples">.*([\s\S]*?)<\/optgroup>/.exec(fileContent) || [];
 const routes: { name: string; path: string }[] = rawOptions
   .split('\n')
   .filter((x) => x.trim())
@@ -35,7 +35,7 @@ const exampleRoutes = routes.filter((item) => item.path.includes('example'));
 const exampleUrls = exampleRoutes.map((item) => item.path);
 
 it.each(exampleUrls)('should work without error or warning for %s', async (exampleUrl) => {
-  await goto(page, exampleUrl);
+  await goto(page, '/' + exampleUrl);
 
   if (getConsoleErrorsAmount() !== 0) {
     console.log(getConsoleErrorMessages());

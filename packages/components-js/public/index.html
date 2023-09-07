@@ -124,7 +124,7 @@
     </header>
     <div id="app"></div>
     <script>
-      const getPage = () => window.location.pathname.substring(1) || 'overview';
+      const getPage = () => window.location.pathname.substring(1);
       const getTheme = () => (new URL(document.location).searchParams.get('theme')) || 'light';
 
       const updateRoute = async (opts) => {
@@ -136,7 +136,10 @@
         }
 
         const app = document.getElementById('app');
+
+
         const page = getPage();
+        if (!page) return;
         const theme = getTheme();
         const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
 
@@ -154,7 +157,9 @@
         }
       };
 
-      const updateSelect = (id, value) => Array.from(document.querySelectorAll(`#${id} option`)).filter(e => e.value === value)[0].selected = true;
+      const updateSelect = (id, value) => {
+        if (id && value) Array.from(document.querySelectorAll(`#${id} option`)).filter(e => e.value === value)[0].selected = true
+      };
 
       porscheDesignSystem.load();
       porscheDesignSystem.load({ prefix: 'my-prefix' });
