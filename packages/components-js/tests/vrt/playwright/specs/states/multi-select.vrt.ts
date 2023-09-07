@@ -15,103 +15,103 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'multi-select';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const head = `<style>
-        body { display: grid; grid-template-columns: repeat(2, 50%); }
-        .playground div {
-          display: flex;
-        }
-        p-multi-select {
-          width: 9rem;
-        }
-        p-multi-select:not(:last-child) {
-          margin-right: 1rem;
-          margin-bottom: 1rem;
-        }
-      </style>`;
+  const head = `
+    <style>
+      .playground div {
+        display: flex;
+      }
+      p-multi-select {
+        width: 9rem;
+      }
+      p-multi-select:not(:last-child) {
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+      }
+    </style>`;
 
   const getSelectMarkup = (): string => `
-            <p-multi-select-option value="a">Option A</p-multi-select-option>`;
+    <p-multi-select-option value="a">Option A</p-multi-select-option>`;
 
   const getSlottedMarkup = (opts?: { disabled?: boolean }): string => `
-<span slot="label">${
-    opts?.disabled ? 'Disabled slotted' : 'Slotted'
-  } label <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
-<span slot="description">Slotted description <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
-<span slot="message">Slotted message <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>`;
+    <span slot="label">${
+      opts?.disabled ? 'Disabled slotted' : 'Slotted'
+    } label <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
+    <span slot="description">Slotted description <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
+    <span slot="message">Slotted message <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>`;
 
   const markup = () => `
-         <div class="value">
-          <p-multi-select name="options" theme="${theme}" label="Some dropdown label">
-            ${getSelectMarkup()}
-          </p-multi-select>
-          <p-multi-select name="options" theme="${theme}" label="Some dropdown label" state="error" message="Some error message.">
-            ${getSelectMarkup()}
-          </p-multi-select>
-          <p-multi-select name="options" theme="${theme}" label="Some dropdown label" state="success" message="Some success message.">
-            ${getSelectMarkup()}
-          </p-multi-select>
-        </div>
-        <div>
-          <p-multi-select name="options" theme="${theme}" label="Some dropdown label">
-            ${getSelectMarkup()}
-          </p-multi-select>
-          <p-multi-select name="options" theme="${theme}" label="Some dropdown label" state="error" message="Some error message.">
-            ${getSelectMarkup()}
-          </p-multi-select>
-          <p-multi-select name="options" theme="${theme}" label="Some dropdown label" state="success" message="Some success message.">
-            ${getSelectMarkup()}
-          </p-multi-select>
-        </div>
-        <div class="value">
-          <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" disabled>
-            ${getSelectMarkup()}
-          </p-multi-select>
-          <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" state="error" message="Some error message." disabled>
-            ${getSelectMarkup()}
-          </p-multi-select>
-          <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" state="success" message="Some success message." disabled>
-            ${getSelectMarkup()}
-          </p-multi-select>
-        </div>
-        <div>
-          <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" disabled>
-            ${getSelectMarkup()}
-          </p-multi-select>
-          <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" state="error" message="Some error message." disabled>
-            ${getSelectMarkup()}
-          </p-multi-select>
-          <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" state="success" message="Some success message." disabled>
-            ${getSelectMarkup()}
-          </p-multi-select>
-        </div>
-        <div>
-          <p-multi-select name="options" theme="${theme}">
-            ${getSlottedMarkup()}
-            ${getSelectMarkup()}
-          </p-multi-select>
-          <p-multi-select name="options" theme="${theme}" state="error">
-            ${getSlottedMarkup()}
-            ${getSelectMarkup()}
-          </p-multi-select>
-          <p-multi-select name="options" theme="${theme}" state="success">
-            ${getSlottedMarkup()}
-            ${getSelectMarkup()}
-          </p-multi-select>
-        </div>
-        <div>
-          <p-multi-select name="options" theme="${theme}" disabled>
-            ${getSlottedMarkup()}
-            ${getSelectMarkup()}
-          </p-multi-select>
-          <p-multi-select name="options" theme="${theme}" state="error" disabled>
-            ${getSlottedMarkup()}
-            ${getSelectMarkup()}
-          </p-multi-select>
-          <p-multi-select name="options" theme="${theme}" state="success" disabled>
-            ${getSlottedMarkup()}
-            ${getSelectMarkup()}
-          </p-multi-select>
-        </div>`;
+    <div class="value">
+      <p-multi-select name="options" theme="${theme}" label="Some dropdown label">
+        ${getSelectMarkup()}
+      </p-multi-select>
+      <p-multi-select name="options" theme="${theme}" label="Some dropdown label" state="error" message="Some error message.">
+        ${getSelectMarkup()}
+      </p-multi-select>
+      <p-multi-select name="options" theme="${theme}" label="Some dropdown label" state="success" message="Some success message.">
+        ${getSelectMarkup()}
+      </p-multi-select>
+    </div>
+    <div>
+      <p-multi-select name="options" theme="${theme}" label="Some dropdown label">
+        ${getSelectMarkup()}
+      </p-multi-select>
+      <p-multi-select name="options" theme="${theme}" label="Some dropdown label" state="error" message="Some error message.">
+        ${getSelectMarkup()}
+      </p-multi-select>
+      <p-multi-select name="options" theme="${theme}" label="Some dropdown label" state="success" message="Some success message.">
+        ${getSelectMarkup()}
+      </p-multi-select>
+    </div>
+    <div class="value">
+      <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" disabled>
+        ${getSelectMarkup()}
+      </p-multi-select>
+      <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" state="error" message="Some error message." disabled>
+        ${getSelectMarkup()}
+      </p-multi-select>
+      <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" state="success" message="Some success message." disabled>
+        ${getSelectMarkup()}
+      </p-multi-select>
+    </div>
+    <div>
+      <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" disabled>
+        ${getSelectMarkup()}
+      </p-multi-select>
+      <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" state="error" message="Some error message." disabled>
+        ${getSelectMarkup()}
+      </p-multi-select>
+      <p-multi-select name="options" theme="${theme}" label="Some disabled dropdown label" state="success" message="Some success message." disabled>
+        ${getSelectMarkup()}
+      </p-multi-select>
+    </div>
+    <div>
+      <p-multi-select name="options" theme="${theme}">
+        ${getSlottedMarkup()}
+        ${getSelectMarkup()}
+      </p-multi-select>
+      <p-multi-select name="options" theme="${theme}" state="error">
+        ${getSlottedMarkup()}
+        ${getSelectMarkup()}
+      </p-multi-select>
+      <p-multi-select name="options" theme="${theme}" state="success">
+        ${getSlottedMarkup()}
+        ${getSelectMarkup()}
+      </p-multi-select>
+    </div>
+    <div>
+      <p-multi-select name="options" theme="${theme}" disabled>
+        ${getSlottedMarkup()}
+        ${getSelectMarkup()}
+      </p-multi-select>
+      <p-multi-select name="options" theme="${theme}" state="error" disabled>
+        ${getSlottedMarkup()}
+        ${getSelectMarkup()}
+      </p-multi-select>
+      <p-multi-select name="options" theme="${theme}" state="success" disabled>
+        ${getSlottedMarkup()}
+        ${getSelectMarkup()}
+      </p-multi-select>
+    </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     injectIntoHead: head,
