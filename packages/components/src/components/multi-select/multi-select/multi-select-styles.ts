@@ -3,6 +3,7 @@ import { buildResponsiveStyles, getCss, SelectDropdownDirectionInternal } from '
 import {
   addImportantToEachRule,
   addImportantToRule,
+  colorSchemeStyles,
   getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
@@ -65,6 +66,7 @@ export const getComponentCss = (
         ':host': {
           display: 'block',
           position: 'relative',
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         },
         ...(isWithinForm && {
