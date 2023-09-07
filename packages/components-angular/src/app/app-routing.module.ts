@@ -10,14 +10,7 @@ export type ExtendedRoute = Route & {
 };
 
 export const routes: ExtendedRoute[] = [
-  ...[
-    {
-      name: 'Table',
-      path: 'table',
-      component: fromPages.TableComponent,
-    },
-    ...fromPages.generatedRoutes,
-  ].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())),
+  ...fromPages.generatedRoutes.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())),
   {
     name: '---',
     path: '---',
