@@ -1,19 +1,28 @@
-import {
-  getVisualRegressionOverviewTester,
-  openPopoversAndHighlightSpacer,
-  vrtTest,
-} from '@porsche-design-system/shared/testing';
+import { expect, test } from '@playwright/test';
 
-// TODO: (overview test is flaky) we shouldn't rely on retries since computed result has to be deterministic
-jest.retryTimes(3);
+test.describe('overview', async () => {
+  const viewportWidth = 1920;
 
-it('should have no visual regression', async () => {
-  expect(
-    await vrtTest(getVisualRegressionOverviewTester(), 'overview', '/overview', {
-      scenario: async (page) => {
-        await openPopoversAndHighlightSpacer(page);
-        await page.mouse.click(0, 0); // Click top left corner of the page to remove focus on banner
-      },
-    })
-  ).toBeFalsy();
+  test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
+    await page.goto('/overview');
+    await page.evaluate(() => (window as any).componentsReady());
+    await page.setViewportSize({
+      width: viewportWidth,
+      height: await page.evaluate(() => document.body.clientHeight),
+    });
+    await page.mouse.click(0, 0);
+    await expect(page.locator('#app')).toHaveScreenshot(`overview-${viewportWidth}.png`);
+  });
+});
+
+test.describe('overview notifications', async () => {
+  const viewportWidth = 1000;
+
+  test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
+    await page.goto('/overview-notifications');
+    await page.evaluate(() => (window as any).componentsReady());
+    await page.setViewportSize({ width: viewportWidth, height: 600 });
+    await page.mouse.click(0, 0);
+    await expect(page.locator('#app')).toHaveScreenshot(`overview-notifications-${viewportWidth}.png`);
+  });
 });
