@@ -149,7 +149,7 @@ export default class Code extends Vue {
     return `<p-pin-code label="Some label" hide-label="${this.hideLabel}"></p-pin-code>`;
   }
 
-  withDescriptionText = `<p-pin-code label="Some label" description="Some description"></p-pin-code>`
+  withDescriptionText = `<p-pin-code label="Some label" description="Some description"></p-pin-code>`;
 
   length = 4;
   lengths = PIN_CODE_LENGTHS;
