@@ -120,7 +120,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
 
   const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
-    .filter(([component]) => (framework === 'remix' ? ['overview', 'overview-flaky'].includes(component) : true)) // only overview page for remix
+    .filter(([component]) => (framework === 'remix' ? ['overview'].includes(component) : true)) // only overview page for remix
     .map(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
