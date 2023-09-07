@@ -179,8 +179,8 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render unopened with selection and input focus">
-  <p-multi-select name="options" label="Selection with input focus" class="selected focus">
+<div class="playground light" title="should render unopened with selection">
+  <p-multi-select name="options" label="Selection" class="selected focus">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -290,7 +290,7 @@
   title="should render opened with filter input and no results"
   style="padding-bottom: calc(1rem + 60px)"
 >
-  <p-multi-select name="options" label="Opened with no results" dropdown-direction="down" class="open no-results-1">
+  <p-multi-select name="options" label="Opened with no results" dropdown-direction="down" class="open no-results">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -304,3 +304,28 @@
     <p-multi-select-option value="k">Option K</p-multi-select-option>
   </p-multi-select>
 </div>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    // Call click on the shadow root input so isOutsideClick won't close the dropdowns
+    document.querySelectorAll('p-multi-select.open').forEach((el) => el.shadowRoot.querySelector('INPUT').click());
+
+    // Highlight second option
+    document
+      .querySelectorAll('p-multi-select.highlight')
+      .forEach((select) => select.children[1].shadowRoot.firstElementChild.classList.add('option--highlighted'));
+
+    // Select options with value "c"
+    document.querySelectorAll('p-multi-select.selected').forEach((select) => (select.value = ['c']));
+
+    // Select multiple options
+    document
+      .querySelectorAll('p-multi-select.selected-multiple')
+      .forEach((select) => (select.value = ['a', 'b', 'c', 'd', 'e', 'f']));
+
+    // Type into input
+    const inputElement = document.querySelector('p-multi-select.no-results').shadowRoot.querySelector('input');
+    inputElement.value = 'No matching option';
+    inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+</script>

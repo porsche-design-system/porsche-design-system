@@ -1,60 +1,21 @@
+import { expect, type Page, test } from '@playwright/test';
 import {
+  baseSchemes,
+  baseThemes,
+  baseViewportWidth,
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getThemedBodyMarkup,
-  GetThemedMarkup,
+  getPlaygroundPseudoStatesMarkup,
+  type PrefersColorScheme,
   setContentWithDesignSystem,
-} from '../helpers';
-import {
-  defaultViewports,
-  getVisualRegressionStatesTester,
-  getVisualRegressionTester,
-  vrtTest,
-} from '@porsche-design-system/shared/testing';
-import { selectNode } from '../../../e2e/puppeteer/helpers';
+} from '../../helpers';
+import { type Theme } from '@porsche-design-system/utilities-v2';
 
-export const multiSelectScenario = async (page): Promise<void> => {
-  await page.evaluate(() => (window as any).componentsReady());
-  // Call click on the shadow root input so isOutsideClick won't close the dropdowns
-  await page.$$eval('p-multi-select.open', async (selects) =>
-    selects.forEach((el: HTMLElement) => (el.shadowRoot.querySelector('INPUT') as HTMLElement).click())
-  );
-  // Highlight second option
-  await page.$$eval('p-multi-select.highlight', async (selects) =>
-    selects.forEach((select) => select.children[1].shadowRoot.firstElementChild.classList.add('option--highlighted'))
-  );
-  // Select options with value "c"
-  await page.$$eval('p-multi-select.selected', async (selects) =>
-    selects.forEach((select: any) => (select.value = ['c']))
-  );
-  // Select multiple options
-  await page.$$eval('p-multi-select.selected-multiple', async (selects) =>
-    selects.forEach((select: any) => (select.value = ['a', 'b', 'c', 'd', 'e', 'f']))
-  );
+const component = 'multi-select';
 
-  // Type into inputs
-  await (await selectNode(page, 'p-multi-select.no-results-1 >>> input')).type('No matching option');
-  await (await selectNode(page, 'p-multi-select.no-results-2 >>> input')).type('No matching option');
-};
-
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(
-    await vrtTest(getVisualRegressionTester(viewport), 'multi-select', '/#multi-select', {
-      scenario: async (page) => {
-        await multiSelectScenario(page);
-      },
-    })
-  ).toBeFalsy();
-});
-
-it('should have no visual regression for :hover + :focus-visible', async () => {
-  const vrt = getVisualRegressionStatesTester();
-  expect(
-    await vrt.test('multi-select-states', async () => {
-      const page = vrt.getPage();
-
-      const head = `<style>
+const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
+  const head = `<style>
         body { display: grid; grid-template-columns: repeat(2, 50%); }
         .playground div {
           display: flex;
@@ -67,17 +28,18 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           margin-bottom: 1rem;
         }
       </style>`;
-      const getSelectMarkup = (): string => `
+
+  const getSelectMarkup = (): string => `
             <p-multi-select-option value="a">Option A</p-multi-select-option>`;
 
-      const getSlottedMarkup = (opts?: { disabled?: boolean }): string => `
+  const getSlottedMarkup = (opts?: { disabled?: boolean }): string => `
 <span slot="label">${
-        opts?.disabled ? 'Disabled slotted' : 'Slotted'
-      } label <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
+    opts?.disabled ? 'Disabled slotted' : 'Slotted'
+  } label <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
 <span slot="description">Slotted description <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
 <span slot="message">Slotted message <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>`;
 
-      const getElementsMarkup: GetThemedMarkup = (theme) => `
+  const markup = () => `
          <div class="value">
           <p-multi-select name="options" theme="${theme}" label="Some dropdown label">
             ${getSelectMarkup()}
@@ -151,18 +113,45 @@ it('should have no visual regression for :hover + :focus-visible', async () => {
           </p-multi-select>
         </div>`;
 
-      await setContentWithDesignSystem(page, getThemedBodyMarkup(getElementsMarkup), { injectIntoHead: head });
+  await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
+    injectIntoHead: head,
+    forceComponentTheme: theme,
+    prefersColorScheme: scheme,
+  });
 
-      await page.$$eval('.value p-multi-select', async (selects) =>
-        selects.forEach((select: any) => (select.value = ['a']))
+  await page.$$eval('.value p-multi-select', async (selects) =>
+    selects.forEach((select: any) => (select.value = ['a']))
+  );
+
+  await forceHoverState(page, '.hover p-multi-select >>> .input-container');
+  await forceHoverState(page, '.hover p-multi-select span a');
+  await forceFocusState(page, '.focus p-multi-select span a');
+  await forceFocusState(page, '.focus p-multi-select >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-multi-select span a');
+};
+
+// executed in Chrome only
+test.describe(component, async () => {
+  test.skip(({ browserName }) => browserName !== 'chromium');
+
+  baseThemes.forEach((theme) => {
+    test(`should have no visual regression for :hover + :focus-visible with theme ${theme}`, async ({ page }) => {
+      await scenario(page, theme);
+      await expect(page.locator('#app')).toHaveScreenshot(
+        `${component}-${baseViewportWidth}-states-theme-${theme}.png`
       );
+    });
+  });
 
-      await forceHoverState(page, '.hover p-multi-select >>> .input-container');
-      await forceHoverState(page, '.hover p-multi-select span a');
-      await forceFocusState(page, '.focus p-multi-select span a');
-      await forceFocusState(page, '.focus p-multi-select >>> input');
-      await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
-      await forceFocusHoverState(page, '.focus-hover p-multi-select span a');
-    })
-  ).toBeFalsy();
+  baseSchemes.forEach((scheme) => {
+    test(`should have no visual regression for :hover + :focus-visible with theme auto and prefers-color-scheme ${scheme}`, async ({
+      page,
+    }) => {
+      await scenario(page, 'auto', scheme);
+      await expect(page.locator('#app')).toHaveScreenshot(
+        `${component}-${baseViewportWidth}-states-theme-${scheme}.png`
+      ); // fixture is aliased since result has to be equal
+    });
+  });
 });
