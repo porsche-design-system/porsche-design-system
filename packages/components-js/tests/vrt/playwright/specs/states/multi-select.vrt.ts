@@ -21,7 +21,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
         display: flex;
       }
       p-multi-select {
-        width: 9rem;
+        width: 20rem;
       }
       p-multi-select:not(:last-child) {
         margin-right: 1rem;
