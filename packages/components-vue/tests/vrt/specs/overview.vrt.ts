@@ -5,7 +5,7 @@ jest.retryTimes(3);
 
 it('should have no visual regression', async () => {
   expect(
-    await vrtTest(getVisualRegressionOverviewTester(), 'overview', '/overview', {
+    await vrtTest(getVisualRegressionOverviewTester(), 'overview-1920-chrome', '/overview', {
       scenario: async (page) => {
         await page.mouse.click(0, 0); // Click top left corner of the page to remove focus on banner
       },
