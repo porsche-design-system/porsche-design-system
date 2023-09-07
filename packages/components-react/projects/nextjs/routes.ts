@@ -1,249 +1,253 @@
 /* Auto Generated Below */
 const generatedRoutes = {
-  accordion: {
-    path: '/accordion',
-    name: 'Accordion',
+  "accordion": {
+    "path": "/accordion",
+    "name": "Accordion"
   },
-  banner: {
-    path: '/banner',
-    name: 'Banner',
+  "banner": {
+    "path": "/banner",
+    "name": "Banner"
   },
-  button: {
-    path: '/button',
-    name: 'Button',
+  "button": {
+    "path": "/button",
+    "name": "Button"
   },
-  buttonGroup: {
-    path: '/button-group',
-    name: 'ButtonGroup',
+  "buttonGroup": {
+    "path": "/button-group",
+    "name": "ButtonGroup"
   },
-  buttonPure: {
-    path: '/button-pure',
-    name: 'ButtonPure',
+  "buttonPure": {
+    "path": "/button-pure",
+    "name": "ButtonPure"
   },
-  buttonTile: {
-    path: '/button-tile',
-    name: 'ButtonTile',
+  "buttonTile": {
+    "path": "/button-tile",
+    "name": "ButtonTile"
   },
-  carousel: {
-    path: '/carousel',
-    name: 'Carousel',
+  "carousel": {
+    "path": "/carousel",
+    "name": "Carousel"
   },
-  checkboxWrapper: {
-    path: '/checkbox-wrapper',
-    name: 'CheckboxWrapper',
+  "checkboxWrapper": {
+    "path": "/checkbox-wrapper",
+    "name": "CheckboxWrapper"
   },
-  contentWrapper: {
-    path: '/content-wrapper',
-    name: 'ContentWrapper',
+  "contentWrapper": {
+    "path": "/content-wrapper",
+    "name": "ContentWrapper"
   },
-  coreInitializer: {
-    path: '/core-initializer',
-    name: 'CoreInitializer',
+  "coreInitializer": {
+    "path": "/core-initializer",
+    "name": "CoreInitializer"
   },
-  crest: {
-    path: '/crest',
-    name: 'Crest',
+  "crest": {
+    "path": "/crest",
+    "name": "Crest"
   },
-  display: {
-    path: '/display',
-    name: 'Display',
+  "display": {
+    "path": "/display",
+    "name": "Display"
   },
-  divider: {
-    path: '/divider',
-    name: 'Divider',
+  "divider": {
+    "path": "/divider",
+    "name": "Divider"
   },
-  fieldset: {
-    path: '/fieldset',
-    name: 'Fieldset',
+  "fieldset": {
+    "path": "/fieldset",
+    "name": "Fieldset"
   },
-  fieldsetWrapper: {
-    path: '/fieldset-wrapper',
-    name: 'FieldsetWrapper',
+  "fieldsetWrapper": {
+    "path": "/fieldset-wrapper",
+    "name": "FieldsetWrapper"
   },
-  flex: {
-    path: '/flex',
-    name: 'Flex',
+  "flex": {
+    "path": "/flex",
+    "name": "Flex"
   },
-  flyout: {
-    path: '/flyout',
-    name: 'Flyout',
+  "flyout": {
+    "path": "/flyout",
+    "name": "Flyout"
   },
-  grid: {
-    path: '/grid',
-    name: 'Grid',
+  "grid": {
+    "path": "/grid",
+    "name": "Grid"
   },
-  heading: {
-    path: '/heading',
-    name: 'Heading',
+  "heading": {
+    "path": "/heading",
+    "name": "Heading"
   },
-  headline: {
-    path: '/headline',
-    name: 'Headline',
+  "headline": {
+    "path": "/headline",
+    "name": "Headline"
   },
-  icon: {
-    path: '/icon',
-    name: 'Icon',
+  "icon": {
+    "path": "/icon",
+    "name": "Icon"
   },
-  inlineNotification: {
-    path: '/inline-notification',
-    name: 'InlineNotification',
+  "inlineNotification": {
+    "path": "/inline-notification",
+    "name": "InlineNotification"
   },
-  link: {
-    path: '/link',
-    name: 'Link',
+  "link": {
+    "path": "/link",
+    "name": "Link"
   },
-  linkPure: {
-    path: '/link-pure',
-    name: 'LinkPure',
+  "linkPure": {
+    "path": "/link-pure",
+    "name": "LinkPure"
   },
-  linkSocial: {
-    path: '/link-social',
-    name: 'LinkSocial',
+  "linkSocial": {
+    "path": "/link-social",
+    "name": "LinkSocial"
   },
-  linkTile: {
-    path: '/link-tile',
-    name: 'LinkTile',
+  "linkTile": {
+    "path": "/link-tile",
+    "name": "LinkTile"
   },
-  linkTileModelSignature: {
-    path: '/link-tile-model-signature',
-    name: 'LinkTileModelSignature',
+  "linkTileModelSignature": {
+    "path": "/link-tile-model-signature",
+    "name": "LinkTileModelSignature"
   },
-  marque: {
-    path: '/marque',
-    name: 'Marque',
+  "marque": {
+    "path": "/marque",
+    "name": "Marque"
   },
-  modal: {
-    path: '/modal',
-    name: 'Modal',
+  "modal": {
+    "path": "/modal",
+    "name": "Modal"
   },
-  modelSignature: {
-    path: '/model-signature',
-    name: 'ModelSignature',
+  "modelSignature": {
+    "path": "/model-signature",
+    "name": "ModelSignature"
   },
-  multiSelect: {
-    path: '/multi-select',
-    name: 'MultiSelect',
+  "multiSelect": {
+    "path": "/multi-select",
+    "name": "MultiSelect"
   },
-  overview: {
-    path: '/overview',
-    name: 'Overview',
+  "overview": {
+    "path": "/overview",
+    "name": "Overview"
   },
-  overviewNotifications: {
-    path: '/overview-notifications',
-    name: 'OverviewNotifications',
+  "overviewNotifications": {
+    "path": "/overview-notifications",
+    "name": "OverviewNotifications"
   },
-  pagination: {
-    path: '/pagination',
-    name: 'Pagination',
+  "pagination": {
+    "path": "/pagination",
+    "name": "Pagination"
   },
-  popover: {
-    path: '/popover',
-    name: 'Popover',
+  "popover": {
+    "path": "/popover",
+    "name": "Popover"
   },
-  radioButtonWrapper: {
-    path: '/radio-button-wrapper',
-    name: 'RadioButtonWrapper',
+  "radioButtonWrapper": {
+    "path": "/radio-button-wrapper",
+    "name": "RadioButtonWrapper"
   },
-  scroller: {
-    path: '/scroller',
-    name: 'Scroller',
+  "scroller": {
+    "path": "/scroller",
+    "name": "Scroller"
   },
-  segmentedControl: {
-    path: '/segmented-control',
-    name: 'SegmentedControl',
+  "segmentedControl": {
+    "path": "/segmented-control",
+    "name": "SegmentedControl"
   },
-  selectWrapper: {
-    path: '/select-wrapper',
-    name: 'SelectWrapper',
+  "selectWrapper": {
+    "path": "/select-wrapper",
+    "name": "SelectWrapper"
   },
-  spinner: {
-    path: '/spinner',
-    name: 'Spinner',
+  "spinner": {
+    "path": "/spinner",
+    "name": "Spinner"
   },
-  stepperHorizontal: {
-    path: '/stepper-horizontal',
-    name: 'StepperHorizontal',
+  "stepperHorizontal": {
+    "path": "/stepper-horizontal",
+    "name": "StepperHorizontal"
   },
-  switch: {
-    path: '/switch',
-    name: 'Switch',
+  "switch": {
+    "path": "/switch",
+    "name": "Switch"
   },
-  tabs: {
-    path: '/tabs',
-    name: 'Tabs',
+  "table": {
+    "path": "/table",
+    "name": "Table"
   },
-  tabsBar: {
-    path: '/tabs-bar',
-    name: 'TabsBar',
+  "tabs": {
+    "path": "/tabs",
+    "name": "Tabs"
   },
-  tag: {
-    path: '/tag',
-    name: 'Tag',
+  "tabsBar": {
+    "path": "/tabs-bar",
+    "name": "TabsBar"
   },
-  tagDismissible: {
-    path: '/tag-dismissible',
-    name: 'TagDismissible',
+  "tag": {
+    "path": "/tag",
+    "name": "Tag"
   },
-  text: {
-    path: '/text',
-    name: 'Text',
+  "tagDismissible": {
+    "path": "/tag-dismissible",
+    "name": "TagDismissible"
   },
-  textFieldWrapper: {
-    path: '/text-field-wrapper',
-    name: 'TextFieldWrapper',
+  "text": {
+    "path": "/text",
+    "name": "Text"
   },
-  textList: {
-    path: '/text-list',
-    name: 'TextList',
+  "textFieldWrapper": {
+    "path": "/text-field-wrapper",
+    "name": "TextFieldWrapper"
   },
-  textareaWrapper: {
-    path: '/textarea-wrapper',
-    name: 'TextareaWrapper',
+  "textList": {
+    "path": "/text-list",
+    "name": "TextList"
   },
-  toast: {
-    path: '/toast',
-    name: 'Toast',
+  "textareaWrapper": {
+    "path": "/textarea-wrapper",
+    "name": "TextareaWrapper"
   },
-  toastBasicDark: {
-    path: '/toast-basic-dark',
-    name: 'ToastBasicDark',
+  "toast": {
+    "path": "/toast",
+    "name": "Toast"
   },
-  toastBasicLongText: {
-    path: '/toast-basic-long-text',
-    name: 'ToastBasicLongText',
+  "toastBasicDark": {
+    "path": "/toast-basic-dark",
+    "name": "ToastBasicDark"
   },
-  toastBasicStateNeutral: {
-    path: '/toast-basic-state-neutral',
-    name: 'ToastBasicStateNeutral',
+  "toastBasicLongText": {
+    "path": "/toast-basic-long-text",
+    "name": "ToastBasicLongText"
   },
-  toastOffset: {
-    path: '/toast-offset',
-    name: 'ToastOffset',
+  "toastBasicStateNeutral": {
+    "path": "/toast-basic-state-neutral",
+    "name": "ToastBasicStateNeutral"
   },
-  toastPrefixed: {
-    path: '/toast-prefixed',
-    name: 'ToastPrefixed',
+  "toastOffset": {
+    "path": "/toast-offset",
+    "name": "ToastOffset"
   },
-  typographyCyril: {
-    path: '/typography-cyril',
-    name: 'TypographyCyril',
+  "toastPrefixed": {
+    "path": "/toast-prefixed",
+    "name": "ToastPrefixed"
   },
-  typographyFallback: {
-    path: '/typography-fallback',
-    name: 'TypographyFallback',
+  "typographyCyril": {
+    "path": "/typography-cyril",
+    "name": "TypographyCyril"
   },
-  typographyGreekAndCoptic: {
-    path: '/typography-greek-and-coptic',
-    name: 'TypographyGreekAndCoptic',
+  "typographyFallback": {
+    "path": "/typography-fallback",
+    "name": "TypographyFallback"
   },
-  typographyLatin: {
-    path: '/typography-latin',
-    name: 'TypographyLatin',
+  "typographyGreekAndCoptic": {
+    "path": "/typography-greek-and-coptic",
+    "name": "TypographyGreekAndCoptic"
   },
-  wordmark: {
-    path: '/wordmark',
-    name: 'Wordmark',
+  "typographyLatin": {
+    "path": "/typography-latin",
+    "name": "TypographyLatin"
   },
+  "wordmark": {
+    "path": "/wordmark",
+    "name": "Wordmark"
+  }
 };
 /* Auto Generated Above */
 
