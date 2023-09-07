@@ -68,6 +68,7 @@ import { SelectWrapperComponent } from './generated/select-wrapper.component';
 import { SpinnerComponent } from './generated/spinner.component';
 import { StepperHorizontalComponent } from './generated/stepper-horizontal.component';
 import { SwitchComponent } from './generated/switch.component';
+import { TableComponent } from './generated/table.component';
 import { TabsComponent } from './generated/tabs.component';
 import { TabsBarComponent } from './generated/tabs-bar.component';
 import { TagComponent } from './generated/tag.component';
@@ -131,6 +132,7 @@ export const generatedPages = [
   SpinnerComponent,
   StepperHorizontalComponent,
   SwitchComponent,
+  TableComponent,
   TabsComponent,
   TabsBarComponent,
   TagComponent,
@@ -347,6 +349,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Switch',
     path: 'switch',
     component: SwitchComponent,
+  },
+  {
+    name: 'Table',
+    path: 'table',
+    component: TableComponent,
   },
   {
     name: 'Tabs',
