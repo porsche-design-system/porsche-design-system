@@ -188,8 +188,6 @@ export default class Code extends Vue {
     this.currentValueForm = Array.from(formData.values()).join() || 'none';
   }
 
-
-
   get theme(): Theme {
     return this.$store.getters.theme;
   }

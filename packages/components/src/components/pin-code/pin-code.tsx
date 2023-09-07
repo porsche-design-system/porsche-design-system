@@ -173,7 +173,7 @@ export class PinCode {
             </span>
           )}
         </label>
-        <div class="pin-code-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput}>
+        <div class="input-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput}>
           {this.loading && (
             <PrefixedTagNames.pSpinner
               class="spinner"

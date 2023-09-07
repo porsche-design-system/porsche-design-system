@@ -43,8 +43,8 @@ export const getComponentCss = (
         display: 'block',
         ...hostHiddenStyles,
       }),
+      ...inputStyles,
       ...addImportantToEachRule({
-        ...inputStyles,
         ...(isWithinForm && {
           '::slotted(input)': {
             position: 'absolute',
@@ -66,7 +66,7 @@ export const getComponentCss = (
         transform: 'translate(-50%, -50%)',
       },
     }),
-    'pin-code-container': {
+    'input-container': {
       display: 'flex',
       position: 'relative',
       gap: spacingStaticSmall,
