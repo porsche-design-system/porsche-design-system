@@ -1,4 +1,3 @@
-import type { Theme } from '@porsche-design-system/utilities-v2';
 import type { Protocol } from 'devtools-protocol';
 import type { CDPSession, Page } from 'puppeteer';
 
@@ -11,48 +10,6 @@ type ForcedPseudoClasses = (typeof FORCED_PSEUDO_CLASSES)[number];
 const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
-
-const allThemes: Theme[] = ['light', 'auto', 'dark'];
-const ALL_STATES = ['hover', 'focus', 'focus-hover'] as const;
-
-export type StateType = (typeof ALL_STATES)[number];
-
-export type GetMarkup = () => string;
-export type GetThemedMarkup = (theme: Theme) => string;
-
-export const getBodyMarkup = (getElements: GetMarkup) =>
-  ALL_STATES.map(
-    (state) => `<div class="playground light ${state}">
-  ${getElements()}
-</div>`
-  ).join('\n');
-
-export const getThemedBodyMarkup = (
-  getThemedElements: GetThemedMarkup,
-  opts?: { states?: StateType[]; withSurface?: boolean; themes?: Theme[] }
-): string => {
-  const { states = ALL_STATES, withSurface = false, themes = allThemes } = opts || {};
-
-  return states
-    .map((state) =>
-      themes.map(
-        (theme) =>
-          `<div class="playground ${theme} ${state}">${getThemedElements(theme)}</div>` +
-          (withSurface ? `<div class="playground ${theme} surface ${state}">${getThemedElements(theme)}</div>` : '')
-      )
-    )
-    .flat()
-    .join('\n');
-};
-
-const s4 = (): string =>
-  Math.floor((1 + Math.random()) * 0x10000)
-    .toString(16)
-    .substring(1);
-export const generateGUID = (): string => {
-  // return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-};
 
 export const forceHoverState = (page: Page, selector: string): Promise<void> => {
   return forceStateOnElements(page, selector, HOVER_STATE);
