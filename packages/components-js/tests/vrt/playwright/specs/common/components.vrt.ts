@@ -4,7 +4,7 @@ import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const components = TAG_NAMES.filter((el, i, arr) => {
-  return !/item$|-table-|-select-wrapper-/.test(el);
+  return !/item$|-table-|-select-wrapper-|multi-select-option$/.test(el);
 })
   .map((el) => {
     return el.substring(2);
@@ -17,7 +17,7 @@ const components = TAG_NAMES.filter((el, i, arr) => {
 const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
 
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(49);
+  expect(components.length).toBe(50);
 });
 
 components.forEach((component) => {
