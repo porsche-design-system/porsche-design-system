@@ -4,6 +4,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -177,6 +178,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -327,6 +329,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -512,6 +515,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -697,6 +701,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -883,6 +888,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1045,6 +1051,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1207,6 +1214,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1384,6 +1392,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1561,6 +1570,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1714,6 +1724,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1868,6 +1879,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2057,6 +2069,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2223,6 +2236,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2370,6 +2384,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2520,6 +2535,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2680,6 +2696,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2840,6 +2857,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3003,6 +3021,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3166,6 +3185,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3317,6 +3337,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3468,6 +3489,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3622,6 +3644,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3776,6 +3799,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3940,6 +3964,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4104,6 +4129,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 ":host {
   display: block !important;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
