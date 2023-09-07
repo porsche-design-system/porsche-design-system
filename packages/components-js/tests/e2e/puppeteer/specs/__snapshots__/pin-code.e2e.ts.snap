@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Input when state = error 1`] = `
+exports[`accessibility should add/remove accessibility tree if state changes programmatically: Of Input when state = error 1`] = `
 {
   "description": "Some label Some error message.",
   "invalid": "true",
@@ -9,7 +9,7 @@ exports[`accessibility should add/remove accessibility tree properties if state 
 }
 `;
 
-exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Input when state = none 1`] = `
+exports[`accessibility should add/remove accessibility tree if state changes programmatically: Of Input when state = none 1`] = `
 {
   "description": "Some label",
   "name": "1-4",
@@ -17,7 +17,7 @@ exports[`accessibility should add/remove accessibility tree properties if state 
 }
 `;
 
-exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Input when state = success 1`] = `
+exports[`accessibility should add/remove accessibility tree if state changes programmatically: Of Input when state = success 1`] = `
 {
   "description": "Some label Some success message.",
   "name": "1-4",
@@ -25,7 +25,7 @@ exports[`accessibility should add/remove accessibility tree properties if state 
 }
 `;
 
-exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Message when state = error 1`] = `
+exports[`accessibility should add/remove accessibility tree if state changes programmatically: Of Message when state = error 1`] = `
 {
   "children": [
     {
@@ -46,7 +46,7 @@ exports[`accessibility should add/remove accessibility tree properties if state 
 }
 `;
 
-exports[`accessibility should add/remove accessibility tree properties if state changes programmatically: Of Message when state = success 1`] = `
+exports[`accessibility should add/remove accessibility tree if state changes programmatically: Of Message when state = success 1`] = `
 {
   "children": [
     {
@@ -67,7 +67,7 @@ exports[`accessibility should add/remove accessibility tree properties if state 
 }
 `;
 
-exports[`accessibility should expose correct accessibility tree properties in disabled state 1`] = `
+exports[`accessibility should expose correct accessibility tree in disabled state 1`] = `
 {
   "description": "Some label Some description",
   "disabled": true,
@@ -76,7 +76,7 @@ exports[`accessibility should expose correct accessibility tree properties in di
 }
 `;
 
-exports[`accessibility should expose correct accessibility tree properties in error state: Of Input 1`] = `
+exports[`accessibility should expose correct accessibility tree in error state: Of Input 1`] = `
 {
   "description": "Some label Some description Some error message",
   "invalid": "true",
@@ -85,7 +85,7 @@ exports[`accessibility should expose correct accessibility tree properties in er
 }
 `;
 
-exports[`accessibility should expose correct accessibility tree properties in error state: Of Message 1`] = `
+exports[`accessibility should expose correct accessibility tree in error state: Of Message 1`] = `
 {
   "children": [
     {
@@ -106,7 +106,7 @@ exports[`accessibility should expose correct accessibility tree properties in er
 }
 `;
 
-exports[`accessibility should expose correct accessibility tree properties in loading state 1`] = `
+exports[`accessibility should expose correct accessibility tree in loading state 1`] = `
 {
   "description": "Some label Some description",
   "name": "1-4",
@@ -114,7 +114,7 @@ exports[`accessibility should expose correct accessibility tree properties in lo
 }
 `;
 
-exports[`accessibility should expose correct accessibility tree properties in required state 1`] = `
+exports[`accessibility should expose correct accessibility tree in required state 1`] = `
 {
   "description": "Some label * Some description",
   "name": "1-4",

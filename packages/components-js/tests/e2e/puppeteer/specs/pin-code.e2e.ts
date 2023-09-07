@@ -140,7 +140,6 @@ describe('within form', () => {
       await setProperty(host, 'value', ['1', '2', '3', '4']);
       await setProperty(host, 'disabled', true);
       await setProperty(host, 'required', true);
-
       await waitForStencilLifecycle(page);
 
       expect(await getProperty(hiddenInput, 'name')).toBe('updatedName');
@@ -154,9 +153,9 @@ describe('within form', () => {
     await initPinCode({ options: { isWithinForm: true } });
     const host = await getHost();
     const input = await getCurrentInput();
-    await setProperty(host, 'value', ['1', '2', '3', '4']);
     const form = await selectNode(page, 'form');
     await addEventListener(form, 'submit');
+    await setProperty(host, 'value', ['1', '2', '3', '4']);
 
     expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
 
@@ -285,7 +284,7 @@ describe('update event', () => {
   it('should emit update event on backspace and focus correct input element', async () => {
     await initPinCode();
     const host = await getHost();
-    await setProperty(host, 'value', ['1', '2', '3', '4']); // last empty input gets id="current-input"
+    await setProperty(host, 'value', ['1', '2', '3', '4']);
     await addEventListener(host, 'update');
     const input4 = await getInput4();
 
@@ -406,8 +405,7 @@ describe('events', () => {
     });
   });
 
-  // onPaste
-  // TODO: support for paste event is very low, therefore this test is commented out
+  // TODO: support for onPaste event is currently very low, therefore this test is commented out
   xit('should spread value on input elements and focus last input element on paste', async () => {
     await goto(page, ''); // need to have actual window.location
     await initPinCode();
@@ -479,8 +477,6 @@ describe('loading state', () => {
     expect((await getEventSummary(input, 'focus')).counter, 'before focus').toBe(1);
 
     await page.keyboard.press('1');
-    await waitForStencilLifecycle(page);
-
     expect(await getProperty(input, 'value')).toBe('');
   });
 
@@ -491,28 +487,18 @@ describe('loading state', () => {
     await addEventListener(button, 'focus');
 
     await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
     expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('1-4');
 
     await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
     expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('2-4');
 
     await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
     expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('3-4');
 
     await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
     expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
 
     await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
     expect((await getEventSummary(button, 'focus')).counter, 'after focus').toBe(1);
   });
 });
@@ -558,7 +544,7 @@ describe('accessibility', () => {
     await expectA11yToMatchSnapshot(page, input);
   });
 
-  it('should expose correct accessibility tree properties in error state', async () => {
+  it('should expose correct accessibility tree in error state', async () => {
     await initPinCode({
       props: { label: 'Some label', description: 'Some description', state: 'error', message: 'Some error message' },
     });
@@ -569,7 +555,7 @@ describe('accessibility', () => {
     await expectA11yToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
   });
 
-  it('should expose correct accessibility tree properties in disabled state', async () => {
+  it('should expose correct accessibility tree in disabled state', async () => {
     await initPinCode({
       props: { label: 'Some label', description: 'Some description', disabled: true },
     });
@@ -578,7 +564,7 @@ describe('accessibility', () => {
     await expectA11yToMatchSnapshot(page, input);
   });
 
-  it('should expose correct accessibility tree properties in loading state', async () => {
+  it('should expose correct accessibility tree in loading state', async () => {
     await initPinCode({
       props: { label: 'Some label', description: 'Some description', loading: true },
     });
@@ -587,7 +573,7 @@ describe('accessibility', () => {
     await expectA11yToMatchSnapshot(page, input);
   });
 
-  it('should expose correct accessibility tree properties in required state', async () => {
+  it('should expose correct accessibility tree in required state', async () => {
     await initPinCode({
       props: { label: 'Some label', description: 'Some description', required: true },
     });
@@ -596,7 +582,7 @@ describe('accessibility', () => {
     await expectA11yToMatchSnapshot(page, input);
   });
 
-  it('should add/remove accessibility tree properties if state changes programmatically', async () => {
+  it('should add/remove accessibility tree if state changes programmatically', async () => {
     await initPinCode({ props: { label: 'Some label' } });
     const host = await getHost();
 
