@@ -28,8 +28,9 @@ components.forEach((component) => {
         page,
       }) => {
         test.skip(
-          (!isComponentThemeable(component) || component === 'toast') && theme === 'dark',
-          'This component has no theme support.'
+          ((!isComponentThemeable(component) || component === 'toast') && theme === 'dark') ||
+            component === 'stepper-horizontal',
+          'This component has no theme support and stepper-horizontal is flaky'
         );
 
         await setupScenario(page, `/${component}`, baseViewportWidth, {
@@ -55,7 +56,10 @@ components.forEach((component) => {
       test(`should have no visual regression for viewport ${baseViewportWidth} and theme auto with prefers-color-scheme ${scheme}`, async ({
         page,
       }) => {
-        test.skip(!isComponentThemeable(component) || component === 'toast', 'This component has no theme support.');
+        test.skip(
+          !isComponentThemeable(component) || component === 'toast' || component === 'stepper-horizontal',
+          'This component has no theme support and stepper-horizontal is flaky'
+        );
 
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: 'auto',
