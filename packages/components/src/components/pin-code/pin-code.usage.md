@@ -13,8 +13,7 @@ component in various situations.
 - Use either 4 or 6 fields in the `p-pin-code` component based on your specific use case and security requirements.
 - Since only digits can be entered, use for digit codes only.
 - Use type `number` for numeric input or `password` for secure input depending on your application's needs.
-- Use the component's built-in support for inline validation. Customize the message and color to provide visual feedback
-  based on the defined validation state.
+- Use the component's built-in support for inline validation.
 - Use consideration when implementing the component's behavior in a loading state to ensure it remains usable and
   responsive during data retrieval or processing.
 - If the `p-pin-code` component is isolated e.g. used with only one button use the loading state on the button. This
