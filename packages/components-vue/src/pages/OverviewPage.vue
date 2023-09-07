@@ -57,6 +57,12 @@
     PTextList,
     PTextListItem,
     PWordmark,
+    PStepperHorizontal,
+    PButtonTile,
+    PStepperHorizontalItem,
+    PLinkTileModelSignature,
+    PLinkTile,
+    PSwitch,
   } from '@porsche-design-system/components-vue';
 </script>
 
@@ -327,6 +333,61 @@
           <div>Slide 3</div>
         </PCarousel>
       </div>
+
+      <div class="playground light" title="should render default stepper-horizontal">
+        <PStepperHorizontal>
+          <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 5</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 6</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 7</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
+          <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
+        </PStepperHorizontal>
+      </div>
+
+      <div class="playground light" title="should render default link-tile">
+        <PLinkTile :href="'#'" :label="'Some Label'" :description="'Default'">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width="50"
+            height="50"
+            alt="Beach"
+          />
+        </PLinkTile>
+      </div>
+
+      <div class="playground light" title="should render default button-tile">
+        <PButtonTile :label="'Some Label'" :description="'Default'">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width="50"
+            height="50"
+            alt="Beach"
+          />
+        </PButtonTile>
+      </div>
+
+      <div className="playground light" title="should render default link-tile-model-signature">
+        <!-- eslint-disable vue/no-deprecated-slot-attribute -->
+        <PLinkTileModelSignature :heading="'Some Heading'" :description="'Default'">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+            width="50"
+            height="50"
+            alt="Beach"
+          />
+          <PLink slot="primary" :href="'#primary'">Some label</PLink>
+          <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
+        </PLinkTileModelSignature>
+        <!-- eslint-enable vue/no-deprecated-slot-attribute -->
+      </div>
+
+      <div class="playground light" title="should render default switch">
+        <PSwitch>Some label</PSwitch>
+      </div>
     </div>
 
     <PorscheDesignSystemProvider prefix="my-prefix">
@@ -595,10 +656,71 @@
             <div>Slide 3</div>
           </PCarousel>
         </div>
+
+        <div class="playground light" title="should render default stepper-horizontal">
+          <PStepperHorizontal>
+            <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
+            <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
+            <PStepperHorizontalItem>Step 3</PStepperHorizontalItem>
+            <PStepperHorizontalItem>Step 4</PStepperHorizontalItem>
+            <PStepperHorizontalItem>Step 5</PStepperHorizontalItem>
+            <PStepperHorizontalItem>Step 6</PStepperHorizontalItem>
+            <PStepperHorizontalItem>Step 7</PStepperHorizontalItem>
+            <PStepperHorizontalItem>Step 8</PStepperHorizontalItem>
+            <PStepperHorizontalItem>Step 9</PStepperHorizontalItem>
+          </PStepperHorizontal>
+        </div>
+
+        <div class="playground light" title="should render default link-tile">
+          <PLinkTile :href="'#'" :label="'Some Label'" :description="'Default'">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+              width="50"
+              height="50"
+              alt="Beach"
+            />
+          </PLinkTile>
+        </div>
+
+        <div class="playground light" title="should render default button-tile">
+          <PButtonTile :label="'Some Label'" :description="'Default'">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+              width="50"
+              height="50"
+              alt="Beach"
+            />
+          </PButtonTile>
+        </div>
+
+        <div className="playground light" title="should render default link-tile-model-signature">
+          <!-- eslint-disable vue/no-deprecated-slot-attribute -->
+          <PLinkTileModelSignature :heading="'Some Heading'" :description="'Default'">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+              width="50"
+              height="50"
+              alt="Beach"
+            />
+            <PLink slot="primary" :href="'#primary'">Some label</PLink>
+            <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
+          </PLinkTileModelSignature>
+          <!-- eslint-enable vue/no-deprecated-slot-attribute -->
+        </div>
+
+        <div class="playground light" title="should render default switch">
+          <PSwitch>Some label</PSwitch>
+        </div>
       </div>
     </PorscheDesignSystemProvider>
   </div>
 </template>
+
+<style>
+  body {
+    overflow: auto !important;
+  }
+</style>
 
 <style scoped>
   .root {

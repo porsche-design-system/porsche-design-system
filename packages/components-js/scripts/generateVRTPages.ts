@@ -8,9 +8,9 @@ import { convertToNextJsVRTPage } from './convertToNextJsVRTPage';
 import { convertToRemixVRTPage } from './convertToRemixVRTPage';
 
 /** array of html file names that don't get converted */
-const PAGES_TO_SKIP: string[] = ['table'];
+const PAGES_TO_SKIP: string[] = [];
 /** array of html file names that are converted but without route since it is maintained manually */
-const PAGES_WITHOUT_ROUTE: string[] = ['core-initializer', 'overview', 'overview-flaky', 'overview-notifications'];
+const PAGES_WITHOUT_ROUTE: string[] = ['core-initializer', 'overview', 'overview-notifications'];
 
 type Framework = 'angular' | 'react' | 'nextjs' | 'remix';
 

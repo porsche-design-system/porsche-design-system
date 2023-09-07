@@ -168,6 +168,10 @@ const generatedRoutes = {
     "path": "/switch",
     "name": "Switch"
   },
+  "table": {
+    "path": "/table",
+    "name": "Table"
+  },
   "tabs": {
     "path": "/tabs",
     "name": "Tabs"
@@ -249,7 +253,6 @@ const generatedRoutes = {
 
 export const sitemap = {
   home: { path: '/', name: 'Home' },
-  table: { path: '/table', name: 'Table' },
   ...generatedRoutes,
 };
 

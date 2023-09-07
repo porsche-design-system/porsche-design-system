@@ -51,6 +51,7 @@ import { SelectWrapperPage } from './generated/SelectWrapper';
 import { SpinnerPage } from './generated/Spinner';
 import { StepperHorizontalPage } from './generated/StepperHorizontal';
 import { SwitchPage } from './generated/Switch';
+import { TablePage } from './generated/Table';
 import { TabsPage } from './generated/Tabs';
 import { TabsBarPage } from './generated/TabsBar';
 import { TagPage } from './generated/Tag';
@@ -266,6 +267,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Switch',
     path: '/switch',
     element: <SwitchPage />,
+  },
+  {
+    name: 'Table',
+    path: '/table',
+    element: <TablePage />,
   },
   {
     name: 'Tabs',
