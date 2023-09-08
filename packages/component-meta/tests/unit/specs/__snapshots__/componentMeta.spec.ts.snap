@@ -2178,6 +2178,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "type": [
         "number",
