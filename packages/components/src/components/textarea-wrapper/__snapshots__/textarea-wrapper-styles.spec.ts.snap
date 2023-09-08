@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasCounter: true, theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -153,6 +154,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -303,6 +305,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -393,6 +396,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: error, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -499,6 +503,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -588,6 +593,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: none, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -693,6 +699,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -783,6 +790,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: false, state: success, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -889,6 +897,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: error, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -979,6 +988,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: error, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1085,6 +1095,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: none, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1174,6 +1185,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: none, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1279,6 +1291,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: success, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1369,6 +1382,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: false, hideLabel: true, state: success, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1475,6 +1489,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 exports[`getComponentCss() should return correct css for isDisabled: true, hideLabel: true, state: error, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

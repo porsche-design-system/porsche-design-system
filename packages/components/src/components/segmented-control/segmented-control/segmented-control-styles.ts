@@ -1,5 +1,5 @@
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../../styles';
 import type { BreakpointCustomizable } from '../../../types';
 import type { SegmentedControlColumns } from './segmented-control-utils';
 
@@ -18,6 +18,7 @@ export const getComponentCss = (maxWidth: number, columns: BreakpointCustomizabl
           gridTemplateColumns: col === 'auto' ? `repeat(auto-fit, ${maxWidth}px)` : `repeat(${col}, minmax(0, 1fr))`,
         })),
         gap: '6px',
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
     },

@@ -8,9 +8,9 @@ import { convertToNextJsVRTPage } from './convertToNextJsVRTPage';
 import { convertToRemixVRTPage } from './convertToRemixVRTPage';
 
 /** array of html file names that don't get converted */
-const PAGES_TO_SKIP: string[] = ['table'];
+const PAGES_TO_SKIP: string[] = [];
 /** array of html file names that are converted but without route since it is maintained manually */
-const PAGES_WITHOUT_ROUTE: string[] = ['core-initializer', 'overview', 'overview-flaky', 'overview-notifications'];
+const PAGES_WITHOUT_ROUTE: string[] = ['core-initializer', 'overview', 'overview-notifications'];
 
 type Framework = 'angular' | 'react' | 'nextjs' | 'remix';
 
@@ -120,7 +120,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
 
   const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
-    .filter(([component]) => (framework === 'remix' ? ['overview', 'overview-flaky'].includes(component) : true)) // only overview page for remix
+    .filter(([component]) => (framework === 'remix' ? ['overview'].includes(component) : true)) // only overview page for remix
     .map(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -136,17 +136,17 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
       fileContent = fileContent.replace(scriptRegEx, '\n');
       script = script?.trim().replace(/([\w.#'()\[\]]+)(\.\w+\s=)/g, '($1 as any)$2'); // handle untyped prop assignments
 
-      const usesComponentsReady = script?.includes('porscheDesignSystem.');
+      const usesComponentsReady = script?.includes('porscheDesignSystem.') && fileName === 'core-initializer';
       script = usesComponentsReady ? script.replace('porscheDesignSystem.', '') : script;
 
-      const usesQuerySelector = script?.includes('querySelector');
+      const usesQuerySelector = script?.includes('querySelector') && fileName === 'core-initializer';
       const usesPrefixing = !!fileContent.match(/<[a-z-]+-p-[\w-]+/);
       const usesToast = script?.includes('p-toast');
       const [, toastText] = (usesToast && script?.match(/text:\s?(['`].*?['`])/)) || [];
 
       const isIconPage = fileName === 'icon';
-      const usesOnInit = !!script && !isIconPage;
-      const usesSetAllReady = script?.includes('componentsReady()');
+      const usesOnInit = !!script && !isIconPage && (fileName === 'core-initializer' || usesToast);
+      const usesSetAllReady = script?.includes('componentsReady()') && fileName === 'core-initializer';
 
       // extract template if there is any, replacing is framework specific
       let [, template] = fileContent.match(templateRegEx) || [];

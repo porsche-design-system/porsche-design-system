@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

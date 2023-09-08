@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css for direction: "column" 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -18,6 +19,7 @@ div {
 exports[`getComponentCss() should return correct css for direction: "row" 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -33,6 +35,7 @@ div {
 exports[`getComponentCss() should return correct css for direction: {"base":"column","xs":"row"} 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -55,6 +58,7 @@ div {
 exports[`getComponentCss() should return correct css for direction: {"base":"row","xs":"column","s":"row","m":"column","l":"row","xl":"column"} 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

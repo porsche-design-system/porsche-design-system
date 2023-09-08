@@ -4,6 +4,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -102,6 +103,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ":host {
   display: block;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -200,6 +202,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -298,6 +301,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -396,6 +400,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ":host {
   display: block;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -494,6 +499,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ":host {
   display: block;
   position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

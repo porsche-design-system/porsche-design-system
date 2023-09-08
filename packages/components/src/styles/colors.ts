@@ -120,9 +120,13 @@ const themeDark = {
   infoSoftColorLighten: '#1A3856'
 };
 
+const themeAuto = {
+  ...themeLight,};
+
 const themes = {
   'light': themeLight,
-  'dark': themeDark
+  'dark': themeDark,
+  'auto': themeAuto
 };
 /* Auto Generated End */
 

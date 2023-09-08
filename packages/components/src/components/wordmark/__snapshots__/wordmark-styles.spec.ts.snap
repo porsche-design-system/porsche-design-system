@@ -9,6 +9,7 @@ exports[`getComponentCss() should return correct css for size: inherit and theme
   max-width: 100% !important;
   max-height: 100% !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -51,6 +52,7 @@ exports[`getComponentCss() should return correct css for size: inherit and theme
   max-width: 100% !important;
   max-height: 100% !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -94,6 +96,7 @@ exports[`getComponentCss() should return correct css for size: small and theme: 
   max-height: 100% !important;
   box-sizing: content-box !important;
   height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -143,6 +146,7 @@ exports[`getComponentCss() should return correct css for size: small and theme: 
   max-height: 100% !important;
   box-sizing: content-box !important;
   height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

@@ -9,7 +9,7 @@ import {
 describe('toast-basic', () => {
   it.each(furtherExtendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
     expect(
-      await vrtTest(getVisualRegressionTester(viewport), 'toast-basic', '/toast-basic', { javaScriptEnabled: false })
+      await vrtTest(getVisualRegressionTester(viewport), 'toast-basic', '/toast', { javaScriptEnabled: false })
     ).toBeFalsy();
   });
 });

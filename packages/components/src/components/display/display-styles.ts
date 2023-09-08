@@ -2,7 +2,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { DisplayAlign, DisplayColor, DisplaySize } from './display-utils';
 import { DISPLAY_TAGS } from './display-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
   displayLargeStyle,
   fontSizeDisplayLarge,
@@ -28,7 +28,10 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
       '::slotted': {
         [DISPLAY_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),

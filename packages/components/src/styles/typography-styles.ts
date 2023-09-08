@@ -5,6 +5,7 @@ import type { HeadlineColor } from '../components/headline/headline-utils';
 import type { DisplayAlign, DisplayColor } from '../components/display/display-utils';
 import type { TextColorDeprecated } from '../components/text/text-color';
 import { getThemedTypographyColor } from './text-icon-styles';
+import { prefersColorSchemeDarkMediaQuery } from './prefers-color-scheme-dark-media-query';
 
 export const getTypographyRootJssStyle = (
   baseTextStyle: JssStyle,
@@ -19,6 +20,9 @@ export const getTypographyRootJssStyle = (
     padding: 0,
     ...baseTextStyle,
     color: getThemedTypographyColor(theme, color),
+    ...prefersColorSchemeDarkMediaQuery(theme, {
+      color: getThemedTypographyColor('dark', color),
+    }),
     textAlign: align,
     letterSpacing: 'normal',
     listStyleType: 'none',

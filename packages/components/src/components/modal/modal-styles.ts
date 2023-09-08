@@ -20,6 +20,7 @@ import {
 import type { BreakpointCustomizable } from '../../types';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getFrostedGlassBackgroundJssStyles,
   getInsetJssStyle,
   getThemedColors,
@@ -119,6 +120,7 @@ export const getComponentCss = (
                 visibility: 'hidden',
                 transition: 'visibility 0s linear .2s',
               }),
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...getFrostedGlassBackgroundJssStyles(isOpen, duration),
         }),

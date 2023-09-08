@@ -3,10 +3,12 @@ import type { Theme } from '../../types';
 import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   focusPseudoJssStyle,
   getHighContrastColors,
   getThemedColors,
   hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 
 export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
@@ -28,6 +30,7 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
               height: 'round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px)',
             },
           }),
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -41,9 +44,16 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         textDecoration: 'none',
         ...focusPseudoJssStyle,
       },
-      svg: {
-        fill: isHighContrastMode ? getHighContrastColors().canvasTextColor : getThemedColors(theme).primaryColor,
-      },
+      svg: isHighContrastMode
+        ? {
+            fill: getHighContrastColors().canvasTextColor,
+          }
+        : {
+            fill: getThemedColors(theme).primaryColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              fill: getThemedColors('dark').primaryColor,
+            }),
+          },
     },
   });
 };

@@ -17,125 +17,158 @@
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
-    <select onchange="document.location.hash = `#${this.value}`">
-      <option disabled selected>Select a page</option>
-      <option value="accordion">Accordion</option>
-      <option value="banner">Banner</option>
-      <option value="button">Button</option>
-      <option value="button-group">Button Group</option>
-      <option value="button-pure">Button Pure</option>
-      <option value="button-tile">Button Tile</option>
-      <option value="carousel">Carousel</option>
-      <option value="checkbox-wrapper">Checkbox</option>
-      <option value="content-wrapper">Content Wrapper</option>
-      <option value="crest">Crest</option>
-      <option value="display">Display</option>
-      <option value="divider">Divider</option>
-      <option value="fieldset">Fieldset</option>
-      <option value="fieldset-wrapper">Fieldset Wrapper</option>
-      <option value="flex">Flex</option>
-      <option value="flyout">Flyout</option>
-      <option value="grid">Grid</option>
-      <option value="heading">Heading</option>
-      <option value="headline">Headline</option>
-      <option value="icon">Icon</option>
-      <option value="inline-notification">Inline Notification</option>
-      <option value="link">Link</option>
-      <option value="link-pure">Link Pure</option>
-      <option value="link-social">Link Social</option>
-      <option value="link-tile">Link Tile</option>
-      <option value="link-tile-model-signature">Link Tile Model Signature</option>
-      <option value="marque">Marque</option>
-      <option value="modal">Modal</option>
-      <option value="model-signature">Model Signature</option>
-      <option value="multi-select">Multi Select</option>
-      <option value="pagination">Pagination</option>
-      <option value="pin-code">Pin Code</option>
-      <option value="popover">Popover</option>
-      <option value="radio-button-wrapper">Radio Button</option>
-      <option value="scroller">Scroller</option>
-      <option value="segmented-control">Segmented Control</option>
-      <option value="select-wrapper">Select</option>
-      <option value="spinner">Spinner</option>
-      <option value="stepper-horizontal">Stepper Horizontal</option>
-      <option value="switch">Switch</option>
-      <option value="table">Table</option>
-      <option value="tabs">Tabs</option>
-      <option value="tabs-bar">Tabs Bar</option>
-      <option value="tag">Tag</option>
-      <option value="tag-dismissible">Tag Dismissible</option>
-      <option value="text">Text</option>
-      <option value="text-field-wrapper">Text Field</option>
-      <option value="text-list">Text List</option>
-      <option value="textarea-wrapper">Textarea</option>
-      <option value="toast-basic">Toast Basic</option>
-      <option value="toast-basic-long-text">Toast Basic Long Text</option>
-      <option value="toast-basic-dark">Toast Basic Dark</option>
-      <option value="toast-offset">Toast Offset</option>
-      <option value="toast-prefixed">Toast Prefixed</option>
-      <option value="typography-fallback-strategy">Typography Fallback Strategy</option>
-      <option value="typography-latin">Typography Latin</option>
-      <option value="typography-greek-and-coptic">Typography Greek & Coptic</option>
-      <option value="typography-cyril">Typography Cyril</option>
-      <option value="wordmark">Wordmark</option>
-      <option disabled>---</option>
-      <option value="overview">Overview</option>
-      <option value="overview-flaky">Overview Flaky</option>
-      <option value="overview-notifications">Overview Notifications</option>
-      <option value="core-initializer">Core Initializer</option>
-      <option disabled>---</option>
-      <option value="accordion-example">Accordion Example</option>
-      <option value="banner-example">Banner Example</option>
-      <option value="carousel-example-dynamic-slides">Carousel Example Dynamic Slides</option>
-      <option value="carousel-example-events">Carousel Example Events</option>
-      <option value="carousel-example-jump-to-slide">Carousel Example Jump to Slide</option>
-      <option value="flyout-example">Flyout Example</option>
-      <option value="flyout-example-slotted">Flyout Example Slotted</option>
-      <option value="flyout-example-slotted-secondary">Flyout Example Slotted Sub-Footer</option>
-      <option value="inline-notification-example-action-button">Inline Notification Example Action Button</option>
-      <option value="inline-notification-example-events">Inline Notification Example Events</option>
-      <option value="modal-example-accessibility">Modal Example Accessibility</option>
-      <option value="multi-select-example">Multi Select Example</option>
-      <option value="multi-select-example-controlled">Multi Select Example Controlled</option>
-      <option value="multi-select-example-dynamic">Multi Select Example Dynamic</option>
-      <option value="pin-code-example">Pin Code Example</option>
-      <option value="pin-code-example-controlled">Pin Code Example Controlled</option>
-      <option value="scroller-example">Scroller Example</option>
-      <option value="segmented-control-example">Segmented Control Example</option>
-      <option value="stepper-horizontal-example">Stepper Horizontal Example</option>
-      <option value="table-example-basic">Table Example Basic</option>
-      <option value="table-example-sorting">Table Example Sorting</option>
-      <option value="table-example-advanced">Table Example Advanced</option>
-      <option value="tabs-bar-example-accessibility">Tabs Bar Example Accessibility</option>
-      <option value="tabs-bar-example-basic">Tabs Bar Example Basic</option>
-      <option value="text-field-wrapper-example-imask">Text Field Wrapper Example IMask</option>
-      <option value="text-field-wrapper-example-search">Text Field Wrapper Example Search</option>
-      <option value="toast-example">Toast Example</option>
-    </select>
+    <header>
+      <select id="page" onchange="updateRoute({pathname: this.value})">
+        <option disabled selected>Select a page</option>
+        <optgroup label="Components">
+          <option value="accordion">Accordion</option>
+          <option value="banner">Banner</option>
+          <option value="button">Button</option>
+          <option value="button-group">Button Group</option>
+          <option value="button-pure">Button Pure</option>
+          <option value="button-tile">Button Tile</option>
+          <option value="carousel">Carousel</option>
+          <option value="checkbox-wrapper">Checkbox</option>
+          <option value="content-wrapper">Content Wrapper</option>
+          <option value="crest">Crest</option>
+          <option value="display">Display</option>
+          <option value="divider">Divider</option>
+          <option value="fieldset">Fieldset</option>
+          <option value="fieldset-wrapper">Fieldset Wrapper</option>
+          <option value="flex">Flex</option>
+          <option value="flyout">Flyout</option>
+          <option value="grid">Grid</option>
+          <option value="heading">Heading</option>
+          <option value="headline">Headline</option>
+          <option value="icon">Icon</option>
+          <option value="inline-notification">Inline Notification</option>
+          <option value="link">Link</option>
+          <option value="link-pure">Link Pure</option>
+          <option value="link-social">Link Social</option>
+          <option value="link-tile">Link Tile</option>
+          <option value="link-tile-model-signature">Link Tile Model Signature</option>
+          <option value="marque">Marque</option>
+          <option value="modal">Modal</option>
+          <option value="model-signature">Model Signature</option>
+          <option value="multi-select">Multi Select</option>
+          <option value="pagination">Pagination</option>
+          <option value="pin-code">Pin Code</option>
+          <option value="popover">Popover</option>
+          <option value="radio-button-wrapper">Radio Button</option>
+          <option value="scroller">Scroller</option>
+          <option value="segmented-control">Segmented Control</option>
+          <option value="select-wrapper">Select</option>
+          <option value="spinner">Spinner</option>
+          <option value="stepper-horizontal">Stepper Horizontal</option>
+          <option value="switch">Switch</option>
+          <option value="table">Table</option>
+          <option value="tabs">Tabs</option>
+          <option value="tabs-bar">Tabs Bar</option>
+          <option value="tag">Tag</option>
+          <option value="tag-dismissible">Tag Dismissible</option>
+          <option value="text">Text</option>
+          <option value="text-field-wrapper">Text Field</option>
+          <option value="text-list">Text List</option>
+          <option value="textarea-wrapper">Textarea</option>
+          <option value="toast">Toast</option>
+          <option value="toast-basic-dark">Toast Basic Dark</option>
+          <option value="toast-basic-long-text">Toast Basic Long Text</option>
+          <option value="toast-basic-state-neutral">Toast Basic State Neutral</option>
+          <option value="toast-offset">Toast Offset</option>
+          <option value="toast-prefixed">Toast Prefixed</option>
+          <option value="wordmark">Wordmark</option>
+        </optgroup>
+        <optgroup label="Typography">
+          <option value="typography-latin">Latin</option>
+          <option value="typography-greek-and-coptic">Greek & Coptic</option>
+          <option value="typography-cyril">Cyril</option>
+          <option value="typography-fallback">Fallback</option>
+        </optgroup>
+        <optgroup label="Overview">
+          <option value="overview">Overview</option>
+          <option value="overview-notifications">Notifications</option>
+          <option value="core-initializer">Core Initializer</option>
+        </optgroup>
+        <optgroup label="Examples">
+          <option value="accordion-example">Accordion</option>
+          <option value="banner-example">Banner</option>
+          <option value="carousel-example-dynamic-slides">Carousel Dynamic Slides</option>
+          <option value="carousel-example-events">Carousel Events</option>
+          <option value="carousel-example-jump-to-slide">Carousel Jump to Slide</option>
+          <option value="flyout-example">Flyout</option>
+          <option value="flyout-example-slotted">Flyout Slotted</option>
+          <option value="flyout-example-slotted-secondary">Flyout Slotted Sub-Footer</option>
+          <option value="inline-notification-example-action-button">Inline Notification Action Button</option>
+          <option value="inline-notification-example-events">Inline Notification Events</option>
+          <option value="modal-example-accessibility">Modal Accessibility</option>
+          <option value="multi-select-example">Multi Select Example</option>
+          <option value="multi-select-example-controlled">Multi Select Example Controlled</option>
+          <option value="multi-select-example-dynamic">Multi Select Example Dynamic</option>
+          <option value="scroller-example">Scroller</option>
+          <option value="segmented-control-example">Segmented Control</option>
+          <option value="stepper-horizontal-example">Stepper Horizontal</option>
+          <option value="table-example-basic">Table Basic</option>
+          <option value="table-example-sorting">Table Sorting</option>
+          <option value="table-example-advanced">Table Advanced</option>
+          <option value="tabs-bar-example-accessibility">Tabs Bar Accessibility</option>
+          <option value="tabs-bar-example-basic">Tabs Bar Basic</option>
+          <option value="text-field-wrapper-example-imask">Text Field Wrapper IMask</option>
+          <option value="text-field-wrapper-example-search">Text Field Wrapper Search</option>
+          <option value="toast-example">Toast</option>
+        </optgroup>
+      </select>
+      <select id="theme" onchange="updateRoute({theme: this.value})">
+        <option disabled selected>Select a theme</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="auto">Auto</option>
+      </select>
+    </header>
     <div id="app"></div>
     <script>
-      const updateRoute = async () => {
-        if (['#', ''].includes(document.location.hash)) {
-          return;
+      const getPage = () => window.location.pathname.substring(1);
+      const getTheme = () => (new URL(document.location).searchParams.get('theme')) || 'light';
+
+      const updateRoute = async (opts) => {
+        if (opts) {
+          const url = new URL(location);
+          if (opts.pathname) url.pathname = opts.pathname;
+          if (opts.theme) url.searchParams.set('theme', opts.theme);
+          history.pushState(null, '', url);
         }
 
         const app = document.getElementById('app');
-        const page = document.location.hash.substr(1);
+
+
+        const page = getPage();
+        if (!page) return;
+        const theme = getTheme();
         const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
+
         app.innerHTML = '';
         app.innerHTML = (await (await fetch(`/${directory}/${page}.html`)).text()).replace(/>(\s)*</g, '><');
+        app.querySelectorAll('*').forEach(el => el.theme = theme);
+        app.querySelectorAll('.playground').forEach(el => {
+          el.classList.remove('light', 'dark', 'auto');
+          el.classList.add(theme);
+        });
 
-        // execute scripts inserted via innerHTML
         const scripts = app.getElementsByTagName('script');
         for (let i = 0; i < scripts.length; i++) {
-          eval(scripts[i].innerText);
+          eval(scripts[i].innerText); // execute scripts inserted via innerHTML
         }
+      };
+
+      const updateSelect = (id, value) => {
+        if (id && value) Array.from(document.querySelectorAll(`#${id} option`)).filter(e => e.value === value)[0].selected = true
       };
 
       porscheDesignSystem.load();
       porscheDesignSystem.load({ prefix: 'my-prefix' });
       window.componentsReady = porscheDesignSystem.componentsReady; // for vrt
-      window.addEventListener('hashchange', updateRoute);
+
+      updateSelect('page', getPage());
+      updateSelect('theme', getTheme());
       updateRoute();
     </script>
   </body>

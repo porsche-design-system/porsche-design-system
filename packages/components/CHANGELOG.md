@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- Theme property supports `auto` for all themeable components, reflecting `prefers-color-scheme` based on OS system
+  settings ([#2719](https://github.com/porsche-design-system/porsche-design-system/pull/2719))
 - `Pin Code` ([#2691](https://github.com/porsche-design-system/porsche-design-system/pull/2691))
 
 ### [3.7.0-rc.0] - 2023-09-05

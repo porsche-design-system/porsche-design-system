@@ -6,6 +6,7 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -133,6 +134,7 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -258,6 +260,7 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -413,6 +416,7 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -566,6 +570,7 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -745,6 +750,7 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -922,6 +928,7 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1102,6 +1109,7 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1308,6 +1316,7 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1435,6 +1444,7 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1560,6 +1570,7 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1713,6 +1724,7 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
