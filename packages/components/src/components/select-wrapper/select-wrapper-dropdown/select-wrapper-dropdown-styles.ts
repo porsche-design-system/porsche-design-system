@@ -2,7 +2,15 @@ import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper
 import type { Theme } from '../../../types';
 import type { JssStyle, Styles } from 'jss';
 import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
-import { addImportantToRule, getInsetJssStyle, getThemedColors, getTransition, hoverMediaQuery } from '../../../styles';
+import {
+  addImportantToRule,
+  getHighContrastColors,
+  getInsetJssStyle,
+  getThemedColors,
+  getTransition,
+  hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../../styles';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -13,7 +21,7 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
-import { getSelectOptionStyles, OPTION_HEIGHT } from '../../../styles/select';
+import { getNoResultsOptionJssStyle, OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { FormState } from '../../../utils/form/form-state';
 
@@ -26,7 +34,16 @@ export const getButtonStyles = (
   theme: Theme
 ): Styles => {
   const { primaryColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    disabledColor: disabledColorDark,
+    contrastMediumColor: contrastMediumColorDark,
+  } = getThemedColors('dark');
   const { formStateHoverColor, formStateColor } = getThemedFormStateColors(theme, state);
+  const { formStateHoverColor: formStateHoverColorDark, formStateColor: formStateColorDark } = getThemedFormStateColors(
+    'dark',
+    state
+  );
   const isDirectionDown = direction === 'down';
 
   return {
@@ -44,17 +61,29 @@ export const getButtonStyles = (
         outline: '0',
         cursor: 'pointer',
         transition: getTransition('border-color'), // background and text color are handled on select
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark,
+        }),
         '&:focus, &:focus ~ ul': {
           borderColor: primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: primaryColorDark,
+          }),
         },
         ...hoverMediaQuery({
           '&:not(:disabled):not(:focus):hover': {
             borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark,
+            }),
           },
         }),
         '&:disabled': {
           cursor: 'not-allowed',
           borderColor: disabledColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: disabledColorDark,
+          }),
         },
         ...(isOpen && {
           [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
@@ -73,12 +102,27 @@ export const getFilterStyles = (
   theme: Theme
 ): Styles<'@global'> => {
   const { primaryColor, backgroundColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    backgroundColor: backgroundColorDark,
+    disabledColor: disabledColorDark,
+    contrastMediumColor: contrastMediumColorDark,
+  } = getThemedColors('dark');
   const { formStateHoverColor, formStateColor } = getThemedFormStateColors(theme, state);
+  const { formStateHoverColor: formStateHoverColorDark, formStateColor: formStateColorDark } = getThemedFormStateColors(
+    'dark',
+    state
+  );
   const isDirectionDown = direction === 'down';
 
   const placeHolderJssStyle: JssStyle = {
     opacity: 1,
     color: disabled ? disabledColor : primaryColor,
+  };
+
+  const placeHolderDarkJssStyle: JssStyle = {
+    opacity: 1,
+    color: disabled ? disabledColorDark : primaryColorDark,
   };
 
   return {
@@ -104,23 +148,45 @@ export const getFilterStyles = (
         cursor: disabled ? 'not-allowed' : 'text',
         color: primaryColor,
         background: backgroundColor,
-        '&::placeholder': placeHolderJssStyle,
-        '&::-webkit-input-placeholder': placeHolderJssStyle,
-        '&::-moz-placeholder': placeHolderJssStyle,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
+          background: backgroundColorDark,
+        }),
+        '&::placeholder': {
+          ...placeHolderJssStyle,
+          ...prefersColorSchemeDarkMediaQuery(theme, placeHolderDarkJssStyle),
+        },
+        '&::-webkit-input-placeholder': {
+          ...placeHolderJssStyle,
+          ...prefersColorSchemeDarkMediaQuery(theme, placeHolderDarkJssStyle),
+        },
+        '&::-moz-placeholder': {
+          ...placeHolderJssStyle,
+          ...prefersColorSchemeDarkMediaQuery(theme, placeHolderDarkJssStyle),
+        },
         '&:not(:disabled):focus': {
           opacity: 1, // to display value while typing
           '&+span, &~ ul': {
             borderColor: primaryColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: primaryColorDark,
+            }),
           },
         },
         ...hoverMediaQuery({
           '&:not(:disabled)': {
             '&+span:hover': {
               borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                borderColor: isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark,
+              }),
             },
             '&:hover': {
               '&+span, &~ul': {
                 borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                  borderColor: isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark,
+                }),
               },
             },
           },
@@ -133,6 +199,9 @@ export const getFilterStyles = (
           pointerEvents: 'all',
           cursor: disabled ? 'not-allowed' : 'pointer',
           border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark,
+          }),
           borderRadius: borderRadiusSmall,
           ...(isOpen && {
             [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
@@ -146,7 +215,25 @@ export const getFilterStyles = (
 
 export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme): Styles => {
   const isDirectionDown = direction === 'down';
-  const { primaryColor, backgroundColor, contrastMediumColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    backgroundColor: backgroundColorDark,
+    contrastMediumColor: contrastMediumColorDark,
+    disabledColor: disabledColorDark,
+    contrastHighColor: contrastHighColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
+    contrastLowColor: contrastLowColorDark,
+  } = getThemedColors('dark');
+  const {
+    primaryColor,
+    backgroundColor,
+    contrastMediumColor,
+    contrastHighColor,
+    backgroundSurfaceColor,
+    disabledColor,
+    contrastLowColor,
+  } = getThemedColors(theme);
+  const { highlightColor } = getHighContrastColors();
 
   return {
     '@global': {
@@ -178,14 +265,71 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
         scrollbarColor: 'auto', // firefox
         transition: getTransition('border-color'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+          borderColor: primaryColorDark,
+          [isDirectionDown ? 'borderTopColor' : 'borderBottomColor']: addImportantToRule(contrastMediumColorDark),
+        }),
       },
     },
-    ...getSelectOptionStyles(theme, {
+    option: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      gap: '12px',
+      padding: `${spacingStaticSmall} 12px`,
+      flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
+      color: contrastHighColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastHighColorDark,
+      }),
+      cursor: 'pointer',
+      textAlign: 'left',
+      wordBreak: 'break-word',
+      boxSizing: 'border-box',
+      borderRadius: borderRadiusSmall,
+      transition: ['background-color', 'color'].map(getTransition).join(),
+      ...getNoResultsOptionJssStyle(),
+      ...hoverMediaQuery({
+        '&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover': {
+          color: isHighContrastMode ? highlightColor : primaryColor,
+          background: contrastLowColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: isHighContrastMode ? highlightColor : primaryColorDark,
+            background: contrastLowColorDark,
+          }),
+        },
+      }),
       '&--selected': {
         cursor: 'default',
         pointerEvents: 'none',
+        background: backgroundSurfaceColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundSurfaceColorDark,
+        }),
       },
-    }),
+      '&--highlighted': {
+        background: contrastLowColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: contrastLowColorDark,
+        }),
+      },
+      '&--highlighted, &--selected': {
+        color: isHighContrastMode ? highlightColor : primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: isHighContrastMode ? highlightColor : primaryColorDark,
+        }),
+      },
+      '&--disabled': {
+        cursor: 'not-allowed',
+        color: disabledColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: disabledColorDark,
+        }),
+      },
+      '&--hidden': {
+        display: 'none',
+      },
+    },
     optgroup: {
       display: 'block',
       padding: '3px 14px',
@@ -209,7 +353,16 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    contrastMediumColor: contrastMediumColorDark,
+    disabledColor: disabledColorDark,
+  } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
+    'dark',
+    state
+  );
 
   return getCss(
     // merge because of global styles
@@ -226,11 +379,17 @@ export const getComponentCss = (
             left: 0,
             right: 0,
             color: disabled ? disabledColor : formStateColor || contrastMediumColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              color: disabled ? disabledColorDark : formStateColorDark || contrastMediumColorDark,
+            }),
             ...(!disabled &&
               !isHighContrastMode &&
               hoverMediaQuery({
                 '&(:hover)': {
                   color: formStateHoverColor || primaryColor,
+                  ...prefersColorSchemeDarkMediaQuery(theme, {
+                    color: formStateHoverColorDark || primaryColorDark,
+                  }),
                 },
               })),
           },

@@ -2,10 +2,9 @@ import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  getLinkButtonThemeForIcon,
   getPrefixedTagNames,
-  hasVisibleIcon,
   hasPropValueChanged,
+  hasVisibleIcon,
   isSsrHydration,
   LINK_ARIA_ATTRIBUTES,
   LINK_BUTTON_VARIANTS,
@@ -121,7 +120,7 @@ export class Link {
             size="inherit"
             name={this.iconSource ? undefined : this.icon}
             source={this.iconSource}
-            theme={getLinkButtonThemeForIcon(this.variant, this.theme)}
+            theme={this.theme}
             aria-hidden="true"
           />
         )}

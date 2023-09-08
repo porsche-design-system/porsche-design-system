@@ -726,6 +726,7 @@ ul {
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -897,6 +898,7 @@ ul {
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -1030,6 +1032,7 @@ ul {
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -1198,6 +1201,7 @@ ul {
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -1586,6 +1590,7 @@ ul {
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -1757,6 +1762,7 @@ ul {
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -1890,6 +1896,7 @@ ul {
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -2058,6 +2065,7 @@ ul {
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -3732,6 +3740,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #212225;
 }
 .option--highlighted {
   background: #404044;
@@ -3822,6 +3831,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #212225;
 }
 .option--highlighted {
   background: #404044;
@@ -3912,6 +3922,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -4002,6 +4013,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -4092,6 +4104,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #212225;
 }
 .option--highlighted {
   background: #404044;
@@ -4182,6 +4195,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #212225;
 }
 .option--highlighted {
   background: #404044;
@@ -4272,6 +4286,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -4362,6 +4377,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
 }
 .option--highlighted {
   background: #D8D8DB;

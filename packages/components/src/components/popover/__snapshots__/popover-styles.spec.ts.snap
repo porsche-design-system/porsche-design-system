@@ -4,6 +4,7 @@ exports[`getComponentCss() should return correct css for direction: bottom and t
 ":host {
   position: relative !important;
   display: inline-block !important;
+  color-scheme: light dark !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -123,6 +124,7 @@ exports[`getComponentCss() should return correct css for direction: bottom and t
 ":host {
   position: relative !important;
   display: inline-block !important;
+  color-scheme: light dark !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -242,6 +244,7 @@ exports[`getComponentCss() should return correct css for direction: left and the
 ":host {
   position: relative !important;
   display: inline-block !important;
+  color-scheme: light dark !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -361,6 +364,7 @@ exports[`getComponentCss() should return correct css for direction: left and the
 ":host {
   position: relative !important;
   display: inline-block !important;
+  color-scheme: light dark !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -480,6 +484,7 @@ exports[`getComponentCss() should return correct css for direction: right and th
 ":host {
   position: relative !important;
   display: inline-block !important;
+  color-scheme: light dark !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -599,6 +604,7 @@ exports[`getComponentCss() should return correct css for direction: right and th
 ":host {
   position: relative !important;
   display: inline-block !important;
+  color-scheme: light dark !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -718,6 +724,7 @@ exports[`getComponentCss() should return correct css for direction: top and them
 ":host {
   position: relative !important;
   display: inline-block !important;
+  color-scheme: light dark !important;
   vertical-align: top;
 }
 :host([hidden]) {
@@ -837,6 +844,7 @@ exports[`getComponentCss() should return correct css for direction: top and them
 ":host {
   position: relative !important;
   display: inline-block !important;
+  color-scheme: light dark !important;
   vertical-align: top;
 }
 :host([hidden]) {

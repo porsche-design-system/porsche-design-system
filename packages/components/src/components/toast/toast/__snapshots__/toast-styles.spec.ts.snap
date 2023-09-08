@@ -9,6 +9,7 @@ exports[`getComponentCss() should return correct css 1`] = `
   bottom: var(--p-internal-toast-position-bottom) !important;
   max-width: 42rem !important;
   z-index: 999999 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

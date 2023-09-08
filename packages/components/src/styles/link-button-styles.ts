@@ -3,6 +3,7 @@ import { buildResponsiveStyles, hasVisibleIcon, isHighContrastMode } from '../ut
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getInsetJssStyle,
@@ -10,6 +11,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from './';
 import {
   borderRadiusMedium,
@@ -72,6 +74,14 @@ export const getLinkButtonStyles = (
     variant,
     theme
   );
+  const {
+    textColor: textColorDark,
+    borderColor: borderColorDark,
+    borderColorHover: borderColorHoverDark,
+    backgroundColor: backgroundColorDark,
+    backgroundColorHover: backgroundColorHoverDark,
+  } = getVariantColors(variant, 'dark');
+
   const { focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
@@ -82,6 +92,7 @@ export const getLinkButtonStyles = (
         ...addImportantToEachRule({
           verticalAlign: 'top',
           outline: 0, // custom element is able to delegate the focus
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -127,8 +138,17 @@ export const getLinkButtonStyles = (
             backgroundColor: backgroundColorHover,
             borderColor: isHighContrastMode ? focusColor : borderColorHover,
             ...(!isPrimary && frostedGlassStyle),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              backgroundColor: backgroundColorHoverDark,
+              borderColor: borderColorHoverDark,
+            }),
           },
         })),
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        borderColor: borderColorDark,
+        backgroundColor: backgroundColorDark,
+        color: textColorDark,
+      }),
     },
     label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
     ...(hasIcon && {

@@ -4,6 +4,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 ":host {
   display: block !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -137,6 +138,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 ":host {
   display: block !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -271,6 +273,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 ":host {
   display: block !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -400,6 +403,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 ":host {
   display: block !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -528,6 +532,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 ":host {
   display: block !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -657,6 +662,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 ":host {
   display: block !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -786,6 +792,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 ":host {
   display: block !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -919,6 +926,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 ":host {
   display: block !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

@@ -11,7 +11,6 @@ export * from './Utilities';
 /* eslint-disable import/first */
 export * from './generated/CoreInitializer';
 export * from './generated/Overview';
-export * from './generated/OverviewFlaky';
 export * from './generated/OverviewNotifications';
 import { AccordionPage } from './generated/Accordion';
 import { BannerPage } from './generated/Banner';
@@ -52,6 +51,7 @@ import { SelectWrapperPage } from './generated/SelectWrapper';
 import { SpinnerPage } from './generated/Spinner';
 import { StepperHorizontalPage } from './generated/StepperHorizontal';
 import { SwitchPage } from './generated/Switch';
+import { TablePage } from './generated/Table';
 import { TabsPage } from './generated/Tabs';
 import { TabsBarPage } from './generated/TabsBar';
 import { TagPage } from './generated/Tag';
@@ -60,14 +60,14 @@ import { TextPage } from './generated/Text';
 import { TextareaWrapperPage } from './generated/TextareaWrapper';
 import { TextFieldWrapperPage } from './generated/TextFieldWrapper';
 import { TextListPage } from './generated/TextList';
-import { ToastBasicPage } from './generated/ToastBasic';
+import { ToastPage } from './generated/Toast';
 import { ToastBasicDarkPage } from './generated/ToastBasicDark';
 import { ToastBasicLongTextPage } from './generated/ToastBasicLongText';
 import { ToastBasicStateNeutralPage } from './generated/ToastBasicStateNeutral';
 import { ToastOffsetPage } from './generated/ToastOffset';
 import { ToastPrefixedPage } from './generated/ToastPrefixed';
 import { TypographyCyrilPage } from './generated/TypographyCyril';
-import { TypographyFallbackStrategyPage } from './generated/TypographyFallbackStrategy';
+import { TypographyFallbackPage } from './generated/TypographyFallback';
 import { TypographyGreekAndCopticPage } from './generated/TypographyGreekAndCoptic';
 import { TypographyLatinPage } from './generated/TypographyLatin';
 import { WordmarkPage } from './generated/Wordmark';
@@ -269,6 +269,11 @@ export const generatedRoutes: RouteType[] = [
     element: <SwitchPage />,
   },
   {
+    name: 'Table',
+    path: '/table',
+    element: <TablePage />,
+  },
+  {
     name: 'Tabs',
     path: '/tabs',
     element: <TabsPage />,
@@ -309,9 +314,9 @@ export const generatedRoutes: RouteType[] = [
     element: <TextareaWrapperPage />,
   },
   {
-    name: 'Toast Basic',
-    path: '/toast-basic',
-    element: <ToastBasicPage />,
+    name: 'Toast',
+    path: '/toast',
+    element: <ToastPage />,
   },
   {
     name: 'Toast Basic Dark',
@@ -344,9 +349,9 @@ export const generatedRoutes: RouteType[] = [
     element: <TypographyCyrilPage />,
   },
   {
-    name: 'Typography Fallback Strategy',
-    path: '/typography-fallback-strategy',
-    element: <TypographyFallbackStrategyPage />,
+    name: 'Typography Fallback',
+    path: '/typography-fallback',
+    element: <TypographyFallbackPage />,
   },
   {
     name: 'Typography Greek And Coptic',

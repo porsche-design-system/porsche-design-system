@@ -1,7 +1,7 @@
 import type { JssStyle } from 'jss';
 import { getMediaQueryMin, gridExtendedOffsetBase } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, addImportantToRule, hostHiddenStyles } from '../../../styles';
+import { addImportantToEachRule, addImportantToRule, colorSchemeStyles, hostHiddenStyles } from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
 
 const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
@@ -57,6 +57,7 @@ export const getComponentCss = (): string => {
           [cssVariablePositionBottomInternal]: `var(${cssVariablePositionBottom}, 64px)`,
           bottom: `var(${cssVariablePositionBottomInternal})`,
         },
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       '@keyframes in': getKeyframesMobile('in', cssVariablePositionBottomInternal),

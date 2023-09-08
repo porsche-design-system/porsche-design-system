@@ -10,6 +10,7 @@ import {
 import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getInsetJssStyle,
@@ -101,6 +102,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         ...addImportantToEachRule({
           position: 'relative',
           display: 'inline-block',
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
         verticalAlign: 'top',

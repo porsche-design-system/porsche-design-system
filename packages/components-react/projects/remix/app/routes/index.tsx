@@ -11,9 +11,6 @@ export default function Index(): JSX.Element {
           <Link to="/overview">Overview</Link>
         </li>
         <li>
-          <Link to="/overview-flaky">Overview Flaky</Link>
-        </li>
-        <li>
           <Link to="/accordion-layout-shift">Accordion Layout Shift</Link>
         </li>
       </ul>

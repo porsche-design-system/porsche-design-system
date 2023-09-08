@@ -1,9 +1,4 @@
 <style>
-  h2,
-  h4 {
-    color: deeppink;
-  }
-
   p-text {
     display: inline-flex;
     vertical-align: top;
@@ -11,15 +6,13 @@
     justify-content: center;
     margin: 4px;
     padding: 4px;
-    background: #f1f1f1;
+    background: rgba(125, 125, 125, 0.1);
     width: 36px;
     height: 36px;
   }
 </style>
 
-<div class="playground" title="should show typography in basic latin charset">
-  <h2>Porsche Next Latin</h2>
-  <h4>Range: U+0020-007F ("Basic Latin")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+0020-007F 'Basic Latin')">
   <p-text size="medium" align="center" title="U++0020 | Dec: 32"></p-text>
   <p-text size="medium" align="center" title="U++0021 | Dec: 33">!</p-text>
   <p-text size="medium" align="center" title="U++0022 | Dec: 34">"</p-text>
@@ -116,8 +109,9 @@
   <p-text size="medium" align="center" title="U++007D | Dec: 125">&#125;</p-text>
   <p-text size="medium" align="center" title="U++007E | Dec: 126">~</p-text>
   <p-text size="medium" align="center" title="U++007F | Dec: 127">␡</p-text>
+</div>
 
-  <h4>Range: U+0080-00FF ("Latin-1 Supplement")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+0080-00FF 'Latin-1 Supplement')">
   <p-text size="medium" align="center" title="U+0080 | Dec: 128"></p-text>
   <p-text size="medium" align="center" title="U+0081 | Dec: 129"></p-text>
   <p-text size="medium" align="center" title="U+0082 | Dec: 130"></p-text>
@@ -246,8 +240,9 @@
   <p-text size="medium" align="center" title="U+00FD | Dec: 253">ý</p-text>
   <p-text size="medium" align="center" title="U+00FE | Dec: 254">þ</p-text>
   <p-text size="medium" align="center" title="U+00FF | Dec: 255">ÿ</p-text>
+</div>
 
-  <h4>Range: U+0100-017F ("Latin Extended-A")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+0100-017F 'Latin Extended-A')">
   <p-text size="medium" align="center" title="U+0100 | Dec: 256">Ā</p-text>
   <p-text size="medium" align="center" title="U+0101 | Dec: 257">ā</p-text>
   <p-text size="medium" align="center" title="U+0102 | Dec: 258">Ă</p-text>
@@ -376,8 +371,9 @@
   <p-text size="medium" align="center" title="U+017D | Dec: 381">Ž</p-text>
   <p-text size="medium" align="center" title="U+017E | Dec: 382">ž</p-text>
   <p-text size="medium" align="center" title="U+017F | Dec: 383">ſ</p-text>
+</div>
 
-  <h4>Range: U+0180-024F ("Latin Extended-B")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+0180-024F 'Latin Extended-B')">
   <p-text size="medium" align="center" title="U+0180 | Dec: 384">ƀ</p-text>
   <p-text size="medium" align="center" title="U+0181 | Dec: 385">Ɓ</p-text>
   <p-text size="medium" align="center" title="U+0182 | Dec: 386">Ƃ</p-text>
@@ -506,8 +502,9 @@
   <p-text size="medium" align="center" title="U+01FD | Dec: 509">ǽ</p-text>
   <p-text size="medium" align="center" title="U+01FE | Dec: 510">Ǿ</p-text>
   <p-text size="medium" align="center" title="U+01FF | Dec: 511">ǿ</p-text>
+</div>
 
-  <h4>Range: U+0250-02AF ("IPA Extensions")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+0250-02AF 'IPA Extensions')">
   <p-text size="medium" align="center" title="U+0250 | Dec:592">ɐ</p-text>
   <p-text size="medium" align="center" title="U+0251 | Dec:593">ɑ</p-text>
   <p-text size="medium" align="center" title="U+0252 | Dec:594">ɒ</p-text>
@@ -604,8 +601,9 @@
   <p-text size="medium" align="center" title="U+02AD | Dec:685">ʭ</p-text>
   <p-text size="medium" align="center" title="U+02AE | Dec:686">ʮ</p-text>
   <p-text size="medium" align="center" title="U+02AF | Dec:687">ʯ</p-text>
+</div>
 
-  <h4>Range: U+02B0-02FF ("Spacing Modifier Letters")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+02B0-02FF 'Spacing Modifier Letters')">
   <p-text size="medium" align="center" title="U+02B0 | Dec:688">ʰ</p-text>
   <p-text size="medium" align="center" title="U+02B1 | Dec:689">ʱ</p-text>
   <p-text size="medium" align="center" title="U+02B2 | Dec:690">ʲ</p-text>
@@ -686,8 +684,12 @@
   <p-text size="medium" align="center" title="U+02FD | Dec:765">˽</p-text>
   <p-text size="medium" align="center" title="U+02FE | Dec:766">˾</p-text>
   <p-text size="medium" align="center" title="U+02FF | Dec:767">˿</p-text>
+</div>
 
-  <h4>Range: U+0300-036F ("Combining Diacritical Marks")</h4>
+<div
+  class="playground"
+  title="should show typography in basic latin charset (U+0300-036F 'Combining Diacritical Marks')"
+>
   <p-text size="medium" align="center" title="U+0300 | Dec:768">̀</p-text>
   <p-text size="medium" align="center" title="U+0301 | Dec:769">́</p-text>
   <p-text size="medium" align="center" title="U+0302 | Dec:770">̂</p-text>
@@ -800,8 +802,9 @@
   <p-text size="medium" align="center" title="U+036D | Dec:877">ͭ</p-text>
   <p-text size="medium" align="center" title="U+036E | Dec:878">ͮ</p-text>
   <p-text size="medium" align="center" title="U+036F | Dec:879">ͯ</p-text>
+</div>
 
-  <h4>Range: U+0E00-0E7F ("Thai")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+0E00-0E7F 'Thai')">
   <p-text size="medium" align="center" title="U+0E00 | Dec:3584">฀</p-text>
   <p-text size="medium" align="center" title="U+0E01 | Dec:3585">ก</p-text>
   <p-text size="medium" align="center" title="U+0E02 | Dec:3586">ข</p-text>
@@ -930,8 +933,9 @@
   <p-text size="medium" align="center" title="U+0E7D | Dec:3709">๽</p-text>
   <p-text size="medium" align="center" title="U+0E7E | Dec:3710">๾</p-text>
   <p-text size="medium" align="center" title="U+0E7F | Dec:3711">๿</p-text>
+</div>
 
-  <h4>Range: U+1E00-1EFF ("Latin Extended Additional")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+1E00-1EFF 'Latin Extended Additional')">
   <p-text size="medium" align="center" title="U+1E00 | Dec:7680">Ḁ</p-text>
   <p-text size="medium" align="center" title="U+1E01 | Dec:7681">ḁ</p-text>
   <p-text size="medium" align="center" title="U+1E02 | Dec:7682">Ḃ</p-text>
@@ -1188,8 +1192,9 @@
   <p-text size="medium" align="center" title="U+1EFD | Dec:7933">ỽ</p-text>
   <p-text size="medium" align="center" title="U+1EFE | Dec:7934">Ỿ</p-text>
   <p-text size="medium" align="center" title="U+1EFF | Dec:7935">ỿ</p-text>
+</div>
 
-  <h4>Range: U+2000-206F ("General Punctuation")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+2000-206F 'General Punctuation')">
   <p-text size="medium" align="center" title="U+2000 | Dec:8192"> </p-text>
   <p-text size="medium" align="center" title="U+2001 | Dec:8193"> </p-text>
   <p-text size="medium" align="center" title="U+2002 | Dec:8194">&ensp;</p-text>
@@ -1302,7 +1307,12 @@
   <p-text size="medium" align="center" title="U+206D | Dec:8301">⁭</p-text>
   <p-text size="medium" align="center" title="U+206E | Dec:8302">⁮</p-text>
   <p-text size="medium" align="center" title="U+206F | Dec:8303">⁯</p-text>
-  <h4>Range: U+2070-209F ("Superscripts and Subscripts")</h4>
+</div>
+
+<div
+  class="playground"
+  title="should show typography in basic latin charset (U+2070-209F 'Superscripts and Subscripts')"
+>
   <p-text size="medium" align="center" title="U+2070 | Dec:8304">⁰</p-text>
   <p-text size="medium" align="center" title="U+2071 | Dec:8305">ⁱ</p-text>
   <p-text size="medium" align="center" title="U+2072 | Dec:8306">⁲</p-text>
@@ -1351,8 +1361,9 @@
   <p-text size="medium" align="center" title="U+209D | Dec:8349">₝</p-text>
   <p-text size="medium" align="center" title="U+209E | Dec:8350">₞</p-text>
   <p-text size="medium" align="center" title="U+209F | Dec:8351">₟</p-text>
+</div>
 
-  <h4>Range: U+20A0-20CF ("Currency Symbols")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+20A0-20CF 'Currency Symbols')">
   <p-text size="medium" align="center" title="U+20A0 | Dec:8352">₠</p-text>
   <p-text size="medium" align="center" title="U+20A1 | Dec:8353">₡</p-text>
   <p-text size="medium" align="center" title="U+20A2 | Dec:8354">₢</p-text>
@@ -1401,8 +1412,9 @@
   <p-text size="medium" align="center" title="U+20CD | Dec:8397">⃍</p-text>
   <p-text size="medium" align="center" title="U+20CE | Dec:8398">⃎</p-text>
   <p-text size="medium" align="center" title="U+20CF | Dec:8399">⃏</p-text>
+</div>
 
-  <h4>Range: U+2100-214F ("Letterlike Symbols")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+2100-214F 'Letterlike Symbols')">
   <p-text size="medium" align="center" title="U+2100 | Dec:8448">℀</p-text>
   <p-text size="medium" align="center" title="U+2101 | Dec:8449">℁</p-text>
   <p-text size="medium" align="center" title="U+2102 | Dec:8450">ℂ</p-text>
@@ -1483,8 +1495,9 @@
   <p-text size="medium" align="center" title="U+214D | Dec:8525">⅍</p-text>
   <p-text size="medium" align="center" title="U+214E | Dec:8526">ⅎ</p-text>
   <p-text size="medium" align="center" title="U+214F | Dec:8527">⅏</p-text>
+</div>
 
-  <h4>Range: U+2150-218F ("Number Forms")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+2150-218F 'Number Forms')">
   <p-text size="medium" align="center" title="U+2150 | Dec:8528">⅐</p-text>
   <p-text size="medium" align="center" title="U+2151 | Dec:8529">⅑</p-text>
   <p-text size="medium" align="center" title="U+2152 | Dec:8530">⅒</p-text>
@@ -1549,8 +1562,9 @@
   <p-text size="medium" align="center" title="U+218D | Dec:8589">↍</p-text>
   <p-text size="medium" align="center" title="U+218E | Dec:8590">↎</p-text>
   <p-text size="medium" align="center" title="U+218F | Dec:8591">↏</p-text>
+</div>
 
-  <h4>Range: U+2190-21FF ("Arrows")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+2190-21FF 'Arrows')">
   <p-text size="medium" align="center" title="U+2190 | Dec:8592">←</p-text>
   <p-text size="medium" align="center" title="U+2191 | Dec:8593">↑</p-text>
   <p-text size="medium" align="center" title="U+2192 | Dec:8594">→</p-text>
@@ -1663,8 +1677,9 @@
   <p-text size="medium" align="center" title="U+21FD | Dec:8701">⇽</p-text>
   <p-text size="medium" align="center" title="U+21FE | Dec:8702">⇾</p-text>
   <p-text size="medium" align="center" title="U+21FF | Dec:8703">⇿</p-text>
+</div>
 
-  <h4>Range: U+2200-22FF ("Mathematical Operators")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+2200-22FF 'Mathematical Operators')">
   <p-text size="medium" align="center" title="U+2200 | Dec:8704">∀</p-text>
   <p-text size="medium" align="center" title="U+2201 | Dec:8705">∁</p-text>
   <p-text size="medium" align="center" title="U+2202 | Dec:8706">∂</p-text>
@@ -1921,8 +1936,9 @@
   <p-text size="medium" align="center" title="U+22FD | Dec:8957">⋽</p-text>
   <p-text size="medium" align="center" title="U+22FE | Dec:8958">⋾</p-text>
   <p-text size="medium" align="center" title="U+22FF | Dec:8959">⋿</p-text>
+</div>
 
-  <h4>Range: U+25A0-25FF ("Geometric Shapes")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+25A0-25FF 'Geometric Shapes')">
   <p-text size="medium" align="center" title="U+25A0 | Dec:9632">■</p-text>
   <p-text size="medium" align="center" title="U+25A1 | Dec:9633">□</p-text>
   <p-text size="medium" align="center" title="U+25A2 | Dec:9634">▢</p-text>
@@ -2019,8 +2035,9 @@
   <p-text size="medium" align="center" title="U+25FD | Dec:9725">◽</p-text>
   <p-text size="medium" align="center" title="U+25FE | Dec:9726">◾</p-text>
   <p-text size="medium" align="center" title="U+25FF | Dec:9727">◿</p-text>
+</div>
 
-  <h4>Range: U+2600-26FF ("Miscellaneous Symbols")</h4>
+<div class="playground" title="should show typography in basic latin charset (U+2600-26FF 'Miscellaneous Symbols')">
   <p-text size="medium" align="center" title="U+2600 | Dec:9728">☀</p-text>
   <p-text size="medium" align="center" title="U+2601 | Dec:9729">☁</p-text>
   <p-text size="medium" align="center" title="U+2602 | Dec:9730">☂</p-text>
@@ -2277,8 +2294,12 @@
   <p-text size="medium" align="center" title="U+26FD | Dec:9981">⛽</p-text>
   <p-text size="medium" align="center" title="U+26FE | Dec:9982">⛾</p-text>
   <p-text size="medium" align="center" title="U+26FF | Dec:9983">⛿</p-text>
+</div>
 
-  <h4>Range: U+FB00-FB4F ("Alphabetic Presentation Forms")</h4>
+<div
+  class="playground"
+  title="should show typography in basic latin charset (U+FB00-FB4F 'Alphabetic Presentation Forms')"
+>
   <p-text size="medium" align="center" title="U+FB00 | Dec:64256">ﬀ</p-text>
   <p-text size="medium" align="center" title="U+FB01 | Dec:64257">ﬁ</p-text>
   <p-text size="medium" align="center" title="U+FB02 | Dec:64258">ﬂ</p-text>
@@ -2359,8 +2380,12 @@
   <p-text size="medium" align="center" title="U+FB4D | Dec:64333">כֿ</p-text>
   <p-text size="medium" align="center" title="U+FB4E | Dec:64334">פֿ</p-text>
   <p-text size="medium" align="center" title="U+FB4F | Dec:64335">ﭏ</p-text>
+</div>
 
-  <h4>Range: U+FE70-FEFF ("Arabic Presentation Forms-B")</h4>
+<div
+  class="playground"
+  title="should show typography in basic latin charset (U+FE70-FEFF 'Arabic Presentation Forms-B')"
+>
   <p-text size="medium" align="center" title="U+FE70 | Dec:65136">ﹰ</p-text>
   <p-text size="medium" align="center" title="U+FE71 | Dec:65137">ﹱ</p-text>
   <p-text size="medium" align="center" title="U+FE72 | Dec:65138">ﹲ</p-text>

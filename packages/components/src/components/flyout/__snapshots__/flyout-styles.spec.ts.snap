@@ -11,6 +11,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -96,6 +97,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -183,6 +185,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -280,6 +283,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -365,6 +369,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -452,6 +457,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -548,6 +554,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -632,6 +639,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -726,6 +734,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -815,6 +824,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -914,6 +924,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -1010,6 +1021,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -1094,6 +1106,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -1188,6 +1201,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -1277,6 +1291,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;
@@ -1376,6 +1391,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  color-scheme: light dark !important;
 }
 :host::before {
   content: "" !important;

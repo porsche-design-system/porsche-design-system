@@ -15,6 +15,7 @@
 # testing
 /coverage
 /tests/vrt/results
+/tests/vrt/playwright/results
 
 # misc
 .DS_Store

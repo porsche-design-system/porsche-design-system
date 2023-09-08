@@ -7,6 +7,7 @@ exports[`getComponentCss() should return correct css for direction: "column" 1`]
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
   margin-right: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
+  color-scheme: light dark !important;
   flex-direction: column !important;
   flex-wrap: wrap !important;
 }
@@ -22,6 +23,7 @@ exports[`getComponentCss() should return correct css for direction: "column-reve
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
   margin-right: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
+  color-scheme: light dark !important;
   flex-direction: column-reverse !important;
   flex-wrap: wrap !important;
 }
@@ -37,6 +39,7 @@ exports[`getComponentCss() should return correct css for direction: "row" 1`] = 
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
   margin-right: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
+  color-scheme: light dark !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;
 }
@@ -52,6 +55,7 @@ exports[`getComponentCss() should return correct css for direction: "row-reverse
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
   margin-right: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
+  color-scheme: light dark !important;
   flex-direction: row-reverse !important;
   flex-wrap: wrap !important;
 }
@@ -67,6 +71,7 @@ exports[`getComponentCss() should return correct css for direction: {"base":"col
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
   margin-right: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
+  color-scheme: light dark !important;
   flex-direction: column !important;
   flex-wrap: wrap !important;
 }
@@ -112,6 +117,7 @@ exports[`getComponentCss() should return correct css for wrap: "nowrap" 1`] = `
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
   margin-right: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
+  color-scheme: light dark !important;
   flex-direction: row !important;
   flex-wrap: nowrap !important;
 }
@@ -127,6 +133,7 @@ exports[`getComponentCss() should return correct css for wrap: "wrap" 1`] = `
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
   margin-right: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
+  color-scheme: light dark !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;
 }
@@ -142,6 +149,7 @@ exports[`getComponentCss() should return correct css for wrap: {"base":"wrap","x
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
   margin-right: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
+  color-scheme: light dark !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;
 }

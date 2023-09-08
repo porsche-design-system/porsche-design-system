@@ -7,6 +7,7 @@ import {
   getInsetJssStyle,
   getResetInitialStylesForSlottedAnchor,
   getThemedColors,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { borderRadiusMedium, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
@@ -19,11 +20,21 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { focusColor } = getThemedColors(theme);
+  const { focusColor: focusColorDark } = getThemedColors('dark');
   const { linkColor } = getHighContrastColors();
+  const isPrimary = variant === 'primary';
 
   return getCss(
     mergeDeep(
       getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, theme),
+      {
+        icon: {
+          ...(isPrimary &&
+            !isHighContrastMode && {
+              filter: 'invert(1)',
+            }),
+        },
+      },
       hasSlottedAnchor && {
         ...(isHighContrastMode && {
           root: {
@@ -53,6 +64,9 @@ export const getComponentCss = (
             },
             '&(a:focus)::before': {
               border: `${borderWidthBase} solid ${focusColor}`,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                borderColor: focusColorDark,
+              }),
             },
             '&(a:focus:not(:focus-visible))::before': {
               border: 0,
