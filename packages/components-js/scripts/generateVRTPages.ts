@@ -145,7 +145,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
       const [, toastText] = (usesToast && script?.match(/text:\s?(['`].*?['`])/)) || [];
 
       const isIconPage = fileName === 'icon';
-      const usesOnInit = !!script && !isIconPage;
+      const usesOnInit = !!script && !isIconPage && (fileName === 'core-initializer' || usesToast);
       const usesSetAllReady = script?.includes('componentsReady()') && fileName === 'core-initializer';
 
       // extract template if there is any, replacing is framework specific
