@@ -14,7 +14,7 @@ import {
 import { PinCode } from './pin-code';
 
 describe('getStylesWithoutSlottedSelector()', () => {
-  it('should replace "::slotted()" from Styles objects selectors', () => {
+  it('should remove ::slotted() selector from Styles object keys', () => {
     const stylesWithSlottedSelector = {
       '::slotted(input)': {
         display: 'none',
@@ -44,8 +44,7 @@ describe('getStylesWithoutSlottedSelector()', () => {
 describe('warnAboutTransformedInitialValue()', () => {
   it('should call consoleWarn() with correct parameters', () => {
     const warningPrefix = '@Prop() "value" on component <p-pin-code>:';
-    const spy = jest.spyOn(consoleWarnUtils, 'consoleWarn');
-    jest.spyOn(global.console, 'warn').mockImplementation();
+    const spy = jest.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation();
 
     warnAboutTransformedInitialValue(4);
 
@@ -64,23 +63,8 @@ describe('warnAboutTransformedInitialValue()', () => {
 });
 
 describe('inputIsSingleDigit()', () => {
-  it('should return false if the provided string is not a single digit', () => {
-    const spy = jest.spyOn(pinCodeUtils, 'inputIsSingleDigit');
-
-    inputIsSingleDigit('12');
-    expect(spy).toReturnWith(false);
-
-    inputIsSingleDigit('abc');
-    expect(spy).toReturnWith(false);
-
-    inputIsSingleDigit('a');
-    expect(spy).toReturnWith(false);
-
-    inputIsSingleDigit('/^');
-    expect(spy).toReturnWith(false);
-
-    inputIsSingleDigit('^');
-    expect(spy).toReturnWith(false);
+  it.each<[string]>([['12'], ['abc'], ['a'], ['/^'], ['^']])('should return false for value: %s', (value) => {
+    expect(inputIsSingleDigit(value)).toBeFalsy();
   });
 
   it('should return true if the provided string is a single digit', () => {
@@ -92,29 +76,14 @@ describe('inputIsSingleDigit()', () => {
 });
 
 describe('inputConsistsOfDigits()', () => {
-  it('should return false if the provided string does not consist digits', () => {
-    const spy = jest.spyOn(pinCodeUtils, 'inputConsistsOfDigits');
+  it.each<[string]>([['1a'], ['a1'], ['1a2'], ['1^'], ['^2'], ['1^2']])(
+    'should return false for value: %s',
+    (value) => {
+      expect(inputConsistsOfDigits(value)).toBeFalsy();
+    }
+  );
 
-    inputConsistsOfDigits('1a');
-    expect(spy).toReturnWith(false);
-
-    inputConsistsOfDigits('a1');
-    expect(spy).toReturnWith(false);
-
-    inputConsistsOfDigits('1a2');
-    expect(spy).toReturnWith(false);
-
-    inputConsistsOfDigits('1^');
-    expect(spy).toReturnWith(false);
-
-    inputConsistsOfDigits('^2');
-    expect(spy).toReturnWith(false);
-
-    inputConsistsOfDigits('1^2');
-    expect(spy).toReturnWith(false);
-  });
-
-  it('should return true if the provided string does consist digits', () => {
+  it('should return true if the provided string does consist of digits', () => {
     const spy = jest.spyOn(pinCodeUtils, 'inputConsistsOfDigits');
 
     inputConsistsOfDigits('1234');
