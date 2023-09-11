@@ -65,7 +65,7 @@ export const validateGetComponentChunkLinksUsage = (): void => {
   Object.entries(usedTagNamesWithoutPreloadForVersions).forEach(([version, tagNames]) => {
     consoleWarn(
       `Usage of Porsche Design System v${version} component '${tagNames.join(', ')}' detected without preloading.`,
-      getAdditionalText('getComponentChunkLinks')
+      getValidatePartialErrorSecondaryText('getComponentChunkLinks')
     );
   });
 };
@@ -83,20 +83,27 @@ export const validateGetInitialStylesUsage = (): void => {
 };
 
 export const logPartialValidationWarning = (partialName: PartialName, prefix?: string): void => {
-  consoleWarn(getMainText(partialName, prefix), getAdditionalText(partialName));
+  consoleWarn(
+    getValidatePartialErrorPrimaryText(partialName, prefix),
+    getValidatePartialErrorSecondaryText(partialName)
+  );
 };
 
 export const throwPartialValidationError = (partialName: PartialName, prefix?: string): void => {
-  throwException(getMainText(partialName, prefix) + ' ' + getAdditionalText(partialName, true));
+  throwException(
+    getValidatePartialErrorPrimaryText(partialName, prefix) +
+      ' ' +
+      getValidatePartialErrorSecondaryText(partialName, true)
+  );
 };
 
-export const getMainText = (partialName: string, prefix?: string): string => {
+export const getValidatePartialErrorPrimaryText = (partialName: string, prefix?: string): string => {
   return `The Porsche Design System ${
     prefix ? `with prefix: '${prefix}' ` : ''
   }is used without using the ${partialName}() partial.`;
 };
 
-export const getAdditionalText = (partialName: string, required?: boolean): string => {
+export const getValidatePartialErrorSecondaryText = (partialName: string, required?: boolean): string => {
   const partialUrl = partialName
     .replace('get', '')
     .replace(/([a-z])([A-Z])/g, '$1-$2') // camelCase to param-case
