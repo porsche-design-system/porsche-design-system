@@ -45,7 +45,7 @@ export default new Vuex.Store({
     setSelectedFramework(state: State, payload: Framework): void {
       state.selectedFramework = payload;
     },
-    setPlaygroundTheme(state: State, payload: Theme): void {
+    setPlaygroundTheme(state: State, payload: Exclude<Theme, 'auto'>): void {
       localStorage.setItem('playgroundTheme', payload);
       state.playgroundTheme = payload;
     },
@@ -71,7 +71,7 @@ export default new Vuex.Store({
     selectedFramework(state: State): Framework {
       return state.selectedFramework;
     },
-    playgroundTheme(state: State): Theme {
+    playgroundTheme(state: State): Exclude<Theme, 'auto'> {
       return state.playgroundTheme;
     },
     platformTheme(state: State): Theme {
