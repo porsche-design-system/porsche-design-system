@@ -1,15 +1,15 @@
-import { getVisualRegressionStatesTester, vrtTest } from '@porsche-design-system/shared/testing';
-// TODO: we should move CDP to either shared package or maybe even better to visual-regression-tester itself
-import { forceFocusState } from '../../../../../components-js/tests/vrt/puppeteer/helpers';
+import { expect, test } from '@playwright/test';
+import { forceFocusState } from '../../../../../components-js/tests/vrt/playwright/helpers';
 
-const id = 'styles-focus';
-it('should have no visual regression', async () => {
-  expect(
-    await vrtTest(getVisualRegressionStatesTester(), id, `/${id}`, {
-      scenario: async (page) => {
-        await forceFocusState(page, 'a');
-        await forceFocusState(page, 'button');
-      },
-    })
-  ).toBeFalsy();
+const style = 'styles-focus';
+const viewportWidth = 1000;
+
+test.describe(style, async () => {
+  test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
+    await page.goto(`/${style}`);
+    await page.setViewportSize({ width: viewportWidth, height: 600 });
+    await forceFocusState(page, 'a');
+    await forceFocusState(page, 'button');
+    await expect(page.locator('#app')).toHaveScreenshot(`${style}-${viewportWidth}.png`);
+  });
 });

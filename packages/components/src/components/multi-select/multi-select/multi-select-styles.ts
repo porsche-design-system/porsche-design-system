@@ -3,11 +3,13 @@ import { buildResponsiveStyles, getCss, SelectDropdownDirectionInternal } from '
 import {
   addImportantToEachRule,
   addImportantToRule,
+  colorSchemeStyles,
   getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -23,7 +25,7 @@ import { getThemedFormStateColors } from '../../../styles/form-state-color-style
 import type { FormState } from '../../../utils/form/form-state';
 import { getLabelStyles } from '../../../styles/form-styles';
 import { getPlaceholderJssStyle } from '../../../styles/placeholder';
-import { getNoResultsOptionJssStyle, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/select';
+import { getNoResultsOptionJssStyle, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
@@ -44,7 +46,18 @@ export const getComponentCss = (
 ): string => {
   const { primaryColor, contrastMediumColor, contrastHighColor, backgroundColor, disabledColor } =
     getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    contrastMediumColor: contrastMediumColorDark,
+    contrastHighColor: contrastHighColorDark,
+    backgroundColor: backgroundColorDark,
+    disabledColor: disabledColorDark,
+  } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
+    'dark',
+    state
+  );
   const isDirectionDown = direction === 'down';
 
   return getCss({
@@ -53,6 +66,7 @@ export const getComponentCss = (
         ':host': {
           display: 'block',
           position: 'relative',
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         },
         ...(isWithinForm && {
@@ -71,19 +85,25 @@ export const getComponentCss = (
     ...getListStyles(isOpen, direction, theme),
     'input-container': {
       display: 'flex',
-      background: backgroundColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states
       cursor: 'text',
       ...hoverMediaQuery({
         '&:hover:not(.disabled)': {
           borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark,
+          }),
         },
       }),
       ...(!isDisabled && {
         '&:focus-within': {
           borderColor: primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: primaryColorDark,
+          }),
         },
       }),
+      background: backgroundColor,
       border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
       ...(isOpen && {
@@ -97,6 +117,18 @@ export const getComponentCss = (
         color: disabledColor,
         borderColor: disabledColor,
         WebkitTextFillColor: disabledColor,
+      }),
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: backgroundColorDark,
+        border: `${borderWidthBase} solid ${isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark}`,
+        ...(isOpen && {
+          [isDirectionDown ? 'borderBottom' : 'borderTop']: addImportantToRule(`1px solid ${contrastMediumColorDark}`),
+        }),
+        ...(isDisabled && {
+          color: disabledColorDark,
+          borderColor: disabledColorDark,
+          WebkitTextFillColor: disabledColorDark,
+        }),
       }),
     },
     ...buildResponsiveStyles(hideLabel, (isHidden) =>
@@ -130,6 +162,9 @@ export const getComponentCss = (
     'no-results': {
       padding: `${spacingStaticSmall} 12px`,
       color: contrastHighColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastHighColorDark,
+      }),
       boxSizing: 'border-box',
       ...getNoResultsOptionJssStyle(),
     },
@@ -141,6 +176,7 @@ export const getComponentCss = (
 
 const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
   const { primaryColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, disabledColor: disabledColorDark } = getThemedColors('dark');
 
   return {
     input: {
@@ -148,7 +184,6 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
       minWidth: 0,
       height: `calc(${INPUT_HEIGHT_CALC})`, // we need 6px additionally so input height becomes 50px
       font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
-      color: primaryColor,
       padding: `${inputYPadding} ${spacingStaticMedium}`,
       boxSizing: 'border-box',
       border: 0, // done via container
@@ -160,8 +195,16 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
       '&:disabled': {
         cursor: 'not-allowed',
       },
-      '&:not(:focus)': getPlaceholderJssStyle({ color: primaryColor, opacity: 1 }), // Opacity fixes placeholder being shown lighter in firefox
+      color: primaryColor,
       ...(isDisabled && getPlaceholderJssStyle({ color: disabledColor })),
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: primaryColorDark,
+        ...(isDisabled && getPlaceholderJssStyle({ color: disabledColorDark })),
+      }),
+      '&:not(:focus)': {
+        ...getPlaceholderJssStyle({ color: primaryColor, opacity: 1 }),
+        ...prefersColorSchemeDarkMediaQuery(theme, getPlaceholderJssStyle({ color: primaryColorDark, opacity: 1 })),
+      }, // Opacity fixes placeholder being shown lighter in firefox
     },
   };
 };
@@ -169,6 +212,7 @@ const getInputStyles = (isDisabled: boolean, theme: Theme): Styles => {
 const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionInternal, theme: Theme): Styles => {
   const isDirectionDown = direction === 'down';
   const { primaryColor, backgroundColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
 
   return {
     listbox: {
@@ -178,7 +222,6 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
       flexDirection: 'column',
       gap: spacingStaticSmall,
       padding: '6px',
-      background: backgroundColor,
       ...textSmallStyle,
       zIndex: 10,
       left: 0,
@@ -190,6 +233,7 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
       maxHeight: `${8.5 * (MULTI_SELECT_OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
       overflowY: 'auto',
       WebkitOverflowScrolling: 'touch',
+      background: backgroundColor,
       border: `2px solid ${primaryColor}`,
       [isDirectionDown ? 'borderTop' : 'borderBottom']: 'none',
       borderRadius: borderRadiusSmall,
@@ -199,6 +243,10 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
       scrollbarColor: 'auto', // firefox
       transition: getTransition('border-color'),
       transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: backgroundColorDark,
+        borderColor: primaryColorDark,
+      }),
     },
   };
 };

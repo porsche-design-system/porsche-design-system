@@ -5,6 +5,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -55,6 +56,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  filter: invert(1);
 }
 @media(min-width:480px) {
   .root {
@@ -135,6 +137,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -185,6 +188,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  filter: invert(1);
 }
 @media(hover:hover) {
   .root:hover {
@@ -200,6 +204,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -265,6 +270,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  filter: invert(1);
 }
 @media(hover:hover) {
   .root:hover {
@@ -280,6 +286,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -345,6 +352,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  filter: invert(1);
 }
 @media(hover:hover) {
   .root:hover {
@@ -360,6 +368,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -442,6 +451,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -524,6 +534,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -606,6 +617,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -688,6 +700,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -749,6 +762,9 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   width: auto;
   height: auto;
   text-indent: 0;
+}
+.icon {
+  filter: invert(1);
 }
 @media(hover:hover) {
   .root:hover {

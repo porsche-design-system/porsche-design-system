@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "4:3", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false, hasGradient: true and isDisabled: false 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -84,6 +85,7 @@ p {
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "9:16", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false, hasGradient: false and isDisabled: false 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -164,6 +166,7 @@ p {
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "16:9", size: "inherit", weight: "regular", background: light, align: top, isCompact: true, hasGradient: false and isDisabled: true 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -239,6 +242,7 @@ p {
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, size: {"base":"inherit","xs":"default","s":"inherit","m":"default","l":"inherit","xl":"default"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, background: light, align: top, isCompact: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false}, hasGradient: true and isDisabled: false 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -439,6 +443,7 @@ p {
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: true, aspectRatio: "1:1", size: "inherit", weight: "regular", background: light, align: bottom, isCompact: false, hasGradient: true and isDisabled: true 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -513,6 +518,7 @@ p {
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: true, aspectRatio: "3:4", size: "default", weight: "semi-bold", background: dark, align: top, isCompact: false, hasGradient: true and isDisabled: false 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

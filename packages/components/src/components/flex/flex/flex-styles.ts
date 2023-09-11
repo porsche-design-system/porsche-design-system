@@ -7,7 +7,7 @@ import type {
   FlexWrap,
 } from './flex-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../../styles';
 import type { BreakpointCustomizable } from '../../../types';
 
 export const getComponentCss = (
@@ -22,6 +22,7 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule(
         mergeDeep(
+          colorSchemeStyles,
           hostHiddenStyles,
           buildResponsiveStyles(inline, (inlineResponsive: FlexInline) => ({
             display: inlineResponsive ? 'inline-flex' : 'flex',

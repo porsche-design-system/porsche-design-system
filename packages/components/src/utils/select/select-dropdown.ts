@@ -1,5 +1,5 @@
 import { INPUT_HEIGHT } from '../../styles/form-styles';
-import { OPTION_HEIGHT } from '../../styles/select/option-styles';
+import { OPTION_HEIGHT } from '../../styles/option-styles';
 
 export const SELECT_DROPDOWN_DIRECTIONS_INTERNAL = ['down', 'up'] as const;
 export type SelectDropdownDirectionInternal = (typeof SELECT_DROPDOWN_DIRECTIONS_INTERNAL)[number];

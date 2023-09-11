@@ -4,6 +4,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: block;
   width: 100%;
 }
@@ -230,6 +231,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -389,6 +391,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -466,6 +469,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -543,6 +547,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -639,6 +644,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -716,6 +722,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -792,6 +799,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -868,6 +876,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -963,6 +972,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: block;
   width: 100%;
 }
@@ -1042,6 +1052,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: block;
   width: 100%;
 }
@@ -1121,6 +1132,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;
@@ -1177,6 +1189,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block;
   width: auto;
   vertical-align: top;

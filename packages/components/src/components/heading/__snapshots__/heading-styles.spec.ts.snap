@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css for size: "inherit", align: center, color: inherit, ellipsis: true and theme: dark 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -43,6 +44,7 @@ exports[`getComponentCss() should return correct css for size: "inherit", align:
 exports[`getComponentCss() should return correct css for size: "large", align: center, color: inherit, ellipsis: true and theme: dark 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -83,6 +85,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: c
 exports[`getComponentCss() should return correct css for size: "medium", align: center, color: inherit, ellipsis: true and theme: dark 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -123,6 +126,7 @@ exports[`getComponentCss() should return correct css for size: "medium", align: 
 exports[`getComponentCss() should return correct css for size: "small", align: center, color: inherit, ellipsis: true and theme: dark 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -163,6 +167,7 @@ exports[`getComponentCss() should return correct css for size: "small", align: c
 exports[`getComponentCss() should return correct css for size: "x-large", align: left, color: primary, ellipsis: false and theme: light 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -200,6 +205,7 @@ exports[`getComponentCss() should return correct css for size: "x-large", align:
 exports[`getComponentCss() should return correct css for size: "xx-large", align: left, color: primary, ellipsis: false and theme: light 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -237,6 +243,7 @@ exports[`getComponentCss() should return correct css for size: "xx-large", align
 exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"large","m":"x-large","l":"xx-large","xl":"large"}, align: right, color: inherit, ellipsis: false and theme: dark 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

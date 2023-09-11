@@ -9,6 +9,8 @@ import {
   getHighContrastColors,
   getThemedColors,
   hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
+  colorSchemeStyles,
 } from '../../styles';
 import {
   borderRadiusLarge,
@@ -64,6 +66,11 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor, focusColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    contrastMediumColor: contrastMediumColorDark,
+    focusColor: focusColorDark,
+  } = getThemedColors('dark');
   const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
 
@@ -74,6 +81,7 @@ export const getComponentCss = (
         gap: spacingFluidMedium,
         flexDirection: 'column',
         boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       '::slotted(*)': {
@@ -81,6 +89,9 @@ export const getComponentCss = (
       },
       '::slotted(*:focus-visible)': addImportantToEachRule({
         outline: `${borderWidthBase} solid ${focusColor}`,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          outlineColor: focusColorDark,
+        }),
         outlineOffset: '2px',
       }),
       [selectorHeading]: addImportantToEachRule({
@@ -95,6 +106,9 @@ export const getComponentCss = (
       }),
       [`${selectorHeading},${selectorDescription}`]: addImportantToEachRule({
         color: primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
+        }),
         [mediaQueryS]: isHeaderAlignCenter
           ? {
               gridColumn: 2,
@@ -203,7 +217,16 @@ export const getComponentCss = (
       },
       bullet: {
         borderRadius: borderRadiusSmall,
-        background: isHighContrastMode ? canvasTextColor : contrastMediumColor,
+        ...(isHighContrastMode
+          ? {
+              background: canvasTextColor,
+            }
+          : {
+              background: contrastMediumColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                background: contrastMediumColorDark,
+              }),
+            }),
         ...(isInfinitePagination
           ? {
               width: '0px',
@@ -240,7 +263,16 @@ export const getComponentCss = (
         },
       }),
       [`${bulletActiveClass}`]: {
-        background: isHighContrastMode ? canvasTextColor : primaryColor,
+        ...(isHighContrastMode
+          ? {
+              background: canvasTextColor,
+            }
+          : {
+              background: primaryColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                background: primaryColorDark,
+              }),
+            }),
         height: paginationBulletSize,
         width: addImportantToRule(paginationActiveBulletSize),
         ...(isInfinitePagination && {

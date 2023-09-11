@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getTransition, hostHiddenStyles } from '../../../styles';
+import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles } from '../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
@@ -25,6 +25,7 @@ export const getComponentCss = (
     '@global': addImportantToEachRule({
       ':host': {
         display: 'block',
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       },
       ...getBaseChildStyles('select', state, theme, {

@@ -8,7 +8,7 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 
 const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
@@ -65,6 +65,7 @@ export const getComponentCss = (isOpen: boolean): string => {
           left: gridExtendedOffsetXXL,
           right: gridExtendedOffsetXXL,
         },
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
     },

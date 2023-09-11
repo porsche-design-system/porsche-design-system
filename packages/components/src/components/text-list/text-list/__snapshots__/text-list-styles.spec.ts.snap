@@ -4,6 +4,7 @@ exports[`getComponentCss() should return correct css for type: alphabetically an
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -12,10 +13,10 @@ ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #FBFCFF;
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-ordered-padding-left,1.5rem);
   list-style-type: none;
+  color: #FBFCFF;
 }
 ::slotted(*) {
   --p-internal-text-list-padding-top: 4px !important;
@@ -38,6 +39,7 @@ exports[`getComponentCss() should return correct css for type: alphabetically an
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -46,10 +48,10 @@ ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #010205;
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-ordered-padding-left,1.5rem);
   list-style-type: none;
+  color: #010205;
 }
 ::slotted(*) {
   --p-internal-text-list-padding-top: 4px !important;
@@ -72,6 +74,7 @@ exports[`getComponentCss() should return correct css for type: numbered and them
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -80,10 +83,10 @@ ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #FBFCFF;
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-ordered-padding-left,1.5rem);
   list-style-type: none;
+  color: #FBFCFF;
 }
 ::slotted(*) {
   --p-internal-text-list-padding-top: 4px !important;
@@ -106,6 +109,7 @@ exports[`getComponentCss() should return correct css for type: numbered and them
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -114,10 +118,10 @@ ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #010205;
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-ordered-padding-left,1.5rem);
   list-style-type: none;
+  color: #010205;
 }
 ::slotted(*) {
   --p-internal-text-list-padding-top: 4px !important;
@@ -140,6 +144,7 @@ exports[`getComponentCss() should return correct css for type: unordered and the
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -148,10 +153,10 @@ ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #FBFCFF;
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-unordered-padding-left,.375rem);
   list-style-type: var(--p-internal-text-list-list-style-type,'•');
+  color: #FBFCFF;
 }
 ::slotted(*) {
   --p-internal-text-list-padding-top: 4px !important;
@@ -166,6 +171,7 @@ exports[`getComponentCss() should return correct css for type: unordered and the
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -174,10 +180,10 @@ ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  color: #010205;
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) var(--p-internal-text-list-unordered-padding-left,.375rem);
   list-style-type: var(--p-internal-text-list-list-style-type,'•');
+  color: #010205;
 }
 ::slotted(*) {
   --p-internal-text-list-padding-top: 4px !important;
