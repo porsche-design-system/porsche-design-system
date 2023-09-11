@@ -5,6 +5,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -153,6 +154,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -267,6 +269,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -371,6 +374,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -485,6 +489,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -599,6 +604,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -713,6 +719,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -826,6 +833,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -947,6 +955,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 2) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1060,6 +1069,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1163,6 +1173,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1277,6 +1288,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1390,6 +1402,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1503,6 +1516,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1616,6 +1630,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1730,6 +1745,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1834,6 +1850,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1948,6 +1965,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2062,6 +2080,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2176,6 +2195,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2289,6 +2309,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2392,6 +2413,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2506,6 +2528,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2618,6 +2641,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2720,6 +2744,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2833,6 +2858,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2946,6 +2972,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3049,6 +3076,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3163,6 +3191,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3266,6 +3295,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

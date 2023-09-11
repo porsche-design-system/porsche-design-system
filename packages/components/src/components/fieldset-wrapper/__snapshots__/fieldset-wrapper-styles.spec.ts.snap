@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css for state: error, labelSize: medium, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -30,6 +31,7 @@ fieldset {
 exports[`getComponentCss() should return correct css for state: error, labelSize: medium, hasLabel: false and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -57,6 +59,7 @@ fieldset {
 exports[`getComponentCss() should return correct css for state: none, labelSize: medium, hasLabel: false and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -83,6 +86,7 @@ fieldset {
 exports[`getComponentCss() should return correct css for state: none, labelSize: medium, hasLabel: true and theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -115,6 +119,7 @@ legend {
 exports[`getComponentCss() should return correct css for state: none, labelSize: medium, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -147,6 +152,7 @@ legend {
 exports[`getComponentCss() should return correct css for state: none, labelSize: small, hasLabel: false and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -173,6 +179,7 @@ fieldset {
 exports[`getComponentCss() should return correct css for state: none, labelSize: small, hasLabel: true and theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -205,6 +212,7 @@ legend {
 exports[`getComponentCss() should return correct css for state: none, labelSize: small, hasLabel: true and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -237,6 +245,7 @@ legend {
 exports[`getComponentCss() should return correct css for state: success, labelSize: medium, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -264,6 +273,7 @@ fieldset {
 exports[`getComponentCss() should return correct css for state: success, labelSize: medium, hasLabel: false and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

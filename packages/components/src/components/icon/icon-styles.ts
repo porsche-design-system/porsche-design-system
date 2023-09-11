@@ -10,7 +10,13 @@ import {
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
 } from '@porsche-design-system/utilities-v2';
-import { addImportantToEachRule, hostHiddenStyles, getSchemedHighContrastMediaQuery } from '../../styles';
+import {
+  addImportantToEachRule,
+  hostHiddenStyles,
+  getSchemedHighContrastMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+  colorSchemeStyles,
+} from '../../styles';
 import type { IconColor, IconColorDeprecated } from './icon-utils';
 import {
   filterDarkContrastHigh,
@@ -42,29 +48,34 @@ const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'x-large': fontSizeTextXLarge,
 };
 
-const filter: Record<Theme, Record<Exclude<IconColor, IconColorDeprecated | 'inherit'>, string>> = {
-  light: {
-    primary: filterLightPrimary,
-    'state-disabled': filterLightDisabled,
-    'contrast-low': filterLightContrastLow,
-    'contrast-medium': filterLightContrastMedium,
-    'contrast-high': filterLightContrastHigh,
-    'notification-success': filterLightNotificationSuccess,
-    'notification-warning': filterLightNotificationWarning,
-    'notification-error': filterLightNotificationError,
-    'notification-info': filterLightNotificationInfo,
-  },
-  dark: {
-    primary: filterDarkPrimary,
-    'state-disabled': filterDarkDisabled,
-    'contrast-low': filterDarkContrastLow,
-    'contrast-medium': filterDarkContrastMedium,
-    'contrast-high': filterDarkContrastHigh,
-    'notification-success': filterDarkNotificationSuccess,
-    'notification-warning': filterDarkNotificationWarning,
-    'notification-error': filterDarkNotificationError,
-    'notification-info': filterDarkNotificationInfo,
-  },
+const filterLight: Record<Exclude<IconColor, IconColorDeprecated | 'inherit'>, string> = {
+  primary: filterLightPrimary,
+  'state-disabled': filterLightDisabled,
+  'contrast-low': filterLightContrastLow,
+  'contrast-medium': filterLightContrastMedium,
+  'contrast-high': filterLightContrastHigh,
+  'notification-success': filterLightNotificationSuccess,
+  'notification-warning': filterLightNotificationWarning,
+  'notification-error': filterLightNotificationError,
+  'notification-info': filterLightNotificationInfo,
+};
+
+const filterDark: Record<Exclude<IconColor, IconColorDeprecated | 'inherit'>, string> = {
+  primary: filterDarkPrimary,
+  'state-disabled': filterDarkDisabled,
+  'contrast-low': filterDarkContrastLow,
+  'contrast-medium': filterDarkContrastMedium,
+  'contrast-high': filterDarkContrastHigh,
+  'notification-success': filterDarkNotificationSuccess,
+  'notification-warning': filterDarkNotificationWarning,
+  'notification-error': filterDarkNotificationError,
+  'notification-info': filterDarkNotificationInfo,
+};
+
+const filterMap: Record<Theme, Record<Exclude<IconColor, IconColorDeprecated | 'inherit'>, string>> = {
+  auto: filterLight,
+  light: filterLight,
+  dark: filterDark,
 };
 
 const forceRerenderAnimationStyle = {
@@ -92,7 +103,10 @@ export const getComponentCss = (
       ':host': {
         display: 'inline-block',
         verticalAlign: 'top',
-        ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
       img: {
         display: 'block', // without display, img tag gets some extra spacing
@@ -100,14 +114,17 @@ export const getComponentCss = (
         padding: 0,
         pointerEvents: 'none', // disable dragging/ghosting of images
         ...(!isColorInherit && {
-          filter: filter[theme][color],
+          filter: filterMap[theme][color],
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            filter: filterMap.dark[color],
+          }),
           ...(isHighContrastMode &&
             getSchemedHighContrastMediaQuery(
               {
-                filter: filter.light[color],
+                filter: filterMap.light[color],
               },
               {
-                filter: filter.dark[color],
+                filter: filterMap.dark[color],
               }
             )),
           WebkitAnimation: `${isDark ? `${keyFramesDark}-${color}` : `${keyFramesLight}-${color}`} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.

@@ -10,14 +10,7 @@ export type ExtendedRoute = Route & {
 };
 
 export const routes: ExtendedRoute[] = [
-  ...[
-    {
-      name: 'Table',
-      path: 'table',
-      component: fromPages.TableComponent,
-    },
-    ...fromPages.generatedRoutes,
-  ].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())),
+  ...[...fromPages.generatedRoutes].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())),
   {
     name: '---',
     path: '---',
@@ -28,11 +21,6 @@ export const routes: ExtendedRoute[] = [
     name: 'Overview',
     path: 'overview',
     component: fromPages.OverviewComponent,
-  },
-  {
-    name: 'Overview Flaky',
-    path: 'overview-flaky',
-    component: fromPages.OverviewFlakyComponent,
   },
   {
     name: 'Overview Notifications',
@@ -119,6 +107,21 @@ export const routes: ExtendedRoute[] = [
     name: 'Modal Example Accessibility',
     path: 'modal-example-accessibility',
     component: fromExamples.ModalExampleAccessibilityComponent,
+  },
+  {
+    name: 'Multi-Select Example',
+    path: 'multi-select-example',
+    component: fromExamples.MultiSelectExampleComponent,
+  },
+  {
+    name: 'Multi-Select Example Controlled',
+    path: 'multi-select-example-controlled',
+    component: fromExamples.MultiSelectExampleControlledComponent,
+  },
+  {
+    name: 'Multi-Select Example Dynamic',
+    path: 'multi-select-example-dynamic',
+    component: fromExamples.MultiSelectExampleDynamicComponent,
   },
   {
     name: 'Scroller Example',

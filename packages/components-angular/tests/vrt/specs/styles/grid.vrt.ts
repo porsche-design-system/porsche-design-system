@@ -1,7 +1,13 @@
-import { furtherExtendedViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
+import { expect, test } from '@playwright/test';
 
-const id = 'styles-grid';
-// TODO: Angular/SCSS version renders slightly different compared to React/JSS
-xit.each(furtherExtendedViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(await vrtTest(getVisualRegressionTester(viewport), id, `/${id}`)).toBeFalsy();
+const style = 'styles-grid';
+
+test.describe(style, async () => {
+  [320, 480, 760, 1300, 1760, 1920, 2560, 3000].forEach((viewportWidth) => {
+    test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
+      await page.goto(`/${style}`);
+      await page.setViewportSize({ width: viewportWidth, height: 600 });
+      await expect(page.locator('#app')).toHaveScreenshot(`${style}-${viewportWidth}.png`);
+    });
+  });
 });

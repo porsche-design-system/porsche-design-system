@@ -9,6 +9,7 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   padding: 16px !important;
   background: #3A0F0F !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -59,6 +60,7 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   padding: 16px !important;
   background: #FFE2E4 !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -109,6 +111,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -159,6 +162,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -209,6 +213,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -259,6 +264,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -309,6 +315,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -362,6 +369,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -415,6 +423,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -468,6 +477,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -521,6 +531,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -571,6 +582,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -621,6 +633,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -671,6 +684,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -721,6 +735,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -774,6 +789,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -827,6 +843,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -880,6 +897,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -933,6 +951,7 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   padding: 16px !important;
   background: #003320 !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -983,6 +1002,7 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   padding: 16px !important;
   background: #E4FFEC !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1033,6 +1053,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   padding: 16px !important;
   background: #362B0A !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1083,6 +1104,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   padding: 16px !important;
   background: #FFF4D2 !important;
   border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, getTransition, hostHiddenStyles } from '../../../styles';
+import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles } from '../../../styles';
 import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
@@ -10,9 +10,8 @@ import {
   fontLineHeight,
   spacingStaticMedium,
   spacingStaticSmall,
-} from '../../../../../utilities/projects/utilities';
+} from '@porsche-design-system/utilities-v2';
 
-export const OPTION_HEIGHT = 40; // optgroups are higher and ignored
 export const ICON_SPACE = `${24 + 13 * 2 + 2}px`; // 24px = icon width, 13px * 2 = padding, 2px = border
 
 export const getComponentCss = (
@@ -26,6 +25,7 @@ export const getComponentCss = (
     '@global': addImportantToEachRule({
       ':host': {
         display: 'block',
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       },
       ...getBaseChildStyles('select', state, theme, {

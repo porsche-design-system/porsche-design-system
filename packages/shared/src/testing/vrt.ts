@@ -106,6 +106,7 @@ type VRTestOptions = TestOptions & {
   javaScriptEnabled?: boolean;
   forcedColorsEnabled?: boolean;
   prefersColorScheme?: 'light' | 'dark';
+  forceComponentTheme?: 'light' | 'dark' | 'auto';
 };
 
 export const vrtTest = (
@@ -114,11 +115,21 @@ export const vrtTest = (
   url: string,
   options?: VRTestOptions
 ): Promise<boolean> => {
-  const { scenario, scalePageFontSize, javaScriptEnabled, forcedColorsEnabled, prefersColorScheme, ...otherOptions } = {
+  const {
+    scenario,
+    scalePageFontSize,
+    javaScriptEnabled,
+    forcedColorsEnabled,
+    prefersColorScheme,
+    forceComponentTheme,
+    ...otherOptions
+  } = {
     scenario: undefined,
     scalePageFontSize: false,
     javaScriptEnabled: true,
     forcedColorsEnabled: false,
+    prefersColorScheme: 'light',
+    forceComponentTheme: undefined,
     ...options,
   };
   const { baseUrl } = customOptions || defaultOptions;
@@ -149,7 +160,7 @@ export const vrtTest = (
       await cdpSession.send('Emulation.setEmulatedMedia', {
         features: [
           { name: 'forced-colors', value: forcedColorsEnabled ? 'active' : 'none' },
-          { name: 'prefers-color-scheme', value: prefersColorScheme || 'light' },
+          { name: 'prefers-color-scheme', value: prefersColorScheme },
         ],
       });
 
@@ -157,6 +168,16 @@ export const vrtTest = (
 
       // componentsReady is undefined in utilities package
       await page.evaluate(() => (window as any).componentsReady?.());
+
+      if (forceComponentTheme) {
+        await page.evaluate((theme) => {
+          document.querySelectorAll('*').forEach((el: any) => el.setAttribute('theme', theme));
+          document.querySelectorAll('.playground').forEach((el) => {
+            el.classList.remove('light', 'dark', 'auto');
+            el.classList.add(theme);
+          });
+        }, forceComponentTheme);
+      }
 
       if (scenario) {
         await scenario(page);

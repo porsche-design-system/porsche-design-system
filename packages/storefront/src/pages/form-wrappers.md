@@ -24,6 +24,7 @@ type Variation = {
   tagName: TagName;
   child: string;
   attributes?: string;
+  isCustomElement?: boolean
 };
 
 const variations: Variation[] = [
@@ -31,6 +32,7 @@ const variations: Variation[] = [
   { tagName: 'p-radio-button-wrapper', child: '<input type="radio" />' },
   { tagName: 'p-select-wrapper', child: '<select><option>Option 1</option><option>Option 2</option></select>' },
   { tagName: 'p-select-wrapper', child: '<select><option>Option 1</option><option>Option 2</option></select>', attributes: 'native' },
+  { tagName: 'p-multi-select', child: '<p-multi-select-option value="1">Option 1</p-multi-select-option><p-multi-select-option value="2">Option 2</p-multi-select-option>', isCustomElement: true},
   { tagName: 'p-text-field-wrapper', child: '<input type="text" />' },
   { tagName: 'p-text-field-wrapper', child: '<input type="password" />' },
   { tagName: 'p-text-field-wrapper', child: '<input type="search" />' },
@@ -38,8 +40,9 @@ const variations: Variation[] = [
   { tagName: 'p-textarea-wrapper', child: '<textarea></textarea>' },
 ];
 
-const renderMarkupForVariation = ({ tagName, child, attributes }: Variation, theme: Theme): string => {
-  const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
+const renderMarkupForVariation = ({ tagName, child, attributes, isCustomElement }: Variation, theme: Theme): string => {
+  const childDisabled = isCustomElement ? child : child.replace(/((?: \/)?>)/, ' disabled$1');
+  const parentDisabled = isCustomElement ? 'disabled="true"' : '';
   const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
   attributes = attributes ? ` ${attributes}` : '';
   const labelSuffix = child.match(/type="[^cr][a-z]+"/) ? ` ${child.slice(child.indexOf('type='), -3).replace(/"/g, '&quot;')}` : '';
@@ -52,7 +55,7 @@ const renderMarkupForVariation = ({ tagName, child, attributes }: Variation, the
   <${tagName}${attributes} label="Readonly${labelSuffix}" theme="${theme}">
     ${childReadonly}
   </${tagName}>
-  <${tagName}${attributes} label="Disabled${labelSuffix}" theme="${theme}">
+  <${tagName}${attributes} ${parentDisabled} label="Disabled${labelSuffix}" theme="${theme}">
     ${childDisabled}
   </${tagName}>
   <${tagName}${attributes} label="Error${labelSuffix}" state="error" message="Error" theme="${theme}">
@@ -61,7 +64,7 @@ const renderMarkupForVariation = ({ tagName, child, attributes }: Variation, the
   <${tagName}${attributes} label="Success${labelSuffix}" state="success" message="Success" theme="${theme}">
     ${child}
   </${tagName}>
-  <${tagName}${attributes} label="Disabled${labelSuffix}" state="success" message="Success" theme="${theme}">
+  <${tagName}${attributes} ${parentDisabled} label="Disabled${labelSuffix}" state="success" message="Success" theme="${theme}">
     ${childDisabled}
   </${tagName}>
 </div>`;
@@ -75,7 +78,7 @@ export default class Code extends Vue {
 
   get markup(): string {
     let content = variations.map(item => renderMarkupForVariation(item, this.isDarkTheme ? 'dark' : 'light')).join('\n');
-    if (this.hasValues) {
+    if (this.hasValues) { 
       content = content
         .replace(/(<input type="(?:checkbox|radio)")/g, '$1 checked')
         .replace(/(<input type="[^cr][a-z]+")/g, '$1 value="Value"')
@@ -83,6 +86,11 @@ export default class Code extends Vue {
     }
     return this.isWrappedInForm ? `<form onsubmit="return false">${content}</form>` : content;
   }
+
+  updated() {
+    this.hasValues && document.querySelectorAll('p-multi-select').forEach(select => select.value = ['1']);
+  }
+
 }
 </script>
 

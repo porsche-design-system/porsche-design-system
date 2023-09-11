@@ -1,12 +1,14 @@
 import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getInvertedThemedColors,
   getResetInitialStylesForSlottedAnchor,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
   type ThemedColors,
 } from '../../styles';
 import { borderRadiusSmall, textXSmallStyle } from '@porsche-design-system/utilities-v2';
@@ -42,7 +44,13 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const themedColors = getThemedColors(theme);
+  const themedColorsDark = getThemedColors('dark');
   const { primaryColor, backgroundColor, backgroundHoverColor } = getColors(themedColors, tagColor, theme);
+  const {
+    primaryColor: primaryColorDark,
+    backgroundColor: backgroundColorDark,
+    backgroundHoverColor: backgroundHoverColorDark,
+  } = getColors(themedColorsDark, tagColor, 'dark');
 
   return getCss({
     '@global': {
@@ -50,7 +58,10 @@ export const getComponentCss = (
         display: 'inline-flex',
         verticalAlign: 'top',
         whiteSpace: 'nowrap',
-        ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
       span: {
         display: 'flex',
@@ -61,6 +72,10 @@ export const getComponentCss = (
         borderRadius: borderRadiusSmall,
         background: backgroundColor,
         color: primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+          color: primaryColorDark,
+        }),
         font: textXSmallStyle.font,
         ...(isHighContrastMode && {
           outline: '1px solid transparent',
@@ -70,6 +85,9 @@ export const getComponentCss = (
             transition: getTransition('background-color'),
             '&:hover': {
               background: backgroundHoverColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                background: backgroundHoverColorDark,
+              }),
             },
           })),
       },
@@ -99,6 +117,11 @@ export const getComponentCss = (
     icon: {
       marginLeft: '-2px', // optimize visual alignment
       alignSelf: 'flex-start',
+      ...(['neutral-contrast-high', 'primary'].includes(tagColor) && {
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          filter: 'invert(1)',
+        }),
+      }),
     },
   });
 };

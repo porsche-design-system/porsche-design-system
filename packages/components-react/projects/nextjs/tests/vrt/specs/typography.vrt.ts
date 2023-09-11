@@ -2,12 +2,9 @@ import { getVisualRegressionOverviewTester, vrtTest } from '@porsche-design-syst
 
 it('should have no visual regression for font family fallback strategy', async () => {
   expect(
-    await vrtTest(
-      getVisualRegressionOverviewTester(),
-      'typography-fallback-strategy',
-      '/typography-fallback-strategy',
-      { javaScriptEnabled: false }
-    )
+    await vrtTest(getVisualRegressionOverviewTester(), 'typography-fallback', '/typography-fallback', {
+      javaScriptEnabled: false,
+    })
   ).toBeFalsy();
 });
 

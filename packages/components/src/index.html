@@ -11,24 +11,76 @@
     <script nomodule src="build/porsche-design-system.js"></script>
     <script type="module" src="build/porsche-design-system.esm.js"></script>
     <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Playground */
       .playground {
-        padding: 1rem;
+        /* TODO: we should generate background colors with scss or js styles package */
+        --theme-light-background-base: #fff;
+        --theme-light-background-surface: #eeeff2;
+        --theme-dark-background-base: #0e0e12;
+        --theme-dark-background-surface: #212225;
+        padding: 16px;
       }
 
-      .playground.light {
-        background: #fff;
+      .playground.light,
+      .playground.auto {
+        background: var(--theme-light-background-base);
       }
 
-      .playground.light.surface {
-        background: #eeeff2;
+      .playground.light.surface,
+      .playground.auto.surface {
+        background: var(--theme-light-background-surface);
       }
 
       .playground.dark {
-        background: #0e0e12;
+        background: var(--theme-dark-background-base);
       }
 
       .playground.dark.surface {
-        background: #212225;
+        background: var(--theme-dark-background-surface);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .playground.auto {
+          background: var(--theme-dark-background-base);
+        }
+
+        .playground.auto.surface {
+          background: var(--theme-dark-background-surface);
+        }
+      }
+
+      .playground.auto-layout-inline,
+      .playground.auto-layout-block {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .playground.auto-layout-inline {
+        flex-direction: row;
+      }
+
+      .playground.auto-layout-block {
+        flex-direction: column;
+      }
+
+      .playground[title]::before {
+        content: attr(title);
+        display: block;
+        width: 100%;
+        font: 12px/16px 'Porsche Next';
+        color: deeppink;
+      }
+
+      .playground:not([class*='auto-layout'])::before {
+        margin-bottom: 16px;
       }
     </style>
   </head>
@@ -37,7 +89,234 @@
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main>
+      <style>
+        p-scroller {
+          max-width: 600px;
+        }
+
+        .playground > div {
+          height: 3rem;
+          border: 1px solid deeppink;
+          max-width: 600px;
+        }
+      </style>
+
+      <div class="playground auto" title="should render scroller">
+        <p-scroller theme="auto">
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+        </p-scroller>
+      </div>
+
+      <div
+        class="playground auto surface"
+        title="should render scroller gradientColorScheme surface on surface background"
+      >
+        <p-scroller theme="auto" gradient-color-scheme="surface">
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+        </p-scroller>
+      </div>
+
+      <div class="playground auto surface" title="should render scroller gradientColor surface on surface background">
+        <p-scroller theme="auto" gradient-color="background-surface">
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+        </p-scroller>
+      </div>
+
+      <div class="playground auto" title="should render scroller with scrollIndicatorPosition center">
+        <div>
+          <p-scroller theme="auto" scroll-indicator-position="center">
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+          </p-scroller>
+        </div>
+      </div>
+
+      <div class="playground auto" title="should render scroller with scrollIndicatorPosition top">
+        <div>
+          <p-scroller theme="auto" scroll-indicator-position="top">
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+          </p-scroller>
+        </div>
+      </div>
+
+      <div class="playground auto" title="should render scroller with alignScrollIndicator center">
+        <div>
+          <p-scroller theme="auto" align-scroll-indicator="center">
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+          </p-scroller>
+        </div>
+      </div>
+
+      <div class="playground auto" title="should render scroller with alignScrollIndicator top">
+        <div>
+          <p-scroller theme="auto" align-scroll-indicator="top">
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+          </p-scroller>
+        </div>
+      </div>
+
+      <div
+        class="playground auto"
+        title="should render scroller only on screen size too small to show all buttons at once"
+      >
+        <p-scroller theme="auto" style="max-width: none">
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+        </p-scroller>
+      </div>
+
+      <div class="playground auto" title="should render scroller items with linebreaks">
+        <p-scroller theme="auto">
+          <button>Button with line break</button>
+          <button>Button with line break</button>
+          <button>Button with line break</button>
+          <button>Button with line break</button>
+          <button>Button with line break</button>
+          <button>Button with line break</button>
+          <button>Button with line break</button>
+          <button>Button with line break</button>
+          <button>Button with line break</button>
+        </p-scroller>
+      </div>
+
+      <div class="playground auto" title="should render scroller with initial scroll position">
+        <p-scroller theme="auto" class="scroller" scroll-to-position="{scrollPosition: 100}">
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+        </p-scroller>
+      </div>
+
+      <div class="playground auto" title="should render scroller with scrollbar">
+        <div>
+          <p-scroller theme="auto" scrollbar="true">
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+            <button>Button</button>
+          </p-scroller>
+        </div>
+      </div>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->

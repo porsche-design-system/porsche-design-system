@@ -28,11 +28,6 @@ export const routes: RouteType[] = [
     element: <fromPages.OverviewPage />,
   },
   {
-    name: 'Overview Flaky',
-    path: '/overview-flaky',
-    element: <fromPages.OverviewFlakyPage />,
-  },
-  {
     name: 'Overview Notifications',
     path: '/overview-notifications',
     element: <fromPages.OverviewNotificationsPage />,
@@ -115,6 +110,21 @@ export const routes: RouteType[] = [
     name: 'Modal Example Accessibility',
     path: '/modal-example-accessibility',
     element: <fromExamples.ModalExampleAccessibilityPage />,
+  },
+  {
+    name: 'Multi-Select Example',
+    path: '/multi-select-example',
+    element: <fromExamples.MultiSelectExamplePage />,
+  },
+  {
+    name: 'Multi-Select Example Controlled',
+    path: '/multi-select-example-controlled',
+    element: <fromExamples.MultiSelectControlledExamplePage />,
+  },
+  {
+    name: 'Multi-Select Example Dynamic',
+    path: '/multi-select-example-dynamic',
+    element: <fromExamples.MultiSelectDynamicExamplePage />,
   },
   {
     name: 'Scroller Example',

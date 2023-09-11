@@ -20,7 +20,6 @@ import {
   LINK_BUTTON_VARIANTS,
   THEMES,
   validateProps,
-  getLinkButtonThemeForIcon,
 } from '../../utils';
 import { Component, Element, h, type JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
@@ -114,7 +113,7 @@ export class Button {
           <PrefixedTagNames.pSpinner
             class="spinner"
             size="inherit"
-            theme={getLinkButtonThemeForIcon(this.variant, this.theme)}
+            theme={this.theme}
             aria={{ 'aria-label': 'Loading state:' }}
           />
         )}
@@ -125,7 +124,7 @@ export class Button {
             name={this.iconSource ? undefined : this.icon}
             source={this.iconSource}
             color={this.disabled ? (this.variant === 'primary' ? 'contrast-high' : 'state-disabled') : 'primary'}
-            theme={!this.disabled ? getLinkButtonThemeForIcon(this.variant, this.theme) : this.theme}
+            theme={this.theme}
             aria-hidden="true"
           />
         )}

@@ -1,0 +1,4294 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: false, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  background: #FFF;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+}
+.input-container:focus-within {
+  border-color: #010205;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: true, state: success, isWithinForm: true, hasLabel: true and theme: light 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  background: #FFF;
+  border: 2px solid #197E10;
+  border-radius: 4px;
+}
+.input-container:focus-within {
+  border-color: #010205;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #197E10;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #0E4809;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #949598;
+}
+input::-webkit-input-placeholder {
+  color: #949598;
+}
+input::-moz-placeholder {
+  color: #949598;
+}
+input:-moz-placeholder {
+  color: #949598;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #FFF;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #949598;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true, hasLabel: true and theme: light 2`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #949598;
+}
+input::-webkit-input-placeholder {
+  color: #949598;
+}
+input::-moz-placeholder {
+  color: #949598;
+}
+input:-moz-placeholder {
+  color: #949598;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #FFF;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #949598;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: success, isWithinForm: true, hasLabel: true and theme: light 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #949598;
+}
+input::-webkit-input-placeholder {
+  color: #949598;
+}
+input::-moz-placeholder {
+  color: #949598;
+}
+input:-moz-placeholder {
+  color: #949598;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #FFF;
+  border: 2px solid #197E10;
+  border-radius: 4px;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #949598;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #197E10;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #0E4809;
+  }
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
+    border-color: #0E4809 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #949598;
+}
+input::-webkit-input-placeholder {
+  color: #949598;
+}
+input::-moz-placeholder {
+  color: #949598;
+}
+input:-moz-placeholder {
+  color: #949598;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #FFF;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true, hasLabel: true and theme: light 2`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #949598;
+}
+input::-webkit-input-placeholder {
+  color: #949598;
+}
+input::-moz-placeholder {
+  color: #949598;
+}
+input:-moz-placeholder {
+  color: #949598;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #FFF;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #010205;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true, hasLabel: true and theme: light 2`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #010205;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #010205;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true, hasLabel: true and theme: light 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #010205;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #197E10;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: false, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #949598;
+}
+input::-webkit-input-placeholder {
+  color: #949598;
+}
+input::-moz-placeholder {
+  color: #949598;
+}
+input:-moz-placeholder {
+  color: #949598;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.label__text {
+  display: block;
+  position: static;
+  width: fit-content;
+  height: auto;
+  text-indent: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #949598;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.label__text+.label__text {
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: true, state: none, isWithinForm: true, hasLabel: true and theme: light 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #949598;
+}
+input::-webkit-input-placeholder {
+  color: #949598;
+}
+input::-moz-placeholder {
+  color: #949598;
+}
+input:-moz-placeholder {
+  color: #949598;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #6B6D70 !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #535457;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #010205;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: false, state: success, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  background: #0E0E12;
+  border: 2px solid #09D087;
+  border-radius: 4px;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #09D087;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #069561;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: true, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  background: #0E0E12;
+  border: 2px solid #FC4040;
+  border-radius: 4px;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FB0404;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #7E7F82;
+}
+input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+input::-moz-placeholder {
+  color: #7E7F82;
+}
+input:-moz-placeholder {
+  color: #7E7F82;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #0E0E12;
+  border: 2px solid #FC4040;
+  border-radius: 4px;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FB0404;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true, hasLabel: false and theme: dark 2`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #7E7F82;
+}
+input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+input::-moz-placeholder {
+  color: #7E7F82;
+}
+input:-moz-placeholder {
+  color: #7E7F82;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #0E0E12;
+  border: 2px solid #FC4040;
+  border-radius: 4px;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FB0404;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #7E7F82;
+}
+input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+input::-moz-placeholder {
+  color: #7E7F82;
+}
+input:-moz-placeholder {
+  color: #7E7F82;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #0E0E12;
+  border: 2px solid #FC4040;
+  border-radius: 4px;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FB0404;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: success, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #7E7F82;
+}
+input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+input::-moz-placeholder {
+  color: #7E7F82;
+}
+input:-moz-placeholder {
+  color: #7E7F82;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #0E0E12;
+  border: 2px solid #09D087;
+  border-radius: 4px;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #09D087;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #069561;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true, hasLabel: false and theme: dark 2`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: text;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-container:focus-within {
+  border-color: #FBFCFF;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #09D087;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #7E7F82;
+}
+input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+input::-moz-placeholder {
+  color: #7E7F82;
+}
+input:-moz-placeholder {
+  color: #7E7F82;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #7E7F82;
+}
+input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+input::-moz-placeholder {
+  color: #7E7F82;
+}
+input:-moz-placeholder {
+  color: #7E7F82;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #09D087;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: true, state: error, isWithinForm: true, hasLabel: false and theme: dark 1`] = `
+":host {
+  display: block !important;
+  position: relative !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted([slot=select]) {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 0px !important;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 13px 16px;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #7E7F82;
+}
+input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+input::-moz-placeholder {
+  color: #7E7F82;
+}
+input:-moz-placeholder {
+  color: #7E7F82;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+.root {
+  position: relative;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: calc((calc(6px + 2.125ex) + 6px + 2px * 2 + 8px * 2) + 2 * 2px);
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, .24s) ease;
+  transform: translate3d(0,0,0);
+}
+.input-container {
+  display: flex;
+  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  cursor: not-allowed;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: 1px;
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
+}
+.label {
+  display: none;
+}
+.icon {
+  padding: 13px 15px;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.reset-icon {
+  padding: 4px;
+  margin: auto;
+}
+.toggle-icon {
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, .24s) ease;
+}
+.toggle-icon--open {
+  transform: rotate3d(0,0,1,180deg);
+}
+.no-results {
+  padding: 8px 12px;
+  color: #AFB0B3;
+  box-sizing: border-box;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #FC4040;
+  transition: color var(--p-transition-duration, .24s) ease;
+}
+.sr-text {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+@media(hover:hover) {
+  .input-container:hover:not(.disabled) {
+    border-color: #FBFCFF;
+  }
+}
+"
+`;

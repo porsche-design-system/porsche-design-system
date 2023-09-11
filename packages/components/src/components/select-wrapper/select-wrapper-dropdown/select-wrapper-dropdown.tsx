@@ -1,7 +1,13 @@
 import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/core';
 import {
   attachComponentCss,
+  determineDropdownDirection,
+  getFilterInputAriaAttributes,
+  getListAriaAttributes,
+  getOptionAriaAttributes,
   getPrefixedTagNames,
+  getSelectDropdownButtonAriaAttributes,
+  isClickOutside,
   isSsrHydration,
   observeChildren,
   observeProperties,
@@ -15,29 +21,24 @@ import type {
 } from '../select-wrapper/select-wrapper-utils';
 import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
 import {
-  getListAriaAttributes,
+  getAmountOfVisibleOptionsAndOptgroups,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,
   getMatchingOptionMaps,
   getNewOptionMapIndex,
-  getOptionAriaAttributes,
   getOptionMaps,
   getOptionsElements,
   getSelectedOptionMap,
   handleScroll,
+  hasFilterResults,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
+  setFilteredOptionMaps,
   setFirstHighlightedOptionMaps,
+  setHighlightedFirstMatchingOptionMaps,
   setHighlightedOptionMaps,
   setLastHighlightedOptionMaps,
   setSelectedOptionMaps,
-  getSelectWrapperDropdownButtonAriaAttributes,
-  setHighlightedFirstMatchingOptionMaps,
-  hasFilterResults,
-  getFilterInputAriaAttributes,
-  setFilteredOptionMaps,
-  determineDirection,
-  getAmountOfVisibleOptionsAndOptgroups,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
@@ -112,7 +113,7 @@ export class SelectWrapperDropdown {
       this.host,
       getComponentCss,
       this.direction === 'auto'
-        ? determineDirection(this.host, getAmountOfVisibleOptionsAndOptgroups(this.optionMaps))
+        ? determineDropdownDirection(this.host, getAmountOfVisibleOptionsAndOptgroups(this.optionMaps))
         : this.direction,
       this.isOpen,
       this.state,
@@ -160,7 +161,7 @@ export class SelectWrapperDropdown {
             role="combobox"
             id={buttonId}
             disabled={this.disabled}
-            {...getSelectWrapperDropdownButtonAriaAttributes(
+            {...getSelectDropdownButtonAriaAttributes(
               this.isOpen,
               labelId,
               descriptionId,
@@ -214,7 +215,7 @@ export class SelectWrapperDropdown {
                         'option--hidden': hidden || initiallyHidden,
                       }}
                       onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
-                      {...getOptionAriaAttributes(option)}
+                      {...getOptionAriaAttributes(selected, disabled, hidden, !!value)}
                     >
                       {value}
                       {selected && !disabled && (
@@ -250,7 +251,7 @@ export class SelectWrapperDropdown {
   }
 
   private onClickOutside = (e: MouseEvent): void => {
-    if (this.isOpen && !e.composedPath().includes(this.host)) {
+    if (this.isOpen && isClickOutside(e, this.host)) {
       this.setDropdownVisibility('hide');
     }
   };
