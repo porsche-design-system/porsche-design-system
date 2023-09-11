@@ -18,6 +18,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Theme property supports `auto` for all themeable components, reflecting `prefers-color-scheme` based on OS system
   settings ([#2719](https://github.com/porsche-design-system/porsche-design-system/pull/2719))
+- `hyphens` CSS property can now be overwritten in `Button Tile`, `Link Tile` and `Link Tile Model Signature`
+  components ([#2758](https://github.com/porsche-design-system/porsche-design-system/pull/2758))
+
+#### Changed
+
+- Usage of `getInitialStyles()` partial is required and validated with an exception
+  ([#2749](https://github.com/porsche-design-system/porsche-design-system/pull/2749))
 
 ### [3.7.0-rc.0] - 2023-09-05
 

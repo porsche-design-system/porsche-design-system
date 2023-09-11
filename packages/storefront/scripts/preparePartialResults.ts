@@ -1,13 +1,15 @@
-import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-js/partials';
+import { getMetaTagsAndIconLinks, getInitialStyles } from '@porsche-design-system/components-js/partials';
 import * as fs from 'fs';
 import * as path from 'path';
 
 const preparePartialResults = (): void => {
   const metaTagsAndIconLinksDemo = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' });
+  const initialStyles = getInitialStyles();
 
   const content = `/* Auto Generated File */
 
 export const metaTagsAndIconLinksDemo = ${JSON.stringify(metaTagsAndIconLinksDemo)};
+export const initialStyles = ${JSON.stringify(initialStyles)};
 `;
 
   const targetFolder = '../src/lib';
