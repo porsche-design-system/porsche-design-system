@@ -272,10 +272,6 @@
       .token.italic {
         font-style: italic;
       }
-
-      .token.entity {
-        cursor: help;
-      }
     }
   }
 </style>
