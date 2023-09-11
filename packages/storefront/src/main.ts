@@ -42,6 +42,7 @@ Vue.use({
     vue.component('A11yIcon', A11yIcon);
     vue.component('OpenBugTemplateInStackBlitz', OpenBugTemplateInStackBlitz);
     vue.component('PartialDocs', PartialDocs);
+    // eslint-disable-next-line vue/multi-word-component-names
     vue.component('Notification', Notification);
     // eslint-disable-next-line vue/multi-word-component-names
     vue.component('Playground', Playground);
