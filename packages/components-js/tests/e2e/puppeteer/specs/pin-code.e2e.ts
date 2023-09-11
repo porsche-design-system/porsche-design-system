@@ -1,4 +1,4 @@
-import type { Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 import {
   addEventListener,
   BASE_URL,
@@ -16,11 +16,11 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { Components } from '@porsche-design-system/components';
-import { ElementHandle } from 'puppeteer';
 
 let page: Page;
 beforeEach(async () => {
   page = await browser.newPage();
+  // to allow copy-paste to clipboard
   await browser
     .defaultBrowserContext()
     .overridePermissions(`${BASE_URL}/#`, ['clipboard-read', 'clipboard-write', 'clipboard-sanitized-write']);
@@ -32,10 +32,7 @@ const getLabel = () => selectNode(page, 'p-pin-code >>> .label__text');
 const getCurrentInput = () => selectNode(page, 'p-pin-code >>> #current-input');
 const getMessage = () => selectNode(page, 'p-pin-code >>> .message');
 const getHiddenInput = () => selectNode(page, 'p-pin-code input[slot="hidden-input"]');
-const getInput1 = () => selectNode(page, 'p-pin-code >>> input[aria-label="1-4"]');
-const getInput2 = () => selectNode(page, 'p-pin-code >>> input[aria-label="2-4"]');
-const getInput3 = () => selectNode(page, 'p-pin-code >>> input[aria-label="3-4"]');
-const getInput4 = () => selectNode(page, 'p-pin-code >>> input[aria-label="4-4"]');
+const getInput = (n: number) => selectNode(page, `p-pin-code >>> .input-container input:nth-child(${n})`);
 const getActiveElementsAriaLabelInShadowRoot = (element: ElementHandle): Promise<string> => {
   return element.evaluate((el) => el.shadowRoot.activeElement.ariaLabel);
 };
@@ -60,12 +57,12 @@ const initPinCode = (opts?: InitOptions) => {
   const { label = '', description = '', message = '' } = slots || {};
 
   const markup = `${markupBefore}
-<p-pin-code ${getHTMLAttributes(props)}>
-        ${label}
-        ${description}
-        ${message}
-</p-pin-code>
-${markupAfter}`;
+    <p-pin-code ${getHTMLAttributes(props)}>
+      ${label}
+      ${description}
+      ${message}
+    </p-pin-code>
+    ${markupAfter}`;
 
   return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };
@@ -286,7 +283,7 @@ describe('update event', () => {
     const host = await getHost();
     await setProperty(host, 'value', ['1', '2', '3', '4']);
     await addEventListener(host, 'update');
-    const input4 = await getInput4();
+    const input4 = await getInput(4);
 
     await input4.click();
     await waitForStencilLifecycle(page);
@@ -324,7 +321,7 @@ describe('update event', () => {
     const host = await getHost();
     await setProperty(host, 'value', ['1', '2', '3', '4']);
     await addEventListener(host, 'update');
-    const input1 = await getInput1();
+    const input1 = await getInput(1);
 
     await input1.click();
     await waitForStencilLifecycle(page);
@@ -363,10 +360,10 @@ describe('events', () => {
     it('should spread value over input elements and focus last input element', async () => {
       await initPinCode();
       const host = await getHost();
-      const input1 = await getInput1();
-      const input2 = await getInput2();
-      const input3 = await getInput3();
-      const input4 = await getInput4();
+      const input1 = await getInput(1);
+      const input2 = await getInput(2);
+      const input3 = await getInput(3);
+      const input4 = await getInput(4);
       await addEventListener(input4, 'focus');
 
       expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
@@ -385,10 +382,10 @@ describe('events', () => {
     it('should spread value over input elements and focus last empty input element if value is too short', async () => {
       await initPinCode();
       const host = await getHost();
-      const input1 = await getInput1();
-      const input2 = await getInput2();
-      const input3 = await getInput3();
-      const input4 = await getInput4();
+      const input1 = await getInput(1);
+      const input2 = await getInput(2);
+      const input3 = await getInput(3);
+      const input4 = await getInput(4);
       await addEventListener(input4, 'focus');
 
       expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
@@ -410,10 +407,10 @@ describe('events', () => {
     await goto(page, ''); // need to have actual window.location
     await initPinCode();
     const host = await getHost();
-    const input1 = await getInput1();
-    const input2 = await getInput2();
-    const input3 = await getInput3();
-    const input4 = await getInput4();
+    const input1 = await getInput(1);
+    const input2 = await getInput(2);
+    const input3 = await getInput(3);
+    const input4 = await getInput(4);
     await addEventListener(input4, 'focus');
 
     expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
