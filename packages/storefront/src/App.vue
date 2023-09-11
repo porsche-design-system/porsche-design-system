@@ -61,6 +61,7 @@
     --theme-custom-aside-background: #{$pds-theme-light-background-base};
     --theme-custom-search-background: #{$pds-theme-light-background-base};
     --theme-custom-header-background: rgba(255, 255, 255, 0.79);
+    --theme-custom-code-background: #e6e6e6;
 
     @media (prefers-color-scheme: dark) {
       --theme-primary: #{$pds-theme-dark-primary};
@@ -75,6 +76,7 @@
       --theme-custom-aside-background: #{$pds-theme-dark-background-surface};
       --theme-custom-search-background: #{$pds-theme-dark-background-surface};
       --theme-custom-header-background: rgba(14, 14, 18, 0.79);
+      --theme-custom-code-background: #26262a;
     }
 
     &.light-mode {
@@ -90,6 +92,7 @@
       --theme-custom-aside-background: #{$pds-theme-light-background-base} !important;
       --theme-custom-search-background: #{$pds-theme-light-background-base} !important;
       --theme-custom-header-background: rgba(255, 255, 255, 0.79) !important;
+      --theme-custom-code-background: #e6e6e6 !important;
     }
 
     &.dark-mode {
@@ -105,6 +108,7 @@
       --theme-custom-aside-background: #{$pds-theme-dark-background-surface} !important;
       --theme-custom-search-background: #{$pds-theme-dark-background-surface} !important;
       --theme-custom-header-background: rgba(14, 14, 18, 0.79) !important;
+      --theme-custom-code-background: #26262a !important;
     }
   }
 
