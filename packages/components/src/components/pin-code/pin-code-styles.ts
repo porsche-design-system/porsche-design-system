@@ -28,7 +28,7 @@ export const getComponentCss = (
       textAlign: 'center',
       width: inputSize,
       '@media (max-width: 480px)': {
-        width: '39px', // max width that fits into grid
+        width: `calc(${fontLineHeight} + 1x + ${borderWidthBase} * 2 + ${spacingStaticXSmall}) * 2`, // we need 1px additionally so input width becomes 39px which is the max width that fits into grid
       },
       ...(isLoading && {
         opacity: 0.2,
@@ -45,16 +45,15 @@ export const getComponentCss = (
         ...hostHiddenStyles,
       }),
       ...inputStyles,
-      ...addImportantToEachRule({
-        ...(isWithinForm && {
+      ...(isWithinForm &&
+        addImportantToEachRule({
           '::slotted(input)': {
             position: 'absolute',
             height: inputSize,
             width: 0,
             opacity: 0,
           },
-        }),
-      }),
+        })),
     },
     ...(isLoading && {
       spinner: {
