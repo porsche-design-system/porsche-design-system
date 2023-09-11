@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, isLoading: false, isWithinForm: false,theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -165,6 +166,7 @@ input[readonly] {
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, isWithinForm: false,theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -266,6 +268,7 @@ input[readonly] {
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: true, isWithinForm: true,theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -384,6 +387,7 @@ input[readonly] {
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, isWithinForm: false,theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -484,6 +488,7 @@ input[readonly] {
 exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false, isWithinForm: true,theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
