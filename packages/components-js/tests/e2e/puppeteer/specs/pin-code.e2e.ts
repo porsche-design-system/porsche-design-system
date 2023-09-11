@@ -319,7 +319,7 @@ describe('update event', () => {
     ]);
   });
 
-  it('should emit update event on delete  and focus correct input element', async () => {
+  it('should emit update event on delete and focus correct input element', async () => {
     await initPinCode();
     const host = await getHost();
     await setProperty(host, 'value', ['1', '2', '3', '4']);
@@ -360,7 +360,7 @@ describe('update event', () => {
 
 describe('events', () => {
   describe('onInput', () => {
-    it('should spread value on input elements and focus last input element', async () => {
+    it('should spread value over input elements and focus last input element', async () => {
       await initPinCode();
       const host = await getHost();
       const input1 = await getInput1();
@@ -382,7 +382,7 @@ describe('events', () => {
       expect(await getProperty(host, 'value')).toStrictEqual(['1', '2', '3', '4']);
     });
 
-    it('should spread value on input elements and focus last empty input element if value is too short', async () => {
+    it('should spread value over input elements and focus last empty input element if value is too short', async () => {
       await initPinCode();
       const host = await getHost();
       const input1 = await getInput1();
@@ -406,7 +406,7 @@ describe('events', () => {
   });
 
   // TODO: support for onPaste event is currently very low, therefore this test is commented out
-  xit('should spread value on input elements and focus last input element on paste', async () => {
+  xit('should spread value over input elements and focus last input element on paste', async () => {
     await goto(page, ''); // need to have actual window.location
     await initPinCode();
     const host = await getHost();
