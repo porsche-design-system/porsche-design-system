@@ -12,11 +12,9 @@ import {
   extractInlineStyles,
 } from '../../src/utils/stackblitz/getAngularProjectAndOpenOptions';
 import type { ExternalDependency, SharedImportKey, StackBlitzFrameworkOpts } from '../../src/utils';
-
 import * as getAngularProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/getAngularProjectAndOpenOptions';
 import * as stackBlitzHelperUtils from '../../src/utils/stackblitz/helper';
 import * as formattingUtils from '../../src/utils/formatting';
-import { isStableStorefrontRelease } from '../../src/utils/stackblitz/helper';
 
 jest.mock('../../../components-angular/package.json', () => ({
   dependencies: {
