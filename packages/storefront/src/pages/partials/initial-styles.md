@@ -2,11 +2,11 @@
 
 **Function name:** `getInitialStyles()`
 
-<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
+<Notification heading="Attention" state="warning">
 <b>This partial is required since v3.7.0</b>.<br>
 It is necessary to provide some default styles to Porsche Design System components until they are fully bootstrapped to
 prevent FOUC. In addition, normalize and component related slotted styles are provided too.
-</p-inline-notification>
+</Notification>
 
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which has to be injected into the `<head>` of your `index.html`.

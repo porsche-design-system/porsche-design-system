@@ -6,12 +6,12 @@ To help you better understand how to use our form guidelines we provide some cor
 
 ## Form pattern example pages
 
-| Form type        | View code example                                                                                                                |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Login            | <p-link-pure href="patterns/forms/example/login" icon="external" target="_blank">Example - Login</p-link-pure>                   |
-| Create Account   | <p-link-pure href="patterns/forms/example/create-account" icon="external" target="_blank">Example - Create Account</p-link-pure> |
-| Contact          | <p-link-pure href="patterns/forms/example/contact" icon="external" target="_blank">Example - Contact</p-link-pure>               |
-| Various examples | <p-link-pure href="patterns/forms/example/various" icon="external" target="_blank">Example - Various</p-link-pure>               |
+| Form type        | View code example                                                                                                                                                           |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Login            | <p-link-pure :theme="this.$store.getters.platformTheme" href="patterns/forms/example/login" icon="external" target="_blank">Example - Login</p-link-pure>                   |
+| Create Account   | <p-link-pure :theme="this.$store.getters.platformTheme" href="patterns/forms/example/create-account" icon="external" target="_blank">Example - Create Account</p-link-pure> |
+| Contact          | <p-link-pure :theme="this.$store.getters.platformTheme" href="patterns/forms/example/contact" icon="external" target="_blank">Example - Contact</p-link-pure>               |
+| Various examples | <p-link-pure :theme="this.$store.getters.platformTheme" href="patterns/forms/example/various" icon="external" target="_blank">Example - Various</p-link-pure>               |
 
 ---
 
