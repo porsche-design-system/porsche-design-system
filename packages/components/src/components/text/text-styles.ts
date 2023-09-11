@@ -2,7 +2,7 @@ import type { BreakpointCustomizable, TextAlign, TextColor, TextSize, TextWeight
 import type { TextWeightDeprecated } from './text-weight';
 import type { TextColorDeprecated } from './text-color';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
   fontSizeTextLarge,
   fontSizeTextMedium,
@@ -37,7 +37,10 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
       '::slotted': {
         [TEXT_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),

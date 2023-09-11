@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: { base: 5, xs: 7, s: 5, m: 7, l: 5, xl: 7 } and theme: dark 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -127,6 +128,7 @@ span[aria-current]:not(.ellipsis):focus::before {
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5 and theme: dark 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -224,6 +226,7 @@ span[aria-current]:not(.ellipsis):focus::before {
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 5 and theme: light 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -321,6 +324,7 @@ span[aria-current]:not(.ellipsis):focus::before {
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7 and theme: dark 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -418,6 +422,7 @@ span[aria-current]:not(.ellipsis):focus::before {
 exports[`getComponentCss() should return correct css for maxNumberOfPageLinks: 7 and theme: light 1`] = `
 ":host {
   display: block;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

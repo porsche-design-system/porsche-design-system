@@ -12,7 +12,7 @@
 </div>
 
 <script>
-  customElements.whenDefined('my-prefix-p-toast').then(() => {
+  porscheDesignSystem.componentsReady().then(() => {
     document.querySelector('my-prefix-p-toast').addMessage({ text: 'Some message' });
   });
 </script>

@@ -3,7 +3,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   doNothing,
-  getLinkButtonThemeForIcon,
   getPrefixedTagNames,
   hasPropValueChanged,
   THEMES,
@@ -94,7 +93,7 @@ export class LinkSocial {
           size="inherit"
           name={this.icon}
           source={this.iconSource}
-          theme={getLinkButtonThemeForIcon('primary', this.theme)} // relevant for ssr support
+          theme={this.theme} // relevant for ssr support
           aria-hidden="true"
         />
         <span class="label">

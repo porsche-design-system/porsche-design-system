@@ -1,9 +1,4 @@
 <style>
-  h2,
-  h4 {
-    color: deeppink;
-  }
-
   p-text {
     display: inline-flex;
     vertical-align: top;
@@ -11,15 +6,13 @@
     justify-content: center;
     margin: 4px;
     padding: 4px;
-    background: #f1f1f1;
+    background: rgba(125, 125, 125, 0.1);
     width: 36px;
     height: 36px;
   }
 </style>
 
-<div class="playground" title="should show typography in cyril charset">
-  <h2>Porsche Next Cyril</h2>
-  <h4>Range: U+0400-04FF</h4>
+<div class="playground" title="should show typography in cyril charset (U+0400-04FF)">
   <p-text size="medium" align="center" title="U+0400 | Dec:1024">Ѐ</p-text>
   <p-text size="medium" align="center" title="U+0401 | Dec:1025">Ё</p-text>
   <p-text size="medium" align="center" title="U+0402 | Dec:1026">Ђ</p-text>

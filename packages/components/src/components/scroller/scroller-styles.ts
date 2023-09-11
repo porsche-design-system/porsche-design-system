@@ -1,11 +1,13 @@
 import { getCss, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import type { Theme } from '../../types';
 import type { ScrollerGradientColor, ScrollerScrollIndicatorPosition } from './scroller-utils';
@@ -18,15 +20,20 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
+const gradientColorLight: Record<ScrollerGradientColor, string> = {
+  'background-base': '255,255,255',
+  'background-surface': '238,239,242',
+};
+
+const gradientColorDark: Record<ScrollerGradientColor, string> = {
+  'background-base': '14,14,18',
+  'background-surface': '33,34,37',
+};
+
 const gradientColorMap: Record<Theme, Record<ScrollerGradientColor, string>> = {
-  light: {
-    'background-base': '255,255,255',
-    'background-surface': '238,239,242',
-  },
-  dark: {
-    'background-base': '14,14,18',
-    'background-surface': '33,34,37',
-  },
+  auto: gradientColorLight,
+  light: gradientColorLight,
+  dark: gradientColorDark,
 };
 
 const getGradient = (theme: Theme, gradientColorTheme: ScrollerGradientColor): string => {
@@ -49,16 +56,23 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { backgroundColor, backgroundSurfaceColor, focusColor, hoverColor } = getThemedColors(theme);
-  const isDarkTheme = isThemeDark(theme);
+  const {
+    backgroundColor: backgroundColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
+    focusColor: focusColorDark,
+    hoverColor: hoverColorDark,
+  } = getThemedColors('dark');
+  const backgroundColorLight: Record<ScrollerGradientColor, string> = {
+    'background-base': backgroundColor,
+    'background-surface': backgroundSurfaceColor,
+  };
 
   const backgroundColorMap: Record<Theme, Record<ScrollerGradientColor, string>> = {
+    auto: backgroundColorLight,
+    light: backgroundColorLight,
     dark: {
-      'background-base': backgroundSurfaceColor,
-      'background-surface': backgroundColor,
-    },
-    light: {
-      'background-base': backgroundColor,
-      'background-surface': backgroundSurfaceColor,
+      'background-base': backgroundSurfaceColorDark,
+      'background-surface': backgroundColorDark,
     },
   };
 
@@ -75,6 +89,7 @@ export const getComponentCss = (
       ':host': addImportantToEachRule({
         display: 'block',
         height: 'inherit',
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       button: {
@@ -89,15 +104,21 @@ export const getComponentCss = (
         outline: 0,
         cursor: 'pointer',
         background: backgroundColorMap[theme][gradientColor],
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorMap.dark[gradientColor],
+        }),
         borderRadius: borderRadiusSmall,
         ...frostedGlassStyle,
         visibility: 'hidden',
-        ...(!isDarkTheme && dropShadowLowStyle),
+        ...(!isThemeDark(theme) && dropShadowLowStyle),
         ...hoverMediaQuery({
           transition: getTransition('background-color'),
           '&:hover': {
             ...frostedGlassStyle,
             background: hoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              background: hoverColorDark,
+            }),
           },
         }),
       },
@@ -140,6 +161,9 @@ export const getComponentCss = (
       },
       '&:focus::before': {
         borderColor: focusColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: focusColorDark,
+        }),
       },
       '&:focus:not(:focus-visible)::before': {
         borderColor: 'transparent',
@@ -164,6 +188,9 @@ export const getComponentCss = (
       gridArea: '1 / 1 / 1 / 1',
       justifyContent: 'flex-start',
       background: `linear-gradient(to right, ${getGradient(theme, gradientColor)} 100%)`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: `linear-gradient(to right, ${getGradient('dark', gradientColor)} 100%)`,
+      }),
       visibility: isPrevHidden ? 'hidden' : 'visible',
       '& button': {
         marginLeft: '8px',
@@ -179,6 +206,9 @@ export const getComponentCss = (
       gridArea: '1 / 3 / 1 / 3',
       justifyContent: 'flex-end',
       background: `linear-gradient(to left, ${getGradient(theme, gradientColor)} 100%)`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: `linear-gradient(to left, ${getGradient('dark', gradientColor)} 100%)`,
+      }),
       visibility: isNextHidden ? 'hidden' : 'visible',
       '& button': {
         marginRight: '8px',

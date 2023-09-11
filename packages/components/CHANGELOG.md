@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- Theme property supports `auto` for all themeable components, reflecting `prefers-color-scheme` based on OS system
+  settings ([#2719](https://github.com/porsche-design-system/porsche-design-system/pull/2719))
 - `hyphens` css attribute can now be overwritten in the `Link Tile`, `Link Tile Model Signature` and `Button Tile`
   components ([#2758](https://github.com/porsche-design-system/porsche-design-system/pull/2758))
 

@@ -1,6 +1,11 @@
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
-import { addImportantToEachRule, getThemedColors, getResetInitialStylesForSlottedAnchor } from '../../styles';
+import {
+  addImportantToEachRule,
+  getThemedColors,
+  getResetInitialStylesForSlottedAnchor,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../styles';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
 import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
@@ -17,6 +22,7 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { focusColor } = getThemedColors(theme);
+  const { focusColor: focusColorDark } = getThemedColors('dark');
 
   return getCss(
     mergeDeep(
@@ -62,6 +68,9 @@ export const getComponentCss = (
             },
             '&(a:focus)::before': {
               border: `${borderWidthBase} solid ${focusColor}`,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                borderColor: focusColorDark,
+              }),
             },
             '&(a:focus:not(:focus-visible))::before': {
               border: 0,

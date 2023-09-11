@@ -3,7 +3,6 @@ import { CoreInitializerPrefixedComponent } from './core-initializer-prefixed.co
 import { EventsComponent } from './events.component';
 import { FormWrapperBindingComponent } from './form-wrapper-binding.component';
 import { OptionalPropertiesComponent } from './optional-properties.component';
-import { TableComponent } from './table.component';
 import { UtilitiesComponent } from './utilities.component';
 
 export const pages = [
@@ -11,7 +10,6 @@ export const pages = [
   EventsComponent,
   FormWrapperBindingComponent,
   OptionalPropertiesComponent,
-  TableComponent,
   UtilitiesComponent,
 ];
 
@@ -19,12 +17,10 @@ export * from './core-initializer-prefixed.component';
 export * from './events.component';
 export * from './form-wrapper-binding.component';
 export * from './optional-properties.component';
-export * from './table.component';
 export * from './utilities.component';
 
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';
-export * from './generated/overview-flaky.component';
 export * from './generated/overview-notifications.component';
 export * from './generated/overview.component';
 import { AccordionComponent } from './generated/accordion.component';
@@ -59,7 +55,6 @@ import { ModalComponent } from './generated/modal.component';
 import { ModelSignatureComponent } from './generated/model-signature.component';
 import { MultiSelectComponent } from './generated/multi-select.component';
 import { OverviewComponent } from './generated/overview.component';
-import { OverviewFlakyComponent } from './generated/overview-flaky.component';
 import { OverviewNotificationsComponent } from './generated/overview-notifications.component';
 import { PaginationComponent } from './generated/pagination.component';
 import { PopoverComponent } from './generated/popover.component';
@@ -70,6 +65,7 @@ import { SelectWrapperComponent } from './generated/select-wrapper.component';
 import { SpinnerComponent } from './generated/spinner.component';
 import { StepperHorizontalComponent } from './generated/stepper-horizontal.component';
 import { SwitchComponent } from './generated/switch.component';
+import { TableComponent } from './generated/table.component';
 import { TabsComponent } from './generated/tabs.component';
 import { TabsBarComponent } from './generated/tabs-bar.component';
 import { TagComponent } from './generated/tag.component';
@@ -78,14 +74,14 @@ import { TextComponent } from './generated/text.component';
 import { TextareaWrapperComponent } from './generated/textarea-wrapper.component';
 import { TextFieldWrapperComponent } from './generated/text-field-wrapper.component';
 import { TextListComponent } from './generated/text-list.component';
-import { ToastBasicComponent } from './generated/toast-basic.component';
+import { ToastComponent } from './generated/toast.component';
 import { ToastBasicDarkComponent } from './generated/toast-basic-dark.component';
 import { ToastBasicLongTextComponent } from './generated/toast-basic-long-text.component';
 import { ToastBasicStateNeutralComponent } from './generated/toast-basic-state-neutral.component';
 import { ToastOffsetComponent } from './generated/toast-offset.component';
 import { ToastPrefixedComponent } from './generated/toast-prefixed.component';
 import { TypographyCyrilComponent } from './generated/typography-cyril.component';
-import { TypographyFallbackStrategyComponent } from './generated/typography-fallback-strategy.component';
+import { TypographyFallbackComponent } from './generated/typography-fallback.component';
 import { TypographyGreekAndCopticComponent } from './generated/typography-greek-and-coptic.component';
 import { TypographyLatinComponent } from './generated/typography-latin.component';
 import { WordmarkComponent } from './generated/wordmark.component';
@@ -123,7 +119,6 @@ export const generatedPages = [
   ModelSignatureComponent,
   MultiSelectComponent,
   OverviewComponent,
-  OverviewFlakyComponent,
   OverviewNotificationsComponent,
   PaginationComponent,
   PopoverComponent,
@@ -134,6 +129,7 @@ export const generatedPages = [
   SpinnerComponent,
   StepperHorizontalComponent,
   SwitchComponent,
+  TableComponent,
   TabsComponent,
   TabsBarComponent,
   TagComponent,
@@ -142,14 +138,14 @@ export const generatedPages = [
   TextareaWrapperComponent,
   TextFieldWrapperComponent,
   TextListComponent,
-  ToastBasicComponent,
+  ToastComponent,
   ToastBasicDarkComponent,
   ToastBasicLongTextComponent,
   ToastBasicStateNeutralComponent,
   ToastOffsetComponent,
   ToastPrefixedComponent,
   TypographyCyrilComponent,
-  TypographyFallbackStrategyComponent,
+  TypographyFallbackComponent,
   TypographyGreekAndCopticComponent,
   TypographyLatinComponent,
   WordmarkComponent,
@@ -352,6 +348,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: SwitchComponent,
   },
   {
+    name: 'Table',
+    path: 'table',
+    component: TableComponent,
+  },
+  {
     name: 'Tabs',
     path: 'tabs',
     component: TabsComponent,
@@ -392,9 +393,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: TextareaWrapperComponent,
   },
   {
-    name: 'Toast Basic',
-    path: 'toast-basic',
-    component: ToastBasicComponent,
+    name: 'Toast',
+    path: 'toast',
+    component: ToastComponent,
   },
   {
     name: 'Toast Basic Dark',
@@ -427,9 +428,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: TypographyCyrilComponent,
   },
   {
-    name: 'Typography Fallback Strategy',
-    path: 'typography-fallback-strategy',
-    component: TypographyFallbackStrategyComponent,
+    name: 'Typography Fallback',
+    path: 'typography-fallback',
+    component: TypographyFallbackComponent,
   },
   {
     name: 'Typography Greek And Coptic',

@@ -14,6 +14,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -110,6 +111,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -221,6 +223,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -332,6 +335,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -428,6 +432,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -524,6 +529,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -635,6 +641,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear .2s !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -745,6 +752,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -984,6 +992,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -1092,6 +1101,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -1187,6 +1197,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -1295,6 +1306,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -1405,6 +1417,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -1515,6 +1528,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -1610,6 +1624,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -1705,6 +1720,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {
@@ -1815,6 +1831,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
+  color-scheme: light dark !important;
   overflow-y: auto;
 }
 :host([hidden]) {

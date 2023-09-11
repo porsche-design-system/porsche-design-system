@@ -1,6 +1,6 @@
 import type { ContentWrapperWidth } from './content-wrapper-utils';
 import { getCss } from '../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
   getMediaQueryMin,
   gridFullOffset,
@@ -21,7 +21,10 @@ export const getComponentCss = (width: ContentWrapperWidth): string => {
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
     },
     root: {

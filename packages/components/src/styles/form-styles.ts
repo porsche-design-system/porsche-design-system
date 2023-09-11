@@ -1,7 +1,14 @@
 import type { JssStyle, Styles } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../types';
 import { buildResponsiveStyles } from '../utils';
-import { addImportantToRule, getHiddenTextJssStyle, getThemedColors, getTransition, hoverMediaQuery } from './';
+import {
+  addImportantToRule,
+  getHiddenTextJssStyle,
+  getThemedColors,
+  getTransition,
+  hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+} from './';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -26,7 +33,17 @@ export const getBaseChildStyles = (
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    contrastLowColor: contrastLowColorDark,
+    contrastMediumColor: contrastMediumColorDark,
+    disabledColor: disabledColorDark,
+  } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
+    'dark',
+    state
+  );
 
   return {
     [`::slotted(${child})`]: {
@@ -48,27 +65,46 @@ export const getBaseChildStyles = (
       textIndent: 0,
       color: primaryColor,
       transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        borderColor: formStateColorDark || contrastMediumColorDark,
+        color: primaryColorDark,
+      }),
       ...additionalDefaultJssStyle,
     },
     ...(hoverMediaQuery({
       // with the media query the selector has higher priority and overrides disabled styles
       [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)`]: {
         borderColor: formStateHoverColor || primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: formStateHoverColorDark || primaryColorDark,
+        }),
       },
     }) as Styles),
     [`::slotted(${child}:focus)`]: {
       borderColor: primaryColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        borderColor: primaryColorDark,
+      }),
     },
     [`::slotted(${child}:disabled)`]: {
       cursor: 'not-allowed',
       color: disabledColor,
       borderColor: disabledColor,
       WebkitTextFillColor: disabledColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: disabledColorDark,
+        borderColor: disabledColorDark,
+        WebkitTextFillColor: disabledColorDark,
+      }),
     },
     ...(child !== 'select' && {
       [`::slotted(${child}[readonly])`]: {
         borderColor: contrastLowColor,
         background: contrastLowColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: contrastLowColorDark,
+          background: contrastLowColorDark,
+        }),
       },
     }),
   };
@@ -84,7 +120,13 @@ export const getLabelStyles = (
   additionalLabelJssStyle?: JssStyle
 ): Styles => {
   const { primaryColor, disabledColor, contrastHighColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    disabledColor: disabledColorDark,
+    contrastHighColor: contrastHighColorDark,
+  } = getThemedColors('dark');
   const { formStateHoverColor } = getThemedFormStateColors(theme, state);
+  const { formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors('dark', state);
 
   const counterOrUnitOrIconStylesKey = counterOrUnitOrIconStyles && Object.keys(counterOrUnitOrIconStyles)[0];
 
@@ -102,11 +144,17 @@ export const getLabelStyles = (
         ...textSmallStyle,
         color: isDisabled ? disabledColor : primaryColor,
         transition: getTransition('color'), // for smooth transitions between e.g. disabled states
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: isDisabled ? disabledColorDark : primaryColorDark,
+        }),
         '&+&': {
           marginTop: `-${spacingStaticXSmall}`,
           fontSize: fontSizeTextXSmall,
           ...(!isDisabled && {
             color: contrastHighColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              color: contrastHighColorDark,
+            }),
           }),
         },
         ...hoverMediaQuery({
@@ -114,6 +162,9 @@ export const getLabelStyles = (
             [`&~::slotted(${child}:not(:disabled):not(:focus):not([readonly]))` +
             (formStateHoverColor ? `,::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)` : '')]: {
               borderColor: addImportantToRule(formStateHoverColor || primaryColor),
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                borderColor: addImportantToRule(formStateHoverColorDark || primaryColorDark),
+              }),
             },
           },
         }),
@@ -127,6 +178,9 @@ export const getLabelStyles = (
         ...(isDisabled && {
           color: disabledColor,
           cursor: 'not-allowed',
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: disabledColorDark,
+          }),
         }),
       },
     }),

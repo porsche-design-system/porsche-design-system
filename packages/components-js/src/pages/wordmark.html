@@ -1,35 +1,13 @@
-<style>
-  @media only screen and (min-width: 760px) {
-    #app,
-    :host {
-      display: grid;
-      grid-template-columns: repeat(2, 50%);
-    }
-  }
-</style>
-
-<div class="playground light" title="should render default on light background">
+<div class="playground light" title="should render default">
   <p-wordmark></p-wordmark>
 </div>
 
-<div class="playground dark" title="should render default on dark background">
-  <p-wordmark theme="dark"></p-wordmark>
-</div>
-
-<div class="playground light" title="should render size inherit on light background">
+<div class="playground light" title="should render size inherit">
   <p-wordmark size="inherit" style="height: 20px"></p-wordmark>
 </div>
 
-<div class="playground dark" title="should render size inherit on dark background">
-  <p-wordmark theme="dark" size="inherit" style="height: 20px"></p-wordmark>
-</div>
-
-<div class="playground light" title="should render default with custom click area on light background">
+<div class="playground light" title="should render default with custom click area">
   <p-wordmark href="#" style="padding: 1.5rem"></p-wordmark>
-</div>
-
-<div class="playground dark" title="should render default with custom clickarea on dark background">
-  <p-wordmark href="#" theme="dark" style="padding: 1.5rem"></p-wordmark>
 </div>
 
 <div class="playground light" title="should not exceed parents width">

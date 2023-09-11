@@ -1,16 +1,16 @@
-import { getVisualRegressionStatesTester, vrtTest } from '@porsche-design-system/shared/testing';
-// TODO: we should move CDP to either shared package or maybe even better to visual-regression-tester itself
-import { forceHoverState } from '../../../../../components-js/tests/vrt/puppeteer/helpers';
+import { expect, test } from '@playwright/test';
+import { forceHoverState } from '../../../../../components-js/tests/vrt/playwright/helpers';
 
-const id = 'styles-hover';
-it('should have no visual regression', async () => {
+const style = 'styles-hover';
+const viewportWidth = 1000;
+
+test.describe(style, async () => {
   // TODO: test is pointless?
   // hover media query isn't supported by puppeteer and therefore no hover style is visible
-  expect(
-    await vrtTest(getVisualRegressionStatesTester(), id, `/${id}`, {
-      scenario: async (page) => {
-        await forceHoverState(page, 'a');
-      },
-    })
-  ).toBeFalsy();
+  test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
+    await page.goto(`/${style}`);
+    await page.setViewportSize({ width: viewportWidth, height: 600 });
+    await forceHoverState(page, 'a');
+    await expect(page.locator('#app')).toHaveScreenshot(`${style}-${viewportWidth}.png`);
+  });
 });

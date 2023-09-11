@@ -4,11 +4,13 @@ import type { PaginationMaxNumberOfPageLinks } from './pagination-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import {
   borderRadiusMedium,
@@ -38,12 +40,21 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    disabledColor: disabledColorDark,
+    hoverColor: hoverColorDark,
+    focusColor: focusColorDark,
+  } = getThemedColors('dark');
 
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
       nav: {
         display: 'flex',
@@ -89,10 +100,16 @@ export const getComponentCss = (
         outline: 0,
         borderRadius: borderRadiusSmall,
         borderColor: 'transparent', // default value is needed for smooth transition
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
+        }),
         ...hoverMediaQuery({
           '&:not([aria-disabled]):not(.ellipsis):hover': {
             ...frostedGlassStyle,
             background: hoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              background: hoverColorDark,
+            }),
           },
         }),
         '&:not(.ellipsis):focus:focus-visible::before': {
@@ -101,16 +118,26 @@ export const getComponentCss = (
           ...getInsetJssStyle(-4),
           border: `${borderWidthBase} solid ${focusColor}`,
           borderRadius: borderRadiusMedium,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: focusColorDark,
+          }),
         },
         '&[aria-current]': {
           ...disabledCursorStyle,
           color: primaryColor,
           border: `${borderWidthBase} solid ${primaryColor}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: primaryColorDark,
+            borderColor: primaryColorDark,
+          }),
           '&:not(.ellipsis):focus::before': getInsetJssStyle(-6),
         },
         '&[aria-disabled]': {
           ...disabledCursorStyle,
           color: disabledColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: disabledColorDark,
+          }),
         },
       },
     },

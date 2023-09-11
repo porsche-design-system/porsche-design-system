@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -149,6 +150,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: false, hideLabel: false, state: success and theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -251,6 +253,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: false, hideLabel: false, state: success and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -353,6 +356,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: false, hideLabel: true, state: error and theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -455,6 +459,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: false, hideLabel: true, state: error and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -557,6 +562,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: false, hideLabel: true, state: none and theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -658,6 +664,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: false, hideLabel: true, state: none and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -759,6 +766,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: true, hideLabel: false, state: error and theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -862,6 +870,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: true, hideLabel: false, state: error and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -965,6 +974,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: true, hideLabel: false, state: none and theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1067,6 +1077,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: true, hideLabel: false, state: none and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1169,6 +1180,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: true, hideLabel: true, state: success and theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1272,6 +1284,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: false, hasCustomDropdown: true, hideLabel: true, state: success and theme: light 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1375,6 +1388,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 exports[`getComponentCss() should return correct css for disabled: true, hasCustomDropdown: true, hideLabel: true, state: error and theme: dark 1`] = `
 ":host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
