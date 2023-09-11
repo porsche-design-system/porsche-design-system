@@ -6065,6 +6065,7 @@ exports[`should render dsr component for PPinCode 1`] = `
     <style>
       :host {
   display: block !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
