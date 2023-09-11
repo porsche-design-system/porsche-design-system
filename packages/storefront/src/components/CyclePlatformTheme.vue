@@ -1,5 +1,5 @@
 <template>
-  <p-button-pure :theme="$store.getters.platformTheme" icon="sun" hide-label="true" @click="cycleTheme()"
+  <p-button-pure :theme="theme()" :icon="icon()" hide-label="true" @click="cycleTheme()"
     >Toggle theme of platform</p-button-pure
   >
 </template>
@@ -9,15 +9,41 @@
   import Component from 'vue-class-component';
   import { type Theme } from '@/models';
 
-  const themes: Theme[] = ['light', 'dark', 'auto'];
-
   @Component
   export default class CyclePlatformTheme extends Vue {
+    mounted(): void {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', this.onPrefersColorSchemeChange);
+    }
+
+    destroyed(): void {
+      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', this.onPrefersColorSchemeChange);
+    }
+
+    public onPrefersColorSchemeChange(): void {
+      if (this.theme() === 'auto') {
+        this.$forceUpdate();
+      }
+    }
+
+    public isPreferredColorSchemeDark(): boolean {
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    public theme(): Theme {
+      return this.$store.getters.platformTheme;
+    }
+
+    public icon(): 'moon' | 'sun' {
+      if ((this.theme() === 'auto' && this.isPreferredColorSchemeDark()) || this.theme() === 'dark') {
+        return 'moon';
+      } else {
+        return 'sun';
+      }
+    }
+
     public cycleTheme(): void {
-      this.$store.commit(
-        'setPlatformTheme',
-        themes[(themes.indexOf(this.$store.getters.platformTheme) + 1) % themes.length]
-      );
+      const themes: Theme[] = ['auto', ...[this.isPreferredColorSchemeDark() ? 'light' : 'dark']];
+      this.$store.commit('setPlatformTheme', themes[(Math.max(0, themes.indexOf(this.theme())) + 1) % themes.length]);
     }
   }
 </script>

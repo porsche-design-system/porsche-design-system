@@ -21,7 +21,7 @@ const initialState: State = {
   isSearchActive: false,
   selectedFramework: 'vanilla-js',
   playgroundTheme: (localStorage.getItem('playgroundTheme') as Exclude<Theme, 'auto'>) || 'light',
-  platformTheme: (localStorage.getItem('platformTheme') as Theme) || 'auto',
+  platformTheme: 'auto',
 };
 
 export default new Vuex.Store({
@@ -50,7 +50,6 @@ export default new Vuex.Store({
       state.playgroundTheme = payload;
     },
     setPlatformTheme(state: State, payload: Theme): void {
-      localStorage.setItem('platformTheme', payload);
       state.platformTheme = payload;
     },
   },
