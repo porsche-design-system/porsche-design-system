@@ -15,13 +15,13 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'pin-code';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const markup = () => ` <p-pin-code theme="${theme}" label="input gets hovered or focused"></p-pin-code>
+  const markup = () => `<p-pin-code theme="${theme}" label="input gets hovered or focused"></p-pin-code>
         <div class="force-label">
           <p-pin-code theme="${theme}" label="label gets hovered or focused"></p-pin-code>
         </div>
         <p-pin-code theme="${theme}" label="Disabled" disabled="true"></p-pin-code>
-        <p-pin-code theme="${theme}" label="Some label" state="error" message="Some error validation message."></p-pin-code>
-        <p-pin-code theme="${theme}" label="Some label" state="success" message="Some success validation message."></p-pin-code>
+        <p-pin-code theme="${theme}" label="Error state" state="error" message="Some error validation message."></p-pin-code>
+        <p-pin-code theme="${theme}" label="Success state" state="success" message="Some success validation message."></p-pin-code>
         <p-pin-code theme="${theme}">
           <span slot="label">
             Slotted label
