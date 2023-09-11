@@ -1,7 +1,6 @@
 import type { FormState } from '../../utils/form/form-state';
 import type { Styles } from 'jss';
-import { setAttribute } from '../../utils';
-import { consoleWarn } from '../../utils/log';
+import { consoleWarn, setAttributes } from '../../utils';
 
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
 export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
@@ -50,9 +49,11 @@ export const initHiddenInput = (
   required: boolean
 ): HTMLInputElement => {
   const hiddenInput = document.createElement('input');
-  setAttribute(hiddenInput, 'aria-hidden', 'true');
-  setAttribute(hiddenInput, 'slot', 'hidden-input');
-  setAttribute(hiddenInput, 'tabindex', '-1');
+  setAttributes(hiddenInput, {
+    'aria-hidden': 'true',
+    slot: 'hidden-input',
+    tabindex: '-1',
+  });
   syncHiddenInput(hiddenInput, name, value, disabled, required);
   host.prepend(hiddenInput);
   return hiddenInput;
@@ -65,8 +66,10 @@ export const syncHiddenInput = (
   disabled: boolean,
   required: boolean
 ): void => {
-  setAttribute(hiddenInput, 'name', name);
-  setAttribute(hiddenInput, 'value', value);
+  setAttributes(hiddenInput, {
+    name: name,
+    value: value,
+  });
   hiddenInput.toggleAttribute('disabled', disabled);
   hiddenInput.toggleAttribute('required', required);
 };

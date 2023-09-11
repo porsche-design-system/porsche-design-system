@@ -1,5 +1,5 @@
 import * as pinCodeUtils from './pin-code-utils';
-import * as setAttributeUtils from '../../utils/dom/setAttribute';
+import * as setAttributesUtils from '../../utils/dom/setAttributes';
 import * as consoleWarnUtils from '../../utils/log/logger';
 import {
   getStylesWithoutSlottedSelector,
@@ -173,19 +173,16 @@ describe('initHiddenInput()', () => {
     expect(spy).toBeCalledWith(hiddenInput, 'name', '1234', false, false);
   });
 
-  it('should call setAttribute() with correct parameters', () => {
-    const spy = jest.spyOn(setAttributeUtils, 'setAttribute');
+  it('should call setAttributes() with correct parameters', () => {
+    const spy = jest.spyOn(setAttributesUtils, 'setAttributes');
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
 
     const hiddenInput = initHiddenInput(component.host, 'name', '1234', false, false);
 
-    expect(spy).toBeCalledTimes(5);
-    expect(spy).toBeCalledWith(hiddenInput, 'aria-hidden', 'true');
-    expect(spy).toBeCalledWith(hiddenInput, 'slot', 'hidden-input');
-    expect(spy).toBeCalledWith(hiddenInput, 'tabindex', '-1');
-    expect(spy).toBeCalledWith(hiddenInput, 'name', 'name');
-    expect(spy).toBeCalledWith(hiddenInput, 'value', '1234');
+    expect(spy).toBeCalledTimes(2); // it is also called in syncHiddenInput()
+    expect(spy).toBeCalledWith(hiddenInput, { 'aria-hidden': 'true', slot: 'hidden-input', tabindex: '-1' });
+    expect(spy).toBeCalledWith(hiddenInput, { name: 'name', value: '1234' });
   });
 
   it('should return hidden input element with added attributes and prepend hidden input element to host', () => {
@@ -199,15 +196,14 @@ describe('initHiddenInput()', () => {
 });
 
 describe('syncHiddenInput()', () => {
-  it('should call setAttribute() with correct parameters', () => {
-    const spy = jest.spyOn(setAttributeUtils, 'setAttribute');
+  it('should call setAttributes() with correct parameters', () => {
+    const spy = jest.spyOn(setAttributesUtils, 'setAttributes');
     const hiddenInput = document.createElement('input');
 
     syncHiddenInput(hiddenInput, 'updatedName', '4321', false, false);
 
-    expect(spy).toBeCalledTimes(2);
-    expect(spy).toBeCalledWith(hiddenInput, 'name', 'updatedName');
-    expect(spy).toBeCalledWith(hiddenInput, 'value', '4321');
+    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(hiddenInput, { name: 'updatedName', value: '4321' });
   });
 
   it('should call toggleAttribute() with correct parameters and update "required" and "disabled" attributes', () => {
