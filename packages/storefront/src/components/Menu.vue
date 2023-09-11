@@ -1,6 +1,6 @@
 <template>
   <p-button-pure
-    theme="auto"
+    :theme="$store.getters.platformTheme"
     v-if="variant === 'open'"
     icon="menu-lines"
     hide-label="true"

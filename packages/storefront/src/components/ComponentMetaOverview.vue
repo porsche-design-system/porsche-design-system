@@ -2,10 +2,12 @@
   <div>
     <div style="display: flex; justify-content: space-between; margin: 0 0 1rem">
       <div>🚫 = deprecated<br />🛠 = breakpointCustomizable</div>
-      <p-switch theme="auto" @update="toggleProps" :checked="isToggled">Show all prop values</p-switch>
+      <p-switch :theme="$store.getters.platformTheme" @update="toggleProps" :checked="isToggled"
+        >Show all prop values</p-switch
+      >
     </div>
 
-    <p-table theme="auto">
+    <p-table :theme="$store.getters.platformTheme">
       <p-table-head>
         <!-- eslint-disable-next-line vue/no-v-text-v-html-on-component -->
         <p-table-head-row v-html="headRow"></p-table-head-row>

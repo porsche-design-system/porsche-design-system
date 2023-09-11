@@ -1,7 +1,9 @@
 <template>
   <header>
-    <p-display theme="auto" class="heading" size="small" tag="h2">Welcome to the new digital</p-display>
-    <p-text theme="auto" class="paragraph" color="contrast-high" size="large">
+    <p-display :theme="$store.getters.platformTheme" class="heading" size="small" tag="h2"
+      >Welcome to the new digital</p-display
+    >
+    <p-text :theme="$store.getters.platformTheme" class="paragraph" color="contrast-high" size="large">
       Become today a part of tomorrow’s Porsche new design language with the new Porsche Design System v3.
     </p-text>
   </header>

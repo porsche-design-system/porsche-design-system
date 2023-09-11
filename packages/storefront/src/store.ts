@@ -10,7 +10,8 @@ export type State = {
   isMenuActive: boolean;
   isSearchActive: boolean;
   selectedFramework: Framework;
-  theme: Theme;
+  playgroundTheme: Exclude<Theme, 'auto'>;
+  platformTheme: Theme;
 };
 
 const initialState: State = {
@@ -19,7 +20,8 @@ const initialState: State = {
   isMenuActive: false,
   isSearchActive: false,
   selectedFramework: 'vanilla-js',
-  theme: 'light',
+  playgroundTheme: (localStorage.getItem('playgroundTheme') as Exclude<Theme, 'auto'>) || 'light',
+  platformTheme: (localStorage.getItem('platformTheme') as Theme) || 'auto',
 };
 
 export default new Vuex.Store({
@@ -43,8 +45,13 @@ export default new Vuex.Store({
     setSelectedFramework(state: State, payload: Framework): void {
       state.selectedFramework = payload;
     },
-    setTheme(state: State, payload: Theme): void {
-      state.theme = payload;
+    setPlaygroundTheme(state: State, payload: Theme): void {
+      localStorage.setItem('playgroundTheme', payload);
+      state.playgroundTheme = payload;
+    },
+    setPlatformTheme(state: State, payload: Theme): void {
+      localStorage.setItem('platformTheme', payload);
+      state.platformTheme = payload;
     },
   },
   actions: {
@@ -65,8 +72,11 @@ export default new Vuex.Store({
     selectedFramework(state: State): Framework {
       return state.selectedFramework;
     },
-    theme(state: State): Theme {
-      return state.theme;
+    playgroundTheme(state: State): Theme {
+      return state.playgroundTheme;
+    },
+    platformTheme(state: State): Theme {
+      return state.platformTheme;
     },
   },
 });

@@ -2,7 +2,7 @@
   <main>
     <slot />
     <p-spinner
-      theme="auto"
+      :theme="$store.getters.platformTheme"
       class="spinner"
       :class="{ 'spinner--loading': isLoading }"
       size="medium"

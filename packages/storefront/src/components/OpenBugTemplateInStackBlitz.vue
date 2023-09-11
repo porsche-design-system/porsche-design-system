@@ -1,7 +1,7 @@
 <template>
-  <p-fieldset theme="auto" label="Choose your Template:">
+  <p-fieldset :theme="$store.getters.platformTheme" label="Choose your Template:">
     <p-segmented-control
-      theme="auto"
+      :theme="$store.getters.platformTheme"
       :value="selectedFramework"
       aria-label="Choose your Framework:"
       @update="(e) => (this.selectedFramework = e.detail.value)"
@@ -10,14 +10,14 @@
         frameworkNameMap[framework]
       }}</p-segmented-control-item>
     </p-segmented-control>
-    <p-select-wrapper theme="auto" label="Choose your Porsche Design System version:">
+    <p-select-wrapper :theme="$store.getters.platformTheme" label="Choose your Porsche Design System version:">
       <select v-model="selectedPdsVersion">
         <option v-for="(pdsVersion, index) in pdsVersions" :key="index" :value="pdsVersion">{{ pdsVersion }}</option>
       </select>
     </p-select-wrapper>
 
     <CodeEditor
-      theme="auto"
+      :theme="$store.getters.platformTheme"
       :buttonLabel="'Open template in StackBlitz'"
       :markup="markup"
       :framework="selectedFramework"

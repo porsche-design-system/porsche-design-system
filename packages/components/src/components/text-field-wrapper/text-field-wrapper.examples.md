@@ -183,7 +183,7 @@ export default class Code extends Vue {
   searchExample = getTextFieldWrapperCodeSamples('example-search');
 
   get theme(): Theme {
-    return this.$store.getters.theme || 'light';
+    return this.$store.getters.playgroundTheme || 'light';
   }
 
   hideLabel = false;

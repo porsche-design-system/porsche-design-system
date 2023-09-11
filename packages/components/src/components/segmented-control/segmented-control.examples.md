@@ -146,7 +146,7 @@ export default class Code extends Vue {
   };
 
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 
   eventHandlingMarkup = getSegmentedControlCodeSamples();

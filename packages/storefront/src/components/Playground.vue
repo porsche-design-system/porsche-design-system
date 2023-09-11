@@ -1,6 +1,10 @@
 <template>
   <div class="playground">
-    <p-tabs-bar theme="auto" v-if="mergedConfig.themeable" :active-tab-index="activeThemeTabIndex">
+    <p-tabs-bar
+      :theme="$store.getters.platformTheme"
+      v-if="mergedConfig.themeable"
+      :active-tab-index="activeThemeTabIndex"
+    >
       <button type="button" @click="switchTheme('light')">Light theme</button>
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
     </p-tabs-bar>
@@ -130,7 +134,7 @@
     }
 
     public switchTheme(theme: Theme): void {
-      this.$store.commit('setTheme', theme);
+      this.$store.commit('setPlaygroundTheme', theme);
     }
 
     public toggleFullscreen(): void {
@@ -192,7 +196,7 @@
     }
 
     public get theme(): Theme {
-      return this.config.themeable ? this.$store.getters.theme : 'light';
+      return this.config.themeable ? this.$store.getters.playgroundTheme : 'light';
     }
 
     public get sharedImportKeys(): SharedImportKey[] {

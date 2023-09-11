@@ -1,5 +1,11 @@
 <template>
-  <p-icon theme="auto" name="accessibility" :size="size" color="notification-info" aria-hidden="true"></p-icon>
+  <p-icon
+    :theme="$store.getters.platformTheme"
+    name="accessibility"
+    :size="size"
+    color="notification-info"
+    aria-hidden="true"
+  ></p-icon>
 </template>
 
 <script lang="ts">

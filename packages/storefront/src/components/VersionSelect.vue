@@ -1,6 +1,6 @@
 <template>
   <label>
-    <p-heading theme="auto" size="small">Porsche Design System</p-heading>
+    <p-heading :theme="$store.getters.platformTheme" size="small">Porsche Design System</p-heading>
     <select v-model="version" v-on:change="onVersionChange" aria-label="Switch Porsche Design System version">
       <option v-for="option in versionOptions" :key="option" :value="option">{{ option }}</option>
     </select>

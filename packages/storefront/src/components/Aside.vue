@@ -46,13 +46,9 @@
       top: 0;
       left: 0;
       bottom: 0;
-      background: var(--theme-background-base);
+      background: var(--theme-custom-aside-background);
       z-index: 3;
       transition: transform $transition-duration;
-
-      @media (prefers-color-scheme: dark) {
-        background: $pds-theme-dark-background-surface; // specific color is used because we don't want to invert the theme
-      }
 
       &.slide-in {
         visibility: inherit;

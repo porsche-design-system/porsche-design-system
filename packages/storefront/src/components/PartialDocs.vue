@@ -1,7 +1,7 @@
 <template>
   <div class="partial-docs">
     <Playground :frameworkMarkup="frameworkMarkup" :showCodeEditor="false"></Playground>
-    <p-text theme="auto">
+    <p-text :theme="$store.getters.platformTheme">
       You can find an implemented example in our
       <a href="https://github.com/porsche-design-system/sample-integration-vanillajs">Sample Integration Vanilla JS</a>,
       <a href="https://github.com/porsche-design-system/sample-integration-angular">Sample Integration Angular</a>,

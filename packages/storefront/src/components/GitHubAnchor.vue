@@ -1,6 +1,6 @@
 <template>
   <p-link-pure
-    theme="auto"
+    :theme="$store.getters.platformTheme"
     :icon-source="require('@/assets/github.svg')"
     href="https://github.com/porsche-design-system/porsche-design-system"
     target="_blank"

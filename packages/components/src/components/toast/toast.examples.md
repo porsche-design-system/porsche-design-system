@@ -74,7 +74,7 @@ import { TOAST_STATES, TOAST_STATES_DEPRECATED } from './toast/toast-utils';
 export default class Code extends Vue {
   config = { themeable: true };
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 
   toastText = 'Some message';

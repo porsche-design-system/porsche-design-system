@@ -1,5 +1,5 @@
 <template>
-  <p-inline-notification theme="auto" :heading="heading" :state="state" dismiss-button="false">
+  <p-inline-notification :theme="$store.getters.platformTheme" :heading="heading" :state="state" dismiss-button="false">
     <slot />
   </p-inline-notification>
 </template>

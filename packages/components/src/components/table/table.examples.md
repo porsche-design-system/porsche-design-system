@@ -153,7 +153,7 @@ export default class Code extends Vue {
   config = { themeable: true };
 
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 
   headBasic = headBasic;

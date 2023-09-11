@@ -97,7 +97,7 @@ import { getBannerCodeSamples } from '@porsche-design-system/shared';
 export default class Code extends Vue {
   config = { themeable: true };
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 
   codeExample = getBannerCodeSamples();

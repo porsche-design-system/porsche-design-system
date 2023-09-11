@@ -7,6 +7,7 @@
     <Wordmark />
     <div>
       <Search class="search-field" />
+      <CyclePlatformTheme class="cycle-platform-theme" />
       <GitHubAnchor class="github-anchor" />
     </div>
   </header>
@@ -20,6 +21,7 @@
   import Menu from '@/components/Menu.vue';
   import Wordmark from '@/components/Wordmark.vue';
   import GitHubAnchor from '@/components/GitHubAnchor.vue';
+  import CyclePlatformTheme from '@/components/CyclePlatformTheme.vue';
 
   @Component({
     components: {
@@ -28,6 +30,7 @@
       Menu,
       Wordmark,
       GitHubAnchor,
+      CyclePlatformTheme,
     },
   })
   export default class Header extends Vue {
@@ -53,10 +56,7 @@
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     gap: $pds-grid-gap;
     align-items: center;
-    background-color: rgba(
-      $pds-theme-light-background-base,
-      0.79
-    ); // specific color is used because we can't use scss rgba function otherwise
+    background-color: var(--theme-custom-header-background);
     border-bottom: 1px solid var(--theme-background-surface);
     -webkit-backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
     backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
@@ -65,13 +65,6 @@
     // while the content is still being placed on the Porsche Grid
     margin: 0 calc(#{$pds-grid-extended-offset-base} * -1);
     padding: 0 $pds-grid-extended-offset-base;
-
-    @media (prefers-color-scheme: dark) {
-      background-color: rgba(
-        $pds-theme-dark-background-base,
-        0.79
-      ); // specific color is used because we can't use scss rgba function otherwise
-    }
 
     @include pds-media-query-min('s') {
       margin: 0 calc(#{$pds-grid-extended-offset-s} * -1);
@@ -106,7 +99,8 @@
   }
 
   .open-menu-button,
-  .github-anchor {
+  .github-anchor,
+  .cycle-platform-theme {
     padding: 13px; // apply custom padding to make button/anchor in hover state as large as search field height
   }
 
@@ -114,7 +108,8 @@
     margin-left: -13px; // compensate alignment because of custom padding
   }
 
-  .github-anchor {
+  .github-anchor,
+  .cycle-platform-theme {
     margin-right: -13px; // compensate alignment because of custom padding
   }
 

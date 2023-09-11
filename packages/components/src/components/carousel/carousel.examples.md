@@ -190,7 +190,7 @@ export default class Code extends Vue {
   config = { themeable: true, supportsFullWindow: true };
 
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 
   basicHeading = "Some heading";

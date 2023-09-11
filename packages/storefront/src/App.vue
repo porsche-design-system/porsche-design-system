@@ -2,7 +2,7 @@
   <main v-if="isStandalone">
     <router-view />
   </main>
-  <div id="app" v-else>
+  <div id="app" :class="platformThemeModeCssClass" v-else>
     <Header />
     <Aside />
     <Main>
@@ -38,6 +38,14 @@
       return this.$store.getters.isLoading;
     }
 
+    get platformThemeModeCssClass(): string {
+      return {
+        light: 'light-mode',
+        dark: 'dark-mode',
+        auto: 'auto-dark-mode',
+      }[this.$store.getters.platformTheme];
+    }
+
     @Watch('$route')
     private onRouteChange(): void {
       this.$store.commit('setIsMenuActive', false);
@@ -48,7 +56,7 @@
 <style lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
 
-  :root {
+  #app {
     --theme-primary: #{$pds-theme-light-primary};
     --theme-background-base: #{$pds-theme-light-background-base};
     --theme-background-surface: #{$pds-theme-light-background-surface};
@@ -59,7 +67,11 @@
     --theme-notification-success: #{$pds-theme-light-notification-success};
     --theme-notification-error: #{$pds-theme-light-notification-error};
 
-    @media (prefers-color-scheme: dark) {
+    --theme-custom-aside-background: #{$pds-theme-light-background-base};
+    --theme-custom-search-background: #{$pds-theme-light-background-base};
+    --theme-custom-header-background: rgba(255, 255, 255, 0.79);
+
+    &.dark-mode {
       --theme-primary: #{$pds-theme-dark-primary};
       --theme-background-base: #{$pds-theme-dark-background-base};
       --theme-background-surface: #{$pds-theme-dark-background-surface};
@@ -69,10 +81,32 @@
       --theme-contrast-low: #{$pds-theme-dark-contrast-low};
       --theme-notification-success: #{$pds-theme-dark-notification-success};
       --theme-notification-error: #{$pds-theme-dark-notification-error};
+
+      --theme-custom-aside-background: #{$pds-theme-dark-background-surface};
+      --theme-custom-search-background: #{$pds-theme-dark-background-surface};
+      --theme-custom-header-background: rgba(14, 14, 18, 0.79);
+    }
+
+    &.auto-dark-mode {
+      @media (prefers-color-scheme: dark) {
+        --theme-primary: #{$pds-theme-dark-primary};
+        --theme-background-base: #{$pds-theme-dark-background-base};
+        --theme-background-surface: #{$pds-theme-dark-background-surface};
+        --theme-background-shading: #{$pds-theme-dark-background-shading};
+        --theme-state-hover: #{$pds-theme-dark-state-hover};
+        --theme-contrast-medium: #{$pds-theme-dark-contrast-medium};
+        --theme-contrast-low: #{$pds-theme-dark-contrast-low};
+        --theme-notification-success: #{$pds-theme-dark-notification-success};
+        --theme-notification-error: #{$pds-theme-dark-notification-error};
+
+        --theme-custom-aside-background: #{$pds-theme-dark-background-surface};
+        --theme-custom-search-background: #{$pds-theme-dark-background-surface};
+        --theme-custom-header-background: rgba(14, 14, 18, 0.79);
+      }
     }
   }
 
-  body {
+  #app {
     background: var(--theme-background-base);
     color: var(--theme-primary);
   }
