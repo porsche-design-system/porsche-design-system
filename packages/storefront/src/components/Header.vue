@@ -56,7 +56,7 @@
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     gap: $pds-grid-gap;
     align-items: center;
-    background-color: var(--theme-custom-header-background);
+    background-color: var(--theme-custom-background-header);
     border-bottom: 1px solid var(--theme-background-surface);
     -webkit-backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
     backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur

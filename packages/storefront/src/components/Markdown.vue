@@ -232,7 +232,7 @@
         :not(pre) > code {
           padding: 2px $pds-spacing-static-small;
           border-radius: $pds-border-radius-small;
-          background-color: var(--theme-custom-code-background);
+          background-color: var(--theme-custom-background-code);
           color: var(--theme-primary);
         }
 
@@ -242,7 +242,7 @@
           padding: $pds-spacing-static-small $pds-spacing-static-medium;
           word-break: break-all;
           word-wrap: break-word;
-          background-color: var(--theme-custom-code-background);
+          background-color: var(--theme-custom-background-code);
           color: var(--theme-primary);
           border-radius: $pds-border-radius-medium;
           overflow-x: auto;

@@ -142,7 +142,7 @@
         left: 50%;
         transform: translateX(-50%);
         border-width: 0 12px 12px;
-        border-color: transparent transparent var(--theme-custom-search-background);
+        border-color: transparent transparent var(--theme-custom-background-search);
       }
     }
   }
@@ -169,7 +169,7 @@
       transform: translate(50%, 0);
       padding: $pds-spacing-static-medium 0;
       border-radius: $pds-border-radius-small;
-      background: var(--theme-custom-search-background);
+      background: var(--theme-custom-background-search);
       overflow: auto;
       z-index: 1;
     }

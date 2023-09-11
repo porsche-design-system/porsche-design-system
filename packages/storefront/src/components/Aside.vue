@@ -46,7 +46,7 @@
       top: 0;
       left: 0;
       bottom: 0;
-      background: var(--theme-custom-aside-background);
+      background: var(--theme-custom-background-aside);
       z-index: 3;
       transition: transform $transition-duration;
 
