@@ -5,7 +5,7 @@ import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { getStylesWithoutSlottedSelector } from './pin-code-utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
   borderWidthBase,
   fontLineHeight,
@@ -41,6 +41,7 @@ export const getComponentCss = (
     '@global': {
       ':host': addImportantToEachRule({
         display: 'block',
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       ...inputStyles,
