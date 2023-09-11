@@ -53,8 +53,11 @@
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     gap: $pds-grid-gap;
     align-items: center;
-    border-bottom: 1px solid $pds-theme-light-background-surface;
-    background-color: rgb(255 255 255 / 79%);
+    background-color: rgba(
+      $pds-theme-light-background-base,
+      0.79
+    ); // specific color is used because we can't use scss rgba function otherwise
+    border-bottom: 1px solid var(--theme-background-surface);
     -webkit-backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
     backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
 
@@ -62,6 +65,13 @@
     // while the content is still being placed on the Porsche Grid
     margin: 0 calc(#{$pds-grid-extended-offset-base} * -1);
     padding: 0 $pds-grid-extended-offset-base;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba(
+        $pds-theme-dark-background-base,
+        0.79
+      ); // specific color is used because we can't use scss rgba function otherwise
+    }
 
     @include pds-media-query-min('s') {
       margin: 0 calc(#{$pds-grid-extended-offset-s} * -1);

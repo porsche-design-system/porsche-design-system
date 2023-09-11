@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p-tabs-bar v-if="hasTabs" :active-tab-index="activeTabIndex" size="medium">
+    <p-tabs-bar theme="auto" v-if="hasTabs" :active-tab-index="activeTabIndex" size="medium">
       <router-link v-for="(tab, index) in tabs" :key="index" :to="createTabLink(tab)">{{ tab }}</router-link>
     </p-tabs-bar>
     <Markdown>

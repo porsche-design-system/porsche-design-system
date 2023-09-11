@@ -45,10 +45,11 @@
     .language-diff {
       & > {
         .inserted {
-          color: $pds-theme-light-notification-success;
+          color: var(--theme-notification-success);
         }
+
         .deleted {
-          color: $pds-theme-light-notification-error;
+          color: var(--theme-notification-error);
         }
       }
     }
@@ -159,7 +160,7 @@
           }
           border: 0;
           height: 1px;
-          background-color: $pds-theme-light-contrast-low;
+          background-color: var(--theme-contrast-low);
         }
 
         // Emphasis
@@ -182,7 +183,7 @@
         // Blockquote
         blockquote {
           padding-left: $pds-spacing-static-medium;
-          border-left: 5px solid $pds-theme-light-contrast-low;
+          border-left: 5px solid var(--theme-contrast-low);
         }
 
         // Lists
@@ -230,9 +231,9 @@
 
         :not(pre) > code {
           padding: 2px $pds-spacing-static-small;
-          background-color: mix($pds-theme-light-primary, $pds-theme-light-background-base, 10%);
-          border-radius: 3px;
-          color: $pds-theme-light-primary;
+          border-radius: $pds-border-radius-small;
+          background-color: var(--theme-state-hover);
+          color: var(--theme-primary);
         }
 
         pre {
@@ -241,8 +242,9 @@
           padding: $pds-spacing-static-small $pds-spacing-static-medium;
           word-break: break-all;
           word-wrap: break-word;
-          background-color: $pds-theme-light-background-surface;
-          color: $pds-theme-light-contrast-high;
+          background-color: var(--theme-state-hover);
+          color: var(--theme-primary);
+          border-radius: $pds-border-radius-medium;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
         }
@@ -267,7 +269,7 @@
           th {
             text-align: left;
             padding-bottom: $pds-spacing-static-small;
-            border-bottom: 1px solid $pds-theme-light-contrast-low;
+            border-bottom: 1px solid var(--theme-contrast-low);
           }
 
           td {
@@ -276,7 +278,7 @@
               top: $pds-spacing-static-small;
               bottom: $pds-spacing-static-small;
             }
-            border-bottom: 1px solid $pds-theme-light-contrast-low;
+            border-bottom: 1px solid var(--theme-contrast-low);
             vertical-align: top;
             width: 10%;
           }
@@ -298,6 +300,7 @@
         img {
           max-width: 100%;
           vertical-align: top;
+          border-radius: $pds-border-radius-large;
         }
 
         // Special

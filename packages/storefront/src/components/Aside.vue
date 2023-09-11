@@ -17,7 +17,7 @@
   import VersionSelect from '@/components/VersionSelect.vue';
   import Search from '@/components/Search.vue';
   import Footer from '@/components/Footer.vue';
-  import Navigation from "@/components/Navigation.vue";
+  import Navigation from '@/components/Navigation.vue';
 
   @Component({
     components: {
@@ -46,9 +46,13 @@
       top: 0;
       left: 0;
       bottom: 0;
-      background: $pds-theme-light-background-base;
+      background: var(--theme-background-base);
       z-index: 3;
       transition: transform $transition-duration;
+
+      @media (prefers-color-scheme: dark) {
+        background: $pds-theme-dark-background-surface; // specific color is used because we don't want to invert the theme
+      }
 
       &.slide-in {
         visibility: inherit;
@@ -72,16 +76,14 @@
       top: $header-height;
       height: calc(100vh - #{$header-height});
       // Enlarge vertical scrollable area to be visually aligned with the main section
-      margin:
-        calc(#{$pds-spacing-fluid-x-large} * -1) // Compensate vertical gap of Porsche Grid
+      margin: calc(#{$pds-spacing-fluid-x-large} * -1) // Compensate vertical gap of Porsche Grid
         calc(#{$pds-grid-gap} * -1) // Move scrollbar out of Porsche Grid to keep navigation content properly aligned
-        0
-        calc(#{$pds-grid-wide-offset-s} * -1); // Enables the scrollable area of the sidebar to the left side of the viewport while the content is still being placed on the Porsche Grid
-      padding:
-        $pds-spacing-fluid-x-large
-        $pds-grid-gap // Move scrollbar out of Porsche Grid to keep navigation content properly aligned
-        $pds-spacing-fluid-x-large
-        $pds-grid-wide-offset-s; // Enables the scrollable area of the sidebar to the left side of the viewport while the content is still being placed on the Porsche Grid
+        0 calc(
+          #{$pds-grid-wide-offset-s} * -1
+        ); // Enables the scrollable area of the sidebar to the left side of the viewport while the content is still being placed on the Porsche Grid
+      padding: $pds-spacing-fluid-x-large $pds-grid-gap
+        // Move scrollbar out of Porsche Grid to keep navigation content properly aligned
+        $pds-spacing-fluid-x-large $pds-grid-wide-offset-s; // Enables the scrollable area of the sidebar to the left side of the viewport while the content is still being placed on the Porsche Grid
     }
 
     @include pds-media-query-min('xxl') {

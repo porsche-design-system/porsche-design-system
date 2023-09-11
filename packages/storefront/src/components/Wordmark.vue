@@ -1,6 +1,6 @@
 <template>
   <router-link to="/" v-slot="{ href, navigate }">
-    <p-wordmark :href="href" @click="navigate"></p-wordmark>
+    <p-wordmark theme="auto" :href="href" @click="navigate"></p-wordmark>
   </router-link>
 </template>
 

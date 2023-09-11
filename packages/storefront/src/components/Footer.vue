@@ -1,9 +1,9 @@
 <template>
   <footer>
-    <p-link-pure href="https://brand.porsche.com" target="_blank" icon="external" align-label="left">
+    <p-link-pure theme="auto" href="https://brand.porsche.com" target="_blank" icon="external" align-label="left">
       brand.porsche.com
     </p-link-pure>
-    <p-text size="xx-small" color="contrast-high">
+    <p-text theme="auto" size="xx-small" color="contrast-high">
       <span>© {{ year }} Dr. Ing. h.c. F. Porsche AG.</span>
       <br />
       <a href="https://ux.porsche.com/privacy-policy">Privacy Policy</a>

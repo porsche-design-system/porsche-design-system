@@ -1,6 +1,7 @@
 <template>
-  <p-fieldset label="Choose your Template:">
+  <p-fieldset theme="auto" label="Choose your Template:">
     <p-segmented-control
+      theme="auto"
       :value="selectedFramework"
       aria-label="Choose your Framework:"
       @update="(e) => (this.selectedFramework = e.detail.value)"
@@ -9,13 +10,14 @@
         frameworkNameMap[framework]
       }}</p-segmented-control-item>
     </p-segmented-control>
-    <p-select-wrapper label="Choose your Porsche Design System version:">
+    <p-select-wrapper theme="auto" label="Choose your Porsche Design System version:">
       <select v-model="selectedPdsVersion">
         <option v-for="(pdsVersion, index) in pdsVersions" :key="index" :value="pdsVersion">{{ pdsVersion }}</option>
       </select>
     </p-select-wrapper>
 
     <CodeEditor
+      theme="auto"
       :buttonLabel="'Open template in StackBlitz'"
       :markup="markup"
       :framework="selectedFramework"

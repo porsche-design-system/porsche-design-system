@@ -1,6 +1,6 @@
 <template>
   <div class="playground">
-    <p-tabs-bar v-if="mergedConfig.themeable" :active-tab-index="activeThemeTabIndex">
+    <p-tabs-bar theme="auto" v-if="mergedConfig.themeable" :active-tab-index="activeThemeTabIndex">
       <button type="button" @click="switchTheme('light')">Light theme</button>
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
     </p-tabs-bar>
@@ -240,7 +240,7 @@
     }
 
     &--dark {
-      border-color: $pds-theme-dark-background-base;
+      border-color: $pds-theme-dark-contrast-low;
       background-color: $pds-theme-dark-background-base;
 
       &.example--surface {

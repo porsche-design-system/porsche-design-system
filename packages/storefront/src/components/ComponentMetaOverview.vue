@@ -2,10 +2,10 @@
   <div>
     <div style="display: flex; justify-content: space-between; margin: 0 0 1rem">
       <div>🚫 = deprecated<br />🛠 = breakpointCustomizable</div>
-      <p-switch @update="toggleProps" :checked="isToggled">Show all prop values</p-switch>
+      <p-switch theme="auto" @update="toggleProps" :checked="isToggled">Show all prop values</p-switch>
     </div>
 
-    <p-table>
+    <p-table theme="auto">
       <p-table-head>
         <!-- eslint-disable-next-line vue/no-v-text-v-html-on-component -->
         <p-table-head-row v-html="headRow"></p-table-head-row>
@@ -164,9 +164,9 @@
     display: inline-block;
     @include pds-text-x-small;
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
-    padding: 0.125rem $pds-spacing-static-small;
-    background: mix($pds-theme-light-primary, $pds-theme-light-background-base, 10%);
+    padding: 2px $pds-spacing-static-small;
     border-radius: $pds-border-radius-small;
+    background-color: var(--theme-state-hover);
 
     &:not(:first-child) {
       margin: $pds-spacing-static-small 0 0;
@@ -177,7 +177,7 @@
     cursor: pointer;
 
     &:hover {
-      color: $pds-theme-light-contrast-medium;
+      color: var(--theme-contrast-medium);
     }
   }
 </style>

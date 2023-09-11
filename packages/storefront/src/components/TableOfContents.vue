@@ -1,9 +1,9 @@
 <template>
   <div v-if="links.length > 1" class="toc">
-    <p-heading size="medium" tag="h2">Table of Contents</p-heading>
+    <p-heading theme="auto" size="medium" tag="h2">Table of Contents</p-heading>
     <ul>
       <li v-for="(link, index) in links" :key="index">
-        <p-link-pure :href="link.href" :icon-source="returnIcon" v-on:click="onLinkClick(link, $event)">{{
+        <p-link-pure theme="auto" :href="link.href" :icon-source="returnIcon" v-on:click="onLinkClick(link, $event)">{{
           link.title
         }}</p-link-pure>
       </li>

@@ -15,10 +15,10 @@
             }"
           >
             <template v-slot:item="{ item }">
-              <p-heading size="small" tag="h2" class="category">{{ item.category }}</p-heading>
+              <p-heading theme="auto" size="small" tag="h2" class="category">{{ item.category }}</p-heading>
               <ul>
                 <li v-for="(hit, index) in item.hits" :key="index">
-                  <p-link-pure class="link" icon="none" @click="() => (displayHits = false)">
+                  <p-link-pure theme="auto" class="link" icon="none" @click="() => (displayHits = false)">
                     <router-link :to="hit.url">{{ hit.page }} {{ hit.tab ? ' - ' + hit.tab : '' }}</router-link>
                   </p-link-pure>
                 </li>
@@ -135,7 +135,11 @@
         left: 50%;
         transform: translateX(-50%);
         border-width: 0 12px 12px;
-        border-color: transparent transparent $pds-theme-light-background-base;
+        border-color: transparent transparent var(--theme-background-base);
+
+        @media (prefers-color-scheme: dark) {
+          border-color: transparent transparent $pds-theme-dark-background-surface; // specific color is used because we don't want to invert the theme
+        }
       }
     }
   }
@@ -162,9 +166,13 @@
       transform: translate(50%, 0);
       padding: $pds-spacing-static-medium 0;
       border-radius: $pds-border-radius-small;
-      background: $pds-theme-light-background-base;
+      background: var(--theme-background-base);
       overflow: auto;
       z-index: 1;
+
+      @media (prefers-color-scheme: dark) {
+        background: $pds-theme-dark-background-surface; // specific color is used because we don't want to invert the theme
+      }
     }
   }
 

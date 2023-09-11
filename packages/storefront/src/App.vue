@@ -19,7 +19,7 @@
   import Header from '@/components/Header.vue';
   import Aside from '@/components/Aside.vue';
   import Main from '@/components/Main.vue';
-  import { Watch } from "vue-property-decorator";
+  import { Watch } from 'vue-property-decorator';
 
   @Component({
     components: {
@@ -30,7 +30,6 @@
     },
   })
   export default class App extends Vue {
-
     public get isStandalone(): boolean {
       return this.$route.meta?.standalone;
     }
@@ -47,10 +46,38 @@
 </script>
 
 <style lang="scss">
-  // TODO: we shouldn't define most of the following styles globally
-
   @use '@porsche-design-system/components-js/styles' as *;
 
+  :root {
+    --theme-primary: #{$pds-theme-light-primary};
+    --theme-background-base: #{$pds-theme-light-background-base};
+    --theme-background-surface: #{$pds-theme-light-background-surface};
+    --theme-background-shading: #{$pds-theme-light-background-shading};
+    --theme-state-hover: #{$pds-theme-light-state-hover};
+    --theme-contrast-medium: #{$pds-theme-light-contrast-medium};
+    --theme-contrast-low: #{$pds-theme-light-contrast-low};
+    --theme-notification-success: #{$pds-theme-light-notification-success};
+    --theme-notification-error: #{$pds-theme-light-notification-error};
+
+    @media (prefers-color-scheme: dark) {
+      --theme-primary: #{$pds-theme-dark-primary};
+      --theme-background-base: #{$pds-theme-dark-background-base};
+      --theme-background-surface: #{$pds-theme-dark-background-surface};
+      --theme-background-shading: #{$pds-theme-dark-background-shading};
+      --theme-state-hover: #{$pds-theme-dark-state-hover};
+      --theme-contrast-medium: #{$pds-theme-dark-contrast-medium};
+      --theme-contrast-low: #{$pds-theme-dark-contrast-low};
+      --theme-notification-success: #{$pds-theme-dark-notification-success};
+      --theme-notification-error: #{$pds-theme-dark-notification-error};
+    }
+  }
+
+  body {
+    background: var(--theme-background-base);
+    color: var(--theme-primary);
+  }
+
+  // TODO: we shouldn't define most of the following styles globally
   // TODO: we should not rely on * selector reset
   * {
     margin: 0;

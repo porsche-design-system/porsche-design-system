@@ -2,6 +2,7 @@
   <nav v-show="!this.isSearchVisible">
     <!-- TODO: spacer class could be applied with an additional abstraction layer in storefront.config.ts  -->
     <p-accordion
+      theme="auto"
       v-for="(pages, category, index) in config"
       :key="index"
       :heading="category"
@@ -13,8 +14,10 @@
       <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">
           <router-link :to="getRoute(category, page)" v-slot="{ isActive, href, navigate }">
-            <p-link-pure icon="none" :active="isActive">
-              <a :href="href" @click="navigate">{{ page }}<span title="deprecated">{{ getDeprecated(category, page) }}</span></a>
+            <p-link-pure theme="auto" icon="none" :active="isActive">
+              <a :href="href" @click="navigate"
+                >{{ page }}<span title="deprecated">{{ getDeprecated(category, page) }}</span></a
+              >
             </p-link-pure>
           </router-link>
         </li>
@@ -50,16 +53,21 @@
     }
 
     private created(): void {
-      this.accordion = Object.keys(this.config).reduce((result, category) => {
-        result[category] = false;
-        return result;
-      }, {} as { [id: string]: boolean });
+      this.accordion = Object.keys(this.config).reduce(
+        (result, category) => {
+          result[category] = false;
+          return result;
+        },
+        {} as { [id: string]: boolean }
+      );
 
-      this.config.Components = Object.keys(this.config.Components)
-        .reduce((result, category) => {
+      this.config.Components = Object.keys(this.config.Components).reduce(
+        (result, category) => {
           result[category] = this.config.Components[category];
           return result;
-        }, {} as StorefrontConfig['Components']);
+        },
+        {} as StorefrontConfig['Components']
+      );
     }
 
     @Watch('$route')
