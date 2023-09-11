@@ -26,7 +26,7 @@
     "@types/jest": "^29.5.4",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "@types/styled-components": "^5.1.26",
+    "@types/styled-components": "^5.1.27",
     "react-scripts": "^5.0.1",
     "typescript": "~5.2.2"
   },
