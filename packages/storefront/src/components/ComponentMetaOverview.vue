@@ -168,7 +168,7 @@
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     padding: 2px $pds-spacing-static-small;
     border-radius: $pds-border-radius-small;
-    background-color: var(--theme-state-hover);
+    background-color: var(--theme-background-surface);
 
     &:not(:first-child) {
       margin: $pds-spacing-static-small 0 0;
