@@ -4,7 +4,7 @@
   import { ref } from 'vue';
 
   const length = ref(4);
-  const currentValue = ref<string[]>();
+  const currentValue = ref<string[]>([]);
   const isComplete = ref(currentValue.value?.join().length === length.value);
 
   const onUpdate = (e: PinCodeUpdateEvent): void => {
