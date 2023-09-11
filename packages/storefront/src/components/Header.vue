@@ -114,6 +114,12 @@
   }
 
   // TODO: maybe conditional rendering would be more advanced
+  .github-anchor {
+    @include pds-media-query-max('xs') {
+      display: none;
+    }
+  }
+
   .heading,
   .version-select,
   .search-field {
