@@ -20,11 +20,11 @@ which needs to be injected into the `<head>` of your `index.html`.
 Project integration differs based on the project setup.  
 The following showcases the most common ways.
 
-<p-inline-notification heading="Hint" state="success" dismiss-button="false">
+<Notification heading="Hint" state="success">
   In case, micro frontends with custom prefixed Porsche Design System components are used, 
 it's possible to provide proper initial styles to all of them by defining an array of custom prefixes (see example below).
 By entering <code>document.porscheDesignSystem</code> in the browser console of your application, it's possible to find out which prefixes are used.
-</p-inline-notification>
+</Notification>
 
 <PartialDocs name="getInitialStyles" :params="params" location="head"></PartialDocs>
 

@@ -2,11 +2,11 @@
 
 `p-text` is used to specify paragraph styling in documents.
 
-<p-inline-notification heading="Recommendation" state="success" dismiss-button="false">
+<Notification heading="Recommendation" state="success">
   Although the component is very sophisticated, it's recommended (if possible) to use the corresponding styles / design tokens of
 the "@porsche-design-system/components-{js|angular|react|vue}/styles" sub-package for best performance since way 
 less DOM nodes are required to render. Further information can be found <a href="styles/typography">here</a>.
-</p-inline-notification>
+</Notification>
 
 <TableOfContents></TableOfContents>
 
@@ -39,10 +39,10 @@ To provide more contextual HTML semantics you can either pass them with the `tag
 
 Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
-Following colors have been deprecated and will be removed with the next major release: "brand",
+<Notification heading="Deprecation hint" state="warning">
+  Following colors have been deprecated and will be removed with the next major release: "brand",
 "default", "neutral-contrast-high", "neutral-contrast-medium", "neutral-contrast-low" and "notification-neutral".
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="colorMarkup" :config="config">
   <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
@@ -52,10 +52,10 @@ Following colors have been deprecated and will be removed with the next major re
 
 ## Weight
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
-Following weight definitions have been deprecated and will be removed with the next major release: "thin" 
+<Notification heading="Deprecation hint" state="warning">
+  Following weight definitions have been deprecated and will be removed with the next major release: "thin" 
 and "semibold".
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="weightMarkup" :config="config">
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>

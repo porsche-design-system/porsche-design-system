@@ -5,8 +5,8 @@ Therefore, you can only have a single instance of this component within in your 
 close to the `body`, e.g., in your `App.tsx` or `app.component.ts`. This way you reduce the chance of having issues with
 its z-index and fixed positioning.
 
-Review the [notification decision tree](patterns/notifications/decision-tree) to determine which notification
-component is best for a particular scenario.
+Review the [notification decision tree](patterns/notifications/decision-tree) to determine which notification component
+is best for a particular scenario.
 
 <TableOfContents></TableOfContents>
 
@@ -23,9 +23,9 @@ type ToastMessage = {
 };
 ```
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
-Following state has been deprecated and will be removed with the next major release: "neutral".
-</p-inline-notification>
+<Notification heading="Deprecation hint" state="warning">
+  Following state has been deprecated and will be removed with the next major release: "neutral".
+</Notification>
 
 <Playground :frameworkMarkup="stateMarkup" :config="config">
   <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>

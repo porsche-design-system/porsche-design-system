@@ -6,9 +6,9 @@
 
 ## Color
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   Following colors have been deprecated and will be removed with the next major release: <span v-html="colorsDeprecated"></span>.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="colorMarkup" :config="{ ...config, backgroundColor }">
   <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>

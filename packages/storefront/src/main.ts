@@ -4,13 +4,13 @@ import router from './router';
 import store from './store';
 import Playground from '@/components/Playground.vue';
 import OpenBugTemplateInStackBlitz from '@/components/OpenBugTemplateInStackBlitz.vue';
-import ColorBadge from '@/components/ColorBadge.vue';
 import TableOfContents from '@/components/TableOfContents.vue';
 import { componentsReady } from '@porsche-design-system/components-js';
 import A11yIcon from '@/components/A11yIcon.vue';
 import PartialDocs from '@/components/PartialDocs.vue';
 import SelectOptions from '@/components/SelectOptions.vue';
 import ComponentMetaOverview from '@/components/ComponentMetaOverview.vue';
+import Notification from '@/components/Notification.vue';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -40,9 +40,9 @@ Vue.config.ignoredElements = [/p-\w*/];
 Vue.use({
   install(vue: VueConstructor) {
     vue.component('A11yIcon', A11yIcon);
-    vue.component('ColorBadge', ColorBadge);
     vue.component('OpenBugTemplateInStackBlitz', OpenBugTemplateInStackBlitz);
     vue.component('PartialDocs', PartialDocs);
+    vue.component('Notification', Notification);
     // eslint-disable-next-line vue/multi-word-component-names
     vue.component('Playground', Playground);
     vue.component('SelectOptions', SelectOptions);

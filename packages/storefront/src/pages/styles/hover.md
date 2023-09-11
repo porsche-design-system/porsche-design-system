@@ -4,9 +4,9 @@
 
 ## Example
 
-<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+<Notification heading="Important note" state="error">
  The <code>getHoverStyle() / pds-hover()</code> style is still experimental, interface might change.
-</p-inline-notification>
+</Notification>
 
 <Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
   <ExampleStylesHover />

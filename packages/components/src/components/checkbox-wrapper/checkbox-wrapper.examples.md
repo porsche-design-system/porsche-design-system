@@ -46,9 +46,9 @@ changes while this process is performed.
 
 ## Loading
 
-<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
-The <code>loading</code> prop is experimental and might be removed in a future release.
-</p-inline-notification>
+<Notification heading="Attention" state="warning">
+  The <code>loading</code> prop is experimental and might be removed in a future release.
+</Notification>
 
 <Playground :markup="loading" :config="config"></Playground>
 
