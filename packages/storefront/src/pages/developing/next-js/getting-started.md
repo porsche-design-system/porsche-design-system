@@ -126,7 +126,7 @@ export default function Document() {
 ```
 
 <p-inline-notification heading="Important" state="warning" dismiss-button="false">
-Applying the <a href="partials/dsr-ponyfill">getDSRPonyfill()</a> partial is <strong>crucial</strong> for the server build to work in browsers that don't <a href="https://caniuse.com/declarative-shadow-dom" target="_blank">support Declarative Shadow DOM</a>, yet. 
+  Applying the <a href="partials/dsr-ponyfill">getDSRPonyfill()</a> partial is <strong>crucial</strong> for the server build to work in browsers that don't <a href="https://caniuse.com/declarative-shadow-dom" target="_blank">support Declarative Shadow DOM</a>, yet. 
 </p-inline-notification>
 
 ### Step 3

@@ -6,7 +6,7 @@ import {
 } from './helper';
 import type { PartialName } from '@porsche-design-system/shared';
 import { FONT_FACE_CDN_FILE_CN, FONT_FACE_CDN_FILE_COM } from '@porsche-design-system/styles';
-import { consoleWarn } from '../../log';
+import { consoleWarn, throwException } from '../../log';
 import { getCDNBaseURL } from '../../getCDNBaseURL';
 
 declare global {
@@ -27,7 +27,7 @@ declare global {
 }
 
 export const validatePartialUsage = (): void => {
-  // Ensure no warning is thrown when started with yarn start except for getFontFaceStylesheet()
+  // ensure no validation is happening via `yarn start`
   if (ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development') {
     validateGetInitialStylesUsage();
     validateGetFontFaceStylesheetUsage();
@@ -65,7 +65,7 @@ export const validateGetComponentChunkLinksUsage = (): void => {
   Object.entries(usedTagNamesWithoutPreloadForVersions).forEach(([version, tagNames]) => {
     consoleWarn(
       `Usage of Porsche Design System v${version} component '${tagNames.join(', ')}' detected without preloading.`,
-      getWarningRecommendation('getComponentChunkLinks')
+      getValidatePartialErrorSecondaryText('getComponentChunkLinks')
     );
   });
 };
@@ -78,23 +78,37 @@ export const validateGetLoaderScriptUsage = (): void => {
 
 export const validateGetInitialStylesUsage = (): void => {
   if (!document.head.querySelector('style[data-pds-initial-styles]')) {
-    logPartialValidationWarning('getInitialStyles');
+    throwPartialValidationError('getInitialStyles');
   }
 };
 
 export const logPartialValidationWarning = (partialName: PartialName, prefix?: string): void => {
   consoleWarn(
-    `The Porsche Design System ${
-      prefix ? `with prefix: '${prefix}' ` : ''
-    }is used without using the ${partialName}() partial.`,
-    getWarningRecommendation(partialName)
+    getValidatePartialErrorPrimaryText(partialName, prefix),
+    getValidatePartialErrorSecondaryText(partialName)
   );
 };
 
-export const getWarningRecommendation = (partialName: string): string => {
+export const throwPartialValidationError = (partialName: PartialName, prefix?: string): void => {
+  throwException(
+    getValidatePartialErrorPrimaryText(partialName, prefix) +
+      ' ' +
+      getValidatePartialErrorSecondaryText(partialName, true)
+  );
+};
+
+export const getValidatePartialErrorPrimaryText = (partialName: string, prefix?: string): string => {
+  return `The Porsche Design System ${
+    prefix ? `with prefix: '${prefix}' ` : ''
+  }is used without using the ${partialName}() partial.`;
+};
+
+export const getValidatePartialErrorSecondaryText = (partialName: string, required?: boolean): string => {
   const partialUrl = partialName
     .replace('get', '')
     .replace(/([a-z])([A-Z])/g, '$1-$2') // camelCase to param-case
     .toLowerCase();
-  return `The usage of the ${partialName}() partial is recommended as described at https://designsystem.porsche.com/v3/partials/${partialUrl} to enhance loading behavior.`;
+  return `The usage of the ${partialName}() partial is ${
+    required ? 'required' : 'recommended'
+  } as described at https://designsystem.porsche.com/v3/partials/${partialUrl} to enhance loading behavior.`;
 };
