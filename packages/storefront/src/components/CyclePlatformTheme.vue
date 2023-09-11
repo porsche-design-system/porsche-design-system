@@ -43,7 +43,16 @@
 
     public cycleTheme(): void {
       const themes: Theme[] = ['auto', ...[this.isPreferredColorSchemeDark() ? 'light' : 'dark']];
-      this.$store.commit('setPlatformTheme', themes[(Math.max(0, themes.indexOf(this.theme())) + 1) % themes.length]);
+      const newTheme = themes[(Math.max(0, themes.indexOf(this.theme())) + 1) % themes.length];
+      document.body.classList.remove('light-mode', 'dark-mode', 'auto-dark-mode');
+      document.body.classList.add(
+        {
+          light: 'light-mode',
+          dark: 'dark-mode',
+          auto: 'auto-dark-mode',
+        }[newTheme]
+      );
+      this.$store.commit('setPlatformTheme', newTheme);
     }
   }
 </script>

@@ -71,6 +71,7 @@
       position: sticky; // with sticky we can use a fixed positioned scroll area with top/height definitions as well as position it on the Porsche Grid
       top: $header-height;
       height: calc(100vh - #{$header-height});
+      background: var(--theme-background-base); // to ensure scrollbar coloring is optimal
       // Enlarge vertical scrollable area to be visually aligned with the main section
       margin: calc(#{$pds-spacing-fluid-x-large} * -1) // Compensate vertical gap of Porsche Grid
         calc(#{$pds-grid-gap} * -1) // Move scrollbar out of Porsche Grid to keep navigation content properly aligned
