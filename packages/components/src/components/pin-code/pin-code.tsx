@@ -21,14 +21,14 @@ import {
 import { getComponentCss } from './pin-code-styles';
 import {
   initHiddenInput,
-  inputConsistsOfDigits,
-  inputIsSingleDigit,
+  hasInputOnlyDigits,
+  isInputSingleDigit,
   getArrayOfInputValues,
   PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
   syncHiddenInput,
   warnAboutTransformedInitialValue,
-  getOptimizedValue,
+  getSanitizationValue,
 } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
@@ -116,9 +116,9 @@ export class PinCode {
 
   public componentWillRender(): void {
     // initialize array of values with empty strings / reset initial value if it does not consist of digits only
-    if (this.value.length === 0 || (this.value.join('') && !inputConsistsOfDigits(this.value.join('')))) {
+    if (this.value.length === 0 || (this.value.join('') && !hasInputOnlyDigits(this.value.join('')))) {
       if (this.value.join().length > 0) {
-        warnAboutTransformedInitialValue();
+        warnAboutTransformedInitialValue(this.host);
       }
       this.value = Array(this.length).fill('');
       this.updateValue();
@@ -127,7 +127,7 @@ export class PinCode {
     // make sure initial value is not longer than pin code length
     if (this.value?.length > this.length) {
       this.value = this.value.slice(0, this.length);
-      warnAboutTransformedInitialValue(this.length);
+      warnAboutTransformedInitialValue(this.host, this.length);
       this.updateValue();
     }
 
@@ -216,7 +216,7 @@ export class PinCode {
     // needed to update value on auto-complete via keyboard suggestion
     const { target } = e;
     if (target.value?.length >= this.length) {
-      const optimizedValue = getOptimizedValue(target.value, this.length);
+      const optimizedValue = getSanitizationValue(target.value, this.length);
       this.value = optimizedValue.split('');
       this.updateValue();
       this.focusFirstEmptyOrLastElement();
@@ -237,7 +237,7 @@ export class PinCode {
     if (isDisabledOrLoading(this.disabled, this.loading) && key !== 'Tab') {
       e.preventDefault();
     } // if input is valid overwrite old value
-    else if (inputIsSingleDigit(key)) {
+    else if (isInputSingleDigit(key)) {
       e.preventDefault();
       target.value = key;
       this.value = getArrayOfInputValues(this.pinCodeElements);
@@ -291,8 +291,8 @@ export class PinCode {
   };
 
   private onPaste = (e: ClipboardEvent): void => {
-    const optimizedPastedValue = getOptimizedValue(e.clipboardData.getData('Text'), this.length);
-    if (inputConsistsOfDigits(optimizedPastedValue) && optimizedPastedValue !== this.value.join('')) {
+    const optimizedPastedValue = getSanitizationValue(e.clipboardData.getData('Text'), this.length);
+    if (hasInputOnlyDigits(optimizedPastedValue) && optimizedPastedValue !== this.value.join('')) {
       this.value = optimizedPastedValue.split('');
       this.updateValue();
       this.focusFirstEmptyOrLastElement();

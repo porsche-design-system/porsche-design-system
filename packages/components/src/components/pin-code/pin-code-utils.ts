@@ -1,6 +1,6 @@
 import type { FormState } from '../../utils/form/form-state';
 import type { Styles } from 'jss';
-import { consoleWarn, setAttributes } from '../../utils';
+import { consoleWarn, getTagNameWithoutPrefix, setAttributes } from '../../utils';
 
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
 export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
@@ -21,25 +21,26 @@ export const removeSlottedSelector = (styles: Styles): Styles => {
   );
 };
 
-export const warnAboutTransformedInitialValue = (length?: number): void => {
-  const warningPrefix = '@Prop() "value" on component <p-pin-code>:';
+export const warnAboutTransformedInitialValue = (host: HTMLElement, length?: number): void => {
+  const warningPrefix = `Property value on component ${getTagNameWithoutPrefix(host)}:`;
   consoleWarn(
     warningPrefix,
     length
-      ? `Provided pin code has too many characters and was truncated to the max length of ${length}.`
-      : 'Provided pin code contains characters that are not of type number and the value has been reset.'
+      ? `Provided value has too many characters and was truncated to the max length of ${length}.`
+      : 'Provided value contains characters that are not of type number, the value was therefore reset.'
   );
 };
 
-export const inputIsSingleDigit = (input: string): boolean => /^\d$/.test(input);
+export const isInputSingleDigit = (input: string): boolean => /^\d$/.test(input);
 
-export const inputConsistsOfDigits = (input: string): boolean => /^\d+$/.test(input);
+export const hasInputOnlyDigits = (input: string): boolean => /^\d+$/.test(input);
 
 export const getArrayOfInputValues = (pinCodeElements: HTMLInputElement[]): string[] =>
   pinCodeElements.map((el) => el.value);
 
 // remove whitespaces and cut string if pasted value is longer than pin code length
-export const getOptimizedValue = (value: string, length: number): string => value.replace(/\s/g, '').slice(0, length);
+export const getSanitizationValue = (value: string, length: number): string =>
+  value.replace(/\s/g, '').slice(0, length);
 
 export const initHiddenInput = (
   host: HTMLElement,

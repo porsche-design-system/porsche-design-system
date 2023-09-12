@@ -1,19 +1,20 @@
 import * as pinCodeUtils from './pin-code-utils';
 import * as setAttributesUtils from '../../utils/dom/setAttributes';
+import * as getTagNameWithoutPrefixUtils from '../../utils/tag-name';
 import * as consoleWarnUtils from '../../utils/log/logger';
 import {
-  getStylesWithoutSlottedSelector,
+  removeSlottedSelector,
   initHiddenInput,
-  inputConsistsOfDigits,
-  inputIsSingleDigit,
+  hasInputOnlyDigits,
+  isInputSingleDigit,
   getArrayOfInputValues,
   syncHiddenInput,
   warnAboutTransformedInitialValue,
-  getOptimizedValue,
+  getSanitizationValue,
 } from './pin-code-utils';
 import { PinCode } from './pin-code';
 
-describe('getStylesWithoutSlottedSelector()', () => {
+describe('removeSlottedSelector()', () => {
   it('should remove ::slotted() selector from Styles object keys', () => {
     const stylesWithSlottedSelector = {
       '::slotted(input)': {
@@ -37,56 +38,62 @@ describe('getStylesWithoutSlottedSelector()', () => {
       },
     };
 
-    expect(getStylesWithoutSlottedSelector(stylesWithSlottedSelector)).toStrictEqual(stylesWithoutSlottedSelector);
+    expect(removeSlottedSelector(stylesWithSlottedSelector)).toStrictEqual(stylesWithoutSlottedSelector);
   });
 });
 
 describe('warnAboutTransformedInitialValue()', () => {
-  it('should call consoleWarn() with correct parameters', () => {
-    const warningPrefix = '@Prop() "value" on component <p-pin-code>:';
-    const spy = jest.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation();
+  it('should call getTagNameWithoutPrefix() and consoleWarn() with correct parameters', () => {
+    const host = document.createElement('p-pin-code');
+    const warningPrefix = `Property value on component p-pin-code:`;
+    const spyGetTagNameWithoutPrefix = jest.spyOn(getTagNameWithoutPrefixUtils, 'getTagNameWithoutPrefix');
+    const spyConsoleWarn = jest.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation();
 
-    warnAboutTransformedInitialValue(4);
+    warnAboutTransformedInitialValue(host, 4);
 
-    expect(spy).toBeCalledWith(
+    expect(spyGetTagNameWithoutPrefix).toBeCalledTimes(1);
+    expect(spyGetTagNameWithoutPrefix).toBeCalledWith(host);
+    expect(spyConsoleWarn).toBeCalledWith(
       warningPrefix,
-      'Provided pin code has too many characters and was truncated to the max length of 4.'
+      'Provided value has too many characters and was truncated to the max length of 4.'
     );
 
-    warnAboutTransformedInitialValue();
+    warnAboutTransformedInitialValue(host);
 
-    expect(spy).toBeCalledWith(
+    expect(spyGetTagNameWithoutPrefix).toBeCalledTimes(2);
+    expect(spyGetTagNameWithoutPrefix).toBeCalledWith(host);
+    expect(spyConsoleWarn).toBeCalledWith(
       warningPrefix,
-      'Provided pin code contains characters that are not of type number and the value has been reset.'
+      'Provided value contains characters that are not of type number, the value was therefore reset.'
     );
   });
 });
 
-describe('inputIsSingleDigit()', () => {
+describe('isInputSingleDigit()', () => {
   it.each<[string]>([['12'], ['abc'], ['a'], ['/^'], ['^']])('should return false for value: %s', (value) => {
-    expect(inputIsSingleDigit(value)).toBeFalsy();
+    expect(isInputSingleDigit(value)).toBeFalsy();
   });
 
   it('should return true if the provided string is a single digit', () => {
-    const spy = jest.spyOn(pinCodeUtils, 'inputIsSingleDigit');
+    const spy = jest.spyOn(pinCodeUtils, 'isInputSingleDigit');
 
-    inputIsSingleDigit('1');
+    isInputSingleDigit('1');
     expect(spy).toReturnWith(true);
   });
 });
 
-describe('inputConsistsOfDigits()', () => {
+describe('hasInputOnlyDigits()', () => {
   it.each<[string]>([['1a'], ['a1'], ['1a2'], ['1^'], ['^2'], ['1^2']])(
     'should return false for value: %s',
     (value) => {
-      expect(inputConsistsOfDigits(value)).toBeFalsy();
+      expect(hasInputOnlyDigits(value)).toBeFalsy();
     }
   );
 
   it('should return true if the provided string does consist of digits', () => {
-    const spy = jest.spyOn(pinCodeUtils, 'inputConsistsOfDigits');
+    const spy = jest.spyOn(pinCodeUtils, 'hasInputOnlyDigits');
 
-    inputConsistsOfDigits('1234');
+    hasInputOnlyDigits('1234');
     expect(spy).toReturnWith(true);
   });
 });
@@ -105,11 +112,11 @@ describe('getArrayOfInputValues()', () => {
   });
 });
 
-describe('getOptimizedValue()', () => {
+describe('getSanitizationValue()', () => {
   it('should return pin code value if already optimal', () => {
     const pinCode = '1234';
 
-    const optimizedValue = getOptimizedValue(pinCode, 4);
+    const optimizedValue = getSanitizationValue(pinCode, 4);
 
     expect(optimizedValue).toBe('1234');
   });
@@ -117,7 +124,7 @@ describe('getOptimizedValue()', () => {
   it('should remove whitespaces from pin code value', () => {
     const pinCode = ' 1 2 3 4 ';
 
-    const optimizedValue = getOptimizedValue(pinCode, 4);
+    const optimizedValue = getSanitizationValue(pinCode, 4);
 
     expect(optimizedValue).toBe('1234');
   });
@@ -125,7 +132,7 @@ describe('getOptimizedValue()', () => {
   it('should shorten pin code value if value is too long', () => {
     const pinCode = ' 12345678';
 
-    const optimizedValue = getOptimizedValue(pinCode, 4);
+    const optimizedValue = getSanitizationValue(pinCode, 4);
 
     expect(optimizedValue).toBe('1234');
   });
