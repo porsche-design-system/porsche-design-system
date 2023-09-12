@@ -13,6 +13,7 @@ describe('componentWillLoad', () => {
   it('should call isWithinForm() with correct parameters and and set isWithinForm', () => {
     const component = initComponent();
     const spy = jest.spyOn(isWithinFormUtils, 'isWithinForm');
+    jest.spyOn(pinCodeUtils, 'initHiddenInput').mockImplementation(() => document.createElement('input'));
 
     component.componentWillLoad();
 
@@ -25,9 +26,10 @@ describe('componentWillLoad', () => {
     expect(spy).toBeCalledWith(component.host);
     expect(component['isWithinForm']).toBe(true);
   });
+
   it('should call initHiddenInput() with correct parameters if component is used within form and set hiddenInput', () => {
     const component = initComponent();
-    component['isWithinForm'] = true;
+    jest.spyOn(isWithinFormUtils, 'isWithinForm').mockReturnValue(true);
     component['name'] = 'name';
     const hiddenInput = document.createElement('input');
     const spy = jest.spyOn(pinCodeUtils, 'initHiddenInput').mockImplementation(() => {
@@ -37,8 +39,8 @@ describe('componentWillLoad', () => {
 
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component.host, 'name', '', false, false);
-    expect(component['hiddenInput'].name).toBe('name');
+    expect(spy).toBeCalledWith(component.host, '', '', false, false);
+    expect(component['hiddenInput']).toBe(hiddenInput);
   });
 
   it('should not call initHiddenInput() if component is not used within form and not set hiddenInput', () => {
