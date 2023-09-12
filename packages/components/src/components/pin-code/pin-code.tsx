@@ -28,6 +28,7 @@ import {
   syncHiddenInput,
   warnAboutTransformedInitialValue,
   getSanitizationValue,
+  hiddenInputSlotName,
 } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
@@ -148,13 +149,14 @@ export class PinCode {
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const currentInputId = 'current-input';
 
     // reset array of input elements
     this.pinCodeElements = [];
 
     return (
       <Host>
-        <label class="label" htmlFor="current-input">
+        <label class="label" htmlFor={currentInputId}>
           {hasLabel(this.host, this.label) && (
             <span id="label" class="label__text">
               {this.label || <slot name="label" />}
@@ -176,10 +178,10 @@ export class PinCode {
               aria={{ 'aria-label': 'Loading state' }}
             />
           )}
-          {this.isWithinForm && <slot name="hidden-input" />}
+          {this.isWithinForm && <slot name={hiddenInputSlotName} />}
           {...Array.from({ length: this.length }).map((_value, index) => (
             <input
-              id={index === this.value.join('').length ? 'current-input' : null}
+              id={index === this.value.join('').length ? currentInputId : null}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby="label description state-message"
@@ -280,7 +282,7 @@ export class PinCode {
     // workaround for ^ in firefox key: 'Process'
     else if (key === 'Dead' || key === 'Process') {
       target.blur();
-      setTimeout(() => target.focus());
+      requestAnimationFrame(() => target.focus());
     }
   };
 
