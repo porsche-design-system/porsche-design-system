@@ -4,7 +4,7 @@ import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { getStylesWithoutSlottedSelector } from './pin-code-utils';
+import { removeSlottedSelector } from './pin-code-utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
   borderWidthBase,
@@ -22,8 +22,8 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // we need 10px additionally so input height becomes 54px
-  const labelStyles = getStylesWithoutSlottedSelector(getLabelStyles('input', isDisabled, hideLabel, state, theme));
-  const inputStyles = getStylesWithoutSlottedSelector(
+  const labelStyles = removeSlottedSelector(getLabelStyles('input', isDisabled, hideLabel, state, theme));
+  const inputStyles = removeSlottedSelector(
     getBaseChildStyles('input', state, theme, {
       textAlign: 'center',
       width: inputSize,

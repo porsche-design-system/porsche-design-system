@@ -12,10 +12,10 @@ export type PinCodeUpdateEvent = { value: string[] };
 
 export type PinCodeState = FormState;
 
-export const getStylesWithoutSlottedSelector = (styles: Styles): Styles => {
+export const removeSlottedSelector = (styles: Styles): Styles => {
   return Object.fromEntries(
     Object.entries(styles).map(([key, value]) => {
-      value = typeof value === 'object' ? getStylesWithoutSlottedSelector(value as Styles) : value;
+      value = typeof value === 'object' ? removeSlottedSelector(value as Styles) : value;
       return [key.replace(/::slotted\(([^,]+)\)/g, '$1'), value];
     }, {} as Styles)
   );
