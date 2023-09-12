@@ -36,7 +36,7 @@
       inset: 0 calc(#{$pds-grid-extended-offset-base} * -1);
       // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
       background:
-        url('~@/assets/tablet.png') no-repeat bottom -6vw center / min(86%, 320px),
+        var(--theme-custom-teaser-background) no-repeat bottom -6vw center / min(86%, 320px),
         radial-gradient(
           54.76% 107.92% at 64.08% 89.73%,
           var(--theme-custom-teaser-gradient-1) 0%,
@@ -48,7 +48,7 @@
       @include pds-media-query-min('xs') {
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
         background:
-          url('~@/assets/tablet.png') no-repeat bottom -6vw center / min(70%, 380px),
+          var(--theme-custom-teaser-background) no-repeat bottom -6vw center / min(70%, 380px),
           radial-gradient(
             54.76% 107.92% at 64.08% 89.73%,
             var(--theme-custom-teaser-gradient-1) 0%,
@@ -62,7 +62,7 @@
         right: calc(#{$pds-grid-extended-offset-s} * -1);
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
         background:
-          url('~@/assets/tablet.png') no-repeat bottom -6vw right 10% / min(50%, 600px),
+          var(--theme-custom-teaser-background) no-repeat bottom -6vw right 10% / min(50%, 600px),
           radial-gradient(
             54.76% 107.92% at 64.08% 89.73%,
             var(--theme-custom-teaser-gradient-1) 0%,
@@ -75,7 +75,7 @@
         right: calc(#{$pds-grid-wide-offset-s} * -1);
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
         background:
-          url('~@/assets/tablet.png') no-repeat bottom -6vw right 10% / min(50%, 660px),
+          var(--theme-custom-teaser-background) no-repeat bottom -6vw right 10% / min(50%, 660px),
           radial-gradient(
             54.76% 107.92% at 64.08% 89.73%,
             var(--theme-custom-teaser-gradient-1) 0%,
