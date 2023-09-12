@@ -9,6 +9,7 @@ import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../
 import {
   borderWidthBase,
   fontLineHeight,
+  getMediaQueryMax,
   spacingStaticSmall,
   spacingStaticXSmall,
 } from '@porsche-design-system/utilities-v2';
@@ -21,14 +22,15 @@ export const getComponentCss = (
   isWithinForm: boolean,
   theme: Theme
 ): string => {
-  const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // we need 10px additionally so input height becomes 54px
+  const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // equivalent to calculation of input height within form-styles
   const labelStyles = removeSlottedSelector(getLabelStyles('input', isDisabled, hideLabel, state, theme));
   const inputStyles = removeSlottedSelector(
     getBaseChildStyles('input', state, theme, {
       textAlign: 'center',
       width: inputSize,
-      '@media (max-width: 480px)': {
-        width: `calc(${fontLineHeight} + 1x + ${borderWidthBase} * 2 + ${spacingStaticXSmall}) * 2`, // we need 1px additionally so input width becomes 39px which is the max width that fits into grid
+      [getMediaQueryMax('xs')]: {
+        opacity: 0.2,
+        width: `calc((276px - (${spacingStaticSmall} * 5)) / 6)`, // calculate the max with of the inputs that fit into grid in viewport base (276px)
       },
       ...(isLoading && {
         opacity: 0.2,

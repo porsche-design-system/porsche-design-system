@@ -39,9 +39,10 @@ input[readonly] {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
-@media (max-width: 480px) {
+@media(max-width:479px) {
   input {
-    width: calc(calc(6px + 2.125ex) + 1x + 2px * 2 + 4px) * 2;
+    opacity: 0.2;
+    width: calc((276px - (8px * 5)) / 6);
   }
 }
 
@@ -202,9 +203,10 @@ input[readonly] {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
-@media (max-width: 480px) {
+@media(max-width:479px) {
   input {
-    width: calc(calc(6px + 2.125ex) + 1x + 2px * 2 + 4px) * 2;
+    opacity: 0.2;
+    width: calc((276px - (8px * 5)) / 6);
   }
 }
 
@@ -312,9 +314,10 @@ input[readonly] {
   width: 0 !important;
   opacity: 0 !important;
 }
-@media (max-width: 480px) {
+@media(max-width:479px) {
   input {
-    width: calc(calc(6px + 2.125ex) + 1x + 2px * 2 + 4px) * 2;
+    opacity: 0.2;
+    width: calc((276px - (8px * 5)) / 6);
   }
 }
 
@@ -423,9 +426,10 @@ input[readonly] {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
-@media (max-width: 480px) {
+@media(max-width:479px) {
   input {
-    width: calc(calc(6px + 2.125ex) + 1x + 2px * 2 + 4px) * 2;
+    opacity: 0.2;
+    width: calc((276px - (8px * 5)) / 6);
   }
 }
 
@@ -530,9 +534,10 @@ input[readonly] {
   width: 0 !important;
   opacity: 0 !important;
 }
-@media (max-width: 480px) {
+@media(max-width:479px) {
   input {
-    width: calc(calc(6px + 2.125ex) + 1x + 2px * 2 + 4px) * 2;
+    opacity: 0.2;
+    width: calc((276px - (8px * 5)) / 6);
   }
 }
 
