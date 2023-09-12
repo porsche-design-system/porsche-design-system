@@ -64,7 +64,7 @@
     --theme-custom-background-code: rgba(0, 0, 0, 0.06);
     --theme-custom-teaser-gradient-1: #c5c8df;
     --theme-custom-teaser-gradient-2: #ebddf9;
-    --theme-custom-teaser-background: url('~@/assets/tablet.png');
+    --theme-custom-teaser-background: url('~@/assets/tablet-light.png');
 
     @media (prefers-color-scheme: dark) {
       --theme-primary: #{$pds-theme-dark-primary};
@@ -101,7 +101,7 @@
       --theme-custom-background-code: rgba(0, 0, 0, 0.06) !important;
       --theme-custom-teaser-gradient-1: #c5c8df !important;
       --theme-custom-teaser-gradient-2: #ebddf9 !important;
-      --theme-custom-teaser-background: url('~@/assets/tablet.png') !important;
+      --theme-custom-teaser-background: url('~@/assets/tablet-light.png') !important;
     }
 
     &.dark-mode {

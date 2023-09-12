@@ -31,7 +31,7 @@
       <picture>
         <source
           v-if="$store.getters.platformTheme === 'auto'"
-          srcset="@/assets/migrate-v2-to-v3.jpg"
+          srcset="@/assets/migrate-v2-to-v3-light.jpg"
           media="(prefers-color-scheme: light)"
         />
         <source
@@ -46,7 +46,7 @@
         />
         <img
           v-else
-          src="@/assets/migrate-v2-to-v3.jpg"
+          src="@/assets/migrate-v2-to-v3-light.jpg"
           alt="Sample Porsche web application with Porsche Design System version 3."
         />
       </picture>
