@@ -39,7 +39,7 @@ describe('componentWillLoad', () => {
 
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component.host, '', '', false, false);
+    expect(spy).toBeCalledWith(component.host, 'name', '', false, false);
     expect(component['hiddenInput']).toBe(hiddenInput);
   });
 
@@ -130,7 +130,7 @@ describe('componentWillRender', () => {
 });
 
 describe('updateValue()', () => {
-  it('should call update.emit()', () => {
+  it('should call update.emit() with correct parameters', () => {
     const component = new PinCode();
     const emitSpy = jest.fn();
     component.update = { emit: emitSpy };
@@ -139,6 +139,6 @@ describe('updateValue()', () => {
     // @ts-ignore
     component.updateValue();
 
-    expect(emitSpy).toBeCalledWith({ value: component.value });
+    expect(emitSpy).toBeCalledWith({ value: component.value, isComplete: true });
   });
 });
