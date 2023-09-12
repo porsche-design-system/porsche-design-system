@@ -307,7 +307,7 @@ export const initPageErrorObserver = (page: Page): void => {
 
 export const getPageThrownErrorsAmount = () => thrownErrors.length;
 
-export const BASE_URL = 'http://localhost:8575';
+const BASE_URL = 'http://localhost:8575';
 
 export const goto = async (page: Page, url: string) => {
   await page.goto(`${BASE_URL}/${url}`);

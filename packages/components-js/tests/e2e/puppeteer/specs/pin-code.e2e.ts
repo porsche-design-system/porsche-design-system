@@ -1,7 +1,6 @@
 import type { ElementHandle, Page } from 'puppeteer';
 import {
   addEventListener,
-  BASE_URL,
   expectA11yToMatchSnapshot,
   getAttribute,
   getElementStyle,
@@ -9,7 +8,6 @@ import {
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
-  goto,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -20,10 +18,6 @@ import { Components } from '@porsche-design-system/components';
 let page: Page;
 beforeEach(async () => {
   page = await browser.newPage();
-  // to allow copy-paste to clipboard
-  await browser
-    .defaultBrowserContext()
-    .overridePermissions(`${BASE_URL}/#`, ['clipboard-read', 'clipboard-write', 'clipboard-sanitized-write']);
 });
 afterEach(async () => await page.close());
 
@@ -195,6 +189,7 @@ describe('update event', () => {
     expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('2-4');
     expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([
       {
+        isComplete: false,
         value: ['1', '', '', ''],
       },
     ]);
@@ -206,9 +201,11 @@ describe('update event', () => {
     expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('3-4');
     expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([
       {
+        isComplete: false,
         value: ['1', '', '', ''],
       },
       {
+        isComplete: false,
         value: ['1', '2', '', ''],
       },
     ]);
@@ -220,12 +217,15 @@ describe('update event', () => {
     expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
     expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([
       {
+        isComplete: false,
         value: ['1', '', '', ''],
       },
       {
+        isComplete: false,
         value: ['1', '2', '', ''],
       },
       {
+        isComplete: false,
         value: ['1', '2', '3', ''],
       },
     ]);
@@ -237,15 +237,19 @@ describe('update event', () => {
     expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
     expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([
       {
+        isComplete: false,
         value: ['1', '', '', ''],
       },
       {
+        isComplete: false,
         value: ['1', '2', '', ''],
       },
       {
+        isComplete: false,
         value: ['1', '2', '3', ''],
       },
       {
+        isComplete: true,
         value: ['1', '2', '3', '4'],
       },
     ]);
@@ -297,6 +301,7 @@ describe('update event', () => {
     expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
     expect((await getEventSummary(host, 'update')).details, 'after backspace').toEqual([
       {
+        isComplete: false,
         value: ['1', '2', '3', ''],
       },
     ]);
@@ -308,9 +313,11 @@ describe('update event', () => {
     expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('3-4');
     expect((await getEventSummary(host, 'update')).details, 'after backspace').toEqual([
       {
+        isComplete: false,
         value: ['1', '2', '3', ''],
       },
       {
+        isComplete: false,
         value: ['1', '2', '', ''],
       },
     ]);
@@ -335,6 +342,7 @@ describe('update event', () => {
     expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('1-4');
     expect((await getEventSummary(host, 'update')).details, 'after delete').toEqual([
       {
+        isComplete: false,
         value: ['', '2', '3', '4'],
       },
     ]);
@@ -346,9 +354,11 @@ describe('update event', () => {
     expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('2-4');
     expect((await getEventSummary(host, 'update')).details, 'after delete').toEqual([
       {
+        isComplete: false,
         value: ['', '2', '3', '4'],
       },
       {
+        isComplete: false,
         value: ['', '', '3', '4'],
       },
     ]);
@@ -402,36 +412,7 @@ describe('events', () => {
     });
   });
 
-  // TODO: support for onPaste event is currently very low, therefore this test is commented out
-  xit('should spread value over input elements and focus last input element on paste', async () => {
-    await goto(page, ''); // need to have actual window.location
-    await initPinCode();
-    const host = await getHost();
-    const input1 = await getInput(1);
-    const input2 = await getInput(2);
-    const input3 = await getInput(3);
-    const input4 = await getInput(4);
-    await addEventListener(input4, 'focus');
-
-    expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
-
-    await page.bringToFront();
-    await page.evaluate(async () => await navigator.clipboard.writeText('1234'));
-    await input1.focus();
-    await page.evaluate(async () => await navigator.clipboard.readText());
-    await waitForStencilLifecycle(page);
-
-    // await page.keyboard.down('Meta');
-    // await page.keyboard.press('KeyV');
-    // await page.keyboard.up('Meta');
-    // await waitForStencilLifecycle(page);
-
-    expect(await getProperty(input1, 'value')).toBe('1');
-    expect(await getProperty(input2, 'value')).toBe('2');
-    expect(await getProperty(input3, 'value')).toBe('3');
-    expect(await getProperty(input4, 'value')).toBe('4');
-    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
-  });
+  // TODO: onPaste event -> puppeteer support for onPaste event is currently very low
 });
 
 describe('disabled state', () => {
