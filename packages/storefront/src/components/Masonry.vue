@@ -28,10 +28,28 @@
       weight="regular"
       compact="true"
     >
-      <img
-        src="@/assets/migrate-v2-to-v3.jpg"
-        alt="Sample Porsche web application with Porsche Design System version 3."
-      />
+      <picture>
+        <source
+          v-if="$store.getters.platformTheme === 'auto'"
+          srcset="@/assets/migrate-v2-to-v3.jpg"
+          media="(prefers-color-scheme: light)"
+        />
+        <source
+          v-if="$store.getters.platformTheme === 'auto'"
+          srcset="@/assets/migrate-v2-to-v3-dark.jpg"
+          media="(prefers-color-scheme: dark)"
+        />
+        <img
+          v-if="$store.getters.platformTheme === 'dark'"
+          src="@/assets/migrate-v2-to-v3-dark.jpg"
+          alt="Sample Porsche web application with Porsche Design System version 3."
+        />
+        <img
+          v-else
+          src="@/assets/migrate-v2-to-v3.jpg"
+          alt="Sample Porsche web application with Porsche Design System version 3."
+        />
+      </picture>
     </p-link-tile>
   </div>
 </template>
