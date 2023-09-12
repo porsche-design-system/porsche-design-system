@@ -1,8 +1,8 @@
 # Pin Code
 
-The `p-pin-code` component styles native HTML inputs and is optimized for entering sequences of digits. The most common
-use case is for entering `one-time-passwords` (OTP) or pin codes. The input fields allow only one digit at a time. When
-a digit is entered, the focus shifts automatically to the next input, until every input is filled.
+The `p-pin-code` component is optimized for entering sequences of digits. The most common use case is for entering
+`one-time-passwords` (OTP) or pin codes. The input fields allow only one digit at a time. When a digit is entered, the
+focus shifts automatically to the next input, until every input is filled.
 
 A few things to note:
 
@@ -105,7 +105,7 @@ behavior. Any change of the input's values triggers a custom update event and th
 `value` is an array of strings synchronized with the input's values.
 
 <Playground :frameworkMarkup="eventHandlingExample" :config="{ ...config, withoutDemo: true }">
-  <p-pin-code :theme="theme" label="Some Label" :legth="length" @update="(e) => {
+  <p-pin-code :theme="theme" label="Some Label" :value="currentValueControlled" :legth="length" @update="(e) => {
     currentValueControlled = e.detail;
     isComplete = e.target.value.length === length;
   }"></p-pin-code>
@@ -177,7 +177,7 @@ export default class Code extends Vue {
   requiredMarkup = `<p-pin-code label="Some label" required="true"></p-pin-code>`;
 
   length=4;
-  currentValueControlled = '';
+  currentValueControlled = [];
   isComplete = false;
   eventHandlingExample = getPinCodeCodeSamples('example-controlled');
 
