@@ -2,8 +2,8 @@ import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from
 import type { ButtonPure } from '../button-pure/button-pure';
 import type {
   CarouselAlignHeader,
-  CarouselUpdateEvent,
   CarouselInternationalization,
+  CarouselUpdateEvent,
   CarouselWidth,
 } from './carousel-utils';
 import {
@@ -137,6 +137,10 @@ export class Carousel {
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
 
+  private get isDraggable(): boolean {
+    return this.slidesPerPage === 'auto' || this.amountOfPages > 1;
+  }
+
   @Watch('activeSlideIndex')
   public activeSlideHandler(newValue: number): void {
     this.splide.go(newValue); // change event is emitted via splide.on('move')
@@ -178,6 +182,7 @@ export class Carousel {
       pagination: false,
       rewind: this.rewind,
       rewindByDrag: true, // only works when rewind: true
+      drag: this.isDraggable,
       perMove: 1,
       mediaQuery: 'min',
       speed: carouselTransitionDuration,
@@ -193,8 +198,12 @@ export class Carousel {
 
   public componentDidUpdate(): void {
     // TODO: using a slotchange listener might be a better approach https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
+    this.splide.options = { ...this.splide.options, drag: this.isDraggable };
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
-    updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
+    if (this.isDraggable) {
+      this.updateSlidesAndPagination(); // update pagination in case the carousel was not draggable before
+      updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
+    }
   }
 
   public disconnectedCallback(): void {
@@ -225,6 +234,7 @@ export class Carousel {
         : this.pagination,
       isInfinitePagination(this.amountOfPages),
       this.alignHeader,
+      this.isDraggable,
       this.theme
     );
 
@@ -263,19 +273,23 @@ export class Carousel {
                 Skip carousel entries
               </PrefixedTagNames.pLinkPure>
             )}
-            <PrefixedTagNames.pButtonPure
-              {...btnProps}
-              icon="arrow-left"
-              ref={(ref) => (this.btnPrev = ref)}
-              onClick={() => slidePrev(this.splide, this.amountOfPages)}
-            />
-            <PrefixedTagNames.pButtonPure
-              {...btnProps}
-              icon="arrow-right"
-              ref={(ref) => (this.btnNext = ref)}
-              onClick={() => slideNext(this.splide, this.amountOfPages)}
-              onKeyDown={this.onNextKeyDown}
-            />
+            {this.isDraggable && (
+              <PrefixedTagNames.pButtonPure
+                {...btnProps}
+                icon="arrow-left"
+                ref={(ref) => (this.btnPrev = ref)}
+                onClick={() => slidePrev(this.splide, this.amountOfPages)}
+              />
+            )}
+            {this.isDraggable && (
+              <PrefixedTagNames.pButtonPure
+                {...btnProps}
+                icon="arrow-right"
+                ref={(ref) => (this.btnNext = ref)}
+                onClick={() => slideNext(this.splide, this.amountOfPages)}
+                onKeyDown={this.onNextKeyDown}
+              />
+            )}
           </div>
         </div>
 
@@ -298,7 +312,7 @@ export class Carousel {
           </div>
         </div>
 
-        {(this.disablePagination ? this.disablePagination !== true : this.pagination) && (
+        {(this.disablePagination ? this.disablePagination !== true : this.pagination) && this.isDraggable && (
           <div class="pagination-container">
             <div class="pagination" ref={(ref) => (this.paginationEl = ref)}></div>
           </div>
@@ -309,13 +323,17 @@ export class Carousel {
 
   private registerSplideHandlers(splide: Splide): void {
     splide.on('mounted', () => {
-      updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-      renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
+      if (this.isDraggable) {
+        updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
+        renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
+      }
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
-      updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-      updatePagination(this.paginationEl, this.amountOfPages, activeIndex);
+      if (this.isDraggable) {
+        updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
+        updatePagination(this.paginationEl, this.amountOfPages, activeIndex);
+      }
       this.update.emit({ activeIndex, previousIndex });
       this.carouselChange.emit({ activeIndex, previousIndex });
     });

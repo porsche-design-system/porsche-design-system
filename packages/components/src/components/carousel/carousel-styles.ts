@@ -63,6 +63,7 @@ export const getComponentCss = (
   hasPagination: BreakpointCustomizable<boolean>,
   isInfinitePagination: boolean,
   alignHeader: CarouselAlignHeader,
+  isDraggable: boolean,
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor, focusColor } = getThemedColors(theme);
@@ -165,7 +166,9 @@ export const getComponentCss = (
       padding: '4px 0', // for slide focus outline
       margin: '-4px 0', // for slide focus outline
       '&__track': {
-        cursor: 'grab',
+        ...(isDraggable && {
+          cursor: 'grab',
+        }),
         // !important is necessary to override inline styles set by splide library
         ...addImportantToEachRule({
           padding: `0 ${spacingMap[width].base}`,

@@ -112,7 +112,9 @@ export const isInfinitePagination = (amountOfPages: number): boolean => {
 };
 
 export const renderPagination = (paginationEl: HTMLElement, amountOfPages: number, activeIndex: number): void => {
+  console.log('rennder');
   if (paginationEl) {
+    console.log('rennder inside');
     // sanitize in case of removal of slide since activeIndex is from before splide.refresh()
     activeIndex = activeIndex > amountOfPages - 1 ? amountOfPages - 1 : activeIndex;
     paginationEl.innerHTML = Array.from(Array(amountOfPages))
