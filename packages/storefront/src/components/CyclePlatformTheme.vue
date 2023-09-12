@@ -35,9 +35,9 @@
 
     public icon(): 'moon' | 'sun' {
       if ((this.theme() === 'auto' && this.isPreferredColorSchemeDark()) || this.theme() === 'dark') {
-        return 'moon';
-      } else {
         return 'sun';
+      } else {
+        return 'moon';
       }
     }
 

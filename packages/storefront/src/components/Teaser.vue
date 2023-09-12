@@ -37,14 +37,24 @@
       // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
       background:
         url('~@/assets/tablet.png') no-repeat bottom -6vw center / min(86%, 320px),
-        radial-gradient(54.76% 107.92% at 64.08% 89.73%, #c5c8df 0%, #ebddf9 52.6%, transparent 100%);
+        radial-gradient(
+          54.76% 107.92% at 64.08% 89.73%,
+          var(--theme-custom-teaser-gradient-1) 0%,
+          var(--theme-custom-teaser-gradient-2) 52.6%,
+          transparent 100%
+        );
       z-index: -1;
 
       @include pds-media-query-min('xs') {
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
         background:
           url('~@/assets/tablet.png') no-repeat bottom -6vw center / min(70%, 380px),
-          radial-gradient(54.76% 107.92% at 64.08% 89.73%, #c5c8df 0%, #ebddf9 52.6%, transparent 100%);
+          radial-gradient(
+            54.76% 107.92% at 64.08% 89.73%,
+            var(--theme-custom-teaser-gradient-1) 0%,
+            var(--theme-custom-teaser-gradient-2) 52.6%,
+            transparent 100%
+          );
       }
 
       @include pds-media-query-min('s') {
@@ -53,7 +63,12 @@
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
         background:
           url('~@/assets/tablet.png') no-repeat bottom -6vw right 10% / min(50%, 600px),
-          radial-gradient(54.76% 107.92% at 64.08% 89.73%, #c5c8df 0%, #ebddf9 52.6%, transparent 100%);
+          radial-gradient(
+            54.76% 107.92% at 64.08% 89.73%,
+            var(--theme-custom-teaser-gradient-1) 0%,
+            var(--theme-custom-teaser-gradient-2) 52.6%,
+            transparent 100%
+          );
       }
 
       @include pds-media-query-min('m') {
@@ -61,7 +76,12 @@
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
         background:
           url('~@/assets/tablet.png') no-repeat bottom -6vw right 10% / min(50%, 660px),
-          radial-gradient(54.76% 107.92% at 64.08% 89.73%, #c5c8df 0%, #ebddf9 52.6%, transparent 100%);
+          radial-gradient(
+            54.76% 107.92% at 64.08% 89.73%,
+            var(--theme-custom-teaser-gradient-1) 0%,
+            var(--theme-custom-teaser-gradient-2) 52.6%,
+            transparent 100%
+          );
       }
 
       @include pds-media-query-min('xxl') {
