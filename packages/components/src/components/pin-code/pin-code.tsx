@@ -173,7 +173,7 @@ export class PinCode {
               class="spinner"
               size="inherit"
               theme={this.theme}
-              aria={{ 'aria-label': 'Loading state:' }}
+              aria={{ 'aria-label': 'Loading state' }}
             />
           )}
           {this.isWithinForm && <slot name="hidden-input" />}
