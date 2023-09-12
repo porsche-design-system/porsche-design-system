@@ -1,4 +1,4 @@
-import * as getClosestHTMLElementUtils from '../../utils/dom/getClosestHTMLElement';
+import * as isWithinFormUtils from '../../utils/form/isWithinForm';
 import * as pinCodeUtils from './pin-code-utils';
 import { PinCode } from './pin-code';
 
@@ -9,36 +9,36 @@ const initComponent = (): PinCode => {
   return component;
 };
 
-describe('connectedCallback', () => {
-  it('should call getClosestHTMLElement() and set isWithinForm', () => {
-    const component = initComponent();
-    const spy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
-
-    component.connectedCallback();
-
-    expect(spy).toBeCalledWith(component.host, 'form');
-    expect(component['isWithinForm']).toBe(false);
-
-    const form = document.createElement('form');
-    spy.mockReturnValue(form);
-
-    component.connectedCallback();
-
-    expect(spy).toBeCalledWith(component.host, 'form');
-    expect(component['isWithinForm']).toBe(true);
-  });
-});
-
 describe('componentWillLoad', () => {
-  it('should call initHiddenInput() with correct parameters if component is used within form and set hiddenInput', () => {
+  it('should call isWithinForm() with correct parameters and and set isWithinForm', () => {
     const component = initComponent();
-    component['isWithinForm'] = true;
-    const spy = jest.spyOn(pinCodeUtils, 'initHiddenInput');
+    const spy = jest.spyOn(isWithinFormUtils, 'isWithinForm');
 
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component.host, undefined, '', false, false);
-    expect(component['hiddenInput']).not.toBeUndefined();
+    expect(spy).toBeCalledWith(component.host);
+    expect(component['isWithinForm']).toBe(false);
+
+    spy.mockReturnValue(true);
+    component.componentWillLoad();
+
+    expect(spy).toBeCalledWith(component.host);
+    expect(component['isWithinForm']).toBe(true);
+  });
+  it('should call initHiddenInput() with correct parameters if component is used within form and set hiddenInput', () => {
+    const component = initComponent();
+    component['isWithinForm'] = true;
+    component['name'] = 'name';
+    const hiddenInput = document.createElement('input');
+    const spy = jest.spyOn(pinCodeUtils, 'initHiddenInput').mockImplementation(() => {
+      hiddenInput.setAttribute('name', component['name']);
+      return hiddenInput;
+    });
+
+    component.componentWillLoad();
+
+    expect(spy).toBeCalledWith(component.host, 'name', '', false, false);
+    expect(component['hiddenInput'].name).toBe('name');
   });
 
   it('should not call initHiddenInput() if component is not used within form and not set hiddenInput', () => {
@@ -67,6 +67,7 @@ describe('componentWillRender', () => {
 
   it('should reset prop value with array of empty strings and call warnAboutTransformedInitialValue() if value does not consist of digits only', () => {
     const component = initComponent();
+    component.host = document.createElement('p-pin-code');
     component['value'] = ['1', 'a', '&', '^', 'b'];
     const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedInitialValue');
     component['update'] = { emit: jest.fn() };
@@ -74,11 +75,12 @@ describe('componentWillRender', () => {
     component.componentWillRender();
 
     expect(component['value']).toStrictEqual(['', '', '', '']);
-    expect(spy).toBeCalledWith();
+    expect(spy).toBeCalledWith(component.host);
   });
 
   it('should slice prop value and call warnAboutTransformedInitialValue() with correct parameters if value.length is longer then prop length', () => {
     const component = initComponent();
+    component.host = document.createElement('p-pin-code');
     const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedInitialValue');
     component['value'] = ['1', '2', '3', '4', '5'];
     component['update'] = { emit: jest.fn() };
@@ -86,7 +88,7 @@ describe('componentWillRender', () => {
     component.componentWillRender();
 
     expect(component['value']).toStrictEqual(['1', '2', '3', '4']);
-    expect(spy).toBeCalledWith(4);
+    expect(spy).toBeCalledWith(component.host, 4);
   });
 
   it('should not slice prop value and not call warnAboutTransformedInitialValue() if value.length is equal to prop length', () => {
@@ -106,7 +108,7 @@ describe('componentWillRender', () => {
     component['isWithinForm'] = true;
     component['hiddenInput'] = document.createElement('input');
     component['value'] = ['1', '2', '3', '4'];
-    const spy = jest.spyOn(pinCodeUtils, 'syncHiddenInput');
+    const spy = jest.spyOn(pinCodeUtils, 'syncHiddenInput').mockImplementation();
 
     component.componentWillRender();
 

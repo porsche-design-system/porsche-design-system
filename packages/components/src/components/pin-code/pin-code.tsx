@@ -5,7 +5,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
-  getClosestHTMLElement,
   getPrefixedTagNames,
   handleButtonEvent,
   hasDescription,
@@ -98,17 +97,12 @@ export class PinCode {
   /** Emitted when selected element changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEvent>;
 
-  private form: HTMLFormElement;
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;
   private pinCodeElements: HTMLInputElement[] = [];
 
-  public connectedCallback(): void {
-    this.form = getClosestHTMLElement(this.host, 'form');
-    this.isWithinForm = !!this.form;
-  }
-
   public componentWillLoad(): void {
+    this.isWithinForm = isWithinForm(this.host);
     if (this.isWithinForm) {
       this.hiddenInput = initHiddenInput(this.host, this.name, this.value.join(''), this.disabled, this.required);
     }
