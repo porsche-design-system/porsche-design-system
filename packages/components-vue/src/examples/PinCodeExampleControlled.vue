@@ -5,11 +5,11 @@
 
   const length = ref(4);
   const currentValue = ref<string[]>([]);
-  const isComplete = ref(currentValue.value?.join().length === length.value);
+  const isComplete = ref(false);
 
   const onUpdate = (e: PinCodeUpdateEvent): void => {
     currentValue.value = e.value;
-    isComplete.value = e.value.join('').length === length.value;
+    isComplete.value = e.isComplete;
   };
 </script>
 

@@ -9,8 +9,8 @@
   const debugElement2 = document.querySelector('.complete');
 
   pinCode.addEventListener('update', (e) => {
-    pinCode.value = e.target.value;
-    debugElement1.innerText = `Current value: ${pinCode.value}`;
-    debugElement2.innerText = `Completely filled: ${pinCode.value.join('').length === pinCode.length}`;
+    const { value, isComplete } = e.detail;
+    debugElement1.innerText = `Current value: ${value}`;
+    debugElement2.innerText = `Completely filled: ${isComplete}`;
   });
 </script>

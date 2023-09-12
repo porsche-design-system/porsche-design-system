@@ -18,10 +18,10 @@ import type { PinCodeUpdateEvent } from '@porsche-design-system/components-angul
 export class PinCodeExampleControlledComponent {
   length = 4;
   currentValue: string[] = [];
-  isComplete = this.currentValue.join('').length === this.length;
+  isComplete = false;
 
   onUpdate(e: CustomEvent<PinCodeUpdateEvent>) {
     this.currentValue = e.detail.value;
-    this.isComplete = e.detail.value.join('').length === this.length;
+    this.isComplete = e.detail.isComplete;
   }
 }

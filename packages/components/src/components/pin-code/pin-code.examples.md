@@ -106,8 +106,8 @@ behavior. Any change of the input's values triggers a custom update event and th
 
 <Playground :frameworkMarkup="eventHandlingExample" :config="{ ...config, withoutDemo: true }">
   <p-pin-code :theme="theme" label="Some Label" :value="currentValueControlled" :legth="length" @update="(e) => {
-    currentValueControlled = e.detail;
-    isComplete = e.target.value.length === length;
+    currentValueControlled = e.detail.value;
+    isComplete = e.detail.isComplete;
   }"></p-pin-code>
   <p-text :theme="theme" style="margin: 1rem 0">Current value: {{currentValueControlled}}</p-text>
   <p-text :theme="theme">Completely filled: {{isComplete}}</p-text>

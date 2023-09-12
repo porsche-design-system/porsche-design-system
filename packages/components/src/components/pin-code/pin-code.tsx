@@ -297,7 +297,7 @@ export class PinCode {
   };
 
   private updateValue = (): void => {
-    this.update.emit({ value: this.value });
+    this.update.emit({ value: this.value, isComplete: this.value.join('').length === this.length });
   };
 
   private focusFirstEmptyOrLastElement = (): void => {
