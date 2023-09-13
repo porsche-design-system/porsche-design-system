@@ -1,11 +1,15 @@
 <template>
   <div v-if="links.length > 1" class="toc">
-    <p-heading size="medium" tag="h2">Table of Contents</p-heading>
+    <p-heading :theme="storefrontTheme" size="medium" tag="h2">Table of Contents</p-heading>
     <ul>
       <li v-for="(link, index) in links" :key="index">
-        <p-link-pure :href="link.href" :icon-source="returnIcon" v-on:click="onLinkClick(link, $event)">{{
-          link.title
-        }}</p-link-pure>
+        <p-link-pure
+          :theme="storefrontTheme"
+          :href="link.href"
+          :icon-source="returnIcon"
+          v-on:click="onLinkClick(link, $event)"
+          >{{ link.title }}</p-link-pure
+        >
       </li>
     </ul>
   </div>
@@ -17,6 +21,7 @@
   import { paramCase } from 'change-case';
   import { componentsReady } from '@porsche-design-system/components-js';
   import { getAnchorLink } from '@/utils';
+  import { StorefrontTheme } from '@/models';
 
   type Link = { href: string; title: string };
 
@@ -24,6 +29,10 @@
   export default class TableOfContents extends Vue {
     links: Link[] = [];
     returnIcon = require('../assets/icon-return.svg');
+
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
+    }
 
     mounted(): void {
       // cut off trailing `#` character
@@ -37,6 +46,7 @@
         // add anchor link to headline
         const link = document.createElement('p-link-pure');
         /* eslint-disable @typescript-eslint/no-explicit-any */
+        (link as any).theme = this.storefrontTheme;
         (link as any).size = 'inherit';
         (link as any).innerText = '#';
         (link as any).title = 'Link to this heading';

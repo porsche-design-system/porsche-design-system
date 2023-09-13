@@ -15,10 +15,10 @@
             }"
           >
             <template v-slot:item="{ item }">
-              <p-heading size="small" tag="h2" class="category">{{ item.category }}</p-heading>
+              <p-heading :theme="storefrontTheme" size="small" tag="h2" class="category">{{ item.category }}</p-heading>
               <ul>
                 <li v-for="(hit, index) in item.hits" :key="index">
-                  <p-link-pure class="link" icon="none" @click="() => (displayHits = false)">
+                  <p-link-pure :theme="storefrontTheme" class="link" icon="none" @click="() => (displayHits = false)">
                     <router-link :to="hit.url">{{ hit.page }} {{ hit.tab ? ' - ' + hit.tab : '' }}</router-link>
                   </p-link-pure>
                 </li>
@@ -41,6 +41,7 @@
   import { Prop } from 'vue-property-decorator';
   import type { AlgoliaRecord, AlgoliaRequest, AlgoliaResult } from '@/models';
   import { SearchClient } from 'algoliasearch/lite';
+  import { type StorefrontTheme } from '@/models';
 
   @Component({
     components: {
@@ -49,6 +50,10 @@
   })
   export default class Search extends Vue {
     @Prop({ default: false }) public hideNavigation!: boolean;
+
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
+    }
 
     public algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_ONLY_KEY, {
       responsesCache: createInMemoryCache(),
@@ -135,7 +140,7 @@
         left: 50%;
         transform: translateX(-50%);
         border-width: 0 12px 12px;
-        border-color: transparent transparent $pds-theme-light-background-base;
+        border-color: transparent transparent var(--theme-custom-background-search);
       }
     }
   }
@@ -162,7 +167,7 @@
       transform: translate(50%, 0);
       padding: $pds-spacing-static-medium 0;
       border-radius: $pds-border-radius-small;
-      background: $pds-theme-light-background-base;
+      background: var(--theme-custom-background-search);
       overflow: auto;
       z-index: 1;
     }

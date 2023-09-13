@@ -7,11 +7,11 @@ visible at the same time.
 Therefore, the `p-carousel`'s content has to be divided into multiple parts or slides.  
 The amount of slides visible can be specified on a per-breakpoint basis.
 
-<p-inline-notification heading="Layout hint" state="warning" dismiss-button="false">
+<Notification heading="Layout hint" state="warning">
   The component can only be used with the full viewport width. The alignment of its content can be controlled 
   by the <code>width</code> prop, which is in sync with the <b><a href="styles/grid">Porsche Grid</a></b>.<br><br>
   Therefore, the following examples only work in fullscreen after clicking the <strong>Maximize</strong> buttons.
-</p-inline-notification>
+</Notification>
 
 <TableOfContents></TableOfContents>
 
@@ -34,9 +34,9 @@ The value can either be a static number, or a breakpoint customizable object.
 
 In case you want to have slides with different widths you can use `slidesPerPage` with a value of `auto`.
 
-<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
+<Notification heading="Attention" state="warning">
  It is <strong>crucial</strong> that each slide has explicit dimensions by specifying their width via CSS.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="slidesPerPageAutoMarkup" :config="config"></Playground>
 
@@ -71,9 +71,9 @@ Defines horizontal spacing which is aligned with the [Porsche Grid](styles/grid)
 
 ## Wrap Content (deprecated)
 
-<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
+<Notification heading="Important note" state="warning">
   This property is deprecated and has no effect anymore. Therefor, it will be removed with the next major release.
-</p-inline-notification>
+</Notification>
 
 ## Rewind
 
@@ -88,10 +88,10 @@ first/last slide.
 
 The pagination indicators underneath the slides can be removed via `pagination="false"`.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>disablePagination</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>pagination</code> property instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="paginationMarkup" :config="config">
   <SelectOptions v-model="pagination" :values="paginations" name="pagination"></SelectOptions>
@@ -111,10 +111,10 @@ To control the `p-carousel` from the outside you can specify its `activeSlideInd
 
 Whenever the `p-carousel` slides, the `update` is emitted containing both, the `activeIndex` and `previousIndex`.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>carouselChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :frameworkMarkup="eventHandlingExamples" :config="{ ...config, withoutDemo: true }">
   <p-carousel :theme="theme" :heading="basicHeading" v-html="getSlides(3)" @update="(e) => lastEventDetail = e.detail" style="margin: 0 0 1rem">
@@ -190,12 +190,12 @@ export default class Code extends Vue {
   config = { themeable: true, supportsFullWindow: true };
 
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 
   basicHeading = "Some heading";
   basicDescription = "Some description";
-  getSlides = (amount = 6) => Array.from(Array(amount)).map((_, i) => `<div>Slide ${i+1}</div>`).join('\n  ');
+  getSlides = (amount = 6) => Array.from(Array(amount), (_, i) => `<div>Slide ${i+1}</div>`).join('\n  ');
 
   basic = `<p-carousel heading="${this.basicHeading}">
   ${this.getSlides(4)}

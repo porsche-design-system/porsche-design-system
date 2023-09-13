@@ -742,7 +742,6 @@ exports[`manual test cases should pass internal props correctly to p-multi-selec
       >
         <input
           autocomplete="off"
-          placeholder=""
           role="combobox"
         />
         <p-icon
@@ -5464,7 +5463,6 @@ input:disabled {
       >
         <input
           autocomplete="off"
-          placeholder=""
           role="combobox"
         />
         <p-icon

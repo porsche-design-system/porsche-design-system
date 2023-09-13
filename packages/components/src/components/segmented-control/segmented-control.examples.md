@@ -47,9 +47,9 @@ An icon can be added via the `icon` or `iconSource` property.
 
 ## Background Color (deprecated)
 
-<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+<Notification heading="Important note" state="error">
   The background-color prop is deprecated and will be removed with next major release.
-</p-inline-notification>
+</Notification>
 
 If used on top of a surface background color, contrast of the buttons can be tweaked by changing the `backgroundColor`
 property.
@@ -63,10 +63,10 @@ property.
 Whenever the selected item changes, an `update` event gets emitted by the `p-segmented-control`.  
 Each event instance contains the newly selected value at `event.detail.value`.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>segmentedControlChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :frameworkMarkup="eventHandlingMarkup" :config="config">
   <p-segmented-control :theme="theme" :value="eventHandlingValue" @update="eventHandlingValue = $event.detail.value">
@@ -146,7 +146,7 @@ export default class Code extends Vue {
   };
 
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 
   eventHandlingMarkup = getSegmentedControlCodeSamples();

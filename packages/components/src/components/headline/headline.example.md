@@ -2,10 +2,10 @@
 
 `p-headline` is used to highlight and specify heading styling and hierarchy in documents.
 
-<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+<Notification heading="Deprecation hint" state="error">
   This component is deprecated and will be removed with the next major release.
-Please use <a href="components/heading">p-heading</a> instead.
-</p-inline-notification>
+  Please use <a href="components/heading">p-heading</a> instead.
+</Notification>
 
 <TableOfContents></TableOfContents>
 

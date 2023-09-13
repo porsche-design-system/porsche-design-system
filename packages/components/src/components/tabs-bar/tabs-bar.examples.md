@@ -16,10 +16,10 @@ Have a look at the [Tabs](components/tabs) component.
 It is a controlled component. This means it does not contain any internal state, and you are in full control over its
 behavior.
 
-<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
+<Notification heading="Important note" state="warning">
   For documentation purpose we use <code>&lt;button&gt;</code> tags in the examples below to make them clickable without changing the route. 
-  For route changes it is mandatory to use <code>&lt;a&gt;</code> tags with <code>href</code> in your application. And be aware of that it's not allowed to mix and match <code>&lt;button&gt;</code> with <code>&lt;a&gt;</code> tags as direct children in the component! 
-</p-inline-notification>
+  For route changes it is mandatory to use <code>&lt;a&gt;</code> tags with <code>href</code> in your application. And be aware of that it's not allowed to mix and match <code>&lt;button&gt;</code> with <code>&lt;a&gt;</code> tags as direct children in the component!
+</Notification>
 
 <TableOfContents></TableOfContents>
 
@@ -32,10 +32,10 @@ change e.g. the state on tab-click or `<a>` tags, if you also have to manipulate
 In order to get notified when the active tabs change, you need to register an event listener for the `update` event
 which is emitted by `p-tabs-bar`.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>tabChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
-</p-inline-notification>
+</Notification>
 
 ### Framework Implementations
 
@@ -80,10 +80,10 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 
 ## Weight
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
   Please use the <code>semi-bold</code> value instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="weightMarkup" :config="config">
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
@@ -94,10 +94,10 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>gradientColor</code> property instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
   <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>

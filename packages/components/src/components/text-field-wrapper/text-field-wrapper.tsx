@@ -341,7 +341,7 @@ export class TextFieldWrapper {
           )}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} theme="light" host={this.host} />
+          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
       </Host>
     );

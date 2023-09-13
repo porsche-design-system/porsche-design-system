@@ -5,8 +5,7 @@ import { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix, paramCaseToCa
 export const throwIfChildrenAreNotOfKind = (element: HTMLElement, tagName: TagName): void => {
   if (!areAllChildrenOfKind(element, tagName)) {
     const allowedTagName = getPrefixedTagNames(element)[paramCaseToCamelCase(tagName)];
-    const actualTagNames = Array.from(element.children)
-      .map((child: HTMLElement) => getTagName(child))
+    const actualTagNames = Array.from(element.children, getTagName)
       .filter((actualTagName) => actualTagName !== allowedTagName)
       .join(', ');
 

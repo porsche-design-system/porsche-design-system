@@ -1,8 +1,20 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import type { Framework, Theme } from '@/models';
+import {
+  type Framework,
+  type PlaygroundTheme,
+  type StorefrontTheme,
+  FRAMEWORK_TYPES,
+  PLAYGROUND_THEME_TYPES,
+} from '@/models';
 
 Vue.use(Vuex);
+
+const sanitizeSelectedFrameworkValue = (value: string | null): Framework =>
+  (FRAMEWORK_TYPES.includes(value as Framework) ? value : 'vanilla-js') as Framework;
+
+const sanitizePlaygroundThemeValue = (value: string | null): PlaygroundTheme =>
+  (PLAYGROUND_THEME_TYPES.includes(value as PlaygroundTheme) ? value : 'light') as PlaygroundTheme;
 
 export type State = {
   isLoading: boolean;
@@ -10,7 +22,8 @@ export type State = {
   isMenuActive: boolean;
   isSearchActive: boolean;
   selectedFramework: Framework;
-  theme: Theme;
+  playgroundTheme: PlaygroundTheme;
+  storefrontTheme: StorefrontTheme;
 };
 
 const initialState: State = {
@@ -18,8 +31,9 @@ const initialState: State = {
   lastTimeout: undefined,
   isMenuActive: false,
   isSearchActive: false,
-  selectedFramework: 'vanilla-js',
-  theme: 'light',
+  selectedFramework: sanitizeSelectedFrameworkValue(localStorage.getItem('selectedFramework')),
+  playgroundTheme: sanitizePlaygroundThemeValue(localStorage.getItem('playgroundTheme')),
+  storefrontTheme: 'auto',
 };
 
 export default new Vuex.Store({
@@ -41,10 +55,15 @@ export default new Vuex.Store({
       state.isSearchActive = payload;
     },
     setSelectedFramework(state: State, payload: Framework): void {
+      localStorage.setItem('selectedFramework', payload);
       state.selectedFramework = payload;
     },
-    setTheme(state: State, payload: Theme): void {
-      state.theme = payload;
+    setPlaygroundTheme(state: State, payload: PlaygroundTheme): void {
+      localStorage.setItem('playgroundTheme', payload);
+      state.playgroundTheme = payload;
+    },
+    setStorefrontTheme(state: State, payload: StorefrontTheme): void {
+      state.storefrontTheme = payload;
     },
   },
   actions: {
@@ -65,8 +84,11 @@ export default new Vuex.Store({
     selectedFramework(state: State): Framework {
       return state.selectedFramework;
     },
-    theme(state: State): Theme {
-      return state.theme;
+    playgroundTheme(state: State): PlaygroundTheme {
+      return state.playgroundTheme;
+    },
+    storefrontTheme(state: State): StorefrontTheme {
+      return state.storefrontTheme;
     },
   },
 });

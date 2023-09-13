@@ -287,7 +287,7 @@ exports[`should have no basic DOM regression for p-multi-select 1`] = `
   <label class="label">
   </label>
   <div class="input-container">
-    <input role="combobox" autocomplete="off" aria-labelledby="label" aria-describedby="description options-selected state-message" aria-haspopup="listbox" aria-expanded="false" aria-controls="list" aria-autocomplete="list">
+    <input role="combobox" autocomplete="off" aria-labelledby="label" aria-describedby="description options-selected message" aria-haspopup="listbox" aria-expanded="false" aria-controls="list" aria-autocomplete="list">
     <p-icon class="icon toggle-icon hydrated" aria-hidden="true">
     </p-icon>
   </div>

@@ -63,10 +63,10 @@ In this section you can find basic examples for the default test setups of each 
 
 Other Angular setups can be found further down.
 
-<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
+<Notification heading="Important note" state="warning">
   All test environments that don't use a real browser typically run in <strong>jsdom</strong> which requires our <strong>@porsche-design-system/components-{js|angular|react|vue}/jsdom-polyfill</strong> subpackage in order to have real working Porsche Design System components.<br>
   Without it, you are just rendering "dead" component markup without any functionality.
-</p-inline-notification>
+</Notification>
 
 <Playground :frameworkMarkup="codeSampleDefault" :showCodeEditor="false"></Playground>
 
