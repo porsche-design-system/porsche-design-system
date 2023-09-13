@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, isLoading: false, isWithinForm: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: success, isDisabled: false, isLoading: false, isWithinForm: false, length: 4 and theme: light 1`] = `
 ":host {
   display: block !important;
   color-scheme: light dark !important;
@@ -39,13 +39,6 @@ input[readonly] {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
-@media(max-width:479px) {
-  input {
-    opacity: 0.2;
-    width: calc((276px - (8px * 5)) / 6);
-  }
-}
-
 @media(hover:hover) {
   input:not(:disabled):not(:focus):not([readonly]):hover {
     border-color: #0E4809;
@@ -164,7 +157,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, isWithinForm: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false, isWithinForm: false, length: 4 and theme: light 1`] = `
 ":host {
   display: block !important;
   color-scheme: light dark !important;
@@ -203,13 +196,6 @@ input[readonly] {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
-@media(max-width:479px) {
-  input {
-    opacity: 0.2;
-    width: calc((276px - (8px * 5)) / 6);
-  }
-}
-
 @media(hover:hover) {
   input:not(:disabled):not(:focus):not([readonly]):hover {
     border-color: #010205;
@@ -267,7 +253,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: true, isWithinForm: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: true, isWithinForm: true, length: 6 and theme: light 1`] = `
 ":host {
   display: block !important;
   color-scheme: light dark !important;
@@ -316,7 +302,6 @@ input[readonly] {
 }
 @media(max-width:479px) {
   input {
-    opacity: 0.2;
     width: calc((276px - (8px * 5)) / 6);
   }
 }
@@ -387,7 +372,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, isWithinForm: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, isWithinForm: false, length: 4 and theme: light 1`] = `
 ":host {
   display: block !important;
   color-scheme: light dark !important;
@@ -426,13 +411,6 @@ input[readonly] {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
-@media(max-width:479px) {
-  input {
-    opacity: 0.2;
-    width: calc((276px - (8px * 5)) / 6);
-  }
-}
-
 @media(hover:hover) {
   input:not(:disabled):not(:focus):not([readonly]):hover {
     border-color: #010205;
@@ -489,7 +467,7 @@ input[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false, isWithinForm: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false, isWithinForm: true, length: 6 and theme: dark 1`] = `
 ":host {
   display: block !important;
   color-scheme: light dark !important;
@@ -536,7 +514,6 @@ input[readonly] {
 }
 @media(max-width:479px) {
   input {
-    opacity: 0.2;
     width: calc((276px - (8px * 5)) / 6);
   }
 }

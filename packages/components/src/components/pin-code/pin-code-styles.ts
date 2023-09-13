@@ -20,6 +20,7 @@ export const getComponentCss = (
   isDisabled: boolean,
   isLoading: boolean,
   isWithinForm: boolean,
+  length,
   theme: Theme
 ): string => {
   const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // equivalent to calculation of input height within form-styles
@@ -28,10 +29,11 @@ export const getComponentCss = (
     getBaseChildStyles('input', state, theme, {
       textAlign: 'center',
       width: inputSize,
-      [getMediaQueryMax('xs')]: {
-        opacity: 0.2,
-        width: `calc((276px - (${spacingStaticSmall} * 5)) / 6)`, // calculate the max with of the inputs that fit into grid in viewport base (276px)
-      },
+      ...(length === 6 && {
+        [getMediaQueryMax('xs')]: {
+          width: `calc((276px - (${spacingStaticSmall} * 5)) / 6)`, // calculate the max with of the inputs that fit into grid in viewport base (276px)
+        },
+      }),
       ...(isLoading && {
         opacity: 0.2,
         cursor: 'not-allowed',

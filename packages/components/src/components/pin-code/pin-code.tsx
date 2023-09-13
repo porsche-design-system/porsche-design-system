@@ -145,6 +145,7 @@ export class PinCode {
       this.disabled,
       this.loading,
       this.isWithinForm,
+      this.length,
       this.theme
     );
 
