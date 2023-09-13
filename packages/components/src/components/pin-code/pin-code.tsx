@@ -105,7 +105,7 @@ export class PinCode {
 
   public componentWillLoad(): void {
     this.form = getClosestHTMLElement(this.host, 'form');
-    this.isWithinForm = isWithinForm(this.host);
+    this.isWithinForm = !!this.form;
     if (this.isWithinForm) {
       this.hiddenInput = initHiddenInput(this.host, this.name, this.value, this.disabled, this.required);
     }
@@ -277,14 +277,11 @@ export class PinCode {
       this.updateValue();
     } // support native submit behavior
     else if (key === 'Enter') {
-      if (isWithinForm) {
+      if (
+        isWithinForm &&
+        (this.form.querySelectorAll('input').length === 1 || this.form.querySelector('button[type=submit]'))
+      ) {
         this.form.requestSubmit();
-        // handleButtonEvent(
-        //   e,
-        //   this.host,
-        //   () => 'submit',
-        //   () => this.disabled
-        // );
       }
     } // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
     // workaround for ^ in firefox key: 'Process'

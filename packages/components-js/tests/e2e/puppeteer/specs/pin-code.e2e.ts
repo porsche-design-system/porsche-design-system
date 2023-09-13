@@ -140,11 +140,60 @@ describe('within form', () => {
     });
   });
 
-  it('should submit on key Enter', async () => {
+  it('should submit on key Enter if form does not contain another input element and no button type=submit', async () => {
     await initPinCode({ options: { isWithinForm: true } });
     const host = await getHost();
     const input = await getCurrentInput();
     const form = await selectNode(page, 'form');
+    await addEventListener(form, 'submit');
+    await setProperty(host, 'value', '1234');
+
+    expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
+    expect(
+      await form.evaluate((form: HTMLFormElement) => Array.from(new FormData(form).values()).join()),
+      'after Enter'
+    ).toEqual('1234');
+  });
+
+  it('should not submit on key Enter if form does contain another input element and no button type=submit', async () => {
+    await initPinCode({ options: { isWithinForm: true } });
+    const host = await getHost();
+    const input = await getCurrentInput();
+    const form = await selectNode(page, 'form');
+    await form.evaluate((form) => {
+      const input = document.createElement('input');
+      form.append(input);
+    });
+    await addEventListener(form, 'submit');
+    await setProperty(host, 'value', '1234');
+
+    expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(0);
+  });
+
+  it('should submit on key Enter if form does contain another input element and a button type=submit', async () => {
+    await initPinCode({ options: { isWithinForm: true } });
+    const host = await getHost();
+    const input = await getCurrentInput();
+    const form = await selectNode(page, 'form');
+    await form.evaluate((form) => {
+      const input = document.createElement('input');
+      const button = document.createElement('button');
+      button.type = 'submit';
+      form.append(input);
+      form.append(button);
+    });
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
