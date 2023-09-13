@@ -232,7 +232,12 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.slides(\.map)/, `otherChildren$1`)
           .replace(/^/, "$&import type { BreakpointCustomizable } from '../types';\n")
           .replace(/.*onFocusin=\{.*\n/, '')
-          .replace(/this\.slidesPerPage/, 'this.props.slidesPerPage');
+          .replace(/this\.slidesPerPage/, 'this.props.slidesPerPage')
+          // Since slidesPerPage is BreakpointCustomizable we have to replace hasNavigation with a working serverside condition
+          .replace(
+            /this\.props\.hasNavigation/g,
+            "(this.props.slidesPerPage === 'auto' || (typeof this.props.slidesPerPage !== 'object' && this.props.slidesPerPage === children.length))"
+          );
       } else if (tagName === 'p-banner') {
         // remove warning about deprecated title slot
         newFileContent = newFileContent
