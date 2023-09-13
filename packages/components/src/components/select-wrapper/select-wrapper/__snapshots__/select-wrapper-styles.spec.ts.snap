@@ -243,7 +243,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
     border-color: #069561 !important;
   }
 }
@@ -346,7 +346,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -449,7 +449,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
     border-color: #FB0404 !important;
   }
 }
@@ -552,7 +552,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -860,7 +860,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
     border-color: #FB0404 !important;
   }
 }
@@ -964,7 +964,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -1274,7 +1274,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
     border-color: #069561 !important;
   }
 }
@@ -1378,7 +1378,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -1482,7 +1482,7 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
     border-color: #FB0404 !important;
   }
 }

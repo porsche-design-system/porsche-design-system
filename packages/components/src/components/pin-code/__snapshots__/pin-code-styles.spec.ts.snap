@@ -148,12 +148,6 @@ input[readonly] {
     text-indent: 0;
   }
 }
-
-@media(hover:hover) {
-  .label__text:hover~input:not(:disabled):not(:focus):not([readonly]), .label__text:hover input:not(:disabled):not(:focus):not([readonly]):hover {
-    border-color: #0E4809 !important;
-  }
-}
 "
 `;
 
@@ -244,13 +238,7 @@ input[readonly] {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-@media(hover:hover) {
-  .label__text:hover~input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: true, isWithinForm: true, length: 6 and theme: light 1`] = `
@@ -363,13 +351,7 @@ input[readonly] {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-@media(hover:hover) {
-  .label__text:hover~input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false, isWithinForm: false, length: 4 and theme: light 1`] = `
@@ -458,13 +440,7 @@ input[readonly] {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-@media(hover:hover) {
-  .label__text:hover~input:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205 !important;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false, isWithinForm: true, length: 6 and theme: dark 1`] = `
@@ -567,11 +543,5 @@ input[readonly] {
   hyphens: auto;
   color: #FC4040;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-@media(hover:hover) {
-  .label__text:hover~input:not(:disabled):not(:focus):not([readonly]), .label__text:hover input:not(:disabled):not(:focus):not([readonly]):hover {
-    border-color: #FB0404 !important;
-  }
-}
-"
+}"
 `;

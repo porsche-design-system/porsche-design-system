@@ -23,6 +23,20 @@ export const removeSlottedSelector = (styles: Styles): Styles => {
   );
 };
 
+export const removeHoverStyles = (styles: Styles): Styles => {
+  return Object.fromEntries(
+    Object.entries(styles).map(([key, value]) => {
+      if (key === '@media(hover:hover)') {
+        delete styles[key];
+        return [];
+      } else {
+        value = typeof value === 'object' ? removeHoverStyles(value as Styles) : value;
+        return [key, value];
+      }
+    }, {} as Styles)
+  );
+};
+
 export const warnAboutTransformedInitialValue = (host: HTMLElement, length?: number): void => {
   const warningPrefix = `Property value on component ${getTagNameWithoutPrefix(host)}:`;
   consoleWarn(

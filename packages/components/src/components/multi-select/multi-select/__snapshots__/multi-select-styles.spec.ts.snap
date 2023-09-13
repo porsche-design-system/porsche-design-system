@@ -877,7 +877,7 @@ input:not(:focus):-moz-placeholder {
   .input-container:hover:not(.disabled) {
     border-color: #0E4809;
   }
-  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }

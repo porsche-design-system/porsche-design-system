@@ -11,6 +11,7 @@ import {
   syncHiddenInput,
   warnAboutTransformedInitialValue,
   getSanitisedValue,
+  removeHoverStyles,
 } from './pin-code-utils';
 import { PinCode } from './pin-code';
 
@@ -39,6 +40,40 @@ describe('removeSlottedSelector()', () => {
     };
 
     expect(removeSlottedSelector(stylesWithSlottedSelector)).toStrictEqual(stylesWithoutSlottedSelector);
+  });
+});
+
+describe('removeHoverStyles()', () => {
+  it('should remove @media(hover:hover) styles from Styles object', () => {
+    const stylesWithMediaHover = {
+      label: {
+        display: 'block',
+        '@media(hover:hover)': {
+          '::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)': {
+            border: '2px',
+          },
+        },
+      },
+      input: {
+        display: 'none',
+      },
+      '@media(hover:hover)': {
+        '::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)': {
+          border: '2px',
+        },
+      },
+    };
+
+    const stylesWithoutMediaHover = {
+      label: {
+        display: 'block',
+      },
+      input: {
+        display: 'none',
+      },
+    };
+
+    expect(removeHoverStyles(stylesWithMediaHover)).toEqual(stylesWithoutMediaHover);
   });
 });
 
