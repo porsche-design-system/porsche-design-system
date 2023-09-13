@@ -391,28 +391,28 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
-          // Replace unused imports which cause warnings
+          // remove unused imports which cause warnings
           .replace(/\s*MultiSelectOption,\s*/, '')
           .replace(/\s*MultiSelectUpdateEvent,\s*/, '')
-          // Replace aria fns
-          .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
-          .replace(/\{\.\.\.getListAriaAttributes\([^}]*\}\s*/, '')
+          // remove aria functions
+          .replace(/\{\.\.\.getFilterInputAriaAttributes\([\s\S]+?\)}\s*/, '')
+          .replace(/\{\.\.\.getListAriaAttributes\([\s\S]+?\)}\s*/, '')
           // replace input-container className
-          .replace(/\{\{ 'input-container': true, disabled: this.props.disabled }}/, "'input-container'")
-          // replace color prop
-          .replace(/\s*color=\{this.props.disabled \? 'state-disabled' : 'primary'}\s*/, '')
-          // Replace placeholder
-          .replace(/(?<=placeholder=\{)[^}]+/, '""')
+          .replace(/\{\{ 'input-container': true, disabled: this\.props\.disabled }}/, '"input-container"')
+          // remove color prop
+          .replace(/\s*color=\{this\.props\.disabled \? 'state-disabled' : 'primary'}\s*/, '')
+          // remove placeholder
+          .replace(/\s*placeholder=\{.+/, '')
           // replace toggle icon className
           .replace(
-            /className=\{\{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this.props.isOpen }}/,
-            "className='icon toggle-icon'"
+            /className=\{\{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this\.props\.isOpen }}/,
+            'className="icon toggle-icon"'
           )
           .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
           .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
-          .replace(/(\{ MultiSelectOptionInternalHTMLProps)/, 'type $1')
+          // remove any jsx since options are not visible in closed multi-select
           .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
           .replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {
