@@ -236,7 +236,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // Since slidesPerPage is BreakpointCustomizable we have to replace hasNavigation with a working serverside condition
           .replace(
             /this\.props\.hasNavigation/g,
-            "(this.props.slidesPerPage === 'auto' || typeof this.props.slidesPerPage === 'object' || this.props.slidesPerPage !== otherChildren.length)"
+            "(this.props.slidesPerPage === 'auto' || typeof this.props.slidesPerPage === 'object' || this.props.slidesPerPage < otherChildren.length)"
           );
       } else if (tagName === 'p-banner') {
         // remove warning about deprecated title slot
