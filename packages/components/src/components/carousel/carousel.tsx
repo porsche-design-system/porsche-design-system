@@ -137,7 +137,7 @@ export class Carousel {
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
 
-  private get isDraggable(): boolean {
+  private get hasNavigation(): boolean {
     return this.slidesPerPage === 'auto' || this.amountOfPages > 1;
   }
 
@@ -182,7 +182,7 @@ export class Carousel {
       pagination: false,
       rewind: this.rewind,
       rewindByDrag: true, // only works when rewind: true
-      drag: this.isDraggable,
+      drag: this.hasNavigation,
       perMove: 1,
       mediaQuery: 'min',
       speed: carouselTransitionDuration,
@@ -197,9 +197,9 @@ export class Carousel {
   }
 
   public componentDidUpdate(): void {
-    this.splide.options = { drag: this.isDraggable };
+    this.splide.options = { drag: this.hasNavigation };
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
-    if (this.isDraggable) {
+    if (this.hasNavigation) {
       renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0); // update pagination in case the carousel was not draggable before
       updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
     }
@@ -233,7 +233,7 @@ export class Carousel {
         : this.pagination,
       isInfinitePagination(this.amountOfPages),
       this.alignHeader,
-      this.isDraggable,
+      this.hasNavigation,
       this.theme
     );
 
@@ -272,7 +272,7 @@ export class Carousel {
                 Skip carousel entries
               </PrefixedTagNames.pLinkPure>
             )}
-            {this.isDraggable && [
+            {this.hasNavigation && [
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-left"
@@ -309,7 +309,7 @@ export class Carousel {
           </div>
         </div>
 
-        {(this.disablePagination ? this.disablePagination !== true : this.pagination) && this.isDraggable && (
+        {(this.disablePagination ? this.disablePagination !== true : this.pagination) && this.hasNavigation && (
           <div class="pagination-container">
             <div class="pagination" ref={(ref) => (this.paginationEl = ref)}></div>
           </div>

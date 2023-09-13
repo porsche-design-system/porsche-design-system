@@ -15,7 +15,7 @@ describe('getComponentCss()', () => {
     ['extended', false, true, 'left', true, 'light'],
     ['extended', { base: false, xs: true, s: false, m: true, l: false, xl: true }, false, 'left', false, 'light'],
   ])(
-    'should return correct css for width: %s, hasPagination: %j, isInfinitePagination: %s, alignHeader: %s, isDraggable: %s and theme: %s',
+    'should return correct css for width: %s, hasPagination: %j, isInfinitePagination: %s, alignHeader: %s, hasNavigation: %s and theme: %s',
     (...args) => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }

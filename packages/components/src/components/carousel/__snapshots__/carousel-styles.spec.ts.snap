@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center, isDraggable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center, hasNavigation: true and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -128,7 +128,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left, isDraggable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left, hasNavigation: true and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -254,7 +254,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center, isDraggable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center, hasNavigation: true and theme: dark 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -410,7 +410,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: left, isDraggable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: left, hasNavigation: true and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -564,7 +564,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center, isDraggable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center, hasNavigation: true and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -744,7 +744,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: left, isDraggable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: left, hasNavigation: true and theme: dark 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -922,7 +922,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: left, isDraggable: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: left, hasNavigation: false and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1102,7 +1102,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center, isDraggable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center, hasNavigation: true and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1309,7 +1309,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center, isDraggable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center, hasNavigation: true and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1437,7 +1437,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: left, isDraggable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: left, hasNavigation: true and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1563,7 +1563,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: left, isDraggable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: left, hasNavigation: true and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1717,7 +1717,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center, isDraggable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center, hasNavigation: true and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
