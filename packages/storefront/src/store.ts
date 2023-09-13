@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import {
   type Framework,
   type PlaygroundTheme,
-  type PlatformTheme,
+  type StorefrontTheme,
   FRAMEWORK_TYPES,
   PLAYGROUND_THEME_TYPES,
 } from '@/models';
@@ -23,7 +23,7 @@ export type State = {
   isSearchActive: boolean;
   selectedFramework: Framework;
   playgroundTheme: PlaygroundTheme;
-  platformTheme: PlatformTheme;
+  platformTheme: StorefrontTheme;
 };
 
 const initialState: State = {

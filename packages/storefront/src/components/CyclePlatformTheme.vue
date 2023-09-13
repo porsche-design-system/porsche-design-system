@@ -7,7 +7,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { type PlatformTheme } from '@/models';
+  import { type StorefrontTheme } from '@/models';
 
   @Component
   export default class CyclePlatformTheme extends Vue {
@@ -29,7 +29,7 @@
       return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
 
-    public get theme(): PlatformTheme {
+    public get theme(): StorefrontTheme {
       return this.$store.getters.platformTheme;
     }
 

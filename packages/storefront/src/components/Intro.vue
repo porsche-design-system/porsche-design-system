@@ -23,11 +23,11 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { type PlatformTheme } from '@/models';
+  import { type StorefrontTheme } from '@/models';
 
   @Component({})
   export default class Intro extends Vue {
-    public get platformTheme(): PlatformTheme {
+    public get platformTheme(): StorefrontTheme {
       return this.$store.getters.platformTheme;
     }
   }
