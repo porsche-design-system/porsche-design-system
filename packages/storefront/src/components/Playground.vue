@@ -1,6 +1,10 @@
 <template>
   <div class="playground">
-    <p-tabs-bar v-if="mergedConfig.themeable" :active-tab-index="activeThemeTabIndex">
+    <p-tabs-bar
+      v-if="mergedConfig.themeable"
+      :theme="$store.getters.storefrontTheme"
+      :active-tab-index="activeThemeTabIndex"
+    >
       <button type="button" @click="switchTheme('light')">Light theme</button>
       <button type="button" @click="switchTheme('dark')">Dark theme</button>
     </p-tabs-bar>
@@ -72,7 +76,7 @@
   import CodeEditor from '@/components/CodeEditor.vue';
   import { cleanMarkup, patchThemeIntoMarkup } from '../utils';
   import { componentMeta } from '@porsche-design-system/component-meta';
-  import type { BackgroundColor, Framework, FrameworkMarkup, Theme } from '../models';
+  import type { BackgroundColor, Framework, FrameworkMarkup, PlaygroundTheme } from '../models';
   import type { ExternalDependency, SharedImportKey } from '../utils';
   import { getExternalDependenciesOrThrow } from '@/utils/stackblitz/helper';
 
@@ -129,8 +133,8 @@
       }
     }
 
-    public switchTheme(theme: Theme): void {
-      this.$store.commit('setTheme', theme);
+    public switchTheme(theme: PlaygroundTheme): void {
+      this.$store.commit('setPlaygroundTheme', theme);
     }
 
     public toggleFullscreen(): void {
@@ -191,8 +195,8 @@
       return ['light', 'dark'].indexOf(this.theme);
     }
 
-    public get theme(): Theme {
-      return this.config.themeable ? this.$store.getters.theme : 'light';
+    public get theme(): PlaygroundTheme {
+      return this.config.themeable ? this.$store.getters.playgroundTheme : 'light';
     }
 
     public get sharedImportKeys(): SharedImportKey[] {
@@ -240,7 +244,7 @@
     }
 
     &--dark {
-      border-color: $pds-theme-dark-background-base;
+      border-color: $pds-theme-dark-contrast-low;
       background-color: $pds-theme-dark-background-base;
 
       &.example--surface {

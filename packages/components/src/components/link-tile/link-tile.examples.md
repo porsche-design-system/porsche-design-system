@@ -55,10 +55,10 @@ The `size` property changes the font size of the description.
 
 The `weight` property changes the font weight of the description.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
   Please use the <code>semi-bold</code> value instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="weightMarkup" :config="config">
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>

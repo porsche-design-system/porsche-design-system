@@ -1,9 +1,9 @@
 # Fieldset Wrapper
 
-<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+<Notification heading="Deprecation hint" state="error">
   This component is deprecated and will be removed with the next major release.
 Please use <a href="components/fieldset">p-fieldset</a> instead.
-</p-inline-notification>
+</Notification>
 
 <TableOfContents></TableOfContents>
 
