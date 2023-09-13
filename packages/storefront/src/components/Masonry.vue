@@ -30,17 +30,17 @@
     >
       <picture>
         <source
-          v-if="$store.getters.platformTheme === 'auto'"
+          v-if="platformTheme === 'auto'"
           srcset="@/assets/migrate-v2-to-v3-light.jpg"
           media="(prefers-color-scheme: light)"
         />
         <source
-          v-if="$store.getters.platformTheme === 'auto'"
+          v-if="platformTheme === 'auto'"
           srcset="@/assets/migrate-v2-to-v3-dark.jpg"
           media="(prefers-color-scheme: dark)"
         />
         <img
-          v-if="$store.getters.platformTheme === 'dark'"
+          v-if="platformTheme === 'dark'"
           src="@/assets/migrate-v2-to-v3-dark.jpg"
           alt="Sample Porsche web application with Porsche Design System version 3."
         />
@@ -57,9 +57,14 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import { type Theme } from '@/models';
 
   @Component({})
-  export default class Masonry extends Vue {}
+  export default class Masonry extends Vue {
+    public get platformTheme(): Theme {
+      return this.$store.getters.platformTheme;
+    }
+  }
 </script>
 
 <style scoped lang="scss">

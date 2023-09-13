@@ -1,5 +1,5 @@
 <template>
-  <p-button-pure :theme="theme()" :icon="icon()" hide-label="true" @click="cycleTheme()"
+  <p-button-pure :theme="theme" :icon="icon" hide-label="true" @click="cycleTheme()"
     >Toggle theme of platform</p-button-pure
   >
 </template>
@@ -20,7 +20,7 @@
     }
 
     public onPrefersColorSchemeChange(): void {
-      if (this.theme() === 'auto') {
+      if (this.theme === 'auto') {
         this.$forceUpdate();
       }
     }
@@ -29,12 +29,12 @@
       return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
 
-    public theme(): Theme {
+    public get theme(): Theme {
       return this.$store.getters.platformTheme;
     }
 
-    public icon(): 'moon' | 'sun' {
-      if ((this.theme() === 'auto' && this.isPreferredColorSchemeDark()) || this.theme() === 'dark') {
+    public get icon(): 'moon' | 'sun' {
+      if ((this.theme === 'auto' && this.isPreferredColorSchemeDark()) || this.theme === 'dark') {
         return 'sun';
       } else {
         return 'moon';
@@ -43,7 +43,7 @@
 
     public cycleTheme(): void {
       const themes: Theme[] = ['auto', this.isPreferredColorSchemeDark() ? 'light' : 'dark'];
-      const newTheme = themes[(Math.max(0, themes.indexOf(this.theme())) + 1) % themes.length];
+      const newTheme = themes[(Math.max(0, themes.indexOf(this.theme)) + 1) % themes.length];
       document.body.classList.remove('light-mode', 'dark-mode', 'auto-dark-mode');
       document.body.classList.add(
         {

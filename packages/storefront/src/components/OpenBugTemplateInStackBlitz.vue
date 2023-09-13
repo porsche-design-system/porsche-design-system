@@ -1,7 +1,7 @@
 <template>
-  <p-fieldset :theme="$store.getters.platformTheme" label="Choose your Template:">
+  <p-fieldset :theme="platformTheme" label="Choose your Template:">
     <p-segmented-control
-      :theme="$store.getters.platformTheme"
+      :theme="platformTheme"
       :value="selectedFramework"
       aria-label="Choose your Framework:"
       @update="(e) => (this.selectedFramework = e.detail.value)"
@@ -10,14 +10,14 @@
         frameworkNameMap[framework]
       }}</p-segmented-control-item>
     </p-segmented-control>
-    <p-select-wrapper :theme="$store.getters.platformTheme" label="Choose your Porsche Design System version:">
+    <p-select-wrapper :theme="platformTheme" label="Choose your Porsche Design System version:">
       <select v-model="selectedPdsVersion">
         <option v-for="(pdsVersion, index) in pdsVersions" :key="index" :value="pdsVersion">{{ pdsVersion }}</option>
       </select>
     </p-select-wrapper>
 
     <CodeEditor
-      :theme="$store.getters.platformTheme"
+      :theme="platformTheme"
       :buttonLabel="'Open template in StackBlitz'"
       :markup="markup"
       :framework="selectedFramework"
@@ -32,6 +32,7 @@
   import CodeEditor from '@/components/CodeEditor.vue';
   import type { Framework } from '@/models';
   import { frameworkNameMap } from '@/utils/frameworkNameMap';
+  import { Theme } from '@/models';
 
   @Component({
     components: { CodeEditor },
@@ -43,6 +44,10 @@
     pdsVersions: string[] = [];
     selectedPdsVersion = '';
     frameworkNameMap = frameworkNameMap;
+
+    public get platformTheme(): Theme {
+      return this.$store.getters.platformTheme;
+    }
 
     private async fetchVersions(): Promise<string[]> {
       const response = await fetch('https://registry.npmjs.org/@porsche-design-system/components-js', {

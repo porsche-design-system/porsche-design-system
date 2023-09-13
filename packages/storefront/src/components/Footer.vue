@@ -1,7 +1,7 @@
 <template>
   <footer>
     <p-link-pure
-      :theme="$store.getters.platformTheme"
+      :theme="platformTheme"
       href="https://brand.porsche.com"
       target="_blank"
       icon="external"
@@ -9,7 +9,7 @@
     >
       brand.porsche.com
     </p-link-pure>
-    <p-text :theme="$store.getters.platformTheme" size="xx-small" color="contrast-high">
+    <p-text :theme="platformTheme" size="xx-small" color="contrast-high">
       <span>© {{ year }} Dr. Ing. h.c. F. Porsche AG.</span>
       <br />
       <a href="https://ux.porsche.com/privacy-policy">Privacy Policy</a>
@@ -24,10 +24,15 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import { type Theme } from '@/models';
 
   @Component
   export default class Footer extends Vue {
     year = new Date().getFullYear();
+
+    public get platformTheme(): Theme {
+      return this.$store.getters.platformTheme;
+    }
   }
 </script>
 

@@ -2,12 +2,10 @@
   <div>
     <div style="display: flex; justify-content: space-between; margin: 0 0 1rem">
       <div>🚫 = deprecated<br />🛠 = breakpointCustomizable</div>
-      <p-switch :theme="$store.getters.platformTheme" @update="toggleProps" :checked="isToggled"
-        >Show all prop values</p-switch
-      >
+      <p-switch :theme="platformTheme" @update="toggleProps" :checked="isToggled">Show all prop values</p-switch>
     </div>
 
-    <p-table :theme="$store.getters.platformTheme">
+    <p-table :theme="platformTheme">
       <p-table-head>
         <!-- eslint-disable-next-line vue/no-v-text-v-html-on-component -->
         <p-table-head-row v-html="headRow"></p-table-head-row>
@@ -25,11 +23,16 @@
   import type { TagName } from '@porsche-design-system/shared';
   import { getComponentMeta } from '@porsche-design-system/component-meta';
   import type { ComponentMeta } from '@porsche-design-system/component-meta';
+  import { type Theme } from '@/models';
 
   const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 
   @Component
   export default class ComponentMetaOverview extends Vue {
+    public get platformTheme(): Theme {
+      return this.$store.getters.platformTheme;
+    }
+
     get headRow(): string {
       return ['', ...tagNames]
         .map((tagName) => {

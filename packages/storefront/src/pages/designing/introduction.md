@@ -55,7 +55,7 @@ System v3 (Figma)</p-link-pure>
 <p-link-pure :theme="$store.getters.platformTheme" target="_blank" href="https://www.figma.com/file/0GbGhymVN01gdkpWBTv8wS/Overview-%26-Key-Screens?node-id=235%3A6014&t=HmQ6ZStK7BiIj6EW-1">Overview
 & Key Screens (Figma)</p-link-pure>
 
-## Ressouces
+## Resources
 
 ### Porsche Next font
 

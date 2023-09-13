@@ -2,7 +2,7 @@
   <nav v-show="!this.isSearchVisible">
     <!-- TODO: spacer class could be applied with an additional abstraction layer in storefront.config.ts  -->
     <p-accordion
-      :theme="$store.getters.platformTheme"
+      :theme="platformTheme"
       v-for="(pages, category, index) in config"
       :key="index"
       :heading="category"
@@ -14,7 +14,7 @@
       <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">
           <router-link :to="getRoute(category, page)" v-slot="{ isActive, href, navigate }">
-            <p-link-pure :theme="$store.getters.platformTheme" icon="none" :active="isActive">
+            <p-link-pure :theme="platformTheme" icon="none" :active="isActive">
               <a :href="href" @click="navigate"
                 >{{ page }}<span title="deprecated">{{ getDeprecated(category, page) }}</span></a
               >
@@ -30,7 +30,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Watch } from 'vue-property-decorator';
-  import { StorefrontConfig } from '@/models';
+  import { StorefrontConfig, Theme } from '@/models';
   import { capitalCase, paramCase } from 'change-case';
   import { Route } from 'vue-router';
   import { config as storefrontConfig } from '@/../storefront.config';
@@ -43,6 +43,10 @@
   export default class Navigation extends Vue {
     public config: StorefrontConfig = storefrontConfig;
     public accordion: { [id: string]: boolean } = {};
+
+    public get platformTheme(): Theme {
+      return this.$store.getters.platformTheme;
+    }
 
     public get isSearchVisible(): boolean {
       return this.$store.getters.isSearchActive;

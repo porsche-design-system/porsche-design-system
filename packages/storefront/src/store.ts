@@ -20,7 +20,7 @@ const initialState: State = {
   isMenuActive: false,
   isSearchActive: false,
   selectedFramework: 'vanilla-js',
-  playgroundTheme: (localStorage.getItem('playgroundTheme') as State['playgroundTheme'],
+  playgroundTheme: localStorage.getItem('playgroundTheme') as State['playgroundTheme'],
   platformTheme: 'auto',
 };
 

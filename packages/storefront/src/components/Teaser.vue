@@ -1,9 +1,7 @@
 <template>
   <header>
-    <p-display :theme="$store.getters.platformTheme" class="heading" size="small" tag="h2"
-      >Welcome to the new digital</p-display
-    >
-    <p-text :theme="$store.getters.platformTheme" class="paragraph" color="contrast-high" size="large">
+    <p-display :theme="platformTheme" class="heading" size="small" tag="h2">Welcome to the new digital</p-display>
+    <p-text :theme="platformTheme" class="paragraph" color="contrast-high" size="large">
       Become today a part of tomorrow’s Porsche new design language with the new Porsche Design System v3.
     </p-text>
   </header>
@@ -12,9 +10,14 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import { Theme } from '@/models';
 
   @Component({})
-  export default class Teaser extends Vue {}
+  export default class Teaser extends Vue {
+    public get platformTheme(): Theme {
+      return this.$store.getters.platformTheme;
+    }
+  }
 </script>
 
 <style scoped lang="scss">
