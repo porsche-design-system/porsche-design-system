@@ -124,7 +124,7 @@ export default class Code extends Vue {
     return `<p-grid>
   <p-grid-item size="12">12</p-grid-item>
 </p-grid>
-${Array.from(Array(11), (x, i) => `<p-grid>
+${Array.from(Array(11), (_, i) => `<p-grid>
   <p-grid-item size="${i+1}">${i+1}</p-grid-item>
   <p-grid-item size="${11-i}">${11-i}</p-grid-item>
 </p-grid>`).join('\n')}`;
@@ -137,7 +137,7 @@ ${Array.from(Array(11), (x, i) => `<p-grid>
 </p-grid>`;
 
   get offset() {
-    return Array.from(Array(11), (x, i) => `<p-grid>
+    return Array.from(Array(11), (_, i) => `<p-grid>
     <p-grid-item offset="${i+1}" size="${11-i}">${i+1}</p-grid-item>
 </p-grid>`).join('\n');
   }
