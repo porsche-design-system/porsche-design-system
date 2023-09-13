@@ -6,6 +6,7 @@ import {
   getActiveElementTagNameInShadowRoot,
   getAttribute,
   getCssClasses,
+  getElementStyle,
   getEventSummary,
   getLifecycleStatus,
   goto,
@@ -327,6 +328,29 @@ it('should disable prev/next buttons on first/last slide when rewind=false', asy
   expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
 });
 
+it('should not have pagination and prev/next buttons when there is only one page and slidesPerPage is not auto', async () => {
+  await initCarousel({ slidesPerPage: 3 });
+  const buttonPrev = await selectNode(page, 'p-carousel >>> p-button-pure:first-of-type');
+  const buttonNext = await selectNode(page, 'p-carousel >>> p-button-pure:last-of-type');
+  const pagination = await getPagination();
+
+  expect(buttonPrev).toBeNull();
+  expect(buttonNext).toBeNull();
+  expect(pagination).toBeNull();
+});
+
+it('should have normal cursor when there is only one page and slidesPerPage is not auto', async () => {
+  await initCarousel({ slidesPerPage: 3 });
+  const track = await getSplideTrack();
+  expect(await getElementStyle(track, 'cursor')).toBe('auto');
+});
+
+it('should have grab cursor when there is only more than one page', async () => {
+  await initCarousel();
+  const track = await getSplideTrack();
+  expect(await getElementStyle(track, 'cursor')).toBe('grab');
+});
+
 describe('adding/removing slides', () => {
   const addSlide = (host: ElementHandle): Promise<void> => {
     return host.evaluate((host) => {
@@ -446,8 +470,50 @@ describe('adding/removing slides', () => {
     await removeSlide(host);
     await waitForStencilLifecycle(page);
     expect((await getSlides()).length).toBe(1);
-    expect(await getAttribute(buttonPrev, 'aria-label')).toBe('Go to last slide');
-    expect(await getAttribute(buttonNext, 'aria-label')).toBe('Go to first slide');
+
+    const buttonPrev2 = await selectNode(page, 'p-carousel >>> p-button-pure:first-of-type');
+    const buttonNext2 = await selectNode(page, 'p-carousel >>> p-button-pure:last-of-type');
+    expect(buttonPrev2).toBeNull();
+    expect(buttonNext2).toBeNull();
+  });
+
+  it('should show/hide pagination and prev/next buttons depending on the amount of pages', async () => {
+    await initCarousel({ slidesPerPage: 2 });
+    const host = await getHost();
+
+    expect((await getSlides()).length).toBe(3);
+
+    const buttonPrev1 = await getButtonPrev();
+    const buttonNext1 = await getButtonNext();
+    const pagination1 = await getPagination();
+
+    expect(buttonPrev1).not.toBeNull();
+    expect(buttonNext1).not.toBeNull();
+    expect(pagination1).not.toBeNull();
+
+    await removeSlide(host);
+    await waitForStencilLifecycle(page);
+    expect((await getSlides()).length).toBe(2);
+
+    const buttonPrev2 = await selectNode(page, 'p-carousel >>> p-button-pure:first-of-type');
+    const buttonNext2 = await selectNode(page, 'p-carousel >>> p-button-pure:last-of-type');
+    const pagination2 = await getPagination();
+
+    expect(buttonPrev2).toBeNull();
+    expect(buttonNext2).toBeNull();
+    expect(pagination2).toBeNull();
+
+    await addSlide(host);
+    await waitForStencilLifecycle(page);
+    expect((await getSlides()).length).toBe(3);
+
+    const buttonPrev3 = await getButtonPrev();
+    const buttonNext3 = await getButtonNext();
+    const pagination3 = await getPagination();
+
+    expect(buttonPrev3).not.toBeNull();
+    expect(buttonNext3).not.toBeNull();
+    expect(pagination3).not.toBeNull();
   });
 });
 

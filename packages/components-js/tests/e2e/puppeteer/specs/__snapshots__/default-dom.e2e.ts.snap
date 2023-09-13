@@ -71,20 +71,12 @@ exports[`should have no basic DOM regression for p-carousel 1`] = `
   <slot name="heading">
   </slot>
   <div class="nav">
-    <p-button-pure class="btn hydrated">
-    </p-button-pure>
-    <p-button-pure class="btn hydrated">
-    </p-button-pure>
   </div>
 </div>
-<div id="splide" class="splide splide--slide splide--ltr splide--draggable is-active is-initialized" role="region" aria-roledescription="carousel">
-  <div class="splide__track splide__track--slide splide__track--ltr splide__track--draggable" id="splide-track" aria-live="polite" aria-atomic="true" style="padding-left: 0px; padding-right: 0px;">
+<div id="splide" class="splide splide--slide splide--ltr is-active is-initialized" role="region" aria-roledescription="carousel">
+  <div class="splide__track splide__track--slide splide__track--ltr" id="splide-track" aria-live="polite" aria-atomic="true" style="padding-left: 0px; padding-right: 0px;">
     <div class="splide__list" id="splide-list" role="presentation" style="transform: translateX(0px);">
     </div>
-  </div>
-</div>
-<div class="pagination-container">
-  <div class="pagination">
   </div>
 </div>"
 `;
