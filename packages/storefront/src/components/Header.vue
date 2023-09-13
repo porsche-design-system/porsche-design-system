@@ -7,6 +7,7 @@
     <Wordmark />
     <div>
       <Search class="search-field" />
+      <CycleStorefrontTheme class="cycle-platform-theme" />
       <GitHubAnchor class="github-anchor" />
     </div>
   </header>
@@ -20,6 +21,7 @@
   import Menu from '@/components/Menu.vue';
   import Wordmark from '@/components/Wordmark.vue';
   import GitHubAnchor from '@/components/GitHubAnchor.vue';
+  import CycleStorefrontTheme from '@/components/CycleStorefrontTheme.vue';
 
   @Component({
     components: {
@@ -28,6 +30,7 @@
       Menu,
       Wordmark,
       GitHubAnchor,
+      CycleStorefrontTheme,
     },
   })
   export default class Header extends Vue {
@@ -53,8 +56,8 @@
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     gap: $pds-grid-gap;
     align-items: center;
-    border-bottom: 1px solid $pds-theme-light-background-surface;
-    background-color: rgb(255 255 255 / 79%);
+    background-color: var(--theme-custom-background-header);
+    border-bottom: 1px solid var(--theme-background-surface);
     -webkit-backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
     backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
 
@@ -96,7 +99,8 @@
   }
 
   .open-menu-button,
-  .github-anchor {
+  .github-anchor,
+  .cycle-platform-theme {
     padding: 13px; // apply custom padding to make button/anchor in hover state as large as search field height
   }
 
@@ -104,11 +108,18 @@
     margin-left: -13px; // compensate alignment because of custom padding
   }
 
-  .github-anchor {
+  .github-anchor,
+  .cycle-platform-theme {
     margin-right: -13px; // compensate alignment because of custom padding
   }
 
   // TODO: maybe conditional rendering would be more advanced
+  .github-anchor {
+    @include pds-media-query-max('xs') {
+      display: none;
+    }
+  }
+
   .heading,
   .version-select,
   .search-field {

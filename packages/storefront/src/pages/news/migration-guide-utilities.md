@@ -8,10 +8,10 @@ With the new **Porsche Design System v3** a sub package called `Styles` is provi
 matching the new design language. It's available as JavaScript and SCSS version. Further documentation can be found
 [here](https://designsystem.porsche.com/latest/styles/introduction).
 
-<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+<Notification heading="Deprecation hint" state="error">
   The npm package <code>@porsche-design-system/utilities</code> is deprecated and will no longer be maintained. A migration 
 to <code>@porsche-design-system/components-{js|angular|react|vue}/styles</code> should take place as fast as possible.
-</p-inline-notification>
+</Notification>
 
 ## 👹 Breaking Changes (JS)
 

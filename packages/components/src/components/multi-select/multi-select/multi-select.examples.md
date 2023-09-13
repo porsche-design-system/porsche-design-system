@@ -94,7 +94,7 @@ export default class Code extends Vue {
   config = { themeable: true, overflowX: 'visible' };
 
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 
   $refs!: {

@@ -71,10 +71,10 @@ type TableHeadCellSort = {
 Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits an `update` event that you should subscribe
 to.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>sortingChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :frameworkMarkup="sorting" :config="config">
   <p-table caption="Some caption" ref="tableSorting" :theme="theme">
@@ -153,7 +153,7 @@ export default class Code extends Vue {
   config = { themeable: true };
 
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 
   headBasic = headBasic;

@@ -14,7 +14,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import type { BackgroundColor, Framework, Theme } from '@/models';
+  import type { BackgroundColor, Framework, PlaygroundTheme } from '@/models';
   import { openInStackBlitz } from '@/utils';
   import type { ExternalDependency, SharedImportKey } from '@/utils';
   import { isStableStorefrontRelease } from '@/utils/stackblitz/helper';
@@ -25,7 +25,7 @@
   @Component
   export default class CodeEditor extends Vue {
     @Prop({ default: '' }) public markup!: string;
-    @Prop({ default: 'light' }) public theme!: Theme;
+    @Prop({ default: 'light' }) public theme!: PlaygroundTheme;
     @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared' | 'vue'>; // we don't have stackblitz integration for vue yet, therefore excluding vue
     @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
     @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];

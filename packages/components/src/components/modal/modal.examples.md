@@ -10,15 +10,15 @@ Modals are flexible in the context and can include other components of the Porsc
 It is a controlled component. This grants you flexible control over the modal's behavior especially whether it should
 stay open after user interaction like submission of a form.
 
-<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
+<Notification heading="Important note" state="warning">
   This component activates a focus trap to keep the focus within while being open.<br>
   This is achieved by detecting the first and last focusable child element after the modal is opened.<br>
-  Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the modal. 
-</p-inline-notification>
+  Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the modal.
+</Notification>
 
-<p-inline-notification heading="Recommendation" state="success" dismiss-button="false">
+<Notification heading="Recommendation" state="success">
   You should only have a single instance of this component within your application. We recommend rendering it close to the body, e.g., in your App.tsx or app.component.ts. This way you reduce the chance of having issues with its z-index and fixed positioning. 
-</p-inline-notification>
+</Notification>
 
 <TableOfContents></TableOfContents>
 
@@ -33,10 +33,10 @@ The most important property of `p-modal` is its `open` attribute. When it is pre
 In order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
 key you need to register an event listener for the `dismiss` event which is emitted by `p-modal`.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>close</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>dismiss</code> event instead.
-</p-inline-notification>
+</Notification>
 
 The size of `p-modal` adjusts itself to the content with a predefined min/max width.
 
@@ -90,16 +90,16 @@ At the same time this also deactivates dismissing the modal by pressing `Escape`
 If you want to prevent dismissing the modal by clicking the backdrop, you can set the `disable-backdrop-click`
 attribute.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>disableCloseButton</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>dismissButton</code> property instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="withoutDismissButton"></Playground>
 
 ## Sticky Footer
 
-If you need a footer that is always visible, for example with a call-to-action button, you can use a named 
+If you need a footer that is always visible, for example with a call-to-action button, you can use a named
 `slot="footer"`.
 
 <Playground :markup="stickyFooter"></Playground>

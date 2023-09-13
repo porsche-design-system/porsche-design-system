@@ -10,10 +10,10 @@ behavior.
 
 ## Basic example
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>accordionChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :frameworkMarkup="codeExample" :config="config" :markup="basic"></Playground>
 
