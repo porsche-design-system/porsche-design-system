@@ -213,6 +213,10 @@ export class MultiSelect {
     syncMultiSelectOptionProps(this.multiSelectOptions, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const labelId = 'label';
+    const messageId = 'message';
+    const descriptionId = 'description';
+    const optionsSelectedId = 'options-selected';
     const dropdownId = 'list';
 
     return (
@@ -220,19 +224,19 @@ export class MultiSelect {
         <div class="root">
           <label class="label">
             {hasLabel(this.host, this.label) && (
-              <span class="label__text" id="label" onClick={() => this.inputElement.focus()}>
+              <span id={labelId} class="label__text" onClick={() => this.inputElement.focus()}>
                 {this.label || <slot name="label" />}
                 {isRequiredAndParentNotRequired(this.host, this.host as HTMLElementWithRequiredProp) && <Required />}
               </span>
             )}
             {/* TODO: Description should be separated from the label (affects all form components) */}
             {hasDescription(this.host, this.description) && (
-              <span class="label__text" id="description" onClick={() => this.inputElement.focus()} aria-hidden="true">
+              <span id={descriptionId} class="label__text" onClick={() => this.inputElement.focus()} aria-hidden="true">
                 {this.description || <slot name="description" />}
               </span>
             )}
             {this.currentValue.length > 0 && (
-              <span class="sr-text" id="options-selected">
+              <span id={optionsSelectedId} class="sr-text">
                 {getSelectedOptions(this.multiSelectOptions).length} options selected
               </span>
             )}
@@ -252,8 +256,8 @@ export class MultiSelect {
               {...getFilterInputAriaAttributes(
                 this.isOpen,
                 this.required,
-                'label',
-                'description options-selected state-message',
+                labelId,
+                `${descriptionId} ${optionsSelectedId} ${messageId}`,
                 dropdownId
               )}
             />
@@ -297,13 +301,7 @@ export class MultiSelect {
         </div>
         {this.isWithinForm && <slot name="select" />}
         {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage
-            state={this.state}
-            message={this.message}
-            theme={this.theme}
-            host={this.host}
-            id="state-message"
-          />
+          <StateMessage id={messageId} state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
         <span class="sr-text" role="status" aria-live="assertive" aria-relevant="additions text">
           {this.srHighlightedOptionText}
