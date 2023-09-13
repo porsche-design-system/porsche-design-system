@@ -199,7 +199,13 @@ export class PinCode {
           ))}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage id="state-message" state={this.state} message={this.message} theme="light" host={this.host} />
+          <StateMessage
+            id="state-message"
+            state={this.state}
+            message={this.message}
+            theme={this.theme}
+            host={this.host}
+          />
         )}
       </Host>
     );
