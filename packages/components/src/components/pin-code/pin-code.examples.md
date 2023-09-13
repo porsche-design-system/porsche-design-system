@@ -177,7 +177,7 @@ export default class Code extends Vue {
   requiredMarkup = `<p-pin-code label="Some label" required="true"></p-pin-code>`;
 
   length=4;
-  currentValueControlled = [];
+  currentValueControlled = '';
   isComplete = false;
   eventHandlingExample = getPinCodeCodeSamples('example-controlled');
 
