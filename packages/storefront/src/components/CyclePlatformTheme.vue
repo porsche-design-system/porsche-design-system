@@ -42,7 +42,7 @@
     }
 
     public cycleTheme(): void {
-      const themes: Theme[] = ['auto', ...[this.isPreferredColorSchemeDark() ? 'light' : 'dark']];
+      const themes: Theme[] = ['auto', this.isPreferredColorSchemeDark() ? 'light' : 'dark'];
       const newTheme = themes[(Math.max(0, themes.indexOf(this.theme())) + 1) % themes.length];
       document.body.classList.remove('light-mode', 'dark-mode', 'auto-dark-mode');
       document.body.classList.add(
