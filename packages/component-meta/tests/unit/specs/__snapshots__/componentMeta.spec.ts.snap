@@ -2184,13 +2184,8 @@ exports[`should match snapshot 1`] = `
         "number",
         "password",
       ],
-      "value": [
-        "string",
-      ],
+      "value": "string",
     },
-    "arrayProps": [
-      "value",
-    ],
     "breakpointCustomizableProps": [
       "hideLabel",
     ],
@@ -2226,7 +2221,7 @@ exports[`should match snapshot 1`] = `
       "state": "none",
       "theme": "light",
       "type": "number",
-      "value": [],
+      "value": null,
     },
     "styling": "jss",
   },
