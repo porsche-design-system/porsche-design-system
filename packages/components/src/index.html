@@ -82,6 +82,11 @@
       .playground:not([class*='auto-layout'])::before {
         margin-bottom: 16px;
       }
+
+      p-carousel > div {
+        /*height: 300px;*/
+        background: yellow;
+      }
     </style>
   </head>
   <body>
@@ -90,237 +95,63 @@
     </header>
 
     <main>
-      <style>
-        p-scroller {
-          max-width: 600px;
-        }
-
-        .playground > div {
-          height: 3rem;
-          border: 1px solid deeppink;
-          max-width: 600px;
-        }
-      </style>
-
-      <div class="playground auto" title="should render scroller">
-        <p-scroller theme="auto">
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-        </p-scroller>
-      </div>
-
-      <div
-        class="playground auto surface"
-        title="should render scroller gradientColorScheme surface on surface background"
-      >
-        <p-scroller theme="auto" gradient-color-scheme="surface">
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-        </p-scroller>
-      </div>
-
-      <div class="playground auto surface" title="should render scroller gradientColor surface on surface background">
-        <p-scroller theme="auto" gradient-color="background-surface">
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-        </p-scroller>
-      </div>
-
-      <div class="playground auto" title="should render scroller with scrollIndicatorPosition center">
-        <div>
-          <p-scroller theme="auto" scroll-indicator-position="center">
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-          </p-scroller>
-        </div>
-      </div>
-
-      <div class="playground auto" title="should render scroller with scrollIndicatorPosition top">
-        <div>
-          <p-scroller theme="auto" scroll-indicator-position="top">
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-          </p-scroller>
-        </div>
-      </div>
-
-      <div class="playground auto" title="should render scroller with alignScrollIndicator center">
-        <div>
-          <p-scroller theme="auto" align-scroll-indicator="center">
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-          </p-scroller>
-        </div>
-      </div>
-
-      <div class="playground auto" title="should render scroller with alignScrollIndicator top">
-        <div>
-          <p-scroller theme="auto" align-scroll-indicator="top">
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-          </p-scroller>
-        </div>
-      </div>
-
-      <div
-        class="playground auto"
-        title="should render scroller only on screen size too small to show all buttons at once"
-      >
-        <p-scroller theme="auto" style="max-width: none">
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-        </p-scroller>
-      </div>
-
-      <div class="playground auto" title="should render scroller items with linebreaks">
-        <p-scroller theme="auto">
-          <button>Button with line break</button>
-          <button>Button with line break</button>
-          <button>Button with line break</button>
-          <button>Button with line break</button>
-          <button>Button with line break</button>
-          <button>Button with line break</button>
-          <button>Button with line break</button>
-          <button>Button with line break</button>
-          <button>Button with line break</button>
-        </p-scroller>
-      </div>
-
-      <div class="playground auto" title="should render scroller with initial scroll position">
-        <p-scroller theme="auto" class="scroller" scroll-to-position="{scrollPosition: 100}">
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-        </p-scroller>
-      </div>
-
-      <div class="playground auto" title="should render scroller with scrollbar">
-        <div>
-          <p-scroller theme="auto" scrollbar="true">
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-          </p-scroller>
-        </div>
-      </div>
+      <!--      <p-carousel heading="1" slides-per-page="1">-->
+      <!--        <div class="slide">Slide 1</div>-->
+      <!--      </p-carousel>-->
+      <p-carousel heading="2" slides-per-page="2" class="test">
+        <div>Slide 1</div>
+        <div>Slide 1</div>
+        <div>Slide 1</div>
+      </p-carousel>
+      <!--      <p-carousel slides-per-page="3" heading="3">-->
+      <!--        <div>Slide 1</div>-->
+      <!--        <div>Slide 2</div>-->
+      <!--        <div>Slide 3</div>-->
+      <!--      </p-carousel>-->
+      <!--      <p-carousel slides-per-page="auto" heading="Auto">-->
+      <!--        <div style="width: 10vw">-->
+      <!--          Slide 1-->
+      <!--          <p>(10vw)</p>-->
+      <!--        </div>-->
+      <!--        <div style="width: 200px">-->
+      <!--          Slide 2-->
+      <!--          <p>(200px)</p>-->
+      <!--        </div>-->
+      <!--        <div style="width: 100px">-->
+      <!--          Slide 3-->
+      <!--          <p>(100px)</p>-->
+      <!--        </div>-->
+      <!--        <div style="width: 40vw">-->
+      <!--          Slide 4-->
+      <!--          <p>(40vw)</p>-->
+      <!--        </div>-->
+      <!--      </p-carousel>-->
     </main>
 
     <script>
-      <!-- START: keep this snippet to log component lifecycle events -->
-      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+      const carousel = document.querySelector('.test');
+
+      // setTimeout(() => {
+      //   Array.from(carousel.children).at(-1).remove();
+      // }, 3000);
+      //
+      // setTimeout(() => {
+      //   const div = document.createElement('div');
+      //   div.innerHTML = 'Slide';
+      //   carousel.append(div);
+      // }, 6000);
+      //
+      // setTimeout(() => {
+      //   Array.from(carousel.children).at(-1).remove();
+      // }, 9000);
+
+      [
+        <!-- START: keep this snippet to log component lifecycle events -->
+        'componentWillLoad',
+        'componentDidLoad',
+        'componentWillUpdate',
+        'componentDidUpdate',
+      ].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());

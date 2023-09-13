@@ -233,8 +233,8 @@ describe('componentDidUpdate', () => {
 
     const mockSplideInstance = {
       options: {},
-      refresh: jest.fn(),
-    } as unknown as Splide;
+      refresh: () => {},
+    } as Splide;
 
     component['splide'] = mockSplideInstance;
     component['amountOfPages'] = 2;
@@ -263,8 +263,8 @@ describe('componentDidUpdate', () => {
 
     const mockSplideInstance = {
       options: {},
-      refresh: jest.fn(),
-    } as unknown as Splide;
+      refresh: () => {},
+    } as Splide;
 
     component['splide'] = mockSplideInstance;
     component['slidesPerPage'] = 'auto';
@@ -281,7 +281,7 @@ describe('componentDidUpdate', () => {
       options: {},
       refresh: () => {},
     } as Splide;
-    component['amountOfPages'] = 2; // hasNavigation = true
+    Object.defineProperty(component, 'hasNavigation', { value: true });
 
     component.componentDidUpdate();
     expect(renderPaginationSpy).toBeCalledWith(component['paginationEl'], component['amountOfPages'], 0);
@@ -294,7 +294,7 @@ describe('componentDidUpdate', () => {
       options: {},
       refresh: () => {},
     } as Splide;
-    component['amountOfPages'] = 1; // hasNavigation = false
+    Object.defineProperty(component, 'hasNavigation', { value: false });
 
     component.componentDidUpdate();
     expect(renderPaginationSpy).not.toBeCalled();
@@ -303,7 +303,7 @@ describe('componentDidUpdate', () => {
   it('should call updatePrevNextButtons() with correct parameters when hasNavigation = true', () => {
     const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const component = new Carousel();
-    component['amountOfPages'] = 2; // hasNavigation = true
+    Object.defineProperty(component, 'hasNavigation', { value: true });
     component['splide'] = { refresh: () => {} } as Splide;
 
     component.componentDidUpdate();
@@ -313,7 +313,7 @@ describe('componentDidUpdate', () => {
   it('should not call updatePrevNextButtons() when hasNavigation = false', () => {
     const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const component = new Carousel();
-    component['amountOfPages'] = 1; // hasNavigation = false
+    Object.defineProperty(component, 'hasNavigation', { value: false });
     component['splide'] = { refresh: () => {} } as Splide;
 
     component.componentDidUpdate();
