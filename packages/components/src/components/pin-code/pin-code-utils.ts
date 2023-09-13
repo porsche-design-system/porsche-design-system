@@ -8,7 +8,7 @@ export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
 export const PIN_CODE_LENGTHS = [4 as number, 6 as number] as const;
 export type PinCodeLength = (typeof PIN_CODE_LENGTHS)[number];
 
-export type PinCodeUpdateEvent = { value: string[]; isComplete: boolean };
+export type PinCodeUpdateEvent = { value: string; isComplete: boolean };
 
 export type PinCodeState = FormState;
 
@@ -35,14 +35,16 @@ export const warnAboutTransformedInitialValue = (host: HTMLElement, length?: num
 
 export const isInputSingleDigit = (input: string): boolean => /^\d$/.test(input);
 
-export const hasInputOnlyDigits = (input: string): boolean => /^\d+$/.test(input);
+// TODO rename
+export const hasInputOnlyDigits = (input: string): boolean => /(^[0-9 ]+$)/.test(input);
 
-export const getArrayOfInputValues = (pinCodeElements: HTMLInputElement[]): string[] =>
-  pinCodeElements.map((el) => el.value);
+// TODO rename
+export const getArrayOfInputValues = (pinCodeElements: HTMLInputElement[]): string =>
+  pinCodeElements.map((el) => (el.value ? el.value : (el.value = ' '))).join('');
 
 // remove whitespaces and cut string if pasted value is longer than pin code length
-export const getSanitizationValue = (value: string, length: number): string =>
-  value.replace(/\s/g, '').slice(0, length);
+export const getSanitisedValue = (value: string, length?: number): string =>
+  value?.replace(/\s/g, '').slice(0, length ? length : value.length);
 
 export const initHiddenInput = (
   host: HTMLElement,
@@ -71,7 +73,7 @@ export const syncHiddenInput = (
 ): void => {
   setAttributes(hiddenInput, {
     name: name,
-    value: value,
+    value: getSanitisedValue(value),
   });
   hiddenInput.toggleAttribute('disabled', disabled);
   hiddenInput.toggleAttribute('required', required);

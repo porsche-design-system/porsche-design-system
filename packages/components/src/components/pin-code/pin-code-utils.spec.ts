@@ -10,7 +10,7 @@ import {
   getArrayOfInputValues,
   syncHiddenInput,
   warnAboutTransformedInitialValue,
-  getSanitizationValue,
+  getSanitisedValue,
 } from './pin-code-utils';
 import { PinCode } from './pin-code';
 
@@ -112,11 +112,11 @@ describe('getArrayOfInputValues()', () => {
   });
 });
 
-describe('getSanitizationValue()', () => {
+describe('getSanitisedValue()', () => {
   it('should return pin code value if already optimal', () => {
     const pinCode = '1234';
 
-    const optimizedValue = getSanitizationValue(pinCode, 4);
+    const optimizedValue = getSanitisedValue(pinCode, 4);
 
     expect(optimizedValue).toBe('1234');
   });
@@ -124,7 +124,7 @@ describe('getSanitizationValue()', () => {
   it('should remove whitespaces from pin code value', () => {
     const pinCode = ' 1 2 3 4 ';
 
-    const optimizedValue = getSanitizationValue(pinCode, 4);
+    const optimizedValue = getSanitisedValue(pinCode, 4);
 
     expect(optimizedValue).toBe('1234');
   });
@@ -132,7 +132,7 @@ describe('getSanitizationValue()', () => {
   it('should shorten pin code value if value is too long', () => {
     const pinCode = ' 12345678';
 
-    const optimizedValue = getSanitizationValue(pinCode, 4);
+    const optimizedValue = getSanitisedValue(pinCode, 4);
 
     expect(optimizedValue).toBe('1234');
   });

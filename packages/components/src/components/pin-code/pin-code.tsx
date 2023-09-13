@@ -6,7 +6,6 @@ import {
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
-  handleButtonEvent,
   hasDescription,
   hasLabel,
   hasMessage,
@@ -27,11 +26,12 @@ import {
   PIN_CODE_TYPES,
   syncHiddenInput,
   warnAboutTransformedInitialValue,
-  getSanitizationValue,
+  getSanitisedValue,
   hiddenInputSlotName,
 } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
+import { getClosestHTMLElement } from '../../utils/dom';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -45,7 +45,7 @@ const propTypes: PropTypes<typeof PinCode> = {
   required: AllowedTypes.boolean,
   message: AllowedTypes.string,
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
-  value: AllowedTypes.array(AllowedTypes.string),
+  value: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -90,7 +90,7 @@ export class PinCode {
   @Prop() public type?: PinCodeType = 'number';
 
   /** Sets the initial value of the Pin Code. */
-  @Prop({ mutable: true }) public value?: string[] = [];
+  @Prop({ mutable: true }) public value?: string = '';
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -98,25 +98,25 @@ export class PinCode {
   /** Emitted when selected element changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEvent>;
 
+  private form: HTMLFormElement;
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;
   private pinCodeElements: HTMLInputElement[] = [];
 
   public componentWillLoad(): void {
+    this.form = getClosestHTMLElement(this.host, 'form');
     this.isWithinForm = isWithinForm(this.host);
     if (this.isWithinForm) {
-      this.hiddenInput = initHiddenInput(this.host, this.name, this.value.join(''), this.disabled, this.required);
+      this.hiddenInput = initHiddenInput(this.host, this.name, this.value, this.disabled, this.required);
     }
   }
 
   public componentWillRender(): void {
-    // initialize array of values with empty strings / reset initial value if it does not consist of digits only
-    if (this.value.length === 0 || (this.value.join('') && !hasInputOnlyDigits(this.value.join('')))) {
-      if (this.value.join().length > 0) {
-        warnAboutTransformedInitialValue(this.host);
-      }
-      this.value = Array(this.length).fill('');
+    // reset initial value if it does not consist of digits only
+    if (this.value && !hasInputOnlyDigits(this.value)) {
+      this.value = '';
       this.updateValue();
+      warnAboutTransformedInitialValue(this.host);
     }
 
     // make sure initial value is not longer than pin code length
@@ -127,7 +127,7 @@ export class PinCode {
     }
 
     if (this.isWithinForm) {
-      syncHiddenInput(this.hiddenInput, this.name, this.value.join(''), this.disabled, this.required);
+      syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
     }
   }
 
@@ -181,7 +181,7 @@ export class PinCode {
           {this.isWithinForm && <slot name={hiddenInputSlotName} />}
           {...Array.from({ length: this.length }).map((_value, index) => (
             <input
-              id={index === this.value.join('').length ? currentInputId : null}
+              id={index === this.value.length ? currentInputId : null}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby="label description state-message"
@@ -190,7 +190,7 @@ export class PinCode {
               autoComplete="one-time-code"
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
-              value={this.value[index]}
+              value={this.value[index] && this.value[index] !== ' ' ? this.value[index] : null}
               disabled={this.disabled}
               required={this.required}
               ref={(el) => this.pinCodeElements.push(el)}
@@ -212,8 +212,8 @@ export class PinCode {
     // needed to update value on auto-complete via keyboard suggestion
     const { target } = e;
     if (target.value?.length >= this.length) {
-      const optimizedValue = getSanitizationValue(target.value, this.length);
-      this.value = optimizedValue.split('');
+      const sanitisedValue = getSanitisedValue(target.value, this.length);
+      this.value = sanitisedValue;
       this.updateValue();
       this.focusFirstEmptyOrLastElement();
     }
@@ -271,12 +271,13 @@ export class PinCode {
     } // support native submit behavior
     else if (key === 'Enter') {
       if (isWithinForm) {
-        handleButtonEvent(
-          e,
-          this.host,
-          () => 'submit',
-          () => this.disabled
-        );
+        this.form.requestSubmit();
+        // handleButtonEvent(
+        //   e,
+        //   this.host,
+        //   () => 'submit',
+        //   () => this.disabled
+        // );
       }
     } // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
     // workaround for ^ in firefox key: 'Process'
@@ -287,9 +288,9 @@ export class PinCode {
   };
 
   private onPaste = (e: ClipboardEvent): void => {
-    const optimizedPastedValue = getSanitizationValue(e.clipboardData.getData('Text'), this.length);
-    if (hasInputOnlyDigits(optimizedPastedValue) && optimizedPastedValue !== this.value.join('')) {
-      this.value = optimizedPastedValue.split('');
+    const sanitisedPastedValue = getSanitisedValue(e.clipboardData.getData('Text'), this.length);
+    if (hasInputOnlyDigits(sanitisedPastedValue) && sanitisedPastedValue !== this.value) {
+      this.value = sanitisedPastedValue;
       this.updateValue();
       this.focusFirstEmptyOrLastElement();
     }
@@ -297,7 +298,7 @@ export class PinCode {
   };
 
   private updateValue = (): void => {
-    this.update.emit({ value: this.value, isComplete: this.value.join('').length === this.length });
+    this.update.emit({ value: this.value, isComplete: this.value.length === this.length });
   };
 
   private focusFirstEmptyOrLastElement = (): void => {
