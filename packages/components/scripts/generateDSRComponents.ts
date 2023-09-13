@@ -49,7 +49,7 @@ const generateDSRComponents = (): void => {
         .replace(/\n  public componentDidRender\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public disconnectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentShouldUpdate\([\s\S]+?\n  }\n/g, '')
-        .replace(/\n  private (?!get).*\([\s\S]+?\n  };?\n/g, '') // private methods without getters
+        .replace(/\n  private (?!get).+(\n.+)?\{[\s\S]+?\n  };?\n/g, '') // private methods without getters
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
