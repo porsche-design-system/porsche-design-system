@@ -1,5 +1,6 @@
 analyzer:
-  skip_excluded: true
+  skipExcluded: true
+  enabledPackageManagers: [Yarn]
 excludes:
   paths:
   - pattern: "aws/**"
