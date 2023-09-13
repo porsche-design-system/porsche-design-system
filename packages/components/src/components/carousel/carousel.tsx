@@ -198,10 +198,10 @@ export class Carousel {
 
   public componentDidUpdate(): void {
     // TODO: using a slotchange listener might be a better approach https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
-    this.splide.options = { ...this.splide.options, drag: this.isDraggable };
+    this.splide.options = { drag: this.isDraggable };
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
     if (this.isDraggable) {
-      this.updateSlidesAndPagination(); // update pagination in case the carousel was not draggable before
+      renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0); // update pagination in case the carousel was not draggable before
       updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
     }
   }
