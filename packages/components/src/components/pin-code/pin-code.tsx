@@ -19,9 +19,9 @@ import {
 import { getComponentCss } from './pin-code-styles';
 import {
   initHiddenInput,
-  hasInputOnlyDigits,
+  hasInputOnlyDigitsOrWhitespaces,
   isInputSingleDigit,
-  getArrayOfInputValues,
+  getInputValue,
   PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
   syncHiddenInput,
@@ -113,7 +113,7 @@ export class PinCode {
 
   public componentWillRender(): void {
     // reset initial value if it does not consist of digits only
-    if (this.value && !hasInputOnlyDigits(this.value)) {
+    if (this.value && !hasInputOnlyDigitsOrWhitespaces(this.value)) {
       this.value = '';
       this.updateValue();
       warnAboutTransformedInitialValue(this.host);
@@ -243,7 +243,7 @@ export class PinCode {
     else if (isInputSingleDigit(key)) {
       e.preventDefault();
       target.value = key;
-      this.value = getArrayOfInputValues(this.pinCodeElements);
+      this.value = getInputValue(this.pinCodeElements);
       this.updateValue();
 
       if (nextElementSibling) {
@@ -273,7 +273,7 @@ export class PinCode {
         return pinCodeElement;
       });
 
-      this.value = getArrayOfInputValues(this.pinCodeElements);
+      this.value = getInputValue(this.pinCodeElements);
       this.updateValue();
     } // support native submit behavior
     else if (key === 'Enter') {
@@ -296,7 +296,7 @@ export class PinCode {
 
   private onPaste = (e: ClipboardEvent): void => {
     const sanitisedPastedValue = getSanitisedValue(e.clipboardData.getData('Text'), this.length);
-    if (hasInputOnlyDigits(sanitisedPastedValue) && sanitisedPastedValue !== this.value) {
+    if (hasInputOnlyDigitsOrWhitespaces(sanitisedPastedValue) && sanitisedPastedValue !== this.value) {
       this.value = sanitisedPastedValue;
       this.updateValue();
       this.focusFirstEmptyOrLastElement();
@@ -305,7 +305,7 @@ export class PinCode {
   };
 
   private updateValue = (): void => {
-    this.update.emit({ value: this.value, isComplete: this.value.length === this.length });
+    this.update.emit({ value: this.value, isComplete: getSanitisedValue(this.value).length === this.length });
   };
 
   private focusFirstEmptyOrLastElement = (): void => {

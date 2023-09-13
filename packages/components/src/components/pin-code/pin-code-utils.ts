@@ -35,11 +35,9 @@ export const warnAboutTransformedInitialValue = (host: HTMLElement, length?: num
 
 export const isInputSingleDigit = (input: string): boolean => /^\d$/.test(input);
 
-// TODO rename
-export const hasInputOnlyDigits = (input: string): boolean => /(^[0-9 ]+$)/.test(input);
+export const hasInputOnlyDigitsOrWhitespaces = (input: string): boolean => /^[\d ]+$/.test(input);
 
-// TODO rename
-export const getArrayOfInputValues = (pinCodeElements: HTMLInputElement[]): string =>
+export const getInputValue = (pinCodeElements: HTMLInputElement[]): string =>
   pinCodeElements.map((el) => (el.value ? el.value : (el.value = ' '))).join('');
 
 // remove whitespaces and cut string if pasted value is longer than pin code length
