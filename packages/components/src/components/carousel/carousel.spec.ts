@@ -273,7 +273,7 @@ describe('componentDidUpdate', () => {
     expect(mockSplideInstance.options.drag).toBe(true);
   });
 
-  it('should call renderPagination when isDraggable = true', () => {
+  it('should call renderPagination when hasNavigation = true', () => {
     jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockReturnValueOnce();
     const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
     const component = new Carousel();
@@ -281,39 +281,39 @@ describe('componentDidUpdate', () => {
       options: {},
       refresh: () => {},
     } as Splide;
-    component['amountOfPages'] = 2; // isDraggable = true
+    component['amountOfPages'] = 2; // hasNavigation = true
 
     component.componentDidUpdate();
     expect(renderPaginationSpy).toBeCalledWith(component['paginationEl'], component['amountOfPages'], 0);
   });
 
-  it('should not call renderPagination when isDraggable = false', () => {
+  it('should not call renderPagination when hasNavigation = false', () => {
     const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
     const component = new Carousel();
     component['splide'] = {
       options: {},
       refresh: () => {},
     } as Splide;
-    component['amountOfPages'] = 1; // isDraggable = false
+    component['amountOfPages'] = 1; // hasNavigation = false
 
     component.componentDidUpdate();
     expect(renderPaginationSpy).not.toBeCalled();
   });
 
-  it('should call updatePrevNextButtons() with correct parameters when isDraggable = true', () => {
+  it('should call updatePrevNextButtons() with correct parameters when hasNavigation = true', () => {
     const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const component = new Carousel();
-    component['amountOfPages'] = 2; // isDraggable = true
+    component['amountOfPages'] = 2; // hasNavigation = true
     component['splide'] = { refresh: () => {} } as Splide;
 
     component.componentDidUpdate();
     expect(spy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
   });
 
-  it('should not call updatePrevNextButtons() when isDraggable = false', () => {
+  it('should not call updatePrevNextButtons() when hasNavigation = false', () => {
     const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const component = new Carousel();
-    component['amountOfPages'] = 1; // isDraggable = false
+    component['amountOfPages'] = 1; // hasNavigation = false
     component['splide'] = { refresh: () => {} } as Splide;
 
     component.componentDidUpdate();
@@ -355,12 +355,11 @@ describe('registerSplideHandlers()', () => {
     expect(onSpy).toHaveBeenNthCalledWith(2, 'move', expect.any(Function));
   });
 
-  it('should call updatePrevNextButtons() and renderPagination() when isDraggable = true with correct parameters on mounted event', () => {
+  it('should call updatePrevNextButtons() and renderPagination() when this.splide.options.drag = true with correct parameters on mounted event', () => {
     const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
     const component = new Carousel();
-    component['amountOfPages'] = 2; // isDraggable = true
-    component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
+    component['splide'] = new Splide(getContainerEl(), { drag: true }); // actual implementation for verifying event emission
     component['registerSplideHandlers'](component['splide']);
 
     component['splide'].emit('mounted');
@@ -368,12 +367,11 @@ describe('registerSplideHandlers()', () => {
     expect(renderPaginationSpy).toBeCalledWith(component['paginationEl'], component['amountOfPages'], 0);
   });
 
-  it('should not call updatePrevNextButtons() and renderPagination() when isDraggable = false on mounted event', () => {
+  it('should not call updatePrevNextButtons() and renderPagination() when this.splide.options.drag = false on mounted event', () => {
     const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
     const component = new Carousel();
-    component['amountOfPages'] = 1; // isDraggable = false
-    component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
+    component['splide'] = new Splide(getContainerEl(), { drag: false }); // actual implementation for verifying event emission
     component['registerSplideHandlers'](component['splide']);
 
     component['splide'].emit('mounted');
@@ -387,7 +385,7 @@ describe('registerSplideHandlers()', () => {
     const changeEmitSpy = jest.fn();
     const carouselChangeEmitSpy = jest.fn();
     const component = new Carousel();
-    component['amountOfPages'] = 2; // isDraggable = true
+    component['amountOfPages'] = 2; // hasNavigation = true
     component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
     component['update'] = { emit: changeEmitSpy };
     component['carouselChange'] = { emit: carouselChangeEmitSpy };
