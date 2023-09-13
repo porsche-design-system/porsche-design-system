@@ -11,10 +11,10 @@ import {
 Vue.use(Vuex);
 
 const sanitizeSelectedFrameworkValue = (value: string | null): Framework =>
-  FRAMEWORK_TYPES.includes(value as Framework) ? value : 'vanilla-js';
+  (FRAMEWORK_TYPES.includes(value as Framework) ? value : 'vanilla-js') as Framework;
 
 const sanitizePlaygroundThemeValue = (value: string | null): PlaygroundTheme =>
-  PLAYGROUND_THEME_TYPES.includes(value as PlaygroundTheme) ? value : 'light';
+  (PLAYGROUND_THEME_TYPES.includes(value as PlaygroundTheme) ? value : 'light') as PlaygroundTheme;
 
 export type State = {
   isLoading: boolean;
@@ -58,11 +58,11 @@ export default new Vuex.Store({
       localStorage.setItem('selectedFramework', payload);
       state.selectedFramework = payload;
     },
-    setPlaygroundTheme(state: State, payload: Exclude<PlaygroundTheme, 'auto'>): void {
+    setPlaygroundTheme(state: State, payload: PlaygroundTheme): void {
       localStorage.setItem('playgroundTheme', payload);
       state.playgroundTheme = payload;
     },
-    setStorefrontTheme(state: State, payload: PlaygroundTheme): void {
+    setStorefrontTheme(state: State, payload: StorefrontTheme): void {
       state.storefrontTheme = payload;
     },
   },
@@ -84,10 +84,10 @@ export default new Vuex.Store({
     selectedFramework(state: State): Framework {
       return state.selectedFramework;
     },
-    playgroundTheme(state: State): Exclude<PlaygroundTheme, 'auto'> {
+    playgroundTheme(state: State): PlaygroundTheme {
       return state.playgroundTheme;
     },
-    storefrontTheme(state: State): PlaygroundTheme {
+    storefrontTheme(state: State): StorefrontTheme {
       return state.storefrontTheme;
     },
   },
