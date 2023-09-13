@@ -125,15 +125,14 @@ export default class Code extends Vue {
   onSubmit(e) {
     const formData = new FormData(e.target);
     this.selectedValuesForm = `Last submitted data: ${
-      Array.from(formData.entries())
-        .map(([_, value]) => value)
+      Array.from(formData.entries(), ([_, value]) => value)
         .join(', ') || 'none'
     }`;
   }
  
   valueInput = '';
   amountOfOptions = 3;
-  getOptions = (amount = 3) => Array.from(Array(amount)).map((_, i) => `<p-multi-select-option value="${i + 1}">Option ${i+1}</p-multi-select-option>`).join('\n  ');
+  getOptions = (amount = 3) => Array.from(Array(amount), (_, i) => `<p-multi-select-option value="${i + 1}">Option ${i+1}</p-multi-select-option>`).join('\n  ');
 
   setMultiSelectValue() {
     this.$refs.multiSelect.value = this.valueInput.split(',')

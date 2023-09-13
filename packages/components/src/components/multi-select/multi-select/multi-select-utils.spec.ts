@@ -10,7 +10,7 @@ import {
   getUsableOptions,
   hasFilterOptionResults,
   initNativeSelect,
-  MultiSelectOption,
+  type MultiSelectOption,
   resetFilteredOptions,
   resetHighlightedOptions,
   resetSelectedOptions,
@@ -28,17 +28,7 @@ import {
 import * as setAttributesUtils from '../../../utils/dom/setAttributes';
 import * as setAttributeUtils from '../../../utils/dom/setAttribute';
 import * as dropdownDirectionUtils from '../../../utils/select/select-dropdown';
-import { Theme } from '../../../utils';
-import { DropdownDirectionInternal } from '../../select-wrapper/select-wrapper/select-wrapper-utils';
-
-type Option = {
-  value: string;
-  selected: boolean;
-  highlighted: boolean;
-  disabled: boolean;
-  hidden: boolean;
-  theme?: Theme;
-};
+import type { DropdownDirectionInternal } from '../../select-wrapper/select-wrapper/select-wrapper-utils';
 
 type GenerateMultiSelectOptionsParams = {
   amount: number;
@@ -54,14 +44,18 @@ export const generateMultiSelectOptions = (
     selectedIndices: [],
   }
 ): MultiSelectOption[] => {
-  return Array.from(Array(amount)).map<Option>((_, idx) => ({
-    value: `Value ${idx}`,
-    textContent: `Option ${idx}`,
-    selected: selectedIndices.includes(idx),
-    highlighted: highlightedIndex === idx,
-    disabled: disabledIndex === idx,
-    hidden: hiddenIndex === idx,
-  })) as MultiSelectOption[];
+  return Array.from(
+    Array(amount),
+    (_, idx) =>
+      ({
+        value: `Value ${idx}`,
+        textContent: `Option ${idx}`,
+        selected: selectedIndices.includes(idx),
+        highlighted: highlightedIndex === idx,
+        disabled: disabledIndex === idx,
+        hidden: hiddenIndex === idx,
+      }) as MultiSelectOption
+  );
 };
 
 describe('syncMultiSelectOptionProps', () => {
