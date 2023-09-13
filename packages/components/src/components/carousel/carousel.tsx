@@ -330,10 +330,8 @@ export class Carousel {
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
-      if (this.isDraggable) {
-        updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-        updatePagination(this.paginationEl, this.amountOfPages, activeIndex);
-      }
+      updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
+      updatePagination(this.paginationEl, this.amountOfPages, activeIndex);
       this.update.emit({ activeIndex, previousIndex });
       this.carouselChange.emit({ activeIndex, previousIndex });
     });
