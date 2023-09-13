@@ -233,7 +233,6 @@ export class Carousel {
         : this.pagination,
       isInfinitePagination(this.amountOfPages),
       this.alignHeader,
-      this.hasNavigation,
       this.theme
     );
 

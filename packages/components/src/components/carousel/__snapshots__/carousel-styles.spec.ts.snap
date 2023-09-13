@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center, hasNavigation: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -64,7 +64,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -85,6 +84,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -128,7 +128,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left, hasNavigation: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -191,7 +191,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -212,6 +211,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -254,7 +254,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center, hasNavigation: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center and theme: dark 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -318,7 +318,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -339,6 +338,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -410,7 +410,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: left, hasNavigation: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: left and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -473,7 +473,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -494,6 +493,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -564,7 +564,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center, hasNavigation: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -628,7 +628,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -649,6 +648,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -744,7 +744,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: left, hasNavigation: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: left and theme: dark 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -807,7 +807,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -828,6 +827,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -922,7 +922,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: left, hasNavigation: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: left and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1005,6 +1005,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -1102,7 +1103,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center, hasNavigation: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1166,7 +1167,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -1187,6 +1187,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -1309,7 +1310,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center, hasNavigation: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1373,7 +1374,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -1394,6 +1394,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -1437,7 +1438,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: left, hasNavigation: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: left and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1500,7 +1501,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -1521,6 +1521,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -1563,7 +1564,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: left, hasNavigation: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: left and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1626,7 +1627,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -1647,6 +1647,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -1717,7 +1718,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center, hasNavigation: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1781,7 +1782,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -1802,6 +1802,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
