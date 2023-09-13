@@ -195,7 +195,7 @@ export default class Code extends Vue {
 
   basicHeading = "Some heading";
   basicDescription = "Some description";
-  getSlides = (amount = 6) => Array.from(Array(amount)).map((_, i) => `<div>Slide ${i+1}</div>`).join('\n  ');
+  getSlides = (amount = 6) => Array.from(Array(amount), (_, i) => `<div>Slide ${i+1}</div>`).join('\n  ');
 
   basic = `<p-carousel heading="${this.basicHeading}">
   ${this.getSlides(4)}

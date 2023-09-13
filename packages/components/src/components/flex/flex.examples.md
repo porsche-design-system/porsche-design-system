@@ -366,7 +366,7 @@ export default class Code extends Vue {
   wrap(value: string) {
     const attr = value ? ` wrap="${value}"` : '';
     return `<p-flex${attr} class="example-flex">
-  ${Array.from(Array(9)).map((x, i) => `<p-flex-item>${i+1}</p-flex-item>`).join('\n  ')}
+  ${Array.from(Array(9), (x, i) => `<p-flex-item>${i+1}</p-flex-item>`).join('\n  ')}
 </p-flex>`;
   }
   
@@ -391,7 +391,7 @@ export default class Code extends Vue {
   alignContent(value: string) {
     const attr = value ? ` align-content="${value}"` : '';
     return `<p-flex wrap="wrap"${attr} class="example-flex">
-  ${Array.from(Array(9)).map((x, i) => `<p-flex-item>${i+1}</p-flex-item>`).join('\n  ')}
+  ${Array.from(Array(9), ((x, i) => `<p-flex-item>${i+1}</p-flex-item>`).join('\n  ')}
 </p-flex>`;
   }
   
