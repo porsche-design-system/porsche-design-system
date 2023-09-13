@@ -51,7 +51,7 @@
     top: 0;
     height: $header-height; // relevant for a controlled text-zoom 200% support
     box-sizing: border-box; // relevant for a controlled text-zoom 200% support
-    z-index: 1;
+    z-index: 9;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     gap: $pds-grid-gap;
