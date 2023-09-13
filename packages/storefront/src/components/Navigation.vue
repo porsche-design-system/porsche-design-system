@@ -30,7 +30,7 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Watch } from 'vue-property-decorator';
-  import { StorefrontConfig, Theme } from '@/models';
+  import { StorefrontConfig, PlatformTheme } from '@/models';
   import { capitalCase, paramCase } from 'change-case';
   import { Route } from 'vue-router';
   import { config as storefrontConfig } from '@/../storefront.config';
@@ -44,7 +44,7 @@
     public config: StorefrontConfig = storefrontConfig;
     public accordion: { [id: string]: boolean } = {};
 
-    public get platformTheme(): Theme {
+    public get platformTheme(): PlatformTheme {
       return this.$store.getters.platformTheme;
     }
 

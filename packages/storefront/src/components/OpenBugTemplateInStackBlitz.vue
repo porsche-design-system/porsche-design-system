@@ -32,7 +32,7 @@
   import CodeEditor from '@/components/CodeEditor.vue';
   import type { Framework } from '@/models';
   import { frameworkNameMap } from '@/utils/frameworkNameMap';
-  import { Theme } from '@/models';
+  import { PlatformTheme } from '@/models';
 
   @Component({
     components: { CodeEditor },
@@ -45,7 +45,7 @@
     selectedPdsVersion = '';
     frameworkNameMap = frameworkNameMap;
 
-    public get platformTheme(): Theme {
+    public get platformTheme(): PlatformTheme {
       return this.$store.getters.platformTheme;
     }
 

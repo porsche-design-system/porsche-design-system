@@ -23,13 +23,13 @@
   import type { TagName } from '@porsche-design-system/shared';
   import { getComponentMeta } from '@porsche-design-system/component-meta';
   import type { ComponentMeta } from '@porsche-design-system/component-meta';
-  import { type Theme } from '@/models';
+  import { type PlatformTheme } from '@/models';
 
   const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 
   @Component
   export default class ComponentMetaOverview extends Vue {
-    public get platformTheme(): Theme {
+    public get platformTheme(): PlatformTheme {
       return this.$store.getters.platformTheme;
     }
 

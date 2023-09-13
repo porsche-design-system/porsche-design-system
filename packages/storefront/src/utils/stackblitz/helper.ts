@@ -5,7 +5,7 @@ import type {
   Framework,
   StackBlitzProjectAndOpenOptions,
   StackBlitzProjectDependencies,
-  Theme,
+  PlaygroundTheme,
 } from '@/models';
 import type { OpenInStackBlitzOpts } from './openInStackBlitz';
 
@@ -42,7 +42,7 @@ export const getExternalDependencies = <T>(
     {} as StackBlitzProjectDependencies
   );
 
-export const getBackgroundColor = (theme: Theme, backgroundColor: BackgroundColor): string => {
+export const getBackgroundColor = (theme: PlaygroundTheme, backgroundColor: BackgroundColor): string => {
   const { base, surface } = (theme === 'light' ? themeLight : themeDark).background;
 
   return backgroundColor === 'background-surface' ? surface : base;

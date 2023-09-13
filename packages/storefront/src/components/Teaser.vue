@@ -10,11 +10,11 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { Theme } from '@/models';
+  import { PlatformTheme } from '@/models';
 
   @Component({})
   export default class Teaser extends Vue {
-    public get platformTheme(): Theme {
+    public get platformTheme(): PlatformTheme {
       return this.$store.getters.platformTheme;
     }
   }

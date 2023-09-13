@@ -17,14 +17,14 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
-  import type { BackgroundColor, Framework, FrameworkMarkup, Theme } from '@/models';
+  import type { BackgroundColor, Framework, FrameworkMarkup, PlaygroundTheme } from '@/models';
   import { convertMarkup, getHighlightedCode, getHighlightedLanguage } from '@/utils';
   import { frameworkNameMap } from '@/utils/frameworkNameMap';
 
   @Component
   export default class CodeBlock extends Vue {
     @Prop({ default: '' }) public markup!: string;
-    @Prop({ default: 'light' }) public theme!: Theme;
+    @Prop({ default: 'light' }) public theme!: PlaygroundTheme;
     @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
     @Prop({ default: false }) public convertMarkup!: boolean;
     @Prop({ default: () => ['vanilla-js', 'angular', 'react', 'vue'] }) public frameworks!: Framework[];

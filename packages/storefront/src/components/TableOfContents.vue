@@ -21,7 +21,7 @@
   import { paramCase } from 'change-case';
   import { componentsReady } from '@porsche-design-system/components-js';
   import { getAnchorLink } from '@/utils';
-  import { Theme } from '@/models';
+  import { PlatformTheme } from '@/models';
 
   type Link = { href: string; title: string };
 
@@ -30,7 +30,7 @@
     links: Link[] = [];
     returnIcon = require('../assets/icon-return.svg');
 
-    public get platformTheme(): Theme {
+    public get platformTheme(): PlatformTheme {
       return this.$store.getters.platformTheme;
     }
 

@@ -76,7 +76,7 @@
   import CodeEditor from '@/components/CodeEditor.vue';
   import { cleanMarkup, patchThemeIntoMarkup } from '../utils';
   import { componentMeta } from '@porsche-design-system/component-meta';
-  import type { BackgroundColor, Framework, FrameworkMarkup, Theme } from '../models';
+  import type { BackgroundColor, Framework, FrameworkMarkup, PlaygroundTheme } from '../models';
   import type { ExternalDependency, SharedImportKey } from '../utils';
   import { getExternalDependenciesOrThrow } from '@/utils/stackblitz/helper';
 
@@ -133,7 +133,7 @@
       }
     }
 
-    public switchTheme(theme: Theme): void {
+    public switchTheme(theme: PlaygroundTheme): void {
       this.$store.commit('setPlaygroundTheme', theme);
     }
 
@@ -195,7 +195,7 @@
       return ['light', 'dark'].indexOf(this.theme);
     }
 
-    public get theme(): Theme {
+    public get theme(): PlaygroundTheme {
       return this.config.themeable ? this.$store.getters.playgroundTheme : 'light';
     }
 

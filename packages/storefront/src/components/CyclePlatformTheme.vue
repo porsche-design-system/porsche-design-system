@@ -7,7 +7,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { type Theme } from '@/models';
+  import { type PlatformTheme } from '@/models';
 
   @Component
   export default class CyclePlatformTheme extends Vue {
@@ -29,7 +29,7 @@
       return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
 
-    public get theme(): Theme {
+    public get theme(): PlatformTheme {
       return this.$store.getters.platformTheme;
     }
 
@@ -42,7 +42,7 @@
     }
 
     public cycleTheme(): void {
-      const themes: Theme[] = ['auto', this.isPreferredColorSchemeDark() ? 'light' : 'dark'];
+      const themes: PlaygroundTheme[] = ['auto', this.isPreferredColorSchemeDark() ? 'light' : 'dark'];
       const newTheme = themes[(Math.max(0, themes.indexOf(this.theme)) + 1) % themes.length];
       document.body.classList.remove('light-mode', 'dark-mode', 'auto-dark-mode');
       document.body.classList.add(

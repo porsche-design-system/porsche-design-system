@@ -60,11 +60,11 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { type Theme } from '@/models';
+  import { type PlatformTheme } from '@/models';
 
   @Component({})
   export default class Masonry extends Vue {
-    public get platformTheme(): Theme {
+    public get platformTheme(): PlatformTheme {
       return this.$store.getters.platformTheme;
     }
 

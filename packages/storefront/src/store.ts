@@ -1,8 +1,20 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import type { Framework, Theme } from '@/models';
+import {
+  type Framework,
+  type PlaygroundTheme,
+  type PlatformTheme,
+  FRAMEWORK_TYPES,
+  PLAYGROUND_THEME_TYPES,
+} from '@/models';
 
 Vue.use(Vuex);
+
+const sanitizeSelectedFrameworkValue = (value: string | null): Framework =>
+  FRAMEWORK_TYPES.includes(value as Framework) ? value : 'vanilla-js';
+
+const sanitizePlaygroundThemeValue = (value: string | null): PlaygroundTheme =>
+  PLAYGROUND_THEME_TYPES.includes(value as PlaygroundTheme) ? value : 'light';
 
 export type State = {
   isLoading: boolean;
@@ -10,8 +22,8 @@ export type State = {
   isMenuActive: boolean;
   isSearchActive: boolean;
   selectedFramework: Framework;
-  playgroundTheme: Exclude<Theme, 'auto'>;
-  platformTheme: Theme;
+  playgroundTheme: PlaygroundTheme;
+  platformTheme: PlatformTheme;
 };
 
 const initialState: State = {
@@ -19,8 +31,8 @@ const initialState: State = {
   lastTimeout: undefined,
   isMenuActive: false,
   isSearchActive: false,
-  selectedFramework: 'vanilla-js',
-  playgroundTheme: localStorage.getItem('playgroundTheme') as State['playgroundTheme'],
+  selectedFramework: sanitizeSelectedFrameworkValue(localStorage.getItem('selectedFramework')),
+  playgroundTheme: sanitizePlaygroundThemeValue(localStorage.getItem('playgroundTheme')),
   platformTheme: 'auto',
 };
 
@@ -43,13 +55,14 @@ export default new Vuex.Store({
       state.isSearchActive = payload;
     },
     setSelectedFramework(state: State, payload: Framework): void {
+      localStorage.setItem('selectedFramework', payload);
       state.selectedFramework = payload;
     },
-    setPlaygroundTheme(state: State, payload: Exclude<Theme, 'auto'>): void {
+    setPlaygroundTheme(state: State, payload: Exclude<PlaygroundTheme, 'auto'>): void {
       localStorage.setItem('playgroundTheme', payload);
       state.playgroundTheme = payload;
     },
-    setPlatformTheme(state: State, payload: Theme): void {
+    setPlatformTheme(state: State, payload: PlaygroundTheme): void {
       state.platformTheme = payload;
     },
   },
@@ -71,10 +84,10 @@ export default new Vuex.Store({
     selectedFramework(state: State): Framework {
       return state.selectedFramework;
     },
-    playgroundTheme(state: State): Exclude<Theme, 'auto'> {
+    playgroundTheme(state: State): Exclude<PlaygroundTheme, 'auto'> {
       return state.playgroundTheme;
     },
-    platformTheme(state: State): Theme {
+    platformTheme(state: State): PlaygroundTheme {
       return state.platformTheme;
     },
   },
