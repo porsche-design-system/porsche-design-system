@@ -1,4 +1,4 @@
-import * as isWithinFormUtils from '../../utils/form/isWithinForm';
+import * as getClosestHTMLElementUtils from '../../utils/dom/getClosestHTMLElement';
 import * as pinCodeUtils from './pin-code-utils';
 import { PinCode } from './pin-code';
 
@@ -10,26 +10,26 @@ const initComponent = (): PinCode => {
 };
 
 describe('componentWillLoad', () => {
-  it('should call isWithinForm() with correct parameters and and set isWithinForm', () => {
+  it('should call getClosestHTMLElement() and set isWithinForm', () => {
     const component = initComponent();
-    const spy = jest.spyOn(isWithinFormUtils, 'isWithinForm');
-    jest.spyOn(pinCodeUtils, 'initHiddenInput').mockImplementation(() => document.createElement('input'));
+    const spy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
 
+    spy.mockReturnValue(null);
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component.host);
+    expect(spy).toBeCalledWith(component.host, 'form');
     expect(component['isWithinForm']).toBe(false);
 
-    spy.mockReturnValue(true);
+    spy.mockReturnValue(document.createElement('form'));
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component.host);
+    expect(spy).toBeCalledWith(component.host, 'form');
     expect(component['isWithinForm']).toBe(true);
   });
 
   it('should call initHiddenInput() with correct parameters if component is used within form and set hiddenInput', () => {
     const component = initComponent();
-    jest.spyOn(isWithinFormUtils, 'isWithinForm').mockReturnValue(true);
+    jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement').mockReturnValue(document.createElement('form'));
     component.name = 'name';
     const hiddenInput = document.createElement('input');
     const spy = jest.spyOn(pinCodeUtils, 'initHiddenInput').mockImplementation(() => {

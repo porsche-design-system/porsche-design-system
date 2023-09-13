@@ -222,7 +222,7 @@ export class PinCode {
       const sanitisedValue = getSanitisedValue(target.value, this.length);
       this.value = sanitisedValue;
       this.updateValue();
-      this.focusFirstEmptyOrLastElement();
+      this.focusFirstEmptyOrLastElement(sanitisedValue);
     }
   };
 
@@ -296,7 +296,7 @@ export class PinCode {
     if (hasInputOnlyDigitsOrWhitespaces(sanitisedPastedValue) && sanitisedPastedValue !== this.value) {
       this.value = sanitisedPastedValue;
       this.updateValue();
-      this.focusFirstEmptyOrLastElement();
+      this.focusFirstEmptyOrLastElement(sanitisedPastedValue);
     }
     e.preventDefault();
   };
@@ -305,11 +305,11 @@ export class PinCode {
     this.update.emit({ value: this.value, isComplete: getSanitisedValue(this.value).length === this.length });
   };
 
-  private focusFirstEmptyOrLastElement = (): void => {
-    if (this.value.length === this.length) {
-      this.pinCodeElements[this.value.length - 1]?.focus();
+  private focusFirstEmptyOrLastElement = (sanitisedValue: string): void => {
+    if (sanitisedValue.length === this.length) {
+      this.pinCodeElements[sanitisedValue.length - 1]?.focus();
     } else {
-      this.pinCodeElements[this.value.length]?.focus();
+      this.pinCodeElements[sanitisedValue.length]?.focus();
     }
   };
 }
