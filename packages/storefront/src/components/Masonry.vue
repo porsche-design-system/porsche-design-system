@@ -1,6 +1,7 @@
 <template>
   <div>
     <p-link-tile
+      @click="onTileClick"
       href="designing/introduction"
       aspect-ratio="{ base: '4:3', xs: '16:9', s: '3:4' }"
       description="Start Designing"
@@ -11,6 +12,7 @@
       <img src="@/assets/start-designing.jpg" alt="Some wireframes" />
     </p-link-tile>
     <p-link-tile
+      @click="onTileClick"
       href="developing/introduction"
       aspect-ratio="{ base: '4:3', xs: '16:9', s: '3:4' }"
       description="Start Developing"
@@ -21,6 +23,7 @@
       <img src="@/assets/start-developing.jpg" alt="Some woman developing with Porsche Design System version 3" />
     </p-link-tile>
     <p-link-tile
+      @click="onTileClick"
       href="news/migration-guide/porsche-design-system"
       aspect-ratio="{ base: '4:3', xs: '16:9' }"
       description="Migrate from v2 to v3"
@@ -63,6 +66,11 @@
   export default class Masonry extends Vue {
     public get platformTheme(): Theme {
       return this.$store.getters.platformTheme;
+    }
+
+    public onTileClick(e: Event): void {
+      e.preventDefault();
+      this.$router.push('/' + e.target?.href);
     }
   }
 </script>
