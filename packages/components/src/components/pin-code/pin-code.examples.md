@@ -105,7 +105,7 @@ behavior. Any change of the input's values triggers a custom update event and th
 `value` is an array of strings synchronized with the input's values.
 
 <Playground :frameworkMarkup="eventHandlingExample" :config="{ ...config, withoutDemo: true }">
-  <p-pin-code :theme="theme" label="Some Label" :value="currentValueControlled" :legth="length" @update="(e) => {
+  <p-pin-code :theme="theme" label="Some Label" :value="currentValueControlled" @update="(e) => {
     currentValueControlled = e.detail.value;
     isComplete = e.detail.isComplete;
   }"></p-pin-code>
@@ -176,7 +176,6 @@ export default class Code extends Vue {
 
   requiredMarkup = `<p-pin-code label="Some label" required="true"></p-pin-code>`;
 
-  length=4;
   currentValueControlled = '';
   isComplete = false;
   eventHandlingExample = getPinCodeCodeSamples('example-controlled');
