@@ -72,7 +72,7 @@ export const syncHiddenInput = (
   required: boolean
 ): void => {
   setAttributes(hiddenInput, {
-    name: name,
+    name,
     value: getSanitisedValue(value),
   });
   hiddenInput.toggleAttribute('disabled', disabled);
