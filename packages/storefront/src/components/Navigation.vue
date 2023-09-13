@@ -2,7 +2,7 @@
   <nav v-show="!this.isSearchVisible">
     <!-- TODO: spacer class could be applied with an additional abstraction layer in storefront.config.ts  -->
     <p-accordion
-      :theme="platformTheme"
+      :theme="storefrontTheme"
       v-for="(pages, category, index) in config"
       :key="index"
       :heading="category"
@@ -14,7 +14,7 @@
       <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">
           <router-link :to="getRoute(category, page)" v-slot="{ isActive, href, navigate }">
-            <p-link-pure :theme="platformTheme" icon="none" :active="isActive">
+            <p-link-pure :theme="storefrontTheme" icon="none" :active="isActive">
               <a :href="href" @click="navigate"
                 >{{ page }}<span title="deprecated">{{ getDeprecated(category, page) }}</span></a
               >
@@ -44,8 +44,8 @@
     public config: StorefrontConfig = storefrontConfig;
     public accordion: { [id: string]: boolean } = {};
 
-    public get platformTheme(): StorefrontTheme {
-      return this.$store.getters.platformTheme;
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
     }
 
     public get isSearchVisible(): boolean {

@@ -7,7 +7,7 @@
     <Wordmark />
     <div>
       <Search class="search-field" />
-      <CyclePlatformTheme class="cycle-platform-theme" />
+      <CycleStorefrontTheme class="cycle-platform-theme" />
       <GitHubAnchor class="github-anchor" />
     </div>
   </header>
@@ -21,7 +21,7 @@
   import Menu from '@/components/Menu.vue';
   import Wordmark from '@/components/Wordmark.vue';
   import GitHubAnchor from '@/components/GitHubAnchor.vue';
-  import CyclePlatformTheme from '@/components/CyclePlatformTheme.vue';
+  import CycleStorefrontTheme from '@/components/CycleStorefrontTheme.vue';
 
   @Component({
     components: {
@@ -30,7 +30,7 @@
       Menu,
       Wordmark,
       GitHubAnchor,
-      CyclePlatformTheme,
+      CycleStorefrontTheme,
     },
   })
   export default class Header extends Vue {

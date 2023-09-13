@@ -33,17 +33,17 @@
     >
       <picture>
         <source
-          v-if="platformTheme === 'auto'"
+          v-if="storefrontTheme === 'auto'"
           srcset="@/assets/migrate-v2-to-v3-light.jpg"
           media="(prefers-color-scheme: light)"
         />
         <source
-          v-if="platformTheme === 'auto'"
+          v-if="storefrontTheme === 'auto'"
           srcset="@/assets/migrate-v2-to-v3-dark.jpg"
           media="(prefers-color-scheme: dark)"
         />
         <img
-          v-if="platformTheme === 'dark'"
+          v-if="storefrontTheme === 'dark'"
           src="@/assets/migrate-v2-to-v3-dark.jpg"
           alt="Sample Porsche web application with Porsche Design System version 3."
         />
@@ -64,8 +64,8 @@
 
   @Component({})
   export default class Masonry extends Vue {
-    public get platformTheme(): StorefrontTheme {
-      return this.$store.getters.platformTheme;
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
     }
 
     public onTileClick(e: Event): void {

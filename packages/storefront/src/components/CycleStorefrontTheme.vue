@@ -10,7 +10,7 @@
   import { type StorefrontTheme } from '@/models';
 
   @Component
-  export default class CyclePlatformTheme extends Vue {
+  export default class CycleStorefrontTheme extends Vue {
     mounted(): void {
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', this.onPrefersColorSchemeChange);
     }
@@ -30,7 +30,7 @@
     }
 
     public get theme(): StorefrontTheme {
-      return this.$store.getters.platformTheme;
+      return this.$store.getters.storefrontTheme;
     }
 
     public get icon(): 'moon' | 'sun' {
@@ -42,7 +42,7 @@
     }
 
     public cycleTheme(): void {
-      const themes: PlaygroundTheme[] = ['auto', this.isPreferredColorSchemeDark() ? 'light' : 'dark'];
+      const themes: StorefrontTheme[] = ['auto', this.isPreferredColorSchemeDark() ? 'light' : 'dark'];
       const newTheme = themes[(Math.max(0, themes.indexOf(this.theme)) + 1) % themes.length];
       document.body.classList.remove('light-mode', 'dark-mode', 'auto-dark-mode');
       document.body.classList.add(
@@ -52,7 +52,7 @@
           auto: 'auto-dark-mode',
         }[newTheme]
       );
-      this.$store.commit('setPlatformTheme', newTheme);
+      this.$store.commit('setStorefrontTheme', newTheme);
     }
   }
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div v-if="links.length > 1" class="toc">
-    <p-heading :theme="platformTheme" size="medium" tag="h2">Table of Contents</p-heading>
+    <p-heading :theme="storefrontTheme" size="medium" tag="h2">Table of Contents</p-heading>
     <ul>
       <li v-for="(link, index) in links" :key="index">
         <p-link-pure
-          :theme="platformTheme"
+          :theme="storefrontTheme"
           :href="link.href"
           :icon-source="returnIcon"
           v-on:click="onLinkClick(link, $event)"
@@ -30,8 +30,8 @@
     links: Link[] = [];
     returnIcon = require('../assets/icon-return.svg');
 
-    public get platformTheme(): StorefrontTheme {
-      return this.$store.getters.platformTheme;
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
     }
 
     mounted(): void {
@@ -46,7 +46,7 @@
         // add anchor link to headline
         const link = document.createElement('p-link-pure');
         /* eslint-disable @typescript-eslint/no-explicit-any */
-        (link as any).theme = this.platformTheme;
+        (link as any).theme = this.storefrontTheme;
         (link as any).size = 'inherit';
         (link as any).innerText = '#';
         (link as any).title = 'Link to this heading';

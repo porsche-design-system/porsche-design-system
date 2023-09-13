@@ -1,7 +1,7 @@
 <template>
   <header>
-    <p-display :theme="platformTheme" class="heading" size="small" tag="h2">Welcome to the new digital</p-display>
-    <p-text :theme="platformTheme" class="paragraph" color="contrast-high" size="large">
+    <p-display :theme="storefrontTheme" class="heading" size="small" tag="h2">Welcome to the new digital</p-display>
+    <p-text :theme="storefrontTheme" class="paragraph" color="contrast-high" size="large">
       Become today a part of tomorrow’s Porsche new design language with the new Porsche Design System v3.
     </p-text>
   </header>
@@ -14,8 +14,8 @@
 
   @Component({})
   export default class Teaser extends Vue {
-    public get platformTheme(): StorefrontTheme {
-      return this.$store.getters.platformTheme;
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
     }
   }
 </script>

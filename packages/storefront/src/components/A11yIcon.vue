@@ -1,6 +1,6 @@
 <template>
   <p-icon
-    :theme="$store.getters.platformTheme"
+    :theme="$store.getters.storefrontTheme"
     name="accessibility"
     :size="size"
     color="notification-info"

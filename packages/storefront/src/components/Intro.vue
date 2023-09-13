@@ -1,12 +1,12 @@
 <template>
   <article>
-    <p-text :theme="platformTheme" class="heading" size="large">
+    <p-text :theme="storefrontTheme" class="heading" size="large">
       The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic and
       high-quality web applications, including easy-to-use Figma and UX Pin libraries, coded Web Components and
       comprehensive usage guidelines. Everything is built and tested following the Porsche quality standards and
       corporate design principles.
     </p-text>
-    <p-text :theme="platformTheme" class="paragraph" color="contrast-high">
+    <p-text :theme="storefrontTheme" class="paragraph" color="contrast-high">
       We provide protected
       <a href="https://www.figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?type=design&node-id=105-146">Figma</a>
       and UX Pin libraries, as well as public accessible
@@ -27,8 +27,8 @@
 
   @Component({})
   export default class Intro extends Vue {
-    public get platformTheme(): StorefrontTheme {
-      return this.$store.getters.platformTheme;
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
     }
   }
 </script>

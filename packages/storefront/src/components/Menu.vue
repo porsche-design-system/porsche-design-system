@@ -1,7 +1,7 @@
 <template>
   <p-button-pure
     v-if="variant === 'open'"
-    :theme="$store.getters.platformTheme"
+    :theme="$store.getters.storefrontTheme"
     icon="menu-lines"
     hide-label="true"
     @click="toggleMenuVisibility()"

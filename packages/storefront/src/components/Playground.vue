@@ -2,7 +2,7 @@
   <div class="playground">
     <p-tabs-bar
       v-if="mergedConfig.themeable"
-      :theme="$store.getters.platformTheme"
+      :theme="$store.getters.storefrontTheme"
       :active-tab-index="activeThemeTabIndex"
     >
       <button type="button" @click="switchTheme('light')">Light theme</button>

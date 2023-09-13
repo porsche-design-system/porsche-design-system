@@ -49,5 +49,5 @@ You can find **accessibility specific documentation** on component level marked 
 To avoid possible [**violations against country-specific laws**](https://ux.porsche.com/accessibility/legal-compliance)
 we highly recommend following our guidelines to enhance accessibility in your products:
 
-<p-link :theme="this.$store.getters.platformTheme" href="https://ux.porsche.com/accessibility/">Accessibility of digital
-products at Porsche</p-link>
+<p-link :theme="this.$store.getters.storefrontTheme" href="https://ux.porsche.com/accessibility/">Accessibility of
+digital products at Porsche</p-link>

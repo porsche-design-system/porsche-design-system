@@ -13,7 +13,7 @@ using your product. Ensure your **notifications are relevant, timely, and inform
 
 In order to find the right notification type for your use case, we have defined some decision-making rules for you:
 
-<p-link :theme="this.$store.getters.platformTheme" href="patterns/notifications/decision-tree" variant="primary">Go to
+<p-link :theme="this.$store.getters.storefrontTheme" href="patterns/notifications/decision-tree" variant="primary">Go to
 the Decision Tree</p-link>
 
 ---
@@ -30,29 +30,29 @@ the Decision Tree</p-link>
 
 ## z-index in descending order
 
-| Component                                                                                                                       | z-index              |
-| ------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| Toast                                                                                                                           | {{zIndexes.toast}}   |
-| Modal                                                                                                                           | {{zIndexes.modal}}   |
-| Flyout                                                                                                                          | {{zIndexes.flyout}}  |
-| Popover <p-popover :theme="this.$store.getters.platformTheme" ref="popover">Start the live demo to see it in action</p-popover> | {{zIndexes.popover}} |
-| Banner                                                                                                                          | {{zIndexes.banner}}  |
+| Component                                                                                                                         | z-index              |
+| --------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| Toast                                                                                                                             | {{zIndexes.toast}}   |
+| Modal                                                                                                                             | {{zIndexes.modal}}   |
+| Flyout                                                                                                                            | {{zIndexes.flyout}}  |
+| Popover <p-popover :theme="this.$store.getters.storefrontTheme" ref="popover">Start the live demo to see it in action</p-popover> | {{zIndexes.popover}} |
+| Banner                                                                                                                            | {{zIndexes.banner}}  |
 
-<p-button :theme="this.$store.getters.platformTheme" v-on:click="startDemo()">Start Live Demo</p-button>
+<p-button :theme="this.$store.getters.storefrontTheme" v-on:click="startDemo()">Start Live Demo</p-button>
 
 <!-- shared across playgrounds -->
 
-<p-toast :theme="this.$store.getters.platformTheme" ref="toast"></p-toast>
+<p-toast :theme="this.$store.getters.storefrontTheme" ref="toast"></p-toast>
 
 <div>  
-  <p-modal :theme="this.$store.getters.platformTheme" ref="modal" heading="Some Heading" :open="isModalOpen">
-    <p-text :theme="this.$store.getters.platformTheme">Some Content</p-text>
+  <p-modal :theme="this.$store.getters.storefrontTheme" ref="modal" heading="Some Heading" :open="isModalOpen">
+    <p-text :theme="this.$store.getters.storefrontTheme">Some Content</p-text>
   </p-modal>
 </div>
 
 <div>  
-  <p-flyout :theme="this.$store.getters.platformTheme" ref="flyout" :open="isFlyoutOpen">
-    <p-text :theme="this.$store.getters.platformTheme">Some Content</p-text>
+  <p-flyout :theme="this.$store.getters.storefrontTheme" ref="flyout" :open="isFlyoutOpen">
+    <p-text :theme="this.$store.getters.storefrontTheme">Some Content</p-text>
   </p-flyout>
 </div>
 
@@ -122,7 +122,7 @@ export default class Code extends Vue {
     document.getElementById('app').append(el);
 
     this.isBannerOpen = true;
-    el.theme = this.$store.getters.platformTheme;
+    el.theme = this.$store.getters.storefrontTheme;
     el.open = true;
 
     el.addEventListener('dismiss', () => {

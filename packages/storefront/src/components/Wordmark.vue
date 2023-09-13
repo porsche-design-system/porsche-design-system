@@ -1,6 +1,6 @@
 <template>
   <router-link to="/" v-slot="{ href, navigate }">
-    <p-wordmark :theme="$store.getters.platformTheme" :href="href" @click="navigate"></p-wordmark>
+    <p-wordmark :theme="$store.getters.storefrontTheme" :href="href" @click="navigate"></p-wordmark>
   </router-link>
 </template>
 

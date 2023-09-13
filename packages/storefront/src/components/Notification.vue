@@ -1,5 +1,10 @@
 <template>
-  <p-inline-notification :theme="$store.getters.platformTheme" :heading="heading" :state="state" dismiss-button="false">
+  <p-inline-notification
+    :theme="$store.getters.storefrontTheme"
+    :heading="heading"
+    :state="state"
+    dismiss-button="false"
+  >
     <slot />
   </p-inline-notification>
 </template>

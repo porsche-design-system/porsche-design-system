@@ -23,7 +23,7 @@ export type State = {
   isSearchActive: boolean;
   selectedFramework: Framework;
   playgroundTheme: PlaygroundTheme;
-  platformTheme: StorefrontTheme;
+  storefrontTheme: StorefrontTheme;
 };
 
 const initialState: State = {
@@ -33,7 +33,7 @@ const initialState: State = {
   isSearchActive: false,
   selectedFramework: sanitizeSelectedFrameworkValue(localStorage.getItem('selectedFramework')),
   playgroundTheme: sanitizePlaygroundThemeValue(localStorage.getItem('playgroundTheme')),
-  platformTheme: 'auto',
+  storefrontTheme: 'auto',
 };
 
 export default new Vuex.Store({
@@ -62,8 +62,8 @@ export default new Vuex.Store({
       localStorage.setItem('playgroundTheme', payload);
       state.playgroundTheme = payload;
     },
-    setPlatformTheme(state: State, payload: PlaygroundTheme): void {
-      state.platformTheme = payload;
+    setStorefrontTheme(state: State, payload: PlaygroundTheme): void {
+      state.storefrontTheme = payload;
     },
   },
   actions: {
@@ -87,8 +87,8 @@ export default new Vuex.Store({
     playgroundTheme(state: State): Exclude<PlaygroundTheme, 'auto'> {
       return state.playgroundTheme;
     },
-    platformTheme(state: State): PlaygroundTheme {
-      return state.platformTheme;
+    storefrontTheme(state: State): PlaygroundTheme {
+      return state.storefrontTheme;
     },
   },
 });

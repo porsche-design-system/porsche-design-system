@@ -15,13 +15,13 @@
             }"
           >
             <template v-slot:item="{ item }">
-              <p-heading :theme="$store.getters.platformTheme" size="small" tag="h2" class="category">{{
+              <p-heading :theme="$store.getters.storefrontTheme" size="small" tag="h2" class="category">{{
                 item.category
               }}</p-heading>
               <ul>
                 <li v-for="(hit, index) in item.hits" :key="index">
                   <p-link-pure
-                    :theme="$store.getters.platformTheme"
+                    :theme="$store.getters.storefrontTheme"
                     class="link"
                     icon="none"
                     @click="() => (displayHits = false)"

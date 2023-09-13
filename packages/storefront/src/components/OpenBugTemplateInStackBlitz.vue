@@ -1,7 +1,7 @@
 <template>
-  <p-fieldset :theme="platformTheme" label="Choose your Template:">
+  <p-fieldset :theme="storefrontTheme" label="Choose your Template:">
     <p-segmented-control
-      :theme="platformTheme"
+      :theme="storefrontTheme"
       :value="selectedFramework"
       aria-label="Choose your Framework:"
       @update="(e) => (this.selectedFramework = e.detail.value)"
@@ -10,14 +10,14 @@
         frameworkNameMap[framework]
       }}</p-segmented-control-item>
     </p-segmented-control>
-    <p-select-wrapper :theme="platformTheme" label="Choose your Porsche Design System version:">
+    <p-select-wrapper :theme="storefrontTheme" label="Choose your Porsche Design System version:">
       <select v-model="selectedPdsVersion">
         <option v-for="(pdsVersion, index) in pdsVersions" :key="index" :value="pdsVersion">{{ pdsVersion }}</option>
       </select>
     </p-select-wrapper>
 
     <CodeEditor
-      :theme="platformTheme"
+      :theme="storefrontTheme"
       :buttonLabel="'Open template in StackBlitz'"
       :markup="markup"
       :framework="selectedFramework"
@@ -45,8 +45,8 @@
     selectedPdsVersion = '';
     frameworkNameMap = frameworkNameMap;
 
-    public get platformTheme(): StorefrontTheme {
-      return this.$store.getters.platformTheme;
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
     }
 
     private async fetchVersions(): Promise<string[]> {

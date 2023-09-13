@@ -2,10 +2,10 @@
   <div>
     <div style="display: flex; justify-content: space-between; margin: 0 0 1rem">
       <div>🚫 = deprecated<br />🛠 = breakpointCustomizable</div>
-      <p-switch :theme="platformTheme" @update="toggleProps" :checked="isToggled">Show all prop values</p-switch>
+      <p-switch :theme="storefrontTheme" @update="toggleProps" :checked="isToggled">Show all prop values</p-switch>
     </div>
 
-    <p-table :theme="platformTheme">
+    <p-table :theme="storefrontTheme">
       <p-table-head>
         <!-- eslint-disable-next-line vue/no-v-text-v-html-on-component -->
         <p-table-head-row v-html="headRow"></p-table-head-row>
@@ -29,8 +29,8 @@
 
   @Component
   export default class ComponentMetaOverview extends Vue {
-    public get platformTheme(): StorefrontTheme {
-      return this.$store.getters.platformTheme;
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
     }
 
     get headRow(): string {
