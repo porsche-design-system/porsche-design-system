@@ -191,7 +191,7 @@ export class PinCode {
               autoComplete="one-time-code"
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
-              value={this.value[index] && this.value[index] !== ' ' ? this.value[index] : null}
+              value={this.value[index] === ' ' ? null : this.value[index]}
               disabled={this.disabled}
               required={this.required}
               ref={(el) => this.pinCodeElements.push(el)}

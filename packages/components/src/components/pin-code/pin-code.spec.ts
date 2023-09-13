@@ -30,10 +30,10 @@ describe('componentWillLoad', () => {
   it('should call initHiddenInput() with correct parameters if component is used within form and set hiddenInput', () => {
     const component = initComponent();
     jest.spyOn(isWithinFormUtils, 'isWithinForm').mockReturnValue(true);
-    component['name'] = 'name';
+    component.name = 'name';
     const hiddenInput = document.createElement('input');
     const spy = jest.spyOn(pinCodeUtils, 'initHiddenInput').mockImplementation(() => {
-      hiddenInput.setAttribute('name', component['name']);
+      hiddenInput.setAttribute('name', component.name);
       return hiddenInput;
     });
 
@@ -56,27 +56,16 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentWillRender', () => {
-  it('should initialize prop value with array of empty strings and not call warnAboutTransformedInitialValue() if value is not set', () => {
-    const component = initComponent();
-    const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedInitialValue');
-    component['update'] = { emit: jest.fn() };
-
-    component.componentWillRender();
-
-    expect(component['value']).toStrictEqual(['', '', '', '']);
-    expect(spy).not.toBeCalled();
-  });
-
-  it('should reset prop value with array of empty strings and call warnAboutTransformedInitialValue() if value does not consist of digits only', () => {
+  it('should reset prop value and call warnAboutTransformedInitialValue() if value does not consist of digits/whitespaces only', () => {
     const component = initComponent();
     component.host = document.createElement('p-pin-code');
-    component['value'] = ['1', 'a', '&', '^', 'b'];
+    component.value = '1a&^b';
     const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedInitialValue');
-    component['update'] = { emit: jest.fn() };
+    component.update = { emit: jest.fn() };
 
     component.componentWillRender();
 
-    expect(component['value']).toStrictEqual(['', '', '', '']);
+    expect(component.value).toStrictEqual('');
     expect(spy).toBeCalledWith(component.host);
   });
 
@@ -84,24 +73,24 @@ describe('componentWillRender', () => {
     const component = initComponent();
     component.host = document.createElement('p-pin-code');
     const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedInitialValue');
-    component['value'] = ['1', '2', '3', '4', '5'];
-    component['update'] = { emit: jest.fn() };
+    component.value = '12 345';
+    component.update = { emit: jest.fn() };
 
     component.componentWillRender();
 
-    expect(component['value']).toStrictEqual(['1', '2', '3', '4']);
+    expect(component.value).toStrictEqual('12 3');
     expect(spy).toBeCalledWith(component.host, 4);
   });
 
   it('should not slice prop value and not call warnAboutTransformedInitialValue() if value.length is equal to prop length', () => {
     const component = initComponent();
     const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedInitialValue');
-    component['value'] = ['1', '2', '3', '4'];
-    component['update'] = { emit: jest.fn() };
+    component.value = '1234';
+    component.update = { emit: jest.fn() };
 
     component.componentWillRender();
 
-    expect(component['value']).toStrictEqual(['1', '2', '3', '4']);
+    expect(component.value).toStrictEqual('1234');
     expect(spy).not.toBeCalled();
   });
 
@@ -109,7 +98,7 @@ describe('componentWillRender', () => {
     const component = initComponent();
     component['isWithinForm'] = true;
     component['hiddenInput'] = document.createElement('input');
-    component['value'] = ['1', '2', '3', '4'];
+    component.value = '1234';
     const spy = jest.spyOn(pinCodeUtils, 'syncHiddenInput').mockImplementation();
 
     component.componentWillRender();
@@ -120,7 +109,6 @@ describe('componentWillRender', () => {
   it('should not call syncHiddenInput() if component is not used within form', () => {
     const component = initComponent();
     component['isWithinForm'] = false;
-    component['value'] = ['1', '2', '3', '4'];
     const spy = jest.spyOn(pinCodeUtils, 'syncHiddenInput');
 
     component.componentWillRender();
@@ -134,7 +122,7 @@ describe('updateValue()', () => {
     const component = new PinCode();
     const emitSpy = jest.fn();
     component.update = { emit: emitSpy };
-    component.value = ['1', '2', '3', '4'];
+    component.value = '1234';
 
     // @ts-ignore
     component.updateValue();

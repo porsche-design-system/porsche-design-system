@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -89,7 +89,52 @@
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main>
+      <form>
+        <p>With button type="submit"</p>
+        <p-pin-code label="Some label" length="6" required="true"></p-pin-code>
+        <button type="submit">Click</button>
+      </form>
+      <form>
+        <p>Without buttons</p>
+        <p-pin-code label="Some label" length="6" required="true"></p-pin-code>
+        <p-pin-code label="Some label" length="6" required="true"></p-pin-code>
+      </form>
+
+      <form>
+        <p>With button type="button"</p>
+        <p-pin-code label="Some label" length="6" required="true"></p-pin-code>
+        <p-pin-code label="Some label" length="6" required="true"></p-pin-code>
+        <button type="button">Click</button>
+      </form>
+
+      <form>
+        <p>With button type="submit"</p>
+        <p-pin-code label="Some label" length="6" required="true"></p-pin-code>
+        <p-pin-code label="Some label" length="6" required="true"></p-pin-code>
+        <button type="submit">Click</button>
+      </form>
+
+      <form>
+        <p>Without buttons</p>
+        <input name="field" type="text" />
+        <input name="after" type="text" />
+      </form>
+
+      <form>
+        <p>With button type="button"</p>
+        <input name="field" type="text" />
+        <input name="after" type="text" />
+        <button type="button">Click</button>
+      </form>
+
+      <form>
+        <p>With button type="submit"</p>
+        <input name="field" type="text" />
+        <input name="after" type="text" />
+        <button type="submit">Click</button>
+      </form>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
@@ -99,6 +144,12 @@
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
         })
       );
+
+      document.querySelector('form').addEventListener('submit', (e) => {
+        // e.preventDefault();
+        let x = document.querySelector('form').elements;
+        console.log('Pin Code: ', x);
+      });
     </script>
     <!-- /END -->
   </body>

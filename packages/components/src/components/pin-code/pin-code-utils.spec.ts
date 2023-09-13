@@ -5,9 +5,9 @@ import * as consoleWarnUtils from '../../utils/log/logger';
 import {
   removeSlottedSelector,
   initHiddenInput,
-  hasInputOnlyDigits,
+  hasInputOnlyDigitsOrWhitespaces,
   isInputSingleDigit,
-  getArrayOfInputValues,
+  getInputValue,
   syncHiddenInput,
   warnAboutTransformedInitialValue,
   getSanitisedValue,
@@ -82,33 +82,30 @@ describe('isInputSingleDigit()', () => {
   });
 });
 
-describe('hasInputOnlyDigits()', () => {
-  it.each<[string]>([['1a'], ['a1'], ['1a2'], ['1^'], ['^2'], ['1^2']])(
+describe('hasInputOnlyDigitsOrWhitespaces()', () => {
+  it.each<[string]>([['1a'], ['a 1'], ['1a2'], ['1^'], ['^ 2'], ['1^2']])(
     'should return false for value: %s',
     (value) => {
-      expect(hasInputOnlyDigits(value)).toBeFalsy();
+      expect(hasInputOnlyDigitsOrWhitespaces(value)).toBeFalsy();
     }
   );
 
-  it('should return true if the provided string does consist of digits', () => {
-    const spy = jest.spyOn(pinCodeUtils, 'hasInputOnlyDigits');
-
-    hasInputOnlyDigits('1234');
-    expect(spy).toReturnWith(true);
+  it.each<[string]>([['1234'], [' 234'], ['1 34'], ['12 4'], ['123 ']])('should return true for value: %s', (value) => {
+    expect(hasInputOnlyDigitsOrWhitespaces(value)).toBeTruthy();
   });
 });
 
-describe('getArrayOfInputValues()', () => {
-  it('should return array of values of an array of input elements', () => {
+describe('getInputValue()', () => {
+  it('should return joined values of an array of input elements', () => {
     const arrayOfInputs = Array.from({ length: 4 }, (_, i) => {
       const input = document.createElement('input');
       input.setAttribute('value', `${i}`);
       return input;
     });
 
-    const joinedValue = getArrayOfInputValues(arrayOfInputs);
+    const joinedValue = getInputValue(arrayOfInputs);
 
-    expect(joinedValue).toStrictEqual(['0', '1', '2', '3']);
+    expect(joinedValue).toStrictEqual('0123');
   });
 });
 
@@ -135,6 +132,14 @@ describe('getSanitisedValue()', () => {
     const optimizedValue = getSanitisedValue(pinCode, 4);
 
     expect(optimizedValue).toBe('1234');
+  });
+
+  it('should not shorten pin code value if parameter length is not provided', () => {
+    const pinCode = ' 12345678';
+
+    const optimizedValue = getSanitisedValue(pinCode);
+
+    expect(optimizedValue).toBe('12345678');
   });
 });
 

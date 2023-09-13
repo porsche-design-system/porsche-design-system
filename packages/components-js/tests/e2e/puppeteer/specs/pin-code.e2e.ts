@@ -128,7 +128,7 @@ describe('within form', () => {
       expect(await getProperty(hiddenInput, 'disabled')).toBeFalsy();
 
       await setProperty(host, 'name', 'updatedName');
-      await setProperty(host, 'value', ['1', '2', '3', '4']);
+      await setProperty(host, 'value', '1234');
       await setProperty(host, 'disabled', true);
       await setProperty(host, 'required', true);
       await waitForStencilLifecycle(page);
@@ -146,7 +146,7 @@ describe('within form', () => {
     const input = await getCurrentInput();
     const form = await selectNode(page, 'form');
     await addEventListener(form, 'submit');
-    await setProperty(host, 'value', ['1', '2', '3', '4']);
+    await setProperty(host, 'value', '1234');
 
     expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
 
@@ -190,7 +190,7 @@ describe('update event', () => {
     expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([
       {
         isComplete: false,
-        value: ['1', '', '', ''],
+        value: '1   ',
       },
     ]);
 
@@ -202,11 +202,11 @@ describe('update event', () => {
     expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([
       {
         isComplete: false,
-        value: ['1', '', '', ''],
+        value: '1   ',
       },
       {
         isComplete: false,
-        value: ['1', '2', '', ''],
+        value: '12  ',
       },
     ]);
 
@@ -218,15 +218,15 @@ describe('update event', () => {
     expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([
       {
         isComplete: false,
-        value: ['1', '', '', ''],
+        value: '1   ',
       },
       {
         isComplete: false,
-        value: ['1', '2', '', ''],
+        value: '12  ',
       },
       {
         isComplete: false,
-        value: ['1', '2', '3', ''],
+        value: '123 ',
       },
     ]);
 
@@ -238,19 +238,19 @@ describe('update event', () => {
     expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([
       {
         isComplete: false,
-        value: ['1', '', '', ''],
+        value: '1   ',
       },
       {
         isComplete: false,
-        value: ['1', '2', '', ''],
+        value: '12  ',
       },
       {
         isComplete: false,
-        value: ['1', '2', '3', ''],
+        value: '123 ',
       },
       {
         isComplete: true,
-        value: ['1', '2', '3', '4'],
+        value: '1234',
       },
     ]);
   });
@@ -285,7 +285,7 @@ describe('update event', () => {
   it('should emit update event on backspace and focus correct input element', async () => {
     await initPinCode();
     const host = await getHost();
-    await setProperty(host, 'value', ['1', '2', '3', '4']);
+    await setProperty(host, 'value', '1234');
     await addEventListener(host, 'update');
     const input4 = await getInput(4);
 
@@ -302,7 +302,7 @@ describe('update event', () => {
     expect((await getEventSummary(host, 'update')).details, 'after backspace').toEqual([
       {
         isComplete: false,
-        value: ['1', '2', '3', ''],
+        value: '123 ',
       },
     ]);
 
@@ -314,11 +314,11 @@ describe('update event', () => {
     expect((await getEventSummary(host, 'update')).details, 'after backspace').toEqual([
       {
         isComplete: false,
-        value: ['1', '2', '3', ''],
+        value: '123 ',
       },
       {
         isComplete: false,
-        value: ['1', '2', '', ''],
+        value: '12  ',
       },
     ]);
   });
@@ -326,7 +326,7 @@ describe('update event', () => {
   it('should emit update event on delete and focus correct input element', async () => {
     await initPinCode();
     const host = await getHost();
-    await setProperty(host, 'value', ['1', '2', '3', '4']);
+    await setProperty(host, 'value', '1234');
     await addEventListener(host, 'update');
     const input1 = await getInput(1);
 
@@ -343,7 +343,7 @@ describe('update event', () => {
     expect((await getEventSummary(host, 'update')).details, 'after delete').toEqual([
       {
         isComplete: false,
-        value: ['', '2', '3', '4'],
+        value: ' 234',
       },
     ]);
 
@@ -355,11 +355,11 @@ describe('update event', () => {
     expect((await getEventSummary(host, 'update')).details, 'after delete').toEqual([
       {
         isComplete: false,
-        value: ['', '2', '3', '4'],
+        value: ' 234',
       },
       {
         isComplete: false,
-        value: ['', '', '3', '4'],
+        value: '  34',
       },
     ]);
   });
@@ -386,7 +386,7 @@ describe('events', () => {
       expect(await getProperty(input3, 'value')).toBe('3');
       expect(await getProperty(input4, 'value')).toBe('4');
       expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
-      expect(await getProperty(host, 'value')).toStrictEqual(['1', '2', '3', '4']);
+      expect(await getProperty(host, 'value')).toStrictEqual('1234');
     });
 
     it('should spread value over input elements and focus last empty input element if value is too short', async () => {
@@ -408,7 +408,7 @@ describe('events', () => {
       expect(await getProperty(input3, 'value')).toBe('');
       expect(await getProperty(input4, 'value')).toBe('');
       expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('3-4');
-      expect(await getProperty(host, 'value')).toStrictEqual(['1', '2', '', '']);
+      expect(await getProperty(host, 'value')).toStrictEqual('12  ');
     });
   });
 
