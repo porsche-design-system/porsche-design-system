@@ -197,7 +197,6 @@ export class Carousel {
   }
 
   public componentDidUpdate(): void {
-    // TODO: using a slotchange listener might be a better approach https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/slotchange_event
     this.splide.options = { drag: this.isDraggable };
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
     if (this.isDraggable) {
@@ -273,23 +272,21 @@ export class Carousel {
                 Skip carousel entries
               </PrefixedTagNames.pLinkPure>
             )}
-            {this.isDraggable && (
+            {this.isDraggable && [
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-left"
                 ref={(ref) => (this.btnPrev = ref)}
                 onClick={() => slidePrev(this.splide, this.amountOfPages)}
-              />
-            )}
-            {this.isDraggable && (
+              />,
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-right"
                 ref={(ref) => (this.btnNext = ref)}
                 onClick={() => slideNext(this.splide, this.amountOfPages)}
                 onKeyDown={this.onNextKeyDown}
-              />
-            )}
+              />,
+            ]}
           </div>
         </div>
 
@@ -323,7 +320,7 @@ export class Carousel {
 
   private registerSplideHandlers(splide: Splide): void {
     splide.on('mounted', () => {
-      if (this.isDraggable) {
+      if (this.splide.options.drag) {
         updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
         renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
       }
