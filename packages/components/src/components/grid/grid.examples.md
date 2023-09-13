@@ -5,11 +5,11 @@ web experiences and screen sizes. The Porsche Design System grid system is based
 grid. Its main purpose is to provide a solid and flexible grid system for defining layout areas and page structures. It
 is not meant to function as a toolkit for layout content blocks or components.
 
-<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
-This component is deprecated and will be removed with the next major release. 
-In general, please use native <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more standardized layout technique.
-Additionally, we provide a <a href="styles/grid"><b>Porsche Grid</b></a> utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital touch-points.
-</p-inline-notification>
+<Notification heading="Deprecation hint" state="error">
+  This component is deprecated and will be removed with the next major release. 
+  In general, please use native <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more standardized layout technique.
+  Additionally, we provide a <a href="styles/grid"><b>Porsche Grid</b></a> utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital touch-points.
+</Notification>
 
 <TableOfContents></TableOfContents>
 
@@ -55,9 +55,9 @@ achieved by setting `reverse`.
 
 ## Grid gutter
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
-The gutter property is deprecated and has no effect anymore. Instead, a fluid gutter depending on the viewport width is used.
-</p-inline-notification>
+<Notification heading="Deprecation hint" state="warning">
+  The gutter property is deprecated and has no effect anymore. Instead, a fluid gutter depending on the viewport width is used.
+</Notification>
 
 ---
 
@@ -124,7 +124,7 @@ export default class Code extends Vue {
     return `<p-grid>
   <p-grid-item size="12">12</p-grid-item>
 </p-grid>
-${Array.from(Array(11)).map((x, i) => `<p-grid>
+${Array.from(Array(11), (_, i) => `<p-grid>
   <p-grid-item size="${i+1}">${i+1}</p-grid-item>
   <p-grid-item size="${11-i}">${11-i}</p-grid-item>
 </p-grid>`).join('\n')}`;
@@ -137,9 +137,9 @@ ${Array.from(Array(11)).map((x, i) => `<p-grid>
 </p-grid>`;
 
   get offset() {
-    return `${Array.from(Array(11)).map((x, i) => `<p-grid>
+    return Array.from(Array(11), (_, i) => `<p-grid>
     <p-grid-item offset="${i+1}" size="${11-i}">${i+1}</p-grid-item>
-</p-grid>`).join('\n')}`;
+</p-grid>`).join('\n');
   }
     
   offsetResponsiveness =

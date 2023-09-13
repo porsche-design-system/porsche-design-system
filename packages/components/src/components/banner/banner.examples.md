@@ -3,12 +3,12 @@
 The `p-banner` component provides action-based feedback messages (e.g. after performing a task) or to convey
 informational and/or critical notification like some site related topics.
 
-Review the [notification decision tree](patterns/notifications/decision-tree) to determine which notification
-component is best for a particular scenario.
+Review the [notification decision tree](patterns/notifications/decision-tree) to determine which notification component
+is best for a particular scenario.
 
-<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
+<Notification heading="Attention" state="warning">
   Before v3.0.0 the <strong>p-banner</strong> handled its open state internally. This is no longer the case, since v3.0.0 it is a <strong>controlled</strong> component and has to be opened with the <strong>open property</strong>.
-</p-inline-notification>
+</Notification>
 
 <TableOfContents></TableOfContents>
 
@@ -17,9 +17,9 @@ component is best for a particular scenario.
 The `p-banner` component is positioned fixed above the page content by default. For personal adjustments, go to "Custom
 styling" section.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   Following state has been deprecated and will be removed with the next major release: "neutral".
-</p-inline-notification>
+</Notification>
 
 <Playground :frameworkMarkup="stateMarkup" :config="config">
   <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
@@ -34,10 +34,10 @@ styling" section.
 
 Rich content for `heading` and `description` can be provided via named slots.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The named <code>slot="title"</code> has been deprecated and will be removed with the next major release.<br>
   Please use <code>slot="heading"</code> or the <code>heading</code> property instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="slottedHeadingDescriptionMarkup" :config="config">
   <p-button type="button" :theme="theme" @click="isBannerSlottedOpen = true">Open Banner</p-button>
@@ -52,10 +52,10 @@ description. You can also add inline <a href="https://porsche.com">links</a> to 
 
 If the **Banner** shouldn't be removable by the user, add `dismissButton` prop.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>persistent</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>dismissButton</code> property instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="dismissButtonMarkup" :config="config">
   <p-button type="button" :theme="theme" @click="isBannerDismissBtnOpen = true">Open Banner</p-button>
@@ -97,7 +97,7 @@ import { getBannerCodeSamples } from '@porsche-design-system/shared';
 export default class Code extends Vue {
   config = { themeable: true };
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 
   codeExample = getBannerCodeSamples();

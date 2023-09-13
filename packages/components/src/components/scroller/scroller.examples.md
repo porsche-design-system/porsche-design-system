@@ -29,10 +29,10 @@ consumer e.g. `white-space: nowrap` to avoid line breaks inside the elements.
 
 The size of the scroll indicator arrows depends on the `font-size` set onto the `p-scroller` component.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>scrollIndicatorPosition</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>alignScrollIndicator</code> property instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="scrollIndicatorSize" :config="config"></Playground>
 
@@ -40,10 +40,10 @@ The size of the scroll indicator arrows depends on the `font-size` set onto the 
 
 The background and gradient has to align with your chosen background.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>gradientColor</code> property instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
   <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
@@ -89,7 +89,7 @@ export default class Code extends Vue {
   config = { themeable: true };
 
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 
   scrollIndicatorPosition = 'top';

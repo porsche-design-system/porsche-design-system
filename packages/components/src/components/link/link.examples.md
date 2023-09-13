@@ -25,10 +25,10 @@ Link with label only (default) and with icon only (default: "arrow-right").
 
 ### Tertiary (deprecated)
 
-<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+<Notification heading="Important note" state="error">
   The variant `tertiary` is deprecated and will be removed with next major release.
   In case, e.g. <b>variant="tertiary"</b> is used it will automatically be mapped to variant <b>"secondary"</b>.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="buttons('tertiary')" :config="config"></Playground>
 

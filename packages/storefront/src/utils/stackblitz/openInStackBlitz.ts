@@ -9,14 +9,14 @@ import type {
   SharedImportKey,
   ExternalDependency,
 } from '@/utils';
-import type { Theme, BackgroundColor, Framework } from '@/models';
+import type { PlaygroundTheme, BackgroundColor, Framework } from '@/models';
 import type { PorscheDesignSystemBundle } from '@/utils/stackblitz/types';
 
 export type OpenInStackBlitzOpts = {
   porscheDesignSystemBundle: PorscheDesignSystemBundle;
   markup: string;
   framework: Exclude<Framework, 'shared' | 'vue'>; // we don't have stackblitz integration for vue yet, therefore excluding vue
-  theme: Theme;
+  theme: PlaygroundTheme;
   backgroundColor: BackgroundColor;
   externalDependencies: ExternalDependency[];
   sharedImportKeys: SharedImportKey[];

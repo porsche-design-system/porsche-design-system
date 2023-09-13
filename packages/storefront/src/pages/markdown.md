@@ -114,6 +114,13 @@ Block code "fences"
 Sample text here...
 ```
 
+Diff
+
+```diff
+- <p-banner></p-banner>
++ <p-banner open="true"></p-banner>
+```
+
 Syntax highlighting
 
 ```js

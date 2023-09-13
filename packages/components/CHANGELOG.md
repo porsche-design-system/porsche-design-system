@@ -18,8 +18,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Theme property supports `auto` for all themeable components, reflecting `prefers-color-scheme` based on OS system
   settings ([#2719](https://github.com/porsche-design-system/porsche-design-system/pull/2719))
-- `hyphens` CSS property can now be overwritten in `Button Tile`, `Link Tile` and `Link Tile Model Signature`
-  components ([#2758](https://github.com/porsche-design-system/porsche-design-system/pull/2758))
+- `hyphens` CSS property can now be overwritten in `Button Tile`, `Link Tile` and `Link Tile Model Signature` components
+  ([#2758](https://github.com/porsche-design-system/porsche-design-system/pull/2758))
+
+#### Fixed
+
+- Color of `message` for `Fieldset`, `Fieldset Wrapper`, `Text Field Wrapper` and `Textarea Wrapper` in dark theme
+  ([#2769](https://github.com/porsche-design-system/porsche-design-system/pull/2769))
 
 #### Changed
 

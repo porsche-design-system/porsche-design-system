@@ -36,10 +36,10 @@ which CDN those assets shall be loaded to get maximum performance in China.
 To achieve this, a global browser variable `PORSCHE_DESIGN_SYSTEM_CDN` was introduced which needs to be defined before
 initializing the Porsche Design System.
 
-<p-inline-notification heading="Attention" state="warning" dismiss-button="false">
+<Notification heading="Attention" state="warning">
   Usually the integrating team that is responsible for the application is in charge of configuring which cdn to use.<br>
   This means that widget teams shouldn't set it and might even override it.
-</p-inline-notification>
+</Notification>
 
 Possible values that can be assigned:
 
@@ -62,7 +62,7 @@ The same can be achieved in all supported frameworks via the respective module o
 ### Vanilla JS Example
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />

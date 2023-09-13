@@ -1,5 +1,5 @@
 import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
-import type { Theme, BackgroundColor } from '../../src/models';
+import type { PlaygroundTheme, BackgroundColor } from '../../src/models';
 import {
   getExternalDependencies,
   getBackgroundColor,
@@ -71,7 +71,7 @@ describe('getExternalDependencies()', () => {
 });
 
 describe('getBackgroundColor()', () => {
-  it.each<[Theme, BackgroundColor, string]>([
+  it.each<[PlaygroundTheme, BackgroundColor, string]>([
     ['light', 'background-base', themeLight.background.base],
     ['light', 'background-surface', themeLight.background.surface],
     ['dark', 'background-base', themeDark.background.base],
