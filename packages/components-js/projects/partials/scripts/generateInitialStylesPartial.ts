@@ -167,6 +167,8 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   const styles = normalizeStyles.concat(hydrationStyles, slottedStyles, siblingStyles);
 
+  generatePartialHash('getInitialStyles', styles);
+
   return format === 'html'
     ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
     : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
