@@ -29,6 +29,8 @@ export function getBrowserSupportFallbackScript(opts?: GetBrowserSupportFallback
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const scriptContent = \`${fileContent}\`;
 
+  generatePartialHash('getBrowserSupportFallbackScript', scriptContent);
+
   // there is no other solution than using dangerouslySetInnerHTML since JSX elements are rendered by the createElement() function
   // https://stackoverflow.com/a/64815699
   return format === 'html'

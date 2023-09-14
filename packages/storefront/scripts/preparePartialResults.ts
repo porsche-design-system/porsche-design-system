@@ -1,8 +1,9 @@
 import {
-  getMetaTagsAndIconLinks,
+  getBrowserSupportFallbackScript,
+  getHashMap,
   getInitialStyles,
   getLoaderScript,
-  getHashMap,
+  getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-js/partials';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -26,8 +27,9 @@ export const initialStyles = ${JSON.stringify(initialStyles)};
 
   console.log(`Generated: ${targetFolder}/${targetFileName}`);
 
-  getLoaderScript(); // identical call as in index.html, so it gets added to map
   getInitialStyles(); // identical call as in index.html, so it gets added to map
+  getLoaderScript(); // identical call as in index.html, so it gets added to map
+  getBrowserSupportFallbackScript(); // identical call as in index.html, so it gets added to map
   const hashMap = getHashMap();
   console.log(hashMap);
 

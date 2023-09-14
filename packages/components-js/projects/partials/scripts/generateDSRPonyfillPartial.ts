@@ -21,6 +21,8 @@ export function getDSRPonyfill(opts?: GetDSRPonyfillOptions): string | JSX.Eleme
 
   const scriptContent = \`${fileContent.trim()}\`;
 
+  generatePartialHash('getDSRPonyfill', scriptContent);
+
   return format === 'html'
     ? \`<script>\${scriptContent}</script>\`
     : <script dangerouslySetInnerHTML={{ __html: scriptContent }} />;
