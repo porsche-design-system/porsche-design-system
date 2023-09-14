@@ -24,6 +24,18 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
         <input type="checkbox" name="some-name" />
       </p-checkbox-wrapper>
     </div>
+    <p-checkbox-wrapper label="Some label">
+      <input type="checkbox" name="some-name" disabled />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="Some label">
+      <input type="checkbox" name="some-name" checked disabled />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="Some label" loading="true">
+      <input type="checkbox" name="some-name" />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="Some label" loading="true">
+      <input type="checkbox" name="some-name" checked />
+    </p-checkbox-wrapper>
     <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
