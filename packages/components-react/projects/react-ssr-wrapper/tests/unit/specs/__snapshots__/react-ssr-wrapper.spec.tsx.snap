@@ -6101,12 +6101,6 @@ input[readonly] {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
-@media (max-width: 480px) {
-  input {
-    width: 39px;
-  }
-}
-
 .input-container {
   display: flex;
   position: relative;
