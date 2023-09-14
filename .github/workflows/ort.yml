@@ -51,8 +51,11 @@ jobs:
       - name: "Run ORT"
         run: |
           ls -l
-          docker run -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest analyze -i /project/ -o /project/ort/
-          docker run -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest report -i /project/ort/analyzer-result.yml -o /project/ort/ -f StaticHtml
+#          docker run -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest analyze -i /project/ -o /project/ort/
+#          docker run -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest report -i /project/ort/analyzer-result.yml -o /project/ort/ -f StaticHtml
+          podman pull ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest
+          podman run --rm -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest --info analyze -i /project -o /project/ort/
+          podman run --rm -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest report -i /project/ort/analyzer-result.yml -o /project/ort/ -f StaticHtml
         shell: bash
       - name: 'Store ORT Analysis'
         uses: actions/upload-artifact@v3
