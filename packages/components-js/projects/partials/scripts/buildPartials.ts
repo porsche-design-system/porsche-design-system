@@ -14,7 +14,7 @@ import { generateDSRPonyfillPartial } from './generateDSRPonyfillPartial';
 
 const generateSharedCode = (): string => {
   return `import type { Cdn, Format } from '../shared';
-import { throwIfRunInBrowser } from '../shared';
+import { throwIfRunInBrowser, generatePartialHash } from '../shared';
 
 const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL_COM}');
 

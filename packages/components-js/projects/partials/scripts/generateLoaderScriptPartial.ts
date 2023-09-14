@@ -35,6 +35,8 @@ export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSX.Ele
     : 'porscheDesignSystem.load()';
   const scriptContent = ${JSON.stringify(fileContent)} + loadCalls;
 
+  generatePartialHash('getLoaderScript', scriptContent);
+
   // there is no other solution than using dangerouslySetInnerHTML since JSX elements are rendered by the createElement() function
   // https://stackoverflow.com/a/64815699
   return format === 'html'
