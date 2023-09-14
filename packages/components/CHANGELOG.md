@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- Dragging of `Carousel` can become stucked
+  ([#2768](https://github.com/porsche-design-system/porsche-design-system/pull/2768))
 - Color of `message` for `Fieldset`, `Fieldset Wrapper`, `Text Field Wrapper` and `Textarea Wrapper` in dark theme
   ([#2769](https://github.com/porsche-design-system/porsche-design-system/pull/2769))
 
