@@ -3,17 +3,17 @@
   import { PPinCode, PText } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
-  const currentValue = ref('');
+  const value = ref('');
   const isComplete = ref(false);
 
   const onUpdate = (e: PinCodeUpdateEvent): void => {
-    currentValue.value = e.value;
+    value.value = e.value;
     isComplete.value = e.isComplete;
   };
 </script>
 
 <template>
-  <PPinCode :label="'Some Label'" :value="currentValue" @update="onUpdate"></PPinCode>
-  <PText>Current value: {{ currentValue }}</PText>
+  <PPinCode :label="'Some Label'" :value="value" @update="onUpdate"></PPinCode>
+  <PText>Current value: {{ value }}</PText>
   <PText>Completely filled: {{ isComplete }}</PText>
 </template>

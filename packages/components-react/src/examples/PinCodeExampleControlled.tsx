@@ -3,18 +3,18 @@ import type { PinCodeUpdateEvent } from '@porsche-design-system/components-react
 import { PPinCode, PText } from '@porsche-design-system/components-react';
 
 export const PinCodeExampleControlledPage = (): JSX.Element => {
-  const [currentValue, setCurrentValue] = useState('');
+  const [value, setValue] = useState('');
   const [isComplete, setIsComplete] = useState(false);
 
   const onUpdate = useCallback((e: CustomEvent<PinCodeUpdateEvent>) => {
-    setCurrentValue(e.detail.value);
+    setValue(e.detail.value);
     setIsComplete(e.detail.isComplete);
   }, []);
 
   return (
     <>
-      <PPinCode label="Some Label" value={currentValue} onUpdate={onUpdate}></PPinCode>
-      <PText>Current value: {currentValue}</PText>
+      <PPinCode label="Some Label" value={value} onUpdate={onUpdate}></PPinCode>
+      <PText>Current value: {value}</PText>
       <PText>Completely filled: {isComplete.toString()}</PText>
     </>
   );

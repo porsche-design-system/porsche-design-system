@@ -4,18 +4,18 @@ import type { PinCodeUpdateEvent } from '@porsche-design-system/components-angul
 @Component({
   selector: 'page-pin-code-example-controlled',
   template: `
-    <p-pin-code [label]="'Some Label'" [value]="currentValue" (update)="onUpdate($event)"></p-pin-code>
-    <p-text>Current value: [{{ currentValue }}]</p-text>
+    <p-pin-code [label]="'Some Label'" [value]="value" (update)="onUpdate($event)"></p-pin-code>
+    <p-text>Current value: {{ value }}</p-text>
     <p-text>Completely filled: {{ isComplete }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PinCodeExampleControlledComponent {
-  currentValue = '';
+  value = '';
   isComplete = false;
 
   onUpdate(e: CustomEvent<PinCodeUpdateEvent>) {
-    this.currentValue = e.detail.value;
+    this.value = e.detail.value;
     this.isComplete = e.detail.isComplete;
   }
 }
