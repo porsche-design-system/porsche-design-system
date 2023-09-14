@@ -27,6 +27,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
 
   const tagNameToChildMap: { [key in TagName]?: string } = {
     'p-checkbox-wrapper': '<input type="checkbox" />', // readonly is not supported
+    'p-pin-code': '', // readonly is not supported
     'p-radio-button-wrapper': '<input type="radio" />', // readonly is not supported
     'p-select-wrapper': '<select><option>Some value</option></select>', // readonly is not supported
     'p-text-field-wrapper': '<input type="text" value="Some value" />',
@@ -37,7 +38,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     Object.entries(tagNameToChildMap)
       .map(([tag, child]) => {
         const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
-        const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
+        const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1')
 
         return `
 <div>
@@ -47,19 +48,19 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   <${tag} label="Readonly">
     ${childReadonly}
   </${tag}>
-  <${tag} label="Disabled">
+  <${tag} label="Disabled" ${tag === 'p-pin-code' && 'disabled="true"'}>
     ${childDisabled}
   </${tag}>
   <${tag} label="Error" state="error" message="Error">
     ${child}
   </${tag}>
-  <${tag} label="Disabled" state="error" message="Error">
+  <${tag} label="Disabled" state="error" message="Error" ${tag === 'p-pin-code' && 'disabled="true"'}>
     ${childDisabled}
   </${tag}>
   <${tag} label="Success" state="success" message="Success">
     ${child}
   </${tag}>
-  <${tag} label="Disabled" state="success" message="Success">
+  <${tag} label="Disabled" state="success" message="Success" ${tag === 'p-pin-code' && 'disabled="true"'}>
     ${childDisabled}
   </${tag}>
 </div>`.replace(/(<p-select-wrapper)/g, '$1 native'); // native select is easier to force states on
