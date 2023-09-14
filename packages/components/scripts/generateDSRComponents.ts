@@ -53,7 +53,6 @@ const generateDSRComponents = (): void => {
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
-        .replace(/\s+this\.validateInitialValue\(\);/, '')
         .replace(/\s{2,}(?:warnIf|throwIf|sync)[A-Z][A-Za-z<>, \n]+\([\s\S]+?;/g, '')
         .replace(/\n.+classList\.remove[\s\S]+?;/g, '')
         .replace(/\n.+parseJSON[\s\S]+?.*/g, '')
@@ -223,6 +222,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDropdownDirection\(this\.props\,.+\)/, "'down'") // select-wrapper-dropdown
         .replace(/getDropdownDirection\(this\.props.+\)/, "'down'") // multi-select
+        .replace(/\s+this\.props\.validateInitialValue\(\);/, '') // pin-code
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
