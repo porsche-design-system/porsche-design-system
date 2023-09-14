@@ -20,11 +20,11 @@
 </div>
 
 <div class="playground light" title="should render with value">
-  <p-pin-code class="filled" label="With Value"></p-pin-code>
+  <p-pin-code value="1234" label="With Value"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with type=password">
-  <p-pin-code class="filled" label="Type password" type="password"></p-pin-code>
+  <p-pin-code value="1234" label="Type password" type="password"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with success state and no success message">
@@ -56,11 +56,11 @@
 </div>
 
 <div class="playground light" title="should render with loading state and value">
-  <p-pin-code class="filled" label="Loading" loading="true"></p-pin-code>
+  <p-pin-code value="1234" label="Loading" loading="true"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with loading state and type password">
-  <p-pin-code class="filled" label="Type password loading" type="password" loading="true"></p-pin-code>
+  <p-pin-code value="1234" label="Type password loading" type="password" loading="true"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with disabled state">
@@ -68,11 +68,11 @@
 </div>
 
 <div class="playground light" title="should render with disabled state and value">
-  <p-pin-code class="filled" label="Disabled" disabled="true"></p-pin-code>
+  <p-pin-code value="1234" label="Disabled" disabled="true"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with disabled state and type password">
-  <p-pin-code class="filled" label="Type password disabled" type="password" disabled="true"> </p-pin-code>
+  <p-pin-code value="1234" label="Type password disabled" type="password" disabled="true"> </p-pin-code>
 </div>
 
 <div class="playground light" title="should render with length=6 and reduce input width on smaller viewports">
@@ -138,9 +138,3 @@
   >
   </p-pin-code>
 </div>
-
-<script>
-  porscheDesignSystem.componentsReady().then(() => {
-    document.querySelectorAll('p-pin-code.filled').forEach((pinCode) => (pinCode.value = '1234'));
-  });
-</script>
