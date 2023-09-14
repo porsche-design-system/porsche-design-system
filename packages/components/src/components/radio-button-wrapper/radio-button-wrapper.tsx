@@ -98,7 +98,7 @@ export class RadioButtonWrapper {
       this.hideLabel,
       this.state,
       this.input.disabled,
-      this.loading,
+      this.loading && !this.input.checked,
       this.theme
     );
 
@@ -114,7 +114,7 @@ export class RadioButtonWrapper {
             </span>
           )}
           <slot />
-          {this.loading && (
+          {this.loading && !this.input.checked && (
             <PrefixedTagNames.pSpinner
               class="spinner"
               size="inherit"
