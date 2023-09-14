@@ -36,6 +36,18 @@ anymore and can be missed by screen reader users. They can be confusing for sigh
 why these elements are disabled. A good practice when to use the disabled state is during **form submission** to prevent
 changes while this process is performed.
 
+## Loading
+
+<Notification heading="Attention" state="warning">
+  The <code>loading</code> prop is experimental and might be removed in a future release.
+</Notification>
+
+The `loading` property can be used to indicate that the current state change requires loading. It should be applied
+exclusively to the radio button that is clicked and should remain visible until the checked state of that radio button
+has changed.
+
+<Playground :markup="loading" :config="config"></Playground>
+
 ---
 
 ## Validation states
@@ -106,26 +118,36 @@ export default class Code extends Vue {
   <input type="radio" name="some-name-3" disabled checked />
 </p-radio-button-wrapper>`;
 
+  isLoading = true;
+  get loading() {
+    return `<p-radio-button-wrapper label="Some label" loading="${this.isLoading}">
+  <input type="radio" name="some-name-4" />
+</p-radio-button-wrapper>
+<p-radio-button-wrapper label="Some label">
+  <input type="radio" name="some-name-4" checked />
+</p-radio-button-wrapper>`;
+  }
+
   state = 'error';
   states = FORM_STATES;
   get stateMarkup() {
     const attr = ` message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
     return `<p-radio-button-wrapper label="Some label" state="${this.state}">
-  <input type="radio" name="some-name-4" />
+  <input type="radio" name="some-name-5" />
 </p-radio-button-wrapper>
 <p-radio-button-wrapper label="Some label" state="${this.state}"${attr}>
-  <input type="radio" name="some-name-4" />
+  <input type="radio" name="some-name-5" />
 </p-radio-button-wrapper>`;
     }
     
   slots =
 `<p-radio-button-wrapper state="error">
   <span slot="label" id="some-label-id-1">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-  <input type="radio" name="some-name-5" aria-labelledby="some-label-id-1" />
+  <input type="radio" name="some-name-6" aria-labelledby="some-label-id-1" />
 </p-radio-button-wrapper>
 <p-radio-button-wrapper state="error">
   <span slot="label" id="some-label-id-2">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-  <input type="radio" name="some-name-5" aria-labelledby="some-label-id-2" aria-describedby="some-message-id" />
+  <input type="radio" name="some-name-6" aria-labelledby="some-label-id-2" aria-describedby="some-message-id" />
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-radio-button-wrapper>`
 }
