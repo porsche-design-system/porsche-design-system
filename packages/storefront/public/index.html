@@ -12,8 +12,11 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <!-- prettier-ignore -->
     <% if (process.env.NODE_ENV === 'production') { %>
+    <!-- CSP_PLACEHOLDER -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; script-src 'self' https://cdn.ui.porsche.com 'sha256-4H7cR8zFLzNqz3S+eTyenFM8cnehZEsaLTmQxPH2mes='" />
+
+    <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }) %>
     <%= require('@porsche-design-system/components-js/partials').getFontFaceStylesheet() %>
     <%= require('@porsche-design-system/components-js/partials').getComponentChunkLinks({ components: ['accordion', 'divider', 'button-pure', 'link', 'link-pure', 'wordmark', 'icon', 'text', 'headline', 'grid', 'flex' ] }) %>

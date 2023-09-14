@@ -1,4 +1,9 @@
-import { getMetaTagsAndIconLinks, getInitialStyles } from '@porsche-design-system/components-js/partials';
+import {
+  getMetaTagsAndIconLinks,
+  getInitialStyles,
+  getLoaderScript,
+  getHashMap,
+} from '@porsche-design-system/components-js/partials';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -20,6 +25,23 @@ export const initialStyles = ${JSON.stringify(initialStyles)};
   fs.writeFileSync(targetFilePath, content);
 
   console.log(`Generated: ${targetFolder}/${targetFileName}`);
+
+  getLoaderScript(); // identical call as in index.html, so it gets added to map
+  const hashMap = getHashMap();
+  console.log(hashMap);
+
+  const indexHtmlFilePath = path.resolve(__dirname, '../public/index.html');
+  const indexHtmlContent = fs.readFileSync(indexHtmlFilePath, 'utf8');
+
+  const hashes = Object.values(hashMap)
+    .map((hash) => `'${hash}'`)
+    .join(' ');
+
+  const csp = `<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; script-src 'self' https://cdn.ui.porsche.com ${hashes}" />`;
+  const placeholder = '<!-- CSP_PLACEHOLDER -->';
+  const newIndexHtmlContent = indexHtmlContent.replace(new RegExp(`${placeholder}\\n.+`), `${placeholder}\n    ${csp}`);
+
+  fs.writeFileSync(indexHtmlFilePath, newIndexHtmlContent);
 };
 
 preparePartialResults();
