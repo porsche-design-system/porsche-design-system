@@ -11,8 +11,7 @@ import {
   syncHiddenInput,
   warnIfInitialValueIsTransformed,
   getSanitisedValue,
-  removeHoverStyles,
-  removeReadonlyStyles,
+  removeStyles,
 } from './pin-code-utils';
 import { PinCode } from './pin-code';
 
@@ -44,7 +43,7 @@ describe('removeSlottedSelector()', () => {
   });
 });
 
-describe('removeHoverStyles()', () => {
+describe('removeStyles()', () => {
   it('should remove @media(hover:hover) styles from Styles object', () => {
     const stylesWithMediaHover = {
       label: {
@@ -74,11 +73,9 @@ describe('removeHoverStyles()', () => {
       },
     };
 
-    expect(removeHoverStyles(stylesWithMediaHover)).toEqual(stylesWithoutMediaHover);
+    expect(removeStyles('@media(hover:hover)', stylesWithMediaHover)).toStrictEqual(stylesWithoutMediaHover);
   });
-});
 
-describe('removeReadonlyStyles()', () => {
   it('should remove input[readonly] styles from Styles object', () => {
     const stylesWithReadonly = {
       label: {
@@ -108,7 +105,7 @@ describe('removeReadonlyStyles()', () => {
       },
     };
 
-    expect(removeReadonlyStyles(stylesWithReadonly)).toEqual(stylesWithoutReadonly);
+    expect(removeStyles('input[readonly]', stylesWithReadonly)).toStrictEqual(stylesWithoutReadonly);
   });
 });
 

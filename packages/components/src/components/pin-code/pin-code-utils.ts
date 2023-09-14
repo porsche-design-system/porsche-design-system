@@ -23,32 +23,16 @@ export const removeSlottedSelector = (styles: Styles): Styles => {
   );
 };
 
-export const removeReadonlyStyles = (styles: Styles): Styles => {
-  return Object.fromEntries(
-    Object.entries(styles).map(([key, value]) => {
-      if (key === 'input[readonly]') {
-        delete styles[key];
-        return [];
-      } else {
-        value = typeof value === 'object' ? removeReadonlyStyles(value as Styles) : value;
-        return [key, value];
-      }
-    }, {} as Styles)
-  );
-};
+export const removeStyles = (selector: string, styles: Styles): Styles => {
+  Object.entries(styles).forEach(([key, value]) => {
+    if (key === selector) {
+      delete styles[key];
+    } else if (typeof value === 'object') {
+      removeStyles(selector, value as Styles);
+    }
+  });
 
-export const removeHoverStyles = (styles: Styles): Styles => {
-  return Object.fromEntries(
-    Object.entries(styles).map(([key, value]) => {
-      if (key === '@media(hover:hover)') {
-        delete styles[key];
-        return [];
-      } else {
-        value = typeof value === 'object' ? removeHoverStyles(value as Styles) : value;
-        return [key, value];
-      }
-    }, {} as Styles)
-  );
+  return styles;
 };
 
 export const warnIfInitialValueIsTransformed = (host: HTMLElement, length?: number): void => {
