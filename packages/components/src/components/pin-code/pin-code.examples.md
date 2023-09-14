@@ -81,6 +81,16 @@ changes while this process is performed.
 
 <Playground :markup="requiredMarkup" :config="config"></Playground>
 
+## Slots
+
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
+Therefore, a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
+named slot is used (because a property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+<Playground :markup="slots" :config="config"></Playground>
+
 ## Framework Implementation (within form)
 
 When used within a form element, the `p-pin-code` component creates a native hidden input in light DOM to process the
@@ -175,6 +185,19 @@ export default class Code extends Vue {
   loadingMarkup = `<p-pin-code label="Some label" loading="true"></p-pin-code>`;
 
   requiredMarkup = `<p-pin-code label="Some label" required="true"></p-pin-code>`;
+
+  slots =
+`<p-pin-code state="error">
+    <span slot="label" id="some-label-id">
+      Some label with a <a href="https://designsystem.porsche.com">link</a>.
+    </span>
+    <span slot="description" id="some-description-id">
+      Some description with a <a href="https://designsystem.porsche.com">link</a>.
+    </span>
+    <span slot="message" id="some-message-id">
+      Some error message with a <a href="https://designsystem.porsche.com">link</a>.
+    </span>
+  </p-pin-code>`;
 
   currentValueControlled = '';
   isComplete = false;
