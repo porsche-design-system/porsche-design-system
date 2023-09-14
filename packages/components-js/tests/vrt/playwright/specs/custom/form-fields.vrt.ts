@@ -40,7 +40,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
       .map(([tag, child]) => {
         const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
         const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
-        const isNotWrapperComponent = tag === 'p-pin-code' || (tag === 'p-multi-select' ? ' disabled="true"' : '');
+        const isNotWrapperComponent = tag === 'p-pin-code' || tag === 'p-multi-select' ? ' disabled="true"' : '';
 
         return `
 <div>
@@ -77,18 +77,18 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceHoverState(page, '.hover input');
   await forceHoverState(page, '.hover select');
   await forceHoverState(page, '.hover textarea');
-  await forceHoverState(page, '.hover p-multi-select >>> .input-container');
-  await forceHoverState(page, '.hover p-pin-code >>> input');
+  await forceHoverState(page, '.hover div p-multi-select >>> .input-container');
+  await forceHoverState(page, '.hover div p-pin-code >>> input');
   await forceFocusState(page, '.focus input');
   await forceFocusState(page, '.focus select');
   await forceFocusState(page, '.focus textarea');
-  await forceFocusState(page, '.focus p-multi-select >>> input');
-  await forceFocusState(page, '.focus p-pin-code >>> input');
+  await forceFocusState(page, '.focus div p-multi-select >>> input');
+  await forceFocusState(page, '.focus divp-pin-code >>> input');
   await forceFocusHoverState(page, '.focus-hover input');
   await forceFocusHoverState(page, '.focus-hover select');
   await forceFocusHoverState(page, '.focus-hover textarea');
-  await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
-  await forceFocusHoverState(page, '.focus-hover p-pin-code >>> input');
+  await forceFocusHoverState(page, '.focus-hover piv p-multi-select >>> input');
+  await forceFocusHoverState(page, '.focus-hover div p-pin-code >>> input');
 };
 
 // executed in Chrome only
