@@ -23,7 +23,7 @@ import Component from 'vue-class-component';
 import { paramCase } from 'change-case';
 import * as partials from '@porsche-design-system/components-js/partials';
 
-const partialNames = Object.keys(partials).sort();
+const partialNames = Object.keys(partials).filter(name => name !== 'generatePartialHash' && name !== 'getHashMap').sort();
 const getPartialLink = (partial: string): string => `<li><a href="partials/${paramCase(partial.replace('get', ''))}">${partial}()</a></li>`;
 
 @Component
