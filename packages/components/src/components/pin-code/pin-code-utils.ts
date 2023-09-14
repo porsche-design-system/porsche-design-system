@@ -37,7 +37,7 @@ export const removeHoverStyles = (styles: Styles): Styles => {
   );
 };
 
-export const warnAboutTransformedInitialValue = (host: HTMLElement, length?: number): void => {
+export const warnIfInitialValueIsTransformed = (host: HTMLElement, length?: number): void => {
   const warningPrefix = `Property value on component ${getTagNameWithoutPrefix(host)}:`;
   consoleWarn(
     warningPrefix,

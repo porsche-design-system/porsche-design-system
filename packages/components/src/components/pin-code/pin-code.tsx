@@ -25,7 +25,7 @@ import {
   PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
   syncHiddenInput,
-  warnAboutTransformedInitialValue,
+  warnIfInitialValueIsTransformed,
   getSanitisedValue,
   hiddenInputSlotName,
 } from './pin-code-utils';
@@ -141,19 +141,7 @@ export class PinCode {
     // reset array of input elements
     this.pinCodeElements = [];
 
-    // reset initial value if it does not consist of digits only
-    if (this.value && !hasInputOnlyDigitsOrWhitespaces(this.value)) {
-      this.value = '';
-      warnAboutTransformedInitialValue(this.host);
-      this.emitUpdateEvent();
-    }
-
-    // make sure initial value is not longer than pin code length
-    if (this.value?.length > this.length) {
-      this.value = this.value.slice(0, this.length);
-      warnAboutTransformedInitialValue(this.host, this.length);
-      this.emitUpdateEvent();
-    }
+    this.validateInitialValue();
 
     return (
       <Host>
@@ -310,6 +298,22 @@ export class PinCode {
       this.pinCodeElements[sanitisedValue.length - 1]?.focus();
     } else {
       this.pinCodeElements[sanitisedValue.length]?.focus();
+    }
+  };
+
+  private validateInitialValue = (): void => {
+    // reset initial value if it does not consist of digits only
+    if (this.value && !hasInputOnlyDigitsOrWhitespaces(this.value)) {
+      this.value = '';
+      warnIfInitialValueIsTransformed(this.host);
+      this.emitUpdateEvent();
+    }
+
+    // make sure initial value is not longer than pin code length
+    if (this.value?.length > this.length) {
+      this.value = this.value.slice(0, this.length);
+      warnIfInitialValueIsTransformed(this.host, this.length);
+      this.emitUpdateEvent();
     }
   };
 }

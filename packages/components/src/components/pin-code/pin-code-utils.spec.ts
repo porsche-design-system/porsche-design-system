@@ -9,7 +9,7 @@ import {
   isInputSingleDigit,
   getInputValue,
   syncHiddenInput,
-  warnAboutTransformedInitialValue,
+  warnIfInitialValueIsTransformed,
   getSanitisedValue,
   removeHoverStyles,
 } from './pin-code-utils';
@@ -77,14 +77,14 @@ describe('removeHoverStyles()', () => {
   });
 });
 
-describe('warnAboutTransformedInitialValue()', () => {
+describe('warnIfInitialValueIsTransformed()', () => {
   it('should call getTagNameWithoutPrefix() and consoleWarn() with correct parameters', () => {
     const host = document.createElement('p-pin-code');
     const warningPrefix = `Property value on component p-pin-code:`;
     const spyGetTagNameWithoutPrefix = jest.spyOn(getTagNameWithoutPrefixUtils, 'getTagNameWithoutPrefix');
     const spyConsoleWarn = jest.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation();
 
-    warnAboutTransformedInitialValue(host, 4);
+    warnIfInitialValueIsTransformed(host, 4);
 
     expect(spyGetTagNameWithoutPrefix).toBeCalledTimes(1);
     expect(spyGetTagNameWithoutPrefix).toBeCalledWith(host);
@@ -93,7 +93,7 @@ describe('warnAboutTransformedInitialValue()', () => {
       'Provided value has too many characters and was truncated to the max length of 4.'
     );
 
-    warnAboutTransformedInitialValue(host);
+    warnIfInitialValueIsTransformed(host);
 
     expect(spyGetTagNameWithoutPrefix).toBeCalledTimes(2);
     expect(spyGetTagNameWithoutPrefix).toBeCalledWith(host);
