@@ -14,6 +14,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isDisabled: boolean,
+  isLoading: boolean,
   theme: Theme
 ): string => {
   const checkedIconColor = isHighContrastMode
@@ -28,7 +29,7 @@ export const getComponentCss = (
   };
 
   return getCss(
-    mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, false, theme), {
+    mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, isLoading, theme), {
       '@global': {
         '::slotted': addImportantToEachRule({
           '&(input)': {
