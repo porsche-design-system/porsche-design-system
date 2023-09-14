@@ -30,7 +30,7 @@ export const removeReadonlyStyles = (styles: Styles): Styles => {
         delete styles[key];
         return [];
       } else {
-        value = typeof value === 'object' ? removeHoverStyles(value as Styles) : value;
+        value = typeof value === 'object' ? removeReadonlyStyles(value as Styles) : value;
         return [key, value];
       }
     }, {} as Styles)

@@ -79,12 +79,12 @@ describe('removeHoverStyles()', () => {
 });
 
 describe('removeReadonlyStyles()', () => {
-  it('should remove @media(hover:hover) styles from Styles object', () => {
-    const stylesWithMediaHover = {
+  it('should remove input[readonly] styles from Styles object', () => {
+    const stylesWithReadonly = {
       label: {
         display: 'block',
         'input[readonly]': {
-          '::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)': {
+          'input:not(:disabled)': {
             border: '2px',
           },
         },
@@ -93,13 +93,13 @@ describe('removeReadonlyStyles()', () => {
         display: 'none',
       },
       'input[readonly]': {
-        '::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)': {
+        'input:not(:disabled)': {
           border: '2px',
         },
       },
     };
 
-    const stylesWithoutMediaHover = {
+    const stylesWithoutReadonly = {
       label: {
         display: 'block',
       },
@@ -108,7 +108,7 @@ describe('removeReadonlyStyles()', () => {
       },
     };
 
-    expect(removeReadonlyStyles(stylesWithMediaHover)).toEqual(stylesWithoutMediaHover);
+    expect(removeReadonlyStyles(stylesWithReadonly)).toEqual(stylesWithoutReadonly);
   });
 });
 
@@ -143,16 +143,16 @@ describe('isInputSingleDigit()', () => {
   it.each<[string]>([['12'], ['abc'], ['a'], ['/^'], ['^'], [null], [undefined]])(
     'should return false for value: %s',
     (value) => {
-      const input = isInputSingleDigit(value);
+      const isSingleDigit = isInputSingleDigit(value);
 
-      expect(input).toBeFalsy();
+      expect(isSingleDigit).toBe(false);
     }
   );
 
   it('should return true if the provided string is a single digit', () => {
-    const input = isInputSingleDigit('1');
+    const isSingleDigit = isInputSingleDigit('1');
 
-    expect(input).toBeTruthy();
+    expect(isSingleDigit).toBe(true);
   });
 });
 
@@ -160,12 +160,16 @@ describe('hasInputOnlyDigitsOrWhitespaces()', () => {
   it.each<[string]>([['1a'], ['a 1'], ['1a2'], ['1^'], ['^ 2'], ['1^2']])(
     'should return false for value: %s',
     (value) => {
-      expect(hasInputOnlyDigitsOrWhitespaces(value)).toBeFalsy();
+      const hasOnlyDigitsOrWhitespaces = hasInputOnlyDigitsOrWhitespaces(value);
+
+      expect(hasOnlyDigitsOrWhitespaces).toBe(false);
     }
   );
 
   it.each<[string]>([['1234'], [' 234'], ['1 34'], ['12 4'], ['123 ']])('should return true for value: %s', (value) => {
-    expect(hasInputOnlyDigitsOrWhitespaces(value)).toBeTruthy();
+    const hasOnlyDigitsOrWhitespaces = hasInputOnlyDigitsOrWhitespaces(value);
+
+    expect(hasOnlyDigitsOrWhitespaces).toBe(true);
   });
 });
 
