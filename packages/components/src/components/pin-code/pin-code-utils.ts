@@ -23,6 +23,20 @@ export const removeSlottedSelector = (styles: Styles): Styles => {
   );
 };
 
+export const removeReadonlyStyles = (styles: Styles): Styles => {
+  return Object.fromEntries(
+    Object.entries(styles).map(([key, value]) => {
+      if (key === 'input[readonly]') {
+        delete styles[key];
+        return [];
+      } else {
+        value = typeof value === 'object' ? removeHoverStyles(value as Styles) : value;
+        return [key, value];
+      }
+    }, {} as Styles)
+  );
+};
+
 export const removeHoverStyles = (styles: Styles): Styles => {
   return Object.fromEntries(
     Object.entries(styles).map(([key, value]) => {

@@ -12,6 +12,7 @@ import {
   warnIfInitialValueIsTransformed,
   getSanitisedValue,
   removeHoverStyles,
+  removeReadonlyStyles,
 } from './pin-code-utils';
 import { PinCode } from './pin-code';
 
@@ -77,6 +78,40 @@ describe('removeHoverStyles()', () => {
   });
 });
 
+describe('removeReadonlyStyles()', () => {
+  it('should remove @media(hover:hover) styles from Styles object', () => {
+    const stylesWithMediaHover = {
+      label: {
+        display: 'block',
+        'input[readonly]': {
+          '::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)': {
+            border: '2px',
+          },
+        },
+      },
+      input: {
+        display: 'none',
+      },
+      'input[readonly]': {
+        '::slotted(input:not(:disabled):not(:focus):not([readonly]):hover)': {
+          border: '2px',
+        },
+      },
+    };
+
+    const stylesWithoutMediaHover = {
+      label: {
+        display: 'block',
+      },
+      input: {
+        display: 'none',
+      },
+    };
+
+    expect(removeReadonlyStyles(stylesWithMediaHover)).toEqual(stylesWithoutMediaHover);
+  });
+});
+
 describe('warnIfInitialValueIsTransformed()', () => {
   it('should call getTagNameWithoutPrefix() and consoleWarn() with correct parameters', () => {
     const host = document.createElement('p-pin-code');
@@ -105,15 +140,19 @@ describe('warnIfInitialValueIsTransformed()', () => {
 });
 
 describe('isInputSingleDigit()', () => {
-  it.each<[string]>([['12'], ['abc'], ['a'], ['/^'], ['^']])('should return false for value: %s', (value) => {
-    expect(isInputSingleDigit(value)).toBeFalsy();
-  });
+  it.each<[string]>([['12'], ['abc'], ['a'], ['/^'], ['^'], [null], [undefined]])(
+    'should return false for value: %s',
+    (value) => {
+      const input = isInputSingleDigit(value);
+
+      expect(input).toBeFalsy();
+    }
+  );
 
   it('should return true if the provided string is a single digit', () => {
-    const spy = jest.spyOn(pinCodeUtils, 'isInputSingleDigit');
+    const input = isInputSingleDigit('1');
 
-    isInputSingleDigit('1');
-    expect(spy).toReturnWith(true);
+    expect(input).toBeTruthy();
   });
 });
 
