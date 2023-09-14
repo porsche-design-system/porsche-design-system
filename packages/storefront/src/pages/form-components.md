@@ -29,6 +29,7 @@ type Variation = {
 
 const variations: Variation[] = [
   { tagName: 'p-checkbox-wrapper', child: '<input type="checkbox" />' },
+  { tagName: 'p-pin-code', child: '', isCustomElement: true},
   { tagName: 'p-radio-button-wrapper', child: '<input type="radio" />' },
   { tagName: 'p-select-wrapper', child: '<select><option>Option 1</option><option>Option 2</option></select>' },
   { tagName: 'p-select-wrapper', child: '<select><option>Option 1</option><option>Option 2</option></select>', attributes: 'native' },
