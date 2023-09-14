@@ -27,10 +27,11 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
 
   const tagNameToChildMap: { [key in TagName]?: string } = {
     'p-checkbox-wrapper': '<input type="checkbox" />', // readonly is not supported
-    'p-pin-code': '', // readonly is not supported
     'p-radio-button-wrapper': '<input type="radio" />', // readonly is not supported
     'p-select-wrapper': '<select><option>Some value</option></select>', // readonly is not supported
     'p-text-field-wrapper': '<input type="text" value="Some value" />',
+    'p-multi-select': '', // readonly is not supported
+    'p-pin-code': '', // readonly is not supported
     'p-textarea-wrapper': '<textarea>Some value</textarea>',
   };
 
@@ -38,7 +39,8 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     Object.entries(tagNameToChildMap)
       .map(([tag, child]) => {
         const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
-        const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1')
+        const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
+        const isNotWrapperComponent = tag === 'p-pin-code' || (tag === 'p-multi-select' ? ' disabled="true"' : '');
 
         return `
 <div>
@@ -48,19 +50,19 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   <${tag} label="Readonly">
     ${childReadonly}
   </${tag}>
-  <${tag} label="Disabled" ${tag === 'p-pin-code' && 'disabled="true"'}>
+  <${tag} label="Disabled"${isNotWrapperComponent}>
     ${childDisabled}
   </${tag}>
   <${tag} label="Error" state="error" message="Error">
     ${child}
   </${tag}>
-  <${tag} label="Disabled" state="error" message="Error" ${tag === 'p-pin-code' && 'disabled="true"'}>
+  <${tag} label="Disabled" state="error" message="Error"${isNotWrapperComponent}>
     ${childDisabled}
   </${tag}>
   <${tag} label="Success" state="success" message="Success">
     ${child}
   </${tag}>
-  <${tag} label="Disabled" state="success" message="Success" ${tag === 'p-pin-code' && 'disabled="true"'}>
+  <${tag} label="Disabled" state="success" message="Success"${isNotWrapperComponent}>
     ${childDisabled}
   </${tag}>
 </div>`.replace(/(<p-select-wrapper)/g, '$1 native'); // native select is easier to force states on
@@ -75,14 +77,17 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceHoverState(page, '.hover input');
   await forceHoverState(page, '.hover select');
   await forceHoverState(page, '.hover textarea');
+  await forceHoverState(page, '.hover p-multi-select >>> .input-container');
   await forceHoverState(page, '.hover p-pin-code >>> input');
   await forceFocusState(page, '.focus input');
   await forceFocusState(page, '.focus select');
   await forceFocusState(page, '.focus textarea');
+  await forceFocusState(page, '.focus p-multi-select >>> input');
   await forceFocusState(page, '.focus p-pin-code >>> input');
   await forceFocusHoverState(page, '.focus-hover input');
   await forceFocusHoverState(page, '.focus-hover select');
   await forceFocusHoverState(page, '.focus-hover textarea');
+  await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
   await forceFocusHoverState(page, '.focus-hover p-pin-code >>> input');
 };
 
