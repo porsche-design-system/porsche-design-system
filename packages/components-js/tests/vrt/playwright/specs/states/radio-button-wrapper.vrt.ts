@@ -26,16 +26,16 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </p-radio-button-wrapper>
     </div>
     <p-radio-button-wrapper label="Some label">
-      <input type="radio" name="some-name" disabled />
+      <input type="radio" name="some-name-disabled" disabled />
     </p-radio-button-wrapper>
     <p-radio-button-wrapper label="Some label">
-      <input type="radio" name="some-name" disabled checked />
+      <input type="radio" name="${generateGUID()}" disabled checked />
     </p-radio-button-wrapper>
     <p-radio-button-wrapper label="Some label" loading="true">
-      <input type="radio" name="some-name" />
+      <input type="radio" name="some-name-loading" />
     </p-radio-button-wrapper>
     <p-radio-button-wrapper label="Some label" loading="true">
-      <input type="radio" name="some-name" checked />
+      <input type="radio" name="${generateGUID()}" checked />
     </p-radio-button-wrapper>
     <p-radio-button-wrapper label="Some label" state="error" message="Some error validation message.">
       <input type="radio" name="some-name" />
