@@ -111,21 +111,7 @@ export class PinCode {
     }
   }
 
-  public componentWillRender(): void {
-    // reset initial value if it does not consist of digits only
-    if (this.value && !hasInputOnlyDigitsOrWhitespaces(this.value)) {
-      this.value = '';
-      this.updateValue();
-      warnAboutTransformedInitialValue(this.host);
-    }
-
-    // make sure initial value is not longer than pin code length
-    if (this.value?.length > this.length) {
-      this.value = this.value.slice(0, this.length);
-      warnAboutTransformedInitialValue(this.host, this.length);
-      this.updateValue();
-    }
-
+  public componentWillUpdate(): void {
     if (this.isWithinForm) {
       syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
     }
@@ -154,6 +140,20 @@ export class PinCode {
 
     // reset array of input elements
     this.pinCodeElements = [];
+
+    // reset initial value if it does not consist of digits only
+    if (this.value && !hasInputOnlyDigitsOrWhitespaces(this.value)) {
+      this.value = '';
+      warnAboutTransformedInitialValue(this.host);
+      this.emitUpdateEvent();
+    }
+
+    // make sure initial value is not longer than pin code length
+    if (this.value?.length > this.length) {
+      this.value = this.value.slice(0, this.length);
+      warnAboutTransformedInitialValue(this.host, this.length);
+      this.emitUpdateEvent();
+    }
 
     return (
       <Host>
@@ -221,7 +221,7 @@ export class PinCode {
     if (target.value?.length >= this.length) {
       const sanitisedValue = getSanitisedValue(target.value, this.length);
       this.value = sanitisedValue;
-      this.updateValue();
+      this.emitUpdateEvent();
       this.focusFirstEmptyOrLastElement(sanitisedValue);
     }
   };
@@ -244,7 +244,7 @@ export class PinCode {
       e.preventDefault();
       target.value = key;
       this.value = getInputValue(this.pinCodeElements);
-      this.updateValue();
+      this.emitUpdateEvent();
 
       if (nextElementSibling) {
         nextElementSibling.focus();
@@ -274,7 +274,7 @@ export class PinCode {
       });
 
       this.value = getInputValue(this.pinCodeElements);
-      this.updateValue();
+      this.emitUpdateEvent();
     } // support native submit behavior
     else if (key === 'Enter') {
       if (
@@ -295,13 +295,13 @@ export class PinCode {
     const sanitisedPastedValue = getSanitisedValue(e.clipboardData.getData('Text'), this.length);
     if (hasInputOnlyDigitsOrWhitespaces(sanitisedPastedValue) && sanitisedPastedValue !== this.value) {
       this.value = sanitisedPastedValue;
-      this.updateValue();
+      this.emitUpdateEvent();
       this.focusFirstEmptyOrLastElement(sanitisedPastedValue);
     }
     e.preventDefault();
   };
 
-  private updateValue = (): void => {
+  private emitUpdateEvent = (): void => {
     this.update.emit({ value: this.value, isComplete: getSanitisedValue(this.value).length === this.length });
   };
 
