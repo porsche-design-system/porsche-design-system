@@ -254,7 +254,7 @@ export class PinCode {
         }
       }
       target.value = '';
-      this.pinCodeElements.map((pinCodeElement) => {
+      this.pinCodeElements.forEach((pinCodeElement) => {
         if (pinCodeElement === e.target) {
           pinCodeElement.value = '';
         }
