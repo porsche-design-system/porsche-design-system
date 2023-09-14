@@ -20,11 +20,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-radio-button-wrapper label="When input gets hovered or focused">
       <input type="radio" name="some-name" />
     </p-radio-button-wrapper>
-    <div class="force-label">
-      <p-radio-button-wrapper label="When label gets hovered or focused">
-        <input type="radio" name="some-name" />
-      </p-radio-button-wrapper>
-    </div>
+    <p-radio-button-wrapper class="force-label" label="When label gets hovered or focused">
+      <input type="radio" name="some-name" />
+    </p-radio-button-wrapper>
     <p-radio-button-wrapper label="Some label" state="error" message="Some error validation message.">
       <input type="radio" name="some-name" />
     </p-radio-button-wrapper>
@@ -73,14 +71,14 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     prefersColorScheme: scheme,
   });
 
-  await forceHoverState(page, '.hover p-radio-button-wrapper input[type="radio"]');
-  await forceHoverState(page, '.hover .force-label > p-radio-button-wrapper >>> span');
+  await forceHoverState(page, '.hover p-radio-button-wrapper:not(.force-label) input[type="radio"]');
+  await forceHoverState(page, '.hover p-radio-button-wrapper.force-label >>> span');
   await forceHoverState(page, '.hover p-radio-button-wrapper span a');
   await forceFocusState(page, '.focus p-radio-button-wrapper input[type="radio"]');
   await forceFocusState(page, '.focus p-radio-button-wrapper span a');
-  await forceFocusHoverState(page, '.focus-hover p-radio-button-wrapper input[type="radio"]');
-  await forceFocusState(page, '.focus-hover .force-label > p-radio-button-wrapper input[type="radio"]');
-  await forceHoverState(page, '.focus-hover .force-label > p-radio-button-wrapper >>> span');
+  await forceFocusHoverState(page, '.focus-hover p-radio-button-wrapper:not(.force-label) input[type="radio"]');
+  await forceFocusState(page, '.focus-hover p-radio-button-wrapper.force-label input[type="radio"]');
+  await forceHoverState(page, '.focus-hover p-radio-button-wrapper.force-label >>> span');
   await forceFocusHoverState(page, '.focus-hover p-radio-button-wrapper span a');
 };
 

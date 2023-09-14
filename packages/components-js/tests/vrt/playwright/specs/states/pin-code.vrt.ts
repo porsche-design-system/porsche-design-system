@@ -17,6 +17,7 @@ const component = 'pin-code';
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const markup = () => `
     <p-pin-code theme="${theme}" label="input gets hovered or focused"></p-pin-code>
+    <p-pin-code class="force-label" label="label gets hovered or focused"></p-pin-code>
     <p-pin-code theme="${theme}" label="Disabled" disabled="true"></p-pin-code>
     <p-pin-code theme="${theme}" label="Error state" state="error" message="Some error validation message."></p-pin-code>
     <p-pin-code theme="${theme}" label="Success state" state="success" message="Some success validation message."></p-pin-code>
@@ -58,11 +59,14 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     prefersColorScheme: scheme,
   });
 
-  await forceHoverState(page, '.hover p-pin-code >>> input');
+  await forceHoverState(page, '.hover p-pin-code:not(.force-label) >>> input');
+  await forceHoverState(page, '.hover p-pin-code.force-label >>> span');
   await forceHoverState(page, '.hover p-pin-code span a');
   await forceFocusState(page, '.focus p-pin-code >>> input');
   await forceFocusState(page, '.focus p-pin-code span a');
-  await forceFocusHoverState(page, '.focus-hover p-pin-code >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-pin-code:not(.force-label) >>> input');
+  await forceFocusState(page, '.focus-hover p-pin-code.force-label >>> input');
+  await forceHoverState(page, '.focus-hover p-pin-code.force-label >>> span');
   await forceFocusHoverState(page, '.focus-hover p-pin-code span a');
 };
 

@@ -140,6 +140,11 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
         ${getSlottedMarkup(disabledOptions)}
         ${getSelectMarkup(disabledOptions)}
       </p-select-wrapper>
+    </div>
+    <div class="native">
+      <p-select-wrapper class="force-label" label="label gets hovered or focused" native>
+        ${getSelectMarkup()}
+      </p-select-wrapper>
     </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
@@ -148,14 +153,19 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     prefersColorScheme: scheme,
   });
 
-  await forceHoverState(page, '.hover .native p-select-wrapper select');
+  await forceHoverState(page, '.hover .native p-select-wrapper:not(.force-label) select');
+  await forceHoverState(page, '.hover .native p-select-wrapper.force-label >>> span');
   await forceHoverState(page, '.hover p-select-wrapper span a');
   await forceHoverState(page, '.hover p-select-wrapper >>> p-select-wrapper-dropdown');
+
   await forceFocusState(page, '.focus .native p-select-wrapper select');
   await forceFocusState(page, '.focus p-select-wrapper span a');
   await forceFocusState(page, '.focus p-select-wrapper >>> p-select-wrapper-dropdown >>> button');
   await forceFocusState(page, '.focus p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
-  await forceFocusHoverState(page, '.focus-hover .native p-select-wrapper select');
+
+  await forceFocusHoverState(page, '.focus-hover .native p-select-wrapper:not(.force-label) select');
+  await forceFocusState(page, '.focus-hover .native p-select-wrapper.force-label input');
+  await forceHoverState(page, '.focus-hover .native p-select-wrapper.force-label >>> span');
   await forceFocusHoverState(page, '.focus-hover p-select-wrapper span a');
   // actual user interaction happens on multiple nodes that's why forceFocusedHoveredState is wrong
   await forceHoverState(page, '.focus-hover p-select-wrapper >>> p-select-wrapper-dropdown');
