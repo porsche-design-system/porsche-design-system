@@ -1,7 +1,13 @@
 <template>
   <main>
     <slot />
-    <p-spinner class="spinner" :class="{ 'spinner--loading': isLoading }" size="medium" aria="{ 'aria-label': 'Loading page' }"></p-spinner>
+    <p-spinner
+      :theme="$store.getters.storefrontTheme"
+      class="spinner"
+      :class="{ 'spinner--loading': isLoading }"
+      size="medium"
+      aria="{ 'aria-label': 'Loading page' }"
+    ></p-spinner>
   </main>
 </template>
 

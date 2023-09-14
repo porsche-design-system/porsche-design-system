@@ -51,10 +51,10 @@ changes while this process is performed.
 If the `maxlength` attribute is present on the `textarea` element, a counter will be displayed in the corner.  
 To hide it you can set `showCounter` to `false`.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>showCharacterCount</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>showCounter</code> property instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="counter" :config="config"></Playground>
 

@@ -4,12 +4,12 @@
 
 ## Example
 
-<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
+<Notification heading="Important note" state="warning">
  Safari < 16.4 isn't able to visualize a rounded focus outline, instead it will be edgy. 
 We implemented the focus style with a standard CSS outline anyway because of too many disadvantages caused by alternative integrations, e.g. with pseudo-elements. 
 <br>
 In addition, the way the focus style is integrated it will only be visible with keyboard navigation, not with mouse interaction.
-</p-inline-notification>
+</Notification>
 
 <Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
   <ExampleStylesFocus />

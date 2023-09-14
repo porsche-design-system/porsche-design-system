@@ -9,10 +9,10 @@ have a look at [Tabs Bar](components/tabs-bar) component.
 
 <TableOfContents></TableOfContents>
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>tabChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
-</p-inline-notification>
+</Notification>
 
 ## Basic example
 
@@ -31,10 +31,10 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 
 ## Weight
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
   Please use the <code>semi-bold</code> value instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="weightMarkup" :config="config">
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
@@ -45,10 +45,10 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>gradientColor</code> property instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
   <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>

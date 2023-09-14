@@ -6,7 +6,7 @@ import {
   getPrefixedTagNames,
   validateProps,
 } from '../../../utils';
-import { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
+import type { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
 import type { PropTypes, ValidatorFunction } from '../../../types';
 import { getComponentCss } from './multi-select-option-styles';
 

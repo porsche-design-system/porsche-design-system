@@ -18,7 +18,7 @@
 import Vue from 'vue';  
 import Component from 'vue-class-component';
 import type { TagName } from '@porsche-design-system/shared';
-import type { Theme } from '@/models';
+import type { PlaygroundTheme } from '@/models';
 
 type Variation = { 
   tagName: TagName;
@@ -41,7 +41,7 @@ const variations: Variation[] = [
   { tagName: 'p-textarea-wrapper', child: '<textarea></textarea>' },
 ];
 
-const renderMarkupForVariation = ({ tagName, child, attributes, isCustomElement }: Variation, theme: Theme): string => {
+const renderMarkupForVariation = ({ tagName, child, attributes, isCustomElement }: Variation, theme: PlaygroundTheme): string => {
   const childDisabled = isCustomElement ? child : child.replace(/((?: \/)?>)/, ' disabled$1');
   const parentDisabled = isCustomElement ? 'disabled="true"' : '';
   const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
