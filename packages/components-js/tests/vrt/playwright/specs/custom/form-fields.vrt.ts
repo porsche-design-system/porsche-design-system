@@ -18,6 +18,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     <style>
       .playground div { display: flex; }
       .playground div > * { width: 20%; }
+      p-multi-select { width: 20%; }
       .playground div > *:not(:last-child) {
         margin-right: 1rem;
         margin-bottom: 1rem;

@@ -132,7 +132,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </p-text-field-wrapper>
     </div>
     <div>
-      <p-text-field-wrapper class="force-label" label="Text empty">
+      <p-text-field-wrapper class="force-label" label="TLabel gets hovered or focussed">
         <input type="text" />
       </p-text-field-wrapper>
     </div>`;

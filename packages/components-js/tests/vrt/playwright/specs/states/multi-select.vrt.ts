@@ -111,11 +111,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
         ${getSlottedMarkup()}
         ${getSelectMarkup()}
       </p-multi-select>
-    </div>
-    <div>
-      <p-multi-select class="force-label" name="options" theme="${theme}" label="label gets hovered or focused">
-        ${getSelectMarkup()}
-      </p-multi-select>
     </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
@@ -128,14 +123,11 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     selects.forEach((select: any) => (select.value = ['a']))
   );
 
-  await forceHoverState(page, '.hover p-multi-select:not(.force-label) >>> .input-container');
-  await forceHoverState(page, '.hover p-multi-select.force-label >>> span');
+  await forceHoverState(page, '.hover p-multi-select >>> .input-container');
   await forceHoverState(page, '.hover p-multi-select span a');
   await forceFocusState(page, '.focus p-multi-select span a');
   await forceFocusState(page, '.focus p-multi-select >>> input');
-  await forceFocusHoverState(page, '.focus-hover p-multi-select:not(.force-label) >>> input');
-  await forceFocusState(page, '.focus-hover p-multi-select.force-label >>> input');
-  await forceHoverState(page, '.focus-hover p-multi-select.force-label >>> span');
+  await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
   await forceFocusHoverState(page, '.focus-hover p-multi-select span a');
 };
 

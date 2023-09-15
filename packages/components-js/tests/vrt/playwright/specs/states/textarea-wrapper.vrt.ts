@@ -100,13 +100,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </p-textarea-wrapper>
     </div>
     <div>
-      <p-textarea-wrapper class="force-label" label="Default">
-        ${child}
-      </p-textarea-wrapper>
-      <p-textarea-wrapper label="Error" state="error" message="Error">
-        ${child}
-      </p-textarea-wrapper>
-      <p-textarea-wrapper label="Success" state="success" message="Success">
+      <p-textarea-wrapper class="force-label" label="Label gets hovered or focussed">
         ${child}
       </p-textarea-wrapper>
     </div>`;
