@@ -177,7 +177,7 @@ export default class Code extends Vue {
   states = FORM_STATES;
   get stateMarkup() {
     const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
-    return `<p-pin-code label="Some label" state="${this.state}"  ${attr}></p-pin-code>`;
+    return `<p-pin-code label="Some label" state="${this.state}" ${attr}></p-pin-code>`;
   }
 
   disabledMarkup = `<p-pin-code label="Some label" disabled="true"></p-pin-code>`;

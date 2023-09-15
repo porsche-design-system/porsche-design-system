@@ -25,7 +25,7 @@ export const removeSlottedSelector = (styles: Styles): Styles =>
 export const removeStyles = (selector: string, styles: Styles): Styles =>
   Object.fromEntries(
     Object.entries(styles)
-      .filter(([key, _value]) => key !== selector)
+      .filter(([key]) => key !== selector)
       .map(([key, value]) => {
         value = typeof value === 'object' ? removeStyles(selector, value as Styles) : value;
         return [key, value];
@@ -33,7 +33,7 @@ export const removeStyles = (selector: string, styles: Styles): Styles =>
   );
 
 export const warnIfInitialValueIsTransformed = (host: HTMLElement, length?: number): void => {
-  const warningPrefix = `Property value on component ${getTagNameWithoutPrefix(host)}:`;
+  const warningPrefix = `Property value of component ${getTagNameWithoutPrefix(host)}:`;
   consoleWarn(
     warningPrefix,
     length
@@ -47,11 +47,11 @@ export const isInputSingleDigit = (input: string): boolean => /^\d$/.test(input)
 export const hasInputOnlyDigitsOrWhitespaces = (input: string): boolean => /^[\d ]+$/.test(input);
 
 export const getInputValue = (pinCodeElements: HTMLInputElement[]): string =>
-  pinCodeElements.map((el) => (el.value ? el.value : (el.value = ' '))).join('');
+  pinCodeElements.map((el) => el.value || ' ').join('');
 
 // remove whitespaces and cut string if pasted value is longer than pin code length
 export const getSanitisedValue = (value: string, length?: number): string =>
-  value?.replace(/\s/g, '').slice(0, length ? length : value.length);
+  length ? value.replace(/\s/g, '').slice(0, length) : value.replace(/\s/g, '');
 
 export const initHiddenInput = (
   host: HTMLElement,
