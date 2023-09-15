@@ -42,8 +42,8 @@ export class Modal {
   @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead.
-   * If true, the modal will not have a dismiss button. */
+   * If true, the modal will not have a dismiss button.
+   * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. */
   @Prop() public disableCloseButton?: boolean;
 
   /** If false, the modal will not have a dismiss button. */
