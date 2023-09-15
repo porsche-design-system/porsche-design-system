@@ -60,6 +60,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   await forceHoverState(page, '.hover p-pin-code:not(.force-label) >>> input');
+  await forceHoverState(page, '.hover p-pin-code >>> #current-input');
   await forceHoverState(page, '.hover p-pin-code.force-label >>> span');
   await forceHoverState(page, '.hover p-pin-code span a');
   await forceFocusState(page, '.focus p-pin-code >>> input');
