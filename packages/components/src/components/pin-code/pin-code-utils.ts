@@ -14,26 +14,23 @@ export type PinCodeState = FormState;
 
 export const hiddenInputSlotName = 'hidden-input';
 
-export const removeSlottedSelector = (styles: Styles): Styles => {
-  return Object.fromEntries(
+export const removeSlottedSelector = (styles: Styles): Styles =>
+  Object.fromEntries(
     Object.entries(styles).map(([key, value]) => {
       value = typeof value === 'object' ? removeSlottedSelector(value as Styles) : value;
       return [key.replace(/::slotted\(([^,]+)\)/g, '$1'), value];
-    }, {} as Styles)
+    })
   );
-};
 
-export const removeStyles = (selector: string, styles: Styles): Styles => {
-  Object.entries(styles).forEach(([key, value]) => {
-    if (key === selector) {
-      delete styles[key];
-    } else if (typeof value === 'object') {
-      removeStyles(selector, value as Styles);
-    }
-  });
-
-  return styles;
-};
+export const removeStyles = (selector: string, styles: Styles): Styles =>
+  Object.fromEntries(
+    Object.entries(styles)
+      .filter(([key, _value]) => key !== selector)
+      .map(([key, value]) => {
+        value = typeof value === 'object' ? removeStyles(selector, value as Styles) : value;
+        return [key, value];
+      })
+  );
 
 export const warnIfInitialValueIsTransformed = (host: HTMLElement, length?: number): void => {
   const warningPrefix = `Property value on component ${getTagNameWithoutPrefix(host)}:`;
