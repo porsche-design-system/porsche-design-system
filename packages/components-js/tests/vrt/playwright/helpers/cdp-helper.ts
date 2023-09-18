@@ -100,8 +100,8 @@ const findBackendNodeIds = (currentNode: Protocol.DOM.Node, selector: string): B
   // support tag names, ids & class names
   if (
     currentNode.localName === selector ||
-    (selector.includes('#') && selector.replace('#', '') === attributes[attributes.indexOf('id') + 1]) ||
-    (selector.includes('.') && selector.replace('.', '') === attributes[attributes.indexOf('class') + 1])
+    (selector.startsWith('#') && selector.replace('#', '') === attributes[attributes.indexOf('id') + 1]) ||
+    (selector.startsWith('.') && selector.replace('.', '') === attributes[attributes.indexOf('class') + 1])
   ) {
     return [currentNode.backendNodeId];
   } else if (currentNode.children) {
