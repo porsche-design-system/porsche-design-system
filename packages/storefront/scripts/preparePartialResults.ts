@@ -1,6 +1,5 @@
 import {
   getBrowserSupportFallbackScript,
-  getHashMap,
   getInitialStyles,
   getLoaderScript,
   getMetaTagsAndIconLinks,
@@ -27,30 +26,15 @@ export const initialStyles = ${JSON.stringify(initialStyles)};
 
   console.log(`Generated: ${targetFolder}/${targetFileName}`);
 
-  getInitialStyles(); // identical call as in index.html, so it gets added to map
-  getLoaderScript(); // identical call as in index.html, so it gets added to map
-  getBrowserSupportFallbackScript(); // identical call as in index.html, so it gets added to map
-  const hashMap = getHashMap();
-  console.log(hashMap);
-
   const indexHtmlFilePath = path.resolve(__dirname, '../public/index.html');
   const indexHtmlContent = fs.readFileSync(indexHtmlFilePath, 'utf8');
 
-  const partialHashTuples = Object.entries(hashMap).map(([partial, hash]) => [partial.toLowerCase(), `'${hash}'`]);
-
-  const styleHashes = partialHashTuples
-    .filter(([partial]) => partial.includes('style'))
-    .map(([, hash]) => hash)
-    .flat()
+  const styleHashes = [getInitialStyles({ format: 'sha256' })].map((hash) => `'${hash}'`).join(' ');
+  const scriptHashes = [getLoaderScript({ format: 'sha256' }), getBrowserSupportFallbackScript({ format: 'sha256' })]
+    .map((hash) => `'${hash}'`)
     .join(' ');
 
-  const scriptHashes = partialHashTuples
-    .filter(([partial]) => partial.includes('script'))
-    .map(([, hash]) => hash)
-    .flat()
-    .join(' ');
-
-  const cspMeta = `<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' https://cdn.ui.porsche.com ${styleHashes}; script-src 'self' https://cdn.ui.porsche.com ${scriptHashes}" />`;
+  const cspMeta = `<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' https://cdn.ui.porsche.com ${styleHashes}; script-src 'self' https://cdn.ui.porsche.com ${scriptHashes}"; connect-src 'self' https://*.algolia.net https://*.algolianet.com />`;
   console.log(cspMeta);
 
   const placeholder = '<!-- CSP_PLACEHOLDER -->';
