@@ -17,11 +17,12 @@ const component = 'text-field-wrapper';
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const head = `
     <style>
-      .playground div, .playground form { display: flex; }
-      .playground div > *, .playground form > * { width: 40%; }
-      p-text-field-wrapper:not(:last-child) {
-        margin-right: 1rem;
-        margin-bottom: 1rem;
+      .playground div, .playground form {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        width: 100%;
       }
     </style>`;
 
@@ -132,7 +133,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </p-text-field-wrapper>
     </div>
     <div>
-      <p-text-field-wrapper class="force-label" label="TLabel gets hovered or focussed">
+      <p-text-field-wrapper class="force-label" label="Label gets hovered or focussed">
         <input type="text" />
       </p-text-field-wrapper>
     </div>`;

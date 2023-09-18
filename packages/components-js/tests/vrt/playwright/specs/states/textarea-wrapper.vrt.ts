@@ -17,11 +17,12 @@ const component = 'textarea-wrapper';
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const head = `
     <style>
-      .playground > div { display: flex; }
-      .playground > div > * { width: 40%; }
-      p-textarea-wrapper:not(:last-child) {
-        margin-right: 1rem;
-        margin-bottom: 1rem;
+      .playground > div {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        width: 100%;
       }
       textarea { min-height: initial; }
     </style>`;
