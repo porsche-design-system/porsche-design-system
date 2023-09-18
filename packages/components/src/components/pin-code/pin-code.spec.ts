@@ -108,10 +108,10 @@ describe('emitUpdateEvent()', () => {
 });
 
 describe('validateInitialValue()', () => {
-  it('should reset prop value and call warnIfInitialValueIsTransformed() if value does not consist of digits/whitespaces only', () => {
+  it('should reset prop value and call throwWarningAboutTransformedValue() if value does not consist of digits/whitespaces only', () => {
     const component = initComponent();
     component.value = '1a&^b';
-    const spy = jest.spyOn(pinCodeUtils, 'warnIfInitialValueIsTransformed');
+    const spy = jest.spyOn(pinCodeUtils, 'throwWarningAboutTransformedValue');
     component.update = { emit: jest.fn() };
 
     component['validateInitialValue']();
@@ -120,9 +120,9 @@ describe('validateInitialValue()', () => {
     expect(spy).toBeCalledWith(component.host);
   });
 
-  it('should slice prop value and call warnIfInitialValueIsTransformed() with correct parameters if value.length is longer then prop length', () => {
+  it('should slice prop value and call throwWarningAboutTransformedValue() with correct parameters if value.length is longer then prop length', () => {
     const component = initComponent();
-    const spy = jest.spyOn(pinCodeUtils, 'warnIfInitialValueIsTransformed');
+    const spy = jest.spyOn(pinCodeUtils, 'throwWarningAboutTransformedValue');
     component.value = '12 345';
     component.update = { emit: jest.fn() };
 
@@ -132,9 +132,9 @@ describe('validateInitialValue()', () => {
     expect(spy).toBeCalledWith(component.host, 4);
   });
 
-  it('should not slice prop value and not call warnIfInitialValueIsTransformed() if value.length is equal to prop length', () => {
+  it('should not slice prop value and not call throwWarningAboutTransformedValue() if value.length is equal to prop length', () => {
     const component = initComponent();
-    const spy = jest.spyOn(pinCodeUtils, 'warnIfInitialValueIsTransformed');
+    const spy = jest.spyOn(pinCodeUtils, 'throwWarningAboutTransformedValue');
     component.value = '1234';
     component.update = { emit: jest.fn() };
 

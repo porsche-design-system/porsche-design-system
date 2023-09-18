@@ -18,19 +18,16 @@ import {
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
 import {
-  currentInputId,
-  descriptionId,
   initHiddenInput,
   isInputSingleDigit,
-  getInputValue,
+  getConcatenatedInputValues,
   hiddenInputSlotName,
-  labelId,
   PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
-  stateMessageId,
   syncHiddenInput,
   getSanitisedValue,
   removeWhiteSpaces,
+  isFormSubmittable,
 } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
@@ -144,6 +141,11 @@ export class PinCode {
     // reset array of input elements
     this.inputElements = [];
 
+    const currentInputId = 'current-input';
+    const labelId = 'label';
+    const descriptionId = 'description';
+    const stateMessageId = 'state-message';
+
     return (
       <Host>
         <label class="label" htmlFor={currentInputId}>
@@ -232,7 +234,7 @@ export class PinCode {
     else if (isInputSingleDigit(key)) {
       e.preventDefault();
       target.value = key;
-      this.value = getInputValue(this.inputElements);
+      this.value = getConcatenatedInputValues(this.inputElements);
       this.emitUpdateEvent();
 
       nextElementSibling?.focus();
@@ -253,24 +255,11 @@ export class PinCode {
         }
       }
       target.value = '';
-      this.inputElements.forEach((pinCodeElement) => {
-        if (pinCodeElement === e.target) {
-          pinCodeElement.value = '';
-        }
-      });
-
-      this.value = getInputValue(this.inputElements);
+      this.value = getConcatenatedInputValues(this.inputElements);
       this.emitUpdateEvent();
     } // support native submit behavior
     else if (key === 'Enter') {
-      if (
-        isWithinForm &&
-        (this.form.querySelectorAll('input').length === 1 || // other sibling form elements e.g. select, textarea do not prevent a submit
-          this.form.querySelector('p-button[type=submit]') ||
-          this.form.querySelector('p-button-pure[type=submit]') ||
-          this.form.querySelector('button[type=submit]') ||
-          this.form.querySelector('input[type=submit]'))
-      ) {
+      if (isWithinForm && isFormSubmittable(this.form)) {
         this.form.requestSubmit();
       }
     } // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()

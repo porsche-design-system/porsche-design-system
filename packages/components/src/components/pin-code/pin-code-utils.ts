@@ -13,10 +13,6 @@ export type PinCodeUpdateEvent = { value: string; isComplete: boolean };
 export type PinCodeState = FormState;
 
 export const hiddenInputSlotName = 'hidden-input';
-export const currentInputId = 'current-input';
-export const labelId = 'label';
-export const descriptionId = 'description';
-export const stateMessageId = 'state-message';
 
 export const removeSlottedSelector = (styles: Styles): Styles =>
   Object.fromEntries(
@@ -36,7 +32,7 @@ export const removeStyles = (selector: string, styles: Styles): Styles =>
       })
   );
 
-export const warnIfInitialValueIsTransformed = (host: HTMLElement, length?: number): void => {
+export const throwWarningAboutTransformedValue = (host: HTMLElement, length?: number): void => {
   const warningPrefix = `Property value of component ${getTagNameWithoutPrefix(host)}:`;
   consoleWarn(
     warningPrefix,
@@ -50,22 +46,20 @@ export const isInputSingleDigit = (input: string): boolean => /^\d$/.test(input)
 
 export const hasInputOnlyDigitsOrWhitespaces = (input: string): boolean => /^[\d ]+$/.test(input);
 
-export const getInputValue = (pinCodeElements: HTMLInputElement[]): string =>
+export const getConcatenatedInputValues = (pinCodeElements: HTMLInputElement[]): string =>
   pinCodeElements.map((el) => el.value || ' ').join('');
 
 // reset value if it contains invalid characters and cut string if pasted value is longer than pin code length
-export const getSanitisedValue = (host: HTMLElement, value: string, length?: number): string => {
+export const getSanitisedValue = (host: HTMLElement, value: string, length: number): string => {
   if (value && !hasInputOnlyDigitsOrWhitespaces(value)) {
-    warnIfInitialValueIsTransformed(host);
+    throwWarningAboutTransformedValue(host);
     return '';
-  }
-
-  if (length && value?.length === length) {
-    warnIfInitialValueIsTransformed(host, length);
+  } else if (value?.length === length) {
+    throwWarningAboutTransformedValue(host, length);
     return value.slice(0, length);
+  } else {
+    return value;
   }
-
-  return value;
 };
 
 export const removeWhiteSpaces = (value): string => value.replace(/\s/g, '');

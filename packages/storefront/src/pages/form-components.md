@@ -29,7 +29,6 @@ type Variation = {
 
 const variations: Variation[] = [
   { tagName: 'p-checkbox-wrapper', child: '<input type="checkbox" />' },
-  { tagName: 'p-pin-code', child: '', isCustomElement: true },
   { tagName: 'p-radio-button-wrapper', child: '<input type="radio" />' },
   { tagName: 'p-select-wrapper', child: '<select><option>Option 1</option><option>Option 2</option></select>' },
   { tagName: 'p-select-wrapper', child: '<select><option>Option 1</option><option>Option 2</option></select>', attributes: 'native' },
@@ -38,6 +37,7 @@ const variations: Variation[] = [
   { tagName: 'p-text-field-wrapper', child: '<input type="password" />' },
   { tagName: 'p-text-field-wrapper', child: '<input type="search" />' },
   { tagName: 'p-text-field-wrapper', child: '<input type="search" />', attributes: 'action-icon="locate"'  },
+{ tagName: 'p-pin-code', child: '', isCustomElement: true },
   { tagName: 'p-textarea-wrapper', child: '<textarea></textarea>' },
 ];
 

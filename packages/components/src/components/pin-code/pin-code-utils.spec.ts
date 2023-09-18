@@ -7,9 +7,9 @@ import {
   initHiddenInput,
   hasInputOnlyDigitsOrWhitespaces,
   isInputSingleDigit,
-  getInputValue,
+  getConcatenatedInputValues,
   syncHiddenInput,
-  warnIfInitialValueIsTransformed,
+  throwWarningAboutTransformedValue,
   getSanitisedValue,
   removeStyles,
 } from './pin-code-utils';
@@ -109,14 +109,14 @@ describe('removeStyles()', () => {
   });
 });
 
-describe('warnIfInitialValueIsTransformed()', () => {
+describe('throwWarningAboutTransformedValue()', () => {
   it('should call getTagNameWithoutPrefix() and consoleWarn() with correct parameters', () => {
     const host = document.createElement('p-pin-code');
     const warningPrefix = `Property value of component p-pin-code:`;
     const spyGetTagNameWithoutPrefix = jest.spyOn(getTagNameWithoutPrefixUtils, 'getTagNameWithoutPrefix');
     const spyConsoleWarn = jest.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation();
 
-    warnIfInitialValueIsTransformed(host, 4);
+    throwWarningAboutTransformedValue(host, 4);
 
     expect(spyGetTagNameWithoutPrefix).toBeCalledTimes(1);
     expect(spyGetTagNameWithoutPrefix).toBeCalledWith(host);
@@ -125,7 +125,7 @@ describe('warnIfInitialValueIsTransformed()', () => {
       'Provided value has too many characters and was truncated to the max length of 4.'
     );
 
-    warnIfInitialValueIsTransformed(host);
+    throwWarningAboutTransformedValue(host);
 
     expect(spyGetTagNameWithoutPrefix).toBeCalledTimes(2);
     expect(spyGetTagNameWithoutPrefix).toBeCalledWith(host);
@@ -170,7 +170,7 @@ describe('hasInputOnlyDigitsOrWhitespaces()', () => {
   });
 });
 
-describe('getInputValue()', () => {
+describe('getConcatenatedInputValues()', () => {
   it('should return joined values of an array of input elements', () => {
     const arrayOfInputs = Array.from({ length: 4 }, (_, i) => {
       const input = document.createElement('input');
@@ -178,7 +178,7 @@ describe('getInputValue()', () => {
       return input;
     });
 
-    const joinedValue = getInputValue(arrayOfInputs);
+    const joinedValue = getConcatenatedInputValues(arrayOfInputs);
 
     expect(joinedValue).toStrictEqual('0123');
   });
@@ -272,12 +272,12 @@ describe('syncHiddenInput()', () => {
     expect(spy).toBeCalledWith('disabled', true);
     expect(spy).toBeCalledWith('required', true);
 
-    expect(hiddenInput.disabled).toBeTruthy();
-    expect(hiddenInput.required).toBeTruthy();
+    expect(hiddenInput.disabled).toBe(true);
+    expect(hiddenInput.required).toBe(true);
 
     syncHiddenInput(hiddenInput, 'updatedName', '4321', false, false);
 
-    expect(hiddenInput.disabled).toBeFalsy();
-    expect(hiddenInput.required).toBeFalsy();
+    expect(hiddenInput.disabled).toBe(false);
+    expect(hiddenInput.required).toBe(false);
   });
 });
