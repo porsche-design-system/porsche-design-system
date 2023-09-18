@@ -16,13 +16,13 @@ const component = 'form-fields';
 const scenario = async (page: Page, theme: Theme): Promise<void> => {
   const head = `
     <style>
-      .playground div { display: flex; }
-      .playground div > * { width: 20%; }
-      p-multi-select { width: 20%; }
-      .playground div > *:not(:last-child) {
-        margin-right: 1rem;
-        margin-bottom: 1rem;
-      }
+      .playground div {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(0, 1fr);
+        gap: 1rem;
+        width: 100%;
+       }
       textarea { min-height: initial; }
     </style>`;
 
@@ -30,8 +30,8 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     'p-checkbox-wrapper': '<input type="checkbox" />', // readonly is not supported
     'p-radio-button-wrapper': '<input type="radio" />', // readonly is not supported
     'p-select-wrapper': '<select><option>Some value</option></select>', // readonly is not supported
+    'p-multi-select': '<p-multi-select-option>Some value</p-multi-select-option>', // readonly is not supported
     'p-text-field-wrapper': '<input type="text" value="Some value" />',
-    'p-multi-select': '', // readonly is not supported
     'p-pin-code': '', // readonly is not supported
     'p-textarea-wrapper': '<textarea>Some value</textarea>',
   };
