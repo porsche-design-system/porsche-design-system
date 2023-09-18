@@ -457,7 +457,36 @@ describe('events', () => {
     });
   });
 
-  // TODO: onPaste event -> puppeteer support for onPaste event is currently very low
+  describe('onPaste', () => {
+    it('', async () => {
+      await initPinCode();
+      const host = await getHost();
+      const input1 = await getInput(1);
+      const input2 = await getInput(2);
+      const input3 = await getInput(3);
+      const input4 = await getInput(4);
+      await addEventListener(input1, 'paste');
+
+      await input1.focus();
+
+      await input1.evaluate((el) => {
+        const data = new DataTransfer();
+        data.items.add('1234', 'text/plain');
+        const evt = new ClipboardEvent('paste', { clipboardData: data, bubbles: true });
+        el.dispatchEvent(evt);
+      });
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(input1, 'paste')).counter).toBe(1);
+
+      expect(await getProperty(input1, 'value')).toBe('1');
+      expect(await getProperty(input2, 'value')).toBe('2');
+      expect(await getProperty(input3, 'value')).toBe('3');
+      expect(await getProperty(input4, 'value')).toBe('4');
+      expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
+      expect(await getProperty(host, 'value')).toStrictEqual('1234');
+    });
+  });
 });
 
 describe('disabled state', () => {
