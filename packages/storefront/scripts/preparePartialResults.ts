@@ -31,11 +31,9 @@ export const initialStyles = ${JSON.stringify(initialStyles)};
 
   const styleHashes = [
     getInitialStyles({ format: 'sha256' }),
-    [
-      'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=', // echo -n 'display: none;' | openssl sha256 -binary | openssl base64
-      'sha256-qnVkQSG7pWu17hBhIw0kCpfEB3XGvt0mNRa6+uM6OUU=', // echo -n 'display: block;' | openssl sha256 -binary | openssl base64
-      'sha256-biLFinpqYMtWHmXfkA1BPeCY0/fNt46SAZ+BBk5YUog=', // echo -n '' | openssl sha256 -binary | openssl base64
-    ],
+    'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=', // echo -n 'display: none;' | openssl sha256 -binary | openssl base64
+    'sha256-qnVkQSG7pWu17hBhIw0kCpfEB3XGvt0mNRa6+uM6OUU=', // echo -n 'display: block;' | openssl sha256 -binary | openssl base64
+    'sha256-biLFinpqYMtWHmXfkA1BPeCY0/fNt46SAZ+BBk5YUog=', // echo -n '' | openssl sha256 -binary | openssl base64
   ]
     .map((hash) => `'${hash}'`)
     .join(' ');
