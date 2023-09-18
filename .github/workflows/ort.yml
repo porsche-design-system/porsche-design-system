@@ -38,10 +38,10 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-install
-#      - name: 'Production Builds'
-#        uses: ./.github/actions/docker-run-playwright
-#        with:
-#          entrypoint: run-build-prod
+      - name: 'Production Builds'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build-prod
       - name: "Login to AWS ECR"
         uses: docker/login-action@v2
         with:
