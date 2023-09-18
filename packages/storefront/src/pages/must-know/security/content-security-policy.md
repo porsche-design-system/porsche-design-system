@@ -1,0 +1,91 @@
+# Security
+
+The HTTP [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
+(CSP) response header and meta tag allow website administrators to control resources the user agent is allowed to load
+for a given page. With a few exceptions, policies mostly involve specifying server origins and script endpoints. This
+helps guard against cross-site scripting attacks.
+
+Therefore, we recommend specifying a Content Security Policy for every website and web app.
+
+## Basic
+
+By specifying `https://cdn.ui.porsche.com` and `https://cdn.ui.porsche.cn` for `default-src`, `style-src` and
+`script-src`, all basic use cases should be covered.
+
+For example, this website currently uses the following one.
+
+<Playground :showCodeEditor="false" :frameworkMarkup="[this.currentCSP]"></Playground>
+
+## Partials
+
+However, the Porsche Design System requires and recommends the usage of [partials](partials/introduction) for injecting
+styles/scripts and preloading assets.
+
+While partials for preloading are covered by whitelisting our CDN domains from above, partials that produce dynamic
+innerHTML are **not**.
+
+The ones affected are:
+
+- [getInitialStyles()](partials/initial-styles) **required since v3.7.0**
+- [getLoaderScript()](partials/loader-script)
+- [getDSRPonyfill()](partials/dsr-ponyfill)
+- [getBrowserSupportFallbackScript()](partials/browser-support-fallback-script)
+- [getCookiesFallbackScript()](partials/cookies-fallback-script)
+
+To allow their result being executed by the browser there are two options:
+
+1. Apply a unique `nonce` attribute on the `script` and `style` tag that the partial produces and whitelist this nonce
+   in the CSP header/meta tag
+2. Whitelist the `script` and `style`'s hashed content in the CSP header/meta tag
+
+While the 1st option might be easier to apply by post processing the partial's output it is important that the nonce
+**is not be reused** which means a new nonce has to be generated **each time the website is requested** by a user.
+
+Our recommendation is to go with the 2nd option.  
+To make integration easy, the affected partials accept the option `{ format: 'sha256' }` in order to receive the hash
+that needs to be applied with single quotes in the CSP header/meta tag.
+
+So an example integration could look like this.
+
+<Playground :showCodeEditor="false" :frameworkMarkup="[this.integration]"></Playground>
+
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  get currentCSP(): string {
+    return document.head.querySelector('[http-equiv="Content-Security-Policy"]')?.outerHTML.replace(/content="|; /g, '$&\n  ').replace(/>$/, '\n$&') || 'CSP meta tag not found.';
+  }
+
+  get integration(): string {
+    return `
+const styleHashes = [
+  getInitialStyles({ format: 'sha256' })
+].map((hash) => \`'\${hash}'\`).join(' ');
+
+const scriptHashes = [
+  getBrowserSupportFallbackScript({ format: 'sha256' }),
+  getCookiesFallbackScript({ format: 'sha256' })
+].map((hash) => \`'\${hash}'\`).join(' ');
+
+const cspContent = \`default-src 'self' https://cdn.ui.porsche.com; style-src 'self' \${styleHashes}; script-src 'self' https://cdn.ui.porsche.com \${scriptHashes}\`;
+
+return (
+  <>
+    <head>
+      <meta http-equiv="Content-Security-Policy" content={cspContent} />
+      {getInitialStyles({ format: 'jsx' })}
+    </head>
+    <body>
+      <div id="app"></div>
+
+      {getBrowserSupportFallbackScript({ format: 'jsx' })}
+      {getCookiesFallbackScript({ format: 'jsx' })}
+    </body>
+  </>
+);`;
+  }
+}
+</script>
