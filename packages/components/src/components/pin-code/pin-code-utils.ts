@@ -97,7 +97,7 @@ export const syncHiddenInput = (
 ): void => {
   setAttributes(hiddenInput, {
     name,
-    value: getSanitisedValue(value),
+    value: removeWhiteSpaces(value),
   });
   hiddenInput.toggleAttribute('disabled', disabled);
   hiddenInput.toggleAttribute('required', required);
