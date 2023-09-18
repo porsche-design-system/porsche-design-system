@@ -99,12 +99,6 @@
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
         })
       );
-
-      document.querySelector('form').addEventListener('submit', (e) => {
-        // e.preventDefault();
-        let x = document.querySelector('form').elements;
-        console.log('Pin Code: ', x);
-      });
     </script>
     <!-- /END -->
   </body>
