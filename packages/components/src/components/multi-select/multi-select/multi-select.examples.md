@@ -16,7 +16,7 @@ options are reduced by matching the options text.
 Options are slotted using the `p-multi-select-option` component. Each option needs to have an assigned value, which can
 be passed via an attribute or property and needs to be of type string. Initial selection states can only be achieved
 using the value property on the `p-multi-select` component ([More Info](components/multi-select/examples#set-value)).
-Options don't have a selected attribute or property!. If an option should be visible but not selectable, it can be
+Options don't have a selected attribute or property. If an option should be visible but not selectable, it can be
 disabled by using the `disabled` attribute.
 
 <Playground :markup="basic()" :config="config"></Playground>
