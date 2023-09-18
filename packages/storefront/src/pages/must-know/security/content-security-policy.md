@@ -5,7 +5,8 @@ The HTTP [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/
 for a given page. With a few exceptions, policies mostly involve specifying server origins and script endpoints. This
 helps guard against cross-site scripting attacks.
 
-Therefore, we recommend specifying a Content Security Policy for every website and web app.
+Therefore, we recommend specifying a Content Security Policy for every website and web app.  
+Further information can be found in the [Content Security Policy Reference](https://content-security-policy.com).
 
 ## Basic
 
@@ -36,10 +37,10 @@ To allow their result being executed by the browser there are two options:
 
 1. Apply a unique `nonce` attribute on the `script` and `style` tag that the partial produces and whitelist this nonce
    in the CSP header/meta tag
-2. Whitelist the `script` and `style`'s hashed content in the CSP header/meta tag
+2. Whitelist the `script`'s and `style`'s hashed content in the CSP header/meta tag
 
 While the 1st option might be easier to apply by post processing the partial's output it is important that the nonce
-**is not be reused** which means a new nonce has to be generated **each time the website is requested** by a user.
+**is not reused** which means a new nonce has to be generated **each time the website is requested** by a user.
 
 Our recommendation is to go with the 2nd option.  
 To make integration easy, the affected partials accept the option `{ format: 'sha256' }` in order to receive the hash
