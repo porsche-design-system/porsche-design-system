@@ -10,7 +10,12 @@
 
   pinCode.addEventListener('update', (e) => {
     const { value, isComplete } = e.detail;
+    e.target.value = value;
+    setDebugElementsText(value, isComplete);
+  });
+
+  function setDebugElementsText(value, isComplete) {
     debugElement1.innerText = `Current value: ${value}`;
     debugElement2.innerText = `Completely filled: ${isComplete}`;
-  });
+  }
 </script>
