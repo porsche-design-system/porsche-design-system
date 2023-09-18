@@ -19,16 +19,18 @@ import {
 import { getComponentCss } from './pin-code-styles';
 import {
   currentInputId,
+  descriptionId,
   initHiddenInput,
-  hasInputOnlyDigitsOrWhitespaces,
   isInputSingleDigit,
   getInputValue,
+  hiddenInputSlotName,
+  labelId,
   PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
+  stateMessageId,
   syncHiddenInput,
-  warnIfInitialValueIsTransformed,
   getSanitisedValue,
-  hiddenInputSlotName,
+  removeWhiteSpaces,
 } from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
@@ -102,7 +104,7 @@ export class PinCode {
   private form: HTMLFormElement;
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;
-  private pinCodeElements: HTMLInputElement[] = [];
+  private inputElements: HTMLInputElement[] = [];
 
   public componentWillLoad(): void {
     this.form = getClosestHTMLElement(this.host, 'form');
@@ -139,21 +141,19 @@ export class PinCode {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     // reset array of input elements
-    this.pinCodeElements = [];
-
-    this.validateInitialValue();
+    this.inputElements = [];
 
     return (
       <Host>
         <label class="label" htmlFor={currentInputId}>
           {hasLabel(this.host, this.label) && (
-            <span id="label" class="label__text">
+            <span id={labelId} class="label__text">
               {this.label || <slot name="label" />}
               {!isParentFieldsetRequired(this.host) && this.required && <Required />}
             </span>
           )}
           {hasDescription(this.host, this.description) && (
-            <span id="description" class="label__text">
+            <span id={descriptionId} class="label__text">
               {this.description || <slot name="description" />}
             </span>
           )}
@@ -168,12 +168,12 @@ export class PinCode {
             />
           )}
           {this.isWithinForm && <slot name={hiddenInputSlotName} />}
-          {...Array.from({ length: this.length }).map((_value, index) => (
+          {Array.from(Array(this.length), (_, index) => (
             <input
               id={index === this.value.length ? currentInputId : null}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
-              aria-describedby="label description state-message"
+              aria-describedby={`${labelId} ${descriptionId} ${stateMessageId}`}
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-busy={this.loading ? 'true' : null}
               autoComplete="one-time-code"
@@ -182,13 +182,13 @@ export class PinCode {
               value={this.value[index] === ' ' ? null : this.value[index]}
               disabled={this.disabled}
               required={this.required}
-              ref={(el) => this.pinCodeElements.push(el)}
+              ref={(el) => this.inputElements.push(el)}
             />
           ))}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
           <StateMessage
-            id="state-message"
+            id={stateMessageId}
             state={this.state}
             message={this.message}
             theme={this.theme}
@@ -231,14 +231,12 @@ export class PinCode {
     else if (isInputSingleDigit(key)) {
       e.preventDefault();
       target.value = key;
-      this.value = getInputValue(this.pinCodeElements);
+      this.value = getInputValue(this.inputElements);
       this.emitUpdateEvent();
 
-      if (nextElementSibling) {
-        nextElementSibling.focus();
-      }
+      nextElementSibling?.focus();
     } // handle alphanumeric keys, allow copy/paste shortcut
-    else if (key?.length === 1 && !(e.ctrlKey || e.metaKey)) {
+    else if (key.length === 1 && !(e.ctrlKey || e.metaKey)) {
       e.preventDefault();
     } // handle backspace and delete
     else if (key === 'Backspace' || key === 'Delete') {
@@ -254,14 +252,13 @@ export class PinCode {
         }
       }
       target.value = '';
-      this.pinCodeElements.forEach((pinCodeElement) => {
+      this.inputElements.forEach((pinCodeElement) => {
         if (pinCodeElement === e.target) {
           pinCodeElement.value = '';
         }
-        return pinCodeElement;
       });
 
-      this.value = getInputValue(this.pinCodeElements);
+      this.value = getInputValue(this.inputElements);
       this.emitUpdateEvent();
     } // support native submit behavior
     else if (key === 'Enter') {

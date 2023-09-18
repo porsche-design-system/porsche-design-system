@@ -14,6 +14,9 @@ export type PinCodeState = FormState;
 
 export const hiddenInputSlotName = 'hidden-input';
 export const currentInputId = 'current-input';
+export const labelId = 'label';
+export const descriptionId = 'description';
+export const stateMessageId = 'state-message';
 
 export const removeSlottedSelector = (styles: Styles): Styles =>
   Object.fromEntries(
