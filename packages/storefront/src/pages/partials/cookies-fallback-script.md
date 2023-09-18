@@ -12,10 +12,11 @@ which needs to be injected before the closing `</body>` of your `index.html`.
 
 ## Supported options
 
-| Option   | Description                                                                                                               | Type    | Default |
-| -------- | ------------------------------------------------------------------------------------------------------------------------- | ------- | ------- | -------- |
-| `cdn`    | Decides from which CDN the resources are loaded.                                                                          | `'auto' | 'cn'`   | `'auto'` |
-| `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. | `'html' | 'jsx'`  | `'html'` |
+<!-- prettier-ignore -->
+| Option   | Description                                                                                                                                                                                                                    | Type                        | Default |
+| -------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| --------------------------- | ------- |
+| `cdn`    | Decides from which CDN the resources are loaded.                                                                                                                                                                               | `'auto' | 'cn'`             | `'auto'` |
+| `format` | Defines the output format of the partial. By default, it returns a html string.<br> For `jsx` it returns a jsx element.<br> For `sha256` it returns a SHA-256 hash of the innerHTML to use in a Content Security Policy (CSP). | `'html' | 'jsx' | 'sha256'` | `'html'` |
 
 ## Examples
 
@@ -78,3 +79,9 @@ export default class Code extends Vue {
   };
 }
 </script>
+
+<style scoped lang="scss">
+  :deep(table code::before) {
+    content: '' !important;
+  }
+</style>
