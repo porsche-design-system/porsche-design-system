@@ -18,6 +18,7 @@ import {
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
 import {
+  currentInputId,
   initHiddenInput,
   hasInputOnlyDigitsOrWhitespaces,
   isInputSingleDigit,
@@ -136,7 +137,6 @@ export class PinCode {
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const currentInputId = 'current-input';
 
     // reset array of input elements
     this.pinCodeElements = [];

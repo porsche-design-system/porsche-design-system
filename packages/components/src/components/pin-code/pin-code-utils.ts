@@ -13,6 +13,7 @@ export type PinCodeUpdateEvent = { value: string; isComplete: boolean };
 export type PinCodeState = FormState;
 
 export const hiddenInputSlotName = 'hidden-input';
+export const currentInputId = 'current-input';
 
 export const removeSlottedSelector = (styles: Styles): Styles =>
   Object.fromEntries(
