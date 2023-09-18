@@ -11,7 +11,7 @@ import {
   setContentWithDesignSystem,
 } from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
-import { currentInputId } from '@porsche-design-system/components/src/components/pin-code/pin-code-utils';
+import { selectNode } from '../../../../e2e/puppeteer/helpers';
 
 const component = 'pin-code';
 
@@ -60,9 +60,13 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     prefersColorScheme: scheme,
   });
 
+  const htmlForId = await (
+    await selectNode(page, 'p-pin-code >>> label')
+  ).evaluate((label) => label.getAttribute('for'));
+
   await forceHoverState(page, '.hover p-pin-code:not(.force-label) >>> input');
   await forceHoverState(page, '.hover p-pin-code.force-label >>> span');
-  await forceHoverState(page, `.hover p-pin-code.force-label >>> #${currentInputId}`);
+  await forceHoverState(page, `.hover p-pin-code.force-label >>> #${htmlForId}`);
   await forceHoverState(page, '.hover p-pin-code span a');
   await forceFocusState(page, '.focus p-pin-code >>> input');
   await forceFocusState(page, '.focus p-pin-code span a');
