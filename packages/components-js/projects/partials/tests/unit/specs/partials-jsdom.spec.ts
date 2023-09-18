@@ -1,4 +1,8 @@
-import * as fromPartials from '../../../src/lib/partials';
+/**
+ * @jest-environment jsdom
+ */
+
+import * as fromPartials from '../../../src';
 import * as shared from '../../../src/shared';
 
 it.each(Object.keys(fromPartials))('should throw exception in jsdom for %s', (partialName) => {

@@ -3,6 +3,7 @@ import { createHash } from 'crypto';
 export type Cdn = 'auto' | 'cn';
 
 export type Format = 'html' | 'jsx';
+export type FormatWithCSP = Format | 'sha256';
 
 const isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
 export const throwIfRunInBrowser = (partialName: string): void => {
@@ -13,11 +14,6 @@ export const throwIfRunInBrowser = (partialName: string): void => {
   }
 };
 
-const hashMap: Record<string, string> = {};
-
-export const generatePartialHash = (partialName: string, content: string): void => {
-  const hash = 'sha256-' + createHash('sha256').update(content).digest('base64');
-  hashMap[partialName] = hash;
+export const getSha256Hash = (content: string): string => {
+  return 'sha256-' + createHash('sha256').update(content).digest('base64');
 };
-
-export const getHashMap = (): Record<string, string> => hashMap;

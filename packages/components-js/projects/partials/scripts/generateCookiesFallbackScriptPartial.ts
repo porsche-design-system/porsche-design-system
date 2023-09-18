@@ -4,7 +4,7 @@ import * as path from 'path';
 export const generateCookiesFallbackScriptPartial = (): string => {
   const types = `type GetCookiesFallbackScriptOptions = {
   cdn?: Cdn;
-  format?: Format;
+  format?: FormatWithCSP;
 };`;
 
   const fallbacksFilePath = require.resolve('@porsche-design-system/fallbacks');
@@ -29,13 +29,13 @@ export function getCookiesFallbackScript(opts?: GetCookiesFallbackScriptOptions)
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const scriptContent = \`${fileContent}\`;
 
-  generatePartialHash('getCookiesFallbackScript', scriptContent);
-
   // there is no other solution than using dangerouslySetInnerHTML since JSX elements are rendered by the createElement() function
   // https://stackoverflow.com/a/64815699
-  return format === 'html'
-    ? \`<script>\${scriptContent}</script>\`
-    : <script dangerouslySetInnerHTML={{ __html: scriptContent }} />;
+  return format === 'sha256'
+    ? getSha256Hash(scriptContent)
+    : format === 'html'
+      ? \`<script>\${scriptContent}</script>\`
+      : <script dangerouslySetInnerHTML={{ __html: scriptContent }} />;
 }`;
 
   return [types, func].join('\n\n');
