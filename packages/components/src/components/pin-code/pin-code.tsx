@@ -264,7 +264,11 @@ export class PinCode {
     else if (key === 'Enter') {
       if (
         isWithinForm &&
-        (this.form.querySelectorAll('input').length === 1 || this.form.querySelector('button[type=submit]'))
+        (this.form.querySelectorAll('input').length === 1 || // other sibling form elements e.g. select, textarea do not prevent a submit
+          this.form.querySelector('p-button[type=submit]') ||
+          this.form.querySelector('p-button-pure[type=submit]') ||
+          this.form.querySelector('button[type=submit]') ||
+          this.form.querySelector('input[type=submit]'))
       ) {
         this.form.requestSubmit();
       }

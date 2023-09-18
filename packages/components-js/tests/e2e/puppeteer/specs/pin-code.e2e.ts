@@ -161,15 +161,11 @@ describe('within form', () => {
     ).toEqual('1234');
   });
 
-  it('should not submit on key Enter if form does contain another input element and no button type=submit', async () => {
-    await initPinCode({ options: { isWithinForm: true } });
+  it('should not submit on key Enter if form does contain another input element and no input/button type=submit', async () => {
+    await initPinCode({ options: { isWithinForm: true, markupAfter: '<input />' } });
     const host = await getHost();
     const input = await getCurrentInput();
     const form = await selectNode(page, 'form');
-    await form.evaluate((form) => {
-      const input = document.createElement('input');
-      form.append(input);
-    });
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
