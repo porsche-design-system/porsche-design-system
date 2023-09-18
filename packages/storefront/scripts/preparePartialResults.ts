@@ -34,7 +34,7 @@ export const initialStyles = ${JSON.stringify(initialStyles)};
     .map((hash) => `'${hash}'`)
     .join(' ');
 
-  const cspMeta = `<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' https://cdn.ui.porsche.com ${styleHashes}; script-src 'self' https://cdn.ui.porsche.com ${scriptHashes}"; connect-src 'self' https://*.algolia.net https://*.algolianet.com />`;
+  const cspMeta = `<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' https://cdn.ui.porsche.com ${styleHashes}; script-src 'self' https://cdn.ui.porsche.com ${scriptHashes}; connect-src 'self' https://*.algolia.net https://*.algolianet.com" />`;
   console.log(cspMeta);
 
   const placeholder = '<!-- CSP_PLACEHOLDER -->';
