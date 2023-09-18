@@ -5815,10 +5815,6 @@ input:disabled {
   border-color: #949598;
   -webkit-text-fill-color: #949598;
 }
-input[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
-}
 .input-container {
   display: flex;
   position: relative;
