@@ -53,9 +53,22 @@ export const hasInputOnlyDigitsOrWhitespaces = (input: string): boolean => /^[\d
 export const getInputValue = (pinCodeElements: HTMLInputElement[]): string =>
   pinCodeElements.map((el) => el.value || ' ').join('');
 
-// remove whitespaces and cut string if pasted value is longer than pin code length
-export const getSanitisedValue = (value: string, length?: number): string =>
-  length ? value.replace(/\s/g, '').slice(0, length) : value.replace(/\s/g, '');
+// reset value if it contains invalid characters and cut string if pasted value is longer than pin code length
+export const getSanitisedValue = (host: HTMLElement, value: string, length?: number): string => {
+  if (value && !hasInputOnlyDigitsOrWhitespaces(value)) {
+    warnIfInitialValueIsTransformed(host);
+    return '';
+  }
+
+  if (length && value?.length === length) {
+    warnIfInitialValueIsTransformed(host, length);
+    return value.slice(0, length);
+  }
+
+  return value;
+};
+
+export const removeWhiteSpaces = (value): string => value.replace(/\s/g, '');
 
 export const initHiddenInput = (
   host: HTMLElement,

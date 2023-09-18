@@ -112,6 +112,7 @@ export class PinCode {
     if (this.isWithinForm) {
       this.hiddenInput = initHiddenInput(this.host, this.name, this.value, this.disabled, this.required);
     }
+    this.value = getSanitisedValue(this.host, this.value, this.length);
   }
 
   public componentWillUpdate(): void {
@@ -206,11 +207,11 @@ export class PinCode {
   ): void => {
     // needed to update value on auto-complete via keyboard suggestion
     const { target } = e;
-    if (target.value?.length >= this.length) {
-      const sanitisedValue = getSanitisedValue(target.value, this.length);
+    if (target.value.length >= this.length) {
+      const sanitisedValue = removeWhiteSpaces(getSanitisedValue(this.host, target.value, this.length));
       this.value = sanitisedValue;
       this.emitUpdateEvent();
-      this.focusFirstEmptyOrLastElement(sanitisedValue);
+      this.focusFirstEmptyOrLastInput(sanitisedValue);
     }
   };
 
@@ -281,40 +282,24 @@ export class PinCode {
   };
 
   private onPaste = (e: ClipboardEvent): void => {
-    const sanitisedPastedValue = getSanitisedValue(e.clipboardData.getData('Text'), this.length);
-    if (hasInputOnlyDigitsOrWhitespaces(sanitisedPastedValue) && sanitisedPastedValue !== this.value) {
+    const sanitisedPastedValue = removeWhiteSpaces(
+      getSanitisedValue(this.host, e.clipboardData.getData('Text'), this.length)
+    );
+    if (sanitisedPastedValue !== this.value) {
       this.value = sanitisedPastedValue;
       this.emitUpdateEvent();
-      this.focusFirstEmptyOrLastElement(sanitisedPastedValue);
+      this.focusFirstEmptyOrLastInput(sanitisedPastedValue);
     }
     e.preventDefault();
   };
 
   private emitUpdateEvent = (): void => {
-    this.update.emit({ value: this.value, isComplete: getSanitisedValue(this.value).length === this.length });
+    this.update.emit({ value: this.value, isComplete: removeWhiteSpaces(this.value).length === this.length });
   };
 
-  private focusFirstEmptyOrLastElement = (sanitisedValue: string): void => {
-    if (sanitisedValue.length === this.length) {
-      this.pinCodeElements[sanitisedValue.length - 1]?.focus();
-    } else {
-      this.pinCodeElements[sanitisedValue.length]?.focus();
-    }
-  };
-
-  private validateInitialValue = (): void => {
-    // reset initial value if it does not consist of digits only
-    if (this.value && !hasInputOnlyDigitsOrWhitespaces(this.value)) {
-      this.value = '';
-      warnIfInitialValueIsTransformed(this.host);
-      this.emitUpdateEvent();
-    }
-
-    // make sure initial value is not longer than pin code length
-    if (this.value?.length > this.length) {
-      this.value = this.value.slice(0, this.length);
-      warnIfInitialValueIsTransformed(this.host, this.length);
-      this.emitUpdateEvent();
-    }
+  private focusFirstEmptyOrLastInput = (sanitisedValue: string): void => {
+    this.inputElements[
+      sanitisedValue.length === this.length ? sanitisedValue.length - 1 : sanitisedValue.length
+    ]?.focus();
   };
 }
