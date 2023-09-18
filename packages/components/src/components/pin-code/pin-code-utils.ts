@@ -96,3 +96,9 @@ export const syncHiddenInput = (
   hiddenInput.toggleAttribute('disabled', disabled);
   hiddenInput.toggleAttribute('required', required);
 };
+
+export const isFormSubmittable = (form: HTMLFormElement): boolean =>
+  form.querySelectorAll('input:not([type=submit]):not([type=hidden])').length === 1 || // other sibling form elements e.g. select, textarea do not prevent a submit
+  form.querySelector('p-button[type=submit]') ||
+  form.querySelector('p-button-pure[type=submit]') ||
+  form.querySelector('button[type=submit]');
