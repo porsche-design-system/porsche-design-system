@@ -137,7 +137,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       newFileContent = newFileContent
         .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
         .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
-        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides|pinCodeElements)/g, '$1$2'); // revert for certain private members
+        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides|inputElements)/g, '$1$2'); // revert for certain private members
 
       // take care of nested components of PrefixedTagNames
       const componentImports = Array.from(newFileContent.matchAll(/<PrefixedTagNames.p([A-Za-z]+)/g))
@@ -162,7 +162,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     const { children, namedSlotChildren, otherChildren } = splitChildren(this.props.children);\n`
           )
           .replace(
-            /this\.(?:input|select|textarea)/g,
+            /this\.(?:input|select|textarea)(?!Elements)/g,
             "typeof otherChildren[0] === 'object' && 'props' in otherChildren[0] && otherChildren[0]?.props"
           ); // fallback for undefined input, select and textarea reference
 
@@ -222,7 +222,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDropdownDirection\(this\.props\,.+\)/, "'down'") // select-wrapper-dropdown
         .replace(/getDropdownDirection\(this\.props.+\)/, "'down'") // multi-select
-        .replace(/\s+this\.props\.validateInitialValue\(\);/, '') // pin-code
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
