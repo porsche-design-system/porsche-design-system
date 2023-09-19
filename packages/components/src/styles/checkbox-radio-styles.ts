@@ -168,7 +168,7 @@ export const getCheckboxRadioJssStyle = (
         transform: 'translate(-50%, -50%)',
         height: fontLineHeight,
         width: fontLineHeight,
-        border: '2px solid transparent', // to make it overlap entire input
+        padding: '2px', // matches input's border-width to make it overlap entire input
         fontFamily, // needed for correct width and height definition and for correct positioning
         fontSize: '1rem', // needed for correct width and height definition and for correct positioning
         cursor: 'not-allowed',
