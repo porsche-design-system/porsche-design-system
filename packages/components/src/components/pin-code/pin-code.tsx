@@ -144,7 +144,7 @@ export class PinCode {
     const currentInputId = 'current-input';
     const labelId = 'label';
     const descriptionId = 'description';
-    const stateMessageId = 'state-message';
+    const messageId = 'message';
 
     return (
       <Host>
@@ -176,7 +176,7 @@ export class PinCode {
               id={index === this.value.length ? currentInputId : null}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
-              aria-describedby={`${labelId} ${descriptionId} ${stateMessageId}`}
+              aria-describedby={`${labelId} ${descriptionId} ${messageId}`}
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-busy={this.loading ? 'true' : null}
               autoComplete="one-time-code"
@@ -190,13 +190,7 @@ export class PinCode {
           ))}
         </div>
         {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage
-            id={stateMessageId}
-            state={this.state}
-            message={this.message}
-            theme={this.theme}
-            host={this.host}
-          />
+          <StateMessage id={messageId} state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
       </Host>
     );
