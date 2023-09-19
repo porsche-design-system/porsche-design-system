@@ -35,7 +35,7 @@ export const removeStyles = (selector: string, styles: Styles): Styles =>
       })
   );
 
-export const throwWarningAboutTransformedValue = (host: HTMLElement, length?: number): void => {
+export const warnAboutTransformedValue = (host: HTMLElement, length?: number): void => {
   const warningPrefix = `Property value of component ${getTagNameWithoutPrefix(host)}:`;
   consoleWarn(
     warningPrefix,
@@ -55,10 +55,10 @@ export const getConcatenatedInputValues = (pinCodeElements: HTMLInputElement[]):
 // reset value if it contains invalid characters and cut string if pasted value is longer than pin code length
 export const getSanitisedValue = (host: HTMLElement, value: string, length: number): string => {
   if (value && !hasInputOnlyDigitsOrWhitespaces(value)) {
-    throwWarningAboutTransformedValue(host);
+    warnAboutTransformedValue(host);
     return '';
   } else if (removeWhiteSpaces(value)?.length > length) {
-    throwWarningAboutTransformedValue(host, length);
+    warnAboutTransformedValue(host, length);
     return value.slice(0, length);
   } else {
     return value;

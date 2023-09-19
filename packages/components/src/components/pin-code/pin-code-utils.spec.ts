@@ -9,7 +9,7 @@ import {
   isInputSingleDigit,
   getConcatenatedInputValues,
   syncHiddenInput,
-  throwWarningAboutTransformedValue,
+  warnAboutTransformedValue,
   getSanitisedValue,
   removeStyles,
   removeWhiteSpaces,
@@ -110,14 +110,14 @@ describe('removeStyles()', () => {
   });
 });
 
-describe('throwWarningAboutTransformedValue()', () => {
+describe('warnAboutTransformedValue()', () => {
   it('should call getTagNameWithoutPrefix() and consoleWarn() with correct parameters', () => {
     const host = document.createElement('p-pin-code');
     const warningPrefix = `Property value of component p-pin-code:`;
     const spyGetTagNameWithoutPrefix = jest.spyOn(getTagNameWithoutPrefixUtils, 'getTagNameWithoutPrefix');
     const spyConsoleWarn = jest.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation();
 
-    throwWarningAboutTransformedValue(host, 4);
+    warnAboutTransformedValue(host, 4);
 
     expect(spyGetTagNameWithoutPrefix).toBeCalledTimes(1);
     expect(spyGetTagNameWithoutPrefix).toBeCalledWith(host);
@@ -126,7 +126,7 @@ describe('throwWarningAboutTransformedValue()', () => {
       'Provided value has too many characters and was truncated to the max length of 4.'
     );
 
-    throwWarningAboutTransformedValue(host);
+    warnAboutTransformedValue(host);
 
     expect(spyGetTagNameWithoutPrefix).toBeCalledTimes(2);
     expect(spyGetTagNameWithoutPrefix).toBeCalledWith(host);
@@ -186,11 +186,11 @@ describe('getConcatenatedInputValues()', () => {
 });
 
 describe('getSanitisedValue()', () => {
-  it('should not slice or reset prop value and not call throwWarningAboutTransformedValue() if value already sanitised', () => {
+  it('should not slice or reset prop value and not call warnAboutTransformedValue() if value already sanitised', () => {
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
     component.value = '1234';
-    const spy = jest.spyOn(pinCodeUtils, 'throwWarningAboutTransformedValue');
+    const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedValue');
 
     const sanitisedValue = getSanitisedValue(component.host, component.value, 4);
 
@@ -198,11 +198,11 @@ describe('getSanitisedValue()', () => {
     expect(sanitisedValue).toBe('1234');
   });
 
-  it('should reset prop value and call throwWarningAboutTransformedValue() if value does not consist of digits/whitespaces', () => {
+  it('should reset prop value and call warnAboutTransformedValue() if value does not consist of digits/whitespaces', () => {
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
     component.value = '1a&^b';
-    const spy = jest.spyOn(pinCodeUtils, 'throwWarningAboutTransformedValue');
+    const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedValue');
 
     const sanitisedValue = getSanitisedValue(component.host, component.value, 4);
 
@@ -210,11 +210,11 @@ describe('getSanitisedValue()', () => {
     expect(sanitisedValue).toBe('');
   });
 
-  it('shouldslice prop value and call throwWarningAboutTransformedValue() with correct parameters if value.length is longer then prop length', () => {
+  it('shouldslice prop value and call warnAboutTransformedValue() with correct parameters if value.length is longer then prop length', () => {
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
     component.value = '12345678';
-    const spy = jest.spyOn(pinCodeUtils, 'throwWarningAboutTransformedValue');
+    const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedValue');
 
     const sanitisedValue = getSanitisedValue(component.host, component.value, 4);
 
