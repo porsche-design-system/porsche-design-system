@@ -205,8 +205,7 @@ export class PinCode {
     const { target } = e;
     if (target.value.length >= this.length) {
       const sanitisedValue = removeWhiteSpaces(getSanitisedValue(this.host, target.value, this.length));
-      this.value = sanitisedValue;
-      this.emitUpdateEvent();
+      this.updateValue(sanitisedValue);
       this.focusFirstEmptyOrLastInput(sanitisedValue);
     }
   };
@@ -228,8 +227,7 @@ export class PinCode {
     else if (isInputSingleDigit(key)) {
       e.preventDefault();
       target.value = key;
-      this.value = getConcatenatedInputValues(this.inputElements);
-      this.emitUpdateEvent();
+      this.updateValue(getConcatenatedInputValues(this.inputElements));
 
       nextElementSibling?.focus();
     } // handle alphanumeric keys, allow copy/paste shortcut
@@ -249,8 +247,7 @@ export class PinCode {
         }
       }
       target.value = '';
-      this.value = getConcatenatedInputValues(this.inputElements);
-      this.emitUpdateEvent();
+      this.updateValue(getConcatenatedInputValues(this.inputElements));
     } // support native submit behavior
     else if (key === 'Enter') {
       if (isWithinForm && isFormSubmittable(this.host, this.form)) {
@@ -269,15 +266,14 @@ export class PinCode {
       getSanitisedValue(this.host, e.clipboardData.getData('Text'), this.length)
     );
     if (sanitisedPastedValue !== this.value) {
-      this.value = sanitisedPastedValue;
-      this.emitUpdateEvent();
+      this.updateValue(sanitisedPastedValue);
       this.focusFirstEmptyOrLastInput(sanitisedPastedValue);
     }
     e.preventDefault();
   };
 
-  private emitUpdateEvent = (): void => {
-    this.update.emit({ value: this.value, isComplete: removeWhiteSpaces(this.value).length === this.length });
+  private updateValue = (newValue: string): void => {
+    this.update.emit({ value: newValue, isComplete: removeWhiteSpaces(newValue).length === this.length });
   };
 
   private focusFirstEmptyOrLastInput = (sanitisedValue: string): void => {

@@ -88,16 +88,15 @@ describe('componentWillUpdate', () => {
   });
 });
 
-describe('emitUpdateEvent()', () => {
+describe('updateValue()', () => {
   it('should call update.emit() with correct parameters', () => {
     const component = new PinCode();
     const emitSpy = jest.fn();
     component.update = { emit: emitSpy };
-    component.value = '1234';
 
     // @ts-ignore
-    component.emitUpdateEvent();
+    component.updateValue('1234');
 
-    expect(emitSpy).toBeCalledWith({ value: component.value, isComplete: true });
+    expect(emitSpy).toBeCalledWith({ value: '1234', isComplete: true });
   });
 });
