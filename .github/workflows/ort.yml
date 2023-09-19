@@ -1,7 +1,10 @@
 on:
   schedule:
     - cron: "0 0 1 * *" # at 00:00 on day-of-month 1
+  workflow_dispatch: # for manual run
+
 name: 'OSS Review Toolkit'
+
 jobs:
   ort:
     name: 'ORT'
@@ -44,8 +47,8 @@ jobs:
           password: ${{ secrets.OSO_AWS_SECRET_ACCESS_KEY }}
       - name: "Run ORT"
         run: |
-          docker run -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest analyze -i /project/ -o /project/ort/ --package-managers yarn
-          docker run -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest report -i /project/ort/analyzer-result.yml -o /project/ort/ -f StaticHtml
+          docker run --user root -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest analyze -i /project -o /project/ort
+          docker run --user root -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort-porsche:latest report -i /project/ort/analyzer-result.yml -o /project/ort -f StaticHtml
         shell: bash
       - name: 'Store ORT Analysis'
         uses: actions/upload-artifact@v3
