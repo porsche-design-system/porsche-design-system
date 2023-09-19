@@ -3,7 +3,6 @@ import type { Styles } from 'jss';
 import { consoleWarn, getPrefixedTagNames, getTagNameWithoutPrefix, setAttributes } from '../../utils';
 import { Components } from '../../components';
 import PButton = Components.PButton;
-import PButtonPure = Components.PButtonPure;
 
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
 export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
@@ -105,10 +104,10 @@ export const isFormSubmittable = (host: HTMLElement, form: HTMLFormElement): boo
 
   return !!(
     form.querySelectorAll('input:not([type=submit]):not([type=hidden])').length === 1 || // other sibling form elements e.g. select, textarea do not prevent submission
-    (form.querySelector(PrefixedTagNames.pButton) as PButton)?.type === 'submit' ||
-    (form.querySelector(PrefixedTagNames.pButtonPure) as PButtonPure)?.type === 'submit' ||
-    form.querySelector(
-      `${PrefixedTagNames.pButton}[type=submit], ${PrefixedTagNames.pButtonPure}[type=submit], button[type=submit], input[type=submit]`
-    )
+    Array.from(
+      form.querySelectorAll(
+        `${PrefixedTagNames.pButton},${PrefixedTagNames.pButtonPure},button[type=submit],input[type=submit]`
+      )
+    ).filter((el) => (el as PButton).type === 'submit').length
   );
 };

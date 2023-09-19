@@ -273,6 +273,7 @@ export class PinCode {
   };
 
   private updateValue = (newValue: string): void => {
+    this.value = newValue;
     this.update.emit({ value: newValue, isComplete: removeWhiteSpaces(newValue).length === this.length });
   };
 
