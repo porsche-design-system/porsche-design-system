@@ -42,8 +42,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
       .map(([tag, child]) => {
         const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
         const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
-        const disableComponentsWithoutChild =
-          tag === 'p-pin-code' || tag === 'p-multi-select' ? ' disabled="true"' : '';
+        const disabledAttribute = tag === 'p-pin-code' || tag === 'p-multi-select' ? ' disabled="true"' : '';
 
         return `
 <div>
@@ -53,19 +52,19 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   <${tag} label="Readonly">
     ${childReadonly}
   </${tag}>
-  <${tag} label="Disabled"${disableComponentsWithoutChild}>
+  <${tag} label="Disabled"${disabledAttribute}>
     ${childDisabled}
   </${tag}>
   <${tag} label="Error" state="error" message="Error">
     ${child}
   </${tag}>
-  <${tag} label="Disabled" state="error" message="Error"${disableComponentsWithoutChild}>
+  <${tag} label="Disabled" state="error" message="Error"${disabledAttribute}>
     ${childDisabled}
   </${tag}>
   <${tag} label="Success" state="success" message="Success">
     ${child}
   </${tag}>
-  <${tag} label="Disabled" state="success" message="Success"${disableComponentsWithoutChild}>
+  <${tag} label="Disabled" state="success" message="Success"${disabledAttribute}>
     ${childDisabled}
   </${tag}>
 </div>`.replace(/(<p-select-wrapper)/g, '$1 native'); // native select is easier to force states on
