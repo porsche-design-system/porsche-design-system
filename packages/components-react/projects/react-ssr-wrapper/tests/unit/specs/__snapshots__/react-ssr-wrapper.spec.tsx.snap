@@ -816,6 +816,65 @@ exports[`manual test cases should pass internal props correctly to p-multi-selec
 </p-multi-select>
 `;
 
+exports[`manual test cases should pass internal props correctly to p-pin-code 1`] = `
+<p-pin-code
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host{display:block !important;color-scheme:light dark !important}:host([hidden]){display:none !important}input{display:block;width:calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);height:calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);margin:0;outline:0;-webkit-appearance:none;appearance:none;box-sizing:border-box;border:2px solid #6B6D70;border-radius:4px;background:transparent;font:normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-indent:0;color:#010205;transition:color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;text-align:center}input:disabled{cursor:not-allowed;color:#949598;border-color:#949598;-webkit-text-fill-color:#949598}.input-container{display:flex;position:relative;gap:8px;flex-wrap:wrap;width:fit-content}.label{display:inline-flex;flex-direction:column;gap:4px;position:relative;margin-bottom:4px}.label__text{display:block;position:static;width:fit-content;height:auto;text-indent:0;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;color:#010205;transition:color var(--p-transition-duration, .24s) ease}.label__text+.label__text{margin-top:-4px;font-size:clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);color:#535457}.required{user-select:none}.message{display:flex;gap:4px;margin-top:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, .24s) ease}
+    </style>
+    <label
+      class="label"
+      for="current-input"
+    />
+    <div
+      class="input-container"
+    >
+      <input
+        aria-describedby="label description message"
+        aria-label="1-4"
+        autocomplete="one-time-code"
+        inputmode="numeric"
+        pattern="\\d*"
+        type="text"
+        value="1"
+      />
+      <input
+        aria-describedby="label description message"
+        aria-label="2-4"
+        autocomplete="one-time-code"
+        inputmode="numeric"
+        pattern="\\d*"
+        type="text"
+        value="2"
+      />
+      <input
+        aria-describedby="label description message"
+        aria-label="3-4"
+        autocomplete="one-time-code"
+        inputmode="numeric"
+        pattern="\\d*"
+        type="text"
+        value="3"
+      />
+      <input
+        aria-describedby="label description message"
+        aria-label="4-4"
+        autocomplete="one-time-code"
+        inputmode="numeric"
+        pattern="\\d*"
+        type="text"
+        value="4"
+      />
+    </div>
+  </template>
+</p-pin-code>
+`;
+
 exports[`manual test cases should pass internal props correctly to p-segmented-control-item 1`] = `
 <p-segmented-control
   class="ssr"

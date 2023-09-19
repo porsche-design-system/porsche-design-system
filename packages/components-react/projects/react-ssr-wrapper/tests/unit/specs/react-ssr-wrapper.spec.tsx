@@ -134,6 +134,7 @@ describe('manual test cases', () => {
         </fromComponents.PLinkTileModelSignature>
       ),
     ],
+    'p-pin-code': [() => <fromComponents.PPinCode value="1234"></fromComponents.PPinCode>],
     'p-tabs-item': [
       () => (
         <fromComponents.PTabs theme="dark">
