@@ -21,9 +21,10 @@ export const transformEvents = (markup: string): string =>
   markup.replace(/\son([a-z]+?)="(.*?)"/g, (_, $key, $value) => ` on${pascalCase($key)}={() => { ${$value} }}`);
 
 export const transformBooleanDigitAndUndefinedValues = (markup: string): string =>
-  markup.includes('p-pin-code') && !markup.includes('my-prefix')
-    ? markup.replace(/\s(\S+[^value])="(true|false|-?\d*|undefined)"/g, ' $1={$2}')
-    : markup.replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}').replace(/{(911|718)}/g, '"$1"'); // TODO replace temporary 911|718 work around with more generic approach
+  markup
+    .replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}')
+    .replace(/{(911|718)}/g, '"$1"') // TODO replace temporary 911|718 work around with more generic approach
+    .replace(/{(1234)}/g, '"$1"'); // pin-code value prop
 
 export const transformCustomElementTagName = (markup: string): string =>
   markup.replace(/<(\/?)(p-[\w-]+)/g, (_, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
