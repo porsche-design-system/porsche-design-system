@@ -24,6 +24,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
         gap: 1rem;
         width: 100%;
       }
+       .playground *:not(:last-child) {
+         margin-bottom: 1rem;
+       }
     </style>`;
 
   const child = '<input type="text" value="Value" />';
