@@ -110,9 +110,9 @@ export class RadioButtonWrapper {
 
     return (
       <Host>
-        <label>
+        <label aria-disabled={isLoading ? 'true' : null}>
           {hasLabel(this.host, this.label) && (
-            <span class="text" onClick={this.onLabelClick}>
+            <span class="text" onClick={!isLoading && this.onLabelClick}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
             </span>

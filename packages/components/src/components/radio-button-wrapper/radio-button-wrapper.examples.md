@@ -119,15 +119,13 @@ export default class Code extends Vue {
   <input type="radio" name="some-name-3" disabled checked />
 </p-radio-button-wrapper>`;
 
-  isLoading = true;
-  get loading() {
-    return `<p-radio-button-wrapper label="Some label" loading="${this.isLoading}">
+  loading = 
+`<p-radio-button-wrapper label="Some label" loading="true">
   <input type="radio" name="some-name-4" />
 </p-radio-button-wrapper>
 <p-radio-button-wrapper label="Some label">
   <input type="radio" name="some-name-4" checked />
 </p-radio-button-wrapper>`;
-  }
 
   state = 'error';
   states = FORM_STATES;

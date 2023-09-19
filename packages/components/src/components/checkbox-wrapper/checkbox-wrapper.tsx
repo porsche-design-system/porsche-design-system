@@ -1,28 +1,28 @@
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop } from '@stencil/core';
 import {
+  addChangeListener,
   AllowedTypes,
   attachComponentCss,
+  FORM_STATES,
   getClosestHTMLElement,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   hasLabel,
   hasMessage,
   hasPropValueChanged,
+  isDisabledOrLoading,
   isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
   validateProps,
-  FORM_STATES,
-  isDisabledOrLoading,
 } from '../../utils';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './checkbox-wrapper-styles';
 import type { CheckboxWrapperState } from './checkbox-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import { addChangeListener } from '../../utils/checkbox-radio-button-wrapper-utils';
 
 const propTypes: PropTypes<typeof CheckboxWrapper> = {
   label: AllowedTypes.string,
@@ -123,7 +123,7 @@ export class CheckboxWrapper {
       <Host>
         <label aria-disabled={this.loading ? 'true' : null}>
           {hasLabel(this.host, this.label) && (
-            <span class="text" onClick={this.onLabelClick}>
+            <span class="text" onClick={!this.loading && this.onLabelClick}>
               {this.label || <slot name="label" />}
               {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
             </span>
@@ -150,7 +150,7 @@ export class CheckboxWrapper {
      * we only want to simulate the input click by label click
      * also we don't want to click to the input, if a link is clicked.
      */
-    if (!this.loading && getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
+    if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
       this.input.click();
     }
   };
