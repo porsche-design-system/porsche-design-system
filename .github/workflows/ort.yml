@@ -1,7 +1,4 @@
 on:
-  push:
-    branches:
-      - issue/2767
   schedule:
     - cron: "0 0 1 * *" # at 00:00 on day-of-month 1
   workflow_dispatch: # for manual run
