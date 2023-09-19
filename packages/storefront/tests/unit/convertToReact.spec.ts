@@ -11,6 +11,7 @@ import {
   transformToSelfClosingTags,
 } from '../../src/utils/convertToReact';
 import * as reactUtils from '../../src/utils/convertToReact';
+import { transformAttributesWithDigitValue } from '../../src/utils';
 
 const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
   <span>Some text</span>
@@ -136,6 +137,17 @@ describe('transformBooleanDigitAndUndefinedValues()', () => {
   it('should remove quotes and add brackets to undefined values', () => {
     expect(transformBooleanDigitAndUndefinedValues(`<p-some-tag attribute="undefined"></p-some-tag>`)).toBe(
       `<p-some-tag attribute={undefined}></p-some-tag>`
+    );
+  });
+
+  it('should not transform prop model with digit values', () => {
+    expect(transformAttributesWithDigitValue('<p-model-signature model="911"></p-model-signature>')).toBe(
+      `<p-model-signature [model]="'911'"></p-model-signature>`
+    );
+  });
+  it('should not transform pin codes prop value with digit values', () => {
+    expect(transformAttributesWithDigitValue('<p-pin-code value="1234"></p-pin-code>')).toBe(
+      `<p-pin-code [value]="'1234'"></p-pin-code>`
     );
   });
 });

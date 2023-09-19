@@ -62,9 +62,19 @@ describe('transformAttributesWithDigitValue()', () => {
 </p-some-tag>`
     );
   });
-  it('transform maxlength with maxLength', () => {
+  it('should transform maxlength with maxLength', () => {
     expect(transformAttributesWithDigitValue('<textarea maxlength="200">Some value</textarea>')).toBe(
       '<textarea [maxLength]="200">Some value</textarea>'
+    );
+  });
+  it('should not transform prop model with digit values', () => {
+    expect(transformAttributesWithDigitValue('<p-model-signature model="911"></p-model-signature>')).toBe(
+      `<p-model-signature [model]="'911'"></p-model-signature>`
+    );
+  });
+  it('should not transform pin codes prop value with digit values', () => {
+    expect(transformAttributesWithDigitValue('<p-pin-code value="1234"></p-pin-code>')).toBe(
+      `<p-pin-code [value]="'1234'"></p-pin-code>`
     );
   });
 });
