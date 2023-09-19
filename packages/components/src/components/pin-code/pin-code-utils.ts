@@ -1,6 +1,6 @@
 import type { FormState } from '../../utils/form/form-state';
 import type { Styles } from 'jss';
-import { consoleWarn, getTagNameWithoutPrefix, setAttributes } from '../../utils';
+import { consoleWarn, getPrefixedTagNames, getTagNameWithoutPrefix, setAttributes } from '../../utils';
 
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
 export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
@@ -97,8 +97,14 @@ export const syncHiddenInput = (
   hiddenInput.toggleAttribute('required', required);
 };
 
-export const isFormSubmittable = (form: HTMLFormElement): boolean =>
-  form.querySelectorAll('input:not([type=submit]):not([type=hidden])').length === 1 || // other sibling form elements e.g. select, textarea do not prevent a submit
-  form.querySelector('p-button[type=submit]') ||
-  form.querySelector('p-button-pure[type=submit]') ||
-  form.querySelector('button[type=submit]');
+export const isFormSubmittable = (host: HTMLElement, form: HTMLFormElement): boolean => {
+  const PrefixedTagNames = getPrefixedTagNames(host);
+
+  return !!(
+    form.querySelectorAll('input:not([type=submit]):not([type=hidden])').length === 1 || // other sibling form elements e.g. select, textarea do not prevent a submit
+    form.querySelector(`${PrefixedTagNames.pButton}[type=submit]`) ||
+    form.querySelector(`${PrefixedTagNames.pButtonPure}[type=submit]`) ||
+    form.querySelector('button[type=submit]') ||
+    form.querySelector('input[type=submit]')
+  );
+};

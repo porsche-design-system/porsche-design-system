@@ -259,7 +259,7 @@ export class PinCode {
       this.emitUpdateEvent();
     } // support native submit behavior
     else if (key === 'Enter') {
-      if (isWithinForm && isFormSubmittable(this.form)) {
+      if (isWithinForm && isFormSubmittable(this.host, this.form)) {
         this.form.requestSubmit();
       }
     } // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
