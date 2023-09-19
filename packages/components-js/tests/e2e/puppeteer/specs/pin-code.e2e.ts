@@ -615,15 +615,41 @@ describe('loading state', () => {
     expect(await getElementStyle(input, 'cursor')).toBe('not-allowed');
   });
 
-  it('should not be focusable', async () => {
+  it('should be focusable but input can not be changed', async () => {
+    await initPinCode({ props: { loading: true } });
+    const input = await getCurrentInput();
+    await addEventListener(input, 'focus');
+
+    expect(await getProperty(input, 'value')).toBe('');
+    expect((await getEventSummary(input, 'focus')).counter, 'before focus').toBe(0);
+
+    await page.keyboard.press('Tab');
+    expect((await getEventSummary(input, 'focus')).counter, 'before focus').toBe(1);
+
+    await page.keyboard.press('1');
+    expect(await getProperty(input, 'value')).toBe('');
+  });
+
+  it('should be possible to navigate through inputs by key=Tab/Shift+Tab', async () => {
     await initPinCode({ props: { loading: true }, options: { markupAfter: '<p-button>Some Button</p-button>' } });
+    const host = await getHost();
     const button = await selectNode(page, 'p-button');
     await addEventListener(button, 'focus');
 
-    expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('1-4');
 
     await page.keyboard.press('Tab');
-    expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(1);
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('2-4');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('3-4');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
+
+    await page.keyboard.press('Tab');
+    expect((await getEventSummary(button, 'focus')).counter, 'after focus').toBe(1);
   });
 });
 

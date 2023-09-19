@@ -183,7 +183,7 @@ export class PinCode {
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
               value={this.value[index] === ' ' ? null : this.value[index]}
-              disabled={isDisabledOrLoading(this.disabled, this.loading)}
+              disabled={this.disabled}
               required={this.required}
               ref={(el) => this.inputElements.push(el)}
             />
