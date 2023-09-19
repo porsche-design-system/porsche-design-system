@@ -75,7 +75,12 @@ const scriptHashes = [
   getCookiesFallbackScript({ format: 'sha256' })
 ].join(' ');
 
-const cspContent = \`default-src 'self' https://cdn.ui.porsche.com; style-src 'self' \${styleHashes}; script-src 'self' https://cdn.ui.porsche.com \${scriptHashes}\`;
+const cspContent = [
+  \`default-src 'self' https://cdn.ui.porsche.com\`,
+  \`style-src 'self' \${styleHashes}\`,
+  \`script-src 'self' https://cdn.ui.porsche.com \${scriptHashes}\`,
+  \`img-src 'self' https://cdn.ui.porsche.com data:image\` // data:image is needed for inline background images, e.g. used in checkbox-wrapper and radio-button-wrapper
+].join('; ');
 
 return (
   <>
