@@ -99,12 +99,12 @@ the form, it's required to provide an individual `name` prop to the `p-pin-code`
 the hidden input in light DOM', enabling the `p-pin-code`'s value to be included in the form's data when it is
 submitted.
 
-<Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
-<form @submit.prevent="onSubmit" >
-  <p-pin-code :theme="theme" label="Some Label" name="pin-code"></p-pin-code>
-  <p-button type="submit" style="margin: 1rem 0">Submit</p-button>
-</form>
-  <p-text :theme="theme">Last submitted data: {{ currentValueForm }}</p-text>
+<Playground :frameworkMarkup="formExample" :config="config">
+  <form @submit.prevent="onSubmit" >
+    <p-pin-code :theme="theme" label="Some Label" name="pin-code"></p-pin-code>
+    <p-button :theme="theme" type="submit" style="margin: 1rem 0">Submit</p-button>
+  </form>
+  <p-text :theme="theme">Last submitted data: {{ submittedValue }}</p-text>
 </Playground>
 
 ## Framework implementation (controlled)
@@ -114,11 +114,8 @@ as a controlled component. This means it does not contain any internal state, an
 behavior. Any change of the input's values triggers a custom update event and the value is updated immediately. The prop
 `value` is an array of strings synchronized with the input's values.
 
-<Playground :frameworkMarkup="eventHandlingExample" :config="{ ...config, withoutDemo: true }">
-  <p-pin-code :theme="theme" label="Some Label" :value="currentValueControlled" @update="(e) => {
-    currentValueControlled = e.detail.value;
-    isComplete = e.detail.isComplete;
-  }"></p-pin-code>
+<Playground :frameworkMarkup="eventHandlingExample" :config="config">
+  <p-pin-code :theme="theme" label="Some Label" :value="currentValueControlled"></p-pin-code>
   <p-text :theme="theme" style="margin: 1rem 0">Current value: {{currentValueControlled}}</p-text>
   <p-text :theme="theme">Completely filled: {{isComplete}}</p-text>
 </Playground>
@@ -203,15 +200,15 @@ export default class Code extends Vue {
   isComplete = false;
   eventHandlingExample = getPinCodeCodeSamples('example-controlled');
 
-  currentValueForm = 'none';
+  submittedValue = 'none';
   formExample = getPinCodeCodeSamples('default');
   onSubmit(e) {
     const formData = new FormData(e.target);
-    this.currentValueForm = Array.from(formData.values()).join() || 'none';
+    this.submittedValue = Array.from(formData.values()).join() || 'none';
   }
 
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 }
 </script>
