@@ -53,7 +53,7 @@ const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
 // + 2px, compensates hover offset of button-pure
 const buttonGroupWidth = `calc(${buttonSize} * 3 + ${spacingStaticXSmall} + 2px)`;
 
-const spacingMap: { [key in CarouselWidth]: { base: string; s: string; xxl: string } } = {
+const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }> = {
   basic: gridBasicOffset,
   extended: gridExtendedOffset,
 };
@@ -197,7 +197,7 @@ export const getComponentCss = (
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
     },
     ...(hasPagination && {
-      ['pagination-container']: {
+      'pagination-container': {
         ...buildResponsiveStyles(hasPagination, (hasPaginationValue: boolean) => ({
           display: hasPaginationValue ? 'flex' : 'none',
         })),
@@ -240,13 +240,13 @@ export const getComponentCss = (
             }),
       },
       ...(isInfinitePagination && {
-        [`${paginationInfiniteStartCaseClass}`]: {
-          ['& > .bullet:nth-child(-n+4)']: {
+        [paginationInfiniteStartCaseClass]: {
+          '& > .bullet:nth-child(-n+4)': {
             width: paginationBulletSize,
             height: paginationBulletSize,
           },
         },
-        [`${bulletInfiniteClass}`]: {
+        [bulletInfiniteClass]: {
           // Necessary to override the bulletActiveClass sibling selector
           ...addImportantToEachRule({
             width: paginationInfiniteBulletSize,
@@ -262,7 +262,7 @@ export const getComponentCss = (
           },
         },
       }),
-      [`${bulletActiveClass}`]: {
+      [bulletActiveClass]: {
         ...(isHighContrastMode
           ? {
               background: canvasTextColor,
