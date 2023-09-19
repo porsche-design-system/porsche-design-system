@@ -23,6 +23,6 @@ describe('format: jsx', () => {
 describe('format: sha256', () => {
   it('should return hash for content of dsr-ponyfill tmp build', () => {
     const result = getDSRPonyfill({ format: 'sha256' });
-    expect(result).toMatchInlineSnapshot(`"sha256-ZtG/+dXiFXgoQphKFMfxxE3a1kTlVghzRWSAr790e1Y="`);
+    expect(result).toMatchInlineSnapshot(`"'sha256-ZtG/+dXiFXgoQphKFMfxxE3a1kTlVghzRWSAr790e1Y='"`);
   });
 });

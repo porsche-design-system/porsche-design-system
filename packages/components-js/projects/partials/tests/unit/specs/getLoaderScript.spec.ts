@@ -59,16 +59,16 @@ describe('format: jsx', () => {
 describe('format: sha256', () => {
   it('should return hash for content of components-js tmp build', () => {
     const result = getLoaderScript({ format: 'sha256' });
-    expect(result).toMatch(/^sha256-.{43}=$/);
+    expect(result).toMatch(/^'sha256-.{43}='$/);
   });
 
   it('should return hash for content of components-js tmp build with load method prefix call', () => {
     const result = getLoaderScript({ format: 'sha256', prefix: 'my-prefix' });
-    expect(result).toMatch(/^sha256-.{43}=$/);
+    expect(result).toMatch(/^'sha256-.{43}='$/);
   });
 
   it('should return hash for content of components-js tmp build with load method prefix calls', () => {
     const result = getLoaderScript({ format: 'sha256', prefix: ['my-prefix', 'another-prefix'] });
-    expect(result).toMatch(/^sha256-.{43}=$/);
+    expect(result).toMatch(/^'sha256-.{43}='$/);
   });
 });

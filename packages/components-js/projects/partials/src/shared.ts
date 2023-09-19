@@ -15,5 +15,5 @@ export const throwIfRunInBrowser = (partialName: string): void => {
 };
 
 export const getSha256Hash = (content: string): string => {
-  return 'sha256-' + createHash('sha256').update(content).digest('base64');
+  return `'sha256-${createHash('sha256').update(content).digest('base64')}'`;
 };

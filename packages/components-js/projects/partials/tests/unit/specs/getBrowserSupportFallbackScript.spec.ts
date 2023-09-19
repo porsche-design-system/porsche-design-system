@@ -33,11 +33,11 @@ describe('format: jsx', () => {
 describe('format: sha256', () => {
   it('should return hash for script with cdn url', () => {
     const result = getBrowserSupportFallbackScript({ format: 'sha256' });
-    expect(result).toMatchInlineSnapshot(`"sha256-NC3nZhie3+jiGh4jIvFaQcbdkIl0IrRciWVxciaYFAQ="`);
+    expect(result).toMatchInlineSnapshot(`"'sha256-NC3nZhie3+jiGh4jIvFaQcbdkIl0IrRciWVxciaYFAQ='"`);
   });
 
   it('should return hash for script with china cdn url', () => {
     const result = getBrowserSupportFallbackScript({ cdn: 'cn', format: 'sha256' });
-    expect(result).toMatchInlineSnapshot(`"sha256-9TFa3AzYxsUsGcxHpksZjmtZPGfJZSuihtJKRMpLzcU="`);
+    expect(result).toMatchInlineSnapshot(`"'sha256-9TFa3AzYxsUsGcxHpksZjmtZPGfJZSuihtJKRMpLzcU='"`);
   });
 });
