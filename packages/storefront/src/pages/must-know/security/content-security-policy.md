@@ -46,6 +46,10 @@ Our recommendation is to go with the 2nd option.
 To make integration easy, the affected partials accept the option `{ format: 'sha256' }` in order to receive the hash
 that needs to be applied with single quotes in the CSP header/meta tag.
 
+<Notification heading="Important note" state="success">
+  The returned string from calling a partial, e.g. <code>getInitialStyles({ format: 'sha256' })</code> is already wrapped in single quotes so it can be used directly in your policy.
+</Notification>
+
 So an example integration could look like this.
 
 <Playground :showCodeEditor="false" :frameworkMarkup="[this.integration]"></Playground>
@@ -64,12 +68,12 @@ export default class Code extends Vue {
     return `
 const styleHashes = [
   getInitialStyles({ format: 'sha256' })
-].map((hash) => \`'\${hash}'\`).join(' ');
+].join(' ');
 
 const scriptHashes = [
   getBrowserSupportFallbackScript({ format: 'sha256' }),
   getCookiesFallbackScript({ format: 'sha256' })
-].map((hash) => \`'\${hash}'\`).join(' ');
+].join(' ');
 
 const cspContent = \`default-src 'self' https://cdn.ui.porsche.com; style-src 'self' \${styleHashes}; script-src 'self' https://cdn.ui.porsche.com \${scriptHashes}\`;
 

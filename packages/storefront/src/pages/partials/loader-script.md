@@ -13,10 +13,10 @@ To achieve this bootstrapping **earlier** we provide a partial in all
 ## Supported options
 
 <!-- prettier-ignore -->
-| Option   | Description                                                                                                                                                                                                                   | Type                        | Default    |
-| -------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| --------------------------- | ---------- |
-| `prefix` | Prefix will be added to the component names.                                                                                                                                                                                  | `string | string[]`         | `undefined` |
-| `format` | Defines the output format of the partial. By default it returns a html string.<br> For `jsx` it returns a jsx element.<br> For `sha256` it returns a SHA-256 hash of the innerHTML to use in a Content Security Policy (CSP). | `'html' | 'jsx' | 'sha256'` | `'html'`    |
+| Option   | Description                                                                                                                                                                                                                                                                 | Type                        | Default    |
+| -------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| --------------------------- | ---------- |
+| `prefix` | Prefix will be added to the component names.                                                                                                                                                                                                                                | `string | string[]`         | `undefined` |
+| `format` | Defines the output format of the partial. By default it returns a html string.<br> For `jsx` it returns a jsx element.<br> For `sha256` it returns a SHA-256 hash of the innerHTML to use in a [Content Security Policy (CSP)](must-know/security/content-security-policy). | `'html' | 'jsx' | 'sha256'` | `'html'`    |
 
 ## Examples
 
