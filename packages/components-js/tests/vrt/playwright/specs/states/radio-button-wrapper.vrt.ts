@@ -6,7 +6,6 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  generateGUID,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
@@ -25,32 +24,32 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
         <input type="radio" name="some-name" />
       </p-radio-button-wrapper>
     </div>
-    <p-radio-button-wrapper label="Some label">
+    <p-radio-button-wrapper label="Disabled">
       <input type="radio" name="some-name-disabled" disabled />
     </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label">
-      <input type="radio" name="${generateGUID()}" disabled checked />
+    <p-radio-button-wrapper label="Disabled and checked">
+      <input type="radio" name="some-name-disabled-checked" disabled checked />
     </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label" loading="true">
+    <p-radio-button-wrapper label="Loading" loading="true">
       <input type="radio" name="some-name-loading" />
     </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label" loading="true">
-      <input type="radio" name="${generateGUID()}" checked />
+    <p-radio-button-wrapper label="Loading and checked" loading="true">
+      <input type="radio" name="some-name-loading-checked" checked />
     </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label" state="error" message="Some error validation message.">
+    <p-radio-button-wrapper label="State error" state="error" message="Some error validation message.">
       <input type="radio" name="some-name" />
     </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label" state="success" message="Some success validation message.">
+    <p-radio-button-wrapper label="State success" state="success" message="Some success validation message.">
       <input type="radio" name="some-name" />
     </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label">
-      <input type="radio" name="${generateGUID()}" checked/>
+    <p-radio-button-wrapper label="Checked">
+      <input type="radio" name="some-name-checked" checked/>
     </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label" state="error" message="Some error validation message.">
-      <input type="radio" name="${generateGUID()}" checked/>
+    <p-radio-button-wrapper label="Checked with state error" state="error" message="Some error validation message.">
+      <input type="radio" name="some-name-checked-state-error" checked/>
     </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label" state="success" message="Some success validation message.">
-      <input type="radio" name="${generateGUID()}" checked />
+    <p-radio-button-wrapper label="Checked with state success" state="success" message="Some success validation message.">
+      <input type="radio" name="some-name-checked-state-success" checked />
     </p-radio-button-wrapper>
     <p-radio-button-wrapper>
       <span slot="label">
@@ -61,7 +60,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </span>
       <input type="radio" name="some-name" />
     </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label" state="error">
+    <p-radio-button-wrapper label="State error" state="error">
       <input type="radio" name="some-name" />
       <span slot="message">
         Slotted error message
@@ -70,7 +69,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
         </span>
       </span>
     </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label" state="success">
+    <p-radio-button-wrapper label="State success" state="success">
       <input type="radio" name="some-name" />
       <span slot="message">
         Slotted success message
