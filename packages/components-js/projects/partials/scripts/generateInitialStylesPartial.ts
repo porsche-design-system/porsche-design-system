@@ -123,7 +123,7 @@ const siblingStyles: Styles = {
 export const generateInitialStylesPartial = (): string => {
   const types = `type GetInitialStylesOptions = {
   prefix?: string | string[];
-  format?: Format;
+  format?: FormatWithCSP;
 };`;
 
   const initialStylesFunction = `export function getInitialStyles(opts: GetInitialStylesOptions & { format: 'jsx' }): JSX.Element;
@@ -167,9 +167,11 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   const styles = normalizeStyles.concat(hydrationStyles, slottedStyles, siblingStyles);
 
-  return format === 'html'
-    ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
-    : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
+  return format === 'sha256'
+    ? getSha256Hash(styles)
+    : format === 'html'
+      ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
+      : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
 }`;
 
   const helperFunction = `const getPrefixedTagNames = (tagNames: string[], prefix?: string | string[]): string[] => {

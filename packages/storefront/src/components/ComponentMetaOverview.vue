@@ -105,7 +105,7 @@
                       .join('');
                     return (
                       `<span class="prop">${val}${propFlags}</span>` +
-                      (allowedValues ? `<div style="display: none">${allowedValues}</div>` : '')
+                      (allowedValues ? `<div style="display: none;">${allowedValues}</div>` : '')
                     );
                   });
                 } else if (key === 'eventNames') {

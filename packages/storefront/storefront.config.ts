@@ -593,8 +593,12 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Statement: [() => import('@/pages/must-know/accessibility/statement.md')],
     },
-    // @ts-ignore
-    Security: [() => import('@/pages/must-know/security.md')],
+    Security: {
+      // @ts-ignore
+      Vulnerabilities: [() => import('@/pages/must-know/security/vulnerabilities.md')],
+      // @ts-ignore
+      'Content Security Policy': [() => import('@/pages/must-know/security/content-security-policy.md')],
+    },
     Performance: {
       // @ts-ignore
       Cdn: [() => import('@/pages/must-know/performance/cdn.md')],
