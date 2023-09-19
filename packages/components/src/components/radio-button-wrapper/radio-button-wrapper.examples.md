@@ -44,7 +44,8 @@ changes while this process is performed.
 
 The `loading` property can be used to indicate that the current state change requires loading. It should be applied
 exclusively to the radio button that is clicked and should remain visible until the checked state of that radio button
-has changed. Keep in mind that the loading state will only appear when the radio button is not selected!.
+has changed.  
+Keep in mind that the loading state will only appear when the radio button is **not checked**.
 
 <Playground :markup="loading" :config="config"></Playground>
 
