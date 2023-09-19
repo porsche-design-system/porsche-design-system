@@ -52,7 +52,7 @@ export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): 
   throwIfRunInBrowser('getMetaTagsAndIconLinks');
 
   if (!appTitle) {
-    throw new Error('Option "appTitle" is required to output "<meta name="apple-mobile-web-app-title" content="appTitle" />');
+    throw new Error('[Porsche Design System] Option "appTitle" is required to output "<meta name="apple-mobile-web-app-title" content="appTitle" />');
   }
 
   const cdnBaseUrl = getCdnBaseUrl(cdn);

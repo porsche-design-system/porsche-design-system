@@ -56,7 +56,7 @@ export function getFontLinks(opts?: GetFontLinksOptions): string | JSX.Element {
   const invalidWeights = weights.filter((x) => !supportedWeights.includes(x));
 
   if (isSubsetInvalid) {
-    throw new Error(\`The following supplied font subset is invalid:
+    throw new Error(\`[Porsche Design System] The following supplied font subset is invalid:
   \${subset}
 
 Please use only valid font subset:
@@ -64,7 +64,7 @@ Please use only valid font subset:
   }
 
   if (invalidWeights.length) {
-    throw new Error(\`The following supplied font weights are invalid:
+    throw new Error(\`[Porsche Design System] The following supplied font weights are invalid:
   \${invalidWeights.join(', ')}
 
 Please use only valid font weights:

@@ -28,7 +28,7 @@ export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): st
   const invalidComponentChunkNames = components.filter((x) => !supportedComponentChunkNames.includes(x));
 
   if (invalidComponentChunkNames.length) {
-    throw new Error(\`The following supplied component chunk names are invalid:
+    throw new Error(\`[Porsche Design System] The following supplied component chunk names are invalid:
   \${invalidComponentChunkNames.join(', ')}
 
 Please use only valid component chunk names:
