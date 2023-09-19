@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getInlineSVGBackgroundImage() should return correct value for parameter: '<circle cx="12" cy="12" r="7"/>' 1`] = `"url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/></svg>')"`;
+exports[`should return correct value for parameter: '<circle cx="12" cy="12" r="7"/>' 1`] = `"url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/></svg>')"`;
 
-exports[`getInlineSVGBackgroundImage() should return correct value for parameter: 'some svg path' 1`] = `"url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">some svg path</svg>')"`;
+exports[`should return correct value for parameter: 'some svg path' 1`] = `"url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">some svg path</svg>')"`;

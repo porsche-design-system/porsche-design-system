@@ -1,5 +1,6 @@
 import { Component, Element, forceUpdate, h, Host, type JSX, Prop } from '@stencil/core';
 import {
+  addChangeListener,
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
@@ -18,10 +19,9 @@ import {
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './radio-button-wrapper-styles';
+import type { RadioButtonWrapperState } from './radio-button-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import type { RadioButtonWrapperState } from './radio-button-wrapper-utils';
-import { addChangeListener } from '../../utils/checkbox-radio-button-wrapper-utils';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
@@ -92,13 +92,17 @@ export class RadioButtonWrapper {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+
+    // spinner is only displayed when radio is not checked already
+    const isLoading = this.loading && !this.input.checked;
+
     attachComponentCss(
       this.host,
       getComponentCss,
       this.hideLabel,
       this.state,
       this.input.disabled,
-      this.loading && !this.input.checked,
+      isLoading,
       this.theme
     );
 
@@ -114,7 +118,7 @@ export class RadioButtonWrapper {
             </span>
           )}
           <slot />
-          {this.loading && !this.input.checked && (
+          {isLoading && (
             <PrefixedTagNames.pSpinner
               class="spinner"
               size="inherit"

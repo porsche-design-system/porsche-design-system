@@ -9,6 +9,11 @@ import { getCheckboxRadioJssStyle } from '../../styles/checkbox-radio-styles';
 import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
+
+const getCheckedSVGBackgroundImage = (fill: string): string => {
+  return getInlineSVGBackgroundImage(`<circle fill="${fill}" cx="12" cy="12" r="6"/>`);
+};
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -19,14 +24,10 @@ export const getComponentCss = (
 ): string => {
   const checkedIconColor = isHighContrastMode
     ? getHighContrastColors().canvasColor
-    : getInvertedThemedColors(theme).primaryColor.replace(/#/g, '%23');
+    : escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
   const checkedIconColorDark = isHighContrastMode
     ? getHighContrastColors().canvasColor
-    : getInvertedThemedColors('dark').primaryColor.replace(/#/g, '%23');
-
-  const getCheckedSVGBackgroundImage = (fill: string): string => {
-    return getInlineSVGBackgroundImage(`<circle fill="${fill}" cx="12" cy="12" r="6"/>`);
-  };
+    : escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
 
   return getCss(
     mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, isLoading, theme), {

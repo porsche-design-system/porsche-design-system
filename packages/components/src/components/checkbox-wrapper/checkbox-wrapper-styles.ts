@@ -3,6 +3,7 @@ import { getCheckboxRadioJssStyle } from '../../styles/checkbox-radio-styles';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import {
   addImportantToEachRule,
   getHighContrastColors,
@@ -11,6 +12,16 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { borderRadiusMedium, borderRadiusSmall } from '@porsche-design-system/utilities-v2';
+
+const getCheckedSVGBackgroundImage = (fill: string): string => {
+  return getInlineSVGBackgroundImage(
+    `<path fill="${fill}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`
+  );
+};
+
+const getIndeterminateSVGBackgroundImage = (fill: string): string => {
+  return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
+};
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -22,26 +33,16 @@ export const getComponentCss = (
   const { canvasColor } = getHighContrastColors();
   const checkedIconColor = isHighContrastMode
     ? canvasColor
-    : getInvertedThemedColors(theme).primaryColor.replace(/#/g, '%23');
+    : escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
   const checkedIconColorDark = isHighContrastMode
     ? canvasColor
-    : getInvertedThemedColors('dark').primaryColor.replace(/#/g, '%23');
+    : escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
   const indeterminateIconColor = isHighContrastMode
     ? canvasColor
-    : getThemedColors(theme).primaryColor.replace(/#/g, '%23');
+    : escapeHashCharacter(getThemedColors(theme).primaryColor);
   const indeterminateIconColorDark = isHighContrastMode
     ? canvasColor
-    : getThemedColors('dark').primaryColor.replace(/#/g, '%23');
-
-  const getCheckedSVGBackgroundImage = (fill: string): string => {
-    return getInlineSVGBackgroundImage(
-      `<path fill="${fill}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`
-    );
-  };
-
-  const getIndeterminateSVGBackgroundImage = (fill: string): string => {
-    return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
-  };
+    : escapeHashCharacter(getThemedColors('dark').primaryColor);
 
   return getCss(
     mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, isLoading, theme), {
