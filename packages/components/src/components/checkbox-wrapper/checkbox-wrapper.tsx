@@ -60,16 +60,10 @@ export class CheckboxWrapper {
 
   private input: HTMLInputElement;
 
-  @Listen('click', { capture: true })
-  public onClick(e: MouseEvent): void {
-    if (isDisabledOrLoading(this.input.disabled, this.loading)) {
-      e.stopPropagation();
-    }
-  }
-
   @Listen('keydown')
   public onKeydown(e: KeyboardEvent): void {
-    if ((e.key === 'Spacebar' || e.key.trim() === '') && isDisabledOrLoading(this.input.disabled, this.loading)) {
+    const { key } = e;
+    if ((key === ' ' || key === 'Spacebar') && isDisabledOrLoading(this.input.disabled, this.loading)) {
       e.preventDefault();
     }
   }

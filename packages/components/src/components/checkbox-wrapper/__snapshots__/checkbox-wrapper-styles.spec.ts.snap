@@ -1669,6 +1669,7 @@ label {
   transform: translate(-50%, -50%);
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  border: 2px solid transparent;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -1750,6 +1751,7 @@ label {
   transform: translate(-50%, -50%);
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  border: 2px solid transparent;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -1964,6 +1966,7 @@ label {
   transform: translate(-50%, -50%);
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  border: 2px solid transparent;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -2042,6 +2045,7 @@ label {
   transform: translate(-50%, -50%);
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  border: 2px solid transparent;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;

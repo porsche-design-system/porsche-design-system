@@ -36,12 +36,14 @@ export const getComponentCss = (
           '&(input)': {
             borderRadius: '50%',
           },
-          '&(input:checked)': {
-            backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
-            }),
-          },
+          ...(!isLoading && {
+            '&(input:checked)': {
+              backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
+              }),
+            },
+          }),
           ...(!isDisabled && {
             '&(input:focus)::before': {
               borderRadius: '50%',
