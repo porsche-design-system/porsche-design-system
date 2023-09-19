@@ -53,6 +53,15 @@ describe('componentWillLoad', () => {
     expect(spy).not.toBeCalled();
     expect(component['hiddenInput']).toBeUndefined();
   });
+
+  it('should call getSanitisedValue() with correct parameters', () => {
+    const component = initComponent();
+    const spy = jest.spyOn(pinCodeUtils, 'getSanitisedValue');
+
+    component.componentWillLoad();
+
+    expect(spy).toBeCalledWith(component.host, component.value, component.length);
+  });
 });
 
 describe('componentWillUpdate', () => {
@@ -79,20 +88,6 @@ describe('componentWillUpdate', () => {
   });
 });
 
-describe('render', () => {
-  it('should call validateInitialValue()', () => {
-    const component = initComponent();
-    component.value = '1a&^b';
-    component.update = { emit: jest.fn() };
-    const spy = jest.spyOn(component, 'validateInitialValue' as any);
-
-    component.render();
-
-    expect(component.value).toStrictEqual('');
-    expect(spy).toBeCalled();
-  });
-});
-
 describe('emitUpdateEvent()', () => {
   it('should call update.emit() with correct parameters', () => {
     const component = new PinCode();
@@ -104,43 +99,5 @@ describe('emitUpdateEvent()', () => {
     component.emitUpdateEvent();
 
     expect(emitSpy).toBeCalledWith({ value: component.value, isComplete: true });
-  });
-});
-
-describe('validateInitialValue()', () => {
-  it('should reset prop value and call throwWarningAboutTransformedValue() if value does not consist of digits/whitespaces only', () => {
-    const component = initComponent();
-    component.value = '1a&^b';
-    const spy = jest.spyOn(pinCodeUtils, 'throwWarningAboutTransformedValue');
-    component.update = { emit: jest.fn() };
-
-    component['validateInitialValue']();
-
-    expect(component.value).toStrictEqual('');
-    expect(spy).toBeCalledWith(component.host);
-  });
-
-  it('should slice prop value and call throwWarningAboutTransformedValue() with correct parameters if value.length is longer then prop length', () => {
-    const component = initComponent();
-    const spy = jest.spyOn(pinCodeUtils, 'throwWarningAboutTransformedValue');
-    component.value = '12 345';
-    component.update = { emit: jest.fn() };
-
-    component['validateInitialValue']();
-
-    expect(component.value).toStrictEqual('12 3');
-    expect(spy).toBeCalledWith(component.host, 4);
-  });
-
-  it('should not slice prop value and not call throwWarningAboutTransformedValue() if value.length is equal to prop length', () => {
-    const component = initComponent();
-    const spy = jest.spyOn(pinCodeUtils, 'throwWarningAboutTransformedValue');
-    component.value = '1234';
-    component.update = { emit: jest.fn() };
-
-    component['validateInitialValue']();
-
-    expect(component.value).toStrictEqual('1234');
-    expect(spy).not.toBeCalled();
   });
 });

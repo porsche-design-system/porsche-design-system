@@ -85,20 +85,6 @@ describe('label', () => {
 
     expect((await getEventSummary(input, 'focus')).counter).toBe(1);
   });
-
-  it('should show hover state on input when label is hovered', async () => {
-    await initPinCode({ props: { label: 'Some label' } });
-    await page.mouse.move(0, 300); // avoid potential hover initially
-    const label = await getLabel();
-    const input = await getCurrentInput();
-    const initialBorderColor = await getElementStyle(input, 'borderColor');
-
-    expect(await getElementStyle(input, 'borderColor')).toBe(initialBorderColor);
-
-    await label.hover();
-
-    expect(await getElementStyle(input, 'borderColor')).not.toBe(initialBorderColor);
-  });
 });
 
 describe('within form', () => {
@@ -140,8 +126,148 @@ describe('within form', () => {
     });
   });
 
-  it('should submit on key Enter if form does not contain another input element and no button type=submit', async () => {
+  it('should submit on key Enter if form does not contain another input element and no button/input type=submit', async () => {
     await initPinCode({ options: { isWithinForm: true } });
+    const host = await getHost();
+    const input = await getCurrentInput();
+    const form = await selectNode(page, 'form');
+    await addEventListener(form, 'submit');
+    await setProperty(host, 'value', '1234');
+
+    expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
+    expect(
+      await form.evaluate((form: HTMLFormElement) => Array.from(new FormData(form).values()).join()),
+      'after Enter'
+    ).toEqual('1234');
+  });
+
+  it('should submit on key Enter if form does contain another input type=hidden element and no input/button type=submit', async () => {
+    await initPinCode({ options: { isWithinForm: true, markupAfter: '<input type="hidden"/>' } });
+    const host = await getHost();
+    const input = await getCurrentInput();
+    const form = await selectNode(page, 'form');
+    await addEventListener(form, 'submit');
+    await setProperty(host, 'value', '1234');
+
+    expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
+    expect(
+      await form.evaluate((form: HTMLFormElement) => Array.from(new FormData(form).values()).join()),
+      'after Enter'
+    ).toEqual('1234');
+  });
+
+  it('should submit on key Enter if form does contain another input type=submit', async () => {
+    await initPinCode({ options: { isWithinForm: true, markupAfter: '<input type="submit"/>' } });
+    const host = await getHost();
+    const input = await getCurrentInput();
+    const form = await selectNode(page, 'form');
+    await addEventListener(form, 'submit');
+    await setProperty(host, 'value', '1234');
+
+    expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
+    expect(
+      await form.evaluate((form: HTMLFormElement) => Array.from(new FormData(form).values()).join()),
+      'after Enter'
+    ).toEqual('1234');
+  });
+
+  it('should submit on key Enter if form does contain another input element and a button type=submit', async () => {
+    await initPinCode({
+      options: { isWithinForm: true, markupAfter: '<input/><button type="submit">Some Button</button>' },
+    });
+    const host = await getHost();
+    const input = await getCurrentInput();
+    const form = await selectNode(page, 'form');
+    await addEventListener(form, 'submit');
+    await setProperty(host, 'value', '1234');
+
+    expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
+    expect(
+      await form.evaluate((form: HTMLFormElement) => Array.from(new FormData(form).values()).join()),
+      'after Enter'
+    ).toEqual('1234');
+  });
+
+  it('should submit on key Enter if form does contain another input element and a input type=submit', async () => {
+    await initPinCode({
+      options: { isWithinForm: true, markupAfter: '<input/><input type="submit" />' },
+    });
+    const host = await getHost();
+    const input = await getCurrentInput();
+    const form = await selectNode(page, 'form');
+    await addEventListener(form, 'submit');
+    await setProperty(host, 'value', '1234');
+
+    expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
+    expect(
+      await form.evaluate((form: HTMLFormElement) => Array.from(new FormData(form).values()).join()),
+      'after Enter'
+    ).toEqual('1234');
+  });
+
+  it('should submit on key Enter if form does contain another input element and a p-button type=submit', async () => {
+    await initPinCode({
+      options: {
+        isWithinForm: true,
+        markupAfter: '<input /><p-button type="submit">Some Button</p-button>',
+      },
+    });
+    const host = await getHost();
+    const input = await getCurrentInput();
+    const form = await selectNode(page, 'form');
+    await addEventListener(form, 'submit');
+    await setProperty(host, 'value', '1234');
+
+    expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
+    expect(
+      await form.evaluate((form: HTMLFormElement) => Array.from(new FormData(form).values()).join()),
+      'after Enter'
+    ).toEqual('1234');
+  });
+
+  it('should submit on key Enter if form does contain another input element and a p-button-pure type=submit', async () => {
+    await initPinCode({
+      options: {
+        isWithinForm: true,
+        markupAfter: '<input /><p-button-pure type="submit">Some Button</p-button-pure>',
+      },
+    });
     const host = await getHost();
     const input = await getCurrentInput();
     const form = await selectNode(page, 'form');
@@ -176,34 +302,6 @@ describe('within form', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(0);
-  });
-
-  it('should submit on key Enter if form does contain another input element and a button type=submit', async () => {
-    await initPinCode({ options: { isWithinForm: true } });
-    const host = await getHost();
-    const input = await getCurrentInput();
-    const form = await selectNode(page, 'form');
-    await form.evaluate((form) => {
-      const input = document.createElement('input');
-      const button = document.createElement('button');
-      button.type = 'submit';
-      form.append(input);
-      form.append(button);
-    });
-    await addEventListener(form, 'submit');
-    await setProperty(host, 'value', '1234');
-
-    expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
-
-    await input.click();
-    await page.keyboard.press('Enter');
-    await waitForStencilLifecycle(page);
-
-    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
-    expect(
-      await form.evaluate((form: HTMLFormElement) => Array.from(new FormData(form).values()).join()),
-      'after Enter'
-    ).toEqual('1234');
   });
 });
 
@@ -517,41 +615,15 @@ describe('loading state', () => {
     expect(await getElementStyle(input, 'cursor')).toBe('not-allowed');
   });
 
-  it('should be focusable but input can not be changed', async () => {
-    await initPinCode({ props: { loading: true } });
-    const input = await getCurrentInput();
-    await addEventListener(input, 'focus');
-
-    expect(await getProperty(input, 'value')).toBe('');
-    expect((await getEventSummary(input, 'focus')).counter, 'before focus').toBe(0);
-
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(input, 'focus')).counter, 'before focus').toBe(1);
-
-    await page.keyboard.press('1');
-    expect(await getProperty(input, 'value')).toBe('');
-  });
-
-  it('should be possible to navigate through inputs by key=Tab/Shift+Tab', async () => {
+  it('should not be focusable', async () => {
     await initPinCode({ props: { loading: true }, options: { markupAfter: '<p-button>Some Button</p-button>' } });
-    const host = await getHost();
     const button = await selectNode(page, 'p-button');
     await addEventListener(button, 'focus');
 
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('1-4');
+    expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('2-4');
-
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('3-4');
-
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementsAriaLabelInShadowRoot(host)).toBe('4-4');
-
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(button, 'focus')).counter, 'after focus').toBe(1);
+    expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(1);
   });
 });
 

@@ -5867,7 +5867,7 @@ input:disabled {
       class="input-container"
     >
       <input
-        aria-describedby="label description state-message"
+        aria-describedby="label description message"
         aria-label="1-4"
         autocomplete="one-time-code"
         id="current-input"
@@ -5877,7 +5877,7 @@ input:disabled {
         value=""
       />
       <input
-        aria-describedby="label description state-message"
+        aria-describedby="label description message"
         aria-label="2-4"
         autocomplete="one-time-code"
         inputmode="numeric"
@@ -5886,7 +5886,7 @@ input:disabled {
         value=""
       />
       <input
-        aria-describedby="label description state-message"
+        aria-describedby="label description message"
         aria-label="3-4"
         autocomplete="one-time-code"
         inputmode="numeric"
@@ -5895,7 +5895,7 @@ input:disabled {
         value=""
       />
       <input
-        aria-describedby="label description state-message"
+        aria-describedby="label description message"
         aria-label="4-4"
         autocomplete="one-time-code"
         inputmode="numeric"

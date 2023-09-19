@@ -12,6 +12,7 @@ import {
   throwWarningAboutTransformedValue,
   getSanitisedValue,
   removeStyles,
+  removeWhiteSpaces,
 } from './pin-code-utils';
 import { PinCode } from './pin-code';
 
@@ -171,50 +172,64 @@ describe('hasInputOnlyDigitsOrWhitespaces()', () => {
 });
 
 describe('getConcatenatedInputValues()', () => {
-  it('should return joined values of an array of input elements', () => {
+  it('should return concatenated values of an array of input elements', () => {
     const arrayOfInputs = Array.from({ length: 4 }, (_, i) => {
       const input = document.createElement('input');
       input.setAttribute('value', `${i}`);
       return input;
     });
 
-    const joinedValue = getConcatenatedInputValues(arrayOfInputs);
+    const concatenatedValue = getConcatenatedInputValues(arrayOfInputs);
 
-    expect(joinedValue).toStrictEqual('0123');
+    expect(concatenatedValue).toStrictEqual('0123');
   });
 });
 
 describe('getSanitisedValue()', () => {
-  it('should return pin code value if already optimal', () => {
-    const pinCode = '1234';
+  it('should not slice or reset prop value and not call throwWarningAboutTransformedValue() if value already sanitised', () => {
+    const component = new PinCode();
+    component.host = document.createElement('p-pin-code');
+    component.value = '1234';
+    const spy = jest.spyOn(pinCodeUtils, 'throwWarningAboutTransformedValue');
 
-    const optimizedValue = getSanitisedValue(pinCode, 4);
+    const sanitisedValue = getSanitisedValue(component.host, component.value, 4);
 
-    expect(optimizedValue).toBe('1234');
+    expect(spy).not.toBeCalled();
+    expect(sanitisedValue).toBe('1234');
   });
 
+  it('should reset prop value and call throwWarningAboutTransformedValue() if value does not consist of digits/whitespaces', () => {
+    const component = new PinCode();
+    component.host = document.createElement('p-pin-code');
+    component.value = '1a&^b';
+    const spy = jest.spyOn(pinCodeUtils, 'throwWarningAboutTransformedValue');
+
+    const sanitisedValue = getSanitisedValue(component.host, component.value, 4);
+
+    expect(spy).toBeCalledWith(component.host);
+    expect(sanitisedValue).toBe('');
+  });
+
+  it('shouldslice prop value and call throwWarningAboutTransformedValue() with correct parameters if value.length is longer then prop length', () => {
+    const component = new PinCode();
+    component.host = document.createElement('p-pin-code');
+    component.value = '12345678';
+    const spy = jest.spyOn(pinCodeUtils, 'throwWarningAboutTransformedValue');
+
+    const sanitisedValue = getSanitisedValue(component.host, component.value, 4);
+
+    expect(sanitisedValue).toBe('1234');
+    expect(spy).toBeCalledWith(component.host, 4);
+  });
+});
+
+describe('removeWhiteSpaces()', () => {
   it('should remove whitespaces from pin code value', () => {
-    const pinCode = ' 1 2 3 4 ';
+    const pinCode = ' 1 2 4 ';
 
-    const optimizedValue = getSanitisedValue(pinCode, 4);
+    const sanitisedValue = removeWhiteSpaces(pinCode);
 
-    expect(optimizedValue).toBe('1234');
-  });
-
-  it('should shorten pin code value if value is too long', () => {
-    const pinCode = ' 12345678';
-
-    const optimizedValue = getSanitisedValue(pinCode, 4);
-
-    expect(optimizedValue).toBe('1234');
-  });
-
-  it('should not shorten pin code value if parameter length is not provided', () => {
-    const pinCode = ' 12345678';
-
-    const optimizedValue = getSanitisedValue(pinCode);
-
-    expect(optimizedValue).toBe('12345678');
+    expect(sanitisedValue).toBe('124');
   });
 });
 
@@ -252,6 +267,16 @@ describe('initHiddenInput()', () => {
 });
 
 describe('syncHiddenInput()', () => {
+  it('should call removeWhiteSpaces() with correct parameters', () => {
+    const spy = jest.spyOn(pinCodeUtils, 'removeWhiteSpaces');
+    const hiddenInput = document.createElement('input');
+
+    syncHiddenInput(hiddenInput, 'updatedName', '432 1', false, false);
+
+    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith('432 1');
+  });
+
   it('should call setAttributes() with correct parameters', () => {
     const spy = jest.spyOn(setAttributesUtils, 'setAttributes');
     const hiddenInput = document.createElement('input');
