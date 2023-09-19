@@ -1055,7 +1055,8 @@ export namespace Components {
          */
         "disableBackdropClick"?: boolean;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. If true, the modal will not have a dismiss button.
+          * If true, the modal will not have a dismiss button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead.
          */
         "disableCloseButton"?: boolean;
         /**
@@ -3318,7 +3319,8 @@ declare namespace LocalJSX {
          */
         "disableBackdropClick"?: boolean;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. If true, the modal will not have a dismiss button.
+          * If true, the modal will not have a dismiss button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead.
          */
         "disableCloseButton"?: boolean;
         /**
