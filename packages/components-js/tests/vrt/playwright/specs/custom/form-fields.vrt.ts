@@ -7,10 +7,10 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
+  getHtmlForReferenceId,
 } from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 import { type TagName } from '@porsche-design-system/shared';
-import { currentInputId } from '@porsche-design-system/components/dist/types/components/pin-code/pin-code-utils';
 
 const component = 'form-fields';
 
@@ -77,21 +77,23 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     forceComponentTheme: theme,
   });
 
+  const pinCodeHtmlForReferenceId = await getHtmlForReferenceId(page, 'p-pin-code >>> label');
+
   await forceHoverState(page, '.hover input');
   await forceHoverState(page, '.hover select');
   await forceHoverState(page, '.hover textarea');
   await forceHoverState(page, '.hover p-multi-select >>> .input-container');
-  await forceHoverState(page, `.hover p-pin-code >>> #${currentInputId}`);
+  await forceHoverState(page, `.hover p-pin-code >>> #${pinCodeHtmlForReferenceId}`);
   await forceFocusState(page, '.focus input');
   await forceFocusState(page, '.focus select');
   await forceFocusState(page, '.focus textarea');
   await forceFocusState(page, '.focus p-multi-select >>> input');
-  await forceFocusState(page, `.focus p-pin-code >>> ${currentInputId}`);
+  await forceFocusState(page, `.focus p-pin-code >>> ${pinCodeHtmlForReferenceId}`);
   await forceFocusHoverState(page, '.focus-hover input');
   await forceFocusHoverState(page, '.focus-hover select');
   await forceFocusHoverState(page, '.focus-hover textarea');
   await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
-  await forceFocusHoverState(page, `.focus-hover p-pin-code >>> ${currentInputId}`);
+  await forceFocusHoverState(page, `.focus-hover p-pin-code >>> ${pinCodeHtmlForReferenceId}`);
 };
 
 // executed in Chrome only
