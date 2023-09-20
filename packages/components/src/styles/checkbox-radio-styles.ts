@@ -140,7 +140,7 @@ export const getCheckboxRadioJssStyle = (
         }),
       }),
       label: {
-        position: 'relative',
+        position: 'relative', // for loading spinner
         display: 'flex',
         alignItems: 'flex-start',
       },
@@ -160,5 +160,19 @@ export const getCheckboxRadioJssStyle = (
     },
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...(isLoading && {
+      spinner: {
+        position: 'absolute',
+        top: `calc(${fontLineHeight}/2 + 2px)`,
+        left: `calc(${fontLineHeight}/2 + 2px)`,
+        transform: 'translate(-50%, -50%)',
+        height: fontLineHeight,
+        width: fontLineHeight,
+        padding: '2px', // matches input's border-width to make it overlap entire input
+        fontFamily, // needed for correct width and height definition and for correct positioning
+        fontSize: '1rem', // needed for correct width and height definition and for correct positioning
+        cursor: 'not-allowed',
+      },
+    }),
   };
 };

@@ -441,6 +441,7 @@ exports[`should call validateProps() with correct parameters via render for p-ra
 {
   "hideLabel": "breakpoint",
   "label": "string",
+  "loading": "boolean",
   "message": "string",
   "state": "oneOf",
   "theme": "oneOf",

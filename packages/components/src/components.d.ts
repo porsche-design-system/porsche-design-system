@@ -1278,6 +1278,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * __Experimental__: Disables the radio button and shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
           * The message styled depending on validation state.
          */
         "message"?: string;
@@ -3565,6 +3569,10 @@ declare namespace LocalJSX {
           * The label text.
          */
         "label"?: string;
+        /**
+          * __Experimental__: Disables the radio button and shows a loading indicator.
+         */
+        "loading"?: boolean;
         /**
           * The message styled depending on validation state.
          */
