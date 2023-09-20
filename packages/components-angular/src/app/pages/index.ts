@@ -57,6 +57,7 @@ import { MultiSelectComponent } from './generated/multi-select.component';
 import { OverviewComponent } from './generated/overview.component';
 import { OverviewNotificationsComponent } from './generated/overview-notifications.component';
 import { PaginationComponent } from './generated/pagination.component';
+import { PinCodeComponent } from './generated/pin-code.component';
 import { PopoverComponent } from './generated/popover.component';
 import { RadioButtonWrapperComponent } from './generated/radio-button-wrapper.component';
 import { ScrollerComponent } from './generated/scroller.component';
@@ -121,6 +122,7 @@ export const generatedPages = [
   OverviewComponent,
   OverviewNotificationsComponent,
   PaginationComponent,
+  PinCodeComponent,
   PopoverComponent,
   RadioButtonWrapperComponent,
   ScrollerComponent,
@@ -306,6 +308,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Pagination',
     path: 'pagination',
     component: PaginationComponent,
+  },
+  {
+    name: 'Pin Code',
+    path: 'pin-code',
+    component: PinCodeComponent,
   },
   {
     name: 'Popover',

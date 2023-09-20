@@ -19,11 +19,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-checkbox-wrapper label="When input gets hovered or focused">
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
-    <div class="force-label">
-      <p-checkbox-wrapper label="When label gets hovered or focused">
-        <input type="checkbox" name="some-name" />
-      </p-checkbox-wrapper>
-    </div>
+    <p-checkbox-wrapper class="force-label" label="When label gets hovered or focused">
+      <input type="checkbox" name="some-name" />
+    </p-checkbox-wrapper>
     <p-checkbox-wrapper label="Disabled">
       <input type="checkbox" name="some-name" disabled />
     </p-checkbox-wrapper>
@@ -84,14 +82,14 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     prefersColorScheme: scheme,
   });
 
-  await forceHoverState(page, '.hover p-checkbox-wrapper input[type="checkbox"]');
-  await forceHoverState(page, '.hover .force-label > p-checkbox-wrapper >>> span');
+  await forceHoverState(page, '.hover p-checkbox-wrapper:not(.force-label) input[type="checkbox"]');
+  await forceHoverState(page, '.hover p-checkbox-wrapper.force-label >>> span');
   await forceHoverState(page, '.hover p-checkbox-wrapper span a');
   await forceFocusState(page, '.focus p-checkbox-wrapper input[type="checkbox"]');
   await forceFocusState(page, '.focus p-checkbox-wrapper span a');
-  await forceFocusHoverState(page, '.focus-hover p-checkbox-wrapper input[type="checkbox"]');
-  await forceFocusState(page, '.focus-hover .force-label > p-checkbox-wrapper input[type="checkbox"]');
-  await forceHoverState(page, '.focus-hover .force-label > p-checkbox-wrapper >>> span');
+  await forceFocusHoverState(page, '.focus-hover p-checkbox-wrapper:not(.force-label) input[type="checkbox"]');
+  await forceFocusState(page, '.focus-hover p-checkbox-wrapper.force-label input[type="checkbox"]');
+  await forceHoverState(page, '.focus-hover p-checkbox-wrapper.force-label >>> span');
   await forceFocusHoverState(page, '.focus-hover p-checkbox-wrapper span a');
 };
 

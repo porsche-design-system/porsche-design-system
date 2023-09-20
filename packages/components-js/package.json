@@ -68,8 +68,8 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components": "3.7.0-rc.0",
-    "@porsche-design-system/components-js": "3.7.0-rc.0",
+    "@porsche-design-system/components": "3.7.0-rc.1",
+    "@porsche-design-system/components-js": "3.7.0-rc.1",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0",
     "imask": "^7.1.3"

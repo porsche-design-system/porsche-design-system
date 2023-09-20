@@ -17,10 +17,14 @@ const component = 'textarea-wrapper';
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const head = `
     <style>
-      .playground > div { display: flex; }
-      .playground > div > * { width: 40%; }
-      p-textarea-wrapper:not(:last-child) {
-        margin-right: 1rem;
+      .playground > div {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        width: 100%;
+      }
+      .playground div:not(:last-child) {
         margin-bottom: 1rem;
       }
       textarea { min-height: initial; }
@@ -98,6 +102,11 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
           </span>
         </span>
       </p-textarea-wrapper>
+    </div>
+    <div>
+      <p-textarea-wrapper class="force-label" label="Label gets hovered or focussed">
+        ${child}
+      </p-textarea-wrapper>
     </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
@@ -106,11 +115,14 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     prefersColorScheme: scheme,
   });
 
-  await forceHoverState(page, '.hover p-textarea-wrapper textarea');
+  await forceHoverState(page, '.hover p-textarea-wrapper:not(.force-label) textarea');
+  await forceHoverState(page, '.hover p-textarea-wrapper.force-label >>> span');
   await forceHoverState(page, '.hover p-textarea-wrapper a');
   await forceFocusState(page, '.focus p-textarea-wrapper textarea');
   await forceFocusState(page, '.focus p-textarea-wrapper a');
-  await forceFocusHoverState(page, '.focus-hover p-textarea-wrapper textarea');
+  await forceFocusHoverState(page, '.focus-hover p-textarea-wrapper:not(.force-label) textarea');
+  await forceFocusState(page, '.focus-hover p-textarea-wrapper.force-label textarea');
+  await forceHoverState(page, '.focus-hover p-textarea-wrapper.force-label >>> span');
   await forceFocusHoverState(page, '.focus-hover p-textarea-wrapper a');
 };
 

@@ -17,10 +17,14 @@ const component = 'text-field-wrapper';
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const head = `
     <style>
-      .playground div, .playground form { display: flex; }
-      .playground div > *, .playground form > * { width: 40%; }
-      p-text-field-wrapper:not(:last-child) {
-        margin-right: 1rem;
+      .playground div, .playground form {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        width: 100%;
+      }
+      .playground div:not(:last-child), .playground form {
         margin-bottom: 1rem;
       }
     </style>`;
@@ -130,6 +134,11 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
           </span>
         </span>
       </p-text-field-wrapper>
+    </div>
+    <div>
+      <p-text-field-wrapper class="force-label" label="Label gets hovered or focussed">
+        <input type="text" />
+      </p-text-field-wrapper>
     </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
@@ -143,22 +152,25 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await Promise.all(
     textFieldWrappers.map(
       async (item) =>
-        (await item.evaluateHandle((el) => el.shadowRoot.querySelector('p-button-pure'))).evaluate((el: HTMLElement) =>
-          el.click()
-        ) // js element.click() instead of puppeteer ElementHandle.click() to workaround element off screen issue
+        (
+          await item.evaluateHandle((el) => el.shadowRoot.querySelector('p-button-pure'))
+        ).evaluate((el: HTMLElement) => el.click()) // js element.click() instead of puppeteer ElementHandle.click() to workaround element off screen issue
     )
   );
 
   // get rid of focus from last .toggle-password input
   await page.mouse.click(0, 0);
 
-  await forceHoverState(page, '.hover p-text-field-wrapper input');
+  await forceHoverState(page, '.hover p-text-field-wrapper:not(.force-label) input');
+  await forceHoverState(page, '.hover p-text-field-wrapper.force-label >>> span');
   await forceHoverState(page, '.hover p-text-field-wrapper a');
   await forceHoverState(page, '.hover p-text-field-wrapper >>> p-button-pure >>> button');
   await forceFocusState(page, '.focus p-text-field-wrapper input');
   await forceFocusState(page, '.focus p-text-field-wrapper a');
   await forceFocusState(page, '.focus p-text-field-wrapper >>> p-button-pure >>> button');
-  await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper input');
+  await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper:not(.force-label) input');
+  await forceFocusState(page, '.focus-hover p-text-field-wrapper.force-label input');
+  await forceHoverState(page, '.focus-hover p-text-field-wrapper.force-label >>> span');
   await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper a');
   await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper >>> p-button-pure >>> button');
 };

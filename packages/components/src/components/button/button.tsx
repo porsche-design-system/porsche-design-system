@@ -114,7 +114,7 @@ export class Button {
             class="spinner"
             size="inherit"
             theme={this.theme}
-            aria={{ 'aria-label': 'Loading state:' }}
+            aria={{ 'aria-label': 'Loading state' }}
           />
         )}
         {hasVisibleIcon(this.icon, this.iconSource) && (

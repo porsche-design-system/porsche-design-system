@@ -1,0 +1,21 @@
+<p-pin-code label="Some Label" value=""></p-pin-code>
+
+<p-text class="value">Current value:</p-text>
+<p-text class="complete">Completely filled: false</p-text>
+
+<script>
+  const pinCode = document.querySelector('p-pin-code');
+  const debugElement1 = document.querySelector('.value');
+  const debugElement2 = document.querySelector('.complete');
+
+  pinCode.addEventListener('update', (e) => {
+    const { value, isComplete } = e.detail;
+    e.target.value = value;
+    setDebugElementsText(value, isComplete);
+  });
+
+  function setDebugElementsText(value, isComplete) {
+    debugElement1.innerText = `Current value: ${value}`;
+    debugElement2.innerText = `Completely filled: ${isComplete}`;
+  }
+</script>

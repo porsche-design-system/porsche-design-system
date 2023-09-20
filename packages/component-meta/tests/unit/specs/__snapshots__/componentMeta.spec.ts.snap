@@ -2156,6 +2156,75 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-pin-code": {
+    "allowedPropValues": {
+      "description": "string",
+      "disabled": "boolean",
+      "hideLabel": "boolean",
+      "label": "string",
+      "length": [
+        4,
+        6,
+      ],
+      "loading": "boolean",
+      "message": "string",
+      "name": "string",
+      "required": "boolean",
+      "state": [
+        "none",
+        "error",
+        "success",
+      ],
+      "theme": [
+        "light",
+        "dark",
+        "auto",
+      ],
+      "type": [
+        "number",
+        "password",
+      ],
+      "value": "string",
+    },
+    "breakpointCustomizableProps": [
+      "hideLabel",
+    ],
+    "eventNames": [
+      "update",
+    ],
+    "hasAriaProp": false,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "namedSlots": [
+      "label",
+      "description",
+      "message",
+    ],
+    "nestedComponents": [
+      "p-spinner",
+    ],
+    "props": {
+      "description": null,
+      "disabled": false,
+      "hideLabel": false,
+      "label": null,
+      "length": 4,
+      "loading": false,
+      "message": null,
+      "name": null,
+      "required": false,
+      "state": "none",
+      "theme": "light",
+      "type": "number",
+      "value": null,
+    },
+    "styling": "jss",
+  },
   "p-popover": {
     "allowedPropValues": {
       "aria": {

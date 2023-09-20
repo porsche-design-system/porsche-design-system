@@ -333,6 +333,14 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/pagination/pagination.props.md')],
     },
+    'Pin Code': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/pin-code/pin-code.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/pin-code/pin-code.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/pin-code/pin-code.props.md')],
+    },
     Popover: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/popover/popover.examples.md')],
