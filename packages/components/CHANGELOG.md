@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- **[EXPERIMENTAL]** Prop `loading` for `Radio Button Wrapper`
+  ([#2774](https://github.com/porsche-design-system/porsche-design-system/pull/2774))
 - Theme property supports `auto` for all themeable components, reflecting `prefers-color-scheme` based on OS system
   settings ([#2719](https://github.com/porsche-design-system/porsche-design-system/pull/2719))
 - `hyphens` CSS property can now be overwritten in `Button Tile`, `Link Tile` and `Link Tile Model Signature` components

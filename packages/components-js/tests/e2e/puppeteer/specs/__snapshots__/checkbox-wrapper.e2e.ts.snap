@@ -107,8 +107,7 @@ exports[`accessibility should expose correct accessibility tree when loading=tru
           "role": "StaticText",
         },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
     {
       "children": [

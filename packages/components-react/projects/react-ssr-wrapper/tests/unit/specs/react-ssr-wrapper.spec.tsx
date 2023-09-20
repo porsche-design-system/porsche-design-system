@@ -134,6 +134,18 @@ describe('manual test cases', () => {
         </fromComponents.PLinkTileModelSignature>
       ),
     ],
+    'p-radio-button-wrapper': [
+      () => (
+        <fromComponents.PRadioButtonWrapper label="Some label" loading={true}>
+          <input type="radio" />
+        </fromComponents.PRadioButtonWrapper>
+      ),
+      () => (
+        <fromComponents.PRadioButtonWrapper label="Some label" loading={true}>
+          <input type="radio" defaultChecked={true} />
+        </fromComponents.PRadioButtonWrapper>
+      ),
+    ],
     'p-tabs-item': [
       () => (
         <fromComponents.PTabs theme="dark">

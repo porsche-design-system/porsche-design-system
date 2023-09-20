@@ -24,19 +24,31 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
         <input type="checkbox" name="some-name" />
       </p-checkbox-wrapper>
     </div>
-    <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
+    <p-checkbox-wrapper label="Disabled">
+      <input type="checkbox" name="some-name" disabled />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="Disabled and checked">
+      <input type="checkbox" name="some-name" checked disabled />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="Loading" loading="true">
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label" state="success" message="Some success validation message.">
+    <p-checkbox-wrapper label="Loading and Checked" loading="true">
+      <input type="checkbox" name="some-name" checked />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="State error" state="error" message="Some error validation message.">
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label">
+    <p-checkbox-wrapper label="State success" state="success" message="Some success validation message.">
+      <input type="checkbox" name="some-name" />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="Checked">
       <input type="checkbox" name="some-name" checked/>
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
+    <p-checkbox-wrapper label="Checked with state error" state="error" message="Some error validation message.">
       <input type="checkbox" name="some-name" checked/>
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label" state="success" message="Some success validation message.">
+    <p-checkbox-wrapper label="Checked with state success" state="success" message="Some success validation message.">
       <input type="checkbox" name="some-name" checked />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
@@ -48,7 +60,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label" state="error">
+    <p-checkbox-wrapper label="State error" state="error">
       <input type="checkbox" name="some-name" />
       <span slot="message">
         Slotted error message
@@ -57,7 +69,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
         </span>
       </span>
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label" state="success">
+    <p-checkbox-wrapper label="State success" state="success">
       <input type="checkbox" name="some-name" />
       <span slot="message">
         Slotted success message
