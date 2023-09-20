@@ -287,6 +287,33 @@ describe('within form', () => {
     ).toEqual('1234');
   });
 
+  it('should submit on key Enter if form does contain another input element, a p-button type=text and a p-button type=submit', async () => {
+    await initPinCode({
+      options: {
+        isWithinForm: true,
+        markupBefore: '<p-button">Some Button</p-button>',
+        markupAfter: '<input /><p-button type="submit">Some submit Button</p-button>',
+      },
+    });
+    const host = await getHost();
+    const input = await getCurrentInput();
+    const form = await selectNode(page, 'form');
+    await addEventListener(form, 'submit');
+    await setProperty(host, 'value', '1234');
+
+    expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
+
+    await input.click();
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
+    expect(
+      await form.evaluate((form: HTMLFormElement) => Array.from(new FormData(form).values()).join()),
+      'after Enter'
+    ).toEqual('1234');
+  });
+
   it('should not submit on key Enter if form does contain another input element and no input/button type=submit', async () => {
     await initPinCode({ options: { isWithinForm: true, markupAfter: '<input />' } });
     const host = await getHost();
