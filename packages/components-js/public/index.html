@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -123,43 +123,51 @@
         <option value="auto">Auto</option>
       </select>
     </header>
+
     <div id="app"></div>
+
     <script>
       const getPage = () => window.location.pathname.substring(1);
-      const getTheme = () => (new URL(document.location).searchParams.get('theme')) || 'light';
+      const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
 
       const updateRoute = async (opts) => {
         if (opts) {
           const url = new URL(location);
-          if (opts.pathname) url.pathname = opts.pathname;
-          if (opts.theme) url.searchParams.set('theme', opts.theme);
+          if (opts.pathname) {
+            url.pathname = opts.pathname;
+          }
+          if (opts.theme) {
+            url.searchParams.set('theme', opts.theme);
+          }
           history.pushState(null, '', url);
         }
 
         const app = document.getElementById('app');
 
-
         const page = getPage();
-        if (!page) return;
-        const theme = getTheme();
-        const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
+        if (page) {
+          const theme = getTheme();
+          const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
 
-        app.innerHTML = '';
-        app.innerHTML = (await (await fetch(`/${directory}/${page}.html`)).text()).replace(/>(\s)*</g, '><');
-        app.querySelectorAll('*').forEach(el => el.theme = theme);
-        app.querySelectorAll('.playground').forEach(el => {
-          el.classList.remove('light', 'dark', 'auto');
-          el.classList.add(theme);
-        });
+          app.innerHTML = '';
+          app.innerHTML = (await (await fetch(`/${directory}/${page}.html`)).text()).replace(/>(\s)*</g, '><');
+          app.querySelectorAll('*').forEach((el) => (el.theme = theme));
+          app.querySelectorAll('.playground').forEach((el) => {
+            el.classList.remove('light', 'dark', 'auto');
+            el.classList.add(theme);
+          });
 
-        const scripts = app.getElementsByTagName('script');
-        for (let i = 0; i < scripts.length; i++) {
-          eval(scripts[i].innerText); // execute scripts inserted via innerHTML
+          const scripts = app.getElementsByTagName('script');
+          for (let i = 0; i < scripts.length; i++) {
+            eval(scripts[i].innerText); // execute scripts inserted via innerHTML
+          }
         }
       };
 
       const updateSelect = (id, value) => {
-        if (id && value) Array.from(document.querySelectorAll(`#${id} option`)).filter(e => e.value === value)[0].selected = true
+        if (id && value) {
+          Array.from(document.querySelectorAll(`#${id} option`)).filter((e) => e.value === value)[0].selected = true;
+        }
       };
 
       porscheDesignSystem.load();
