@@ -7,7 +7,7 @@ import {
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
-  getHtmlForReferenceId,
+  getValueOfForAttribute,
 } from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 import { type TagName } from '@porsche-design-system/shared';
@@ -76,7 +76,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     forceComponentTheme: theme,
   });
 
-  const pinCodeHtmlForReferenceId = await getHtmlForReferenceId(page, 'p-pin-code >>> label');
+  const pinCodeHtmlForReferenceId = await getValueOfForAttribute(page, 'p-pin-code >>> label');
 
   await forceHoverState(page, '.hover input');
   await forceHoverState(page, '.hover select');
