@@ -22,7 +22,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-radio-button-wrapper class="force-label" label="When label gets hovered or focused">
       <input type="radio" name="some-name" />
     </p-radio-button-wrapper>
-    <p-radio-button-wrapper label="Some label" state="error" message="Some error validation message.">
     <p-radio-button-wrapper label="Disabled">
       <input type="radio" name="some-name-disabled" disabled />
     </p-radio-button-wrapper>

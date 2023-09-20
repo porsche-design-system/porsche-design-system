@@ -20,6 +20,8 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper class="force-label" label="When label gets hovered or focused">
+      <input type="checkbox" name="some-name" />
+    </p-checkbox-wrapper>
     <p-checkbox-wrapper label="Disabled">
       <input type="checkbox" name="some-name" disabled />
     </p-checkbox-wrapper>
