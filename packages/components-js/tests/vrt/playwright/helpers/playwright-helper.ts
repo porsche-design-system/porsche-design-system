@@ -26,16 +26,21 @@ const waitForForcedComponentTheme = async (page: Page, forceComponentTheme: Them
         }
       });
 
-      const themeableComponents = document.querySelectorAll(themeableTagNames.join());
-      (window as any).componentDidUpdateMap = new Map(Array.from(themeableComponents).map((el) => [el, false]));
+      const themeableComponents = Array.from(
+        document.querySelectorAll<HTMLElement & { theme: Theme }>(themeableTagNames.join())
+      );
+
+      // initialize map to detect theme change via stencil_componentDidUpdate event
+      (window as any).componentDidUpdateMap = new Map(
+        themeableComponents.map((el) => [el, el.theme === forceComponentTheme])
+      );
 
       // tweak components
       themeableComponents.forEach((el) => {
-        el.setAttribute('theme', 'auto'); // set to something non-default to trigger componentDidUpdate in next step
-        el.setAttribute('theme', forceComponentTheme);
+        el.theme = forceComponentTheme;
       });
 
-      // tweak playground
+      // tweak playgrounds
       document.querySelectorAll('.playground').forEach((el) => {
         el.classList.remove('light', 'dark', 'auto');
         el.classList.add(forceComponentTheme);
@@ -81,27 +86,18 @@ export const setupScenario = async (
     emulateMediaPrint: false,
     ...options,
   };
-
-  if (javaScriptDisabled || forcedColorsEnabled || prefersColorScheme) {
+  if (javaScriptDisabled) {
     const cdpSession = await page.context().newCDPSession(page);
+    await cdpSession.send('Emulation.setScriptExecutionDisabled', {
+      value: javaScriptDisabled,
+    });
+  }
 
-    if (javaScriptDisabled) {
-      await cdpSession.send('Emulation.setScriptExecutionDisabled', {
-        value: javaScriptDisabled,
-      });
-    }
-
-    // NOTE: 'forced-colors' isn't supported by page.emulateMediaFeatures, yet https://pptr.dev/api/puppeteer.page.emulatemediafeatures
-    // also it looks like cdpSession.send() can't be combined with page.emulateMediaFeatures since it affects each other
-    // reset or fallback is needed since it is shared across pages, parallel tests are affected by this
-    if (forcedColorsEnabled || prefersColorScheme) {
-      await cdpSession.send('Emulation.setEmulatedMedia', {
-        features: [
-          { name: 'forced-colors', value: forcedColorsEnabled ? 'active' : 'none' },
-          { name: 'prefers-color-scheme', value: prefersColorScheme || 'light' },
-        ],
-      });
-    }
+  if (forcedColorsEnabled || prefersColorScheme) {
+    await page.emulateMedia({
+      forcedColors: forcedColorsEnabled ? 'active' : 'none',
+      colorScheme: prefersColorScheme || 'light',
+    });
   }
 
   await page.setViewportSize({ width: viewportWidth, height: 600 });
@@ -147,10 +143,7 @@ export const setContentWithDesignSystem = async (
   };
 
   if (prefersColorScheme) {
-    const cdpSession = await page.context().newCDPSession(page);
-    await cdpSession.send('Emulation.setEmulatedMedia', {
-      features: [{ name: 'prefers-color-scheme', value: prefersColorScheme || 'light' }],
-    });
+    await page.emulateMedia({ colorScheme: prefersColorScheme || 'light' });
   }
 
   const initialStyles = getInitialStyles({ format: 'html' });
