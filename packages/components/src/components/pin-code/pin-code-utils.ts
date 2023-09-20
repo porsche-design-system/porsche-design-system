@@ -1,8 +1,6 @@
 import type { FormState } from '../../utils/form/form-state';
 import type { Styles } from 'jss';
 import { consoleWarn, getPrefixedTagNames, getTagNameWithoutPrefix, setAttributes } from '../../utils';
-import { Components } from '../../components';
-import PButton = Components.PButton;
 
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
 export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
@@ -108,6 +106,6 @@ export const isFormSubmittable = (host: HTMLElement, form: HTMLFormElement): boo
       form.querySelectorAll(
         `${PrefixedTagNames.pButton},${PrefixedTagNames.pButtonPure},button[type=submit],input[type=submit]`
       )
-    ).filter((el) => (el as PButton).type === 'submit').length
+    ).some((el) => (el as HTMLButtonElement).type === 'submit')
   );
 };
