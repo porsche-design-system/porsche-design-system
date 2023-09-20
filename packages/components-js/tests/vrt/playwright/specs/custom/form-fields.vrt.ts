@@ -76,23 +76,23 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     forceComponentTheme: theme,
   });
 
-  const pinCodeHtmlForReferenceId = await getValueOfForAttribute(page, 'p-pin-code >>> label');
+  const valueOfForAttribute = await getValueOfForAttribute(page, 'p-pin-code >>> label');
 
   await forceHoverState(page, '.hover input');
   await forceHoverState(page, '.hover select');
   await forceHoverState(page, '.hover textarea');
   await forceHoverState(page, '.hover p-multi-select >>> .input-container');
-  await forceHoverState(page, `.hover p-pin-code >>> #${pinCodeHtmlForReferenceId}`);
+  await forceHoverState(page, `.hover p-pin-code >>> #${valueOfForAttribute}`);
   await forceFocusState(page, '.focus input');
   await forceFocusState(page, '.focus select');
   await forceFocusState(page, '.focus textarea');
   await forceFocusState(page, '.focus p-multi-select >>> input');
-  await forceFocusState(page, `.focus p-pin-code >>> #${pinCodeHtmlForReferenceId}`);
+  await forceFocusState(page, `.focus p-pin-code >>> #${valueOfForAttribute}`);
   await forceFocusHoverState(page, '.focus-hover input');
   await forceFocusHoverState(page, '.focus-hover select');
   await forceFocusHoverState(page, '.focus-hover textarea');
   await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
-  await forceFocusHoverState(page, `.focus-hover p-pin-code >>> #${pinCodeHtmlForReferenceId}`);
+  await forceFocusHoverState(page, `.focus-hover p-pin-code >>> #${valueOfForAttribute}`);
 };
 
 // executed in Chrome only
