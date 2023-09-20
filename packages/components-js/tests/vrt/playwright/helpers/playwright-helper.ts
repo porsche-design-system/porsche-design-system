@@ -30,7 +30,10 @@ const waitForForcedComponentTheme = async (page: Page, forceComponentTheme: Them
       (window as any).componentDidUpdateMap = new Map(Array.from(themeableComponents).map((el) => [el, false]));
 
       // tweak components
-      themeableComponents.forEach((el) => el.setAttribute('theme', forceComponentTheme));
+      themeableComponents.forEach((el) => {
+        el.setAttribute('theme', 'auto'); // set to something non-default to trigger componentDidUpdate in next step
+        el.setAttribute('theme', forceComponentTheme);
+      });
 
       // tweak playground
       document.querySelectorAll('.playground').forEach((el) => {
