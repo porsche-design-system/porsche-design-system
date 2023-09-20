@@ -30,7 +30,7 @@ export function getIconLinks(opts?: GetIconLinksOptions): string | JSX.Element {
   const invalidIconNames = icons.filter((x) => !supportedIconNames.includes(x));
 
   if (invalidIconNames.length) {
-    throw new Error(\`The following supplied icon names are invalid:
+    throw new Error(\`[Porsche Design System] The following supplied icon names are invalid:
   \${invalidIconNames.join(', ')}
 
 Please use only valid icon names:

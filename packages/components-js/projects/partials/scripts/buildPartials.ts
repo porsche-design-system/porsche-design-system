@@ -13,8 +13,8 @@ import { generateCookiesFallbackScriptPartial } from './generateCookiesFallbackS
 import { generateDSRPonyfillPartial } from './generateDSRPonyfillPartial';
 
 const generateSharedCode = (): string => {
-  return `import type { Cdn, Format } from '../shared';
-import { throwIfRunInBrowser } from '../shared';
+  return `import type { Cdn, Format, FormatWithCSP } from '../shared';
+import { throwIfRunInBrowser, getSha256Hash } from '../shared';
 
 const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL_COM}');
 
