@@ -4,29 +4,63 @@ import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 
+// TODO: why are the following constants prefixed with base?
 export const baseThemes = ['light', 'dark'] as const;
 export const baseSchemes = ['light', 'dark'] as const;
 export const baseViewportWidth = 1000;
 export const baseViewportWidths = [320, 480, 760, 1300, 1760] as const;
 
+const themeableTagNames = (TAG_NAMES as unknown as TagName[]).filter((el) => getComponentMeta(el).isThemeable);
+
 export const waitForComponentsReady = (page: Page): Promise<number> => {
   return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
 };
 
+const waitForForcedComponentTheme = async (page: Page, forceComponentTheme: Theme): Promise<void> => {
+  await page.evaluate(
+    ({ forceComponentTheme, themeableTagNames }) => {
+      window.addEventListener('stencil_componentDidUpdate', (e: Event & { target: Element }) => {
+        const { target } = e;
+        if ((window as any).componentDidUpdateMap.has(target)) {
+          (window as any).componentDidUpdateMap.set(target, true);
+        }
+      });
+
+      const themeableComponents = document.querySelectorAll(themeableTagNames.join());
+      (window as any).componentDidUpdateMap = new Map(Array.from(themeableComponents).map((el) => [el, false]));
+
+      // tweak components
+      themeableComponents.forEach((el) => el.setAttribute('theme', forceComponentTheme));
+
+      // tweak playground
+      document.querySelectorAll('.playground').forEach((el) => {
+        el.classList.remove('light', 'dark', 'auto');
+        el.classList.add(forceComponentTheme);
+      });
+    },
+    { forceComponentTheme, themeableTagNames }
+  );
+
+  await page.waitForFunction(
+    () => !Array.from<boolean>((window as any).componentDidUpdateMap.values()).some((didUpdate) => !didUpdate)
+  );
+};
+
 export type PrefersColorScheme = 'light' | 'dark';
-type Options = {
+type SetupScenarioOptions = {
   javaScriptDisabled?: boolean;
   forcedColorsEnabled?: boolean;
   prefersColorScheme?: PrefersColorScheme;
   scalePageFontSize?: boolean;
   forceComponentTheme?: Theme;
+  emulateMediaPrint?: boolean;
 };
 
 export const setupScenario = async (
   page: Page,
   url: string,
   viewportWidth: number,
-  options?: Options
+  options?: SetupScenarioOptions
 ): Promise<void> => {
   const {
     javaScriptDisabled,
@@ -34,15 +68,16 @@ export const setupScenario = async (
     prefersColorScheme,
     scalePageFontSize,
     forceComponentTheme,
-  }: Options = {
+    emulateMediaPrint,
+  }: SetupScenarioOptions = {
     javaScriptDisabled: false,
     forcedColorsEnabled: false,
     prefersColorScheme: undefined,
     scalePageFontSize: false,
     forceComponentTheme: undefined,
+    emulateMediaPrint: false,
     ...options,
   };
-  const themeableComponents: TagName[] = TAG_NAMES.filter((el) => getComponentMeta(el).isThemeable);
 
   if (javaScriptDisabled || forcedColorsEnabled || prefersColorScheme) {
     const cdpSession = await page.context().newCDPSession(page);
@@ -71,19 +106,7 @@ export const setupScenario = async (
   await waitForComponentsReady(page);
 
   if (forceComponentTheme) {
-    await page.evaluate(
-      ({ forceComponentTheme, themeableComponents }) => {
-        document
-          .querySelectorAll(themeableComponents.join())
-          .forEach((el) => el.setAttribute('theme', forceComponentTheme));
-        document.querySelectorAll('.playground').forEach((el) => {
-          el.classList.remove('light', 'dark', 'auto');
-          el.classList.add(forceComponentTheme);
-        });
-      },
-      { forceComponentTheme, themeableComponents }
-    );
-    await waitForComponentsReady(page);
+    await waitForForcedComponentTheme(page, forceComponentTheme);
   }
 
   if (scalePageFontSize) {
@@ -92,26 +115,33 @@ export const setupScenario = async (
     });
   }
 
+  if (emulateMediaPrint) {
+    await page.emulateMedia({ media: 'print' });
+  }
+
   await page.setViewportSize({
     width: viewportWidth,
     height: await page.evaluate(() => document.body.clientHeight),
   });
 };
 
-type Options2 = {
+type SetContentWithDesignSystemOptions = {
   injectIntoHead?: string;
   prefersColorScheme?: PrefersColorScheme;
   forceComponentTheme?: Theme;
 };
 
-export const setContentWithDesignSystem = async (page: Page, content: string, opts?: Options2): Promise<void> => {
-  const { injectIntoHead, prefersColorScheme, forceComponentTheme }: Options2 = {
+export const setContentWithDesignSystem = async (
+  page: Page,
+  content: string,
+  opts?: SetContentWithDesignSystemOptions
+): Promise<void> => {
+  const { injectIntoHead, prefersColorScheme, forceComponentTheme }: SetContentWithDesignSystemOptions = {
     injectIntoHead: '',
     prefersColorScheme: undefined,
     forceComponentTheme: undefined,
     ...opts,
   };
-  const themeableComponents: TagName[] = TAG_NAMES.filter((el) => getComponentMeta(el).isThemeable);
 
   if (prefersColorScheme) {
     const cdpSession = await page.context().newCDPSession(page);
@@ -121,6 +151,8 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   }
 
   const initialStyles = getInitialStyles({ format: 'html' });
+
+  // TODO: is it completely unsupported in playwright? or browser specific?
   // Unsupported media feature: hover
   const initialStylesWithoutMediaQuery = initialStyles
     .replace(/\@media\(hover\:hover\)\{/g, '')
@@ -134,37 +166,25 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
 
   await page.setContent(
     `<!DOCTYPE html>
-    <html>
-      <head>
-        <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
-        <script type="text/javascript" src="http://localhost:8575/index.js"></script>
-        <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
-        <link rel="stylesheet" href="assets/styles.css">
-        ${initialStylesWithoutMediaQuery}
-        ${injectIntoHead}
-      </head>
-      <body>
-        <script type="text/javascript">porscheDesignSystem.load();</script>
-        <div id="app">${content}</div>
-      </body>
-    </html>`
+<html>
+  <head>
+    <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
+    <script type="text/javascript" src="http://localhost:8575/index.js"></script>
+    <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
+    <link rel="stylesheet" href="assets/styles.css">
+    ${initialStylesWithoutMediaQuery}
+    ${injectIntoHead}
+  </head>
+  <body>
+    <div id="app">${content}</div>
+    <script type="text/javascript">porscheDesignSystem.load();</script>
+  </body>
+</html>`
   );
   await waitForComponentsReady(page);
 
   if (forceComponentTheme) {
-    await page.evaluate(
-      ({ forceComponentTheme, themeableComponents }) => {
-        document
-          .querySelectorAll(themeableComponents.join())
-          .forEach((el) => el.setAttribute('theme', forceComponentTheme));
-        document.querySelectorAll('.playground').forEach((el) => {
-          el.classList.remove('light', 'dark', 'auto');
-          el.classList.add(forceComponentTheme);
-        });
-      },
-      { forceComponentTheme, themeableComponents }
-    );
-    await waitForComponentsReady(page);
+    await waitForForcedComponentTheme(page, forceComponentTheme);
   }
 
   await page.setViewportSize({ width: baseViewportWidth, height: 600 });
