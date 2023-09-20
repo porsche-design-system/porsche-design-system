@@ -31,8 +31,8 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 43993,
-    "gzipSize": 17716
+    "size": 43978,
+    "gzipSize": 17715
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -132,7 +132,7 @@
   {
     "chunkShortName": "main",
     "size": 71482,
-    "gzipSize": 24033
+    "gzipSize": 24032
   },
   {
     "chunkShortName": "marque",
@@ -161,8 +161,8 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 11776,
-    "gzipSize": 4487
+    "size": 11597,
+    "gzipSize": 4483
   },
   {
     "chunkShortName": "popover",
