@@ -13,13 +13,13 @@ jest.mock('../../../src/shared');
 
 describe('validation', () => {
   it('should throw error on invalid components parameter', () => {
-    expect(() => getComponentChunkLinks({ components: ['some-invalid-component'] as any[] }))
-      .toThrowErrorMatchingInlineSnapshot(`
+    expect(() => getComponentChunkLinks({ components: (['some-invalid-component'] as any[]) })).
+toThrowErrorMatchingInlineSnapshot(`
 "[Porsche Design System] The following supplied component chunk names are invalid:
   some-invalid-component
 
 Please use only valid component chunk names:
-  accordion, banner, button-group, button-pure, button-tile, button, carousel, checkbox-wrapper, content-wrapper, crest, display, divider, fieldset-wrapper, fieldset, flex, flyout, grid, heading, headline, icon, inline-notification, link-pure, link-social, link-tile-model-signature, link-tile, link, marque, modal, model-signature, multi-select, pagination, popover, radio-button-wrapper, scroller, segmented-control, select-wrapper, spinner, stepper-horizontal, switch, table, tabs-bar, tabs, tag-dismissible, tag, text-field-wrapper, text-list, text, textarea-wrapper, toast, wordmark"
+  accordion, banner, button-group, button-pure, button-tile, button, carousel, checkbox-wrapper, content-wrapper, crest, display, divider, fieldset-wrapper, fieldset, flex, flyout, grid, heading, headline, icon, inline-notification, link-pure, link-social, link-tile-model-signature, link-tile, link, marque, modal, model-signature, multi-select, pagination, pin-code, popover, radio-button-wrapper, scroller, segmented-control, select-wrapper, spinner, stepper-horizontal, switch, table, tabs-bar, tabs, tag-dismissible, tag, text-field-wrapper, text-list, text, textarea-wrapper, toast, wordmark"
 `);
   });
 });
