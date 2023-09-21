@@ -386,7 +386,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -493,7 +493,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -780,7 +780,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -887,7 +887,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -978,7 +978,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -1085,7 +1085,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -1372,7 +1372,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -1479,7 +1479,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -1569,7 +1569,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: color var(--p-transition-duration, .24s) ease;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }

@@ -127,6 +127,16 @@ export const routes: RouteType[] = [
     element: <fromExamples.MultiSelectDynamicExamplePage />,
   },
   {
+    name: 'Pin Code Example',
+    path: '/pin-code-example',
+    element: <fromExamples.PinCodeExamplePage />,
+  },
+  {
+    name: 'Pin Code Example Controlled',
+    path: '/pin-code-example-controlled',
+    element: <fromExamples.PinCodeExampleControlledPage />,
+  },
+  {
     name: 'Scroller Example',
     path: '/scroller-example',
     element: <fromExamples.ScrollerExamplePage />,

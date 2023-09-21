@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accessibility should add/remove accessibility tree if state changes programmatically: Of Input when state = error 1`] = `
+{
+  "description": "Some label Some error message.",
+  "invalid": "true",
+  "name": "1-4",
+  "role": "textbox",
+}
+`;
+
+exports[`accessibility should add/remove accessibility tree if state changes programmatically: Of Input when state = none 1`] = `
+{
+  "description": "Some label",
+  "name": "1-4",
+  "role": "textbox",
+}
+`;
+
+exports[`accessibility should add/remove accessibility tree if state changes programmatically: Of Input when state = success 1`] = `
+{
+  "description": "Some label Some success message.",
+  "name": "1-4",
+  "role": "textbox",
+}
+`;
+
+exports[`accessibility should add/remove accessibility tree if state changes programmatically: Of Message when state = error 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+    {
+      "name": "Some error message.",
+      "role": "StaticText",
+    },
+  ],
+  "name": "",
+  "role": "alert",
+}
+`;
+
+exports[`accessibility should add/remove accessibility tree if state changes programmatically: Of Message when state = success 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+    {
+      "name": "Some success message.",
+      "role": "StaticText",
+    },
+  ],
+  "name": "",
+  "role": "status",
+}
+`;
+
+exports[`accessibility should expose correct accessibility tree in disabled state 1`] = `
+{
+  "description": "Some label Some description",
+  "disabled": true,
+  "name": "1-4",
+  "role": "textbox",
+}
+`;
+
+exports[`accessibility should expose correct accessibility tree in error state: Of Input 1`] = `
+{
+  "description": "Some label Some description Some error message",
+  "invalid": "true",
+  "name": "1-4",
+  "role": "textbox",
+}
+`;
+
+exports[`accessibility should expose correct accessibility tree in error state: Of Message 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+    {
+      "name": "Some error message",
+      "role": "StaticText",
+    },
+  ],
+  "name": "",
+  "role": "alert",
+}
+`;
+
+exports[`accessibility should expose correct accessibility tree in loading state 1`] = `
+{
+  "description": "Some label Some description",
+  "name": "1-4",
+  "role": "textbox",
+}
+`;
+
+exports[`accessibility should expose correct accessibility tree in required state 1`] = `
+{
+  "description": "Some label * Some description",
+  "name": "1-4",
+  "required": true,
+  "role": "textbox",
+}
+`;
+
+exports[`accessibility should expose correct accessibility tree with description text 1`] = `
+{
+  "description": "Some label Some description",
+  "name": "1-4",
+  "role": "textbox",
+}
+`;
+
+exports[`accessibility should expose correct initial accessibility tree 1`] = `
+{
+  "description": "Some label",
+  "name": "1-4",
+  "role": "textbox",
+}
+`;

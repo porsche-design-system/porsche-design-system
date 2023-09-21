@@ -20,7 +20,7 @@ const components = (TAG_NAMES as unknown as TagName[])
 const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
 
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(50);
+  expect(components.length).toBe(51);
 });
 
 components.forEach((component) => {

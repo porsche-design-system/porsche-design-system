@@ -22,6 +22,7 @@ import type { Theme } from '../../../types';
 import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
 import type { JssStyle } from 'jss';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
+import { escapeHashCharacter } from '../../../utils/svg/escapeHashCharacter';
 
 type NumberedCircleColors = {
   primaryColor: string;
@@ -32,7 +33,7 @@ type NumberedCircleColors = {
 const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColors, isStateCurrent: boolean): string => {
   // # of the hexcolor starts a fragment identifier in URLs, so we have to replace it with the escaped value of # = %23
   numberedCircleColors = Object.entries(numberedCircleColors).reduce(
-    (result, [key, value]) => ({ ...result, [key]: value.replace(/#/g, '%23') }),
+    (result, [key, value]) => ({ ...result, [key]: escapeHashCharacter(value) }),
     {} as NumberedCircleColors
   );
 

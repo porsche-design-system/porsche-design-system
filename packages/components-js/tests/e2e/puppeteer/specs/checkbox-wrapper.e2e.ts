@@ -1,7 +1,6 @@
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
-  getActiveElementId,
   getActiveElementTagName,
   getElementStyle,
   getEventSummary,
@@ -137,11 +136,12 @@ it('should toggle checkbox when input is clicked', async () => {
   expect(checkedImage).not.toBe(await getBackgroundImage(input));
 });
 
-it('should not toggle checkbox when checkbox wrapper is clicked in loading state', async () => {
+it('should not toggle checkbox on click in loading state', async () => {
   await initCheckbox({ loading: true });
-  const input = await getInput();
   const host = await getHost();
+  const input = await getInput();
   await addEventListener(host, 'click');
+  await addEventListener(input, 'change');
 
   await input.click();
   const coords = await host.boundingBox();
@@ -153,13 +153,15 @@ it('should not toggle checkbox when checkbox wrapper is clicked in loading state
   await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height / 2); // click the right center
   await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // click the center center
 
-  expect((await getEventSummary(host, 'click')).counter).toBe(0);
+  expect((await getEventSummary(host, 'click')).counter).toBe(8);
+  expect((await getEventSummary(input, 'change')).counter).toBe(0);
 
   await setProperty(host, 'loading', false);
   await waitForStencilLifecycle(page);
 
   await input.click();
-  expect((await getEventSummary(host, 'click')).counter).toBe(1);
+  expect((await getEventSummary(host, 'click')).counter).toBe(9);
+  expect((await getEventSummary(input, 'change')).counter).toBe(1);
 });
 
 it('should not toggle checkbox when pressed space in focus in loading state', async () => {
@@ -193,12 +195,12 @@ it('should keep focus if state switches to loading', async () => {
   await setProperty(host, 'loading', true);
   await waitForStencilLifecycle(page);
 
-  expect(await hasFocus(input), 'focus style on loading').toBe(true);
+  expect(await hasFocus(input), 'focus when loading').toBe(true);
 
   await setProperty(host, 'loading', false);
   await waitForStencilLifecycle(page);
 
-  expect(await hasFocus(input), 'final focus style').toBe(true);
+  expect(await hasFocus(input), 'final focus').toBe(true);
 });
 
 it('should toggle checkbox when label text is clicked and not set input as active element', async () => {

@@ -43,6 +43,7 @@ import { ModalPage } from './generated/Modal';
 import { ModelSignaturePage } from './generated/ModelSignature';
 import { MultiSelectPage } from './generated/MultiSelect';
 import { PaginationPage } from './generated/Pagination';
+import { PinCodePage } from './generated/PinCode';
 import { PopoverPage } from './generated/Popover';
 import { RadioButtonWrapperPage } from './generated/RadioButtonWrapper';
 import { ScrollerPage } from './generated/Scroller';
@@ -227,6 +228,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Pagination',
     path: '/pagination',
     element: <PaginationPage />,
+  },
+  {
+    name: 'Pin Code',
+    path: '/pin-code',
+    element: <PinCodePage />,
   },
   {
     name: 'Popover',

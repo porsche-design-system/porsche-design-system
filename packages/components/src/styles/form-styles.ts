@@ -159,8 +159,7 @@ export const getLabelStyles = (
         },
         ...hoverMediaQuery({
           '&:hover': {
-            [`&~::slotted(${child}:not(:disabled):not(:focus):not([readonly]))` +
-            (formStateHoverColor ? `,::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)` : '')]: {
+            [`&~::slotted(${child}:not(:disabled):not(:focus):not([readonly]))`]: {
               borderColor: addImportantToRule(formStateHoverColor || primaryColor),
               ...prefersColorSchemeDarkMediaQuery(theme, {
                 borderColor: addImportantToRule(formStateHoverColorDark || primaryColorDark),

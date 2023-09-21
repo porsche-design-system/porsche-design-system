@@ -91,6 +91,16 @@ export const routes: RouteType[] = [
     component: fromExamples.MultiSelectExampleDynamic,
   },
   {
+    path: '/pin-code-example',
+    name: 'Pin Code Example',
+    component: fromExamples.PinCodeExample,
+  },
+  {
+    path: '/pin-code-example-controlled',
+    name: 'Pin Code Example Controlled',
+    component: fromExamples.PinCodeExampleControlled,
+  },
+  {
     path: '/scroller-example',
     name: 'Scroller Example',
     component: fromExamples.ScrollerExample,

@@ -19,24 +19,34 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-checkbox-wrapper label="When input gets hovered or focused">
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
-    <div class="force-label">
-      <p-checkbox-wrapper label="When label gets hovered or focused">
-        <input type="checkbox" name="some-name" />
-      </p-checkbox-wrapper>
-    </div>
-    <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
+    <p-checkbox-wrapper class="force-label" label="When label gets hovered or focused">
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label" state="success" message="Some success validation message.">
+    <p-checkbox-wrapper label="Disabled">
+      <input type="checkbox" name="some-name" disabled />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="Disabled and checked">
+      <input type="checkbox" name="some-name" checked disabled />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="Loading" loading="true">
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label">
+    <p-checkbox-wrapper label="Loading and Checked" loading="true">
+      <input type="checkbox" name="some-name" checked />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="State error" state="error" message="Some error validation message.">
+      <input type="checkbox" name="some-name" />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="State success" state="success" message="Some success validation message.">
+      <input type="checkbox" name="some-name" />
+    </p-checkbox-wrapper>
+    <p-checkbox-wrapper label="Checked">
       <input type="checkbox" name="some-name" checked/>
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label" state="error" message="Some error validation message.">
+    <p-checkbox-wrapper label="Checked with state error" state="error" message="Some error validation message.">
       <input type="checkbox" name="some-name" checked/>
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label" state="success" message="Some success validation message.">
+    <p-checkbox-wrapper label="Checked with state success" state="success" message="Some success validation message.">
       <input type="checkbox" name="some-name" checked />
     </p-checkbox-wrapper>
     <p-checkbox-wrapper>
@@ -48,7 +58,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       </span>
       <input type="checkbox" name="some-name" />
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label" state="error">
+    <p-checkbox-wrapper label="State error" state="error">
       <input type="checkbox" name="some-name" />
       <span slot="message">
         Slotted error message
@@ -57,7 +67,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
         </span>
       </span>
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Some label" state="success">
+    <p-checkbox-wrapper label="State success" state="success">
       <input type="checkbox" name="some-name" />
       <span slot="message">
         Slotted success message
@@ -72,14 +82,14 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     prefersColorScheme: scheme,
   });
 
-  await forceHoverState(page, '.hover p-checkbox-wrapper input[type="checkbox"]');
-  await forceHoverState(page, '.hover .force-label > p-checkbox-wrapper >>> span');
+  await forceHoverState(page, '.hover p-checkbox-wrapper:not(.force-label) input[type="checkbox"]');
+  await forceHoverState(page, '.hover p-checkbox-wrapper.force-label >>> span');
   await forceHoverState(page, '.hover p-checkbox-wrapper span a');
   await forceFocusState(page, '.focus p-checkbox-wrapper input[type="checkbox"]');
   await forceFocusState(page, '.focus p-checkbox-wrapper span a');
-  await forceFocusHoverState(page, '.focus-hover p-checkbox-wrapper input[type="checkbox"]');
-  await forceFocusState(page, '.focus-hover .force-label > p-checkbox-wrapper input[type="checkbox"]');
-  await forceHoverState(page, '.focus-hover .force-label > p-checkbox-wrapper >>> span');
+  await forceFocusHoverState(page, '.focus-hover p-checkbox-wrapper:not(.force-label) input[type="checkbox"]');
+  await forceFocusState(page, '.focus-hover p-checkbox-wrapper.force-label input[type="checkbox"]');
+  await forceHoverState(page, '.focus-hover p-checkbox-wrapper.force-label >>> span');
   await forceFocusHoverState(page, '.focus-hover p-checkbox-wrapper span a');
 };
 

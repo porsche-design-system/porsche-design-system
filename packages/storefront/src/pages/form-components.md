@@ -37,6 +37,7 @@ const variations: Variation[] = [
   { tagName: 'p-text-field-wrapper', child: '<input type="password" />' },
   { tagName: 'p-text-field-wrapper', child: '<input type="search" />' },
   { tagName: 'p-text-field-wrapper', child: '<input type="search" />', attributes: 'action-icon="locate"'  },
+  { tagName: 'p-pin-code', child: '', isCustomElement: true },
   { tagName: 'p-textarea-wrapper', child: '<textarea></textarea>' },
 ];
 
