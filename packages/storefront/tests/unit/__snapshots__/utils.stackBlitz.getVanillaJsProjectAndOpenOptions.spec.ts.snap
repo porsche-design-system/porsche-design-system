@@ -41,7 +41,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - Vanilla JS</title>
-    <script src="node_modules/@porsche-design-system/components-js/esm/index.mjs"></script>
+    <script src="node_modules/@porsche-design-system/components-js/index.js"></script>
 
     <!-- prettier-ignore -->
     <style data-pds-initial-styles>
@@ -336,7 +336,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - Vanilla JS</title>
-    <script src="./@porsche-design-system/components-js/esm/index.mjs"></script>
+    <script src="./@porsche-design-system/components-js/index.js"></script>
     < s c r i p t s r c="
     n
     o
@@ -670,7 +670,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - Vanilla JS</title>
-    <script src="./@porsche-design-system/components-js/esm/index.mjs"></script>
+    <script src="./@porsche-design-system/components-js/index.js"></script>
 
     <!-- prettier-ignore -->
     <style data-pds-initial-styles>
@@ -965,7 +965,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - Vanilla JS</title>
-    <script src="node_modules/@porsche-design-system/components-js/esm/index.mjs"></script>
+    <script src="node_modules/@porsche-design-system/components-js/index.js"></script>
 
     <!-- prettier-ignore -->
     <style data-pds-initial-styles>
@@ -1260,7 +1260,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - Vanilla JS</title>
-    <script src="node_modules/@porsche-design-system/components-js/esm/index.mjs"></script>
+    <script src="node_modules/@porsche-design-system/components-js/index.js"></script>
     < s c r i p t s r c="
     n
     o
@@ -1594,7 +1594,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - Vanilla JS</title>
-    <script src="node_modules/@porsche-design-system/components-js/esm/index.mjs"></script>
+    <script src="node_modules/@porsche-design-system/components-js/index.js"></script>
 
     <!-- prettier-ignore -->
     <style data-pds-initial-styles>
