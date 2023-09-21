@@ -12,7 +12,10 @@ export const baseViewportWidths = [320, 480, 760, 1300, 1760] as const;
 
 const themeableTagNames = (TAG_NAMES as unknown as TagName[]).filter((el) => getComponentMeta(el).isThemeable);
 
-export const waitForComponentsReady = (page: Page): Promise<number> => {
+export const waitForComponentsReady = async (page: Page): Promise<number> => {
+  // this solves a race condition where the html page with the pds markup is loaded async and componentsReady()
+  // is called before the markup is initialized, it can resolve early with 0
+  await page.waitForFunction(async () => (await (window as any).porscheDesignSystem.componentsReady()) > 0);
   return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
 };
 
