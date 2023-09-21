@@ -10,12 +10,35 @@ export const baseSchemes = ['light', 'dark'] as const;
 export const baseViewportWidth = 1000;
 export const baseViewportWidths = [320, 480, 760, 1300, 1760] as const;
 
-const themeableTagNames = (TAG_NAMES as unknown as TagName[]).filter((el) => getComponentMeta(el).isThemeable);
+const themeableTagNames = (TAG_NAMES as unknown as TagName[]).filter(
+  (tagName) => getComponentMeta(tagName).isThemeable
+);
+
+const isOrContainsPIcon = (tagName: TagName): boolean => {
+  return tagName === 'p-icon' || getComponentMeta(tagName).nestedComponents?.some(isOrContainsPIcon);
+};
+const iconChildTagNames = (TAG_NAMES as unknown as TagName[]).filter(isOrContainsPIcon);
 
 export const waitForComponentsReady = async (page: Page): Promise<number> => {
   // this solves a race condition where the html page with the pds markup is loaded async and componentsReady()
   // is called before the markup is initialized, it can resolve early with 0
   await page.waitForFunction(async () => (await (window as any).porscheDesignSystem.componentsReady()) > 0);
+
+  // remove loading="lazy" from icon img elements which might otherwise be missing when a screenshot or pdf is created
+  await page.evaluate((iconChildTagNames) => {
+    const elementsWithIcons = Array.from(document.querySelectorAll(iconChildTagNames.join(',')));
+    const removeIconLazyLoading = (el: HTMLElement): string[] =>
+      el.tagName === 'P-ICON'
+        ? (el.shadowRoot.querySelector('img').removeAttribute('loading'), [el.shadowRoot.querySelector('img').src])
+        : Array.from(el.shadowRoot.querySelectorAll(iconChildTagNames.join(',')))
+            .map(removeIconLazyLoading)
+            .flat();
+
+    return elementsWithIcons.map(removeIconLazyLoading).flat();
+  }, iconChildTagNames);
+
+  // NOTE: there is no guarantee that all svg or png assets are already loaded, request interception and something like
+  // await Promise.all(iconUrls.map((url) => page.waitForResponse(url)) might be a stable solution
   return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
 };
 
@@ -29,17 +52,17 @@ const waitForForcedComponentTheme = async (page: Page, forceComponentTheme: Them
         }
       });
 
-      const themeableComponents = Array.from(
+      const themeableElements = Array.from(
         document.querySelectorAll<HTMLElement & { theme: Theme }>(themeableTagNames.join())
       );
 
       // initialize map to detect theme change via stencil_componentDidUpdate event
       (window as any).componentDidUpdateMap = new Map(
-        themeableComponents.map((el) => [el, el.theme === forceComponentTheme])
+        themeableElements.map((el) => [el, el.theme === forceComponentTheme])
       );
 
       // tweak components
-      themeableComponents.forEach((el) => {
+      themeableElements.forEach((el) => {
         el.theme = forceComponentTheme;
       });
 
@@ -123,7 +146,7 @@ export const setupScenario = async (
 
   await page.setViewportSize({
     width: viewportWidth,
-    height: await page.evaluate(() => document.body.clientHeight),
+    height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
   });
 };
 
