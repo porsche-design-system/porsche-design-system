@@ -25,7 +25,7 @@ export const waitForComponentsReady = async (page: Page): Promise<number> => {
   await page.waitForFunction(async () => (await (window as any).porscheDesignSystem.componentsReady()) > 0);
 
   // remove loading="lazy" from icon img elements which might otherwise be missing when a screenshot or pdf is created
-  await page.evaluate((iconChildTagNames) => {
+  const iconUrls = await page.evaluate((iconChildTagNames) => {
     const elementsWithIcons = Array.from(document.querySelectorAll(iconChildTagNames.join(',')));
     const removeIconLazyLoading = (el: HTMLElement): string[] =>
       el.tagName === 'P-ICON'
@@ -135,6 +135,12 @@ export const setupScenario = async (
   }
 
   if (scalePageFontSize) {
+    // resize before scaling helps load icons at least in select-wrapper
+    await page.setViewportSize({
+      width: viewportWidth,
+      height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
+    });
+
     await page.evaluate(() => {
       document.querySelector('html').style.fontSize = '200%';
     });
