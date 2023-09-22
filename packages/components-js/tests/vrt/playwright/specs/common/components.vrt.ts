@@ -118,7 +118,7 @@ components.forEach((component) => {
         const pdfBuffer = await page.pdf({
           width: baseViewportWidth, // 612 is the result by default, 1000 gets it to 750, looks like dpi conversion: https://github.com/microsoft/playwright/blob/b9509b3ec66a1789ef804a75b89726b76f45e119/packages/playwright-core/src/server/chromium/crPdf.ts#L44
           height: viewportHeight, // is wrong for pages like accordion, crest, fieldset, link-tile-model-signature and text-field-wrapper for unknown reasons, so end up with a 2nd page which is not screenshotted
-          path: `tests/vrt/playwright/results/${component}-print-theme-${theme}.pdf`, // optional to write it to file
+          // path: `tests/vrt/playwright/results/${component}-print-theme-${theme}.pdf`, // optional to write it to file
         });
 
         // easiest would be to compare file buffers but those always differ, probably meta timestamps and such 🤷‍
