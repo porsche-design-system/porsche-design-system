@@ -1,5 +1,5 @@
 import { GridLayout } from './grid-layout.component';
 
-export const examples = [GridLayout];
+export const components = [GridLayout];
 
 export * from './grid-layout.component';

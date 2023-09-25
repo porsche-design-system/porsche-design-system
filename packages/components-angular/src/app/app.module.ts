@@ -16,7 +16,7 @@ import * as fromStyles from './styles';
     ...fromPages.generatedPages,
     ...fromExamples.examples,
     ...fromStyles.examples,
-    ...fromComponents.examples,
+    ...fromComponents.components,
   ],
   imports: [
     BrowserModule,
