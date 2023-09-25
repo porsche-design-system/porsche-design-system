@@ -26,7 +26,7 @@ import { Component } from '@angular/core';
     </div>
     <p-flyout [open]="true">
       <div slot="header">
-        <p-heading tag="h5" size="large"> Sticky Heading </p-heading>
+        <p-heading tag="h5" size="large">Sticky Heading</p-heading>
         <p-text size="small">Sticky header text</p-text>
       </div>
       <grid-layout [visualizer]="visualizer" />
