@@ -28,14 +28,12 @@ declare global {
 
 export const validatePartialUsage = (): void => {
   // ensure no validation is happening via `yarn start`
-  if (ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development') {
-    validateGetInitialStylesUsage();
-    validateGetFontFaceStylesheetUsage();
-    validateGetFontLinksUsage();
-    // TODO: integration test (real world test) first, before rollout
-    // validateGetLoaderScriptUsage();
-    // validateGetComponentChunkLinksUsage();
-  }
+  validateGetInitialStylesUsage();
+  validateGetFontFaceStylesheetUsage();
+  validateGetFontLinksUsage();
+  // TODO: integration test (real world test) first, before rollout
+  // validateGetLoaderScriptUsage();
+  // validateGetComponentChunkLinksUsage();
 };
 
 export const validateGetFontFaceStylesheetUsage = (): void => {
