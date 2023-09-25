@@ -73,7 +73,7 @@ The `p-flyout` component makes decent changes to support the Porsche Design Syst
       <p-heading tag="h5" size="large">Sticky Heading</p-heading>
       <p-text size="small">Sticky header text</p-text>
     </div>
-    <ExampleStylesGrid :visualizer="false"/>
+    <ExampleStylesGrid :visualizeGrid="false"/>
     <div slot="footer">
       <p-button>Footer Button</p-button>
     </div>

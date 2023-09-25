@@ -1,6 +1,6 @@
 <template>
   <div style="transform: translate3d(0, 0, 0)">
-    <div v-if="visualizer" class="visualize-grid">
+    <div v-if="visualizeGrid" class="visualize-grid">
       <span v-for="n in new Array(18)" :key="n" />
     </div>
     <div class="hero-grid">
@@ -151,7 +151,7 @@
 
   @Component
   export default class ExampleStylesGrid extends Vue {
-    @Prop({ default: true }) public visualizer!: boolean;
+    @Prop({ default: true }) public visualizeGrid!: boolean;
   }
 </script>
 
