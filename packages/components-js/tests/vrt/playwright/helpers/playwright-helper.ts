@@ -28,8 +28,8 @@ export const waitForComponentsReady = async (page: Page): Promise<number> => {
   const iconUrls = await page.evaluate((iconChildTagNames) => {
     const elementsWithIcons = Array.from(document.querySelectorAll(iconChildTagNames.join(',')));
     const removeIconLazyLoading = (el: HTMLElement): string[] =>
-      el.tagName === 'P-ICON'
-        ? (el.shadowRoot.querySelector('img').removeAttribute('loading'), [el.shadowRoot.querySelector('img').src])
+      el.tagName === 'P-ICON' // optional chaining is needed for toast which does not contain `img` element for unknown reasons 🤷‍
+        ? (el.shadowRoot.querySelector('img')?.removeAttribute('loading'), [el.shadowRoot.querySelector('img')?.src])
         : Array.from(el.shadowRoot.querySelectorAll(iconChildTagNames.join(',')))
             .map(removeIconLazyLoading)
             .flat();
