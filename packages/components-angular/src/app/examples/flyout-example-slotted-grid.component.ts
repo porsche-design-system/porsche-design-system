@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-heading tag="h5" size="large">Sticky Heading</p-heading>
         <p-text size="small">Sticky header text</p-text>
       </div>
-      <grid-layout [visualizer]="visualizer" />
+      <grid-layout [visualizeGrid]="visualizer" />
       <div slot="footer">
         <p-button>Footer Button</p-button>
       </div>

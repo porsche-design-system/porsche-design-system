@@ -22,7 +22,7 @@ export const StylesFlyoutGridExample = (): JSX.Element => {
     <>
       {/* Wrapper and nested GridLayout is needed to calculate the whole height of rendered frid example to support full height screenshot of flyout with grid */}
       <Wrapper>
-        <GridLayout gridVisualizer={false} />
+        <GridLayout visualizeGrid={false} />
       </Wrapper>
       <PFlyout open={true}>
         <div slot="header">
@@ -31,7 +31,7 @@ export const StylesFlyoutGridExample = (): JSX.Element => {
           </PHeading>
           <PText size="small">Sticky header text</PText>
         </div>
-        <GridLayout gridVisualizer={false} />
+        <GridLayout visualizeGrid={false} />
         <div slot="footer">
           <PButton type="button">Footer Button</PButton>
         </div>

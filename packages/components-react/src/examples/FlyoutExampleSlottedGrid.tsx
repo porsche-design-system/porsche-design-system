@@ -23,7 +23,7 @@ export const FlyoutExampleSlottedGridPage = (): JSX.Element => {
           </PHeading>
           <PText size="small">Sticky header text</PText>
         </div>
-        <GridLayout gridVisualizer={false} />
+        <GridLayout visualizeGrid={false} />
         <div slot="footer">
           <PButton type="button">Footer Button</PButton>
         </div>

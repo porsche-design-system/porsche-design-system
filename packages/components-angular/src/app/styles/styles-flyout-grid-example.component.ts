@@ -22,14 +22,14 @@ import { Component } from '@angular/core';
   ],
   template: `
     <div class="wrapper">
-      <grid-layout [visualizer]="visualizer" />
+      <grid-layout [visualizeGrid]="visualizer" />
     </div>
     <p-flyout [open]="true">
       <div slot="header">
         <p-heading tag="h5" size="large"> Sticky Heading </p-heading>
         <p-text size="small">Sticky header text</p-text>
       </div>
-      <grid-layout [visualizer]="visualizer" />
+      <grid-layout [visualizeGrid]="visualizer" />
       <div slot="footer">
         <p-button type="button">Footer Button</p-button>
       </div>

@@ -309,7 +309,7 @@ import type { AccordionUpdateEvent } from '@porsche-design-system/components-ang
     `,
   ],
   template: `
-    <div class="visualize-grid" *ngIf="visualizer">
+    <div class="visualize-grid" *ngIf="visualizeGrid">
       <span *ngFor="let n of counter(18)" class="visualize-grid-columns"></span>
     </div>
     <div class="hero-grid">
@@ -408,13 +408,14 @@ import type { AccordionUpdateEvent } from '@porsche-design-system/components-ang
     </div>
     <div class="narrow-content-grid">
       <div class="narrow-content">
-        <span class="info"><b>Narrow</b> for small Components and Content</span
-        ><p-accordion heading="Some Heading" tag="h3" [open]="isAccordion1Open" (update)="onAccordion1Update($event)"
+        <span class="info"><b>Narrow</b> for small Components and Content</span>
+        <p-accordion heading="Some Heading" tag="h3" [open]="isAccordion1Open" (update)="onAccordion1Update($event)"
           ><p class="text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
             felis, ultricies nec, pellentesque eu. Aenean massa.
           </p></p-accordion
-        ><p-accordion heading="Some Heading" tag="h3" [open]="isAccordion2Open" (update)="onAccordion2Update($event)"
+        >
+        <p-accordion heading="Some Heading" tag="h3" [open]="isAccordion2Open" (update)="onAccordion2Update($event)"
           ><p class="text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
             felis, ultricies nec, pellentesque eu. Aenean massa.
@@ -445,7 +446,7 @@ export class GridLayout {
   counter(i: number) {
     return new Array(i);
   }
-  @Input() visualizer = false;
+  @Input() visualizeGrid = false;
   isAccordion1Open = false;
   isAccordion2Open = false;
 
