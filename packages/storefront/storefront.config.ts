@@ -333,6 +333,14 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/pagination/pagination.props.md')],
     },
+    'Pin Code': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/pin-code/pin-code.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/pin-code/pin-code.usage.md')],
+      // @ts-ignore
+      Props: [() => import('@/../../components/src/components/pin-code/pin-code.props.md')],
+    },
     Popover: {
       // @ts-ignore
       Examples: [() => import('@/../../components/src/components/popover/popover.examples.md')],
@@ -593,8 +601,12 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Statement: [() => import('@/pages/must-know/accessibility/statement.md')],
     },
-    // @ts-ignore
-    Security: [() => import('@/pages/must-know/security.md')],
+    Security: {
+      // @ts-ignore
+      Vulnerabilities: [() => import('@/pages/must-know/security/vulnerabilities.md')],
+      // @ts-ignore
+      'Content Security Policy': [() => import('@/pages/must-know/security/content-security-policy.md')],
+    },
     Performance: {
       // @ts-ignore
       Cdn: [() => import('@/pages/must-know/performance/cdn.md')],

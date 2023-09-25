@@ -3,10 +3,10 @@
 The `p-marque` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image
 and represents the quality of the product.
 
-<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+<Notification heading="Deprecation hint" state="error">
   This component is deprecated and will be removed with the next major release.
 Please use <a href="components/wordmark">p-wordmark</a> instead.
-</p-inline-notification>
+</Notification>
 
 <TableOfContents></TableOfContents>
 
@@ -15,7 +15,8 @@ Please use <a href="components/wordmark">p-wordmark</a> instead.
 ### Marque with registered trademark (®)
 
 In web applications for the United States and/or Canada as well as with international purpose _including_ United States
-and/or Canada, the Porsche marque must always be used with the ®. The ® is optimized to match the respective crest size.
+and/or Canada, the Porsche marque must always be used with the ®. The ® is optimized to match the respective crest
+size.
 
 <Playground :markup="basicMarkup"></Playground>
 

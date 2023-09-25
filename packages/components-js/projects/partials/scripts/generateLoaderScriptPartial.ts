@@ -6,7 +6,7 @@ import { npmDistTmpSubPath } from '../../components-wrapper/environment';
 export const generateLoaderScriptPartial = (): string => {
   const types = `type GetLoaderScriptOptions = {
   prefix?: string | string[];
-  format?: Format;
+  format?: FormatWithCSP;
 };`;
 
   const componentsJsFilePath = require.resolve('@porsche-design-system/components-js');
@@ -29,17 +29,17 @@ export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSX.Ele
   const scriptAttributes = convertPropsToAttributeString(scriptProps);
 
   const loadCalls = prefix
-    ? Array.isArray(prefix)
-      ? prefix.map((x) => \`porscheDesignSystem.load({prefix:'\${x}'})\`).join(';')
-      : \`porscheDesignSystem.load({prefix:'\${prefix}'})\`
+    ? (Array.isArray(prefix) ? prefix : [prefix]).map((x) => \`porscheDesignSystem.load({prefix:'\${x}'})\`).join(';')
     : 'porscheDesignSystem.load()';
   const scriptContent = ${JSON.stringify(fileContent)} + loadCalls;
 
   // there is no other solution than using dangerouslySetInnerHTML since JSX elements are rendered by the createElement() function
   // https://stackoverflow.com/a/64815699
-  return format === 'html'
-    ? \`<script \$\{scriptAttributes\}>\${scriptContent}</script>\`
-    : <script {...scriptProps} dangerouslySetInnerHTML={{ __html: scriptContent }} />;
+  return format === 'sha256'
+    ? getSha256Hash(scriptContent)
+    : format === 'html'
+      ? \`<script \$\{scriptAttributes\}>\${scriptContent}</script>\`
+      : <script {...scriptProps} dangerouslySetInnerHTML={{ __html: scriptContent }} />;
 }`;
 
   return [types, func].join('\n\n');

@@ -2,7 +2,7 @@ import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkBut
 import { getCss, isHighContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/utilities-v2';
-import { getHighContrastColors, getThemedColors, getTransition } from '../../styles';
+import { getHighContrastColors, getThemedColors, getTransition, prefersColorSchemeDarkMediaQuery } from '../../styles';
 
 type Colors = {
   textColor: string;
@@ -42,6 +42,11 @@ export const getComponentCss = (
 ): string => {
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
   const { textColor, borderColor, backgroundColor } = getDisabledColors(variant, loading, theme);
+  const {
+    textColor: textColorDark,
+    borderColor: borderColorDark,
+    backgroundColor: backgroundColorDark,
+  } = getDisabledColors(variant, loading, 'dark');
   const isPrimary = variant === 'primary';
 
   return getCss(
@@ -52,6 +57,11 @@ export const getComponentCss = (
           backgroundColor,
           borderColor,
           color: textColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            backgroundColor: backgroundColorDark,
+            borderColor: borderColorDark,
+            color: textColorDark,
+          }),
         }),
         ...(loading && !isPrimary && frostedGlassStyle),
       },
@@ -64,6 +74,7 @@ export const getComponentCss = (
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
+          ...(isPrimary && !isHighContrastMode && { filter: 'invert(1)' }),
         },
       }),
       label: {
@@ -74,6 +85,11 @@ export const getComponentCss = (
       },
       icon: {
         transition: getTransition('opacity'),
+        ...(!disabled &&
+          isPrimary &&
+          !isHighContrastMode && {
+            filter: 'invert(1)',
+          }),
         ...(loading && {
           opacity: 0, // use opacity for smooth transition between states
         }),

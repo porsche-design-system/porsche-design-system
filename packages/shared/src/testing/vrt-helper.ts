@@ -1,5 +1,4 @@
 import type { Page, JSHandle } from 'puppeteer';
-
 type Options = { withBackground: boolean };
 
 export const openPopoversAndHighlightSpacer = async (page: Page, opts?: Options): Promise<void> => {

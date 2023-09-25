@@ -3,17 +3,17 @@
 The `p-content-wrapper` defines the outer spacings between the content area and the left and right screen sides, as well
 as centering its content and setting a max-width.
 
-<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
-This component is deprecated and will be removed with the next major release. 
-In general, please use native <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more standardized layout technique.
-Additionally, we provide a <a href="styles/grid"><b>Porsche Grid</b></a> utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital touch-points.
-</p-inline-notification>
+<Notification heading="Deprecation hint" state="error">
+  This component is deprecated and will be removed with the next major release. 
+  In general, please use native <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more standardized layout technique.
+  Additionally, we provide a <a href="styles/grid"><b>Porsche Grid</b></a> utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital touch-points.
+</Notification>
 
-<p-inline-notification heading="Layout hint" state="warning" dismiss-button="false">
+<Notification heading="Layout hint" state="warning">
   The component can only be used with the full viewport width. The alignment of its content can be controlled 
   by the <code>width</code> prop, which is in sync with the <b><a href="styles/grid">Porsche Grid</a></b>.<br><br>
   Therefore, the following examples only work in fullscreen after clicking the <strong>Maximize</strong> buttons.
-</p-inline-notification>
+</Notification>
 
 <TableOfContents></TableOfContents>
 
@@ -25,9 +25,9 @@ Additionally, we provide a <a href="styles/grid"><b>Porsche Grid</b></a> utility
 
 ## Background color
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
-Background color is deprecated and has no effect anymore. Instead, it's possible to define a custom color on the host.
-</p-inline-notification>
+<Notification heading="Deprecation hint" state="warning">
+  Background color is deprecated and has no effect anymore. Instead, it's possible to define a custom color on the host.
+</Notification>
 
 <Playground :markup="backgroundColorMarkup" class="playground-content-wrapper-background-color" :config="config">
   <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>

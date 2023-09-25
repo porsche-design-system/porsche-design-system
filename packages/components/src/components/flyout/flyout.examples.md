@@ -9,15 +9,15 @@ Flyouts are flexible in the context and can include other components of the Pors
 It is a controlled component. This grants you flexible control over the flyout's behavior especially whether it should
 stay open after user interaction like submission of a form.
 
-<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
+<Notification heading="Important note" state="warning">
   This component activates a focus trap to keep the focus within while being open.<br>
   This is achieved by detecting the first and last focusable child element after the flyout is opened.<br>
-  Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the flyout. 
-</p-inline-notification>
+  Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the flyout.
+</Notification>
 
-<p-inline-notification heading="Recommendation" state="success" dismiss-button="false">
-  You should only have a single instance of this component within your application. We recommend rendering it close to the body, e.g., in your App.tsx or app.component.ts. This way you reduce the chance of having issues with its z-index and fixed positioning. 
-</p-inline-notification>
+<Notification heading="Recommendation" state="success">
+  You should only have a single instance of this component within your application. We recommend rendering it close to the body, e.g., in your App.tsx or app.component.ts. This way you reduce the chance of having issues with its z-index and fixed positioning.
+</Notification>
 
 <TableOfContents></TableOfContents>
 

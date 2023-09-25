@@ -11,6 +11,8 @@ export { default as ModalExampleAccessibility } from './ModalExampleAccessibilit
 export { default as MultiSelectExample } from './MultiSelectExample.vue';
 export { default as MultiSelectExampleControlled } from './MultiSelectExampleControlled.vue';
 export { default as MultiSelectExampleDynamic } from './MultiSelectExampleDynamic.vue';
+export { default as PinCodeExample } from './PinCodeExample.vue';
+export { default as PinCodeExampleControlled } from './PinCodeExampleControlled.vue';
 export { default as ScrollerExample } from './ScrollerExample.vue';
 export { default as SegmentedControlExample } from './SegmentedControlExample.vue';
 export { default as StepperHorizontalExample } from './StepperHorizontalExample.vue';

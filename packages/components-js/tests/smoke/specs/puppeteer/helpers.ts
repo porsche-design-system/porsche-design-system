@@ -1,4 +1,5 @@
 import type { Page } from 'puppeteer';
+import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import * as fs from 'fs';
 
 export const setContentWithDesignSystem = async (
@@ -13,21 +14,21 @@ export const setContentWithDesignSystem = async (
 
   await page.setContent(
     `
-    <html>
-      <head>
-        <base href="https://porsche.com"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
-        <script type="text/javascript">${indexJsCode}</script>
-        ${headContent}
-      </head>
-      <body>
-        <script type="text/javascript">
-          PORSCHE_DESIGN_SYSTEM_CDN = '${cdn}';
-          porscheDesignSystem.load();
-        </script>
-        ${content}
-      </body>
-    </html>
-    `,
+<html>
+  <head>
+    <base href="https://porsche.com"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
+    ${getInitialStyles()}
+    <script type="text/javascript">${indexJsCode}</script>
+    ${headContent}
+  </head>
+  <body>
+    <script type="text/javascript">
+      PORSCHE_DESIGN_SYSTEM_CDN = '${cdn}';
+      porscheDesignSystem.load();
+    </script>
+    ${content}
+  </body>
+</html>`,
     { waitUntil: 'networkidle0' }
   );
   await page.waitForSelector('html.hydrated');

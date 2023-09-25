@@ -72,10 +72,10 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ## Weight (deprecated)
 
-<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+<Notification heading="Important note" state="error">
   The weight prop is deprecated and will be removed with next major release.
   In case, e.g. <b>weight="semibold"</b> is used it will automatically be mapped to font weight regular.
-</p-inline-notification>
+</Notification>
 
 ---
 

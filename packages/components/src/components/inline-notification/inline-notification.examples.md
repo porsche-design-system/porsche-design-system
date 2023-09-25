@@ -3,8 +3,8 @@
 The `p-inline-notification` is a controlled component that provides action-based feedback messages (e.g. after
 performing a task) or to convey informational and/or critical notification like some site related topics.
 
-Review the [notification decision tree](patterns/notifications/decision-tree) to determine which notification
-component is best for a particular scenario.
+Review the [notification decision tree](patterns/notifications/decision-tree) to determine which notification component
+is best for a particular scenario.
 
 <TableOfContents></TableOfContents>
 
@@ -14,9 +14,9 @@ component is best for a particular scenario.
 
 ## State
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
-Following state has been deprecated and will be removed with the next major release: "neutral".
-</p-inline-notification>
+<Notification heading="Deprecation hint" state="warning">
+  Following state has been deprecated and will be removed with the next major release: "neutral".
+</Notification>
 
 <Playground :markup="stateMarkup" :config="config">
   <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
@@ -26,10 +26,10 @@ Following state has been deprecated and will be removed with the next major rele
 
 To make the `p-inline-notification` non-closable by the user, use the `dismissButton` property.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>persistent</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>dismissButton</code> property instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="dismissButton" :config="config"></Playground>
 

@@ -13,6 +13,8 @@ export * from './ModalExampleAccessibility';
 export * from './MultiSelectExample';
 export * from './MultiSelectExampleControlled';
 export * from './MultiSelectExampleDynamic';
+export * from './PinCodeExample';
+export * from './PinCodeExampleControlled';
 export * from './ScrollerExample';
 export * from './SegmentedControlExample';
 export * from './StepperHorizontalExample';

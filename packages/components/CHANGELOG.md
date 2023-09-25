@@ -19,6 +19,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Basic support of `Grid` usage inside `Flyout` component
   ([#2756](https://github.com/porsche-design-system/porsche-design-system/pull/2756))
 
+### [3.7.0-rc.1] - 2023-09-20
+
+#### Added
+
+- **[EXPERIMENTAL]** Prop `loading` for `Radio Button Wrapper`
+  ([#2774](https://github.com/porsche-design-system/porsche-design-system/pull/2774))
+- Theme property supports `auto` for all themeable components, reflecting `prefers-color-scheme` based on OS system
+  settings ([#2719](https://github.com/porsche-design-system/porsche-design-system/pull/2719))
+- `hyphens` CSS property can now be overwritten in `Button Tile`, `Link Tile` and `Link Tile Model Signature` components
+  ([#2758](https://github.com/porsche-design-system/porsche-design-system/pull/2758))
+- Partials that produce innerHTML support `{ format: 'sha256' }` option for whitelisting in
+  [Content-Security-Policy (CSP)](must-know/security/content-security-policy)
+  ([#2773](https://github.com/porsche-design-system/porsche-design-system/pull/2773))
+- `Pin Code` ([#2691](https://github.com/porsche-design-system/porsche-design-system/pull/2691))
+
+#### Fixed
+
+- Dragging of `Carousel` can become stucked
+  ([#2768](https://github.com/porsche-design-system/porsche-design-system/pull/2768))
+- Color of `message` for `Fieldset`, `Fieldset Wrapper`, `Text Field Wrapper` and `Textarea Wrapper` in dark theme
+  ([#2769](https://github.com/porsche-design-system/porsche-design-system/pull/2769))
+
+#### Changed
+
+- Usage of `getInitialStyles()` partial is required and validated with an exception
+  ([#2749](https://github.com/porsche-design-system/porsche-design-system/pull/2749))
+
 ### [3.7.0-rc.0] - 2023-09-05
 
 #### Added

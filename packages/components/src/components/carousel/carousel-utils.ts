@@ -115,9 +115,10 @@ export const renderPagination = (paginationEl: HTMLElement, amountOfPages: numbe
   if (paginationEl) {
     // sanitize in case of removal of slide since activeIndex is from before splide.refresh()
     activeIndex = activeIndex > amountOfPages - 1 ? amountOfPages - 1 : activeIndex;
-    paginationEl.innerHTML = Array.from(Array(amountOfPages))
-      .map((_, i) => `<span class='bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}'></span>`)
-      .join('');
+    paginationEl.innerHTML = Array.from(
+      Array(amountOfPages),
+      (_, i) => `<span class="bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}"></span>`
+    ).join('');
     if (isInfinitePagination(amountOfPages)) {
       updateBulletState(paginationEl, amountOfPages, activeIndex);
     }

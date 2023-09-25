@@ -16,7 +16,7 @@ options are reduced by matching the options text.
 Options are slotted using the `p-multi-select-option` component. Each option needs to have an assigned value, which can
 be passed via an attribute or property and needs to be of type string. Initial selection states can only be achieved
 using the value property on the `p-multi-select` component ([More Info](components/multi-select/examples#set-value)).
-Options don't have a selected attribute or property!. If an option should be visible but not selectable, it can be
+Options don't have a selected attribute or property. If an option should be visible but not selectable, it can be
 disabled by using the `disabled` attribute.
 
 <Playground :markup="basic()" :config="config"></Playground>
@@ -94,7 +94,7 @@ export default class Code extends Vue {
   config = { themeable: true, overflowX: 'visible' };
 
   get theme(): Theme {
-    return this.$store.getters.theme;
+    return this.$store.getters.playgroundTheme;
   }
 
   $refs!: {
@@ -125,15 +125,14 @@ export default class Code extends Vue {
   onSubmit(e) {
     const formData = new FormData(e.target);
     this.selectedValuesForm = `Last submitted data: ${
-      Array.from(formData.entries())
-        .map(([_, value]) => value)
+      Array.from(formData.entries(), ([_, value]) => value)
         .join(', ') || 'none'
     }`;
   }
  
   valueInput = '';
   amountOfOptions = 3;
-  getOptions = (amount = 3) => Array.from(Array(amount)).map((_, i) => `<p-multi-select-option value="${i + 1}">Option ${i+1}</p-multi-select-option>`).join('\n  ');
+  getOptions = (amount = 3) => Array.from(Array(amount), (_, i) => `<p-multi-select-option value="${i + 1}">Option ${i+1}</p-multi-select-option>`).join('\n  ');
 
   setMultiSelectValue() {
     this.$refs.multiSelect.value = this.valueInput.split(',')

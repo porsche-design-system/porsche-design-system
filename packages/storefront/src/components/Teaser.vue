@@ -1,7 +1,7 @@
 <template>
   <header>
-    <p-display class="heading" size="small" tag="h2">Welcome to the new digital</p-display>
-    <p-text class="paragraph" color="contrast-high" size="large">
+    <p-display :theme="storefrontTheme" class="heading" size="small" tag="h2">Welcome to the new digital</p-display>
+    <p-text :theme="storefrontTheme" class="paragraph" color="contrast-high" size="large">
       Become today a part of tomorrow’s Porsche new design language with the new Porsche Design System v3.
     </p-text>
   </header>
@@ -10,9 +10,14 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import { StorefrontTheme } from '@/models';
 
   @Component({})
-  export default class Teaser extends Vue {}
+  export default class Teaser extends Vue {
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
+    }
+  }
 </script>
 
 <style scoped lang="scss">
@@ -33,30 +38,53 @@
       position: absolute;
       inset: 0 calc(#{$pds-grid-extended-offset-base} * -1);
       // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
-      background: url('~@/assets/tablet.png') no-repeat bottom -6vw center / min(86%, 320px),
-        radial-gradient(54.76% 107.92% at 64.08% 89.73%, #c5c8df 0%, #ebddf9 52.6%, #ffffff 100%);
+      background:
+        var(--theme-custom-teaser-background) no-repeat bottom -6vw center / min(86%, 320px),
+        radial-gradient(
+          54.76% 107.92% at 64.08% 89.73%,
+          var(--theme-custom-teaser-gradient-1) 0%,
+          var(--theme-custom-teaser-gradient-2) 52.6%,
+          transparent 100%
+        );
       z-index: -1;
 
       @include pds-media-query-min('xs') {
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
-        background: url('~@/assets/tablet.png') no-repeat bottom -6vw center / min(70%, 380px),
-          radial-gradient(54.76% 107.92% at 64.08% 89.73%, #c5c8df 0%, #ebddf9 52.6%, #ffffff 100%);
+        background:
+          var(--theme-custom-teaser-background) no-repeat bottom -6vw center / min(70%, 380px),
+          radial-gradient(
+            54.76% 107.92% at 64.08% 89.73%,
+            var(--theme-custom-teaser-gradient-1) 0%,
+            var(--theme-custom-teaser-gradient-2) 52.6%,
+            transparent 100%
+          );
       }
 
       @include pds-media-query-min('s') {
         left: 0;
         right: calc(#{$pds-grid-extended-offset-s} * -1);
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
-        background: url('~@/assets/tablet.png') no-repeat bottom -6vw right 10% / min(50%, 600px),
-          radial-gradient(54.76% 107.92% at 64.08% 89.73%, #c5c8df 0%, #ebddf9 52.6%, #ffffff 100%);
+        background:
+          var(--theme-custom-teaser-background) no-repeat bottom -6vw right 10% / min(50%, 600px),
+          radial-gradient(
+            54.76% 107.92% at 64.08% 89.73%,
+            var(--theme-custom-teaser-gradient-1) 0%,
+            var(--theme-custom-teaser-gradient-2) 52.6%,
+            transparent 100%
+          );
       }
 
       @include pds-media-query-min('m') {
         right: calc(#{$pds-grid-wide-offset-s} * -1);
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
-        background: url('~@/assets/tablet.png') no-repeat bottom -6vw right 10% / min(50%, 660px),
-          radial-gradient(54.76% 107.92% at 64.08% 89.73%, #c5c8df 0%, #ebddf9 52.6%, #ffffff 100%);
-
+        background:
+          var(--theme-custom-teaser-background) no-repeat bottom -6vw right 10% / min(50%, 660px),
+          radial-gradient(
+            54.76% 107.92% at 64.08% 89.73%,
+            var(--theme-custom-teaser-gradient-1) 0%,
+            var(--theme-custom-teaser-gradient-2) 52.6%,
+            transparent 100%
+          );
       }
 
       @include pds-media-query-min('xxl') {

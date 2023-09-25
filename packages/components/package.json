@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "3.7.0-rc.0",
+  "version": "3.7.0-rc.1",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
@@ -48,7 +48,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/utilities-v2": "0.0.0",
     "@splidejs/splide": "^4.1.4",
-    "@stencil/core": "~4.1.0",
+    "@stencil/core": "~4.2.0",
     "jss": "^10.10.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0",
@@ -65,14 +65,14 @@
     "concurrently": "^8.2.1",
     "construct-style-sheets-polyfill": "^3.1.0",
     "dts-bundle-generator": "^8.0.1",
-    "eslint": "^8.47.0",
+    "eslint": "^8.49.0",
     "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-react": "^7.33.2",
     "globby": "^11.0.4",
     "tinycolor2": "^1.6.0",
     "ts-node": "^10.9.1",
-    "typescript": "~5.1.6"
+    "typescript": "~5.2.2"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",

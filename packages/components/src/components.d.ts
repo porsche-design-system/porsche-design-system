@@ -41,6 +41,7 @@ import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEvent } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
+import { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEvent } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
@@ -99,6 +100,7 @@ export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEvent } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
+export { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEvent } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
@@ -1053,7 +1055,8 @@ export namespace Components {
          */
         "disableBackdropClick"?: boolean;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. If true, the modal will not have a dismiss button.
+          * If true, the modal will not have a dismiss button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead.
          */
         "disableCloseButton"?: boolean;
         /**
@@ -1193,6 +1196,60 @@ export namespace Components {
          */
         "totalItemsCount": number;
     }
+    interface PPinCode {
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Disables the Pin Code. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * Number of characters of the Pin Code.
+         */
+        "length"?: PinCodeLength;
+        /**
+          * Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * Name of the control.
+         */
+        "name"?: string;
+        /**
+          * Marks the Pin Code as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: PinCodeState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Pin Code type.
+         */
+        "type"?: PinCodeType;
+        /**
+          * Sets the initial value of the Pin Code.
+         */
+        "value"?: string;
+    }
     interface PPopover {
         /**
           * Add ARIA attributes.
@@ -1220,6 +1277,10 @@ export namespace Components {
           * The label text.
          */
         "label"?: string;
+        /**
+          * __Experimental__: Disables the radio button and shows a loading indicator.
+         */
+        "loading"?: boolean;
         /**
           * The message styled depending on validation state.
          */
@@ -1769,6 +1830,10 @@ export interface PPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPPaginationElement;
 }
+export interface PPinCodeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPPinCodeElement;
+}
 export interface PSegmentedControlCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPSegmentedControlElement;
@@ -2033,6 +2098,12 @@ declare global {
         prototype: HTMLPPaginationElement;
         new (): HTMLPPaginationElement;
     };
+    interface HTMLPPinCodeElement extends Components.PPinCode, HTMLStencilElement {
+    }
+    var HTMLPPinCodeElement: {
+        prototype: HTMLPPinCodeElement;
+        new (): HTMLPPinCodeElement;
+    };
     interface HTMLPPopoverElement extends Components.PPopover, HTMLStencilElement {
     }
     var HTMLPPopoverElement: {
@@ -2254,6 +2325,7 @@ declare global {
         "p-multi-select": HTMLPMultiSelectElement;
         "p-multi-select-option": HTMLPMultiSelectOptionElement;
         "p-pagination": HTMLPPaginationElement;
+        "p-pin-code": HTMLPPinCodeElement;
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
         "p-scroller": HTMLPScrollerElement;
@@ -3251,7 +3323,8 @@ declare namespace LocalJSX {
          */
         "disableBackdropClick"?: boolean;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. If true, the modal will not have a dismiss button.
+          * If true, the modal will not have a dismiss button.
+          * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead.
          */
         "disableCloseButton"?: boolean;
         /**
@@ -3411,6 +3484,64 @@ declare namespace LocalJSX {
          */
         "totalItemsCount"?: number;
     }
+    interface PPinCode {
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Disables the Pin Code. No events will be triggered while disabled state is active.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * Number of characters of the Pin Code.
+         */
+        "length"?: PinCodeLength;
+        /**
+          * Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active.
+         */
+        "loading"?: boolean;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * Name of the control.
+         */
+        "name"?: string;
+        /**
+          * Emitted when selected element changes.
+         */
+        "onUpdate"?: (event: PPinCodeCustomEvent<PinCodeUpdateEvent>) => void;
+        /**
+          * Marks the Pin Code as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: PinCodeState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * Pin Code type.
+         */
+        "type"?: PinCodeType;
+        /**
+          * Sets the initial value of the Pin Code.
+         */
+        "value"?: string;
+    }
     interface PPopover {
         /**
           * Add ARIA attributes.
@@ -3438,6 +3569,10 @@ declare namespace LocalJSX {
           * The label text.
          */
         "label"?: string;
+        /**
+          * __Experimental__: Disables the radio button and shows a loading indicator.
+         */
+        "loading"?: boolean;
         /**
           * The message styled depending on validation state.
          */
@@ -4044,6 +4179,7 @@ declare namespace LocalJSX {
         "p-multi-select": PMultiSelect;
         "p-multi-select-option": PMultiSelectOption;
         "p-pagination": PPagination;
+        "p-pin-code": PPinCode;
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
         "p-scroller": PScroller;
@@ -4142,6 +4278,7 @@ declare module "@stencil/core" {
             "p-multi-select": LocalJSX.PMultiSelect & JSXBase.HTMLAttributes<HTMLPMultiSelectElement>;
             "p-multi-select-option": LocalJSX.PMultiSelectOption & JSXBase.HTMLAttributes<HTMLPMultiSelectOptionElement>;
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
+            "p-pin-code": LocalJSX.PPinCode & JSXBase.HTMLAttributes<HTMLPPinCodeElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-scroller": LocalJSX.PScroller & JSXBase.HTMLAttributes<HTMLPScrollerElement>;

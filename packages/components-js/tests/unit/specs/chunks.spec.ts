@@ -285,6 +285,30 @@ describe('chunk content', () => {
     );
   });
 
+  describe('color scheme', () => {
+    const colorSchemeRegEx = /{colorScheme:.*?light dark.*?}/i;
+
+    it.each(chunkFileNames.filter((x) => !isCoreChunk(x)))(
+      'should contain color scheme style in %s',
+      (chunkFileName) => {
+        const content = getChunkContent(chunkFileName);
+        expect(content).toMatch(colorSchemeRegEx);
+      }
+    );
+  });
+
+  describe('host hidden', () => {
+    const colorSchemeRegEx = /\[hidden].*?:.*?{display:.*?none.*?}/i;
+
+    it.each(chunkFileNames.filter((x) => !isCoreChunk(x)))(
+      'should contain host hidden style in %s',
+      (chunkFileName) => {
+        const content = getChunkContent(chunkFileName);
+        expect(content).toMatch(colorSchemeRegEx);
+      }
+    );
+  });
+
   describe('getPrefixedTagNames', () => {
     const getPrefixedTagNamesRegEx =
       /new Map.+?\.filter\(\(([a-z])=>[\\"']+p-text[\\"']+!==\1&&[\\"']+p-heading[\\"']+!==\1&&[\\"']+p-headline[\\"']+!==\1&&[\\"']+p-display[\\"']+!==\1\)/;

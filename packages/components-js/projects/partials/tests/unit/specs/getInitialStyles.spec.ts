@@ -1,9 +1,6 @@
 import { getInitialStyles } from '../../../src';
-import { render } from '@testing-library/react';
+import { renderToString } from 'react-dom/server';
 import { format } from 'prettier';
-
-// to skip validation
-jest.mock('../../../src/shared');
 
 const getFormattedCSSWithoutTag = (style: string): Promise<string> => {
   return format(style.replace(/<style.*>([\s\S]*)<\/style>/g, '$1'), { parser: 'css' });
@@ -11,19 +8,19 @@ const getFormattedCSSWithoutTag = (style: string): Promise<string> => {
 
 describe('format: html', () => {
   it('should return core styles', async () => {
-    const result: string = getInitialStyles();
+    const result = getInitialStyles();
     expect(result).toMatchSnapshot();
     expect(await getFormattedCSSWithoutTag(result)).toMatchSnapshot();
   });
 
-  it('should add custom prefixes to component names', async () => {
-    const result: string = getInitialStyles({ prefix: 'custom-prefix' });
+  it('should return core styles with custom prefix', async () => {
+    const result = getInitialStyles({ prefix: 'custom-prefix' });
     expect(result).toMatchSnapshot();
     expect(await getFormattedCSSWithoutTag(result)).toMatchSnapshot();
   });
 
-  it('should add multiple custom prefixes to component names', async () => {
-    const result: string = getInitialStyles({ prefix: ['', 'some-prefix', 'another-prefix'] });
+  it('should return core styles with multiple custom prefixes', async () => {
+    const result = getInitialStyles({ prefix: ['', 'some-prefix', 'another-prefix'] });
     expect(result).toMatchSnapshot();
     expect(await getFormattedCSSWithoutTag(result)).toMatchSnapshot();
   });
@@ -31,23 +28,40 @@ describe('format: html', () => {
 
 describe('format: jsx', () => {
   it('should return core styles', async () => {
-    const result: JSX.Element = getInitialStyles({ format: 'jsx' });
-    const { container } = render(result);
-    expect(container.innerHTML).toMatchSnapshot();
-    expect(await getFormattedCSSWithoutTag(container.innerHTML)).toMatchSnapshot();
+    const result = getInitialStyles({ format: 'jsx' });
+    const html = renderToString(result);
+    expect(html).toMatchSnapshot();
+    expect(await getFormattedCSSWithoutTag(html)).toMatchSnapshot();
   });
 
-  it('should add custom prefix to component names', async () => {
-    const result: JSX.Element = getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' });
-    const { container } = render(result);
-    expect(container.innerHTML).toMatchSnapshot();
-    expect(await getFormattedCSSWithoutTag(container.innerHTML)).toMatchSnapshot();
+  it('should return core styles with custom prefix', async () => {
+    const result = getInitialStyles({ format: 'jsx', prefix: 'custom-prefix' });
+    const html = renderToString(result);
+    expect(html).toMatchSnapshot();
+    expect(await getFormattedCSSWithoutTag(html)).toMatchSnapshot();
   });
 
-  it('should add multiple custom prefix to component names', async () => {
-    const result: JSX.Element = getInitialStyles({ format: 'jsx', prefix: ['', 'some-prefix', 'another-prefix'] });
-    const { container } = render(result);
-    expect(container.innerHTML).toMatchSnapshot();
-    expect(await getFormattedCSSWithoutTag(container.innerHTML)).toMatchSnapshot();
+  it('should return core styles with multiple custom prefixes', async () => {
+    const result = getInitialStyles({ format: 'jsx', prefix: ['', 'some-prefix', 'another-prefix'] });
+    const html = renderToString(result);
+    expect(html).toMatchSnapshot();
+    expect(await getFormattedCSSWithoutTag(html)).toMatchSnapshot();
+  });
+});
+
+describe('format: sha256', () => {
+  it('should return hash for core styles', async () => {
+    const result = getInitialStyles({ format: 'sha256' });
+    expect(result).toMatchInlineSnapshot(`"'sha256-1RWilvSVhGBLU7zmtV867jEbxWejOsenWXeOcJTln/A='"`);
+  });
+
+  it('should return hash for core styles with custom prefix', async () => {
+    const result = getInitialStyles({ format: 'sha256', prefix: 'custom-prefix' });
+    expect(result).toMatchInlineSnapshot(`"'sha256-VOgcNTV/whE7CI0Dtuh4XOzjEE2qxlsHt78VN84AaAs='"`);
+  });
+
+  it('should return hash for core styles with multiple custom prefixes', async () => {
+    const result = getInitialStyles({ format: 'sha256', prefix: ['', 'some-prefix', 'another-prefix'] });
+    expect(result).toMatchInlineSnapshot(`"'sha256-u0QRxwJsnyBE6bAIyEVdi9mhs7RKAfJb0JpUGaSky/8='"`);
   });
 });

@@ -1,9 +1,12 @@
 import {
+  addEventListener,
   expectA11yToMatchSnapshot,
   getActiveElementId,
   getActiveElementTagName,
   getElementStyle,
+  getEventSummary,
   getLifecycleStatus,
+  hasFocus,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -27,10 +30,11 @@ type InitOptions = {
   useSlottedLabel?: boolean;
   useSlottedMessage?: boolean;
   state?: FormState;
+  loading?: boolean;
 };
 
 const initRadioButton = (opts?: InitOptions): Promise<void> => {
-  const { useSlottedLabel = false, useSlottedMessage = false, state = 'none' } = opts || {};
+  const { useSlottedLabel = false, useSlottedMessage = false, state = 'none', loading = false } = opts || {};
 
   const slottedLabel = useSlottedLabel
     ? '<span slot="label">Some label with a <a href="#" onclick="return false;">link</a>.</span>'
@@ -39,10 +43,14 @@ const initRadioButton = (opts?: InitOptions): Promise<void> => {
     ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
     : '';
 
+  const attrs = [!useSlottedLabel && 'label="Some label"', `state=${state}`, loading && 'loading="true"']
+    .filter(Boolean)
+    .join(' ');
+
   return setContentWithDesignSystem(
     page,
     `
-    <p-radio-button-wrapper state="${state}" ${useSlottedLabel ? '' : 'label="Some label"'}>
+    <p-radio-button-wrapper ${attrs}>
       ${slottedLabel}
       <input type="radio" />
       ${slottedMessage}
@@ -55,7 +63,7 @@ it('should not render label if label prop is not defined but should render if ch
     page,
     `
     <p-radio-button-wrapper>
-      <input type="radio" name="some-name"/>
+      <input type="radio" name="some-name" />
     </p-radio-button-wrapper>`
   );
 
@@ -73,8 +81,8 @@ it('should add/remove message text if state changes programmatically', async () 
     page,
     `
     <p-radio-button-wrapper label="Some label">
-      <input type="radio" name="some-name"/>
-      <input type="radio" name="some-name"/>
+      <input type="radio" name="some-name" />
+      <input type="radio" name="some-name" />
     </p-radio-button-wrapper>`
   );
 
@@ -106,7 +114,7 @@ it('should disable radio-button when disabled property is set programmatically',
     page,
     `
     <p-radio-button-wrapper label="Some label" id="radio-1">
-      <input type="radio" name="some-name"/>
+      <input type="radio" name="some-name" />
     </p-radio-button-wrapper>`
   );
 
@@ -135,7 +143,7 @@ describe('checked state', () => {
         <input type="radio" name="some-name" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper label="Some label" id="radio-2">
-        <input type="radio" name="some-name"/>
+        <input type="radio" name="some-name" />
       </p-radio-button-wrapper>`
     );
 
@@ -203,10 +211,10 @@ describe('checked state', () => {
       page,
       `
       <p-radio-button-wrapper label="Some label" id="radio-1">
-        <input type="radio" name="some-name"/>
+        <input type="radio" name="some-name" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper label="Some label" id="radio-2">
-        <input type="radio" name="some-name"/>
+        <input type="radio" name="some-name" />
       </p-radio-button-wrapper>`
     );
 
@@ -229,18 +237,84 @@ describe('checked state', () => {
     expect(await getBackgroundStyle(input1)).toEqual(initialStyleInput1);
     expect(await getBackgroundStyle(input2)).not.toEqual(initialStyleInput2);
   });
+
+  it('should not toggle radio-button on click in loading state', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-radio-button-wrapper label="Some label" loading="true" id="radio-1">
+        <input type="radio" name="some-name" />
+      </p-radio-button-wrapper>
+      <p-radio-button-wrapper label="Some label" id="radio-2">
+        <input type="radio" name="some-name" checked />
+      </p-radio-button-wrapper>`
+    );
+    const host1 = await selectNode(page, '#radio-1');
+    const input1 = await selectNode(page, '#radio-1 > input');
+    await addEventListener(host1, 'click');
+    await addEventListener(input1, 'change');
+
+    await input1.click();
+    const coords = await host1.boundingBox();
+    await page.mouse.click(coords.x + 1, coords.y + 1); // click the top left corner
+    await page.mouse.click(coords.x + 1, coords.y + coords.height - 1); // click the bottom left corner
+    await page.mouse.click(coords.x + coords.width - 1, coords.y + 1); // click the top right corner
+    await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height - 1); // click the bottom right corner
+    await page.mouse.click(coords.x + 1, coords.y + coords.height / 2); // click the left center
+    await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height / 2); // click the right center
+    await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // click the center center
+
+    expect((await getEventSummary(host1, 'click')).counter).toBe(8);
+    expect((await getEventSummary(input1, 'change')).counter).toBe(0);
+
+    await setProperty(host1, 'loading', false);
+    await waitForStencilLifecycle(page);
+
+    await input1.click();
+    expect((await getEventSummary(host1, 'click')).counter).toBe(9);
+    expect((await getEventSummary(input1, 'change')).counter).toBe(1);
+  });
+
+  it('should keep focus if state switches to loading', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
+      <p-radio-button-wrapper label="Some label" id="radio-1">
+        <input type="radio" name="some-name" />
+      </p-radio-button-wrapper>
+      <p-radio-button-wrapper label="Some label" id="radio-2">
+        <input type="radio" name="some-name" />
+      </p-radio-button-wrapper>`
+    );
+    const host1 = await selectNode(page, '#radio-1');
+    const input1 = await selectNode(page, '#radio-1 > input');
+
+    expect(await hasFocus(input1)).toBe(false);
+    await page.keyboard.press('Tab');
+    expect(await hasFocus(input1), 'after Tab').toBe(true);
+
+    await setProperty(host1, 'loading', true);
+    await waitForStencilLifecycle(page);
+
+    expect(await hasFocus(input1), 'focus when loading').toBe(true);
+
+    await setProperty(host1, 'loading', false);
+    await waitForStencilLifecycle(page);
+
+    expect(await hasFocus(input1), 'final focus').toBe(true);
+  });
 });
 
 it('should check radio-button when checked property is changed programmatically', async () => {
   await setContentWithDesignSystem(
     page,
     `
-      <p-radio-button-wrapper label="Some label" id="radio-1">
-        <input type="radio" name="some-name"/>
-      </p-radio-button-wrapper>
-      <p-radio-button-wrapper label="Some label" id="radio-2">
-        <input type="radio" name="some-name"/>
-      </p-radio-button-wrapper>`
+    <p-radio-button-wrapper label="Some label" id="radio-1">
+      <input type="radio" name="some-name" />
+    </p-radio-button-wrapper>
+    <p-radio-button-wrapper label="Some label" id="radio-2">
+      <input type="radio" name="some-name" />
+    </p-radio-button-wrapper>`
   );
 
   const input1 = await selectNode(page, '#radio-1 > input');
@@ -300,10 +374,9 @@ describe('accessibility', () => {
     await setContentWithDesignSystem(
       page,
       `
-          <p-radio-button-wrapper label="Some label" message="Some error message." state="error">
-            <input type="radio" name="some-name"/>
-          </p-radio-button-wrapper>
-        `
+      <p-radio-button-wrapper label="Some label" message="Some error message." state="error">
+        <input type="radio" name="some-name" />
+      </p-radio-button-wrapper>`
     );
     const input = await getInput();
     const message = await getMessage();
@@ -350,7 +423,8 @@ describe('accessibility', () => {
   it(`should keep focus on radio buttons when using keyboard navigation `, async () => {
     await setContentWithDesignSystem(
       page,
-      `<p-radio-button-wrapper label="Some label">
+      `
+      <p-radio-button-wrapper label="Some label">
         <input type="radio" name="some-name" id="radio-1"/>
       </p-radio-button-wrapper>
       <p-radio-button-wrapper label="Some label">

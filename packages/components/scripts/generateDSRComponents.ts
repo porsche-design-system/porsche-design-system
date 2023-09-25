@@ -49,7 +49,7 @@ const generateDSRComponents = (): void => {
         .replace(/\n  public componentDidRender\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public disconnectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentShouldUpdate\([\s\S]+?\n  }\n/g, '')
-        .replace(/\n  private (?!get).*{[\s\S]+?\n  };?\n/g, '') // private methods without getters
+        .replace(/\n  private (?!get).+(\n.+)?\{[\s\S]+?\n  };?\n/g, '') // private methods without getters
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
@@ -62,6 +62,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onClick={.*?}/g, '') // onClick props
         .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
+        .replace(/\s+onPaste={.*?}/g, '') // onPaste props
         .replace(/\s+onInput={.*?}/g, '') // onInput props
         .replace(/\s+on(?:Tab)?Change={.*?}/g, '') // onChange and onTabChange props
         .replace(/\s+onUpdate={.*?}/g, '') // onUpdate props
@@ -93,7 +94,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(<\/?)Host.*(>)/g, '$1$2') // replace Host fragment, TODO: could be removed completely with template tag
         .replace(/(public state)\?(: any)/, '$1$2') // make state required to fix linting issue with React
         .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`) // inline breakpoint value from utilities-v2 for marque
-        .replace(/{(isRequiredAndParentNotRequired\(.*)}/, '{/* $1 */}'); // comment out isRequiredAndParentNotRequired for now
+        .replace(/{(isRequiredAndParentNotRequired\(.*)}/, '{/* $1 */}') // comment out isRequiredAndParentNotRequired for now
+        .replace(/{(!isParentFieldsetRequired\(.*)}/, '{/* $1 */}'); // comment out isParentFieldsetRequired for now
 
       if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
         newFileContent = newFileContent.replace(
@@ -135,7 +137,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       newFileContent = newFileContent
         .replace(/(this\.)([a-zA-Z]+)/g, '$1props.$2') // change this.whatever to this.props.whatever
         .replace(/(this\.)props\.(input|select|textarea)/g, '$1$2') // revert for input, select and textarea
-        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides)/g, '$1$2'); // revert for certain private members
+        .replace(/(this\.)props\.(key\+\+|tabsItemElements|slides|inputElements)/g, '$1$2'); // revert for certain private members
 
       // take care of nested components of PrefixedTagNames
       const componentImports = Array.from(newFileContent.matchAll(/<PrefixedTagNames.p([A-Za-z]+)/g))
@@ -160,7 +162,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     const { children, namedSlotChildren, otherChildren } = splitChildren(this.props.children);\n`
           )
           .replace(
-            /this\.(?:input|select|textarea)/g,
+            /this\.(?:input|select|textarea)(?!Elements)/g,
             "typeof otherChildren[0] === 'object' && 'props' in otherChildren[0] && otherChildren[0]?.props"
           ); // fallback for undefined input, select and textarea reference
 
@@ -231,7 +233,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         newFileContent = newFileContent
           .replace(/this\.slides(\.map)/, `otherChildren$1`)
           .replace(/^/, "$&import type { BreakpointCustomizable } from '../types';\n")
-          .replace(/.*onFocusin=\{.*\n/, '');
+          .replace(/.*onFocusin=\{.*\n/, '')
+          .replace(/this\.slidesPerPage/, 'this.props.slidesPerPage')
+          // Since slidesPerPage is BreakpointCustomizable we have to replace hasNavigation with a working serverside condition
+          .replace(
+            /this\.props\.hasNavigation/g,
+            "(this.props.slidesPerPage === 'auto' || typeof this.props.slidesPerPage === 'object' || this.props.slidesPerPage < otherChildren.length)"
+          );
       } else if (tagName === 'p-banner') {
         // remove warning about deprecated title slot
         newFileContent = newFileContent
@@ -257,6 +265,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
           .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/, '');
+      } else if (tagName === 'p-radio-button-wrapper') {
+        newFileContent = newFileContent.replace(
+          /&& !(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0]) && (otherChildren\[0]\?\.props\.checked)/g,
+          '&& !($1 && ($2 || otherChildren[0]?.props.defaultChecked))' // wrap in brackets because of negation
+        );
       } else if (tagName === 'p-tabs') {
         newFileContent = newFileContent
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
@@ -391,28 +404,25 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
-          // Replace unused imports which cause warnings
-          .replace(/\s*MultiSelectOption,\s*/, '')
-          .replace(/\s*MultiSelectUpdateEvent,\s*/, '')
-          // Replace aria fns
-          .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
-          .replace(/\{\.\.\.getListAriaAttributes\([^}]*\}\s*/, '')
+          // remove aria functions
+          .replace(/\{\.\.\.getFilterInputAriaAttributes\([\s\S]+?\)}\s*/, '')
+          .replace(/\{\.\.\.getListAriaAttributes\([\s\S]+?\)}\s*/, '')
           // replace input-container className
-          .replace(/\{\{ 'input-container': true, disabled: this.props.disabled }}/, "'input-container'")
-          // replace color prop
-          .replace(/\s*color=\{this.props.disabled \? 'state-disabled' : 'primary'}\s*/, '')
-          // Replace placeholder
-          .replace(/(?<=placeholder=\{)[^}]+/, '""')
+          .replace(/\{\{ 'input-container': true, disabled: this\.props\.disabled }}/, '"input-container"')
+          // remove color prop
+          .replace(/\s*color=\{this\.props\.disabled \? 'state-disabled' : 'primary'}\s*/, '')
+          // remove placeholder
+          .replace(/\s*placeholder=\{.+/, '')
           // replace toggle icon className
           .replace(
-            /className=\{\{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this.props.isOpen }}/,
-            "className='icon toggle-icon'"
+            /className=\{\{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this\.props\.isOpen }}/,
+            'className="icon toggle-icon"'
           )
           .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
           .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
-          .replace(/(\{ MultiSelectOptionInternalHTMLProps)/, 'type $1')
+          // remove any jsx since options are not visible in closed multi-select
           .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
           .replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {

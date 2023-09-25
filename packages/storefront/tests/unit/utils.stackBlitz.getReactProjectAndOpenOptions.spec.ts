@@ -12,6 +12,7 @@ import type { SharedImportKey, StackBlitzFrameworkOpts, ExternalDependency } fro
 import * as getReactProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
 import * as stackBlitzHelperUtils from '../../src/utils/stackblitz/helper';
 import * as formattingUtils from '../../src/utils/formatting';
+import { initialStyles } from '../../src/lib/partialResults';
 
 jest.mock('../../../components-react/package.json', () => ({
   dependencies: {
@@ -288,9 +289,26 @@ describe('getReactProjectAndOpenOptions()', () => {
       files: {
         ...stackBlitzFrameworkOpts.porscheDesignSystemBundle,
         'App.tsx': mockedAppTsx,
-        'index.html': '<div id="root"></div>',
+        'index.html': `<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Porsche Design System - React</title>
+
+    <!-- prettier-ignore -->
+    ${initialStyles}
+
+    <style>
+      html, body { margin: 0; padding: 0; }
+      ${stackBlitzFrameworkOpts.globalStyles}
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>`,
         'index.tsx': mockedIndexTsx,
-        'style.css': 'html, body { margin: 0; padding: 0; } ' + stackBlitzFrameworkOpts.globalStyles,
+        'style.css': '',
       },
       template: 'create-react-app',
       title: stackBlitzFrameworkOpts.title,

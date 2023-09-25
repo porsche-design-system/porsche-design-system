@@ -1,11 +1,6 @@
 <script setup lang="ts">
   import type { SegmentedControlUpdateEvent } from '@porsche-design-system/components-vue';
-  import {
-    PSegmentedControl,
-    PSegmentedControlItem,
-    PText,
-    PStepperHorizontal,
-  } from '@porsche-design-system/components-vue';
+  import { PSegmentedControl, PSegmentedControlItem, PText } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const currentValue = ref(1);
@@ -23,5 +18,4 @@
     <PSegmentedControlItem :value="5">Option 5</PSegmentedControlItem>
   </PSegmentedControl>
   <PText>Current value: {{ currentValue }}</PText>
-  <PStepperHorizontal></PStepperHorizontal>
 </template>

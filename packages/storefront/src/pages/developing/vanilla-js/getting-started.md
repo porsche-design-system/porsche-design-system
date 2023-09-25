@@ -24,7 +24,7 @@ After adding the `@porsche-design-system/components-js` package to your project,
 (assuming a web server is running).
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -40,6 +40,12 @@ After adding the `@porsche-design-system/components-js` package to your project,
   </body>
 </html>
 ```
+
+<Notification heading="Attention" state="warning">
+  Now, when you look at the result in your browser you should see an error message like 
+  <code>The Porsche Design System is used without using the getInitialStyles() partial.</code><br>
+  To fix this, you have to apply the <a href="partials/initial-styles">getInitialStyles() partial</a> which is mandatory since v3.7.0.
+</Notification>
 
 ## When are Porsche Design System components initialized?
 

@@ -8,6 +8,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   hyphens: auto !important;
   color: #FBFCFF !important;
   text-align: left !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -36,6 +37,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   hyphens: auto !important;
   color: #010205 !important;
   text-align: left !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

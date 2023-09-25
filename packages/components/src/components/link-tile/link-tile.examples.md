@@ -55,10 +55,10 @@ The `size` property changes the font size of the description.
 
 The `weight` property changes the font weight of the description.
 
-<p-inline-notification heading="Deprecation hint" state="warning" dismiss-button="false">
+<Notification heading="Deprecation hint" state="warning">
   The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
   Please use the <code>semi-bold</code> value instead.
-</p-inline-notification>
+</Notification>
 
 <Playground :markup="weightMarkup" :config="config">
   <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
@@ -101,6 +101,17 @@ It is possible to align the description on top of the component.
 
 <Playground :markup="alignMarkup">
   <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
+</Playground>
+
+## Hyphens
+
+It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. However, please note that
+hyphenation behavior can vary depending on the browser and the language of the text. In some cases, it may be necessary
+to set the appropriate lang attribute on your HTML element to ensure that hyphenation works correctly for the desired
+language.
+
+<Playground :markup="hyphenMarkup">
+  <SelectOptions v-model="hyphen" :values="hyphens" name="hyphens"></SelectOptions>
 </Playground>
 
 <script lang="ts">
@@ -236,6 +247,21 @@ export default class Code extends Vue {
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`};
+
+  hyphen = 'manual';
+  hyphens = ['auto', 'manual', 'none'];
+  get hyphenMarkup() {
+    return `<p-link-tile
+  href="https://www.porsche.com"
+  label="Some label"
+  description="An extra&shy;ordinarily Porsche"
+  compact="true"
+  size="inherit" 
+  style="${this.hyphen !== 'auto' ? 'hyphens: ' + this.hyphen + '; ' : ''}font-size: 45px;"
+>
+  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+</p-link-tile>`};
+
 }
 </script>
 

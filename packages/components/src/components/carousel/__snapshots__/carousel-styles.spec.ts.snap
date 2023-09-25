@@ -6,6 +6,7 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -63,7 +64,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -84,6 +84,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -133,6 +134,7 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -189,7 +191,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -210,6 +211,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -258,6 +260,7 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -315,7 +318,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -336,6 +338,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -413,6 +416,7 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -469,7 +473,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -490,6 +493,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -566,6 +570,7 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -623,7 +628,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -644,6 +648,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -745,6 +750,7 @@ exports[`getComponentCss() should return correct css for width: basic, hasPagina
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -801,7 +807,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -822,6 +827,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -922,6 +928,7 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -978,7 +985,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -999,6 +1005,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -1102,6 +1109,7 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1159,7 +1167,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -1180,6 +1187,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -1308,6 +1316,7 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1365,7 +1374,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -1386,6 +1394,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -1435,6 +1444,7 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1491,7 +1501,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -1512,6 +1521,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -1560,6 +1570,7 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1616,7 +1627,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -1637,6 +1647,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -1713,6 +1724,7 @@ exports[`getComponentCss() should return correct css for width: extended, hasPag
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1770,7 +1782,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   margin: -4px 0;
 }
 .splide__track {
-  cursor: grab;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -1791,6 +1802,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   text-indent: -999999px;
 }
 .splide__track--draggable {
+  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;

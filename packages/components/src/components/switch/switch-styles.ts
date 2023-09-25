@@ -9,6 +9,8 @@ import {
   hoverMediaQuery,
   getHighContrastColors,
   getHiddenTextJssStyle,
+  prefersColorSchemeDarkMediaQuery,
+  colorSchemeStyles,
 } from '../../styles';
 import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 
@@ -74,12 +76,23 @@ export const getComponentCss = (
     toggleBackgroundColorHover,
     textColor,
   } = getColors(checked, disabled, loading, theme);
+  const {
+    buttonBorderColor: buttonBorderColorDark,
+    buttonBorderColorHover: buttonBorderColorHoverDark,
+    buttonBackgroundColor: buttonBackgroundColorDark,
+    buttonBackgroundColorHover: buttonBackgroundColorHoverDark,
+    toggleBackgroundColor: toggleBackgroundColorDark,
+    toggleBackgroundColorHover: toggleBackgroundColorHoverDark,
+    textColor: textColorDark,
+  } = getColors(checked, disabled, loading, 'dark');
   const { focusColor } = getThemedColors(theme);
+  const { focusColor: focusColorDark } = getThemedColors('dark');
 
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         outline: 0, // custom element is able to delegate the focus
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
         ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           display: stretchValue ? 'block' : 'inline-block',
@@ -108,8 +121,15 @@ export const getComponentCss = (
           '&:hover .switch': {
             borderColor: buttonBorderColorHover,
             backgroundColor: buttonBackgroundColorHover,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: buttonBorderColorHoverDark,
+              backgroundColor: buttonBackgroundColorHoverDark,
+            }),
             '& .toggle': {
               backgroundColor: toggleBackgroundColorHover,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                backgroundColor: toggleBackgroundColorHoverDark,
+              }),
             },
           },
         })),
@@ -118,6 +138,9 @@ export const getComponentCss = (
         position: 'absolute',
         ...getInsetJssStyle(-6),
         border: `${borderWidthBase} solid ${focusColor}`,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: focusColorDark,
+        }),
         borderRadius: '18px',
       },
       '&:not(:focus-visible) .switch::before': {
@@ -135,6 +158,10 @@ export const getComponentCss = (
       backgroundColor: buttonBackgroundColor,
       cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
       transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        borderColor: buttonBorderColorDark,
+        backgroundColor: buttonBackgroundColorDark,
+      }),
     },
     toggle: {
       position: 'absolute',
@@ -145,6 +172,9 @@ export const getComponentCss = (
       display: 'block',
       borderRadius: '50%',
       backgroundColor: toggleBackgroundColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        backgroundColor: toggleBackgroundColorDark,
+      }),
       transform: `translate3d(${checked ? '20px' : '0'}, 0, 0)`,
       transition: `${getTransition('background-color')},${getTransition('transform')}`,
     },
@@ -163,6 +193,9 @@ export const getComponentCss = (
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       color: textColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: textColorDark,
+      }),
       ...mergeDeep(
         buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
           order: alignLabelValue === 'left' ? -1 : 0,

@@ -7,6 +7,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -21,6 +22,7 @@ import type { Theme } from '../../../types';
 import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
 import type { JssStyle } from 'jss';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
+import { escapeHashCharacter } from '../../../utils/svg/escapeHashCharacter';
 
 type NumberedCircleColors = {
   primaryColor: string;
@@ -31,7 +33,7 @@ type NumberedCircleColors = {
 const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColors, isStateCurrent: boolean): string => {
   // # of the hexcolor starts a fragment identifier in URLs, so we have to replace it with the escaped value of # = %23
   numberedCircleColors = Object.entries(numberedCircleColors).reduce(
-    (result, [key, value]) => ({ ...result, [key]: value.replace(/#/g, '%23') }),
+    (result, [key, value]) => ({ ...result, [key]: escapeHashCharacter(value) }),
     {} as NumberedCircleColors
   );
 
@@ -62,6 +64,12 @@ const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColor
 
 export const getComponentCss = (state: StepperHorizontalItemState, disabled: boolean, theme: Theme): string => {
   const { primaryColor, hoverColor, disabledColor, focusColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    hoverColor: hoverColorDark,
+    disabledColor: disabledColorDark,
+    focusColor: focusColorDark,
+  } = getThemedColors('dark');
 
   const isStateCurrent = state === 'current';
   const isStateCurrentOrUndefined = !state || isStateCurrent;
@@ -86,6 +94,19 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
                     isStateCurrent
                   )
                 ),
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                  backgroundImage: getInlineSVGBackgroundImage(
+                    getSVGPath(
+                      i,
+                      {
+                        primaryColor: primaryColorDark,
+                        invertedBaseColor: getInvertedThemedColors('dark').primaryColor,
+                        disabledColor: disabledColorDark,
+                      },
+                      isStateCurrent
+                    )
+                  ),
+                }),
               },
             }),
             {} as JssStyle
@@ -116,12 +137,21 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
           ...frostedGlassStyle,
           background: hoverColor,
         }),
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: isDisabled ? disabledColorDark : primaryColorDark,
+          ...(isStateCurrent && {
+            background: hoverColorDark,
+          }),
+        }),
         ...(!isDisabled &&
           hoverMediaQuery({
             transition: getTransition('background-color'),
             '&:hover': {
               ...frostedGlassStyle,
               background: hoverColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                background: hoverColorDark,
+              }),
             },
           })),
         ...(isStateCurrentOrUndefined && {
@@ -138,6 +168,9 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
           position: 'absolute',
           ...getInsetJssStyle(),
           border: `${borderWidthBase} solid ${focusColor}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: focusColorDark,
+          }),
           borderRadius: borderRadiusSmall,
         },
         '&:focus:not(:focus-visible)::after': {

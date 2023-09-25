@@ -90,6 +90,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <p-multi-select-option value="c">Option C</p-multi-select-option>
   </p-multi-select>`,
   'p-pagination': `<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>`,
+  'p-pin-code': `<p-pin-code label="Some label"></p-pin-code>`,
   'p-popover': `<p-popover>Some Popover Content</p-popover>`,
   'p-radio-button-wrapper': `<p-radio-button-wrapper label="Some label">
   <input type="radio" />

@@ -1,5 +1,11 @@
 import { getCss, isHighContrastMode } from '../../utils';
-import { addImportantToEachRule, hostHiddenStyles, getSchemedHighContrastMediaQuery } from '../../styles';
+import {
+  addImportantToEachRule,
+  hostHiddenStyles,
+  getSchemedHighContrastMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+  colorSchemeStyles,
+} from '../../styles';
 import type { ModelSignatureColor, ModelSignatureSize } from './model-signature-utils';
 import type { Theme } from '../../types';
 import {
@@ -14,19 +20,24 @@ import {
 } from '../../styles/color-filters';
 import { modelSignatureHeight } from './model-signature-utils';
 
+const colorToFilterLight: Record<Exclude<ModelSignatureColor, 'inherit'>, string> = {
+  primary: filterLightPrimary,
+  'contrast-low': filterLightContrastLow,
+  'contrast-medium': filterLightContrastMedium,
+  'contrast-high': filterLightContrastHigh,
+};
+
+const colorToFilterDark: Record<Exclude<ModelSignatureColor, 'inherit'>, string> = {
+  primary: filterDarkPrimary,
+  'contrast-low': filterDarkContrastLow,
+  'contrast-medium': filterDarkContrastMedium,
+  'contrast-high': filterDarkContrastHigh,
+};
+
 const colorToFilterMap: Record<Theme, Record<Exclude<ModelSignatureColor, 'inherit'>, string>> = {
-  light: {
-    primary: filterLightPrimary,
-    'contrast-low': filterLightContrastLow,
-    'contrast-medium': filterLightContrastMedium,
-    'contrast-high': filterLightContrastHigh,
-  },
-  dark: {
-    primary: filterDarkPrimary,
-    'contrast-low': filterDarkContrastLow,
-    'contrast-medium': filterDarkContrastMedium,
-    'contrast-high': filterDarkContrastHigh,
-  },
+  auto: colorToFilterLight,
+  light: colorToFilterLight,
+  dark: colorToFilterDark,
 };
 
 export const getComponentCss = (size: ModelSignatureSize, color: ModelSignatureColor, theme: Theme): string => {
@@ -47,6 +58,7 @@ export const getComponentCss = (size: ModelSignatureSize, color: ModelSignatureC
             // TODO: we need a width map of all signatures to ensure same fluid behavior like implemented fro crest + wordmark
             maxHeight: `${modelSignatureHeight}px`,
           }),
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -57,6 +69,9 @@ export const getComponentCss = (size: ModelSignatureSize, color: ModelSignatureC
         pointerEvents: 'none', // prevents image drag
         ...(!isColorInherit && {
           filter: colorToFilterMap[theme][color],
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            filter: colorToFilterMap.dark[color],
+          }),
           ...(isHighContrastMode &&
             getSchemedHighContrastMediaQuery(
               {

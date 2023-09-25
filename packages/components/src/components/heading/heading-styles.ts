@@ -1,7 +1,7 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { HeadingAlign, HeadingColor, HeadingSize } from './heading-utils';
 import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
   fontSizeHeadingLarge,
   fontSizeHeadingMedium,
@@ -31,7 +31,10 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule(hostHiddenStyles),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
       '::slotted': {
         [HEADING_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),

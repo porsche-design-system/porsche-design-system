@@ -2,10 +2,10 @@
   <div>
     <div style="display: flex; justify-content: space-between; margin: 0 0 1rem">
       <div>🚫 = deprecated<br />🛠 = breakpointCustomizable</div>
-      <p-switch @update="toggleProps" :checked="isToggled">Show all prop values</p-switch>
+      <p-switch :theme="storefrontTheme" @update="toggleProps" :checked="isToggled">Show all prop values</p-switch>
     </div>
 
-    <p-table>
+    <p-table :theme="storefrontTheme">
       <p-table-head>
         <!-- eslint-disable-next-line vue/no-v-text-v-html-on-component -->
         <p-table-head-row v-html="headRow"></p-table-head-row>
@@ -23,11 +23,16 @@
   import type { TagName } from '@porsche-design-system/shared';
   import { getComponentMeta } from '@porsche-design-system/component-meta';
   import type { ComponentMeta } from '@porsche-design-system/component-meta';
+  import { type StorefrontTheme } from '@/models';
 
   const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
 
   @Component
   export default class ComponentMetaOverview extends Vue {
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
+    }
+
     get headRow(): string {
       return ['', ...tagNames]
         .map((tagName) => {
@@ -100,7 +105,7 @@
                       .join('');
                     return (
                       `<span class="prop">${val}${propFlags}</span>` +
-                      (allowedValues ? `<div style="display: none">${allowedValues}</div>` : '')
+                      (allowedValues ? `<div style="display: none;">${allowedValues}</div>` : '')
                     );
                   });
                 } else if (key === 'eventNames') {
@@ -164,9 +169,9 @@
     display: inline-block;
     @include pds-text-x-small;
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
-    padding: 0.125rem $pds-spacing-static-small;
-    background: mix($pds-theme-light-primary, $pds-theme-light-background-base, 10%);
+    padding: 2px $pds-spacing-static-small;
     border-radius: $pds-border-radius-small;
+    background-color: var(--theme-custom-background-code);
 
     &:not(:first-child) {
       margin: $pds-spacing-static-small 0 0;
@@ -177,7 +182,7 @@
     cursor: pointer;
 
     &:hover {
-      color: $pds-theme-light-contrast-medium;
+      color: var(--theme-contrast-medium);
     }
   }
 </style>

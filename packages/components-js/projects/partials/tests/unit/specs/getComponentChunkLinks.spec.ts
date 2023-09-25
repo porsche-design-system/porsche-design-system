@@ -1,7 +1,7 @@
 import { getComponentChunkLinks } from '../../../src';
 import type { ComponentChunkName } from '../../../../components-wrapper';
 import { COMPONENT_CHUNK_NAMES } from '../../../../components-wrapper';
-import { render } from '@testing-library/react';
+import { renderToString } from 'react-dom/server';
 
 const { version } = require('../../../../components-wrapper/package.json');
 
@@ -13,47 +13,46 @@ jest.mock('../../../src/shared');
 
 describe('validation', () => {
   it('should throw error on invalid components parameter', () => {
-    let errorMessage = '';
-    try {
-      getComponentChunkLinks({ components: ['some-invalid-component'] as any[] });
-    } catch (e) {
-      errorMessage = (e as Error).message;
-    }
+    expect(() => getComponentChunkLinks({ components: (['some-invalid-component'] as any[]) })).
+toThrowErrorMatchingInlineSnapshot(`
+"[Porsche Design System] The following supplied component chunk names are invalid:
+  some-invalid-component
 
-    expect(errorMessage).toContain('The following supplied component chunk names are invalid:');
-    expect(errorMessage).toContain('some-invalid-component');
+Please use only valid component chunk names:
+  accordion, banner, button-group, button-pure, button-tile, button, carousel, checkbox-wrapper, content-wrapper, crest, display, divider, fieldset-wrapper, fieldset, flex, flyout, grid, heading, headline, icon, inline-notification, link-pure, link-social, link-tile-model-signature, link-tile, link, marque, modal, model-signature, multi-select, pagination, pin-code, popover, radio-button-wrapper, scroller, segmented-control, select-wrapper, spinner, stepper-horizontal, switch, table, tabs-bar, tabs, tag-dismissible, tag, text-field-wrapper, text-list, text, textarea-wrapper, toast, wordmark"
+`);
   });
 });
 
 describe('format: html', () => {
-  const coreLinkCom = `<link rel=preload href=${baseHrefCom}/porsche-design-system.v${version}.${hash}.js as=script crossorigin>`;
+  const coreLinkCom = `<link rel=preload href=${baseHrefCom}/porsche-design-system\\.v${version}\\.${hash}\\.js as=script crossorigin>`;
 
   it('should return core link', () => {
-    const result: string = getComponentChunkLinks();
-    expect(result).toMatch(new RegExp(coreLinkCom));
+    const result = getComponentChunkLinks();
+    expect(result).toMatch(new RegExp(`^${coreLinkCom}$`));
   });
 
   it('should return core link for china cdn', () => {
-    const result: string = getComponentChunkLinks({ cdn: 'cn' });
+    const result = getComponentChunkLinks({ cdn: 'cn' });
     const regex = new RegExp(
-      `<link rel=preload href=${baseHrefCn}/porsche-design-system.v${version}.${hash}.js as=script crossorigin>`
+      `^<link rel=preload href=${baseHrefCn}/porsche-design-system\\.v${version}\\.${hash}\\.js as=script crossorigin>$`
     );
     expect(result).toMatch(regex);
   });
 
   it('should return multiple links', () => {
-    const result: string = getComponentChunkLinks({ components: ['button', 'button-pure', 'marque'] });
+    const result = getComponentChunkLinks({ components: ['button', 'button-pure', 'marque'] });
     const regex = new RegExp(
-      `${coreLinkCom}<link rel=preload href=${baseHrefCom}/porsche-design-system.button.${hash}.js as=script><link rel=preload href=${baseHrefCom}/porsche-design-system.button-pure.${hash}.js as=script><link rel=preload href=${baseHrefCom}/porsche-design-system.marque.${hash}.js as=script>`
+      `^${coreLinkCom}<link rel=preload href=${baseHrefCom}/porsche-design-system\\.button\\.${hash}\\.js as=script><link rel=preload href=${baseHrefCom}/porsche-design-system\\.button-pure\\.${hash}\\.js as=script><link rel=preload href=${baseHrefCom}/porsche-design-system\\.marque\\.${hash}\\.js as=script>$`
     );
     expect(result).toMatch(regex);
   });
 
   COMPONENT_CHUNK_NAMES.forEach((chunkName: ComponentChunkName) => {
     it(`should return core and chunk link for ['${chunkName}']`, () => {
-      const result: string = getComponentChunkLinks({ components: [chunkName] });
+      const result = getComponentChunkLinks({ components: [chunkName] });
       const regex = new RegExp(
-        `${coreLinkCom}<link rel=preload href=${baseHrefCom}/porsche-design-system.${chunkName}.${hash}.js as=script>`
+        `^${coreLinkCom}<link rel=preload href=${baseHrefCom}/porsche-design-system\\.${chunkName}\\.${hash}\\.js as=script>$`
       );
 
       expect(result).toMatch(regex);
@@ -62,46 +61,41 @@ describe('format: html', () => {
 });
 
 describe('format: jsx', () => {
-  const coreLinkCom = `<link rel="preload" href="${baseHrefCom}/porsche-design-system.v${version}.${hash}.js" as="script" crossorigin="">`;
+  const coreLinkCom = `<link rel="preload" href="${baseHrefCom}/porsche-design-system\\\.v${version}\\\.${hash}\\\.js" as="script" crossorigin=""/>`;
 
   it('should return core link', () => {
-    const result: JSX.Element = getComponentChunkLinks({ format: 'jsx' });
-    const { container } = render(result);
-
-    expect(container.innerHTML).toMatch(new RegExp(coreLinkCom));
+    const result = getComponentChunkLinks({ format: 'jsx' });
+    expect(renderToString(result)).toMatch(new RegExp(`^${coreLinkCom}$`));
   });
 
   it('should return core link for china cdn', () => {
-    const result: JSX.Element = getComponentChunkLinks({ format: 'jsx', cdn: 'cn' });
-    const { container } = render(result);
+    const result = getComponentChunkLinks({ format: 'jsx', cdn: 'cn' });
     const regex = new RegExp(
-      `<link rel="preload" href="${baseHrefCn}/porsche-design-system.v${version}.${hash}.js" as="script" crossorigin="">`
+      `^<link rel="preload" href="${baseHrefCn}/porsche-design-system\\.v${version}\\.${hash}\\.js" as="script" crossorigin=""/>$`
     );
-    expect(container.innerHTML).toMatch(regex);
+    expect(renderToString(result)).toMatch(regex);
   });
 
   it('should return multiple links', () => {
-    const result: JSX.Element = getComponentChunkLinks({
+    const result = getComponentChunkLinks({
       format: 'jsx',
       components: ['button', 'button-pure', 'marque'],
     });
-    const { container } = render(result);
     const regex = new RegExp(
-      `${coreLinkCom}<link rel="preload" href="${baseHrefCom}/porsche-design-system.button.${hash}.js" as="script"><link rel="preload" href="${baseHrefCom}/porsche-design-system.button-pure.${hash}.js" as="script"><link rel="preload" href="${baseHrefCom}/porsche-design-system.marque.${hash}.js" as="script">`
+      `^${coreLinkCom}<link rel="preload" href="${baseHrefCom}/porsche-design-system\\.button\\.${hash}\\.js" as="script"/><link rel="preload" href="${baseHrefCom}/porsche-design-system\\.button-pure\\.${hash}\\.js" as="script"/><link rel="preload" href="${baseHrefCom}/porsche-design-system\\.marque\\.${hash}\\.js" as="script"/>$`
     );
 
-    expect(container.innerHTML).toMatch(regex);
+    expect(renderToString(result)).toMatch(regex);
   });
 
   COMPONENT_CHUNK_NAMES.forEach((chunkName: ComponentChunkName) => {
     it(`should return core and chunk link for ['${chunkName}']`, () => {
-      const result: JSX.Element = getComponentChunkLinks({ format: 'jsx', components: [chunkName] });
-      const { container } = render(result);
+      const result = getComponentChunkLinks({ format: 'jsx', components: [chunkName] });
       const regex = new RegExp(
-        `${coreLinkCom}<link rel="preload" href="${baseHrefCom}/porsche-design-system.${chunkName}.${hash}.js" as="script">`
+        `^${coreLinkCom}<link rel="preload" href="${baseHrefCom}/porsche-design-system\\.${chunkName}\\.${hash}\\.js" as="script"/>$`
       );
 
-      expect(container.innerHTML).toMatch(regex);
+      expect(renderToString(result)).toMatch(regex);
     });
   });
 });

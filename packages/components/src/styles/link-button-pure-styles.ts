@@ -4,11 +4,13 @@ import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../types';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from './';
 import {
   borderRadiusSmall,
@@ -54,6 +56,12 @@ export const getLinkButtonPureStyles = (
   theme: Theme
 ): Styles => {
   const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    disabledColor: disabledColorDark,
+    hoverColor: hoverColorDark,
+    focusColor: focusColorDark,
+  } = getThemedColors('dark');
   const hasIcon = hasVisibleIcon(icon, iconSource);
 
   return {
@@ -62,6 +70,7 @@ export const getLinkButtonPureStyles = (
         ...addImportantToEachRule({
           transform: 'translate3d(0,0,0)', // creates new stacking context
           outline: 0, // custom element is able to delegate the focus
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
         ...buildResponsiveStyles(stretch, (responsiveStretch: boolean) => ({
@@ -78,6 +87,9 @@ export const getLinkButtonPureStyles = (
       margin: 0,
       padding: 0,
       color: isDisabledOrLoading ? disabledColor : primaryColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
+      }),
       outline: 0,
       ...textSmallStyle,
       ...mergeDeep(
@@ -103,6 +115,9 @@ export const getLinkButtonPureStyles = (
         ...(active && {
           ...frostedGlassStyle,
           backgroundColor: hoverColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            backgroundColor: hoverColorDark,
+          }),
         }),
       },
       ...(!isDisabledOrLoading &&
@@ -110,11 +125,17 @@ export const getLinkButtonPureStyles = (
           '&:hover::before': {
             ...frostedGlassStyle,
             backgroundColor: hoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              backgroundColor: hoverColorDark,
+            }),
           },
         })),
       ...(!hasSlottedAnchor && {
         '&:focus::before': {
           border: `${borderWidthBase} solid ${focusColor}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: focusColorDark,
+          }),
         },
         '&:not(:focus-visible)::before': {
           border: 0,

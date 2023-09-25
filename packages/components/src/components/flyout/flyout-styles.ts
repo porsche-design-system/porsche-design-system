@@ -1,11 +1,13 @@
 import { getCss, isThemeDark, scrollShadowColor, scrollShadowColorDark, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getFrostedGlassBackgroundJssStyles,
   getInsetJssStyle,
   getThemedColors,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { FLYOUT_Z_INDEX } from '../../constants';
 import { gridGap, spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
@@ -31,12 +33,14 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { primaryColor, backgroundColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
   const { contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
   const isPositionLeft = position === 'left';
   const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge}`;
   const isDark = isThemeDark(theme);
   const shadowColor = isDark ? scrollShadowColorDark : scrollShadowColor;
-  const transparentColor = isDark ? 'rgba(14, 14, 18, 0)' : 'rgba(255, 255, 255, 0)';
+  const transparentColorDark = 'rgba(14, 14, 18, 0)';
+  const transparentColor = isDark ? transparentColorDark : 'rgba(255, 255, 255, 0)';
 
   return getCss({
     '@global': addImportantToEachRule({
@@ -57,6 +61,7 @@ export const getComponentCss = (
             }),
         ...getInsetJssStyle(),
         ...getFrostedGlassBackgroundJssStyles(isOpen, flyoutTransitionDuration),
+        ...colorSchemeStyles,
         ...hostHiddenStyles,
       },
     }),
@@ -67,12 +72,18 @@ export const getComponentCss = (
       }),
       justifyContent: 'flex-end',
       background: backgroundColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: backgroundColorDark,
+      }),
       position: 'sticky',
       top: 0,
       zIndex: 1,
     },
     [headerShadowClass]: {
       boxShadow: `${isDark ? scrollShadowColorDark : scrollShadowColor} 0px 5px 10px`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        boxShadow: `${scrollShadowColorDark} 0px 5px 10px`,
+      }),
     },
     ...(hasHeader && {
       'header-content': {
@@ -86,6 +97,10 @@ export const getComponentCss = (
       border: `2px solid ${backgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
       borderRadius: '4px',
       background: backgroundColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        borderColor: backgroundColorDark,
+        background: backgroundColorDark,
+      }),
       ...hoverMediaQuery({
         '&:hover': {
           background: darkThemeContrastHighColor,
@@ -115,6 +130,10 @@ export const getComponentCss = (
         isOpen ? '0s' : flyoutTransitionDuration
       }, transform ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction}`,
       boxShadow: `${isPositionLeft ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: primaryColorDark,
+        background: backgroundColorDark,
+      }),
     },
     content: {
       padding: contentPadding,
@@ -130,6 +149,9 @@ export const getComponentCss = (
         backgroundSize: '100% 20px, 100% 20px, 100% 10px, 100% 10px',
         backgroundAttachment: 'local, local, scroll, scroll',
         overscrollBehaviorY: 'none',
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          backgroundImage: `linear-gradient(to top, ${backgroundColorDark}, ${backgroundColorDark}), linear-gradient(to top, ${backgroundColorDark}, ${backgroundColorDark}), linear-gradient(to top, ${scrollShadowColorDark}, ${transparentColorDark}), linear-gradient(to bottom, ${scrollShadowColorDark}, ${transparentColorDark})`,
+        }),
       }),
     },
     ...(hasFooter && {
@@ -139,9 +161,15 @@ export const getComponentCss = (
         position: 'sticky',
         zIndex: 1,
         bottom: 0,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+        }),
       },
       [footerShadowClass]: {
         boxShadow: `${isDark ? scrollShadowColorDark : scrollShadowColor} 0px -5px 10px`,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          boxShadow: `${scrollShadowColorDark} 0px -5px 10px`,
+        }),
       },
     }),
     ...(hasSubFooter && {

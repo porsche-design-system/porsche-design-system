@@ -22,6 +22,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "breakpointCustomizableProps": [
@@ -74,6 +75,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "deprecatedPropValues": {
@@ -135,6 +137,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "type": [
         "button",
@@ -232,6 +235,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "type": [
         "button",
@@ -312,6 +316,7 @@ exports[`should match snapshot 1`] = `
       "background": [
         "light",
         "dark",
+        "auto",
       ],
       "compact": "boolean",
       "description": "string",
@@ -404,6 +409,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "width": [
         "basic",
@@ -474,6 +480,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "breakpointCustomizableProps": [
@@ -519,6 +526,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "width": [
         "narrow",
@@ -603,6 +611,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "breakpointCustomizableProps": [
@@ -648,6 +657,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "breakpointCustomizableProps": [
@@ -697,6 +707,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "hasAriaProp": false,
@@ -738,6 +749,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.",
@@ -915,6 +927,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "eventNames": [
@@ -1077,6 +1090,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "breakpointCustomizableProps": [
@@ -1125,6 +1139,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-heading" instead.",
@@ -1382,6 +1397,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "deprecatedProps": [
@@ -1425,6 +1441,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "deprecatedProps": [
@@ -1478,6 +1495,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "variant": [
         "primary",
@@ -1547,6 +1565,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "underline": "boolean",
       "weight": [
@@ -1616,6 +1635,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "breakpointCustomizableProps": [
@@ -1668,6 +1688,7 @@ exports[`should match snapshot 1`] = `
       "background": [
         "light",
         "dark",
+        "auto",
       ],
       "compact": "boolean",
       "description": "string",
@@ -1935,6 +1956,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "hasAriaProp": false,
@@ -1975,6 +1997,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "value": [
         "string",
@@ -2075,6 +2098,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "totalItemsCount": "number",
     },
@@ -2132,6 +2156,75 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-pin-code": {
+    "allowedPropValues": {
+      "description": "string",
+      "disabled": "boolean",
+      "hideLabel": "boolean",
+      "label": "string",
+      "length": [
+        4,
+        6,
+      ],
+      "loading": "boolean",
+      "message": "string",
+      "name": "string",
+      "required": "boolean",
+      "state": [
+        "none",
+        "error",
+        "success",
+      ],
+      "theme": [
+        "light",
+        "dark",
+        "auto",
+      ],
+      "type": [
+        "number",
+        "password",
+      ],
+      "value": "string",
+    },
+    "breakpointCustomizableProps": [
+      "hideLabel",
+    ],
+    "eventNames": [
+      "update",
+    ],
+    "hasAriaProp": false,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "namedSlots": [
+      "label",
+      "description",
+      "message",
+    ],
+    "nestedComponents": [
+      "p-spinner",
+    ],
+    "props": {
+      "description": null,
+      "disabled": false,
+      "hideLabel": false,
+      "label": null,
+      "length": 4,
+      "loading": false,
+      "message": null,
+      "name": null,
+      "required": false,
+      "state": "none",
+      "theme": "light",
+      "type": "number",
+      "value": null,
+    },
+    "styling": "jss",
+  },
   "p-popover": {
     "allowedPropValues": {
       "aria": {
@@ -2147,6 +2240,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "hasAriaProp": true,
@@ -2172,6 +2266,7 @@ exports[`should match snapshot 1`] = `
     "allowedPropValues": {
       "hideLabel": "boolean",
       "label": "string",
+      "loading": "boolean",
       "message": "string",
       "state": [
         "none",
@@ -2181,6 +2276,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "breakpointCustomizableProps": [
@@ -2198,6 +2294,9 @@ exports[`should match snapshot 1`] = `
       "label",
       "message",
     ],
+    "nestedComponents": [
+      "p-spinner",
+    ],
     "observedAttributes": [
       "disabled",
       "required",
@@ -2205,6 +2304,7 @@ exports[`should match snapshot 1`] = `
     "props": {
       "hideLabel": false,
       "label": null,
+      "loading": false,
       "message": null,
       "state": "none",
       "theme": "light",
@@ -2244,6 +2344,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "deprecatedProps": [
@@ -2311,6 +2412,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "value": [
         "string",
@@ -2409,6 +2511,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "breakpointCustomizableProps": [
@@ -2498,6 +2601,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "breakpointCustomizableProps": [
@@ -2527,6 +2631,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "breakpointCustomizableProps": [
@@ -2604,6 +2709,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "breakpointCustomizableProps": [
@@ -2646,6 +2752,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "deprecatedEventNames": [
@@ -2815,6 +2922,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "weight": [
         "regular",
@@ -2880,6 +2988,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "weight": [
         "regular",
@@ -2972,6 +3081,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "deprecatedPropValues": {
@@ -3016,6 +3126,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "deprecatedPropValues": {
@@ -3090,6 +3201,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "weight": [
         "regular",
@@ -3157,6 +3269,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "unit": "string",
       "unitPosition": [
@@ -3229,6 +3342,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
       "type": [
         "unordered",
@@ -3287,6 +3401,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "breakpointCustomizableProps": [
@@ -3332,6 +3447,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "hasAriaProp": false,
@@ -3391,6 +3507,7 @@ exports[`should match snapshot 1`] = `
       "theme": [
         "light",
         "dark",
+        "auto",
       ],
     },
     "hasAriaProp": true,

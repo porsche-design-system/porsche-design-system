@@ -5,7 +5,6 @@ import {
   getActiveElementId,
   getEventSummary,
   getLifecycleStatus,
-  getProperty,
   hasFocus,
   selectNode,
   setContentWithDesignSystem,
@@ -307,34 +306,6 @@ it('should submit form via enter key when type is submit', async () => {
 
   await focusElAndPressEnter(button);
   expect((await getEventSummary(form, 'submit')).counter).toBe(3);
-});
-
-it('should change theme of spinner if theme and/or variant of host is changed programmatically', async () => {
-  await setContentWithDesignSystem(page, `<p-button loading="true">Some label</p-button>`);
-  const host = await getHost();
-  const spinner = await selectNode(page, 'p-button >>> .spinner');
-
-  expect(await getProperty(spinner, 'theme')).toBe('dark');
-
-  await setProperty(host, 'theme', 'light');
-  await waitForStencilLifecycle(page);
-
-  expect(await getProperty(spinner, 'theme')).toBe('dark');
-
-  await setProperty(host, 'variant', 'secondary');
-  await waitForStencilLifecycle(page);
-
-  expect(await getProperty(spinner, 'theme')).toBe('light');
-
-  await setProperty(host, 'variant', 'tertiary');
-  await waitForStencilLifecycle(page);
-
-  expect(await getProperty(spinner, 'theme')).toBe('light');
-
-  await setProperty(host, 'variant', 'primary');
-  await waitForStencilLifecycle(page);
-
-  expect(await getProperty(spinner, 'theme')).toBe('dark');
 });
 
 describe('focus state', () => {

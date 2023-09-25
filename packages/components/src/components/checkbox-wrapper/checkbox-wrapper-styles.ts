@@ -3,8 +3,25 @@ import { getCheckboxRadioJssStyle } from '../../styles/checkbox-radio-styles';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { addImportantToEachRule, getHighContrastColors, getInvertedThemedColors, getThemedColors } from '../../styles';
-import { borderRadiusMedium, borderRadiusSmall, fontFamily, fontLineHeight } from '@porsche-design-system/utilities-v2';
+import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
+import {
+  addImportantToEachRule,
+  getHighContrastColors,
+  getInvertedThemedColors,
+  getThemedColors,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../styles';
+import { borderRadiusMedium, borderRadiusSmall } from '@porsche-design-system/utilities-v2';
+
+const getCheckedSVGBackgroundImage = (fill: string): string => {
+  return getInlineSVGBackgroundImage(
+    `<path fill="${fill}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`
+  );
+};
+
+const getIndeterminateSVGBackgroundImage = (fill: string): string => {
+  return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
+};
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -16,10 +33,16 @@ export const getComponentCss = (
   const { canvasColor } = getHighContrastColors();
   const checkedIconColor = isHighContrastMode
     ? canvasColor
-    : getInvertedThemedColors(theme).primaryColor.replace(/#/g, '%23');
+    : escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
+  const checkedIconColorDark = isHighContrastMode
+    ? canvasColor
+    : escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
   const indeterminateIconColor = isHighContrastMode
     ? canvasColor
-    : getThemedColors(theme).primaryColor.replace(/#/g, '%23');
+    : escapeHashCharacter(getThemedColors(theme).primaryColor);
+  const indeterminateIconColorDark = isHighContrastMode
+    ? canvasColor
+    : escapeHashCharacter(getThemedColors('dark').primaryColor);
 
   return getCss(
     mergeDeep(getCheckboxRadioJssStyle(hideLabel, state, isDisabled, isLoading, theme), {
@@ -30,15 +53,17 @@ export const getComponentCss = (
           },
           ...(!isLoading && {
             '&(input:checked)': {
-              backgroundImage: getInlineSVGBackgroundImage(
-                `<path fill="${checkedIconColor}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`
-              ),
+              backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
+              }),
             },
           }),
           '&(input:indeterminate)': {
-            backgroundImage: getInlineSVGBackgroundImage(
-              `<path fill="${indeterminateIconColor}" d="m20,11v2H4v-2h16Z"/>`
-            ),
+            backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
+            }),
           },
           ...(!isDisabled && {
             '&(input:focus)::before': {
@@ -47,19 +72,6 @@ export const getComponentCss = (
           }),
         }),
       },
-      ...(isLoading && {
-        spinner: {
-          position: 'absolute',
-          top: `calc(${fontLineHeight}/2 + 2px)`,
-          left: `calc(${fontLineHeight}/2 + 2px)`,
-          transform: 'translate(-50%, -50%)',
-          height: fontLineHeight,
-          width: fontLineHeight,
-          fontFamily, // needed for correct width and height definition and for correct positioning
-          fontSize: '1rem', // needed for correct width and height definition and for correct positioning
-          cursor: 'not-allowed',
-        },
-      }),
     })
   );
 };
