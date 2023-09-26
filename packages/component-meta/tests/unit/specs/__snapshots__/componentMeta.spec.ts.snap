@@ -500,6 +500,7 @@ exports[`should match snapshot 1`] = `
     ],
     "nestedComponents": [
       "p-spinner",
+      "p-icon",
     ],
     "observedAttributes": [
       "disabled",
@@ -722,6 +723,9 @@ exports[`should match snapshot 1`] = `
       "label",
       "message",
     ],
+    "nestedComponents": [
+      "p-icon",
+    ],
     "props": {
       "label": null,
       "labelSize": "medium",
@@ -765,6 +769,9 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "label",
       "message",
+    ],
+    "nestedComponents": [
+      "p-icon",
     ],
     "props": {
       "label": null,
@@ -2207,6 +2214,7 @@ exports[`should match snapshot 1`] = `
     ],
     "nestedComponents": [
       "p-spinner",
+      "p-icon",
     ],
     "props": {
       "description": null,
@@ -2296,6 +2304,7 @@ exports[`should match snapshot 1`] = `
     ],
     "nestedComponents": [
       "p-spinner",
+      "p-icon",
     ],
     "observedAttributes": [
       "disabled",
@@ -3422,6 +3431,9 @@ exports[`should match snapshot 1`] = `
       "label",
       "description",
       "message",
+    ],
+    "nestedComponents": [
+      "p-icon",
     ],
     "observedAttributes": [
       "disabled",

@@ -38,7 +38,7 @@ export const getIndexHtml = (
   pdsVersion: string
 ): string => {
   const basePath = isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? 'node_modules' : '.';
-  const porscheDesignSystemScript = `<script src="${basePath}/@porsche-design-system/components-js/esm/index.mjs"></script>`;
+  const porscheDesignSystemScript = `<script src="${basePath}/@porsche-design-system/components-js/index.js"></script>`;
   const externalScripts = externalDependencies
     .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
     .join('\n    ');

@@ -196,9 +196,12 @@ const generateComponentMeta = (): void => {
     }
 
     // nested pds components
-    const nestedComponents: TagName[] = Array.from(source.matchAll(/<PrefixedTagNames\.(p[A-Za-z]+)/g))
-      .map(([, tagName]) => paramCase(tagName) as TagName)
-      .filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;
+    const nestedComponents: TagName[] = [
+      ...Array.from(source.matchAll(/<PrefixedTagNames\.(p[A-Za-z]+)/g)).map(
+        ([, tagName]) => paramCase(tagName) as TagName
+      ),
+      ...(source.match(/<StateMessage/) ? ['p-icon' as TagName] : []),
+    ].filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;
 
     const deprecatedProps: ComponentMeta['deprecatedProps'] = [];
 
