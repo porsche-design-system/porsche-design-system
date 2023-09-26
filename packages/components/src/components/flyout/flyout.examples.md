@@ -66,7 +66,7 @@ Make sure to set the `aria` property with a descriptive `aria-label` value when 
 
 The `p-flyout` component makes decent changes to support the Porsche Design System Grid if used as slotted content.
 
-<Playground :frameworkMarkup="codeExampleSlottedGrid" :config="config">
+<Playground :frameworkMarkup="codeExampleSlottedGrid" :config="config" :showCodeEditor="false">
   <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
   <p-flyout id="flyout-grid" open="false" aria="{ 'aria-label': 'Sticky Heading' }">
     <div slot="header">
