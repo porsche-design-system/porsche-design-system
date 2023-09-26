@@ -38,7 +38,7 @@ export default [
       typescript(),
       copy({
         targets: [
-          { src: `${rootDir}/LICENSE`, dest: outputDir },
+          { src: `${rootDir}/LICENSE.md`, dest: outputDir },
           { src: `${rootDir}/OSS_NOTICE`, dest: outputDir },
           { src: 'README.md', dest: outputDir },
           { src: 'CHANGELOG.md', dest: outputDir },

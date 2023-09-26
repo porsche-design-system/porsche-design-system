@@ -18,7 +18,7 @@ export default defineConfig({
     vueJsx(),
     viteStaticCopy({
       targets: [
-        `${rootDir}/LICENSE`,
+        `${rootDir}/LICENSE.md`,
         `${rootDir}/OSS_NOTICE`,
         `${projectDir}/README.md`,
         `${projectDir}/package.json`,

@@ -61,4 +61,4 @@ You can find the repository of the Vanilla-JS example project here:
 
 - Clone the repository by executing  
   `git clone https://github.com/porsche-design-system/sample-integration-vanillajs.git`
-- Follow the installation guidelines in the README.md file
+- Follow the installation guidelines in the `README.md` file
