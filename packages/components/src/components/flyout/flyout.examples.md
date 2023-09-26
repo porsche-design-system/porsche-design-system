@@ -64,22 +64,25 @@ Make sure to set the `aria` property with a descriptive `aria-label` value when 
 
 ## Flyout with slotted Grid
 
-The `p-flyout` component makes decent changes to support the Porsche Design System Grid if used as slotted content.
+The `p-flyout` component makes decent changes to support the Porsche Design System Grid if used as slotted content. The
+following example shows the visualization of the grid if used inside the flyout component:
 
-<Playground :frameworkMarkup="codeExampleSlottedGrid" :config="config" :showCodeEditor="false">
-  <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
-  <p-flyout id="flyout-grid" open="false" aria="{ 'aria-label': 'Sticky Heading' }">
-    <div slot="header">
-      <p-heading tag="h5" size="large">Sticky Heading</p-heading>
-      <p-text size="small">Sticky header text</p-text>
+<template>
+  <div class="playground">
+    <div class="demo">
+      <p-button class="flyout-grid-example" type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+      <p-flyout id="flyout-grid" open="false" aria="{ 'aria-label': 'Sticky Heading' }">
+        <div slot="header">
+          <p-heading tag="h5" size="large">Sticky Heading</p-heading> 
+          <p-text size="small">Sticky header text</p-text>
+        </div>
+        <ExampleStylesGrid :visualizeGrid="false"/> 
+        <div slot="footer"><p-button>Footer Button</p-button></div>
+        <div slot="sub-footer">Some Sub Footer Content</div>
+      </p-flyout>
     </div>
-    <ExampleStylesGrid :visualizeGrid="false"/>
-    <div slot="footer">
-      <p-button>Footer Button</p-button>
-    </div>
-      <div slot="sub-footer">Some Sub Footer Content</div>
-  </p-flyout>
-</Playground>
+  </div>
+</template>
 
 ## Custom styling
 
@@ -98,7 +101,6 @@ import Vue from 'vue';
 import Component from 'vue-class-component'; 
 import { getFlyoutCodeSamples } from "@porsche-design-system/shared";  
 import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
-import { convertMarkup } from '@porsche-design-system/storefront/src/utils/formatting.ts';
 
 @Component({
   components: {
@@ -111,7 +113,6 @@ export default class Code extends Vue {
   codeExample = getFlyoutCodeSamples('default');
   codeExampleSlotted = getFlyoutCodeSamples('example-slotted'); 
   codeExampleSlottedSecondary = getFlyoutCodeSamples('example-slotted-secondary');
-  codeExampleSlottedGrid = getFlyoutCodeSamples('example-slotted-grid');
 
   blindtext = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
 
@@ -167,7 +168,8 @@ export default class Code extends Vue {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @use '@porsche-design-system/components-js/styles' as *;
   .select-container {
     display: flex; 
     column-gap: 16px; 
