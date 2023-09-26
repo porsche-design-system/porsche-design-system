@@ -49,7 +49,7 @@ publish() {
     echo $result
   popd
 
-  if [[ ${result} == *"Library bundle uploaded successfully!"* ]]; then
+  if [[ ${result} == *"Library bundle uploaded successfully!"* ]] || [[ ${result} == *"Library is up-to-date!"* ]]; then
     return 0 # true
   else
     return 1 # false
