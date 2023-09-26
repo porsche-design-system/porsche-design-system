@@ -1,7 +1,7 @@
 <template>
-  <p-button-pure :theme="theme" :icon="icon" hide-label="true" @click="cycleTheme()"
-    >Toggle theme of platform</p-button-pure
-  >
+  <p-button-pure :theme="theme" :icon="icon" hide-label="true" aria-live="polite" type="button" @click="cycleTheme()">
+    Use {{ icon === 'moon' ? 'dark' : 'light' }} mode
+  </p-button-pure>
 </template>
 
 <script lang="ts">
