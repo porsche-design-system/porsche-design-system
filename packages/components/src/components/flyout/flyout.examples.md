@@ -170,8 +170,7 @@ export default class Code extends Vue {
 }
 </script>
 
-<style lang="scss">
-  @use '@porsche-design-system/components-js/styles' as *;
+<style>
   .select-container {
     display: flex; 
     column-gap: 16px; 
