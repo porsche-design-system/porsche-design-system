@@ -8,7 +8,9 @@ reserves the right to change and update this licensing agreement at any time.
 
 ## Agreement
 
-<div v-html="license"></div>
+<Markdown>
+  <component :is="license"></component>
+</Markdown>
 
 ## General Notices
 
@@ -33,10 +35,27 @@ This software may or may not contain the following specific Open Source Software
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { licenseContent } from '../lib/license';
+import Markdown from '@/components/Markdown.vue';
 
-@Component
+@Component({
+  components: {
+    Markdown,
+  },
+})
 export default class Code extends Vue {
-  license = '<br>'+licenseContent.replace(/\n/g, '<br>');
+  license = '';
+
+  async mounted() {
+    this.license = (await import('@/../../../LICENSE.md')).default; 
+  }
 }
 </script>
+
+<style scoped lang="scss">
+  @use '@porsche-design-system/components-js/styles' as *;
+
+  // override nested Markdown component's `p:first-child: { margin-top: 0 }`  
+  :deep(#agreement) {
+    margin-bottom: $pds-spacing-fluid-small;
+  }
+</style>

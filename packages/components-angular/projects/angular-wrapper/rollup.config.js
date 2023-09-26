@@ -47,7 +47,7 @@ const buildConfig = (packagePath) => {
           },
           // TODO: stop copying unrelated files into the root of the package when bundling sub packages
           {
-            src: [`${rootDir}/LICENSE`, `${rootDir}/OSS_NOTICE`, `${rootDir}/packages/components/CHANGELOG.md`],
+            src: [`${rootDir}/LICENSE.md`, `${rootDir}/OSS_NOTICE`, `${rootDir}/packages/components/CHANGELOG.md`],
             dest: outputDir,
           },
         ],
