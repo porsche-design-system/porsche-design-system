@@ -64,8 +64,8 @@ Make sure to set the `aria` property with a descriptive `aria-label` value when 
 
 ## Flyout with slotted Grid
 
-The `p-flyout` component makes decent changes to support the Porsche Design System Grid if used as slotted content. The
-following example shows the visualization of the grid if used inside the flyout component:
+The `p-flyout` component makes decent changes to the Porsche Design System grid to give support if used as slotted
+content. The following example shows the visualization of the grid if used inside the flyout component:
 
 <template>
   <div class="playground">
@@ -77,7 +77,9 @@ following example shows the visualization of the grid if used inside the flyout 
           <p-text size="small">Sticky header text</p-text>
         </div>
         <ExampleStylesGrid :visualizeGrid="false"/> 
-        <div slot="footer"><p-button>Footer Button</p-button></div>
+        <div slot="footer">
+          <p-button>Footer Button</p-button>
+        </div>
         <div slot="sub-footer">Some Sub Footer Content</div>
       </p-flyout>
     </div>
