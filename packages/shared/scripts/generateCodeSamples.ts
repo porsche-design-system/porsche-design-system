@@ -9,7 +9,6 @@ type CodeSample = {
     | 'componentsReady'
     | 'styles-border'
     | 'styles-drop-shadow'
-    | 'styles-flyout-grid'
     | 'styles-focus'
     | 'styles-frosted-glass'
     | 'styles-gradient'
@@ -109,11 +108,6 @@ const generateCodeSamples = (): void => {
           componentsAngularPath + '/flyout-example-slotted-secondary.component.ts',
           componentsReactPath + '/FlyoutExampleSlottedSecondary.tsx',
           componentsVuePath + '/FlyoutExampleSlottedSecondary.vue',
-        ],
-        [
-          componentsJsPath + '/flyout-example-slotted-grid.html',
-          componentsAngularPath + '/flyout-example-slotted-grid.component.ts',
-          componentsReactPath + '/FlyoutExampleSlottedGrid.tsx',
         ],
       ],
     },
@@ -304,15 +298,6 @@ const generateCodeSamples = (): void => {
         [
           componentsAngularPath + '/../styles/styles-drop-shadow-example.component.ts',
           componentsReactPath + '/../styles/StylesDropShadowExample.tsx',
-        ],
-      ],
-    },
-    {
-      component: 'styles-flyout-grid',
-      samples: [
-        [
-          componentsAngularPath + '/../styles/styles-flyout-grid-example.component.ts',
-          componentsReactPath + '/../styles/StylesFlyoutGridExample.tsx',
         ],
       ],
     },
