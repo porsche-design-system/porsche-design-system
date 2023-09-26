@@ -446,7 +446,7 @@ export class GridLayout {
   counter(i: number) {
     return new Array(i);
   }
-  @Input() visualizeGrid = false;
+  @Input() visualizeGrid = true;
   isAccordion1Open = false;
   isAccordion2Open = false;
 
