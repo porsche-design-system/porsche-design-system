@@ -81,7 +81,7 @@ export default [
         targets: [
           {
             src: [
-              `${rootDir}/LICENSE`,
+              `${rootDir}/LICENSE.md`,
               `${rootDir}/OSS_NOTICE`,
               `${projectDir}/README.md`,
               '../components/CHANGELOG.md',

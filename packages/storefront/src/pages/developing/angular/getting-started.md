@@ -85,4 +85,4 @@ You can find the repository of the Angular example project here:
 
 - Clone the repository by executing  
   `git clone https://github.com/porsche-design-system/sample-integration-angular.git`
-- Follow the installation guidelines in the README.md file
+- Follow the installation guidelines in the `README.md` file
