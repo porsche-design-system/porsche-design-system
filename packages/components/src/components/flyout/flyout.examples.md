@@ -70,7 +70,7 @@ content. The following example shows the visualization of the grid if used insid
 <template>
   <div class="playground">
     <div class="demo">
-      <p-button class="flyout-grid-example" type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+      <p-button class="flyout-grid-example" type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="this.$store.getters.storefrontTheme">Open Flyout</p-button>
       <p-flyout id="flyout-grid" open="false" aria="{ 'aria-label': 'Sticky Heading' }">
         <div slot="header">
           <p-heading tag="h5" size="large">Sticky Heading</p-heading> 
