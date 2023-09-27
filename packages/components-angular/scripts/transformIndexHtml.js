@@ -1,17 +1,19 @@
 const partials = require('@porsche-design-system/components-angular/partials');
 
+// https://github.com/just-jeb/angular-builders/blob/fdd7c8ed00b7eb7e1761aaa6cb5bda41693ceb5d/packages/custom-webpack/README.md#index-transform
 module.exports = (targetOptions, indexHtml) => {
-  const partialContent = [
+  const headPartials = [
     partials.getInitialStyles(),
     partials.getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
-    partials.getBrowserSupportFallbackScript(),
-    partials.getCookiesFallbackScript(),
   ]
     .join('\n')
     .replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001');
 
-  indexHtml = indexHtml.replace(/(<\/head>)/, `\n${partialContent}$1`);
-  console.log('injected partials');
+  const bodyPartials = [partials.getBrowserSupportFallbackScript(), partials.getCookiesFallbackScript()]
+    .join('\n')
+    .replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001');
 
-  return indexHtml;
+  console.log('Injected partials via transformIndexHtml');
+
+  return indexHtml.replace(/<\/head>/, `\n${headPartials}$&`).replace(/<\/body>/, `\n${bodyPartials}$&`);
 };
