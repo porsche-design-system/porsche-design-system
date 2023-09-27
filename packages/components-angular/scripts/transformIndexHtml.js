@@ -1,7 +1,6 @@
-import type { TargetOptions } from '@angular-builders/custom-webpack';
-import * as partials from '@porsche-design-system/components-angular/partials';
+const partials = require('@porsche-design-system/components-angular/partials');
 
-export default (targetOptions: TargetOptions, indexHtml: string): string => {
+module.exports = (targetOptions, indexHtml) => {
   const partialContent = [
     partials.getInitialStyles(),
     partials.getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
