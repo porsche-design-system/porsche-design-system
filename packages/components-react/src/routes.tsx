@@ -206,6 +206,11 @@ export const routes: RouteType[] = [
     element: <fromStyles.StylesDropShadowExample />,
   },
   {
+    name: 'Styles Flyout Grid',
+    path: '/styles-flyout-grid',
+    element: <fromStyles.StylesFlyoutGridExample />,
+  },
+  {
     name: 'Styles Focus',
     path: '/styles-focus',
     element: <fromStyles.StylesFocusExample />,
