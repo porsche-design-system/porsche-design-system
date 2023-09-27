@@ -4,6 +4,7 @@ const partials = require('@porsche-design-system/components-angular/partials');
 module.exports = (targetOptions, indexHtml) => {
   const headPartials = [
     partials.getInitialStyles(),
+    partials.getFontFaceStylesheet(),
     partials.getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
   ]
     .join('\n')
