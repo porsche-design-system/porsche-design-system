@@ -31,7 +31,7 @@ module.exports = function (config) {
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma'),
-      { 'middleware:custom': ['factory', CustomMiddlewareFactory] },
+      { 'middleware:custom': ['factory', CustomMiddlewareFactory] }, // to inject partials into static html
     ],
     middleware: ['custom'],
     customLaunchers: {
