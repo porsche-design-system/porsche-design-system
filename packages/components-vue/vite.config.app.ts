@@ -15,7 +15,6 @@ export default defineConfig({
         data: {
           headPartials: [
             partials.getInitialStyles(),
-            partials.getFontFaceStylesheet(),
             partials.getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
           ]
             .join('\n')

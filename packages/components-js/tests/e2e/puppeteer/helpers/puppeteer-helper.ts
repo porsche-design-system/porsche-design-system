@@ -43,9 +43,8 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
         <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
         <link rel="stylesheet" href="assets/styles.css">
-        ${options.injectIntoHead}
-        ${getFontFaceStylesheet()}
         ${getInitialStyles()}
+        ${options.injectIntoHead}
       </head>
       <body>
         ${options.withoutLoadCall ? '' : '<script type="text/javascript">porscheDesignSystem.load();</script>'}
