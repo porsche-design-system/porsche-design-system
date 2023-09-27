@@ -85,6 +85,9 @@ exports[`accessibility should expose correct accessibility tree for input type=s
                       "name": "",
                       "role": "generic",
                     },
+                    {
+                      "role": "none",
+                    },
                   ],
                   "name": "",
                   "role": "searchbox",
