@@ -321,7 +321,11 @@ const NarrowContentHalfRight = styled.div({
   gridColumn: `${gridNarrowSpanOneHalf} / ${gridNarrowColumnEnd}`,
 });
 
-export const GridLayout = ({ visualizeGrid = true }): JSX.Element => {
+
+type Props = {
+  visualizeGrid: boolean;
+}
+export const GridLayout = ({ visualizeGrid = true }: Props): JSX.Element => {
   const [isAccordion1Open, setIsAccordion1Open] = useState<boolean>(false);
   const [isAccordion2Open, setIsAccordion2Open] = useState<boolean>(false);
 
