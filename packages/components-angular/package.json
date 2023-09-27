@@ -6,7 +6,6 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "postinstall": "rm -rf ./node_modules/webpack && rm -rf ../../node_modules/@angular-builders/custom-webpack/node_modules/webpack",
     "start": "concurrently -k -s 'first' -n 'cdn,angular' 'serve-cdn' 'ng serve'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 4200 -d ./dist/demo-app'",
     "build": "yarn clean:build && yarn build:angular-wrapper && yarn build:subPackages",
