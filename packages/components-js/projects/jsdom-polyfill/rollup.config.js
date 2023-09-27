@@ -26,7 +26,7 @@ export default [
       }),
       // patch conditions into build to allow opt-out of CDN requests
       modify({
-        // font-face css
+        // font-face css via injectGlobalStyle() and validatePartialUsage()
         find: /appGlobals\.globalScripts\(\);/,
         replace: (match) => `if(!window.PDS_SKIP_FETCH) { ${match} }`,
       }),
