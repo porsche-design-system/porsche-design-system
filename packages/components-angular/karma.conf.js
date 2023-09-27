@@ -15,17 +15,11 @@ function CustomMiddlewareFactory(config) {
   fs.writeFileSync(modifiedFile, modifiedFileContent);
 
   config.customContextFile = modifiedFile;
-  console.log(config);
 
   return function (request, response, next) {
-    console.log(request.url);
-    // response.writeHead(200);
-    // return response.end('content!');
     return next();
   };
 }
-
-// CustomMiddlewareFactory.$inject = ['config'];
 
 module.exports = function (config) {
   config.set({
