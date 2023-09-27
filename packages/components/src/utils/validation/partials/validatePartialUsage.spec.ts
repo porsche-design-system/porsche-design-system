@@ -46,7 +46,7 @@ describe('validatePartialUsage()', () => {
     process.env = originalEnv;
   });
 
-  it('should call validateGetInitialStylesUsage(), validateGetFontFaceStylesheetUsage() and validateGetFontLinksUsage()"', () => {
+  it('should call validateGetInitialStylesUsage(), validateGetFontFaceStylesheetUsage() and validateGetFontLinksUsage()', () => {
       const validateGetInitialStylesUsageSpy = jest
         .spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage')
         .mockImplementation(); // mocked since it throws an exception
