@@ -46,16 +46,7 @@ describe('validatePartialUsage()', () => {
     process.env = originalEnv;
   });
 
-  it.each<[string, string]>([
-    ['production', 'test'],
-    ['production', 'production'],
-  ])(
-    'should call validateGetInitialStylesUsage(), validateGetFontFaceStylesheetUsage() and validateGetFontLinksUsage() for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
-    (rollupReplaceIsStaging, nodeEnv) => {
-      // @ts-ignore
-      ROLLUP_REPLACE_IS_STAGING = rollupReplaceIsStaging;
-      process.env = { ...originalEnv, NODE_ENV: nodeEnv };
-
+  it('should call validateGetInitialStylesUsage(), validateGetFontFaceStylesheetUsage() and validateGetFontLinksUsage()"', () => {
       const validateGetInitialStylesUsageSpy = jest
         .spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage')
         .mockImplementation(); // mocked since it throws an exception
@@ -78,40 +69,6 @@ describe('validatePartialUsage()', () => {
       // TODO: integration test (real world test) first, before rollout
       expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalled();
       expect(validateGetLoaderScriptUsageSpy).not.toBeCalledWith();
-    }
-  );
-
-  it.each<[string, string]>([
-    ['staging', 'test'],
-    ['staging', 'development'],
-    ['staging', 'production'],
-    ['production', 'development'],
-  ])(
-    'should not call any function for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
-    (rollupReplaceIsStaging, nodeEnv) => {
-      // @ts-ignore
-      ROLLUP_REPLACE_IS_STAGING = rollupReplaceIsStaging;
-      process.env = { ...originalEnv, NODE_ENV: nodeEnv };
-
-      const validateGetInitialStylesUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage');
-      const validateGetFontFaceStylesheetUsageSpy = jest.spyOn(
-        validatePartialUsageUtils,
-        'validateGetFontFaceStylesheetUsage'
-      );
-      const validateGetFontLinksUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetFontLinksUsage');
-      const validateGetComponentChunkLinksUsagesSpy = jest.spyOn(
-        validatePartialUsageUtils,
-        'validateGetComponentChunkLinksUsage'
-      );
-      const validateGetLoaderScriptUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetLoaderScriptUsage');
-
-      validatePartialUsage();
-
-      expect(validateGetInitialStylesUsageSpy).not.toBeCalled();
-      expect(validateGetFontFaceStylesheetUsageSpy).not.toBeCalled();
-      expect(validateGetFontLinksUsageSpy).not.toBeCalled();
-      expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalled();
-      expect(validateGetLoaderScriptUsageSpy).not.toBeCalled();
     }
   );
 });

@@ -27,7 +27,6 @@ declare global {
 }
 
 export const validatePartialUsage = (): void => {
-  // ensure no validation is happening via `yarn start`
   validateGetInitialStylesUsage();
   validateGetFontFaceStylesheetUsage();
   validateGetFontLinksUsage();
