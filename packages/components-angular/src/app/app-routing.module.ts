@@ -215,6 +215,11 @@ export const routes: ExtendedRoute[] = [
     component: fromStyles.StylesDropShadowExampleComponent,
   },
   {
+    name: 'Styles Flyout Grid Example',
+    path: 'styles-flyout-grid',
+    component: fromStyles.StylesFlyoutGridExampleComponent,
+  },
+  {
     name: 'Styles Focus Example',
     path: 'styles-focus',
     component: fromStyles.StylesFocusExampleComponent,

@@ -15,7 +15,9 @@ import {
   _cssVariableGridBasicSpanOneThird,
   _cssVariableGridBasicSpanTwoThirds,
   _cssVariableGridExtendedSpanOneHalf,
+  _cssVariableGridMargin,
   _cssVariableGridNarrowSpanOneHalf,
+  _cssVariableGridOuterColumn,
   _cssVariableGridSafeZone,
   _gridSafeZoneBase,
   _gridSafeZoneS,
@@ -24,7 +26,8 @@ import {
   _gridWidthMin,
 } from './gridShared';
 
-const outerColumn = `minmax(0, calc(var(${_cssVariableGridSafeZone}) - ${gridGap}))`;
+// _cssVariableGridOuterColumn is needed in case behaviour needs to be adjusted like when used in Flyout or Modal
+const outerColumn = `minmax(0, var(${_cssVariableGridOuterColumn}, calc(var(${_cssVariableGridSafeZone}) - ${gridGap})))`;
 const column = 'minmax(0, 1fr)';
 const getColumns = (repeat: number): string => (repeat > 1 ? `repeat(${repeat}, ${column})` : column);
 const getColumnSpan = (span: number): string => `span ${span}`;
@@ -55,8 +58,9 @@ export const gridStyle = {
   gridTemplateColumns: getGridTemplateColumns('mobile'),
   minWidth: _gridWidthMin,
   maxWidth: _gridWidthMax,
-  margin: 0,
-  padding: `0 calc(50vw - ${_gridWidthMax} / 2)`, // TODO: use _gridPadding instead, it needs to be ensured that sass isn't stripping unit of max(0px,…
+  // _cssVariableGridMargin is needed in case behaviour needs to be adjusted like when used in Flyout or Modal
+  margin: `0 var(${_cssVariableGridMargin}, 0)`,
+  padding: `0 calc(50% - var(${_cssVariableGridMargin}, 0px) - ${_gridWidthMax} / 2)`,
   boxSizing: 'content-box',
   [getMediaQueryMin('s')]: {
     [_cssVariableGridSafeZone]: _gridSafeZoneS,

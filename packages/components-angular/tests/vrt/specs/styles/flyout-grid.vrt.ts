@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const style = 'styles-grid';
+const style = 'styles-flyout-grid';
 
 test.describe(style, async () => {
   [320, 480, 760, 1000, 1300, 1760, 1920, 2560, 3000].forEach((viewportWidth) => {
