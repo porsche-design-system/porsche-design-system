@@ -1,3 +1,4 @@
+import type { JssStyle } from 'jss';
 import { hoverMediaQuery } from './hover-media-query';
 import type { TagName } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
@@ -9,46 +10,15 @@ import {
   getComponentCssSpy,
 } from '../test-utils';
 
-const originalEnv = process.env;
-const style = {
-  '&:hover, &:focus': {
-    color: 'd5001c',
-    background: 'currentColor',
-  },
-};
+it('should return style wrapped in @media(hover: hover) query', () => {
+  const style: JssStyle = {
+    '&:hover, &:focus': {
+      color: 'd5001c',
+      background: 'currentColor',
+    },
+  };
 
-const wrappedStyle = { '@media(hover:hover)': style };
-
-afterEach(() => {
-  process.env = originalEnv;
-});
-
-it('should return wrapped style during development via yarn start', () => {
-  // @ts-ignore
-  ROLLUP_REPLACE_IS_STAGING = 'staging';
-  process.env = { ...originalEnv, NODE_ENV: 'development' };
-  expect(hoverMediaQuery(style)).toEqual(wrappedStyle);
-});
-
-it('should return original style for staging build', () => {
-  // @ts-ignore
-  ROLLUP_REPLACE_IS_STAGING = 'staging';
-  process.env = { ...originalEnv, NODE_ENV: 'production' };
-  expect(hoverMediaQuery(style)).toEqual(style);
-});
-
-it('should return wrapped style for prod build', () => {
-  // @ts-ignore
-  ROLLUP_REPLACE_IS_STAGING = 'production';
-  process.env = { ...originalEnv, NODE_ENV: 'production' };
-  expect(hoverMediaQuery(style)).toEqual(wrappedStyle);
-});
-
-it('should return wrapped style in test environment', () => {
-  // @ts-ignore
-  ROLLUP_REPLACE_IS_STAGING = 'production';
-  process.env = { ...originalEnv, NODE_ENV: 'test' };
-  expect(hoverMediaQuery(style)).toEqual(wrappedStyle);
+  expect(hoverMediaQuery(style)).toEqual({ '@media(hover:hover)': style });
 });
 
 const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).styling === 'jss');
