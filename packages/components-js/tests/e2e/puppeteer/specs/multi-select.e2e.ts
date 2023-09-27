@@ -1,4 +1,5 @@
-import { Components } from '@porsche-design-system/components';
+import type { Page } from 'puppeteer';
+import type { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
@@ -16,8 +17,6 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-
-import type { Page } from 'puppeteer';
 import type { MultiSelectOption } from '@porsche-design-system/components/dist/types/components/multi-select/multi-select/multi-select-utils';
 
 let page: Page;
