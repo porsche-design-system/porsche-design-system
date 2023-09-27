@@ -19,6 +19,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Styles: `gridStyles` and `pds-grid` support basic usage inside `Flyout` component
   ([#2756](https://github.com/porsche-design-system/porsche-design-system/pull/2756))
 
+#### Fixed
+
+- Overlay issues of header/footer in `Flyout` component
+  ([#2786](https://github.com/porsche-design-system/porsche-design-system/pull/2786))
+
 ### [3.7.0-rc.1] - 2023-09-20
 
 #### Added
