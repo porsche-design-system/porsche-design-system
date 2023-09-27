@@ -507,6 +507,27 @@
   </div>
 </div>
 
+<div class="playground light" title="should show scrolled flyout until header overlaps footer to test z-index">
+  <div>
+    <p-flyout open="true" position="right">
+      <div slot="header">
+        <h1>Sticky Heading</h1>
+        <p>Sticky header text</p>
+      </div>
+      <div style="height: 200px">
+        <p>Some Content</p>
+      </div>
+      <div slot="footer">
+        <p-link type="button">Footer Button</p-link>
+        <div class="scroll-into-view"></div>
+      </div>
+      <div slot="sub-footer">
+        <div style="height: 900px">Some Sub Footer Content</div>
+      </div>
+    </p-flyout>
+  </div>
+</div>
+
 <script>
   porscheDesignSystem.componentsReady().then(() => {
     document.querySelectorAll('.scroll-into-view').forEach((el) => el.scrollIntoView());
