@@ -207,7 +207,8 @@ describe('active index position', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
-  it('should have correct scroll position after tab click and prev button click', async () => {
+  // puppeteer ignores @media(hover: hover) styles, so scroller does not show buttons, but playwright can handle it
+  xit('should have correct scroll position after tab click and prev button click', async () => {
     await initTabsBar({ amount: 8, isWrapped: true, activeTabIndex: 0 });
     const { prevButton } = await getPrevNextButton();
     const allButtons = await getAllButtons();

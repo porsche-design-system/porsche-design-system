@@ -463,7 +463,8 @@ describe('outside click', () => {
   });
 });
 
-describe('hover', () => {
+// puppeteer ignores @media(hover: hover) styles, but playwright can handle it
+xdescribe('hover', () => {
   it('should change border-color when input is hovered', async () => {
     await initMultiSelect();
     await page.mouse.move(0, 300); // avoid potential hover initially
