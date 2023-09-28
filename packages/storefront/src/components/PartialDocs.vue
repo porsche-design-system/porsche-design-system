@@ -73,9 +73,6 @@ yarn add --dev @angular-builders/custom-webpack
   "serve": {
 -   "builder": "@angular-devkit/build-angular:dev-server",
 +   "builder": "@angular-builders/custom-webpack:dev-server",
-    "options": {
-+     "browserTarget": "demo-app:build"
-    },
 
 <!-- ./scripts/transformIndexHtml.ts -->
 import type { TargetOptions } from '@angular-builders/custom-webpack';
@@ -85,35 +82,7 @@ export default (targetOptions: TargetOptions, indexHtml: string): string => {
   ${angularPartials}
 
   return indexHtml.replace(/<\\/${this.location}>/, \`\${partialContent}$&\`);
-};
-
-yarn add --dev glob
-
-<!-- karma.conf -->
-const path = require('path');
-const fs = require('fs');
-const { globSync } = require('glob');
-const transformIndexHtml = require('./scripts/transformIndexHtml');
-
-const injectPartialsIntoKarmaContextHtml = () => {
-  const packagePath = path.resolve(require.resolve('@angular-devkit/build-angular'), '..');
-  const [contextHtml] = globSync(packagePath + '/**/karma-context.html');
-  const backupFilePath = contextHtml.replace(/\\.html$/, '-original$&');
-
-  // restore backup
-  if (fs.existsSync(backupFilePath)) {
-    fs.copyFileSync(backupFilePath, contextHtml);
-    fs.rmSync(backupFilePath);
-  }
-
-  fs.copyFileSync(contextHtml, backupFilePath); // create backup
-  const fileContent = fs.readFileSync(contextHtml, 'utf8');
-  const modifiedFileContent = transformIndexHtml({}, fileContent);
-  fs.writeFileSync(contextHtml, modifiedFileContent);
-};
-injectPartialsIntoKarmaContextHtml()
-
-...`;
+};`;
 
       const partialRequirePath = `require('${partialPackage}').${this.name}`;
       const partialRequirePathJs = partialRequirePath.replace('vanilla-js', 'js');
