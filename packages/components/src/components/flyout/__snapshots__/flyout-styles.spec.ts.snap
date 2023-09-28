@@ -38,7 +38,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #FFF;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -128,7 +128,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #0E0E12;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -219,7 +219,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #0E0E12;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -319,7 +319,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #FFF;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -409,7 +409,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #0E0E12;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -500,7 +500,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #0E0E12;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -599,7 +599,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -687,7 +687,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -786,7 +786,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -879,7 +879,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -982,7 +982,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -1081,7 +1081,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -1169,7 +1169,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -1268,7 +1268,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
@@ -1361,7 +1361,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
@@ -1464,7 +1464,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
