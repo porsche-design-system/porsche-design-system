@@ -87,28 +87,31 @@ export default (targetOptions: TargetOptions, indexHtml: string): string => {
   return indexHtml.replace(/<\\/${this.location}>/, \`\${partialContent}$&\`);
 };
 
+yarn add --dev glob
+
 <!-- karma.conf -->
 const path = require('path');
 const fs = require('fs');
-const transformIndexHtml = require('./transformIndexHtml');
+const { globSync } = require('glob');
+const transformIndexHtml = require('./scripts/transformIndexHtml');
 
 const injectPartialsIntoKarmaContextHtml = () => {
-  const packagePath = require.resolve('@angular-devkit/build-angular');
-  const filePath = path.resolve(packagePath, '../webpack/plugins/karma/karma-context.html');
-  const backupFilePath = filePath.replace(/\\.html$/, '-original$&');
+  const packagePath = path.resolve(require.resolve('@angular-devkit/build-angular'), '..');
+  const [contextHtml] = globSync(packagePath + '/**/karma-context.html');
+  const backupFilePath = contextHtml.replace(/\\.html$/, '-original$&');
 
   // restore backup
   if (fs.existsSync(backupFilePath)) {
-    fs.copyFileSync(backupFilePath, filePath);
+    fs.copyFileSync(backupFilePath, contextHtml);
     fs.rmSync(backupFilePath);
   }
 
-  fs.copyFileSync(filePath, backupFilePath); // create backup
-  const fileContent = fs.readFileSync(filePath, 'utf8');
+  fs.copyFileSync(contextHtml, backupFilePath); // create backup
+  const fileContent = fs.readFileSync(contextHtml, 'utf8');
   const modifiedFileContent = transformIndexHtml({}, fileContent);
-  fs.writeFileSync(filePath, modifiedFileContent);
+  fs.writeFileSync(contextHtml, modifiedFileContent);
 };
-injectPartialsIntoKarmaContextHtml();
+injectPartialsIntoKarmaContextHtml()
 
 ...`;
 
