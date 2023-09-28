@@ -2,7 +2,7 @@
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 const path = require('path');
 const fs = require('fs');
-const { globSync } = require('glob');
+const globby = require('globby');
 const transformIndexHtml = require('./scripts/transformIndexHtml');
 
 if (process.env.CI) {
@@ -12,7 +12,7 @@ if (process.env.CI) {
 
 const injectPartialsIntoKarmaContextHtml = () => {
   const packagePath = path.resolve(require.resolve('@angular-devkit/build-angular'), '..');
-  const [filePath] = globSync(packagePath + '/**/karma-context.html');
+  const [filePath] = globby.sync(packagePath + '/**/karma-context.html');
   const backupFilePath = filePath.replace(/\.html$/, '-original$&');
 
   // restore backup
