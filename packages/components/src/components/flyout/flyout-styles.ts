@@ -77,7 +77,7 @@ export const getComponentCss = (
       }),
       position: 'sticky',
       top: 0,
-      zIndex: 1,
+      zIndex: 2,
     },
     [headerShadowClass]: {
       boxShadow: `${isDark ? scrollShadowColorDark : scrollShadowColor} 0px 5px 10px`,

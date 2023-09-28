@@ -3495,7 +3495,7 @@ exports[`should render dsr component for PFlyout 1`] = `
   background: #FFF;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 .header--shadow {
   box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
