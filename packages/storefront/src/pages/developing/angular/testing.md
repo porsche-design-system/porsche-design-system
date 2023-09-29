@@ -33,17 +33,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type { TabsBarUpdateEvent } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-tabs-bar-example-basic',
+  selector: 'single-component',
   template: `
     <p-tabs-bar [activeTabIndex]="tabIndex" (update)="onUpdate($event)">
       <button type="button">Tab One</button>
       <button type="button">Tab Two</button>
       <button type="button">Tab Three</button>
     </p-tabs-bar>
-    <div data-testid="debug">Active Tab: {{ activeTab + 1 }}</div>
+    <div data-testid="debug">Active Tab: { tabIndex + 1 } </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class SingleComponent {
   tabIndex: number = 0;
 
