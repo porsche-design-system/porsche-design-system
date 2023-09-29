@@ -94,10 +94,10 @@ a manual how to integrate the partial within `build` and `serve` environment. Si
 with `Karma`. There are different approaches to inject the partial into `karma-context.html`:
 
 - transformation with `post-install`,
-- `Karma.conf.js` property
+- `karma.conf.js` property
   [customContextFile](http://karma-runner.github.io/6.4/config/configuration-file.html#customcontextfile) (In our case
   the property had no effect, so it might be deprecated),
-- Transform within karma.conf.js:
+- Transform within `karma.conf.js`:
 
 ```tsx
 // yarn add --dev glob
