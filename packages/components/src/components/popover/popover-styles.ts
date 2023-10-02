@@ -7,7 +7,7 @@ import {
   frostedGlassStyle,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { getCss, isHighContrastMode } from '../../utils';
+import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -22,7 +22,6 @@ import {
 import { POPOVER_Z_INDEX } from '../../constants';
 import type { Theme } from '../../types';
 
-const { backgroundColor: backgroundColorThemeLight, primaryColor: primaryColorThemeLight } = getThemedColors('light');
 const { canvasColor, canvasTextColor } = getHighContrastColors();
 
 const directionPositionMap: Record<PopoverDirection, JssStyle> = {
@@ -53,7 +52,7 @@ const transparentColor = 'transparent';
 
 const join = (...arr: (string | number)[]): string => arr.join(' ');
 
-const directionArrowMap: Record<PopoverDirection, JssStyle> = {
+const getDirectionArrowMap = (backgroundColor: string): Record<PopoverDirection, JssStyle> => ({
   top: {
     top: 0,
     left: '50%',
@@ -61,7 +60,7 @@ const directionArrowMap: Record<PopoverDirection, JssStyle> = {
     borderWidth: join(borderWidth, borderWidth, 0),
     borderColor: isHighContrastMode
       ? join(canvasTextColor, canvasColor, canvasColor)
-      : join(backgroundColorThemeLight, transparentColor, transparentColor),
+      : join(backgroundColor, transparentColor, transparentColor),
   },
   right: {
     top: '50%',
@@ -70,7 +69,7 @@ const directionArrowMap: Record<PopoverDirection, JssStyle> = {
     borderWidth: join(borderWidth, borderWidth, borderWidth, 0),
     borderColor: isHighContrastMode
       ? join(canvasColor, canvasTextColor, canvasColor, canvasColor)
-      : join(transparentColor, backgroundColorThemeLight, transparentColor, transparentColor),
+      : join(transparentColor, backgroundColor, transparentColor, transparentColor),
   },
   bottom: {
     bottom: 0,
@@ -79,7 +78,7 @@ const directionArrowMap: Record<PopoverDirection, JssStyle> = {
     borderWidth: join(0, borderWidth, borderWidth),
     borderColor: isHighContrastMode
       ? join(canvasColor, canvasColor, canvasTextColor)
-      : join(transparentColor, transparentColor, backgroundColorThemeLight),
+      : join(transparentColor, transparentColor, backgroundColor),
   },
   left: {
     top: '50%',
@@ -88,13 +87,13 @@ const directionArrowMap: Record<PopoverDirection, JssStyle> = {
     borderWidth: join(borderWidth, 0, borderWidth, borderWidth),
     borderColor: isHighContrastMode
       ? join(canvasColor, canvasColor, canvasColor, canvasTextColor)
-      : join(transparentColor, transparentColor, transparentColor, backgroundColorThemeLight),
+      : join(transparentColor, transparentColor, transparentColor, backgroundColor),
   },
-};
+});
 
 export const getComponentCss = (direction: PopoverDirection, theme: Theme): string => {
   const spacerBox = '-16px';
-  const { hoverColor, focusColor } = getThemedColors(theme);
+  const { hoverColor, focusColor, backgroundColor, primaryColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -158,7 +157,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       left: spacerBox,
       right: spacerBox,
       bottom: spacerBox,
-      filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
+      filter: `drop-shadow(0 0 16px ${isThemeDark(theme) ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.3)'})`,
       backdropFilter: 'drop-shadow(0px 0px 0px transparent)', // fixes issues with Chrome >= 105 where filter: drop-shadow is not applied correctly after animation ends
       pointerEvents: 'none',
       animation:
@@ -169,7 +168,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         content: '""',
         position: 'absolute',
         borderStyle: 'solid',
-        ...directionArrowMap[direction],
+        ...getDirectionArrowMap(backgroundColor)[direction],
       },
     },
     popover: {
@@ -177,13 +176,13 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       maxWidth: 'min(90vw, 27rem)',
       width: 'max-content',
       boxSizing: 'border-box',
-      background: backgroundColorThemeLight,
+      background: backgroundColor,
       padding: '8px 16px',
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
       ...textSmallStyle,
       listStyleType: 'none',
-      color: primaryColorThemeLight,
+      color: primaryColor,
       whiteSpace: 'inherit',
       borderRadius: borderRadiusSmall,
       ...(isHighContrastMode && {
