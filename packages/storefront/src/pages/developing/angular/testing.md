@@ -13,8 +13,8 @@ As a workaround we provide a polyfill as part of the `@porsche-design-system/com
 
 To apply the polyfill, simply import it in your **setupTest.{js|ts}** file.
 
-**Note:** If your test includes Porsche Design System components, make sure to import the PorscheDesignSystemModule in
-every module you want to use the components.
+**Note:** If your test includes Porsche Design System components, make sure that you import the
+PorscheDesignSystemModule into each module in which you want to use the components.
 
 ### Setup file
 
@@ -40,11 +40,10 @@ import type { TabsBarUpdateEvent } from '@porsche-design-system/components-angul
       <button type="button">Tab Two</button>
       <button type="button">Tab Three</button>
     </p-tabs-bar>
-    <div data-testid="debug">Active Tab: { tabIndex + 1 } </div>
+    <div data-testid="debug">Active Tab: { tabIndex + 1 }</div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class SingleComponent {
   tabIndex: number = 0;
 
