@@ -46,38 +46,63 @@ describe('validatePartialUsage()', () => {
     process.env = originalEnv;
   });
 
+  it('should call validateGetInitialStylesUsage(), validateGetFontFaceStylesheetUsage() and validateGetFontLinksUsage()', () => {
+    const validateGetInitialStylesUsageSpy = jest
+      .spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage')
+      .mockImplementation(); // mocked since it throws an exception
+    const validateGetFontFaceStylesheetUsageSpy = jest.spyOn(
+      validatePartialUsageUtils,
+      'validateGetFontFaceStylesheetUsage'
+    );
+    const validateGetFontLinksUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetFontLinksUsage');
+    const validateGetComponentChunkLinksUsagesSpy = jest.spyOn(
+      validatePartialUsageUtils,
+      'validateGetComponentChunkLinksUsage'
+    );
+    const validateGetLoaderScriptUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetLoaderScriptUsage');
+
+    validatePartialUsage();
+
+    expect(validateGetInitialStylesUsageSpy).toBeCalledWith();
+    expect(validateGetFontFaceStylesheetUsageSpy).toBeCalledWith();
+    expect(validateGetFontLinksUsageSpy).toBeCalledWith();
+    // TODO: integration test (real world test) first, before rollout
+    expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalled();
+    expect(validateGetLoaderScriptUsageSpy).not.toBeCalledWith();
+  });
+});
+
+describe('validateGetFontFaceStylesheetUsage()', () => {
+  const originalEnv = process.env;
+  afterEach(() => {
+    process.env = originalEnv;
+  });
+
   it.each<[string, string]>([
     ['production', 'test'],
     ['production', 'production'],
   ])(
-    'should call validateGetInitialStylesUsage(), validateGetFontFaceStylesheetUsage() and validateGetFontLinksUsage() for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
+    'should call document.head.querySelector() with correct parameters for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
     (rollupReplaceIsStaging, nodeEnv) => {
       // @ts-ignore
       ROLLUP_REPLACE_IS_STAGING = rollupReplaceIsStaging;
       process.env = { ...originalEnv, NODE_ENV: nodeEnv };
 
-      const validateGetInitialStylesUsageSpy = jest
-        .spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage')
-        .mockImplementation(); // mocked since it throws an exception
-      const validateGetFontFaceStylesheetUsageSpy = jest.spyOn(
-        validatePartialUsageUtils,
-        'validateGetFontFaceStylesheetUsage'
-      );
-      const validateGetFontLinksUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetFontLinksUsage');
-      const validateGetComponentChunkLinksUsagesSpy = jest.spyOn(
-        validatePartialUsageUtils,
-        'validateGetComponentChunkLinksUsage'
-      );
-      const validateGetLoaderScriptUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetLoaderScriptUsage');
+      const spy = jest.spyOn(document.head, 'querySelector');
+      validateGetFontFaceStylesheetUsage();
 
-      validatePartialUsage();
+      expect(spy).toBeCalledWith(
+        `link[href="https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}"]`
+      );
 
-      expect(validateGetInitialStylesUsageSpy).toBeCalledWith();
-      expect(validateGetFontFaceStylesheetUsageSpy).toBeCalledWith();
-      expect(validateGetFontLinksUsageSpy).toBeCalledWith();
-      // TODO: integration test (real world test) first, before rollout
-      expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalled();
-      expect(validateGetLoaderScriptUsageSpy).not.toBeCalledWith();
+      jest
+        .spyOn(getCDNBaseURLUtils, 'getCDNBaseURL')
+        .mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
+      validateGetFontFaceStylesheetUsage();
+
+      expect(spy).toBeCalledWith(
+        `link[href="https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}"]`
+      );
     }
   );
 
@@ -87,36 +112,19 @@ describe('validatePartialUsage()', () => {
     ['staging', 'production'],
     ['production', 'development'],
   ])(
-    'should not call any function for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
+    'should call document.head.querySelector() with correct parameters for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
     (rollupReplaceIsStaging, nodeEnv) => {
       // @ts-ignore
       ROLLUP_REPLACE_IS_STAGING = rollupReplaceIsStaging;
       process.env = { ...originalEnv, NODE_ENV: nodeEnv };
 
-      const validateGetInitialStylesUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage');
-      const validateGetFontFaceStylesheetUsageSpy = jest.spyOn(
-        validatePartialUsageUtils,
-        'validateGetFontFaceStylesheetUsage'
-      );
-      const validateGetFontLinksUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetFontLinksUsage');
-      const validateGetComponentChunkLinksUsagesSpy = jest.spyOn(
-        validatePartialUsageUtils,
-        'validateGetComponentChunkLinksUsage'
-      );
-      const validateGetLoaderScriptUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetLoaderScriptUsage');
+      const spy = jest.spyOn(document.head, 'querySelector');
+      validateGetFontFaceStylesheetUsage();
 
-      validatePartialUsage();
-
-      expect(validateGetInitialStylesUsageSpy).not.toBeCalled();
-      expect(validateGetFontFaceStylesheetUsageSpy).not.toBeCalled();
-      expect(validateGetFontLinksUsageSpy).not.toBeCalled();
-      expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalled();
-      expect(validateGetLoaderScriptUsageSpy).not.toBeCalled();
+      expect(spy).toBeCalledWith('link[href="http://localhost:3001/styles/font-face.min.css"]');
     }
   );
-});
 
-describe('validateGetFontFaceStylesheetUsage()', () => {
   it('should call document.head.querySelector() with correct parameters', () => {
     const spy = jest.spyOn(document.head, 'querySelector');
     validateGetFontFaceStylesheetUsage();

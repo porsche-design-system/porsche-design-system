@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,13 +9,11 @@
     <link rel="icon" href="http://localhost:3001/meta-icons/favicon-32x32.5638ae59e85b68cac7febfffe555dbe7.png" />
 
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
-    <!-- prettier-ignore -->
-    <%- initialStyles %>
-    <!-- prettier-ignore -->
-    <%- fontLinks %>
+    <%- headPartials %>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.ts"></script>
+    <%- bodyPartials %>
   </body>
 </html>

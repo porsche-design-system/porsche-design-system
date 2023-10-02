@@ -1,5 +1,5 @@
-import type { Page, WaitForOptions } from 'puppeteer';
-import { getLoaderScript } from '@porsche-design-system/components-js/partials';
+import type { Page } from 'puppeteer';
+import { getInitialStyles, getLoaderScript } from '@porsche-design-system/components-js/partials';
 
 export type PdsTestingContext = {
   bodyHtml: string;
@@ -24,10 +24,7 @@ export const getExternalLoaderScriptForPrefixes = (prefixes: string[]): string =
 };
 
 export const setContentWithDesignSystem = async (page: Page, pdsTestingContext: PdsTestingContext): Promise<void> => {
-  const options: WaitForOptions = {
-    waitUntil: 'networkidle0',
-  };
-  const { firstPdsVersionPrefixes, secondPdsVersionPrefixes } = pdsTestingContext;
+  const { firstPdsVersionPrefixes, secondPdsVersionPrefixes, bodyHtml } = pdsTestingContext;
 
   let firstLoaderScript = firstPdsVersionPrefixes ? getInternalLoaderScriptForPrefixes(firstPdsVersionPrefixes) : '';
   const secondLoaderScript = secondPdsVersionPrefixes
@@ -47,13 +44,14 @@ export const setContentWithDesignSystem = async (page: Page, pdsTestingContext: 
     <title>Porsche Design System - Crawler E2E Test Demo</title>
     <base href="http://localhost" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    ${getInitialStyles()}
   </head>
   <body>
     ${firstLoaderScript}
     ${secondLoaderScript}
-    ${pdsTestingContext.bodyHtml}
+    ${bodyHtml}
   </body>
 </html>`,
-    options
+    { waitUntil: 'networkidle0' }
   );
 };

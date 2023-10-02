@@ -27,20 +27,20 @@ declare global {
 }
 
 export const validatePartialUsage = (): void => {
-  // ensure no validation is happening via `yarn start`
-  if (ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development') {
-    validateGetInitialStylesUsage();
-    validateGetFontFaceStylesheetUsage();
-    validateGetFontLinksUsage();
-    // TODO: integration test (real world test) first, before rollout
-    // validateGetLoaderScriptUsage();
-    // validateGetComponentChunkLinksUsage();
-  }
+  validateGetInitialStylesUsage();
+  validateGetFontFaceStylesheetUsage();
+  validateGetFontLinksUsage();
+  // TODO: integration test (real world test) first, before rollout
+  // validateGetLoaderScriptUsage();
+  // validateGetComponentChunkLinksUsage();
 };
 
 export const validateGetFontFaceStylesheetUsage = (): void => {
   const baseUrl = getCDNBaseURL();
-  const styleUrl = `${baseUrl}/styles/${baseUrl.match(/\.cn\//) ? FONT_FACE_CDN_FILE_CN : FONT_FACE_CDN_FILE_COM}`;
+  const styleUrl =
+    ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development'
+      ? `${baseUrl}/styles/${baseUrl.match(/\.cn\//) ? FONT_FACE_CDN_FILE_CN : FONT_FACE_CDN_FILE_COM}`
+      : 'http://localhost:3001/styles/font-face.min.css';
   if (!document.head.querySelector(`link[href="${styleUrl}"]`)) {
     logPartialValidationWarning('getFontFaceStylesheet');
   }

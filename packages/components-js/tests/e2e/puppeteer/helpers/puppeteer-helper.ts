@@ -4,6 +4,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import * as beautify from 'js-beautify';
+import { getFontFaceStylesheet, getInitialStyles } from '@porsche-design-system/components-js/partials';
 
 export type ClickableTests = {
   state: string;
@@ -42,6 +43,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
         <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
         <link rel="stylesheet" href="assets/styles.css">
+        ${getInitialStyles()}
         ${options.injectIntoHead}
       </head>
       <body>
