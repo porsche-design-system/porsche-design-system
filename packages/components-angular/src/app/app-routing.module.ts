@@ -250,6 +250,11 @@ export const routes: ExtendedRoute[] = [
     component: fromStyles.StylesMediaQueryExampleComponent,
   },
   {
+    name: 'Styles Motion Curves Example',
+    path: 'styles-motion-curves',
+    component: fromStyles.StylesMotionCurvesExampleComponent,
+  },
+  {
     name: 'Styles Spacing Example',
     path: 'styles-spacing',
     component: fromStyles.StylesSpacingExampleComponent,

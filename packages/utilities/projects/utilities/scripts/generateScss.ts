@@ -18,6 +18,7 @@ import * as gridBasic from '../src/js/grid/gridBasic';
 import * as gridBasicOffset from '../src/js/grid/gridBasicOffset';
 import * as gridNarrow from '../src/js/grid/gridNarrow';
 import * as gridNarrowOffset from '../src/js/grid/gridNarrowOffset';
+import * as motion from '../src/js/motion';
 import * as theme from '../src/js/theme';
 import * as spacing from '../src/js/spacing';
 import * as heading from '../src/js/typography/heading';
@@ -112,6 +113,7 @@ const generateMixins = async (mixins: Mixins): Promise<void> => {
     gridBasicOffset,
     gridNarrow,
     gridNarrowOffset,
+    motion,
   });
 
   await generateMixins({

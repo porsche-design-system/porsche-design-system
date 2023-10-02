@@ -548,6 +548,8 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     'Media Query': [() => import('@/pages/styles/media-query.md')],
     // @ts-ignore
+    Motion: [() => import('@/pages/styles/motion.md')],
+    // @ts-ignore
     Spacing: [() => import('@/pages/styles/spacing.md')],
     // @ts-ignore
     Theme: [() => import('@/pages/styles/theme.md')],
