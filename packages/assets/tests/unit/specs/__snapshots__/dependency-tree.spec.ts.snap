@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should have no regression for dependency tree 1`] = `
+{
+  "index.js": [],
+}
+`;
+
+exports[`should have no regression for dependency tree 2`] = `
+{
+  "index.js": [],
+}
+`;
