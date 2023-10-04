@@ -178,7 +178,7 @@ export const getComponentCss = (
             borderColor: fullscreenValue ? primaryColor : darkThemePrimaryColor,
             ...getInsetJssStyle(fullscreenValue ? 0 : -4),
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: fullscreenValue ? darkThemePrimaryColor : primaryColor,
+              borderColor: darkThemePrimaryColor,
             }),
           })),
         },
