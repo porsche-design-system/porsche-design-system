@@ -55,6 +55,7 @@ const join = (...arr: (string | number)[]): string => arr.join(' ');
 
 const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> => {
   const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { backgroundSurfaceColor: backgroundSurfaceColorDark } = getThemedColors('dark');
   const isDark = isThemeDark(theme);
   return {
     top: {
@@ -69,7 +70,7 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
         : {
             borderColor: join(isDark ? backgroundSurfaceColor : backgroundColor, transparentColor, transparentColor),
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: join(backgroundSurfaceColor, transparentColor, transparentColor),
+              borderColor: join(backgroundSurfaceColorDark, transparentColor, transparentColor),
             }),
           }),
     },
@@ -90,7 +91,7 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
               transparentColor
             ),
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: join(transparentColor, backgroundSurfaceColor, transparentColor, transparentColor),
+              borderColor: join(transparentColor, backgroundSurfaceColorDark, transparentColor, transparentColor),
             }),
           }),
     },
@@ -106,7 +107,7 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
         : {
             borderColor: join(transparentColor, transparentColor, isDark ? backgroundSurfaceColor : backgroundColor),
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: join(transparentColor, transparentColor, backgroundSurfaceColor),
+              borderColor: join(transparentColor, transparentColor, backgroundSurfaceColorDark),
             }),
           }),
     },
@@ -127,7 +128,7 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
               isDark ? backgroundSurfaceColor : backgroundColor
             ),
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: join(transparentColor, transparentColor, transparentColor, backgroundSurfaceColor),
+              borderColor: join(transparentColor, transparentColor, transparentColor, backgroundSurfaceColorDark),
             }),
           }),
     },
@@ -141,6 +142,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
     hoverColor: hoverColorDark,
     focusColor: focusColorDark,
     primaryColor: primaryColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
   } = getThemedColors('dark');
 
   const shadowColor = 'rgba(0,0,0,0.3)';
@@ -248,7 +250,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         outline: `1px solid ${canvasTextColor}`,
       }),
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: backgroundSurfaceColor,
+        background: backgroundSurfaceColorDark,
         color: primaryColorDark,
       }),
     },
