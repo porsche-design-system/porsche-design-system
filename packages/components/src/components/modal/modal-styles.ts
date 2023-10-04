@@ -1,5 +1,5 @@
 import type { JssStyle } from 'jss';
-import type { GetJssStyleFunction } from '../../utils';
+import type { GetJssStyleFunction, Theme } from '../../utils';
 import {
   buildResponsiveStyles,
   getCss,
@@ -26,12 +26,12 @@ import {
   getThemedColors,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
   pxToRemWithUnit,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
 
 const mediaQueryXl = getMediaQueryMin('xl');
-const { backgroundColor, primaryColor: lightThemePrimaryColor } = getThemedColors('light');
 const { primaryColor: darkThemePrimaryColor, contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
 
 const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
@@ -95,8 +95,11 @@ export const getComponentCss = (
   isFullscreen: BreakpointCustomizable<boolean>,
   hasDismissButton: boolean,
   hasHeader: boolean,
-  hasFooter: boolean
+  hasFooter: boolean,
+  theme: Theme
 ): string => {
+  const { primaryColor, backgroundColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
   const isFullscreenForXlAndXxl = isFullscreenForXl(isFullscreen);
   const duration = isOpen ? '.6s' : '.2s';
   const contentPadding = '32px';
@@ -144,11 +147,15 @@ export const getComponentCss = (
       h2: {
         ...headingLargeStyle,
         margin: 0,
-        color: lightThemePrimaryColor,
+        color: primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
+        }),
       },
     },
     root: mergeDeep(
       {
+        color: primaryColor, // enables color inheritance for slotted content
         position: 'relative',
         boxSizing: 'border-box',
         transform: isOpen ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
@@ -166,8 +173,11 @@ export const getComponentCss = (
           pointerEvents: 'none', // fix text selection in focus state
           ...buildResponsiveStyles(isFullscreen, (fullscreenValue: boolean) => ({
             borderRadius: fullscreenValue ? 0 : '12px',
-            borderColor: fullscreenValue ? lightThemePrimaryColor : darkThemePrimaryColor,
+            borderColor: fullscreenValue ? primaryColor : darkThemePrimaryColor,
             ...getInsetJssStyle(fullscreenValue ? 0 : -4),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: fullscreenValue ? darkThemePrimaryColor : primaryColor,
+            }),
           })),
         },
         '&:not(:focus-visible)::before': {
@@ -176,6 +186,10 @@ export const getComponentCss = (
         [mediaQueryXl]: {
           margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridExtendedOffsetBase}`,
         },
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
+          background: backgroundColorDark,
+        }),
       },
       buildResponsiveStyles(isFullscreen, getFullscreenJssStyles) as any // potentially needs to be merged with mediaQueryXl
     ),
@@ -199,6 +213,9 @@ export const getComponentCss = (
         bottom: 0,
         borderBottomLeftRadius: borderRadiusMedium,
         borderBottomRightRadius: borderRadiusMedium,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+        }),
       },
       [footerShadowClass]: {
         boxShadow: `${scrollShadowColor} 0 -5px 10px`,
@@ -218,6 +235,10 @@ export const getComponentCss = (
             background: darkThemeContrastHighColor,
             borderColor: darkThemeContrastHighColor,
           },
+        }),
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+          border: `2px solid ${backgroundColorDark}`,
         }),
       },
     }),
