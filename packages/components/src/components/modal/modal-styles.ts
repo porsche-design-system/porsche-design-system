@@ -4,9 +4,11 @@ import {
   buildResponsiveStyles,
   getCss,
   isHighContrastMode,
+  isThemeDark,
   mergeDeep,
   parseJSON,
   scrollShadowColor,
+  scrollShadowColorDark,
 } from '../../utils';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import {
@@ -218,8 +220,11 @@ export const getComponentCss = (
         }),
       },
       [footerShadowClass]: {
-        boxShadow: `${scrollShadowColor} 0 -5px 10px`,
+        boxShadow: `${isThemeDark(theme) ? scrollShadowColorDark : scrollShadowColor} 0 -5px 10px`,
         clipPath: 'inset(-20px 0 0 0)', // crop leaking box-shadow on left and right side
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          boxShadow: `${scrollShadowColorDark} 0 -5px 10px`,
+        }),
       },
     }),
     ...(hasDismissButton && {
