@@ -31,9 +31,7 @@ const initScroller = (opts?: InitOptions) => {
   const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition, hasScrollbar } = opts || {};
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
-  const elements = Array.from(Array(amount))
-    .map((_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`)
-    .join('');
+  const elements = Array.from(Array(amount), (_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`).join('');
 
   const attrs = [
     scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '',
@@ -103,7 +101,8 @@ describe('slotted content changes', () => {
   });
 });
 
-describe('next/prev buttons', () => {
+// puppeteer ignores @media(hover: hover) styles, so scroller does not show buttons, but playwright can handle it
+xdescribe('next/prev buttons', () => {
   it('should scroll by 20% on button prev/next click', async () => {
     await initScroller({ isWrapped: true });
     const { prevButton, nextButton } = await getPrevNextButton();

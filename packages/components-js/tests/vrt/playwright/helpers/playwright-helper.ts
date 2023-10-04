@@ -178,17 +178,6 @@ export const setContentWithDesignSystem = async (
     await page.emulateMedia({ colorScheme: prefersColorScheme || 'light' });
   }
 
-  const initialStyles = getInitialStyles({ format: 'html' });
-
-  // TODO: is it completely unsupported in playwright? or browser specific?
-  // Unsupported media feature: hover
-  const initialStylesWithoutMediaQuery = initialStyles
-    .replace(/\@media\(hover\:hover\)\{/g, '')
-    .replace(
-      /a\:hover\{background-color\:rgba\(126,127,130,0.20\)\}\}/g,
-      'a:hover{background-color:rgba(126,127,130,0.20)}'
-    );
-
   // get rid of spaces as we do during static VRTs
   content = content.replace(/>(\s)*</g, '><');
 
@@ -200,7 +189,7 @@ export const setContentWithDesignSystem = async (
     <script type="text/javascript" src="http://localhost:8575/index.js"></script>
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
     <link rel="stylesheet" href="assets/styles.css">
-    ${initialStylesWithoutMediaQuery}
+    ${getInitialStyles()}
     ${injectIntoHead}
   </head>
   <body>
