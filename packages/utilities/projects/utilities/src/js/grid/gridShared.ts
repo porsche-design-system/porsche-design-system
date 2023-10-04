@@ -4,6 +4,8 @@ export const _cssVariableGridBasicSpanOneThird = '--pds-grid-basic-span-one-thir
 export const _cssVariableGridBasicSpanTwoThirds = '--pds-grid-basic-span-two-thirds';
 export const _cssVariableGridNarrowSpanOneHalf = '--pds-grid-narrow-span-one-half';
 export const _cssVariableGridSafeZone = '--pds-internal-grid-safe-zone';
+export const _cssVariableGridOuterColumn = '--pds-internal-grid-outer-column';
+export const _cssVariableGridMargin = '--pds-internal-grid-margin';
 
 export const _gridWidthMin = '320px';
 export const _gridWidthMax = '2560px';

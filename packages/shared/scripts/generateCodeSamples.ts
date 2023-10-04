@@ -140,6 +140,46 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-multi-select',
+      samples: [
+        [
+          componentsJsPath + '/multi-select-example.html',
+          componentsAngularPath + '/multi-select-example.component.ts',
+          componentsReactPath + '/MultiSelectExample.tsx',
+          componentsVuePath + '/MultiSelectExample.vue',
+        ],
+        [
+          componentsJsPath + '/multi-select-example-controlled.html',
+          componentsAngularPath + '/multi-select-example-controlled.component.ts',
+          componentsReactPath + '/MultiSelectExampleControlled.tsx',
+          componentsVuePath + '/MultiSelectExampleControlled.vue',
+        ],
+        [
+          componentsJsPath + '/multi-select-example-dynamic.html',
+          componentsAngularPath + '/multi-select-example-dynamic.component.ts',
+          componentsReactPath + '/MultiSelectExampleDynamic.tsx',
+          componentsVuePath + '/MultiSelectExampleDynamic.vue',
+        ],
+      ],
+    },
+    {
+      component: 'p-pin-code',
+      samples: [
+        [
+          componentsJsPath + '/pin-code-example.html',
+          componentsAngularPath + '/pin-code-example.component.ts',
+          componentsReactPath + '/PinCodeExample.tsx',
+          componentsVuePath + '/PinCodeExample.vue',
+        ],
+        [
+          componentsJsPath + '/pin-code-example-controlled.html',
+          componentsAngularPath + '/pin-code-example-controlled.component.ts',
+          componentsReactPath + '/PinCodeExampleControlled.tsx',
+          componentsVuePath + '/PinCodeExampleControlled.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-scroller',
       samples: [
         [
@@ -292,8 +332,9 @@ const generateCodeSamples = (): void => {
       component: 'styles-grid',
       samples: [
         [
-          componentsAngularPath + '/../styles/styles-grid-example.component.ts',
-          componentsReactPath + '/../styles/StylesGridExample.tsx',
+          // special path to get the Grid-Layout component itself with fully rendered HTML and CSS
+          componentsAngularPath + '/../components/grid-layout.component.ts',
+          componentsReactPath + '/../components/GridLayout.tsx',
         ],
       ],
     },

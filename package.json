@@ -168,7 +168,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
-    "prettier": "^3.0.2"
+    "prettier": "^3.0.3"
   },
   "resolutions": {
     "**/react-scripts/jest": ">=29 <30",

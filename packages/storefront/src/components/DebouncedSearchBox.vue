@@ -2,6 +2,7 @@
   <div>
     <form onsubmit="event.preventDefault()">
       <p-text-field-wrapper
+        :theme="$store.getters.storefrontTheme"
         hide-label="true"
         label="Search"
         @blur="

@@ -15,3 +15,4 @@ export * from './isParentOfKind';
 export * from './isShadowRootParentOfKind';
 export * from './removeAttribute';
 export * from './setAttribute';
+export * from './setAttributes';

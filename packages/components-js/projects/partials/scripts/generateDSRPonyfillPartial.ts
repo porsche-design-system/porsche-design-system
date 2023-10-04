@@ -3,7 +3,7 @@ import * as path from 'path';
 
 export const generateDSRPonyfillPartial = (): string => {
   const types = `type GetDSRPonyfillOptions = {
-  format?: Format;
+  format?: FormatWithCSP;
 };`;
 
   const filePath = path.resolve(__dirname, '../dist-tmp/dsr-ponyfill.min.js');
@@ -21,9 +21,11 @@ export function getDSRPonyfill(opts?: GetDSRPonyfillOptions): string | JSX.Eleme
 
   const scriptContent = \`${fileContent.trim()}\`;
 
-  return format === 'html'
-    ? \`<script>\${scriptContent}</script>\`
-    : <script dangerouslySetInnerHTML={{ __html: scriptContent }} />;
+  return format === 'sha256'
+    ? getSha256Hash(scriptContent)
+    : format === 'html'
+      ? \`<script>\${scriptContent}</script>\`
+      : <script dangerouslySetInnerHTML={{ __html: scriptContent }} />;
 }`;
 
   return [types, func].join('\n\n');

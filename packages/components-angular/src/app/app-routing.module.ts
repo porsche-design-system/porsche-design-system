@@ -10,14 +10,7 @@ export type ExtendedRoute = Route & {
 };
 
 export const routes: ExtendedRoute[] = [
-  ...[
-    {
-      name: 'Table',
-      path: 'table',
-      component: fromPages.TableComponent,
-    },
-    ...fromPages.generatedRoutes,
-  ].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())),
+  ...[...fromPages.generatedRoutes].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())),
   {
     name: '---',
     path: '---',
@@ -28,11 +21,6 @@ export const routes: ExtendedRoute[] = [
     name: 'Overview',
     path: 'overview',
     component: fromPages.OverviewComponent,
-  },
-  {
-    name: 'Overview Flaky',
-    path: 'overview-flaky',
-    component: fromPages.OverviewFlakyComponent,
   },
   {
     name: 'Overview Notifications',
@@ -121,6 +109,31 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.ModalExampleAccessibilityComponent,
   },
   {
+    name: 'Multi-Select Example',
+    path: 'multi-select-example',
+    component: fromExamples.MultiSelectExampleComponent,
+  },
+  {
+    name: 'Multi-Select Example Controlled',
+    path: 'multi-select-example-controlled',
+    component: fromExamples.MultiSelectExampleControlledComponent,
+  },
+  {
+    name: 'Multi-Select Example Dynamic',
+    path: 'multi-select-example-dynamic',
+    component: fromExamples.MultiSelectExampleDynamicComponent,
+  },
+  {
+    name: 'Pin Code Example',
+    path: 'pin-code-example',
+    component: fromExamples.PinCodeExampleComponent,
+  },
+  {
+    name: 'Pin Code Example Controlled',
+    path: 'pin-code-example-controlled',
+    component: fromExamples.PinCodeExampleControlledComponent,
+  },
+  {
     name: 'Scroller Example',
     path: 'scroller-example',
     component: fromExamples.ScrollerExampleComponent,
@@ -200,6 +213,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Styles Drop Shadow Example',
     path: 'styles-drop-shadow',
     component: fromStyles.StylesDropShadowExampleComponent,
+  },
+  {
+    name: 'Styles Flyout Grid Example',
+    path: 'styles-flyout-grid',
+    component: fromStyles.StylesFlyoutGridExampleComponent,
   },
   {
     name: 'Styles Focus Example',

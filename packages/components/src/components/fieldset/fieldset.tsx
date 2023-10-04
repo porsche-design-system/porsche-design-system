@@ -74,7 +74,7 @@ export class Fieldset {
         )}
         <slot />
         {hasMessageValue && (
-          <StateMessage id={messageId} state={this.state} message={this.message} theme="light" host={this.host} />
+          <StateMessage id={messageId} state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
       </fieldset>
     );

@@ -1,9 +1,9 @@
 <template>
   <div class="partial-docs">
     <Playground :frameworkMarkup="frameworkMarkup" :showCodeEditor="false"></Playground>
-    <p-text>
+    <p-text :theme="$store.getters.storefrontTheme">
       You can find an implemented example in our
-      <a href="https://github.com/porsche-design-system/sample-integration-vanillajs">Sample Integration VanillaJS</a>,
+      <a href="https://github.com/porsche-design-system/sample-integration-vanillajs">Sample Integration Vanilla JS</a>,
       <a href="https://github.com/porsche-design-system/sample-integration-angular">Sample Integration Angular</a>,
       <a href="https://github.com/porsche-design-system/sample-integration-react">Sample Integration React</a> and
       <a href="https://github.com/porsche-design-system/sample-integration-nextjs">Sample Integration NextJS</a>
@@ -68,6 +68,11 @@ yarn add --dev @angular-builders/custom-webpack
     "options": {
       "outputPath": "dist/components-angular",
 +     "indexTransform": "./scripts/transformIndexHtml.ts",
+    }
+  }
+  "serve": {
+-   "builder": "@angular-devkit/build-angular:dev-server",
++   "builder": "@angular-builders/custom-webpack:dev-server",
 
 <!-- ./scripts/transformIndexHtml.ts -->
 import type { TargetOptions } from '@angular-builders/custom-webpack';

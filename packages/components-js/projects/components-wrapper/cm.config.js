@@ -45,7 +45,7 @@ module.exports = {
         targetDirectory,
       },
       {
-        pattern: '../../LICENSE',
+        pattern: '../../LICENSE.md',
         targetDirectory,
       },
       {

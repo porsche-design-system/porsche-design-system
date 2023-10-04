@@ -134,6 +134,19 @@ describe('manual test cases', () => {
         </fromComponents.PLinkTileModelSignature>
       ),
     ],
+    'p-pin-code': [() => <fromComponents.PPinCode value="1234"></fromComponents.PPinCode>],
+    'p-radio-button-wrapper': [
+      () => (
+        <fromComponents.PRadioButtonWrapper label="Some label" loading={true}>
+          <input type="radio" />
+        </fromComponents.PRadioButtonWrapper>
+      ),
+      () => (
+        <fromComponents.PRadioButtonWrapper label="Some label" loading={true}>
+          <input type="radio" defaultChecked={true} />
+        </fromComponents.PRadioButtonWrapper>
+      ),
+    ],
     'p-tabs-item': [
       () => (
         <fromComponents.PTabs theme="dark">
@@ -172,6 +185,18 @@ describe('manual test cases', () => {
           <fromComponents.PSegmentedControlItem value={1}>Item 1</fromComponents.PSegmentedControlItem>
           <fromComponents.PSegmentedControlItem value={2}>Item 2</fromComponents.PSegmentedControlItem>
         </fromComponents.PSegmentedControl>
+      ),
+    ],
+    'p-multi-select-option': [
+      () => (
+        <fromComponents.PMultiSelect name="name" theme="dark">
+          <fromComponents.PMultiSelectOption value="a">Option A</fromComponents.PMultiSelectOption>
+          <fromComponents.PMultiSelectOption value="b">Option B</fromComponents.PMultiSelectOption>
+          <fromComponents.PMultiSelectOption value="c">Option C</fromComponents.PMultiSelectOption>
+          <fromComponents.PMultiSelectOption value="d">Option D</fromComponents.PMultiSelectOption>
+          <fromComponents.PMultiSelectOption value="e">Option E</fromComponents.PMultiSelectOption>
+          <fromComponents.PMultiSelectOption value="f">Option F</fromComponents.PMultiSelectOption>
+        </fromComponents.PMultiSelect>
       ),
     ],
     'p-select-wrapper': [

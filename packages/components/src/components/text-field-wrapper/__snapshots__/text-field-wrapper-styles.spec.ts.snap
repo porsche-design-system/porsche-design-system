@@ -5,6 +5,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -153,6 +154,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -255,7 +257,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -267,6 +269,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -359,7 +362,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -371,6 +374,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -473,7 +477,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -485,6 +489,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -587,7 +592,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #FB0404 !important;
   }
 }
@@ -599,6 +604,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -701,7 +707,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -713,6 +719,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -826,6 +833,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -947,6 +955,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 2) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1060,6 +1069,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1163,6 +1173,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1277,6 +1288,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1390,6 +1402,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1503,6 +1516,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1616,6 +1630,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1718,7 +1733,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -1730,6 +1745,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1822,7 +1838,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -1834,6 +1850,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1936,7 +1953,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -1948,6 +1965,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2050,7 +2068,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #069561 !important;
   }
 }
@@ -2062,6 +2080,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2164,7 +2183,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -2176,6 +2195,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2277,7 +2297,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -2289,6 +2309,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2380,7 +2401,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -2392,6 +2413,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2494,7 +2516,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -2506,6 +2528,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2618,6 +2641,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2720,6 +2744,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2833,6 +2858,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2934,7 +2960,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -2946,6 +2972,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3037,7 +3064,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -3049,6 +3076,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3151,7 +3179,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -3163,6 +3191,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: 16px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3254,7 +3283,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -3266,6 +3295,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: block;
   --p-internal-text-field-input-padding-left: 16px !important;
   --p-internal-text-field-input-padding-right: calc(9px * 2 + calc(calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3367,7 +3397,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 0;
 }
 @media(hover:hover) {
-  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])), .label__text:hover ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover) {
+  .label__text:hover~::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }

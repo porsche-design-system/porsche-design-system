@@ -1,4 +1,4 @@
-export type Theme = 'light' | 'dark';
+export type Theme = 'light' | 'dark' | 'auto';
 export type ThemeColorSet = {
   primary: string;
   background: {

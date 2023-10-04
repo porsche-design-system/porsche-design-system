@@ -1,14 +1,20 @@
 <template>
   <footer>
-    <p-link-pure href="https://brand.porsche.com" target="_blank" icon="external" align-label="left">
+    <p-link-pure
+      :theme="storefrontTheme"
+      href="https://brand.porsche.com"
+      target="_blank"
+      icon="external"
+      align-label="left"
+    >
       brand.porsche.com
     </p-link-pure>
-    <p-text size="xx-small" color="contrast-high">
+    <p-text :theme="storefrontTheme" size="xx-small" color="contrast-high">
       <span>© {{ year }} Dr. Ing. h.c. F. Porsche AG.</span>
       <br />
-      <a href="https://ux.porsche.com/privacy-policy">Privacy Policy</a>
+      <a href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</a>
       &nbsp;
-      <a href="https://ux.porsche.com/imprint">Imprint</a>
+      <a href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</a>
       &nbsp;
       <router-link :to="'/license'">License</router-link>
     </p-text>
@@ -18,10 +24,15 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import { type StorefrontTheme } from '@/models';
 
   @Component
   export default class Footer extends Vue {
     year = new Date().getFullYear();
+
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
+    }
   }
 </script>
 

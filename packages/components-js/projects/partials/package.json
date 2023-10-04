@@ -22,7 +22,7 @@
     "build:partials": "ts-node scripts/buildPartials.ts",
     "build:copyToComponentsJs": "TARGET=../../dist/components-wrapper/partials && rm -rf $TARGET && mkdir -p $TARGET && cp -r ./dist/. $TARGET",
     "test": "yarn test:unit",
-    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest --colors -c tests/unit/config/jest.config.js",
+    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest --colors -c tests/unit/config/jest.config.ts",
     "test:unit:watch": "yarn test:unit --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
@@ -39,7 +39,7 @@
     "@types/html-minifier": "^4.0.2",
     "html-minifier": "^4.0.0",
     "tslib": "^2.6.2",
-    "typescript": "~5.1.6"
+    "typescript": "~5.2.2"
   },
   "volta": {
     "extends": "../../../../package.json"

@@ -371,6 +371,29 @@ exports[`should call validateProps() with correct parameters via render for p-mo
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-multi-select: propTypes with ValidatorFunctions 1`] = `
+{
+  "description": "string",
+  "disabled": "boolean",
+  "dropdownDirection": "oneOf",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "message": "string",
+  "name": "string",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "value": "array",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-multi-select-option: propTypes with ValidatorFunctions 1`] = `
+{
+  "disabled": "boolean",
+  "value": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-pagination: propTypes with ValidatorFunctions 1`] = `
 {
   "activePage": "number",
@@ -387,6 +410,24 @@ exports[`should call validateProps() with correct parameters via render for p-pa
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-pin-code: propTypes with ValidatorFunctions 1`] = `
+{
+  "description": "string",
+  "disabled": "boolean",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "length": "oneOf",
+  "loading": "boolean",
+  "message": "string",
+  "name": "string",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "type": "oneOf",
+  "value": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-popover: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
@@ -400,6 +441,7 @@ exports[`should call validateProps() with correct parameters via render for p-ra
 {
   "hideLabel": "breakpoint",
   "label": "string",
+  "loading": "boolean",
   "message": "string",
   "state": "oneOf",
   "theme": "oneOf",

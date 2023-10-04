@@ -16,8 +16,8 @@ export const transformAttributesWithDigitValue = (markup: string): string =>
   markup.replace(/\s([a-z-]+)="(-?\d*)"/g, (_, $key, $value) =>
     $key === 'maxlength'
       ? ` [maxLength]="${$value}"`
-      : // surround numeric "name" and "model" prop values with single quotes
-      $key === 'name' || $key === 'model' // TODO replace temporary 911|718 work around with more generic approach
+      : // surround numeric "name", "model" and pin-code "value" prop values with single quotes
+      $key === 'name' || $key === 'model' || ($key === 'value' && $value === '1234') // TODO replace temporary 911|718 work around with more generic approach
       ? ` [${$key}]="'${$value}'"`
       : ` [${camelCase($key)}]="${$value}"`
   );

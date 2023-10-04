@@ -1,10 +1,32 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
+const path = require('path');
+const fs = require('fs');
+const globby = require('globby');
+const transformIndexHtml = require('./scripts/transformIndexHtml');
 
 if (process.env.CI) {
   // using chrome that comes with playwright
   process.env.CHROME_BIN = require('@playwright/test').chromium.executablePath();
 }
+
+const injectPartialsIntoKarmaContextHtml = () => {
+  const packagePath = path.resolve(require.resolve('@angular-devkit/build-angular'), '..');
+  const [filePath] = globby.sync(packagePath + '/**/karma-context.html');
+  const backupFilePath = filePath.replace(/\.html$/, '-original$&');
+
+  // restore backup
+  if (fs.existsSync(backupFilePath)) {
+    fs.copyFileSync(backupFilePath, filePath);
+    fs.rmSync(backupFilePath);
+  }
+
+  fs.copyFileSync(filePath, backupFilePath); // create backup
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const modifiedFileContent = transformIndexHtml({}, fileContent);
+  fs.writeFileSync(filePath, modifiedFileContent);
+};
+injectPartialsIntoKarmaContextHtml();
 
 module.exports = function (config) {
   config.set({

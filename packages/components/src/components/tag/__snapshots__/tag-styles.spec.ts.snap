@@ -41,6 +41,7 @@ exports[`getComponentCss() should return correct css for color: background-base,
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -99,6 +100,7 @@ exports[`getComponentCss() should return correct css for color: background-base,
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -157,6 +159,7 @@ exports[`getComponentCss() should return correct css for color: background-base,
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -224,6 +227,7 @@ exports[`getComponentCss() should return correct css for color: background-base,
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -291,6 +295,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -358,6 +363,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -425,6 +431,7 @@ exports[`getComponentCss() should return correct css for color: notification-err
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -492,6 +499,7 @@ exports[`getComponentCss() should return correct css for color: notification-err
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -559,6 +567,7 @@ exports[`getComponentCss() should return correct css for color: notification-inf
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -626,6 +635,7 @@ exports[`getComponentCss() should return correct css for color: notification-inf
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -693,6 +703,7 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -760,6 +771,7 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -827,6 +839,7 @@ exports[`getComponentCss() should return correct css for color: notification-war
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -894,6 +907,7 @@ exports[`getComponentCss() should return correct css for color: notification-war
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -961,6 +975,7 @@ exports[`getComponentCss() should return correct css for color: primary, isFocus
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1028,6 +1043,7 @@ exports[`getComponentCss() should return correct css for color: primary, isFocus
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

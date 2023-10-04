@@ -1,8 +1,10 @@
 import {
-  getWarningRecommendation,
+  getValidatePartialErrorPrimaryText,
+  getValidatePartialErrorSecondaryText,
   logPartialValidationWarning,
-  validateGetFontFaceStylesheetUsage,
+  throwPartialValidationError,
   validateGetComponentChunkLinksUsage,
+  validateGetFontFaceStylesheetUsage,
   validateGetFontLinksUsage,
   validateGetInitialStylesUsage,
   validateGetLoaderScriptUsage,
@@ -10,6 +12,7 @@ import {
 } from './validatePartialUsage';
 import type { PartialName } from '@porsche-design-system/shared';
 import type { TagNamesForVersions } from './helper';
+import * as loggerUtils from '../../log/logger';
 import * as validatePartialUsageUtils from './validatePartialUsage';
 import * as helperUtils from './helper';
 import * as getCDNBaseURLUtils from '../../getCDNBaseURL';
@@ -41,39 +44,65 @@ describe('validatePartialUsage()', () => {
   const originalEnv = process.env;
   afterEach(() => {
     process.env = originalEnv;
-    document.clear();
+  });
+
+  it('should call validateGetInitialStylesUsage(), validateGetFontFaceStylesheetUsage() and validateGetFontLinksUsage()', () => {
+    const validateGetInitialStylesUsageSpy = jest
+      .spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage')
+      .mockImplementation(); // mocked since it throws an exception
+    const validateGetFontFaceStylesheetUsageSpy = jest.spyOn(
+      validatePartialUsageUtils,
+      'validateGetFontFaceStylesheetUsage'
+    );
+    const validateGetFontLinksUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetFontLinksUsage');
+    const validateGetComponentChunkLinksUsagesSpy = jest.spyOn(
+      validatePartialUsageUtils,
+      'validateGetComponentChunkLinksUsage'
+    );
+    const validateGetLoaderScriptUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetLoaderScriptUsage');
+
+    validatePartialUsage();
+
+    expect(validateGetInitialStylesUsageSpy).toBeCalledWith();
+    expect(validateGetFontFaceStylesheetUsageSpy).toBeCalledWith();
+    expect(validateGetFontLinksUsageSpy).toBeCalledWith();
+    // TODO: integration test (real world test) first, before rollout
+    expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalled();
+    expect(validateGetLoaderScriptUsageSpy).not.toBeCalledWith();
+  });
+});
+
+describe('validateGetFontFaceStylesheetUsage()', () => {
+  const originalEnv = process.env;
+  afterEach(() => {
+    process.env = originalEnv;
   });
 
   it.each<[string, string]>([
     ['production', 'test'],
     ['production', 'production'],
   ])(
-    'should call validateGetFontFaceStylesheetUsage(), validateGetFontLinksUsage(), validateGetComponentChunkLinksUsage(), validateGetLoaderScriptUsage() and validateGetInitialStylesUsage() for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
+    'should call document.head.querySelector() with correct parameters for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
     (rollupReplaceIsStaging, nodeEnv) => {
       // @ts-ignore
       ROLLUP_REPLACE_IS_STAGING = rollupReplaceIsStaging;
       process.env = { ...originalEnv, NODE_ENV: nodeEnv };
 
-      const validateGetFontLinksUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetFontLinksUsage');
-      const validateGetComponentChunkLinksUsagesSpy = jest.spyOn(
-        validatePartialUsageUtils,
-        'validateGetComponentChunkLinksUsage'
-      );
-      const validateGetLoaderScriptUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetLoaderScriptUsage');
-      const validateGetInitialStylesUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage');
-      const validateGetFontFaceStylesheetUsageSpy = jest.spyOn(
-        validatePartialUsageUtils,
-        'validateGetFontFaceStylesheetUsage'
+      const spy = jest.spyOn(document.head, 'querySelector');
+      validateGetFontFaceStylesheetUsage();
+
+      expect(spy).toBeCalledWith(
+        `link[href="https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}"]`
       );
 
-      validatePartialUsage();
+      jest
+        .spyOn(getCDNBaseURLUtils, 'getCDNBaseURL')
+        .mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
+      validateGetFontFaceStylesheetUsage();
 
-      expect(validateGetFontFaceStylesheetUsageSpy).toBeCalledWith();
-      expect(validateGetFontLinksUsageSpy).toBeCalledWith();
-      expect(validateGetInitialStylesUsageSpy).toBeCalledWith();
-      // TODO: integration test (real world test) first, before rollout
-      expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalled();
-      expect(validateGetLoaderScriptUsageSpy).not.toBeCalledWith();
+      expect(spy).toBeCalledWith(
+        `link[href="https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}"]`
+      );
     }
   );
 
@@ -83,36 +112,19 @@ describe('validatePartialUsage()', () => {
     ['staging', 'production'],
     ['production', 'development'],
   ])(
-    'should not call any function for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
+    'should call document.head.querySelector() with correct parameters for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
     (rollupReplaceIsStaging, nodeEnv) => {
       // @ts-ignore
       ROLLUP_REPLACE_IS_STAGING = rollupReplaceIsStaging;
       process.env = { ...originalEnv, NODE_ENV: nodeEnv };
 
-      const validateGetFontLinksUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetFontLinksUsage');
-      const validateGetComponentChunkLinksUsagesSpy = jest.spyOn(
-        validatePartialUsageUtils,
-        'validateGetComponentChunkLinksUsage'
-      );
-      const validateGetLoaderScriptUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetLoaderScriptUsage');
-      const validateGetInitialStylesUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage');
-      const validateGetFontFaceStylesheetUsageSpy = jest.spyOn(
-        validatePartialUsageUtils,
-        'validateGetFontFaceStylesheetUsage'
-      );
+      const spy = jest.spyOn(document.head, 'querySelector');
+      validateGetFontFaceStylesheetUsage();
 
-      validatePartialUsage();
-
-      expect(validateGetFontFaceStylesheetUsageSpy).not.toBeCalled();
-      expect(validateGetFontLinksUsageSpy).not.toBeCalled();
-      expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalled();
-      expect(validateGetLoaderScriptUsageSpy).not.toBeCalled();
-      expect(validateGetInitialStylesUsageSpy).not.toBeCalled();
+      expect(spy).toBeCalledWith('link[href="http://localhost:3001/styles/font-face.min.css"]');
     }
   );
-});
 
-describe('validateGetFontFaceStylesheetUsage()', () => {
   it('should call document.head.querySelector() with correct parameters', () => {
     const spy = jest.spyOn(document.head, 'querySelector');
     validateGetFontFaceStylesheetUsage();
@@ -228,11 +240,11 @@ describe('validateGetComponentChunkLinksUsage()', () => {
     expect(spy).toBeCalledTimes(2);
   });
 
-  it('should call getWarningRecommendation() with correct parameters for each version returned from getUsedTagNamesWithoutPreloadForVersions()', () => {
+  it('should call getValidatePartialErrorSecondaryText() with correct parameters for each version returned from getUsedTagNamesWithoutPreloadForVersions()', () => {
     jest
       .spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions')
       .mockReturnValue({ '1.2.3': ['p-text'], '1.2.4': ['p-text', 'p-button', 'p-link'] });
-    const spy = jest.spyOn(validatePartialUsageUtils, 'getWarningRecommendation');
+    const spy = jest.spyOn(validatePartialUsageUtils, 'getValidatePartialErrorSecondaryText');
 
     validateGetComponentChunkLinksUsage();
 
@@ -240,15 +252,18 @@ describe('validateGetComponentChunkLinksUsage()', () => {
     expect(spy).toBeCalledTimes(2);
   });
 
-  it('should not call consoleWarn() util and should not call getWarningRecommendation() when getUsedTagNamesWithoutPreloadForVersions() returns {}', () => {
+  it('should not call consoleWarn() util and should not call getValidatePartialErrorSecondaryText() when getUsedTagNamesWithoutPreloadForVersions() returns {}', () => {
     jest.spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions').mockReturnValue({});
     const warnSpy = jest.spyOn(global.console, 'warn');
-    const getWarningRecommendationSpy = jest.spyOn(validatePartialUsageUtils, 'getWarningRecommendation');
+    const getValidatePartialErrorSecondaryTextSpy = jest.spyOn(
+      validatePartialUsageUtils,
+      'getValidatePartialErrorSecondaryText'
+    );
 
     validateGetComponentChunkLinksUsage();
 
     expect(warnSpy).not.toBeCalled();
-    expect(getWarningRecommendationSpy).not.toBeCalled();
+    expect(getValidatePartialErrorSecondaryTextSpy).not.toBeCalled();
   });
 });
 
@@ -280,13 +295,9 @@ describe('validateGetLoaderScriptUsage()', () => {
 });
 
 describe('validateGetInitialStylesUsage()', () => {
-  it('should call document.querySelector() with correct parameters', () => {
-    jest.spyOn(helperUtils, 'getPorscheDesignSystemPrefixesForVersions').mockReturnValue({
-      '1.2.3': [''],
-      '1.2.4': ['prefix'],
-      '1.2.5': ['my-prefix'],
-    });
+  it('should call document.head.querySelector() with correct parameters', () => {
     const spy = jest.spyOn(document.head, 'querySelector');
+    jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationError').mockImplementation(); // mocked since it throws an exception
 
     validateGetInitialStylesUsage();
 
@@ -294,13 +305,8 @@ describe('validateGetInitialStylesUsage()', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  it('should call logPartialValidationWarning() with correct parameters when initial style is not found', () => {
-    jest.spyOn(helperUtils, 'getPorscheDesignSystemPrefixesForVersions').mockReturnValue({
-      '1.2.3': [''],
-      '1.2.4': ['prefix'],
-      '1.2.5': ['my-prefix'],
-    });
-    const spy = jest.spyOn(validatePartialUsageUtils, 'logPartialValidationWarning');
+  it('should call throwPartialValidationError() with correct parameters when initial style is not found', () => {
+    const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationError').mockImplementation(); // mocked since it throws an exception
 
     validateGetInitialStylesUsage();
 
@@ -308,19 +314,32 @@ describe('validateGetInitialStylesUsage()', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  it('should not call logPartialValidationWarning() when initial style tags are found for each prefix', () => {
-    jest.spyOn(helperUtils, 'getPorscheDesignSystemPrefixesForVersions').mockReturnValue({
-      '1.2.3': [''],
-      '1.2.4': ['prefix'],
-      '1.2.5': ['my-prefix'],
-    });
+  it('should not call throwPartialValidationError() when initial style tags are found for each prefix', () => {
     jest.spyOn(document.head, 'querySelector').mockReturnValue(document.createElement('style'));
-    const spy = jest.spyOn(validatePartialUsageUtils, 'logPartialValidationWarning');
+    const spy = jest.spyOn(validatePartialUsageUtils, 'throwPartialValidationError');
 
     validateGetInitialStylesUsage();
 
     expect(spy).not.toBeCalled();
   });
+});
+
+describe('throwPartialValidationError()', () => {
+  it('should call throwException() with result of getValidatePartialErrorPrimaryText() and getValidatePartialErrorSecondaryText() when called with "getInitialStyles"', () => {});
+
+  const throwExceptionSpy = jest.spyOn(loggerUtils, 'throwException').mockImplementation();
+  const getValidatePartialErrorPrimaryTextSpy = jest
+    .spyOn(validatePartialUsageUtils, 'getValidatePartialErrorPrimaryText')
+    .mockReturnValue('main');
+  const getValidatePartialErrorSecondaryTextSpy = jest
+    .spyOn(validatePartialUsageUtils, 'getValidatePartialErrorSecondaryText')
+    .mockReturnValue('additional');
+
+  throwPartialValidationError('getInitialStyles', 'my-prefix');
+
+  expect(getValidatePartialErrorPrimaryTextSpy).toBeCalledWith('getInitialStyles', 'my-prefix');
+  expect(getValidatePartialErrorSecondaryTextSpy).toBeCalledWith('getInitialStyles', true);
+  expect(throwExceptionSpy).toBeCalledWith('main additional');
 });
 
 describe('logPartialValidationWarning()', () => {
@@ -331,23 +350,49 @@ describe('logPartialValidationWarning()', () => {
     'getComponentChunkLinks',
     'getInitialStyles',
   ])(
-    'should call consoleWarn() util and getWarningRecommendation() with correct parameters when called with partial name: "%s"',
+    'should call consoleWarn() with result of getValidatePartialErrorPrimaryText() and getValidatePartialErrorSecondaryText() when called with "%s"',
     (partialName) => {
-      const warnSpy = jest.spyOn(global.console, 'warn');
-      const getWarningRecommendationSpy = jest.spyOn(validatePartialUsageUtils, 'getWarningRecommendation');
+      const consoleWarnSpy = jest.spyOn(loggerUtils, 'consoleWarn');
+      const getValidatePartialErrorPrimaryTextSpy = jest
+        .spyOn(validatePartialUsageUtils, 'getValidatePartialErrorPrimaryText')
+        .mockReturnValue('main');
+      const getValidatePartialErrorSecondaryTextSpy = jest
+        .spyOn(validatePartialUsageUtils, 'getValidatePartialErrorSecondaryText')
+        .mockReturnValue('additional');
 
       logPartialValidationWarning(partialName);
 
-      expect(warnSpy).toBeCalledTimes(1);
-      expect(getWarningRecommendationSpy).toBeCalledWith(partialName);
+      expect(getValidatePartialErrorPrimaryTextSpy).toBeCalledWith(partialName, undefined);
+      expect(getValidatePartialErrorSecondaryTextSpy).toBeCalledWith(partialName);
+      expect(consoleWarnSpy).toBeCalledWith('main', 'additional');
     }
   );
 });
 
-describe('getWarningRecommendation()', () => {
-  it('should return string with correct parameters when called with partial getFontLinks()', () => {
-    expect(getWarningRecommendation('getFontLinks')).toEqual(
+describe('getValidatePartialErrorPrimaryText()', () => {
+  it('should return correct string when called with "getFontLinks"', () => {
+    expect(getValidatePartialErrorPrimaryText('getFontLinks')).toEqual(
+      'The Porsche Design System is used without using the getFontLinks() partial.'
+    );
+  });
+
+  it('should return correct string when called with "getFontLinks" and "my-prefix"', () => {
+    expect(getValidatePartialErrorPrimaryText('getFontLinks', 'my-prefix')).toEqual(
+      "The Porsche Design System with prefix: 'my-prefix' is used without using the getFontLinks() partial."
+    );
+  });
+});
+
+describe('getValidatePartialErrorSecondaryText()', () => {
+  it('should return correct string when called with "getFontLinks"', () => {
+    expect(getValidatePartialErrorSecondaryText('getFontLinks')).toEqual(
       'The usage of the getFontLinks() partial is recommended as described at https://designsystem.porsche.com/v3/partials/font-links to enhance loading behavior.'
+    );
+  });
+
+  it('should return correct string when called with "getFontLinks" and required=true', () => {
+    expect(getValidatePartialErrorSecondaryText('getFontLinks', true)).toEqual(
+      'The usage of the getFontLinks() partial is required as described at https://designsystem.porsche.com/v3/partials/font-links to enhance loading behavior.'
     );
   });
 });

@@ -5,6 +5,7 @@ exports[`getComponentCss() should return correct css for color: background-base,
   display: inline-block !important;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -65,6 +66,7 @@ exports[`getComponentCss() should return correct css for color: background-base,
   display: inline-block !important;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -125,6 +127,7 @@ exports[`getComponentCss() should return correct css for color: background-base,
   display: inline-block !important;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -191,6 +194,7 @@ exports[`getComponentCss() should return correct css for color: background-base,
   display: inline-block !important;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -257,6 +261,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   display: inline-block !important;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -323,6 +328,7 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   display: inline-block !important;
   vertical-align: top !important;
   outline: 0 !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

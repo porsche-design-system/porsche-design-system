@@ -1,9 +1,9 @@
 # Link Social
 
-<p-inline-notification heading="Important note" state="error" dismiss-button="false">
+<Notification heading="Important note" state="error">
   The <code>link-social</code> component is <strong>deprecated</strong> and will be removed with next major release.<br>
   Use <a href="components/link/examples#link-with-specific-icon"><code>link</code> component</a> with corresponding social icon instead.
-</p-inline-notification>
+</Notification>
 
 ---
 

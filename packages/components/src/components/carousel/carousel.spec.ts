@@ -5,13 +5,13 @@ import * as validatePropsUtils from '../../utils/validation/validateProps';
 import * as breakpointCustomizableUtils from '../../utils/breakpoint-customizable';
 import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-utils';
 import * as jsonUtils from '../../utils/json';
-import { Splide } from '@splidejs/splide';
 import * as splideModule from '@splidejs/splide';
+import { Splide } from '@splidejs/splide';
 import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
 
 const splideMock = {
   index: 0,
-  on: (_, __) => ({} as Splide),
+  on: (_, __) => ({}) as Splide,
   mount: () => {},
 } as Splide;
 
@@ -227,13 +227,97 @@ describe('componentDidUpdate', () => {
     expect(refreshSpy).toBeCalledWith();
   });
 
-  it('should call updatePrevNextButtons() with correct parameters', () => {
+  it('should set drag in this.splide.options to true when amountOfPages > 1', () => {
+    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
+    const component = new Carousel();
+
+    const mockSplideInstance = {
+      options: {},
+      refresh: () => {},
+    } as Splide;
+
+    component['splide'] = mockSplideInstance;
+    component['amountOfPages'] = 2;
+
+    component.componentDidUpdate();
+    expect(mockSplideInstance.options.drag).toBe(true);
+  });
+
+  it('should set drag in this.splide.options to false when amountOfPages <= 1', () => {
+    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
+    const component = new Carousel();
+
+    component['splide'] = {
+      options: {},
+      refresh: () => {},
+    } as Splide;
+    component['amountOfPages'] = 1;
+
+    component.componentDidUpdate();
+    expect(component['splide'].options.drag).toBe(false);
+  });
+
+  it('should set drag in this.splide.options to true when slidesPerPage set to auto', () => {
+    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
+    const component = new Carousel();
+
+    const mockSplideInstance = {
+      options: {},
+      refresh: () => {},
+    } as Splide;
+
+    component['splide'] = mockSplideInstance;
+    component['slidesPerPage'] = 'auto';
+
+    component.componentDidUpdate();
+    expect(mockSplideInstance.options.drag).toBe(true);
+  });
+
+  it('should call renderPagination when hasNavigation = true', () => {
+    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockReturnValueOnce();
+    const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
+    const component = new Carousel();
+    component['splide'] = {
+      options: {},
+      refresh: () => {},
+    } as Splide;
+    Object.defineProperty(component, 'hasNavigation', { value: true });
+
+    component.componentDidUpdate();
+    expect(renderPaginationSpy).toBeCalledWith(component['paginationEl'], component['amountOfPages'], 0);
+  });
+
+  it('should not call renderPagination when hasNavigation = false', () => {
+    const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
+    const component = new Carousel();
+    component['splide'] = {
+      options: {},
+      refresh: () => {},
+    } as Splide;
+    Object.defineProperty(component, 'hasNavigation', { value: false });
+
+    component.componentDidUpdate();
+    expect(renderPaginationSpy).not.toBeCalled();
+  });
+
+  it('should call updatePrevNextButtons() with correct parameters when hasNavigation = true', () => {
     const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const component = new Carousel();
+    Object.defineProperty(component, 'hasNavigation', { value: true });
     component['splide'] = { refresh: () => {} } as Splide;
 
     component.componentDidUpdate();
     expect(spy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
+  });
+
+  it('should not call updatePrevNextButtons() when hasNavigation = false', () => {
+    const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
+    const component = new Carousel();
+    Object.defineProperty(component, 'hasNavigation', { value: false });
+    component['splide'] = { refresh: () => {} } as Splide;
+
+    component.componentDidUpdate();
+    expect(spy).not.toBeCalled();
   });
 });
 
@@ -271,16 +355,28 @@ describe('registerSplideHandlers()', () => {
     expect(onSpy).toHaveBeenNthCalledWith(2, 'move', expect.any(Function));
   });
 
-  it('should call updatePrevNextButtons() and renderPagination() with correct parameters on mounted event', () => {
+  it('should call updatePrevNextButtons() and renderPagination() when this.splide.options.drag = true with correct parameters on mounted event', () => {
     const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
     const component = new Carousel();
-    component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
+    component['splide'] = new Splide(getContainerEl(), { drag: true }); // actual implementation for verifying event emission
     component['registerSplideHandlers'](component['splide']);
 
     component['splide'].emit('mounted');
     expect(updatePrevNextButtonsSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
     expect(renderPaginationSpy).toBeCalledWith(component['paginationEl'], component['amountOfPages'], 0);
+  });
+
+  it('should not call updatePrevNextButtons() and renderPagination() when this.splide.options.drag = false on mounted event', () => {
+    const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
+    const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
+    const component = new Carousel();
+    component['splide'] = new Splide(getContainerEl(), { drag: false }); // actual implementation for verifying event emission
+    component['registerSplideHandlers'](component['splide']);
+
+    component['splide'].emit('mounted');
+    expect(updatePrevNextButtonsSpy).not.toBeCalled();
+    expect(renderPaginationSpy).not.toBeCalled();
   });
 
   it('should call updatePrevNextButtons(), updatePagination(), this.change.emit() and this.carouselChange.emit() with correct parameters on splide events', () => {
@@ -289,6 +385,7 @@ describe('registerSplideHandlers()', () => {
     const changeEmitSpy = jest.fn();
     const carouselChangeEmitSpy = jest.fn();
     const component = new Carousel();
+    component['amountOfPages'] = 2; // hasNavigation = true
     component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
     component['update'] = { emit: changeEmitSpy };
     component['carouselChange'] = { emit: carouselChangeEmitSpy };
@@ -296,7 +393,7 @@ describe('registerSplideHandlers()', () => {
 
     component['splide'].emit('move', 1, 0);
     expect(updatePrevNextButtonsSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
-    expect(updatePaginationSpy).toBeCalledWith(component['paginationEl'], undefined, 1);
+    expect(updatePaginationSpy).toBeCalledWith(component['paginationEl'], 2, 1);
     expect(changeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });
     expect(carouselChangeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });
   });

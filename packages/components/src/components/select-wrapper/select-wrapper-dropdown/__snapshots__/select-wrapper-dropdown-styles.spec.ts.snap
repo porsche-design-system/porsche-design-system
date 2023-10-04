@@ -723,13 +723,16 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -750,9 +753,9 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -892,13 +895,16 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -919,9 +925,9 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -1023,13 +1029,16 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -1050,9 +1059,9 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -1189,13 +1198,16 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -1216,9 +1228,9 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -1575,13 +1587,16 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -1602,9 +1617,9 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -1744,13 +1759,16 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -1771,9 +1789,9 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -1875,13 +1893,16 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -1902,9 +1923,9 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -2041,13 +2062,16 @@ ul {
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -2068,9 +2092,9 @@ ul {
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -3713,13 +3737,16 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #FBFCFF;
-  background: #212225;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #212225;
+}
+.option--highlighted {
+  background: #404044;
+}
+.option--highlighted, .option--selected {
+  color: #FBFCFF;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -3740,9 +3767,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #FBFCFF;
-    background: #212225;
+    background: #404044;
   }
 }
 "
@@ -3801,13 +3828,16 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #FBFCFF;
-  background: #212225;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #212225;
+}
+.option--highlighted {
+  background: #404044;
+}
+.option--highlighted, .option--selected {
+  color: #FBFCFF;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -3828,9 +3858,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #FBFCFF;
-    background: #212225;
+    background: #404044;
   }
 }
 "
@@ -3889,13 +3919,16 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -3916,9 +3949,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -3977,13 +4010,16 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -4004,9 +4040,9 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -4065,13 +4101,16 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #FBFCFF;
-  background: #212225;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #212225;
+}
+.option--highlighted {
+  background: #404044;
+}
+.option--highlighted, .option--selected {
+  color: #FBFCFF;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -4092,9 +4131,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #FBFCFF;
-    background: #212225;
+    background: #404044;
   }
 }
 "
@@ -4153,13 +4192,16 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #FBFCFF;
-  background: #212225;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #212225;
+}
+.option--highlighted {
+  background: #404044;
+}
+.option--highlighted, .option--selected {
+  color: #FBFCFF;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -4180,9 +4222,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #FBFCFF;
-    background: #212225;
+    background: #404044;
   }
 }
 "
@@ -4241,13 +4283,16 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -4268,9 +4313,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "
@@ -4329,13 +4374,16 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   height: 1px;
   text-indent: -999999px;
 }
-.option--highlighted, .option--selected {
-  color: #010205;
-  background: #EEEFF2;
-}
 .option--selected {
   cursor: default;
   pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
 }
 .option--disabled {
   cursor: not-allowed;
@@ -4356,9 +4404,9 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   padding-left: 24px;
 }
 @media(hover:hover) {
-  .option:not([aria-disabled]):not([role=status]):hover {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #EEEFF2;
+    background: #D8D8DB;
   }
 }
 "

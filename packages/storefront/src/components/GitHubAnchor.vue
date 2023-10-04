@@ -1,5 +1,6 @@
 <template>
   <p-link-pure
+    :theme="$store.getters.storefrontTheme"
     :icon-source="require('@/assets/github.svg')"
     href="https://github.com/porsche-design-system/porsche-design-system"
     target="_blank"

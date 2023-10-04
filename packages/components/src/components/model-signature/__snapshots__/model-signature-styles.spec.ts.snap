@@ -6,6 +6,7 @@ exports[`getComponentCss() should return correct css for size: inherit, color: i
   vertical-align: top;
   max-width: 100% !important;
   max-height: 100% !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -25,6 +26,7 @@ exports[`getComponentCss() should return correct css for size: inherit, color: i
   vertical-align: top;
   max-width: 100% !important;
   max-height: 100% !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -44,6 +46,7 @@ exports[`getComponentCss() should return correct css for size: inherit, color: p
   vertical-align: top;
   max-width: 100% !important;
   max-height: 100% !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -64,6 +67,7 @@ exports[`getComponentCss() should return correct css for size: inherit, color: p
   vertical-align: top;
   max-width: 100% !important;
   max-height: 100% !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -86,6 +90,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
   max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -107,6 +112,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
   max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -128,6 +134,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
   max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -149,6 +156,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
   max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -170,6 +178,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
   max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -191,6 +200,7 @@ exports[`getComponentCss() should return correct css for size: small, color: con
   max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -212,6 +222,7 @@ exports[`getComponentCss() should return correct css for size: small, color: inh
   max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -232,6 +243,7 @@ exports[`getComponentCss() should return correct css for size: small, color: inh
   max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -252,6 +264,7 @@ exports[`getComponentCss() should return correct css for size: small, color: pri
   max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -273,6 +286,7 @@ exports[`getComponentCss() should return correct css for size: small, color: pri
   max-height: 36px !important;
   width: inherit !important;
   height: inherit !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

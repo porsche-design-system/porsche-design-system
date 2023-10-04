@@ -9,15 +9,15 @@ Flyouts are flexible in the context and can include other components of the Pors
 It is a controlled component. This grants you flexible control over the flyout's behavior especially whether it should
 stay open after user interaction like submission of a form.
 
-<p-inline-notification heading="Important note" state="warning" dismiss-button="false">
+<Notification heading="Important note" state="warning">
   This component activates a focus trap to keep the focus within while being open.<br>
   This is achieved by detecting the first and last focusable child element after the flyout is opened.<br>
-  Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the flyout. 
-</p-inline-notification>
+  Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the flyout.
+</Notification>
 
-<p-inline-notification heading="Recommendation" state="success" dismiss-button="false">
-  You should only have a single instance of this component within your application. We recommend rendering it close to the body, e.g., in your App.tsx or app.component.ts. This way you reduce the chance of having issues with its z-index and fixed positioning. 
-</p-inline-notification>
+<Notification heading="Recommendation" state="success">
+  You should only have a single instance of this component within your application. We recommend rendering it close to the body, e.g., in your App.tsx or app.component.ts. This way you reduce the chance of having issues with its z-index and fixed positioning.
+</Notification>
 
 <TableOfContents></TableOfContents>
 
@@ -55,12 +55,36 @@ scrolling to the end of the flyout or when there is available space to accommoda
 
 Make sure to set the `aria` property with a descriptive `aria-label` value when using slotted heading.
 
-<Playground :frameworkMarkup="slottedSample" :markup="slottedSample['vanilla-js']" :config="config">
+<Playground :frameworkMarkup="codeExampleSlotted" :markup="slottedSample['vanilla-js']" :config="config">
   <div class="select-container">
     <SelectOptions v-model="scrollable" :values="scrollables" name="scrollable"></SelectOptions>
     <SelectOptions v-model="subFooter" :values="subFooters" name="sub-footer"></SelectOptions>
   </div>
 </Playground>
+
+## Flyout with slotted Grid
+
+The `p-flyout` component makes decent changes to the Porsche Design System grid to give support if used as slotted
+content. The following example shows the visualization of the grid if used inside the flyout component:
+
+<template>
+  <div class="playground">
+    <div class="demo">
+      <p-button class="flyout-grid-example" type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="this.$store.getters.storefrontTheme">Open Flyout</p-button>
+      <p-flyout id="flyout-grid" open="false" aria="{ 'aria-label': 'Sticky Heading' }">
+        <div slot="header">
+          <p-heading tag="h5" size="large">Sticky Heading</p-heading> 
+          <p-text size="small">Sticky header text</p-text>
+        </div>
+        <ExampleStylesGrid :visualizeGrid="false"/> 
+        <div slot="footer">
+          <p-button>Footer Button</p-button>
+        </div>
+        <div slot="sub-footer">Some Sub Footer Content</div>
+      </p-flyout>
+    </div>
+  </div>
+</template>
 
 ## Custom styling
 
@@ -78,9 +102,13 @@ p-flyout {
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
 import { getFlyoutCodeSamples } from "@porsche-design-system/shared";  
-import { convertMarkup } from '@porsche-design-system/storefront/src/utils/formatting.ts';
+import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
 
-@Component
+@Component({
+  components: {
+    ExampleStylesGrid
+  },
+})
 export default class Code extends Vue {
   config = { themeable: true, overflowX: 'visible' };
   flyouts = [];
@@ -116,7 +144,7 @@ export default class Code extends Vue {
       Object.entries(this.codeExample).forEach(([key, value]) => this.codeExample[key] = value.replace(/left|right/, this.position));
       return this.codeExample
     }
-
+    
     scrollable = 'true';
     scrollables = ['true', 'false'];
     subFooter = 'true';
@@ -130,7 +158,7 @@ export default class Code extends Vue {
                   .replace(/(\s*<div slot="sub-footer">Some Sub Footer Content<\/div>)?(\s*)(<\/p-flyout>|<\/PFlyout>)/, this.subFooter === 'true' ? `$2\t${content}$2$3` : '$2$3'));
       return this.codeExampleSlotted
     }
-
+    
   openFlyout(index: number): void {
     this.flyouts[index].open = true;
   }
@@ -149,8 +177,4 @@ export default class Code extends Vue {
     flex-wrap: wrap; 
     padding-bottom: 16px
   }
-
-  /*.example {*/
-  /*  overflow-x: unset;*/
-  /*}*/
 </style>

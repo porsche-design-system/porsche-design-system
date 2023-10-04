@@ -3,6 +3,7 @@ import type { TagName } from '@porsche-design-system/shared';
 export const WHITELISTED_TAG_NAMES = [
   'p-flex-item',
   'p-grid-item',
+  'p-multi-select-option',
   'p-stepper-horizontal-item',
   'p-tabs-item',
   'p-segmented-control-item',
@@ -83,7 +84,13 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-marque': `<p-marque></p-marque>`,
   'p-modal': `<p-modal heading="Some heading" open="true"></p-modal>`,
   'p-model-signature': `<p-model-signature></p-model-signature>`,
+  'p-multi-select': `<p-multi-select name="name">
+    <p-multi-select-option value="a">Option A</p-multi-select-option>
+    <p-multi-select-option value="b">Option B</p-multi-select-option>
+    <p-multi-select-option value="c">Option C</p-multi-select-option>
+  </p-multi-select>`,
   'p-pagination': `<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>`,
+  'p-pin-code': `<p-pin-code label="Some label"></p-pin-code>`,
   'p-popover': `<p-popover>Some Popover Content</p-popover>`,
   'p-radio-button-wrapper': `<p-radio-button-wrapper label="Some label">
   <input type="radio" />

@@ -152,7 +152,7 @@ export class TextareaWrapper {
           {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
         </label>
         {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} theme="light" host={this.host} />
+          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         )}
       </Host>
     );

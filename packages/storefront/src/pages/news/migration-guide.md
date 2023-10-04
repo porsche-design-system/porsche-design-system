@@ -12,11 +12,11 @@ Please follow the migration guide on this page. In addition, we offer a
 [components overview](https://designsystem.porsche.com/latest/component-meta) which shows all component information
 including deprecated components/props/values.
 
-<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
+<Notification heading="Deprecation hint" state="error">
   Porsche Design System <b>v2</b> support will end on <b>June 30th, 2023</b> (until EOL date only critical bug fixing takes place).<br>
   <br>
   <b>Please make sure that upgrading to Porsche Design System v3 is feasible before the EOL date</b>.
-</p-inline-notification>
+</Notification>
 
 ## Notable New Features
 

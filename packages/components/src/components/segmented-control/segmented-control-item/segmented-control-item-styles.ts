@@ -7,6 +7,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
   pxToRemWithUnit,
 } from '../../../styles';
 import {
@@ -55,7 +56,14 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const { focusColor } = getThemedColors(theme);
+  const { focusColor: focusColorDark } = getThemedColors('dark');
   const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, theme);
+  const {
+    buttonColor: buttonColorDark,
+    labelColor: labelColorDark,
+    borderColor: borderColorDark,
+    hoverBorderColor: hoverBorderColorDark,
+  } = getColors(isDisabled, isSelected, 'dark');
 
   return getCss({
     '@global': {
@@ -66,6 +74,7 @@ export const getComponentCss = (
       }),
       // All width relevant styling has to be kept in sync with the tempDiv of the p-segmented-control utils
       button: {
+        position: 'relative',
         display: 'block',
         height: '100%',
         width: '100%',
@@ -77,7 +86,10 @@ export const getComponentCss = (
         background: 'transparent',
         color: buttonColor,
         ...textSmallStyle,
-        position: 'relative',
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: borderColorDark,
+          color: buttonColorDark,
+        }),
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -87,6 +99,9 @@ export const getComponentCss = (
         },
         '&:focus::before': {
           borderColor: focusColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: focusColorDark,
+          }),
         },
         '&:focus:not(:focus-visible)::before': {
           borderColor: 'transparent',
@@ -102,6 +117,9 @@ export const getComponentCss = (
                   transition: getTransition('border-color'),
                   '&:hover': {
                     borderColor: hoverBorderColor,
+                    ...prefersColorSchemeDarkMediaQuery(theme, {
+                      borderColor: hoverBorderColorDark,
+                    }),
                   },
                 })),
             }),
@@ -112,6 +130,9 @@ export const getComponentCss = (
         ...textXSmallStyle,
         overflowWrap: 'normal',
         color: labelColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: labelColorDark,
+        }),
       },
     },
     ...(hasIcon && {

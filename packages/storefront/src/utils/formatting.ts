@@ -4,7 +4,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { convertToAngular } from './convertToAngular';
 import { convertToReact } from './convertToReact';
 import { convertToVue } from './convertToVue';
-import type { Framework, Theme } from '../models';
+import type { Framework, PlaygroundTheme } from '../models';
 
 export * from './convertToAngular';
 export * from './convertToReact';
@@ -16,7 +16,7 @@ export const cleanMarkup = (markup: string): string =>
     // remove multiple new lines
     .replace(/\n{3,}/g, '\n\n');
 
-export const patchThemeIntoMarkup = (markup: string, theme: Theme): string =>
+export const patchThemeIntoMarkup = (markup: string, theme: PlaygroundTheme): string =>
   theme === 'dark'
     ? markup
         // add dark theme attribute if component supports it

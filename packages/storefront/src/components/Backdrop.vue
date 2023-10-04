@@ -24,11 +24,11 @@
 
   div {
     @include pds-frosted-glass;
-    content: "";
+    content: '';
     position: fixed;
     inset: 0;
     z-index: 2;
-    background: $pds-theme-light-background-shading;
+    background: var(--theme-background-shading);
     -webkit-backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
     backdrop-filter: blur(8px); // TODO: remove, as soon as "pds-frosted-glass" mixin was adjusted to 8px blur
 
@@ -43,7 +43,9 @@
     }
 
     &.fade-out {
-      transition: opacity $transition-duration, transform 0s $transition-duration;
+      transition:
+        opacity $transition-duration,
+        transform 0s $transition-duration;
       opacity: 0;
       transform: translateX(-100%);
     }

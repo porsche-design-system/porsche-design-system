@@ -4,10 +4,10 @@ The Porsche Design System flex layout system is based on standard CSS Flexbox br
 the properties of the `p-flex` container and `p-flex-item`. It can be used to quickly layout standard content blocks or
 components.
 
-<p-inline-notification heading="Deprecation hint" state="error" dismiss-button="false">
-This component is deprecated and will be removed with the next major release. 
-In general, please use native <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more standardized layout technique.
-</p-inline-notification>
+<Notification heading="Deprecation hint" state="error">
+  This component is deprecated and will be removed with the next major release. 
+  In general, please use native <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more standardized layout technique.
+</Notification>
 
 <TableOfContents></TableOfContents>
 
@@ -366,7 +366,7 @@ export default class Code extends Vue {
   wrap(value: string) {
     const attr = value ? ` wrap="${value}"` : '';
     return `<p-flex${attr} class="example-flex">
-  ${Array.from(Array(9)).map((x, i) => `<p-flex-item>${i+1}</p-flex-item>`).join('\n  ')}
+  ${Array.from(Array(9), (_, i) => `<p-flex-item>${i+1}</p-flex-item>`).join('\n  ')}
 </p-flex>`;
   }
   
@@ -391,7 +391,7 @@ export default class Code extends Vue {
   alignContent(value: string) {
     const attr = value ? ` align-content="${value}"` : '';
     return `<p-flex wrap="wrap"${attr} class="example-flex">
-  ${Array.from(Array(9)).map((x, i) => `<p-flex-item>${i+1}</p-flex-item>`).join('\n  ')}
+  ${Array.from(Array(9), (_, i) => `<p-flex-item>${i+1}</p-flex-item>`).join('\n  ')}
 </p-flex>`;
   }
   

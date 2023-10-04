@@ -3,6 +3,7 @@
 exports[`getComponentCss() should return correct css for {"alignLabel":"left","hideLabel":true,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block !important;
   width: auto !important;
   vertical-align: top !important;
@@ -90,6 +91,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block !important;
   width: auto !important;
   vertical-align: top !important;
@@ -177,6 +179,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":true,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block !important;
   width: auto !important;
   vertical-align: top !important;
@@ -254,6 +257,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: block !important;
   width: 100% !important;
 }
@@ -340,6 +344,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":true,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: block !important;
   width: 100% !important;
 }
@@ -423,6 +428,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"theme":"dark"} 1`] = `
 ":host {
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: block !important;
   width: 100% !important;
 }
@@ -506,6 +512,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: block !important;
   width: 100% !important;
 }
@@ -589,6 +596,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":true,"checked":true,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: block !important;
   width: 100% !important;
 }
@@ -675,6 +683,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"left","xs":"right","s":"left","m":"right","l":"left","xl":"right"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"stretch":{"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true},"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;
+  color-scheme: light dark !important;
   display: inline-block !important;
   width: auto !important;
   vertical-align: top !important;

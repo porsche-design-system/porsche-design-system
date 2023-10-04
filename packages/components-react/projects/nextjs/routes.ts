@@ -120,13 +120,13 @@ const generatedRoutes = {
     "path": "/model-signature",
     "name": "ModelSignature"
   },
+  "multiSelect": {
+    "path": "/multi-select",
+    "name": "MultiSelect"
+  },
   "overview": {
     "path": "/overview",
     "name": "Overview"
-  },
-  "overviewFlaky": {
-    "path": "/overview-flaky",
-    "name": "OverviewFlaky"
   },
   "overviewNotifications": {
     "path": "/overview-notifications",
@@ -135,6 +135,10 @@ const generatedRoutes = {
   "pagination": {
     "path": "/pagination",
     "name": "Pagination"
+  },
+  "pinCode": {
+    "path": "/pin-code",
+    "name": "PinCode"
   },
   "popover": {
     "path": "/popover",
@@ -168,6 +172,10 @@ const generatedRoutes = {
     "path": "/switch",
     "name": "Switch"
   },
+  "table": {
+    "path": "/table",
+    "name": "Table"
+  },
   "tabs": {
     "path": "/tabs",
     "name": "Tabs"
@@ -200,9 +208,9 @@ const generatedRoutes = {
     "path": "/textarea-wrapper",
     "name": "TextareaWrapper"
   },
-  "toastBasic": {
-    "path": "/toast-basic",
-    "name": "ToastBasic"
+  "toast": {
+    "path": "/toast",
+    "name": "Toast"
   },
   "toastBasicDark": {
     "path": "/toast-basic-dark",
@@ -228,9 +236,9 @@ const generatedRoutes = {
     "path": "/typography-cyril",
     "name": "TypographyCyril"
   },
-  "typographyFallbackStrategy": {
-    "path": "/typography-fallback-strategy",
-    "name": "TypographyFallbackStrategy"
+  "typographyFallback": {
+    "path": "/typography-fallback",
+    "name": "TypographyFallback"
   },
   "typographyGreekAndCoptic": {
     "path": "/typography-greek-and-coptic",
@@ -249,7 +257,6 @@ const generatedRoutes = {
 
 export const sitemap = {
   home: { path: '/', name: 'Home' },
-  table: { path: '/table', name: 'Table' },
   ...generatedRoutes,
 };
 

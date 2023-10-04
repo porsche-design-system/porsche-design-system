@@ -70,6 +70,12 @@ export const App = (): JSX.Element => (
 
 Run `yarn start` or `npm start` and check if the components are displayed correctly.
 
+<Notification heading="Attention" state="warning">
+  Now, when you look at the result in your browser you should see an error message like 
+  <code>The Porsche Design System is used without using the getInitialStyles() partial.</code><br>
+  To fix this, you have to apply the <a href="partials/initial-styles">getInitialStyles() partial</a> which is mandatory since v3.7.0.
+</Notification>
+
 ## When are Porsche Design System components initialized?
 
 See [componentsReady()](developing/components-ready) for further information.
@@ -84,4 +90,4 @@ You can find the repository of the React example project here:
 
 - Clone the repository by executing  
   `git clone https://github.com/porsche-design-system/sample-integration-react.git`
-- Follow the installation guidelines in the README.md file
+- Follow the installation guidelines in the `README.md` file

@@ -2,7 +2,14 @@ import type { Styles } from 'jss';
 import type { BreakpointCustomizable } from '../../types';
 import type { TileAspectRatio } from '../../utils';
 import { buildResponsiveStyles } from '../../utils';
-import { addImportantToEachRule, getInsetJssStyle, getTransition, hostHiddenStyles, hoverMediaQuery } from '../';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getInsetJssStyle,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+} from '../';
 import { borderRadiusLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import { getThemedTypographyColor } from '../text-icon-styles';
 
@@ -22,7 +29,11 @@ export const getTileBaseStyles = (
     '@global': {
       ':host': {
         display: 'block',
-        ...addImportantToEachRule(hostHiddenStyles),
+        hyphens: 'auto',
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
       ...addImportantToEachRule({
         '::slotted': {

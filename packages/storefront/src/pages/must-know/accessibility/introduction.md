@@ -25,28 +25,37 @@ face and find **practical solutions** for.
 
 ## Why it matters
 
-As maintainers of the **Porsche Design System**, we always want the **best experience for all users**. You might argue
-that due to the fact that "blind people don't drive", we do not need to give support to visually impaired people. But
-this is a very short-sighted point of view. Just think about all the **services** Porsche offers around the car that has
-nothing to do with driving itself. Or think about people which have a "simple" red-green color blindness (about 10% of
-all humans). Or what about the average age of the target audience of Porsche customers? It's an average of 55 years! As
-you can see, **Web Accessibility is for all users**, not just blind people.
+As maintainers of the **Porsche Design System**, we always want the **best experience for all users** and provide best
+in class solutions for our customers. And this includes **accessibility**. There are several overall benefits to anyone
+who uses accessible products:
 
-And due to compliance, Porsche as a global company needs to **support Web Accessibility by law** in certain regions.  
-[Read more about this topic on our UX Platform compliance page.](https://ux.porsche.com/accessibility/legal-compliance)
+- **Better user experience** for everyone
+- **Better SEO** (Search Engine Optimization)
+- **Better performance** (e.g. faster loading times)
+- **Better maintainability** (e.g. less code)
+- **Better compatibility** (e.g. with assistive technologies)
+- **Better brand image** (e.g. more trust)
+- **Better business** (e.g. more customers)
+- **Better legal compliance** (e.g. avoiding lawsuits)
+  [Read more about this topic on our UX Platform compliance page.](https://ux.porsche.com/accessibility/legal-compliance)
 
-## How we can do better
+## How we reach and sustain accessibility compliance
 
 At Porsche, we are **driven by excellence**, and the **Porsche Design System** is committed to deliver highly **usable
 and accessible** components that are not limited to certain users or use cases. The **Design System Components** are
-tested automatically and manually against the most important official ruleset of
+tested automatically and manually against all official success criteria of
 [WCAG 2.1 (AA)](https://www.w3.org/TR/WCAG21/).
 
-You can find **accessibility specific documentation** on component level marked with <A11yIcon size="small"></A11yIcon>.
+If you find any accessibility issue, please feel free to [**report it**](help/bug-report).
+
+Further you can find **accessibility specific documentation** on component level marked with
+<A11yIcon size="small"></A11yIcon>.
 
 ## Further information
 
-To avoid possible [**violations against country-specific laws**](https://ux.porsche.com/accessibility/legal-compliance)
-we highly recommend following our guidelines to enhance accessibility in your products:
+For more information about the topic and insights how to reduce possible
+[**violations against country-specific laws**](https://ux.porsche.com/accessibility/legal-compliance), we highly
+recommend our guidelines to enhance accessibility in your products:
 
-<p-link href="https://ux.porsche.com/accessibility/">Accessibility of digital products at Porsche</p-link>
+<p-link :theme="this.$store.getters.storefrontTheme" href="https://ux.porsche.com/accessibility/">Accessibility of
+digital products at Porsche</p-link>

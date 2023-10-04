@@ -78,6 +78,7 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
 const themes: { [key in Theme]: ThemedColors } = {
   light: getStaticThemedColors('light'),
   dark: getStaticThemedColors('dark'),
+  auto: getStaticThemedColors('light'),
 };
 
 const objectToConst = (obj: object, constName: string): string =>
