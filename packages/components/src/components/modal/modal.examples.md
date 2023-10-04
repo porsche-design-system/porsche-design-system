@@ -40,7 +40,7 @@ key you need to register an event listener for the `dismiss` event which is emit
 
 The size of `p-modal` adjusts itself to the content with a predefined min/max width.
 
-<Playground :markup="widthMarkup">
+<Playground :markup="widthMarkup" :config="config">
   <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
 </Playground>
 
@@ -58,13 +58,13 @@ meaningful heading through **ARIA** with the `aria` property.
 
 ### Framework Implementations
 
-<Playground :frameworkMarkup="codeExampleAccessibility" :markup="widthMarkup"></Playground>
+<Playground :frameworkMarkup="codeExampleAccessibility" :markup="widthMarkup" :config="config"></Playground>
 
 ## Basic Scrollable
 
 If the modal's content does not fit into the current boundaries the content becomes scrollable.
 
-<Playground :markup="scrollable"></Playground>
+<Playground :markup="scrollable" :config="config"></Playground>
 
 ## Slotted heading
 
@@ -73,7 +73,7 @@ to define the corresponding property on the host element when a named slot is us
 preferred over a named slot).  
 Make sure to set the `aria` property with a descriptive `aria-label` value when using slotted heading.
 
-<Playground :markup="slottedHeading"></Playground>
+<Playground :markup="slottedHeading" :config="config"></Playground>
 
 ## Without Heading
 
@@ -81,7 +81,7 @@ Passing a `heading` to the modal is optional. Make sure to set the `aria` proper
 when omitting the heading. Make sure to add proper margin or padding to your content, so that the close button does not
 cover up your content.
 
-<Playground :markup="withoutHeading"></Playground>
+<Playground :markup="withoutHeading" :config="config"></Playground>
 
 ## Without Close/Dismiss Button
 
@@ -95,14 +95,14 @@ attribute.
   Please use the <code>dismissButton</code> property instead.
 </Notification>
 
-<Playground :markup="withoutDismissButton"></Playground>
+<Playground :markup="withoutDismissButton" :config="config"></Playground>
 
 ## Sticky Footer
 
 If you need a footer that is always visible, for example with a call-to-action button, you can use a named
 `slot="footer"`.
 
-<Playground :markup="stickyFooter"></Playground>
+<Playground :markup="stickyFooter" :config="config"></Playground>
 
 ## Full Width Content
 
@@ -110,7 +110,7 @@ It is possible to make containers or elements (e.g. `div`, `img` etc.) stretch i
 <code v-text="stretchClassName"></code> class. Make sure to set the `aria` property with a descriptive `aria-label`
 value when omitting the heading.
 
-<Playground :markup="fullWidthContent"></Playground>
+<Playground :markup="fullWidthContent" :config="config"></Playground>
 
 ## Fullscreen
 
@@ -118,7 +118,7 @@ The Modal supports a `fullscreen` property. Due to the size of fullscreen on des
 consumer. Furthermore, you lose helpful functionality like backdrop click. This is why fullscreen modals are recommended
 for mobile devices only.
 
-<Playground :markup="fullscreen"></Playground>
+<Playground :markup="fullscreen" :config="config"></Playground>
 
 Of course, any combination of the available options is possible.
 
@@ -130,6 +130,7 @@ import { getModalCodeSamples } from '@porsche-design-system/shared';
 
 @Component
 export default class Code extends Vue {
+  config = { themeable: true };
   modals = [];
   codeExampleAccessibility = getModalCodeSamples();
 
