@@ -21,7 +21,7 @@ import {
 } from '../../utils';
 import type { IconName, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { getComponentCss } from './icon-styles';
-import { ICONS_MANIFEST } from '@porsche-design-system/icons';
+import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 
 const propTypes: PropTypes<typeof Icon> = {
   name: AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]),

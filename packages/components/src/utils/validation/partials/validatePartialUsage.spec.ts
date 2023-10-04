@@ -16,7 +16,7 @@ import * as loggerUtils from '../../log/logger';
 import * as validatePartialUsageUtils from './validatePartialUsage';
 import * as helperUtils from './helper';
 import * as getCDNBaseURLUtils from '../../getCDNBaseURL';
-import { FONT_FACE_CDN_FILE_CN, FONT_FACE_CDN_FILE_COM } from '@porsche-design-system/styles';
+import { FONT_FACE_CDN_FILE_CN, FONT_FACE_CDN_FILE_COM } from '@porsche-design-system/assets';
 
 beforeAll(() => {
   const sharedProps = {
