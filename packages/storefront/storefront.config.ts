@@ -33,6 +33,8 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       'Getting Started': [() => import('@/pages/developing/angular/getting-started.md')],
       // @ts-ignore
+      Testing: [() => import('@/pages/developing/angular/testing.md')],
+      // @ts-ignore
       Advanced: [() => import('@/pages/developing/angular/advanced.md')],
     },
     React: {

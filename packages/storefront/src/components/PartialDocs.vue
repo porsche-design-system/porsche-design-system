@@ -68,6 +68,11 @@ yarn add --dev @angular-builders/custom-webpack
     "options": {
       "outputPath": "dist/components-angular",
 +     "indexTransform": "./scripts/transformIndexHtml.ts",
+    }
+  }
+  "serve": {
+-   "builder": "@angular-devkit/build-angular:dev-server",
++   "builder": "@angular-builders/custom-webpack:dev-server",
 
 <!-- ./scripts/transformIndexHtml.ts -->
 import type { TargetOptions } from '@angular-builders/custom-webpack';
