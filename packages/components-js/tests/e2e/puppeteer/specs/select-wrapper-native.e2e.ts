@@ -145,7 +145,8 @@ describe('focus state', () => {
   });
 });
 
-describe('hover state', () => {
+// puppeteer ignores @media(hover: hover) styles, but playwright can handle it
+xdescribe('hover state', () => {
   it('should change border-color of select when label text is hovered', async () => {
     await initSelect();
     await page.mouse.move(0, 300); // avoid potential hover initially
