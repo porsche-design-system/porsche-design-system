@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should have no regression for dependency tree 1`] = `
+exports[`should have no regression for cjs dependency tree 1`] = `
 {
   "../../crest/dist/esm/index.cjs": [],
   "../../fallbacks/dist/esm/index.cjs": [],
@@ -23,7 +23,7 @@ exports[`should have no regression for dependency tree 1`] = `
 }
 `;
 
-exports[`should have no regression for dependency tree 2`] = `
+exports[`should have no regression for esm dependency tree 1`] = `
 {
   "../../crest/dist/esm/index.mjs": [],
   "../../fallbacks/dist/esm/index.mjs": [],

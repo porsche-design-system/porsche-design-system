@@ -3,14 +3,22 @@ import madge from 'madge';
 import * as path from 'path';
 import { main, module } from '../../../dist/package.json';
 
-it('should have no regression for dependency tree', async () => {
-  const packageDir = path.resolve(__dirname, '../../../dist');
-  const treeCjs = await madge(`${packageDir}/${main}`);
-  const treeEsm = await madge(`${packageDir}/${module}`);
+const packageDir = path.resolve(__dirname, '../../../dist');
+
+it('should have no regression for esm dependency tree', async () => {
+  const tree = await madge(`${packageDir}/${module}`);
+
+  // visualize result
+  // await tree.image('result.svg');
+
+  expect(tree.obj()).toMatchSnapshot();
+}, 30000);
+
+it('should have no regression for cjs dependency tree', async () => {
+  const tree = await madge(`${packageDir}/${main}`);
 
   // visualize result
   // await tree.image('result.svg')
 
-  expect(treeCjs.obj()).toMatchSnapshot();
-  expect(treeEsm.obj()).toMatchSnapshot();
+  expect(tree.obj()).toMatchSnapshot();
 });
