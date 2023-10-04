@@ -1,10 +1,10 @@
 <template>
   <p-content-wrapper>
-    <p-heading size="xx-large">Various patterns and examples</p-heading>
+    <p-heading :theme="storefrontTheme" size="xx-large">Various patterns and examples</p-heading>
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
-        <p-heading size="x-large" tag="h1">Validation of grouped form elements</p-heading>
-        <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8"
+        <p-heading :theme="storefrontTheme" size="x-large" tag="h1">Validation of grouped form elements</p-heading>
+        <p-text :theme="storefrontTheme" size="{ base: 'small', l: 'medium' }" class="spacing-mt-8"
           >How to implement validation messages to grouped form elements like checkbox- and radio groups.</p-text
         >
       </p-grid-item>
@@ -13,13 +13,14 @@
       <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
         <form novalidate class="form-bottom-spacing" @submit.prevent="onSubmit">
           <p-fieldset
+            :theme="storefrontTheme"
             label="Grouped list of checkboxes"
             required="true"
             v-bind:state="getState('check')"
             v-bind:message="bag.errors.check"
             class="form-section-spacing"
           >
-            <p-checkbox-wrapper label="Some checkbox label 1" v-bind:state="getState('check')">
+            <p-checkbox-wrapper :theme="storefrontTheme" label="Some checkbox label 1" v-bind:state="getState('check')">
               <input
                 type="checkbox"
                 v-bind:name="validateFieldName('check')"
@@ -27,7 +28,12 @@
                 v-on:change="onFieldBlur"
               />
             </p-checkbox-wrapper>
-            <p-checkbox-wrapper label="Some checkbox label 2" v-bind:state="getState('check')" class="form-row-spacing">
+            <p-checkbox-wrapper
+              :theme="storefrontTheme"
+              label="Some checkbox label 2"
+              v-bind:state="getState('check')"
+              class="form-row-spacing"
+            >
               <input
                 type="checkbox"
                 v-bind:name="validateFieldName('check')"
@@ -35,7 +41,12 @@
                 v-on:change="onFieldBlur"
               />
             </p-checkbox-wrapper>
-            <p-checkbox-wrapper label="Some checkbox label 3" v-bind:state="getState('check')" class="form-row-spacing">
+            <p-checkbox-wrapper
+              :theme="storefrontTheme"
+              label="Some checkbox label 3"
+              v-bind:state="getState('check')"
+              class="form-row-spacing"
+            >
               <input
                 type="checkbox"
                 v-bind:name="validateFieldName('check')"
@@ -46,13 +57,18 @@
           </p-fieldset>
 
           <p-fieldset
+            :theme="storefrontTheme"
             label="Grouped list of radio buttons"
             required="true"
             v-bind:state="getState('radio')"
             v-bind:message="bag.errors.radio"
             class="form-section-spacing"
           >
-            <p-radio-button-wrapper label="Some radio label 1" v-bind:state="getState('radio')">
+            <p-radio-button-wrapper
+              :theme="storefrontTheme"
+              label="Some radio label 1"
+              v-bind:state="getState('radio')"
+            >
               <input
                 type="radio"
                 value="radio1"
@@ -62,6 +78,7 @@
               />
             </p-radio-button-wrapper>
             <p-radio-button-wrapper
+              :theme="storefrontTheme"
               label="Some radio label 2"
               v-bind:state="getState('radio')"
               class="form-row-spacing"
@@ -75,6 +92,7 @@
               />
             </p-radio-button-wrapper>
             <p-radio-button-wrapper
+              :theme="storefrontTheme"
               label="Some radio label 3"
               v-bind:state="getState('radio')"
               class="form-row-spacing"
@@ -90,6 +108,7 @@
           </p-fieldset>
 
           <p-fieldset
+            :theme="storefrontTheme"
             label="Grouped short input"
             v-bind:state="[getState('day'), getState('month'), getState('year')].includes('error') ? 'error' : 'none'"
             class="form-section-spacing"
@@ -98,7 +117,7 @@
               <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
                 <p-flex class="form-grid-item-container">
                   <p-flex-item width="one-quarter" class="form-grid-item">
-                    <p-text-field-wrapper v-bind:state="getState('day')" label="Day">
+                    <p-text-field-wrapper :theme="storefrontTheme" v-bind:state="getState('day')" label="Day">
                       <input
                         type="number"
                         placeholder="DD"
@@ -111,7 +130,7 @@
                     </p-text-field-wrapper>
                   </p-flex-item>
                   <p-flex-item width="one-quarter" class="form-grid-item">
-                    <p-text-field-wrapper v-bind:state="getState('month')" label="Month">
+                    <p-text-field-wrapper :theme="storefrontTheme" v-bind:state="getState('month')" label="Month">
                       <input
                         type="number"
                         placeholder="MM"
@@ -124,7 +143,7 @@
                     </p-text-field-wrapper>
                   </p-flex-item>
                   <p-flex-item width="one-third" class="form-grid-item">
-                    <p-text-field-wrapper label="Year">
+                    <p-text-field-wrapper :theme="storefrontTheme" label="Year">
                       <input
                         type="number"
                         placeholder="YYYY"
@@ -155,6 +174,7 @@
   import Component from 'vue-class-component';
   import { boolean, number, object, string } from 'yup';
   import { validateName, getState, validateField, validateForm, getInitialErrors } from '../../../utils';
+  import { StorefrontTheme } from '@/models';
 
   const initialData = {
     check: {
@@ -172,6 +192,10 @@
 
   @Component
   export default class VariousForm extends Vue {
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
+    }
+
     private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
     private getState = (field: keyof FormModel) => getState(field, this.bag);
 

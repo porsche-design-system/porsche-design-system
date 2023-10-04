@@ -2,8 +2,8 @@
   <p-content-wrapper>
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
-        <p-heading size="x-large" tag="h1">Get in touch with Porsche</p-heading>
-        <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">
+        <p-heading :theme="storefrontTheme" size="x-large" tag="h1">Get in touch with Porsche</p-heading>
+        <p-text :theme="storefrontTheme" size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">
           Do you have any specific questions about your Porsche vehicle? Please use the form below so that we can
           process your inquiry as quickly as possible.
         </p-text>
@@ -12,10 +12,11 @@
     <p-grid class="form-section-spacing">
       <p-grid-item size="{ base: 12, s: 10, m: 8, l: 6 }">
         <form novalidate @submit.prevent="onSubmit">
-          <p-fieldset label="Your message">
+          <p-fieldset :theme="storefrontTheme" label="Your message">
             <p-flex class="form-grid-item-container">
               <p-flex-item width="{base: 'full', m: 'half'}" class="form-grid-item">
                 <p-select-wrapper
+                  :theme="storefrontTheme"
                   label="Category"
                   v-bind:message="bag.errors.category"
                   v-bind:state="getState('category')"
@@ -36,6 +37,7 @@
               </p-flex-item>
             </p-flex>
             <p-text-field-wrapper
+              :theme="storefrontTheme"
               label="Subject"
               class="form-row-spacing"
               v-bind:message="bag.errors.subject"
@@ -51,6 +53,7 @@
               />
             </p-text-field-wrapper>
             <p-textarea-wrapper
+              :theme="storefrontTheme"
               label="Your message"
               class="form-row-spacing"
               v-bind:message="bag.errors.message"
@@ -65,10 +68,11 @@
               ></textarea>
             </p-textarea-wrapper>
           </p-fieldset>
-          <p-fieldset label="Personal data" class="form-section-spacing">
+          <p-fieldset :theme="storefrontTheme" label="Personal data" class="form-section-spacing">
             <p-flex direction="{ base: 'column', m: 'row' }" class="form-grid-item-container">
               <p-flex-item width="{base: 'full', m: 'one-third'}" class="form-grid-item">
                 <p-select-wrapper
+                  :theme="storefrontTheme"
                   label="Salutation"
                   v-bind:message="bag.errors.salutation"
                   v-bind:state="getState('salutation')"
@@ -90,7 +94,7 @@
                 width="{base: 'full', m: 'one-third'}"
                 class="form-row-spacing form-row-spacing--zero-m form-grid-item"
               >
-                <p-select-wrapper label="Title">
+                <p-select-wrapper :theme="storefrontTheme" label="Title">
                   <select v-bind:name="validateFieldName('title')" v-model="bag.data.title">
                     <option value></option>
                     <option value="option 1">Dr.</option>
@@ -103,6 +107,7 @@
             <p-flex direction="{ base: 'column', m: 'row' }" class="form-row-spacing form-grid-item-container">
               <p-flex-item width="{base: 'full', m: 'half'}" class="form-grid-item">
                 <p-text-field-wrapper
+                  :theme="storefrontTheme"
                   label="First name"
                   v-bind:message="bag.errors.firstName"
                   v-bind:state="getState('firstName')"
@@ -122,6 +127,7 @@
                 class="form-row-spacing form-row-spacing--zero-m form-grid-item"
               >
                 <p-text-field-wrapper
+                  :theme="storefrontTheme"
                   label="Last name"
                   v-bind:message="bag.errors.lastName"
                   v-bind:state="getState('lastName')"
@@ -138,6 +144,7 @@
               </p-flex-item>
             </p-flex>
             <p-text-field-wrapper
+              :theme="storefrontTheme"
               label="Email address"
               class="form-row-spacing"
               v-bind:message="bag.errors.email"
@@ -153,6 +160,7 @@
               />
             </p-text-field-wrapper>
             <p-text-field-wrapper
+              :theme="storefrontTheme"
               label="Phone number"
               class="form-row-spacing"
               v-bind:message="bag.errors.phone"
@@ -166,8 +174,9 @@
               />
             </p-text-field-wrapper>
           </p-fieldset>
-          <p-fieldset label="Your Porsche" class="form-section-spacing">
+          <p-fieldset :theme="storefrontTheme" label="Your Porsche" class="form-section-spacing">
             <p-text-field-wrapper
+              :theme="storefrontTheme"
               label="VIN (Vehicle Identification Number)"
               v-bind:message="bag.errors.vin"
               v-bind:state="getState('vin')"
@@ -182,6 +191,7 @@
               />
             </p-text-field-wrapper>
             <p-select-wrapper
+              :theme="storefrontTheme"
               label="Transmission"
               class="form-row-spacing"
               v-bind:message="bag.errors.gear"
@@ -199,8 +209,11 @@
                 <option value="3">Option 3</option>
               </select>
             </p-select-wrapper>
-            <p-heading size="small" tag="h3" class="spacing-mt-24">Date of first registration</p-heading>
+            <p-heading :theme="storefrontTheme" size="small" tag="h3" class="spacing-mt-24"
+              >Date of first registration</p-heading
+            >
             <p-text-field-wrapper
+              :theme="storefrontTheme"
               label="Date"
               class="form-row-spacing"
               v-bind:message="bag.errors.date"
@@ -216,6 +229,7 @@
               />
             </p-text-field-wrapper>
             <p-text-field-wrapper
+              :theme="storefrontTheme"
               label="Mileage"
               class="form-row-spacing"
               v-bind:message="bag.errors.mileage"
@@ -231,8 +245,9 @@
               />
             </p-text-field-wrapper>
           </p-fieldset>
-          <p-fieldset label="Your Porsche dealer" class="form-section-spacing">
+          <p-fieldset :theme="storefrontTheme" label="Your Porsche dealer" class="form-section-spacing">
             <p-select-wrapper
+              :theme="storefrontTheme"
               label="Porsche dealer"
               v-bind:message="bag.errors.dealer"
               v-bind:state="getState('dealer')"
@@ -253,7 +268,11 @@
           </p-fieldset>
           <p-flex class="form-section-spacing form-grid-item-container">
             <p-flex-item class="form-grid-item">
-              <p-checkbox-wrapper v-bind:message="bag.errors.privacy" v-bind:state="getState('privacy')">
+              <p-checkbox-wrapper
+                :theme="storefrontTheme"
+                v-bind:message="bag.errors.privacy"
+                v-bind:state="getState('privacy')"
+              >
                 <span slot="label">
                   I have read and understood the
                   <a target="_blank">Privacy Policy</a>
@@ -270,8 +289,8 @@
             </p-flex-item>
           </p-flex>
           <p-button-group class="form-section-spacing form-bottom-spacing">
-            <p-button type="submit">Send</p-button>
-            <p-button variant="tertiary" icon="close" @click="onReset">Cancel</p-button>
+            <p-button :theme="storefrontTheme" type="submit">Send</p-button>
+            <p-button :theme="storefrontTheme" variant="tertiary" icon="close" @click="onReset">Cancel</p-button>
           </p-button-group>
         </form>
       </p-grid-item>
@@ -292,6 +311,7 @@
     getInitialErrors,
     getFirstErrorKey,
   } from '../../../utils';
+  import { StorefrontTheme } from '@/models';
 
   const initialData = {
     category: '',
@@ -315,6 +335,10 @@
 
   @Component
   export default class ExampleContactForm extends Vue {
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
+    }
+
     private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
     private getState = (field: keyof FormModel) => getState(field, this.bag);
 
