@@ -15,9 +15,6 @@ As a workaround we provide a polyfill as part of the `@porsche-design-system/com
 
 To apply the polyfill, simply import it in your **setupTest.{js|ts}** file.
 
-**Note:** If your test includes Porsche Design System components, make sure that you import the
-PorscheDesignSystemModule into each module in which you want to use the components.
-
 ### Setup file
 
 ```tsx
@@ -38,9 +35,9 @@ import type { TabsBarUpdateEvent } from '@porsche-design-system/components-angul
   selector: 'single-component',
   template: `
     <p-tabs-bar [activeTabIndex]="tabIndex" (update)="onUpdate($event)">
-      <button type="button">Tab One</button>
-      <button type="button">Tab Two</button>
-      <button type="button">Tab Three</button>
+      <button data-testid="button1" type="button">Tab One</button>
+      <button data-testid="button2" type="button">Tab Two</button>
+      <button data-testid="button3" type="button">Tab Three</button>
     </p-tabs-bar>
     <div data-testid="debug">Active Tab: { tabIndex + 1 }</div>
   `,
@@ -62,6 +59,7 @@ export class SingleComponent {
 
 import { componentsReady } from '@porsche-design-system/components-angular';
 import { render } from '@testing-library/angular';
+import userEvent from '@testing-library/user-event';
 import '@porsche-design-system/components-angular/jsdom-polyfill';
 
 it('should render Tabs Bar from Porsche Design System and use its events', async () => {
