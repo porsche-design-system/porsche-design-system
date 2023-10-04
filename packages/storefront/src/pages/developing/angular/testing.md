@@ -4,6 +4,8 @@
 
 # Test the application
 
+## Testing with Jest
+
 **Jest** uses **jsdom** and supports ShadowDOM since Version 12.2.0.  
 However, it doesn't support JavaScript modules as described in this
 [issue](https://github.com/jsdom/jsdom/issues/2475).  
@@ -12,9 +14,6 @@ Also, it doesn't support `CSSStyleSheet.replace()`, `Intersection Observer`, `El
 As a workaround we provide a polyfill as part of the `@porsche-design-system/components-angular` package.
 
 To apply the polyfill, simply import it in your **setupTest.{js|ts}** file.
-
-**Note:** If your test includes Porsche Design System components, make sure that you import the
-PorscheDesignSystemModule into each module in which you want to use the components.
 
 ### Setup file
 
@@ -36,9 +35,9 @@ import type { TabsBarUpdateEvent } from '@porsche-design-system/components-angul
   selector: 'single-component',
   template: `
     <p-tabs-bar [activeTabIndex]="tabIndex" (update)="onUpdate($event)">
-      <button type="button">Tab One</button>
-      <button type="button">Tab Two</button>
-      <button type="button">Tab Three</button>
+      <button data-testid="button1" type="button">Tab One</button>
+      <button data-testid="button2" type="button">Tab Two</button>
+      <button data-testid="button3" type="button">Tab Three</button>
     </p-tabs-bar>
     <div data-testid="debug">Active Tab: { tabIndex + 1 }</div>
   `,
@@ -60,6 +59,7 @@ export class SingleComponent {
 
 import { componentsReady } from '@porsche-design-system/components-angular';
 import { render } from '@testing-library/angular';
+import userEvent from '@testing-library/user-event';
 import '@porsche-design-system/components-angular/jsdom-polyfill';
 
 it('should render Tabs Bar from Porsche Design System and use its events', async () => {
@@ -86,18 +86,22 @@ it('should render Tabs Bar from Porsche Design System and use its events', async
 
 ## Testing with Karma
 
-Since the [`getInitialStyles()`](partials/initial-styles) partial is mandatory for using Porsche Design System, the
-partial also needs to be included within test environments. With help of `@angular-builders/custom-webpack` and
-`indexTransform` the partial can be injected into `index.html`. See [`getInitialStyles()`](partials/initial-styles) for
-a manual how to integrate the partial within `build` and `serve` environment. Since Karma does not render the
-`index.html`, but instead renders `karma-context.html` the transformation of `index.html` is not applicable for testing
-with `Karma`. There are different approaches to inject the partial into `karma-context.html`:
+### Config
 
-- transformation with `post-install`,
-- `karma.conf.js` property
-  [customContextFile](http://karma-runner.github.io/6.4/config/configuration-file.html#customcontextfile) (In our case
-  the property had no effect, so it might be deprecated),
-- Transform within `karma.conf.js`:
+Since the [getInitialStyles()](partials/initial-styles) partial is mandatory for using Porsche Design System, the
+partial needs to be included within test environments. With help of `@angular-builders/custom-webpack` and its
+`indexTransform` option, the partial can be injected into the `index.html`. See
+[getInitialStyles()](partials/initial-styles) for a manual how to integrate the partial within `build` and `serve`
+environment.  
+Since Karma does not use the `index.html`, but instead relies on `karma-context.html` the transformation of `index.html`
+is not applicable for testing with `Karma`.  
+There are different approaches to inject the partial into `karma-context.html`:
+
+- `karma.conf.js` option
+  [customContextFile](http://karma-runner.github.io/6.4/config/configuration-file.html#customcontextfile) would be
+  easiest, but this is overridden by `@angular-devkit/build-angular/plugins/karma`
+- `karma.conf.js` custom middleware which injects the `getInitialStyles()` partial on the fly
+- manipulation of `karma-context.html` via `post-install` or within `karma.conf.js`
 
 ```tsx
 // yarn add --dev glob
@@ -106,11 +110,11 @@ with `Karma`. There are different approaches to inject the partial into `karma-c
 const path = require('path');
 const fs = require('fs');
 const { globSync } = require('glob');
-const transformIndexHtml = require('./scripts/transformIndexHtml');
+const transformIndexHtml = require('./scripts/transformIndexHtml'); // script referenced by indexTransform for `build` and `serve`
 
 const injectPartialsIntoKarmaContextHtml = () => {
   const packagePath = path.resolve(require.resolve('@angular-devkit/build-angular'), '..');
-  const [filePath] = globby.sync(packagePath + '/**/karma-context.html');
+  const [filePath] = globSync(packagePath + '/**/karma-context.html');
   const backupFilePath = filePath.replace(/\.html$/, '-original$&');
 
   // restore backup
@@ -127,7 +131,7 @@ const injectPartialsIntoKarmaContextHtml = () => {
 
 injectPartialsIntoKarmaContextHtml();
 
-...
+// rest of config...
 ```
 
 We also provide test examples in our
