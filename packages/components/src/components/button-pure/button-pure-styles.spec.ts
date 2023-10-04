@@ -22,7 +22,7 @@ describe('getComponentCss()', () => {
 
   it.each<{
     icon: LinkButtonIconName;
-    iconSource: string,
+    iconSource: string;
     active: boolean;
     isLoading: boolean;
     isDisabledOrLoading: boolean;
