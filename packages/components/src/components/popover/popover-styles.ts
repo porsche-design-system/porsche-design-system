@@ -54,8 +54,8 @@ const transparentColor = 'transparent';
 const join = (...arr: (string | number)[]): string => arr.join(' ');
 
 const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> => {
-  const { backgroundColor } = getThemedColors(theme);
-  const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
+  const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const isDark = isThemeDark(theme);
   return {
     top: {
       top: 0,
@@ -67,9 +67,9 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
             borderColor: join(canvasTextColor, canvasColor, canvasColor),
           }
         : {
-            borderColor: join(backgroundColor, transparentColor, transparentColor),
+            borderColor: join(isDark ? backgroundSurfaceColor : backgroundColor, transparentColor, transparentColor),
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: join(backgroundColorDark, transparentColor, transparentColor),
+              borderColor: join(backgroundSurfaceColor, transparentColor, transparentColor),
             }),
           }),
     },
@@ -83,9 +83,14 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
             borderColor: join(canvasColor, canvasTextColor, canvasColor, canvasColor),
           }
         : {
-            borderColor: join(transparentColor, backgroundColor, transparentColor, transparentColor),
+            borderColor: join(
+              transparentColor,
+              isDark ? backgroundSurfaceColor : backgroundColor,
+              transparentColor,
+              transparentColor
+            ),
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: join(transparentColor, backgroundColorDark, transparentColor, transparentColor),
+              borderColor: join(transparentColor, backgroundSurfaceColor, transparentColor, transparentColor),
             }),
           }),
     },
@@ -99,9 +104,9 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
             borderColor: join(canvasColor, canvasColor, canvasTextColor),
           }
         : {
-            borderColor: join(transparentColor, transparentColor, backgroundColor),
+            borderColor: join(transparentColor, transparentColor, isDark ? backgroundSurfaceColor : backgroundColor),
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: join(transparentColor, transparentColor, backgroundColorDark),
+              borderColor: join(transparentColor, transparentColor, backgroundSurfaceColor),
             }),
           }),
     },
@@ -115,9 +120,14 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
             borderColor: join(canvasColor, canvasColor, canvasColor, canvasTextColor),
           }
         : {
-            borderColor: join(transparentColor, transparentColor, transparentColor, backgroundColor),
+            borderColor: join(
+              transparentColor,
+              transparentColor,
+              transparentColor,
+              isDark ? backgroundSurfaceColor : backgroundColor
+            ),
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: join(transparentColor, transparentColor, transparentColor, backgroundColorDark),
+              borderColor: join(transparentColor, transparentColor, transparentColor, backgroundSurfaceColor),
             }),
           }),
     },
@@ -126,16 +136,14 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
 
 export const getComponentCss = (direction: PopoverDirection, theme: Theme): string => {
   const spacerBox = '-16px';
-  const { hoverColor, focusColor, backgroundColor, primaryColor } = getThemedColors(theme);
+  const { hoverColor, focusColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
     hoverColor: hoverColorDark,
     focusColor: focusColorDark,
-    backgroundColor: backgroundColorDark,
     primaryColor: primaryColorDark,
   } = getThemedColors('dark');
 
   const shadowColor = 'rgba(0,0,0,0.3)';
-  const shadowColorDark = 'rgba(0,0,0,0.6)';
 
   return getCss({
     '@global': {
@@ -205,7 +213,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       left: spacerBox,
       right: spacerBox,
       bottom: spacerBox,
-      filter: `drop-shadow(0 0 16px ${isThemeDark(theme) ? shadowColorDark : shadowColor})`,
+      filter: `drop-shadow(0 0 16px ${shadowColor})`,
       backdropFilter: 'drop-shadow(0px 0px 0px transparent)', // fixes issues with Chrome >= 105 where filter: drop-shadow is not applied correctly after animation ends
       pointerEvents: 'none',
       animation:
@@ -219,7 +227,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         ...getDirectionArrowMap(theme)[direction],
       },
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        filter: `drop-shadow(0 0 16px ${shadowColorDark})`,
+        filter: `drop-shadow(0 0 16px ${shadowColor})`,
       }),
     },
     popover: {
@@ -227,7 +235,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       maxWidth: 'min(90vw, 27rem)',
       width: 'max-content',
       boxSizing: 'border-box',
-      background: backgroundColor,
+      background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
       padding: '8px 16px',
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
@@ -240,7 +248,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         outline: `1px solid ${canvasTextColor}`,
       }),
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: backgroundColorDark,
+        background: backgroundSurfaceColor,
         color: primaryColorDark,
       }),
     },
