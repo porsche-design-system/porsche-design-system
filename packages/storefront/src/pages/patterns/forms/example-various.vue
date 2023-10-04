@@ -170,11 +170,11 @@
 
 <script lang="ts">
   import type { ValidationBag } from '@/utils';
+  import type { StorefrontTheme } from '@/models';
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { boolean, number, object, string } from 'yup';
-  import { validateName, getState, validateField, validateForm, getInitialErrors } from '../../../utils';
-  import { StorefrontTheme } from '@/models';
+  import { validateName, getState, validateField, validateForm, getInitialErrors } from '@/utils';
 
   const initialData = {
     check: {
