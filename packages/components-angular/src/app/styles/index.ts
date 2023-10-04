@@ -7,7 +7,7 @@ import { StylesGradientExampleComponent } from './styles-gradient-example.compon
 import { StylesGridExampleComponent } from './styles-grid-example.component';
 import { StylesHoverExampleComponent } from './styles-hover-example.component';
 import { StylesMediaQueryExampleComponent } from './styles-media-query-example.component';
-import { StylesMotionCurvesExampleComponent } from './styles-motion-example.component';
+import { StylesMotionCurvesExampleComponent } from './styles-motion-curves-example.component';
 import { StylesSpacingExampleComponent } from './styles-spacing-example.component';
 import { StylesThemeExampleComponent } from './styles-theme-example.component';
 import { StylesTypographyExampleComponent } from './styles-typography-example.component';
