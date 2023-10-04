@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - Remove `EMAIL_CDN_BASE_URL` and `EMAIL_MANIFEST`
+- Consistent `package.json` ECMAScript module exports with `.mjs` and `.cjs` file extensions and support for
+  tree-shaking ([#2794](https://github.com/porsche-design-system/porsche-design-system/pull/2794))
 
 #### Added
 

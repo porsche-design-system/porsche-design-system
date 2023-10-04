@@ -87,6 +87,7 @@
     "lint:components": "yarn --cwd ./packages/components lint",
     "lint:components-vue": "yarn --cwd ./packages/components-vue lint",
     "lint:storefront": "yarn --cwd ./packages/storefront lint",
+    "test:unit:assets": "yarn --cwd ./packages/assets test:unit",
     "test:unit:component-meta": "yarn --cwd ./packages/component-meta test:unit",
     "test:unit:components": "yarn --cwd ./packages/components test:unit",
     "test:unit:components-js": "yarn --cwd ./packages/components-js test:unit",

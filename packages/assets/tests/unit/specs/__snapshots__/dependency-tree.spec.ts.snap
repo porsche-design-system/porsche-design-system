@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should have no regression for cjs dependency tree 1`] = `
+{
+  "../../crest/dist/esm/index.cjs": [],
+  "../../fallbacks/dist/esm/index.cjs": [],
+  "../../fonts/dist/esm/index.cjs": [],
+  "../../icons/dist/esm/index.cjs": [],
+  "../../marque/dist/esm/index.cjs": [],
+  "../../meta-icons/dist/esm/index.cjs": [],
+  "../../model-signatures/dist/esm/index.cjs": [],
+  "../../utilities/projects/styles/dist/esm/index.cjs": [],
+  "index.cjs": [
+    "../../crest/dist/esm/index.cjs",
+    "../../fallbacks/dist/esm/index.cjs",
+    "../../fonts/dist/esm/index.cjs",
+    "../../icons/dist/esm/index.cjs",
+    "../../marque/dist/esm/index.cjs",
+    "../../meta-icons/dist/esm/index.cjs",
+    "../../model-signatures/dist/esm/index.cjs",
+    "../../utilities/projects/styles/dist/esm/index.cjs",
+  ],
+}
+`;
+
+exports[`should have no regression for esm dependency tree 1`] = `
+{
+  "../../crest/dist/esm/index.mjs": [],
+  "../../fallbacks/dist/esm/index.mjs": [],
+  "../../fonts/dist/esm/index.mjs": [],
+  "../../icons/dist/esm/index.mjs": [],
+  "../../marque/dist/esm/index.mjs": [],
+  "../../meta-icons/dist/esm/index.mjs": [],
+  "../../model-signatures/dist/esm/index.mjs": [],
+  "../../utilities/projects/styles/dist/esm/index.mjs": [],
+  "index.mjs": [
+    "../../crest/dist/esm/index.mjs",
+    "../../fallbacks/dist/esm/index.mjs",
+    "../../fonts/dist/esm/index.mjs",
+    "../../icons/dist/esm/index.mjs",
+    "../../marque/dist/esm/index.mjs",
+    "../../meta-icons/dist/esm/index.mjs",
+    "../../model-signatures/dist/esm/index.mjs",
+    "../../utilities/projects/styles/dist/esm/index.mjs",
+  ],
+}
+`;

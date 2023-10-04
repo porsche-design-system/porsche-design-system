@@ -1,4 +1,4 @@
-import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/model-signatures'; // TODO: import from assets once it is treeshakable
+import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 import { getCDNBaseURL } from '../../utils';
 
 export const MODEL_SIGNATURE_SIZES = ['small', 'inherit'] as const;

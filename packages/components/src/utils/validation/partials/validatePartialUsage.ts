@@ -5,7 +5,7 @@ import {
   getUsedTagNamesWithoutPreloadForVersions,
 } from './helper';
 import type { PartialName } from '@porsche-design-system/shared';
-import { FONT_FACE_CDN_FILE_CN, FONT_FACE_CDN_FILE_COM } from '@porsche-design-system/styles';
+import { FONT_FACE_CDN_FILE_CN, FONT_FACE_CDN_FILE_COM } from '@porsche-design-system/assets';
 import { consoleWarn, throwException } from '../../log';
 import { getCDNBaseURL } from '../../getCDNBaseURL';
 
