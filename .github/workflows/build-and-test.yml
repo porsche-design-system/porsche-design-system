@@ -8,6 +8,26 @@ name: 'Build and Test'
 env:
   PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.37.1-focal
 jobs:
+  assets-unit:
+    name: 'Assets Unit'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build Core Dependencies'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --core-dependencies
+      - name: 'Unit Test'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --assets
   components-unit:
     name: 'Components Unit'
     runs-on: ubuntu-latest
