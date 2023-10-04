@@ -4,6 +4,7 @@ import copy from 'rollup-plugin-copy';
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import shebang from 'rollup-plugin-preserve-shebang';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const rootDir = '../..';
 const outputDir = 'dist';
@@ -19,23 +20,24 @@ export default [
   {
     input,
     output: {
-      dir: outputDir,
+      dir: `${outputDir}/cjs`,
       format: 'cjs',
+      entryFileNames: '[name].cjs',
+      preserveModules: true,
     },
-    plugins: [
-      ...commonPlugins,
-      typescript({ declaration: true, declarationDir: `${outputDir}/types`, rootDir: 'src' }),
-    ],
+    plugins: [...commonPlugins, typescript()],
   },
   {
     input,
     output: {
       dir: `${outputDir}/esm`,
       format: 'esm',
+      entryFileNames: '[name].mjs',
+      preserveModules: true,
     },
     plugins: [
       ...commonPlugins,
-      typescript(),
+      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src' }),
       copy({
         targets: [
           { src: `${rootDir}/LICENSE.md`, dest: outputDir },
@@ -43,6 +45,18 @@ export default [
           { src: 'README.md', dest: outputDir },
           { src: 'CHANGELOG.md', dest: outputDir },
         ],
+      }),
+      generatePackageJson({
+        outputFolder: outputDir,
+        baseContents: (pkg) => {
+          ['dependencies', 'devDependencies', 'volta', 'scripts', 'files', 'bin'].forEach((key) => delete pkg[key]);
+          return {
+            ...pkg,
+            main: 'cjs/assets/src/index.cjs',
+            module: 'esm/assets/src/index.mjs',
+            types: 'esm/index.d.ts',
+          };
+        },
       }),
     ],
   },
