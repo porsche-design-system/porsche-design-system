@@ -5251,6 +5251,7 @@ h2 {
   color: #010205;
 }
 .root {
+  color: #010205;
   position: relative;
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
