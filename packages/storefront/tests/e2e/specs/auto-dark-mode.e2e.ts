@@ -35,8 +35,10 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
     expect(components.length).toBeGreaterThan(0);
 
     for (const component of components) {
-      console.log(await getProperty(component, 'tagName'));
-      expect(await getProperty(component, 'theme')).toBe('auto');
+      expect(
+        await getProperty(component, `theme`),
+        `"${await getProperty(component, 'tagName')}" didn't use theme="auto"`
+      ).toBe('auto');
     }
   }
 );
