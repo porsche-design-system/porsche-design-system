@@ -1,5 +1,5 @@
 <template>
-  <p-content-wrapper>
+  <p-content-wrapper :theme="storefrontTheme">
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
         <p-heading :theme="storefrontTheme" size="x-large" tag="h1">Create a new Porsche account</p-heading>

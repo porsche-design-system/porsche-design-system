@@ -14,7 +14,7 @@ const internalUrls = getInternalUrls().filter((url) => !url.match(/^\/assets\/.*
 
 const themeableComponents = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isThemeable).join();
 const componentsWithThemeAutoSelector = `:where(${themeableComponents})${[
-  ':not(.playground > .example *)', // everything inside playground is not based color-scheme preferences
+  ':not(.playground > .example *)', // everything inside playground is not based on color-scheme preferences
   ':not(p-flyout):not(p-flyout *)', // flyout theme is defined by chosen playground theme as well as for its slotted content
   ':not(p-banner)', // banner theme is defined by chosen playground theme
   ':not(p-toast)', // toast theme is defined by chosen playground theme

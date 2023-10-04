@@ -1,5 +1,5 @@
 <template>
-  <p-content-wrapper>
+  <p-content-wrapper :theme="storefrontTheme">
     <p-heading :theme="storefrontTheme" size="xx-large">Various patterns and examples</p-heading>
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
