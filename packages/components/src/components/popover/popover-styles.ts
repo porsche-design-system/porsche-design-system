@@ -18,6 +18,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
 import type { Theme } from '../../types';
@@ -52,48 +53,89 @@ const transparentColor = 'transparent';
 
 const join = (...arr: (string | number)[]): string => arr.join(' ');
 
-const getDirectionArrowMap = (backgroundColor: string): Record<PopoverDirection, JssStyle> => ({
-  top: {
-    top: 0,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    borderWidth: join(borderWidth, borderWidth, 0),
-    borderColor: isHighContrastMode
-      ? join(canvasTextColor, canvasColor, canvasColor)
-      : join(backgroundColor, transparentColor, transparentColor),
-  },
-  right: {
-    top: '50%',
-    right: 0,
-    transform: 'translateY(-50%)',
-    borderWidth: join(borderWidth, borderWidth, borderWidth, 0),
-    borderColor: isHighContrastMode
-      ? join(canvasColor, canvasTextColor, canvasColor, canvasColor)
-      : join(transparentColor, backgroundColor, transparentColor, transparentColor),
-  },
-  bottom: {
-    bottom: 0,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    borderWidth: join(0, borderWidth, borderWidth),
-    borderColor: isHighContrastMode
-      ? join(canvasColor, canvasColor, canvasTextColor)
-      : join(transparentColor, transparentColor, backgroundColor),
-  },
-  left: {
-    top: '50%',
-    left: 0,
-    transform: 'translateY(-50%)',
-    borderWidth: join(borderWidth, 0, borderWidth, borderWidth),
-    borderColor: isHighContrastMode
-      ? join(canvasColor, canvasColor, canvasColor, canvasTextColor)
-      : join(transparentColor, transparentColor, transparentColor, backgroundColor),
-  },
-});
+const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> => {
+  const { backgroundColor } = getThemedColors(theme);
+  const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
+  return {
+    top: {
+      top: 0,
+      left: '50%',
+      transform: 'translateX(-50%)',
+      borderWidth: join(borderWidth, borderWidth, 0),
+      ...(isHighContrastMode
+        ? {
+            borderColor: join(canvasTextColor, canvasColor, canvasColor),
+          }
+        : {
+            borderColor: join(backgroundColor, transparentColor, transparentColor),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: join(backgroundColorDark, transparentColor, transparentColor),
+            }),
+          }),
+    },
+    right: {
+      top: '50%',
+      right: 0,
+      transform: 'translateY(-50%)',
+      borderWidth: join(borderWidth, borderWidth, borderWidth, 0),
+      ...(isHighContrastMode
+        ? {
+            borderColor: join(canvasColor, canvasTextColor, canvasColor, canvasColor),
+          }
+        : {
+            borderColor: join(transparentColor, backgroundColor, transparentColor, transparentColor),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: join(transparentColor, backgroundColorDark, transparentColor, transparentColor),
+            }),
+          }),
+    },
+    bottom: {
+      bottom: 0,
+      left: '50%',
+      transform: 'translateX(-50%)',
+      borderWidth: join(0, borderWidth, borderWidth),
+      ...(isHighContrastMode
+        ? {
+            borderColor: join(canvasColor, canvasColor, canvasTextColor),
+          }
+        : {
+            borderColor: join(transparentColor, transparentColor, backgroundColor),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: join(transparentColor, transparentColor, backgroundColorDark),
+            }),
+          }),
+    },
+    left: {
+      top: '50%',
+      left: 0,
+      transform: 'translateY(-50%)',
+      borderWidth: join(borderWidth, 0, borderWidth, borderWidth),
+      ...(isHighContrastMode
+        ? {
+            borderColor: join(canvasColor, canvasColor, canvasColor, canvasTextColor),
+          }
+        : {
+            borderColor: join(transparentColor, transparentColor, transparentColor, backgroundColor),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: join(transparentColor, transparentColor, transparentColor, backgroundColorDark),
+            }),
+          }),
+    },
+  };
+};
 
 export const getComponentCss = (direction: PopoverDirection, theme: Theme): string => {
   const spacerBox = '-16px';
   const { hoverColor, focusColor, backgroundColor, primaryColor } = getThemedColors(theme);
+  const {
+    hoverColor: hoverColorDark,
+    focusColor: focusColorDark,
+    backgroundColor: backgroundColorDark,
+    primaryColor: primaryColorDark,
+  } = getThemedColors('dark');
+
+  const shadowColor = 'rgba(0,0,0,0.3)';
+  const shadowColorDark = 'rgba(0,0,0,0.6)';
 
   return getCss({
     '@global': {
@@ -128,6 +170,9 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
           '&:hover': {
             ...frostedGlassStyle,
             backgroundColor: hoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              backgroundColor: hoverColorDark,
+            }),
           },
         }),
         '&::before': {
@@ -139,6 +184,9 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         },
         '&:focus::before': {
           borderColor: focusColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: focusColorDark,
+          }),
         },
         '&:focus:not(:focus-visible)::before': {
           borderColor: 'transparent',
@@ -157,7 +205,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       left: spacerBox,
       right: spacerBox,
       bottom: spacerBox,
-      filter: `drop-shadow(0 0 16px ${isThemeDark(theme) ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.3)'})`,
+      filter: `drop-shadow(0 0 16px ${isThemeDark(theme) ? shadowColorDark : shadowColor})`,
       backdropFilter: 'drop-shadow(0px 0px 0px transparent)', // fixes issues with Chrome >= 105 where filter: drop-shadow is not applied correctly after animation ends
       pointerEvents: 'none',
       animation:
@@ -168,8 +216,11 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         content: '""',
         position: 'absolute',
         borderStyle: 'solid',
-        ...getDirectionArrowMap(backgroundColor)[direction],
+        ...getDirectionArrowMap(theme)[direction],
       },
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        filter: `drop-shadow(0 0 16px ${shadowColorDark})`,
+      }),
     },
     popover: {
       position: 'absolute',
@@ -187,6 +238,10 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       borderRadius: borderRadiusSmall,
       ...(isHighContrastMode && {
         outline: `1px solid ${canvasTextColor}`,
+      }),
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: backgroundColorDark,
+        color: primaryColorDark,
       }),
     },
     '@keyframes fadeIn': {
