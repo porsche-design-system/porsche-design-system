@@ -243,7 +243,7 @@ export const getComponentCss = (
         }),
         ...prefersColorSchemeDarkMediaQuery(theme, {
           background: backgroundColorDark,
-          border: `2px solid ${backgroundColorDark}`,
+          borderColor: backgroundColorDark,
         }),
       },
     }),
