@@ -22,7 +22,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: rgba(64, 64, 68, 0.67) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
   pointer-events: none !important;
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
@@ -303,7 +303,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: rgba(64, 64, 68, 0.67) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
   pointer-events: none !important;
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
@@ -671,7 +671,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: rgba(64, 64, 68, 0.67) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
   pointer-events: none !important;
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
@@ -769,7 +769,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: rgba(64, 64, 68, 0.67) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
   pointer-events: none !important;
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
@@ -965,7 +965,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: rgba(64, 64, 68, 0.67) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
   pointer-events: none !important;
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
@@ -1153,7 +1153,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: rgba(64, 64, 68, 0.67) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
   pointer-events: none !important;
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
@@ -1251,7 +1251,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: rgba(64, 64, 68, 0.67) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
   pointer-events: none !important;
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
@@ -1447,7 +1447,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: rgba(64, 64, 68, 0.67) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
   pointer-events: none !important;
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
