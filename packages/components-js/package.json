@@ -78,7 +78,7 @@
     "@arethetypeswrong/core": "^0.10.1",
     "@playwright/test": "1.37.1",
     "@porsche-design-system/shared": "0.0.0",
-    "@types/js-beautify": "^1.14.0",
+    "@types/js-beautify": "^1.14.1",
     "concurrently": "^8.2.1",
     "devtools-protocol": "^0.0.1191157",
     "globby": "^11.0.4",

@@ -4598,10 +4598,10 @@
     expect "^29.0.0"
     pretty-format "^29.0.0"
 
-"@types/js-beautify@^1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@types/js-beautify/-/js-beautify-1.14.0.tgz#55f41649458fee09ebf48e6cbc834e360d792a0d"
-  integrity sha512-OrJo4dEKd/8YKwGWuRP7qC/NoxNQCVsjAT7aHhgoIrNJaaDudLwX8husFrklktmXKIFbXevxzrLyEhB1842zjg==
+"@types/js-beautify@^1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@types/js-beautify/-/js-beautify-1.14.1.tgz#344fb56306009d9c8523501aa0141ad4e7944b8f"
+  integrity sha512-pjbakQH0LywQL0wUFIWbxr5GZTnnqMD5wavqOpf61xz83V3V1uyhyPSWWNSoXZ153TF3XBgRTa07W1XDgFNYfw==
 
 "@types/js-levenshtein@^1.1.1":
   version "1.1.1"
