@@ -1,69 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pds-skeleton() should return correct css for opts: { borderRadius: '6px' } 1`] = `
+exports[`pds-skeleton() should return correct css for opts: { theme: 'dark', borderRadius: 'medium' } 1`] = `
 "div {
-  border-radius: 6px;
+  background: #212225 linear-gradient(to right, transparent 0%, #1a1b1e 20%, transparent 50%) 0 0/200% 100%;
   display: block;
-  background: #eeeff2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0/200% 100%;
-  animation: skeletonAnimation var(--transition-duration-long, 0.6s) var(--easing-base, cubic-bezier(0.25, 0.1, 0.25, 1)) infinite;
-}
-@keyframes skeletonAnimation {
-  from {
-    background-position: 100% 0;
-  }
-  to {
-    background-position: -100% 0;
-  }
-}"
-`;
-
-exports[`pds-skeleton() should return correct css for opts: { borderRadius: 'medium' } 1`] = `
-"div {
   border-radius: 8px;
-  display: block;
-  background: #eeeff2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0/200% 100%;
   animation: skeletonAnimation var(--transition-duration-long, 0.6s) var(--easing-base, cubic-bezier(0.25, 0.1, 0.25, 1)) infinite;
 }
 @keyframes skeletonAnimation {
   from {
-    background-position: 100% 0;
+    background-position-x: 100%;
   }
   to {
-    background-position: -100% 0;
+    background-position-x: -100%;
   }
 }"
 `;
 
-exports[`pds-skeleton() should return correct css for opts: { borderRadius: 'small' } 1`] = `
+exports[`pds-skeleton() should return correct css for opts: { theme: 'dark', borderRadius: 'small' } 1`] = `
 "div {
-  border-radius: 4px;
+  background: #212225 linear-gradient(to right, transparent 0%, #1a1b1e 20%, transparent 50%) 0 0/200% 100%;
   display: block;
-  background: #eeeff2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0/200% 100%;
+  border-radius: 4px;
   animation: skeletonAnimation var(--transition-duration-long, 0.6s) var(--easing-base, cubic-bezier(0.25, 0.1, 0.25, 1)) infinite;
 }
 @keyframes skeletonAnimation {
   from {
-    background-position: 100% 0;
+    background-position-x: 100%;
   }
   to {
-    background-position: -100% 0;
+    background-position-x: -100%;
+  }
+}"
+`;
+
+exports[`pds-skeleton() should return correct css for opts: { theme: 'light', borderRadius: '6px' } 1`] = `
+"div {
+  background: #eeeff2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0/200% 100%;
+  display: block;
+  border-radius: 6px;
+  animation: skeletonAnimation var(--transition-duration-long, 0.6s) var(--easing-base, cubic-bezier(0.25, 0.1, 0.25, 1)) infinite;
+}
+@keyframes skeletonAnimation {
+  from {
+    background-position-x: 100%;
+  }
+  to {
+    background-position-x: -100%;
+  }
+}"
+`;
+
+exports[`pds-skeleton() should return correct css for opts: { theme: 'light', borderRadius: 'medium' } 1`] = `
+"div {
+  background: #eeeff2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0/200% 100%;
+  display: block;
+  border-radius: 8px;
+  animation: skeletonAnimation var(--transition-duration-long, 0.6s) var(--easing-base, cubic-bezier(0.25, 0.1, 0.25, 1)) infinite;
+}
+@keyframes skeletonAnimation {
+  from {
+    background-position-x: 100%;
+  }
+  to {
+    background-position-x: -100%;
+  }
+}"
+`;
+
+exports[`pds-skeleton() should return correct css for opts: { theme: 'light', borderRadius: 'small' } 1`] = `
+"div {
+  background: #eeeff2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0/200% 100%;
+  display: block;
+  border-radius: 4px;
+  animation: skeletonAnimation var(--transition-duration-long, 0.6s) var(--easing-base, cubic-bezier(0.25, 0.1, 0.25, 1)) infinite;
+}
+@keyframes skeletonAnimation {
+  from {
+    background-position-x: 100%;
+  }
+  to {
+    background-position-x: -100%;
   }
 }"
 `;
 
 exports[`pds-skeleton() should return correct css for opts: {} 1`] = `
 "div {
-  border-radius: 4px;
-  display: block;
   background: #eeeff2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0/200% 100%;
+  display: block;
+  border-radius: 4px;
   animation: skeletonAnimation var(--transition-duration-long, 0.6s) var(--easing-base, cubic-bezier(0.25, 0.1, 0.25, 1)) infinite;
 }
 @keyframes skeletonAnimation {
   from {
-    background-position: 100% 0;
+    background-position-x: 100%;
   }
   to {
-    background-position: -100% 0;
+    background-position-x: -100%;
   }
 }"
 `;

@@ -7,14 +7,18 @@ const themeVariables = fs.readFileSync(path.resolve('./src/scss/lib/_theme.scss'
 const skeletonMixin = fs.readFileSync(path.resolve('./src/scss/_skeleton.scss'), 'utf8').replace(/@import.*;/g, '');
 
 describe('pds-skeleton()', () => {
-  it.each([{}, { borderRadius: 'small' }, { borderRadius: 'medium' }, { borderRadius: '6px' }])(
-    'should return correct css for opts: %s',
-    (opts) => {
-      const result = sass.compileString(`
+  it.each([
+    {},
+    { theme: 'light', borderRadius: 'small' },
+    { theme: 'light', borderRadius: 'medium' },
+    { theme: 'light', borderRadius: '6px' },
+    { theme: 'dark', borderRadius: 'small' },
+    { theme: 'dark', borderRadius: 'medium' },
+  ])('should return correct css for opts: %s', (opts) => {
+    const result = sass.compileString(`
 ${borderVariables} ${themeVariables} ${skeletonMixin} div {
   @include pds-skeleton(${Object.values(opts).join(', ')});
 }`);
-      expect(result.css).toMatchSnapshot();
-    }
-  );
+    expect(result.css).toMatchSnapshot();
+  });
 });

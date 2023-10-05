@@ -10,15 +10,16 @@ type Options = {
 const offsetHorizontal = '2px';
 
 export const getHoverStyle = (opts?: Options) => {
-  const borderRadius =
-    opts?.borderRadius === 'small'
+  const { borderRadius = 'small' } = opts || {};
+  const borderRadiusValue =
+    borderRadius === 'small'
       ? borderRadiusSmall
-      : opts?.borderRadius === 'medium'
+      : borderRadius === 'medium'
       ? borderRadiusMedium
-      : opts?.borderRadius || borderRadiusSmall;
+      : borderRadius || borderRadiusSmall;
 
   return {
-    borderRadius, // it's visually being reflected on both (when placed here), element and hover
+    borderRadius: borderRadiusValue, // it's visually being reflected on both (when placed here), element and hover
     marginLeft: `-${offsetHorizontal}`,
     marginRight: `-${offsetHorizontal}`,
     paddingLeft: offsetHorizontal,

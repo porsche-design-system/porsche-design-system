@@ -7,10 +7,12 @@ it('should provide all exports', () => {
 
 describe('getSkeletonStyle()', () => {
   it.each<Parameters<typeof getSkeletonStyle>>([
-    [{ borderRadius: undefined }],
-    [{ borderRadius: 'small' }],
-    [{ borderRadius: 'medium' }],
-    [{ borderRadius: '6px' }],
+    [{ borderRadius: undefined, theme: 'light' }],
+    [{ borderRadius: 'small', theme: 'light' }],
+    [{ borderRadius: 'medium', theme: 'light' }],
+    [{ borderRadius: '6px', theme: 'light' }],
+    [{ borderRadius: 'small', theme: 'dark' }],
+    [{ borderRadius: 'medium', theme: 'dark' }],
   ])('should return correct css for opts: %s', (...args) => {
     expect(getSkeletonStyle(...args)).toMatchSnapshot();
   });
