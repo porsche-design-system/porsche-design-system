@@ -1,21 +1,13 @@
 import styled from 'styled-components';
 import {
+  fontLineHeight,
+  fontSizeTextSmall,
+  fontSizeTextMedium,
+  fontSizeTextLarge,
+  getSkeletonStyle,
   gridGap,
   headingMediumStyle,
-  spacingFluidLarge,
   spacingFluidMedium,
-  spacingFluidSmall,
-  spacingFluidXXLarge,
-  spacingFluidXLarge,
-  spacingFluidXSmall,
-  spacingStaticLarge,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  spacingStaticXLarge,
-  spacingStaticXSmall,
-  spacingStaticXXLarge,
-  textXSmallStyle,
-  themeLightContrastLow,
   themeLightPrimary,
 } from '@porsche-design-system/components-react/styles';
 
@@ -38,106 +30,48 @@ const Heading = styled.h3({
   margin: 0,
 });
 
-// Tile
-const getTileStyle = {
-  ...textXSmallStyle,
-  background: themeLightContrastLow,
-} as const;
+// Skeletons
+const SkeletonBorderRadiusSmall = styled.div(getSkeletonStyle({ borderRadius: 'small' }));
+const SkeletonBorderRadiusMedium = styled.div(getSkeletonStyle({ borderRadius: 'medium' }));
 
-// Spacing Fluid
-const SpacingFluidXSmall = styled.div({
-  ...getTileStyle,
-  width: spacingFluidXSmall,
-  height: spacingFluidXSmall,
+const SkeletonSquareSmall = styled(SkeletonBorderRadiusSmall)({
+  height: '100px',
+  width: '100px',
+});
+const SkeletonSquareMedium = styled(SkeletonBorderRadiusMedium)({
+  height: '100px',
+  width: '100px',
 });
 
-const SpacingFluidSmall = styled.div({
-  ...getTileStyle,
-  width: spacingFluidSmall,
-  height: spacingFluidSmall,
+const SkeletonText = styled(SkeletonBorderRadiusSmall)({
+  height: fontLineHeight,
+  width: '100px',
 });
 
-const SpacingFluidMedium = styled.div({
-  ...getTileStyle,
-  width: spacingFluidMedium,
-  height: spacingFluidMedium,
+const SkeletonTextSmall = styled(SkeletonText)({
+  fontSize: fontSizeTextSmall,
+});
+const SkeletonTextMedium = styled(SkeletonText)({
+  fontSize: fontSizeTextMedium,
+});
+const SkeletonTextLarge = styled(SkeletonText)({
+  fontSize: fontSizeTextLarge,
 });
 
-const SpacingFluidLarge = styled.div({
-  ...getTileStyle,
-  width: spacingFluidLarge,
-  height: spacingFluidLarge,
-});
-
-const SpacingFluidXLarge = styled.div({
-  ...getTileStyle,
-  width: spacingFluidXLarge,
-  height: spacingFluidXLarge,
-});
-
-const SpacingFluidXXLarge = styled.div({
-  ...getTileStyle,
-  width: spacingFluidXXLarge,
-  height: spacingFluidXXLarge,
-});
-
-// Spacing Static
-const SpacingStaticXSmall = styled.div({
-  ...getTileStyle,
-  width: spacingStaticXSmall,
-  height: spacingStaticXSmall,
-});
-
-const SpacingStaticSmall = styled.div({
-  ...getTileStyle,
-  width: spacingStaticSmall,
-  height: spacingStaticSmall,
-});
-
-const SpacingStaticMedium = styled.div({
-  ...getTileStyle,
-  width: spacingStaticMedium,
-  height: spacingStaticMedium,
-});
-
-const SpacingStaticLarge = styled.div({
-  ...getTileStyle,
-  width: spacingStaticLarge,
-  height: spacingStaticLarge,
-});
-
-const SpacingStaticXLarge = styled.div({
-  ...getTileStyle,
-  width: spacingStaticXLarge,
-  height: spacingStaticXLarge,
-});
-
-const SpacingStaticXXLarge = styled.div({
-  ...getTileStyle,
-  width: spacingStaticXXLarge,
-  height: spacingStaticXXLarge,
-});
-
-export const StylesSpacingExample = (): JSX.Element => {
+export const StylesSkeletonExample = (): JSX.Element => {
   return (
     <>
       <Wrapper>
-        <Heading>Spacing Fluid (XS - XXL)</Heading>
-        <SpacingFluidXSmall></SpacingFluidXSmall>
-        <SpacingFluidSmall></SpacingFluidSmall>
-        <SpacingFluidMedium></SpacingFluidMedium>
-        <SpacingFluidLarge></SpacingFluidLarge>
-        <SpacingFluidXLarge></SpacingFluidXLarge>
-        <SpacingFluidXXLarge></SpacingFluidXXLarge>
+        <Heading>Skeletons Square</Heading>
+        <SkeletonSquareSmall />
+        <SkeletonSquareMedium />
       </Wrapper>
+
       <Wrapper>
-        <Heading>Spacing Static (XS - XXL)</Heading>
-        <SpacingStaticXSmall></SpacingStaticXSmall>
-        <SpacingStaticSmall></SpacingStaticSmall>
-        <SpacingStaticMedium></SpacingStaticMedium>
-        <SpacingStaticLarge></SpacingStaticLarge>
-        <SpacingStaticXLarge></SpacingStaticXLarge>
-        <SpacingStaticXXLarge></SpacingStaticXXLarge>
+        <Heading>Skeletons Heading/Text</Heading>
+        <SkeletonTextSmall />
+        <SkeletonTextMedium />
+        <SkeletonTextLarge />
       </Wrapper>
     </>
   );
