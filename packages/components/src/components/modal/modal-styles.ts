@@ -127,7 +127,7 @@ export const getComponentCss = (
               }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...getFrostedGlassBackgroundJssStyles(isOpen, duration),
+          ...getFrostedGlassBackgroundJssStyles(isOpen, duration, theme),
         }),
         overflowY: 'auto', // overrideable
       },
