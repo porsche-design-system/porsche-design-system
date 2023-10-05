@@ -40,7 +40,7 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/http-server": "^0.12.1",
-    "@types/madge": "^5.0.1",
+    "@types/madge": "^5.0.0",
     "http-server": "^14.1.1",
     "madge": "^6.1.0",
     "ts-node": "^10.9.1",
