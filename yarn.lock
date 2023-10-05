@@ -4631,10 +4631,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/madge@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@types/madge/-/madge-5.0.0.tgz#5b77c542cb547157b73c7d3c01c82ba81fdec5ca"
-  integrity sha512-Son5Z121knxCXlQM3Q0ivh0OP8Fix4ztGl0VfA9JybQMPQprc2K4jtTaRc3IhGyBy6ku5cWKJxEuj8zePiZbBQ==
+"@types/madge@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@types/madge/-/madge-5.0.1.tgz#f559f027dd0c6415d80888a45172c81384453e95"
+  integrity sha512-SG1auQa9+8N2FQ4TlOH//pK8gdgWAZ/vds+pcS4Ruz6qhAIdnJaC4PZj2GjPXVY/pC8X5Ks77BiMTIVMWA2VIQ==
   dependencies:
     "@types/node" "*"
 
