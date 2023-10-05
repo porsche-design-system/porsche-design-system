@@ -21,7 +21,7 @@ The styles are available as `JavaScript` and `SCSS` version. Look at the example
 JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
-- `getSkeletonStyle({ borderRadius: 'small'|'medium'|string })`
+- `getSkeletonStyle({ borderRadius: 'small' | 'medium' | string })`
 
 ---
 
