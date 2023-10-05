@@ -453,6 +453,7 @@ exports[`should have no regression for dependency tree 1`] = `
   "skeleton/getSkeletonStyle.cjs": [
     "border/borderRadiusMedium.cjs",
     "border/borderRadiusSmall.cjs",
+    "theme/themeDarkBackgroundSurface.cjs",
     "theme/themeLightBackgroundSurface.cjs",
   ],
   "spacing/spacing.cjs": [
