@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `Popover` and `Modal` support dark theme
+- `Popover` and `Modal` support dark and auto theme
   ([#2789](https://github.com/porsche-design-system/porsche-design-system/pull/2789))
 
 ### [3.7.0] - 2023-10-04
