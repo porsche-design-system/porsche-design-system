@@ -1,1 +1,1 @@
-export const themeDarkBackgroundShading = 'rgba(40, 40, 43, 0.67)';
+export const themeDarkBackgroundShading = 'rgba(38, 38, 41, 0.67)';
