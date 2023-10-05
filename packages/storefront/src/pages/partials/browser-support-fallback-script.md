@@ -9,7 +9,8 @@ which recommends the user to update the browser.
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected before the closing `</body>` of your `index.html`.
 
-<p-button v-on:click="showFallback">Force display of browser support fallback</p-button>
+<p-button :theme="this.$store.getters.storefrontTheme" v-on:click="showFallback">Force display of browser support
+fallback</p-button>
 
 ## Supported options
 

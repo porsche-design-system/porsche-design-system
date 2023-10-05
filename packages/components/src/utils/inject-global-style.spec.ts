@@ -1,5 +1,5 @@
 import { injectGlobalStyle } from './inject-global-style';
-import { FONT_FACE_CDN_FILE_COM, FONT_FACE_CDN_FILE_CN } from '@porsche-design-system/styles';
+import { FONT_FACE_CDN_FILE_COM, FONT_FACE_CDN_FILE_CN } from '@porsche-design-system/assets';
 import * as getCDNBaseURLUtils from './getCDNBaseURL';
 
 beforeEach(() => {

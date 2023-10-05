@@ -4,6 +4,7 @@ set -o errexit
 set -o pipefail
 
 if
+  [[ "--assets" == "${1}" ]] ||
   [[ "--component-meta" == "${1}" ]] ||
   [[ "--components" == "${1}" ]] ||
   [[ "--components-js" == "${1}" ]] ||

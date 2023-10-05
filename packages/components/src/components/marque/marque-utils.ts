@@ -1,4 +1,4 @@
-import { MARQUES_MANIFEST } from '@porsche-design-system/marque'; // TODO: import from assets once it is treeshakable
+import { MARQUES_MANIFEST } from '@porsche-design-system/assets';
 import type { LinkTarget } from '../../utils/link-button/link-target';
 import { getCDNBaseURL, type LinkAriaAttribute } from '../../utils';
 

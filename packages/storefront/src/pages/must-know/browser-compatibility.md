@@ -23,9 +23,9 @@ We support the **following Browsers in the latest stable and deprecated predeces
 - **Apple Safari** on macOS and iOS
   ([see version history](https://en.wikipedia.org/wiki/Safari_version_history#Safari_13))
 
-<p-text size="x-small">Chromium is the basis of Microsoft Edge since 79.0, Android Webview since 33.0 and of Samsung
-Internet since 11.0. <br/>We want to support the deprecated predecessor version, to bridge the temporal updating period
-of the users.</p-text>
+<p-text :theme="this.$store.getters.storefrontTheme" size="x-small">Chromium is the basis of Microsoft Edge since 79.0,
+Android Webview since 33.0 and of Samsung Internet since 11.0. <br/>We want to support the deprecated predecessor
+version, to bridge the temporal updating period of the users.</p-text>
 
 ## End of support for IE 11 and EdgeHTML
 
