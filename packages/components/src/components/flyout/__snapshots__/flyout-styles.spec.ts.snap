@@ -2,9 +2,9 @@
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: left, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
@@ -91,9 +91,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: left, hasHeader: true, hasFooter: false, hasSubFooter: true, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
@@ -182,9 +182,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: left, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
@@ -283,9 +283,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: right, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
@@ -372,9 +372,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: right, hasHeader: true, hasFooter: false, hasSubFooter: true, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
@@ -463,9 +463,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: right, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
@@ -564,9 +564,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -652,9 +652,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: false, hasFooter: true, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -750,9 +750,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: true, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -843,9 +843,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: true, hasFooter: true, hasSubFooter: false, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -946,9 +946,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -1046,9 +1046,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -1134,9 +1134,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: false, hasFooter: true, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -1232,9 +1232,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -1325,9 +1325,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: true, hasSubFooter: false, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -1428,9 +1428,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
