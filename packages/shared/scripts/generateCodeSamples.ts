@@ -15,6 +15,7 @@ type CodeSample = {
     | 'styles-grid'
     | 'styles-hover'
     | 'styles-media-query'
+    | 'styles-skeleton'
     | 'styles-spacing'
     | 'styles-theme'
     | 'styles-typography';
@@ -353,6 +354,15 @@ const generateCodeSamples = (): void => {
         [
           componentsAngularPath + '/../styles/styles-media-query-example.component.ts',
           componentsReactPath + '/../styles/StylesMediaQueryExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-skeleton',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-skeleton-example.component.ts',
+          componentsReactPath + '/../styles/StylesSkeletonExample.tsx',
         ],
       ],
     },
