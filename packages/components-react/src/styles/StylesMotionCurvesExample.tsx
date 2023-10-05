@@ -57,7 +57,6 @@ const Description = styled.p({
 
 // Tile
 const tileBaseStyle = {
-  ...textSmallStyle,
   color: themeLightPrimary,
   background: themeLightBackgroundSurface,
   borderRadius: borderRadiusLarge,

@@ -42,7 +42,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
       // Tile
       .tile {
-        @include pds-text-small;
         color: $pds-theme-light-primary;
         background: $pds-theme-light-background-surface;
         border-radius: $pds-border-radius-large;
@@ -108,7 +107,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class StylesMotionCurvesExampleComponent {
   onClick = (e: MouseEvent): void => {
-    console.log((e.target as HTMLDivElement).classList);
     (e.target as HTMLDivElement).classList.toggle('active');
   };
 }

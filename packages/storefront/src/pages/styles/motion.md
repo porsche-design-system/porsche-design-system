@@ -14,8 +14,32 @@ Effects are the key for turning components from static to interactive and keepin
 
 ## Example Curves
 
-<Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']">
+<Playground :frameworkMarkup="motionCurvesExample" :externalStackBlitzDependencies="['styled-components']">
   <ExampleStylesMotionCurves />
+</Playground>
+
+## Example Moving
+
+<Playground :frameworkMarkup="motionMovingExample" :externalStackBlitzDependencies="['styled-components']">
+  <ExampleStylesMotionMoving />
+</Playground>
+
+## Example Enter / Exit
+
+<Playground :frameworkMarkup="motionEnterExitExample" :externalStackBlitzDependencies="['styled-components']">
+  <ExampleStylesMotionEnterExit />
+</Playground>
+
+## Example Expand
+
+<Playground :frameworkMarkup="motionExpandExample" :externalStackBlitzDependencies="['styled-components']">
+  <ExampleStylesMotionExpand />
+</Playground>
+
+## Example Show / Hide
+
+<Playground :frameworkMarkup="motionShowHideExample" :externalStackBlitzDependencies="['styled-components']">
+  <ExampleStylesMotionShowHide />
 </Playground>
 
 ## Usage
@@ -60,20 +84,43 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angu
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getStylesMotionCurvesCodeSamples } from '@porsche-design-system/shared';
+import {
+  getStylesMotionCurvesCodeSamples,
+  getStylesMotionEnterExitCodeSamples,
+  getStylesMotionExpandCodeSamples,
+  getStylesMotionMovingCodeSamples,
+  getStylesMotionShowHideCodeSamples
+} from '@porsche-design-system/shared';
 import { adjustSelectedFramework } from '@/utils';
 import ExampleStylesMotionCurves from '@/pages/patterns/styles/example-motion-curves.vue';
+import ExampleStylesMotionMoving from '@/pages/patterns/styles/example-motion-moving.vue';
+import ExampleStylesMotionEnterExit from '@/pages/patterns/styles/example-motion-enter-exit.vue';
+import ExampleStylesMotionExpand from '@/pages/patterns/styles/example-motion-expand.vue';
+import ExampleStylesMotionShowHide from '@/pages/patterns/styles/example-motion-show-hide.vue';
 
 @Component({
   components: {
-    ExampleStylesMotionCurves
+    ExampleStylesMotionCurves,
+    ExampleStylesMotionMoving,
+    ExampleStylesMotionEnterExit,
+    ExampleStylesMotionExpand,
+    ExampleStylesMotionShowHide
   },
 })
 export default class Code extends Vue {
-  codeExample = getStylesMotionCurvesCodeSamples();
+  motionCurvesExample = getStylesMotionCurvesCodeSamples();
+  motionEnterExitExample = getStylesMotionEnterExitCodeSamples();
+  motionExpandExample = getStylesMotionExpandCodeSamples();
+  motionMovingExample = getStylesMotionMovingCodeSamples();
+  motionShowHideExample = getStylesMotionShowHideCodeSamples();
 
   public mounted(): void {
-    adjustSelectedFramework(this.codeExample);
+    adjustSelectedFramework(this.motionCurvesExample);
+    adjustSelectedFramework(this.motionEnterExitExample);    
+    adjustSelectedFramework(this.motionExpandExample);
+    adjustSelectedFramework(this.motionMovingExample);
+    adjustSelectedFramework(this.motionShowHideExample);
+
   }
 }
 </script>

@@ -80,7 +80,6 @@
 
   // Tile
   .tile {
-    @include pds-text-small;
     color: $pds-theme-light-primary;
     background: $pds-theme-light-background-surface;
     padding: $pds-spacing-fluid-medium;
