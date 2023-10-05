@@ -1,78 +1,113 @@
 import styled from 'styled-components';
 import {
   fontLineHeight,
-  fontSizeTextSmall,
-  fontSizeTextMedium,
   fontSizeTextLarge,
+  fontSizeTextMedium,
+  fontSizeTextSmall,
   getSkeletonStyle,
   gridGap,
   headingMediumStyle,
   spacingFluidMedium,
+  themeDarkBackgroundBase,
+  themeDarkPrimary,
+  themeLightBackgroundBase,
   themeLightPrimary,
 } from '@porsche-design-system/components-react/styles';
 
 // Wrapper
-const Wrapper = styled.div({
+const sharedWrapperStyle = {
   display: 'flex',
   flexWrap: 'wrap',
-  alignItems: 'flex-start',
   justifyContent: 'center',
+  alignItems: 'flex-start',
   gap: gridGap,
   padding: spacingFluidMedium,
+} as const;
+
+const WrapperLight = styled.div({
+  ...sharedWrapperStyle,
+  background: themeLightBackgroundBase,
+  color: themeLightPrimary,
+});
+
+const WrapperDark = styled.div({
+  ...sharedWrapperStyle,
+  background: themeDarkBackgroundBase,
+  color: themeDarkPrimary,
 });
 
 // Typography
 const Heading = styled.h3({
   ...headingMediumStyle,
-  color: themeLightPrimary,
   textAlign: 'center',
   width: '100%',
   margin: 0,
 });
 
 // Skeletons
-const SkeletonBorderRadiusSmall = styled.div(getSkeletonStyle({ borderRadius: 'small' }));
-const SkeletonBorderRadiusMedium = styled.div(getSkeletonStyle({ borderRadius: 'medium' }));
+const skeletonLightStyle = getSkeletonStyle({ theme: 'light' });
+const skeletonDarkStyle = getSkeletonStyle({ theme: 'dark' });
 
-const SkeletonSquareSmall = styled(SkeletonBorderRadiusSmall)({
-  height: '100px',
-  width: '100px',
+const SkeletonBox = styled.div({
+  height: '200px',
+  width: '500px',
 });
-const SkeletonSquareMedium = styled(SkeletonBorderRadiusMedium)({
-  height: '100px',
-  width: '100px',
-});
+const SkeletonBoxLight = styled(SkeletonBox)(skeletonLightStyle);
+const SkeletonBoxDark = styled(SkeletonBox)(skeletonDarkStyle);
 
-const SkeletonText = styled(SkeletonBorderRadiusSmall)({
+const SkeletonText = styled.div({
   height: fontLineHeight,
   width: '100px',
 });
 
-const SkeletonTextSmall = styled(SkeletonText)({
+const SkeletonTextSmallLight = styled(SkeletonText)({
+  ...skeletonLightStyle,
   fontSize: fontSizeTextSmall,
 });
-const SkeletonTextMedium = styled(SkeletonText)({
+const SkeletonTextMediumLight = styled(SkeletonText)({
+  ...skeletonLightStyle,
   fontSize: fontSizeTextMedium,
 });
-const SkeletonTextLarge = styled(SkeletonText)({
+const SkeletonTextLargeLight = styled(SkeletonText)({
+  ...skeletonLightStyle,
+  fontSize: fontSizeTextLarge,
+});
+
+const SkeletonTextSmallDark = styled(SkeletonText)({
+  ...skeletonDarkStyle,
+  fontSize: fontSizeTextSmall,
+});
+const SkeletonTextMediumDark = styled(SkeletonText)({
+  ...skeletonDarkStyle,
+  fontSize: fontSizeTextMedium,
+});
+const SkeletonTextLargeDark = styled(SkeletonText)({
+  ...skeletonDarkStyle,
   fontSize: fontSizeTextLarge,
 });
 
 export const StylesSkeletonExample = (): JSX.Element => {
   return (
     <>
-      <Wrapper>
-        <Heading>Skeletons Square</Heading>
-        <SkeletonSquareSmall />
-        <SkeletonSquareMedium />
-      </Wrapper>
+      <WrapperLight>
+        <Heading>Skeleton Light</Heading>
+        <SkeletonBoxLight />
+      </WrapperLight>
+      <WrapperLight>
+        <SkeletonTextSmallLight />
+        <SkeletonTextMediumLight />
+        <SkeletonTextLargeLight />
+      </WrapperLight>
 
-      <Wrapper>
-        <Heading>Skeletons Heading/Text</Heading>
-        <SkeletonTextSmall />
-        <SkeletonTextMedium />
-        <SkeletonTextLarge />
-      </Wrapper>
+      <WrapperDark>
+        <Heading>Skeleton Dark</Heading>
+        <SkeletonBoxDark />
+      </WrapperDark>
+      <WrapperDark>
+        <SkeletonTextSmallDark />
+        <SkeletonTextMediumDark />
+        <SkeletonTextLargeDark />
+      </WrapperDark>
     </>
   );
 };
