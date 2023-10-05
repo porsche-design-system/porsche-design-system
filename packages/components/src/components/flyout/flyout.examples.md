@@ -88,7 +88,7 @@ content. The following example shows the visualization of the grid if used insid
 
 ## Custom styling
 
-The `p-flyout` component has a default of `max-width: 1180px` and `width: auto`. This values can be overwritten by CSS
+The `p-flyout` component has a default of `max-width: 1180px` and `width: auto`. These values can be overwritten by CSS
 Custom Properties (aka CSS Variables):
 
 ```scss
