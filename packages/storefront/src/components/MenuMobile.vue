@@ -5,7 +5,7 @@
     position="left"
     @dismiss="() => this.$store.commit('setIsMenuActive', false)"
   >
-    <div>
+    <div class="menu-mobile">
       <VersionSelect />
       <Search />
       <Navigation />
@@ -35,11 +35,11 @@
     @include pds-media-query-min('m') {
       display: none !important;
     }
+  }
 
-    & > div {
-      display: flex;
-      flex-direction: column;
-      gap: $pds-spacing-fluid-large;
-    }
+  .menu-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: $pds-spacing-fluid-large;
   }
 </style>

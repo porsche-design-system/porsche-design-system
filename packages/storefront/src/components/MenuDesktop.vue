@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="menu-desktop">
     <Navigation />
     <Footer />
   </div>
@@ -24,7 +24,7 @@
   @use '@porsche-design-system/components-js/styles' as *;
   @use '@/styles/internal.variables.scss' as *;
 
-  div {
+  .menu-desktop {
     @include pds-media-query-max('m') {
       display: none;
     }
