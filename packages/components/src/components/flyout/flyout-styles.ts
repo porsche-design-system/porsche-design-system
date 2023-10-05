@@ -141,6 +141,10 @@ export const getComponentCss = (
       padding: contentPadding,
       position: 'relative',
       zIndex: 0,
+      backgroundColor, // to ensure scrollbar coloring is optimal for light theme
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        backgroundColor: backgroundColorDark, // to ensure scrollbar coloring is optimal for dark theme
+      }),
       // If sub-footer is used scroll shadows have to be done via JS
       ...(!hasSubFooter && {
         overflowY: 'auto',
@@ -153,6 +157,7 @@ export const getComponentCss = (
         overscrollBehaviorY: 'none',
         ...prefersColorSchemeDarkMediaQuery(theme, {
           backgroundImage: `linear-gradient(to top, ${backgroundColorDark}, ${backgroundColorDark}), linear-gradient(to top, ${backgroundColorDark}, ${backgroundColorDark}), linear-gradient(to top, ${scrollShadowColorDark}, ${transparentColorDark}), linear-gradient(to bottom, ${scrollShadowColorDark}, ${transparentColorDark})`,
+          backgroundColor: backgroundColorDark, // to ensure scrollbar coloring is optimal for dark theme
         }),
       }),
     },
