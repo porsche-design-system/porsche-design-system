@@ -22,7 +22,7 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/madge": "^5.0.1",
-    "@types/styled-components": "^5.1.27",
+    "@types/styled-components": "^5.1.28",
     "change-case": "^4.1.2",
     "madge": "^6.1.0",
     "prettier": "^3.0.3",
