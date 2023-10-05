@@ -1,0 +1,35 @@
+@import 'lib/border';
+@import 'lib/theme';
+
+$pds-skeleton-border-radius-map: (
+  'small': $pds-border-radius-small,
+  'medium': $pds-border-radius-medium,
+);
+
+@mixin pds-skeleton($border-radius: 'small') {
+  // it can easily be overwritten on purpose (when placed here) and visually reflected
+  @if map-has-key($pds-skeleton-border-radius-map, $border-radius) {
+    border-radius: map-get($pds-skeleton-border-radius-map, $border-radius);
+  } @else {
+    @if ($border-radius) {
+      border-radius: $border-radius;
+    } @else {
+      border-radius: map-get($pds-skeleton-border-radius-map, 'small');
+    }
+  }
+  display: block;
+  background: $pds-theme-light-background-surface
+    linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0 / 200% 100%;
+  // TODO: use motion variables
+  animation: skeletonAnimation var(--transition-duration-long, 0.6s)
+    var(--easing-base, cubic-bezier(0.25, 0.1, 0.25, 1)) infinite;
+
+  @keyframes skeletonAnimation {
+    from {
+      background-position: 100% 0;
+    }
+    to {
+      background-position: -100% 0;
+    }
+  }
+}

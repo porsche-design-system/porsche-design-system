@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getSkeletonStyle() should return correct css for opts: { borderRadius: '6px' } 1`] = `
+{
+  "@keyframes skeletonAnimation": {
+    "from": {
+      "backgroundPosition": "100% 0",
+    },
+    "to": {
+      "backgroundPosition": "-100% 0",
+    },
+  },
+  "animation": "skeletonAnimation var(--transition-duration-long, .6s) var(--easing-base, cubic-bezier(0.25,0.1,0.25,1)) infinite",
+  "background": "#EEEFF2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0 / 200% 100%",
+  "borderRadius": "6px",
+  "display": "block",
+}
+`;
+
+exports[`getSkeletonStyle() should return correct css for opts: { borderRadius: 'medium' } 1`] = `
+{
+  "@keyframes skeletonAnimation": {
+    "from": {
+      "backgroundPosition": "100% 0",
+    },
+    "to": {
+      "backgroundPosition": "-100% 0",
+    },
+  },
+  "animation": "skeletonAnimation var(--transition-duration-long, .6s) var(--easing-base, cubic-bezier(0.25,0.1,0.25,1)) infinite",
+  "background": "#EEEFF2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0 / 200% 100%",
+  "borderRadius": "8px",
+  "display": "block",
+}
+`;
+
+exports[`getSkeletonStyle() should return correct css for opts: { borderRadius: 'small' } 1`] = `
+{
+  "@keyframes skeletonAnimation": {
+    "from": {
+      "backgroundPosition": "100% 0",
+    },
+    "to": {
+      "backgroundPosition": "-100% 0",
+    },
+  },
+  "animation": "skeletonAnimation var(--transition-duration-long, .6s) var(--easing-base, cubic-bezier(0.25,0.1,0.25,1)) infinite",
+  "background": "#EEEFF2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0 / 200% 100%",
+  "borderRadius": "4px",
+  "display": "block",
+}
+`;
+
+exports[`getSkeletonStyle() should return correct css for opts: { borderRadius: undefined } 1`] = `
+{
+  "@keyframes skeletonAnimation": {
+    "from": {
+      "backgroundPosition": "100% 0",
+    },
+    "to": {
+      "backgroundPosition": "-100% 0",
+    },
+  },
+  "animation": "skeletonAnimation var(--transition-duration-long, .6s) var(--easing-base, cubic-bezier(0.25,0.1,0.25,1)) infinite",
+  "background": "#EEEFF2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0 / 200% 100%",
+  "borderRadius": "4px",
+  "display": "block",
+}
+`;
