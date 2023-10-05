@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- Styles: `getSkeletonStyle()` and `pds-skeleton`
+  ([#2796](https://github.com/porsche-design-system/porsche-design-system/pull/2796))
+
 ### [3.7.0] - 2023-10-04
 
 ### [3.7.0-rc.2] - 2023-10-04
