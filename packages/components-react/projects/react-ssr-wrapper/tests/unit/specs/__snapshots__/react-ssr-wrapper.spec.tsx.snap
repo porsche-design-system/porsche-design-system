@@ -3459,9 +3459,9 @@ exports[`should render dsr component for PFlyout 1`] = `
   >
     <style>
       :host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
