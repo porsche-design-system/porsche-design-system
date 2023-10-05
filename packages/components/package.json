@@ -58,7 +58,7 @@
     "@rollup/plugin-replace": "^5.0.2",
     "@types/react": "^18.2.25",
     "@types/throttle-debounce": "^5.0.0",
-    "@types/tinycolor2": "^1.4.3",
+    "@types/tinycolor2": "^1.4.4",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
     "change-case": "^4.1.2",
