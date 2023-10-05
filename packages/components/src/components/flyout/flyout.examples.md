@@ -88,12 +88,13 @@ content. The following example shows the visualization of the grid if used insid
 
 ## Custom styling
 
-The `p-flyout` component has a default of `max-width: 1180px`. This value can be overwritten by CSS Custom Properties
-(aka CSS Variables):
+The `p-flyout` component has a default of `max-width: 1180px` and `width: auto`. This values can be overwritten by CSS
+Custom Properties (aka CSS Variables):
 
 ```scss
 // overwrite with CSS variables
 p-flyout {
+  --p-flyout-width: 80%;
   --p-flyout-max-width: 200px;
 }
 ```
@@ -128,7 +129,7 @@ export default class Code extends Vue {
   }
 
   registerEvents() {
-    this.flyouts = document.querySelectorAll('p-flyout');
+    this.flyouts = document.querySelectorAll('.playground .demo p-flyout');
     
     const buttonsOpen = document.querySelectorAll('.playground .demo > p-button');
     buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openFlyout(index)));
