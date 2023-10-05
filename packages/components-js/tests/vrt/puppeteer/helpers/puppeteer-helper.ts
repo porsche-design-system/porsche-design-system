@@ -14,34 +14,25 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
     ...opts,
   };
 
-  const initialStyles = getInitialStyles({ format: 'html' });
-  // Unsupported media feature: hover
-  const initialStylesWithoutMediaQuery = initialStyles
-    .replace(/\@media\(hover\:hover\)\{/g, '')
-    .replace(
-      /a\:hover\{background-color\:rgba\(126,127,130,0.20\)\}\}/g,
-      'a:hover{background-color:rgba(126,127,130,0.20)}'
-    );
-
   // get rid of spaces as we do during static VRTs
   content = content.replace(/>(\s)*</g, '><');
 
   await page.setContent(
     `<!DOCTYPE html>
-    <html>
-      <head>
-        <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
-        <script type="text/javascript" src="http://localhost:8575/index.js"></script>
-        <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
-        <link rel="stylesheet" href="assets/styles.css">
-        ${initialStylesWithoutMediaQuery}
-        ${options.injectIntoHead}
-      </head>
-      <body>
-        <script type="text/javascript">porscheDesignSystem.load();</script>
-        ${content}
-      </body>
-    </html>`,
+<html>
+  <head>
+    <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
+    <script type="text/javascript" src="http://localhost:8575/index.js"></script>
+    <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
+    <link rel="stylesheet" href="assets/styles.css">
+    ${getInitialStyles()}
+    ${options.injectIntoHead}
+  </head>
+  <body>
+    ${content}
+    <script type="text/javascript">porscheDesignSystem.load();</script>
+  </body>
+</html>`,
     options
   );
 

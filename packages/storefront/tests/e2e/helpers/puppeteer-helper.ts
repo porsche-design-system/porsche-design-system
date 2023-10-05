@@ -16,3 +16,7 @@ export const getConsoleErrorsAmount = () => consoleMessages.length;
 
 export const getElementInnerText = (element: ElementHandle): Promise<string> =>
   element.evaluate((el) => (el as HTMLElement).innerText);
+
+export const getProperty = async <T>(element: ElementHandle, prop: string): Promise<T> => {
+  return element.evaluate((el, prop: string) => el[prop], prop);
+};

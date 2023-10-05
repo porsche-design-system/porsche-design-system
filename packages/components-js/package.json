@@ -14,7 +14,7 @@
     "build-app": "yarn build-app:base && yarn build-app:components && yarn build-app:assets && yarn build-app:shared && yarn build-app:imask && yarn build-app:componentsAngularReact",
     "build-app:base": "mkdir -p ./www && cp -r ./src/. ./www && cp -r ./public/. ./www",
     "build-app:components": "cp ./dist/components-wrapper/cjs/index.cjs ./www/index.js",
-    "build-app:assets": "cp ../assets/dist/esm/index.js ./www/assets/assets.js",
+    "build-app:assets": "cp ../icons/dist/esm/index.js ./www/assets/icons.js",
     "build-app:imask": "cp ../../node_modules/imask/dist/imask.min.js ./www/assets/imask.min.js",
     "build-app:shared": "cp ../shared/dist/esm/data/table-data-sorting.js ./www/assets/table-data-sorting.js && cp ../shared/dist/esm/data/table-data-basic.js ./www/assets/table-data-basic.js && cp ../shared/dist/esm/data/table-data-advanced.js ./www/assets/table-data-advanced.js && cp ../shared/dist/esm/data/table-data-vrt.js ./www/assets/table-data-vrt.js && cp ../shared/dist/css/styles.css ./www/assets/styles.css",
     "build-app:componentsAngularReact": "yarn generateVRTPages",
@@ -68,8 +68,8 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components": "3.7.0-rc.2",
-    "@porsche-design-system/components-js": "3.7.0-rc.2",
+    "@porsche-design-system/components": "3.7.0",
+    "@porsche-design-system/components-js": "3.7.0",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0",
     "imask": "^7.1.3"

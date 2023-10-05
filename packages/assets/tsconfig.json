@@ -1,7 +1,4 @@
 {
   "extends": "@porsche-design-system/shared/tsconfig.json",
-  "compilerOptions": {
-    "types": ["node"]
-  },
   "include": ["src"]
 }
