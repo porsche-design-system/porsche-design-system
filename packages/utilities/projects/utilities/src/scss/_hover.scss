@@ -24,10 +24,8 @@ $pds-offset-horizontal: 2px;
   margin-right: -#{$pds-offset-horizontal};
   padding-left: $pds-offset-horizontal;
   padding-right: $pds-offset-horizontal;
+  transition: background var(--p-transition-duration, 0.24s) ease;
   @media (hover: hover) {
-    & {
-      transition: background var(--p-transition-duration, 0.24s) ease;
-    }
     &:hover {
       // @include pds-frosted-glass;
       background: $pds-theme-light-state-hover;
