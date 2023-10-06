@@ -94,3 +94,11 @@ of using it with Node or TS-Node.
 ### Affected dependencies:
 
 - `globby`
+
+## Change case
+
+Since v5.0.0 `change-case` change-case lists no main file and has no index.js, so it can't be directly required.
+
+### Affected dependencies:
+
+- `change-case`

@@ -61,7 +61,7 @@
     "@types/tinycolor2": "^1.4.4",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
-    "change-case": "^5.0.2",
+    "change-case": "^4.1.2",
     "concurrently": "^8.2.1",
     "construct-style-sheets-polyfill": "^3.1.0",
     "dts-bundle-generator": "^8.0.1",

@@ -60,7 +60,7 @@
     "@types/madge": "^5.0.1",
     "@types/pixelmatch": "^5.2.4",
     "@types/sharp": "^0.32.0",
-    "change-case": "^5.0.2",
+    "change-case": "^4.1.2",
     "globby": "^11.0.4",
     "madge": "^6.1.0",
     "ts-node": "^10.9.1",
