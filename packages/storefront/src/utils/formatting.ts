@@ -17,12 +17,12 @@ export const cleanMarkup = (markup: string): string =>
     .replace(/\n{3,}/g, '\n\n');
 
 export const patchThemeIntoMarkup = (markup: string, theme: PlaygroundTheme): string =>
-  theme === 'dark'
+  ['dark', 'auto'].includes(theme)
     ? markup
         // add dark theme attribute if component supports it
         .replace(/(<[pP][\w-]+)/g, (m, $tag) => {
           return getComponentMeta(paramCase($tag.replace(/</g, '')) as TagName)?.isThemeable
-            ? `${$tag} theme="dark"`
+            ? `${$tag} theme="${theme}"`
             : $tag;
         })
     : markup;
