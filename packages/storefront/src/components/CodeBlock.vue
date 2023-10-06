@@ -83,6 +83,8 @@
       }
 
       pre {
+        background: $pds-theme-light-background-base; // to ensure scrollbar coloring is optimal for theme light
+
         :deep(code) {
           // source: https://github.com/ericwbailey/a11y-syntax-highlighting/blob/main/dist/prism/a11y-light.css#L52-L107
 
@@ -149,6 +151,8 @@
       // extracted from chrome dev tools contrast utility
       &.code-block--background-surface {
         pre {
+          background: $pds-theme-light-background-surface; // to ensure scrollbar coloring is optimal for theme light
+
           :deep(code) {
             .token.selector,
             .token.attr-name,
@@ -176,6 +180,8 @@
       }
 
       pre {
+        background: $pds-theme-dark-background-base; // to ensure scrollbar coloring is optimal for theme dark
+
         :deep(code) {
           // source: https://github.com/ericwbailey/a11y-syntax-highlighting/blob/main/dist/prism/a11y-dark.css#L52-L107
 
@@ -235,6 +241,12 @@
           .token.important {
             color: #ffd700;
           }
+        }
+      }
+
+      &.code-block--background-surface {
+        pre {
+          background: $pds-theme-dark-background-surface; // to ensure scrollbar coloring is optimal for theme dark
         }
       }
     }
