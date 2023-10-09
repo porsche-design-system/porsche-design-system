@@ -451,7 +451,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "mediaQuery/breakpoint.cjs",
   ],
   "skeleton/getSkeletonStyle.cjs": [
-    "border/borderRadiusMedium.cjs",
     "border/borderRadiusSmall.cjs",
     "theme/themeDarkBackgroundSurface.cjs",
     "theme/themeLightBackgroundSurface.cjs",
@@ -1113,7 +1112,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "mediaQuery/breakpoint.mjs",
   ],
   "skeleton/getSkeletonStyle.mjs": [
-    "border/borderRadiusMedium.mjs",
     "border/borderRadiusSmall.mjs",
     "theme/themeDarkBackgroundSurface.mjs",
     "theme/themeLightBackgroundSurface.mjs",
