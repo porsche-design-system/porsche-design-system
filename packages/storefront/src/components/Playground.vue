@@ -277,6 +277,10 @@
       }
     }
 
+    .demo {
+      width: 100%;
+    }
+
     &--overflow-x-visible {
       overflow-x: visible;
     }
