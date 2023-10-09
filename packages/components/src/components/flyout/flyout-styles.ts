@@ -43,28 +43,30 @@ export const getComponentCss = (
   const transparentColor = isDark ? transparentColorDark : 'rgba(255, 255, 255, 0)';
 
   return getCss({
-    '@global': addImportantToEachRule({
+    '@global': {
       ':host': {
-        // needed for correct alignment of the Porsche Grid within the Flyout
-        '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
-        '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
         display: 'flex',
-        position: 'fixed',
-        zIndex: FLYOUT_Z_INDEX,
-        ...(isOpen
-          ? {
-              visibility: 'inherit',
-            }
-          : {
-              visibility: 'hidden',
-              transition: `visibility 0s linear ${flyoutTransitionDuration}`,
-            }),
-        ...getInsetJssStyle(),
-        ...getFrostedGlassBackgroundJssStyles(isOpen, flyoutTransitionDuration),
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
+        ...addImportantToEachRule({
+          // needed for correct alignment of the Porsche Grid within the Flyout
+          '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
+          '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
+          position: 'fixed',
+          zIndex: FLYOUT_Z_INDEX,
+          ...(isOpen
+            ? {
+                visibility: 'inherit',
+              }
+            : {
+                visibility: 'hidden',
+                transition: `visibility 0s linear ${flyoutTransitionDuration}`,
+              }),
+          ...getInsetJssStyle(),
+          ...getFrostedGlassBackgroundJssStyles(isOpen, flyoutTransitionDuration),
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
-    }),
+    },
     header: {
       display: 'flex',
       ...(hasHeader && {
@@ -139,6 +141,10 @@ export const getComponentCss = (
       padding: contentPadding,
       position: 'relative',
       zIndex: 0,
+      backgroundColor, // to ensure scrollbar coloring is optimal for light theme
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        backgroundColor: backgroundColorDark, // to ensure scrollbar coloring is optimal for dark theme
+      }),
       // If sub-footer is used scroll shadows have to be done via JS
       ...(!hasSubFooter && {
         overflowY: 'auto',
@@ -151,6 +157,7 @@ export const getComponentCss = (
         overscrollBehaviorY: 'none',
         ...prefersColorSchemeDarkMediaQuery(theme, {
           backgroundImage: `linear-gradient(to top, ${backgroundColorDark}, ${backgroundColorDark}), linear-gradient(to top, ${backgroundColorDark}, ${backgroundColorDark}), linear-gradient(to top, ${scrollShadowColorDark}, ${transparentColorDark}), linear-gradient(to bottom, ${scrollShadowColorDark}, ${transparentColorDark})`,
+          backgroundColor: backgroundColorDark, // to ensure scrollbar coloring is optimal for dark theme
         }),
       }),
     },

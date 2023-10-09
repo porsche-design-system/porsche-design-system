@@ -1,7 +1,7 @@
 <template>
   <header>
     <div>
-      <Menu variant="open" class="open-menu-button" />
+      <OpenMenuButton class="open-menu-button" />
       <VersionSelect class="version-select" />
     </div>
     <Wordmark />
@@ -18,7 +18,7 @@
   import Component from 'vue-class-component';
   import VersionSelect from '@/components/VersionSelect.vue';
   import Search from '@/components/Search.vue';
-  import Menu from '@/components/Menu.vue';
+  import OpenMenuButton from '@/components/OpenMenuButton.vue';
   import Wordmark from '@/components/Wordmark.vue';
   import GitHubAnchor from '@/components/GitHubAnchor.vue';
   import CycleStorefrontTheme from '@/components/CycleStorefrontTheme.vue';
@@ -27,17 +27,13 @@
     components: {
       VersionSelect,
       Search,
-      Menu,
+      OpenMenuButton,
       Wordmark,
       GitHubAnchor,
       CycleStorefrontTheme,
     },
   })
-  export default class Header extends Vue {
-    public toggleMenuVisibility(): void {
-      this.$store.commit('toggleIsMenuActive');
-    }
-  }
+  export default class Header extends Vue {}
 </script>
 
 <style scoped lang="scss">

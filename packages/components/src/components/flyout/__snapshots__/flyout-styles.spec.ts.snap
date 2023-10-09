@@ -2,9 +2,9 @@
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: left, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
@@ -71,6 +71,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
@@ -91,9 +92,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: left, hasHeader: true, hasFooter: false, hasSubFooter: true, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
@@ -167,6 +168,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #0E0E12;
 }
 .sub-footer {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -182,9 +184,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: left, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
@@ -258,6 +260,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #0E0E12;
 }
 .footer {
   background: #0E0E12;
@@ -283,9 +286,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: right, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
@@ -352,6 +355,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
@@ -372,9 +376,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: right, hasHeader: true, hasFooter: false, hasSubFooter: true, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
@@ -448,6 +452,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #0E0E12;
 }
 .sub-footer {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
@@ -463,9 +468,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: right, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: hidden !important;
@@ -539,6 +544,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #0E0E12;
 }
 .footer {
   background: #0E0E12;
@@ -564,9 +570,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -632,6 +638,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #0E0E12;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0));
@@ -652,9 +659,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: false, hasFooter: true, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -720,6 +727,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
@@ -750,9 +758,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: true, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -823,6 +831,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
@@ -843,9 +852,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: true, hasFooter: true, hasSubFooter: false, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -916,6 +925,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #0E0E12;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0));
@@ -946,9 +956,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: left, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -1021,6 +1031,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #FFF;
 }
 .footer {
   background: #FFF;
@@ -1046,9 +1057,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: dark 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -1114,6 +1125,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #0E0E12;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0));
@@ -1134,9 +1146,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: false, hasFooter: true, hasSubFooter: false, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -1202,6 +1214,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
@@ -1230,11 +1243,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: false, hasSubFooter: false, theme: auto 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -1305,6 +1318,122 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #FFF;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
+  background-position: bottom center, top center, bottom center, top center;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
+  background-attachment: local, local, scroll, scroll;
+  overscroll-behavior-y: none;
+}
+@media (prefers-color-scheme: dark) {
+  .header {
+    background: #0E0E12;
+  }
+  .header--shadow {
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
+  }
+  .dismiss {
+    border-color: #0E0E12;
+    background: #0E0E12;
+  }
+  .root {
+    color: #FBFCFF;
+    background: #0E0E12;
+  }
+  .content {
+    background-image: linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0));
+    background-color: #0E0E12;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background: #AFB0B3;
+    border-color: #AFB0B3;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
+":host {
+  display: flex;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  position: fixed !important;
+  z-index: 99998 !important;
+  visibility: inherit !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  color-scheme: light dark !important;
+}
+:host::before {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  transition: opacity 0.5s cubic-bezier(.16,1,.3,1), backdrop-filter 0.5s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter 0.5s cubic-bezier(.16,1,.3,1) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  background: #FFF;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.header--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
+}
+.header-content {
+  flex: auto;
+  padding: 16px 0 16px clamp(32px, 2.75vw + 23px, 76px);
+}
+.dismiss {
+  margin: 16px;
+  height: fit-content;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background: #FFF;
+}
+.root {
+  color: #010205;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: auto;
+  box-sizing: border-box;
+  width: var(--p-flyout-width, auto);
+  height: 100%;
+  min-width: 320px;
+  max-width: var(--p-flyout-max-width, 1180px);
+  background: #FFF;
+  opacity: 1;
+  transform: initial;
+  transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
+}
+.content {
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
+  background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
@@ -1323,11 +1452,122 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: true, hasSubFooter: false, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: false, hasSubFooter: true, theme: auto 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
+  position: fixed !important;
+  z-index: 99998 !important;
+  visibility: inherit !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  color-scheme: light dark !important;
+}
+:host::before {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  transition: opacity 0.5s cubic-bezier(.16,1,.3,1), backdrop-filter 0.5s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter 0.5s cubic-bezier(.16,1,.3,1) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  background: #FFF;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.header--shadow {
+  box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
+}
+.header-content {
+  flex: auto;
+  padding: 16px 0 16px clamp(32px, 2.75vw + 23px, 76px);
+}
+.dismiss {
+  margin: 16px;
+  height: fit-content;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  background: #FFF;
+}
+.root {
+  color: #010205;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: auto;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior-y: none;
+  width: var(--p-flyout-width, auto);
+  height: 100%;
+  min-width: 320px;
+  max-width: var(--p-flyout-max-width, 1180px);
+  background: #FFF;
+  opacity: 1;
+  transform: initial;
+  transition: opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0s, transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
+}
+.content {
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
+  position: relative;
+  z-index: 0;
+  background-color: #FFF;
+}
+.sub-footer {
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
+}
+@media (prefers-color-scheme: dark) {
+  .header {
+    background: #0E0E12;
+  }
+  .header--shadow {
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 5px 10px;
+  }
+  .dismiss {
+    border-color: #0E0E12;
+    background: #0E0E12;
+  }
+  .root {
+    color: #FBFCFF;
+    background: #0E0E12;
+  }
+  .content {
+    background-color: #0E0E12;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background: #AFB0B3;
+    border-color: #AFB0B3;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: true, hasSubFooter: false, theme: dark 1`] = `
+":host {
+  display: flex;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -1398,6 +1638,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #0E0E12;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-image: linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, #0E0E12, #0E0E12), linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(14, 14, 18, 0));
@@ -1428,9 +1669,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: right, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: light 1`] = `
 ":host {
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  display: flex !important;
   position: fixed !important;
   z-index: 99998 !important;
   visibility: inherit !important;
@@ -1503,6 +1744,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
+  background-color: #FFF;
 }
 .footer {
   background: #FFF;

@@ -18,7 +18,6 @@ const sanitizePlaygroundThemeValue = (value: string | null): PlaygroundTheme =>
 
 export type State = {
   isLoading: boolean;
-  lastTimeout?: number;
   isMenuActive: boolean;
   isSearchActive: boolean;
   selectedFramework: Framework;
@@ -28,7 +27,6 @@ export type State = {
 
 const initialState: State = {
   isLoading: false,
-  lastTimeout: undefined,
   isMenuActive: false,
   isSearchActive: false,
   selectedFramework: sanitizeSelectedFrameworkValue(localStorage.getItem('selectedFramework')),
@@ -42,14 +40,8 @@ export default new Vuex.Store({
     setIsLoading(state: State, payload: boolean): void {
       state.isLoading = payload;
     },
-    setLastTimeout(state: State, payload): void {
-      state.lastTimeout = payload;
-    },
     setIsMenuActive(state: State, payload: boolean): void {
       state.isMenuActive = payload;
-    },
-    toggleIsMenuActive(state: State): void {
-      state.isMenuActive = !state.isMenuActive;
     },
     setIsSearchActive(state: State, payload: boolean): void {
       state.isSearchActive = payload;
