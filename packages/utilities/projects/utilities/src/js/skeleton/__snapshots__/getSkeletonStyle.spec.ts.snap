@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getSkeletonStyle() should return correct css for opts: { borderRadius: '6px', theme: 'light' } 1`] = `
+exports[`getSkeletonStyle() should return correct css for opts: { theme: 'dark' } 1`] = `
 {
   "@keyframes skeletonAnimation": {
     "from": {
@@ -10,65 +10,14 @@ exports[`getSkeletonStyle() should return correct css for opts: { borderRadius: 
       "backgroundPositionX": "-100%",
     },
   },
-  "animation": "skeletonAnimation var(--transition-duration-long, .6s) var(--easing-base, cubic-bezier(0.25,0.1,0.25,1)) infinite",
-  "background": "#EEEFF2 linear-gradient(to right, transparent 0%, #f7f7f7 25%, transparent 50%) 0 0 / 200% 100%",
-  "borderRadius": "6px",
-  "display": "block",
-}
-`;
-
-exports[`getSkeletonStyle() should return correct css for opts: { borderRadius: 'medium', theme: 'dark' } 1`] = `
-{
-  "@keyframes skeletonAnimation": {
-    "from": {
-      "backgroundPositionX": "100%",
-    },
-    "to": {
-      "backgroundPositionX": "-100%",
-    },
-  },
-  "animation": "skeletonAnimation var(--transition-duration-long, .6s) var(--easing-base, cubic-bezier(0.25,0.1,0.25,1)) infinite",
-  "background": "#212225 linear-gradient(to right, transparent 0%, #1a1b1e 25%, transparent 50%) 0 0 / 200% 100%",
-  "borderRadius": "8px",
-  "display": "block",
-}
-`;
-
-exports[`getSkeletonStyle() should return correct css for opts: { borderRadius: 'medium', theme: 'light' } 1`] = `
-{
-  "@keyframes skeletonAnimation": {
-    "from": {
-      "backgroundPositionX": "100%",
-    },
-    "to": {
-      "backgroundPositionX": "-100%",
-    },
-  },
-  "animation": "skeletonAnimation var(--transition-duration-long, .6s) var(--easing-base, cubic-bezier(0.25,0.1,0.25,1)) infinite",
-  "background": "#EEEFF2 linear-gradient(to right, transparent 0%, #f7f7f7 25%, transparent 50%) 0 0 / 200% 100%",
-  "borderRadius": "8px",
-  "display": "block",
-}
-`;
-
-exports[`getSkeletonStyle() should return correct css for opts: { borderRadius: 'small', theme: 'dark' } 1`] = `
-{
-  "@keyframes skeletonAnimation": {
-    "from": {
-      "backgroundPositionX": "100%",
-    },
-    "to": {
-      "backgroundPositionX": "-100%",
-    },
-  },
-  "animation": "skeletonAnimation var(--transition-duration-long, .6s) var(--easing-base, cubic-bezier(0.25,0.1,0.25,1)) infinite",
+  "animation": "skeletonAnimation .6s cubic-bezier(0.25,0.1,0.25,1) infinite",
   "background": "#212225 linear-gradient(to right, transparent 0%, #1a1b1e 25%, transparent 50%) 0 0 / 200% 100%",
   "borderRadius": "4px",
   "display": "block",
 }
 `;
 
-exports[`getSkeletonStyle() should return correct css for opts: { borderRadius: 'small', theme: 'light' } 1`] = `
+exports[`getSkeletonStyle() should return correct css for opts: { theme: 'light' } 1`] = `
 {
   "@keyframes skeletonAnimation": {
     "from": {
@@ -78,24 +27,7 @@ exports[`getSkeletonStyle() should return correct css for opts: { borderRadius: 
       "backgroundPositionX": "-100%",
     },
   },
-  "animation": "skeletonAnimation var(--transition-duration-long, .6s) var(--easing-base, cubic-bezier(0.25,0.1,0.25,1)) infinite",
-  "background": "#EEEFF2 linear-gradient(to right, transparent 0%, #f7f7f7 25%, transparent 50%) 0 0 / 200% 100%",
-  "borderRadius": "4px",
-  "display": "block",
-}
-`;
-
-exports[`getSkeletonStyle() should return correct css for opts: { borderRadius: undefined, theme: 'light' } 1`] = `
-{
-  "@keyframes skeletonAnimation": {
-    "from": {
-      "backgroundPositionX": "100%",
-    },
-    "to": {
-      "backgroundPositionX": "-100%",
-    },
-  },
-  "animation": "skeletonAnimation var(--transition-duration-long, .6s) var(--easing-base, cubic-bezier(0.25,0.1,0.25,1)) infinite",
+  "animation": "skeletonAnimation .6s cubic-bezier(0.25,0.1,0.25,1) infinite",
   "background": "#EEEFF2 linear-gradient(to right, transparent 0%, #f7f7f7 25%, transparent 50%) 0 0 / 200% 100%",
   "borderRadius": "4px",
   "display": "block",

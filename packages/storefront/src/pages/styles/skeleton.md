@@ -21,7 +21,7 @@ The styles are available as `JavaScript` and `SCSS` version. Look at the example
 JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
-- `getSkeletonStyle({ theme: 'light' | 'dark', borderRadius: 'small' | 'medium' | string })`
+- `getSkeletonStyle({ theme: 'light' | 'dark' })`
 
 ---
 
@@ -29,7 +29,7 @@ JavaScript styles can be imported by
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
 
-- `@mixin pds-skeleton($theme: 'light' | 'dark', $border-radius: 'small' | 'medium' | any)`
+- `@mixin pds-skeleton($theme: 'light' | 'dark')`
 
 <script lang="ts">
 import Vue from 'vue';

@@ -1,20 +1,12 @@
-import { borderRadiusMedium, borderRadiusSmall } from '../border';
+import { borderRadiusSmall } from '../border';
 import { type Theme, themeLightBackgroundSurface, themeDarkBackgroundSurface } from '../theme';
 
-type BorderRadius = 'small' | 'medium';
 type Options = {
-  borderRadius?: BorderRadius | string;
-  theme?: Theme;
+  theme?: Exclude<Theme, 'auto'>;
 };
 
 export const getSkeletonStyle = (opts?: Options) => {
-  const { borderRadius = 'small', theme = 'light' } = opts || {};
-  const borderRadiusValue =
-    borderRadius === 'small'
-      ? borderRadiusSmall
-      : borderRadius === 'medium'
-      ? borderRadiusMedium
-      : borderRadius || borderRadiusSmall;
+  const { theme = 'light' } = opts || {};
 
   const isThemeDark = theme === 'dark';
   const backgroundColor = isThemeDark ? themeDarkBackgroundSurface : themeLightBackgroundSurface;
@@ -23,9 +15,8 @@ export const getSkeletonStyle = (opts?: Options) => {
   return {
     display: 'block',
     background: `${backgroundColor} linear-gradient(to right, transparent 0%, ${highlightColor} 25%, transparent 50%) 0 0 / 200% 100%`,
-    borderRadius: borderRadiusValue,
-    animation:
-      'skeletonAnimation var(--transition-duration-long, .6s) var(--easing-base, cubic-bezier(0.25,0.1,0.25,1)) infinite', // TODO: use motion variables
+    borderRadius: borderRadiusSmall,
+    animation: 'skeletonAnimation .6s cubic-bezier(0.25,0.1,0.25,1) infinite', // TODO: use motion variables
     '@keyframes skeletonAnimation': {
       from: { backgroundPositionX: '100%' },
       to: { backgroundPositionX: '-100%' },
