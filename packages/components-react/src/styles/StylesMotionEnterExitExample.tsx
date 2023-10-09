@@ -43,7 +43,7 @@ const MotionEnterExit = styled.div({
   transitionTimingFunction: motionEasingIn,
 });
 
-export const StylesMotionMovingExample = (): JSX.Element => {
+export const StylesMotionEnterExitExample = (): JSX.Element => {
   return (
     <>
       <style>{`
