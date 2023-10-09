@@ -13,13 +13,7 @@ afterEach(async () => await page.close());
 const internalUrls = getInternalUrls().filter((url) => !url.match(/^\/assets\/.*\.\w{3,4}$/));
 
 const themeableComponents = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isThemeable).join();
-const componentsWithThemeAutoSelector = `:where(${themeableComponents})${[
-  ':not(.playground > .example *)', // everything inside playground is not based on color-scheme preferences
-  ':not(p-flyout):not(p-flyout *)', // flyout theme is defined by chosen playground theme as well as for its slotted content
-  ':not(p-banner)', // banner theme is defined by chosen playground theme
-  ':not(p-toast)', // toast theme is defined by chosen playground theme
-  ':not(p-button.close-menu-button)', // theme dark is always used since button is placed on shading surface
-].join('')}`;
+const componentsWithThemeAutoSelector = `:where(${themeableComponents}):not(.playground *)`; // everything inside playground is not based on color-scheme preferences
 
 it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
   'should have auto dark mode support at %s',

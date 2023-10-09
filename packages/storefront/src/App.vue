@@ -4,29 +4,29 @@
   </main>
   <div id="app" v-else>
     <Header />
-    <Aside />
+    <MenuMobile />
+    <MenuDesktop />
     <Main>
       <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
     </Main>
-    <Backdrop />
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import Backdrop from '@/components/Backdrop.vue';
   import Header from '@/components/Header.vue';
-  import Aside from '@/components/Aside.vue';
   import Main from '@/components/Main.vue';
+  import MenuMobile from '@/components/MenuMobile.vue';
+  import MenuDesktop from '@/components/MenuDesktop.vue';
   import { Watch } from 'vue-property-decorator';
 
   @Component({
     components: {
-      Backdrop,
       Header,
-      Aside,
       Main,
+      MenuMobile,
+      MenuDesktop,
     },
   })
   export default class App extends Vue {

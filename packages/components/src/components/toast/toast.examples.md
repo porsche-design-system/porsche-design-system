@@ -36,6 +36,8 @@ type ToastMessage = {
   </label>
   <br><br>
   <p-button type="button" :theme="theme" @click="queueToast()">Queue Toast</p-button>
+  <!-- shared across playgrounds -->
+  <p-toast ref="toast" :theme="theme" :style="`--p-toast-position-bottom: ${positionBottom}px`"></p-toast>
 </Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
@@ -58,10 +60,6 @@ The bottom position of the `p-toast` can be adjusted via the `--p-toast-position
   <br><br>
   <p-button type="button" :theme="theme" @click="queueToast()">Queue Toast</p-button>
 </Playground>
-
-<!-- shared across playgrounds -->
-
-<p-toast ref="toast" :theme="theme" :style="`--p-toast-position-bottom: ${positionBottom}px`"></p-toast>
 
 <script lang="ts">
 import Vue from 'vue';

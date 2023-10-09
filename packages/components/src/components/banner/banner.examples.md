@@ -25,10 +25,9 @@ styling" section.
   <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
   <br><br>
   <p-button type="button" :theme="theme" @click="isBannerStateOpen = true">Open Banner</p-button>
+  <p-banner :theme="theme" :open="isBannerStateOpen" heading="Some Heading" description="Some Description" :state="state"
+    @dismiss="isBannerStateOpen = false"></p-banner>
 </Playground>
-
-<p-banner :theme="theme" :open="isBannerStateOpen" heading="Some Heading" description="Some Description" :state="state"
-@dismiss="isBannerStateOpen = false"></p-banner>
 
 ## Slotted heading and description
 
@@ -41,12 +40,11 @@ Rich content for `heading` and `description` can be provided via named slots.
 
 <Playground :markup="slottedHeadingDescriptionMarkup" :config="config">
   <p-button type="button" :theme="theme" @click="isBannerSlottedOpen = true">Open Banner</p-button>
+  <p-banner :theme="theme" :open="isBannerSlottedOpen" :state="state" @dismiss="isBannerSlottedOpen = false">
+  <span slot="heading">Some heading with a <a href="https://porsche.com">link</a></span> <span slot="description">Some
+  description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
+  </p-banner>
 </Playground>
-
-<p-banner :theme="theme" :open="isBannerSlottedOpen" :state="state" @dismiss="isBannerSlottedOpen = false">
-<span slot="heading">Some heading with a <a href="https://porsche.com">link</a></span> <span slot="description">Some
-description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
-</p-banner>
 
 ## Without Close/Dismiss Button
 
@@ -59,10 +57,9 @@ If the **Banner** shouldn't be removable by the user, add `dismissButton` prop.
 
 <Playground :markup="dismissButtonMarkup" :config="config">
   <p-button type="button" :theme="theme" @click="isBannerDismissBtnOpen = true">Open Banner</p-button>
+  <p-banner :theme="theme" :open="isBannerDismissBtnOpen" heading="Some Heading" description="Some Description"
+    :state="state" dismiss-button="false"></p-banner>
 </Playground>
-
-<p-banner :theme="theme" :open="isBannerDismissBtnOpen" heading="Some Heading" description="Some Description"
-:state="state" dismiss-button="false"></p-banner>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
