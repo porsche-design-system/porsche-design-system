@@ -26,6 +26,7 @@ Done** (DOD).
   - WCAG 2.1 level AA
   - High Contrast Mode
   - 200% Text Zoom Support
+- Auto Dark Theme Support
 - SSR Support for Next.js and Remix
 - Components are available on UXPin
 - Security vulnerability scan passes (CodeQL of GitHub)
@@ -37,6 +38,6 @@ Done** (DOD).
 
 ## Potential Future Criteria
 
-- Auto Dark Theme Support (VRT)
+- LTR/RTL (left-to-right/right-to-left) Support (VRT)
 - Print Support (VRT)
 - Component a11y tests via axe-core (E2E)

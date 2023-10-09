@@ -76,213 +76,164 @@
   @import '../styles/internal.variables';
 
   .code-block {
-    &--light {
-      code,
-      pre {
-        color: $pds-theme-light-primary;
-      }
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: $pds-spacing-static-medium;
 
-      pre {
-        background: $pds-theme-light-background-base; // to ensure scrollbar coloring is optimal for theme light
+    &--light,
+    &--auto {
+      --code-block-color: #{$pds-theme-light-primary};
+      --code-block-background: #{$pds-theme-light-background-base};
+      --code-block-token-comment: #696969;
+      --code-block-token-punctuation: #545454;
+      --code-block-token-property: #007299;
+      --code-block-token-boolean: #008000;
+      --code-block-token-selector: #aa5d00;
+      --code-block-token-operator: #008000;
+      --code-block-token-atrule: #418340;
+      --code-block-token-keyword: #d91e18;
+      --code-block-token-regex: #d91e18;
 
-        :deep(code) {
-          // source: https://github.com/ericwbailey/a11y-syntax-highlighting/blob/main/dist/prism/a11y-light.css#L52-L107
-
-          .token.comment,
-          .token.prolog,
-          .token.doctype,
-          .token.cdata {
-            color: #696969;
-          }
-
-          .token.punctuation {
-            color: #545454;
-          }
-
-          .token.property,
-          .token.tag,
-          .token.constant,
-          .token.symbol,
-          .token.deleted {
-            color: #007299;
-          }
-
-          .token.boolean,
-          .token.number {
-            color: #008000;
-          }
-
-          .token.selector,
-          .token.attr-name,
-          .token.string,
-          .token.char,
-          .token.builtin,
-          .token.inserted {
-            color: #aa5d00;
-          }
-
-          .token.operator,
-          .token.entity,
-          .token.url,
-          .language-css .token.string,
-          .style .token.string,
-          .token.variable {
-            color: #008000;
-          }
-
-          .token.atrule,
-          .token.attr-value,
-          .token.function {
-            color: #418340; // NOTE: this is custom and not from the theme
-          }
-
-          .token.keyword {
-            color: #d91e18;
-          }
-
-          .token.regex,
-          .token.important {
-            color: #d91e18;
-          }
-        }
-      }
-
-      // the following are all custom based on above values
-      // extracted from chrome dev tools contrast utility
       &.code-block--background-surface {
-        pre {
-          background: $pds-theme-light-background-surface; // to ensure scrollbar coloring is optimal for theme light
-
-          :deep(code) {
-            .token.selector,
-            .token.attr-name,
-            .token.string,
-            .token.char,
-            .token.builtin,
-            .token.inserted {
-              color: #7e4603;
-            }
-
-            .token.atrule,
-            .token.attr-value,
-            .token.function {
-              color: #30612f;
-            }
-          }
-        }
+        --code-block-background: #{$pds-theme-light-background-surface};
+        --code-block-token-selector: #7e4603; // TODO: we should try to find a color which works on base and surface color at the same time
+        --code-block-token-atrule: #30612f; // TODO: we should try to find a color which works on base and surface color at the same time
       }
     }
 
     &--dark {
-      code,
-      pre {
-        color: $pds-theme-dark-primary;
-      }
-
-      pre {
-        background: $pds-theme-dark-background-base; // to ensure scrollbar coloring is optimal for theme dark
-
-        :deep(code) {
-          // source: https://github.com/ericwbailey/a11y-syntax-highlighting/blob/main/dist/prism/a11y-dark.css#L52-L107
-
-          .token.comment,
-          .token.prolog,
-          .token.doctype,
-          .token.cdata {
-            color: #d4d0ab;
-          }
-
-          .token.punctuation {
-            color: #fefefe;
-          }
-
-          .token.property,
-          .token.tag,
-          .token.constant,
-          .token.symbol,
-          .token.deleted {
-            color: #ffa07a;
-          }
-
-          .token.boolean,
-          .token.number {
-            color: #00e0e0;
-          }
-
-          .token.selector,
-          .token.attr-name,
-          .token.string,
-          .token.char,
-          .token.builtin,
-          .token.inserted {
-            color: #abe338;
-          }
-
-          .token.operator,
-          .token.entity,
-          .token.url,
-          .language-css .token.string,
-          .style .token.string,
-          .token.variable {
-            color: #00e0e0;
-          }
-
-          .token.atrule,
-          .token.attr-value,
-          .token.function {
-            color: #ffd700;
-          }
-
-          .token.keyword {
-            color: #00e0e0;
-          }
-
-          .token.regex,
-          .token.important {
-            color: #ffd700;
-          }
-        }
-      }
+      --code-block-color: #{$pds-theme-dark-primary};
+      --code-block-background: #{$pds-theme-dark-background-base};
+      --code-block-token-comment: #d4d0ab;
+      --code-block-token-punctuation: #fefefe;
+      --code-block-token-property: #ffa07a;
+      --code-block-token-boolean: #00e0e0;
+      --code-block-token-selector: #abe338;
+      --code-block-token-operator: #00e0e0;
+      --code-block-token-atrule: #ffd700;
+      --code-block-token-keyword: #00e0e0;
+      --code-block-token-regex: #ffd700;
+      --code-block-token-selector-surface: #abe338;
+      --code-block-token-selector-atrule: #ffd700;
 
       &.code-block--background-surface {
-        pre {
-          background: $pds-theme-dark-background-surface; // to ensure scrollbar coloring is optimal for theme dark
+        --code-block-background: #{$pds-theme-dark-background-surface};
+      }
+    }
+
+    &--auto {
+      @media (prefers-color-scheme: dark) {
+        --code-block-color: #{$pds-theme-dark-primary};
+        --code-block-background: #{$pds-theme-dark-background-base};
+        --code-block-token-comment: #d4d0ab;
+        --code-block-token-punctuation: #fefefe;
+        --code-block-token-property: #ffa07a;
+        --code-block-token-boolean: #00e0e0;
+        --code-block-token-selector: #abe338 !important;
+        --code-block-token-operator: #00e0e0;
+        --code-block-token-atrule: #ffd700 !important;
+        --code-block-token-keyword: #00e0e0;
+        --code-block-token-regex: #ffd700;
+        --code-block-token-selector-surface: #abe338;
+        --code-block-token-selector-atrule: #ffd700;
+
+        &.code-block--background-surface {
+          --code-block-background: #{$pds-theme-dark-background-surface};
         }
       }
     }
-  }
 
-  code,
-  pre {
-    background: transparent;
-    font-family: Monaco, Menlo, 'Andale Mono', 'Ubuntu Mono', monospace;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    tab-size: 2;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    hyphens: none;
-  }
-
-  pre {
-    max-height: 20rem;
-    overflow: auto;
-    &:not(:first-child) {
-      margin-top: $pds-spacing-static-medium;
+    code,
+    pre {
+      background: transparent;
+      font-family: Monaco, Menlo, 'Andale Mono', 'Ubuntu Mono', monospace;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      tab-size: 2;
+      text-align: left;
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      word-wrap: normal;
+      hyphens: none;
+      color: var(--code-block-color);
     }
-    @include pds-focus('small', 1px);
 
-    :deep(code) {
-      .token.important,
-      .token.bold {
-        font-weight: bold;
-      }
+    pre {
+      @include pds-focus('small', 1px);
+      max-height: 20rem;
+      overflow: auto;
+      background: var(--code-block-background); // to ensure scrollbar coloring is optimal for any theme
 
-      .token.italic {
-        font-style: italic;
+      :deep(code) {
+        // source: https://github.com/ericwbailey/a11y-syntax-highlighting/blob/main/dist/prism/a11y-light.css#L52-L107
+
+        .token.important,
+        .token.bold {
+          font-weight: bold;
+        }
+
+        .token.italic {
+          font-style: italic;
+        }
+
+        .token.comment,
+        .token.prolog,
+        .token.doctype,
+        .token.cdata {
+          color: var(--code-block-token-comment);
+        }
+
+        .token.punctuation {
+          color: var(--code-block-token-punctuation);
+        }
+
+        .token.property,
+        .token.tag,
+        .token.constant,
+        .token.symbol,
+        .token.deleted {
+          color: var(--code-block-token-property);
+        }
+
+        .token.boolean,
+        .token.number {
+          color: var(--code-block-token-boolean);
+        }
+
+        .token.selector,
+        .token.attr-name,
+        .token.string,
+        .token.char,
+        .token.builtin,
+        .token.inserted {
+          color: var(--code-block-token-selector);
+        }
+
+        .token.operator,
+        .token.entity,
+        .token.url,
+        .language-css .token.string,
+        .style .token.string,
+        .token.variable {
+          color: var(--code-block-token-operator);
+        }
+
+        .token.atrule,
+        .token.attr-value,
+        .token.function {
+          color: var(--code-block-token-atrule); // NOTE: this is custom and not from the theme
+        }
+
+        .token.keyword {
+          color: var(--code-block-token-keyword);
+        }
+
+        .token.regex,
+        .token.important {
+          color: var(--code-block-token-regex);
+        }
       }
     }
   }

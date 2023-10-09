@@ -148,29 +148,9 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         visibility: inherit
       }
 
-      p-accordion a,
-      p-banner a,
-      p-carousel a,
-      p-checkbox-wrapper a,
-      p-display a,
-      p-flyout a,
-      p-heading a,
-      p-headline a,
-      p-inline-notification a,
-      p-modal a,
-      p-multi-select a,
-      p-pin-code a,
-      p-popover a,
-      p-radio-button-wrapper a,
-      p-select-wrapper a,
-      p-switch a,
-      p-table a,
-      p-tabs a,
-      p-text a,
-      p-text-field-wrapper a,
-      p-text-list a,
-      p-textarea-wrapper a {
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
         color: currentcolor !important;
+        transition: background var(--p-transition-duration, .24s) ease !important;
         margin-left: -2px !important;
         margin-right: -2px !important;
         padding-left: 2px !important;
@@ -179,126 +159,35 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         text-decoration: underline !important
       }
 
-      p-accordion a:focus,
-      p-banner a:focus,
-      p-carousel a:focus,
-      p-checkbox-wrapper a:focus,
-      p-display a:focus,
-      p-flyout a:focus,
-      p-heading a:focus,
-      p-headline a:focus,
-      p-inline-notification a:focus,
-      p-modal a:focus,
-      p-multi-select a:focus,
-      p-pin-code a:focus,
-      p-popover a:focus,
-      p-radio-button-wrapper a:focus,
-      p-select-wrapper a:focus,
-      p-switch a:focus,
-      p-table a:focus,
-      p-tabs a:focus,
-      p-text a:focus,
-      p-text-field-wrapper a:focus,
-      p-text-list a:focus,
-      p-textarea-wrapper a:focus {
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
         outline: 2px solid #1A44EA !important;
         outline-offset: 0 !important
       }
 
-      p-accordion a:focus:not(:focus-visible),
-      p-banner a:focus:not(:focus-visible),
-      p-carousel a:focus:not(:focus-visible),
-      p-checkbox-wrapper a:focus:not(:focus-visible),
-      p-display a:focus:not(:focus-visible),
-      p-flyout a:focus:not(:focus-visible),
-      p-heading a:focus:not(:focus-visible),
-      p-headline a:focus:not(:focus-visible),
-      p-inline-notification a:focus:not(:focus-visible),
-      p-modal a:focus:not(:focus-visible),
-      p-multi-select a:focus:not(:focus-visible),
-      p-pin-code a:focus:not(:focus-visible),
-      p-popover a:focus:not(:focus-visible),
-      p-radio-button-wrapper a:focus:not(:focus-visible),
-      p-select-wrapper a:focus:not(:focus-visible),
-      p-switch a:focus:not(:focus-visible),
-      p-table a:focus:not(:focus-visible),
-      p-tabs a:focus:not(:focus-visible),
-      p-text a:focus:not(:focus-visible),
-      p-text-field-wrapper a:focus:not(:focus-visible),
-      p-text-list a:focus:not(:focus-visible),
-      p-textarea-wrapper a:focus:not(:focus-visible) {
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
         outline-color: transparent !important
       }
 
-      p-text-field-wrapper input::-webkit-outer-spin-button,
-      p-text-field-wrapper input::-webkit-inner-spin-button,
-      p-text-field-wrapper input::-webkit-search-decoration,
-      p-text-field-wrapper input::-webkit-search-cancel-button,
-      p-text-field-wrapper input::-webkit-calendar-picker-indicator {
+      :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
+      :is(p-text-field-wrapper) input::-webkit-inner-spin-button,
+      :is(p-text-field-wrapper) input::-webkit-search-decoration,
+      :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
+      :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
         display: none !important
       }
 
-      p-table img {
+      :is(p-table) img {
         vertical-align: middle !important
       }
 
-      p-button-tile picture img,
-      p-link-tile picture img,
-      p-link-tile-model-signature picture img {
+      :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important
       }
 
       @media(hover:hover) {
-
-        p-accordion a,
-        p-banner a,
-        p-carousel a,
-        p-checkbox-wrapper a,
-        p-display a,
-        p-flyout a,
-        p-heading a,
-        p-headline a,
-        p-inline-notification a,
-        p-modal a,
-        p-multi-select a,
-        p-pin-code a,
-        p-popover a,
-        p-radio-button-wrapper a,
-        p-select-wrapper a,
-        p-switch a,
-        p-table a,
-        p-tabs a,
-        p-text a,
-        p-text-field-wrapper a,
-        p-text-list a,
-        p-textarea-wrapper a {
-          transition: background var(--p-transition-duration, .24s) ease !important
-        }
-
-        p-accordion a:hover,
-        p-banner a:hover,
-        p-carousel a:hover,
-        p-checkbox-wrapper a:hover,
-        p-display a:hover,
-        p-flyout a:hover,
-        p-heading a:hover,
-        p-headline a:hover,
-        p-inline-notification a:hover,
-        p-modal a:hover,
-        p-multi-select a:hover,
-        p-pin-code a:hover,
-        p-popover a:hover,
-        p-radio-button-wrapper a:hover,
-        p-select-wrapper a:hover,
-        p-switch a:hover,
-        p-table a:hover,
-        p-tabs a:hover,
-        p-text a:hover,
-        p-text-field-wrapper a:hover,
-        p-text-list a:hover,
-        p-textarea-wrapper a:hover {
+        :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:hover {
           background: rgba(148, 149, 152, .18) !important
         }
       }
@@ -488,29 +377,9 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
             visibility: inherit
           }
 
-          p-accordion a,
-          p-banner a,
-          p-carousel a,
-          p-checkbox-wrapper a,
-          p-display a,
-          p-flyout a,
-          p-heading a,
-          p-headline a,
-          p-inline-notification a,
-          p-modal a,
-          p-multi-select a,
-          p-pin-code a,
-          p-popover a,
-          p-radio-button-wrapper a,
-          p-select-wrapper a,
-          p-switch a,
-          p-table a,
-          p-tabs a,
-          p-text a,
-          p-text-field-wrapper a,
-          p-text-list a,
-          p-textarea-wrapper a {
+          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
             color: currentcolor !important;
+            transition: background var(--p-transition-duration, .24s) ease !important;
             margin-left: -2px !important;
             margin-right: -2px !important;
             padding-left: 2px !important;
@@ -519,126 +388,35 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
             text-decoration: underline !important
           }
 
-          p-accordion a:focus,
-          p-banner a:focus,
-          p-carousel a:focus,
-          p-checkbox-wrapper a:focus,
-          p-display a:focus,
-          p-flyout a:focus,
-          p-heading a:focus,
-          p-headline a:focus,
-          p-inline-notification a:focus,
-          p-modal a:focus,
-          p-multi-select a:focus,
-          p-pin-code a:focus,
-          p-popover a:focus,
-          p-radio-button-wrapper a:focus,
-          p-select-wrapper a:focus,
-          p-switch a:focus,
-          p-table a:focus,
-          p-tabs a:focus,
-          p-text a:focus,
-          p-text-field-wrapper a:focus,
-          p-text-list a:focus,
-          p-textarea-wrapper a:focus {
+          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
             outline: 2px solid #1A44EA !important;
             outline-offset: 0 !important
           }
 
-          p-accordion a:focus:not(:focus-visible),
-          p-banner a:focus:not(:focus-visible),
-          p-carousel a:focus:not(:focus-visible),
-          p-checkbox-wrapper a:focus:not(:focus-visible),
-          p-display a:focus:not(:focus-visible),
-          p-flyout a:focus:not(:focus-visible),
-          p-heading a:focus:not(:focus-visible),
-          p-headline a:focus:not(:focus-visible),
-          p-inline-notification a:focus:not(:focus-visible),
-          p-modal a:focus:not(:focus-visible),
-          p-multi-select a:focus:not(:focus-visible),
-          p-pin-code a:focus:not(:focus-visible),
-          p-popover a:focus:not(:focus-visible),
-          p-radio-button-wrapper a:focus:not(:focus-visible),
-          p-select-wrapper a:focus:not(:focus-visible),
-          p-switch a:focus:not(:focus-visible),
-          p-table a:focus:not(:focus-visible),
-          p-tabs a:focus:not(:focus-visible),
-          p-text a:focus:not(:focus-visible),
-          p-text-field-wrapper a:focus:not(:focus-visible),
-          p-text-list a:focus:not(:focus-visible),
-          p-textarea-wrapper a:focus:not(:focus-visible) {
+          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
             outline-color: transparent !important
           }
 
-          p-text-field-wrapper input::-webkit-outer-spin-button,
-          p-text-field-wrapper input::-webkit-inner-spin-button,
-          p-text-field-wrapper input::-webkit-search-decoration,
-          p-text-field-wrapper input::-webkit-search-cancel-button,
-          p-text-field-wrapper input::-webkit-calendar-picker-indicator {
+          :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
+          :is(p-text-field-wrapper) input::-webkit-inner-spin-button,
+          :is(p-text-field-wrapper) input::-webkit-search-decoration,
+          :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
+          :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
             display: none !important
           }
 
-          p-table img {
+          :is(p-table) img {
             vertical-align: middle !important
           }
 
-          p-button-tile picture img,
-          p-link-tile picture img,
-          p-link-tile-model-signature picture img {
+          :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important
           }
 
           @media(hover:hover) {
-
-            p-accordion a,
-            p-banner a,
-            p-carousel a,
-            p-checkbox-wrapper a,
-            p-display a,
-            p-flyout a,
-            p-heading a,
-            p-headline a,
-            p-inline-notification a,
-            p-modal a,
-            p-multi-select a,
-            p-pin-code a,
-            p-popover a,
-            p-radio-button-wrapper a,
-            p-select-wrapper a,
-            p-switch a,
-            p-table a,
-            p-tabs a,
-            p-text a,
-            p-text-field-wrapper a,
-            p-text-list a,
-            p-textarea-wrapper a {
-              transition: background var(--p-transition-duration, .24s) ease !important
-            }
-
-            p-accordion a:hover,
-            p-banner a:hover,
-            p-carousel a:hover,
-            p-checkbox-wrapper a:hover,
-            p-display a:hover,
-            p-flyout a:hover,
-            p-heading a:hover,
-            p-headline a:hover,
-            p-inline-notification a:hover,
-            p-modal a:hover,
-            p-multi-select a:hover,
-            p-pin-code a:hover,
-            p-popover a:hover,
-            p-radio-button-wrapper a:hover,
-            p-select-wrapper a:hover,
-            p-switch a:hover,
-            p-table a:hover,
-            p-tabs a:hover,
-            p-text a:hover,
-            p-text-field-wrapper a:hover,
-            p-text-list a:hover,
-            p-textarea-wrapper a:hover {
+            :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:hover {
               background: rgba(148, 149, 152, .18) !important
             }
           }
@@ -789,29 +567,9 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         visibility: inherit
       }
 
-      p-accordion a,
-      p-banner a,
-      p-carousel a,
-      p-checkbox-wrapper a,
-      p-display a,
-      p-flyout a,
-      p-heading a,
-      p-headline a,
-      p-inline-notification a,
-      p-modal a,
-      p-multi-select a,
-      p-pin-code a,
-      p-popover a,
-      p-radio-button-wrapper a,
-      p-select-wrapper a,
-      p-switch a,
-      p-table a,
-      p-tabs a,
-      p-text a,
-      p-text-field-wrapper a,
-      p-text-list a,
-      p-textarea-wrapper a {
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
         color: currentcolor !important;
+        transition: background var(--p-transition-duration, .24s) ease !important;
         margin-left: -2px !important;
         margin-right: -2px !important;
         padding-left: 2px !important;
@@ -820,126 +578,35 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         text-decoration: underline !important
       }
 
-      p-accordion a:focus,
-      p-banner a:focus,
-      p-carousel a:focus,
-      p-checkbox-wrapper a:focus,
-      p-display a:focus,
-      p-flyout a:focus,
-      p-heading a:focus,
-      p-headline a:focus,
-      p-inline-notification a:focus,
-      p-modal a:focus,
-      p-multi-select a:focus,
-      p-pin-code a:focus,
-      p-popover a:focus,
-      p-radio-button-wrapper a:focus,
-      p-select-wrapper a:focus,
-      p-switch a:focus,
-      p-table a:focus,
-      p-tabs a:focus,
-      p-text a:focus,
-      p-text-field-wrapper a:focus,
-      p-text-list a:focus,
-      p-textarea-wrapper a:focus {
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
         outline: 2px solid #1A44EA !important;
         outline-offset: 0 !important
       }
 
-      p-accordion a:focus:not(:focus-visible),
-      p-banner a:focus:not(:focus-visible),
-      p-carousel a:focus:not(:focus-visible),
-      p-checkbox-wrapper a:focus:not(:focus-visible),
-      p-display a:focus:not(:focus-visible),
-      p-flyout a:focus:not(:focus-visible),
-      p-heading a:focus:not(:focus-visible),
-      p-headline a:focus:not(:focus-visible),
-      p-inline-notification a:focus:not(:focus-visible),
-      p-modal a:focus:not(:focus-visible),
-      p-multi-select a:focus:not(:focus-visible),
-      p-pin-code a:focus:not(:focus-visible),
-      p-popover a:focus:not(:focus-visible),
-      p-radio-button-wrapper a:focus:not(:focus-visible),
-      p-select-wrapper a:focus:not(:focus-visible),
-      p-switch a:focus:not(:focus-visible),
-      p-table a:focus:not(:focus-visible),
-      p-tabs a:focus:not(:focus-visible),
-      p-text a:focus:not(:focus-visible),
-      p-text-field-wrapper a:focus:not(:focus-visible),
-      p-text-list a:focus:not(:focus-visible),
-      p-textarea-wrapper a:focus:not(:focus-visible) {
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
         outline-color: transparent !important
       }
 
-      p-text-field-wrapper input::-webkit-outer-spin-button,
-      p-text-field-wrapper input::-webkit-inner-spin-button,
-      p-text-field-wrapper input::-webkit-search-decoration,
-      p-text-field-wrapper input::-webkit-search-cancel-button,
-      p-text-field-wrapper input::-webkit-calendar-picker-indicator {
+      :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
+      :is(p-text-field-wrapper) input::-webkit-inner-spin-button,
+      :is(p-text-field-wrapper) input::-webkit-search-decoration,
+      :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
+      :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
         display: none !important
       }
 
-      p-table img {
+      :is(p-table) img {
         vertical-align: middle !important
       }
 
-      p-button-tile picture img,
-      p-link-tile picture img,
-      p-link-tile-model-signature picture img {
+      :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important
       }
 
       @media(hover:hover) {
-
-        p-accordion a,
-        p-banner a,
-        p-carousel a,
-        p-checkbox-wrapper a,
-        p-display a,
-        p-flyout a,
-        p-heading a,
-        p-headline a,
-        p-inline-notification a,
-        p-modal a,
-        p-multi-select a,
-        p-pin-code a,
-        p-popover a,
-        p-radio-button-wrapper a,
-        p-select-wrapper a,
-        p-switch a,
-        p-table a,
-        p-tabs a,
-        p-text a,
-        p-text-field-wrapper a,
-        p-text-list a,
-        p-textarea-wrapper a {
-          transition: background var(--p-transition-duration, .24s) ease !important
-        }
-
-        p-accordion a:hover,
-        p-banner a:hover,
-        p-carousel a:hover,
-        p-checkbox-wrapper a:hover,
-        p-display a:hover,
-        p-flyout a:hover,
-        p-heading a:hover,
-        p-headline a:hover,
-        p-inline-notification a:hover,
-        p-modal a:hover,
-        p-multi-select a:hover,
-        p-pin-code a:hover,
-        p-popover a:hover,
-        p-radio-button-wrapper a:hover,
-        p-select-wrapper a:hover,
-        p-switch a:hover,
-        p-table a:hover,
-        p-tabs a:hover,
-        p-text a:hover,
-        p-text-field-wrapper a:hover,
-        p-text-list a:hover,
-        p-textarea-wrapper a:hover {
+        :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:hover {
           background: rgba(148, 149, 152, .18) !important
         }
       }
@@ -1090,29 +757,9 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
         visibility: inherit
       }
 
-      p-accordion a,
-      p-banner a,
-      p-carousel a,
-      p-checkbox-wrapper a,
-      p-display a,
-      p-flyout a,
-      p-heading a,
-      p-headline a,
-      p-inline-notification a,
-      p-modal a,
-      p-multi-select a,
-      p-pin-code a,
-      p-popover a,
-      p-radio-button-wrapper a,
-      p-select-wrapper a,
-      p-switch a,
-      p-table a,
-      p-tabs a,
-      p-text a,
-      p-text-field-wrapper a,
-      p-text-list a,
-      p-textarea-wrapper a {
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
         color: currentcolor !important;
+        transition: background var(--p-transition-duration, .24s) ease !important;
         margin-left: -2px !important;
         margin-right: -2px !important;
         padding-left: 2px !important;
@@ -1121,126 +768,35 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
         text-decoration: underline !important
       }
 
-      p-accordion a:focus,
-      p-banner a:focus,
-      p-carousel a:focus,
-      p-checkbox-wrapper a:focus,
-      p-display a:focus,
-      p-flyout a:focus,
-      p-heading a:focus,
-      p-headline a:focus,
-      p-inline-notification a:focus,
-      p-modal a:focus,
-      p-multi-select a:focus,
-      p-pin-code a:focus,
-      p-popover a:focus,
-      p-radio-button-wrapper a:focus,
-      p-select-wrapper a:focus,
-      p-switch a:focus,
-      p-table a:focus,
-      p-tabs a:focus,
-      p-text a:focus,
-      p-text-field-wrapper a:focus,
-      p-text-list a:focus,
-      p-textarea-wrapper a:focus {
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
         outline: 2px solid #1A44EA !important;
         outline-offset: 0 !important
       }
 
-      p-accordion a:focus:not(:focus-visible),
-      p-banner a:focus:not(:focus-visible),
-      p-carousel a:focus:not(:focus-visible),
-      p-checkbox-wrapper a:focus:not(:focus-visible),
-      p-display a:focus:not(:focus-visible),
-      p-flyout a:focus:not(:focus-visible),
-      p-heading a:focus:not(:focus-visible),
-      p-headline a:focus:not(:focus-visible),
-      p-inline-notification a:focus:not(:focus-visible),
-      p-modal a:focus:not(:focus-visible),
-      p-multi-select a:focus:not(:focus-visible),
-      p-pin-code a:focus:not(:focus-visible),
-      p-popover a:focus:not(:focus-visible),
-      p-radio-button-wrapper a:focus:not(:focus-visible),
-      p-select-wrapper a:focus:not(:focus-visible),
-      p-switch a:focus:not(:focus-visible),
-      p-table a:focus:not(:focus-visible),
-      p-tabs a:focus:not(:focus-visible),
-      p-text a:focus:not(:focus-visible),
-      p-text-field-wrapper a:focus:not(:focus-visible),
-      p-text-list a:focus:not(:focus-visible),
-      p-textarea-wrapper a:focus:not(:focus-visible) {
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
         outline-color: transparent !important
       }
 
-      p-text-field-wrapper input::-webkit-outer-spin-button,
-      p-text-field-wrapper input::-webkit-inner-spin-button,
-      p-text-field-wrapper input::-webkit-search-decoration,
-      p-text-field-wrapper input::-webkit-search-cancel-button,
-      p-text-field-wrapper input::-webkit-calendar-picker-indicator {
+      :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
+      :is(p-text-field-wrapper) input::-webkit-inner-spin-button,
+      :is(p-text-field-wrapper) input::-webkit-search-decoration,
+      :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
+      :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
         display: none !important
       }
 
-      p-table img {
+      :is(p-table) img {
         vertical-align: middle !important
       }
 
-      p-button-tile picture img,
-      p-link-tile picture img,
-      p-link-tile-model-signature picture img {
+      :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important
       }
 
       @media(hover:hover) {
-
-        p-accordion a,
-        p-banner a,
-        p-carousel a,
-        p-checkbox-wrapper a,
-        p-display a,
-        p-flyout a,
-        p-heading a,
-        p-headline a,
-        p-inline-notification a,
-        p-modal a,
-        p-multi-select a,
-        p-pin-code a,
-        p-popover a,
-        p-radio-button-wrapper a,
-        p-select-wrapper a,
-        p-switch a,
-        p-table a,
-        p-tabs a,
-        p-text a,
-        p-text-field-wrapper a,
-        p-text-list a,
-        p-textarea-wrapper a {
-          transition: background var(--p-transition-duration, .24s) ease !important
-        }
-
-        p-accordion a:hover,
-        p-banner a:hover,
-        p-carousel a:hover,
-        p-checkbox-wrapper a:hover,
-        p-display a:hover,
-        p-flyout a:hover,
-        p-heading a:hover,
-        p-headline a:hover,
-        p-inline-notification a:hover,
-        p-modal a:hover,
-        p-multi-select a:hover,
-        p-pin-code a:hover,
-        p-popover a:hover,
-        p-radio-button-wrapper a:hover,
-        p-select-wrapper a:hover,
-        p-switch a:hover,
-        p-table a:hover,
-        p-tabs a:hover,
-        p-text a:hover,
-        p-text-field-wrapper a:hover,
-        p-text-list a:hover,
-        p-textarea-wrapper a:hover {
+        :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:hover {
           background: rgba(148, 149, 152, .18) !important
         }
       }
@@ -1430,29 +986,9 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
             visibility: inherit
           }
 
-          p-accordion a,
-          p-banner a,
-          p-carousel a,
-          p-checkbox-wrapper a,
-          p-display a,
-          p-flyout a,
-          p-heading a,
-          p-headline a,
-          p-inline-notification a,
-          p-modal a,
-          p-multi-select a,
-          p-pin-code a,
-          p-popover a,
-          p-radio-button-wrapper a,
-          p-select-wrapper a,
-          p-switch a,
-          p-table a,
-          p-tabs a,
-          p-text a,
-          p-text-field-wrapper a,
-          p-text-list a,
-          p-textarea-wrapper a {
+          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
             color: currentcolor !important;
+            transition: background var(--p-transition-duration, .24s) ease !important;
             margin-left: -2px !important;
             margin-right: -2px !important;
             padding-left: 2px !important;
@@ -1461,126 +997,35 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
             text-decoration: underline !important
           }
 
-          p-accordion a:focus,
-          p-banner a:focus,
-          p-carousel a:focus,
-          p-checkbox-wrapper a:focus,
-          p-display a:focus,
-          p-flyout a:focus,
-          p-heading a:focus,
-          p-headline a:focus,
-          p-inline-notification a:focus,
-          p-modal a:focus,
-          p-multi-select a:focus,
-          p-pin-code a:focus,
-          p-popover a:focus,
-          p-radio-button-wrapper a:focus,
-          p-select-wrapper a:focus,
-          p-switch a:focus,
-          p-table a:focus,
-          p-tabs a:focus,
-          p-text a:focus,
-          p-text-field-wrapper a:focus,
-          p-text-list a:focus,
-          p-textarea-wrapper a:focus {
+          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
             outline: 2px solid #1A44EA !important;
             outline-offset: 0 !important
           }
 
-          p-accordion a:focus:not(:focus-visible),
-          p-banner a:focus:not(:focus-visible),
-          p-carousel a:focus:not(:focus-visible),
-          p-checkbox-wrapper a:focus:not(:focus-visible),
-          p-display a:focus:not(:focus-visible),
-          p-flyout a:focus:not(:focus-visible),
-          p-heading a:focus:not(:focus-visible),
-          p-headline a:focus:not(:focus-visible),
-          p-inline-notification a:focus:not(:focus-visible),
-          p-modal a:focus:not(:focus-visible),
-          p-multi-select a:focus:not(:focus-visible),
-          p-pin-code a:focus:not(:focus-visible),
-          p-popover a:focus:not(:focus-visible),
-          p-radio-button-wrapper a:focus:not(:focus-visible),
-          p-select-wrapper a:focus:not(:focus-visible),
-          p-switch a:focus:not(:focus-visible),
-          p-table a:focus:not(:focus-visible),
-          p-tabs a:focus:not(:focus-visible),
-          p-text a:focus:not(:focus-visible),
-          p-text-field-wrapper a:focus:not(:focus-visible),
-          p-text-list a:focus:not(:focus-visible),
-          p-textarea-wrapper a:focus:not(:focus-visible) {
+          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
             outline-color: transparent !important
           }
 
-          p-text-field-wrapper input::-webkit-outer-spin-button,
-          p-text-field-wrapper input::-webkit-inner-spin-button,
-          p-text-field-wrapper input::-webkit-search-decoration,
-          p-text-field-wrapper input::-webkit-search-cancel-button,
-          p-text-field-wrapper input::-webkit-calendar-picker-indicator {
+          :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
+          :is(p-text-field-wrapper) input::-webkit-inner-spin-button,
+          :is(p-text-field-wrapper) input::-webkit-search-decoration,
+          :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
+          :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
             display: none !important
           }
 
-          p-table img {
+          :is(p-table) img {
             vertical-align: middle !important
           }
 
-          p-button-tile picture img,
-          p-link-tile picture img,
-          p-link-tile-model-signature picture img {
+          :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important
           }
 
           @media(hover:hover) {
-
-            p-accordion a,
-            p-banner a,
-            p-carousel a,
-            p-checkbox-wrapper a,
-            p-display a,
-            p-flyout a,
-            p-heading a,
-            p-headline a,
-            p-inline-notification a,
-            p-modal a,
-            p-multi-select a,
-            p-pin-code a,
-            p-popover a,
-            p-radio-button-wrapper a,
-            p-select-wrapper a,
-            p-switch a,
-            p-table a,
-            p-tabs a,
-            p-text a,
-            p-text-field-wrapper a,
-            p-text-list a,
-            p-textarea-wrapper a {
-              transition: background var(--p-transition-duration, .24s) ease !important
-            }
-
-            p-accordion a:hover,
-            p-banner a:hover,
-            p-carousel a:hover,
-            p-checkbox-wrapper a:hover,
-            p-display a:hover,
-            p-flyout a:hover,
-            p-heading a:hover,
-            p-headline a:hover,
-            p-inline-notification a:hover,
-            p-modal a:hover,
-            p-multi-select a:hover,
-            p-pin-code a:hover,
-            p-popover a:hover,
-            p-radio-button-wrapper a:hover,
-            p-select-wrapper a:hover,
-            p-switch a:hover,
-            p-table a:hover,
-            p-tabs a:hover,
-            p-text a:hover,
-            p-text-field-wrapper a:hover,
-            p-text-list a:hover,
-            p-textarea-wrapper a:hover {
+            :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:hover {
               background: rgba(148, 149, 152, .18) !important
             }
           }
@@ -1731,29 +1176,9 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
         visibility: inherit
       }
 
-      p-accordion a,
-      p-banner a,
-      p-carousel a,
-      p-checkbox-wrapper a,
-      p-display a,
-      p-flyout a,
-      p-heading a,
-      p-headline a,
-      p-inline-notification a,
-      p-modal a,
-      p-multi-select a,
-      p-pin-code a,
-      p-popover a,
-      p-radio-button-wrapper a,
-      p-select-wrapper a,
-      p-switch a,
-      p-table a,
-      p-tabs a,
-      p-text a,
-      p-text-field-wrapper a,
-      p-text-list a,
-      p-textarea-wrapper a {
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
         color: currentcolor !important;
+        transition: background var(--p-transition-duration, .24s) ease !important;
         margin-left: -2px !important;
         margin-right: -2px !important;
         padding-left: 2px !important;
@@ -1762,126 +1187,35 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
         text-decoration: underline !important
       }
 
-      p-accordion a:focus,
-      p-banner a:focus,
-      p-carousel a:focus,
-      p-checkbox-wrapper a:focus,
-      p-display a:focus,
-      p-flyout a:focus,
-      p-heading a:focus,
-      p-headline a:focus,
-      p-inline-notification a:focus,
-      p-modal a:focus,
-      p-multi-select a:focus,
-      p-pin-code a:focus,
-      p-popover a:focus,
-      p-radio-button-wrapper a:focus,
-      p-select-wrapper a:focus,
-      p-switch a:focus,
-      p-table a:focus,
-      p-tabs a:focus,
-      p-text a:focus,
-      p-text-field-wrapper a:focus,
-      p-text-list a:focus,
-      p-textarea-wrapper a:focus {
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
         outline: 2px solid #1A44EA !important;
         outline-offset: 0 !important
       }
 
-      p-accordion a:focus:not(:focus-visible),
-      p-banner a:focus:not(:focus-visible),
-      p-carousel a:focus:not(:focus-visible),
-      p-checkbox-wrapper a:focus:not(:focus-visible),
-      p-display a:focus:not(:focus-visible),
-      p-flyout a:focus:not(:focus-visible),
-      p-heading a:focus:not(:focus-visible),
-      p-headline a:focus:not(:focus-visible),
-      p-inline-notification a:focus:not(:focus-visible),
-      p-modal a:focus:not(:focus-visible),
-      p-multi-select a:focus:not(:focus-visible),
-      p-pin-code a:focus:not(:focus-visible),
-      p-popover a:focus:not(:focus-visible),
-      p-radio-button-wrapper a:focus:not(:focus-visible),
-      p-select-wrapper a:focus:not(:focus-visible),
-      p-switch a:focus:not(:focus-visible),
-      p-table a:focus:not(:focus-visible),
-      p-tabs a:focus:not(:focus-visible),
-      p-text a:focus:not(:focus-visible),
-      p-text-field-wrapper a:focus:not(:focus-visible),
-      p-text-list a:focus:not(:focus-visible),
-      p-textarea-wrapper a:focus:not(:focus-visible) {
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
         outline-color: transparent !important
       }
 
-      p-text-field-wrapper input::-webkit-outer-spin-button,
-      p-text-field-wrapper input::-webkit-inner-spin-button,
-      p-text-field-wrapper input::-webkit-search-decoration,
-      p-text-field-wrapper input::-webkit-search-cancel-button,
-      p-text-field-wrapper input::-webkit-calendar-picker-indicator {
+      :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
+      :is(p-text-field-wrapper) input::-webkit-inner-spin-button,
+      :is(p-text-field-wrapper) input::-webkit-search-decoration,
+      :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
+      :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
         display: none !important
       }
 
-      p-table img {
+      :is(p-table) img {
         vertical-align: middle !important
       }
 
-      p-button-tile picture img,
-      p-link-tile picture img,
-      p-link-tile-model-signature picture img {
+      :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important
       }
 
       @media(hover:hover) {
-
-        p-accordion a,
-        p-banner a,
-        p-carousel a,
-        p-checkbox-wrapper a,
-        p-display a,
-        p-flyout a,
-        p-heading a,
-        p-headline a,
-        p-inline-notification a,
-        p-modal a,
-        p-multi-select a,
-        p-pin-code a,
-        p-popover a,
-        p-radio-button-wrapper a,
-        p-select-wrapper a,
-        p-switch a,
-        p-table a,
-        p-tabs a,
-        p-text a,
-        p-text-field-wrapper a,
-        p-text-list a,
-        p-textarea-wrapper a {
-          transition: background var(--p-transition-duration, .24s) ease !important
-        }
-
-        p-accordion a:hover,
-        p-banner a:hover,
-        p-carousel a:hover,
-        p-checkbox-wrapper a:hover,
-        p-display a:hover,
-        p-flyout a:hover,
-        p-heading a:hover,
-        p-headline a:hover,
-        p-inline-notification a:hover,
-        p-modal a:hover,
-        p-multi-select a:hover,
-        p-pin-code a:hover,
-        p-popover a:hover,
-        p-radio-button-wrapper a:hover,
-        p-select-wrapper a:hover,
-        p-switch a:hover,
-        p-table a:hover,
-        p-tabs a:hover,
-        p-text a:hover,
-        p-text-field-wrapper a:hover,
-        p-text-list a:hover,
-        p-textarea-wrapper a:hover {
+        :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:hover {
           background: rgba(148, 149, 152, .18) !important
         }
       }

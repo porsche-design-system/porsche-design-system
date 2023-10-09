@@ -14,7 +14,7 @@ export default defineConfig({
       inject: {
         data: {
           headPartials: [
-            partials.getInitialStyles(),
+            partials.getInitialStyles({ prefix: ['', 'my-prefix'] }),
             partials.getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
           ]
             .join('\n')

@@ -4,8 +4,10 @@ The roadmap for the Porsche Design System represents the chronological prioritiz
 of enhancements we are working on. It is no delivery commitment as it may be changed based on teams needs, feedback and
 new requirements.
 
-More details about the actual backlog and work in progress can be found in our project board:  
-[Open Design System Board on GitHub (permission required)](https://github.com/porsche-design-system/porsche-design-system/projects)
+More details about the actual backlog and work in progress can be found in the Porsche Design System project board:
+
+<p-link :theme="this.$store.getters.storefrontTheme" target="_blank" href="https://github.com/orgs/porsche-design-system/projects/14">Open
+Project Board</p-link>
 
 <TableOfContents></TableOfContents>
 

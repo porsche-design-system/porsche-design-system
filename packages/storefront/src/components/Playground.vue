@@ -5,14 +5,16 @@
       :theme="$store.getters.storefrontTheme"
       :active-tab-index="activeThemeTabIndex"
     >
-      <button type="button" @click="switchTheme('light')">Light theme</button>
-      <button type="button" @click="switchTheme('dark')">Dark theme</button>
+      <button type="button" @click="switchTheme('light')">Light</button>
+      <button type="button" @click="switchTheme('dark')">Dark</button>
+      <button type="button" @click="switchTheme('auto')">Auto (sync with operating system)</button>
     </p-tabs-bar>
     <div
       :class="{
         example: true,
         'example--light': (mergedConfig.themeable && theme === 'light') || mergedConfig.themeable === false,
         'example--dark': mergedConfig.themeable && theme === 'dark',
+        'example--auto': mergedConfig.themeable && theme === 'auto',
         'example--surface': mergedConfig.backgroundColor === 'background-surface',
         'example--height-fixed': mergedConfig.height === 'fixed',
         'example--spacing-inline': mergedConfig.spacing === 'inline',
@@ -192,7 +194,7 @@
     }
 
     public get activeThemeTabIndex(): number {
-      return ['light', 'dark'].indexOf(this.theme);
+      return ['light', 'dark', 'auto'].indexOf(this.theme);
     }
 
     public get theme(): PlaygroundTheme {
@@ -224,32 +226,54 @@
   @use '@porsche-design-system/components-js/styles' as *;
   @import '../styles/internal.variables';
 
+  .playground {
+    display: flex;
+    flex-direction: column;
+    gap: $pds-spacing-static-small;
+  }
+
   .example {
     position: relative;
     padding: $pds-spacing-static-large;
     overflow-x: auto;
-    margin-top: $pds-spacing-static-small;
-    border: 1px solid transparent;
+    border: 1px solid var(--playground-border-color);
     border-radius: $pds-border-radius-large;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $pds-spacing-static-large;
+    background: var(--playground-background-color);
 
-    // Theme
-    &--light {
-      border-color: $pds-theme-light-contrast-low;
-      background-color: $pds-theme-light-background-base;
+    &--light,
+    &--auto {
+      --playground-border-color: #{$pds-theme-light-contrast-low};
+      --playground-background-color: #{$pds-theme-light-background-base};
 
       &.example--surface {
-        border-color: $pds-theme-light-background-surface;
-        background-color: $pds-theme-light-background-surface;
+        --playground-border-color: #{$pds-theme-light-background-surface};
+        --playground-background-color: #{$pds-theme-light-background-surface};
       }
     }
 
     &--dark {
-      border-color: $pds-theme-dark-contrast-low;
-      background-color: $pds-theme-dark-background-base;
+      --playground-border-color: #{$pds-theme-dark-contrast-low};
+      --playground-background-color: #{$pds-theme-dark-background-base};
 
       &.example--surface {
-        border-color: $pds-theme-dark-background-surface;
-        background-color: $pds-theme-dark-background-surface;
+        --playground-border-color: #{$pds-theme-dark-background-surface};
+        --playground-background-color: #{$pds-theme-dark-background-surface};
+      }
+    }
+
+    &--auto {
+      @media (prefers-color-scheme: dark) {
+        --playground-border-color: #{$pds-theme-dark-contrast-low};
+        --playground-background-color: #{$pds-theme-dark-background-base};
+
+        &.example--surface {
+          --playground-border-color: #{$pds-theme-dark-background-surface};
+          --playground-background-color: #{$pds-theme-dark-background-surface};
+        }
       }
     }
 
@@ -296,18 +320,6 @@
       :deep(> *) {
         margin-top: $pds-spacing-static-small;
       }
-    }
-
-    .configurator ~ .demo {
-      margin-top: $pds-spacing-static-large;
-    }
-
-    .demo ~ .code-block {
-      margin-top: $pds-spacing-static-large;
-    }
-
-    .code-block ~ p-button {
-      margin-top: $pds-spacing-static-medium;
     }
 
     .code-block {
