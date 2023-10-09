@@ -359,6 +359,7 @@ exports[`should call validateProps() with correct parameters via render for p-mo
   "fullscreen": "breakpoint",
   "heading": "string",
   "open": "boolean",
+  "theme": "oneOf",
 }
 `;
 
