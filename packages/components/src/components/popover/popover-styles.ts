@@ -7,7 +7,7 @@ import {
   frostedGlassStyle,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { getCss, isHighContrastMode } from '../../utils';
+import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -18,11 +18,11 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
 import type { Theme } from '../../types';
 
-const { backgroundColor: backgroundColorThemeLight, primaryColor: primaryColorThemeLight } = getThemedColors('light');
 const { canvasColor, canvasTextColor } = getHighContrastColors();
 
 const directionPositionMap: Record<PopoverDirection, JssStyle> = {
@@ -53,48 +53,99 @@ const transparentColor = 'transparent';
 
 const join = (...arr: (string | number)[]): string => arr.join(' ');
 
-const directionArrowMap: Record<PopoverDirection, JssStyle> = {
-  top: {
-    top: 0,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    borderWidth: join(borderWidth, borderWidth, 0),
-    borderColor: isHighContrastMode
-      ? join(canvasTextColor, canvasColor, canvasColor)
-      : join(backgroundColorThemeLight, transparentColor, transparentColor),
-  },
-  right: {
-    top: '50%',
-    right: 0,
-    transform: 'translateY(-50%)',
-    borderWidth: join(borderWidth, borderWidth, borderWidth, 0),
-    borderColor: isHighContrastMode
-      ? join(canvasColor, canvasTextColor, canvasColor, canvasColor)
-      : join(transparentColor, backgroundColorThemeLight, transparentColor, transparentColor),
-  },
-  bottom: {
-    bottom: 0,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    borderWidth: join(0, borderWidth, borderWidth),
-    borderColor: isHighContrastMode
-      ? join(canvasColor, canvasColor, canvasTextColor)
-      : join(transparentColor, transparentColor, backgroundColorThemeLight),
-  },
-  left: {
-    top: '50%',
-    left: 0,
-    transform: 'translateY(-50%)',
-    borderWidth: join(borderWidth, 0, borderWidth, borderWidth),
-    borderColor: isHighContrastMode
-      ? join(canvasColor, canvasColor, canvasColor, canvasTextColor)
-      : join(transparentColor, transparentColor, transparentColor, backgroundColorThemeLight),
-  },
+const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> => {
+  const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { backgroundSurfaceColor: backgroundSurfaceColorDark } = getThemedColors('dark');
+  const isDark = isThemeDark(theme);
+  return {
+    top: {
+      top: 0,
+      left: '50%',
+      transform: 'translateX(-50%)',
+      borderWidth: join(borderWidth, borderWidth, 0),
+      ...(isHighContrastMode
+        ? {
+            borderColor: join(canvasTextColor, canvasColor, canvasColor),
+          }
+        : {
+            borderColor: join(isDark ? backgroundSurfaceColor : backgroundColor, transparentColor, transparentColor),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: join(backgroundSurfaceColorDark, transparentColor, transparentColor),
+            }),
+          }),
+    },
+    right: {
+      top: '50%',
+      right: 0,
+      transform: 'translateY(-50%)',
+      borderWidth: join(borderWidth, borderWidth, borderWidth, 0),
+      ...(isHighContrastMode
+        ? {
+            borderColor: join(canvasColor, canvasTextColor, canvasColor, canvasColor),
+          }
+        : {
+            borderColor: join(
+              transparentColor,
+              isDark ? backgroundSurfaceColor : backgroundColor,
+              transparentColor,
+              transparentColor
+            ),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: join(transparentColor, backgroundSurfaceColorDark, transparentColor, transparentColor),
+            }),
+          }),
+    },
+    bottom: {
+      bottom: 0,
+      left: '50%',
+      transform: 'translateX(-50%)',
+      borderWidth: join(0, borderWidth, borderWidth),
+      ...(isHighContrastMode
+        ? {
+            borderColor: join(canvasColor, canvasColor, canvasTextColor),
+          }
+        : {
+            borderColor: join(transparentColor, transparentColor, isDark ? backgroundSurfaceColor : backgroundColor),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: join(transparentColor, transparentColor, backgroundSurfaceColorDark),
+            }),
+          }),
+    },
+    left: {
+      top: '50%',
+      left: 0,
+      transform: 'translateY(-50%)',
+      borderWidth: join(borderWidth, 0, borderWidth, borderWidth),
+      ...(isHighContrastMode
+        ? {
+            borderColor: join(canvasColor, canvasColor, canvasColor, canvasTextColor),
+          }
+        : {
+            borderColor: join(
+              transparentColor,
+              transparentColor,
+              transparentColor,
+              isDark ? backgroundSurfaceColor : backgroundColor
+            ),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: join(transparentColor, transparentColor, transparentColor, backgroundSurfaceColorDark),
+            }),
+          }),
+    },
+  };
 };
 
 export const getComponentCss = (direction: PopoverDirection, theme: Theme): string => {
   const spacerBox = '-16px';
-  const { hoverColor, focusColor } = getThemedColors(theme);
+  const { hoverColor, focusColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const {
+    hoverColor: hoverColorDark,
+    focusColor: focusColorDark,
+    primaryColor: primaryColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
+  } = getThemedColors('dark');
+
+  const shadowColor = 'rgba(0,0,0,0.3)';
 
   return getCss({
     '@global': {
@@ -129,6 +180,9 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
           '&:hover': {
             ...frostedGlassStyle,
             backgroundColor: hoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              backgroundColor: hoverColorDark,
+            }),
           },
         }),
         '&::before': {
@@ -140,6 +194,9 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         },
         '&:focus::before': {
           borderColor: focusColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: focusColorDark,
+          }),
         },
         '&:focus:not(:focus-visible)::before': {
           borderColor: 'transparent',
@@ -158,7 +215,7 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       left: spacerBox,
       right: spacerBox,
       bottom: spacerBox,
-      filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
+      filter: `drop-shadow(0 0 16px ${shadowColor})`,
       backdropFilter: 'drop-shadow(0px 0px 0px transparent)', // fixes issues with Chrome >= 105 where filter: drop-shadow is not applied correctly after animation ends
       pointerEvents: 'none',
       animation:
@@ -169,25 +226,32 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
         content: '""',
         position: 'absolute',
         borderStyle: 'solid',
-        ...directionArrowMap[direction],
+        ...getDirectionArrowMap(theme)[direction],
       },
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        filter: `drop-shadow(0 0 16px ${shadowColor})`,
+      }),
     },
     popover: {
       position: 'absolute',
       maxWidth: 'min(90vw, 27rem)',
       width: 'max-content',
       boxSizing: 'border-box',
-      background: backgroundColorThemeLight,
+      background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
       padding: '8px 16px',
       pointerEvents: 'auto',
       ...directionPositionMap[direction],
       ...textSmallStyle,
       listStyleType: 'none',
-      color: primaryColorThemeLight,
+      color: primaryColor,
       whiteSpace: 'inherit',
       borderRadius: borderRadiusSmall,
       ...(isHighContrastMode && {
         outline: `1px solid ${canvasTextColor}`,
+      }),
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: backgroundSurfaceColorDark,
+        color: primaryColorDark,
       }),
     },
     '@keyframes fadeIn': {
