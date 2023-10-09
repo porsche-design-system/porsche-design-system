@@ -1,20 +1,19 @@
-import type { InnerManifest } from './marque-utils';
 import type { MarqueSize } from './marque-size';
-import type { MarqueFormat } from './marque-utils';
+import type { InnerManifest, MarqueFormat } from './marque-utils';
 import { buildImgSrc, buildSrcSet, getInnerManifest } from './marque-utils';
-import { MARQUES_MANIFEST } from '@porsche-design-system/marque';
+import { MARQUES_MANIFEST } from '@porsche-design-system/assets';
 
 describe('getManifestPath()', () => {
   it('should return correct object with trademark', () => {
-    expect(getInnerManifest('default', true)).toBe(MARQUES_MANIFEST.porscheMarqueTrademark);
+    expect(getInnerManifest('default', true)).toStrictEqual(MARQUES_MANIFEST.porscheMarqueTrademark);
   });
 
   it('should return correct object without trademark', () => {
-    expect(getInnerManifest('default', false)).toBe(MARQUES_MANIFEST.porscheMarque);
+    expect(getInnerManifest('default', false)).toStrictEqual(MARQUES_MANIFEST.porscheMarque);
   });
 
   it('should return correct object with 75 years variant', () => {
-    expect(getInnerManifest('75-years', false)).toBe(MARQUES_MANIFEST.porscheMarque75);
+    expect(getInnerManifest('75-years', false)).toStrictEqual(MARQUES_MANIFEST.porscheMarque75);
   });
 });
 

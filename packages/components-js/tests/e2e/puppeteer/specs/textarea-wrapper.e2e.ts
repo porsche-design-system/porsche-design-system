@@ -130,7 +130,8 @@ it('should render characterCountElement when maxlength is set', async () => {
   expect(await selectNode(page, 'p-textarea-wrapper >>> label .sr-only')).toBeDefined();
 });
 
-describe('hover state', () => {
+// puppeteer ignores @media(hover: hover) styles, but playwright can handle it
+xdescribe('hover state', () => {
   const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
   const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';

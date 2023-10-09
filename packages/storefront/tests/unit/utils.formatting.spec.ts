@@ -46,6 +46,16 @@ describe('patchThemeIntoMarkup()', () => {
     expect(patchThemeIntoMarkup(markup, 'dark')).toBe(markup);
   });
 
+  it('should add auto theme to themeable tag', () => {
+    const markup = '<p-button some-attribute="some value"></p-button>';
+    expect(patchThemeIntoMarkup(markup, 'auto')).toBe('<p-button theme="auto" some-attribute="some value"></p-button>');
+  });
+
+  it('should not add auto theme to unknown tag', () => {
+    const markup = '<p-some-tag some-attribute="some value"></p-some-tag>';
+    expect(patchThemeIntoMarkup(markup, 'auto')).toBe(markup);
+  });
+
   describe('in React', () => {
     it('should not add light theme', () => {
       const markup = '<PButton some-attribute="some value"></PButton>';
@@ -65,6 +75,16 @@ describe('patchThemeIntoMarkup()', () => {
     it('should add dark theme', () => {
       const markup = '<PButton some-attribute="some value"></PButton>';
       expect(patchThemeIntoMarkup(markup, 'dark')).toBe('<PButton theme="dark" some-attribute="some value"></PButton>');
+    });
+
+    it('should not add auto theme to unknown tag', () => {
+      const markup = '<PSomeTag some-attribute="some value"></PSomeTag>';
+      expect(patchThemeIntoMarkup(markup, 'auto')).toBe(markup);
+    });
+
+    it('should add auto theme', () => {
+      const markup = '<PButton some-attribute="some value"></PButton>';
+      expect(patchThemeIntoMarkup(markup, 'auto')).toBe('<PButton theme="auto" some-attribute="some value"></PButton>');
     });
   });
 });

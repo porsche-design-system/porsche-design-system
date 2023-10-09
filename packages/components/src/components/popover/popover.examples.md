@@ -1,7 +1,7 @@
 # Popover
 
 The `p-popover` component can be used to display some additional content on top of another in conjunction with the info
-<p-popover description="Hello World"></p-popover>-button.
+<p-popover :theme="this.$store.getters.storefrontTheme" description="Hello World"></p-popover>-button.
 
 <TableOfContents></TableOfContents>
 
@@ -9,7 +9,8 @@ The `p-popover` component can be used to display some additional content on top 
 
 It's important, that the Popover isn't used within a parent node having e.g. `overflow: hidden` as style defined. Then
 it might be shown cut-off under certain circumstances because it's placed relative to the info
-<p-icon name="information" aria="{ 'aria-label': 'Information icon' }"></p-icon>-button node technically.
+<p-icon :theme="this.$store.getters.storefrontTheme" name="information" aria="{ 'aria-label': 'Information icon' }"></p-icon>-button
+node technically.
 
 Only one Popover can be opened at the time, by clicking another Popover the opened Popover will be closed.
 
@@ -31,7 +32,8 @@ Through the `aria` property you have the possibility to provide an additional **
 
 - Make sure to provide a **descriptive**, self explaining **label** which could be understood without context to expose
   a more descriptive experience to screen reader users, telling them what they can expect to read after clicking the
-  info <p-icon name="information" aria="{ 'aria-label': 'Information icon' }"></p-icon>-button.
+  info
+  <p-icon :theme="this.$store.getters.storefrontTheme" name="information" aria="{ 'aria-label': 'Information icon' }"></p-icon>-button.
 
 ---
 

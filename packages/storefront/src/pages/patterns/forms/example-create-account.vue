@@ -1,9 +1,9 @@
 <template>
-  <p-content-wrapper>
+  <p-content-wrapper :theme="storefrontTheme">
     <p-grid class="form-top-spacing">
       <p-grid-item size="{ base: 12, m: 8 }">
-        <p-heading size="x-large" tag="h1">Create a new Porsche account</p-heading>
-        <p-text size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">
+        <p-heading :theme="storefrontTheme" size="x-large" tag="h1">Create a new Porsche account</p-heading>
+        <p-text :theme="storefrontTheme" size="{ base: 'small', l: 'medium' }" class="spacing-mt-8">
           Please enter your registration details in the following fields.
           <br />This text can be enhanced by some information on the benefits of a Porsche account registration.
         </p-text>
@@ -15,6 +15,7 @@
           <p-flex direction="{ base: 'column', m: 'row' }" class="form-grid-item-container">
             <p-flex-item width="{base: 'full', m: 'one-third'}" class="form-grid-item">
               <p-select-wrapper
+                :theme="storefrontTheme"
                 label="Salutation"
                 v-bind:message="bag.errors.salutation"
                 v-bind:state="getState('salutation')"
@@ -36,7 +37,7 @@
               width="{base: 'full', m: 'one-third'}"
               class="form-row-spacing form-row-spacing--zero-m form-grid-item"
             >
-              <p-select-wrapper label="Title">
+              <p-select-wrapper :theme="storefrontTheme" label="Title">
                 <select v-bind:name="validateFieldName('title')" v-model="bag.data.title">
                   <option value></option>
                   <option value="option 1">Dr.</option>
@@ -49,6 +50,7 @@
           <p-flex direction="{ base: 'column', m: 'row' }" class="form-row-spacing form-grid-item-container">
             <p-flex-item width="{base: 'full', m: 'half'}" class="form-grid-item">
               <p-text-field-wrapper
+                :theme="storefrontTheme"
                 label="First name"
                 v-bind:message="bag.errors.firstName"
                 v-bind:state="getState('firstName')"
@@ -68,6 +70,7 @@
               class="form-row-spacing form-row-spacing--zero-m form-grid-item"
             >
               <p-text-field-wrapper
+                :theme="storefrontTheme"
                 label="Last name"
                 v-bind:message="bag.errors.lastName"
                 v-bind:state="getState('lastName')"
@@ -84,6 +87,7 @@
             </p-flex-item>
           </p-flex>
           <p-text-field-wrapper
+            :theme="storefrontTheme"
             label="Email address"
             class="form-row-spacing"
             v-bind:message="bag.errors.email"
@@ -99,6 +103,7 @@
             />
           </p-text-field-wrapper>
           <p-text-field-wrapper
+            :theme="storefrontTheme"
             label="Password"
             class="form-row-spacing"
             v-bind:message="bag.errors.password"
@@ -114,6 +119,7 @@
             />
           </p-text-field-wrapper>
           <p-checkbox-wrapper
+            :theme="storefrontTheme"
             class="form-section-spacing"
             v-bind:message="bag.errors.terms"
             v-bind:state="getState('terms')"
@@ -132,6 +138,7 @@
             />
           </p-checkbox-wrapper>
           <p-checkbox-wrapper
+            :theme="storefrontTheme"
             class="form-row-spacing"
             v-bind:message="bag.errors.privacy"
             v-bind:state="getState('privacy')"
@@ -147,8 +154,8 @@
             />
           </p-checkbox-wrapper>
           <p-button-group class="form-section-spacing form-bottom-spacing">
-            <p-button type="submit">Create Porsche account</p-button>
-            <p-button variant="tertiary" icon="close" @click="onReset">Cancel</p-button>
+            <p-button :theme="storefrontTheme" type="submit">Create Porsche account</p-button>
+            <p-button :theme="storefrontTheme" variant="tertiary" icon="close" @click="onReset">Cancel</p-button>
           </p-button-group>
         </form>
       </p-grid-item>
@@ -157,18 +164,12 @@
 </template>
 
 <script lang="ts">
+  import type { ValidationBag } from '@/utils';
+  import type { StorefrontTheme } from '@/models';
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { boolean, object, string } from 'yup';
-  import {
-    validateName,
-    getState,
-    validateField,
-    validateForm,
-    ValidationBag,
-    getInitialErrors,
-    getFirstErrorKey,
-  } from '../../../utils';
+  import { validateName, getState, validateField, validateForm, getInitialErrors, getFirstErrorKey } from '@/utils';
 
   const initialData = {
     salutation: '',
@@ -185,6 +186,10 @@
 
   @Component
   export default class CreateAccountForm extends Vue {
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
+    }
+
     private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
     private getState = (field: keyof FormModel) => getState(field, this.bag);
 

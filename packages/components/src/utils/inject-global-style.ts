@@ -1,4 +1,4 @@
-import { FONT_FACE_CDN_FILE_COM, FONT_FACE_CDN_FILE_CN } from '@porsche-design-system/styles'; // TODO: import from assets once it is treeshakable
+import { FONT_FACE_CDN_FILE_COM, FONT_FACE_CDN_FILE_CN } from '@porsche-design-system/assets';
 import { getCDNBaseURL } from './getCDNBaseURL';
 
 // TODO: should be removed, instead consumers should be forced via validation to use the partial for preloading
