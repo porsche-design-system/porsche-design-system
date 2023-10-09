@@ -24,11 +24,9 @@ export const getHoverStyle = (opts?: Options) => {
     marginRight: `-${offsetHorizontal}`,
     paddingLeft: offsetHorizontal,
     paddingRight: offsetHorizontal,
+    transition: 'background var(--p-transition-duration, .24s) ease',
     // TODO: how can we test this later in vrt?
     '@media(hover:hover)': {
-      '&': {
-        transition: 'background var(--p-transition-duration, .24s) ease',
-      },
       '&:hover': {
         // ...frostedGlassStyle,
         background: themeLightStateHover, // hover color is equal for light and dark theme
