@@ -5187,6 +5187,7 @@ h2 {
   color: #010205;
 }
 .root {
+  color: #010205;
   position: relative;
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
@@ -6057,7 +6058,7 @@ button::before {
   left: -16px;
   right: -16px;
   bottom: -16px;
-  filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
+  filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: var(--p-animation-duration, 240ms) keyframes-fadeIn ease forwards;

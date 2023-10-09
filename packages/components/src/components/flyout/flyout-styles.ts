@@ -61,7 +61,7 @@ export const getComponentCss = (
                 transition: `visibility 0s linear ${flyoutTransitionDuration}`,
               }),
           ...getInsetJssStyle(),
-          ...getFrostedGlassBackgroundJssStyles(isOpen, flyoutTransitionDuration),
+          ...getFrostedGlassBackgroundJssStyles(isOpen, flyoutTransitionDuration, theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
