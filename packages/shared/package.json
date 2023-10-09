@@ -27,7 +27,7 @@
   "dependencies": {
     "@alex_neo/jest-expect-message": "^1.0.5",
     "@porsche-design-system/component-meta": "0.0.0",
-    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-commonjs": "^25.0.5",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-replace": "^5.0.3",
     "@rollup/plugin-typescript": "^11.1.4",
