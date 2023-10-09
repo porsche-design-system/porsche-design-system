@@ -1274,6 +1274,12 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
+@media (prefers-color-scheme: dark) {
+  :host::before {
+    background: rgba(38, 38, 41, 0.67) !important;
+  }
+}
+
 .header {
   display: flex;
   flex-direction: row-reverse;
@@ -1483,6 +1489,12 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
+@media (prefers-color-scheme: dark) {
+  :host::before {
+    background: rgba(38, 38, 41, 0.67) !important;
+  }
+}
+
 .header {
   display: flex;
   flex-direction: row-reverse;
