@@ -1,5 +1,5 @@
 import { expect, type Page, test } from '@playwright/test';
-import { openAllPopover, type PrefersColorScheme, setContentWithDesignSystem } from '../../helpers';
+import { baseThemes, openAllPopover, type PrefersColorScheme, setContentWithDesignSystem } from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'popover';
@@ -15,7 +15,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   };
 
   const markup =
-    () => `<div style="position: relative; height: 800px; outline: 1rem solid rgba(0, 0, 255, 0.1); outline-offset: -1rem">
+    () => `<div style="position: relative; height: 800px; outline: 1rem solid rgba(0, 0, 255, 0.1); outline-offset: -1rem" class="playground">
   <!--   Top Left to right   -->
   <span style="position: absolute; top: 1.5rem; left: 1rem">
    ${getPopover('right', 3)}
@@ -119,7 +119,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   </span>
 </div>`;
 
-  await setContentWithDesignSystem(page, markup());
+  await setContentWithDesignSystem(page, markup(), { forceComponentTheme: theme });
   await page.setViewportSize({ width: viewportWidth, height: 600 });
   await openAllPopover(page);
 };
@@ -128,8 +128,12 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  test(`should have no visual regression on popover-overview for viewport ${viewportWidth}`, async ({ page }) => {
-    await scenario(page, 'light');
-    await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}-overview.png`);
+  baseThemes.forEach((theme) => {
+    test(`should have no visual regression on popover-overview for viewport ${viewportWidth} with theme ${theme}`, async ({
+      page,
+    }) => {
+      await scenario(page, theme);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}-overview-theme-${theme}.png`);
+    });
   });
 });

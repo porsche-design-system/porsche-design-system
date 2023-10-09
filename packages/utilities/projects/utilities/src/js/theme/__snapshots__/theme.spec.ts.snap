@@ -5,7 +5,7 @@ exports[`should contain correct values for theme 1`] = `
   "dark": {
     "background": {
       "base": "#0E0E12",
-      "shading": "rgba(1, 2, 5, 0.67)",
+      "shading": "rgba(38, 38, 41, 0.67)",
       "surface": "#212225",
     },
     "contrast": {
@@ -67,7 +67,7 @@ exports[`should contain correct values for themeDark 1`] = `
 {
   "background": {
     "base": "#0E0E12",
-    "shading": "rgba(1, 2, 5, 0.67)",
+    "shading": "rgba(38, 38, 41, 0.67)",
     "surface": "#212225",
   },
   "contrast": {
@@ -97,7 +97,7 @@ exports[`should contain correct values for themeDark 1`] = `
 
 exports[`should contain correct values for themeDarkBackgroundBase 1`] = `"#0E0E12"`;
 
-exports[`should contain correct values for themeDarkBackgroundShading 1`] = `"rgba(1, 2, 5, 0.67)"`;
+exports[`should contain correct values for themeDarkBackgroundShading 1`] = `"rgba(38, 38, 41, 0.67)"`;
 
 exports[`should contain correct values for themeDarkBackgroundSurface 1`] = `"#212225"`;
 

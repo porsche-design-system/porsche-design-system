@@ -6,9 +6,11 @@ import {
   borderWidthBase,
   frostedGlassStyle,
   themeDarkBackgroundShading,
+  themeLightBackgroundShading,
   themeLightStateFocus,
 } from '@porsche-design-system/utilities-v2';
-import { getThemedColors } from './';
+import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
+import { isThemeDark } from '../utils';
 
 export const transitionDuration = 'var(--p-transition-duration, .24s)';
 const transitionTimingFunction = 'ease';
@@ -109,12 +111,14 @@ export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
  * Generates JSS styles for a frosted glass background.
  * @param {boolean} isVisible - Determines if the frosted glass effect is visible.
  * @param {string} duration - The duration of the transition animation.
+ * @param {Theme} theme - The theme to be used
  * @param {string} timingFn - The timing function of the transition animation. (default: 'cubic-bezier(.16,1,.3,1)')
  * @returns {JssStyle} - The JSS styles for the frosted glass background.
  */
 export const getFrostedGlassBackgroundJssStyles = (
   isVisible: boolean,
   duration: string,
+  theme: Theme,
   timingFn = 'cubic-bezier(.16,1,.3,1)'
 ): JssStyle => {
   return {
@@ -123,7 +127,7 @@ export const getFrostedGlassBackgroundJssStyles = (
       content: '""',
       position: 'fixed',
       ...getInsetJssStyle(),
-      background: themeDarkBackgroundShading,
+      background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,
       pointerEvents: 'none',
       ...(isVisible
         ? {
@@ -136,6 +140,9 @@ export const getFrostedGlassBackgroundJssStyles = (
             WebkitBackdropFilter: 'blur(0px)',
           }),
       transition: `opacity ${duration} ${timingFn}, backdrop-filter ${duration} ${timingFn}, --webkit-backdrop-filter ${duration} ${timingFn}`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: themeDarkBackgroundShading,
+      }),
     },
   };
 };
