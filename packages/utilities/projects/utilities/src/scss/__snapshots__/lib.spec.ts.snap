@@ -518,7 +518,7 @@ $pds-theme-light-state-disabled: #949598;
 $pds-theme-dark-primary: #fbfcff;
 $pds-theme-dark-background-base: #0e0e12;
 $pds-theme-dark-background-surface: #212225;
-$pds-theme-dark-background-shading: rgba(64, 64, 68, 0.67);
+$pds-theme-dark-background-shading: rgba(38, 38, 41, 0.67);
 $pds-theme-dark-contrast-low: #404044;
 $pds-theme-dark-contrast-medium: #88898c;
 $pds-theme-dark-contrast-high: #afb0b3;
