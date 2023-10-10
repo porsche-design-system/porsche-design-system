@@ -1075,6 +1075,10 @@ export namespace Components {
           * If true, the modal is open.
          */
         "open": boolean;
+        /**
+          * Adapts the modal color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PModelSignature {
         /**
@@ -3351,6 +3355,10 @@ declare namespace LocalJSX {
           * If true, the modal is open.
          */
         "open"?: boolean;
+        /**
+          * Adapts the modal color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PModelSignature {
         /**

@@ -1892,6 +1892,11 @@ exports[`should match snapshot 1`] = `
       "fullscreen": "boolean",
       "heading": "string",
       "open": "boolean",
+      "theme": [
+        "light",
+        "dark",
+        "auto",
+      ],
     },
     "breakpointCustomizableProps": [
       "fullscreen",
@@ -1913,7 +1918,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "namedSlots": [
       "heading",
       "footer",
@@ -1929,6 +1934,7 @@ exports[`should match snapshot 1`] = `
       "fullscreen": false,
       "heading": null,
       "open": false,
+      "theme": "light",
     },
     "requiredProps": [
       "open",

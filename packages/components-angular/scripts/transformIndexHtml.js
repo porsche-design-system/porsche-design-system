@@ -4,7 +4,7 @@ const partials = require('@porsche-design-system/components-angular/partials');
 // cjs syntax since it is used by `karma.conf.js` for tests, too
 module.exports = (targetOptions, indexHtml) => {
   const headPartials = [
-    partials.getInitialStyles(),
+    partials.getInitialStyles({ prefix: ['', 'my-prefix'] }),
     partials.getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
   ]
     .join('\n')

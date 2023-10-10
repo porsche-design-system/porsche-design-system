@@ -75,38 +75,31 @@ const normalizeStyles: Styles = {
 
 const slottedStyles: Styles = {
   '@global': {
-    '%%tagNamesWithSlottedAnchor%%': {
-      // it's important to reset following styles again for components supporting ::slotted(a) like Link, Link-Pure, Tag and Tabs-Bar,…
-      '& a': addImportantToEachRule({
-        textDecoration: 'underline',
-        color: 'currentcolor',
-        ...getHoverStyle(),
-        ...getFocusStyle({ offset: 'none' }),
-      }),
+    // it's important to reset following styles again for components supporting ::slotted(a) like Link, Link-Pure, Tag and Tabs-Bar,…
+    ':is(%%tagNamesWithSlottedAnchor%%) a': addImportantToEachRule({
+      textDecoration: 'underline',
+      color: 'currentcolor',
+      ...getHoverStyle(),
+      ...getFocusStyle({ offset: 'none' }),
+    }),
+
+    ':is(%%tagNamesWithSlottedInputIndicator%%) input': {
+      // unfortunately we can´t use :is() for ::-webkit pseudo selectors in Chrome for unknown reasons
+      '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-calendar-picker-indicator':
+        addImportantToEachRule({
+          display: 'none',
+        }),
     },
 
-    '%%tagNamesWithSlottedInputIndicator%%': {
-      '& input': {
-        '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-calendar-picker-indicator':
-          addImportantToEachRule({
-            display: 'none',
-          }),
-      },
-    },
+    ':is(%%tagNamesWithSlottedImage%%) img': addImportantToEachRule({
+      verticalAlign: 'middle',
+    }),
 
-    '%%tagNamesWithSlottedImage%%': {
-      '& img': addImportantToEachRule({
-        verticalAlign: 'middle',
-      }),
-    },
-
-    '%%tagNamesWithSlottedPictureImage%%': {
-      '& picture img': addImportantToEachRule({
-        height: '100%',
-        width: '100%',
-        objectFit: 'cover',
-      }),
-    },
+    ':is(%%tagNamesWithSlottedPictureImage%%) picture img': addImportantToEachRule({
+      height: '100%',
+      width: '100%',
+      objectFit: 'cover',
+    }),
   },
 };
 
@@ -158,10 +151,10 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const normalizeStyles = \`${getMinifiedCss(normalizeStyles)}\`;
   const hydrationStyles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
   const slottedStyles = \`${getMinifiedCss(slottedStyles)}\`
-    .replace(/%%tagNamesWithSlottedAnchor%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedAnchor.map(tagName => tagName +' $1').join() +'$2')
-    .replace(/%%tagNamesWithSlottedInputIndicator%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedInputIndicator.map(tagName => tagName +' $1').join() +'$2')
-    .replace(/%%tagNamesWithSlottedImage%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedImage.map(tagName => tagName +' $1').join() +'$2')
-    .replace(/%%tagNamesWithSlottedPictureImage%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSlottedPictureImage.map(tagName => tagName +' $1').join() +'$2');
+    .replace(/%%tagNamesWithSlottedAnchor%%/g, prefixedTagNamesWithSlottedAnchor.join())
+    .replace(/%%tagNamesWithSlottedInputIndicator%%/g, prefixedTagNamesWithSlottedInputIndicator.join())
+    .replace(/%%tagNamesWithSlottedImage%%/g, prefixedTagNamesWithSlottedImage.join())
+    .replace(/%%tagNamesWithSlottedPictureImage%%/g, prefixedTagNamesWithSlottedPictureImage.join());
   const siblingStyles = \`${getMinifiedCss(siblingStyles)}\`
     .replace(/%%tagNamesWithSiblingTabindex%%\\s*([\\S\\s]*?)\\s*(,|\\{)/g, prefixedTagNamesWithSiblingTabindex.map(tagName => tagName +' $1').join() +'$2');
 

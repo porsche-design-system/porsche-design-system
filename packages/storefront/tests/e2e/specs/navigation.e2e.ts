@@ -72,13 +72,13 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
       it(`should navigate to "${category} > ${page}"`, async () => {
         console.log(`${category} > ${page}`);
         const [accordionElement] = (await browserPage.$x(
-          `//aside//nav/p-accordion[@heading='${category}']`
+          `//div[contains(@class, 'menu-desktop')]//nav/p-accordion[@heading='${category}']`
         )) as ElementHandle<HTMLElement>[];
         await accordionElement.click();
 
         const href = `\/${paramCase(category)}\/${paramCase(page)}`;
         const [linkPureElement] = (await browserPage.$x(
-          `//aside//nav//p-link-pure/a[contains(., '${page}')][@href='${href}']/parent::p-link-pure`
+          `//div[contains(@class, 'menu-desktop')]//nav//p-link-pure/a[contains(., '${page}')][@href='${href}']/parent::p-link-pure`
         )) as ElementHandle<HTMLElement>[];
         expect(await isLinkActive(linkPureElement), 'sidebar link should not be active initially').toBe(false);
 
