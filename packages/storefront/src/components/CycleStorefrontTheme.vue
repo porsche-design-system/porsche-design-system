@@ -1,40 +1,45 @@
 <template>
-  <p-button-pure :theme="theme" :icon="icon" hide-label="true" aria-live="polite" type="button" @click="cycleTheme()">
-    Use {{ icon === 'moon' ? 'dark' : 'light' }} mode
+  <p-button-pure
+    :theme="storefrontTheme"
+    :icon="getIcon()"
+    hide-label="true"
+    aria-live="polite"
+    type="button"
+    @click="cycleTheme()"
+  >
+    Use {{ getIcon() === 'moon' ? 'dark' : 'light' }} mode
   </p-button-pure>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { type StorefrontTheme } from '@/models';
+  import type { StorefrontTheme } from '@/models';
+  import { isPreferredColorSchemeDark, onPrefersColorSchemeChange, removeOnPrefersColorSchemeChange } from '@/utils';
 
   @Component
   export default class CycleStorefrontTheme extends Vue {
     mounted(): void {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', this.onPrefersColorSchemeChange);
+      console.log('mounted CycleStorefrontTheme');
+      onPrefersColorSchemeChange(this, () => {
+        if (this.theme === 'auto') {
+          this.$forceUpdate();
+        }
+      });
     }
 
     destroyed(): void {
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', this.onPrefersColorSchemeChange);
+      console.log('destroyed');
+      removeOnPrefersColorSchemeChange(this);
     }
 
-    public onPrefersColorSchemeChange(): void {
-      if (this.theme === 'auto') {
-        this.$forceUpdate();
-      }
-    }
-
-    public isPreferredColorSchemeDark(): boolean {
-      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-
-    public get theme(): StorefrontTheme {
+    public get storefrontTheme(): StorefrontTheme {
       return this.$store.getters.storefrontTheme;
     }
 
-    public get icon(): 'moon' | 'sun' {
-      if ((this.theme === 'auto' && this.isPreferredColorSchemeDark()) || this.theme === 'dark') {
+    // getter is not called again on this.$forceUpdate()
+    public getIcon(): 'moon' | 'sun' {
+      if ((this.storefrontTheme === 'auto' && isPreferredColorSchemeDark()) || this.storefrontTheme === 'dark') {
         return 'sun';
       } else {
         return 'moon';
@@ -42,8 +47,8 @@
     }
 
     public cycleTheme(): void {
-      const themes: StorefrontTheme[] = ['auto', this.isPreferredColorSchemeDark() ? 'light' : 'dark'];
-      const newTheme = themes[(Math.max(0, themes.indexOf(this.theme)) + 1) % themes.length];
+      const themes: StorefrontTheme[] = ['auto', isPreferredColorSchemeDark() ? 'light' : 'dark'];
+      const newTheme = themes[(Math.max(0, themes.indexOf(this.storefrontTheme)) + 1) % themes.length];
       document.body.classList.remove('light-mode', 'dark-mode', 'auto-dark-mode');
       document.body.classList.add(
         {

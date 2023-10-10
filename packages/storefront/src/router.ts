@@ -20,7 +20,7 @@ const router = new VueRouter({
     {
       path: '/:page',
       name: 'custom',
-      component: () => import('@/views/Custom.vue'),
+      component: () => import('@/views/Custom.vue'), // used for license.md, markdown.md, etc.
     },
     {
       path: '/:category/:page/:tab?',
@@ -40,13 +40,7 @@ const router = new VueRouter({
   ],
 });
 
-router.beforeEach(async (to, from, next) => {
-  await $store.dispatch('toggleLoadingAsync', true);
-  next();
-});
-
-router.afterEach(async () => {
-  await $store.dispatch('toggleLoadingAsync', false);
+router.afterEach(() => {
   window.scrollTo(0, 0);
 });
 
