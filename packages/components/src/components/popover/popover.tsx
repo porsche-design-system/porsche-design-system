@@ -23,6 +23,7 @@ const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
   description: AllowedTypes.string,
   aria: AllowedTypes.aria<PopoverAriaAttribute>(POPOVER_ARIA_ATTRIBUTES),
+  fixed: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -42,6 +43,9 @@ export class Popover {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
+
+  /** Makes the popover position fixed, placing it on top of the page, and automatically closes it on scroll. */
+  @Prop() public fixed?: boolean = false;
 
   /** Adapts the popover color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -63,7 +67,7 @@ export class Popover {
   public componentDidRender(): void {
     if (this.open) {
       // calculate / update position only possible after render
-      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme);
+      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.fixed, this.theme);
     }
   }
 
@@ -73,7 +77,7 @@ export class Popover {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.direction, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.direction, this.fixed, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

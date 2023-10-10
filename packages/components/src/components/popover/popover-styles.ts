@@ -135,7 +135,7 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
   };
 };
 
-export const getComponentCss = (direction: PopoverDirection, theme: Theme): string => {
+export const getComponentCss = (direction: PopoverDirection, fixed: boolean, theme: Theme): string => {
   const spacerBox = '-16px';
   const { hoverColor, focusColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
@@ -209,12 +209,19 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme): stri
       transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
     },
     spacer: {
-      position: 'absolute',
+      ...(fixed
+        ? {
+            position: 'fixed',
+            transform: 'translate(12px, 16px)',
+          }
+        : {
+            position: 'absolute',
+            top: spacerBox,
+            left: spacerBox,
+            right: spacerBox,
+            bottom: spacerBox,
+          }),
       zIndex: POPOVER_Z_INDEX,
-      top: spacerBox,
-      left: spacerBox,
-      right: spacerBox,
-      bottom: spacerBox,
       filter: `drop-shadow(0 0 16px ${shadowColor})`,
       backdropFilter: 'drop-shadow(0px 0px 0px transparent)', // fixes issues with Chrome >= 105 where filter: drop-shadow is not applied correctly after animation ends
       pointerEvents: 'none',

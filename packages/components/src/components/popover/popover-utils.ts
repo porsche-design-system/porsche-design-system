@@ -16,13 +16,14 @@ export const updatePopoverStyles = (
   spacer: HTMLDivElement,
   popover: HTMLDivElement,
   direction: PopoverDirection,
+  fixed: boolean,
   theme: Theme
 ): void => {
   // Reset margin so that it can be recalculated correctly
   popover.style.margin = '0';
   if (!isElementWithinViewport(spacer, popover, direction)) {
     direction = getAutoDirection(spacer, popover);
-    attachComponentCss(host, getComponentCss, direction, theme);
+    attachComponentCss(host, getComponentCss, direction, fixed, theme);
   }
   // Set margin via inline style to make attachComponentCss cacheable
   popover.style.margin = getPopoverMargin(spacer, popover, direction);
@@ -127,6 +128,10 @@ export const addDocumentEventListener = (popover: Popover): void => {
     registeredPopovers.push(popover as unknown as PopoverInternal);
     document.addEventListener('mousedown', onDocumentMousedown); // multiple calls don't add multiple listeners
     document.addEventListener('keydown', onDocumentKeydown); // multiple calls don't add multiple listeners
+    if (popover.fixed) {
+      window.addEventListener('scroll', onScroll, true);
+      window.addEventListener('stencil_componentWillUpdate', onComponentWillUpdate);
+    }
   }
 };
 
@@ -138,6 +143,10 @@ export const removeDocumentEventListener = (popover: Popover): void => {
   if (registeredPopovers.length === 0) {
     document.removeEventListener('mousedown', onDocumentMousedown);
     document.removeEventListener('keydown', onDocumentKeydown);
+    if (popover.fixed) {
+      window.removeEventListener('scroll', onScroll, true);
+      window.removeEventListener('stencil_componentWillUpdate', onComponentWillUpdate);
+    }
   }
 };
 
@@ -158,5 +167,18 @@ export const onDocumentKeydown = (e: KeyboardEvent): void => {
     if (popover) {
       popover.open = false;
     }
+  }
+};
+
+const onScroll = (): void => {
+  const popover = registeredPopovers.find((popoverItem) => popoverItem.open && popoverItem.fixed);
+  if (popover) {
+    popover.open = false;
+  }
+};
+
+const onComponentWillUpdate = (e: Event): void => {
+  if ((e.composedPath()[0] as any).tagName.includes('SCROLLER')) {
+    onScroll();
   }
 };
