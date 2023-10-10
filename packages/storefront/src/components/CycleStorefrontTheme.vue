@@ -20,7 +20,6 @@
   @Component
   export default class CycleStorefrontTheme extends Vue {
     mounted(): void {
-      console.log('mounted CycleStorefrontTheme');
       onPrefersColorSchemeChange(this, () => {
         if (this.theme === 'auto') {
           this.$forceUpdate();
@@ -29,7 +28,6 @@
     }
 
     destroyed(): void {
-      console.log('destroyed');
       removeOnPrefersColorSchemeChange(this);
     }
 

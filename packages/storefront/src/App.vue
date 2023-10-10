@@ -8,7 +8,7 @@
     <MenuMobile />
     <MenuDesktop />
     <Main>
-      <router-view class="router-view" :class="{ 'router-view--loading': isLoading }" />
+      <router-view class="router-view" />
     </Main>
   </div>
 </template>
