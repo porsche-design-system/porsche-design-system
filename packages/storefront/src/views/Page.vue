@@ -6,14 +6,18 @@
 
     <div v-if="isLoading">
       <div :class="['skeleton', 'skeleton--h1', getSkeletonTheme()]"></div>
-      <div :class="['skeleton', 'skeleton--text', 'skeleton--text--full', getSkeletonTheme()]"></div>
-      <div :class="['skeleton', 'skeleton--text', 'skeleton--text--full', getSkeletonTheme()]"></div>
-      <div :class="['skeleton', 'skeleton--text', getSkeletonTheme()]"></div>
+      <!-- intro text -->
+      <div v-if="category !== 'Styles'">
+        <div :class="['skeleton', 'skeleton--text', 'skeleton--text--full', getSkeletonTheme()]"></div>
+        <div :class="['skeleton', 'skeleton--text', 'skeleton--text--full', getSkeletonTheme()]"></div>
+        <div :class="['skeleton', 'skeleton--text', getSkeletonTheme()]"></div>
+      </div>
 
+      <!-- table of contents -->
       <div :class="['skeleton', 'skeleton--h2', getSkeletonTheme()]"></div>
-      <div :class="['skeleton', 'skeleton--text', 'skeleton--text--small', getSkeletonTheme()]"></div>
-      <div :class="['skeleton', 'skeleton--text', 'skeleton--text--small', getSkeletonTheme()]"></div>
-      <div :class="['skeleton', 'skeleton--text', 'skeleton--text--small', getSkeletonTheme()]"></div>
+      <div :class="['skeleton', 'skeleton--text', 'skeleton--text--toc', getSkeletonTheme()]"></div>
+      <div :class="['skeleton', 'skeleton--text', 'skeleton--text--toc', getSkeletonTheme()]"></div>
+      <div :class="['skeleton', 'skeleton--text', 'skeleton--text--toc', getSkeletonTheme()]"></div>
     </div>
     <Markdown v-else>
       <component :is="component" v-for="(component, index) in components" :key="index"></component>
@@ -155,12 +159,18 @@
       max-width: 200px;
       @include pds-heading-xx-large;
       margin-top: $pds-spacing-fluid-large;
+
+      // without tabs-bar
+      &:first-child {
+        margin-top: 0;
+      }
     }
 
+    // table of contents heading
     &--h2 {
       max-width: 150px;
-      @include pds-heading-x-large;
-      margin-top: $pds-spacing-fluid-large;
+      @include pds-heading-medium;
+      margin: 4rem 0 1rem;
     }
 
     &--text {
@@ -168,8 +178,9 @@
       @include pds-text-small;
       margin-top: $pds-spacing-fluid-small;
 
-      &--small {
+      &--toc {
         max-width: 250px;
+        margin-top: 1px;
       }
 
       &--full {
