@@ -44,7 +44,7 @@ export class Popover {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
 
-  /** Makes the popover position fixed, placing it on top of the page, and automatically closes it on scroll. */
+  /** Makes the popover position fixed, allowing it to overflow and automatically closes it on scroll. */
   @Prop() public fixed?: boolean = false;
 
   /** Adapts the popover color depending on the theme. */
