@@ -1,11 +1,6 @@
 @import 'lib/border';
 @import 'lib/theme';
 
-$pds-skeleton-border-radius-map: (
-  'small': $pds-border-radius-small,
-  'medium': $pds-border-radius-medium,
-);
-
 @mixin pds-skeleton($theme: 'light') {
   @if ($theme == 'dark') {
     background: $pds-theme-dark-background-surface

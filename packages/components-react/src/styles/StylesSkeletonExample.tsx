@@ -15,23 +15,21 @@ import {
 } from '@porsche-design-system/components-react/styles';
 
 // Wrapper
-const sharedWrapperStyle = {
+const Wrapper = styled.div({
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'center',
   alignItems: 'flex-start',
   gap: gridGap,
   padding: spacingFluidMedium,
-} as const;
+});
 
-const WrapperLight = styled.div({
-  ...sharedWrapperStyle,
+const WrapperLight = styled(Wrapper)({
   background: themeLightBackgroundBase,
   color: themeLightPrimary,
 });
 
-const WrapperDark = styled.div({
-  ...sharedWrapperStyle,
+const WrapperDark = styled(Wrapper)({
   background: themeDarkBackgroundBase,
   color: themeDarkPrimary,
 });
@@ -44,47 +42,32 @@ const Heading = styled.h3({
   margin: 0,
 });
 
-// Skeletons
-const skeletonLightStyle = getSkeletonStyle({ theme: 'light' });
-const skeletonDarkStyle = getSkeletonStyle({ theme: 'dark' });
+// Skeletons shared
+const SkeletonLight = styled.div(getSkeletonStyle({ theme: 'light' }));
+const SkeletonDark = styled.div(getSkeletonStyle({ theme: 'dark' }));
 
-const SkeletonBox = styled.div({
+// Skeletons box
+const boxStyles = {
   height: '200px',
   width: '500px',
-});
-const SkeletonBoxLight = styled(SkeletonBox)(skeletonLightStyle);
-const SkeletonBoxDark = styled(SkeletonBox)(skeletonDarkStyle);
+};
+const SkeletonBoxLight = styled(SkeletonLight)(boxStyles);
+const SkeletonBoxDark = styled(SkeletonDark)(boxStyles);
 
-const SkeletonText = styled.div({
+// Skeletons text
+const textStyles = {
   height: fontLineHeight,
   width: '100px',
-});
+};
+const SkeletonTextLight = styled(SkeletonLight)(textStyles);
+const SkeletonTextSmallLight = styled(SkeletonTextLight)({ fontSize: fontSizeTextSmall });
+const SkeletonTextMediumLight = styled(SkeletonTextLight)({ fontSize: fontSizeTextMedium });
+const SkeletonTextLargeLight = styled(SkeletonTextLight)({ fontSize: fontSizeTextLarge });
 
-const SkeletonTextSmallLight = styled(SkeletonText)({
-  ...skeletonLightStyle,
-  fontSize: fontSizeTextSmall,
-});
-const SkeletonTextMediumLight = styled(SkeletonText)({
-  ...skeletonLightStyle,
-  fontSize: fontSizeTextMedium,
-});
-const SkeletonTextLargeLight = styled(SkeletonText)({
-  ...skeletonLightStyle,
-  fontSize: fontSizeTextLarge,
-});
-
-const SkeletonTextSmallDark = styled(SkeletonText)({
-  ...skeletonDarkStyle,
-  fontSize: fontSizeTextSmall,
-});
-const SkeletonTextMediumDark = styled(SkeletonText)({
-  ...skeletonDarkStyle,
-  fontSize: fontSizeTextMedium,
-});
-const SkeletonTextLargeDark = styled(SkeletonText)({
-  ...skeletonDarkStyle,
-  fontSize: fontSizeTextLarge,
-});
+const SkeletonTextDark = styled(SkeletonDark)(textStyles);
+const SkeletonTextSmallDark = styled(SkeletonTextDark)({ fontSize: fontSizeTextSmall });
+const SkeletonTextMediumDark = styled(SkeletonTextDark)({ fontSize: fontSizeTextMedium });
+const SkeletonTextLargeDark = styled(SkeletonTextDark)({ fontSize: fontSizeTextLarge });
 
 export const StylesSkeletonExample = (): JSX.Element => {
   return (

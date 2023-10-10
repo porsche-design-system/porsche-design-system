@@ -12,23 +12,21 @@ import {
 } from '@porsche-design-system/components-react/styles';
 
 // Wrapper
-const sharedWrapperStyle = {
+const Wrapper = styled.div({
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'center',
   alignItems: 'flex-start',
   gap: gridGap,
   padding: spacingFluidMedium,
-} as const;
+});
 
-const WrapperLight = styled.div({
-  ...sharedWrapperStyle,
+const WrapperLight = styled(Wrapper)({
   background: themeLightBackgroundBase,
   color: themeLightPrimary,
 });
 
-const WrapperDark = styled.div({
-  ...sharedWrapperStyle,
+const WrapperDark = styled(Wrapper)({
   background: themeDarkBackgroundBase,
   color: themeDarkPrimary,
 });
