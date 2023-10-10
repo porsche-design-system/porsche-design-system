@@ -11,7 +11,6 @@ import {
   motionEasingIn,
   motionEasingOut,
   spacingFluidMedium,
-  textSmallStyle,
   textXSmallStyle,
   themeLightBackgroundSurface,
   themeLightPrimary,
