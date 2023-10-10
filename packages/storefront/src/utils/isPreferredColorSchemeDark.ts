@@ -6,8 +6,8 @@ export const isPreferredColorSchemeDark = (): boolean => {
 
 const handlersMap: Map<Vue, () => void> = new Map();
 
-// singleton listener shared across entire app
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => handlersMap.forEach((cb) => cb()));
+// singleton listener shared across entire app, also matchmedia-polyfill only implements addListener
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', () => handlersMap.forEach((cb) => cb()));
 
 export const onPrefersColorSchemeChange = (vueComponent: Vue, cb: () => void): void => {
   handlersMap.set(vueComponent, cb);
