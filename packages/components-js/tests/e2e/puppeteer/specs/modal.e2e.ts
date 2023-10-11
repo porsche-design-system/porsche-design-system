@@ -42,6 +42,8 @@ const initBasicModal = (opts?: {
   hasSlottedHeading?: boolean;
   hasSlottedFooter?: boolean;
   disableCloseButton?: boolean;
+  markupBefore?: string;
+  markupAfter?: string;
 }): Promise<void> => {
   const {
     isOpen = true,
@@ -51,6 +53,8 @@ const initBasicModal = (opts?: {
     hasSlottedHeading,
     hasSlottedFooter,
     disableCloseButton,
+    markupBefore,
+    markupAfter,
   } = opts || {};
 
   const attributes = [
@@ -64,12 +68,11 @@ const initBasicModal = (opts?: {
 
   return setContentWithDesignSystem(
     page,
-    `
-    <p-modal ${attributes}>
-      ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
-      ${content}
-      ${hasSlottedFooter ? '<div slot="footer">Some Footer</div>' : ''}
-    </p-modal>`
+    `${markupBefore}<p-modal ${attributes}>
+  ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
+  ${content}
+  ${hasSlottedFooter ? '<div slot="footer">Some Footer</div>' : ''}
+</p-modal>${markupAfter}`
   );
 };
 
@@ -77,15 +80,15 @@ const initAdvancedModal = (): Promise<void> => {
   return setContentWithDesignSystem(
     page,
     `<p-modal heading="Some Heading">
-      Some Content
-      <p-button id="btn-content-1">Content Button 1</p-button>
-      <p-button id="btn-content-2">Content Button 2</p-button>
+  Some Content
+  <p-button id="btn-content-1">Content Button 1</p-button>
+  <p-button id="btn-content-2">Content Button 2</p-button>
 
-      <div>
-        <p-button id="btn-footer-1">Footer Button 1</p-button>
-        <p-button id="btn-footer-2">Footer Button 2</p-button>
-      </div>
-    </p-modal>`
+  <div>
+    <p-button id="btn-footer-1">Footer Button 1</p-button>
+    <p-button id="btn-footer-2">Footer Button 2</p-button>
+  </div>
+</p-modal>`
   );
 };
 
@@ -392,6 +395,23 @@ describe('focus behavior', () => {
 
     expect(await getModalVisibility(), 'after escape').toBe('hidden');
     expect(await getActiveElementId(page)).toBe('btn-open');
+  });
+
+  it('should focus element after modal when open accordion contains link but modal is not open', async () => {
+    await initBasicModal({
+      isOpen: false,
+      content: `<p-accordion heading="Some Heading" tag="h3" open="true">
+  <a id="inside" href="#inside-modal">Some anchor inside modal</a>
+</p-accordion>`,
+      markupBefore: '<a id="before" href="#before-modal">Some anchor before modal</a>',
+      markupAfter: '<a id="after" href="#after-modal">Some anchor after modal</a>',
+    });
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page), 'after 1st tab').toBe('before');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page), 'after 2nd tab').toBe('after');
   });
 
   describe('after content change', () => {
