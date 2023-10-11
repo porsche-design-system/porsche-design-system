@@ -259,12 +259,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /const hasFooter = .+\n/,
             '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
           )
-          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/, '');
+          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string ''
       } else if (tagName === 'p-flyout') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
-          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/, '');
+          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string ''
       } else if (tagName === 'p-radio-button-wrapper') {
         newFileContent = newFileContent.replace(
           /&& !(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0]) && (otherChildren\[0]\?\.props\.checked)/g,

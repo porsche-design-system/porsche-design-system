@@ -149,7 +149,7 @@ export class Flyout {
           tabIndex={-1}
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           /* @ts-ignore */
-          inert={this.open ? null : ''} // prevents focusable elements within nested open accordion
+          inert={this.open ? null : true} // prevents focusable elements within nested open accordion
           ref={(el) => (this.dialog = el)}
           {...(this.hasSubFooter && { onScroll: this.onScroll })} // if no sub-footer is used scroll shadows are done via CSS
         >
