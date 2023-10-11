@@ -85,7 +85,7 @@
       removeOnPrefersColorSchemeChange(this);
     }
 
-    private get category(): string {
+    public get category(): string {
       return capitalCase(this.$route.params.category);
     }
 
@@ -140,7 +140,9 @@
 
     // needs to real function, because a getter like `public get skeletonTheme()` is not called again on this.$forceUpdate()
     public getSkeletonTheme(): string {
-      return (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark()) || this.storefrontTheme === 'dark' ? 'skeleton--dark' : 'skeleton--light'; ? 'skeleton--dark' : 'skeleton--light';
+      return (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark()) || this.storefrontTheme === 'dark'
+        ? 'skeleton--dark'
+        : 'skeleton--light';
     }
   }
 </script>
