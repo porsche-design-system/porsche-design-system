@@ -106,7 +106,7 @@ export const getLinkButtonStyles = (
       minHeight: '54px', // ensure space is already reserved until icon component is loaded (ssr)
       boxSizing: 'border-box',
       outline: 0,
-      textAlign: 'left',
+      textAlign: 'start',
       appearance: 'none',
       textDecoration: 'none',
       border: `2px solid ${borderColor}`,

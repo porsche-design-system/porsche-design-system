@@ -109,7 +109,7 @@ export const getComponentCss = (
       padding: 0,
       outline: 0,
       border: 0,
-      textAlign: 'left',
+      textAlign: 'start',
       background: 'transparent',
       appearance: 'none',
       cursor: isDisabledOrLoading(disabled, loading) ? 'auto' : 'pointer',

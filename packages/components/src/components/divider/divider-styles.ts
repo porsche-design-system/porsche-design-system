@@ -45,7 +45,7 @@ export const getComponentCss = (
         margin: 0,
         padding: 0,
         border: 'none',
-        textAlign: 'left',
+        textAlign: 'start',
         ...(isHighContrastMode
           ? {
               background: getHighContrastColors().canvasTextColor,
