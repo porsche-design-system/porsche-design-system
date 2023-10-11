@@ -14,7 +14,7 @@
     "build-app": "next build",
     "lint": "next lint",
     "test": "yarn test:e2e && yarn test:vrt",
-    "test:e2e": "if [ \"$CI\" != true ]; then yarn build-app; fi && TYPE=E2E PORT=3000 jest --colors -c tests/e2e/config/jest.config.ts",
+    "test:e2e": "yarn build-app && TYPE=E2E PORT=3000 jest --colors -c tests/e2e/config/jest.config.ts",
     "test:vrt": "if [ \"$CI\" != true ]; then yarn build-app; fi && TYPE=VRT PORT=3000 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
