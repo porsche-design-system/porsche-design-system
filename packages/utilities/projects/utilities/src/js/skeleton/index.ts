@@ -1,0 +1,1 @@
+export { getSkeletonStyle } from './getSkeletonStyle';

@@ -20,5 +20,5 @@
       Markdown,
     },
   })
-  export default class NotFound extends Vue {}
+  export default class NotFoundView extends Vue {}
 </script>

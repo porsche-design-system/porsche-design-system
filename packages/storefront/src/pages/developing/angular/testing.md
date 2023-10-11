@@ -2,8 +2,6 @@
 
 <TableOfContents></TableOfContents>
 
-# Test the application
-
 ## Testing with Jest
 
 **Jest** uses **jsdom** and supports ShadowDOM since Version 12.2.0.  
@@ -84,6 +82,8 @@ it('should render Tabs Bar from Porsche Design System and use its events', async
 });
 ```
 
+More test examples can be found at the [componentsReady() documentation](developing/components-ready#testing).
+
 ## Testing with Karma
 
 ### Config
@@ -131,8 +131,16 @@ const injectPartialsIntoKarmaContextHtml = () => {
 
 injectPartialsIntoKarmaContextHtml();
 
-// rest of config...
+module.exports = function (config) {
+  config.set({
+    basePath: '',
+    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    // ... rest of config
+  });
+}
 ```
+
+More test examples can be found at the [componentsReady() documentation](developing/components-ready#testing).
 
 We also provide test examples in our
 [sample integration project](https://github.com/porsche-design-system/sample-integration-angular/tree/master/src/app/pages).

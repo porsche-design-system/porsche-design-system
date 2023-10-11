@@ -9,16 +9,17 @@ type Options = {
 };
 
 export const getFocusStyle = (opts?: Options) => {
-  const outlineOffset = opts?.offset === 'small' ? '2px' : opts?.offset === 'none' ? 0 : opts?.offset || '2px';
-  const borderRadius =
-    opts?.borderRadius === 'small'
+  const { borderRadius = 'small', offset = '2px' } = opts || {};
+  const outlineOffset = offset === 'small' ? '2px' : offset === 'none' ? 0 : offset || '2px';
+  const borderRadiusValue =
+    borderRadius === 'small'
       ? borderRadiusSmall
-      : opts?.borderRadius === 'medium'
+      : borderRadius === 'medium'
       ? borderRadiusMedium
-      : opts?.borderRadius || borderRadiusSmall;
+      : borderRadius || borderRadiusSmall;
 
   return {
-    borderRadius, // it's visually being reflected on both (when placed here), element and focus outline
+    borderRadius: borderRadiusValue, // it's visually being reflected on both (when placed here), element and focus outline
     '&:focus': {
       outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
       outlineOffset,
