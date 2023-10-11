@@ -16,14 +16,20 @@ export const updatePopoverStyles = (
   spacer: HTMLDivElement,
   popover: HTMLDivElement,
   direction: PopoverDirection,
-  fixed: boolean,
-  theme: Theme
+  theme: Theme,
+  isWithinScrollContainer: boolean
 ): void => {
   // Reset margin so that it can be recalculated correctly
   popover.style.margin = '0';
   if (!isElementWithinViewport(spacer, popover, direction)) {
     direction = getAutoDirection(spacer, popover);
-    attachComponentCss(host, getComponentCss, direction, fixed, theme);
+    attachComponentCss(
+      host,
+      getComponentCss,
+      direction,
+      theme,
+      isWithinScrollContainer ? host.getBoundingClientRect() : undefined
+    );
   }
   // Set margin via inline style to make attachComponentCss cacheable
   popover.style.margin = getPopoverMargin(spacer, popover, direction);
@@ -165,8 +171,6 @@ export const onDocumentKeydown = (e: KeyboardEvent): void => {
   }
 };
 
-export const isWithinTable = (host: HTMLElement): HTMLElement | null => host.closest(getPrefixedTagNames(host).pTable);
-
 export const addTableScrollListener = (host: HTMLElement, table: HTMLElement): void => {
   table.shadowRoot
     .querySelector(getPrefixedTagNames(host).pScroller)
@@ -174,7 +178,10 @@ export const addTableScrollListener = (host: HTMLElement, table: HTMLElement): v
     .addEventListener('scroll', onScroll, { once: true });
 };
 
-export const addScrollListener = (): void => window.addEventListener('scroll', onScroll, { once: true });
+export const addScrollAndResizeListener = (): void => {
+  window.addEventListener('scroll', onScroll, { once: true });
+  window.addEventListener('resize', onScroll, { once: true });
+};
 
 export const onScroll = (): void => {
   const popover = registeredPopovers.find((popoverItem) => popoverItem.open && popoverItem.isWithinScrollContainer);

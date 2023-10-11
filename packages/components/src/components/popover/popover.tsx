@@ -2,9 +2,8 @@ import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/cor
 import type { PopoverAriaAttribute, PopoverDirection } from './popover-utils';
 import {
   addDocumentEventListener,
-  addScrollListener,
+  addScrollAndResizeListener,
   addTableScrollListener,
-  isWithinTable,
   POPOVER_ARIA_ATTRIBUTES,
   POPOVER_DIRECTIONS,
   removeDocumentEventListener,
@@ -15,6 +14,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
+  isWithinComponent,
   parseAndGetAriaAttributes,
   THEMES,
   validateProps,
@@ -65,11 +65,14 @@ export class Popover {
   }
 
   public componentDidRender(): void {
-    const table = isWithinTable(this.host);
-    this.isWithinScrollContainer = !!table;
+    const table = isWithinComponent(this.host, 'pTable');
+    const accordion = isWithinComponent(this.host, 'pAccordion');
+    this.isWithinScrollContainer = !!table || !!accordion;
     if (this.isWithinScrollContainer) {
-      addScrollListener();
-      addTableScrollListener(this.host, table);
+      addScrollAndResizeListener();
+      if (table) {
+        addTableScrollListener(this.host, table);
+      }
     }
     if (this.open) {
       // calculate / update position only possible after render
@@ -78,8 +81,8 @@ export class Popover {
         this.spacer,
         this.popover,
         this.direction,
-        this.isWithinScrollContainer,
-        this.theme
+        this.theme,
+        this.isWithinScrollContainer
       );
     }
   }
@@ -90,7 +93,13 @@ export class Popover {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.direction, this.isWithinScrollContainer, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.direction,
+      this.theme,
+      this.isWithinScrollContainer ? this.host.getBoundingClientRect() : undefined
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

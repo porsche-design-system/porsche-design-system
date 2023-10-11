@@ -1,5 +1,5 @@
 import type { PopoverDirection } from './popover-utils';
-import type { JssStyle } from 'jss';
+import type { JssStyle, Styles } from 'jss';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -135,7 +135,32 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
   };
 };
 
-export const getComponentCss = (direction: PopoverDirection, fixed: boolean, theme: Theme): string => {
+export const getFixedPositionJssStyle = (position: DOMRect, direction: PopoverDirection): JssStyle => {
+  const directionMap: Record<PopoverDirection, Styles> = {
+    right: {
+      top: `calc(${position.top}px + ${borderWidth})`,
+      left: `calc(${position.right}px - 16px)`,
+    },
+    left: {
+      top: `calc(${position.top}px + ${borderWidth})`,
+      left: `calc(${position.left}px - 16px)`,
+    },
+    top: {
+      top: `calc(${position.top}px - 16px)`,
+      left: `calc(${position.left}px + ${borderWidth})`,
+    },
+    bottom: {
+      top: `calc(${position.bottom}px + 16px)`,
+      left: `calc(${position.left}px + ${borderWidth})`,
+    },
+  };
+  return {
+    position: 'fixed',
+    ...directionMap[direction],
+  };
+};
+
+export const getComponentCss = (direction: PopoverDirection, theme: Theme, hostPosition?: DOMRect): string => {
   const spacerBox = '-16px';
   const { hoverColor, focusColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
@@ -209,11 +234,8 @@ export const getComponentCss = (direction: PopoverDirection, fixed: boolean, the
       transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
     },
     spacer: {
-      ...(fixed
-        ? {
-            position: 'fixed',
-            transform: 'translate(12px, 16px)',
-          }
+      ...(hostPosition
+        ? getFixedPositionJssStyle(hostPosition, direction)
         : {
             position: 'absolute',
             top: spacerBox,
