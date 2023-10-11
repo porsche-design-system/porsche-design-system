@@ -100,11 +100,11 @@
 
 <style scoped lang="scss">
   .toc {
-    margin-top: 4rem;
+    margin-top: 4rem; // synced with skeleton in Page.vue
   }
 
   p-heading {
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; // synced with skeleton in Page.vue
   }
 
   li {

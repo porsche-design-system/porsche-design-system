@@ -158,7 +158,7 @@
     &--h1 {
       max-width: 200px;
       @include pds-heading-xx-large;
-      margin-top: $pds-spacing-fluid-large;
+      margin-top: $pds-spacing-fluid-large; // synced with h1 style of Markdown.vue
 
       // without tabs-bar
       &:first-child {
@@ -170,13 +170,13 @@
     &--h2 {
       max-width: 150px;
       @include pds-heading-medium;
-      margin: 4rem 0 1rem;
+      margin: 4rem 0 1rem; // synced with .toc in TableOfContents.vue
     }
 
     &--text {
       width: 75%;
       @include pds-text-small;
-      margin-top: $pds-spacing-fluid-small;
+      margin-top: $pds-spacing-fluid-small; // synced with p style of Markdown.vue
 
       &--toc {
         max-width: 250px;
