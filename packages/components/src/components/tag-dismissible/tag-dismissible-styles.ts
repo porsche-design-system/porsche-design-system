@@ -34,8 +34,8 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'inline-block',
+        verticalAlign: 'top',
         ...addImportantToEachRule({
-          verticalAlign: 'top',
           outline: 0,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
@@ -84,7 +84,7 @@ export const getComponentCss = (
     }),
     icon: {
       padding: '4px',
-      marginInlineEnd: '-2px', // compensate white space of svg icon
+      marginInlineEnd: '-2px', // compensate white space of svg icon and optimize visual alignment
       transition: getTransition('background-color'),
       borderRadius: borderRadiusSmall,
     },
