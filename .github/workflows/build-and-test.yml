@@ -320,11 +320,21 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
+      - name: 'Build NextJS'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-react/nextjs
       - name: 'Build Remix' # remix build is checked as part of nextjs unit tests
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
           args: --components-react/remix
+      - name: 'Unit Test react-ssr-wrapper'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --components-react:react-ssr-wrapper
       - name: 'E2E Test components-react/nextjs'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -335,11 +345,6 @@ jobs:
         with:
           entrypoint: run-test-vrt
           args: --components-react/nextjs
-      - name: 'Unit Test react-ssr-wrapper'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-test-unit
-          args: --components-react:react-ssr-wrapper
       - name: 'VRT Regression components-react/nextjs'
         if: failure()
         uses: actions/upload-artifact@v3
