@@ -158,8 +158,8 @@ export class Modal {
             ...parseAndGetAriaAttributes(this.aria),
           })}
           tabIndex={-1}
-          /* @ts-expect-error */
-          inert={!this.open} // prevents focusable elements within nested open accordion
+          /* @ts-ignore */
+          inert={this.open ? null : ''} // prevents focusable elements within nested open accordion
           ref={(el) => (this.dialog = el)}
         >
           {this.hasDismissButton && (

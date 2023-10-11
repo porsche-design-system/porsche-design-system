@@ -147,8 +147,8 @@ export class Flyout {
             ...parseAndGetAriaAttributes(this.aria),
           })}
           tabIndex={-1}
-          /* @ts-expect-error */
-          inert={!this.open} // prevents focusable elements within nested open accordion
+          /* @ts-ignore */
+          inert={this.open ? null : ''} // prevents focusable elements within nested open accordion
           ref={(el) => (this.dialog = el)}
           {...(this.hasSubFooter && { onScroll: this.onScroll })} // if no sub-footer is used scroll shadows are done via CSS
         >
