@@ -1,6 +1,10 @@
 import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/core';
+import type { PopoverAriaAttribute, PopoverDirection } from './popover-utils';
 import {
   addDocumentEventListener,
+  addScrollListener,
+  addTableScrollListener,
+  isWithinTable,
   POPOVER_ARIA_ATTRIBUTES,
   POPOVER_DIRECTIONS,
   removeDocumentEventListener,
@@ -16,14 +20,12 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
-import type { PopoverAriaAttribute, PopoverDirection } from './popover-utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 
 const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
   description: AllowedTypes.string,
   aria: AllowedTypes.aria<PopoverAriaAttribute>(POPOVER_ARIA_ATTRIBUTES),
-  fixed: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -44,9 +46,6 @@ export class Popover {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
 
-  /** Makes the popover position fixed, allowing it to overflow and automatically closes it on scroll. */
-  @Prop() public fixed?: boolean = false;
-
   /** Adapts the popover color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
@@ -55,6 +54,7 @@ export class Popover {
   private spacer: HTMLDivElement;
   private popover: HTMLDivElement;
   private button: HTMLButtonElement;
+  private isWithinScrollContainer: boolean;
 
   public connectedCallback(): void {
     addDocumentEventListener(this);
@@ -65,9 +65,22 @@ export class Popover {
   }
 
   public componentDidRender(): void {
+    const table = isWithinTable(this.host);
+    this.isWithinScrollContainer = !!table;
+    if (this.isWithinScrollContainer) {
+      addScrollListener();
+      addTableScrollListener(this.host, table);
+    }
     if (this.open) {
       // calculate / update position only possible after render
-      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.fixed, this.theme);
+      updatePopoverStyles(
+        this.host,
+        this.spacer,
+        this.popover,
+        this.direction,
+        this.isWithinScrollContainer,
+        this.theme
+      );
     }
   }
 
@@ -77,7 +90,7 @@ export class Popover {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.direction, this.fixed, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.direction, this.isWithinScrollContainer, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

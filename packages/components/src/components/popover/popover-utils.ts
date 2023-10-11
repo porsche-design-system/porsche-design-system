@@ -1,5 +1,5 @@
 import { Popover } from './popover';
-import { attachComponentCss, isClickOutside } from '../../utils';
+import { attachComponentCss, getPrefixedTagNames, isClickOutside } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import type { Theme } from '../../types';
 
@@ -120,7 +120,10 @@ export const getPopoverMargin = (
   }
 };
 
-export type PopoverInternal = Partial<InstanceType<typeof Popover>> & { open: boolean };
+export type PopoverInternal = Partial<InstanceType<typeof Popover>> & {
+  open: boolean;
+  isWithinScrollContainer: boolean;
+};
 export const registeredPopovers: PopoverInternal[] = [];
 
 export const addDocumentEventListener = (popover: Popover): void => {
@@ -128,10 +131,6 @@ export const addDocumentEventListener = (popover: Popover): void => {
     registeredPopovers.push(popover as unknown as PopoverInternal);
     document.addEventListener('mousedown', onDocumentMousedown); // multiple calls don't add multiple listeners
     document.addEventListener('keydown', onDocumentKeydown); // multiple calls don't add multiple listeners
-    if (popover.fixed) {
-      window.addEventListener('scroll', onScroll, true);
-      window.addEventListener('stencil_componentWillUpdate', onComponentWillUpdate);
-    }
   }
 };
 
@@ -143,10 +142,6 @@ export const removeDocumentEventListener = (popover: Popover): void => {
   if (registeredPopovers.length === 0) {
     document.removeEventListener('mousedown', onDocumentMousedown);
     document.removeEventListener('keydown', onDocumentKeydown);
-    if (popover.fixed) {
-      window.removeEventListener('scroll', onScroll, true);
-      window.removeEventListener('stencil_componentWillUpdate', onComponentWillUpdate);
-    }
   }
 };
 
@@ -170,15 +165,20 @@ export const onDocumentKeydown = (e: KeyboardEvent): void => {
   }
 };
 
-const onScroll = (): void => {
-  const popover = registeredPopovers.find((popoverItem) => popoverItem.open && popoverItem.fixed);
-  if (popover) {
-    popover.open = false;
-  }
+export const isWithinTable = (host: HTMLElement): HTMLElement | null => host.closest(getPrefixedTagNames(host).pTable);
+
+export const addTableScrollListener = (host: HTMLElement, table: HTMLElement): void => {
+  table.shadowRoot
+    .querySelector(getPrefixedTagNames(host).pScroller)
+    .shadowRoot.querySelector('.scroll-area')
+    .addEventListener('scroll', onScroll, { once: true });
 };
 
-const onComponentWillUpdate = (e: Event): void => {
-  if ((e.composedPath()[0] as any).tagName.includes('SCROLLER')) {
-    onScroll();
+export const addScrollListener = (): void => window.addEventListener('scroll', onScroll, { once: true });
+
+export const onScroll = (): void => {
+  const popover = registeredPopovers.find((popoverItem) => popoverItem.open && popoverItem.isWithinScrollContainer);
+  if (popover) {
+    popover.open = false;
   }
 };
