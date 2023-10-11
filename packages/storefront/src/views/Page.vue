@@ -138,7 +138,7 @@
       return this.$store.getters.storefrontTheme;
     }
 
-    // getter is not called again on this.$forceUpdate()
+    // needs to real function, because a getter like `public get skeletonTheme()` is not called again on this.$forceUpdate()
     public getSkeletonTheme(): string {
       return this.storefrontTheme === 'auto' && isPreferredColorSchemeDark() ? 'skeleton--dark' : 'skeleton--light';
     }

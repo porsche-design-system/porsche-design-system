@@ -35,7 +35,7 @@
       return this.$store.getters.storefrontTheme;
     }
 
-    // getter is not called again on this.$forceUpdate()
+    // needs to real function, because a getter like `public get icon()` is not called again on this.$forceUpdate()
     public getIcon(): 'moon' | 'sun' {
       if ((this.storefrontTheme === 'auto' && isPreferredColorSchemeDark()) || this.storefrontTheme === 'dark') {
         return 'sun';
