@@ -21,7 +21,7 @@
   export default class CycleStorefrontTheme extends Vue {
     mounted(): void {
       onPrefersColorSchemeChange(this, () => {
-        if (this.theme === 'auto') {
+        if (this.storefrontTheme === 'auto') {
           this.$forceUpdate();
         }
       });
