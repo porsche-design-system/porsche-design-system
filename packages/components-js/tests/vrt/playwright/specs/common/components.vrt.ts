@@ -97,6 +97,16 @@ components.forEach((component) => {
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-scale-mode.png`);
     });
 
+    // rtl mode
+    test(`should have no visual regression for viewport ${baseViewportWidth} in rtl (right-to-left) mode`, async ({
+      page,
+    }) => {
+      await setupScenario(page, `/${component}`, baseViewportWidth, {
+        forceDirMode: 'rtl',
+      });
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-rtl-mode.png`);
+    });
+
     // print view
     baseThemes.forEach((theme) => {
       test(`should have no visual regression for printed pdf with theme ${theme}`, async ({ page }) => {
