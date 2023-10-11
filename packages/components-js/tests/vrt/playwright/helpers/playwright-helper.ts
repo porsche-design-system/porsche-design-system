@@ -81,12 +81,14 @@ const waitForForcedComponentTheme = async (page: Page, forceComponentTheme: Them
 };
 
 export type PrefersColorScheme = 'light' | 'dark';
+export type Dir = 'ltr' | 'rtl' | 'auto';
 type SetupScenarioOptions = {
   javaScriptDisabled?: boolean;
   forcedColorsEnabled?: boolean;
   prefersColorScheme?: PrefersColorScheme;
   scalePageFontSize?: boolean;
   forceComponentTheme?: Theme;
+  forceDirMode?: Dir;
   emulateMediaPrint?: boolean;
 };
 
@@ -102,6 +104,7 @@ export const setupScenario = async (
     prefersColorScheme,
     scalePageFontSize,
     forceComponentTheme,
+    forceDirMode,
     emulateMediaPrint,
   }: SetupScenarioOptions = {
     javaScriptDisabled: false,
@@ -109,6 +112,7 @@ export const setupScenario = async (
     prefersColorScheme: undefined,
     scalePageFontSize: false,
     forceComponentTheme: undefined,
+    forceDirMode: undefined,
     emulateMediaPrint: false,
     ...options,
   };
@@ -132,6 +136,12 @@ export const setupScenario = async (
 
   if (forceComponentTheme) {
     await waitForForcedComponentTheme(page, forceComponentTheme);
+  }
+
+  if (forceDirMode) {
+    await page.evaluate((forceDirMode) => {
+      document.querySelector('html').setAttribute('dir', forceDirMode);
+    }, forceDirMode);
   }
 
   if (scalePageFontSize) {
