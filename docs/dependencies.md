@@ -97,7 +97,8 @@ of using it with Node or TS-Node.
 
 ## Change case
 
-Since v5.0.0 `change-case` change-case lists no main file and has no index.js, so it can't be directly required.
+Since v5.0.0 `change-case` decided to provide just a modern _ESM_ build with their latest npm package. Unfortunately there's
+no stable way of using it with Node or TS-Node.
 
 ### Affected dependencies:
 
