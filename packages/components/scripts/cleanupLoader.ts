@@ -39,7 +39,7 @@ export const defineCustomElements = (options) => {
   globalScripts();
   return bootstrapLazy(
     // prettier-ignore
-    [${JSON.parse(lazyData)}],
+    ${JSON.parse(lazyData)},
     options
   );
 };
