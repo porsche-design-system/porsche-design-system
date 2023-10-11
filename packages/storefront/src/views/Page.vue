@@ -1,9 +1,25 @@
 <template>
   <div>
-    <p-tabs-bar v-if="hasTabs" :theme="$store.getters.storefrontTheme" :active-tab-index="activeTabIndex" size="medium">
+    <p-tabs-bar v-if="hasTabs" :theme="storefrontTheme" :active-tab-index="activeTabIndex" size="medium">
       <router-link v-for="(tab, index) in tabs" :key="index" :to="createTabLink(tab)">{{ tab }}</router-link>
     </p-tabs-bar>
-    <Markdown>
+
+    <div v-if="isLoading">
+      <div :class="['skeleton', 'skeleton--h1', getSkeletonTheme()]"></div>
+      <!-- intro text -->
+      <div v-if="category !== 'Styles'">
+        <div :class="['skeleton', 'skeleton--text', 'skeleton--text--full', getSkeletonTheme()]"></div>
+        <div :class="['skeleton', 'skeleton--text', 'skeleton--text--full', getSkeletonTheme()]"></div>
+        <div :class="['skeleton', 'skeleton--text', getSkeletonTheme()]"></div>
+      </div>
+
+      <!-- table of contents -->
+      <div :class="['skeleton', 'skeleton--h2', getSkeletonTheme()]"></div>
+      <div :class="['skeleton', 'skeleton--text', 'skeleton--text--toc', getSkeletonTheme()]"></div>
+      <div :class="['skeleton', 'skeleton--text', 'skeleton--text--toc', getSkeletonTheme()]"></div>
+      <div :class="['skeleton', 'skeleton--text', 'skeleton--text--toc', getSkeletonTheme()]"></div>
+    </div>
+    <Markdown v-else>
       <component :is="component" v-for="(component, index) in components" :key="index"></component>
     </Markdown>
   </div>
@@ -15,16 +31,17 @@
   import { Watch } from 'vue-property-decorator';
   import { config as STOREFRONT_CONFIG } from '@/../storefront.config';
   import Markdown from '@/components/Markdown.vue';
-  import { StorefrontConfigPage } from '@/models';
-  import { Component as ComponentType } from 'vue/types/options';
+  import type { StorefrontConfigPage, StorefrontTheme } from '@/models';
+  import type { Component as ComponentType } from 'vue/types/options';
   import { capitalCase, paramCase } from 'change-case';
+  import { isPreferredColorSchemeDark, onPrefersColorSchemeChange, removeOnPrefersColorSchemeChange } from '@/utils';
 
   @Component({
     components: {
       Markdown,
     },
   })
-  export default class Page extends Vue {
+  export default class PageView extends Vue {
     public components: ComponentType[] = [];
 
     public get hasTabs(): boolean {
@@ -56,9 +73,19 @@
 
     private async mounted(): Promise<void> {
       await this.loadComponents();
+
+      onPrefersColorSchemeChange(this, () => {
+        if (this.storefrontTheme === 'auto') {
+          this.$forceUpdate();
+        }
+      });
     }
 
-    private get category(): string {
+    destroyed(): void {
+      removeOnPrefersColorSchemeChange(this);
+    }
+
+    public get category(): string {
       return capitalCase(this.$route.params.category);
     }
 
@@ -81,17 +108,18 @@
       }
     }
 
+    // called twice when navigation happens via sidebar because initial link goes to category and not to first tab
     private async loadComponents(): Promise<void> {
       this.components = [];
-      await this.$store.dispatch('toggleLoadingAsync', true);
       if (this.pages?.length) {
+        this.$store.commit('setIsLoading', true);
         this.components = await Promise.all(
           this.pages.map(async (x) => ((await x()) as { default: ComponentType }).default)
         );
+        this.$store.commit('setIsLoading', false);
       } else {
         await this.redirect();
       }
-      await this.$store.dispatch('toggleLoadingAsync', false);
     }
 
     private async redirect(): Promise<void> {
@@ -101,6 +129,21 @@
         await this.$router.replace({ name: '404' });
       }
     }
+
+    public get isLoading(): boolean {
+      return this.$store.getters.isLoading;
+    }
+
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
+    }
+
+    // needs to real function, because a getter like `public get skeletonTheme()` is not called again on this.$forceUpdate()
+    public getSkeletonTheme(): string {
+      return (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark()) || this.storefrontTheme === 'dark'
+        ? 'skeleton--dark'
+        : 'skeleton--light';
+    }
   }
 </script>
 
@@ -109,5 +152,50 @@
 
   p-tabs-bar {
     margin-bottom: $pds-spacing-fluid-large;
+  }
+
+  .skeleton {
+    height: $pds-font-line-height;
+
+    &--h1 {
+      max-width: 200px;
+      @include pds-heading-xx-large;
+      margin-top: $pds-spacing-fluid-large; // synced with h1 style of Markdown.vue
+
+      // without tabs-bar
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    // table of contents heading
+    &--h2 {
+      max-width: 150px;
+      @include pds-heading-medium;
+      margin: 4rem 0 1rem; // synced with .toc in TableOfContents.vue
+    }
+
+    &--text {
+      width: 75%;
+      @include pds-text-small;
+      margin-top: $pds-spacing-fluid-small; // synced with p style of Markdown.vue
+
+      &--toc {
+        max-width: 250px;
+        margin-top: 1px;
+      }
+
+      &--full {
+        width: 100%;
+      }
+    }
+
+    &--light {
+      @include pds-skeleton('light');
+    }
+
+    &--dark {
+      @include pds-skeleton('dark');
+    }
   }
 </style>
