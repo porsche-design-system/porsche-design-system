@@ -189,7 +189,6 @@ export const getComponentCss = (
     }),
     label: {
       ...textSmallStyle,
-      paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       color: textColor,
@@ -200,7 +199,11 @@ export const getComponentCss = (
         buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
           order: alignLabelValue === 'left' ? -1 : 0,
         })),
-        buildResponsiveStyles(hideLabel, getHiddenTextJssStyle)
+        buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
+          getHiddenTextJssStyle(isHidden, {
+            paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
+          })
+        )
       ),
     },
   });
