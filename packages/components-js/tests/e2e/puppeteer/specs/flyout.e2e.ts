@@ -53,19 +53,21 @@ const initBasicFlyout = (
     header?: string;
     footer?: string;
     subFooter?: string;
+  },
+  other?: {
+    markupBefore?: string;
+    markupAfter?: string;
   }
 ): Promise<void> => {
   const { header = '', content = '<p>Some Content</p>', footer = '', subFooter = '' } = flyoutSlots || {};
+  const { markupBefore = '', markupAfter = '' } = other || {};
 
   const flyoutMarkup = `
-    <p-flyout ${getHTMLAttributes(flyoutProps)}>
-      ${header}
-      ${content}
-      ${footer}
-      ${subFooter}
-    </p-flyout>`;
+<p-flyout ${getHTMLAttributes(flyoutProps)}>
+  ${[header, content, footer, subFooter].filter(Boolean).join('\n  ')}
+</p-flyout>`;
 
-  return setContentWithDesignSystem(page, flyoutMarkup);
+  return setContentWithDesignSystem(page, [markupBefore, flyoutMarkup, markupBefore].filter(Boolean).join('\n'));
 };
 
 const initAdvancedFlyout = async () => {
@@ -407,7 +409,29 @@ describe('focus behavior', () => {
     expect(await getFlyoutVisibility(), 'after escape').toBe('hidden');
     expect(await getActiveElementId(page)).toBe('btn-open');
   });
+
+  it('should focus element after flyout when open accordion contains link but flyout is not open', async () => {
+    await initBasicFlyout(
+      { open: false },
+      {
+        content: `<p-accordion heading="Some Heading" tag="h3" open="true">
+  <a id="inside" href="#inside-flyout">Some anchor inside flyout</a>
+</p-accordion>`,
+      },
+      {
+        markupBefore: '<a id="before" href="#before-flyout">Some anchor before flyout</a>',
+        markupAfter: '<a id="after" href="#after-flyout">Some anchor after flyout</a>',
+      }
+    );
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page), 'after 1st tab').toBe('before');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page), 'after 2nd tab').toBe('after');
+  });
 });
+
 describe('after content change', () => {
   it('should focus dismiss button again', async () => {
     await initAdvancedFlyout();
@@ -415,7 +439,7 @@ describe('after content change', () => {
     await expectDismissButtonToBeFocused('initially');
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 1nd tab').toBe('btn-header');
+    expect(await getActiveElementId(page), 'after 1st tab').toBe('btn-header');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page), 'after 2nd tab').toBe('btn-content');
 
@@ -435,7 +459,7 @@ describe('after content change', () => {
     await openFlyout();
     await expectDismissButtonToBeFocused('initially');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 1nd tab').toBe('btn-header');
+    expect(await getActiveElementId(page), 'after 1st tab').toBe('btn-header');
 
     const host = await getHost();
     await host.evaluate((el) => {
