@@ -3544,6 +3544,7 @@ exports[`should render dsr component for PFlyout 1`] = `
       aria-hidden="true"
       aria-modal="true"
       class="root"
+      inert=""
       role="dialog"
       tabindex="-1"
     >
@@ -5226,6 +5227,7 @@ h2 {
       aria-hidden="true"
       aria-modal="true"
       class="root"
+      inert=""
       role="dialog"
       tabindex="-1"
     >

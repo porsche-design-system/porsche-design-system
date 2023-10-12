@@ -136,19 +136,6 @@ export class Flyout {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const dismissBtn = (
-      <PrefixedTagNames.pButtonPure
-        class="dismiss"
-        type="button"
-        hideLabel
-        icon="close"
-        theme={this.theme}
-        onClick={this.dismissFlyout}
-        ref={(el) => (this.dismissBtn = el)}
-      >
-        Dismiss flyout
-      </PrefixedTagNames.pButtonPure>
-    );
     return (
       <Host onMouseDown={this.onMouseDown}>
         <div
@@ -160,11 +147,25 @@ export class Flyout {
             ...parseAndGetAriaAttributes(this.aria),
           })}
           tabIndex={-1}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          /* @ts-ignore */
+          inert={this.open ? null : true} // prevents focusable elements within nested open accordion
           ref={(el) => (this.dialog = el)}
           {...(this.hasSubFooter && { onScroll: this.onScroll })} // if no sub-footer is used scroll shadows are done via CSS
         >
           <div class="header" ref={(el) => (this.header = el)}>
-            {dismissBtn}
+            <PrefixedTagNames.pButtonPure
+              class="dismiss"
+              type="button"
+              hideLabel
+              icon="close"
+              theme={this.theme}
+              onClick={this.dismissFlyout}
+              ref={(el) => (this.dismissBtn = el)}
+            >
+              Dismiss flyout
+            </PrefixedTagNames.pButtonPure>
+
             {this.hasHeader && (
               <div class="header-content">
                 <slot name="header" />
