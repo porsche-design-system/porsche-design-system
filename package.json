@@ -186,7 +186,7 @@
     "**/workbox-build/rollup": "^4.0.2"
   },
   "volta": {
-    "node": "18.17.1",
+    "node": "18.18.1",
     "yarn": "1.22.19"
   }
 }
