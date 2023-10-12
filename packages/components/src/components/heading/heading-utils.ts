@@ -1,5 +1,5 @@
 import type { HeadingTag } from './heading-tag';
-import type { BreakpointCustomizable, TextAlign } from '../../types';
+import type { BreakpointCustomizable, TextAlign, TextAlignDeprecated } from '../../types';
 import { hasSpecificSlottedTag } from '../../utils';
 import { HEADING_TAGS } from './heading-tag';
 
@@ -9,6 +9,7 @@ export type HeadingSize = (typeof HEADING_SIZES)[number];
 export const HEADING_COLORS = ['primary', 'inherit'] as const;
 export type HeadingColor = (typeof HEADING_COLORS)[number];
 
+export type HeadingAlignDeprecated = TextAlignDeprecated;
 export type HeadingAlign = TextAlign;
 
 const headingSizeToTagMap: Record<HeadingSize, string> = {
