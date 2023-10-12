@@ -10,7 +10,7 @@
     "prestart": "patchRemixRunProcessBrowserGlobalIdentifier && yarn --cwd ../nextjs prestartAndBuild",
     "prebuild-app": "patchRemixRunProcessBrowserGlobalIdentifier && yarn --cwd ../nextjs prestartAndBuild",
     "start": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'cross-env NODE_ENV=development binode -- @remix-run/dev:remix dev'",
-    "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'remix-serve build'",
+    "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'remix-serve ./build/index.js'",
     "build-app": "remix build",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "test": "yarn test:vrt",
