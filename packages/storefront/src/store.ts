@@ -58,11 +58,6 @@ export default new Vuex.Store({
       state.storefrontTheme = payload;
     },
   },
-  actions: {
-    toggleLoadingAsync({ commit }, payload): void {
-      commit('setIsLoading', payload);
-    },
-  },
   getters: {
     isLoading(state: State): boolean {
       return state.isLoading;
