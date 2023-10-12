@@ -44,7 +44,7 @@
     "jss-preset-default": "^10.10.0",
     "pixelmatch": "^5.3.0",
     "puppeteer": "~21.3.8",
-    "rollup": "^3.29.4",
+    "rollup": "^4.0.2",
     "rollup-plugin-bin": "^1.0.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-generate-package-json": "^3.2.0",

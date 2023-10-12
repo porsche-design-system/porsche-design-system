@@ -76,11 +76,11 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.12.1",
-    "@playwright/test": "1.38.1",
+    "@playwright/test": "1.39.0",
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.14.1",
     "concurrently": "^8.2.1",
-    "devtools-protocol": "^0.0.1206220",
+    "devtools-protocol": "^0.0.1208070",
     "globby": "^11.0.4",
     "js-beautify": "^1.14.9",
     "jsdom": "^22.1.0",
