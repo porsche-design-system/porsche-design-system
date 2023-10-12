@@ -26,6 +26,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Styles: `themeDarkBackgroundShading` and `pds-theme-dark-background-shading` color
   ([#2789](https://github.com/porsche-design-system/porsche-design-system/pull/2789))
 
+#### Fixed
+
+- `Flyout` and `Modal` with `open="false"` and nested `Accordion` with `open="true"` containing focusable elements like
+  links can't be focused anymore ([#2818](https://github.com/porsche-design-system/porsche-design-system/pull/2818))
+
 ### [3.7.0] - 2023-10-04
 
 ### [3.7.0-rc.2] - 2023-10-04
