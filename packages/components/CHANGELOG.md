@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- RTL (right-to-left) support for all components
 - `Popover` and `Modal` support theme dark and auto
   ([#2789](https://github.com/porsche-design-system/porsche-design-system/pull/2789))
 - Styles: `getSkeletonStyle()` and `pds-skeleton`
@@ -25,6 +26,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Styles: `themeDarkBackgroundShading` and `pds-theme-dark-background-shading` color
   ([#2789](https://github.com/porsche-design-system/porsche-design-system/pull/2789))
+- `Text`, `Display`, `Heading`, `Headline`: Prop values `left | right` of `align` prop are deprecated and mapped to new
+  values `start | end`.
+
+```diff
+- <p-text align="left"></p-text>
++ <p-text align="start"></p-text>
+
+- <p-text align="right"></p-text>
++ <p-text align="end"></p-text>
+
+- <p-display align="left"></p-display>
++ <p-display align="start"></p-display>
+
+- <p-display align="right"></p-display>
++ <p-display align="end"></p-display>
+
+- <p-heading align="left"></p-heading>
++ <p-heading align="start"></p-heading>
+
+- <p-heading align="right"></p-heading>
++ <p-heading align="end"></p-heading>
+```
 
 #### Fixed
 
