@@ -473,6 +473,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
 $&`
           );
+      } else if (tagName === 'p-pin-code') {
+        newFileContent = newFileContent.replace(/value={/, 'defaultValue={'); // fix warning about read-only field
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
           .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation
