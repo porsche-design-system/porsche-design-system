@@ -400,7 +400,7 @@ describe('focus behavior', () => {
   it('should focus element after modal when open accordion contains link but modal is not open', async () => {
     await initBasicModal({
       isOpen: false,
-      content: `<p-accordion heading="Some Heading" tag="h3" open="true">
+      content: `<p-accordion heading="Some Heading" open="true">
   <a id="inside" href="#inside-modal">Some anchor inside modal</a>
 </p-accordion>`,
       markupBefore: '<a id="before" href="#before-modal">Some anchor before modal</a>',
@@ -411,6 +411,7 @@ describe('focus behavior', () => {
     expect(await getActiveElementId(page), 'after 1st tab').toBe('before');
 
     await page.keyboard.press('Tab');
+    await page.waitForFunction(() => document.activeElement === document.querySelector('#after'));
     expect(await getActiveElementId(page), 'after 2nd tab').toBe('after');
   });
 

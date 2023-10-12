@@ -67,7 +67,7 @@ const initBasicFlyout = (
   ${[header, content, footer, subFooter].filter(Boolean).join('\n  ')}
 </p-flyout>`;
 
-  return setContentWithDesignSystem(page, [markupBefore, flyoutMarkup, markupBefore].filter(Boolean).join('\n'));
+  return setContentWithDesignSystem(page, [markupBefore, flyoutMarkup, markupAfter].filter(Boolean).join('\n'));
 };
 
 const initAdvancedFlyout = async () => {
@@ -414,7 +414,7 @@ describe('focus behavior', () => {
     await initBasicFlyout(
       { open: false },
       {
-        content: `<p-accordion heading="Some Heading" tag="h3" open="true">
+        content: `<p-accordion heading="Some Heading" open="true">
   <a id="inside" href="#inside-flyout">Some anchor inside flyout</a>
 </p-accordion>`,
       },
@@ -428,6 +428,7 @@ describe('focus behavior', () => {
     expect(await getActiveElementId(page), 'after 1st tab').toBe('before');
 
     await page.keyboard.press('Tab');
+    await page.waitForFunction(() => document.activeElement === document.querySelector('#after'));
     expect(await getActiveElementId(page), 'after 2nd tab').toBe('after');
   });
 });
