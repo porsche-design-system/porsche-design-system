@@ -1,4 +1,4 @@
-import type { BreakpointCustomizable, TextAlign, TextSize } from '../../types';
+import type { BreakpointCustomizable, TextAlign, TextAlignDeprecated, TextSize } from '../../types';
 import { hasSpecificSlottedTag } from '../../utils';
 
 export const HEADLINE_VARIANTS = [
@@ -22,6 +22,7 @@ export type HeadlineTag = (typeof HEADLINE_TAGS)[number];
 export const HEADLINE_COLORS = ['primary', 'default', 'inherit'] as const;
 export type HeadlineColor = (typeof HEADLINE_COLORS)[number];
 
+export type HeadlineAlignDeprecated = TextAlignDeprecated;
 export type HeadlineAlign = TextAlign;
 
 export const isValidVariantType = (variant: HeadlineVariant): boolean => {
