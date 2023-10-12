@@ -17,22 +17,24 @@ export const updatePopoverStyles = (
   popover: HTMLDivElement,
   direction: PopoverDirection,
   theme: Theme,
-  isWithinScrollContainer: boolean
+  isNative = false
 ): void => {
   // Reset margin so that it can be recalculated correctly
   popover.style.margin = '0';
   if (!isElementWithinViewport(spacer, popover, direction)) {
     direction = getAutoDirection(spacer, popover);
-    attachComponentCss(
-      host,
-      getComponentCss,
-      direction,
-      theme,
-      isWithinScrollContainer ? host.getBoundingClientRect() : undefined
-    );
+    attachComponentCss(host, getComponentCss, direction, isNative, theme);
   }
   // Set margin via inline style to make attachComponentCss cacheable
   popover.style.margin = getPopoverMargin(spacer, popover, direction);
+};
+
+export const updateNativePopoverStyles = (nativePopover: HTMLElement, nativeButton: HTMLButtonElement) => {
+  const { left, top, width, height } = nativeButton.getBoundingClientRect();
+  nativePopover.style.left = `${left - 16}px`;
+  nativePopover.style.top = `${top - 16}px`;
+  nativePopover.style.width = `${width + 16 * 2}px`;
+  nativePopover.style.height = `${height + 16 * 2}px`;
 };
 
 const getDocumentHeightWidthWithoutSafeZone = (): { clientWidth: number; clientHeight: number } => {
@@ -128,7 +130,7 @@ export const getPopoverMargin = (
 
 export type PopoverInternal = Partial<InstanceType<typeof Popover>> & {
   open: boolean;
-  isWithinScrollContainer: boolean;
+  isNative: boolean;
 };
 export const registeredPopovers: PopoverInternal[] = [];
 
@@ -171,21 +173,17 @@ export const onDocumentKeydown = (e: KeyboardEvent): void => {
   }
 };
 
-export const addTableScrollListener = (host: HTMLElement, table: HTMLElement): void => {
+export const addTableScrollListener = (host: HTMLElement, table: HTMLElement, nativePopover: HTMLElement): void => {
   table.shadowRoot
     .querySelector(getPrefixedTagNames(host).pScroller)
     .shadowRoot.querySelector('.scroll-area')
-    .addEventListener('scroll', onScroll, { once: true });
+    // @ts-ignore
+    .addEventListener('scroll', () => nativePopover.hidePopover(), { once: true });
 };
 
-export const addScrollAndResizeListener = (): void => {
-  window.addEventListener('scroll', onScroll, { once: true });
-  window.addEventListener('resize', onScroll, { once: true });
-};
-
-export const onScroll = (): void => {
-  const popover = registeredPopovers.find((popoverItem) => popoverItem.open && popoverItem.isWithinScrollContainer);
-  if (popover) {
-    popover.open = false;
-  }
+export const addScrollAndResizeListener = (nativePopover: HTMLElement): void => {
+  // @ts-ignore
+  window.addEventListener('scroll', () => nativePopover.hidePopover(), { once: true });
+  // @ts-ignore
+  window.addEventListener('resize', () => nativePopover.hidePopover(), { once: true });
 };

@@ -135,44 +135,89 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
   };
 };
 
-export const getFixedPositionJssStyle = (position: DOMRect, direction: PopoverDirection): JssStyle => {
-  const directionMap: Record<PopoverDirection, Styles> = {
-    right: {
-      top: `calc(${position.top}px + ${borderWidth})`,
-      left: `calc(${position.right}px - 16px)`,
-    },
-    left: {
-      top: `calc(${position.top}px + ${borderWidth})`,
-      left: `calc(${position.left}px - 16px)`,
-    },
-    top: {
-      top: `calc(${position.top}px - 16px)`,
-      left: `calc(${position.left}px + ${borderWidth})`,
-    },
-    bottom: {
-      top: `calc(${position.bottom}px + 16px)`,
-      left: `calc(${position.left}px + ${borderWidth})`,
-    },
-  };
-  return {
-    position: 'fixed',
-    ...directionMap[direction],
-  };
-};
-
-export const getComponentCss = (direction: PopoverDirection, theme: Theme, hostPosition?: DOMRect): string => {
+export const getComponentCss = (direction: PopoverDirection, isNative: boolean, theme: Theme): string => {
   const spacerBox = '-16px';
-  const { hoverColor, focusColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const {
-    hoverColor: hoverColorDark,
-    focusColor: focusColorDark,
-    primaryColor: primaryColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-  } = getThemedColors('dark');
+  const { backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
+    getThemedColors('dark');
 
   const shadowColor = 'rgba(0,0,0,0.3)';
 
   return getCss({
+    ...getBasePopoverStyles(theme),
+    spacer: {
+      ...(isNative
+        ? {
+            position: 'absolute',
+            overflow: 'initial',
+            backgroundColor: 'transparent',
+            border: 'none',
+            margin: 0,
+            padding: 0,
+          }
+        : {
+            position: 'absolute',
+            top: spacerBox,
+            left: spacerBox,
+            right: spacerBox,
+            bottom: spacerBox,
+          }),
+      zIndex: POPOVER_Z_INDEX,
+      filter: `drop-shadow(0 0 16px ${shadowColor})`,
+      backdropFilter: 'drop-shadow(0px 0px 0px transparent)', // fixes issues with Chrome >= 105 where filter: drop-shadow is not applied correctly after animation ends
+      pointerEvents: 'none',
+      animation:
+        ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
+          ? '240ms $fadeIn ease forwards'
+          : 'var(--p-animation-duration, 240ms) $fadeIn ease forwards',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        borderStyle: 'solid',
+        ...getDirectionArrowMap(theme)[direction],
+      },
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        filter: `drop-shadow(0 0 16px ${shadowColor})`,
+      }),
+    },
+    popover: {
+      position: 'absolute',
+      maxWidth: 'min(90vw, 27rem)',
+      width: 'max-content',
+      boxSizing: 'border-box',
+      background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
+      padding: '8px 16px',
+      pointerEvents: 'auto',
+      ...directionPositionMap[direction],
+      ...textSmallStyle,
+      listStyleType: 'none',
+      color: primaryColor,
+      whiteSpace: 'inherit',
+      borderRadius: borderRadiusSmall,
+      ...(isHighContrastMode && {
+        outline: `1px solid ${canvasTextColor}`,
+      }),
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: backgroundSurfaceColorDark,
+        color: primaryColorDark,
+      }),
+    },
+    '@keyframes fadeIn': {
+      from: {
+        opacity: 0,
+      },
+      to: {
+        opacity: 1,
+      },
+    },
+  });
+};
+
+const getBasePopoverStyles = (theme: Theme): Styles => {
+  const { hoverColor, focusColor } = getThemedColors(theme);
+  const { hoverColor: hoverColorDark, focusColor: focusColorDark } = getThemedColors('dark');
+
+  return {
     '@global': {
       ':host': {
         ...addImportantToEachRule({
@@ -233,63 +278,5 @@ export const getComponentCss = (direction: PopoverDirection, theme: Theme, hostP
       display: 'inline-block', // TODO: should be changed in icon!
       transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
     },
-    spacer: {
-      ...(hostPosition
-        ? getFixedPositionJssStyle(hostPosition, direction)
-        : {
-            position: 'absolute',
-            top: spacerBox,
-            left: spacerBox,
-            right: spacerBox,
-            bottom: spacerBox,
-          }),
-      zIndex: POPOVER_Z_INDEX,
-      filter: `drop-shadow(0 0 16px ${shadowColor})`,
-      backdropFilter: 'drop-shadow(0px 0px 0px transparent)', // fixes issues with Chrome >= 105 where filter: drop-shadow is not applied correctly after animation ends
-      pointerEvents: 'none',
-      animation:
-        ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
-          ? '240ms $fadeIn ease forwards'
-          : 'var(--p-animation-duration, 240ms) $fadeIn ease forwards',
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        borderStyle: 'solid',
-        ...getDirectionArrowMap(theme)[direction],
-      },
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        filter: `drop-shadow(0 0 16px ${shadowColor})`,
-      }),
-    },
-    popover: {
-      position: 'absolute',
-      maxWidth: 'min(90vw, 27rem)',
-      width: 'max-content',
-      boxSizing: 'border-box',
-      background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
-      padding: '8px 16px',
-      pointerEvents: 'auto',
-      ...directionPositionMap[direction],
-      ...textSmallStyle,
-      listStyleType: 'none',
-      color: primaryColor,
-      whiteSpace: 'inherit',
-      borderRadius: borderRadiusSmall,
-      ...(isHighContrastMode && {
-        outline: `1px solid ${canvasTextColor}`,
-      }),
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: backgroundSurfaceColorDark,
-        color: primaryColorDark,
-      }),
-    },
-    '@keyframes fadeIn': {
-      from: {
-        opacity: 0,
-      },
-      to: {
-        opacity: 1,
-      },
-    },
-  });
+  };
 };
