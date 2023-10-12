@@ -1,8 +1,16 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from './display-utils';
+import type { DisplayAlign, DisplayAlignDeprecated, DisplayColor, DisplaySize, DisplayTag } from './display-utils';
 import { DISPLAY_COLORS, DISPLAY_SIZES, DISPLAY_TAGS, getDisplayTagType } from './display-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, hasPropValueChanged, TEXT_ALIGNS, THEMES, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  hasPropValueChanged,
+  TEXT_ALIGNS,
+  THEMES,
+  validateProps,
+  warnIfDeprecatedPropValueIsUsed,
+} from '../../utils';
 import { getComponentCss } from './display-styles';
 
 const propTypes: PropTypes<typeof Display> = {
@@ -28,7 +36,7 @@ export class Display {
   @Prop() public size?: BreakpointCustomizable<DisplaySize> = 'large';
 
   /** Text alignment of the component. */
-  @Prop() public align?: DisplayAlign = 'left';
+  @Prop() public align?: DisplayAlign = 'start';
 
   /** Basic text color variations depending on theme property. */
   @Prop() public color?: DisplayColor = 'primary';
@@ -45,7 +53,26 @@ export class Display {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis, this.theme);
+
+    const alignDeprecationMap: Record<DisplayAlignDeprecated, Exclude<DisplayAlign, DisplayAlignDeprecated>> = {
+      left: 'start',
+      right: 'end',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Display, DisplayAlignDeprecated, DisplayAlign>(
+      this,
+      'align',
+      alignDeprecationMap
+    );
+
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.size,
+      (alignDeprecationMap[this.align] || this.align) as Exclude<DisplayAlign, DisplayAlignDeprecated>,
+      this.color,
+      this.ellipsis,
+      this.theme
+    );
 
     const TagType = getDisplayTagType(this.host, this.size, this.tag);
 
