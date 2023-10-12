@@ -95,7 +95,7 @@ of using it with Node or TS-Node.
 
 - `globby`
 
-## Change case
+## Change Case
 
 Since v5.0.0 `change-case` decided to provide just a modern _ESM_ build with their latest npm package. Unfortunately there's
 no stable way of using it with Node or TS-Node.
