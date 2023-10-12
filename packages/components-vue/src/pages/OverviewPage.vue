@@ -727,7 +727,8 @@
 
 <style>
   body {
-    overflow: auto !important;
+    /* to beat scroll lock */
+    position: static !important;
   }
 </style>
 
