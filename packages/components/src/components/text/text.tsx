@@ -17,6 +17,7 @@ import {
 import { getComponentCss } from './text-styles';
 import type { TextColorDeprecated } from './text-color';
 import type { TextWeightDeprecated } from './text-weight';
+import type { TextAlignDeprecated } from './text-align';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
@@ -45,7 +46,7 @@ export class Text {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** Text alignment of the component. */
-  @Prop() public align?: TextAlign = 'left';
+  @Prop() public align?: TextAlign = 'start';
 
   /** Basic text color variations depending on theme property. */
   @Prop() public color?: TextColor = 'primary';
@@ -80,12 +81,17 @@ export class Text {
       'weight',
       weightDeprecationMap
     );
+    const alignDeprecationMap: Record<TextAlignDeprecated, Exclude<TextAlign, TextAlignDeprecated>> = {
+      left: 'start',
+      right: 'end',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Text, TextAlignDeprecated, TextAlign>(this, 'align', alignDeprecationMap);
     attachComponentCss(
       this.host,
       getComponentCss,
       this.size,
       (weightDeprecationMap[this.weight] || this.weight) as Exclude<TextWeight, TextWeightDeprecated>,
-      this.align,
+      (alignDeprecationMap[this.align] || this.align) as Exclude<TextAlign, TextAlignDeprecated>,
       (colorDeprecationMap[this.color] || this.color) as Exclude<TextColor, TextColorDeprecated>,
       this.ellipsis,
       this.theme
