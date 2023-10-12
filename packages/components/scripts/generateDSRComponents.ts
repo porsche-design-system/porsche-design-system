@@ -386,6 +386,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/value={/, 'defaultValue={')
           .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
           .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes\([^}]*\}\s*/, '');
+      } else if (tagName === 'p-pin-code') {
+        newFileContent = newFileContent
+          // fix warning about read-only field
+          .replace(/value={/, 'defaultValue={')
       } else if (tagName === 'p-select-wrapper') {
         newFileContent = newFileContent
           // Add PSelectWrapperDropdown component import
