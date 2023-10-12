@@ -6,7 +6,6 @@ import {
   getInsetJssStyle,
   getThemedColors,
   hostHiddenStyles,
-  hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { FLYOUT_Z_INDEX } from '../../constants';
@@ -19,23 +18,16 @@ export const footerShadowClass = 'footer--shadow';
 const flyoutTransitionDuration = '0.5s';
 const flyoutTransitionTimingFunction = 'cubic-bezier(0.77, 0, 0.175, 1)';
 
-const cssVariableWidth = '--p-flyout-width';
-const cssVariableMaxWidth = '--p-flyout-max-width';
-const maxWidthDefault = '1180px';
-const minWidthDefault = '320px';
-
 export const getComponentCss = (
   isOpen: boolean,
   position: FlyoutPosition,
-  hasHeader: boolean,
   hasFooter: boolean,
   hasSubFooter: boolean,
   theme: Theme
 ): string => {
   const { primaryColor, backgroundColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
-  const { contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
-  const isPositionLeft = position === 'left';
+  const isPositionStart = position === 'left';
   const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge}`;
   const isDark = isThemeDark(theme);
   const shadowColor = isDark ? scrollShadowColorDark : scrollShadowColor;
@@ -52,6 +44,7 @@ export const getComponentCss = (
           '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
           position: 'fixed',
           zIndex: FLYOUT_Z_INDEX,
+          justifyContent: isPositionStart ? 'flex-start' : 'flex-end',
           ...(isOpen
             ? {
                 visibility: 'inherit',
@@ -67,19 +60,45 @@ export const getComponentCss = (
         }),
       },
     },
-    header: {
+    root: {
+      position: 'relative',
       display: 'flex',
-      ...(hasHeader && {
-        flexDirection: 'row-reverse',
+      flexDirection: 'column',
+      boxSizing: 'border-box',
+      ...(hasSubFooter && {
+        overflowY: 'auto',
+        overscrollBehaviorY: 'none',
       }),
-      justifyContent: 'flex-end',
+      width: 'var(--p-flyout-width, auto)',
+      height: '100%',
+      minWidth: '320px',
+      maxWidth: 'var(--p-flyout-max-width, 1180px)',
+      color: primaryColor, // enables color inheritance for slotted content
+      background: backgroundColor,
+      opacity: isOpen ? 1 : 0,
+      transform: isOpen ? 'initial' : `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
+      transition: `opacity ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction} ${
+        isOpen ? '0s' : flyoutTransitionDuration
+      }, transform ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction}`,
+      boxShadow: `${isPositionStart ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: primaryColorDark,
+        background: backgroundColorDark,
+      }),
+    },
+    header: {
+      position: 'sticky',
+      top: 0,
+      zIndex: 2,
+      display: 'grid',
+      gridTemplateColumns: `minmax(0, 1fr) ${spacingFluidLarge}`,
+      alignItems: 'flex-start',
+      padding: `${spacingStaticMedium} 0`,
+      paddingInlineStart: spacingFluidLarge,
       background: backgroundColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         background: backgroundColorDark,
       }),
-      position: 'sticky',
-      top: 0,
-      zIndex: 2,
     },
     [headerShadowClass]: {
       boxShadow: `${isDark ? scrollShadowColorDark : scrollShadowColor} 0px 5px 10px`,
@@ -87,55 +106,9 @@ export const getComponentCss = (
         boxShadow: `${scrollShadowColorDark} 0px 5px 10px`,
       }),
     },
-    ...(hasHeader && {
-      'header-content': {
-        flex: 'auto',
-        padding: `${spacingStaticMedium} 0 ${spacingStaticMedium} ${spacingFluidLarge}`,
-      },
-    }),
     dismiss: {
-      margin: spacingStaticMedium,
-      height: 'fit-content',
-      border: `2px solid ${backgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
-      borderRadius: '4px',
-      background: backgroundColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        borderColor: backgroundColorDark,
-        background: backgroundColorDark,
-      }),
-      ...hoverMediaQuery({
-        '&:hover': {
-          background: darkThemeContrastHighColor,
-          borderColor: darkThemeContrastHighColor,
-        },
-      }),
-    },
-    root: {
-      color: primaryColor, // enables color inheritance for slotted content
-      display: 'flex',
-      flexDirection: 'column',
-      position: 'relative',
-      [isPositionLeft ? 'marginRight' : 'marginLeft']: 'auto',
-      boxSizing: 'border-box',
-      ...(hasSubFooter && {
-        overflowY: 'auto',
-        overscrollBehaviorY: 'none',
-      }),
-      width: `var(${cssVariableWidth}, auto)`,
-      height: '100%',
-      minWidth: minWidthDefault,
-      maxWidth: `var(${cssVariableMaxWidth}, ${maxWidthDefault})`,
-      background: backgroundColor,
-      opacity: isOpen ? 1 : 0,
-      transform: isOpen ? 'initial' : `translate3d(${isPositionLeft ? '-100%' : '100%'}, 0, 0)`,
-      transition: `opacity ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction} ${
-        isOpen ? '0s' : flyoutTransitionDuration
-      }, transform ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction}`,
-      boxShadow: `${isPositionLeft ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: primaryColorDark,
-        background: backgroundColorDark,
-      }),
+      gridArea: '1 / 2',
+      justifySelf: 'center',
     },
     content: {
       padding: contentPadding,
@@ -163,11 +136,11 @@ export const getComponentCss = (
     },
     ...(hasFooter && {
       footer: {
-        background: backgroundColor,
-        padding: contentPadding,
         position: 'sticky',
-        zIndex: 1,
         bottom: 0,
+        zIndex: 1,
+        padding: contentPadding,
+        background: backgroundColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           background: backgroundColorDark,
         }),

@@ -128,7 +128,6 @@ export class Flyout {
       getComponentCss,
       this.open,
       this.position,
-      this.hasHeader,
       this.hasFooter,
       this.hasSubFooter,
       this.theme
@@ -166,11 +165,7 @@ export class Flyout {
               Dismiss flyout
             </PrefixedTagNames.pButtonPure>
 
-            {this.hasHeader && (
-              <div class="header-content">
-                <slot name="header" />
-              </div>
-            )}
+            {this.hasHeader && <slot name="header" />}
           </div>
           <div class="content">
             <slot />
