@@ -173,7 +173,6 @@ export class PinCode {
           {this.isWithinForm && <slot name={hiddenInputSlotName} />}
           {Array.from(Array(this.length), (_, index) => (
             <input
-              key={index}
               id={index === this.value.length ? currentInputId : null}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
