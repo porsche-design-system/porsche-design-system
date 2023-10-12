@@ -8,7 +8,7 @@ export const setScrollLock = (isOpen: boolean): void => {
     style.overflowY = 'scroll';
     style.position = 'fixed';
   } else {
-    const topValue = -parseInt(style.top);
+    const topValue = -parseInt(style.top, 10);
     style.top = '';
     style.overflowY = '';
     style.position = '';
