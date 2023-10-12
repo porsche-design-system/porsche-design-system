@@ -725,13 +725,6 @@
   </div>
 </template>
 
-<style>
-  body {
-    /* to beat scroll lock */
-    position: static !important;
-  }
-</style>
-
 <style scoped>
   .root {
     display: grid;
