@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
-    <header>
+    <header dir="ltr">
       <select id="page" onchange="updateRoute({pathname: this.value})">
         <option disabled selected>Select a page</option>
         <optgroup label="Components">
@@ -170,7 +170,7 @@
             el.classList.remove('light', 'dark', 'auto');
             el.classList.add(theme);
           });
-          app.setAttribute('dir', dir);
+          document.querySelector('html').setAttribute('dir', dir);
 
           const scripts = app.getElementsByTagName('script');
           for (let i = 0; i < scripts.length; i++) {
