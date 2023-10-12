@@ -8,10 +8,10 @@ const cleanupLoader = () => {
 
   const [, lazyImport] = /(import.*?bootstrapLazy.*?);/.exec(srcContent) || [];
   const [, globalScriptsImport] = /(import.*?globalScripts.*?);/.exec(srcContent) || [];
-  const [, lazyData] = /bootstrapLazy\(JSON.parse\(("\[.*]")\),/.exec(srcContent) || [];
+  const [, lazyData] = /bootstrapLazy\((JSON.parse\("\[.*]"\)),/.exec(srcContent) || [];
 
-  if (!lazyData) {
-    throw new Error('Failed cleaning up Loader. Failed matching lazyData.\n');
+  if (!lazyData || !lazyImport || !globalScriptsImport) {
+    throw new Error('Failed cleaning up Loader.\n');
   }
 
   const directory = path.resolve(srcFilePath, '..');
@@ -39,7 +39,7 @@ export const defineCustomElements = (options) => {
   globalScripts();
   return bootstrapLazy(
     // prettier-ignore
-    ${JSON.parse(lazyData)},
+    ${lazyData},
     options
   );
 };
