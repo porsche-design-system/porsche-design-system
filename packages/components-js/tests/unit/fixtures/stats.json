@@ -76,8 +76,8 @@
   },
   {
     "chunkShortName": "flyout",
-    "size": 8035,
-    "gzipSize": 3174
+    "size": 8054,
+    "gzipSize": 3180
   },
   {
     "chunkShortName": "grid",
@@ -131,8 +131,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 72379,
-    "gzipSize": 24287
+    "size": 73223,
+    "gzipSize": 24308
   },
   {
     "chunkShortName": "marque",
@@ -141,8 +141,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 8889,
-    "gzipSize": 3786
+    "size": 8912,
+    "gzipSize": 3796
   },
   {
     "chunkShortName": "model-signature",
@@ -161,8 +161,8 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 11427,
-    "gzipSize": 4430
+    "size": 11433,
+    "gzipSize": 4434
   },
   {
     "chunkShortName": "popover",
