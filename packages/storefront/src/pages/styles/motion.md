@@ -8,27 +8,24 @@ When objects move within a limited area, shorter durations are needed compared t
 The duration of an animation directly affects the perceived lag time for users. To prevent this, it is essential to
 ensure that motion is swift, subtle, and purposeful.
 
-| Token                    | Easing | Usage                                |
-|--------------------------|--------|--------------------------------------|
-| `motionDurationShort`    | 0.25s  | Checkboxes, Switch, Hover, Popover   |
-| `motionDurationModerate` | 0.4s   | Slide (Carousel), Modal, Link-Tile   |
-| `motionDurationLong`     | 0.6s;  | Notifications, Flyout                |
-| `motionDurationVeryLong` | 1.2s;  | Spinner, Skeleton                    |
-
+| Token                    | Easing | Usage                              |
+| ------------------------ | ------ | ---------------------------------- |
+| `motionDurationShort`    | 0.25s  | Checkboxes, Switch, Hover, Popover |
+| `motionDurationModerate` | 0.4s   | Slide (Carousel), Modal, Link-Tile |
+| `motionDurationLong`     | 0.6s;  | Notifications, Flyout              |
+| `motionDurationVeryLong` | 1.2s;  | Spinner, Skeleton                  |
 
 ## Easing
 
 Effects are the key for turning components from static to interactive and keeping UI elements alive.
 
+| Token              | Easing                        | Usage                                                                                                                 |
+| ------------------ | ----------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `motionEasingBase` | cubic-bezier(0.25,0.1,0.25,1) | Buttons (hover and active states).<br />Tabs or segments switching.<br />Basic fade-in and fade-out animations.       |
+| `motionEasingIn`   | cubic-bezier(0,0,0.2,1)       | Elements that appear quickly and then ease into view.<br />Elements that slide in from off-screen and then slow down. |
+| `motionEasingOut`  | cubic-bezier(0.4,0,0.5,1)     | Closing animations for modals or Flyouts.<br />Elements sliding out of view fast.                                     |
 
-| Token         | Easing                         | Usage                                                                                                                 |
-|---------------|--------------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `$easingBase` | cubic-bezier(0.25,0.1,0.25,1) | Buttons (hover and active states).<br />Tabs or segments switching.<br />Basic fade-in and fade-out animations.       |
-| `$easingIn`   | cubic-bezier(0,0,0.2,1)       | Elements that appear quickly and then ease into view.<br />Elements that slide in from off-screen and then slow down. |
-| `$easingOut`  | cubic-bezier(0.4,0,0.5,1)     | Closing animations for modals or Flyouts.<br />Elements sliding out of view fast.                                     |
-
-
-## Example Curves
+## Example Motion Curves
 
 <Playground :frameworkMarkup="motionCurvesExample" :externalStackBlitzDependencies="['styled-components']">
   <ExampleStylesMotionCurves />
