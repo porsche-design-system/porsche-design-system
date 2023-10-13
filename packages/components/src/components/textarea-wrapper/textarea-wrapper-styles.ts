@@ -58,7 +58,11 @@ export const getComponentCss = (
         counter: {
           position: 'absolute',
           bottom: '6px',
+          left: '12px',
           right: '12px',
+          textAlign: 'end',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
           zIndex: 1,
           font: textSmallStyle.font,
           color: contrastMediumColor,
