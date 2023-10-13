@@ -12,6 +12,7 @@ import { StylesMotionEnterExitExampleComponent } from './styles-motion-enter-exi
 import { StylesMotionExpandExampleComponent } from './styles-motion-expand-example.component';
 import { StylesMotionMovingExampleComponent } from './styles-motion-moving-example.component';
 import { StylesMotionShowHideExampleComponent } from './styles-motion-show-hide-example.component';
+import { StylesSkeletonExampleComponent } from './styles-skeleton-example.component';
 import { StylesSpacingExampleComponent } from './styles-spacing-example.component';
 import { StylesThemeExampleComponent } from './styles-theme-example.component';
 import { StylesTypographyExampleComponent } from './styles-typography-example.component';
@@ -31,6 +32,7 @@ export const examples = [
   StylesMotionExpandExampleComponent,
   StylesMotionMovingExampleComponent,
   StylesMotionShowHideExampleComponent,
+  StylesSkeletonExampleComponent,
   StylesSpacingExampleComponent,
   StylesThemeExampleComponent,
   StylesTypographyExampleComponent,
@@ -50,6 +52,7 @@ export * from './styles-motion-enter-exit-example.component';
 export * from './styles-motion-expand-example.component';
 export * from './styles-motion-moving-example.component';
 export * from './styles-motion-show-hide-example.component';
+export * from './styles-skeleton-example.component';
 export * from './styles-spacing-example.component';
 export * from './styles-theme-example.component';
 export * from './styles-typography-example.component';

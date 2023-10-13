@@ -51,23 +51,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `,
   ],
   template: `
-    <div>
-      <div class="wrapper wrapper--light">
-        <h3 class="heading">Hover Light</h3>
-        <a href="#" class="native-anchor">Some Anchor</a>
-        <p class="paragraph">
-          Lorem Ipsum
-          <a href="#" class="native-anchor">is simply dummy text of the printing</a> and typesetting industry.
-        </p>
-      </div>
-      <div class="wrapper wrapper--dark">
-        <h3 class="heading">Hover Dark</h3>
-        <a href="#" class="native-anchor">Some Anchor</a>
-        <p class="paragraph">
-          Lorem Ipsum <a href="#" class="native-anchor">is simply dummy text of the printing</a> and typesetting
-          industry.
-        </p>
-      </div>
+    <div class="wrapper wrapper--light">
+      <h3 class="heading">Hover Light</h3>
+      <a href="#" class="native-anchor">Some Anchor</a>
+      <p class="paragraph">
+        Lorem Ipsum
+        <a href="#" class="native-anchor">is simply dummy text of the printing</a> and typesetting industry.
+      </p>
+    </div>
+    <div class="wrapper wrapper--dark">
+      <h3 class="heading">Hover Dark</h3>
+      <a href="#" class="native-anchor">Some Anchor</a>
+      <p class="paragraph">
+        Lorem Ipsum <a href="#" class="native-anchor">is simply dummy text of the printing</a> and typesetting industry.
+      </p>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

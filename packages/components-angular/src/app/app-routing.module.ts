@@ -275,6 +275,11 @@ export const routes: ExtendedRoute[] = [
     component: fromStyles.StylesMotionShowHideExampleComponent,
   },
   {
+    name: 'Styles Skeleton Example',
+    path: 'styles-skeleton',
+    component: fromStyles.StylesSkeletonExampleComponent,
+  },
+  {
     name: 'Styles Spacing Example',
     path: 'styles-spacing',
     component: fromStyles.StylesSpacingExampleComponent,

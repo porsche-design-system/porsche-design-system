@@ -158,6 +158,9 @@ export class Modal {
             ...parseAndGetAriaAttributes(this.aria),
           })}
           tabIndex={-1}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          /* @ts-ignore */
+          inert={this.open ? null : true} // prevents focusable elements within nested open accordion
           ref={(el) => (this.dialog = el)}
         >
           {this.hasDismissButton && (

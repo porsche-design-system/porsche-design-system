@@ -552,6 +552,8 @@ export const config: StorefrontConfig = {
     // @ts-ignore
     Motion: [() => import('@/pages/styles/motion.md')],
     // @ts-ignore
+    Skeleton: [() => import('@/pages/styles/skeleton.md')],
+    // @ts-ignore
     Spacing: [() => import('@/pages/styles/spacing.md')],
     // @ts-ignore
     Theme: [() => import('@/pages/styles/theme.md')],

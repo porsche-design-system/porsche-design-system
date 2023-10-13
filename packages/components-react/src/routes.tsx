@@ -266,6 +266,11 @@ export const routes: RouteType[] = [
     element: <fromStyles.StylesMotionShowHideExample />,
   },
   {
+    name: 'Styles Skeleton',
+    path: '/styles-skeleton',
+    element: <fromStyles.StylesSkeletonExample />,
+  },
+  {
     name: 'Styles Spacing',
     path: '/styles-spacing',
     element: <fromStyles.StylesSpacingExample />,

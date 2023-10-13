@@ -29,7 +29,7 @@ The styles are available as `JavaScript` and `SCSS` version. Look at the example
 JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
-- `getFocusStyle({offset: 'small'|'none'|string, borderRadius: 'small'|'medium'|string})`
+- `getFocusStyle({ offset: 'small' | 'none' | string, borderRadius: 'small' | 'medium' | string })`
 
 ---
 
@@ -37,7 +37,7 @@ JavaScript styles can be imported by
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
 
-- `@mixin pds-focus($offset: 'small'|'none'|any, $border-radius: 'small'|'medium'|any)`
+- `@mixin pds-focus($offset: 'small' | 'none' | any, $border-radius: 'small' | 'medium' | any)`
 
 <script lang="ts">
 import Vue from 'vue';

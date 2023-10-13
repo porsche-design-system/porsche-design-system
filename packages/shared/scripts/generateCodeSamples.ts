@@ -20,6 +20,7 @@ type CodeSample = {
     | 'styles-motion-expand'
     | 'styles-motion-moving'
     | 'styles-motion-show-hide'
+    | 'styles-skeleton'
     | 'styles-spacing'
     | 'styles-theme'
     | 'styles-typography';
@@ -403,6 +404,15 @@ const generateCodeSamples = (): void => {
         [
           componentsAngularPath + '/../styles/styles-motion-show-hide-example.component.ts',
           componentsReactPath + '/../styles/StylesMotionShowHideExample.tsx',
+        ],
+      ],
+    },
+    {
+      component: 'styles-skeleton',
+      samples: [
+        [
+          componentsAngularPath + '/../styles/styles-skeleton-example.component.ts',
+          componentsReactPath + '/../styles/StylesSkeletonExample.tsx',
         ],
       ],
     },

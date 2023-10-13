@@ -6,11 +6,11 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import { Watch } from 'vue-property-decorator';
-  import { Component as ComponentType } from 'vue/types/options';
+  import type { Component as ComponentType } from 'vue/types/options';
   import { paramCase } from 'change-case';
 
   @Component
-  export default class Patterns extends Vue {
+  export default class PatternView extends Vue {
     public component: ComponentType | null = null;
 
     private get category(): string {
@@ -32,15 +32,15 @@
 
     private async loadComponent(): Promise<void> {
       this.component = null;
-      await this.$store.dispatch('toggleLoadingAsync', true);
+
+      // isLoading is not used since patterns are rendered in standalone router-view of App.vue
+      // this.$store.commit('setIsLoading', true);
       try {
-        this.component = (
-          await (() => import(`@/pages/patterns/${this.category}/example-${this.pattern}.vue`))()
-        ).default;
+        this.component = (await import(`@/pages/patterns/${this.category}/example-${this.pattern}.vue`)).default;
       } catch (e) {
         await this.redirect();
       }
-      await this.$store.dispatch('toggleLoadingAsync', false);
+      // this.$store.commit('setIsLoading', false);
     }
 
     private async redirect(): Promise<void> {

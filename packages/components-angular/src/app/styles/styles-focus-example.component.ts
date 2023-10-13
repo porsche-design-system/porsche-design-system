@@ -56,25 +56,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `,
   ],
   template: `
-    <div>
-      <div class="wrapper wrapper--light">
-        <h3 class="heading">Focus Light (only visible by keyboard navigation)</h3>
-        <button class="native-button">Some Button</button>
-        <a href="#" class="native-anchor">Some Anchor</a>
-        <p class="paragraph">
-          Lorem Ipsum
-          <a href="#" class="native-anchor">is simply dummy text of the printing</a> and typesetting industry.
-        </p>
-      </div>
-      <div class="wrapper wrapper--dark">
-        <h3 class="heading">Focus Dark (only visible by keyboard navigation)</h3>
-        <button class="native-button">Some Button</button>
-        <a href="#" class="native-anchor">Some Anchor</a>
-        <p class="paragraph">
-          Lorem Ipsum <a href="#" class="native-anchor">is simply dummy text of the printing</a> and typesetting
-          industry.
-        </p>
-      </div>
+    <div class="wrapper wrapper--light">
+      <h3 class="heading">Focus Light (only visible by keyboard navigation)</h3>
+      <button class="native-button">Some Button</button>
+      <a href="#" class="native-anchor">Some Anchor</a>
+      <p class="paragraph">
+        Lorem Ipsum
+        <a href="#" class="native-anchor">is simply dummy text of the printing</a> and typesetting industry.
+      </p>
+    </div>
+    <div class="wrapper wrapper--dark">
+      <h3 class="heading">Focus Dark (only visible by keyboard navigation)</h3>
+      <button class="native-button">Some Button</button>
+      <a href="#" class="native-anchor">Some Anchor</a>
+      <p class="paragraph">
+        Lorem Ipsum <a href="#" class="native-anchor">is simply dummy text of the printing</a> and typesetting industry.
+      </p>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

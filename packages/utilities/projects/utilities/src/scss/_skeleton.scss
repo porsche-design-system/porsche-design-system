@@ -1,0 +1,35 @@
+@import 'lib/border';
+@import 'lib/theme';
+
+@mixin pds-skeleton($theme: 'light') {
+  @if ($theme == 'dark') {
+    background: $pds-theme-dark-background-surface
+      linear-gradient(to right, transparent 0%, #1a1b1e 20%, transparent 50%)
+      0
+      0 /
+      200%
+      100%;
+  } @else {
+    background: $pds-theme-light-background-surface
+      linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%)
+      0
+      0 /
+      200%
+      100%;
+  }
+
+  display: block;
+  border-radius: $pds-border-radius-small;
+
+  // TODO: use motion variables
+  animation: skeletonAnimation 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+
+  @keyframes skeletonAnimation {
+    from {
+      background-position-x: 100%;
+    }
+    to {
+      background-position-x: -100%;
+    }
+  }
+}

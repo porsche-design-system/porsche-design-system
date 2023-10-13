@@ -12,6 +12,7 @@ export * from './StylesMotionEnterExitExample';
 export * from './StylesMotionExpandExample';
 export * from './StylesMotionMovingExample';
 export * from './StylesMotionShowHideExample';
+export * from './StylesSkeletonExample';
 export * from './StylesSpacingExample';
 export * from './StylesThemeExample';
 export * from './StylesTypographyExample';
