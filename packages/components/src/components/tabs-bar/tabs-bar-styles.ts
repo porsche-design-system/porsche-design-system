@@ -141,7 +141,7 @@ export const getComponentCss = (
           }),
         },
         [transformSelector('::slotted([role]:not(:last-child))')]: {
-          marginRight: spacingStaticMedium,
+          marginInlineEnd: spacingStaticMedium,
         },
       }),
     },
