@@ -28,7 +28,7 @@ exports[`manual test cases should pass internal props correctly to p-checkbox-wr
           shadowrootmode="open"
         >
           <style>
-            :host{display:inline-flex !important;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;position:relative;fill:none;transform:translate3d(0,0,0);animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:first-child{stroke:#6B6D70;animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:last-child{transform-origin:0 0;animation:dash var(--p-animation-duration, 2s) ease-in-out infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;margin:0;padding:0;box-sizing:border-box;stroke-width:1.5}.sr-only{position:absolute;width:0;height:1px;text-indent:-999999px}
+            :host{display:inline-flex !important;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 2s) ease-in-out infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotate3d(0,0,1,0deg)}100%{transform:rotate3d(0,0,1,360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotate3d(0,0,1,0)}50%, 75%{stroke-dashoffset:20;transform:rotate3d(0,0,1,80deg)}100%{stroke-dashoffset:57;transform:rotate3d(0,0,1,360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:0;height:1px;text-indent:-999999px}
           </style>
           <span
             aria-label="Loading state of Some label"
@@ -94,7 +94,7 @@ exports[`manual test cases should pass internal props correctly to p-checkbox-wr
           shadowrootmode="open"
         >
           <style>
-            :host{display:inline-flex !important;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;position:relative;fill:none;transform:translate3d(0,0,0);animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:first-child{stroke:#6B6D70;animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:last-child{transform-origin:0 0;animation:dash var(--p-animation-duration, 2s) ease-in-out infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;margin:0;padding:0;box-sizing:border-box;stroke-width:1.5}.sr-only{position:absolute;width:0;height:1px;text-indent:-999999px}
+            :host{display:inline-flex !important;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 2s) ease-in-out infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotate3d(0,0,1,0deg)}100%{transform:rotate3d(0,0,1,360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotate3d(0,0,1,0)}50%, 75%{stroke-dashoffset:20;transform:rotate3d(0,0,1,80deg)}100%{stroke-dashoffset:57;transform:rotate3d(0,0,1,360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:0;height:1px;text-indent:-999999px}
           </style>
           <span
             aria-label="Loading state of Some label"
@@ -903,7 +903,7 @@ exports[`manual test cases should pass internal props correctly to p-radio-butto
           shadowrootmode="open"
         >
           <style>
-            :host{display:inline-flex !important;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;position:relative;fill:none;transform:translate3d(0,0,0);animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:first-child{stroke:#6B6D70;animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:last-child{transform-origin:0 0;animation:dash var(--p-animation-duration, 2s) ease-in-out infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;margin:0;padding:0;box-sizing:border-box;stroke-width:1.5}.sr-only{position:absolute;width:0;height:1px;text-indent:-999999px}
+            :host{display:inline-flex !important;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 2s) linear infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 2s) ease-in-out infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotate3d(0,0,1,0deg)}100%{transform:rotate3d(0,0,1,360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotate3d(0,0,1,0)}50%, 75%{stroke-dashoffset:20;transform:rotate3d(0,0,1,80deg)}100%{stroke-dashoffset:57;transform:rotate3d(0,0,1,360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:0;height:1px;text-indent:-999999px}
           </style>
           <span
             aria-label="Loading state of Some label"
@@ -6815,17 +6815,13 @@ exports[`should render dsr component for PSpinner 1`] = `
 }
 svg {
   display: block;
-  position: relative;
   fill: none;
-  transform: translate3d(0,0,0);
   animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
-  animation: rotate var(--p-animation-duration, 2s) linear infinite;
 }
 circle:last-child {
-  transform-origin: 0 0;
   animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
   stroke: #010205;
   stroke-dasharray: var(--p-temporary-spinner-stroke-dasharray, 57);
@@ -6833,33 +6829,30 @@ circle:last-child {
 }
 @keyframes rotate {
   0% {
-    transform: rotateZ(0deg);
+    transform: rotate3d(0,0,1,0deg);
   }
   100% {
-    transform: rotateZ(360deg);
+    transform: rotate3d(0,0,1,360deg);
   }
 }
 @keyframes dash {
   0% {
     stroke-dashoffset: 57;
-    transform: rotateZ(0);
+    transform: rotate3d(0,0,1,0);
   }
   50%, 75% {
     stroke-dashoffset: 20;
-    transform: rotateZ(80deg);
+    transform: rotate3d(0,0,1,80deg);
   }
   100% {
     stroke-dashoffset: 57;
-    transform: rotateZ(360deg);
+    transform: rotate3d(0,0,1,360deg);
   }
 }
   .root {
     display: block;
     height: 48px;
     width: 48px;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     stroke-width: 1.5;
   }
   .sr-only {
