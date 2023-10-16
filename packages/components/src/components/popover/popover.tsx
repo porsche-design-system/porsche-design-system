@@ -104,6 +104,7 @@ export class Popover {
       <Host onKeydown={this.onKeydown}>
         <button
           type="button"
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           popovertarget="spacer"
           {...parseAndGetAriaAttributes({
@@ -116,6 +117,7 @@ export class Popover {
           <span class="label">More information</span>
         </button>
         <div
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           popover="auto"
           id="spacer"
