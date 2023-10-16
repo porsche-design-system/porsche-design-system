@@ -16,10 +16,7 @@ type CodeSample = {
     | 'styles-hover'
     | 'styles-media-query'
     | 'styles-motion-curves'
-    | 'styles-motion-enter-exit'
-    | 'styles-motion-expand'
-    | 'styles-motion-moving'
-    | 'styles-motion-show-hide'
+    | 'styles-motion'
     | 'styles-skeleton'
     | 'styles-spacing'
     | 'styles-theme'
@@ -363,47 +360,11 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
-      component: 'styles-motion-curves',
+      component: 'styles-motion',
       samples: [
         [
-          componentsAngularPath + '/../styles/styles-motion-curves-example.component.ts',
-          componentsReactPath + '/../styles/StylesMotionCurvesExample.tsx',
-        ],
-      ],
-    },
-    {
-      component: 'styles-motion-enter-exit',
-      samples: [
-        [
-          componentsAngularPath + '/../styles/styles-motion-enter-exit-example.component.ts',
-          componentsReactPath + '/../styles/StylesMotionEnterExitExample.tsx',
-        ],
-      ],
-    },
-    {
-      component: 'styles-motion-expand',
-      samples: [
-        [
-          componentsAngularPath + '/../styles/styles-motion-expand-example.component.ts',
-          componentsReactPath + '/../styles/StylesMotionExpandExample.tsx',
-        ],
-      ],
-    },
-    {
-      component: 'styles-motion-moving',
-      samples: [
-        [
-          componentsAngularPath + '/../styles/styles-motion-moving-example.component.ts',
-          componentsReactPath + '/../styles/StylesMotionMovingExample.tsx',
-        ],
-      ],
-    },
-    {
-      component: 'styles-motion-show-hide',
-      samples: [
-        [
-          componentsAngularPath + '/../styles/styles-motion-show-hide-example.component.ts',
-          componentsReactPath + '/../styles/StylesMotionShowHideExample.tsx',
+          componentsAngularPath + '/../styles/styles-motion-example.component.ts',
+          componentsReactPath + '/../styles/StylesMotionExample.tsx',
         ],
       ],
     },

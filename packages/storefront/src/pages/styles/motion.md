@@ -19,17 +19,13 @@ ensure that motion is swift, subtle, and purposeful.
 
 Effects are the key for turning components from static to interactive and keeping UI elements alive.
 
-| Token              | Token SCSS                | Easing                        | Usage                                                                                                                 |
-| ------------------ | ------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `motionEasingBase` | `$pds-motion-easing-base` | cubic-bezier(0.25,0.1,0.25,1) | Buttons (hover and active states).<br />Tabs or segments switching.<br />Basic fade-in and fade-out animations.       |
-| `motionEasingIn`   | `$pds-motion-easing-in`   | cubic-bezier(0,0,0.2,1)       | Elements that appear quickly and then ease into view.<br />Elements that slide in from off-screen and then slow down. |
-| `motionEasingOut`  | `$pds-motion-easing-out`  | cubic-bezier(0.4,0,0.5,1)     | Closing animations for Modals or Flyouts.<br />Elements sliding out of view fast.                                     |
+| Token              | Token SCSS                | Easing                                 | Usage                                                                                                                 |
+| ------------------ | ------------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `motionEasingBase` | `$pds-motion-easing-base` | <ExampleStylesMotionCurveEasingBase /> | Buttons (hover and active states).<br />Tabs or segments switching.<br />Basic fade-in and fade-out animations.       |
+| `motionEasingIn`   | `$pds-motion-easing-in`   | <ExampleStylesMotionCurveEasingIn />   | Elements that appear quickly and then ease into view.<br />Elements that slide in from off-screen and then slow down. |
+| `motionEasingOut`  | `$pds-motion-easing-out`  | <ExampleStylesMotionCurveEasingOut />  | Closing animations for Modals or Flyouts.<br />Elements sliding out of view fast.                                     |
 
 ## Example Motion Curves
-
-<Playground :frameworkMarkup="motionCurvesExample" :externalStackBlitzDependencies="['styled-components']">
-  <ExampleStylesMotionCurves />
-</Playground>
 
 ## Examples
 
@@ -73,25 +69,25 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angu
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import {
-  getStylesMotionCurvesCodeSamples, getStylesMotionCodeSamples
-} from '@porsche-design-system/shared';
+import { getStylesMotionCodeSamples } from '@porsche-design-system/shared';
 import { adjustSelectedFramework } from '@/utils';
-import ExampleStylesMotionCurves from '@/pages/patterns/styles/example-motion-curves.vue';
+import ExampleStylesMotionCurveEasingBase from '@/pages/patterns/styles/example-motion-curve-easing-base.vue';
+import ExampleStylesMotionCurveEasingIn from '@/pages/patterns/styles/example-motion-curve-easing-in.vue';
+import ExampleStylesMotionCurveEasingOut from '@/pages/patterns/styles/example-motion-curve-easing-out.vue';
 import ExampleStylesMotion from '@/pages/patterns/styles/example-motion.vue';
 
 @Component({
   components: {
-    ExampleStylesMotionCurves,
+    ExampleStylesMotionCurveEasingBase,
+    ExampleStylesMotionCurveEasingIn,
+    ExampleStylesMotionCurveEasingOut,
     ExampleStylesMotion,
   },
 })
 export default class Code extends Vue {
-  motionCurvesExample = getStylesMotionCurvesCodeSamples();
   motionExamples = getStylesMotionCodeSamples();
 
   public mounted(): void {
-    adjustSelectedFramework(this.motionCurvesExample);
     adjustSelectedFramework(this.motionExamples);
   }
 }
