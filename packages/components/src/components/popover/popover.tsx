@@ -71,9 +71,7 @@ export class Popover {
   public componentDidRender(): void {
     if (this.isNative && this.spacer?.matches(':popover-open')) {
       addScrollAndResizeListener(this.spacer);
-      if (this.table) {
-        addTableScrollListener(this.host, this.table, this.spacer);
-      }
+      addTableScrollListener(this.host, this.table, this.spacer);
       // Set new popover position depending on button position
       updateNativePopoverStyles(this.spacer, this.button);
       // Update popover styles with new position
@@ -137,9 +135,9 @@ export class Popover {
     const supportsNativePopover = HTMLElement.prototype.hasOwnProperty('popover');
     if (supportsNativePopover) {
       this.table = isWithinComponent(this.host, 'pTable');
-      const accordion = isWithinComponent(this.host, 'pAccordion');
-      const isWithinScrollContainer = !!this.table || !!accordion;
-      this.isNative = supportsNativePopover && isWithinScrollContainer;
+      if (!!this.table) {
+        this.isNative = true;
+      }
     }
   };
 
