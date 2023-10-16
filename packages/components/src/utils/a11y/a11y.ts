@@ -25,17 +25,12 @@ export const setAriaAttributes = (el: HTMLElement, opts: SetAriaAttributesOption
 
 export const parseAndGetAriaAttributes = (rawAttributes: AriaAttributes | string): AriaAttributes => {
   if (rawAttributes) {
-    const attributes = parseJSONAttribute(rawAttributes);
-    const attributeKeys = Object.keys(attributes);
-
-    // convert booleans to strings so that values are properly set and not just result in attributes without a value when true in jsx
-    for (const key of attributeKeys) {
-      if (typeof attributes[key] === 'boolean') {
-        attributes[key] = `${attributes[key]}`;
-      }
-    }
-
-    return attributes;
+    return Object.fromEntries(
+      Object.entries(parseJSONAttribute(rawAttributes)).map(([key, val]) => [
+        key,
+        typeof val === 'boolean' ? `${val}` : val,
+      ])
+    );
   }
 };
 
