@@ -58,8 +58,6 @@ export class Popover {
 
   private isNative: boolean = false;
   private table: HTMLElement;
-  private nativePopover: HTMLDivElement;
-  private nativeButton: HTMLButtonElement;
 
   public connectedCallback(): void {
     addDocumentEventListener(this);
@@ -71,15 +69,15 @@ export class Popover {
   }
 
   public componentDidRender(): void {
-    if (this.isNative && this.nativePopover?.matches(':popover-open')) {
-      addScrollAndResizeListener(this.nativePopover);
+    if (this.isNative && this.spacer?.matches(':popover-open')) {
+      addScrollAndResizeListener(this.spacer);
       if (this.table) {
-        addTableScrollListener(this.host, this.table, this.nativePopover);
+        addTableScrollListener(this.host, this.table, this.spacer);
       }
       // Set new popover position depending on button position
-      updateNativePopoverStyles(this.nativePopover, this.nativeButton);
+      updateNativePopoverStyles(this.spacer, this.button);
       // Update popover styles with new position
-      updatePopoverStyles(this.host, this.nativePopover, this.popover, this.direction, this.theme, this.isNative);
+      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme, this.isNative);
     } else {
       if (this.open) {
         // calculate / update position only possible after render
@@ -100,52 +98,26 @@ export class Popover {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    return this.isNative ? (
+    return (
       <Host onKeydown={this.onKeydown}>
         <button
           type="button"
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          popovertarget="spacer"
+          {...(this.isNative ? { popoverTarget: 'spacer' } : { onClick: () => (this.open = !this.open) })}
           {...parseAndGetAriaAttributes({
             ...parseAndGetAriaAttributes(this.aria),
-            'aria-expanded': this.nativePopover?.matches(':popover-open'),
-          })}
-          ref={(el) => (this.nativeButton = el)}
-        >
-          <PrefixedTagNames.pIcon class="icon" name="information" theme={this.theme} />
-          <span class="label">More information</span>
-        </button>
-        <div
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          popover="auto"
-          id="spacer"
-          class="spacer"
-          onToggle={this.onToggle}
-          ref={(el) => (this.nativePopover = el)}
-        >
-          <div class="popover" ref={(el) => (this.popover = el)}>
-            {this.description ? <p>{this.description}</p> : <slot />}
-          </div>
-        </div>
-      </Host>
-    ) : (
-      <Host onKeydown={this.onKeydown}>
-        <button
-          type="button"
-          onClick={() => (this.open = !this.open)}
-          {...parseAndGetAriaAttributes({
-            ...parseAndGetAriaAttributes(this.aria),
-            'aria-expanded': this.open,
+            'aria-expanded': this.isNative ? this.spacer?.matches(':popover-open') : this.open,
           })}
           ref={(el) => (this.button = el)}
         >
           <PrefixedTagNames.pIcon class="icon" name="information" theme={this.theme} />
           <span class="label">More information</span>
         </button>
-        {this.open && (
-          <div class="spacer" ref={(el) => (this.spacer = el)}>
+        {(this.open || this.isNative) && (
+          <div
+            class="spacer"
+            ref={(el) => (this.spacer = el)}
+            {...(this.isNative && { popover: 'auto', id: 'spacer', onToggle: this.onToggle })}
+          >
             <div class="popover" ref={(el) => (this.popover = el)}>
               {this.description ? <p>{this.description}</p> : <slot />}
             </div>
