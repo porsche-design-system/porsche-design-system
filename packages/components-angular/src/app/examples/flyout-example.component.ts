@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-flyout-example',
   template: `
     <p-button type="button" [aria]="{ 'aria-haspopup': 'dialog' }" (click)="onOpen()">Open Flyout</p-button>
-    <p-flyout [open]="isFlyoutOpen" [position]="'right'" (dismiss)="onDismiss()">
+    <p-flyout [open]="isFlyoutOpen" (dismiss)="onDismiss()">
       <p-text>Some content that dynamically scales the width of the flyout.</p-text>
     </p-flyout>
   `,
