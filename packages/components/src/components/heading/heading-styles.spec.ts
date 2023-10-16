@@ -2,15 +2,15 @@ import { getComponentCss } from './heading-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['xx-large', 'left', 'primary', false, 'light'],
-    ['x-large', 'left', 'primary', false, 'light'],
+    ['xx-large', 'start', 'primary', false, 'light'],
+    ['x-large', 'start', 'primary', false, 'light'],
     ['large', 'center', 'inherit', true, 'dark'],
     ['medium', 'center', 'inherit', true, 'dark'],
     ['small', 'center', 'inherit', true, 'dark'],
     ['inherit', 'center', 'inherit', true, 'dark'],
     [
       { base: 'small', xs: 'medium', s: 'large', m: 'x-large', l: 'xx-large', xl: 'large' },
-      'right',
+      'end',
       'inherit',
       false,
       'dark',

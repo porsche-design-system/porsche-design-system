@@ -79,9 +79,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -128,7 +132,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -206,9 +210,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -333,9 +341,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -410,7 +422,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -488,9 +500,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -643,9 +659,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -744,7 +764,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: left and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: start and theme: dark 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -822,9 +842,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -922,7 +946,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: start and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1000,9 +1024,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1182,9 +1210,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1389,9 +1421,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1438,7 +1474,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: start and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1516,9 +1552,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1564,7 +1604,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start and theme: light 1`] = `
 ":host {
   display: flex !important;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1642,9 +1682,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1797,9 +1841,13 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 }
 .splide__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide__track--draggable {
   cursor: grab;

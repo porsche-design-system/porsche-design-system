@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   height: inherit !important;
   color-scheme: light dark !important;
 }
@@ -40,13 +40,11 @@ button {
 }
 
 .root {
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  position: relative;
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
   -ms-overflow-style: none;
@@ -94,13 +92,16 @@ button {
   right: 0;
 }
 .action-prev {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
-  margin-left: -1px;
-  grid-area: 1 / 1 / 1 / 1;
+  left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: visible;
@@ -109,13 +110,16 @@ button {
   margin-left: 8px;
 }
 .action-next {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
-  margin-right: -1px;
-  grid-area: 1 / 3 / 1 / 3;
+  right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: visible;
@@ -136,7 +140,7 @@ button {
 
 exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   height: inherit !important;
   color-scheme: light dark !important;
 }
@@ -175,13 +179,11 @@ button {
 }
 
 .root {
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  position: relative;
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
   -ms-overflow-style: none;
@@ -229,13 +231,16 @@ button {
   right: 0;
 }
 .action-prev {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
-  margin-left: -1px;
-  grid-area: 1 / 1 / 1 / 1;
+  left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: visible;
@@ -244,13 +249,16 @@ button {
   margin-left: 8px;
 }
 .action-next {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
-  margin-right: -1px;
-  grid-area: 1 / 3 / 1 / 3;
+  right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: visible;
@@ -271,7 +279,7 @@ button {
 
 exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: top, hasScrollbar: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   height: inherit !important;
   color-scheme: light dark !important;
 }
@@ -310,13 +318,11 @@ button {
 }
 
 .root {
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  position: relative;
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
 }
@@ -359,13 +365,16 @@ button {
   right: 0;
 }
 .action-prev {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
-  margin-left: -1px;
-  grid-area: 1 / 1 / 1 / 1;
+  left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: visible;
@@ -374,13 +383,16 @@ button {
   margin-left: 8px;
 }
 .action-next {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
-  margin-right: -1px;
-  grid-area: 1 / 3 / 1 / 3;
+  right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: visible;
@@ -401,7 +413,7 @@ button {
 
 exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: false, isPrevHidden: true, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   height: inherit !important;
   color-scheme: light dark !important;
 }
@@ -439,13 +451,11 @@ button {
 }
 
 .root {
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  position: relative;
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
 }
@@ -488,13 +498,16 @@ button {
   right: 0;
 }
 .action-prev {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
-  margin-left: -1px;
-  grid-area: 1 / 1 / 1 / 1;
+  left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
@@ -503,13 +516,16 @@ button {
   margin-left: 8px;
 }
 .action-next {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
-  margin-right: -1px;
-  grid-area: 1 / 3 / 1 / 3;
+  right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: visible;
@@ -530,7 +546,7 @@ button {
 
 exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: true, isPrevHidden: false, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   height: inherit !important;
   color-scheme: light dark !important;
 }
@@ -569,13 +585,11 @@ button {
 }
 
 .root {
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  position: relative;
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
 }
@@ -618,13 +632,16 @@ button {
   right: 0;
 }
 .action-prev {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
-  margin-left: -1px;
-  grid-area: 1 / 1 / 1 / 1;
+  left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: visible;
@@ -633,13 +650,16 @@ button {
   margin-left: 8px;
 }
 .action-next {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
-  margin-right: -1px;
-  grid-area: 1 / 3 / 1 / 3;
+  right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
@@ -660,7 +680,7 @@ button {
 
 exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: true, isPrevHidden: true, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   height: inherit !important;
   color-scheme: light dark !important;
 }
@@ -699,13 +719,11 @@ button {
 }
 
 .root {
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  position: relative;
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
 }
@@ -748,13 +766,16 @@ button {
   right: 0;
 }
 .action-prev {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
-  margin-left: -1px;
-  grid-area: 1 / 1 / 1 / 1;
+  left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
@@ -763,13 +784,16 @@ button {
   margin-left: 8px;
 }
 .action-next {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
-  margin-right: -1px;
-  grid-area: 1 / 3 / 1 / 3;
+  right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
@@ -790,7 +814,7 @@ button {
 
 exports[`getComponentCss() should return correct css for gradientColor: background-surface, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   height: inherit !important;
   color-scheme: light dark !important;
 }
@@ -828,13 +852,11 @@ button {
 }
 
 .root {
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  position: relative;
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
   -ms-overflow-style: none;
@@ -882,13 +904,16 @@ button {
   right: 0;
 }
 .action-prev {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
-  margin-left: -1px;
-  grid-area: 1 / 1 / 1 / 1;
+  left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(33,34,37,1) 20%,rgba(33,34,37,0.6) 48%,rgba(33,34,37,0.3) 68%,rgba(33,34,37,0) 100%);
   visibility: visible;
@@ -897,13 +922,16 @@ button {
   margin-left: 8px;
 }
 .action-next {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
-  margin-right: -1px;
-  grid-area: 1 / 3 / 1 / 3;
+  right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(33,34,37,1) 20%,rgba(33,34,37,0.6) 48%,rgba(33,34,37,0.3) 68%,rgba(33,34,37,0) 100%);
   visibility: visible;
@@ -924,7 +952,7 @@ button {
 
 exports[`getComponentCss() should return correct css for gradientColor: background-surface, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   height: inherit !important;
   color-scheme: light dark !important;
 }
@@ -963,13 +991,11 @@ button {
 }
 
 .root {
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  position: relative;
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
   -ms-overflow-style: none;
@@ -1017,13 +1043,16 @@ button {
   right: 0;
 }
 .action-prev {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
-  margin-left: -1px;
-  grid-area: 1 / 1 / 1 / 1;
+  left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(238,239,242,1) 20%,rgba(238,239,242,0.6) 48%,rgba(238,239,242,0.3) 68%,rgba(238,239,242,0) 100%);
   visibility: visible;
@@ -1032,13 +1061,16 @@ button {
   margin-left: 8px;
 }
 .action-next {
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
   pointer-events: none;
   display: flex;
   align-items: center;
-  margin-right: -1px;
-  grid-area: 1 / 3 / 1 / 3;
+  right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(238,239,242,1) 20%,rgba(238,239,242,0.6) 48%,rgba(238,239,242,0.3) 68%,rgba(238,239,242,0) 100%);
   visibility: visible;

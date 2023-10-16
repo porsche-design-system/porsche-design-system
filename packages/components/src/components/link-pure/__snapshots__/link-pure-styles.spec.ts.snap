@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"left","xs":"right","s":"left","m":"right","l":"left","xl":"right"},"underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -227,7 +227,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -387,7 +387,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -465,7 +465,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -543,7 +543,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -640,7 +640,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":true,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":true,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -718,7 +718,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -795,7 +795,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 2`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"light"} 2`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -872,7 +872,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","underline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"end","underline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -968,7 +968,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","underline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"start","underline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1048,7 +1048,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"start","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1128,7 +1128,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"stretch":false,"size":"inherit","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"stretch":false,"size":"inherit","hideLabel":false,"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1185,7 +1185,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;

@@ -9,6 +9,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -34,12 +35,12 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>') !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -47,9 +48,13 @@ label {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -68,17 +73,26 @@ label {
     position: static;
     width: auto;
     height: auto;
-    text-indent: 0;
-    padding: 2px 0 0 8px;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    padding-top: 2px;
+    padding-inline-start: 8px;
   }
 }
 
 @media(min-width:760px) {
   .text {
     position: absolute;
-    width: 0;
+    width: 1px;
     height: 1px;
-    text-indent: -999999px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
 }
 
@@ -87,17 +101,26 @@ label {
     position: static;
     width: auto;
     height: auto;
-    text-indent: 0;
-    padding: 2px 0 0 8px;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    padding-top: 2px;
+    padding-inline-start: 8px;
   }
 }
 
 @media(min-width:1300px) {
   .text {
     position: absolute;
-    width: 0;
+    width: 1px;
     height: 1px;
-    text-indent: -999999px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
 }
 
@@ -106,8 +129,13 @@ label {
     position: static;
     width: auto;
     height: auto;
-    text-indent: 0;
-    padding: 2px 0 0 8px;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    padding-top: 2px;
+    padding-inline-start: 8px;
   }
 }
 "
@@ -122,6 +150,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -149,12 +178,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 50% !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -164,8 +193,13 @@ label {
   position: static;
   width: auto;
   height: auto;
-  text-indent: 0;
-  padding: 2px 0 0 8px;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
 }
 .required {
   user-select: none;
@@ -181,10 +215,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position: absolute;
-  top: calc(calc(6px + 2.125ex)/2 + 2px);
-  left: calc(calc(6px + 2.125ex)/2 + 2px);
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
   padding: 2px;
@@ -203,6 +234,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -230,12 +262,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 50% !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -245,8 +277,13 @@ label {
   position: static;
   width: auto;
   height: auto;
-  text-indent: 0;
-  padding: 2px 0 0 8px;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
 }
 .required {
   user-select: none;
@@ -262,10 +299,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position: absolute;
-  top: calc(calc(6px + 2.125ex)/2 + 2px);
-  left: calc(calc(6px + 2.125ex)/2 + 2px);
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
   padding: 2px;
@@ -284,6 +318,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -309,12 +344,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>') !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -324,8 +359,13 @@ label {
   position: static;
   width: auto;
   height: auto;
-  text-indent: 0;
-  padding: 2px 0 0 8px;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
 }
 .required {
   user-select: none;
@@ -351,6 +391,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -376,12 +417,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>') !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -391,8 +432,13 @@ label {
   position: static;
   width: auto;
   height: auto;
-  text-indent: 0;
-  padding: 2px 0 0 8px;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
 }
 .required {
   user-select: none;
@@ -418,6 +464,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -445,12 +492,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 50% !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -460,8 +507,13 @@ label {
   position: static;
   width: auto;
   height: auto;
-  text-indent: 0;
-  padding: 2px 0 0 8px;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
 }
 .required {
   user-select: none;
@@ -476,10 +528,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position: absolute;
-  top: calc(calc(6px + 2.125ex)/2 + 2px);
-  left: calc(calc(6px + 2.125ex)/2 + 2px);
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
   padding: 2px;
@@ -498,6 +547,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -525,12 +575,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 50% !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -540,8 +590,13 @@ label {
   position: static;
   width: auto;
   height: auto;
-  text-indent: 0;
-  padding: 2px 0 0 8px;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
 }
 .required {
   user-select: none;
@@ -556,10 +611,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position: absolute;
-  top: calc(calc(6px + 2.125ex)/2 + 2px);
-  left: calc(calc(6px + 2.125ex)/2 + 2px);
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
   padding: 2px;
@@ -578,6 +630,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -603,12 +656,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>') !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -618,8 +671,13 @@ label {
   position: static;
   width: auto;
   height: auto;
-  text-indent: 0;
-  padding: 2px 0 0 8px;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
 }
 .required {
   user-select: none;
@@ -644,6 +702,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -669,12 +728,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>') !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -684,8 +743,13 @@ label {
   position: static;
   width: auto;
   height: auto;
-  text-indent: 0;
-  padding: 2px 0 0 8px;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
 }
 .required {
   user-select: none;
@@ -710,6 +774,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -737,12 +802,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 50% !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -752,8 +817,13 @@ label {
   position: static;
   width: auto;
   height: auto;
-  text-indent: 0;
-  padding: 2px 0 0 8px;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
 }
 .required {
   user-select: none;
@@ -769,10 +839,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position: absolute;
-  top: calc(calc(6px + 2.125ex)/2 + 2px);
-  left: calc(calc(6px + 2.125ex)/2 + 2px);
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
   padding: 2px;
@@ -791,6 +858,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -818,12 +886,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-radius: 50% !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -833,8 +901,13 @@ label {
   position: static;
   width: auto;
   height: auto;
-  text-indent: 0;
-  padding: 2px 0 0 8px;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
 }
 .required {
   user-select: none;
@@ -850,10 +923,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position: absolute;
-  top: calc(calc(6px + 2.125ex)/2 + 2px);
-  left: calc(calc(6px + 2.125ex)/2 + 2px);
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
   padding: 2px;
@@ -872,6 +942,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -897,12 +968,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>') !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -912,8 +983,13 @@ label {
   position: static;
   width: auto;
   height: auto;
-  text-indent: 0;
-  padding: 2px 0 0 8px;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
 }
 .required {
   user-select: none;
@@ -939,6 +1015,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -964,12 +1041,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>') !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -979,8 +1056,13 @@ label {
   position: static;
   width: auto;
   height: auto;
-  text-indent: 0;
-  padding: 2px 0 0 8px;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
 }
 .required {
   user-select: none;
@@ -1006,6 +1088,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1044,9 +1127,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: transparent !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
@@ -1059,7 +1142,7 @@ label {
 }
 
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: pointer;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1067,9 +1150,13 @@ label {
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -1095,6 +1182,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1133,9 +1221,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: transparent !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
@@ -1148,7 +1236,7 @@ label {
 }
 
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: pointer;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1156,9 +1244,13 @@ label {
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -1184,6 +1276,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1208,12 +1301,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #7E7F82 !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1221,9 +1314,13 @@ label {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -1239,10 +1336,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position: absolute;
-  top: calc(calc(6px + 2.125ex)/2 + 2px);
-  left: calc(calc(6px + 2.125ex)/2 + 2px);
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
   padding: 2px;
@@ -1261,6 +1355,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1285,12 +1380,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #949598 !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1298,9 +1393,13 @@ label {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -1316,10 +1415,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position: absolute;
-  top: calc(calc(6px + 2.125ex)/2 + 2px);
-  left: calc(calc(6px + 2.125ex)/2 + 2px);
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
   padding: 2px;
@@ -1338,6 +1434,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1376,9 +1473,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: transparent !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
@@ -1391,7 +1488,7 @@ label {
 }
 
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: pointer;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1399,9 +1496,13 @@ label {
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -1426,6 +1527,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1464,9 +1566,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: transparent !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
@@ -1479,7 +1581,7 @@ label {
 }
 
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: pointer;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1487,9 +1589,13 @@ label {
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -1514,6 +1620,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1538,12 +1645,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #7E7F82 !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1551,9 +1658,13 @@ label {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -1568,10 +1679,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position: absolute;
-  top: calc(calc(6px + 2.125ex)/2 + 2px);
-  left: calc(calc(6px + 2.125ex)/2 + 2px);
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
   padding: 2px;
@@ -1590,6 +1698,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1614,12 +1723,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #949598 !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1627,9 +1736,13 @@ label {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -1644,10 +1757,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position: absolute;
-  top: calc(calc(6px + 2.125ex)/2 + 2px);
-  left: calc(calc(6px + 2.125ex)/2 + 2px);
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
   padding: 2px;
@@ -1666,6 +1776,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1704,9 +1815,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: transparent !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
@@ -1719,7 +1830,7 @@ label {
 }
 
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: pointer;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1727,9 +1838,13 @@ label {
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -1755,6 +1870,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1793,9 +1909,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: transparent !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
@@ -1808,7 +1924,7 @@ label {
 }
 
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: pointer;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1816,9 +1932,13 @@ label {
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -1844,6 +1964,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1868,12 +1989,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #7E7F82 !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1881,9 +2002,13 @@ label {
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -1899,10 +2024,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position: absolute;
-  top: calc(calc(6px + 2.125ex)/2 + 2px);
-  left: calc(calc(6px + 2.125ex)/2 + 2px);
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
   padding: 2px;
@@ -1921,6 +2043,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
+  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1945,12 +2068,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #949598 !important;
 }
 label {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
 }
 .text {
-  order: 1;
+  grid-area: 1 / 2;
   cursor: default;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1958,9 +2081,13 @@ label {
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .required {
   user-select: none;
@@ -1976,10 +2103,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
-  position: absolute;
-  top: calc(calc(6px + 2.125ex)/2 + 2px);
-  left: calc(calc(6px + 2.125ex)/2 + 2px);
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
   padding: 2px;

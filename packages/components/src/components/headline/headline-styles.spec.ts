@@ -2,14 +2,14 @@ import { getComponentCss } from './headline-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['large', 'left', 'primary', false, 'light'],
-    ['large', 'left', 'primary', false, 'light'],
-    ['large', 'right', 'primary', true, 'dark'],
+    ['large', 'start', 'primary', false, 'light'],
+    ['large', 'start', 'primary', false, 'light'],
+    ['large', 'end', 'primary', true, 'dark'],
     ['large', 'center', 'primary', false, 'dark'],
-    ['large', 'left', 'primary', true, 'light'],
-    ['large', 'left', 'primary', true, 'light'],
-    ['medium', 'right', 'inherit', true, 'dark'],
-    ['medium', 'left', 'inherit', false, 'light'],
+    ['large', 'start', 'primary', true, 'light'],
+    ['large', 'start', 'primary', true, 'light'],
+    ['medium', 'end', 'inherit', true, 'dark'],
+    ['medium', 'start', 'inherit', false, 'light'],
     ['inherit', 'center', 'primary', false, 'light'],
     [
       { base: 'medium', xs: 'large', s: 'medium', m: 'inherit', l: 'large', xl: 'medium' },

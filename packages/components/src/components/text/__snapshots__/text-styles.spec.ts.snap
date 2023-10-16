@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for size: "large", weight: semi-bold, align: left, color: notification-info, ellipsis: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for size: "large", weight: semi-bold, align: start, color: notification-info, ellipsis: true and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -32,7 +32,7 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
   overflow-wrap: break-word;
   hyphens: auto;
   color: #2762EC;
-  text-align: left;
+  text-align: start;
   letter-spacing: normal;
   list-style-type: none;
   white-space: nowrap;
@@ -44,7 +44,7 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", weight: bold, align: right, color: contrast-high, ellipsis: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for size: "medium", weight: bold, align: end, color: contrast-high, ellipsis: true and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -76,7 +76,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   overflow-wrap: break-word;
   hyphens: auto;
   color: #AFB0B3;
-  text-align: right;
+  text-align: end;
   letter-spacing: normal;
   list-style-type: none;
   white-space: nowrap;
@@ -88,7 +88,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", weight: regular, align: left, color: primary, ellipsis: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for size: "small", weight: regular, align: start, color: primary, ellipsis: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -120,7 +120,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  text-align: left;
+  text-align: start;
   letter-spacing: normal;
   list-style-type: none;
   white-space: inherit;

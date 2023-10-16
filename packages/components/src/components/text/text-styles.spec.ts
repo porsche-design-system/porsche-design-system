@@ -2,9 +2,9 @@ import { getComponentCss } from './text-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['small', 'regular', 'left', 'primary', false, 'light'],
-    ['large', 'semi-bold', 'left', 'notification-info', true, 'light'],
-    ['medium', 'bold', 'right', 'contrast-high', true, 'dark'],
+    ['small', 'regular', 'start', 'primary', false, 'light'],
+    ['large', 'semi-bold', 'start', 'notification-info', true, 'light'],
+    ['medium', 'bold', 'end', 'contrast-high', true, 'dark'],
     [
       { base: 'small', xs: 'large', s: 'medium', m: 'inherit', l: 'x-small', xl: 'x-large' },
       'bold',
