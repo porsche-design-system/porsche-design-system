@@ -12,37 +12,37 @@ exports[`getComponentCss() should return correct css for size: "inherit" and the
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #88898C;
 }
 circle:last-child {
-  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) steps(50) infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
   0% {
-    transform: rotate3d(0,0,1,0deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,0);
+    transform: rotateZ(0);
   }
   50%, 75% {
     stroke-dashoffset: 20;
-    transform: rotate3d(0,0,1,80deg);
+    transform: rotateZ(80deg);
   }
   100% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
   .root {
@@ -71,37 +71,37 @@ exports[`getComponentCss() should return correct css for size: "inherit" and the
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
 }
 circle:last-child {
-  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) steps(50) infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
   0% {
-    transform: rotate3d(0,0,1,0deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,0);
+    transform: rotateZ(0);
   }
   50%, 75% {
     stroke-dashoffset: 20;
-    transform: rotate3d(0,0,1,80deg);
+    transform: rotateZ(80deg);
   }
   100% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
   .root {
@@ -130,37 +130,37 @@ exports[`getComponentCss() should return correct css for size: "large" and theme
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #88898C;
 }
 circle:last-child {
-  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) steps(50) infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
   0% {
-    transform: rotate3d(0,0,1,0deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,0);
+    transform: rotateZ(0);
   }
   50%, 75% {
     stroke-dashoffset: 20;
-    transform: rotate3d(0,0,1,80deg);
+    transform: rotateZ(80deg);
   }
   100% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
   .root {
@@ -189,37 +189,37 @@ exports[`getComponentCss() should return correct css for size: "large" and theme
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
 }
 circle:last-child {
-  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) steps(50) infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
   0% {
-    transform: rotate3d(0,0,1,0deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,0);
+    transform: rotateZ(0);
   }
   50%, 75% {
     stroke-dashoffset: 20;
-    transform: rotate3d(0,0,1,80deg);
+    transform: rotateZ(80deg);
   }
   100% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
   .root {
@@ -248,37 +248,37 @@ exports[`getComponentCss() should return correct css for size: "medium" and them
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #88898C;
 }
 circle:last-child {
-  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) steps(50) infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
   0% {
-    transform: rotate3d(0,0,1,0deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,0);
+    transform: rotateZ(0);
   }
   50%, 75% {
     stroke-dashoffset: 20;
-    transform: rotate3d(0,0,1,80deg);
+    transform: rotateZ(80deg);
   }
   100% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
   .root {
@@ -307,37 +307,37 @@ exports[`getComponentCss() should return correct css for size: "medium" and them
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
 }
 circle:last-child {
-  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) steps(50) infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
   0% {
-    transform: rotate3d(0,0,1,0deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,0);
+    transform: rotateZ(0);
   }
   50%, 75% {
     stroke-dashoffset: 20;
-    transform: rotate3d(0,0,1,80deg);
+    transform: rotateZ(80deg);
   }
   100% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
   .root {
@@ -366,37 +366,37 @@ exports[`getComponentCss() should return correct css for size: "small" and theme
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #88898C;
 }
 circle:last-child {
-  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) steps(50) infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
   0% {
-    transform: rotate3d(0,0,1,0deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,0);
+    transform: rotateZ(0);
   }
   50%, 75% {
     stroke-dashoffset: 20;
-    transform: rotate3d(0,0,1,80deg);
+    transform: rotateZ(80deg);
   }
   100% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
   .root {
@@ -425,37 +425,37 @@ exports[`getComponentCss() should return correct css for size: "small" and theme
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
 }
 circle:last-child {
-  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) steps(50) infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
   0% {
-    transform: rotate3d(0,0,1,0deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,0);
+    transform: rotateZ(0);
   }
   50%, 75% {
     stroke-dashoffset: 20;
-    transform: rotate3d(0,0,1,80deg);
+    transform: rotateZ(80deg);
   }
   100% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
   .root {
@@ -484,37 +484,37 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #88898C;
 }
 circle:last-child {
-  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) steps(50) infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
   0% {
-    transform: rotate3d(0,0,1,0deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,0);
+    transform: rotateZ(0);
   }
   50%, 75% {
     stroke-dashoffset: 20;
-    transform: rotate3d(0,0,1,80deg);
+    transform: rotateZ(80deg);
   }
   100% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
   .root {
@@ -578,37 +578,37 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-animation-duration, 2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
 }
 circle:last-child {
-  animation: dash var(--p-animation-duration, 2s) ease-in-out infinite;
+  animation: dash var(--p-animation-duration, 2s) steps(50) infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
 }
 @keyframes rotate {
   0% {
-    transform: rotate3d(0,0,1,0deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes dash {
   0% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,0);
+    transform: rotateZ(0);
   }
   50%, 75% {
     stroke-dashoffset: 20;
-    transform: rotate3d(0,0,1,80deg);
+    transform: rotateZ(80deg);
   }
   100% {
     stroke-dashoffset: 57;
-    transform: rotate3d(0,0,1,360deg);
+    transform: rotateZ(360deg);
   }
 }
   .root {

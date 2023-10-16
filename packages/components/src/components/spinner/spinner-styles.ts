@@ -44,7 +44,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       svg: {
         display: 'block',
         fill: 'none',
-        animation: `$rotate ${animationDuration} linear infinite`,
+        animation: `$rotate ${animationDuration} steps(50) infinite`,
       },
       circle: {
         '&:first-child': {
@@ -55,7 +55,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
           }),
         },
         '&:last-child': {
-          animation: `$dash ${animationDuration} ease-in-out infinite`,
+          animation: `$dash ${animationDuration} steps(50) infinite`,
           // TODO: High Contrast Mode should be handled within a local color helper function
           stroke: lastHighContrastStrokeColor || primaryColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -70,25 +70,25 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       },
       '@keyframes rotate': {
         '0%': {
-          transform: 'rotate3d(0,0,1,0deg)',
+          transform: 'rotateZ(0deg)',
         },
         '100%': {
-          transform: 'rotate3d(0,0,1,360deg)',
+          transform: 'rotateZ(360deg)',
         },
       },
       '@keyframes dash': {
         '0%': {
           strokeDashoffset: 57,
-          transform: 'rotate3d(0,0,1,0)',
+          transform: 'rotateZ(0)',
         },
         '50%, 75%': {
           strokeDashoffset: 20,
-          transform: 'rotate3d(0,0,1,80deg)',
+          transform: 'rotateZ(80deg)',
         },
 
         '100%': {
           strokeDashoffset: 57,
-          transform: 'rotate3d(0,0,1,360deg)',
+          transform: 'rotateZ(360deg)',
         },
       },
     },
