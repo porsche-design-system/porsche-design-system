@@ -62,11 +62,15 @@
   <p-button-pure hide-label="true" icon="none">Label hide-label icon none</p-button-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should align label to the left">
-  <p-button-pure align-label="left">Label align left</p-button-pure>
+<div class="playground light auto-layout-inline" title="should align label to start">
+  <p-button-pure align-label="left">Label align left (deprecated)</p-button-pure>
+  <p-button-pure align-label="start">Label align start</p-button-pure>
 </div>
-<div class="playground light auto-layout-inline" title="should align label to the left or right depending on viewport">
+<div class="playground light auto-layout-inline" title="should align label to the start or end depending on viewport">
   <p-button-pure align-label="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
+    Label align responsive
+  </p-button-pure>
+  <p-button-pure align-label="{ base: 'start', xs: 'end', s: 'start', m: 'end', l: 'start', xl: 'end' }">
     Label align responsive
   </p-button-pure>
 </div>
