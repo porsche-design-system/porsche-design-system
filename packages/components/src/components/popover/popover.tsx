@@ -71,13 +71,15 @@ export class Popover {
   }
 
   public componentDidRender(): void {
-    if (this.isNative) {
+    if (this.isNative && this.nativePopover?.matches(':popover-open')) {
       addScrollAndResizeListener(this.nativePopover);
       if (this.table) {
         addTableScrollListener(this.host, this.table, this.nativePopover);
       }
-      updatePopoverStyles(this.host, this.nativePopover, this.popover, this.direction, this.theme);
+      // Set new popover position depending on button position
       updateNativePopoverStyles(this.nativePopover, this.nativeButton);
+      // Update popover styles with new position
+      updatePopoverStyles(this.host, this.nativePopover, this.popover, this.direction, this.theme, this.isNative);
     } else {
       if (this.open) {
         // calculate / update position only possible after render
@@ -169,7 +171,7 @@ export class Popover {
 
   private onToggle = (e): void => {
     if (e.newState === 'open') {
-      forceUpdate(this.host);
+      forceUpdate(this.host); // Necessary to update popover styles since opening of native popover doesn't trigger rerender
     }
   };
 }
