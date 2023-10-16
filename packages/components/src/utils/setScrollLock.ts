@@ -12,7 +12,7 @@ export const setScrollLock = (isOpen: boolean): void => {
 
   if (isOpen) {
     style.top = -htmlEl.scrollTop + 'px';
-    style.overflowY = 'scroll';
+    style.overflowY = 'scroll'; // seems necessary for flyout or modal content to be scrollable
     style.position = 'fixed';
   } else {
     const topValue = -parseInt(style.top, 10);
