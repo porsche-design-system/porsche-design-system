@@ -177,10 +177,16 @@ export const addTableScrollListener = (host: HTMLElement, table: HTMLElement, na
   table.shadowRoot
     .querySelector(getPrefixedTagNames(host).pScroller)
     .shadowRoot.querySelector('.scroll-area')
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     .addEventListener('scroll', () => nativePopover.hidePopover(), { once: true });
 };
 
 export const addScrollAndResizeListener = (nativePopover: HTMLElement): void => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   window.addEventListener('scroll', () => nativePopover.hidePopover(), { once: true });
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   window.addEventListener('resize', () => nativePopover.hidePopover(), { once: true });
 };
