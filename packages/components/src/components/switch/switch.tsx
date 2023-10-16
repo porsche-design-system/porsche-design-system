@@ -33,7 +33,7 @@ export class Switch {
   @Element() public host!: HTMLElement;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: BreakpointCustomizable<SwitchAlignLabel> = 'right';
+  @Prop() public alignLabel?: BreakpointCustomizable<SwitchAlignLabel> = 'end';
 
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;

@@ -24,6 +24,7 @@ export type { ButtonType } from '../utils/link-button/button-type';
 export type LinkVariant = LinkButtonVariant;
 export type { LinkTarget } from '../utils/link-button/link-target';
 
+export type { AlignLabelDeprecated } from '../utils/link-button/align-label';
 export type { AlignLabel } from '../utils/link-button/align-label';
 
 // ROLLUP_REPLACE_VARIABLES are replaced via rollup

@@ -7,11 +7,12 @@ import {
   hasVisibleIcon,
   parseAndGetAriaAttributes,
 } from '../../utils';
-import type { AlignLabel, ButtonType, TextWeight } from '../../types';
+import type { AlignLabel, AlignLabelDeprecated, ButtonType, TextWeight } from '../../types';
 
 export type ButtonPureType = ButtonType;
 export type ButtonPureIcon = LinkButtonIconName;
 export type ButtonPureAriaAttribute = ButtonAriaAttribute;
+export type ButtonPureAlignLabelDeprecated = AlignLabelDeprecated;
 export type ButtonPureAlignLabel = AlignLabel;
 export type ButtonPureWeight = TextWeight;
 export type ButtonPureSize = TextSize;

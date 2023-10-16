@@ -53,7 +53,7 @@ export class LinkPure {
   @Element() public host!: HTMLElement;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: BreakpointCustomizable<LinkPureAlignLabel> = 'right';
+  @Prop() public alignLabel?: BreakpointCustomizable<LinkPureAlignLabel> = 'end';
 
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
