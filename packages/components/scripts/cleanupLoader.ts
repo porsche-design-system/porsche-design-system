@@ -8,7 +8,11 @@ const cleanupLoader = () => {
 
   const [, lazyImport] = /(import.*?bootstrapLazy.*?);/.exec(srcContent) || [];
   const [, globalScriptsImport] = /(import.*?globalScripts.*?);/.exec(srcContent) || [];
-  const [, lazyData] = /bootstrapLazy\(\[(.*)],/.exec(srcContent) || [];
+  const [, lazyData] = /bootstrapLazy\((JSON.parse\("\[.*]"\)),/.exec(srcContent) || [];
+
+  if (!lazyData || !lazyImport || !globalScriptsImport) {
+    throw new Error('Failed cleaning up Loader.\n');
+  }
 
   const directory = path.resolve(srcFilePath, '..');
   // find the file that contains definition of isBrowser util
@@ -35,7 +39,7 @@ export const defineCustomElements = (options) => {
   globalScripts();
   return bootstrapLazy(
     // prettier-ignore
-    [${lazyData}],
+    ${lazyData},
     options
   );
 };
