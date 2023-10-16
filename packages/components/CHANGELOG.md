@@ -57,23 +57,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2819](https://github.com/porsche-design-system/porsche-design-system/pull/2819))
 
 ```diff
-- <p-button-pure align-label="left"></p-text>
-+ <p-button-pure align-label="start"></p-text>
+- <p-button-pure align-label="left"></p-button-pure>
++ <p-button-pure align-label="start"></p-button-pure>
 
-- <p-button-pure align-label="right"></p-text>
-+ <p-button-pure align-label="end"></p-text>
+- <p-button-pure align-label="right"></p-button-pure>
++ <p-button-pure align-label="end"></p-button-pure>
 
-- <p-link-pure align-label="left"></p-display>
-+ <p-link-pure align-label="start"></p-display>
+- <p-link-pure align-label="left"></p-link-pure>
++ <p-link-pure align-label="start"></p-link-pure>
 
-- <p-link-pure align-label="right"></p-display>
-+ <p-link-pure align-label="end"></p-display>
+- <p-link-pure align-label="right"></p-link-pure>
++ <p-link-pure align-label="end"></p-link-pure>
 
-- <p-switch align-label="left"></p-heading>
-+ <p-switch align-label="start"></p-heading>
+- <p-switch align-label="left"></p-switch>
++ <p-switch align-label="start"></p-switch>
 
-- <p-switch align-label="right"></p-heading>
-+ <p-switch align-label="end"></p-heading>
+- <p-switch align-label="right"></p-switch>
++ <p-switch align-label="end"></p-switch>
+```
+
+- `Flyout`: Prop values `left | right` of `position` prop are deprecated and mapped to new values `start | end` for
+  correct RTL (right-to-left) support
+  ([#2819](https://github.com/porsche-design-system/porsche-design-system/pull/2819))
+
+```diff
+- <p-flyout position="left"></p-flyout>
++ <p-flyout-pure position="start"></p-flyout>
+
+- <p-flyout-pure position="right"></p-flyout>
++ <p-flyout-pure position="end"></p-flyout>
 ```
 
 #### Fixed

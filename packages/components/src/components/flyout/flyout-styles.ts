@@ -27,7 +27,7 @@ export const getComponentCss = (
 ): string => {
   const { primaryColor, backgroundColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
-  const isPositionStart = position === 'left';
+  const isPositionStart = position === 'start';
   const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge}`;
   const isDark = isThemeDark(theme);
   const shadowColor = isDark ? scrollShadowColorDark : scrollShadowColor;

@@ -339,13 +339,16 @@
   </div>
 </div>
 
-<div class="playground light" title="should show flyout (position=left)">
+<div class="playground light" title="should show flyout (position=start)">
   <div>
     <p-flyout open="true" position="left">Some Content</p-flyout>
   </div>
+  <div>
+    <p-flyout open="true" position="start">Some Content</p-flyout>
+  </div>
 </div>
 
-<div class="playground light" title="should show flyout (maxWidth content, position=left)">
+<div class="playground light" title="should show flyout (maxWidth content, position=start)">
   <div>
     <p-flyout open="true" position="left">
       <div style="max-width: 100%; width: 100vw; height: 500px">
@@ -353,11 +356,33 @@
       </div>
     </p-flyout>
   </div>
+  <div>
+    <p-flyout open="true" position="start">
+      <div style="max-width: 100%; width: 100vw; height: 500px">
+        <p>Some Content in responsive max width</p>
+      </div>
+    </p-flyout>
+  </div>
 </div>
 
-<div class="playground light" title="should show flyout with header, footer and subFooter (position=left)">
+<div class="playground light" title="should show flyout with header, footer and subFooter (position=start)">
   <div>
     <p-flyout open="true" position="left">
+      <div slot="header">
+        <h1>Sticky Heading</h1>
+        <p>Sticky header text</p>
+      </div>
+      Some Content
+      <div slot="footer">
+        <button>Sticky Footer Button</button>
+      </div>
+      <div slot="sub-footer">
+        <p>Some Sub Footer Content</p>
+      </div>
+    </p-flyout>
+  </div>
+  <div>
+    <p-flyout open="true" position="start">
       <div slot="header">
         <h1>Sticky Heading</h1>
         <p>Sticky header text</p>
