@@ -27,8 +27,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Styles: `themeDarkBackgroundShading` and `pds-theme-dark-background-shading` color
   ([#2789](https://github.com/porsche-design-system/porsche-design-system/pull/2789))
+
 - `Text`, `Display`, `Heading`, `Headline`: Prop values `left | right` of `align` prop are deprecated and mapped to new
-  values `start | end` ([#2819](https://github.com/porsche-design-system/porsche-design-system/pull/2819))
+  values `start | end` for correct RTL (right-to-left) support
+  ([#2819](https://github.com/porsche-design-system/porsche-design-system/pull/2819))
 
 ```diff
 - <p-text align="left"></p-text>
@@ -48,6 +50,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - <p-heading align="right"></p-heading>
 + <p-heading align="end"></p-heading>
+```
+
+- `Button Pure`, `Link Pure`, `Switch`: Prop values `left | right` of `align-label` prop are deprecated and mapped to
+  new values `start | end` for correct RTL (right-to-left) support
+  ([#2819](https://github.com/porsche-design-system/porsche-design-system/pull/2819))
+
+```diff
+- <p-button-pure align-label="left"></p-text>
++ <p-button-pure align-label="start"></p-text>
+
+- <p-button-pure align-label="right"></p-text>
++ <p-button-pure align-label="end"></p-text>
+
+- <p-link-pure align-label="left"></p-display>
++ <p-link-pure align-label="start"></p-display>
+
+- <p-link-pure align-label="right"></p-display>
++ <p-link-pure align-label="end"></p-display>
+
+- <p-switch align-label="left"></p-heading>
++ <p-switch align-label="start"></p-heading>
+
+- <p-switch align-label="right"></p-heading>
++ <p-switch align-label="end"></p-heading>
 ```
 
 #### Fixed
