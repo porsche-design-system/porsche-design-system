@@ -24,7 +24,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { motionDurationVeryLong } from '@porsche-design-system/components-react/styles';
+  import { motionDurationVeryLong } from '@porsche-design-system/components-js/styles';
 
   @Component
   export default class ExampleStylesMotionCurveEasingOut extends Vue {

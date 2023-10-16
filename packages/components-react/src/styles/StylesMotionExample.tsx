@@ -10,7 +10,6 @@ import {
   motionEasingIn,
   motionEasingOut,
   spacingFluidMedium,
-  textSmallStyle,
   themeLightBackgroundSurface,
   themeLightPrimary,
 } from '@porsche-design-system/components-react/styles';
