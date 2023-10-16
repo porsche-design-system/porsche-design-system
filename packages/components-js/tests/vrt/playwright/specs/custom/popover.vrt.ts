@@ -1,5 +1,5 @@
 import { expect, type Page, test } from '@playwright/test';
-import { baseThemes, openAllPopover, type PrefersColorScheme, setContentWithDesignSystem } from '../../helpers';
+import { baseThemes, openAllPopover, setAllPopoverManual, setContentWithDesignSystem } from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'popover';
@@ -119,7 +119,7 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
 
   const markup = () =>
     withinTable
-      ? `<p-table>
+      ? `<p-table caption="popover">
         <p-table-head>
           <p-table-head-row>
             <p-table-head-cell
@@ -134,6 +134,9 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
 
   await setContentWithDesignSystem(page, markup(), { forceComponentTheme: theme });
   await page.setViewportSize({ width: viewportWidth, height: 600 });
+  if (withinTable) {
+    await setAllPopoverManual(page);
+  }
   await openAllPopover(page);
 };
 
@@ -154,7 +157,7 @@ test.describe(component, async () => {
     test(`should have no visual regression on popover-overview within table component for viewport ${viewportWidth} with theme ${theme}`, async ({
       page,
     }) => {
-      await scenario(page, theme);
+      await scenario(page, theme, true);
       await expect(page.locator('#app')).toHaveScreenshot(
         `${component}-${viewportWidth}-overview-within-table-theme-${theme}.png`
       );
