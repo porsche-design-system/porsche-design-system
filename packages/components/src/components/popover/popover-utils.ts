@@ -29,12 +29,12 @@ export const updatePopoverStyles = (
   popover.style.margin = getPopoverMargin(spacer, popover, direction);
 };
 
-export const updateNativePopoverStyles = (nativePopover: HTMLElement, nativeButton: HTMLButtonElement) => {
+export const updateNativePopoverStyles = (nativePopover: HTMLElement, nativeButton: HTMLButtonElement): void => {
   const { left, top, width, height } = nativeButton.getBoundingClientRect();
-  nativePopover.style.left = `${left - 16}px`;
-  nativePopover.style.top = `${top - 16}px`;
-  nativePopover.style.width = `${width + 16 * 2}px`;
-  nativePopover.style.height = `${height + 16 * 2}px`;
+  nativePopover.style.left = `${left - safeZonePx}px`;
+  nativePopover.style.top = `${top - safeZonePx}px`;
+  nativePopover.style.width = `${width + safeZonePx * 2}px`;
+  nativePopover.style.height = `${height + safeZonePx * 2}px`;
 };
 
 const getDocumentHeightWidthWithoutSafeZone = (): { clientWidth: number; clientHeight: number } => {
@@ -177,13 +177,10 @@ export const addTableScrollListener = (host: HTMLElement, table: HTMLElement, na
   table.shadowRoot
     .querySelector(getPrefixedTagNames(host).pScroller)
     .shadowRoot.querySelector('.scroll-area')
-    // @ts-ignore
     .addEventListener('scroll', () => nativePopover.hidePopover(), { once: true });
 };
 
 export const addScrollAndResizeListener = (nativePopover: HTMLElement): void => {
-  // @ts-ignore
   window.addEventListener('scroll', () => nativePopover.hidePopover(), { once: true });
-  // @ts-ignore
   window.addEventListener('resize', () => nativePopover.hidePopover(), { once: true });
 };
