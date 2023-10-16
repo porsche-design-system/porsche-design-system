@@ -1,5 +1,5 @@
 import type { PopoverDirection } from './popover-utils';
-import type { JssStyle, Styles } from 'jss';
+import type { JssStyle } from 'jss';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -137,14 +137,77 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
 
 export const getComponentCss = (direction: PopoverDirection, isNative: boolean, theme: Theme): string => {
   const spacerBox = '-16px';
-  const { backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
-    getThemedColors('dark');
+  const { backgroundColor, primaryColor, backgroundSurfaceColor, hoverColor, focusColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
+    hoverColor: hoverColorDark,
+    focusColor: focusColorDark,
+  } = getThemedColors('dark');
 
   const shadowColor = 'rgba(0,0,0,0.3)';
 
   return getCss({
-    ...getBasePopoverStyles(theme),
+    '@global': {
+      ':host': {
+        ...addImportantToEachRule({
+          position: 'relative',
+          display: 'inline-block',
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+        verticalAlign: 'top',
+      },
+      p: {
+        ...textSmallStyle,
+        margin: 0,
+      },
+      button: {
+        display: 'block',
+        position: 'relative',
+        appearance: 'none',
+        background: 'transparent',
+        border: 0,
+        padding: 0,
+        outline: 0,
+        cursor: 'pointer',
+        ...textSmallStyle,
+        width: fontLineHeight, // width needed to improve ssr support
+        height: fontLineHeight, // height needed to improve ssr support
+        borderRadius: '50%',
+        ...hoverMediaQuery({
+          transition: getTransition('background-color'),
+          '&:hover': {
+            ...frostedGlassStyle,
+            backgroundColor: hoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              backgroundColor: hoverColorDark,
+            }),
+          },
+        }),
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(-2),
+          border: `${borderWidthBase} solid transparent`,
+          borderRadius: '50%',
+        },
+        '&:focus::before': {
+          borderColor: focusColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: focusColorDark,
+          }),
+        },
+        '&:focus:not(:focus-visible)::before': {
+          borderColor: 'transparent',
+        },
+      },
+    },
+    label: getHiddenTextJssStyle(),
+    icon: {
+      display: 'inline-block', // TODO: should be changed in icon!
+      transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
+    },
     spacer: {
       ...(isNative
         ? {
@@ -211,72 +274,4 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
       },
     },
   });
-};
-
-const getBasePopoverStyles = (theme: Theme): Styles => {
-  const { hoverColor, focusColor } = getThemedColors(theme);
-  const { hoverColor: hoverColorDark, focusColor: focusColorDark } = getThemedColors('dark');
-
-  return {
-    '@global': {
-      ':host': {
-        ...addImportantToEachRule({
-          position: 'relative',
-          display: 'inline-block',
-          ...colorSchemeStyles,
-          ...hostHiddenStyles,
-        }),
-        verticalAlign: 'top',
-      },
-      p: {
-        ...textSmallStyle,
-        margin: 0,
-      },
-      button: {
-        display: 'block',
-        position: 'relative',
-        appearance: 'none',
-        background: 'transparent',
-        border: 0,
-        padding: 0,
-        outline: 0,
-        cursor: 'pointer',
-        ...textSmallStyle,
-        width: fontLineHeight, // width needed to improve ssr support
-        height: fontLineHeight, // height needed to improve ssr support
-        borderRadius: '50%',
-        ...hoverMediaQuery({
-          transition: getTransition('background-color'),
-          '&:hover': {
-            ...frostedGlassStyle,
-            backgroundColor: hoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: hoverColorDark,
-            }),
-          },
-        }),
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(-2),
-          border: `${borderWidthBase} solid transparent`,
-          borderRadius: '50%',
-        },
-        '&:focus::before': {
-          borderColor: focusColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
-          }),
-        },
-        '&:focus:not(:focus-visible)::before': {
-          borderColor: 'transparent',
-        },
-      },
-    },
-    label: getHiddenTextJssStyle(),
-    icon: {
-      display: 'inline-block', // TODO: should be changed in icon!
-      transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
-    },
-  };
 };
