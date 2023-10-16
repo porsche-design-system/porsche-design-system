@@ -17,7 +17,6 @@ import {
   fontLineHeight,
   spacingStaticMedium,
   spacingStaticSmall,
-  spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import type { Styles } from 'jss';
@@ -138,10 +137,7 @@ export const getComponentCss = (
               display: 'none',
             },
           }
-        : hasLabel &&
-          getLabelStyles('select', isDisabled, hideLabel, state, theme, undefined, {
-            marginBottom: spacingStaticXSmall,
-          })
+        : hasLabel && getLabelStyles('select', isDisabled, hideLabel, state, theme, undefined)
     ),
     icon: {
       padding: `${inputYPadding} 15px`, // Horizontal padding spacingStaticMedium - 1px for visual balance
