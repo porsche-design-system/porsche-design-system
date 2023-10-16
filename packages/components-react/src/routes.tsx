@@ -241,29 +241,9 @@ export const routes: RouteType[] = [
     element: <fromStyles.StylesMediaQueryExample />,
   },
   {
-    name: 'Styles Motion Curves',
-    path: '/styles-motion-curves',
-    element: <fromStyles.StylesMotionCurvesExample />,
-  },
-  {
-    name: 'Styles Motion Enter / Exit',
-    path: '/styles-motion-enter-exit',
-    element: <fromStyles.StylesMotionEnterExitExample />,
-  },
-  {
-    name: 'Styles Motion Expand',
-    path: '/styles-motion-expand',
-    element: <fromStyles.StylesMotionExpandExample />,
-  },
-  {
-    name: 'Styles Motion Moving',
-    path: '/styles-motion-moving',
-    element: <fromStyles.StylesMotionMovingExample />,
-  },
-  {
-    name: 'Styles Motion Show / Hide',
-    path: '/styles-motion-show-hide',
-    element: <fromStyles.StylesMotionShowHideExample />,
+    name: 'Styles Motion',
+    path: '/styles-motion',
+    element: <fromStyles.StylesMotionExample />,
   },
   {
     name: 'Styles Skeleton',

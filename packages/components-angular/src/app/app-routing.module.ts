@@ -250,29 +250,9 @@ export const routes: ExtendedRoute[] = [
     component: fromStyles.StylesMediaQueryExampleComponent,
   },
   {
-    name: 'Styles Motion Curves Example',
-    path: 'styles-motion-curves',
-    component: fromStyles.StylesMotionCurvesExampleComponent,
-  },
-  {
-    name: 'Styles Motion Enter / Exit Example',
-    path: 'styles-motion-enter-exit',
-    component: fromStyles.StylesMotionEnterExitExampleComponent,
-  },
-  {
-    name: 'Styles Motion Expand Example',
-    path: 'styles-motion-expand',
-    component: fromStyles.StylesMotionExpandExampleComponent,
-  },
-  {
-    name: 'Styles Motion Moving Example',
-    path: 'styles-motion-moving',
-    component: fromStyles.StylesMotionMovingExampleComponent,
-  },
-  {
-    name: 'Styles Motion Show / Hide Example',
-    path: 'styles-motion-show-hide',
-    component: fromStyles.StylesMotionShowHideExampleComponent,
+    name: 'Styles Motion Example',
+    path: 'styles-motion',
+    component: fromStyles.StylesMotionExampleComponent,
   },
   {
     name: 'Styles Skeleton Example',
