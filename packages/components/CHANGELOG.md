@@ -88,6 +88,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + <p-flyout-pure position="end"></p-flyout>
 ```
 
+- `Carousel`: Prop value `left` of `align-header` prop is deprecated and mapped to new value `start` for correct RTL
+  (right-to-left) support ([#2819](https://github.com/porsche-design-system/porsche-design-system/pull/2819))
+
+```diff
+- <p-carousel align-header="left"></p-carousel>
++ <p-carousel-pure align-header="start"></p-carousel>
+```
+
 #### Fixed
 
 - `Flyout` and `Modal` with `open="false"` and nested `Accordion` with `open="true"` containing focusable elements like
