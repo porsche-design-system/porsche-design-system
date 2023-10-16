@@ -1,12 +1,13 @@
-import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
-import type { TextTag } from './text-utils';
+import type { BreakpointCustomizable, PropTypes, TextColor, TextSize, TextWeight, Theme } from '../../types';
+import type { TextTag, TextAlign, TextAlignDeprecated } from './text-utils';
+import type { TextColorDeprecated } from './text-color';
+import type { TextWeightDeprecated } from './text-weight';
 import { getTextTagType, TEXT_TAGS } from './text-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
-  TEXT_ALIGNS,
   TEXT_COLORS,
   TEXT_SIZES,
   TEXT_WEIGHTS,
@@ -14,10 +15,8 @@ import {
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
+import { TEXT_ALIGNS } from './text-utils';
 import { getComponentCss } from './text-styles';
-import type { TextColorDeprecated } from './text-color';
-import type { TextWeightDeprecated } from './text-weight';
-import type { TextAlignDeprecated } from './text-align';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),

@@ -6,9 +6,11 @@ export type { PropTypes, ValidatorFunction } from '../utils/validation/validateP
 export type { BreakpointCustomizable } from '../utils/breakpoint-customizable';
 export type { Theme } from '../utils/theme';
 
+export type { TypographyAlign } from '../utils/typography/typography-align';
+export type { TypographyAlignDeprecated } from '../utils/typography/typography-align';
+
+// TODO: we shouldn't re-export component specific types
 export type { TextSize } from '../components/text/text-size';
-export type { TextAlign } from '../components/text/text-align';
-export type { TextAlignDeprecated } from '../components/text/text-align';
 export type { TextColor } from '../components/text/text-color';
 export type { TextWeight } from '../components/text/text-weight';
 

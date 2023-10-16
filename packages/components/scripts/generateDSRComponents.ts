@@ -206,6 +206,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           '$1(null'
         ) // replace non-existing host element with null for display, heading, headline, text, text-list, tag
         .replace(/TextColor|TextWeight/g, 'any') // text
+        .replace(
+          /Record<(?:Text|Display|Heading|Headline)AlignDeprecated, Exclude<(?:Text|Display|Heading|Headline)Align, (?:Text|Display|Heading|Headline)AlignDeprecated>>/g,
+          'Record<any, any>'
+        ) // text, display, heading, headline
         .replace(/import type { TextTag }.*;/g, '') // text
         .replace(
           /getSlotTextContent\(this\.props, '([a-z]+)'\)/g,

@@ -6,13 +6,12 @@ import type {
   HeadlineTag,
   HeadlineVariant,
 } from './headline-utils';
-import { getHeadlineTagType, HEADLINE_COLORS, HEADLINE_TAGS } from './headline-utils';
+import { getHeadlineTagType, HEADLINE_ALIGNS, HEADLINE_COLORS, HEADLINE_TAGS } from './headline-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
-  TEXT_ALIGNS,
   THEMES,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
@@ -22,7 +21,7 @@ import { getComponentCss } from './headline-styles';
 const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
   // variant: AllowedTypes.string, // TODO: with all the different values this can't easily be validated
   tag: AllowedTypes.oneOf<HeadlineTag>([undefined, ...HEADLINE_TAGS]),
-  align: AllowedTypes.oneOf<HeadlineAlign>(TEXT_ALIGNS),
+  align: AllowedTypes.oneOf<HeadlineAlign>(HEADLINE_ALIGNS),
   color: AllowedTypes.oneOf<HeadlineColor>(HEADLINE_COLORS),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),

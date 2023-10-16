@@ -1,25 +1,23 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { HeadingTag } from './heading-tag';
-import { HEADING_TAGS } from './heading-tag';
 import type { HeadingAlign, HeadingAlignDeprecated, HeadingColor, HeadingSize } from './heading-utils';
-import { getHeadingTagType, HEADING_COLORS, HEADING_SIZES } from './heading-utils';
+import { getHeadingTagType, HEADING_ALIGNS, HEADING_COLORS, HEADING_SIZES } from './heading-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
-  TEXT_ALIGNS,
   THEMES,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
+import { HEADING_TAGS } from './heading-tag';
 import { getComponentCss } from './heading-styles';
-import { DisplayAlign, DisplayAlignDeprecated } from '../display/display-utils';
 
 const propTypes: PropTypes<typeof Heading> = {
   tag: AllowedTypes.oneOf<HeadingTag>([undefined, ...HEADING_TAGS]),
   size: AllowedTypes.breakpoint<HeadingSize>(HEADING_SIZES),
-  align: AllowedTypes.oneOf<HeadingAlign>(TEXT_ALIGNS),
+  align: AllowedTypes.oneOf<HeadingAlign>(HEADING_ALIGNS),
   color: AllowedTypes.oneOf<HeadingColor>(HEADING_COLORS),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -71,7 +69,7 @@ export class Heading {
       this.host,
       getComponentCss,
       this.size,
-      (alignDeprecationMap[this.align] || this.align) as Exclude<DisplayAlign, DisplayAlignDeprecated>,
+      (alignDeprecationMap[this.align] || this.align) as Exclude<HeadingAlign, HeadingAlignDeprecated>,
       this.color,
       this.ellipsis,
       this.theme
