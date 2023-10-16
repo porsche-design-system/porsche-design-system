@@ -30,6 +30,8 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
   const { canvasColor, canvasTextColor } = getHighContrastColors();
+  const firstHighContrastStrokeColor = isHighContrastMode && canvasTextColor;
+  const lastHighContrastStrokeColor = isHighContrastMode && canvasColor;
 
   return getCss({
     '@global': {
@@ -41,27 +43,23 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       }),
       svg: {
         display: 'block',
-        position: 'relative',
         fill: 'none',
-        transform: 'translate3d(0,0,0)',
         animation: `$rotate ${animationDuration} linear infinite`,
       },
       circle: {
         '&:first-child': {
           // TODO: High Contrast Mode should be handled within a local color helper function
-          stroke: isHighContrastMode ? canvasTextColor : contrastMediumColor,
+          stroke: firstHighContrastStrokeColor || contrastMediumColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            stroke: isHighContrastMode ? canvasTextColor : contrastMediumColorDark,
+            stroke: firstHighContrastStrokeColor || contrastMediumColorDark,
           }),
-          animation: `$rotate ${animationDuration} linear infinite`, // needs to rotate to eliminate stutter in safari
         },
         '&:last-child': {
-          transformOrigin: '0 0',
           animation: `$dash ${animationDuration} ease-in-out infinite`,
           // TODO: High Contrast Mode should be handled within a local color helper function
-          stroke: isHighContrastMode ? canvasColor : primaryColor,
+          stroke: lastHighContrastStrokeColor || primaryColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            stroke: isHighContrastMode ? canvasColor : primaryColorDark,
+            stroke: lastHighContrastStrokeColor || primaryColorDark,
           }),
           strokeDasharray:
             ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
@@ -72,34 +70,31 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       },
       '@keyframes rotate': {
         '0%': {
-          transform: 'rotateZ(0deg)',
+          transform: 'rotate3d(0,0,1,0deg)',
         },
         '100%': {
-          transform: 'rotateZ(360deg)',
+          transform: 'rotate3d(0,0,1,360deg)',
         },
       },
       '@keyframes dash': {
         '0%': {
           strokeDashoffset: 57,
-          transform: 'rotateZ(0)',
+          transform: 'rotate3d(0,0,1,0)',
         },
         '50%, 75%': {
           strokeDashoffset: 20,
-          transform: 'rotateZ(80deg)',
+          transform: 'rotate3d(0,0,1,80deg)',
         },
 
         '100%': {
           strokeDashoffset: 57,
-          transform: 'rotateZ(360deg)',
+          transform: 'rotate3d(0,0,1,360deg)',
         },
       },
     },
     root: {
       display: 'block',
       ...buildResponsiveStyles(size, (s: SpinnerSize) => sizeMap[s]),
-      margin: 0,
-      padding: 0,
-      boxSizing: 'border-box',
       strokeWidth: 1.5,
     },
     'sr-only': getHiddenTextJssStyle(),
