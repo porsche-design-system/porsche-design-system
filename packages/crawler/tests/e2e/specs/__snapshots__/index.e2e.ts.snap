@@ -51,7 +51,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
           "children": "Second version first prefix",
           "hostPdsComponent": null,
           "properties": {
-            "align": "start",
+            "align": "left",
             "color": "default",
             "ellipsis": false,
             "size": "small",
@@ -68,7 +68,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
           "children": "Second version second prefix",
           "hostPdsComponent": null,
           "properties": {
-            "align": "start",
+            "align": "left",
             "color": "default",
             "ellipsis": false,
             "size": "small",
@@ -287,7 +287,7 @@ exports[`should retrieve object value from string correctly 1`] = `
       {
         "p-spinner": {
           "children": "
-
+  
 ",
           "hostPdsComponent": null,
           "properties": {
