@@ -26,56 +26,54 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       // Tile
       .tile {
         @include pds-text-small;
+        width: 200px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
         color: $pds-theme-light-primary;
         background: $pds-theme-light-background-surface;
         border-radius: $pds-border-radius-large;
         cursor: pointer;
-        width: 200px;
-        height: 100px;
 
         &--moving {
-          transition-duration: $pds-motion-duration-short;
-          transition-timing-function: $pds-motion-easing-base;
           transform: translateX(-200px);
-        }
+          transition: transform $pds-motion-duration-short $pds-motion-easing-base;
 
-        &--moving.active {
-          transform: translateX(200px);
+          &--active {
+            transform: translateX(200px);
+          }
         }
 
         &--enter-exit {
+          transform: translateY(0px);
+          transition-property: opacity, transform;
           transition-duration: $pds-motion-duration-moderate;
           transition-timing-function: $pds-motion-easing-in;
-          transform: translateY(0px);
-        }
 
-        &--enter-exit.active {
-          transition-duration: $pds-motion-duration-short;
-          transition-timing-function: $pds-motion-easing-out;
-          transform: translateY(40%);
-          opacity: 0;
+          &--active {
+            opacity: 0;
+            transform: translateY(40%);
+            transition-property: opacity, transform;
+            transition-duration: $pds-motion-duration-short;
+            transition-timing-function: $pds-motion-easing-out;
+          }
         }
 
         &--show-hide {
-          transition-duration: $pds-motion-duration-long;
-          transition-timing-function: $pds-motion-easing-base;
-        }
+          transition: opacity $pds-motion-duration-long $pds-motion-easing-base;
 
-        &--show-hide.active {
-          opacity: 0;
+          &--active {
+            opacity: 0;
+          }
         }
 
         &--expand {
-          transition: height;
-          transition-duration: $pds-motion-duration-short;
-          transition-timing-function: $pds-motion-easing-in;
-        }
+          transition: height $pds-motion-duration-short $pds-motion-easing-in;
 
-        &--expand.active {
-          height: 200px;
-          transition: height;
-          transition-duration: $pds-motion-duration-moderate;
-          transition-timing-function: $pds-motion-easing-base;
+          &--active {
+            height: 200px;
+            transition: height $pds-motion-duration-moderate $pds-motion-easing-base;
+          }
         }
       }
     `,
@@ -83,19 +81,40 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <div class="wrapper">
       <h3 class="heading">Moving</h3>
-      <div class="tile tile--moving" (click)="onClick($event)">play</div>
+      <div
+        [ngClass]="['tile tile--moving', movingIsActive ? ' tile--moving--active' : '']"
+        (click)="movingIsActive = !movingIsActive"
+      >
+        play
+      </div>
       <h3 class="heading">Enter / Exit</h3>
-      <div class="tile tile--enter-exit" (click)="onClick($event)">play</div>
+      <div
+        [ngClass]="['tile tile--enter-exit', enterExitIsActive ? ' tile--enter-exit--active' : '']"
+        (click)="enterExitIsActive = !enterExitIsActive"
+      >
+        play
+      </div>
       <h3 class="heading">Show / Hide</h3>
-      <div class="tile tile--show-hide" (click)="onClick($event)">play</div>
+      <div
+        [ngClass]="['tile tile--show-hide', showHideIsActive ? ' tile--show-hide--active' : '']"
+        (click)="showHideIsActive = !showHideIsActive"
+      >
+        play
+      </div>
       <h3 class="heading">Expand</h3>
-      <div class="tile tile--expand" (click)="onClick($event)">play</div>
+      <div
+        [ngClass]="['tile tile--expand', expandIsActive ? ' tile--expand--active' : '']"
+        (click)="expandIsActive = !expandIsActive"
+      >
+        play
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StylesMotionExampleComponent {
-  onClick = (e: MouseEvent): void => {
-    (e.target as HTMLButtonElement).classList.toggle('active');
-  };
+  movingIsActive = false;
+  enterExitIsActive = false;
+  showHideIsActive = false;
+  expandIsActive = false;
 }
