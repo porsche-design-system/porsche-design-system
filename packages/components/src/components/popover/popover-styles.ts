@@ -137,12 +137,12 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
 
 export const getComponentCss = (direction: PopoverDirection, isNative: boolean, theme: Theme): string => {
   const spacerBox = '-16px';
-  const { backgroundColor, primaryColor, backgroundSurfaceColor, hoverColor, focusColor } = getThemedColors(theme);
+  const { hoverColor, focusColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
-    primaryColor: primaryColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
     hoverColor: hoverColorDark,
     focusColor: focusColorDark,
+    primaryColor: primaryColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
   } = getThemedColors('dark');
 
   const shadowColor = 'rgba(0,0,0,0.3)';
