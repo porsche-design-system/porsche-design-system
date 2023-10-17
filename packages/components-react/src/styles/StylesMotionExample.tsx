@@ -29,7 +29,6 @@ const Heading = styled.h3({
   color: themeLightPrimary,
   textAlign: 'center',
   width: '100%',
-  margin: 0,
 });
 
 // Tile
@@ -77,6 +76,10 @@ const MotionExpand = styled.button({
 });
 
 export const StylesMotionExample = (): JSX.Element => {
+  const onClick = (e: MouseEvent, className: string) => {
+    (e.target as HTMLButtonElement).classList.toggle(className);
+  };
+
   return (
     <>
       <style>{`
@@ -100,27 +103,13 @@ export const StylesMotionExample = (): JSX.Element => {
       `}</style>
       <Wrapper>
         <Heading>Moving</Heading>
-        <MotionMoving onClick={(e) => (e.target as HTMLDivElement).classList.toggle('tile-moving-active')}>
-          play
-        </MotionMoving>
-      </Wrapper>
-      <Wrapper>
+        <MotionMoving onClick={(e) => onClick(e, 'tile-moving-active')}>play</MotionMoving>
         <Heading>Enter / Exit</Heading>
-        <MotionEnterExit onClick={(e) => (e.target as HTMLDivElement).classList.toggle('tile-enter-exit-active')}>
-          play
-        </MotionEnterExit>
-      </Wrapper>
-      <Wrapper>
+        <MotionEnterExit onClick={(e) => onClick(e, 'tile-enter-exit-active')}>play</MotionEnterExit>
         <Heading>Show / Hide</Heading>
-        <MotionShowHide onClick={(e) => (e.target as HTMLDivElement).classList.toggle('tile-show-hide-active')}>
-          play
-        </MotionShowHide>
-      </Wrapper>
-      <Wrapper>
+        <MotionShowHide onClick={(e) => onClick(e, 'tile-show-hide-active')}>play</MotionShowHide>
         <Heading>Expand</Heading>
-        <MotionExpand onClick={(e) => (e.target as HTMLDivElement).classList.toggle('tile-expand-active')}>
-          play
-        </MotionExpand>
+        <MotionExpand onClick={(e) => onClick(e, 'tile-expand-active')}>play</MotionExpand>
       </Wrapper>
     </>
   );

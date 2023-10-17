@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'page-styles-motion-moving-example',
+  selector: 'page-styles-motion-example',
   styles: [
     `
       @use '@porsche-design-system/components-angular/styles' as *;
@@ -21,7 +21,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         color: $pds-theme-light-primary;
         text-align: center;
         width: 100%;
-        margin: 0;
       }
 
       // Tile
@@ -29,7 +28,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         @include pds-text-small;
         color: $pds-theme-light-primary;
         background: $pds-theme-light-background-surface;
-        padding: $pds-spacing-static-small;
         border: none;
         border-radius: $pds-border-radius-large;
         cursor: pointer;

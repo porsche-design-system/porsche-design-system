@@ -42,7 +42,6 @@
     color: $pds-theme-light-primary;
     text-align: center;
     width: 100%;
-    margin: 0;
   }
 
   // Tile
@@ -50,7 +49,6 @@
     @include pds-text-small;
     color: $pds-theme-light-primary;
     background: $pds-theme-light-background-surface;
-    padding: $pds-spacing-static-small;
     border: none;
     border-radius: $pds-border-radius-large;
     cursor: pointer;

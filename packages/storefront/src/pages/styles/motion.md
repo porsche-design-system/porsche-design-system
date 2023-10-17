@@ -19,11 +19,11 @@ ensure that motion is swift, subtle, and purposeful.
 
 Effects are the key for turning components from static to interactive and keeping UI elements alive.
 
-| Token              | Token SCSS                | Easing                                 | Usage                                                                                                                 |
-| ------------------ | ------------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `motionEasingBase` | `$pds-motion-easing-base` | <ExampleStylesMotionCurveEasingBase /> | Buttons (hover and active states).<br />Tabs or segments switching.<br />Basic fade-in and fade-out animations.       |
-| `motionEasingIn`   | `$pds-motion-easing-in`   | <ExampleStylesMotionCurveEasingIn />   | Elements that appear quickly and then ease into view.<br />Elements that slide in from off-screen and then slow down. |
-| `motionEasingOut`  | `$pds-motion-easing-out`  | <ExampleStylesMotionCurveEasingOut />  | Closing animations for Modals or Flyouts.<br />Elements sliding out of view fast.                                     |
+| Token              | Token SCSS                | Easing Demo                                                           | Usage                                                                                                                 |
+| ------------------ | ------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `motionEasingBase` | `$pds-motion-easing-base` | x: Time \| y: Progression<br /><ExampleStylesMotionCurveEasingBase /> | Buttons (hover and active states).<br />Tabs or segments switching.<br />Basic fade-in and fade-out animations.       |
+| `motionEasingIn`   | `$pds-motion-easing-in`   | x: Time \| y: Progression<br /><ExampleStylesMotionCurveEasingIn />   | Elements that appear quickly and then ease into view.<br />Elements that slide in from off-screen and then slow down. |
+| `motionEasingOut`  | `$pds-motion-easing-out`  | x: Time \| y: Progression<br /><ExampleStylesMotionCurveEasingOut />  | Closing animations for Modals or Flyouts.<br />Elements sliding out of view fast.                                     |
 
 ## Example Motion Curves
 

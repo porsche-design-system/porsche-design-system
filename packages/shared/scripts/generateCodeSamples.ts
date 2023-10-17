@@ -15,7 +15,6 @@ type CodeSample = {
     | 'styles-grid'
     | 'styles-hover'
     | 'styles-media-query'
-    | 'styles-motion-curves'
     | 'styles-motion'
     | 'styles-skeleton'
     | 'styles-spacing'
