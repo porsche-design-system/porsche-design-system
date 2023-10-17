@@ -19,12 +19,12 @@ ensure that motion is swift, subtle, and purposeful.
 
 Effects are the key for turning components from static to interactive and keeping UI elements alive.
 
-| Token                                                                   | Token SCSS                | Easing Demo                                                           | Usage                                                                                                           |
-| ----------------------------------------------------------------------- | ------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `motionEasingBase`                                                      | `$pds-motion-easing-base` | x: Time \| y: Progression<br /><ExampleStylesMotionCurveEasingBase /> | Buttons (hover and active states).<br />Tabs or segments switching.<br />Basic fade-in and fade-out animations. |
-| `motionEasingIn`                                                        | `$pds-motion-easing-in`   | x: Time \| y: Progression<br /><ExampleStylesMotionCurveEasingIn />   | Elements like Banners/Toasts or Modals that appear quickly and then ease into view.                             |
+| Token                                                                   | Token SCSS                | Easing Demo                                                                    | Usage                                                                                                           |
+| ----------------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| `motionEasingBase`                                                      | `$pds-motion-easing-base` | x: Time \| y: Progression<br /><ExampleStylesMotionCurve path="easing-base" /> | Buttons (hover and active states).<br />Tabs or segments switching.<br />Basic fade-in and fade-out animations. |
+| `motionEasingIn`                                                        | `$pds-motion-easing-in`   | x: Time \| y: Progression<br /><ExampleStylesMotionCurve path='easing-in'/>    | Elements like Banners/Toasts or Modals that appear quickly and then ease into view.                             |
 | Elements like Flyouts that slide in from off-screen and then slow down. |
-| `motionEasingOut`                                                       | `$pds-motion-easing-out`  | x: Time \| y: Progression<br /><ExampleStylesMotionCurveEasingOut />  | Closing animations for Modals or Flyouts.<br />Elements sliding out of view fast.                               |
+| `motionEasingOut`                                                       | `$pds-motion-easing-out`  | x: Time \| y: Progression<br /><ExampleStylesMotionCurve path='easing-out'/>   | Closing animations for Modals or Flyouts.<br />Elements sliding out of view fast.                               |
 
 ## Examples
 
@@ -70,16 +70,12 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { getStylesMotionCodeSamples } from '@porsche-design-system/shared';
 import { adjustSelectedFramework } from '@/utils';
-import ExampleStylesMotionCurveEasingBase from '@/pages/patterns/styles/example-motion-curve-easing-base.vue';
-import ExampleStylesMotionCurveEasingIn from '@/pages/patterns/styles/example-motion-curve-easing-in.vue';
-import ExampleStylesMotionCurveEasingOut from '@/pages/patterns/styles/example-motion-curve-easing-out.vue';
+import ExampleStylesMotionCurve from '@/pages/patterns/styles/example-motion-curve.vue';
 import ExampleStylesMotion from '@/pages/patterns/styles/example-motion.vue';
 
 @Component({
   components: {
-    ExampleStylesMotionCurveEasingBase,
-    ExampleStylesMotionCurveEasingIn,
-    ExampleStylesMotionCurveEasingOut,
+    ExampleStylesMotionCurve,
     ExampleStylesMotion,
   },
 })
