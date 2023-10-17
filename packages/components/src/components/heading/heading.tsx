@@ -1,13 +1,14 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { HeadingTag } from './heading-tag';
 import type { HeadingAlign, HeadingAlignDeprecated, HeadingColor, HeadingSize } from './heading-utils';
-import { getHeadingTagType, HEADING_ALIGNS, HEADING_COLORS, HEADING_SIZES } from './heading-utils';
+import { getHeadingTagType, HEADING_COLORS, HEADING_SIZES } from './heading-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
   THEMES,
+  TYPOGRAPHY_ALIGNS,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
@@ -17,7 +18,7 @@ import { getComponentCss } from './heading-styles';
 const propTypes: PropTypes<typeof Heading> = {
   tag: AllowedTypes.oneOf<HeadingTag>([undefined, ...HEADING_TAGS]),
   size: AllowedTypes.breakpoint<HeadingSize>(HEADING_SIZES),
-  align: AllowedTypes.oneOf<HeadingAlign>(HEADING_ALIGNS),
+  align: AllowedTypes.oneOf<HeadingAlign>(TYPOGRAPHY_ALIGNS),
   color: AllowedTypes.oneOf<HeadingColor>(HEADING_COLORS),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),

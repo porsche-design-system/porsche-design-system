@@ -50,6 +50,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - <p-heading align="right"></p-heading>
 + <p-heading align="end"></p-heading>
+
+- <p-headline align="left"></p-headline>
++ <p-headline align="start"></p-headline>
+
+- <p-headline align="right"></p-headline>
++ <p-headline align="end"></p-headline>
 ```
 
 - `Button Pure`, `Link Pure`, `Switch`: Prop values `left | right` of `align-label` prop are deprecated and mapped to

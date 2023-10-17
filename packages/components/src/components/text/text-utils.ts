@@ -1,4 +1,4 @@
-import { hasSpecificSlottedTag, TYPOGRAPHY_ALIGNS } from '../../utils';
+import { hasSpecificSlottedTag } from '../../utils';
 import { type TypographyAlign, type TypographyAlignDeprecated } from '../../types';
 
 export const TEXT_TAGS = ['p', 'span', 'div', 'address', 'blockquote', 'figcaption', 'cite', 'time', 'legend'] as const;
@@ -12,6 +12,6 @@ export const getTextTagType = (host: HTMLElement, tag: TextTag): string => {
   }
 };
 
-export type TextAlign = TypographyAlign;
+/** @deprecated */
 export type TextAlignDeprecated = TypographyAlignDeprecated;
-export const TEXT_ALIGNS = TYPOGRAPHY_ALIGNS;
+export type TextAlign = TypographyAlign;

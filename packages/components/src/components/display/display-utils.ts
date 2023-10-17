@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, TypographyAlign, TypographyAlignDeprecated } from '../../types';
-import { hasSpecificSlottedTag, TYPOGRAPHY_ALIGNS } from '../../utils';
+import { hasSpecificSlottedTag } from '../../utils';
 
 export const DISPLAY_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type DisplayTag = (typeof DISPLAY_TAGS)[number];
@@ -10,9 +10,9 @@ export type DisplaySize = (typeof DISPLAY_SIZES)[number];
 export const DISPLAY_COLORS = ['primary', 'inherit'] as const;
 export type DisplayColor = (typeof DISPLAY_COLORS)[number];
 
+/** @deprecated */
 export type DisplayAlignDeprecated = TypographyAlignDeprecated;
 export type DisplayAlign = TypographyAlign;
-export const DISPLAY_ALIGNS = TYPOGRAPHY_ALIGNS;
 
 export const displaySizeToTagMap: { [key in DisplaySize]: string } = {
   small: 'h3',

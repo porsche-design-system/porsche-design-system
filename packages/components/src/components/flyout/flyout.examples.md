@@ -104,6 +104,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component'; 
 import { getFlyoutCodeSamples } from "@porsche-design-system/shared";  
 import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
+import { FLYOUT_POSITIONS, FLYOUT_POSITIONS_DEPRECATED } from './flyout-utils';
 
 @Component({
   components: {
@@ -139,10 +140,10 @@ export default class Code extends Vue {
     });
   }
 
-    position = 'right';
-    positions = ['left', 'right'];
+    position = 'end';
+    positions = FLYOUT_POSITIONS.map(item => FLYOUT_POSITIONS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
     get basicSample() {
-      Object.entries(this.codeExample).forEach(([key, value]) => this.codeExample[key] = value.replace(/left|right/, this.position));
+      Object.entries(this.codeExample).forEach(([key, value]) => this.codeExample[key] = value.replace(/start|end|left|right/, this.position));
       return this.codeExample
     }
     

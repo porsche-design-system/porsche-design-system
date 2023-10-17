@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, TextSize, TypographyAlign, TypographyAlignDeprecated } from '../../types';
-import { hasSpecificSlottedTag, TYPOGRAPHY_ALIGNS } from '../../utils';
+import { hasSpecificSlottedTag } from '../../utils';
 
 export const HEADLINE_VARIANTS = [
   'large-title',
@@ -22,9 +22,9 @@ export type HeadlineTag = (typeof HEADLINE_TAGS)[number];
 export const HEADLINE_COLORS = ['primary', 'default', 'inherit'] as const;
 export type HeadlineColor = (typeof HEADLINE_COLORS)[number];
 
+/** @deprecated */
 export type HeadlineAlignDeprecated = TypographyAlignDeprecated;
 export type HeadlineAlign = TypographyAlign;
-export const HEADLINE_ALIGNS = TYPOGRAPHY_ALIGNS;
 
 export const isValidVariantType = (variant: HeadlineVariant): boolean => {
   return HEADLINE_VARIANTS.includes(variant as HeadlineVariantType);

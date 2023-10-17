@@ -12,17 +12,17 @@ import {
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES,
+  TYPOGRAPHY_ALIGNS,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import { TEXT_ALIGNS } from './text-utils';
 import { getComponentCss } from './text-styles';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
   size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
   weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
-  align: AllowedTypes.oneOf<TextAlign>(TEXT_ALIGNS),
+  align: AllowedTypes.oneOf<TextAlign>(TYPOGRAPHY_ALIGNS),
   color: AllowedTypes.oneOf<TextColor>(TEXT_COLORS),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),

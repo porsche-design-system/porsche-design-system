@@ -44,8 +44,8 @@ interaction. When used with hidden label, it's best practice to provide a descri
 
 ## Alignment + Stretch
 
-The `label` can be aligned to the `right` (default) or to the `left` in addition with enabled `stretch` property which
-is recommended on mobile views.
+The `label` can be aligned to the `end` (default) or to the `start` in addition with enabled `stretch` property which is
+recommended on mobile views.
 
 <Playground :markup="alignLabelMarkup" :config="configInline">
   <SelectOptions v-model="alignLabel" :values="alignLabels" name="alignLabel"></SelectOptions>
@@ -70,7 +70,7 @@ By setting the `tabindex` attribute to `-1` you can remove the **Switch** from t
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { ALIGN_LABELS } from '../../utils'; 
+import { ALIGN_LABELS, ALIGN_LABELS_DEPRECATED } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
@@ -116,8 +116,8 @@ const SomeSwitchPage = (): JSX.Element => {
 <p-switch hide-label="${this.hideLabel}" checked="true">Some label</p-switch>`;
   };
 
-  alignLabel = 'right';
-  alignLabels = [...ALIGN_LABELS, "{ base: 'left', l: 'right' }"];
+  alignLabel = 'start';
+  alignLabels = [...ALIGN_LABELS.map(item => ALIGN_LABELS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item), "{ base: 'start', l: 'end' }"];
   get alignLabelMarkup() {
     const attr = this.alignLabel.includes('base') ? ' stretch="{ base: true, l: false }"' : '';
     return `<p-switch align-label="${this.alignLabel}"${attr}>Some label</p-switch>

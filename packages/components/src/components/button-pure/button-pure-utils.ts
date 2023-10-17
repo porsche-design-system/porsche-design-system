@@ -12,6 +12,7 @@ import type { AlignLabel, AlignLabelDeprecated, ButtonType, TextWeight } from '.
 export type ButtonPureType = ButtonType;
 export type ButtonPureIcon = LinkButtonIconName;
 export type ButtonPureAriaAttribute = ButtonAriaAttribute;
+/** @deprecated */
 export type ButtonPureAlignLabelDeprecated = AlignLabelDeprecated;
 export type ButtonPureAlignLabel = AlignLabel;
 export type ButtonPureWeight = TextWeight;

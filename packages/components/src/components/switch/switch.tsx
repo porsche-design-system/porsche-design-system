@@ -1,7 +1,6 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
-  ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
@@ -10,6 +9,7 @@ import {
   isDisabledOrLoading,
   THEMES,
   validateProps,
+  ALIGN_LABELS,
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
 import { getSwitchButtonAriaAttributes } from './switch-utils';

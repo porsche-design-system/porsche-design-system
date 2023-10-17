@@ -1,12 +1,13 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { DisplayAlign, DisplayAlignDeprecated, DisplayColor, DisplaySize, DisplayTag } from './display-utils';
-import { DISPLAY_ALIGNS, DISPLAY_COLORS, DISPLAY_SIZES, DISPLAY_TAGS, getDisplayTagType } from './display-utils';
+import { DISPLAY_COLORS, DISPLAY_SIZES, DISPLAY_TAGS, getDisplayTagType } from './display-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
   THEMES,
+  TYPOGRAPHY_ALIGNS,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
@@ -15,7 +16,7 @@ import { getComponentCss } from './display-styles';
 const propTypes: PropTypes<typeof Display> = {
   tag: AllowedTypes.oneOf<DisplayTag>([undefined, ...DISPLAY_TAGS]),
   size: AllowedTypes.breakpoint<DisplaySize>(DISPLAY_SIZES),
-  align: AllowedTypes.oneOf<DisplayAlign>(DISPLAY_ALIGNS),
+  align: AllowedTypes.oneOf<DisplayAlign>(TYPOGRAPHY_ALIGNS),
   color: AllowedTypes.oneOf<DisplayColor>(DISPLAY_COLORS),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
