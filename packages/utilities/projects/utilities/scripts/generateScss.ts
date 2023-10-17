@@ -111,9 +111,9 @@ const generateMixins = async (mixins: Mixins): Promise<void> => {
     gridNarrowOffset,
     gridWide,
     gridWideOffset,
+    motion,
     spacing,
     theme,
-    motion,
   });
 
   await generateMixins({

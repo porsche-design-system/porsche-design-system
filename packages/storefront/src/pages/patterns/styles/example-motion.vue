@@ -2,7 +2,7 @@
   <div class="wrapper">
     <h3 class="heading">Moving</h3>
     <div
-      :class="{ 'tile tile--moving': true, active: movingIsActive }"
+      :class="{ 'tile tile--moving': true, 'tile--moving--active': movingIsActive }"
       class="tile tile--moving"
       @click="() => (movingIsActive = !movingIsActive)"
     >
@@ -10,21 +10,21 @@
     </div>
     <h3 class="heading">Enter / Exit</h3>
     <div
-      :class="{ 'tile tile--enter-exit': true, active: enterExitIsActive }"
+      :class="{ 'tile tile--enter-exit': true, 'tile--enter-exit--active': enterExitIsActive }"
       @click="() => (enterExitIsActive = !enterExitIsActive)"
     >
       play
     </div>
     <h3 class="heading">Show / Hide</h3>
     <div
-      :class="{ 'tile tile--show-hide': true, active: showHideIsActive }"
+      :class="{ 'tile tile--show-hide': true, 'tile--show-hide--active': showHideIsActive }"
       @click="() => (showHideIsActive = !showHideIsActive)"
     >
       play
     </div>
     <h3 class="heading">Expand</h3>
     <div
-      :class="{ 'tile tile--expand': true, active: expandIsActive }"
+      :class="{ 'tile tile--expand': true, 'tile--expand--active': expandIsActive }"
       @click="() => (expandIsActive = !expandIsActive)"
     >
       play
@@ -81,10 +81,10 @@
     &--moving {
       transform: translateX(-200px);
       transition: transform $pds-motion-duration-short $pds-motion-easing-base;
-    }
 
-    &--moving.active {
-      transform: translateX(200px);
+      &--active {
+        transform: translateX(200px);
+      }
     }
 
     &--enter-exit {
@@ -92,31 +92,31 @@
       transition-property: opacity, transform;
       transition-duration: $pds-motion-duration-moderate;
       transition-timing-function: $pds-motion-easing-in;
-    }
 
-    &--enter-exit.active {
-      opacity: 0;
-      transform: translateY(40%);
-      transition-property: opacity, transform;
-      transition-duration: $pds-motion-duration-short;
-      transition-timing-function: $pds-motion-easing-out;
+      &--active {
+        opacity: 0;
+        transform: translateY(40%);
+        transition-property: opacity, transform;
+        transition-duration: $pds-motion-duration-short;
+        transition-timing-function: $pds-motion-easing-out;
+      }
     }
 
     &--show-hide {
       transition: opacity $pds-motion-duration-long $pds-motion-easing-base;
-    }
 
-    &--show-hide.active {
-      opacity: 0;
+      &--active {
+        opacity: 0;
+      }
     }
 
     &--expand {
       transition: height $pds-motion-duration-short $pds-motion-easing-in;
-    }
 
-    &--expand.active {
-      height: 200px;
-      transition: height $pds-motion-duration-moderate $pds-motion-easing-base;
+      &--active {
+        height: 200px;
+        transition: height $pds-motion-duration-moderate $pds-motion-easing-base;
+      }
     }
   }
 </style>
