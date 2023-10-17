@@ -135,8 +135,8 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
   // Override listeners to avoid popovers being closed
   if (withinTable) {
     await page.evaluate(() => {
-      window.addEventListener('resize', (e) => e.stopPropagation(), true);
-      window.addEventListener('scroll', (e) => e.stopPropagation(), true);
+      window.addEventListener('resize', (e) => e.stopImmediatePropagation(), true);
+      window.addEventListener('scroll', (e) => e.stopImmediatePropagation(), true);
     });
   }
 
