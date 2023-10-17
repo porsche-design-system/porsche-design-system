@@ -39,12 +39,12 @@ const tileBaseStyle = {
   border: 'none',
   borderRadius: borderRadiusLarge,
   cursor: 'pointer',
+  width: '200px',
+  height: '100px',
 };
 
 const MotionMoving = styled.button({
   ...tileBaseStyle,
-  width: '70px',
-  height: '70px',
   transform: 'translateX(-200px)',
   transitionDuration: motionDurationShort,
   transitionTimingFunction: motionEasingBase,
@@ -52,8 +52,6 @@ const MotionMoving = styled.button({
 
 const MotionEnterExit = styled.button({
   ...tileBaseStyle,
-  width: '200px',
-  height: '100px',
   transform: 'translateY(0px)',
   transitionDuration: motionDurationModerate,
   transitionTimingFunction: motionEasingIn,
@@ -61,16 +59,12 @@ const MotionEnterExit = styled.button({
 
 const MotionShowHide = styled.button({
   ...tileBaseStyle,
-  width: '200px',
-  height: '100px',
   transitionDuration: motionDurationLong,
   transitionTimingFunction: motionEasingBase,
 });
 
 const MotionExpand = styled.button({
   ...tileBaseStyle,
-  width: '200px',
-  height: '40px',
   transition: 'height',
   transitionDuration: motionDurationShort,
   transitionTimingFunction: motionEasingIn,
@@ -96,7 +90,7 @@ export const StylesMotionExample = (): JSX.Element => {
           opacity: 0;
         }
         .tile-expand-active {
-          height: 160px;
+          height: 200px;
           transition: height;
           transition-duration: ${motionDurationModerate};
           transition-timing-function: ${motionEasingBase}

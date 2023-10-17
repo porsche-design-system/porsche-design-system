@@ -52,10 +52,10 @@
     border: none;
     border-radius: $pds-border-radius-large;
     cursor: pointer;
+    width: 200px;
+    height: 100px;
 
     &--moving {
-      width: 70px;
-      height: 70px;
       transition-duration: $pds-motion-duration-short;
       transition-timing-function: $pds-motion-easing-base;
       transform: translateX(-200px);
@@ -66,8 +66,6 @@
     }
 
     &--enter-exit {
-      width: 200px;
-      height: 100px;
       transition-duration: $pds-motion-duration-moderate;
       transition-timing-function: $pds-motion-easing-in;
       transform: translateY(0px);
@@ -81,8 +79,6 @@
     }
 
     &--show-hide {
-      width: 200px;
-      height: 100px;
       transition-duration: $pds-motion-duration-long;
       transition-timing-function: $pds-motion-easing-base;
     }
@@ -92,15 +88,13 @@
     }
 
     &--expand {
-      width: 200px;
-      height: 40px;
       transition: height;
       transition-duration: $pds-motion-duration-short;
       transition-timing-function: $pds-motion-easing-in;
     }
 
     &--expand.active {
-      height: 160px;
+      height: 200px;
       transition: height;
       transition-duration: $pds-motion-duration-moderate;
       transition-timing-function: $pds-motion-easing-base;

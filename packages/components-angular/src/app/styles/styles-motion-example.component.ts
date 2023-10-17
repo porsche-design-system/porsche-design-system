@@ -31,10 +31,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         border: none;
         border-radius: $pds-border-radius-large;
         cursor: pointer;
+        width: 200px;
+        height: 100px;
 
         &--moving {
-          width: 70px;
-          height: 70px;
           transition-duration: $pds-motion-duration-short;
           transition-timing-function: $pds-motion-easing-base;
           transform: translateX(-200px);
@@ -45,8 +45,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         }
 
         &--enter-exit {
-          width: 200px;
-          height: 100px;
           transition-duration: $pds-motion-duration-moderate;
           transition-timing-function: $pds-motion-easing-in;
           transform: translateY(0px);
@@ -60,8 +58,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         }
 
         &--show-hide {
-          width: 200px;
-          height: 100px;
           transition-duration: $pds-motion-duration-long;
           transition-timing-function: $pds-motion-easing-base;
         }
@@ -71,15 +67,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         }
 
         &--expand {
-          width: 200px;
-          height: 40px;
           transition: height;
           transition-duration: $pds-motion-duration-short;
           transition-timing-function: $pds-motion-easing-in;
         }
 
         &--expand.active {
-          height: 160px;
+          height: 200px;
           transition: height;
           transition-duration: $pds-motion-duration-moderate;
           transition-timing-function: $pds-motion-easing-base;
@@ -88,23 +82,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `,
   ],
   template: `
-    <div>
-      <div class="wrapper">
-        <h3 class="heading">Moving</h3>
-        <button class="tile tile--moving" (click)="onClick($event)">play</button>
-      </div>
-      <div class="wrapper">
-        <h3 class="heading">Enter / Exit</h3>
-        <button class="tile tile--enter-exit" (click)="onClick($event)">play</button>
-      </div>
-      <div class="wrapper">
-        <h3 class="heading">Show / Hide</h3>
-        <button class="tile tile--show-hide" (click)="onClick($event)">play</button>
-      </div>
-      <div class="wrapper">
-        <h3 class="heading">Expand</h3>
-        <button class="tile tile--expand" (click)="onClick($event)">play</button>
-      </div>
+    <div class="wrapper">
+      <h3 class="heading">Moving</h3>
+      <button class="tile tile--moving" (click)="onClick($event)">play</button>
+      <h3 class="heading">Enter / Exit</h3>
+      <button class="tile tile--enter-exit" (click)="onClick($event)">play</button>
+      <h3 class="heading">Show / Hide</h3>
+      <button class="tile tile--show-hide" (click)="onClick($event)">play</button>
+      <h3 class="heading">Expand</h3>
+      <button class="tile tile--expand" (click)="onClick($event)">play</button>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
