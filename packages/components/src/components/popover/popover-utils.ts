@@ -174,9 +174,15 @@ export const onDocumentKeydown = (e: KeyboardEvent): void => {
 };
 
 export const addNativeScrollListeners = (host: HTMLElement, table: HTMLElement, nativePopover: HTMLElement): void => {
+  const hidePopover = (): void => {
+    nativePopover.hidePopover();
+    window.removeEventListener('scroll', hidePopover);
+    window.removeEventListener('resize', hidePopover);
+  };
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  window.addEventListener('scroll', () => nativePopover.hidePopover(), { once: true });
+  window.addEventListener('scroll', hidePopover, { once: true });
+  window.addEventListener('resize', hidePopover, { once: true });
   table.shadowRoot
     .querySelector(getPrefixedTagNames(host).pScroller)
     .shadowRoot.querySelector('.scroll-area')
