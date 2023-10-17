@@ -95,7 +95,14 @@ export const getCheckboxRadioJssStyle = (
             borderColor: uncheckedColorDark,
           }),
           outline: 0,
-          cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+          ...(disabledOrLoading
+            ? {
+                cursor: 'not-allowed',
+                pointerEvents: 'none',
+              }
+            : {
+                cursor: 'pointer',
+              }),
         },
         '&(input:checked)': {
           // background-image is merged in later
@@ -167,9 +174,9 @@ export const getCheckboxRadioJssStyle = (
     ...(isLoading && {
       spinner: {
         gridArea: '1 / 1',
+        placeSelf: 'center',
         height: fontLineHeight,
         width: fontLineHeight,
-        padding: '2px', // matches input's border-width to make it overlap entire input
         fontFamily, // needed for correct width and height definition and for correct positioning
         fontSize: '1rem', // needed for correct width and height definition and for correct positioning
         cursor: 'not-allowed',
