@@ -37,7 +37,7 @@ const getSubFooter = () => selectNode(page, 'p-flyout >>> .sub-footer');
 const getSubFooterSlottedContent = () => selectNode(page, '[slot="sub-footer"]');
 const getFlyoutDismissButton = () => selectNode(page, 'p-flyout >>> p-button-pure.dismiss');
 const getFlyoutDismissButtonReal = () => selectNode(page, 'p-flyout >>> p-button-pure.dismiss >>> button');
-const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
+const getBodyStyle = async () => getAttribute(await selectNode(page, 'body'), 'style');
 const getFlyoutVisibility = async () => await getElementStyle(await getFlyout(), 'visibility');
 const waitForFlyoutTransition = async () => {
   await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
@@ -543,23 +543,6 @@ describe('can be controlled via keyboard', () => {
   });
 });
 
-it('should prevent page from scrolling when open', async () => {
-  await initBasicFlyout({ open: false });
-  expect(await getBodyOverflow()).toBe('visible');
-
-  await openFlyout();
-  expect(await getBodyOverflow()).toBe('hidden');
-
-  await setProperty(await getHost(), 'open', false);
-  await waitForStencilLifecycle(page);
-  expect(await getBodyOverflow()).toBe('visible');
-});
-
-it('should prevent page from scrolling when initially open', async () => {
-  await initBasicFlyout({ open: true });
-  expect(await getBodyOverflow()).toBe('hidden');
-});
-
 it('should open flyout at scroll top position zero when its content is scrollable', async () => {
   await initBasicFlyout({ open: true }, { content: '<div style="height: 150vh;"></div>' });
 
@@ -569,16 +552,37 @@ it('should open flyout at scroll top position zero when its content is scrollabl
   expect(hostScrollTop).toBe(0);
 });
 
-it('should remove overflow hidden from body if unmounted', async () => {
-  await initBasicFlyout({ open: true });
-  expect(await getBodyOverflow()).toBe('hidden');
+describe('scroll lock', () => {
+  const bodyLockedStyle = 'top: 0px; overflow-y: scroll; position: fixed;';
 
-  await page.evaluate(() => {
-    document.querySelector('p-flyout').remove();
+  it('should prevent page from scrolling when open', async () => {
+    await initBasicFlyout({ open: false });
+    expect(await getBodyStyle()).toBe(null);
+
+    await openFlyout();
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+
+    await setProperty(await getHost(), 'open', false);
+    await waitForStencilLifecycle(page);
+    expect(await getBodyStyle()).toBe('');
   });
-  await waitForStencilLifecycle(page);
 
-  expect(await getBodyOverflow()).toBe('visible');
+  it('should prevent page from scrolling when initially open', async () => {
+    await initBasicFlyout({ open: true });
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+  });
+
+  it('should remove overflow hidden from body if unmounted', async () => {
+    await initBasicFlyout({ open: true });
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+
+    await page.evaluate(() => {
+      document.querySelector('p-flyout').remove();
+    });
+    await waitForStencilLifecycle(page);
+
+    expect(await getBodyStyle()).toBe('');
+  });
 });
 
 describe('lifecycle', () => {

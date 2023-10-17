@@ -1,9 +1,9 @@
 import { Modal } from './modal';
 import * as modalUtils from './modal-utils';
 import * as focusTrapUtils from '../../utils/focusTrap';
-import * as scrollLock from '../../utils/scrollLock';
+import * as setScrollLockUtils from '../../utils/setScrollLock';
 import * as domUtils from '../../utils/dom';
-import type { FirstAndLastFocusableElement } from '../../utils/focusTrap';
+import type { FirstAndLastFocusableElement } from '../../utils';
 
 jest.mock('../../utils/dom');
 
@@ -125,7 +125,7 @@ describe('this.updateFocusTrap()', () => {
   });
 
   it('should call setScrollLock() with correct parameters for isOpen = true', () => {
-    const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
+    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
     component['updateFocusTrap'](true);
 
     expect(utilsSpy).toBeCalledWith(true);
@@ -139,7 +139,7 @@ describe('this.updateFocusTrap()', () => {
   });
 
   it('should call setScrollLock() with correct parameters for isOpen = false', () => {
-    const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
+    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
     component['updateFocusTrap'](false);
 
     expect(utilsSpy).toBeCalledWith(false);

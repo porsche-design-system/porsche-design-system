@@ -127,7 +127,7 @@ export const getComponentCss = (
                 filter: filterMap.dark[color],
               }
             )),
-          WebkitAnimation: `${isDark ? `${keyFramesDark}-${color}` : `${keyFramesLight}-${color}`} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
+          WebkitAnimation: `${isDark ? keyFramesDark : keyFramesLight}-${color} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
         }),
         ...(isSizeInherit
           ? {
@@ -141,8 +141,7 @@ export const getComponentCss = (
             }),
       },
       ...(!isColorInherit && {
-        [`@keyframes ${isDark ? `${keyFramesDark}-${color}` : `${keyFramesLight}-${color}`}`]:
-          forceRerenderAnimationStyle,
+        [`@keyframes ${isDark ? keyFramesDark : keyFramesLight}-${color}`]: forceRerenderAnimationStyle,
       }),
     },
   });
