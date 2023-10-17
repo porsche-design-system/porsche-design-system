@@ -25,8 +25,6 @@ Effects are the key for turning components from static to interactive and keepin
 | `motionEasingIn`   | `$pds-motion-easing-in`   | x: Time \| y: Progression<br /><ExampleStylesMotionCurveEasingIn />   | Elements that appear quickly and then ease into view.<br />Elements that slide in from off-screen and then slow down. |
 | `motionEasingOut`  | `$pds-motion-easing-out`  | x: Time \| y: Progression<br /><ExampleStylesMotionCurveEasingOut />  | Closing animations for Modals or Flyouts.<br />Elements sliding out of view fast.                                     |
 
-## Example Motion Curves
-
 ## Examples
 
 <Playground :frameworkMarkup="motionExamples" :externalStackBlitzDependencies="['styled-components']">
