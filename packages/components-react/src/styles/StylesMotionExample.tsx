@@ -13,6 +13,7 @@ import {
   themeLightBackgroundSurface,
   themeLightPrimary,
 } from '@porsche-design-system/components-react/styles';
+import type { MouseEvent } from 'react';
 
 // Wrapper
 const Wrapper = styled.div({
@@ -76,9 +77,8 @@ const MotionExpand = styled.button({
 });
 
 export const StylesMotionExample = (): JSX.Element => {
-  const onClick = (e: MouseEvent, className: string) => {
+  const onClick = (e: MouseEvent<HTMLButtonElement>, className: string) =>
     (e.target as HTMLButtonElement).classList.toggle(className);
-  };
 
   return (
     <>
