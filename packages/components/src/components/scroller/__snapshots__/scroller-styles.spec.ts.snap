@@ -41,10 +41,13 @@ button {
 
 .root {
   position: relative;
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
   -ms-overflow-style: none;
@@ -180,10 +183,13 @@ button {
 
 .root {
   position: relative;
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
   -ms-overflow-style: none;
@@ -319,10 +325,13 @@ button {
 
 .root {
   position: relative;
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
 }
@@ -452,10 +461,13 @@ button {
 
 .root {
   position: relative;
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
 }
@@ -586,10 +598,13 @@ button {
 
 .root {
   position: relative;
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
 }
@@ -720,10 +735,13 @@ button {
 
 .root {
   position: relative;
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
 }
@@ -853,10 +871,13 @@ button {
 
 .root {
   position: relative;
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
   -ms-overflow-style: none;
@@ -992,10 +1013,13 @@ button {
 
 .root {
   position: relative;
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
   margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
   -ms-overflow-style: none;
