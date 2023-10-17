@@ -1,35 +1,62 @@
 <template>
-  <div class="wrapper">
-    <p class="y-axis">Progression</p>
-    <svg width="300" height="300" viewbox="0 0 300 300">
-      <rect x="50" y="50" width="200" height="200" fill="white" />
-      <path id="motion-path1" d="M50,250 C90,140 210,140 250,50" class="motion-path" />
-      <circle class="ball" r="10">
-        <animateMotion
-          repeatCount="indefinite"
-          :dur="motionDurationVeryLong"
-          keyPoints="0;1"
-          keyTimes="0;1"
-          calcMode="spline"
-          :keySplines="motionEasingBase"
-        >
-          <mpath href="#motion-path1" />
-        </animateMotion>
-      </circle>
-    </svg>
-    <p class="x-axis">Time</p>
-  </div>
+  <svg width="250" height="250" viewbox="0 0 250 250">
+    <rect
+      x="25"
+      y="25"
+      width="200"
+      height="200"
+      :fill="
+        (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark) || this.storefrontTheme === 'dark'
+          ? themeDarkBackgroundBase
+          : themeLightBackgroundBase
+      "
+    />
+    <path id="motion-path1" d="M25,225 C65,115 185,115 225,25" class="motion-path" />
+    <circle
+      :class="
+        (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark) || this.storefrontTheme === 'dark'
+          ? 'circle--dark'
+          : 'circle--light'
+      "
+      r="10"
+    >
+      <animateMotion
+        repeatCount="indefinite"
+        :dur="motionDurationVeryLong"
+        keyPoints="0;1"
+        keyTimes="0;1"
+        calcMode="spline"
+        :keySplines="motionEasingBase"
+      >
+        <mpath href="#motion-path1" />
+      </animateMotion>
+    </circle>
+  </svg>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { motionDurationVeryLong, motionEasingBase } from '@porsche-design-system/components-js/styles';
+  import {
+    motionDurationVeryLong,
+    motionEasingBase,
+    themeDarkBackgroundBase,
+    themeLightBackgroundBase,
+  } from '@porsche-design-system/components-js/styles';
+  import { StorefrontTheme } from '@/models';
+  import { isPreferredColorSchemeDark } from '@/utils';
 
   @Component
   export default class ExampleStylesMotionCurveEasingBase extends Vue {
     motionDurationVeryLong = motionDurationVeryLong;
     motionEasingBase = motionEasingBase.replace(/.*\((.*)\)/g, '$1');
+    themeDarkBackgroundBase = themeDarkBackgroundBase;
+    themeLightBackgroundBase = themeLightBackgroundBase;
+    isPreferredColorSchemeDark = isPreferredColorSchemeDark();
+
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
+    }
   }
 </script>
 
@@ -37,62 +64,26 @@
   // TODO: we should import from vue, but we need to prepare CI first
   @use '@porsche-design-system/components-js/styles' as *;
 
-  // Wrapper
-  .wrapper {
-    display: grid;
-    gap: $pds-spacing-static-small;
-    grid-template-columns: 20px auto;
-    grid-template-rows: auto 20px;
-    padding: $pds-spacing-fluid-medium $pds-spacing-fluid-medium 0 0;
-    background: $pds-theme-light-background-base;
-  }
-
-  // Typography
-  .heading {
-    @include pds-heading-small;
-    color: $pds-theme-light-primary;
-    text-align: center;
-    width: 100%;
-    margin: 0;
-  }
-
   // Graph
-  svg {
-    border-left: 1px solid $pds-theme-light-background-surface;
-    border-bottom: 1px solid $pds-theme-light-background-surface;
-  }
-
   .motion-path {
     fill: none;
     stroke-width: 1;
     stroke: #d8d8db;
   }
 
-  // Axis labelling
-  .x-axis {
-    @include pds-text-xx-small;
-    grid-column-start: 2;
-    text-align: center;
-    align-self: end;
-    color: $pds-theme-light-contrast-medium;
-    width: 100%;
-    margin-top: 0 !important; // overwrite storefront style
-  }
-
-  .y-axis {
-    @include pds-text-xx-small;
-    writing-mode: vertical-rl;
-    transform: scale(-1);
-    color: $pds-theme-light-contrast-medium;
-    align-self: center;
-  }
-
   // Motion
-  .ball {
-    fill: black;
+  .circle {
     stroke: #333;
     stroke-width: 2;
     width: 20px;
     height: 20px;
+
+    &--light {
+      fill: $pds-theme-light-primary;
+    }
+
+    &--dark {
+      fill: $pds-theme-dark-primary;
+    }
   }
 </style>
