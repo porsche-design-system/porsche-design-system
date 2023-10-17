@@ -47,6 +47,8 @@ const getGradient = (theme: Theme, gradientColorTheme: ScrollerGradientColor): s
   );
 };
 
+const prevNextWrapperWidth = `calc(${fontLineHeight} + 24px)`;
+
 export const getComponentCss = (
   gradientColor: ScrollerGradientColor,
   isNextHidden: boolean,
@@ -81,7 +83,7 @@ export const getComponentCss = (
     top: 0,
     bottom: 0,
     direction: 'ltr',
-    width: `calc(${fontLineHeight} + 24px)`,
+    width: prevNextWrapperWidth,
     padding: '4px 0',
     pointerEvents: 'none',
     display: 'flex',
@@ -131,10 +133,13 @@ export const getComponentCss = (
     },
     root: {
       position: 'relative',
+      display: 'grid',
+      gridTemplateColumns: `${prevNextWrapperWidth} minmax(0, 1fr) ${prevNextWrapperWidth}`,
       margin: '0 -4px',
       height: 'inherit',
     },
     'scroll-area': {
+      gridArea: '1 / 1 / 1 / -1',
       padding: '4px',
       overflow: 'auto hidden',
       ...(!hasScrollbar && {

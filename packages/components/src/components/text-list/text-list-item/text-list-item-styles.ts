@@ -14,7 +14,7 @@ export const getComponentCss = (): string => {
     '@global': addImportantToEachRule({
       ':host': {
         display: 'grid',
-        gridTemplateColumns: `var(${cssVariablePseudoSpace}) minmax(0, 1fr)`,
+        gridTemplateColumns: `var(${cssVariablePseudoSpace}) 1fr`,
         columnGap: spacingStaticMedium,
         font: 'inherit', // ensures style can't be overwritten from outside
         color: 'inherit', // ensures style can't be overwritten from outside
