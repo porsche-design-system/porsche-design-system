@@ -101,7 +101,7 @@ export class Popover {
           {...(this.isNative ? { popoverTarget: 'spacer' } : { onClick: () => (this.open = !this.open) })}
           {...parseAndGetAriaAttributes({
             ...parseAndGetAriaAttributes(this.aria),
-            'aria-expanded': this.isNative ? this.spacer?.matches(':popover-open') : this.open,
+            ...(!this.isNative && { 'aria-expanded': this.open }),
           })}
           ref={(el) => (this.button = el)}
         >
