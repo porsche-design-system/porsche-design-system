@@ -632,6 +632,12 @@ exports[`should match snapshot 1`] = `
     "breakpointCustomizableProps": [
       "size",
     ],
+    "deprecatedPropValues": {
+      "align": [
+        "left",
+        "right",
+      ],
+    },
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -1127,6 +1133,12 @@ exports[`should match snapshot 1`] = `
     "breakpointCustomizableProps": [
       "size",
     ],
+    "deprecatedPropValues": {
+      "align": [
+        "left",
+        "right",
+      ],
+    },
     "hasAriaProp": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -1173,6 +1185,12 @@ exports[`should match snapshot 1`] = `
         "light",
         "dark",
         "auto",
+      ],
+    },
+    "deprecatedPropValues": {
+      "align": [
+        "left",
+        "right",
       ],
     },
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-heading" instead.",
@@ -3272,6 +3290,10 @@ exports[`should match snapshot 1`] = `
       "size",
     ],
     "deprecatedPropValues": {
+      "align": [
+        "left",
+        "right",
+      ],
       "color": [
         "brand",
         "default",
