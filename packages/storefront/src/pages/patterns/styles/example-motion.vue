@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
     <h3 class="heading">Moving</h3>
-    <button class="tile tile--moving" @click="onClick">play</button>
+    <div class="tile tile--moving" @click="onClick">play</div>
     <h3 class="heading">Enter / Exit</h3>
-    <button class="tile tile--enter-exit" @click="onClick">play</button>
+    <div class="tile tile--enter-exit" @click="onClick">play</div>
     <h3 class="heading">Show / Hide</h3>
-    <button class="tile tile--show-hide" @click="onClick">play</button>
+    <div class="tile tile--show-hide" @click="onClick">play</div>
     <h3 class="heading">Expand</h3>
-    <button class="tile tile--expand" @click="onClick">play</button>
+    <div class="tile tile--expand" @click="onClick">play</div>
   </div>
 </template>
 
@@ -49,7 +49,6 @@
     @include pds-text-small;
     color: $pds-theme-light-primary;
     background: $pds-theme-light-background-surface;
-    border: none;
     border-radius: $pds-border-radius-large;
     cursor: pointer;
     width: 200px;

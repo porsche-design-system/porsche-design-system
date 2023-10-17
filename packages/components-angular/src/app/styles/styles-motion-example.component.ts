@@ -28,7 +28,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         @include pds-text-small;
         color: $pds-theme-light-primary;
         background: $pds-theme-light-background-surface;
-        border: none;
         border-radius: $pds-border-radius-large;
         cursor: pointer;
         width: 200px;
@@ -84,13 +83,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <div class="wrapper">
       <h3 class="heading">Moving</h3>
-      <button class="tile tile--moving" (click)="onClick($event)">play</button>
+      <div class="tile tile--moving" (click)="onClick($event)">play</div>
       <h3 class="heading">Enter / Exit</h3>
-      <button class="tile tile--enter-exit" (click)="onClick($event)">play</button>
+      <div class="tile tile--enter-exit" (click)="onClick($event)">play</div>
       <h3 class="heading">Show / Hide</h3>
-      <button class="tile tile--show-hide" (click)="onClick($event)">play</button>
+      <div class="tile tile--show-hide" (click)="onClick($event)">play</div>
       <h3 class="heading">Expand</h3>
-      <button class="tile tile--expand" (click)="onClick($event)">play</button>
+      <div class="tile tile--expand" (click)="onClick($event)">play</div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

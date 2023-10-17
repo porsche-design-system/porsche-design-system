@@ -36,34 +36,33 @@ const Heading = styled.h3({
 const tileBaseStyle = {
   color: themeLightPrimary,
   background: themeLightBackgroundSurface,
-  border: 'none',
   borderRadius: borderRadiusLarge,
   cursor: 'pointer',
   width: '200px',
   height: '100px',
 };
 
-const MotionMoving = styled.button({
+const MotionMoving = styled.div({
   ...tileBaseStyle,
   transform: 'translateX(-200px)',
   transitionDuration: motionDurationShort,
   transitionTimingFunction: motionEasingBase,
 });
 
-const MotionEnterExit = styled.button({
+const MotionEnterExit = styled.div({
   ...tileBaseStyle,
   transform: 'translateY(0px)',
   transitionDuration: motionDurationModerate,
   transitionTimingFunction: motionEasingIn,
 });
 
-const MotionShowHide = styled.button({
+const MotionShowHide = styled.div({
   ...tileBaseStyle,
   transitionDuration: motionDurationLong,
   transitionTimingFunction: motionEasingBase,
 });
 
-const MotionExpand = styled.button({
+const MotionExpand = styled.div({
   ...tileBaseStyle,
   transition: 'height',
   transitionDuration: motionDurationShort,
@@ -71,8 +70,8 @@ const MotionExpand = styled.button({
 });
 
 export const StylesMotionExample = (): JSX.Element => {
-  const onClick = (e: MouseEvent<HTMLButtonElement>, className: string) =>
-    (e.target as HTMLButtonElement).classList.toggle(className);
+  const onClick = (e: MouseEvent<HTMLDivElement>, className: string) =>
+    (e.target as HTMLDivElement).classList.toggle(className);
 
   return (
     <>
