@@ -1,8 +1,8 @@
 import { Flyout } from './flyout';
 import * as focusTrapUtils from '../../utils/focusTrap';
-import * as scrollLock from '../../utils/scrollLock';
+import * as setScrollLockUtils from '../../utils/setScrollLock';
 import * as domUtils from '../../utils/dom';
-import { FirstAndLastFocusableElement } from '../../utils/focusTrap';
+import type { FirstAndLastFocusableElement } from '../../utils';
 
 jest.mock('../../utils/dom');
 
@@ -35,7 +35,7 @@ describe('componentDidLoad', () => {
   });
 
   it('should call setScrollLock() with correct parameters if flyout is open', () => {
-    const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
+    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
     component.open = true;
     component.componentDidLoad();
 
@@ -43,7 +43,7 @@ describe('componentDidLoad', () => {
   });
 
   it('should not call setScrollLock() if flyout is not open', () => {
-    const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
+    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
     component.componentDidLoad();
 
     expect(utilsSpy).not.toBeCalled();
@@ -59,7 +59,7 @@ describe('disconnectedCallback', () => {
   });
 
   it('should call setScrollLock() with correct parameters', () => {
-    const utilsSpy = jest.spyOn(scrollLock, 'setScrollLock');
+    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
     component.disconnectedCallback();
 
     expect(utilsSpy).toBeCalledWith(false);
