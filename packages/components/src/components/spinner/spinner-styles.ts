@@ -42,7 +42,6 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
         ...hostHiddenStyles,
       }),
       svg: {
-        display: 'block',
         fill: 'none',
         animation: `$rotate ${animationDuration} steps(50) infinite`,
       },

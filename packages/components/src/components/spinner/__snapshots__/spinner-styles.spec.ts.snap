@@ -10,7 +10,6 @@ exports[`getComponentCss() should return correct css for size: "inherit" and the
   display: none !important;
 }
 svg {
-  display: block;
   fill: none;
   animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
@@ -69,7 +68,6 @@ exports[`getComponentCss() should return correct css for size: "inherit" and the
   display: none !important;
 }
 svg {
-  display: block;
   fill: none;
   animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
@@ -128,7 +126,6 @@ exports[`getComponentCss() should return correct css for size: "large" and theme
   display: none !important;
 }
 svg {
-  display: block;
   fill: none;
   animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
@@ -187,7 +184,6 @@ exports[`getComponentCss() should return correct css for size: "large" and theme
   display: none !important;
 }
 svg {
-  display: block;
   fill: none;
   animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
@@ -246,7 +242,6 @@ exports[`getComponentCss() should return correct css for size: "medium" and them
   display: none !important;
 }
 svg {
-  display: block;
   fill: none;
   animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
@@ -305,7 +300,6 @@ exports[`getComponentCss() should return correct css for size: "medium" and them
   display: none !important;
 }
 svg {
-  display: block;
   fill: none;
   animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
@@ -364,7 +358,6 @@ exports[`getComponentCss() should return correct css for size: "small" and theme
   display: none !important;
 }
 svg {
-  display: block;
   fill: none;
   animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
@@ -423,7 +416,6 @@ exports[`getComponentCss() should return correct css for size: "small" and theme
   display: none !important;
 }
 svg {
-  display: block;
   fill: none;
   animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
@@ -482,7 +474,6 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
   display: none !important;
 }
 svg {
-  display: block;
   fill: none;
   animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
@@ -576,7 +567,6 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
   display: none !important;
 }
 svg {
-  display: block;
   fill: none;
   animation: rotate var(--p-animation-duration, 2s) steps(50) infinite;
 }
