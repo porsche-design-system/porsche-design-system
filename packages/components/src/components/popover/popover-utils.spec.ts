@@ -10,6 +10,9 @@ import {
   registeredPopovers,
   removeDocumentEventListener,
   updatePopoverStyles,
+  updateNativePopoverStyles,
+  safeZonePx,
+  addNativeScrollListeners,
 } from './popover-utils';
 import type { PopoverDirection, PopoverInternal } from './popover-utils';
 import * as popoverUtils from './popover-utils';
@@ -60,7 +63,7 @@ const rectExceededBottom: Rect = {
   right: 450,
 };
 
-const mockBoundingClientRect = (element: HTMLDivElement, opts: Rect): void => {
+const mockBoundingClientRect = (element: HTMLDivElement | HTMLButtonElement, opts: Rect): void => {
   jest.spyOn(element, 'getBoundingClientRect').mockImplementation(() => opts as DOMRect);
 };
 
@@ -120,7 +123,7 @@ describe('updatePopoverStyles()', () => {
     updatePopoverStyles(host, spacer, popover, 'top', 'light');
 
     expect(getAutoDirectionSpy).toBeCalledWith(spacer, popover);
-    expect(attachComponentCssSpy).toBeCalledWith(host, getComponentCss, 'bottom', 'light');
+    expect(attachComponentCssSpy).toBeCalledWith(host, getComponentCss, 'bottom', false, 'light');
   });
 
   it('should call getPopoverMargin()', () => {
@@ -351,6 +354,39 @@ describe('getPopoverMargin()', () => {
         expect(getPopoverMargin(spacer, popover, direction)).toEqual(scenario.expected);
       });
     });
+  });
+});
+
+describe('updateNativePopoverStyles()', () => {
+  const host = document.createElement('p-popover');
+  host.attachShadow({ mode: 'open' });
+
+  const popover = document.createElement('div');
+  const button = document.createElement('button');
+
+  beforeAll(() => {
+    setViewport();
+  });
+
+  beforeEach(() => {
+    mockBoundingClientRect(button, rectCentered);
+  });
+
+  it('should call getBoundingClientRect() on button', () => {
+    const spy = jest.spyOn(button, 'getBoundingClientRect');
+    updateNativePopoverStyles(popover, button);
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should set popover styles', () => {
+    global.window.scrollX = 20;
+    global.window.scrollY = 30;
+
+    updateNativePopoverStyles(popover, button);
+    expect(popover.style.left).toBe(`${rectCentered.left + global.window.scrollX - safeZonePx}px`);
+    expect(popover.style.top).toBe(`${rectCentered.top + global.window.scrollY - safeZonePx}px`);
+    expect(popover.style.width).toBe(`${rectCentered.width + safeZonePx * 2}px`);
+    expect(popover.style.height).toBe(`${rectCentered.height + safeZonePx * 2}px`);
   });
 });
 
@@ -593,5 +629,50 @@ describe('onDocumentKeydown()', () => {
       expect(popover1.open).toBe(false);
       expect(popover2.open).toBe(false);
     });
+  });
+});
+
+fdescribe('addNativeScrollListeners', () => {
+  const host = document.createElement('div');
+  const table = document.createElement('div');
+  table.attachShadow({ mode: 'open' });
+  const tableScrollArea = document.createElement('div');
+  const nativePopover = document.createElement('div');
+  document.body.appendChild(host);
+  document.body.appendChild(table);
+  document.body.appendChild(nativePopover);
+
+  beforeEach(() => {
+    jest.spyOn(table.shadowRoot, 'querySelector').mockReturnValue({
+      // @ts-ignore
+      shadowRoot: {
+        querySelector: jest.fn(() => tableScrollArea),
+      },
+    });
+    nativePopover.hidePopover = jest.fn();
+  });
+
+  it('should register scroll and resize listeners and remove them on scroll', () => {
+    const windowAddEventListenerSpy = jest.spyOn(window, 'addEventListener');
+    const windowRemoveEventListenerSpy = jest.spyOn(window, 'removeEventListener');
+    const tableAddEventListenerSpy = jest.spyOn(tableScrollArea, 'addEventListener');
+    const tableRemoveEventListenerSpy = jest.spyOn(tableScrollArea, 'removeEventListener');
+    addNativeScrollListeners(host, table, nativePopover);
+
+    expect(windowAddEventListenerSpy).toHaveBeenCalledTimes(2);
+    expect(windowAddEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function), { once: true });
+    expect(windowAddEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function), { once: true });
+
+    expect(tableAddEventListenerSpy).toHaveBeenCalledTimes(1);
+    expect(tableAddEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function), { once: true });
+
+    window.dispatchEvent(new Event('scroll'));
+
+    expect(windowRemoveEventListenerSpy).toHaveBeenCalledTimes(2);
+    expect(windowRemoveEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function));
+    expect(windowRemoveEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function));
+
+    expect(tableRemoveEventListenerSpy).toHaveBeenCalledTimes(1);
+    expect(tableRemoveEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function));
   });
 });
