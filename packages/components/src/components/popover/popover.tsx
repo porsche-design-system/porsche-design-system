@@ -112,7 +112,7 @@ export class Popover {
           <div
             class="spacer"
             ref={(el) => (this.spacer = el)}
-            {...(this.isNative && { popover: 'manual', id: 'spacer', onToggle: this.onToggle })}
+            {...(this.isNative && { popover: 'auto', id: 'spacer', onToggle: this.onToggle })}
           >
             <div class="popover" ref={(el) => (this.popover = el)}>
               {this.description ? <p>{this.description}</p> : <slot />}
