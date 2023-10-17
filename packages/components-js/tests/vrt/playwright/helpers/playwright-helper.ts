@@ -1,4 +1,4 @@
-import { type Page } from '@playwright/test';
+import { CDPSession, type Page } from '@playwright/test';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
@@ -130,6 +130,16 @@ export const setupScenario = async (
     });
   }
 
+  if (scalePageFontSize) {
+    const cdpSession = await page.context().newCDPSession(page);
+    await cdpSession.send('Page.setFontSizes', {
+      fontSizes: {
+        standard: 32,
+        fixed: 48,
+      },
+    });
+  }
+
   await page.setViewportSize({ width: viewportWidth, height: 600 });
   await page.goto(url);
   await waitForComponentsReady(page);
@@ -149,10 +159,6 @@ export const setupScenario = async (
     await page.setViewportSize({
       width: viewportWidth,
       height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
-    });
-
-    await page.evaluate(() => {
-      document.querySelector('html').style.fontSize = '200%';
     });
   }
 
