@@ -20,6 +20,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2789](https://github.com/porsche-design-system/porsche-design-system/pull/2789))
 - Styles: `getSkeletonStyle()` and `pds-skeleton`
   ([#2796](https://github.com/porsche-design-system/porsche-design-system/pull/2796))
+- Styles: `motionDuration{Short|Moderate|Long|VeryLong}`, `motionEasing{Base|In|Out}`, and
+  `pds-motion-duration-{short|moderate|long|very-long}`, `pds-motion-easing-{base|in|out}`
+  ([#2791](https://github.com/porsche-design-system/porsche-design-system/pull/2791))
 
 #### Changed
 
