@@ -27,6 +27,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -168,6 +169,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -216,9 +218,9 @@ label {
 }
 .spinner {
   grid-area: 1 / 1;
+  place-self: center;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  padding: 2px;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -252,6 +254,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -300,9 +303,9 @@ label {
 }
 .spinner {
   grid-area: 1 / 1;
+  place-self: center;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  padding: 2px;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -336,6 +339,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -409,6 +413,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -482,6 +487,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -529,9 +535,9 @@ label {
 }
 .spinner {
   grid-area: 1 / 1;
+  place-self: center;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  padding: 2px;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -565,6 +571,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -612,9 +619,9 @@ label {
 }
 .spinner {
   grid-area: 1 / 1;
+  place-self: center;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  padding: 2px;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -648,6 +655,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -720,6 +728,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -792,6 +801,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -840,9 +850,9 @@ label {
 }
 .spinner {
   grid-area: 1 / 1;
+  place-self: center;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  padding: 2px;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -876,6 +886,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -924,9 +935,9 @@ label {
 }
 .spinner {
   grid-area: 1 / 1;
+  place-self: center;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  padding: 2px;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -960,6 +971,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -1033,6 +1045,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -1294,6 +1307,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -1337,9 +1351,9 @@ label {
 }
 .spinner {
   grid-area: 1 / 1;
+  place-self: center;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  padding: 2px;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -1373,6 +1387,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -1416,9 +1431,9 @@ label {
 }
 .spinner {
   grid-area: 1 / 1;
+  place-self: center;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  padding: 2px;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -1638,6 +1653,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -1680,9 +1696,9 @@ label {
 }
 .spinner {
   grid-area: 1 / 1;
+  place-self: center;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  padding: 2px;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -1716,6 +1732,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -1758,9 +1775,9 @@ label {
 }
 .spinner {
   grid-area: 1 / 1;
+  place-self: center;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  padding: 2px;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -1982,6 +1999,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -2025,9 +2043,9 @@ label {
 }
 .spinner {
   grid-area: 1 / 1;
+  place-self: center;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  padding: 2px;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
@@ -2061,6 +2079,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
+  pointer-events: none !important;
   border-radius: 50% !important;
 }
 ::slotted(input:checked) {
@@ -2104,9 +2123,9 @@ label {
 }
 .spinner {
   grid-area: 1 / 1;
+  place-self: center;
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
-  padding: 2px;
   font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   font-size: 1rem;
   cursor: not-allowed;
