@@ -16,15 +16,15 @@
       d="M25,225 C65,115 185,115 225,25"
       :class="
         (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark) || this.storefrontTheme === 'dark'
-          ? 'motion-path--dark'
-          : 'motion-path--light'
+          ? 'motion-path motion-path--dark'
+          : 'motion-path motion-path--light'
       "
     />
     <circle
       :class="
         (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark) || this.storefrontTheme === 'dark'
-          ? 'circle--dark'
-          : 'circle--light'
+          ? 'circle circle--dark'
+          : 'circle circle--light'
       "
       r="10"
     >

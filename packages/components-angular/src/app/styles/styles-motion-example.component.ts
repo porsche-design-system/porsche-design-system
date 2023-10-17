@@ -32,7 +32,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         border-radius: $pds-border-radius-large;
         cursor: pointer;
 
-        &--tile-moving {
+        &--moving {
           width: 70px;
           height: 70px;
           transition-duration: $pds-motion-duration-short;
@@ -40,11 +40,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           transform: translateX(-200px);
         }
 
-        &--tile-moving.active {
+        &--moving.active {
           transform: translateX(200px);
         }
 
-        &--tile-enter-exit {
+        &--enter-exit {
           width: 200px;
           height: 100px;
           transition-duration: $pds-motion-duration-moderate;
@@ -52,25 +52,25 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           transform: translateY(0px);
         }
 
-        &--tile-enter-exit.active {
+        &--enter-exit.active {
           transition-duration: $pds-motion-duration-short;
           transition-timing-function: $pds-motion-easing-out;
           transform: translateY(40%);
           opacity: 0;
         }
 
-        &--tile-show-hide {
+        &--show-hide {
           width: 200px;
           height: 100px;
           transition-duration: $pds-motion-duration-long;
           transition-timing-function: $pds-motion-easing-base;
         }
 
-        &--tile-show-hide.active {
+        &--show-hide.active {
           opacity: 0;
         }
 
-        &--tile-expand {
+        &--expand {
           width: 200px;
           height: 40px;
           transition: height;
@@ -78,7 +78,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           transition-timing-function: $pds-motion-easing-in;
         }
 
-        &--tile-expand.active {
+        &--expand.active {
           height: 160px;
           transition: height;
           transition-duration: $pds-motion-duration-moderate;
@@ -91,19 +91,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div>
       <div class="wrapper">
         <h3 class="heading">Moving</h3>
-        <button class="tile--tile-moving" (click)="onClick($event)">play</button>
+        <button class="tile tile--moving" (click)="onClick($event)">play</button>
       </div>
       <div class="wrapper">
         <h3 class="heading">Enter / Exit</h3>
-        <button class="tile--tile-enter-exit" (click)="onClick($event)">play</button>
+        <button class="tile tile--enter-exit" (click)="onClick($event)">play</button>
       </div>
       <div class="wrapper">
         <h3 class="heading">Show / Hide</h3>
-        <button class="tile--tile-show-hide" (click)="onClick($event)">play</button>
+        <button class="tile tile--show-hide" (click)="onClick($event)">play</button>
       </div>
       <div class="wrapper">
         <h3 class="heading">Expand</h3>
-        <button class="tile--tile-expand" (click)="onClick($event)">play</button>
+        <button class="tile tile--expand" (click)="onClick($event)">play</button>
       </div>
     </div>
   `,
