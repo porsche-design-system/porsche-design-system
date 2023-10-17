@@ -25,6 +25,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Styles: `themeDarkBackgroundShading` and `pds-theme-dark-background-shading` color
   ([#2789](https://github.com/porsche-design-system/porsche-design-system/pull/2789))
+- `Spinner` animation was optimized to consume less CPU
+  ([#2825](https://github.com/porsche-design-system/porsche-design-system/pull/2825))
 
 #### Fixed
 
