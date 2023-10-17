@@ -31,60 +31,59 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         border: none;
         border-radius: $pds-border-radius-large;
         cursor: pointer;
-      }
 
-      .tile-moving {
-        width: 70px;
-        height: 70px;
-        transition-duration: $pds-motion-duration-short;
-        transition-timing-function: $pds-motion-easing-base;
-        transform: translateX(-200px);
-      }
+        &--tile-moving {
+          width: 70px;
+          height: 70px;
+          transition-duration: $pds-motion-duration-short;
+          transition-timing-function: $pds-motion-easing-base;
+          transform: translateX(-200px);
+        }
 
-      .tile-enter-exit {
-        width: 200px;
-        height: 100px;
-        transition-duration: $pds-motion-duration-moderate;
-        transition-timing-function: $pds-motion-easing-in;
-        transform: translateY(0px);
-      }
+        &--tile-moving.active {
+          transform: translateX(200px);
+        }
 
-      .tile-show-hide {
-        width: 200px;
-        height: 100px;
-        transition-duration: $pds-motion-duration-long;
-        transition-timing-function: $pds-motion-easing-base;
-      }
+        &--tile-enter-exit {
+          width: 200px;
+          height: 100px;
+          transition-duration: $pds-motion-duration-moderate;
+          transition-timing-function: $pds-motion-easing-in;
+          transform: translateY(0px);
+        }
 
-      .tile-expand {
-        width: 200px;
-        height: 40px;
-        transition: height;
-        transition-duration: $pds-motion-duration-short;
-        transition-timing-function: $pds-motion-easing-in;
-      }
+        &--tile-enter-exit.active {
+          transition-duration: $pds-motion-duration-short;
+          transition-timing-function: $pds-motion-easing-out;
+          transform: translateY(40%);
+          opacity: 0;
+        }
 
-      // Motion
-      .tile-moving.active {
-        transform: translateX(200px);
-      }
+        &--tile-show-hide {
+          width: 200px;
+          height: 100px;
+          transition-duration: $pds-motion-duration-long;
+          transition-timing-function: $pds-motion-easing-base;
+        }
 
-      .tile-enter-exit.active {
-        transition-duration: $pds-motion-duration-short;
-        transition-timing-function: $pds-motion-easing-out;
-        transform: translateY(40%);
-        opacity: 0;
-      }
+        &--tile-show-hide.active {
+          opacity: 0;
+        }
 
-      .tile-show-hide.active {
-        opacity: 0;
-      }
+        &--tile-expand {
+          width: 200px;
+          height: 40px;
+          transition: height;
+          transition-duration: $pds-motion-duration-short;
+          transition-timing-function: $pds-motion-easing-in;
+        }
 
-      .tile-expand.active {
-        height: 160px;
-        transition: height;
-        transition-duration: $pds-motion-duration-moderate;
-        transition-timing-function: $pds-motion-easing-base;
+        &--tile-expand.active {
+          height: 160px;
+          transition: height;
+          transition-duration: $pds-motion-duration-moderate;
+          transition-timing-function: $pds-motion-easing-base;
+        }
       }
     `,
   ],
@@ -92,19 +91,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div>
       <div class="wrapper">
         <h3 class="heading">Moving</h3>
-        <button class="tile tile-moving" (click)="onClick($event)">play</button>
+        <button class="tile--tile-moving" (click)="onClick($event)">play</button>
       </div>
       <div class="wrapper">
         <h3 class="heading">Enter / Exit</h3>
-        <button class="tile tile-enter-exit" (click)="onClick($event)">play</button>
+        <button class="tile--tile-enter-exit" (click)="onClick($event)">play</button>
       </div>
       <div class="wrapper">
         <h3 class="heading">Show / Hide</h3>
-        <button class="tile tile-show-hide" (click)="onClick($event)">play</button>
+        <button class="tile--tile-show-hide" (click)="onClick($event)">play</button>
       </div>
       <div class="wrapper">
         <h3 class="heading">Expand</h3>
-        <button class="tile tile-expand" (click)="onClick($event)">play</button>
+        <button class="tile--tile-expand" (click)="onClick($event)">play</button>
       </div>
     </div>
   `,
@@ -112,6 +111,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class StylesMotionExampleComponent {
   onClick = (e: MouseEvent): void => {
-    (e.target as HTMLDivElement).classList.toggle('active');
+    (e.target as HTMLButtonElement).classList.toggle('active');
   };
 }
