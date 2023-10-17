@@ -44,7 +44,7 @@ const tileBaseStyle = {
 const MotionMoving = styled.button({
   ...tileBaseStyle,
   width: '70px',
-  height: '700px',
+  height: '70px',
   transform: 'translateX(-200px)',
   transitionDuration: motionDurationShort,
   transitionTimingFunction: motionEasingBase,
@@ -100,27 +100,27 @@ export const StylesMotionExample = (): JSX.Element => {
       `}</style>
       <Wrapper>
         <Heading>Moving</Heading>
-        <MotionMoving
-          onClick={(e) => (e.target as HTMLDivElement).classList.toggle('tile-moving-active')}
-        ></MotionMoving>
+        <MotionMoving onClick={(e) => (e.target as HTMLDivElement).classList.toggle('tile-moving-active')}>
+          play
+        </MotionMoving>
       </Wrapper>
       <Wrapper>
         <Heading>Enter / Exit</Heading>
-        <MotionEnterExit
-          onClick={(e) => (e.target as HTMLDivElement).classList.toggle('tile-enter-exit-active')}
-        ></MotionEnterExit>
+        <MotionEnterExit onClick={(e) => (e.target as HTMLDivElement).classList.toggle('tile-enter-exit-active')}>
+          play
+        </MotionEnterExit>
       </Wrapper>
       <Wrapper>
         <Heading>Show / Hide</Heading>
-        <MotionShowHide
-          onClick={(e) => (e.target as HTMLDivElement).classList.toggle('tile-show-hide-active')}
-        ></MotionShowHide>
+        <MotionShowHide onClick={(e) => (e.target as HTMLDivElement).classList.toggle('tile-show-hide-active')}>
+          play
+        </MotionShowHide>
       </Wrapper>
       <Wrapper>
         <Heading>Expand</Heading>
-        <MotionExpand
-          onClick={(e) => (e.target as HTMLDivElement).classList.toggle('tile-expand-active')}
-        ></MotionExpand>
+        <MotionExpand onClick={(e) => (e.target as HTMLDivElement).classList.toggle('tile-expand-active')}>
+          play
+        </MotionExpand>
       </Wrapper>
     </>
   );

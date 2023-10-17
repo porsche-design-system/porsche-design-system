@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
     <h3 class="heading">Moving</h3>
-    <button class="tile tile-moving" @click="onClick">start motion</button>
+    <button class="tile tile-moving" @click="onClick">play</button>
     <h3 class="heading">Enter / Exit</h3>
-    <button class="tile tile-enter-exit" @click="onClick">start motion</button>
+    <button class="tile tile-enter-exit" @click="onClick">play</button>
     <h3 class="heading">Show / Hide</h3>
-    <button class="tile tile-show-hide" @click="onClick">start motion</button>
+    <button class="tile tile-show-hide" @click="onClick">play</button>
     <h3 class="heading">Expand</h3>
-    <button class="tile tile-expand" @click="onClick">start motion</button>
+    <button class="tile tile-expand" @click="onClick">play</button>
   </div>
 </template>
 

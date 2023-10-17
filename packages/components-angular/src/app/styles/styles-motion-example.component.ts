@@ -94,19 +94,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div>
       <div class="wrapper">
         <h3 class="heading">Moving</h3>
-        <button class="tile tile-moving" (click)="onClick($event)">start motion</button>
+        <button class="tile tile-moving" (click)="onClick($event)">play</button>
       </div>
       <div class="wrapper">
         <h3 class="heading">Enter / Exit</h3>
-        <button class="tile tile-enter-exit" (click)="onClick($event)">start motion</button>
+        <button class="tile tile-enter-exit" (click)="onClick($event)">play</button>
       </div>
       <div class="wrapper">
         <h3 class="heading">Show / Hide</h3>
-        <button class="tile tile-show-hide" (click)="onClick($event)">start motion</button>
+        <button class="tile tile-show-hide" (click)="onClick($event)">play</button>
       </div>
       <div class="wrapper">
         <h3 class="heading">Expand</h3>
-        <button class="tile tile-expand" (click)="onClick($event)">start motion</button>
+        <button class="tile tile-expand" (click)="onClick($event)">play</button>
       </div>
     </div>
   `,
