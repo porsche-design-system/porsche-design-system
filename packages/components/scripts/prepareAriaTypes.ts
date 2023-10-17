@@ -15,11 +15,9 @@ const prepareAriaTypes = (): void => {
     )
     .replace(/ {8}/g, '  ')
     .replace(/ {4}/g, '')};`;
-  const ariaRoleTypes = `export ${ariaRoleRawTypes
-    .replace(/ {8}/g, '  ')
-    .replace(/\n[ ]{2,}\| \(string & \{}\)/g, '')};`;
+  const ariaRoleTypes = `export ${ariaRoleRawTypes.replace(/ {8}/g, '  ').replace(/\n {2,}\| \(string & \{}\)/g, '')};`;
   const content = [
-    '/* Auto Generated Below */',
+    '/* Auto Generated Below */\n/* eslint-disable @typescript-eslint/quotes */',
     "type Booleanish = boolean | 'true' | 'false';",
     ariaTypes,
     ariaRoleTypes,
