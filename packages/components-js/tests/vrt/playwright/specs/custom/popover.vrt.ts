@@ -132,15 +132,32 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
       </p-table>`
       : `<div style="position: relative; height: 800px; outline: 1rem solid rgba(0, 0, 255, 0.1); outline-offset: -1rem" class="playground">${popoverMarkup()}</div>`;
 
+  await setContentWithDesignSystem(page, markup(), { forceComponentTheme: theme });
+
   // Override listeners to avoid popovers being closed
   if (withinTable) {
     await page.evaluate(() => {
-      window.addEventListener('resize', (e) => e.stopImmediatePropagation(), true);
-      window.addEventListener('scroll', (e) => e.stopImmediatePropagation(), true);
+      window.addEventListener(
+        'resize',
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+        },
+        true
+      );
+      window.addEventListener(
+        'scroll',
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+        },
+        true
+      );
     });
   }
 
-  await setContentWithDesignSystem(page, markup(), { forceComponentTheme: theme });
   await page.setViewportSize({ width: viewportWidth, height: 600 });
 
   if (withinTable) {
