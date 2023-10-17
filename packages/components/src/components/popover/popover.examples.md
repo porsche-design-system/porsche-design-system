@@ -46,6 +46,14 @@ Otherwise, it will be opened in the direction with most available space automati
   <SelectOptions v-model="direction" :values="directions" name="direction"></SelectOptions>
 </Playground>
 
+## Within table
+
+When a popover is used within the `p-table` component it will automatically switch to a native popover. This will stop
+the popover from being cut off when overlapping the component scroll container. The popover will be automatically closed
+when the user scrolls the page or within the table.
+
+<Playground :markup="nativeMarkup" :config="config"></Playground>
+
 <script lang="ts">
 import {POPOVER_Z_INDEX} from "../../constants";
 import Vue from 'vue';
@@ -74,5 +82,16 @@ export default class Code extends Vue {
   accessibilityMarkup = `<p-text>
   Some content <p-popover aria="{ 'aria-label': 'Some more descriptive label' }">${this.popoverContent}</p-popover>
 </p-text>`;
+
+  nativeMarkup = `<p-table caption="Some caption" style="max-width: 200px">
+  <p-table-head>
+    <p-table-head-row>
+      <p-table-head-cell>
+        Column 1<p-popover aria="{ 'aria-label': 'Some more descriptive label' }">${this.popoverContent}</p-popover></p-table-head-cell>
+      <p-table-head-cell>Column 2</p-table-head-cell>
+      <p-table-head-cell>Column 3</p-table-head-cell>
+    </p-table-head-row>
+  </p-table-head>
+</p-table>`;
 }
 </script>
