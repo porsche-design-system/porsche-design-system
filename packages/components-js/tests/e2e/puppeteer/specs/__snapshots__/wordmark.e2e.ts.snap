@@ -22,7 +22,7 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
         },
       ],
       "name": "Porsche",
-      "role": "img",
+      "role": "image",
     },
   ],
   "name": "",

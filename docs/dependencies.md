@@ -1,12 +1,12 @@
-# Dependencies 11.09.2023
+# Dependencies 12.10.2023
 
 ## Overview of Framework Versions
 
 |         | Monorepo | Sample Integrations    |
-| ------- | -------- | ---------------------- |
-| Angular | 15.2.9   | 16.2.3                 |
+| ------- |----------| ---------------------- |
+| Angular | 15.2.10  | 16.2.3                 |
 | React   | 18.2.0   | 18.2.0                 |
-| Next.js | 13.4.19  | 13.4.19 (React 18.2.0) |
+| Next.js | 13.5.4   | 13.4.19 (React 18.2.0) |
 
 ## Vue
 
@@ -94,3 +94,12 @@ of using it with Node or TS-Node.
 ### Affected dependencies:
 
 - `globby`
+
+## Change Case
+
+Since v5.0.0 `change-case` decided to provide just a modern _ESM_ build with their latest npm package. Unfortunately there's
+no stable way of using it with Node or TS-Node.
+
+### Affected dependencies:
+
+- `change-case`

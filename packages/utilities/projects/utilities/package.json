@@ -21,13 +21,13 @@
   "dependencies": {},
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@types/madge": "^5.0.0",
-    "@types/styled-components": "^5.1.27",
+    "@types/madge": "^5.0.1",
+    "@types/styled-components": "^5.1.28",
     "change-case": "^4.1.2",
     "madge": "^6.1.0",
     "prettier": "^3.0.3",
     "react-jss": "^10.10.0",
-    "sass": "^1.66.1",
+    "sass": "^1.69.0",
     "styled-components": "^5.3.11",
     "ts-node": "^10.9.1",
     "typescript": "~5.2.2"

@@ -1,4 +1,4 @@
-import { baseURL } from '../helpers';
+import { baseURL, getProperty } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
 
 let page: Page;
@@ -9,7 +9,7 @@ const getTitle = (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) 
 const isLinkActive = async (element: ElementHandle): Promise<boolean> =>
   (await getCssClasses(element)).includes('router-link-active');
 const getCssClasses = async (element: ElementHandle): Promise<string> =>
-  Object.values((await (await element.getProperty('classList')).jsonValue()) as string).join(' ');
+  Object.values(await getProperty(element, 'classList')).join(' ');
 
 it('should navigate to license', async () => {
   await page.goto(baseURL);

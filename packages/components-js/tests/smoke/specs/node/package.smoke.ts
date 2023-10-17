@@ -109,8 +109,8 @@ describe('package.json files', () => {
     const relevantProblems = result.problems.filter(
       (prob: Problem) =>
         !(
-          prob.kind === 'FalseCJS' &&
-          (prob.entrypoint === '.' || prob.entrypoint === './styles' || prob.entrypoint === './ssr')
+          prob.kind === 'FalseCJS' ||
+          ('entrypoint' in prob && (prob.entrypoint === '.' || prob.entrypoint === './styles' || prob.entrypoint === './ssr'))
         )
     );
 

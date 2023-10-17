@@ -10,6 +10,6 @@ exports[`accessibility should expose correct accessibility tree if accessibility
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
 {
   "name": "Porsche",
-  "role": "img",
+  "role": "image",
 }
 `;
