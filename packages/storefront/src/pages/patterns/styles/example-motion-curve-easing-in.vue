@@ -11,7 +11,15 @@
           : themeLightBackgroundBase
       "
     />
-    <path id="motion-path2" d="M25,225 C25,225 65,25 225,25" class="motion-path" />
+    <path
+      id="motion-path2"
+      d="M25,225 C25,225 65,25 225,25"
+      :class="
+        (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark) || this.storefrontTheme === 'dark'
+          ? 'motion-path--dark'
+          : 'motion-path--light'
+      "
+    />
     <circle
       :class="
         (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark) || this.storefrontTheme === 'dark'
@@ -68,21 +76,29 @@
   .motion-path {
     fill: none;
     stroke-width: 1;
-    stroke: #d8d8db;
+
+    &--light {
+      stroke: $pds-theme-light-contrast-low;
+    }
+
+    &--dark {
+      stroke: $pds-theme-dark-contrast-low;
+    }
   }
 
   // Motion
   .circle {
-    stroke: #333;
     stroke-width: 2;
     width: 20px;
     height: 20px;
 
     &--light {
+      stroke: $pds-theme-light-primary;
       fill: $pds-theme-light-primary;
     }
 
     &--dark {
+      stroke: $pds-theme-dark-primary;
       fill: $pds-theme-dark-primary;
     }
   }
