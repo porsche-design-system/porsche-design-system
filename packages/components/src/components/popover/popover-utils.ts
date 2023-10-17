@@ -9,7 +9,7 @@ export type PopoverDirection = (typeof POPOVER_DIRECTIONS)[number];
 export const POPOVER_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type PopoverAriaAttribute = (typeof POPOVER_ARIA_ATTRIBUTES)[number];
 
-const safeZonePx = 16;
+export const safeZonePx = 16;
 
 export const updatePopoverStyles = (
   host: HTMLElement,
@@ -174,19 +174,18 @@ export const onDocumentKeydown = (e: KeyboardEvent): void => {
 };
 
 export const addNativeScrollListeners = (host: HTMLElement, table: HTMLElement, nativePopover: HTMLElement): void => {
+  const tableScrollArea = table.shadowRoot
+    .querySelector(getPrefixedTagNames(host).pScroller)
+    .shadowRoot.querySelector('.scroll-area');
+
   const hidePopover = (): void => {
     nativePopover.hidePopover();
     window.removeEventListener('scroll', hidePopover);
     window.removeEventListener('resize', hidePopover);
+    tableScrollArea.removeEventListener('scroll', hidePopover);
   };
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+
   window.addEventListener('scroll', hidePopover, { once: true });
   window.addEventListener('resize', hidePopover, { once: true });
-  table.shadowRoot
-    .querySelector(getPrefixedTagNames(host).pScroller)
-    .shadowRoot.querySelector('.scroll-area')
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    .addEventListener('scroll', () => nativePopover.hidePopover(), { once: true });
+  tableScrollArea.addEventListener('scroll', hidePopover, { once: true });
 };
