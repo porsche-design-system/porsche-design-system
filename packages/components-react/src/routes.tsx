@@ -241,6 +241,11 @@ export const routes: RouteType[] = [
     element: <fromStyles.StylesMediaQueryExample />,
   },
   {
+    name: 'Styles Motion',
+    path: '/styles-motion',
+    element: <fromStyles.StylesMotionExample />,
+  },
+  {
     name: 'Styles Skeleton',
     path: '/styles-skeleton',
     element: <fromStyles.StylesSkeletonExample />,

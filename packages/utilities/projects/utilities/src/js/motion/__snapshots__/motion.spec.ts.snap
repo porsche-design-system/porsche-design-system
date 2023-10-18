@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should contain correct values for motionDurationLong 1`] = `"0.6s"`;
+
+exports[`should contain correct values for motionDurationModerate 1`] = `"0.4s"`;
+
+exports[`should contain correct values for motionDurationShort 1`] = `"0.25s"`;
+
+exports[`should contain correct values for motionDurationVeryLong 1`] = `"1.2s"`;
+
+exports[`should contain correct values for motionEasingBase 1`] = `"cubic-bezier(0.25,0.1,0.25,1)"`;
+
+exports[`should contain correct values for motionEasingIn 1`] = `"cubic-bezier(0,0,0.2,1)"`;
+
+exports[`should contain correct values for motionEasingOut 1`] = `"cubic-bezier(0.4,0,0.5,1)"`;
