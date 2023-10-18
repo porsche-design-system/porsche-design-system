@@ -1,5 +1,10 @@
 import { expect, type Page, test } from '@playwright/test';
-import { baseThemes, openAllPopover, setAllPopoverManual, setContentWithDesignSystem } from '../../helpers';
+import {
+  baseThemes,
+  openAllPopover,
+  setNativePopoversToAllowMultipleOpen,
+  setContentWithDesignSystem,
+} from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'popover';
@@ -134,35 +139,16 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
 
   await setContentWithDesignSystem(page, markup(), { forceComponentTheme: theme });
 
-  // Override listeners to avoid popovers being closed
+  // Override listeners to avoid native popovers being closed
   if (withinTable) {
     await page.evaluate(() => {
-      window.addEventListener(
-        'resize',
-        (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-        },
-        true
-      );
-      window.addEventListener(
-        'scroll',
-        (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-        },
-        true
-      );
+      window.addEventListener('resize', (e) => e.stopImmediatePropagation(), true);
+      window.addEventListener('scroll', (e) => e.stopImmediatePropagation(), true);
     });
   }
 
   await page.setViewportSize({ width: viewportWidth, height: 600 });
-
-  if (withinTable) {
-    await setAllPopoverManual(page);
-  }
+  await setNativePopoversToAllowMultipleOpen(page);
   await openAllPopover(page);
 };
 
