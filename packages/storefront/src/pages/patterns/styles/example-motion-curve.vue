@@ -64,6 +64,8 @@
           return 'M25,225 C25,225 65,25 225,25';
         case 'easing-out':
           return 'M25,225 C65,225 185,25 225,25';
+        default:
+          return 'M25,225 C65,115 185,115 225,25';
       }
     }
 
@@ -75,6 +77,8 @@
           return this.removeCubicBezierFunction(motionEasingIn);
         case 'easing-out':
           return this.removeCubicBezierFunction(motionEasingOut);
+        default:
+          return this.removeCubicBezierFunction(motionEasingBase);
       }
     }
 
