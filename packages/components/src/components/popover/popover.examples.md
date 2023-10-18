@@ -52,7 +52,7 @@ When a popover is used within the `p-table` component it will automatically swit
 the popover from being cut off when overlapping the component scroll container. The popover will be automatically closed
 when the user scrolls the page or within the table.
 
-<Playground :markup="nativeMarkup" :config="config"></Playground>
+<Playground :markup="withinTableMarkup" :config="config"></Playground>
 
 <script lang="ts">
 import {POPOVER_Z_INDEX} from "../../constants";
@@ -83,7 +83,7 @@ export default class Code extends Vue {
   Some content <p-popover aria="{ 'aria-label': 'Some more descriptive label' }">${this.popoverContent}</p-popover>
 </p-text>`;
 
-  nativeMarkup = `<p-table caption="Some caption" style="max-width: 200px">
+  withinTableMarkup = `<p-table caption="Some caption" style="max-width: 200px">
   <p-table-head>
     <p-table-head-row>
       <p-table-head-cell>
