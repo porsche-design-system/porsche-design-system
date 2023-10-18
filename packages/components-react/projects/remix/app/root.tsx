@@ -4,11 +4,11 @@ import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-sy
 import { HeadPartials } from '~/head-partials.server';
 import { BodyPartials } from '~/body-partials.server';
 
-export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  title: 'Porsche Design System - Remix',
-  viewport: 'width=device-width,initial-scale=1',
-});
+export const meta: MetaFunction = () => ([
+  { charset: 'utf-8' },
+  { title: 'Porsche Design System - Remix' },
+  { viewport: 'width=device-width,initial-scale=1' },
+]);
 
 export default function App(): JSX.Element {
   return (

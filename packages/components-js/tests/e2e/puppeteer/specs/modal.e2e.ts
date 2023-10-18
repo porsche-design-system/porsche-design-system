@@ -32,7 +32,7 @@ const getModal = () => selectNode(page, 'p-modal >>> .root');
 const getDismissButton = () => selectNode(page, 'p-modal >>> p-button-pure.dismiss');
 const getFooter = () => selectNode(page, 'p-modal >>> .footer');
 const getFooterBoxShadow = async (): Promise<string> => getElementStyle(await getFooter(), 'boxShadow');
-const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
+const getBodyStyle = async () => getAttribute(await selectNode(page, 'body'), 'style');
 
 const initBasicModal = (opts?: {
   isOpen?: boolean;
@@ -590,23 +590,6 @@ describe('can be controlled via keyboard', () => {
   });
 });
 
-it('should prevent page from scrolling when open', async () => {
-  await initBasicModal({ isOpen: false });
-  expect(await getBodyOverflow()).toBe('visible');
-
-  await openModal();
-  expect(await getBodyOverflow()).toBe('hidden');
-
-  await setProperty(await getHost(), 'open', false);
-  await waitForStencilLifecycle(page);
-  expect(await getBodyOverflow()).toBe('visible');
-});
-
-it('should prevent page from scrolling when initially open', async () => {
-  await initBasicModal({ isOpen: true });
-  expect(await getBodyOverflow()).toBe('hidden');
-});
-
 it('should open modal at scroll top position zero when its content is scrollable', async () => {
   await initBasicModal({ isOpen: true, content: '<div style="height: 150vh;"></div>' });
 
@@ -616,16 +599,37 @@ it('should open modal at scroll top position zero when its content is scrollable
   expect(hostScrollTop).toBe(0);
 });
 
-it('should remove overflow hidden from body if unmounted', async () => {
-  await initBasicModal({ isOpen: true });
-  expect(await getBodyOverflow()).toBe('hidden');
+describe('scroll lock', () => {
+  const bodyLockedStyle = 'top: 0px; overflow-y: scroll; position: fixed;';
 
-  await page.evaluate(() => {
-    document.querySelector('p-modal').remove();
+  it('should prevent page from scrolling when open', async () => {
+    await initBasicModal({ isOpen: false });
+    expect(await getBodyStyle()).toBe(null);
+
+    await openModal();
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+
+    await setProperty(await getHost(), 'open', false);
+    await waitForStencilLifecycle(page);
+    expect(await getBodyStyle()).toBe('');
   });
-  await waitForStencilLifecycle(page);
 
-  expect(await getBodyOverflow()).toBe('visible');
+  it('should prevent page from scrolling when initially open', async () => {
+    await initBasicModal({ isOpen: true });
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+  });
+
+  it('should remove overflow hidden from body if unmounted', async () => {
+    await initBasicModal({ isOpen: true });
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+
+    await page.evaluate(() => {
+      document.querySelector('p-modal').remove();
+    });
+    await waitForStencilLifecycle(page);
+
+    expect(await getBodyStyle()).toBe('');
+  });
 });
 
 describe('sticky footer', () => {

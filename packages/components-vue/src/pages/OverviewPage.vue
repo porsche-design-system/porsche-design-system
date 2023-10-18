@@ -725,12 +725,6 @@
   </div>
 </template>
 
-<style>
-  body {
-    overflow: auto !important;
-  }
-</style>
-
 <style scoped>
   .root {
     display: grid;

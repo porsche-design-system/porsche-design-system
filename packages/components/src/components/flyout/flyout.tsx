@@ -105,6 +105,8 @@ export class Flyout {
 
   public componentDidRender(): void {
     if (this.open) {
+      // TODO: why not scroll to top when opened just like modal does?
+
       if (this.hasSubFooter) {
         this.onScroll();
       }

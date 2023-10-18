@@ -36,7 +36,7 @@
     "@webcomponents/template-shadowroot": "^0.2.1"
   },
   "devDependencies": {
-    "@types/html-minifier": "^4.0.2",
+    "@types/html-minifier": "^4.0.3",
     "html-minifier": "^4.0.0",
     "tslib": "^2.6.2",
     "typescript": "~5.2.2"
