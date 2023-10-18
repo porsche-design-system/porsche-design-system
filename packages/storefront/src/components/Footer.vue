@@ -42,7 +42,10 @@
   footer {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: $pds-spacing-fluid-medium;
+  }
+
+  a {
+    padding: 2.5px; // increase size of links for a11y wcag22aa compliance
   }
 </style>
