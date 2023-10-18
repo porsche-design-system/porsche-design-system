@@ -136,7 +136,7 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
 };
 
 export const getComponentCss = (direction: PopoverDirection, isNative: boolean, theme: Theme): string => {
-  const spacerBox = '-16px';
+  const spacerBox = -16;
   const { hoverColor, focusColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
     hoverColor: hoverColorDark,
@@ -211,20 +211,14 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
     spacer: {
       ...(isNative
         ? {
-            position: 'absolute',
             overflow: 'initial',
             backgroundColor: 'transparent',
             border: 'none',
             margin: 0,
             padding: 0,
           }
-        : {
-            position: 'absolute',
-            top: spacerBox,
-            left: spacerBox,
-            right: spacerBox,
-            bottom: spacerBox,
-          }),
+        : getInsetJssStyle(spacerBox)),
+      position: 'absolute',
       zIndex: POPOVER_Z_INDEX,
       filter: `drop-shadow(0 0 16px ${shadowColor})`,
       backdropFilter: 'drop-shadow(0px 0px 0px transparent)', // fixes issues with Chrome >= 105 where filter: drop-shadow is not applied correctly after animation ends
