@@ -14,8 +14,9 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
-  isWithinComponent,
+  findClosestComponent,
   parseAndGetAriaAttributes,
+  supportsNativePopover,
   THEMES,
   validateProps,
 } from '../../utils';
@@ -130,9 +131,8 @@ export class Popover {
   };
 
   private detectNativeCase = (): void => {
-    const supportsNativePopover = HTMLElement.prototype.hasOwnProperty('popover');
-    if (supportsNativePopover) {
-      this.table = isWithinComponent(this.host, 'pTable');
+    if (supportsNativePopover()) {
+      this.table = findClosestComponent(this.host, 'pTable');
       if (!!this.table) {
         this.isNative = true;
       }
