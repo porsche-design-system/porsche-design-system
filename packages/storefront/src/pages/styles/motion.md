@@ -8,23 +8,22 @@ When objects move within a limited area, shorter durations are needed, compared 
 The duration of an animation directly affects the perceived lag time for users. To prevent this, it is essential to
 ensure that motion is swift, subtle, and purposeful.
 
-| Token JS                 | Token SCSS                       | Duration | Usage                                                                                                                                                                                                               |
-| ------------------------ | -------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `motionDurationShort`    | `$pds-motion-duration-short`     | 0.25s    | For hover effects, consider elements like Buttons, Checkboxes, Switches, or the display of Popovers.                                                                                                                |
-| `motionDurationModerate` | `$pds-motion-duration-moderate`  | 0.4s     | Best suited for elements that require moderate motion, such as the Slide transitions in Carousels, Modals, and Link-Tiles.                                                                                          |
-| `motionDurationLong`     | `$pds-motion-duration-long`      | 0.6s     | This duration is ideal for creating longer, more deliberate animations. It's commonly used for animations associated with Notifications and Flyouts, where a slightly slower and more controlled motion is desired. |
-| `motionDurationVeryLong` | `$pds-motion-duration-very-long` | 1.2s     | Reserved for the longest animations, this duration is perfect for elements like Spinners and Skeleton loaders, where a very deliberate and gradual animation is necessary to convey loading or progress.            |
+| Token JS/SCSS                                                  | Duration | Usage                                                                                                                                                                                                               |
+| -------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `motionDurationShort`<br />`$pds-motion-duration-short`        | 0.25s    | For hover effects, consider elements like Buttons, Checkboxes, Switches, or the display of Popovers.                                                                                                                |
+| `motionDurationModerate`<br />`$pds-motion-duration-moderate`  | 0.4s     | Best suited for elements that require moderate motion, such as the Slide transitions in Carousels, Modals, and Link-Tiles.                                                                                          |
+| `motionDurationLong`<br />`$pds-motion-duration-long`          | 0.6s     | This duration is ideal for creating longer, more deliberate animations. It's commonly used for animations associated with Notifications and Flyouts, where a slightly slower and more controlled motion is desired. |
+| `motionDurationVeryLong`<br />`$pds-motion-duration-very-long` | 1.2s     | Reserved for the longest animations, this duration is perfect for elements like Spinners and Skeleton loaders, where a very deliberate and gradual animation is necessary to convey loading or progress.            |
 
 ## Easing
 
 Effects are the key for turning components from static to interactive and keeping UI elements alive.
 
-| Token                                                                   | Token SCSS                | Easing Demo                                                                    | Usage                                                                                                           |
-| ----------------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| `motionEasingBase`                                                      | `$pds-motion-easing-base` | x: Time \| y: Progression<br /><ExampleStylesMotionCurve path="easing-base" /> | Buttons (hover and active states).<br />Tabs or segments switching.<br />Basic fade-in and fade-out animations. |
-| `motionEasingIn`                                                        | `$pds-motion-easing-in`   | x: Time \| y: Progression<br /><ExampleStylesMotionCurve path='easing-in'/>    | Elements like Banners/Toasts or Modals that appear quickly and then ease into view.                             |
-| Elements like Flyouts that slide in from off-screen and then slow down. |
-| `motionEasingOut`                                                       | `$pds-motion-easing-out`  | x: Time \| y: Progression<br /><ExampleStylesMotionCurve path='easing-out'/>   | Closing animations for Modals or Flyouts.<br />Elements sliding out of view fast.                               |
+| Token JS/SCSS                                     | Easing Demo                                                                    | Usage                                                                                                                                                            |
+| ------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `motionEasingBase`<br />`$pds-motion-easing-base` | x: Time \| y: Progression<br /><ExampleStylesMotionCurve path="easing-base" /> | Buttons (hover and active states).<br />Tabs or segments switching.<br />Basic fade-in and fade-out animations.                                                  |
+| `motionEasingIn`<br />`$pds-motion-easing-in`     | x: Time \| y: Progression<br /><ExampleStylesMotionCurve path='easing-in'/>    | Elements like Banners/Toasts or Modals that appear quickly and then ease into view.<br />Elements like Flyouts that slide in from off-screen and then slow down. |
+| `motionEasingOut`<br />`$pds-motion-easing-out`   | x: Time \| y: Progression<br /><ExampleStylesMotionCurve path='easing-out'/>   | Closing animations for Modals or Flyouts.<br />Elements sliding out of view fast.                                                                                |
 
 ## Examples
 
