@@ -632,7 +632,7 @@ describe('onDocumentKeydown()', () => {
   });
 });
 
-fdescribe('addNativeScrollAndResizeListeners()', () => {
+describe('addNativeScrollAndResizeListeners()', () => {
   const host = document.createElement('div');
   const table = document.createElement('div');
   table.attachShadow({ mode: 'open' });
