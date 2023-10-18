@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -93,16 +93,19 @@
     <main>
       <p-accordion heading="Some Heading" tag="h3">
         <p-text>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-          magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </p-text>
       </p-accordion>
       <p-accordion heading="Some Heading" tag="h3">
         <p-text>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-          magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </p-text>
       </p-accordion>
+
+      <p-button type="button">Open Banner</p-button>
+      <p-banner open="false" heading="Some Heading" description="Some Description"></p-banner>
     </main>
 
     <script>
@@ -121,6 +124,11 @@
         })
       );
 
+      const banner = document.querySelector('p-banner');
+      banner.addEventListener('dismiss', () => {
+        banner.open = false;
+      });
+      document.querySelector('p-button').addEventListener('click', () => (banner.open = true));
     </script>
     <!-- /END -->
   </body>

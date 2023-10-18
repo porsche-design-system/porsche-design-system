@@ -6,8 +6,7 @@ import {
   borderWidthBase,
   frostedGlassStyle,
   motionDurationShort,
-  motionDurationModerate,
-  motionDurationVeryLong,
+  motionDurationLong,
   motionEasingBase,
   motionEasingIn,
   motionEasingOut,
@@ -33,8 +32,11 @@ export const getTransitionRotateFast = (cssProperty: keyof PropertiesHyphen): st
 export const getTransitionEaseOutFast = (cssProperty: keyof PropertiesHyphen): string =>
   `${cssProperty} ${motionDurationShort} ${motionEasingOut}`;
 
-export const getTransitionEnterExitEaseIn = (cssProperty: keyof PropertiesHyphen): string =>
-  `${cssProperty} ${motionDurationModerate} ${motionEasingIn}`;
+export const getTransitionEaseOutLong = (cssProperty: keyof PropertiesHyphen): string =>
+  `${cssProperty} ${motionDurationLong} ${motionEasingOut}`;
+
+export const getTransitionEaseInLong = (cssProperty: keyof PropertiesHyphen): string =>
+  `${cssProperty} ${motionDurationLong} ${motionEasingIn}`;
 
 export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
 
