@@ -84,9 +84,7 @@ export class Popover {
   }
 
   public disconnectedCallback(): void {
-    if (!this.isNative) {
-      removeDocumentEventListener(this);
-    }
+    removeDocumentEventListener(this);
   }
 
   public render(): JSX.Element {
