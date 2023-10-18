@@ -64,16 +64,16 @@ const initPopoverWithinTable = (opts?: { direction: PopoverDirection }): Promise
   return setContentWithDesignSystem(
     page,
     `
-        <p-table style="position: absolute; top: 80%; left: 50vw; transform: translate(-50%); background: deeppink">
-          <p-table-head>
-            <p-table-head-row>
-              <p-table-head-cell
-                >Within table <p-popover direction="${direction}">Some Popover Content</p-popover>
-              </p-table-head-cell>
-              ${[...Array(10)].map((e, i) => `<p-table-head-cell>Column ${i}</p-table-head-cell>`)}
-            </p-table-head-row>
-          </p-table-head>
-        </p-table>`
+<p-table style="position: absolute; top: 80%; left: 50vw; transform: translate(-50%); background: deeppink">
+  <p-table-head>
+    <p-table-head-row>
+      <p-table-head-cell
+        >Within table <p-popover direction="${direction}">Some Popover Content</p-popover>
+      </p-table-head-cell>
+      ${[...Array(10)].map((e, i) => `<p-table-head-cell>Column ${i}</p-table-head-cell>`)}
+    </p-table-head-row>
+  </p-table-head>
+</p-table>`
   );
 };
 
