@@ -12,7 +12,7 @@ import {
   updatePopoverStyles,
   updateNativePopoverStyles,
   safeZonePx,
-  addNativeScrollListeners,
+  addNativeScrollAndResizeListeners,
 } from './popover-utils';
 import type { PopoverDirection, PopoverInternal } from './popover-utils';
 import * as popoverUtils from './popover-utils';
@@ -106,7 +106,7 @@ describe('updatePopoverStyles()', () => {
 
   it('should call isElementWithinViewport() with correct parameters', () => {
     const spy = jest.spyOn(popoverUtils, 'isElementWithinViewport');
-    updatePopoverStyles(host, spacer, popover, 'top', 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
     expect(spy).toBeCalledWith(spacer, popover, 'top');
   });
 
@@ -115,12 +115,12 @@ describe('updatePopoverStyles()', () => {
     const attachComponentCssSpy = jest.spyOn(utils, 'attachComponentCss');
 
     jest.spyOn(popoverUtils, 'isElementWithinViewport').mockImplementationOnce(() => true);
-    updatePopoverStyles(host, spacer, popover, 'top', 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
     expect(getAutoDirectionSpy).not.toBeCalled();
     expect(attachComponentCssSpy).not.toBeCalled();
 
     jest.spyOn(popoverUtils, 'isElementWithinViewport').mockImplementationOnce(() => false);
-    updatePopoverStyles(host, spacer, popover, 'top', 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
 
     expect(getAutoDirectionSpy).toBeCalledWith(spacer, popover);
     expect(attachComponentCssSpy).toBeCalledWith(host, getComponentCss, 'bottom', false, 'light');
@@ -128,7 +128,7 @@ describe('updatePopoverStyles()', () => {
 
   it('should call getPopoverMargin()', () => {
     const spy = jest.spyOn(popoverUtils, 'getPopoverMargin');
-    updatePopoverStyles(host, spacer, popover, 'top', 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
     expect(spy).toBeCalledWith(spacer, popover, 'top');
   });
 
@@ -136,7 +136,7 @@ describe('updatePopoverStyles()', () => {
     jest.spyOn(popoverUtils, 'getPopoverMargin').mockImplementationOnce(() => '1px');
     expect(popover.style.margin).toBe('0px');
 
-    updatePopoverStyles(host, spacer, popover, 'top', 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
     expect(popover.style.margin).toBe('1px');
   });
 });
@@ -632,7 +632,7 @@ describe('onDocumentKeydown()', () => {
   });
 });
 
-fdescribe('addNativeScrollListeners', () => {
+fdescribe('addNativeScrollAndResizeListeners()', () => {
   const host = document.createElement('div');
   const table = document.createElement('div');
   table.attachShadow({ mode: 'open' });
@@ -657,7 +657,7 @@ fdescribe('addNativeScrollListeners', () => {
     const windowRemoveEventListenerSpy = jest.spyOn(window, 'removeEventListener');
     const tableAddEventListenerSpy = jest.spyOn(tableScrollArea, 'addEventListener');
     const tableRemoveEventListenerSpy = jest.spyOn(tableScrollArea, 'removeEventListener');
-    addNativeScrollListeners(host, table, nativePopover);
+    addNativeScrollAndResizeListeners(host, table, nativePopover);
 
     expect(windowAddEventListenerSpy).toHaveBeenCalledTimes(2);
     expect(windowAddEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function), { once: true });

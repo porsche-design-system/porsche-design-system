@@ -2,7 +2,7 @@ import { Component, Element, forceUpdate, h, Host, type JSX, Prop, State } from 
 import type { PopoverAriaAttribute, PopoverDirection } from './popover-utils';
 import {
   addDocumentEventListener,
-  addNativeScrollListeners,
+  addNativeScrollAndResizeListeners,
   POPOVER_ARIA_ATTRIBUTES,
   POPOVER_DIRECTIONS,
   removeDocumentEventListener,
@@ -69,7 +69,7 @@ export class Popover {
 
   public componentDidRender(): void {
     if (this.isNative && this.spacer?.matches(':popover-open')) {
-      addNativeScrollListeners(this.host, this.table, this.spacer);
+      addNativeScrollAndResizeListeners(this.host, this.table, this.spacer);
       // Set new popover position depending on button position
       updateNativePopoverStyles(this.spacer, this.button);
       // Update popover styles with new position

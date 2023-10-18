@@ -173,7 +173,11 @@ export const onDocumentKeydown = (e: KeyboardEvent): void => {
   }
 };
 
-export const addNativeScrollListeners = (host: HTMLElement, table: HTMLElement, nativePopover: HTMLElement): void => {
+export const addNativeScrollAndResizeListeners = (
+  host: HTMLElement,
+  table: HTMLElement,
+  nativePopover: HTMLElement
+): void => {
   const tableScrollArea = table.shadowRoot
     .querySelector(getPrefixedTagNames(host).pScroller)
     .shadowRoot.querySelector('.scroll-area');
