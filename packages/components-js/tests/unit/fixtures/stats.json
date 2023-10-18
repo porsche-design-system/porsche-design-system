@@ -132,7 +132,7 @@
   {
     "chunkShortName": "main",
     "size": 73223,
-    "gzipSize": 24313
+    "gzipSize": 24315
   },
   {
     "chunkShortName": "marque",
@@ -166,8 +166,8 @@
   },
   {
     "chunkShortName": "popover",
-    "size": 9324,
-    "gzipSize": 3593
+    "size": 8614,
+    "gzipSize": 3249
   },
   {
     "chunkShortName": "radio-button-wrapper",
@@ -176,8 +176,8 @@
   },
   {
     "chunkShortName": "scroller",
-    "size": 8124,
-    "gzipSize": 3090
+    "size": 8177,
+    "gzipSize": 3102
   },
   {
     "chunkShortName": "segmented-control",
@@ -196,8 +196,8 @@
   },
   {
     "chunkShortName": "stepper-horizontal",
-    "size": 11514,
-    "gzipSize": 4648
+    "size": 11557,
+    "gzipSize": 4662
   },
   {
     "chunkShortName": "switch",
@@ -211,13 +211,13 @@
   },
   {
     "chunkShortName": "tabs",
-    "size": 6091,
-    "gzipSize": 2526
+    "size": 6134,
+    "gzipSize": 2531
   },
   {
     "chunkShortName": "tabs-bar",
-    "size": 10353,
-    "gzipSize": 4042
+    "size": 10396,
+    "gzipSize": 4053
   },
   {
     "chunkShortName": "tag",
