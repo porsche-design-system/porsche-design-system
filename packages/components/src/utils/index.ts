@@ -24,6 +24,7 @@ export * from './log';
 export * from './modal-flyout-utils';
 export { paramCaseToCamelCase } from './paramCaseToCamelCase';
 export * from './property-observer';
+export * from './scroller-popover-utils';
 export * from './scrolling';
 export * from './select';
 export * from './setScrollLock';

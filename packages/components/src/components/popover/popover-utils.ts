@@ -1,8 +1,7 @@
 import { Popover } from './popover';
-import { attachComponentCss, getPrefixedTagNames, isClickOutside } from '../../utils';
+import { attachComponentCss, getPrefixedTagNames, isClickOutside, scrollAreaClass } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import type { Theme } from '../../types';
-import { scrollAreaClass } from '../scroller/scroller-utils';
 
 export const POPOVER_DIRECTIONS = ['top', 'right', 'bottom', 'left'] as const;
 export type PopoverDirection = (typeof POPOVER_DIRECTIONS)[number];

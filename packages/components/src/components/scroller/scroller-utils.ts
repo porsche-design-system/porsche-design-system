@@ -1,4 +1,4 @@
-import { getHTMLElements, getScrollByX } from '../../utils';
+import { getHTMLElements, getScrollByX, scrollAreaClass } from '../../utils';
 
 export type ScrollerDirection = 'prev' | 'next';
 
@@ -19,8 +19,6 @@ export const SCROLL_INDICATOR_POSITIONS = ['top', 'center'] as const;
 /** @deprecated */
 export type ScrollerScrollIndicatorPosition = (typeof SCROLL_INDICATOR_POSITIONS)[number];
 export type ScrollerAlignScrollIndicator = ScrollerScrollIndicatorPosition;
-
-export const scrollAreaClass = 'scroll-area';
 
 export const getScrollPositionAfterPrevNextClick = (
   scrollAreaElement: HTMLElement,

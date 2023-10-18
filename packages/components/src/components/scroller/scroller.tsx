@@ -7,6 +7,7 @@ import {
   hasPropValueChanged,
   parseAndGetAriaAttributes,
   parseJSONAttribute,
+  scrollAreaClass,
   scrollElementTo,
   THEMES,
   validateProps,
@@ -31,7 +32,6 @@ import {
   isScrollable,
   SCROLL_INDICATOR_POSITIONS,
   SCROLLER_ARIA_ATTRIBUTES,
-  scrollAreaClass,
 } from './scroller-utils';
 
 const propTypes: PropTypes<typeof Scroller> = {
