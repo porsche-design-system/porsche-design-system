@@ -277,10 +277,6 @@
       }
     }
 
-    .demo {
-      width: 100%;
-    }
-
     &--overflow-x-visible {
       overflow-x: visible;
     }
@@ -326,12 +322,6 @@
       }
     }
 
-    .code-block {
-      &--framework :deep(pre) {
-        max-height: 40rem;
-      }
-    }
-
     &--fullscreen {
       position: fixed;
       inset: 0;
@@ -345,6 +335,22 @@
       .demo {
         margin: 0 (-$pds-spacing-static-large);
       }
+    }
+  }
+
+  .configurator {
+    :deep(select) {
+      min-height: 25px; // increase size of links for a11y wcag22aa compliance
+    }
+  }
+
+  .demo {
+    width: 100%;
+  }
+
+  .code-block {
+    &--framework :deep(pre) {
+      max-height: 40rem;
     }
   }
 
