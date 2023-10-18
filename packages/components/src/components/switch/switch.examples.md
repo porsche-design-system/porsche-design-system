@@ -47,6 +47,10 @@ interaction. When used with hidden label, it's best practice to provide a descri
 The `label` can be aligned to the `end` (default) or to the `start` in addition with enabled `stretch` property which is
 recommended on mobile views.
 
+<Notification heading="Deprecation hint" state="warning">
+  Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
+</Notification>
+
 <Playground :markup="alignLabelMarkup" :config="configInline">
   <SelectOptions v-model="alignLabel" :values="alignLabels" name="alignLabel"></SelectOptions>
 </Playground>

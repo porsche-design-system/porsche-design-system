@@ -47,6 +47,10 @@ Predefined colors associated with its theme are available but also inherit mode 
 
 ## Alignment
 
+<Notification heading="Deprecation hint" state="warning">
+  Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
+</Notification>
+
 <Playground :markup="alignMarkup" :config="config">
   <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
 </Playground>

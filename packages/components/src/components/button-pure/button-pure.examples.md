@@ -101,6 +101,10 @@ link to another icon hosted somewhere else, just set the whole icon path to the 
 
 The `label` can be aligned to the `end` (default) or to the `start` of the icon.
 
+<Notification heading="Deprecation hint" state="warning">
+  Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
+</Notification>
+
 <Playground :markup="alignLabelMarkup" :config="config">
   <SelectOptions v-model="alignLabel" :values="alignLabels" name="alignLabel"></SelectOptions>
 </Playground>

@@ -137,7 +137,7 @@ export const getComponentCss = (
               display: 'none',
             },
           }
-        : hasLabel && getLabelStyles('select', isDisabled, hideLabel, state, theme, undefined)
+        : hasLabel && getLabelStyles('select', isDisabled, hideLabel, state, theme)
     ),
     icon: {
       padding: `${inputYPadding} 15px`, // Horizontal padding spacingStaticMedium - 1px for visual balance

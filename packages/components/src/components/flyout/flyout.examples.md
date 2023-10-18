@@ -34,6 +34,10 @@ In order to get notified when the flyout gets closed by clicking the `x` button,
 
 The size of `p-flyout` adjusts itself to the content with a predefined min/max width.
 
+<Notification heading="Deprecation hint" state="warning">
+  Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
+</Notification>
+
 <Playground :frameworkMarkup="basicSample" :markup="basicSample['vanilla-js']" :config="config">
   <div class="select-container">
     <SelectOptions v-model="position" :values="positions" name="position"></SelectOptions>
