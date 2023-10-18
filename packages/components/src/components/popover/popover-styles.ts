@@ -22,6 +22,7 @@ import {
 } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
 import type { Theme } from '../../types';
+import { safeZonePx } from './popover-utils';
 
 const { canvasColor, canvasTextColor } = getHighContrastColors();
 
@@ -136,7 +137,6 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
 };
 
 export const getComponentCss = (direction: PopoverDirection, isNative: boolean, theme: Theme): string => {
-  const spacerBox = -16;
   const { hoverColor, focusColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
     hoverColor: hoverColorDark,
@@ -217,7 +217,7 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
             margin: 0,
             padding: 0,
           }
-        : getInsetJssStyle(spacerBox)),
+        : getInsetJssStyle(-safeZonePx)),
       position: 'absolute',
       zIndex: POPOVER_Z_INDEX,
       filter: `drop-shadow(0 0 16px ${shadowColor})`,
