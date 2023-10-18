@@ -23,7 +23,7 @@ const transitionTimingFunction = 'ease';
 export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
   `${cssProperty} ${transitionDuration} ${transitionTimingFunction}`;
 
-export const getTransitionHover = (cssProperty: keyof PropertiesHyphen): string =>
+export const getTransitionEasingBaseShort = (cssProperty: keyof PropertiesHyphen): string =>
   `${cssProperty} ${motionDurationShort} ${motionEasingBase}`;
 
 export const getTransitionRotateFast = (cssProperty: keyof PropertiesHyphen): string =>

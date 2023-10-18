@@ -8,7 +8,7 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   colorSchemeStyles,
-  getTransitionHover,
+  getTransitionEasingBaseShort,
   getTransitionRotateFast,
   getTransitionEaseOutFast,
 } from '../../styles';
@@ -96,7 +96,7 @@ export const getComponentCss = (
           },
           hoverMediaQuery({
             '&::before': {
-              transition: getTransitionHover('background-color'),
+              transition: getTransitionEasingBaseShort('background-color'),
             },
             '&:hover::before': {
               background: hoverColor,
