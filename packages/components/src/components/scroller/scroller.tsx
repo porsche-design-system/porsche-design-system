@@ -31,6 +31,7 @@ import {
   isScrollable,
   SCROLL_INDICATOR_POSITIONS,
   SCROLLER_ARIA_ATTRIBUTES,
+  scrollAreaClass,
 } from './scroller-utils';
 
 const propTypes: PropTypes<typeof Scroller> = {
@@ -183,7 +184,7 @@ export class Scroller {
 
     return (
       <div class="root">
-        <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
+        <div class={scrollAreaClass} ref={(el) => (this.scrollAreaElement = el)}>
           <div
             class="scroll-wrapper"
             role={parseAndGetAriaAttributes(this.aria)?.role || null}

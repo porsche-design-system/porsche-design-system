@@ -20,6 +20,8 @@ export const SCROLL_INDICATOR_POSITIONS = ['top', 'center'] as const;
 export type ScrollerScrollIndicatorPosition = (typeof SCROLL_INDICATOR_POSITIONS)[number];
 export type ScrollerAlignScrollIndicator = ScrollerScrollIndicatorPosition;
 
+export const scrollAreaClass = 'scroll-area';
+
 export const getScrollPositionAfterPrevNextClick = (
   scrollAreaElement: HTMLElement,
   direction: ScrollerDirection
@@ -30,7 +32,7 @@ export const getScrollPositionAfterPrevNextClick = (
 };
 
 export const getScrollerElements = (scrollerElement: HTMLElement): [HTMLElement, HTMLElement] => {
-  return getHTMLElements(scrollerElement.shadowRoot, '.scroll-area,.action-prev') as [HTMLElement, HTMLElement];
+  return getHTMLElements(scrollerElement.shadowRoot, `.${scrollAreaClass},.action-prev`) as [HTMLElement, HTMLElement];
 };
 
 export const isScrollable = (isPrevHidden: boolean, isNextHidden: boolean): boolean => {

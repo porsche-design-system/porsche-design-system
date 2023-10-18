@@ -2,6 +2,7 @@ import { Popover } from './popover';
 import { attachComponentCss, getPrefixedTagNames, isClickOutside } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import type { Theme } from '../../types';
+import { scrollAreaClass } from '../scroller/scroller-utils';
 
 export const POPOVER_DIRECTIONS = ['top', 'right', 'bottom', 'left'] as const;
 export type PopoverDirection = (typeof POPOVER_DIRECTIONS)[number];
@@ -180,7 +181,7 @@ export const addNativeScrollAndResizeListeners = (
 ): void => {
   const tableScrollArea = table.shadowRoot
     .querySelector(getPrefixedTagNames(host).pScroller)
-    .shadowRoot.querySelector('.scroll-area');
+    .shadowRoot.querySelector(`.${scrollAreaClass}`);
 
   const hidePopover = (): void => {
     nativePopover.hidePopover();
