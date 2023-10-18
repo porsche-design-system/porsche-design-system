@@ -23,7 +23,7 @@ Done** (DOD).
   - Unit tests for/with jsdom-polyfill (if modern browser APIs are used that are not available in jsdom)
   - Smoke tests (if adding new assets to our CDN)
 - Accessibility compliance
-  - WCAG 2.1 level AA
+  - WCAG 2.2 level AA
   - High Contrast Mode
   - 200% Text Zoom Support
 - Auto Dark Theme Support
