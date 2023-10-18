@@ -1,126 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for direction: bottom and theme: false 1`] = `
-":host {
-  position: relative !important;
-  display: inline-block !important;
-  color-scheme: light dark !important;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  margin: 0;
-}
-button {
-  display: block;
-  position: relative;
-  appearance: none;
-  background: transparent;
-  border: 0;
-  padding: 0;
-  outline: 0;
-  cursor: pointer;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  border-radius: 50%;
-}
-button::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 2px solid transparent;
-  border-radius: 50%;
-}
-button:focus::before {
-  border-color: #1A44EA;
-}
-button:focus:not(:focus-visible)::before {
-  border-color: transparent;
-}
-@media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
-  }
-  button:hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-
-.label {
-  position: absolute;
-  width: 0;
-  height: 1px;
-  text-indent: -999999px;
-}
-.icon {
-  display: inline-block;
-  transform: translate3d(0,0,0);
-}
-.spacer {
-  position: absolute;
-  top: -16px;
-  left: -16px;
-  right: -16px;
-  bottom: -16px;
-  z-index: 9999;
-  filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-  backdrop-filter: drop-shadow(0px 0px 0px transparent);
-  pointer-events: none;
-  animation: 240ms keyframes-fadeIn ease forwards;
-}
-.spacer::before {
-  content: "";
-  position: absolute;
-  border-style: solid;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 0 12px 12px;
-  border-color: transparent transparent #FFF;
-}
-.popover {
-  position: absolute;
-  max-width: min(90vw, 27rem);
-  width: max-content;
-  box-sizing: border-box;
-  background: #FFF;
-  padding: 8px 16px;
-  pointer-events: auto;
-  top: 100%;
-  left: 50%;
-  transform: translate3d(-50%, 0, 0);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  list-style-type: none;
-  color: #010205;
-  white-space: inherit;
-  border-radius: 4px;
-}
-@keyframes keyframes-fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}"
-`;
-
-exports[`getComponentCss() should return correct css for direction: bottom and theme: false 2`] = `
+exports[`getComponentCss() should return correct css for direction: bottom, isNative: false and theme: dark 1`] = `
 ":host {
   position: relative !important;
   display: inline-block !important;
@@ -240,7 +120,7 @@ button:focus:not(:focus-visible)::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: left and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: bottom, isNative: false and theme: light 1`] = `
 ":host {
   position: relative !important;
   display: inline-block !important;
@@ -325,11 +205,11 @@ button:focus:not(:focus-visible)::before {
   content: "";
   position: absolute;
   border-style: solid;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  border-width: 12px 0 12px 12px;
-  border-color: transparent transparent transparent #FFF;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 12px 12px;
+  border-color: transparent transparent #FFF;
 }
 .popover {
   position: absolute;
@@ -339,9 +219,9 @@ button:focus:not(:focus-visible)::before {
   background: #FFF;
   padding: 8px 16px;
   pointer-events: auto;
-  top: 50%;
-  right: 100%;
-  transform: translate3d(0, -50%, 0);
+  top: 100%;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -360,7 +240,7 @@ button:focus:not(:focus-visible)::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: left and theme: false 2`] = `
+exports[`getComponentCss() should return correct css for direction: left, isNative: false and theme: dark 1`] = `
 ":host {
   position: relative !important;
   display: inline-block !important;
@@ -480,7 +360,7 @@ button:focus:not(:focus-visible)::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: right and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: left, isNative: false and theme: light 1`] = `
 ":host {
   position: relative !important;
   display: inline-block !important;
@@ -566,10 +446,10 @@ button:focus:not(:focus-visible)::before {
   position: absolute;
   border-style: solid;
   top: 50%;
-  right: 0;
+  left: 0;
   transform: translateY(-50%);
-  border-width: 12px 12px 12px 0;
-  border-color: transparent #FFF transparent transparent;
+  border-width: 12px 0 12px 12px;
+  border-color: transparent transparent transparent #FFF;
 }
 .popover {
   position: absolute;
@@ -580,7 +460,7 @@ button:focus:not(:focus-visible)::before {
   padding: 8px 16px;
   pointer-events: auto;
   top: 50%;
-  left: 100%;
+  right: 100%;
   transform: translate3d(0, -50%, 0);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -600,7 +480,7 @@ button:focus:not(:focus-visible)::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: right and theme: false 2`] = `
+exports[`getComponentCss() should return correct css for direction: right, isNative: false and theme: dark 1`] = `
 ":host {
   position: relative !important;
   display: inline-block !important;
@@ -720,7 +600,7 @@ button:focus:not(:focus-visible)::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: top and theme: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: right, isNative: false and theme: light 1`] = `
 ":host {
   position: relative !important;
   display: inline-block !important;
@@ -805,11 +685,11 @@ button:focus:not(:focus-visible)::before {
   content: "";
   position: absolute;
   border-style: solid;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 12px 12px 0;
-  border-color: #FFF transparent transparent;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  border-width: 12px 12px 12px 0;
+  border-color: transparent #FFF transparent transparent;
 }
 .popover {
   position: absolute;
@@ -819,9 +699,9 @@ button:focus:not(:focus-visible)::before {
   background: #FFF;
   padding: 8px 16px;
   pointer-events: auto;
-  bottom: 100%;
-  left: 50%;
-  transform: translate3d(-50%, 0, 0);
+  top: 50%;
+  left: 100%;
+  transform: translate3d(0, -50%, 0);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -840,7 +720,7 @@ button:focus:not(:focus-visible)::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: top and theme: false 2`] = `
+exports[`getComponentCss() should return correct css for direction: top, isNative: false and theme: dark 1`] = `
 ":host {
   position: relative !important;
   display: inline-block !important;
@@ -960,7 +840,127 @@ button:focus:not(:focus-visible)::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: top and theme: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: top, isNative: false and theme: light 1`] = `
+":host {
+  position: relative !important;
+  display: inline-block !important;
+  color-scheme: light dark !important;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+p {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+}
+button {
+  display: block;
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  border-radius: 50%;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+button:focus::before {
+  border-color: #1A44EA;
+}
+button:focus:not(:focus-visible)::before {
+  border-color: transparent;
+}
+@media(hover:hover) {
+  button {
+    transition: background-color var(--p-transition-duration, .24s) ease;
+  }
+  button:hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
+
+.label {
+  position: absolute;
+  width: 0;
+  height: 1px;
+  text-indent: -999999px;
+}
+.icon {
+  display: inline-block;
+  transform: translate3d(0,0,0);
+}
+.spacer {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  z-index: 9999;
+  filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
+  backdrop-filter: drop-shadow(0px 0px 0px transparent);
+  pointer-events: none;
+  animation: 240ms keyframes-fadeIn ease forwards;
+}
+.spacer::before {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 12px 12px 0;
+  border-color: #FFF transparent transparent;
+}
+.popover {
+  position: absolute;
+  max-width: min(90vw, 27rem);
+  width: max-content;
+  box-sizing: border-box;
+  background: #FFF;
+  padding: 8px 16px;
+  pointer-events: auto;
+  bottom: 100%;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  list-style-type: none;
+  color: #010205;
+  white-space: inherit;
+  border-radius: 4px;
+}
+@keyframes keyframes-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}"
+`;
+
+exports[`getComponentCss() should return correct css for direction: top, isNative: true and theme: light 1`] = `
 ":host {
   position: relative !important;
   display: inline-block !important;
