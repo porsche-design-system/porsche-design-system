@@ -26,7 +26,8 @@ const getPopover = () => selectNode(page, 'p-popover >>> .popover');
 const getButton = () => selectNode(page, 'p-popover >>> button');
 const getSecondPopover = () => selectNode(page, 'p-popover.second >>> .popover');
 const getTableScroller = () => selectNode(page, 'p-table >>> p-scroller >>> .scroll-area');
-const isNativePopoverOpen = async () => (await getSpacer()).evaluate((el) => el.matches(':popover-open'));
+const isNativePopoverOpen = async (): Promise<boolean> =>
+  (await getSpacer()).evaluate((el) => el.matches(':popover-open'));
 
 const togglePopover = async (): Promise<void> => {
   const button = await getButton();
