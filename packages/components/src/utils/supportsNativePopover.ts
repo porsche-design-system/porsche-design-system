@@ -3,7 +3,13 @@
  *
  * @returns {boolean} `true` if the native Popover API is supported, `false` otherwise.
  */
-export const supportsNativePopover = (): boolean => HTMLElement.prototype.hasOwnProperty('popover');
+export const supportsNativePopover = (): boolean => {
+  try {
+    return HTMLElement.prototype.hasOwnProperty('popover');
+  } catch {
+    return false;
+  }
+};
 
 // determine it once
 const hasNativePopoverSupport = supportsNativePopover();
