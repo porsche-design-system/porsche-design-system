@@ -5,6 +5,12 @@ import type { ThemedColors } from './';
 import {
   borderWidthBase,
   frostedGlassStyle,
+  motionDurationShort,
+  motionDurationModerate,
+  motionDurationVeryLong,
+  motionEasingBase,
+  motionEasingIn,
+  motionEasingOut,
   themeDarkBackgroundShading,
   themeLightBackgroundShading,
   themeLightStateFocus,
@@ -17,6 +23,18 @@ const transitionTimingFunction = 'ease';
 
 export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
   `${cssProperty} ${transitionDuration} ${transitionTimingFunction}`;
+
+export const getTransitionHover = (cssProperty: keyof PropertiesHyphen): string =>
+  `${cssProperty} ${motionDurationShort} ${motionEasingBase}`;
+
+export const getTransitionRotateFast = (cssProperty: keyof PropertiesHyphen): string =>
+  `${cssProperty} ${motionDurationShort} ${motionEasingBase}`;
+
+export const getTransitionEaseOutFast = (cssProperty: keyof PropertiesHyphen): string =>
+  `${cssProperty} ${motionDurationShort} ${motionEasingOut}`;
+
+export const getTransitionEnterExitEaseIn = (cssProperty: keyof PropertiesHyphen): string =>
+  `${cssProperty} ${motionDurationModerate} ${motionEasingIn}`;
 
 export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
 

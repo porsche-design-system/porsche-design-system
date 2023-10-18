@@ -90,7 +90,20 @@
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main>
+      <p-accordion heading="Some Heading" tag="h3">
+        <p-text>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+          magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        </p-text>
+      </p-accordion>
+      <p-accordion heading="Some Heading" tag="h3">
+        <p-text>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+          magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        </p-text>
+      </p-accordion>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
@@ -100,6 +113,14 @@
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
         })
       );
+
+      const accordions = document.querySelectorAll('p-accordion');
+      accordions.forEach((accordion) =>
+        accordion.addEventListener('update', (e) => {
+          e.target.open = e.detail.open;
+        })
+      );
+
     </script>
     <!-- /END -->
   </body>
