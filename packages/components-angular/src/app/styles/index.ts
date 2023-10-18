@@ -7,6 +7,7 @@ import { StylesGradientExampleComponent } from './styles-gradient-example.compon
 import { StylesGridExampleComponent } from './styles-grid-example.component';
 import { StylesHoverExampleComponent } from './styles-hover-example.component';
 import { StylesMediaQueryExampleComponent } from './styles-media-query-example.component';
+import { StylesMotionExampleComponent } from './styles-motion-example.component';
 import { StylesSkeletonExampleComponent } from './styles-skeleton-example.component';
 import { StylesSpacingExampleComponent } from './styles-spacing-example.component';
 import { StylesThemeExampleComponent } from './styles-theme-example.component';
@@ -22,6 +23,7 @@ export const examples = [
   StylesGridExampleComponent,
   StylesHoverExampleComponent,
   StylesMediaQueryExampleComponent,
+  StylesMotionExampleComponent,
   StylesSkeletonExampleComponent,
   StylesSpacingExampleComponent,
   StylesThemeExampleComponent,
@@ -37,6 +39,7 @@ export * from './styles-gradient-example.component';
 export * from './styles-grid-example.component';
 export * from './styles-hover-example.component';
 export * from './styles-media-query-example.component';
+export * from './styles-motion-example.component';
 export * from './styles-skeleton-example.component';
 export * from './styles-spacing-example.component';
 export * from './styles-theme-example.component';
