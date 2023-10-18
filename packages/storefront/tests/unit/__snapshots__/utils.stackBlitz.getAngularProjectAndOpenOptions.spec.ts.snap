@@ -320,7 +320,7 @@ exports[`getIndexHtml() should return correct markup with styles 1`] = `
 exports[`getMainTs() should return correct markup 1`] = `
 "import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
-import 'zone.js/dist/zone';
+import 'zone.js';
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)

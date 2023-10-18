@@ -18,12 +18,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Popover` and `Modal` support theme dark and auto
   ([#2789](https://github.com/porsche-design-system/porsche-design-system/pull/2789))
-- Styles: `getSkeletonStyle()` and `pds-skeleton`
+- Styles: `getSkeletonStyle()` and `pds-skeleton()`
   ([#2796](https://github.com/porsche-design-system/porsche-design-system/pull/2796))
+- Styles: `motionDuration{Short|Moderate|Long|VeryLong}`, `motionEasing{Base|In|Out}`, and
+  `$pds-motion-duration-{short|moderate|long|very-long}`, `$pds-motion-easing-{base|in|out}`
+  ([#2791](https://github.com/porsche-design-system/porsche-design-system/pull/2791))
 
 #### Changed
 
-- Styles: `themeDarkBackgroundShading` and `pds-theme-dark-background-shading` color
+- Styles: `themeDarkBackgroundShading` and `$pds-theme-dark-background-shading` color
   ([#2789](https://github.com/porsche-design-system/porsche-design-system/pull/2789))
 
 #### Fixed
@@ -41,7 +44,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- Styles: `gridStyles` and `pds-grid` support basic usage inside `Flyout` component
+- Styles: `gridStyles` and `pds-grid()` support basic usage inside `Flyout` component
   ([#2756](https://github.com/porsche-design-system/porsche-design-system/pull/2756))
 
 #### Fixed
@@ -369,7 +372,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Wordmark`, `Crest` and `Model Signature` respect parent width/height
   ([#2479](https://github.com/porsche-design-system/porsche-design-system/pull/2479))
 - `Button Tile`, `Link Tile` and `Link Tile Model Signature` are using correct border radius of
-  `pds-border-radius-large` ([#2473](https://github.com/porsche-design-system/porsche-design-system/pull/2473))
+  `$pds-border-radius-large` ([#2473](https://github.com/porsche-design-system/porsche-design-system/pull/2473))
 - `Text Field Wrapper` with `input type="search"` has better accessibility for clear button
   ([#2476](https://github.com/porsche-design-system/porsche-design-system/pull/2476))
 - `Accordion` layout shift with nested accordions
@@ -381,7 +384,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- Styles: `borderRadiusLarge` and `pds-border-radius-large` are exposing correct value
+- Styles: `borderRadiusLarge` and `$pds-border-radius-large` are exposing correct value
   ([#2463](https://github.com/porsche-design-system/porsche-design-system/pull/2463))
 
 ### [3.0.0-alpha.6] - 2023-04-06
@@ -534,8 +537,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Styles: ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
   - `gridWide`
-  - `gridWideColumnStart` and `pds-grid-wide-column-start`
-  - `gridWideColumnEnd` and `pds-grid-wide-column-end`
+  - `gridWideColumnStart` and `$pds-grid-wide-column-start`
+  - `gridWideColumnEnd` and `$pds-grid-wide-column-end`
   - `gridNarrowOffset`, `gridNarrowOffsetBase`, `gridNarrowOffsetS`, `gridNarrowOffsetXXL` and
     `$pds-grid-narrow-offset-base`, `$pds-grid-narrow-offset-s`, `$pds-grid-narrow-offset-xxl`
   - `gridBasicOffset`, `gridBasicOffsetBase`, `gridBasicOffsetS`, `gridBasicOffsetXXL` and
@@ -561,7 +564,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- Styles: `gridStyles` and `pds-grid` are supporting an additional column range called `wide`
+- Styles: `gridStyles` and `pds-grid()` are supporting an additional column range called `wide`
   ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
 - Styles: SCSS version needs to be imported by `@porsche-design-system/components-js/styles` instead of
   `@porsche-design-system/components-js/styles/scss`
@@ -571,9 +574,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Banner`: CSS variable `--p-banner-position-type`
   ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
-- Styles: `gridSafeZone`, `gridSafeZoneBase`, `gridSafeZoneXXL` and `pds-grid-safe-zone-base`, `pds-grid-safe-zone-xxl`
-  ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
-- Styles: `gridWidth`, `gridWidthMin`, `gridWidthMax` and `pds-grid-width-min`, `pds-grid-width-max`
+- Styles: `gridSafeZone`, `gridSafeZoneBase`, `gridSafeZoneXXL` and `$pds-grid-safe-zone-base`,
+  `$pds-grid-safe-zone-xxl` ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
+- Styles: `gridWidth`, `gridWidthMin`, `gridWidthMax` and `$pds-grid-width-min`, `$pds-grid-width-max`
   ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
 
 #### 🤖 Property deprecations 🤖
@@ -843,11 +846,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Display` supports value `small` for prop `size`
 - Partials: `getInitialStyles` supports multi prefix, e.g.
   `getInitialStyles({ prefix: ['', 'some-prefix', 'another-prefix'] });`
-- Styles: `displaySmallStyle` and `pds-display-small`
-- Styles: `textXXSmallStyle` and `pds-text-xx-small`
+- Styles: `displaySmallStyle` and `$pds-display-small`
+- Styles: `textXXSmallStyle` and `$pds-text-xx-small`
 - Styles: `fontSizeDisplaySmall` and `$pds-font-size-display-small`
 - Styles: `fontSizeTextXXSmall` and `$pds-font-size-text-xx-small`
-- Styles: `getHoverStyle` and `pds-hover`
+- Styles: `getHoverStyle` and `pds-hover()`
 - `Banner` has `heading` and `description` prop as well as `slot="heading"` and deprecated `slot="title"`
 - Custom events have consistent names across components and deprecated old event names
   - `Accordion` emits `change` and deprecated `accordionChange` event
@@ -884,7 +887,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Display` uses font-weight regular and font-style normal
 - Partials: `getInitialStyles` matches new design language
 - Partials: All component related, slotted Light DOM styles have been moved to `getInitialStyles`
-- Styles: `getFocusStyle` and `pds-focus` doesn't need `theme` parameter anymore
+- Styles: `getFocusStyle` and `pds-focus()` doesn't need `theme` parameter anymore
 - Styles: `breakpoint{Base|XS|S|M|L|XL|XXL}` and `$pds-breakpoint-{base|xs|s|m|l|xl|xxl}` are provided as number without
   unit (px)
 - `Link Tile` matches new design language
@@ -903,7 +906,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Removed
 
 - `Heading`: value `xxx-large` for prop `size`
-- Styles: `headingXXXLargeStyle` and `pds-heading-xxx-large`
+- Styles: `headingXXXLargeStyle` and `$pds-heading-xxx-large`
 - Styles: `fontSizeHeadingXXLarge` and `$pds-font-size-heading-xx-large`
 
 ### [3.0.0-alpha.2] - 2023-02-27
@@ -965,8 +968,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Stepper Horizontal` matches new design language
 - Styles: Optimize design tokens "spacing", "typography" and "theme" provided by styles sub-package
   `@porsche-design-system/components-{js|angular|react|vue}/styles`
-- Styles: Use calc() instead of max() to calculate padding for `gridStyle` (JS) and `pds-grid` (SCSS)
-- Styles: `gridStyle` (JS) and `pds-grid` (SCSS) uses optimized grid gap
+- Styles: Use calc() instead of max() to calculate padding for `gridStyle` (JS) and `pds-grid()` (SCSS)
+- Styles: `gridStyle` (JS) and `pds-grid()` (SCSS) uses optimized grid gap
 
 ### [3.0.0-alpha.0] - 2023-02-08
 
