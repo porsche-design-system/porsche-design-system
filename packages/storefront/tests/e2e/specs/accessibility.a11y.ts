@@ -44,7 +44,7 @@ it('should have successfully extracted :root styles', () => {
   expect(rootStyles).toContain('--p-animation-duration: 0s');
 });
 
-fdescribe('outside main element', () => {
+describe('outside main element', () => {
   const excludeSelector = 'main';
 
   it('should have no accessibility issues on front page', async () => {
