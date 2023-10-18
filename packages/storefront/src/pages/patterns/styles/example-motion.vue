@@ -2,30 +2,30 @@
   <div class="wrapper">
     <h3 class="heading">Moving</h3>
     <div
-      :class="{ 'tile tile--moving': true, 'tile--moving--active': movingIsActive }"
+      :class="{ 'tile tile--moving': true, 'tile--moving--active': isMovingActive }"
       class="tile tile--moving"
-      @click="() => (movingIsActive = !movingIsActive)"
+      @click="() => (isMovingActive = !isMovingActive)"
     >
       play
     </div>
     <h3 class="heading">Enter / Exit</h3>
     <div
-      :class="{ 'tile tile--enter-exit': true, 'tile--enter-exit--active': enterExitIsActive }"
-      @click="() => (enterExitIsActive = !enterExitIsActive)"
+      :class="{ 'tile tile--enter-exit': true, 'tile--enter-exit--active': isEnterExitActive }"
+      @click="() => (isEnterExitActive = !isEnterExitActive)"
     >
       play
     </div>
     <h3 class="heading">Show / Hide</h3>
     <div
-      :class="{ 'tile tile--show-hide': true, 'tile--show-hide--active': showHideIsActive }"
-      @click="() => (showHideIsActive = !showHideIsActive)"
+      :class="{ 'tile tile--show-hide': true, 'tile--show-hide--active': isShowHideActive }"
+      @click="() => (isShowHideActive = !isShowHideActive)"
     >
       play
     </div>
     <h3 class="heading">Expand</h3>
     <div
-      :class="{ 'tile tile--expand': true, 'tile--expand--active': expandIsActive }"
-      @click="() => (expandIsActive = !expandIsActive)"
+      :class="{ 'tile tile--expand': true, 'tile--expand--active': isExpandActive }"
+      @click="() => (isExpandActive = !isExpandActive)"
     >
       play
     </div>
@@ -33,15 +33,15 @@
 </template>
 
 <script lang="ts">
-  import Vue, { ref } from 'vue';
+  import Vue from 'vue';
   import Component from 'vue-class-component';
 
   @Component
   export default class ExampleStylesMotion extends Vue {
-    movingIsActive = ref(false);
-    enterExitIsActive = ref(false);
-    showHideIsActive = ref(false);
-    expandIsActive = ref(false);
+    isMovingActive = false;
+    isEnterExitActive = false;
+    isShowHideActive = false;
+    isExpandActive = false;
   }
 </script>
 
@@ -89,16 +89,12 @@
 
     &--enter-exit {
       transform: translateY(0px);
-      transition-property: opacity, transform;
-      transition-duration: $pds-motion-duration-moderate;
-      transition-timing-function: $pds-motion-easing-in;
+      transition: opacity $pds-motion-duration-moderate $pds-motion-easing-in,
+        transform $pds-motion-duration-moderate $pds-motion-easing-in;
 
       &--active {
         opacity: 0;
         transform: translateY(40%);
-        transition-property: opacity, transform;
-        transition-duration: $pds-motion-duration-short;
-        transition-timing-function: $pds-motion-easing-out;
       }
     }
 

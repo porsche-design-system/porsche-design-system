@@ -45,24 +45,15 @@ const TileBase = styled.div({
 });
 
 const MotionMoving = styled(TileBase)((props: { active: boolean }) => ({
-  transform: 'translateX(-200px)',
+  transform: props.active ? 'translateX(200px)' : 'translateX(-200px)',
   transition: `transform ${motionDurationShort} ${motionEasingBase}`,
-  ...(props.active && {
-    transform: 'translateX(200px)',
-  }),
 }));
 
 const MotionEnterExit = styled(TileBase)((props: { active: boolean }) => ({
-  transform: 'translateY(0px)',
-  transitionProperty: 'opacity, transform',
-  transitionDuration: motionDurationModerate,
-  transitionTimingFunction: motionEasingIn,
+  transform: props.active ? 'translateY(40%)' : 'translateY(0px)',
+  transition: `opacity ${motionDurationModerate} ${motionEasingIn}, transform ${motionDurationModerate} ${motionEasingIn}`,
   ...(props.active && {
     opacity: '0',
-    transform: 'translateY(40%)',
-    transitionProperty: 'opacity, transform',
-    transitionDuration: motionDurationShort,
-    transitionTimingFunction: motionEasingOut,
   }),
 }));
 
@@ -74,36 +65,37 @@ const MotionShowHide = styled(TileBase)((props: { active: boolean }) => ({
 }));
 
 const MotionExpand = styled(TileBase)((props: { active: boolean }) => ({
-  transition: `height ${motionDurationShort} ${motionEasingIn}`,
+  transition: props.active
+    ? `height ${motionDurationModerate} ${motionEasingBase}`
+    : `height ${motionDurationShort} ${motionEasingIn}`,
   ...(props.active && {
     height: '200px',
-    transition: `height ${motionDurationModerate} ${motionEasingBase}`,
   }),
 }));
 
 export const StylesMotionExample = (): JSX.Element => {
-  const [movingIsActive, setMovingIsActive] = useState(false);
-  const [enterExitIsActive, setEnterExitIsActive] = useState(false);
-  const [showHideIsActive, setShowHideIsActive] = useState(false);
-  const [expandIsActive, setExpandIsActive] = useState(false);
+  const [isMovingActive, setIsMovingActive] = useState(false);
+  const [isEnterExitActive, setIsEnterExitActive] = useState(false);
+  const [isShowHideActive, setIsShowHideActive] = useState(false);
+  const [isExpandActive, setIsExpandActive] = useState(false);
 
   return (
     <>
       <Wrapper>
         <Heading>Moving</Heading>
-        <MotionMoving active={movingIsActive} onClick={() => setMovingIsActive(!movingIsActive)}>
+        <MotionMoving active={isMovingActive} onClick={() => setIsMovingActive((prev) => !prev)}>
           play
         </MotionMoving>
         <Heading>Enter / Exit</Heading>
-        <MotionEnterExit active={enterExitIsActive} onClick={() => setEnterExitIsActive(!enterExitIsActive)}>
+        <MotionEnterExit active={isEnterExitActive} onClick={() => setIsEnterExitActive((prev) => !prev)}>
           play
         </MotionEnterExit>
         <Heading>Show / Hide</Heading>
-        <MotionShowHide active={showHideIsActive} onClick={() => setShowHideIsActive(!showHideIsActive)}>
+        <MotionShowHide active={isShowHideActive} onClick={() => setIsShowHideActive((prev) => !prev)}>
           play
         </MotionShowHide>
         <Heading>Expand</Heading>
-        <MotionExpand active={expandIsActive} onClick={() => setExpandIsActive(!expandIsActive)}>
+        <MotionExpand active={isExpandActive} onClick={() => setIsExpandActive((prev) => !prev)}>
           play
         </MotionExpand>
       </Wrapper>

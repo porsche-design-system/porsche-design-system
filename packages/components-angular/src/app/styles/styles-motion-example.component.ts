@@ -46,16 +46,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
         &--enter-exit {
           transform: translateY(0px);
-          transition-property: opacity, transform;
-          transition-duration: $pds-motion-duration-moderate;
-          transition-timing-function: $pds-motion-easing-in;
+          transition: opacity $pds-motion-duration-moderate $pds-motion-easing-in,
+            transform $pds-motion-duration-moderate $pds-motion-easing-in;
 
           &--active {
             opacity: 0;
             transform: translateY(40%);
-            transition-property: opacity, transform;
-            transition-duration: $pds-motion-duration-short;
-            transition-timing-function: $pds-motion-easing-out;
           }
         }
 
@@ -82,29 +78,29 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <div class="wrapper">
       <h3 class="heading">Moving</h3>
       <div
-        [ngClass]="['tile tile--moving', movingIsActive ? ' tile--moving--active' : '']"
-        (click)="movingIsActive = !movingIsActive"
+        [ngClass]="{ 'tile tile--moving': true, 'tile--moving--active': isMovingActive }"
+        (click)="isMovingActive = !isMovingActive"
       >
         play
       </div>
       <h3 class="heading">Enter / Exit</h3>
       <div
-        [ngClass]="['tile tile--enter-exit', enterExitIsActive ? ' tile--enter-exit--active' : '']"
-        (click)="enterExitIsActive = !enterExitIsActive"
+        [ngClass]="{ 'tile tile--enter-exit': true, ' tile--enter-exit--active': isEnterExitActive }"
+        (click)="isEnterExitActive = !isEnterExitActive"
       >
         play
       </div>
       <h3 class="heading">Show / Hide</h3>
       <div
-        [ngClass]="['tile tile--show-hide', showHideIsActive ? ' tile--show-hide--active' : '']"
-        (click)="showHideIsActive = !showHideIsActive"
+        [ngClass]="{ 'tile tile--show-hide': true, ' tile--show-hide--active': isShowHideActive }"
+        (click)="isShowHideActive = !isShowHideActive"
       >
         play
       </div>
       <h3 class="heading">Expand</h3>
       <div
-        [ngClass]="['tile tile--expand', expandIsActive ? ' tile--expand--active' : '']"
-        (click)="expandIsActive = !expandIsActive"
+        [ngClass]="{ 'tile tile--expand': true, ' tile--expand--active': isExpandActive }"
+        (click)="isExpandActive = !isExpandActive"
       >
         play
       </div>
@@ -113,8 +109,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StylesMotionExampleComponent {
-  movingIsActive = false;
-  enterExitIsActive = false;
-  showHideIsActive = false;
-  expandIsActive = false;
+  isMovingActive = false;
+  isEnterExitActive = false;
+  isShowHideActive = false;
+  isExpandActive = false;
 }

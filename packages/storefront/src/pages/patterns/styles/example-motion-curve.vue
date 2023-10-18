@@ -51,7 +51,7 @@
 
   @Component
   export default class ExampleStylesMotionCurve extends Vue {
-    @Prop({ default: 'easing-base' }) public path: string;
+    @Prop({ default: 'easing-base' }) public path: 'easing-base' | 'easing-in' | 'easing-out';
     motionDurationVeryLong = motionDurationVeryLong;
     themeDarkBackgroundBase = themeDarkBackgroundBase;
     themeLightBackgroundBase = themeLightBackgroundBase;
@@ -72,13 +72,13 @@
     get keySplines(): string {
       switch (this.path) {
         case 'easing-base':
-          return this.removeCubicBezierFunction(motionEasingBase);
+          return this.extractEasingValues(motionEasingBase);
         case 'easing-in':
-          return this.removeCubicBezierFunction(motionEasingIn);
+          return this.extractEasingValues(motionEasingIn);
         case 'easing-out':
-          return this.removeCubicBezierFunction(motionEasingOut);
+          return this.extractEasingValues(motionEasingOut);
         default:
-          return this.removeCubicBezierFunction(motionEasingBase);
+          return this.extractEasingValues(motionEasingBase);
       }
     }
 
@@ -90,7 +90,7 @@
       return (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark()) || this.storefrontTheme === 'dark';
     }
 
-    removeCubicBezierFunction = (easingFunction: string): string => {
+    extractEasingValues = (easingFunction: string): string => {
       return easingFunction.replace(/.+\((.+)\)/g, '$1');
     };
   }
