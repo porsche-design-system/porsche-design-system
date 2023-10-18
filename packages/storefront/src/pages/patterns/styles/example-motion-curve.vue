@@ -59,13 +59,10 @@
     get easingPath(): string {
       switch (this.path) {
         case 'easing-base':
-          console.log('easing-base');
           return 'M25,225 C65,115 185,115 225,25';
         case 'easing-in':
-          console.log('easing-in');
           return 'M25,225 C25,225 65,25 225,25';
         case 'easing-out':
-          console.log('easing-out');
           return 'M25,225 C65,225 185,25 225,25';
       }
     }
@@ -73,11 +70,11 @@
     get keySplines(): string {
       switch (this.path) {
         case 'easing-base':
-          return motionEasingBase.replace(/.+\((.+)\)/g, '$1');
+          return this.removeCubicBezierFunction(motionEasingBase);
         case 'easing-in':
-          return motionEasingIn.replace(/.+\((.+)\)/g, '$1');
+          return this.removeCubicBezierFunction(motionEasingIn);
         case 'easing-out':
-          return motionEasingOut.replace(/.+\((.+)\)/g, '$1');
+          return this.removeCubicBezierFunction(motionEasingOut);
       }
     }
 
@@ -88,6 +85,10 @@
     get isThemeDark(): boolean {
       return (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark()) || this.storefrontTheme === 'dark';
     }
+
+    removeCubicBezierFunction = (easingFunction: string): string => {
+      return easingFunction.replace(/.+\((.+)\)/g, '$1');
+    };
   }
 </script>
 

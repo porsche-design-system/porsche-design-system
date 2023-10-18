@@ -44,7 +44,7 @@ const TileBase = styled.div({
   cursor: 'pointer',
 });
 
-const MotionMoving = styled(TileBase)([], (props) => ({
+const MotionMoving = styled(TileBase)((props) => ({
   transform: 'translateX(-200px)',
   transition: `transform ${motionDurationShort} ${motionEasingBase}`,
   ...(props.active && {
@@ -52,7 +52,7 @@ const MotionMoving = styled(TileBase)([], (props) => ({
   }),
 }));
 
-const MotionEnterExit = styled(TileBase)([], (props) => ({
+const MotionEnterExit = styled(TileBase)((props) => ({
   transform: 'translateY(0px)',
   transitionProperty: 'opacity, transform',
   transitionDuration: motionDurationModerate,
@@ -66,14 +66,14 @@ const MotionEnterExit = styled(TileBase)([], (props) => ({
   }),
 }));
 
-const MotionShowHide = styled(TileBase)([], (props) => ({
+const MotionShowHide = styled(TileBase)((props) => ({
   transition: `opacity ${motionDurationLong} ${motionEasingBase}`,
   ...(props.active && {
     opacity: '0',
   }),
 }));
 
-const MotionExpand = styled(TileBase)([], (props) => ({
+const MotionExpand = styled(TileBase)((props) => ({
   transition: `height ${motionDurationShort} ${motionEasingIn}`,
   ...(props.active && {
     height: '200px',
