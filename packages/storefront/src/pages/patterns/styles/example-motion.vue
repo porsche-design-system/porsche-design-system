@@ -95,6 +95,8 @@
       &--active {
         opacity: 0;
         transform: translateY(40%);
+        transition: opacity $pds-motion-duration-short $pds-motion-easing-out,
+          transform $pds-motion-duration-short $pds-motion-easing-out;
       }
     }
 

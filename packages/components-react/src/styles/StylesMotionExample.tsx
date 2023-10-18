@@ -51,7 +51,9 @@ const MotionMoving = styled(TileBase)((props: { active: boolean }) => ({
 
 const MotionEnterExit = styled(TileBase)((props: { active: boolean }) => ({
   transform: props.active ? 'translateY(40%)' : 'translateY(0px)',
-  transition: `opacity ${motionDurationModerate} ${motionEasingIn}, transform ${motionDurationModerate} ${motionEasingIn}`,
+  transition: props.active
+    ? `opacity ${motionDurationShort} ${motionEasingOut}, transform ${motionDurationShort} ${motionEasingOut}`
+    : `opacity ${motionDurationModerate} ${motionEasingIn}, transform ${motionDurationModerate} ${motionEasingIn}`,
   ...(props.active && {
     opacity: '0',
   }),
