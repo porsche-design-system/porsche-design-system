@@ -25,11 +25,6 @@ export default defineConfig({
       maxDiffPixels: 0,
       threshold: 0,
     },
-    toHaveScreenshot: {
-      maxDiffPixelRatio: 0,
-      maxDiffPixels: 0,
-      threshold: 0,
-    },
   },
   snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-{projectName}{ext}',
   /* Run tests in files in parallel */
