@@ -12,11 +12,11 @@ import {
 import {
   AllowedTypes,
   attachComponentCss,
+  findClosestComponent,
+  getHasNativePopoverSupport,
   getPrefixedTagNames,
   hasPropValueChanged,
-  findClosestComponent,
   parseAndGetAriaAttributes,
-  supportsNativePopover,
   THEMES,
   validateProps,
 } from '../../utils';
@@ -129,7 +129,7 @@ export class Popover {
   };
 
   private detectNativeCase = (): void => {
-    if (supportsNativePopover()) {
+    if (getHasNativePopoverSupport()) {
       this.parentTableElement = findClosestComponent(this.host, 'pTable');
       if (!!this.parentTableElement) {
         this.isNative = true;
