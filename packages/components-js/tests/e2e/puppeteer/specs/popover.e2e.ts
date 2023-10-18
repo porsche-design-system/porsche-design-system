@@ -386,7 +386,7 @@ describe('lifecycle', () => {
 });
 
 describe('native', () => {
-  it('should not render native when used outside of table', async () => {
+  it('should not render native popover when used outside of table', async () => {
     await initPopover();
     await togglePopover();
     const button = await getButton();
