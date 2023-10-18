@@ -57,7 +57,7 @@ export class Popover {
   private button: HTMLButtonElement;
 
   private isNative: boolean = false;
-  private table: HTMLElement;
+  private parentTableElement: HTMLElement;
 
   public connectedCallback(): void {
     addDocumentEventListener(this);
@@ -70,7 +70,7 @@ export class Popover {
 
   public componentDidRender(): void {
     if (this.isNative && this.spacer?.matches(':popover-open')) {
-      addNativeScrollAndResizeListeners(this.host, this.table, this.spacer);
+      addNativeScrollAndResizeListeners(this.host, this.parentTableElement, this.spacer);
       // Set new popover position depending on button position
       updateNativePopoverStyles(this.spacer, this.button);
       // Update popover styles with new position
@@ -132,8 +132,8 @@ export class Popover {
 
   private detectNativeCase = (): void => {
     if (supportsNativePopover()) {
-      this.table = findClosestComponent(this.host, 'pTable');
-      if (!!this.table) {
+      this.parentTableElement = findClosestComponent(this.host, 'pTable');
+      if (!!this.parentTableElement) {
         this.isNative = true;
       }
     }
