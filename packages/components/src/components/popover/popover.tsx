@@ -73,11 +73,11 @@ export class Popover {
       // Set new popover position depending on button position
       updateNativePopoverStyles(this.spacer, this.button);
       // Update popover styles with new position
-      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme, this.isNative);
+      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.isNative, this.theme);
     } else {
       if (this.open) {
         // calculate / update position only possible after render
-        updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme);
+        updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, false, this.theme);
       }
     }
   }
