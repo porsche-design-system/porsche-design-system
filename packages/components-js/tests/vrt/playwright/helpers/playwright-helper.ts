@@ -140,22 +140,18 @@ export const setupScenario = async (
     });
   }
 
-  if (forceDirMode) {
-    const cdpSession = await page.context().newCDPSession(page);
-    const { root } = await cdpSession.send('DOM.getDocument');
-    await cdpSession.send('DOM.setAttributeValue', {
-      nodeId: root.children[0].nodeId, // root is #document so first child is html node
-      name: 'dir',
-      value: forceDirMode,
-    });
-  }
-
   await page.setViewportSize({ width: viewportWidth, height: 600 });
   await page.goto(url);
   await waitForComponentsReady(page);
 
   if (forceComponentTheme) {
     await waitForForcedComponentTheme(page, forceComponentTheme);
+  }
+
+  if (forceDirMode) {
+    await page.evaluate((forceDirMode) => {
+      document.querySelector('html').setAttribute('dir', forceDirMode);
+    }, forceDirMode);
   }
 
   if (scalePageFontSize) {
