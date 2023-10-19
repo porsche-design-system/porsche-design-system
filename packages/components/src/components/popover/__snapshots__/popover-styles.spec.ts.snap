@@ -1053,9 +1053,13 @@ button:focus:not(:focus-visible)::before {
 
 .label {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .icon {
   display: inline-block;
