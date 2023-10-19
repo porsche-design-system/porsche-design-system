@@ -18,15 +18,21 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 import { isThemeDark } from '../utils';
+import type * as fromMotion from '@porsche-design-system/utilities-v2/dist/esm/motion';
 
-type MotionDuration = 'short' | 'moderate' | 'long' | 'very-long';
-type MotionEasing = 'base' | 'in' | 'out';
+type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
+type MotionDurationKeyFinal = WithoutMotionDurationPrefix<keyof typeof fromMotion>;
+type WithoutMotionEasingPrefix<T> = T extends `motionEasing${infer P}` ? Uncapitalize<P> : never;
+type MotionEasingKeyFinal = WithoutMotionEasingPrefix<keyof typeof fromMotion>;
 
-const motionTokenMap = {
+const motionDurationMap: Record<MotionDurationKeyFinal, string> = {
   short: motionDurationShort,
   moderate: motionDurationModerate,
   long: motionDurationLong,
-  'very-long': motionDurationVeryLong,
+  veryLong: motionDurationVeryLong,
+};
+
+const motionEasingMap: Record<MotionEasingKeyFinal, string> = {
   base: motionEasingBase,
   in: motionEasingIn,
   out: motionEasingOut,
@@ -34,11 +40,11 @@ const motionTokenMap = {
 
 export const getTransition = (
   cssProperty: keyof PropertiesHyphen,
-  duration?: MotionDuration,
-  ease?: MotionEasing
+  duration: MotionDurationKeyFinal,
+  easing?: MotionEasingKeyFinal
 ): string =>
-  `${cssProperty} var(--p-transition-duration, ${motionTokenMap[duration as keyof typeof motionTokenMap]}) ${
-    motionTokenMap[ease as keyof typeof motionTokenMap]
+  `${cssProperty} var(--p-transition-duration, ${motionDurationMap[duration as keyof typeof motionDurationMap]}) ${
+    easing ? motionEasingMap[easing as keyof typeof motionEasingMap] : ''
   }`;
 
 export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
