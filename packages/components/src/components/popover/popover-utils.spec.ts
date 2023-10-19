@@ -10,6 +10,9 @@ import {
   registeredPopovers,
   removeDocumentEventListener,
   updatePopoverStyles,
+  updateNativePopoverStyles,
+  safeZonePx,
+  addNativeScrollAndResizeListeners,
 } from './popover-utils';
 import type { PopoverDirection, PopoverInternal } from './popover-utils';
 import * as popoverUtils from './popover-utils';
@@ -60,7 +63,7 @@ const rectExceededBottom: Rect = {
   right: 450,
 };
 
-const mockBoundingClientRect = (element: HTMLDivElement, opts: Rect): void => {
+const mockBoundingClientRect = (element: HTMLDivElement | HTMLButtonElement, opts: Rect): void => {
   jest.spyOn(element, 'getBoundingClientRect').mockImplementation(() => opts as DOMRect);
 };
 
@@ -103,7 +106,7 @@ describe('updatePopoverStyles()', () => {
 
   it('should call isElementWithinViewport() with correct parameters', () => {
     const spy = jest.spyOn(popoverUtils, 'isElementWithinViewport');
-    updatePopoverStyles(host, spacer, popover, 'top', 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
     expect(spy).toBeCalledWith(spacer, popover, 'top');
   });
 
@@ -112,20 +115,20 @@ describe('updatePopoverStyles()', () => {
     const attachComponentCssSpy = jest.spyOn(utils, 'attachComponentCss');
 
     jest.spyOn(popoverUtils, 'isElementWithinViewport').mockImplementationOnce(() => true);
-    updatePopoverStyles(host, spacer, popover, 'top', 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
     expect(getAutoDirectionSpy).not.toBeCalled();
     expect(attachComponentCssSpy).not.toBeCalled();
 
     jest.spyOn(popoverUtils, 'isElementWithinViewport').mockImplementationOnce(() => false);
-    updatePopoverStyles(host, spacer, popover, 'top', 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
 
     expect(getAutoDirectionSpy).toBeCalledWith(spacer, popover);
-    expect(attachComponentCssSpy).toBeCalledWith(host, getComponentCss, 'bottom', 'light');
+    expect(attachComponentCssSpy).toBeCalledWith(host, getComponentCss, 'bottom', false, 'light');
   });
 
   it('should call getPopoverMargin()', () => {
     const spy = jest.spyOn(popoverUtils, 'getPopoverMargin');
-    updatePopoverStyles(host, spacer, popover, 'top', 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
     expect(spy).toBeCalledWith(spacer, popover, 'top');
   });
 
@@ -133,7 +136,7 @@ describe('updatePopoverStyles()', () => {
     jest.spyOn(popoverUtils, 'getPopoverMargin').mockImplementationOnce(() => '1px');
     expect(popover.style.margin).toBe('0px');
 
-    updatePopoverStyles(host, spacer, popover, 'top', 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
     expect(popover.style.margin).toBe('1px');
   });
 });
@@ -351,6 +354,39 @@ describe('getPopoverMargin()', () => {
         expect(getPopoverMargin(spacer, popover, direction)).toEqual(scenario.expected);
       });
     });
+  });
+});
+
+describe('updateNativePopoverStyles()', () => {
+  const host = document.createElement('p-popover');
+  host.attachShadow({ mode: 'open' });
+
+  const popover = document.createElement('div');
+  const button = document.createElement('button');
+
+  beforeAll(() => {
+    setViewport();
+  });
+
+  beforeEach(() => {
+    mockBoundingClientRect(button, rectCentered);
+  });
+
+  it('should call getBoundingClientRect() on button', () => {
+    const spy = jest.spyOn(button, 'getBoundingClientRect');
+    updateNativePopoverStyles(popover, button);
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should set popover styles', () => {
+    global.window.scrollX = 20;
+    global.window.scrollY = 30;
+
+    updateNativePopoverStyles(popover, button);
+    expect(popover.style.left).toBe(`${rectCentered.left + global.window.scrollX - safeZonePx}px`);
+    expect(popover.style.top).toBe(`${rectCentered.top + global.window.scrollY - safeZonePx}px`);
+    expect(popover.style.width).toBe(`${rectCentered.width + safeZonePx * 2}px`);
+    expect(popover.style.height).toBe(`${rectCentered.height + safeZonePx * 2}px`);
   });
 });
 
@@ -593,5 +629,50 @@ describe('onDocumentKeydown()', () => {
       expect(popover1.open).toBe(false);
       expect(popover2.open).toBe(false);
     });
+  });
+});
+
+describe('addNativeScrollAndResizeListeners()', () => {
+  const host = document.createElement('div');
+  const table = document.createElement('div');
+  table.attachShadow({ mode: 'open' });
+  const tableScrollArea = document.createElement('div');
+  const nativePopover = document.createElement('div');
+  document.body.appendChild(host);
+  document.body.appendChild(table);
+  document.body.appendChild(nativePopover);
+
+  beforeEach(() => {
+    jest.spyOn(table.shadowRoot, 'querySelector').mockReturnValue({
+      // @ts-ignore
+      shadowRoot: {
+        querySelector: jest.fn(() => tableScrollArea),
+      },
+    });
+    nativePopover.hidePopover = jest.fn();
+  });
+
+  it('should register scroll and resize listeners and remove them on scroll', () => {
+    const windowAddEventListenerSpy = jest.spyOn(window, 'addEventListener');
+    const windowRemoveEventListenerSpy = jest.spyOn(window, 'removeEventListener');
+    const tableAddEventListenerSpy = jest.spyOn(tableScrollArea, 'addEventListener');
+    const tableRemoveEventListenerSpy = jest.spyOn(tableScrollArea, 'removeEventListener');
+    addNativeScrollAndResizeListeners(host, table, nativePopover);
+
+    expect(windowAddEventListenerSpy).toHaveBeenCalledTimes(2);
+    expect(windowAddEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function), { once: true });
+    expect(windowAddEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function), { once: true });
+
+    expect(tableAddEventListenerSpy).toHaveBeenCalledTimes(1);
+    expect(tableAddEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function), { once: true });
+
+    window.dispatchEvent(new Event('scroll'));
+
+    expect(windowRemoveEventListenerSpy).toHaveBeenCalledTimes(2);
+    expect(windowRemoveEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function));
+    expect(windowRemoveEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function));
+
+    expect(tableRemoveEventListenerSpy).toHaveBeenCalledTimes(1);
+    expect(tableRemoveEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function));
   });
 });

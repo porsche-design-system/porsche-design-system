@@ -13,9 +13,19 @@
   <span style="position: absolute; top: 60%; left: 50vw; transform: translate(-50%)">
     <p-popover description="Some description via prop"></p-popover>
   </span>
+  <p-table style="position: absolute; top: 80%; left: 50vw; transform: translate(-50%); background: deeppink">
+    <p-table-head>
+      <p-table-head-row>
+        <p-table-head-cell>Within table <p-popover>Some additional content.</p-popover></p-table-head-cell>
+      </p-table-head-row>
+    </p-table-head>
+  </p-table>
 </div>
 
 <script>
+  window.addEventListener('resize', (e) => e.stopImmediatePropagation(), true);
+  window.addEventListener('scroll', (e) => e.stopImmediatePropagation(), true);
+
   porscheDesignSystem.componentsReady().then(() => {
     document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
     document.querySelectorAll('p-popover').forEach((popover) => {
