@@ -21,8 +21,9 @@ const validateMarkdownLinks = async (): Promise<void> => {
 };
 
 const getHeadline = async (): Promise<string> => {
-  await page.waitForSelector('.vmark > h1'), { visible: true };
-  return page.$eval('.vmark > h1', (x) => x.innerHTML);
+  const selector = '.vmark > h1, .vmark > p-heading';
+  await page.waitForSelector(selector), { visible: true };
+  return page.$eval(selector, (x) => x.innerHTML);
 };
 
 const getPatternHeading = async (): Promise<string> => {
