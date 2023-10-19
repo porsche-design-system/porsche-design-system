@@ -4,8 +4,10 @@ import {
   getActiveElementId,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
+  getAttribute,
   getEventSummary,
   getLifecycleStatus,
+  getProperty,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -19,9 +21,13 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-popover');
+const getSpacer = () => selectNode(page, 'p-popover >>> .spacer');
 const getPopover = () => selectNode(page, 'p-popover >>> .popover');
 const getButton = () => selectNode(page, 'p-popover >>> button');
 const getSecondPopover = () => selectNode(page, 'p-popover.second >>> .popover');
+const getTableScroller = () => selectNode(page, 'p-table >>> p-scroller >>> .scroll-area');
+const isNativePopoverOpen = async (): Promise<boolean> =>
+  (await getSpacer()).evaluate((el) => el.matches(':popover-open'));
 
 const togglePopover = async (): Promise<void> => {
   const button = await getButton();
@@ -51,6 +57,24 @@ const initPopover = (opts?: InitOptions): Promise<void> => {
   Some Popover Content
 </p-popover>
 ${buttonMarkup}`
+  );
+};
+
+const initPopoverWithinTable = (opts?: { direction: PopoverDirection }): Promise<void> => {
+  const { direction = 'bottom' } = opts || {};
+  return setContentWithDesignSystem(
+    page,
+    `
+<p-table style="position: absolute; top: 80%; left: 50vw; transform: translate(-50%); background: deeppink">
+  <p-table-head>
+    <p-table-head-row>
+      <p-table-head-cell
+        >Within table <p-popover direction="${direction}">Some Popover Content</p-popover>
+      </p-table-head-cell>
+      ${[...Array(10)].map((e, i) => `<p-table-head-cell>Column ${i}</p-table-head-cell>`)}
+    </p-table-head-row>
+  </p-table-head>
+</p-table>`
   );
 };
 
@@ -358,5 +382,63 @@ describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+});
+
+describe('native', () => {
+  it('should not render native popover when used outside of table', async () => {
+    await initPopover();
+    await togglePopover();
+    const button = await getButton();
+    const spacer = await getSpacer();
+
+    expect(await getAttribute(button, 'popoverTarget')).toBe(null);
+    expect(await getProperty(spacer, 'popover')).toBe(null);
+  });
+
+  it('should render native popover when used within table', async () => {
+    await initPopoverWithinTable();
+    const button = await getButton();
+    const spacer = await getSpacer();
+
+    expect(await getAttribute(button, 'popoverTarget')).toBe(await getProperty(spacer, 'id'));
+    expect(await getProperty(spacer, 'popover')).toBe('auto');
+  });
+
+  it('should open popover with correct position on click', async () => {
+    await initPopoverWithinTable();
+    await togglePopover();
+
+    expect(await isNativePopoverOpen()).toBe(true);
+  });
+
+  it('should close popover on page scroll', async () => {
+    await initPopoverWithinTable();
+    await togglePopover();
+
+    expect(await isNativePopoverOpen()).toBe(true);
+
+    // Simulate a scroll event on the window
+    await page.evaluate(() => {
+      window.dispatchEvent(new Event('scroll'));
+    });
+
+    expect(await isNativePopoverOpen()).toBe(false);
+  });
+
+  it('should close popover on table scroll', async () => {
+    await initPopoverWithinTable();
+    await togglePopover();
+
+    expect(await isNativePopoverOpen()).toBe(true);
+
+    // Simulate a scroll event on the table
+    await (
+      await getTableScroller()
+    ).evaluate((el) => {
+      el.dispatchEvent(new Event('scroll'));
+    });
+
+    expect(await isNativePopoverOpen()).toBe(false);
   });
 });

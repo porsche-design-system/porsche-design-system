@@ -1,4 +1,4 @@
-import { getHTMLElements, getScrollByX } from '../../utils';
+import { getHTMLElements, getScrollByX, scrollAreaClass } from '../../utils';
 
 export type ScrollerDirection = 'prev' | 'next';
 
@@ -30,7 +30,7 @@ export const getScrollPositionAfterPrevNextClick = (
 };
 
 export const getScrollerElements = (scrollerElement: HTMLElement): [HTMLElement, HTMLElement] => {
-  return getHTMLElements(scrollerElement.shadowRoot, '.scroll-area,.action-prev') as [HTMLElement, HTMLElement];
+  return getHTMLElements(scrollerElement.shadowRoot, `.${scrollAreaClass},.action-prev`) as [HTMLElement, HTMLElement];
 };
 
 export const isScrollable = (isPrevHidden: boolean, isNextHidden: boolean): boolean => {
