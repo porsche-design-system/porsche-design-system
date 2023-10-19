@@ -198,7 +198,7 @@ export const getComponentCss = (
       ...mergeDeep(
         buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
           // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
-          order: ['left', 'start'].includes(alignLabelValue) ? -1 : 0,
+          order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
         })),
         buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
           getHiddenTextJssStyle(isHidden, {

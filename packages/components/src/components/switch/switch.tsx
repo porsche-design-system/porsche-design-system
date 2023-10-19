@@ -10,9 +10,10 @@ import {
   THEMES,
   validateProps,
   ALIGN_LABELS,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
-import { getSwitchButtonAriaAttributes } from './switch-utils';
+import { getSwitchButtonAriaAttributes, SwitchAlignLabelDeprecated } from './switch-utils';
 import type { SwitchAlignLabel, SwitchUpdateEvent } from './switch-utils';
 
 const propTypes: PropTypes<typeof Switch> = {
@@ -82,6 +83,20 @@ export class Switch {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+
+    const alignLabelDeprecationMap: Record<
+      SwitchAlignLabelDeprecated,
+      Exclude<SwitchAlignLabel, SwitchAlignLabelDeprecated>
+    > = {
+      left: 'start',
+      right: 'end',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Switch, SwitchAlignLabelDeprecated, SwitchAlignLabel>(
+      this,
+      'alignLabel',
+      alignLabelDeprecationMap
+    );
+
     attachComponentCss(
       this.host,
       getComponentCss,
