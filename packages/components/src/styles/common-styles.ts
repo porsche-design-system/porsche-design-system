@@ -43,8 +43,8 @@ export const getTransition = (
   duration: MotionDurationKeyFinal,
   easing?: MotionEasingKeyFinal
 ): string =>
-  `${cssProperty} var(--p-transition-duration, ${motionDurationMap[duration as keyof typeof motionDurationMap]}) ${
-    easing ? motionEasingMap[easing as keyof typeof motionEasingMap] : ''
+  `${cssProperty} var(--p-transition-duration, ${motionDurationMap[duration]}) ${
+    easing ? motionEasingMap[easing] : ''
   }`;
 
 export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
