@@ -13,12 +13,14 @@ import {
   TEXT_WEIGHTS,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { Component, Element, h, type JSX, Listen, Prop } from '@stencil/core';
 import type {
   ButtonPureAlignLabel,
+  ButtonPureAlignLabelDeprecated,
   ButtonPureAriaAttribute,
   ButtonPureIcon,
   ButtonPureSize,
@@ -121,6 +123,20 @@ export class ButtonPure {
     validateProps(this, propTypes);
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon, this.iconSource);
     warnIfParentIsPTextAndIconIsNone(this.host, this.icon, this.iconSource);
+
+    const alignLabelDeprecationMap: Record<
+      ButtonPureAlignLabelDeprecated,
+      Exclude<ButtonPureAlignLabel, ButtonPureAlignLabelDeprecated>
+    > = {
+      left: 'start',
+      right: 'end',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof ButtonPure, ButtonPureAlignLabelDeprecated, ButtonPureAlignLabel>(
+      this,
+      'alignLabel',
+      alignLabelDeprecationMap
+    );
+
     attachComponentCss(
       this.host,
       getComponentCss,
