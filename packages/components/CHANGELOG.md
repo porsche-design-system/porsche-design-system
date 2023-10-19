@@ -109,6 +109,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Popover` doesn't get cut off when used within the `Table` component
+  ([#2814](https://github.com/porsche-design-system/porsche-design-system/pull/2814))
 - `Flyout` and `Modal` with `open="false"` and nested `Accordion` with `open="true"` containing focusable elements like
   links can't be focused anymore ([#2818](https://github.com/porsche-design-system/porsche-design-system/pull/2818))
 - Background for open `Flyout` and `Modal` on iOS Mobile Safari with collapsed address bar is no longer scrollable
