@@ -87,7 +87,10 @@ export default class Code extends Vue {
   <p-table-head>
     <p-table-head-row>
       <p-table-head-cell>
-        Column 1<p-popover aria="{ 'aria-label': 'Some more descriptive label' }">${this.popoverContent}</p-popover>
+        <span style="display: flex; align-items: flex-end"> 
+          Column 1
+          <p-popover aria="{ 'aria-label': 'Some more descriptive label' }" style="margin-left: 5px">${this.popoverContent}</p-popover>
+        </span>
       </p-table-head-cell>
       <p-table-head-cell>Column 2</p-table-head-cell>
       <p-table-head-cell>Column 3</p-table-head-cell>
