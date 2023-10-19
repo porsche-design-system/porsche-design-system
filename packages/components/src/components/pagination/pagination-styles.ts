@@ -88,9 +88,11 @@ export const getComponentCss = (
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        transition: ['color', 'border-color', 'background-color']
-          .map((cssProp) => getTransition(cssProp, 'short', 'base'))
-          .join(), // for smooth transition between states
+        transition: `${getTransition('background-color', 'short', 'base')}, ${getTransition(
+          'border-color',
+          'short',
+          'base'
+        )}, ${getTransition('color', 'short', 'base')}`, // for smooth transition between states
         position: 'relative',
         width: buttonSize,
         height: buttonSize,

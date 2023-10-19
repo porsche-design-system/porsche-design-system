@@ -37,16 +37,18 @@ export const getComponentCss = (isOpen: boolean): string => {
               opacity: 1,
               visibility: 'inherit',
               transform: 'translate3d(0,0,0)',
-              transition: ['transform', 'opacity'].map((cssProp) => getTransition(cssProp, 'long', 'in')).join(),
+              transition: `${getTransition('transform', 'long', 'in')}, ${getTransition('opacity', 'long', 'in')}`,
             }
           : {
               opacity: 0,
               visibility: 'hidden',
               transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
               '&(.hydrated),&(.ssr)': {
-                transition: `visibility 0s linear ${motionDurationLong}, ${['transform', 'opacity']
-                  .map((cssProp) => getTransition(cssProp, 'long', 'out'))
-                  .join()}`,
+                transition: `visibility 0s linear ${motionDurationLong}, ${getTransition(
+                  'transform',
+                  'long',
+                  'out'
+                )}, ${getTransition('opacity', 'long', 'out')}`,
               },
             }),
         [getMediaQueryMin('s')]: {
