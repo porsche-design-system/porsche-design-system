@@ -9,13 +9,7 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getTransitionDurationLongEaseIn,
-  getTransitionDurationLongEaseOut,
-  hostHiddenStyles,
-} from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles } from '../../styles';
 
 const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
@@ -43,7 +37,7 @@ export const getComponentCss = (isOpen: boolean): string => {
               opacity: 1,
               visibility: 'inherit',
               transform: 'translate3d(0,0,0)',
-              transition: ['transform', 'opacity'].map(getTransitionDurationLongEaseIn).join(),
+              transition: ['transform', 'opacity'].map((cssProp) => getTransition(cssProp, 'long', 'in')).join(),
             }
           : {
               opacity: 0,
@@ -51,7 +45,7 @@ export const getComponentCss = (isOpen: boolean): string => {
               transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
               '&(.hydrated),&(.ssr)': {
                 transition: `visibility 0s linear ${motionDurationLong}, ${['transform', 'opacity']
-                  .map(getTransitionDurationLongEaseOut)
+                  .map((cssProp) => getTransition(cssProp, 'long', 'out'))
                   .join()}`,
               },
             }),

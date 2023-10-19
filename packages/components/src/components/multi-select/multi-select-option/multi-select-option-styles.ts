@@ -46,7 +46,7 @@ export const getComponentCss = (theme: Theme): string => {
       wordBreak: 'break-word',
       boxSizing: 'border-box',
       borderRadius: borderRadiusSmall,
-      transition: ['background-color', 'color'].map(getTransition).join(),
+      transition: ['background-color', 'color'].map((cssProp) => getTransition(cssProp, 'short', 'base')).join(),
       ...getNoResultsOptionJssStyle(),
       ...hoverMediaQuery({
         '&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover': {

@@ -2,12 +2,7 @@ import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkBut
 import { getCss, isHighContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/utilities-v2';
-import {
-  getHighContrastColors,
-  getThemedColors,
-  getTransitionDurationShortEasingBase,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
+import { getHighContrastColors, getThemedColors, getTransition, prefersColorSchemeDarkMediaQuery } from '../../styles';
 
 type Colors = {
   textColor: string;
@@ -83,13 +78,13 @@ export const getComponentCss = (
         },
       }),
       label: {
-        transition: getTransitionDurationShortEasingBase('opacity'),
+        transition: getTransition('opacity', 'short', 'base'),
         ...(loading && {
           opacity: 0, // use opacity for smooth transition between states
         }),
       },
       icon: {
-        transition: getTransitionDurationShortEasingBase('opacity'),
+        transition: getTransition('opacity', 'short', 'base'),
         ...(!disabled &&
           isPrimary &&
           !isHighContrastMode && {

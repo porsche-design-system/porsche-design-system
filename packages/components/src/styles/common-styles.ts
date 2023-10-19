@@ -8,6 +8,7 @@ import {
   motionDurationModerate,
   motionDurationShort,
   motionDurationLong,
+  motionDurationVeryLong,
   motionEasingBase,
   motionEasingIn,
   motionEasingOut,
@@ -18,26 +19,27 @@ import {
 import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 import { isThemeDark } from '../utils';
 
-export const transitionDuration = 'var(--p-transition-duration, .24s)';
-const transitionTimingFunction = 'ease';
+type MotionDuration = 'short' | 'moderate' | 'long' | 'very-long';
+type MotionEasing = 'base' | 'in' | 'out';
 
-export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
-  `${cssProperty} ${transitionDuration} ${transitionTimingFunction}`;
+const motionTokenMap = {
+  short: motionDurationShort,
+  moderate: motionDurationModerate,
+  long: motionDurationLong,
+  'very-long': motionDurationVeryLong,
+  base: motionEasingBase,
+  in: motionEasingIn,
+  out: motionEasingOut,
+};
 
-export const getTransitionDurationModerate = (cssProperty: keyof PropertiesHyphen): string =>
-  `${cssProperty} ${motionDurationModerate}`;
-
-export const getTransitionDurationShortEasingBase = (cssProperty: keyof PropertiesHyphen): string =>
-  `${cssProperty} ${motionDurationShort} ${motionEasingBase}`;
-
-export const getTransitionDurationShortEaseOut = (cssProperty: keyof PropertiesHyphen): string =>
-  `${cssProperty} ${motionDurationShort} ${motionEasingOut}`;
-
-export const getTransitionDurationLongEaseOut = (cssProperty: keyof PropertiesHyphen): string =>
-  `${cssProperty} ${motionDurationLong} ${motionEasingOut}`;
-
-export const getTransitionDurationLongEaseIn = (cssProperty: keyof PropertiesHyphen): string =>
-  `${cssProperty} ${motionDurationLong} ${motionEasingIn}`;
+export const getTransition = (
+  cssProperty: keyof PropertiesHyphen,
+  duration?: MotionDuration,
+  ease?: MotionEasing
+): string =>
+  `${cssProperty} var(--p-transition-duration, ${motionTokenMap[duration as keyof typeof motionTokenMap]}) ${
+    motionTokenMap[ease as keyof typeof motionTokenMap]
+  }`;
 
 export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
 

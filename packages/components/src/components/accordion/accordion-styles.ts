@@ -8,9 +8,7 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   colorSchemeStyles,
-  getTransitionDurationShortEasingBase,
-  getTransitionEaseBaseShort,
-  getTransitionDurationShortEaseOut,
+  getTransition,
 } from '../../styles';
 import {
   fontWeightSemiBold,
@@ -96,7 +94,7 @@ export const getComponentCss = (
           },
           hoverMediaQuery({
             '&::before': {
-              transition: getTransitionDurationShortEasingBase('background-color'),
+              transition: getTransition('background-color', 'short', 'base'),
             },
             '&:hover::before': {
               background: hoverColor,
@@ -132,7 +130,7 @@ export const getComponentCss = (
       height: fontLineHeight,
       fontSize: fontSizeTextXXSmall,
       transform: open ? 'rotate3d(0)' : 'rotate3d(0,0,1,90deg)',
-      transition: getTransitionEaseBaseShort('transform'),
+      transition: getTransition('transform', 'short', 'base'),
     },
     collapsible: {
       color: primaryColor, // enables color inheritance for slotted content
@@ -144,14 +142,16 @@ export const getComponentCss = (
         ? {
             gridTemplateRows: '1fr',
             visibility: 'visible',
-            transition: getTransitionDurationShortEaseOut('grid-template-rows'),
+            transition: getTransition('grid-template-rows', 'short', 'out'),
             paddingBottom: compact ? spacingStaticSmall : '24px',
           }
         : {
             gridTemplateRows: '0fr',
             visibility: 'hidden',
-            transition: `${getTransitionDurationShortEaseOut(
-              'grid-template-rows'
+            transition: `${getTransition(
+              'grid-template-rows',
+              'short',
+              'out'
             )}, visibility 0s linear ${motionDurationShort}`,
           }),
       '& div': {

@@ -88,7 +88,9 @@ export const getCheckboxRadioJssStyle = (
           appearance: 'none',
           boxSizing: 'content-box',
           background: `transparent 0% 0% / ${fontLineHeight}`,
-          transition: ['border-color', 'background-color'].map(getTransition).join(),
+          transition: ['border-color', 'background-color']
+            .map((cssProp) => getTransition(cssProp, 'short', 'base'))
+            .join(),
           border: `2px solid ${uncheckedColor}`,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             borderColor: uncheckedColorDark,
