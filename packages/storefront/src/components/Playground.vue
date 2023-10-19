@@ -12,7 +12,7 @@
     <div
       :class="{
         example: true,
-        'example--light': (mergedConfig.themeable && theme === 'light') || mergedConfig.themeable === false,
+        'example--light': (mergedConfig.themeable && theme === 'light') || !mergedConfig.themeable,
         'example--dark': mergedConfig.themeable && theme === 'dark',
         'example--auto': mergedConfig.themeable && theme === 'auto',
         'example--surface': mergedConfig.backgroundColor === 'background-surface',
@@ -340,7 +340,8 @@
 
   .configurator {
     :deep(select) {
-      min-height: 25px; // increase size of links for a11y wcag22aa compliance
+      // increase size for a11y wcag22aa compliance with scaling support
+      @include pds-text-small();
     }
   }
 
