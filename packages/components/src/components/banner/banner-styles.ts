@@ -13,7 +13,10 @@ import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenSty
 
 const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
+const cssVariableAnimationDuration = '--p-animation-duration';
 const cssVariableZIndex = '--p-internal-banner-z-index';
+
+const duration = `var(${cssVariableAnimationDuration},${motionDurationLong})`;
 
 const topBottomFallback = '56px';
 
@@ -44,7 +47,7 @@ export const getComponentCss = (isOpen: boolean): string => {
               visibility: 'hidden',
               transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
               '&(.hydrated),&(.ssr)': {
-                transition: `visibility 0s linear ${motionDurationLong}, ${getTransition(
+                transition: `visibility 0s linear ${duration}, ${getTransition(
                   'transform',
                   'long',
                   'out'

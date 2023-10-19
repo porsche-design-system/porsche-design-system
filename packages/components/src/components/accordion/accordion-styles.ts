@@ -23,6 +23,10 @@ import {
   fontSizeTextXXSmall,
 } from '@porsche-design-system/utilities-v2';
 
+const cssVariableAnimationDuration = '--p-animation-duration';
+
+const duration = `var(${cssVariableAnimationDuration},${motionDurationShort})`;
+
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
   compact: boolean,
@@ -148,11 +152,7 @@ export const getComponentCss = (
         : {
             gridTemplateRows: '0fr',
             visibility: 'hidden',
-            transition: `${getTransition(
-              'grid-template-rows',
-              'short',
-              'out'
-            )}, visibility 0s linear ${motionDurationShort}`,
+            transition: `${getTransition('grid-template-rows', 'short', 'out')}, visibility 0s linear ${duration}`,
           }),
       '& div': {
         overflow: open ? 'visible' : 'hidden',
