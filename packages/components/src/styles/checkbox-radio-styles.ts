@@ -174,7 +174,8 @@ export const getCheckboxRadioJssStyle = (
     ...(isLoading && {
       spinner: {
         gridArea: '1 / 1',
-        placeSelf: 'center',
+        margin: borderWidthBase,
+        justifySelf: 'center',
         height: fontLineHeight,
         width: fontLineHeight,
         fontFamily, // needed for correct width and height definition and for correct positioning

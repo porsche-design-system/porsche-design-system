@@ -207,9 +207,21 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         ) // replace non-existing host element with null for display, heading, headline, text, text-list, tag
         .replace(/TextColor|TextWeight/g, 'any') // text
         .replace(
-          /Record<(?:Text|Display|Heading|Headline)AlignDeprecated, Exclude<(?:Text|Display|Heading|Headline)Align, (?:Text|Display|Heading|Headline)AlignDeprecated>>/g,
+          /Record<\s*(?:Text|Display|Heading|Headline)AlignDeprecated,\s*Exclude<(?:Text|Display|Heading|Headline)Align,\s*(?:Text|Display|Heading|Headline)AlignDeprecated>\s*>/g,
           'Record<any, any>'
         ) // text, display, heading, headline
+        .replace(
+          /Record<\s*(?:Switch|ButtonPure|LinkPure)AlignLabelDeprecated,\s*Exclude<(?:Switch|ButtonPure|LinkPure)AlignLabel,\s*(?:Switch|ButtonPure|LinkPure)AlignLabelDeprecated>\s*>/g,
+          'Record<any, any>'
+        ) // switch, button-pure, link-pure
+        .replace(
+          /Record<\s*CarouselAlignHeaderDeprecated,\s*Exclude<CarouselAlignHeader,\s*CarouselAlignHeaderDeprecated>\s*>/g,
+          'Record<any, any>'
+        ) // carousel
+        .replace(
+          /Record<\s*FlyoutPositionDeprecated,\s*Exclude<FlyoutPosition,\s*FlyoutPositionDeprecated>\s*>/g,
+          'Record<any, any>'
+        ) // flyout
         .replace(/import type { TextTag }.*;/g, '') // text
         .replace(
           /getSlotTextContent\(this\.props, '([a-z]+)'\)/g,

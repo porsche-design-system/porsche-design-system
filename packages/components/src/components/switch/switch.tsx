@@ -13,8 +13,8 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
-import { getSwitchButtonAriaAttributes, SwitchAlignLabelDeprecated } from './switch-utils';
-import type { SwitchAlignLabel, SwitchUpdateEvent } from './switch-utils';
+import type { SwitchAlignLabelDeprecated, SwitchAlignLabel, SwitchUpdateEvent } from './switch-utils';
+import { getSwitchButtonAriaAttributes } from './switch-utils';
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
