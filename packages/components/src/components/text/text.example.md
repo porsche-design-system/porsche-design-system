@@ -1,4 +1,4 @@
-# Text
+<ComponentHeading name="Text"></ComponentHeading>
 
 `p-text` is used to specify paragraph styling in documents.
 

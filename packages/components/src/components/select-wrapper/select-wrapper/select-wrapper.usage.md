@@ -1,4 +1,4 @@
-# Select Wrapper
+<ComponentHeading name="Select Wrapper"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

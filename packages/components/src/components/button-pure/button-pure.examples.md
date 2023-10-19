@@ -1,4 +1,4 @@
-# Button Pure
+<ComponentHeading name="Button Pure"></ComponentHeading>
 
 The `p-button-pure` component is essential to perform events for **interactions**. A Button can be used with or without
 a label, but it's recommended to keep the **label visible** for better **usability** whenever possible. When used

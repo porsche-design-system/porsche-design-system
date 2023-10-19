@@ -1,4 +1,4 @@
-# Textarea Wrapper
+<ComponentHeading name="Textarea Wrapper"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

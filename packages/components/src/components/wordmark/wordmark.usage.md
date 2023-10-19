@@ -1,4 +1,4 @@
-# Wordmark
+<ComponentHeading name="Wordmark"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

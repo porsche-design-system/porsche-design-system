@@ -1,4 +1,4 @@
-# Switch
+<ComponentHeading name="Switch"></ComponentHeading>
 
 The `p-switch` component is a control that is used to quickly switch between two possible states. A switch is only used
 for these binary actions that occur immediately after the user “flips the switch”. Commonly it is used for “on/off”

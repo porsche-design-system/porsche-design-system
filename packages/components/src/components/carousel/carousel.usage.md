@@ -1,4 +1,4 @@
-# Carousel
+<ComponentHeading name="Carousel"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

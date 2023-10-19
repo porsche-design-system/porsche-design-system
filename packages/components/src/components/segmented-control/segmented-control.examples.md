@@ -1,4 +1,4 @@
-# Segmented Control
+<ComponentHeading name="Segmented Control"></ComponentHeading>
 
 The `p-segmented-control` component is similar to the native `select` element while showing all available options right
 away.

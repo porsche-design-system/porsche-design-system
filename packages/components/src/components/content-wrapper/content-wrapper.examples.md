@@ -1,4 +1,4 @@
-# Content Wrapper
+<ComponentHeading name="Content Wrapper"></ComponentHeading>
 
 The `p-content-wrapper` defines the outer spacings between the content area and the left and right screen sides, as well
 as centering its content and setting a max-width.

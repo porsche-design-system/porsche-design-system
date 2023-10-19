@@ -1,4 +1,4 @@
-# Popover
+<ComponentHeading name="Popover"></ComponentHeading>
 
 The `p-popover` component can be used to display some additional content on top of another in conjunction with the info
 <p-popover :theme="this.$store.getters.storefrontTheme" description="Hello World"></p-popover>-button.

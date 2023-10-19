@@ -1,4 +1,4 @@
-# Select Wrapper
+<ComponentHeading name="Select Wrapper"></ComponentHeading>
 
 The `p-select-wrapper` component is a styling wrapper for the native HTML `<select>` form element. To improve
 accessibility on devices with touch support, it defaults to the native user interface behaviour.

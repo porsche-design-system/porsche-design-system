@@ -1,4 +1,4 @@
-# Text Field Wrapper
+<ComponentHeading name="Text Field Wrapper"></ComponentHeading>
 
 The `p-text-field-wrapper` component is a styling wrapper for the native HTML input types and is essential for mostly
 any form.

@@ -284,6 +284,11 @@ export const config: StorefrontConfig = {
           // @ts-ignore
           import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.examples.md'),
       ],
+      Usage: [
+        () =>
+          // @ts-ignore
+          import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.usage.md'),
+      ],
       Props: [
         // @ts-ignore
         () => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.props.md'),
@@ -325,6 +330,8 @@ export const config: StorefrontConfig = {
       Props: [
         // @ts-ignore
         () => import('@/../../components/src/components/multi-select/multi-select/multi-select.props.md'),
+        // @ts-ignore
+        () => import('@/../../components/src/components/multi-select/multi-select-option/multi-select-option.props.md'),
       ],
     },
     Pagination: {
@@ -373,6 +380,22 @@ export const config: StorefrontConfig = {
       // @ts-ignore
       Props: [() => import('@/../../components/src/components/scroller/scroller.props.md')],
     },
+    'Segmented Control': {
+      // @ts-ignore
+      Examples: [() => import('@/../../components/src/components/segmented-control/segmented-control.examples.md')],
+      // @ts-ignore
+      Usage: [() => import('@/../../components/src/components/segmented-control/segmented-control.usage.md')],
+      Props: [
+        () =>
+          // @ts-ignore
+          import('@/../../components/src/components/segmented-control/segmented-control/segmented-control.props.md'),
+        () =>
+          // @ts-ignore
+          import(
+            '@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'
+          ),
+      ],
+    },
     'Select Wrapper': {
       Examples: [
         // @ts-ignore
@@ -385,22 +408,6 @@ export const config: StorefrontConfig = {
       Props: [
         // @ts-ignore
         () => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.props.md'),
-      ],
-    },
-    'Segmented Control': {
-      // @ts-ignore
-      Examples: [() => import('@/../../components/src/components/segmented-control/segmented-control.examples.md')],
-      // @ts-ignore
-      Usage: [() => import('@/../../components/src/components/segmented-control/segmented-control.usage.md')],
-      Props: [
-        () =>
-          // @ts-ignore
-          import('@/../../components/src/components/segmented-control/segmented-control/segmented-control.props.md'),
-        () =>
-          import(
-            // @ts-ignore
-            '@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'
-          ),
       ],
     },
     Spinner: {
@@ -441,6 +448,8 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/table/table/table.props.md'),
         // @ts-ignore
         () => import('@/../../components/src/components/table/table-head-cell/table-head-cell.props.md'),
+        // @ts-ignore
+        () => import('@/../../components/src/components/table/table-cell/table-cell.props.md'),
       ],
     },
     Tabs: {

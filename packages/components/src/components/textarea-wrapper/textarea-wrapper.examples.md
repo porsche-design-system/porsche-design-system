@@ -1,4 +1,4 @@
-# Textarea Wrapper
+<ComponentHeading name="Textarea Wrapper"></ComponentHeading>
 
 The `p-textarea-wrapper` component is a styling wrapper for the native HTML `<textarea>` form element. Don't use a
 Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, such as

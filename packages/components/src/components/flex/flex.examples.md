@@ -1,4 +1,4 @@
-# Flex
+<ComponentHeading name="Flex"></ComponentHeading>
 
 The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by
 the properties of the `p-flex` container and `p-flex-item`. It can be used to quickly layout standard content blocks or

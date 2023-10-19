@@ -1,4 +1,4 @@
-# Carousel
+<ComponentHeading name="Carousel"></ComponentHeading>
 
 The `p-carousel` component allows related or similar content to be consumed on a step by step basis with a better
 overview than just showing them in a grid or as a list. The reason for this is, that only a certain amount of slides is

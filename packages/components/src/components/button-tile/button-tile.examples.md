@@ -1,4 +1,4 @@
-# Button Tile
+<ComponentHeading name="Button Tile"></ComponentHeading>
 
 The `p-button-tile` is an interactive component that displays a provided image to tease content and performs form or
 **interaction** events within one container. Whenever you want to provide navigational elements, stick to the

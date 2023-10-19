@@ -1,4 +1,4 @@
-# Stepper Horizontal
+<ComponentHeading name="Stepper Horizontal"></ComponentHeading>
 
 The `p-stepper-horizontal` component displays progress through a sequence of logical and numbered steps.  
 It is ideal when the contents of one step depends on an earlier step.  

@@ -9,6 +9,7 @@ import { componentsReady } from '@porsche-design-system/components-js';
 import A11yIcon from '@/components/A11yIcon.vue';
 import PartialDocs from '@/components/PartialDocs.vue';
 import SelectOptions from '@/components/SelectOptions.vue';
+import ComponentHeading from '@/components/ComponentHeading.vue';
 import ComponentMetaOverview from '@/components/ComponentMetaOverview.vue';
 import Notification from '@/components/Notification.vue';
 
@@ -48,6 +49,7 @@ Vue.use({
     vue.component('Playground', Playground);
     vue.component('SelectOptions', SelectOptions);
     vue.component('TableOfContents', TableOfContents);
+    vue.component('ComponentHeading', ComponentHeading);
     vue.component('ComponentMetaOverview', ComponentMetaOverview);
   },
 });

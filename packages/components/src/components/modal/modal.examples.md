@@ -1,4 +1,4 @@
-# Modal
+<ComponentHeading name="Modal"></ComponentHeading>
 
 The `p-modal` is a temporary overlay to focus the user's attention on one task while interactions with the underlying
 page are blocked. It is only used as highly disruptive modal notification to present important information until

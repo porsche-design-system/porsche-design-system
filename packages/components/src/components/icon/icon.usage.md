@@ -1,4 +1,4 @@
-# Icon
+<ComponentHeading name="Icon"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

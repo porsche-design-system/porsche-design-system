@@ -1,4 +1,4 @@
-# Crest
+<ComponentHeading name="Crest"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 
