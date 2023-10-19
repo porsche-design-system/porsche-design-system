@@ -7,6 +7,7 @@ export * from './StylesGradientExample';
 export * from './StylesGridExample';
 export * from './StylesHoverExample';
 export * from './StylesMediaQueryExample';
+export * from './StylesMotionExample';
 export * from './StylesSkeletonExample';
 export * from './StylesSpacingExample';
 export * from './StylesThemeExample';

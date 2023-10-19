@@ -18,6 +18,7 @@ The styles are available as JavaScript and SCSS version and available in the Fig
 - [Gradient](styles/gradient)
 - [Grid](styles/grid)
 - [Media Query](styles/media-query)
+- [Motion](styles/motion)
 - [Spacing](styles/spacing)
 - [Theme](styles/theme)
 - [Typography](styles/typography)
