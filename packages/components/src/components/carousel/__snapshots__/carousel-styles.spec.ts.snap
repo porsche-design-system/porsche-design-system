@@ -132,6 +132,136 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
 "
 `;
 
+exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left and theme: light 1`] = `
+":host {
+  display: flex !important;
+  gap: clamp(16px, 1.25vw + 12px, 36px) !important;
+  flex-direction: column !important;
+  box-sizing: content-box !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(*) {
+  border-radius: var(--p-carousel-border-radius, 12px) !important;
+}
+::slotted(*:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+h2,::slotted([slot=heading]) {
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  max-width: 56.25rem !important;
+  margin: 0 !important;
+}
+p,::slotted([slot=description]) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  max-width: 34.375rem !important;
+  margin: clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+}
+h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
+  color: #010205 !important;
+}
+@media(min-width:760px) {
+  h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
+    grid-column: 1 / 3 !important;
+  }
+}
+
+.header {
+  display: grid;
+  padding: 0 max(22px, 10.625vw - 12px);
+}
+.nav {
+  display: none;
+}
+.btn {
+  padding: 8px;
+}
+.skip-link {
+  opacity: 0;
+  pointer-events: none;
+}
+.skip-link:focus {
+  opacity: 1;
+  pointer-events: all;
+}
+.splide {
+  overflow: hidden;
+  padding: 4px 0;
+  margin: -4px 0;
+}
+.splide__track {
+  padding: 0 max(22px, 10.625vw - 12px) !important;
+}
+.splide__list {
+  display: flex;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.splide__slide {
+  flex-shrink: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+.splide__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+@media(min-width:760px) {
+  .header {
+    font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    font-size: 1rem;
+    column-gap: 16px;
+    grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+  }
+  .nav {
+    display: flex;
+    gap: 4px;
+    grid-area: 1 / 3 / 3 / auto;
+    align-items: end;
+    justify-content: end;
+    justify-self: end;
+  }
+  .splide__track {
+    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+  }
+}
+
+@media(min-width:1920px) {
+  .header {
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+  }
+  .splide__track {
+    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+  }
+}
+
+@media(max-width:479px) {
+  .splide__track {
+    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
+  }
+}
+"
+`;
+
 exports[`getComponentCss() should return correct css for width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start and theme: light 1`] = `
 ":host {
   display: flex !important;

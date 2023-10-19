@@ -5,6 +5,7 @@ describe('getComponentCss()', () => {
     ['basic', true, true, 'start', 'dark'],
     ['basic', true, false, 'start', 'light'],
     ['basic', false, true, 'start', 'light'],
+    ['basic', false, true, 'left', 'light'],
     ['basic', true, false, 'center', 'dark'],
     ['basic', true, true, 'center', 'light'],
     ['basic', false, false, 'center', 'light'],

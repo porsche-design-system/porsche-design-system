@@ -3,6 +3,8 @@ describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     [false, 'end', false, false, 'light'],
     [true, 'end', false, false, 'dark'],
+    [false, 'right', false, false, 'light'],
+    [false, 'left', false, false, 'light'],
     [true, 'end', false, false, 'light'],
     [true, 'end', true, false, 'dark'],
     [true, 'end', false, true, 'auto'],

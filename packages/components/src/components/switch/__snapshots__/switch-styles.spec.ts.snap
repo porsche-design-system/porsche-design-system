@@ -620,6 +620,190 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 "
 `;
 
+exports[`getComponentCss() should return correct css for {"alignLabel":"left","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
+":host {
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block !important;
+  width: auto !important;
+  vertical-align: top !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  text-align: start;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+  justify-content: flex-start;
+}
+.root:focus .switch::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border: 2px solid #1A44EA;
+  border-radius: 18px;
+}
+.root:not(:focus-visible) .switch::before {
+  border-color: transparent;
+}
+.switch {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border: 2px solid #6B6D70;
+  border-radius: 14px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+}
+.toggle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  display: block;
+  border-radius: 50%;
+  background-color: #010205;
+  transform: translate3d(0, 0, 0);
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  min-width: 0;
+  min-height: 0;
+  color: #010205;
+  order: -1;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+}
+@media(hover:hover) {
+  .root:hover .switch {
+    border-color: #010205;
+    background-color: transparent;
+  }
+  .root:hover .switch .toggle {
+    background-color: #010205;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
+":host {
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block !important;
+  width: auto !important;
+  vertical-align: top !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  text-align: start;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+  justify-content: flex-start;
+}
+.root:focus .switch::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border: 2px solid #1A44EA;
+  border-radius: 18px;
+}
+.root:not(:focus-visible) .switch::before {
+  border-color: transparent;
+}
+.switch {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border: 2px solid #6B6D70;
+  border-radius: 14px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+}
+.toggle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  display: block;
+  border-radius: 50%;
+  background-color: #010205;
+  transform: translate3d(0, 0, 0);
+  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  min-width: 0;
+  min-height: 0;
+  color: #010205;
+  order: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+}
+@media(hover:hover) {
+  .root:hover .switch {
+    border-color: #010205;
+    background-color: transparent;
+  }
+  .root:hover .switch .toggle {
+    background-color: #010205;
+  }
+}
+"
+`;
+
 exports[`getComponentCss() should return correct css for {"alignLabel":"start","hideLabel":true,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
   outline: 0 !important;

@@ -117,6 +117,82 @@ exports[`getComponentCss() should return correct css for size: "large", align: e
 }"
 `;
 
+exports[`getComponentCss() should return correct css for size: "large", align: left, color: primary, ellipsis: false and theme: light 1`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
+  letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
+  padding: 0;
+  font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  text-align: left;
+  letter-spacing: normal;
+  list-style-type: none;
+  white-space: inherit;
+  font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+}"
+`;
+
+exports[`getComponentCss() should return correct css for size: "large", align: right, color: primary, ellipsis: false and theme: light 1`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
+  margin: inherit !important;
+  padding: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-style: inherit !important;
+  font-variant: inherit !important;
+  color: inherit !important;
+  text-align: inherit !important;
+  overflow-wrap: inherit !important;
+  word-wrap: inherit !important;
+  hyphens: inherit !important;
+  white-space: inherit !important;
+  letter-spacing: inherit !important;
+}
+.root {
+  margin: 0;
+  padding: 0;
+  font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  text-align: right;
+  letter-spacing: normal;
+  list-style-type: none;
+  white-space: inherit;
+  font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+}"
+`;
+
 exports[`getComponentCss() should return correct css for size: "large", align: start, color: primary, ellipsis: false and theme: light 1`] = `
 ":host {
   display: block;

@@ -4,6 +4,8 @@ describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['large', 'start', 'primary', false, 'light'],
     ['large', 'start', 'primary', false, 'light'],
+    ['large', 'left', 'primary', false, 'light'],
+    ['large', 'right', 'primary', false, 'light'],
     ['large', 'end', 'primary', true, 'dark'],
     ['large', 'center', 'primary', false, 'dark'],
     ['large', 'start', 'primary', true, 'light'],
