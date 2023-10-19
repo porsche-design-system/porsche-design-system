@@ -1,5 +1,5 @@
 <template>
-  <p-heading tag="h1"
+  <p-heading tag="h1" :theme="this.$store.getters.storefrontTheme"
     >{{ name
     }}<span v-if="isDeprecated" title="This component is deprecated and will be removed with the next major release.">
       🚫</span
