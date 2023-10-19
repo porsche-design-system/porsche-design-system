@@ -147,7 +147,7 @@ export const getLabelStyles = (
         ),
         ...textSmallStyle,
         color: isDisabled ? disabledColor : primaryColor,
-        transition: getTransition('color'), // for smooth transitions between e.g. disabled states
+        transition: getTransition('color', 'short', 'base'), // for smooth transitions between e.g. disabled states
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: isDisabled ? disabledColorDark : primaryColorDark,
         }),

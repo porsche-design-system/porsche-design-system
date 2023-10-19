@@ -60,7 +60,7 @@ export const getButtonStyles = (
         borderRadius: borderRadiusSmall,
         outline: '0',
         cursor: 'pointer',
-        transition: getTransition('border-color'), // background and text color are handled on select
+        transition: getTransition('border-color', 'short', 'base'), // background and text color are handled on select
         ...prefersColorSchemeDarkMediaQuery(theme, {
           borderColor: isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark,
         }),
@@ -195,7 +195,7 @@ export const getFilterStyles = (
           // for focus outline and clicking arrow since input ends left of the icon
           position: 'absolute',
           ...getInsetJssStyle(),
-          transition: getTransition('border-color'),
+          transition: getTransition('border-color', 'short', 'base'),
           pointerEvents: 'all',
           cursor: disabled ? 'not-allowed' : 'pointer',
           border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`,
@@ -263,7 +263,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
         ).reduce((result, curr) => ({ ...result, [curr]: borderRadiusSmall }), {}),
         scrollbarWidth: 'thin', // firefox
         scrollbarColor: 'auto', // firefox
-        transition: getTransition('border-color'),
+        transition: getTransition('border-color', 'short', 'base'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
         ...prefersColorSchemeDarkMediaQuery(theme, {
           background: backgroundColorDark,

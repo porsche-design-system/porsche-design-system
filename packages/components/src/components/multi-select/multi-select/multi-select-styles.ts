@@ -158,7 +158,7 @@ export const getComponentCss = (
     },
     'toggle-icon': {
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
-      transition: getTransition('transform'),
+      transition: getTransition('transform', 'short', 'base'),
       '&--open': {
         transform: 'rotate3d(0,0,1,180deg)',
       },
@@ -245,7 +245,7 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
       [isDirectionDown ? 'borderTopRightRadius' : 'borderBottomRightRadius']: 0,
       scrollbarWidth: 'thin', // firefox
       scrollbarColor: 'auto', // firefox
-      transition: getTransition('border-color'),
+      transition: getTransition('border-color', 'short', 'base'),
       transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
       ...prefersColorSchemeDarkMediaQuery(theme, {
         background: backgroundColorDark,

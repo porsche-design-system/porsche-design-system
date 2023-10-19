@@ -46,7 +46,7 @@ button:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color 0.25s cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
     background: rgba(148, 149, 152, .18);
@@ -68,14 +68,14 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
-  transition: transform 0.25s cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .collapsible {
   color: #010205;
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows 0.25s cubic-bezier(0.4,0,0.5,1), visibility 0s linear 0.25s;
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear 0.25s;
 }
 .collapsible div {
   overflow: hidden;
@@ -139,7 +139,7 @@ button:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color 0.25s cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
     background: rgba(148, 149, 152, .18);
@@ -161,14 +161,14 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   font-size: .75rem;
   transform: rotate3d(0);
-  transition: transform 0.25s cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .collapsible {
   color: #010205;
   display: grid;
   grid-template-rows: 1fr;
   visibility: visible;
-  transition: grid-template-rows 0.25s cubic-bezier(0.4,0,0.5,1);
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-bottom: 24px;
 }
 .collapsible div {
@@ -232,7 +232,7 @@ button:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color 0.25s cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
     background: rgba(148, 149, 152, .18);
@@ -254,14 +254,14 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
-  transition: transform 0.25s cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .collapsible {
   color: #FBFCFF;
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows 0.25s cubic-bezier(0.4,0,0.5,1), visibility 0s linear 0.25s;
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear 0.25s;
 }
 .collapsible div {
   overflow: hidden;
@@ -324,7 +324,7 @@ button:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color 0.25s cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
     background: rgba(148, 149, 152, .18);
@@ -346,14 +346,14 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
-  transition: transform 0.25s cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .collapsible {
   color: #010205;
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows 0.25s cubic-bezier(0.4,0,0.5,1), visibility 0s linear 0.25s;
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear 0.25s;
 }
 .collapsible div {
   overflow: hidden;
@@ -416,7 +416,7 @@ button:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color 0.25s cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
     background: rgba(148, 149, 152, .18);
@@ -438,14 +438,14 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   font-size: .75rem;
   transform: rotate3d(0);
-  transition: transform 0.25s cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .collapsible {
   color: #010205;
   display: grid;
   grid-template-rows: 1fr;
   visibility: visible;
-  transition: grid-template-rows 0.25s cubic-bezier(0.4,0,0.5,1);
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-bottom: 8px;
 }
 .collapsible div {
@@ -510,7 +510,7 @@ button:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color 0.25s cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
     background: rgba(148, 149, 152, .18);
@@ -532,14 +532,14 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
-  transition: transform 0.25s cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .collapsible {
   color: #010205;
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows 0.25s cubic-bezier(0.4,0,0.5,1), visibility 0s linear 0.25s;
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear 0.25s;
 }
 .collapsible div {
   overflow: hidden;
@@ -603,7 +603,7 @@ button:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color 0.25s cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
     background: rgba(148, 149, 152, .18);
@@ -625,14 +625,14 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   font-size: .75rem;
   transform: rotate3d(0);
-  transition: transform 0.25s cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .collapsible {
   color: #FBFCFF;
   display: grid;
   grid-template-rows: 1fr;
   visibility: visible;
-  transition: grid-template-rows 0.25s cubic-bezier(0.4,0,0.5,1);
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-bottom: 24px;
 }
 .collapsible div {
@@ -697,7 +697,7 @@ button:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color 0.25s cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
     background: rgba(148, 149, 152, .18);
@@ -719,14 +719,14 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   font-size: .75rem;
   transform: rotate3d(0);
-  transition: transform 0.25s cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .collapsible {
   color: #010205;
   display: grid;
   grid-template-rows: 1fr;
   visibility: visible;
-  transition: grid-template-rows 0.25s cubic-bezier(0.4,0,0.5,1);
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-bottom: 24px;
 }
 .collapsible div {
@@ -790,7 +790,7 @@ button:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color 0.25s cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
     background: rgba(148, 149, 152, .18);
@@ -812,14 +812,14 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
-  transition: transform 0.25s cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .collapsible {
   color: #010205;
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows 0.25s cubic-bezier(0.4,0,0.5,1), visibility 0s linear 0.25s;
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear 0.25s;
 }
 .collapsible div {
   overflow: hidden;
@@ -882,7 +882,7 @@ button:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color 0.25s cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
     background: rgba(148, 149, 152, .18);
@@ -904,14 +904,14 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   font-size: .75rem;
   transform: rotate3d(0);
-  transition: transform 0.25s cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .collapsible {
   color: #010205;
   display: grid;
   grid-template-rows: 1fr;
   visibility: visible;
-  transition: grid-template-rows 0.25s cubic-bezier(0.4,0,0.5,1);
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-bottom: 8px;
 }
 .collapsible div {
@@ -1011,7 +1011,7 @@ button:not(:focus-visible)::before {
 
 @media(hover:hover) {
   button::before {
-    transition: background-color 0.25s cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
     background: rgba(148, 149, 152, .18);
@@ -1033,14 +1033,14 @@ button:not(:focus-visible)::before {
   height: calc(6px + 2.125ex);
   font-size: .75rem;
   transform: rotate3d(0);
-  transition: transform 0.25s cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .collapsible {
   color: #FBFCFF;
   display: grid;
   grid-template-rows: 1fr;
   visibility: visible;
-  transition: grid-template-rows 0.25s cubic-bezier(0.4,0,0.5,1);
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-bottom: 24px;
 }
 .collapsible div {

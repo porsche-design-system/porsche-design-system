@@ -16,7 +16,7 @@ export const getFunctionalComponentStateMessageStyles = (theme: Theme, state: Fo
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: getThemedFormStateColors('dark', state).formStateColor,
       }),
-      transition: getTransition('color'),
+      transition: getTransition('color', 'short', 'base'),
     },
   };
 };

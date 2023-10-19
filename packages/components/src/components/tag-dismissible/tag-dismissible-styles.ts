@@ -83,7 +83,7 @@ export const getComponentCss = (
     icon: {
       padding: '4px',
       marginRight: '10px',
-      transition: getTransition('background-color'),
+      transition: getTransition('background-color', 'short', 'base'),
       borderRadius: borderRadiusSmall,
     },
     'sr-only': getHiddenTextJssStyle(),

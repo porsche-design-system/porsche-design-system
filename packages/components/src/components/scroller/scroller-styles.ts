@@ -112,7 +112,7 @@ export const getComponentCss = (
         visibility: 'hidden',
         ...(!isThemeDark(theme) && dropShadowLowStyle),
         ...hoverMediaQuery({
-          transition: getTransition('background-color'),
+          transition: getTransition('background-color', 'short', 'base'),
           '&:hover': {
             ...frostedGlassStyle,
             background: hoverColor,

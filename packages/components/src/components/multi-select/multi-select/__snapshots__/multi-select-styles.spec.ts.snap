@@ -78,12 +78,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   background: #FFF;
   border: 2px solid #6B6D70;
@@ -109,7 +109,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -126,7 +126,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -155,7 +155,7 @@ input:not(:focus):-moz-placeholder {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -252,12 +252,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   background: #FFF;
   border: 2px solid #197E10;
@@ -279,7 +279,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -309,7 +309,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -415,12 +415,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #FFF;
   border: 2px solid #6B6D70;
@@ -446,7 +446,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -463,7 +463,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -492,7 +492,7 @@ input:not(:focus):-moz-placeholder {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -601,12 +601,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #FFF;
   border: 2px solid #6B6D70;
@@ -632,7 +632,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -649,7 +649,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -678,7 +678,7 @@ input:not(:focus):-moz-placeholder {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -787,12 +787,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #FFF;
   border: 2px solid #197E10;
@@ -818,7 +818,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -835,7 +835,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -865,7 +865,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -974,12 +974,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #FFF;
   border: 2px solid #6B6D70;
@@ -1002,7 +1002,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -1031,7 +1031,7 @@ input:not(:focus):-moz-placeholder {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -1137,12 +1137,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #FFF;
   border: 2px solid #6B6D70;
@@ -1165,7 +1165,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -1194,7 +1194,7 @@ input:not(:focus):-moz-placeholder {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -1288,12 +1288,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   background: #FFF;
   border: 2px solid #010205;
@@ -1323,7 +1323,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -1340,7 +1340,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -1369,7 +1369,7 @@ input:not(:focus):-moz-placeholder {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -1466,12 +1466,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   background: #FFF;
   border: 2px solid #010205;
@@ -1501,7 +1501,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -1518,7 +1518,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -1547,7 +1547,7 @@ input:not(:focus):-moz-placeholder {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -1644,12 +1644,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   background: #FFF;
   border: 2px solid #010205;
@@ -1675,7 +1675,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -1704,7 +1704,7 @@ input:not(:focus):-moz-placeholder {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -1798,12 +1798,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   background: #FFF;
   border: 2px solid #010205;
@@ -1829,7 +1829,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -1859,7 +1859,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -1965,12 +1965,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #FFF;
   border: 2px solid #010205;
@@ -2000,7 +2000,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -2017,7 +2017,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -2046,7 +2046,7 @@ input:not(:focus):-moz-placeholder {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -2155,12 +2155,12 @@ input:not(:focus):-moz-placeholder {
   border-top-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #FFF;
   border: 2px solid #010205;
@@ -2187,7 +2187,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -2216,7 +2216,7 @@ input:not(:focus):-moz-placeholder {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -2310,12 +2310,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   background: #0E0E12;
   border: 2px solid #09D087;
@@ -2334,7 +2334,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -2364,7 +2364,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -2458,12 +2458,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   background: #0E0E12;
   border: 2px solid #FC4040;
@@ -2485,7 +2485,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -2515,7 +2515,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -2621,12 +2621,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #0E0E12;
   border: 2px solid #FC4040;
@@ -2646,7 +2646,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -2676,7 +2676,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -2782,12 +2782,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #0E0E12;
   border: 2px solid #FC4040;
@@ -2807,7 +2807,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -2837,7 +2837,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -2943,12 +2943,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #0E0E12;
   border: 2px solid #FC4040;
@@ -2971,7 +2971,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -3001,7 +3001,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -3107,12 +3107,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #0E0E12;
   border: 2px solid #09D087;
@@ -3135,7 +3135,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -3165,7 +3165,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -3259,12 +3259,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   background: #0E0E12;
   border: 2px solid #FBFCFF;
@@ -3287,7 +3287,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -3317,7 +3317,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -3411,12 +3411,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   background: #0E0E12;
   border: 2px solid #FBFCFF;
@@ -3439,7 +3439,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -3469,7 +3469,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -3563,12 +3563,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   background: #0E0E12;
   border: 2px solid #FBFCFF;
@@ -3594,7 +3594,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -3624,7 +3624,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -3718,12 +3718,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   background: #0E0E12;
   border: 2px solid #FBFCFF;
@@ -3749,7 +3749,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -3779,7 +3779,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -3885,12 +3885,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #0E0E12;
   border: 2px solid #FBFCFF;
@@ -3914,7 +3914,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -3944,7 +3944,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -4050,12 +4050,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #0E0E12;
   border: 2px solid #FBFCFF;
@@ -4079,7 +4079,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -4109,7 +4109,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;
@@ -4215,12 +4215,12 @@ input:not(:focus):-moz-placeholder {
   border-bottom-right-radius: 0;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .input-container {
   display: flex;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   background: #0E0E12;
   border: 2px solid #FBFCFF;
@@ -4247,7 +4247,7 @@ input:not(:focus):-moz-placeholder {
 }
 .toggle-icon {
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle-icon--open {
   transform: rotate3d(0,0,1,180deg);
@@ -4277,7 +4277,7 @@ input:not(:focus):-moz-placeholder {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .sr-text {
   position: absolute;

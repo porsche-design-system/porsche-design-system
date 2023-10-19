@@ -23,7 +23,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -64,7 +64,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -76,7 +76,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -92,7 +92,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(min-width:480px) {
   .label__text {
@@ -170,7 +170,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -211,7 +211,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -223,7 +223,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -240,7 +240,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
@@ -273,7 +273,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -314,7 +314,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -326,7 +326,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -343,7 +343,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
@@ -376,7 +376,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -417,7 +417,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -429,7 +429,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -446,7 +446,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
@@ -479,7 +479,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -520,7 +520,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -532,7 +532,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -549,7 +549,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
@@ -582,7 +582,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -623,7 +623,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -635,7 +635,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -651,7 +651,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
@@ -684,7 +684,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -725,7 +725,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -737,7 +737,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -753,7 +753,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
@@ -786,7 +786,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -828,7 +828,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -840,7 +840,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -857,7 +857,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
@@ -890,7 +890,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -932,7 +932,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -944,7 +944,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -961,7 +961,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
@@ -994,7 +994,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -1036,7 +1036,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -1048,7 +1048,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -1064,7 +1064,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
@@ -1097,7 +1097,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -1139,7 +1139,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -1151,7 +1151,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -1167,7 +1167,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
@@ -1200,7 +1200,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -1242,7 +1242,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -1254,7 +1254,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -1271,7 +1271,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
@@ -1304,7 +1304,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #010205 !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -1346,7 +1346,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -1358,7 +1358,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
 }
 .icon--open {
@@ -1375,7 +1375,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {
@@ -1408,7 +1408,7 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
   color: #FBFCFF !important;
-  transition: color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
@@ -1449,7 +1449,7 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label__text+.label__text {
   margin-top: -4px;
@@ -1460,7 +1460,7 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
   bottom: 13px;
   right: 15px;
   transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
   color: #7E7F82;
   cursor: not-allowed;
@@ -1479,7 +1479,7 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(select:not(:disabled):not(:focus):not([readonly])) {

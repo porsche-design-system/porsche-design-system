@@ -68,7 +68,7 @@ export const getComponentCss = (
                 left: buttonBeforeOffsetHorizontal,
                 borderRadius: borderRadiusSmall,
                 zIndex: -1, // needed so that text behind element is selectable and/or visible
-                transition: getTransition('background-color'),
+                transition: getTransition('background-color', 'short', 'base'),
               },
               ...hoverMediaQuery({
                 '&:hover, &:focus': {
@@ -99,7 +99,7 @@ export const getComponentCss = (
     },
     ...(sortable && {
       icon: {
-        transition: getTransition('opacity'),
+        transition: getTransition('opacity', 'short', 'base'),
         opacity: active ? 1 : 0,
         transform: `rotate3d(0,0,1,${isDirectionAsc(direction) ? 0 : 180}deg)`,
         transformOrigin: '50% 50%', // for iOS

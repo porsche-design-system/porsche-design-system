@@ -106,7 +106,7 @@ export const getComponentCss = (
               inset: '-2px -4px',
               borderRadius: borderRadiusSmall,
               zIndex: -1, // Stack the pseudo-element behind the button to avoid overlay of frosted-glass effect with label text
-              transition: getTransition('background-color'),
+              transition: getTransition('background-color', 'short', 'base'),
             },
           }),
         },

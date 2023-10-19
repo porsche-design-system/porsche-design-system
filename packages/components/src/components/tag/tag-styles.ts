@@ -82,7 +82,7 @@ export const getComponentCss = (
         }),
         ...(isFocusable &&
           hoverMediaQuery({
-            transition: getTransition('background-color'),
+            transition: getTransition('background-color', 'short', 'base'),
             '&:hover': {
               background: backgroundHoverColor,
               ...prefersColorSchemeDarkMediaQuery(theme, {

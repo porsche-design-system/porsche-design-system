@@ -9,7 +9,7 @@ export const getComponentCss = (): string => {
         display: 'table-row',
         borderTop: `1px solid var(${cssVariableTableBorderColor})`,
         borderBottom: `1px solid var(${cssVariableTableBorderColor})`,
-        transition: getTransition('background'),
+        transition: getTransition('background', 'short', 'base'),
         ...hostHiddenStyles,
         ...hoverMediaQuery({
           '&(:hover)': {

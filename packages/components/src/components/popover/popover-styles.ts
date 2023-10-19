@@ -176,7 +176,7 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
         height: fontLineHeight, // height needed to improve ssr support
         borderRadius: '50%',
         ...hoverMediaQuery({
-          transition: getTransition('background-color'),
+          transition: getTransition('background-color', 'short', 'base'),
           '&:hover': {
             ...frostedGlassStyle,
             backgroundColor: hoverColor,

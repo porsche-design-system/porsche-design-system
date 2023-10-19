@@ -62,7 +62,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
     inset: -2px -4px !important;
     border-radius: 4px !important;
     z-index: -1 !important;
-    transition: background-color var(--p-transition-duration, .24s) ease !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
@@ -161,7 +161,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
     inset: -2px -4px !important;
     border-radius: 4px !important;
     z-index: -1 !important;
-    transition: background-color var(--p-transition-duration, .24s) ease !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
@@ -260,7 +260,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
     inset: -2px -4px !important;
     border-radius: 4px !important;
     z-index: -1 !important;
-    transition: background-color var(--p-transition-duration, .24s) ease !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
@@ -359,7 +359,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
     inset: -2px -4px !important;
     border-radius: 4px !important;
     z-index: -1 !important;
-    transition: background-color var(--p-transition-duration, .24s) ease !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
@@ -458,7 +458,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
     inset: -2px -4px !important;
     border-radius: 4px !important;
     z-index: -1 !important;
-    transition: background-color var(--p-transition-duration, .24s) ease !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
@@ -557,7 +557,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
     inset: -2px -4px !important;
     border-radius: 4px !important;
     z-index: -1 !important;
-    transition: background-color var(--p-transition-duration, .24s) ease !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;

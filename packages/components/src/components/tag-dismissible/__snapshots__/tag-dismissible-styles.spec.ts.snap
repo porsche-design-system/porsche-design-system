@@ -50,7 +50,7 @@ button:focus:not(:focus-visible)::before {
 .icon {
   padding: 4px;
   margin-right: 10px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-radius: 4px;
 }
 .sr-only {
@@ -111,7 +111,7 @@ button:focus:not(:focus-visible)::before {
 .icon {
   padding: 4px;
   margin-right: 10px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-radius: 4px;
 }
 .sr-only {
@@ -178,7 +178,7 @@ button:focus:not(:focus-visible)::before {
 .icon {
   padding: 4px;
   margin-right: 10px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-radius: 4px;
 }
 .sr-only {
@@ -245,7 +245,7 @@ button:focus:not(:focus-visible)::before {
 .icon {
   padding: 4px;
   margin-right: 10px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-radius: 4px;
 }
 .sr-only {
@@ -312,7 +312,7 @@ button:focus:not(:focus-visible)::before {
 .icon {
   padding: 4px;
   margin-right: 10px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-radius: 4px;
 }
 .sr-only {
@@ -379,7 +379,7 @@ button:focus:not(:focus-visible)::before {
 .icon {
   padding: 4px;
   margin-right: 10px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-radius: 4px;
 }
 .sr-only {

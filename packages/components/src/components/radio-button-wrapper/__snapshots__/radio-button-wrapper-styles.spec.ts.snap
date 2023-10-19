@@ -22,7 +22,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -45,7 +45,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -61,7 +61,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(min-width:480px) {
   .text {
@@ -135,7 +135,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -160,7 +160,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -178,7 +178,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -216,7 +216,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -241,7 +241,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -259,7 +259,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -297,7 +297,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -320,7 +320,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -338,7 +338,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -364,7 +364,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -387,7 +387,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -405,7 +405,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -431,7 +431,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -456,7 +456,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -473,7 +473,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -511,7 +511,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -536,7 +536,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -553,7 +553,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -591,7 +591,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -614,7 +614,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -631,7 +631,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -657,7 +657,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -680,7 +680,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -697,7 +697,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -723,7 +723,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -748,7 +748,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -766,7 +766,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -804,7 +804,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -829,7 +829,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -847,7 +847,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -885,7 +885,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -908,7 +908,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -926,7 +926,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -952,7 +952,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -975,7 +975,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -993,7 +993,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -1019,7 +1019,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #FC4040 !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -1065,7 +1065,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -1082,7 +1082,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -1108,7 +1108,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #CC1922 !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -1154,7 +1154,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -1171,7 +1171,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -1197,7 +1197,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -1219,7 +1219,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -1236,7 +1236,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -1274,7 +1274,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -1296,7 +1296,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -1313,7 +1313,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -1351,7 +1351,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #88898C !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -1397,7 +1397,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -1413,7 +1413,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -1439,7 +1439,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -1485,7 +1485,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -1501,7 +1501,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -1527,7 +1527,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -1549,7 +1549,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -1565,7 +1565,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -1603,7 +1603,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -1625,7 +1625,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -1641,7 +1641,7 @@ label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -1679,7 +1679,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #09D087 !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -1725,7 +1725,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -1742,7 +1742,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -1768,7 +1768,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #197E10 !important;
   outline: 0 !important;
   cursor: pointer !important;
@@ -1814,7 +1814,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -1831,7 +1831,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -1857,7 +1857,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -1879,7 +1879,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -1896,7 +1896,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -1934,7 +1934,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
   cursor: not-allowed !important;
@@ -1956,7 +1956,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 0;
   height: 1px;
@@ -1973,7 +1973,7 @@ label {
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;

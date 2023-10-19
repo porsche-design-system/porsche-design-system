@@ -21,9 +21,9 @@ import { isThemeDark } from '../utils';
 import type * as fromMotion from '@porsche-design-system/utilities-v2/dist/esm/motion';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
-type MotionDurationKeyFinal = WithoutMotionDurationPrefix<keyof typeof fromMotion>;
+export type MotionDurationKeyFinal = WithoutMotionDurationPrefix<keyof typeof fromMotion>;
 type WithoutMotionEasingPrefix<T> = T extends `motionEasing${infer P}` ? Uncapitalize<P> : never;
-type MotionEasingKeyFinal = WithoutMotionEasingPrefix<keyof typeof fromMotion>;
+export type MotionEasingKeyFinal = WithoutMotionEasingPrefix<keyof typeof fromMotion>;
 
 const motionDurationMap: Record<MotionDurationKeyFinal, string> = {
   short: motionDurationShort,

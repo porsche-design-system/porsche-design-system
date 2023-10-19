@@ -114,7 +114,7 @@ export const getComponentCss = (
               cursor: 'pointer',
               ...(!isSelected &&
                 hoverMediaQuery({
-                  transition: getTransition('border-color'),
+                  transition: getTransition('border-color', 'short', 'base'),
                   '&:hover': {
                     borderColor: hoverBorderColor,
                     ...prefersColorSchemeDarkMediaQuery(theme, {
