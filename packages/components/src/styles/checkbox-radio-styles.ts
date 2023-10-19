@@ -173,6 +173,7 @@ export const getCheckboxRadioJssStyle = (
     ...getFunctionalComponentStateMessageStyles(theme, state),
     ...(isLoading && {
       spinner: {
+        position: 'relative',
         gridArea: '1 / 1',
         margin: borderWidthBase,
         justifySelf: 'center',

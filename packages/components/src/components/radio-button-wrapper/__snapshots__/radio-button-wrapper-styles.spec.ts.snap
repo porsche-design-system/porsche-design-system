@@ -217,6 +217,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
+  position: relative;
   grid-area: 1 / 1;
   margin: 2px;
   justify-self: center;
@@ -303,6 +304,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
+  position: relative;
   grid-area: 1 / 1;
   margin: 2px;
   justify-self: center;
@@ -536,6 +538,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
+  position: relative;
   grid-area: 1 / 1;
   margin: 2px;
   justify-self: center;
@@ -621,6 +624,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
+  position: relative;
   grid-area: 1 / 1;
   margin: 2px;
   justify-self: center;
@@ -853,6 +857,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
+  position: relative;
   grid-area: 1 / 1;
   margin: 2px;
   justify-self: center;
@@ -939,6 +944,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
+  position: relative;
   grid-area: 1 / 1;
   margin: 2px;
   justify-self: center;
@@ -1356,6 +1362,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
+  position: relative;
   grid-area: 1 / 1;
   margin: 2px;
   justify-self: center;
@@ -1437,6 +1444,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
+  position: relative;
   grid-area: 1 / 1;
   margin: 2px;
   justify-self: center;
@@ -1703,6 +1711,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
+  position: relative;
   grid-area: 1 / 1;
   margin: 2px;
   justify-self: center;
@@ -1783,6 +1792,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
+  position: relative;
   grid-area: 1 / 1;
   margin: 2px;
   justify-self: center;
@@ -2052,6 +2062,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
+  position: relative;
   grid-area: 1 / 1;
   margin: 2px;
   justify-self: center;
@@ -2133,6 +2144,7 @@ label {
   transition: color var(--p-transition-duration, .24s) ease;
 }
 .spinner {
+  position: relative;
   grid-area: 1 / 1;
   margin: 2px;
   justify-self: center;
