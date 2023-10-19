@@ -7,7 +7,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   overflow-wrap: break-word !important;
   hyphens: auto !important;
   color: #FBFCFF !important;
-  text-align: left !important;
+  text-align: start !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -36,7 +36,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   overflow-wrap: break-word !important;
   hyphens: auto !important;
   color: #010205 !important;
-  text-align: left !important;
+  text-align: start !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {

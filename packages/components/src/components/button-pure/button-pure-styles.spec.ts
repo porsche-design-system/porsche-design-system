@@ -12,12 +12,12 @@ describe('getComponentCss()', () => {
     xl: 'inherit',
   };
   const breakpointCustomizableAlignLabel: BreakpointCustomizable<AlignLabel> = {
-    base: 'left',
-    xs: 'right',
-    s: 'left',
-    m: 'right',
-    l: 'left',
-    xl: 'right',
+    base: 'start',
+    xs: 'end',
+    s: 'start',
+    m: 'end',
+    l: 'start',
+    xl: 'end',
   };
 
   it.each<{
@@ -41,7 +41,31 @@ describe('getComponentCss()', () => {
       stretch: false,
       size: 'small',
       hideLabel: false,
+      alignLabel: 'end',
+      theme: 'light',
+    },
+    {
+      icon: 'arrow-head-right',
+      iconSource: '',
+      active: false,
+      isLoading: false,
+      isDisabledOrLoading: false,
+      stretch: false,
+      size: 'small',
+      hideLabel: false,
       alignLabel: 'right',
+      theme: 'light',
+    },
+    {
+      icon: 'arrow-head-right',
+      iconSource: '',
+      active: false,
+      isLoading: false,
+      isDisabledOrLoading: false,
+      stretch: false,
+      size: 'small',
+      hideLabel: false,
+      alignLabel: 'left',
       theme: 'light',
     },
     {
@@ -53,7 +77,7 @@ describe('getComponentCss()', () => {
       stretch: false,
       size: 'small',
       hideLabel: false,
-      alignLabel: 'right',
+      alignLabel: 'end',
       theme: 'light',
     },
     {
@@ -65,7 +89,7 @@ describe('getComponentCss()', () => {
       stretch: false,
       size: 'small',
       hideLabel: false,
-      alignLabel: 'right',
+      alignLabel: 'end',
       theme: 'light',
     },
     {
@@ -77,7 +101,7 @@ describe('getComponentCss()', () => {
       stretch: false,
       size: 'small',
       hideLabel: false,
-      alignLabel: 'right',
+      alignLabel: 'end',
       theme: 'light',
     },
     {
@@ -89,7 +113,7 @@ describe('getComponentCss()', () => {
       stretch: false,
       size: 'small',
       hideLabel: false,
-      alignLabel: 'right',
+      alignLabel: 'end',
       theme: 'light',
     },
     {
@@ -101,7 +125,7 @@ describe('getComponentCss()', () => {
       stretch: false,
       size: 'small',
       hideLabel: false,
-      alignLabel: 'right',
+      alignLabel: 'end',
       theme: 'dark',
     },
     {
@@ -113,7 +137,7 @@ describe('getComponentCss()', () => {
       stretch: true,
       size: 'x-large',
       hideLabel: false,
-      alignLabel: 'left',
+      alignLabel: 'start',
       theme: 'light',
     },
     {
@@ -125,7 +149,7 @@ describe('getComponentCss()', () => {
       stretch: true,
       size: 'x-large',
       hideLabel: false,
-      alignLabel: 'left',
+      alignLabel: 'start',
       theme: 'dark',
     },
     {
@@ -137,7 +161,7 @@ describe('getComponentCss()', () => {
       stretch: false,
       size: 'small',
       hideLabel: true,
-      alignLabel: 'right',
+      alignLabel: 'end',
       theme: 'light',
     },
     {
@@ -149,7 +173,7 @@ describe('getComponentCss()', () => {
       stretch: false,
       size: 'small',
       hideLabel: true,
-      alignLabel: 'right',
+      alignLabel: 'end',
       theme: 'light',
     },
     {
@@ -161,7 +185,7 @@ describe('getComponentCss()', () => {
       stretch: false,
       size: 'small',
       hideLabel: breakpointCustomizableBoolean,
-      alignLabel: 'right',
+      alignLabel: 'end',
       theme: 'light',
     },
     {
@@ -173,7 +197,7 @@ describe('getComponentCss()', () => {
       stretch: false,
       size: 'small',
       hideLabel: false,
-      alignLabel: 'right',
+      alignLabel: 'end',
       theme: 'light',
     },
     {
@@ -185,7 +209,7 @@ describe('getComponentCss()', () => {
       stretch: false,
       size: 'inherit',
       hideLabel: false,
-      alignLabel: 'right',
+      alignLabel: 'end',
       theme: 'light',
     },
     {
@@ -197,7 +221,7 @@ describe('getComponentCss()', () => {
       stretch: false,
       size: breakpointCustomizableSize,
       hideLabel: false,
-      alignLabel: 'right',
+      alignLabel: 'end',
       theme: 'light',
     },
     {
@@ -216,7 +240,18 @@ describe('getComponentCss()', () => {
     'should return correct css for %j',
     ({ icon, iconSource, active, isLoading, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, theme }) => {
       expect(
-        getComponentCss(icon, iconSource, active, isLoading, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, theme)
+        getComponentCss(
+          icon,
+          iconSource,
+          active,
+          isLoading,
+          isDisabledOrLoading,
+          stretch,
+          size,
+          hideLabel,
+          alignLabel,
+          theme
+        )
       ).toMatchSnapshot();
     }
   );

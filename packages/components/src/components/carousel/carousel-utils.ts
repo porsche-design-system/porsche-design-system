@@ -14,7 +14,12 @@ import {
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 
-export const CAROUSEL_ALIGN_HEADERS = ['left', 'center'] as const;
+// 'left' is deprecated and will be mapped to 'start'
+/** @deprecated */
+export const CAROUSEL_ALIGN_HEADERS_DEPRECATED = ['left'] as const;
+/** @deprecated */
+export type CarouselAlignHeaderDeprecated = (typeof CAROUSEL_ALIGN_HEADERS_DEPRECATED)[number];
+export const CAROUSEL_ALIGN_HEADERS = ['start', 'center', ...CAROUSEL_ALIGN_HEADERS_DEPRECATED] as const;
 export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 
 // The offset value used for calculating the number of infinite bullets

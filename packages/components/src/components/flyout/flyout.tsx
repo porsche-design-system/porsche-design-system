@@ -5,6 +5,7 @@ import {
   FLYOUT_SCROLL_SHADOW_THRESHOLD,
   type FlyoutAriaAttribute,
   type FlyoutPosition,
+  type FlyoutPositionDeprecated,
 } from './flyout-utils';
 import { footerShadowClass, getComponentCss, headerShadowClass } from './flyout-styles';
 import {
@@ -19,6 +20,7 @@ import {
   validateProps,
   setScrollLock,
   setFocusTrap,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
@@ -42,7 +44,7 @@ export class Flyout {
   @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
   /** The position of the flyout */
-  @Prop() public position?: FlyoutPosition = 'right';
+  @Prop() public position?: FlyoutPosition = 'end';
 
   /** Adapts the flyout color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -121,6 +123,19 @@ export class Flyout {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
+    const positionDeprecationMap: Record<
+      FlyoutPositionDeprecated,
+      Exclude<FlyoutPosition, FlyoutPositionDeprecated>
+    > = {
+      left: 'start',
+      right: 'end',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Flyout, FlyoutPositionDeprecated, FlyoutPosition>(
+      this,
+      'position',
+      positionDeprecationMap
+    );
+
     this.hasHeader = hasNamedSlot(this.host, 'header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
     this.hasSubFooter = hasNamedSlot(this.host, 'sub-footer');
@@ -129,8 +144,7 @@ export class Flyout {
       this.host,
       getComponentCss,
       this.open,
-      this.position,
-      this.hasHeader,
+      (positionDeprecationMap[this.position] || this.position) as Exclude<FlyoutPosition, FlyoutPositionDeprecated>,
       this.hasFooter,
       this.hasSubFooter,
       this.theme
@@ -168,11 +182,7 @@ export class Flyout {
               Dismiss flyout
             </PrefixedTagNames.pButtonPure>
 
-            {this.hasHeader && (
-              <div class="header-content">
-                <slot name="header" />
-              </div>
-            )}
+            {this.hasHeader && <slot name="header" />}
           </div>
           <div class="content">
             <slot />

@@ -164,17 +164,19 @@ export class Modal {
           ref={(el) => (this.dialog = el)}
         >
           {this.hasDismissButton && (
-            <PrefixedTagNames.pButtonPure
-              class="dismiss"
-              type="button"
-              ref={(el) => (this.dismissBtn = el)}
-              hideLabel
-              icon="close"
-              onClick={this.dismissModal}
-              theme={this.theme}
-            >
-              Dismiss modal
-            </PrefixedTagNames.pButtonPure>
+            <div class="controls">
+              <PrefixedTagNames.pButtonPure
+                class="dismiss"
+                type="button"
+                ref={(el) => (this.dismissBtn = el)}
+                hideLabel
+                icon="close"
+                onClick={this.dismissModal}
+                theme={this.theme}
+              >
+                Dismiss modal
+              </PrefixedTagNames.pButtonPure>
+            </div>
           )}
           {this.hasHeader && (
             <div class="header">{this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}</div>

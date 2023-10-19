@@ -1,28 +1,28 @@
-import type { BreakpointCustomizable, PropTypes, TextAlign, TextColor, TextSize, TextWeight, Theme } from '../../types';
-import type { TextTag } from './text-utils';
+import type { BreakpointCustomizable, PropTypes, TextColor, TextSize, TextWeight, Theme } from '../../types';
+import type { TextTag, TextAlign, TextAlignDeprecated } from './text-utils';
+import type { TextColorDeprecated } from './text-color';
+import type { TextWeightDeprecated } from './text-weight';
 import { getTextTagType, TEXT_TAGS } from './text-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
-  TEXT_ALIGNS,
   TEXT_COLORS,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES,
+  TYPOGRAPHY_ALIGNS,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './text-styles';
-import type { TextColorDeprecated } from './text-color';
-import type { TextWeightDeprecated } from './text-weight';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
   size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
   weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
-  align: AllowedTypes.oneOf<TextAlign>(TEXT_ALIGNS),
+  align: AllowedTypes.oneOf<TextAlign>(TYPOGRAPHY_ALIGNS),
   color: AllowedTypes.oneOf<TextColor>(TEXT_COLORS),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -45,7 +45,7 @@ export class Text {
   @Prop() public weight?: TextWeight = 'regular';
 
   /** Text alignment of the component. */
-  @Prop() public align?: TextAlign = 'left';
+  @Prop() public align?: TextAlign = 'start';
 
   /** Basic text color variations depending on theme property. */
   @Prop() public color?: TextColor = 'primary';
@@ -80,12 +80,17 @@ export class Text {
       'weight',
       weightDeprecationMap
     );
+    const alignDeprecationMap: Record<TextAlignDeprecated, Exclude<TextAlign, TextAlignDeprecated>> = {
+      left: 'start',
+      right: 'end',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Text, TextAlignDeprecated, TextAlign>(this, 'align', alignDeprecationMap);
     attachComponentCss(
       this.host,
       getComponentCss,
       this.size,
       (weightDeprecationMap[this.weight] || this.weight) as Exclude<TextWeight, TextWeightDeprecated>,
-      this.align,
+      (alignDeprecationMap[this.align] || this.align) as Exclude<TextAlign, TextAlignDeprecated>,
       (colorDeprecationMap[this.color] || this.color) as Exclude<TextColor, TextColorDeprecated>,
       this.ellipsis,
       this.theme

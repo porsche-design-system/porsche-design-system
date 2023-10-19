@@ -28,7 +28,7 @@ export const getComponentCss = (theme: Theme): string => {
         display: 'block',
         ...textSmallStyle,
         color: primaryColor,
-        textAlign: 'left',
+        textAlign: 'start',
         ...colorSchemeStyles,
         ...hostHiddenStyles,
         ...prefersColorSchemeDarkMediaQuery(theme, {

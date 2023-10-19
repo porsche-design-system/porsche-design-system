@@ -1,13 +1,19 @@
 import type { PropTypes, Theme } from '../../types';
-import type { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from './headline-utils';
+import type {
+  HeadlineAlign,
+  HeadlineAlignDeprecated,
+  HeadlineColor,
+  HeadlineTag,
+  HeadlineVariant,
+} from './headline-utils';
 import { getHeadlineTagType, HEADLINE_COLORS, HEADLINE_TAGS } from './headline-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
-  TEXT_ALIGNS,
   THEMES,
+  TYPOGRAPHY_ALIGNS,
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../utils';
@@ -16,7 +22,7 @@ import { getComponentCss } from './headline-styles';
 const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
   // variant: AllowedTypes.string, // TODO: with all the different values this can't easily be validated
   tag: AllowedTypes.oneOf<HeadlineTag>([undefined, ...HEADLINE_TAGS]),
-  align: AllowedTypes.oneOf<HeadlineAlign>(TEXT_ALIGNS),
+  align: AllowedTypes.oneOf<HeadlineAlign>(TYPOGRAPHY_ALIGNS),
   color: AllowedTypes.oneOf<HeadlineColor>(HEADLINE_COLORS),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -37,7 +43,7 @@ export class Headline {
   @Prop() public tag?: HeadlineTag;
 
   /** Text alignment of the component. */
-  @Prop() public align?: HeadlineAlign = 'left';
+  @Prop() public align?: HeadlineAlign = 'start';
 
   /** Basic text color variations depending on theme property. */
   @Prop() public color?: HeadlineColor = 'primary';
@@ -55,7 +61,19 @@ export class Headline {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedComponentIsUsed(this.host, 'Please use new p-heading component instead.');
-    attachComponentCss(this.host, getComponentCss, this.variant, this.align, this.color, this.ellipsis, this.theme);
+    const alignDeprecationMap: Record<HeadlineAlignDeprecated, Exclude<HeadlineAlign, HeadlineAlignDeprecated>> = {
+      left: 'start',
+      right: 'end',
+    };
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.variant,
+      (alignDeprecationMap[this.align] || this.align) as Exclude<HeadlineAlign, HeadlineAlignDeprecated>,
+      this.color,
+      this.ellipsis,
+      this.theme
+    );
 
     const TagType = getHeadlineTagType(this.host, this.variant, this.tag);
 

@@ -5,14 +5,9 @@ import { getBaseChildStyles, getLabelStyles } from '../../../styles/form-styles'
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import type { FormState } from '../../../utils/form/form-state';
-import {
-  borderWidthBase,
-  fontLineHeight,
-  spacingStaticMedium,
-  spacingStaticSmall,
-} from '@porsche-design-system/utilities-v2';
+import { borderWidthBase, spacingStaticMedium, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
 
-export const ICON_SPACE = `${24 + 13 * 2 + 2}px`; // 24px = icon width, 13px * 2 = padding, 2px = border
+const controlBarWidth = '54px';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -32,26 +27,35 @@ export const getComponentCss = (
         position: 'static',
         zIndex: 0, // TODO: overrides global style.css in e2e and vrts
         cursor: 'pointer',
-        padding: `8px calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2) 8px ${spacingStaticMedium}`,
+        paddingBlock: spacingStaticSmall,
+        paddingInline: `${spacingStaticMedium} ${controlBarWidth}`,
         ...(hasCustomDropdown && !isDisabled && { borderColor: 'transparent' }),
       }),
     }),
     root: {
-      display: 'block',
       position: 'relative',
     },
-    ...getLabelStyles('select', isDisabled, hideLabel, state, theme, {
-      icon: {
-        position: 'absolute',
-        bottom: '13px',
-        right: '15px',
-        transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
-        transition: getTransition('transform'),
-        '&--open': {
-          transform: 'rotate3d(0,0,1,180deg)',
+    ...getLabelStyles(
+      'select',
+      isDisabled,
+      hideLabel,
+      state,
+      theme,
+      {
+        icon: {
+          gridArea: '3 / 2',
+          placeSelf: 'center',
+          transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
+          transition: getTransition('transform'),
+          '&--open': {
+            transform: 'rotate3d(0,0,1,180deg)',
+          },
         },
       },
-    }),
+      {
+        gridTemplateColumns: `minmax(0, 1fr) calc(${controlBarWidth} + ${borderWidthBase})`,
+      }
+    ),
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });
