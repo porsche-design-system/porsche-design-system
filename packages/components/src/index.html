@@ -89,6 +89,14 @@
         width: 100%;
         max-width: 300px;
       }
+
+      p-carousel div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #00b0f4;
+        height: 100px;
+      }
     </style>
   </head>
   <body>
@@ -124,6 +132,13 @@
       <p-button-tile label="Some Label" description="Default">
         <img src="./assets/image-grid.png" width="50" height="50" alt="Some alt text" />
       </p-button-tile>
+
+      <p-carousel heading="Some heading">
+        <div>Slide 1</div>
+        <div>Slide 2</div>
+        <div>Slide 3</div>
+        <div>Slide 4</div>
+      </p-carousel>
     </main>
 
     <script>
