@@ -9,6 +9,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   display: none !important;
 }
 input {
+  grid-area: 3 / 1 / auto / span 2;
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -50,17 +51,20 @@ input:disabled {
 }
 .label {
   display: none;
-  flex-direction: column;
-  gap: 4px;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
-  margin-bottom: 4px;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -87,13 +91,18 @@ input:disabled {
 }
 @media(min-width:480px) {
   .label {
-    display: inline-flex;
+    display: block;
   }
   .label__text {
     position: static;
     width: fit-content;
     height: auto;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-bottom: 4px;
   }
 }
 
@@ -103,21 +112,30 @@ input:disabled {
   }
   .label__text {
     position: absolute;
-    width: 0;
+    width: 1px;
     height: 1px;
-    text-indent: -999999px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
 }
 
 @media(min-width:1000px) {
   .label {
-    display: inline-flex;
+    display: block;
   }
   .label__text {
     position: static;
     width: fit-content;
     height: auto;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-bottom: 4px;
   }
 }
 
@@ -127,21 +145,30 @@ input:disabled {
   }
   .label__text {
     position: absolute;
-    width: 0;
+    width: 1px;
     height: 1px;
-    text-indent: -999999px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
 }
 
 @media(min-width:1760px) {
   .label {
-    display: inline-flex;
+    display: block;
   }
   .label__text {
     position: static;
     width: fit-content;
     height: auto;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-bottom: 4px;
   }
 }
 "
@@ -156,6 +183,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 input {
+  grid-area: 3 / 1 / auto / span 2;
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -196,18 +224,22 @@ input:disabled {
   width: fit-content;
 }
 .label {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 4px;
+  display: block;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
-  margin-bottom: 4px;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -242,6 +274,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 input {
+  grid-area: 3 / 1 / auto / span 2;
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -305,18 +338,22 @@ input:disabled {
   width: fit-content;
 }
 .label {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 4px;
+  display: block;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
-  margin-bottom: 4px;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -351,6 +388,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 input {
+  grid-area: 3 / 1 / auto / span 2;
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -391,18 +429,22 @@ input:disabled {
   width: fit-content;
 }
 .label {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 4px;
+  display: block;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
-  margin-bottom: 4px;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -436,6 +478,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 input {
+  grid-area: 3 / 1 / auto / span 2;
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -489,17 +532,20 @@ input:disabled {
 }
 .label {
   display: none;
-  flex-direction: column;
-  gap: 4px;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
-  margin-bottom: 4px;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;

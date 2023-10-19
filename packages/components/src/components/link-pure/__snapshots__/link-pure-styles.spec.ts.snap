@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"left","xs":"right","s":"left","m":"right","l":"left","xl":"right"},"underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -227,7 +227,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -387,7 +387,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -441,6 +441,337 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-indent: 0;
   z-index: 1;
   order: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+.root:focus::before {
+  border: 2px solid #1A44EA;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.label {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  order: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(a) {
+  margin: 0 !important;
+  padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  text-decoration: none !important;
+  font: inherit !important;
+  color: inherit !important;
+}
+::slotted(a)::before {
+  content: "" !important;
+  position: fixed !important;
+  top: -2px !important;
+  bottom: -2px !important;
+  border-radius: 4px !important;
+  right: -4px !important;
+  left: -4px !important;
+}
+::slotted(a:focus)::before {
+  border: 2px solid #1A44EA !important;
+}
+::slotted(a:focus:not(:focus-visible))::before {
+  border: 0 !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+.label {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  order: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":true,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+.root:focus::before {
+  border: 2px solid #1A44EA;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.label {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  order: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"left","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+":host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
+}
+.root:focus::before {
+  border: 2px solid #1A44EA;
+}
+.root:not(:focus-visible)::before {
+  border: 0;
+}
+.label {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  order: -1;
 }
 .icon {
   position: relative;
@@ -543,182 +874,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted(a) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  text-decoration: none !important;
-  font: inherit !important;
-  color: inherit !important;
-}
-::slotted(a)::before {
-  content: "" !important;
-  position: fixed !important;
-  top: -2px !important;
-  bottom: -2px !important;
-  border-radius: 4px !important;
-  right: -4px !important;
-  left: -4px !important;
-}
-::slotted(a:focus)::before {
-  border: 2px solid #1A44EA !important;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  border: 0 !important;
-}
-.root {
-  display: flex;
-  gap: 4px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  color: #010205;
-  outline: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  text-decoration: none;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
-}
-.label {
-  position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(hover:hover) {
-  .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":true,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
-":host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  gap: 4px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  color: #010205;
-  outline: 0;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  text-decoration: underline;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
-}
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
-  border: 0;
-}
-.label {
-  position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(hover:hover) {
-  .root:hover::before {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background-color: rgba(148, 149, 152, .18);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -795,7 +951,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 2`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"light"} 2`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -872,7 +1028,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"right","underline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"end","underline":false,"hasSlottedAnchor":true,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -968,7 +1124,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","underline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"start","underline":false,"hasSlottedAnchor":false,"theme":"dark"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1048,7 +1204,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"left","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"start","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1128,7 +1284,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"stretch":false,"size":"inherit","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"stretch":false,"size":"inherit","hideLabel":false,"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1185,7 +1341,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"hasSlottedAnchor":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;

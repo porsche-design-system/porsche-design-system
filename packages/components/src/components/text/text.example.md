@@ -65,6 +65,10 @@ and "semibold".
 
 ## Alignment
 
+<Notification heading="Deprecation hint" state="warning">
+  Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
+</Notification>
+
 <Playground :markup="alignMarkup" :config="config">
   <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
 </Playground>
@@ -84,7 +88,7 @@ import Component from 'vue-class-component';
 import { TEXT_SIZES } from './text-size';
 import { TEXT_WEIGHTS, TEXT_WEIGHTS_DEPRECATED } from './text-weight';
 import { TEXT_COLORS, TEXT_COLORS_DEPRECATED } from './text-color';
-import { TEXT_ALIGNS } from './text-align'; 
+import { TYPOGRAPHY_ALIGNS, TYPOGRAPHY_ALIGNS_DEPRECATED } from '../../utils'; 
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
 
@@ -118,7 +122,7 @@ export default class Code extends Vue {
   }
   
   align = 'center';
-  aligns = TEXT_ALIGNS;
+  aligns = TYPOGRAPHY_ALIGNS.map(item => TYPOGRAPHY_ALIGNS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get alignMarkup() {
     return `<p-text align="${this.align}">${sentence}</p-text>`;
   }

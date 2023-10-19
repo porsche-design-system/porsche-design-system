@@ -42,7 +42,7 @@ export const getComponentCss = (theme: Theme): string => {
         color: contrastHighColorDark,
       }),
       cursor: 'pointer',
-      textAlign: 'left',
+      textAlign: 'start',
       wordBreak: 'break-word',
       boxSizing: 'border-box',
       borderRadius: borderRadiusSmall,

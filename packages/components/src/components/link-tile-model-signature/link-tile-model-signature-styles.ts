@@ -43,10 +43,12 @@ export const getComponentCss = (
       padding: `${spacingFluidLarge} ${spacingFluidMedium} ${spacingFluidMedium}`,
       ...gradientToTopStyle,
     },
-    model: {
+    signature: {
       position: 'absolute',
       top: spacingFluidMedium,
       left: spacingFluidMedium,
+      right: spacingFluidMedium,
+      display: 'flex',
     },
     heading: {
       margin: 0,

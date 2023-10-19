@@ -34,6 +34,10 @@ In order to get notified when the flyout gets closed by clicking the `x` button,
 
 The size of `p-flyout` adjusts itself to the content with a predefined min/max width.
 
+<Notification heading="Deprecation hint" state="warning">
+  Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
+</Notification>
+
 <Playground :frameworkMarkup="basicSample" :markup="basicSample['vanilla-js']" :config="config">
   <div class="select-container">
     <SelectOptions v-model="position" :values="positions" name="position"></SelectOptions>
@@ -104,6 +108,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component'; 
 import { getFlyoutCodeSamples } from "@porsche-design-system/shared";  
 import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
+import { FLYOUT_POSITIONS, FLYOUT_POSITIONS_DEPRECATED } from './flyout-utils';
 
 @Component({
   components: {
@@ -139,10 +144,10 @@ export default class Code extends Vue {
     });
   }
 
-    position = 'right';
-    positions = ['left', 'right'];
+    position = 'end';
+    positions = FLYOUT_POSITIONS.map(item => FLYOUT_POSITIONS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
     get basicSample() {
-      Object.entries(this.codeExample).forEach(([key, value]) => this.codeExample[key] = value.replace(/left|right/, this.position));
+      Object.entries(this.codeExample).forEach(([key, value]) => this.codeExample[key] = value.replace(/start|end|left|right/, this.position));
       return this.codeExample
     }
     

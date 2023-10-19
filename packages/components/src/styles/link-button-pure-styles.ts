@@ -161,7 +161,8 @@ export const getLinkButtonPureStyles = (
       label: mergeDeep(
         buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
         buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-          order: alignLabelValue === 'left' ? -1 : 0,
+          // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
+          order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
         }))
       ),
     }),

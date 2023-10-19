@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- RTL (right-to-left) support for all components
+  ([#2819](https://github.com/porsche-design-system/porsche-design-system/pull/2819))
 - `Popover` and `Modal` support theme dark and auto
   ([#2789](https://github.com/porsche-design-system/porsche-design-system/pull/2789))
 - Styles: `getSkeletonStyle()` and `pds-skeleton()`
@@ -30,6 +32,80 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2789](https://github.com/porsche-design-system/porsche-design-system/pull/2789))
 - `Spinner` animation was optimized to consume less CPU
   ([#2825](https://github.com/porsche-design-system/porsche-design-system/pull/2825))
+
+- `Text`, `Display`, `Heading`, `Headline`: Prop values `left | right` of `align` prop are deprecated and mapped to new
+  values `start | end` for correct RTL (right-to-left) support
+  ([#2819](https://github.com/porsche-design-system/porsche-design-system/pull/2819))
+
+```diff
+- <p-text align="left"></p-text>
++ <p-text align="start"></p-text>
+
+- <p-text align="right"></p-text>
++ <p-text align="end"></p-text>
+
+- <p-display align="left"></p-display>
++ <p-display align="start"></p-display>
+
+- <p-display align="right"></p-display>
++ <p-display align="end"></p-display>
+
+- <p-heading align="left"></p-heading>
++ <p-heading align="start"></p-heading>
+
+- <p-heading align="right"></p-heading>
++ <p-heading align="end"></p-heading>
+
+- <p-headline align="left"></p-headline>
++ <p-headline align="start"></p-headline>
+
+- <p-headline align="right"></p-headline>
++ <p-headline align="end"></p-headline>
+```
+
+- `Button Pure`, `Link Pure`, `Switch`: Prop values `left | right` of `align-label` prop are deprecated and mapped to
+  new values `start | end` for correct RTL (right-to-left) support
+  ([#2819](https://github.com/porsche-design-system/porsche-design-system/pull/2819))
+
+```diff
+- <p-button-pure align-label="left"></p-button-pure>
++ <p-button-pure align-label="start"></p-button-pure>
+
+- <p-button-pure align-label="right"></p-button-pure>
++ <p-button-pure align-label="end"></p-button-pure>
+
+- <p-link-pure align-label="left"></p-link-pure>
++ <p-link-pure align-label="start"></p-link-pure>
+
+- <p-link-pure align-label="right"></p-link-pure>
++ <p-link-pure align-label="end"></p-link-pure>
+
+- <p-switch align-label="left"></p-switch>
++ <p-switch align-label="start"></p-switch>
+
+- <p-switch align-label="right"></p-switch>
++ <p-switch align-label="end"></p-switch>
+```
+
+- `Flyout`: Prop values `left | right` of `position` prop are deprecated and mapped to new values `start | end` for
+  correct RTL (right-to-left) support
+  ([#2819](https://github.com/porsche-design-system/porsche-design-system/pull/2819))
+
+```diff
+- <p-flyout position="left"></p-flyout>
++ <p-flyout-pure position="start"></p-flyout>
+
+- <p-flyout-pure position="right"></p-flyout>
++ <p-flyout-pure position="end"></p-flyout>
+```
+
+- `Carousel`: Prop value `left` of `align-header` prop is deprecated and mapped to new value `start` for correct RTL
+  (right-to-left) support ([#2819](https://github.com/porsche-design-system/porsche-design-system/pull/2819))
+
+```diff
+- <p-carousel align-header="left"></p-carousel>
++ <p-carousel-pure align-header="start"></p-carousel>
+```
 
 #### Fixed
 

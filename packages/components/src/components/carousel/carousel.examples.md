@@ -57,6 +57,10 @@ Right after the `heading`, an additional `description` can be added either via p
 
 The heading and description can be aligned via `alignHeader`.
 
+<Notification heading="Deprecation hint" state="warning">
+  Following alignments have been deprecated and will be removed with the next major release: "left".
+</Notification>
+
 <Playground :markup="alignHeaderMarkup" :config="config">
   <SelectOptions v-model="alignHeader" :values="alignHeaders" name="alignHeader"></SelectOptions>
 </Playground>
@@ -182,7 +186,7 @@ import Component from 'vue-class-component';
 import type { Theme } from '@/models';
 import type { CarouselWidth, CarouselAlignHeader } from './carousel-utils'; 
 import { getCarouselCodeSamples } from '@porsche-design-system/shared';
-import { CAROUSEL_WIDTHS, CAROUSEL_ALIGN_HEADERS } from './carousel-utils';
+import { CAROUSEL_WIDTHS, CAROUSEL_ALIGN_HEADERS, CAROUSEL_ALIGN_HEADERS_DEPRECATED } from './carousel-utils';
 import { borderRadius } from '@porsche-design-system/components-js/styles';
 
 @Component
@@ -249,7 +253,7 @@ export default class Code extends Vue {
 }
 
   alignHeader: CarouselAlignHeader = 'center';
-  alignHeaders = CAROUSEL_ALIGN_HEADERS;
+  alignHeaders = CAROUSEL_ALIGN_HEADERS.map(item => CAROUSEL_ALIGN_HEADERS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item)
   get alignHeaderMarkup() {
     return `<p-carousel align-header="${this.alignHeader}" heading="${this.basicHeading}" description="${this.basicDescription}">
   ${this.getSlides(3)}

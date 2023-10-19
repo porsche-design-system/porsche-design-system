@@ -47,6 +47,7 @@ export const getBaseChildStyles = (
 
   return {
     [`::slotted(${child})`]: {
+      gridArea: '3 / 1 / auto / span 2',
       display: 'block',
       width: '100%',
       height:
@@ -132,14 +133,17 @@ export const getLabelStyles = (
 
   return {
     label: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: spacingStaticXSmall,
+      display: 'grid',
+      gridTemplateColumns: 'minmax(0, 1fr) auto',
       position: 'relative', // for unit and counter
       '&__text': {
+        gridColumn: 'span 2',
         display: 'block',
         ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-          getHiddenTextJssStyle(isHidden, { width: 'fit-content' })
+          getHiddenTextJssStyle(isHidden, {
+            width: 'fit-content',
+            marginBottom: spacingStaticXSmall,
+          })
         ),
         ...textSmallStyle,
         color: isDisabled ? disabledColor : primaryColor,

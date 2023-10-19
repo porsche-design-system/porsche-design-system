@@ -29,7 +29,6 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-flyout');
 const getFlyout = () => selectNode(page, 'p-flyout >>> .root');
 const getHeader = () => selectNode(page, 'p-flyout >>> .header');
-const getHeaderContent = () => selectNode(page, 'p-flyout >>> .header-content');
 const getHeaderSlottedContent = () => selectNode(page, '[slot="header"]');
 const getFooter = () => selectNode(page, 'p-flyout >>> .footer');
 const getFooterSlottedContent = () => selectNode(page, '[slot="footer"]');
@@ -626,9 +625,11 @@ describe('slotted', () => {
         subFooter: `<div slot="sub-footer">${subFooterContent}</div>`,
       }
     );
-    const header = await getHeaderContent();
+    const header = await getHeader();
     const headerSlottedContent = await getHeaderSlottedContent();
-    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="header"></slot>"`);
+    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(
+      `"<p-button-pure class="dismiss hydrated">Dismiss flyout</p-button-pure><slot name="header"></slot>"`
+    );
     expect(await getProperty(headerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(
       `"<h1>Sticky Heading</h1><p>Sticky header text</p>"`
     );

@@ -9,6 +9,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -48,17 +49,21 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -73,7 +78,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .counter {
   position: absolute;
   bottom: 6px;
+  left: 12px;
   right: 12px;
+  text-align: end;
+  overflow: hidden;
+  text-overflow: ellipsis;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #88898C;
@@ -93,26 +102,38 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
   padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:480px) {
   .label__text {
     position: static;
     width: fit-content;
     height: auto;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-bottom: 4px;
   }
 }
 
 @media(min-width:760px) {
   .label__text {
     position: absolute;
-    width: 0;
+    width: 1px;
     height: 1px;
-    text-indent: -999999px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
 }
 
@@ -121,16 +142,25 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
     position: static;
     width: fit-content;
     height: auto;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-bottom: 4px;
   }
 }
 
 @media(min-width:1300px) {
   .label__text {
     position: absolute;
-    width: 0;
+    width: 1px;
     height: 1px;
-    text-indent: -999999px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
 }
 
@@ -139,7 +169,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
     position: static;
     width: fit-content;
     height: auto;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-bottom: 4px;
   }
 }
 
@@ -160,6 +195,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -199,17 +235,21 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -224,7 +264,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .counter {
   position: absolute;
   bottom: 6px;
+  left: 12px;
   right: 12px;
+  text-align: end;
+  overflow: hidden;
+  text-overflow: ellipsis;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #6B6D70;
@@ -244,26 +288,38 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
   padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:480px) {
   .label__text {
     position: static;
     width: fit-content;
     height: auto;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-bottom: 4px;
   }
 }
 
 @media(min-width:760px) {
   .label__text {
     position: absolute;
-    width: 0;
+    width: 1px;
     height: 1px;
-    text-indent: -999999px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
 }
 
@@ -272,16 +328,25 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
     position: static;
     width: fit-content;
     height: auto;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-bottom: 4px;
   }
 }
 
 @media(min-width:1300px) {
   .label__text {
     position: absolute;
-    width: 0;
+    width: 1px;
     height: 1px;
-    text-indent: -999999px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
 }
 
@@ -290,7 +355,12 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
     position: static;
     width: fit-content;
     height: auto;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-bottom: 4px;
   }
 }
 
@@ -311,6 +381,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -350,17 +421,22 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -402,6 +478,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -441,17 +518,22 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -466,7 +548,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .counter {
   position: absolute;
   bottom: 6px;
+  left: 12px;
   right: 12px;
+  text-align: end;
+  overflow: hidden;
+  text-overflow: ellipsis;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #6B6D70;
@@ -487,10 +573,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
   padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
@@ -509,6 +598,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -548,17 +638,22 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -599,6 +694,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -638,17 +734,22 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -663,7 +764,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .counter {
   position: absolute;
   bottom: 6px;
+  left: 12px;
   right: 12px;
+  text-align: end;
+  overflow: hidden;
+  text-overflow: ellipsis;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #6B6D70;
@@ -683,10 +788,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
   padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
@@ -705,6 +813,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -744,17 +853,22 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -796,6 +910,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -835,17 +950,22 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -860,7 +980,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .counter {
   position: absolute;
   bottom: 6px;
+  left: 12px;
   right: 12px;
+  text-align: end;
+  overflow: hidden;
+  text-overflow: ellipsis;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #6B6D70;
@@ -881,10 +1005,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
   padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
@@ -903,6 +1030,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -942,17 +1070,21 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -994,6 +1126,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -1033,17 +1166,21 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1058,7 +1195,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .counter {
   position: absolute;
   bottom: 6px;
+  left: 12px;
   right: 12px;
+  text-align: end;
+  overflow: hidden;
+  text-overflow: ellipsis;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #6B6D70;
@@ -1079,10 +1220,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
   padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
@@ -1101,6 +1245,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -1140,17 +1285,21 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1191,6 +1340,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -1230,17 +1380,21 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1255,7 +1409,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .counter {
   position: absolute;
   bottom: 6px;
+  left: 12px;
   right: 12px;
+  text-align: end;
+  overflow: hidden;
+  text-overflow: ellipsis;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #6B6D70;
@@ -1275,10 +1433,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
   padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
@@ -1297,6 +1458,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -1336,17 +1498,21 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1388,6 +1554,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -1427,17 +1594,21 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1452,7 +1623,11 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .counter {
   position: absolute;
   bottom: 6px;
+  left: 12px;
   right: 12px;
+  text-align: end;
+  overflow: hidden;
+  text-overflow: ellipsis;
   z-index: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #6B6D70;
@@ -1473,10 +1648,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
   padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .label__text:hover~::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
@@ -1495,6 +1673,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: none !important;
 }
 ::slotted(textarea) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: auto;
@@ -1534,17 +1713,21 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;

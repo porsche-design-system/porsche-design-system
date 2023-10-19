@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
-    <header>
+    <header dir="ltr">
       <select id="page" onchange="updateRoute({pathname: this.value})">
         <option disabled selected>Select a page</option>
         <optgroup label="Components">
@@ -125,6 +125,12 @@
         <option value="dark">Dark</option>
         <option value="auto">Auto</option>
       </select>
+      <select id="dir" onchange="updateRoute({dir: this.value})">
+        <option disabled selected>Select a direction</option>
+        <option value="ltr">LTR (left-to-right)</option>
+        <option value="rtl">RTL (right-to-left)</option>
+        <option value="auto">Auto</option>
+      </select>
     </header>
 
     <div id="app"></div>
@@ -132,6 +138,7 @@
     <script>
       const getPage = () => window.location.pathname.substring(1);
       const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
+      const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
 
       const updateRoute = async (opts) => {
         if (opts) {
@@ -142,6 +149,9 @@
           if (opts.theme) {
             url.searchParams.set('theme', opts.theme);
           }
+          if (opts.dir) {
+            url.searchParams.set('dir', opts.dir);
+          }
           history.pushState(null, '', url);
         }
 
@@ -150,6 +160,7 @@
         const page = getPage();
         if (page) {
           const theme = getTheme();
+          const dir = getDir();
           const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
 
           app.innerHTML = '';
@@ -159,6 +170,7 @@
             el.classList.remove('light', 'dark', 'auto');
             el.classList.add(theme);
           });
+          document.querySelector('html').setAttribute('dir', dir);
 
           const scripts = app.getElementsByTagName('script');
           for (let i = 0; i < scripts.length; i++) {
@@ -179,6 +191,7 @@
 
       updateSelect('page', getPage());
       updateSelect('theme', getTheme());
+      updateSelect('dir', getDir());
       updateRoute();
     </script>
   </body>

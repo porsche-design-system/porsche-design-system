@@ -46,6 +46,10 @@ Predefined colors associated with its theme are available but also inherit mode 
 
 ## Alignment
 
+<Notification heading="Deprecation hint" state="warning">
+  Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
+</Notification>
+
 <Playground :markup="alignMarkup" :config="config">
   <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
 </Playground>
@@ -63,7 +67,7 @@ end are used to visualize it.
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { HEADLINE_COLORS, HEADLINE_VARIANTS } from './headline-utils';
-import { TEXT_ALIGNS}  from '../text/text-align'; 
+import { TYPOGRAPHY_ALIGNS, TYPOGRAPHY_ALIGNS_DEPRECATED } from '../../utils';
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
 
@@ -98,7 +102,7 @@ export default class Code extends Vue {
   }
 
   align = 'center';
-  aligns = TEXT_ALIGNS;
+  aligns = TYPOGRAPHY_ALIGNS.map(item => TYPOGRAPHY_ALIGNS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get alignMarkup() {
     return `<p-headline variant="headline-3" align="${this.align}">${sentence}</p-headline>`;
   }
