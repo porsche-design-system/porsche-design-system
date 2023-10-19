@@ -242,8 +242,10 @@ exports[`should have no basic DOM regression for p-link-tile-model-signature 1`]
     <slot>
     </slot>
   </div>
-  <p-model-signature class="model hydrated">
-  </p-model-signature>
+  <div class="signature">
+    <p-model-signature class="hydrated">
+    </p-model-signature>
+  </div>
   <div class="content">
     <a class="link-overlay" href="#" target="_self" tabindex="-1" aria-hidden="true">
     </a>
@@ -271,8 +273,10 @@ exports[`should have no basic DOM regression for p-marque 1`] = `
 
 exports[`should have no basic DOM regression for p-modal 1`] = `
 "<div class="root" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1" inert="">
-  <p-button-pure class="dismiss hydrated">
-    Dismiss modal</p-button-pure>
+  <div class="controls">
+    <p-button-pure class="dismiss hydrated">
+      Dismiss modal</p-button-pure>
+  </div>
   <div class="content">
     <slot>
     </slot>
@@ -560,8 +564,10 @@ exports[`should have no basic DOM regression for p-text-list 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-text-list-item 1`] = `
-"<slot>
-</slot>"
+"<span>
+  <slot>
+  </slot>
+</span>"
 `;
 
 exports[`should have no basic DOM regression for p-textarea-wrapper 1`] = `

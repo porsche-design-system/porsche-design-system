@@ -99,7 +99,11 @@ link to another icon hosted somewhere else, just set the whole icon path to the 
 
 ## Alignment
 
-The `label` can be aligned to the `right` (default) or to the `left` of the icon.
+The `label` can be aligned to the `end` (default) or to the `start` of the icon.
+
+<Notification heading="Deprecation hint" state="warning">
+  Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
+</Notification>
 
 <Playground :markup="alignLabelMarkup" :config="config">
   <SelectOptions v-model="alignLabel" :values="alignLabels" name="alignLabel"></SelectOptions>
@@ -110,16 +114,16 @@ The `label` can be aligned to the `right` (default) or to the `left` of the icon
 ## Stretch
 
 The `stretch` property extends the area between icon and label to the maximum available space. It is recommended to use
-stretch only on `left` alignment and small viewports, e.g. mobile views.
+stretch only on `start` alignment and small viewports, e.g. mobile views.
 
 <Playground :markup="stretchMarkup" :config="config">
   <select v-model="stretch" aria-label="Select stretching and alignment">
     <option disabled>Select stretching and alignment</option>
-    <option value='stretch="true" align-label="left"'>stretch true, align-label left</option>
-    <option value='stretch="true" align-label="right"'>stretch true, align-label right</option>
-    <option value='stretch="false" align-label="left"'>stretch false, align-label left</option>
-    <option value='stretch="false" align-label="right"'>stretch false, align-label right</option>
-    <option value='stretch="{ base: true, l: false }" align-label="left"'>Responsive</option>
+    <option value='stretch="true" align-label="start"'>stretch true, align-label start</option>
+    <option value='stretch="true" align-label="end"'>stretch true, align-label end</option>
+    <option value='stretch="false" align-label="start"'>stretch false, align-label start</option>
+    <option value='stretch="false" align-label="end"'>stretch false, align-label end</option>
+    <option value='stretch="{ base: true, l: false }" align-label="start"'>Responsive</option>
   </select>
 </Playground>
 
@@ -152,14 +156,14 @@ By setting the `tabindex` attribute to `-1` you can remove the **Button Pure** f
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { TEXT_SIZES } from '../text/text-size';
-import { ALIGN_LABELS } from '../../utils'; 
+import { ALIGN_LABELS, ALIGN_LABELS_DEPRECATED } from '../../utils';
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
   configInline = { ...this.config, spacing: 'inline' };
 
-  stretch = 'stretch="true" align-label="left"';
+  stretch = 'stretch="true" align-label="start"';
 
   withoutIcon =
 `<p-button-pure icon="none">Some label</p-button-pure>
@@ -199,8 +203,8 @@ export default class Code extends Vue {
 `<p-button-pure icon="delete">Some label</p-button-pure>
 <p-button-pure icon-source="${require('../../assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-button-pure>`;
 
-  alignLabel = 'left';
-  alignLabels = [...ALIGN_LABELS, "{ base: 'left', l: 'right' }"];
+  alignLabel = 'start';
+  alignLabels = [...ALIGN_LABELS.map(item => ALIGN_LABELS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item), "{ base: 'start', l: 'end' }"];
   get alignLabelMarkup() {
     return `<p-button-pure align-label="${this.alignLabel}">Some label</p-button-pure>`;
   };

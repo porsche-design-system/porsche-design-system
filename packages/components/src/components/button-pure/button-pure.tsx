@@ -5,27 +5,29 @@ import {
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
   getPrefixedTagNames,
+  hasPropValueChanged,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
-  hasPropValueChanged,
   isDisabledOrLoading,
   TEXT_SIZES,
   TEXT_WEIGHTS,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropValueIsUsed,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { Component, Element, h, type JSX, Listen, Prop } from '@stencil/core';
-import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import type {
   ButtonPureAlignLabel,
+  ButtonPureAlignLabelDeprecated,
   ButtonPureAriaAttribute,
   ButtonPureIcon,
   ButtonPureSize,
   ButtonPureType,
   ButtonPureWeight,
 } from './button-pure-utils';
+import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
@@ -82,7 +84,7 @@ export class ButtonPure {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: BreakpointCustomizable<ButtonPureAlignLabel> = 'right';
+  @Prop() public alignLabel?: BreakpointCustomizable<ButtonPureAlignLabel> = 'end';
 
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
@@ -121,6 +123,20 @@ export class ButtonPure {
     validateProps(this, propTypes);
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon, this.iconSource);
     warnIfParentIsPTextAndIconIsNone(this.host, this.icon, this.iconSource);
+
+    const alignLabelDeprecationMap: Record<
+      ButtonPureAlignLabelDeprecated,
+      Exclude<ButtonPureAlignLabel, ButtonPureAlignLabelDeprecated>
+    > = {
+      left: 'start',
+      right: 'end',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof ButtonPure, ButtonPureAlignLabelDeprecated, ButtonPureAlignLabel>(
+      this,
+      'alignLabel',
+      alignLabelDeprecationMap
+    );
+
     attachComponentCss(
       this.host,
       getComponentCss,

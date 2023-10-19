@@ -35,7 +35,7 @@ export const getComponentCss = (
         root: {
           appearance: 'none',
           background: 'transparent',
-          textAlign: 'left',
+          textAlign: 'start',
           border: 0,
           cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
         },

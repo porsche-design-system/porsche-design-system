@@ -10,7 +10,7 @@ exports[`should generate raw data correctly for 1 version and 2 prefixes 1`] = `
           "children": "Second prefix",
           "hostPdsComponent": null,
           "properties": {
-            "align": "left",
+            "align": "start",
             "color": "primary",
             "ellipsis": false,
             "size": "small",
@@ -27,7 +27,7 @@ exports[`should generate raw data correctly for 1 version and 2 prefixes 1`] = `
           "children": "First prefix",
           "hostPdsComponent": null,
           "properties": {
-            "align": "left",
+            "align": "start",
             "color": "primary",
             "ellipsis": false,
             "size": "small",
@@ -88,7 +88,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
           "children": "First version first prefix",
           "hostPdsComponent": null,
           "properties": {
-            "align": "left",
+            "align": "start",
             "color": "primary",
             "ellipsis": false,
             "size": "small",
@@ -105,7 +105,7 @@ exports[`should generate raw data correctly for 2 versions and 2 prefixes 1`] = 
           "children": "First version second prefix",
           "hostPdsComponent": null,
           "properties": {
-            "align": "left",
+            "align": "start",
             "color": "primary",
             "ellipsis": false,
             "size": "small",
@@ -172,7 +172,7 @@ exports[`should retrieve children and hostPdsComponent correctly 1`] = `
           "hostPdsComponent": "p-inline-notification",
           "properties": {
             "active": false,
-            "alignLabel": "right",
+            "alignLabel": "end",
             "disabled": false,
             "hideLabel": true,
             "icon": "close",

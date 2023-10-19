@@ -188,10 +188,15 @@ h2 {
 .content {
   padding: 0 32px;
 }
-.dismiss {
+.controls {
   position: absolute;
   top: 8px;
   right: 8px;
+  left: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+.dismiss {
   border: 2px solid #FFF;
   border-radius: 4px;
   background: #FFF;
@@ -301,10 +306,15 @@ h2 {
 .content {
   padding: 0 32px;
 }
-.dismiss {
+.controls {
   position: absolute;
   top: 8px;
   right: 8px;
+  left: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+.dismiss {
   border: 2px solid #0E0E12;
   border-radius: 4px;
   background: #0E0E12;
@@ -610,10 +620,15 @@ h2 {
 .content {
   padding: 0 32px;
 }
-.dismiss {
+.controls {
   position: absolute;
   top: 8px;
   right: 8px;
+  left: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+.dismiss {
   border: 2px solid #0E0E12;
   border-radius: 4px;
   background: #0E0E12;
@@ -723,10 +738,15 @@ h2 {
 .content {
   padding: 0 32px;
 }
-.dismiss {
+.controls {
   position: absolute;
   top: 8px;
   right: 8px;
+  left: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+.dismiss {
   border: 2px solid #FFF;
   border-radius: 4px;
   background: #FFF;
@@ -880,10 +900,15 @@ h2 {
 .content {
   padding: 0 32px;
 }
-.dismiss {
+.controls {
   position: absolute;
   top: 8px;
   right: 8px;
+  left: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+.dismiss {
   border: 2px solid #FFF;
   border-radius: 4px;
   background: #FFF;
@@ -1393,10 +1418,15 @@ h2 {
 .content {
   padding: 0 32px;
 }
-.dismiss {
+.controls {
   position: absolute;
   top: 8px;
   right: 8px;
+  left: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+.dismiss {
   border: 2px solid #0E0E12;
   border-radius: 4px;
   background: #0E0E12;
@@ -1505,10 +1535,15 @@ h2 {
 .content {
   padding: 0 32px;
 }
-.dismiss {
+.controls {
   position: absolute;
   top: 8px;
   right: 8px;
+  left: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+.dismiss {
   border: 2px solid #FFF;
   border-radius: 4px;
   background: #FFF;
@@ -1811,10 +1846,15 @@ h2 {
 .content {
   padding: 0 32px;
 }
-.dismiss {
+.controls {
   position: absolute;
   top: 8px;
   right: 8px;
+  left: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+.dismiss {
   border: 2px solid #FFF;
   border-radius: 4px;
   background: #FFF;
@@ -1923,10 +1963,15 @@ h2 {
 .content {
   padding: 0 32px;
 }
-.dismiss {
+.controls {
   position: absolute;
   top: 8px;
   right: 8px;
+  left: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+.dismiss {
   border: 2px solid #0E0E12;
   border-radius: 4px;
   background: #0E0E12;

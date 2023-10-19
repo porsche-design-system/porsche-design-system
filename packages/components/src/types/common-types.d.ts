@@ -6,8 +6,10 @@ export type { PropTypes, ValidatorFunction } from '../utils/validation/validateP
 export type { BreakpointCustomizable } from '../utils/breakpoint-customizable';
 export type { Theme } from '../utils/theme';
 
+export type { TypographyAlign, TypographyAlignDeprecated } from '../utils/typography/typography-align';
+
+// TODO: we shouldn't re-export component specific types
 export type { TextSize } from '../components/text/text-size';
-export type { TextAlign } from '../components/text/text-align';
 export type { TextColor } from '../components/text/text-color';
 export type { TextWeight } from '../components/text/text-weight';
 
@@ -23,7 +25,7 @@ export type { ButtonType } from '../utils/link-button/button-type';
 export type LinkVariant = LinkButtonVariant;
 export type { LinkTarget } from '../utils/link-button/link-target';
 
-export type { AlignLabel } from '../utils/link-button/align-label';
+export type { AlignLabel, AlignLabelDeprecated } from '../utils/link-button/align-label';
 
 // ROLLUP_REPLACE_VARIABLES are replaced via rollup
 declare global {

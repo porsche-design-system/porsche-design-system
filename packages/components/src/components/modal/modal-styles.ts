@@ -228,10 +228,15 @@ export const getComponentCss = (
       },
     }),
     ...(hasDismissButton && {
-      dismiss: {
+      controls: {
         position: 'absolute',
         top: '8px',
         right: '8px',
+        left: '8px',
+        display: 'flex',
+        justifyContent: 'flex-end',
+      },
+      dismiss: {
         border: `2px solid ${backgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
         borderRadius: '4px',
         background: backgroundColor,
