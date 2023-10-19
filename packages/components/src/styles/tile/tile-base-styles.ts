@@ -6,7 +6,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getInsetJssStyle,
-  getTransitionEasingBaseShort,
+  getTransitionDurationShortEasingBase,
   hostHiddenStyles,
   hoverMediaQuery,
 } from '../';
@@ -67,7 +67,7 @@ export const getTileBaseStyles = (
     },
     'image-container': {
       position: 'absolute',
-      transition: getTransitionEasingBaseShort('transform'),
+      transition: getTransitionDurationShortEasingBase('transform'),
       ...getInsetJssStyle(),
     },
     content: {

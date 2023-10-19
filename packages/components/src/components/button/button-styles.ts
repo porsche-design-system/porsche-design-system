@@ -5,7 +5,7 @@ import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/utilit
 import {
   getHighContrastColors,
   getThemedColors,
-  getTransitionEasingBaseShort,
+  getTransitionDurationShortEasingBase,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 
@@ -83,13 +83,13 @@ export const getComponentCss = (
         },
       }),
       label: {
-        transition: getTransitionEasingBaseShort('opacity'),
+        transition: getTransitionDurationShortEasingBase('opacity'),
         ...(loading && {
           opacity: 0, // use opacity for smooth transition between states
         }),
       },
       icon: {
-        transition: getTransitionEasingBaseShort('opacity'),
+        transition: getTransitionDurationShortEasingBase('opacity'),
         ...(!disabled &&
           isPrimary &&
           !isHighContrastMode && {

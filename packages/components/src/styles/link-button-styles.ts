@@ -8,7 +8,7 @@ import {
   getHighContrastColors,
   getInsetJssStyle,
   getThemedColors,
-  getTransitionEasingBaseShort,
+  getTransitionDurationShortEasingBase,
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
@@ -115,7 +115,7 @@ export const getLinkButtonStyles = (
       backgroundColor,
       color: textColor,
       ...textSmallStyle,
-      transition: ['background-color', 'border-color', 'color'].map(getTransitionEasingBaseShort).join(),
+      transition: ['background-color', 'border-color', 'color'].map(getTransitionDurationShortEasingBase).join(),
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
         padding: hideLabelValue ? '13px' : hasIcon ? '13px 26px 13px 18px' : '13px 26px',
         gap: hideLabelValue ? 0 : spacingStaticSmall,

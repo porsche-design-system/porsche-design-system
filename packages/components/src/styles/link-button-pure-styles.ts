@@ -7,7 +7,7 @@ import {
   colorSchemeStyles,
   getInsetJssStyle,
   getThemedColors,
-  getTransitionEasingBaseShort,
+  getTransitionDurationShortEasingBase,
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
@@ -111,7 +111,7 @@ export const getLinkButtonPureStyles = (
           left: hideLabelValue ? offsetVertical : offsetHorizontal,
         })),
         borderRadius: borderRadiusSmall,
-        transition: getTransitionEasingBaseShort('background-color'),
+        transition: getTransitionDurationShortEasingBase('background-color'),
         ...(active && {
           ...frostedGlassStyle,
           backgroundColor: hoverColor,

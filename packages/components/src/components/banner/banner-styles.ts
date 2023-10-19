@@ -12,8 +12,8 @@ import { BANNER_Z_INDEX } from '../../constants';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getTransitionEaseInLong,
-  getTransitionEaseOutLong,
+  getTransitionDurationLongEaseIn,
+  getTransitionDurationLongEaseOut,
   hostHiddenStyles,
 } from '../../styles';
 
@@ -43,16 +43,16 @@ export const getComponentCss = (isOpen: boolean): string => {
               opacity: 1,
               visibility: 'inherit',
               transform: 'translate3d(0,0,0)',
-              transition: `${getTransitionEaseInLong('opacity')},${getTransitionEaseInLong('transform')}`,
+              transition: ['transform', 'opacity'].map(getTransitionDurationLongEaseIn).join(),
             }
           : {
               opacity: 0,
               visibility: 'hidden',
               transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
               '&(.hydrated),&(.ssr)': {
-                transition: `visibility 0s linear ${motionDurationLong}, ${getTransitionEaseOutLong(
-                  'opacity'
-                )}, ${getTransitionEaseOutLong('transform')}`,
+                transition: `visibility 0s linear ${motionDurationLong}, ${['transform', 'opacity']
+                  .map(getTransitionDurationLongEaseOut)
+                  .join()}`,
               },
             }),
         [getMediaQueryMin('s')]: {

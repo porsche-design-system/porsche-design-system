@@ -5,6 +5,7 @@ import type { ThemedColors } from './';
 import {
   borderWidthBase,
   frostedGlassStyle,
+  motionDurationModerate,
   motionDurationShort,
   motionDurationLong,
   motionEasingBase,
@@ -23,19 +24,19 @@ const transitionTimingFunction = 'ease';
 export const getTransition = (cssProperty: keyof PropertiesHyphen): string =>
   `${cssProperty} ${transitionDuration} ${transitionTimingFunction}`;
 
-export const getTransitionEasingBaseShort = (cssProperty: keyof PropertiesHyphen): string =>
+export const getTransitionDurationModerate = (cssProperty: keyof PropertiesHyphen): string =>
+  `${cssProperty} ${motionDurationModerate}`;
+
+export const getTransitionDurationShortEasingBase = (cssProperty: keyof PropertiesHyphen): string =>
   `${cssProperty} ${motionDurationShort} ${motionEasingBase}`;
 
-export const getTransitionRotateFast = (cssProperty: keyof PropertiesHyphen): string =>
-  `${cssProperty} ${motionDurationShort} ${motionEasingBase}`;
-
-export const getTransitionEaseOutFast = (cssProperty: keyof PropertiesHyphen): string =>
+export const getTransitionDurationShortEaseOut = (cssProperty: keyof PropertiesHyphen): string =>
   `${cssProperty} ${motionDurationShort} ${motionEasingOut}`;
 
-export const getTransitionEaseOutLong = (cssProperty: keyof PropertiesHyphen): string =>
+export const getTransitionDurationLongEaseOut = (cssProperty: keyof PropertiesHyphen): string =>
   `${cssProperty} ${motionDurationLong} ${motionEasingOut}`;
 
-export const getTransitionEaseInLong = (cssProperty: keyof PropertiesHyphen): string =>
+export const getTransitionDurationLongEaseIn = (cssProperty: keyof PropertiesHyphen): string =>
   `${cssProperty} ${motionDurationLong} ${motionEasingIn}`;
 
 export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
