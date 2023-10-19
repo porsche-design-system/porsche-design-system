@@ -20,7 +20,7 @@ button {
   gap: 24px;
   background: transparent;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -113,7 +113,7 @@ button {
   gap: 24px;
   background: transparent;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -206,7 +206,7 @@ button {
   gap: 24px;
   background: transparent;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -298,7 +298,7 @@ button {
   gap: 24px;
   background: transparent;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -390,7 +390,7 @@ button {
   gap: 24px;
   background: transparent;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -484,7 +484,7 @@ button {
   gap: 24px;
   background: transparent;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -577,7 +577,7 @@ button {
   gap: 24px;
   background: transparent;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -671,7 +671,7 @@ button {
   gap: 24px;
   background: transparent;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -764,7 +764,7 @@ button {
   gap: 24px;
   background: transparent;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -856,7 +856,7 @@ button {
   gap: 24px;
   background: transparent;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -950,7 +950,7 @@ button {
   gap: 24px;
   background: transparent;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;

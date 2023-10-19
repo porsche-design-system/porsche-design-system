@@ -75,6 +75,7 @@ export const getCheckboxRadioJssStyle = (
       }),
       '::slotted': addImportantToEachRule({
         '&(input)': {
+          gridArea: '1 / 1',
           position: 'relative',
           width: fontLineHeight,
           height: fontLineHeight,
@@ -98,7 +99,14 @@ export const getCheckboxRadioJssStyle = (
             borderColor: uncheckedColorDark,
           }),
           outline: 0,
-          cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+          ...(disabledOrLoading
+            ? {
+                cursor: 'not-allowed',
+                pointerEvents: 'none',
+              }
+            : {
+                cursor: 'pointer',
+              }),
         },
         '&(input:checked)': {
           // background-image is merged in later
@@ -144,13 +152,13 @@ export const getCheckboxRadioJssStyle = (
         }),
       }),
       label: {
-        position: 'relative', // for loading spinner
-        display: 'flex',
-        alignItems: 'flex-start',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, auto)',
+        justifyContent: 'flex-start',
       },
     },
     text: {
-      order: 1,
+      gridArea: '1 / 2',
       cursor: disabledOrLoading ? 'default' : 'pointer',
       ...textSmallStyle,
       color: disabledOrLoading ? disabledColor : primaryColor,
@@ -159,20 +167,22 @@ export const getCheckboxRadioJssStyle = (
       }),
       transition: getTransition('color', 'short', 'base'), // for smooth transition between different states
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-        getHiddenTextJssStyle(isHidden, { padding: `2px 0 0 ${spacingStaticSmall}` })
+        getHiddenTextJssStyle(isHidden, {
+          paddingTop: '2px',
+          paddingInlineStart: spacingStaticSmall, // asymmetric padding used instead of gap to prevent unclickable area between label and input
+        })
       ),
     },
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
     ...(isLoading && {
       spinner: {
-        position: 'absolute',
-        top: `calc(${fontLineHeight}/2 + 2px)`,
-        left: `calc(${fontLineHeight}/2 + 2px)`,
-        transform: 'translate(-50%, -50%)',
+        position: 'relative',
+        gridArea: '1 / 1',
+        margin: borderWidthBase,
+        justifySelf: 'center',
         height: fontLineHeight,
         width: fontLineHeight,
-        padding: '2px', // matches input's border-width to make it overlap entire input
         fontFamily, // needed for correct width and height definition and for correct positioning
         fontSize: '1rem', // needed for correct width and height definition and for correct positioning
         cursor: 'not-allowed',

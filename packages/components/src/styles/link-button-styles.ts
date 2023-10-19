@@ -106,7 +106,7 @@ export const getLinkButtonStyles = (
       minHeight: '54px', // ensure space is already reserved until icon component is loaded (ssr)
       boxSizing: 'border-box',
       outline: 0,
-      textAlign: 'left',
+      textAlign: 'start',
       appearance: 'none',
       textDecoration: 'none',
       border: `2px solid ${borderColor}`,
@@ -121,7 +121,7 @@ export const getLinkButtonStyles = (
         'base'
       )}${getTransition('color', 'short', 'base')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-        padding: hideLabelValue ? '13px' : hasIcon ? '13px 26px 13px 18px' : '13px 26px',
+        padding: hideLabelValue ? '13px' : '13px 26px',
         gap: hideLabelValue ? 0 : spacingStaticSmall,
       })),
       ...(!hasSlottedAnchor && {
@@ -159,6 +159,9 @@ export const getLinkButtonStyles = (
       icon: {
         width: fontLineHeight,
         height: fontLineHeight,
+        ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+          marginInlineStart: hideLabelValue ? 0 : '-8px', // compensate white space of svg icon and optimize visual alignment
+        })),
       },
     }),
   };

@@ -55,7 +55,7 @@ export const getComponentCss = (
               alignItems: 'flex-end',
               appearance: 'none',
               background: 'transparent',
-              textAlign: 'left',
+              textAlign: 'start',
               border: 0,
               zIndex: 0,
               cursor: 'pointer',

@@ -90,7 +90,7 @@ export const getComponentCss = (
           appearance: 'none',
           outlineOffset: '1px',
           textDecoration: 'none',
-          textAlign: 'left',
+          textAlign: 'start',
           border: 0,
           color: primaryColor,
           cursor: 'pointer',
@@ -141,7 +141,7 @@ export const getComponentCss = (
           }),
         },
         [transformSelector('::slotted([role]:not(:last-child))')]: {
-          marginRight: spacingStaticMedium,
+          marginInlineEnd: spacingStaticMedium,
         },
       }),
     },

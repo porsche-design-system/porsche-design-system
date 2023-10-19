@@ -2,8 +2,8 @@
 
 exports[`getComponentCss() should return correct css for color: background-base, hasLabel: false and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
-  vertical-align: top !important;
+  display: inline-block;
+  vertical-align: top;
   outline: 0 !important;
   color-scheme: light dark !important;
 }
@@ -16,13 +16,13 @@ button {
   align-items: center;
   gap: 12px;
   min-height: 54px;
-  padding: 4px 0 4px 12px;
+  padding: 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
   background: #0E0E12;
   color: #FBFCFF;
-  text-align: left;
+  text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -49,22 +49,26 @@ button:focus:not(:focus-visible)::before {
 
 .icon {
   padding: 4px;
-  margin-right: 10px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin-inline-end: -2px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: background-base, hasLabel: false and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
-  vertical-align: top !important;
+  display: inline-block;
+  vertical-align: top;
   outline: 0 !important;
   color-scheme: light dark !important;
 }
@@ -77,13 +81,13 @@ button {
   align-items: center;
   gap: 12px;
   min-height: 54px;
-  padding: 4px 0 4px 12px;
+  padding: 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
   background: #FFF;
   color: #010205;
-  text-align: left;
+  text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -110,22 +114,26 @@ button:focus:not(:focus-visible)::before {
 
 .icon {
   padding: 4px;
-  margin-right: 10px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin-inline-end: -2px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: background-base, hasLabel: true and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
-  vertical-align: top !important;
+  display: inline-block;
+  vertical-align: top;
   outline: 0 !important;
   color-scheme: light dark !important;
 }
@@ -138,13 +146,13 @@ button {
   align-items: center;
   gap: 12px;
   min-height: 54px;
-  padding: 4px 0 4px 12px;
+  padding: 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
   background: #0E0E12;
   color: #FBFCFF;
-  text-align: left;
+  text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -177,22 +185,26 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   padding: 4px;
-  margin-right: 10px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin-inline-end: -2px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: background-base, hasLabel: true and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
-  vertical-align: top !important;
+  display: inline-block;
+  vertical-align: top;
   outline: 0 !important;
   color-scheme: light dark !important;
 }
@@ -205,13 +217,13 @@ button {
   align-items: center;
   gap: 12px;
   min-height: 54px;
-  padding: 4px 0 4px 12px;
+  padding: 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
   background: #FFF;
   color: #010205;
-  text-align: left;
+  text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -244,22 +256,26 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   padding: 4px;
-  margin-right: 10px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin-inline-end: -2px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: background-surface, hasLabel: true and theme: dark 1`] = `
 ":host {
-  display: inline-block !important;
-  vertical-align: top !important;
+  display: inline-block;
+  vertical-align: top;
   outline: 0 !important;
   color-scheme: light dark !important;
 }
@@ -272,13 +288,13 @@ button {
   align-items: center;
   gap: 12px;
   min-height: 54px;
-  padding: 4px 0 4px 12px;
+  padding: 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
   background: #212225;
   color: #FBFCFF;
-  text-align: left;
+  text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -311,22 +327,26 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   padding: 4px;
-  margin-right: 10px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin-inline-end: -2px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for color: background-surface, hasLabel: true and theme: light 1`] = `
 ":host {
-  display: inline-block !important;
-  vertical-align: top !important;
+  display: inline-block;
+  vertical-align: top;
   outline: 0 !important;
   color-scheme: light dark !important;
 }
@@ -339,13 +359,13 @@ button {
   align-items: center;
   gap: 12px;
   min-height: 54px;
-  padding: 4px 0 4px 12px;
+  padding: 4px 12px;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
   background: #EEEFF2;
   color: #010205;
-  text-align: left;
+  text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -378,14 +398,18 @@ button:focus:not(:focus-visible)::before {
 }
 .icon {
   padding: 4px;
-  margin-right: 10px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin-inline-end: -2px;
+  transition: background-color var(--p-transition-duration, .24s) ease;
   border-radius: 4px;
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;

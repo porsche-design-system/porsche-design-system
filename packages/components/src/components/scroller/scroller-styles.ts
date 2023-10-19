@@ -47,6 +47,8 @@ const getGradient = (theme: Theme, gradientColorTheme: ScrollerGradientColor): s
   );
 };
 
+const prevNextWrapperWidth = `calc(${fontLineHeight} + 24px)`;
+
 export const getComponentCss = (
   gradientColor: ScrollerGradientColor,
   isNextHidden: boolean,
@@ -77,7 +79,11 @@ export const getComponentCss = (
   };
 
   const actionPrevNextStyles = {
-    position: 'relative',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    direction: 'ltr',
+    width: prevNextWrapperWidth,
     padding: '4px 0',
     pointerEvents: 'none',
     display: 'flex',
@@ -86,12 +92,14 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        height: 'inherit',
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          height: 'inherit',
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
       button: {
         display: 'flex',
         pointerEvents: 'auto',
@@ -124,8 +132,9 @@ export const getComponentCss = (
       },
     },
     root: {
+      position: 'relative',
       display: 'grid',
-      gridTemplateColumns: `calc(${fontLineHeight} + 24px) minmax(0, 1fr) calc(${fontLineHeight} + 24px)`,
+      gridTemplateColumns: `${prevNextWrapperWidth} minmax(0, 1fr) ${prevNextWrapperWidth}`,
       margin: '0 -4px',
       height: 'inherit',
     },
@@ -184,8 +193,7 @@ export const getComponentCss = (
     },
     'action-prev': {
       ...actionPrevNextStyles,
-      marginLeft: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
-      gridArea: '1 / 1 / 1 / 1',
+      left: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       justifyContent: 'flex-start',
       background: `linear-gradient(to right, ${getGradient(theme, gradientColor)} 100%)`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -202,8 +210,7 @@ export const getComponentCss = (
     },
     'action-next': {
       ...actionPrevNextStyles,
-      marginRight: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
-      gridArea: '1 / 3 / 1 / 3',
+      right: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       justifyContent: 'flex-end',
       background: `linear-gradient(to left, ${getGradient(theme, gradientColor)} 100%)`,
       ...prefersColorSchemeDarkMediaQuery(theme, {

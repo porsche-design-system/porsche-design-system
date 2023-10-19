@@ -15,7 +15,7 @@ export const FlyoutExamplePage = (): JSX.Element => {
       <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
         Open Flyout
       </PButton>
-      <PFlyout open={isFlyoutOpen} position="right" onDismiss={onDismiss}>
+      <PFlyout open={isFlyoutOpen} onDismiss={onDismiss}>
         <PText>Some content that dynamically scales the width of the flyout.</PText>
       </PFlyout>
     </>

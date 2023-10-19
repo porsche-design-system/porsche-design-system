@@ -8,7 +8,7 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -57,9 +57,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -71,7 +75,7 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -120,9 +124,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -134,7 +142,7 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -172,9 +180,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -186,7 +198,7 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -224,9 +236,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -265,7 +281,7 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -317,9 +333,13 @@ button:focus:not(:focus-visible)::after {
 
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -358,7 +378,7 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -410,9 +430,13 @@ button:focus:not(:focus-visible)::after {
 
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -451,7 +475,7 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -492,9 +516,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -533,7 +561,7 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -574,9 +602,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -615,7 +647,7 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -654,9 +686,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -695,7 +731,7 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -734,9 +770,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -775,7 +815,7 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -814,9 +854,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -855,7 +899,7 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -894,9 +938,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -908,7 +956,7 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -957,9 +1005,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -971,7 +1023,7 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -1020,9 +1072,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -1034,7 +1090,7 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -1072,9 +1128,13 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -1086,7 +1146,7 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
   display: none !important;
 }
 :host(:not(:last-of-type)) {
-  margin: 0 clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
+  margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
 button {
   display: flex;
@@ -1124,8 +1184,12 @@ button:focus:not(:focus-visible)::after {
 }
 .sr-only {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;

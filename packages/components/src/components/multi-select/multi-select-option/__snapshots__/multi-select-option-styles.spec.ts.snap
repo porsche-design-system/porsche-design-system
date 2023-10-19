@@ -15,7 +15,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #AFB0B3;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
@@ -26,9 +26,13 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 }
 .option__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .option--selected {
   background: #212225;
@@ -73,7 +77,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
@@ -84,9 +88,13 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 }
 .option__sr {
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .option--selected {
   background: #EEEFF2;

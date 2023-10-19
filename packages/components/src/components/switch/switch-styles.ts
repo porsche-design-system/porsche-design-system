@@ -109,7 +109,7 @@ export const getComponentCss = (
       padding: 0,
       outline: 0,
       border: 0,
-      textAlign: 'left',
+      textAlign: 'start',
       background: 'transparent',
       appearance: 'none',
       cursor: isDisabledOrLoading(disabled, loading) ? 'auto' : 'pointer',
@@ -197,7 +197,6 @@ export const getComponentCss = (
     }),
     label: {
       ...textSmallStyle,
-      paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
       minWidth: 0, // prevents flex child to overflow max available parent size
       minHeight: 0, // prevents flex child to overflow max available parent size
       color: textColor,
@@ -206,9 +205,14 @@ export const getComponentCss = (
       }),
       ...mergeDeep(
         buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-          order: alignLabelValue === 'left' ? -1 : 0,
+          // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
+          order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
         })),
-        buildResponsiveStyles(hideLabel, getHiddenTextJssStyle)
+        buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
+          getHiddenTextJssStyle(isHidden, {
+            paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
+          })
+        )
       ),
     },
   });

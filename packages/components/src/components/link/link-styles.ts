@@ -3,6 +3,7 @@ import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant, Theme } from '../../types';
 import {
   addImportantToEachRule,
+  addImportantToRule,
   getHighContrastColors,
   getInsetJssStyle,
   getResetInitialStylesForSlottedAnchor,
@@ -28,6 +29,9 @@ export const getComponentCss = (
     mergeDeep(
       getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, theme),
       {
+        label: {
+          clip: addImportantToRule('unset'), // to overrule breakpoint customizable hide-label style
+        },
         icon: {
           ...(isPrimary &&
             !isHighContrastMode && {

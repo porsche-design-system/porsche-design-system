@@ -9,6 +9,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -27,7 +28,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -45,21 +47,24 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -72,9 +77,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #535457;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -99,16 +103,25 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
     position: static;
     width: fit-content;
     height: auto;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-bottom: 4px;
   }
 }
 
 @media(min-width:760px) {
   .label__text {
     position: absolute;
-    width: 0;
+    width: 1px;
     height: 1px;
-    text-indent: -999999px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
 }
 
@@ -117,16 +130,25 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
     position: static;
     width: fit-content;
     height: auto;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-bottom: 4px;
   }
 }
 
 @media(min-width:1300px) {
   .label__text {
     position: absolute;
-    width: 0;
+    width: 1px;
     height: 1px;
-    text-indent: -999999px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
 }
 
@@ -135,7 +157,12 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
     position: static;
     width: fit-content;
     height: auto;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-bottom: 4px;
   }
 }
 
@@ -156,6 +183,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -174,7 +202,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -192,21 +221,25 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -219,9 +252,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #AFB0B3;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -259,6 +291,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -277,7 +310,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -295,21 +329,25 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -322,9 +360,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #535457;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -362,6 +399,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -380,7 +418,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -398,21 +437,24 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -425,9 +467,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #AFB0B3;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -465,6 +506,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -483,7 +525,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -501,21 +544,24 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -528,9 +574,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #535457;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -568,6 +613,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -586,7 +632,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -604,21 +651,24 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -631,9 +681,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #AFB0B3;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -670,6 +719,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -688,7 +738,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
 }
 ::slotted(select:focus) {
   border-color: #010205 !important;
@@ -706,21 +757,24 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -733,9 +787,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #535457;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -772,6 +825,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -790,7 +844,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
   border-color: transparent !important;
 }
 ::slotted(select:focus) {
@@ -809,21 +864,25 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -836,9 +895,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #AFB0B3;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -876,6 +934,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -894,7 +953,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
   border-color: transparent !important;
 }
 ::slotted(select:focus) {
@@ -913,21 +973,25 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -940,9 +1004,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #535457;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -980,6 +1043,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -998,7 +1062,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
   border-color: transparent !important;
 }
 ::slotted(select:focus) {
@@ -1017,21 +1082,25 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1044,9 +1113,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #AFB0B3;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -1083,6 +1151,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -1101,7 +1170,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
   border-color: transparent !important;
 }
 ::slotted(select:focus) {
@@ -1120,21 +1190,25 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: static;
   width: fit-content;
   height: auto;
-  text-indent: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-bottom: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1147,9 +1221,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #535457;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -1186,6 +1259,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -1204,7 +1278,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
   border-color: transparent !important;
 }
 ::slotted(select:focus) {
@@ -1223,21 +1298,24 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1250,9 +1328,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #AFB0B3;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -1290,6 +1367,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -1308,7 +1386,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
   border-color: transparent !important;
 }
 ::slotted(select:focus) {
@@ -1327,21 +1406,24 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1354,9 +1436,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   color: #535457;
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;
@@ -1394,6 +1475,7 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
   display: none !important;
 }
 ::slotted(select) {
+  grid-area: 3 / 1 / auto / span 2 !important;
   display: block !important;
   width: 100% !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
@@ -1412,7 +1494,8 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
   position: static !important;
   z-index: 0 !important;
   cursor: pointer !important;
-  padding: 8px calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) 8px 16px !important;
+  padding-block: 8px !important;
+  padding-inline: 16px 54px !important;
 }
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
@@ -1430,21 +1513,24 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
 }
 
 .root {
-  display: block;
   position: relative;
 }
 .label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(54px + 2px);
   position: relative;
 }
 .label__text {
+  grid-column: span 2;
   display: block;
   position: absolute;
-  width: 0;
+  width: 1px;
   height: 1px;
-  text-indent: -999999px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1456,9 +1542,8 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
-  position: absolute;
-  bottom: 13px;
-  right: 15px;
+  grid-area: 3 / 2;
+  place-self: center;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: none;

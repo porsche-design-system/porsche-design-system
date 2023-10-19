@@ -71,7 +71,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -90,7 +90,7 @@ span {
   display: none !important;
 }
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -130,7 +130,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -149,7 +149,7 @@ span {
   display: none !important;
 }
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -189,7 +189,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -217,7 +217,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -257,7 +257,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -285,7 +285,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -325,7 +325,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -353,7 +353,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -393,7 +393,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -421,7 +421,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -461,7 +461,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -489,7 +489,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -529,7 +529,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -557,7 +557,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -597,7 +597,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -625,7 +625,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -665,7 +665,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -693,7 +693,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -733,7 +733,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -761,7 +761,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -801,7 +801,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -829,7 +829,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -869,7 +869,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -897,7 +897,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -937,7 +937,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -965,7 +965,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -1005,7 +1005,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -1033,7 +1033,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;
@@ -1073,7 +1073,7 @@ span {
   color: inherit !important;
   appearance: none !important;
   border: 0 !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 ::slotted(a:focus)::before, ::slotted(button:focus)::before {
   content: "" !important;
@@ -1101,7 +1101,7 @@ span {
 }
 
 .icon {
-  margin-left: -2px;
+  margin-inline-start: -2px;
   align-self: flex-start;
 }"
 `;

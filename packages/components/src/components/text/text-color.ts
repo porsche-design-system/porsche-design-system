@@ -1,3 +1,4 @@
+// TODO: should be a shared type in shared types folder
 /** @deprecated */
 export const TEXT_COLORS_DEPRECATED = [
   'brand', // deprecated
@@ -8,7 +9,7 @@ export const TEXT_COLORS_DEPRECATED = [
   'notification-neutral', // deprecated
 ] as const;
 /** @deprecated */
-export type TextColorDeprecated = typeof TEXT_COLORS_DEPRECATED[number];
+export type TextColorDeprecated = (typeof TEXT_COLORS_DEPRECATED)[number];
 export const TEXT_COLORS = [
   'primary',
   'contrast-low',
@@ -21,4 +22,4 @@ export const TEXT_COLORS = [
   'inherit',
   ...TEXT_COLORS_DEPRECATED,
 ] as const;
-export type TextColor = typeof TEXT_COLORS[number];
+export type TextColor = (typeof TEXT_COLORS)[number];

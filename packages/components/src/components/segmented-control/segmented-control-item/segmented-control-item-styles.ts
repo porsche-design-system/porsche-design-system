@@ -140,7 +140,7 @@ export const getComponentCss = (
         height: ICON_SIZE,
         width: ICON_SIZE,
         ...(hasSlottedContent && {
-          marginRight: ICON_MARGIN,
+          marginInlineEnd: ICON_MARGIN,
         }),
       },
     }),

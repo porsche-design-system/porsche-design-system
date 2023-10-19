@@ -83,10 +83,10 @@ span[aria-current]:not(.ellipsis):focus::before {
     gap: 8px;
   }
   li:first-child {
-    margin-right: 8px;
+    margin-inline-end: 8px;
   }
   li:last-child {
-    margin-left: 8px;
+    margin-inline-start: 8px;
   }
 }
 
@@ -199,10 +199,10 @@ span[aria-current]:not(.ellipsis):focus::before {
     gap: 8px;
   }
   li:first-child {
-    margin-right: 8px;
+    margin-inline-end: 8px;
   }
   li:last-child {
-    margin-left: 8px;
+    margin-inline-start: 8px;
   }
 }
 
@@ -297,10 +297,10 @@ span[aria-current]:not(.ellipsis):focus::before {
     gap: 8px;
   }
   li:first-child {
-    margin-right: 8px;
+    margin-inline-end: 8px;
   }
   li:last-child {
-    margin-left: 8px;
+    margin-inline-start: 8px;
   }
 }
 
@@ -395,10 +395,10 @@ span[aria-current]:not(.ellipsis):focus::before {
     gap: 8px;
   }
   li:first-child {
-    margin-right: 8px;
+    margin-inline-end: 8px;
   }
   li:last-child {
-    margin-left: 8px;
+    margin-inline-start: 8px;
   }
 }
 
@@ -493,10 +493,10 @@ span[aria-current]:not(.ellipsis):focus::before {
     gap: 8px;
   }
   li:first-child {
-    margin-right: 8px;
+    margin-inline-end: 8px;
   }
   li:last-child {
-    margin-left: 8px;
+    margin-inline-start: 8px;
   }
 }
 

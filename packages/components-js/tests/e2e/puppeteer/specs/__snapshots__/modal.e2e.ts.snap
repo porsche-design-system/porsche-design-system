@@ -10,28 +10,34 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "none",
+                    },
+                  ],
                   "role": "none",
                 },
-              ],
-              "role": "none",
-            },
-            {
-              "children": [
                 {
                   "children": [
                     {
-                      "name": "Dismiss modal",
-                      "role": "StaticText",
+                      "children": [
+                        {
+                          "name": "Dismiss modal",
+                          "role": "StaticText",
+                        },
+                      ],
+                      "role": "none",
                     },
                   ],
                   "role": "none",
                 },
               ],
-              "role": "none",
+              "name": "Dismiss modal",
+              "role": "button",
             },
           ],
-          "name": "Dismiss modal",
-          "role": "button",
+          "name": "",
+          "role": "generic",
         },
       ],
       "name": "",

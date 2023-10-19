@@ -3,12 +3,12 @@ import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
 
 describe('getComponentCss()', () => {
   const breakpointCustomizableAlignLabel: BreakpointCustomizable<AlignLabel> = {
-    base: 'left',
-    xs: 'right',
-    s: 'left',
-    m: 'right',
-    l: 'left',
-    xl: 'right',
+    base: 'start',
+    xs: 'end',
+    s: 'start',
+    m: 'end',
+    l: 'start',
+    xl: 'end',
   };
   const breakpointCustomizableStretch: BreakpointCustomizable<boolean> = {
     base: false,
@@ -37,7 +37,7 @@ describe('getComponentCss()', () => {
     theme: Theme;
   }>([
     {
-      alignLabel: 'right',
+      alignLabel: 'end',
       hideLabel: false,
       stretch: false,
       checked: false,
@@ -50,12 +50,30 @@ describe('getComponentCss()', () => {
       hideLabel: false,
       stretch: false,
       checked: false,
-      disabled: true,
+      disabled: false,
       loading: false,
       theme: 'light',
     },
     {
       alignLabel: 'left',
+      hideLabel: false,
+      stretch: false,
+      checked: false,
+      disabled: false,
+      loading: false,
+      theme: 'light',
+    },
+    {
+      alignLabel: 'end',
+      hideLabel: false,
+      stretch: false,
+      checked: false,
+      disabled: true,
+      loading: false,
+      theme: 'light',
+    },
+    {
+      alignLabel: 'start',
       hideLabel: true,
       stretch: false,
       checked: false,
@@ -73,7 +91,7 @@ describe('getComponentCss()', () => {
       theme: 'light',
     },
     {
-      alignLabel: 'right',
+      alignLabel: 'end',
       hideLabel: false,
       stretch: true,
       checked: false,
@@ -82,7 +100,7 @@ describe('getComponentCss()', () => {
       theme: 'light',
     },
     {
-      alignLabel: 'right',
+      alignLabel: 'end',
       hideLabel: false,
       stretch: true,
       checked: true,
@@ -91,7 +109,7 @@ describe('getComponentCss()', () => {
       theme: 'light',
     },
     {
-      alignLabel: 'right',
+      alignLabel: 'end',
       hideLabel: false,
       stretch: true,
       checked: false,
@@ -100,7 +118,7 @@ describe('getComponentCss()', () => {
       theme: 'light',
     },
     {
-      alignLabel: 'right',
+      alignLabel: 'end',
       hideLabel: false,
       stretch: true,
       checked: false,
@@ -109,7 +127,7 @@ describe('getComponentCss()', () => {
       theme: 'light',
     },
     {
-      alignLabel: 'right',
+      alignLabel: 'end',
       hideLabel: false,
       stretch: true,
       checked: false,

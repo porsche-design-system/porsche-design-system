@@ -11,7 +11,6 @@ import {
   fontLineHeight,
   getMediaQueryMax,
   spacingStaticSmall,
-  spacingStaticXSmall,
 } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
@@ -88,9 +87,8 @@ export const getComponentCss = (
         ...buildResponsiveStyles(
           hideLabel,
           // workaround: since pin-code component is not wrapped into label tag it behaves differently
-          (isLabelHidden: boolean) => (isLabelHidden ? { display: 'none' } : { display: 'inline-flex' })
+          (isLabelHidden: boolean) => (isLabelHidden ? { display: 'none' } : { display: 'block' })
         ),
-        marginBottom: spacingStaticXSmall,
       },
     }),
     ...getFunctionalComponentRequiredStyles(),

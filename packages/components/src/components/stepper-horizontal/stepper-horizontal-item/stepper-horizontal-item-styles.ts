@@ -115,7 +115,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
           fontSize: 'inherit',
           ...hostHiddenStyles,
           '&(:not(:last-of-type))': {
-            margin: `0 ${spacingFluidXSmall} 0 0`,
+            marginInlineEnd: spacingFluidXSmall,
           },
         }),
       },
