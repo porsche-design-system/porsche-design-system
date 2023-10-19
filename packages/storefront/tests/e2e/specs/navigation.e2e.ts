@@ -8,6 +8,13 @@ import * as fs from 'fs';
 const console = require('console'); // workaround for nicer logs
 let browserPage: Page;
 
+// style overrides for css variables
+const styleOverrides = fs.readFileSync(
+  path.resolve(require.resolve('@porsche-design-system/shared'), '../css/styles.css'),
+  'utf8'
+);
+const [, rootStyles] = /(:root {[\s\S]+?})/.exec(styleOverrides) || [];
+
 beforeEach(async () => {
   browserPage = await browser.newPage();
   initConsoleObserver(browserPage);
@@ -22,7 +29,8 @@ const isTabActive = (element: ElementHandle<HTMLElement> | null): Promise<boolea
   element.evaluate((el) => el.className.includes('router-link-active'));
 const isLinkActive = (element: ElementHandle<HTMLElement> | null): Promise<boolean> =>
   element.evaluate((el) => el.active);
-const getMainTitle = (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) => x.innerHTML);
+const getMainHeading = (page: Page): Promise<string> =>
+  page.$eval('.vmark > h1, .vmark > p-heading', (x) => x.innerText);
 const hasPageObjectObject = (page: Page): Promise<boolean> =>
   page.evaluate(() => document.body.innerText.includes('[object Object]'));
 
@@ -30,14 +38,12 @@ const hasPageObjectObject = (page: Page): Promise<boolean> =>
  * to override transition duration of accordion
  */
 const injectCSSOverrides = async () => {
-  const stylesPath = path.resolve(require.resolve('@porsche-design-system/shared'), '../css/styles.css');
-  const styles = fs.readFileSync(stylesPath, 'utf8');
-
-  await browserPage.evaluate((cssStyles: string) => {
-    const styleTag = document.createElement('style');
-    styleTag.innerText = cssStyles;
-    document.head.appendChild(styleTag);
-  }, styles);
+  // inject style overrides for css variables
+  await page.evaluate((styles) => {
+    const styleEl = document.createElement('style');
+    styleEl.innerText = styles;
+    document.head.append(styleEl);
+  }, rootStyles);
 };
 
 /*
@@ -71,6 +77,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
     ((category: string, page: string) => {
       it(`should navigate to "${category} > ${page}"`, async () => {
         console.log(`${category} > ${page}`);
+
         const [accordionElement] = (await browserPage.$x(
           `//div[contains(@class, 'menu-desktop')]//nav/p-accordion[@heading='${category}']`
         )) as ElementHandle<HTMLElement>[];
@@ -85,9 +92,11 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
         await Promise.all([browserPage.waitForNavigation(), linkPureElement.click()]);
 
         const mainElementHandle = await browserPage.$('main');
-        await mainElementHandle.waitForSelector('.vmark > h1');
+        await mainElementHandle.waitForSelector('.vmark > h1, .vmark > p-heading');
         expect(await isLinkActive(linkPureElement), 'sidebar link should be active after click').toBe(true);
-        expect(await getMainTitle(browserPage), 'should show correct main title for page').toBe(page);
+
+        const headingRegEx = new RegExp(`^${page}(?: 🚫)?$`); // to cover deprecated icon
+        expect(await getMainHeading(browserPage), 'should show correct main title for page').toMatch(headingRegEx);
         expect(await hasPageObjectObject(browserPage), 'should not contain [object Object] on page').toBe(false);
         expect(getConsoleErrorsAmount(), `Errors on ${category}/${page}`).toBe(0);
 
@@ -109,23 +118,15 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
             } else {
               expect(isTabElementActiveInitially, 'should not have tab active initially').toBe(false);
 
-              // const articleHTML = await mainElementHandle.evaluate(
-              //   (mainEl) => mainEl.querySelector('article').innerHTML
-              // );
-
               await Promise.all([browserPage.waitForNavigation(), tabElement.click()]);
 
-              // await browserPage.waitForFunction(
-              //   (mainEl, html) => mainEl.querySelector('article').innerHTML !== html,
-              //   {},
-              //   mainElementHandle,
-              //   articleHTML
-              // );
               expect(await isTabActive(tabElement), 'should have tab active after click').toBe(true);
             }
 
-            await mainElementHandle.waitForSelector('.vmark > h1');
-            expect(await getMainTitle(browserPage), 'should show correct main title for tab page').toBe(page);
+            await mainElementHandle.waitForSelector('.vmark > h1, .vmark > p-heading');
+            expect(await getMainHeading(browserPage), 'should show correct main title for tab page').toMatch(
+              headingRegEx
+            );
             expect(await hasPageObjectObject(browserPage), 'should not contain [object Object] on tab page').toBe(
               false
             );
