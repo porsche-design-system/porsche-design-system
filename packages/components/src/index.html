@@ -83,6 +83,11 @@
       .playground:not([class*='auto-layout'])::before {
         margin-bottom: 16px;
       }
+
+      p-button-tile {
+        width: 100%;
+        max-width: 300px;
+      }
     </style>
   </head>
   <body>
@@ -115,8 +120,8 @@
       <p-button-pure disabled="true">Some label</p-button-pure>
       <p-button-pure loading="true">Some label</p-button-pure>
 
-      <p-button-tile label="Some label" description="Some Description">
-        <img src="img/image-grid.acfa41cf.png" width="3000" height="2000" alt="Some alt text" />
+      <p-button-tile label="Some Label" description="Default">
+        <img src="./assets/image-grid.png" width="50" height="50" alt="Some alt text" />
       </p-button-tile>
     </main>
 
