@@ -46,6 +46,8 @@
   }
 
   a {
-    padding: 2.5px; // increase size of links for a11y wcag22aa compliance
+    // increase size of links for a11y wcag22aa compliance
+    padding: 3px 4px !important;
+    margin: 0 -4px !important;
   }
 </style>
