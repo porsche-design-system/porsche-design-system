@@ -28,6 +28,8 @@ export class MultiSelectOption {
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;
 
+  // TODO: throwIfParentIsNotOfKind(this.host, 'p-multi-select');
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
     const { theme = 'light', selected, highlighted, hidden, textContent } = this.host;
