@@ -29,8 +29,15 @@ const isTabActive = (element: ElementHandle<HTMLElement> | null): Promise<boolea
   element.evaluate((el) => el.className.includes('router-link-active'));
 const isLinkActive = (element: ElementHandle<HTMLElement> | null): Promise<boolean> =>
   element.evaluate((el) => el.active);
-const getMainHeading = (page: Page): Promise<string> =>
-  page.$eval('.vmark > h1, .vmark > p-heading', (x) => x.innerText);
+const getMainHeading = async (page: Page): Promise<string> => {
+  const mainElementHandle = await browserPage.$('main');
+  await page.waitForFunction(
+    (mainEl) => mainEl.querySelector('.vmark > h1, .vmark > p-heading').innerText !== '',
+    undefined,
+    mainElementHandle
+  );
+  return mainElementHandle.$eval('.vmark > h1, .vmark > p-heading', (x) => x.innerText);
+};
 const hasPageObjectObject = (page: Page): Promise<boolean> =>
   page.evaluate(() => document.body.innerText.includes('[object Object]'));
 
