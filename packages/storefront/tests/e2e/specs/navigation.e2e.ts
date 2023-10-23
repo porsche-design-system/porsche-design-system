@@ -29,13 +29,18 @@ const isTabActive = (element: ElementHandle<HTMLElement> | null): Promise<boolea
   element.evaluate((el) => el.className.includes('router-link-active'));
 const isLinkActive = (element: ElementHandle<HTMLElement> | null): Promise<boolean> =>
   element.evaluate((el) => el.active);
-const getMainHeading = async (page: Page): Promise<string> => {
+const waitForHeading = async (page: Page): Promise<void> => {
   const mainElementHandle = await browserPage.$('main');
+  await mainElementHandle.waitForSelector('.vmark > h1, .vmark > p-heading');
   await page.waitForFunction(
     (mainEl) => mainEl.querySelector('.vmark > h1, .vmark > p-heading').innerText !== '',
     undefined,
     mainElementHandle
   );
+};
+const getMainHeading = async (page: Page): Promise<string> => {
+  await waitForHeading(page);
+  const mainElementHandle = await browserPage.$('main');
   return mainElementHandle.$eval('.vmark > h1, .vmark > p-heading', (x) => x.innerText);
 };
 const hasPageObjectObject = (page: Page): Promise<boolean> =>
@@ -98,8 +103,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
 
         await Promise.all([browserPage.waitForNavigation(), linkPureElement.click()]);
 
-        const mainElementHandle = await browserPage.$('main');
-        await mainElementHandle.waitForSelector('.vmark > h1, .vmark > p-heading');
+        await waitForHeading(page);
         expect(await isLinkActive(linkPureElement), 'sidebar link should be active after click').toBe(true);
 
         const headingRegEx = new RegExp(`^${page}(?: 🚫)?$`); // to cover deprecated icon
@@ -109,6 +113,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
 
         if (!Array.isArray(tabs)) {
           // wait for p-tabs-bar to be ready
+          const mainElementHandle = await browserPage.$('main');
           await mainElementHandle.evaluate((el) => (window as any).componentsReady(el));
 
           for (const [index, tab] of Object.entries(Object.keys(tabs))) {
