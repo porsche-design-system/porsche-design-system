@@ -10,7 +10,7 @@ import {
   isShadowRootParentOfKind,
   observeBreakpointChange,
   parseJSON,
-  setAttribute,
+  setAttributes,
   THEMES,
   unobserveBreakpointChange,
   validateProps,
@@ -192,10 +192,7 @@ export class TabsBar {
             'aria-current': this.activeTabIndex === index ? 'true' : 'false',
           };
 
-      /* eslint-disable-next-line guard-for-in */
-      for (const key in attrs) {
-        setAttribute(tab, key, attrs[key] as string);
-      }
+      setAttributes(tab, attrs);
     });
   };
 
