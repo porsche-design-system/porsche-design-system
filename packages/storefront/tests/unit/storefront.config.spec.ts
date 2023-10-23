@@ -12,7 +12,7 @@ const cleanedComponentConfig = rawComponentConfig
   .replace(/\s+\/\/ prettier-ignore/g, '') // remove prettier-ignore directives
   .replace(/[\s"]?([\w-]+)[\s"]?:/g, '"$1":') // wrap keys in double quotes
   .replace(/\(\) => import\((.+?)\)/g, '$1') // extract import paths
-  .replace(/@\/\.\.\/\.\.\//g, '') // get rid of relative paths
+  .replace(/@\/\.\.\/\.\.\/components\/src\/components\//g, '') // get rid of relative paths
   .replace(/['`]/g, '"') // convert single quotes and backticks to double quotes
   .replace(/\$\{componentsBasePath}\//g, '') // remove basePath variable
   .replace(/,(\s+[}\]])/g, '$1'); // remove trailing commas
