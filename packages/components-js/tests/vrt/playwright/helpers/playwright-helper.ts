@@ -6,8 +6,8 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 import type { PlaywrightTestConfig } from 'playwright/types/test';
 
 export const thresholdConfig: PlaywrightTestConfig['expect']['toHaveScreenshot'] = {
-  maxDiffPixelRatio: null,
-  maxDiffPixels: null,
+  maxDiffPixelRatio: undefined,
+  maxDiffPixels: undefined,
   threshold: 0.2,
 };
 
