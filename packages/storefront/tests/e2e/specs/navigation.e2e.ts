@@ -103,7 +103,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
 
         await Promise.all([browserPage.waitForNavigation(), linkPureElement.click()]);
 
-        await waitForHeading(page);
+        await waitForHeading(browserPage);
         expect(await isLinkActive(linkPureElement), 'sidebar link should be active after click').toBe(true);
 
         const headingRegEx = new RegExp(`^${page}(?: 🚫)?$`); // to cover deprecated icon
