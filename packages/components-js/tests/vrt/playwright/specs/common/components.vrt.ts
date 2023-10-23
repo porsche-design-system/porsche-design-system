@@ -27,6 +27,8 @@ const components = (TAG_NAMES as unknown as TagName[])
 
 const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
 
+// These components show slight pixel variations, particularly in border styles, frosted glass effects and shadows.
+// So, we're using a different threshold in our screenshot comparisons for them.
 const flakyCommonComponents = [
   'tag',
   'tabs',
