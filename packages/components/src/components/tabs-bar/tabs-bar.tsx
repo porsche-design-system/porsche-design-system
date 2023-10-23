@@ -202,7 +202,8 @@ export class TabsBar {
   };
 
   private onClick = (e: MouseEvent): void => {
-    const newTabIndex = this.tabElements.indexOf(e.target as HTMLElement);
+    // e.target can be nested span or font element within a or button when page is translated
+    const newTabIndex = this.tabElements.findIndex((el) => el.contains(e.target as HTMLElement));
     if (newTabIndex >= 0) {
       this.onTabClick(newTabIndex);
     }
