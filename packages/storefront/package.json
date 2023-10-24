@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@porsche-design-system/browser-notification": "4.1.4",
-    "@porsche-design-system/components-js": "3.8.0-rc.0",
+    "@porsche-design-system/components-js": "3.8.0",
     "@porsche-design-system/fallbacks": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@stackblitz/sdk": "1.8.2",
