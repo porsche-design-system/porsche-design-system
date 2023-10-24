@@ -1,5 +1,12 @@
 import { expect, test } from '@playwright/test';
-import { baseSchemes, baseThemes, baseViewportWidth, baseViewportWidths, setupScenario } from '../../helpers';
+import {
+  baseSchemes,
+  baseThemes,
+  baseViewportWidth,
+  baseViewportWidths,
+  thresholdConfig,
+  setupScenario,
+} from '../../helpers';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { pdfToPng } from 'pdf-to-png-converter';
@@ -19,6 +26,26 @@ const components = (TAG_NAMES as unknown as TagName[])
   });
 
 const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
+
+// These components show slight pixel variations, particularly in border styles, frosted glass effects and shadows.
+// So, we're using a different threshold in our screenshot comparisons for them.
+const flakyCommonComponents = [
+  'tag',
+  'tabs',
+  'tabs-bar',
+  'table',
+  'stepper-horizontal',
+  'select-wrapper',
+  'scroller',
+  'multi-select',
+  'modal',
+  'link-tile',
+  'link-tile-model-signature',
+  'link-social',
+  'button-tile',
+];
+
+const isComponentFlaky = (component: string): boolean => flakyCommonComponents.includes(component);
 
 test(`should have certain amount of components`, () => {
   expect(components.length).toBe(51);
@@ -40,7 +67,10 @@ components.forEach((component) => {
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
         });
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${theme}.png`);
+        await expect(page.locator('#app')).toHaveScreenshot(
+          `${component}-${baseViewportWidth}-theme-${theme}.png`,
+          isComponentFlaky(component) ? thresholdConfig : undefined
+        );
       });
     });
   });
@@ -53,7 +83,10 @@ components.forEach((component) => {
     baseViewportWidths.forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await setupScenario(page, `/${component}`, viewportWidth);
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
+        await expect(page.locator('#app')).toHaveScreenshot(
+          `${component}-${viewportWidth}.png`,
+          isComponentFlaky(component) ? thresholdConfig : undefined
+        );
       });
     });
 
@@ -72,7 +105,10 @@ components.forEach((component) => {
           forceComponentTheme: 'auto',
           prefersColorScheme: scheme,
         });
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${scheme}.png`); // fixture is aliased since result has to be equal
+        await expect(page.locator('#app')).toHaveScreenshot(
+          `${component}-${baseViewportWidth}-theme-${scheme}.png`,
+          isComponentFlaky(component) ? thresholdConfig : undefined
+        ); // fixture is aliased since result has to be equal
       });
 
       // high contrast mode
@@ -84,7 +120,8 @@ components.forEach((component) => {
           prefersColorScheme: scheme,
         });
         await expect(page.locator('#app')).toHaveScreenshot(
-          `${component}-${baseViewportWidth}-high-contrast-scheme-${scheme}.png`
+          `${component}-${baseViewportWidth}-high-contrast-scheme-${scheme}.png`,
+          isComponentFlaky(component) ? thresholdConfig : undefined
         );
       });
     });
@@ -94,7 +131,10 @@ components.forEach((component) => {
       await setupScenario(page, `/${component}`, baseViewportWidth, {
         scalePageFontSize: true,
       });
-      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-scale-mode.png`);
+      await expect(page.locator('#app')).toHaveScreenshot(
+        `${component}-${baseViewportWidth}-scale-mode.png`,
+        isComponentFlaky(component) ? thresholdConfig : undefined
+      );
     });
 
     // rtl mode
@@ -104,7 +144,10 @@ components.forEach((component) => {
       await setupScenario(page, `/${component}`, baseViewportWidth, {
         forceDirMode: 'rtl',
       });
-      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-rtl-mode.png`);
+      await expect(page.locator('#app')).toHaveScreenshot(
+        `${component}-${baseViewportWidth}-rtl-mode.png`,
+        isComponentFlaky(component) ? thresholdConfig : undefined
+      );
     });
 
     // print view

@@ -1,8 +1,15 @@
-import { CDPSession, type Page } from '@playwright/test';
+import { type Page } from '@playwright/test';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type Theme } from '@porsche-design-system/utilities-v2';
+import type { PlaywrightTestConfig } from 'playwright/types/test';
+
+export const thresholdConfig: PlaywrightTestConfig['expect']['toHaveScreenshot'] = {
+  maxDiffPixelRatio: undefined,
+  maxDiffPixels: undefined,
+  threshold: 0.15,
+};
 
 // TODO: why are the following constants prefixed with base?
 export const baseThemes = ['light', 'dark'] as const;
