@@ -8,6 +8,8 @@ export * from './gradient';
 export * from './grid';
 export * from './hover';
 export * from './mediaQuery';
+export * from './motion';
+export * from './skeleton';
 export * from './spacing';
 export * from './theme';
 export * from './typography';

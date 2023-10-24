@@ -32,7 +32,7 @@ const getModal = () => selectNode(page, 'p-modal >>> .root');
 const getDismissButton = () => selectNode(page, 'p-modal >>> p-button-pure.dismiss');
 const getFooter = () => selectNode(page, 'p-modal >>> .footer');
 const getFooterBoxShadow = async (): Promise<string> => getElementStyle(await getFooter(), 'boxShadow');
-const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
+const getBodyStyle = async () => getAttribute(await selectNode(page, 'body'), 'style');
 
 const initBasicModal = (opts?: {
   isOpen?: boolean;
@@ -42,6 +42,8 @@ const initBasicModal = (opts?: {
   hasSlottedHeading?: boolean;
   hasSlottedFooter?: boolean;
   disableCloseButton?: boolean;
+  markupBefore?: string;
+  markupAfter?: string;
 }): Promise<void> => {
   const {
     isOpen = true,
@@ -51,6 +53,8 @@ const initBasicModal = (opts?: {
     hasSlottedHeading,
     hasSlottedFooter,
     disableCloseButton,
+    markupBefore,
+    markupAfter,
   } = opts || {};
 
   const attributes = [
@@ -64,12 +68,11 @@ const initBasicModal = (opts?: {
 
   return setContentWithDesignSystem(
     page,
-    `
-    <p-modal ${attributes}>
-      ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
-      ${content}
-      ${hasSlottedFooter ? '<div slot="footer">Some Footer</div>' : ''}
-    </p-modal>`
+    `${markupBefore}<p-modal ${attributes}>
+  ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
+  ${content}
+  ${hasSlottedFooter ? '<div slot="footer">Some Footer</div>' : ''}
+</p-modal>${markupAfter}`
   );
 };
 
@@ -77,15 +80,15 @@ const initAdvancedModal = (): Promise<void> => {
   return setContentWithDesignSystem(
     page,
     `<p-modal heading="Some Heading">
-      Some Content
-      <p-button id="btn-content-1">Content Button 1</p-button>
-      <p-button id="btn-content-2">Content Button 2</p-button>
+  Some Content
+  <p-button id="btn-content-1">Content Button 1</p-button>
+  <p-button id="btn-content-2">Content Button 2</p-button>
 
-      <div>
-        <p-button id="btn-footer-1">Footer Button 1</p-button>
-        <p-button id="btn-footer-2">Footer Button 2</p-button>
-      </div>
-    </p-modal>`
+  <div>
+    <p-button id="btn-footer-1">Footer Button 1</p-button>
+    <p-button id="btn-footer-2">Footer Button 2</p-button>
+  </div>
+</p-modal>`
   );
 };
 
@@ -394,6 +397,24 @@ describe('focus behavior', () => {
     expect(await getActiveElementId(page)).toBe('btn-open');
   });
 
+  it('should focus element after modal when open accordion contains link but modal is not open', async () => {
+    await initBasicModal({
+      isOpen: false,
+      content: `<p-accordion heading="Some Heading" open="true">
+  <a id="inside" href="#inside-modal">Some anchor inside modal</a>
+</p-accordion>`,
+      markupBefore: '<a id="before" href="#before-modal">Some anchor before modal</a>',
+      markupAfter: '<a id="after" href="#after-modal">Some anchor after modal</a>',
+    });
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page), 'after 1st tab').toBe('before');
+
+    await page.keyboard.press('Tab');
+    await page.waitForFunction(() => document.activeElement === document.querySelector('#after'));
+    expect(await getActiveElementId(page), 'after 2nd tab').toBe('after');
+  });
+
   describe('after content change', () => {
     it('should focus dismiss button again', async () => {
       await initAdvancedModal();
@@ -569,23 +590,6 @@ describe('can be controlled via keyboard', () => {
   });
 });
 
-it('should prevent page from scrolling when open', async () => {
-  await initBasicModal({ isOpen: false });
-  expect(await getBodyOverflow()).toBe('visible');
-
-  await openModal();
-  expect(await getBodyOverflow()).toBe('hidden');
-
-  await setProperty(await getHost(), 'open', false);
-  await waitForStencilLifecycle(page);
-  expect(await getBodyOverflow()).toBe('visible');
-});
-
-it('should prevent page from scrolling when initially open', async () => {
-  await initBasicModal({ isOpen: true });
-  expect(await getBodyOverflow()).toBe('hidden');
-});
-
 it('should open modal at scroll top position zero when its content is scrollable', async () => {
   await initBasicModal({ isOpen: true, content: '<div style="height: 150vh;"></div>' });
 
@@ -595,16 +599,37 @@ it('should open modal at scroll top position zero when its content is scrollable
   expect(hostScrollTop).toBe(0);
 });
 
-it('should remove overflow hidden from body if unmounted', async () => {
-  await initBasicModal({ isOpen: true });
-  expect(await getBodyOverflow()).toBe('hidden');
+describe('scroll lock', () => {
+  const bodyLockedStyle = 'top: 0px; overflow-y: scroll; position: fixed;';
 
-  await page.evaluate(() => {
-    document.querySelector('p-modal').remove();
+  it('should prevent page from scrolling when open', async () => {
+    await initBasicModal({ isOpen: false });
+    expect(await getBodyStyle()).toBe(null);
+
+    await openModal();
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+
+    await setProperty(await getHost(), 'open', false);
+    await waitForStencilLifecycle(page);
+    expect(await getBodyStyle()).toBe('');
   });
-  await waitForStencilLifecycle(page);
 
-  expect(await getBodyOverflow()).toBe('visible');
+  it('should prevent page from scrolling when initially open', async () => {
+    await initBasicModal({ isOpen: true });
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+  });
+
+  it('should remove overflow hidden from body if unmounted', async () => {
+    await initBasicModal({ isOpen: true });
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+
+    await page.evaluate(() => {
+      document.querySelector('p-modal').remove();
+    });
+    await waitForStencilLifecycle(page);
+
+    expect(await getBodyStyle()).toBe('');
+  });
 });
 
 describe('sticky footer', () => {

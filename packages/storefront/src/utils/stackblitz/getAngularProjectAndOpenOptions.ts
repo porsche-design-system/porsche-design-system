@@ -157,7 +157,7 @@ export const getIndexHtml = (globalStyles: string): string => {
 export const getMainTs = (): string => {
   return `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
-import 'zone.js/dist/zone';
+import 'zone.js';
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)

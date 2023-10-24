@@ -77,10 +77,10 @@ export const getComponentCss = (
         listStyleType: 'none',
         [mediaQueryMinS]: {
           '&:first-child': {
-            marginRight: spacingStaticSmall,
+            marginInlineEnd: spacingStaticSmall,
           },
           '&:last-child': {
-            marginLeft: spacingStaticSmall,
+            marginInlineStart: spacingStaticSmall,
           },
         },
       },

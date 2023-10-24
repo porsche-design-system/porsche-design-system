@@ -1,5 +1,5 @@
 import { Popover } from './popover';
-import { attachComponentCss, isClickOutside } from '../../utils';
+import { attachComponentCss, getPrefixedTagNames, isClickOutside, scrollAreaClass } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import type { Theme } from '../../types';
 
@@ -9,23 +9,32 @@ export type PopoverDirection = (typeof POPOVER_DIRECTIONS)[number];
 export const POPOVER_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type PopoverAriaAttribute = (typeof POPOVER_ARIA_ATTRIBUTES)[number];
 
-const safeZonePx = 16;
+export const safeZonePx = 16;
 
 export const updatePopoverStyles = (
   host: HTMLElement,
   spacer: HTMLDivElement,
   popover: HTMLDivElement,
   direction: PopoverDirection,
+  isNative = false,
   theme: Theme
 ): void => {
   // Reset margin so that it can be recalculated correctly
   popover.style.margin = '0';
   if (!isElementWithinViewport(spacer, popover, direction)) {
     direction = getAutoDirection(spacer, popover);
-    attachComponentCss(host, getComponentCss, direction, theme);
+    attachComponentCss(host, getComponentCss, direction, isNative, theme);
   }
   // Set margin via inline style to make attachComponentCss cacheable
   popover.style.margin = getPopoverMargin(spacer, popover, direction);
+};
+
+export const updateNativePopoverStyles = (nativePopover: HTMLElement, nativeButton: HTMLButtonElement): void => {
+  const { left, top, width, height } = nativeButton.getBoundingClientRect();
+  nativePopover.style.left = `${left + window.scrollX - safeZonePx}px`;
+  nativePopover.style.top = `${top + window.scrollY - safeZonePx}px`;
+  nativePopover.style.width = `${width + safeZonePx * 2}px`;
+  nativePopover.style.height = `${height + safeZonePx * 2}px`;
 };
 
 const getDocumentHeightWidthWithoutSafeZone = (): { clientWidth: number; clientHeight: number } => {
@@ -119,7 +128,10 @@ export const getPopoverMargin = (
   }
 };
 
-export type PopoverInternal = Partial<InstanceType<typeof Popover>> & { open: boolean };
+export type PopoverInternal = Partial<InstanceType<typeof Popover>> & {
+  open: boolean;
+  isNative: boolean;
+};
 export const registeredPopovers: PopoverInternal[] = [];
 
 export const addDocumentEventListener = (popover: Popover): void => {
@@ -159,4 +171,25 @@ export const onDocumentKeydown = (e: KeyboardEvent): void => {
       popover.open = false;
     }
   }
+};
+
+export const addNativeScrollAndResizeListeners = (
+  host: HTMLElement,
+  table: HTMLElement,
+  nativePopover: HTMLElement
+): void => {
+  const tableScrollArea = table.shadowRoot
+    .querySelector(getPrefixedTagNames(host).pScroller)
+    .shadowRoot.querySelector(`.${scrollAreaClass}`);
+
+  const hidePopover = (): void => {
+    nativePopover.hidePopover();
+    window.removeEventListener('scroll', hidePopover);
+    window.removeEventListener('resize', hidePopover);
+    tableScrollArea.removeEventListener('scroll', hidePopover);
+  };
+
+  window.addEventListener('scroll', hidePopover, { once: true });
+  window.addEventListener('resize', hidePopover, { once: true });
+  tableScrollArea.addEventListener('scroll', hidePopover, { once: true });
 };

@@ -72,13 +72,13 @@ export const getComponentCss = (
         borderRadius: borderRadiusSmall,
         background: backgroundColor,
         color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundColorDark,
-          color: primaryColorDark,
-        }),
         font: textXSmallStyle.font,
         ...(isHighContrastMode && {
           outline: '1px solid transparent',
+        }),
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+          color: primaryColorDark,
         }),
         ...(isFocusable &&
           hoverMediaQuery({
@@ -102,7 +102,7 @@ export const getComponentCss = (
           color: 'inherit',
           appearance: 'none',
           border: 0,
-          textAlign: 'left',
+          textAlign: 'start',
         },
         // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
         ...Object.entries(getTagFocusJssStyle(themedColors)).reduce((result, [key, value]) => {
@@ -115,7 +115,7 @@ export const getComponentCss = (
       }),
     },
     icon: {
-      marginLeft: '-2px', // optimize visual alignment
+      marginInlineStart: '-2px', // compensate white space of svg icon and optimize visual alignment
       alignSelf: 'flex-start',
       ...(['neutral-contrast-high', 'primary'].includes(tagColor) && {
         ...prefersColorSchemeDarkMediaQuery(theme, {

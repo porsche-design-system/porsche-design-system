@@ -18,6 +18,7 @@ import * as gridBasic from '../src/js/grid/gridBasic';
 import * as gridBasicOffset from '../src/js/grid/gridBasicOffset';
 import * as gridNarrow from '../src/js/grid/gridNarrow';
 import * as gridNarrowOffset from '../src/js/grid/gridNarrowOffset';
+import * as motion from '../src/js/motion';
 import * as theme from '../src/js/theme';
 import * as spacing from '../src/js/spacing';
 import * as heading from '../src/js/typography/heading';
@@ -29,9 +30,9 @@ import { getCss } from '@porsche-design-system/shared';
 
 const targetDirectory = './src/scss/lib';
 
-interface Object {
+type Object = {
   [k: string]: {} | Object;
-}
+};
 const flattenObject = (obj: Object, prefix = ''): { [key: string]: string } => {
   return Object.keys(obj).reduce((acc, k) => {
     const pre = camelCase((prefix.length ? prefix + '-' : '') + k);
@@ -59,9 +60,9 @@ const writeFile = async (filename: string, content: string): Promise<void> => {
   console.log(`Auto generated SCSS file: ${targetPath}`);
 };
 
-interface Variables {
+type Variables = {
   [k: string]: {} | Variables;
-}
+};
 const generateVariables = async (variables: Variables): Promise<void> => {
   for (const [filename, map] of Object.entries(variables)) {
     const mapFlattened = flattenObject(map);
@@ -73,9 +74,9 @@ const generateVariables = async (variables: Variables): Promise<void> => {
   }
 };
 
-interface Mixins {
+type Mixins = {
   [k: string]: {} | Mixins;
-}
+};
 const generateMixins = async (mixins: Mixins): Promise<void> => {
   for (const [filename, map] of Object.entries(mixins)) {
     const content = Object.entries(map)
@@ -97,30 +98,31 @@ const generateMixins = async (mixins: Mixins): Promise<void> => {
 
   await generateVariables({
     border,
-    font,
-    theme,
-    spacing,
     breakpoint,
-    gridGap,
-    gridFull,
-    gridFullOffset,
-    gridWide,
-    gridWideOffset,
-    gridExtended,
-    gridExtendedOffset,
+    font,
     gridBasic,
     gridBasicOffset,
+    gridExtended,
+    gridExtendedOffset,
+    gridFull,
+    gridFullOffset,
+    gridGap,
     gridNarrow,
     gridNarrowOffset,
+    gridWide,
+    gridWideOffset,
+    motion,
+    spacing,
+    theme,
   });
 
   await generateMixins({
-    heading,
-    text,
     display,
-    grid,
     dropShadow,
     frostedGlass,
     gradient,
+    grid,
+    heading,
+    text,
   });
 })();

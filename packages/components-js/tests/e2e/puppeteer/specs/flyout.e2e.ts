@@ -29,7 +29,6 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-flyout');
 const getFlyout = () => selectNode(page, 'p-flyout >>> .root');
 const getHeader = () => selectNode(page, 'p-flyout >>> .header');
-const getHeaderContent = () => selectNode(page, 'p-flyout >>> .header-content');
 const getHeaderSlottedContent = () => selectNode(page, '[slot="header"]');
 const getFooter = () => selectNode(page, 'p-flyout >>> .footer');
 const getFooterSlottedContent = () => selectNode(page, '[slot="footer"]');
@@ -37,7 +36,7 @@ const getSubFooter = () => selectNode(page, 'p-flyout >>> .sub-footer');
 const getSubFooterSlottedContent = () => selectNode(page, '[slot="sub-footer"]');
 const getFlyoutDismissButton = () => selectNode(page, 'p-flyout >>> p-button-pure.dismiss');
 const getFlyoutDismissButtonReal = () => selectNode(page, 'p-flyout >>> p-button-pure.dismiss >>> button');
-const getBodyOverflow = async () => getElementStyle(await selectNode(page, 'body'), 'overflow');
+const getBodyStyle = async () => getAttribute(await selectNode(page, 'body'), 'style');
 const getFlyoutVisibility = async () => await getElementStyle(await getFlyout(), 'visibility');
 const waitForFlyoutTransition = async () => {
   await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
@@ -53,19 +52,21 @@ const initBasicFlyout = (
     header?: string;
     footer?: string;
     subFooter?: string;
+  },
+  other?: {
+    markupBefore?: string;
+    markupAfter?: string;
   }
 ): Promise<void> => {
   const { header = '', content = '<p>Some Content</p>', footer = '', subFooter = '' } = flyoutSlots || {};
+  const { markupBefore = '', markupAfter = '' } = other || {};
 
   const flyoutMarkup = `
-    <p-flyout ${getHTMLAttributes(flyoutProps)}>
-      ${header}
-      ${content}
-      ${footer}
-      ${subFooter}
-    </p-flyout>`;
+<p-flyout ${getHTMLAttributes(flyoutProps)}>
+  ${[header, content, footer, subFooter].filter(Boolean).join('\n  ')}
+</p-flyout>`;
 
-  return setContentWithDesignSystem(page, flyoutMarkup);
+  return setContentWithDesignSystem(page, [markupBefore, flyoutMarkup, markupAfter].filter(Boolean).join('\n'));
 };
 
 const initAdvancedFlyout = async () => {
@@ -407,7 +408,30 @@ describe('focus behavior', () => {
     expect(await getFlyoutVisibility(), 'after escape').toBe('hidden');
     expect(await getActiveElementId(page)).toBe('btn-open');
   });
+
+  it('should focus element after flyout when open accordion contains link but flyout is not open', async () => {
+    await initBasicFlyout(
+      { open: false },
+      {
+        content: `<p-accordion heading="Some Heading" open="true">
+  <a id="inside" href="#inside-flyout">Some anchor inside flyout</a>
+</p-accordion>`,
+      },
+      {
+        markupBefore: '<a id="before" href="#before-flyout">Some anchor before flyout</a>',
+        markupAfter: '<a id="after" href="#after-flyout">Some anchor after flyout</a>',
+      }
+    );
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page), 'after 1st tab').toBe('before');
+
+    await page.keyboard.press('Tab');
+    await page.waitForFunction(() => document.activeElement === document.querySelector('#after'));
+    expect(await getActiveElementId(page), 'after 2nd tab').toBe('after');
+  });
 });
+
 describe('after content change', () => {
   it('should focus dismiss button again', async () => {
     await initAdvancedFlyout();
@@ -415,7 +439,7 @@ describe('after content change', () => {
     await expectDismissButtonToBeFocused('initially');
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 1nd tab').toBe('btn-header');
+    expect(await getActiveElementId(page), 'after 1st tab').toBe('btn-header');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page), 'after 2nd tab').toBe('btn-content');
 
@@ -435,7 +459,7 @@ describe('after content change', () => {
     await openFlyout();
     await expectDismissButtonToBeFocused('initially');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 1nd tab').toBe('btn-header');
+    expect(await getActiveElementId(page), 'after 1st tab').toBe('btn-header');
 
     const host = await getHost();
     await host.evaluate((el) => {
@@ -518,23 +542,6 @@ describe('can be controlled via keyboard', () => {
   });
 });
 
-it('should prevent page from scrolling when open', async () => {
-  await initBasicFlyout({ open: false });
-  expect(await getBodyOverflow()).toBe('visible');
-
-  await openFlyout();
-  expect(await getBodyOverflow()).toBe('hidden');
-
-  await setProperty(await getHost(), 'open', false);
-  await waitForStencilLifecycle(page);
-  expect(await getBodyOverflow()).toBe('visible');
-});
-
-it('should prevent page from scrolling when initially open', async () => {
-  await initBasicFlyout({ open: true });
-  expect(await getBodyOverflow()).toBe('hidden');
-});
-
 it('should open flyout at scroll top position zero when its content is scrollable', async () => {
   await initBasicFlyout({ open: true }, { content: '<div style="height: 150vh;"></div>' });
 
@@ -544,16 +551,37 @@ it('should open flyout at scroll top position zero when its content is scrollabl
   expect(hostScrollTop).toBe(0);
 });
 
-it('should remove overflow hidden from body if unmounted', async () => {
-  await initBasicFlyout({ open: true });
-  expect(await getBodyOverflow()).toBe('hidden');
+describe('scroll lock', () => {
+  const bodyLockedStyle = 'top: 0px; overflow-y: scroll; position: fixed;';
 
-  await page.evaluate(() => {
-    document.querySelector('p-flyout').remove();
+  it('should prevent page from scrolling when open', async () => {
+    await initBasicFlyout({ open: false });
+    expect(await getBodyStyle()).toBe(null);
+
+    await openFlyout();
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+
+    await setProperty(await getHost(), 'open', false);
+    await waitForStencilLifecycle(page);
+    expect(await getBodyStyle()).toBe('');
   });
-  await waitForStencilLifecycle(page);
 
-  expect(await getBodyOverflow()).toBe('visible');
+  it('should prevent page from scrolling when initially open', async () => {
+    await initBasicFlyout({ open: true });
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+  });
+
+  it('should remove overflow hidden from body if unmounted', async () => {
+    await initBasicFlyout({ open: true });
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+
+    await page.evaluate(() => {
+      document.querySelector('p-flyout').remove();
+    });
+    await waitForStencilLifecycle(page);
+
+    expect(await getBodyStyle()).toBe('');
+  });
 });
 
 describe('lifecycle', () => {
@@ -597,9 +625,11 @@ describe('slotted', () => {
         subFooter: `<div slot="sub-footer">${subFooterContent}</div>`,
       }
     );
-    const header = await getHeaderContent();
+    const header = await getHeader();
     const headerSlottedContent = await getHeaderSlottedContent();
-    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="header"></slot>"`);
+    expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(
+      `"<p-button-pure class="dismiss hydrated">Dismiss flyout</p-button-pure><slot name="header"></slot>"`
+    );
     expect(await getProperty(headerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(
       `"<h1>Sticky Heading</h1><p>Sticky header text</p>"`
     );

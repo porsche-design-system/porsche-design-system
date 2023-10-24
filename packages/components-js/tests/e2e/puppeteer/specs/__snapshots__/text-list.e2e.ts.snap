@@ -18,56 +18,23 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
-                                  "role": "none",
-                                },
-                              ],
-                              "name": "•",
-                              "role": "ListMarker",
-                            },
-                            {
-                              "children": [
-                                {
-                                  "name": "The quick brown fox jumps over the lazy dog",
+                                  "name": "•",
                                   "role": "StaticText",
                                 },
                               ],
-                              "role": "none",
-                            },
-                          ],
-                          "level": 1,
-                          "name": "",
-                          "role": "listitem",
-                        },
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "name": "•",
-                              "role": "ListMarker",
+                              "name": "",
+                              "role": "generic",
                             },
                             {
                               "children": [
-                                {
-                                  "name": "The quick ",
-                                  "role": "StaticText",
-                                },
                                 {
                                   "children": [
                                     {
-                                      "name": "brown fox",
+                                      "name": "The quick brown fox jumps over the lazy dog",
                                       "role": "StaticText",
                                     },
                                   ],
-                                  "name": "brown fox",
-                                  "role": "link",
-                                },
-                                {
-                                  "name": " jumps over the lazy dog",
-                                  "role": "StaticText",
+                                  "role": "none",
                                 },
                               ],
                               "role": "none",
@@ -82,20 +49,66 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
-                                  "role": "none",
+                                  "name": "•",
+                                  "role": "StaticText",
                                 },
                               ],
-                              "name": "•",
-                              "role": "ListMarker",
+                              "name": "",
+                              "role": "generic",
                             },
                             {
                               "children": [
                                 {
-                                  "name": "The quick brown fox jumps over the lazy dog",
+                                  "children": [
+                                    {
+                                      "name": "The quick ",
+                                      "role": "StaticText",
+                                    },
+                                    {
+                                      "children": [
+                                        {
+                                          "name": "brown fox",
+                                          "role": "StaticText",
+                                        },
+                                      ],
+                                      "name": "brown fox",
+                                      "role": "link",
+                                    },
+                                    {
+                                      "name": " jumps over the lazy dog",
+                                      "role": "StaticText",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "level": 1,
+                          "name": "",
+                          "role": "listitem",
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "name": "•",
                                   "role": "StaticText",
                                 },
+                              ],
+                              "name": "",
+                              "role": "generic",
+                            },
+                            {
+                              "children": [
                                 {
                                   "children": [
+                                    {
+                                      "name": "The quick brown fox jumps over the lazy dog",
+                                      "role": "StaticText",
+                                    },
                                     {
                                       "children": [
                                         {
@@ -105,32 +118,43 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                                 {
                                                   "children": [
                                                     {
+                                                      "children": [
+                                                        {
+                                                          "name": "–",
+                                                          "role": "StaticText",
+                                                        },
+                                                      ],
+                                                      "name": "",
+                                                      "role": "generic",
+                                                    },
+                                                    {
+                                                      "children": [
+                                                        {
+                                                          "children": [
+                                                            {
+                                                              "name": "The quick brown fox jumps over the lazy dog",
+                                                              "role": "StaticText",
+                                                            },
+                                                          ],
+                                                          "role": "none",
+                                                        },
+                                                      ],
                                                       "role": "none",
                                                     },
                                                   ],
-                                                  "name": "–",
-                                                  "role": "ListMarker",
-                                                },
-                                                {
-                                                  "children": [
-                                                    {
-                                                      "name": "The quick brown fox jumps over the lazy dog",
-                                                      "role": "StaticText",
-                                                    },
-                                                  ],
-                                                  "role": "none",
+                                                  "level": 2,
+                                                  "name": "",
+                                                  "role": "listitem",
                                                 },
                                               ],
-                                              "level": 2,
-                                              "name": "",
-                                              "role": "listitem",
+                                              "role": "none",
                                             },
                                           ],
-                                          "role": "none",
+                                          "name": "",
+                                          "role": "list",
                                         },
                                       ],
-                                      "name": "",
-                                      "role": "list",
+                                      "role": "none",
                                     },
                                   ],
                                   "role": "none",

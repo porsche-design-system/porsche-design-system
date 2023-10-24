@@ -206,6 +206,22 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           '$1(null'
         ) // replace non-existing host element with null for display, heading, headline, text, text-list, tag
         .replace(/TextColor|TextWeight/g, 'any') // text
+        .replace(
+          /Record<\s*(?:Text|Display|Heading|Headline)AlignDeprecated,\s*Exclude<(?:Text|Display|Heading|Headline)Align,\s*(?:Text|Display|Heading|Headline)AlignDeprecated>\s*>/g,
+          'Record<any, any>'
+        ) // text, display, heading, headline
+        .replace(
+          /Record<\s*(?:Switch|ButtonPure|LinkPure)AlignLabelDeprecated,\s*Exclude<(?:Switch|ButtonPure|LinkPure)AlignLabel,\s*(?:Switch|ButtonPure|LinkPure)AlignLabelDeprecated>\s*>/g,
+          'Record<any, any>'
+        ) // switch, button-pure, link-pure
+        .replace(
+          /Record<\s*CarouselAlignHeaderDeprecated,\s*Exclude<CarouselAlignHeader,\s*CarouselAlignHeaderDeprecated>\s*>/g,
+          'Record<any, any>'
+        ) // carousel
+        .replace(
+          /Record<\s*FlyoutPositionDeprecated,\s*Exclude<FlyoutPosition,\s*FlyoutPositionDeprecated>\s*>/g,
+          'Record<any, any>'
+        ) // flyout
         .replace(/import type { TextTag }.*;/g, '') // text
         .replace(
           /getSlotTextContent\(this\.props, '([a-z]+)'\)/g,
@@ -259,12 +275,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /const hasFooter = .+\n/,
             '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
           )
-          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/, '');
+          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string ''
       } else if (tagName === 'p-flyout') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
-          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/, '');
+          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string ''
       } else if (tagName === 'p-radio-button-wrapper') {
         newFileContent = newFileContent.replace(
           /&& !(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0]) && (otherChildren\[0]\?\.props\.checked)/g,
@@ -471,6 +489,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
 $&`
           );
+      } else if (tagName === 'p-pin-code') {
+        newFileContent = newFileContent.replace(/value={/, 'defaultValue={'); // fix warning about read-only field
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
           .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation

@@ -12,7 +12,7 @@
     <div
       :class="{
         example: true,
-        'example--light': (mergedConfig.themeable && theme === 'light') || mergedConfig.themeable === false,
+        'example--light': (mergedConfig.themeable && theme === 'light') || !mergedConfig.themeable,
         'example--dark': mergedConfig.themeable && theme === 'dark',
         'example--auto': mergedConfig.themeable && theme === 'auto',
         'example--surface': mergedConfig.backgroundColor === 'background-surface',
@@ -277,10 +277,6 @@
       }
     }
 
-    .demo {
-      width: 100%;
-    }
-
     &--overflow-x-visible {
       overflow-x: visible;
     }
@@ -326,12 +322,6 @@
       }
     }
 
-    .code-block {
-      &--framework :deep(pre) {
-        max-height: 40rem;
-      }
-    }
-
     &--fullscreen {
       position: fixed;
       inset: 0;
@@ -345,6 +335,23 @@
       .demo {
         margin: 0 (-$pds-spacing-static-large);
       }
+    }
+  }
+
+  .configurator {
+    :deep(select) {
+      // increase size for a11y wcag22aa compliance with scaling support
+      @include pds-text-small();
+    }
+  }
+
+  .demo {
+    width: 100%;
+  }
+
+  .code-block {
+    &--framework :deep(pre) {
+      max-height: 40rem;
     }
   }
 

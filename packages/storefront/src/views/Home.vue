@@ -16,7 +16,7 @@
   @Component({
     components: { Teaser, Intro, Masonry },
   })
-  export default class Home extends Vue {}
+  export default class HomeView extends Vue {}
 </script>
 
 <style scoped lang="scss">

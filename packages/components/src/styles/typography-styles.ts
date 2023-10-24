@@ -1,8 +1,8 @@
 import type { JssStyle } from 'jss';
-import type { TextAlign, TextColor, Theme } from '../types';
-import type { HeadingAlign, HeadingColor } from '../components/heading/heading-utils';
+import type { TextColor, Theme, TypographyAlign } from '../types';
+import type { HeadingColor } from '../components/heading/heading-utils';
 import type { HeadlineColor } from '../components/headline/headline-utils';
-import type { DisplayAlign, DisplayColor } from '../components/display/display-utils';
+import type { DisplayColor } from '../components/display/display-utils';
 import type { TextColorDeprecated } from '../components/text/text-color';
 import { getThemedTypographyColor } from './text-icon-styles';
 import { prefersColorSchemeDarkMediaQuery } from './prefers-color-scheme-dark-media-query';
@@ -10,7 +10,7 @@ import { prefersColorSchemeDarkMediaQuery } from './prefers-color-scheme-dark-me
 export const getTypographyRootJssStyle = (
   baseTextStyle: JssStyle,
   responsiveStyle: JssStyle,
-  align: TextAlign | HeadingAlign | DisplayAlign, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
+  align: TypographyAlign, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
   color: Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
   ellipsis: boolean,
   theme: Theme

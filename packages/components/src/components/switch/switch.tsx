@@ -1,7 +1,6 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
-  ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
@@ -10,10 +9,12 @@ import {
   isDisabledOrLoading,
   THEMES,
   validateProps,
+  ALIGN_LABELS,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
+import type { SwitchAlignLabelDeprecated, SwitchAlignLabel, SwitchUpdateEvent } from './switch-utils';
 import { getSwitchButtonAriaAttributes } from './switch-utils';
-import type { SwitchAlignLabel, SwitchUpdateEvent } from './switch-utils';
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
@@ -33,7 +34,7 @@ export class Switch {
   @Element() public host!: HTMLElement;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: BreakpointCustomizable<SwitchAlignLabel> = 'right';
+  @Prop() public alignLabel?: BreakpointCustomizable<SwitchAlignLabel> = 'end';
 
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
@@ -82,6 +83,20 @@ export class Switch {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+
+    const alignLabelDeprecationMap: Record<
+      SwitchAlignLabelDeprecated,
+      Exclude<SwitchAlignLabel, SwitchAlignLabelDeprecated>
+    > = {
+      left: 'start',
+      right: 'end',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Switch, SwitchAlignLabelDeprecated, SwitchAlignLabel>(
+      this,
+      'alignLabel',
+      alignLabelDeprecationMap
+    );
+
     attachComponentCss(
       this.host,
       getComponentCss,

@@ -30,7 +30,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   appearance: none !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
-  text-align: left !important;
+  text-align: start !important;
   border: 0 !important;
   color: #FBFCFF !important;
   cursor: pointer !important;
@@ -53,7 +53,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 16px !important;
+  margin-inline-end: 16px !important;
 }
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
@@ -129,7 +129,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   appearance: none !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
-  text-align: left !important;
+  text-align: start !important;
   border: 0 !important;
   color: #010205 !important;
   cursor: pointer !important;
@@ -152,7 +152,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 16px !important;
+  margin-inline-end: 16px !important;
 }
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
@@ -228,7 +228,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   appearance: none !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
-  text-align: left !important;
+  text-align: start !important;
   border: 0 !important;
   color: #FBFCFF !important;
   cursor: pointer !important;
@@ -251,7 +251,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 16px !important;
+  margin-inline-end: 16px !important;
 }
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
@@ -327,7 +327,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   appearance: none !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
-  text-align: left !important;
+  text-align: start !important;
   border: 0 !important;
   color: #010205 !important;
   cursor: pointer !important;
@@ -350,7 +350,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 16px !important;
+  margin-inline-end: 16px !important;
 }
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
@@ -426,7 +426,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   appearance: none !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
-  text-align: left !important;
+  text-align: start !important;
   border: 0 !important;
   color: #010205 !important;
   cursor: pointer !important;
@@ -449,7 +449,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 16px !important;
+  margin-inline-end: 16px !important;
 }
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
@@ -525,7 +525,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   appearance: none !important;
   outline-offset: 1px !important;
   text-decoration: none !important;
-  text-align: left !important;
+  text-align: start !important;
   border: 0 !important;
   color: #010205 !important;
   cursor: pointer !important;
@@ -548,7 +548,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
-  margin-right: 16px !important;
+  margin-inline-end: 16px !important;
 }
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {

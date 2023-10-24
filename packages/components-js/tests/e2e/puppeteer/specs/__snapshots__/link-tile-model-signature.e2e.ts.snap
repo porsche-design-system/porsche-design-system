@@ -9,7 +9,7 @@ exports[`accessibility should expose correct initial accessibility tree properti
           "children": [
             {
               "name": "Some image label",
-              "role": "img",
+              "role": "image",
             },
           ],
           "role": "none",
@@ -21,8 +21,13 @@ exports[`accessibility should expose correct initial accessibility tree properti
     {
       "children": [
         {
-          "name": "911",
-          "role": "img",
+          "children": [
+            {
+              "name": "911",
+              "role": "image",
+            },
+          ],
+          "role": "none",
         },
       ],
       "name": "",

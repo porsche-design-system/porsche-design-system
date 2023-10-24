@@ -3,6 +3,13 @@ import { getInitialStyles } from '@porsche-design-system/components-js/partials'
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type Theme } from '@porsche-design-system/utilities-v2';
+import type { PlaywrightTestConfig } from 'playwright/types/test';
+
+export const thresholdConfig: PlaywrightTestConfig['expect']['toHaveScreenshot'] = {
+  maxDiffPixelRatio: undefined,
+  maxDiffPixels: undefined,
+  threshold: 0.15,
+};
 
 // TODO: why are the following constants prefixed with base?
 export const baseThemes = ['light', 'dark'] as const;
@@ -81,12 +88,14 @@ const waitForForcedComponentTheme = async (page: Page, forceComponentTheme: Them
 };
 
 export type PrefersColorScheme = 'light' | 'dark';
+export type Dir = 'ltr' | 'rtl' | 'auto';
 type SetupScenarioOptions = {
   javaScriptDisabled?: boolean;
   forcedColorsEnabled?: boolean;
   prefersColorScheme?: PrefersColorScheme;
   scalePageFontSize?: boolean;
   forceComponentTheme?: Theme;
+  forceDirMode?: Dir;
   emulateMediaPrint?: boolean;
 };
 
@@ -102,6 +111,7 @@ export const setupScenario = async (
     prefersColorScheme,
     scalePageFontSize,
     forceComponentTheme,
+    forceDirMode,
     emulateMediaPrint,
   }: SetupScenarioOptions = {
     javaScriptDisabled: false,
@@ -109,6 +119,7 @@ export const setupScenario = async (
     prefersColorScheme: undefined,
     scalePageFontSize: false,
     forceComponentTheme: undefined,
+    forceDirMode: undefined,
     emulateMediaPrint: false,
     ...options,
   };
@@ -126,6 +137,16 @@ export const setupScenario = async (
     });
   }
 
+  if (scalePageFontSize) {
+    const cdpSession = await page.context().newCDPSession(page);
+    await cdpSession.send('Page.setFontSizes', {
+      fontSizes: {
+        standard: 32,
+        fixed: 48,
+      },
+    });
+  }
+
   await page.setViewportSize({ width: viewportWidth, height: 600 });
   await page.goto(url);
   await waitForComponentsReady(page);
@@ -134,15 +155,17 @@ export const setupScenario = async (
     await waitForForcedComponentTheme(page, forceComponentTheme);
   }
 
+  if (forceDirMode) {
+    await page.evaluate((forceDirMode) => {
+      document.querySelector('html').setAttribute('dir', forceDirMode);
+    }, forceDirMode);
+  }
+
   if (scalePageFontSize) {
     // resize before scaling helps load icons at least in select-wrapper
     await page.setViewportSize({
       width: viewportWidth,
       height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
-    });
-
-    await page.evaluate(() => {
-      document.querySelector('html').style.fontSize = '200%';
     });
   }
 

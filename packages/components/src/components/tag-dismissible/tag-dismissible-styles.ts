@@ -32,33 +32,34 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'inline-block',
         verticalAlign: 'top',
-        outline: 0,
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          outline: 0,
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
       button: {
         display: 'flex',
         position: 'relative',
         alignItems: 'center',
         gap: '12px',
         minHeight: '54px',
-        padding: '4px 0 4px 12px',
+        padding: '4px 12px',
         borderRadius: borderRadiusSmall,
         border: 0,
         cursor: 'pointer',
         background: backgroundColor,
         color: primaryColor,
+        textAlign: 'start',
+        ...textSmallStyle,
+        outline: isHighContrastMode ? '1px solid transparent' : 0,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           background: backgroundColorDark,
           color: primaryColorDark,
         }),
-        textAlign: 'left',
-        ...textSmallStyle,
-        outline: isHighContrastMode ? '1px solid transparent' : 0,
-        ...getTagFocusJssStyle(themedColors),
         ...hoverMediaQuery({
           '&:hover > .icon': {
             backgroundColor: hoverColor,
@@ -67,6 +68,7 @@ export const getComponentCss = (
             }),
           },
         }),
+        ...getTagFocusJssStyle(themedColors),
       },
     },
     ...(hasLabel && {
@@ -74,15 +76,15 @@ export const getComponentCss = (
         display: 'block',
         marginBottom: '-4px',
         color: contrastHighColor,
+        fontSize: fontSizeTextXSmall,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: contrastHighColorDark,
         }),
-        fontSize: fontSizeTextXSmall,
       },
     }),
     icon: {
       padding: '4px',
-      marginRight: '10px',
+      marginInlineEnd: '-2px', // compensate white space of svg icon and optimize visual alignment
       transition: getTransition('background-color'),
       borderRadius: borderRadiusSmall,
     },

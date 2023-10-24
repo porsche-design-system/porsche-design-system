@@ -7,6 +7,7 @@ import {
   hasPropValueChanged,
   removeAttribute,
   setAttribute,
+  setAttributes,
   THEMES,
   throwIfChildrenAreNotOfKind,
   validateProps,
@@ -126,24 +127,21 @@ export class Tabs {
   };
 
   private setAccessibilityAttributes = (): void => {
-    for (const [index, tab] of Object.entries(this.tabsItemElements)) {
+    this.tabsItemElements.forEach((tab, index) => {
       const attrs = {
         role: 'tabpanel',
         'aria-label': tab.label,
       };
+      setAttributes(tab, attrs);
 
-      for (const [key, value] of Object.entries(attrs)) {
-        setAttribute(tab, key, value);
-      }
-
-      if (+index === this.activeTabIndex) {
+      if (index === this.activeTabIndex) {
         removeAttribute(tab, 'hidden');
         setAttribute(tab, 'tabindex', '0');
       } else {
         setAttribute(tab, 'hidden');
         removeAttribute(tab, 'tabindex');
       }
-    }
+    });
   };
 
   private onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEvent>): void => {

@@ -90,15 +90,23 @@ export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyl
   isHidden
     ? {
         position: 'absolute',
-        width: 0,
+        width: '1px',
         height: '1px',
-        textIndent: '-999999px',
+        padding: 0,
+        margin: '-1px',
+        overflow: 'hidden',
+        clip: 'rect(0,0,0,0)',
+        whiteSpace: 'nowrap',
       }
     : {
         position: 'static',
         width: 'auto',
         height: 'auto',
-        textIndent: 0,
+        padding: 0,
+        margin: 0,
+        overflow: 'visible',
+        clip: 'auto',
+        whiteSpace: 'normal',
         ...isShownJssStyle,
       };
 

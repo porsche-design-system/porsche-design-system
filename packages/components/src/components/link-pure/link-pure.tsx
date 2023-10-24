@@ -16,9 +16,11 @@ import {
   throwIfInvalidLinkUsage,
   validateProps,
   warnIfParentIsPTextAndIconIsNone,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type {
   LinkPureAlignLabel,
+  LinkPureAlignLabelDeprecated,
   LinkPureAriaAttribute,
   LinkPureIcon,
   LinkPureSize,
@@ -53,7 +55,7 @@ export class LinkPure {
   @Element() public host!: HTMLElement;
 
   /** Aligns the label. */
-  @Prop() public alignLabel?: BreakpointCustomizable<LinkPureAlignLabel> = 'right';
+  @Prop() public alignLabel?: BreakpointCustomizable<LinkPureAlignLabel> = 'end';
 
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
@@ -115,6 +117,20 @@ export class LinkPure {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfParentIsPTextAndIconIsNone(this.host, this.icon, this.iconSource);
+
+    const alignLabelDeprecationMap: Record<
+      LinkPureAlignLabelDeprecated,
+      Exclude<LinkPureAlignLabel, LinkPureAlignLabelDeprecated>
+    > = {
+      left: 'start',
+      right: 'end',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof LinkPure, LinkPureAlignLabelDeprecated, LinkPureAlignLabel>(
+      this,
+      'alignLabel',
+      alignLabelDeprecationMap
+    );
+
     attachComponentCss(
       this.host,
       getComponentCss,

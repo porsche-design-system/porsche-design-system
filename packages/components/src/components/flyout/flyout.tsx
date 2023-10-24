@@ -5,6 +5,7 @@ import {
   FLYOUT_SCROLL_SHADOW_THRESHOLD,
   type FlyoutAriaAttribute,
   type FlyoutPosition,
+  type FlyoutPositionDeprecated,
 } from './flyout-utils';
 import { footerShadowClass, getComponentCss, headerShadowClass } from './flyout-styles';
 import {
@@ -19,6 +20,7 @@ import {
   validateProps,
   setScrollLock,
   setFocusTrap,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
@@ -42,7 +44,7 @@ export class Flyout {
   @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
   /** The position of the flyout */
-  @Prop() public position?: FlyoutPosition = 'right';
+  @Prop() public position?: FlyoutPosition = 'end';
 
   /** Adapts the flyout color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -103,6 +105,8 @@ export class Flyout {
 
   public componentDidRender(): void {
     if (this.open) {
+      // TODO: why not scroll to top when opened just like modal does?
+
       if (this.hasSubFooter) {
         this.onScroll();
       }
@@ -119,6 +123,19 @@ export class Flyout {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
+    const positionDeprecationMap: Record<
+      FlyoutPositionDeprecated,
+      Exclude<FlyoutPosition, FlyoutPositionDeprecated>
+    > = {
+      left: 'start',
+      right: 'end',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Flyout, FlyoutPositionDeprecated, FlyoutPosition>(
+      this,
+      'position',
+      positionDeprecationMap
+    );
+
     this.hasHeader = hasNamedSlot(this.host, 'header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
     this.hasSubFooter = hasNamedSlot(this.host, 'sub-footer');
@@ -127,8 +144,7 @@ export class Flyout {
       this.host,
       getComponentCss,
       this.open,
-      this.position,
-      this.hasHeader,
+      (positionDeprecationMap[this.position] || this.position) as Exclude<FlyoutPosition, FlyoutPositionDeprecated>,
       this.hasFooter,
       this.hasSubFooter,
       this.theme
@@ -136,19 +152,6 @@ export class Flyout {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const dismissBtn = (
-      <PrefixedTagNames.pButtonPure
-        class="dismiss"
-        type="button"
-        hideLabel
-        icon="close"
-        theme={this.theme}
-        onClick={this.dismissFlyout}
-        ref={(el) => (this.dismissBtn = el)}
-      >
-        Dismiss flyout
-      </PrefixedTagNames.pButtonPure>
-    );
     return (
       <Host onMouseDown={this.onMouseDown}>
         <div
@@ -160,16 +163,26 @@ export class Flyout {
             ...parseAndGetAriaAttributes(this.aria),
           })}
           tabIndex={-1}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          /* @ts-ignore */
+          inert={this.open ? null : true} // prevents focusable elements within nested open accordion
           ref={(el) => (this.dialog = el)}
           {...(this.hasSubFooter && { onScroll: this.onScroll })} // if no sub-footer is used scroll shadows are done via CSS
         >
           <div class="header" ref={(el) => (this.header = el)}>
-            {dismissBtn}
-            {this.hasHeader && (
-              <div class="header-content">
-                <slot name="header" />
-              </div>
-            )}
+            <PrefixedTagNames.pButtonPure
+              class="dismiss"
+              type="button"
+              hideLabel
+              icon="close"
+              theme={this.theme}
+              onClick={this.dismissFlyout}
+              ref={(el) => (this.dismissBtn = el)}
+            >
+              Dismiss flyout
+            </PrefixedTagNames.pButtonPure>
+
+            {this.hasHeader && <slot name="header" />}
           </div>
           <div class="content">
             <slot />

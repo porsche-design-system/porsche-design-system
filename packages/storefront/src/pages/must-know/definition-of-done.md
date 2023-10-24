@@ -18,15 +18,16 @@ Done** (DOD).
 - Code is tested with
   - Unit tests (in node/jsdom)
   - End-to-End Tests (E2E, via Puppeteer in Chromium)
-  - Accessibility Tests (A11y, via Axe Core)
+  - Accessibility Tests (A11y)
   - Visual Regression Tests (VRT, via Puppeteer in Chromium and Playwright in WebKit browser engines)
   - Unit tests for/with jsdom-polyfill (if modern browser APIs are used that are not available in jsdom)
   - Smoke tests (if adding new assets to our CDN)
 - Accessibility compliance
-  - WCAG 2.1 level AA
+  - WCAG 2.2 level AA
   - High Contrast Mode
   - 200% Text Zoom Support
-- Auto Dark Theme Support
+- Auto Dark Theme Support (VRT)
+- LTR/RTL (left-to-right/right-to-left) Support (VRT)
 - SSR Support for Next.js and Remix
 - Components are available on UXPin
 - Security vulnerability scan passes (CodeQL of GitHub)
@@ -38,6 +39,12 @@ Done** (DOD).
 
 ## Potential Future Criteria
 
-- LTR/RTL (left-to-right/right-to-left) Support (VRT)
 - Print Support (VRT)
 - Component a11y tests via axe-core (E2E)
+
+## Legend
+
+- Unit: Unit Test with node/jsdom
+- E2E: End-to-end Test with Puppeteer/Cypress
+- A11y: Accessibility Test with Axe Core
+- VRT: Visual Regression Test with Puppeteer/Playwright

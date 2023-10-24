@@ -7,6 +7,7 @@ import {
   hasPropValueChanged,
   parseAndGetAriaAttributes,
   parseJSONAttribute,
+  scrollAreaClass,
   scrollElementTo,
   THEMES,
   validateProps,
@@ -183,7 +184,7 @@ export class Scroller {
 
     return (
       <div class="root">
-        <div class="scroll-area" ref={(el) => (this.scrollAreaElement = el)}>
+        <div class={scrollAreaClass} ref={(el) => (this.scrollAreaElement = el)}>
           <div
             class="scroll-wrapper"
             role={parseAndGetAriaAttributes(this.aria)?.role || null}

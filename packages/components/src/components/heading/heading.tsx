@@ -1,16 +1,24 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { HeadingTag } from './heading-tag';
-import { HEADING_TAGS } from './heading-tag';
-import type { HeadingAlign, HeadingColor, HeadingSize } from './heading-utils';
+import type { HeadingAlign, HeadingAlignDeprecated, HeadingColor, HeadingSize } from './heading-utils';
 import { getHeadingTagType, HEADING_COLORS, HEADING_SIZES } from './heading-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, hasPropValueChanged, TEXT_ALIGNS, THEMES, validateProps } from '../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  hasPropValueChanged,
+  THEMES,
+  TYPOGRAPHY_ALIGNS,
+  validateProps,
+  warnIfDeprecatedPropValueIsUsed,
+} from '../../utils';
+import { HEADING_TAGS } from './heading-tag';
 import { getComponentCss } from './heading-styles';
 
 const propTypes: PropTypes<typeof Heading> = {
   tag: AllowedTypes.oneOf<HeadingTag>([undefined, ...HEADING_TAGS]),
   size: AllowedTypes.breakpoint<HeadingSize>(HEADING_SIZES),
-  align: AllowedTypes.oneOf<HeadingAlign>(TEXT_ALIGNS),
+  align: AllowedTypes.oneOf<HeadingAlign>(TYPOGRAPHY_ALIGNS),
   color: AllowedTypes.oneOf<HeadingColor>(HEADING_COLORS),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -30,7 +38,7 @@ export class Heading {
   @Prop() public size?: BreakpointCustomizable<HeadingSize> = 'xx-large';
 
   /** Text alignment of the component. */
-  @Prop() public align?: HeadingAlign = 'left';
+  @Prop() public align?: HeadingAlign = 'start';
 
   /** Basic text color variations depending on theme property. */
   @Prop() public color?: HeadingColor = 'primary';
@@ -47,7 +55,26 @@ export class Heading {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis, this.theme);
+
+    const alignDeprecationMap: Record<HeadingAlignDeprecated, Exclude<HeadingAlign, HeadingAlignDeprecated>> = {
+      left: 'start',
+      right: 'end',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Heading, HeadingAlignDeprecated, HeadingAlign>(
+      this,
+      'align',
+      alignDeprecationMap
+    );
+
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.size,
+      (alignDeprecationMap[this.align] || this.align) as Exclude<HeadingAlign, HeadingAlignDeprecated>,
+      this.color,
+      this.ellipsis,
+      this.theme
+    );
 
     const TagType = getHeadingTagType(this.host, this.size, this.tag);
 

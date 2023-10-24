@@ -61,7 +61,7 @@ export const getComponentCss = (
         gap: '24px',
         background: 'transparent',
         cursor: 'pointer',
-        textAlign: 'left',
+        textAlign: 'start',
         color: primaryColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,

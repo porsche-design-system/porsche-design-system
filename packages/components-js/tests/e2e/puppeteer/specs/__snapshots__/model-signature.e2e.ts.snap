@@ -5,7 +5,7 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
   "children": [
     {
       "name": "911",
-      "role": "img",
+      "role": "image",
     },
   ],
   "role": "none",

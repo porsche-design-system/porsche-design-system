@@ -158,20 +158,25 @@ export class Modal {
             ...parseAndGetAriaAttributes(this.aria),
           })}
           tabIndex={-1}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          /* @ts-ignore */
+          inert={this.open ? null : true} // prevents focusable elements within nested open accordion
           ref={(el) => (this.dialog = el)}
         >
           {this.hasDismissButton && (
-            <PrefixedTagNames.pButtonPure
-              class="dismiss"
-              type="button"
-              ref={(el) => (this.dismissBtn = el)}
-              hideLabel
-              icon="close"
-              onClick={this.dismissModal}
-              theme={this.theme}
-            >
-              Dismiss modal
-            </PrefixedTagNames.pButtonPure>
+            <div class="controls">
+              <PrefixedTagNames.pButtonPure
+                class="dismiss"
+                type="button"
+                ref={(el) => (this.dismissBtn = el)}
+                hideLabel
+                icon="close"
+                onClick={this.dismissModal}
+                theme={this.theme}
+              >
+                Dismiss modal
+              </PrefixedTagNames.pButtonPure>
+            </div>
           )}
           {this.hasHeader && (
             <div class="header">{this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}</div>

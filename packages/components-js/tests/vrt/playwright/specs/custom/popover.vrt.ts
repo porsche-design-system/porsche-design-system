@@ -1,11 +1,16 @@
 import { expect, type Page, test } from '@playwright/test';
-import { baseThemes, openAllPopover, type PrefersColorScheme, setContentWithDesignSystem } from '../../helpers';
+import {
+  baseThemes,
+  openAllPopover,
+  setNativePopoversToAllowMultipleOpen,
+  setContentWithDesignSystem,
+} from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'popover';
 const viewportWidth = 1760;
 
-const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
+const scenario = async (page: Page, theme: Theme, withinTable: boolean = false): Promise<void> => {
   const getPopover = (direction: string, length: number = 1): string => {
     return `<p-popover direction=${direction}>
     ${Array.from(Array(length))
@@ -14,8 +19,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 </p-popover>`;
   };
 
-  const markup =
-    () => `<div style="position: relative; height: 800px; outline: 1rem solid rgba(0, 0, 255, 0.1); outline-offset: -1rem" class="playground">
+  const popoverMarkup = () => `
   <!--   Top Left to right   -->
   <span style="position: absolute; top: 1.5rem; left: 1rem">
    ${getPopover('right', 3)}
@@ -116,11 +120,35 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   </span>
   <span style="position: absolute; top: 50vh; right: 50vw">
    ${getPopover('bottom')}
-  </span>
-</div>`;
+  </span>`;
+
+  const markup = () =>
+    withinTable
+      ? `<p-table caption="popover">
+        <p-table-head>
+          <p-table-head-row>
+            <p-table-head-cell
+              style="position: relative; height: 800px; outline: 1rem solid rgba(0, 0, 255, 0.1); outline-offset: -1rem"
+              class="playground"
+            >${popoverMarkup()}
+            </p-table-head-cell>
+          </p-table-head-row>
+        </p-table-head>
+      </p-table>`
+      : `<div style="position: relative; height: 800px; outline: 1rem solid rgba(0, 0, 255, 0.1); outline-offset: -1rem" class="playground">${popoverMarkup()}</div>`;
 
   await setContentWithDesignSystem(page, markup(), { forceComponentTheme: theme });
+
+  // Override listeners to avoid native popovers being closed
+  if (withinTable) {
+    await page.evaluate(() => {
+      window.addEventListener('resize', (e) => e.stopImmediatePropagation(), true);
+      window.addEventListener('scroll', (e) => e.stopImmediatePropagation(), true);
+    });
+  }
+
   await page.setViewportSize({ width: viewportWidth, height: 600 });
+  await setNativePopoversToAllowMultipleOpen(page);
   await openAllPopover(page);
 };
 
@@ -134,6 +162,17 @@ test.describe(component, async () => {
     }) => {
       await scenario(page, theme);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}-overview-theme-${theme}.png`);
+    });
+  });
+
+  baseThemes.forEach((theme) => {
+    test(`should have no visual regression on popover-overview within table component for viewport ${viewportWidth} with theme ${theme}`, async ({
+      page,
+    }) => {
+      await scenario(page, theme, true);
+      await expect(page.locator('#app')).toHaveScreenshot(
+        `${component}-${viewportWidth}-overview-within-table-theme-${theme}.png`
+      );
     });
   });
 });

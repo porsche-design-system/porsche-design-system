@@ -2,6 +2,7 @@ import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from
 import type { ButtonPure } from '../button-pure/button-pure';
 import type {
   CarouselAlignHeader,
+  CarouselAlignHeaderDeprecated,
   CarouselInternationalization,
   CarouselUpdateEvent,
   CarouselWidth,
@@ -39,6 +40,7 @@ import {
   unobserveChildren,
   validateProps,
   warnIfDeprecatedPropIsUsed,
+  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import { gridGap } from '@porsche-design-system/utilities-v2';
@@ -83,7 +85,7 @@ export class Carousel {
   @Prop() public description?: string;
 
   /** Alignment of heading and description */
-  @Prop() public alignHeader?: CarouselAlignHeader = 'left';
+  @Prop() public alignHeader?: CarouselAlignHeader = 'start';
 
   /** Whether the slides should rewind from last to first slide and vice versa. */
   @Prop() public rewind?: boolean = true;
@@ -214,6 +216,17 @@ export class Carousel {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    const alignHeaderDeprecationMap: Record<
+      CarouselAlignHeaderDeprecated,
+      Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>
+    > = {
+      left: 'start',
+    };
+    warnIfDeprecatedPropValueIsUsed<typeof Carousel, CarouselAlignHeaderDeprecated, CarouselAlignHeader>(
+      this,
+      'alignHeader',
+      alignHeaderDeprecationMap
+    );
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'wrapContent');
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
     warnIfHeadingIsMissing(this.host, this.heading);
@@ -232,7 +245,10 @@ export class Carousel {
           : !this.disablePagination
         : this.pagination,
       isInfinitePagination(this.amountOfPages),
-      this.alignHeader,
+      (alignHeaderDeprecationMap[this.alignHeader] || this.alignHeader) as Exclude<
+        CarouselAlignHeader,
+        CarouselAlignHeaderDeprecated
+      >,
       this.theme
     );
 
