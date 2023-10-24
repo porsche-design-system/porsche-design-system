@@ -27,10 +27,8 @@ afterEach(async () => await browserPage.close());
 
 const isTabActive = (element: ElementHandle<HTMLElement> | null): Promise<boolean> =>
   element.evaluate((el) => el.className.includes('router-link-active'));
-const isLinkActive = async (page, element: ElementHandle<HTMLElement> | null): Promise<boolean> => {
-  await page.waitForFunction((el) => el.active, undefined, element);
-  return element.evaluate((el) => el.active);
-};
+const isLinkActive = (element: ElementHandle<HTMLElement> | null): Promise<boolean> =>
+  element.evaluate((el) => el.active);
 const waitForHeading = async (page: Page): Promise<void> => {
   const mainElementHandle = await browserPage.$('main');
   await mainElementHandle.waitForSelector('.vmark > h1, .vmark > p-heading');
@@ -101,16 +99,12 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
         const [linkPureElement] = (await browserPage.$x(
           `//div[contains(@class, 'menu-desktop')]//nav//p-link-pure/a[contains(., '${page}')][@href='${href}']/parent::p-link-pure`
         )) as ElementHandle<HTMLElement>[];
-        expect(await isLinkActive(browserPage, linkPureElement), 'sidebar link should not be active initially').toBe(
-          false
-        );
+        expect(await isLinkActive(linkPureElement), 'sidebar link should not be active initially').toBe(false);
 
         await Promise.all([browserPage.waitForNavigation(), linkPureElement.click()]);
 
         await waitForHeading(browserPage);
-        expect(await isLinkActive(browserPage, linkPureElement), 'sidebar link should be active after click').toBe(
-          true
-        );
+        expect(await isLinkActive(linkPureElement), 'sidebar link should be active after click').toBe(true);
 
         const headingRegEx = new RegExp(`^${page}(?: 🚫)?$`); // to cover deprecated icon
         expect(await getMainHeading(browserPage), 'should show correct main title for page').toMatch(headingRegEx);
