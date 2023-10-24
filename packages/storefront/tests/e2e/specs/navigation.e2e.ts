@@ -25,37 +25,39 @@ beforeEach(async () => {
 });
 afterEach(async () => await browserPage.close());
 
-const isTabActive = (element: ElementHandle<HTMLElement> | null): Promise<boolean> =>
-  element.evaluate((el) => el.className.includes('router-link-active'));
-const isLinkActive = (element: ElementHandle<HTMLElement> | null): Promise<boolean> =>
-  element.evaluate((el) => el.active);
-const waitForHeading = async (page: Page): Promise<void> => {
-  const mainElementHandle = await browserPage.$('main');
-  await mainElementHandle.waitForSelector('.vmark > h1, .vmark > p-heading');
-  await page.waitForFunction(
-    (mainEl) => mainEl.querySelector('.vmark > h1, .vmark > p-heading').innerText !== '',
-    undefined,
-    mainElementHandle
-  );
-};
-const getMainHeading = async (page: Page): Promise<string> => {
-  await waitForHeading(page);
-  const mainElementHandle = await browserPage.$('main');
-  return mainElementHandle.$eval('.vmark > h1, .vmark > p-heading', (x) => x.innerText);
-};
-const hasPageObjectObject = (page: Page): Promise<boolean> =>
-  page.evaluate(() => document.body.innerText.includes('[object Object]'));
-
-/**
- * to override transition duration of accordion
- */
 const injectCSSOverrides = async () => {
-  // inject style overrides for css variables
+  // inject style overrides for css variables to override transition duration of accordion
   await page.evaluate((styles) => {
     const styleEl = document.createElement('style');
     styleEl.innerText = styles;
     document.head.append(styleEl);
   }, rootStyles);
+};
+
+const isTabActive = (element: ElementHandle<HTMLElement> | null): Promise<boolean> => {
+  return element.evaluate((el) => el.className.includes('router-link-active'));
+};
+
+const isLinkActive = (element: ElementHandle<HTMLElement> | null): Promise<boolean> => {
+  return element.evaluate((el) => el.active);
+};
+
+const waitForHeading = async (page: Page): Promise<ElementHandle<HTMLElement>> => {
+  const headingElementHandle = (await page.waitForSelector(
+    'main .vmark > h1, main .vmark > p-heading'
+  )) as ElementHandle<HTMLElement>;
+  // NOTE: sometimes h1 or p-heading is rendered empty for whatever reason 🤷‍
+  // await page.waitForFunction((headingEl) => headingEl.innerText !== '', undefined, headingElementHandle);
+  return headingElementHandle;
+};
+
+const getHeadingText = async (page: Page): Promise<string> => {
+  const headingElementHandle = await waitForHeading(page);
+  return headingElementHandle.evaluate((headingEl) => headingEl.innerText);
+};
+
+const hasPageObjectObject = (page: Page): Promise<boolean> => {
+  return page.evaluate(() => document.body.innerText.includes('[object Object]'));
 };
 
 /*
@@ -94,6 +96,11 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
           `//div[contains(@class, 'menu-desktop')]//nav/p-accordion[@heading='${category}']`
         )) as ElementHandle<HTMLElement>[];
         await accordionElement.click();
+        // await browserPage.waitForFunction(
+        //   (el) => getComputedStyle(el.shadowRoot.querySelector('.collapsible')).visibility === 'visible',
+        //   undefined,
+        //   accordionElement
+        // );
 
         const href = `\/${paramCase(category)}\/${paramCase(page)}`;
         const [linkPureElement] = (await browserPage.$x(
@@ -101,13 +108,15 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
         )) as ElementHandle<HTMLElement>[];
         expect(await isLinkActive(linkPureElement), 'sidebar link should not be active initially').toBe(false);
 
+        // NOTE: very flaky and potential timeout here 🤷‍
         await Promise.all([browserPage.waitForNavigation(), linkPureElement.click()]);
 
         await waitForHeading(browserPage);
+        await browserPage.waitForFunction((el) => el.active, undefined, linkPureElement);
         expect(await isLinkActive(linkPureElement), 'sidebar link should be active after click').toBe(true);
 
-        const headingRegEx = new RegExp(`^${page}(?: 🚫)?$`); // to cover deprecated icon
-        expect(await getMainHeading(browserPage), 'should show correct main title for page').toMatch(headingRegEx);
+        const headingRegEx = new RegExp(`^${page}( 🚫)?$`); // to cover deprecated icon
+        expect(await getHeadingText(browserPage), 'should show correct main title for page').toMatch(headingRegEx);
         expect(await hasPageObjectObject(browserPage), 'should not contain [object Object] on page').toBe(false);
         expect(getConsoleErrorsAmount(), `Errors on ${category}/${page}`).toBe(0);
 
@@ -136,7 +145,7 @@ for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
             }
 
             await mainElementHandle.waitForSelector('.vmark > h1, .vmark > p-heading');
-            expect(await getMainHeading(browserPage), 'should show correct main title for tab page').toMatch(
+            expect(await getHeadingText(browserPage), 'should show correct main title for tab page').toMatch(
               headingRegEx
             );
             expect(await hasPageObjectObject(browserPage), 'should not contain [object Object] on tab page').toBe(
