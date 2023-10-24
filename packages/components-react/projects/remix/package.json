@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components-react": "3.8.0-rc.0",
+    "@porsche-design-system/components-react": "3.8.0",
     "@remix-run/node": "^2.0.1",
     "@remix-run/react": "^2.0.1",
     "@remix-run/serve": "^2.0.1",
