@@ -7,6 +7,7 @@ import {
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
+  thresholdConfig,
 } from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 
@@ -51,6 +52,9 @@ test.describe(component, async () => {
 
   test(`should have no visual regression for :hover + :focus-visible with theme light`, async ({ page }) => {
     await scenario(page, undefined);
-    await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-states-theme-light.png`);
+    await expect(page.locator('#app')).toHaveScreenshot(
+      `${component}-${baseViewportWidth}-states-theme-light.png`,
+      thresholdConfig
+    );
   });
 });

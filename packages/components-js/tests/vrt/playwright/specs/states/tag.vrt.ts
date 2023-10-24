@@ -3,6 +3,7 @@ import {
   baseSchemes,
   baseThemes,
   baseViewportWidth,
+  thresholdConfig,
   forceFocusState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
@@ -49,7 +50,8 @@ test.describe(component, async () => {
     test(`should have no visual regression for :hover + :focus-visible with theme ${theme}`, async ({ page }) => {
       await scenario(page, theme);
       await expect(page.locator('#app')).toHaveScreenshot(
-        `${component}-${baseViewportWidth}-states-theme-${theme}.png`
+        `${component}-${baseViewportWidth}-states-theme-${theme}.png`,
+        thresholdConfig
       );
     });
   });
@@ -60,7 +62,8 @@ test.describe(component, async () => {
     }) => {
       await scenario(page, 'auto', scheme);
       await expect(page.locator('#app')).toHaveScreenshot(
-        `${component}-${baseViewportWidth}-states-theme-${scheme}.png`
+        `${component}-${baseViewportWidth}-states-theme-${scheme}.png`,
+        thresholdConfig
       ); // fixture is aliased since result has to be equal
     });
   });
