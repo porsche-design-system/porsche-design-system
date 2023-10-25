@@ -82,7 +82,7 @@ Once this process is complete, the `hyrated` CSS class gets added to the compone
 
 Which makes the button appear like you are used to.
 
-<p-button>Hello</p-button>
+<p-button :theme="this.$store.getters.storefrontTheme">Hello</p-button>
 
 ## Change Lifecycle
 
