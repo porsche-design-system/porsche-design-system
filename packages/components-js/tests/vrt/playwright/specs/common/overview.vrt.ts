@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { setupScenario } from '../../helpers';
+import { setupScenario, thresholdConfig } from '../../helpers';
 
 // executed in Chrome only
 test.describe('overview', async () => {
@@ -9,7 +9,7 @@ test.describe('overview', async () => {
     const viewportWidth = 1920;
     await setupScenario(page, `/overview`, viewportWidth);
     await page.mouse.click(0, 0);
-    await expect(page.locator('#app')).toHaveScreenshot(`overview-${viewportWidth}.png`);
+    await expect(page.locator('#app')).toHaveScreenshot(`overview-${viewportWidth}.png`, thresholdConfig);
   });
 });
 

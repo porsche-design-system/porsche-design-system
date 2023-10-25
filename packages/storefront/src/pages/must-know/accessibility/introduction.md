@@ -44,7 +44,7 @@ who uses accessible products:
 At Porsche, we are **driven by excellence**, and the **Porsche Design System** is committed to deliver highly **usable
 and accessible** components that are not limited to certain users or use cases. The **Design System Components** are
 tested automatically and manually against all official success criteria of
-[WCAG 2.1 (AA)](https://www.w3.org/TR/WCAG21/).
+[WCAG 2.2 (AA)](https://www.w3.org/TR/WCAG22/).
 
 If you find any accessibility issue, please feel free to [**report it**](help/bug-report).
 
