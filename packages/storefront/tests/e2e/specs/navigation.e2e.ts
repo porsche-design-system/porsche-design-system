@@ -98,6 +98,10 @@ it.each(cases.map((segments) => [segments.filter((segment) => typeof segment ===
     // NOTE: very flaky and potential timeout here 🤷‍
     await Promise.all([browserPage.waitForNavigation(), linkPureElement.click()]);
 
+    // wait for p-heading and p-tabs-bar to be ready
+    const mainElementHandle = await browserPage.$('main');
+    await mainElementHandle.evaluate((el) => (window as any).componentsReady(el));
+
     await waitForHeading(browserPage);
     await browserPage.waitForFunction((el) => el.active, undefined, linkPureElement);
     expect(await isLinkActive(linkPureElement), 'sidebar link should be active after click').toBe(true);
@@ -108,10 +112,6 @@ it.each(cases.map((segments) => [segments.filter((segment) => typeof segment ===
     expect(getConsoleErrorsAmount(), `Errors on ${category}/${page}`).toBe(0);
 
     if (tab) {
-      // wait for p-tabs-bar to be ready
-      const mainElementHandle = await browserPage.$('main');
-      await mainElementHandle.evaluate((el) => (window as any).componentsReady(el));
-
       const tabHref = `\/${paramCase(category)}\/${paramCase(page)}\/${paramCase(tab)}`;
       const [tabElement] = (await browserPage.$x(
         `//p-tabs-bar//a[contains(., '${tab}')][@href='${tabHref}']`
@@ -120,18 +120,20 @@ it.each(cases.map((segments) => [segments.filter((segment) => typeof segment ===
       const isTabElementActiveInitially = await isTabActive(tabElement);
       if (isFirst) {
         expect(isTabElementActiveInitially, 'should have first tab active initially').toBe(true);
+        // heading of first is already checked before
       } else {
         expect(isTabElementActiveInitially, 'should not have tab active initially').toBe(false);
+        // we need to switch tabs, e.g. to "Usage" or "Props" for components
 
         await Promise.all([browserPage.waitForNavigation(), tabElement.click()]);
 
         expect(await isTabActive(tabElement), 'should have tab active after click').toBe(true);
-      }
 
-      await mainElementHandle.waitForSelector('.vmark > h1, .vmark > p-heading');
-      expect(await getHeadingText(browserPage), 'should show correct main title for tab page').toMatch(headingRegEx);
-      expect(await hasPageObjectObject(browserPage), 'should not contain [object Object] on tab page').toBe(false);
-      expect(getConsoleErrorsAmount(), `Errors on ${category}/${page} in tab ${tab}`).toBe(0);
+        await waitForHeading(browserPage);
+        expect(await getHeadingText(browserPage), 'should show correct main title for tab page').toMatch(headingRegEx);
+        expect(await hasPageObjectObject(browserPage), 'should not contain [object Object] on tab page').toBe(false);
+        expect(getConsoleErrorsAmount(), `Errors on ${category}/${page} in tab ${tab}`).toBe(0);
+      }
     }
   }
 );
