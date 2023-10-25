@@ -1,9 +1,9 @@
 import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
+import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss } from '../../utils';
-import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -17,35 +17,28 @@ import { getFunctionalComponentRequiredStyles } from '../common/required/require
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import {
   borderWidthBase,
-  fontFamily,
   fontLineHeight,
   spacingStaticMedium,
   spacingStaticSmall,
+  spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
 export const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';
 export const cssVariableInputPaddingEnd = '--p-internal-text-field-input-padding-end';
 
-const buttonOrIconPadding = '4px';
-const buttonOrIconSize = `calc(${fontLineHeight} + ${buttonOrIconPadding} * 2)`;
-const buttonOrIconOffset = '9px';
+const inputSafeZone = '9px'; // TODO: why not using spacingStaticSmall instead?
+const inputSafeZoneWithBorder = `calc(${inputSafeZone} + ${borderWidthBase})`;
+const buttonOrIconSize = `calc(${fontLineHeight} + ${spacingStaticXSmall} * 2)`;
+const buttonOffsetBottom = '11px'; // it would be much cleaner with place-self: center instead but this is not possible when dom semantic shall be valid
 
 const baseButtonOrIconStyles: JssStyle = {
-  gridArea: '1 / 4',
-  alignSelf: 'flex-end',
-  marginBottom: '11px', // TODO: it would be much cleaner with place-self: center instead but this is not possible when dom semantic shall be valid
-  padding: buttonOrIconPadding,
-  font: `1rem ${fontFamily}`, // needed for correct padding calculation based on ex unit
+  marginBottom: buttonOffsetBottom,
+  padding: spacingStaticXSmall,
 };
 
 const getInputPaddingHorizontal = (buttonOrIconAmount: number): string => {
-  return `calc(${buttonOrIconOffset} * 2 + ${buttonOrIconSize} * ${buttonOrIconAmount})`;
-};
-
-const getButtonOrIconOffsetHorizontal = (buttonOrIconAmount: number): string => {
-  const multiplier = buttonOrIconAmount > 1 ? ` + ${buttonOrIconSize} * ${buttonOrIconAmount - 1}` : '';
-  return `calc(${buttonOrIconOffset} + ${borderWidthBase}${multiplier})`;
+  return `calc(${inputSafeZone} * 2 + ${buttonOrIconSize} * ${buttonOrIconAmount})`;
 };
 
 export const getComponentCss = (
@@ -101,30 +94,28 @@ export const getComponentCss = (
         },
       }),
     },
+    root: {
+      display: 'grid',
+      gridTemplateColumns: `${inputSafeZoneWithBorder} auto minmax(0, 1fr) auto auto ${inputSafeZoneWithBorder}`,
+      alignItems: 'flex-end',
+    },
     ...((isSearchOrPassword || isCalendarOrTimeWithCustomIndicator) && {
       button: {
         ...baseButtonOrIconStyles,
-        marginInlineEnd: getButtonOrIconOffsetHorizontal(1),
+        gridArea: '1 / 5',
         // TODO: maybe we should render hidden button conditionally, needs to be checked if a11y compliant
         '&:not([hidden]) ~ .button': {
-          gridArea: '1 / 3',
-          marginInlineEnd: 0,
+          gridArea: '1 / 4',
         },
       },
     }),
     ...(isSearchWithoutForm && {
       icon: {
         ...baseButtonOrIconStyles,
-        gridArea: '1 / 1',
-        marginInlineStart: getButtonOrIconOffsetHorizontal(1),
+        gridArea: '1 / 2',
         pointerEvents: 'none',
       },
     }),
-    root: {
-      position: 'relative',
-      display: 'grid',
-      gridTemplateColumns: 'auto minmax(0, 1fr) auto auto',
-    },
     ...getLabelStyles(
       'input',
       isDisabled,
@@ -145,15 +136,12 @@ export const getComponentCss = (
         },
       },
       {
-        gridArea: '1 / 1 / auto / span 4',
+        gridArea: '1 / 1 / auto / span 6',
       }
     ),
     ...getFunctionalComponentRequiredStyles(),
     ...getFunctionalComponentStateMessageStyles(theme, state),
     // TODO: could be made conditional if we had hasUnit
-    'sr-only': {
-      ...getHiddenTextJssStyle(),
-      padding: 0,
-    },
+    'sr-only': getHiddenTextJssStyle(),
   });
 };
