@@ -140,11 +140,10 @@ export default class Code extends Vue {
     /* workaround for iOS 13.x masking modal within example */
     document.querySelectorAll('.example').forEach(el => el.style.overflow = 'visible');
 
-    /* workaround for iOS 13.x not respecting flex-wrap: wrap; correctly */ 
-    /* timeout is needed for component to render */
-    setTimeout(() => {
+    /* workaround for iOS 13.x not respecting flex-wrap: wrap; correctly */
+    componentsReady(this.$el).then(() => {
       document.getElementById('modal-scrollable').shadowRoot.querySelector('.root').style.alignSelf = 'start'
-    }, 1000);
+    });
   }
 
   updated() {
