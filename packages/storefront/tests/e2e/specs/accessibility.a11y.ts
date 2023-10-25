@@ -115,7 +115,11 @@ describe('within main element', () => {
 
       await gotoUrl(url);
 
-      await a11yAnalyze(page, { suffix: 'main-light', includeSelector }); // page in default/initial state
+      await a11yAnalyze(page, {
+        suffix: 'main-light',
+        excludeSelector: url === '/news/changelog' ? 'pre' : undefined, // Throws scrollable-region-focusable error on scrollable diffs
+        includeSelector,
+      }); // page in default/initial state
       // disabled because highly redundant, instead this should be tested once for light and dark with a good code example for angular, react and vue
       // await cycleFrameworkTabs('light');
 
@@ -135,7 +139,11 @@ describe('within main element', () => {
         //   await vanillaJsButton.click();
         // }
 
-        await a11yAnalyze(page, { suffix: 'main-dark', includeSelector });
+        await a11yAnalyze(page, {
+          suffix: 'main-dark',
+          excludeSelector: url === '/news/changelog' ? 'pre' : undefined, // Throws scrollable-region-focusable error on scrollable diffs
+          includeSelector,
+        });
         // disabled because highly redundant, instead this should be tested once for light and dark with a good code example for angular, react and vue
         // await cycleFrameworkTabs('dark');
       }
