@@ -1,5 +1,8 @@
 # Initialization
 
+First we need to understand how a web component works, before we can look into how to optimize its bootstrapping
+behavior.
+
 <TableOfContents></TableOfContents>
 
 ## Setup
@@ -53,10 +56,11 @@ Once the **component chunk** is loaded, the component gets initialized.
 
 ## Connect Lifecycle
 
-Initialization means an instance of the `Button` class is created in the JavaScript space.
+Initialization of a component tag means that under the hood, an instance of the `Button` class is created in the
+JavaScript space.
 
 <Notification heading="Important" state="warning">
-  It is important to understand, that for each component tag in the DOM, there is a class instance in the JavaScript space. 
+  It is important to understand, that for each component tag in the DOM, there is a component class instance in the JavaScript space. 
   The component tag acts as an interface, similar to an API, where you set attributes/properties or children as inputs. 
   If these change, the class instance detects these and renders the result into the component tag's Shadow DOM as an output.
 </Notification>
@@ -105,15 +109,93 @@ If the `p-button` is removed from the DOM, only one lifecycle method of the clas
 
 - `disconnectedCallback()`
 
-This is typically used to remove previously added event listeners or destroy watchers.
+This is typically used to remove previously added event listeners, destroy watchers and other cleanup tasks.
 
 ## Reconnect Lifecycle
 
-In case the same `p-button` is added to the DOM again, just one lifecycle method is called.
+In case the same `p-button` element is added to the DOM again, just one lifecycle method is called.
 
 - `connectedCallback()`
+
+This typically doesn't happen in framework environments but is possible in theory or with straight DOM manipulation.
+
+```js
+const el = document.querySelector('p-button');
+el.remove();
+
+setTimeout(() => document.body.append(el), 1000);
+```
 
 ## Optimization
 
 Now that it is clear what is happening under the hood when a simple `p-button` is added to the DOM, let's have see how
 this looks from the perspective of network requests and how to improve it if necessary.
+
+### Status Quo
+
+By default, the network traffic looks something like this.
+
+![Loading Behavior Vanilla JS 01](../../../assets/loading-behavior-vanilla-js-01.jpg)
+
+A classic waterfall like loading behavior that
+
+- starts with the `index.html`
+- then continues with the `index.js` of `@porsche-design-system/components-js`
+- which then loads the **core chunk**
+- that injects both the **font-face.css** and the **component chunk**
+- and last the **font file** after the styles within the component's Shadow DOM are applied
+
+### Preloading font-face.css
+
+By applying the [getFontFaceStylesheet()](partials/font-face-stylesheet) partial we can preload the **font-face.css**
+asset.
+
+![Loading Behavior Vanilla JS 02](../../../assets/loading-behavior-vanilla-js-02.jpg)
+
+As we can see, this happens in parallel with the `index.js` file.
+
+### Preloading font files
+
+By applying the [getFontLinks()](partials/font-links) partial we can preload the font assets. As a default, both
+`regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be configured.
+
+![Loading Behavior Vanilla JS 03](../../../assets/loading-behavior-vanilla-js-03.jpg)
+
+As a result, both font files are additionally loaded in parallel, while earlier this happened not only in sequence but
+even last and only when a style is present on the page that uses the `font-family` and that particular `font-weight`
+which can lead to a phenomena called **Flash of Unstyled Text (FOUT)**.
+
+### Preloading component chunks
+
+The loading experience can be improved further by using the [getComponentChunkLinks()](partials/component-chunk-links)
+partial. Without any configuration it simply preloads the **core chunk**.
+
+![Loading Behavior Vanilla JS 04](../../../assets/loading-behavior-vanilla-js-04.jpg)
+
+Again, with this improvement, the asset is now being loaded in parallel, too.
+
+For the next step, we also want to preload the **component chunk** by using the partial like
+
+```ts
+getComponentChunkLinks({ components: ['button'] });
+```
+
+![Loading Behavior Vanilla JS 05](../../../assets/loading-behavior-vanilla-js-05.jpg)
+
+Now, everything is preloaded in parallel.
+
+### Skipping index.js
+
+There is one more improvement we can do, and that is to skip loading the `index.js` file of
+`@porsche-design-system/components-js`.  
+That can be achieved by using the [getLoaderScript()](partials/loader-script) partial which essentially produces a
+`script` with the code necessary to load the **core chunk**.
+
+![Loading Behavior Vanilla JS 06](../../../assets/loading-behavior-vanilla-js-06.jpg)
+
+Therefore, the total amount of data transferred is basically the same but without the additional request and the
+necessary http communication, like request and response headers.
+
+<Notification heading="Hint" state="warning">
+  This works in a plain HTML and Vanilla JS setup since the <code>index.js</code> is otherwise bundled by the JavaScript framework and you would end up shipping the same code twice.
+</Notification>
