@@ -24,18 +24,19 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
-export const cssVariableInputPaddingLeft = '--p-internal-text-field-input-padding-left';
-export const cssVariableInputPaddingRight = '--p-internal-text-field-input-padding-right';
+export const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';
+export const cssVariableInputPaddingEnd = '--p-internal-text-field-input-padding-end';
 
 const buttonOrIconPadding = '4px';
 const buttonOrIconSize = `calc(${fontLineHeight} + ${buttonOrIconPadding} * 2)`;
 const buttonOrIconOffset = '9px';
 
 const baseButtonOrIconStyles: JssStyle = {
-  position: 'absolute',
-  bottom: '11px',
+  gridArea: '1 / 4',
+  alignSelf: 'flex-end',
+  marginBottom: '11px', // TODO: it would be much cleaner with place-self: center instead but this is not possible when dom semantic shall be valid
   padding: buttonOrIconPadding,
-  font: `1rem ${fontFamily}`,
+  font: `1rem ${fontFamily}`, // needed for correct padding calculation based on ex unit
 };
 
 const getInputPaddingHorizontal = (buttonOrIconAmount: number): string => {
@@ -75,8 +76,8 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          [cssVariableInputPaddingLeft]: isSearchWithoutForm ? getInputPaddingHorizontal(1) : spacingStaticMedium,
-          [cssVariableInputPaddingRight]:
+          [cssVariableInputPaddingStart]: isSearchWithoutForm ? getInputPaddingHorizontal(1) : spacingStaticMedium,
+          [cssVariableInputPaddingEnd]:
             isSearchOrPassword || isCalendarOrTimeWithCustomIndicator
               ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
               : spacingStaticMedium,
@@ -86,7 +87,8 @@ export const getComponentCss = (
       },
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
-          padding: `${spacingStaticSmall} var(${cssVariableInputPaddingRight}) ${spacingStaticSmall} var(${cssVariableInputPaddingLeft})`,
+          padding: `${spacingStaticSmall} 0`,
+          paddingInline: `var(${cssVariableInputPaddingStart}) var(${cssVariableInputPaddingEnd})`,
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
@@ -102,23 +104,26 @@ export const getComponentCss = (
     ...((isSearchOrPassword || isCalendarOrTimeWithCustomIndicator) && {
       button: {
         ...baseButtonOrIconStyles,
-        right: getButtonOrIconOffsetHorizontal(1),
+        marginInlineEnd: getButtonOrIconOffsetHorizontal(1),
         // TODO: maybe we should render hidden button conditionally, needs to be checked if a11y compliant
         '&:not([hidden]) ~ .button': {
-          right: getButtonOrIconOffsetHorizontal(2),
+          gridArea: '1 / 3',
+          marginInlineEnd: 0,
         },
       },
     }),
     ...(isSearchWithoutForm && {
       icon: {
         ...baseButtonOrIconStyles,
-        left: getButtonOrIconOffsetHorizontal(1),
+        gridArea: '1 / 1',
+        marginInlineStart: getButtonOrIconOffsetHorizontal(1),
         pointerEvents: 'none',
       },
     }),
     root: {
-      display: 'block',
       position: 'relative',
+      display: 'grid',
+      gridTemplateColumns: 'auto minmax(0, 1fr) auto auto',
     },
     ...getLabelStyles(
       'input',
@@ -128,17 +133,19 @@ export const getComponentCss = (
       theme,
       hasUnitOrVisibleCounter && {
         unit: {
-          position: 'absolute',
-          bottom: '15px',
-          [unitPosition === 'suffix' ? 'right' : 'left']: 0,
+          gridArea: `3 / ${unitPosition === 'suffix' ? 3 : 1}`,
+          placeSelf: 'center',
           zIndex: 1,
-          padding: unitPosition === 'suffix' ? `0 ${spacingStaticMedium} 0 10px` : `0 10px 0 ${spacingStaticMedium}`, // padding needed for proper JS calc
+          paddingInline: unitPosition === 'suffix' ? `10px ${spacingStaticMedium}` : `${spacingStaticMedium} 10px`, // padding needed for proper JS calc
           font: textSmallStyle.font,
           color: contrastMediumColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             color: contrastMediumColorDark,
           }),
         },
+      },
+      {
+        gridArea: '1 / 1 / auto / span 4',
       }
     ),
     ...getFunctionalComponentRequiredStyles(),

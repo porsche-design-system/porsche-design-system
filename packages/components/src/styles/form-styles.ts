@@ -47,7 +47,7 @@ export const getBaseChildStyles = (
 
   return {
     [`::slotted(${child})`]: {
-      gridArea: '3 / 1 / auto / span 2',
+      gridArea: '3 / 1 / auto / span 3',
       display: 'block',
       width: '100%',
       height:
@@ -134,7 +134,7 @@ export const getLabelStyles = (
   return {
     label: {
       display: 'grid',
-      gridTemplateColumns: 'minmax(0, 1fr) auto',
+      gridTemplateColumns: 'auto minmax(0, 1fr) auto',
       position: 'relative', // for unit and counter
       '&__text': {
         gridColumn: 'span 2',
