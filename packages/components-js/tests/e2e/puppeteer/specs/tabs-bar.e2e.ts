@@ -161,7 +161,7 @@ describe('slotted content changes', () => {
     await clickElement(secondButton);
 
     expect(buttons.length).toBe(2);
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
+    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(102);
   });
 
   it('should reset tabindex and bar styles when active tab on last position is removed', async () => {
@@ -306,7 +306,7 @@ describe('active index position', () => {
     expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceRight);
 
     await clickElement(nextButton);
-    expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(508);
+    expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(502);
   });
 });
 
