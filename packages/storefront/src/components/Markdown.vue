@@ -12,7 +12,7 @@
 
   @Component
   export default class Markdown extends Vue {
-    updated() {
+    mounted() {
       this.$el
         .querySelectorAll('pre[class*="diff"], code[class*="diff"]')
         .forEach((diff) => Prism.highlightElement(diff));
