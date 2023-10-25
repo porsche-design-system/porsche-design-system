@@ -13,10 +13,19 @@
   @Component
   export default class Markdown extends Vue {
     mounted() {
+      this.highlightDiffs();
+    }
+
+    updated() {
+      this.highlightDiffs();
+    }
+
+    highlightDiffs() {
       this.$el
         .querySelectorAll('pre[class*="diff"], code[class*="diff"]')
         .forEach((diff) => Prism.highlightElement(diff));
     }
+
     // handling for raw anchor links to prevent full reload and respect base tag
     onContentClick(event: MouseEvent): void {
       const { altKey, ctrlKey, metaKey, shiftKey, target } = event;
