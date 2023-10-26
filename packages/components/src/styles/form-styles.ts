@@ -189,3 +189,24 @@ export const getLabelStyles = (
     }),
   };
 };
+
+export const getUnitStyles = (isDisabled: boolean, theme: Theme): JssStyle => {
+  const { disabledColor, contrastMediumColor } = getThemedColors(theme);
+  const { disabledColor: disabledColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
+
+  return {
+    pointerEvents: 'none',
+    font: textSmallStyle.font,
+    color: contrastMediumColor,
+    ...prefersColorSchemeDarkMediaQuery(theme, {
+      color: contrastMediumColorDark,
+    }),
+    ...(isDisabled && {
+      color: disabledColor,
+      cursor: 'not-allowed',
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: disabledColorDark,
+      }),
+    }),
+  };
+};
