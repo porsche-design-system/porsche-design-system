@@ -125,6 +125,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         gap: '3px',
         color: isDisabled ? disabledColor : primaryColor,
         padding: '4px 10px 4px 6px',
+        margin: 0, // Removes default button margin on safari 15
         background: 0,
         border: 0,
         outline: 0,

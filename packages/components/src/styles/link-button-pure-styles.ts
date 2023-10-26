@@ -84,8 +84,8 @@ export const getLinkButtonPureStyles = (
       display: 'flex',
       gap: spacingStaticXSmall,
       width: '100%',
-      margin: 0,
       padding: 0,
+      margin: 0, // Removes default button margin on safari 15
       color: isDisabledOrLoading ? disabledColor : primaryColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
