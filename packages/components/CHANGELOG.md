@@ -21,7 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- `Button` has margins in safari ([#2858](https://github.com/porsche-design-system/porsche-design-system/pull/2858))
+- `Button` has margins in safari 15 ([#2858](https://github.com/porsche-design-system/porsche-design-system/pull/2858))
 - `Checkbox Wrapper` and `Radio Button Wrapper` border-color/background-color does not reset on hover
   ([#2852](https://github.com/porsche-design-system/porsche-design-system/pull/2852))
 
