@@ -52,6 +52,8 @@ Once the `PButton` is not needed anymore, e.g. when conditionally rendered or na
 removed from the DOM. What happens additionally can be found at
 [Vanilla Js Disconnect Lifecycle](must-know/initialization/vanilla-js#disconnect-lifecycle).
 
+---
+
 ## Optimization
 
 Now that it is clear what is happening under the hood when a simple `PButton` is rendered, let's see how this looks from

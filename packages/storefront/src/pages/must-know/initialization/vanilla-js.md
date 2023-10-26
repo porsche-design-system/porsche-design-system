@@ -102,7 +102,7 @@ In case of an attribute or property change, the class instance goes through the 
 - `componentDidUpdate()`
 
 This means that upon attribute or property change (sometimes also added/removed children for more interactive
-components) the web component rerenders and updates its Shadow DOM.
+components) the web component re-renders and updates its Shadow DOM.
 
 ## Disconnect Lifecycle
 
@@ -126,6 +126,8 @@ el.remove();
 
 setTimeout(() => document.body.append(el), 1000);
 ```
+
+---
 
 ## Optimization
 
