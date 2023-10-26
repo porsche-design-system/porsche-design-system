@@ -48,6 +48,7 @@ export const getComponentCss = (
         gap: '12px',
         minHeight: '54px',
         padding: '4px 12px',
+        margin: 0, // Removes default button margin on safari 15
         borderRadius: borderRadiusSmall,
         border: 0,
         cursor: 'pointer',
@@ -69,7 +70,6 @@ export const getComponentCss = (
           },
         }),
         ...getTagFocusJssStyle(themedColors),
-        margin: 0, // // Removes default button margin on safari
       },
     },
     ...(hasLabel && {
