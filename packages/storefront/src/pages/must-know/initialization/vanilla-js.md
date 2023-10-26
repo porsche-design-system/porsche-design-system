@@ -187,15 +187,18 @@ Now, everything is preloaded in parallel.
 ### Skipping index.js
 
 There is one more improvement we can do, and that is to skip loading the `index.js` file of
-`@porsche-design-system/components-js`.  
-That can be achieved by using the [getLoaderScript()](partials/loader-script) partial which essentially produces a
-`script` with the code necessary to load the **core chunk**.
+`@porsche-design-system/components-js`. That can be achieved by using the [getLoaderScript()](partials/loader-script)
+partial which essentially produces a `script` with the code necessary to load the **core chunk** and it also takes care
+of calling `porscheDesignSystem.load()` so that the manual part from the initial setup is superfluous.
 
 ![Loading Behavior Vanilla JS 06](../../../assets/loading-behavior-vanilla-js-06.jpg)
 
 Therefore, the total amount of data transferred is basically the same but without the additional request and the
-necessary http communication, like request and response headers.
+necessary http communication, like request and response headers. Also [componentsReady()](developing/components-ready)
+isn't part of `getLoaderScript()`.
 
 <Notification heading="Hint" state="warning">
-  This works in a plain HTML and Vanilla JS setup since the <code>index.js</code> is otherwise bundled by the JavaScript framework and you would end up shipping the same code twice.
+  This works and helps especially in a plain HTML and Vanilla JS setup since the <code>index.js</code> is otherwise 
+  bundled by the JavaScript framework and you would end up shipping the same code twice, once bundled and once inlined
+  in the <code>script</code> tag.
 </Notification>
