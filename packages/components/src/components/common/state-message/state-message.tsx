@@ -1,6 +1,6 @@
-import type { FormState } from '../../../utils/form/form-state';
+import { type FormState } from '../../../utils/form/form-state';
 import { type FunctionalComponent, h } from '@stencil/core';
-import { getRole, getPrefixedTagNames, type Theme } from '../../../utils';
+import { getRole, getPrefixedTagNames, type Theme, hasMessage } from '../../../utils';
 
 type StateMessageProps = {
   id?: string;
@@ -15,14 +15,16 @@ export const StateMessage: FunctionalComponent<StateMessageProps> = ({ id, state
   const isErrorState = state === 'error';
 
   return (
-    <span id={id} class="message" role={getRole(state)}>
-      <PrefixedTagNames.pIcon
-        name={isErrorState ? 'exclamation' : 'check'}
-        color={isErrorState ? 'notification-error' : 'notification-success'}
-        theme={theme}
-        aria-hidden="true"
-      />
-      {message || <slot name="message" />}
-    </span>
+    hasMessage(host, message, state) && (
+      <span id={id} class="message" role={getRole(state)}>
+        <PrefixedTagNames.pIcon
+          name={isErrorState ? 'exclamation' : 'check'}
+          color={isErrorState ? 'notification-error' : 'notification-success'}
+          theme={theme}
+          aria-hidden="true"
+        />
+        {message || <slot name="message" />}
+      </span>
+    )
   );
 };

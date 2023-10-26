@@ -10,7 +10,6 @@ export const getFunctionalComponentStateMessageStyles = (theme: Theme, state: Fo
     message: {
       display: 'flex',
       gap: spacingStaticXSmall,
-      marginTop: spacingStaticXSmall,
       ...textSmallStyle,
       color: getThemedFormStateColors(theme, state).formStateColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
