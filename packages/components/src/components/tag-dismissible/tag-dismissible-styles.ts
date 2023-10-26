@@ -69,6 +69,7 @@ export const getComponentCss = (
           },
         }),
         ...getTagFocusJssStyle(themedColors),
+        margin: 0, // // Removes default button margin on safari
       },
     },
     ...(hasLabel && {
