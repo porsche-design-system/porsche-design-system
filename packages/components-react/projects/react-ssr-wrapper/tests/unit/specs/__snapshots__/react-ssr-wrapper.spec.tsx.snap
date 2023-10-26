@@ -2479,6 +2479,7 @@ exports[`should render dsr component for PButton 1`] = `
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
+  margin: 0;
 }
 .label {
   position: static;
@@ -2829,6 +2830,7 @@ p {
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
+  margin: 0;
 }
 .label {
   position: static;
