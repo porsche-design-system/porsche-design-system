@@ -33,8 +33,7 @@ Now the Porsche Design System is active and ready to go.
 
 ## Preparation
 
-In the example from above we didn't render any component, yet, so let's add a single component `p-button` tag to the
-DOM.
+In the example from above we didn't render any component, yet, so let's add a single `p-button` tag to the DOM.
 
 ```html
 <p-button>Hello</p-button>
@@ -76,7 +75,9 @@ order:
 - `componentDidLoad()`
 
 Different lifecycles can be used for validation, child or parent synchronisation, de-/registering event listeners,
-layout calculations and many other things. But most importantly to render the actual component itself.
+layout calculations and many other things. But most importantly to render the actual component itself. Additional
+information can be found in the official documentation for
+[Stencil Component Lifecycle Methods](https://stenciljs.com/docs/component-lifecycle).
 
 Once this process is complete, the `hyrated` CSS class gets added to the component tag.
 
@@ -128,14 +129,14 @@ setTimeout(() => document.body.append(el), 1000);
 
 ## Optimization
 
-Now that it is clear what is happening under the hood when a simple `p-button` is added to the DOM, let's have see how
-this looks from the perspective of network requests and how to improve it if necessary.
+Now that it is clear what is happening under the hood when a simple `p-button` is added to the DOM, let's see how this
+looks from the perspective of network requests and how to improve them if necessary.
 
 ### Status Quo
 
 By default, the network traffic looks something like this.
 
-![Loading Behavior Vanilla JS 01](../../../assets/loading-behavior-vanilla-js-01.jpg)
+![Loading Behavior Vanilla Js 01](../../../assets/loading-behavior-vanilla-js-01.jpg)
 
 A classic waterfall like loading behavior that
 
@@ -150,7 +151,7 @@ A classic waterfall like loading behavior that
 By applying the [getFontFaceStylesheet()](partials/font-face-stylesheet) partial we can preload the **font-face.css**
 asset.
 
-![Loading Behavior Vanilla JS 02](../../../assets/loading-behavior-vanilla-js-02.jpg)
+![Loading Behavior Vanilla Js 02](../../../assets/loading-behavior-vanilla-js-02.jpg)
 
 As we can see, this happens in parallel with the `index.js` file.
 
@@ -159,7 +160,7 @@ As we can see, this happens in parallel with the `index.js` file.
 By applying the [getFontLinks()](partials/font-links) partial we can preload the font assets. As a default, both
 `regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be configured.
 
-![Loading Behavior Vanilla JS 03](../../../assets/loading-behavior-vanilla-js-03.jpg)
+![Loading Behavior Vanilla Js 03](../../../assets/loading-behavior-vanilla-js-03.jpg)
 
 As a result, both font files are additionally loaded in parallel, while earlier this happened not only in sequence but
 even last and only when a style is present on the page that uses the `font-family` and that particular `font-weight`
@@ -170,7 +171,7 @@ which can lead to a phenomena called **Flash of Unstyled Text (FOUT)**.
 The loading experience can be improved further by using the [getComponentChunkLinks()](partials/component-chunk-links)
 partial. Without any configuration it simply preloads the **core chunk**.
 
-![Loading Behavior Vanilla JS 04](../../../assets/loading-behavior-vanilla-js-04.jpg)
+![Loading Behavior Vanilla Js 04](../../../assets/loading-behavior-vanilla-js-04.jpg)
 
 Again, with this improvement, the asset is now being loaded in parallel, too.
 
@@ -180,7 +181,7 @@ For the next step, we also want to preload the **component chunk** by using the 
 getComponentChunkLinks({ components: ['button'] });
 ```
 
-![Loading Behavior Vanilla JS 05](../../../assets/loading-behavior-vanilla-js-05.jpg)
+![Loading Behavior Vanilla Js 05](../../../assets/loading-behavior-vanilla-js-05.jpg)
 
 Now, everything is preloaded in parallel.
 
@@ -191,14 +192,14 @@ There is one more improvement we can do, and that is to skip loading the `index.
 partial which essentially produces a `script` with the code necessary to load the **core chunk** and it also takes care
 of calling `porscheDesignSystem.load()` so that the manual part from the initial setup is superfluous.
 
-![Loading Behavior Vanilla JS 06](../../../assets/loading-behavior-vanilla-js-06.jpg)
+![Loading Behavior Vanilla Js 06](../../../assets/loading-behavior-vanilla-js-06.jpg)
 
 Therefore, the total amount of data transferred is basically the same but without the additional request and the
 necessary http communication, like request and response headers. Also [componentsReady()](developing/components-ready)
 isn't part of `getLoaderScript()`.
 
 <Notification heading="Hint" state="warning">
-  This works and helps especially in a plain HTML and Vanilla JS setup since the <code>index.js</code> is otherwise 
+  This works and helps especially in a plain HTML and Vanilla Js setup since the <code>index.js</code> is otherwise 
   bundled by the JavaScript framework and you would end up shipping the same code twice, once bundled and once inlined
   in the <code>script</code> tag.
 </Notification>

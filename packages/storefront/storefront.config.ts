@@ -377,6 +377,7 @@ export const config: StorefrontConfig = {
       'Vanilla Js': [() => import('@/pages/must-know/initialization/vanilla-js.md')],
       Angular: [() => import('@/pages/must-know/initialization/angular.md')],
       React: [() => import('@/pages/must-know/initialization/react.md')],
+      Vue: [() => import('@/pages/must-know/initialization/vue.md')],
       'Next Js': [() => import('@/pages/must-know/initialization/next-js.md')],
       Remix: [() => import('@/pages/must-know/initialization/remix.md')],
     },

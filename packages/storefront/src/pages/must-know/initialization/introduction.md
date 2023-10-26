@@ -6,8 +6,8 @@ following reasons:
 
 - to encapsulate markup and styles
 - to prevent overriding styles or attributes
-- to use the same components with plain html and any js framework, without having to maintain multiple libraries and
-  keeping them in sync
+- to use the same components with plain html and any JavaScript framework, without having to maintain multiple libraries
+  and keeping them in sync
 
 ## Introduction
 
@@ -18,3 +18,6 @@ More information about this can be found under [Performance](must-know/performan
 
 To understand what is happening when a component's html tag is rendered in the browser and what can be done to improve
 the bootstrapping process, please read through the following pages carefully.
+
+No matter if or which framework you use, please continue with [Vanilla Js](must-know/initialization/vanilla-js) since
+its behavior is the foundation for all others.
