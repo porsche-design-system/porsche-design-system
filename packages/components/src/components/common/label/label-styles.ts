@@ -32,18 +32,19 @@ export const getFunctionalComponentLabelStyles = (
   const { formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors('dark', state);
 
   return {
+    // .required
     ...getFunctionalComponentRequiredStyles(),
     label: {
-      ...buildResponsiveStyles(hideLabel, (isHidden: boolean) => getHiddenTextJssStyle(isHidden)),
       ...textSmallStyle,
       color: isDisabled ? disabledColor : primaryColor,
       transition: getTransition('color'), // for smooth transitions between e.g. disabled states
+      ...buildResponsiveStyles(hideLabel, (isHidden: boolean) => getHiddenTextJssStyle(isHidden)),
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: isDisabled ? disabledColorDark : primaryColorDark,
       }),
       ...hoverMediaQuery({
         '&:hover': {
-          [`& ~ .wrapper ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))`]: {
+          [`&~* ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))`]: {
             borderColor: addImportantToRule(formStateHoverColor || primaryColor),
             ...prefersColorSchemeDarkMediaQuery(theme, {
               borderColor: addImportantToRule(formStateHoverColorDark || primaryColorDark),

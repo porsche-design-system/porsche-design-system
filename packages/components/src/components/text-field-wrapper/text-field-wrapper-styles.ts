@@ -52,15 +52,11 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          [cssVariableInputPaddingStart]: isSearchWithoutForm ? getInputPaddingHorizontal(1) : spacingStaticMedium,
-          [cssVariableInputPaddingEnd]:
-            isSearchOrPassword || isCalendarOrTimeWithCustomIndicator
-              ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
-              : spacingStaticMedium,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
+      // ::slotted(input)
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
           gridArea: '1 / 1 / 1 / 7',
@@ -79,6 +75,11 @@ export const getComponentCss = (
       }),
     },
     root: {
+      [cssVariableInputPaddingStart]: isSearchWithoutForm ? getInputPaddingHorizontal(1) : spacingStaticMedium,
+      [cssVariableInputPaddingEnd]:
+        isSearchOrPassword || isCalendarOrTimeWithCustomIndicator
+          ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
+          : spacingStaticMedium,
       display: 'grid',
       gap: spacingStaticXSmall,
       justifyItems: 'flex-start',
@@ -94,7 +95,7 @@ export const getComponentCss = (
         placeSelf: 'center',
         padding: spacingStaticXSmall,
         // TODO: maybe we should render hidden button conditionally, needs to be checked if a11y compliant
-        '&:not([hidden]) ~ .button': {
+        '&:not([hidden])~.button': {
           gridArea: '1 / 4',
         },
       },
@@ -112,7 +113,6 @@ export const getComponentCss = (
         ...getUnitStyles(isDisabled, theme),
         gridArea: `1 / ${unitPosition === 'suffix' ? 5 : 1} / 1 / ${unitPosition === 'suffix' ? 7 : 3}`,
         placeSelf: 'center',
-        zIndex: 1,
         paddingInline: unitPosition === 'suffix' ? `10px ${spacingStaticMedium}` : `${spacingStaticMedium} 10px`, // padding needed for correct input padding synchronisation
       },
     }),
