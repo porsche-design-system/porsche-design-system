@@ -1,10 +1,7 @@
 <template>
-  <p-heading tag="h1" :theme="this.$store.getters.storefrontTheme"
-    >{{ name
-    }}<span v-if="isDeprecated" title="This component is deprecated and will be removed with the next major release.">
-      🚫</span
-    >
-  </p-heading>
+  <!-- using h1 instead of p-heading for more stable navigation e2e test -->
+  <!-- prettier-ignore -->
+  <h1>{{ name }}<span v-if="isDeprecated" title="This component is deprecated and will be removed with the next major release."> 🚫</span></h1>
 </template>
 
 <script lang="ts">
@@ -19,7 +16,7 @@
   export default class ComponentHeading extends Vue {
     @Prop({ default: '' }) public name!: string;
 
-    get isDeprecated(): string {
+    get isDeprecated(): boolean {
       return getComponentMeta(`p-${paramCase(this.name)}` as TagName).isDeprecated;
     }
   }
