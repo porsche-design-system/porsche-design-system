@@ -187,7 +187,13 @@ getComponentChunkLinks({ components: ['button'] });
 
 Now, everything is preloaded in parallel.
 
-### Skipping index.js
+<Notification heading="Hint" state="warning">
+  Just preloading all component chunks on the page or even every chunk available should be avoided.<br>
+  Instead, the most performant but also more complicated approach would be to only preload the component chunks
+  (and fonts) that are located <strong>above the fold</strong> which means visible on page load without scrolling.
+</Notification>
+
+### Early initialization
 
 There is one more improvement we can do, and that is to skip loading the `index.js` file of
 `@porsche-design-system/components-js`. That can be achieved by using the [getLoaderScript()](partials/loader-script)

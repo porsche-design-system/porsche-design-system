@@ -110,6 +110,12 @@ getComponentChunkLinks({ components: ['button'] });
 
 Now, everything is preloaded in parallel while the React app's chunk takes the longest and is executed last.
 
+<Notification heading="Hint" state="warning">
+  Just preloading all component chunks on the page or even every chunk available should be avoided.<br>
+  Instead, the most performant but also more complicated approach would be to only preload the component chunks
+  (and fonts) that are located <strong>above the fold</strong> which means visible on page load without scrolling.
+</Notification>
+
 <Notification heading="Conclusion" state="warning">
   Applying the <code>getLoaderScript()</code> partial is pointless since there is no benefit because 
   everything Porsche Design System related is loaded before the React app itself. Therefore, the DOM is empty 

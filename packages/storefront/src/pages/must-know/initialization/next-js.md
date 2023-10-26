@@ -115,6 +115,14 @@ getComponentChunkLinks({ components: ['button'] });
 
 Now, everything is preloaded in parallel while the Next.js app chunks takes the longest and are executed last.
 
+<Notification heading="Hint" state="warning">
+  Just preloading all component chunks on the page or even every chunk available should be avoided.<br>
+  Instead, the most performant but also more complicated approach would be to only preload the component chunks
+  (and fonts) that are located <strong>above the fold</strong> which means visible on page load without scrolling.
+</Notification>
+
+### Early initialization
+
 This is where it may be interesting to apply the [getLoaderScript()](partials/loader-script) partial.
 
 ![Loading Behavior Next.js 05](../../../assets/loading-behavior-nextjs-07.jpg)
