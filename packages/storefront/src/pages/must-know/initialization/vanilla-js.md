@@ -158,7 +158,7 @@ As we can see, this happens in parallel with the `index.js` file.
 ### Preloading font files
 
 By applying the [getFontLinks()](partials/font-links) partial we can preload the font assets. As a default, both
-`regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be configured.
+`regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be customized.
 
 ![Loading Behavior Vanilla Js 03](../../../assets/loading-behavior-vanilla-js-03.jpg)
 

@@ -17,7 +17,7 @@ looks like this.
 Internally `PorscheDesignSystemProvider` is calling `load()` of `@porsche-design-system/components-js` since the web
 components are exactly the same.  
 In fact, the framework specific packages like `@porsche-design-system/components-react` only provide thin wrapper
-components for typing, prop binding and good developer experience just like with any other react component.
+components for typing, prop binding and good developer experience just like with any other React component.
 
 For more details what happens when `load()` is invoked, please take a look at the
 [Vanilla Js Setup](must-know/initialization/vanilla-js#setup).
@@ -36,7 +36,7 @@ From here on the exact same things happen as described at
 [Vanilla Js Connect Lifecycle](must-know/initialization/vanilla-js#connect-lifecycle).
 
 <Notification heading="Important" state="warning">
-  In any Java Script framework, the available wrapper components' purpose is typing, rendering a web component into the DOM and 
+  In any JavaScript framework, the available wrapper components' purpose is typing, rendering a web component into the DOM and 
   syncing framework props to the rendered component. Once rendered, the web component has its own lifecycle and is not aware of any framework. 
 </Notification>
 
@@ -48,8 +48,8 @@ What follows is, again, exactly as documented at
 
 ## Unmounting
 
-Once that `PButton` is not needed anymore, e.g. when conditionally rendered or navigating away, the `p-button` element
-is removed from the DOM. What happens additionally can be found at
+Once the `PButton` is not needed anymore, e.g. when conditionally rendered or navigating away, the `p-button` element is
+removed from the DOM. What happens additionally can be found at
 [Vanilla Js Disconnect Lifecycle](must-know/initialization/vanilla-js#disconnect-lifecycle).
 
 ## Optimization
@@ -81,7 +81,7 @@ As we can see, this happens in parallel with the `main.js` bundle.
 ### Preloading font files
 
 By applying the [getFontLinks()](partials/font-links) partial we can preload the font assets. As a default, both
-`regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be configured.
+`regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be customized.
 
 ![Loading Behavior React 03](../../../assets/loading-behavior-react-03.jpg)
 
