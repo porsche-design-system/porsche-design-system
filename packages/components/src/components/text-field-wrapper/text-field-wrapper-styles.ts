@@ -1,19 +1,10 @@
-import type { JssStyle } from 'jss';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss } from '../../utils';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getHiddenTextJssStyle,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
-import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
-import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
+import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
+import { getBaseChildStyles, getUnitStyles } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import {
   borderWidthBase,
@@ -21,21 +12,15 @@ import {
   spacingStaticMedium,
   spacingStaticSmall,
   spacingStaticXSmall,
-  textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
+import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 
 export const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';
 export const cssVariableInputPaddingEnd = '--p-internal-text-field-input-padding-end';
 
-const inputSafeZone = '9px'; // TODO: why not using spacingStaticSmall instead?
+const inputSafeZone = '9px'; // to have same distance vertically and horizontally for button/icon in combination with input
 const inputSafeZoneWithBorder = `calc(${inputSafeZone} + ${borderWidthBase})`;
 const buttonOrIconSize = `calc(${fontLineHeight} + ${spacingStaticXSmall} * 2)`;
-const buttonOffsetBottom = '11px'; // it would be much cleaner with place-self: center instead but this is not possible when dom semantic shall be valid
-
-const baseButtonOrIconStyles: JssStyle = {
-  marginBottom: buttonOffsetBottom,
-  padding: spacingStaticXSmall,
-};
 
 const getInputPaddingHorizontal = (buttonOrIconAmount: number): string => {
   return `calc(${inputSafeZone} * 2 + ${buttonOrIconSize} * ${buttonOrIconAmount})`;
@@ -52,8 +37,6 @@ export const getComponentCss = (
   isWithinForm: boolean,
   theme: Theme
 ): string => {
-  const { contrastMediumColor } = getThemedColors(theme);
-  const { contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
   const isSearch = isType(inputType, 'search');
   const isPassword = isType(inputType, 'password');
   const isNumber = isType(inputType, 'number');
@@ -80,6 +63,7 @@ export const getComponentCss = (
       },
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
+          gridArea: '1 / 1 / 1 / 7',
           padding: `${spacingStaticSmall} 0`,
           paddingInline: `var(${cssVariableInputPaddingStart}) var(${cssVariableInputPaddingEnd})`,
           ...(isNumber && {
@@ -96,13 +80,19 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
+      gap: spacingStaticXSmall,
+      justifyItems: 'flex-start',
+    },
+    wrapper: {
+      display: 'grid',
       gridTemplateColumns: `${inputSafeZoneWithBorder} auto minmax(0, 1fr) auto auto ${inputSafeZoneWithBorder}`,
-      alignItems: 'flex-end',
+      width: '100%',
     },
     ...((isSearchOrPassword || isCalendarOrTimeWithCustomIndicator) && {
       button: {
-        ...baseButtonOrIconStyles,
         gridArea: '1 / 5',
+        placeSelf: 'center',
+        padding: spacingStaticXSmall,
         // TODO: maybe we should render hidden button conditionally, needs to be checked if a11y compliant
         '&:not([hidden]) ~ .button': {
           gridArea: '1 / 4',
@@ -111,37 +101,26 @@ export const getComponentCss = (
     }),
     ...(isSearchWithoutForm && {
       icon: {
-        ...baseButtonOrIconStyles,
         gridArea: '1 / 2',
+        placeSelf: 'center',
+        padding: spacingStaticXSmall,
         pointerEvents: 'none',
       },
     }),
-    ...getLabelStyles(
-      'input',
-      isDisabled,
-      hideLabel,
-      state,
-      theme,
-      hasUnitOrVisibleCounter && {
-        unit: {
-          gridArea: `3 / ${unitPosition === 'suffix' ? 3 : 1}`,
-          placeSelf: 'center',
-          zIndex: 1,
-          paddingInline: unitPosition === 'suffix' ? `10px ${spacingStaticMedium}` : `${spacingStaticMedium} 10px`, // padding needed for proper JS calc
-          font: textSmallStyle.font,
-          color: contrastMediumColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: contrastMediumColorDark,
-          }),
-        },
+    ...(hasUnitOrVisibleCounter && {
+      unit: {
+        ...getUnitStyles(isDisabled, theme),
+        gridArea: `1 / ${unitPosition === 'suffix' ? 5 : 1} / 1 / ${unitPosition === 'suffix' ? 7 : 3}`,
+        placeSelf: 'center',
+        zIndex: 1,
+        paddingInline: unitPosition === 'suffix' ? `10px ${spacingStaticMedium}` : `${spacingStaticMedium} 10px`, // padding needed for correct input padding synchronisation
       },
-      {
-        gridArea: '1 / 1 / auto / span 6',
-      }
-    ),
-    ...getFunctionalComponentRequiredStyles(),
-    ...getFunctionalComponentStateMessageStyles(theme, state),
-    // TODO: could be made conditional if we had hasUnit
+    }),
+    // TODO: maybe we should extract it as functional component too
     'sr-only': getHiddenTextJssStyle(),
+    // .label / .required
+    ...getFunctionalComponentLabelStyles('input', isDisabled, hideLabel, state, theme),
+    // .message
+    ...getFunctionalComponentStateMessageStyles(theme, state),
   });
 };
