@@ -119,7 +119,7 @@ export const getComponentCss = (
     // TODO: maybe we should extract it as functional component too
     'sr-only': getHiddenTextJssStyle(),
     // .label / .required
-    ...getFunctionalComponentLabelStyles('input', isDisabled, hideLabel, state, theme),
+    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });
