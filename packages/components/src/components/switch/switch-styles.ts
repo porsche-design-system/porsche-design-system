@@ -107,6 +107,7 @@ export const getComponentCss = (
       gap: spacingStaticSmall,
       width: '100%',
       padding: 0,
+      margin: 0, // Removes default button margin on safari 15
       outline: 0,
       border: 0,
       textAlign: 'start',

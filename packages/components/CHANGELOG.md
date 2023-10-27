@@ -16,11 +16,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- Model signature asset of macan model
+- `Model Signature` asset for `model="macan"`
   ([#2857](https://github.com/porsche-design-system/porsche-design-system/pull/2857))
 
 #### Fixed
 
+- Safari 15 default margin of button elements in several components
+  ([#2858](https://github.com/porsche-design-system/porsche-design-system/pull/2858))
 - `Checkbox Wrapper` and `Radio Button Wrapper` border-color/background-color does not reset on hover
   ([#2852](https://github.com/porsche-design-system/porsche-design-system/pull/2852))
 
