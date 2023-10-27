@@ -1,10 +1,9 @@
-import type { BreakpointCustomizable, Theme } from '../types';
-import type { Styles } from 'jss';
-import { buildResponsiveStyles, isDisabledOrLoading, isHighContrastMode } from '../utils';
+import { type BreakpointCustomizable, type Theme } from '../types';
+import { type Styles } from 'jss';
+import { isDisabledOrLoading, isHighContrastMode } from '../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getHiddenTextJssStyle,
   getHighContrastColors,
   getInsetJssStyle,
   getThemedColors,
@@ -17,13 +16,14 @@ import {
   borderWidthBase,
   fontFamily,
   fontLineHeight,
+  fontSizeTextSmall,
   spacingStaticSmall,
-  textSmallStyle,
+  spacingStaticXSmall,
 } from '@porsche-design-system/utilities-v2';
-import type { FormState } from '../utils/form/form-state';
+import { type FormState } from '../utils/form/form-state';
 import { getThemedFormStateColors } from './form-state-color-styles';
-import { getFunctionalComponentRequiredStyles } from '../components/common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../components/common/state-message/state-message-styles';
+import { getFunctionalComponentLabelStyles } from '../components/common/label/label-styles';
 
 export const getCheckboxRadioJssStyle = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -68,20 +68,19 @@ export const getCheckboxRadioJssStyle = (
 
   return {
     '@global': {
-      ':host': addImportantToEachRule({
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
+      ':host': {
         display: 'block',
-      }),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
       '::slotted': addImportantToEachRule({
         '&(input)': {
-          gridArea: '1 / 1',
-          position: 'relative',
+          gridArea: '1/1',
           width: fontLineHeight,
           height: fontLineHeight,
-          fontFamily, // needed for correct width and height definition
-          fontSize: '1rem', // needed for correct width and height definition
-          flexShrink: 0,
+          font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
           display: 'block',
           margin: 0,
           padding: 0,
@@ -91,9 +90,6 @@ export const getCheckboxRadioJssStyle = (
           background: `transparent 0% 0% / ${fontLineHeight}`,
           transition: ['border-color', 'background-color'].map(getTransition).join(),
           border: `2px solid ${uncheckedColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: uncheckedColorDark,
-          }),
           outline: 0,
           ...(disabledOrLoading
             ? {
@@ -103,6 +99,9 @@ export const getCheckboxRadioJssStyle = (
             : {
                 cursor: 'pointer',
               }),
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: uncheckedColorDark,
+          }),
         },
         '&(input:checked)': {
           // background-image is merged in later
@@ -116,13 +115,13 @@ export const getCheckboxRadioJssStyle = (
         ...(!disabledOrLoading && {
           ...(!isHighContrastMode &&
             hoverMediaQuery({
-              '&(input:hover), .text:hover ~ &(input)': {
+              '&(input:hover),.label:hover~* &(input)': {
                 borderColor: uncheckedHoverColor,
                 ...prefersColorSchemeDarkMediaQuery(theme, {
                   borderColor: uncheckedHoverColorDark,
                 }),
               },
-              '&(input:checked:hover), .text:hover ~ &(input:checked)': {
+              '&(input:checked:hover),.label:hover~* &(input:checked)': {
                 borderColor: checkedHoverColor,
                 backgroundColor: checkedHoverColor,
                 ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -147,42 +146,43 @@ export const getCheckboxRadioJssStyle = (
           }),
         }),
       }),
-      label: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, auto)',
-        justifyContent: 'flex-start',
-      },
     },
-    text: {
-      gridArea: '1 / 2',
-      cursor: disabledOrLoading ? 'default' : 'pointer',
-      ...textSmallStyle,
-      color: disabledOrLoading ? disabledColor : primaryColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: disabledOrLoading ? disabledColorDark : primaryColorDark,
-      }),
-      transition: getTransition('color'), // for smooth transition between different states
-      ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-        getHiddenTextJssStyle(isHidden, {
-          paddingTop: '2px',
-          paddingInlineStart: spacingStaticSmall, // asymmetric padding used instead of gap to prevent unclickable area between label and input
-        })
-      ),
+    root: {
+      display: 'grid',
+      gridTemplateColumns: 'auto minmax(0, 1fr)',
+      rowGap: spacingStaticXSmall,
     },
-    ...getFunctionalComponentRequiredStyles(),
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    wrapper: {
+      display: 'grid',
+      alignSelf: 'flex-start',
+      gridArea: '1/1',
+    },
     ...(isLoading && {
       spinner: {
-        position: 'relative',
-        gridArea: '1 / 1',
-        margin: borderWidthBase,
-        justifySelf: 'center',
-        height: fontLineHeight,
+        gridArea: '1/1',
+        placeSelf: 'center',
         width: fontLineHeight,
-        fontFamily, // needed for correct width and height definition and for correct positioning
-        fontSize: '1rem', // needed for correct width and height definition and for correct positioning
+        height: fontLineHeight,
+        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
         cursor: 'not-allowed',
       },
+    }),
+    // .label / .required
+    ...getFunctionalComponentLabelStyles(
+      isDisabled || isLoading,
+      hideLabel,
+      theme,
+      {
+        gridArea: '1/2',
+      },
+      {
+        paddingTop: '2px', // compensate vertical alignment
+        paddingInlineStart: spacingStaticSmall, // asymmetric padding used instead of gap to prevent not clickable area between label and input
+      }
+    ),
+    // .message
+    ...getFunctionalComponentStateMessageStyles(theme, state, {
+      gridColumn: '1/3',
     }),
   };
 };

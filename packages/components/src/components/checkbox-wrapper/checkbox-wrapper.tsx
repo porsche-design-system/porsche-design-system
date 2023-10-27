@@ -1,17 +1,13 @@
-import { Component, Element, forceUpdate, h, Host, type JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, h, type JSX, Listen, Prop } from '@stencil/core';
 import {
   addChangeListener,
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
-  getClosestHTMLElement,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
-  hasLabel,
-  hasMessage,
   hasPropValueChanged,
   isDisabledOrLoading,
-  isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
   THEMES,
@@ -22,7 +18,7 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './checkbox-wrapper-styles';
 import type { CheckboxWrapperState } from './checkbox-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
-import { Required } from '../common/required/required';
+import { Label } from '../common/label/label';
 
 const propTypes: PropTypes<typeof CheckboxWrapper> = {
   label: AllowedTypes.string,
@@ -114,14 +110,9 @@ export class CheckboxWrapper {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <label aria-disabled={this.loading ? 'true' : null}>
-          {hasLabel(this.host, this.label) && (
-            <span class="text" onClick={!this.loading && this.onLabelClick}>
-              {this.label || <slot name="label" />}
-              {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
-            </span>
-          )}
+      <div class="root">
+        <Label label={this.label} isLoading={this.loading} formElement={this.input} host={this.host} />
+        <div class="wrapper">
           <slot />
           {this.loading && (
             <PrefixedTagNames.pSpinner
@@ -131,23 +122,11 @@ export class CheckboxWrapper {
               aria={{ 'aria-label': `Loading state of ${this.label}` }}
             />
           )}
-        </label>
-        {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        )}
-      </Host>
+        </div>
+        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+      </div>
     );
   }
-
-  private onLabelClick = (event: MouseEvent): void => {
-    /**
-     * we only want to simulate the input click by label click
-     * also we don't want to click to the input, if a link is clicked.
-     */
-    if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
-      this.input.click();
-    }
-  };
 
   private observeAttributes = (): void => {
     observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));

@@ -1,25 +1,39 @@
 import { Fragment, type FunctionalComponent, h } from '@stencil/core';
-import { hasDescription, hasLabel, isRequiredAndParentNotRequired } from '../../../utils';
+import { getClosestHTMLElement, hasDescription, hasLabel, isRequiredAndParentNotRequired } from '../../../utils';
 import { Required } from '../required/required';
 
+type FormElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 type LabelProps = {
   label: string;
   description?: string;
   isLoading?: boolean;
-  formElement: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+  formElement: FormElement;
   host: HTMLElement;
 };
 
+const onLabelClick = (event: MouseEvent, formElement: FormElement, isLoading: boolean): void => {
+  if (
+    !isLoading &&
+    (formElement?.type === 'checkbox' || formElement?.type === 'radio') &&
+    // we don't want to click on the input, if a link is clicked
+    getClosestHTMLElement(event.target as HTMLElement, 'a') === null
+  ) {
+    formElement.click();
+  } else {
+    formElement.focus();
+  }
+};
+
 export const Label: FunctionalComponent<LabelProps> = ({ label, description, isLoading, formElement, host }) => {
-  const isCheckboxOrRadioButton = formElement?.type === 'checkbox' || formElement?.type === 'radio';
+  const labelProps = {
+    class: 'label',
+    onClick: (event: MouseEvent) => onLabelClick(event, formElement, isLoading),
+    'aria-disabled': isLoading ? 'true' : null,
+  };
 
   return (
     <Fragment>
-      <label
-        class="label"
-        aria-disabled={isLoading ? 'true' : null}
-        onClick={() => !isLoading && (isCheckboxOrRadioButton ? formElement.click() : formElement.focus())}
-      >
+      <label {...labelProps}>
         {hasLabel(host, label) && (
           <Fragment>
             {label || <slot name="label" />}
@@ -27,14 +41,7 @@ export const Label: FunctionalComponent<LabelProps> = ({ label, description, isL
           </Fragment>
         )}
       </label>
-      {hasDescription(host, description) && (
-        <span
-          class="label"
-          onClick={() => !isLoading && (isCheckboxOrRadioButton ? formElement.click() : formElement.focus())}
-        >
-          {description || <slot name="description" />}
-        </span>
-      )}
+      {hasDescription(host, description) && <span {...labelProps}>{description || <slot name="description" />}</span>}
     </Fragment>
   );
 };

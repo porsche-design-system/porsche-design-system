@@ -58,13 +58,13 @@ export const getComponentCss = (
                 backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
               }),
             },
+            '&(input:indeterminate)': {
+              backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
+              }),
+            },
           }),
-          '&(input:indeterminate)': {
-            backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
-            }),
-          },
           ...(!isDisabled && {
             '&(input:focus)::before': {
               borderRadius: borderRadiusMedium,

@@ -11,7 +11,7 @@ import { fontSizeTextXSmall, spacingStaticXSmall, textSmallStyle } from '@porsch
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 
 export const getFunctionalComponentLabelStyles = (
-  isDisabled: boolean,
+  isDisabledOrLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   theme: Theme,
   additionalDefaultJssStyle?: JssStyle,
@@ -28,18 +28,18 @@ export const getFunctionalComponentLabelStyles = (
     label: {
       ...textSmallStyle,
       justifySelf: 'flex-start', // ensures label is not getting stretched by flex or grid context of its parent
-      color: isDisabled ? disabledColor : primaryColor,
+      color: isDisabledOrLoading ? disabledColor : primaryColor,
       transition: getTransition('color'), // for smooth transitions between e.g. disabled state
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
         getHiddenTextJssStyle(isHidden, additionalIsShownJssStyle)
       ),
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: isDisabled ? disabledColorDark : primaryColorDark,
+        color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
       }),
       '&+&': {
         marginTop: `-${spacingStaticXSmall}`,
         fontSize: fontSizeTextXSmall,
-        ...(!isDisabled && {
+        ...(!isDisabledOrLoading && {
           color: contrastHighColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             color: contrastHighColorDark,

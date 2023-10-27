@@ -59,7 +59,7 @@ export const getComponentCss = (
       // ::slotted(input)
       ...addImportantToEachRule({
         ...getBaseChildStyles('input', state, theme, {
-          gridArea: '1 / 1 / 1 / 7',
+          gridArea: '1/1/1/7',
           padding: `${spacingStaticSmall} 0`,
           paddingInline: `var(${cssVariableInputPaddingStart}) var(${cssVariableInputPaddingEnd})`,
           ...(isNumber && {
@@ -82,27 +82,25 @@ export const getComponentCss = (
           : spacingStaticMedium,
       display: 'grid',
       gap: spacingStaticXSmall,
-      justifyItems: 'flex-start',
     },
     wrapper: {
       display: 'grid',
       gridTemplateColumns: `${inputSafeZoneWithBorder} auto minmax(0, 1fr) auto auto ${inputSafeZoneWithBorder}`,
-      width: '100%',
     },
     ...((isSearchOrPassword || isCalendarOrTimeWithCustomIndicator) && {
       button: {
-        gridArea: '1 / 5',
+        gridArea: '1/5',
         placeSelf: 'center',
         padding: spacingStaticXSmall,
         // TODO: maybe we should render hidden button conditionally, needs to be checked if a11y compliant
         '&:not([hidden])~.button': {
-          gridArea: '1 / 4',
+          gridArea: '1/4',
         },
       },
     }),
     ...(isSearchWithoutForm && {
       icon: {
-        gridArea: '1 / 2',
+        gridArea: '1/2',
         placeSelf: 'center',
         padding: spacingStaticXSmall,
         pointerEvents: 'none',
@@ -111,7 +109,7 @@ export const getComponentCss = (
     ...(hasUnitOrVisibleCounter && {
       unit: {
         ...getUnitStyles(isDisabled, theme),
-        gridArea: `1 / ${unitPosition === 'suffix' ? 5 : 1} / 1 / ${unitPosition === 'suffix' ? 7 : 3}`,
+        gridArea: `1/${unitPosition === 'suffix' ? 5 : 1}/1/${unitPosition === 'suffix' ? 7 : 3}`,
         placeSelf: 'center',
         paddingInline: unitPosition === 'suffix' ? `10px ${spacingStaticMedium}` : `${spacingStaticMedium} 10px`, // padding needed for correct input padding synchronisation
       },
