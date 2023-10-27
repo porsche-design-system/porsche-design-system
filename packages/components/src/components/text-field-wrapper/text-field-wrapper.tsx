@@ -227,7 +227,7 @@ export class TextFieldWrapper {
 
     return (
       <div class="root">
-        <Label label={this.label} description={this.description} input={this.input} host={this.host} />
+        <Label label={this.label} description={this.description} formElement={this.input} host={this.host} />
         <div class="wrapper">
           <slot />
           {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}

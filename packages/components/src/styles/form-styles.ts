@@ -74,12 +74,13 @@ export const getBaseChildStyles = (
     },
     ...(hoverMediaQuery({
       // with the media query the selector has higher priority and overrides disabled styles
-      [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)`]: {
-        borderColor: formStateHoverColor || primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: formStateHoverColorDark || primaryColorDark,
-        }),
-      },
+      [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover),.label:hover~* ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))`]:
+        {
+          borderColor: formStateHoverColor || primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: formStateHoverColorDark || primaryColorDark,
+          }),
+        },
     }) as Styles),
     [`::slotted(${child}:focus)`]: {
       borderColor: primaryColor,
