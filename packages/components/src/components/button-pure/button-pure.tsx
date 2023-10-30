@@ -62,7 +62,7 @@ export class ButtonPure {
   @Prop() public name?: string;
 
   /** Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button. */
-  @Prop({ mutable: true }) public value?: string;
+  @Prop() public value?: string;
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
