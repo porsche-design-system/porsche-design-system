@@ -18,6 +18,7 @@ import {
   getMediaQueryMin,
   gridExtendedOffsetBase,
   headingLargeStyle,
+  motionDurationShort,
 } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
 import {
@@ -26,6 +27,7 @@ import {
   getFrostedGlassBackgroundJssStyles,
   getInsetJssStyle,
   getThemedColors,
+  getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
@@ -36,7 +38,6 @@ import { MODAL_Z_INDEX } from '../../constants';
 const mediaQueryXl = getMediaQueryMin('xl');
 const { primaryColor: darkThemePrimaryColor, contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
 
-const transitionTimingFunction = 'cubic-bezier(.16,1,.3,1)';
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
 const marginTopBottom = 'clamp(16px, 7vh, 192px)';
@@ -103,7 +104,8 @@ export const getComponentCss = (
   const { primaryColor, backgroundColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
   const isFullscreenForXlAndXxl = isFullscreenForXl(isFullscreen);
-  const duration = isOpen ? '.6s' : '.2s';
+  const duration = isOpen ? 'moderate' : 'short';
+  const easing = isOpen ? 'out' : 'in';
   const contentPadding = '32px';
 
   return getCss({
@@ -123,7 +125,7 @@ export const getComponentCss = (
               }
             : {
                 visibility: 'hidden',
-                transition: 'visibility 0s linear .2s',
+                transition: `visibility 0s linear ${motionDurationShort}`,
               }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
@@ -162,7 +164,7 @@ export const getComponentCss = (
         boxSizing: 'border-box',
         transform: isOpen ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
         opacity: isOpen ? 1 : 0,
-        transition: `opacity ${duration} ${transitionTimingFunction},transform ${duration} ${transitionTimingFunction}`,
+        transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
         paddingTop: hasDismissButton ? pxToRemWithUnit(32) : contentPadding, // rem value needed to prevent overlapping of close button and contents in scaling mode
         ...(!hasFooter && { paddingBottom: contentPadding }),
         background: backgroundColor,
