@@ -139,6 +139,129 @@
         <div>Slide 3</div>
         <div>Slide 4</div>
       </p-carousel>
+
+      <p-checkbox-wrapper label="Some label" hide-label="false">
+        <input type="checkbox" name="some-name" />
+      </p-checkbox-wrapper>
+
+      <p-button id="flyout" type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+      <p-flyout open="false">
+        <p-text>Some content that dynamically scales the width of the flyout.</p-text>
+      </p-flyout>
+
+      <p-button id="modal" type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+      <p-modal heading="Some Heading" open="false" aria="{ 'aria-label': 'Some Heading' }">
+        <p-text>Some Content</p-text>
+        <p-button-group>
+          <p-button type="button">Save</p-button>
+          <p-button type="button" variant="tertiary" icon="close">Close</p-button>
+        </p-button-group>
+      </p-modal>
+
+      <p-multi-select name="name" label="Some Label" description="Some description" theme="light" required>
+        <p-multi-select-option value="a">Option A</p-multi-select-option>
+        <p-multi-select-option value="b">Option B</p-multi-select-option>
+        <p-multi-select-option value="c">Option C</p-multi-select-option>
+        <p-multi-select-option value="d">Option D</p-multi-select-option>
+        <p-multi-select-option value="e">Option E</p-multi-select-option>
+        <p-multi-select-option value="f">Option F</p-multi-select-option>
+      </p-multi-select>
+
+      <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+
+      <p-popover>Some additional content.</p-popover>
+
+      <div style="max-width: 600px">
+        <p-scroller>
+          <p-tag color="primary">
+            <button type="button">Some tag content</button>
+          </p-tag>
+          <p-tag color="notification-info-soft">
+            <button type="button">Some tag content</button>
+          </p-tag>
+          <p-tag color="notification-warning-soft">
+            <button type="button">Some tag content</button>
+          </p-tag>
+          <p-tag color="primary">
+            <button type="button">Some tag content</button>
+          </p-tag>
+          <p-tag color="notification-info-soft">
+            <button type="button">Some tag content</button>
+          </p-tag>
+          <p-tag color="notification-warning-soft">
+            <button type="button">Some tag content</button>
+          </p-tag>
+          <p-tag color="primary">
+            <button type="button">Some tag content</button>
+          </p-tag>
+          <p-tag color="notification-info-soft">
+            <button type="button">Some tag content</button>
+          </p-tag>
+        </p-scroller>
+      </div>
+
+      <p-select-wrapper label="Some label" hide-label="false">
+        <select name="some-name">
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+          <option value="c">Option C</option>
+          <option value="d">Option D</option>
+          <option value="e">Option E</option>
+          <option value="f">Option F</option>
+        </select>
+      </p-select-wrapper>
+
+      <p-stepper-horizontal>
+        <p-stepper-horizontal-item state="current">Enter personal details</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item>Confirm e-mail</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item>Set password</p-stepper-horizontal-item>
+      </p-stepper-horizontal>
+
+      <div id="step-content-0">
+        <p-text>A form with personal details could be displayed here.</p-text>
+      </div>
+      <div id="step-content-1" hidden>
+        <p-text>A form with a verification code input field could be displayed here.</p-text>
+      </div>
+      <div id="step-content-2" hidden>
+        <p-text>A form with a password input field could be displayed here.</p-text>
+      </div>
+
+      <p-button-group>
+        <p-button type="button" id="prev-button" icon="arrow-head-left" variant="tertiary" disabled="true"
+          >Previous Step</p-button
+        >
+        <p-button type="button" id="next-button" variant="primary">Next Step</p-button>
+      </p-button-group>
+
+      <p-switch hide-label="false">Some label</p-switch>
+      <p-switch hide-label="false" checked="true">Some label</p-switch>
+
+      <p-tabs-bar active-tab-index="0">
+        <button type="button">Tab One</button>
+        <button type="button">Tab Two</button>
+        <button type="button">Tab Three</button>
+      </p-tabs-bar>
+
+      <p-tag icon="car" color="background-base">
+        <button type="button">Color background-base</button>
+      </p-tag>
+
+      <p-tag-dismissible color="background-base">Color background-base</p-tag-dismissible>
+
+      <p-text-field-wrapper label="Some label" hide-label="false">
+        <input type="text" name="some-name" />
+      </p-text-field-wrapper>
+      <p-text-field-wrapper label="Some label" hide-label="false">
+        <input type="text" placeholder="Some placeholder" name="some-name" />
+      </p-text-field-wrapper>
+
+      <p-textarea-wrapper label="Some label" hide-label="false">
+        <textarea name="some-name"></textarea>
+      </p-textarea-wrapper>
+
+      <button id="toast" type="button">Queue Toast</button>
+      <p-toast></p-toast>
     </main>
 
     <script>
@@ -162,6 +285,98 @@
         banner.open = false;
       });
       document.querySelector('p-button').addEventListener('click', () => (banner.open = true));
+
+      const flyout = document.querySelector('p-flyout');
+      flyout.addEventListener('dismiss', () => {
+        flyout.open = false;
+      });
+      document.querySelector('#flyout').addEventListener('click', () => {
+        flyout.open = true;
+      });
+
+      const modal = document.querySelector('p-modal');
+      modal.addEventListener('dismiss', () => {
+        modal.open = false;
+      });
+      document.querySelector('#modal').addEventListener('click', () => {
+        modal.open = true;
+      });
+
+      const stepper = document.querySelector('p-stepper-horizontal');
+      const stepElements = Array.from(document.querySelectorAll('p-stepper-horizontal-item'));
+      const prevButton = document.querySelector('#prev-button');
+      const nextButton = document.querySelector('#next-button');
+      const panels = document.querySelectorAll('[id^="step-content"]');
+
+      function getActiveStepIndex(steps) {
+        return steps.findIndex((step) => step.state === 'current');
+      }
+
+      function manageContent(activeStepIndex) {
+        if (activeStepIndex === 0) {
+          prevButton.setAttribute('disabled', 'true');
+        } else {
+          prevButton.removeAttribute('disabled');
+        }
+
+        if (activeStepIndex === stepElements.length - 1) {
+          nextButton.setAttribute('disabled', 'true');
+        } else {
+          nextButton.removeAttribute('disabled');
+        }
+
+        panels.forEach((panel, i) => {
+          if (i === activeStepIndex) {
+            panel.removeAttribute('hidden');
+          } else {
+            panel.setAttribute('hidden', '');
+          }
+        });
+      }
+
+      function onNextPrevStep(direction) {
+        const activeStepIndex = getActiveStepIndex(stepElements);
+
+        if (direction === 'next') {
+          stepElements[activeStepIndex].state = 'complete';
+          stepElements[activeStepIndex + 1].state = 'current';
+          manageContent(activeStepIndex + 1);
+        } else {
+          stepElements[activeStepIndex].state = undefined;
+          stepElements[activeStepIndex - 1].state = 'current';
+          manageContent(activeStepIndex - 1);
+        }
+      }
+
+      prevButton.addEventListener('click', () => onNextPrevStep('prev'));
+      nextButton.addEventListener('click', () => onNextPrevStep('next'));
+
+      stepper.addEventListener('update', (e) => {
+        const { activeStepIndex } = e.detail;
+
+        for (let i = activeStepIndex + 1; i < stepElements.length; i++) {
+          // reset step state when going back via stepper horizontal item click
+          stepElements[i].state = undefined;
+        }
+        stepElements[activeStepIndex].state = 'current';
+
+        manageContent(activeStepIndex);
+      });
+
+      const tabsBar = document.querySelector('p-tabs-bar');
+      tabsBar.addEventListener('update', (e) => {
+        e.target.activeTabIndex = e.detail.activeTabIndex;
+      });
+
+      const toast = document.querySelector('p-toast');
+      let counter = 1;
+
+      customElements.whenDefined('p-toast').then(() => {
+        document.querySelector('#toast').addEventListener('click', () => {
+          toast.addMessage({ text: `Some message ${counter}`, state: 'info' });
+          counter++;
+        });
+      });
     </script>
     <!-- /END -->
   </body>
