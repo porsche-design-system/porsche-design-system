@@ -33,8 +33,12 @@ export const handleButtonEvent = (
         const fakeButton = document.createElement('button');
         const name = getName?.();
         const value = getValue?.();
-        if (name) fakeButton.name = name;
-        if (value) fakeButton.value = value;
+        if (name) {
+          fakeButton.name = name;
+        }
+        if (value) {
+          fakeButton.value = value;
+        }
         fakeButton.type = getType();
         fakeButton.style.display = 'none';
         form.appendChild(fakeButton);
