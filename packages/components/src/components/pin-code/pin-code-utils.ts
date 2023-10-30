@@ -90,13 +90,14 @@ export const syncHiddenInput = (
   required: boolean
 ): void => {
   setAttributes(hiddenInput, {
-    name,
+    ...(name && { name }),
     value: removeWhiteSpaces(value),
   });
   hiddenInput.toggleAttribute('disabled', disabled);
   hiddenInput.toggleAttribute('required', required);
 };
 
+// This reproduces native behavior where the form is only submittable under certain circumstances
 export const isFormSubmittable = (host: HTMLElement, form: HTMLFormElement): boolean => {
   const PrefixedTagNames = getPrefixedTagNames(host);
 
