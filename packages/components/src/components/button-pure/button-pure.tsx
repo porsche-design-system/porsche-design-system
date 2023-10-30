@@ -32,6 +32,8 @@ import { getComponentCss } from './button-pure-styles';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
   type: AllowedTypes.oneOf<ButtonPureType>(BUTTON_TYPES),
+  name: AllowedTypes.string,
+  value: AllowedTypes.string,
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   size: AllowedTypes.breakpoint<ButtonPureSize>(TEXT_SIZES),
@@ -55,6 +57,12 @@ export class ButtonPure {
 
   /** Specifies the type of the button. */
   @Prop() public type?: ButtonPureType = 'submit';
+
+  /** The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form. */
+  @Prop() public name?: string;
+
+  /** Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button. */
+  @Prop({ mutable: true }) public value?: string;
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
@@ -115,7 +123,9 @@ export class ButtonPure {
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
-      () => this.isDisabledOrLoading
+      () => this.isDisabledOrLoading,
+      () => this.name,
+      () => this.value
     );
   }
 

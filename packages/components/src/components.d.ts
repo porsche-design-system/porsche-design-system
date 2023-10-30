@@ -211,6 +211,10 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
+          * The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form.
+         */
+        "name"?: string;
+        /**
           * Adapts the button color depending on the theme.
          */
         "theme"?: Theme;
@@ -218,6 +222,10 @@ export namespace Components {
           * Specifies the type of the button.
          */
         "type"?: ButtonType;
+        /**
+          * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
+         */
+        "value"?: string;
         /**
           * The style variant of the button.
          */
@@ -263,6 +271,10 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
+          * The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form.
+         */
+        "name"?: string;
+        /**
           * Size of the button.
          */
         "size"?: BreakpointCustomizable<ButtonPureSize>;
@@ -278,6 +290,10 @@ export namespace Components {
           * Specifies the type of the button.
          */
         "type"?: ButtonPureType;
+        /**
+          * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
+         */
+        "value"?: string;
         /**
           * The weight of the text (only has effect with visible label).
           * @deprecated since v3.0.0, will be removed with next major release
@@ -2463,6 +2479,10 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form.
+         */
+        "name"?: string;
+        /**
           * Adapts the button color depending on the theme.
          */
         "theme"?: Theme;
@@ -2470,6 +2490,10 @@ declare namespace LocalJSX {
           * Specifies the type of the button.
          */
         "type"?: ButtonType;
+        /**
+          * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
+         */
+        "value"?: string;
         /**
           * The style variant of the button.
          */
@@ -2515,6 +2539,10 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form.
+         */
+        "name"?: string;
+        /**
           * Size of the button.
          */
         "size"?: BreakpointCustomizable<ButtonPureSize>;
@@ -2530,6 +2558,10 @@ declare namespace LocalJSX {
           * Specifies the type of the button.
          */
         "type"?: ButtonPureType;
+        /**
+          * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
+         */
+        "value"?: string;
         /**
           * The weight of the text (only has effect with visible label).
           * @deprecated since v3.0.0, will be removed with next major release
