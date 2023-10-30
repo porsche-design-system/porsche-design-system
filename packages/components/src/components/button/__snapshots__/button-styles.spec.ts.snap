@@ -35,6 +35,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   gap: 0;
   cursor: not-allowed;
   border-color: #7E7F82;
+  margin: 0;
 }
 .root:focus::before {
   content: "";
@@ -202,6 +203,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
+  margin: 0;
 }
 .root:focus::before {
   content: "";
@@ -277,6 +279,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
+  margin: 0;
 }
 .root:focus::before {
   content: "";
@@ -352,6 +355,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
+  margin: 0;
 }
 .root:focus::before {
   content: "";
@@ -428,6 +432,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   gap: 8px;
   cursor: not-allowed;
   border-color: #535457;
+  margin: 0;
 }
 .root:focus::before {
   content: "";
@@ -509,6 +514,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   gap: 8px;
   cursor: not-allowed;
   border-color: #949598;
+  margin: 0;
 }
 .root:focus::before {
   content: "";
@@ -576,6 +582,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
+  margin: 0;
 }
 .root:focus::before {
   content: "";
@@ -652,6 +659,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
+  margin: 0;
 }
 .root:focus::before {
   content: "";
@@ -728,6 +736,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
+  margin: 0;
 }
 .root:focus::before {
   content: "";
@@ -804,6 +813,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
+  margin: 0;
 }
 .root:focus::before {
   content: "";
@@ -881,6 +891,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   gap: 8px;
   cursor: not-allowed;
   border-color: #535457;
+  margin: 0;
 }
 .root:focus::before {
   content: "";

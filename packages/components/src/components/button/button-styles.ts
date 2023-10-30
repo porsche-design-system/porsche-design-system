@@ -64,6 +64,7 @@ export const getComponentCss = (
           }),
         }),
         ...(loading && !isPrimary && frostedGlassStyle),
+        margin: 0, // Removes default button margin on safari 15
       },
       ...(loading && {
         spinner: {

@@ -14,6 +14,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- Model signature asset of macan model
+  ([#2857](https://github.com/porsche-design-system/porsche-design-system/pull/2857))
+
+#### Fixed
+
+- Removes safari 15 default margin from buttons in several components
+  ([#2858](https://github.com/porsche-design-system/porsche-design-system/pull/2858))
+- `Checkbox Wrapper` and `Radio Button Wrapper` border-color/background-color does not reset on hover
+  ([#2852](https://github.com/porsche-design-system/porsche-design-system/pull/2852))
+
+### 3.8.0 - 2023-10-24
+
+### 3.8.0-rc.0 - 2023-10-23
+
 #### Added
 
 - RTL (right-to-left) support for all components
@@ -115,6 +131,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   links can't be focused anymore ([#2818](https://github.com/porsche-design-system/porsche-design-system/pull/2818))
 - Background for open `Flyout` and `Modal` on iOS Mobile Safari with collapsed address bar is no longer scrollable
   ([#2822](https://github.com/porsche-design-system/porsche-design-system/pull/2822))
+- `Tabs Bar` works with translated page content
+  ([#2847](https://github.com/porsche-design-system/porsche-design-system/pull/2847))
 
 ### [3.7.0] - 2023-10-04
 

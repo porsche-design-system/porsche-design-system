@@ -13,6 +13,7 @@ import {
   getLifecycleStatus,
   getOffsetLeft,
   getOffsetWidth,
+  getProperty,
   getScrollLeft,
   initConsoleObserver,
   isElementAtIndexFocused,
@@ -56,8 +57,7 @@ const initTabsBar = (opts?: InitOptions) => {
 </p-tabs-bar>
 ${otherMarkup}
 <script>
-  const tabsBar = document.querySelector('p-tabs-bar');
-  tabsBar.addEventListener('update', (e) => {
+  document.querySelector('p-tabs-bar').addEventListener('update', (e) => {
     e.target.activeTabIndex = e.detail.activeTabIndex;
   });
 </script>`;
@@ -89,6 +89,57 @@ const clickElement = async (el: ElementHandle) => {
 
 const waitForAnimation = () => new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
+it('should work with nested or translated markup', async () => {
+  const content = `
+<p-tabs-bar active-tab-index="0">
+  <button type="button">
+    <font style="vertical-align: inherit;">
+      <font style="vertical-align: inherit;">Tab Eins</font>
+    </font>
+  </button>
+  <button type="button">
+    <font style="vertical-align: inherit;">
+      <font style="vertical-align: inherit;">Tab Zwei</font>
+    </font>
+  </button>
+  <button type="button">
+    <font style="vertical-align: inherit;">
+      <font style="vertical-align: inherit;">Tab Drei</font>
+    </font>
+  </button>
+</p-tabs-bar>
+
+<script>
+  document.querySelector('p-tabs-bar').addEventListener('update', (e) => {
+    e.target.activeTabIndex = e.detail.activeTabIndex;
+  });
+</script>`;
+
+  await setContentWithDesignSystem(page, content);
+
+  const host = await getHost();
+  const [innerTab1, innerTab2, innerTab3] = await page.$$('button > font > font');
+
+  await addEventListener(host, 'update');
+  expect(await getProperty(host, 'activeTabIndex')).toBe(0);
+  expect((await getEventSummary(host, 'update')).counter).toBe(0);
+
+  await innerTab2.click();
+  await waitForStencilLifecycle(page);
+  expect(await getProperty(host, 'activeTabIndex')).toBe(1);
+  expect((await getEventSummary(host, 'update')).counter).toBe(1);
+
+  await innerTab3.click();
+  await waitForStencilLifecycle(page);
+  expect(await getProperty(host, 'activeTabIndex')).toBe(2);
+  expect((await getEventSummary(host, 'update')).counter).toBe(2);
+
+  await innerTab1.click();
+  await waitForStencilLifecycle(page);
+  expect(await getProperty(host, 'activeTabIndex')).toBe(0);
+  expect((await getEventSummary(host, 'update')).counter).toBe(3);
+});
+
 describe('slotted content changes', () => {
   it('should adjust bar style when new tab element is added and clicked', async () => {
     await initTabsBar({ amount: 1, activeTabIndex: 0 });
@@ -110,7 +161,7 @@ describe('slotted content changes', () => {
     await clickElement(secondButton);
 
     expect(buttons.length).toBe(2);
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(103);
+    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(102);
   });
 
   it('should reset tabindex and bar styles when active tab on last position is removed', async () => {
@@ -255,7 +306,7 @@ describe('active index position', () => {
     expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceRight);
 
     await clickElement(nextButton);
-    expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(508);
+    expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(502);
   });
 });
 

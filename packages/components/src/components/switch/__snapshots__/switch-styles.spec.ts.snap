@@ -17,6 +17,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
@@ -109,6 +110,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
@@ -190,6 +192,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
@@ -281,6 +284,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
@@ -369,6 +373,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
@@ -457,6 +462,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
@@ -545,6 +551,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
@@ -637,6 +644,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
@@ -729,6 +737,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
@@ -821,6 +830,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
@@ -949,6 +959,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
