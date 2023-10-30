@@ -87,6 +87,15 @@ describe('label', () => {
   });
 });
 
+describe('should render correct amount of inputs', () => {
+  it.each([1, 2, 3, 4, 5, 6])('length=%d', async (length: Components.PPinCode['length']) => {
+    await initPinCode({ props: { length } });
+    const host = await getHost();
+    const amountOfInputs = await host.evaluate((el) => Array.from(el.shadowRoot.querySelectorAll('input')).length);
+    expect(amountOfInputs).toBe(length);
+  });
+});
+
 describe('within form', () => {
   describe('hidden input', () => {
     it('should be rendered', async () => {
