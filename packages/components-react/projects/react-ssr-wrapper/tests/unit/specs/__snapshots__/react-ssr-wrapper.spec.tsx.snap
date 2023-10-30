@@ -2032,7 +2032,7 @@ button::before {
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-animation-duration,0.25s);
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-animation-duration,0.25s);
 }
 .collapsible div {
   overflow: hidden;
@@ -2155,7 +2155,7 @@ exports[`should render dsr component for PBanner 1`] = `
   color-scheme: light dark !important;
 }
 :host(.hydrated), :host(.ssr) {
-  transition: visibility 0s linear var(--p-animation-duration,0.6s), transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) !important;
+  transition: visibility 0s linear var(--p-animation-duration,0.6s), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3544,7 +3544,7 @@ exports[`should render dsr component for PFlyout 1`] = `
   background: #FFF;
   opacity: 0;
   transform: translate3d(100%, 0, 0);
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -5260,7 +5260,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;

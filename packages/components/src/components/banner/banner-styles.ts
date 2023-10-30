@@ -45,7 +45,7 @@ export const getComponentCss = (isOpen: boolean): string => {
               opacity: 1,
               visibility: 'inherit',
               transform: 'translate3d(0,0,0)',
-              transition: `${getTransition('transform', 'long', 'in')}, ${getTransition('opacity', 'long', 'in')}`,
+              transition: `${getTransition('transform', 'long', 'out')}, ${getTransition('opacity', 'long', 'out')}`,
             }
           : {
               opacity: 0,
@@ -55,8 +55,8 @@ export const getComponentCss = (isOpen: boolean): string => {
                 transition: `visibility 0s linear ${duration}, ${getTransition(
                   'transform',
                   'long',
-                  'out'
-                )}, ${getTransition('opacity', 'long', 'out')}`,
+                  'in'
+                )}, ${getTransition('opacity', 'long', 'in')}`,
               },
             }),
         [getMediaQueryMin('s')]: {

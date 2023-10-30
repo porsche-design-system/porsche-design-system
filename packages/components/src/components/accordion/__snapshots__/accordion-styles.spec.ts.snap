@@ -76,7 +76,7 @@ button:not(:focus-visible)::before {
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-animation-duration,0.25s);
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-animation-duration,0.25s);
 }
 .collapsible div {
   overflow: hidden;
@@ -264,7 +264,7 @@ button:not(:focus-visible)::before {
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-animation-duration,0.25s);
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-animation-duration,0.25s);
 }
 .collapsible div {
   overflow: hidden;
@@ -357,7 +357,7 @@ button:not(:focus-visible)::before {
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-animation-duration,0.25s);
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-animation-duration,0.25s);
 }
 .collapsible div {
   overflow: hidden;
@@ -545,7 +545,7 @@ button:not(:focus-visible)::before {
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-animation-duration,0.25s);
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-animation-duration,0.25s);
 }
 .collapsible div {
   overflow: hidden;
@@ -828,7 +828,7 @@ button:not(:focus-visible)::before {
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-animation-duration,0.25s);
+  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-animation-duration,0.25s);
 }
 .collapsible div {
   overflow: hidden;

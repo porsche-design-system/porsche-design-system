@@ -152,7 +152,7 @@ export const getComponentCss = (
         : {
             gridTemplateRows: '0fr',
             visibility: 'hidden',
-            transition: `${getTransition('grid-template-rows', 'short', 'out')}, visibility 0s linear ${duration}`,
+            transition: `${getTransition('grid-template-rows', 'short', 'in')}, visibility 0s linear ${duration}`,
           }),
       '& div': {
         overflow: open ? 'visible' : 'hidden',
