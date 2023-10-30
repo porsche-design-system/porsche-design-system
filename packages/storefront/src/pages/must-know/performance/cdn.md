@@ -5,6 +5,10 @@ The Porsche Design System **components**, **marque**, **icons**, **fonts** and *
 
 <TableOfContents></TableOfContents>
 
+## Architecture
+
+![Porsche Design System Architecture](../../../assets/pds-architecture.png)
+
 ## Explanation
 
 Let's have a look at following applications and assume that all of these applications have integrated a Porsche Design

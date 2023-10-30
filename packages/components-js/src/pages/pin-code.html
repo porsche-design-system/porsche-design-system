@@ -2,8 +2,28 @@
   <p-pin-code label="Some Label"></p-pin-code>
 </div>
 
-<div class="playground light" title="should render with label and description">
+<div class="playground light" title="should render with label, description and length=1">
+  <p-pin-code label="Some Label" description="Some Description" length="1"></p-pin-code>
+</div>
+
+<div class="playground light" title="should render with label, description and length=2">
+  <p-pin-code label="Some Label" description="Some Description" length="2"></p-pin-code>
+</div>
+
+<div class="playground light" title="should render with label, description and length=3">
+  <p-pin-code label="Some Label" description="Some Description" length="3"></p-pin-code>
+</div>
+
+<div class="playground light" title="should render with label and description and length=4 (default)">
   <p-pin-code label="Some Label" description="Some Description"></p-pin-code>
+</div>
+
+<div class="playground light" title="should render with label, description and length=5">
+  <p-pin-code label="Some Label" description="Some Description" length="5"></p-pin-code>
+</div>
+
+<div class="playground light" title="should render with label, description and length=6">
+  <p-pin-code label="Some Label" description="Some Description" length="6"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render without label and without description">
@@ -35,6 +55,10 @@
   <p-pin-code label="Success with message" state="success" message="Success message"></p-pin-code>
 </div>
 
+<div class="playground light" title="should render with success state, success message and length=1">
+  <p-pin-code label="Success with message" state="success" message="Success message" length="1"></p-pin-code>
+</div>
+
 <div class="playground light" title="should render with error state and no error message">
   <p-pin-code label="Error without message" state="error"></p-pin-code>
 </div>
@@ -55,6 +79,10 @@
   <p-pin-code label="Loading" loading="true"></p-pin-code>
 </div>
 
+<div class="playground light" title="should render with loading state with length=1">
+  <p-pin-code label="Loading" loading="true" length="1"></p-pin-code>
+</div>
+
 <div class="playground light" title="should render with loading state and value">
   <p-pin-code value="1234" label="Loading" loading="true"></p-pin-code>
 </div>
@@ -73,6 +101,10 @@
 
 <div class="playground light" title="should render with disabled state and type password">
   <p-pin-code value="1234" label="Type password disabled" type="password" disabled="true"> </p-pin-code>
+</div>
+
+<div class="playground light" title="should render with length=5 and reduce input width on smaller viewports">
+  <p-pin-code label="Length=5" length="5"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with length=6 and reduce input width on smaller viewports">

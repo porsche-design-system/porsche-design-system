@@ -33,9 +33,9 @@ export const getComponentCss = (
       getBaseChildStyles('input', state, theme, {
         textAlign: 'center',
         width: inputSize,
-        ...(length === 6 && {
+        ...(length > 4 && {
           [getMediaQueryMax('xs')]: {
-            width: `calc((276px - (${spacingStaticSmall} * 5)) / 6)`, // calculate the max with of the inputs that fit into grid in viewport base (276px)
+            width: `calc((276px - (${spacingStaticSmall} * ${length - 1})) / ${length})`, // calculate the max with of the inputs that fit into grid in viewport base (276px)
           },
         }),
         ...(isLoading && {
