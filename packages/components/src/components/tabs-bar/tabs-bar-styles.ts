@@ -19,12 +19,12 @@ import {
   borderWidthBase,
   fontSizeText,
   frostedGlassStyle,
+  motionDurationModerate,
   spacingStaticMedium,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import type { JssStyle } from 'jss';
 
-const barTransitionDuration = '.4s';
 export const scrollerAnimatedCssClass = 'scroller--animated';
 
 const targetSelectors = ['a', 'button'];
@@ -156,7 +156,7 @@ export const getComponentCss = (
       transformSelector(
         '::slotted([role][aria-selected="true"])::after, ::slotted([role][aria-current="true"])::after'
       )]: {
-        transition: addImportantToRule(`visibility 0s linear ${barTransitionDuration}`), // bar appears after transition
+        transition: addImportantToRule(`visibility 0s linear ${motionDurationModerate}`), // bar appears after transition
       },
     },
     // moving bar
@@ -165,7 +165,7 @@ export const getComponentCss = (
       width: 0, // actual width and transform is set via inline css
       bottom: isHighContrastMode ? '0' : '-2px',
       visibility: 'visible',
-      transition: `transform ${barTransitionDuration},width ${barTransitionDuration}`,
+      transition: `${getTransition('transform', 'moderate')}, ${getTransition('width', 'moderate')}`,
       animation: '$hide 0s .5s forwards', // auto hide bar after transition, needs to be a little longer in Safari
     },
     '@keyframes hide': {
