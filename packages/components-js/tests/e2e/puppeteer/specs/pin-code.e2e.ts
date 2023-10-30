@@ -88,8 +88,8 @@ describe('label', () => {
   });
 });
 
-describe('should render correct amount of inputs', () => {
-  it.each(PIN_CODE_LENGTHS)('length=%d', async (length) => {
+describe('render', () => {
+  it.each(PIN_CODE_LENGTHS)('should render correct amount of inputs with length=%d', async (length) => {
     await initPinCode({ props: { length } });
     const host = await getHost();
     const amountOfInputs = await host.evaluate((el) => Array.from(el.shadowRoot.querySelectorAll('input')).length);
