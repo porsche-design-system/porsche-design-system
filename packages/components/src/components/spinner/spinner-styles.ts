@@ -5,12 +5,14 @@ import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  cssVariableAnimationDuration,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
+import { motionDurationVeryLong } from '@porsche-design-system/utilities-v2';
 
 const sizeSmall = '48px';
 const sizeMedium = '72px';
@@ -25,7 +27,7 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
 
 export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme: Theme): string => {
   const strokeDasharray = '57'; // C = 2πR
-  const animationDuration = 'var(--p-animation-duration, 2s)';
+  const animationDuration = `var(${cssVariableAnimationDuration}, ${motionDurationVeryLong})`;
   const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
@@ -44,7 +46,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       svg: {
         display: 'block', // for correct vertical alignment
         fill: 'none',
-        animation: `$rotate ${animationDuration} steps(50) infinite`,
+        animation: `$rotator ${animationDuration} linear infinite`,
       },
       circle: {
         '&:first-child': {
@@ -55,7 +57,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
           }),
         },
         '&:last-child': {
-          animation: `$dash ${animationDuration} steps(50) infinite`,
+          animation: `$dash ${animationDuration} linear infinite`,
           // TODO: High Contrast Mode should be handled within a local color helper function
           stroke: lastHighContrastStrokeColor || primaryColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
