@@ -9,12 +9,18 @@ following reasons:
 - to use the same components with plain html and any JavaScript framework, without having to maintain multiple libraries
   and keeping them in sync
 
+<TableOfContents></TableOfContents>
+
 ## Introduction
 
 While the NPM packages `@porsche-design-system/components-{js|angular|react|vue}` are primarily used for bootstrapping,
 typing support and framework typical developer experience, the web components themselves and all their assets are served
 from a CDN (`cdn.ui.porsche.com` and `cdn.ui.porsche.cn`).  
 More information about this can be found under [Performance](must-know/performance/cdn).
+
+## Architecture
+
+![Porsche Design System Architecture](../../../assets/pds-architecture.png)
 
 To understand what is happening when a component's html tag is rendered in the browser and what can be done to improve
 the bootstrapping process, please read through the following pages carefully.
