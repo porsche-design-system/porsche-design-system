@@ -17,6 +17,9 @@ Partials have to be called during build time, **not** run time.
 
 <ul v-html="recommendedPartialNames"></ul>
 
+An in-depth optimization guide can be found at
+[Vanilla Js Optimization](must-know/initialization/vanilla-js#optimization).
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
