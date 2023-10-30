@@ -5,7 +5,7 @@ import { consoleWarn, getPrefixedTagNames, getTagNameWithoutPrefix, setAttribute
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
 export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
 
-export const PIN_CODE_LENGTHS = [4, 6] as const;
+export const PIN_CODE_LENGTHS = [1, 2, 3, 4, 5, 6] as const;
 export type PinCodeLength = (typeof PIN_CODE_LENGTHS)[number];
 
 export type PinCodeUpdateEvent = { value: string; isComplete: boolean };
