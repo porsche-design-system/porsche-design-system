@@ -5,18 +5,21 @@ import {
   getFrostedGlassBackgroundJssStyles,
   getInsetJssStyle,
   getThemedColors,
+  getTransition,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { FLYOUT_Z_INDEX } from '../../constants';
-import { gridGap, spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
+import {
+  gridGap,
+  motionDurationLong,
+  spacingFluidLarge,
+  spacingStaticMedium,
+} from '@porsche-design-system/utilities-v2';
 import type { FlyoutPosition } from './flyout-utils';
 
 export const headerShadowClass = 'header--shadow';
 export const footerShadowClass = 'footer--shadow';
-
-const flyoutTransitionDuration = '0.5s';
-const flyoutTransitionTimingFunction = 'cubic-bezier(0.77, 0, 0.175, 1)';
 
 export const getComponentCss = (
   isOpen: boolean,
@@ -33,6 +36,7 @@ export const getComponentCss = (
   const shadowColor = isDark ? scrollShadowColorDark : scrollShadowColor;
   const transparentColorDark = 'rgba(14, 14, 18, 0)';
   const transparentColor = isDark ? transparentColorDark : 'rgba(255, 255, 255, 0)';
+  const easing = isOpen ? 'out' : 'in';
 
   return getCss({
     '@global': {
@@ -51,10 +55,10 @@ export const getComponentCss = (
               }
             : {
                 visibility: 'hidden',
-                transition: `visibility 0s linear ${flyoutTransitionDuration}`,
+                transition: `visibility 0s linear ${motionDurationLong}`,
               }),
           ...getInsetJssStyle(),
-          ...getFrostedGlassBackgroundJssStyles(isOpen, flyoutTransitionDuration, theme),
+          ...getFrostedGlassBackgroundJssStyles(isOpen, motionDurationLong, theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -77,9 +81,11 @@ export const getComponentCss = (
       background: backgroundColor,
       opacity: isOpen ? 1 : 0,
       transform: isOpen ? 'initial' : `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
-      transition: `opacity ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction} ${
-        isOpen ? '0s' : flyoutTransitionDuration
-      }, transform ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction}`,
+      transition: `${getTransition('opacity', 'long', easing)} ${isOpen ? '0s' : motionDurationLong}, ${getTransition(
+        'transform',
+        'long',
+        easing
+      )}`,
       boxShadow: `${isPositionStart ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: primaryColorDark,
