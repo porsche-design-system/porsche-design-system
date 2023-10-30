@@ -9,11 +9,16 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
-import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  cssVariableAnimationDuration,
+  getTransition,
+  hostHiddenStyles,
+} from '../../styles';
 
 const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
-const cssVariableAnimationDuration = '--p-animation-duration';
 const cssVariableZIndex = '--p-internal-banner-z-index';
 
 const duration = `var(${cssVariableAnimationDuration},${motionDurationLong})`;

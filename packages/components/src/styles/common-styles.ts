@@ -38,6 +38,8 @@ const motionEasingMap: Record<MotionEasingKeyFinal, string> = {
   out: motionEasingOut,
 };
 
+export const cssVariableAnimationDuration = '--p-animation-duration';
+
 export const getTransition = (
   cssProperty: keyof PropertiesHyphen,
   duration: MotionDurationKeyFinal,

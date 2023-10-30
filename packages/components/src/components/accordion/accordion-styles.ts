@@ -2,13 +2,14 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
-  getThemedColors,
   addImportantToEachRule,
+  colorSchemeStyles,
+  cssVariableAnimationDuration,
+  getThemedColors,
+  getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
-  colorSchemeStyles,
-  getTransition,
 } from '../../styles';
 import {
   fontWeightSemiBold,
@@ -22,8 +23,6 @@ import {
   borderWidthBase,
   fontSizeTextXXSmall,
 } from '@porsche-design-system/utilities-v2';
-
-const cssVariableAnimationDuration = '--p-animation-duration';
 
 const duration = `var(${cssVariableAnimationDuration},${motionDurationShort})`;
 
