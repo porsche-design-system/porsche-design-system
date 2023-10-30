@@ -14,6 +14,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { Components } from '@porsche-design-system/components';
+import { PIN_CODE_LENGTHS } from '@porsche-design-system/components/src/components/pin-code/pin-code-utils';
 
 let page: Page;
 beforeEach(async () => {
@@ -84,6 +85,15 @@ describe('label', () => {
     await label.click();
 
     expect((await getEventSummary(input, 'focus')).counter).toBe(1);
+  });
+});
+
+describe('render', () => {
+  it.each(PIN_CODE_LENGTHS)('should render correct amount of inputs with length=%d', async (length) => {
+    await initPinCode({ props: { length } });
+    const host = await getHost();
+    const amountOfInputs = await host.evaluate((el) => Array.from(el.shadowRoot.querySelectorAll('input')).length);
+    expect(amountOfInputs).toBe(length);
   });
 });
 

@@ -2,9 +2,17 @@ import { getComponentCss } from './pin-code-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
+    [false, 'none', false, false, false, 1, 'light'],
+    [false, 'none', false, false, false, 2, 'light'],
+    [false, 'none', false, false, false, 3, 'light'],
     [false, 'none', false, false, false, 4, 'light'],
+    [false, 'none', false, false, false, 5, 'light'],
     [false, 'none', false, true, true, 6, 'light'],
+    [false, 'none', true, false, false, 1, 'light'],
+    [false, 'none', true, false, false, 2, 'light'],
+    [false, 'none', true, false, false, 3, 'light'],
     [false, 'none', true, false, false, 4, 'light'],
+    [false, 'none', true, false, false, 5, 'light'],
     [true, 'error', false, false, true, 6, 'dark'],
     [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'success', false, false, false, 4, 'light'],
   ])(
