@@ -20,6 +20,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2859](https://github.com/porsche-design-system/porsche-design-system/pull/2859))
 - `Model Signature` asset for `model="macan"`
   ([#2857](https://github.com/porsche-design-system/porsche-design-system/pull/2857))
+- Reuse motion tokens in `Accordion`, `Banner`, `Button`, `Link`, `Button Pure`,`Link Pure`, `Button Tile`, `Link Tile`,
+  `Link Tile Model Signature`, `Carousel`, `Checkbox Wrapper`,`Radio Button Wrapper`, `Fieldset`, `Fieldset Wrapper`,
+  `Flyout`, `Modal`, `Multi Select`,`Pagination`, `Popover`, `Scroller`, `Segmented Control`, `Select Wrapper`,
+  `Spinner`, `Stepper Horizontal`,`Switch`, `Table`, `Tabs Bar`, `Tag`, `Tag Dismissible`, `Text Field Wrapper`,
+  `Text Area Wrapper`,`Toast` ([#2834](https://github.com/porsche-design-system/porsche-design-system/pull/2834))
 
 #### Fixed
 
