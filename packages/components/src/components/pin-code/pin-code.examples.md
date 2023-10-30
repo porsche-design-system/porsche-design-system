@@ -36,8 +36,8 @@ label text and is technically related to the `hide-label` property.
 
 ## Length
 
-By default, the `p-pin-code` component renders four input fields. For longer security codes you can choose to set the
-prop `length` to `6`.
+By default, the `p-pin-code` component renders four input fields. For other security codes you can choose to set the
+`length` prop between `1` and `6`.
 
 <Playground :markup="lengthMarkup" :config="config">
   <SelectOptions v-model="length" :values="lengths"></SelectOptions>
