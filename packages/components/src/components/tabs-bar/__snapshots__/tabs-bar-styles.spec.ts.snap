@@ -79,7 +79,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility 0s linear .4s !important;
+  transition: visibility 0s linear 0.4s !important;
 }
 .bar {
   position: absolute;
@@ -89,8 +89,8 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   width: 0;
   bottom: -2px;
   visibility: visible;
-  transition: transform .4s,width .4s;
-  animation: keyframes-hide 0s .5s forwards;
+  transition: transform var(--p-transition-duration, 0.4s) , width var(--p-transition-duration, 0.4s) ;
+  animation: keyframes-hide 0s 0.4s forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -178,7 +178,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility 0s linear .4s !important;
+  transition: visibility 0s linear 0.4s !important;
 }
 .bar {
   position: absolute;
@@ -188,8 +188,8 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   width: 0;
   bottom: -2px;
   visibility: visible;
-  transition: transform .4s,width .4s;
-  animation: keyframes-hide 0s .5s forwards;
+  transition: transform var(--p-transition-duration, 0.4s) , width var(--p-transition-duration, 0.4s) ;
+  animation: keyframes-hide 0s 0.4s forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -277,7 +277,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-size: 1rem;
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility 0s linear .4s !important;
+  transition: visibility 0s linear 0.4s !important;
 }
 .bar {
   position: absolute;
@@ -287,8 +287,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   bottom: -2px;
   visibility: visible;
-  transition: transform .4s,width .4s;
-  animation: keyframes-hide 0s .5s forwards;
+  transition: transform var(--p-transition-duration, 0.4s) , width var(--p-transition-duration, 0.4s) ;
+  animation: keyframes-hide 0s 0.4s forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -376,7 +376,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-size: 1rem;
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility 0s linear .4s !important;
+  transition: visibility 0s linear 0.4s !important;
 }
 .bar {
   position: absolute;
@@ -386,8 +386,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   bottom: -2px;
   visibility: visible;
-  transition: transform .4s,width .4s;
-  animation: keyframes-hide 0s .5s forwards;
+  transition: transform var(--p-transition-duration, 0.4s) , width var(--p-transition-duration, 0.4s) ;
+  animation: keyframes-hide 0s 0.4s forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -475,7 +475,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-size: 1rem;
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility 0s linear .4s !important;
+  transition: visibility 0s linear 0.4s !important;
 }
 .bar {
   position: absolute;
@@ -485,8 +485,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   bottom: -2px;
   visibility: visible;
-  transition: transform .4s,width .4s;
-  animation: keyframes-hide 0s .5s forwards;
+  transition: transform var(--p-transition-duration, 0.4s) , width var(--p-transition-duration, 0.4s) ;
+  animation: keyframes-hide 0s 0.4s forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -574,7 +574,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   font-size: 1rem;
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility 0s linear .4s !important;
+  transition: visibility 0s linear 0.4s !important;
 }
 .bar {
   position: absolute;
@@ -584,8 +584,8 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   width: 0;
   bottom: -2px;
   visibility: visible;
-  transition: transform .4s,width .4s;
-  animation: keyframes-hide 0s .5s forwards;
+  transition: transform var(--p-transition-duration, 0.4s) , width var(--p-transition-duration, 0.4s) ;
+  animation: keyframes-hide 0s 0.4s forwards;
 }
 @keyframes keyframes-hide {
   to {
