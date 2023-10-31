@@ -1,19 +1,18 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
+  ALIGN_LABELS,
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  improveButtonHandlingForCustomElement,
   hasPropValueChanged,
   isDisabledOrLoading,
   THEMES,
   validateProps,
-  ALIGN_LABELS,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
-import type { SwitchAlignLabelDeprecated, SwitchAlignLabel, SwitchUpdateEvent } from './switch-utils';
+import type { SwitchAlignLabel, SwitchAlignLabelDeprecated, SwitchUpdateEvent } from './switch-utils';
 import { getSwitchButtonAriaAttributes } from './switch-utils';
 
 const propTypes: PropTypes<typeof Switch> = {
