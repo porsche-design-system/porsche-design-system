@@ -46,7 +46,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #FFF;
   opacity: 0;
   transform: translate3d(100%, 0, 0);
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -131,7 +131,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #0E0E12;
   opacity: 0;
   transform: translate3d(100%, 0, 0);
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -211,7 +211,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #0E0E12;
   opacity: 0;
   transform: translate3d(100%, 0, 0);
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -299,7 +299,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #FFF;
   opacity: 0;
   transform: translate3d(100%, 0, 0);
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -382,7 +382,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #FFF;
   opacity: 0;
   transform: translate3d(100%, 0, 0);
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -465,7 +465,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #FFF;
   opacity: 0;
   transform: translate3d(-100%, 0, 0);
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -550,7 +550,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #0E0E12;
   opacity: 0;
   transform: translate3d(-100%, 0, 0);
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -630,7 +630,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   background: #0E0E12;
   opacity: 0;
   transform: translate3d(-100%, 0, 0);
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0.6s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -723,7 +723,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -822,7 +822,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -904,7 +904,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -994,7 +994,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -1087,7 +1087,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -1179,7 +1179,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -1273,7 +1273,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -1360,7 +1360,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -1442,7 +1442,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -1524,7 +1524,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #0E0E12;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -1616,7 +1616,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {
@@ -1710,7 +1710,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) 0s, transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .header {

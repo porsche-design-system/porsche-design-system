@@ -36,7 +36,7 @@ export const getComponentCss = (
   const shadowColor = isDark ? scrollShadowColorDark : scrollShadowColor;
   const transparentColorDark = 'rgba(14, 14, 18, 0)';
   const transparentColor = isDark ? transparentColorDark : 'rgba(255, 255, 255, 0)';
-  const easing = isOpen ? 'out' : 'in';
+  const easing = isOpen ? 'in' : 'out';
 
   return getCss({
     '@global': {

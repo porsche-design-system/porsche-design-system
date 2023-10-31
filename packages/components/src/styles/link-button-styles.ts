@@ -119,7 +119,7 @@ export const getLinkButtonStyles = (
         'border-color',
         'short',
         'base'
-      )}${getTransition('color', 'short', 'base')}`,
+      )}, ${getTransition('color', 'short', 'base')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
         padding: hideLabelValue ? '13px' : '13px 26px',
         gap: hideLabelValue ? 0 : spacingStaticSmall,

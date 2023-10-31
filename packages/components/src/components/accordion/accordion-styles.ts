@@ -146,18 +146,18 @@ export const getComponentCss = (
         ? {
             gridTemplateRows: '1fr',
             visibility: 'visible',
-            transition: getTransition('grid-template-rows', 'short', 'out'),
+            transition: getTransition('grid-template-rows', 'short', 'base'),
             paddingBottom: compact ? spacingStaticSmall : '24px',
           }
         : {
             gridTemplateRows: '0fr',
             visibility: 'hidden',
-            transition: `${getTransition('grid-template-rows', 'short', 'in')}, visibility 0s linear ${duration}`,
+            transition: `${getTransition('grid-template-rows', 'short', 'base')}, visibility 0s linear ${duration}`,
           }),
       '& div': {
         overflow: open ? 'visible' : 'hidden',
         // Fix overflow issues for overlapping content (e.g. select dropdown)
-        animation: open ? `$overflow ${motionDurationShort}` : 'none',
+        animation: open ? `$overflow ${duration}` : 'none',
         // Necessary to make focus outlines fully visible
         padding: '4px',
         margin: '-4px',

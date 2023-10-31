@@ -58,7 +58,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #FFF;
@@ -159,7 +159,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -274,7 +274,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -395,7 +395,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #FFF;
@@ -490,7 +490,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -591,7 +591,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -706,7 +706,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -871,7 +871,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -1072,7 +1072,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   background: #FFF;
   outline: 0;
@@ -1179,7 +1179,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -1276,7 +1276,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   background: #0E0E12;
   outline: 0;
@@ -1389,7 +1389,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -1503,7 +1503,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -1623,7 +1623,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -1717,7 +1717,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #FFF;
@@ -1817,7 +1817,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -1931,7 +1931,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #0E0E12;
