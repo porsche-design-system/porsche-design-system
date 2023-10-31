@@ -47,7 +47,7 @@ export const getComponentCss = (
               display: 'flex',
               gap: spacingStaticXSmall,
               width: 'auto',
-              margin: 0,
+              margin: 0, // Removes default button margin on safari 15
               padding: 0,
               font: 'inherit',
               color: 'inherit',

@@ -185,3 +185,7 @@ export default function Index(): JSX.Element {
 ## When are Porsche Design System components (re-)hydrated?
 
 See [componentsReady()](developing/components-ready) for further information.
+
+## How do Porsche Design System components work in detail?
+
+See [Initialization](must-know/initialization/introduction) for further information.

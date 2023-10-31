@@ -2227,7 +2227,11 @@ exports[`should match snapshot 1`] = `
       "hideLabel": "boolean",
       "label": "string",
       "length": [
+        1,
+        2,
+        3,
         4,
+        5,
         6,
       ],
       "loading": "boolean",

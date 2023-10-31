@@ -372,6 +372,19 @@ export const config: StorefrontConfig = {
     },
   },
   'Must Know': {
+    Initialization: {
+      Introduction: [() => import('@/pages/must-know/initialization/introduction.md')],
+      'Vanilla Js': [() => import('@/pages/must-know/initialization/vanilla-js.md')],
+      Angular: [() => import('@/pages/must-know/initialization/angular.md')],
+      React: [() => import('@/pages/must-know/initialization/react.md')],
+      Vue: [() => import('@/pages/must-know/initialization/vue.md')],
+      'Next Js': [() => import('@/pages/must-know/initialization/next-js.md')],
+      Remix: [() => import('@/pages/must-know/initialization/remix.md')],
+    },
+    Performance: {
+      Cdn: [() => import('@/pages/must-know/performance/cdn.md')],
+      'Loading Behaviour': [() => import('@/pages/must-know/performance/loading-behaviour.md')],
+    },
     Accessibility: {
       Introduction: [() => import('@/pages/must-know/accessibility/introduction.md')],
       Statement: [() => import('@/pages/must-know/accessibility/statement.md')],
@@ -379,10 +392,6 @@ export const config: StorefrontConfig = {
     Security: {
       Vulnerabilities: [() => import('@/pages/must-know/security/vulnerabilities.md')],
       'Content Security Policy': [() => import('@/pages/must-know/security/content-security-policy.md')],
-    },
-    Performance: {
-      Cdn: [() => import('@/pages/must-know/performance/cdn.md')],
-      'Loading Behaviour': [() => import('@/pages/must-know/performance/loading-behaviour.md')],
     },
     'Browser Compatibility': [() => import('@/pages/must-know/browser-compatibility.md')],
     Versioning: [() => import('@/pages/must-know/versioning.md')],
