@@ -392,7 +392,9 @@ export class MultiSelect {
               e,
               this.host,
               () => 'submit',
-              () => this.disabled
+              () => this.disabled,
+              () => undefined,
+              () => undefined
             );
           }
         }
