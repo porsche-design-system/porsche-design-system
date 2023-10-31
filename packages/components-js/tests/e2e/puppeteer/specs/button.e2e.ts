@@ -3,6 +3,7 @@ import {
   ClickableTests,
   expectA11yToMatchSnapshot,
   getActiveElementId,
+  getAttribute,
   getEventSummary,
   getLifecycleStatus,
   hasFocus,
@@ -13,6 +14,8 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
+import { expect } from '@playwright/test';
+import * as url from 'url';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -87,29 +90,30 @@ it('should dispatch correct click events', async () => {
   }
 });
 
-it("should submit parent form on click if it's type submit", async () => {
-  await setContentWithDesignSystem(
-    page,
-    `<form onsubmit="return false;">
+fdescribe('within form', () => {
+  it("should submit parent form on click if it's type submit", async () => {
+    await setContentWithDesignSystem(
+      page,
+      `<form onsubmit="return false;">
       <p-button type="submit">Some label</p-button>
     </form>`
-  );
-  const button = await getButton();
-  const host = await getHost();
-  const form = await selectNode(page, 'form');
-  await addEventListener(form, 'submit');
+    );
+    const button = await getButton();
+    const host = await getHost();
+    const form = await selectNode(page, 'form');
+    await addEventListener(form, 'submit');
 
-  await button.click();
-  await host.click();
+    await button.click();
+    await host.click();
 
-  await waitForImproveButtonHandlingForCustomElement(page);
-  expect((await getEventSummary(form, 'submit')).counter).toBe(2);
-});
+    await waitForImproveButtonHandlingForCustomElement(page);
+    expect((await getEventSummary(form, 'submit')).counter).toBe(2);
+  });
 
-it('should not submit the form if default is prevented', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `
+  it('should not submit the form if default is prevented', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
     <div id="wrapper">
       <form onsubmit="return false;">
         <p-button type="submit">Some label</p-button>
@@ -120,36 +124,54 @@ it('should not submit the form if default is prevented', async () => {
         e.preventDefault();
       });
     </script>`
-  );
+    );
 
-  const button = await getButton();
-  const form = await selectNode(page, 'form');
-  await addEventListener(form, 'submit');
+    const button = await getButton();
+    const form = await selectNode(page, 'form');
+    await addEventListener(form, 'submit');
 
-  await button.click();
-  expect((await getEventSummary(form, 'submit')).counter).toBe(0);
-});
+    await button.click();
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+  });
 
-it('should not submit the form if button is disabled', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `
+  it('should not submit the form if button is disabled', async () => {
+    await setContentWithDesignSystem(
+      page,
+      `
     <div id="wrapper">
       <form onsubmit="return false;">
         <p-button type="submit" disabled="true">Some label</p-button>
       </form>
     </div>`
-  );
+    );
 
-  const host = await getHost();
-  const button = await getButton();
-  const form = await selectNode(page, 'form');
-  await addEventListener(form, 'submit');
+    const host = await getHost();
+    const button = await getButton();
+    const form = await selectNode(page, 'form');
+    await addEventListener(form, 'submit');
 
-  await button.click();
-  await host.click();
+    await button.click();
+    await host.click();
 
-  expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+  });
+
+  it("should submit parent form on click if it's type submit and pass name with value as param", async () => {
+    const name = 'name';
+    const value = 'Value';
+    await setContentWithDesignSystem(
+      page,
+      `<form action="/">
+      <p-button type="submit" name="${name}" value="${value}">Some label</p-button>
+    </form>`
+    );
+    const host = await getHost();
+    await host.click();
+
+    await page.waitForNavigation();
+    // Since the data in only available via the event submitter it is easier to test it by checking the request params
+    expect(page.url()).toContain(`?${name}=${value}`);
+  });
 });
 
 it('should trigger focus & blur events at the correct time', async () => {
