@@ -87,7 +87,7 @@ it('should dispatch correct click events', async () => {
   }
 });
 
-fdescribe('within form', () => {
+describe('within form', () => {
   it("should submit parent form on click if it's type submit", async () => {
     await setContentWithDesignSystem(
       page,
