@@ -75,7 +75,7 @@ export const getComponentCss = (): string => {
       animation: `${duration} $in ${motionEasingIn} forwards`,
     },
     [toastCloseClassName]: {
-      animation: addImportantToRule(`${motionDurationLong} $out ${motionEasingOut} forwards`),
+      animation: addImportantToRule(`${duration} $out ${motionEasingOut} forwards`),
     },
   });
 };

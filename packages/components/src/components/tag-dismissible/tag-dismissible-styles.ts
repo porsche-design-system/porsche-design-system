@@ -86,7 +86,7 @@ export const getComponentCss = (
     icon: {
       padding: '4px',
       marginInlineEnd: '-2px', // compensate white space of svg icon and optimize visual alignment
-      transition: getTransition('background-color', 'short', 'base'),
+      transition: getTransition('background-color'),
       borderRadius: borderRadiusSmall,
     },
     'sr-only': getHiddenTextJssStyle(),

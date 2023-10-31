@@ -146,7 +146,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         }),
         ...(!isDisabled &&
           hoverMediaQuery({
-            transition: getTransition('background-color', 'short', 'base'),
+            transition: getTransition('background-color'),
             '&:hover': {
               ...frostedGlassStyle,
               background: hoverColor,

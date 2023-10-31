@@ -89,11 +89,7 @@ export const getCheckboxRadioJssStyle = (
           appearance: 'none',
           boxSizing: 'content-box',
           background: `transparent 0% 0% / ${fontLineHeight}`,
-          transition: `${getTransition('background-color', 'short', 'base')}, ${getTransition(
-            'border-color',
-            'short',
-            'base'
-          )}`,
+          transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
           border: `2px solid ${uncheckedColor}`,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             borderColor: uncheckedColorDark,
@@ -167,7 +163,7 @@ export const getCheckboxRadioJssStyle = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: disabledOrLoading ? disabledColorDark : primaryColorDark,
       }),
-      transition: getTransition('color', 'short', 'base'), // for smooth transition between different states
+      transition: getTransition('color'), // for smooth transition between different states
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
         getHiddenTextJssStyle(isHidden, {
           paddingTop: '2px',

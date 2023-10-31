@@ -24,8 +24,6 @@ import {
   fontSizeTextXXSmall,
 } from '@porsche-design-system/utilities-v2';
 
-const duration = `var(${cssVariableMotionDuration},${motionDurationShort})`;
-
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
   compact: boolean,
@@ -98,7 +96,7 @@ export const getComponentCss = (
           },
           hoverMediaQuery({
             '&::before': {
-              transition: getTransition('background-color', 'short', 'base'),
+              transition: getTransition('background-color'),
             },
             '&:hover::before': {
               background: hoverColor,
@@ -134,7 +132,7 @@ export const getComponentCss = (
       height: fontLineHeight,
       fontSize: fontSizeTextXXSmall,
       transform: open ? 'rotate3d(0)' : 'rotate3d(0,0,1,90deg)',
-      transition: getTransition('transform', 'short', 'base'),
+      transition: getTransition('transform'),
     },
     collapsible: {
       color: primaryColor, // enables color inheritance for slotted content
@@ -146,18 +144,23 @@ export const getComponentCss = (
         ? {
             gridTemplateRows: '1fr',
             visibility: 'visible',
-            transition: getTransition('grid-template-rows', 'short', 'base'),
+            transition: getTransition('grid-template-rows'),
             paddingBottom: compact ? spacingStaticSmall : '24px',
           }
         : {
             gridTemplateRows: '0fr',
             visibility: 'hidden',
-            transition: `${getTransition('grid-template-rows', 'short', 'base')}, visibility 0s linear ${duration}`,
+            transition: `${getTransition('grid-template-rows')}, ${getTransition(
+              'visibility',
+              '0s',
+              'linear',
+              'short'
+            )}`,
           }),
       '& div': {
         overflow: open ? 'visible' : 'hidden',
         // Fix overflow issues for overlapping content (e.g. select dropdown)
-        animation: open ? `$overflow ${duration}` : 'none',
+        animation: open ? `$overflow var(${cssVariableMotionDuration},${motionDurationShort})` : 'none',
         // Necessary to make focus outlines fully visible
         padding: '4px',
         margin: '-4px',

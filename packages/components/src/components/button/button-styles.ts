@@ -79,13 +79,13 @@ export const getComponentCss = (
         },
       }),
       label: {
-        transition: getTransition('opacity', 'short', 'base'),
+        transition: getTransition('opacity'),
         ...(loading && {
           opacity: 0, // use opacity for smooth transition between states
         }),
       },
       icon: {
-        transition: getTransition('opacity', 'short', 'base'),
+        transition: getTransition('opacity'),
         ...(!disabled &&
           isPrimary &&
           !isHighContrastMode && {

@@ -111,7 +111,7 @@ export const getLinkButtonPureStyles = (
           left: hideLabelValue ? offsetVertical : offsetHorizontal,
         })),
         borderRadius: borderRadiusSmall,
-        transition: getTransition('background-color', 'short', 'base'),
+        transition: getTransition('background-color'),
         ...(active && {
           ...frostedGlassStyle,
           backgroundColor: hoverColor,

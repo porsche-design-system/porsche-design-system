@@ -42,12 +42,13 @@ export const cssVariableMotionDuration = '--p-motion-duration';
 
 export const getTransition = (
   cssProperty: keyof PropertiesHyphen,
-  duration: MotionDurationKeyFinal,
-  easing?: MotionEasingKeyFinal
+  duration: MotionDurationKeyFinal | '0s' = 'short',
+  easing: MotionEasingKeyFinal | 'linear' | 'none' = 'base',
+  delay?: MotionDurationKeyFinal | '0s'
 ): string =>
-  `${cssProperty} var(${cssVariableMotionDuration}, ${motionDurationMap[duration]}) ${
-    easing ? motionEasingMap[easing] : ''
-  }`;
+  `${cssProperty} var(${cssVariableMotionDuration}, ${duration === '0s' ? duration : motionDurationMap[duration]})${
+    easing === 'none' ? '' : ` ${easing === 'linear' ? easing : motionEasingMap[easing]}`
+  }${delay ? ` var(${cssVariableMotionDuration}, ${motionDurationMap[delay]})` : ''}`;
 
 export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
 

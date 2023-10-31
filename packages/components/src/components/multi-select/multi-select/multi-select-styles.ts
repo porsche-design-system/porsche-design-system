@@ -84,11 +84,9 @@ export const getComponentCss = (
     ...getListStyles(isOpen, direction, theme),
     'input-container': {
       display: 'flex',
-      transition: `${getTransition('background-color', 'short', 'base')}, ${getTransition(
-        'border-color',
-        'short',
-        'base'
-      )}, ${getTransition('background-color', 'short', 'base')}`, // for smooth transitions between e.g. disabled states
+      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition(
+        'background-color'
+      )}`, // for smooth transitions between e.g. disabled states
       cursor: 'text',
       ...hoverMediaQuery({
         '&:hover:not(.disabled)': {
@@ -154,7 +152,7 @@ export const getComponentCss = (
     },
     'toggle-icon': {
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
-      transition: getTransition('transform', 'short', 'base'),
+      transition: getTransition('transform'),
       '&--open': {
         transform: 'rotate3d(0,0,1,180deg)',
       },
@@ -241,7 +239,7 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
       [isDirectionDown ? 'borderTopRightRadius' : 'borderBottomRightRadius']: 0,
       scrollbarWidth: 'thin', // firefox
       scrollbarColor: 'auto', // firefox
-      transition: getTransition('border-color', 'short', 'base'),
+      transition: getTransition('border-color'),
       transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
       ...prefersColorSchemeDarkMediaQuery(theme, {
         background: backgroundColorDark,

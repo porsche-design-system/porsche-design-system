@@ -18,7 +18,6 @@ import {
   getMediaQueryMin,
   gridExtendedOffsetBase,
   headingLargeStyle,
-  motionDurationShort,
 } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
 import {
@@ -125,7 +124,7 @@ export const getComponentCss = (
               }
             : {
                 visibility: 'hidden',
-                transition: `visibility 0s linear ${motionDurationShort}`,
+                transition: getTransition('visibility', '0s', 'linear', 'short'),
               }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,

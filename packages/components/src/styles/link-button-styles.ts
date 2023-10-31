@@ -115,11 +115,7 @@ export const getLinkButtonStyles = (
       backgroundColor,
       color: textColor,
       ...textSmallStyle,
-      transition: `${getTransition('background-color', 'short', 'base')}, ${getTransition(
-        'border-color',
-        'short',
-        'base'
-      )}, ${getTransition('color', 'short', 'base')}`,
+      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
         padding: hideLabelValue ? '13px' : '13px 26px',
         gap: hideLabelValue ? 0 : spacingStaticSmall,

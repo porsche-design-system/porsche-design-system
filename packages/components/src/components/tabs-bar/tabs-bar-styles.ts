@@ -5,6 +5,7 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   colorSchemeStyles,
+  cssVariableMotionDuration,
   getHighContrastColors,
   getResetInitialStylesForSlottedAnchor,
   getThemedColors,
@@ -26,6 +27,8 @@ import {
 import type { JssStyle } from 'jss';
 
 export const scrollerAnimatedCssClass = 'scroller--animated';
+
+const duration = `var(${cssVariableMotionDuration},${motionDurationModerate})`;
 
 const targetSelectors = ['a', 'button'];
 const transformSelector = (selector: string): string =>
@@ -106,7 +109,7 @@ export const getComponentCss = (
               inset: '-2px -4px',
               borderRadius: borderRadiusSmall,
               zIndex: -1, // Stack the pseudo-element behind the button to avoid overlay of frosted-glass effect with label text
-              transition: getTransition('background-color', 'short', 'base'),
+              transition: getTransition('background-color'),
             },
           }),
         },
@@ -156,7 +159,7 @@ export const getComponentCss = (
       transformSelector(
         '::slotted([role][aria-selected="true"])::after, ::slotted([role][aria-current="true"])::after'
       )]: {
-        transition: addImportantToRule(`visibility 0s linear ${motionDurationModerate}`), // bar appears after transition
+        transition: addImportantToRule(getTransition('visibility', '0s', 'linear', 'moderate')), // bar appears after transition
       },
     },
     // moving bar
@@ -165,8 +168,8 @@ export const getComponentCss = (
       width: 0, // actual width and transform is set via inline css
       bottom: isHighContrastMode ? '0' : '-2px',
       visibility: 'visible',
-      transition: `${getTransition('transform', 'moderate')}, ${getTransition('width', 'moderate')}`,
-      animation: `$hide 0s ${motionDurationModerate} forwards`, // auto hide bar after transition, needs to be a little longer in Safari
+      transition: `${getTransition('transform', 'moderate', 'none')}, ${getTransition('width', 'moderate', 'none')}`,
+      animation: `$hide 0s ${duration} forwards`, // auto hide bar after transition, needs to be a little longer in Safari
     },
     '@keyframes hide': {
       to: {

@@ -10,12 +10,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { FLYOUT_Z_INDEX } from '../../constants';
-import {
-  gridGap,
-  motionDurationLong,
-  spacingFluidLarge,
-  spacingStaticMedium,
-} from '@porsche-design-system/utilities-v2';
+import { gridGap, spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import type { FlyoutPosition } from './flyout-utils';
 
 export const headerShadowClass = 'header--shadow';
@@ -55,7 +50,7 @@ export const getComponentCss = (
               }
             : {
                 visibility: 'hidden',
-                transition: `visibility 0s linear ${motionDurationLong}`,
+                transition: getTransition('visibility', '0s', 'linear', 'long'),
               }),
           ...getInsetJssStyle(),
           ...getFrostedGlassBackgroundJssStyles(isOpen, 'long', theme),
@@ -81,7 +76,7 @@ export const getComponentCss = (
       background: backgroundColor,
       opacity: isOpen ? 1 : 0,
       transform: isOpen ? 'initial' : `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
-      transition: `${getTransition('opacity', 'long', easing)} ${isOpen ? '0s' : motionDurationLong}, ${getTransition(
+      transition: `${getTransition('opacity', 'long', easing, isOpen ? '0s' : 'long')}, ${getTransition(
         'transform',
         'long',
         easing

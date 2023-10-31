@@ -14,14 +14,53 @@ import {
 } from './common-styles';
 
 describe('getTransition()', () => {
-  it.each<[keyof PropertiesHyphen, MotionDurationKeyFinal, MotionEasingKeyFinal, string]>([
-    ['color', 'short', 'base', 'color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)'],
-    ['box-shadow', 'moderate', 'in', 'box-shadow var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1)'],
-    ['color', 'long', 'out', 'color var(--p-motion-duration, 0.6s) cubic-bezier(0.4,0,0.5,1)'],
-    ['box-shadow', 'veryLong', 'base', 'box-shadow var(--p-motion-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1)'],
-  ])('should for cssProperty: %s, duration: %s and ease:  %s return %s', (cssProperty, duration, ease, expected) => {
-    expect(getTransition(cssProperty, duration, ease)).toBe(expected);
-  });
+  it.each<
+    [
+      keyof PropertiesHyphen,
+      MotionDurationKeyFinal | '0s',
+      MotionEasingKeyFinal | 'linear' | 'none',
+      MotionDurationKeyFinal,
+      string
+    ]
+  >([
+    ['color', undefined, undefined, undefined, 'color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)'],
+    [
+      'box-shadow',
+      'short',
+      'base',
+      'short',
+      'box-shadow var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-motion-duration, 0.25s)',
+    ],
+    [
+      'color',
+      'moderate',
+      'in',
+      'moderate',
+      'color var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-motion-duration, 0.4s)',
+    ],
+    [
+      'box-shadow',
+      'long',
+      'out',
+      'long',
+      'box-shadow var(--p-motion-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-motion-duration, 0.6s)',
+    ],
+
+    [
+      'color',
+      'veryLong',
+      'linear',
+      'veryLong',
+      'color var(--p-motion-duration, 1.2s) linear var(--p-motion-duration, 1.2s)',
+    ],
+
+    ['box-shadow', '0s', 'none', undefined, 'box-shadow var(--p-motion-duration, 0s)'],
+  ])(
+    'should for cssProperty: %s, duration: %s, ease: %s and delay: %s return %s',
+    (cssProperty, duration, ease, delay, expected) => {
+      expect(getTransition(cssProperty, duration, ease, delay)).toBe(expected);
+    }
+  );
 });
 
 describe('pxToRemWithUnit()', () => {

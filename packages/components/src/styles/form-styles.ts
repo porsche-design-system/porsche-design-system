@@ -65,11 +65,7 @@ export const getBaseChildStyles = (
       font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
       textIndent: 0,
       color: primaryColor,
-      transition: `${getTransition('background-color', 'short', 'base')}, ${getTransition(
-        'border-color',
-        'short',
-        'base'
-      )}, ${getTransition('color', 'short', 'base')}`, // for smooth transitions between e.g. disabled states
+      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
       ...prefersColorSchemeDarkMediaQuery(theme, {
         borderColor: formStateColorDark || contrastMediumColorDark,
         color: primaryColorDark,
@@ -151,7 +147,7 @@ export const getLabelStyles = (
         ),
         ...textSmallStyle,
         color: isDisabled ? disabledColor : primaryColor,
-        transition: getTransition('color', 'short', 'base'), // for smooth transitions between e.g. disabled states
+        transition: getTransition('color'), // for smooth transitions between e.g. disabled states
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: isDisabled ? disabledColorDark : primaryColorDark,
         }),
