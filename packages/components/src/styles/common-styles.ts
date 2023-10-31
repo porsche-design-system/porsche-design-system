@@ -159,7 +159,7 @@ export const getFrostedGlassBackgroundJssStyles = (
   isVisible: boolean,
   duration: MotionDurationKeyFinal,
   theme: Theme,
-  timingFn = motionEasingBase
+  timingFn: MotionEasingKeyFinal = 'base'
 ): JssStyle => {
   return {
     // workaround via pseudo element to fix stacking (black) background in safari
@@ -179,7 +179,13 @@ export const getFrostedGlassBackgroundJssStyles = (
             backdropFilter: 'blur(0px)',
             WebkitBackdropFilter: 'blur(0px)',
           }),
-      transition: `opacity var(${cssVariableMotionDuration}, ${duration}) ${timingFn}, backdrop-filter ${duration} ${timingFn}, --webkit-backdrop-filter ${duration} ${timingFn}`,
+      transition: `${getTransition('opacity', duration, timingFn)}, ${getTransition(
+        'backdrop-filter',
+        duration,
+        timingFn
+      )}, ${getTransition('opacity', duration, timingFn)}, --webkit-backdrop-filter ${motionDurationMap[duration]} ${
+        motionEasingMap[timingFn]
+      }`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         background: themeDarkBackgroundShading,
       }),
