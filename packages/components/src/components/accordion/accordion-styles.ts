@@ -4,7 +4,7 @@ import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  cssVariableAnimationDuration,
+  cssVariableMotionDuration,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -24,7 +24,7 @@ import {
   fontSizeTextXXSmall,
 } from '@porsche-design-system/utilities-v2';
 
-const duration = `var(${cssVariableAnimationDuration},${motionDurationShort})`;
+const duration = `var(${cssVariableMotionDuration},${motionDurationShort})`;
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,

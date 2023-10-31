@@ -38,14 +38,14 @@ const motionEasingMap: Record<MotionEasingKeyFinal, string> = {
   out: motionEasingOut,
 };
 
-export const cssVariableAnimationDuration = '--p-animation-duration';
+export const cssVariableMotionDuration = '--p-motion-duration';
 
 export const getTransition = (
   cssProperty: keyof PropertiesHyphen,
   duration: MotionDurationKeyFinal,
   easing?: MotionEasingKeyFinal
 ): string =>
-  `${cssProperty} var(--p-transition-duration, ${motionDurationMap[duration]}) ${
+  `${cssProperty} var(${cssVariableMotionDuration}, ${motionDurationMap[duration]}) ${
     easing ? motionEasingMap[easing] : ''
   }`;
 

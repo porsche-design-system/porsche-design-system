@@ -5,7 +5,7 @@ import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  cssVariableAnimationDuration,
+  cssVariableMotionDuration,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getThemedColors,
@@ -27,7 +27,7 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
 
 export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme: Theme): string => {
   const strokeDasharray = '57'; // C = 2πR
-  const animationDuration = `var(${cssVariableAnimationDuration}, ${motionDurationVeryLong})`;
+  const animationDuration = `var(${cssVariableMotionDuration}, ${motionDurationVeryLong})`;
   const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');

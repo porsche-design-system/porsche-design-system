@@ -11,7 +11,7 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   colorSchemeStyles,
-  cssVariableAnimationDuration,
+  cssVariableMotionDuration,
   hostHiddenStyles,
 } from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
@@ -21,7 +21,7 @@ const cssVariablePositionBottomInternal = '--p-internal-toast-position-bottom';
 
 const duration =
   ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test'
-    ? `var(${cssVariableAnimationDuration},${motionDurationLong})`
+    ? `var(${cssVariableMotionDuration},${motionDurationLong})`
     : motionDurationLong;
 
 export type KeyframesDirection = 'in' | 'out';

@@ -12,7 +12,7 @@ import { BANNER_Z_INDEX } from '../../constants';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  cssVariableAnimationDuration,
+  cssVariableMotionDuration,
   getTransition,
   hostHiddenStyles,
 } from '../../styles';
@@ -21,7 +21,7 @@ const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
 const cssVariableZIndex = '--p-internal-banner-z-index';
 
-const duration = `var(${cssVariableAnimationDuration},${motionDurationLong})`;
+const duration = `var(${cssVariableMotionDuration},${motionDurationLong})`;
 
 const topBottomFallback = '56px';
 

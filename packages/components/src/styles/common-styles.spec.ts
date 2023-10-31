@@ -15,10 +15,10 @@ import {
 
 describe('getTransition()', () => {
   it.each<[keyof PropertiesHyphen, MotionDurationKeyFinal, MotionEasingKeyFinal, string]>([
-    ['color', 'short', 'base', 'color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)'],
-    ['box-shadow', 'moderate', 'in', 'box-shadow var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1)'],
-    ['color', 'long', 'out', 'color var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1)'],
-    ['box-shadow', 'veryLong', 'base', 'box-shadow var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1)'],
+    ['color', 'short', 'base', 'color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)'],
+    ['box-shadow', 'moderate', 'in', 'box-shadow var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1)'],
+    ['color', 'long', 'out', 'color var(--p-motion-duration, 0.6s) cubic-bezier(0.4,0,0.5,1)'],
+    ['box-shadow', 'veryLong', 'base', 'box-shadow var(--p-motion-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1)'],
   ])('should for cssProperty: %s, duration: %s and ease:  %s return %s', (cssProperty, duration, ease, expected) => {
     expect(getTransition(cssProperty, duration, ease)).toBe(expected);
   });
