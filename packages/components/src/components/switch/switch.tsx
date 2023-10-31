@@ -73,14 +73,6 @@ export class Switch {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    improveButtonHandlingForCustomElement(
-      this.host,
-      () => 'button',
-      () => isDisabledOrLoading(this.disabled, this.loading)
-    );
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
