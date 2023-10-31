@@ -575,7 +575,7 @@ describe('dropdown position', () => {
 });
 
 describe('keyboard and click events', () => {
-  it('should highlight first position on arrow down', async () => {
+  it('should not highlight selected position on initial arrow down', async () => {
     await initSelect();
     const select = await getSelect();
     const host = await getHost();
@@ -585,20 +585,20 @@ describe('keyboard and click events', () => {
     expect(await getDropdownList(), 'initially').toBeNull();
 
     await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown'); //this just opens the dropdown
     await waitForStencilLifecycle(page);
 
     expect(await getDropdownList(), 'after ArrowDown').toBeTruthy();
-    expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(1);
+    expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(0);
     expect(await getSelectedIndex(), 'for selected custom option').toBe(0);
 
     await page.keyboard.press('Enter');
     await waitForStencilLifecycle(page);
 
     expect(await getDropdownList(), 'after Enter').toBeNull();
-    expect(await getSelectedIndex(), 'for selected index').toBe(1);
+    expect(await getSelectedIndex(), 'for selected index').toBe(0);
 
-    expect((await getEventSummary(select, 'change')).counter, 'for calls').toBe(1);
+    expect((await getEventSummary(select, 'change')).counter, 'for calls').toBe(0);
 
     await host.click();
     await waitForStencilLifecycle(page);
@@ -611,6 +611,8 @@ describe('keyboard and click events', () => {
     await initSelect({ disabledIndex: 1 });
 
     await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowDown'); //this just opens the dropdown
+    await waitForStencilLifecycle(page);
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
 
@@ -623,26 +625,36 @@ describe('keyboard and click events', () => {
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowUp'); //this just opens the dropdown
     await waitForStencilLifecycle(page);
+    await page.keyboard.press('ArrowUp');
+    await waitForStencilLifecycle(page);
 
     expect(await getHighlightedDropdownOptionIndex()).toBe(0);
   });
 
-  it('should highlight correct position on multiple key actions', async () => {
+  it('should highlight correct position on multiple key actions and select the correct position', async () => {
     await initSelect({ amount: 5, disabledIndex: 1 });
 
     await page.keyboard.press('Tab');
-    await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
-    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown'); //this just opens the dropdown
     await waitForStencilLifecycle(page);
 
     expect(await getDropdownOpacity(), 'for opacity').toBe('1');
+
+    await page.keyboard.press('ArrowDown');
+    await waitForStencilLifecycle(page);
+    await page.keyboard.press('ArrowDown');
+    await waitForStencilLifecycle(page);
     expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(3);
 
     await page.keyboard.press('ArrowUp');
     await waitForStencilLifecycle(page);
 
     expect(await getHighlightedDropdownOptionIndex(), 'for highlighted custom option').toBe(2);
+
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect(await getSelectedIndex(), 'for selected index').toBe(2);
   });
 
   it('should open select with space bar', async () => {
@@ -752,6 +764,8 @@ describe('keyboard and click events', () => {
       await initSelect();
 
       await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
