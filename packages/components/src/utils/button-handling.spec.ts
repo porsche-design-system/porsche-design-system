@@ -24,60 +24,57 @@ describe('improveButtonHandlingForCustomElement()', () => {
   });
 });
 
-// TODO: Would be better to test if the button is appended and clicked
 describe('handleButtonEvent()', () => {
+  const element = document.createElement('button');
+  const getType = jest.fn().mockReturnValue('submit');
+  const getName = jest.fn().mockReturnValue('name');
+  const getValue = jest.fn().mockReturnValue('value');
+
   test('it should create a submit button and click it', (done) => {
-    const element = document.createElement('button');
-    const getType = jest.fn().mockReturnValue('submit');
     const getDisabled = jest.fn().mockReturnValue(false);
-    const getName = jest.fn().mockReturnValue('name');
-    const getValue = jest.fn().mockReturnValue('value');
     const form = document.createElement('form');
     document.body.appendChild(form);
     form.append(element);
+    const formAppendChildSpy = jest.spyOn(form, 'appendChild');
 
-    form.addEventListener('submit', () => {
-      expect(getType).toHaveBeenCalled();
-      expect(getDisabled).toHaveBeenCalled();
-      expect(getName).toHaveBeenCalled();
-      expect(getValue).toHaveBeenCalled();
-      // TODO: Also test e.submitter name and value
-      done();
-    });
+    const fakeButton = document.createElement('button');
+    const fakeButtonClickSpy = jest.spyOn(fakeButton, 'click');
+    const fakeButtonRemoveSpy = jest.spyOn(fakeButton, 'remove');
+
+    jest.spyOn(document, 'createElement').mockReturnValueOnce(fakeButton);
 
     handleButtonEvent(new MouseEvent('click'), element, getType, getDisabled, getName, getValue);
+
+    // Timeout necessary since function uses 1 tick timeout
+    setTimeout(() => {
+      expect(fakeButton.getAttribute('type')).toBe(getType());
+      expect(fakeButton.getAttribute('name')).toBe(getName());
+      expect(fakeButton.getAttribute('value')).toBe(getValue());
+      expect(fakeButton.style.display).toBe('none');
+      expect(formAppendChildSpy).toHaveBeenCalledWith(fakeButton);
+      expect(fakeButtonClickSpy).toHaveBeenCalled();
+      expect(fakeButtonRemoveSpy).toHaveBeenCalled();
+      done();
+    }, 10);
   });
 
   test('it should not create a submit button if disabled', () => {
-    const element = document.createElement('button');
-    const getType = jest.fn().mockReturnValue('submit');
     const getDisabled = jest.fn().mockReturnValue(true);
-    const getName = jest.fn().mockReturnValue('name');
-    const getValue = jest.fn().mockReturnValue('value');
     const form = document.createElement('form');
     document.body.appendChild(form);
     form.append(element);
 
+    const createElementSpy = jest.spyOn(document, 'createElement');
     handleButtonEvent(new MouseEvent('click'), element, getType, getDisabled, getName, getValue);
-    expect(getDisabled).toHaveBeenCalled();
 
-    expect(getType).not.toHaveBeenCalled();
-    expect(getName).not.toHaveBeenCalled();
-    expect(getValue).not.toHaveBeenCalled();
+    expect(getDisabled).toHaveBeenCalled();
+    expect(createElementSpy).not.toHaveBeenCalled();
   });
 
   test('it should not create a submit button if not within form', () => {
-    const element = document.createElement('button');
-    const getType = jest.fn().mockReturnValue('submit');
     const getDisabled = jest.fn().mockReturnValue(true);
-    const getName = jest.fn().mockReturnValue('name');
-    const getValue = jest.fn().mockReturnValue('value');
-
+    const createElementSpy = jest.spyOn(document, 'createElement');
     handleButtonEvent(new MouseEvent('click'), element, getType, getDisabled, getName, getValue);
-
-    expect(getDisabled).not.toHaveBeenCalled();
-    expect(getType).not.toHaveBeenCalled();
-    expect(getName).not.toHaveBeenCalled();
-    expect(getValue).not.toHaveBeenCalled();
+    expect(createElementSpy).not.toHaveBeenCalled();
   });
 });
