@@ -1,5 +1,5 @@
 import type { ButtonType } from '../types';
-import { getClosestHTMLElement } from './dom';
+import { getClosestHTMLElement, setAttributes } from './dom';
 
 export const improveButtonHandlingForCustomElement = (
   element: HTMLElement,
@@ -30,16 +30,14 @@ export const handleButtonEvent = (
      */
     window.setTimeout(() => {
       if (!event.defaultPrevented) {
-        const fakeButton = document.createElement('button');
         const name = getName?.();
         const value = getValue?.();
-        if (name) {
-          fakeButton.name = name;
-        }
-        if (value) {
-          fakeButton.value = value;
-        }
-        fakeButton.type = getType();
+        const fakeButton = document.createElement('button');
+        setAttributes(fakeButton, {
+          ...(name && { name }),
+          ...(value && { value }),
+          type: getType(),
+        });
         fakeButton.style.display = 'none';
         form.appendChild(fakeButton);
         fakeButton.addEventListener('click', (fakeButtonEvent) => {
