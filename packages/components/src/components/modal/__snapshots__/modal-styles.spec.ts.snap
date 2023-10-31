@@ -32,7 +32,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity short cubic-bezier(.16,1,.3,1), backdrop-filter short cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter short cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, short) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter short cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter short cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -58,7 +58,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #FFF;
@@ -130,7 +130,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity short cubic-bezier(.16,1,.3,1), backdrop-filter short cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter short cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, short) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter short cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter short cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -159,7 +159,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -248,7 +248,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity short cubic-bezier(.16,1,.3,1), backdrop-filter short cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter short cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, short) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter short cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter short cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -274,7 +274,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -366,7 +366,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity short cubic-bezier(.16,1,.3,1), backdrop-filter short cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter short cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, short) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter short cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter short cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -395,7 +395,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #FFF;
@@ -464,7 +464,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity short cubic-bezier(.16,1,.3,1), backdrop-filter short cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter short cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, short) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter short cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter short cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -490,7 +490,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -562,7 +562,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity short cubic-bezier(.16,1,.3,1), backdrop-filter short cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter short cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, short) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter short cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter short cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -591,7 +591,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -680,7 +680,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity short cubic-bezier(.16,1,.3,1), backdrop-filter short cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter short cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, short) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter short cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter short cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -706,7 +706,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(.9,.9,1);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -797,7 +797,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity moderate cubic-bezier(.16,1,.3,1), backdrop-filter moderate cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter moderate cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, moderate) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -871,7 +871,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -1043,7 +1043,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity moderate cubic-bezier(.16,1,.3,1), backdrop-filter moderate cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter moderate cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, moderate) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1072,7 +1072,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   background: #FFF;
   outline: 0;
@@ -1153,7 +1153,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity moderate cubic-bezier(.16,1,.3,1), backdrop-filter moderate cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter moderate cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, moderate) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1179,7 +1179,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -1250,7 +1250,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity moderate cubic-bezier(.16,1,.3,1), backdrop-filter moderate cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter moderate cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, moderate) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1276,7 +1276,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   background: #0E0E12;
   outline: 0;
@@ -1360,7 +1360,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity moderate cubic-bezier(.16,1,.3,1), backdrop-filter moderate cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter moderate cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, moderate) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1389,7 +1389,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -1477,7 +1477,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity moderate cubic-bezier(.16,1,.3,1), backdrop-filter moderate cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter moderate cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, moderate) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1503,7 +1503,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -1594,7 +1594,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity moderate cubic-bezier(.16,1,.3,1), backdrop-filter moderate cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter moderate cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, moderate) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1623,7 +1623,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -1691,7 +1691,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity moderate cubic-bezier(.16,1,.3,1), backdrop-filter moderate cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter moderate cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, moderate) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1717,7 +1717,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #FFF;
@@ -1788,7 +1788,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity moderate cubic-bezier(.16,1,.3,1), backdrop-filter moderate cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter moderate cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, moderate) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1817,7 +1817,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -1905,7 +1905,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity moderate cubic-bezier(.16,1,.3,1), backdrop-filter moderate cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter moderate cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-motion-duration, moderate) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter moderate cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1931,7 +1931,7 @@ h2 {
   box-sizing: border-box;
   transform: scale3d(1,1,1);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #0E0E12;

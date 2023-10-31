@@ -27,7 +27,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
   width: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
   height: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
@@ -152,7 +152,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
   width: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
   height: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
@@ -250,7 +250,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
   width: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
   height: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
@@ -348,7 +348,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
   width: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
   height: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
@@ -446,7 +446,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
   width: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);
   height: clamp(36px, calc(calc(6px + 2.125ex) + 10vw - 20px), 40px);

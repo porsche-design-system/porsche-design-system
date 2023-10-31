@@ -50,7 +50,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -174,7 +174,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -298,7 +298,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -422,7 +422,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -546,7 +546,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -670,7 +670,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -794,7 +794,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -918,7 +918,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -1042,7 +1042,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);

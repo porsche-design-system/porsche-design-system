@@ -37,7 +37,7 @@ button::before {
   left: -4px;
   border-radius: 4px;
   z-index: -1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus::before {
   border: 2px solid #1A44EA;
@@ -57,7 +57,7 @@ button:not(:focus-visible)::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   opacity: 0;
   transform: rotate3d(0,0,1,0deg);
   transform-origin: 50% 50%;
@@ -102,7 +102,7 @@ button::before {
   left: -4px;
   border-radius: 4px;
   z-index: -1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus::before {
   border: 2px solid #1A44EA;
@@ -122,7 +122,7 @@ button:not(:focus-visible)::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   opacity: 0;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
@@ -167,7 +167,7 @@ button::before {
   left: -4px;
   border-radius: 4px;
   z-index: -1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus::before {
   border: 2px solid #1A44EA;
@@ -187,7 +187,7 @@ button:not(:focus-visible)::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   opacity: 1;
   transform: rotate3d(0,0,1,0deg);
   transform-origin: 50% 50%;
@@ -232,7 +232,7 @@ button::before {
   left: -4px;
   border-radius: 4px;
   z-index: -1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus::before {
   border: 2px solid #1A44EA;
@@ -252,7 +252,7 @@ button:not(:focus-visible)::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   opacity: 1;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
@@ -297,7 +297,7 @@ button::before {
   left: -4px;
   border-radius: 4px;
   z-index: -1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus::before {
   border: 2px solid #1A44EA;
@@ -317,7 +317,7 @@ button:not(:focus-visible)::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   opacity: 1;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;

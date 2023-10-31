@@ -73,7 +73,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -2px;
   left: -2px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -263,7 +263,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -2px;
   left: -2px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -423,7 +423,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -501,7 +501,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -604,7 +604,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label {
   position: relative;
@@ -676,7 +676,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -754,7 +754,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -832,7 +832,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -910,7 +910,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -2px;
   left: -2px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -987,7 +987,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -2px;
   left: -2px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -1089,7 +1089,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -2px;
   left: -2px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label {
   position: absolute;
@@ -1159,7 +1159,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   background-color: rgba(148, 149, 152, .18);
@@ -1239,7 +1239,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   background-color: rgba(148, 149, 152, .18);
@@ -1320,7 +1320,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -1377,7 +1377,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
