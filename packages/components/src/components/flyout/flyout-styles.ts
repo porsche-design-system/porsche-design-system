@@ -58,7 +58,7 @@ export const getComponentCss = (
                 transition: `visibility 0s linear ${motionDurationLong}`,
               }),
           ...getInsetJssStyle(),
-          ...getFrostedGlassBackgroundJssStyles(isOpen, motionDurationLong, theme),
+          ...getFrostedGlassBackgroundJssStyles(isOpen, 'long', theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
