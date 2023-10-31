@@ -14,7 +14,6 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
-import { expect } from '@playwright/test';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
