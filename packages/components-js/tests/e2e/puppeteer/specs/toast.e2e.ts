@@ -186,7 +186,7 @@ describe('toast-item', () => {
     const animationOut = await getElementStyle(toastItem, 'animation');
 
     expect(animationOut, 'for animationOut').toMatchInlineSnapshot(
-      `"0.6s cubic-bezier(0.4, 0, 0.5, 1) 0s 1 normal forwards running out"`
+      `"0s cubic-bezier(0.4, 0, 0.5, 1) 0s 1 normal forwards running out"`
     );
 
     await waitForAnimationFinish(); // wait another 600ms to be sure animation has finished

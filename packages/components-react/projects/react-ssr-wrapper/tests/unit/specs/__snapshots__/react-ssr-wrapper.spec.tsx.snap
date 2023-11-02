@@ -3526,7 +3526,7 @@ exports[`should render dsr component for PFlyout 1`] = `
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-motion-duration, long) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter long cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter long cubic-bezier(0.25,0.1,0.25,1) !important;
+  transition: opacity var(--p-motion-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-motion-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-motion-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter 0.6s cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5231,7 +5231,7 @@ exports[`should render dsr component for PModal 1`] = `
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-motion-duration, short) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter short cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter short cubic-bezier(0.25,0.1,0.25,1) !important;
+  transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), --webkit-backdrop-filter 0.25s cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
