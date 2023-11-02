@@ -10,7 +10,7 @@ export const config: StorefrontConfig = {
       'Porsche Design System': [() => import('@/pages/news/migration-guide.md')],
       Utilities: [() => import('@/pages/news/migration-guide-utilities.md')],
     },
-    Changelog: [() => import('@/../../components/CHANGELOG.md')],
+    Changelog: [() => import('@/pages/changelog.md')],
     Roadmap: [() => import('@/pages/news/roadmap.md')],
   },
   Designing: {

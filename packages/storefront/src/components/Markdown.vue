@@ -12,15 +12,15 @@
 
   @Component
   export default class Markdown extends Vue {
-    mounted() {
+    mounted(): void {
       this.highlightDiffs();
     }
 
-    updated() {
+    updated(): void {
       this.highlightDiffs();
     }
 
-    highlightDiffs() {
+    highlightDiffs(): void {
       this.$el
         .querySelectorAll('pre[class*="diff"], code[class*="diff"]')
         .forEach((diff) => Prism.highlightElement(diff));
@@ -116,7 +116,10 @@
         h2 {
           @include pds-heading-x-large;
           margin-top: $pds-spacing-fluid-large;
+        }
 
+        h2,
+        h3 {
           // for anchor links with table of contents
           &[id] {
             p-link-pure {
