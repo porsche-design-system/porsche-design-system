@@ -1,19 +1,19 @@
-import { useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { type JSX, useState } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { routes } from './routes';
 
 export const App = (): JSX.Element => {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState('');
+  const [route, setRoute] = useState(useLocation().pathname);
 
   return (
     <>
       <select
-        value={selected}
+        value={route}
         onChange={(e) => {
           const { value } = e.target;
           navigate(value);
-          setSelected(value);
+          setRoute(value);
         }}
       >
         <option disabled value="">
