@@ -1,6 +1,8 @@
 <template>
   <div v-if="links.length > 1" class="toc">
-    <p-heading :theme="storefrontTheme" size="medium" tag="h2">Table of Contents</p-heading>
+    <p-heading :theme="storefrontTheme" size="medium" tag="h2">{{
+      isChangelog ? 'Last Releases' : 'Table of Contents'
+    }}</p-heading>
     <ul>
       <li v-for="(link, index) in links" :key="index">
         <p-link-pure
@@ -18,15 +20,19 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
+  import { Prop } from 'vue-property-decorator';
   import { paramCase } from 'change-case';
   import { componentsReady } from '@porsche-design-system/components-js';
   import { getAnchorLink } from '@/utils';
-  import { StorefrontTheme } from '@/models';
+  import type { StorefrontTheme } from '@/models';
 
   type Link = { href: string; title: string };
 
   @Component
   export default class TableOfContents extends Vue {
+    @Prop({ default: 'h2' }) public tag!: 'h2' | 'h3';
+    @Prop({ default: false }) public isChangelog!: boolean;
+
     links: Link[] = [];
     returnIcon = require('../assets/icon-return.svg');
 
@@ -38,35 +44,44 @@
       // cut off trailing `#` character
       const currentUrl = getAnchorLink('').slice(0, -1);
 
-      this.links = Array.from<HTMLElement>(this.$el.parentElement!.parentElement!.querySelectorAll('h2')).map((h2) => {
-        const { innerText } = h2;
-        const id = paramCase(innerText);
-        const href = currentUrl + '#' + id;
+      this.links = Array.from<HTMLElement>(this.$el.parentElement!.parentElement!.querySelectorAll(this.tag)).map(
+        (heading) => {
+          const { innerText } = heading;
+          const title = this.isChangelog ? innerText.replace(/\[(\d+\.\d+\.\d+(-.+)?)].+/, '$1') : innerText;
+          const id = (this.isChangelog ? 'v' : '') + paramCase(title); // hash needs to start with a letter
+          const href = currentUrl + '#' + id;
 
-        // add anchor link to headline
-        const link = document.createElement('p-link-pure');
-        /* eslint-disable @typescript-eslint/no-explicit-any */
-        (link as any).theme = this.storefrontTheme;
-        (link as any).size = 'inherit';
-        (link as any).innerText = '#';
-        (link as any).title = 'Link to this heading';
-        (link as any).icon = 'none';
-        (link as any).href = encodeURI(href);
-        /* eslint-enable */
-        link.addEventListener('click', (e) => {
-          this.onLinkClick({ title: '', href }, e);
-        });
+          // add anchor link to headline
+          const link = document.createElement('p-link-pure');
+          /* eslint-disable @typescript-eslint/no-explicit-any */
+          (link as any).theme = this.storefrontTheme;
+          (link as any).size = 'inherit';
+          (link as any).innerText = '#';
+          (link as any).title = 'Link to this heading';
+          (link as any).icon = 'none';
+          (link as any).href = encodeURI(href);
+          /* eslint-enable */
+          link.addEventListener('click', (e) => {
+            this.onLinkClick({ title: '', href }, e);
+          });
 
-        h2.append(link);
-        h2.id = id;
-        // enable programmatic focusing, so that keyboard users don't break flow when using TOC
-        h2.tabIndex = -1;
+          heading.append(link);
+          heading.id = id;
+          // enable programmatic focusing, so that keyboard users don't break flow when using TOC
+          heading.tabIndex = -1;
 
-        return {
-          href,
-          title: innerText,
-        };
-      });
+          return {
+            href,
+            title,
+          };
+        }
+      );
+
+      if (this.isChangelog) {
+        this.links = this.links
+          .filter((item) => !item.title.match(/-(?:rc|alpha|beta)/)) // keep only stable releases
+          .slice(1, 6); // skip unreleased and limit to 5
+      }
 
       componentsReady().then(this.scrollToAnchorLink);
     }
