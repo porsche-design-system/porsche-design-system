@@ -2134,6 +2134,7 @@ exports[`should match snapshot 1`] = `
       "disabled": false,
       "value": null,
     },
+    "requiredParent": "p-multi-select",
     "requiredProps": [
       "value",
     ],
