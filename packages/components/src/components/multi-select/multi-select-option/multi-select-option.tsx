@@ -4,6 +4,7 @@ import {
   attachComponentCss,
   getOptionAriaAttributes,
   getPrefixedTagNames,
+  throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
@@ -27,6 +28,10 @@ export class MultiSelectOption {
 
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;
+
+  public connectedCallback(): void {
+    throwIfParentIsNotOfKind(this.host, 'p-multi-select');
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

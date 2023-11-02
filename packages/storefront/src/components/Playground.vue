@@ -346,7 +346,7 @@
   }
 
   .demo {
-    width: 100%;
+    min-width: 100%;
   }
 
   .code-block {
