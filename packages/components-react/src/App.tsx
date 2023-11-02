@@ -1,10 +1,12 @@
 import { type JSX, useState } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { routes } from './routes';
+import { PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react';
 
 export const App = (): JSX.Element => {
   const navigate = useNavigate();
   const [route, setRoute] = useState(useLocation().pathname);
+  const [theme, setTheme] = useState<Theme>('light');
 
   return (
     <>
@@ -24,14 +26,22 @@ export const App = (): JSX.Element => {
         ))}
       </select>
 
+      <select value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="auto">Auto</option>
+      </select>
+
       <div id="app">
-        <Routes>
-          {routes
-            .filter((route) => !route.isDisabled)
-            .map((route, i) => (
-              <Route key={i} {...route} />
-            ))}
-        </Routes>
+        <PorscheDesignSystemProvider cdn="auto" theme={theme}>
+          <Routes>
+            {routes
+              .filter((route) => !route.isDisabled)
+              .map((route, i) => (
+                <Route key={i} {...route} />
+              ))}
+          </Routes>
+        </PorscheDesignSystemProvider>
       </div>
     </>
   );
