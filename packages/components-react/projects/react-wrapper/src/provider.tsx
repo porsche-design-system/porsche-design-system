@@ -3,18 +3,26 @@
 import type { PropsWithChildren, JSX } from 'react';
 import { createContext, useEffect } from 'react';
 import { load } from '@porsche-design-system/components-js';
+import type { Theme } from './lib/types';
 
 // to warn users about missing PorscheDesignSystemProvider, we set the default values as undefined
-export const PorscheDesignSystemContext = createContext<{ prefix?: string }>({
+export const PorscheDesignSystemContext = createContext<{ prefix?: string; theme: Theme }>({
   prefix: undefined,
+  theme: 'light',
 });
 
 type Props = {
   prefix?: string;
   cdn?: 'auto' | 'cn';
+  theme?: Theme;
 };
 
-export const PorscheDesignSystemProvider = ({ prefix = '', cdn, ...props }: PropsWithChildren<Props>): JSX.Element => {
+export const PorscheDesignSystemProvider = ({
+  prefix = '',
+  cdn,
+  theme = 'light',
+  ...props
+}: PropsWithChildren<Props>): JSX.Element => {
   // @ts-ignore
   if (!process.browser) {
     // for ssr we set the global PORSCHE_DESIGN_SYSTEM_CDN_URL variable that is used in our getCDNBaseURL() util to respect the cdn
@@ -27,5 +35,5 @@ export const PorscheDesignSystemProvider = ({ prefix = '', cdn, ...props }: Prop
     load({ prefix, cdn });
   }, []); // runtime prefix or cdn change is not supported
 
-  return <PorscheDesignSystemContext.Provider value={{ prefix }} {...props} />;
+  return <PorscheDesignSystemContext.Provider value={{ prefix, theme }} {...props} />;
 };

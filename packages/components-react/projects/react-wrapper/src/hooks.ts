@@ -4,7 +4,7 @@ import type { MutableRefObject } from 'react';
 import { useContext, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { PorscheDesignSystemContext } from './provider';
 import { getMergedClassName } from './utils';
-import type { ToastMessage } from './lib/types';
+import type { Theme, ToastMessage } from './lib/types';
 
 let skipCheck = false;
 
@@ -27,6 +27,14 @@ export const usePrefix = (tagName: string): string => {
     }
 
     return prefix ? prefix + '-' + tagName : tagName;
+  }
+};
+
+export const useTheme = (): Theme => {
+  if (process.env.NODE_ENV === 'test' && skipCheck) {
+    return 'light';
+  } else {
+    return useContext(PorscheDesignSystemContext).theme; // eslint-disable-line react-hooks/rules-of-hooks
   }
 };
 

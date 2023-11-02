@@ -165,6 +165,7 @@
 
           app.innerHTML = '';
           app.innerHTML = (await (await fetch(`/${directory}/${page}.html`)).text()).replace(/>(\s)*</g, '><');
+          // TODO: why not replace all of this inside the static html instead of manipulating afterwards?
           app.querySelectorAll('*').forEach((el) => (el.theme = theme));
           app.querySelectorAll('.playground').forEach((el) => {
             el.classList.remove('light', 'dark', 'auto');

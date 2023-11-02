@@ -28,6 +28,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ...(hasEventProps ? ['useEventCallback'] : []),
       'useMergedClass',
       'usePrefix',
+      ...(extendedProps.some(({ key }) => key === 'theme') ? ['useTheme'] : []),
     ];
     const importsFromHooks = `import { ${hooksImports.join(', ')} } from '../../hooks';`;
 
@@ -59,7 +60,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
     const wrapperPropsArr: string[] = [
       ...propsToDestructure.map(({ key, defaultValue, isEvent }) =>
-        isEvent || defaultValue === undefined ? key : `${key} = ${defaultValue}`
+        isEvent || defaultValue === undefined || key === 'theme' ? key : `${key} = ${defaultValue}`
       ),
       'className',
       '...rest',
@@ -89,7 +90,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     }, [${firstPropToSync.key}]);`,
           ]
         : [
-            `const propsToSync = [${propsToSync.map(({ key }) => key).join(', ')}];`,
+            `const propsToSync = [${propsToSync
+              .map(({ key }) => key + (key === 'theme' ? ' || useTheme()' : ''))
+              .join(', ')}];`,
             `useBrowserLayoutEffect(() => {
       const { current } = elementRef;
       [${propsToSync.map(({ key }) => `'${key}'`).join(', ')}].forEach(
