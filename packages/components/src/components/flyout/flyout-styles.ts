@@ -76,11 +76,12 @@ export const getComponentCss = (
       background: backgroundColor,
       opacity: isOpen ? 1 : 0,
       transform: isOpen ? 'initial' : `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
-      transition: `${getTransition('opacity', 'long', easing, isOpen ? '0s' : 'long')}, ${getTransition(
-        'transform',
-        'long',
-        easing
-      )}`,
+      transition: `${getTransition(
+        'opacity',
+        isOpen ? 'long' : 'short',
+        easing,
+        isOpen ? '0s' : 'long'
+      )}, ${getTransition('transform', 'long', easing)}`,
       boxShadow: `${isPositionStart ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: primaryColorDark,

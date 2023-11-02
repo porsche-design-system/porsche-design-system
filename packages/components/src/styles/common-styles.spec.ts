@@ -19,7 +19,7 @@ describe('getTransition()', () => {
       keyof PropertiesHyphen,
       MotionDurationKeyFinal | '0s',
       MotionEasingKeyFinal | 'linear' | 'none',
-      MotionDurationKeyFinal,
+      MotionDurationKeyFinal | '0s',
       string
     ]
   >([
@@ -54,7 +54,7 @@ describe('getTransition()', () => {
       'color var(--p-motion-duration, 1.2s) linear var(--p-motion-duration, 1.2s)',
     ],
 
-    ['box-shadow', '0s', 'none', undefined, 'box-shadow var(--p-motion-duration, 0s)'],
+    ['box-shadow', '0s', 'none', '0s', 'box-shadow var(--p-motion-duration, 0s) var(--p-motion-duration, 0s)'],
   ])(
     'should for cssProperty: %s, duration: %s, ease: %s and delay: %s return %s',
     (cssProperty, duration, ease, delay, expected) => {

@@ -2,7 +2,7 @@ import type { JssStyle } from 'jss';
 import {
   getMediaQueryMin,
   gridExtendedOffsetBase,
-  motionDurationLong,
+  motionDurationModerate,
   motionEasingIn,
   motionEasingOut,
 } from '@porsche-design-system/utilities-v2';
@@ -21,8 +21,8 @@ const cssVariablePositionBottomInternal = '--p-internal-toast-position-bottom';
 
 const duration =
   ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test'
-    ? `var(${cssVariableMotionDuration},${motionDurationLong})`
-    : motionDurationLong;
+    ? `var(${cssVariableMotionDuration},${motionDurationModerate})`
+    : motionDurationModerate;
 
 export type KeyframesDirection = 'in' | 'out';
 export const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssStyle): JssStyle => {

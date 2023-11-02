@@ -52,7 +52,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         borderRadius: 0,
       }
     : {
-        minWidth: '276px', // on viewport 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
+        minWidth: '276px', // on viewpotranslateY(25%)rt 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
         maxWidth: '1535.5px', // on viewport 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
         minHeight: 'auto',
         margin: `${marginTopBottom} ${gridExtendedOffsetBase}`,
@@ -161,7 +161,7 @@ export const getComponentCss = (
         color: primaryColor, // enables color inheritance for slotted content
         position: 'relative',
         boxSizing: 'border-box',
-        transform: isOpen ? 'scale3d(1,1,1)' : 'scale3d(.9,.9,1)',
+        transform: isOpen ? 'translateY(0%)' : 'translateY(25%)',
         opacity: isOpen ? 1 : 0,
         transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
         paddingTop: hasDismissButton ? pxToRemWithUnit(32) : contentPadding, // rem value needed to prevent overlapping of close button and contents in scaling mode

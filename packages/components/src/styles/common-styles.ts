@@ -48,7 +48,7 @@ export const getTransition = (
 ): string =>
   `${cssProperty} var(${cssVariableMotionDuration}, ${duration === '0s' ? duration : motionDurationMap[duration]})${
     easing === 'none' ? '' : ` ${easing === 'linear' ? easing : motionEasingMap[easing]}`
-  }${delay ? ` var(${cssVariableMotionDuration}, ${motionDurationMap[delay]})` : ''}`;
+  }${delay ? ` var(${cssVariableMotionDuration}, ${delay === '0s' ? delay : motionDurationMap[delay]})` : ''}`;
 
 export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
 

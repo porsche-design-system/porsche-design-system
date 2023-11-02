@@ -43,7 +43,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './carousel-styles';
-import { gridGap, motionDurationModerate } from '@porsche-design-system/utilities-v2';
+import { gridGap, motionDurationModerate, motionEasingBase } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
@@ -181,6 +181,7 @@ export class Carousel {
       start: this.activeSlideIndex,
       autoWidth: this.slidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
       arrows: false,
+      easing: motionEasingBase,
       pagination: false,
       rewind: this.rewind,
       rewindByDrag: true, // only works when rewind: true

@@ -56,7 +56,7 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
   transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 32px;
@@ -157,7 +157,7 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
   transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
@@ -272,7 +272,7 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
   transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
@@ -393,7 +393,7 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
   transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 32px;
@@ -488,7 +488,7 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
   transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 32px;
@@ -589,7 +589,7 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
   transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
@@ -704,7 +704,7 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
   transition: opacity var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-motion-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
@@ -869,7 +869,7 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
   transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
@@ -1070,7 +1070,7 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
   transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
@@ -1177,7 +1177,7 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
   transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
@@ -1274,7 +1274,7 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
   transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
@@ -1387,7 +1387,7 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
   transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
@@ -1501,7 +1501,7 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
   transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
@@ -1621,7 +1621,7 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
   transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
@@ -1715,7 +1715,7 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
   transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
@@ -1815,7 +1815,7 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
   transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
@@ -1929,7 +1929,7 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
   transition: opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
