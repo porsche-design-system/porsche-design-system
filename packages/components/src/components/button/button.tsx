@@ -118,7 +118,13 @@ export class Button {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <button {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)} class="root" type={this.type}>
+      <button
+        {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
+        class="root"
+        type={this.type}
+        name={this.name}
+        value={this.value}
+      >
         {this.loading && (
           <PrefixedTagNames.pSpinner
             class="spinner"

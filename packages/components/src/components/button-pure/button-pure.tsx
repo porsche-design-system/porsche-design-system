@@ -173,7 +173,13 @@ export class ButtonPure {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <button {...getButtonPureAriaAttributes(this.disabled, this.loading, this.aria)} class="root" type={this.type}>
+      <button
+        {...getButtonPureAriaAttributes(this.disabled, this.loading, this.aria)}
+        class="root"
+        type={this.type}
+        name={this.name}
+        value={this.value}
+      >
         {this.loading ? (
           <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
         ) : (
