@@ -148,7 +148,7 @@ it('should have correct transform when dismissed and opened', async () => {
   const getModalTransform = async () => getElementStyle(await getModal(), 'transform', { waitForTransition: true });
 
   const initialModalTransform = await getModalTransform();
-  expect(initialModalTransform).toBe('matrix(0.9, 0, 0, 0.9, 0, 0)');
+  expect(initialModalTransform).toBe('matrix(1, 0, 0, 1, 0, 33.5)');
 
   await openModal();
   const openModalTransform = await getModalTransform();
@@ -156,6 +156,7 @@ it('should have correct transform when dismissed and opened', async () => {
   expect(initialModalTransform).not.toBe(openModalTransform);
 
   await dismissModal();
+  await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // transition delay for visibility
   const finalModalTransform = await getModalTransform();
   expect(finalModalTransform).toBe(initialModalTransform);
 });
