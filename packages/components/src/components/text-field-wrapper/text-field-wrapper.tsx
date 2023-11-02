@@ -285,7 +285,7 @@ export class TextFieldWrapper {
               disabled={disabled}
               onClick={() => this.input.showPicker()}
             >
-              {`Show ${this.isCalendar ? 'date' : 'time'} picker`}
+              Show ${this.isCalendar ? 'date' : 'time'} picker
             </PrefixedTagNames.pButtonPure>
           ) : (
             this.isSearch && [
@@ -313,8 +313,8 @@ export class TextFieldWrapper {
               ),
               <PrefixedTagNames.pButtonPure
                 {...buttonProps}
-                type="button"
                 key="btn-clear"
+                type="button"
                 icon="close"
                 tabIndex={-1}
                 hidden={!this.isClearable}
@@ -326,12 +326,12 @@ export class TextFieldWrapper {
               this.hasAction && (
                 <PrefixedTagNames.pButtonPure
                   {...buttonProps}
-                  type="button"
                   key="btn-action"
+                  type="button"
                   icon="locate"
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
-                  onClick={!this.actionLoading ? () => this.action.emit() : null}
+                  onClick={!this.actionLoading ? this.action.emit : null}
                   loading={this.actionLoading}
                 >
                   Locate me
