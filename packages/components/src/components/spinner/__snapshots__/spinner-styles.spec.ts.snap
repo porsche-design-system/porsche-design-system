@@ -12,7 +12,7 @@ exports[`getComponentCss() should return correct css for size: "inherit" and the
 svg {
   display: block;
   fill: none;
-  animation: $rotator var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
 }
 circle:first-child {
   stroke: #88898C;
@@ -75,7 +75,7 @@ exports[`getComponentCss() should return correct css for size: "inherit" and the
 svg {
   display: block;
   fill: none;
-  animation: $rotator var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
@@ -138,7 +138,7 @@ exports[`getComponentCss() should return correct css for size: "large" and theme
 svg {
   display: block;
   fill: none;
-  animation: $rotator var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
 }
 circle:first-child {
   stroke: #88898C;
@@ -201,7 +201,7 @@ exports[`getComponentCss() should return correct css for size: "large" and theme
 svg {
   display: block;
   fill: none;
-  animation: $rotator var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
@@ -264,7 +264,7 @@ exports[`getComponentCss() should return correct css for size: "medium" and them
 svg {
   display: block;
   fill: none;
-  animation: $rotator var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
 }
 circle:first-child {
   stroke: #88898C;
@@ -327,7 +327,7 @@ exports[`getComponentCss() should return correct css for size: "medium" and them
 svg {
   display: block;
   fill: none;
-  animation: $rotator var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
@@ -390,7 +390,7 @@ exports[`getComponentCss() should return correct css for size: "small" and theme
 svg {
   display: block;
   fill: none;
-  animation: $rotator var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
 }
 circle:first-child {
   stroke: #88898C;
@@ -453,7 +453,7 @@ exports[`getComponentCss() should return correct css for size: "small" and theme
 svg {
   display: block;
   fill: none;
-  animation: $rotator var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
@@ -516,7 +516,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
 svg {
   display: block;
   fill: none;
-  animation: $rotator var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
 }
 circle:first-child {
   stroke: #88898C;
@@ -614,7 +614,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
 svg {
   display: block;
   fill: none;
-  animation: $rotator var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
 }
 circle:first-child {
   stroke: #6B6D70;

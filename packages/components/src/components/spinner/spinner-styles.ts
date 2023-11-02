@@ -46,7 +46,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       svg: {
         display: 'block', // for correct vertical alignment
         fill: 'none',
-        animation: `$rotator ${animationDuration} linear infinite`,
+        animation: `$rotate ${animationDuration} linear infinite`,
       },
       circle: {
         '&:first-child': {
