@@ -2,7 +2,7 @@ import * as handleButtonUtils from './button-handling';
 import { handleButtonEvent, improveButtonHandlingForCustomElement } from './button-handling';
 
 describe('improveButtonHandlingForCustomElement()', () => {
-  test('it should add a click event listener to the element', () => {
+  it('should add a click event listener to the element', () => {
     const element = document.createElement('button');
     const getType = jest.fn().mockReturnValue('button');
     const getName = jest.fn().mockReturnValue('name');
@@ -30,7 +30,7 @@ describe('handleButtonEvent()', () => {
   const getName = jest.fn().mockReturnValue('name');
   const getValue = jest.fn().mockReturnValue('value');
 
-  test('it should create a submit button and click it', (done) => {
+  it('should create a submit button and click it', (done) => {
     const getDisabled = jest.fn().mockReturnValue(false);
     const form = document.createElement('form');
     document.body.appendChild(form);
@@ -58,7 +58,7 @@ describe('handleButtonEvent()', () => {
     }, 10);
   });
 
-  test('it should not create a submit button if disabled', () => {
+  it('should not create a submit button if disabled', () => {
     const getDisabled = jest.fn().mockReturnValue(true);
     const form = document.createElement('form');
     document.body.appendChild(form);
@@ -71,7 +71,7 @@ describe('handleButtonEvent()', () => {
     expect(createElementSpy).not.toHaveBeenCalled();
   });
 
-  test('it should not create a submit button if not within form', () => {
+  it('should not create a submit button if not within form', () => {
     const getDisabled = jest.fn().mockReturnValue(true);
     const createElementSpy = jest.spyOn(document, 'createElement');
     handleButtonEvent(new MouseEvent('click'), element, getType, getDisabled, getName, getValue);
