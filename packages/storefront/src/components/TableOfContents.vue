@@ -47,6 +47,7 @@
       this.links = Array.from<HTMLElement>(this.$el.parentElement!.parentElement!.querySelectorAll(this.tag)).map(
         (heading) => {
           const { innerText } = heading;
+          // extract version '3.8.0' from '[3.8.0] - 2023-11-02'
           const title = this.isChangelog ? innerText.replace(/\[(\d+\.\d+\.\d+(-.+)?)].+/, '$1') : innerText;
           const id = (this.isChangelog ? 'v' : '') + paramCase(title); // hash needs to start with a letter
           const href = currentUrl + '#' + id;
