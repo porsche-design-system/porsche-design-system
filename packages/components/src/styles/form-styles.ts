@@ -26,6 +26,7 @@ export const INPUT_HEIGHT = 54;
 
 export type ChildSelector = 'input' | 'select' | 'textarea';
 
+// TODO: rename to getSlottedInputTextareaSelectStyles
 export const getBaseChildStyles = (
   child: ChildSelector,
   state: FormState,
@@ -47,6 +48,7 @@ export const getBaseChildStyles = (
 
   return {
     [`::slotted(${child})`]: {
+      // TODO: gridArea should be defined by integrating style
       gridArea: '3 / 1 / auto / span 3',
       display: 'block',
       width: '100%',

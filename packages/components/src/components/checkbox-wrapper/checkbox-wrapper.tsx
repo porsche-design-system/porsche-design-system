@@ -14,9 +14,9 @@ import {
   unobserveAttributes,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import { getComponentCss } from './checkbox-wrapper-styles';
-import type { CheckboxWrapperState } from './checkbox-wrapper-utils';
+import { type CheckboxWrapperState } from './checkbox-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 
