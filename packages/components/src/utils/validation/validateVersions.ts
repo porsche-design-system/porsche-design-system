@@ -36,8 +36,12 @@ export const sortVersions = (versionA: Version, versionB: Version): number => {
   const b = versionB.replace('-rc', '').split('.').map(Number);
 
   for (let i = 0; i < a.length; i++) {
-    if (a[i] < b[i]) return -1;
-    if (a[i] > b[i]) return 1;
+    if (a[i] < b[i]) {
+      return -1;
+    }
+    if (a[i] > b[i]) {
+      return 1;
+    }
   }
 
   return 0;
