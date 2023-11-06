@@ -1,5 +1,5 @@
 import { consoleWarn } from '../log';
-import { PorscheDesignSystem } from '../../types';
+import type { PorscheDesignSystem } from '../../types';
 
 export type Version = keyof Omit<PorscheDesignSystem, 'cdn'>;
 

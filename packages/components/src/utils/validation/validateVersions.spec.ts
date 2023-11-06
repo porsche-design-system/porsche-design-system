@@ -1,5 +1,5 @@
 import * as validateVersionsUtils from './validateVersions';
-import { sortVersions, validateVersions, Version } from './validateVersions';
+import { sortVersions, validateVersions, type Version } from './validateVersions';
 import * as loggerUtils from '../log/logger';
 
 describe('validateVersions()', () => {
