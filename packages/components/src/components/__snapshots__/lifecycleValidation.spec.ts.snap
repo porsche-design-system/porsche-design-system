@@ -31,8 +31,10 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "icon": "string",
   "iconSource": "string",
   "loading": "boolean",
+  "name": "string",
   "theme": "oneOf",
   "type": "oneOf",
+  "value": "string",
   "variant": "oneOf",
 }
 `;
@@ -53,10 +55,12 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "icon": "string",
   "iconSource": "string",
   "loading": "boolean",
+  "name": "string",
   "size": "breakpoint",
   "stretch": "breakpoint",
   "theme": "oneOf",
   "type": "oneOf",
+  "value": "string",
   "weight": "oneOf",
 }
 `;
