@@ -16,11 +16,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Text Field Wrapper` has improved RTL (right-to-left) support
+- `Text Field Wrapper`: Improved RTL (right-to-left) support
+- `Pin Code`: Prop values from `1` to `6` are now supported for `length` prop
+  ([#2859](https://github.com/porsche-design-system/porsche-design-system/pull/2859))
+- `Model Signature` asset for `model="macan"`
+  ([#2857](https://github.com/porsche-design-system/porsche-design-system/pull/2857))
 
-### 3.8.0 - 2023-10-24
+#### Fixed
 
-### 3.8.0-rc.0 - 2023-10-23
+- Safari 15 default margin of button elements in several components
+  ([#2858](https://github.com/porsche-design-system/porsche-design-system/pull/2858))
+- `Checkbox Wrapper` and `Radio Button Wrapper` border-color/background-color does not reset on hover
+  ([#2852](https://github.com/porsche-design-system/porsche-design-system/pull/2852))
+
+### [3.8.0] - 2023-10-24
+
+### [3.8.0-rc.0] - 2023-10-23
 
 #### Added
 

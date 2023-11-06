@@ -13,6 +13,9 @@ performance and less potential for layout shifts.
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected into the `<head>` of your `index.html`.
 
+An in-depth optimization guide can be found at
+[Vanilla Js Optimization](must-know/initialization/vanilla-js#optimization).
+
 ## Supported options
 
 `type FontWeight = 'thin' | 'regular' | 'semi-bold' | 'bold'`

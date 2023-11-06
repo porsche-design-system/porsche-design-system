@@ -1,7 +1,7 @@
 import type { PuppeteerNodeLaunchOptions } from 'puppeteer';
 
 const launch: PuppeteerNodeLaunchOptions = {
-  headless: true, // https://developer.chrome.com/articles/new-headless/#new-headless-in-puppeteer
+  headless: 'new', // https://developer.chrome.com/articles/new-headless/#new-headless-in-puppeteer
   defaultViewport: {
     width: 1920,
     height: 800,

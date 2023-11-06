@@ -10,6 +10,9 @@ To achieve this bootstrapping **earlier** we provide a partial in all
 `@porsche-design-system/components-{js|angular|react|vue}` packages which needs to be injected into the `<body>` of your
 `index.html`.
 
+An in-depth optimization guide can be found at
+[Vanilla Js Optimization](must-know/initialization/vanilla-js#optimization).
+
 ## Supported options
 
 <!-- prettier-ignore -->

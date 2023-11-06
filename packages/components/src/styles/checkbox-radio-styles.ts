@@ -95,12 +95,14 @@ export const getSlottedCheckboxRadioButtonStyles = (
         ...(!isHighContrastMode &&
           hoverMediaQuery({
             '&(input:hover),.label:hover~* &(input)': {
+              transition: 'unset', // Fixes chrome bug where border-color is stuck on hover color
               borderColor: uncheckedHoverColor,
               ...prefersColorSchemeDarkMediaQuery(theme, {
                 borderColor: uncheckedHoverColorDark,
               }),
             },
             '&(input:checked:hover),.label:hover~* &(input:checked)': {
+              transition: 'unset', // Fixes chrome bug where border-color is stuck on hover color
               borderColor: checkedHoverColor,
               backgroundColor: checkedHoverColor,
               ...prefersColorSchemeDarkMediaQuery(theme, {

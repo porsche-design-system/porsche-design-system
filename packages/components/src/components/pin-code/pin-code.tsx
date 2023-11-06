@@ -2,9 +2,22 @@ import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop }
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEvent } from './pin-code-utils';
 import {
+  getConcatenatedInputValues,
+  getSanitisedValue,
+  hiddenInputSlotName,
+  initHiddenInput,
+  isFormSubmittable,
+  isInputSingleDigit,
+  PIN_CODE_LENGTHS,
+  PIN_CODE_TYPES,
+  removeWhiteSpaces,
+  syncHiddenInput,
+} from './pin-code-utils';
+import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
+  getClosestHTMLElement,
   getPrefixedTagNames,
   hasDescription,
   hasLabel,
@@ -17,21 +30,8 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
-import {
-  initHiddenInput,
-  isInputSingleDigit,
-  getConcatenatedInputValues,
-  hiddenInputSlotName,
-  PIN_CODE_LENGTHS,
-  PIN_CODE_TYPES,
-  syncHiddenInput,
-  getSanitisedValue,
-  removeWhiteSpaces,
-  isFormSubmittable,
-} from './pin-code-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import { getClosestHTMLElement } from '../../utils/dom';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
