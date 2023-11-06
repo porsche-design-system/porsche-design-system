@@ -10,13 +10,9 @@ export type Version = `${number}.${number}.${number}${`-rc.${number}` | ''}`;
 export const validateVersions = () => {
   const { cdn, ...versions } = document.porscheDesignSystem;
   if (Object.keys(versions).length > 1) {
-    const sanitizedVersions = Object.keys(versions).reduce((result, key) => {
-      result[key] = versions[key].prefixes;
-      return result;
-    }, {});
-    const sortedVersions = Object.entries(sanitizedVersions).sort((a: [Version, string[]], b: [Version, string[]]) =>
-      sortVersions(a[0], b[0])
-    );
+    const sortedVersions = Object.entries(versions)
+      .map(([version, { prefixes }]) => [version, prefixes])
+      .sort((a: [Version, string[]], b: [Version, string[]]) => sortVersions(a[0], b[0]));
     consoleWarn(
       `Multiple different versions are used with following prefixes:\n`,
       Object.fromEntries(sortedVersions),
