@@ -7,15 +7,16 @@ export type Version = `${number}.${number}.${number}${`-rc.${number}` | ''}`;
  * Validates the versions of the Porsche Design System and logs a warning if multiple different versions are detected.
  * If multiple versions are found, it recommends upgrading to the latest used version.
  */
-export const validateVersions = () => {
+export const validateVersions = (): void => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { cdn, ...versions } = document.porscheDesignSystem;
   if (Object.keys(versions).length > 1) {
     const sortedVersions = Object.entries(versions)
       .map(([version, { prefixes }]) => [version, prefixes])
       .sort((a: [Version, string[]], b: [Version, string[]]) => sortVersions(a[0], b[0]));
     consoleWarn(
-      `Multiple different versions are used with following prefixes:\n`,
-      Object.fromEntries(sortedVersions),
+      'Multiple different versions are used with following prefixes:\n',
+      Object.fromEntries(sortedVersions) as object,
       `\nPlease upgrade all instances to the latest used version: ${sortedVersions.at(-1)[0]}`
     );
   }
