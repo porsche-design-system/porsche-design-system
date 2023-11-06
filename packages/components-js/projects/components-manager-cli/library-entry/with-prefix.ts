@@ -9,7 +9,7 @@ declare global {
 
   interface Document {
     porscheDesignSystem: {
-      [key: `${number}.${number}.${number}`]: {
+      [key: `${number}.${number}.${number}${`-rc.${number}` | ''}`]: {
         prefixes: string[];
         isReady: () => Promise<void>;
         readyResolve: () => void;
