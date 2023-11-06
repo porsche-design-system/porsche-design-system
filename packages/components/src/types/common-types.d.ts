@@ -27,11 +27,27 @@ export type { LinkTarget } from '../utils/link-button/link-target';
 
 export type { AlignLabel, AlignLabelDeprecated } from '../utils/link-button/align-label';
 
+export type PorscheDesignSystem = {
+  [key: `${number}.${number}.${number}${`-rc.${number}` | ''}`]: {
+    prefixes: string[];
+    isReady: () => Promise<void>;
+    readyResolve: () => void;
+  };
+  cdn: {
+    url: string;
+    prefixes: string[]; // to not break older versions
+  };
+};
+
 // ROLLUP_REPLACE_VARIABLES are replaced via rollup
 declare global {
   const ROLLUP_REPLACE_IS_STAGING: string;
   const ROLLUP_REPLACE_VERSION: string;
   const ROLLUP_REPLACE_CDN_BASE_URL: string;
+
+  interface Document {
+    porscheDesignSystem: PorscheDesignSystem;
+  }
 }
 
 import type { AriaAttributes } from './aria-types';
