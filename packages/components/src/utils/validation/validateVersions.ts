@@ -1,7 +1,7 @@
 import { consoleWarn } from '../log';
+import { PorscheDesignSystem } from '../../types';
 
-// TODO: Reuse everywhere?
-export type Version = `${number}.${number}.${number}${`-rc.${number}` | ''}`;
+export type Version = keyof Omit<PorscheDesignSystem, 'cdn'>;
 
 /**
  * Validates the versions of the Porsche Design System and logs a warning if multiple different versions are detected.

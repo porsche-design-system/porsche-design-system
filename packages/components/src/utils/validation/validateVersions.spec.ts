@@ -1,22 +1,6 @@
-import { sortVersions, validateVersions, Version } from './validateVersions';
 import * as validateVersionsUtils from './validateVersions';
+import { sortVersions, validateVersions, Version } from './validateVersions';
 import * as loggerUtils from '../log/logger';
-
-declare global {
-  interface Document {
-    porscheDesignSystem: {
-      [key: `${number}.${number}.${number}`]: {
-        prefixes: string[];
-        isReady: () => Promise<void>;
-        readyResolve: () => void;
-      };
-      cdn: {
-        url: string;
-        prefixes: string[]; // to not break older versions
-      };
-    };
-  }
-}
 
 describe('validateVersions()', () => {
   it('should warn about multiple used versions', () => {
