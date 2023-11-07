@@ -86,7 +86,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       propsToSync.length === 1
         ? [
             `useBrowserLayoutEffect(() => {
-      (elementRef.current as any).${firstPropToSync.key} = ${firstPropToSync.key};
+      (elementRef.current as any).${firstPropToSync.key} = ${
+        firstPropToSync.key + (firstPropToSync.key === 'theme' ? ' || useTheme()' : '')
+      };
     }, [${firstPropToSync.key}]);`,
           ]
         : [
