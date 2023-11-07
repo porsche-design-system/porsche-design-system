@@ -296,6 +296,8 @@ export const getConsoleWarningMessages = () =>
     .map((msg) => '- ' + msg.text())
     .join('\n');
 
+export const getConsoleWarningMessagesRaw = (): ConsoleMessage[] => getConsoleWarnings();
+
 const thrownErrors: string[] = [];
 
 // Use to track custom thrown errors
