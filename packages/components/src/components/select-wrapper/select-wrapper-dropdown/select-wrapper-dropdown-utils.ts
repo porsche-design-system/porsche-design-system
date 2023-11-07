@@ -8,14 +8,13 @@ import { getHTMLElements, getTagName, hasAttribute } from '../../../utils';
  * @returns {void}
  */
 export const handleScroll = (ul: HTMLElement, highlightedIndex: number): void => {
-  const { maxHeight, padding } = getComputedStyle(ul);
+  const { maxHeight } = getComputedStyle(ul);
   const hostElementHeight = parseInt(maxHeight, 10);
-
   if (ul.scrollHeight > hostElementHeight) {
     const highlightedNode = getHTMLElements(ul, 'li')[highlightedIndex];
 
     if (highlightedNode) {
-      ul.scrollTo({ top: highlightedNode.offsetTop - parseInt(padding, 10), behavior: 'instant' as ScrollBehavior });
+      highlightedNode.scrollIntoView({ block: 'center' });
     }
   }
 };
