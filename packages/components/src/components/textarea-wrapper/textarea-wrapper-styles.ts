@@ -1,19 +1,28 @@
-import type { Styles } from 'jss';
-import type { BreakpointCustomizable, Theme } from '../../types';
+import { type Styles } from 'jss';
+import { type BreakpointCustomizable, type Theme } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
+  getHiddenTextJssStyle,
   getThemedColors,
   hostHiddenStyles,
-  getHiddenTextJssStyle,
   prefersColorSchemeDarkMediaQuery,
-  colorSchemeStyles,
 } from '../../styles';
-import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
-import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
+import { getBaseChildStyles } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import type { FormState } from '../../utils/form/form-state';
-import { spacingStaticMedium, spacingStaticLarge, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { type FormState } from '../../utils/form/form-state';
+import {
+  spacingStaticLarge,
+  spacingStaticMedium,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
+import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+
+// TODO: textarea safe zone is not really in sync with the safe zone of textfield
+const textareaSafeZoneHorizontal = '12px';
+const textareaSafeZoneVertical = '6px';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -27,14 +36,18 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
+      // ::slotted(textarea)
       ...mergeDeep(
         addImportantToEachRule(
           getBaseChildStyles('textarea', state, theme, {
+            gridArea: '1/1/4/6',
             font: textSmallStyle.font, // to override line-height
             padding: hasCounter ? `12px ${spacingStaticMedium} ${spacingStaticLarge}` : `12px ${spacingStaticMedium}`,
           })
@@ -48,37 +61,33 @@ export const getComponentCss = (
         } as Styles
       ),
     },
-    ...getLabelStyles(
-      'textarea',
-      isDisabled,
-      hideLabel,
-      state,
-      theme,
-      hasCounter && {
-        counter: {
-          position: 'absolute',
-          bottom: '6px',
-          left: '12px',
-          right: '12px',
-          textAlign: 'end',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          zIndex: 1,
-          font: textSmallStyle.font,
-          color: contrastMediumColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: contrastMediumColorDark,
-          }),
-        },
-      }
-    ),
-    ...getFunctionalComponentRequiredStyles(),
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    root: {
+      display: 'grid',
+      gap: spacingStaticXSmall,
+    },
+    wrapper: {
+      display: 'grid',
+      gridTemplateColumns: `${textareaSafeZoneHorizontal} auto minmax(0, 1fr) auto ${textareaSafeZoneHorizontal}`,
+      gridTemplateRows: `${textareaSafeZoneVertical} auto ${textareaSafeZoneVertical}`,
+    },
     ...(hasCounter && {
-      'sr-only': {
-        ...getHiddenTextJssStyle(),
-        padding: 0,
+      counter: {
+        gridArea: '2/4/3/5',
+        alignSelf: 'flex-end',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        font: textSmallStyle.font,
+        color: contrastMediumColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: contrastMediumColorDark,
+        }),
       },
+      // TODO: maybe we should extract it as functional component too
+      'sr-only': getHiddenTextJssStyle(),
     }),
+    // .label / .required
+    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
+    // .message
+    ...getFunctionalComponentStateMessageStyles(theme, state),
   });
 };
