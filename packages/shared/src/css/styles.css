@@ -1,5 +1,6 @@
 :root {
-  --p-motion-duration: 0s;
+  --p-transition-duration: 0s;
+  --p-animation-duration: 0s;
   --p-temporary-spinner-stroke-dasharray: 40;
   --p-temporary-toast-skip-timeout: true;
 }

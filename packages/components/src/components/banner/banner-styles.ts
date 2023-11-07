@@ -36,10 +36,10 @@ export const getComponentCss = (isOpen: boolean): string => {
               opacity: 1,
               visibility: 'inherit',
               transform: 'translate3d(0,0,0)',
-              transition: `${getTransition('transform', 'moderate', 'in')}, ${getTransition(
+              transition: `${getTransition('transform', 'motionDurationModerate', 'motionEasingIn')}, ${getTransition(
                 'opacity',
-                'moderate',
-                'in'
+                'motionDurationModerate',
+                'motionEasingIn'
               )}`,
             }
           : {
@@ -47,11 +47,11 @@ export const getComponentCss = (isOpen: boolean): string => {
               visibility: 'hidden',
               transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
               '&(.hydrated),&(.ssr)': {
-                transition: `${getTransition('visibility', '0s', 'linear', 'long')}, ${getTransition(
+                transition: `${getTransition('visibility', '0s', 'linear', 'motionDurationLong')}, ${getTransition(
                   'transform',
-                  'moderate',
-                  'out'
-                )}, ${getTransition('opacity', 'moderate', 'out')}`,
+                  'motionDurationModerate',
+                  'motionEasingOut'
+                )}, ${getTransition('opacity', 'motionDurationModerate', 'motionEasingOut')}`,
               },
             }),
         [getMediaQueryMin('s')]: {

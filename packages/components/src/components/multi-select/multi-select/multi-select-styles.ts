@@ -84,9 +84,7 @@ export const getComponentCss = (
     ...getListStyles(isOpen, direction, theme),
     'input-container': {
       display: 'flex',
-      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition(
-        'background-color'
-      )}`, // for smooth transitions between e.g. disabled states
+      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
       cursor: 'text',
       ...hoverMediaQuery({
         '&:hover:not(.disabled)': {

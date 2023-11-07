@@ -209,7 +209,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #292934;
@@ -277,7 +277,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #E0E0E0;
@@ -345,7 +345,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #3E4045;
@@ -413,7 +413,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #CBCED7;
@@ -481,7 +481,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #3F2828;
@@ -549,7 +549,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #F4CED1;
@@ -617,7 +617,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #1A3856;
@@ -685,7 +685,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #C2D1F1;
@@ -753,7 +753,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #0F432F;
@@ -821,7 +821,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #D0F4DB;
@@ -889,7 +889,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #3E3720;
@@ -957,7 +957,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #F1E5C1;
@@ -1025,7 +1025,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #CECFD1;
@@ -1093,7 +1093,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #535457;

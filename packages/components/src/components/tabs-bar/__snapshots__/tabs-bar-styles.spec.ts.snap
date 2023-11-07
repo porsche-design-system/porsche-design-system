@@ -62,7 +62,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
     inset: -2px -4px !important;
     border-radius: 4px !important;
     z-index: -1 !important;
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
@@ -79,7 +79,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility var(--p-motion-duration, 0s) linear var(--p-motion-duration, 0.4s) !important;
+  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.4s) !important;
 }
 .bar {
   position: absolute;
@@ -89,8 +89,8 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   width: 0;
   bottom: -2px;
   visibility: visible;
-  transition: transform var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s);
-  animation: keyframes-hide 0s var(--p-motion-duration,0.4s) forwards;
+  transition: transform var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
+  animation: keyframes-hide 0s var(--p-animation-duration,0.4s) forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -161,7 +161,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
     inset: -2px -4px !important;
     border-radius: 4px !important;
     z-index: -1 !important;
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
@@ -178,7 +178,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility var(--p-motion-duration, 0s) linear var(--p-motion-duration, 0.4s) !important;
+  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.4s) !important;
 }
 .bar {
   position: absolute;
@@ -188,8 +188,8 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   width: 0;
   bottom: -2px;
   visibility: visible;
-  transition: transform var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s);
-  animation: keyframes-hide 0s var(--p-motion-duration,0.4s) forwards;
+  transition: transform var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
+  animation: keyframes-hide 0s var(--p-animation-duration,0.4s) forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -260,7 +260,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
     inset: -2px -4px !important;
     border-radius: 4px !important;
     z-index: -1 !important;
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
@@ -277,7 +277,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-size: 1rem;
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility var(--p-motion-duration, 0s) linear var(--p-motion-duration, 0.4s) !important;
+  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.4s) !important;
 }
 .bar {
   position: absolute;
@@ -287,8 +287,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   bottom: -2px;
   visibility: visible;
-  transition: transform var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s);
-  animation: keyframes-hide 0s var(--p-motion-duration,0.4s) forwards;
+  transition: transform var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
+  animation: keyframes-hide 0s var(--p-animation-duration,0.4s) forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -359,7 +359,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
     inset: -2px -4px !important;
     border-radius: 4px !important;
     z-index: -1 !important;
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
@@ -376,7 +376,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-size: 1rem;
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility var(--p-motion-duration, 0s) linear var(--p-motion-duration, 0.4s) !important;
+  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.4s) !important;
 }
 .bar {
   position: absolute;
@@ -386,8 +386,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   bottom: -2px;
   visibility: visible;
-  transition: transform var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s);
-  animation: keyframes-hide 0s var(--p-motion-duration,0.4s) forwards;
+  transition: transform var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
+  animation: keyframes-hide 0s var(--p-animation-duration,0.4s) forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -458,7 +458,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
     inset: -2px -4px !important;
     border-radius: 4px !important;
     z-index: -1 !important;
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
@@ -475,7 +475,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-size: 1rem;
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility var(--p-motion-duration, 0s) linear var(--p-motion-duration, 0.4s) !important;
+  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.4s) !important;
 }
 .bar {
   position: absolute;
@@ -485,8 +485,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   width: 0;
   bottom: -2px;
   visibility: visible;
-  transition: transform var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s);
-  animation: keyframes-hide 0s var(--p-motion-duration,0.4s) forwards;
+  transition: transform var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
+  animation: keyframes-hide 0s var(--p-animation-duration,0.4s) forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -557,7 +557,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
     inset: -2px -4px !important;
     border-radius: 4px !important;
     z-index: -1 !important;
-    transition: background-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   }
   ::slotted(a:hover)::before,::slotted(button:hover)::before {
     -webkit-backdrop-filter: blur(32px) !important;
@@ -574,7 +574,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   font-size: 1rem;
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility var(--p-motion-duration, 0s) linear var(--p-motion-duration, 0.4s) !important;
+  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.4s) !important;
 }
 .bar {
   position: absolute;
@@ -584,8 +584,8 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   width: 0;
   bottom: -2px;
   visibility: visible;
-  transition: transform var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s);
-  animation: keyframes-hide 0s var(--p-motion-duration,0.4s) forwards;
+  transition: transform var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
+  animation: keyframes-hide 0s var(--p-animation-duration,0.4s) forwards;
 }
 @keyframes keyframes-hide {
   to {

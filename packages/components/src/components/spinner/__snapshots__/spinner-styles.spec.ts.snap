@@ -12,13 +12,13 @@ exports[`getComponentCss() should return correct css for size: "inherit" and the
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #88898C;
 }
 circle:last-child {
-  animation: dash var(--p-motion-duration, 1.2s) linear infinite;
+  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -75,13 +75,13 @@ exports[`getComponentCss() should return correct css for size: "inherit" and the
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
 }
 circle:last-child {
-  animation: dash var(--p-motion-duration, 1.2s) linear infinite;
+  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -138,13 +138,13 @@ exports[`getComponentCss() should return correct css for size: "large" and theme
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #88898C;
 }
 circle:last-child {
-  animation: dash var(--p-motion-duration, 1.2s) linear infinite;
+  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -201,13 +201,13 @@ exports[`getComponentCss() should return correct css for size: "large" and theme
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
 }
 circle:last-child {
-  animation: dash var(--p-motion-duration, 1.2s) linear infinite;
+  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -264,13 +264,13 @@ exports[`getComponentCss() should return correct css for size: "medium" and them
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #88898C;
 }
 circle:last-child {
-  animation: dash var(--p-motion-duration, 1.2s) linear infinite;
+  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -327,13 +327,13 @@ exports[`getComponentCss() should return correct css for size: "medium" and them
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
 }
 circle:last-child {
-  animation: dash var(--p-motion-duration, 1.2s) linear infinite;
+  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -390,13 +390,13 @@ exports[`getComponentCss() should return correct css for size: "small" and theme
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #88898C;
 }
 circle:last-child {
-  animation: dash var(--p-motion-duration, 1.2s) linear infinite;
+  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -453,13 +453,13 @@ exports[`getComponentCss() should return correct css for size: "small" and theme
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
 }
 circle:last-child {
-  animation: dash var(--p-motion-duration, 1.2s) linear infinite;
+  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -516,13 +516,13 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #88898C;
 }
 circle:last-child {
-  animation: dash var(--p-motion-duration, 1.2s) linear infinite;
+  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
   stroke: #FBFCFF;
   stroke-dasharray: 57;
   stroke-linecap: round;
@@ -614,13 +614,13 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
 svg {
   display: block;
   fill: none;
-  animation: rotate var(--p-motion-duration, 1.2s) linear infinite;
+  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
 }
 circle:first-child {
   stroke: #6B6D70;
 }
 circle:last-child {
-  animation: dash var(--p-motion-duration, 1.2s) linear infinite;
+  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
   stroke: #010205;
   stroke-dasharray: 57;
   stroke-linecap: round;

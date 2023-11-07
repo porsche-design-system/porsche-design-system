@@ -18,37 +18,31 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 import { isThemeDark } from '../utils';
-import type * as fromMotion from '@porsche-design-system/utilities-v2/dist/esm/motion';
+import type * as fromMotionType from '@porsche-design-system/utilities-v2/dist/esm/motion';
+// import * as fromMotion from '@porsche-design-system/utilities-v2/dist/esm/motion';
 
-type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
-export type MotionDurationKeyFinal = WithoutMotionDurationPrefix<keyof typeof fromMotion>;
-type WithoutMotionEasingPrefix<T> = T extends `motionEasing${infer P}` ? Uncapitalize<P> : never;
-export type MotionEasingKeyFinal = WithoutMotionEasingPrefix<keyof typeof fromMotion>;
-
-const motionDurationMap: Record<MotionDurationKeyFinal, string> = {
-  short: motionDurationShort,
-  moderate: motionDurationModerate,
-  long: motionDurationLong,
-  veryLong: motionDurationVeryLong,
+const motionMap: Record<keyof typeof fromMotionType, string> = {
+  motionDurationShort,
+  motionDurationModerate,
+  motionDurationLong,
+  motionDurationVeryLong,
+  motionEasingBase,
+  motionEasingIn,
+  motionEasingOut,
 };
 
-const motionEasingMap: Record<MotionEasingKeyFinal, string> = {
-  base: motionEasingBase,
-  in: motionEasingIn,
-  out: motionEasingOut,
-};
-
-export const cssVariableMotionDuration = '--p-motion-duration';
+export const cssVariableTransitionDuration = '--p-transition-duration';
+export const cssVariableAnimationDuration = '--p-animation-duration';
 
 export const getTransition = (
   cssProperty: keyof PropertiesHyphen,
-  duration: MotionDurationKeyFinal | '0s' = 'short',
-  easing: MotionEasingKeyFinal | 'linear' | 'none' = 'base',
-  delay?: MotionDurationKeyFinal | '0s'
+  duration: keyof typeof fromMotionType | '0s' = 'motionDurationShort',
+  easing: keyof typeof fromMotionType | 'linear' | 'none' = 'motionEasingBase',
+  delay?: keyof typeof fromMotionType | '0s'
 ): string =>
-  `${cssProperty} var(${cssVariableMotionDuration}, ${duration === '0s' ? duration : motionDurationMap[duration]})${
-    easing === 'none' ? '' : ` ${easing === 'linear' ? easing : motionEasingMap[easing]}`
-  }${delay ? ` var(${cssVariableMotionDuration}, ${delay === '0s' ? delay : motionDurationMap[delay]})` : ''}`;
+  `${cssProperty} var(${cssVariableTransitionDuration}, ${duration === '0s' ? duration : motionMap[duration]})${
+    easing === 'none' ? '' : ` ${easing === 'linear' ? easing : motionMap[easing]}`
+  }${delay ? ` var(${cssVariableTransitionDuration}, ${delay === '0s' ? delay : motionMap[delay]})` : ''}`;
 
 export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
 
@@ -157,9 +151,8 @@ export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
  */
 export const getFrostedGlassBackgroundJssStyles = (
   isVisible: boolean,
-  duration: MotionDurationKeyFinal,
-  theme: Theme,
-  timingFn: MotionEasingKeyFinal = 'base'
+  duration: keyof typeof fromMotionType,
+  theme: Theme
 ): JssStyle => {
   return {
     // workaround via pseudo element to fix stacking (black) background in safari
@@ -179,13 +172,11 @@ export const getFrostedGlassBackgroundJssStyles = (
             backdropFilter: 'blur(0px)',
             WebkitBackdropFilter: 'blur(0px)',
           }),
-      transition: `${getTransition('opacity', duration, timingFn)}, ${getTransition(
+      transition: `${getTransition('opacity', duration, 'motionEasingBase')}, ${getTransition(
         'backdrop-filter',
         duration,
-        timingFn
-      )}, ${getTransition('opacity', duration, timingFn)}, --webkit-backdrop-filter ${motionDurationMap[duration]} ${
-        motionEasingMap[timingFn]
-      }`,
+        'motionEasingBase'
+      )}, ${getTransition('-webkit-backdrop-filter', duration, 'motionEasingBase')}`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         background: themeDarkBackgroundShading,
       }),

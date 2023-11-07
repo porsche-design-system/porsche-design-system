@@ -2,7 +2,7 @@ import { forceUpdate } from '@stencil/core';
 import type { ToastState } from './toast-utils';
 import { motionDurationLong } from '@porsche-design-system/utilities-v2';
 import { throwException } from '../../../utils';
-import { cssVariableMotionDuration } from '../../../styles';
+import { cssVariableAnimationDuration } from '../../../styles';
 
 const TOAST_DEFAULT_TIMEOUT = 6000;
 const MOTION_DURATION = parseFloat(motionDurationLong.replace(/(\d+\.?\d+)/, '$1')) * 1000;
@@ -67,7 +67,7 @@ export class ToastManagerClass {
       // respect --p-temporary-toast-timeout css variable to override timeout during e2e and vrt tests
       ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
         ? MOTION_DURATION
-        : parseInt(getComputedStyle(this.toastEl).getPropertyValue(cssVariableMotionDuration), 10) || MOTION_DURATION
+        : parseInt(getComputedStyle(this.toastEl).getPropertyValue(cssVariableAnimationDuration), 10) || MOTION_DURATION
     );
   };
 

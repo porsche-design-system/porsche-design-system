@@ -31,7 +31,6 @@ export const getComponentCss = (
   const shadowColor = isDark ? scrollShadowColorDark : scrollShadowColor;
   const transparentColorDark = 'rgba(14, 14, 18, 0)';
   const transparentColor = isDark ? transparentColorDark : 'rgba(255, 255, 255, 0)';
-  const easing = isOpen ? 'in' : 'out';
 
   return getCss({
     '@global': {
@@ -50,10 +49,10 @@ export const getComponentCss = (
               }
             : {
                 visibility: 'hidden',
-                transition: getTransition('visibility', '0s', 'linear', 'long'),
+                transition: getTransition('visibility', '0s', 'linear', 'motionDurationLong'),
               }),
           ...getInsetJssStyle(),
-          ...getFrostedGlassBackgroundJssStyles(isOpen, 'long', theme),
+          ...getFrostedGlassBackgroundJssStyles(isOpen, 'motionDurationLong', theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),

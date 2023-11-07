@@ -499,14 +499,14 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: fit-content;
   height: 8px;
   gap: 8px;
-  transition: transform var(--p-motion-duration, 0.4s);
+  transition: transform var(--p-transition-duration, 0.4s);
 }
 .bullet {
   border-radius: 4px;
   background: #88898C;
   width: 8px;
   height: 8px;
-  transition: background-color var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s);
+  transition: background-color var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
 }
 .bullet--active {
   background: #FBFCFF;
@@ -658,14 +658,14 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: fit-content;
   height: 8px;
   gap: 8px;
-  transition: transform var(--p-motion-duration, 0.4s);
+  transition: transform var(--p-transition-duration, 0.4s);
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
   width: 8px;
   height: 8px;
-  transition: background-color var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s);
+  transition: background-color var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
 }
 .bullet--active {
   background: #010205;
@@ -817,14 +817,14 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: fit-content;
   height: 8px;
   gap: 8px;
-  transition: transform var(--p-motion-duration, 0.4s);
+  transition: transform var(--p-transition-duration, 0.4s);
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
   width: 0px;
   height: 0px;
-  transition: background-color var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s), height var(--p-motion-duration, 0.4s);
+  transition: background-color var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s), height var(--p-transition-duration, 0.4s);
 }
 .pagination--infinite > .bullet:nth-child(-n+4) {
   width: 8px;
@@ -1000,14 +1000,14 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: fit-content;
   height: 8px;
   gap: 8px;
-  transition: transform var(--p-motion-duration, 0.4s);
+  transition: transform var(--p-transition-duration, 0.4s);
 }
 .bullet {
   border-radius: 4px;
   background: #88898C;
   width: 0px;
   height: 0px;
-  transition: background-color var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s), height var(--p-motion-duration, 0.4s);
+  transition: background-color var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s), height var(--p-transition-duration, 0.4s);
 }
 .pagination--infinite > .bullet:nth-child(-n+4) {
   width: 8px;
@@ -1182,14 +1182,14 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: fit-content;
   height: 8px;
   gap: 8px;
-  transition: transform var(--p-motion-duration, 0.4s);
+  transition: transform var(--p-transition-duration, 0.4s);
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
   width: 8px;
   height: 8px;
-  transition: background-color var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s);
+  transition: background-color var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
 }
 .bullet--active {
   background: #010205;
@@ -1368,14 +1368,14 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: fit-content;
   height: 8px;
   gap: 8px;
-  transition: transform var(--p-motion-duration, 0.4s);
+  transition: transform var(--p-transition-duration, 0.4s);
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
   width: 0px;
   height: 0px;
-  transition: background-color var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s), height var(--p-motion-duration, 0.4s);
+  transition: background-color var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s), height var(--p-transition-duration, 0.4s);
 }
 .pagination--infinite > .bullet:nth-child(-n+4) {
   width: 8px;
@@ -1840,14 +1840,14 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: fit-content;
   height: 8px;
   gap: 8px;
-  transition: transform var(--p-motion-duration, 0.4s);
+  transition: transform var(--p-transition-duration, 0.4s);
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
   width: 8px;
   height: 8px;
-  transition: background-color var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s);
+  transition: background-color var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
 }
 .bullet--active {
   background: #010205;
@@ -1999,14 +1999,14 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: fit-content;
   height: 8px;
   gap: 8px;
-  transition: transform var(--p-motion-duration, 0.4s);
+  transition: transform var(--p-transition-duration, 0.4s);
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
   width: 0px;
   height: 0px;
-  transition: background-color var(--p-motion-duration, 0.4s), width var(--p-motion-duration, 0.4s), height var(--p-motion-duration, 0.4s);
+  transition: background-color var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s), height var(--p-transition-duration, 0.4s);
 }
 .pagination--infinite > .bullet:nth-child(-n+4) {
   width: 8px;

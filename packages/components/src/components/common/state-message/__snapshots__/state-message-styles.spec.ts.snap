@@ -10,7 +10,7 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
     "hyphens": "auto",
     "marginTop": "4px",
     "overflowWrap": "break-word",
-    "transition": "color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
+    "transition": "color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
   },
 }
 `;
@@ -25,7 +25,7 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
     "hyphens": "auto",
     "marginTop": "4px",
     "overflowWrap": "break-word",
-    "transition": "color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
+    "transition": "color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
   },
 }
 `;
@@ -40,7 +40,7 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
     "hyphens": "auto",
     "marginTop": "4px",
     "overflowWrap": "break-word",
-    "transition": "color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
+    "transition": "color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
   },
 }
 `;
@@ -55,7 +55,7 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
     "hyphens": "auto",
     "marginTop": "4px",
     "overflowWrap": "break-word",
-    "transition": "color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
+    "transition": "color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
   },
 }
 `;
@@ -70,7 +70,7 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
     "hyphens": "auto",
     "marginTop": "4px",
     "overflowWrap": "break-word",
-    "transition": "color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
+    "transition": "color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
   },
 }
 `;
@@ -85,7 +85,7 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
     "hyphens": "auto",
     "marginTop": "4px",
     "overflowWrap": "break-word",
-    "transition": "color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
+    "transition": "color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
   },
 }
 `;

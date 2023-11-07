@@ -213,7 +213,7 @@ export const getComponentCss = (
         width: 'fit-content',
         height: paginationBulletSize, // Needed to avoid jumping when rewinding dynamically added slides
         gap: spacingStaticSmall,
-        transition: getTransition('transform', 'moderate', 'none'),
+        transition: getTransition('transform', 'motionDurationModerate', 'none'),
       },
       bullet: {
         borderRadius: borderRadiusSmall,
@@ -231,18 +231,18 @@ export const getComponentCss = (
           ? {
               width: '0px',
               height: '0px',
-              transition: `${getTransition('background-color', 'moderate', 'none')}, ${getTransition(
+              transition: `${getTransition('background-color', 'motionDurationModerate', 'none')}, ${getTransition(
                 'width',
-                'moderate',
+                'motionDurationModerate',
                 'none'
-              )}, ${getTransition('height', 'moderate', 'none')}`,
+              )}, ${getTransition('height', 'motionDurationModerate', 'none')}`,
             }
           : {
               width: paginationBulletSize,
               height: paginationBulletSize,
-              transition: `${getTransition('background-color', 'moderate', 'none')}, ${getTransition(
+              transition: `${getTransition('background-color', 'motionDurationModerate', 'none')}, ${getTransition(
                 'width',
-                'moderate',
+                'motionDurationModerate',
                 'none'
               )}`,
             }),

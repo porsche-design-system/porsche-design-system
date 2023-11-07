@@ -5,7 +5,7 @@ import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  cssVariableMotionDuration,
+  cssVariableAnimationDuration,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getThemedColors,
@@ -27,7 +27,7 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
 
 export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme: Theme): string => {
   const strokeDasharray = '57'; // C = 2πR
-  const animationDuration = `var(${cssVariableMotionDuration}, ${motionDurationVeryLong})`;
+  const animationDuration = `var(${cssVariableAnimationDuration}, ${motionDurationVeryLong})`;
   const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
@@ -46,7 +46,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       svg: {
         display: 'block', // for correct vertical alignment
         fill: 'none',
-        animation: `$rotate ${animationDuration} linear infinite`,
+        animation: `$rotate ${animationDuration} steps(50) infinite`,
       },
       circle: {
         '&:first-child': {
@@ -57,7 +57,7 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
           }),
         },
         '&:last-child': {
-          animation: `$dash ${animationDuration} linear infinite`,
+          animation: `$dash ${animationDuration} steps(50) infinite`,
           // TODO: High Contrast Mode should be handled within a local color helper function
           stroke: lastHighContrastStrokeColor || primaryColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {

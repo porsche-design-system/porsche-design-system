@@ -50,7 +50,7 @@ span {
 }
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     border-color: #FBFCFF;
@@ -109,7 +109,7 @@ span {
 }
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     border-color: #010205;
@@ -168,7 +168,7 @@ span {
 }
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     border-color: #FBFCFF;
@@ -227,7 +227,7 @@ span {
 }
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     border-color: #010205;
@@ -286,7 +286,7 @@ span {
 }
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     border-color: #010205;
@@ -349,7 +349,7 @@ span {
 }
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-motion-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     border-color: #010205;

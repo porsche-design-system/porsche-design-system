@@ -13,7 +13,7 @@ import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  cssVariableMotionDuration,
+  cssVariableAnimationDuration,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getInsetJssStyle,
@@ -229,7 +229,7 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
       animation:
         ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
           ? `${motionDurationShort} $fadeIn ${motionEasingBase} forwards`
-          : `var(${cssVariableMotionDuration}, ${motionDurationShort}) $fadeIn ${motionEasingBase} forwards`,
+          : `var(${cssVariableAnimationDuration}, ${motionDurationShort}) $fadeIn ${motionEasingBase} forwards`,
       '&::before': {
         content: '""',
         position: 'absolute',

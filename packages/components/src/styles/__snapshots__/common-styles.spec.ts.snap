@@ -42,6 +42,82 @@ exports[`getBackfaceVisibilityJssStyle() should return correct styles 1`] = `
 }
 `;
 
+exports[`getFrostedGlassBackgroundJssStyles() should return correct JssStyle for isVisible: false, duration: motionDurationModerate and theme: dark 1`] = `
+{
+  "&::before": {
+    "WebkitBackdropFilter": "blur(0px)",
+    "backdropFilter": "blur(0px)",
+    "background": "rgba(38, 38, 41, 0.67)",
+    "bottom": 0,
+    "content": """",
+    "left": 0,
+    "opacity": 0,
+    "pointerEvents": "none",
+    "position": "fixed",
+    "right": 0,
+    "top": 0,
+    "transition": "opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1)",
+  },
+}
+`;
+
+exports[`getFrostedGlassBackgroundJssStyles() should return correct JssStyle for isVisible: false, duration: motionDurationVeryLong and theme: dark 1`] = `
+{
+  "&::before": {
+    "WebkitBackdropFilter": "blur(0px)",
+    "backdropFilter": "blur(0px)",
+    "background": "rgba(38, 38, 41, 0.67)",
+    "bottom": 0,
+    "content": """",
+    "left": 0,
+    "opacity": 0,
+    "pointerEvents": "none",
+    "position": "fixed",
+    "right": 0,
+    "top": 0,
+    "transition": "opacity var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1)",
+  },
+}
+`;
+
+exports[`getFrostedGlassBackgroundJssStyles() should return correct JssStyle for isVisible: true, duration: motionDurationLong and theme: light 1`] = `
+{
+  "&::before": {
+    "WebkitBackdropFilter": "blur(32px)",
+    "backdropFilter": "blur(32px)",
+    "background": "rgba(1, 2, 5, 0.67)",
+    "bottom": 0,
+    "content": """",
+    "left": 0,
+    "opacity": 1,
+    "pointerEvents": "none",
+    "position": "fixed",
+    "right": 0,
+    "top": 0,
+    "transition": "opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1)",
+  },
+}
+`;
+
+exports[`getFrostedGlassBackgroundJssStyles() should return correct JssStyle for isVisible: true, duration: motionDurationShort and theme: light 1`] = `
+{
+  "&::before": {
+    "WebkitBackdropFilter": "blur(32px)",
+    "backdropFilter": "blur(32px)",
+    "background": "rgba(1, 2, 5, 0.67)",
+    "bottom": 0,
+    "content": """",
+    "left": 0,
+    "opacity": 1,
+    "pointerEvents": "none",
+    "position": "fixed",
+    "right": 0,
+    "top": 0,
+    "transition": "opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
+  },
+}
+`;
+
 exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: false and shownStyles: { width: 'fit-content' } 1`] = `
 {
   "clip": "auto",
@@ -129,3 +205,15 @@ exports[`getInsetJssStyle() should return correct JssStyle for parameter: undefi
   "top": 0,
 }
 `;
+
+exports[`getTransition() should return correct style for for cssProperty: box-shadow, duration: 0s, ease: none and delay 1`] = `"box-shadow var(--p-transition-duration, 0s) var(--p-transition-duration, 0s)"`;
+
+exports[`getTransition() should return correct style for for cssProperty: box-shadow, duration: motionDurationLong, ease: motionEasingOut and delay 1`] = `"box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s)"`;
+
+exports[`getTransition() should return correct style for for cssProperty: box-shadow, duration: motionDurationShort, ease: motionEasingBase and delay 1`] = `"box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)"`;
+
+exports[`getTransition() should return correct style for for cssProperty: color, duration: motionDurationModerate, ease: motionEasingIn and delay 1`] = `"color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)"`;
+
+exports[`getTransition() should return correct style for for cssProperty: color, duration: motionDurationVeryLong, ease: linear and delay 1`] = `"color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s)"`;
+
+exports[`getTransition() should return correct style for for cssProperty: color, duration: undefined, ease: undefined and delay 1`] = `"color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)"`;

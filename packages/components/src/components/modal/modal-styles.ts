@@ -103,8 +103,8 @@ export const getComponentCss = (
   const { primaryColor, backgroundColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
   const isFullscreenForXlAndXxl = isFullscreenForXl(isFullscreen);
-  const duration = isOpen ? 'moderate' : 'short';
-  const easing = isOpen ? 'in' : 'out';
+  const duration = isOpen ? 'motionDurationModerate' : 'motionDurationShort';
+  const easing = isOpen ? 'motionEasingIn' : 'motionEasingOut';
   const contentPadding = '32px';
 
   return getCss({
@@ -124,7 +124,7 @@ export const getComponentCss = (
               }
             : {
                 visibility: 'hidden',
-                transition: getTransition('visibility', '0s', 'linear', 'short'),
+                transition: getTransition('visibility', '0s', 'linear', 'motionDurationShort'),
               }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,

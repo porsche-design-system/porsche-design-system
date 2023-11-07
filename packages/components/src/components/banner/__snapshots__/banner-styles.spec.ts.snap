@@ -19,7 +19,7 @@ exports[`getComponentCss() should return correct css for open: false 1`] = `
   color-scheme: light dark !important;
 }
 :host(.hydrated), :host(.ssr) {
-  transition: visibility var(--p-motion-duration, 0s) linear var(--p-motion-duration, 0.6s), transform var(--p-motion-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-motion-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) !important;
+  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -59,7 +59,7 @@ exports[`getComponentCss() should return correct css for open: true 1`] = `
   opacity: 1 !important;
   visibility: inherit !important;
   transform: translate3d(0,0,0) !important;
-  transition: transform var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1), opacity var(--p-motion-duration, 0.4s) cubic-bezier(0,0,0.2,1) !important;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
