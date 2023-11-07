@@ -16,7 +16,7 @@ export const validateVersions = (): void => {
       .sort((a: [Version, string[]], b: [Version, string[]]) => sortVersions(a[0], b[0]));
     consoleWarn(
       'Multiple different versions are used with following prefixes:\n',
-      Object.fromEntries(sortedVersions) as object,
+      Object.fromEntries(sortedVersions) as Record<Version, string[]>,
       `\nPlease upgrade all instances to the latest used version: ${sortedVersions.at(-1)[0]}`
     );
   }
