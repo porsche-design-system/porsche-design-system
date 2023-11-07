@@ -1,13 +1,13 @@
 import { Page } from 'puppeteer';
 import {
   enableBrowserLogging,
-  getConsoleWarningMessagesRaw,
+  getConsoleWarnings,
+  getV2LoaderScriptForPrefixes,
   initConsoleObserver,
   setContentWithDesignSystem,
 } from '../helpers';
-import { version } from '../../../../dist/components-wrapper/package.json';
-import { getLoaderScript } from '../../../../projects/partials';
-import { getExternalLoaderScriptForPrefixes } from 'crawler/tests/e2e/helpers';
+import { version } from '@porsche-design-system/components-js/package.json';
+import type { PorscheDesignSystem } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => {
@@ -24,13 +24,17 @@ it('should show warning about multiple different versions correctly', async () =
   await setContentWithDesignSystem(
     page,
     `
-    ${getLoaderScript({ prefix: [''] })}
-    ${getExternalLoaderScriptForPrefixes(prefixes)}`,
+    ${getV2LoaderScriptForPrefixes(prefixes)}`,
     { withoutWaitForComponentsReady: true }
   );
 
-  const rawWarnings = getConsoleWarningMessagesRaw();
-  const versionWarning = rawWarnings.find((warning) => warning.text().includes('Multiple different versions'));
+  const porscheDesignSystem = await page.evaluate(() => document.porscheDesignSystem as PorscheDesignSystem);
+
+  expect(porscheDesignSystem[version]).toBeDefined();
+  expect(porscheDesignSystem['2.18.0']).toBeDefined();
+  expect(porscheDesignSystem['2.18.0'].prefixes).toEqual(prefixes);
+
+  const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 
   expect(versionWarning).toBeDefined();
 
@@ -47,15 +51,14 @@ it('should show warning about multiple different versions correctly', async () =
 it('should not show warning about multiple different versions if only one version is used', async () => {
   enableBrowserLogging(page);
 
-  await setContentWithDesignSystem(
-    page,
-    `
-    ${getLoaderScript({ prefix: [''] })}`,
-    { withoutWaitForComponentsReady: true }
-  );
+  await setContentWithDesignSystem(page, '<p-text>Some Text</p-text>');
 
-  const rawWarnings = getConsoleWarningMessagesRaw();
-  const versionWarning = rawWarnings.find((warning) => warning.text().includes('Multiple different versions'));
+  const porscheDesignSystem = await page.evaluate(() => document.porscheDesignSystem);
+
+  expect(porscheDesignSystem[version]).toBeDefined();
+  expect(Object.keys(porscheDesignSystem).length).toBe(2); // cdn and one version
+
+  const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 
   expect(versionWarning).not.toBeDefined();
 });
