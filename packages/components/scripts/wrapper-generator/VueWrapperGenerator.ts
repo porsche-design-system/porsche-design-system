@@ -73,16 +73,16 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter(Boolean).join('\n'
               ? ' // eslint-disable-line vue/require-valid-default-prop'
               : '';
 
-          return `  ${key}: ${defaultPropValue},${eslintAnnotation}`;
+          return `${key}: ${defaultPropValue},${eslintAnnotation}`;
         }
       })
       .filter(Boolean)
-      .join('\n');
+      .join('\n  ');
 
     const defineProps = `defineProps<${propsName}>()`;
     const propsContent = defaultPropsWithValue.length
       ? `withDefaults(${defineProps}, {
-${defaultPropsWithValue}
+  ${defaultPropsWithValue}
 })`
       : defineProps;
 
@@ -110,20 +110,29 @@ ${defaultPropsWithValue}
       })
       .join('\n  ');
 
-    const syncProperties = 'syncProperties(pdsComponentRef, props);';
+    const hasTheme = extendedProps.some(({ key }) => key === 'theme');
+    const syncProperties = hasTheme
+      ? `const syncProps = (): void => syncProperties(pdsComponentRef, { ...props, theme: themeRef.value || props.theme });`
+      : `const syncProps = (): void => syncProperties(pdsComponentRef, props);`;
 
     const content = [
-      '',
-      [props, pdsComponentRef, defineEmits].filter(Boolean).join('\n'),
-      `onMounted(() => {
-  ${[syncProperties, addEventListener].filter(Boolean).join('\n  ')}
-});`,
-      `onUpdated(() => {
-  ${syncProperties}
-});`,
-      extendedProps.some(({ key }) => key === 'theme') &&
-        `const themeRef = inject<Ref<Theme>>(themeInjectionKey)!;
-watch(themeRef, (theme) => {
+      [
+        props,
+        pdsComponentRef,
+        defineEmits,
+        hasTheme && `const themeRef = inject<Ref<Theme>>(themeInjectionKey)!;`,
+        syncProperties,
+      ]
+        .filter(Boolean)
+        .join('\n'),
+      addEventListener
+        ? `onMounted(() => {
+  ${['syncProps();', addEventListener].filter(Boolean).join('\n  ')}
+});`
+        : `onMounted(syncProps);`,
+      `onUpdated(syncProps);`,
+      hasTheme &&
+        `watch(themeRef, (theme) => {
   syncProperties(pdsComponentRef, { theme: props.theme || theme });
 });`,
     ]
@@ -137,7 +146,7 @@ watch(themeRef, (theme) => {
       ? `<component ${componentAttr}><slot /></component>`
       : `<component ${componentAttr} />`;
 
-    return `const webComponentTag = usePrefix('${component}');${hasProps ? content : ''}
+    return `const webComponentTag = usePrefix('${component}');${hasProps ? '\n' + content : ''}
 </script>
 
 <template>
