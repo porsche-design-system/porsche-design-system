@@ -188,7 +188,7 @@ export class Carousel {
       drag: this.hasNavigation,
       perMove: 1,
       mediaQuery: 'min',
-      speed: parseFloat(motionDurationModerate.replace(/(\d+\.?\d+)/, '$1')) * 1000,
+      speed: parseFloat(motionDurationModerate) * 1000,
       gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
