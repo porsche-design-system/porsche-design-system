@@ -5,7 +5,7 @@ import { throwException } from '../../../utils';
 import { cssVariableAnimationDuration } from '../../../styles';
 
 const TOAST_DEFAULT_TIMEOUT = 6000;
-const MOTION_DURATION = parseFloat(motionDurationLong.replace(/(\d+\.?\d+)/, '$1')) * 1000;
+const MOTION_DURATION = parseFloat(motionDurationLong) * 1000;
 
 // css variable names for overriding behaviour in tests
 const TEMPORARY_TOAST_SKIP_TIMEOUT = '--p-temporary-toast-skip-timeout';
