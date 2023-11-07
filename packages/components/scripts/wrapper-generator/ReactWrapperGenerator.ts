@@ -82,14 +82,14 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const componentHooks = componentHooksArr.join('\n    ');
 
     const [firstPropToSync] = propsToSync;
+    const isTheme = firstPropToSync?.key === 'theme';
     const componentEffectsArr: string[] =
       propsToSync.length === 1
         ? [
+            ...(isTheme ? ['const themeValue = useTheme();'] : []),
             `useBrowserLayoutEffect(() => {
-      (elementRef.current as any).${firstPropToSync.key} = ${
-        firstPropToSync.key + (firstPropToSync.key === 'theme' ? ' || useTheme()' : '')
-      };
-    }, [${firstPropToSync.key}]);`,
+      (elementRef.current as any).${firstPropToSync.key} = ${firstPropToSync.key + (isTheme ? ' || themeValue' : '')};
+    }, [${firstPropToSync.key + (isTheme ? ', themeValue' : '')}]);`,
           ]
         : [
             `const propsToSync = [${propsToSync
