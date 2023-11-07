@@ -40,9 +40,9 @@ export const getTransition = (
   easing: keyof typeof fromMotionType | 'linear' | 'none' = 'motionEasingBase',
   delay?: keyof typeof fromMotionType | '0s'
 ): string =>
-  `${cssProperty} var(${cssVariableTransitionDuration}, ${duration === '0s' ? duration : motionMap[duration]})${
+  `${cssProperty} var(${cssVariableTransitionDuration}, ${motionMap[duration] || duration})${
     easing === 'none' ? '' : ` ${easing === 'linear' ? easing : motionMap[easing]}`
-  }${delay ? ` var(${cssVariableTransitionDuration}, ${delay === '0s' ? delay : motionMap[delay]})` : ''}`;
+  }${delay ? ` var(${cssVariableTransitionDuration}, ${motionMap[delay] || delay})` : ''}`;
 
 export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
 

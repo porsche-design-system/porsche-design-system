@@ -90,7 +90,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   bottom: -2px;
   visibility: visible;
   transition: transform var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
-  animation: keyframes-hide 0s var(--p-animation-duration,0.4s) forwards;
+  animation: keyframes-hide 0s var(--p-animation-duration,0.5s) forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -189,7 +189,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   bottom: -2px;
   visibility: visible;
   transition: transform var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
-  animation: keyframes-hide 0s var(--p-animation-duration,0.4s) forwards;
+  animation: keyframes-hide 0s var(--p-animation-duration,0.5s) forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -288,7 +288,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   bottom: -2px;
   visibility: visible;
   transition: transform var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
-  animation: keyframes-hide 0s var(--p-animation-duration,0.4s) forwards;
+  animation: keyframes-hide 0s var(--p-animation-duration,0.5s) forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -387,7 +387,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   bottom: -2px;
   visibility: visible;
   transition: transform var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
-  animation: keyframes-hide 0s var(--p-animation-duration,0.4s) forwards;
+  animation: keyframes-hide 0s var(--p-animation-duration,0.5s) forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -486,7 +486,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   bottom: -2px;
   visibility: visible;
   transition: transform var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
-  animation: keyframes-hide 0s var(--p-animation-duration,0.4s) forwards;
+  animation: keyframes-hide 0s var(--p-animation-duration,0.5s) forwards;
 }
 @keyframes keyframes-hide {
   to {
@@ -585,7 +585,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   bottom: -2px;
   visibility: visible;
   transition: transform var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
-  animation: keyframes-hide 0s var(--p-animation-duration,0.4s) forwards;
+  animation: keyframes-hide 0s var(--p-animation-duration,0.5s) forwards;
 }
 @keyframes keyframes-hide {
   to {

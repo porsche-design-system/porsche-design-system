@@ -20,7 +20,6 @@ import {
   borderWidthBase,
   fontSizeText,
   frostedGlassStyle,
-  motionDurationModerate,
   spacingStaticMedium,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
@@ -28,7 +27,7 @@ import type { JssStyle } from 'jss';
 
 export const scrollerAnimatedCssClass = 'scroller--animated';
 
-const duration = `var(${cssVariableAnimationDuration},${motionDurationModerate})`;
+const duration = `var(${cssVariableAnimationDuration},0.5s)`; // auto hide bar after transition, needs to be a little longer in Safari
 
 const targetSelectors = ['a', 'button'];
 const transformSelector = (selector: string): string =>
@@ -173,7 +172,7 @@ export const getComponentCss = (
         'motionDurationModerate',
         'none'
       )}`,
-      animation: `$hide 0s ${duration} forwards`, // auto hide bar after transition, needs to be a little longer in Safari
+      animation: `$hide 0s ${duration} forwards`,
     },
     '@keyframes hide': {
       to: {
