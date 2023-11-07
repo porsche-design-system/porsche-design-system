@@ -40,7 +40,8 @@ const enableDarkMode = async (): Promise<void> => {
 
 it('should have successfully extracted :root styles', () => {
   expect(rootStyles).toContain(':root');
-  expect(rootStyles).toContain('--p-motion-duration: 0s');
+  expect(rootStyles).toContain('--p-transition-duration: 0s');
+  expect(rootStyles).toContain('--p-animation-duration: 0s');
 });
 
 describe('outside main element', () => {
