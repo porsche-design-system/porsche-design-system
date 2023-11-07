@@ -7,7 +7,6 @@ import {
 } from '../helpers';
 import { version } from '../../../../dist/components-wrapper/package.json';
 import { getLoaderScript } from '../../../../projects/partials';
-import { expect } from '@playwright/test';
 import { getExternalLoaderScriptForPrefixes } from 'crawler/tests/e2e/helpers';
 
 let page: Page;
