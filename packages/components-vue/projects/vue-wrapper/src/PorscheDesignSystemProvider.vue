@@ -10,7 +10,7 @@
     theme?: Theme;
   };
 
-  const theme = ref<Theme>('light');
+  const themeRef = ref<Theme>('light');
 
   const props = withDefaults(defineProps<Props>(), {
     prefix: '',
@@ -18,13 +18,13 @@
   });
 
   onUpdated(() => {
-    theme.value = props.theme;
+    themeRef.value = props.theme;
   });
 
   // no need for reactivity to be in sync with Angular and React
   load(props); // runtime prefix or cdn change is not supported
   provide(prefixInjectionKey, props.prefix); // eslint-disable-line vue/no-setup-props-destructure
-  provide(themeInjectionKey, theme); // eslint-disable-line vue/no-setup-props-destructure
+  provide(themeInjectionKey, themeRef); // eslint-disable-line vue/no-setup-props-destructure
 </script>
 
 <template><slot /></template>
