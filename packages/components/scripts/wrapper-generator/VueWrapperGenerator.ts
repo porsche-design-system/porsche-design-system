@@ -15,15 +15,17 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
   public generateImports(_: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
     const hasProps = !!extendedProps.length;
+    const hasTheme = extendedProps.some(({ key }) => key === 'theme');
 
-    const vueImports = ['onMounted', 'onUpdated', 'ref'];
+    const vueImports = ['onMounted', 'onUpdated', 'ref', ...(hasTheme ? ['inject', 'watch', 'type Ref'] : [])].sort();
     const importsFromVue = hasProps ? `import { ${vueImports.join(', ')} } from 'vue';` : '';
 
     const utilsImports = [
-      'getPrefixedTagName',
-      ...(hasProps ? ['syncProperties'] : []),
       ...(hasEventProps ? ['addEventListenerToElementRef'] : []),
-    ];
+      ...(hasProps ? ['syncProperties'] : []),
+      ...(hasTheme ? ['themeInjectionKey'] : []),
+      'usePrefix',
+    ].sort();
     const importsFromUtils = `import { ${utilsImports.join(', ')} } from '../../utils';`;
 
     const importsFromTypes = nonPrimitiveTypes.length
@@ -31,7 +33,7 @@ export class VueWrapperGenerator extends AbstractWrapperGenerator {
       : '';
 
     return `<script setup lang="ts">
-${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n')}`;
+${[importsFromVue, importsFromUtils, importsFromTypes].filter(Boolean).join('\n')}`;
   }
 
   public generateProps(component: TagName, rawComponentInterface: string): string {
@@ -59,7 +61,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
       });
 
     const defaultPropsWithValue = extendedProps
-      .filter(({ isEvent }) => !isEvent)
+      .filter(({ isEvent, key }) => !isEvent && key !== 'theme')
       .map(({ key, defaultValue, isDefaultValueComplex }) => {
         if (defaultValue !== undefined) {
           const defaultPropValue = isDefaultValueComplex ? `() => (${defaultValue})` : defaultValue;
@@ -74,7 +76,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter((x) => x).join('\n
           return `  ${key}: ${defaultPropValue},${eslintAnnotation}`;
         }
       })
-      .filter((x) => x)
+      .filter(Boolean)
       .join('\n');
 
     const defineProps = `defineProps<${propsName}>()`;
@@ -104,22 +106,29 @@ ${defaultPropsWithValue}
         const { eventName: lastEventName } = arr.at(-1) || {}; // We need to cast eventNames to the last eventName defined in defineEmits
         const typeCast = index + 1 < arr.length ? ` as '${lastEventName}'` : '';
 
-        return `addEventListenerToElementRef(pdsComponentRef.value!, '${eventName}'${typeCast}, emit);`;
+        return `addEventListenerToElementRef(pdsComponentRef, '${eventName}'${typeCast}, emit);`;
       })
       .join('\n  ');
 
-    const syncProperties = 'syncProperties(pdsComponentRef.value!, props);';
+    const syncProperties = 'syncProperties(pdsComponentRef, props);';
 
-    const content = `
-${[props, pdsComponentRef, defineEmits].filter((x) => x).join('\n')}
-
-onMounted(() => {
-  ${[syncProperties, addEventListener].filter((x) => x).join('\n  ')}
-});
-
-onUpdated(() => {
+    const content = [
+      '',
+      [props, pdsComponentRef, defineEmits].filter(Boolean).join('\n'),
+      `onMounted(() => {
+  ${[syncProperties, addEventListener].filter(Boolean).join('\n  ')}
+});`,
+      `onUpdated(() => {
   ${syncProperties}
-});`;
+});`,
+      extendedProps.some(({ key }) => key === 'theme') &&
+        `const themeRef = inject<Ref<Theme>>(themeInjectionKey)!;
+watch(themeRef, (theme) => {
+  syncProperties(pdsComponentRef, { theme: props.theme || theme });
+});`,
+    ]
+      .filter(Boolean)
+      .join('\n\n');
 
     const hasProps = !!extendedProps.length;
     const componentAttr = [':is="webComponentTag"', ...(hasProps ? ['ref="pdsComponentRef"'] : [])].join(' ');
@@ -128,7 +137,7 @@ onUpdated(() => {
       ? `<component ${componentAttr}><slot /></component>`
       : `<component ${componentAttr} />`;
 
-    return `const webComponentTag = getPrefixedTagName('${component}');${hasProps ? content : ''}
+    return `const webComponentTag = usePrefix('${component}');${hasProps ? content : ''}
 </script>
 
 <template>

@@ -1,26 +1,37 @@
 <script setup lang="ts">
-  import router, { routes } from './router';
-  import { ref } from 'vue';
+  import { onMounted, ref } from 'vue';
+  import { useRouter } from 'vue-router';
   import '@porsche-design-system/shared/css/styles.css';
-  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+  import { PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-vue';
 
-  const options = routes.map(({ path, name, isDisabled }) => ({ path, name, isDisabled }));
-  const selected = ref();
+  const router = useRouter();
+  const route = ref<string>('');
+  const theme = ref<Theme>('light');
 
-  const onChange = (e: Event) => {
-    const { value } = e.target as HTMLSelectElement;
-    selected.value = value;
-    router.push(value);
-  };
+  onMounted(async () => {
+    await router.isReady();
+    route.value = router.currentRoute.value.path;
+  });
 </script>
 
 <template>
-  <PorscheDesignSystemProvider cdn="auto">
-    <select :value="selected" @change="onChange($event)">
+  <PorscheDesignSystemProvider cdn="auto" :theme="theme">
+    <select v-model="route" @change="router.push($event.target.value)">
       <option disabled value="">Select a page</option>
-      <option v-for="(item, index) in options" v-bind:key="index" :value="item.path" :disabled="item.isDisabled">
+      <option
+        v-for="(item, index) in router.getRoutes()"
+        v-bind:key="index"
+        :value="item.path"
+        :disabled="item.isDisabled"
+      >
         {{ item.name }}
       </option>
+    </select>
+
+    <select v-model="theme">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="auto">Auto</option>
     </select>
 
     <div id="app">
