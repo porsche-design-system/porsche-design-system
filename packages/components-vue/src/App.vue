@@ -3,6 +3,7 @@
   import { useRouter } from 'vue-router';
   import '@porsche-design-system/shared/css/styles.css';
   import { PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-vue';
+  import type { RouteType } from './router';
 
   const router = useRouter();
   const route = ref<string>('');
@@ -16,10 +17,10 @@
 
 <template>
   <PorscheDesignSystemProvider cdn="auto" :theme="theme">
-    <select v-model="route" @change="router.push($event.target.value)">
+    <select v-model="route" @change="router.push(($event.target as HTMLSelectElement).value)">
       <option disabled value="">Select a page</option>
       <option
-        v-for="(item, index) in router.getRoutes()"
+        v-for="(item, index) in router.getRoutes() as RouteType[]"
         v-bind:key="index"
         :value="item.path"
         :disabled="item.isDisabled"
