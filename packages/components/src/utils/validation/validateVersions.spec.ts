@@ -82,33 +82,33 @@ describe('validateVersions()', () => {
 });
 
 describe('sortVersions()', () => {
-  it.each([
+  it.each<[Version, Version, number]>([
     ['2.0.0', '1.0.0', 1],
     ['1.1.0', '1.0.0', 1],
     ['1.0.1', '1.0.0', 1],
     ['2.1.2', '2.1.1', 1],
     ['2.1.2-rc.2', '2.1.2-rc.1', 1],
-  ])('(%s) > (%s) = %d', (versionA: Version, versionB: Version, expected: number) => {
+  ])('(%s) > (%s) = %d', (versionA, versionB, expected) => {
     expect(sortVersions(versionA, versionB)).toBe(expected);
   });
 
-  it.each([
+  it.each<[Version, Version, number]>([
     ['1.0.0', '2.0.0', -1],
     ['1.0.0', '1.1.0', -1],
     ['1.0.0', '1.0.1', -1],
     ['2.1.1', '2.1.2', -1],
     ['2.1.2-rc.1', '2.1.2-rc.2', -1],
-  ])('(%s) < (%s) = %d', (versionA: Version, versionB: Version, expected: number) => {
+  ])('(%s) < (%s) = %d', (versionA, versionB, expected) => {
     expect(sortVersions(versionA, versionB)).toBe(expected);
   });
 
-  it.each([
+  it.each<[Version, Version, number]>([
     ['1.0.0', '1.0.0', 0],
     ['2.3.4', '2.3.4', 0],
     ['3.5.6', '3.5.6', 0],
     ['2.1.1', '2.1.1', 0],
     ['2.1.2-rc.1', '2.1.2-rc.1', 0],
-  ])('(%s) == (%s) = %d', (versionA: Version, versionB: Version, expected: number) => {
+  ])('(%s) == (%s) = %d', (versionA, versionB, expected) => {
     expect(sortVersions(versionA, versionB)).toBe(expected);
   });
 });
