@@ -73,14 +73,26 @@ export const getComponentCss = (
       maxWidth: 'var(--p-flyout-max-width, 1180px)',
       color: primaryColor, // enables color inheritance for slotted content
       background: backgroundColor,
-      opacity: isOpen ? 1 : 0,
-      transform: isOpen ? 'initial' : `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
-      transition: `${getTransition(
-        'opacity',
-        isOpen ? 'long' : 'short',
-        easing,
-        isOpen ? '0s' : 'long'
-      )}, ${getTransition('transform', 'long', easing)}`,
+      ...(isOpen
+        ? {
+            opacity: 1,
+            transform: 'initial',
+            transition: `${getTransition('opacity', 'motionDurationLong', 'motionEasingIn', '0s')}, ${getTransition(
+              'transform',
+              'motionDurationLong',
+              'motionEasingIn'
+            )}`,
+          }
+        : {
+            opacity: 0,
+            transform: `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
+            transition: `${getTransition(
+              'opacity',
+              'motionDurationShort',
+              'motionEasingOut',
+              'motionDurationLong'
+            )}, ${getTransition('transform', 'motionDurationLong', 'motionEasingOut')}`,
+          }),
       boxShadow: `${isPositionStart ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: primaryColorDark,
