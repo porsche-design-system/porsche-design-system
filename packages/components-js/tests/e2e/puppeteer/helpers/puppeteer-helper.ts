@@ -415,15 +415,12 @@ export const getHTMLAttributes = <T extends object>(props: T): string => {
     .join(' ');
 };
 
-export const getV2LoaderScriptForPrefixes = (prefixes: string[]): string => {
-  const prefixLoaders = prefixes
-    .map((prefix) => `porscheDesignSystem.load(\{ prefix: '${prefix}' \});`)
-    .join('\n      ');
-
-  // the script below has been copied from https://designsystem.porsche.com/v2/
-  return `
-    <script data-pds-loader-script="">
-      var porscheDesignSystem;(()=>{"use strict";var e={d:(t,s)=>{for(var o in s)e.o(s,o)&&!e.o(t,o)&&Object.defineProperty(t,o,{enumerable:!0,get:s[o]})},o:(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r:e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}},t={};function s(e){if("noModule"in HTMLScriptElement.prototype){const t=("script",document.createElement("script"));t.src=e,t.setAttribute("crossorigin",""),document.body.appendChild(t)}}e.r(t),e.d(t,{load:()=>n});const o="porscheDesignSystem";const n=(e={prefix:""})=>{!function({script:e,version:t,prefix:n}){const r=function(e){const t=(document[o]||(document[o]={}),document[o]),{[e]:s=null}=t;if(null===s){const s={isLoaded:!1,prefixes:[],registerCustomElements:null};t[e]=s}return t[e]}(t)||{},{isLoaded:i,prefixes:c,registerCustomElements:d}=r;i||(s(e),r.isLoaded=!0),c.includes(n)||(c.push(n),d&&d(n))}(Object.assign(Object.assign({},{version:"2.18.0",script:(typeof window!=='undefined'&&window.PORSCHE_DESIGN_SYSTEM_CDN==='cn'?'https://cdn.ui.porsche.cn':'https://cdn.ui.porsche.com')+"/porsche-design-system/components/porsche-design-system.v2.18.0.ec5f4e3768659fe2c13b.js"}),e))};porscheDesignSystem=t})();
-      ${prefixLoaders}
-    </script>`;
+export const getOldLoaderScriptForPrefixes = (prefixes: string[]): string => {
+  const loadCalls = prefixes.map((prefix) => `porscheDesignSystem.load(\{ prefix: '${prefix}' \});`).join('\n      ');
+  // the script below has been copied from https://designsystem.porsche.com/release/components-v3.7.0/
+  return (
+    '<script data-pds-loader-script="">var porscheDesignSystem;(()=>{"use strict";var e={d:(t,n)=>{for(var o in n)e.o(n,o)&&!e.o(t,o)&&Object.defineProperty(t,o,{enumerable:!0,get:n[o]})},o:(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r:e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}},t={};e.r(t),e.d(t,{load:()=>r});const n="porscheDesignSystem";function o(){return document[n]||(document[n]={}),document[n]}function s({script:e,version:t,prefix:s}){const r=function(e){const t=o(),{[e]:n}=t;if(!n){let n=()=>{};const o=new Promise((e=>n=e));t[e]={isInjected:!1,isReady:()=>o,readyResolve:n,prefixes:[],registerCustomElements:null}}return t[e]}(t),{isInjected:i,prefixes:c=[],registerCustomElements:d}=r,[u]=Object.entries(o()).filter((([e,n])=>e!==t&&"object"==typeof n&&n.prefixes.includes(s)));if(u)throw new Error(`[Porsche Design System v${t}] prefix \'${s}\' is already registered with version \'${u[0]}\' of the Porsche Design System. Please use a different one.\\nTake a look at document.${n} for more details.`);i||(function(e){const t=document.createElement("script");t.src=e,t.setAttribute("crossorigin",""),document.body.appendChild(t)}(e),r.isInjected=!0),c.includes(s)||(c.push(s),d&&d(s))}const r=(e={})=>{const t="PORSCHE_DESIGN_SYSTEM_CDN";window[t]=e.cdn||window[t]||(window.location.origin.match(/\\.cn$/)?"cn":"auto");const n="porscheDesignSystem";document[n]||(document[n]={}),document[n].cdn={url:"https://cdn.ui.porsche."+("cn"===window[t]?"cn":"com"),prefixes:[]},s({version:"3.7.0",script:document[n].cdn.url+"/porsche-design-system/components/porsche-design-system.v3.7.0.3c3999ee659a976cf191.js",prefix:e.prefix||""})};porscheDesignSystem=t})();' +
+    loadCalls +
+    '</script>'
+  );
 };

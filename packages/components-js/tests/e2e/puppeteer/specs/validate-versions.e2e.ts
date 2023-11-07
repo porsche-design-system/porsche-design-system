@@ -2,7 +2,7 @@ import { Page } from 'puppeteer';
 import {
   enableBrowserLogging,
   getConsoleWarnings,
-  getV2LoaderScriptForPrefixes,
+  getOldLoaderScriptForPrefixes,
   initConsoleObserver,
   setContentWithDesignSystem,
 } from '../helpers';
@@ -23,16 +23,18 @@ it('should show warning about multiple different versions correctly', async () =
 
   await setContentWithDesignSystem(
     page,
-    `
-    ${getV2LoaderScriptForPrefixes(prefixes)}`,
-    { withoutWaitForComponentsReady: true }
+    `<p-text>Some Text</p-text>
+    ${getOldLoaderScriptForPrefixes(prefixes)}`,
+    {
+      withoutWaitForComponentsReady: true,
+    }
   );
 
   const porscheDesignSystem = await page.evaluate(() => document.porscheDesignSystem as PorscheDesignSystem);
 
   expect(porscheDesignSystem[version]).toBeDefined();
-  expect(porscheDesignSystem['2.18.0']).toBeDefined();
-  expect(porscheDesignSystem['2.18.0'].prefixes).toEqual(prefixes);
+  expect(porscheDesignSystem['3.7.0']).toBeDefined();
+  expect(porscheDesignSystem['3.7.0'].prefixes).toEqual(prefixes);
 
   const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 
@@ -43,7 +45,7 @@ it('should show warning about multiple different versions correctly', async () =
   expect(warningArgs).toEqual([
     `[Porsche Design System v${version}]`,
     'Multiple different versions are used with following prefixes:\n',
-    { '2.18.0': prefixes, [`${version}`]: [''] },
+    { '3.7.0': prefixes, [`${version}`]: [''] },
     `\nPlease upgrade all instances to the latest used version: ${version}`,
   ]);
 });
