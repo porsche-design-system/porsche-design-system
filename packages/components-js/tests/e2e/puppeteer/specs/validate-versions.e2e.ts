@@ -17,8 +17,6 @@ beforeEach(async () => {
 afterEach(async () => await page.close());
 
 it('should show warning about multiple different versions correctly', async () => {
-  enableBrowserLogging(page);
-
   const prefixes = ['test', 'my-prefix'];
 
   await setContentWithDesignSystem(
@@ -51,8 +49,6 @@ it('should show warning about multiple different versions correctly', async () =
 });
 
 it('should not show warning about multiple different versions if only one version is used', async () => {
-  enableBrowserLogging(page);
-
   await setContentWithDesignSystem(page, '<p-text>Some Text</p-text>');
 
   const porscheDesignSystem = await page.evaluate(() => document.porscheDesignSystem);
