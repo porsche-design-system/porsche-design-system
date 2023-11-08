@@ -42,8 +42,8 @@ import {
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import { getComponentCss } from './carousel-styles';
-import { gridGap, motionDurationModerate, motionEasingBase } from '@porsche-design-system/utilities-v2';
+import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
+import { gridGap, motionEasingBase } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
@@ -188,7 +188,7 @@ export class Carousel {
       drag: this.hasNavigation,
       perMove: 1,
       mediaQuery: 'min',
-      speed: parseFloat(motionDurationModerate) * 1000,
+      speed: parseFloat(carouselTransitionDuration) * 1000,
       gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents

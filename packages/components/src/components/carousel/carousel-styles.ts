@@ -8,7 +8,6 @@ import {
   getHiddenTextJssStyle,
   getHighContrastColors,
   getThemedColors,
-  getTransition,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
   colorSchemeStyles,
@@ -27,6 +26,7 @@ import {
   gridExtendedOffset,
   gridGap,
   headingXLargeStyle,
+  motionDurationModerate,
   spacingFluidMedium,
   spacingFluidXSmall,
   spacingStaticMedium,
@@ -35,6 +35,7 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
+export const carouselTransitionDuration = motionDurationModerate;
 export const bulletActiveClass = 'bullet--active';
 export const paginationInfiniteStartCaseClass = 'pagination--infinite';
 export const bulletInfiniteClass = 'bullet--infinite';
@@ -213,7 +214,7 @@ export const getComponentCss = (
         width: 'fit-content',
         height: paginationBulletSize, // Needed to avoid jumping when rewinding dynamically added slides
         gap: spacingStaticSmall,
-        transition: getTransition('transform', 'motionDurationModerate', 'none'),
+        transition: `transform var(--p-transition-duration, ${carouselTransitionDuration})`,
       },
       bullet: {
         borderRadius: borderRadiusSmall,
@@ -231,20 +232,12 @@ export const getComponentCss = (
           ? {
               width: '0px',
               height: '0px',
-              transition: `${getTransition('background-color', 'motionDurationModerate', 'none')}, ${getTransition(
-                'width',
-                'motionDurationModerate',
-                'none'
-              )}, ${getTransition('height', 'motionDurationModerate', 'none')}`,
+              transition: `background-color var(--p-transition-duration, ${carouselTransitionDuration}), width var(--p-transition-duration, ${carouselTransitionDuration}), height var(--p-transition-duration, ${carouselTransitionDuration})`,
             }
           : {
               width: paginationBulletSize,
               height: paginationBulletSize,
-              transition: `${getTransition('background-color', 'motionDurationModerate', 'none')}, ${getTransition(
-                'width',
-                'motionDurationModerate',
-                'none'
-              )}`,
+              transition: `background-color var(--p-transition-duration, ${carouselTransitionDuration}), width var(--p-transition-duration, ${carouselTransitionDuration})`,
             }),
       },
       ...(isInfinitePagination && {
