@@ -19,7 +19,6 @@ import {
 import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 import { isThemeDark } from '../utils';
 import type * as fromMotionType from '@porsche-design-system/utilities-v2/dist/esm/motion';
-// import * as fromMotion from '@porsche-design-system/utilities-v2/dist/esm/motion';
 
 const motionMap: Record<keyof typeof fromMotionType, string> = {
   motionDurationShort,

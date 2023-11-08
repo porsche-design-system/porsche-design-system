@@ -41,8 +41,6 @@ const getHost = () => selectNode(page, 'p-banner');
 const getInlineNotification = () => selectNode(page, 'p-banner >>> p-inline-notification');
 const getCloseButton = () => selectNode(page, 'p-banner >>> p-inline-notification >>> p-button-pure.close');
 
-const buttonHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-button-pure'));
-
 it('should forward props correctly to p-inline-notification', async () => {
   await setContentWithDesignSystem(
     page,
