@@ -4,6 +4,7 @@ import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  cssVariableTransitionDuration,
   cssVariableAnimationDuration,
   getThemedColors,
   getTransition,
@@ -150,12 +151,9 @@ export const getComponentCss = (
         : {
             gridTemplateRows: '0fr',
             visibility: 'hidden',
-            transition: `${getTransition('grid-template-rows')}, ${getTransition(
-              'visibility',
-              '0s',
-              'linear',
-              'motionDurationShort'
-            )}`,
+            transition: `${getTransition(
+              'grid-template-rows'
+            )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationShort})`,
           }),
       '& div': {
         overflow: open ? 'visible' : 'hidden',

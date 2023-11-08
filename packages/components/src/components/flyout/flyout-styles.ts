@@ -2,6 +2,7 @@ import { getCss, isThemeDark, scrollShadowColor, scrollShadowColorDark, type The
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  cssVariableTransitionDuration,
   getFrostedGlassBackgroundJssStyles,
   getInsetJssStyle,
   getThemedColors,
@@ -10,7 +11,12 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { FLYOUT_Z_INDEX } from '../../constants';
-import { gridGap, spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
+import {
+  gridGap,
+  motionDurationLong,
+  spacingFluidLarge,
+  spacingStaticMedium,
+} from '@porsche-design-system/utilities-v2';
 import type { FlyoutPosition } from './flyout-utils';
 
 export const headerShadowClass = 'header--shadow';
@@ -49,7 +55,7 @@ export const getComponentCss = (
               }
             : {
                 visibility: 'hidden',
-                transition: getTransition('visibility', '0s', 'linear', 'motionDurationLong'),
+                transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationLong})`,
               }),
           ...getInsetJssStyle(),
           ...getFrostedGlassBackgroundJssStyles(isOpen, 'motionDurationLong', theme),
@@ -77,7 +83,7 @@ export const getComponentCss = (
         ? {
             opacity: 1,
             transform: 'initial',
-            transition: `${getTransition('opacity', 'motionDurationLong', 'motionEasingIn', '0s')}, ${getTransition(
+            transition: `${getTransition('opacity', 'motionDurationLong', 'motionEasingIn')}, ${getTransition(
               'transform',
               'motionDurationLong',
               'motionEasingIn'

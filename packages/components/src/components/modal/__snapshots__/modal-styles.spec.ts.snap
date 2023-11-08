@@ -13,7 +13,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.25s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
   overflow-y: auto;
 }
@@ -111,7 +111,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.25s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
   overflow-y: auto;
 }
@@ -229,7 +229,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.25s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
   overflow-y: auto;
 }
@@ -347,7 +347,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.25s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
   overflow-y: auto;
 }
@@ -445,7 +445,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.25s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
   overflow-y: auto;
 }
@@ -543,7 +543,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.25s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
   overflow-y: auto;
 }
@@ -661,7 +661,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.25s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
   overflow-y: auto;
 }

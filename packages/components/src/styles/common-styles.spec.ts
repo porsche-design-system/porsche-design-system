@@ -20,7 +20,7 @@ describe('getTransition()', () => {
 
     ['color', 'motionDurationVeryLong', 'linear', 'motionDurationVeryLong'],
 
-    ['box-shadow', '0s', 'none', '0s'],
+    ['box-shadow', undefined, 'none', undefined],
   ])(
     'should return correct style for for cssProperty: %s, duration: %s, ease: %s and delay',
     (cssProperty, duration, ease, delay) => {

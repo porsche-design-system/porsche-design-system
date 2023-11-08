@@ -79,7 +79,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.4s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s) !important;
 }
 .bar {
   position: absolute;
@@ -178,7 +178,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.4s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s) !important;
 }
 .bar {
   position: absolute;
@@ -277,7 +277,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-size: 1rem;
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.4s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s) !important;
 }
 .bar {
   position: absolute;
@@ -376,7 +376,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-size: 1rem;
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.4s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s) !important;
 }
 .bar {
   position: absolute;
@@ -475,7 +475,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   font-size: 1rem;
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.4s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s) !important;
 }
 .bar {
   position: absolute;
@@ -574,7 +574,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   font-size: 1rem;
 }
 .scroller--animated ::slotted(a[aria-selected="true"])::after, .scroller--animated ::slotted(a[aria-current="true"])::after, .scroller--animated ::slotted(button[aria-selected="true"])::after, .scroller--animated ::slotted(button[aria-current="true"])::after {
-  transition: visibility var(--p-transition-duration, 0s) linear var(--p-transition-duration, 0.4s) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s) !important;
 }
 .bar {
   position: absolute;

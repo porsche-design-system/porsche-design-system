@@ -36,13 +36,13 @@ export const cssVariableAnimationDuration = '--p-animation-duration';
 
 export const getTransition = (
   cssProperty: keyof PropertiesHyphen,
-  duration: keyof typeof fromMotionType | '0s' = 'motionDurationShort',
+  duration: keyof typeof fromMotionType = 'motionDurationShort',
   easing: keyof typeof fromMotionType | 'linear' | 'none' = 'motionEasingBase',
-  delay?: keyof typeof fromMotionType | '0s'
+  delay?: keyof typeof fromMotionType
 ): string =>
-  `${cssProperty} var(${cssVariableTransitionDuration}, ${motionMap[duration] || duration})${
+  `${cssProperty} var(${cssVariableTransitionDuration}, ${motionMap[duration]})${
     easing === 'none' ? '' : ` ${easing === 'linear' ? easing : motionMap[easing]}`
-  }${delay ? ` var(${cssVariableTransitionDuration}, ${motionMap[delay] || delay})` : ''}`;
+  }${delay ? ` var(${cssVariableTransitionDuration}, ${motionMap[delay]})` : ''}`;
 
 export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
 

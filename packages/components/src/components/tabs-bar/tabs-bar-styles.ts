@@ -6,6 +6,7 @@ import {
   addImportantToRule,
   colorSchemeStyles,
   cssVariableAnimationDuration,
+  cssVariableTransitionDuration,
   getHighContrastColors,
   getResetInitialStylesForSlottedAnchor,
   getThemedColors,
@@ -20,6 +21,7 @@ import {
   borderWidthBase,
   fontSizeText,
   frostedGlassStyle,
+  motionDurationModerate,
   spacingStaticMedium,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
@@ -158,7 +160,9 @@ export const getComponentCss = (
       transformSelector(
         '::slotted([role][aria-selected="true"])::after, ::slotted([role][aria-current="true"])::after'
       )]: {
-        transition: addImportantToRule(getTransition('visibility', '0s', 'linear', 'motionDurationModerate')), // bar appears after transition
+        transition: addImportantToRule(
+          `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationModerate})`
+        ), // bar appears after transition
       },
     },
     // moving bar

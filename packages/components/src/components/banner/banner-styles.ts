@@ -5,10 +5,17 @@ import {
   gridExtendedOffsetBase,
   gridExtendedOffsetS,
   gridExtendedOffsetXXL,
+  motionDurationLong,
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
-import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  cssVariableTransitionDuration,
+  getTransition,
+  hostHiddenStyles,
+} from '../../styles';
 
 const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
@@ -47,7 +54,7 @@ export const getComponentCss = (isOpen: boolean): string => {
               visibility: 'hidden',
               transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
               '&(.hydrated),&(.ssr)': {
-                transition: `${getTransition('visibility', '0s', 'linear', 'motionDurationLong')}, ${getTransition(
+                transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationLong}), ${getTransition(
                   'transform',
                   'motionDurationModerate',
                   'motionEasingOut'

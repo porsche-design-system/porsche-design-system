@@ -206,11 +206,11 @@ exports[`getInsetJssStyle() should return correct JssStyle for parameter: undefi
 }
 `;
 
-exports[`getTransition() should return correct style for for cssProperty: box-shadow, duration: 0s, ease: none and delay 1`] = `"box-shadow var(--p-transition-duration, 0s) var(--p-transition-duration, 0s)"`;
-
 exports[`getTransition() should return correct style for for cssProperty: box-shadow, duration: motionDurationLong, ease: motionEasingOut and delay 1`] = `"box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s)"`;
 
 exports[`getTransition() should return correct style for for cssProperty: box-shadow, duration: motionDurationShort, ease: motionEasingBase and delay 1`] = `"box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)"`;
+
+exports[`getTransition() should return correct style for for cssProperty: box-shadow, duration: undefined, ease: none and delay 1`] = `"box-shadow var(--p-transition-duration, 0.25s)"`;
 
 exports[`getTransition() should return correct style for for cssProperty: color, duration: motionDurationModerate, ease: motionEasingIn and delay 1`] = `"color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)"`;
 
