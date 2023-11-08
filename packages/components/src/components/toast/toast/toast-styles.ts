@@ -19,10 +19,11 @@ import { TOAST_Z_INDEX } from '../../../constants';
 const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
 const cssVariablePositionBottomInternal = '--p-internal-toast-position-bottom';
 
+export const ANIMATION_DURATION = motionDurationModerate;
 const duration =
   ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test'
-    ? `var(${cssVariableAnimationDuration},${motionDurationModerate})`
-    : motionDurationModerate;
+    ? `var(${cssVariableAnimationDuration},${ANIMATION_DURATION})`
+    : ANIMATION_DURATION;
 
 export type KeyframesDirection = 'in' | 'out';
 export const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssStyle): JssStyle => {
@@ -75,7 +76,7 @@ export const getComponentCss = (): string => {
       animation: `${duration} $in ${motionEasingIn} forwards`,
     },
     [toastCloseClassName]: {
-      animation: addImportantToRule(`${duration} $out ${motionEasingOut} forwards`),
+      animation: addImportantToRule(`${ANIMATION_DURATION} $out ${motionEasingOut} forwards`),
     },
   });
 };
