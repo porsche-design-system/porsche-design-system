@@ -84,10 +84,7 @@ const getBarWidth = async (): Promise<string> => getElementStyle(await getBar(),
 const clickElement = async (el: ElementHandle) => {
   await el.click();
   await waitForStencilLifecycle(page);
-  await waitForAnimation();
 };
-
-const waitForAnimation = () => new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
 
 it('should work with nested or translated markup', async () => {
   const content = `
@@ -363,7 +360,6 @@ describe('bar', () => {
 
     await firstButton.click();
     await thirdButton.click();
-    await waitForAnimation(); // 🤷‍
 
     const thirdButtonPositionAfter = await getElementPositions(page, thirdButton);
     expect(Math.round(thirdButtonPositionAfter.left), 'correct offsetLeft after page resize').toEqual(
@@ -536,7 +532,6 @@ describe('keyboard', () => {
 
     const pressKey = async (key: KeyInput) => {
       await page.keyboard.press(key);
-      await waitForAnimation();
     };
 
     await pressKey('Tab');

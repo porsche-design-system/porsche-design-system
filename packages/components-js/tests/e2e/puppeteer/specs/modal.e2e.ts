@@ -139,7 +139,7 @@ it('should render and be visible when open', async () => {
 
 it('should not be visible when not open', async () => {
   await initBasicModal({ isOpen: false });
-  await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // wait for visibility transition to finish
+
   expect(await getModalVisibility()).toBe('hidden');
 });
 
@@ -156,6 +156,7 @@ it('should have correct transform when dismissed and opened', async () => {
   expect(initialModalTransform).not.toBe(openModalTransform);
 
   await dismissModal();
+  // TODO: why is timeout needed? transition durations should be overwritten with 0s
   await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // transition delay for visibility
   const finalModalTransform = await getModalTransform();
   expect(finalModalTransform).toBe(initialModalTransform);
@@ -379,19 +380,18 @@ describe('focus behavior', () => {
         });
       </script>`
     );
-    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getModalVisibility(), 'initial').toBe('hidden');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await (await selectNode(page, '#btn-open')).click();
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getModalVisibility()).toBe('visible');
 
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
+    // TODO: why is timeout needed? transition durations should be overwritten with 0s
     await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // transition delay for visibility
 
     expect(await getModalVisibility(), 'after escape').toBe('hidden');
