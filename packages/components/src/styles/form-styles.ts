@@ -193,7 +193,7 @@ export const getLabelStyles = (
   };
 };
 
-export const getUnitStyles = (isDisabled: boolean, theme: Theme): JssStyle => {
+export const getUnitCounterStyles = (isDisabled: boolean, theme: Theme): JssStyle => {
   const { disabledColor, contrastMediumColor } = getThemedColors(theme);
   const { disabledColor: disabledColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
 

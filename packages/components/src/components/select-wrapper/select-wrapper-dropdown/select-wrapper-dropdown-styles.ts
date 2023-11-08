@@ -18,6 +18,7 @@ import {
   fontWeightSemiBold,
   spacingStaticMedium,
   spacingStaticSmall,
+  spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
@@ -48,12 +49,11 @@ export const getButtonStyles = (
 
   return {
     '@global': {
+      // TODO: extract generic default button/anchor reset style
       button: {
         position: 'absolute',
-        top: 0,
-        height: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so button height becomes 54px
-        width: '100%',
-        font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
+        ...getInsetJssStyle(),
+        margin: 0,
         padding: 0,
         background: 'transparent',
         border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`, // using border of styled select below for label:hover selector
@@ -94,6 +94,10 @@ export const getButtonStyles = (
   };
 };
 
+// TODO: should be extracted for textarea, textfield and select
+const selectSafeZone = '9px'; // to have same distance vertically and horizontally for button/icon in combination with input
+const buttonOrIconSize = `calc(${fontLineHeight} + ${spacingStaticXSmall} * 2)`;
+
 export const getFilterStyles = (
   direction: DropdownDirectionInternal,
   isOpen: boolean,
@@ -130,13 +134,10 @@ export const getFilterStyles = (
       input: {
         display: 'block',
         position: 'absolute',
+        ...getInsetJssStyle(2), // 2 = borderWidthBase
         zIndex: 1,
-        bottom: '2px',
-        left: '2px',
-        width: `calc(100% - (${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2))`,
-        height: `calc(${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 6px additionally so input height becomes 50px
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
-        padding: `13px ${spacingStaticMedium}`,
+        padding: `13px calc(${selectSafeZone} * 2 + ${buttonOrIconSize}) 13px ${spacingStaticMedium}`, // TODO: could be done with css subgrid much more elegant in the near future
         outline: '0',
         appearance: 'none',
         boxSizing: 'border-box',
@@ -191,6 +192,7 @@ export const getFilterStyles = (
             },
           },
         }),
+        // TODO: can be handled with getFocusStyle in the meantime
         '&+span': {
           // for focus outline and clicking arrow since input ends left of the icon
           position: 'absolute',
@@ -238,6 +240,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
   return {
     '@global': {
       ul: {
+        [dropdownPositionVar]: 'absolute',
         display: 'flex',
         flexDirection: 'column',
         gap: spacingStaticSmall,
@@ -352,7 +355,7 @@ export const getComponentCss = (
   filter: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  /* const { primaryColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     contrastMediumColor: contrastMediumColorDark,
@@ -362,7 +365,7 @@ export const getComponentCss = (
   const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
     'dark',
     state
-  );
+  );*/
 
   return getCss(
     // merge because of global styles
@@ -370,16 +373,10 @@ export const getComponentCss = (
       {
         '@global': {
           ':host': {
-            [dropdownPositionVar]: 'absolute', // TODO: make conditional only for tests
             display: 'block',
-            position: `var(${dropdownPositionVar})`, // for vrt tests
-            font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
-            marginTop: `calc(-1 * (${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2))`, // we need 10px additionally so input height becomes 54px,
-            paddingTop: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so input height becomes 54px,
-            left: 0,
-            right: 0,
-            color: disabled ? disabledColor : formStateColor || contrastMediumColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
+            position: 'relative',
+            // color: disabled ? disabledColor : formStateColor || contrastMediumColor,
+            /* ...prefersColorSchemeDarkMediaQuery(theme, {
               color: disabled ? disabledColorDark : formStateColorDark || contrastMediumColorDark,
             }),
             ...(!disabled &&
@@ -391,7 +388,7 @@ export const getComponentCss = (
                     color: formStateHoverColorDark || primaryColorDark,
                   }),
                 },
-              })),
+              })),*/
           },
         },
         'sr-text': {

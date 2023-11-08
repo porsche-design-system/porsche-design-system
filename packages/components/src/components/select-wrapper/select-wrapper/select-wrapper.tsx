@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -6,9 +6,6 @@ import {
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   getSlotTextContent,
-  hasDescription,
-  hasLabel,
-  hasMessage,
   hasPropValueChanged,
   isRequiredAndParentNotRequired,
   observeAttributes,
@@ -23,7 +20,7 @@ import type { SelectWrapperDropdownDirection, SelectWrapperState } from './selec
 import { DROPDOWN_DIRECTIONS, isCustomDropdown } from './select-wrapper-utils';
 import { getComponentCss } from './select-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
-import { Required } from '../../common/required/required';
+import { Label } from '../../common/label/label';
 
 const propTypes: PropTypes<typeof SelectWrapper> = {
   label: AllowedTypes.string,
@@ -73,7 +70,6 @@ export class SelectWrapper {
 
   private select: HTMLSelectElement;
   private iconElement: HTMLElement;
-  private dropdownElement: HTMLPSelectWrapperDropdownElement;
   private hasCustomDropdown: boolean;
 
   public connectedCallback(): void {
@@ -127,46 +123,30 @@ export class SelectWrapper {
       this.theme
     );
 
-    const labelProps = disabled
-      ? {}
-      : {
-          onClick: () =>
-            (this.hasCustomDropdown
-              ? (this.dropdownElement.shadowRoot.children[0] as HTMLElement)
-              : this.select
-            ).focus(),
-        };
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <div class="root">
-          <label class="label">
-            {hasLabel(this.host, this.label) && (
-              <span class="label__text" {...labelProps}>
-                {this.label || <slot name="label" />}
-                {isRequiredAndParentNotRequired(this.host, this.select) && <Required />}
-              </span>
-            )}
-            {hasDescription(this.host, this.description) && (
-              <span class="label__text" {...labelProps}>
-                {this.description || <slot name="description" />}
-              </span>
-            )}
-            <PrefixedTagNames.pIcon
-              class="icon"
-              name="arrow-head-down"
-              theme={this.theme}
-              color={disabled ? 'state-disabled' : 'primary'}
-              aria-hidden="true"
-              ref={(el) => (this.iconElement = el)}
-            />
-            <slot />
-          </label>
+      <div class="root">
+        <Label
+          label={this.label}
+          description={this.description}
+          formElement={this.select}
+          host={this.host}
+          hasCustomSelectDropdown={this.hasCustomDropdown}
+        />
+        <div class="wrapper">
+          <slot />
+          <PrefixedTagNames.pIcon
+            class="icon"
+            name="arrow-head-down"
+            theme={this.theme}
+            color={disabled ? 'state-disabled' : 'primary'}
+            aria-hidden="true"
+            ref={(el) => (this.iconElement = el)}
+          />
           {this.hasCustomDropdown && !disabled && (
             <PrefixedTagNames.pSelectWrapperDropdown
-              ref={(el) => (this.dropdownElement = el)}
+              class="dropdown"
               selectRef={this.select}
               label={this.label || getSlotTextContent(this.host, 'label')}
               message={this.message || getSlotTextContent(this.host, 'message')}
@@ -181,10 +161,8 @@ export class SelectWrapper {
             />
           )}
         </div>
-        {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        )}
-      </Host>
+        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+      </div>
     );
   }
 

@@ -4,7 +4,7 @@ import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-
 import type { FormState } from '../../utils/form/form-state';
 import { getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
-import { getBaseChildStyles, getUnitStyles } from '../../styles/form-styles';
+import { getBaseChildStyles, getUnitCounterStyles } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import {
   borderWidthBase,
@@ -108,7 +108,7 @@ export const getComponentCss = (
     }),
     ...(hasUnitOrVisibleCounter && {
       unit: {
-        ...getUnitStyles(isDisabled, theme),
+        ...getUnitCounterStyles(isDisabled, theme),
         gridArea: `1/${unitPosition === 'suffix' ? 5 : 1}/1/${unitPosition === 'suffix' ? 7 : 3}`,
         placeSelf: 'center',
         paddingInline: unitPosition === 'suffix' ? `10px ${spacingStaticMedium}` : `${spacingStaticMedium} 10px`, // padding needed for correct input padding synchronisation

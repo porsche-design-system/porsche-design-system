@@ -9,9 +9,16 @@ type LabelProps = {
   isLoading?: boolean;
   formElement: FormElement;
   host: HTMLElement;
+  hasCustomSelectDropdown?: boolean;
 };
 
-const onLabelClick = (event: MouseEvent, formElement: FormElement, isLoading: boolean): void => {
+const onLabelClick = (
+  event: MouseEvent,
+  formElement: FormElement,
+  isLoading: boolean,
+  hasCustomSelectDropdown?: boolean,
+  host?: HTMLElement
+): void => {
   if (
     !isLoading &&
     (formElement?.type === 'checkbox' || formElement?.type === 'radio') &&
@@ -20,14 +27,24 @@ const onLabelClick = (event: MouseEvent, formElement: FormElement, isLoading: bo
   ) {
     formElement.click();
   } else {
-    formElement.focus();
+    (hasCustomSelectDropdown
+      ? (host?.shadowRoot.children[0].querySelector('.dropdown').shadowRoot.children[0] as HTMLElement)
+      : formElement
+    ).focus();
   }
 };
 
-export const Label: FunctionalComponent<LabelProps> = ({ label, description, isLoading, formElement, host }) => {
+export const Label: FunctionalComponent<LabelProps> = ({
+  label,
+  description,
+  isLoading,
+  formElement,
+  host,
+  hasCustomSelectDropdown,
+}) => {
   const labelProps = {
     class: 'label',
-    onClick: (event: MouseEvent) => onLabelClick(event, formElement, isLoading),
+    onClick: (event: MouseEvent) => onLabelClick(event, formElement, isLoading, hasCustomSelectDropdown, host),
     'aria-disabled': isLoading ? 'true' : null,
   };
 
