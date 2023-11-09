@@ -12,7 +12,7 @@ import { BANNER_Z_INDEX } from '../../constants';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  cssVariableTransitionDuration,
+  cssVariableAnimationDuration,
   getTransition,
   hostHiddenStyles,
 } from '../../styles';
@@ -54,7 +54,7 @@ export const getComponentCss = (isOpen: boolean): string => {
               visibility: 'hidden',
               transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
               '&(.hydrated),&(.ssr)': {
-                transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationLong}), ${getTransition(
+                transition: `visibility 0s linear var(${cssVariableAnimationDuration}, ${motionDurationLong}), ${getTransition(
                   'transform',
                   'motionDurationModerate',
                   'motionEasingOut'

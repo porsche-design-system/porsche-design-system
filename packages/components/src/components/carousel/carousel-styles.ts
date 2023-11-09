@@ -214,7 +214,7 @@ export const getComponentCss = (
         width: 'fit-content',
         height: paginationBulletSize, // Needed to avoid jumping when rewinding dynamically added slides
         gap: spacingStaticSmall,
-        transition: `transform var(--p-transition-duration, ${carouselTransitionDuration})`,
+        transition: `transform ${carouselTransitionDuration}`,
       },
       bullet: {
         borderRadius: borderRadiusSmall,
@@ -232,12 +232,12 @@ export const getComponentCss = (
           ? {
               width: '0px',
               height: '0px',
-              transition: `background-color var(--p-transition-duration, ${carouselTransitionDuration}), width var(--p-transition-duration, ${carouselTransitionDuration}), height var(--p-transition-duration, ${carouselTransitionDuration})`,
+              transition: `background-color ${carouselTransitionDuration}, width ${carouselTransitionDuration}, height ${carouselTransitionDuration}`,
             }
           : {
               width: paginationBulletSize,
               height: paginationBulletSize,
-              transition: `background-color var(--p-transition-duration, ${carouselTransitionDuration}), width var(--p-transition-duration, ${carouselTransitionDuration})`,
+              transition: `background-color ${carouselTransitionDuration}, width ${carouselTransitionDuration}`,
             }),
       },
       ...(isInfinitePagination && {

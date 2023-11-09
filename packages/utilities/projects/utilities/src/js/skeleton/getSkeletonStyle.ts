@@ -18,7 +18,7 @@ export const getSkeletonStyle = (opts?: Options) => {
     display: 'block',
     background: `${backgroundColor} linear-gradient(to right, transparent 0%, ${highlightColor} 25%, transparent 50%) 0 0 / 200% 100%`,
     borderRadius: borderRadiusSmall,
-    animation: `skeletonAnimation var(--p-transition-duration, ${motionDurationLong}) ${motionEasingBase} infinite`,
+    animation: `skeletonAnimation ${motionDurationLong} ${motionEasingBase} infinite`,
     '@keyframes skeletonAnimation': {
       from: { backgroundPositionX: '100%' },
       to: { backgroundPositionX: '-100%' },

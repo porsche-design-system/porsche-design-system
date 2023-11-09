@@ -54,7 +54,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         borderRadius: 0,
       }
     : {
-        minWidth: '276px', // on viewpotranslateY(25%)rt 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
+        minWidth: '276px', // on viewport 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
         maxWidth: '1535.5px', // on viewport 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
         minHeight: 'auto',
         margin: `${marginTopBottom} ${gridExtendedOffsetBase}`,

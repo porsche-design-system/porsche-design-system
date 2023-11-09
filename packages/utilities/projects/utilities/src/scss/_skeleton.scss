@@ -22,7 +22,7 @@
   display: block;
   border-radius: $pds-border-radius-small;
 
-  animation: skeletonAnimation var(--animation-duration, $pds-motion-duration-long) $pds-motion-easing-base infinite;
+  animation: skeletonAnimation $pds-motion-duration-long $pds-motion-easing-base infinite;
 
   @keyframes skeletonAnimation {
     from {
