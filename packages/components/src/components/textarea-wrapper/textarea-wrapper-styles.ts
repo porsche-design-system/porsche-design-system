@@ -9,7 +9,7 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import { getBaseChildStyles } from '../../styles/form-styles';
+import { getSlottedInputTextareaSelectStyles } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { type FormState } from '../../utils/form/form-state';
 import {
@@ -46,7 +46,7 @@ export const getComponentCss = (
       // ::slotted(textarea)
       ...mergeDeep(
         addImportantToEachRule(
-          getBaseChildStyles('textarea', state, theme, {
+          getSlottedInputTextareaSelectStyles('textarea', state, theme, {
             gridArea: '1/1/4/6',
             font: textSmallStyle.font, // to override line-height
             padding: hasCounter ? `12px ${spacingStaticMedium} ${spacingStaticLarge}` : `12px ${spacingStaticMedium}`,

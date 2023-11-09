@@ -1,7 +1,7 @@
 import type { FormState } from '../../utils/form/form-state';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss } from '../../utils';
-import { getBaseChildStyles } from '../../styles/form-styles';
+import { getSlottedInputTextareaSelectStyles } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { type PinCodeLength, removeSlottedSelector, removeStyles } from './pin-code-utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
@@ -27,7 +27,7 @@ export const getComponentCss = (
   const inputStyles = removeStyles(
     'input[readonly]',
     removeSlottedSelector(
-      getBaseChildStyles('input', state, theme, {
+      getSlottedInputTextareaSelectStyles('input', state, theme, {
         textAlign: 'center',
         width: inputSize,
         ...(length > 4 && {

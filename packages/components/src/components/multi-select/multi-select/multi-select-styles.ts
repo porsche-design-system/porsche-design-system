@@ -15,23 +15,105 @@ import {
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
+  fontSizeTextXSmall,
   spacingStaticMedium,
   spacingStaticSmall,
+  spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import type { Styles } from 'jss';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { FormState } from '../../../utils/form/form-state';
-import { getLabelStyles } from '../../../styles/form-styles';
+import { type ChildSelector } from '../../../styles/form-styles';
 import { getPlaceholderJssStyle } from '../../../styles/placeholder';
 import { getNoResultsOptionJssStyle, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getFunctionalComponentRequiredStyles } from '../../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import { type JssStyle } from 'jss';
 
 const inputYPadding = '13px';
 const selectorNativeSelect = '::slotted([slot=select])';
 
 const INPUT_HEIGHT_CALC = `${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2`;
+
+const getLabelStyles = (
+  child: ChildSelector,
+  isDisabled: boolean,
+  hideLabel: BreakpointCustomizable<boolean>,
+  state: FormState,
+  theme: Theme,
+  counterOrUnitOrIconStyles?: Styles<'counter'> | Styles<'unit'> | Styles<'icon'>,
+  additionalLabelJssStyle?: JssStyle
+): Styles => {
+  const { primaryColor, disabledColor, contrastHighColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    disabledColor: disabledColorDark,
+    contrastHighColor: contrastHighColorDark,
+  } = getThemedColors('dark');
+  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
+  const { formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors('dark', state);
+
+  const counterOrUnitOrIconStylesKey = counterOrUnitOrIconStyles && Object.keys(counterOrUnitOrIconStyles)[0];
+
+  return {
+    label: {
+      display: 'grid',
+      gridTemplateColumns: 'auto minmax(0, 1fr) auto',
+      position: 'relative', // for unit and counter
+      '&__text': {
+        gridColumn: 'span 2',
+        display: 'block',
+        ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
+          getHiddenTextJssStyle(isHidden, {
+            width: 'fit-content',
+            marginBottom: spacingStaticXSmall,
+          })
+        ),
+        ...textSmallStyle,
+        color: isDisabled ? disabledColor : primaryColor,
+        transition: getTransition('color'), // for smooth transitions between e.g. disabled states
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: isDisabled ? disabledColorDark : primaryColorDark,
+        }),
+        '&+&': {
+          marginTop: `-${spacingStaticXSmall}`,
+          fontSize: fontSizeTextXSmall,
+          ...(!isDisabled && {
+            color: contrastHighColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              color: contrastHighColorDark,
+            }),
+          }),
+        },
+        ...hoverMediaQuery({
+          '&:hover': {
+            [`&~::slotted(${child}:not(:disabled):not(:focus):not([readonly]))`]: {
+              borderColor: addImportantToRule(formStateHoverColor || primaryColor),
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                borderColor: addImportantToRule(formStateHoverColorDark || primaryColorDark),
+              }),
+            },
+          },
+        }),
+      },
+      ...additionalLabelJssStyle,
+    },
+    ...(counterOrUnitOrIconStyles && {
+      [counterOrUnitOrIconStylesKey]: {
+        ...counterOrUnitOrIconStyles[counterOrUnitOrIconStylesKey],
+        pointerEvents: 'none',
+        ...(isDisabled && {
+          color: disabledColor,
+          cursor: 'not-allowed',
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: disabledColorDark,
+          }),
+        }),
+      },
+    }),
+  };
+};
 
 export const getComponentCss = (
   direction: SelectDropdownDirectionInternal,

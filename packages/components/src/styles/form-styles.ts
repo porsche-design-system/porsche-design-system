@@ -1,21 +1,11 @@
 import type { JssStyle, Styles } from 'jss';
-import type { BreakpointCustomizable, Theme } from '../types';
-import { buildResponsiveStyles } from '../utils';
-import {
-  addImportantToRule,
-  getHiddenTextJssStyle,
-  getThemedColors,
-  getTransition,
-  hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
-} from './';
+import type { Theme } from '../types';
+import { getThemedColors, getTransition, hoverMediaQuery, prefersColorSchemeDarkMediaQuery } from './';
 import {
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
-  fontSizeTextXSmall,
   spacingStaticSmall,
-  spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
@@ -26,8 +16,7 @@ export const INPUT_HEIGHT = 54;
 
 export type ChildSelector = 'input' | 'select' | 'textarea';
 
-// TODO: rename to getSlottedInputTextareaSelectStyles
-export const getBaseChildStyles = (
+export const getSlottedInputTextareaSelectStyles = (
   child: ChildSelector,
   state: FormState,
   theme: Theme,
@@ -108,85 +97,6 @@ export const getBaseChildStyles = (
         ...prefersColorSchemeDarkMediaQuery(theme, {
           borderColor: contrastLowColorDark,
           background: contrastLowColorDark,
-        }),
-      },
-    }),
-  };
-};
-
-export const getLabelStyles = (
-  child: ChildSelector,
-  isDisabled: boolean,
-  hideLabel: BreakpointCustomizable<boolean>,
-  state: FormState,
-  theme: Theme,
-  counterOrUnitOrIconStyles?: Styles<'counter'> | Styles<'unit'> | Styles<'icon'>,
-  additionalLabelJssStyle?: JssStyle
-): Styles => {
-  const { primaryColor, disabledColor, contrastHighColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    contrastHighColor: contrastHighColorDark,
-  } = getThemedColors('dark');
-  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors('dark', state);
-
-  const counterOrUnitOrIconStylesKey = counterOrUnitOrIconStyles && Object.keys(counterOrUnitOrIconStyles)[0];
-
-  return {
-    label: {
-      display: 'grid',
-      gridTemplateColumns: 'auto minmax(0, 1fr) auto',
-      position: 'relative', // for unit and counter
-      '&__text': {
-        gridColumn: 'span 2',
-        display: 'block',
-        ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-          getHiddenTextJssStyle(isHidden, {
-            width: 'fit-content',
-            marginBottom: spacingStaticXSmall,
-          })
-        ),
-        ...textSmallStyle,
-        color: isDisabled ? disabledColor : primaryColor,
-        transition: getTransition('color'), // for smooth transitions between e.g. disabled states
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: isDisabled ? disabledColorDark : primaryColorDark,
-        }),
-        '&+&': {
-          marginTop: `-${spacingStaticXSmall}`,
-          fontSize: fontSizeTextXSmall,
-          ...(!isDisabled && {
-            color: contrastHighColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              color: contrastHighColorDark,
-            }),
-          }),
-        },
-        ...hoverMediaQuery({
-          '&:hover': {
-            [`&~::slotted(${child}:not(:disabled):not(:focus):not([readonly]))`]: {
-              borderColor: addImportantToRule(formStateHoverColor || primaryColor),
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: addImportantToRule(formStateHoverColorDark || primaryColorDark),
-              }),
-            },
-          },
-        }),
-      },
-      ...additionalLabelJssStyle,
-    },
-    ...(counterOrUnitOrIconStyles && {
-      [counterOrUnitOrIconStylesKey]: {
-        ...counterOrUnitOrIconStyles[counterOrUnitOrIconStylesKey],
-        pointerEvents: 'none',
-        ...(isDisabled && {
-          color: disabledColor,
-          cursor: 'not-allowed',
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: disabledColorDark,
-          }),
         }),
       },
     }),

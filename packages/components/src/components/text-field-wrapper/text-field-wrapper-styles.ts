@@ -4,7 +4,7 @@ import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-
 import type { FormState } from '../../utils/form/form-state';
 import { getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
-import { getBaseChildStyles, getUnitCounterStyles } from '../../styles/form-styles';
+import { getSlottedInputTextareaSelectStyles, getUnitCounterStyles } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import {
   borderWidthBase,
@@ -58,7 +58,7 @@ export const getComponentCss = (
       },
       // ::slotted(input)
       ...addImportantToEachRule({
-        ...getBaseChildStyles('input', state, theme, {
+        ...getSlottedInputTextareaSelectStyles('input', state, theme, {
           gridArea: '1/1/1/7',
           padding: `${spacingStaticSmall} 0`,
           paddingInline: `var(${cssVariableInputPaddingStart}) var(${cssVariableInputPaddingEnd})`,

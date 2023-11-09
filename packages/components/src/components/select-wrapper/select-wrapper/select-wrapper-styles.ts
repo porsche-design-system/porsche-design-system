@@ -1,7 +1,7 @@
 import { type BreakpointCustomizable, type Theme } from '../../../types';
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles } from '../../../styles';
-import { getBaseChildStyles } from '../../../styles/form-styles';
+import { getSlottedInputTextareaSelectStyles } from '../../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { type FormState } from '../../../utils/form/form-state';
 import {
@@ -35,7 +35,7 @@ export const getComponentCss = (
       },
       // ::slotted(select)
       ...addImportantToEachRule(
-        getBaseChildStyles('select', state, theme, {
+        getSlottedInputTextareaSelectStyles('select', state, theme, {
           gridArea: '1/1/1/7',
           position: 'static',
           zIndex: 0, // TODO: overrides global style.css in e2e and vrts
