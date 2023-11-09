@@ -132,3 +132,13 @@ import { AppComponent } from './app.component';
 })
 export class AppModule {}
 ```
+
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  item = '{{ item }}'; // to trick interpolation
+}
+</script>
