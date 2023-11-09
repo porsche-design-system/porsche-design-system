@@ -2,6 +2,28 @@
 
 <TableOfContents></TableOfContents>
 
+## Global Theme
+
+**Since v3.8.0** you can set the `theme` property for all child components by setting the prop on
+`PorscheDesignSystemProvider`.
+
+Local overrides on a per component basis are still possible as usual.
+
+```tsx
+// pages/App.vue
+
+<script setup lang="ts">
+  import AppComponent from './components/AppComponent.vue';
+  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PorscheDesignSystemProvider theme="dark">
+    <AppComponent />
+  </PorscheDesignSystemProvider>
+</template>
+```
+
 ## Prefixing
 
 In case of a micro-service architecture, multiple instances and versions of the Porsche Design System can be combined in

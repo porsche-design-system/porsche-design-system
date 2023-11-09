@@ -2,6 +2,30 @@
 
 <TableOfContents></TableOfContents>
 
+## Global Theme
+
+**Since v3.8.0** you can set the `theme` property for all child components by passing an option to
+`PorscheDesignSystemModule.load()`.
+
+Local overrides on a per component basis are still possible as usual.
+
+```ts
+// app.module.ts
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PorscheDesignSystemModule, WEB_COMPONENTS_PREFIX } from '@porsche-design-system/components-angular';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, PorscheDesignSystemModule.load({ theme: 'dark' })],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
 ## Prefixing
 
 In case of a micro-service architecture, multiple instances and versions of the Porsche Design System can be combined in
