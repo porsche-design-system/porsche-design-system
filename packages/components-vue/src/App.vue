@@ -8,6 +8,7 @@
   const router = useRouter();
   const route = ref<string>('');
   const theme = ref<Theme>('light');
+  const themes: Theme[] = ['light', 'dark', 'auto'];
 
   onMounted(async () => {
     await router.isReady();
@@ -19,15 +20,13 @@
   <PorscheDesignSystemProvider cdn="auto" :theme="theme">
     <select v-model="route" @change="router.push(($event.target as HTMLSelectElement).value)">
       <option disabled value="">Select a page</option>
-      <option v-for="(item, index) in routes" v-bind:key="index" :value="item.path" :disabled="item.isDisabled">
+      <option v-for="(item, index) in routes" :key="index" :value="item.path" :disabled="item.isDisabled">
         {{ item.name }}
       </option>
     </select>
 
     <select v-model="theme">
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-      <option value="auto">Auto</option>
+      <option v-for="(item, index) in themes" :key="index" :value="item">{{ item }}</option>
     </select>
 
     <div id="app">

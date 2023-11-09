@@ -7,6 +7,7 @@ export const App = (): JSX.Element => {
   const navigate = useNavigate();
   const [route, setRoute] = useState(useLocation().pathname);
   const [theme, setTheme] = useState<Theme>('light');
+  const themes: Theme[] = ['light', 'dark', 'auto'];
 
   return (
     <>
@@ -27,9 +28,11 @@ export const App = (): JSX.Element => {
       </select>
 
       <select value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-        <option value="auto">Auto</option>
+        {themes.map((item) => (
+          <option key={item} value={item}>
+            item
+          </option>
+        ))}
       </select>
 
       <div id="app">
