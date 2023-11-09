@@ -1,4 +1,4 @@
-import { inject, Inject, type ModuleWithProviders, NgModule, Optional } from '@angular/core';
+import { inject, type ModuleWithProviders, NgModule, Optional } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { load } from '@porsche-design-system/components-js';
 import { DECLARATIONS } from './lib/components/barrel';
