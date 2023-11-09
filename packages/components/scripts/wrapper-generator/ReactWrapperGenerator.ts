@@ -12,7 +12,9 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
+    const hasRegularProps = extendedProps.some(({ isEvent }) => !isEvent);
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
+    const hasThemeProp = extendedProps.some(({ key }) => key === 'theme');
 
     const reactImports = [
       'type ForwardedRef',
@@ -20,16 +22,16 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       'type HTMLAttributes',
       ...(this.inputParser.canHaveChildren(component) ? ['type PropsWithChildren'] : []),
       'useRef',
-    ];
+    ].sort();
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
 
     const hooksImports = [
-      ...(extendedProps.some(({ isEvent }) => !isEvent) ? ['useBrowserLayoutEffect'] : []),
+      ...(hasRegularProps ? ['useBrowserLayoutEffect'] : []),
       ...(hasEventProps ? ['useEventCallback'] : []),
       'useMergedClass',
       'usePrefix',
-      ...(extendedProps.some(({ key }) => key === 'theme') ? ['useTheme'] : []),
-    ];
+      ...(hasThemeProp ? ['useTheme'] : []),
+    ].sort();
     const importsFromHooks = `import { ${hooksImports.join(', ')} } from '../../hooks';`;
 
     const utilsImports = ['syncRef'];
@@ -40,7 +42,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       : '';
 
     return ["'use client';\n", importsFromReact, importsFromHooks, importsFromUtils, importsFromTypes]
-      .filter((x) => x)
+      .filter(Boolean)
       .join('\n');
   }
 
@@ -121,7 +123,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     ${wrapperProps}: ${wrapperPropsType},
     ref: ForwardedRef<HTMLElement>
   ): JSX.Element => {
-    ${[componentHooks, componentEffects, componentProps].filter((x) => x).join('\n\n    ')}
+    ${[componentHooks, componentEffects, componentProps].filter(Boolean).join('\n\n    ')}
 
     return <WebComponentTag {...props} />;
   }
