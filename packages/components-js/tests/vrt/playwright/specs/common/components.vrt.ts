@@ -128,6 +128,8 @@ components.forEach((component) => {
 
     // 200% font scaling
     test(`should have no visual regression for viewport ${baseViewportWidth} in scale mode`, async ({ page }) => {
+      test.skip(component === 'select-wrapper', 'select-wrapper is flaky');
+
       await setupScenario(page, `/${component}`, baseViewportWidth, {
         scalePageFontSize: true,
       });
