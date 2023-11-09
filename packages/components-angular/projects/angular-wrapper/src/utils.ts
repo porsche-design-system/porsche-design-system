@@ -1,47 +1,58 @@
-import { EventEmitter } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Inject,
+  InjectionToken,
+  type OnChanges,
+  type OnDestroy,
+} from '@angular/core';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
+import type { Theme } from './lib/types';
 
-const proxyInputs = (component: any, inputs: string[]): void => {
-  const callback = (item: string): void => {
-    Object.defineProperty(component.prototype, item, {
-      get() {
-        return this.el[item];
-      },
-      set(val: any) {
-        this.z.runOutsideAngular(() => (this.el[item] = val));
-      },
-    });
-  };
+export const THEME_TOKEN = new InjectionToken<BehaviorSubject<Theme>>('pdsTheme');
 
-  inputs.forEach(callback);
-};
+@Component({
+  template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export abstract class BaseComponent implements OnChanges {
+  protected el: HTMLElement;
 
-// NOTE: only relevant if components use the @Method() decorator
-// currently our AngularWrapperGenerator doesn't support this
-// const proxyMethods = (Cmp: any, methods: string[]) => {
-//   const Prototype = Cmp.prototype;
-//   methods.forEach((methodName) => {
-//     Prototype[methodName] = function () {
-//       const args = arguments;
-//       return this.z.runOutsideAngular(() => this.el[methodName].apply(this.el, args));
-//     };
-//   });
-// };
+  constructor(cdr: ChangeDetectorRef, elementRef: ElementRef) {
+    cdr.detach();
+    this.el = elementRef.nativeElement;
+  }
 
-export const proxyOutputs = (instance: any, events: string[]): void => {
-  events.forEach((event) => (instance[event] = new EventEmitter()));
-};
-
-type ProxyCmpOptions = { inputs?: string[]; methods?: string[] };
-
-// tslint:disable-next-line: only-arrow-functions
-export function ProxyCmp({ inputs /*, methods*/ }: ProxyCmpOptions) {
-  return function (component: any) {
-    if (inputs) {
-      proxyInputs(component, inputs);
+  ngOnChanges(props: Record<string, { previousValue: any; currentValue: any; firstChange: boolean }>): void {
+    for (const prop in props) {
+      this.el[prop] = props[prop].currentValue;
     }
-    // if (methods) {
-    //   proxyMethods(component, methods);
-    // }
-    return component;
-  };
+  }
+}
+
+@Component({
+  template: '',
+})
+export abstract class BaseComponentWithTheme extends BaseComponent implements OnDestroy {
+  protected declare el: HTMLElement & { theme: Theme };
+  private destroy$ = new Subject<void>();
+  theme?: Theme;
+
+  constructor(
+    cdr: ChangeDetectorRef,
+    elementRef: ElementRef,
+    @Inject(THEME_TOKEN) themeSubject: BehaviorSubject<Theme>
+  ) {
+    super(cdr, elementRef);
+
+    themeSubject.pipe(takeUntil(this.destroy$)).subscribe((theme) => {
+      this.el.theme = this.theme || theme;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+  }
 }
