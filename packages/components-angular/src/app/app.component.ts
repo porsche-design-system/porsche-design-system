@@ -16,7 +16,6 @@ import { routes } from './app-routing.module';
     </select>
 
     <div id="app">
-      {{ theme$ | async }}
       <router-outlet />
     </div>
   `,
