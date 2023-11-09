@@ -17,8 +17,6 @@ import {
 import type { ElementHandle, Page } from 'puppeteer';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const CSS_TRANSITION_DURATION = 240;
-
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
