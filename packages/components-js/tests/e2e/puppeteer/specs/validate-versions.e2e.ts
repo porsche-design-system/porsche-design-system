@@ -1,6 +1,5 @@
 import { Page } from 'puppeteer';
 import {
-  enableBrowserLogging,
   getConsoleWarnings,
   getOldLoaderScriptForPrefixes,
   initConsoleObserver,
@@ -8,6 +7,7 @@ import {
 } from '../helpers';
 import { version } from '@porsche-design-system/components-js/package.json';
 import type { PorscheDesignSystem } from '@porsche-design-system/components/dist/types/bundle';
+import { VERSION_VALIDATION_TIMEOUT } from '@porsche-design-system/components/src/utils';
 
 let page: Page;
 beforeEach(async () => {
@@ -34,6 +34,8 @@ it('should show warning about multiple different versions correctly', async () =
   expect(porscheDesignSystem['3.7.0']).toBeDefined();
   expect(porscheDesignSystem['3.7.0'].prefixes).toEqual(prefixes);
 
+  await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT + 1000)); // Wait until version validation
+
   const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 
   expect(versionWarning).toBeDefined();
@@ -42,9 +44,8 @@ it('should show warning about multiple different versions correctly', async () =
 
   expect(warningArgs).toEqual([
     `[Porsche Design System v${version}]`,
-    'Multiple different versions are used with following prefixes:\n',
-    { '3.7.0': prefixes, [`${version}`]: [''] },
-    `\nPlease upgrade all instances to the latest used version: ${version}`,
+    'Multiple different versions detected! Look into the document.porscheDesignSystem object for more information about the used versions:\n',
+    porscheDesignSystem,
   ]);
 });
 
@@ -55,6 +56,8 @@ it('should not show warning about multiple different versions if only one versio
 
   expect(porscheDesignSystem[version]).toBeDefined();
   expect(Object.keys(porscheDesignSystem).length).toBe(2); // cdn and one version
+
+  await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT + 1000)); // Wait until version validation
 
   const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 

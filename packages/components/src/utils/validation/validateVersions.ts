@@ -1,49 +1,29 @@
 import { consoleWarn } from '../log';
-import type { PorscheDesignSystem } from '../../types';
 
-export type Version = keyof Omit<PorscheDesignSystem, 'cdn'>;
+// Timout after which the version validation will happen to increase changes of different versions being loaded and initialized
+export const VERSION_VALIDATION_TIMEOUT = 3000;
 
 /**
  * Validates the versions of the Porsche Design System and logs a warning if multiple different versions are detected.
- * If multiple versions are found, it recommends upgrading to the latest used version.
+ *
+ * This is in particular problematic since multiple versions can initialize at different times.
+ * You cannot know when all versions are initialized and versions can be loaded only on particular pages. You have to consider having a mix of versions with the validation logic and without.
+ * You would need to detect changes to the document.porscheDesignSystem object and fire a validation on every change.
+ * This would be possible with a proxy which is only created once, but it would still only warn about the versions initialized at the time.
+ * Also, it makes it difficult to change the implementation in the future since it cannot be overwritten by another proxy.
+ * Another approach could be using the stencil 'appload' event (https://stenciljs.com/docs/api), which is already included in older versions of the design system.
+ * More information about other implementations can be found in the PR: https://github.com/porsche-design-system/porsche-design-system/pull/2867
  */
 export const validateVersions = (): void => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { cdn, ...versions } = document.porscheDesignSystem;
-  if (Object.keys(versions).length > 1) {
-    const sortedVersions = Object.entries(versions)
-      .map(([version, { prefixes }]) => [version, prefixes])
-      .sort((a: [Version, string[]], b: [Version, string[]]) => sortVersions(a[0], b[0]));
-    consoleWarn(
-      'Multiple different versions are used with following prefixes:\n',
-      Object.fromEntries(sortedVersions) as Record<Version, string[]>,
-      `\nPlease upgrade all instances to the latest used version: ${sortedVersions.at(-1)[0]}`
-    );
-  }
-};
-
-/**
- * Compares two version numbers with the pattern x.x.x or x.x.x-rc.x
- *
- * @param {Version} versionA - The first version number to compare.
- * @param {Version} versionB - The second version number to compare.
- * @returns {number} Returns:
- *   - 1 if versionA is greater than versionB.
- *   - -1 if versionA is less than versionB.
- *   - 0 if versionA is equal to versionB.
- */
-export const sortVersions = (versionA: Version, versionB: Version): number => {
-  const a = versionA.replace('-rc', '').split('.').map(Number);
-  const b = versionB.replace('-rc', '').split('.').map(Number);
-
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] < b[i]) {
-      return -1;
+  // Uses a timeout to increase the chances that all used versions are loaded and initialized
+  setTimeout(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { cdn, ...versions } = document.porscheDesignSystem;
+    if (Object.keys(versions).length > 1) {
+      consoleWarn(
+        'Multiple different versions detected! Look into the document.porscheDesignSystem object for more information about the used versions:\n',
+        document.porscheDesignSystem
+      );
     }
-    if (a[i] > b[i]) {
-      return 1;
-    }
-  }
-
-  return 0;
+  }, VERSION_VALIDATION_TIMEOUT);
 };
