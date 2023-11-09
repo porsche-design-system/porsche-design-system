@@ -17,9 +17,7 @@ export class ButtonExampleFormComponent {
 
   handleSubmit(e: Event): void {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
     const submitter = (e as SubmitEvent).submitter as HTMLButtonElement;
-    submitter && formData.append(submitter.name, submitter.value);
-    this.lastSubmittedData = Array.from(formData.entries())[0].join('=') || 'none';
+    this.lastSubmittedData = submitter.name + '=' + submitter.value || 'none';
   }
 }
