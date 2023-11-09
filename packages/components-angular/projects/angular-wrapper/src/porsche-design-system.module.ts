@@ -1,4 +1,4 @@
-import { Inject, type ModuleWithProviders, NgModule, Optional } from '@angular/core';
+import { inject, Inject, type ModuleWithProviders, NgModule, Optional } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { load } from '@porsche-design-system/components-js';
 import { DECLARATIONS } from './lib/components/barrel';
@@ -28,9 +28,11 @@ export class DefaultConfig implements PorscheDesignSystemModuleConfig {
   ],
 })
 export class PorscheDesignSystemModule {
-  constructor(@Optional() configParam: DefaultConfig, @Inject(THEME_TOKEN) themeSubject: BehaviorSubject<Theme>) {
+  private theme$ = inject(THEME_TOKEN);
+
+  constructor(@Optional() configParam: DefaultConfig) {
     const configs = (configParam as unknown as DefaultConfig[]) || [new DefaultConfig()];
-    themeSubject.next(configs[0].theme); // first config sets the theme
+    this.theme$.next(configs[0].theme || 'light'); // first config sets the theme
     configs.forEach(load);
   }
 
