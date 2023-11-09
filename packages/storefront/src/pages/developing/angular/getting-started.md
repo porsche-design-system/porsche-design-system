@@ -49,16 +49,12 @@ Change your AppComponent to use at least one Porsche Design System component, fo
 ```ts
 // app.component.ts
 
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <div id="app">
-      <p-heading>Welcome to Angular</p-heading>
-    </div>
-  `,
-  styles: [],
+  template: `<p-heading>Welcome to Angular</p-heading>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {}
 ```

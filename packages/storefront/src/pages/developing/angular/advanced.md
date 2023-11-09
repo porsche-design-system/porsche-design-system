@@ -26,6 +26,36 @@ import { AppComponent } from './app.component';
 export class AppModule {}
 ```
 
+In case you want to dynamically change the `theme` at runtime, you can use the injectable `THEME_TOKEN` like:
+
+```ts
+import { ChangeDetectionStrategy, Component, Inject, inject } from '@angular/core';
+import { type Theme, THEME_TOKEN } from '@porsche-design-system/components-angular';
+import { BehaviorSubject } from 'rxjs';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <select [ngModel]="theme$ | async" (ngModelChange)="theme$.next($event)">
+      <option *ngFor="let item of themes" [value]="item">{{ item }}</option>
+    </select>
+
+    <router-outlet />
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AppComponent {
+  public themes: Theme[] = ['light', 'dark', 'auto'];
+  // like this
+  public theme$ = inject(THEME_TOKEN);
+
+  // or via constructor dependency injection
+  constructor(@Inject(THEME_TOKEN) theme$: BehaviorSubject<Theme>) {
+    theme$.next('light');
+  }
+}
+```
+
 ## Prefixing
 
 In case of a micro-service architecture, multiple instances and versions of the Porsche Design System can be combined in

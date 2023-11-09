@@ -24,8 +24,8 @@ import { routes } from './app-routing.module';
 export class AppComponent {
   public router = inject(Router);
   public routes = routes.filter((route) => !!route.name);
-  public theme$ = inject(THEME_TOKEN);
   public themes: Theme[] = ['light', 'dark', 'auto'];
+  public theme$ = inject(THEME_TOKEN);
 
   public async changeRoute(path: string): Promise<void> {
     await this.router.navigateByUrl(`/${path}`);
