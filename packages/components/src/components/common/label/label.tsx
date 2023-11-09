@@ -4,12 +4,14 @@ import { Required } from '../required/required';
 
 type FormElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 type LabelProps = {
+  host: HTMLElement;
   label: string;
   description?: string;
+  isRequired?: boolean;
   isLoading?: boolean;
-  formElement: FormElement;
-  host: HTMLElement;
+  formElement?: FormElement;
   hasCustomSelectDropdown?: boolean;
+  htmlFor?: string;
 };
 
 const onLabelClick = (
@@ -34,31 +36,49 @@ const onLabelClick = (
   }
 };
 
+export const htmlLabelId = 'label';
+export const htmlDescriptionId = 'description';
+
 export const Label: FunctionalComponent<LabelProps> = ({
   label,
   description,
+  isRequired,
   isLoading,
   formElement,
   host,
   hasCustomSelectDropdown,
+  htmlFor,
 }) => {
   const labelProps = {
     class: 'label',
-    onClick: (event: MouseEvent) => onLabelClick(event, formElement, isLoading, hasCustomSelectDropdown, host),
     'aria-disabled': isLoading ? 'true' : null,
+    ...(htmlFor
+      ? {
+          htmlFor,
+        }
+      : {
+          onClick: (event: MouseEvent) => onLabelClick(event, formElement, isLoading, hasCustomSelectDropdown, host),
+        }),
   };
 
   return (
     <Fragment>
-      <label {...labelProps}>
+      <label id={htmlLabelId} {...labelProps}>
         {hasLabel(host, label) && (
           <Fragment>
             {label || <slot name="label" />}
+            {isRequired && <Required />}
+            {/* TODO: conditional rendering of required component needs to be re-evaluated */}
+            {/* {!isParentFieldsetRequired(this.host) && this.required && <Required />} // for pin code */}
             {isRequiredAndParentNotRequired(host, formElement) && <Required />}
           </Fragment>
         )}
       </label>
-      {hasDescription(host, description) && <span {...labelProps}>{description || <slot name="description" />}</span>}
+      {hasDescription(host, description) && (
+        <span id={htmlDescriptionId} {...labelProps}>
+          {description || <slot name="description" />}
+        </span>
+      )}
     </Fragment>
   );
 };

@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEvent } from './pin-code-utils';
 import {
@@ -19,9 +19,6 @@ import {
   FORM_STATES,
   getClosestHTMLElement,
   getPrefixedTagNames,
-  hasDescription,
-  hasLabel,
-  hasMessage,
   hasPropValueChanged,
   isDisabledOrLoading,
   isParentFieldsetRequired,
@@ -30,8 +27,8 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
-import { StateMessage } from '../common/state-message/state-message';
-import { Required } from '../common/required/required';
+import { htmlMessageId, StateMessage } from '../common/state-message/state-message';
+import { htmlDescriptionId, htmlLabelId, Label } from '../common/label/label';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -142,34 +139,18 @@ export class PinCode {
     this.inputElements = [];
 
     const currentInputId = 'current-input';
-    const labelId = 'label';
-    const descriptionId = 'description';
-    const messageId = 'message';
 
     return (
-      <Host>
-        <label class="label" htmlFor={currentInputId}>
-          {hasLabel(this.host, this.label) && (
-            <span id={labelId} class="label__text">
-              {this.label || <slot name="label" />}
-              {!isParentFieldsetRequired(this.host) && this.required && <Required />}
-            </span>
-          )}
-          {hasDescription(this.host, this.description) && (
-            <span id={descriptionId} class="label__text">
-              {this.description || <slot name="description" />}
-            </span>
-          )}
-        </label>
-        <div class="input-container" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput}>
-          {this.loading && (
-            <PrefixedTagNames.pSpinner
-              class="spinner"
-              size="inherit"
-              theme={this.theme}
-              aria={{ 'aria-label': 'Loading state' }}
-            />
-          )}
+      <div class="root">
+        <Label
+          label={this.label}
+          description={this.description}
+          htmlFor={currentInputId}
+          host={this.host}
+          isRequired={!isParentFieldsetRequired(this.host) && this.required}
+          isLoading={isDisabledOrLoading(this.disabled, this.loading)}
+        />
+        <div class="wrapper" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput}>
           {this.isWithinForm && <slot name={hiddenInputSlotName} />}
           {Array.from(Array(this.length), (_, index) => (
             <input
@@ -177,7 +158,7 @@ export class PinCode {
               id={index === this.value.length ? currentInputId : null}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
-              aria-describedby={`${labelId} ${descriptionId} ${messageId}`}
+              aria-describedby={`${htmlLabelId} ${htmlDescriptionId} ${htmlMessageId}`}
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-busy={this.loading ? 'true' : null}
               autoComplete="one-time-code"
@@ -189,11 +170,17 @@ export class PinCode {
               ref={(el) => this.inputElements.push(el)}
             />
           ))}
+          {this.loading && (
+            <PrefixedTagNames.pSpinner
+              class="spinner"
+              size="inherit"
+              theme={this.theme}
+              aria={{ 'aria-label': 'Loading state' }}
+            />
+          )}
         </div>
-        {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage id={messageId} state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        )}
-      </Host>
+        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+      </div>
     );
   }
 

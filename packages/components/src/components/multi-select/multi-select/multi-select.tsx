@@ -36,7 +36,6 @@ import {
   handleButtonEvent,
   hasDescription,
   hasLabel,
-  hasMessage,
   hasPropValueChanged,
   isClickOutside,
   isRequiredAndParentNotRequired,
@@ -62,7 +61,8 @@ import {
 } from '@stencil/core';
 import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
-import { StateMessage } from '../../common/state-message/state-message';
+import { htmlMessageId, StateMessage } from '../../common/state-message/state-message';
+import { htmlDescriptionId, htmlLabelId } from '../../common/label/label';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -213,9 +213,6 @@ export class MultiSelect {
     syncMultiSelectOptionProps(this.multiSelectOptions, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const labelId = 'label';
-    const messageId = 'message';
-    const descriptionId = 'description';
     const optionsSelectedId = 'options-selected';
     const dropdownId = 'list';
 
@@ -224,14 +221,19 @@ export class MultiSelect {
         <div class="root">
           <label class="label">
             {hasLabel(this.host, this.label) && (
-              <span id={labelId} class="label__text" onClick={() => this.inputElement.focus()}>
+              <span id={htmlLabelId} class="label__text" onClick={() => this.inputElement.focus()}>
                 {this.label || <slot name="label" />}
                 {isRequiredAndParentNotRequired(this.host, this.host as HTMLElementWithRequiredProp) && <Required />}
               </span>
             )}
             {/* TODO: Description should be separated from the label (affects all form components) */}
             {hasDescription(this.host, this.description) && (
-              <span id={descriptionId} class="label__text" onClick={() => this.inputElement.focus()} aria-hidden="true">
+              <span
+                id={htmlDescriptionId}
+                class="label__text"
+                onClick={() => this.inputElement.focus()}
+                aria-hidden="true"
+              >
                 {this.description || <slot name="description" />}
               </span>
             )}
@@ -256,8 +258,8 @@ export class MultiSelect {
               {...getFilterInputAriaAttributes(
                 this.isOpen,
                 this.required,
-                labelId,
-                `${descriptionId} ${optionsSelectedId} ${messageId}`,
+                htmlLabelId,
+                `${htmlDescriptionId} ${optionsSelectedId} ${htmlMessageId}`,
                 dropdownId
               )}
             />
@@ -300,9 +302,7 @@ export class MultiSelect {
           </div>
         </div>
         {this.isWithinForm && <slot name="select" />}
-        {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage id={messageId} state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        )}
+        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         <span class="sr-text" role="status" aria-live="assertive" aria-relevant="additions text">
           {this.srHighlightedOptionText}
         </span>
