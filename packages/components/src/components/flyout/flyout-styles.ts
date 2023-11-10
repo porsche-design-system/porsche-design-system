@@ -58,7 +58,7 @@ export const getComponentCss = (
                 transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationLong})`,
               }),
           ...getInsetJssStyle(),
-          ...getFrostedGlassBackgroundJssStyles(isOpen, 'motionDurationLong', theme),
+          ...getFrostedGlassBackgroundJssStyles(isOpen, 'long', theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -83,21 +83,16 @@ export const getComponentCss = (
         ? {
             opacity: 1,
             transform: 'initial',
-            transition: `${getTransition('opacity', 'motionDurationLong', 'motionEasingIn')}, ${getTransition(
-              'transform',
-              'motionDurationLong',
-              'motionEasingIn'
-            )}`,
+            transition: `${getTransition('opacity', 'long', 'in')}, ${getTransition('transform', 'long', 'in')}`,
           }
         : {
             opacity: 0,
             transform: `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
-            transition: `${getTransition(
-              'opacity',
-              'motionDurationShort',
-              'motionEasingOut',
-              'motionDurationLong'
-            )}, ${getTransition('transform', 'motionDurationLong', 'motionEasingOut')}`,
+            transition: `${getTransition('opacity', 'short', 'out', 'long')}, ${getTransition(
+              'transform',
+              'long',
+              'out'
+            )}`,
           }),
       boxShadow: `${isPositionStart ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
       ...prefersColorSchemeDarkMediaQuery(theme, {

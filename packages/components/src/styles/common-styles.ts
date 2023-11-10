@@ -19,15 +19,23 @@ import {
 import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 import { isThemeDark } from '../utils';
 import type * as fromMotionType from '@porsche-design-system/utilities-v2/dist/esm/motion';
+type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
+export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMotionType>;
+type WithoutMotionEasingPrefix<T> = T extends `motionEasing${infer P}` ? Uncapitalize<P> : never;
+export type MotionEasingKey = WithoutMotionEasingPrefix<keyof typeof fromMotionType>;
 
-const motionMap: Record<keyof typeof fromMotionType, string> = {
-  motionDurationShort,
-  motionDurationModerate,
-  motionDurationLong,
-  motionDurationVeryLong,
-  motionEasingBase,
-  motionEasingIn,
-  motionEasingOut,
+const motionDurationMap: Record<MotionDurationKey, string> = {
+  short: motionDurationShort,
+  moderate: motionDurationModerate,
+  long: motionDurationLong,
+  veryLong: motionDurationVeryLong,
+};
+
+const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
+  base: motionEasingBase,
+  in: motionEasingIn,
+  out: motionEasingOut,
+  linear: 'linear',
 };
 
 export const cssVariableTransitionDuration = '--p-transition-duration';
@@ -35,13 +43,13 @@ export const cssVariableAnimationDuration = '--p-animation-duration';
 
 export const getTransition = (
   cssProperty: keyof PropertiesHyphen,
-  duration: keyof typeof fromMotionType = 'motionDurationShort',
-  easing: keyof typeof fromMotionType | 'linear' | 'none' = 'motionEasingBase',
-  delay?: keyof typeof fromMotionType
+  duration: MotionDurationKey = 'short',
+  easing: MotionEasingKey | 'linear' | 'none' = 'base',
+  delay?: MotionDurationKey
 ): string =>
-  `${cssProperty} var(${cssVariableTransitionDuration}, ${motionMap[duration]})${
-    easing === 'none' ? '' : ` ${easing === 'linear' ? easing : motionMap[easing]}`
-  }${delay ? ` var(${cssVariableTransitionDuration}, ${motionMap[delay]})` : ''}`;
+  `${cssProperty} var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]})${
+    easing === 'none' ? '' : ` ${motionEasingMap[easing]}`
+  }${delay ? ` var(${cssVariableTransitionDuration}, ${motionDurationMap[delay]})` : ''}`;
 
 export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
 
@@ -150,7 +158,7 @@ export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
  */
 export const getFrostedGlassBackgroundJssStyles = (
   isVisible: boolean,
-  duration: keyof typeof fromMotionType,
+  duration: MotionDurationKey,
   theme: Theme
 ): JssStyle => {
   return {
@@ -171,11 +179,11 @@ export const getFrostedGlassBackgroundJssStyles = (
             backdropFilter: 'blur(0px)',
             WebkitBackdropFilter: 'blur(0px)',
           }),
-      transition: `${getTransition('opacity', duration, 'motionEasingBase')}, ${getTransition(
+      transition: `${getTransition('opacity', duration, 'base')}, ${getTransition(
         'backdrop-filter',
         duration,
-        'motionEasingBase'
-      )}, ${getTransition('-webkit-backdrop-filter', duration, 'motionEasingBase')}`,
+        'base'
+      )}, ${getTransition('-webkit-backdrop-filter', duration, 'base')}`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         background: themeDarkBackgroundShading,
       }),

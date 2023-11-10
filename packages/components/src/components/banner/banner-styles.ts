@@ -43,10 +43,10 @@ export const getComponentCss = (isOpen: boolean): string => {
               opacity: 1,
               visibility: 'inherit',
               transform: 'translate3d(0,0,0)',
-              transition: `${getTransition('transform', 'motionDurationModerate', 'motionEasingIn')}, ${getTransition(
+              transition: `${getTransition('transform', 'moderate', 'in')}, ${getTransition(
                 'opacity',
-                'motionDurationModerate',
-                'motionEasingIn'
+                'moderate',
+                'in'
               )}`,
             }
           : {
@@ -56,9 +56,9 @@ export const getComponentCss = (isOpen: boolean): string => {
               '&(.hydrated),&(.ssr)': {
                 transition: `visibility 0s linear var(${cssVariableAnimationDuration}, ${motionDurationLong}), ${getTransition(
                   'transform',
-                  'motionDurationModerate',
-                  'motionEasingOut'
-                )}, ${getTransition('opacity', 'motionDurationModerate', 'motionEasingOut')}`,
+                  'moderate',
+                  'out'
+                )}, ${getTransition('opacity', 'moderate', 'out')}`,
               },
             }),
         [getMediaQueryMin('s')]: {

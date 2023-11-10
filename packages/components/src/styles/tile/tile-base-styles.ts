@@ -67,7 +67,7 @@ export const getTileBaseStyles = (
     },
     'image-container': {
       position: 'absolute',
-      transition: getTransition('transform', 'motionDurationModerate'),
+      transition: getTransition('transform', 'moderate'),
       ...getInsetJssStyle(),
     },
     content: {

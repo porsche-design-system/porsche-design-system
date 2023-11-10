@@ -105,8 +105,8 @@ export const getComponentCss = (
   const { primaryColor, backgroundColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
   const isFullscreenForXlAndXxl = isFullscreenForXl(isFullscreen);
-  const duration = isOpen ? 'motionDurationModerate' : 'motionDurationShort';
-  const easing = isOpen ? 'motionEasingIn' : 'motionEasingOut';
+  const duration = isOpen ? 'moderate' : 'short';
+  const easing = isOpen ? 'in' : 'out';
   const contentPadding = '32px';
 
   return getCss({

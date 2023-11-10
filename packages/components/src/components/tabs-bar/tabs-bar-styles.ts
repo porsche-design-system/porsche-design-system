@@ -29,8 +29,6 @@ import type { JssStyle } from 'jss';
 
 export const scrollerAnimatedCssClass = 'scroller--animated';
 
-const duration = `var(${cssVariableAnimationDuration},0.5s)`; // auto hide bar after transition, needs to be a little longer in Safari
-
 const targetSelectors = ['a', 'button'];
 const transformSelector = (selector: string): string =>
   targetSelectors.map((tag) => selector.replace(/\[role]/g, tag)).join();
@@ -171,12 +169,8 @@ export const getComponentCss = (
       width: 0, // actual width and transform is set via inline css
       bottom: isHighContrastMode ? '0' : '-2px',
       visibility: 'visible',
-      transition: `${getTransition('transform', 'motionDurationModerate', 'none')}, ${getTransition(
-        'width',
-        'motionDurationModerate',
-        'none'
-      )}`,
-      animation: `$hide 0s ${duration} forwards`,
+      transition: `${getTransition('transform', 'moderate', 'none')}, ${getTransition('width', 'moderate', 'none')}`,
+      animation: `$hide 0s var(${cssVariableAnimationDuration},0.5s) forwards`, // auto hide bar after transition, needs to be a little longer in Safari
     },
     '@keyframes hide': {
       to: {
