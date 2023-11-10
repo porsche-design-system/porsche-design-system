@@ -27,7 +27,7 @@ export const getFunctionalComponentLabelStyles = (
   return {
     label: {
       ...textSmallStyle,
-      cursor: 'pointer',
+      cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       justifySelf: 'flex-start', // ensures label is not getting stretched by flex or grid context of its parent
       color: isDisabledOrLoading ? disabledColor : primaryColor,
       transition: getTransition('color'), // for smooth transitions between e.g. disabled state

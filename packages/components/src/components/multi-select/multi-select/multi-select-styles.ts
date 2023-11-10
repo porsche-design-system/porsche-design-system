@@ -75,7 +75,7 @@ export const getComponentCss = (
       display: 'grid',
       gridTemplateColumns: `${formElementLayeredSafeZone} auto minmax(0, 1fr) auto auto ${formElementLayeredSafeZone}`,
     },
-    // TODO: extract for multi-select, select-wrapper and text-field
+    // TODO: extract for multi-select, select-wrapper and text-field (not gridArea and placeSelf)
     icon: {
       gridArea: '1/5',
       placeSelf: 'center',
@@ -87,13 +87,14 @@ export const getComponentCss = (
         transform: 'rotate3d(0,0,1,180deg)',
       },
     },
+    // TODO: extract for multi-select, select-wrapper and text-field (not gridArea and placeSelf)
     button: {
       gridArea: '1/4',
       placeSelf: 'center',
       padding: formButtonOrIconPadding,
     },
     listbox: getListStyles(isOpen, direction, theme),
-    // TODO: extract as functional component and re-use in multi-select and select-wrapper
+    // TODO: extract (maybe even as functional component) and re-use in multi-select and select-wrapper
     'no-results': {
       padding: `${spacingStaticSmall} 12px`,
       boxSizing: 'border-box',
@@ -112,6 +113,7 @@ export const getComponentCss = (
   });
 };
 
+// TODO: use getSlottedTextFieldTextareaSelectStyles() instead an manipulate selectors like done with PIN Code or even better make it configurable as parameter
 const getInputStyles = (
   isDisabled: boolean,
   direction: SelectDropdownDirectionInternal,

@@ -13,9 +13,6 @@ import {
 import { getThemedFormStateColors } from './form-state-color-styles';
 import type { FormState } from '../utils/form/form-state';
 
-// TODO: should be removed if possible?
-export const INPUT_HEIGHT = 54;
-
 export type ChildSelector = 'input' | 'select' | 'textarea';
 
 export const getSlottedTextFieldTextareaSelectStyles = (
@@ -39,8 +36,6 @@ export const getSlottedTextFieldTextareaSelectStyles = (
 
   return {
     [`::slotted(${child})`]: {
-      // TODO: gridArea should be defined by integrating style
-      gridArea: '3 / 1 / auto / span 3',
       display: 'block',
       width: '100%',
       height:
@@ -110,13 +105,15 @@ export const getSlottedTextFieldTextareaSelectStyles = (
 };
 
 export const formElementLayeredSafeZone = '11px'; // to have same distance vertically and horizontally for button/icon within form element
-// TODO: basic button/icon or form element padding can already be set within style function instead of on component style level
+// TODO: basic button/icon padding can already be set within style function instead of on component style level
 export const formButtonOrIconPadding = spacingStaticXSmall;
 // TODO: if we'd use 12px instead, it wouldn't be necessary for textarea to have a custom vertical padding,
 //  unfortunately line-height alignment breaks for a select element for some reasons then
+// TODO: basic form element padding can already be set within style function instead of on component style level
 export const formElementPaddingVertical = spacingStaticSmall;
+// TODO: basic form element padding can already be set within style function instead of on component style level
 export const formElementPaddingHorizontal = spacingStaticMedium;
-export const getCalculatedFormElementPaddingHorizontal = (buttonOrIconAmount: number): string => {
+export const getCalculatedFormElementPaddingHorizontal = (buttonOrIconAmount: 1 | 2): string => {
   // when applied, font-family and font-size needs to be set too for correct calculation of ex-unit ($fontLineHeight)
   // TODO: this formula would be correct: return `calc(${formElementLayeredSafeZone} - ${borderWidthBase} + ${formElementPaddingHorizontal} / 2 + (${fontLineHeight} + ${formButtonOrIconPadding} * 2) * ${buttonOrIconAmount})`;
   // return `calc(${formElementLayeredSafeZone} - ${borderWidthBase} + ${formElementPaddingHorizontal} / 2 + (${fontLineHeight} + ${formButtonOrIconPadding} * 2) * ${buttonOrIconAmount})`;
@@ -137,7 +134,6 @@ export const getUnitCounterStyles = (isDisabled: boolean, theme: Theme): JssStyl
     }),
     ...(isDisabled && {
       color: disabledColor,
-      cursor: 'not-allowed',
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: disabledColorDark,
       }),

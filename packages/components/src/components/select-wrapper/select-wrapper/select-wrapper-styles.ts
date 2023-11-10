@@ -37,8 +37,10 @@ export const getComponentCss = (
           position: 'static',
           zIndex: 0, // TODO: overrides global style.css in e2e and vrts
           cursor: 'pointer',
+          // TODO: move into getSlottedTextFieldTextareaSelectStyles()
           padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
           paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(1),
+          // TODO: needs to be aligned with multi-select
           ...(hasCustomDropdown && !isDisabled && { borderColor: 'transparent' }),
         })
       ),
@@ -52,12 +54,13 @@ export const getComponentCss = (
       display: 'grid',
       gridTemplateColumns: `${formElementLayeredSafeZone} auto minmax(0, 1fr) auto auto ${formElementLayeredSafeZone}`,
     },
+    // TODO: extract for multi-select, select-wrapper and text-field (not gridArea and placeSelf)
     icon: {
+      gridArea: '1/5',
+      placeSelf: 'center',
       position: 'relative',
       zIndex: 2, // ensures icon is above input or button of select dropdown
       pointerEvents: 'none',
-      gridArea: '1/5',
-      placeSelf: 'center',
       padding: formButtonOrIconPadding,
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
       transition: getTransition('transform'),

@@ -43,13 +43,16 @@ export const getComponentCss = (
         addImportantToEachRule(
           getSlottedTextFieldTextareaSelectStyles('textarea', state, theme, {
             gridArea: '1/1/4/6',
+            // TODO: move into getSlottedTextFieldTextareaSelectStyles()
             font: textSmallStyle.font, // to override line-height
+            // TODO: move into getSlottedTextFieldTextareaSelectStyles()
             padding: hasCounter
               ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
               : `12px ${formElementPaddingHorizontal}`,
           })
         ),
         {
+          // TODO: is it possible to move into getSlottedTextFieldTextareaSelectStyles()?
           '::slotted(textarea)': {
             height: 'auto', // removes !important from getBaseChildStyles
             minHeight: '200px', // min-height should be overridable
@@ -68,6 +71,7 @@ export const getComponentCss = (
       gridTemplateRows: `${textareaSafeZoneVertical} auto ${textareaSafeZoneVertical}`,
     },
     ...(hasCounter && {
+      // TODO: extract for textarea-wrapper and text-field-wrapper (not gridArea and alignSelf)
       counter: {
         gridArea: '2/4/3/5',
         alignSelf: 'flex-end',

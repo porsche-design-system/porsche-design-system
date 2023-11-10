@@ -56,10 +56,12 @@ export const getComponentCss = (
           gridArea: '1/1/1/7',
           padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
           paddingInline: `var(${cssVariableInputPaddingStart}) var(${cssVariableInputPaddingEnd})`,
+          // TODO: move into getSlottedTextFieldTextareaSelectStyles()
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
         }),
+        // TODO: move into getSlottedTextFieldTextareaSelectStyles()
         '::slotted': {
           '&(input:-internal-autofill-selected),&(input:-internal-autofill-previewed),&(input:-webkit-autofill),&(input:-webkit-autofill:focus)':
             {
@@ -84,6 +86,7 @@ export const getComponentCss = (
       gridTemplateColumns: `${formElementLayeredSafeZone} auto minmax(0, 1fr) auto auto ${formElementLayeredSafeZone}`,
     },
     ...((isSearchOrPassword || isCalendarOrTimeWithCustomIndicator) && {
+      // TODO: extract for multi-select, select-wrapper and text-field (not gridArea and placeSelf) like done for unit class
       button: {
         gridArea: '1/5',
         placeSelf: 'center',
@@ -95,6 +98,7 @@ export const getComponentCss = (
       },
     }),
     ...(isSearchWithoutForm && {
+      // TODO: extract for multi-select, select-wrapper and text-field (not gridArea and placeSelf) like done for unit class
       icon: {
         gridArea: '1/2',
         placeSelf: 'center',
@@ -103,6 +107,7 @@ export const getComponentCss = (
       },
     }),
     ...(hasUnitOrVisibleCounter && {
+      // TODO: rename to unit-counter?
       unit: {
         ...getUnitCounterStyles(isDisabled, theme),
         gridArea: `1/${unitPosition === 'suffix' ? 5 : 1}/1/${unitPosition === 'suffix' ? 7 : 3}`,

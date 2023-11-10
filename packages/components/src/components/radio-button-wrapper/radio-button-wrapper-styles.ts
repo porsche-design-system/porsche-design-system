@@ -57,6 +57,7 @@ export const getComponentCss = (
               gridArea: '1/1',
               borderRadius: '50%',
             },
+            // TODO: is it somehow useful possible to make following styles configurable by paramter?
             ...(!isLoading && {
               '&(input:checked)': {
                 backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
@@ -85,13 +86,14 @@ export const getComponentCss = (
       gridArea: '1/1',
     },
     ...(isLoading && {
+      // TODO: extract for checkbox-wrapper and radio-button-wrapper (not gridArea and placeSelf)
       spinner: {
         gridArea: '1/1',
         placeSelf: 'center',
         width: fontLineHeight,
         height: fontLineHeight,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
-        cursor: 'not-allowed',
+        pointerEvents: 'none',
       },
     }),
     // .label / .required

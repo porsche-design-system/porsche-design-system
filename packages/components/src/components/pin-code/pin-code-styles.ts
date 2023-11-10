@@ -28,8 +28,11 @@ export const getComponentCss = (
     'input[readonly]',
     removeSlottedSelector(
       getSlottedTextFieldTextareaSelectStyles('input', state, theme, {
+        // TODO: move into getSlottedTextFieldTextareaSelectStyles()
         padding: `${formElementPaddingVertical} ${spacingStaticXSmall}`,
+        // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. textAlign=center|start
         textAlign: 'center',
+        // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. size=max|min
         width: inputSize,
         ...(length > 4 && {
           [getMediaQueryMax('xs')]: {
@@ -37,9 +40,10 @@ export const getComponentCss = (
             width: `calc((276px - (${spacingStaticSmall} * ${length - 1})) / ${length})`, // calculate the max with of the inputs that fit into grid in viewport base (276px)
           },
         }),
+        // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. isLoading
         ...(isLoading && {
           opacity: 0.2, // TODO: not in sync with e.g. checkbox/radio-button loading style
-          cursor: 'not-allowed', // TODO: why is it not the default for all form elements in disabled state?
+          cursor: 'not-allowed',
         }),
         ...Object.fromEntries(
           Array.from(Array(length)).map((_, i) => {
