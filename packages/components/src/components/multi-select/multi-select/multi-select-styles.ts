@@ -30,7 +30,7 @@ import {
   formElementLayeredSafeZone,
   formElementPaddingHorizontal,
   formElementPaddingVertical,
-  getDynamicFormElementPaddingHorizontal,
+  getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
 
 export const getComponentCss = (
@@ -140,7 +140,7 @@ const getInputStyles = (
     height: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so input height becomes 54px, // we need 6px additionally so input height becomes 50px
     font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
     padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
-    paddingInlineEnd: getDynamicFormElementPaddingHorizontal(2),
+    paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(2),
     boxSizing: 'border-box',
     outline: 0,
     appearance: 'none',

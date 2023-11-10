@@ -5,7 +5,7 @@ import {
   formElementLayeredSafeZone,
   formElementPaddingHorizontal,
   formElementPaddingVertical,
-  getDynamicFormElementPaddingHorizontal,
+  getCalculatedFormElementPaddingHorizontal,
   getSlottedTextFieldTextareaSelectStyles,
 } from '../../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
@@ -37,7 +37,7 @@ export const getComponentCss = (
           zIndex: 0, // TODO: overrides global style.css in e2e and vrts
           cursor: 'pointer',
           padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
-          paddingInlineEnd: getDynamicFormElementPaddingHorizontal(1),
+          paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(1),
           ...(hasCustomDropdown && !isDisabled && { borderColor: 'transparent' }),
         })
       ),

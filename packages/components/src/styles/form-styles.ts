@@ -5,6 +5,7 @@ import {
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
+  spacingStaticMedium,
   spacingStaticSmall,
   spacingStaticXSmall,
   textSmallStyle,
@@ -112,8 +113,8 @@ export const formElementLayeredSafeZone = '11px'; // to have same distance verti
 // TODO: if we'd use 12px instead, it wouldn't be necessary for textarea to have a custom vertical padding,
 //  unfortunately line-height alignment breaks for a select element for some reasons then
 export const formElementPaddingVertical = spacingStaticSmall;
-export const formElementPaddingHorizontal = `calc((${formElementLayeredSafeZone} - ${borderWidthBase}) * 2)`;
-export const getDynamicFormElementPaddingHorizontal = (buttonOrIconAmount: number): string => {
+export const formElementPaddingHorizontal = spacingStaticMedium;
+export const getCalculatedFormElementPaddingHorizontal = (buttonOrIconAmount: number): string => {
   // when applied, font-family and font-size needs to be set too for correct calculation of ex-unit ($fontLineHeight)
   return `calc(${formElementPaddingHorizontal} + (${fontLineHeight} + ${spacingStaticXSmall} * 2) * ${buttonOrIconAmount})`;
 };

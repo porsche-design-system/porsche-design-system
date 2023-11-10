@@ -8,7 +8,7 @@ import {
   formElementLayeredSafeZone,
   formElementPaddingHorizontal,
   formElementPaddingVertical,
-  getDynamicFormElementPaddingHorizontal,
+  getCalculatedFormElementPaddingHorizontal,
   getSlottedTextFieldTextareaSelectStyles,
   getUnitCounterStyles,
 } from '../../styles/form-styles';
@@ -69,11 +69,11 @@ export const getComponentCss = (
     },
     root: {
       [cssVariableInputPaddingStart]: isSearchWithoutForm
-        ? getDynamicFormElementPaddingHorizontal(1)
+        ? getCalculatedFormElementPaddingHorizontal(1)
         : formElementPaddingHorizontal,
       [cssVariableInputPaddingEnd]:
         isSearchOrPassword || isCalendarOrTimeWithCustomIndicator
-          ? getDynamicFormElementPaddingHorizontal(isSearchWithForm ? 2 : 1)
+          ? getCalculatedFormElementPaddingHorizontal(isSearchWithForm ? 2 : 1)
           : formElementPaddingHorizontal,
       display: 'grid',
       gap: spacingStaticXSmall,
