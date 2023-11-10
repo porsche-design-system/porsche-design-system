@@ -14,12 +14,10 @@ import {
 describe('getTransition()', () => {
   it.each<Parameters<typeof getTransition>>([
     ['color', undefined, undefined, undefined],
-    ['box-shadow', 'motionDurationShort', 'motionEasingBase', 'motionDurationShort'],
-    ['color', 'motionDurationModerate', 'motionEasingIn', 'motionDurationModerate'],
-    ['box-shadow', 'motionDurationLong', 'motionEasingOut', 'motionDurationLong'],
-
-    ['color', 'motionDurationVeryLong', 'linear', 'motionDurationVeryLong'],
-
+    ['box-shadow', 'short', 'base', 'short'],
+    ['color', 'moderate', 'in', 'moderate'],
+    ['box-shadow', 'long', 'out', 'long'],
+    ['color', 'veryLong', 'linear', 'veryLong'],
     ['box-shadow', undefined, 'none', undefined],
   ])('should return correct style for for cssProperty: %s, duration: %s, ease: %s and delay', (...args) => {
     expect(getTransition(...args)).toMatchSnapshot();
@@ -109,10 +107,10 @@ describe('getBackfaceVisibilityJssStyle()', () => {
 
 describe('getFrostedGlassBackgroundJssStyles()', () => {
   it.each<Parameters<typeof getFrostedGlassBackgroundJssStyles>>([
-    [true, 'motionDurationShort', 'light'],
-    [false, 'motionDurationModerate', 'dark'],
-    [true, 'motionDurationLong', 'light'],
-    [false, 'motionDurationVeryLong', 'dark'],
+    [true, 'short', 'light'],
+    [false, 'moderate', 'dark'],
+    [true, 'long', 'light'],
+    [false, 'veryLong', 'dark'],
   ])('should return correct JssStyle for isVisible: %s, duration: %s and theme: %s', (...args) => {
     expect(getFrostedGlassBackgroundJssStyles(...args)).toMatchSnapshot();
   });
