@@ -2155,7 +2155,7 @@ exports[`should render dsr component for PBanner 1`] = `
   color-scheme: light dark !important;
 }
 :host(.hydrated), :host(.ssr) {
-  transition: visibility 0s linear var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) !important;
+  transition: visibility 0s linear var(--p-animation-duration, 0.6s), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2974,14 +2974,14 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
   width: fit-content;
   height: 8px;
   gap: 8px;
-  transition: transform var(--p-transition-duration, 0.4s);
+  transition: transform 0.4s;
 }
 .bullet {
   border-radius: 4px;
   background: #6B6D70;
   width: 8px;
   height: 8px;
-  transition: background-color var(--p-transition-duration, 0.4s), width var(--p-transition-duration, 0.4s);
+  transition: background-color 0.4s, width 0.4s;
 }
 .bullet--active {
   background: #010205;
