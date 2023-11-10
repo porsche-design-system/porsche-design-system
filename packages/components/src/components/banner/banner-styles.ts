@@ -5,7 +5,10 @@ import {
   gridExtendedOffsetBase,
   gridExtendedOffsetS,
   gridExtendedOffsetXXL,
+  motionDurationModerate,
   motionDurationLong,
+  motionEasingIn,
+  motionEasingOut,
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
@@ -13,7 +16,6 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   cssVariableAnimationDuration,
-  getTransition,
   hostHiddenStyles,
 } from '../../styles';
 
@@ -43,22 +45,14 @@ export const getComponentCss = (isOpen: boolean): string => {
               opacity: 1,
               visibility: 'inherit',
               transform: 'translate3d(0,0,0)',
-              transition: `${getTransition('transform', 'moderate', 'in')}, ${getTransition(
-                'opacity',
-                'moderate',
-                'in'
-              )}`,
+              transition: `transform var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingIn}, opacity var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingIn}`,
             }
           : {
               opacity: 0,
               visibility: 'hidden',
               transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
               '&(.hydrated),&(.ssr)': {
-                transition: `visibility 0s linear var(${cssVariableAnimationDuration}, ${motionDurationLong}), ${getTransition(
-                  'transform',
-                  'moderate',
-                  'out'
-                )}, ${getTransition('opacity', 'moderate', 'out')}`,
+                transition: `visibility 0s linear var(${cssVariableAnimationDuration}, ${motionDurationLong}), transform var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingOut}, opacity var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingOut}`,
               },
             }),
         [getMediaQueryMin('s')]: {

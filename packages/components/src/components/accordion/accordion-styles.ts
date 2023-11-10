@@ -5,7 +5,6 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   cssVariableTransitionDuration,
-  cssVariableAnimationDuration,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -158,7 +157,7 @@ export const getComponentCss = (
       '& div': {
         overflow: open ? 'visible' : 'hidden',
         // Fix overflow issues for overlapping content (e.g. select dropdown)
-        animation: open ? `$overflow var(${cssVariableAnimationDuration},${motionDurationShort})` : 'none',
+        animation: open ? `$overflow var(${cssVariableTransitionDuration},${motionDurationShort})` : 'none',
         // Necessary to make focus outlines fully visible
         padding: '4px',
         margin: '-4px',
