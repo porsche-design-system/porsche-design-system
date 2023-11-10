@@ -21,12 +21,9 @@ describe('getTransition()', () => {
     ['color', 'motionDurationVeryLong', 'linear', 'motionDurationVeryLong'],
 
     ['box-shadow', undefined, 'none', undefined],
-  ])(
-    'should return correct style for for cssProperty: %s, duration: %s, ease: %s and delay',
-    (cssProperty, duration, ease, delay) => {
-      expect(getTransition(cssProperty, duration, ease, delay)).toMatchSnapshot();
-    }
-  );
+  ])('should return correct style for for cssProperty: %s, duration: %s, ease: %s and delay', (...args) => {
+    expect(getTransition(...args)).toMatchSnapshot();
+  });
 });
 
 describe('pxToRemWithUnit()', () => {
@@ -116,7 +113,7 @@ describe('getFrostedGlassBackgroundJssStyles()', () => {
     [false, 'motionDurationModerate', 'dark'],
     [true, 'motionDurationLong', 'light'],
     [false, 'motionDurationVeryLong', 'dark'],
-  ])('should return correct JssStyle for isVisible: %s, duration: %s and theme: %s', (isVisible, duration, theme) => {
-    expect(getFrostedGlassBackgroundJssStyles(isVisible, duration, theme)).toMatchSnapshot();
+  ])('should return correct JssStyle for isVisible: %s, duration: %s and theme: %s', (...args) => {
+    expect(getFrostedGlassBackgroundJssStyles(...args)).toMatchSnapshot();
   });
 });
