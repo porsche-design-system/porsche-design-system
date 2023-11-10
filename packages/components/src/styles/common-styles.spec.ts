@@ -1,5 +1,7 @@
 import type { JssStyle } from 'jss';
 import {
+  type MotionDurationKey,
+  motionEasingMap,
   addImportantToEachRule,
   addImportantToRule,
   focusPseudoJssStyle,
@@ -10,17 +12,56 @@ import {
   getTransition,
   pxToRemWithUnit,
 } from './common-styles';
+import type { PropertiesHyphen } from 'csstype';
 
 describe('getTransition()', () => {
-  it.each<Parameters<typeof getTransition>>([
-    ['color', undefined, undefined, undefined],
-    ['box-shadow', 'short', 'base', 'short'],
-    ['color', 'moderate', 'in', 'moderate'],
-    ['box-shadow', 'long', 'out', 'long'],
-    ['color', 'veryLong', 'linear', 'veryLong'],
-    ['box-shadow', undefined, 'none', undefined],
-  ])('should return correct style for for cssProperty: %s, duration: %s, ease: %s and delay', (...args) => {
-    expect(getTransition(...args)).toMatchSnapshot();
+  it.each<
+    [
+      ReturnType<typeof getTransition>,
+      keyof PropertiesHyphen,
+      MotionDurationKey,
+      keyof typeof motionEasingMap | 'none',
+      MotionDurationKey
+    ]
+  >([
+    [
+      'color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)',
+      'color',
+      undefined,
+      undefined,
+      undefined,
+    ],
+    [
+      'box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)',
+      'box-shadow',
+      'short',
+      'base',
+      'short',
+    ],
+    [
+      'color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)',
+      'color',
+      'moderate',
+      'in',
+      'moderate',
+    ],
+    [
+      'box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s)',
+      'box-shadow',
+      'long',
+      'out',
+      'long',
+    ],
+    [
+      'color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s)',
+      'color',
+      'veryLong',
+      'linear',
+      'veryLong',
+    ],
+    ['box-shadow var(--p-transition-duration, 0.25s)', 'box-shadow', undefined, 'none', undefined],
+  ])('should for : %o return: %s', (result, ...args) => {
+    expect(getTransition(...args)).toMatchSnapshot(result);
   });
 });
 

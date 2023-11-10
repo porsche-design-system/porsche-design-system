@@ -31,7 +31,7 @@ const motionDurationMap: Record<MotionDurationKey, string> = {
   veryLong: motionDurationVeryLong,
 };
 
-const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
+export const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
   base: motionEasingBase,
   in: motionEasingIn,
   out: motionEasingOut,
@@ -44,7 +44,7 @@ export const cssVariableAnimationDuration = '--p-animation-duration';
 export const getTransition = (
   cssProperty: keyof PropertiesHyphen,
   duration: MotionDurationKey = 'short',
-  easing: MotionEasingKey | 'linear' | 'none' = 'base',
+  easing: keyof typeof motionEasingMap | 'none' = 'base',
   delay?: MotionDurationKey
 ): string =>
   `${cssProperty} var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]})${

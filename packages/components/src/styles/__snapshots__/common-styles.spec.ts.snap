@@ -206,14 +206,14 @@ exports[`getInsetJssStyle() should return correct JssStyle for parameter: undefi
 }
 `;
 
-exports[`getTransition() should return correct style for for cssProperty: box-shadow, duration: long, ease: out and delay 1`] = `"box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s)"`;
+exports[`getTransition() should for : 'box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s)' return: box-shadow: box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s) 1`] = `"box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s)"`;
 
-exports[`getTransition() should return correct style for for cssProperty: box-shadow, duration: short, ease: base and delay 1`] = `"box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)"`;
+exports[`getTransition() should for : 'box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)' return: box-shadow: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s) 1`] = `"box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)"`;
 
-exports[`getTransition() should return correct style for for cssProperty: box-shadow, duration: undefined, ease: none and delay 1`] = `"box-shadow var(--p-transition-duration, 0.25s)"`;
+exports[`getTransition() should for : 'box-shadow var(--p-transition-duration, 0.25s)' return: box-shadow: box-shadow var(--p-transition-duration, 0.25s) 1`] = `"box-shadow var(--p-transition-duration, 0.25s)"`;
 
-exports[`getTransition() should return correct style for for cssProperty: color, duration: moderate, ease: in and delay 1`] = `"color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)"`;
+exports[`getTransition() should for : 'color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)' return: color: color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s) 1`] = `"color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)"`;
 
-exports[`getTransition() should return correct style for for cssProperty: color, duration: undefined, ease: undefined and delay 1`] = `"color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)"`;
+exports[`getTransition() should for : 'color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)' return: color: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) 1`] = `"color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)"`;
 
-exports[`getTransition() should return correct style for for cssProperty: color, duration: veryLong, ease: linear and delay 1`] = `"color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s)"`;
+exports[`getTransition() should for : 'color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s)' return: color: color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s) 1`] = `"color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s)"`;
