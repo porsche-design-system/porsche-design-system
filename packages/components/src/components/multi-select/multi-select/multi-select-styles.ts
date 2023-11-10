@@ -27,10 +27,11 @@ import { getNoResultsOptionJssStyle, MULTI_SELECT_OPTION_HEIGHT } from '../../..
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import {
+  formButtonOrIconPadding,
   formElementLayeredSafeZone,
   formElementPaddingHorizontal,
   formElementPaddingVertical,
-  getDynamicFormElementPaddingHorizontal,
+  getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
 
 export const getComponentCss = (
@@ -78,7 +79,7 @@ export const getComponentCss = (
     icon: {
       gridArea: '1/5',
       placeSelf: 'center',
-      padding: spacingStaticXSmall,
+      padding: formButtonOrIconPadding,
       pointerEvents: 'none',
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
       transition: getTransition('transform'),
@@ -89,7 +90,7 @@ export const getComponentCss = (
     button: {
       gridArea: '1/4',
       placeSelf: 'center',
-      padding: spacingStaticXSmall,
+      padding: formButtonOrIconPadding,
     },
     listbox: getListStyles(isOpen, direction, theme),
     // TODO: extract as functional component and re-use in multi-select and select-wrapper
@@ -140,7 +141,7 @@ const getInputStyles = (
     height: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so input height becomes 54px, // we need 6px additionally so input height becomes 50px
     font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
     padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
-    paddingInlineEnd: getDynamicFormElementPaddingHorizontal(2),
+    paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(2),
     boxSizing: 'border-box',
     outline: 0,
     appearance: 'none',

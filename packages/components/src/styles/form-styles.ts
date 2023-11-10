@@ -5,6 +5,7 @@ import {
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
+  spacingStaticMedium,
   spacingStaticSmall,
   spacingStaticXSmall,
   textSmallStyle,
@@ -109,13 +110,15 @@ export const getSlottedTextFieldTextareaSelectStyles = (
 };
 
 export const formElementLayeredSafeZone = '11px'; // to have same distance vertically and horizontally for button/icon within form element
+// TODO: basic button/icon or form element padding can already be set within style function instead of on component style level
+export const formButtonOrIconPadding = spacingStaticXSmall;
 // TODO: if we'd use 12px instead, it wouldn't be necessary for textarea to have a custom vertical padding,
 //  unfortunately line-height alignment breaks for a select element for some reasons then
 export const formElementPaddingVertical = spacingStaticSmall;
-export const formElementPaddingHorizontal = `calc((${formElementLayeredSafeZone} - ${borderWidthBase}) * 2)`;
-export const getDynamicFormElementPaddingHorizontal = (buttonOrIconAmount: number): string => {
+export const formElementPaddingHorizontal = spacingStaticMedium;
+export const getCalculatedFormElementPaddingHorizontal = (buttonOrIconAmount: number): string => {
   // when applied, font-family and font-size needs to be set too for correct calculation of ex-unit ($fontLineHeight)
-  return `calc(${formElementPaddingHorizontal} + (${fontLineHeight} + ${spacingStaticXSmall} * 2) * ${buttonOrIconAmount})`;
+  return `calc(${formElementLayeredSafeZone} - ${borderWidthBase} + ${formElementPaddingHorizontal} / 2 + (${fontLineHeight} + ${formButtonOrIconPadding} * 2) * ${buttonOrIconAmount})`;
 };
 
 // TODO: re-use in textarea-wrapper not only in text-field-wrapper

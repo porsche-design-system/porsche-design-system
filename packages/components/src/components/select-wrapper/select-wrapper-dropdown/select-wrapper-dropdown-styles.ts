@@ -26,7 +26,7 @@ import type { FormState } from '../../../utils/form/form-state';
 import {
   formElementPaddingHorizontal,
   formElementPaddingVertical,
-  getDynamicFormElementPaddingHorizontal,
+  getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
 
 const dropdownPositionVar = '--p-internal-dropdown-position';
@@ -139,7 +139,7 @@ export const getFilterStyles = (
         // TODO: could be done with css subgrid much more elegant in the near future
         //  or move input into select-wrapper and handle it the same like multi-select
         padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
-        paddingInlineEnd: getDynamicFormElementPaddingHorizontal(1),
+        paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(1),
         outline: '0',
         appearance: 'none',
         boxSizing: 'border-box',

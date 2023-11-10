@@ -2,10 +2,11 @@ import { type BreakpointCustomizable, type Theme } from '../../../types';
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles } from '../../../styles';
 import {
+  formButtonOrIconPadding,
   formElementLayeredSafeZone,
   formElementPaddingHorizontal,
   formElementPaddingVertical,
-  getDynamicFormElementPaddingHorizontal,
+  getCalculatedFormElementPaddingHorizontal,
   getSlottedTextFieldTextareaSelectStyles,
 } from '../../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
@@ -37,7 +38,7 @@ export const getComponentCss = (
           zIndex: 0, // TODO: overrides global style.css in e2e and vrts
           cursor: 'pointer',
           padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
-          paddingInlineEnd: getDynamicFormElementPaddingHorizontal(1),
+          paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(1),
           ...(hasCustomDropdown && !isDisabled && { borderColor: 'transparent' }),
         })
       ),
@@ -57,7 +58,7 @@ export const getComponentCss = (
       pointerEvents: 'none',
       gridArea: '1/5',
       placeSelf: 'center',
-      padding: spacingStaticXSmall,
+      padding: formButtonOrIconPadding,
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
       transition: getTransition('transform'),
       '&--open': {

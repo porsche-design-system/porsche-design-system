@@ -5,10 +5,11 @@ import type { FormState } from '../../utils/form/form-state';
 import { getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
 import {
+  formButtonOrIconPadding,
   formElementLayeredSafeZone,
   formElementPaddingHorizontal,
   formElementPaddingVertical,
-  getDynamicFormElementPaddingHorizontal,
+  getCalculatedFormElementPaddingHorizontal,
   getSlottedTextFieldTextareaSelectStyles,
   getUnitCounterStyles,
 } from '../../styles/form-styles';
@@ -69,11 +70,11 @@ export const getComponentCss = (
     },
     root: {
       [cssVariableInputPaddingStart]: isSearchWithoutForm
-        ? getDynamicFormElementPaddingHorizontal(1)
+        ? getCalculatedFormElementPaddingHorizontal(1)
         : formElementPaddingHorizontal,
       [cssVariableInputPaddingEnd]:
         isSearchOrPassword || isCalendarOrTimeWithCustomIndicator
-          ? getDynamicFormElementPaddingHorizontal(isSearchWithForm ? 2 : 1)
+          ? getCalculatedFormElementPaddingHorizontal(isSearchWithForm ? 2 : 1)
           : formElementPaddingHorizontal,
       display: 'grid',
       gap: spacingStaticXSmall,
@@ -86,7 +87,7 @@ export const getComponentCss = (
       button: {
         gridArea: '1/5',
         placeSelf: 'center',
-        padding: spacingStaticXSmall,
+        padding: formButtonOrIconPadding,
         // TODO: maybe we should render hidden button conditionally, needs to be checked if a11y compliant
         '&:not([hidden])~.button': {
           gridArea: '1/4',
@@ -97,7 +98,7 @@ export const getComponentCss = (
       icon: {
         gridArea: '1/2',
         placeSelf: 'center',
-        padding: spacingStaticXSmall,
+        padding: formButtonOrIconPadding,
         pointerEvents: 'none',
       },
     }),
