@@ -10,6 +10,7 @@ import {
 import { fontSizeTextXSmall, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 
+// TODO: when duplication of label-styles.ts is removed, build of components-js fails
 export const getFunctionalComponentLabelStyles = (
   isDisabledOrLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,

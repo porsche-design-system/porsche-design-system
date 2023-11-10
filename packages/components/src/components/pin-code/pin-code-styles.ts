@@ -12,7 +12,7 @@ import {
   spacingStaticSmall,
   spacingStaticXSmall,
 } from '@porsche-design-system/utilities-v2';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles2';
+import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
