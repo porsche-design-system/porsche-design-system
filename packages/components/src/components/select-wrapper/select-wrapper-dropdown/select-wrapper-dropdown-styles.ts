@@ -16,15 +16,18 @@ import {
   borderWidthBase,
   fontLineHeight,
   fontWeightSemiBold,
-  spacingStaticMedium,
   spacingStaticSmall,
-  spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
 import { getNoResultsOptionJssStyle, OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { FormState } from '../../../utils/form/form-state';
+import {
+  formElementPaddingHorizontal,
+  formElementPaddingVertical,
+  getDynamicFormElementPaddingHorizontal,
+} from '../../../styles/form-styles';
 
 const dropdownPositionVar = '--p-internal-dropdown-position';
 
@@ -94,10 +97,6 @@ export const getButtonStyles = (
   };
 };
 
-// TODO: should be extracted for textarea, textfield and select
-const selectSafeZone = '9px'; // to have same distance vertically and horizontally for button/icon in combination with input
-const buttonOrIconSize = `calc(${fontLineHeight} + ${spacingStaticXSmall} * 2)`;
-
 export const getFilterStyles = (
   direction: DropdownDirectionInternal,
   isOpen: boolean,
@@ -137,7 +136,10 @@ export const getFilterStyles = (
         ...getInsetJssStyle(2), // 2 = borderWidthBase
         zIndex: 1,
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
-        padding: `13px calc(${selectSafeZone} * 2 + ${buttonOrIconSize}) 13px ${spacingStaticMedium}`, // TODO: could be done with css subgrid much more elegant in the near future
+        // TODO: could be done with css subgrid much more elegant in the near future
+        //  or move input into select-wrapper and handle it the same like multi-select
+        padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
+        paddingInlineEnd: getDynamicFormElementPaddingHorizontal(1),
         outline: '0',
         appearance: 'none',
         boxSizing: 'border-box',
@@ -192,7 +194,7 @@ export const getFilterStyles = (
             },
           },
         }),
-        // TODO: can be handled with getFocusStyle in the meantime
+        // TODO: we should try to get rid of the span and apply the border-styles on either select or input
         '&+span': {
           // for focus outline and clicking arrow since input ends left of the icon
           position: 'absolute',

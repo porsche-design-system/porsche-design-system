@@ -9,15 +9,10 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import { getSlottedInputTextareaSelectStyles } from '../../styles/form-styles';
+import { formElementPaddingHorizontal, getSlottedTextFieldTextareaSelectStyles } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { type FormState } from '../../utils/form/form-state';
-import {
-  spacingStaticLarge,
-  spacingStaticMedium,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+import { spacingStaticLarge, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 
 // TODO: textarea safe zone is not really in sync with the safe zone of textfield
@@ -46,10 +41,12 @@ export const getComponentCss = (
       // ::slotted(textarea)
       ...mergeDeep(
         addImportantToEachRule(
-          getSlottedInputTextareaSelectStyles('textarea', state, theme, {
+          getSlottedTextFieldTextareaSelectStyles('textarea', state, theme, {
             gridArea: '1/1/4/6',
             font: textSmallStyle.font, // to override line-height
-            padding: hasCounter ? `12px ${spacingStaticMedium} ${spacingStaticLarge}` : `12px ${spacingStaticMedium}`,
+            padding: hasCounter
+              ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
+              : `12px ${formElementPaddingHorizontal}`,
           })
         ),
         {

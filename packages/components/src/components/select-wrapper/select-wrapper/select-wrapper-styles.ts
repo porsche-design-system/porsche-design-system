@@ -1,21 +1,17 @@
 import { type BreakpointCustomizable, type Theme } from '../../../types';
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles } from '../../../styles';
-import { getSlottedInputTextareaSelectStyles } from '../../../styles/form-styles';
+import {
+  formElementLayeredSafeZone,
+  formElementPaddingHorizontal,
+  formElementPaddingVertical,
+  getDynamicFormElementPaddingHorizontal,
+  getSlottedTextFieldTextareaSelectStyles,
+} from '../../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { type FormState } from '../../../utils/form/form-state';
-import {
-  borderWidthBase,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-} from '@porsche-design-system/utilities-v2';
+import { spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles2';
-
-const controlBarWidth = '54px';
-
-const inputSafeZone = '9px'; // to have same distance vertically and horizontally for button/icon in combination with input
-const inputSafeZoneWithBorder = `calc(${inputSafeZone} + ${borderWidthBase})`;
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -35,13 +31,13 @@ export const getComponentCss = (
       },
       // ::slotted(select)
       ...addImportantToEachRule(
-        getSlottedInputTextareaSelectStyles('select', state, theme, {
+        getSlottedTextFieldTextareaSelectStyles('select', state, theme, {
           gridArea: '1/1/1/7',
           position: 'static',
           zIndex: 0, // TODO: overrides global style.css in e2e and vrts
           cursor: 'pointer',
-          paddingBlock: spacingStaticSmall,
-          paddingInline: `${spacingStaticMedium} ${controlBarWidth}`,
+          padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
+          paddingInlineEnd: getDynamicFormElementPaddingHorizontal(1),
           ...(hasCustomDropdown && !isDisabled && { borderColor: 'transparent' }),
         })
       ),
@@ -53,7 +49,7 @@ export const getComponentCss = (
     wrapper: {
       position: 'relative',
       display: 'grid',
-      gridTemplateColumns: `${inputSafeZoneWithBorder} auto minmax(0, 1fr) auto auto ${inputSafeZoneWithBorder}`,
+      gridTemplateColumns: `${formElementLayeredSafeZone} auto minmax(0, 1fr) auto auto ${formElementLayeredSafeZone}`,
     },
     icon: {
       position: 'relative',

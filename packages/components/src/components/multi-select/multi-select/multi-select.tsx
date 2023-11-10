@@ -34,17 +34,13 @@ import {
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   handleButtonEvent,
-  hasDescription,
-  hasLabel,
   hasPropValueChanged,
   isClickOutside,
-  isRequiredAndParentNotRequired,
   SELECT_DROPDOWN_DIRECTIONS,
   THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import type { HTMLElementWithRequiredProp } from '../../../utils/form/isRequired';
 import {
   Component,
   Element,
@@ -52,17 +48,15 @@ import {
   type EventEmitter,
   forceUpdate,
   h,
-  Host,
   type JSX,
   Listen,
   Prop,
   State,
   Watch,
 } from '@stencil/core';
-import { Required } from '../../common/required/required';
 import { getComponentCss } from './multi-select-styles';
 import { htmlMessageId, StateMessage } from '../../common/state-message/state-message';
-import { htmlDescriptionId, htmlLabelId } from '../../common/label/label';
+import { htmlDescriptionId, htmlLabelId, Label } from '../../common/label/label';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -207,7 +201,6 @@ export class MultiSelect {
       this.hideLabel,
       this.state,
       this.isWithinForm,
-      hasLabel(this.host, this.label),
       this.theme
     );
     syncMultiSelectOptionProps(this.multiSelectOptions, this.theme);
@@ -217,75 +210,55 @@ export class MultiSelect {
     const dropdownId = 'list';
 
     return (
-      <Host>
-        <div class="root">
-          <label class="label">
-            {hasLabel(this.host, this.label) && (
-              <span id={htmlLabelId} class="label__text" onClick={() => this.inputElement.focus()}>
-                {this.label || <slot name="label" />}
-                {isRequiredAndParentNotRequired(this.host, this.host as HTMLElementWithRequiredProp) && <Required />}
-              </span>
+      <div class="root">
+        <Label label={this.label} description={this.description} formElement={this.inputElement} host={this.host} />
+        <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
+          {this.isWithinForm && <slot name="select" />}
+          {this.currentValue.length > 0 && (
+            <span id={optionsSelectedId} class="sr-only">
+              {getSelectedOptions(this.multiSelectOptions).length} options selected
+            </span>
+          )}
+          <input
+            role="combobox"
+            placeholder={getSelectedOptionsString(this.multiSelectOptions) || null}
+            autoComplete="off"
+            disabled={this.disabled}
+            required={this.required}
+            onInput={this.onInputChange}
+            onClick={this.onInputClick}
+            onKeyDown={this.onInputKeyDown}
+            ref={(el) => (this.inputElement = el)}
+            aria-invalid={this.state === 'error' ? 'true' : null}
+            {...getFilterInputAriaAttributes(
+              this.isOpen,
+              this.required,
+              htmlLabelId,
+              `${htmlDescriptionId} ${optionsSelectedId} ${htmlMessageId}`,
+              dropdownId
             )}
-            {/* TODO: Description should be separated from the label (affects all form components) */}
-            {hasDescription(this.host, this.description) && (
-              <span
-                id={htmlDescriptionId}
-                class="label__text"
-                onClick={() => this.inputElement.focus()}
-                aria-hidden="true"
-              >
-                {this.description || <slot name="description" />}
-              </span>
-            )}
-            {this.currentValue.length > 0 && (
-              <span id={optionsSelectedId} class="sr-text">
-                {getSelectedOptions(this.multiSelectOptions).length} options selected
-              </span>
-            )}
-          </label>
-          <div class={{ 'input-container': true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
-            <input
-              role="combobox"
-              placeholder={getSelectedOptionsString(this.multiSelectOptions) || null}
-              autoComplete="off"
-              disabled={this.disabled}
-              required={this.required}
-              onInput={this.onInputChange}
-              onClick={this.onInputClick}
-              onKeyDown={this.onInputKeyDown}
-              ref={(el) => (this.inputElement = el)}
-              aria-invalid={this.state === 'error' ? 'true' : null}
-              {...getFilterInputAriaAttributes(
-                this.isOpen,
-                this.required,
-                htmlLabelId,
-                `${htmlDescriptionId} ${optionsSelectedId} ${htmlMessageId}`,
-                dropdownId
-              )}
-            />
-            {this.currentValue.length > 0 && (
-              <PrefixedTagNames.pButtonPure
-                class="icon reset-icon"
-                icon="close"
-                hideLabel="true"
-                theme={this.theme}
-                color={this.disabled ? 'state-disabled' : 'primary'}
-                onClick={this.onResetClick}
-                onKeyDown={(e) => e.key === 'Tab' && (this.isOpen = false)}
-                disabled={this.disabled}
-              >
-                Reset selection
-              </PrefixedTagNames.pButtonPure>
-            )}
-            <PrefixedTagNames.pIcon
-              class={{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this.isOpen }}
-              name="arrow-head-down"
+          />
+          <PrefixedTagNames.pIcon
+            class={{ icon: true, 'icon--rotate': this.isOpen }}
+            name="arrow-head-down"
+            theme={this.theme}
+            color={this.disabled ? 'state-disabled' : 'primary'}
+            aria-hidden="true"
+          />
+          {this.currentValue.length > 0 && (
+            <PrefixedTagNames.pButtonPure
+              class="button"
+              icon="close"
+              hideLabel="true"
               theme={this.theme}
               color={this.disabled ? 'state-disabled' : 'primary'}
-              onClick={this.onIconClick}
-              aria-hidden="true"
-            />
-          </div>
+              onClick={this.onResetClick}
+              onKeyDown={(e) => e.key === 'Tab' && (this.isOpen = false)}
+              disabled={this.disabled}
+            >
+              Reset selection
+            </PrefixedTagNames.pButtonPure>
+          )}
           <div
             id={dropdownId}
             class="listbox"
@@ -295,18 +268,17 @@ export class MultiSelect {
             {!this.hasFilterResults && (
               <div class="no-results" aria-live="polite" role="status">
                 <span aria-hidden="true">---</span>
-                <span class="no-results__sr">No results found</span>
+                <span class="sr-only">No results found</span>
               </div>
             )}
             <slot />
           </div>
         </div>
-        {this.isWithinForm && <slot name="select" />}
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        <span class="sr-text" role="status" aria-live="assertive" aria-relevant="additions text">
+        <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
           {this.srHighlightedOptionText}
         </span>
-      </Host>
+      </div>
     );
   }
 
@@ -340,10 +312,6 @@ export class MultiSelect {
 
   private onInputClick = (): void => {
     this.isOpen = true;
-  };
-
-  private onIconClick = (): void => {
-    this.isOpen = !this.isOpen;
   };
 
   private onResetClick = (): void => {

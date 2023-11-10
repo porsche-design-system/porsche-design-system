@@ -24,9 +24,21 @@ export const getFunctionalComponentLabelStyles = (
     contrastHighColor: contrastHighColorDark,
   } = getThemedColors('dark');
 
+  // previously used in Pin Code + Multi Select?
+  /* ...buildResponsiveStyles(hideLabel, (isHidden) =>
+      isHidden
+        ? {
+            label: {
+              display: 'none',
+            },
+          }
+        : hasLabel && getLabelStyles('select', isDisabled, hideLabel, state, theme)
+    ),*/
+
   return {
     label: {
       ...textSmallStyle,
+      cursor: 'pointer',
       justifySelf: 'flex-start', // ensures label is not getting stretched by flex or grid context of its parent
       color: isDisabledOrLoading ? disabledColor : primaryColor,
       transition: getTransition('color'), // for smooth transitions between e.g. disabled state
@@ -37,6 +49,7 @@ export const getFunctionalComponentLabelStyles = (
         color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
       }),
       '&+&': {
+        cursor: 'unset',
         marginTop: `-${spacingStaticXSmall}`,
         fontSize: fontSizeTextXSmall,
         ...(!isDisabledOrLoading && {

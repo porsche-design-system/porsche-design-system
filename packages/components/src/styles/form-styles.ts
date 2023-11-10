@@ -6,6 +6,7 @@ import {
   borderWidthBase,
   fontLineHeight,
   spacingStaticSmall,
+  spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getThemedFormStateColors } from './form-state-color-styles';
@@ -16,7 +17,7 @@ export const INPUT_HEIGHT = 54;
 
 export type ChildSelector = 'input' | 'select' | 'textarea';
 
-export const getSlottedInputTextareaSelectStyles = (
+export const getSlottedTextFieldTextareaSelectStyles = (
   child: ChildSelector,
   state: FormState,
   theme: Theme,
@@ -65,13 +66,17 @@ export const getSlottedInputTextareaSelectStyles = (
     },
     ...(hoverMediaQuery({
       // with the media query the selector has higher priority and overrides disabled styles
-      [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover),.label:hover~* ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))`]:
-        {
-          borderColor: formStateHoverColor || primaryColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: formStateHoverColorDark || primaryColorDark,
-          }),
-        },
+      [[
+        `::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)`,
+        `label:hover~* ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))`,
+        // TODO: maybe we should set the color via css variable, so that it can be re-used within another shadow root, e.g. p-select-wrapper-dropdown
+        //  or use input filter + button element within select-wrapper like it's done within multi-select (maybe even better)
+      ].join()]: {
+        borderColor: formStateHoverColor || primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: formStateHoverColorDark || primaryColorDark,
+        }),
+      },
     }) as Styles),
     [`::slotted(${child}:focus)`]: {
       borderColor: primaryColor,
@@ -103,6 +108,17 @@ export const getSlottedInputTextareaSelectStyles = (
   };
 };
 
+export const formElementLayeredSafeZone = '11px'; // to have same distance vertically and horizontally for button/icon within form element
+// TODO: if we'd use 12px instead, it wouldn't be necessary for textarea to have a custom vertical padding,
+//  unfortunately line-height alignment breaks for a select element for some reasons then
+export const formElementPaddingVertical = spacingStaticSmall;
+export const formElementPaddingHorizontal = `calc((${formElementLayeredSafeZone} - ${borderWidthBase}) * 2)`;
+export const getDynamicFormElementPaddingHorizontal = (buttonOrIconAmount: number): string => {
+  // when applied, font-family and font-size needs to be set too for correct calculation of ex-unit ($fontLineHeight)
+  return `calc(${formElementPaddingHorizontal} + (${fontLineHeight} + ${spacingStaticXSmall} * 2) * ${buttonOrIconAmount})`;
+};
+
+// TODO: re-use in textarea-wrapper not only in text-field-wrapper
 export const getUnitCounterStyles = (isDisabled: boolean, theme: Theme): JssStyle => {
   const { disabledColor, contrastMediumColor } = getThemedColors(theme);
   const { disabledColor: disabledColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');

@@ -4,27 +4,20 @@ import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-
 import type { FormState } from '../../utils/form/form-state';
 import { getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
-import { getSlottedInputTextareaSelectStyles, getUnitCounterStyles } from '../../styles/form-styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import {
-  borderWidthBase,
-  fontLineHeight,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-} from '@porsche-design-system/utilities-v2';
+  formElementLayeredSafeZone,
+  formElementPaddingHorizontal,
+  formElementPaddingVertical,
+  getDynamicFormElementPaddingHorizontal,
+  getSlottedTextFieldTextareaSelectStyles,
+  getUnitCounterStyles,
+} from '../../styles/form-styles';
+import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import { spacingStaticMedium, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 
 export const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';
 export const cssVariableInputPaddingEnd = '--p-internal-text-field-input-padding-end';
-
-const inputSafeZone = '9px'; // to have same distance vertically and horizontally for button/icon in combination with input
-const inputSafeZoneWithBorder = `calc(${inputSafeZone} + ${borderWidthBase})`;
-const buttonOrIconSize = `calc(${fontLineHeight} + ${spacingStaticXSmall} * 2)`;
-
-const getInputPaddingHorizontal = (buttonOrIconAmount: number): string => {
-  return `calc(${inputSafeZone} * 2 + ${buttonOrIconSize} * ${buttonOrIconAmount})`;
-};
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -58,9 +51,9 @@ export const getComponentCss = (
       },
       // ::slotted(input)
       ...addImportantToEachRule({
-        ...getSlottedInputTextareaSelectStyles('input', state, theme, {
+        ...getSlottedTextFieldTextareaSelectStyles('input', state, theme, {
           gridArea: '1/1/1/7',
-          padding: `${spacingStaticSmall} 0`,
+          padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
           paddingInline: `var(${cssVariableInputPaddingStart}) var(${cssVariableInputPaddingEnd})`,
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
@@ -75,17 +68,19 @@ export const getComponentCss = (
       }),
     },
     root: {
-      [cssVariableInputPaddingStart]: isSearchWithoutForm ? getInputPaddingHorizontal(1) : spacingStaticMedium,
+      [cssVariableInputPaddingStart]: isSearchWithoutForm
+        ? getDynamicFormElementPaddingHorizontal(1)
+        : formElementPaddingHorizontal,
       [cssVariableInputPaddingEnd]:
         isSearchOrPassword || isCalendarOrTimeWithCustomIndicator
-          ? getInputPaddingHorizontal(isSearchWithForm ? 2 : 1)
-          : spacingStaticMedium,
+          ? getDynamicFormElementPaddingHorizontal(isSearchWithForm ? 2 : 1)
+          : formElementPaddingHorizontal,
       display: 'grid',
       gap: spacingStaticXSmall,
     },
     wrapper: {
       display: 'grid',
-      gridTemplateColumns: `${inputSafeZoneWithBorder} auto minmax(0, 1fr) auto auto ${inputSafeZoneWithBorder}`,
+      gridTemplateColumns: `${formElementLayeredSafeZone} auto minmax(0, 1fr) auto auto ${formElementLayeredSafeZone}`,
     },
     ...((isSearchOrPassword || isCalendarOrTimeWithCustomIndicator) && {
       button: {
