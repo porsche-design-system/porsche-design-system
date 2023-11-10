@@ -38,6 +38,9 @@ export const getFunctionalComponentLabelStyles = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
       }),
+      '&:empty': {
+        display: 'none', // prevents outer spacing caused by parents grid gap, in case no label value is defined (although it has to be set to be a11y compliant)
+      },
       '&+&': {
         cursor: 'unset',
         marginTop: `-${spacingStaticXSmall}`,

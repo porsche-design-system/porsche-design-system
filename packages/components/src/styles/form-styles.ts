@@ -118,7 +118,9 @@ export const formElementPaddingVertical = spacingStaticSmall;
 export const formElementPaddingHorizontal = spacingStaticMedium;
 export const getCalculatedFormElementPaddingHorizontal = (buttonOrIconAmount: number): string => {
   // when applied, font-family and font-size needs to be set too for correct calculation of ex-unit ($fontLineHeight)
-  return `calc(${formElementLayeredSafeZone} - ${borderWidthBase} + ${formElementPaddingHorizontal} / 2 + (${fontLineHeight} + ${formButtonOrIconPadding} * 2) * ${buttonOrIconAmount})`;
+  // TODO: this formula would be correct: return `calc(${formElementLayeredSafeZone} - ${borderWidthBase} + ${formElementPaddingHorizontal} / 2 + (${fontLineHeight} + ${formButtonOrIconPadding} * 2) * ${buttonOrIconAmount})`;
+  // return `calc(${formElementLayeredSafeZone} - ${borderWidthBase} + ${formElementPaddingHorizontal} / 2 + (${fontLineHeight} + ${formButtonOrIconPadding} * 2) * ${buttonOrIconAmount})`;
+  return `calc(${formElementPaddingHorizontal} + (${fontLineHeight} + ${formButtonOrIconPadding} * 2) * ${buttonOrIconAmount})`;
 };
 
 // TODO: re-use in textarea-wrapper not only in text-field-wrapper

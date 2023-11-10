@@ -24,17 +24,6 @@ export const getFunctionalComponentLabelStyles = (
     contrastHighColor: contrastHighColorDark,
   } = getThemedColors('dark');
 
-  // previously used in Pin Code + Multi Select?
-  /* ...buildResponsiveStyles(hideLabel, (isHidden) =>
-      isHidden
-        ? {
-            label: {
-              display: 'none',
-            },
-          }
-        : hasLabel && getLabelStyles('select', isDisabled, hideLabel, state, theme)
-    ),*/
-
   return {
     label: {
       ...textSmallStyle,
@@ -48,6 +37,9 @@ export const getFunctionalComponentLabelStyles = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
       }),
+      '&:empty': {
+        display: 'none', // prevents outer spacing caused by parents grid gap, in case no label value is defined (although it has to be set to be a11y compliant)
+      },
       '&+&': {
         cursor: 'unset',
         marginTop: `-${spacingStaticXSmall}`,
