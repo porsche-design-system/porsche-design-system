@@ -14,7 +14,9 @@ export const PorscheDesignSystemContext = createContext<{ prefix?: string; theme
 type Props = {
   prefix?: string;
   cdn?: 'auto' | 'cn';
-  theme?: Theme;
+  theme?: Theme; // since theme exists on almost every component, it is defined here kind of like a global prop
+  // other component configurations should probably go into a separate `components`, `componentProps` or `componentDefaults`
+  // property similar to https://mui.com/material-ui/customization/theme-components/
 };
 
 export const PorscheDesignSystemProvider = ({

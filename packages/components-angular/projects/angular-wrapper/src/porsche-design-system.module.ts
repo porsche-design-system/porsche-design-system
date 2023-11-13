@@ -13,7 +13,9 @@ export type PorscheDesignSystemModuleConfig = {
 
 export class DefaultConfig implements PorscheDesignSystemModuleConfig {
   prefix = '';
-  theme: 'light';
+  theme: 'light'; // since theme exists on almost every component, it is defined here kind of like a global prop
+  // other component configurations should probably go into a separate `components`, `componentProps` or `componentDefaults`
+  // property similar to https://mui.com/material-ui/customization/theme-components/
 }
 
 // TODO: unit tests are missing
