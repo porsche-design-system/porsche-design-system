@@ -6,12 +6,12 @@ import { routes } from './app-routing.module';
 @Component({
   selector: 'app-root',
   template: `
-    <select [ngModel]="router.url.slice(1)" (change)="changeRoute($event.target.value)">
+    <select name="route" [ngModel]="router.url.slice(1)" (change)="changeRoute($event.target.value)">
       <option value="" disabled>Select a page</option>
       <option *ngFor="let route of routes" [value]="route.path" [disabled]="route.isDisabled">{{ route.name }}</option>
     </select>
 
-    <select [ngModel]="theme$ | async" (ngModelChange)="theme$.next($event)">
+    <select name="theme" [ngModel]="theme$ | async" (ngModelChange)="theme$.next($event)">
       <option *ngFor="let item of themes" [value]="item">{{ item }}</option>
     </select>
 
