@@ -12,18 +12,11 @@ type Props = {
 
 export const Selects = ({ theme, setTheme }: Props): JSX.Element => {
   const router = useRouter();
-  const pathname = usePathname();
   const themes: Theme[] = ['light', 'dark', 'auto'];
 
   return (
     <>
-      <select
-        value={pathname!}
-        onChange={(e) => {
-          const { value } = e.target;
-          router.push(value);
-        }}
-      >
+      <select name="route" value={usePathname()!} onChange={(e) => router.push(e.target.value)}>
         <option disabled value="">
           Select a page
         </option>
@@ -32,7 +25,7 @@ export const Selects = ({ theme, setTheme }: Props): JSX.Element => {
         ))}
       </select>
 
-      <select value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
+      <select name="theme" value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
         {themes.map((item) => (
           <option key={item} value={item} children={item} />
         ))}
