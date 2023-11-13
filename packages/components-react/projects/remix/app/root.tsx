@@ -14,7 +14,6 @@ export const meta: MetaFunction = () => [
 
 export default function App(): JSX.Element {
   const navigate = useNavigate();
-  const [route, setRoute] = useState(useLocation().pathname);
   const [theme, setTheme] = useState<Theme>('light');
   const themes: Theme[] = ['light', 'dark', 'auto'];
 
@@ -25,14 +24,7 @@ export default function App(): JSX.Element {
         {HeadPartials && <HeadPartials />}
       </head>
       <body>
-        <select
-          value={route}
-          onChange={(e) => {
-            const { value } = e.target;
-            navigate(value);
-            setRoute(value);
-          }}
-        >
+        <select value={useLocation().pathname} onChange={(e) => navigate(e.target.value)}>
           <option disabled value="">
             Select a page
           </option>

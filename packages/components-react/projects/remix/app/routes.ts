@@ -6,14 +6,14 @@ type Route = {
 export const routes: Route[] = [
   {
     name: 'Home',
-    path: '',
+    path: '/',
   },
   {
     name: 'Overview',
-    path: 'overview',
+    path: '/overview',
   },
   {
     name: 'Accordion Layout Shift',
-    path: 'accordion-layout-shift',
+    path: '/accordion-layout-shift',
   },
 ];
