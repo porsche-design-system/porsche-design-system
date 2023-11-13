@@ -29,9 +29,7 @@ export const App = (): JSX.Element => {
 
       <select value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
         {themes.map((item) => (
-          <option key={item} value={item}>
-            item
-          </option>
+          <option key={item} value={item} children={item} />
         ))}
       </select>
 
