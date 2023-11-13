@@ -756,6 +756,17 @@ ul {
 .optgroup~.option {
   padding-left: 24px;
 }
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
+}
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
@@ -932,6 +943,17 @@ ul {
 .optgroup~.option {
   padding-left: 24px;
 }
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
+}
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
@@ -1069,6 +1091,17 @@ ul {
 }
 .optgroup~.option {
   padding-left: 24px;
+}
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1242,6 +1275,17 @@ ul {
 }
 .optgroup~.option {
   padding-left: 24px;
+}
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1636,6 +1680,17 @@ ul {
 .optgroup~.option {
   padding-left: 24px;
 }
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
+}
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
@@ -1812,6 +1867,17 @@ ul {
 .optgroup~.option {
   padding-left: 24px;
 }
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
+}
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
@@ -1949,6 +2015,17 @@ ul {
 }
 .optgroup~.option {
   padding-left: 24px;
+}
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -2122,6 +2199,17 @@ ul {
 }
 .optgroup~.option {
   padding-left: 24px;
+}
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -3802,6 +3890,17 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 .optgroup~.option {
   padding-left: 24px;
 }
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
+}
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #FBFCFF;
@@ -3896,6 +3995,17 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 }
 .optgroup~.option {
   padding-left: 24px;
+}
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -3992,6 +4102,17 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 .optgroup~.option {
   padding-left: 24px;
 }
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
+}
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
@@ -4086,6 +4207,17 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 }
 .optgroup~.option {
   padding-left: 24px;
+}
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -4182,6 +4314,17 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
 .optgroup~.option {
   padding-left: 24px;
 }
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
+}
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #FBFCFF;
@@ -4276,6 +4419,17 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
 }
 .optgroup~.option {
   padding-left: 24px;
+}
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -4372,6 +4526,17 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
 .optgroup~.option {
   padding-left: 24px;
 }
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
+}
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
@@ -4466,6 +4631,17 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
 }
 .optgroup~.option {
   padding-left: 24px;
+}
+.popover {
+  position: absolute;
+  bottom: auto;
+  border: none;
+  background: none;
+  pointer-events: all;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  height: auto;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
