@@ -127,7 +127,7 @@ export class TextareaWrapper {
 
     return (
       <div class="root">
-        <Label label={this.label} description={this.description} formElement={this.textarea} host={this.host} />
+        <Label host={this.host} label={this.label} description={this.description} formElement={this.textarea} />
         <div class="wrapper">
           <slot />
           {this.hasCounter && <span class="counter" aria-hidden="true" ref={(el) => (this.counterElement = el)} />}

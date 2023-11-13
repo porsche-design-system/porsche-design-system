@@ -143,10 +143,11 @@ export class PinCode {
     return (
       <div class="root">
         <Label
+          host={this.host}
           label={this.label}
           description={this.description}
           htmlFor={currentInputId}
-          host={this.host}
+          // TODO: Why does it differ from Pin Code? isRequiredAndParentNotRequired call should be moved into Label Functional Component
           isRequired={!isParentFieldsetRequired(this.host) && this.required}
           isLoading={isDisabledOrLoading(this.disabled, this.loading)}
         />

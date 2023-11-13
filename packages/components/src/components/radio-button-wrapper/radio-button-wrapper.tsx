@@ -106,7 +106,7 @@ export class RadioButtonWrapper {
 
     return (
       <div class="root">
-        <Label label={this.label} isLoading={isLoading} formElement={this.input} host={this.host} />
+        <Label host={this.host} label={this.label} isLoading={isLoading} formElement={this.input} />
         <div class="wrapper">
           <slot />
           {isLoading && (

@@ -128,10 +128,10 @@ export class SelectWrapper {
     return (
       <div class="root">
         <Label
+          host={this.host}
           label={this.label}
           description={this.description}
           formElement={this.select}
-          host={this.host}
           hasCustomSelectDropdown={this.hasCustomDropdown}
         />
         <div class="wrapper">

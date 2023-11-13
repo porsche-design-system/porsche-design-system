@@ -111,7 +111,7 @@ export class CheckboxWrapper {
 
     return (
       <div class="root">
-        <Label label={this.label} isLoading={this.loading} formElement={this.input} host={this.host} />
+        <Label host={this.host} label={this.label} isLoading={this.loading} formElement={this.input} />
         <div class="wrapper">
           <slot />
           {this.loading && (

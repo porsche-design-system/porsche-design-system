@@ -36,6 +36,7 @@ import {
   handleButtonEvent,
   hasPropValueChanged,
   isClickOutside,
+  isRequiredAndParentNotRequired,
   SELECT_DROPDOWN_DIRECTIONS,
   THEMES,
   throwIfElementIsNotOfKind,
@@ -57,6 +58,7 @@ import {
 import { getComponentCss } from './multi-select-styles';
 import { htmlMessageId, StateMessage } from '../../common/state-message/state-message';
 import { htmlDescriptionId, htmlLabelId, Label } from '../../common/label/label';
+import { type HTMLElementWithRequiredProp } from '../../../utils/form/isRequired';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -209,9 +211,20 @@ export class MultiSelect {
     const optionsSelectedId = 'options-selected';
     const dropdownId = 'list';
 
+    const inputId = 'filter';
+
     return (
       <div class="root">
-        <Label label={this.label} description={this.description} formElement={this.inputElement} host={this.host} />
+        <Label
+          host={this.host}
+          label={this.label}
+          description={this.description}
+          htmlFor={inputId}
+          // TODO: Why does it differ from Pin Code? isRequiredAndParentNotRequired call should be moved into Label Functional Component
+          isRequired={
+            isRequiredAndParentNotRequired(this.host, this.host as HTMLElementWithRequiredProp) && this.required
+          }
+        />
         <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
           {this.isWithinForm && <slot name="select" />}
           {this.currentValue.length > 0 && (
@@ -220,6 +233,7 @@ export class MultiSelect {
             </span>
           )}
           <input
+            id={inputId}
             role="combobox"
             placeholder={getSelectedOptionsString(this.multiSelectOptions) || null}
             autoComplete="off"

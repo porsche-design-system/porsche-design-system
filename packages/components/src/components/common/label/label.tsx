@@ -2,18 +2,6 @@ import { Fragment, type FunctionalComponent, h } from '@stencil/core';
 import { getClosestHTMLElement, hasDescription, hasLabel, isRequiredAndParentNotRequired } from '../../../utils';
 import { Required } from '../required/required';
 
-type FormElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
-type LabelProps = {
-  host: HTMLElement;
-  label: string;
-  description?: string;
-  isRequired?: boolean;
-  isLoading?: boolean;
-  formElement?: FormElement;
-  hasCustomSelectDropdown?: boolean;
-  htmlFor?: string;
-};
-
 const onLabelClick = (
   event: MouseEvent,
   formElement: FormElement,
@@ -29,8 +17,9 @@ const onLabelClick = (
   ) {
     formElement.click();
   } else {
+    // TODO: we should try to find a more generic solution for hasCustomSelectDropdown
     (hasCustomSelectDropdown
-      ? (host?.shadowRoot.children[0].querySelector('.dropdown').shadowRoot.children[0] as HTMLElement)
+      ? (host?.shadowRoot.children[0].querySelector('.dropdown').shadowRoot.children[0] as HTMLElement) // input of p-select-wrapper-dropdown
       : formElement
     ).focus();
   }
@@ -38,6 +27,18 @@ const onLabelClick = (
 
 export const htmlLabelId = 'label';
 export const htmlDescriptionId = 'description';
+
+type FormElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+type LabelProps = {
+  host: HTMLElement;
+  label: string;
+  description?: string;
+  isRequired?: boolean;
+  isLoading?: boolean;
+  formElement?: FormElement;
+  hasCustomSelectDropdown?: boolean;
+  htmlFor?: string;
+};
 
 export const Label: FunctionalComponent<LabelProps> = ({
   label,
