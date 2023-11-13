@@ -1,7 +1,7 @@
 import { type BreakpointCustomizable, type Theme } from '../../types';
 import { type FormState } from '../../utils/form/form-state';
 import { getSlottedCheckboxRadioButtonStyles } from '../../styles/checkbox-radio-styles';
-import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
+import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import {
@@ -106,6 +106,10 @@ export const getComponentCss = (
       display: 'grid',
       alignSelf: 'flex-start',
       gridArea: '1/1',
+      ...(isDisabledOrLoading(isDisabled, isLoading) && {
+        // TODO: maybe .wrapper should handle it for all form components while pointer-events: none is set to input
+        cursor: 'not-allowed',
+      }),
     },
     ...(isLoading && {
       // TODO: extract for checkbox-wrapper and radio-button-wrapper (not gridArea and placeSelf)

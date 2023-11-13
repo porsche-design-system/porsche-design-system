@@ -73,7 +73,6 @@ export const getSlottedCheckboxRadioButtonStyles = (
         outline: 0,
         ...(disabledOrLoading
           ? {
-              cursor: 'not-allowed', // TODO: maybe .wrapper should handle it in all form components (when pointer events none is set, it has no effect here)
               pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
             }
           : {
