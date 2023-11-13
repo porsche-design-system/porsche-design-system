@@ -43,7 +43,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 };
 
 // executed in Chrome only
-test.skip(component, async () => {
+test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
   baseThemes.forEach((theme) => {
