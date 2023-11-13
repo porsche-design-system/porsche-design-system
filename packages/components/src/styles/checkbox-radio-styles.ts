@@ -57,6 +57,7 @@ export const getSlottedCheckboxRadioButtonStyles = (
   return {
     '::slotted': {
       '&(input)': {
+        position: 'relative', // TODO: can be removed as soon as focus style was adjusted
         width: fontLineHeight,
         height: fontLineHeight,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
@@ -91,41 +92,40 @@ export const getSlottedCheckboxRadioButtonStyles = (
           backgroundColor: checkedColorDark,
         }),
       },
-      ...(!disabledOrLoading && {
-        ...(!isHighContrastMode &&
-          hoverMediaQuery({
-            '&(input:hover),.label:hover~* &(input)': {
-              transition: 'unset', // Fixes chrome bug where border-color is stuck on hover color
-              borderColor: uncheckedHoverColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: uncheckedHoverColorDark,
-              }),
-            },
-            '&(input:checked:hover),.label:hover~* &(input:checked)': {
-              transition: 'unset', // Fixes chrome bug where border-color is stuck on hover color
-              borderColor: checkedHoverColor,
-              backgroundColor: checkedHoverColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: checkedHoverColorDark,
-                backgroundColor: checkedHoverColorDark,
-              }),
-            },
-          })),
-        ...(!isDisabled && {
-          // TODO: can be done with getFocusStyle() in the meantime
-          '&(input:focus)::before': {
-            content: '""',
-            position: 'absolute',
-            ...getInsetJssStyle(-6),
-            border: `${borderWidthBase} solid ${focusColor}`,
+      ...(!disabledOrLoading &&
+        !isHighContrastMode &&
+        hoverMediaQuery({
+          '&(input:hover),.label:hover~* &(input)': {
+            transition: 'unset', // Fixes chrome bug where border-color is stuck on hover color
+            borderColor: uncheckedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: focusColorDark,
+              borderColor: uncheckedHoverColorDark,
             }),
           },
-          '&(input:focus:not(:focus-visible))::before': {
-            borderColor: 'transparent',
+          '&(input:checked:hover),.label:hover~* &(input:checked)': {
+            transition: 'unset', // Fixes chrome bug where border-color is stuck on hover color
+            borderColor: checkedHoverColor,
+            backgroundColor: checkedHoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: checkedHoverColorDark,
+              backgroundColor: checkedHoverColorDark,
+            }),
           },
-        }),
+        })),
+      ...(!isDisabled && {
+        // TODO: can be done with getFocusStyle() in the meantime
+        '&(input:focus)::before': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(-6),
+          border: `${borderWidthBase} solid ${focusColor}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: focusColorDark,
+          }),
+        },
+        '&(input:focus:not(:focus-visible))::before': {
+          borderColor: 'transparent',
+        },
       }),
     },
   };
