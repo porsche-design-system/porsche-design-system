@@ -21,7 +21,7 @@ describe('validateVersions()', () => {
     await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT)); // Wait until version validation
 
     expect(consoleWarnSpy).toHaveBeenCalledWith(
-      'Multiple different versions detected!\nPlease upgrade all instances to the latest version in use.\nRefer to the document.porscheDesignSystem object for detailed information on the current versions in use.\n',
+      "Multiple different versions detected!\nWhile bootstrapping multiple versions is valid, it's highly recommended to upgrade all instances to the latest version in use for the best performance.\nRefer to the document.porscheDesignSystem object for detailed information on the current versions in use.\n",
       document.porscheDesignSystem
     );
   });

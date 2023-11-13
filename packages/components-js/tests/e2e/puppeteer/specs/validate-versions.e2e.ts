@@ -44,7 +44,7 @@ it('should show warning about multiple different versions correctly', async () =
 
   expect(warningArgs).toEqual([
     `[Porsche Design System v${version}]`,
-    'Multiple different versions detected!\nPlease upgrade all instances to the latest version in use.\nRefer to the document.porscheDesignSystem object for detailed information on the current versions in use.\n',
+    "Multiple different versions detected!\nWhile bootstrapping multiple versions is valid, it's highly recommended to upgrade all instances to the latest version in use for the best performance.\nRefer to the document.porscheDesignSystem object for detailed information on the current versions in use.\n",
     porscheDesignSystem,
   ]);
 });
