@@ -209,10 +209,7 @@ label {
     background-color: #FB0404 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-      transition: unset !important;
-    }
-    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    .text:hover ~ ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -317,10 +314,7 @@ label {
     background-color: #951219 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-      transition: unset !important;
-    }
-    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    .text:hover ~ ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -579,10 +573,7 @@ label {
     background-color: #AFB0B3 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-      transition: unset !important;
-    }
-    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    .text:hover ~ ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -686,10 +677,7 @@ label {
     background-color: #535457 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-      transition: unset !important;
-    }
-    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    .text:hover ~ ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -945,10 +933,7 @@ label {
     background-color: #069561 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-      transition: unset !important;
-    }
-    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    .text:hover ~ ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -1053,10 +1038,7 @@ label {
     background-color: #0E4809 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-      transition: unset !important;
-    }
-    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    .text:hover ~ ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -1315,10 +1297,7 @@ label {
     background-color: #FB0404 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-      transition: unset !important;
-    }
-    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    .text:hover ~ ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -1421,10 +1400,7 @@ label {
     background-color: #951219 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-      transition: unset !important;
-    }
-    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    .text:hover ~ ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -1677,10 +1653,7 @@ label {
     background-color: #AFB0B3 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-      transition: unset !important;
-    }
-    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    .text:hover ~ ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -1782,10 +1755,7 @@ label {
     background-color: #535457 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-      transition: unset !important;
-    }
-    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    .text:hover ~ ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -2377,10 +2347,7 @@ label {
     background-color: #069561 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-      transition: unset !important;
-    }
-    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    .text:hover ~ ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -2483,10 +2450,7 @@ label {
     background-color: #0E4809 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-      transition: unset !important;
-    }
-    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    .text:hover ~ ::slotted(input) {
       transition: unset !important;
     }
 }
