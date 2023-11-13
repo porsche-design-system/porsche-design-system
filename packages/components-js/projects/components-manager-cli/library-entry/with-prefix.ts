@@ -1,6 +1,7 @@
 import { loadComponentLibrary } from '@porsche-design-system/components-manager-core';
 import type { EntryConfig } from '../shared-definitions/entry-config';
 
+// TODO: Share type across repo
 declare global {
   interface Window {
     /** @deprecated since v3 */

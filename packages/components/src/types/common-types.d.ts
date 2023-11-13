@@ -27,6 +27,7 @@ export type { LinkTarget } from '../utils/link-button/link-target';
 
 export type { AlignLabel, AlignLabelDeprecated } from '../utils/link-button/align-label';
 
+// TODO: Share type across repo
 export type PorscheDesignSystem = {
   [key: `${number}.${number}.${number}${`-rc.${number}` | ''}`]: {
     prefixes: string[];
