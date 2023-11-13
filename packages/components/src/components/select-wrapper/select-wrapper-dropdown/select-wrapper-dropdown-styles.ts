@@ -341,6 +341,17 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
         paddingLeft: '24px',
       },
     },
+    popover: {
+      position: 'absolute',
+      bottom: 'auto',
+      border: 'none',
+      background: 'none',
+      pointerEvents: 'all',
+      padding: 0,
+      margin: 0,
+      overflow: 'visible',
+      height: 'auto',
+    },
   };
 };
 
