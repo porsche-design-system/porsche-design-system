@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Select Wrapper`: Select dropdown is now visible if it overflows the `Table` component
+  ([#2885](https://github.com/porsche-design-system/porsche-design-system/pull/2885))
 - `Select Wrapper` keyboard and scroll behavior
   ([#2864](https://github.com/porsche-design-system/porsche-design-system/pull/2864))
 - Safari 15 default margin of button elements in several components
