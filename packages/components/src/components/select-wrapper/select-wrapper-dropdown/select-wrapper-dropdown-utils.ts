@@ -171,13 +171,11 @@ export const updateNativePopoverSelectStyles = (
   direction: SelectWrapperDropdownDirection
 ): void => {
   const { left, top, width, height } = nativeButton.getBoundingClientRect();
+  const isDirectionDown =
+    direction === 'down' ||
+    (direction === 'auto' &&
+      determineDropdownDirection(host, getAmountOfVisibleOptionsAndOptgroups(optionMaps)) === 'down');
   nativePopover.style.left = `${left + window.scrollX}px`;
-  nativePopover.style.top = `${
-    top +
-    window.scrollY +
-    ((direction === 'down' ||
-      determineDropdownDirection(host, getAmountOfVisibleOptionsAndOptgroups(optionMaps)) === 'down') &&
-      height)
-  }px`;
+  nativePopover.style.top = `${top + window.scrollY + (isDirectionDown && height)}px`;
   nativePopover.style.width = `${width}px`;
 };
