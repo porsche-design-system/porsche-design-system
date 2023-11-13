@@ -1,23 +1,21 @@
 import { type Styles } from 'jss';
 import { type BreakpointCustomizable, type Theme } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
+import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
 import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getHiddenTextJssStyle,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
-import { formElementPaddingHorizontal, getSlottedTextFieldTextareaSelectStyles } from '../../styles/form-styles';
+  formElementPaddingHorizontal,
+  getSlottedTextFieldTextareaSelectStyles,
+  getUnitCounterStyles,
+} from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { type FormState } from '../../utils/form/form-state';
-import { spacingStaticLarge, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import {
+  borderWidthBase,
+  spacingStaticLarge,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
-
-// TODO: textarea safe zone is not really in sync with the safe zone of textfield
-const textareaSafeZoneHorizontal = '12px';
-const textareaSafeZoneVertical = '6px';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -26,9 +24,6 @@ export const getComponentCss = (
   hasCounter: boolean,
   theme: Theme
 ): string => {
-  const { contrastMediumColor } = getThemedColors(theme);
-  const { contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
-
   return getCss({
     '@global': {
       ':host': {
@@ -42,7 +37,7 @@ export const getComponentCss = (
       ...mergeDeep(
         addImportantToEachRule(
           getSlottedTextFieldTextareaSelectStyles('textarea', state, theme, {
-            gridArea: '1/1/4/6',
+            gridArea: '1/1',
             // TODO: move into getSlottedTextFieldTextareaSelectStyles()
             font: textSmallStyle.font, // to override line-height
             // TODO: move into getSlottedTextFieldTextareaSelectStyles()
@@ -67,21 +62,13 @@ export const getComponentCss = (
     },
     wrapper: {
       display: 'grid',
-      gridTemplateColumns: `${textareaSafeZoneHorizontal} auto minmax(0, 1fr) auto ${textareaSafeZoneHorizontal}`,
-      gridTemplateRows: `${textareaSafeZoneVertical} auto ${textareaSafeZoneVertical}`,
     },
     ...(hasCounter && {
-      // TODO: extract for textarea-wrapper and text-field-wrapper (not gridArea and alignSelf)
       counter: {
-        gridArea: '2/4/3/5',
-        alignSelf: 'flex-end',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        font: textSmallStyle.font,
-        color: contrastMediumColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: contrastMediumColorDark,
-        }),
+        ...getUnitCounterStyles(isDisabled, theme),
+        gridArea: '1/1',
+        placeSelf: 'flex-end',
+        padding: `6px calc(${formElementPaddingHorizontal} + ${borderWidthBase})`,
       },
       // TODO: maybe we should extract it as functional component too
       'sr-only': getHiddenTextJssStyle(),

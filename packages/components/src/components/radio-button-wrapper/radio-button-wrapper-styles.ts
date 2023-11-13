@@ -82,7 +82,6 @@ export const getComponentCss = (
     },
     wrapper: {
       display: 'grid',
-      alignSelf: 'flex-start',
       gridArea: '1/1',
       ...(isDisabledOrLoading(isDisabled, isLoading) && {
         // TODO: maybe .wrapper should handle it for all form components while pointer-events: none is set to input

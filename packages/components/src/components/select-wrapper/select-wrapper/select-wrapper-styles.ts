@@ -33,7 +33,7 @@ export const getComponentCss = (
       // ::slotted(select)
       ...addImportantToEachRule(
         getSlottedTextFieldTextareaSelectStyles('select', state, theme, {
-          gridArea: '1/1/1/7',
+          gridArea: '1/1/1/-1',
           position: 'static',
           zIndex: 0, // TODO: overrides global style.css in e2e and vrts
           cursor: 'pointer',
@@ -50,13 +50,12 @@ export const getComponentCss = (
       gap: spacingStaticXSmall,
     },
     wrapper: {
-      position: 'relative',
       display: 'grid',
-      gridTemplateColumns: `${formElementLayeredSafeZone} auto minmax(0, 1fr) auto auto ${formElementLayeredSafeZone}`,
+      gridTemplateColumns: `minmax(0, 1fr) auto ${formElementLayeredSafeZone}`,
     },
     // TODO: extract for multi-select, select-wrapper and text-field (not gridArea and placeSelf)
     icon: {
-      gridArea: '1/5',
+      gridArea: '1/2',
       placeSelf: 'center',
       position: 'relative',
       zIndex: 2, // ensures icon is above input or button of select dropdown
@@ -69,7 +68,7 @@ export const getComponentCss = (
       },
     },
     dropdown: {
-      gridArea: '1/1/1/7',
+      gridArea: '1/1/1/-1',
     },
     // .label / .required
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),

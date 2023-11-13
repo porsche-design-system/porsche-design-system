@@ -6,6 +6,7 @@ import { getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
 import {
   formButtonOrIconPadding,
+  formElementLayeredGap,
   formElementLayeredSafeZone,
   formElementPaddingHorizontal,
   formElementPaddingVertical,
@@ -14,7 +15,7 @@ import {
   getUnitCounterStyles,
 } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { spacingStaticMedium, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
+import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 
 export const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';
@@ -53,7 +54,7 @@ export const getComponentCss = (
       // ::slotted(input)
       ...addImportantToEachRule({
         ...getSlottedTextFieldTextareaSelectStyles('input', state, theme, {
-          gridArea: '1/1/1/7',
+          gridArea: '1/1/1/-1',
           padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
           paddingInline: `var(${cssVariableInputPaddingStart}) var(${cssVariableInputPaddingEnd})`,
           // TODO: move into getSlottedTextFieldTextareaSelectStyles()
@@ -112,7 +113,10 @@ export const getComponentCss = (
         ...getUnitCounterStyles(isDisabled, theme),
         gridArea: `1/${unitPosition === 'suffix' ? 5 : 1}/1/${unitPosition === 'suffix' ? 7 : 3}`,
         placeSelf: 'center',
-        paddingInline: unitPosition === 'suffix' ? `10px ${spacingStaticMedium}` : `${spacingStaticMedium} 10px`, // padding needed for correct input padding synchronisation
+        paddingInline:
+          unitPosition === 'suffix'
+            ? `${formElementLayeredGap} calc(${formElementPaddingHorizontal} + ${borderWidthBase})`
+            : `calc(${formElementPaddingHorizontal} + ${borderWidthBase}) ${formElementLayeredGap}`, // padding needed for correct input padding synchronisation
       },
     }),
     // TODO: maybe we should extract it as functional component too

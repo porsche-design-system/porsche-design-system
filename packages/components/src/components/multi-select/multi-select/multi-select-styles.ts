@@ -73,11 +73,11 @@ export const getComponentCss = (
     wrapper: {
       position: 'relative',
       display: 'grid',
-      gridTemplateColumns: `${formElementLayeredSafeZone} auto minmax(0, 1fr) auto auto ${formElementLayeredSafeZone}`,
+      gridTemplateColumns: `minmax(0, 1fr) auto auto ${formElementLayeredSafeZone}`,
     },
     // TODO: extract for multi-select, select-wrapper and text-field (not gridArea and placeSelf)
     icon: {
-      gridArea: '1/5',
+      gridArea: '1/3',
       placeSelf: 'center',
       padding: formButtonOrIconPadding,
       pointerEvents: 'none',
@@ -89,7 +89,7 @@ export const getComponentCss = (
     },
     // TODO: extract for multi-select, select-wrapper and text-field (not gridArea and placeSelf)
     button: {
-      gridArea: '1/4',
+      gridArea: '1/2',
       placeSelf: 'center',
       padding: formButtonOrIconPadding,
     },
@@ -136,7 +136,7 @@ const getInputStyles = (
   );
 
   return {
-    gridArea: '1/1/1/7',
+    gridArea: '1/1/1/-1',
     flex: 1,
     minWidth: 0,
     // TODO: abstract and re-use for multi-select, select-wrapper and text-field-wrapper

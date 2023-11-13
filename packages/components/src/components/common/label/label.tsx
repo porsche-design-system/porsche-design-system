@@ -50,33 +50,28 @@ export const Label: FunctionalComponent<LabelProps> = ({
   hasCustomSelectDropdown,
   htmlFor,
 }) => {
-  const labelProps = {
-    class: 'label',
-    'aria-disabled': isLoading ? 'true' : null,
-    ...(htmlFor
-      ? {
-          htmlFor,
-        }
-      : {
-          onClick: (event: MouseEvent) => onLabelClick(event, formElement, isLoading, hasCustomSelectDropdown, host),
-        }),
-  };
-
   return (
     <Fragment>
-      <label id={htmlLabelId} {...labelProps}>
+      <label
+        class="label"
+        id={htmlLabelId}
+        aria-disabled={isLoading ? 'true' : null}
+        htmlFor={htmlFor}
+        {...(!htmlFor && {
+          onClick: (event: MouseEvent) => onLabelClick(event, formElement, isLoading, hasCustomSelectDropdown, host),
+        })}
+      >
         {hasLabel(host, label) && (
           <Fragment>
             {label || <slot name="label" />}
             {isRequired && <Required />}
-            {/* TODO: conditional rendering of required component needs to be re-evaluated */}
             {/* {!isParentFieldsetRequired(this.host) && this.required && <Required />} // for pin code */}
             {isRequiredAndParentNotRequired(host, formElement) && <Required />}
           </Fragment>
         )}
       </label>
       {hasDescription(host, description) && (
-        <span id={htmlDescriptionId} {...labelProps}>
+        <span class="label" id={htmlDescriptionId}>
           {description || <slot name="description" />}
         </span>
       )}

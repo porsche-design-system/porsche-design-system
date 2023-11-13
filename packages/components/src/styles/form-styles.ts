@@ -104,7 +104,8 @@ export const getSlottedTextFieldTextareaSelectStyles = (
   };
 };
 
-export const formElementLayeredSafeZone = '11px'; // to have same distance vertically and horizontally for button/icon within form element
+export const formElementLayeredGap = '9px'; // to have same distance vertically and horizontally for e.g. button/icon within form element
+export const formElementLayeredSafeZone = `calc(${formElementLayeredGap} + ${borderWidthBase})`;
 // TODO: basic button/icon padding can already be set within style function instead of on component style level
 export const formButtonOrIconPadding = spacingStaticXSmall;
 // TODO: if we'd use 12px instead, it wouldn't be necessary for textarea to have a custom vertical padding,
@@ -127,6 +128,11 @@ export const getUnitCounterStyles = (isDisabled: boolean, theme: Theme): JssStyl
 
   return {
     pointerEvents: 'none',
+    maxWidth: '100%',
+    boxSizing: 'border-box',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
     font: textSmallStyle.font,
     color: contrastMediumColor,
     ...prefersColorSchemeDarkMediaQuery(theme, {
