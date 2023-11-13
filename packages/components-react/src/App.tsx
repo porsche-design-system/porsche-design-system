@@ -10,14 +10,7 @@ export const App = (): JSX.Element => {
 
   return (
     <>
-      <select
-        name="route"
-        value={useLocation().pathname}
-        onChange={(e) => {
-          const { value } = e.target;
-          navigate(value);
-        }}
-      >
+      <select name="route" value={useLocation().pathname} onChange={(e) => navigate(e.target.value)}>
         <option disabled value="/">
           Select a page
         </option>
