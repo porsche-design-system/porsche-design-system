@@ -54,7 +54,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `<p-heading>Welcome to Angular</p-heading>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush, // disable automatic change detection, https://angular.io/api/core/ChangeDetectionStrategy
 })
 export class AppComponent {}
 ```

@@ -7,6 +7,7 @@
 **Since v3.8.0** you can set the `theme` property for all child components by passing an option to
 `PorscheDesignSystemModule.load()`.
 
+Possible values for `theme` are: `'auto' | 'dark' | 'light'`  
 Local overrides on a per component basis are still possible as usual.
 
 ```ts
