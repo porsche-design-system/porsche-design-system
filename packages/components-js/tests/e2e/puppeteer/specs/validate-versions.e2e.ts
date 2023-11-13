@@ -34,7 +34,7 @@ it('should show warning about multiple different versions correctly', async () =
   expect(porscheDesignSystem['3.7.0']).toBeDefined();
   expect(porscheDesignSystem['3.7.0'].prefixes).toEqual(prefixes);
 
-  await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT + 1000)); // Wait until version validation
+  await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT)); // Wait until version validation
 
   const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 
@@ -57,7 +57,7 @@ it('should not show warning about multiple different versions if only one versio
   expect(porscheDesignSystem[version]).toBeDefined();
   expect(Object.keys(porscheDesignSystem).length).toBe(2); // cdn and one version
 
-  await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT + 1000)); // Wait until version validation
+  await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT)); // Wait until version validation
 
   const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 
