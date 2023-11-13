@@ -18,14 +18,14 @@
 
 <template>
   <PorscheDesignSystemProvider cdn="auto" :theme="theme">
-    <select v-model="route" @change="router.push(($event.target as HTMLSelectElement).value)">
-      <option disabled value="">Select a page</option>
+    <select name="route" v-model="route" @change="router.push(($event.target as HTMLSelectElement).value)">
+      <option disabled value="/">Select a page</option>
       <option v-for="(item, index) in routes" :key="index" :value="item.path" :disabled="item.isDisabled">
         {{ item.name }}
       </option>
     </select>
 
-    <select v-model="theme">
+    <select name="theme" v-model="theme">
       <option v-for="(item, index) in themes" :key="index" :value="item">{{ item }}</option>
     </select>
 
