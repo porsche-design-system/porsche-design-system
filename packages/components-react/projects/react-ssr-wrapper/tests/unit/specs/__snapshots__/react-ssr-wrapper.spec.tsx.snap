@@ -2155,7 +2155,7 @@ exports[`should render dsr component for PBanner 1`] = `
   color-scheme: light dark !important;
 }
 :host(.hydrated), :host(.ssr) {
-  transition: visibility 0s linear var(--p-animation-duration, 0.6s), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) !important;
+  transition: visibility 0s linear var(--p-animation-duration, 0.6s), transform var(--p-animation-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-animation-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) !important;
 }
 :host([hidden]) {
   display: none !important;
