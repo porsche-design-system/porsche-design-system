@@ -1158,14 +1158,21 @@ label {
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
-    transition: unset !important;
     border-color: #FB0404 !important;
   }
   ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-    transition: unset !important;
     border-color: #FB0404 !important;
     background-color: #FB0404 !important;
   }
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+      transition: unset !important;
+    }
+    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+      transition: unset !important;
+    }
+}
+
 }
 
 .text {
@@ -1254,14 +1261,21 @@ label {
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
-    transition: unset !important;
     border-color: #951219 !important;
   }
   ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-    transition: unset !important;
     border-color: #951219 !important;
     background-color: #951219 !important;
   }
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+      transition: unset !important;
+    }
+    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+      transition: unset !important;
+    }
+}
+
 }
 
 .text {
@@ -1514,14 +1528,21 @@ label {
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
-    transition: unset !important;
     border-color: #FBFCFF !important;
   }
   ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-    transition: unset !important;
     border-color: #AFB0B3 !important;
     background-color: #AFB0B3 !important;
   }
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+      transition: unset !important;
+    }
+    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+      transition: unset !important;
+    }
+}
+
 }
 
 .text {
@@ -1609,14 +1630,21 @@ label {
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
-    transition: unset !important;
     border-color: #010205 !important;
   }
   ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-    transition: unset !important;
     border-color: #535457 !important;
     background-color: #535457 !important;
   }
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+      transition: unset !important;
+    }
+    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+      transition: unset !important;
+    }
+}
+
 }
 
 .text {
@@ -1866,14 +1894,21 @@ label {
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
-    transition: unset !important;
     border-color: #069561 !important;
   }
   ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-    transition: unset !important;
     border-color: #069561 !important;
     background-color: #069561 !important;
   }
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+      transition: unset !important;
+    }
+    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+      transition: unset !important;
+    }
+}
+
 }
 
 .text {
@@ -1962,14 +1997,21 @@ label {
 }
 @media(hover:hover) {
   ::slotted(input:hover), .text:hover ~ ::slotted(input) {
-    transition: unset !important;
     border-color: #0E4809 !important;
   }
   ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
-    transition: unset !important;
     border-color: #0E4809 !important;
     background-color: #0E4809 !important;
   }
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+      transition: unset !important;
+    }
+    ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+      transition: unset !important;
+    }
+}
+
 }
 
 .text {
