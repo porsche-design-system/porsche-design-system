@@ -1,10 +1,12 @@
 import type { AppProps } from 'next/app';
 import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 import { routes } from '../routes';
-import { useState } from 'react';
+import { type JSX, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
+// NOTE: technically unused since we are using app directory
+// but nevertheless part of final build to verify 'use client'; directive has no negative impact
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const router = useRouter();
   const [selected, setSelected] = useState(router.route);
