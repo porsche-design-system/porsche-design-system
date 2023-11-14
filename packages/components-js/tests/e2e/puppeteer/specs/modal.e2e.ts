@@ -18,7 +18,6 @@ import {
 import type { ElementHandle, Page } from 'puppeteer';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components/dist/types/bundle';
 import type { TagName } from '@porsche-design-system/shared';
-import { footerShadowClass } from '@porsche-design-system/components/src/components/modal/modal-styles';
 
 let page: Page;
 const CSS_TRANSITION_DURATION = 600;
