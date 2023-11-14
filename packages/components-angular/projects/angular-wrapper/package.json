@@ -21,8 +21,8 @@
     "tslib": "^2.6.1"
   },
   "peerDependencies": {
-    "@angular/common": ">=15.0.0 <17.0.0",
-    "@angular/core": ">=15.0.0 <17.0.0"
+    "@angular/common": ">=15.0.0 <18.0.0",
+    "@angular/core": ">=15.0.0 <18.0.0"
   },
   "exports": {
     "./jsdom-polyfill": {
