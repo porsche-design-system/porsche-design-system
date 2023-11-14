@@ -130,11 +130,9 @@ export const getCheckboxRadioJssStyle = (
                   backgroundColor: checkedHoverColorDark,
                 }),
               },
-              '.text:hover ~ &(input)': {
-                ...supportsChromiumMediaQuery({
-                  transition: 'unset', // Fixes chrome bug where border-color is stuck on hover color
-                }),
-              },
+              '.text:hover ~ &(input)': supportsChromiumMediaQuery({
+                transition: 'unset', // Fixes chrome bug where border-color is stuck on hover color
+              }),
             })),
           ...(!isDisabled && {
             '&(input:focus)::before': {
