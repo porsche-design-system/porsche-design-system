@@ -127,13 +127,7 @@ export class SelectWrapper {
 
     return (
       <div class="root">
-        <Label
-          host={this.host}
-          label={this.label}
-          description={this.description}
-          formElement={this.select}
-          hasCustomSelectDropdown={this.hasCustomDropdown}
-        />
+        <Label host={this.host} label={this.label} description={this.description} formElement={this.select} />
         <div class="wrapper">
           <slot />
           <PrefixedTagNames.pIcon

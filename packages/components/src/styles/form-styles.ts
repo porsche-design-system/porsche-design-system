@@ -19,6 +19,7 @@ export const getSlottedTextFieldTextareaSelectStyles = (
   child: ChildSelector,
   state: FormState,
   theme: Theme,
+  isLoading: boolean,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
@@ -60,20 +61,20 @@ export const getSlottedTextFieldTextareaSelectStyles = (
       }),
       ...additionalDefaultJssStyle,
     },
-    ...(hoverMediaQuery({
-      // with the media query the selector has higher priority and overrides disabled styles
-      [[
-        `::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)`,
-        `label:hover~* ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))`,
-        // TODO: maybe we should set the color via css variable, so that it can be re-used within another shadow root, e.g. p-select-wrapper-dropdown
-        //  or use input filter + button element within select-wrapper like it's done within multi-select (maybe even better)
-      ].join()]: {
-        borderColor: formStateHoverColor || primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: formStateHoverColorDark || primaryColorDark,
-        }),
-      },
-    }) as Styles),
+    ...(!isLoading &&
+      (hoverMediaQuery({
+        // with the media query the selector has higher priority and overrides disabled styles
+        [[
+          `::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)`,
+          `label:hover~* ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))`,
+          'label:hover~* ::part(p-select-wrapper-dropdown)',
+        ].join()]: {
+          borderColor: formStateHoverColor || primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: formStateHoverColorDark || primaryColorDark,
+          }),
+        },
+      }) as Styles)),
     [`::slotted(${child}:focus)`]: {
       borderColor: primaryColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {

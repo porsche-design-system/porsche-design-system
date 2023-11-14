@@ -1,29 +1,12 @@
 import { Fragment, type FunctionalComponent, h } from '@stencil/core';
-import { getClosestHTMLElement, hasDescription, hasLabel, isRequiredAndParentNotRequired } from '../../../utils';
+import {
+  getClosestHTMLElement,
+  hasDescription,
+  hasLabel,
+  isParentFieldsetRequired,
+  isRequiredAndParentNotRequired,
+} from '../../../utils';
 import { Required } from '../required/required';
-
-const onLabelClick = (
-  event: MouseEvent,
-  formElement: FormElement,
-  isLoading: boolean,
-  hasCustomSelectDropdown?: boolean,
-  host?: HTMLElement
-): void => {
-  if (
-    !isLoading &&
-    (formElement?.type === 'checkbox' || formElement?.type === 'radio') &&
-    // we don't want to click on the input, if a link is clicked
-    getClosestHTMLElement(event.target as HTMLElement, 'a') === null
-  ) {
-    formElement.click();
-  } else {
-    // TODO: we should try to find a more generic solution for hasCustomSelectDropdown
-    (hasCustomSelectDropdown
-      ? (host?.shadowRoot.children[0].querySelector('.dropdown').shadowRoot.children[0] as HTMLElement) // input of p-select-wrapper-dropdown
-      : formElement
-    ).focus();
-  }
-};
 
 export const htmlLabelId = 'label';
 export const htmlDescriptionId = 'description';
@@ -33,22 +16,20 @@ type LabelProps = {
   host: HTMLElement;
   label: string;
   description?: string;
-  isRequired?: boolean;
+  htmlFor?: string; // should be used when form element is within shadow dom (modern)
+  isRequired?: boolean; // should be used when form element is within shadow dom (modern)
   isLoading?: boolean;
-  formElement?: FormElement;
-  hasCustomSelectDropdown?: boolean;
-  htmlFor?: string;
+  formElement?: FormElement; // should be used when form element is slotted within light dom (legacy)
 };
 
 export const Label: FunctionalComponent<LabelProps> = ({
+  host,
   label,
   description,
+  htmlFor,
   isRequired,
   isLoading,
   formElement,
-  host,
-  hasCustomSelectDropdown,
-  htmlFor,
 }) => {
   return (
     <Fragment>
@@ -58,18 +39,19 @@ export const Label: FunctionalComponent<LabelProps> = ({
         aria-disabled={isLoading ? 'true' : null}
         htmlFor={htmlFor}
         {...(!htmlFor && {
-          onClick: (event: MouseEvent) => onLabelClick(event, formElement, isLoading, hasCustomSelectDropdown, host),
+          onClick: (event: MouseEvent) => onLabelClick(event, formElement, isLoading, host),
         })}
       >
+        {/* TODO: we could try to use css :empty selector instead of DOM query checks, which might make things easier in SSR context? */}
         {hasLabel(host, label) && (
           <Fragment>
             {label || <slot name="label" />}
-            {isRequired && <Required />}
-            {/* {!isParentFieldsetRequired(this.host) && this.required && <Required />} // for pin code */}
-            {isRequiredAndParentNotRequired(host, formElement) && <Required />}
+            {((isRequired && !isParentFieldsetRequired(host)) ||
+              (formElement && isRequiredAndParentNotRequired(host, formElement))) && <Required />}
           </Fragment>
         )}
       </label>
+      {/* TODO: we could try to use css :empty selector instead of DOM query checks, which might make things easier in SSR context? */}
       {hasDescription(host, description) && (
         <span class="label" id={htmlDescriptionId}>
           {description || <slot name="description" />}
@@ -77,4 +59,28 @@ export const Label: FunctionalComponent<LabelProps> = ({
       )}
     </Fragment>
   );
+};
+
+const onLabelClick = (event: MouseEvent, formElement: FormElement, isLoading: boolean, host?: HTMLElement): void => {
+  // we don't want to click/focus the form element, if a link is clicked or when host is in loading state
+  if (isLoading || getClosestHTMLElement(event.target as HTMLElement, 'a') !== null) {
+    return;
+  }
+
+  if (formElement?.type === 'checkbox' || formElement?.type === 'radio') {
+    // checkbox-wrapper, radio-button-wrapper
+    formElement.click();
+  } else if (formElement?.type === 'select-one') {
+    // select-wrapper
+    // TODO: should be refactored in select-wrapper, so that "for" attribute becomes possible to use
+    const el = host.shadowRoot.children[0].querySelector('.dropdown')?.shadowRoot.children[0] as HTMLElement; // input or button of p-select-wrapper-dropdown
+    if (el) {
+      el.click();
+    } else {
+      formElement.focus(); // it's not possible to open the native option list of a select by JS
+    }
+  } else {
+    // text-field-wrapper, textarea-wrapper
+    formElement.focus();
+  }
 };

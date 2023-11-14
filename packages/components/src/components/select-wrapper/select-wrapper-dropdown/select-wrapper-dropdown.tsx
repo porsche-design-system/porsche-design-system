@@ -122,6 +122,7 @@ export class SelectWrapperDropdown {
       this.theme
     );
 
+    const part = 'p-select-wrapper-dropdown';
     const dropdownId = 'list';
     const labelId = 'label';
     const descriptionId = this.description && 'description';
@@ -153,10 +154,15 @@ export class SelectWrapperDropdown {
               onClick={() => this.setDropdownVisibility('show')}
               ref={(el) => (this.inputElement = el)}
             />,
-            <span key="span" onClick={this.disabled ? undefined : () => this.setDropdownVisibility('toggle')} />,
+            <span
+              part={part}
+              key="span"
+              onClick={this.disabled ? undefined : () => this.setDropdownVisibility('toggle')}
+            />,
           ]
         ) : (
           <button
+            part={part}
             type="button"
             role="combobox"
             id={buttonId}

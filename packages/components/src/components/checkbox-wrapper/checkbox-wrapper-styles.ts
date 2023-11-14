@@ -105,6 +105,7 @@ export const getComponentCss = (
     wrapper: {
       display: 'grid',
       gridArea: '1/1',
+      alignSelf: 'flex-start', // in case label becomes multiline
       ...(isDisabledOrLoading(isDisabled, isLoading) && {
         // TODO: maybe .wrapper should handle it for all form components while pointer-events: none is set to input
         cursor: 'not-allowed',

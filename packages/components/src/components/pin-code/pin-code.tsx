@@ -21,7 +21,6 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
-  isParentFieldsetRequired,
   isWithinForm,
   THEMES,
   validateProps,
@@ -147,8 +146,7 @@ export class PinCode {
           label={this.label}
           description={this.description}
           htmlFor={currentInputId}
-          // TODO: Why does it differ from Pin Code? isRequiredAndParentNotRequired call should be moved into Label Functional Component
-          isRequired={!isParentFieldsetRequired(this.host) && this.required}
+          isRequired={this.required}
           isLoading={isDisabledOrLoading(this.disabled, this.loading)}
         />
         <div class="wrapper" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput}>
