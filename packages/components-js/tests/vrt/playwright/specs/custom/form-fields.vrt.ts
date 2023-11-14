@@ -1,7 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
 import {
   baseThemes,
-  baseViewportWidth,
   getPlaygroundPseudoStatesMarkup,
   setContentWithDesignSystem,
   forceFocusHoverState,
@@ -13,6 +12,7 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 import { type TagName } from '@porsche-design-system/shared';
 
 const component = 'form-fields';
+const viewportWidth = 1920;
 
 const scenario = async (page: Page, theme: Theme): Promise<void> => {
   const head = `
@@ -102,9 +102,8 @@ test.describe(component, async () => {
   baseThemes.forEach((theme) => {
     test(`should have no visual regression for :hover + :focus-visible with theme ${theme}`, async ({ page }) => {
       await scenario(page, theme);
-      await expect(page.locator('#app')).toHaveScreenshot(
-        `${component}-${baseViewportWidth}-states-theme-${theme}.png`
-      );
+      await page.setViewportSize({ width: viewportWidth, height: 600 });
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}-states-theme-${theme}.png`);
     });
   });
 });
