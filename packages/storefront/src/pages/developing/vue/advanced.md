@@ -4,7 +4,7 @@
 
 ## Global Theme
 
-**Since v3.8.0** you can set the `theme` property for all child components by setting the prop on
+**Since v3.9.0** you can set the `theme` property for all child components by setting the prop on
 `PorscheDesignSystemProvider`.
 
 Possible values for `theme` are: `'auto' | 'dark' | 'light'`  
