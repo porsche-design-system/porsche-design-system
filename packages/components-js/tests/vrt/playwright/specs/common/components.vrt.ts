@@ -43,6 +43,7 @@ const flakyCommonComponents = [
   'link-tile-model-signature',
   'link-social',
   'button-tile',
+  'button',
 ];
 
 const isComponentFlaky = (component: string): boolean => flakyCommonComponents.includes(component);

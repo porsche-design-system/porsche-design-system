@@ -16,6 +16,10 @@ describe('InputParser', () => {
       expect(inputParser.getSharedTypes()).not.toContain('const ROLLUP_REPLACE_IS_STAGING');
     });
 
+    it('should not contain "Document"', () => {
+      expect(inputParser.getSharedTypes()).not.toContain('interface Document');
+    });
+
     it('should not contain global "PORSCHE_DESIGN_SYSTEM_CDN"', () => {
       expect(inputParser.getSharedTypes()).not.toContain('PORSCHE_DESIGN_SYSTEM_CDN: ');
     });
