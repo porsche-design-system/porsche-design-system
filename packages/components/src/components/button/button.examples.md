@@ -97,7 +97,7 @@ When used as a submit button, the `name` and `value` props are submitted as a pa
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
-import {getButtonCodeSamples} from "shared/src"; 
+import {getButtonCodeSamples} from "@porsche-design-system/shared"; 
 import type { Theme } from '@/models';
 
 @Component
