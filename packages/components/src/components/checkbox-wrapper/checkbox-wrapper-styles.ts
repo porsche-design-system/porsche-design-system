@@ -114,6 +114,7 @@ export const getComponentCss = (
     ...(isLoading && {
       // TODO: extract for checkbox-wrapper and radio-button-wrapper (not gridArea and placeSelf)
       spinner: {
+        position: 'relative', // ensure correct stacking, can be removed as soon as focus for input is handled with outline
         gridArea: '1/1',
         placeSelf: 'center',
         width: fontLineHeight,
