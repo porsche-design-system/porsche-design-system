@@ -1,5 +1,5 @@
 import { validatePartialUsage } from './utils/validation/partials/validatePartialUsage';
-import { injectGlobalStyle } from './utils';
+import { injectGlobalStyle, validateVersions } from './utils';
 
 export default (): void => {
   if (process.env.NODE_ENV !== 'development') {
@@ -9,4 +9,5 @@ export default (): void => {
 
   injectGlobalStyle();
   validatePartialUsage();
+  validateVersions();
 };
