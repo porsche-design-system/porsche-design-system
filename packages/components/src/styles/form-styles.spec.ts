@@ -1,50 +1,35 @@
-import { getBaseChildStyles, getLabelStyles } from './form-styles';
+import { getSlottedTextFieldTextareaSelectStyles, getUnitCounterStyles } from './form-styles';
 
-describe('getBaseChildStyles()', () => {
-  it.each<Parameters<typeof getBaseChildStyles>>([
-    ['input', 'none', 'light', undefined],
-    ['input', 'success', 'light', undefined],
-    ['input', 'error', 'light', undefined],
-    ['select', 'none', 'dark', undefined],
-    ['select', 'success', 'dark', undefined],
-    ['select', 'error', 'dark', undefined],
-    ['textarea', 'none', 'dark', undefined],
-    ['textarea', 'success', 'dark', undefined],
-    ['textarea', 'error', 'dark', undefined],
-    ['textarea', 'error', 'dark', { bottom: 5 }],
-  ])('should return correct css for child: %s, state: %s, theme: %s and additionalDefaultJssStyle: %o', (...args) => {
-    expect(getBaseChildStyles(...args)).toMatchSnapshot();
-  });
-});
-
-describe('getLabelStyles()', () => {
-  it.each<Parameters<typeof getLabelStyles>>([
-    ['input', false, false, 'none', 'light'],
-    ['input', false, false, 'success', 'light'],
-    ['input', false, false, 'error', 'light'],
-    ['input', false, true, 'none', 'light'],
-    ['input', false, true, 'success', 'light'],
-    ['input', false, true, 'error', 'light'],
-    ['input', true, true, 'error', 'light'],
-    ['textarea', false, false, 'none', 'dark'],
-    ['textarea', false, false, 'success', 'dark'],
-    ['textarea', false, false, 'error', 'dark'],
-    ['textarea', false, true, 'none', 'dark'],
-    ['textarea', false, true, 'success', 'dark'],
-    ['textarea', false, true, 'error', 'dark'],
-    ['textarea', true, true, 'error', 'dark'],
-    [
-      'input',
-      false,
-      { base: true, xs: false, s: true, m: false, l: true, xl: false },
-      'error',
-      'dark',
-      { unit: { display: 'block ' } },
-    ],
+describe('getSlottedTextFieldTextareaSelectStyles()', () => {
+  it.each<Parameters<typeof getSlottedTextFieldTextareaSelectStyles>>([
+    ['input', 'none', 'light', false, undefined],
+    ['input', 'none', 'light', true, undefined],
+    ['input', 'success', 'light', false, undefined],
+    ['input', 'error', 'light', false, undefined],
+    ['select', 'none', 'dark', false, undefined],
+    ['select', 'success', 'dark', false, undefined],
+    ['select', 'error', 'dark', false, undefined],
+    ['textarea', 'none', 'dark', false, undefined],
+    ['textarea', 'success', 'dark', false, undefined],
+    ['textarea', 'error', 'dark', false, undefined],
+    ['textarea', 'error', 'dark', false, { bottom: 5 }],
   ])(
-    'should return correct css for child: %s, hideLabel: %o, state: %s, theme: %s and additionalRefForInputHover: %s',
+    'should return correct css for child: %s, state: %s, theme: %s, isLoading: %s and additionalDefaultJssStyle: %o',
     (...args) => {
-      expect(getLabelStyles(...args)).toMatchSnapshot();
+      expect(getSlottedTextFieldTextareaSelectStyles(...args)).toMatchSnapshot();
     }
   );
+});
+
+describe('getUnitCounterStyles()', () => {
+  it.each<Parameters<typeof getUnitCounterStyles>>([
+    [false, 'light'],
+    [true, 'light'],
+    [false, 'dark'],
+    [true, 'dark'],
+    [false, 'auto'],
+    [true, 'auto'],
+  ])('should return correct css for isDisabled: %s and theme: %s', (...args) => {
+    expect(getUnitCounterStyles(...args)).toMatchSnapshot();
+  });
 });

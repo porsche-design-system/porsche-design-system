@@ -2,20 +2,17 @@
 
 exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -26,8 +23,8 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -38,17 +35,23 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -59,6 +62,15 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -66,14 +78,14 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }
 @media(min-width:480px) {
-  .text {
+  .label {
     position: static;
     width: auto;
     height: auto;
@@ -88,7 +100,7 @@ label {
 }
 
 @media(min-width:760px) {
-  .text {
+  .label {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -101,7 +113,7 @@ label {
 }
 
 @media(min-width:1000px) {
-  .text {
+  .label {
     position: static;
     width: auto;
     height: auto;
@@ -116,7 +128,7 @@ label {
 }
 
 @media(min-width:1300px) {
-  .text {
+  .label {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -129,7 +141,7 @@ label {
 }
 
 @media(min-width:1760px) {
-  .text {
+  .label {
     position: static;
     width: auto;
     height: auto;
@@ -147,20 +159,17 @@ label {
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -172,6 +181,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #FC4040 !important;
   outline: 0 !important;
   cursor: pointer !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -195,29 +205,34 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
-}
 @media(hover:hover) {
-  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  ::slotted(input:hover), .label:hover~* ::slotted(input) {
     transition: unset !important;
     border-color: #FB0404 !important;
   }
-  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label:hover~* ::slotted(input:checked) {
     transition: unset !important;
     border-color: #FB0404 !important;
     background-color: #FB0404 !important;
   }
 }
 
-.text {
-  grid-area: 1 / 2;
-  cursor: pointer;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
@@ -230,6 +245,16 @@ label {
   white-space: normal;
   padding-top: 2px;
   padding-inline-start: 8px;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #AFB0B3;
 }
 .required {
   user-select: none;
@@ -237,31 +262,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -273,6 +295,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #CC1922 !important;
   outline: 0 !important;
   cursor: pointer !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -296,29 +319,34 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
-}
 @media(hover:hover) {
-  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  ::slotted(input:hover), .label:hover~* ::slotted(input) {
     transition: unset !important;
     border-color: #951219 !important;
   }
-  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label:hover~* ::slotted(input:checked) {
     transition: unset !important;
     border-color: #951219 !important;
     background-color: #951219 !important;
   }
 }
 
-.text {
-  grid-area: 1 / 2;
-  cursor: pointer;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
@@ -331,6 +359,16 @@ label {
   white-space: normal;
   padding-top: 2px;
   padding-inline-start: 8px;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
 }
 .required {
   user-select: none;
@@ -338,31 +376,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -373,8 +408,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -385,17 +420,23 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
@@ -408,6 +449,15 @@ label {
   white-space: normal;
   padding-top: 2px;
   padding-inline-start: 8px;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -415,31 +465,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -450,8 +497,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -462,17 +509,23 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
@@ -485,6 +538,15 @@ label {
   white-space: normal;
   padding-top: 2px;
   padding-inline-start: 8px;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -492,31 +554,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -528,6 +587,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #88898C !important;
   outline: 0 !important;
   cursor: pointer !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -551,29 +611,34 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
-}
 @media(hover:hover) {
-  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  ::slotted(input:hover), .label:hover~* ::slotted(input) {
     transition: unset !important;
     border-color: #FBFCFF !important;
   }
-  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label:hover~* ::slotted(input:checked) {
     transition: unset !important;
     border-color: #AFB0B3 !important;
     background-color: #AFB0B3 !important;
   }
 }
 
-.text {
-  grid-area: 1 / 2;
-  cursor: pointer;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
@@ -586,6 +651,16 @@ label {
   white-space: normal;
   padding-top: 2px;
   padding-inline-start: 8px;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #AFB0B3;
 }
 .required {
   user-select: none;
@@ -593,30 +668,27 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -628,6 +700,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;
   cursor: pointer !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -651,29 +724,34 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
-}
 @media(hover:hover) {
-  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  ::slotted(input:hover), .label:hover~* ::slotted(input) {
     transition: unset !important;
     border-color: #010205 !important;
   }
-  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label:hover~* ::slotted(input:checked) {
     transition: unset !important;
     border-color: #535457 !important;
     background-color: #535457 !important;
   }
 }
 
-.text {
-  grid-area: 1 / 2;
-  cursor: pointer;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
@@ -686,6 +764,16 @@ label {
   white-space: normal;
   padding-top: 2px;
   padding-inline-start: 8px;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
 }
 .required {
   user-select: none;
@@ -693,30 +781,27 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -727,8 +812,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -739,17 +824,23 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
@@ -762,6 +853,15 @@ label {
   white-space: normal;
   padding-top: 2px;
   padding-inline-start: 8px;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -769,30 +869,27 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -803,8 +900,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -815,17 +912,23 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
@@ -838,6 +941,15 @@ label {
   white-space: normal;
   padding-top: 2px;
   padding-inline-start: 8px;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -845,30 +957,27 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -880,6 +989,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #09D087 !important;
   outline: 0 !important;
   cursor: pointer !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -903,29 +1013,34 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
-}
 @media(hover:hover) {
-  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  ::slotted(input:hover), .label:hover~* ::slotted(input) {
     transition: unset !important;
     border-color: #069561 !important;
   }
-  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label:hover~* ::slotted(input:checked) {
     transition: unset !important;
     border-color: #069561 !important;
     background-color: #069561 !important;
   }
 }
 
-.text {
-  grid-area: 1 / 2;
-  cursor: pointer;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
@@ -938,6 +1053,16 @@ label {
   white-space: normal;
   padding-top: 2px;
   padding-inline-start: 8px;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #AFB0B3;
 }
 .required {
   user-select: none;
@@ -945,31 +1070,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -981,6 +1103,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border: 2px solid #197E10 !important;
   outline: 0 !important;
   cursor: pointer !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -1004,29 +1127,34 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
-}
 @media(hover:hover) {
-  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  ::slotted(input:hover), .label:hover~* ::slotted(input) {
     transition: unset !important;
     border-color: #0E4809 !important;
   }
-  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label:hover~* ::slotted(input:checked) {
     transition: unset !important;
     border-color: #0E4809 !important;
     background-color: #0E4809 !important;
   }
 }
 
-.text {
-  grid-area: 1 / 2;
-  cursor: pointer;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
@@ -1039,6 +1167,16 @@ label {
   white-space: normal;
   padding-top: 2px;
   padding-inline-start: 8px;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
 }
 .required {
   user-select: none;
@@ -1046,31 +1184,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1081,8 +1216,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -1093,17 +1228,23 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
@@ -1116,6 +1257,15 @@ label {
   white-space: normal;
   padding-top: 2px;
   padding-inline-start: 8px;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -1123,31 +1273,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1158,8 +1305,8 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -1170,17 +1317,23 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: static;
@@ -1193,6 +1346,15 @@ label {
   white-space: normal;
   padding-top: 2px;
   padding-inline-start: 8px;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -1200,31 +1362,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1236,6 +1395,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #FC4040 !important;
   outline: 0 !important;
   cursor: pointer !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -1259,29 +1419,34 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
-}
 @media(hover:hover) {
-  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  ::slotted(input:hover), .label:hover~* ::slotted(input) {
     transition: unset !important;
     border-color: #FB0404 !important;
   }
-  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label:hover~* ::slotted(input:checked) {
     transition: unset !important;
     border-color: #FB0404 !important;
     background-color: #FB0404 !important;
   }
 }
 
-.text {
-  grid-area: 1 / 2;
-  cursor: pointer;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -1292,6 +1457,16 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #AFB0B3;
 }
 .required {
   user-select: none;
@@ -1299,31 +1474,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1335,6 +1507,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #CC1922 !important;
   outline: 0 !important;
   cursor: pointer !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -1358,29 +1531,34 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
-}
 @media(hover:hover) {
-  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  ::slotted(input:hover), .label:hover~* ::slotted(input) {
     transition: unset !important;
     border-color: #951219 !important;
   }
-  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label:hover~* ::slotted(input:checked) {
     transition: unset !important;
     border-color: #951219 !important;
     background-color: #951219 !important;
   }
 }
 
-.text {
-  grid-area: 1 / 2;
-  cursor: pointer;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -1391,6 +1569,16 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
 }
 .required {
   user-select: none;
@@ -1398,31 +1586,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1433,8 +1618,8 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -1445,17 +1630,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -1466,6 +1657,15 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -1473,31 +1673,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1508,8 +1705,8 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -1520,17 +1717,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -1541,6 +1744,15 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -1548,31 +1760,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1584,6 +1793,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #88898C !important;
   outline: 0 !important;
   cursor: pointer !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -1607,29 +1817,34 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
-}
 @media(hover:hover) {
-  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  ::slotted(input:hover), .label:hover~* ::slotted(input) {
     transition: unset !important;
     border-color: #FBFCFF !important;
   }
-  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label:hover~* ::slotted(input:checked) {
     transition: unset !important;
     border-color: #AFB0B3 !important;
     background-color: #AFB0B3 !important;
   }
 }
 
-.text {
-  grid-area: 1 / 2;
-  cursor: pointer;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -1640,6 +1855,16 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #AFB0B3;
 }
 .required {
   user-select: none;
@@ -1647,30 +1872,27 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1682,6 +1904,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #6B6D70 !important;
   outline: 0 !important;
   cursor: pointer !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -1705,29 +1928,34 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
-}
 @media(hover:hover) {
-  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  ::slotted(input:hover), .label:hover~* ::slotted(input) {
     transition: unset !important;
     border-color: #010205 !important;
   }
-  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label:hover~* ::slotted(input:checked) {
     transition: unset !important;
     border-color: #535457 !important;
     background-color: #535457 !important;
   }
 }
 
-.text {
-  grid-area: 1 / 2;
-  cursor: pointer;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -1738,6 +1966,16 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
 }
 .required {
   user-select: none;
@@ -1745,30 +1983,27 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1779,31 +2014,53 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
-}
 ::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.spinner {
+  position: relative;
+  grid-area: 1/1;
+  place-self: center;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  pointer-events: none;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -1814,6 +2071,15 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -1821,41 +2087,27 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.spinner {
-  position: relative;
-  grid-area: 1 / 1;
-  margin: 2px;
-  justify-self: center;
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  cursor: not-allowed;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1866,31 +2118,53 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
   background-color: #949598 !important;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
-}
 ::slotted(input:focus)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -6px !important;
+  left: -6px !important;
+  right: -6px !important;
+  bottom: -6px !important;
+  border: 2px solid #1A44EA !important;
   border-radius: 8px !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+::slotted(input:focus:not(:focus-visible))::before {
+  border-color: transparent !important;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.spinner {
+  position: relative;
+  grid-area: 1/1;
+  place-self: center;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  pointer-events: none;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -1901,6 +2175,15 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -1908,41 +2191,27 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.spinner {
-  position: relative;
-  grid-area: 1 / 1;
-  margin: 2px;
-  justify-self: center;
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  cursor: not-allowed;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1953,8 +2222,8 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -1965,17 +2234,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -1986,6 +2261,15 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -1993,30 +2277,27 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2027,8 +2308,8 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -2039,17 +2320,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -2060,6 +2347,15 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -2067,30 +2363,27 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2101,28 +2394,40 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
-}
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.spinner {
+  position: relative;
+  grid-area: 1/1;
+  place-self: center;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  pointer-events: none;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -2133,6 +2438,15 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -2140,41 +2454,27 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.spinner {
-  position: relative;
-  grid-area: 1 / 1;
-  margin: 2px;
-  justify-self: center;
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  cursor: not-allowed;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2185,28 +2485,40 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
   border-color: #949598 !important;
   background-color: #949598 !important;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
-}
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.spinner {
+  position: relative;
+  grid-area: 1/1;
+  place-self: center;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  pointer-events: none;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -2217,6 +2529,15 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -2224,41 +2545,27 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, .24s) ease;
-}
-.spinner {
-  position: relative;
-  grid-area: 1 / 1;
-  margin: 2px;
-  justify-self: center;
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  font-size: 1rem;
-  cursor: not-allowed;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2270,6 +2577,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #09D087 !important;
   outline: 0 !important;
   cursor: pointer !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -2293,29 +2601,34 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
-}
 @media(hover:hover) {
-  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  ::slotted(input:hover), .label:hover~* ::slotted(input) {
     transition: unset !important;
     border-color: #069561 !important;
   }
-  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label:hover~* ::slotted(input:checked) {
     transition: unset !important;
     border-color: #069561 !important;
     background-color: #069561 !important;
   }
 }
 
-.text {
-  grid-area: 1 / 2;
-  cursor: pointer;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -2326,6 +2639,16 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #AFB0B3;
 }
 .required {
   user-select: none;
@@ -2333,31 +2656,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2369,6 +2689,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border: 2px solid #197E10 !important;
   outline: 0 !important;
   cursor: pointer !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -2392,29 +2713,34 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
-}
 @media(hover:hover) {
-  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+  ::slotted(input:hover), .label:hover~* ::slotted(input) {
     transition: unset !important;
     border-color: #0E4809 !important;
   }
-  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label:hover~* ::slotted(input:checked) {
     transition: unset !important;
     border-color: #0E4809 !important;
     background-color: #0E4809 !important;
   }
 }
 
-.text {
-  grid-area: 1 / 2;
-  cursor: pointer;
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -2425,6 +2751,16 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
 }
 .required {
   user-select: none;
@@ -2432,31 +2768,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2467,8 +2800,8 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #7E7F82 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -2479,17 +2812,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -2500,6 +2839,15 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -2507,31 +2855,28 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
-  display: block !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(input) {
-  grid-area: 1 / 1 !important;
   position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
-  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  font-size: 1rem !important;
-  flex-shrink: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2542,8 +2887,8 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease !important;
   border: 2px solid #949598 !important;
   outline: 0 !important;
-  cursor: not-allowed !important;
   pointer-events: none !important;
+  grid-area: 1/1 !important;
   border-radius: 4px !important;
 }
 ::slotted(input:checked) {
@@ -2554,17 +2899,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
-label {
+.root {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: flex-start;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
 }
-.text {
-  grid-area: 1 / 2;
-  cursor: default;
+.wrapper {
+  display: grid;
+  grid-area: 1/1;
+  align-self: flex-start;
+  cursor: not-allowed;
+}
+.label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, .24s) ease;
   position: absolute;
@@ -2575,6 +2926,15 @@ label {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .required {
   user-select: none;
@@ -2582,11 +2942,11 @@ label {
 .message {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
   transition: color var(--p-transition-duration, .24s) ease;
+  grid-column: 1/3;
 }"
 `;
