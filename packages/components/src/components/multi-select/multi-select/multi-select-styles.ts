@@ -154,18 +154,13 @@ const getInputStyles = (
     },
     transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states
     color: primaryColor,
-    ...(isDisabled && getPlaceholderJssStyle({ color: disabledColor })),
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: primaryColorDark,
-      ...(isDisabled && getPlaceholderJssStyle({ color: disabledColorDark })),
-    }),
     '&:not(:focus)': {
       ...getPlaceholderJssStyle({ color: primaryColor, opacity: 1 }),
       ...prefersColorSchemeDarkMediaQuery(theme, getPlaceholderJssStyle({ color: primaryColorDark, opacity: 1 })),
     }, // Opacity fixes placeholder being shown lighter in firefox
 
     ...hoverMediaQuery({
-      '&:hover:not(:disabled),label:hover~* &:not(:disabled)': {
+      '&:hover:not(:disabled):not(:focus),label:hover~* &:not(:disabled):not(:focus)': {
         borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           borderColor: isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark,
@@ -173,7 +168,7 @@ const getInputStyles = (
       },
     }),
     ...(!isDisabled && {
-      '&:focus-within': {
+      '&:focus': {
         borderColor: primaryColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           borderColor: primaryColorDark,
@@ -190,18 +185,21 @@ const getInputStyles = (
       [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
     }),
     ...(isDisabled && {
+      ...getPlaceholderJssStyle({ color: disabledColor }),
       cursor: 'not-allowed',
       color: disabledColor,
       borderColor: disabledColor,
       WebkitTextFillColor: disabledColor,
     }),
     ...prefersColorSchemeDarkMediaQuery(theme, {
+      color: primaryColorDark,
       background: backgroundColorDark,
       border: `${borderWidthBase} solid ${isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark}`,
       ...(isOpen && {
         [isDirectionDown ? 'borderBottom' : 'borderTop']: addImportantToRule(`1px solid ${contrastMediumColorDark}`),
       }),
       ...(isDisabled && {
+        ...getPlaceholderJssStyle({ color: disabledColorDark }),
         color: disabledColorDark,
         borderColor: disabledColorDark,
         WebkitTextFillColor: disabledColorDark,
