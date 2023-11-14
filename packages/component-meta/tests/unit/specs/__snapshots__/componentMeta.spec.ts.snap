@@ -2092,14 +2092,14 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "namedSlots": [
+      "select",
       "label",
       "description",
-      "select",
       "message",
     ],
     "nestedComponents": [
-      "p-button-pure",
       "p-icon",
+      "p-button-pure",
     ],
     "props": {
       "description": null,
