@@ -1,6 +1,7 @@
 import { loadComponentLibrary } from '@porsche-design-system/components-manager-core';
 import type { EntryConfig } from '../shared-definitions/entry-config';
 
+// TODO: Share type across repo
 declare global {
   interface Window {
     /** @deprecated since v3 */
@@ -9,7 +10,7 @@ declare global {
 
   interface Document {
     porscheDesignSystem: {
-      [key: `${number}.${number}.${number}`]: {
+      [key: `${number}.${number}.${number}${`-rc.${number}` | ''}`]: {
         prefixes: string[];
         isReady: () => Promise<void>;
         readyResolve: () => void;
