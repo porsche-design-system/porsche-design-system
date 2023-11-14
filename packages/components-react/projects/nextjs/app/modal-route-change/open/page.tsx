@@ -11,9 +11,13 @@ const ModalPage: NextPage = (): JSX.Element => {
     setIsModalOpen(false);
     router.back();
   }, []);
+
   const style = `
     #app {
       transform: none;
+    }
+    body {
+      position: fixed !important;
     }
   `;
 
