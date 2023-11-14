@@ -3,7 +3,7 @@ const prefix =
     ? `[Porsche Design System v${ROLLUP_REPLACE_VERSION}]` // this part isn't covered by unit tests
     : '[Porsche Design System]';
 
-export const consoleWarn = (...messages: string[]): void => {
+export const consoleWarn = (...messages: (string | object)[]): void => {
   console.warn(prefix, ...messages); // eslint-disable-line no-console
 };
 

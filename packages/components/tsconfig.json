@@ -10,6 +10,5 @@
     "jsxFactory": "h",
     "types": ["node", "jest"]
   },
-  "include": ["src"],
-  "exclude": ["**/*.spec.ts"]
+  "include": ["src"]
 }

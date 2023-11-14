@@ -8,7 +8,7 @@ import type { PlaywrightTestConfig } from 'playwright/types/test';
 export const thresholdConfig: PlaywrightTestConfig['expect']['toHaveScreenshot'] = {
   maxDiffPixelRatio: undefined,
   maxDiffPixels: undefined,
-  threshold: 0.15,
+  threshold: 0.2, // default Playwright threshold
 };
 
 // TODO: why are the following constants prefixed with base?
