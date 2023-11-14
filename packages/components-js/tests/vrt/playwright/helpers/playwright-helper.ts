@@ -1,5 +1,5 @@
 import { type Page } from '@playwright/test';
-import { getInitialStyles } from '@porsche-design-system/components-js/partials';
+import { getComponentChunkLinks, getInitialStyles, getIconLinks } from '@porsche-design-system/components-js/partials';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type Theme } from '@porsche-design-system/utilities-v2';
@@ -161,14 +161,6 @@ export const setupScenario = async (
     }, forceDirMode);
   }
 
-  if (scalePageFontSize) {
-    // resize before scaling helps load icons at least in select-wrapper
-    await page.setViewportSize({
-      width: viewportWidth,
-      height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
-    });
-  }
-
   if (emulateMediaPrint) {
     await page.emulateMedia({ media: 'print' });
   }
@@ -213,6 +205,8 @@ export const setContentWithDesignSystem = async (
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
     <link rel="stylesheet" href="assets/styles.css">
     ${getInitialStyles()}
+    ${getComponentChunkLinks()}
+    ${getIconLinks()}
     ${injectIntoHead}
   </head>
   <body>
