@@ -98,10 +98,15 @@ When used as a submit button, the `name` and `value` props are submitted as a pa
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
 import {getButtonCodeSamples} from "shared/src"; 
+import type { Theme } from '@/models';
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'inline' };
+
+  get theme(): Theme {
+    return this.$store.getters.playgroundTheme;
+  }
 
   formExample = getButtonCodeSamples();
   
