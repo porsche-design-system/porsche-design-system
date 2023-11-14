@@ -411,7 +411,10 @@ export class SelectWrapperDropdown {
 
   private detectNativePopoverCase = (): void => {
     if (getHasNativePopoverSupport()) {
-      this.parentTableElement = findClosestComponent(this.selectRef, 'pTable');
+      this.parentTableElement = findClosestComponent(
+        (this.host.getRootNode() as ShadowRoot).host as HTMLElement,
+        'pTable'
+      );
       if (!!this.parentTableElement) {
         this.isNativePopover = true;
       }
