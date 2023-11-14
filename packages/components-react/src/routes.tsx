@@ -77,6 +77,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.BannerExamplePage />,
   },
   {
+    name: 'Button Example Form',
+    path: '/button-example-form',
+    element: <fromExamples.ButtonExampleFormPage />,
+  },
+  {
     name: 'Carousel Example Dynamic Slides',
     path: '/carousel-example-dynamic-slides',
     element: <fromExamples.CarouselExampleDynamicSlidesPage />,

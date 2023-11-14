@@ -9,23 +9,6 @@ import { FONT_FACE_CDN_FILE_CN, FONT_FACE_CDN_FILE_COM } from '@porsche-design-s
 import { consoleWarn, throwException } from '../../log';
 import { getCDNBaseURL } from '../../getCDNBaseURL';
 
-declare global {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-  interface Document {
-    porscheDesignSystem: {
-      [key: `${number}.${number}.${number}`]: {
-        prefixes: string[];
-        isReady: () => Promise<void>;
-        readyResolve: () => void;
-      };
-      cdn: {
-        url: string;
-        prefixes: string[]; // to not break older versions
-      };
-    };
-  }
-}
-
 export const validatePartialUsage = (): void => {
   validateGetInitialStylesUsage();
   validateGetFontFaceStylesheetUsage();

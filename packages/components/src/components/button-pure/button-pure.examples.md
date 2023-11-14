@@ -7,6 +7,9 @@ without a label, it is mandatory for **accessibility** to provide a descriptive 
 Whenever you want to provide navigational elements, stick to the [Link](components/link) or
 [Link Pure](components/link-pure) component instead.
 
+Similarly to the `p-button`, the `p-button-pure` can be used as a submit button within a form for which a `name` and
+`value` prop can be passed. See the [Button Form Example](components/button/examples#form) for more information.
+
 <TableOfContents></TableOfContents>
 
 ## Basic example
