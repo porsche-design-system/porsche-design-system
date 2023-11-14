@@ -16,6 +16,9 @@ const HomePage: NextPage = (): JSX.Element => {
             <Link href={route.path}>{route.name}</Link>
           </li>
         ))}
+        <li key="1000">
+          <Link href="modal-route-change">Modal Route Change</Link>
+        </li>
       </ul>
     </>
   );

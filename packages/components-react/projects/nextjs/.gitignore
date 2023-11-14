@@ -24,6 +24,8 @@
 styles/getSharedStyles.tsx
 # sub directories only, because we have layout.tsx, page.tsx and providers.tsx in app folder
 app/*/
+!app/modal-route-change
+!app/modal-route-change/*
 
 # debug
 npm-debug.log*
