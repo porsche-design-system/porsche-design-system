@@ -28,6 +28,7 @@ export * from './scroller-popover-utils';
 export * from './scrolling';
 export * from './select';
 export * from './setScrollLock';
+export * from './supportsChromiumMediaQuery';
 export * from './supportsNativePopover';
 export * from './has-document';
 export * from './has-window';

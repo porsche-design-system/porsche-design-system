@@ -74,6 +74,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.BannerExampleComponent,
   },
   {
+    name: 'Button Example Form',
+    path: 'button-example-form',
+    component: fromExamples.ButtonExampleFormComponent,
+  },
+  {
     name: 'Carousel Example Dynamic Slides',
     path: 'carousel-example-dynamic-slides',
     component: fromExamples.CarouselExampleDynamicSlidesComponent,
