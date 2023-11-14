@@ -68,6 +68,17 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-button',
+      samples: [
+        [
+          componentsJsPath + '/button-example-form.html',
+          componentsAngularPath + '/button-example-form.component.ts',
+          componentsReactPath + '/ButtonExampleForm.tsx',
+          componentsVuePath + '/ButtonExampleForm.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-carousel',
       samples: [
         [
