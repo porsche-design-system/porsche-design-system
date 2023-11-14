@@ -81,7 +81,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceHoverState(page, '.hover input');
   await forceHoverState(page, '.hover select');
   await forceHoverState(page, '.hover textarea');
-  await forceHoverState(page, '.hover p-multi-select >>> .input-container');
+  await forceHoverState(page, '.hover p-multi-select >>> input');
   await forceHoverState(page, `.hover p-pin-code >>> #${valueOfForAttribute}`);
   await forceFocusState(page, '.focus input');
   await forceFocusState(page, '.focus select');
