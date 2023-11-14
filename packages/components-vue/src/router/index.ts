@@ -31,6 +31,11 @@ export const routes: RouteType[] = [
     component: fromExamples.AccordionExample,
   },
   {
+    path: '/button-example-form',
+    name: 'Button Example Form',
+    component: fromExamples.ButtonExampleForm,
+  },
+  {
     path: '/carousel-example-dynamic-slides',
     name: 'Carousel Example Dynamic Slides',
     component: fromExamples.CarouselExampleDynamicSlides,

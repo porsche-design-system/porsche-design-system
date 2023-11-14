@@ -11,6 +11,7 @@ export * from './throwIfParentIsNotOfKind';
 export * from './throwIfPropIsUndefined';
 export * from './throwIfRootNodeIsNotOneOfKind';
 export { AllowedTypes, validateProps } from './validateProps';
+export * from './validateVersions';
 export * from '../link-button/align-label';
 export * from '../link-button/button-type';
 export * from '../../components/heading/heading-tag';
