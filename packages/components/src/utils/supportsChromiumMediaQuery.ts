@@ -2,6 +2,7 @@ import type { JssStyle } from 'jss';
 
 /**
  * Applies a style only on Chromium based browsers by using a media query which is only supported there.
+ * https://www.browserstack.com/guide/create-browser-specific-css
  *
  * @param {JssStyle} style - The style to be applied when the Chromium media query is supported.
  * @returns {JssStyle} - The Chromium media query containing the style.
