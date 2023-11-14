@@ -242,11 +242,10 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
   return {
     '@global': {
       ul: {
-        [dropdownPositionVar]: 'absolute',
         display: 'flex',
         flexDirection: 'column',
         gap: spacingStaticSmall,
-        position: `var(${dropdownPositionVar})`, // for vrt tests
+        position: `var(${dropdownPositionVar}, absolute)`, // for vrt tests
         padding: '6px',
         margin: 0,
         background: backgroundColor,
@@ -357,18 +356,6 @@ export const getComponentCss = (
   filter: boolean,
   theme: Theme
 ): string => {
-  /* const { primaryColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    disabledColor: disabledColorDark,
-  } = getThemedColors('dark');
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
-    'dark',
-    state
-  );*/
-
   return getCss(
     // merge because of global styles
     mergeDeep(
@@ -377,20 +364,6 @@ export const getComponentCss = (
           ':host': {
             display: 'block',
             position: 'relative',
-            // color: disabled ? disabledColor : formStateColor || contrastMediumColor,
-            /* ...prefersColorSchemeDarkMediaQuery(theme, {
-              color: disabled ? disabledColorDark : formStateColorDark || contrastMediumColorDark,
-            }),
-            ...(!disabled &&
-              !isHighContrastMode &&
-              hoverMediaQuery({
-                '&(:hover)': {
-                  color: formStateHoverColor || primaryColor,
-                  ...prefersColorSchemeDarkMediaQuery(theme, {
-                    color: formStateHoverColorDark || primaryColorDark,
-                  }),
-                },
-              })),*/
           },
         },
         'sr-text': {
