@@ -88,8 +88,8 @@ When used as a submit button, the `name` and `value` props are submitted as a pa
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
   <form @submit.prevent="onSubmit">
-    <p-button name="option" value="A" type="submit" style="margin-right: 16px;">Button A</p-button>
-    <p-button name="option" value="B" type="submit">Button B</p-button>
+    <p-button name="option" value="A" type="submit" style="margin-right: 16px;" :theme="theme">Button A</p-button>
+    <p-button name="option" value="B" type="submit" :theme="theme">Button B</p-button>
   </form>
   <p-text :theme="theme">{{ selectedValuesForm }}</p-text>
 </Playground>
