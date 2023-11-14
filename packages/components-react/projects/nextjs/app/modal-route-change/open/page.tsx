@@ -2,7 +2,7 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
-import { PHeading, PModal, PText, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
+import { PModal, PText, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
 
 const ModalPage: NextPage = (): JSX.Element => {
   const router = useRouter();
