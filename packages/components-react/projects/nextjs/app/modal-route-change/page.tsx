@@ -14,7 +14,7 @@ const ModalRouteChangePage: NextPage = (): JSX.Element => {
       <div style={{ height: '1000px' }}></div>
 
       <PLink>
-        <Link href="/modal-route-change/open">Open Modal</Link>
+        <Link scroll={false} href="/modal-route-change/open">Open Modal</Link>
       </PLink>
     </>
   );

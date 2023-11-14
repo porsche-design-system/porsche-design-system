@@ -13,10 +13,6 @@ export default function OverviewModal(): JSX.Element {
   return (
     <PModal heading="Some Heading" open={isModalOpen} onDismiss={onDismiss}>
       <PText>Some Content</PText>
-      <div style={{ height: '40vh' }} />
-      <PText>More Content</PText>
-      <div style={{ height: '40vh' }} />
-      <PText>Even More Content</PText>
       <PButtonGroup className="footer">
         <PButton>Save</PButton>
         <PButton type="button" variant="secondary" icon="close" onClick={onDismiss}>
