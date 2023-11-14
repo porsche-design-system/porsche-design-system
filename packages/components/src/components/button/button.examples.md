@@ -82,13 +82,33 @@ By setting the `tabindex` attribute to `-1` you can remove the **Button** from t
 
 <Playground :markup="taborder" :config="config"></Playground>
 
+## Form
+
+When used as a submit button, the `name` and `value` props are submitted as a pair as part of the form data.
+
+<Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
+  <form @submit.prevent="onSubmit">
+    <p-button name="option" value="A" type="submit" style="margin-right: 16px;" :theme="theme">Button A</p-button>
+    <p-button name="option" value="B" type="submit" :theme="theme">Button B</p-button>
+  </form>
+  <p-text :theme="theme">{{ selectedValuesForm }}</p-text>
+</Playground>
+
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import Component from 'vue-class-component'; 
+import {getButtonCodeSamples} from "@porsche-design-system/shared"; 
+import type { Theme } from '@/models';
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'inline' };
+
+  get theme(): Theme {
+    return this.$store.getters.playgroundTheme;
+  }
+
+  formExample = getButtonCodeSamples();
   
   primary = 
 `<p-button>Some label</p-button>
@@ -141,5 +161,11 @@ export default class Code extends Vue {
 `<p-button>Some label</p-button>
 <p-button tabindex="-1" hide-label="true" icon="arrow-right">Some label</p-button>
 <p-button>Some label</p-button>`;
+
+  selectedValuesForm = 'Last submitted data: none';
+  onSubmit(e) {
+    const formData = Array.from(new FormData(e.target, e.submitter).entries())[0];
+    this.selectedValuesForm = `Last submitted data: ${formData.join('=') || 'none'}`;
+  }
 }
 </script>
