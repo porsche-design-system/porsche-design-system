@@ -131,7 +131,7 @@ export const getCheckboxRadioJssStyle = (
                 }),
               },
               '.text:hover ~ &(input)': supportsChromiumMediaQuery({
-                transition: 'unset', // Fixes chrome bug where border-color is stuck on hover color
+                transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
               }),
             })),
           ...(!isDisabled && {
