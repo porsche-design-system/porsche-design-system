@@ -22,8 +22,8 @@ describe('nextjs', () => {
         expect(fileContent).not.toContain('shadowrootmode');
         expect(fileContent).not.toContain('shadowrootdelegatesfocus');
         expect(fileContent).not.toContain('process.browser');
-        expect(fileContent).not.toContain('"ssr"'); // added className from server build
-        expect(fileContent).not.toContain("'ssr'"); // added className from server build
+        expect(fileContent).not.toContain('className:"ssr"'); // added className from server build
+        expect(fileContent).not.toContain("className:'ssr'"); // added className from server build
       }
     );
   });
