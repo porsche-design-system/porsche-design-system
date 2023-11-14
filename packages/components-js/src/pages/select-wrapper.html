@@ -1,27 +1,35 @@
 <div
   class="playground light"
-  title="should render in focus state and be open"
+  title="should render inside PTable in focus state, be open and overflow PTable component"
   style="padding-bottom: calc(1rem + 422px)"
 >
-  <p-select-wrapper label="Some label">
-    <select>
-      <option value="a">
-        Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-        displaying correctly. Also, the selected icon checkmark should show up on the right of the text, aligned to the
-        top.
-      </option>
-      <option value="b">Option B</option>
-      <option value="c">Option C</option>
-      <option value="d">Option D</option>
-      <option value="e">Option E</option>
-      <option value="f">Option F</option>
-      <option value="g">Option G</option>
-      <option value="h">Option H</option>
-      <option value="i">Option I</option>
-      <option value="j">Option J</option>
-      <option value="k">Option K</option>
-    </select>
-  </p-select-wrapper>
+  <p-table style="background: deeppink">
+    <p-table-head>
+      <p-table-head-row>
+        <p-table-head-cell>
+          <p-select-wrapper label="Some label">
+            <select>
+              <option value="a">
+                Multiline options could be quite long, especially on smaller screens. Let's check if the height of the
+                option is displaying correctly. Also, the selected icon checkmark should show up on the right of the
+                text, aligned to the top.
+              </option>
+              <option value="b">Option B</option>
+              <option value="c">Option C</option>
+              <option value="d">Option D</option>
+              <option value="e">Option E</option>
+              <option value="f">Option F</option>
+              <option value="g">Option G</option>
+              <option value="h">Option H</option>
+              <option value="i">Option I</option>
+              <option value="j">Option J</option>
+              <option value="k">Option K</option>
+            </select>
+          </p-select-wrapper>
+        </p-table-head-cell>
+      </p-table-head-row>
+    </p-table-head>
+  </p-table>
 </div>
 
 <div class="playground light" title="should render native dropdown with label">
