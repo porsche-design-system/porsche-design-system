@@ -1,4 +1,4 @@
-import { JssStyle } from 'jss';
+import type { JssStyle } from 'jss';
 
 /**
  * Applies a style only on Chromium based browsers by using a media query which is only supported there.
