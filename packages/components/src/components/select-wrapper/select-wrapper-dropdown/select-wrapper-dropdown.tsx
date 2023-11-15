@@ -112,8 +112,8 @@ export class SelectWrapperDropdown {
         );
         addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement);
       }
-    } else {
-      this.popoverElement?.hidePopover();
+    } else if (this.isNativePopover) {
+      this.popoverElement.hidePopover();
     }
   }
 
