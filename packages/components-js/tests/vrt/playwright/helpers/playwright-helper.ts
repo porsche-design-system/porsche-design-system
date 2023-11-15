@@ -160,22 +160,22 @@ export const setupScenario = async (
   }
 
   await page.setViewportSize({ width: viewportWidth, height: 600 });
+
+  const searchParams = new URLSearchParams();
+  if (forceComponentTheme) {
+    searchParams.append('theme', forceComponentTheme);
+  }
+  if (forceDirMode) {
+    searchParams.append('dir', forceDirMode);
+  }
+  const finalUrl = `${url}?${searchParams.toString()}`;
+
+  await page.goto(finalUrl);
   await page.evaluate(({ chunksLink, iconsLink }) => (document.head.innerHTML += `${chunksLink}${iconsLink}`), {
     chunksLink,
     iconsLink,
   });
-  await page.goto(url);
   await waitForComponentsReady(page);
-
-  if (forceComponentTheme) {
-    await waitForForcedComponentTheme(page, forceComponentTheme);
-  }
-
-  if (forceDirMode) {
-    await page.evaluate((forceDirMode) => {
-      document.querySelector('html').setAttribute('dir', forceDirMode);
-    }, forceDirMode);
-  }
 
   if (emulateMediaPrint) {
     await page.emulateMedia({ media: 'print' });
