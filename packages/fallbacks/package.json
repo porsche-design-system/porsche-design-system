@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@types/html-minifier": "^4.0.3",
+    "@types/html-minifier": "^4.0.5",
     "change-case": "^4.1.2",
     "html-minifier": "^4.0.0",
     "http-server": "^14.1.0",
