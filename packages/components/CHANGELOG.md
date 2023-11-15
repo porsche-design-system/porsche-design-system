@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- Validation for usage of different PDS versions
+  ([#2867](https://github.com/porsche-design-system/porsche-design-system/pull/2867))
+
 #### Changed
 
 - `Text Field Wrapper`, `Textarea Wrapper`, `Select Wrapper`, `Multi Select`, `Pin Code`, `Checkbox Wrapper` and
@@ -28,6 +33,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Select Wrapper` keyboard and scroll behavior
+  ([#2864](https://github.com/porsche-design-system/porsche-design-system/pull/2864))
 - Safari 15 default margin of button elements in several components
   ([#2858](https://github.com/porsche-design-system/porsche-design-system/pull/2858))
 - `Checkbox Wrapper` and `Radio Button Wrapper` border-color/background-color does not reset on hover

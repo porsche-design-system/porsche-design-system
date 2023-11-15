@@ -1,6 +1,6 @@
 import { type Theme } from '../types';
 import { type Styles } from 'jss';
-import { isDisabledOrLoading, isHighContrastMode } from '../utils';
+import { isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../utils';
 import {
   getHighContrastColors,
   getInsetJssStyle,
@@ -94,15 +94,13 @@ export const getSlottedCheckboxRadioButtonStyles = (
       ...(!disabledOrLoading &&
         !isHighContrastMode &&
         hoverMediaQuery({
-          '&(input:hover),.label:hover~* &(input)': {
-            transition: 'unset', // Fixes chrome bug where border-color is stuck on hover color
+          '&(input:hover),label:hover~* &(input)': {
             borderColor: uncheckedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               borderColor: uncheckedHoverColorDark,
             }),
           },
-          '&(input:checked:hover),.label:hover~* &(input:checked)': {
-            transition: 'unset', // Fixes chrome bug where border-color is stuck on hover color
+          '&(input:checked:hover),label:hover~* &(input:checked)': {
             borderColor: checkedHoverColor,
             backgroundColor: checkedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -110,6 +108,9 @@ export const getSlottedCheckboxRadioButtonStyles = (
               backgroundColor: checkedHoverColorDark,
             }),
           },
+          'label:hover~* &(input)': supportsChromiumMediaQuery({
+            transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
+          }),
         })),
       ...(!isDisabled && {
         // TODO: can be done with getFocusStyle() in the meantime

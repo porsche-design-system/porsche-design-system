@@ -351,9 +351,11 @@ export class SelectWrapperDropdown {
   };
 
   private cycleDropdown(direction: DropdownDirectionInternal): void {
+    if (this.isOpen) {
+      const newIndex = getNewOptionMapIndex(this.optionMaps, direction);
+      this.optionMaps = setHighlightedOptionMaps(this.optionMaps, newIndex);
+    }
     this.setDropdownVisibility('show');
-    const newIndex = getNewOptionMapIndex(this.optionMaps, direction);
-    this.optionMaps = setHighlightedOptionMaps(this.optionMaps, newIndex);
   }
 
   private resetFilter = (): void => {

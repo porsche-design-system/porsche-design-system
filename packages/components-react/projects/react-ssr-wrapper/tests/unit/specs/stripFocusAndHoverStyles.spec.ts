@@ -81,6 +81,80 @@ it.each<{ input: string; result: string }>([
   cursor: not-allowed !important;
 }`,
   },
+  {
+    input: `
+label {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
+}
+@media(hover:hover) {
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    border-color: #010205 !important;
+  }
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    border-color: #535457 !important;
+    background-color: #535457 !important;
+  }
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  ::slotted(input:checked:hover), .text:hover ~ ::slotted(input:checked) {
+    transition: unset !important;
+  }
+  ::slotted(input:hover), .text:hover ~ ::slotted(input) {
+    transition: unset !important;
+  }
+}
+
+}
+
+.text {
+  grid-area: 1 / 2;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
+}
+`,
+    result: `
+label {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
+}
+
+.text {
+  grid-area: 1 / 2;
+  cursor: pointer;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #010205;
+  transition: color var(--p-transition-duration, .24s) ease;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: 2px;
+  padding-inline-start: 8px;
+}
+`,
+  },
 ])('should correctly remove :hover and :focus styles: %j', ({ input, result }) => {
   expect(stripFocusAndHoverStyles(input)).toEqual(result);
 });
