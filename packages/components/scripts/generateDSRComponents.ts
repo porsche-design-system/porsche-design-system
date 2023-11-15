@@ -191,13 +191,36 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/FunctionalComponent/, 'FC')
           .replace(/: FormState/g, ': any')
           .replace(/: Theme/g, ': any')
-          // .replace(/(=.*?{.*?)(?:, )?host(.*?})/g, '$1$2') // remove unused destructured host
           .replace(/(<\/?)Fragment(>)/g, '$1$2') // replace <Fragment> with <> or </Fragment> with </>
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
+
+        if (newFileContent.includes('export const Label:')) {
+          newFileContent = newFileContent
+            .replace(/(hasLabel)\(.*\)/, '$1') // replace function call with boolean const
+            .replace(/(hasDescription)\(.*\)/, '$1') // replace function call with boolean const
+            .replace(/(type LabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
+            .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, '); // destructure newly introduced hasLabel and hasDescription
+        }
+
+        if (newFileContent.includes('export const StateMessage:')) {
+          newFileContent = newFileContent
+            .replace(/(hasMessage)\(.*\)/, '$1') // replace function call with boolean const
+            .replace(/(type StateMessageProps = {)/, '$1 hasMessage: boolean; ') // add types for StateMessageProps
+            .replace(/(StateMessage: FC<StateMessageProps> = \({)/, '$1 hasMessage, ') // destructure newly introduced hasMessage
+            .replace(/(=.*?{.*?)(?:, )?host(.*?})/g, '$1$2'); // remove unused destructured host
+        }
       }
 
       // fix various issues
       newFileContent = newFileContent
+        .replace(
+          /(<Label(?!Props))([\s\S]*?\/>)/,
+          "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
+        )
+        .replace(
+          /(<StateMessage(?!Props))([\s\S]*?\/>)/,
+          "$1 hasMessage={(this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(this.props.state)}$2"
+        )
         .replace(/(this\.props)\.host/g, '$1') // general
         .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)/, '$1(100') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
