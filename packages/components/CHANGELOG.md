@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - Validation for usage of different PDS versions
-  ([2867](https://github.com/porsche-design-system/porsche-design-system/pull/2867))
+  ([#2867](https://github.com/porsche-design-system/porsche-design-system/pull/2867))
 
 #### Changed
 
