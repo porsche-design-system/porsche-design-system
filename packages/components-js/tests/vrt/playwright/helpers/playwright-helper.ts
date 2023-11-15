@@ -148,7 +148,9 @@ export const setupScenario = async (
   }
 
   await page.setViewportSize({ width: viewportWidth, height: 600 });
-  await page.goto(url);
+  await page.goto(url, {
+    waitUntil: 'networkidle',
+  });
   await waitForComponentsReady(page);
 
   if (forceComponentTheme) {
