@@ -210,8 +210,6 @@ exports[`getTransition() should for : 'box-shadow var(--p-transition-duration, 0
 
 exports[`getTransition() should for : 'box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)' return: box-shadow: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s) 1`] = `"box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)"`;
 
-exports[`getTransition() should for : 'box-shadow var(--p-transition-duration, 0.25s)' return: box-shadow: box-shadow var(--p-transition-duration, 0.25s) 1`] = `"box-shadow var(--p-transition-duration, 0.25s)"`;
-
 exports[`getTransition() should for : 'color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)' return: color: color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s) 1`] = `"color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)"`;
 
 exports[`getTransition() should for : 'color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)' return: color: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) 1`] = `"color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)"`;

@@ -169,7 +169,7 @@ export const getComponentCss = (
       width: 0, // actual width and transform is set via inline css
       bottom: isHighContrastMode ? '0' : '-2px',
       visibility: 'visible',
-      transition: `${getTransition('transform', 'moderate', 'none')}, ${getTransition('width', 'moderate', 'none')}`,
+      transition: `${getTransition('transform', 'moderate')}, ${getTransition('width', 'moderate')}`,
       animation: `$hide 0s var(${cssVariableAnimationDuration},0.5s) forwards`, // auto hide bar after transition, needs to be a little longer in Safari
     },
     '@keyframes hide': {

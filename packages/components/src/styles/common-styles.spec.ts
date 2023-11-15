@@ -20,7 +20,7 @@ describe('getTransition()', () => {
       ReturnType<typeof getTransition>,
       keyof PropertiesHyphen,
       MotionDurationKey,
-      keyof typeof motionEasingMap | 'none',
+      keyof typeof motionEasingMap,
       MotionDurationKey
     ]
   >([
@@ -59,7 +59,6 @@ describe('getTransition()', () => {
       'linear',
       'veryLong',
     ],
-    ['box-shadow var(--p-transition-duration, 0.25s)', 'box-shadow', undefined, 'none', undefined],
   ])('should for : %o return: %s', (result, ...args) => {
     expect(getTransition(...args)).toMatchSnapshot(result);
   });
