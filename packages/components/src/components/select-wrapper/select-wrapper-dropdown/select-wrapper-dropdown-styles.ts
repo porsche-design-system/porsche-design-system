@@ -333,9 +333,13 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
       },
     },
     optgroup: {
+      color: contrastMediumColor,
       display: 'block',
       padding: '3px 14px',
       fontWeight: fontWeightSemiBold,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastMediumColorDark,
+      }),
       '&:not(:first-child)': {
         marginTop: spacingStaticSmall,
       },

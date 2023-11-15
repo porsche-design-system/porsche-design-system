@@ -719,6 +719,7 @@ ul {
   display: none;
 }
 .optgroup {
+  color: #6B6D70;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -886,6 +887,7 @@ ul {
   display: none;
 }
 .optgroup {
+  color: #6B6D70;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -1018,6 +1020,7 @@ ul {
   display: none;
 }
 .optgroup {
+  color: #6B6D70;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -1185,6 +1188,7 @@ ul {
   display: none;
 }
 .optgroup {
+  color: #6B6D70;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -1539,6 +1543,7 @@ ul {
   display: none;
 }
 .optgroup {
+  color: #6B6D70;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -1706,6 +1711,7 @@ ul {
   display: none;
 }
 .optgroup {
+  color: #6B6D70;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -1838,6 +1844,7 @@ ul {
   display: none;
 }
 .optgroup {
+  color: #6B6D70;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -2005,6 +2012,7 @@ ul {
   display: none;
 }
 .optgroup {
+  color: #6B6D70;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -3708,6 +3716,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   display: none;
 }
 .optgroup {
+  color: #88898C;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -3803,6 +3812,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   display: none;
 }
 .optgroup {
+  color: #88898C;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -3898,6 +3908,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   display: none;
 }
 .optgroup {
+  color: #6B6D70;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -3993,6 +4004,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   display: none;
 }
 .optgroup {
+  color: #6B6D70;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -4088,6 +4100,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   display: none;
 }
 .optgroup {
+  color: #88898C;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -4183,6 +4196,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   display: none;
 }
 .optgroup {
+  color: #88898C;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -4278,6 +4292,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   display: none;
 }
 .optgroup {
+  color: #6B6D70;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
@@ -4373,6 +4388,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   display: none;
 }
 .optgroup {
+  color: #6B6D70;
   display: block;
   padding: 3px 14px;
   font-weight: 600;
