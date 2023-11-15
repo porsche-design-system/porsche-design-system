@@ -76,9 +76,9 @@ const generateDSRComponents = (): void => {
         .replace(/import[\s\S]*?from '(.*)';\n/g, (m, group) =>
           group.endsWith('utils')
             ? m.replace(group, utilsBundleImportPath)
-            : group.endsWith('state-message') || group.endsWith('required')
-            ? m.replace(group, './' + group.split('/').pop())
-            : ''
+            : group.endsWith('state-message') || group.endsWith('required') || group.endsWith('label')
+              ? m.replace(group, './' + group.split('/').pop())
+              : ''
         )
         .replace(/.*= getPrefixedTagNames\((?:this\.)?host.*\n/g, '') // remove getPrefixedTagNames call
         // add new imports
@@ -191,7 +191,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/FunctionalComponent/, 'FC')
           .replace(/: FormState/g, ': any')
           .replace(/: Theme/g, ': any')
-          .replace(/(=.*?{.*?)(?:, )?host(.*?})/g, '$1$2') // remove unused destructured host
+          // .replace(/(=.*?{.*?)(?:, )?host(.*?})/g, '$1$2') // remove unused destructured host
+          .replace(/(<\/?)Fragment(>)/g, '$1$2') // replace <Fragment> with <> or </Fragment> with </>
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
       }
 
@@ -396,6 +397,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-select-wrapper-dropdown') {
         newFileContent = newFileContent
+          // part prop is not typed in JSX, although it's valid HTML attribute
+          .replace(/( +)part=/g, '$1/* @ts-ignore */\n$&')
           // Remove markup after button
           .replace(/\{\[\n\s*<div\s+className="sr-text"\s+id=\{labelId}>[\s\S]+?]}/, '')
           // Change isOpen, optionMaps, searchString to not be a prop
@@ -406,6 +409,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes\([^}]*\}\s*/, '');
       } else if (tagName === 'p-select-wrapper') {
         newFileContent = newFileContent
+          .replace(/(required={).*(})/, '$1false$2')
           // Add PSelectWrapperDropdown component import
           .replace(
             /(import\s*{\s*PIcon\s*}\s*from\s*'\.\.\/components';\s*)/,
@@ -425,17 +429,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // remove aria functions
           .replace(/\{\.\.\.getFilterInputAriaAttributes\([\s\S]+?\)}\s*/, '')
           .replace(/\{\.\.\.getListAriaAttributes\([\s\S]+?\)}\s*/, '')
-          // replace input-container className
-          .replace(/\{\{ 'input-container': true, disabled: this\.props\.disabled }}/, '"input-container"')
+          // replace wrapper className
+          .replace(/\{\{ wrapper: true, disabled: (this\.props\.disabled) }}/, `{\`wrapper\${$1 ? ' disabled' : ''}\`}`)
           // remove color prop
           .replace(/\s*color=\{this\.props\.disabled \? 'state-disabled' : 'primary'}\s*/, '')
           // remove placeholder
           .replace(/\s*placeholder=\{.+/, '')
           // replace toggle icon className
-          .replace(
-            /className=\{\{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this\.props\.isOpen }}/,
-            'className="icon toggle-icon"'
-          )
+          .replace(/className=\{\{ icon: true, 'icon--rotate': this\.props\.isOpen }}/, 'className="icon"')
           .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
           .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false');
       } else if (tagName === 'p-multi-select-option') {
@@ -526,7 +527,7 @@ $&`
   fs.mkdirSync(destinationDirectory, { recursive: true });
 
   componentFileContents.forEach((fileContent) => {
-    const name = /export (?:class|const) ([A-Za-z]+)/.exec(fileContent)![1];
+    const name = /export (?:class|const) ([A-Z][A-Za-z]+)/.exec(fileContent)![1];
 
     const fileName = `${paramCase(name.replace('DSR', ''))}.tsx`;
     const filePath = path.resolve(destinationDirectory, fileName);

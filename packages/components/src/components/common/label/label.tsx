@@ -37,10 +37,12 @@ export const Label: FunctionalComponent<LabelProps> = ({
         class="label"
         id={htmlLabelId}
         aria-disabled={isLoading ? 'true' : null}
-        htmlFor={htmlFor}
-        {...(!htmlFor && {
-          onClick: (event: MouseEvent) => onLabelClick(event, formElement, isLoading, host),
-        })}
+        {...(htmlFor
+          ? { htmlFor }
+          : {
+              onClick: (event: MouseEvent & { target: HTMLElement }) =>
+                onLabelClick(event, formElement, isLoading, host),
+            })}
       >
         {/* TODO: we could try to use css :empty selector instead of DOM query checks, which might make things easier in SSR context? */}
         {hasLabel(host, label) && (
@@ -61,25 +63,30 @@ export const Label: FunctionalComponent<LabelProps> = ({
   );
 };
 
-const onLabelClick = (event: MouseEvent, formElement: FormElement, isLoading: boolean, host?: HTMLElement): void => {
+const onLabelClick = (
+  event: MouseEvent & { target: HTMLElement },
+  formElement: FormElement,
+  isLoading: boolean,
+  host?: HTMLElement
+): void => {
   // we don't want to click/focus the form element, if a link is clicked or when host is in loading state
-  if (isLoading || getClosestHTMLElement(event.target as HTMLElement, 'a') !== null) {
+  if (isLoading || getClosestHTMLElement(event.target, 'a') !== null) {
     return;
   }
 
-  if (formElement?.type === 'checkbox' || formElement?.type === 'radio') {
+  if (formElement.type === 'checkbox' || formElement.type === 'radio') {
     // checkbox-wrapper, radio-button-wrapper
     formElement.click();
-  } else if (formElement?.type === 'select-one') {
+  } else if (formElement.tagName === 'SELECT') {
     // select-wrapper
     // TODO: should be refactored in select-wrapper, so that "for" attribute becomes possible to use
-    const el = host.shadowRoot.children[0].querySelector('.dropdown')?.shadowRoot.children[0] as HTMLElement; // input or button of p-select-wrapper-dropdown
+    const el: HTMLElement = host.shadowRoot.children[0].querySelector('.dropdown')?.shadowRoot.children[0] as any; // input or button of p-select-wrapper-dropdown
     if (el) {
       el.click();
     } else {
       formElement.focus(); // it's not possible to open the native option list of a select by JS
     }
-  } else {
+  } else if (formElement.tagName === 'INPUT' || formElement.tagName === 'TEXTAREA') {
     // text-field-wrapper, textarea-wrapper
     formElement.focus();
   }

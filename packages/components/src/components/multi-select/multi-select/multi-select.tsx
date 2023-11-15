@@ -260,7 +260,6 @@ export class MultiSelect {
               icon="close"
               hideLabel="true"
               theme={this.theme}
-              color={this.disabled ? 'state-disabled' : 'primary'}
               onClick={this.onResetClick}
               onKeyDown={(e) => e.key === 'Tab' && (this.isOpen = false)}
               disabled={this.disabled}
