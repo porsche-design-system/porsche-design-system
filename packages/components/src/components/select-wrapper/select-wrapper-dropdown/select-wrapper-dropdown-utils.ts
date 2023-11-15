@@ -1,6 +1,5 @@
-import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
+import type { DropdownDirectionInternal, SelectWrapperDropdownDirection } from '../select-wrapper/select-wrapper-utils';
 import { determineDropdownDirection, getHTMLElements, getTagName, hasAttribute } from '../../../utils';
-import { SelectWrapperDropdownDirection } from '../select-wrapper/select-wrapper-utils';
 
 /**
  * Handles scrolling within the list to ensure that the highlighted item is always visible.

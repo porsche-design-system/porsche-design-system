@@ -59,39 +59,46 @@ describe('getFilterStyles()', () => {
 
 describe('getListStyles()', () => {
   it.each<Parameters<typeof getListStyles>>([
-    ['down', 'light'],
-    ['down', 'light'],
-    ['down', 'dark'],
-    ['down', 'dark'],
-    ['up', 'light'],
-    ['up', 'light'],
-    ['up', 'dark'],
-    ['up', 'dark'],
-  ])('should return correct css for direction: %s, isOpen: %s and theme: %s', (direction, theme) => {
-    expect(getCss(getListStyles(direction, theme))).toMatchSnapshot();
-  });
+    ['down', 'light', false],
+    ['down', 'light', false],
+    ['down', 'light', true],
+    ['down', 'dark', false],
+    ['down', 'dark', false],
+    ['up', 'light', false],
+    ['up', 'light', true],
+    ['up', 'light', false],
+    ['up', 'dark', false],
+    ['up', 'dark', false],
+  ])(
+    'should return correct css for direction: %s, isOpen: %s and theme: %s, isNativePopover: %s',
+    (direction, theme, isNativePopover) => {
+      expect(getCss(getListStyles(direction, theme, isNativePopover))).toMatchSnapshot();
+    }
+  );
 });
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['down', true, 'none', false, false, 'light'],
-    ['down', false, 'none', false, false, 'light'],
-    ['down', true, 'none', false, true, 'light'],
-    ['down', false, 'none', false, true, 'light'],
-    ['up', true, 'none', false, false, 'light'],
-    ['up', false, 'none', false, false, 'light'],
-    ['up', true, 'none', false, true, 'light'],
-    ['up', false, 'none', false, true, 'light'],
-    ['down', true, 'none', true, false, 'light'],
-    ['down', false, 'none', true, false, 'light'],
-    ['down', true, 'none', true, true, 'light'],
-    ['down', false, 'none', true, true, 'light'],
-    ['up', true, 'none', true, false, 'light'],
-    ['up', false, 'none', true, false, 'light'],
-    ['up', true, 'none', true, true, 'light'],
-    ['up', false, 'none', true, true, 'light'],
+    ['down', true, 'none', false, false, 'light', false],
+    ['down', true, 'none', false, false, 'light', true],
+    ['down', false, 'none', false, false, 'light', false],
+    ['down', true, 'none', false, true, 'light', false],
+    ['down', false, 'none', false, true, 'light', false],
+    ['up', true, 'none', false, false, 'light', false],
+    ['up', true, 'none', false, false, 'light', true],
+    ['up', false, 'none', false, false, 'light', false],
+    ['up', true, 'none', false, true, 'light', false],
+    ['up', false, 'none', false, true, 'light', false],
+    ['down', true, 'none', true, false, 'light', false],
+    ['down', false, 'none', true, false, 'light', false],
+    ['down', true, 'none', true, true, 'light', false],
+    ['down', false, 'none', true, true, 'light', false],
+    ['up', true, 'none', true, false, 'light', false],
+    ['up', false, 'none', true, false, 'light', false],
+    ['up', true, 'none', true, true, 'light', false],
+    ['up', false, 'none', true, true, 'light', false],
   ])(
-    'should return correct css for direction: %s, isOpen: %s, state: %s, disabled: %s, filter: %s and theme: %s',
+    'should return correct css for direction: %s, isOpen: %s, state: %s, disabled: %s, filter: %s, theme: %s and isNativePopover: %s',
     (...args) => {
       expect(getComponentCss(...args)).toMatchSnapshot();
     }

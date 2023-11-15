@@ -381,10 +381,6 @@ describe('updateNativePopoverSelectStyles()', () => {
     );
   });
 
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
   it('should call getBoundingClientRect() on button', () => {
     const spy = jest.spyOn(nativeButton, 'getBoundingClientRect');
     updateNativePopoverSelectStyles(host, optionMaps, nativePopover, nativeButton, 'up');

@@ -112,8 +112,8 @@ export class SelectWrapperDropdown {
         );
         addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement);
       }
-    } else if (this.isNativePopover) {
-      this.popoverElement.hidePopover();
+    } else {
+      this.popoverElement?.hidePopover();
     }
   }
 
@@ -142,7 +142,8 @@ export class SelectWrapperDropdown {
       this.state,
       this.disabled,
       this.filter,
-      this.theme
+      this.theme,
+      this.isNativePopover
     );
 
     const dropdownId = 'list';
@@ -182,7 +183,6 @@ export class SelectWrapperDropdown {
           <button
             type="button"
             role="combobox"
-            {...(this.isNativePopover && { popoverTarget: 'popover' })}
             id={buttonId}
             disabled={this.disabled}
             {...getSelectDropdownButtonAriaAttributes(
@@ -210,7 +210,6 @@ export class SelectWrapperDropdown {
           <div
             {...(this.isNativePopover && {
               popover: 'auto',
-              id: 'popover',
               class: 'popover',
               ...(this.popoverElement?.matches(':popover-open') && {
                 'popover-open': true,
