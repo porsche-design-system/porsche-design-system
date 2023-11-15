@@ -10,15 +10,27 @@ export default function OverviewModal(): JSX.Element {
     navigate(-1);
   }, []);
 
+  const style = `
+    #app {
+      transform: none;
+    }
+    body {
+      position: fixed !important;
+    }
+  `;
+
   return (
-    <PModal heading="Some Heading" open={isModalOpen} onDismiss={onDismiss}>
-      <PText>Some Content</PText>
-      <PButtonGroup className="footer">
-        <PButton>Save</PButton>
-        <PButton type="button" variant="secondary" icon="close" onClick={onDismiss}>
-          Close
-        </PButton>
-      </PButtonGroup>
-    </PModal>
+    <>
+      <style dangerouslySetInnerHTML={{ __html: style }} />
+      <PModal heading="Some Heading" open={isModalOpen} onDismiss={onDismiss}>
+        <PText>Some Content</PText>
+        <PButtonGroup className="footer">
+          <PButton>Save</PButton>
+          <PButton type="button" variant="secondary" icon="close" onClick={onDismiss}>
+            Close
+          </PButton>
+        </PButtonGroup>
+      </PModal>
+    </>
   );
 }
