@@ -11,8 +11,8 @@ const component = 'select-wrapper';
 const viewportWidth = 1760;
 
 const scenario = async (page: Page, theme: Theme, withinTable: boolean = false): Promise<void> => {
-  const getSelectWrapper = (direction: string): string => {
-    return `<p-select-wrapper direction=${direction}>
+  const getSelectWrapper = (direction: string, filter: string): string => {
+    return `<p-select-wrapper direction=${direction} filter=${filter}>
       <select label="Direction ${direction}">
         <option value="a">Option A</option>
         <option value="b">Option B</option>
@@ -30,35 +30,46 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
   };
 
   const markup = () =>
-    `<p-table caption="select wrapper" style="margin-top: 50vh">
+    `<p-table caption="select wrapper" style="padding-bottom: 500px;">
       <p-table-head>
         <p-table-head-row>
           <p-table-head-cell
             style="position: relative; height: 800px; outline: 1rem solid rgba(0, 0, 255, 0.1); outline-offset: -1rem"
             class="playground"
-          >${getSelectWrapper('down')}
+          >${getSelectWrapper('down', 'false')}
           </p-table-head-cell>
         </p-table-head-row>
       </p-table-head>
     </p-table>
-    <p-table caption="select wrapper" style="margin-top: 50vh">
+    <p-table caption="select wrapper" style="padding-top: 500px">
       <p-table-head>
         <p-table-head-row>
           <p-table-head-cell
             style="position: relative; height: 800px; outline: 1rem solid rgba(0, 0, 255, 0.1); outline-offset: -1rem"
             class="playground"
-          >${getSelectWrapper('up')}
+          >${getSelectWrapper('up', 'false')}
           </p-table-head-cell>
         </p-table-head-row>
       </p-table-head>
     </p-table>
-    <p-table caption="select wrapper" style="margin-top: 80vh">
+    <p-table caption="select wrapper" style="padding-bottom: 500px">
       <p-table-head>
         <p-table-head-row>
           <p-table-head-cell
             style="position: relative; height: 800px; outline: 1rem solid rgba(0, 0, 255, 0.1); outline-offset: -1rem"
             class="playground"
-          >${getSelectWrapper('auto')}
+          >${getSelectWrapper('down', 'true')}
+          </p-table-head-cell>
+        </p-table-head-row>
+      </p-table-head>
+    </p-table>
+    <p-table caption="select wrapper" style="padding-top: 500px">
+      <p-table-head>
+        <p-table-head-row>
+          <p-table-head-cell
+            style="position: relative; height: 800px; outline: 1rem solid rgba(0, 0, 255, 0.1); outline-offset: -1rem"
+            class="playground"
+          >${getSelectWrapper('up', 'true')}
           </p-table-head-cell>
         </p-table-head-row>
       </p-table-head>
