@@ -250,6 +250,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
         margin: 0,
         background: backgroundColor,
         ...textSmallStyle,
+        color: contrastHighColor,
         zIndex: 10,
         left: 0,
         right: 0,
@@ -270,6 +271,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
         transition: getTransition('border-color'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
         ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: contrastHighColorDark,
           background: backgroundColorDark,
           borderColor: primaryColorDark,
           [isDirectionDown ? 'borderTopColor' : 'borderBottomColor']: addImportantToRule(contrastMediumColorDark),
@@ -282,10 +284,6 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
       flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
-      color: contrastHighColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastHighColorDark,
-      }),
       cursor: 'pointer',
       textAlign: 'start',
       wordBreak: 'break-word',
@@ -338,10 +336,6 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
       display: 'block',
       padding: '3px 14px',
       fontWeight: fontWeightSemiBold,
-      color: primaryColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: primaryColorDark,
-      }),
       '&:not(:first-child)': {
         marginTop: spacingStaticSmall,
       },
