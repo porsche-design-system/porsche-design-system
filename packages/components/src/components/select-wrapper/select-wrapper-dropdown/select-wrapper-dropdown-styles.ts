@@ -338,6 +338,10 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
       display: 'block',
       padding: '3px 14px',
       fontWeight: fontWeightSemiBold,
+      color: primaryColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: primaryColorDark,
+      }),
       '&:not(:first-child)': {
         marginTop: spacingStaticSmall,
       },

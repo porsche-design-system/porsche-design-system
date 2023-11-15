@@ -636,11 +636,10 @@ button:disabled {
   border-color: #949598;
 }
 ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #FFF;
@@ -723,6 +722,7 @@ ul {
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #010205;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -801,11 +801,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
 ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #FFF;
@@ -891,6 +890,7 @@ ul {
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #010205;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -937,11 +937,10 @@ button:disabled {
   border-color: #949598;
 }
 ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #FFF;
@@ -1024,6 +1023,7 @@ ul {
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #010205;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -1102,11 +1102,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
 ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #FFF;
@@ -1192,6 +1191,7 @@ ul {
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #010205;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -1460,11 +1460,10 @@ button:disabled {
   border-color: #949598;
 }
 ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #FFF;
@@ -1547,6 +1546,7 @@ ul {
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #010205;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -1625,11 +1625,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
 ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #FFF;
@@ -1715,6 +1714,7 @@ ul {
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #010205;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -1761,11 +1761,10 @@ button:disabled {
   border-color: #949598;
 }
 ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #FFF;
@@ -1848,6 +1847,7 @@ ul {
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #010205;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -1926,11 +1926,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
 ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #FFF;
@@ -2016,6 +2015,7 @@ ul {
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #010205;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -3642,11 +3642,10 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 
 exports[`getListStyles() should return correct css for direction: down, isOpen: dark and theme: %s 1`] = `
 "ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #0E0E12;
@@ -3720,6 +3719,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #FBFCFF;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -3738,11 +3738,10 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 
 exports[`getListStyles() should return correct css for direction: down, isOpen: dark and theme: %s 2`] = `
 "ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #0E0E12;
@@ -3816,6 +3815,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #FBFCFF;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -3834,11 +3834,10 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 
 exports[`getListStyles() should return correct css for direction: down, isOpen: light and theme: %s 1`] = `
 "ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #FFF;
@@ -3912,6 +3911,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #010205;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -3930,11 +3930,10 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 
 exports[`getListStyles() should return correct css for direction: down, isOpen: light and theme: %s 2`] = `
 "ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #FFF;
@@ -4008,6 +4007,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #010205;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -4026,11 +4026,10 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 
 exports[`getListStyles() should return correct css for direction: up, isOpen: dark and theme: %s 1`] = `
 "ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #0E0E12;
@@ -4104,6 +4103,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #FBFCFF;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -4122,11 +4122,10 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
 
 exports[`getListStyles() should return correct css for direction: up, isOpen: dark and theme: %s 2`] = `
 "ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #0E0E12;
@@ -4200,6 +4199,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #FBFCFF;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -4218,11 +4218,10 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
 
 exports[`getListStyles() should return correct css for direction: up, isOpen: light and theme: %s 1`] = `
 "ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #FFF;
@@ -4296,6 +4295,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #010205;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -4314,11 +4314,10 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
 
 exports[`getListStyles() should return correct css for direction: up, isOpen: light and theme: %s 2`] = `
 "ul {
-  --p-internal-dropdown-position: absolute;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  position: var(--p-internal-dropdown-position);
+  position: var(--p-internal-dropdown-position, absolute);
   padding: 6px;
   margin: 0;
   background: #FFF;
@@ -4392,6 +4391,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
   display: block;
   padding: 3px 14px;
   font-weight: 600;
+  color: #010205;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
