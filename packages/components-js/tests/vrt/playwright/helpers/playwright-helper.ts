@@ -101,16 +101,6 @@ type SetupScenarioOptions = {
   emulateMediaPrint?: boolean;
 };
 
-const chunksLink = getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }).replace(
-  /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
-  'http://localhost:3001'
-);
-
-const iconsLink = getIconLinks({ icons: [...ICON_NAMES] }).replace(
-  /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
-  'http://localhost:3001'
-);
-
 export const setupScenario = async (
   page: Page,
   url: string,
@@ -169,12 +159,7 @@ export const setupScenario = async (
     searchParams.append('dir', forceDirMode);
   }
   const finalUrl = `${url}?${searchParams.toString()}`;
-
   await page.goto(finalUrl);
-  await page.evaluate(({ chunksLink, iconsLink }) => (document.head.innerHTML += `${chunksLink}${iconsLink}`), {
-    chunksLink,
-    iconsLink,
-  });
   await waitForComponentsReady(page);
 
   if (emulateMediaPrint) {
@@ -186,6 +171,16 @@ export const setupScenario = async (
     height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
   });
 };
+
+const chunksLink = getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }).replace(
+  /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
+  'http://localhost:3001'
+);
+
+const iconsLink = getIconLinks({ icons: [...ICON_NAMES] }).replace(
+  /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
+  'http://localhost:3001'
+);
 
 type SetContentWithDesignSystemOptions = {
   injectIntoHead?: string;
