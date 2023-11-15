@@ -4,6 +4,8 @@ import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 import type { PlaywrightTestConfig } from 'playwright/types/test';
+import { COMPONENT_CHUNK_NAMES } from '../../../../projects/components-wrapper';
+import { ICON_NAMES } from '@porsche-design-system/icons';
 
 export const thresholdConfig: PlaywrightTestConfig['expect']['toHaveScreenshot'] = {
   maxDiffPixelRatio: undefined,
@@ -99,6 +101,16 @@ type SetupScenarioOptions = {
   emulateMediaPrint?: boolean;
 };
 
+const chunksLink = getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }).replace(
+  /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
+  'http://localhost:3001'
+);
+
+const iconsLink = getIconLinks({ icons: [...ICON_NAMES] }).replace(
+  /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
+  'http://localhost:3001'
+);
+
 export const setupScenario = async (
   page: Page,
   url: string,
@@ -148,9 +160,11 @@ export const setupScenario = async (
   }
 
   await page.setViewportSize({ width: viewportWidth, height: 600 });
-  await page.goto(url, {
-    waitUntil: 'networkidle',
+  await page.evaluate(({ chunksLink, iconsLink }) => (document.head.innerHTML += `${chunksLink}${iconsLink}`), {
+    chunksLink,
+    iconsLink,
   });
+  await page.goto(url);
   await waitForComponentsReady(page);
 
   if (forceComponentTheme) {
@@ -207,8 +221,8 @@ export const setContentWithDesignSystem = async (
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
     <link rel="stylesheet" href="assets/styles.css">
     ${getInitialStyles()}
-    ${getComponentChunkLinks()}
-    ${getIconLinks()}
+    ${chunksLink}
+    ${iconsLink}
     ${injectIntoHead}
   </head>
   <body>
