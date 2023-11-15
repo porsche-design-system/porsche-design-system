@@ -169,7 +169,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
-    "prettier": "^3.0.3"
+    "prettier": "^3.1.0"
   },
   "resolutions": {
     "**/react-scripts/jest": ">=29 <30",
@@ -178,12 +178,12 @@
     "**/@types/jest-environment-puppeteer/jest-environment-node": ">=29 <30",
     "**/@vue/cli-plugin-unit-jest/jest": ">=29 <30",
     "**/@vue/cli-plugin-unit-jest/ts-jest": ">=29 <30",
-    "**/@vue/cli-shared-utils/@achrinza/node-ipc": "^10.1.9",
+    "**/@vue/cli-shared-utils/@achrinza/node-ipc": "^10.1.10",
     "**/eslint-config-next/eslint-plugin-react-hooks": "^4.6.0",
-    "**/eslint-config-react-app/eslint-plugin-jest": "^27.2.3",
-    "**/ng-packagr/rollup": "^4.0.2",
-    "**/vite/rollup": "^4.0.2",
-    "**/workbox-build/rollup": "^4.0.2"
+    "**/eslint-config-react-app/eslint-plugin-jest": "^27.6.0",
+    "**/ng-packagr/rollup": "^4.4.1",
+    "**/vite/rollup": "^4.4.1",
+    "**/workbox-build/rollup": "^4.4.1"
   },
   "volta": {
     "node": "18.18.1",
