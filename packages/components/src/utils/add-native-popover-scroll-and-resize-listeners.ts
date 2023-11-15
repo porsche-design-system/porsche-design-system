@@ -4,7 +4,8 @@ import { scrollAreaClass } from './scroller-popover-utils';
 export const addNativePopoverScrollAndResizeListeners = (
   host: HTMLElement,
   table: HTMLElement,
-  nativePopover: HTMLElement
+  nativePopover: HTMLElement,
+  callback?: () => void
 ): void => {
   const tableScrollArea = table.shadowRoot
     .querySelector(getPrefixedTagNames(host).pScroller)
@@ -12,6 +13,7 @@ export const addNativePopoverScrollAndResizeListeners = (
 
   const hidePopover = (): void => {
     nativePopover.hidePopover();
+    callback?.();
     window.removeEventListener('scroll', hidePopover);
     window.removeEventListener('resize', hidePopover);
     tableScrollArea.removeEventListener('scroll', hidePopover);

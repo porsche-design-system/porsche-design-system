@@ -110,7 +110,9 @@ export class SelectWrapperDropdown {
           this.buttonElement,
           this.direction
         );
-        addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement);
+        addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement, () => {
+          this.setDropdownVisibility('hide');
+        });
       }
     } else if (this.isNativePopover) {
       this.popoverElement.hidePopover();
