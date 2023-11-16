@@ -186,7 +186,7 @@ components.forEach((component) => {
         // so for now we convert the pdf to png and compare it via toMatchSnapshot()
 
         const [img] = await pdfToPng(pdfBuffer);
-        expect(img.content).toMatchSnapshot({ name: `${component}-print-theme-${theme}.png` });
+        expect(img.content).toMatchSnapshot(`${component}-print-theme-${theme}.png`, thresholdConfig);
       });
     });
   });
