@@ -10,15 +10,19 @@ export const setScrollLock = (isOpen: boolean): void => {
     body: { style, parentElement: htmlEl },
   } = document;
 
-  if (isOpen && !style.top) {
-    style.top = -htmlEl.scrollTop + 'px';
-    style.overflowY = 'scroll'; // seems necessary for flyout or modal content to be scrollable
-    style.position = 'fixed';
+  if (!!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)) {
+    if (isOpen && !style.top) {
+      style.top = -htmlEl.scrollTop + 'px';
+      style.overflowY = 'scroll'; // seems necessary for flyout or modal content to be scrollable
+      style.position = 'fixed';
+    } else {
+      const topValue = -parseInt(style.top, 10);
+      style.top = '';
+      style.overflowY = '';
+      style.position = '';
+      htmlEl.scrollTop = topValue;
+    }
   } else {
-    const topValue = -parseInt(style.top, 10);
-    style.top = '';
-    style.overflowY = '';
-    style.position = '';
-    htmlEl.scrollTop = topValue;
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   }
 };
