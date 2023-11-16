@@ -74,15 +74,18 @@ const onLabelClick = (
     return;
   }
 
-  if (formElement.type === 'checkbox' || formElement.type === 'radio') {
+  if (formElement.tagName === 'INPUT' && (formElement.type === 'checkbox' || formElement.type === 'radio')) {
     // checkbox-wrapper, radio-button-wrapper
     formElement.click();
+    // TODO: maybe we should call `formElement.focus();` too, to be in sync with the behaviour of other form fields.
+    //  On the other hand, it would show a focus outline, maybe this then needs to be handled with :focus-visible and :focus fallback instead.
   } else if (formElement.tagName === 'SELECT') {
     // select-wrapper
     // TODO: should be refactored in select-wrapper, so that "for" attribute becomes possible to use
     const el: HTMLElement = host.shadowRoot.children[0].querySelector('.dropdown')?.shadowRoot.children[0] as any; // input or button of p-select-wrapper-dropdown
     if (el) {
       el.click();
+      el.focus();
     } else {
       formElement.focus(); // it's not possible to open the native option list of a select by JS
     }
