@@ -21,7 +21,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-select-wrapper');
 const getSelect = () => selectNode(page, 'p-select-wrapper select');
-const getLabelText = () => selectNode(page, 'p-select-wrapper >>> .label__text');
+const getLabel = () => selectNode(page, 'p-select-wrapper >>> label');
 
 const dropdownSelector = 'p-select-wrapper >>> p-select-wrapper-dropdown';
 const filterInputSelector = `${dropdownSelector} >>> input`;
@@ -117,13 +117,13 @@ describe('focus state', () => {
   it('should focus filter when label text is clicked', async () => {
     await initSelect();
 
-    const labelText = await getLabelText();
+    const label = await getLabel();
     const filterInput = await getFilterInput();
     await addEventListener(filterInput, 'focus');
 
     expect((await getEventSummary(filterInput, 'focus')).counter).toBe(0);
 
-    await labelText.click();
+    await label.click();
     expect((await getEventSummary(filterInput, 'focus')).counter).toBe(1);
   });
 });
