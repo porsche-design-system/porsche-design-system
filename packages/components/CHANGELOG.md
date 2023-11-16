@@ -22,7 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - `Text Field Wrapper`, `Textarea Wrapper`, `Select Wrapper`, `Multi Select`, `Pin Code`, `Checkbox Wrapper` and
-  `Radio Button Wrapper` are fully aligned in terms of UI and UX
+  `Radio Button Wrapper` have improved visual alignment
   ([#2854](https://github.com/porsche-design-system/porsche-design-system/pull/2854))
 - `Text Field Wrapper` fully supports RTL (right-to-left) mode
   ([#2854](https://github.com/porsche-design-system/porsche-design-system/pull/2854))
