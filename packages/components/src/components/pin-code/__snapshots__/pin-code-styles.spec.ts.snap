@@ -725,7 +725,7 @@ input:disabled {
   border-color: #949598;
   -webkit-text-fill-color: #949598;
 }
-::slotted(input) {
+::slotted([slot=hidden-input]) {
   position: absolute !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   width: 0 !important;
@@ -1342,7 +1342,7 @@ input:disabled {
   border-color: #7E7F82;
   -webkit-text-fill-color: #7E7F82;
 }
-::slotted(input) {
+::slotted([slot=hidden-input]) {
   position: absolute !important;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
   width: 0 !important;
