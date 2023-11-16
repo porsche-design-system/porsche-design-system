@@ -192,7 +192,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/: FormState/g, ': any')
           .replace(/: Theme/g, ': any')
           .replace(/(<\/?)Fragment(>)/g, '$1$2') // replace <Fragment> with <> or </Fragment> with </>
-          .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
+          .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '')
+          .replace(/&& !isParentFieldsetRequired\(.*?\)/, '/* $& */') // let's disable it for now
+          .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
+          .replace(/host,|formElement,/g, '// $&'); // don't destructure unused const
 
         if (newFileContent.includes('export const Label:')) {
           newFileContent = newFileContent
