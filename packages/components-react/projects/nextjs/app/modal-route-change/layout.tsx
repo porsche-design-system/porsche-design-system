@@ -1,8 +1,9 @@
-import { Link, Outlet } from '@remix-run/react';
-import { useCallback, useState } from 'react';
-import { PModal, PText, PLink, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
+'use client';
+import { type PropsWithChildren, useCallback, useState } from 'react';
+import { PHeading, PModal, PText, PLink, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
+import Link from 'next/link';
 
-export default function Overview(): JSX.Element {
+export default function OverviewLayout({ children }: PropsWithChildren<{}>): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const onOpen = useCallback(() => {
     setIsModalOpen(true);
@@ -18,9 +19,10 @@ export default function Overview(): JSX.Element {
   `;
 
   return (
-    <main>
+    <section>
+      <PHeading>Welcome to Overview</PHeading>
       <PLink>
-        <Link to="/">Back to Home</Link>
+        <Link href="/">Back to Home</Link>
       </PLink>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
         <div
@@ -37,7 +39,9 @@ export default function Overview(): JSX.Element {
         ></div>
       </div>
       <PLink>
-        <Link to="/modal-route-change/open">Link to Modal (with route change)</Link>
+        <Link href="/modal-route-change/open" scroll={false}>
+          Link to Modal (with route change)
+        </Link>
       </PLink>
       <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
         Open Modal (without route change)
@@ -56,7 +60,7 @@ export default function Overview(): JSX.Element {
           </PModal>
         </>
       )}
-      <Outlet />
-    </main>
+      {children}
+    </section>
   );
 }
