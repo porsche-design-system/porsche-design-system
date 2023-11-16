@@ -89,8 +89,8 @@ export class RadioButtonWrapper {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    const { disabled, checked } = this.input;
-    const isLoading = this.loading && !checked; // spinner is only displayed when radio is not checked already
+    const { disabled } = this.input;
+    const isLoading = this.loading && !this.input.checked; // spinner is only displayed when radio is not checked already
 
     attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, disabled, isLoading, this.theme);
 
