@@ -147,7 +147,8 @@ export class PinCode {
           description={this.description}
           htmlFor={currentInputId}
           isRequired={this.required}
-          isLoading={isDisabledOrLoading(this.disabled, this.loading)}
+          isLoading={this.loading}
+          isDisabled={this.disabled}
         />
         <div class="wrapper" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput}>
           {Array.from(Array(this.length), (_, index) => (

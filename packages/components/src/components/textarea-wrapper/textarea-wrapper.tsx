@@ -115,19 +115,20 @@ export class TextareaWrapper {
       'showCharacterCount',
       'Please use showCounter prop instead.'
     );
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.textarea.disabled,
-      this.hideLabel,
-      this.state,
-      this.hasCounter,
-      this.theme
-    );
+
+    const { disabled } = this.textarea;
+
+    attachComponentCss(this.host, getComponentCss, disabled, this.hideLabel, this.state, this.hasCounter, this.theme);
 
     return (
       <div class="root">
-        <Label host={this.host} label={this.label} description={this.description} formElement={this.textarea} />
+        <Label
+          host={this.host}
+          label={this.label}
+          description={this.description}
+          isDisabled={disabled}
+          formElement={this.textarea}
+        />
         <div class="wrapper">
           <slot />
           {this.hasCounter && <span class="counter" aria-hidden="true" ref={(el) => (this.counterElement = el)} />}

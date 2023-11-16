@@ -220,6 +220,7 @@ export class MultiSelect {
           description={this.description}
           htmlFor={inputId}
           isRequired={this.required}
+          isDisabled={this.disabled}
         />
         {/* in case, sr-only text is not placed here then the clear button is not able to focus the input for unknown reasons */}
         {this.currentValue.length > 0 && (

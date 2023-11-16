@@ -97,21 +97,22 @@ export class CheckboxWrapper {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.hideLabel,
-      this.state,
-      this.input.disabled,
-      this.loading,
-      this.theme
-    );
+
+    const { disabled } = this.input;
+
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, disabled, this.loading, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <div class="root">
-        <Label host={this.host} label={this.label} isLoading={this.loading} formElement={this.input} />
+        <Label
+          host={this.host}
+          label={this.label}
+          isLoading={this.loading}
+          isDisabled={disabled}
+          formElement={this.input}
+        />
         <div class="wrapper">
           <slot />
           {this.loading && (

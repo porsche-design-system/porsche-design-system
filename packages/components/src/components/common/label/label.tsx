@@ -19,6 +19,7 @@ type LabelProps = {
   htmlFor?: string; // should be used when form element is within shadow dom (modern)
   isRequired?: boolean; // should be used when form element is within shadow dom (modern)
   isLoading?: boolean;
+  isDisabled?: boolean;
   formElement?: FormElement; // should be used when form element is slotted within light dom (legacy)
 };
 
@@ -29,6 +30,7 @@ export const Label: FunctionalComponent<LabelProps> = ({
   htmlFor,
   isRequired,
   isLoading,
+  isDisabled,
   formElement,
 }) => {
   return (
@@ -36,12 +38,12 @@ export const Label: FunctionalComponent<LabelProps> = ({
       <label
         class="label"
         id={htmlLabelId}
-        aria-disabled={isLoading ? 'true' : null}
+        aria-disabled={isLoading || isDisabled ? 'true' : null}
         {...(htmlFor
           ? { htmlFor }
           : {
               onClick: (event: MouseEvent & { target: HTMLElement }) =>
-                onLabelClick(event, formElement, isLoading, host),
+                onLabelClick(event, formElement, isLoading, isDisabled, host),
             })}
       >
         {/* TODO: we could try to use css :empty selector instead of DOM query checks, which might make things easier in SSR context? */}
@@ -55,7 +57,7 @@ export const Label: FunctionalComponent<LabelProps> = ({
       </label>
       {/* TODO: we could try to use css :empty selector instead of DOM query checks, which might make things easier in SSR context? */}
       {hasDescription(host, description) && (
-        <span class="label" id={htmlDescriptionId}>
+        <span class="label" id={htmlDescriptionId} aria-disabled={isLoading || isDisabled ? 'true' : null}>
           {description || <slot name="description" />}
         </span>
       )}
@@ -67,10 +69,11 @@ const onLabelClick = (
   event: MouseEvent & { target: HTMLElement },
   formElement: FormElement,
   isLoading: boolean,
+  isDisabled: boolean,
   host?: HTMLElement
 ): void => {
-  // we don't want to click/focus the form element, if a link is clicked or when host is in loading state
-  if (isLoading || getClosestHTMLElement(event.target, 'a') !== null) {
+  // we don't want to click/focus the form element, if a link is clicked or when host/form-field is in loading or disabled state
+  if (isLoading || isDisabled || getClosestHTMLElement(event.target, 'a') !== null) {
     return;
   }
 
