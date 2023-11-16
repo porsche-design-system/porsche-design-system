@@ -41,8 +41,7 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                     {
                       "children": [
                         {
-                          "name": "",
-                          "role": "LabelText",
+                          "role": "none",
                         },
                         {
                           "children": [
@@ -68,11 +67,6 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                               ],
                               "role": "none",
                             },
-                          ],
-                          "role": "none",
-                        },
-                        {
-                          "children": [
                             {
                               "children": [
                                 {
@@ -90,8 +84,28 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                                                         {
                                                           "children": [
                                                             {
+                                                              "children": [
+                                                                {
+                                                                  "name": "Option A",
+                                                                  "role": "StaticText",
+                                                                },
+                                                              ],
+                                                              "role": "none",
+                                                            },
+                                                          ],
+                                                          "role": "none",
+                                                        },
+                                                      ],
+                                                      "name": "",
+                                                      "role": "LabelText",
+                                                    },
+                                                    {
+                                                      "children": [
+                                                        {
+                                                          "children": [
+                                                            {
                                                               "name": "Option A",
-                                                              "role": "StaticText",
+                                                              "role": "option",
                                                             },
                                                           ],
                                                           "role": "none",
@@ -100,34 +114,18 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                                                       "role": "none",
                                                     },
                                                   ],
-                                                  "name": "",
-                                                  "role": "generic",
-                                                },
-                                                {
-                                                  "children": [
-                                                    {
-                                                      "name": "Option A",
-                                                      "role": "option",
-                                                    },
-                                                  ],
                                                   "role": "none",
                                                 },
                                               ],
-                                              "name": "",
-                                              "role": "LabelText",
+                                              "role": "none",
                                             },
                                           ],
                                           "role": "none",
                                         },
                                       ],
-                                      "role": "none",
+                                      "name": "",
+                                      "role": "generic",
                                     },
-                                  ],
-                                  "name": "",
-                                  "role": "generic",
-                                },
-                                {
-                                  "children": [
                                     {
                                       "children": [
                                         {
@@ -136,13 +134,33 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                                               "children": [
                                                 {
                                                   "children": [
+                                                    {
+                                                      "children": [
+                                                        {
+                                                          "children": [
+                                                            {
+                                                              "children": [
+                                                                {
+                                                                  "name": "Option B",
+                                                                  "role": "StaticText",
+                                                                },
+                                                              ],
+                                                              "role": "none",
+                                                            },
+                                                          ],
+                                                          "role": "none",
+                                                        },
+                                                      ],
+                                                      "name": "",
+                                                      "role": "LabelText",
+                                                    },
                                                     {
                                                       "children": [
                                                         {
                                                           "children": [
                                                             {
                                                               "name": "Option B",
-                                                              "role": "StaticText",
+                                                              "role": "option",
                                                             },
                                                           ],
                                                           "role": "none",
@@ -151,34 +169,18 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                                                       "role": "none",
                                                     },
                                                   ],
-                                                  "name": "",
-                                                  "role": "generic",
-                                                },
-                                                {
-                                                  "children": [
-                                                    {
-                                                      "name": "Option B",
-                                                      "role": "option",
-                                                    },
-                                                  ],
                                                   "role": "none",
                                                 },
                                               ],
-                                              "name": "",
-                                              "role": "LabelText",
+                                              "role": "none",
                                             },
                                           ],
                                           "role": "none",
                                         },
                                       ],
-                                      "role": "none",
+                                      "name": "",
+                                      "role": "generic",
                                     },
-                                  ],
-                                  "name": "",
-                                  "role": "generic",
-                                },
-                                {
-                                  "children": [
                                     {
                                       "children": [
                                         {
@@ -192,8 +194,28 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                                                         {
                                                           "children": [
                                                             {
+                                                              "children": [
+                                                                {
+                                                                  "name": "Option C",
+                                                                  "role": "StaticText",
+                                                                },
+                                                              ],
+                                                              "role": "none",
+                                                            },
+                                                          ],
+                                                          "role": "none",
+                                                        },
+                                                      ],
+                                                      "name": "",
+                                                      "role": "LabelText",
+                                                    },
+                                                    {
+                                                      "children": [
+                                                        {
+                                                          "children": [
+                                                            {
                                                               "name": "Option C",
-                                                              "role": "StaticText",
+                                                              "role": "option",
                                                             },
                                                           ],
                                                           "role": "none",
@@ -202,66 +224,54 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                                                       "role": "none",
                                                     },
                                                   ],
-                                                  "name": "",
-                                                  "role": "generic",
-                                                },
-                                                {
-                                                  "children": [
-                                                    {
-                                                      "name": "Option C",
-                                                      "role": "option",
-                                                    },
-                                                  ],
                                                   "role": "none",
                                                 },
                                               ],
-                                              "name": "",
-                                              "role": "LabelText",
+                                              "role": "none",
                                             },
                                           ],
                                           "role": "none",
                                         },
                                       ],
-                                      "role": "none",
+                                      "name": "",
+                                      "role": "generic",
                                     },
                                   ],
-                                  "name": "",
-                                  "role": "generic",
+                                  "role": "none",
                                 },
                               ],
+                              "multiselectable": true,
+                              "name": "",
+                              "orientation": "vertical",
+                              "role": "listbox",
+                            },
+                          ],
+                          "name": "",
+                          "role": "generic",
+                        },
+                        {
+                          "children": [
+                            {
+                              "name": "Option A not selected (1 of 3)",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "",
+                          "role": "status",
+                        },
+                        {
+                          "children": [
+                            {
                               "role": "none",
                             },
                           ],
-                          "multiselectable": true,
-                          "name": "",
-                          "orientation": "vertical",
-                          "role": "listbox",
-                        },
-                      ],
-                      "name": "",
-                      "role": "generic",
-                    },
-                    {
-                      "children": [
-                        {
                           "role": "none",
                         },
                       ],
                       "role": "none",
                     },
-                    {
-                      "children": [
-                        {
-                          "name": "Option A not selected (1 of 3)",
-                          "role": "StaticText",
-                        },
-                      ],
-                      "name": "",
-                      "role": "status",
-                    },
                   ],
-                  "name": "",
-                  "role": "generic",
+                  "role": "none",
                 },
               ],
               "name": "",
@@ -295,7 +305,7 @@ exports[`accessibility should expose correct accessibility tree if option is sel
   "expanded": true,
   "focused": true,
   "haspopup": "listbox",
-  "name": "Option A",
+  "name": "",
   "role": "combobox",
 }
 `;
@@ -314,19 +324,16 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                     {
                       "children": [
                         {
+                          "role": "none",
+                        },
+                        {
                           "children": [
                             {
-                              "children": [
-                                {
-                                  "name": "1 options selected",
-                                  "role": "StaticText",
-                                },
-                              ],
-                              "role": "none",
+                              "name": "1 options selected",
+                              "role": "StaticText",
                             },
                           ],
-                          "name": "",
-                          "role": "LabelText",
+                          "role": "none",
                         },
                         {
                           "children": [
@@ -345,8 +352,16 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                               "expanded": true,
                               "focused": true,
                               "haspopup": "listbox",
-                              "name": "Option A",
+                              "name": "",
                               "role": "combobox",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
                             },
                             {
                               "children": [
@@ -385,19 +400,6 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                             {
                               "children": [
                                 {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
                                   "children": [
                                     {
                                       "children": [
@@ -407,13 +409,34 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                                               "children": [
                                                 {
                                                   "children": [
+                                                    {
+                                                      "children": [
+                                                        {
+                                                          "children": [
+                                                            {
+                                                              "children": [
+                                                                {
+                                                                  "name": "Option A",
+                                                                  "role": "StaticText",
+                                                                },
+                                                              ],
+                                                              "role": "none",
+                                                            },
+                                                          ],
+                                                          "role": "none",
+                                                        },
+                                                      ],
+                                                      "name": "",
+                                                      "role": "LabelText",
+                                                    },
                                                     {
                                                       "children": [
                                                         {
                                                           "children": [
                                                             {
                                                               "name": "Option A",
-                                                              "role": "StaticText",
+                                                              "role": "option",
+                                                              "selected": true,
                                                             },
                                                           ],
                                                           "role": "none",
@@ -422,35 +445,18 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                                                       "role": "none",
                                                     },
                                                   ],
-                                                  "name": "",
-                                                  "role": "generic",
-                                                },
-                                                {
-                                                  "children": [
-                                                    {
-                                                      "name": "Option A",
-                                                      "role": "option",
-                                                      "selected": true,
-                                                    },
-                                                  ],
                                                   "role": "none",
                                                 },
                                               ],
-                                              "name": "",
-                                              "role": "LabelText",
+                                              "role": "none",
                                             },
                                           ],
                                           "role": "none",
                                         },
                                       ],
-                                      "role": "none",
+                                      "name": "",
+                                      "role": "generic",
                                     },
-                                  ],
-                                  "name": "",
-                                  "role": "generic",
-                                },
-                                {
-                                  "children": [
                                     {
                                       "children": [
                                         {
@@ -459,13 +465,33 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                                               "children": [
                                                 {
                                                   "children": [
+                                                    {
+                                                      "children": [
+                                                        {
+                                                          "children": [
+                                                            {
+                                                              "children": [
+                                                                {
+                                                                  "name": "Option B",
+                                                                  "role": "StaticText",
+                                                                },
+                                                              ],
+                                                              "role": "none",
+                                                            },
+                                                          ],
+                                                          "role": "none",
+                                                        },
+                                                      ],
+                                                      "name": "",
+                                                      "role": "LabelText",
+                                                    },
                                                     {
                                                       "children": [
                                                         {
                                                           "children": [
                                                             {
                                                               "name": "Option B",
-                                                              "role": "StaticText",
+                                                              "role": "option",
                                                             },
                                                           ],
                                                           "role": "none",
@@ -474,34 +500,18 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                                                       "role": "none",
                                                     },
                                                   ],
-                                                  "name": "",
-                                                  "role": "generic",
-                                                },
-                                                {
-                                                  "children": [
-                                                    {
-                                                      "name": "Option B",
-                                                      "role": "option",
-                                                    },
-                                                  ],
                                                   "role": "none",
                                                 },
                                               ],
-                                              "name": "",
-                                              "role": "LabelText",
+                                              "role": "none",
                                             },
                                           ],
                                           "role": "none",
                                         },
                                       ],
-                                      "role": "none",
+                                      "name": "",
+                                      "role": "generic",
                                     },
-                                  ],
-                                  "name": "",
-                                  "role": "generic",
-                                },
-                                {
-                                  "children": [
                                     {
                                       "children": [
                                         {
@@ -515,8 +525,28 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                                                         {
                                                           "children": [
                                                             {
+                                                              "children": [
+                                                                {
+                                                                  "name": "Option C",
+                                                                  "role": "StaticText",
+                                                                },
+                                                              ],
+                                                              "role": "none",
+                                                            },
+                                                          ],
+                                                          "role": "none",
+                                                        },
+                                                      ],
+                                                      "name": "",
+                                                      "role": "LabelText",
+                                                    },
+                                                    {
+                                                      "children": [
+                                                        {
+                                                          "children": [
+                                                            {
                                                               "name": "Option C",
-                                                              "role": "StaticText",
+                                                              "role": "option",
                                                             },
                                                           ],
                                                           "role": "none",
@@ -525,52 +555,51 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                                                       "role": "none",
                                                     },
                                                   ],
-                                                  "name": "",
-                                                  "role": "generic",
-                                                },
-                                                {
-                                                  "children": [
-                                                    {
-                                                      "name": "Option C",
-                                                      "role": "option",
-                                                    },
-                                                  ],
                                                   "role": "none",
                                                 },
                                               ],
-                                              "name": "",
-                                              "role": "LabelText",
+                                              "role": "none",
                                             },
                                           ],
                                           "role": "none",
                                         },
                                       ],
-                                      "role": "none",
+                                      "name": "",
+                                      "role": "generic",
                                     },
                                   ],
-                                  "name": "",
-                                  "role": "generic",
+                                  "role": "none",
                                 },
                               ],
-                              "role": "none",
+                              "multiselectable": true,
+                              "name": "",
+                              "orientation": "vertical",
+                              "role": "listbox",
                             },
                           ],
-                          "multiselectable": true,
                           "name": "",
-                          "orientation": "vertical",
-                          "role": "listbox",
+                          "role": "generic",
                         },
-                      ],
-                      "name": "",
-                      "role": "generic",
-                    },
-                    {
-                      "children": [
+                        {
+                          "children": [
+                            {
+                              "name": "Option A, selected (1 of 3)",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "name": "",
+                          "role": "status",
+                        },
                         {
                           "children": [
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
                                   "role": "none",
                                 },
                               ],
@@ -582,19 +611,8 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                       ],
                       "role": "none",
                     },
-                    {
-                      "children": [
-                        {
-                          "name": "Option A, selected (1 of 3)",
-                          "role": "StaticText",
-                        },
-                      ],
-                      "name": "",
-                      "role": "status",
-                    },
                   ],
-                  "name": "",
-                  "role": "generic",
+                  "role": "none",
                 },
               ],
               "name": "",
@@ -680,6 +698,11 @@ exports[`accessibility should expose correct accessibility tree of option list i
                         {
                           "children": [
                             {
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                              ],
                               "role": "none",
                             },
                           ],
@@ -726,6 +749,11 @@ exports[`accessibility should expose correct accessibility tree of option list i
                         {
                           "children": [
                             {
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                              ],
                               "role": "none",
                             },
                           ],
@@ -772,6 +800,11 @@ exports[`accessibility should expose correct accessibility tree of option list i
                         {
                           "children": [
                             {
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                              ],
                               "role": "none",
                             },
                           ],
