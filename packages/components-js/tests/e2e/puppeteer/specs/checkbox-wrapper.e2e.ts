@@ -237,6 +237,7 @@ it('should check/uncheck checkbox when checkbox property is changed programmatic
 
 it('should disable checkbox when disabled property is set programmatically', async () => {
   await initCheckbox();
+  const host = await getHost();
   const input = await getInput();
   const wrapper = await getWrapper();
 
@@ -261,6 +262,13 @@ it('should disable checkbox when disabled property is set programmatically', asy
   expect(await getWrapperCursor()).toBe('auto');
   expect(await getInputCursor()).toBe('pointer');
   expect(await getInputPointerEvents()).toBe('auto');
+
+  await setProperty(host, 'loading', true);
+  await waitForInputTransition(page);
+
+  expect(await getWrapperCursor()).toBe('not-allowed');
+  expect(await getInputCursor()).toBe('default');
+  expect(await getInputPointerEvents()).toBe('none'); // prevents checkbox from being toggleable in disabled and especially loading state
 });
 
 describe('indeterminate state', () => {
