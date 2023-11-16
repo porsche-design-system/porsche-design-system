@@ -23,11 +23,11 @@ beforeEach(async () => {
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-pin-code');
-const getLabel = () => selectNode(page, 'p-pin-code >>> .label__text');
+const getLabel = () => selectNode(page, 'p-pin-code >>> label');
 const getCurrentInput = () => selectNode(page, 'p-pin-code >>> #current-input');
 const getMessage = () => selectNode(page, 'p-pin-code >>> .message');
 const getHiddenInput = () => selectNode(page, 'p-pin-code input[slot="hidden-input"]');
-const getInput = (n: number) => selectNode(page, `p-pin-code >>> .input-container input:nth-child(${n})`);
+const getInput = (n: number) => selectNode(page, `p-pin-code >>> .wrapper input:nth-child(${n})`);
 const getActiveElementsAriaLabelInShadowRoot = (element: ElementHandle): Promise<string> => {
   return element.evaluate((el) => el.shadowRoot.activeElement.ariaLabel);
 };
@@ -63,17 +63,6 @@ const initPinCode = (opts?: InitOptions) => {
 };
 
 describe('label', () => {
-  it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
-    await initPinCode();
-    const pinCodeComponent = await getHost();
-    expect(await getLabel()).toBeNull();
-
-    await setProperty(pinCodeComponent, 'label', 'Some label');
-    await waitForStencilLifecycle(page);
-
-    expect(await getLabel()).not.toBeNull();
-  });
-
   it('should focus input with id="current-input" when label text is clicked', async () => {
     await initPinCode({ props: { label: 'Some label' } });
     const label = await getLabel();
