@@ -114,7 +114,6 @@ export const setupScenario = async (
     scalePageFontSize,
     forceComponentTheme,
     forceDirMode,
-    emulateMediaPrint,
   }: SetupScenarioOptions = {
     javaScriptDisabled: false,
     forcedColorsEnabled: false,
@@ -122,7 +121,6 @@ export const setupScenario = async (
     scalePageFontSize: false,
     forceComponentTheme: undefined,
     forceDirMode: undefined,
-    emulateMediaPrint: false,
     ...options,
   };
   if (javaScriptDisabled) {
@@ -162,14 +160,12 @@ export const setupScenario = async (
   await page.goto(finalUrl);
   await waitForComponentsReady(page);
 
-  if (emulateMediaPrint) {
-    await page.emulateMedia({ media: 'print' });
+  if (scalePageFontSize) {
+    await page.setViewportSize({
+      width: viewportWidth,
+      height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
+    });
   }
-
-  await page.setViewportSize({
-    width: viewportWidth,
-    height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
-  });
 };
 
 const chunksLink = getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }).replace(
