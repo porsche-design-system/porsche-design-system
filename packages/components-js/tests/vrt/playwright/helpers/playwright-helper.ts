@@ -160,12 +160,10 @@ export const setupScenario = async (
   await page.goto(finalUrl);
   await waitForComponentsReady(page);
 
-  if (scalePageFontSize) {
-    await page.setViewportSize({
-      width: viewportWidth,
-      height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
-    });
-  }
+  await page.setViewportSize({
+    width: viewportWidth,
+    height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
+  });
 };
 
 const chunksLink = getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }).replace(
