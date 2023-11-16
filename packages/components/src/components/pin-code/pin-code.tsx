@@ -160,6 +160,7 @@ export class PinCode {
               aria-describedby={`${htmlLabelId} ${htmlDescriptionId} ${htmlMessageId}`}
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-busy={this.loading ? 'true' : null}
+              aria-disabled={this.loading ? 'true' : null}
               autoComplete="one-time-code"
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile

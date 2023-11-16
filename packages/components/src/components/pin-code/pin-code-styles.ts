@@ -87,7 +87,8 @@ export const getComponentCss = (
     ...(isLoading && {
       spinner: {
         gridArea: `1/1/1/${length + 1}`,
-        width: '100%', // to trick axe-core in loading state
+        placeSelf: 'center',
+        width: inputSize,
         height: inputSize,
         pointerEvents: 'none',
       },
