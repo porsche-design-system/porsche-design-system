@@ -72,7 +72,6 @@ export class SelectWrapperDropdown {
   @State() private searchString = '';
 
   private inputElement: HTMLInputElement;
-  private buttonElement: HTMLButtonElement;
   private listElement: HTMLUListElement;
   private isNativePopover: boolean = false;
   private parentTableElement: HTMLElement;
@@ -102,20 +101,11 @@ export class SelectWrapperDropdown {
       handleScroll(this.listElement, getHighlightedOptionMapIndex(this.optionMaps));
 
       if (this.isNativePopover) {
-        this.popoverElement.showPopover();
-        updateNativePopoverSelectStyles(
-          this.host,
-          this.optionMaps,
-          this.popoverElement,
-          this.buttonElement,
-          this.direction
-        );
+        updateNativePopoverSelectStyles(this.host, this.optionMaps, this.popoverElement, this.direction);
         addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement, () => {
           this.setDropdownVisibility('hide');
         });
       }
-    } else if (this.isNativePopover) {
-      this.popoverElement.hidePopover();
     }
   }
 
@@ -196,7 +186,6 @@ export class SelectWrapperDropdown {
             )}
             onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onComboboxKeyDown}
-            ref={(el) => (this.buttonElement = el)}
           />
         )}
         {[
@@ -297,6 +286,14 @@ export class SelectWrapperDropdown {
   private setDropdownVisibility = (type: DropdownInteractionType): void => {
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.filter && this.resetFilter);
     this.onOpenChange(this.isOpen);
+
+    if (this.isNativePopover) {
+      if (this.isOpen) {
+        this.popoverElement.showPopover();
+      } else {
+        this.popoverElement.hidePopover();
+      }
+    }
   };
 
   private onComboboxKeyDown = (e: KeyboardEvent): void => {

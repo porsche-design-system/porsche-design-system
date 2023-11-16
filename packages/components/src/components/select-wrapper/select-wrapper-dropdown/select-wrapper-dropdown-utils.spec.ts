@@ -383,14 +383,14 @@ describe('updateNativePopoverSelectStyles()', () => {
 
   it('should call getBoundingClientRect() on button', () => {
     const spy = jest.spyOn(nativeButton, 'getBoundingClientRect');
-    updateNativePopoverSelectStyles(host, optionMaps, nativePopover, nativeButton, 'up');
+    updateNativePopoverSelectStyles(host, optionMaps, nativePopover, 'up');
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('should set the correct styles for the native popover when direction is up', () => {
     global.window.scrollX = 20;
     global.window.scrollY = 30;
-    updateNativePopoverSelectStyles(host, optionMaps, nativePopover, nativeButton, 'up');
+    updateNativePopoverSelectStyles(host, optionMaps, nativePopover, 'up');
     expect(nativePopover.style.left).toBe('30px');
     expect(nativePopover.style.top).toBe('50px');
     expect(nativePopover.style.width).toBe('100px');
@@ -399,7 +399,7 @@ describe('updateNativePopoverSelectStyles()', () => {
   it('should set the correct styles for the native popover when direction is down', () => {
     global.window.scrollX = 20;
     global.window.scrollY = 30;
-    updateNativePopoverSelectStyles(host, optionMaps, nativePopover, nativeButton, 'down');
+    updateNativePopoverSelectStyles(host, optionMaps, nativePopover, 'down');
     expect(nativePopover.style.left).toBe('30px');
     expect(nativePopover.style.top).toBe('80px');
     expect(nativePopover.style.width).toBe('100px');

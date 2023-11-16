@@ -59,22 +59,19 @@ describe('getFilterStyles()', () => {
 
 describe('getListStyles()', () => {
   it.each<Parameters<typeof getListStyles>>([
-    ['down', 'light', false],
-    ['down', 'light', false],
-    ['down', 'light', true],
-    ['down', 'dark', false],
-    ['down', 'dark', false],
-    ['up', 'light', false],
-    ['up', 'light', true],
-    ['up', 'light', false],
-    ['up', 'dark', false],
-    ['up', 'dark', false],
-  ])(
-    'should return correct css for direction: %s, isOpen: %s and theme: %s, isNativePopover: %s',
-    (direction, theme, isNativePopover) => {
-      expect(getCss(getListStyles(direction, theme, isNativePopover))).toMatchSnapshot();
-    }
-  );
+    ['down', 'light'],
+    ['down', 'light'],
+    ['down', 'light'],
+    ['down', 'dark'],
+    ['down', 'dark'],
+    ['up', 'light'],
+    ['up', 'light'],
+    ['up', 'light'],
+    ['up', 'dark'],
+    ['up', 'dark'],
+  ])('should return correct css for direction: %s, isOpen: %s and theme: %s', (direction, theme) => {
+    expect(getCss(getListStyles(direction, theme))).toMatchSnapshot();
+  });
 });
 
 describe('getComponentCss()', () => {

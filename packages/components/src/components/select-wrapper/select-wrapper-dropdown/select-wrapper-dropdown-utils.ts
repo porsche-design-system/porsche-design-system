@@ -166,10 +166,9 @@ export const updateNativePopoverSelectStyles = (
   host: HTMLElement,
   optionMaps: OptionMap[],
   nativePopover: HTMLElement,
-  nativeButton: HTMLButtonElement,
   direction: SelectWrapperDropdownDirection
 ): void => {
-  const { left, top, width, height } = nativeButton.getBoundingClientRect();
+  const { left, top, width, height } = host.getBoundingClientRect();
   const isDirectionDown =
     direction === 'down' ||
     (direction === 'auto' &&

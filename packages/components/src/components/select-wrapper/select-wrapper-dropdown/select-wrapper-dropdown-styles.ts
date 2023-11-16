@@ -213,7 +213,7 @@ export const getFilterStyles = (
   };
 };
 
-export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme, isNativePopover: boolean): Styles => {
+export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme): Styles => {
   const isDirectionDown = direction === 'down';
   const {
     primaryColor: primaryColorDark,
@@ -341,19 +341,6 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
         paddingLeft: '24px',
       },
     },
-    ...(isNativePopover && {
-      popover: {
-        position: 'absolute',
-        bottom: 'auto',
-        border: 'none',
-        background: 'none',
-        pointerEvents: 'all',
-        padding: 0,
-        margin: 0,
-        overflow: 'visible',
-        height: 'auto',
-      },
-    }),
   };
 };
 
@@ -411,11 +398,29 @@ export const getComponentCss = (
         'sr-text': {
           display: 'none',
         },
+        ...(isNativePopover && {
+          popover: {
+            display: isOpen ? 'block' : 'none',
+            position: 'absolute',
+            bottom: 'auto',
+            border: 'none',
+            background: 'none',
+            pointerEvents: 'all',
+            padding: 0,
+            margin: 0,
+            overflow: 'visible',
+            height: 'auto',
+            maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
+            '&:-internal-popover-in-top-layer::backdrop': {
+              display: 'none',
+            },
+          },
+        }),
       },
       filter
         ? getFilterStyles(direction, isOpen, state, disabled, theme)
         : getButtonStyles(direction, isOpen, state, theme),
-      isOpen && getListStyles(direction, theme, isNativePopover)
+      isOpen && getListStyles(direction, theme)
     )
   );
 };
