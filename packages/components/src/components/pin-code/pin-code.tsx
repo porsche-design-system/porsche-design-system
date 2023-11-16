@@ -150,7 +150,6 @@ export class PinCode {
           isLoading={isDisabledOrLoading(this.disabled, this.loading)}
         />
         <div class="wrapper" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput}>
-          {this.isWithinForm && <slot name={hiddenInputSlotName} />}
           {Array.from(Array(this.length), (_, index) => (
             <input
               key={index}
@@ -179,6 +178,7 @@ export class PinCode {
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        {this.isWithinForm && <slot name={hiddenInputSlotName} />}
       </div>
     );
   }

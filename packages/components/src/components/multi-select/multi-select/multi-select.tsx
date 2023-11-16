@@ -7,6 +7,7 @@ import {
   getSelectedOptionsString,
   getSelectedOptionValues,
   hasFilterOptionResults,
+  hiddenSelectSlotName,
   initNativeSelect,
   type MultiSelectOption,
   type MultiSelectUpdateEvent,
@@ -220,13 +221,13 @@ export class MultiSelect {
           htmlFor={inputId}
           isRequired={this.required}
         />
+        {/* in case, sr-only text is not placed here then the clear button is not able to focus the input for unknown reasons */}
+        {this.currentValue.length > 0 && (
+          <span id={optionsSelectedId} class="sr-only">
+            {getSelectedOptions(this.multiSelectOptions).length} options selected
+          </span>
+        )}
         <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
-          {this.isWithinForm && <slot name="select" />}
-          {this.currentValue.length > 0 && (
-            <span id={optionsSelectedId} class="sr-only">
-              {getSelectedOptions(this.multiSelectOptions).length} options selected
-            </span>
-          )}
           <input
             id={inputId}
             role="combobox"
@@ -286,6 +287,8 @@ export class MultiSelect {
         <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
           {this.srHighlightedOptionText}
         </span>
+        {/* named slot needs to be placed before closing root element, otherwise slot change listener might not always work for unknown reasons */}
+        {this.isWithinForm && <slot name={hiddenSelectSlotName} />}
       </div>
     );
   }

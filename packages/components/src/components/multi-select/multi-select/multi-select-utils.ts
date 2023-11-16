@@ -13,6 +13,8 @@ export type MultiSelectUpdateEvent = {
   name: string;
 };
 
+export const hiddenSelectSlotName = 'hidden-select';
+
 export const syncMultiSelectOptionProps = (options: MultiSelectOption[], theme: Theme): void => {
   options
     .filter((option) => option.theme !== theme)
@@ -33,7 +35,7 @@ export const initNativeSelect = (
     multiple: 'true',
     'aria-hidden': 'true',
     tabindex: '-1',
-    slot: 'select',
+    slot: hiddenSelectSlotName,
   });
   syncNativeSelect(nativeSelect, name, disabled, required);
   host.prepend(nativeSelect);

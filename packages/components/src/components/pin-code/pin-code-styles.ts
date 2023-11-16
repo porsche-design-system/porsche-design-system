@@ -3,7 +3,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss } from '../../utils';
 import { formElementPaddingVertical, getSlottedTextFieldTextareaSelectStyles } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { type PinCodeLength, removeSlottedSelector, removeStyles } from './pin-code-utils';
+import { hiddenInputSlotName, type PinCodeLength, removeSlottedSelector, removeStyles } from './pin-code-utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
   borderWidthBase,
@@ -67,7 +67,7 @@ export const getComponentCss = (
       ...inputStyles,
       ...(isWithinForm &&
         addImportantToEachRule({
-          '::slotted(input)': {
+          [`::slotted([slot=${hiddenInputSlotName}])`]: {
             position: 'absolute',
             height: inputSize,
             width: 0,
