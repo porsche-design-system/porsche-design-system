@@ -14,9 +14,6 @@ export default function OverviewModal(): JSX.Element {
     #app {
       transform: none;
     }
-    body {
-      position: fixed !important;
-    }
   `;
 
   return (

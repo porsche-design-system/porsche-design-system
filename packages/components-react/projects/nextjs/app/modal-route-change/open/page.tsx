@@ -16,9 +16,6 @@ const ModalPage: NextPage = (): JSX.Element => {
     #app {
       transform: none;
     }
-    body {
-      position: fixed !important;
-    }
   `;
 
   return (

@@ -9,7 +9,7 @@ export default function Overview(): JSX.Element {
       </PLink>
       <div style={{ height: '1000px' }}></div>
       <PLink>
-        <Link to="/modal-route-change/open">Open Modal</Link>
+        <Link preventScrollReset={true} to="/modal-route-change/open">Open Modal</Link>
       </PLink>
       <Outlet />
     </main>

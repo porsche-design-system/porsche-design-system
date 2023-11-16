@@ -15,7 +15,7 @@ export default function _index(): JSX.Element {
         </li>
         <li>
           <PLink>
-            <Link to="/modal-route-change">Modal Route Change</Link>
+            <Link preventScrollReset={true} to="/modal-route-change">Modal Route Change</Link>
           </PLink>
         </li>
       </ul>
