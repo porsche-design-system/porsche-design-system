@@ -748,8 +748,7 @@ input:disabled {
 }
 .spinner {
   grid-area: 1/1/1/7;
-  place-self: center;
-  width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
+  width: 100%;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   pointer-events: none;
 }

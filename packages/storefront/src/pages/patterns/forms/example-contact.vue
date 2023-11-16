@@ -273,7 +273,7 @@
                 v-bind:message="bag.errors.privacy"
                 v-bind:state="getState('privacy')"
               >
-                <span slot="label">
+                <span slot="label" id="privacy">
                   I have read and understood the
                   <a target="_blank">Privacy Policy</a>
                 </span>
@@ -284,6 +284,7 @@
                   v-model="bag.data.privacy"
                   v-on:change="onFieldBlur"
                   required
+                  aria-labelledby="privacy"
                 />
               </p-checkbox-wrapper>
             </p-flex-item>
