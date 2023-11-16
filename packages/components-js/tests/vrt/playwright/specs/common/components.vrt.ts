@@ -161,7 +161,6 @@ components.forEach((component) => {
         );
 
         await setupScenario(page, `/${component}`, baseViewportWidth, {
-          // emulateMediaPrint: true, // no need to emulate when we actually print
           forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
         });
 
