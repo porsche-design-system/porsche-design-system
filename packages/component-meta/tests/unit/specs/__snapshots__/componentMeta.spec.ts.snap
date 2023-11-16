@@ -2092,7 +2092,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "namedSlots": [
-      "select",
+      "hidden-select",
       "label",
       "description",
       "message",
@@ -2277,6 +2277,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "namedSlots": [
+      "hidden-input",
       "label",
       "description",
       "message",

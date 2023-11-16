@@ -216,12 +216,12 @@ const generateComponentMeta = (): void => {
           propValue === 'true'
             ? true
             : propValue === 'false'
-            ? false
-            : // undefined values get lost in JSON.stringify, but null is allowed
-              propValue
-                ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
-                .replace(/\s+/g, ' ') // remove new lines and multiple spaces
-                .replace(/,( })/, '$1') || null; // remove trailing comma in original multiline objects
+              ? false
+              : // undefined values get lost in JSON.stringify, but null is allowed
+                propValue
+                  ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
+                  .replace(/\s+/g, ' ') // remove new lines and multiple spaces
+                  .replace(/,( })/, '$1') || null; // remove trailing comma in original multiline objects
 
         if (typeof cleanedValue === 'string') {
           if (cleanedValue.match(/^\d+$/)) {
@@ -471,6 +471,12 @@ const generateComponentMeta = (): void => {
 
     // named slots
     const namedSlots = Array.from(source.matchAll(/<slot name="([a-z]+)"/g)).map(([, slotName]) => slotName);
+    if (source.includes('<slot name={hiddenSelectSlotName} />')) {
+      namedSlots.push('hidden-select');
+    }
+    if (source.includes('<slot name={hiddenInputSlotName} />')) {
+      namedSlots.push('hidden-input');
+    }
     if (source.includes('<Label')) {
       namedSlots.push('label');
     }
