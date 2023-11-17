@@ -12,7 +12,7 @@ const getLinkToModal = () => selectNode(page, 'p-link a[href="/modal-route-chang
 const getDismissButton = () => selectNode(page, 'p-modal >>> p-button-pure >>> button');
 const getBodyStyle = async () => getAttribute(await selectNode(page, 'body'), 'style');
 
-fit('should keep same scroll position when modal is opened and closed', async () => {
+it('should keep same scroll position when modal is opened and closed', async () => {
   await goto(page, pageUrl);
   expect(await getBodyStyle()).toBe(null);
 
@@ -22,15 +22,15 @@ fit('should keep same scroll position when modal is opened and closed', async ()
   expect(await linkToModal.isIntersectingViewport()).toBeTruthy();
 
   await linkToModal.click();
-  await page.waitForSelector('p-modal');
+  await page.waitForSelector('p-modal >>> p-button-pure');
   expect(await linkToModal.isIntersectingViewport()).toBeTruthy();
 
-  const dismissButton = await getDismissButton()
-  await dismissButton.click()
+  const dismissButton = await getDismissButton();
+  await dismissButton.click();
   expect(await linkToModal.isIntersectingViewport()).toBeTruthy();
 });
 
-fit('should keep same scroll position when modal is opened and closed with route change', async () => {
+it('should keep same scroll position when modal is opened and closed with route change', async () => {
   await goto(page, pageUrl);
   expect(await getBodyStyle()).toBe(null);
 
@@ -40,11 +40,10 @@ fit('should keep same scroll position when modal is opened and closed with route
   expect(await openModalBtn.isIntersectingViewport()).toBeTruthy();
 
   await openModalBtn.click();
-  await page.waitForSelector('p-modal');
+  await page.waitForSelector('p-modal >>> p-button-pure');
   expect(await openModalBtn.isIntersectingViewport()).toBeTruthy();
 
-  const dismissButton = await getDismissButton()
-  await dismissButton.click()
+  const dismissButton = await getDismissButton();
+  await dismissButton.click();
   expect(await openModalBtn.isIntersectingViewport()).toBeTruthy();
 });
-
