@@ -599,7 +599,7 @@ it('should open modal at scroll top position zero when its content is scrollable
 });
 
 describe('scroll lock', () => {
-  const bodyLockedStyle = 'top: 0px; overflow-y: scroll; position: fixed;';
+  const bodyLockedStyle = 'overflow: hidden;';
 
   it('should prevent page from scrolling when open', async () => {
     await initBasicModal({ isOpen: false });
