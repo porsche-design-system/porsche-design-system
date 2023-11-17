@@ -37,7 +37,9 @@ export default function Overview(): JSX.Element {
         ></div>
       </div>
       <PLink>
-        <Link to="/modal-route-change/open">Link to Modal (with route change)</Link>
+        <Link to="/modal-route-change/open" preventScrollReset={true}>
+          Link to Modal (with route change)
+        </Link>
       </PLink>
       <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
         Open Modal (without route change)

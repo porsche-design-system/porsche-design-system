@@ -10,8 +10,8 @@ export const setScrollLock = (isOpen: boolean): void => {
     body: { style, parentElement: htmlEl },
   } = document;
 
-  if (!!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)) {
-    if (isOpen && !style.top) {
+  if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    if (isOpen) {
       style.top = -htmlEl.scrollTop + 'px';
       style.overflowY = 'scroll'; // seems necessary for flyout or modal content to be scrollable
       style.position = 'fixed';
