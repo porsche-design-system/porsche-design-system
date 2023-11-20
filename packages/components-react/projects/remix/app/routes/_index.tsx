@@ -1,5 +1,5 @@
 import { Link } from '@remix-run/react';
-import { PHeading, PLink } from '@porsche-design-system/components-react/ssr';
+import { PHeading } from '@porsche-design-system/components-react/ssr';
 
 export default function _index(): JSX.Element {
   return (
@@ -14,9 +14,9 @@ export default function _index(): JSX.Element {
           <Link to="/accordion-layout-shift">Accordion Layout Shift</Link>
         </li>
         <li>
-          <PLink>
-            <Link preventScrollReset={true} to="/modal-route-change">Modal Route Change</Link>
-          </PLink>
+          <Link preventScrollReset={true} to="/modal">
+            Modal Route Change
+          </Link>
         </li>
       </ul>
     </main>

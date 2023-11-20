@@ -1,25 +1,16 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { useNavigate } from '@remix-run/react';
 import { PButton, PButtonGroup, PModal, PText } from '@porsche-design-system/components-react/ssr';
 
-export default function OverviewModal(): JSX.Element {
+export default function ModalOpen(): JSX.Element {
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
   const onDismiss = useCallback(() => {
-    setIsModalOpen(false);
     navigate(-1);
   }, []);
 
-  const style = `
-    #app {
-      transform: none;
-    }
-  `;
-
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: style }} />
-      <PModal heading="Some Heading" open={isModalOpen} onDismiss={onDismiss}>
+      <PModal heading="Some Heading" open={true} onDismiss={onDismiss}>
         <PText>Some Content</PText>
         <PButtonGroup className="footer">
           <PButton>Save</PButton>

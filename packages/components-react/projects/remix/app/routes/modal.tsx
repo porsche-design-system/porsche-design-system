@@ -2,7 +2,7 @@ import { Link, Outlet } from '@remix-run/react';
 import { useCallback, useState } from 'react';
 import { PModal, PText, PLink, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
 
-export default function ModalRouteChangeLayout(): JSX.Element {
+export default function ModalLayout(): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const onOpen = useCallback(() => {
     setIsModalOpen(true);
@@ -10,12 +10,6 @@ export default function ModalRouteChangeLayout(): JSX.Element {
   const onDismiss = useCallback(() => {
     setIsModalOpen(false);
   }, []);
-
-  const style = `
-    #app {
-      transform: none;
-    }
-  `;
 
   return (
     <main>
@@ -37,7 +31,7 @@ export default function ModalRouteChangeLayout(): JSX.Element {
         ></div>
       </div>
       <PLink>
-        <Link to="/modal-route-change/open" preventScrollReset={true}>
+        <Link to="/modal/open" preventScrollReset={true}>
           Link to Modal (with route change)
         </Link>
       </PLink>
@@ -45,18 +39,15 @@ export default function ModalRouteChangeLayout(): JSX.Element {
         Open Modal (without route change)
       </PButton>
       {isModalOpen && (
-        <>
-          <style dangerouslySetInnerHTML={{ __html: style }} />
-          <PModal heading="Some Heading" open={isModalOpen} onDismiss={onDismiss}>
-            <PText>Some Content</PText>
-            <PButtonGroup className="footer">
-              <PButton>Save</PButton>
-              <PButton type="button" variant="secondary" icon="close" onClick={onDismiss}>
-                Close
-              </PButton>
-            </PButtonGroup>
-          </PModal>
-        </>
+        <PModal heading="Some Heading" open={isModalOpen} onDismiss={onDismiss}>
+          <PText>Some Content</PText>
+          <PButtonGroup className="footer">
+            <PButton>Save</PButton>
+            <PButton type="button" variant="secondary" icon="close" onClick={onDismiss}>
+              Close
+            </PButton>
+          </PButtonGroup>
+        </PModal>
       )}
       <Outlet />
     </main>
