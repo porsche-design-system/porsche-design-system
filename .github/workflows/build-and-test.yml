@@ -167,7 +167,7 @@ jobs:
           name: components-js-vrt-puppeteer-regression
           path: ./packages/components-js/tests/vrt/puppeteer/results
   components-js-common-vrt-playwright-chrome:
-    name: 'Components JS Common VRT (Playwright Chrome)'
+    name: 'Components JS VRT Common (Playwright Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -187,10 +187,10 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: components-js-common-vrt-playwright-chrome-regression
+          name: components-js-vrt-common-playwright-chrome-regression
           path: ./packages/components-js/tests/vrt/playwright/results
   components-js-custom-states-vrt-playwright-chrome:
-    name: 'Components JS Custom/States VRT (Playwright Chrome)'
+    name: 'Components JS VRT Custom/States (Playwright Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -205,12 +205,12 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
-          args: --components-js:chrome:custom-states
+          args: --components-js:chrome:customAndStates
       - name: 'VRT Regression (Playwright)'
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: components-js-custom-states-vrt-playwright-chrome-regression
+          name: components-js-vrt-custom-states-playwright-chrome-regression
           path: ./packages/components-js/tests/vrt/playwright/results
   components-js-vrt-playwright-safari:
     name: 'Components JS VRT (Playwright Safari)'
