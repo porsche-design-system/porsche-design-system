@@ -1,14 +1,14 @@
 import type { NextPage } from 'next';
-import { PHeadline } from '@porsche-design-system/components-react/ssr';
+import { PHeading } from '@porsche-design-system/components-react/ssr';
 import { routes } from '../routes';
 import Link from 'next/link';
 
 const HomePage: NextPage = (): JSX.Element => {
   return (
     <>
-      <PHeadline>
+      <PHeading>
         Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </PHeadline>
+      </PHeading>
 
       <ul>
         {routes.map((route) => (

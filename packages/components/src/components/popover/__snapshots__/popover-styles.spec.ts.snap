@@ -50,7 +50,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -83,7 +83,7 @@ button:focus:not(:focus-visible)::before {
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
-  animation: 240ms keyframes-fadeIn ease forwards;
+  animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
 .spacer::before {
   content: "";
@@ -174,7 +174,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -207,7 +207,7 @@ button:focus:not(:focus-visible)::before {
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
-  animation: 240ms keyframes-fadeIn ease forwards;
+  animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
 .spacer::before {
   content: "";
@@ -298,7 +298,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -331,7 +331,7 @@ button:focus:not(:focus-visible)::before {
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
-  animation: 240ms keyframes-fadeIn ease forwards;
+  animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
 .spacer::before {
   content: "";
@@ -422,7 +422,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -455,7 +455,7 @@ button:focus:not(:focus-visible)::before {
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
-  animation: 240ms keyframes-fadeIn ease forwards;
+  animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
 .spacer::before {
   content: "";
@@ -546,7 +546,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -579,7 +579,7 @@ button:focus:not(:focus-visible)::before {
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
-  animation: 240ms keyframes-fadeIn ease forwards;
+  animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
 .spacer::before {
   content: "";
@@ -670,7 +670,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -703,7 +703,7 @@ button:focus:not(:focus-visible)::before {
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
-  animation: 240ms keyframes-fadeIn ease forwards;
+  animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
 .spacer::before {
   content: "";
@@ -794,7 +794,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -827,7 +827,7 @@ button:focus:not(:focus-visible)::before {
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
-  animation: 240ms keyframes-fadeIn ease forwards;
+  animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
 .spacer::before {
   content: "";
@@ -918,7 +918,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -951,7 +951,7 @@ button:focus:not(:focus-visible)::before {
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
-  animation: 240ms keyframes-fadeIn ease forwards;
+  animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
 .spacer::before {
   content: "";
@@ -1042,7 +1042,7 @@ button:focus:not(:focus-visible)::before {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -1076,7 +1076,7 @@ button:focus:not(:focus-visible)::before {
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
-  animation: 240ms keyframes-fadeIn ease forwards;
+  animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
 .spacer::before {
   content: "";

@@ -1,5 +1,6 @@
 import { themeLightStateHover } from '../theme';
 import { borderRadiusMedium, borderRadiusSmall } from '../border';
+import { motionDurationShort, motionEasingBase } from '../motion';
 // import { frostedGlassStyle } from '../frostedGlass';
 
 type BorderRadius = 'small' | 'medium';
@@ -24,7 +25,7 @@ export const getHoverStyle = (opts?: Options) => {
     marginRight: `-${offsetHorizontal}`,
     paddingLeft: offsetHorizontal,
     paddingRight: offsetHorizontal,
-    transition: 'background var(--p-transition-duration, .24s) ease',
+    transition: `background var(--p-transition-duration, ${motionDurationShort}) ${motionEasingBase}`,
     // TODO: how can we test this later in vrt?
     '@media(hover:hover)': {
       '&:hover': {

@@ -1,5 +1,6 @@
 @import 'lib/border';
 @import 'lib/theme';
+@import 'lib/motion';
 
 @mixin pds-skeleton($theme: 'light') {
   @if ($theme == 'dark') {
@@ -21,8 +22,7 @@
   display: block;
   border-radius: $pds-border-radius-small;
 
-  // TODO: use motion variables
-  animation: skeletonAnimation 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  animation: skeletonAnimation $pds-motion-duration-long $pds-motion-easing-base infinite;
 
   @keyframes skeletonAnimation {
     from {

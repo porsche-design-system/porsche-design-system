@@ -17,8 +17,6 @@ import {
 import type { ElementHandle, Page } from 'puppeteer';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const CSS_TRANSITION_DURATION = 240;
-
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
@@ -109,14 +107,12 @@ describe('input type="password"', () => {
 
     await setProperty(input, 'disabled', true);
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getElementStyle(input, 'cursor'), 'disabled cursor').not.toBe(initialCursor);
     expect(await getElementStyle(input, 'borderColor'), 'disabled border').not.toBe(initialBorderColor);
 
     await setProperty(input, 'disabled', false);
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getElementStyle(input, 'cursor'), 'not disabled cursor').toBe(initialCursor);
     expect(await getElementStyle(input, 'borderColor'), 'not disabled borderColor').toBe(initialBorderColor);
@@ -299,13 +295,11 @@ describe('input type="search"', () => {
 
       await setProperty(input, 'disabled', true);
       await waitForStencilLifecycle(page);
-      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
       expect(await isButtonDisabled(buttonHost)).toBe(true);
 
       await setProperty(input, 'disabled', false);
       await waitForStencilLifecycle(page);
-      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
       expect(await isButtonDisabled(buttonHost)).toBe(false);
     });
@@ -319,13 +313,11 @@ describe('input type="search"', () => {
 
       await setProperty(input, 'readOnly', true);
       await waitForStencilLifecycle(page);
-      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
       expect(await isButtonDisabled(buttonHost)).toBe(true);
 
       await setProperty(input, 'readOnly', false);
       await waitForStencilLifecycle(page);
-      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
       expect(await isButtonDisabled(buttonHost)).toBe(false);
     });

@@ -2,6 +2,61 @@
 
 <TableOfContents></TableOfContents>
 
+## Global Theme
+
+**Since v3.9.0** you can set the `theme` property for all child components by passing an option to
+`PorscheDesignSystemModule.load()`.
+
+Possible values for `theme` are: `'auto' | 'dark' | 'light'`  
+Local overrides on a per component basis are still possible as usual.
+
+```ts
+// app.module.ts
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PorscheDesignSystemModule, WEB_COMPONENTS_PREFIX } from '@porsche-design-system/components-angular';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, PorscheDesignSystemModule.load({ theme: 'dark' })],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+In case you want to dynamically change the `theme` at runtime, you can use the injectable `THEME_TOKEN` like:
+
+```ts
+import { ChangeDetectionStrategy, Component, Inject, inject } from '@angular/core';
+import { type Theme, THEME_TOKEN } from '@porsche-design-system/components-angular';
+import { BehaviorSubject } from 'rxjs';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <select [ngModel]="theme$ | async" (ngModelChange)="theme$.next($event)">
+      <option *ngFor="let item of themes" [value]="item">{{ item }}</option>
+    </select>
+
+    <router-outlet />
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AppComponent {
+  public themes: Theme[] = ['light', 'dark', 'auto'];
+  // like this
+  public theme$ = inject(THEME_TOKEN);
+
+  // or via constructor dependency injection
+  constructor(@Inject(THEME_TOKEN) theme$: BehaviorSubject<Theme>) {
+    theme$.next('light');
+  }
+}
+```
+
 ## Prefixing
 
 In case of a micro-service architecture, multiple instances and versions of the Porsche Design System can be combined in
@@ -78,3 +133,13 @@ import { AppComponent } from './app.component';
 })
 export class AppModule {}
 ```
+
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Code extends Vue {
+  item = '{{ item }}'; // to trick interpolation
+}
+</script>

@@ -150,7 +150,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
 
       :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
         color: currentcolor !important;
-        transition: background var(--p-transition-duration, .24s) ease !important;
+        transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1) !important;
         margin-left: -2px !important;
         margin-right: -2px !important;
         padding-left: 2px !important;
@@ -379,7 +379,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
 
           :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
             color: currentcolor !important;
-            transition: background var(--p-transition-duration, .24s) ease !important;
+            transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1) !important;
             margin-left: -2px !important;
             margin-right: -2px !important;
             padding-left: 2px !important;
@@ -569,7 +569,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
 
       :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
         color: currentcolor !important;
-        transition: background var(--p-transition-duration, .24s) ease !important;
+        transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1) !important;
         margin-left: -2px !important;
         margin-right: -2px !important;
         padding-left: 2px !important;
@@ -759,7 +759,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
 
       :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
         color: currentcolor !important;
-        transition: background var(--p-transition-duration, .24s) ease !important;
+        transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1) !important;
         margin-left: -2px !important;
         margin-right: -2px !important;
         padding-left: 2px !important;
@@ -988,7 +988,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
 
           :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
             color: currentcolor !important;
-            transition: background var(--p-transition-duration, .24s) ease !important;
+            transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1) !important;
             margin-left: -2px !important;
             margin-right: -2px !important;
             padding-left: 2px !important;
@@ -1178,7 +1178,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
 
       :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
         color: currentcolor !important;
-        transition: background var(--p-transition-duration, .24s) ease !important;
+        transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1) !important;
         margin-left: -2px !important;
         margin-right: -2px !important;
         padding-left: 2px !important;

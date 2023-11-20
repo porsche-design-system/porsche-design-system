@@ -126,11 +126,11 @@ it('should visible after opened', async () => {
   await initBasicFlyout({ open: false });
   const host = await getHost();
   await setProperty(host, 'open', true);
-  await waitForFlyoutTransition();
+
   expect(await getFlyoutVisibility()).toBe('visible');
 });
 
-it('should have correct transform when dismissed and opened', async () => {
+it('should have correct transform when opened and dismissed', async () => {
   await initBasicFlyout({ open: false });
   const getFlyoutTransform = async () => getElementStyle(await getFlyout(), 'transform', { waitForTransition: true });
 
@@ -138,12 +138,13 @@ it('should have correct transform when dismissed and opened', async () => {
   expect(initialFlyoutTransform).toBe(`matrix(1, 0, 0, 1, ${flyoutMinWidth}, 0)`);
 
   await openFlyout();
-  await waitForFlyoutTransition();
+
   const openFlyoutTransform = await getFlyoutTransform();
   expect(openFlyoutTransform).toBe('none');
   expect(initialFlyoutTransform).not.toBe(openFlyoutTransform);
 
   await dismissFlyout();
+  // TODO: why is timeout needed? transition durations should be overwritten with 0s
   await waitForFlyoutTransition();
   const finalFlyoutTransform = await getFlyoutTransform();
   expect(finalFlyoutTransform).toBe(initialFlyoutTransform);
@@ -385,20 +386,19 @@ describe('focus behavior', () => {
       </script>`
     );
     await waitForStencilLifecycle(page);
-    await waitForFlyoutTransition();
 
     expect(await getFlyoutVisibility(), 'initial').toBe('hidden');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await (await selectNode(page, '#btn-open')).click();
     await waitForStencilLifecycle(page);
-    await waitForFlyoutTransition();
 
     expect(await getFlyoutVisibility()).toBe('visible');
 
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
-    await waitForFlyoutTransition();
+
+    // TODO: why is timeout needed? transition durations should be overwritten with 0s
     // TODO: Check why this is taking so much time?
     await waitForFlyoutTransition(); // Necessary extra time
 
@@ -598,7 +598,6 @@ describe('lifecycle', () => {
     const host = await getHost();
 
     await setProperty(host, 'open', false);
-    await waitForFlyoutTransition();
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
