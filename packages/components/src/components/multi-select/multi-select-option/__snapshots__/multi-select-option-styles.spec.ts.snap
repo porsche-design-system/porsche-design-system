@@ -19,7 +19,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -81,7 +81,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;

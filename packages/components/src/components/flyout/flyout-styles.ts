@@ -2,21 +2,25 @@ import { getCss, isThemeDark, scrollShadowColor, scrollShadowColorDark, type The
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  cssVariableTransitionDuration,
   getFrostedGlassBackgroundJssStyles,
   getInsetJssStyle,
   getThemedColors,
+  getTransition,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { FLYOUT_Z_INDEX } from '../../constants';
-import { gridGap, spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
+import {
+  gridGap,
+  motionDurationLong,
+  spacingFluidLarge,
+  spacingStaticMedium,
+} from '@porsche-design-system/utilities-v2';
 import type { FlyoutPosition } from './flyout-utils';
 
 export const headerShadowClass = 'header--shadow';
 export const footerShadowClass = 'footer--shadow';
-
-const flyoutTransitionDuration = '0.5s';
-const flyoutTransitionTimingFunction = 'cubic-bezier(0.77, 0, 0.175, 1)';
 
 export const getComponentCss = (
   isOpen: boolean,
@@ -51,10 +55,10 @@ export const getComponentCss = (
               }
             : {
                 visibility: 'hidden',
-                transition: `visibility 0s linear ${flyoutTransitionDuration}`,
+                transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationLong})`,
               }),
           ...getInsetJssStyle(),
-          ...getFrostedGlassBackgroundJssStyles(isOpen, flyoutTransitionDuration, theme),
+          ...getFrostedGlassBackgroundJssStyles(isOpen, 'long', theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -75,11 +79,21 @@ export const getComponentCss = (
       maxWidth: 'var(--p-flyout-max-width, 1180px)',
       color: primaryColor, // enables color inheritance for slotted content
       background: backgroundColor,
-      opacity: isOpen ? 1 : 0,
-      transform: isOpen ? 'initial' : `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
-      transition: `opacity ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction} ${
-        isOpen ? '0s' : flyoutTransitionDuration
-      }, transform ${flyoutTransitionDuration} ${flyoutTransitionTimingFunction}`,
+      ...(isOpen
+        ? {
+            opacity: 1,
+            transform: 'initial',
+            transition: `${getTransition('opacity', 'long', 'in')}, ${getTransition('transform', 'long', 'in')}`,
+          }
+        : {
+            opacity: 0,
+            transform: `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
+            transition: `${getTransition('opacity', 'short', 'out', 'long')}, ${getTransition(
+              'transform',
+              'long',
+              'out'
+            )}`,
+          }),
       boxShadow: `${isPositionStart ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: primaryColorDark,

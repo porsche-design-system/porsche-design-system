@@ -5,12 +5,15 @@ import {
   borderWidthBase,
   fontLineHeight,
   frostedGlassStyle,
+  motionDurationShort,
+  motionEasingBase,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  cssVariableAnimationDuration,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getInsetJssStyle,
@@ -225,8 +228,8 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
       pointerEvents: 'none',
       animation:
         ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
-          ? '240ms $fadeIn ease forwards'
-          : 'var(--p-animation-duration, 240ms) $fadeIn ease forwards',
+          ? `${motionDurationShort} $fadeIn ${motionEasingBase} forwards`
+          : `var(${cssVariableAnimationDuration}, ${motionDurationShort}) $fadeIn ${motionEasingBase} forwards`,
       '&::before': {
         content: '""',
         position: 'absolute',

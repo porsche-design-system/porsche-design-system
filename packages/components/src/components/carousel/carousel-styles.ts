@@ -26,6 +26,7 @@ import {
   gridExtendedOffset,
   gridGap,
   headingXLargeStyle,
+  motionDurationModerate,
   spacingFluidMedium,
   spacingFluidXSmall,
   spacingStaticMedium,
@@ -34,7 +35,7 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
-export const carouselTransitionDuration = 400;
+export const carouselTransitionDuration = motionDurationModerate;
 export const bulletActiveClass = 'bullet--active';
 export const paginationInfiniteStartCaseClass = 'pagination--infinite';
 export const bulletInfiniteClass = 'bullet--infinite';
@@ -213,7 +214,7 @@ export const getComponentCss = (
         width: 'fit-content',
         height: paginationBulletSize, // Needed to avoid jumping when rewinding dynamically added slides
         gap: spacingStaticSmall,
-        transition: `transform ${carouselTransitionDuration}ms`,
+        transition: `transform ${carouselTransitionDuration}`,
       },
       bullet: {
         borderRadius: borderRadiusSmall,
@@ -231,12 +232,12 @@ export const getComponentCss = (
           ? {
               width: '0px',
               height: '0px',
-              transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms, height ${carouselTransitionDuration}ms`,
+              transition: `background-color ${carouselTransitionDuration}, width ${carouselTransitionDuration}, height ${carouselTransitionDuration}`,
             }
           : {
               width: paginationBulletSize,
               height: paginationBulletSize,
-              transition: `background-color ${carouselTransitionDuration}ms, width ${carouselTransitionDuration}ms`,
+              transition: `background-color ${carouselTransitionDuration}, width ${carouselTransitionDuration}`,
             }),
       },
       ...(isInfinitePagination && {
