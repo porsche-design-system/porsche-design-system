@@ -112,7 +112,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter(Boolean).join('\n'
 
     const hasTheme = extendedProps.some(({ key }) => key === 'theme');
     const syncProperties = hasTheme
-      ? `const syncProps = (): void => syncProperties(pdsComponentRef, { ...props, theme: themeRef.value || props.theme });`
+      ? `const syncProps = (): void => syncProperties(pdsComponentRef, { ...props, theme: props.theme || themeRef.value });`
       : `const syncProps = (): void => syncProperties(pdsComponentRef, props);`;
 
     const content = [
