@@ -12,12 +12,6 @@ export default function ModalRouteChangeLayout({ children }: PropsWithChildren<{
     setIsModalOpen(false);
   }, []);
 
-  const style = `
-    #app {
-      transform: none;
-    }
-  `;
-
   return (
     <section>
       <PHeading>Welcome to Overview</PHeading>
@@ -47,20 +41,17 @@ export default function ModalRouteChangeLayout({ children }: PropsWithChildren<{
         Open Modal (without route change)
       </PButton>
       {isModalOpen && (
-        <>
-          <style dangerouslySetInnerHTML={{ __html: style }} />
-          <PModal heading="Some Heading" open={isModalOpen} onDismiss={onDismiss}>
-            <PText>Some Content</PText>
-            <PButtonGroup className="footer">
-              <PButton>Save</PButton>
-              <PButton type="button" variant="secondary" icon="close" onClick={onDismiss}>
-                Close
-              </PButton>
-            </PButtonGroup>
-          </PModal>
-        </>
+        <PModal heading="Some Heading" open={isModalOpen} onDismiss={onDismiss}>
+          <PText>Some Content</PText>
+          <PButtonGroup className="footer">
+            <PButton>Save</PButton>
+            <PButton type="button" variant="secondary" icon="close" onClick={onDismiss}>
+              Close
+            </PButton>
+          </PButtonGroup>
+        </PModal>
       )}
-      {children}
+      <main>{children}</main>
     </section>
   );
 }
