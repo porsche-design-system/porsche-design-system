@@ -251,6 +251,8 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "hover/getHoverStyle.cjs": [
     "border/borderRadiusMedium.cjs",
     "border/borderRadiusSmall.cjs",
+    "motion/motionDurationShort.cjs",
+    "motion/motionEasingBase.cjs",
     "theme/themeLightStateHover.cjs",
   ],
   "index.cjs": [
@@ -466,6 +468,8 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "motion/motionEasingOut.cjs": [],
   "skeleton/getSkeletonStyle.cjs": [
     "border/borderRadiusSmall.cjs",
+    "motion/motionDurationLong.cjs",
+    "motion/motionEasingBase.cjs",
     "theme/themeDarkBackgroundSurface.cjs",
     "theme/themeLightBackgroundSurface.cjs",
   ],
@@ -926,6 +930,8 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "hover/getHoverStyle.mjs": [
     "border/borderRadiusMedium.mjs",
     "border/borderRadiusSmall.mjs",
+    "motion/motionDurationShort.mjs",
+    "motion/motionEasingBase.mjs",
     "theme/themeLightStateHover.mjs",
   ],
   "index.mjs": [
@@ -1141,6 +1147,8 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "motion/motionEasingOut.mjs": [],
   "skeleton/getSkeletonStyle.mjs": [
     "border/borderRadiusSmall.mjs",
+    "motion/motionDurationLong.mjs",
+    "motion/motionEasingBase.mjs",
     "theme/themeDarkBackgroundSurface.mjs",
     "theme/themeLightBackgroundSurface.mjs",
   ],

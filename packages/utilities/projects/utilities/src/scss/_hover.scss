@@ -1,6 +1,7 @@
 @import 'lib/border';
 // @import 'lib/frosted-glass';
 @import 'lib/theme';
+@import 'lib/motion';
 
 $pds-focus-border-radius-map: (
   'small': $pds-border-radius-small,
@@ -24,7 +25,7 @@ $pds-offset-horizontal: 2px;
   margin-right: -#{$pds-offset-horizontal};
   padding-left: $pds-offset-horizontal;
   padding-right: $pds-offset-horizontal;
-  transition: background var(--p-transition-duration, 0.24s) ease;
+  transition: background var(--p-transition-duration, $pds-motion-duration-short) $pds-motion-easing-base;
   @media (hover: hover) {
     &:hover {
       // @include pds-frosted-glass;

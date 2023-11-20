@@ -56,7 +56,7 @@ the keyboard only.
 To announce the correct heading for **screen reader** users, it is mandatory to set the `heading` property or provide a
 meaningful heading through **ARIA** with the `aria` property.
 
-### Framework Implementations
+## Framework Implementations
 
 <Playground :frameworkMarkup="codeExampleAccessibility" :markup="widthMarkup" :config="config"></Playground>
 
