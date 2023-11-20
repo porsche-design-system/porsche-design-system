@@ -12,7 +12,7 @@ const getLinkToModal = () => selectNode(page, 'p-link a[href="/modal-route-chang
 const getDismissButton = () => selectNode(page, 'p-modal >>> p-button-pure >>> button');
 const getBodyStyle = async () => getAttribute(await selectNode(page, 'body'), 'style');
 
-it('should keep same scroll position when modal is opened and closed', async () => {
+it('should keep same scroll position when modal is opened and closed with route change', async () => {
   await goto(page, pageUrl);
   expect(await getBodyStyle()).toBe(null);
 
@@ -30,7 +30,7 @@ it('should keep same scroll position when modal is opened and closed', async () 
   expect(await linkToModal.isIntersectingViewport()).toBeTruthy();
 });
 
-it('should keep same scroll position when modal is opened and closed with route change', async () => {
+it('should keep same scroll position when modal is opened and closed', async () => {
   await goto(page, pageUrl);
   expect(await getBodyStyle()).toBe(null);
 

@@ -3,7 +3,7 @@ import { type PropsWithChildren, useCallback, useState } from 'react';
 import { PHeading, PModal, PText, PLink, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
 
-export default function OverviewLayout({ children }: PropsWithChildren<{}>): JSX.Element {
+export default function ModalRouteChangeLayout({ children }: PropsWithChildren<{}>): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const onOpen = useCallback(() => {
     setIsModalOpen(true);

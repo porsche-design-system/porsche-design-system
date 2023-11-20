@@ -2,7 +2,7 @@ import { Link, Outlet } from '@remix-run/react';
 import { useCallback, useState } from 'react';
 import { PModal, PText, PLink, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
 
-export default function Overview(): JSX.Element {
+export default function ModalRouteChangeLayout(): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const onOpen = useCallback(() => {
     setIsModalOpen(true);
