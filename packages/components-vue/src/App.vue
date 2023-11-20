@@ -17,20 +17,20 @@
 </script>
 
 <template>
-  <PorscheDesignSystemProvider cdn="auto" :theme="theme">
-    <select name="route" v-model="route" @change="router.push(($event.target as HTMLSelectElement).value)">
-      <option disabled value="/">Select a page</option>
-      <option v-for="(item, index) in routes" :key="index" :value="item.path" :disabled="item.isDisabled">
-        {{ item.name }}
-      </option>
-    </select>
+  <select name="route" v-model="route" @change="router.push(($event.target as HTMLSelectElement).value)">
+    <option disabled value="/">Select a page</option>
+    <option v-for="(item, index) in routes" :key="index" :value="item.path" :disabled="item.isDisabled">
+      {{ item.name }}
+    </option>
+  </select>
 
-    <select name="theme" v-model="theme">
-      <option v-for="(item, index) in themes" :key="index" :value="item">{{ item }}</option>
-    </select>
+  <select name="theme" v-model="theme">
+    <option v-for="(item, index) in themes" :key="index" :value="item">{{ item }}</option>
+  </select>
 
-    <div id="app">
+  <div id="app">
+    <PorscheDesignSystemProvider cdn="auto" :theme="theme">
       <RouterView />
-    </div>
-  </PorscheDesignSystemProvider>
+    </PorscheDesignSystemProvider>
+  </div>
 </template>
