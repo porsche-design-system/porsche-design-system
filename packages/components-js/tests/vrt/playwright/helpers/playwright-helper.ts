@@ -1,11 +1,10 @@
 import { type Page } from '@playwright/test';
-import { getComponentChunkLinks, getInitialStyles, getIconLinks } from '@porsche-design-system/components-js/partials';
+import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 import type { PlaywrightTestConfig } from 'playwright/types/test';
-import { COMPONENT_CHUNK_NAMES } from '../../../../projects/components-wrapper';
-import { ICON_NAMES } from '@porsche-design-system/icons';
+import { chunksLink, iconsLink } from '../../../../scripts/replaceChunkAndIconLinks';
 
 export const thresholdConfig: PlaywrightTestConfig['expect']['toHaveScreenshot'] = {
   maxDiffPixelRatio: undefined,
@@ -165,16 +164,6 @@ export const setupScenario = async (
     height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
   });
 };
-
-const chunksLink = getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }).replace(
-  /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
-  'http://localhost:3001'
-);
-
-const iconsLink = getIconLinks({ icons: [...ICON_NAMES] }).replace(
-  /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
-  'http://localhost:3001'
-);
 
 type SetContentWithDesignSystemOptions = {
   injectIntoHead?: string;
