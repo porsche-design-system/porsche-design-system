@@ -101,12 +101,9 @@ const addButtonsBeforeAndAfterFlyout = () =>
   });
 
 const scrollFlyoutTo = async (selector: string) =>
-  await page.evaluate(
-    (el) => {
-      el.scrollIntoView();
-    },
-    await selectNode(page, selector)
-  );
+  await page.evaluate((el) => {
+    el.scrollIntoView();
+  }, await selectNode(page, selector));
 
 const expectDismissButtonToBeFocused = async (failMessage?: string) => {
   const host = await getHost();
@@ -552,7 +549,7 @@ it('should open flyout at scroll top position zero when its content is scrollabl
 });
 
 describe('scroll lock', () => {
-  const bodyLockedStyle = 'top: 0px; overflow-y: scroll; position: fixed;';
+  const bodyLockedStyle = 'overflow: hidden;';
 
   it('should prevent page from scrolling when open', async () => {
     await initBasicFlyout({ open: false });
