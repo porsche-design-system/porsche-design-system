@@ -1,8 +1,7 @@
 'use client';
 
-import { componentsReady } from '@porsche-design-system/components-react';
 import { type JSX, type PropsWithChildren, useState } from 'react';
-import { PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react/ssr';
+import { componentsReady, PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react/ssr';
 import { Selects } from '../components';
 
 export const Providers = ({ children }: PropsWithChildren<{}>): JSX.Element => {
