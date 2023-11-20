@@ -34,7 +34,7 @@ h2,h3,h4,h5,h6 {
 }
 .image-container {
   position: absolute;
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
   top: 0;
   left: 0;
   right: 0;
@@ -129,7 +129,7 @@ h2,h3,h4,h5,h6 {
 }
 .image-container {
   position: absolute;
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
   top: 0;
   left: 0;
   right: 0;
@@ -230,7 +230,7 @@ h2,h3,h4,h5,h6 {
 }
 .image-container {
   position: absolute;
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
   top: 0;
   left: 0;
   right: 0;
@@ -331,7 +331,7 @@ h2,h3,h4,h5,h6 {
 }
 .image-container {
   position: absolute;
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
   top: 0;
   left: 0;
   right: 0;
@@ -426,7 +426,7 @@ h2,h3,h4,h5,h6 {
 }
 .image-container {
   position: absolute;
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
   top: 0;
   left: 0;
   right: 0;
@@ -527,7 +527,7 @@ h2,h3,h4,h5,h6 {
 }
 .image-container {
   position: absolute;
-  transition: transform var(--p-transition-duration, .24s) ease;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
   top: 0;
   left: 0;
   right: 0;

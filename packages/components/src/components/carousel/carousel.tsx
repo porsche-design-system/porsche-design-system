@@ -43,7 +43,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
-import { gridGap } from '@porsche-design-system/utilities-v2';
+import { gridGap, motionEasingBase } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
@@ -181,13 +181,14 @@ export class Carousel {
       start: this.activeSlideIndex,
       autoWidth: this.slidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
       arrows: false,
+      easing: motionEasingBase,
       pagination: false,
       rewind: this.rewind,
       rewindByDrag: true, // only works when rewind: true
       drag: this.hasNavigation,
       perMove: 1,
       mediaQuery: 'min',
-      speed: carouselTransitionDuration,
+      speed: parseFloat(carouselTransitionDuration) * 1000,
       gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents

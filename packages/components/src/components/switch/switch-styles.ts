@@ -158,7 +158,7 @@ export const getComponentCss = (
       borderRadius: '14px',
       backgroundColor: buttonBackgroundColor,
       cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
-      transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
+      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         borderColor: buttonBorderColorDark,
         backgroundColor: buttonBackgroundColorDark,
@@ -177,7 +177,7 @@ export const getComponentCss = (
         backgroundColor: toggleBackgroundColorDark,
       }),
       transform: `translate3d(${checked ? '20px' : '0'}, 0, 0)`,
-      transition: `${getTransition('background-color')},${getTransition('transform')}`,
+      transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
     },
     ...(loading && {
       spinner: {
