@@ -372,7 +372,7 @@ button:disabled {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: false, filter: false, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: false, filter: false, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -419,7 +419,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: false, filter: true, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: false, filter: true, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -501,7 +501,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: true, filter: false, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: true, filter: false, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -545,7 +545,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: true, filter: true, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: true, filter: true, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -624,7 +624,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, state: none, disabled: false, filter: false, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, state: none, disabled: false, filter: false, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -765,7 +765,7 @@ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, state: none, disabled: false, filter: false, theme: light and isNativePopover: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, state: none, disabled: false, filter: false, isNativePopover: true and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -841,63 +841,8 @@ ul {
 .sr-text {
   display: none;
 }
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #535457;
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
-}
 .popover {
+  display: block;
   position: absolute;
   bottom: auto;
   border: none;
@@ -907,6 +852,66 @@ ul {
   margin: 0;
   overflow: visible;
   height: auto;
+  max-height: 416px;
+}
+.popover:-internal-popover-in-top-layer::backdrop {
+  display: none;
+}
+.option {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: border-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.optgroup {
+  display: block;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
+}
+.optgroup~.option {
+  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -917,7 +922,7 @@ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, state: none, disabled: false, filter: true, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, state: none, disabled: false, filter: true, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -1093,7 +1098,7 @@ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, state: none, disabled: true, filter: false, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, state: none, disabled: true, filter: false, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -1231,7 +1236,7 @@ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, state: none, disabled: true, filter: true, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, state: none, disabled: true, filter: true, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -1404,7 +1409,7 @@ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: false, filter: false, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: false, filter: false, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -1451,7 +1456,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: false, filter: true, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: false, filter: true, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -1533,7 +1538,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: true, filter: false, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: true, filter: false, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -1577,7 +1582,7 @@ button:disabled {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: true, filter: true, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: true, filter: true, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -1656,7 +1661,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, state: none, disabled: false, filter: false, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, state: none, disabled: false, filter: false, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -1797,7 +1802,7 @@ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, state: none, disabled: false, filter: false, theme: light and isNativePopover: true 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, state: none, disabled: false, filter: false, isNativePopover: true and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -1872,64 +1877,9 @@ ul {
 
 .sr-text {
   display: none;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  color: #535457;
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.optgroup {
-  display: block;
-  padding: 3px 14px;
-  font-weight: 600;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 .popover {
+  display: block;
   position: absolute;
   bottom: auto;
   border: none;
@@ -1939,6 +1889,66 @@ ul {
   margin: 0;
   overflow: visible;
   height: auto;
+  max-height: 416px;
+}
+.popover:-internal-popover-in-top-layer::backdrop {
+  display: none;
+}
+.option {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: border-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.optgroup {
+  display: block;
+  padding: 3px 14px;
+  font-weight: 600;
+}
+.optgroup:not(:first-child) {
+  margin-top: 8px;
+}
+.optgroup~.option {
+  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1949,7 +1959,7 @@ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, state: none, disabled: false, filter: true, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, state: none, disabled: false, filter: true, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -2125,7 +2135,7 @@ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, state: none, disabled: true, filter: false, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, state: none, disabled: true, filter: false, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -2263,7 +2273,7 @@ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, state: none, disabled: true, filter: true, theme: light and isNativePopover: false 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, state: none, disabled: true, filter: true, isNativePopover: false and theme: light 1`] = `
 ":host {
   --p-internal-dropdown-position: absolute;
   display: block;
@@ -4020,7 +4030,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: down, isOpen: dark and theme: false, isNativePopover: %s 1`] = `
+exports[`getListStyles() should return correct css for direction: down and theme: dark 1`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4115,7 +4125,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: down, isOpen: dark and theme: false, isNativePopover: %s 2`] = `
+exports[`getListStyles() should return correct css for direction: down and theme: dark 2`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4210,7 +4220,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: down, isOpen: light and theme: false, isNativePopover: %s 1`] = `
+exports[`getListStyles() should return correct css for direction: down and theme: light 1`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4305,7 +4315,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: down, isOpen: light and theme: false, isNativePopover: %s 2`] = `
+exports[`getListStyles() should return correct css for direction: down and theme: light 2`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4400,7 +4410,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: down, isOpen: light and theme: true, isNativePopover: %s 1`] = `
+exports[`getListStyles() should return correct css for direction: down and theme: light 3`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4486,17 +4496,6 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 .optgroup~.option {
   padding-left: 24px;
 }
-.popover {
-  position: absolute;
-  bottom: auto;
-  border: none;
-  background: none;
-  pointer-events: all;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  height: auto;
-}
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
@@ -4506,7 +4505,7 @@ exports[`getListStyles() should return correct css for direction: down, isOpen: 
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: up, isOpen: dark and theme: false, isNativePopover: %s 1`] = `
+exports[`getListStyles() should return correct css for direction: up and theme: dark 1`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4601,7 +4600,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: up, isOpen: dark and theme: false, isNativePopover: %s 2`] = `
+exports[`getListStyles() should return correct css for direction: up and theme: dark 2`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4696,7 +4695,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: da
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: up, isOpen: light and theme: false, isNativePopover: %s 1`] = `
+exports[`getListStyles() should return correct css for direction: up and theme: light 1`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4791,7 +4790,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: up, isOpen: light and theme: false, isNativePopover: %s 2`] = `
+exports[`getListStyles() should return correct css for direction: up and theme: light 2`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4886,7 +4885,7 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
 "
 `;
 
-exports[`getListStyles() should return correct css for direction: up, isOpen: light and theme: true, isNativePopover: %s 1`] = `
+exports[`getListStyles() should return correct css for direction: up and theme: light 3`] = `
 "ul {
   display: flex;
   flex-direction: column;
@@ -4971,17 +4970,6 @@ exports[`getListStyles() should return correct css for direction: up, isOpen: li
 }
 .optgroup~.option {
   padding-left: 24px;
-}
-.popover {
-  position: absolute;
-  bottom: auto;
-  border: none;
-  background: none;
-  pointer-events: all;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  height: auto;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
