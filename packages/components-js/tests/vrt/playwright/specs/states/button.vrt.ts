@@ -9,7 +9,6 @@ import {
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
-  thresholdConfig,
 } from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 
@@ -51,8 +50,7 @@ test.describe(component, async () => {
     test(`should have no visual regression for :hover + :focus-visible with theme ${theme}`, async ({ page }) => {
       await scenario(page, theme);
       await expect(page.locator('#app')).toHaveScreenshot(
-        `${component}-${baseViewportWidth}-states-theme-${theme}.png`,
-        thresholdConfig
+        `${component}-${baseViewportWidth}-states-theme-${theme}.png`
       );
     });
   });
@@ -63,8 +61,7 @@ test.describe(component, async () => {
     }) => {
       await scenario(page, 'auto', scheme);
       await expect(page.locator('#app')).toHaveScreenshot(
-        `${component}-${baseViewportWidth}-states-theme-${scheme}.png`,
-        thresholdConfig
+        `${component}-${baseViewportWidth}-states-theme-${scheme}.png`
       ); // fixture is aliased since result has to be equal
     });
   });
