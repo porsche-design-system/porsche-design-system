@@ -34,6 +34,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2858](https://github.com/porsche-design-system/porsche-design-system/pull/2858))
 - `Checkbox Wrapper` and `Radio Button Wrapper` border-color/background-color does not reset on hover
   ([#2852](https://github.com/porsche-design-system/porsche-design-system/pull/2852))
+- `Modal` scroll position in next Js and Remix
+  ([#2890](https://github.com/porsche-design-system/porsche-design-system/pull/2890))
 
 ### [3.8.0] - 2023-10-24
 
