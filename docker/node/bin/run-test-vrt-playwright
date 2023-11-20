@@ -6,7 +6,7 @@ set -o pipefail
 if
   [[ "--components-js" == "${1}" ]] ||
   [[ "--components-js:safari" == "${1}" ]] ||
-  [[ "--components-js:chrome:custom-states" == "${1}" ]] ||
+  [[ "--components-js:chrome:customAndStates" == "${1}" ]] ||
   [[ "--components-js:chrome:common" == "${1}" ]];
 then
   yarn test:vrt:playwright:${1:2}
