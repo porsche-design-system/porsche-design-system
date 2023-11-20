@@ -16,6 +16,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- Angular: `theme: 'light' | 'dark' | 'auto'` option to `PorscheDesignSystemModule.load()` to set `theme` on all child
+  components  
+  ([#2872](https://github.com/porsche-design-system/porsche-design-system/pull/2872))
+- React: `theme: 'light' | 'dark' | 'auto'` prop to `PorscheDesignSystemProvider` to set `theme` on all child
+  components  
+  ([#2872](https://github.com/porsche-design-system/porsche-design-system/pull/2872))
+- Vue: `theme: 'light' | 'dark' | 'auto'` prop to `PorscheDesignSystemProvider` to set `theme` on all child components  
+  ([#2872](https://github.com/porsche-design-system/porsche-design-system/pull/2872))
 - Validation for usage of different PDS versions
   ([#2867](https://github.com/porsche-design-system/porsche-design-system/pull/2867))
 

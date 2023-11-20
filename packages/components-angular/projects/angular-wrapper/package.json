@@ -22,7 +22,8 @@
   },
   "peerDependencies": {
     "@angular/common": ">=15.0.0 <18.0.0",
-    "@angular/core": ">=15.0.0 <18.0.0"
+    "@angular/core": ">=15.0.0 <18.0.0",
+    "rxjs": "^6.5.3 || ^7.4.0"
   },
   "exports": {
     "./jsdom-polyfill": {

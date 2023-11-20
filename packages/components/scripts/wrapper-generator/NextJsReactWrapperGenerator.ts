@@ -55,7 +55,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
     // add props
     const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
     const spreadProps = [
-      ...propsToSync.map(({ key }) => key),
+      ...propsToSync.map(({ key }) => key + (key === 'theme' ? ': theme || useTheme()' : '')),
       ...(componentMeta.internalProps ? Object.keys(componentMeta.internalProps) : []),
       ...(hasChildren ? ['children'] : []),
     ].join(', ');

@@ -164,14 +164,16 @@
           const dir = getDir();
           const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
 
-          app.innerHTML = '';
-          app.innerHTML = (await (await fetch(`/${directory}/${page}.html`)).text()).replace(/>(\s)*</g, '><');
-          app.querySelectorAll('*').forEach((el) => (el.theme = theme));
-          app.querySelectorAll('.playground').forEach((el) => {
-            el.classList.remove('light', 'dark', 'auto');
-            el.classList.add(theme);
-          });
           document.querySelector('html').setAttribute('dir', dir);
+
+          app.innerHTML = '';
+          app.innerHTML = (await (await fetch(`/${directory}/${page}.html`)).text())
+            .replace(/>(\s)*</g, '><') // trim whitespace between tags
+            .replace(
+              /(<(?:my-prefix-)?p-[a-z-]+[\S\s]*?)>/g, // tweak components
+              (m, g1) => g1.includes('theme') ? g1.replace(/theme="[a-z]+"/, `theme="${theme}"`) : `${g1} theme="${theme}">`
+            )
+            .replace(/playground light/g, `playground ${theme}`); // tweak playgrounds
 
           const scripts = app.getElementsByTagName('script');
           for (let i = 0; i < scripts.length; i++) {
@@ -187,7 +189,7 @@
       };
 
       porscheDesignSystem.load();
-      porscheDesignSystem.load({ prefix: 'my-prefix' });
+      porscheDesignSystem.load({ prefix: 'my-prefix' }); // used on overview page
       window.componentsReady = porscheDesignSystem.componentsReady; // for vrt
 
       updateSelect('page', getPage());

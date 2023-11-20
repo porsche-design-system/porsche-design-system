@@ -2,6 +2,31 @@
 
 <TableOfContents></TableOfContents>
 
+## Global Theme
+
+**Since v3.9.0** you can set the `theme` property for all child components by setting the prop on
+`PorscheDesignSystemProvider`.
+
+Possible values for `theme` are: `'auto' | 'dark' | 'light'`  
+Local overrides on a per component basis are still possible as usual.
+
+```tsx
+// index.tsx
+
+import ReactDOM from 'react-dom';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import { App } from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <PorscheDesignSystemProvider theme="dark">
+      <App />
+    </PorscheDesignSystemProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
 ## Prefixing
 
 In case of a micro-service architecture, multiple instances and versions of the Porsche Design System can be combined in
