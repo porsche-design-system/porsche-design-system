@@ -191,12 +191,18 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 
 #### What to do after adjusting docker scripts
 
-1. Communicate breaking changes of the pipeline to the team (currently the same docker image is used for dev and prod
-   builds: [#1124](https://github.com/porsche-design-system/porsche-design-system/issues/1124))
-1. Switch to `docker/node` directory
-1. Run `bash build-and-push-base-image.sh`
-1. View new package on
-   [GitHub-Packages Page](https://github.com/orgs/porsche-design-system/packages?repo_name=porsche-design-system)
+1. Bump the docker image tag everywhere **except** for the first layer of our Dockerfile (e.g.
+   `FROM mcr.microsoft.com/playwright:v1.39.0-focal` needs to stay) to not break all CI runs of your colleagues, e.g.
+   change `v1.39.0-focal` to `v1.39.0-focal-test` (not doing this will essentially replace the previous image that is
+   used everywhere else)
+1. Commit and push your changes
+1. Go to
+   [Build and Push Docker Image workflow](https://github.com/porsche-design-system/porsche-design-system/actions/workflows/build-and-push-docker-image.yml)
+1. Hit the `Run workflow` button on the right, choose the branch with your changes and click `Run workflow` CTA button
+   to queue a manual build
+1. Once the job is complete, you can verify the new image at
+   [GitHub-Packages Page](https://github.com/porsche-design-system/porsche-design-system/pkgs/container/porsche-design-system%2Fplaywright)
+1. Now you can rerun your regular CI job (since it failed due to relying on the not yet existing docker image)
 
 ## Dependency updates
 
@@ -223,11 +229,15 @@ Every week, we update our NPM packages:
 ### Hints for updating
 
 1. Make sure you pulled the latest version before starting.
-1. NPM registry is linked to a private one (jFrog Artifactory). Make sure you've followed instructions mentioned in **
-   Getting started** section to be able to authenticate during NPM dependency update process.
 1. To avoid corrupting the `yarn.lock` start with Angular (by using `ng update`). The following upgrades should be
    grouped e.g. if React types can be upgraded also look if React can be upgraded.
 1. Don't upgrade too many dependencies at once, keep them logically together.
+1. Certain dependencies can not be upgraded which are documented in `docs/dependencies.md`
+1. In case you discover new dependencies that can not be upgraded, e.g. due to esm builds not compatible with nodejs,
+   add them to the list
+1. Update `docs/dependencies.md` to reflect the current date and adjust framework versions if needed
+1. Once you updated everything possible, delete `yarn.lock` and have it created again by running `yarn` in order to
+   update dependencies of our dependencies
 
 ## Build status
 
