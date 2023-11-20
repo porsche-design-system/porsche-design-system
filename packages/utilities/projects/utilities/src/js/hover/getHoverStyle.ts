@@ -1,7 +1,6 @@
 import { themeLightStateHover } from '../theme';
 import { borderRadiusMedium, borderRadiusSmall } from '../border';
-import { motionDurationShort } from '../motion/motionDurationShort';
-import { motionEasingBase } from '../motion/motionEasingBase';
+import { motionDurationShort, motionEasingBase } from '../motion';
 // import { frostedGlassStyle } from '../frostedGlass';
 
 type BorderRadius = 'small' | 'medium';
