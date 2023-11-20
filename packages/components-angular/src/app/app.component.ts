@@ -25,7 +25,7 @@ export class AppComponent {
   public router = inject(Router);
   public routes = routes.filter((route) => !!route.name);
   public themes: Theme[] = ['light', 'dark', 'auto'];
-  public theme$ = inject(THEME_TOKEN);
+  public theme$ = inject(THEME_TOKEN); // equivalent to @Inject(THEME_TOKEN) in constructor
 
   public async changeRoute(path: string): Promise<void> {
     await this.router.navigateByUrl(`/${path}`);
