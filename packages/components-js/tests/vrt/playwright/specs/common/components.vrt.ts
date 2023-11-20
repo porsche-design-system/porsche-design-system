@@ -11,7 +11,7 @@ const components = (TAG_NAMES as unknown as TagName[])
   })
   .map((tagName) => {
     return tagName.substring(2);
-  });
+  })
 // Use for local testing
 // .filter((tagName) => {
 //   // TODO: how does this work? why slice it on every iteration?
