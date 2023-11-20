@@ -134,8 +134,8 @@ export class SelectWrapperDropdown {
       this.state,
       this.disabled,
       this.filter,
-      this.theme,
-      this.isNativePopover
+      this.isNativePopover,
+      this.theme
     );
 
     const dropdownId = 'list';

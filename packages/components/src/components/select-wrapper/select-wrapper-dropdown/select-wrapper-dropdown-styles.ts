@@ -350,8 +350,8 @@ export const getComponentCss = (
   state: FormState,
   disabled: boolean,
   filter: boolean,
-  theme: Theme,
-  isNativePopover: boolean
+  isNativePopover: boolean,
+  theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const {
