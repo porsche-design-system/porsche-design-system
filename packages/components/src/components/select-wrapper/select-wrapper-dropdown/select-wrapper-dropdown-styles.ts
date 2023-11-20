@@ -400,7 +400,6 @@ export const getComponentCss = (
         },
         ...(isNativePopover && {
           popover: {
-            display: isOpen ? 'block' : 'none',
             position: 'absolute',
             bottom: 'auto',
             border: 'none',
@@ -408,7 +407,7 @@ export const getComponentCss = (
             pointerEvents: 'all',
             padding: 0,
             margin: 0,
-            overflow: 'visible',
+            overflow: 'initial',
             height: 'auto',
             maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
             '&:-internal-popover-in-top-layer::backdrop': {

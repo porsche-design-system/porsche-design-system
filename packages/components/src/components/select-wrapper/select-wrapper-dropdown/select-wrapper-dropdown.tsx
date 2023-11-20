@@ -101,7 +101,6 @@ export class SelectWrapperDropdown {
       handleScroll(this.listElement, getHighlightedOptionMapIndex(this.optionMaps));
 
       if (this.isNativePopover) {
-        updateNativePopoverSelectStyles(this.host, this.optionMaps, this.popoverElement, this.direction);
         addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement, () => {
           this.setDropdownVisibility('hide');
         });
@@ -289,6 +288,7 @@ export class SelectWrapperDropdown {
 
     if (this.isNativePopover) {
       if (this.isOpen) {
+        updateNativePopoverSelectStyles(this.host, this.optionMaps, this.popoverElement, this.direction);
         this.popoverElement.showPopover();
       } else {
         this.popoverElement.hidePopover();

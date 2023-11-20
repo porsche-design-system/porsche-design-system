@@ -14,7 +14,7 @@ export const handleScroll = (ul: HTMLElement, highlightedIndex: number): void =>
     const highlightedNode = getHTMLElements(ul, 'li')[highlightedIndex];
 
     if (highlightedNode) {
-      highlightedNode.scrollIntoView({ block: 'center' });
+      highlightedNode.scrollIntoView({ block: 'nearest' });
     }
   }
 };
