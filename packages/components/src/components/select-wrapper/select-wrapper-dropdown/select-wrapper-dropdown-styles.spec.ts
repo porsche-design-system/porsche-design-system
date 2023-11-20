@@ -69,7 +69,7 @@ describe('getListStyles()', () => {
     ['up', 'light'],
     ['up', 'dark'],
     ['up', 'dark'],
-  ])('should return correct css for direction: %s, isOpen: %s and theme: %s', (direction, theme) => {
+  ])('should return correct css for direction: %s and theme: %s', (direction, theme) => {
     expect(getCss(getListStyles(direction, theme))).toMatchSnapshot();
   });
 });
