@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useNavigate } from '@remix-run/react';
 import { PButton, PButtonGroup, PModal, PText } from '@porsche-design-system/components-react/ssr';
 
-export default function ModalOpen(): JSX.Element {
+export default function ModalStandaloneOpen(): JSX.Element {
   const navigate = useNavigate();
   const onDismiss = useCallback(() => {
     navigate(-1);

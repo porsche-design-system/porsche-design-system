@@ -3,7 +3,7 @@ import { type PropsWithChildren, useCallback, useState } from 'react';
 import { PHeading, PModal, PText, PLink, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
 
-export default function ModalRouteChangeLayout({ children }: PropsWithChildren<{}>): JSX.Element {
+export default function ModalStandaloneLayout({ children }: PropsWithChildren<{}>): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const onOpen = useCallback(() => {
     setIsModalOpen(true);
@@ -33,7 +33,10 @@ export default function ModalRouteChangeLayout({ children }: PropsWithChildren<{
         ></div>
       </div>
       <PLink>
-        <Link href="/modal-route-change/open" scroll={false}>
+        {/*The default behavior of <Link> is to scroll to the top of a new route or to maintain
+        the scroll position for backwards and forwards navigation. When false, next/link will not
+        scroll to the top of the page after a navigation.*/}
+        <Link href="/modal-standalone/open" scroll={false}>
           Link to Modal (with route change)
         </Link>
       </PLink>

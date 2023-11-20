@@ -14,8 +14,9 @@ export default function _index(): JSX.Element {
           <Link to="/accordion-layout-shift">Accordion Layout Shift</Link>
         </li>
         <li>
+          {/* the scroll position bug was only reproducible with nested routing */}
           <Link preventScrollReset={true} to="/modal">
-            Modal Route Change
+            Modal Page
           </Link>
         </li>
       </ul>

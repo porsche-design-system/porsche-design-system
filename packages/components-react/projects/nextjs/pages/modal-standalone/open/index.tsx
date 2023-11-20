@@ -3,16 +3,16 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { PModal, PText, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
-import ModalRouteChangeLayout from './../layout';
+import ModalStandaloneLayout from './../layout';
 
-const ModalPage: NextPage = (): JSX.Element => {
+const ModalStandaloneOpenPage: NextPage = (): JSX.Element => {
   const router = useRouter();
   const onDismiss = useCallback(() => {
-    router.back();
+    router.push('/modal-standalone', { scroll: false });
   }, []);
 
   return (
-    <ModalRouteChangeLayout>
+    <ModalStandaloneLayout>
       <PModal heading="Some Heading" open={true} onDismiss={onDismiss}>
         <PText>Some Content</PText>
         <PButtonGroup className="footer">
@@ -22,8 +22,8 @@ const ModalPage: NextPage = (): JSX.Element => {
           </PButton>
         </PButtonGroup>
       </PModal>
-    </ModalRouteChangeLayout>
+    </ModalStandaloneLayout>
   );
 };
 
-export default ModalPage;
+export default ModalStandaloneOpenPage;

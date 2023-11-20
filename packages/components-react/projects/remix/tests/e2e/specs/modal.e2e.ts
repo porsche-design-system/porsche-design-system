@@ -6,10 +6,11 @@ let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-const pageUrl = 'modal-route-change';
+const pageUrl = 'modal-standalone';
 const getOpenModalBtn = () => selectNode(page, 'p-button >>> button');
-const getLinkToModal = () => selectNode(page, 'p-link a[href="/modal-route-change/open"]');
+const getLinkToModal = () => selectNode(page, 'p-link a[href="/modal-standalone/open"]');
 const getDismissButton = () => selectNode(page, 'p-modal >>> p-button-pure >>> button');
+const getRootElement = () => selectNode(page, 'html');
 const getBodyStyle = async () => getAttribute(await selectNode(page, 'body'), 'style');
 
 it('should keep same scroll position when modal is opened and closed with route change', async () => {
@@ -17,17 +18,19 @@ it('should keep same scroll position when modal is opened and closed with route 
   expect(await getBodyStyle()).toBe(null);
 
   const linkToModal = await getLinkToModal();
-  expect(await linkToModal.isIntersectingViewport()).toBeFalsy();
+  const rootElement = await getRootElement();
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(0);
+
   await linkToModal.scrollIntoView();
-  expect(await linkToModal.isIntersectingViewport()).toBeTruthy();
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(312);
 
   await linkToModal.click();
   await page.waitForSelector('p-modal >>> p-button-pure');
-  expect(await linkToModal.isIntersectingViewport()).toBeTruthy();
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(312);
 
   const dismissButton = await getDismissButton();
   await dismissButton.click();
-  expect(await linkToModal.isIntersectingViewport()).toBeTruthy();
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(312);
 });
 
 it('should keep same scroll position when modal is opened and closed', async () => {
@@ -35,15 +38,17 @@ it('should keep same scroll position when modal is opened and closed', async () 
   expect(await getBodyStyle()).toBe(null);
 
   const openModalBtn = await getOpenModalBtn();
-  expect(await openModalBtn.isIntersectingViewport()).toBeFalsy();
+  const rootElement = await getRootElement();
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(0);
+
   await openModalBtn.scrollIntoView();
-  expect(await openModalBtn.isIntersectingViewport()).toBeTruthy();
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(312);
 
   await openModalBtn.click();
   await page.waitForSelector('p-modal >>> p-button-pure');
-  expect(await openModalBtn.isIntersectingViewport()).toBeTruthy();
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(312);
 
   const dismissButton = await getDismissButton();
   await dismissButton.click();
-  expect(await openModalBtn.isIntersectingViewport()).toBeTruthy();
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(312);
 });

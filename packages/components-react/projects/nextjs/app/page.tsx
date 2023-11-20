@@ -16,8 +16,9 @@ const HomePage: NextPage = (): JSX.Element => {
             <Link href={route.path}>{route.name}</Link>
           </li>
         ))}
+        {/* the scroll position bug was only reproducible with nested routing */}
         <li key="100">
-          <Link href="modal-route-change">Modal Route Change</Link>
+          <Link href="modal-standalone">Modal Page</Link>
         </li>
       </ul>
     </>
