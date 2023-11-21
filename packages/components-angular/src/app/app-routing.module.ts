@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, type Route } from '@angular/router';
-import * as fromPages from './pages';
 import * as fromExamples from './examples';
+import * as fromPages from './pages';
 import * as fromStyles from './styles';
 
 export type ExtendedRoute = Route & {
