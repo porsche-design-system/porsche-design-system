@@ -789,7 +789,7 @@ button {
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -826,7 +826,7 @@ ul {
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 @media(hover:hover) {
@@ -842,7 +842,6 @@ ul {
   display: none;
 }
 .popover {
-  display: block;
   position: absolute;
   bottom: auto;
   border: none;
@@ -850,7 +849,7 @@ ul {
   pointer-events: all;
   padding: 0;
   margin: 0;
-  overflow: visible;
+  overflow: initial;
   height: auto;
   max-height: 416px;
 }
@@ -869,7 +868,7 @@ ul {
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -1826,7 +1825,7 @@ button {
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -1863,7 +1862,7 @@ ul {
   border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 @media(hover:hover) {
@@ -1879,7 +1878,6 @@ ul {
   display: none;
 }
 .popover {
-  display: block;
   position: absolute;
   bottom: auto;
   border: none;
@@ -1887,7 +1885,7 @@ ul {
   pointer-events: all;
   padding: 0;
   margin: 0;
-  overflow: visible;
+  overflow: initial;
   height: auto;
   max-height: 416px;
 }
@@ -1906,7 +1904,7 @@ ul {
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -4437,7 +4435,7 @@ exports[`getListStyles() should return correct css for direction: down and theme
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .option {
@@ -4452,7 +4450,7 @@ exports[`getListStyles() should return correct css for direction: down and theme
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -4817,7 +4815,7 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .option {
@@ -4832,7 +4830,7 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
