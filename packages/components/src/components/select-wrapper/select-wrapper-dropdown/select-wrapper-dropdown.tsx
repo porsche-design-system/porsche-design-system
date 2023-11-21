@@ -122,7 +122,8 @@ export class SelectWrapperDropdown {
       this.theme
     );
 
-    const part = 'p-select-wrapper-dropdown';
+    // TODO: part won't be needed as soon as button/input of select-wrapper-dropdown is part of shadow dom of select-wrapper itself
+    const part = 'select-wrapper-dropdown';
     const dropdownId = 'list';
     const labelId = 'label';
     const descriptionId = this.description && 'description';

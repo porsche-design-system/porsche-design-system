@@ -33,7 +33,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#D8D8DB",
   },
   "@media(hover:hover)": {
-    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(p-select-wrapper-dropdown)": {
+    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown)": {
       "borderColor": "#951219",
     },
   },
@@ -73,7 +73,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#D8D8DB",
   },
   "@media(hover:hover)": {
-    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(p-select-wrapper-dropdown)": {
+    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown)": {
       "borderColor": "#010205",
     },
   },
@@ -148,7 +148,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#D8D8DB",
   },
   "@media(hover:hover)": {
-    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(p-select-wrapper-dropdown)": {
+    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown)": {
       "borderColor": "#0E4809",
     },
   },
@@ -184,7 +184,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#FBFCFF",
   },
   "@media(hover:hover)": {
-    "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(p-select-wrapper-dropdown)": {
+    "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown)": {
       "borderColor": "#FB0404",
     },
   },
@@ -220,7 +220,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#FBFCFF",
   },
   "@media(hover:hover)": {
-    "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(p-select-wrapper-dropdown)": {
+    "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown)": {
       "borderColor": "#FBFCFF",
     },
   },
@@ -256,7 +256,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#FBFCFF",
   },
   "@media(hover:hover)": {
-    "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(p-select-wrapper-dropdown)": {
+    "::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown)": {
       "borderColor": "#069561",
     },
   },
@@ -297,7 +297,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(textarea:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(p-select-wrapper-dropdown)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(textarea:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown)": {
       "borderColor": "#FB0404",
     },
   },
@@ -337,7 +337,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(textarea:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(p-select-wrapper-dropdown)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(textarea:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown)": {
       "borderColor": "#FB0404",
     },
   },
@@ -377,7 +377,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(textarea:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(p-select-wrapper-dropdown)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(textarea:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown)": {
       "borderColor": "#FBFCFF",
     },
   },
@@ -417,7 +417,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(textarea:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(p-select-wrapper-dropdown)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(textarea:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown)": {
       "borderColor": "#069561",
     },
   },
