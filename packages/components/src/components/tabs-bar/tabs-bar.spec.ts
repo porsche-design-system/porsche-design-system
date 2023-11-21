@@ -101,15 +101,6 @@ describe('this.activeTabIndexHandler()', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  it('should call this.sanitizeActiveTabIndex() with correct parameters', () => {
-    const component = new TabsBar();
-    const spy = jest.spyOn(tabsBarUtils, 'sanitizeActiveTabIndex' as any);
-
-    component.activeTabIndexHandler(2, null);
-    expect(spy).toBeCalledWith(2, 0);
-    expect(spy).toBeCalledTimes(1);
-  });
-
   // TODO: missing
   xit('should set this.direction', () => {});
 
@@ -150,4 +141,11 @@ describe('this.observeBreakpointChange()', () => {
     component['observeBreakpointChange']();
     expect(spy).toBeCalledWith(host, expect.any(Function));
   });
+});
+
+xdescribe('this.setTabElements()', () => {
+  it('should call getOnlyChildrenOfKindHTMLElementOrThrow() with correct parameters', () => {});
+  it('should set this.tabElements()', () => {});
+  it('should set this.areTabsButtons', () => {});
+  it('should set this.internalTabIndex', () => {});
 });

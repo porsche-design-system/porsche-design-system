@@ -71,7 +71,7 @@ export class TabsBar {
   @Prop() public gradientColor?: TabsBarGradientColor = 'background-base';
 
   /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
-  @Prop({ mutable: true }) public activeTabIndex?: number | undefined;
+  @Prop() public activeTabIndex?: number | undefined;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
@@ -83,6 +83,7 @@ export class TabsBar {
 
   @State() private tabElements: HTMLElement[] = [];
 
+  private internalTabIndex: number = this.activeTabIndex; // to not override and mutate external prop value
   private barElement: HTMLElement;
   private scrollerElement: HTMLPScrollerElement;
   private direction: ScrollerDirection = 'next';
@@ -90,15 +91,15 @@ export class TabsBar {
   private areTabsButtons: boolean;
 
   @Watch('activeTabIndex')
-  public activeTabIndexHandler(newValue: number, oldValue: number): void {
+  public activeTabIndexHandler(_newValue: number, oldValue: number): void {
     // in Angular, when chunk is already loaded and component is rendered almost identical after navigation
     // (or with hot reloading in stackblitz) this watcher is called between `connectedCallback` and `componentDidLoad`
-    // this resets `this.activeTabIndex` to undefined when `this.tabElements = []`
+    // this would reset `this.activeTabIndex` to undefined when `this.tabElements = []`
+    // so we have a separate `this.internalTabIndex` to not override the prop value
     // https://github.com/porsche-design-system/porsche-design-system/issues/2674
     this.setTabElements();
 
-    this.activeTabIndex = sanitizeActiveTabIndex(newValue, this.tabElements.length);
-    this.direction = this.activeTabIndex > oldValue || oldValue === undefined ? 'next' : 'prev';
+    this.direction = this.internalTabIndex > oldValue || oldValue === undefined ? 'next' : 'prev';
     this.setBarStyle();
     this.scrollActiveTabIntoView();
   }
@@ -114,7 +115,6 @@ export class TabsBar {
 
   public componentWillLoad(): void {
     this.setTabElements();
-    this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
   }
 
   public componentDidLoad(): void {
@@ -124,7 +124,6 @@ export class TabsBar {
     // TODO: would be great to use this in jsx but that doesn't work reliable or triggers initially when component is rendered via framework
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
       this.setTabElements();
-      this.activeTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length);
       this.setBarStyle();
     });
   }
@@ -136,7 +135,7 @@ export class TabsBar {
   public componentDidRender(): void {
     // 1 tick delay to prevent transition
     window.requestAnimationFrame(() => {
-      this.scrollerElement.classList.toggle(scrollerAnimatedCssClass, this.activeTabIndex !== undefined);
+      this.scrollerElement.classList.toggle(scrollerAnimatedCssClass, this.internalTabIndex !== undefined);
     });
   }
 
@@ -182,14 +181,15 @@ export class TabsBar {
 
   private setAccessibilityAttributes = (): void => {
     this.tabElements.forEach((tab, index) => {
+      const isCurrent = this.internalTabIndex === index;
       const attrs = this.areTabsButtons
         ? {
             role: 'tab',
-            tabindex: (this.activeTabIndex || 0) === index ? '0' : '-1',
-            'aria-selected': this.activeTabIndex === index ? 'true' : 'false',
+            tabindex: isCurrent ? '0' : '-1',
+            'aria-selected': isCurrent ? 'true' : 'false',
           }
         : {
-            'aria-current': this.activeTabIndex === index ? 'true' : 'false',
+            'aria-current': isCurrent ? 'true' : 'false',
           };
 
       setAttributes(tab, attrs);
@@ -199,6 +199,7 @@ export class TabsBar {
   private setTabElements = (): void => {
     this.tabElements = getOnlyChildrenOfKindHTMLElementOrThrow(this.host, 'a,button');
     this.areTabsButtons = this.tabElements[0]?.tagName === 'BUTTON';
+    this.internalTabIndex = sanitizeActiveTabIndex(this.activeTabIndex, this.tabElements.length); // since watcher doesn't trigger on first render
   };
 
   private onClick = (e: MouseEvent): void => {
@@ -214,9 +215,9 @@ export class TabsBar {
     this.tabChange.emit({ activeTabIndex: newTabIndex });
   };
 
-  private onKeydown = (e: KeyboardEvent): void => {
+  private onKeydown = (e: KeyboardEvent & { target: HTMLElement }): void => {
     let upcomingFocusedTabIndex: number;
-    const focusedTabIndex = this.hasPTabsParent ? this.activeTabIndex || 0 : getFocusedTabIndex(this.tabElements);
+    const focusedTabIndex = this.hasPTabsParent ? this.internalTabIndex || 0 : getFocusedTabIndex(this.tabElements);
 
     switch (e.key) {
       case 'ArrowLeft':
@@ -241,7 +242,7 @@ export class TabsBar {
       // tab the first slotted one with tabindex=0 becomes focused instead of the one after,
       // therefor the 'Tab' case needs to be handled
       case 'Tab':
-        const { target } = e as KeyboardEvent & { target: EventTarget & HTMLElement };
+        const { target } = e;
         const { tabIndex } = target;
         target.tabIndex = null;
         setTimeout(() => {
@@ -264,11 +265,11 @@ export class TabsBar {
   private scrollActiveTabIntoView = (isSmooth = true): void => {
     // scrollAreaElement might be undefined in certain scenarios with framework routing involved
     // where the activeTabIndex watcher triggers this function before the scroller is rendered and the ref defined
-    if (this.scrollerElement && this.activeTabIndex !== undefined) {
+    if (this.scrollerElement && this.internalTabIndex !== undefined) {
       const scrollActivePosition = getScrollActivePosition(
         this.tabElements,
         this.direction,
-        this.activeTabIndex,
+        this.internalTabIndex,
         this.scrollerElement
       );
 
@@ -280,7 +281,7 @@ export class TabsBar {
   };
 
   private setBarStyle = (): void => {
-    setBarStyle(this.tabElements, this.activeTabIndex, this.barElement);
+    setBarStyle(this.tabElements, this.internalTabIndex, this.barElement);
   };
 
   private observeBreakpointChange = (): void => {
