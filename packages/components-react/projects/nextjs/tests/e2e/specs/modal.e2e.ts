@@ -30,6 +30,8 @@ it('should keep same scroll position when modal is opened and closed with route 
 
   const dismissButton = await getDismissButton();
   await dismissButton.click();
+  await page.waitForFunction(() => !document.querySelector('p-modal'));
+  expect(await getBodyStyle()).toBe('');
   expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(399);
 });
 
@@ -50,5 +52,6 @@ it('should keep same scroll position when modal is opened and closed', async () 
 
   const dismissButton = await getDismissButton();
   await dismissButton.click();
+  expect(await getBodyStyle()).toBe('');
   expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(399);
 });
