@@ -44,13 +44,13 @@ export const getSlottedCheckboxRadioButtonStyles = (
   const checkedColor = isHighContrastMode
     ? canvasTextColor
     : disabledOrLoading
-    ? disabledColor
-    : formStateColor || primaryColor;
+      ? disabledColor
+      : formStateColor || primaryColor;
   const checkedColorDark = isHighContrastMode
     ? canvasTextColor
     : disabledOrLoading
-    ? disabledColorDark
-    : formStateColorDark || primaryColorDark;
+      ? disabledColorDark
+      : formStateColorDark || primaryColorDark;
   const checkedHoverColor = formStateHoverColor || contrastHighColor;
   const checkedHoverColorDark = formStateHoverColorDark || contrastHighColorDark;
 
@@ -94,13 +94,13 @@ export const getSlottedCheckboxRadioButtonStyles = (
       ...(!disabledOrLoading &&
         !isHighContrastMode &&
         hoverMediaQuery({
-          '&(input:hover),label:hover~* &(input)': {
+          '&(input:hover),label:hover~.wrapper &(input)': {
             borderColor: uncheckedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               borderColor: uncheckedHoverColorDark,
             }),
           },
-          '&(input:checked:hover),label:hover~* &(input:checked)': {
+          '&(input:checked:hover),label:hover~.wrapper &(input:checked)': {
             borderColor: checkedHoverColor,
             backgroundColor: checkedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -108,7 +108,7 @@ export const getSlottedCheckboxRadioButtonStyles = (
               backgroundColor: checkedHoverColorDark,
             }),
           },
-          'label:hover~* &(input)': supportsChromiumMediaQuery({
+          'label:hover~.wrapper &(input)': supportsChromiumMediaQuery({
             transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
           }),
         })),

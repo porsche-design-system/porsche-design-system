@@ -49,7 +49,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~* input:not(:disabled):not(:focus):not([readonly]),label:hover~* ::part(select-wrapper-dropdown) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #0E4809;
   }
 }
@@ -208,7 +208,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~* input:not(:disabled):not(:focus):not([readonly]),label:hover~* ::part(select-wrapper-dropdown) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205;
   }
 }
@@ -304,7 +304,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~* input:not(:disabled):not(:focus):not([readonly]),label:hover~* ::part(select-wrapper-dropdown) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205;
   }
 }
@@ -403,7 +403,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~* input:not(:disabled):not(:focus):not([readonly]),label:hover~* ::part(select-wrapper-dropdown) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205;
   }
 }
@@ -505,7 +505,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~* input:not(:disabled):not(:focus):not([readonly]),label:hover~* ::part(select-wrapper-dropdown) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205;
   }
 }
@@ -616,7 +616,7 @@ input:disabled {
 }
 
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~* input:not(:disabled):not(:focus):not([readonly]),label:hover~* ::part(select-wrapper-dropdown) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205;
   }
 }
@@ -832,7 +832,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~* input:not(:disabled):not(:focus):not([readonly]),label:hover~* ::part(select-wrapper-dropdown) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205;
   }
 }
@@ -927,7 +927,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~* input:not(:disabled):not(:focus):not([readonly]),label:hover~* ::part(select-wrapper-dropdown) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205;
   }
 }
@@ -1025,7 +1025,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~* input:not(:disabled):not(:focus):not([readonly]),label:hover~* ::part(select-wrapper-dropdown) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205;
   }
 }
@@ -1126,7 +1126,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~* input:not(:disabled):not(:focus):not([readonly]),label:hover~* ::part(select-wrapper-dropdown) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205;
   }
 }
@@ -1236,7 +1236,7 @@ input:disabled {
 }
 
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~* input:not(:disabled):not(:focus):not([readonly]),label:hover~* ::part(select-wrapper-dropdown) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205;
   }
 }
@@ -1355,7 +1355,7 @@ input:disabled {
 }
 
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~* input:not(:disabled):not(:focus):not([readonly]),label:hover~* ::part(select-wrapper-dropdown) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #FB0404;
   }
 }

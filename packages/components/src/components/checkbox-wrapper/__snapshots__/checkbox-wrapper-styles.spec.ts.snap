@@ -206,15 +206,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~* ::slotted(input) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
     border-color: #FB0404 !important;
   }
-  ::slotted(input:checked:hover), label:hover~* ::slotted(input:checked) {
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
     border-color: #FB0404 !important;
     background-color: #FB0404 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~* ::slotted(input) {
+    label:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -324,15 +324,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~* ::slotted(input) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
     border-color: #951219 !important;
   }
-  ::slotted(input:checked:hover), label:hover~* ::slotted(input:checked) {
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
     border-color: #951219 !important;
     background-color: #951219 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~* ::slotted(input) {
+    label:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -620,15 +620,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~* ::slotted(input) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
     border-color: #FBFCFF !important;
   }
-  ::slotted(input:checked:hover), label:hover~* ::slotted(input:checked) {
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
     border-color: #AFB0B3 !important;
     background-color: #AFB0B3 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~* ::slotted(input) {
+    label:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -737,15 +737,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~* ::slotted(input) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
     border-color: #010205 !important;
   }
-  ::slotted(input:checked:hover), label:hover~* ::slotted(input:checked) {
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
     border-color: #535457 !important;
     background-color: #535457 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~* ::slotted(input) {
+    label:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -1030,15 +1030,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~* ::slotted(input) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
     border-color: #069561 !important;
   }
-  ::slotted(input:checked:hover), label:hover~* ::slotted(input:checked) {
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
     border-color: #069561 !important;
     background-color: #069561 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~* ::slotted(input) {
+    label:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -1148,15 +1148,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~* ::slotted(input) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
     border-color: #0E4809 !important;
   }
-  ::slotted(input:checked:hover), label:hover~* ::slotted(input:checked) {
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
     border-color: #0E4809 !important;
     background-color: #0E4809 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~* ::slotted(input) {
+    label:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -1444,15 +1444,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~* ::slotted(input) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
     border-color: #FB0404 !important;
   }
-  ::slotted(input:checked:hover), label:hover~* ::slotted(input:checked) {
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
     border-color: #FB0404 !important;
     background-color: #FB0404 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~* ::slotted(input) {
+    label:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -1560,15 +1560,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~* ::slotted(input) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
     border-color: #951219 !important;
   }
-  ::slotted(input:checked:hover), label:hover~* ::slotted(input:checked) {
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
     border-color: #951219 !important;
     background-color: #951219 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~* ::slotted(input) {
+    label:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -1850,15 +1850,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~* ::slotted(input) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
     border-color: #FBFCFF !important;
   }
-  ::slotted(input:checked:hover), label:hover~* ::slotted(input:checked) {
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
     border-color: #AFB0B3 !important;
     background-color: #AFB0B3 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~* ::slotted(input) {
+    label:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -1965,15 +1965,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~* ::slotted(input) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
     border-color: #010205 !important;
   }
-  ::slotted(input:checked:hover), label:hover~* ::slotted(input:checked) {
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
     border-color: #535457 !important;
     background-color: #535457 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~* ::slotted(input) {
+    label:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -2642,15 +2642,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~* ::slotted(input) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
     border-color: #069561 !important;
   }
-  ::slotted(input:checked:hover), label:hover~* ::slotted(input:checked) {
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
     border-color: #069561 !important;
     background-color: #069561 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~* ::slotted(input) {
+    label:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -2758,15 +2758,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~* ::slotted(input) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
     border-color: #0E4809 !important;
   }
-  ::slotted(input:checked:hover), label:hover~* ::slotted(input:checked) {
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
     border-color: #0E4809 !important;
     background-color: #0E4809 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~* ::slotted(input) {
+    label:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }

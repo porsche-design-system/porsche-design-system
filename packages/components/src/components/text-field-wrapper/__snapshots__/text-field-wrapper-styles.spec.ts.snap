@@ -45,7 +45,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -219,7 +219,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #951219 !important;
   }
 }
@@ -337,7 +337,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #951219 !important;
   }
 }
@@ -447,7 +447,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #951219 !important;
   }
 }
@@ -570,7 +570,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #FB0404 !important;
   }
 }
@@ -693,7 +693,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #951219 !important;
   }
 }
@@ -816,7 +816,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -933,7 +933,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -1056,7 +1056,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -1173,7 +1173,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -1283,7 +1283,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -1405,7 +1405,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -1527,7 +1527,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #FBFCFF !important;
   }
 }
@@ -1649,7 +1649,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -1771,7 +1771,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #0E4809 !important;
   }
 }
@@ -1889,7 +1889,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #0E4809 !important;
   }
 }
@@ -1999,7 +1999,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #0E4809 !important;
   }
 }
@@ -2122,7 +2122,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #069561 !important;
   }
 }
@@ -2245,7 +2245,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #0E4809 !important;
   }
 }
@@ -2368,7 +2368,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #951219 !important;
   }
 }
@@ -2485,7 +2485,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #951219 !important;
   }
 }
@@ -2594,7 +2594,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #951219 !important;
   }
 }
@@ -2716,7 +2716,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -2832,7 +2832,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -2940,7 +2940,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -3061,7 +3061,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #0E4809 !important;
   }
 }
@@ -3178,7 +3178,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #0E4809 !important;
   }
 }
@@ -3287,7 +3287,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #0E4809 !important;
   }
 }
@@ -3409,7 +3409,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #951219 !important;
   }
 }
@@ -3518,7 +3518,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   -webkit-background-clip: padding-box !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~* ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~* ::part(select-wrapper-dropdown) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #951219 !important;
   }
 }
