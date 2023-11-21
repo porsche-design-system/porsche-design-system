@@ -31,7 +31,7 @@ export default function ModalLayout(): JSX.Element {
         ></div>
       </div>
       <PLink>
-        <Link to="/modal/open" preventScrollReset={true}>
+        <Link to="/modal-standalone/open" preventScrollReset={true}>
           Link to Modal (with route change)
         </Link>
       </PLink>
