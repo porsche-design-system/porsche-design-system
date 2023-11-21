@@ -268,10 +268,6 @@ export class Carousel {
           {this.heading ? <h2 id="heading">{this.heading}</h2> : <slot name="heading" />}
           {hasDescription(this.host, this.description) &&
             ((this.description && <p>{this.description}</p>) || <slot name="description" />)}
-
-          {/* NOTE: might come back in later version */}
-          {/* <slot name="post-heading" /> */}
-
           <div class="nav">
             {this.skipLinkTarget && (
               <PrefixedTagNames.pLinkPure

@@ -12,8 +12,6 @@ export type PinCodeUpdateEvent = { value: string; isComplete: boolean };
 
 export type PinCodeState = FormState;
 
-export const hiddenInputSlotName = 'hidden-input';
-
 export const removeSlottedSelector = (styles: Styles): Styles =>
   Object.fromEntries(
     Object.entries(styles).map(([key, value]) => {
@@ -74,7 +72,7 @@ export const initHiddenInput = (
   const hiddenInput = document.createElement('input');
   setAttributes(hiddenInput, {
     'aria-hidden': 'true',
-    slot: hiddenInputSlotName,
+    slot: 'hidden-input',
     tabindex: '-1',
   });
   syncHiddenInput(hiddenInput, name, value, disabled, required);

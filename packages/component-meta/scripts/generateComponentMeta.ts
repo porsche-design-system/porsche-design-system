@@ -470,13 +470,8 @@ const generateComponentMeta = (): void => {
     }
 
     // named slots
-    const namedSlots = Array.from(source.matchAll(/<slot name="([a-z]+)"/g)).map(([, slotName]) => slotName);
-    if (source.includes('<slot name={hiddenSelectSlotName} />')) {
-      namedSlots.push('hidden-select');
-    }
-    if (source.includes('<slot name={hiddenInputSlotName} />')) {
-      namedSlots.push('hidden-input');
-    }
+    const namedSlots = Array.from(source.matchAll(/<slot name="([a-z-]+)"/g)).map(([, slotName]) => slotName);
+
     if (source.includes('<Label')) {
       namedSlots.push('label');
     }

@@ -7,7 +7,6 @@ import {
   getSelectedOptionsString,
   getSelectedOptionValues,
   hasFilterOptionResults,
-  hiddenSelectSlotName,
   initNativeSelect,
   type MultiSelectOption,
   type MultiSelectUpdateEvent,
@@ -289,7 +288,7 @@ export class MultiSelect {
           {this.srHighlightedOptionText}
         </span>
         {/* named slot needs to be placed before closing root element, otherwise slot change listener might not always work for unknown reasons */}
-        {this.isWithinForm && <slot name={hiddenSelectSlotName} />}
+        {this.isWithinForm && <slot name="hidden-select" />}
       </div>
     );
   }

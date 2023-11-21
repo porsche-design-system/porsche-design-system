@@ -33,7 +33,6 @@ import {
   formElementPaddingVertical,
   getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
-import { hiddenSelectSlotName } from './multi-select-utils';
 
 export const getComponentCss = (
   direction: SelectDropdownDirectionInternal,
@@ -58,7 +57,7 @@ export const getComponentCss = (
       },
       ...(isWithinForm &&
         addImportantToEachRule({
-          [`::slotted([slot=${hiddenSelectSlotName}])`]: {
+          '::slotted([slot=hidden-select])': {
             position: 'absolute',
             opacity: 0,
             height: '0px',

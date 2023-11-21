@@ -987,6 +987,7 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "header",
       "footer",
+      "sub-footer",
     ],
     "nestedComponents": [
       "p-button-pure",

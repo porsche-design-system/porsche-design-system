@@ -4,7 +4,6 @@ import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEvent } fro
 import {
   getConcatenatedInputValues,
   getSanitisedValue,
-  hiddenInputSlotName,
   initHiddenInput,
   isFormSubmittable,
   isInputSingleDigit,
@@ -180,7 +179,7 @@ export class PinCode {
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        {this.isWithinForm && <slot name={hiddenInputSlotName} />}
+        {this.isWithinForm && <slot name="hidden-input" />}
       </div>
     );
   }
