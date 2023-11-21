@@ -68,7 +68,7 @@ export const getSlottedCheckboxRadioButtonStyles = (
         appearance: 'none',
         boxSizing: 'content-box',
         background: `transparent 0% 0% / ${fontLineHeight}`,
-        transition: ['border-color', 'background-color'].map(getTransition).join(),
+        transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         border: `2px solid ${uncheckedColor}`,
         outline: 0,
         ...(disabledOrLoading

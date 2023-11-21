@@ -1,20 +1,29 @@
 import type { JssStyle } from 'jss';
-import { getMediaQueryMin, gridExtendedOffsetBase } from '@porsche-design-system/utilities-v2';
+import {
+  getMediaQueryMin,
+  gridExtendedOffsetBase,
+  motionDurationModerate,
+  motionEasingIn,
+  motionEasingOut,
+} from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, addImportantToRule, colorSchemeStyles, hostHiddenStyles } from '../../../styles';
+import {
+  addImportantToEachRule,
+  addImportantToRule,
+  colorSchemeStyles,
+  cssVariableAnimationDuration,
+  hostHiddenStyles,
+} from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
 
 const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
 const cssVariablePositionBottomInternal = '--p-internal-toast-position-bottom';
 
-const easeInQuad = 'cubic-bezier(0.45,0,0.55,1)';
-const easeOutQuad = 'cubic-bezier(0.5,1,0.89,1)';
-export const ANIMATION_DURATION = 600;
-
+export const ANIMATION_DURATION = motionDurationModerate;
 const duration =
   ROLLUP_REPLACE_IS_STAGING !== 'production' && process.env.NODE_ENV !== 'test'
-    ? `var(--p-animation-duration,${ANIMATION_DURATION}ms)`
-    : `${ANIMATION_DURATION}ms`;
+    ? `var(${cssVariableAnimationDuration},${ANIMATION_DURATION})`
+    : ANIMATION_DURATION;
 
 export type KeyframesDirection = 'in' | 'out';
 export const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssStyle): JssStyle => {
@@ -64,10 +73,10 @@ export const getComponentCss = (): string => {
       '@keyframes out': getKeyframesMobile('out', cssVariablePositionBottomInternal),
     },
     hydrated: {
-      animation: `${duration} $in ${easeInQuad} forwards`,
+      animation: `${duration} $in ${motionEasingIn} forwards`,
     },
     [toastCloseClassName]: {
-      animation: addImportantToRule(`${ANIMATION_DURATION}ms $out ${easeOutQuad} forwards`),
+      animation: addImportantToRule(`${ANIMATION_DURATION} $out ${motionEasingOut} forwards`),
     },
   });
 };

@@ -8,7 +8,7 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -114,7 +114,7 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
   cursor: pointer;
   justify-self: flex-start;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: auto;
   height: auto;
@@ -146,7 +146,7 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
   cursor: pointer;
   justify-self: flex-start;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -178,7 +178,7 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: auto;
   height: auto;
@@ -210,7 +210,7 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -242,7 +242,7 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
   cursor: pointer;
   justify-self: flex-start;
   color: #FBFCFF;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -274,7 +274,7 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -306,7 +306,7 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: tru
   cursor: not-allowed;
   justify-self: flex-start;
   color: #7E7F82;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -337,7 +337,7 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: tru
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;
-  transition: color var(--p-transition-duration, .24s) ease;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
   width: auto;
   height: auto;

@@ -152,7 +152,7 @@ const getInputStyles = (
     '&:disabled': {
       cursor: 'not-allowed',
     },
-    transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states
+    transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
     color: primaryColor,
     '&:not(:focus)': {
       ...getPlaceholderJssStyle({ color: primaryColor, opacity: 1 }),

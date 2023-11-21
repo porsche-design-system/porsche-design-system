@@ -16,6 +16,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- Angular: `theme: 'light' | 'dark' | 'auto'` option to `PorscheDesignSystemModule.load()` to set `theme` on all child
+  components  
+  ([#2872](https://github.com/porsche-design-system/porsche-design-system/pull/2872))
+- React: `theme: 'light' | 'dark' | 'auto'` prop to `PorscheDesignSystemProvider` to set `theme` on all child
+  components  
+  ([#2872](https://github.com/porsche-design-system/porsche-design-system/pull/2872))
+- Vue: `theme: 'light' | 'dark' | 'auto'` prop to `PorscheDesignSystemProvider` to set `theme` on all child components  
+  ([#2872](https://github.com/porsche-design-system/porsche-design-system/pull/2872))
 - Validation for usage of different PDS versions
   ([#2867](https://github.com/porsche-design-system/porsche-design-system/pull/2867))
 
@@ -30,6 +38,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2859](https://github.com/porsche-design-system/porsche-design-system/pull/2859))
 - `Model Signature` asset for `model="macan"`
   ([#2857](https://github.com/porsche-design-system/porsche-design-system/pull/2857))
+- Use motion tokens in all components
+  ([#2834](https://github.com/porsche-design-system/porsche-design-system/pull/2834))
 
 #### Fixed
 

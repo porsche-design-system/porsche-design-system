@@ -16,7 +16,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "margin": 0,
     "outline": 0,
     "textIndent": 0,
-    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "transition": "background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
     "width": "100%",
   },
   "::slotted(input:disabled)": {
@@ -56,7 +56,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "margin": 0,
     "outline": 0,
     "textIndent": 0,
-    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "transition": "background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
     "width": "100%",
   },
   "::slotted(input:disabled)": {
@@ -96,7 +96,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "margin": 0,
     "outline": 0,
     "textIndent": 0,
-    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "transition": "background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
     "width": "100%",
   },
   "::slotted(input:disabled)": {
@@ -131,7 +131,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "margin": 0,
     "outline": 0,
     "textIndent": 0,
-    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "transition": "background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
     "width": "100%",
   },
   "::slotted(input:disabled)": {
@@ -171,7 +171,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "margin": 0,
     "outline": 0,
     "textIndent": 0,
-    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "transition": "background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
     "width": "100%",
   },
   "::slotted(select:disabled)": {
@@ -207,7 +207,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "margin": 0,
     "outline": 0,
     "textIndent": 0,
-    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "transition": "background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
     "width": "100%",
   },
   "::slotted(select:disabled)": {
@@ -243,7 +243,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "margin": 0,
     "outline": 0,
     "textIndent": 0,
-    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "transition": "background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
     "width": "100%",
   },
   "::slotted(select:disabled)": {
@@ -280,7 +280,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "margin": 0,
     "outline": 0,
     "textIndent": 0,
-    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "transition": "background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
     "width": "100%",
   },
   "::slotted(textarea:disabled)": {
@@ -320,7 +320,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "margin": 0,
     "outline": 0,
     "textIndent": 0,
-    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "transition": "background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
     "width": "100%",
   },
   "::slotted(textarea:disabled)": {
@@ -360,7 +360,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "margin": 0,
     "outline": 0,
     "textIndent": 0,
-    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "transition": "background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
     "width": "100%",
   },
   "::slotted(textarea:disabled)": {
@@ -400,7 +400,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "margin": 0,
     "outline": 0,
     "textIndent": 0,
-    "transition": "color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,background-color var(--p-transition-duration, .24s) ease",
+    "transition": "background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
     "width": "100%",
   },
   "::slotted(textarea:disabled)": {

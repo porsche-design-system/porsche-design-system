@@ -1,30 +1,36 @@
 <script setup lang="ts">
-  import router, { routes } from './router';
-  import { ref } from 'vue';
+  import { onMounted, ref } from 'vue';
+  import { useRouter } from 'vue-router';
   import '@porsche-design-system/shared/css/styles.css';
-  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+  import { PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-vue';
+  import { routes } from './router';
 
-  const options = routes.map(({ path, name, isDisabled }) => ({ path, name, isDisabled }));
-  const selected = ref();
+  const router = useRouter();
+  const route = ref<string>('');
+  const theme = ref<Theme>('light');
+  const themes: Theme[] = ['light', 'dark', 'auto'];
 
-  const onChange = (e: Event) => {
-    const { value } = e.target as HTMLSelectElement;
-    selected.value = value;
-    router.push(value);
-  };
+  onMounted(async () => {
+    await router.isReady();
+    route.value = router.currentRoute.value.path;
+  });
 </script>
 
 <template>
-  <PorscheDesignSystemProvider cdn="auto">
-    <select :value="selected" @change="onChange($event)">
-      <option disabled value="">Select a page</option>
-      <option v-for="(item, index) in options" v-bind:key="index" :value="item.path" :disabled="item.isDisabled">
-        {{ item.name }}
-      </option>
-    </select>
+  <select name="route" v-model="route" @change="router.push(($event.target as HTMLSelectElement).value)">
+    <option disabled value="/">Select a page</option>
+    <option v-for="(item, index) in routes" :key="index" :value="item.path" :disabled="item.isDisabled">
+      {{ item.name }}
+    </option>
+  </select>
 
-    <div id="app">
+  <select name="theme" v-model="theme">
+    <option v-for="(item, index) in themes" :key="index" :value="item">{{ item }}</option>
+  </select>
+
+  <div id="app">
+    <PorscheDesignSystemProvider cdn="auto" :theme="theme">
       <RouterView />
-    </div>
-  </PorscheDesignSystemProvider>
+    </PorscheDesignSystemProvider>
+  </div>
 </template>

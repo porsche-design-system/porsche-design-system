@@ -12,7 +12,7 @@ exports[`getHoverStyle() should return correct css for opts: { borderRadius: '6p
   "marginRight": "-2px",
   "paddingLeft": "2px",
   "paddingRight": "2px",
-  "transition": "background var(--p-transition-duration, .24s) ease",
+  "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
 }
 `;
 
@@ -28,7 +28,7 @@ exports[`getHoverStyle() should return correct css for opts: { borderRadius: 'me
   "marginRight": "-2px",
   "paddingLeft": "2px",
   "paddingRight": "2px",
-  "transition": "background var(--p-transition-duration, .24s) ease",
+  "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
 }
 `;
 
@@ -44,7 +44,7 @@ exports[`getHoverStyle() should return correct css for opts: { borderRadius: 'sm
   "marginRight": "-2px",
   "paddingLeft": "2px",
   "paddingRight": "2px",
-  "transition": "background var(--p-transition-duration, .24s) ease",
+  "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
 }
 `;
 
@@ -60,6 +60,6 @@ exports[`getHoverStyle() should return correct css for opts: { borderRadius: und
   "marginRight": "-2px",
   "paddingLeft": "2px",
   "paddingRight": "2px",
-  "transition": "background var(--p-transition-duration, .24s) ease",
+  "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
 }
 `;
