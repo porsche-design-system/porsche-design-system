@@ -108,6 +108,7 @@ export class Modal {
   }
 
   public componentDidRender(): void {
+    // TODO: should this really be executed on every rerender, e.g. prop change?
     if (this.open) {
       // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed although it shouldn't
       for (let i = 0; i < 4; i++) {

@@ -48,6 +48,11 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.FormWrapperBindingComponent,
   },
   {
+    name: 'Theme Injection',
+    path: 'theme-injection',
+    component: fromPages.ThemeInjectionComponent,
+  },
+  {
     name: 'Optional Properties',
     path: 'optional-properties',
     component: fromPages.OptionalPropertiesComponent,

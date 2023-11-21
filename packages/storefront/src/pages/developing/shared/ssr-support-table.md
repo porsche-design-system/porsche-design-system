@@ -22,7 +22,9 @@
 | ✅ **Link Tile**            |                                                                                                                                                                                    |
 | ✅ **Marque**               |                                                                                                                                                                                    |
 | ✅ **Modal**                |                                                                                                                                                                                    |
+| ✅ **Multi Select**         |                                                                                                                                                                                    |
 | ✅ **Pagination**           | - `max-number-of-page-links` is not supported                                                                                                                                      |
+| ✅ **Pin Code**             |                                                                                                                                                                                    |
 | ✅ **Popover**              |                                                                                                                                                                                    |
 | ✅ **Radio Button Wrapper** | - Required state is not supported                                                                                                                                                  |
 | ✅ **Scroller**             | - Optional scroll prev/next arrows aren't supported                                                                                                                                |

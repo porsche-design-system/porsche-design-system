@@ -13,7 +13,7 @@ exports[`getButtonStyles() should return correct css for direction: down, isOpen
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus, button:focus ~ ul {
   border-color: #010205;
@@ -43,7 +43,7 @@ exports[`getButtonStyles() should return correct css for direction: down, isOpen
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus, button:focus ~ ul {
   border-color: #010205;
@@ -73,7 +73,7 @@ exports[`getButtonStyles() should return correct css for direction: down, isOpen
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus, button:focus ~ ul {
   border-color: #010205;
@@ -103,7 +103,7 @@ exports[`getButtonStyles() should return correct css for direction: down, isOpen
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -135,7 +135,7 @@ exports[`getButtonStyles() should return correct css for direction: down, isOpen
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -167,7 +167,7 @@ exports[`getButtonStyles() should return correct css for direction: down, isOpen
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -199,7 +199,7 @@ exports[`getButtonStyles() should return correct css for direction: up, isOpen: 
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus, button:focus ~ ul {
   border-color: #FBFCFF;
@@ -229,7 +229,7 @@ exports[`getButtonStyles() should return correct css for direction: up, isOpen: 
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus, button:focus ~ ul {
   border-color: #FBFCFF;
@@ -259,7 +259,7 @@ exports[`getButtonStyles() should return correct css for direction: up, isOpen: 
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus, button:focus ~ ul {
   border-color: #FBFCFF;
@@ -289,7 +289,7 @@ exports[`getButtonStyles() should return correct css for direction: up, isOpen: 
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -321,7 +321,7 @@ exports[`getButtonStyles() should return correct css for direction: up, isOpen: 
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -353,7 +353,7 @@ exports[`getButtonStyles() should return correct css for direction: up, isOpen: 
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -396,7 +396,7 @@ button {
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus, button:focus ~ ul {
   border-color: #010205;
@@ -475,7 +475,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #6B6D70;
@@ -525,7 +525,7 @@ button {
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus, button:focus ~ ul {
   border-color: #010205;
@@ -601,7 +601,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #6B6D70;
@@ -648,7 +648,7 @@ button {
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -685,7 +685,7 @@ ul {
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 @media(hover:hover) {
@@ -712,7 +712,7 @@ ul {
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -978,7 +978,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #010205;
@@ -1015,7 +1015,7 @@ ul {
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 @media(hover:hover) {
@@ -1045,7 +1045,7 @@ ul {
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -1122,7 +1122,7 @@ button {
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -1159,7 +1159,7 @@ ul {
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 @media(hover:hover) {
@@ -1183,7 +1183,7 @@ ul {
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -1292,7 +1292,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #010205;
@@ -1329,7 +1329,7 @@ ul {
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 @media(hover:hover) {
@@ -1356,7 +1356,7 @@ ul {
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -1433,7 +1433,7 @@ button {
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus, button:focus ~ ul {
   border-color: #010205;
@@ -1512,7 +1512,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #6B6D70;
@@ -1562,7 +1562,7 @@ button {
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 button:focus, button:focus ~ ul {
   border-color: #010205;
@@ -1638,7 +1638,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #6B6D70;
@@ -1685,7 +1685,7 @@ button {
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -1722,7 +1722,7 @@ ul {
   border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 @media(hover:hover) {
@@ -1749,7 +1749,7 @@ ul {
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -2015,7 +2015,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #010205;
@@ -2052,7 +2052,7 @@ ul {
   border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 @media(hover:hover) {
@@ -2082,7 +2082,7 @@ ul {
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -2159,7 +2159,7 @@ button {
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -2196,7 +2196,7 @@ ul {
   border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 @media(hover:hover) {
@@ -2220,7 +2220,7 @@ ul {
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -2329,7 +2329,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #010205;
@@ -2366,7 +2366,7 @@ ul {
   border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 @media(hover:hover) {
@@ -2393,7 +2393,7 @@ ul {
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -2491,7 +2491,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #CC1922;
@@ -2556,7 +2556,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #CC1922;
@@ -2621,7 +2621,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #6B6D70;
@@ -2686,7 +2686,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #6B6D70;
@@ -2751,7 +2751,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #197E10;
@@ -2816,7 +2816,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #197E10;
@@ -2881,7 +2881,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #010205;
@@ -2948,7 +2948,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #010205;
@@ -3015,7 +3015,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #010205;
@@ -3082,7 +3082,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #010205;
@@ -3149,7 +3149,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #010205;
@@ -3216,7 +3216,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #010205;
@@ -3283,7 +3283,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #FC4040;
@@ -3348,7 +3348,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #FC4040;
@@ -3413,7 +3413,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #88898C;
@@ -3478,7 +3478,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #88898C;
@@ -3543,7 +3543,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #09D087;
@@ -3608,7 +3608,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #09D087;
@@ -3673,7 +3673,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #FBFCFF;
@@ -3740,7 +3740,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #FBFCFF;
@@ -3807,7 +3807,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #FBFCFF;
@@ -3874,7 +3874,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #FBFCFF;
@@ -3941,7 +3941,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
   border: 2px solid #FBFCFF;
@@ -4008,7 +4008,7 @@ input+span {
   left: 0;
   right: 0;
   bottom: 0;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
   border: 2px solid #FBFCFF;
@@ -4057,7 +4057,7 @@ exports[`getListStyles() should return correct css for direction: down and theme
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .option {
@@ -4072,7 +4072,7 @@ exports[`getListStyles() should return correct css for direction: down and theme
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -4152,7 +4152,7 @@ exports[`getListStyles() should return correct css for direction: down and theme
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .option {
@@ -4167,7 +4167,7 @@ exports[`getListStyles() should return correct css for direction: down and theme
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -4247,7 +4247,7 @@ exports[`getListStyles() should return correct css for direction: down and theme
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .option {
@@ -4262,7 +4262,7 @@ exports[`getListStyles() should return correct css for direction: down and theme
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -4342,7 +4342,7 @@ exports[`getListStyles() should return correct css for direction: down and theme
   border-bottom-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .option {
@@ -4357,7 +4357,7 @@ exports[`getListStyles() should return correct css for direction: down and theme
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -4532,7 +4532,7 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .option {
@@ -4547,7 +4547,7 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -4627,7 +4627,7 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .option {
@@ -4642,7 +4642,7 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -4722,7 +4722,7 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .option {
@@ -4737,7 +4737,7 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -4912,7 +4912,7 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   border-top-right-radius: 4px;
   scrollbar-width: thin;
   scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, .24s) ease;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
 .option {
@@ -4927,7 +4927,7 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   word-break: break-word;
   box-sizing: border-box;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .option[role=status] {
   cursor: not-allowed;

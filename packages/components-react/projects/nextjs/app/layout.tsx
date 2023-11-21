@@ -1,6 +1,6 @@
 import NextScript from 'next/script';
 import type { PropsWithChildren } from 'react';
-import { FooterPartials, HeaderPartials, Select } from '../components';
+import { FooterPartials, HeaderPartials } from '../components';
 import { Providers } from './providers';
 
 export default function RootLayout({ children }: PropsWithChildren<{}>): JSX.Element {
@@ -17,7 +17,6 @@ export default function RootLayout({ children }: PropsWithChildren<{}>): JSX.Ele
       </head>
       <body>
         <Providers>
-          <Select />
           <div id="app">{children}</div>
         </Providers>
         <NextScript />

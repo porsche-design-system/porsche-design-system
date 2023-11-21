@@ -3,6 +3,7 @@ import { CoreInitializerPrefixedComponent } from './core-initializer-prefixed.co
 import { EventsComponent } from './events.component';
 import { FormWrapperBindingComponent } from './form-wrapper-binding.component';
 import { OptionalPropertiesComponent } from './optional-properties.component';
+import { ThemeInjectionComponent } from './theme-injection.component';
 import { UtilitiesComponent } from './utilities.component';
 
 export const pages = [
@@ -10,6 +11,7 @@ export const pages = [
   EventsComponent,
   FormWrapperBindingComponent,
   OptionalPropertiesComponent,
+  ThemeInjectionComponent,
   UtilitiesComponent,
 ];
 
@@ -17,6 +19,7 @@ export * from './core-initializer-prefixed.component';
 export * from './events.component';
 export * from './form-wrapper-binding.component';
 export * from './optional-properties.component';
+export * from './theme-injection.component';
 export * from './utilities.component';
 
 /* Auto Generated Below */

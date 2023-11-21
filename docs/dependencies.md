@@ -48,6 +48,8 @@ Angular versions used to build any of its dependent libraries.
 We are now on `Angular v15` after conformation of our consuming teams. Before upgrading to a new version, ensure all
 consuming teams are already on the next major.
 
+Helpful overview: https://angular.io/guide/versions#actively-supported-versions
+
 ### Affected dependencies:
 
 - `typescript`

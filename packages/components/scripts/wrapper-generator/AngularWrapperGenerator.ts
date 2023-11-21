@@ -18,27 +18,21 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateImports(_: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
+    const hasThemeProp = extendedProps.some(({ key }) => key === 'theme');
 
-    const angularImports = [
-      'ChangeDetectionStrategy',
-      'ChangeDetectorRef',
-      'Component',
-      'ElementRef',
-      ...(hasEventProps ? ['EventEmitter'] : []),
-      'NgZone',
-    ];
+    const angularImports = ['Component', ...(hasEventProps ? ['EventEmitter'] : [])].sort();
     const importsFromAngular = `import { ${angularImports.join(', ')} } from '@angular/core';`;
 
     const importsFromComponentsWrapperModule = '';
 
-    const providerImports = ['ProxyCmp', ...(hasEventProps ? ['proxyOutputs'] : [])];
-    const importsFromProvider = `import { ${providerImports.join(', ')} } from '../../utils';`;
+    const utilsImports = [hasThemeProp ? 'BaseComponentWithTheme' : 'BaseComponent'].sort();
+    const importsFromUtils = `import { ${utilsImports.join(', ')} } from '../../utils';`;
 
     const typesImports = nonPrimitiveTypes;
     const importsFromTypes = typesImports.length ? `import type { ${typesImports.join(', ')} } from '../types';` : '';
 
-    return [importsFromAngular, importsFromProvider, importsFromTypes, importsFromComponentsWrapperModule]
-      .filter((x) => x)
+    return [importsFromAngular, importsFromUtils, importsFromTypes, importsFromComponentsWrapperModule]
+      .filter(Boolean)
       .join('\n');
   }
 
@@ -47,68 +41,45 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
+    const hasThemeProp = extendedProps.some(({ key }) => key === 'theme');
     const inputProps = extendedProps.filter(({ isEvent }) => !isEvent);
     const outputProps = extendedProps
       .filter(({ isEvent }) => isEvent)
       .map((x) => ({ ...x, key: camelCase(x.key.substring(2)) }));
 
-    const inputs = inputProps.length
-      ? `const inputs: string[] = [${inputProps.map(({ key }) => `'${key}'`).join(', ')}];`
-      : '';
-    const outputs = outputProps.length
-      ? `const outputs: string[] = [${outputProps.map(({ key }) => `'${key}'`).join(', ')}];`
-      : '';
-
-    const inputsAndOutputs = [inputs, outputs].filter((x) => x).join('\n');
-    const decoratorOpts = (inputs ? ['inputs'] : []).filter((x) => x).join('\n');
+    const inputs = inputProps.length ? `[${inputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
+    const outputs = outputProps.length ? `[${outputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
 
     const componentOpts = [
       `selector: '${component},[${component}]'`,
-      'changeDetection: ChangeDetectionStrategy.OnPush',
-      `template: '<ng-content></ng-content>'`,
-      ...(inputs ? ['inputs'] : []),
-      ...(outputs ? ['outputs'] : []),
+      `template: '<ng-content />'`,
+      ...(inputs ? [`inputs: ${inputs}`] : []),
+      ...(outputs ? [`outputs: ${outputs}`] : []),
     ]
-      .filter((x) => x)
+      .filter(Boolean)
       .join(',\n  ');
 
     const classMembers = [
-      'protected el: HTMLElement;',
       ...inputProps.map(
         (x) =>
-          (x.isDeprecated ? '/** @deprecated */\n  ' : '') + `${x.key}${x.isOptional ? '?' : ''}: ${x.rawValueType};`
+          (x.isDeprecated ? '/** @deprecated */\n  ' : '') +
+          `${(x.key === 'theme' ? 'declare ' : '') + x.key}${x.isOptional ? '?' : ''}: ${x.rawValueType};`
       ),
       ...outputProps.map(
         (x) =>
           (x.isDeprecated ? '/** @deprecated */\n  ' : '') +
-          `${x.key}!: EventEmitter<CustomEvent<${x.rawValueType.match(/<(.*?)>/)?.[1]}>>;`
+          `${x.key} = new EventEmitter<CustomEvent<${x.rawValueType.match(/<(.*?)>/)?.[1]}>>();`
       ),
     ].join('\n  ');
 
-    const constructorCode = [
-      'c.detach();',
-      'this.el = r.nativeElement;',
-      ...(outputs ? ['proxyOutputs(this, outputs);'] : []),
-    ].join('\n    ');
-
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
-    const implementsOnInit = '';
-    const constructorParams = `c: ChangeDetectorRef, r: ElementRef, protected z: NgZone`;
+    const baseClass = hasThemeProp ? 'BaseComponentWithTheme' : 'BaseComponent';
 
-    return `${inputsAndOutputs}
-
-${this.inputParser.getDeprecationMessage(component)}@ProxyCmp({
-  ${decoratorOpts}
-})
-@Component({
+    return `${this.inputParser.getDeprecationMessage(component)}@Component({
   ${componentOpts}
 })
-export class ${this.generateComponentName(component)}${genericType}${implementsOnInit} {
+export class ${this.generateComponentName(component)}${genericType} extends ${baseClass} {
   ${classMembers}
-
-  constructor(${constructorParams}) {
-    ${constructorCode}
-  }
 }`;
   }
 
