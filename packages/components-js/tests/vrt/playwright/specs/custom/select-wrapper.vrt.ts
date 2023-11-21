@@ -75,7 +75,7 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
     window.addEventListener('scroll', (e) => e.stopImmediatePropagation(), true);
   });
 
-  await page.setViewportSize({ width: viewportWidth, height: 1000 });
+  await page.setViewportSize({ width: viewportWidth, height: 2500 });
   await setNativePopoversToAllowMultipleOpen(page);
   await openAllSelectWrapper(page);
 };
