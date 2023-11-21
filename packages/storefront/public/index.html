@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <% if (process.env.NODE_ENV === 'production') { %>
     <!-- CSP_PLACEHOLDER -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' 'unsafe-inline' https://cdn.ui.porsche.com; script-src 'self' https://cdn.ui.porsche.com 'sha256-tLQv3HYsg31Gol9bNbLJ7/ARUlRvWTt4kIdQac3fnMA=' 'sha256-NC3nZhie3+jiGh4jIvFaQcbdkIl0IrRciWVxciaYFAQ='; img-src 'self' https://cdn.ui.porsche.com data:; connect-src 'self' https://*.algolia.net https://*.algolianet.com https://registry.npmjs.org/@porsche-design-system/components-js" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' 'unsafe-inline' https://cdn.ui.porsche.com; script-src 'self' https://cdn.ui.porsche.com 'sha256-x796hmGRKT3qk4ElxBvx9RZ2MQJJlT39yfatQGhEiWk=' 'sha256-NC3nZhie3+jiGh4jIvFaQcbdkIl0IrRciWVxciaYFAQ='; img-src 'self' https://cdn.ui.porsche.com data:; connect-src 'self' https://*.algolia.net https://*.algolianet.com https://registry.npmjs.org/@porsche-design-system/components-js" />
 
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }) %>
