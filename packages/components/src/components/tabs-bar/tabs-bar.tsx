@@ -185,7 +185,7 @@ export class TabsBar {
       const attrs = this.areTabsButtons
         ? {
             role: 'tab',
-            tabindex: isCurrent ? '0' : '-1',
+            tabindex: isCurrent || 0 === index ? '0' : '-1',
             'aria-selected': isCurrent ? 'true' : 'false',
           }
         : {
