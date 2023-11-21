@@ -9,7 +9,7 @@ type StateMessageProps = {
   host: HTMLElement;
 };
 
-export const htmlMessageId = 'message';
+export const messageId = 'message';
 
 export const StateMessage: FunctionalComponent<StateMessageProps> = ({ state, message, theme, host }) => {
   const PrefixedTagNames = getPrefixedTagNames(host);
@@ -17,7 +17,7 @@ export const StateMessage: FunctionalComponent<StateMessageProps> = ({ state, me
 
   return (
     hasMessage(host, message, state) && (
-      <span id={htmlMessageId} class="message" role={getRole(state)}>
+      <span id={messageId} class="message" role={getRole(state)}>
         <PrefixedTagNames.pIcon
           name={isErrorState ? 'exclamation' : 'check'}
           color={isErrorState ? 'notification-error' : 'notification-success'}

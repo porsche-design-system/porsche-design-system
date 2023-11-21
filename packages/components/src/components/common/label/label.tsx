@@ -8,8 +8,8 @@ import {
 } from '../../../utils';
 import { Required } from '../required/required';
 
-export const htmlLabelId = 'label';
-export const htmlDescriptionId = 'description';
+export const labelId = 'label';
+export const descriptionId = 'description';
 
 type FormElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 type LabelProps = {
@@ -37,7 +37,7 @@ export const Label: FunctionalComponent<LabelProps> = ({
     <Fragment>
       <label
         class="label"
-        id={htmlLabelId}
+        id={labelId}
         aria-disabled={isLoading || isDisabled ? 'true' : null}
         {...(htmlFor
           ? { htmlFor }
@@ -57,7 +57,7 @@ export const Label: FunctionalComponent<LabelProps> = ({
       </label>
       {/* TODO: we could try to use css :empty selector instead of DOM query checks, which might make things easier in SSR context? */}
       {hasDescription(host, description) && (
-        <span class="label" id={htmlDescriptionId} aria-disabled={isLoading || isDisabled ? 'true' : null}>
+        <span class="label" id={descriptionId} aria-disabled={isLoading || isDisabled ? 'true' : null}>
           {description || <slot name="description" />}
         </span>
       )}

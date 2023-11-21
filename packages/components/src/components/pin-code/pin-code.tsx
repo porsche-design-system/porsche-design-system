@@ -25,8 +25,8 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
-import { htmlMessageId, StateMessage } from '../common/state-message/state-message';
-import { htmlDescriptionId, htmlLabelId, Label } from '../common/label/label';
+import { messageId, StateMessage } from '../common/state-message/state-message';
+import { descriptionId, labelId, Label } from '../common/label/label';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -156,7 +156,7 @@ export class PinCode {
               id={index === this.value.length ? currentInputId : null}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
-              aria-describedby={`${htmlLabelId} ${htmlDescriptionId} ${htmlMessageId}`}
+              aria-describedby={`${labelId} ${descriptionId} ${messageId}`}
               aria-invalid={this.state === 'error' ? 'true' : null}
               aria-busy={this.loading ? 'true' : null}
               aria-disabled={this.loading ? 'true' : null}

@@ -55,8 +55,8 @@ import {
   Watch,
 } from '@stencil/core';
 import { getComponentCss } from './multi-select-styles';
-import { htmlMessageId, StateMessage } from '../../common/state-message/state-message';
-import { htmlDescriptionId, htmlLabelId, Label } from '../../common/label/label';
+import { messageId, StateMessage } from '../../common/state-message/state-message';
+import { descriptionId, labelId, Label } from '../../common/label/label';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -243,8 +243,8 @@ export class MultiSelect {
             {...getFilterInputAriaAttributes(
               this.isOpen,
               this.required,
-              htmlLabelId,
-              `${htmlDescriptionId} ${optionsSelectedId} ${htmlMessageId}`,
+              labelId,
+              `${descriptionId} ${optionsSelectedId} ${messageId}`,
               dropdownId
             )}
           />

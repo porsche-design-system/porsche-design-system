@@ -13,7 +13,7 @@ import type { PropTypes, Theme } from '../../types';
 import type { FieldsetWrapperLabelSize, FieldsetWrapperState } from './fieldset-wrapper-utils';
 import { FIELDSET_LABEL_SIZES } from './../fieldset/fieldset-utils';
 import { getComponentCss } from './fieldset-wrapper-styles';
-import { htmlMessageId, StateMessage } from '../common/state-message/state-message';
+import { messageId, StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
 
 const propTypes: PropTypes<typeof FieldsetWrapper> = {
@@ -66,7 +66,7 @@ export class FieldsetWrapper {
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
     return (
-      <fieldset aria-describedby={hasMessageValue ? htmlMessageId : null}>
+      <fieldset aria-describedby={hasMessageValue ? messageId : null}>
         {hasLabel(this.host, this.label) && (
           <legend>
             {this.label || <slot name="label" />}

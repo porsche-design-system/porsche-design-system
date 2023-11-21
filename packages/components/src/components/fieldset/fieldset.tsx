@@ -12,7 +12,7 @@ import type { PropTypes, Theme } from '../../types';
 import type { FieldsetLabelSize, FieldsetState } from './fieldset-utils';
 import { FIELDSET_LABEL_SIZES } from './fieldset-utils';
 import { getComponentCss } from './fieldset-styles';
-import { htmlMessageId, StateMessage } from '../common/state-message/state-message';
+import { messageId, StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
 import type { FormState } from '../../utils/form/form-state';
 
@@ -64,7 +64,7 @@ export class Fieldset {
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
     return (
-      <fieldset aria-describedby={hasMessageValue ? htmlMessageId : null}>
+      <fieldset aria-describedby={hasMessageValue ? messageId : null}>
         {hasLabel(this.host, this.label) && (
           <legend>
             {this.label || <slot name="label" />}
