@@ -64,13 +64,14 @@ export const getSlottedTextFieldTextareaSelectStyles = (
     ...(!isLoading &&
       (hoverMediaQuery({
         // with the media query the selector has higher priority and overrides disabled styles
-        [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(${child}:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown)`]:
-          {
-            borderColor: formStateHoverColor || primaryColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: formStateHoverColorDark || primaryColorDark,
-            }),
-          },
+        [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))${
+          child === 'select' ? ',label:hover~.wrapper ::part(select-wrapper-dropdown)' : ''
+        }`]: {
+          borderColor: formStateHoverColor || primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: formStateHoverColorDark || primaryColorDark,
+          }),
+        },
       }) as Styles)),
     [`::slotted(${child}:focus)`]: {
       borderColor: primaryColor,

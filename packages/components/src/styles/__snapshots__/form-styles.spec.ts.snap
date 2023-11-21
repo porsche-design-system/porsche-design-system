@@ -33,7 +33,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#D8D8DB",
   },
   "@media(hover:hover)": {
-    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown)": {
+    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly]))": {
       "borderColor": "#951219",
     },
   },
@@ -73,7 +73,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#D8D8DB",
   },
   "@media(hover:hover)": {
-    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown)": {
+    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly]))": {
       "borderColor": "#010205",
     },
   },
@@ -148,7 +148,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#D8D8DB",
   },
   "@media(hover:hover)": {
-    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown)": {
+    "::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly]))": {
       "borderColor": "#0E4809",
     },
   },
@@ -297,7 +297,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly]))": {
       "borderColor": "#FB0404",
     },
   },
@@ -337,7 +337,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly]))": {
       "borderColor": "#FB0404",
     },
   },
@@ -377,7 +377,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly]))": {
       "borderColor": "#FBFCFF",
     },
   },
@@ -417,7 +417,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
     "borderColor": "#404044",
   },
   "@media(hover:hover)": {
-    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown)": {
+    "::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly]))": {
       "borderColor": "#069561",
     },
   },
