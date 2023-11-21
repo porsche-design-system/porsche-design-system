@@ -32,7 +32,7 @@ export const getComponentCss = (
       },
       // ::slotted(select)
       ...addImportantToEachRule(
-        getSlottedTextFieldTextareaSelectStyles('select', state, theme, false, {
+        getSlottedTextFieldTextareaSelectStyles('select', state, false, theme, {
           gridArea: '1/1/1/-1',
           position: 'static',
           zIndex: 0, // TODO: overrides global style.css in e2e and vrts

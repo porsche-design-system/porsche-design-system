@@ -18,8 +18,8 @@ export type ChildSelector = 'input' | 'select' | 'textarea';
 export const getSlottedTextFieldTextareaSelectStyles = (
   child: ChildSelector,
   state: FormState,
-  theme: Theme,
   isLoading: boolean,
+  theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);

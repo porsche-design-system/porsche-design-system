@@ -53,7 +53,7 @@ export const getComponentCss = (
       },
       // ::slotted(input)
       ...addImportantToEachRule({
-        ...getSlottedTextFieldTextareaSelectStyles('input', state, theme, false, {
+        ...getSlottedTextFieldTextareaSelectStyles('input', state, false, theme, {
           gridArea: '1/1/1/-1',
           padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
           paddingInline: `var(${cssVariableInputPaddingStart}) var(${cssVariableInputPaddingEnd})`,

@@ -27,7 +27,7 @@ export const getComponentCss = (
   const inputStyles = removeStyles(
     'input[readonly]',
     removeSlottedSelector(
-      getSlottedTextFieldTextareaSelectStyles('input', state, theme, isLoading, {
+      getSlottedTextFieldTextareaSelectStyles('input', state, isLoading, theme, {
         // TODO: move into getSlottedTextFieldTextareaSelectStyles()
         padding: `${formElementPaddingVertical} ${spacingStaticXSmall}`,
         // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. textAlign=center|start

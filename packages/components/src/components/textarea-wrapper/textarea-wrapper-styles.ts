@@ -36,7 +36,7 @@ export const getComponentCss = (
       // ::slotted(textarea)
       ...mergeDeep(
         addImportantToEachRule(
-          getSlottedTextFieldTextareaSelectStyles('textarea', state, theme, false, {
+          getSlottedTextFieldTextareaSelectStyles('textarea', state, false, theme, {
             gridArea: '1/1',
             // TODO: move into getSlottedTextFieldTextareaSelectStyles()
             font: textSmallStyle.font, // to override line-height

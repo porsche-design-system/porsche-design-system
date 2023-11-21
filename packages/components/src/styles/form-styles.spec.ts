@@ -2,19 +2,19 @@ import { getSlottedTextFieldTextareaSelectStyles, getUnitCounterStyles } from '.
 
 describe('getSlottedTextFieldTextareaSelectStyles()', () => {
   it.each<Parameters<typeof getSlottedTextFieldTextareaSelectStyles>>([
-    ['input', 'none', 'light', false, undefined],
-    ['input', 'none', 'light', true, undefined],
-    ['input', 'success', 'light', false, undefined],
-    ['input', 'error', 'light', false, undefined],
-    ['select', 'none', 'dark', false, undefined],
-    ['select', 'success', 'dark', false, undefined],
-    ['select', 'error', 'dark', false, undefined],
-    ['textarea', 'none', 'dark', false, undefined],
-    ['textarea', 'success', 'dark', false, undefined],
-    ['textarea', 'error', 'dark', false, undefined],
-    ['textarea', 'error', 'dark', false, { bottom: 5 }],
+    ['input', 'none', false, 'light', undefined],
+    ['input', 'none', true, 'light', undefined],
+    ['input', 'success', false, 'light', undefined],
+    ['input', 'error', false, 'light', undefined],
+    ['select', 'none', false, 'dark', undefined],
+    ['select', 'success', false, 'dark', undefined],
+    ['select', 'error', false, 'dark', undefined],
+    ['textarea', 'none', false, 'dark', undefined],
+    ['textarea', 'success', false, 'dark', undefined],
+    ['textarea', 'error', false, 'dark', undefined],
+    ['textarea', 'error', false, 'dark', { bottom: 5 }],
   ])(
-    'should return correct css for child: %s, state: %s, theme: %s, isLoading: %s and additionalDefaultJssStyle: %o',
+    'should return correct css for child: %s, state: %s, isLoading: %s, theme: %s and additionalDefaultJssStyle: %o',
     (...args) => {
       expect(getSlottedTextFieldTextareaSelectStyles(...args)).toMatchSnapshot();
     }
