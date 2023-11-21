@@ -55,5 +55,5 @@ export const getFunctionalComponentLabelStyles = (
     },
     // .required
     ...getFunctionalComponentRequiredStyles(),
-  } as const;
+  };
 };
