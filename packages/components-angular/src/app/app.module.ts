@@ -13,11 +13,11 @@ import * as fromStyles from './styles';
 @NgModule({
   declarations: [
     AppComponent,
-    ...fromPages.pages,
-    ...fromPages.generatedPages,
-    ...fromExamples.examples,
-    ...fromStyles.examples,
     ...fromComponents.components,
+    ...fromExamples.examples,
+    ...fromPages.generatedPages,
+    ...fromPages.pages,
+    ...fromStyles.examples,
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Route } from '@angular/router';
+import { RouterModule, type Route } from '@angular/router';
 import * as fromPages from './pages';
 import * as fromExamples from './examples';
 import * as fromStyles from './styles';
 
 export type ExtendedRoute = Route & {
-  name: string;
+  name?: string; // optional to be filtered out for select options
   isDisabled?: boolean;
 };
 
 export const routes: ExtendedRoute[] = [
-  ...[...fromPages.generatedRoutes].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())),
+  ...fromPages.generatedRoutes.sort((a, b) => a.name!.toLowerCase().localeCompare(b.name!.toLowerCase())),
   {
     name: '---',
     path: '---',
@@ -53,12 +53,25 @@ export const routes: ExtendedRoute[] = [
     redirectTo: 'tabs-bar-navigation/page-1',
   },
   {
-    name: 'Tabs Bar Navigation',
     path: 'tabs-bar-navigation',
+    component: fromPages.TabsBarNavigationComponent,
     children: [
-      { path: 'page-1', component: fromPages.TabsBarPage1Component },
-      { path: 'page-2', component: fromPages.TabsBarPage2Component },
-      { path: 'page-3', component: fromPages.TabsBarPage3Component },
+      { path: 'page-1', component: fromPages.TabsBarNavigationPage1Component },
+      { path: 'page-2', component: fromPages.TabsBarNavigationPage2Component },
+      { path: 'page-3', component: fromPages.TabsBarNavigationPage3Component },
+    ],
+  },
+  {
+    name: 'Tabs Bar Navigation Bug',
+    path: 'tabs-bar-navigation-bug',
+    redirectTo: 'tabs-bar-navigation-bug/page-1',
+  },
+  {
+    path: 'tabs-bar-navigation-bug',
+    children: [
+      { path: 'page-1', component: fromPages.TabsBarNavigationBugPage1Component },
+      { path: 'page-2', component: fromPages.TabsBarNavigationBugPage2Component },
+      { path: 'page-3', component: fromPages.TabsBarNavigationBugPage3Component },
     ],
   },
   {
