@@ -48,6 +48,20 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.FormWrapperBindingComponent,
   },
   {
+    name: 'Tabs Bar Navigation',
+    path: 'tabs-bar-navigation',
+    redirectTo: 'tabs-bar-navigation/page-1',
+  },
+  {
+    name: 'Tabs Bar Navigation',
+    path: 'tabs-bar-navigation',
+    children: [
+      { path: 'page-1', component: fromPages.TabsBarPage1Component },
+      { path: 'page-2', component: fromPages.TabsBarPage2Component },
+      { path: 'page-3', component: fromPages.TabsBarPage3Component },
+    ],
+  },
+  {
     name: 'Theme Injection',
     path: 'theme-injection',
     component: fromPages.ThemeInjectionComponent,
@@ -287,7 +301,7 @@ export const routes: ExtendedRoute[] = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
