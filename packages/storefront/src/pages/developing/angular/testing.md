@@ -90,7 +90,7 @@ More test examples can be found at the [componentsReady() documentation](develop
 
 Since the [getInitialStyles()](partials/initial-styles) partial is mandatory for using Porsche Design System, the
 partial needs to be included within test environments. With help of `@angular-builders/custom-webpack` and its
-`injectPartials` option, the partial can be injected into the `index.html`. See
+`indexTransform` option, the partial can be injected into the `index.html`. See
 [getInitialStyles()](partials/initial-styles) for a manual how to integrate the partial within `build` and `serve`
 environment.  
 Since Karma does not use the `index.html`, but instead relies on `karma-context.html` the transformation of `index.html`
