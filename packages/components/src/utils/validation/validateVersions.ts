@@ -16,7 +16,7 @@ export const VERSION_VALIDATION_TIMEOUT = 3000;
  */
 export const validateVersions = (): void => {
   // skip for yarn start
-  if (ROLLUP_REPLACE_IS_STAGING !== 'development') {
+  if (process.env.NODE_ENV !== 'development') {
     // Uses a timeout to increase the chances that all used versions are loaded and initialized
     setTimeout(() => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
