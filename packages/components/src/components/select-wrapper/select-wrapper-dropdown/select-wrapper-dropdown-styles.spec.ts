@@ -60,14 +60,8 @@ describe('getFilterStyles()', () => {
 describe('getListStyles()', () => {
   it.each<Parameters<typeof getListStyles>>([
     ['down', 'light'],
-    ['down', 'light'],
-    ['down', 'light'],
-    ['down', 'dark'],
     ['down', 'dark'],
     ['up', 'light'],
-    ['up', 'light'],
-    ['up', 'light'],
-    ['up', 'dark'],
     ['up', 'dark'],
   ])('should return correct css for direction: %s and theme: %s', (direction, theme) => {
     expect(getCss(getListStyles(direction, theme))).toMatchSnapshot();
