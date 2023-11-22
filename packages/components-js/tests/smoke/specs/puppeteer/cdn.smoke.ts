@@ -154,9 +154,13 @@ describe('cdn', () => {
           it(`should exist: ${item}`, async () => {
             await fetchUrl(`${baseUrl}/${item}`);
             expect(responses.filter(isStatusNot200).length).toBe(0);
-            responses.forEach((response) =>
-              expect(response.headers['content-type']).toBe(mime.getType(response.url.split('.').pop()))
-            );
+            responses.forEach((response) => {
+              const ext = item.split('.').pop();
+              // Mime library returns application/javascript but should be text/javascript
+              // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+              const mimeType = ext === 'js' ? 'text/javascript' : mime.getType(ext);
+              expect(response.headers['content-type']).toBe(mimeType);
+            });
             responseCounter += responses.length;
 
             const responseErrors = responses.filter(isStatus400);
