@@ -601,20 +601,44 @@ describe('scroll lock', () => {
       expect(await getBodyStyle()).toBe('');
     });
 
-    it('should not override styles when open and top style on body is already set', async () => {
+    it('should not override body styles on prop change', async () => {
       await page.setUserAgent(
         'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
       );
 
-      await initBasicFlyout({ open: false });
+      await initBasicFlyout({ open: false }, {}, { markupBefore: '<div style="height: 2000px;"></div>' });
       expect(await getBodyStyle()).toBe(null);
 
       await page.evaluate(() => {
-        document.body.style.top = '10px';
+        window.scrollTo(0, 500);
       });
 
       await openFlyout();
-      expect(await getBodyStyle()).toBe('top: 10px;');
+      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
+
+      await setProperty(await getHost(), 'aria', "{'aria-label': 'Other Heading'}");
+      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
+    });
+
+    it('should not override body styles on slot change', async () => {
+      await page.setUserAgent(
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+      );
+      await initBasicFlyout({ open: false }, {}, { markupBefore: '<div style="height: 2000px;"></div>' });
+      const host = await getHost();
+      await page.evaluate(() => {
+        window.scrollTo(0, 500);
+      });
+
+      expect(await getBodyStyle()).toBe(null);
+
+      await openFlyout();
+      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
+
+      await host.evaluate((el) => {
+        el.innerHTML = '<button id="btn-new">New Button</button>';
+      });
+      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
     });
 
     it('should prevent page from scrolling when initially open', async () => {
