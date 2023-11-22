@@ -15,7 +15,7 @@ export const iconsLink = getIconLinks({ icons: [...ICON_NAMES] }).replace(
 );
 
 const replaceChunkAndIconLinks = (): void => {
-  const indexHtmlFilePath = path.resolve(__dirname, '../public/index.html');
+  const indexHtmlFilePath = path.resolve(__dirname, '../www/index.html');
   const oldContent = fs.readFileSync(indexHtmlFilePath, 'utf8');
   const newContent = oldContent
     .replace(/(<!--PLACEHOLDER_PORSCHE_DESIGN_SYSTEM_COMPONENT_CHUNKS-->)/, '$1' + chunksLink)
