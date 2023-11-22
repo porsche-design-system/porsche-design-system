@@ -12,7 +12,7 @@ import {
   formElementPaddingVertical,
   getCalculatedFormElementPaddingHorizontal,
   getSlottedTextFieldTextareaSelectStyles,
-  getUnitCounterStyles,
+  getUnitCounterJssStyle,
 } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
@@ -110,7 +110,7 @@ export const getComponentCss = (
     ...(hasUnitOrVisibleCounter && {
       // TODO: rename to unit-counter?
       unit: {
-        ...getUnitCounterStyles(isDisabled, theme),
+        ...getUnitCounterJssStyle(isDisabled, theme),
         gridArea: `1/${unitPosition === 'suffix' ? 5 : 1}/1/${unitPosition === 'suffix' ? 7 : 3}`,
         placeSelf: 'center',
         paddingInline:

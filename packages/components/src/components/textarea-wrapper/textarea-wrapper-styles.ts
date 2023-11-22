@@ -5,7 +5,7 @@ import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostH
 import {
   formElementPaddingHorizontal,
   getSlottedTextFieldTextareaSelectStyles,
-  getUnitCounterStyles,
+  getUnitCounterJssStyle,
 } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { type FormState } from '../../utils/form/form-state';
@@ -65,7 +65,7 @@ export const getComponentCss = (
     },
     ...(hasCounter && {
       counter: {
-        ...getUnitCounterStyles(isDisabled, theme),
+        ...getUnitCounterJssStyle(isDisabled, theme),
         gridArea: '1/1',
         placeSelf: 'flex-end',
         padding: `6px calc(${formElementPaddingHorizontal} + ${borderWidthBase})`,

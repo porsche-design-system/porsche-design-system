@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for child: input, state: error, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: input, state: error, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(input)": {
     "WebkitAppearance": "none",
@@ -40,7 +40,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for child: input, state: none, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: input, state: none, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(input)": {
     "WebkitAppearance": "none",
@@ -80,7 +80,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for child: input, state: none, isLoading: true, theme: light and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: input, state: none, isLoading: true, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(input)": {
     "WebkitAppearance": "none",
@@ -115,7 +115,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for child: input, state: success, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: input, state: success, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(input)": {
     "WebkitAppearance": "none",
@@ -155,7 +155,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for child: select, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: select, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(select)": {
     "WebkitAppearance": "none",
@@ -191,7 +191,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for child: select, state: none, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: select, state: none, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(select)": {
     "WebkitAppearance": "none",
@@ -227,7 +227,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for child: select, state: success, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: select, state: success, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(select)": {
     "WebkitAppearance": "none",
@@ -263,7 +263,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for child: textarea, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: { bottom: 5 } 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: textarea, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: { bottom: 5 } 1`] = `
 {
   "::slotted(textarea)": {
     "WebkitAppearance": "none",
@@ -304,7 +304,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for child: textarea, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: textarea, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(textarea)": {
     "WebkitAppearance": "none",
@@ -344,7 +344,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for child: textarea, state: none, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: textarea, state: none, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(textarea)": {
     "WebkitAppearance": "none",
@@ -384,7 +384,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for child: textarea, state: success, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: textarea, state: success, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(textarea)": {
     "WebkitAppearance": "none",
@@ -424,7 +424,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct css for
 }
 `;
 
-exports[`getUnitCounterStyles() should return correct css for isDisabled: false and theme: auto 1`] = `
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false and theme: auto 1`] = `
 {
   "@media (prefers-color-scheme: dark)": {
     "color": "#88898C",
@@ -440,7 +440,7 @@ exports[`getUnitCounterStyles() should return correct css for isDisabled: false 
 }
 `;
 
-exports[`getUnitCounterStyles() should return correct css for isDisabled: false and theme: dark 1`] = `
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false and theme: dark 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#88898C",
@@ -453,7 +453,7 @@ exports[`getUnitCounterStyles() should return correct css for isDisabled: false 
 }
 `;
 
-exports[`getUnitCounterStyles() should return correct css for isDisabled: false and theme: light 1`] = `
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false and theme: light 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#6B6D70",
@@ -466,7 +466,7 @@ exports[`getUnitCounterStyles() should return correct css for isDisabled: false 
 }
 `;
 
-exports[`getUnitCounterStyles() should return correct css for isDisabled: true and theme: auto 1`] = `
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: true and theme: auto 1`] = `
 {
   "@media (prefers-color-scheme: dark)": {
     "color": "#7E7F82",
@@ -482,7 +482,7 @@ exports[`getUnitCounterStyles() should return correct css for isDisabled: true a
 }
 `;
 
-exports[`getUnitCounterStyles() should return correct css for isDisabled: true and theme: dark 1`] = `
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: true and theme: dark 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#7E7F82",
@@ -495,7 +495,7 @@ exports[`getUnitCounterStyles() should return correct css for isDisabled: true a
 }
 `;
 
-exports[`getUnitCounterStyles() should return correct css for isDisabled: true and theme: light 1`] = `
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: true and theme: light 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#949598",

@@ -119,7 +119,7 @@ export const getCalculatedFormElementPaddingHorizontal = (buttonOrIconAmount: 1 
 };
 
 // TODO: re-use in textarea-wrapper not only in text-field-wrapper
-export const getUnitCounterStyles = (isDisabled: boolean, theme: Theme): JssStyle => {
+export const getUnitCounterJssStyle = (isDisabled: boolean, theme: Theme): JssStyle => {
   const { disabledColor, contrastMediumColor } = getThemedColors(theme);
   const { disabledColor: disabledColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
 
