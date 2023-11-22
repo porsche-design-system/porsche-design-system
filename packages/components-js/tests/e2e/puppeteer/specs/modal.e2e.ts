@@ -600,35 +600,98 @@ it('should open modal at scroll top position zero when its content is scrollable
 });
 
 describe('scroll lock', () => {
-  const bodyLockedStyle = 'overflow: hidden;';
+  describe('Desktop Browser', () => {
+    const bodyLockedStyle = 'overflow: hidden;';
 
-  it('should prevent page from scrolling when open', async () => {
-    await initBasicModal({ isOpen: false });
-    expect(await getBodyStyle()).toBe(null);
+    it('should prevent page from scrolling when open', async () => {
+      await initBasicModal({ isOpen: false });
+      expect(await getBodyStyle()).toBe(null);
 
-    await openModal();
-    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+      await openModal();
+      expect(await getBodyStyle()).toBe(bodyLockedStyle);
 
-    await setProperty(await getHost(), 'open', false);
-    await waitForStencilLifecycle(page);
-    expect(await getBodyStyle()).toBe('');
-  });
-
-  it('should prevent page from scrolling when initially open', async () => {
-    await initBasicModal({ isOpen: true });
-    expect(await getBodyStyle()).toBe(bodyLockedStyle);
-  });
-
-  it('should remove overflow hidden from body if unmounted', async () => {
-    await initBasicModal({ isOpen: true });
-    expect(await getBodyStyle()).toBe(bodyLockedStyle);
-
-    await page.evaluate(() => {
-      document.querySelector('p-modal').remove();
+      await setProperty(await getHost(), 'open', false);
+      await waitForStencilLifecycle(page);
+      expect(await getBodyStyle()).toBe('');
     });
-    await waitForStencilLifecycle(page);
 
-    expect(await getBodyStyle()).toBe('');
+    it('should prevent page from scrolling when initially open', async () => {
+      await initBasicModal({ isOpen: true });
+      expect(await getBodyStyle()).toBe(bodyLockedStyle);
+    });
+
+    it('should remove overflow hidden from body if unmounted', async () => {
+      await initBasicModal({ isOpen: true });
+      expect(await getBodyStyle()).toBe(bodyLockedStyle);
+
+      await page.evaluate(() => {
+        document.querySelector('p-modal').remove();
+      });
+      await waitForStencilLifecycle(page);
+
+      expect(await getBodyStyle()).toBe('');
+    });
+  });
+
+  fdescribe('iOS Safari', () => {
+    const bodyLockedStyleIOS = 'top: 0px; overflow-y: scroll; position: fixed;';
+
+    it('should prevent page from scrolling when open', async () => {
+      await page.setUserAgent(
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+      );
+
+      await initBasicModal({ isOpen: false });
+      expect(await getBodyStyle()).toBe(null);
+
+      await openModal();
+      expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
+
+      await setProperty(await getHost(), 'open', false);
+      await waitForStencilLifecycle(page);
+      expect(await getBodyStyle()).toBe('');
+    });
+
+    it('should prevent page from scrolling when open', async () => {
+      await page.setUserAgent(
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+      );
+
+      await initBasicModal({ isOpen: false });
+      expect(await getBodyStyle()).toBe(null);
+
+      await page.evaluate(() => {
+        document.body.style.top = '10px';
+      });
+
+      await openModal();
+      expect(await getBodyStyle()).toBe('top: 10px;');
+    });
+
+    it('should prevent page from scrolling when initially open', async () => {
+      await page.setUserAgent(
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+      );
+
+      await initBasicModal({ isOpen: true });
+      expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
+    });
+
+    it('should remove overflow hidden from body if unmounted', async () => {
+      await page.setUserAgent(
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+      );
+
+      await initBasicModal({ isOpen: true });
+      expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
+
+      await page.evaluate(() => {
+        document.querySelector('p-modal').remove();
+      });
+      await waitForStencilLifecycle(page);
+
+      expect(await getBodyStyle()).toBe('');
+    });
   });
 });
 
