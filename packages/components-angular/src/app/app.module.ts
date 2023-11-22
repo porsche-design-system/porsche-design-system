@@ -6,18 +6,18 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import * as fromComponents from './components';
-import * as fromPages from './pages';
 import * as fromExamples from './examples';
+import * as fromPages from './pages';
 import * as fromStyles from './styles';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ...fromPages.pages,
-    ...fromPages.generatedPages,
-    ...fromExamples.examples,
-    ...fromStyles.examples,
     ...fromComponents.components,
+    ...fromExamples.examples,
+    ...fromPages.generatedPages,
+    ...fromPages.pages,
+    ...fromStyles.examples,
   ],
   imports: [
     BrowserModule,
