@@ -22,6 +22,7 @@ const tagNamesWithoutTextAndHeadline = TAG_NAMES.filter(
 
 export const PREFIXED_TAG_NAMES_CACHE = new Map<string, PrefixedTagNames>();
 
+// TODO: typing support for components is missing
 export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
   const [, prefix = ''] = /^([a-z-]+)-p-[a-z-]+$/.exec(getTagName(host)) || [];
 

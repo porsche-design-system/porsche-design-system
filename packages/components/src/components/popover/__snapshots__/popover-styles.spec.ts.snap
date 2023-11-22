@@ -19,6 +19,7 @@ p {
 button {
   display: block;
   position: relative;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   border: 0;
@@ -143,6 +144,7 @@ p {
 button {
   display: block;
   position: relative;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   border: 0;
@@ -267,6 +269,7 @@ p {
 button {
   display: block;
   position: relative;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   border: 0;
@@ -391,6 +394,7 @@ p {
 button {
   display: block;
   position: relative;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   border: 0;
@@ -515,6 +519,7 @@ p {
 button {
   display: block;
   position: relative;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   border: 0;
@@ -639,6 +644,7 @@ p {
 button {
   display: block;
   position: relative;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   border: 0;
@@ -763,6 +769,7 @@ p {
 button {
   display: block;
   position: relative;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   border: 0;
@@ -887,6 +894,7 @@ p {
 button {
   display: block;
   position: relative;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   border: 0;
@@ -1011,6 +1019,7 @@ p {
 button {
   display: block;
   position: relative;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   border: 0;

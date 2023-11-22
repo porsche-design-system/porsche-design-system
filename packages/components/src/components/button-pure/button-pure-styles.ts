@@ -33,6 +33,7 @@ export const getComponentCss = (
       ),
       {
         root: {
+          WebkitAppearance: 'none', // iOS safari
           appearance: 'none',
           background: 'transparent',
           textAlign: 'start',

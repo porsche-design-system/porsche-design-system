@@ -107,6 +107,7 @@ export const getLinkButtonStyles = (
       boxSizing: 'border-box',
       outline: 0,
       textAlign: 'start',
+      WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       textDecoration: 'none',
       border: `2px solid ${borderColor}`,

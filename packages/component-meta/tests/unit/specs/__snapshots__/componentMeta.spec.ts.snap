@@ -987,6 +987,7 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "header",
       "footer",
+      "sub-footer",
     ],
     "nestedComponents": [
       "p-button-pure",
@@ -2094,12 +2095,11 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "label",
       "description",
-      "select",
       "message",
     ],
     "nestedComponents": [
-      "p-button-pure",
       "p-icon",
+      "p-button-pure",
     ],
     "props": {
       "description": null,

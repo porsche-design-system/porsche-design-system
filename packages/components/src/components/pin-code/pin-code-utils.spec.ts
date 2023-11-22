@@ -252,7 +252,7 @@ describe('initHiddenInput()', () => {
     const hiddenInput = initHiddenInput(component.host, 'name', '1234', false, false);
 
     expect(spy).toBeCalledTimes(2); // it is also called in syncHiddenInput()
-    expect(spy).toBeCalledWith(hiddenInput, { 'aria-hidden': 'true', slot: 'hidden-input', tabindex: '-1' });
+    expect(spy).toBeCalledWith(hiddenInput, { 'aria-hidden': 'true', slot: 'internal-input', tabindex: '-1' });
     expect(spy).toBeCalledWith(hiddenInput, { name: 'name', value: '1234' });
   });
 

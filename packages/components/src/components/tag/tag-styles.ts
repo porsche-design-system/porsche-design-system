@@ -100,6 +100,7 @@ export const getComponentCss = (
           cursor: 'pointer',
           font: 'inherit',
           color: 'inherit',
+          WebkitAppearance: 'none', // iOS safari
           appearance: 'none',
           border: 0,
           textAlign: 'start',
