@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.39.0-focal-test
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.39.0-focal-test2
 jobs:
   assets-unit:
     name: 'Assets Unit'
@@ -166,8 +166,8 @@ jobs:
         with:
           name: components-js-vrt-puppeteer-regression
           path: ./packages/components-js/tests/vrt/puppeteer/results
-  components-js-vrt-playwright:
-    name: 'Components JS VRT (Playwright)'
+  components-js-common-vrt-playwright-chrome:
+    name: 'Components JS VRT Common (Playwright Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -182,12 +182,58 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
-          args: --components-js
+          args: --components-js:chrome:common
       - name: 'VRT Regression (Playwright)'
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: components-js-vrt-playwright-regression
+          name: components-js-vrt-common-playwright-chrome-regression
+          path: ./packages/components-js/tests/vrt/playwright/results
+  components-js-custom-states-vrt-playwright-chrome:
+    name: 'Components JS VRT Custom/States (Playwright Chrome)'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'VRT Test (Playwright)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-vrt-playwright
+          args: --components-js:chrome:customAndStates
+      - name: 'VRT Regression (Playwright)'
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: components-js-vrt-custom-states-playwright-chrome-regression
+          path: ./packages/components-js/tests/vrt/playwright/results
+  components-js-vrt-playwright-safari:
+    name: 'Components JS VRT (Playwright Safari)'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'VRT Test (Playwright)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-vrt-playwright
+          args: --components-js:safari
+      - name: 'VRT Regression (Playwright)'
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: components-js-vrt-playwright-safari-regression
           path: ./packages/components-js/tests/vrt/playwright/results
   components-angular:
     name: 'Components Angular'
