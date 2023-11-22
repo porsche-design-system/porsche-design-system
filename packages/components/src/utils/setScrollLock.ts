@@ -1,5 +1,6 @@
 export const setScrollLock = (isOpen: boolean): void => {
   const {
+    body,
     body: { style, parentElement: htmlEl },
   } = document;
 
@@ -15,7 +16,7 @@ export const setScrollLock = (isOpen: boolean): void => {
   // to fix the scrollable background issue on iOS Safari
   if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
     if (isOpen) {
-      style.top = -htmlEl.scrollTop + 'px';
+      style.top = body.getBoundingClientRect().top + 'px';
       style.overflowY = 'scroll'; // seems necessary for flyout or modal content to be scrollable
       style.position = 'fixed';
     } else {
