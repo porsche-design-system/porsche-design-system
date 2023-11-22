@@ -18,8 +18,6 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.github-token }}
-      - name: 'Debug Docker Resources'
-        run: docker run -t --entrypoint /bin/bash ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.39.0-focal-test2 -c "top -n 1"
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run-playwright
         with:
