@@ -14,7 +14,7 @@ export const iconsLink = getIconLinks({ icons: [...ICON_NAMES] }).replace(
   'http://localhost:3001'
 );
 
-const replaceChunkAndIconLinks = (): void => {
+const injectPartials = (): void => {
   const indexHtmlFilePath = path.resolve(__dirname, '../www/index.html');
   const oldContent = fs.readFileSync(indexHtmlFilePath, 'utf8');
   const newContent = oldContent
@@ -25,4 +25,4 @@ const replaceChunkAndIconLinks = (): void => {
   console.log(`Replaced Component Chunk Links & Icon Links`);
 };
 
-replaceChunkAndIconLinks();
+injectPartials();

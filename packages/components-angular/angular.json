@@ -27,7 +27,7 @@
             "styles": ["@porsche-design-system/shared/css/styles.css"],
             "inlineStyleLanguage": "scss",
             "scripts": [],
-            "indexTransform": "./scripts/transformIndexHtml.js"
+            "injectPartials": "./scripts/injectPartials.js"
           },
           "configurations": {
             "production": {

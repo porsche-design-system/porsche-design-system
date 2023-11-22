@@ -67,14 +67,14 @@ yarn add --dev @angular-builders/custom-webpack
 +   "builder": "@angular-builders/custom-webpack:browser",
     "options": {
       "outputPath": "dist/components-angular",
-+     "indexTransform": "./scripts/transformIndexHtml.ts",
++     "injectPartials": "./scripts/injectPartials.ts",
     }
   }
   "serve": {
 -   "builder": "@angular-devkit/build-angular:dev-server",
 +   "builder": "@angular-builders/custom-webpack:dev-server",
 
-<!-- ./scripts/transformIndexHtml.ts -->
+<!-- ./scripts/injectPartials.ts -->
 import type { TargetOptions } from '@angular-builders/custom-webpack';
 import { ${this.name} } from '${partialPackage}';
 

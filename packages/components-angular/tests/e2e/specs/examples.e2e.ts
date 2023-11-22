@@ -2,6 +2,7 @@ import type { Page } from 'puppeteer';
 import { goto, getConsoleErrorsAmount, getConsoleWarningsAmount, initConsoleObserver } from '../helpers';
 import * as path from 'path';
 import * as fs from 'fs';
+import { PTabsBar } from '@porsche-design-system/components-angular';
 
 let page: Page;
 
@@ -26,6 +27,10 @@ const routes: { name: string; path: string; component: string }[] = eval(
 
 const exampleRoutes = routes.filter((item) => item.component.startsWith('fromExamples.'));
 const exampleUrls = exampleRoutes.map((item) => item.path);
+
+const tabbar: PTabsBar;
+
+tabbar.activeTabIndex;
 
 it.each(exampleUrls)('should work without error or warning for %s', async (exampleUrl) => {
   await goto(page, exampleUrl);
