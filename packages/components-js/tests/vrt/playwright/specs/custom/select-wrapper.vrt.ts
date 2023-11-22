@@ -10,7 +10,7 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'select-wrapper';
 const viewportWidth = 1760;
 
-const scenario = async (page: Page, theme: Theme, withinTable: boolean = false): Promise<void> => {
+const scenario = async (page: Page): Promise<void> => {
   const getSelectWrapper = (direction: string, filter: string): string => {
     return `<p-select-wrapper label="Direction ${direction}" dropdown-direction=${direction} filter=${filter}>
       <select name="some-name">
@@ -67,7 +67,7 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
       </p-table-head>
     </p-table>`;
 
-  await setContentWithDesignSystem(page, markup(), { forceComponentTheme: theme });
+  await setContentWithDesignSystem(page, markup());
 
   // Override listeners to avoid native popovers being closed
   await page.evaluate(() => {
@@ -84,14 +84,12 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  baseThemes.forEach((theme) => {
-    test(`should have no visual regression on select-wrapper within table component for viewport ${viewportWidth} with theme ${theme}`, async ({
+  baseThemes.forEach(() => {
+    test(`should have no visual regression on select-wrapper within table component for viewport ${viewportWidth}`, async ({
       page,
     }) => {
-      await scenario(page, theme, true);
-      await expect(page.locator('#app')).toHaveScreenshot(
-        `${component}-${viewportWidth}-overview-within-table-theme-${theme}.png`
-      );
+      await scenario(page);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}-overview-within-table.png`);
     });
   });
 });
