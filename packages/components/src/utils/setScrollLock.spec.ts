@@ -1,7 +1,7 @@
 import { setScrollLock } from './setScrollLock';
 
 describe('iOS Safari', () => {
-  it('should add correct body styles for parameter isOpen: true', () => {
+  it('should add correct body styles for parameter isOpen: true and !body.style.top: true', () => {
     jest.spyOn(window, 'navigator', 'get').mockImplementation(
       () =>
         ({
@@ -9,6 +9,8 @@ describe('iOS Safari', () => {
             'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
         } as any)
     );
+    document.body.style.top = '';
+
     expect(document.body.getAttribute('style')).toBe(null);
     setScrollLock(true);
 
@@ -17,7 +19,7 @@ describe('iOS Safari', () => {
     expect(document.body.style.position).toBe('fixed');
   });
 
-  it('should only remove previously added body styles on iOS Safari for parameter isOpen: false', () => {
+  it('should remove previously added body styles on iOS Safari for parameter isOpen: false', () => {
     jest.spyOn(window, 'navigator', 'get').mockImplementation(
       () =>
         ({
@@ -25,6 +27,26 @@ describe('iOS Safari', () => {
             'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
         } as any)
     );
+
+    document.body.style.display = 'flex';
+    setScrollLock(true);
+    setScrollLock(false);
+
+    expect(document.body.style.top).toBe('');
+    expect(document.body.style.overflowY).toBe('');
+    expect(document.body.style.position).toBe('');
+    expect(document.body.getAttribute('style')).toBe('display: flex;');
+  });
+
+  it('should remove previously added body styles on iOS Safari for !body.style.top: false', () => {
+    jest.spyOn(window, 'navigator', 'get').mockImplementation(
+      () =>
+        ({
+          userAgent:
+            'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
+        } as any)
+    );
+    document.body.style.top = '10px';
 
     document.body.style.display = 'flex';
     setScrollLock(true);
