@@ -146,6 +146,7 @@ export const getFilterStyles = (
         padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
         paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(1),
         outline: '0',
+        WebkitAppearance: 'none', // iOS safari
         appearance: 'none',
         boxSizing: 'border-box',
         border: '0', // done via span

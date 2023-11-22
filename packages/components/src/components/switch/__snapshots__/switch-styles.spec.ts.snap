@@ -22,6 +22,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: flex-start;
@@ -115,6 +116,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: auto;
   justify-content: flex-start;
@@ -197,6 +199,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: space-between;
@@ -289,6 +292,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: auto;
   justify-content: space-between;
@@ -378,6 +382,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: auto;
   justify-content: space-between;
@@ -467,6 +472,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: auto;
   justify-content: space-between;
@@ -556,6 +562,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: space-between;
@@ -649,6 +656,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: flex-start;
@@ -742,6 +750,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: flex-start;
@@ -835,6 +844,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: flex-start;
@@ -964,6 +974,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: flex-start;

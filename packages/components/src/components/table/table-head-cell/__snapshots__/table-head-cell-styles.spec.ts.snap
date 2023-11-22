@@ -21,6 +21,7 @@ button {
   color: inherit;
   outline: 0;
   align-items: flex-end;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -86,6 +87,7 @@ button {
   color: inherit;
   outline: 0;
   align-items: flex-end;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -151,6 +153,7 @@ button {
   color: inherit;
   outline: 0;
   align-items: flex-end;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -216,6 +219,7 @@ button {
   color: inherit;
   outline: 0;
   align-items: flex-end;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -281,6 +285,7 @@ button {
   color: inherit;
   outline: 0;
   align-items: flex-end;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;

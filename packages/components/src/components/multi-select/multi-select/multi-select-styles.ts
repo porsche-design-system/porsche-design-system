@@ -147,6 +147,7 @@ const getInputStyles = (
     paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(2),
     boxSizing: 'border-box',
     outline: 0,
+    WebkitAppearance: 'none', // iOS safari
     appearance: 'none',
     ...textSmallStyle,
     textOverflow: 'ellipsis',

@@ -24,6 +24,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -207,6 +208,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -391,6 +393,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -585,6 +588,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -779,6 +783,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -974,6 +979,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1168,6 +1174,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1362,6 +1369,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1549,6 +1557,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1736,6 +1745,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1923,6 +1933,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2111,6 +2122,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2309,6 +2321,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2507,6 +2520,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2691,6 +2705,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -2875,6 +2890,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -3070,6 +3086,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -3265,6 +3282,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -3460,6 +3478,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -3655,6 +3674,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -3843,6 +3863,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -4031,6 +4052,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -4219,6 +4241,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -4407,6 +4430,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -4606,6 +4630,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -4805,6 +4830,7 @@ input {
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   box-sizing: border-box;
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   overflow-wrap: break-word;
   hyphens: auto;

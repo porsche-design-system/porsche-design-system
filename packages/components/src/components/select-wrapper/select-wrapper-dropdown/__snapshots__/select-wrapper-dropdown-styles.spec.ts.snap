@@ -468,6 +468,7 @@ input {
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -584,6 +585,7 @@ input {
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -795,6 +797,7 @@ input {
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -1101,6 +1104,7 @@ input {
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -1312,6 +1316,7 @@ input {
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -1428,6 +1433,7 @@ input {
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -1639,6 +1645,7 @@ input {
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -1945,6 +1952,7 @@ input {
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2112,6 +2120,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2181,6 +2190,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2250,6 +2260,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2319,6 +2330,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2388,6 +2400,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2457,6 +2470,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2526,6 +2540,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2597,6 +2612,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2668,6 +2684,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2739,6 +2756,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2810,6 +2828,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2881,6 +2900,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -2952,6 +2972,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -3021,6 +3042,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -3090,6 +3112,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -3159,6 +3182,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -3228,6 +3252,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -3297,6 +3322,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -3366,6 +3392,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -3437,6 +3464,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -3508,6 +3536,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -3579,6 +3608,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -3650,6 +3680,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
@@ -3721,6 +3752,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
   padding: 8px 16px;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   outline: 0;
+  -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
   border: 0;
