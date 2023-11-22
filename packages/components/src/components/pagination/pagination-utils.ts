@@ -8,7 +8,9 @@
  * https://github.com/ultimate-pagination/ultimate-pagination
  */
 
+/** @deprecated */
 export const PAGINATION_NUMBER_OF_PAGE_LINKS = [5, 7] as const;
+/** @deprecated */
 export type PaginationMaxNumberOfPageLinks = (typeof PAGINATION_NUMBER_OF_PAGE_LINKS)[number];
 export type PaginationUpdateEvent = { page: number; previousPage: number };
 
@@ -145,10 +147,4 @@ export const getTotalPages = (totalItemsCount: number, itemsPerPage: number): nu
   }
 
   return Math.ceil(totalItemsCount / itemsPerPage);
-};
-
-// TODO: change this to a non js solution to support SSR
-export const getCounterResetValue = (element: Element): PaginationMaxNumberOfPageLinks => {
-  const [, value] = getComputedStyle(element).counterReset.split(' ');
-  return parseInt(value, 10) as PaginationMaxNumberOfPageLinks;
 };

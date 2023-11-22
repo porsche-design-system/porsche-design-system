@@ -1,11 +1,9 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, State } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
-  observeBreakpointChange,
-  parseJSON,
   parseJSONAttribute,
   THEMES,
   unobserveBreakpointChange,
@@ -18,21 +16,13 @@ import type {
   PaginationUpdateEvent,
   PaginationInternationalization,
 } from './pagination-utils';
-import {
-  createPaginationModel,
-  getCounterResetValue,
-  getCurrentActivePage,
-  getTotalPages,
-  ItemType,
-  PAGINATION_NUMBER_OF_PAGE_LINKS,
-} from './pagination-utils';
+import { createPaginationModel, getCurrentActivePage, getTotalPages, ItemType } from './pagination-utils';
 import { getComponentCss } from './pagination-styles';
 
-const propTypes: PropTypes<typeof Pagination> = {
+const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   totalItemsCount: AllowedTypes.number,
   itemsPerPage: AllowedTypes.number,
   activePage: AllowedTypes.number,
-  maxNumberOfPageLinks: AllowedTypes.breakpoint<PaginationMaxNumberOfPageLinks>(PAGINATION_NUMBER_OF_PAGE_LINKS),
   showLastPage: AllowedTypes.boolean,
   allyLabel: AllowedTypes.string,
   allyLabelPrev: AllowedTypes.string,
@@ -63,11 +53,11 @@ export class Pagination {
   /** Index of the currently active page. */
   @Prop({ mutable: true }) public activePage?: number = 1;
 
-  /** The maximum number of page links rendered. */
-  @Prop() public maxNumberOfPageLinks?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks> = {
-    base: 5,
-    xs: 7,
-  };
+  /**
+   * Has no effect anymore
+   * @deprecated since v3.10.0, will be removed with next major release
+   */
+  @Prop() public maxNumberOfPageLinks?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
 
   /** Show or hide the button to jump to the last page. */
   @Prop() public showLastPage?: boolean = true;
@@ -111,21 +101,8 @@ export class Pagination {
   /** Emitted when the page changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PaginationUpdateEvent>;
 
-  @State() private breakpointMaxNumberOfPageLinks: PaginationMaxNumberOfPageLinks = 7;
-
-  private navigationElement: HTMLElement;
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
-  }
-
-  public connectedCallback(): void {
-    this.observeBreakpointChange(); // on reconnect
-  }
-
-  public componentDidLoad(): void {
-    this.observeBreakpointChange(); // initially or slow prop binding
-    this.updateMaxNumberOfPageLinks(); // TODO: this causes initial rerender
   }
 
   public disconnectedCallback(): void {
@@ -134,6 +111,7 @@ export class Pagination {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof Pagination>(this, 'maxNumberOfPageLinks');
     warnIfDeprecatedPropIsUsed<typeof Pagination>(this, 'allyLabel', 'Please use intl prop with intl.root instead.');
     warnIfDeprecatedPropIsUsed<typeof Pagination>(
       this,
@@ -150,13 +128,13 @@ export class Pagination {
       'allyLabelPage',
       'Please use intl prop with intl.page instead.'
     );
-    attachComponentCss(this.host, getComponentCss, this.maxNumberOfPageLinks, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.theme);
 
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
     const paginationModel = createPaginationModel({
       activePage: getCurrentActivePage(this.activePage, pageTotal),
       pageTotal,
-      pageRange: this.breakpointMaxNumberOfPageLinks === 7 ? 1 : 0,
+      pageRange: 1,
       showLastPage: this.showLastPage,
     });
     const parsedIntl = parseJSONAttribute(this.intl);
@@ -164,7 +142,7 @@ export class Pagination {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <nav role="navigation" aria-label={this.allyLabel || parsedIntl.root} ref={(el) => (this.navigationElement = el)}>
+      <nav role="navigation" aria-label={this.allyLabel || parsedIntl.root}>
         <ul>
           {paginationModel.map((pageModel) => {
             const { type, isActive, value } = pageModel;
@@ -250,15 +228,4 @@ export class Pagination {
       this.activePage = page; // TODO: should become a controlled component
     }
   }
-
-  private updateMaxNumberOfPageLinks = (): void => {
-    // TODO: change this to a non js solution to support SSR and prevent initial rerender
-    this.breakpointMaxNumberOfPageLinks = getCounterResetValue(this.navigationElement);
-  };
-
-  private observeBreakpointChange = (): void => {
-    if (typeof parseJSON(this.maxNumberOfPageLinks) === 'object') {
-      observeBreakpointChange(this.host, this.updateMaxNumberOfPageLinks);
-    }
-  };
 }

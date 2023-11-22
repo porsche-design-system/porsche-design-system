@@ -1,7 +1,6 @@
 import type { JssStyle } from 'jss';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import type { PaginationMaxNumberOfPageLinks } from './pagination-utils';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import type { Theme } from '../../types';
+import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -35,10 +34,7 @@ const disabledCursorStyle: JssStyle = {
   pointerEvents: 'none', // prevents :hover (has no effect when forced), maybe we can remove it since CSS selectors already cover desired behavior
 };
 
-export const getComponentCss = (
-  maxNumberOfPageLinks: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>,
-  theme: Theme
-): string => {
+export const getComponentCss = (theme: Theme): string => {
   const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
@@ -60,9 +56,9 @@ export const getComponentCss = (
         display: 'flex',
         justifyContent: 'center',
         userSelect: 'none',
-        ...buildResponsiveStyles(maxNumberOfPageLinks, (n: PaginationMaxNumberOfPageLinks) => ({
-          counterReset: `size ${n}`,
-        })),
+        // ...buildResponsiveStyles(maxNumberOfPageLinks, (n: PaginationMaxNumberOfPageLinks) => ({
+        //   counterReset: `size ${n}`,
+        // })),
       },
       ul: {
         display: 'flex',

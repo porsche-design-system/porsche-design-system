@@ -1,5 +1,11 @@
-import { createPaginationModel, getTotalPages, getCurrentActivePage, createRange, ItemType } from './pagination-utils';
-import type { PaginationItem } from './pagination-utils';
+import {
+  createPaginationModel,
+  getTotalPages,
+  getCurrentActivePage,
+  createRange,
+  ItemType,
+  type PaginationItem,
+} from './pagination-utils';
 
 const paginationModelItemToSymbolPart = (item: PaginationItem, index: number): string => {
   switch (item.type) {
