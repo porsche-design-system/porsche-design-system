@@ -1,11 +1,5 @@
 import { expect, type Page, test } from '@playwright/test';
-import {
-  baseThemes,
-  openAllSelectWrapper,
-  setNativePopoversToAllowMultipleOpen,
-  setContentWithDesignSystem,
-} from '../../helpers';
-import { type Theme } from '@porsche-design-system/utilities-v2';
+import { openAllSelectWrapper, setNativePopoversToAllowMultipleOpen, setContentWithDesignSystem } from '../../helpers';
 
 const component = 'select-wrapper';
 const viewportWidth = 1760;
@@ -84,12 +78,10 @@ const scenario = async (page: Page): Promise<void> => {
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  baseThemes.forEach(() => {
-    test(`should have no visual regression on select-wrapper within table component for viewport ${viewportWidth}`, async ({
-      page,
-    }) => {
-      await scenario(page);
-      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}-overview-within-table.png`);
-    });
+  test(`should have no visual regression on select-wrapper within table component for viewport ${viewportWidth}`, async ({
+    page,
+  }) => {
+    await scenario(page);
+    await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}-overview-within-table.png`);
   });
 });
