@@ -142,6 +142,7 @@ const getInputStyles = (
     // TODO: abstract and re-use for multi-select, select-wrapper and text-field-wrapper
     height: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so input height becomes 54px, // we need 6px additionally so input height becomes 50px
     font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
+    margin: 0, // necessary reset for iOS Safari 15 (and maybe other browsers)
     padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
     paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(2),
     boxSizing: 'border-box',
@@ -215,7 +216,7 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
 
   return {
     position: 'absolute',
-    margin: '0',
+    margin: 0,
     display: isOpen ? 'flex' : 'none',
     flexDirection: 'column',
     gap: spacingStaticSmall,
