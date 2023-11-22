@@ -19,6 +19,7 @@ import { getFontFaceStylesheet } from '@porsche-design-system/components-js/part
 import { COMPONENT_CHUNKS_MANIFEST } from '../../../../projects/components-wrapper/lib/chunksManifest';
 import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL_COM } from '../../../../../../cdn.config';
 import { setContentWithDesignSystem } from './helpers';
+import * as mime from 'mime';
 
 describe('cdn', () => {
   let page: Page;
@@ -26,7 +27,7 @@ describe('cdn', () => {
   afterEach(async () => await page.close());
 
   type RequestType = { url: string };
-  type ResponseType = { url: string; status: number };
+  type ResponseType = { url: string; status: number; headers: Record<string, string> };
   const requests: RequestType[] = [];
   const responses: ResponseType[] = [];
 
@@ -52,10 +53,11 @@ describe('cdn', () => {
     page.on('response', (resp) => {
       const url = resp.url();
       const status = resp.status();
+      const headers = resp.headers();
 
       if (url.includes('cdn.ui.porsche')) {
         // console.log(status, url);
-        responses.push({ url, status });
+        responses.push({ url, status, headers });
       }
     });
   });
@@ -152,6 +154,9 @@ describe('cdn', () => {
           it(`should exist: ${item}`, async () => {
             await fetchUrl(`${baseUrl}/${item}`);
             expect(responses.filter(isStatusNot200).length).toBe(0);
+            responses.forEach((response) =>
+              expect(response.headers['content-type']).toBe(mime.getType(response.url.split('.').pop()))
+            );
             responseCounter += responses.length;
 
             const responseErrors = responses.filter(isStatus400);
