@@ -27,17 +27,16 @@ describe('addNativePopoverScrollAndResizeListeners()', () => {
     const tableRemoveEventListenerSpy = jest.spyOn(tableScrollArea, 'removeEventListener');
     addNativePopoverScrollAndResizeListeners(host, table, nativePopover);
 
-    expect(windowAddEventListenerSpy).toHaveBeenCalledTimes(2);
-    expect(windowAddEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function), { once: true });
+    expect(windowAddEventListenerSpy).toHaveBeenCalledTimes(1);
     expect(windowAddEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function), { once: true });
 
     expect(tableAddEventListenerSpy).toHaveBeenCalledTimes(1);
     expect(tableAddEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function), { once: true });
 
-    window.dispatchEvent(new Event('scroll'));
+    window.dispatchEvent(new Event('resize'));
+    tableScrollArea.dispatchEvent(new Event('scroll'));
 
-    expect(windowRemoveEventListenerSpy).toHaveBeenCalledTimes(2);
-    expect(windowRemoveEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function));
+    expect(windowRemoveEventListenerSpy).toHaveBeenCalledTimes(1);
     expect(windowRemoveEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function));
 
     expect(tableRemoveEventListenerSpy).toHaveBeenCalledTimes(1);

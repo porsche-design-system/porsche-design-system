@@ -347,7 +347,6 @@ describe('getDropdownVisibility()', () => {
 describe('updateNativePopoverSelectStyles()', () => {
   const optionMaps: OptionMap[] = generateOptionMaps();
   const nativePopover = document.createElement('div');
-  const nativeButton = document.createElement('button');
   const host = document.createElement('div');
 
   const setViewport = () => {
@@ -368,7 +367,7 @@ describe('updateNativePopoverSelectStyles()', () => {
   });
 
   beforeEach(() => {
-    jest.spyOn(nativeButton, 'getBoundingClientRect').mockImplementation(
+    jest.spyOn(host, 'getBoundingClientRect').mockImplementation(
       () =>
         ({
           height: 30,
@@ -382,7 +381,7 @@ describe('updateNativePopoverSelectStyles()', () => {
   });
 
   it('should call getBoundingClientRect() on button', () => {
-    const spy = jest.spyOn(nativeButton, 'getBoundingClientRect');
+    const spy = jest.spyOn(host, 'getBoundingClientRect');
     updateNativePopoverSelectStyles(host, optionMaps, nativePopover, 'up');
     expect(spy).toHaveBeenCalledTimes(1);
   });
