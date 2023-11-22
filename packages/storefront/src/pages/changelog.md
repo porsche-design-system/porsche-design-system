@@ -40,12 +40,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- Assets of type `.webp` and `.ico` are served with incorrect MIME type from CDN
+  ([#2900](https://github.com/porsche-design-system/porsche-design-system/pull/2900))
 - `Select Wrapper` keyboard and scroll behavior
   ([#2864](https://github.com/porsche-design-system/porsche-design-system/pull/2864))
 - Safari 15 default margin of button elements in several components
   ([#2858](https://github.com/porsche-design-system/porsche-design-system/pull/2858))
 - `Checkbox Wrapper` and `Radio Button Wrapper` border-color/background-color does not reset on hover
   ([#2852](https://github.com/porsche-design-system/porsche-design-system/pull/2852))
+- `Tabs Bar` losing `activeTabIndex` and underline in certain framework scenarios
+  ([#2896](https://github.com/porsche-design-system/porsche-design-system/pull/2896))
 
 ### [3.8.0] - 2023-10-24
 
