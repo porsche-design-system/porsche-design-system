@@ -57,7 +57,7 @@ export const getComponentCss = (
       },
       ...(isWithinForm &&
         addImportantToEachRule({
-          '::slotted([slot=hidden-select])': {
+          '::slotted([slot=internal-select])': {
             position: 'absolute',
             opacity: 0,
             height: '0px',

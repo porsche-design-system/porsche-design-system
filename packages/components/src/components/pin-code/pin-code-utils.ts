@@ -72,7 +72,7 @@ export const initHiddenInput = (
   const hiddenInput = document.createElement('input');
   setAttributes(hiddenInput, {
     'aria-hidden': 'true',
-    slot: 'hidden-input',
+    slot: 'internal-input',
     tabindex: '-1',
   });
   syncHiddenInput(hiddenInput, name, value, disabled, required);

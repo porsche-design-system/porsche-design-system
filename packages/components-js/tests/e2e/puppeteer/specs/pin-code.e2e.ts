@@ -26,7 +26,7 @@ const getHost = () => selectNode(page, 'p-pin-code');
 const getLabel = () => selectNode(page, 'p-pin-code >>> label');
 const getCurrentInput = () => selectNode(page, 'p-pin-code >>> #current-input');
 const getMessage = () => selectNode(page, 'p-pin-code >>> .message');
-const getHiddenInput = () => selectNode(page, 'p-pin-code input[slot="hidden-input"]');
+const getHiddenInput = () => selectNode(page, 'p-pin-code input[slot="internal-input"]');
 const getInput = (n: number) => selectNode(page, `p-pin-code >>> .wrapper input:nth-child(${n})`);
 const getActiveElementsAriaLabelInShadowRoot = (element: ElementHandle): Promise<string> => {
   return element.evaluate((el) => el.shadowRoot.activeElement.ariaLabel);

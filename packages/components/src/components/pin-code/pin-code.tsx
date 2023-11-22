@@ -179,7 +179,7 @@ export class PinCode {
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        {this.isWithinForm && <slot name="hidden-input" />}
+        {this.isWithinForm && <slot name="internal-input" />}
       </div>
     );
   }

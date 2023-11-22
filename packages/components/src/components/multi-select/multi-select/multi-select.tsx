@@ -288,7 +288,7 @@ export class MultiSelect {
           {this.srHighlightedOptionText}
         </span>
         {/* named slot needs to be placed before closing root element, otherwise slot change listener might not always work for unknown reasons */}
-        {this.isWithinForm && <slot name="hidden-select" />}
+        {this.isWithinForm && <slot name="internal-select" />}
       </div>
     );
   }

@@ -67,7 +67,7 @@ export const getComponentCss = (
       ...inputStyles,
       ...(isWithinForm &&
         addImportantToEachRule({
-          '::slotted([slot=hidden-input])': {
+          '::slotted([slot=internal-input])': {
             position: 'absolute',
             height: inputSize,
             width: 0,

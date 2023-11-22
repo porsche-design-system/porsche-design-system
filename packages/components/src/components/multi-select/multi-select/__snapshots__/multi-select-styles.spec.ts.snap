@@ -8,7 +8,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -190,7 +190,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -373,7 +373,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -566,7 +566,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -759,7 +759,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -953,7 +953,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -1146,7 +1146,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -1339,7 +1339,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -1525,7 +1525,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -1711,7 +1711,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -1897,7 +1897,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -2084,7 +2084,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -2281,7 +2281,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -2478,7 +2478,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -2661,7 +2661,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -2844,7 +2844,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -3038,7 +3038,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -3232,7 +3232,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -3426,7 +3426,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -3620,7 +3620,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -3807,7 +3807,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -3994,7 +3994,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -4181,7 +4181,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -4368,7 +4368,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -4566,7 +4566,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
@@ -4764,7 +4764,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted([slot=hidden-select]) {
+::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
