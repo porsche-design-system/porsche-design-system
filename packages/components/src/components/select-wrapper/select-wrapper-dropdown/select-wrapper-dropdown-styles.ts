@@ -56,6 +56,8 @@ export const getButtonStyles = (
       button: {
         position: 'absolute',
         ...getInsetJssStyle(),
+        width: '100%', // fixes Firefox positioning issue
+        height: '100%', // fixes Firefox positioning issue
         margin: 0,
         padding: 0,
         background: 'transparent',
@@ -134,6 +136,8 @@ export const getFilterStyles = (
         display: 'block',
         position: 'absolute',
         ...getInsetJssStyle(2), // 2 = borderWidthBase
+        width: 'calc(100% - 4px)', // fixes Firefox positioning issue, 4px = 2 x borderWidthBase
+        height: 'calc(100% - 4px)', // fixes Firefox positioning issue, 4px = 2 x borderWidthBase
         zIndex: 1,
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
         margin: 0, // necessary reset for iOS Safari 15 (and maybe other browsers)
