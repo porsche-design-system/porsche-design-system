@@ -20,9 +20,7 @@ jobs:
           github-token: ${{ secrets.github-token }}
       - name: 'Debug Docker Resources'
         run: |
-          set | grep TERM
-          export TERM=xterm
-          top -nb 1
+          top -h
           ls
           docker run -it --entrypoint /bin/bash ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.39.0-focal-test2 -c "top -n 1"
       - name: 'Build Core Dependencies'
