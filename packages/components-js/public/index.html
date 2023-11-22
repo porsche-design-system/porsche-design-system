@@ -165,14 +165,6 @@
           const theme = getTheme();
           const dir = getDir();
           const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
-
-          app.innerHTML = '';
-          app.innerHTML = (await (await fetch(`/${directory}/${page}.html`)).text()).replace(/>(\s)*</g, '><');
-          app.querySelectorAll('*').forEach((el) => (el.theme = theme));
-          app.querySelectorAll('.playground').forEach((el) => {
-            el.classList.remove('light', 'dark', 'auto');
-            el.classList.add(theme);
-          });
           document.querySelector('html').setAttribute('dir', dir);
 
           app.innerHTML = '';
