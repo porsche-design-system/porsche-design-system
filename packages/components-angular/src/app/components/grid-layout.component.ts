@@ -442,7 +442,7 @@ import type { AccordionUpdateEvent } from '@porsche-design-system/components-ang
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GridLayout {
+export class GridLayoutComponent {
   counter(i: number) {
     return new Array(i);
   }

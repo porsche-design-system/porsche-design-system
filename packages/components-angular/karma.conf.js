@@ -3,7 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 const globby = require('globby');
-const transformIndexHtml = require('./scripts/transformIndexHtml');
+const injectPartials = require('./scripts/injectPartials');
 
 if (process.env.CI) {
   // using chrome that comes with playwright
@@ -23,7 +23,7 @@ const injectPartialsIntoKarmaContextHtml = () => {
 
   fs.copyFileSync(filePath, backupFilePath); // create backup
   const fileContent = fs.readFileSync(filePath, 'utf8');
-  const modifiedFileContent = transformIndexHtml({}, fileContent);
+  const modifiedFileContent = injectPartials({}, fileContent);
   fs.writeFileSync(filePath, modifiedFileContent);
 };
 injectPartialsIntoKarmaContextHtml();
