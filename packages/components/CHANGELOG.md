@@ -44,6 +44,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2858](https://github.com/porsche-design-system/porsche-design-system/pull/2858))
 - `Checkbox Wrapper` and `Radio Button Wrapper` border-color/background-color does not reset on hover
   ([#2852](https://github.com/porsche-design-system/porsche-design-system/pull/2852))
+- `Tabs Bar` losing `activeTabIndex` and underline in certain framework scenarios
+  ([#2896](https://github.com/porsche-design-system/porsche-design-system/pull/2896))
 - `Modal` and `Flyout` body jumping in the background and scrolling back to the top in Next Js and Remix
   ([#2890](https://github.com/porsche-design-system/porsche-design-system/pull/2890))
 
