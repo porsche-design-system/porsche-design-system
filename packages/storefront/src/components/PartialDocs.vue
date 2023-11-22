@@ -67,7 +67,7 @@ yarn add --dev @angular-builders/custom-webpack
 +   "builder": "@angular-builders/custom-webpack:browser",
     "options": {
       "outputPath": "dist/components-angular",
-+     "injectPartials": "./scripts/injectPartials.ts",
++     "indexTransform": "./scripts/injectPartials.ts",
     }
   }
   "serve": {
