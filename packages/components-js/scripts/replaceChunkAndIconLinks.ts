@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { getComponentChunkLinks, getIconLinks } from '../dist/components-wrapper/partials';
+import { getComponentChunkLinks, getIconLinks } from '@porsche-design-system/components-js/partials';
 import { COMPONENT_CHUNK_NAMES } from '../projects/components-wrapper';
 import { ICON_NAMES } from '@porsche-design-system/assets';
 
