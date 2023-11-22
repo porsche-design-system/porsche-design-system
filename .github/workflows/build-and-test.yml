@@ -18,6 +18,11 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.github-token }}
+      - name: 'Debug Docker Resources'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: bash
+          args: -c "top -n 1"
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run-playwright
         with:
