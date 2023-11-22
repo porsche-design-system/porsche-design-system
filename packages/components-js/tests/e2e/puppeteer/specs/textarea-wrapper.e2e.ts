@@ -21,7 +21,7 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-textarea-wrapper');
 const getTextarea = () => selectNode(page, 'p-textarea-wrapper textarea');
 const getMessage = () => selectNode(page, 'p-textarea-wrapper >>> .message');
-const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> .label__text');
+const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> label');
 const getCounter = () => selectNode(page, 'p-textarea-wrapper >>> .counter');
 
 type InitOptions = {
@@ -61,18 +61,6 @@ const initTextarea = (opts?: InitOptions): Promise<void> => {
     </p-textarea-wrapper>`
   );
 };
-
-it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
-  await initTextarea();
-  const host = await getHost();
-
-  expect(await getLabel()).toBeNull();
-
-  await setProperty(host, 'label', 'Some label');
-  await waitForStencilLifecycle(page);
-
-  expect(await getLabel()).toBeDefined();
-});
 
 it('should focus textarea when label is clicked', async () => {
   await initTextarea({ hasLabel: true });

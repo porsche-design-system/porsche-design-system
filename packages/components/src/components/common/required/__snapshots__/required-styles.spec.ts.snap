@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getFunctionalComponentRequiredStyles() should return correct styles 1`] = `
-{
-  "required": {
-    "userSelect": "none",
-  },
-}
+".required {
+  user-select: none;
+}"
 `;

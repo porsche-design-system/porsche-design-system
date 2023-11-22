@@ -69,6 +69,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -128,6 +129,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -187,6 +189,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -255,6 +258,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -323,6 +327,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -391,6 +396,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -459,6 +465,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -527,6 +534,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -595,6 +603,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -663,6 +672,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -731,6 +741,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -799,6 +810,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -867,6 +879,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -935,6 +948,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -1003,6 +1017,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -1071,6 +1086,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;

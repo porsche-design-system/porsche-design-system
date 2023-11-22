@@ -1,19 +1,21 @@
-import type { Styles } from 'jss';
-import type { BreakpointCustomizable, Theme } from '../../types';
+import { type Styles } from 'jss';
+import { type BreakpointCustomizable, type Theme } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
+import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
 import {
-  addImportantToEachRule,
-  getThemedColors,
-  hostHiddenStyles,
-  getHiddenTextJssStyle,
-  prefersColorSchemeDarkMediaQuery,
-  colorSchemeStyles,
-} from '../../styles';
-import { getBaseChildStyles, getLabelStyles } from '../../styles/form-styles';
-import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
+  formElementPaddingHorizontal,
+  getSlottedTextFieldTextareaSelectStyles,
+  getUnitCounterJssStyle,
+} from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import type { FormState } from '../../utils/form/form-state';
-import { spacingStaticMedium, spacingStaticLarge, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { type FormState } from '../../utils/form/form-state';
+import {
+  borderWidthBase,
+  spacingStaticLarge,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/utilities-v2';
+import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -22,24 +24,30 @@ export const getComponentCss = (
   hasCounter: boolean,
   theme: Theme
 ): string => {
-  const { contrastMediumColor } = getThemedColors(theme);
-  const { contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
-
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
+      // ::slotted(textarea)
       ...mergeDeep(
         addImportantToEachRule(
-          getBaseChildStyles('textarea', state, theme, {
+          getSlottedTextFieldTextareaSelectStyles('textarea', state, false, theme, {
+            gridArea: '1/1',
+            // TODO: move into getSlottedTextFieldTextareaSelectStyles()
             font: textSmallStyle.font, // to override line-height
-            padding: hasCounter ? `12px ${spacingStaticMedium} ${spacingStaticLarge}` : `12px ${spacingStaticMedium}`,
+            // TODO: move into getSlottedTextFieldTextareaSelectStyles()
+            padding: hasCounter
+              ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
+              : `12px ${formElementPaddingHorizontal}`,
           })
         ),
         {
+          // TODO: is it possible to move into getSlottedTextFieldTextareaSelectStyles()?
           '::slotted(textarea)': {
             height: 'auto', // removes !important from getBaseChildStyles
             minHeight: '200px', // min-height should be overridable
@@ -48,37 +56,26 @@ export const getComponentCss = (
         } as Styles
       ),
     },
-    ...getLabelStyles(
-      'textarea',
-      isDisabled,
-      hideLabel,
-      state,
-      theme,
-      hasCounter && {
-        counter: {
-          position: 'absolute',
-          bottom: '6px',
-          left: '12px',
-          right: '12px',
-          textAlign: 'end',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          zIndex: 1,
-          font: textSmallStyle.font,
-          color: contrastMediumColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: contrastMediumColorDark,
-          }),
-        },
-      }
-    ),
-    ...getFunctionalComponentRequiredStyles(),
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    root: {
+      display: 'grid',
+      gap: spacingStaticXSmall,
+    },
+    wrapper: {
+      display: 'grid',
+    },
     ...(hasCounter && {
-      'sr-only': {
-        ...getHiddenTextJssStyle(),
-        padding: 0,
+      counter: {
+        ...getUnitCounterJssStyle(isDisabled, theme),
+        gridArea: '1/1',
+        placeSelf: 'flex-end',
+        padding: `6px calc(${formElementPaddingHorizontal} + ${borderWidthBase})`,
       },
+      // TODO: maybe we should extract it as functional component too
+      'sr-only': getHiddenTextJssStyle(),
     }),
+    // .label / .required
+    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
+    // .message
+    ...getFunctionalComponentStateMessageStyles(theme, state),
   });
 };

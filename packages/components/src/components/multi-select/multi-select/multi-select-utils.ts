@@ -33,7 +33,7 @@ export const initNativeSelect = (
     multiple: 'true',
     'aria-hidden': 'true',
     tabindex: '-1',
-    slot: 'select',
+    slot: 'internal-select',
   });
   syncNativeSelect(nativeSelect, name, disabled, required);
   host.prepend(nativeSelect);

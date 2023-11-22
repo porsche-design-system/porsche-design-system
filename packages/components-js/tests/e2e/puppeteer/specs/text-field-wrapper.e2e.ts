@@ -23,7 +23,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-text-field-wrapper');
 const getInput = () => selectNode(page, 'input');
-const getLabel = () => selectNode(page, 'p-text-field-wrapper >>> .label__text');
+const getLabel = () => selectNode(page, 'p-text-field-wrapper >>> label');
 const getCounterOrUnit = () => selectNode(page, 'p-text-field-wrapper >>> .unit');
 const getToggleOrClearButtonHost = () => selectNode(page, 'p-text-field-wrapper >>> p-button-pure');
 const getToggleOrClearButton = () => selectNode(page, 'p-text-field-wrapper >>> p-button-pure >>> button');
@@ -86,16 +86,6 @@ const initTextField = (opts?: InitOptions): Promise<void> => {
 
   return setContentWithDesignSystem(page, content);
 };
-
-it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
-  await initTextField();
-  const textFieldComponent = await getHost();
-  expect(await getLabel()).toBeNull();
-
-  await setProperty(textFieldComponent, 'label', 'Some label');
-  await waitForStencilLifecycle(page);
-  expect(await getLabel()).not.toBeNull();
-});
 
 describe('input type="password"', () => {
   xit('should disable input when input is disabled programmatically', async () => {
@@ -577,7 +567,7 @@ describe('accessibility', () => {
   });
 
   it('should expose correct accessibility tree for input type=search with value', async () => {
-    await initTextField({ type: 'search' });
+    await initTextField({ type: 'search', hasLabel: true });
     const host = await getHost();
     const input = await getInput();
 

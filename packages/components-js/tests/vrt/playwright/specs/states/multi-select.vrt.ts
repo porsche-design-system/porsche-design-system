@@ -123,7 +123,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     selects.forEach((select: any) => (select.value = ['a']))
   );
 
-  await forceHoverState(page, '.hover p-multi-select >>> .input-container');
+  await forceHoverState(page, '.hover p-multi-select >>> input');
   await forceHoverState(page, '.hover p-multi-select span a');
   await forceFocusState(page, '.focus p-multi-select span a');
   await forceFocusState(page, '.focus p-multi-select >>> input');

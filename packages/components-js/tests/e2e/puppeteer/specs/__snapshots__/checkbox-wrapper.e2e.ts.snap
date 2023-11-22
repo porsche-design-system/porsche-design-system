@@ -107,55 +107,59 @@ exports[`accessibility should expose correct accessibility tree when loading=tru
           "role": "StaticText",
         },
       ],
-      "role": "none",
-    },
-    {
-      "children": [
-        {
-          "checked": false,
-          "disabled": true,
-          "name": "Some Label",
-          "role": "checkbox",
-        },
-      ],
-      "role": "none",
+      "disabled": true,
+      "name": "",
+      "role": "LabelText",
     },
     {
       "children": [
         {
           "children": [
             {
-              "children": [
-                {
-                  "name": " ",
-                  "role": "StaticText",
-                },
-              ],
-              "role": "none",
+              "checked": false,
+              "name": "Some Label",
+              "role": "checkbox",
             },
+          ],
+          "role": "none",
+        },
+        {
+          "children": [
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "name": " ",
+                      "role": "StaticText",
+                    },
+                  ],
                   "role": "none",
                 },
                 {
+                  "children": [
+                    {
+                      "role": "none",
+                    },
+                    {
+                      "role": "none",
+                    },
+                  ],
                   "role": "none",
                 },
               ],
-              "role": "none",
+              "name": "Loading state of Some Label",
+              "role": "alert",
             },
           ],
-          "name": "Loading state of Some Label",
-          "role": "alert",
+          "name": "",
+          "role": "generic",
         },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
-  "disabled": true,
-  "name": "",
-  "role": "LabelText",
+  "role": "none",
 }
 `;
 

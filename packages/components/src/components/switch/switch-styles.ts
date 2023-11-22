@@ -47,13 +47,13 @@ const getColors = (
           ? canvasColor
           : lightThemeBackgroundColor
         : isHighContrastMode
-        ? canvasTextColor
-        : primaryColor),
+          ? canvasTextColor
+          : primaryColor),
     toggleBackgroundColorHover: checked
       ? lightThemeBackgroundColor
       : isHighContrastMode
-      ? canvasTextColor
-      : primaryColor,
+        ? canvasTextColor
+        : primaryColor,
     textColor: disabledOrLoadingColor || primaryColor,
   };
 };
@@ -112,6 +112,7 @@ export const getComponentCss = (
       border: 0,
       textAlign: 'start',
       background: 'transparent',
+      WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       cursor: isDisabledOrLoading(disabled, loading) ? 'auto' : 'pointer',
       ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
