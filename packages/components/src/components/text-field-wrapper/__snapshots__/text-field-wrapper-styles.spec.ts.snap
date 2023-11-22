@@ -26,7 +26,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -200,7 +201,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -318,7 +320,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -428,7 +431,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -551,7 +555,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #FBFCFF !important;
@@ -674,7 +679,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -797,7 +803,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -914,7 +921,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1037,7 +1045,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1154,7 +1163,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1263,7 +1273,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
   -moz-appearance: textfield !important;
 }
 ::slotted(input:focus) {
@@ -1386,7 +1397,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1508,7 +1520,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #FBFCFF !important;
@@ -1630,7 +1643,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1752,7 +1766,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1870,7 +1885,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1980,7 +1996,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2103,7 +2120,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #FBFCFF !important;
@@ -2226,7 +2244,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2349,7 +2368,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2466,7 +2486,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2575,7 +2596,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2697,7 +2719,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2813,7 +2836,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2921,7 +2945,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3042,7 +3067,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3159,7 +3185,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3268,7 +3295,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3390,7 +3418,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3499,7 +3528,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
-  padding-inline: var(--p-internal-text-field-input-padding-start) var(--p-internal-text-field-input-padding-end) !important;
+  padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
+  padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;

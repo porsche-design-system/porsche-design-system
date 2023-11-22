@@ -56,7 +56,8 @@ export const getComponentCss = (
         ...getSlottedTextFieldTextareaSelectStyles('input', state, false, theme, {
           gridArea: '1/1/1/-1',
           padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
-          paddingInline: `var(${cssVariableInputPaddingStart}) var(${cssVariableInputPaddingEnd})`,
+          paddingInlineStart: `var(${cssVariableInputPaddingStart})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
+          paddingInlineEnd: `var(${cssVariableInputPaddingEnd})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
           // TODO: move into getSlottedTextFieldTextareaSelectStyles()
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
