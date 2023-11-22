@@ -1,9 +1,8 @@
 import { type Page } from '@playwright/test';
-import { getInitialStyles } from '@porsche-design-system/components-js/partials';
+import { getInitialStyles, getComponentChunkLinks, getIconLinks } from '@porsche-design-system/components-js/partials';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type Theme } from '@porsche-design-system/utilities-v2';
-import { getComponentChunkLinks, getIconLinks } from '../../../../projects/partials';
 import { COMPONENT_CHUNK_NAMES } from '../../../../projects/components-wrapper';
 import { ICON_NAMES } from '@porsche-design-system/assets';
 
