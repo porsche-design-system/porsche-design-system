@@ -1,4 +1,3 @@
-const os = require('node:os');
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
@@ -16,7 +15,3 @@ module.exports = {
     ],
   },
 };
-
-console.log('Amount of CPUs', os.cpus().length);
-console.log('Total Memory in MB', os.totalmem() / 1024 / 1024);
-console.log('Free Memory in MB', os.freemem() / 1024 / 1024);
