@@ -1,5 +1,4 @@
-import type { ConsoleMessage, Page } from 'puppeteer';
-import type { ElementHandle } from 'puppeteer';
+import type { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
 
 export const waitForComponentsReady = (page: Page): Promise<number> => {
   // componentsReady is exposed via index.tsx of react vrt app
