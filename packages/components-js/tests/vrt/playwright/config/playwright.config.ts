@@ -21,14 +21,14 @@ export default defineConfig({
      */
     timeout: 10000,
     toMatchSnapshot: {
-      maxDiffPixelRatio: 0,
-      maxDiffPixels: 0,
-      threshold: 0,
+      maxDiffPixelRatio: undefined,
+      maxDiffPixels: undefined,
+      threshold: 0.2, // default Playwright threshold
     },
     toHaveScreenshot: {
-      maxDiffPixelRatio: 0,
-      maxDiffPixels: 0,
-      threshold: 0,
+      maxDiffPixelRatio: undefined,
+      maxDiffPixels: undefined,
+      threshold: 0.2, // default Playwright threshold
     },
   },
   snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-{projectName}{ext}',

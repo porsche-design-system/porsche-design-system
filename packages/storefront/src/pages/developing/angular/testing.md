@@ -110,7 +110,7 @@ There are different approaches to inject the partial into `karma-context.html`:
 const path = require('path');
 const fs = require('fs');
 const { globSync } = require('glob');
-const transformIndexHtml = require('./scripts/transformIndexHtml'); // script referenced by indexTransform for `build` and `serve`
+const injectPartials = require('./scripts/injectPartials'); // script referenced by injectPartials for `build` and `serve`
 
 const injectPartialsIntoKarmaContextHtml = () => {
   const packagePath = path.resolve(require.resolve('@angular-devkit/build-angular'), '..');
@@ -125,7 +125,7 @@ const injectPartialsIntoKarmaContextHtml = () => {
 
   fs.copyFileSync(filePath, backupFilePath); // create backup
   const fileContent = fs.readFileSync(filePath, 'utf8');
-  const modifiedFileContent = transformIndexHtml({}, fileContent);
+  const modifiedFileContent = injectPartials({}, fileContent);
   fs.writeFileSync(filePath, modifiedFileContent);
 };
 
