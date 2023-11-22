@@ -13,12 +13,6 @@ export default function _index(): JSX.Element {
             <Link to={route.path}>{route.name}</Link>
           </li>
         ))}
-        <li>
-          {/* the scroll position bug was only reproducible with nested routing */}
-          <Link preventScrollReset={true} to="/modal-standalone">
-            Modal Page
-          </Link>
-        </li>
       </ul>
     </main>
   );

@@ -2,7 +2,7 @@ type Route = {
   name: string;
   path: string;
 };
-
+// the scroll position bug was only reproducible with nested routing
 export const routes: Route[] = [
   {
     name: 'Home',
@@ -15,5 +15,9 @@ export const routes: Route[] = [
   {
     name: 'Accordion Layout Shift',
     path: '/accordion-layout-shift',
+  },
+  {
+    name: 'Modal Page',
+    path: '/modal-standalone',
   },
 ];
