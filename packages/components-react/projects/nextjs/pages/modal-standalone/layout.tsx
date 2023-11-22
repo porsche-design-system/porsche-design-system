@@ -1,6 +1,6 @@
 'use client';
 import { type PropsWithChildren, useCallback, useState } from 'react';
-import { PHeading, PModal, PText, PLink, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
+import { PModal, PText, PLink, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
 
 export default function ModalStandaloneLayout({ children }: PropsWithChildren<{}>): JSX.Element {
@@ -14,7 +14,6 @@ export default function ModalStandaloneLayout({ children }: PropsWithChildren<{}
 
   return (
     <section>
-      <PHeading>Welcome to Overview</PHeading>
       <PLink>
         <Link href="/">Back to Home</Link>
       </PLink>

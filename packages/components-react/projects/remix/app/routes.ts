@@ -2,7 +2,7 @@ type Route = {
   name: string;
   path: string;
 };
-// the scroll position bug was only reproducible with nested routing
+
 export const routes: Route[] = [
   {
     name: 'Home',
