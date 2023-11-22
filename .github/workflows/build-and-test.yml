@@ -21,7 +21,7 @@ jobs:
       - name: 'Debug Docker Resources'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: bash
+          entrypoint: /bin/bash
           args: -c "top -n 1"
       - name: 'Build Core Dependencies'
         uses: ./.github/actions/docker-run-playwright
