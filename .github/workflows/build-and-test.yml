@@ -22,7 +22,7 @@ jobs:
         run: |
           set | grep TERM
           export TERM=xterm
-          top -n 1
+          top -nb 1
           ls
           docker run -it --entrypoint /bin/bash ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.39.0-focal-test2 -c "top -n 1"
       - name: 'Build Core Dependencies'
