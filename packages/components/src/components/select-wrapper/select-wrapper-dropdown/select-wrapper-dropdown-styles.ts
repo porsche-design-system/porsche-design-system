@@ -136,6 +136,7 @@ export const getFilterStyles = (
         ...getInsetJssStyle(2), // 2 = borderWidthBase
         zIndex: 1,
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
+        margin: 0, // necessary reset for iOS Safari 15 (and maybe other browsers)
         // TODO: could be done with css subgrid much more elegant in the near future
         //  or move input into select-wrapper and handle it the same like multi-select
         padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
