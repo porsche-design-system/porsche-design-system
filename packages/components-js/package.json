@@ -89,6 +89,7 @@
     "js-beautify": "^1.14.11",
     "jsdom": "^22.1.0",
     "local-web-server": "^5.3.0",
+    "mime": "^3.0.0",
     "pdf-to-png-converter": "^3.1.0",
     "terser-webpack-plugin": "^5.3.9",
     "ts-node": "^10.9.1",

@@ -31,6 +31,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Text Field Wrapper`, `Textarea Wrapper`, `Select Wrapper`, `Multi Select`, `Pin Code`, `Checkbox Wrapper` and
+  `Radio Button Wrapper` have improved visual alignment
+  ([#2854](https://github.com/porsche-design-system/porsche-design-system/pull/2854))
+- `Text Field Wrapper` fully supports RTL (right-to-left) mode
+  ([#2854](https://github.com/porsche-design-system/porsche-design-system/pull/2854))
 - `Pin Code`: Prop values from `1` to `6` are now supported for `length` prop
   ([#2859](https://github.com/porsche-design-system/porsche-design-system/pull/2859))
 - `Model Signature` asset for `model="macan"`
@@ -46,6 +51,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2858](https://github.com/porsche-design-system/porsche-design-system/pull/2858))
 - `Checkbox Wrapper` and `Radio Button Wrapper` border-color/background-color does not reset on hover
   ([#2852](https://github.com/porsche-design-system/porsche-design-system/pull/2852))
+- `Tabs Bar` losing `activeTabIndex` and underline in certain framework scenarios
+  ([#2896](https://github.com/porsche-design-system/porsche-design-system/pull/2896))
 
 ### [3.8.0] - 2023-10-24
 
