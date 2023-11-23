@@ -124,7 +124,7 @@
             v-bind:message="bag.errors.terms"
             v-bind:state="getState('terms')"
           >
-            <span slot="label">
+            <span slot="label" id="terms">
               I have read the
               <a href="https://porsche.com/some-url">general terms and conditions</a> and I accept them.
             </span>
@@ -135,6 +135,7 @@
               v-model="bag.data.terms"
               v-on:change="onFieldBlur"
               required
+              aria-labelledby="terms"
             />
           </p-checkbox-wrapper>
           <p-checkbox-wrapper
@@ -143,7 +144,9 @@
             v-bind:message="bag.errors.privacy"
             v-bind:state="getState('privacy')"
           >
-            <span slot="label">I have read the <a href="https://porsche.com/some-url">Data Privacy Statement</a>.</span>
+            <span slot="label" id="privacy"
+              >I have read the <a href="https://porsche.com/some-url">Data Privacy Statement</a>.</span
+            >
             <input
               type="checkbox"
               :ref="validateFieldName('privacy')"
@@ -151,6 +154,7 @@
               v-model="bag.data.privacy"
               v-on:change="onFieldBlur"
               required
+              aria-labelledby="privacy"
             />
           </p-checkbox-wrapper>
           <p-button-group class="form-section-spacing form-bottom-spacing">

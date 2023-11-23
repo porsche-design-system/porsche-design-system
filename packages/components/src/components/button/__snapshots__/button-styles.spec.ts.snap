@@ -20,6 +20,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #FBFCFF;
@@ -189,6 +190,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #FBFCFF;
@@ -265,6 +267,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -341,6 +344,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -417,6 +421,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -499,6 +504,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -568,6 +574,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #FBFCFF;
@@ -645,6 +652,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -722,6 +730,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #FBFCFF;
@@ -799,6 +808,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -876,6 +886,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;

@@ -53,6 +53,7 @@ export const getComponentCss = (
               color: 'inherit',
               outline: 0,
               alignItems: 'flex-end',
+              WebkitAppearance: 'none', // iOS safari
               appearance: 'none',
               background: 'transparent',
               textAlign: 'start',

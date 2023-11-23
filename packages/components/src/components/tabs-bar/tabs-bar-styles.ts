@@ -88,7 +88,7 @@ export const getComponentCss = (
           lineHeight: 'inherit',
           whiteSpace: 'nowrap',
           boxSizing: 'border-box',
-          WebkitAppearance: 'none',
+          WebkitAppearance: 'none', // iOS safari
           appearance: 'none',
           outlineOffset: '1px',
           textDecoration: 'none',
