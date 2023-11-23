@@ -151,7 +151,7 @@ describe('cdn', () => {
     const bulkRequestItems = (items: string[], baseUrl: string) => {
       for (const item of items) {
         ((item: string) => {
-          it(`should exist: ${item}`, async () => {
+          it(`should exist and have correct content-type header: ${item}`, async () => {
             await fetchUrl(`${baseUrl}/${item}`);
             expect(responses.filter(isStatusNot200).length).toBe(0);
             responses.forEach((response) => {
