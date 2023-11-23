@@ -33,7 +33,7 @@ export default function ModalStandaloneLayout({ children }: PropsWithChildren<{}
       </div>
       <PLink>
         {/*The default behavior of <Link> is to scroll to the top of a new route or to maintain
-        the scroll position for backwards and forwards navigation. When false, next/link will not
+        the scroll position for backwards and forwards navigation. When scroll={false}, next/link will not
         scroll to the top of the page after a navigation.*/}
         <Link href="/modal-standalone/open" scroll={false}>
           Link to Modal (with route change)
