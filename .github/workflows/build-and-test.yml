@@ -338,6 +338,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
+      - name: 'E2E Test components-react/remix'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e
+          args: --components-react/remix
       - name: 'VRT Test components-react/remix'
         uses: ./.github/actions/docker-run-playwright
         with:

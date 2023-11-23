@@ -1,4 +1,4 @@
-import type { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 
 export const waitForComponentsReady = (page: Page): Promise<number> => {
   // componentsReady is exposed via index.tsx of react vrt app
@@ -12,23 +12,6 @@ export const goto = async (page: Page, url: string) => {
   await page.waitForSelector('html.hydrated');
   await waitForComponentsReady(page);
 };
-
-const consoleMessages: ConsoleMessage[] = [];
-
-export const initConsoleObserver = (page: Page): void => {
-  consoleMessages.length = 0; // reset
-
-  page.on('console', (msg) => {
-    consoleMessages.push(msg);
-    if (msg.type() === 'error') {
-      const { description } = msg.args()[0].remoteObject();
-      if (description) {
-        console.error(description);
-      }
-    }
-  });
-};
-export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
   const selectorParts = selector.split('>>>');

@@ -16,4 +16,8 @@ export const routes: Route[] = [
     name: 'Accordion Layout Shift',
     path: '/accordion-layout-shift',
   },
+  {
+    name: 'Modal Page',
+    path: '/modal-standalone',
+  },
 ];
