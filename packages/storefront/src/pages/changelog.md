@@ -31,6 +31,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Text Field Wrapper`, `Textarea Wrapper`, `Select Wrapper`, `Multi Select`, `Pin Code`, `Checkbox Wrapper` and
+  `Radio Button Wrapper` have improved visual alignment
+  ([#2854](https://github.com/porsche-design-system/porsche-design-system/pull/2854))
+- `Text Field Wrapper` fully supports RTL (right-to-left) mode
+  ([#2854](https://github.com/porsche-design-system/porsche-design-system/pull/2854))
 - `Pin Code`: Prop values from `1` to `6` are now supported for `length` prop
   ([#2859](https://github.com/porsche-design-system/porsche-design-system/pull/2859))
 - `Model Signature` asset for `model="macan"`
@@ -40,8 +45,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- Assets of type `.webp` and `.ico` are served with incorrect MIME type from CDN
-  ([#2900](https://github.com/porsche-design-system/porsche-design-system/pull/2900))
 - `Select Wrapper` keyboard and scroll behavior
   ([#2864](https://github.com/porsche-design-system/porsche-design-system/pull/2864))
 - Safari 15 default margin of button elements in several components
