@@ -151,7 +151,7 @@ describe('cdn', () => {
     const bulkRequestItems = (items: string[], baseUrl: string) => {
       for (const item of items) {
         ((item: string) => {
-          it(`should exist and have correct content-type header: ${item}`, async () => {
+          it(`should exist and have correct headers: ${item}`, async () => {
             await fetchUrl(`${baseUrl}/${item}`);
             expect(responses.filter(isStatusNot200).length).toBe(0);
             responses.forEach((response) => {
@@ -160,6 +160,7 @@ describe('cdn', () => {
               // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
               const mimeType = ext === 'js' ? 'text/javascript' : mime.getType(ext);
               expect(response.headers['content-type']).toBe(mimeType);
+              expect(response.headers['access-control-allow-origin']).toBe('*');
             });
             responseCounter += responses.length;
 
