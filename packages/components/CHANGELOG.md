@@ -14,8 +14,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
-### [3.9.0-rc.0] - 2023-11-23
-
 #### Added
 
 - Angular: `theme: 'light' | 'dark' | 'auto'` option to `PorscheDesignSystemModule.load()` to set `theme` on all child
