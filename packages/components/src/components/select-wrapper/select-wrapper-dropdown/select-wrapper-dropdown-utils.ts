@@ -174,6 +174,6 @@ export const updateNativePopoverSelectStyles = (
     (direction === 'auto' &&
       determineDropdownDirection(host, getAmountOfVisibleOptionsAndOptgroups(optionMaps)) === 'down');
   nativePopover.style.left = `${left + window.scrollX}px`;
-  nativePopover.style.top = `${top + window.scrollY + (isDirectionDown && height)}px`;
+  nativePopover.style.top = `${top + window.scrollY + (isDirectionDown ? height : 0)}px`;
   nativePopover.style.width = `${width}px`;
 };
