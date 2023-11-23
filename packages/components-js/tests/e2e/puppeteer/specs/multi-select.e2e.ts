@@ -24,33 +24,22 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-multi-select');
-
 const getMultiSelectValue = async (): Promise<(string | number)[]> => await getProperty(await getHost(), 'value');
-
-const getInputContainer = () => selectNode(page, 'p-multi-select >>> .input-container');
-
+const getInputContainer = () => selectNode(page, 'p-multi-select >>> .wrapper');
 const getInput = () => selectNode(page, 'p-multi-select >>> input');
-
 const getInputValue = async (): Promise<string> => getProperty(await getInput(), 'value');
-
 const getInputPlaceholder = async (): Promise<string> => getAttribute(await getInput(), 'placeholder');
-
 const getDropdown = () => selectNode(page, 'p-multi-select >>> .listbox');
 const getDropdownDisplay = async (): Promise<string> => await getElementStyle(await getDropdown(), 'display');
-
 const getShadowDropdownOption = (n: number) => selectNode(page, `p-multi-select >>> .listbox div:nth-child(${n})`);
-
 const getMultiSelectOption = (n: number) =>
   selectNode(page, `p-multi-select p-multi-select-option:nth-child(${n + 1})`); // First one is native select
-
 const getMultiSelectOptions = () => page.$$('p-multi-select p-multi-select-option');
-
 const getAmountOfVisibleMultiSelectOptions = async (): Promise<number> =>
   await page.$$eval(
     'p-multi-select p-multi-select-option',
     (options) => options.filter((option: HTMLElement) => !option.hidden).length
   );
-
 const getSelectedMultiSelectOptionProperty = async <K extends keyof MultiSelectOption>(
   property: K
 ): Promise<MultiSelectOption[K][]> =>
@@ -62,27 +51,19 @@ const getSelectedMultiSelectOptionProperty = async <K extends keyof MultiSelectO
         .map((option: MultiSelectOption) => option[property]) as MultiSelectOption[K][],
     property
   );
-
 const getHighlightedOptionIndex = async (): Promise<number> =>
   await page.$$eval('p-multi-select p-multi-select-option', (options: MultiSelectOption[]) =>
     options.filter((option) => !option.hidden).indexOf(options.find((option: MultiSelectOption) => option.highlighted))
   );
-
 const getSelectedOptionIndicies = async (): Promise<number[]> =>
   await page.$$eval('p-multi-select p-multi-select-option', (options) =>
     options.filter((option: any) => option.selected).map((option) => options.indexOf(option))
   );
-
 const getNativeSelect = () => selectNode(page, 'p-multi-select select');
-
 const getNativeSelectValue = async (): Promise<string> => await getProperty(await getNativeSelect(), 'value');
-
 const getNativeSelectOptions = () => page.$$('p-multi-select select option');
-
-const getLabelText = () => selectNode(page, 'p-multi-select >>> .label__text');
-
-const getResetButton = () => selectNode(page, 'p-multi-select >>> .reset-icon');
-
+const getLabel = () => selectNode(page, 'p-multi-select >>> label');
+const getResetButton = () => selectNode(page, 'p-multi-select >>> .button');
 const getAssertiveText = async () => await selectNode(page, 'span[aria-live="assertive"]');
 
 const labelSlotContent =
@@ -483,7 +464,7 @@ describe('focus', () => {
   it('should focus input when label text is clicked', async () => {
     await initMultiSelect({ props: { name: 'options', label: 'Some Label' } });
 
-    const labelText = await getLabelText();
+    const labelText = await getLabel();
     const filterInput = await getInput();
     await addEventListener(filterInput, 'focus');
 

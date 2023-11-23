@@ -168,6 +168,7 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
       button: {
         display: 'block',
         position: 'relative',
+        WebkitAppearance: 'none', // iOS safari
         appearance: 'none',
         background: 'transparent',
         border: 0,

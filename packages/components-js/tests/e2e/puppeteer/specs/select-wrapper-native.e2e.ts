@@ -19,7 +19,7 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-select-wrapper');
 const getSelect = () => selectNode(page, 'p-select-wrapper select');
 const getMessage = () => selectNode(page, 'p-select-wrapper >>> .message');
-const getLabelText = () => selectNode(page, 'p-select-wrapper >>> .label__text');
+const getLabel = () => selectNode(page, 'p-select-wrapper >>> label');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -64,28 +64,6 @@ const initSelect = (opts?: InitOptions): Promise<void> => {
     </p-select-wrapper>`
   );
 };
-
-it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `
-    <p-select-wrapper>
-      <select name="some-name" native="true">
-        <option value="a">Option A</option>
-        <option value="b">Option B</option>
-        <option value="c">Option C</option>
-      </select>
-    </p-select-wrapper>`
-  );
-
-  expect(await getLabelText()).toBeNull();
-
-  const host = await getHost();
-  await setProperty(host, 'label', 'Some label');
-  await waitForStencilLifecycle(page);
-
-  expect(await getLabelText()).not.toBeNull();
-});
 
 it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
   await initSelect();
@@ -137,7 +115,7 @@ describe('focus state', () => {
     const select = await getSelect();
     const hasSelectFocus = () => hasFocus(select);
 
-    const labelText = await getLabelText();
+    const labelText = await getLabel();
     expect(await hasSelectFocus()).toBe(false);
 
     await labelText.click();
@@ -152,11 +130,11 @@ xdescribe('hover state', () => {
     await page.mouse.move(0, 300); // avoid potential hover initially
 
     const select = await getSelect();
-    const labelText = await getLabelText();
+    const label = await getLabel();
     const initialStyle = await getElementStyle(select, 'borderColor');
     expect(initialStyle).toBe('rgb(107, 109, 112)');
 
-    await labelText.hover();
+    await label.hover();
     const hoverColor = await getElementStyle(select, 'borderColor');
     expect(hoverColor).toBe('rgb(1, 2, 5)');
   });

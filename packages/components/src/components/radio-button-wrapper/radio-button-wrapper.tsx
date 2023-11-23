@@ -1,27 +1,23 @@
-import { Component, Element, forceUpdate, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import {
   addChangeListener,
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
-  getClosestHTMLElement,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
-  hasLabel,
-  hasMessage,
   hasPropValueChanged,
-  isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import { getComponentCss } from './radio-button-wrapper-styles';
-import type { RadioButtonWrapperState } from './radio-button-wrapper-utils';
+import { type RadioButtonWrapperState } from './radio-button-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
-import { Required } from '../common/required/required';
+import { Label } from '../common/label/label';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
@@ -93,30 +89,23 @@ export class RadioButtonWrapper {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    // spinner is only displayed when radio is not checked already
-    const isLoading = this.loading && !this.input.checked;
+    const { disabled } = this.input;
+    const isLoading = this.loading && !this.input.checked; // spinner is only displayed when radio is not checked already
 
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.hideLabel,
-      this.state,
-      this.input.disabled,
-      isLoading,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, disabled, isLoading, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <label aria-disabled={isLoading ? 'true' : null}>
-          {hasLabel(this.host, this.label) && (
-            <span class="text" onClick={!isLoading && this.onLabelClick}>
-              {this.label || <slot name="label" />}
-              {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
-            </span>
-          )}
+      <div class="root">
+        <Label
+          host={this.host}
+          label={this.label}
+          isLoading={isLoading}
+          isDisabled={disabled}
+          formElement={this.input}
+        />
+        <div class="wrapper">
           <slot />
           {isLoading && (
             <PrefixedTagNames.pSpinner
@@ -126,23 +115,11 @@ export class RadioButtonWrapper {
               aria={{ 'aria-label': `Loading state of ${this.label}` }}
             />
           )}
-        </label>
-        {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        )}
-      </Host>
+        </div>
+        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+      </div>
     );
   }
-
-  private onLabelClick = (event: MouseEvent): void => {
-    /**
-     * we only want to simulate the input click by label click
-     * also we don't want to click to the input, if a link is clicked.
-     */
-    if (getClosestHTMLElement(event.target as HTMLElement, 'a') === null) {
-      this.input.click();
-    }
-  };
 
   private observeAttributes = (): void => {
     observeAttributes(this.input, ['disabled', 'required'], () => forceUpdate(this.host));
