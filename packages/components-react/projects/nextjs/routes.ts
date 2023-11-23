@@ -262,6 +262,10 @@ export const sitemap = {
     path: '/theme-injection',
     name: 'Theme Injection',
   },
+  modalPage: {
+    path: '/modal-standalone',
+    name: 'Modal Page',
+  },
 };
 
 export const routes = Object.values(sitemap).sort((a, b) => a.name.localeCompare(b.name));

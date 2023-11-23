@@ -9,7 +9,10 @@ import { routes } from '~/routes';
 export const meta: MetaFunction = () => [
   { charset: 'utf-8' },
   { title: 'Porsche Design System - Remix' },
-  { viewport: 'width=device-width,initial-scale=1' },
+  {
+    name: "viewport",
+    content: "width=device-width,initial-scale=1",
+  },
 ];
 
 export default function App(): JSX.Element {

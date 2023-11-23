@@ -13,7 +13,8 @@
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'remix-serve ./build/index.js'",
     "build-app": "remix build",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
-    "test": "yarn test:vrt",
+    "test": "yarn test:e2e && yarn test:vrt",
+    "test:e2e": "yarn build-app && TYPE=E2E PORT=3000 jest --colors -c tests/e2e/config/jest.config.ts",
     "test:vrt": "yarn build-app && TYPE=VRT PORT=3000 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
@@ -22,7 +23,7 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components-react": "3.8.0",
+    "@porsche-design-system/components-react": "3.9.0-rc.0",
     "@remix-run/node": "^2.2.0",
     "@remix-run/react": "^2.2.0",
     "@remix-run/serve": "^2.2.0",
