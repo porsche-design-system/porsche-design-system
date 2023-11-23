@@ -10,12 +10,11 @@ import {
   warnIfDeprecatedComponentIsUsed,
 } from '../../utils';
 import type { PropTypes, Theme } from '../../types';
-import type { FieldsetWrapperLabelSize } from './fieldset-wrapper-utils';
+import type { FieldsetWrapperLabelSize, FieldsetWrapperState } from './fieldset-wrapper-utils';
 import { FIELDSET_LABEL_SIZES } from './../fieldset/fieldset-utils';
 import { getComponentCss } from './fieldset-wrapper-styles';
-import { StateMessage } from '../common/state-message/state-message';
+import { messageId, StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
-import type { FieldsetWrapperState } from './fieldset-wrapper-utils';
 
 const propTypes: PropTypes<typeof FieldsetWrapper> = {
   label: AllowedTypes.string,
@@ -64,7 +63,6 @@ export class FieldsetWrapper {
       this.theme
     );
 
-    const messageId = 'message';
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
     return (
@@ -76,9 +74,7 @@ export class FieldsetWrapper {
           </legend>
         )}
         <slot />
-        {hasMessageValue && (
-          <StateMessage id={messageId} state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        )}
+        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </fieldset>
     );
   }

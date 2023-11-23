@@ -97,6 +97,72 @@ exports[`accessibility should expose correct accessibility tree properties in er
 }
 `;
 
+exports[`accessibility should expose correct accessibility tree when loading=true 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "name": "Some label",
+          "role": "StaticText",
+        },
+      ],
+      "disabled": true,
+      "name": "",
+      "role": "LabelText",
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "checked": false,
+              "name": "Some label",
+              "role": "radio",
+            },
+          ],
+          "role": "none",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": " ",
+                      "role": "StaticText",
+                    },
+                  ],
+                  "role": "none",
+                },
+                {
+                  "children": [
+                    {
+                      "role": "none",
+                    },
+                    {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "name": "Loading state of Some label",
+              "role": "alert",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+      ],
+      "role": "none",
+    },
+  ],
+  "role": "none",
+}
+`;
+
 exports[`accessibility should expose correct initial accessibility tree 1`] = `
 {
   "checked": false,

@@ -137,6 +137,8 @@ export class SelectWrapperDropdown {
       this.theme
     );
 
+    // TODO: part won't be needed as soon as button/input of select-wrapper-dropdown is part of shadow dom of select-wrapper itself
+    const part = 'select-wrapper-dropdown';
     const dropdownId = 'list';
     const labelId = 'label';
     const descriptionId = this.description && 'description';
@@ -168,10 +170,15 @@ export class SelectWrapperDropdown {
               onClick={() => this.setDropdownVisibility('show')}
               ref={(el) => (this.inputElement = el)}
             />,
-            <span key="span" onClick={this.disabled ? undefined : () => this.setDropdownVisibility('toggle')} />,
+            <span
+              part={part}
+              key="span"
+              onClick={this.disabled ? undefined : () => this.setDropdownVisibility('toggle')}
+            />,
           ]
         ) : (
           <button
+            part={part}
             type="button"
             role="combobox"
             id={buttonId}

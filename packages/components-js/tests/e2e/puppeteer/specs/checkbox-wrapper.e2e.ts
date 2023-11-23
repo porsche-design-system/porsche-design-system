@@ -21,9 +21,10 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-checkbox-wrapper');
+const getRoot = () => selectNode(page, 'p-checkbox-wrapper >>> .root');
 const getInput = () => selectNode(page, 'p-checkbox-wrapper input[type="checkbox"]');
+const getWrapper = () => selectNode(page, 'p-checkbox-wrapper >>> .wrapper');
 const getLabel = () => selectNode(page, 'p-checkbox-wrapper >>> label');
-const getLabelText = () => selectNode(page, 'p-checkbox-wrapper >>> .text');
 const getMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .message');
 
 const setIndeterminate = async (element: ElementHandle, value: boolean) => {
@@ -75,23 +76,6 @@ const initCheckbox = (opts?: InitOptions): Promise<void> => {
     </p-checkbox-wrapper>`
   );
 };
-
-it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
-  await setContentWithDesignSystem(
-    page,
-    `
-    <p-checkbox-wrapper>
-      <input type="checkbox" name="some-name"/>
-    </p-checkbox-wrapper>`
-  );
-
-  const host = await getHost();
-  expect(await getLabelText()).toBeNull();
-
-  await setProperty(host, 'label', 'Some Label');
-  await waitForStencilLifecycle(page);
-  expect(await getLabelText()).not.toBeNull();
-});
 
 it('should add/remove message text with message if state changes programmatically', async () => {
   await initCheckbox();
@@ -205,7 +189,7 @@ it('should keep focus if state switches to loading', async () => {
 
 it('should toggle checkbox when label text is clicked and not set input as active element', async () => {
   await initCheckbox();
-  const label = await getLabelText();
+  const label = await getLabel();
   const input = await getInput();
   const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
 
@@ -253,20 +237,38 @@ it('should check/uncheck checkbox when checkbox property is changed programmatic
 
 it('should disable checkbox when disabled property is set programmatically', async () => {
   await initCheckbox();
+  const host = await getHost();
   const input = await getInput();
-  const getCursor = () => getElementStyle(input, 'cursor');
+  const wrapper = await getWrapper();
 
-  expect(await getCursor()).toBe('pointer');
+  const getWrapperCursor = () => getElementStyle(wrapper, 'cursor');
+  const getInputCursor = () => getElementStyle(input, 'cursor');
+  const getInputPointerEvents = () => getElementStyle(input, 'pointerEvents');
+
+  expect(await getWrapperCursor()).toBe('auto');
+  expect(await getInputCursor()).toBe('pointer');
+  expect(await getInputPointerEvents()).toBe('auto');
 
   await setProperty(input, 'disabled', true);
   await waitForInputTransition(page);
 
-  expect(await getCursor()).toBe('not-allowed');
+  expect(await getWrapperCursor()).toBe('not-allowed');
+  expect(await getInputCursor()).toBe('default');
+  expect(await getInputPointerEvents()).toBe('none'); // prevents checkbox from being toggleable in disabled and especially loading state
 
   await setProperty(input, 'disabled', false);
   await waitForInputTransition(page);
 
-  expect(await getCursor()).toBe('pointer');
+  expect(await getWrapperCursor()).toBe('auto');
+  expect(await getInputCursor()).toBe('pointer');
+  expect(await getInputPointerEvents()).toBe('auto');
+
+  await setProperty(host, 'loading', true);
+  await waitForInputTransition(page);
+
+  expect(await getWrapperCursor()).toBe('not-allowed');
+  expect(await getInputCursor()).toBe('default');
+  expect(await getInputPointerEvents()).toBe('none'); // prevents checkbox from being toggleable in disabled and especially loading state
 });
 
 describe('indeterminate state', () => {
@@ -412,8 +414,8 @@ describe('accessibility', () => {
 
   it('should expose correct accessibility tree when loading=true', async () => {
     await initCheckbox({ loading: true });
-    const label = await getLabel();
+    const root = await getRoot();
 
-    await expectA11yToMatchSnapshot(page, label, { interestingOnly: false });
+    await expectA11yToMatchSnapshot(page, root, { interestingOnly: false });
   });
 });
