@@ -115,6 +115,7 @@
     "test:e2e:components-angular": "yarn --cwd ./packages/components-angular test:e2e",
     "test:e2e:components-react": "yarn --cwd ./packages/components-react test:e2e",
     "test:e2e:components-react/nextjs": "yarn --cwd ./packages/components-react/projects/nextjs test:e2e",
+    "test:e2e:components-react/remix": "yarn --cwd ./packages/components-react/projects/remix test:e2e",
     "test:e2e:components-vue": "yarn --cwd ./packages/components-vue test:e2e",
     "test:e2e:crawler": "yarn --cwd ./packages/crawler test:e2e",
     "test:e2e:storefront": "yarn --cwd ./packages/storefront test:e2e",

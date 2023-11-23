@@ -343,6 +343,11 @@ jobs:
         with:
           entrypoint: run-test-vrt
           args: --components-react/remix
+      - name: 'E2E Test components-react/nextjs'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e
+          args: --components-react/nextjs
       - name: 'VRT Regression components-react/remix'
         if: failure()
         uses: actions/upload-artifact@v3
