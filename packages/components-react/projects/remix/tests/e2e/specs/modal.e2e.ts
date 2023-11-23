@@ -30,9 +30,10 @@ it('should keep same scroll position when modal is opened and closed with route 
 
   const dismissButton = await getDismissButton();
   await dismissButton.click();
-  await page.waitForNavigation({
-    waitUntil: 'networkidle0',
-  });
+  await Promise.all([
+    page.waitForNavigation(),
+    dismissButton.click()
+  ]);
   await page.waitForFunction(() => !document.querySelector('p-modal'));
 
   expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(336);
