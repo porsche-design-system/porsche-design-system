@@ -16,7 +16,7 @@ import type {
   PaginationUpdateEvent,
   PaginationInternationalization,
 } from './pagination-utils';
-import { createPaginationModel, getCurrentActivePage, getTotalPages, ItemType } from './pagination-utils';
+import { createPaginationItems, getCurrentActivePage, getTotalPages, ItemType } from './pagination-utils';
 import { getComponentCss } from './pagination-styles';
 
 const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
@@ -128,13 +128,12 @@ export class Pagination {
       'allyLabelPage',
       'Please use intl prop with intl.page instead.'
     );
-    attachComponentCss(this.host, getComponentCss, this.theme);
 
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
-    const paginationModel = createPaginationModel({
+    attachComponentCss(this.host, getComponentCss, this.activePage, pageTotal, this.theme);
+    const paginationItems = createPaginationItems({
       activePage: getCurrentActivePage(this.activePage, pageTotal),
       pageTotal,
-      pageRange: 1,
       showLastPage: this.showLastPage,
     });
     const parsedIntl = parseJSONAttribute(this.intl);
@@ -144,7 +143,7 @@ export class Pagination {
     return (
       <nav role="navigation" aria-label={this.allyLabel || parsedIntl.root}>
         <ul>
-          {paginationModel.map((pageModel) => {
+          {paginationItems.map((pageModel) => {
             const { type, isActive, value } = pageModel;
             const spanProps = {
               role: 'button',
@@ -174,7 +173,7 @@ export class Pagination {
 
               case ItemType.ELLIPSIS:
                 return (
-                  <li key="ellipsis">
+                  <li key="ellipsis" class="elli">
                     <span class="ellipsis" />
                   </li>
                 );

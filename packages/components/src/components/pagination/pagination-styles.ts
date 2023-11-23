@@ -17,6 +17,7 @@ import {
   borderWidthBase,
   fontLineHeight,
   frostedGlassStyle,
+  getMediaQueryMax,
   getMediaQueryMin,
   spacingStaticSmall,
   spacingStaticXSmall,
@@ -24,6 +25,7 @@ import {
 } from '@porsche-design-system/utilities-v2';
 
 const mediaQueryMinS = getMediaQueryMin('s');
+const mediaQueryMaxS = getMediaQueryMax('s');
 
 // button size needs to be fluid between 320px and 360px viewport width, so that the pagination fits into 320px viewport
 // and text scale 200% works (almost) on mobile viewports too
@@ -34,7 +36,7 @@ const disabledCursorStyle: JssStyle = {
   pointerEvents: 'none', // prevents :hover (has no effect when forced), maybe we can remove it since CSS selectors already cover desired behavior
 };
 
-export const getComponentCss = (theme: Theme): string => {
+export const getComponentCss = (activePage: number, pageTotal: number, theme: Theme): string => {
   const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
@@ -56,9 +58,6 @@ export const getComponentCss = (theme: Theme): string => {
         display: 'flex',
         justifyContent: 'center',
         userSelect: 'none',
-        // ...buildResponsiveStyles(maxNumberOfPageLinks, (n: PaginationMaxNumberOfPageLinks) => ({
-        //   counterReset: `size ${n}`,
-        // })),
       },
       ul: {
         display: 'flex',
@@ -71,13 +70,25 @@ export const getComponentCss = (theme: Theme): string => {
       },
       li: {
         listStyleType: 'none',
+        ...(pageTotal > 5 && {
+          // ...(activePage < 4 && { [`&:nth-child(3) .ellipsis`]: { display: 'none' } }),
+          // ...(activePage + 2 < pageTotal && { [`&:nth-child(7) span`]: { display: 'none' } }),
+          // ...(pageTotal - activePage < 4 && { [`&:nth-child(8) .ellipsis`]: { display: 'none' } }),
+          [mediaQueryMaxS]: {
+            // ...(activePage < 4 && { [`&:nth-child(3) .ellipsis`]: { display: 'none' } }),
+            // ...(pageTotal - activePage < 4 && { [`&:nth-child(8) .ellipsis`]: { display: 'none' } }),
+          },
+        }),
         [mediaQueryMinS]: {
+          // prev
           '&:first-child': {
             marginInlineEnd: spacingStaticSmall,
           },
+          // next
           '&:last-child': {
             marginInlineStart: spacingStaticSmall,
           },
+          ...((pageTotal < 8 || pageTotal - activePage < 4) && { '&:nth-child(n+4).elli': { display: 'none' } }),
         },
       },
       span: {
@@ -126,7 +137,7 @@ export const getComponentCss = (theme: Theme): string => {
             color: primaryColorDark,
             borderColor: primaryColorDark,
           }),
-          '&:not(.ellipsis):focus::before': getInsetJssStyle(-6),
+          '&:not(.ellipsis):focus::before': getInsetJssStyle(-6), // adjust for missing 2px border
         },
         '&[aria-disabled]': {
           ...disabledCursorStyle,

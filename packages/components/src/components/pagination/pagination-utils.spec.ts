@@ -1,5 +1,5 @@
 import {
-  createPaginationModel,
+  createPaginationItems,
   getTotalPages,
   getCurrentActivePage,
   createRange,
@@ -18,7 +18,7 @@ const paginationModelItemToSymbolPart = (item: PaginationItem, index: number): s
   }
 };
 
-const formatPaginationModelToASCII = (items: PaginationItem[]): string[] => {
+const formatPaginationItemsToASCII = (items: PaginationItem[]): string[] => {
   return items.map((item, idx) => {
     const symbolPart = paginationModelItemToSymbolPart(item, idx);
     return [item.isActive ? '*' : '', item.value, symbolPart ? `(${symbolPart})` : ''].join('');
@@ -36,16 +36,12 @@ describe('createRange()', () => {
   });
 });
 
-describe('createPaginationModel()', () => {
-  const pageRange = 1;
-
+describe('createPaginationItems()', () => {
   describe('for showLastPage = true', () => {
     describe('for pageTotal = 1', () => {
       it('should return correct model for 1 of 1', () => {
         expect(
-          formatPaginationModelToASCII(
-            createPaginationModel({ activePage: 1, pageTotal: 1, pageRange, showLastPage: true })
-          )
+          formatPaginationItemsToASCII(createPaginationItems({ activePage: 1, pageTotal: 1, showLastPage: true }))
         ).toEqual(['1(<)', '*1', '1(>)']);
       });
     });
@@ -64,9 +60,7 @@ describe('createPaginationModel()', () => {
         [10, ['*9(<)', '1', '(<...)', '6', '7', '8', '9', '*10', '10(>)']],
       ])('should return correct model for %s of 10', (activePage, result) => {
         expect(
-          formatPaginationModelToASCII(
-            createPaginationModel({ activePage, pageTotal: 10, pageRange, showLastPage: true })
-          )
+          formatPaginationItemsToASCII(createPaginationItems({ activePage, pageTotal: 10, showLastPage: true }))
         ).toEqual(result);
       });
     });
@@ -76,9 +70,7 @@ describe('createPaginationModel()', () => {
     describe('for pageTotal = 1', () => {
       it('should return correct model for 1 of 1', () => {
         expect(
-          formatPaginationModelToASCII(
-            createPaginationModel({ activePage: 1, pageTotal: 1, pageRange, showLastPage: false })
-          )
+          formatPaginationItemsToASCII(createPaginationItems({ activePage: 1, pageTotal: 1, showLastPage: false }))
         ).toEqual(['1(<)', '*1', '1(>)']);
       });
     });
@@ -97,9 +89,7 @@ describe('createPaginationModel()', () => {
         [10, ['*9(<)', '1', '(<...)', '7', '8', '9', '*10', '10(>)']],
       ])('should return correct model for %s of 10', (activePage, result) => {
         expect(
-          formatPaginationModelToASCII(
-            createPaginationModel({ activePage, pageTotal: 10, pageRange, showLastPage: false })
-          )
+          formatPaginationItemsToASCII(createPaginationItems({ activePage, pageTotal: 10, showLastPage: false }))
         ).toEqual(result);
       });
     });
