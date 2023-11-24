@@ -135,6 +135,13 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/flyout/flyout.usage.md')],
       Props: [() => import('@/../../components/src/components/flyout/flyout.props.md')],
     },
+    'Flyout Navigation': {
+      Examples: [() => import('@/../../components/src/components/flyout-navigation/flyout-navigation.examples.md')],
+      Props: [
+        () =>
+          import('@/../../components/src/components/flyout-navigation/flyout-navigation/flyout-navigation.props.md'),
+      ],
+    },
     Grid: {
       Examples: [() => import('@/../../components/src/components/grid/grid.examples.md')],
       Usage: [() => import('@/../../components/src/components/grid/grid.usage.md')],

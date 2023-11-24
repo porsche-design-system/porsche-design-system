@@ -20,6 +20,7 @@ import {
   themeLightBackgroundShading,
 } from '@porsche-design-system/utilities-v2';
 import { JssStyle } from 'jss';
+import { FLYOUT_Z_INDEX } from '../../../constants';
 
 export const getComponentCss = (isOpen: boolean, theme: Theme): string => {
   const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
@@ -31,6 +32,7 @@ export const getComponentCss = (isOpen: boolean, theme: Theme): string => {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
+          zIndex: FLYOUT_Z_INDEX,
           ...getBackdropJssStyles(isOpen, 'long', theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
@@ -72,22 +74,24 @@ export const getComponentCss = (isOpen: boolean, theme: Theme): string => {
           display: 'none',
         },
       },
-      '::slotted([slot="level-1"])': {
+      '::slotted([slot="level-1"])': addImportantToEachRule({
+        margin: 0,
         padding: spacingFluidLarge,
         overflow: 'auto',
         backgroundColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           backgroundColor: backgroundColorDark,
         }),
-      },
-      '::slotted([slot="level-2"])': {
+      }),
+      '::slotted([slot="level-2"])': addImportantToEachRule({
+        margin: 0,
         padding: spacingFluidLarge,
         overflow: 'auto',
         backgroundColor: backgroundSurfaceColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           backgroundColor: backgroundSurfaceColorDark,
         }),
-      },
+      }),
     },
     nav: {
       gridArea: '1/1',
