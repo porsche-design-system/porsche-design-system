@@ -14,7 +14,7 @@
     "prebuild:generateThemesObject": "ts-node scripts/generateThemesObject.ts",
     "prebuild:generateConstructorMap": "ts-node scripts/generateConstructorMap.ts",
     "build": "PDS_IS_STAGING=${PDS_IS_STAGING:-1} stencil build --docs && yarn build:cleanReadmes && yarn build:addTableOfContents && yarn build:type && yarn build:wrappers && yarn build:copyCjsBuildToComponentsJs && yarn build:clean",
-    "build:wrappers": "yarn build:wrappers:generateWrappers && yarn build:wrappers:generateDSRComponents && yarn build:wrappers:bundleStyles && yarn build:wrappers:bundleUtils",
+    "build:wrappers": "yarn build:wrappers:generateWrappers && yarn build:wrappers:bundleStyles && yarn build:wrappers:bundleUtils",
     "build:wrappers:generateWrappers": "ts-node scripts/generateWrappers.ts",
     "build:wrappers:generateDSRComponents": "ts-node scripts/generateDSRComponents.ts",
     "build:wrappers:bundleStyles": "rm -rf ./src/styles-entry.ts && PDS_IS_STAGING=${PDS_IS_STAGING:-1} rollup -c rollup-styles.config.js --bundleConfigAsCjs",
