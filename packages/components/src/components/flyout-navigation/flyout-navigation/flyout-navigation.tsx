@@ -68,26 +68,12 @@ export class FlyoutNavigation {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <dialog
-        ref={(ref) => (this.dialog = ref)}
-        onClick={(e: MouseEvent & { target: HTMLElement }) => {
-          if (e.target.nodeName === 'DIALOG') {
-            // dismiss dialog when clicked on backdrop
-            this.dismissDialog();
-          }
-        }}
-        onCancel={(e) => {
-          // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
-          e.preventDefault();
-          this.dismissDialog();
-        }}
-      >
+      <dialog ref={(ref) => (this.dialog = ref)} onClick={(e) => this.onClick(e)} onCancel={(e) => this.onCancel(e)}>
         <PrefixedTagNames.pButtonPure
           class="dismiss"
           type="button"
           hideLabel
           icon="close"
-          variant="secondary"
           theme="dark"
           onClick={this.dismissDialog}
         >
@@ -99,6 +85,19 @@ export class FlyoutNavigation {
         </div>
       </dialog>
     );
+  }
+
+  private onClick(e: MouseEvent): void {
+    if ((e.target as any).nodeName === 'DIALOG') {
+      // dismiss dialog when clicked on backdrop
+      this.dismissDialog();
+    }
+  }
+
+  private onCancel(e): void {
+    // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
+    e.preventDefault();
+    this.dismissDialog();
   }
 
   private setDialogVisibility(isOpen: boolean): void {
