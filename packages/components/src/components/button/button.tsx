@@ -13,7 +13,6 @@ import {
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
   getPrefixedTagNames,
-  hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   hasPropValueChanged,
   isDisabledOrLoading,
@@ -21,8 +20,7 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import { Component, Element, h, type JSX, Listen, Prop } from '@stencil/core';
-import { getButtonAriaAttributes } from './button-utils';
+import { Component, Element, type JSX, Listen, Prop } from '@stencil/core';
 import type { ButtonIcon } from './button-utils';
 import { getComponentCss } from './button-styles';
 import { getJSX } from './button-render';
