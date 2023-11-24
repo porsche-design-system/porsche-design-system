@@ -1,19 +1,11 @@
 import type { JssStyle, Styles } from 'jss';
-import type { BreakpointCustomizable, Theme } from '../types';
-import { buildResponsiveStyles } from '../utils';
-import {
-  addImportantToRule,
-  getHiddenTextJssStyle,
-  getThemedColors,
-  getTransition,
-  hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
-} from './';
+import type { Theme } from '../types';
+import { getThemedColors, getTransition, hoverMediaQuery, prefersColorSchemeDarkMediaQuery } from './';
 import {
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
-  fontSizeTextXSmall,
+  spacingStaticMedium,
   spacingStaticSmall,
   spacingStaticXSmall,
   textSmallStyle,
@@ -21,14 +13,12 @@ import {
 import { getThemedFormStateColors } from './form-state-color-styles';
 import type { FormState } from '../utils/form/form-state';
 
-// TODO: should be removed if possible?
-export const INPUT_HEIGHT = 54;
-
 export type ChildSelector = 'input' | 'select' | 'textarea';
 
-export const getBaseChildStyles = (
+export const getSlottedTextFieldTextareaSelectStyles = (
   child: ChildSelector,
   state: FormState,
+  isLoading: boolean,
   theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
@@ -47,7 +37,6 @@ export const getBaseChildStyles = (
 
   return {
     [`::slotted(${child})`]: {
-      gridArea: '3 / 1 / auto / span 2',
       display: 'block',
       width: '100%',
       height:
@@ -65,22 +54,25 @@ export const getBaseChildStyles = (
       font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
       textIndent: 0,
       color: primaryColor,
-      transition: ['color', 'border-color', 'background-color'].map(getTransition).join(), // for smooth transitions between e.g. disabled states
+      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
       ...prefersColorSchemeDarkMediaQuery(theme, {
         borderColor: formStateColorDark || contrastMediumColorDark,
         color: primaryColorDark,
       }),
       ...additionalDefaultJssStyle,
     },
-    ...(hoverMediaQuery({
-      // with the media query the selector has higher priority and overrides disabled styles
-      [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover)`]: {
-        borderColor: formStateHoverColor || primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: formStateHoverColorDark || primaryColorDark,
-        }),
-      },
-    }) as Styles),
+    ...(!isLoading &&
+      (hoverMediaQuery({
+        // with the media query the selector has higher priority and overrides disabled styles
+        [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))${
+          child === 'select' ? ',label:hover~.wrapper ::part(select-wrapper-dropdown)' : ''
+        }`]: {
+          borderColor: formStateHoverColor || primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: formStateHoverColorDark || primaryColorDark,
+          }),
+        },
+      }) as Styles)),
     [`::slotted(${child}:focus)`]: {
       borderColor: primaryColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -111,81 +103,43 @@ export const getBaseChildStyles = (
   };
 };
 
-export const getLabelStyles = (
-  child: ChildSelector,
-  isDisabled: boolean,
-  hideLabel: BreakpointCustomizable<boolean>,
-  state: FormState,
-  theme: Theme,
-  counterOrUnitOrIconStyles?: Styles<'counter'> | Styles<'unit'> | Styles<'icon'>,
-  additionalLabelJssStyle?: JssStyle
-): Styles => {
-  const { primaryColor, disabledColor, contrastHighColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    contrastHighColor: contrastHighColorDark,
-  } = getThemedColors('dark');
-  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors('dark', state);
+export const formElementLayeredGap = '9px'; // to have same distance vertically and horizontally for e.g. button/icon within form element
+export const formElementLayeredSafeZone = `calc(${formElementLayeredGap} + ${borderWidthBase})`;
+// TODO: basic button/icon padding can already be set within style function instead of on component style level
+export const formButtonOrIconPadding = spacingStaticXSmall;
+// TODO: if we'd use 12px instead, it wouldn't be necessary for textarea to have a custom vertical padding,
+//  unfortunately line-height alignment breaks for a select element for some reasons then
+// TODO: basic form element padding can already be set within style function instead of on component style level
+export const formElementPaddingVertical = spacingStaticSmall;
+// TODO: basic form element padding can already be set within style function instead of on component style level
+export const formElementPaddingHorizontal = spacingStaticMedium;
+export const getCalculatedFormElementPaddingHorizontal = (buttonOrIconAmount: 1 | 2): string => {
+  // when applied, font-family and font-size needs to be set too for correct calculation of ex-unit ($fontLineHeight)
+  return `calc(${formElementLayeredGap} + ${formElementPaddingHorizontal} / 2 + (${fontLineHeight} + ${formButtonOrIconPadding} * 2) * ${buttonOrIconAmount})`;
+};
 
-  const counterOrUnitOrIconStylesKey = counterOrUnitOrIconStyles && Object.keys(counterOrUnitOrIconStyles)[0];
+// TODO: re-use in textarea-wrapper not only in text-field-wrapper
+export const getUnitCounterJssStyle = (isDisabled: boolean, theme: Theme): JssStyle => {
+  const { disabledColor, contrastMediumColor } = getThemedColors(theme);
+  const { disabledColor: disabledColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
 
   return {
-    label: {
-      display: 'grid',
-      gridTemplateColumns: 'minmax(0, 1fr) auto',
-      position: 'relative', // for unit and counter
-      '&__text': {
-        gridColumn: 'span 2',
-        display: 'block',
-        ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-          getHiddenTextJssStyle(isHidden, {
-            width: 'fit-content',
-            marginBottom: spacingStaticXSmall,
-          })
-        ),
-        ...textSmallStyle,
-        color: isDisabled ? disabledColor : primaryColor,
-        transition: getTransition('color'), // for smooth transitions between e.g. disabled states
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: isDisabled ? disabledColorDark : primaryColorDark,
-        }),
-        '&+&': {
-          marginTop: `-${spacingStaticXSmall}`,
-          fontSize: fontSizeTextXSmall,
-          ...(!isDisabled && {
-            color: contrastHighColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              color: contrastHighColorDark,
-            }),
-          }),
-        },
-        ...hoverMediaQuery({
-          '&:hover': {
-            [`&~::slotted(${child}:not(:disabled):not(:focus):not([readonly]))`]: {
-              borderColor: addImportantToRule(formStateHoverColor || primaryColor),
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: addImportantToRule(formStateHoverColorDark || primaryColorDark),
-              }),
-            },
-          },
-        }),
-      },
-      ...additionalLabelJssStyle,
-    },
-    ...(counterOrUnitOrIconStyles && {
-      [counterOrUnitOrIconStylesKey]: {
-        ...counterOrUnitOrIconStyles[counterOrUnitOrIconStylesKey],
-        pointerEvents: 'none',
-        ...(isDisabled && {
-          color: disabledColor,
-          cursor: 'not-allowed',
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: disabledColorDark,
-          }),
-        }),
-      },
+    pointerEvents: 'none',
+    maxWidth: '100%',
+    boxSizing: 'border-box',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    font: textSmallStyle.font,
+    color: contrastMediumColor,
+    ...prefersColorSchemeDarkMediaQuery(theme, {
+      color: contrastMediumColorDark,
+    }),
+    ...(isDisabled && {
+      color: disabledColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: disabledColorDark,
+      }),
     }),
   };
 };

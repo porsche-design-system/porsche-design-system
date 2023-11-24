@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Route } from '@angular/router';
-import * as fromPages from './pages';
+import { RouterModule, type Route } from '@angular/router';
 import * as fromExamples from './examples';
+import * as fromPages from './pages';
 import * as fromStyles from './styles';
 
 export type ExtendedRoute = Route & {
-  name: string;
+  name?: string; // optional to be filtered out for select options
   isDisabled?: boolean;
 };
 
 export const routes: ExtendedRoute[] = [
-  ...[...fromPages.generatedRoutes].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())),
+  ...fromPages.generatedRoutes.sort((a, b) => a.name!.toLowerCase().localeCompare(b.name!.toLowerCase())),
   {
     name: '---',
     path: '---',
@@ -48,6 +48,38 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.FormWrapperBindingComponent,
   },
   {
+    name: 'Tabs Bar Navigation',
+    path: 'tabs-bar-navigation',
+    redirectTo: 'tabs-bar-navigation/page-1',
+  },
+  {
+    path: 'tabs-bar-navigation',
+    component: fromPages.TabsBarNavigationComponent,
+    children: [
+      { path: 'page-1', component: fromPages.TabsBarNavigationPage1Component },
+      { path: 'page-2', component: fromPages.TabsBarNavigationPage2Component },
+      { path: 'page-3', component: fromPages.TabsBarNavigationPage3Component },
+    ],
+  },
+  {
+    name: 'Tabs Bar Navigation Bug',
+    path: 'tabs-bar-navigation-bug',
+    redirectTo: 'tabs-bar-navigation-bug/page-1',
+  },
+  {
+    path: 'tabs-bar-navigation-bug',
+    children: [
+      { path: 'page-1', component: fromPages.TabsBarNavigationBugPage1Component },
+      { path: 'page-2', component: fromPages.TabsBarNavigationBugPage2Component },
+      { path: 'page-3', component: fromPages.TabsBarNavigationBugPage3Component },
+    ],
+  },
+  {
+    name: 'Theme Injection',
+    path: 'theme-injection',
+    component: fromPages.ThemeInjectionComponent,
+  },
+  {
     name: 'Optional Properties',
     path: 'optional-properties',
     component: fromPages.OptionalPropertiesComponent,
@@ -72,6 +104,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Banner Example',
     path: 'banner-example',
     component: fromExamples.BannerExampleComponent,
+  },
+  {
+    name: 'Button Example Form',
+    path: 'button-example-form',
+    component: fromExamples.ButtonExampleFormComponent,
   },
   {
     name: 'Carousel Example Dynamic Slides',
@@ -277,7 +314,7 @@ export const routes: ExtendedRoute[] = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

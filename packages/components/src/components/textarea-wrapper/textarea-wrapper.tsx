@@ -1,5 +1,5 @@
-import { Component, Element, forceUpdate, h, Host, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
+import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import {
   addInputEventListenerForCounter,
   AllowedTypes,
@@ -7,11 +7,7 @@ import {
   FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   hasCounter,
-  hasDescription,
-  hasLabel,
-  hasMessage,
   hasPropValueChanged,
-  isRequiredAndParentNotRequired,
   observeAttributes,
   setAriaAttributes,
   THEMES,
@@ -19,10 +15,10 @@ import {
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { TextareaWrapperState } from './textarea-wrapper-utils';
+import { type TextareaWrapperState } from './textarea-wrapper-utils';
 import { getComponentCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
-import { Required } from '../common/required/required';
+import { Label } from '../common/label/label';
 
 const propTypes: PropTypes<typeof TextareaWrapper> = {
   label: AllowedTypes.string,
@@ -119,48 +115,29 @@ export class TextareaWrapper {
       'showCharacterCount',
       'Please use showCounter prop instead.'
     );
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.textarea.disabled,
-      this.hideLabel,
-      this.state,
-      this.hasCounter,
-      this.theme
-    );
 
-    const labelProps = {
-      onClick: this.onLabelClick,
-    };
+    const { disabled } = this.textarea;
+
+    attachComponentCss(this.host, getComponentCss, disabled, this.hideLabel, this.state, this.hasCounter, this.theme);
 
     return (
-      <Host>
-        <label class="label">
-          {hasLabel(this.host, this.label) && (
-            <span class="label__text" {...labelProps}>
-              {this.label || <slot name="label" />}
-              {isRequiredAndParentNotRequired(this.host, this.textarea) && <Required />}
-            </span>
-          )}
-          {hasDescription(this.host, this.description) && (
-            <span class="label__text" {...labelProps}>
-              {this.description || <slot name="description" />}
-            </span>
-          )}
-          {this.hasCounter && <span class="counter" aria-hidden="true" ref={(el) => (this.counterElement = el)} />}
+      <div class="root">
+        <Label
+          host={this.host}
+          label={this.label}
+          description={this.description}
+          isDisabled={disabled}
+          formElement={this.textarea}
+        />
+        <div class="wrapper">
           <slot />
+          {this.hasCounter && <span class="counter" aria-hidden="true" ref={(el) => (this.counterElement = el)} />}
           {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
-        </label>
-        {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        )}
-      </Host>
+        </div>
+        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+      </div>
     );
   }
-
-  private onLabelClick = (): void => {
-    this.textarea.focus();
-  };
 
   private observeAttributes = (): void => {
     observeAttributes(this.textarea, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));

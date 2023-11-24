@@ -46,7 +46,7 @@ it('should throw error if PorscheDesignSystemProvider is missing ', () => {
 it('should call load() with default parameters once', () => {
   const spy = jest.spyOn(fromComponentsJs, 'load');
   const { rerender } = render(PorscheDesignSystemProvider);
-  expect(spy).toBeCalledWith({ prefix: '' });
+  expect(spy).toBeCalledWith({ prefix: '', theme: 'light' });
 
   rerender({ prefix: 'new-prefix' });
   expect(spy).toBeCalledTimes(1);
@@ -55,7 +55,7 @@ it('should call load() with default parameters once', () => {
 it('should call load() with custom parameters once', () => {
   const spy = jest.spyOn(fromComponentsJs, 'load');
   const { rerender } = render(PorscheDesignSystemProvider, { props: { prefix: 'my-prefix', cdn: 'cn' } });
-  expect(spy).toBeCalledWith({ prefix: 'my-prefix', cdn: 'cn' });
+  expect(spy).toBeCalledWith({ prefix: 'my-prefix', cdn: 'cn', theme: 'light' });
 
   rerender({ prefix: 'new-prefix', cdn: 'cn' });
   expect(spy).toBeCalledTimes(1);

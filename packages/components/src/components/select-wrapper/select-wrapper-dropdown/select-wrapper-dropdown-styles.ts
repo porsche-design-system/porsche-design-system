@@ -16,7 +16,6 @@ import {
   borderWidthBase,
   fontLineHeight,
   fontWeightSemiBold,
-  spacingStaticMedium,
   spacingStaticSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
@@ -24,6 +23,11 @@ import {
 import { getNoResultsOptionJssStyle, OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { FormState } from '../../../utils/form/form-state';
+import {
+  formElementPaddingHorizontal,
+  formElementPaddingVertical,
+  getCalculatedFormElementPaddingHorizontal,
+} from '../../../styles/form-styles';
 
 const dropdownPositionVar = '--p-internal-dropdown-position';
 
@@ -48,12 +52,13 @@ export const getButtonStyles = (
 
   return {
     '@global': {
+      // TODO: extract generic default button/anchor reset style
       button: {
         position: 'absolute',
-        top: 0,
-        height: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so button height becomes 54px
-        width: '100%',
-        font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
+        ...getInsetJssStyle(),
+        width: '100%', // fixes Firefox positioning issue
+        height: '100%', // fixes Firefox positioning issue
+        margin: 0,
         padding: 0,
         background: 'transparent',
         border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`, // using border of styled select below for label:hover selector
@@ -130,14 +135,18 @@ export const getFilterStyles = (
       input: {
         display: 'block',
         position: 'absolute',
+        ...getInsetJssStyle(2), // 2 = borderWidthBase
+        width: 'calc(100% - 4px)', // fixes Firefox positioning issue, 4px = 2 x borderWidthBase
+        height: 'calc(100% - 4px)', // fixes Firefox positioning issue, 4px = 2 x borderWidthBase
         zIndex: 1,
-        bottom: '2px',
-        left: '2px',
-        width: `calc(100% - (${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2))`,
-        height: `calc(${fontLineHeight} + 6px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 6px additionally so input height becomes 50px
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
-        padding: `13px ${spacingStaticMedium}`,
+        margin: 0, // necessary reset for iOS Safari 15 (and maybe other browsers)
+        // TODO: could be done with css subgrid much more elegant in the near future
+        //  or move input into select-wrapper and handle it the same like multi-select
+        padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
+        paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(1),
         outline: '0',
+        WebkitAppearance: 'none', // iOS safari
         appearance: 'none',
         boxSizing: 'border-box',
         border: '0', // done via span
@@ -191,6 +200,7 @@ export const getFilterStyles = (
             },
           },
         }),
+        // TODO: we should try to get rid of the span and apply the border-styles on either select or input
         '&+span': {
           // for focus outline and clicking arrow since input ends left of the icon
           position: 'absolute',
@@ -241,11 +251,12 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
         display: 'flex',
         flexDirection: 'column',
         gap: spacingStaticSmall,
-        position: `var(${dropdownPositionVar})`, // for vrt tests
+        position: `var(${dropdownPositionVar}, absolute)`, // for vrt tests
         padding: '6px',
         margin: 0,
         background: backgroundColor,
         ...textSmallStyle,
+        color: contrastHighColor,
         zIndex: 10,
         left: 0,
         right: 0,
@@ -266,6 +277,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
         transition: getTransition('border-color'),
         transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
         ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: contrastHighColorDark,
           background: backgroundColorDark,
           borderColor: primaryColorDark,
           [isDirectionDown ? 'borderTopColor' : 'borderBottomColor']: addImportantToRule(contrastMediumColorDark),
@@ -278,16 +290,12 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
       flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
-      color: contrastHighColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastHighColorDark,
-      }),
       cursor: 'pointer',
       textAlign: 'start',
       wordBreak: 'break-word',
       boxSizing: 'border-box',
       borderRadius: borderRadiusSmall,
-      transition: ['background-color', 'color'].map(getTransition).join(),
+      transition: `${getTransition('background-color')}, ${getTransition('color')}`,
       ...getNoResultsOptionJssStyle(),
       ...hoverMediaQuery({
         '&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover': {
@@ -331,9 +339,13 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
       },
     },
     optgroup: {
+      color: contrastMediumColor,
       display: 'block',
       padding: '3px 14px',
       fontWeight: fontWeightSemiBold,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastMediumColorDark,
+      }),
       '&:not(:first-child)': {
         marginTop: spacingStaticSmall,
       },
@@ -352,46 +364,14 @@ export const getComponentCss = (
   filter: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    disabledColor: disabledColorDark,
-  } = getThemedColors('dark');
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
-    'dark',
-    state
-  );
-
   return getCss(
     // merge because of global styles
     mergeDeep(
       {
         '@global': {
           ':host': {
-            [dropdownPositionVar]: 'absolute', // TODO: make conditional only for tests
             display: 'block',
-            position: `var(${dropdownPositionVar})`, // for vrt tests
-            font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
-            marginTop: `calc(-1 * (${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2))`, // we need 10px additionally so input height becomes 54px,
-            paddingTop: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so input height becomes 54px,
-            left: 0,
-            right: 0,
-            color: disabled ? disabledColor : formStateColor || contrastMediumColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              color: disabled ? disabledColorDark : formStateColorDark || contrastMediumColorDark,
-            }),
-            ...(!disabled &&
-              !isHighContrastMode &&
-              hoverMediaQuery({
-                '&(:hover)': {
-                  color: formStateHoverColor || primaryColor,
-                  ...prefersColorSchemeDarkMediaQuery(theme, {
-                    color: formStateHoverColorDark || primaryColorDark,
-                  }),
-                },
-              })),
+            position: 'relative',
           },
         },
         'sr-text': {

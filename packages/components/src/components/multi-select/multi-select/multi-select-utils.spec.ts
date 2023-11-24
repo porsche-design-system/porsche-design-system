@@ -89,7 +89,7 @@ describe('initNativeSelect', () => {
       multiple: 'true',
       'aria-hidden': 'true',
       tabindex: '-1',
-      slot: 'select',
+      slot: 'internal-select',
     });
     expect(syncNativeSelectSpy).toHaveBeenCalledWith(nativeSelect, name, disabled, required);
     expect(host.firstChild).toBe(nativeSelect);

@@ -1,5 +1,6 @@
 import { AccordionExampleComponent } from './accordion-example.component';
 import { BannerExampleComponent } from './banner-example.component';
+import { ButtonExampleFormComponent } from './button-example-form.component';
 import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynamic-slides.component';
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
 import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
@@ -31,6 +32,7 @@ import { ToastExampleComponent } from './toast-example.component';
 export const examples = [
   AccordionExampleComponent,
   BannerExampleComponent,
+  ButtonExampleFormComponent,
   CarouselExampleDynamicSlidesComponent,
   CarouselExampleEventsComponent,
   CarouselExampleJumpToSlideComponent,
@@ -62,6 +64,7 @@ export const examples = [
 
 export * from './accordion-example.component';
 export * from './banner-example.component';
+export * from './button-example-form.component';
 export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-events.component';
 export * from './carousel-example-jump-to-slide.component';

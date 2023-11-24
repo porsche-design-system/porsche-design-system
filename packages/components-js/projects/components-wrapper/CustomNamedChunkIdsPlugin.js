@@ -71,7 +71,11 @@ const customGetShortChunkName = (chunk, chunkGraph, context, delimiter, associat
   const modules = chunkGraph.getChunkRootModules(chunk);
   const shortModuleNames = modules
     .map((m) => requestToId(getShortModuleName(m, context, associatedObjectForCache)))
-    .map((m) => /p-([a-z-]*)/.exec(m)[1]); // extract component name from something like: porsche-design-system.components_dist_esm_p-banner_entry_js.848dce0f7bfd1fde6bd3.js
+    .map((m) => {
+      const chunkName = /p-([a-z-]*)/.exec(m)[1];
+      console.log('Short Chunk Name:', chunkName);
+      return chunkName;
+    }); // extract component name from something like: porsche-design-system.components_dist_esm_p-banner_entry_js.848dce0f7bfd1fde6bd3.js
 
   chunk.idNameHints.sort();
   const chunkName = Array.from(chunk.idNameHints).concat(shortModuleNames).filter(Boolean).join(delimiter);

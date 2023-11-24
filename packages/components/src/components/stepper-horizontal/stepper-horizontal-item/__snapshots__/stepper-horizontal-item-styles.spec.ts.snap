@@ -16,6 +16,7 @@ button {
   gap: 3px;
   color: #FBFCFF;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: 0;
   border: 0;
   outline: 0;
@@ -42,7 +43,7 @@ button:focus:not(:focus-visible)::after {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -83,6 +84,7 @@ button {
   gap: 3px;
   color: #010205;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: 0;
   border: 0;
   outline: 0;
@@ -109,7 +111,7 @@ button:focus:not(:focus-visible)::after {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -150,6 +152,7 @@ button {
   gap: 3px;
   color: #7E7F82;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: 0;
   border: 0;
   outline: 0;
@@ -206,6 +209,7 @@ button {
   gap: 3px;
   color: #949598;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: 0;
   border: 0;
   outline: 0;
@@ -289,6 +293,7 @@ button {
   gap: 3px;
   color: #FBFCFF;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: rgba(148, 149, 152, .18);
   border: 0;
   outline: 0;
@@ -322,7 +327,7 @@ button:focus:not(:focus-visible)::after {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -386,6 +391,7 @@ button {
   gap: 3px;
   color: #010205;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: rgba(148, 149, 152, .18);
   border: 0;
   outline: 0;
@@ -419,7 +425,7 @@ button:focus:not(:focus-visible)::after {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -483,6 +489,7 @@ button {
   gap: 3px;
   color: #7E7F82;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: rgba(148, 149, 152, .18);
   border: 0;
   outline: 0;
@@ -569,6 +576,7 @@ button {
   gap: 3px;
   color: #949598;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: rgba(148, 149, 152, .18);
   border: 0;
   outline: 0;
@@ -655,6 +663,7 @@ button {
   gap: 3px;
   color: #7E7F82;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: 0;
   border: 0;
   outline: 0;
@@ -739,6 +748,7 @@ button {
   gap: 3px;
   color: #949598;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: 0;
   border: 0;
   outline: 0;
@@ -823,6 +833,7 @@ button {
   gap: 3px;
   color: #7E7F82;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: 0;
   border: 0;
   outline: 0;
@@ -907,6 +918,7 @@ button {
   gap: 3px;
   color: #949598;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: 0;
   border: 0;
   outline: 0;
@@ -964,6 +976,7 @@ button {
   gap: 3px;
   color: #FBFCFF;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: 0;
   border: 0;
   outline: 0;
@@ -990,7 +1003,7 @@ button:focus:not(:focus-visible)::after {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -1031,6 +1044,7 @@ button {
   gap: 3px;
   color: #010205;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: 0;
   border: 0;
   outline: 0;
@@ -1057,7 +1071,7 @@ button:focus:not(:focus-visible)::after {
 }
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     -webkit-backdrop-filter: blur(32px);
@@ -1098,6 +1112,7 @@ button {
   gap: 3px;
   color: #7E7F82;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: 0;
   border: 0;
   outline: 0;
@@ -1154,6 +1169,7 @@ button {
   gap: 3px;
   color: #949598;
   padding: 4px 10px 4px 6px;
+  margin: 0;
   background: 0;
   border: 0;
   outline: 0;

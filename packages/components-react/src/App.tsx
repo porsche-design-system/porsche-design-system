@@ -1,22 +1,17 @@
-import { useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { type JSX, useState } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { routes } from './routes';
+import { PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react';
 
 export const App = (): JSX.Element => {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState('');
+  const [theme, setTheme] = useState<Theme>('light');
+  const themes: Theme[] = ['light', 'dark', 'auto'];
 
   return (
     <>
-      <select
-        value={selected}
-        onChange={(e) => {
-          const { value } = e.target;
-          navigate(value);
-          setSelected(value);
-        }}
-      >
-        <option disabled value="">
+      <select name="route" value={useLocation().pathname} onChange={(e) => navigate(e.target.value)}>
+        <option disabled value="/">
           Select a page
         </option>
         {routes.map((route, i) => (
@@ -24,14 +19,22 @@ export const App = (): JSX.Element => {
         ))}
       </select>
 
+      <select name="theme" value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
+        {themes.map((item) => (
+          <option key={item} value={item} children={item} />
+        ))}
+      </select>
+
       <div id="app">
-        <Routes>
-          {routes
-            .filter((route) => !route.isDisabled)
-            .map((route, i) => (
-              <Route key={i} {...route} />
-            ))}
-        </Routes>
+        <PorscheDesignSystemProvider cdn="auto" theme={theme}>
+          <Routes>
+            {routes
+              .filter((route) => !route.isDisabled)
+              .map((route, i) => (
+                <Route key={i} {...route} />
+              ))}
+          </Routes>
+        </PorscheDesignSystemProvider>
       </div>
     </>
   );

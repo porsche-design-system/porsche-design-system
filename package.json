@@ -115,12 +115,16 @@
     "test:e2e:components-angular": "yarn --cwd ./packages/components-angular test:e2e",
     "test:e2e:components-react": "yarn --cwd ./packages/components-react test:e2e",
     "test:e2e:components-react/nextjs": "yarn --cwd ./packages/components-react/projects/nextjs test:e2e",
+    "test:e2e:components-react/remix": "yarn --cwd ./packages/components-react/projects/remix test:e2e",
     "test:e2e:components-vue": "yarn --cwd ./packages/components-vue test:e2e",
     "test:e2e:crawler": "yarn --cwd ./packages/crawler test:e2e",
     "test:e2e:storefront": "yarn --cwd ./packages/storefront test:e2e",
     "test:a11y:storefront": "yarn --cwd ./packages/storefront test:a11y",
     "test:vrt:puppeteer:components-js": "yarn --cwd ./packages/components-js test:vrt:puppeteer",
     "test:vrt:playwright:components-js": "yarn --cwd ./packages/components-js test:vrt:playwright",
+    "test:vrt:playwright:components-js:chrome:common": "yarn --cwd ./packages/components-js test:vrt:playwright:chrome:common",
+    "test:vrt:playwright:components-js:chrome:customAndStates": "yarn --cwd ./packages/components-js test:vrt:playwright:chrome:customAndStates",
+    "test:vrt:playwright:components-js:safari": "yarn --cwd ./packages/components-js test:vrt:playwright:safari",
     "test:vrt:components-angular": "yarn --cwd ./packages/components-angular test:vrt",
     "test:vrt:components-react": "yarn --cwd ./packages/components-react test:vrt",
     "test:vrt:components-react/nextjs": "yarn --cwd ./packages/components-react/projects/nextjs test:vrt",
@@ -169,7 +173,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
-    "prettier": "^3.0.3"
+    "prettier": "^3.1.0"
   },
   "resolutions": {
     "**/react-scripts/jest": ">=29 <30",
@@ -178,12 +182,12 @@
     "**/@types/jest-environment-puppeteer/jest-environment-node": ">=29 <30",
     "**/@vue/cli-plugin-unit-jest/jest": ">=29 <30",
     "**/@vue/cli-plugin-unit-jest/ts-jest": ">=29 <30",
-    "**/@vue/cli-shared-utils/@achrinza/node-ipc": "^10.1.9",
+    "**/@vue/cli-shared-utils/@achrinza/node-ipc": "^10.1.10",
     "**/eslint-config-next/eslint-plugin-react-hooks": "^4.6.0",
-    "**/eslint-config-react-app/eslint-plugin-jest": "^27.2.3",
-    "**/ng-packagr/rollup": "^4.0.2",
-    "**/vite/rollup": "^4.0.2",
-    "**/workbox-build/rollup": "^4.0.2"
+    "**/eslint-config-react-app/eslint-plugin-jest": "^27.6.0",
+    "**/ng-packagr/rollup": "^4.4.1",
+    "**/vite/rollup": "^4.4.1",
+    "**/workbox-build/rollup": "^4.4.1"
   },
   "volta": {
     "node": "18.18.1",

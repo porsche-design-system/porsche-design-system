@@ -82,10 +82,14 @@ exports[`should have no basic DOM regression for p-carousel 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-checkbox-wrapper 1`] = `
-"<label>
-  <slot>
-  </slot>
-</label>"
+"<div class="root">
+  <label class="label" id="label">
+  </label>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>"
 `;
 
 exports[`should have no basic DOM regression for p-content-wrapper 1`] = `
@@ -288,20 +292,20 @@ exports[`should have no basic DOM regression for p-model-signature 1`] = `"<img 
 
 exports[`should have no basic DOM regression for p-multi-select 1`] = `
 "<div class="root">
-  <label class="label">
+  <label class="label" id="label" for="filter">
   </label>
-  <div class="input-container">
-    <input role="combobox" autocomplete="off" aria-labelledby="label" aria-describedby="description options-selected message" aria-haspopup="listbox" aria-expanded="false" aria-controls="list" aria-autocomplete="list">
-    <p-icon class="icon toggle-icon hydrated" aria-hidden="true">
+  <div class="wrapper">
+    <input id="filter" role="combobox" autocomplete="off" aria-labelledby="label" aria-describedby="description options-selected message" aria-haspopup="listbox" aria-expanded="false" aria-controls="list" aria-autocomplete="list">
+    <p-icon class="icon hydrated" aria-hidden="true">
     </p-icon>
+    <div id="list" class="listbox" role="listbox" aria-label="" aria-hidden="true" aria-multiselectable="true">
+      <slot>
+      </slot>
+    </div>
   </div>
-  <div id="list" class="listbox" role="listbox" aria-label="" aria-hidden="true" aria-multiselectable="true">
-    <slot>
-    </slot>
-  </div>
-</div>
-<span class="sr-text" role="status" aria-live="assertive" aria-relevant="additions text">
-</span>"
+  <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
+  </span>
+</div>"
 `;
 
 exports[`should have no basic DOM regression for p-multi-select-option 1`] = `
@@ -338,13 +342,15 @@ exports[`should have no basic DOM regression for p-pagination 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-pin-code 1`] = `
-"<label class="label" for="current-input">
-</label>
-<div class="input-container">
-  <input id="current-input" type="text" aria-label="1-4" aria-describedby="label description message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
-  <input type="text" aria-label="2-4" aria-describedby="label description message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
-  <input type="text" aria-label="3-4" aria-describedby="label description message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
-  <input type="text" aria-label="4-4" aria-describedby="label description message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
+"<div class="root">
+  <label class="label" id="label" for="current-input">
+  </label>
+  <div class="wrapper">
+    <input id="current-input" type="text" aria-label="1-4" aria-describedby="label description message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
+    <input type="text" aria-label="2-4" aria-describedby="label description message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
+    <input type="text" aria-label="3-4" aria-describedby="label description message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
+    <input type="text" aria-label="4-4" aria-describedby="label description message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
+  </div>
 </div>"
 `;
 
@@ -358,10 +364,14 @@ exports[`should have no basic DOM regression for p-popover 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-radio-button-wrapper 1`] = `
-"<label>
-  <slot>
-  </slot>
-</label>"
+"<div class="root">
+  <label class="label" id="label">
+  </label>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>"
 `;
 
 exports[`should have no basic DOM regression for p-scroller 1`] = `
@@ -405,14 +415,16 @@ exports[`should have no basic DOM regression for p-segmented-control-item 1`] = 
 
 exports[`should have no basic DOM regression for p-select-wrapper 1`] = `
 "<div class="root">
-  <label class="label">
-    <p-icon class="icon hydrated" aria-hidden="true">
-    </p-icon>
+  <label class="label" id="label">
+  </label>
+  <div class="wrapper">
     <slot>
     </slot>
-  </label>
-  <p-select-wrapper-dropdown class="hydrated">
-  </p-select-wrapper-dropdown>
+    <p-icon class="icon hydrated" aria-hidden="true">
+    </p-icon>
+    <p-select-wrapper-dropdown class="dropdown hydrated">
+    </p-select-wrapper-dropdown>
+  </div>
 </div>"
 `;
 
@@ -549,10 +561,12 @@ exports[`should have no basic DOM regression for p-text 1`] = `
 
 exports[`should have no basic DOM regression for p-text-field-wrapper 1`] = `
 "<div class="root">
-  <label class="label">
+  <label class="label" id="label">
+  </label>
+  <div class="wrapper">
     <slot>
     </slot>
-  </label>
+  </div>
 </div>"
 `;
 
@@ -571,10 +585,14 @@ exports[`should have no basic DOM regression for p-text-list-item 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-textarea-wrapper 1`] = `
-"<label class="label">
-  <slot>
-  </slot>
-</label>"
+"<div class="root">
+  <label class="label" id="label">
+  </label>
+  <div class="wrapper">
+    <slot>
+    </slot>
+  </div>
+</div>"
 `;
 
 exports[`should have no basic DOM regression for p-toast 1`] = `""`;

@@ -14,6 +14,9 @@ We suggest that `getFontFaceStylesheet()` partial is implemented in every applic
 System therefore the partial provides additional link tags with `rel="preconnect"` and `rel="dns-prefetch"` to improve
 the performance of the initial connection to our cdn.
 
+An in-depth optimization guide can be found at
+[Vanilla Js Optimization](must-know/initialization/vanilla-js#optimization).
+
 ## Supported options
 
 | Option   | Description                                                                                                              | Type    | Default |

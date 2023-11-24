@@ -1,4 +1,3 @@
-import { INPUT_HEIGHT } from '../../styles/form-styles';
 import { OPTION_HEIGHT } from '../../styles/option-styles';
 
 export const SELECT_DROPDOWN_DIRECTIONS_INTERNAL = ['down', 'up'] as const;
@@ -7,6 +6,7 @@ export const SELECT_DROPDOWN_DIRECTIONS = [...SELECT_DROPDOWN_DIRECTIONS_INTERNA
 export type SelectDropdownDirection = (typeof SELECT_DROPDOWN_DIRECTIONS)[number];
 
 const MAX_CHILDREN = 9;
+const INPUT_HEIGHT = 54;
 
 export const determineDropdownDirection = (
   host: HTMLElement,

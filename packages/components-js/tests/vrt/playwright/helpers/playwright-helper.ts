@@ -1,15 +1,20 @@
 import { type Page } from '@playwright/test';
-import { getInitialStyles } from '@porsche-design-system/components-js/partials';
+import { getInitialStyles, getComponentChunkLinks, getIconLinks } from '@porsche-design-system/components-js/partials';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type Theme } from '@porsche-design-system/utilities-v2';
-import type { PlaywrightTestConfig } from 'playwright/types/test';
+import { COMPONENT_CHUNK_NAMES } from '../../../../projects/components-wrapper';
+import { ICON_NAMES } from '@porsche-design-system/assets';
 
-export const thresholdConfig: PlaywrightTestConfig['expect']['toHaveScreenshot'] = {
-  maxDiffPixelRatio: undefined,
-  maxDiffPixels: undefined,
-  threshold: 0.15,
-};
+const chunksLink = getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }).replace(
+  /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
+  'http://localhost:3001'
+);
+
+const iconsLink = getIconLinks({ icons: [...ICON_NAMES] }).replace(
+  /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
+  'http://localhost:3001'
+);
 
 // TODO: why are the following constants prefixed with base?
 export const baseThemes = ['light', 'dark'] as const;
@@ -112,7 +117,6 @@ export const setupScenario = async (
     scalePageFontSize,
     forceComponentTheme,
     forceDirMode,
-    emulateMediaPrint,
   }: SetupScenarioOptions = {
     javaScriptDisabled: false,
     forcedColorsEnabled: false,
@@ -120,7 +124,6 @@ export const setupScenario = async (
     scalePageFontSize: false,
     forceComponentTheme: undefined,
     forceDirMode: undefined,
-    emulateMediaPrint: false,
     ...options,
   };
   if (javaScriptDisabled) {
@@ -148,30 +151,17 @@ export const setupScenario = async (
   }
 
   await page.setViewportSize({ width: viewportWidth, height: 600 });
-  await page.goto(url);
-  await waitForComponentsReady(page);
 
+  const searchParams = new URLSearchParams();
   if (forceComponentTheme) {
-    await waitForForcedComponentTheme(page, forceComponentTheme);
+    searchParams.append('theme', forceComponentTheme);
   }
-
   if (forceDirMode) {
-    await page.evaluate((forceDirMode) => {
-      document.querySelector('html').setAttribute('dir', forceDirMode);
-    }, forceDirMode);
+    searchParams.append('dir', forceDirMode);
   }
-
-  if (scalePageFontSize) {
-    // resize before scaling helps load icons at least in select-wrapper
-    await page.setViewportSize({
-      width: viewportWidth,
-      height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
-    });
-  }
-
-  if (emulateMediaPrint) {
-    await page.emulateMedia({ media: 'print' });
-  }
+  const finalUrl = `${url}?${searchParams.toString()}`;
+  await page.goto(finalUrl);
+  await waitForComponentsReady(page);
 
   await page.setViewportSize({
     width: viewportWidth,
@@ -213,6 +203,8 @@ export const setContentWithDesignSystem = async (
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
     <link rel="stylesheet" href="assets/styles.css">
     ${getInitialStyles()}
+    ${chunksLink}
+    ${iconsLink}
     ${injectIntoHead}
   </head>
   <body>

@@ -58,6 +58,11 @@ export const routes: RouteType[] = [
     element: <fromPages.StencilLifecyclesPage />,
   },
   {
+    name: 'Theme Injection',
+    path: '/theme-injection',
+    element: <fromPages.ThemeInjectionPage />,
+  },
+  {
     name: 'Utilities',
     path: '/utilities',
     element: <fromPages.UtilitiesPage />,
@@ -75,6 +80,11 @@ export const routes: RouteType[] = [
     name: 'Banner Example',
     path: '/banner-example',
     element: <fromExamples.BannerExamplePage />,
+  },
+  {
+    name: 'Button Example Form',
+    path: '/button-example-form',
+    element: <fromExamples.ButtonExampleFormPage />,
   },
   {
     name: 'Carousel Example Dynamic Slides',

@@ -17,10 +17,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: flex-start;
@@ -48,7 +50,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle {
   position: absolute;
@@ -60,7 +62,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 50%;
   background-color: #010205;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -109,10 +111,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: auto;
   justify-content: flex-start;
@@ -140,7 +144,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle {
   position: absolute;
@@ -152,7 +156,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 50%;
   background-color: #949598;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -190,10 +194,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: space-between;
@@ -221,7 +227,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle {
   position: absolute;
@@ -233,7 +239,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 50%;
   background-color: #010205;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -281,10 +287,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: auto;
   justify-content: space-between;
@@ -312,7 +320,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle {
   position: absolute;
@@ -324,7 +332,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 50%;
   background-color: transparent;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -369,10 +377,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: auto;
   justify-content: space-between;
@@ -400,7 +410,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle {
   position: absolute;
@@ -412,7 +422,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 50%;
   background-color: transparent;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -457,10 +467,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: auto;
   justify-content: space-between;
@@ -488,7 +500,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle {
   position: absolute;
@@ -500,7 +512,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 50%;
   background-color: transparent;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .spinner {
   position: absolute;
@@ -545,10 +557,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: space-between;
@@ -576,7 +590,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 14px;
   background-color: #197E10;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle {
   position: absolute;
@@ -588,7 +602,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   border-radius: 50%;
   background-color: #FFF;
   transform: translate3d(20px, 0, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -637,10 +651,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: flex-start;
@@ -668,7 +684,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle {
   position: absolute;
@@ -680,7 +696,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   border-radius: 50%;
   background-color: #010205;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -729,10 +745,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: flex-start;
@@ -760,7 +778,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle {
   position: absolute;
@@ -772,7 +790,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   border-radius: 50%;
   background-color: #010205;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -821,10 +839,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: flex-start;
@@ -852,7 +872,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle {
   position: absolute;
@@ -864,7 +884,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
   border-radius: 50%;
   background-color: #010205;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -949,10 +969,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   gap: 8px;
   width: 100%;
   padding: 0;
+  margin: 0;
   outline: 0;
   border: 0;
   text-align: start;
   background: transparent;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   justify-content: flex-start;
@@ -980,7 +1002,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .toggle {
   position: absolute;
@@ -992,7 +1014,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   border-radius: 50%;
   background-color: #010205;
   transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, .24s) ease,transform var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;

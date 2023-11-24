@@ -1,7 +1,7 @@
 import type { IconName } from '../../types';
 import { hasCounter, hasDocument, throwException } from '../../utils';
 import { borderWidthBase } from '@porsche-design-system/utilities-v2';
-import { cssVariableInputPaddingLeft, cssVariableInputPaddingRight } from './text-field-wrapper-styles';
+import { cssVariableInputPaddingStart, cssVariableInputPaddingEnd } from './text-field-wrapper-styles';
 import type { FormState } from '../../utils/form/form-state';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
@@ -28,11 +28,11 @@ export const setInputStyles = (
   unitPosition: TextFieldWrapperUnitPosition
 ): void => {
   if (unitOrCounterElement) {
-    input.style.removeProperty(cssVariableInputPaddingLeft);
-    input.style.removeProperty(cssVariableInputPaddingRight);
+    input.style.removeProperty(cssVariableInputPaddingStart);
+    input.style.removeProperty(cssVariableInputPaddingEnd);
 
     input.style.setProperty(
-      unitPosition === 'prefix' ? cssVariableInputPaddingLeft : cssVariableInputPaddingRight,
+      unitPosition === 'prefix' ? cssVariableInputPaddingStart : cssVariableInputPaddingEnd,
       getInputPaddingLeftOrRight(unitOrCounterElement.offsetWidth),
       'important'
     );

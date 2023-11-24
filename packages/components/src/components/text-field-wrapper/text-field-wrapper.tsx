@@ -1,15 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  type EventEmitter,
-  forceUpdate,
-  h,
-  Host,
-  type JSX,
-  Prop,
-  State,
-} from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop, State } from '@stencil/core';
 import {
   addInputEventListenerForCounter,
   AllowedTypes,
@@ -18,11 +7,7 @@ import {
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   handleButtonEvent,
-  hasDescription,
-  hasLabel,
-  hasMessage,
   hasPropValueChanged,
-  isRequiredAndParentNotRequired,
   isWithinForm,
   observeAttributes,
   observeProperties,
@@ -52,7 +37,7 @@ import {
   throwIfUnitLengthExceeded,
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
-import { Required } from '../common/required/required';
+import { Label } from '../common/label/label';
 
 const propTypes: PropTypes<typeof TextFieldWrapper> = {
   label: AllowedTypes.string,
@@ -232,9 +217,6 @@ export class TextFieldWrapper {
 
     const disabledOrReadOnly = disabled || readOnly;
 
-    const labelProps = {
-      onClick: this.onLabelClick,
-    };
     const buttonProps = {
       hideLabel: true,
       theme: this.theme,
@@ -244,28 +226,22 @@ export class TextFieldWrapper {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <div class="root">
-          <label class="label">
-            {hasLabel(this.host, this.label) && (
-              <span class="label__text" {...labelProps}>
-                {this.label || <slot name="label" />}
-                {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
-              </span>
-            )}
-            {hasDescription(this.host, this.description) && (
-              <span class="label__text" {...labelProps}>
-                {this.description || <slot name="description" />}
-              </span>
-            )}
-            {(this.hasUnit || this.isCounterVisible) && (
-              <span class="unit" ref={(el) => (this.unitOrCounterElement = el)} aria-hidden="true">
-                {this.unit}
-              </span>
-            )}
-            <slot />
-            {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
-          </label>
+      <div class="root">
+        <Label
+          host={this.host}
+          label={this.label}
+          description={this.description}
+          formElement={this.input}
+          isDisabled={disabled}
+        />
+        <div class="wrapper">
+          <slot />
+          {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
+          {(this.hasUnit || this.isCounterVisible) && (
+            <span class="unit" ref={(el) => (this.unitOrCounterElement = el)} aria-hidden="true">
+              {this.unit}
+            </span>
+          )}
           {this.isPassword && this.showPasswordToggle ? (
             <PrefixedTagNames.pButtonPure
               {...buttonProps}
@@ -285,7 +261,7 @@ export class TextFieldWrapper {
               disabled={disabled}
               onClick={() => this.input.showPicker()}
             >
-              {`Show ${this.isCalendar ? 'date' : 'time'} picker`}
+              Show ${this.isCalendar ? 'date' : 'time'} picker
             </PrefixedTagNames.pButtonPure>
           ) : (
             this.isSearch && [
@@ -313,8 +289,8 @@ export class TextFieldWrapper {
               ),
               <PrefixedTagNames.pButtonPure
                 {...buttonProps}
-                type="button"
                 key="btn-clear"
+                type="button"
                 icon="close"
                 tabIndex={-1}
                 hidden={!this.isClearable}
@@ -326,12 +302,12 @@ export class TextFieldWrapper {
               this.hasAction && (
                 <PrefixedTagNames.pButtonPure
                   {...buttonProps}
-                  type="button"
                   key="btn-action"
+                  type="button"
                   icon="locate"
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
-                  onClick={!this.actionLoading ? () => this.action.emit() : null}
+                  onClick={!this.actionLoading ? this.action.emit : null}
                   loading={this.actionLoading}
                 >
                   Locate me
@@ -340,10 +316,8 @@ export class TextFieldWrapper {
             ]
           )}
         </div>
-        {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        )}
-      </Host>
+        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+      </div>
     );
   }
 

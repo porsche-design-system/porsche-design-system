@@ -1,22 +1,66 @@
 import type { JssStyle } from 'jss';
-import type { PropertiesHyphen } from 'csstype';
 import {
+  type MotionDurationKey,
+  motionEasingMap,
   addImportantToEachRule,
   addImportantToRule,
   focusPseudoJssStyle,
   getBackfaceVisibilityJssStyle,
+  getFrostedGlassBackgroundJssStyles,
   getHiddenTextJssStyle,
   getInsetJssStyle,
   getTransition,
   pxToRemWithUnit,
 } from './common-styles';
+import type { PropertiesHyphen } from 'csstype';
 
 describe('getTransition()', () => {
-  it.each<[keyof PropertiesHyphen, string]>([
-    ['color', 'color var(--p-transition-duration, .24s) ease'],
-    ['box-shadow', 'box-shadow var(--p-transition-duration, .24s) ease'],
-  ])('should for %o return %o', (cssProperty, expected) => {
-    expect(getTransition(cssProperty)).toBe(expected);
+  it.each<
+    [
+      ReturnType<typeof getTransition>,
+      keyof PropertiesHyphen,
+      MotionDurationKey,
+      keyof typeof motionEasingMap,
+      MotionDurationKey
+    ]
+  >([
+    [
+      'color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)',
+      'color',
+      undefined,
+      undefined,
+      undefined,
+    ],
+    [
+      'box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) var(--p-transition-duration, 0.25s)',
+      'box-shadow',
+      'short',
+      'base',
+      'short',
+    ],
+    [
+      'color var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.4s)',
+      'color',
+      'moderate',
+      'in',
+      'moderate',
+    ],
+    [
+      'box-shadow var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s)',
+      'box-shadow',
+      'long',
+      'out',
+      'long',
+    ],
+    [
+      'color var(--p-transition-duration, 1.2s) linear var(--p-transition-duration, 1.2s)',
+      'color',
+      'veryLong',
+      'linear',
+      'veryLong',
+    ],
+  ])('should for : %o return: %s', (result, ...args) => {
+    expect(getTransition(...args)).toMatchSnapshot(result);
   });
 });
 
@@ -98,5 +142,16 @@ describe('getHiddenTextStyles()', () => {
 describe('getBackfaceVisibilityJssStyle()', () => {
   it('should return correct styles', () => {
     expect(getBackfaceVisibilityJssStyle()).toMatchSnapshot();
+  });
+});
+
+describe('getFrostedGlassBackgroundJssStyles()', () => {
+  it.each<Parameters<typeof getFrostedGlassBackgroundJssStyles>>([
+    [true, 'short', 'light'],
+    [false, 'moderate', 'dark'],
+    [true, 'long', 'light'],
+    [false, 'veryLong', 'dark'],
+  ])('should return correct JssStyle for isVisible: %s, duration: %s and theme: %s', (...args) => {
+    expect(getFrostedGlassBackgroundJssStyles(...args)).toMatchSnapshot();
   });
 });

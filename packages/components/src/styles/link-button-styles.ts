@@ -107,6 +107,7 @@ export const getLinkButtonStyles = (
       boxSizing: 'border-box',
       outline: 0,
       textAlign: 'start',
+      WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       textDecoration: 'none',
       border: `2px solid ${borderColor}`,
@@ -115,7 +116,7 @@ export const getLinkButtonStyles = (
       backgroundColor,
       color: textColor,
       ...textSmallStyle,
-      transition: ['background-color', 'border-color', 'color'].map(getTransition).join(),
+      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
         padding: hideLabelValue ? '13px' : '13px 26px',
         gap: hideLabelValue ? 0 : spacingStaticSmall,

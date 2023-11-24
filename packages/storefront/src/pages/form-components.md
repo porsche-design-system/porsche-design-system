@@ -6,9 +6,6 @@
     <p-checkbox-wrapper label="Has values">
       <input type="checkbox" v-model="hasValues" @change="hasValues = $event.target.checked" />
     </p-checkbox-wrapper>
-    <p-checkbox-wrapper label="Dark theme">
-      <input type="checkbox" v-model="isDarkTheme" @change="isDarkTheme = $event.target.checked" />
-    </p-checkbox-wrapper>
   </section>
 
   <div :class="['overview', {'overview--dark': isDarkTheme}]" v-html="markup"></div>
@@ -78,7 +75,7 @@ export default class Code extends Vue {
   isDarkTheme = false;
 
   get markup(): string {
-    let content = variations.map(item => renderMarkupForVariation(item, this.isDarkTheme ? 'dark' : 'light')).join('\n');
+    let content = variations.map(item => renderMarkupForVariation(item, this.$store.getters.storefrontTheme)).join('\n');
     if (this.hasValues) { 
       content = content
         .replace(/(<input type="(?:checkbox|radio)")/g, '$1 checked')

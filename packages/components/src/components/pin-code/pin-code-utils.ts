@@ -5,14 +5,12 @@ import { consoleWarn, getPrefixedTagNames, getTagNameWithoutPrefix, setAttribute
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
 export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
 
-export const PIN_CODE_LENGTHS = [4, 6] as const;
+export const PIN_CODE_LENGTHS = [1, 2, 3, 4, 5, 6] as const;
 export type PinCodeLength = (typeof PIN_CODE_LENGTHS)[number];
 
 export type PinCodeUpdateEvent = { value: string; isComplete: boolean };
 
 export type PinCodeState = FormState;
-
-export const hiddenInputSlotName = 'hidden-input';
 
 export const removeSlottedSelector = (styles: Styles): Styles =>
   Object.fromEntries(
@@ -74,7 +72,7 @@ export const initHiddenInput = (
   const hiddenInput = document.createElement('input');
   setAttributes(hiddenInput, {
     'aria-hidden': 'true',
-    slot: hiddenInputSlotName,
+    slot: 'internal-input',
     tabindex: '-1',
   });
   syncHiddenInput(hiddenInput, name, value, disabled, required);
@@ -90,13 +88,14 @@ export const syncHiddenInput = (
   required: boolean
 ): void => {
   setAttributes(hiddenInput, {
-    name,
+    ...(name && { name }),
     value: removeWhiteSpaces(value),
   });
   hiddenInput.toggleAttribute('disabled', disabled);
   hiddenInput.toggleAttribute('required', required);
 };
 
+// This reproduces native behavior where the form is only submittable under certain circumstances
 export const isFormSubmittable = (host: HTMLElement, form: HTMLFormElement): boolean => {
   const PrefixedTagNames = getPrefixedTagNames(host);
 

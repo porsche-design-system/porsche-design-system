@@ -79,7 +79,7 @@ export const getComponentCss = (
         height: '100%',
         width: '100%',
         padding: getItemPadding(hasIcon && hasSlottedContent),
-        margin: 0,
+        margin: 0, // Removes default button margin on safari 15
         border: `${borderWidthBase} solid ${borderColor}`,
         borderRadius: borderRadiusSmall,
         outline: 0,

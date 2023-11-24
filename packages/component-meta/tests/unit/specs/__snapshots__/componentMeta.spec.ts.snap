@@ -134,6 +134,7 @@ exports[`should match snapshot 1`] = `
       "icon": "string",
       "iconSource": "string",
       "loading": "boolean",
+      "name": "string",
       "theme": [
         "light",
         "dark",
@@ -144,6 +145,7 @@ exports[`should match snapshot 1`] = `
         "submit",
         "reset",
       ],
+      "value": "string",
       "variant": [
         "primary",
         "secondary",
@@ -172,8 +174,10 @@ exports[`should match snapshot 1`] = `
       "icon": "none",
       "iconSource": null,
       "loading": false,
+      "name": null,
       "theme": "light",
       "type": "submit",
+      "value": null,
       "variant": "primary",
     },
     "styling": "jss",
@@ -224,6 +228,7 @@ exports[`should match snapshot 1`] = `
       "icon": "string",
       "iconSource": "string",
       "loading": "boolean",
+      "name": "string",
       "size": [
         "xx-small",
         "x-small",
@@ -244,6 +249,7 @@ exports[`should match snapshot 1`] = `
         "submit",
         "reset",
       ],
+      "value": "string",
       "weight": [
         "regular",
         "semi-bold",
@@ -292,10 +298,12 @@ exports[`should match snapshot 1`] = `
       "icon": "arrow-right",
       "iconSource": null,
       "loading": false,
+      "name": null,
       "size": "small",
       "stretch": false,
       "theme": "light",
       "type": "submit",
+      "value": null,
       "weight": "regular",
     },
     "styling": "jss",
@@ -979,6 +987,7 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "header",
       "footer",
+      "sub-footer",
     ],
     "nestedComponents": [
       "p-button-pure",
@@ -2086,12 +2095,11 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "label",
       "description",
-      "select",
       "message",
     ],
     "nestedComponents": [
-      "p-button-pure",
       "p-icon",
+      "p-button-pure",
     ],
     "props": {
       "description": null,
@@ -2134,6 +2142,7 @@ exports[`should match snapshot 1`] = `
       "disabled": false,
       "value": null,
     },
+    "requiredParent": "p-multi-select",
     "requiredProps": [
       "value",
     ],
@@ -2226,7 +2235,11 @@ exports[`should match snapshot 1`] = `
       "hideLabel": "boolean",
       "label": "string",
       "length": [
+        1,
+        2,
+        3,
         4,
+        5,
         6,
       ],
       "loading": "boolean",

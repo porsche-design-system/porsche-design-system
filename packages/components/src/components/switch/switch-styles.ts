@@ -47,13 +47,13 @@ const getColors = (
           ? canvasColor
           : lightThemeBackgroundColor
         : isHighContrastMode
-        ? canvasTextColor
-        : primaryColor),
+          ? canvasTextColor
+          : primaryColor),
     toggleBackgroundColorHover: checked
       ? lightThemeBackgroundColor
       : isHighContrastMode
-      ? canvasTextColor
-      : primaryColor,
+        ? canvasTextColor
+        : primaryColor,
     textColor: disabledOrLoadingColor || primaryColor,
   };
 };
@@ -107,10 +107,12 @@ export const getComponentCss = (
       gap: spacingStaticSmall,
       width: '100%',
       padding: 0,
+      margin: 0, // Removes default button margin on safari 15
       outline: 0,
       border: 0,
       textAlign: 'start',
       background: 'transparent',
+      WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       cursor: isDisabledOrLoading(disabled, loading) ? 'auto' : 'pointer',
       ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
@@ -157,7 +159,7 @@ export const getComponentCss = (
       borderRadius: '14px',
       backgroundColor: buttonBackgroundColor,
       cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
-      transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
+      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         borderColor: buttonBorderColorDark,
         backgroundColor: buttonBackgroundColorDark,
@@ -176,7 +178,7 @@ export const getComponentCss = (
         backgroundColor: toggleBackgroundColorDark,
       }),
       transform: `translate3d(${checked ? '20px' : '0'}, 0, 0)`,
-      transition: `${getTransition('background-color')},${getTransition('transform')}`,
+      transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
     },
     ...(loading && {
       spinner: {

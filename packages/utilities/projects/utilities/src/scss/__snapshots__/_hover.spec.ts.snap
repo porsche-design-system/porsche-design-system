@@ -7,7 +7,7 @@ exports[`pds-hover() should return correct css for opts: { borderRadius: '6px' }
   margin-right: -2px;
   padding-left: 2px;
   padding-right: 2px;
-  transition: background var(--p-transition-duration, 0.24s) ease;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 @media (hover: hover) {
   div:hover {
@@ -23,7 +23,7 @@ exports[`pds-hover() should return correct css for opts: { borderRadius: 'medium
   margin-right: -2px;
   padding-left: 2px;
   padding-right: 2px;
-  transition: background var(--p-transition-duration, 0.24s) ease;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 @media (hover: hover) {
   div:hover {
@@ -39,7 +39,7 @@ exports[`pds-hover() should return correct css for opts: { borderRadius: 'small'
   margin-right: -2px;
   padding-left: 2px;
   padding-right: 2px;
-  transition: background var(--p-transition-duration, 0.24s) ease;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 @media (hover: hover) {
   div:hover {
@@ -55,7 +55,7 @@ exports[`pds-hover() should return correct css for opts: {} 1`] = `
   margin-right: -2px;
   padding-left: 2px;
   padding-right: 2px;
-  transition: background var(--p-transition-duration, 0.24s) ease;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 @media (hover: hover) {
   div:hover {

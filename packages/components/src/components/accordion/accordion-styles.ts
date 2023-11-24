@@ -2,14 +2,14 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
-  getTransition,
-  transitionDuration,
-  getThemedColors,
   addImportantToEachRule,
+  colorSchemeStyles,
+  cssVariableTransitionDuration,
+  getThemedColors,
+  getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
-  colorSchemeStyles,
 } from '../../styles';
 import {
   fontWeightSemiBold,
@@ -18,6 +18,7 @@ import {
   spacingStaticSmall,
   textSmallStyle,
   fontLineHeight,
+  motionDurationShort,
   borderRadiusSmall,
   borderWidthBase,
   fontSizeTextXXSmall,
@@ -58,6 +59,7 @@ export const getComponentCss = (
         textDecoration: 'none',
         border: 0,
         outline: 0,
+        margin: 0, // Removes default button margin on safari 15
         gap: '24px',
         background: 'transparent',
         cursor: 'pointer',
@@ -142,18 +144,20 @@ export const getComponentCss = (
         ? {
             gridTemplateRows: '1fr',
             visibility: 'visible',
-            transition: `grid-template-rows ${transitionDuration} ease-out`,
+            transition: getTransition('grid-template-rows'),
             paddingBottom: compact ? spacingStaticSmall : '24px',
           }
         : {
             gridTemplateRows: '0fr',
             visibility: 'hidden',
-            transition: `grid-template-rows ${transitionDuration} ease-out, visibility 0s linear ${transitionDuration}`,
+            transition: `${getTransition(
+              'grid-template-rows'
+            )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationShort})`,
           }),
       '& div': {
         overflow: open ? 'visible' : 'hidden',
         // Fix overflow issues for overlapping content (e.g. select dropdown)
-        animation: open ? `$overflow ${transitionDuration}` : 'none',
+        animation: open ? `$overflow var(${cssVariableTransitionDuration},${motionDurationShort})` : 'none',
         // Necessary to make focus outlines fully visible
         padding: '4px',
         margin: '-4px',

@@ -104,6 +104,7 @@ export class Flyout {
   }
 
   public componentDidRender(): void {
+    // TODO: should this really be executed on every rerender, e.g. prop change?
     if (this.open) {
       // TODO: why not scroll to top when opened just like modal does?
 

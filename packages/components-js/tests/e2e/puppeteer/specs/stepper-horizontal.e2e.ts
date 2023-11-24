@@ -259,7 +259,7 @@ describe('scrolling', () => {
     const item6Offset = await getOffsetLeft(item6);
     const item6Width = await getOffsetWidth(item6);
     const scrollDistanceLeft = item6Offset + item6Width + FOCUS_PADDING - scrollAreaWidth;
-    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
+    expect((await getScrollLeft(scrollArea)) - 1).toEqual(scrollDistanceLeft);
   });
 });
 

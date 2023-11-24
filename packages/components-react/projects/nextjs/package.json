@@ -22,18 +22,18 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components-react": "3.8.0",
-    "next": "^13.5.4",
+    "@porsche-design-system/components-react": "3.9.0",
+    "next": "14.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@types/react": "^18.2.25",
-    "@types/react-dom": "^18.2.11",
-    "concurrently": "^8.2.1",
-    "eslint": "^8.51.0",
-    "eslint-config-next": "^13.5.4",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.53.0",
+    "eslint-config-next": "^14.0.2",
     "ts-node": "^10.9.1",
     "typescript": "~5.2.2"
   },

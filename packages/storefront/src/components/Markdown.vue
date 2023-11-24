@@ -12,11 +12,20 @@
 
   @Component
   export default class Markdown extends Vue {
-    updated() {
+    mounted(): void {
+      this.highlightDiffs();
+    }
+
+    updated(): void {
+      this.highlightDiffs();
+    }
+
+    highlightDiffs(): void {
       this.$el
         .querySelectorAll('pre[class*="diff"], code[class*="diff"]')
         .forEach((diff) => Prism.highlightElement(diff));
     }
+
     // handling for raw anchor links to prevent full reload and respect base tag
     onContentClick(event: MouseEvent): void {
       const { altKey, ctrlKey, metaKey, shiftKey, target } = event;
@@ -107,7 +116,10 @@
         h2 {
           @include pds-heading-x-large;
           margin-top: $pds-spacing-fluid-large;
+        }
 
+        h2,
+        h3 {
           // for anchor links with table of contents
           &[id] {
             p-link-pure {

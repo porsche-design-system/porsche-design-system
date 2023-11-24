@@ -1,6 +1,6 @@
 import {
   addEventListenerToElementRef,
-  getPrefixedTagName,
+  usePrefix,
   prefixInjectionKey,
   syncProperties,
   useToastManager,
@@ -8,12 +8,13 @@ import {
 import type { ToastMessage } from '../../../src/public-api';
 import * as utils from '../../../src/utils';
 import * as Vue from 'vue';
+import type { Ref } from 'vue';
 
 describe('getPrefixedTagName()', () => {
   it('should call inject() with correctParameters', () => {
     const spy = jest.spyOn(Vue, 'inject').mockReturnValue('');
 
-    getPrefixedTagName('p-text');
+    usePrefix('p-text');
 
     expect(spy).toBeCalledWith(prefixInjectionKey);
   });
@@ -21,15 +22,15 @@ describe('getPrefixedTagName()', () => {
   it('should throw error if inject returns undefined', () => {
     jest.spyOn(Vue, 'inject').mockReturnValue(undefined);
 
-    expect(() => getPrefixedTagName('p-text')).toThrowError();
+    expect(() => usePrefix('p-text')).toThrowError();
   });
 
   it('should return passed parameter if inject() returns ""', () => {
     jest.spyOn(Vue, 'inject').mockReturnValue('');
     const tagName = 'p-text';
-    getPrefixedTagName('p-text');
+    usePrefix('p-text');
 
-    expect(getPrefixedTagName(tagName)).toBe(tagName);
+    expect(usePrefix(tagName)).toBe(tagName);
   });
 
   it('should return prefixed parameter if prefix is defined', () => {
@@ -37,12 +38,12 @@ describe('getPrefixedTagName()', () => {
     jest.spyOn(Vue, 'inject').mockReturnValue(prefix);
     const tagName = 'p-text';
 
-    expect(getPrefixedTagName(tagName)).toBe(prefix + '-' + tagName);
+    expect(usePrefix(tagName)).toBe(prefix + '-' + tagName);
 
     const prefix2 = 'another-prefix';
     jest.spyOn(Vue, 'inject').mockReturnValue(prefix2);
 
-    expect(getPrefixedTagName(tagName)).toBe(prefix2 + '-' + tagName);
+    expect(usePrefix(tagName)).toBe(prefix2 + '-' + tagName);
   });
 });
 
@@ -56,6 +57,7 @@ describe('syncProperties()', () => {
     };
 
     const element = document.createElement('custom-el') as HTMLElement & PropsType;
+    const elementRef = { value: element } as unknown as Ref<HTMLElement & PropsType>;
 
     expect(element.customProp1).toBeUndefined();
     expect(element.customProp2).toBeUndefined();
@@ -68,7 +70,7 @@ describe('syncProperties()', () => {
       customProp3: 1,
       customProp4: {},
     };
-    syncProperties(element, props1);
+    syncProperties(elementRef, props1);
 
     expect(element.customProp1).toBe(props1.customProp1);
     expect(element.customProp2).toBe(props1.customProp2);
@@ -81,7 +83,7 @@ describe('syncProperties()', () => {
       customProp3: 2,
       customProp4: { key: 'value' },
     };
-    syncProperties(element, props2);
+    syncProperties(elementRef, props2);
 
     expect(element.customProp1).toBe(props2.customProp1);
     expect(element.customProp2).toBe(props2.customProp2);
@@ -93,20 +95,22 @@ describe('syncProperties()', () => {
 describe('addEventListenerToElementRef()', () => {
   it('should call addEventListener() with correct parameters on passed element', () => {
     const element = document.createElement('custom-el');
+    const elementRef = { value: element } as unknown as Ref<HTMLElement>;
     const eventName = 'someEventName';
     const spy = jest.spyOn(element, 'addEventListener');
 
-    addEventListenerToElementRef(element, eventName, () => {});
+    addEventListenerToElementRef(elementRef, eventName, () => {});
 
     expect(spy).toBeCalledWith(eventName, expect.any(Function));
   });
 
   it('should call passed emit() with correct parameters', () => {
     const element = document.createElement('custom-el');
+    const elementRef = { value: element } as unknown as Ref<HTMLElement>;
     const emit = jest.fn();
     const eventName = 'someEventName';
 
-    addEventListenerToElementRef(element, eventName, emit);
+    addEventListenerToElementRef(elementRef, eventName, emit);
 
     const event = new CustomEvent(eventName, { detail: 'someDetail' });
     element.dispatchEvent(event);
@@ -121,7 +125,7 @@ describe('useToastManager()', () => {
   });
 
   it('should call getPrefixedTagName() with correct parameters', () => {
-    const spy = jest.spyOn(utils, 'getPrefixedTagName');
+    const spy = jest.spyOn(utils, 'usePrefix');
 
     useToastManager();
 

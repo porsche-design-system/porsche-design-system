@@ -69,6 +69,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -128,6 +129,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -187,6 +189,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -209,7 +212,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #292934;
@@ -255,6 +258,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -277,7 +281,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #E0E0E0;
@@ -323,6 +327,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -345,7 +350,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #3E4045;
@@ -391,6 +396,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -413,7 +419,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #CBCED7;
@@ -459,6 +465,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -481,7 +488,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #3F2828;
@@ -527,6 +534,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -549,7 +557,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #F4CED1;
@@ -595,6 +603,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -617,7 +626,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #1A3856;
@@ -663,6 +672,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -685,7 +695,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #C2D1F1;
@@ -731,6 +741,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -753,7 +764,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #0F432F;
@@ -799,6 +810,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -821,7 +833,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #D0F4DB;
@@ -867,6 +879,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -889,7 +902,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #3E3720;
@@ -935,6 +948,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -957,7 +971,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #F1E5C1;
@@ -1003,6 +1017,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -1025,7 +1040,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #CECFD1;
@@ -1071,6 +1086,7 @@ span {
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
+  -webkit-appearance: none !important;
   appearance: none !important;
   border: 0 !important;
   text-align: start !important;
@@ -1093,7 +1109,7 @@ span {
 }
 @media(hover:hover) {
   span {
-    transition: background-color var(--p-transition-duration, .24s) ease;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   span:hover {
     background: #535457;

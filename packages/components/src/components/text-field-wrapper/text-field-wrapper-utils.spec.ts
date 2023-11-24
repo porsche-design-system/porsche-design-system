@@ -151,7 +151,7 @@ describe('setInputStyles()', () => {
     Object.defineProperty(unitElement, 'offsetWidth', { value: 60 });
     setInputStyles(input, unitElement, 'prefix');
 
-    expect(input.style.cssText).toBe('--p-internal-text-field-input-padding-left: calc(60px - 2px) !important;');
+    expect(input.style.cssText).toBe('--p-internal-text-field-input-padding-start: calc(60px - 2px) !important;');
   });
 
   it('should set inline padding-right var on input', () => {
@@ -160,7 +160,7 @@ describe('setInputStyles()', () => {
     Object.defineProperty(unitElement, 'offsetWidth', { value: 60 });
     setInputStyles(input, unitElement, 'suffix');
 
-    expect(input.style.cssText).toBe('--p-internal-text-field-input-padding-right: calc(60px - 2px) !important;');
+    expect(input.style.cssText).toBe('--p-internal-text-field-input-padding-end: calc(60px - 2px) !important;');
   });
 });
 

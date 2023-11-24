@@ -49,16 +49,12 @@ Change your AppComponent to use at least one Porsche Design System component, fo
 ```ts
 // app.component.ts
 
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <div id="app">
-      <p-heading>Welcome to Angular</p-heading>
-    </div>
-  `,
-  styles: [],
+  template: `<p-heading>Welcome to Angular</p-heading>`,
+  changeDetection: ChangeDetectionStrategy.OnPush, // disable automatic change detection, https://angular.io/api/core/ChangeDetectionStrategy
 })
 export class AppComponent {}
 ```
@@ -74,6 +70,10 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 ## When are Porsche Design System components initialized?
 
 See [componentsReady()](developing/components-ready) for further information.
+
+## How do Porsche Design System components work in detail?
+
+See [Initialization](must-know/initialization/introduction) for further information.
 
 ## Sample integration
 

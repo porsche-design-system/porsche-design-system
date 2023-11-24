@@ -72,6 +72,16 @@ exports[`accessibility should expose correct accessibility tree for input type=s
         {
           "children": [
             {
+              "name": "Some label",
+              "role": "StaticText",
+            },
+          ],
+          "name": "",
+          "role": "LabelText",
+        },
+        {
+          "children": [
+            {
               "children": [
                 {
                   "children": [
@@ -86,62 +96,60 @@ exports[`accessibility should expose correct accessibility tree for input type=s
                       "role": "generic",
                     },
                   ],
-                  "name": "",
+                  "name": "Some label",
                   "role": "searchbox",
                   "value": "value",
                 },
               ],
               "role": "none",
             },
-          ],
-          "name": "",
-          "role": "LabelText",
-        },
-        {
-          "children": [
             {
+              "children": [
+                {
+                  "role": "none",
+                },
+              ],
               "role": "none",
             },
-          ],
-          "role": "none",
-        },
-        {
-          "children": [
             {
               "children": [
                 {
                   "children": [
                     {
+                      "children": [
+                        {
+                          "role": "none",
+                        },
+                      ],
                       "role": "none",
                     },
-                  ],
-                  "role": "none",
-                },
-                {
-                  "children": [
                     {
                       "children": [
                         {
-                          "name": "Clear field",
-                          "role": "StaticText",
+                          "children": [
+                            {
+                              "name": "Clear field",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "role": "none",
                         },
                       ],
                       "role": "none",
                     },
                   ],
-                  "role": "none",
+                  "name": "Clear field",
+                  "role": "button",
                 },
               ],
-              "name": "Clear field",
-              "role": "button",
+              "name": "",
+              "role": "generic",
             },
           ],
-          "name": "",
-          "role": "generic",
+          "role": "none",
         },
       ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "role": "none",

@@ -7,6 +7,7 @@ if
   [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
   [[ "--components-react/nextjs" == "${1}" ]] ||
+  [[ "--components-react/remix" == "${1}" ]] ||
   [[ "--components-vue" == "${1}" ]] ||
   [[ "--crawler" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]]

@@ -53,8 +53,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -63,6 +63,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: space-between;
   align-items: center;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -77,7 +78,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -2px;
   left: -2px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -247,8 +248,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -257,6 +258,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -271,7 +273,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -2px;
   left: -2px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -411,8 +413,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #FBFCFF;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -421,6 +423,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -435,7 +438,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -493,8 +496,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -503,6 +506,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -517,7 +521,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -575,8 +579,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -585,6 +589,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -599,7 +604,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -657,8 +662,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -667,6 +672,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -681,7 +687,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -739,8 +745,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -749,6 +755,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -763,7 +770,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -2px;
   left: -2px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -820,8 +827,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -830,6 +837,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -844,7 +852,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -2px;
   left: -2px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -901,8 +909,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #949598;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -911,6 +919,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -925,7 +934,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -975,8 +984,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #949598;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -985,6 +994,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -999,7 +1009,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -1048,8 +1058,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #FBFCFF;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1058,6 +1068,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: space-between;
   align-items: center;
   font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -1072,7 +1083,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   background-color: rgba(148, 149, 152, .18);
@@ -1132,8 +1143,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1142,6 +1153,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: space-between;
   align-items: center;
   font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -1156,7 +1168,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   background-color: rgba(148, 149, 152, .18);
@@ -1217,8 +1229,8 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #949598;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1227,6 +1239,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -1241,7 +1254,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   background-color: rgba(148, 149, 152, .18);
@@ -1294,8 +1307,8 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1304,6 +1317,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   justify-content: flex-start;
   align-items: flex-start;
   font-size: inherit;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -1318,7 +1332,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -1355,8 +1369,8 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1365,6 +1379,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -1379,7 +1394,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -1416,8 +1431,8 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #010205;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1426,6 +1441,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   justify-content: flex-start;
   align-items: flex-start;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -1440,7 +1456,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;
@@ -1507,8 +1523,8 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   display: flex;
   gap: 4px;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   color: #949598;
   outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1517,6 +1533,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
+  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   text-align: start;
@@ -1531,7 +1548,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   right: -4px;
   left: -4px;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root:focus::before {
   border: 2px solid #1A44EA;

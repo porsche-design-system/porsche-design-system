@@ -252,7 +252,7 @@ describe('initHiddenInput()', () => {
     const hiddenInput = initHiddenInput(component.host, 'name', '1234', false, false);
 
     expect(spy).toBeCalledTimes(2); // it is also called in syncHiddenInput()
-    expect(spy).toBeCalledWith(hiddenInput, { 'aria-hidden': 'true', slot: 'hidden-input', tabindex: '-1' });
+    expect(spy).toBeCalledWith(hiddenInput, { 'aria-hidden': 'true', slot: 'internal-input', tabindex: '-1' });
     expect(spy).toBeCalledWith(hiddenInput, { name: 'name', value: '1234' });
   });
 
@@ -285,6 +285,16 @@ describe('syncHiddenInput()', () => {
 
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(hiddenInput, { name: 'updatedName', value: '4321' });
+  });
+
+  it('should call setAttributes() with correct parameters when name=undefined', () => {
+    const spy = jest.spyOn(setAttributesUtils, 'setAttributes');
+    const hiddenInput = document.createElement('input');
+
+    syncHiddenInput(hiddenInput, undefined, '4321', false, false);
+
+    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(hiddenInput, { value: '4321' });
   });
 
   it('should call toggleAttribute() with correct parameters and update "required" and "disabled" attributes', () => {

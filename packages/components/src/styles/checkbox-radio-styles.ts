@@ -1,32 +1,20 @@
-import type { BreakpointCustomizable, Theme } from '../types';
-import type { Styles } from 'jss';
-import { buildResponsiveStyles, isDisabledOrLoading, isHighContrastMode } from '../utils';
+import { type Theme } from '../types';
+import { type Styles } from 'jss';
+import { isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../utils';
 import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getHiddenTextJssStyle,
   getHighContrastColors,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
-  hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '.';
-import {
-  borderWidthBase,
-  fontFamily,
-  fontLineHeight,
-  spacingStaticSmall,
-  textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
-import type { FormState } from '../utils/form/form-state';
+import { borderWidthBase, fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/utilities-v2';
+import { type FormState } from '../utils/form/form-state';
 import { getThemedFormStateColors } from './form-state-color-styles';
-import { getFunctionalComponentRequiredStyles } from '../components/common/required/required-styles';
-import { getFunctionalComponentStateMessageStyles } from '../components/common/state-message/state-message-styles';
 
-export const getCheckboxRadioJssStyle = (
-  hideLabel: BreakpointCustomizable<boolean>,
+// TODO: move to form-styles.ts
+export const getSlottedCheckboxRadioButtonStyles = (
   state: FormState,
   isDisabled: boolean,
   isLoading: boolean,
@@ -56,133 +44,89 @@ export const getCheckboxRadioJssStyle = (
   const checkedColor = isHighContrastMode
     ? canvasTextColor
     : disabledOrLoading
-    ? disabledColor
-    : formStateColor || primaryColor;
+      ? disabledColor
+      : formStateColor || primaryColor;
   const checkedColorDark = isHighContrastMode
     ? canvasTextColor
     : disabledOrLoading
-    ? disabledColorDark
-    : formStateColorDark || primaryColorDark;
+      ? disabledColorDark
+      : formStateColorDark || primaryColorDark;
   const checkedHoverColor = formStateHoverColor || contrastHighColor;
   const checkedHoverColorDark = formStateHoverColorDark || contrastHighColorDark;
 
   return {
-    '@global': {
-      ':host': addImportantToEachRule({
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-        display: 'block',
-      }),
-      '::slotted': addImportantToEachRule({
-        '&(input)': {
-          gridArea: '1 / 1',
-          position: 'relative',
-          width: fontLineHeight,
-          height: fontLineHeight,
-          fontFamily, // needed for correct width and height definition
-          fontSize: '1rem', // needed for correct width and height definition
-          flexShrink: 0,
-          display: 'block',
-          margin: 0,
-          padding: 0,
-          WebkitAppearance: 'none', // iOS safari
-          appearance: 'none',
-          boxSizing: 'content-box',
-          background: `transparent 0% 0% / ${fontLineHeight}`,
-          transition: ['border-color', 'background-color'].map(getTransition).join(),
-          border: `2px solid ${uncheckedColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: uncheckedColorDark,
-          }),
-          outline: 0,
-          ...(disabledOrLoading
-            ? {
-                cursor: 'not-allowed',
-                pointerEvents: 'none',
-              }
-            : {
-                cursor: 'pointer',
-              }),
-        },
-        '&(input:checked)': {
-          // background-image is merged in later
-          borderColor: checkedColor,
-          backgroundColor: checkedColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: checkedColorDark,
-            backgroundColor: checkedColorDark,
-          }),
-        },
-        ...(!disabledOrLoading && {
-          ...(!isHighContrastMode &&
-            hoverMediaQuery({
-              '&(input:hover), .text:hover ~ &(input)': {
-                borderColor: uncheckedHoverColor,
-                ...prefersColorSchemeDarkMediaQuery(theme, {
-                  borderColor: uncheckedHoverColorDark,
-                }),
-              },
-              '&(input:checked:hover), .text:hover ~ &(input:checked)': {
-                borderColor: checkedHoverColor,
-                backgroundColor: checkedHoverColor,
-                ...prefersColorSchemeDarkMediaQuery(theme, {
-                  borderColor: checkedHoverColorDark,
-                  backgroundColor: checkedHoverColorDark,
-                }),
-              },
-            })),
-          ...(!isDisabled && {
-            '&(input:focus)::before': {
-              content: '""',
-              position: 'absolute',
-              ...getInsetJssStyle(-6),
-              border: `${borderWidthBase} solid ${focusColor}`,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: focusColorDark,
-              }),
-            },
-            '&(input:focus:not(:focus-visible))::before': {
-              borderColor: 'transparent',
-            },
-          }),
-        }),
-      }),
-      label: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, auto)',
-        justifyContent: 'flex-start',
-      },
-    },
-    text: {
-      gridArea: '1 / 2',
-      cursor: disabledOrLoading ? 'default' : 'pointer',
-      ...textSmallStyle,
-      color: disabledOrLoading ? disabledColor : primaryColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: disabledOrLoading ? disabledColorDark : primaryColorDark,
-      }),
-      transition: getTransition('color'), // for smooth transition between different states
-      ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-        getHiddenTextJssStyle(isHidden, {
-          paddingTop: '2px',
-          paddingInlineStart: spacingStaticSmall, // asymmetric padding used instead of gap to prevent unclickable area between label and input
-        })
-      ),
-    },
-    ...getFunctionalComponentRequiredStyles(),
-    ...getFunctionalComponentStateMessageStyles(theme, state),
-    ...(isLoading && {
-      spinner: {
-        position: 'relative',
-        gridArea: '1 / 1',
-        margin: borderWidthBase,
-        justifySelf: 'center',
-        height: fontLineHeight,
+    '::slotted': {
+      '&(input)': {
+        position: 'relative', // TODO: can be removed as soon as focus style was adjusted
         width: fontLineHeight,
-        fontFamily, // needed for correct width and height definition and for correct positioning
-        fontSize: '1rem', // needed for correct width and height definition and for correct positioning
-        cursor: 'not-allowed',
+        height: fontLineHeight,
+        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
+        display: 'block',
+        margin: 0,
+        padding: 0,
+        WebkitAppearance: 'none', // iOS safari
+        appearance: 'none',
+        boxSizing: 'content-box',
+        background: `transparent 0% 0% / ${fontLineHeight}`,
+        transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
+        border: `2px solid ${uncheckedColor}`,
+        outline: 0,
+        ...(disabledOrLoading
+          ? {
+              pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
+            }
+          : {
+              cursor: 'pointer',
+            }),
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: uncheckedColorDark,
+        }),
       },
-    }),
+      '&(input:checked)': {
+        // background-image is merged in later
+        borderColor: checkedColor,
+        backgroundColor: checkedColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: checkedColorDark,
+          backgroundColor: checkedColorDark,
+        }),
+      },
+      ...(!disabledOrLoading &&
+        !isHighContrastMode &&
+        hoverMediaQuery({
+          '&(input:hover),label:hover~.wrapper &(input)': {
+            borderColor: uncheckedHoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: uncheckedHoverColorDark,
+            }),
+          },
+          '&(input:checked:hover),label:hover~.wrapper &(input:checked)': {
+            borderColor: checkedHoverColor,
+            backgroundColor: checkedHoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: checkedHoverColorDark,
+              backgroundColor: checkedHoverColorDark,
+            }),
+          },
+          'label:hover~.wrapper &(input)': supportsChromiumMediaQuery({
+            transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
+          }),
+        })),
+      ...(!isDisabled && {
+        // TODO: can be done with getFocusStyle() in the meantime
+        '&(input:focus)::before': {
+          content: '""',
+          position: 'absolute',
+          ...getInsetJssStyle(-6),
+          border: `${borderWidthBase} solid ${focusColor}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: focusColorDark,
+          }),
+        },
+        '&(input:focus:not(:focus-visible))::before': {
+          borderColor: 'transparent',
+        },
+      }),
+    },
   };
 };

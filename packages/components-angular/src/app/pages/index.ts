@@ -3,21 +3,30 @@ import { CoreInitializerPrefixedComponent } from './core-initializer-prefixed.co
 import { EventsComponent } from './events.component';
 import { FormWrapperBindingComponent } from './form-wrapper-binding.component';
 import { OptionalPropertiesComponent } from './optional-properties.component';
+import { ThemeInjectionComponent } from './theme-injection.component';
 import { UtilitiesComponent } from './utilities.component';
+import { tabsBarNavigationComponents } from './tabs-bar-navigation';
+import { tabsBarNavigationBugComponents } from './tabs-bar-navigation-bug';
 
 export const pages = [
   CoreInitializerPrefixedComponent,
   EventsComponent,
   FormWrapperBindingComponent,
   OptionalPropertiesComponent,
+  ThemeInjectionComponent,
   UtilitiesComponent,
+  ...tabsBarNavigationComponents,
+  ...tabsBarNavigationBugComponents,
 ];
 
 export * from './core-initializer-prefixed.component';
 export * from './events.component';
 export * from './form-wrapper-binding.component';
 export * from './optional-properties.component';
+export * from './theme-injection.component';
 export * from './utilities.component';
+export * from './tabs-bar-navigation';
+export * from './tabs-bar-navigation-bug';
 
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';

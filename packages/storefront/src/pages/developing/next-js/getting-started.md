@@ -154,6 +154,10 @@ export default function Home() {
 
 See [componentsReady()](developing/components-ready) for further information.
 
+## How do Porsche Design System components work in detail?
+
+See [Initialization](must-know/initialization/introduction) for further information.
+
 ## Sample integration
 
 We provide a public GitHub repository with a basic sample project setup to show how it is managed in real code.  
