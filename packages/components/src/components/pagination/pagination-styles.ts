@@ -84,9 +84,10 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
                 : // we are at in the middle, so let's hide elements after start and before end ellipsis
                   '&.ellip-start + &:not(.current), &.current-1, &.current\\+1, &.current\\+1 + &:not(.ellip)']:
               hiddenStyle,
+            // without last page we need to adjust end page handling
             ...(!showLastPage &&
               (pageTotal - activePage < 2
-                ? { '&.current-2': hiddenStyle, ...(pageTotal - activePage === 1 && { '&.current-1': hiddenStyle }) }
+                ? { [`&.current-2${pageTotal - activePage === 1 ? ',&.current-1' : ''}`]: hiddenStyle }
                 : activePage > 2 && {
                     '&.current\\+1,&.current\\+2': hiddenStyle,
                     '&.ellip-end': { display: 'initial' },
