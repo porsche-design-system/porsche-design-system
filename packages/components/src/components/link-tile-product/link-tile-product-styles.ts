@@ -31,8 +31,7 @@ export const getComponentCss = (theme: Theme): string => {
   const css = getCss({
     '@global': {
       ':host': {
-        display: 'block',
-        hyphens: 'auto',
+        position: 'relative',
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
@@ -71,13 +70,13 @@ export const getComponentCss = (theme: Theme): string => {
     },
     header: {
       display: 'flex',
-      justifyContent: 'space-between',
-    },
-    tags: {
-      display: 'flex',
       overflow: 'hidden',
+      paddingRight: fontLineHeight, // Reserve space for like button
     },
     'like-button': {
+      position: 'absolute',
+      top: spacingFluidSmall,
+      right: spacingFluidSmall,
       height: 'fit-content',
       ...hoverMediaQuery({
         '&:hover': {

@@ -9,7 +9,7 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 import { LinkTileAriaAttribute, LinkTileTarget } from '../link-tile/link-tile-utils';
 import { getComponentCss } from './link-tile-product-styles';
 import { LinkTileProductLikeChangeEvent, tagsSlotName } from './link-tile-product-utils';
@@ -74,33 +74,27 @@ export class LinkTileProduct {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <div class="root">
-        <div class="header">
-          <div class="tags">
+      <Host>
+        <a class="root" href={this.href} target={this.target} rel={this.rel} {...parseAndGetAriaAttributes(this.aria)}>
+          <div class="header">
             <slot name={tagsSlotName} />
           </div>
-          <PrefixedTagNames.pButtonPure
-            class="like-button"
-            icon={this.liked ? 'heart-filled' : 'heart'}
-            hide-label="true"
-            onClick={this.onLikeClick}
-          >
-            {this.liked ? 'Heart Filled icon' : 'Heart icon'}
-          </PrefixedTagNames.pButtonPure>
-        </div>
-        <a
-          class="image-container"
-          href={this.href}
-          target={this.target}
-          rel={this.rel}
-          {...parseAndGetAriaAttributes(this.aria)}
-        >
-          <slot />
+          <div class="image-container">
+            <slot />
+          </div>
+          <p class="text text__heading">{this.heading}</p>
+          <p class="text text__price">{this.price}</p>
+          <p class="text text__info">{this.info}</p>
         </a>
-        <p class="text text__heading">{this.heading}</p>
-        <p class="text text__price">{this.price}</p>
-        <p class="text text__info">{this.info}</p>
-      </div>
+        <PrefixedTagNames.pButtonPure
+          class="like-button"
+          icon={this.liked ? 'heart-filled' : 'heart'}
+          hide-label="true"
+          onClick={this.onLikeClick}
+        >
+          {this.liked ? 'Heart Filled icon' : 'Heart icon'}
+        </PrefixedTagNames.pButtonPure>
+      </Host>
     );
   }
 
