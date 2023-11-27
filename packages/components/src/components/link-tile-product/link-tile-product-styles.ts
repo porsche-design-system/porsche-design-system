@@ -28,7 +28,7 @@ export const getComponentCss = (theme: Theme): string => {
     contrastHighColor: contrastHighColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
   } = getThemedColors('dark');
-  const css = getCss({
+  return getCss({
     '@global': {
       ':host': {
         position: 'relative',
@@ -118,6 +118,4 @@ export const getComponentCss = (theme: Theme): string => {
       borderRadius: borderRadiusLarge,
     },
   });
-  console.log(css);
-  return css;
 };
