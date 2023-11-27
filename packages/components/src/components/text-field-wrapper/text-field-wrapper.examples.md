@@ -4,7 +4,7 @@ The `p-text-field-wrapper` component is a styling wrapper for the native HTML in
 any form.
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The
-`p-text-field-wrapper` component can be used with or without a label but it's recommended to keep the label visible for
+`p-text-field-wrapper` component can be used with or without a label, but it's recommended to keep the label visible for
 better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label
 text for screen readers.
 
@@ -95,9 +95,12 @@ If you want to remove the password toggle button, you can pass `showPasswordTogg
 ## type="search"
 
 Inputs with `type="search"` receive a decorative search icon when used outside a form.  
-Within a form, a submit button becomes visible. If the input contains a value, a clear button shows up.
+Within a form, a submit button becomes visible. The submit button within a form can be hidden using
+`submitButton="false"`. If the input contains a value, a clear button shows up.
 
-<Playground :markup="typeSearch" :config="config"></Playground>
+<Playground :markup="typeSearchMarkup" :config="config">
+  <SelectOptions v-model="submitButton" :values="submitButtons" name="submitButton"></SelectOptions>
+</Playground>
 
 ## type="search" with locate action
 
@@ -250,16 +253,19 @@ export default class Code extends Vue {
     return this.typePassword.replace(/label="Some label"/, '$& show-password-toggle="false"');
   }
 
-  typeSearch =
-`<p-text-field-wrapper label="Some label">
+  submitButton = true;
+  submitButtons = [true, false];
+  get typeSearchMarkup() {
+    return `<p-text-field-wrapper label="Some label" submit-button="${this.submitButton}">
   <input type="search" name="some-name" />
 </p-text-field-wrapper>
 
 <form action="#" onsubmit="alert('submit'); return false;">
-  <p-text-field-wrapper label="Some label">
+  <p-text-field-wrapper label="Some label" submit-button="${this.submitButton}">
     <input type="search" name="some-name" />
   </p-text-field-wrapper>
 </form>`;
+  }
 
   typeSearchWithLocateAction = 
 `<p-text-field-wrapper label="Some label" action-icon="locate">
