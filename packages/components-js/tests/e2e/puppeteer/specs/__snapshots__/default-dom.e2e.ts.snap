@@ -321,17 +321,17 @@ exports[`should have no basic DOM regression for p-multi-select-option 1`] = `
 exports[`should have no basic DOM regression for p-pagination 1`] = `
 "<nav role="navigation" aria-label="Pagination">
   <ul>
-    <li>
+    <li class="prev">
       <span role="button" aria-label="Previous page" aria-disabled="true">
         <p-icon aria-hidden="true" class="hydrated">
         </p-icon>
       </span>
     </li>
-    <li>
+    <li class="current">
       <span role="button" tabindex="0" aria-label="Page 1" aria-current="page">
         1</span>
     </li>
-    <li>
+    <li class="next">
       <span role="button" aria-label="Next page" aria-disabled="true">
         <p-icon aria-hidden="true" class="hydrated">
         </p-icon>
