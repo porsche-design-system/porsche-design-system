@@ -21,7 +21,7 @@ describe('getTransition()', () => {
       keyof PropertiesHyphen,
       MotionDurationKey,
       keyof typeof motionEasingMap,
-      MotionDurationKey
+      MotionDurationKey,
     ]
   >([
     [
@@ -147,10 +147,10 @@ describe('getBackfaceVisibilityJssStyle()', () => {
 
 describe('getFrostedGlassBackgroundJssStyles()', () => {
   it.each<Parameters<typeof getFrostedGlassBackgroundJssStyles>>([
-    [true, 'short', 'light'],
-    [false, 'moderate', 'dark'],
-    [true, 'long', 'light'],
-    [false, 'veryLong', 'dark'],
+    [true, 'light'],
+    [false, 'dark'],
+    [true, 'light'],
+    [false, 'dark'],
   ])('should return correct JssStyle for isVisible: %s, duration: %s and theme: %s', (...args) => {
     expect(getFrostedGlassBackgroundJssStyles(...args)).toMatchSnapshot();
   });

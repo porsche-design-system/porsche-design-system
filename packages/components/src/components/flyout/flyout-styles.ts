@@ -37,6 +37,7 @@ export const getComponentCss = (
   const shadowColor = isDark ? scrollShadowColorDark : scrollShadowColor;
   const transparentColorDark = 'rgba(14, 14, 18, 0)';
   const transparentColor = isDark ? transparentColorDark : 'rgba(255, 255, 255, 0)';
+  const duration = 'long';
 
   return getCss({
     '@global': {
@@ -58,7 +59,17 @@ export const getComponentCss = (
                 transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationLong})`,
               }),
           ...getInsetJssStyle(),
-          ...getFrostedGlassBackgroundJssStyles(isOpen, 'long', theme),
+          '&::before': {
+            content: '""',
+            position: 'fixed',
+            ...getInsetJssStyle(),
+            ...getFrostedGlassBackgroundJssStyles(isOpen, theme),
+            transition: `${getTransition('opacity', duration, 'base')}, ${getTransition(
+              'backdrop-filter',
+              duration,
+              'base'
+            )}, ${getTransition('-webkit-backdrop-filter', duration, 'base')}`,
+          },
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),

@@ -1,5 +1,5 @@
 import type { JssStyle } from 'jss';
-import type { GetJssStyleFunction, Theme } from '../../utils';
+import type { Theme } from '../../utils';
 import {
   buildResponsiveStyles,
   getCss,
@@ -44,13 +44,14 @@ export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 const marginTopBottom = 'clamp(16px, 7vh, 192px)';
 export const footerShadowClass = 'footer--shadow';
 
-export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean): JssStyle => {
+export const getFullscreenJssStyles = (fullscreen: boolean, isOpen: boolean): JssStyle => {
   return fullscreen
     ? {
         minWidth: '100%',
         maxWidth: 'none',
         minHeight: '100%',
         margin: 0,
+        marginTop: isOpen ? 0 : '25%',
         borderRadius: 0,
       }
     : {
@@ -58,6 +59,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         maxWidth: '1535.5px', // on viewport 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
         minHeight: 'auto',
         margin: `${marginTopBottom} ${gridExtendedOffsetBase}`,
+        marginTop: isOpen ? marginTopBottom : `calc(${marginTopBottom} + 25%)`,
         borderRadius: borderRadiusMedium,
       };
 };
@@ -123,14 +125,28 @@ export const getComponentCss = (
           ...(isOpen
             ? {
                 visibility: 'inherit',
+                transition: `${getTransition('opacity', duration, 'base')}, ${getTransition(
+                  'backdrop-filter',
+                  duration,
+                  'base'
+                )}, ${getTransition('-webkit-backdrop-filter', duration, 'base')}`,
               }
             : {
                 visibility: 'hidden',
-                transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationShort})`,
+                // transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationLong})`,
+                transition: `${getTransition('opacity', duration, 'base')}, ${getTransition(
+                  'backdrop-filter',
+                  duration,
+                  'base'
+                )}, ${getTransition(
+                  '-webkit-backdrop-filter',
+                  duration,
+                  'base'
+                )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationShort})`,
               }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...getFrostedGlassBackgroundJssStyles(isOpen, duration, theme),
+          ...getFrostedGlassBackgroundJssStyles(isOpen, theme),
         }),
         overflowY: 'auto', // overrideable
       },
@@ -163,9 +179,7 @@ export const getComponentCss = (
         color: primaryColor, // enables color inheritance for slotted content
         position: 'relative',
         boxSizing: 'border-box',
-        transform: isOpen ? 'translateY(0%)' : 'translateY(25%)',
-        opacity: isOpen ? 1 : 0,
-        transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
+        transition: `${getTransition('margin-top', duration, easing)}`,
         paddingTop: hasDismissButton ? pxToRemWithUnit(32) : contentPadding, // rem value needed to prevent overlapping of close button and contents in scaling mode
         ...(!hasFooter && { paddingBottom: contentPadding }),
         background: backgroundColor,
@@ -173,7 +187,7 @@ export const getComponentCss = (
         // ::after to be above sticky footer without z-index games
         '&:focus::after': {
           content: '""',
-          position: 'fixed',
+          position: 'absolute',
           border: `${borderWidthBase} solid`,
           pointerEvents: 'none', // fix text selection in focus state
           ...buildResponsiveStyles(isFullscreen, (fullscreenValue: boolean) => ({
@@ -190,13 +204,22 @@ export const getComponentCss = (
         },
         [mediaQueryXl]: {
           margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridExtendedOffsetBase}`,
+          marginTop: isFullscreenForXlAndXxl
+            ? isOpen
+              ? 0
+              : '25%'
+            : isOpen
+              ? `min(192px, 10vh)`
+              : `calc(min(192px, 10vh) + 25%)`,
         },
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,
           background: backgroundColorDark,
         }),
       },
-      buildResponsiveStyles(isFullscreen, getFullscreenJssStyles) as any // potentially needs to be merged with mediaQueryXl
+      buildResponsiveStyles(isFullscreen, (isFullscreenValue: boolean) =>
+        getFullscreenJssStyles(isFullscreenValue, isOpen)
+      ) as any // potentially needs to be merged with mediaQueryXl
     ),
     ...(hasHeader && {
       header: {

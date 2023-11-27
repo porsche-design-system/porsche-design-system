@@ -151,42 +151,23 @@ export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
 /**
  * Generates JSS styles for a frosted glass background.
  * @param {boolean} isVisible - Determines if the frosted glass effect is visible.
- * @param {string} duration - The duration of the transition animation.
  * @param {Theme} theme - The theme to be used
  * @param {string} timingFn - The timing function of the transition animation. (default: 'cubic-bezier(.16,1,.3,1)')
  * @returns {JssStyle} - The JSS styles for the frosted glass background.
  */
-export const getFrostedGlassBackgroundJssStyles = (
-  isVisible: boolean,
-  duration: MotionDurationKey,
-  theme: Theme
-): JssStyle => {
-  return {
-    // workaround via pseudo element to fix stacking (black) background in safari
-    '&::before': {
-      content: '""',
-      position: 'fixed',
-      ...getInsetJssStyle(),
-      background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,
-      pointerEvents: 'none',
-      ...(isVisible
-        ? {
-            opacity: 1,
-            ...frostedGlassStyle,
-          }
-        : {
-            opacity: 0,
-            backdropFilter: 'blur(0px)',
-            WebkitBackdropFilter: 'blur(0px)',
-          }),
-      transition: `${getTransition('opacity', duration, 'base')}, ${getTransition(
-        'backdrop-filter',
-        duration,
-        'base'
-      )}, ${getTransition('-webkit-backdrop-filter', duration, 'base')}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: themeDarkBackgroundShading,
+export const getFrostedGlassBackgroundJssStyles = (isVisible: boolean, theme: Theme): JssStyle => ({
+  background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,
+  ...(isVisible
+    ? {
+        opacity: 1,
+        ...frostedGlassStyle,
+      }
+    : {
+        opacity: 0,
+        backdropFilter: 'blur(0px)',
+        WebkitBackdropFilter: 'blur(0px)',
       }),
-    },
-  };
-};
+  ...prefersColorSchemeDarkMediaQuery(theme, {
+    background: themeDarkBackgroundShading,
+  }),
+});
