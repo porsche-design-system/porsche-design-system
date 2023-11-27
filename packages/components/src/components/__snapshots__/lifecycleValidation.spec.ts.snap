@@ -624,6 +624,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "showCounter": "boolean",
   "showPasswordToggle": "boolean",
   "state": "oneOf",
+  "submitButton": "boolean",
   "theme": "oneOf",
   "unit": "string",
   "unitPosition": "oneOf",

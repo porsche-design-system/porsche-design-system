@@ -51,6 +51,7 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
   showCounter: AllowedTypes.boolean,
   actionIcon: AllowedTypes.oneOf<TextFieldWrapperActionIcon>([undefined, 'locate']),
   actionLoading: AllowedTypes.boolean,
+  submitButton: AllowedTypes.boolean,
   showPasswordToggle: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -96,6 +97,9 @@ export class TextFieldWrapper {
 
   /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public actionLoading?: boolean = false;
+
+  /** Show search button if wrapped inside a form.*/
+  @Prop() public submitButton?: boolean = true;
 
   /** __Experimental__: Show or hide password toggle for `input type="password"`. */
   @Prop() public showPasswordToggle?: boolean = true;
@@ -212,6 +216,7 @@ export class TextFieldWrapper {
       this.isPassword ? 'password' : type,
       this.showPasswordToggle,
       this.isWithinForm,
+      this.submitButton,
       this.theme
     );
 
@@ -266,7 +271,7 @@ export class TextFieldWrapper {
           ) : (
             this.isSearch && [
               // TODO: create an own component, which would fix SSR support too
-              this.isWithinForm ? (
+              this.isWithinForm && this.submitButton ? (
                 <PrefixedTagNames.pButtonPure
                   {...buttonProps}
                   key="btn-submit"
