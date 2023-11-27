@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- Prop `submit-button` for `Text Field Wrapper`
+  [#2908](https://github.com/porsche-design-system/porsche-design-system/pull/2908)
+
 ### [3.9.0] - 2023-11-24
 
 ### [3.9.0-rc.0] - 2023-11-23
