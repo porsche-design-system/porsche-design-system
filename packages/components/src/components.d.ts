@@ -35,6 +35,7 @@ import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, 
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBackground, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
+import { LinkTileProductLikeChangeEvent } from "./components/link-tile-product/link-tile-product-utils";
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -94,6 +95,7 @@ export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, 
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBackground, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
+export { LinkTileProductLikeChangeEvent } from "./components/link-tile-product/link-tile-product-utils";
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -1032,6 +1034,44 @@ export namespace Components {
          */
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
+    interface PLinkTileProduct {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
+        /**
+          * Product heading
+         */
+        "heading": string;
+        /**
+          * href of the `<a>`.
+         */
+        "href": string;
+        /**
+          * Additional product information
+         */
+        "info"?: string;
+        /**
+          * A Boolean attribute indicating that a product is liked.
+         */
+        "liked"?: boolean;
+        /**
+          * Product price
+         */
+        "price": string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTileTarget;
+        /**
+          * Adapts the banner color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
      */
@@ -1838,6 +1878,10 @@ export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInlineNotificationElement;
 }
+export interface PLinkTileProductCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPLinkTileProductElement;
+}
 export interface PModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPModalElement;
@@ -2136,6 +2180,23 @@ declare global {
     var HTMLPLinkTileModelSignatureElement: {
         prototype: HTMLPLinkTileModelSignatureElement;
         new (): HTMLPLinkTileModelSignatureElement;
+    };
+    interface HTMLPLinkTileProductElementEventMap {
+        "likeChange": LinkTileProductLikeChangeEvent;
+    }
+    interface HTMLPLinkTileProductElement extends Components.PLinkTileProduct, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPLinkTileProductElementEventMap>(type: K, listener: (this: HTMLPLinkTileProductElement, ev: PLinkTileProductCustomEvent<HTMLPLinkTileProductElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPLinkTileProductElementEventMap>(type: K, listener: (this: HTMLPLinkTileProductElement, ev: PLinkTileProductCustomEvent<HTMLPLinkTileProductElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPLinkTileProductElement: {
+        prototype: HTMLPLinkTileProductElement;
+        new (): HTMLPLinkTileProductElement;
     };
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
@@ -2537,6 +2598,7 @@ declare global {
         "p-link-social": HTMLPLinkSocialElement;
         "p-link-tile": HTMLPLinkTileElement;
         "p-link-tile-model-signature": HTMLPLinkTileModelSignatureElement;
+        "p-link-tile-product": HTMLPLinkTileProductElement;
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-model-signature": HTMLPModelSignatureElement;
@@ -3518,6 +3580,48 @@ declare namespace LocalJSX {
          */
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
+    interface PLinkTileProduct {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
+        /**
+          * Product heading
+         */
+        "heading"?: string;
+        /**
+          * href of the `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Additional product information
+         */
+        "info"?: string;
+        /**
+          * A Boolean attribute indicating that a product is liked.
+         */
+        "liked"?: boolean;
+        /**
+          * Emitted when the selection is changed.
+         */
+        "onLikeChange"?: (event: PLinkTileProductCustomEvent<LinkTileProductLikeChangeEvent>) => void;
+        /**
+          * Product price
+         */
+        "price"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTileTarget;
+        /**
+          * Adapts the banner color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
      */
@@ -4411,6 +4515,7 @@ declare namespace LocalJSX {
         "p-link-social": PLinkSocial;
         "p-link-tile": PLinkTile;
         "p-link-tile-model-signature": PLinkTileModelSignature;
+        "p-link-tile-product": PLinkTileProduct;
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-model-signature": PModelSignature;
@@ -4507,6 +4612,7 @@ declare module "@stencil/core" {
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
             "p-link-tile-model-signature": LocalJSX.PLinkTileModelSignature & JSXBase.HTMLAttributes<HTMLPLinkTileModelSignatureElement>;
+            "p-link-tile-product": LocalJSX.PLinkTileProduct & JSXBase.HTMLAttributes<HTMLPLinkTileProductElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
              */
