@@ -36,6 +36,8 @@ const disabledCursorStyle: JssStyle = {
   pointerEvents: 'none', // prevents :hover (has no effect when forced), maybe we can remove it since CSS selectors already cover desired behavior
 };
 
+const hiddenStyle: JssStyle = { display: 'none' };
+
 export const getComponentCss = (activePage: number, pageTotal: number, theme: Theme): string => {
   const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
   const {
@@ -71,12 +73,17 @@ export const getComponentCss = (activePage: number, pageTotal: number, theme: Th
       li: {
         listStyleType: 'none',
         ...(pageTotal > 5 && {
-          // ...(activePage < 4 && { [`&:nth-child(3) .ellipsis`]: { display: 'none' } }),
-          // ...(activePage + 2 < pageTotal && { [`&:nth-child(7) span`]: { display: 'none' } }),
-          // ...(pageTotal - activePage < 4 && { [`&:nth-child(8) .ellipsis`]: { display: 'none' } }),
+          // max 5 items including ellipsis at the same time on mobile
           [mediaQueryMaxS]: {
-            // ...(activePage < 4 && { [`&:nth-child(3) .ellipsis`]: { display: 'none' } }),
-            // ...(pageTotal - activePage < 4 && { [`&:nth-child(8) .ellipsis`]: { display: 'none' } }),
+            [activePage < 4
+              ? // we are at the start, so let's hide start ellipsis and 2 items before end ellipsis
+                '&.ellip-start,&:nth-child(6),&:nth-child(7),&:not(.ellip):nth-child(8)'
+              : pageTotal - activePage < 3
+                ? // we are at the end, so let's hide end ellipsis and 2 items after start ellipsis
+                  '&.ellip-end,&.ellip-start + &:not(.current),&.ellip-start + &:not(.current) + &:not(.current)'
+                : // we are at in the middle, so let's hide elements after start and before end ellipsis
+                  '&.ellip-start + &:not(.current),&.current-before,&.current-after,&.current-after + &:not(.ellip)']:
+              hiddenStyle,
           },
         }),
         [mediaQueryMinS]: {
@@ -88,7 +95,13 @@ export const getComponentCss = (activePage: number, pageTotal: number, theme: Th
           '&:last-child': {
             marginInlineStart: spacingStaticSmall,
           },
-          ...((pageTotal < 8 || pageTotal - activePage < 4) && { '&:nth-child(n+4).elli': { display: 'none' } }),
+          ...(pageTotal < 8
+            ? { '&.ellip': hiddenStyle }
+            : // max 7 items including ellipsis at the same time on tablet
+              {
+                ...(activePage <= 4 && { '&.ellip-start': hiddenStyle }),
+                ...(pageTotal - activePage < 4 && { '&.ellip-end': hiddenStyle }),
+              }),
         },
       },
       span: {

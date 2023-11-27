@@ -88,29 +88,28 @@ export const createPaginationItems = (options: PaginationOptions): PaginationIte
   } else {
     // Add first page
     paginationItems.push(createPage(1));
-    // paginationItems.push(ellipsisItem); // first ellipsis
 
     // Calculate group of middle pages
     const middlePagesStart = Math.min(
       Math.max(activePage - pageRange, 2 + ellipsisSize),
       pageTotal - ellipsisSize - 2 - (showLastPage ? 1 : 0)
     );
-    // console.log('activePage', activePage, 'pageTotal', pageTotal, 'middlePagesStart', middlePagesStart);
     const middlePagesEnd = middlePagesStart + 2;
     const middlePages = createRange(middlePagesStart, middlePagesEnd).map(createPage);
 
     // Calculate and add ellipsis before group of middle pages
-    if (middlePagesStart !== 2) {
-      const firstEllipsisPageNumber = middlePagesStart - 1;
-      const showPageInsteadOfFirstEllipsis = firstEllipsisPageNumber === 2;
-      const firstEllipsisOrPage = showPageInsteadOfFirstEllipsis ? createPage(firstEllipsisPageNumber) : ellipsisItem;
-      paginationItems.push(firstEllipsisOrPage);
+    const firstEllipsisPageNumber = middlePagesStart - 1;
+    const showPageInsteadOfFirstEllipsis = firstEllipsisPageNumber === 2;
+    const firstEllipsisOrPage = showPageInsteadOfFirstEllipsis ? createPage(firstEllipsisPageNumber) : ellipsisItem;
+
+    if (showPageInsteadOfFirstEllipsis && pageTotal > 5) {
+      paginationItems.push(ellipsisItem);
     }
+
+    paginationItems.push(firstEllipsisOrPage);
 
     // Add group of middle pages
     paginationItems.push(...middlePages);
-
-    // paginationItems.push(ellipsisItem); // last ellipsis
 
     // Calculate and add ellipsis after group of middle pages
     const lastEllipsisPageNumber = middlePagesEnd + 1;

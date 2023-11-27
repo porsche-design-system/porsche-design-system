@@ -12,9 +12,9 @@ import {
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type {
+  PaginationInternationalization,
   PaginationMaxNumberOfPageLinks,
   PaginationUpdateEvent,
-  PaginationInternationalization,
 } from './pagination-utils';
 import { createPaginationItems, getCurrentActivePage, getTotalPages, ItemType } from './pagination-utils';
 import { getComponentCss } from './pagination-styles';
@@ -143,7 +143,7 @@ export class Pagination {
     return (
       <nav role="navigation" aria-label={this.allyLabel || parsedIntl.root}>
         <ul>
-          {paginationItems.map((pageModel) => {
+          {paginationItems.map((pageModel, index) => {
             const { type, isActive, value } = pageModel;
             const spanProps = {
               role: 'button',
@@ -160,27 +160,42 @@ export class Pagination {
             switch (type) {
               case ItemType.PREVIOUS:
                 return (
-                  <li key="prev">
+                  <li key="prev" class="prev">
                     <span
                       {...spanProps}
                       aria-label={this.allyLabelPrev || parsedIntl.prev}
                       aria-disabled={isActive ? null : 'true'}
                     >
-                      <PrefixedTagNames.pIcon name="arrow-left" {...iconProps} />
+                      <PrefixedTagNames.pIcon {...iconProps} name="arrow-left" />
                     </span>
                   </li>
                 );
 
               case ItemType.ELLIPSIS:
                 return (
-                  <li key="ellipsis" class="elli">
+                  <li key="ellip" class={{ ellip: true, [`ellip-${index === 2 ? 'start' : 'end'}`]: true }}>
                     <span class="ellipsis" />
                   </li>
                 );
 
               case ItemType.PAGE:
                 return (
-                  <li key={value}>
+                  <li
+                    key={value}
+                    class={{
+                      current: isActive,
+                      'current-before':
+                        (paginationItems[index + 1].type === ItemType.PAGE && paginationItems[index + 1].isActive) ||
+                        (paginationItems[index + 1].type === ItemType.ELLIPSIS &&
+                          paginationItems[index + 2].type === ItemType.PAGE &&
+                          paginationItems[index + 2].isActive),
+                      'current-after':
+                        (paginationItems[index - 1].type === ItemType.PAGE && paginationItems[index - 1].isActive) ||
+                        (paginationItems[index - 1].type === ItemType.ELLIPSIS &&
+                          paginationItems[index - 2].type === ItemType.PAGE &&
+                          paginationItems[index - 2].isActive),
+                    }}
+                  >
                     <span
                       {...spanProps}
                       tabIndex={0}
@@ -194,13 +209,13 @@ export class Pagination {
 
               case ItemType.NEXT:
                 return (
-                  <li key="next">
+                  <li key="next" class="next">
                     <span
                       {...spanProps}
                       aria-label={this.allyLabelNext || parsedIntl.next}
                       aria-disabled={isActive ? null : 'true'}
                     >
-                      <PrefixedTagNames.pIcon name="arrow-right" {...iconProps} />
+                      <PrefixedTagNames.pIcon {...iconProps} name="arrow-right" />
                     </span>
                   </li>
                 );
