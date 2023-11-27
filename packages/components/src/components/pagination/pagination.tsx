@@ -144,7 +144,7 @@ export class Pagination {
       <nav role="navigation" aria-label={this.allyLabel || parsedIntl.root}>
         <ul>
           {paginationItems.map((pageModel, index) => {
-            const { type, isActive, value } = pageModel;
+            const { type, isActive, value, isBeforeCurrent, isAfterCurrent } = pageModel;
             const spanProps = {
               role: 'button',
               tabIndex: isActive ? 0 : null,
@@ -182,19 +182,7 @@ export class Pagination {
                 return (
                   <li
                     key={value}
-                    class={{
-                      current: isActive,
-                      'current-before':
-                        (paginationItems[index + 1].type === ItemType.PAGE && paginationItems[index + 1].isActive) ||
-                        (paginationItems[index + 1].type === ItemType.ELLIPSIS &&
-                          paginationItems[index + 2].type === ItemType.PAGE &&
-                          paginationItems[index + 2].isActive),
-                      'current-after':
-                        (paginationItems[index - 1].type === ItemType.PAGE && paginationItems[index - 1].isActive) ||
-                        (paginationItems[index - 1].type === ItemType.ELLIPSIS &&
-                          paginationItems[index - 2].type === ItemType.PAGE &&
-                          paginationItems[index - 2].isActive),
-                    }}
+                    class={{ current: isActive, 'current-before': isBeforeCurrent, 'current-after': isAfterCurrent }}
                   >
                     <span
                       {...spanProps}
