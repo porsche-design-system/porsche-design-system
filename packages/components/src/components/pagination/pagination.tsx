@@ -130,7 +130,7 @@ export class Pagination {
     );
 
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
-    attachComponentCss(this.host, getComponentCss, this.activePage, pageTotal, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.activePage, pageTotal, this.showLastPage, this.theme);
     const paginationItems = createPaginationItems({
       activePage: getCurrentActivePage(this.activePage, pageTotal),
       pageTotal,
@@ -144,7 +144,15 @@ export class Pagination {
       <nav role="navigation" aria-label={this.allyLabel || parsedIntl.root}>
         <ul>
           {paginationItems.map((pageModel, index) => {
-            const { type, isActive, value, isBeforeCurrent, isAfterCurrent } = pageModel;
+            const {
+              type,
+              isActive,
+              value,
+              isBeforeCurrent,
+              isAfterCurrent,
+              isBeforeBeforeCurrent,
+              isAfterAfterCurrent,
+            } = pageModel;
             const spanProps = {
               role: 'button',
               tabIndex: isActive ? 0 : null,
@@ -182,7 +190,13 @@ export class Pagination {
                 return (
                   <li
                     key={value}
-                    class={{ current: isActive, 'current-before': isBeforeCurrent, 'current-after': isAfterCurrent }}
+                    class={{
+                      current: isActive,
+                      'current-1': isBeforeCurrent,
+                      'current+1': isAfterCurrent,
+                      'current-2': isBeforeBeforeCurrent,
+                      'current+2': isAfterAfterCurrent,
+                    }}
                   >
                     <span
                       {...spanProps}

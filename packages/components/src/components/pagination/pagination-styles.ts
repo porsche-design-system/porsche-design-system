@@ -38,7 +38,7 @@ const disabledCursorStyle: JssStyle = {
 
 const hiddenStyle: JssStyle = { display: 'none' };
 
-export const getComponentCss = (activePage: number, pageTotal: number, theme: Theme): string => {
+export const getComponentCss = (activePage: number, pageTotal: number, showLastPage: boolean, theme: Theme): string => {
   const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
@@ -80,27 +80,34 @@ export const getComponentCss = (activePage: number, pageTotal: number, theme: Th
                 '&.ellip-start,&:nth-child(6),&:nth-child(7),&:not(.ellip):nth-child(8)'
               : pageTotal - activePage < 3
                 ? // we are at the end, so let's hide end ellipsis and 2 items after start ellipsis
-                  '&.ellip-end,&.ellip-start + &:not(.current),&.ellip-start + &:not(.current) + &:not(.current)'
+                  '&.ellip-end, &.ellip-start + &:not(.current), &.ellip-start + &:not(.current) + &:not(.current)'
                 : // we are at in the middle, so let's hide elements after start and before end ellipsis
-                  '&.ellip-start + &:not(.current),&.current-before,&.current-after,&.current-after + &:not(.ellip)']:
+                  '&.ellip-start + &:not(.current), &.current-1, &.current\\+1, &.current\\+1 + &:not(.ellip)']:
               hiddenStyle,
+            ...(!showLastPage &&
+              (pageTotal - activePage < 2
+                ? { '&.current-2': hiddenStyle, ...(pageTotal - activePage === 1 && { '&.current-1': hiddenStyle }) }
+                : activePage > 2 && {
+                    '&.current\\+1,&.current\\+2': hiddenStyle,
+                    '&.ellip-end': { display: 'initial' },
+                  })),
           },
         }),
         [mediaQueryMinS]: {
           // prev
-          '&:first-child': {
-            marginInlineEnd: spacingStaticSmall,
-          },
+          '&:first-child': { marginInlineEnd: spacingStaticSmall },
           // next
-          '&:last-child': {
-            marginInlineStart: spacingStaticSmall,
-          },
+          '&:last-child': { marginInlineStart: spacingStaticSmall },
           ...(pageTotal < 8
             ? { '&.ellip': hiddenStyle }
             : // max 7 items including ellipsis at the same time on tablet
               {
+                // we are at the start, so let's hide start ellipsis
                 ...(activePage <= 4 && { '&.ellip-start': hiddenStyle }),
-                ...(pageTotal - activePage < 4 && { '&.ellip-end': hiddenStyle }),
+                // we are at the end, so let's hide end ellipsis
+                ...(pageTotal - activePage < 4 && { '&.ellip-end:nth-last-child(3)': hiddenStyle }),
+                // we are at the end without last page, so let's hide end ellipsis
+                ...(pageTotal - activePage < 3 && { '&.ellip-end:nth-last-child(2)': hiddenStyle }),
               }),
         },
       },

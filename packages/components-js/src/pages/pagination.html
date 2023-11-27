@@ -1,34 +1,57 @@
-<div class="playground light" title="should show default pagination">
-  <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
-</div>
-
-<div class="playground light" title="should show pagination with ellipsis on both sides">
-  <p-pagination total-items-count="500" items-per-page="25" active-page="10"></p-pagination>
-</div>
-
-<div class="playground light" title="should show pagination with last page selected">
-  <p-pagination total-items-count="500" items-per-page="25" active-page="20"></p-pagination>
-</div>
-
-<div class="playground light" title="should show pagination with less than maximum pages">
-  <p-pagination total-items-count="75" items-per-page="25" active-page="2"></p-pagination>
-</div>
-
-<div class="playground light" title="should show pagination with 3rd item set as active">
-  <p-pagination total-items-count="500" items-per-page="25" active-page="3"></p-pagination>
+<div class="playground light" title="should show pagination without ellipsis">
+  <p-pagination total-items-count="25" items-per-page="25" active-page="1"></p-pagination>
+  <p-pagination total-items-count="50" items-per-page="25" active-page="1"></p-pagination>
+  <p-pagination total-items-count="75" items-per-page="25" active-page="1"></p-pagination>
+  <p-pagination total-items-count="100" items-per-page="25" active-page="1"></p-pagination>
+  <p-pagination total-items-count="125" items-per-page="25" active-page="1"></p-pagination>
 </div>
 
 <div
   class="playground light"
-  title="should show pagination with 5 or 7 items depending on window size (including ellipsis)"
+  title="should show pagination for 6 pages with 5 or 7 items depending on window size (including ellipsis)"
 >
-  <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+  <p-pagination total-items-count="150" items-per-page="25" active-page="1"></p-pagination>
+  <p-pagination total-items-count="150" items-per-page="25" active-page="2"></p-pagination>
+  <p-pagination total-items-count="150" items-per-page="25" active-page="3"></p-pagination>
+  <p-pagination total-items-count="150" items-per-page="25" active-page="4"></p-pagination>
+  <p-pagination total-items-count="150" items-per-page="25" active-page="5"></p-pagination>
+  <p-pagination total-items-count="150" items-per-page="25" active-page="6"></p-pagination>
 </div>
 
-<div class="playground light" title="should show pagination without last page">
-  <p-pagination total-items-count="500" items-per-page="25" active-page="1" show-last-page="false"></p-pagination>
+<div
+  class="playground light"
+  title="should show pagination for 10 pages with 5 or 7 items depending on window size (including ellipsis)"
+>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="1"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="2"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="3"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="4"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="5"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="6"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="7"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="8"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="9"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="10"></p-pagination>
 </div>
 
-<div class="playground light" title="should show pagination with last page selected and without last page">
-  <p-pagination total-items-count="500" items-per-page="25" active-page="20" show-last-page="false"></p-pagination>
+<div class="playground light" title="should show pagination without last page for 6 pages">
+  <p-pagination total-items-count="150" items-per-page="25" active-page="1" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="150" items-per-page="25" active-page="2" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="150" items-per-page="25" active-page="3" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="150" items-per-page="25" active-page="4" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="150" items-per-page="25" active-page="5" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="150" items-per-page="25" active-page="6" show-last-page="false"></p-pagination>
+</div>
+
+<div class="playground light" title="should show pagination without last page for 10 pages">
+  <p-pagination total-items-count="250" items-per-page="25" active-page="1" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="2" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="3" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="4" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="5" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="6" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="7" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="8" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="9" show-last-page="false"></p-pagination>
+  <p-pagination total-items-count="250" items-per-page="25" active-page="10" show-last-page="false"></p-pagination>
 </div>

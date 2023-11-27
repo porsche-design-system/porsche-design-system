@@ -27,7 +27,9 @@ export type PaginationItem = {
   value?: number; // relevant for clickable elements
   isActive: boolean; // affects aria-disabled and aria-current
   isBeforeCurrent?: boolean;
+  isBeforeBeforeCurrent?: boolean;
   isAfterCurrent?: boolean;
+  isAfterAfterCurrent?: boolean;
   type: ItemType;
 };
 
@@ -63,11 +65,15 @@ const createNextPageLink = (options: PaginationOptions): PaginationItem => {
   };
 };
 
-const createPageFunctionFactory = (options: PaginationOptions): ((pageNumber: number) => PaginationItem) => {
+const createPageFunctionFactory = ({ activePage }: PaginationOptions): ((pageNumber: number) => PaginationItem) => {
   return (pageNumber): PaginationItem => ({
     type: ItemType.PAGE,
     value: pageNumber,
-    isActive: pageNumber === options.activePage,
+    isActive: pageNumber === activePage,
+    isBeforeCurrent: pageNumber === activePage - 1,
+    isBeforeBeforeCurrent: pageNumber === activePage - 2,
+    isAfterCurrent: pageNumber === activePage + 1,
+    isAfterAfterCurrent: pageNumber === activePage + 2,
   });
 };
 
@@ -130,31 +136,7 @@ export const createPaginationItems = (options: PaginationOptions): PaginationIte
   }
 
   paginationItems.push(createNextPageLink(options));
-
-  return paginationItems.map((item, i) => {
-    if (item.type === ItemType.PAGE) {
-      const itemAfter1 = paginationItems[i + 1];
-      const itemAfter2 = paginationItems[i + 2];
-      const itemBefore1 = paginationItems[i - 1];
-      const itemBefore2 = paginationItems[i - 2];
-
-      if (
-        (itemAfter1?.type === ItemType.PAGE && itemAfter1?.isActive) ||
-        (itemAfter1?.type === ItemType.ELLIPSIS && itemAfter2?.type === ItemType.PAGE && itemAfter2?.isActive)
-      ) {
-        return { ...item, isBeforeCurrent: true };
-      } else if (
-        (itemBefore1?.type === ItemType.PAGE && itemBefore1?.isActive) ||
-        (itemBefore1?.type === ItemType.ELLIPSIS && itemBefore2?.type === ItemType.PAGE && itemBefore2?.isActive)
-      ) {
-        return { ...item, isAfterCurrent: true };
-      } else {
-        return item;
-      }
-    } else {
-      return item;
-    }
-  });
+  return paginationItems;
 };
 
 export const getCurrentActivePage = (activePage: number, totalPages: number): number => {
