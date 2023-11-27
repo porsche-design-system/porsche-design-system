@@ -33,7 +33,7 @@ describe('pagination', () => {
       () => document.querySelector('p-pagination').shadowRoot.querySelectorAll('nav span').length === 9
     );
 
-    const [, secondBtn, thirdBtn, fourthBtn] = (await nav.$$('span')).slice(1, -1); // without prev and next;
+    const [, secondBtn, thirdBtn, fourthBtn] = (await nav.$$('span:not(.ellipsis)')).slice(1, -1); // without prev and next;
 
     await secondBtn.click();
     expect(await getCounterValue(paginationUpdateEventCounter)).toBe('1');
