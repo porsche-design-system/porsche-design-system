@@ -294,14 +294,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         newFileContent = newFileContent
           // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
           .replace(/parsedIntl/g, 'this.props.intl')
-          // transform className object to string interpolation
+          // transform className objects to string
           .replace(
-            /className=\{\{ ellip: true, \[`ellip-\$\{index === 2 \? 'start' : 'end'}`]: true }}/,
-            `className={\`ellip ellip-\${index === 2 ? 'start' : 'end'}\`}`
-          )
-          // transform className object to string interpolation
-          .replace(
-            /className=\{(\{ current: isActive, 'current-before': isBeforeCurrent, 'current-after': isAfterCurrent })}/,
+            /className=\{(\{[\S\s]+?})}/g,
             `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
           );
       } else if (tagName === 'p-modal') {
