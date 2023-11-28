@@ -53,14 +53,20 @@ export const getComponentCss = (isMainDrawerOpen: boolean, isSecondaryDrawerOpen
         border: 0, // ua-style reset
         background: 'none', // ua-style reset
         overflow: 'hidden', // ua-style reset, dialog shall never become scrollable, it's handled by custom scroll areas
+        // transform: 'translate3d(0, 0, 0)', // to give new stacking context for secondary drawer
         ...(isMainDrawerOpen
           ? {
               transform: 'translate3d(0, 0, 0)',
               transition: `${getTransition('transform', 'long', 'in')}`,
+              /* insetInlineStart: 0,
+              transition: `${getTransition('inset-inline-start', 'long', 'in')}`,*/
             }
           : {
+              // TODO: translade3d() is not RTL ready
               transform: 'translate3d(-100%, 0, 0)',
               transition: `${getTransition('transform', 'long', 'out')}`,
+              /* insetInlineStart: '-100%', // TODO: -100% doesn't represent the width of the content!
+              transition: `${getTransition('inset-inline-start', 'long', 'out')}`,*/
             }),
         '&::backdrop': {
           // to improve browser backwards compatibility we visually style the backdrop on the :host,

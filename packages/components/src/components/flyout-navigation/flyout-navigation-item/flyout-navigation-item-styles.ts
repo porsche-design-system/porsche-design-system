@@ -34,12 +34,12 @@ export const getComponentCss = (isSecondaryDrawerOpen: boolean, theme: Theme): s
     drawer: {
       position: 'fixed',
       insetBlock: 0,
-      insetInlineStart: drawerWidth,
+      insetInlineStart: `calc(${drawerWidth} - 1px)`, // -1px prevents possible visible background under certain circumstances between main and secondary drawer
       width: drawerWidth,
       padding: spacingFluidMedium,
       boxSizing: 'border-box',
       overflow: 'auto',
-      visibility: isSecondaryDrawerOpen ? 'visible' : 'hidden',
+      visibility: isSecondaryDrawerOpen ? 'inherit' : 'hidden',
       backgroundColor: backgroundSurfaceColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: backgroundSurfaceColorDark,
