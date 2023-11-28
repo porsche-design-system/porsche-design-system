@@ -637,6 +637,7 @@ describe('keyboard and click events', () => {
     await addEventListener(select, 'change');
 
     await page.keyboard.press('Tab');
+    await waitForStencilLifecycle(page);
     await page.keyboard.press('ArrowDown'); //this just opens the dropdown
     await waitForStencilLifecycle(page);
 
