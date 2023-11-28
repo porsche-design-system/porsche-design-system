@@ -91,21 +91,6 @@ export class SelectWrapper {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidRender(): void {
-    /*
-     * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
-     * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
-     * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
-     */
-    if (!this.hasCustomDropdown) {
-      setAriaAttributes(this.select, {
-        label: this.label,
-        message: this.message || this.description,
-        state: this.state,
-      });
-    }
-  }
-
   public disconnectedCallback(): void {
     unobserveAttributes(this.select);
   }
@@ -122,6 +107,19 @@ export class SelectWrapper {
       this.state,
       this.theme
     );
+
+    /*
+     * This is a workaround to improve accessibility because the select and the label/description/message text are placed in different DOM.
+     * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
+     * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
+     */
+    if (!this.hasCustomDropdown) {
+      setAriaAttributes(this.select, {
+        label: this.label,
+        message: this.message || this.description,
+        state: this.state,
+      });
+    }
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
