@@ -5,6 +5,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import * as beautify from 'js-beautify';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
+import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
 export type ClickableTests = {
   state: string;
@@ -373,6 +374,32 @@ export const expectA11yToMatchSnapshot = async (
   opts?: ExpectToMatchSnapshotOptions
 ): Promise<void> => {
   const { message, ...options } = opts || {};
+
+  // TODO: remove this workaround once waitForStencilLifecycle() is reliable
+  // currently it is mostly based on a 40ms timeout which isn't always enough
+  // in scenarios when multiple properties are changed after each other, e.g.
+  // await setProperty(host, 'state', 'error');
+  // await setProperty(host, 'message', 'Some error message.');
+  // then there are 2 lifecycles but waitForStencilLifecycle() can resolve after the 1st
+  const tagName = (await (await elementHandle.getProperty('tagName')).jsonValue()).toLowerCase();
+  if (['input', 'select', 'textarea'].includes(tagName)) {
+    const state: FormState = await elementHandle.evaluate((el) => (el.parentElement as any).state);
+    if (state) {
+      await page.waitForFunction(
+        (el, state) => {
+          if (state === 'none') {
+            return !el.ariaLabel.includes('success') && !el.ariaLabel.includes('error');
+          } else {
+            return el.ariaLabel.includes(state);
+          }
+        },
+        {},
+        elementHandle,
+        state
+      );
+    }
+  }
+
   const snapshot = await page.accessibility.snapshot({
     root: elementHandle,
     ...options,
