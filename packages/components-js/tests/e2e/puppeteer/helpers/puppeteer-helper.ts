@@ -381,9 +381,9 @@ export const expectA11yToMatchSnapshot = async (
   // await setProperty(host, 'state', 'error');
   // await setProperty(host, 'message', 'Some error message.');
   // then there are 2 lifecycles but waitForStencilLifecycle() can resolve after the 1st
-  const tagName = (await (await elementHandle.getProperty('tagName')).jsonValue()).toLowerCase();
+  const tagName = (await (await elementHandle?.getProperty('tagName')).jsonValue()).toLowerCase();
   if (['input', 'select', 'textarea'].includes(tagName)) {
-    const state: FormState = await elementHandle.evaluate((el) => (el.parentElement as any).state);
+    const state: FormState = await elementHandle.evaluate((el) => (el.parentElement as any)?.state);
     if (state) {
       await page.waitForFunction(
         (el, state) => {
