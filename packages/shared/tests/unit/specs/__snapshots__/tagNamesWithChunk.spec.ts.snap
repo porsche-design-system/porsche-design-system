@@ -28,6 +28,7 @@ exports[`should match snapshot 1`] = `
   "p-link-social",
   "p-link-tile",
   "p-link-tile-model-signature",
+  "p-link-tile-product",
   "p-marque",
   "p-modal",
   "p-model-signature",
