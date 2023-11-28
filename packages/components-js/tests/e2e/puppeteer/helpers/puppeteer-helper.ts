@@ -4,7 +4,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import * as beautify from 'js-beautify';
-import { getFontFaceStylesheet, getInitialStyles } from '@porsche-design-system/components-js/partials';
+import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 
 export type ClickableTests = {
   state: string;
