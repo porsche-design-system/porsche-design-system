@@ -3,6 +3,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getThemedColors,
+  getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
@@ -67,6 +68,11 @@ export const getComponentCss = (theme: Theme): string => {
         color: primaryColorDark,
         backgroundColor: backgroundSurfaceColorDark,
       }),
+      ...hoverMediaQuery({
+        '&:hover .image-container': {
+          transform: 'scale3d(1.05,1.05,1.05)',
+        },
+      }),
     },
     header: {
       display: 'flex',
@@ -123,6 +129,7 @@ export const getComponentCss = (theme: Theme): string => {
       aspectRatio: '8 / 9',
       margin: `${spacingFluidSmall} ${spacingFluidMedium} ${spacingFluidXSmall} ${spacingFluidMedium} `,
       borderRadius: borderRadiusLarge,
+      transition: getTransition('transform', 'moderate'),
     },
   });
 };
