@@ -390,13 +390,15 @@ export const expectA11yToMatchSnapshot = async (
       if (state) {
         await page.waitForFunction(
           (el, state) => {
-            if (state === 'none') {
+            if (!el.ariaLabel) {
+              return true; // some nested input elements don't have/need it
+            } else if (state === 'none') {
               return !el.ariaLabel.includes('success') && !el.ariaLabel.includes('error');
             } else {
               return el.ariaLabel.includes(state);
             }
           },
-          {},
+          { timeout: 500 },
           elementHandle,
           state
         );
