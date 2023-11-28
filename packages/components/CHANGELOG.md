@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- Prop `submit-button` for `Text Field Wrapper`
+- Prop `submit-button` to show/hide a submit button for `Text Field Wrapper` `type="search"` if wrapped inside a form
   [#2908](https://github.com/porsche-design-system/porsche-design-system/pull/2908)
 
 ### [3.9.0] - 2023-11-24
