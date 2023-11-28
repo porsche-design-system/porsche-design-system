@@ -201,6 +201,7 @@ describe('accessibility', () => {
     await setProperty(host, 'state', 'success');
     await setProperty(host, 'message', 'Some success message.');
     await waitForStencilLifecycle(page);
+    await page.waitForFunction((el) => el.ariaLabel.includes('success'), {}, select);
 
     await expectA11yToMatchSnapshot(page, select, { message: 'Of Select when state = success' });
     await expectA11yToMatchSnapshot(page, message, {
@@ -211,6 +212,7 @@ describe('accessibility', () => {
     await setProperty(host, 'state', 'none');
     await setProperty(host, 'message', '');
     await waitForStencilLifecycle(page);
+    await page.waitForFunction((el) => !el.ariaLabel.includes('success'), {}, select);
 
     await expectA11yToMatchSnapshot(page, select, { message: 'Of Select when state = none' });
   });
