@@ -109,13 +109,17 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
         overflow: 'hidden',
         textOverflow: 'ellipsis',
       },
+      '&__price, &__info': {
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        fontWeight: fontWeightRegular,
+      },
       '&__price': {
         ...textXSmallStyle,
-        fontWeight: fontWeightRegular,
       },
       '&__info': {
         ...textXXSmallStyle,
-        fontWeight: fontWeightRegular,
         height: fontLineHeight,
         paddingBottom: spacingFluidXSmall,
         color: contrastHighColor,
