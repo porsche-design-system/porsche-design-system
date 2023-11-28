@@ -188,7 +188,9 @@ export const config: StorefrontConfig = {
       Props: [() => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.props.md')],
     },
     'Link Tile Product': {
-      Props: [() => import('@/../../components/src/components/link-tile-model-signature/link-tile-product.props.md')],
+      Examples: [() => import('@/../../components/src/components/link-tile-product/link-tile-product.examples.md')],
+      Usage: [() => import('@/../../components/src/components/link-tile-product/link-tile-product.usage.md')],
+      Props: [() => import('@/../../components/src/components/link-tile-product/link-tile-product.props.md')],
     },
     Marque: {
       Examples: [() => import('@/../../components/src/components/marque/marque.examples.md')],
