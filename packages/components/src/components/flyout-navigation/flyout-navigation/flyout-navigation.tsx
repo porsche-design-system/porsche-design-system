@@ -57,16 +57,13 @@ export class FlyoutNavigation {
     this.setDialogVisibility(isOpen);
   }
 
-  @Watch('activeId')
-  public activeIdChangeHandler(activeId: string): void {
-    this.update.emit({ activeId });
-  }
-
   public componentWillLoad(): void {
     this.defineFlyoutNavigationItemElements();
     this.host.shadowRoot.addEventListener(INTERNAL_UPDATE_EVENT_NAME, (e: CustomEvent<FlyoutNavigationUpdateEvent>) => {
       e.stopPropagation(); // prevents internal event from bubbling further
-      this.activeId = e.detail.activeId;
+      const activeId = e.detail.activeId;
+      this.activeId = activeId;
+      this.update.emit({ activeId });
     });
   }
 
