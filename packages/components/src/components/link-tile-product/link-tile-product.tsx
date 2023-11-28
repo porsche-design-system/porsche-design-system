@@ -10,9 +10,14 @@ import {
   validateProps,
 } from '../../utils';
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
-import { LinkTileAriaAttribute, LinkTileTarget } from '../link-tile/link-tile-utils';
+import { LinkTileAriaAttribute } from '../link-tile/link-tile-utils';
 import { getComponentCss } from './link-tile-product-styles';
-import { LinkTileProductLikeChangeEvent, tagsSlotName } from './link-tile-product-utils';
+import {
+  LinkTileProductAriaAttribute,
+  LinkTileProductTarget,
+  LinkTileProductUpdateEvent,
+  tagsSlotName,
+} from './link-tile-product-utils';
 
 const propTypes: PropTypes<typeof LinkTileProduct> = {
   heading: AllowedTypes.string,
@@ -49,19 +54,19 @@ export class LinkTileProduct {
   @Prop() public href: string;
 
   /** Target attribute where the link should be opened. */
-  @Prop() public target?: LinkTileTarget = '_self';
+  @Prop() public target?: LinkTileProductTarget = '_self';
 
   /** Specifies the relationship of the target object to the link object. */
   @Prop() public rel?: string;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
+  @Prop() public aria?: SelectedAriaAttributes<LinkTileProductAriaAttribute>;
 
   /** Adapts the banner color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Emitted when the selection is changed. */
-  @Event({ bubbles: false }) public likeChange: EventEmitter<LinkTileProductLikeChangeEvent>;
+  /** Emitted when the like button is clicked. */
+  @Event({ bubbles: false }) public likeChange: EventEmitter<LinkTileProductUpdateEvent>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
