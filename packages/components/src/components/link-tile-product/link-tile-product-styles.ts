@@ -87,10 +87,17 @@ export const getComponentCss = (theme: Theme): string => {
     text: {
       textAlign: 'center',
       margin: 0,
+      '&__heading-container': {
+        height: `calc(${fontLineHeight} * 2)`,
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        overflow: 'hidden',
+      },
       '&__heading': {
         ...textSmallStyle,
         fontWeight: fontWeightSemiBold,
-        height: `calc(${fontLineHeight} * 2)`,
+        maxHeight: `calc(${fontLineHeight} * 2)`,
         display: '-webkit-box',
         WebkitLineClamp: 2,
         WebkitBoxOrient: 'vertical',

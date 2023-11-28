@@ -87,7 +87,9 @@ export class LinkTileProduct {
           <div class="image-container">
             <slot />
           </div>
-          <p class="text text__heading">{this.heading}</p>
+          <div class="text text__heading-container">
+            <p class="text text__heading">{this.heading}</p>
+          </div>
           <p class="text text__price">{this.price}</p>
           <p class="text text__info">{this.info}</p>
         </a>
