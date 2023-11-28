@@ -3358,6 +3358,7 @@ exports[`should match snapshot 1`] = `
         "error",
         "success",
       ],
+      "submitButton": "boolean",
       "theme": [
         "light",
         "dark",
@@ -3411,6 +3412,7 @@ exports[`should match snapshot 1`] = `
       "showCounter": true,
       "showPasswordToggle": true,
       "state": "none",
+      "submitButton": true,
       "theme": "light",
       "unit": null,
       "unitPosition": "prefix",
