@@ -385,7 +385,7 @@ export const expectA11yToMatchSnapshot = async (
     const tagName = (await (await elementHandle.getProperty('tagName')).jsonValue()).toLowerCase();
     if (['input', 'select', 'textarea'].includes(tagName)) {
       const state: FormState = await elementHandle.evaluate(
-        (el) => ((el.parentElement as any) || (el.getRootNode() as any).host).state?.state
+        (el) => ((el.parentElement as any) || (el.getRootNode() as any).host)?.state
       );
       if (state) {
         await page.waitForFunction(
