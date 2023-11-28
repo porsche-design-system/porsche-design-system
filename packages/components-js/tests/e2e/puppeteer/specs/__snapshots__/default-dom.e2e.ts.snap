@@ -275,8 +275,10 @@ exports[`should have no basic DOM regression for p-link-tile-product 1`] = `
     <slot>
     </slot>
   </div>
-  <p class="text text__heading">
-    value</p>
+  <div class="text text__heading-container">
+    <p class="text text__heading">
+      value</p>
+  </div>
   <p class="text text__price">
     value</p>
   <p class="text text__info">
