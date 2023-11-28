@@ -108,6 +108,7 @@ export const getComponentCss = (theme: Theme): string => {
       '&__info': {
         ...textXXSmallStyle,
         fontWeight: fontWeightRegular,
+        height: fontLineHeight,
         paddingBottom: spacingFluidXSmall,
         color: contrastHighColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -116,7 +117,6 @@ export const getComponentCss = (theme: Theme): string => {
       },
     },
     'image-container': {
-      display: 'block',
       aspectRatio: '8 / 9',
       overflow: 'hidden',
       margin: `${spacingFluidSmall} ${spacingFluidMedium} ${spacingFluidXSmall} ${spacingFluidMedium} `,
