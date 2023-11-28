@@ -40,19 +40,10 @@ export const getComponentCss = (theme: Theme): string => {
       },
       ...addImportantToEachRule({
         '::slotted': {
-          '&(picture)': {
-            display: 'block',
-            overflow: 'hidden',
-            aspectRatio: '8 / 9',
-            objectFit: 'cover',
-            width: '100%',
-            borderRadius: borderRadiusLarge,
-          },
           '&(img)': {
-            aspectRatio: '8 / 9',
-            objectFit: 'cover',
             width: '100%',
-            borderRadius: borderRadiusLarge,
+            height: '100%',
+            objectFit: 'cover',
           },
         },
       }),
@@ -127,6 +118,7 @@ export const getComponentCss = (theme: Theme): string => {
     'image-container': {
       display: 'block',
       aspectRatio: '8 / 9',
+      overflow: 'hidden',
       margin: `${spacingFluidSmall} ${spacingFluidMedium} ${spacingFluidXSmall} ${spacingFluidMedium} `,
       borderRadius: borderRadiusLarge,
       transition: getTransition('transform', 'moderate'),
