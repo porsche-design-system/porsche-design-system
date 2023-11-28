@@ -95,8 +95,8 @@ If you want to remove the password toggle button, you can pass `showPasswordTogg
 ## type="search"
 
 Inputs with `type="search"` receive a decorative search icon when used outside a form.  
-Within a form, a submit button becomes visible. The submit button within a form can be hidden using
-`submitButton="false"`. If the input contains a value, a clear button shows up.
+Only if used inside a form, a submit button becomes visible which can be hidden using `submitButton="false"`. If the
+input contains a value, a clear button shows up.
 
 <Playground :markup="typeSearchMarkup" :config="config">
   <SelectOptions v-model="submitButton" :values="submitButtons" name="submitButton"></SelectOptions>
@@ -256,7 +256,7 @@ export default class Code extends Vue {
   submitButton = true;
   submitButtons = [true, false];
   get typeSearchMarkup() {
-    return `<p-text-field-wrapper label="Some label" submit-button="${this.submitButton}">
+    return `<p-text-field-wrapper label="Some label">
   <input type="search" name="some-name" />
 </p-text-field-wrapper>
 
