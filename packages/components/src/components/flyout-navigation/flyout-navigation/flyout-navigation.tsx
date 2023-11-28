@@ -1,6 +1,6 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import {
-  FlyoutNavigationUpdateEvent,
+  type FlyoutNavigationUpdateEvent,
   INTERNAL_UPDATE_EVENT_NAME,
   syncFlyoutNavigationItemsProps,
 } from './flyout-navigation-utils';
@@ -16,7 +16,7 @@ import {
   throwIfChildrenAreNotOfKind,
   validateProps,
 } from '../../../utils';
-import type { PropTypes, Theme } from '../../../types';
+import { type PropTypes, type Theme } from '../../../types';
 
 const propTypes: PropTypes<typeof FlyoutNavigation> = {
   activeId: AllowedTypes.string,
@@ -85,7 +85,7 @@ export class FlyoutNavigation {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.open, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.open, !!this.activeId, this.theme);
     syncFlyoutNavigationItemsProps(this.flyoutNavigationItemElements, this.activeId, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -99,14 +99,14 @@ export class FlyoutNavigation {
         <PrefixedTagNames.pButtonPure
           class="dismiss"
           type="button"
-          hideLabel
+          hideLabel={true}
           icon="close"
           theme="dark"
           onClick={this.dismissDialog}
         >
           Dismiss flyout
         </PrefixedTagNames.pButtonPure>
-        <div class="nav">
+        <div class="drawer">
           <slot />
         </div>
       </dialog>

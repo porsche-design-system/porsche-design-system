@@ -8,8 +8,9 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
 import { spacingFluidMedium, spacingFluidSmall, type Theme } from '@porsche-design-system/utilities-v2';
+import { drawerWidth } from '../flyout-navigation/flyout-navigation-styles';
 
-export const getComponentCss = (isOpen: boolean, theme: Theme): string => {
+export const getComponentCss = (isSecondaryDrawerOpen: boolean, theme: Theme): string => {
   const { backgroundSurfaceColor } = getThemedColors(theme);
   const { backgroundSurfaceColor: backgroundSurfaceColorDark } = getThemedColors('dark');
 
@@ -23,24 +24,22 @@ export const getComponentCss = (isOpen: boolean, theme: Theme): string => {
         }),
       },
       '::slotted(*)': addImportantToEachRule({
-        opacity: isOpen ? '1' : '0',
+        opacity: isSecondaryDrawerOpen ? '1' : '0',
         transition: getTransition('opacity', 'long'),
       }),
     },
     button: {
-      padding: `${spacingFluidSmall} ${spacingFluidMedium}`,
+      padding: spacingFluidSmall,
     },
     drawer: {
       position: 'fixed',
-      top: 0,
-      left: '25vw',
-      bottom: 0,
-      width: '25vw',
+      insetBlock: 0,
+      insetInlineStart: drawerWidth,
+      width: drawerWidth,
       padding: spacingFluidMedium,
       boxSizing: 'border-box',
       overflow: 'auto',
-      visibility: isOpen ? 'visible' : 'hidden',
-      display: 'block',
+      visibility: isSecondaryDrawerOpen ? 'visible' : 'hidden',
       backgroundColor: backgroundSurfaceColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: backgroundSurfaceColorDark,

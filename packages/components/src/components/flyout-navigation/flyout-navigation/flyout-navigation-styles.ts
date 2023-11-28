@@ -1,3 +1,4 @@
+import { type JssStyle } from 'jss';
 import { getCss, isThemeDark, type Theme } from '../../../utils';
 import {
   addImportantToEachRule,
@@ -11,7 +12,6 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
 import {
-  dropShadowMediumStyle,
   frostedGlassStyle,
   motionDurationLong,
   spacingFluidMedium,
@@ -20,10 +20,11 @@ import {
   themeDarkBackgroundShading,
   themeLightBackgroundShading,
 } from '@porsche-design-system/utilities-v2';
-import { JssStyle } from 'jss';
 import { FLYOUT_Z_INDEX } from '../../../constants';
 
-export const getComponentCss = (isOpen: boolean, theme: Theme): string => {
+export const drawerWidth = '25vw';
+
+export const getComponentCss = (isMainDrawerOpen: boolean, isSecondaryDrawerOpen: boolean, theme: Theme): string => {
   const { backgroundColor } = getThemedColors(theme);
   const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
 
@@ -32,29 +33,27 @@ export const getComponentCss = (isOpen: boolean, theme: Theme): string => {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          zIndex: FLYOUT_Z_INDEX,
-          ...getBackdropJssStyles(isOpen, 'long', theme),
+          ...getBackdropJssStyles(isMainDrawerOpen, 'long', theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       dialog: {
-        // transform: 'translate3d(0,0,0)',
         position: 'fixed',
         ...getInsetJssStyle(),
         display: 'grid',
-        gridTemplateColumns: 'repeat(2, auto) minmax(0, 1fr)',
+        gridTemplateColumns: `repeat(${isSecondaryDrawerOpen ? 2 : 1}, ${drawerWidth}) auto`,
         gridTemplateRows: '100vh',
-        width: '100vw', // to enable backdrop click for browsers not supporting ::backdrop
-        height: '100vh',
-        maxWidth: '100vw',
-        maxHeight: '100vh',
-        margin: 0,
-        padding: 0,
-        border: 0,
-        background: 'none',
-        overflow: 'hidden',
-        ...(isOpen
+        width: 'fit-content', // ua-style reset and to ensure transition duration works correctly
+        height: '100vh', // ua-style reset
+        maxWidth: '100vw', // ua-style reset
+        maxHeight: '100vh', // ua-style reset
+        margin: 0, // ua-style reset
+        padding: 0, // ua-style reset
+        border: 0, // ua-style reset
+        background: 'none', // ua-style reset
+        overflow: 'hidden', // ua-style reset, dialog shall never become scrollable, it's handled by custom scroll areas
+        ...(isMainDrawerOpen
           ? {
               transform: 'translate3d(0, 0, 0)',
               transition: `${getTransition('transform', 'long', 'in')}`,
@@ -66,29 +65,22 @@ export const getComponentCss = (isOpen: boolean, theme: Theme): string => {
         '&::backdrop': {
           // to improve browser backwards compatibility we visually style the backdrop on the :host,
           // although it's not on the #top-layer like it would be for modern browsers supporting ::backdrop
-          display: 'none',
+          opacity: 0, // to support backdrop click for modern browsers supporting ::backdrop
         },
       },
     },
-    nav: {
+    // TODO: reliable drop shadow would only be possible with another DIV
+    drawer: {
       gridArea: '1/1',
-      position: 'relative',
-      // display: 'grid',
-      // gridTemplateColumns: 'repeat(2, 30vw)',
-      display: 'flex',
-      flexDirection: 'column',
-      width: '25vw',
       padding: spacingFluidMedium,
-      boxSizing: 'border-box',
       overflow: 'auto',
-      ...dropShadowMediumStyle,
       backgroundColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: backgroundColorDark,
       }),
     },
     dismiss: {
-      gridArea: '1/2',
+      gridArea: '1/-1',
       alignSelf: 'flex-start',
       margin: spacingFluidSmall,
       padding: spacingStaticSmall,
@@ -107,6 +99,7 @@ const getBackdropJssStyles = (isVisible: boolean, duration: MotionDurationKey, t
   return {
     position: 'fixed',
     ...getInsetJssStyle(),
+    zIndex: FLYOUT_Z_INDEX,
     ...(isVisible
       ? {
           visibility: 'visible',
@@ -121,7 +114,7 @@ const getBackdropJssStyles = (isVisible: boolean, duration: MotionDurationKey, t
           visibility: 'hidden', // element shall not be tabbable after fade out transition has finished
           WebkitBackdropFilter: 'blur(0px)',
           backdropFilter: 'blur(0px)',
-          background: 'transparent',
+          background: 'none',
         }),
     transition: `${getTransition('background', duration, 'base')}, ${getTransition(
       'backdrop-filter',
