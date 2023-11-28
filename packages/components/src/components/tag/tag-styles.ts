@@ -18,6 +18,8 @@ import type { Theme } from '../../types';
 import type { JssStyle } from 'jss';
 import { getTagFocusJssStyle, getThemedBackgroundColor } from './tag-shared-utils';
 
+export const tagPaddingY = '4px';
+
 export const getColors = (
   themedColors: ThemedColors,
   tagColor: Exclude<TagColor, TagColorDeprecated>,
@@ -68,7 +70,7 @@ export const getComponentCss = (
         gap: '2px',
         alignItems: 'center',
         position: 'relative',
-        padding: '4px 9px',
+        padding: `${tagPaddingY} 9px`,
         borderRadius: borderRadiusSmall,
         background: backgroundColor,
         color: primaryColor,

@@ -12,6 +12,7 @@ import {
   borderRadiusLarge,
   borderRadiusMedium,
   fontLineHeight,
+  fontSizeTextXSmall,
   fontWeightRegular,
   fontWeightSemiBold,
   spacingFluidMedium,
@@ -21,8 +22,9 @@ import {
   textXSmallStyle,
   textXXSmallStyle,
 } from '@porsche-design-system/utilities-v2';
+import { tagPaddingY } from '../tag/tag-styles';
 
-export const getComponentCss = (theme: Theme): string => {
+export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string => {
   const { primaryColor, contrastHighColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
@@ -68,19 +70,25 @@ export const getComponentCss = (theme: Theme): string => {
     header: {
       display: 'flex',
       overflow: 'hidden',
-      paddingRight: fontLineHeight, // Reserve space for like button
-    },
-    'like-button': {
-      position: 'absolute',
-      top: spacingFluidSmall,
-      right: spacingFluidSmall,
-      height: 'fit-content',
-      ...hoverMediaQuery({
-        '&:hover': {
-          cursor: 'pointer',
-        },
+      fontSize: fontSizeTextXSmall, // Use same font size and height as tag component
+      height: `calc(${tagPaddingY} * 2 + ${fontLineHeight})`,
+      ...(hasLikeButton && {
+        paddingRight: fontLineHeight, // Reserve space for like button
       }),
     },
+    ...(hasLikeButton && {
+      'like-button': {
+        position: 'absolute',
+        top: spacingFluidSmall,
+        right: spacingFluidSmall,
+        height: 'fit-content',
+        ...hoverMediaQuery({
+          '&:hover': {
+            cursor: 'pointer',
+          },
+        }),
+      },
+    }),
     text: {
       textAlign: 'center',
       margin: 0,

@@ -23,6 +23,7 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
   heading: AllowedTypes.string,
   price: AllowedTypes.string,
   info: AllowedTypes.string,
+  likeButton: AllowedTypes.boolean,
   liked: AllowedTypes.boolean,
   href: AllowedTypes.string,
   target: AllowedTypes.string,
@@ -46,6 +47,9 @@ export class LinkTileProduct {
 
   /** Additional product information */
   @Prop() public info?: string;
+
+  /** A Boolean attribute indicating that a like button should be shown. */
+  @Prop() public likeButton?: boolean = true;
 
   /** A Boolean attribute indicating that a product is liked. */
   @Prop() public liked?: boolean = false;
@@ -74,7 +78,7 @@ export class LinkTileProduct {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.likeButton, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -93,14 +97,16 @@ export class LinkTileProduct {
           <p class="text text__price">{this.price}</p>
           <p class="text text__info">{this.info}</p>
         </a>
-        <PrefixedTagNames.pButtonPure
-          class="like-button"
-          icon={this.liked ? 'heart-filled' : 'heart'}
-          hide-label="true"
-          onClick={this.onLikeClick}
-        >
-          {this.liked ? 'Heart Filled icon' : 'Heart icon'}
-        </PrefixedTagNames.pButtonPure>
+        {this.likeButton && (
+          <PrefixedTagNames.pButtonPure
+            class="like-button"
+            icon={this.liked ? 'heart-filled' : 'heart'}
+            hide-label="true"
+            onClick={this.onLikeClick}
+          >
+            {this.liked ? 'Heart Filled icon' : 'Heart icon'}
+          </PrefixedTagNames.pButtonPure>
+        )}
       </Host>
     );
   }
