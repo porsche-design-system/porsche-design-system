@@ -5212,19 +5212,10 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  display: block !important;
-  overflow: hidden !important;
-  aspect-ratio: 8 / 9 !important;
-  object-fit: cover !important;
-  width: 100% !important;
-  border-radius: 12px !important;
-}
 ::slotted(img) {
-  aspect-ratio: 8 / 9 !important;
-  object-fit: cover !important;
   width: 100% !important;
-  border-radius: 12px !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
 .root {
   display: block;
@@ -5249,12 +5240,19 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   text-align: center;
   margin: 0;
 }
+.text__heading-container {
+  height: calc(calc(6px + 2.125ex) * 2);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
 .text__heading {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 600;
-  height: calc(calc(6px + 2.125ex) * 2);
+  max-height: calc(calc(6px + 2.125ex) * 2);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -5272,14 +5270,16 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   overflow-wrap: break-word;
   hyphens: auto;
   font-weight: 400;
+  height: calc(6px + 2.125ex);
   padding-bottom: clamp(4px, 0.25vw + 3px, 8px);
   color: #535457;
 }
 .image-container {
-  display: block;
   aspect-ratio: 8 / 9;
+  overflow: hidden;
   margin: clamp(8px, 0.5vw + 6px, 16px) clamp(16px, 1.25vw + 12px, 36px) clamp(4px, 0.25vw + 3px, 8px) clamp(16px, 1.25vw + 12px, 36px) ;
   border-radius: 12px;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
 
     </style>
@@ -5299,9 +5299,13 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
       >
         <slot />
       </div>
-      <p
-        class="text text__heading"
-      />
+      <div
+        class="text text__heading-container"
+      >
+        <p
+          class="text text__heading"
+        />
+      </div>
       <p
         class="text text__price"
       />
