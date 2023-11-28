@@ -343,6 +343,20 @@ exports[`should call validateProps() with correct parameters via render for p-li
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-link-tile-product: propTypes with ValidatorFunctions 1`] = `
+{
+  "aria": "aria",
+  "heading": "string",
+  "href": "string",
+  "info": "string",
+  "liked": "boolean",
+  "price": "string",
+  "rel": "string",
+  "target": "string",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-marque: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
