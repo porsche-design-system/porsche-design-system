@@ -23,7 +23,7 @@ import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
-import { FlyoutNavigationAriaAttribute } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
+import { FlyoutNavigationUpdateEvent } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 import { HeadingTag } from "./components/heading/heading-tag";
@@ -83,7 +83,7 @@ export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 export { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
-export { FlyoutNavigationAriaAttribute } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
+export { FlyoutNavigationUpdateEvent } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 export { HeadingTag } from "./components/heading/heading-tag";
@@ -655,17 +655,21 @@ export namespace Components {
     }
     interface PFlyoutNavigation {
         /**
-          * Add ARIA attributes.
+          * Defines which flyout-navigation-item to be visualized as opened.
          */
-        "aria"?: SelectedAriaAttributes<FlyoutNavigationAriaAttribute>;
+        "activeId"?: string;
         /**
-          * If true, the flyout-navigation is open.
+          * If true, the flyout-navigation is visualized as opened.
          */
         "open": boolean;
         /**
           * Adapts the flyout-navigation color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PFlyoutNavigationItem {
+        "id": string;
+        "label"?: string;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -2069,6 +2073,7 @@ declare global {
     };
     interface HTMLPFlyoutNavigationElementEventMap {
         "dismiss": void;
+        "update": FlyoutNavigationUpdateEvent;
     }
     interface HTMLPFlyoutNavigationElement extends Components.PFlyoutNavigation, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPFlyoutNavigationElementEventMap>(type: K, listener: (this: HTMLPFlyoutNavigationElement, ev: PFlyoutNavigationCustomEvent<HTMLPFlyoutNavigationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2083,6 +2088,12 @@ declare global {
     var HTMLPFlyoutNavigationElement: {
         prototype: HTMLPFlyoutNavigationElement;
         new (): HTMLPFlyoutNavigationElement;
+    };
+    interface HTMLPFlyoutNavigationItemElement extends Components.PFlyoutNavigationItem, HTMLStencilElement {
+    }
+    var HTMLPFlyoutNavigationItemElement: {
+        prototype: HTMLPFlyoutNavigationItemElement;
+        new (): HTMLPFlyoutNavigationItemElement;
     };
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -2564,6 +2575,7 @@ declare global {
         "p-flex-item": HTMLPFlexItemElement;
         "p-flyout": HTMLPFlyoutElement;
         "p-flyout-navigation": HTMLPFlyoutNavigationElement;
+        "p-flyout-navigation-item": HTMLPFlyoutNavigationItemElement;
         "p-grid": HTMLPGridElement;
         "p-grid-item": HTMLPGridItemElement;
         "p-heading": HTMLPHeadingElement;
@@ -3169,21 +3181,29 @@ declare namespace LocalJSX {
     }
     interface PFlyoutNavigation {
         /**
-          * Add ARIA attributes.
+          * Defines which flyout-navigation-item to be visualized as opened.
          */
-        "aria"?: SelectedAriaAttributes<FlyoutNavigationAriaAttribute>;
+        "activeId"?: string;
         /**
           * Emitted when the component requests to be dismissed.
          */
         "onDismiss"?: (event: PFlyoutNavigationCustomEvent<void>) => void;
         /**
-          * If true, the flyout-navigation is open.
+          * Emitted when activeId state is changed.
+         */
+        "onUpdate"?: (event: PFlyoutNavigationCustomEvent<FlyoutNavigationUpdateEvent>) => void;
+        /**
+          * If true, the flyout-navigation is visualized as opened.
          */
         "open"?: boolean;
         /**
           * Adapts the flyout-navigation color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PFlyoutNavigationItem {
+        "id"?: string;
+        "label"?: string;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -4457,6 +4477,7 @@ declare namespace LocalJSX {
         "p-flex-item": PFlexItem;
         "p-flyout": PFlyout;
         "p-flyout-navigation": PFlyoutNavigation;
+        "p-flyout-navigation-item": PFlyoutNavigationItem;
         "p-grid": PGrid;
         "p-grid-item": PGridItem;
         "p-heading": PHeading;
@@ -4542,6 +4563,7 @@ declare module "@stencil/core" {
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
             "p-flyout": LocalJSX.PFlyout & JSXBase.HTMLAttributes<HTMLPFlyoutElement>;
             "p-flyout-navigation": LocalJSX.PFlyoutNavigation & JSXBase.HTMLAttributes<HTMLPFlyoutNavigationElement>;
+            "p-flyout-navigation-item": LocalJSX.PFlyoutNavigationItem & JSXBase.HTMLAttributes<HTMLPFlyoutNavigationItemElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
              */

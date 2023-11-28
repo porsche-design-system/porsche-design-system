@@ -11,9 +11,10 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
 import {
+  dropShadowMediumStyle,
   frostedGlassStyle,
   motionDurationLong,
-  spacingFluidLarge,
+  spacingFluidMedium,
   spacingFluidSmall,
   spacingStaticSmall,
   themeDarkBackgroundShading,
@@ -23,9 +24,8 @@ import { JssStyle } from 'jss';
 import { FLYOUT_Z_INDEX } from '../../../constants';
 
 export const getComponentCss = (isOpen: boolean, theme: Theme): string => {
-  const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const { backgroundColor: backgroundColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
-    getThemedColors('dark');
+  const { backgroundColor } = getThemedColors(theme);
+  const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
 
   return getCss({
     '@global': {
@@ -39,6 +39,7 @@ export const getComponentCss = (isOpen: boolean, theme: Theme): string => {
         }),
       },
       dialog: {
+        // transform: 'translate3d(0,0,0)',
         position: 'fixed',
         ...getInsetJssStyle(),
         display: 'grid',
@@ -52,21 +53,15 @@ export const getComponentCss = (isOpen: boolean, theme: Theme): string => {
         padding: 0,
         border: 0,
         background: 'none',
+        overflow: 'hidden',
         ...(isOpen
           ? {
-              // TODO: somehow opacity transition is not visible
-              opacity: 1,
               transform: 'translate3d(0, 0, 0)',
-              transition: `${getTransition('opacity', 'long', 'in')}, ${getTransition('transform', 'long', 'in')}`,
+              transition: `${getTransition('transform', 'long', 'in')}`,
             }
           : {
-              opacity: 0,
               transform: 'translate3d(-100%, 0, 0)',
-              transition: `${getTransition('opacity', 'short', 'out', 'long')}, ${getTransition(
-                'transform',
-                'long',
-                'out'
-              )}`,
+              transition: `${getTransition('transform', 'long', 'out')}`,
             }),
         '&::backdrop': {
           // to improve browser backwards compatibility we visually style the backdrop on the :host,
@@ -74,30 +69,23 @@ export const getComponentCss = (isOpen: boolean, theme: Theme): string => {
           display: 'none',
         },
       },
-      '::slotted([slot="level-1"])': addImportantToEachRule({
-        margin: 0,
-        padding: spacingFluidLarge,
-        overflow: 'auto',
-        backgroundColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          backgroundColor: backgroundColorDark,
-        }),
-      }),
-      '::slotted([slot="level-2"])': addImportantToEachRule({
-        margin: 0,
-        padding: spacingFluidLarge,
-        overflow: 'auto',
-        backgroundColor: backgroundSurfaceColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          backgroundColor: backgroundSurfaceColorDark,
-        }),
-      }),
     },
     nav: {
       gridArea: '1/1',
       position: 'relative',
-      display: 'grid',
-      gridTemplateColumns: 'repeat(2, 30vw)',
+      // display: 'grid',
+      // gridTemplateColumns: 'repeat(2, 30vw)',
+      display: 'flex',
+      flexDirection: 'column',
+      width: '25vw',
+      padding: spacingFluidMedium,
+      boxSizing: 'border-box',
+      overflow: 'auto',
+      ...dropShadowMediumStyle,
+      backgroundColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        backgroundColor: backgroundColorDark,
+      }),
     },
     dismiss: {
       gridArea: '1/2',
@@ -128,26 +116,21 @@ const getBackdropJssStyles = (isVisible: boolean, duration: MotionDurationKey, t
           ...prefersColorSchemeDarkMediaQuery(theme, {
             background: themeDarkBackgroundShading,
           }),
-          transition: `${getTransition('background', duration, 'base')}, ${getTransition(
-            'backdrop-filter',
-            duration,
-            'base'
-          )}, ${getTransition('-webkit-backdrop-filter', duration, 'base')}`,
         }
       : {
           visibility: 'hidden', // element shall not be tabbable after fade out transition has finished
           WebkitBackdropFilter: 'blur(0px)',
           backdropFilter: 'blur(0px)',
           background: 'transparent',
-          transition: `${getTransition('background', duration, 'base')}, ${getTransition(
-            'backdrop-filter',
-            duration,
-            'base'
-          )}, ${getTransition(
-            '-webkit-backdrop-filter',
-            duration,
-            'base'
-          )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationLong})`,
         }),
+    transition: `${getTransition('background', duration, 'base')}, ${getTransition(
+      'backdrop-filter',
+      duration,
+      'base'
+    )}, ${getTransition(
+      '-webkit-backdrop-filter',
+      duration,
+      'base'
+    )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationLong})`,
   };
 };

@@ -42,6 +42,7 @@ export const bundles: { components: TagName[] }[] = [
   { components: ['p-text-list', 'p-text-list-item'] },
   { components: ['p-toast', 'p-toast-item'] },
   { components: ['p-stepper-horizontal', 'p-stepper-horizontal-item'] },
+  { components: ['p-flyout-navigation', 'p-flyout-navigation-item'] },
 ];
 
 export const config: Config = {

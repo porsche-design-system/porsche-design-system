@@ -1,21 +1,27 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import { FLYOUT_NAVIGATION_ARIA_ATTRIBUTES, type FlyoutNavigationAriaAttribute } from './flyout-navigation-utils';
+import {
+  FlyoutNavigationUpdateEvent,
+  INTERNAL_UPDATE_EVENT_NAME,
+  syncFlyoutNavigationItemsProps,
+} from './flyout-navigation-utils';
 import { getComponentCss } from './flyout-navigation-styles';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  getShadowRootHTMLElement,
   hasPropValueChanged,
   setScrollLock,
   THEMES,
+  throwIfChildrenAreNotOfKind,
   validateProps,
 } from '../../../utils';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
+import type { PropTypes, Theme } from '../../../types';
 
 const propTypes: PropTypes<typeof FlyoutNavigation> = {
+  activeId: AllowedTypes.string,
   open: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  aria: AllowedTypes.aria<FlyoutNavigationAriaAttribute>(FLYOUT_NAVIGATION_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -25,19 +31,25 @@ const propTypes: PropTypes<typeof FlyoutNavigation> = {
 export class FlyoutNavigation {
   @Element() public host!: HTMLElement;
 
-  /** If true, the flyout-navigation is open. */
+  // TODO: shouldn't open prop be changed internally too?
+  /** If true, the flyout-navigation is visualized as opened. */
   @Prop() public open: boolean = false;
+
+  /** Defines which flyout-navigation-item to be visualized as opened. */
+  @Prop({ mutable: true }) public activeId?: string = undefined;
 
   /** Adapts the flyout-navigation color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<FlyoutNavigationAriaAttribute>;
-
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
+  // TODO: return type is missing
+  /** Emitted when activeId state is changed. */
+  @Event({ bubbles: false }) public update?: EventEmitter<FlyoutNavigationUpdateEvent>;
+
   private dialog: HTMLDialogElement;
+  private flyoutNavigationItemElements: HTMLPFlyoutNavigationItemElement[] = [];
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -45,8 +57,21 @@ export class FlyoutNavigation {
     this.setDialogVisibility(isOpen);
   }
 
+  @Watch('activeId')
+  public activeIdChangeHandler(activeId: string): void {
+    this.update.emit({ activeId });
+  }
+
+  public componentWillLoad(): void {
+    this.defineFlyoutNavigationItemElements();
+    this.host.shadowRoot.addEventListener(INTERNAL_UPDATE_EVENT_NAME, (e: CustomEvent<FlyoutNavigationUpdateEvent>) => {
+      e.stopPropagation(); // prevents internal event from bubbling further
+      this.activeId = e.detail.activeId;
+    });
+  }
+
   public componentDidLoad(): void {
-    // in case flyout is rendered with open prop
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineFlyoutNavigationItemElements);
     if (this.open) {
       setScrollLock(true);
       this.setDialogVisibility(true);
@@ -64,11 +89,16 @@ export class FlyoutNavigation {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.open, this.theme);
+    syncFlyoutNavigationItemsProps(this.flyoutNavigationItemElements, this.activeId, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <dialog ref={(ref) => (this.dialog = ref)} onClick={(e) => this.onClick(e)} onCancel={(e) => this.onCancel(e)}>
+      <dialog
+        ref={(ref) => (this.dialog = ref)}
+        onClick={(e) => this.onClickDialog(e)}
+        onCancel={(e) => this.onCancelDialog(e)}
+      >
         <PrefixedTagNames.pButtonPure
           class="dismiss"
           type="button"
@@ -80,21 +110,25 @@ export class FlyoutNavigation {
           Dismiss flyout
         </PrefixedTagNames.pButtonPure>
         <div class="nav">
-          <slot name="level-1" />
-          <slot name="level-2" />
+          <slot />
         </div>
       </dialog>
     );
   }
 
-  private onClick(e: MouseEvent): void {
+  private defineFlyoutNavigationItemElements = (): void => {
+    throwIfChildrenAreNotOfKind(this.host, 'p-flyout-navigation-item');
+    this.flyoutNavigationItemElements = Array.from(this.host.children) as HTMLPFlyoutNavigationItemElement[];
+  };
+
+  private onClickDialog(e: MouseEvent): void {
     if ((e.target as any).nodeName === 'DIALOG') {
       // dismiss dialog when clicked on backdrop
       this.dismissDialog();
     }
   }
 
-  private onCancel(e): void {
+  private onCancelDialog(e: Event): void {
     // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
     e.preventDefault();
     this.dismissDialog();
