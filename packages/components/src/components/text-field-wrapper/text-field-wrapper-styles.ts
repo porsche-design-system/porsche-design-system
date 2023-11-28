@@ -30,6 +30,7 @@ export const getComponentCss = (
   inputType: string,
   showPasswordToggle: boolean,
   isWithinForm: boolean,
+  hasSubmitButton: boolean,
   theme: Theme
 ): string => {
   const isSearch = isType(inputType, 'search');
@@ -38,7 +39,7 @@ export const getComponentCss = (
   const isCalendar = isType(inputType, 'date') || isType(inputType, 'week') || isType(inputType, 'month');
   const isTime = isType(inputType, 'time');
   const isSearchOrPassword = isSearch || (isPassword && showPasswordToggle);
-  const isSearchWithoutForm = isSearch && !isWithinForm;
+  const isSearchWithoutFormOrSubmitButton = isSearch && (!isWithinForm || !hasSubmitButton);
   const isSearchWithForm = isSearch && isWithinForm;
   const isCalendarOrTimeWithCustomIndicator = showCustomCalendarOrTimeIndicator(isCalendar, isTime);
 
@@ -73,12 +74,12 @@ export const getComponentCss = (
       }),
     },
     root: {
-      [cssVariableInputPaddingStart]: isSearchWithoutForm
+      [cssVariableInputPaddingStart]: isSearchWithoutFormOrSubmitButton
         ? getCalculatedFormElementPaddingHorizontal(1)
         : formElementPaddingHorizontal,
       [cssVariableInputPaddingEnd]:
         isSearchOrPassword || isCalendarOrTimeWithCustomIndicator
-          ? getCalculatedFormElementPaddingHorizontal(isSearchWithForm ? 2 : 1)
+          ? getCalculatedFormElementPaddingHorizontal(isSearchWithForm && hasSubmitButton ? 2 : 1)
           : formElementPaddingHorizontal,
       display: 'grid',
       gap: spacingStaticXSmall,
@@ -99,7 +100,7 @@ export const getComponentCss = (
         },
       },
     }),
-    ...(isSearchWithoutForm && {
+    ...(isSearchWithoutFormOrSubmitButton && {
       // TODO: extract for multi-select, select-wrapper and text-field (not gridArea and placeSelf) like done for unit class
       icon: {
         gridArea: '1/2',
