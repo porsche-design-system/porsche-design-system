@@ -270,20 +270,20 @@ exports[`should have no basic DOM regression for p-link-tile-product 1`] = `
   <div class="header">
     <slot name="tags">
     </slot>
-    <p-icon class="hydrated">
-    </p-icon>
   </div>
   <div class="image-container">
     <slot>
     </slot>
   </div>
-  <p class="heading">
+  <p class="text text__heading">
     value</p>
-  <p class="price">
+  <p class="text text__price">
     value</p>
-  <p class="info">
+  <p class="text text__info">
   </p>
-</a>"
+</a>
+<p-button-pure class="like-button hydrated" hide-label="true">
+  Heart icon</p-button-pure>"
 `;
 
 exports[`should have no basic DOM regression for p-marque 1`] = `
