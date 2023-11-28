@@ -3,6 +3,7 @@ import type { AccordionSize } from './accordion-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
+  addImportantToRule,
   colorSchemeStyles,
   cssVariableTransitionDuration,
   getThemedColors,
@@ -51,6 +52,7 @@ export const getComponentCss = (
         ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
+      ':host(:only-of-type)': { borderBottom: addImportantToRule(0) },
       button: {
         display: 'flex',
         position: 'relative',
