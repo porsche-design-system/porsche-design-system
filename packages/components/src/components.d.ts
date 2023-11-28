@@ -35,7 +35,7 @@ import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, 
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBackground, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
-import { LinkTileProductLikeChangeEvent } from "./components/link-tile-product/link-tile-product-utils";
+import { LinkTileProductAriaAttribute, LinkTileProductTarget, LinkTileProductUpdateEvent } from "./components/link-tile-product/link-tile-product-utils";
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -95,7 +95,7 @@ export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, 
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBackground, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
-export { LinkTileProductLikeChangeEvent } from "./components/link-tile-product/link-tile-product-utils";
+export { LinkTileProductAriaAttribute, LinkTileProductTarget, LinkTileProductUpdateEvent } from "./components/link-tile-product/link-tile-product-utils";
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -1038,7 +1038,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
+        "aria"?: SelectedAriaAttributes<LinkTileProductAriaAttribute>;
         /**
           * Product heading
          */
@@ -1066,7 +1066,7 @@ export namespace Components {
         /**
           * Target attribute where the link should be opened.
          */
-        "target"?: LinkTileTarget;
+        "target"?: LinkTileProductTarget;
         /**
           * Adapts the banner color depending on the theme.
          */
@@ -2182,7 +2182,7 @@ declare global {
         new (): HTMLPLinkTileModelSignatureElement;
     };
     interface HTMLPLinkTileProductElementEventMap {
-        "likeChange": LinkTileProductLikeChangeEvent;
+        "likeChange": LinkTileProductUpdateEvent;
     }
     interface HTMLPLinkTileProductElement extends Components.PLinkTileProduct, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPLinkTileProductElementEventMap>(type: K, listener: (this: HTMLPLinkTileProductElement, ev: PLinkTileProductCustomEvent<HTMLPLinkTileProductElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3584,7 +3584,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
+        "aria"?: SelectedAriaAttributes<LinkTileProductAriaAttribute>;
         /**
           * Product heading
          */
@@ -3602,9 +3602,9 @@ declare namespace LocalJSX {
          */
         "liked"?: boolean;
         /**
-          * Emitted when the selection is changed.
+          * Emitted when the like button is clicked.
          */
-        "onLikeChange"?: (event: PLinkTileProductCustomEvent<LinkTileProductLikeChangeEvent>) => void;
+        "onLikeChange"?: (event: PLinkTileProductCustomEvent<LinkTileProductUpdateEvent>) => void;
         /**
           * Product price
          */
@@ -3616,7 +3616,7 @@ declare namespace LocalJSX {
         /**
           * Target attribute where the link should be opened.
          */
-        "target"?: LinkTileTarget;
+        "target"?: LinkTileProductTarget;
         /**
           * Adapts the banner color depending on the theme.
          */
