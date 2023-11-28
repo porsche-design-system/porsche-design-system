@@ -1709,6 +1709,10 @@ export namespace Components {
          */
         "state"?: TextFieldWrapperState;
         /**
+          * Show search button if wrapped inside a form.
+         */
+        "submitButton"?: boolean;
+        /**
           * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
@@ -4271,6 +4275,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: TextFieldWrapperState;
+        /**
+          * Show search button if wrapped inside a form.
+         */
+        "submitButton"?: boolean;
         /**
           * Adapts the color depending on the theme.
          */
