@@ -197,6 +197,7 @@ exports[`getIndexHtml() should return correct markup with styles 1`] = `
       p-link-social,
       p-link-tile,
       p-link-tile-model-signature,
+      p-link-tile-product,
       p-marque,
       p-modal,
       p-model-signature,
@@ -273,7 +274,7 @@ exports[`getIndexHtml() should return correct markup with styles 1`] = `
         vertical-align: middle !important
       }
 
-      :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
+      :is(p-button-tile, p-link-tile, p-link-tile-model-signature, p-link-tile-product) picture img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important

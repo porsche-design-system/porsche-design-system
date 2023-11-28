@@ -104,6 +104,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
       p-link-social,
       p-link-tile,
       p-link-tile-model-signature,
+      p-link-tile-product,
       p-marque,
       p-modal,
       p-model-signature,
@@ -180,7 +181,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         vertical-align: middle !important
       }
 
-      :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
+      :is(p-button-tile, p-link-tile, p-link-tile-model-signature, p-link-tile-product) picture img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important
@@ -333,6 +334,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
           p-link-social,
           p-link-tile,
           p-link-tile-model-signature,
+          p-link-tile-product,
           p-marque,
           p-modal,
           p-model-signature,
@@ -409,7 +411,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
             vertical-align: middle !important
           }
 
-          :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
+          :is(p-button-tile, p-link-tile, p-link-tile-model-signature, p-link-tile-product) picture img {
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important
@@ -523,6 +525,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
       p-link-social,
       p-link-tile,
       p-link-tile-model-signature,
+      p-link-tile-product,
       p-marque,
       p-modal,
       p-model-signature,
@@ -599,7 +602,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         vertical-align: middle !important
       }
 
-      :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
+      :is(p-button-tile, p-link-tile, p-link-tile-model-signature, p-link-tile-product) picture img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important
@@ -713,6 +716,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
       p-link-social,
       p-link-tile,
       p-link-tile-model-signature,
+      p-link-tile-product,
       p-marque,
       p-modal,
       p-model-signature,
@@ -789,7 +793,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
         vertical-align: middle !important
       }
 
-      :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
+      :is(p-button-tile, p-link-tile, p-link-tile-model-signature, p-link-tile-product) picture img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important
@@ -942,6 +946,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
           p-link-social,
           p-link-tile,
           p-link-tile-model-signature,
+          p-link-tile-product,
           p-marque,
           p-modal,
           p-model-signature,
@@ -1018,7 +1023,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
             vertical-align: middle !important
           }
 
-          :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
+          :is(p-button-tile, p-link-tile, p-link-tile-model-signature, p-link-tile-product) picture img {
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important
@@ -1132,6 +1137,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
       p-link-social,
       p-link-tile,
       p-link-tile-model-signature,
+      p-link-tile-product,
       p-marque,
       p-modal,
       p-model-signature,
@@ -1208,7 +1214,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
         vertical-align: middle !important
       }
 
-      :is(p-button-tile, p-link-tile, p-link-tile-model-signature) picture img {
+      :is(p-button-tile, p-link-tile, p-link-tile-model-signature, p-link-tile-product) picture img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important
