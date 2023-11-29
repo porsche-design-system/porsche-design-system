@@ -3586,11 +3586,6 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.23.tgz#498e41218ab3b6a1419c735e5c6ae2c5ed609b6c"
   integrity sha512-C16M+IYz0rgRhWZdCmK+h58JMv8vijAA61gmz2rspCSwKwzBebpdcsiUmwrtJRdphuY30i6BSLEOP8ppbNLyLg==
 
-"@porsche-design-system/browser-notification@4.1.4":
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/@porsche-design-system/browser-notification/-/browser-notification-4.1.4.tgz#2a33870f67da42ad67e891e3910493b6fbcdcfcd"
-  integrity sha512-M/vdngr9ANMbM8A0p2fMpDVwNT4qDh4R8WCPaXneBCCN6DA/wnarqvj1AnkJlmordWArs8AZLn7olwIOgLTwKg==
-
 "@porsche-design-system/prettier-config@^1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@porsche-design-system/prettier-config/-/prettier-config-1.0.1.tgz#6b0fc60d3d42c7b4d9c998bf7b685513a5488400"
