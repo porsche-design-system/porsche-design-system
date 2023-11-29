@@ -54,7 +54,7 @@ export class LinkTileProduct {
   /** Specifies the relationship of the target object to the link object. */
   @Prop() public rel?: string;
 
-  /** Adapts the banner color depending on the theme. */
+  /** Adapts the link-tile-product color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the like button is clicked. */
@@ -108,6 +108,7 @@ export class LinkTileProduct {
             icon={this.liked ? 'heart-filled' : 'heart'}
             hide-label="true"
             onClick={this.onLikeClick}
+            theme={this.theme}
           >
             {this.liked ? 'Heart Filled icon' : 'Heart icon'}
           </PrefixedTagNames.pButtonPure>
