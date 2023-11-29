@@ -90,7 +90,7 @@ export class LinkTileProduct {
           <div class="image-container">
             <slot />
           </div>
-          <div class="text text__heading-container">
+          <div class="heading-container">
             <h3 id={headingId} class="text text__heading">
               {this.heading}
             </h3>
