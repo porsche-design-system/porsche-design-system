@@ -7,6 +7,9 @@ export const waitForComponentsReady = (page: Page): Promise<number> => {
 };
 
 export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
+  // NOTE: there is another 40ms timeout in checkComponentsUpdatedPromise()
+  // that makes this utility and therefore all tests using it kind of unreliable and fells like gambling
+  await new Promise((resolve) => setTimeout(resolve, 40)); // TODO: remove this once this utility works reliable
   await page.evaluate((): Promise<number> => {
     (window as any).checkComponentsUpdatedPromise(); // see setContentWithDesignSystem(), need to check if Promise can be resolved initially
     return (window as any).componentsUpdatedPromise; // is resolved by checkComponentsUpdatedPromise() with some delay

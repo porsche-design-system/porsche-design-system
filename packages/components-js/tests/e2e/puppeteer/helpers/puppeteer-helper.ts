@@ -60,7 +60,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
               timeout = window.setTimeout(() => {
                 resolveComponentsUpdatedPromise();
                 createComponentsUpdatedPromise();
-              }, 40); // TODO: reduce this timeout once component lifecycles are working as intended
+              }, 40); // TODO: reduce or better remove this timeout for a reliable waitForStencilLifecycle() utility
             }
           };
 
@@ -365,7 +365,7 @@ export const expectShadowDomToMatchSnapshot = async (host: ElementHandle): Promi
   expect(prettyHtml).toMatchSnapshot();
 };
 
-type ExpectToMatchSnapshotOptions = Omit<SnapshotOptions, 'root'> & {
+export type ExpectToMatchSnapshotOptions = Omit<SnapshotOptions, 'root'> & {
   message?: string;
   skipWaitForFunction?: boolean;
 };
