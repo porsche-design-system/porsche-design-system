@@ -88,7 +88,7 @@
     "lint:components-vue": "yarn --cwd ./packages/components-vue lint",
     "lint:storefront": "yarn --cwd ./packages/storefront lint",
     "test:unit:assets": "yarn --cwd ./packages/assets test:unit",
-    "test:unit:assets:assets": "yarn --cwd ./packages/assets test:unit:assets",
+    "test:unit:assets:assets": "yarn --cwd ./packages/assets test:unit:assets:assets",
     "test:unit:assets:fallbacks": "yarn --cwd ./packages/assets/projects/fallbacks test:unit",
     "test:unit:assets:styles": "yarn --cwd ./packages/assets/projects/styles test:unit",
     "test:unit:component-meta": "yarn --cwd ./packages/component-meta test:unit",
