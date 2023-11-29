@@ -50,6 +50,7 @@ export const getComponentCss = (
         }),
         ...colorSchemeStyles,
         ...hostHiddenStyles,
+        '&(:only-of-type)': { borderBottom: 0 },
       }),
       button: {
         display: 'flex',

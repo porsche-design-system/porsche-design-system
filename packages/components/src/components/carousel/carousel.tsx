@@ -276,7 +276,7 @@ export class Carousel {
                 theme={this.theme}
                 icon="arrow-last"
                 class="btn skip-link"
-                alignLabel="left"
+                alignLabel="start"
                 hideLabel={true}
                 aria-describedby={this.heading ? 'heading' : null}
               >
