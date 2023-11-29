@@ -11,16 +11,18 @@ export const getComponentCss = (maxWidth: number, columns: BreakpointCustomizabl
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'grid',
-        gridAutoRows: '1fr', // for equal height
-        ...buildResponsiveStyles(columns, (col: SegmentedControlColumns) => ({
-          gridTemplateColumns: col === 'auto' ? `repeat(auto-fit, ${maxWidth}px)` : `repeat(${col}, minmax(0, 1fr))`,
-        })),
-        gap: '6px',
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          gridAutoRows: '1fr', // for equal height
+          ...buildResponsiveStyles(columns, (col: SegmentedControlColumns) => ({
+            gridTemplateColumns: col === 'auto' ? `repeat(auto-fit, ${maxWidth}px)` : `repeat(${col}, minmax(0, 1fr))`,
+          })),
+          gap: '6px',
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
     },
   });
 };

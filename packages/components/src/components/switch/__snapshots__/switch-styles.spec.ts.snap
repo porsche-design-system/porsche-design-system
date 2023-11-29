@@ -2,9 +2,9 @@
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
+  display: inline-block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: inline-block !important;
   width: auto !important;
   vertical-align: top !important;
 }
@@ -96,9 +96,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":true,"loading":false,"theme":"light"} 1`] = `
 ":host {
+  display: inline-block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: inline-block !important;
   width: auto !important;
   vertical-align: top !important;
 }
@@ -180,9 +180,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
+  display: block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: block !important;
   width: 100% !important;
 }
 :host([hidden]) {
@@ -273,9 +273,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":true,"theme":"light"} 1`] = `
 ":host {
+  display: block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: block !important;
   width: 100% !important;
 }
 :host([hidden]) {
@@ -363,9 +363,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"theme":"dark"} 1`] = `
 ":host {
+  display: block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: block !important;
   width: 100% !important;
 }
 :host([hidden]) {
@@ -453,9 +453,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"theme":"light"} 1`] = `
 ":host {
+  display: block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: block !important;
   width: 100% !important;
 }
 :host([hidden]) {
@@ -543,9 +543,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":true,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
+  display: block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: block !important;
   width: 100% !important;
 }
 :host([hidden]) {
@@ -636,9 +636,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"left","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
+  display: inline-block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: inline-block !important;
   width: auto !important;
   vertical-align: top !important;
 }
@@ -730,9 +730,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
+  display: inline-block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: inline-block !important;
   width: auto !important;
   vertical-align: top !important;
 }
@@ -824,9 +824,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"start","hideLabel":true,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
+  display: inline-block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: inline-block !important;
   width: auto !important;
   vertical-align: top !important;
 }
@@ -917,9 +917,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
 
 exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"stretch":{"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true},"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
+  display: inline-block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: inline-block !important;
   width: auto !important;
   vertical-align: top !important;
 }
@@ -928,14 +928,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 }
 @media(min-width:480px) {
   :host {
-    display: block !important;
     width: 100% !important;
   }
 }
 
 @media(min-width:760px) {
   :host {
-    display: inline-block !important;
     width: auto !important;
     vertical-align: top !important;
   }
@@ -943,14 +941,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 
 @media(min-width:1000px) {
   :host {
-    display: block !important;
     width: 100% !important;
   }
 }
 
 @media(min-width:1300px) {
   :host {
-    display: inline-block !important;
     width: auto !important;
     vertical-align: top !important;
   }
@@ -958,7 +954,6 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 
 @media(min-width:1760px) {
   :host {
-    display: block !important;
     width: 100% !important;
   }
 }

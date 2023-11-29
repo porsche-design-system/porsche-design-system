@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: var(--p-internal-text-list-pseudo-space) 1fr !important;
   column-gap: 16px !important;
   font: inherit !important;

@@ -40,18 +40,20 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        ...(!compact && {
-          borderBottom: `1px solid ${contrastLowColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: contrastLowColorDark,
+        ...addImportantToEachRule({
+          ...(!compact && {
+            borderBottom: `1px solid ${contrastLowColor}`,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: contrastLowColorDark,
+            }),
           }),
+          '&(:only-of-type)': { borderBottom: 0 },
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
         }),
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-        '&(:only-of-type)': { borderBottom: 0 },
-      }),
+      },
       button: {
         display: 'flex',
         position: 'relative',
