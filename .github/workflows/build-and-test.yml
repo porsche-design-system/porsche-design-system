@@ -761,6 +761,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --shared
+      - name: 'Build Utilities'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --utilities
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run-playwright
         with:
