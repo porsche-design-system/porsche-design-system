@@ -9,6 +9,7 @@ import { FlyoutExampleSlottedComponent } from './flyout-example-slotted.componen
 import { FlyoutExampleSlottedSecondaryComponent } from './flyout-example-slotted-secondary.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
+import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
 import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
 import { MultiSelectExampleComponent } from './multi-select-example.component';
 import { MultiSelectExampleControlledComponent } from './multi-select-example-controlled.component';
@@ -41,6 +42,7 @@ export const examples = [
   FlyoutExampleSlottedSecondaryComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
+  LinkTileProductExampleComponent,
   ModalExampleAccessibilityComponent,
   MultiSelectExampleComponent,
   MultiSelectExampleControlledComponent,
@@ -73,6 +75,7 @@ export * from './flyout-example-slotted.component';
 export * from './flyout-example-slotted-secondary.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
+export * from './link-tile-product-example.component';
 export * from './modal-example-accessibility.component';
 export * from './multi-select-example.component';
 export * from './multi-select-example-controlled.component';

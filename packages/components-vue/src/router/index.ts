@@ -76,6 +76,11 @@ export const routes: RouteType[] = [
     component: fromExamples.InlineNotificationExampleEvents,
   },
   {
+    path: '/link-tile-product-example',
+    name: 'Link Tile Product Example',
+    component: fromExamples.LinkTileProductExample,
+  },
+  {
     path: '/modal-example-accessibility',
     name: 'Modal Example Accessibility',
     component: fromExamples.ModalExampleAccessibility,

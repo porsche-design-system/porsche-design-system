@@ -141,6 +141,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InlineNotificationExampleEventsComponent,
   },
   {
+    name: 'Link Tile Product Example',
+    path: 'link-tile-product-example',
+    component: fromExamples.LinkTileProductExampleComponent,
+  },
+  {
     name: 'Modal Example Accessibility',
     path: 'modal-example-accessibility',
     component: fromExamples.ModalExampleAccessibilityComponent,

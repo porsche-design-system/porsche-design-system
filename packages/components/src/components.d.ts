@@ -35,7 +35,7 @@ import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, 
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBackground, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
-import { LinkTileProductAriaAttribute, LinkTileProductTarget, LinkTileProductUpdateEvent } from "./components/link-tile-product/link-tile-product-utils";
+import { LinkTileProductTarget, LinkTileProductUpdateEvent } from "./components/link-tile-product/link-tile-product-utils";
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -95,7 +95,7 @@ export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, 
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBackground, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
-export { LinkTileProductAriaAttribute, LinkTileProductTarget, LinkTileProductUpdateEvent } from "./components/link-tile-product/link-tile-product-utils";
+export { LinkTileProductTarget, LinkTileProductUpdateEvent } from "./components/link-tile-product/link-tile-product-utils";
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -1036,21 +1036,21 @@ export namespace Components {
     }
     interface PLinkTileProduct {
         /**
-          * Add ARIA attributes.
-         */
-        "aria"?: SelectedAriaAttributes<LinkTileProductAriaAttribute>;
-        /**
           * Product heading
          */
         "heading": string;
         /**
           * href of the `<a>`.
          */
-        "href": string;
+        "href"?: string;
         /**
           * Additional product information
          */
         "info"?: string;
+        /**
+          * A Boolean attribute indicating that a like button should be shown.
+         */
+        "likeButton"?: boolean;
         /**
           * A Boolean attribute indicating that a product is liked.
          */
@@ -1068,7 +1068,7 @@ export namespace Components {
          */
         "target"?: LinkTileProductTarget;
         /**
-          * Adapts the banner color depending on the theme.
+          * Adapts the link-tile-product color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -3582,10 +3582,6 @@ declare namespace LocalJSX {
     }
     interface PLinkTileProduct {
         /**
-          * Add ARIA attributes.
-         */
-        "aria"?: SelectedAriaAttributes<LinkTileProductAriaAttribute>;
-        /**
           * Product heading
          */
         "heading"?: string;
@@ -3597,6 +3593,10 @@ declare namespace LocalJSX {
           * Additional product information
          */
         "info"?: string;
+        /**
+          * A Boolean attribute indicating that a like button should be shown.
+         */
+        "likeButton"?: boolean;
         /**
           * A Boolean attribute indicating that a product is liked.
          */
@@ -3618,7 +3618,7 @@ declare namespace LocalJSX {
          */
         "target"?: LinkTileProductTarget;
         /**
-          * Adapts the banner color depending on the theme.
+          * Adapts the link-tile-product color depending on the theme.
          */
         "theme"?: Theme;
     }

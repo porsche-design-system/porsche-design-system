@@ -9,6 +9,7 @@ export * from './FlyoutExampleSlotted';
 export * from './FlyoutExampleSlottedSecondary';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
+export * from './LinkTileProductExample';
 export * from './ModalExampleAccessibility';
 export * from './MultiSelectExample';
 export * from './MultiSelectExampleControlled';
