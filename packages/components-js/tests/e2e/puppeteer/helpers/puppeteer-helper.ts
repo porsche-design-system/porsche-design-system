@@ -367,13 +367,14 @@ export const expectShadowDomToMatchSnapshot = async (host: ElementHandle): Promi
 
 type ExpectToMatchSnapshotOptions = Omit<SnapshotOptions, 'root'> & {
   message?: string;
+  skipWaitForFunction?: boolean;
 };
 export const expectA11yToMatchSnapshot = async (
   page: Page,
   elementHandle: ElementHandle,
   opts?: ExpectToMatchSnapshotOptions
 ): Promise<void> => {
-  const { message, ...options } = opts || {};
+  const { message, skipWaitForFunction, ...options } = opts || {};
 
   // TODO: remove this workaround once waitForStencilLifecycle() is reliable
   // currently it is mostly based on a 40ms timeout which isn't always enough
@@ -381,11 +382,11 @@ export const expectA11yToMatchSnapshot = async (
   // await setProperty(host, 'state', 'error');
   // await setProperty(host, 'message', 'Some error message.');
   // then there are 2 lifecycles but waitForStencilLifecycle() can resolve after the 1st
-  if (elementHandle) {
+  if (!skipWaitForFunction && elementHandle) {
     const tagName = (await (await elementHandle.getProperty('tagName')).jsonValue()).toLowerCase();
     if (['input', 'select', 'textarea'].includes(tagName)) {
       const state: FormState = await elementHandle.evaluate(
-        (el) => ((el.parentElement as any) || (el.getRootNode() as any).host)?.state
+        (el) => (el.parentElement as any)?.state || (el.getRootNode() as any).host?.state
       );
       if (state) {
         await page.waitForFunction(
