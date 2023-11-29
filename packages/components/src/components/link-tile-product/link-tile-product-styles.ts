@@ -2,6 +2,7 @@ import { getCss, Theme } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -48,12 +49,20 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
             height: '100%',
             objectFit: 'cover',
           },
+          '&(a)': {
+            position: 'absolute',
+            ...getInsetJssStyle(),
+            ...getFocusStyle({ borderRadius: 'medium' }),
+          },
         },
       }),
     },
+    'link-overlay': {
+      position: 'absolute',
+      ...getInsetJssStyle(),
+      ...getFocusStyle({ borderRadius: 'medium' }),
+    },
     root: {
-      display: 'block',
-      textDecoration: 'none',
       borderRadius: borderRadiusMedium,
       padding: spacingFluidSmall,
       color: primaryColor,
@@ -67,10 +76,8 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
           transform: 'scale3d(1.05,1.05,1.05)',
         },
       }),
-      ...getFocusStyle(),
     },
     header: {
-      display: 'flex',
       overflow: 'hidden',
       fontSize: fontSizeTextXSmall, // Use same font size and height as tag component
       height: `calc(${tagPaddingY} * 2 + ${fontLineHeight})`,

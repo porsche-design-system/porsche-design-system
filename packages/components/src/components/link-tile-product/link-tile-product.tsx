@@ -46,7 +46,7 @@ export class LinkTileProduct {
   @Prop() public liked?: boolean = false;
 
   /** href of the `<a>`. */
-  @Prop() public href: string;
+  @Prop() public href?: string;
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTileProductTarget = '_self';
@@ -76,14 +76,7 @@ export class LinkTileProduct {
 
     return (
       <Host>
-        <a
-          class="root"
-          href={this.href}
-          target={this.target}
-          rel={this.rel}
-          aria-labelledby={`${headingId} ${priceId}`}
-          aria-describedby={`${headerId} ${infoId}`}
-        >
+        <div class="root">
           <div id={headerId} class="header">
             <slot name="header" />
           </div>
@@ -101,7 +94,17 @@ export class LinkTileProduct {
           <p id={infoId} class="text text__info">
             {this.info}
           </p>
-        </a>
+          {this.href && (
+            <a
+              class="link-overlay"
+              href={this.href}
+              target={this.target}
+              rel={this.rel}
+              aria-labelledby={`${headingId} ${priceId}`}
+              aria-describedby={`${headerId} ${infoId}`}
+            />
+          )}
+        </div>
         {this.likeButton && (
           <PrefixedTagNames.pButtonPure
             class="like-button"
