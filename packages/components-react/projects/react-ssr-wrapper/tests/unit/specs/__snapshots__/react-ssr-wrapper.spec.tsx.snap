@@ -2020,6 +2020,9 @@ exports[`should render dsr component for PAccordion 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:host(:only-of-type) {
+  border-bottom: 0 !important;
+}
 button {
   display: flex;
   position: relative;
