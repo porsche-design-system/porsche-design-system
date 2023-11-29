@@ -1,6 +1,7 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import {
   type FlyoutNavigationUpdateEvent,
+  INTERNAL_DISMISS_EVENT_NAME,
   INTERNAL_UPDATE_EVENT_NAME,
   syncFlyoutNavigationItemsProps,
 } from './flyout-navigation-utils';
@@ -59,11 +60,17 @@ export class FlyoutNavigation {
 
   public componentWillLoad(): void {
     this.defineFlyoutNavigationItemElements();
+
     this.host.shadowRoot.addEventListener(INTERNAL_UPDATE_EVENT_NAME, (e: CustomEvent<FlyoutNavigationUpdateEvent>) => {
       e.stopPropagation(); // prevents internal event from bubbling further
       const activeId = e.detail.activeId;
       this.activeId = activeId;
       this.update.emit({ activeId });
+    });
+
+    this.host.shadowRoot.addEventListener(INTERNAL_DISMISS_EVENT_NAME, (e) => {
+      e.stopPropagation(); // prevents internal event from bubbling further
+      this.dismissDialog();
     });
   }
 
@@ -96,18 +103,25 @@ export class FlyoutNavigation {
         onClick={(e) => this.onClickDialog(e)}
         onCancel={(e) => this.onCancelDialog(e)}
       >
-        <PrefixedTagNames.pButtonPure
-          class="dismiss"
-          type="button"
-          hideLabel={true}
-          icon="close"
-          theme="dark"
-          onClick={this.dismissDialog}
-        >
-          Dismiss flyout
-        </PrefixedTagNames.pButtonPure>
-        <div class="drawer">
-          <slot />
+        <div class="wrapper">
+          <div class="drawer">
+            <div class="header">
+              <PrefixedTagNames.pButtonPure
+                class="dismiss"
+                type="button"
+                size="medium"
+                hideLabel={true}
+                icon="close"
+                theme="light"
+                onClick={this.dismissDialog}
+              >
+                Dismiss flyout
+              </PrefixedTagNames.pButtonPure>
+            </div>
+            <div class="content">
+              <slot />
+            </div>
+          </div>
         </div>
       </dialog>
     );

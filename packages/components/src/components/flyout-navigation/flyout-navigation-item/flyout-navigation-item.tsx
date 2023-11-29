@@ -11,6 +11,7 @@ import {
 import { type PropTypes, type Theme } from '../../../types';
 import {
   type FlyoutNavigationUpdateEvent,
+  INTERNAL_DISMISS_EVENT_NAME,
   INTERNAL_UPDATE_EVENT_NAME,
 } from '../flyout-navigation/flyout-navigation-utils';
 import { type FlyoutNavigationItemInternalHTMLProps } from './flyout-navigation-item-utils';
@@ -68,7 +69,34 @@ export class FlyoutNavigationItem {
           {this.label}
         </PrefixedTagNames.pButtonPure>
         <div class="drawer">
-          <slot />
+          <div class="header">
+            <PrefixedTagNames.pButtonPure
+              class="back"
+              type="button"
+              size="medium"
+              icon="arrow-head-left"
+              hideLabel={true}
+              theme={this.theme}
+              onClick={() => this.onClickBackButton()}
+            >
+              Back
+            </PrefixedTagNames.pButtonPure>
+            <h4 class="heading">{this.label}</h4>
+            <PrefixedTagNames.pButtonPure
+              class="dismiss"
+              type="button"
+              size="medium"
+              icon="close"
+              hideLabel={true}
+              theme={this.theme}
+              onClick={() => this.onClickDismissButton()}
+            >
+              Dismiss flyout
+            </PrefixedTagNames.pButtonPure>
+          </div>
+          <div class="content">
+            <slot />
+          </div>
         </div>
       </Host>
     );
@@ -82,5 +110,22 @@ export class FlyoutNavigationItem {
     this.host.dispatchEvent(
       new CustomEvent<FlyoutNavigationUpdateEvent>(INTERNAL_UPDATE_EVENT_NAME, eventInitDictDetail())
     );
+  };
+
+  private onClickBackButton = (): void => {
+    const eventInitDictDetail = (): CustomEventInit<FlyoutNavigationUpdateEvent> => ({
+      bubbles: true,
+      detail: { activeId: undefined },
+    });
+    this.host.dispatchEvent(
+      new CustomEvent<FlyoutNavigationUpdateEvent>(INTERNAL_UPDATE_EVENT_NAME, eventInitDictDetail())
+    );
+  };
+
+  private onClickDismissButton = (): void => {
+    const eventInitDictDetail = (): CustomEventInit<void> => ({
+      bubbles: true,
+    });
+    this.host.dispatchEvent(new CustomEvent<void>(INTERNAL_DISMISS_EVENT_NAME, eventInitDictDetail()));
   };
 }
