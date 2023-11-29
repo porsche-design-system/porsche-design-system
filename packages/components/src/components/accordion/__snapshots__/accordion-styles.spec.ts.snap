@@ -9,6 +9,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 :host([hidden]) {
   display: none !important;
 }
+:host(:only-of-type) {
+  border-bottom: 0 !important;
+}
 button {
   display: flex;
   position: relative;
@@ -102,6 +105,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 button {
   display: flex;
@@ -197,6 +203,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 :host([hidden]) {
   display: none !important;
 }
+:host(:only-of-type) {
+  border-bottom: 0 !important;
+}
 button {
   display: flex;
   position: relative;
@@ -290,6 +299,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 :host([hidden]) {
   display: none !important;
 }
+:host(:only-of-type) {
+  border-bottom: 0 !important;
+}
 button {
   display: flex;
   position: relative;
@@ -382,6 +394,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 button {
   display: flex;
@@ -478,6 +493,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 :host([hidden]) {
   display: none !important;
 }
+:host(:only-of-type) {
+  border-bottom: 0 !important;
+}
 button {
   display: flex;
   position: relative;
@@ -571,6 +589,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 button {
   display: flex;
@@ -667,6 +688,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 :host([hidden]) {
   display: none !important;
 }
+:host(:only-of-type) {
+  border-bottom: 0 !important;
+}
 button {
   display: flex;
   position: relative;
@@ -761,6 +785,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 :host([hidden]) {
   display: none !important;
 }
+:host(:only-of-type) {
+  border-bottom: 0 !important;
+}
 button {
   display: flex;
   position: relative;
@@ -853,6 +880,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 button {
   display: flex;
@@ -948,6 +978,9 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 }
 :host([hidden]) {
   display: none !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 button {
   display: flex;
