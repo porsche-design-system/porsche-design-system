@@ -12,8 +12,8 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://designsystem.porsche.com",
-  "main": "dist/cjs/assets/src/index.cjs",
-  "module": "dist/esm/assets/src/index.mjs",
+  "main": "dist/cjs/src/index.cjs",
+  "module": "dist/esm/src/index.mjs",
   "types": "dist/esm/index.d.ts",
   "sideEffects": false,
   "scripts": {
