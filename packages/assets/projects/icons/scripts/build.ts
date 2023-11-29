@@ -4,7 +4,7 @@ import * as crypto from 'crypto';
 import { optimize, Config } from 'svgo';
 import globby from 'globby';
 import { paramCase } from 'change-case';
-import { CDN_BASE_PATH_ICONS } from '../../../cdn.config';
+import { CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
 
 type Manifest = {
   [name: string]: string;

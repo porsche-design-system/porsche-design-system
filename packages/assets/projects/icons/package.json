@@ -15,7 +15,7 @@
   ],
   "homepage": "https://icons.porsche.com",
   "scripts": {
-    "build": "yarn build:icons && yarn build:lib",
+    "build": "yarn clean:build && yarn build:icons && yarn build:lib",
     "build:icons": "ts-node scripts/build.ts",
     "build:lib": "yarn build:lib:cjs && yarn build:lib:esm",
     "build:lib:cjs": "tsc --build tsconfig.lib.cjs.json",
@@ -37,6 +37,6 @@
     "dist/"
   ],
   "volta": {
-    "extends": "../../package.json"
+    "extends": "../../../../package.json"
   }
 }

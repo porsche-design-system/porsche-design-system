@@ -4,7 +4,7 @@ import type { Fallbacks } from './utils';
 import { FALLBACKS } from './utils';
 import * as path from 'path';
 import { camelCase } from 'change-case';
-import { CDN_BASE_PATH_FALLBACKS } from '../../../cdn.config';
+import { CDN_BASE_PATH_FALLBACKS } from '../../../../../cdn.config';
 
 const inputDir = './dist/tmp';
 const cdnPathBasePath = `https://cdn.ui.porsche.com/${CDN_BASE_PATH_FALLBACKS}`;
