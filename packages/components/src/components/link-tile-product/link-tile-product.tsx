@@ -9,7 +9,7 @@ import {
 } from '../../utils';
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 import { getComponentCss } from './link-tile-product-styles';
-import { LinkTileProductTarget, LinkTileProductUpdateEvent, tagsSlotName } from './link-tile-product-utils';
+import { LinkTileProductTarget, LinkTileProductUpdateEvent } from './link-tile-product-utils';
 
 const propTypes: PropTypes<typeof LinkTileProduct> = {
   heading: AllowedTypes.string,
@@ -85,7 +85,7 @@ export class LinkTileProduct {
           aria-describedby={`${headerId} ${infoId}`}
         >
           <div id={headerId} class="header">
-            <slot name={tagsSlotName} />
+            <slot name="header" />
           </div>
           <div class="image-container">
             <slot />
@@ -105,6 +105,7 @@ export class LinkTileProduct {
         {this.likeButton && (
           <PrefixedTagNames.pButtonPure
             class="like-button"
+            type="button"
             icon={this.liked ? 'heart-filled' : 'heart'}
             hide-label="true"
             onClick={this.onLikeClick}
