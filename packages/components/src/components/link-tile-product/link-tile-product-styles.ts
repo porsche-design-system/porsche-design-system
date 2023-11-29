@@ -15,6 +15,7 @@ import {
   fontSizeTextXSmall,
   fontWeightRegular,
   fontWeightSemiBold,
+  getFocusStyle,
   spacingFluidMedium,
   spacingFluidSmall,
   spacingFluidXSmall,
@@ -34,6 +35,7 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
   return getCss({
     '@global': {
       ':host': {
+        display: 'block',
         position: 'relative',
         ...addImportantToEachRule({
           ...colorSchemeStyles,
@@ -66,6 +68,7 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
           transform: 'scale3d(1.05,1.05,1.05)',
         },
       }),
+      ...getFocusStyle(),
     },
     header: {
       display: 'flex',

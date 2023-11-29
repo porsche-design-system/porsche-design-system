@@ -1,23 +1,15 @@
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
-  LINK_ARIA_ATTRIBUTES,
-  parseAndGetAriaAttributes,
   THEMES,
   validateProps,
 } from '../../utils';
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
-import { LinkTileAriaAttribute } from '../link-tile/link-tile-utils';
 import { getComponentCss } from './link-tile-product-styles';
-import {
-  LinkTileProductAriaAttribute,
-  LinkTileProductTarget,
-  LinkTileProductUpdateEvent,
-  tagsSlotName,
-} from './link-tile-product-utils';
+import { LinkTileProductTarget, LinkTileProductUpdateEvent, tagsSlotName } from './link-tile-product-utils';
 
 const propTypes: PropTypes<typeof LinkTileProduct> = {
   heading: AllowedTypes.string,
@@ -28,7 +20,6 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
   href: AllowedTypes.string,
   target: AllowedTypes.string,
   rel: AllowedTypes.string,
-  aria: AllowedTypes.aria<LinkTileAriaAttribute>(LINK_ARIA_ATTRIBUTES),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -63,9 +54,6 @@ export class LinkTileProduct {
   /** Specifies the relationship of the target object to the link object. */
   @Prop() public rel?: string;
 
-  /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<LinkTileProductAriaAttribute>;
-
   /** Adapts the banner color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
@@ -81,21 +69,38 @@ export class LinkTileProduct {
     attachComponentCss(this.host, getComponentCss, this.likeButton, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const headerId = 'header';
+    const headingId = 'heading';
+    const priceId = 'price';
+    const infoId = 'info';
 
     return (
       <Host>
-        <a class="root" href={this.href} target={this.target} rel={this.rel} {...parseAndGetAriaAttributes(this.aria)}>
-          <div class="header">
+        <a
+          class="root"
+          href={this.href}
+          target={this.target}
+          rel={this.rel}
+          aria-labelledby={`${headingId} ${priceId}`}
+          aria-describedby={`${headerId} ${infoId}`}
+        >
+          <div id={headerId} class="header">
             <slot name={tagsSlotName} />
           </div>
           <div class="image-container">
             <slot />
           </div>
           <div class="text text__heading-container">
-            <p class="text text__heading">{this.heading}</p>
+            <h3 id={headingId} class="text text__heading">
+              {this.heading}
+            </h3>
           </div>
-          <p class="text text__price">{this.price}</p>
-          <p class="text text__info">{this.info}</p>
+          <p id={priceId} class="text text__price">
+            {this.price}
+          </p>
+          <p id={infoId} class="text text__info">
+            {this.info}
+          </p>
         </a>
         {this.likeButton && (
           <PrefixedTagNames.pButtonPure
