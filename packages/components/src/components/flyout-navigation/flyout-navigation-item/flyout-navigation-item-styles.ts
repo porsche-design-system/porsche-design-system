@@ -20,11 +20,11 @@ import {
 import {
   cssVariableVisibility,
   cssVariableVisibilityTransitionDuration,
-  drawerWidth,
+  scrollerWidth,
   getContentJssStyles,
 } from '../flyout-navigation/flyout-navigation-styles';
 
-export const getComponentCss = (isSecondaryDrawerOpen: boolean, theme: Theme): string => {
+export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Theme): string => {
   const { primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
     getThemedColors('dark');
@@ -42,7 +42,7 @@ export const getComponentCss = (isSecondaryDrawerOpen: boolean, theme: Theme): s
         }),
       },
       '::slotted(*)': addImportantToEachRule({
-        opacity: isSecondaryDrawerOpen ? 1 : 0,
+        opacity: isSecondaryScrollerVisible ? 1 : 0,
         transition: getTransition('opacity', 'long'),
       }),
     },
@@ -51,22 +51,32 @@ export const getComponentCss = (isSecondaryDrawerOpen: boolean, theme: Theme): s
       padding: spacingFluidSmall,
       margin: `0 calc(${spacingFluidSmall} * -1)`,
     },
-    drawer: {
+    scroller: {
       position: 'fixed',
       ...getInsetJssStyle(),
-      // cssVariableTransitionDuration ensures closing animation of secondary drawer is given when whole flyout-navigation gets closed
-      transition: `${getTransition(
-        'transform',
-        'long',
-        isSecondaryDrawerOpen ? 'in' : 'out'
-      )}, visibility 0s linear var(${cssVariableTransitionDuration}, var(${cssVariableVisibilityTransitionDuration}, ${
-        isSecondaryDrawerOpen ? '0s' : motionDurationLong
-      }))`,
-      transform: isSecondaryDrawerOpen ? 'translate3d(0, 0, 0)' : 'translate3d(100%, 0, 0)',
-      // cssVariableVisibility ensures secondary drawer is not tabbable when whole flyout-navigation is closed
-      // on mobile we need to decide if secondary drawer needs to be visible or not, on desktop it wouldn't be necessary but also doesn't harm
-      visibility: `var(${cssVariableVisibility},${isSecondaryDrawerOpen ? 'visible' : 'hidden'})`,
-      zIndex: isSecondaryDrawerOpen ? 2 : 1,
+      // "cssVariableTransitionDuration" ensures closing animation of secondary scroller is given when whole flyout-navigation gets closed
+      // "cssVariableVisibility" ensures secondary scroller is not tabbable when whole flyout-navigation is closed
+      ...(isSecondaryScrollerVisible
+        ? {
+            zIndex: 2,
+            transform: 'translate3d(0, 0, 0)',
+            visibility: `var(${cssVariableVisibility},visible)`,
+            transition: `${getTransition(
+              'transform',
+              'long',
+              'in'
+            )}, visibility 0s linear var(${cssVariableTransitionDuration},var(${cssVariableVisibilityTransitionDuration},0s))`,
+          }
+        : {
+            zIndex: 1,
+            transform: 'translate3d(100%, 0, 0)',
+            visibility: `var(${cssVariableVisibility},hidden)`,
+            transition: `${getTransition(
+              'transform',
+              'long',
+              'out'
+            )}, visibility 0s linear var(${cssVariableTransitionDuration},var(${cssVariableVisibilityTransitionDuration},${motionDurationLong}))`,
+          }),
       width: '100vw',
       boxSizing: 'border-box',
       overflow: 'auto',
@@ -75,12 +85,13 @@ export const getComponentCss = (isSecondaryDrawerOpen: boolean, theme: Theme): s
         backgroundColor: backgroundSurfaceColorDark,
       }),
       [getMediaQueryMin('l')]: {
-        insetInlineStart: `calc(${drawerWidth} - 1px)`, // -1px prevents possible visible background under certain circumstances between main and secondary drawer
-        width: drawerWidth,
+        insetInlineStart: `calc(${scrollerWidth} - 1px)`, // -1px prevents possible visible background under certain circumstances between primary and secondary scroller
+        width: scrollerWidth,
         transform: 'initial',
-        transition: `visibility 0s linear var(${cssVariableTransitionDuration}, var(${cssVariableVisibilityTransitionDuration}, 0s))`,
+        transition: `visibility 0s linear var(${cssVariableTransitionDuration},var(${cssVariableVisibilityTransitionDuration},0s))`,
       },
     },
+    // header needs to be placed within scroller to ensure scrollbars are fully visible
     header: {
       position: 'sticky',
       top: 0,

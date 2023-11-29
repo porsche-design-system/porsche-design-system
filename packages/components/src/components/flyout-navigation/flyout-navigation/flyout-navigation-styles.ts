@@ -29,9 +29,13 @@ import { FLYOUT_Z_INDEX } from '../../../constants';
 export const cssVariableVisibility = '--p-internal-flyout-navigation-visibility';
 export const cssVariableVisibilityTransitionDuration = '--p-internal-flyout-navigation-visibility-transition-duration';
 
-export const drawerWidth = '30vw';
+export const scrollerWidth = '30vw';
 
-export const getComponentCss = (isMainDrawerOpen: boolean, isSecondaryDrawerOpen: boolean, theme: Theme): string => {
+export const getComponentCss = (
+  isPrimaryScrollerVisible: boolean,
+  isSecondaryScrollerVisible: boolean,
+  theme: Theme
+): string => {
   const { backgroundColor } = getThemedColors(theme);
   const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
 
@@ -43,11 +47,11 @@ export const getComponentCss = (isMainDrawerOpen: boolean, isSecondaryDrawerOpen
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...(!isMainDrawerOpen && {
+          ...(!isPrimaryScrollerVisible && {
             [cssVariableVisibility]: 'hidden',
             [cssVariableVisibilityTransitionDuration]: motionDurationLong,
           }),
-          ...getBackdropJssStyles(isMainDrawerOpen, 'long', theme),
+          ...getBackdropJssStyles(isPrimaryScrollerVisible, 'long', theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -66,8 +70,17 @@ export const getComponentCss = (isMainDrawerOpen: boolean, isSecondaryDrawerOpen
         visibility: 'inherit', // ua-style reset
         background: 'none', // ua-style reset
         overflow: 'hidden', // ua-style reset, dialog shall never become scrollable, it's handled by custom scroll areas
-        [getMediaQueryMin('xl')]: {
-          gridTemplateColumns: `repeat(${isSecondaryDrawerOpen ? 2 : 1}, ${drawerWidth}) auto`,
+        ...(isPrimaryScrollerVisible
+          ? {
+              transform: 'translate3d(0, 0, 0)',
+              transition: `${getTransition('transform', 'long', 'in')}`,
+            }
+          : {
+              transform: 'translate3d(-100%, 0, 0)',
+              transition: `${getTransition('transform', 'long', 'out')}`,
+            }),
+        [getMediaQueryMin('l')]: {
+          width: `calc(${isSecondaryScrollerVisible ? 2 : 1} * ${scrollerWidth})`,
         },
         '&::backdrop': {
           // to improve browser backwards compatibility we visually style the backdrop on the :host,
@@ -76,33 +89,19 @@ export const getComponentCss = (isMainDrawerOpen: boolean, isSecondaryDrawerOpen
         },
       },
     },
-    wrapper: {
-      display: 'grid',
-      gridTemplateColumns: 'minmax(0, 1fr)',
-      gridTemplateRows: '100vh',
-      overflow: 'hidden',
-      ...(isMainDrawerOpen
-        ? {
-            transform: 'translate3d(0, 0, 0)',
-            transition: `${getTransition('transform', 'long', 'in')}`,
-          }
-        : {
-            transform: 'translate3d(-100%, 0, 0)',
-            transition: `${getTransition('transform', 'long', 'out')}`,
-          }),
-      [getMediaQueryMin('l')]: {
-        gridTemplateColumns: `repeat(${isSecondaryDrawerOpen ? 2 : 1}, ${drawerWidth}) auto`,
-      },
-    },
-    drawer: {
-      gridArea: '1/1',
+    scroller: {
+      width: '100vw',
+      height: '100vh',
       overflow: 'auto',
-      // cssVariableVisibility ensures secondary drawer is not tabbable when whole flyout-navigation is closed
-      // on mobile we need to decide if secondary drawer needs to be visible or not, on desktop it's not necessary but also doesn't harm
+      [getMediaQueryMin('l')]: {
+        width: scrollerWidth,
+      },
+      // cssVariableVisibility ensures secondary scroller is not tabbable when whole flyout-navigation is closed
+      // on mobile we need to decide if secondary scroller needs to be visible or not, on desktop it's not necessary but also doesn't harm
       [getMediaQueryMax('l')]: {
-        visibility: `var(${cssVariableVisibility},${isSecondaryDrawerOpen ? 'hidden' : 'visible'})`,
+        visibility: `var(${cssVariableVisibility},${isSecondaryScrollerVisible ? 'hidden' : 'visible'})`,
         transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${
-          !isMainDrawerOpen || isSecondaryDrawerOpen ? motionDurationLong : '0s'
+          !isPrimaryScrollerVisible || isSecondaryScrollerVisible ? motionDurationLong : '0s'
         })`,
       },
       backgroundColor,
@@ -110,6 +109,7 @@ export const getComponentCss = (isMainDrawerOpen: boolean, isSecondaryDrawerOpen
         backgroundColor: backgroundColorDark,
       }),
     },
+    // header needs to be placed within scroller to ensure scrollbars are fully visible
     header: {
       position: 'sticky',
       top: 0,

@@ -103,24 +103,22 @@ export class FlyoutNavigation {
         onClick={(e) => this.onClickDialog(e)}
         onCancel={(e) => this.onCancelDialog(e)}
       >
-        <div class="wrapper">
-          <div class="drawer">
-            <div class="header">
-              <PrefixedTagNames.pButtonPure
-                class="dismiss"
-                type="button"
-                size="medium"
-                hideLabel={true}
-                icon="close"
-                theme="light"
-                onClick={this.dismissDialog}
-              >
-                Dismiss flyout
-              </PrefixedTagNames.pButtonPure>
-            </div>
-            <div class="content">
-              <slot />
-            </div>
+        <div class="scroller">
+          <div class="header">
+            <PrefixedTagNames.pButtonPure
+              class="dismiss"
+              type="button"
+              size="medium"
+              hideLabel={true}
+              icon="close"
+              theme="light"
+              onClick={this.dismissDialog}
+            >
+              Dismiss flyout
+            </PrefixedTagNames.pButtonPure>
+          </div>
+          <div class="content">
+            <slot />
           </div>
         </div>
       </dialog>

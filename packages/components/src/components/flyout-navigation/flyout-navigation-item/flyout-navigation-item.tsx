@@ -68,7 +68,7 @@ export class FlyoutNavigationItem {
         >
           {this.label}
         </PrefixedTagNames.pButtonPure>
-        <div class="drawer">
+        <div class="scroller">
           <div class="header">
             <PrefixedTagNames.pButtonPure
               class="back"
