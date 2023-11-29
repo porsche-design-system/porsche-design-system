@@ -27,7 +27,7 @@ describe('pagination', () => {
 
     const nav = await selectNode(page, 'p-pagination >>> nav');
     const paginationUpdateEventCounter = await selectNode(page, 'p-pagination + p');
-    const [, secondBtn, thirdBtn, fourthBtn] = (await nav.$$('span:not(.ellipsis)')).slice(1, -1); // without prev and next;
+    const [, secondBtn, thirdBtn, fourthBtn] = (await nav.$$('span:not(.ellipsis)')).slice(1, -1); // without prev and next
 
     await secondBtn.click();
     expect(await getCounterValue(paginationUpdateEventCounter)).toBe('1');

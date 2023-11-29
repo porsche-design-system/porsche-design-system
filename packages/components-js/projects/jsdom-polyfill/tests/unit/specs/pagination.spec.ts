@@ -27,7 +27,7 @@ it('should have working events', async () => {
   const debugEl = document.querySelector('#debug');
   expect(debugEl.innerHTML).toBe('Current Page: <span>1</span>; Event Counter: <span>0</span>;');
 
-  const [, btn2, btn3] = Array.from(el.shadowRoot.querySelectorAll('span:not(.ellipsis)')).slice(1, -1); // without prev and next;
+  const [, btn2, btn3] = Array.from(el.shadowRoot.querySelectorAll('span:not(.ellipsis)')).slice(1, -1); // without prev and next
 
   await userEvent.click(btn2);
   expect(debugEl.innerHTML).toBe('Current Page: <span>2</span>; Event Counter: <span>1</span>;');
