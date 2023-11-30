@@ -5206,52 +5206,75 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   >
     <style>
       :host {
+  display: block;
   position: relative;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(img) {
+::slotted(img), ::slotted(picture) {
+  display: block !important;
   width: 100% !important;
   height: 100% !important;
+  border-radius: 12px !important;
   object-fit: cover !important;
+  overflow: hidden !important;
+  aspect-ratio: 8 / 9 !important;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  mix-blend-mode: var(--p-link-tile-product-mix-blend-mode) !important;
+}
+::slotted(a) {
+  position: absolute !important;
+  border-radius: 8px !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 1 !important;
+}
+
+.link-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
 }
 .root {
-  display: block;
-  text-decoration: none;
+  box-sizing: border-box;
   border-radius: 8px;
   padding: clamp(8px, 0.5vw + 6px, 16px);
   color: #010205;
   background-color: #EEEFF2;
 }
 .header {
-  display: flex;
   overflow: hidden;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  height: calc(4px * 2 + calc(6px + 2.125ex));
   padding-right: calc(6px + 2.125ex);
 }
 .like-button {
   position: absolute;
+  z-index: 2;
   top: clamp(8px, 0.5vw + 6px, 16px);
   right: clamp(8px, 0.5vw + 6px, 16px);
   height: fit-content;
 }
-.text {
-  text-align: center;
-  margin: 0;
-}
-.text__heading-container {
+.heading-container {
   height: calc(calc(6px + 2.125ex) * 2);
   display: flex;
   align-items: flex-end;
   justify-content: center;
   overflow: hidden;
 }
+.text {
+  text-align: center;
+  margin: 0;
+}
 .text__heading {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-weight: 600;
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   max-height: calc(calc(6px + 2.125ex) * 2);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -5259,39 +5282,39 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.text__price, .text__info {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 400;
+}
 .text__price {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-weight: 400;
 }
 .text__info {
   font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  font-weight: 400;
   height: calc(6px + 2.125ex);
   padding-bottom: clamp(4px, 0.25vw + 3px, 8px);
   color: #535457;
 }
 .image-container {
-  aspect-ratio: 8 / 9;
-  overflow: hidden;
-  margin: clamp(8px, 0.5vw + 6px, 16px) clamp(16px, 1.25vw + 12px, 36px) clamp(4px, 0.25vw + 3px, 8px) clamp(16px, 1.25vw + 12px, 36px) ;
-  border-radius: 12px;
-  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(16px, 1.25vw + 12px, 36px) clamp(4px, 0.25vw + 3px, 8px) clamp(16px, 1.25vw + 12px, 36px) ;
 }
 
     </style>
-    <a
+    <div
       class="root"
-      target="_self"
     >
       <div
         class="header"
+        id="header"
       >
         <slot
-          name="tags"
+          name="header"
         />
       </div>
       <div
@@ -5300,19 +5323,22 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
         <slot />
       </div>
       <div
-        class="text text__heading-container"
+        class="heading-container"
       >
-        <p
+        <h3
           class="text text__heading"
+          id="heading"
         />
       </div>
       <p
         class="text text__price"
+        id="price"
       />
       <p
         class="text text__info"
+        id="info"
       />
-    </a>
+    </div>
     <p-button-pure
       class="like-button ssr"
       hide-label="true"
@@ -5393,7 +5419,7 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
         </style>
         <button
           class="root"
-          type="submit"
+          type="button"
         >
           <p-icon
             aria-hidden="true"
