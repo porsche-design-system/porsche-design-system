@@ -39,6 +39,7 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
   return getCss({
     '@global': {
       ':host': {
+        display: 'block',
         position: 'relative',
         ...addImportantToEachRule({
           ...colorSchemeStyles,
