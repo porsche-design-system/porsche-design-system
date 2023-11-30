@@ -6,12 +6,15 @@ import generatePackageJson from 'rollup-plugin-generate-package-json';
 import { globbySync } from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
-import { version } from './package.json';
+import pkgJson from './package.json' assert { type: 'json' };
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const outputDir = 'dist/utils';
 const input = 'src/utils-entry.ts';
 
 const generateUtilsEntryFile = () => {
+  const __dirname = dirname(fileURLToPath(import.meta.url));
   const componentsDir = path.resolve(__dirname, 'src/components');
   const utilsPaths = globbySync(`${componentsDir}/**/*-utils.ts`).sort();
 
@@ -37,7 +40,7 @@ const sharedPlugins = [
   replace({
     preventAssignment: true,
     ROLLUP_REPLACE_IS_STAGING: isDevBuild ? '"staging"' : '"production"',
-    ROLLUP_REPLACE_VERSION: `"${version}"`,
+    ROLLUP_REPLACE_VERSION: `"${pkgJson.version}"`,
     ROLLUP_REPLACE_CDN_BASE_URL: isDevBuild
       ? '"http://localhost:3001"'
       : 'global.PORSCHE_DESIGN_SYSTEM_CDN_URL + "/porsche-design-system"', // global (not window!) because this is used during SSR on server side in nodejs
