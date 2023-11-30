@@ -87,7 +87,7 @@
     "devtools-protocol": "^0.0.1231134",
     "globby": "^11.0.4",
     "js-beautify": "^1.14.11",
-    "jsdom": "^23.0.0",
+    "jsdom": "^23.0.1",
     "local-web-server": "^5.3.0",
     "mime": "^4.0.0",
     "pdf-to-png-converter": "^3.1.0",
