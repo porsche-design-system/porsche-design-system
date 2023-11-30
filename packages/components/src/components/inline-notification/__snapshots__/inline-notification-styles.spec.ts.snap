@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for state: error, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -53,7 +53,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: error, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -104,7 +104,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: info, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -155,7 +155,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: info, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -206,7 +206,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: info, hasAction: false, hasClose: true and theme: dark 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
@@ -257,7 +257,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: info, hasAction: false, hasClose: true and theme: light 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
@@ -308,7 +308,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: info, hasAction: true, hasClose: false and theme: dark 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -362,7 +362,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: info, hasAction: true, hasClose: false and theme: light 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -416,7 +416,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: info, hasAction: true, hasClose: true and theme: dark 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
@@ -470,7 +470,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: info, hasAction: true, hasClose: true and theme: light 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
@@ -524,7 +524,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -575,7 +575,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -626,7 +626,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: true and theme: dark 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
@@ -677,7 +677,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: false, hasClose: true and theme: light 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
@@ -728,7 +728,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: false and theme: dark 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -782,7 +782,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: false and theme: light 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -836,7 +836,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: true and theme: dark 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
@@ -890,7 +890,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: neutral, hasAction: true, hasClose: true and theme: light 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
@@ -944,7 +944,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: success, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -995,7 +995,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: success, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -1046,7 +1046,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: warning, hasAction: false, hasClose: false and theme: dark 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
@@ -1097,7 +1097,7 @@ h5,p {
 
 exports[`getComponentCss() should return correct css for state: warning, hasAction: false, hasClose: false and theme: light 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
