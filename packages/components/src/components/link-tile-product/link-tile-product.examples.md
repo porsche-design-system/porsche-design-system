@@ -51,7 +51,7 @@ property.
 
 <Playground :frameworkMarkup="example" :config="{ ...config, withoutDemo: true }">
     <p-link-tile-product
-    :heading="'Some product name'"
+    :heading="'Some product'"
     :price="'911€'"
     :info="'Some info'"
     :href="'https://www.porsche.com'"
@@ -82,8 +82,7 @@ export default class Code extends Vue {
 
   handleLikeChange(e) {
     e.preventDefault();
-    console.log(e);
-    this.liked = !e.liked;
+    this.liked = !e.detail.liked;
   };
 
   get theme(): Theme {
@@ -93,11 +92,11 @@ export default class Code extends Vue {
 
   example = getLinkTileProductCodeSamples();
 
-  basic = `<p-link-tile-product heading="Some product name" price="911€" href="https://porsche.com" theme="${this.theme}">
+  basic = `<p-link-tile-product heading="Some product" price="911€" href="https://porsche.com" theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>
 
-<p-link-tile-product heading="Some product name" price="911€" href="https://porsche.com" theme="${this.theme}">
+<p-link-tile-product heading="Some product" price="911€" href="https://porsche.com" theme="${this.theme}">
   <picture>
     <source media="(min-width:400px)" srcset="${this.imgSrc}" />
     ${this.img}
@@ -107,21 +106,21 @@ export default class Code extends Vue {
   likeButton = 'false';
   likeButtons = ['true', 'false'];
   get likeButtonMarkup() {
-    return`<p-link-tile-product heading="Some product name" price="911€" href="https://porsche.com" ${this.likeButton === 'false' ? 'like-button="false"' : ''} theme="${this.theme}">
+    return`<p-link-tile-product heading="Some product" price="911€" href="https://porsche.com" ${this.likeButton === 'false' ? 'like-button="false"' : ''} theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>`;
   };
 
-  header = `<p-link-tile-product heading="Some product name" price="911€" href="https://porsche.com" theme="${this.theme}">
+  header = `<p-link-tile-product heading="Some product" price="911€" href="https://porsche.com" theme="${this.theme}">
     ${this.headerSlot}
     ${this.img}
 </p-link-tile-product>`;
 
-  info = `<p-link-tile-product heading="Some product name" price="911€" href="https://porsche.com" info="Some info" theme="${this.theme}">
+  info = `<p-link-tile-product heading="Some product" price="911€" href="https://porsche.com" info="Some info" theme="${this.theme}">
     ${this.img}
 </p-link-tile-product>`;
 
-  slottedLink = `<p-link-tile-product heading="Some product name" price="911€" info="Some info" theme="${this.theme}">
+  slottedLink = `<p-link-tile-product heading="Some product" price="911€" info="Some info" theme="${this.theme}">
     ${this.link}
     ${this.img}
 </p-link-tile-product>`;
