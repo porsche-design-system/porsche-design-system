@@ -93,11 +93,11 @@ export default class Code extends Vue {
 
   example = getLinkTileProductCodeSamples();
 
-  basic = `<p-link-tile-product heading="Some product name" price="911€" href="/" theme="${this.theme}">
+  basic = `<p-link-tile-product heading="Some product name" price="911€" href="https://porsche.com" theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>
 
-<p-link-tile-product heading="Some product name" price="911€" href="/" theme="${this.theme}">
+<p-link-tile-product heading="Some product name" price="911€" href="https://porsche.com" theme="${this.theme}">
   <picture>
     <source media="(min-width:400px)" srcset="${this.imgSrc}" />
     ${this.img}
@@ -107,17 +107,17 @@ export default class Code extends Vue {
   likeButton = 'false';
   likeButtons = ['true', 'false'];
   get likeButtonMarkup() {
-    return`<p-link-tile-product heading="Some product name" price="911€" href="/" ${this.likeButton === 'false' ? 'like-button="false"' : ''} theme="${this.theme}">
+    return`<p-link-tile-product heading="Some product name" price="911€" href="https://porsche.com" ${this.likeButton === 'false' ? 'like-button="false"' : ''} theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>`;
   };
 
-  header = `<p-link-tile-product heading="Some product name" price="911€" href="/" theme="${this.theme}">
+  header = `<p-link-tile-product heading="Some product name" price="911€" href="https://porsche.com" theme="${this.theme}">
     ${this.headerSlot}
     ${this.img}
 </p-link-tile-product>`;
 
-  info = `<p-link-tile-product heading="Some product name" price="911€" href="/" info="Some info" theme="${this.theme}">
+  info = `<p-link-tile-product heading="Some product name" price="911€" href="https://porsche.com" info="Some info" theme="${this.theme}">
     ${this.img}
 </p-link-tile-product>`;
 
