@@ -1903,13 +1903,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-link-tile-product": {
     "allowedPropValues": {
-      "aria": {
-        "aria-current": "string",
-        "aria-label": "string",
-      },
       "heading": "string",
       "href": "string",
       "info": "string",
+      "likeButton": "boolean",
       "liked": "boolean",
       "price": "string",
       "rel": "string",
@@ -1923,7 +1920,7 @@ exports[`should match snapshot 1`] = `
     "eventNames": [
       "likeChange",
     ],
-    "hasAriaProp": true,
+    "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1931,14 +1928,17 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
+    "namedSlots": [
+      "header",
+    ],
     "nestedComponents": [
       "p-button-pure",
     ],
     "props": {
-      "aria": null,
       "heading": null,
       "href": null,
       "info": null,
+      "likeButton": true,
       "liked": false,
       "price": null,
       "rel": null,
@@ -1948,7 +1948,6 @@ exports[`should match snapshot 1`] = `
     "requiredProps": [
       "heading",
       "price",
-      "href",
     ],
     "styling": "jss",
   },
