@@ -83,47 +83,51 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'flex',
-        gap: spacingFluidMedium,
-        flexDirection: 'column',
-        boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
-      '::slotted(*)': {
-        borderRadius: addImportantToRule(`var(--p-carousel-border-radius, ${borderRadiusLarge})`),
+        ...addImportantToEachRule({
+          gap: spacingFluidMedium,
+          flexDirection: 'column',
+          boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
-      '::slotted(*:focus-visible)': addImportantToEachRule({
-        outline: `${borderWidthBase} solid ${focusColor}`,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          outlineColor: focusColorDark,
-        }),
-        outlineOffset: '2px',
-      }),
-      [selectorHeading]: addImportantToEachRule({
-        ...(headingSize === 'xl' ? headingXLargeStyle : headingXXLargeStyle),
-        maxWidth: '56.25rem',
-        margin: 0,
-      }),
-      [selectorDescription]: addImportantToEachRule({
-        ...textSmallStyle,
-        maxWidth: '34.375rem',
-        margin: `${spacingFluidXSmall} 0 0`,
-      }),
-      [`${selectorHeading},${selectorDescription},${selectorHeader}`]: addImportantToEachRule({
-        color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
-        alignSelf: 'center', // relevant for vertical alignment of header
-        [mediaQueryS]: isHeaderAlignCenter
-          ? {
-              gridColumn: 2,
-            }
-          : {
-              gridColumn: '1 / 3',
-            },
+      ...addImportantToEachRule({
+        '::slotted(*)': {
+          borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
+        },
+        '::slotted(*:focus-visible)': {
+          outline: `${borderWidthBase} solid ${focusColor}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            outlineColor: focusColorDark,
+          }),
+          outlineOffset: '2px',
+        },
+        [selectorHeading]: {
+          ...(headingSize === 'xl' ? headingXLargeStyle : headingXXLargeStyle),
+          maxWidth: '56.25rem',
+          margin: 0,
+        },
+        [selectorDescription]: {
+          ...textSmallStyle,
+          maxWidth: '34.375rem',
+          margin: `${spacingFluidXSmall} 0 0`,
+        },
+        [`${selectorHeading},${selectorDescription},${selectorHeader}`]: {
+          color: primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: primaryColorDark,
+          }),
+          alignSelf: 'center', // relevant for vertical alignment of header
+          [mediaQueryS]: isHeaderAlignCenter
+            ? {
+                gridColumn: 2,
+              }
+            : {
+                gridColumn: '1 / 3',
+              },
+        },
       }),
     },
     header: {

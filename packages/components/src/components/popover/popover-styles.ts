@@ -153,13 +153,13 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
   return getCss({
     '@global': {
       ':host': {
+        display: 'inline-block',
+        verticalAlign: 'top',
         ...addImportantToEachRule({
           position: 'relative',
-          display: 'inline-block',
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
-        verticalAlign: 'top',
       },
       p: {
         ...textSmallStyle,

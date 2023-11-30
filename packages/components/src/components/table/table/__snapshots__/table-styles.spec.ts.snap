@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
@@ -31,7 +31,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 
 exports[`getComponentCss() should return correct css for theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;

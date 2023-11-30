@@ -37,12 +37,14 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'inline-flex',
-        verticalAlign: 'top',
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          verticalAlign: 'top',
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
       svg: {
         display: 'block', // for correct vertical alignment
         fill: 'none',

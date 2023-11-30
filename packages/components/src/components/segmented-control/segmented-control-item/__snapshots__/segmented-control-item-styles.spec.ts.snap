@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: false and theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -61,7 +61,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -120,7 +120,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true and theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -179,7 +179,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -238,7 +238,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -301,7 +301,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -365,7 +365,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: true, hasIcon: true, hasSlottedContent: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -419,7 +419,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: true, hasIcon: true, hasSlottedContent: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -474,7 +474,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: false, hasIcon: true, hasSlottedContent: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -528,7 +528,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: false, hasIcon: true, hasSlottedContent: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -583,7 +583,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: true, hasIcon: true, hasSlottedContent: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -637,7 +637,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: true, hasIcon: true, hasSlottedContent: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {

@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for direction: "column" 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   flex: auto !important;
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
@@ -18,7 +18,7 @@ exports[`getComponentCss() should return correct css for direction: "column" 1`]
 
 exports[`getComponentCss() should return correct css for direction: "column-reverse" 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   flex: auto !important;
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
@@ -34,7 +34,7 @@ exports[`getComponentCss() should return correct css for direction: "column-reve
 
 exports[`getComponentCss() should return correct css for direction: "row" 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   flex: auto !important;
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
@@ -50,7 +50,7 @@ exports[`getComponentCss() should return correct css for direction: "row" 1`] = 
 
 exports[`getComponentCss() should return correct css for direction: "row-reverse" 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   flex: auto !important;
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
@@ -66,7 +66,7 @@ exports[`getComponentCss() should return correct css for direction: "row-reverse
 
 exports[`getComponentCss() should return correct css for direction: {"base":"column","xs":"row","s":"column","m":"row","l":"column","xl":"row"} 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   flex: auto !important;
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
@@ -112,7 +112,7 @@ exports[`getComponentCss() should return correct css for direction: {"base":"col
 
 exports[`getComponentCss() should return correct css for wrap: "nowrap" 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   flex: auto !important;
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
@@ -128,7 +128,7 @@ exports[`getComponentCss() should return correct css for wrap: "nowrap" 1`] = `
 
 exports[`getComponentCss() should return correct css for wrap: "wrap" 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   flex: auto !important;
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
@@ -144,7 +144,7 @@ exports[`getComponentCss() should return correct css for wrap: "wrap" 1`] = `
 
 exports[`getComponentCss() should return correct css for wrap: {"base":"wrap","xs":"nowrap","s":"wrap","m":"nowrap","l":"wrap","xl":"nowrap"} 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   flex: auto !important;
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;

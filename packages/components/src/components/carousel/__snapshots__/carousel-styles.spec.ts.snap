@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: false, headingSize: xl, hasHeader: true, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center and theme: dark 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -165,7 +165,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: false, headingSize: xl, hasHeader: true, width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start and theme: light 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -326,7 +326,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: false, headingSize: xxl, hasHeader: false, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -513,7 +513,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: false, headingSize: xxl, hasHeader: false, width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: start and theme: light 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -646,7 +646,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: true, headingSize: xxl, hasHeader: true, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left and theme: light 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -779,7 +779,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: true, headingSize: xxl, hasHeader: true, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -993,7 +993,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: false, headingSize: xl, hasHeader: false, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start and theme: light 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -1126,7 +1126,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: false, headingSize: xl, hasHeader: false, width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center and theme: light 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -1261,7 +1261,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xl, hasHeader: true, width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center and theme: light 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -1396,7 +1396,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xl, hasHeader: true, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: start and theme: dark 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -1581,7 +1581,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xl, hasHeader: true, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: start and theme: light 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -1769,7 +1769,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xxl, hasHeader: false, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start and theme: light 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -1930,7 +1930,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xxl, hasHeader: false, width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
 ":host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;

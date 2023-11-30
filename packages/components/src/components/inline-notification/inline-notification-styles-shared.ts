@@ -34,7 +34,7 @@ export const getNotificationRootJssStyle = (
   theme: Theme
 ): JssStyle => {
   return {
-    display: 'grid',
+    // display: 'grid', // NOTE: display property is moved into component styled to not apply !important keyword
     // 2 columns for content and optional close button
     gridTemplateColumns: `minmax(auto, 1fr)${hasClose ? ' auto' : ''}`,
     gap: spacingStaticMedium,
