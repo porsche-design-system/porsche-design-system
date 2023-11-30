@@ -403,9 +403,9 @@ exports[`should match snapshot 1`] = `
         "center",
         "left",
       ],
-      "aria": [
-        "aria-label",
-      ],
+      "aria": {
+        "aria-label": "string",
+      },
       "description": "string",
       "disablePagination": "boolean",
       "heading": "string",
