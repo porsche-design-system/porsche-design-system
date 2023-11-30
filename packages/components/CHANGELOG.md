@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Hide `border-bottom` of `Accordion` if used as single item
   ([#2911](https://github.com/porsche-design-system/porsche-design-system/pull/2911))
+- `display` css property can be overridden on all components, e.g. within media queries  
+  ([#2913](https://github.com/porsche-design-system/porsche-design-system/pull/2913))
 
 ### [3.9.0] - 2023-11-24
 

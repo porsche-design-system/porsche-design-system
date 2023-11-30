@@ -2,11 +2,11 @@
 
 exports[`getComponentCss() should return correct css for multiline: false 1`] = `
 ":host {
-  display: table-cell !important;
+  display: table-cell;
+  vertical-align: middle;
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
   white-space: nowrap !important;
-  vertical-align: middle;
 }
 :host([hidden]) {
   display: none !important;
@@ -15,11 +15,11 @@ exports[`getComponentCss() should return correct css for multiline: false 1`] = 
 
 exports[`getComponentCss() should return correct css for multiline: true 1`] = `
 ":host {
-  display: table-cell !important;
+  display: table-cell;
+  vertical-align: middle;
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
   white-space: normal !important;
-  vertical-align: middle;
 }
 :host([hidden]) {
   display: none !important;

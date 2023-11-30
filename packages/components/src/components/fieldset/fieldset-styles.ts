@@ -21,11 +21,13 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
       fieldset: {
         margin: 0,
         padding: 0,
