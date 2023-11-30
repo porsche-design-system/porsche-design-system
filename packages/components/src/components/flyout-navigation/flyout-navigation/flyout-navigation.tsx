@@ -1,7 +1,6 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import {
   type FlyoutNavigationUpdateEvent,
-  INTERNAL_DISMISS_EVENT_NAME,
   INTERNAL_UPDATE_EVENT_NAME,
   syncFlyoutNavigationItemsProps,
 } from './flyout-navigation-utils';
@@ -9,12 +8,12 @@ import { getComponentCss } from './flyout-navigation-styles';
 import {
   AllowedTypes,
   attachComponentCss,
+  getChildrenOfKind,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasPropValueChanged,
   setScrollLock,
   THEMES,
-  throwIfChildrenAreNotOfKind,
   validateProps,
 } from '../../../utils';
 import { type PropTypes, type Theme } from '../../../types';
@@ -67,11 +66,6 @@ export class FlyoutNavigation {
       this.activeId = activeId;
       this.update.emit({ activeId });
     });
-
-    this.host.shadowRoot.addEventListener(INTERNAL_DISMISS_EVENT_NAME, (e) => {
-      e.stopPropagation(); // prevents internal event from bubbling further
-      this.dismissDialog();
-    });
   }
 
   public componentDidLoad(): void {
@@ -99,24 +93,25 @@ export class FlyoutNavigation {
 
     return (
       <dialog
+        tabindex={-1}
         ref={(ref) => (this.dialog = ref)}
         onClick={(e) => this.onClickDialog(e)}
         onCancel={(e) => this.onCancelDialog(e)}
       >
+        <div class="header">
+          <PrefixedTagNames.pButtonPure
+            class="dismiss"
+            type="button"
+            size="medium"
+            hideLabel={true}
+            icon="close"
+            theme="light"
+            onClick={this.dismissDialog}
+          >
+            Dismiss flyout
+          </PrefixedTagNames.pButtonPure>
+        </div>
         <div class="scroller">
-          <div class="header">
-            <PrefixedTagNames.pButtonPure
-              class="dismiss"
-              type="button"
-              size="medium"
-              hideLabel={true}
-              icon="close"
-              theme="light"
-              onClick={this.dismissDialog}
-            >
-              Dismiss flyout
-            </PrefixedTagNames.pButtonPure>
-          </div>
           <div class="content">
             <slot />
           </div>
@@ -126,8 +121,10 @@ export class FlyoutNavigation {
   }
 
   private defineFlyoutNavigationItemElements = (): void => {
-    throwIfChildrenAreNotOfKind(this.host, 'p-flyout-navigation-item');
-    this.flyoutNavigationItemElements = Array.from(this.host.children) as HTMLPFlyoutNavigationItemElement[];
+    this.flyoutNavigationItemElements = getChildrenOfKind(
+      this.host,
+      'p-flyout-navigation-item'
+    ) as HTMLPFlyoutNavigationItemElement[];
   };
 
   private onClickDialog(e: MouseEvent): void {

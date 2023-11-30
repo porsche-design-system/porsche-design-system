@@ -3,7 +3,7 @@ import { type FlyoutNavigationItemInternalHTMLProps } from '../flyout-navigation
 import { forceUpdate } from '@stencil/core';
 
 export const INTERNAL_UPDATE_EVENT_NAME = 'internalUpdate';
-export const INTERNAL_DISMISS_EVENT_NAME = 'internalDismiss';
+
 export type FlyoutNavigationUpdate = {
   activeId: string;
 };

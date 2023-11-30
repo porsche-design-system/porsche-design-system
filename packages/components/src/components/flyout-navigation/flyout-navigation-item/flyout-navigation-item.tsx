@@ -11,7 +11,6 @@ import {
 import { type PropTypes, type Theme } from '../../../types';
 import {
   type FlyoutNavigationUpdateEvent,
-  INTERNAL_DISMISS_EVENT_NAME,
   INTERNAL_UPDATE_EVENT_NAME,
 } from '../flyout-navigation/flyout-navigation-utils';
 import { type FlyoutNavigationItemInternalHTMLProps } from './flyout-navigation-item-utils';
@@ -58,6 +57,8 @@ export class FlyoutNavigationItem {
       <Host>
         <PrefixedTagNames.pButtonPure
           stretch={true}
+          active={this.open}
+          aria={{ 'aria-expanded': this.open }}
           icon="arrow-head-right"
           size="medium"
           alignLabel="start"
@@ -68,7 +69,12 @@ export class FlyoutNavigationItem {
         >
           {this.label}
         </PrefixedTagNames.pButtonPure>
-        <div class="scroller">
+        <div
+          class="scroller"
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          /* @ts-ignore */
+          inert={this.open ? null : true} // prevents focusable elements during fade-out transition
+        >
           <div class="header">
             <PrefixedTagNames.pButtonPure
               class="back"
@@ -82,17 +88,6 @@ export class FlyoutNavigationItem {
               Back
             </PrefixedTagNames.pButtonPure>
             <h4 class="heading">{this.label}</h4>
-            <PrefixedTagNames.pButtonPure
-              class="dismiss"
-              type="button"
-              size="medium"
-              icon="close"
-              hideLabel={true}
-              theme={this.theme}
-              onClick={() => this.onClickDismissButton()}
-            >
-              Dismiss flyout
-            </PrefixedTagNames.pButtonPure>
           </div>
           <div class="content">
             <slot />
@@ -120,12 +115,5 @@ export class FlyoutNavigationItem {
     this.host.dispatchEvent(
       new CustomEvent<FlyoutNavigationUpdateEvent>(INTERNAL_UPDATE_EVENT_NAME, eventInitDictDetail())
     );
-  };
-
-  private onClickDismissButton = (): void => {
-    const eventInitDictDetail = (): CustomEventInit<void> => ({
-      bubbles: true,
-    });
-    this.host.dispatchEvent(new CustomEvent<void>(INTERNAL_DISMISS_EVENT_NAME, eventInitDictDetail()));
   };
 }

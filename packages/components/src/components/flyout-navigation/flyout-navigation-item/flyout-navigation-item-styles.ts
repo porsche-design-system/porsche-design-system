@@ -1,4 +1,4 @@
-import { getCss, isThemeDark } from '../../../utils';
+import { getCss, isThemeDark, mergeDeep } from '../../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -10,7 +10,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
 import {
-  getMediaQueryMin,
+  dropShadowHighStyle,
   headingMediumStyle,
   motionDurationLong,
   spacingFluidLarge,
@@ -20,17 +20,38 @@ import {
 import {
   cssVariableVisibility,
   cssVariableVisibilityTransitionDuration,
-  scrollerWidth,
+  frostedGlassBackgroundColorDark,
+  frostedGlassBackgroundColorLight,
+  frostedGlassHeaderHeight,
   getContentJssStyles,
+  mediaQueryEnhancedView,
+  scrollerWidthEnhancedView,
 } from '../flyout-navigation/flyout-navigation-styles';
 
 export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Theme): string => {
-  const { primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
-    getThemedColors('dark');
+  const { primaryColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    backgroundColor: backgroundColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
+  } = getThemedColors('dark');
 
-  const frostedGlassBackgroundColor = isThemeDark(theme) ? 'rgba(33, 34, 37, 0.79)' : 'rgba(238, 239, 242, 0.79)';
-  const frostedGlassBackgroundColorDark = 'rgba(33, 34, 37, 0.79)';
+  const frostedGlassBackgroundColor = isThemeDark(theme)
+    ? frostedGlassBackgroundColorDark
+    : frostedGlassBackgroundColorLight;
+
+  const fadeInOutTransition = isSecondaryScrollerVisible
+    ? {
+        opacity: 1,
+        transition: `${getTransition('opacity', 'veryLong', 'in', 'short')}`,
+        [mediaQueryEnhancedView]: {
+          transition: `${getTransition('opacity', 'long', 'in')}`,
+        },
+      }
+    : {
+        opacity: 0,
+        transition: `${getTransition('opacity', 'short', 'out')}`,
+      };
 
   return getCss({
     '@global': {
@@ -41,10 +62,6 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
           ...hostHiddenStyles,
         }),
       },
-      '::slotted(*)': addImportantToEachRule({
-        opacity: isSecondaryScrollerVisible ? 1 : 0,
-        transition: getTransition('opacity', 'long'),
-      }),
     },
     button: {
       width: 'auto',
@@ -80,13 +97,20 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
       width: '100vw',
       boxSizing: 'border-box',
       overflow: 'auto',
-      backgroundColor: backgroundSurfaceColor,
+      ...dropShadowHighStyle,
+      // it's important to define background-color for each scroller to have correct scrollbar coloring
+      backgroundColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        backgroundColor: backgroundSurfaceColorDark,
+        backgroundColor: backgroundColorDark,
       }),
-      [getMediaQueryMin('l')]: {
-        insetInlineStart: `calc(${scrollerWidth} - 1px)`, // -1px prevents possible visible background under certain circumstances between primary and secondary scroller
-        width: scrollerWidth,
+      [mediaQueryEnhancedView]: {
+        boxShadow: 'none',
+        backgroundColor: backgroundSurfaceColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          backgroundColor: backgroundSurfaceColorDark,
+        }),
+        insetInlineStart: `calc(${scrollerWidthEnhancedView} - 1px)`, // -1px prevents possible visible background under certain circumstances between primary and secondary scroller
+        width: scrollerWidthEnhancedView,
         transform: 'initial',
         transition: `visibility 0s linear var(${cssVariableTransitionDuration},var(${cssVariableVisibilityTransitionDuration},0s))`,
       },
@@ -96,30 +120,36 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
       position: 'sticky',
       top: 0,
       zIndex: 1,
-      padding: `${spacingFluidSmall} ${spacingFluidLarge}`,
-      display: 'flex',
-      justifyContent: 'space-between',
+      height: frostedGlassHeaderHeight,
+      padding: `0 ${spacingFluidLarge}`,
+      display: 'grid',
+      gridTemplateColumns: '4rem minmax(0, 1fr) 4rem',
       alignItems: 'center',
       gap: spacingFluidSmall,
-      backgroundColor: frostedGlassBackgroundColor,
       WebkitBackdropFilter: 'blur(8px)',
       backdropFilter: 'blur(8px)', // with current frostedGlassStyle of blur(32px) scrolling becomes visually distracting
+      backgroundColor: frostedGlassBackgroundColor,
+      ...fadeInOutTransition,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: frostedGlassBackgroundColorDark,
       }),
-      [getMediaQueryMin('l')]: {
+      [mediaQueryEnhancedView]: {
         display: 'none',
       },
     },
     back: {
+      justifySelf: 'flex-start',
       padding: spacingFluidSmall,
       marginInlineStart: `calc(${spacingFluidSmall} * -1)`,
     },
     heading: {
       ...headingMediumStyle,
-      textAlign: 'center',
       margin: 0,
       padding: 0,
+      overflow: 'hidden',
+      textAlign: 'center',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
       color: primaryColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: primaryColorDark,
@@ -129,6 +159,6 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
       padding: spacingFluidSmall,
       marginInlineEnd: `calc(${spacingFluidSmall} * -1)`,
     },
-    content: getContentJssStyles(),
+    content: mergeDeep(getContentJssStyles(), fadeInOutTransition),
   });
 };

@@ -1,5 +1,6 @@
 export * from './dom-types';
 export * from './getAttribute';
+export * from './getChildrenOfKind';
 export * from './getClosestHTMLElement';
 export * from './getDirectChildHTMLElement';
 export * from './getDirectChildHTMLElements';

@@ -13,7 +13,6 @@ import {
 } from '../../../styles';
 import {
   frostedGlassStyle,
-  getMediaQueryMax,
   getMediaQueryMin,
   motionDurationLong,
   spacingFluidLarge,
@@ -29,7 +28,12 @@ import { FLYOUT_Z_INDEX } from '../../../constants';
 export const cssVariableVisibility = '--p-internal-flyout-navigation-visibility';
 export const cssVariableVisibilityTransitionDuration = '--p-internal-flyout-navigation-visibility-transition-duration';
 
-export const scrollerWidth = '30vw';
+export const frostedGlassHeaderHeight = '4rem';
+export const frostedGlassBackgroundColorLight = 'rgba(255, 255, 255, 0.79)';
+export const frostedGlassBackgroundColorDark = 'rgba(14, 14, 18, 0.79)';
+
+export const scrollerWidthEnhancedView = 'clamp(338px, 10.52vw + 258px, 460px)';
+export const mediaQueryEnhancedView = getMediaQueryMin('s');
 
 export const getComponentCss = (
   isPrimaryScrollerVisible: boolean,
@@ -39,8 +43,9 @@ export const getComponentCss = (
   const { backgroundColor } = getThemedColors(theme);
   const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
 
-  const frostedGlassBackgroundColor = isThemeDark(theme) ? 'rgba(14, 14, 18, 0.79)' : 'rgba(255, 255, 255, 0.79)';
-  const frostedGlassBackgroundColorDark = 'rgba(14, 14, 18, 0.79)';
+  const frostedGlassBackgroundColor = isThemeDark(theme)
+    ? frostedGlassBackgroundColorDark
+    : frostedGlassBackgroundColorLight;
 
   return getCss({
     '@global': {
@@ -59,8 +64,8 @@ export const getComponentCss = (
       dialog: {
         position: 'fixed',
         ...getInsetJssStyle(),
-        display: 'block', // ua-style reset
-        width: '100vw', // ua-style reset and to ensure transition duration works correctly
+        display: 'grid', // ua-style reset
+        width: 'auto', // ua-style reset and to ensure transition duration works correctly
         height: '100vh', // ua-style reset
         maxWidth: '100vw', // ua-style reset
         maxHeight: '100vh', // ua-style reset
@@ -79,8 +84,10 @@ export const getComponentCss = (
               transform: 'translate3d(-100%, 0, 0)',
               transition: `${getTransition('transform', 'long', 'out')}`,
             }),
-        [getMediaQueryMin('l')]: {
-          width: `calc(${isSecondaryScrollerVisible ? 2 : 1} * ${scrollerWidth})`,
+        [mediaQueryEnhancedView]: {
+          gridTemplateColumns: `repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${scrollerWidthEnhancedView}) auto`,
+          gridTemplateRows: '100vh',
+          insetInlineEnd: 'auto', // to have correct dialog dimensions for ideal transitions
         },
         '&::backdrop': {
           // to improve browser backwards compatibility we visually style the backdrop on the :host,
@@ -90,53 +97,74 @@ export const getComponentCss = (
       },
     },
     scroller: {
-      width: '100vw',
-      height: '100vh',
+      gridArea: '1/1',
       overflow: 'auto',
-      [getMediaQueryMin('l')]: {
-        width: scrollerWidth,
-      },
       // cssVariableVisibility ensures secondary scroller is not tabbable when whole flyout-navigation is closed
       // on mobile we need to decide if secondary scroller needs to be visible or not, on desktop it's not necessary but also doesn't harm
-      [getMediaQueryMax('l')]: {
-        visibility: `var(${cssVariableVisibility},${isSecondaryScrollerVisible ? 'hidden' : 'visible'})`,
-        transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${
-          !isPrimaryScrollerVisible || isSecondaryScrollerVisible ? motionDurationLong : '0s'
-        })`,
-      },
+      visibility: `var(${cssVariableVisibility},${isSecondaryScrollerVisible ? 'hidden' : 'visible'})`,
+      transition: `${getTransition(
+        'left',
+        'long',
+        isSecondaryScrollerVisible ? 'in' : 'out'
+      )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${
+        !isPrimaryScrollerVisible || isSecondaryScrollerVisible ? motionDurationLong : '0s'
+      })`,
+      // it's important to define background-color for each scroller to have correct scrollbar coloring
       backgroundColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: backgroundColorDark,
       }),
-    },
-    // header needs to be placed within scroller to ensure scrollbars are fully visible
-    header: {
-      position: 'sticky',
-      top: 0,
-      zIndex: 1,
-      padding: `${spacingFluidSmall} ${spacingFluidLarge}`,
-      display: 'flex',
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-      backgroundColor: frostedGlassBackgroundColor,
-      WebkitBackdropFilter: 'blur(8px)',
-      backdropFilter: 'blur(8px)', // with current frostedGlassStyle of blur(32px) scrolling becomes visually distracting
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        backgroundColor: frostedGlassBackgroundColorDark,
-      }),
-      [getMediaQueryMin('l')]: {
-        display: 'none',
+      [mediaQueryEnhancedView]: {
+        visibility: 'inherit',
+        transition: 'initial',
+      },
+      '&::before': {
+        content: '""',
+        display: 'block',
+        position: 'sticky',
+        top: 0,
+        zIndex: 1,
+        height: frostedGlassHeaderHeight,
+        backgroundColor: frostedGlassBackgroundColor,
+        WebkitBackdropFilter: 'blur(8px)',
+        backdropFilter: 'blur(8px)', // with current frostedGlassStyle of blur(32px) scrolling becomes visually distracting
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          backgroundColor: frostedGlassBackgroundColorDark,
+        }),
+        [mediaQueryEnhancedView]: {
+          display: 'none',
+        },
       },
     },
-    content: getContentJssStyles(),
-    dismiss: {
+    content: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: spacingFluidXSmall,
+      padding: `${spacingFluidSmall} ${spacingFluidLarge} ${spacingFluidLarge}`,
+      [mediaQueryEnhancedView]: {
+        padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
+      },
+    },
+    // header is needed to keep position of dismiss button in sync with header of secondary drawer
+    header: {
+      position: 'relative',
+      zIndex: 3, // ensures dismiss button is visible on secondary drawer in mobile view
       gridArea: '1/1',
       alignSelf: 'flex-start',
       justifySelf: 'flex-end',
-      padding: spacingFluidSmall,
-      marginInlineEnd: `calc(${spacingFluidSmall} * -1)`,
-      [getMediaQueryMin('l')]: {
+      marginInlineEnd: `calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
+      height: frostedGlassHeaderHeight,
+      display: 'flex',
+      alignItems: 'center',
+      [mediaQueryEnhancedView]: {
+        marginInlineEnd: 0,
         gridArea: '1/-1',
+        placeSelf: 'flex-start',
+      },
+    },
+    dismiss: {
+      padding: spacingFluidSmall,
+      [mediaQueryEnhancedView]: {
         margin: spacingFluidSmall,
         padding: spacingStaticSmall,
       },
@@ -193,7 +221,7 @@ export const getContentJssStyles = (): JssStyle => {
     flexDirection: 'column',
     gap: spacingFluidXSmall,
     padding: `${spacingFluidSmall} ${spacingFluidLarge} ${spacingFluidLarge}`,
-    [getMediaQueryMin('l')]: {
+    [mediaQueryEnhancedView]: {
       padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
     },
   };
