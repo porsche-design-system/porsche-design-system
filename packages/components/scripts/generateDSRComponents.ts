@@ -77,8 +77,8 @@ const generateDSRComponents = (): void => {
           group.endsWith('utils')
             ? m.replace(group, utilsBundleImportPath)
             : group.endsWith('state-message') || group.endsWith('required') || group.endsWith('label')
-              ? m.replace(group, './' + group.split('/').pop())
-              : ''
+            ? m.replace(group, './' + group.split('/').pop())
+            : ''
         )
         .replace(/.*= getPrefixedTagNames\((?:this\.)?host.*\n/g, '') // remove getPrefixedTagNames call
         // add new imports
@@ -282,7 +282,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(
             /this\.props\.hasNavigation/g,
             "(this.props.slidesPerPage === 'auto' || typeof this.props.slidesPerPage === 'object' || this.props.slidesPerPage < otherChildren.length)"
-          );
+          )
+          .replace(/this\.props\.(hasHeading)/g, 'this.$1')
+          .replace(/this\.props\.(hasDescription)/g, 'this.$1')
+          .replace(/this\.props\.(hasHeader)/g, 'this.$1');
       } else if (tagName === 'p-banner') {
         // remove warning about deprecated title slot
         newFileContent = newFileContent
