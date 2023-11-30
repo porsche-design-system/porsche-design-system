@@ -366,7 +366,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: ;
+  grid-template-rows: auto;
   padding: 0 max(22px, 10.625vw - 12px);
   text-align: center;
 }
@@ -553,7 +553,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: ;
+  grid-template-rows: auto;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
@@ -1033,7 +1033,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr ;
+  grid-template-rows: 1fr auto;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
@@ -1166,7 +1166,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr ;
+  grid-template-rows: 1fr auto;
   padding: 0 max(22px, 10.625vw - 12px);
   text-align: center;
 }
@@ -1809,7 +1809,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr 1fr ;
+  grid-template-rows: 1fr 1fr auto;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
@@ -1970,7 +1970,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr 1fr ;
+  grid-template-rows: 1fr 1fr auto;
   padding: 0 max(22px, 10.625vw - 12px);
   text-align: center;
 }

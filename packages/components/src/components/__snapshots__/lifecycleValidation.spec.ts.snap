@@ -89,7 +89,7 @@ exports[`should call validateProps() with correct parameters via render for p-ca
 {
   "activeSlideIndex": "number",
   "alignHeader": "oneOf",
-  "aria": "oneOf",
+  "aria": "aria",
   "description": "string",
   "disablePagination": "breakpoint",
   "heading": "string",

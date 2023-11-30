@@ -128,7 +128,7 @@ export const getComponentCss = (
     },
     header: {
       display: 'grid',
-      gridTemplateRows: `${hasHeading ? '1fr ' : ''}${hasDescription ? '1fr ' : ''}${hasHeader ? '1fr' : ''}`, // TODO: should we reduce grid rows on small screens?
+      gridTemplateRows: `${hasHeading ? '1fr ' : ''}${hasDescription ? '1fr ' : ''}${hasHeader ? '1fr' : 'auto'}`, // TODO: should we reduce grid rows on small screens?
       padding: `0 ${spacingMap[width].base}`,
       ...(isHeaderAlignCenter && {
         textAlign: 'center',
