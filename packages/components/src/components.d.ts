@@ -12,7 +12,7 @@ import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-import { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
+import { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -71,7 +71,7 @@ export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-export { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
+export { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -372,6 +372,10 @@ export namespace Components {
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<CarouselAriaAttribute>;
+        /**
           * Defines the description used in the carousel.
          */
         "description"?: string;
@@ -383,6 +387,10 @@ export namespace Components {
           * Defines the heading used in the carousel.
          */
         "heading"?: string;
+        /**
+          * Defines the heading size used in the carousel.
+         */
+        "headingSize"?: CarouselHeadingSize;
         /**
           * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
          */
@@ -2842,6 +2850,10 @@ declare namespace LocalJSX {
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<CarouselAriaAttribute>;
+        /**
           * Defines the description used in the carousel.
          */
         "description"?: string;
@@ -2853,6 +2865,10 @@ declare namespace LocalJSX {
           * Defines the heading used in the carousel.
          */
         "heading"?: string;
+        /**
+          * Defines the heading size used in the carousel.
+         */
+        "headingSize"?: CarouselHeadingSize;
         /**
           * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
          */

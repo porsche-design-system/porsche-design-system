@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -91,7 +91,81 @@
       <h1>Porsche Design System - Playground</h1>
     </header>
 
-    <main></main>
+    <main>
+      <p-carousel
+        heading="Some heading"
+        intl="{ first: 'first', last: 'last', prev: 'prev', next: 'next', slideLabel: 'slideLabel', slide: 'slide', }"
+      >
+        <div style="background: #00b0f4; height: 150px">Slide 1</div>
+        <div style="background: #00b0f4; height: 150px">Slide 2</div>
+        <div style="background: #00b0f4; height: 150px">Slide 3</div>
+      </p-carousel>
+
+      <p-carousel>
+        <h2 slot="heading">Some slotted heading</h2>
+        <div style="background: #00b0f4; height: 150px">Slide 1</div>
+        <div style="background: #00b0f4; height: 150px">Slide 2</div>
+        <div style="background: #00b0f4; height: 150px">Slide 3</div>
+      </p-carousel>
+
+      <p-carousel heading="Some heading and some Header">
+        <div slot="header">
+          <p-tabs-bar active-tab-index="0">
+            <button type="button">Tab One</button>
+            <button type="button">Tab Two</button>
+            <button type="button">Tab Three</button>
+          </p-tabs-bar>
+        </div>
+        <div style="background: #00b0f4; height: 150px">Slide 1</div>
+        <div style="background: #00b0f4; height: 150px">Slide 2</div>
+        <div style="background: #00b0f4; height: 150px">Slide 3</div>
+      </p-carousel>
+
+      <p-carousel heading="Some heading" description="Some description">
+        <div style="background: #00b0f4; height: 150px">Slide 1</div>
+        <div style="background: #00b0f4; height: 150px">Slide 2</div>
+        <div style="background: #00b0f4; height: 150px">Slide 3</div>
+      </p-carousel>
+
+      <p-carousel heading="Some heading">
+        <p slot="description">Some slotted description</p>
+        <div style="background: #00b0f4; height: 150px">Slide 1</div>
+        <div style="background: #00b0f4; height: 150px">Slide 2</div>
+        <div style="background: #00b0f4; height: 150px">Slide 3</div>
+      </p-carousel>
+
+      <p-carousel heading="Some heading and some Header" description="Some description">
+        <div slot="header">
+          <p-tabs-bar active-tab-index="0">
+            <button type="button">Tab One</button>
+            <button type="button">Tab Two</button>
+            <button type="button">Tab Three</button>
+          </p-tabs-bar>
+        </div>
+        <div style="background: #00b0f4; height: 150px">Slide 1</div>
+        <div style="background: #00b0f4; height: 150px">Slide 2</div>
+        <div style="background: #00b0f4; height: 150px">Slide 3</div>
+      </p-carousel>
+
+      <p-carousel>
+        <div slot="header">
+          <p-tabs-bar active-tab-index="0">
+            <button type="button">Tab One</button>
+            <button type="button">Tab Two</button>
+            <button type="button">Tab Three</button>
+          </p-tabs-bar>
+        </div>
+        <div style="background: #00b0f4; height: 150px">Slide 1</div>
+        <div style="background: #00b0f4; height: 150px">Slide 2</div>
+        <div style="background: #00b0f4; height: 150px">Slide 3</div>
+      </p-carousel>
+
+      <p-carousel>
+        <div style="background: #00b0f4; height: 150px">Slide 1</div>
+        <div style="background: #00b0f4; height: 150px">Slide 2</div>
+        <div style="background: #00b0f4; height: 150px">Slide 3</div>
+      </p-carousel>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->

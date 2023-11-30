@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
-import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
+import type { CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToRule,
@@ -26,6 +26,7 @@ import {
   gridExtendedOffset,
   gridGap,
   headingXLargeStyle,
+  headingXXLargeStyle,
   motionDurationModerate,
   spacingFluidMedium,
   spacingFluidXSmall,
@@ -46,6 +47,7 @@ const paginationActiveBulletSize = '20px';
 
 const selectorHeading = 'h2,::slotted([slot=heading])';
 const selectorDescription = 'p,::slotted([slot=description])';
+const selectorHeader = '::slotted([slot=header])';
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
 
@@ -60,6 +62,10 @@ const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }
 };
 
 export const getComponentCss = (
+  hasHeading: boolean,
+  hasDescription: boolean,
+  headingSize: CarouselHeadingSize,
+  hasHeader: boolean,
   width: CarouselWidth,
   hasPagination: BreakpointCustomizable<boolean>,
   isInfinitePagination: boolean,
@@ -96,7 +102,7 @@ export const getComponentCss = (
         outlineOffset: '2px',
       }),
       [selectorHeading]: addImportantToEachRule({
-        ...headingXLargeStyle,
+        ...(headingSize === 'xl' ? headingXLargeStyle : headingXXLargeStyle),
         maxWidth: '56.25rem',
         margin: 0,
       }),
@@ -105,11 +111,12 @@ export const getComponentCss = (
         maxWidth: '34.375rem',
         margin: `${spacingFluidXSmall} 0 0`,
       }),
-      [`${selectorHeading},${selectorDescription}`]: addImportantToEachRule({
+      [`${selectorHeading},${selectorDescription},${selectorHeader}`]: addImportantToEachRule({
         color: primaryColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,
         }),
+        alignSelf: 'center', // relevant for vertical alignment of header
         [mediaQueryS]: isHeaderAlignCenter
           ? {
               gridColumn: 2,
@@ -121,6 +128,7 @@ export const getComponentCss = (
     },
     header: {
       display: 'grid',
+      gridTemplateRows: `${hasHeading ? '1fr ' : ''}${hasDescription ? '1fr ' : ''}${hasHeader ? '1fr' : ''}`, // TODO: should we reduce grid rows on small screens?
       padding: `0 ${spacingMap[width].base}`,
       ...(isHeaderAlignCenter && {
         textAlign: 'center',
@@ -129,6 +137,7 @@ export const getComponentCss = (
         fontFamily, // relevant for button group width calculation, which is based on ex unit
         fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
         columnGap: spacingStaticMedium,
+        gridTemplateRows: `${hasHeading ? '1fr ' : ''}${hasDescription ? '1fr ' : ''}1fr`,
         gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
         ...(isHeaderAlignCenter && {
           justifyItems: 'center', // relevant when max-width of heading or description is reached
@@ -144,7 +153,7 @@ export const getComponentCss = (
       [mediaQueryS]: {
         display: 'flex',
         gap: spacingStaticXSmall,
-        gridArea: '1 / 3 / 3 / auto', // needed in case description height is smaller than button group
+        gridArea: `${hasHeading ? (hasDescription ? '3' : '2') : '1'} / 3 / 3 / auto`, // needed in case header height is smaller than button group
         alignItems: 'end',
         justifyContent: 'end',
         justifySelf: 'end',

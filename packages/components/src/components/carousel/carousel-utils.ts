@@ -22,6 +22,12 @@ export type CarouselAlignHeaderDeprecated = (typeof CAROUSEL_ALIGN_HEADERS_DEPRE
 export const CAROUSEL_ALIGN_HEADERS = ['start', 'center', ...CAROUSEL_ALIGN_HEADERS_DEPRECATED] as const;
 export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 
+export const CAROUSEL_HEADING_SIZES = ['xl', 'xxl'];
+export type CarouselHeadingSize = (typeof CAROUSEL_HEADING_SIZES)[number];
+
+export const CAROUSEL_ARIA_ATTRIBUTES = ['aria-label'] as const;
+export type CarouselAriaAttribute = (typeof CAROUSEL_ARIA_ATTRIBUTES)[number];
+
 // The offset value used for calculating the number of infinite bullets
 const INFINITE_BULLET_OFFSET = 2;
 // The total number of infinite bullets including the center bullet
@@ -72,7 +78,7 @@ export const warnIfHeadingIsMissing = (host: HTMLElement, heading: string): void
 
 export const getSlidesAndAddAttributes = (host: HTMLElement): HTMLElement[] => {
   const slides = Array.from(host.children).filter(
-    ({ slot }) => slot !== 'heading' && slot !== 'description'
+    ({ slot }) => slot !== 'heading' && slot !== 'description' && slot !== 'header'
   ) as HTMLElement[];
   slides.forEach((el, i) => {
     el.setAttribute('slot', `slide-${i}`);
