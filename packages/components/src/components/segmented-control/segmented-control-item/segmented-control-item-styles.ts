@@ -67,11 +67,13 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        outline: 0,
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          outline: 0,
+          ...hostHiddenStyles,
+        }),
+      },
       // All width relevant styling has to be kept in sync with the tempDiv of the p-segmented-control utils
       button: {
         position: 'relative',

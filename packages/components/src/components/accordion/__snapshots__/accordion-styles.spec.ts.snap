@@ -2,9 +2,12 @@
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   border-bottom: 1px solid #D8D8DB !important;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -96,9 +99,12 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   border-bottom: 1px solid #D8D8DB !important;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -191,8 +197,11 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false and theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -284,8 +293,11 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -377,8 +389,11 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -471,9 +486,12 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   border-bottom: 1px solid #D8D8DB !important;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -565,9 +583,12 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   border-bottom: 1px solid #404044 !important;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -660,9 +681,12 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   border-bottom: 1px solid #D8D8DB !important;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -755,8 +779,11 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: true, open: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -848,8 +875,11 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: "small", compact: true, open: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -942,9 +972,12 @@ button:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true and theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   border-bottom: 1px solid #404044 !important;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;

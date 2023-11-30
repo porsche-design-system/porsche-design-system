@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   position: relative !important;
   color: #FBFCFF !important;
   outline: 0 !important;
@@ -24,7 +24,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 
 exports[`getComponentCss() should return correct css for theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   position: relative !important;
   color: #010205 !important;
   outline: 0 !important;

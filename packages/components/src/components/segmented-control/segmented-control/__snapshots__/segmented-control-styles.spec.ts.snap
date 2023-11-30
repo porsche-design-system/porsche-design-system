@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for maxWidth: 20 and columns: { base: 4, s: 3, m: 2, l: 'auto' } 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   gap: 6px !important;
@@ -33,7 +33,7 @@ exports[`getComponentCss() should return correct css for maxWidth: 20 and column
 
 exports[`getComponentCss() should return correct css for maxWidth: 20 and columns: auto 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(auto-fit, 46px) !important;
   gap: 6px !important;
@@ -46,7 +46,7 @@ exports[`getComponentCss() should return correct css for maxWidth: 20 and column
 
 exports[`getComponentCss() should return correct css for maxWidth: 80 and columns: 1 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
   gap: 6px !important;
@@ -59,7 +59,7 @@ exports[`getComponentCss() should return correct css for maxWidth: 80 and column
 
 exports[`getComponentCss() should return correct css for maxWidth: 230 and columns: 10 1`] = `
 ":host {
-  display: grid !important;
+  display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
   gap: 6px !important;

@@ -157,10 +157,7 @@
     <input type="search" readonly />
   </p-text-field-wrapper>
   <p-text-field-wrapper label="Type search with long value">
-    <input
-      type="search"
-      value="some really long password with many words and amazing special characters, letters big and small, numbers"
-    />
+    <input type="search" value="some really long search term with many words, letters big and small, numbers" />
   </p-text-field-wrapper>
   <p-text-field-wrapper label="Type search with action-icon" action-icon="locate">
     <input type="search" />
@@ -174,10 +171,7 @@
   </p-text-field-wrapper>
   <form>
     <p-text-field-wrapper label="Type search with long value within form">
-      <input
-        type="search"
-        value="some really long password with many words and amazing special characters, letters big and small, numbers"
-      />
+      <input type="search" value="some really long search term with many words, letters big and small, numbers" />
     </p-text-field-wrapper>
     <p-text-field-wrapper label="Type search with action-icon within form" action-icon="locate">
       <input type="search" />
@@ -190,10 +184,32 @@
       <input type="search" />
     </p-text-field-wrapper>
     <p-text-field-wrapper label="Type search with action-icon and long value within form" action-icon="locate">
-      <input
-        type="search"
-        value="some really long password with many words and amazing special characters, letters big and small, numbers"
-      />
+      <input type="search" value="some really long search term with many words, letters big and small, numbers" />
+    </p-text-field-wrapper>
+    <p-text-field-wrapper label="Type search with submit-button=false and long value within form" submit-button="false">
+      <input type="search" value="some really long search term with many words, letters big and small, numbers" />
+    </p-text-field-wrapper>
+    <p-text-field-wrapper
+      label="Type search with submit-button=false and action-icon within form"
+      submit-button="false"
+      action-icon="locate"
+    >
+      <input type="search" />
+    </p-text-field-wrapper>
+    <p-text-field-wrapper
+      label="Type search with submit-button=false, action-icon and action-loading within form"
+      submit-button="false"
+      action-icon="locate"
+      action-loading="true"
+    >
+      <input type="search" />
+    </p-text-field-wrapper>
+    <p-text-field-wrapper
+      label="Type search with submit-button=false, action-icon and long value within form"
+      submit-button="false"
+      action-icon="locate"
+    >
+      <input type="search" value="some really long search term with many words, letters big and small, numbers" />
     </p-text-field-wrapper>
   </form>
 </div>

@@ -24,17 +24,19 @@ export const getComponentCss = (theme: Theme): string => {
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        ...textSmallStyle,
-        color: primaryColor,
-        textAlign: 'start',
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
+        ...addImportantToEachRule({
+          ...textSmallStyle,
+          color: primaryColor,
+          textAlign: 'start',
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: primaryColorDark,
+          }),
         }),
-      }),
+      },
       '::slotted(*)': addImportantToEachRule({
         [cssVariableTableHoverColor]: hoverColor,
         [cssVariableTableBorderColor]: contrastLowColor,
