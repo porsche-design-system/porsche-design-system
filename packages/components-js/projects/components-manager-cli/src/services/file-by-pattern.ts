@@ -1,9 +1,11 @@
-import { globbySync } from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
 import { getProjectRootPath } from './config';
 
 async function filePathsByPattern(pattern: string): Promise<string[]> {
+  // dynamic import to workaround esm error
+  // hacky eval workaround from https://github.com/microsoft/TypeScript/issues/43329#issuecomment-1635074246
+  const { globbySync } = (await eval("import('globby')")) as typeof import('globby');
   const matches = globbySync(pattern, { cwd: getProjectRootPath() });
 
   if (matches.length > 0) {
