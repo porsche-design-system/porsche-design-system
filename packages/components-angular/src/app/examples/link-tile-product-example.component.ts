@@ -12,8 +12,8 @@ import type { LinkTileProductUpdateEvent } from '@porsche-design-system/componen
       [liked]="liked"
       (likeChange)="handleLikeChange($event)"
     >
-      <p-tag slot="tags" [color]="'background-base'">New</p-tag>
-      <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
+      <p-tag slot="header" [color]="'background-base'">New</p-tag>
+      <img src="/assets/image-grid.png" alt="Some alt text" />
     </p-link-tile-product>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
