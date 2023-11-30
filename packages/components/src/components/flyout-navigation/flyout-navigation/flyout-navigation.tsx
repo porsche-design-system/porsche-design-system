@@ -19,7 +19,7 @@ import {
 import { type PropTypes, type Theme } from '../../../types';
 
 const propTypes: PropTypes<typeof FlyoutNavigation> = {
-  activeId: AllowedTypes.string,
+  activeIdentifier: AllowedTypes.string,
   open: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -36,7 +36,7 @@ export class FlyoutNavigation {
   @Prop() public open?: boolean = false;
 
   /** Defines which flyout-navigation-item to be visualized as opened. */
-  @Prop({ mutable: true }) public activeId?: string = undefined;
+  @Prop({ mutable: true }) public activeIdentifier?: string | undefined;
 
   /** Adapts the flyout-navigation color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -61,9 +61,9 @@ export class FlyoutNavigation {
 
     this.host.shadowRoot.addEventListener(INTERNAL_UPDATE_EVENT_NAME, (e: CustomEvent<FlyoutNavigationUpdateEvent>) => {
       e.stopPropagation(); // prevents internal event from bubbling further
-      const activeId = e.detail.activeId;
-      this.activeId = activeId;
-      this.update.emit({ activeId });
+      const activeIdentifier = e.detail.activeIdentifier;
+      this.activeIdentifier = activeIdentifier;
+      this.update.emit({ activeIdentifier });
     });
   }
 
@@ -85,8 +85,8 @@ export class FlyoutNavigation {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.open, !!this.activeId, this.theme);
-    syncFlyoutNavigationItemsProps(this.flyoutNavigationItemElements, this.activeId, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.open, !!this.activeIdentifier, this.theme);
+    syncFlyoutNavigationItemsProps(this.flyoutNavigationItemElements, this.activeIdentifier, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

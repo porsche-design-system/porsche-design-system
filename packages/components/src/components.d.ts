@@ -657,7 +657,7 @@ export namespace Components {
         /**
           * Defines which flyout-navigation-item to be visualized as opened.
          */
-        "activeId"?: string;
+        "activeIdentifier"?: string | undefined;
         /**
           * If true, the flyout-navigation is visualized as opened.
          */
@@ -668,7 +668,7 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PFlyoutNavigationItem {
-        "identifier"?: string;
+        "identifier": string;
         "label"?: string;
     }
     /**
@@ -3187,7 +3187,7 @@ declare namespace LocalJSX {
         /**
           * Defines which flyout-navigation-item to be visualized as opened.
          */
-        "activeId"?: string;
+        "activeIdentifier"?: string | undefined;
         /**
           * Emitted when the component requests to be dismissed.
          */

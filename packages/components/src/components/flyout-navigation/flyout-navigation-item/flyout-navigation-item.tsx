@@ -29,7 +29,7 @@ export class FlyoutNavigationItem {
 
   @Prop() public label?: string;
 
-  @Prop() public identifier?: string;
+  @Prop() public identifier: string;
 
   private get theme(): Theme {
     return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by flyout-navigation)
@@ -97,10 +97,10 @@ export class FlyoutNavigationItem {
     );
   }
 
-  private onClickButton = (activeId: string | undefined): void => {
+  private onClickButton = (activeIdentifier: string | undefined): void => {
     const eventInitDictDetail = (): CustomEventInit<FlyoutNavigationUpdateEvent> => ({
       bubbles: true,
-      detail: { activeId },
+      detail: { activeIdentifier },
     });
     this.host.dispatchEvent(
       new CustomEvent<FlyoutNavigationUpdateEvent>(INTERNAL_UPDATE_EVENT_NAME, eventInitDictDetail())
