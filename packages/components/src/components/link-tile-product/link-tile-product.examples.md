@@ -52,9 +52,9 @@ property.
 <Playground :frameworkMarkup="example" :config="{ ...config, withoutDemo: true }">
     <p-link-tile-product
     :heading="'Some product name'"
-    :price="'199,99€'"
+    :price="'911€'"
     :info="'Some info'"
-    :href="'/'"
+    :href="'https://www.porsche.com'"
     :liked="liked"
     @likeChange="handleLikeChange"
     :theme="theme"
@@ -73,9 +73,9 @@ import type { Theme } from '@/models';
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
-  imgSrc = require('@/assets/image-grid.png');
+  imgSrc = require('@/assets/weekender.webp');
   img = `<img src="${this.imgSrc}" alt="Some alt text" />`;
-  link = `<a href="https://www.porsche.com"></a>`;
+  link = `<a href="https://www.porsche.com">Some label</a>`;
   headerSlot = `<p-tag slot="header" color="background-base">New</p-tag>`;
 
   liked = false;
