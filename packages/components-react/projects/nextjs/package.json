@@ -6,7 +6,7 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "prestartAndBuild": "yarn clean:build && ts-node scripts/prepareSharedStyles.ts",
+    "prestartAndBuild": "yarn clean:build && tsx scripts/prepareSharedStyles.ts",
     "prestart": "yarn prestartAndBuild",
     "prebuild-app": "yarn prestartAndBuild",
     "start": "concurrently -k -s 'first' -n 'cdn,nextjs' 'serve-cdn' 'next dev'",
@@ -34,7 +34,7 @@
     "concurrently": "^8.2.2",
     "eslint": "^8.54.0",
     "eslint-config-next": "^14.0.3",
-    "ts-node": "^10.9.1",
+    "tsx": "^4.6.1",
     "typescript": "~5.3.2"
   },
   "eslintConfig": {

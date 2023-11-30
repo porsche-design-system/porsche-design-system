@@ -50,12 +50,5 @@
     // PDS custom options
     "noUnusedLocals": true,
     "noUnusedParameters": true
-  },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS",
-      "verbatimModuleSyntax": false
-    },
-    "include": ["./scripts"]
   }
 }

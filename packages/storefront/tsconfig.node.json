@@ -1,3 +1,0 @@
-{
-  "extends": "shared/src/tsconfig.json" // could be @porsche-design-system/shared/tsconfig.json but in CI that package isn't built, yet
-}
