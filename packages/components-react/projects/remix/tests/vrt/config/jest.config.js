@@ -1,4 +1,4 @@
-const { config } = require('@porsche-design-system/shared/testing/jest.config').config;
+const { config } = require('@porsche-design-system/shared/testing/jest.config');
 
 module.exports = {
   ...config,
