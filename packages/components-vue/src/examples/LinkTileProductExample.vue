@@ -18,7 +18,9 @@
     :liked="liked"
     @likeChange="handleLikeChange"
   >
-    <PTag slot="tags" :color="'background-base'">New</PTag>
+    <slot name="header">
+      <PTag :color="'background-base'">New</PTag>
+    </slot>
     <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
   </PLinkTileProduct>
 </template>
