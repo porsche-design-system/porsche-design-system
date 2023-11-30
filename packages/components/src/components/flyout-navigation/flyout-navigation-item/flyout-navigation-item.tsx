@@ -16,7 +16,7 @@ import {
 import { type FlyoutNavigationItemInternalHTMLProps } from './flyout-navigation-item-utils';
 
 const propTypes: PropTypes<typeof FlyoutNavigationItem> = {
-  id: AllowedTypes.string,
+  identifier: AllowedTypes.string,
   label: AllowedTypes.string,
 };
 
@@ -29,7 +29,7 @@ export class FlyoutNavigationItem {
 
   @Prop() public label?: string;
 
-  @Prop() public id: string;
+  @Prop() public identifier?: string;
 
   private get theme(): Theme {
     return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by flyout-navigation)
@@ -65,7 +65,7 @@ export class FlyoutNavigationItem {
           class="button"
           type="button"
           theme={this.theme}
-          onClick={() => this.onClickButton(this.open ? undefined : this.id)}
+          onClick={() => this.onClickButton(this.open ? undefined : this.identifier)}
         >
           {this.label}
         </PrefixedTagNames.pButtonPure>

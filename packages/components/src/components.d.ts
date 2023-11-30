@@ -668,7 +668,7 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PFlyoutNavigationItem {
-        "id": string;
+        "identifier"?: string;
         "label"?: string;
     }
     /**
@@ -3206,7 +3206,7 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PFlyoutNavigationItem {
-        "id"?: string;
+        "identifier"?: string;
         "label"?: string;
     }
     /**
