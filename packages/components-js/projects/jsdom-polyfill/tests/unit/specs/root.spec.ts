@@ -3,7 +3,7 @@ import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { componentsReady } from '@porsche-design-system/components-js';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import { tagNameMarkup, WHITELISTED_TAG_NAMES } from '../helper';
 
 it('should have one unit test per component', () => {
@@ -11,7 +11,7 @@ it('should have one unit test per component', () => {
 
   const currentFileName = path.normalize(__filename);
   const srcDir = path.normalize(__dirname);
-  const specFileNames = globby.sync(`${srcDir}/**/*.spec.ts`).filter((fileName) => fileName !== currentFileName);
+  const specFileNames = globbySync(`${srcDir}/**/*.spec.ts`).filter((fileName) => fileName !== currentFileName);
 
   const componentsTagNamesWithTests: [TagName, string][] = specFileNames
     .map<[TagName, string]>((filePath) => [

@@ -1,5 +1,5 @@
 import * as path from 'path';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import * as fs from 'fs';
 import { checkPackage, createPackageFromTarballData, type Analysis, type Problem } from '@arethetypeswrong/core';
 import { createRequire } from 'node:module';
@@ -11,7 +11,7 @@ const nodeRequire = createRequire(import.meta.url);
 describe('package content', () => {
   const componentsJsFilePath = nodeRequire.resolve('@porsche-design-system/components-js');
   const componentsJsPackageDir = path.resolve(componentsJsFilePath, '../..');
-  const filePaths = globby.sync(`${componentsJsPackageDir}/**/*.{js,mjs,cjs}`);
+  const filePaths = globbySync(`${componentsJsPackageDir}/**/*.{js,mjs,cjs}`);
 
   it.each(filePaths.map((filePath) => [filePath.replace(componentsJsPackageDir, 'dist/components-wrapper'), filePath]))(
     'should not contain CDN_BASE_URL_DYNAMIC placeholder or localhost in bundled js file: %s',
@@ -110,7 +110,8 @@ describe('package.json files', () => {
       (prob: Problem) =>
         !(
           prob.kind === 'FalseCJS' ||
-          ('entrypoint' in prob && (prob.entrypoint === '.' || prob.entrypoint === './styles' || prob.entrypoint === './ssr'))
+          ('entrypoint' in prob &&
+            (prob.entrypoint === '.' || prob.entrypoint === './styles' || prob.entrypoint === './ssr'))
         )
     );
 

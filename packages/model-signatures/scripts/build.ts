@@ -42,6 +42,6 @@ export const MODEL_SIGNATURES_MANIFEST = ${JSON.stringify(manifest)};
   console.log('Created model-signatures manifest.');
 };
 
-const files = globby.sync('./src/optimized/*.svg').sort();
+const files = globbySync('./src/optimized/*.svg').sort();
 
 createManifestAndCopyAssets(files);

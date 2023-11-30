@@ -98,7 +98,7 @@ export const META_ICONS_MANIFEST = ${JSON.stringify(manifest)};
 };
 
 const generate = (): void => {
-  const icons = globby.sync('./src/**/*').sort();
+  const icons = globbySync('./src/**/*').sort();
   const metaIconsManifest = copyMetaIconsAndBuildIconManifest(icons);
   const metaIconsManifestWithWebManifest = generateWebManifestAndExtendIconManifest(metaIconsManifest);
 

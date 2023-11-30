@@ -1,10 +1,10 @@
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
 import { getProjectRootPath } from './config';
 
 async function filePathsByPattern(pattern: string): Promise<string[]> {
-  const matches = globby.sync(pattern, { cwd: getProjectRootPath() });
+  const matches = globbySync(pattern, { cwd: getProjectRootPath() });
 
   if (matches.length > 0) {
     return matches.map((match) => {

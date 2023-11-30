@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 
 const frameworks = ['js', 'angular', 'react'] as const;
 type Framework = (typeof frameworks)[number];

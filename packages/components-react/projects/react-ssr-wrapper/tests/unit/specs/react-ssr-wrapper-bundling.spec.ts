@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 
 describe('nextjs', () => {
   const buildDirectory = path.resolve(__dirname, '../../../../nextjs/.next');
@@ -12,7 +12,7 @@ describe('nextjs', () => {
   });
 
   describe('client build', () => {
-    const clientJsFilePaths = globby.sync(`${buildDirectory}/static/**/*.js`);
+    const clientJsFilePaths = globbySync(`${buildDirectory}/static/**/*.js`);
 
     it.each(clientJsFilePaths.map((filePath) => [filePath.split('.next').pop(), filePath]))(
       'should not contain dsr components in %s',
@@ -29,7 +29,7 @@ describe('nextjs', () => {
   });
 
   describe('server build', () => {
-    const serverJsFilePaths = globby.sync(`${buildDirectory}/server/**/*.js`);
+    const serverJsFilePaths = globbySync(`${buildDirectory}/server/**/*.js`);
 
     it.each(serverJsFilePaths.map((filePath) => [filePath.split('.next').pop(), filePath]))(
       'should not contain process.browser in %s',
@@ -53,7 +53,7 @@ describe('remix', () => {
   });
 
   describe('client build', () => {
-    const clientJsFilePaths = globby.sync(`${clientBuildDirectory}/**/*.js`);
+    const clientJsFilePaths = globbySync(`${clientBuildDirectory}/**/*.js`);
 
     it.each(clientJsFilePaths.map((filePath) => [filePath.split('/projects/remix').pop(), filePath]))(
       'should not contain dsr components in %s',
@@ -71,7 +71,7 @@ describe('remix', () => {
 
   // server build does not bundle dependencies and imports them from node_modules instead
   xdescribe('server build', () => {
-    const serverJsFilePaths = globby.sync(`${serverBuildDirectory}/**/*.js`);
+    const serverJsFilePaths = globbySync(`${serverBuildDirectory}/**/*.js`);
 
     it.each(serverJsFilePaths.map((filePath) => [filePath.split('/projects/remix').pop(), filePath]))(
       'should not contain process.browser in %s',

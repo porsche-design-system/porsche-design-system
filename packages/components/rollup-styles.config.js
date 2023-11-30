@@ -3,7 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
 import { pascalCase } from 'change-case';
@@ -14,7 +14,7 @@ const input = 'src/styles-entry.ts';
 
 const generateStylesEntryFile = () => {
   const componentsDir = path.resolve(__dirname, 'src/components');
-  const stylesPaths = globby.sync(`${componentsDir}/**/*-styles.ts`).sort();
+  const stylesPaths = globbySync(`${componentsDir}/**/*-styles.ts`).sort();
 
   const stylesExports = stylesPaths
     .map((utilPath) => {

@@ -12,7 +12,7 @@ if (process.env.CI) {
 
 const injectPartialsIntoKarmaContextHtml = () => {
   const packagePath = path.resolve(require.resolve('@angular-devkit/build-angular'), '..');
-  const [filePath] = globby.sync(packagePath + '/**/karma-context.html');
+  const [filePath] = globbySync(packagePath + '/**/karma-context.html');
   const backupFilePath = filePath.replace(/\.html$/, '-original$&');
 
   // restore backup

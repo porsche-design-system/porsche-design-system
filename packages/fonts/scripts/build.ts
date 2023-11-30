@@ -45,7 +45,7 @@ export const FONTS_MANIFEST = ${JSON.stringify(manifest)};
 };
 
 const generate = (): void => {
-  const files = globby.sync('./src/**/*.@(woff2)').sort();
+  const files = globbySync('./src/**/*.@(woff2)').sort();
 
   createManifestAndCopyFonts(files);
 };

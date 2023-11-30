@@ -2,13 +2,13 @@ import type { BreakpointValue, BreakpointValues } from './breakpoint-customizabl
 import { parseJSON } from './breakpoint-customizable';
 import * as path from 'path';
 import * as fs from 'fs';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 
 describe('parseJSON()', () => {
   it.each<
     [
       string | boolean | number | { base: string },
-      BreakpointValues<BreakpointValue> | boolean | number | { base: string }
+      BreakpointValues<BreakpointValue> | boolean | number | { base: string },
     ]
   >([
     ['{base: true, s: false}', { base: true, s: false }],
@@ -32,7 +32,7 @@ describe('parseJSON()', () => {
 describe('BreakpointCustomizable types', () => {
   const srcDirectory = path.resolve(__dirname, '..');
   // utils files should be good enough
-  const filePaths = globby.sync(`${srcDirectory}/**/*-utils.ts`);
+  const filePaths = globbySync(`${srcDirectory}/**/*-utils.ts`);
 
   it.each(filePaths.map((filePath) => [filePath.replace(srcDirectory, ''), filePath]))(
     'should not define BreakpointCustomizable alias type in %s',

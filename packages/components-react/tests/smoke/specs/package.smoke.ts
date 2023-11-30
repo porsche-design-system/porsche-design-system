@@ -1,11 +1,11 @@
 import * as path from 'path';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import * as fs from 'fs';
 
 describe('package content', () => {
   const componentsReactFilePath = require.resolve('@porsche-design-system/components-react');
   const componentsReactPackageDir = path.resolve(componentsReactFilePath, '../../ssr');
-  const componentsReactFilePaths = globby.sync(`${componentsReactPackageDir}/**/*.{js,mjs,cjs}`);
+  const componentsReactFilePaths = globbySync(`${componentsReactPackageDir}/**/*.{js,mjs,cjs}`);
 
   it.each(
     componentsReactFilePaths.map((filePath) => [

@@ -40,7 +40,7 @@ const checkIntegrity = (manifest: Manifest): void => {
 };
 
 const createManifestAndCopyCrest = (): void => {
-  const files = globby.sync('./src/**/*.{png,webp}').sort();
+  const files = globbySync('./src/**/*.{png,webp}').sort();
 
   fs.rmSync(path.normalize('./dist'), { force: true, recursive: true });
   fs.mkdirSync(path.normalize('./dist/crest'), { recursive: true });

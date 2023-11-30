@@ -75,7 +75,7 @@ export type IconName = typeof ICON_NAMES[number];
 };
 
 const generate = (): void => {
-  const files = globby.sync('./src/**/*.svg').sort();
+  const files = globbySync('./src/**/*.svg').sort();
   const config: Config = require('../svgo.config.js');
 
   createManifestAndOptimizeIcons(files, config);
