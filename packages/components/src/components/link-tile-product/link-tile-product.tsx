@@ -4,7 +4,9 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
+  isSsrHydration,
   THEMES,
+  throwIfInvalidLinkUsage,
   validateProps,
 } from '../../utils';
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
@@ -59,6 +61,14 @@ export class LinkTileProduct {
 
   /** Emitted when the like button is clicked. */
   @Event({ bubbles: false }) public likeChange: EventEmitter<LinkTileProductUpdateEvent>;
+
+  public componentWillLoad(): void {
+    if (!isSsrHydration(this.host)) {
+      // when ssr rendered component is partially hydrated before being rerendered by its parent
+      // it has no href prop and no slotted anchor, so validation fails
+      throwIfInvalidLinkUsage(this.host, this.href);
+    }
+  }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
