@@ -33,7 +33,7 @@ export class FlyoutNavigation {
 
   // TODO: shouldn't open prop be changed internally too?
   /** If true, the flyout-navigation is visualized as opened. */
-  @Prop() public open: boolean = false;
+  @Prop() public open?: boolean = false;
 
   /** Defines which flyout-navigation-item to be visualized as opened. */
   @Prop({ mutable: true }) public activeId?: string = undefined;

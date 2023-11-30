@@ -661,7 +661,7 @@ export namespace Components {
         /**
           * If true, the flyout-navigation is visualized as opened.
          */
-        "open": boolean;
+        "open"?: boolean;
         /**
           * Adapts the flyout-navigation color depending on the theme.
          */
