@@ -12,6 +12,7 @@ import {
 import {
   borderRadiusLarge,
   borderRadiusMedium,
+  borderWidthBase,
   fontLineHeight,
   fontSizeTextXSmall,
   fontWeightRegular,
@@ -22,8 +23,11 @@ import {
   spacingFluidXSmall,
   textXSmallStyle,
   textXXSmallStyle,
+  themeLightStateFocus,
 } from '@porsche-design-system/utilities-v2';
 import { tagPaddingY } from '../tag/tag-styles';
+
+const cssVariableMixBlendMode = '--p-link-tile-product-mix-blend-mode';
 
 export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string => {
   const { primaryColor, contrastHighColor, backgroundSurfaceColor } = getThemedColors(theme);
@@ -35,24 +39,43 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
         position: 'relative',
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
+          ...hoverMediaQuery({
+            '&(:hover) ::slotted(img), &(:hover) ::slotted(picture)': {
+              transform: 'scale3d(1.05,1.05,1.05)',
+            },
+          }),
         }),
       },
       ...addImportantToEachRule({
         '::slotted': {
-          '&(img)': {
+          '&(img), &(picture)': {
+            display: 'block',
             width: '100%',
             height: '100%',
+            borderRadius: borderRadiusLarge,
             objectFit: 'cover',
+            overflow: 'hidden',
+            aspectRatio: '8 / 9',
+            transition: getTransition('transform', 'moderate'),
+            mixBlendMode: `var(${cssVariableMixBlendMode})`,
           },
           '&(a)': {
             position: 'absolute',
+            borderRadius: borderRadiusMedium,
             ...getInsetJssStyle(),
-            ...getFocusStyle({ borderRadius: 'medium' }),
+            zIndex: 1, // Necessary to be on top of img
+          },
+          // TODO: Refactor getFocusStyles to support slotted selector
+          '&(a:focus)': {
+            outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
+            outlineOffset: '2px',
+          },
+          '&(a:focus:not(:focus-visible))': {
+            outlineColor: 'transparent',
           },
         },
       }),
@@ -63,6 +86,7 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
       ...getFocusStyle({ borderRadius: 'medium' }),
     },
     root: {
+      boxSizing: 'border-box',
       borderRadius: borderRadiusMedium,
       padding: spacingFluidSmall,
       color: primaryColor,
@@ -70,11 +94,6 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: primaryColorDark,
         backgroundColor: backgroundSurfaceColorDark,
-      }),
-      ...hoverMediaQuery({
-        '&:hover .image-container': {
-          transform: 'scale3d(1.05,1.05,1.05)',
-        },
       }),
     },
     header: {
@@ -88,6 +107,7 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
     ...(hasLikeButton && {
       'like-button': {
         position: 'absolute',
+        zIndex: 2, // To be on top of link
         top: spacingFluidSmall,
         right: spacingFluidSmall,
         height: 'fit-content',
@@ -137,11 +157,7 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
       },
     },
     'image-container': {
-      aspectRatio: '8 / 9',
-      overflow: 'hidden',
-      margin: `${spacingFluidSmall} ${spacingFluidMedium} ${spacingFluidXSmall} ${spacingFluidMedium} `,
-      borderRadius: borderRadiusLarge,
-      transition: getTransition('transform', 'moderate'),
+      padding: `${spacingFluidSmall} ${spacingFluidMedium} ${spacingFluidXSmall} ${spacingFluidMedium} `,
     },
   });
 };
