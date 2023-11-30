@@ -44,7 +44,7 @@
     "http-server": "^14.1.1",
     "madge": "^6.1.0",
     "ts-node": "^10.9.1",
-    "typescript": "~5.2.2"
+    "typescript": "~5.3.2"
   },
   "bin": {
     "serve-cdn": "./bin/serve-cdn.js"
