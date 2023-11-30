@@ -266,24 +266,24 @@ exports[`should have no basic DOM regression for p-link-tile-model-signature 1`]
 `;
 
 exports[`should have no basic DOM regression for p-link-tile-product 1`] = `
-"<a class="root" href="value" target="_self">
-  <div class="header">
-    <slot name="tags">
+"<div class="root">
+  <div id="header" class="header">
+    <slot name="header">
     </slot>
   </div>
   <div class="image-container">
     <slot>
     </slot>
   </div>
-  <div class="text text__heading-container">
-    <p class="text text__heading">
-      value</p>
+  <div class="heading-container">
+    <h3 id="heading" class="text text__heading">
+      value</h3>
   </div>
-  <p class="text text__price">
+  <p id="price" class="text text__price">
     value</p>
-  <p class="text text__info">
+  <p id="info" class="text text__info">
   </p>
-</a>
+</div>
 <p-button-pure class="like-button hydrated" hide-label="true">
   Heart icon</p-button-pure>"
 `;
