@@ -403,9 +403,16 @@ exports[`should match snapshot 1`] = `
         "center",
         "left",
       ],
+      "aria": [
+        "aria-label",
+      ],
       "description": "string",
       "disablePagination": "boolean",
       "heading": "string",
+      "headingSize": [
+        "xl",
+        "xxl",
+      ],
       "intl": {
         "first": "string",
         "last": "string",
@@ -453,7 +460,7 @@ exports[`should match snapshot 1`] = `
       "carouselChange",
       "update",
     ],
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
@@ -464,6 +471,7 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "heading",
       "description",
+      "header",
     ],
     "nestedComponents": [
       "p-link-pure",
@@ -472,9 +480,11 @@ exports[`should match snapshot 1`] = `
     "props": {
       "activeSlideIndex": 0,
       "alignHeader": "start",
+      "aria": null,
       "description": null,
       "disablePagination": null,
       "heading": null,
+      "headingSize": "xl",
       "intl": null,
       "pagination": true,
       "rewind": true,
