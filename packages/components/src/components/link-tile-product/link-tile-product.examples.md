@@ -112,17 +112,17 @@ export default class Code extends Vue {
   };
 
   header = `<p-link-tile-product heading="Some product" price="911€" href="https://porsche.com" theme="${this.theme}">
-    ${this.headerSlot}
-    ${this.img}
+  ${this.headerSlot}
+  ${this.img}
 </p-link-tile-product>`;
 
   info = `<p-link-tile-product heading="Some product" price="911€" href="https://porsche.com" info="Some info" theme="${this.theme}">
-    ${this.img}
+  ${this.img}
 </p-link-tile-product>`;
 
   slottedLink = `<p-link-tile-product heading="Some product" price="911€" info="Some info" theme="${this.theme}">
-    ${this.link}
-    ${this.img}
+  ${this.link}
+  ${this.img}
 </p-link-tile-product>`;
 }
 </script>
