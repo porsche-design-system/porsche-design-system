@@ -1,4 +1,4 @@
-# Dependencies 14.11.2023
+# Dependencies 30.11.2023
 
 ## Overview of Framework Versions
 
