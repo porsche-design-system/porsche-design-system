@@ -118,6 +118,7 @@ export const getComponentCss = (
         visibility: 'inherit',
         transition: 'initial',
       },
+      // simulates frosted glass header, to be visually in sync with header of secondary scroller
       '&::before': {
         content: '""',
         display: 'block',
@@ -145,7 +146,7 @@ export const getComponentCss = (
         padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
       },
     },
-    // header is needed to keep position of dismiss button in sync with header of secondary drawer
+    // header is needed to keep position of dismiss button in sync with header of secondary scroller
     header: {
       position: 'relative',
       zIndex: 3, // ensures dismiss button is visible on secondary drawer in mobile view

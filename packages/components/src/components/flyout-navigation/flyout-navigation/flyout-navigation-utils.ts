@@ -9,6 +9,7 @@ export type FlyoutNavigationUpdate = {
 };
 export type FlyoutNavigationUpdateEvent = FlyoutNavigationUpdate; // to have consistent event types
 
+// TODO: maybe not needed at all?
 export const FLYOUT_NAVIGATION_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type FlyoutNavigationAriaAttribute = (typeof FLYOUT_NAVIGATION_ARIA_ATTRIBUTES)[number];
 

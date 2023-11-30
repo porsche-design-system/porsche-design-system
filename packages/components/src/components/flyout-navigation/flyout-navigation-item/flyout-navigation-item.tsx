@@ -32,11 +32,11 @@ export class FlyoutNavigationItem {
   @Prop() public id: string;
 
   private get theme(): Theme {
-    return this.host.theme || 'light'; // default as fallback
+    return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by flyout-navigation)
   }
 
   private get open(): boolean {
-    return this.host.open || false; // default as fallback
+    return this.host.open || false; // default as fallback (internal private prop is controlled by flyout-navigation)
   }
 
   public connectedCallback(): void {
@@ -65,7 +65,7 @@ export class FlyoutNavigationItem {
           class="button"
           type="button"
           theme={this.theme}
-          onClick={() => this.onClickButton()}
+          onClick={() => this.onClickButton(this.open ? undefined : this.id)}
         >
           {this.label}
         </PrefixedTagNames.pButtonPure>
@@ -83,7 +83,7 @@ export class FlyoutNavigationItem {
               icon="arrow-head-left"
               hideLabel={true}
               theme={this.theme}
-              onClick={() => this.onClickBackButton()}
+              onClick={() => this.onClickButton(undefined)}
             >
               Back
             </PrefixedTagNames.pButtonPure>
@@ -97,20 +97,10 @@ export class FlyoutNavigationItem {
     );
   }
 
-  private onClickButton = (): void => {
+  private onClickButton = (activeId: string | undefined): void => {
     const eventInitDictDetail = (): CustomEventInit<FlyoutNavigationUpdateEvent> => ({
       bubbles: true,
-      detail: { activeId: this.open ? undefined : this.id },
-    });
-    this.host.dispatchEvent(
-      new CustomEvent<FlyoutNavigationUpdateEvent>(INTERNAL_UPDATE_EVENT_NAME, eventInitDictDetail())
-    );
-  };
-
-  private onClickBackButton = (): void => {
-    const eventInitDictDetail = (): CustomEventInit<FlyoutNavigationUpdateEvent> => ({
-      bubbles: true,
-      detail: { activeId: undefined },
+      detail: { activeId },
     });
     this.host.dispatchEvent(
       new CustomEvent<FlyoutNavigationUpdateEvent>(INTERNAL_UPDATE_EVENT_NAME, eventInitDictDetail())

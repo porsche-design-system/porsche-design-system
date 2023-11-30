@@ -149,10 +149,6 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
         color: primaryColorDark,
       }),
     },
-    dismiss: {
-      padding: spacingFluidSmall,
-      marginInlineEnd: `calc(${spacingFluidSmall} * -1)`,
-    },
     content: mergeDeep(getContentJssStyles(), fadeInOutTransition),
   });
 };

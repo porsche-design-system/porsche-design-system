@@ -44,8 +44,7 @@ export class FlyoutNavigation {
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  // TODO: return type is missing
-  /** Emitted when activeId state is changed. */
+  /** Emitted when activeId is changed. */
   @Event({ bubbles: false }) public update?: EventEmitter<FlyoutNavigationUpdateEvent>;
 
   private dialog: HTMLDialogElement;
@@ -69,11 +68,11 @@ export class FlyoutNavigation {
   }
 
   public componentDidLoad(): void {
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineFlyoutNavigationItemElements);
     if (this.open) {
       setScrollLock(true);
       this.setDialogVisibility(true);
     }
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineFlyoutNavigationItemElements);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -93,7 +92,10 @@ export class FlyoutNavigation {
 
     return (
       <dialog
-        tabindex={-1}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        /* @ts-ignore */
+        inert={this.open ? null : true} // prevents focusable elements during fade-out transition
+        tabindex={-1} // dialog always has a dismiss button to be focused
         ref={(ref) => (this.dialog = ref)}
         onClick={(e) => this.onClickDialog(e)}
         onCancel={(e) => this.onCancelDialog(e)}

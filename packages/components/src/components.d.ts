@@ -3189,7 +3189,7 @@ declare namespace LocalJSX {
          */
         "onDismiss"?: (event: PFlyoutNavigationCustomEvent<void>) => void;
         /**
-          * Emitted when activeId state is changed.
+          * Emitted when activeId is changed.
          */
         "onUpdate"?: (event: PFlyoutNavigationCustomEvent<FlyoutNavigationUpdateEvent>) => void;
         /**
