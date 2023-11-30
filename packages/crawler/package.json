@@ -9,7 +9,7 @@
     "start": "yarn clean:reports && tsx src/index.ts",
     "start-app": "serve-cdn",
     "test": "yarn test:e2e",
-    "test:e2e": "PORT=3001 jest --colors -c tests/e2e/config/jest.config.ts",
+    "test:e2e": "PORT=3001 jest --colors -c tests/e2e/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:reports",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:reports": "rm -rf ./reports"

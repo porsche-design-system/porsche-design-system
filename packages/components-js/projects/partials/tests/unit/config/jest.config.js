@@ -1,6 +1,4 @@
-import type { Config } from 'jest';
-
-const config: Config = {
+module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   verbose: true,
@@ -18,5 +16,3 @@ const config: Config = {
   },
   prettierPath: null, // because prettier 3 doesn't work with inline snapshots: https://github.com/jestjs/jest/issues/14305
 };
-
-export default config;
