@@ -12,16 +12,15 @@ export const LinkTileProductExample = (): JSX.Element => {
   return (
     <PLinkTileProduct
       heading="Some product name"
-      price="199,99€"
+      price="911€"
       info="Some info"
-      href="/"
+      href="https://www.porsche.com"
       liked={liked}
       onLikeChange={handleLikeChange}
     >
       <PTag slot="tags" color="background-base">
         New
       </PTag>
-      <Link slot="link" to="https://www.porsche.com" />
       <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
     </PLinkTileProduct>
   );

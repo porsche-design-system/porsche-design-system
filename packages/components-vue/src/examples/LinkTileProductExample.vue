@@ -12,9 +12,9 @@
 <template>
   <PLinkTileProduct
     :heading="'Some product name'"
-    :price="'199,99€'"
+    :price="'911€'"
     :info="'Some info'"
-    :href="'/'"
+    :href="'https://www.porsche.com'"
     :liked="liked"
     @likeChange="handleLikeChange"
   >

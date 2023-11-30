@@ -6,26 +6,31 @@
 </style>
 
 <div class="playground light auto-layout-inline" title="should render default">
-  <p-link-tile-product heading="Some product name" price="Some price" href="/">
+  <p-link-tile-product heading="Some product name" price="911€" href="https://www.porsche.com">
     <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render without like button">
-  <p-link-tile-product heading="Some product name" price="Some price" href="/" like-button="false">
+  <p-link-tile-product heading="Some product name" price="911€" href="https://www.porsche.com" like-button="false">
     <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render with very long heading">
   <p-link-tile-product
     heading="Some very long product name to illustrate what happens when the text overflows the container"
-    price="Some price"
-    href="/"
+    price="911€"
+    href="https://www.porsche.com"
   >
     <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render with info, likeButton and tags">
-  <p-link-tile-product heading="Some product name" price="Some price" info="Some additional info" href="/">
+  <p-link-tile-product
+    heading="Some product name"
+    price="911€"
+    info="Some additional info"
+    href="https://www.porsche.com"
+  >
     <p-tag slot="tags" color="background-base">New</p-tag>
     <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
   </p-link-tile-product>
@@ -35,14 +40,14 @@
     heading="Some product name"
     price="Some very long price text to illustrate what happens when the text overflows the container"
     info="Some very long additional info to illustrate what happens when the text overflows the container"
-    href="/"
+    href="https://www.porsche.com"
   >
     <p-tag slot="tags" color="background-base">New</p-tag>
     <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render with like button and too many tags">
-  <p-link-tile-product heading="Some product name" price="Some price" href="/">
+  <p-link-tile-product heading="Some product name" price="911€" href="https://www.porsche.com">
     <div slot="tags">
       <p-tag color="background-base">Using</p-tag>
       <p-tag color="background-base">too</p-tag>
@@ -56,7 +61,7 @@
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render without like button and too many tags">
-  <p-link-tile-product heading="Some product name" price="Some price" href="/" like-button="false">
+  <p-link-tile-product heading="Some product name" price="911€" href="https://www.porsche.com" like-button="false">
     <div slot="tags">
       <p-tag color="background-base">Using</p-tag>
       <p-tag color="background-base">too</p-tag>
@@ -70,7 +75,7 @@
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render with slotted picture">
-  <p-link-tile-product heading="Product Name" price="Some price" href="/">
+  <p-link-tile-product heading="Product Name" price="911€" href="https://www.porsche.com">
     <picture>
       <source media="(min-width:400px)" srcset="/assets/link-tile-product-example-02.png" />
       <img src="/assets/link-tile-product-example-02.png" alt="Some alt text" />
@@ -78,7 +83,7 @@
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render with image which has wrong aspect-ratio">
-  <p-link-tile-product heading="Product Name" price="Some price" href="/">
+  <p-link-tile-product heading="Product Name" price="911€" href="https://www.porsche.com">
     <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
   </p-link-tile-product>
 </div>
@@ -86,10 +91,26 @@
   class="playground light auto-layout-inline"
   title="should render with images which have wrong aspect-ratios when using slotted picture"
 >
-  <p-link-tile-product heading="Product Name" price="Some price" href="/">
+  <p-link-tile-product heading="Product Name" price="911€" href="https://www.porsche.com">
     <picture>
       <source media="(min-width:400px)" srcset="/assets/link-tile-product-example-02.png" />
       <img src="/assets/link-tile-product-example-02.png" alt="Some alt text" />
     </picture>
+  </p-link-tile-product>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render with image and slotted link">
+  <p-link-tile-product heading="Product Name" price="911€" href="https://www.porsche.com">
+    <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
+    <a href="https://www.porsche.com"></a>
+  </p-link-tile-product>
+</div>
+<div class="playground light auto-layout-inline" title="should render with picture and slotted link">
+  <p-link-tile-product heading="Product Name" price="911€" href="https://www.porsche.com">
+    <picture>
+      <source media="(min-width:400px)" srcset="/assets/link-tile-product-example-02.png" />
+      <img src="/assets/link-tile-product-example-02.png" alt="Some alt text" />
+    </picture>
+    <a href="https://www.porsche.com"></a>
   </p-link-tile-product>
 </div>
