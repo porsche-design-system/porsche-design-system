@@ -20,21 +20,19 @@ import {
 import {
   cssVariableVisibility,
   cssVariableVisibilityTransitionDuration,
-  frostedGlassBackgroundColorDark,
-  frostedGlassBackgroundColorLight,
   frostedGlassHeaderHeight,
   getContentJssStyles,
   mediaQueryEnhancedView,
   scrollerWidthEnhancedView,
 } from '../flyout-navigation/flyout-navigation-styles';
 
+const frostedGlassBackgroundColorLight = 'rgba(238, 239, 242, 0.79)';
+const frostedGlassBackgroundColorDark = 'rgba(33, 34, 37, 0.79)';
+
 export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Theme): string => {
-  const { primaryColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    backgroundColor: backgroundColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-  } = getThemedColors('dark');
+  const { primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
+    getThemedColors('dark');
 
   const frostedGlassBackgroundColor = isThemeDark(theme)
     ? frostedGlassBackgroundColorDark
@@ -99,16 +97,12 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
       overflow: 'auto',
       ...dropShadowHighStyle,
       // it's important to define background-color for each scroller to have correct scrollbar coloring
-      backgroundColor,
+      backgroundColor: backgroundSurfaceColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        backgroundColor: backgroundColorDark,
+        backgroundColor: backgroundSurfaceColorDark,
       }),
       [mediaQueryEnhancedView]: {
         boxShadow: 'none',
-        backgroundColor: backgroundSurfaceColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          backgroundColor: backgroundSurfaceColorDark,
-        }),
         insetInlineStart: `calc(${scrollerWidthEnhancedView} - 1px)`, // -1px prevents possible visible background under certain circumstances between primary and secondary scroller
         width: scrollerWidthEnhancedView,
         transform: 'initial',

@@ -105,7 +105,7 @@ export class FlyoutNavigation {
             size="medium"
             hideLabel={true}
             icon="close"
-            theme="light"
+            theme={this.theme}
             onClick={this.dismissDialog}
           >
             Dismiss flyout

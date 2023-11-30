@@ -29,8 +29,8 @@ export const cssVariableVisibility = '--p-internal-flyout-navigation-visibility'
 export const cssVariableVisibilityTransitionDuration = '--p-internal-flyout-navigation-visibility-transition-duration';
 
 export const frostedGlassHeaderHeight = '4rem';
-export const frostedGlassBackgroundColorLight = 'rgba(255, 255, 255, 0.79)';
-export const frostedGlassBackgroundColorDark = 'rgba(14, 14, 18, 0.79)';
+const frostedGlassBackgroundColorLight = 'rgba(255, 255, 255, 0.79)';
+const frostedGlassBackgroundColorDark = 'rgba(14, 14, 18, 0.79)';
 
 export const scrollerWidthEnhancedView = 'clamp(338px, 10.52vw + 258px, 460px)';
 export const mediaQueryEnhancedView = getMediaQueryMin('s');
