@@ -519,6 +519,8 @@ $&`
           );
       } else if (tagName === 'p-pin-code') {
         newFileContent = newFileContent.replace(/value={/, 'defaultValue={'); // fix warning about read-only field
+      } else if (tagName === 'p-flyout-navigation-item') {
+        newFileContent = newFileContent.replace(/: Theme/g, ': any');
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
           .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation
