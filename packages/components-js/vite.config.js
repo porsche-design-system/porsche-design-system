@@ -22,7 +22,9 @@ const transformIndexHtmlPlugin = () => {
         getInitialStyles({ prefix: ['', 'my-prefix'] }),
         getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }),
         getIconLinks({ icons: [...ICON_NAMES] }),
-        getFontFaceStylesheet(),
+        // TODO: we should provide inline styles instead for getFontFaceStylesheet(), which is recommended by Lighthouse and we could replace cdn urls by localhost
+        // getFontFaceStylesheet(),
+        '<link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">',
         getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
         getMetaTagsAndIconLinks({ appTitle: 'Porsche Design System' }),
       ]

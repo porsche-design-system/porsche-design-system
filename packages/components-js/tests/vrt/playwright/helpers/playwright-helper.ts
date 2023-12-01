@@ -1,20 +1,16 @@
 import { type Page } from '@playwright/test';
-import { getInitialStyles, getComponentChunkLinks, getIconLinks } from '@porsche-design-system/components-js/partials';
+import {
+  getInitialStyles,
+  getComponentChunkLinks,
+  getIconLinks,
+  getFontFaceStylesheet,
+  getFontLinks,
+} from '@porsche-design-system/components-js/partials';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 import { COMPONENT_CHUNK_NAMES } from '../../../../projects/components-wrapper';
 import { ICON_NAMES } from '@porsche-design-system/assets';
-
-const chunksLink = getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }).replace(
-  /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
-  'http://localhost:3001'
-);
-
-const iconsLink = getIconLinks({ icons: [...ICON_NAMES] }).replace(
-  /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
-  'http://localhost:3001'
-);
 
 // TODO: why are the following constants prefixed with base?
 export const baseThemes = ['light', 'dark'] as const;
@@ -29,7 +25,7 @@ const themeableTagNames = (TAG_NAMES as unknown as TagName[]).filter(
 const isOrContainsPIcon = (tagName: TagName): boolean => {
   return tagName === 'p-icon' || getComponentMeta(tagName).nestedComponents?.some(isOrContainsPIcon);
 };
-const iconChildTagNames = (TAG_NAMES as unknown as TagName[]).filter(isOrContainsPIcon);
+// const iconChildTagNames = (TAG_NAMES as unknown as TagName[]).filter(isOrContainsPIcon);
 
 export const waitForComponentsReady = async (page: Page): Promise<number> => {
   // this solves a race condition where the html page with the pds markup is loaded async and componentsReady()
@@ -37,7 +33,7 @@ export const waitForComponentsReady = async (page: Page): Promise<number> => {
   await page.waitForFunction(async () => (await (window as any).porscheDesignSystem.componentsReady()) > 0);
 
   // remove loading="lazy" from icon img elements which might otherwise be missing when a screenshot or pdf is created
-  const iconUrls = await page.evaluate((iconChildTagNames) => {
+  /* const iconUrls = await page.evaluate((iconChildTagNames) => {
     const elementsWithIcons = Array.from(document.querySelectorAll(iconChildTagNames.join(',')));
     const removeIconLazyLoading = (el: HTMLElement): string[] =>
       el.tagName === 'P-ICON' // optional chaining is needed for toast which does not contain `img` element for unknown reasons 🤷‍
@@ -50,7 +46,7 @@ export const waitForComponentsReady = async (page: Page): Promise<number> => {
   }, iconChildTagNames);
 
   // NOTE: there is no guarantee that all svg or png assets are already loaded, request interception and something like
-  // await Promise.all(iconUrls.map((url) => page.waitForResponse(url)) might be a stable solution
+  await Promise.all(iconUrls.map((url) => page.waitForResponse(url)) might be a stable solution*/
   return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
 };
 
@@ -194,25 +190,39 @@ export const setContentWithDesignSystem = async (
   // get rid of spaces as we do during static VRTs
   content = content.replace(/>(\s)*</g, '><');
 
-  await page.setContent(
-    `<!DOCTYPE html>
+  const localhost = 'http://localhost:3001';
+  const headPartials = [
+    getInitialStyles(),
+    getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }),
+    getIconLinks({ icons: [...ICON_NAMES] }),
+    // TODO: we should provide inline styles instead for getFontFaceStylesheet(), which is recommended by Lighthouse and we could replace cdn urls by localhost
+    // getFontFaceStylesheet(),
+    '<link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">',
+    getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
+  ]
+    .join('')
+    .replace(/https:\/\/cdn\.ui\.porsche\.com?(?:\/porsche-design-system)?/g, localhost);
+
+  // TODO: using getLoaderScript() partial to initialize PDS would be much nicer.
+  //  But how to expose componentsReady then `window.porscheDesignSystem.componentsReady = componentsReady;`?
+  // const bodyPartials = [getLoaderScript()]
+  // .join('')
+  // .replace(/"https:\/\/cdn\.ui\.porsche\."\+\("cn"===window\[t\]\?"cn":"com"\)/g, `"${localhost}"`);
+
+  await page.setContent(`<!DOCTYPE html>
 <html>
   <head>
     <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
     <script type="text/javascript" src="http://localhost:8575/index.js"></script>
-    <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
     <link rel="stylesheet" href="assets/styles.css">
-    ${getInitialStyles()}
-    ${chunksLink}
-    ${iconsLink}
+    ${headPartials}
     ${injectIntoHead}
   </head>
   <body>
     <div id="app">${content}</div>
     <script type="text/javascript">porscheDesignSystem.load();</script>
   </body>
-</html>`
-  );
+</html>`);
   await waitForComponentsReady(page);
 
   if (forceComponentTheme) {

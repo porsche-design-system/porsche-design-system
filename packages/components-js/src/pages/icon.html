@@ -73,7 +73,7 @@
 <div class="playground light overview" title="should render all available icons and apply coloring programmatically">
   <script>
     // load icons.js via ajax which is part of icons package and parse ICON_NAMES array from it to render all icons
-    fetch('lib/icons.js')
+    fetch('assets/icons.js')
       .then((res) => res.text())
       .then((content) => {
         const [, str] = /const ICON_NAMES = (.*);/.exec(content);
