@@ -12,6 +12,7 @@
 | ✅ **Fieldset Wrapper**     |                                                                                                                                                                                    |
 | ✅ **Flex**                 |                                                                                                                                                                                    |
 | ✅ **Flyout**               |                                                                                                                                                                                    |
+| ✅ **Flyout Navigation**    |                                                                                                                                                                                    |
 | ✅ **Grid**                 |                                                                                                                                                                                    |
 | ✅ **Headline**             |                                                                                                                                                                                    |
 | ✅ **Icon**                 |                                                                                                                                                                                    |
