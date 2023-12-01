@@ -65,7 +65,6 @@ export const getComponentCss = (
   hasHeading: boolean,
   hasDescription: boolean,
   headingSize: CarouselHeadingSize,
-  hasHeader: boolean,
   width: CarouselWidth,
   hasPagination: BreakpointCustomizable<boolean>,
   isInfinitePagination: boolean,
@@ -120,6 +119,9 @@ export const getComponentCss = (
             color: primaryColorDark,
           }),
           alignSelf: 'center', // relevant for vertical alignment of header
+          ...(isHeaderAlignCenter && {
+            justifySelf: 'center', // relevant for horizontal alignment of header
+          }),
           [mediaQueryS]: isHeaderAlignCenter
             ? {
                 gridColumn: 2,
@@ -132,7 +134,7 @@ export const getComponentCss = (
     },
     header: {
       display: 'grid',
-      gridTemplateRows: `${hasHeading ? '1fr ' : ''}${hasDescription ? '1fr ' : ''}${hasHeader ? '1fr' : 'auto'}`, // TODO: should we reduce grid rows on small screens?
+      gridTemplateRows: `${hasHeading ? 'auto ' : ''}${hasDescription ? 'auto ' : ''}auto`,
       padding: `0 ${spacingMap[width].base}`,
       ...(isHeaderAlignCenter && {
         textAlign: 'center',
@@ -141,7 +143,6 @@ export const getComponentCss = (
         fontFamily, // relevant for button group width calculation, which is based on ex unit
         fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
         columnGap: spacingStaticMedium,
-        gridTemplateRows: `${hasHeading ? '1fr ' : ''}${hasDescription ? '1fr ' : ''}1fr`,
         gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
         ...(isHeaderAlignCenter && {
           justifyItems: 'center', // relevant when max-width of heading or description is reached

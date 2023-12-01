@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: false, headingSize: xl, hasHeader: true, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: false, headingSize: xl, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center and theme: dark 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -33,6 +33,7 @@ p,::slotted([slot=description]) {
 h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=header]) {
   color: #FBFCFF !important;
   align-self: center !important;
+  justify-self: center !important;
 }
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=header]) {
@@ -42,7 +43,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-rows: auto;
   padding: 0 max(22px, 10.625vw - 12px);
   text-align: center;
 }
@@ -128,7 +129,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
@@ -163,7 +163,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: false, headingSize: xl, hasHeader: true, width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: false, headingSize: xl, width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start and theme: light 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -205,7 +205,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-rows: auto;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
@@ -290,7 +290,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
@@ -324,7 +323,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: false, headingSize: xxl, hasHeader: false, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: false, headingSize: xxl, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -357,6 +356,7 @@ p,::slotted([slot=description]) {
 h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=header]) {
   color: #010205 !important;
   align-self: center !important;
+  justify-self: center !important;
 }
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=header]) {
@@ -476,7 +476,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
@@ -511,7 +510,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: false, headingSize: xxl, hasHeader: false, width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: start and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: false, headingSize: xxl, width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: start and theme: light 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -610,7 +609,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
@@ -644,7 +642,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: true, headingSize: xxl, hasHeader: true, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: true, headingSize: xxl, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left and theme: light 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -686,7 +684,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
@@ -743,7 +741,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
@@ -777,7 +774,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: true, headingSize: xxl, hasHeader: true, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: false, hasDescription: true, headingSize: xxl, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -810,6 +807,7 @@ p,::slotted([slot=description]) {
 h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=header]) {
   color: #010205 !important;
   align-self: center !important;
+  justify-self: center !important;
 }
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=header]) {
@@ -819,7 +817,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
   padding: 0 max(22px, 10.625vw - 12px);
   text-align: center;
 }
@@ -935,7 +933,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
@@ -991,7 +988,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: false, headingSize: xl, hasHeader: false, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: false, headingSize: xl, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start and theme: light 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1033,7 +1030,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto auto;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
@@ -1090,7 +1087,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
@@ -1124,7 +1120,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: false, headingSize: xl, hasHeader: false, width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: false, headingSize: xl, width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1157,6 +1153,7 @@ p,::slotted([slot=description]) {
 h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=header]) {
   color: #010205 !important;
   align-self: center !important;
+  justify-self: center !important;
 }
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=header]) {
@@ -1166,7 +1163,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto auto;
   padding: 0 max(22px, 10.625vw - 12px);
   text-align: center;
 }
@@ -1224,7 +1221,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
@@ -1259,7 +1255,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xl, hasHeader: true, width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xl, width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1292,6 +1288,7 @@ p,::slotted([slot=description]) {
 h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=header]) {
   color: #010205 !important;
   align-self: center !important;
+  justify-self: center !important;
 }
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=header]) {
@@ -1301,7 +1298,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
   padding: 0 max(22px, 10.625vw - 12px);
   text-align: center;
 }
@@ -1359,7 +1356,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
@@ -1394,7 +1390,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xl, hasHeader: true, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: start and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xl, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: start and theme: dark 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1436,7 +1432,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
@@ -1545,7 +1541,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
@@ -1579,7 +1574,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xl, hasHeader: true, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: start and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xl, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: start and theme: light 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1621,7 +1616,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
@@ -1712,7 +1707,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
   }
@@ -1767,7 +1761,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xxl, hasHeader: false, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xxl, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start and theme: light 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1809,7 +1803,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr 1fr auto;
+  grid-template-rows: auto auto auto;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
@@ -1894,7 +1888,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
@@ -1928,7 +1921,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xxl, hasHeader: false, width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasHeading: true, hasDescription: true, headingSize: xxl, width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center and theme: light 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1961,6 +1954,7 @@ p,::slotted([slot=description]) {
 h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=header]) {
   color: #010205 !important;
   align-self: center !important;
+  justify-self: center !important;
 }
 @media(min-width:760px) {
   h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=header]) {
@@ -1970,7 +1964,7 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
 
 .header {
   display: grid;
-  grid-template-rows: 1fr 1fr auto;
+  grid-template-rows: auto auto auto;
   padding: 0 max(22px, 10.625vw - 12px);
   text-align: center;
 }
@@ -2080,7 +2074,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]),::slotted([slot=hea
     font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     font-size: 1rem;
     column-gap: 16px;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px) minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     justify-items: center;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);

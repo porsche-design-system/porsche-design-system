@@ -155,7 +155,6 @@ export class Carousel {
   private slides: HTMLElement[] = [];
   private hasHeading: boolean;
   private hasDescription: boolean;
-  private hasHeader: boolean;
 
   private get hasNavigation(): boolean {
     return this.slidesPerPage === 'auto' || this.amountOfPages > 1;
@@ -253,14 +252,12 @@ export class Carousel {
     this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
     this.hasHeading = hasHeading(this.host, this.heading);
     this.hasDescription = hasDescription(this.host, this.description);
-    this.hasHeader = hasNamedSlot(this.host, 'header');
     attachComponentCss(
       this.host,
       getComponentCss,
       this.hasHeading,
       this.hasDescription,
       this.headingSize,
-      this.hasHeader,
       this.width,
       // flip boolean values of disablePagination since it is the inverse of pagination
       this.disablePagination
@@ -293,7 +290,7 @@ export class Carousel {
         <div class="header">
           {this.hasHeading && ((this.heading && <h2 id="heading">{this.heading}</h2>) || <slot name="heading" />)}
           {this.hasDescription && ((this.description && <p>{this.description}</p>) || <slot name="description" />)}
-          {this.hasHeader && <slot name="header" />}
+          {hasNamedSlot(this.host, 'header') && <slot name="header" />}
           <div class="nav">
             {this.skipLinkTarget && (
               <PrefixedTagNames.pLinkPure
