@@ -203,6 +203,21 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-flyout-navigation: propTypes with ValidatorFunctions 1`] = `
+{
+  "activeIdentifier": "string",
+  "open": "boolean",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-flyout-navigation-item: propTypes with ValidatorFunctions 1`] = `
+{
+  "identifier": "string",
+  "label": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-grid: propTypes with ValidatorFunctions 1`] = `
 {
   "direction": "breakpoint",
