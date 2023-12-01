@@ -186,6 +186,8 @@ exports[`getIndexHtml() should return correct markup with styles 1`] = `
       p-flex,
       p-flex-item,
       p-flyout,
+      p-flyout-navigation,
+      p-flyout-navigation-item,
       p-grid,
       p-grid-item,
       p-heading,
