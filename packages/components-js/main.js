@@ -88,7 +88,7 @@ const updateSelect = (id, value) => {
 
 (async () => {
   load({ prefix: 'my-prefix' }); // used on overview page
-  window.componentsReady = componentsReady; // for vrt
+  window.porscheDesignSystem.componentsReady = componentsReady; // for vrt
 
   if (!isPageLoadedInIFrame()) {
     updateSelect('page', getPage());

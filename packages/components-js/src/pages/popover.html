@@ -26,7 +26,7 @@
   window.addEventListener('resize', (e) => e.stopImmediatePropagation(), true);
   window.addEventListener('scroll', (e) => e.stopImmediatePropagation(), true);
 
-  componentsReady().then(() => {
+  porscheDesignSystem.componentsReady().then(() => {
     document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
     document.querySelectorAll('p-popover').forEach((popover) => {
       popover.shadowRoot.querySelector('button').click();

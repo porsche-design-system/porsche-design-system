@@ -306,7 +306,7 @@
 </div>
 
 <script>
-  componentsReady().then(() => {
+  porscheDesignSystem.componentsReady().then(() => {
     // Call click on the shadow root input so isOutsideClick won't close the dropdowns
     document.querySelectorAll('p-multi-select.open').forEach((el) => el.shadowRoot.querySelector('INPUT').click());
 
