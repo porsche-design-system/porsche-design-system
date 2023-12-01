@@ -89,6 +89,9 @@ export const getComponentCss = (
           gridTemplateRows: '100vh',
           insetInlineEnd: 'auto', // to have correct dialog dimensions for ideal transitions
         },
+        '&:focus-visible': {
+          outline: 'none', // ua-style reset
+        },
         '&::backdrop': {
           // to improve browser backwards compatibility we visually style the backdrop on the :host,
           // although it's not on the #top-layer like it would be for modern browsers supporting ::backdrop

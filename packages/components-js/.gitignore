@@ -1,5 +1,6 @@
 /dist
 /www
+/public/lib
 
 /projects/components-wrapper/environment.js
 

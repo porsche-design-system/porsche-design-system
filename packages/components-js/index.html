@@ -2,21 +2,16 @@
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Porsche Design System - JS</title>
-    <base href="/" />
-
+    <title>Porsche Design System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="http://localhost:3001/meta-icons/favicon-32x32.5638ae59e85b68cac7febfffe555dbe7.png" />
 
-    <script type="text/javascript" src="index.js"></script>
-    <script type="text/javascript" src="assets/imask.min.js"></script>
-
-    <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css" />
-    <link rel="stylesheet" href="assets/styles.css" />
+    <!-- TODO: import imask by vite config -->
+    <script type="text/javascript" src="/lib/imask.min.js"></script>
   </head>
   <body>
     <header dir="ltr">
-      <select id="page" onchange="updateRoute({pathname: this.value})">
+      <!-- TODO: auto generate header by main.js -->
+      <select id="page">
         <option disabled selected>Select a page</option>
         <optgroup label="Components">
           <option value="accordion">Accordion</option>
@@ -119,13 +114,13 @@
           <option value="toast-example">Toast</option>
         </optgroup>
       </select>
-      <select id="theme" onchange="updateRoute({theme: this.value})">
+      <select id="theme">
         <option disabled selected>Select a theme</option>
         <option value="light">Light</option>
         <option value="dark">Dark</option>
         <option value="auto">Auto</option>
       </select>
-      <select id="dir" onchange="updateRoute({dir: this.value})">
+      <select id="dir">
         <option disabled selected>Select a direction</option>
         <option value="ltr">LTR (left-to-right)</option>
         <option value="rtl">RTL (right-to-left)</option>
@@ -135,65 +130,6 @@
 
     <div id="app"></div>
 
-    <script>
-      const getPage = () => window.location.pathname.substring(1);
-      const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
-      const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
-
-      const updateRoute = async (opts) => {
-        if (opts) {
-          const url = new URL(location);
-          if (opts.pathname) {
-            url.pathname = opts.pathname;
-          }
-          if (opts.theme) {
-            url.searchParams.set('theme', opts.theme);
-          }
-          if (opts.dir) {
-            url.searchParams.set('dir', opts.dir);
-          }
-          history.pushState(null, '', url);
-        }
-
-        const app = document.getElementById('app');
-
-        const page = getPage();
-        if (page) {
-          const theme = getTheme();
-          const dir = getDir();
-          const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
-          document.querySelector('html').setAttribute('dir', dir);
-
-          app.innerHTML = '';
-          app.innerHTML = (await (await fetch(`/${directory}/${page}.html`)).text())
-            .replace(/>(\s)*</g, '><') // trim whitespace between tags
-            .replace(
-              /(<(?:my-prefix-)?p-[a-z-]+[\S\s]*?)>/g, // tweak components
-              (m, g1) => g1.includes('theme') ? g1.replace(/theme="[a-z]+"/, `theme="${theme}"`) : `${g1} theme="${theme}">`
-            )
-            .replace(/(?<!\.)(playground)(?!--)(?: light| dark)?/g, `$1 ${theme}`); // tweak playgrounds, some pages include a "." before or a "--" after the "playground" thus we exclude them
-
-          const scripts = app.getElementsByTagName('script');
-          for (let i = 0; i < scripts.length; i++) {
-            eval(scripts[i].innerText); // execute scripts inserted via innerHTML
-          }
-        }
-      };
-
-      const updateSelect = (id, value) => {
-        if (id && value) {
-          Array.from(document.querySelectorAll(`#${id} option`)).filter((e) => e.value === value)[0].selected = true;
-        }
-      };
-
-      porscheDesignSystem.load();
-      porscheDesignSystem.load({ prefix: 'my-prefix' }); // used on overview page
-      window.componentsReady = porscheDesignSystem.componentsReady; // for vrt
-
-      updateSelect('page', getPage());
-      updateSelect('theme', getTheme());
-      updateSelect('dir', getDir());
-      updateRoute();
-    </script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
