@@ -2938,29 +2938,19 @@ exports[`should render dsr component for PCarousel 1`] = `
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-h2,::slotted([slot=heading]) {
-  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  max-width: 56.25rem !important;
-  margin: 0 !important;
-}
-p,::slotted([slot=description]) {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  overflow-wrap: break-word !important;
-  hyphens: auto !important;
-  max-width: 34.375rem !important;
-  margin: clamp(4px, 0.25vw + 3px, 8px) 0 0 !important;
-}
-h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
+,::slotted([slot=header]) {
   color: #010205 !important;
+  align-self: center !important;
 }
 @media(min-width:760px) {
-  h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
+  ,::slotted([slot=header]) {
     grid-column: 1 / 3 !important;
   }
 }
 
 .header {
   display: grid;
+  grid-template-rows: auto;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
@@ -3076,9 +3066,6 @@ h2,::slotted([slot=heading]),p,::slotted([slot=description]) {
     <div
       class="header"
     >
-      <slot
-        name="heading"
-      />
       <div
         class="nav"
       />
