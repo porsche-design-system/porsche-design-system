@@ -34,7 +34,7 @@ const iconChildTagNames = (TAG_NAMES as unknown as TagName[]).filter(isOrContain
 export const waitForComponentsReady = async (page: Page): Promise<number> => {
   // this solves a race condition where the html page with the pds markup is loaded async and componentsReady()
   // is called before the markup is initialized, it can resolve early with 0
-  await page.waitForFunction(async () => (await (window as any).porscheDesignSystem.componentsReady()) > 0);
+  await page.waitForFunction(async () => (await (window as any).componentsReady()) > 0);
 
   // remove loading="lazy" from icon img elements which might otherwise be missing when a screenshot or pdf is created
   const iconUrls = await page.evaluate((iconChildTagNames) => {
@@ -51,7 +51,7 @@ export const waitForComponentsReady = async (page: Page): Promise<number> => {
 
   // NOTE: there is no guarantee that all svg or png assets are already loaded, request interception and something like
   // await Promise.all(iconUrls.map((url) => page.waitForResponse(url)) might be a stable solution
-  return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
+  return page.evaluate(() => (window as any).componentsReady());
 };
 
 const waitForForcedComponentTheme = async (page: Page, forceComponentTheme: Theme): Promise<void> => {
