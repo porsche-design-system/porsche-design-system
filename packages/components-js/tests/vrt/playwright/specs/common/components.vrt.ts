@@ -11,7 +11,7 @@ const components = (TAG_NAMES as unknown as TagName[])
   })
   .map((tagName) => {
     return tagName.substring(2);
-  })
+  });
 // Use for local testing
 // .filter((tagName) => {
 //   // TODO: how does this work? why slice it on every iteration?
@@ -22,7 +22,7 @@ const components = (TAG_NAMES as unknown as TagName[])
 const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
 
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(51);
+  expect(components.length).toBe(52);
 });
 
 components.forEach((component) => {
