@@ -13,7 +13,7 @@
     "build-app": "mkdir -p ./public/lib && yarn build-app:assets && yarn build-app:shared && yarn build-app:imask && yarn build-app:componentsAngularReact && vite build",
     "build-app:assets": "cp ../icons/dist/esm/index.js ./public/lib/icons.js",
     "build-app:imask": "cp ../../node_modules/imask/dist/imask.min.js ./public/lib/imask.min.js",
-    "build-app:shared": "cp ../shared/dist/esm/data/table-data-sorting.js ./public/lib/table-data-sorting.js && cp ../shared/dist/esm/data/table-data-basic.js ./public/lib/table-data-basic.js && cp ../shared/dist/esm/data/table-data-advanced.js ./public/lib/table-data-advanced.js && cp ../shared/dist/esm/data/table-data-vrt.js ./public/lib/table-data-vrt.js",
+    "build-app:shared": "cp ../shared/dist/esm/data/table-data-sorting.js ./public/assets/table-data-sorting.js && cp ../shared/dist/esm/data/table-data-basic.js ./public/assets/table-data-basic.js && cp ../shared/dist/esm/data/table-data-advanced.js ./public/assets/table-data-advanced.js && cp ../shared/dist/esm/data/table-data-vrt.js ./public/assets/table-data-vrt.js",
     "build-app:componentsAngularReact": "yarn generateVRTPages",
     "build:components-manager-cli": "yarn --cwd ./projects/components-manager-cli build",
     "build:components-manager-core": "yarn --cwd ./projects/components-manager-core build",

@@ -1,6 +1,7 @@
 /dist
 /www
 /public/lib
+/public/assets/table-data*
 
 /projects/components-wrapper/environment.js
 

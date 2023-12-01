@@ -1,5 +1,7 @@
 import './style.scss';
 
+import { load, componentsReady } from '@porsche-design-system/components-js';
+
 const getPage = () => window.location.pathname.substring(1);
 const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
 const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
@@ -50,9 +52,8 @@ const updateSelect = (id, value) => {
   }
 };
 
-porscheDesignSystem.load();
-porscheDesignSystem.load({ prefix: 'my-prefix' }); // used on overview page
-window.componentsReady = porscheDesignSystem.componentsReady; // for vrt
+load({ prefix: 'my-prefix' }); // used on overview page
+window.componentsReady = componentsReady; // for vrt
 
 updateSelect('page', getPage());
 updateSelect('theme', getTheme());
