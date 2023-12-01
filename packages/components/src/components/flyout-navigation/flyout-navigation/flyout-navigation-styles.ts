@@ -56,7 +56,7 @@ export const getComponentCss = (
             [cssVariableVisibility]: 'hidden',
             [cssVariableVisibilityTransitionDuration]: motionDurationLong,
           }),
-          ...getBackdropJssStyles(isPrimaryScrollerVisible, 'long', theme),
+          ...getBackdropJssStyle(isPrimaryScrollerVisible, 'long', theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -173,7 +173,7 @@ export const getComponentCss = (
   });
 };
 
-// TODO: getBackdropJssStyles can be shared with flyout and modal
+// TODO: getBackdropJssStyle can be shared with flyout and modal
 /**
  * Generates JSS styles for a frosted glass background.
  * @param {boolean} isVisible - Determines if the frosted glass effect is visible.
@@ -181,7 +181,7 @@ export const getComponentCss = (
  * @param {Theme} theme - The theme to be used
  * @returns {JssStyle} - The JSS styles for the frosted glass backdrop.
  */
-const getBackdropJssStyles = (isVisible: boolean, duration: MotionDurationKey, theme: Theme): JssStyle => {
+const getBackdropJssStyle = (isVisible: boolean, duration: MotionDurationKey, theme: Theme): JssStyle => {
   return {
     position: 'fixed',
     ...getInsetJssStyle(),
@@ -216,7 +216,7 @@ const getBackdropJssStyles = (isVisible: boolean, duration: MotionDurationKey, t
   };
 };
 
-export const getContentJssStyles = (): JssStyle => {
+export const getContentJssStyle = (): JssStyle => {
   return {
     display: 'flex',
     flexDirection: 'column',

@@ -21,7 +21,7 @@ import {
   cssVariableVisibility,
   cssVariableVisibilityTransitionDuration,
   frostedGlassHeaderHeight,
-  getContentJssStyles,
+  getContentJssStyle,
   mediaQueryEnhancedView,
   scrollerWidthEnhancedView,
 } from '../flyout-navigation/flyout-navigation-styles';
@@ -149,6 +149,6 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
         color: primaryColorDark,
       }),
     },
-    content: mergeDeep(getContentJssStyles(), fadeInOutTransition),
+    content: mergeDeep(getContentJssStyle(), fadeInOutTransition),
   });
 };

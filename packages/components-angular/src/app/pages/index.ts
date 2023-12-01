@@ -49,6 +49,7 @@ import { FieldsetComponent } from './generated/fieldset.component';
 import { FieldsetWrapperComponent } from './generated/fieldset-wrapper.component';
 import { FlexComponent } from './generated/flex.component';
 import { FlyoutComponent } from './generated/flyout.component';
+import { FlyoutNavigationComponent } from './generated/flyout-navigation.component';
 import { GridComponent } from './generated/grid.component';
 import { HeadingComponent } from './generated/heading.component';
 import { HeadlineComponent } from './generated/headline.component';
@@ -114,6 +115,7 @@ export const generatedPages = [
   FieldsetWrapperComponent,
   FlexComponent,
   FlyoutComponent,
+  FlyoutNavigationComponent,
   GridComponent,
   HeadingComponent,
   HeadlineComponent,
@@ -242,6 +244,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout',
     path: 'flyout',
     component: FlyoutComponent,
+  },
+  {
+    name: 'Flyout Navigation',
+    path: 'flyout-navigation',
+    component: FlyoutNavigationComponent,
   },
   {
     name: 'Grid',

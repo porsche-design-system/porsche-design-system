@@ -1,16 +1,33 @@
 <style>
-  .playground > div {
+  /*.playground > div {
     transform: translate(0);
     height: 20rem;
     margin: 0 -16px;
-  }
+  }*/
 </style>
 
 <div class="playground light" title="should show flyout-navigation">
-  <div>
-    <p-flyout open="true">Some Content</p-flyout>
-  </div>
+  <div></div>
 </div>
+
+<p-flyout-navigation open="true" active-identifier="911">
+  <p-flyout-navigation-item identifier="911" label="911">
+    <a href="#carrera">Carrera</a>
+    <a href="#targa">Targa</a>
+    <a href="#turbo">Turbo</a>
+    <a href="#dakar">Dakar</a>
+    <a href="#gt3">GT3</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="718" label="718">
+    <a href="#cayman">Cayman</a>
+    <a href="#boxster">Boxster</a>
+    <a href="#spyder">Spyder</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="taycan" label="Taycan">
+    <a href="#cross-turismo">Cross Turismo</a>
+    <a href="#sport-turismo">Sport Turismo</a>
+  </p-flyout-navigation-item>
+</p-flyout-navigation>
 
 <!--<div class="playground light" title="should show flyout (maxWidth content)">
   <div>

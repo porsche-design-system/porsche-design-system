@@ -68,6 +68,10 @@ const generatedRoutes = {
     "path": "/flyout",
     "name": "Flyout"
   },
+  "flyoutNavigation": {
+    "path": "/flyout-navigation",
+    "name": "FlyoutNavigation"
+  },
   "grid": {
     "path": "/grid",
     "name": "Grid"

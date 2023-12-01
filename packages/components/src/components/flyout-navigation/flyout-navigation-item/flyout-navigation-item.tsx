@@ -4,7 +4,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  hasPropValueChanged,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -43,10 +42,6 @@ export class FlyoutNavigationItem {
     throwIfParentIsNotOfKind(this.host, 'p-flyout-navigation');
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.open, this.theme);
@@ -56,14 +51,14 @@ export class FlyoutNavigationItem {
     return (
       <Host>
         <PrefixedTagNames.pButtonPure
+          class="button"
+          type="button"
+          size="medium"
+          icon="arrow-head-right"
+          alignLabel="start"
           stretch={true}
           active={this.open}
           aria={{ 'aria-expanded': this.open }}
-          icon="arrow-head-right"
-          size="medium"
-          alignLabel="start"
-          class="button"
-          type="button"
           theme={this.theme}
           onClick={() => this.onClickButton(this.open ? undefined : this.identifier)}
         >
@@ -98,12 +93,11 @@ export class FlyoutNavigationItem {
   }
 
   private onClickButton = (activeIdentifier: string | undefined): void => {
-    const eventInitDictDetail = (): CustomEventInit<FlyoutNavigationUpdateEvent> => ({
-      bubbles: true,
-      detail: { activeIdentifier },
-    });
     this.host.dispatchEvent(
-      new CustomEvent<FlyoutNavigationUpdateEvent>(INTERNAL_UPDATE_EVENT_NAME, eventInitDictDetail())
+      new CustomEvent<FlyoutNavigationUpdateEvent>(INTERNAL_UPDATE_EVENT_NAME, {
+        bubbles: true,
+        detail: { activeIdentifier },
+      } as CustomEventInit<FlyoutNavigationUpdateEvent>)
     );
   };
 }

@@ -3,6 +3,7 @@ import {
   type FlyoutNavigationUpdateEvent,
   INTERNAL_UPDATE_EVENT_NAME,
   syncFlyoutNavigationItemsProps,
+  validateActiveIdentifier,
 } from './flyout-navigation-utils';
 import { getComponentCss } from './flyout-navigation-styles';
 import {
@@ -11,7 +12,6 @@ import {
   getChildrenOfKind,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
-  hasPropValueChanged,
   setScrollLock,
   THEMES,
   validateProps,
@@ -44,7 +44,7 @@ export class FlyoutNavigation {
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  /** Emitted when activeId is changed. */
+  /** Emitted when activeIdentifier is changed. */
   @Event({ bubbles: false }) public update?: EventEmitter<FlyoutNavigationUpdateEvent>;
 
   private dialog: HTMLDialogElement;
@@ -75,16 +75,13 @@ export class FlyoutNavigation {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineFlyoutNavigationItemElements);
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
-  }
-
   public disconnectedCallback(): void {
     setScrollLock(false);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    validateActiveIdentifier(this, this.flyoutNavigationItemElements, this.activeIdentifier);
     attachComponentCss(this.host, getComponentCss, this.open, !!this.activeIdentifier, this.theme);
     syncFlyoutNavigationItemsProps(this.flyoutNavigationItemElements, this.activeIdentifier, this.theme);
 
@@ -105,8 +102,8 @@ export class FlyoutNavigation {
             class="dismiss"
             type="button"
             size="medium"
-            hideLabel={true}
             icon="close"
+            hideLabel={true}
             theme={this.theme}
             onClick={this.dismissDialog}
           >
