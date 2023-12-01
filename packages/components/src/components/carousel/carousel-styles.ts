@@ -103,17 +103,21 @@ export const getComponentCss = (
           }),
           outlineOffset: '2px',
         },
-        [selectorHeading]: {
-          ...(headingSize === 'xl' ? headingXLargeStyle : headingXXLargeStyle),
-          maxWidth: '56.25rem',
-          margin: 0,
-        },
-        [selectorDescription]: {
-          ...textSmallStyle,
-          maxWidth: '34.375rem',
-          margin: `${spacingFluidXSmall} 0 0`,
-        },
-        [`${selectorHeading},${selectorDescription},${selectorHeader}`]: {
+        ...(hasHeading && {
+          [selectorHeading]: {
+            ...(headingSize === 'xl' ? headingXLargeStyle : headingXXLargeStyle),
+            maxWidth: '56.25rem',
+            margin: 0,
+          },
+        }),
+        ...(hasDescription && {
+          [selectorDescription]: {
+            ...textSmallStyle,
+            maxWidth: '34.375rem',
+            margin: `${spacingFluidXSmall} 0 0`,
+          },
+        }),
+        [`${selectorHeader}${hasHeading ? ',' + selectorHeading : ''}${hasDescription ? selectorDescription : ''}`]: {
           color: primaryColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             color: primaryColorDark,
