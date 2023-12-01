@@ -72,6 +72,22 @@ const generatedRoutes = {
     "path": "/flyout-navigation",
     "name": "FlyoutNavigation"
   },
+  "flyoutNavigationActiveIdentifier": {
+    "path": "/flyout-navigation-active-identifier",
+    "name": "FlyoutNavigationActiveIdentifier"
+  },
+  "flyoutNavigationBasic": {
+    "path": "/flyout-navigation-basic",
+    "name": "FlyoutNavigationBasic"
+  },
+  "flyoutNavigationPrefixed": {
+    "path": "/flyout-navigation-prefixed",
+    "name": "FlyoutNavigationPrefixed"
+  },
+  "flyoutNavigationScrolled": {
+    "path": "/flyout-navigation-scrolled",
+    "name": "FlyoutNavigationScrolled"
+  },
   "grid": {
     "path": "/grid",
     "name": "Grid"

@@ -30,6 +30,10 @@ import { FieldsetWrapperPage } from './generated/FieldsetWrapper';
 import { FlexPage } from './generated/Flex';
 import { FlyoutPage } from './generated/Flyout';
 import { FlyoutNavigationPage } from './generated/FlyoutNavigation';
+import { FlyoutNavigationActiveIdentifierPage } from './generated/FlyoutNavigationActiveIdentifier';
+import { FlyoutNavigationBasicPage } from './generated/FlyoutNavigationBasic';
+import { FlyoutNavigationPrefixedPage } from './generated/FlyoutNavigationPrefixed';
+import { FlyoutNavigationScrolledPage } from './generated/FlyoutNavigationScrolled';
 import { GridPage } from './generated/Grid';
 import { HeadingPage } from './generated/Heading';
 import { HeadlinePage } from './generated/Headline';
@@ -160,6 +164,26 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Navigation',
     path: '/flyout-navigation',
     element: <FlyoutNavigationPage />,
+  },
+  {
+    name: 'Flyout Navigation Active Identifier',
+    path: '/flyout-navigation-active-identifier',
+    element: <FlyoutNavigationActiveIdentifierPage />,
+  },
+  {
+    name: 'Flyout Navigation Basic',
+    path: '/flyout-navigation-basic',
+    element: <FlyoutNavigationBasicPage />,
+  },
+  {
+    name: 'Flyout Navigation Prefixed',
+    path: '/flyout-navigation-prefixed',
+    element: <FlyoutNavigationPrefixedPage />,
+  },
+  {
+    name: 'Flyout Navigation Scrolled',
+    path: '/flyout-navigation-scrolled',
+    element: <FlyoutNavigationScrolledPage />,
   },
   {
     name: 'Grid',
