@@ -163,6 +163,8 @@ export const setupScenario = async (
     width: viewportWidth,
     height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
   });
+
+  await page.mouse.click(0, 0); // click top left corner of the page to remove focus
 };
 
 type SetContentWithDesignSystemOptions = {
