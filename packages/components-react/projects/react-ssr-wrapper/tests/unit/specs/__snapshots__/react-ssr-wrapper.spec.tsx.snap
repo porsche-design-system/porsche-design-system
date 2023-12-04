@@ -3808,6 +3808,667 @@ img {
 </p-flyout>
 `;
 
+exports[`should render dsr component for PFlyoutNavigation 1`] = `
+<p-flyout-navigation
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  --p-internal-flyout-navigation-visibility: hidden !important;
+  --p-internal-flyout-navigation-visibility-transition-duration: 0.6s !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99998 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  width: auto;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  visibility: inherit;
+  background: none;
+  overflow: hidden;
+  transform: translate3d(-100%, 0, 0);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+}
+dialog::backdrop {
+  opacity: 0;
+}
+@media(min-width:760px) {
+  dialog {
+    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
+    grid-template-rows: 100vh;
+    inset-inline-end: auto;
+  }
+}
+
+.scroller {
+  grid-area: 1/1;
+  overflow: auto;
+  visibility: var(--p-internal-flyout-navigation-visibility,visible);
+  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0.6s);
+  background-color: #FFF;
+}
+.scroller::before {
+  content: "";
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  background-color: rgba(255, 255, 255, 0.79);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+}
+.header {
+  position: relative;
+  z-index: 3;
+  grid-area: 1/1;
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+.dismiss {
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+}
+@media(min-width:760px) {
+  .scroller {
+    visibility: inherit;
+    transition: initial;
+  }
+  .scroller::before {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+  .header {
+    margin-inline-end: 0;
+    grid-area: 1/-1;
+    place-self: flex-start;
+  }
+  .dismiss {
+    margin: clamp(8px, 0.5vw + 6px, 16px);
+    padding: 8px;
+  }
+}
+
+    </style>
+    <dialog
+      tabindex="-1"
+    >
+      <div
+        class="header"
+      >
+        <p-button-pure
+          class="dismiss ssr"
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  white-space: nowrap;
+  text-indent: -999999px;
+  order: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+
+            </style>
+            <button
+              class="root"
+              type="button"
+            >
+              <p-icon
+                aria-hidden="true"
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+          </template>
+          Dismiss flyout
+        </p-button-pure>
+      </div>
+      <div
+        class="scroller"
+      >
+        <div
+          class="content"
+        >
+          <slot />
+        </div>
+      </div>
+    </dialog>
+  </template>
+  Some child
+</p-flyout-navigation>
+`;
+
+exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
+<p-flyout-navigation-item
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.button {
+  width: auto;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.scroller {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  transform: translate3d(100%, 0, 0);
+  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0.6s));
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: auto;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  background-color: #EEEFF2;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  padding: 0 clamp(32px, 2.75vw + 23px, 76px);
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) 4rem;
+  align-items: center;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: rgba(238, 239, 242, 0.79);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+}
+.back {
+  justify-self: flex-start;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.heading {
+  font: normal normal 600 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+}
+@media(min-width:760px) {
+  .scroller {
+    box-shadow: none;
+    inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
+    width: clamp(338px, 10.52vw + 258px, 460px);
+    transform: initial;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  }
+  .header {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+}
+
+    </style>
+    <p-button-pure
+      class="button ssr"
+    >
+      <template
+        shadowroot="open"
+        shadowrootdelegatesfocus="true"
+        shadowrootmode="open"
+      >
+        <style>
+          :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  order: -1;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+
+        </style>
+        <button
+          aria-expanded="false"
+          class="root"
+          type="button"
+        >
+          <p-icon
+            aria-hidden="true"
+            class="icon ssr"
+          >
+            <template
+              shadowroot="open"
+              shadowrootmode="open"
+            >
+              <style>
+                :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+              </style>
+              <img
+                alt=""
+                height="24"
+                loading="lazy"
+                src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                width="24"
+              />
+            </template>
+          </p-icon>
+          <span
+            class="label"
+          >
+            <slot />
+          </span>
+        </button>
+      </template>
+    </p-button-pure>
+    <div
+      class="scroller"
+    >
+      <div
+        class="header"
+      >
+        <p-button-pure
+          class="back ssr"
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  white-space: nowrap;
+  text-indent: -999999px;
+  order: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+
+            </style>
+            <button
+              class="root"
+              type="button"
+            >
+              <p-icon
+                aria-hidden="true"
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+          </template>
+          Back
+        </p-button-pure>
+        <h4
+          class="heading"
+        />
+      </div>
+      <div
+        class="content"
+      >
+        <slot />
+      </div>
+    </div>
+  </template>
+  Some child
+</p-flyout-navigation-item>
+`;
+
 exports[`should render dsr component for PGrid 1`] = `
 <p-grid
   class="ssr"
