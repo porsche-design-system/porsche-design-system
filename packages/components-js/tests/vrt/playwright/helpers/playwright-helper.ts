@@ -98,6 +98,7 @@ type SetupScenarioOptions = {
   forceComponentTheme?: Theme;
   forceDirMode?: Dir;
   emulateMediaPrint?: boolean;
+  revertAutoFocus?: boolean;
 };
 
 export const setupScenario = async (
@@ -113,6 +114,7 @@ export const setupScenario = async (
     scalePageFontSize,
     forceComponentTheme,
     forceDirMode,
+    revertAutoFocus,
   }: SetupScenarioOptions = {
     javaScriptDisabled: false,
     forcedColorsEnabled: false,
@@ -120,6 +122,7 @@ export const setupScenario = async (
     scalePageFontSize: false,
     forceComponentTheme: undefined,
     forceDirMode: undefined,
+    revertAutoFocus: false,
     ...options,
   };
   if (javaScriptDisabled) {
@@ -164,7 +167,9 @@ export const setupScenario = async (
     height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
   });
 
-  await page.mouse.click(0, 0); // click top left corner of the page to remove focus
+  if (revertAutoFocus) {
+    await page.mouse.click(0, 0); // click top left corner of the page to remove focus
+  }
 };
 
 type SetContentWithDesignSystemOptions = {

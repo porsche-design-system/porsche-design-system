@@ -21,6 +21,8 @@ const components = (TAG_NAMES as unknown as TagName[])
 
 const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
 
+const revertAutoFocus = (component: string): boolean => ['banner', 'modal', 'flyout'].includes(component);
+
 test(`should have certain amount of components`, () => {
   expect(components.length).toBe(52);
 });
@@ -40,6 +42,7 @@ components.forEach((component) => {
 
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
+          revertAutoFocus: revertAutoFocus(component),
         });
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${theme}.png`);
       });
@@ -53,7 +56,9 @@ components.forEach((component) => {
     // regular tests on different viewports
     baseViewportWidths.forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
-        await setupScenario(page, `/${component}`, viewportWidth);
+        await setupScenario(page, `/${component}`, viewportWidth, {
+          revertAutoFocus: revertAutoFocus(component),
+        });
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
       });
     });
@@ -72,6 +77,7 @@ components.forEach((component) => {
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: 'auto',
           prefersColorScheme: scheme,
+          revertAutoFocus: revertAutoFocus(component),
         });
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${scheme}.png`); // fixture is aliased since result has to be equal
       });
@@ -83,6 +89,7 @@ components.forEach((component) => {
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forcedColorsEnabled: true,
           prefersColorScheme: scheme,
+          revertAutoFocus: revertAutoFocus(component),
         });
         await expect(page.locator('#app')).toHaveScreenshot(
           `${component}-${baseViewportWidth}-high-contrast-scheme-${scheme}.png`
@@ -94,6 +101,7 @@ components.forEach((component) => {
     test(`should have no visual regression for viewport ${baseViewportWidth} in scale mode`, async ({ page }) => {
       await setupScenario(page, `/${component}`, baseViewportWidth, {
         scalePageFontSize: true,
+        revertAutoFocus: revertAutoFocus(component),
       });
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-scale-mode.png`);
     });
@@ -104,6 +112,7 @@ components.forEach((component) => {
     }) => {
       await setupScenario(page, `/${component}`, baseViewportWidth, {
         forceDirMode: 'rtl',
+        revertAutoFocus: revertAutoFocus(component),
       });
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-rtl-mode.png`);
     });
@@ -116,6 +125,7 @@ components.forEach((component) => {
 
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
+          revertAutoFocus: revertAutoFocus(component),
         });
 
         // get rid of header with selects
