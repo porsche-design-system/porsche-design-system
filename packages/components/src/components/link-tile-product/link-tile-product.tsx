@@ -5,6 +5,7 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   THEMES,
+  throwIfInvalidSlottedAnchorLink,
   validateProps,
 } from '../../utils';
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
@@ -23,6 +24,7 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/** __Experimental__ */
 @Component({
   tag: 'p-link-tile-product',
   shadow: { delegatesFocus: true },
@@ -59,6 +61,12 @@ export class LinkTileProduct {
 
   /** Emitted when the like button is clicked. */
   @Event({ bubbles: false }) public likeChange: EventEmitter<LinkTileProductUpdateEvent>;
+
+  public componentWillLoad(): void {
+    if (!this.href) {
+      throwIfInvalidSlottedAnchorLink(this.host);
+    }
+  }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);

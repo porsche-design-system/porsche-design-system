@@ -7,6 +7,7 @@ export * from './throwIfChildrenAreNotOfKind';
 export * from './throwIfElementHasAttribute';
 export * from './throwIfElementIsNotOfKind';
 export * from './throwIfInvalidLinkUsage';
+export * from './throwIfInvalidSlottedAnchorLink';
 export * from './throwIfParentIsNotOfKind';
 export * from './throwIfPropIsUndefined';
 export * from './throwIfRootNodeIsNotOneOfKind';
