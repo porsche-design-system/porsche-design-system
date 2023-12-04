@@ -127,6 +127,7 @@ components.forEach((component) => {
           'stepper-horizontal',
           'tabs',
           'tabs-bar',
+          'text-field-wrapper',
           'toast',
           'flyout',
           'flyout-navigation',
