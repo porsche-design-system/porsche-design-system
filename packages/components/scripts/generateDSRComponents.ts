@@ -544,6 +544,11 @@ $&`
           ) // rewire source for linkEl
           .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
           .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
+      } else if (tagName === 'p-link-tile-product') {
+        newFileContent = newFileContent.replace(
+          /import { LinkTileProductTarget, LinkTileProductUpdateEvent } from '@porsche-design-system\/components\/dist\/utils';/,
+          ''
+        );
       }
 
       return newFileContent;
