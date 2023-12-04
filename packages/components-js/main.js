@@ -5,6 +5,7 @@ import { load, componentsReady } from '@porsche-design-system/components-js';
 const getPage = () => window.location.pathname.substring(1);
 const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
 const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
+const getScale = () => new URL(document.location).searchParams.get('scale') || '100';
 const getTransition = () => new URL(document.location).searchParams.get('transition') || 'none';
 const getAnimation = () => new URL(document.location).searchParams.get('animation') || 'none';
 const getIFrame = () => new URL(document.location).searchParams.get('iframe') || 'false';
@@ -23,6 +24,9 @@ const updateRoute = async (opts) => {
     if (opts.dir) {
       url.searchParams.set('dir', opts.dir);
     }
+    if (opts.scale) {
+      url.searchParams.set('scale', opts.scale);
+    }
     if (opts.transition) {
       url.searchParams.set('transition', opts.transition);
     }
@@ -39,10 +43,12 @@ const updateRoute = async (opts) => {
   if (page) {
     const theme = getTheme();
     const dir = getDir();
+    const scale = getScale();
     const transition = getTransition();
     const animation = getAnimation();
     const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
     document.querySelector('html').setAttribute('dir', dir);
+    document.querySelector('html').style.fontSize = `${scale}%`;
 
     if (isPageLoadedInIFrame()) {
       controls.innerHTML = '';
@@ -61,7 +67,7 @@ const updateRoute = async (opts) => {
         .replace(/>(\s)*</g, '><') // trim whitespace between tags
         .replace(
           /(<iframe.*?src=".*?\?iframe=true).*?(".*?>)/g,
-          `$1&theme=${theme}&dir=${dir}&transition=${transition}&animation=${animation}$2`
+          `$1&theme=${theme}&dir=${dir}&scale=${scale}&transition=${transition}&animation=${animation}$2`
         )
         .replace(
           /(<(?:my-prefix-)?p-[a-z-]+[\S\s]*?)>/g, // tweak components
@@ -94,6 +100,7 @@ const updateSelect = (id, value) => {
     updateSelect('page', getPage());
     updateSelect('theme', getTheme());
     updateSelect('dir', getDir());
+    updateSelect('scale', getScale());
     updateSelect('transition', getTransition());
     updateSelect('animation', getAnimation());
 
@@ -107,6 +114,10 @@ const updateSelect = (id, value) => {
 
     document.querySelector('select#dir').addEventListener('change', async (e) => {
       await updateRoute({ dir: e.srcElement.value });
+    });
+
+    document.querySelector('select#scale').addEventListener('change', async (e) => {
+      await updateRoute({ scale: e.srcElement.value });
     });
 
     document.querySelector('select#transition').addEventListener('change', async (e) => {

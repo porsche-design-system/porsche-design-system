@@ -55,7 +55,7 @@
     "clean": "yarn clean:build && yarn clean:node_modules",
     "clean:build": "yarn clean:app:build && yarn clean:components-wrapper:build && yarn clean:components-manager-core:build && yarn clean:components-manager-cli:build && yarn clean:jsdom-polyfill:build && yarn clean:partials:build",
     "clean:node_modules": "yarn clean:app:node_modules && yarn clean:components-wrapper:node_modules && yarn clean:components-manager-core:node_modules && yarn clean:components-manager-cli:node_modules && yarn clean:jsdom-polyfill:node_modules && yarn clean:partials:node_modules",
-    "clean:app:build": "rm -rf ./dist/www",
+    "clean:app:build": "rm -rf ./dist/demo-app",
     "clean:app:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:components-manager-cli:build": "yarn --cwd ./projects/components-manager-cli clean:build",
     "clean:components-manager-cli:node_modules": "yarn --cwd ./projects/components-manager-cli clean:node_modules",
