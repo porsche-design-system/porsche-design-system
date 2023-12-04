@@ -117,7 +117,9 @@ export const getComponentCss = (
             margin: `${spacingFluidXSmall} 0 0`,
           },
         }),
-        [`${selectorHeader}${hasHeading ? ',' + selectorHeading : ''}${hasDescription ? selectorDescription : ''}`]: {
+        [`${hasHeading ? selectorHeading + ',' : ''}${
+          hasDescription ? selectorDescription + ',' : ''
+        }${selectorHeader}`]: {
           color: primaryColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             color: primaryColorDark,
