@@ -1,0 +1,544 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for isSecondaryScrollerVisible: false and theme: auto 1`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.button {
+  width: auto;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.scroller {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  transform: translate3d(100%, 0, 0);
+  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0.6s));
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: auto;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  background-color: #EEEFF2;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  padding: 0 clamp(32px, 2.75vw + 23px, 76px);
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) 4rem;
+  align-items: center;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: rgba(238, 239, 242, 0.79);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+}
+.back {
+  justify-self: flex-start;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.heading {
+  font: normal normal 600 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+}
+@media(min-width:760px) {
+  .scroller {
+    box-shadow: none;
+    inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
+    width: clamp(338px, 10.52vw + 258px, 460px);
+    transform: initial;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  }
+  .header {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .scroller {
+    background-color: #212225;
+  }
+  .header {
+    background-color: rgba(33, 34, 37, 0.79);
+  }
+  .heading {
+    color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isSecondaryScrollerVisible: false and theme: dark 1`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.button {
+  width: auto;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.scroller {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  transform: translate3d(100%, 0, 0);
+  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0.6s));
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: auto;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  background-color: #212225;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  padding: 0 clamp(32px, 2.75vw + 23px, 76px);
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) 4rem;
+  align-items: center;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: rgba(33, 34, 37, 0.79);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+}
+.back {
+  justify-self: flex-start;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.heading {
+  font: normal normal 600 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+}
+@media(min-width:760px) {
+  .scroller {
+    box-shadow: none;
+    inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
+    width: clamp(338px, 10.52vw + 258px, 460px);
+    transform: initial;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  }
+  .header {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isSecondaryScrollerVisible: false and theme: light 1`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.button {
+  width: auto;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.scroller {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  transform: translate3d(100%, 0, 0);
+  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0.6s));
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: auto;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  background-color: #EEEFF2;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  padding: 0 clamp(32px, 2.75vw + 23px, 76px);
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) 4rem;
+  align-items: center;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: rgba(238, 239, 242, 0.79);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+}
+.back {
+  justify-self: flex-start;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.heading {
+  font: normal normal 600 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+}
+@media(min-width:760px) {
+  .scroller {
+    box-shadow: none;
+    inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
+    width: clamp(338px, 10.52vw + 258px, 460px);
+    transform: initial;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  }
+  .header {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isSecondaryScrollerVisible: true and theme: auto 1`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.button {
+  width: auto;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.scroller {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  transform: translate3d(0, 0, 0);
+  visibility: var(--p-internal-flyout-navigation-visibility,visible);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: auto;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  background-color: #EEEFF2;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  padding: 0 clamp(32px, 2.75vw + 23px, 76px);
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) 4rem;
+  align-items: center;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: rgba(238, 239, 242, 0.79);
+  opacity: 1;
+  transition: opacity var(--p-transition-duration, 1.2s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.25s);
+}
+.back {
+  justify-self: flex-start;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.heading {
+  font: normal normal 600 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  opacity: 1;
+  transition: opacity var(--p-transition-duration, 1.2s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.25s);
+}
+@media(min-width:760px) {
+  .scroller {
+    box-shadow: none;
+    inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
+    width: clamp(338px, 10.52vw + 258px, 460px);
+    transform: initial;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  }
+  .header {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+    transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .scroller {
+    background-color: #212225;
+  }
+  .header {
+    background-color: rgba(33, 34, 37, 0.79);
+  }
+  .heading {
+    color: #FBFCFF;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isSecondaryScrollerVisible: true and theme: dark 1`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.button {
+  width: auto;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.scroller {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  transform: translate3d(0, 0, 0);
+  visibility: var(--p-internal-flyout-navigation-visibility,visible);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: auto;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  background-color: #212225;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  padding: 0 clamp(32px, 2.75vw + 23px, 76px);
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) 4rem;
+  align-items: center;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: rgba(33, 34, 37, 0.79);
+  opacity: 1;
+  transition: opacity var(--p-transition-duration, 1.2s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.25s);
+}
+.back {
+  justify-self: flex-start;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.heading {
+  font: normal normal 600 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #FBFCFF;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  opacity: 1;
+  transition: opacity var(--p-transition-duration, 1.2s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.25s);
+}
+@media(min-width:760px) {
+  .scroller {
+    box-shadow: none;
+    inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
+    width: clamp(338px, 10.52vw + 258px, 460px);
+    transform: initial;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  }
+  .header {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+    transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isSecondaryScrollerVisible: true and theme: light 1`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.button {
+  width: auto;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.scroller {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  transform: translate3d(0, 0, 0);
+  visibility: var(--p-internal-flyout-navigation-visibility,visible);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: auto;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  background-color: #EEEFF2;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  padding: 0 clamp(32px, 2.75vw + 23px, 76px);
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) 4rem;
+  align-items: center;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: rgba(238, 239, 242, 0.79);
+  opacity: 1;
+  transition: opacity var(--p-transition-duration, 1.2s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.25s);
+}
+.back {
+  justify-self: flex-start;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.heading {
+  font: normal normal 600 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  opacity: 1;
+  transition: opacity var(--p-transition-duration, 1.2s) cubic-bezier(0,0,0.2,1) var(--p-transition-duration, 0.25s);
+}
+@media(min-width:760px) {
+  .scroller {
+    box-shadow: none;
+    inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
+    width: clamp(338px, 10.52vw + 258px, 460px);
+    transform: initial;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  }
+  .header {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+    transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  }
+}
+"
+`;
