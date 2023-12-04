@@ -134,7 +134,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
         <p-table-cell multiline="true" style="min-width: 10rem;">{{ item.comment }}</p-table-cell>
         <p-table-cell>{{ item.leadId }} <p-popover description="Some additional content."></p-popover></p-table-cell>
         <p-table-cell>
-          <p-select-wrapper label="Select Something" style="width: 160px;">
+          <p-select-wrapper filter="true" label="Select Something" style="width: 160px;">
             <select name="some-name">
               <option value="a">Option A</option>
               <option value="b">Option B</option>
