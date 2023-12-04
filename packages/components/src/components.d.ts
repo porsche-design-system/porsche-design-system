@@ -1034,6 +1034,9 @@ export namespace Components {
          */
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
+    /**
+     * __Experimental__
+     */
     interface PLinkTileProduct {
         /**
           * Product heading
@@ -2184,6 +2187,9 @@ declare global {
     interface HTMLPLinkTileProductElementEventMap {
         "likeChange": LinkTileProductUpdateEvent;
     }
+    /**
+     * __Experimental__
+     */
     interface HTMLPLinkTileProductElement extends Components.PLinkTileProduct, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPLinkTileProductElementEventMap>(type: K, listener: (this: HTMLPLinkTileProductElement, ev: PLinkTileProductCustomEvent<HTMLPLinkTileProductElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3580,6 +3586,9 @@ declare namespace LocalJSX {
          */
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
+    /**
+     * __Experimental__
+     */
     interface PLinkTileProduct {
         /**
           * Product heading
@@ -4612,6 +4621,9 @@ declare module "@stencil/core" {
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
             "p-link-tile-model-signature": LocalJSX.PLinkTileModelSignature & JSXBase.HTMLAttributes<HTMLPLinkTileModelSignatureElement>;
+            /**
+             * __Experimental__
+             */
             "p-link-tile-product": LocalJSX.PLinkTileProduct & JSXBase.HTMLAttributes<HTMLPLinkTileProductElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.

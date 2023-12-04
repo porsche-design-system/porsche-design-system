@@ -1,5 +1,9 @@
 # Link Tile Product
 
+<Notification heading="Experimental Component" state="warning">
+  The <code>p-link-tile-product</code> component is experimental and might be changed or removed in a future release.
+</Notification>
+
 The `p-link-tile-product` is a navigational component designed to showcase a featured product within a store. it offers
 the option to "like" the product, allowing you to easily add it to the users wishlist. Additionally, you can place a
 chip at the top to signal special features about the product, such as its novelty or exclusivity.
