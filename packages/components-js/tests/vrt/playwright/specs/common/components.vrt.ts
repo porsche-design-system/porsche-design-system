@@ -21,7 +21,9 @@ const components = (TAG_NAMES as unknown as TagName[])
 
 const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
 
-const revertAutoFocus = (component: string): boolean => ['banner', 'modal', 'flyout'].includes(component);
+// TODO: focus can't be reverted for flyout-navigation since it's rendered within an iframe and we don't have the possibility to evaluate when componentsReady() is resolved for all iframes used
+const revertAutoFocus = (component: string): boolean =>
+  ['banner', 'modal', 'flyout', 'flyout-navigation'].includes(component);
 
 test(`should have certain amount of components`, () => {
   expect(components.length).toBe(52);
@@ -120,7 +122,15 @@ components.forEach((component) => {
     // print view
     baseThemes.forEach((theme) => {
       test(`should have no visual regression for printed pdf with theme ${theme}`, async ({ page }) => {
-        const flakyPrintComponents = ['scroller', 'stepper-horizontal', 'tabs', 'tabs-bar', 'toast', 'flyout'];
+        const flakyPrintComponents = [
+          'scroller',
+          'stepper-horizontal',
+          'tabs',
+          'tabs-bar',
+          'toast',
+          'flyout',
+          'flyout-navigation',
+        ];
         test.skip(flakyPrintComponents.includes(component), `${component} is flaky`);
 
         await setupScenario(page, `/${component}`, baseViewportWidth, {
