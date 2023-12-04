@@ -69,6 +69,7 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
             borderRadius: borderRadiusMedium,
             ...getInsetJssStyle(),
             zIndex: 1, // Necessary to be on top of img
+            textIndent: '-999999px', // Hide anchor label visually but still usable for a11y
           },
           // TODO: Refactor getFocusStyles to support slotted selector
           '&(a:focus)': {
