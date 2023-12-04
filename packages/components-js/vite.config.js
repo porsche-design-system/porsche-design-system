@@ -31,7 +31,7 @@ const transformIndexHtmlPlugin = () => {
         .join('')
         .replace(/https:\/\/cdn\.ui\.porsche\.com?(?:\/porsche-design-system)?/g, localhost);
 
-      const bodyPartials = [getLoaderScript()]
+      const bodyPartials = [getLoaderScript({ prefix: ['', 'my-prefix'] })]
         .join('')
         .replace(/"https:\/\/cdn\.ui\.porsche\."\+\("cn"===window\[t\]\?"cn":"com"\)/g, `"${localhost}"`);
 

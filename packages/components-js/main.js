@@ -93,8 +93,27 @@ const updateSelect = (id, value) => {
 };
 
 (async () => {
-  load({ prefix: 'my-prefix' }); // used on overview page
-  window.porscheDesignSystem.componentsReady = componentsReady; // for vrt
+  window.porscheDesignSystem.componentsReady = componentsReady;
+  window.porscheDesignSystem.waitForComponentsReadyWithinIFrames = async () => {
+    return await Promise.all(
+      Array.from(document.querySelectorAll('iframe')).map(async (iframe) => {
+        // we have to wait for the iframe to load before we can continue
+        await new Promise((resolve) => iframe.addEventListener('load', resolve));
+        // since `window.porscheDesignSystem.componentsReady` is inlined JavaScript in the `<head>` it's available now,
+        // but it takes some time to inject and process the HTML template as well as to bootstrap PDS, so that componentsReady() is able to find PDS components
+        const waitForComponentsReady = (resolve) =>
+          setTimeout(
+            () =>
+              iframe.contentWindow.porscheDesignSystem
+                .componentsReady()
+                .then((r) => (r > 0 ? resolve(r) : waitForComponentsReady(resolve))),
+            0
+          );
+
+        return new Promise((resolve) => waitForComponentsReady(resolve));
+      })
+    );
+  };
 
   if (!isPageLoadedInIFrame()) {
     updateSelect('page', getPage());
