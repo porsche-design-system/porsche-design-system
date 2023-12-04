@@ -21,6 +21,6 @@
     <slot name="header">
       <PTag :color="'background-base'">New</PTag>
     </slot>
-    <img src="/assets/image-grid.png" width="100%" height="100%" alt="Some alt text" />
+    <img src="/assets/image-grid.png" width="3000" height="2000" alt="Some alt text" />
   </PLinkTileProduct>
 </template>
