@@ -1926,6 +1926,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "isDelegatingFocus": true,
+    "isExperimental": true,
     "isInternal": false,
     "isThemeable": true,
     "namedSlots": [
