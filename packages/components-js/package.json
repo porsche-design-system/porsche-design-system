@@ -6,9 +6,8 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "start": "yarn start-app:watch",
-    "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'vite preview'",
-    "start-app:watch": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'vite'",
+    "start": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'vite'",
+    "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 8575 -d ./dist/demo-app'",
     "build": "yarn clean:build && yarn build:components-manager-core && yarn build:components-manager-cli && yarn build:components-wrapper && yarn build:jsdom-polyfill && yarn build:partials && yarn build:styles && yarn build-app && yarn build:cleanEnvironment",
     "build-app": "yarn build-app:components && yarn build-app:assets && yarn build-app:shared && yarn build-app:imask && yarn build-app:componentsAngularReact && vite build",
     "build-app:components": "cp ./dist/components-wrapper/cjs/index.cjs ./public/index.js",
