@@ -11,7 +11,7 @@ export const LinkTileProductExample = (): JSX.Element => {
   return (
     <PLinkTileProduct
       heading="Some product"
-      price="911€"
+      price="1.911,00 €"
       info="Some info"
       href="https://www.porsche.com"
       liked={liked}

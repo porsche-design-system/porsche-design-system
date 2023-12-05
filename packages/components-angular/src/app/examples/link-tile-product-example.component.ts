@@ -6,7 +6,7 @@ import type { LinkTileProductUpdateEvent } from '@porsche-design-system/componen
   template: `
     <p-link-tile-product
       [heading]="'Some product name'"
-      [price]="'911€'"
+      [price]="'1.911,00 €'"
       [info]="'Some info'"
       [href]="'https://www.porsche.com'"
       [liked]="liked"
