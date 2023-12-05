@@ -137,6 +137,7 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
         WebkitBoxOrient: 'vertical',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
+        paddingBottom: '2px',
       },
       '&__price, &__info': {
         whiteSpace: 'nowrap',
