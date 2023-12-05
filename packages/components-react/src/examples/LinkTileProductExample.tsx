@@ -20,7 +20,7 @@ export const LinkTileProductExample = (): JSX.Element => {
       <PTag slot="tags" color="background-base">
         New
       </PTag>
-      <img src="/assets/image-grid.png" width="3000" height="2000" alt="Some alt text" />
+      <img src="/assets/placeholder_800x900.svg" width="3000" height="2000" alt="Some alt text" />
     </PLinkTileProduct>
   );
 };
