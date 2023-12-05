@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { globbySync } from 'globby';
+import * as globby from 'globby';
 import { capitalCase, pascalCase } from 'change-case';
 import type { TagName } from '@porsche-design-system/shared';
 
@@ -116,7 +116,7 @@ const fixDeprecatedContrast = (str: string): string =>
 const replacePipesWithNewLines = (str: string): string => str.replace(/\s(\\\|)\s/g, '` <br>` ');
 
 const cleanReadmes = (): void => {
-  const files = globbySync('./src/components/**/readme.md');
+  const files = globby.sync('./src/components/**/readme.md');
   for (const file of files) {
     const sourceFile = path.normalize(file);
     const sourceDirectory = path.dirname(sourceFile);

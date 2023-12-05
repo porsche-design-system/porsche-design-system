@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { globbySync } from 'globby';
+import * as globby from 'globby';
 import { camelCase, capitalCase, paramCase, pascalCase } from 'change-case';
 import { type AngularCharacteristics, convertToAngularVRTPage } from './convertToAngularVRTPage';
 import { convertToReactVRTPage, type ReactCharacteristics } from './convertToReactVRTPage';
@@ -24,7 +24,7 @@ const pagesDirectories: Record<Framework, string> = {
 
 const generateVRTPages = (): void => {
   const pagesDirectory = path.resolve(rootDirectory, './src/pages');
-  const htmlFiles = globbySync(`${pagesDirectory}/**/*.html`);
+  const htmlFiles = globby.sync(`${pagesDirectory}/**/*.html`);
 
   const htmlFileContentMap: { [key: string]: string } = htmlFiles
     .filter((file) => !PAGES_TO_SKIP.map((page) => `${page}.html`).some((page) => file.endsWith(page)))
@@ -184,12 +184,12 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
         framework === 'angular'
           ? convertToAngularVRTPage(...baseParams, angularCharacteristics)
           : framework === 'react'
-            ? convertToReactVRTPage(...baseParams, reactCharacteristics)
-            : framework === 'nextjs'
-              ? convertToNextJsVRTPage(...baseParams, reactCharacteristics)
-              : framework === 'remix'
-                ? convertToRemixVRTPage(...baseParams, reactCharacteristics)
-                : { fileName: '', fileContent: '' };
+          ? convertToReactVRTPage(...baseParams, reactCharacteristics)
+          : framework === 'nextjs'
+          ? convertToNextJsVRTPage(...baseParams, reactCharacteristics)
+          : framework === 'remix'
+          ? convertToRemixVRTPage(...baseParams, reactCharacteristics)
+          : { fileName: '', fileContent: '' };
 
       const targetFilePath = path.resolve(pagesDirectories[framework], convertedFileName);
       if (framework === 'nextjs') {

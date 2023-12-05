@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import { globbySync } from 'globby';
+import * as globby from 'globby';
 import { paramCase } from 'change-case';
 import { CDN_BASE_PATH_MODEL_SIGNATURES } from '../../../../../cdn.config';
 
@@ -42,6 +42,6 @@ export const MODEL_SIGNATURES_MANIFEST = ${JSON.stringify(manifest)};
   console.log('Created model-signatures manifest.');
 };
 
-const files = globbySync('./src/optimized/*.svg').sort();
+const files = globby.sync('./src/optimized/*.svg').sort();
 
 createManifestAndCopyAssets(files);

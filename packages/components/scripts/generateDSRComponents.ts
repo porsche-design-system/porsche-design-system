@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import * as globby from 'globby';
 import { paramCase, pascalCase } from 'change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { TagName } from '@porsche-design-system/shared';
@@ -15,7 +15,7 @@ const generateDSRComponents = (): void => {
   const relativeDestinationDirectory = '../components-react/projects/react-ssr-wrapper/src/lib/dsr-components';
   const destinationDirectory = path.resolve(rootDirectory, relativeDestinationDirectory);
 
-  const componentPaths = globbySync(`${componentsDirectory}/**/*.tsx`).sort();
+  const componentPaths = globby.sync(`${componentsDirectory}/**/*.tsx`).sort();
 
   const stylesBundleImportPath = '@porsche-design-system/components/dist/styles';
   const utilsBundleImportPath = '@porsche-design-system/components/dist/utils';

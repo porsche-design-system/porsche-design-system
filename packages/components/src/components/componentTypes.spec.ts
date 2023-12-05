@@ -3,11 +3,11 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import * as fs from 'fs';
 import * as path from 'path';
-import { globbySync } from 'globby';
+import * as globby from 'globby';
 import { pascalCase } from 'change-case';
 
 const componentsDir = path.resolve(__dirname);
-const sourceFilePaths = globbySync(`${componentsDir}/**/*.tsx`).sort();
+const sourceFilePaths = globby.sync(`${componentsDir}/**/*.tsx`).sort();
 
 describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))('%s', (tagName) => {
   const componentName = tagName.replace(/^p-/, '');

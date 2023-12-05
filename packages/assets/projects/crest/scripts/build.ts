@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import { globbySync } from 'globby';
+import * as globby from 'globby';
 import { camelCase, paramCase } from 'change-case';
 import { CDN_BASE_PATH_CREST } from '../../../../../cdn.config';
 
@@ -40,7 +40,7 @@ const checkIntegrity = (manifest: Manifest): void => {
 };
 
 const createManifestAndCopyCrest = (): void => {
-  const files = globbySync('./src/**/*.{png,webp}').sort();
+  const files = globby.sync('./src/**/*.{png,webp}').sort();
 
   fs.rmSync(path.normalize('./dist'), { force: true, recursive: true });
   fs.mkdirSync(path.normalize('./dist/crest'), { recursive: true });

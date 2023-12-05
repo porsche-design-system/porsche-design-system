@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import * as globby from 'globby';
 
 const frameworks = ['js', 'angular', 'react'] as const;
 type Framework = (typeof frameworks)[number];
@@ -25,12 +25,14 @@ const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
   ];
   // stackblitz doesn't use esm builds (.mjs) files, so we can ignore them
   // which also results in smaller json manifest and faster stackblitz
-  const files = globbySync(`../components-${framework}/dist/${distSubFolder}/**/*.{js,cjs,d.ts,json,scss}`).filter(
-    (filePath) =>
-      !ignoredSubPackages.some((subPackage) =>
-        filePath.includes(`components-${framework}/dist/${distSubFolder}/${subPackage}`)
-      )
-  );
+  const files = globby
+    .sync(`../components-${framework}/dist/${distSubFolder}/**/*.{js,cjs,d.ts,json,scss}`)
+    .filter(
+      (filePath) =>
+        !ignoredSubPackages.some((subPackage) =>
+          filePath.includes(`components-${framework}/dist/${distSubFolder}/${subPackage}`)
+        )
+    );
 
   // at least package.json is usually there
   if (files.length <= 3) {

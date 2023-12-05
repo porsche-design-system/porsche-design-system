@@ -1,12 +1,12 @@
 import path from 'path';
 import fs from 'fs';
-import { globbySync } from 'globby';
+import * as globby from 'globby';
 
 const generateTagNamesWithChunk = (): void => {
   // can't resolve @porsche-design-system/components-js without building it first, therefore we use relative path
   const componentsJsSourceDirectory = path.resolve('../components-js/projects/partials/scripts');
 
-  const partialFileNames = globbySync(`${componentsJsSourceDirectory}/*Partial.ts`);
+  const partialFileNames = globby.sync(`${componentsJsSourceDirectory}/*Partial.ts`);
 
   const partialNames = partialFileNames
     .map((fileName) => {

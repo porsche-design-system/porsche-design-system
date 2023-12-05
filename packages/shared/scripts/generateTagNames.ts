@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { globbySync } from 'globby';
+import * as globby from 'globby';
 import { camelCase } from 'change-case';
 
 const INTERNAL_TAG_NAMES = ['p-select-wrapper-dropdown', 'p-toast-item'];
@@ -9,7 +9,7 @@ const generateTagNames = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
   const componentsSourceDirectory = path.resolve('../components/src/components');
 
-  const componentFiles = globbySync(`${componentsSourceDirectory}/**/*.tsx`);
+  const componentFiles = globby.sync(`${componentsSourceDirectory}/**/*.tsx`);
 
   const tags = componentFiles
     .filter((file) => !file.includes('-utils')) // skip utils files that have tsx extension

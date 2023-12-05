@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import { optimize, Config } from 'svgo';
-import { globbySync } from 'globby';
+import * as globby from 'globby';
 import { paramCase } from 'change-case';
 import { CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
 
@@ -75,7 +75,7 @@ export type IconName = typeof ICON_NAMES[number];
 };
 
 const generate = (): void => {
-  const files = globbySync('./src/**/*.svg').sort();
+  const files = globby.sync('./src/**/*.svg').sort();
   const config: Config = require('../svgo.config.js');
 
   createManifestAndOptimizeIcons(files, config);
