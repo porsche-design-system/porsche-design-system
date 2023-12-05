@@ -29,46 +29,51 @@ volta install yarn
 ### Install Docker
 
 1. Register your Docker account on [Hub-Docker](https://hub.docker.com)
-1. Download Docker app locally on your machine and login
-1. Start Docker
+2. Download Docker app locally on your machine and login
+3. Start Docker
 
 ### Getting started
 
 1. Clone [`porsche-design-system` repository](https://github.com/porsche-design-system/porsche-design-system)
-1. Switch to **project root directory**
-1. Checkout branch **main** by executing `git checkout main`
-1. Create an `.env` file within **project root directory** (never push this file to Git because it will contain secrets
+2. Switch to **project root directory**
+3. Checkout branch **main** by executing `git checkout main`
+4. Create an `.env` file within **project root directory** (never push this file to Git because it will contain secrets
    – by default it's ignored by `.gitignore`)
-1. Make sure that Docker app is running
-1. Create a personal access token with the scopes `delete:packages`, `read:packages`, `write:packages`, `repo` at
+5. Make sure that Docker app is running
+6. Create a personal access token with the scopes `delete:packages`, `read:packages`, `write:packages`, `repo` at
    <https://github.com/settings/tokens>
-1. Add the personal access token to the `.env` file in following format `GITHUB_PERSONAL_ACCESS_TOKEN=YOUR_TOKEN`
-1. Login to the GitHub docker registry via
+7. Add the personal access token to the `.env` file in following format `GITHUB_PERSONAL_ACCESS_TOKEN=YOUR_TOKEN`
+8. Login to the GitHub docker registry via
    `grep GITHUB_PERSONAL_ACCESS_TOKEN .env | cut -d '=' -f2 | docker login https://ghcr.io -u YOUR_USERNAME --password-stdin`
-1. Run `./docker.sh run-install` (to have npm dependencies installed within Docker container) - this may take up to
+9. Run `./docker.sh run-install` (to have npm dependencies installed within Docker container) - this may take up to
    several minutes at first start depending on your internet connection
-1. Run `yarn` (to have npm dependencies installed on your machine for better IDE support) - this may take up to several
-   minutes at first start depending on your internet connection
+10. Run `yarn` (to have npm dependencies installed on your machine for better IDE support) - this may take up to several
+    minutes at first start depending on your internet connection
+
+#### Common errors during installation
+
+1. `Error: spawn node-gyp ENOENT` => You need to install `node-gyp` manually via `yarn global add node-gyp`
+2. `node-pre-gyp ERR! install response status 404 Not Found on https://github.com/Automattic/node-canvas/releases/download/v2.11.2/canvas-v2.11.2-node-v108-darwin-unknown-arm64.tar.gz` => Check out [this page](https://github.com/Automattic/node-canvas/wiki/Installation%3A-Mac-OS-X)
 
 _Note: `./docker.sh run-install` and `yarn` should be executed after every pull._
 
 ### Setup prettier
 
 1. Go to Webstorm `Preferences`
-1. Click on the Plugins tab and search for `prettier`
-1. Install prettier
-1. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
-1. Set `Prettier Package` to `{PATH_TO_YOUR_DIRECTORY}/node_modules/prettier`
-1. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html,md}`
-1. Click checkbox `on save` and apply
-1. You should be good to go.
-1. If you have to exclude code fom being prettified, see
+2. Click on the Plugins tab and search for `prettier`
+3. Install prettier
+4. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
+5. Set `Prettier Package` to `{PATH_TO_YOUR_DIRECTORY}/node_modules/prettier`
+6. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html,md}`
+7. Click checkbox `on save` and apply
+8. You should be good to go.
+9. If you have to exclude code fom being prettified, see
    [Prettier configuration](https://prettier.io/docs/en/ignore.html#javascript)
 
 ### Build
 
 1. Switch to **project root directory**
-1. For the different applications, select one of the following commands:
+2. For the different applications, select one of the following commands:
 
 - `./docker.sh run-build` (builds the entire application)
 - `./docker.sh run-build --assets` (builds the assets with icons, fonts and marque)
@@ -91,7 +96,7 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 **Important:** before executing a start command it's necessary to have `./docker.sh run-build` executed.
 
 1. Switch to **project root directory**
-1. For the different applications, select one of the following commands:
+2. For the different applications, select one of the following commands:
 
 - `./docker.sh run-start` (starts storefront as default)
 - `./docker.sh run-start --components`
@@ -104,7 +109,7 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 ### Linting
 
 1. Switch to **project root directory**
-1. For the different applications, select one of the following commands:
+2. For the different applications, select one of the following commands:
 
 - `./docker.sh run-lint` (lints the entire application)
 - `./docker.sh run-lint --components-js` (lints native web components)
@@ -113,12 +118,12 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 ### All Tests
 
 1. Switch to **project root directory**
-1. Run `./docker.sh run-test`
+2. Run `./docker.sh run-test`
 
 ### Unit Tests
 
 1. Switch to **project root directory**
-1. For the different applications, select one of the following commands:
+2. For the different applications, select one of the following commands:
 
 - `./docker.sh run-test-unit` (unit tests for the entire application)
 - `./docker.sh run-test-unit --components-js` (unit tests for the native web components)
@@ -129,7 +134,7 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 ### Mock Tests
 
 1. Switch to **project root directory**
-1. For the different applications, select one of the following commands:
+2. For the different applications, select one of the following commands:
 
 - `./docker.sh run-test-mocks` (mock tests for the entire application)
 - `./docker.sh run-test-mocks --components-react` (mock tests for the react components)
@@ -137,7 +142,7 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 ### E2E Tests
 
 1. Switch to **project root directory**
-1. For the different applications, select one of the following commands:
+2. For the different applications, select one of the following commands:
 
 - `./docker.sh run-test-e2e` (e2e tests for the entire application)
 - `./docker.sh run-test-e2e-puppeteer --components-js` (e2e tests for the native web components for Chromium)
@@ -151,7 +156,7 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 ### Visual Regression Tests
 
 1. Switch to **project root directory**
-1. For the different applications, select one of the following commands:
+2. For the different applications, select one of the following commands:
 
 - `./docker.sh run-test-vrt-puppeteer --components-js` (vrt tests for the native web components for Chromium)
 - `./docker.sh run-test-vrt-playwright --components-js` (vrt tests for the native web components for Webkit)
@@ -168,7 +173,7 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 
 1. Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/vrt/(puppeteer?)/results`. Here you can
    find the belonging `diff` and `regression` images.
-1. Check if you would like to accept the changes
+2. Check if you would like to accept the changes
 
 - **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the
   `/vrt/(puppeteer?)/results` folder and delete the images in the `/vrt/(puppeteer?)/results` directory afterwards
@@ -180,7 +185,7 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 **Note:** In most of the cases this test only make sense to be executed in CI/CD
 
 1. Switch to **project root directory**
-1. For the different applications, select one of the following commands:
+2. For the different applications, select one of the following commands:
 
 - `./docker.sh run-test-smoke` (smoke tests for the entire application)
 - `./docker.sh run-test-smoke --components-js` (smoke tests for the native web components)
@@ -195,48 +200,48 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
    `FROM mcr.microsoft.com/playwright:v1.39.0-focal` needs to stay) to not break all CI runs of your colleagues, e.g.
    change `v1.39.0-focal` to `v1.39.0-focal-test` (not doing this will essentially replace the previous image that is
    used everywhere else)
-1. Commit and push your changes
-1. Go to
+2. Commit and push your changes
+3. Go to
    [Build and Push Docker Image workflow](https://github.com/porsche-design-system/porsche-design-system/actions/workflows/build-and-push-docker-image.yml)
-1. Hit the `Run workflow` button on the right, choose the branch with your changes and click `Run workflow` CTA button
+4. Hit the `Run workflow` button on the right, choose the branch with your changes and click `Run workflow` CTA button
    to queue a manual build
-1. Once the job is complete, you can verify the new image at
+5. Once the job is complete, you can verify the new image at
    [GitHub-Packages Page](https://github.com/porsche-design-system/porsche-design-system/pkgs/container/porsche-design-system%2Fplaywright)
-1. Now you can rerun your regular CI job (since it failed due to relying on the not yet existing docker image)
+6. Now you can rerun your regular CI job (since it failed due to relying on the not yet existing docker image)
 
 ## Dependency updates
 
 Every week, we update our NPM packages:
 
 1. Switch to **project root directory**
-1. Run `./docker.sh run-upgrade`  
+2. Run `./docker.sh run-upgrade`  
    This should output the dependencies you might want to update. Select the NPM dependencies to be updated and press _
    Enter_. Afterwards execute automated tests to make sure application still works.
-1. Angular has to be updated with `ng update`.
-1. Run `./docker.sh bash`
-1. `cd packages/components-angular`
-1. `./node_modules/.bin/ng update`
-1. `./node_modules/.bin/ng update @angular/cli @angular/core`
-1. Check `MAX_TS_VERSION` in `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`
+3. Angular has to be updated with `ng update`.
+4. Run `./docker.sh bash`
+5. `cd packages/components-angular`
+6. `./node_modules/.bin/ng update`
+7. `./node_modules/.bin/ng update @angular/cli @angular/core`
+8. Check `MAX_TS_VERSION` in `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`
    which indicates whether `typescript` can be updated for Angular packages or not.
-1. `exit` to leave the docker container
-1. Run `./docker.sh run-install`
-1. Run `./docker.sh run-build`
-1. Run `./docker.sh run-test`  
-   As final check start application locally and have a look at it.
-1. Run `./docker.sh run-start`
+9. `exit` to leave the docker container
+10. Run `./docker.sh run-install`
+11. Run `./docker.sh run-build`
+12. Run `./docker.sh run-test`  
+    As final check start application locally and have a look at it.
+13. Run `./docker.sh run-start`
 
 ### Hints for updating
 
 1. Make sure you pulled the latest version before starting.
-1. To avoid corrupting the `yarn.lock` start with Angular (by using `ng update`). The following upgrades should be
+2. To avoid corrupting the `yarn.lock` start with Angular (by using `ng update`). The following upgrades should be
    grouped e.g. if React types can be upgraded also look if React can be upgraded.
-1. Don't upgrade too many dependencies at once, keep them logically together.
-1. Certain dependencies can not be upgraded which are documented in `docs/dependencies.md`
-1. In case you discover new dependencies that can not be upgraded, e.g. due to esm builds not compatible with nodejs,
+3. Don't upgrade too many dependencies at once, keep them logically together.
+4. Certain dependencies can not be upgraded which are documented in `docs/dependencies.md`
+5. In case you discover new dependencies that can not be upgraded, e.g. due to esm builds not compatible with nodejs,
    add them to the list
-1. Update `docs/dependencies.md` to reflect the current date and adjust framework versions if needed
-1. Once you updated everything possible, delete `yarn.lock` and have it created again by running `yarn` in order to
+6. Update `docs/dependencies.md` to reflect the current date and adjust framework versions if needed
+7. Once you updated everything possible, delete `yarn.lock` and have it created again by running `yarn` in order to
    update dependencies of our dependencies
 
 ## Build status
@@ -249,9 +254,9 @@ This tool automatically creates a catalog of ui components. For its magic to wor
 rules:
 
 1. **File location:** A component is developed as a self containing element under `packages/components/src/components`.
-1. **Component description:** A component should have a `COMPONENTNAME.code.md` and a `COMPONENTNAME.design.md` file
+2. **Component description:** A component should have a `COMPONENTNAME.code.md` and a `COMPONENTNAME.design.md` file
    which describes its general purpose, design/development specifications and examples.
-1. **Props:** The component has to describe its props using typescript types and documentation.
+3. **Props:** The component has to describe its props using typescript types and documentation.
 
 ---
 
@@ -261,10 +266,10 @@ In order to deploy something to AWS from your local machine, you need to follow 
 
 1. Install `awscli` as described here
    <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install>
-1. Retrieve the credentials from our keepass, they are stored in the entry `AWS + QuickSight` under the fields
+2. Retrieve the credentials from our keepass, they are stored in the entry `AWS + QuickSight` under the fields
    `Zugriffsschlüssel-ID` and `Geheimer Zugriffsschlüssel`
-1. Run `aws configure` and enter the credentials, default region `eu-central-1` and default output format `json`
-1. If you prefer to run commands via `docker.sh` you need to extend your `.env` file by `AWS_ACCESS_KEY_ID` and
+3. Run `aws configure` and enter the credentials, default region `eu-central-1` and default output format `json`
+4. If you prefer to run commands via `docker.sh` you need to extend your `.env` file by `AWS_ACCESS_KEY_ID` and
    `AWS_SECRET_ACCESS_KEY` with the credentials from the previous step
 
 ---
@@ -307,9 +312,9 @@ everything works under real conditions.
 ### Preparation
 
 1. Switch to **project root directory**
-1. Run `git pull origin {main- or v-branch}`
-1. Create a new branch e.g. **release/components-v1.2.3**
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
+2. Run `git pull origin {main- or v-branch}`
+3. Create a new branch e.g. **release/components-v1.2.3**
+4. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
    **[Unreleased]** (this file will also be used to show on Storefront)
 
 - `./packages/components/CHANGELOG.md`
@@ -323,9 +328,9 @@ everything works under real conditions.
 
 1. Create a commit with following message structure
    `Release Porsche Design System - Components (JS/Angular/React/Vue) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3`
-1. Create pull request and start review
-1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
+2. Push the local commit to release branch, e.g. `git push origin release/components-v1.2.3`
+3. Create pull request and start review
+4. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Update sample projects
 
@@ -337,9 +342,9 @@ everything works under real conditions.
 - https://github.com/porsche-design-system/sample-integration-vanillajs
 
 1. Run `yarn upgrade-interactive` and upgrade `@porsche-design-system/components-(js/react/angular)` version.
-1. Run `yarn`
-1. Run `yarn build`
-1. Run `yarn start` and check if everything works.
+2. Run `yarn`
+3. Run `yarn build`
+4. Run `yarn start` and check if everything works.
 
 ### Communicate
 
@@ -351,7 +356,7 @@ everything works under real conditions.
 ## Porsche Design System - New Icons
 
 1. Copy new Icon-file (eg. `newIcon.svg`) to the correct category **"./packages/icons/src/CHOOSE_RIGHT_CATEGORY"**
-1. Release Assets `@porsche-design-system/assets` (see below)
+2. Release Assets `@porsche-design-system/assets` (see below)
 
 ---
 
@@ -360,9 +365,9 @@ everything works under real conditions.
 ### Preparation
 
 1. Switch to **project root directory**
-1. Run `git pull origin {main- or v-branch}`
-1. Create a new branch e.g. **release/assets-v1.2.3**
-1. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
+2. Run `git pull origin {main- or v-branch}`
+3. Create a new branch e.g. **release/assets-v1.2.3**
+4. Make sure all relevant changes for the new release to be documented in following `CHANGELOG.md` file(s) under section
    **[Unreleased]**
 
 - `./packages/assets/CHANGELOG.md`
@@ -374,9 +379,9 @@ everything works under real conditions.
 
 1. Create a commit with following message structure
    `Release Porsche Design System - Assets v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-1. Push the local commit to release branch, e.g. `git push origin release/assets-v1.2.3`
-1. Create pull request and start review
-1. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
+2. Push the local commit to release branch, e.g. `git push origin release/assets-v1.2.3`
+3. Create pull request and start review
+4. Merge into **main- or v-branch** branch (then CI/CD will trigger a release automatically)
 
 ### Communicate
 
