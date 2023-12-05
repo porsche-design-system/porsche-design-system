@@ -362,6 +362,7 @@ export const getComponentCss = (
   state: FormState,
   disabled: boolean,
   filter: boolean,
+  isNativePopover: boolean,
   theme: Theme
 ): string => {
   return getCss(
@@ -377,6 +378,23 @@ export const getComponentCss = (
         'sr-text': {
           display: 'none',
         },
+        ...(isNativePopover && {
+          popover: {
+            position: 'absolute',
+            bottom: 'auto',
+            border: 'none',
+            background: 'none',
+            pointerEvents: 'all',
+            padding: 0,
+            margin: 0,
+            overflow: 'initial',
+            height: 'auto',
+            maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
+            '&:-internal-popover-in-top-layer::backdrop': {
+              display: 'none',
+            },
+          },
+        }),
       },
       filter
         ? getFilterStyles(direction, isOpen, state, disabled, theme)

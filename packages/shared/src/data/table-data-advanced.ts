@@ -14,6 +14,7 @@ export const headAdvanced: HeadAdvanced[] = [
   { name: 'Status', id: 'status' } as HeadAdvanced,
   { name: 'Comment', id: 'comment' } as HeadAdvanced,
   { name: 'Lead ID', id: 'leadId' } as HeadAdvanced,
+  { name: 'Select', id: 'select' } as HeadAdvanced,
   { name: 'Action', id: 'action', hideLabel: true } as HeadAdvanced,
 ].map((item, i) => ({
   ...item,
