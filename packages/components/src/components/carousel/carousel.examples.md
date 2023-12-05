@@ -182,13 +182,44 @@ over all carousel entries. The skip link is only visible when it receives focus 
 
 <Playground :markup="skip" :config="config"></Playground>
 
+## Pattern with custom heading and description
+
+In the near future: `p-carousel` does not offer a slotted heading or description since it can easily be placed above the
+`p-carousel` component in form of a pattern.
+
+```scss
+.custom-header {
+  display: flex;
+  gap: $pds-spacing-fluid-medium;
+  flex-direction: column;
+
+  & div {
+    padding: 0 $pds-grid-basic-offset-base;
+
+    @include pds-media-query-min('s') {
+      padding: 0 $pds-grid-basic-offset-s;
+    }
+
+    @include pds-media-query-min('xxl') {
+      padding: 0 $pds-grid-basic-offset-xxl;
+    }
+
+    & p-text {
+      margin: $pds-spacing-static-x-small 0 0;
+    }
+  }
+}
+```
+
+<Playground :markup="pattern" :config="config"></Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import type { Theme } from '@/models';
-import type { CarouselWidth, CarouselAlignHeader } from './carousel-utils'; 
+import type { CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils'; 
 import { getCarouselCodeSamples } from '@porsche-design-system/shared';
-import { CAROUSEL_WIDTHS, CAROUSEL_ALIGN_HEADERS, CAROUSEL_ALIGN_HEADERS_DEPRECATED } from './carousel-utils';
+import { CAROUSEL_ALIGN_HEADERS, CAROUSEL_ALIGN_HEADERS_DEPRECATED, CAROUSEL_HEADING_SIZES, CAROUSEL_WIDTHS  } from './carousel-utils';
 import { borderRadius } from '@porsche-design-system/components-js/styles';
 
 @Component
@@ -241,6 +272,15 @@ export default class Code extends Vue {
   <p slot="description">Some slotted description</p>
   ${this.getSlides(3)}
 </p-carousel>`;
+
+  headingSize: CarouselHeadingSize = 'x-large';
+  headingSizes = CAROUSEL_HEADING_SIZES;
+  get headingMarkup() {
+    return `<p-carousel heading="${this.basicHeading}" heading-size="${this.headingSize}">
+    <p slot="description">Some slotted description</p>
+  ${this.getSlides(3)}
+</p-carousel>`;
+}
 
   rewind = `<p-carousel rewind="false" heading="${this.basicHeading}">
   ${this.getSlides(3)}
@@ -305,7 +345,18 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
   ${this.getSlides(4)}
 </p-carousel>
 <p-heading id="target" tag="h2" size="x-large">Next Heading</p-heading>`;
-}
+
+  pattern = `<div class="custom-header">
+  <div>
+    <p-heading id="target" tag="h2" size="x-large">Some Heading</p-heading>
+    <p-text size="small">Some Description</p-text>
+  </div>
+  <p-carousel>
+    ${this.getSlides(3)}
+  </p-carousel>
+</div>`;
+};
+
 </script>
 
 <style scoped lang="scss">
@@ -331,4 +382,31 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
       margin: 0 0 0 .5rem;
     }
   }
+
+  :deep(.custom-header) {
+    display: flex;
+    gap: $pds-spacing-fluid-medium;
+    flex-direction: column;
+
+    & div {
+      padding: 0 $pds-grid-basic-offset-base;
+
+      @include pds-media-query-min('s') {
+        padding: 0 $pds-grid-basic-offset-s;
+      }
+
+      @include pds-media-query-min('xxl') {
+        padding: 0 $pds-grid-basic-offset-xxl;
+      }
+
+      & p-text{
+        margin: $pds-spacing-static-x-small 0 0;
+      }
+    }
+  }
+
+  :deep(.demo) {
+    width: 100%
+  }
+
 </style>

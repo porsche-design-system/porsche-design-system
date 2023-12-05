@@ -128,13 +128,9 @@ export const getComponentCss = (
           ...(isHeaderAlignCenter && {
             justifySelf: 'center', // relevant for horizontal alignment of header
           }),
-          [mediaQueryS]: isHeaderAlignCenter
-            ? {
-                gridColumn: 2,
-              }
-            : {
-                gridColumn: '1 / 3',
-              },
+          [mediaQueryS]: {
+            gridColumn: '1 / 2',
+          },
         },
       }),
     },
@@ -149,7 +145,7 @@ export const getComponentCss = (
         fontFamily, // relevant for button group width calculation, which is based on ex unit
         fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
         columnGap: spacingStaticMedium,
-        gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
+        gridTemplateColumns: `minmax(0px, 1fr) ${buttonGroupWidth}`,
         ...(isHeaderAlignCenter && {
           justifyItems: 'center', // relevant when max-width of heading or description is reached
         }),
@@ -164,7 +160,7 @@ export const getComponentCss = (
       [mediaQueryS]: {
         display: 'flex',
         gap: spacingStaticXSmall,
-        gridArea: `${hasHeading ? (hasDescription ? '3' : '2') : '1'} / 3 / 3 / auto`, // needed in case header height is smaller than button group
+        gridArea: `${hasHeading ? (hasDescription ? '3' : '2') : '1'} / 2 / 3 / auto`, // needed in case header height is smaller than button group
         alignItems: 'end',
         justifyContent: 'end',
         justifySelf: 'end',
