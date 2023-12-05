@@ -105,7 +105,7 @@ export const getComponentCss = (
         },
         ...(hasHeading && {
           [selectorHeading]: {
-            ...(headingSize === 'xl' ? headingXLargeStyle : headingXXLargeStyle),
+            ...(headingSize === 'x-large' ? headingXLargeStyle : headingXXLargeStyle),
             maxWidth: '56.25rem',
             margin: 0,
           },

@@ -22,7 +22,7 @@ export type CarouselAlignHeaderDeprecated = (typeof CAROUSEL_ALIGN_HEADERS_DEPRE
 export const CAROUSEL_ALIGN_HEADERS = ['start', 'center', ...CAROUSEL_ALIGN_HEADERS_DEPRECATED] as const;
 export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 
-export const CAROUSEL_HEADING_SIZES = ['xl', 'xxl'];
+export const CAROUSEL_HEADING_SIZES = ['x-large', 'xx-large'];
 export type CarouselHeadingSize = (typeof CAROUSEL_HEADING_SIZES)[number];
 
 export const CAROUSEL_ARIA_ATTRIBUTES = ['aria-label'] as const;

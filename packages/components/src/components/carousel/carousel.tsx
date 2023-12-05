@@ -91,7 +91,7 @@ export class Carousel {
   @Prop() public heading?: string;
 
   /** Defines the heading size used in the carousel. */
-  @Prop() public headingSize?: CarouselHeadingSize = 'xl';
+  @Prop() public headingSize?: CarouselHeadingSize = 'x-large';
 
   /** Defines the description used in the carousel. */
   @Prop() public description?: string;
