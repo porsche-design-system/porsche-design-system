@@ -410,7 +410,6 @@ exports[`should call validateProps() with correct parameters via render for p-pa
   "allyLabelPrev": "string",
   "intl": "shape",
   "itemsPerPage": "number",
-  "maxNumberOfPageLinks": "breakpoint",
   "showLastPage": "boolean",
   "theme": "oneOf",
   "totalItemsCount": "number",

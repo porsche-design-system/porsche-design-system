@@ -130,6 +130,16 @@ span {
     result:
       '::slotted(input:disabled){border-color:#96989a !important;cursor:not-allowed !important}::slotted(input:focus){outline-color:#626669 !important}::slotted(input:focus:not(:focus-visible)){outline-color:transparent !important}@media(hover:hover){::slotted(input:not(:disabled):hover), .label:hover ~ ::slotted(input:not(:disabled)){border-color:#000 !important}}',
   },
+  {
+    input: `
+@media(max-width:759px) {
+  li.ellip-start + li:not(.current), li.current-1, li.current\\+1, li.current\\+1 + li:not(.ellip) {
+    display: none;
+  }
+}`,
+    result:
+      '@media(max-width:759px){li.ellip-start + li:not(.current), li.current-1, li.current\\+1, li.current\\+1 + li:not(.ellip){display:none}}',
+  },
 ])('should correctly minify: %j', ({ input, result }) => {
   expect(minifyCss(input)).toEqual(result);
 });

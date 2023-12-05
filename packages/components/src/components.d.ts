@@ -1208,7 +1208,8 @@ export namespace Components {
          */
         "itemsPerPage": number;
         /**
-          * The maximum number of page links rendered.
+          * Has no effect anymore
+          * @deprecated since v3.10.0, will be removed with next major release
          */
         "maxNumberOfPageLinks"?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
         /**
@@ -3718,7 +3719,8 @@ declare namespace LocalJSX {
          */
         "itemsPerPage"?: number;
         /**
-          * The maximum number of page links rendered.
+          * Has no effect anymore
+          * @deprecated since v3.10.0, will be removed with next major release
          */
         "maxNumberOfPageLinks"?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
         /**

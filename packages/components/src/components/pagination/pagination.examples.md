@@ -12,21 +12,13 @@
 To adapt the pagination to the specific viewport context, the amount of displayed page items varies between either `7`
 (desktop/tablet) or `5` (mobile). The components handles responsive viewport sizing by default.
 
-<Playground :markup="basic()" :config="config"></Playground>
+<Playground :markup="basic" :config="config"></Playground>
 
-### Max Number of Page Links: 7 (desktop)
+## Max Number of Page Links (deprecated)
 
-<Playground :markup="basic('7')" :config="config"></Playground>
-
-### Max Number of Page Links: 5 (mobile)
-
-<Playground :markup="basic('5')" :config="config"></Playground>
-
-### Responsive
-
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
-
-<Playground :markup="basic('{ base: 5, s: 7 }')" :config="config"></Playground>
+<Notification heading="Important note" state="warning">
+  The <code>maxNumberOfPageLinks</code> property is deprecated since v3.10.0 and has no effect anymore. Therefor, it will be removed with the next major release.
+</Notification>
 
 ## Without last page
 
@@ -69,16 +61,12 @@ export default class Code extends Vue {
   itemsPerPage = 25;
   activePage = 1;
 
-  basic(max: string) {
-    const attr = max ? ` max-number-of-page-links="${max}"` : '';
-    return `<p-pagination total-items-count="500" items-per-page="25" active-page="1"${attr}></p-pagination>`;
-  }
+  basic =`<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>`;
+  withoutLastPage = this.basic.replace('>', ' show-last-page="false">');
 
   get behaviour() {
     return `<p-pagination total-items-count="${this.totalItemsCount}" items-per-page="${this.itemsPerPage}" active-page="${this.activePage}"></p-pagination>`;
   }
-
-  withoutLastPage = this.basic().replace('>', ' show-last-page="false">');
 
   mounted(){
     this.registerEvents();

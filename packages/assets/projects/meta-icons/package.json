@@ -1,5 +1,5 @@
 {
-  "name": "@porsche-design-system/fonts",
+  "name": "@porsche-design-system/meta-icons",
   "version": "0.0.0",
   "private": true,
   "scope": "@porsche-design-system",
@@ -8,21 +8,22 @@
   "types": "dist/types/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "UNLICENSED",
-  "description": "Porsche Fonts",
+  "description": "Porsche Meta Icons",
   "keywords": [
     "porsche",
-    "fonts"
+    "favicon",
+    "touch icon"
   ],
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn build:fonts && yarn build:lib",
-    "build:fonts": "ts-node scripts/build.ts",
+    "build": "yarn clean:build && yarn build:meta-icons && yarn build:lib",
+    "build:meta-icons": "ts-node scripts/build.ts",
     "build:lib": "yarn build:lib:cjs && yarn build:lib:esm",
     "build:lib:cjs": "tsc --build tsconfig.lib.cjs.json",
     "build:lib:esm": "tsc --build tsconfig.lib.esm.json",
-    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean": "yarn clean:node_modules && clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
-    "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
+    "clean:build": "rm -rf ./dist && rm -rf ./index.ts"
   },
   "devDependencies": {
     "change-case": "^4.1.2",
@@ -34,6 +35,6 @@
     "dist/"
   ],
   "volta": {
-    "extends": "../../package.json"
+    "extends": "../../../../package.json"
   }
 }
