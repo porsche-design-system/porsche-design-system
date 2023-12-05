@@ -1,16 +1,21 @@
 import { getOnlyChildOfKindHTMLElementOrThrow, getTagNameWithoutPrefix, throwException } from '../../utils';
 
 export const throwIfInvalidLinkTileProductUsage = (host: HTMLElement, hrefValue: string): void => {
+  let invalidA11y = false;
+
   if (!hrefValue) {
-    throwMissingHrefAndSlottedLinkException(host);
-  }
-  try {
-    const linkElement = getOnlyChildOfKindHTMLElementOrThrow(host, 'a');
-    if (!linkElement.textContent.trim() && !linkElement.getAttribute('aria-label')) {
-      throwMissingSlottedLinkA11yException(host);
+    try {
+      const linkElement = getOnlyChildOfKindHTMLElementOrThrow(host, 'a');
+      if (!linkElement.textContent.trim() && !linkElement.getAttribute('aria-label')) {
+        invalidA11y = true;
+      }
+    } catch {
+      throwMissingHrefAndSlottedLinkException(host);
     }
-  } catch {
-    throwMissingHrefAndSlottedLinkException(host);
+  }
+
+  if (invalidA11y) {
+    throwMissingSlottedLinkA11yException(host);
   }
 };
 
