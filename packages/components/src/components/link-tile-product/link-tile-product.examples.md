@@ -56,7 +56,7 @@ property. To ensure accessibility, the slotted link must be labeled with both th
 <Playground :frameworkMarkup="example" :config="{ ...config, withoutDemo: true }">
     <p-link-tile-product
     :heading="'Some product'"
-    :price="'911€'"
+    :price="'1.911,00 €'"
     :info="'Some info'"
     :href="'https://www.porsche.com'"
     :liked="liked"
@@ -64,7 +64,7 @@ property. To ensure accessibility, the slotted link must be labeled with both th
     :theme="theme"
   >
     <p-tag slot="header" :color="'background-base'">New</p-tag>
-    <img :src="imgSrc" alt="Some alt text" />
+    <img :src="imgSrc2" width="800" height="900" alt="Some alt text" />
   </p-link-tile-product>
 </Playground>
 
@@ -78,8 +78,9 @@ import type { Theme } from '@/models';
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
   imgSrc = require('@/assets/weekender.webp');
+  imgSrc2 = require('@/assets/placeholder_800x900.svg');
   img = `<img src="${this.imgSrc}" alt="Some alt text" />`;
-  link = `<a href="https://www.porsche.com">Some product, 911€</a>`;
+  link = `<a href="https://www.porsche.com">Some product, 1.911,00 €</a>`;
   headerSlot = `<p-tag slot="header" color="background-base">New</p-tag>`;
 
   liked = false;
@@ -96,11 +97,11 @@ export default class Code extends Vue {
 
   example = getLinkTileProductCodeSamples();
 
-  basic = `<p-link-tile-product heading="Some product" price="911€" href="https://porsche.com" theme="${this.theme}">
+  basic = `<p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>
 
-<p-link-tile-product heading="Some product" price="911€" href="https://porsche.com" theme="${this.theme}">
+<p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
   <picture>
     <source media="(min-width:400px)" srcset="${this.imgSrc}" />
     ${this.img}
@@ -110,21 +111,21 @@ export default class Code extends Vue {
   likeButton = 'false';
   likeButtons = ['true', 'false'];
   get likeButtonMarkup() {
-    return`<p-link-tile-product heading="Some product" price="911€" href="https://porsche.com" ${this.likeButton === 'false' ? 'like-button="false"' : ''} theme="${this.theme}">
+    return`<p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" ${this.likeButton === 'false' ? 'like-button="false"' : ''} theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>`;
   };
 
-  header = `<p-link-tile-product heading="Some product" price="911€" href="https://porsche.com" theme="${this.theme}">
+  header = `<p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
   ${this.headerSlot}
   ${this.img}
 </p-link-tile-product>`;
 
-  info = `<p-link-tile-product heading="Some product" price="911€" href="https://porsche.com" info="Some info" theme="${this.theme}">
+  info = `<p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" info="Some info" theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>`;
 
-  slottedLink = `<p-link-tile-product heading="Some product" price="911€" info="Some info" theme="${this.theme}">
+  slottedLink = `<p-link-tile-product heading="Some product" price="1.911,00 €" info="Some info" theme="${this.theme}">
   ${this.link}
   ${this.img}
 </p-link-tile-product>`;
