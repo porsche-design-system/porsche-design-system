@@ -91,17 +91,17 @@ export class LinkTileProduct {
           <div class="image-container">
             <slot />
           </div>
-          <div class="heading-container">
+          <div class="text-container">
             <h3 id={headingId} class="text text__heading">
               {this.heading}
             </h3>
+            <p id={priceId} class="text text__price">
+              {this.price}
+            </p>
+            <p id={infoId} class="text text__info">
+              {this.info}
+            </p>
           </div>
-          <p id={priceId} class="text text__price">
-            {this.price}
-          </p>
-          <p id={infoId} class="text text__info">
-            {this.info}
-          </p>
           {this.href && (
             <a
               class="link-overlay"

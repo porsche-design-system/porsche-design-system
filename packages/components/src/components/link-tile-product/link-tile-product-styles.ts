@@ -120,12 +120,11 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
         }),
       },
     }),
-    'heading-container': {
-      height: `calc(${fontLineHeight} * 2)`,
+    'text-container': {
+      height: `calc(${fontLineHeight} * 4)`,
       display: 'flex',
-      alignItems: 'flex-end',
       justifyContent: 'center',
-      overflow: 'hidden',
+      flexDirection: 'column',
     },
     text: {
       textAlign: 'center',
@@ -150,8 +149,7 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
       },
       '&__info': {
         ...textXXSmallStyle,
-        height: fontLineHeight,
-        paddingBottom: spacingFluidXSmall,
+        maxHeight: fontLineHeight,
         color: contrastHighColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: contrastHighColorDark,
