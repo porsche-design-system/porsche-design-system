@@ -275,14 +275,14 @@ exports[`should have no basic DOM regression for p-link-tile-product 1`] = `
     <slot>
     </slot>
   </div>
-  <div class="heading-container">
+  <div class="text-container">
     <h3 id="heading" class="text text__heading">
       value</h3>
+    <p id="price" class="text text__price">
+      value</p>
+    <p id="info" class="text text__info">
+    </p>
   </div>
-  <p id="price" class="text text__price">
-    value</p>
-  <p id="info" class="text text__info">
-  </p>
 </div>
 <p-button-pure class="like-button hydrated" hide-label="true">
   Heart icon</p-button-pure>"
