@@ -1,0 +1,40 @@
+{
+  "name": "@porsche-design-system/meta-icons",
+  "version": "0.0.0",
+  "private": true,
+  "scope": "@porsche-design-system",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "license": "UNLICENSED",
+  "description": "Porsche Meta Icons",
+  "keywords": [
+    "porsche",
+    "favicon",
+    "touch icon"
+  ],
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "build": "yarn clean:build && yarn build:meta-icons && yarn build:lib",
+    "build:meta-icons": "tsx scripts/build.ts",
+    "build:lib": "yarn build:lib:cjs && yarn build:lib:esm",
+    "build:lib:cjs": "tsc --build tsconfig.lib.cjs.json",
+    "build:lib:esm": "tsc --build tsconfig.lib.esm.json",
+    "clean": "yarn clean:node_modules && clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist && rm -rf ./index.ts"
+  },
+  "devDependencies": {
+    "change-case": "^4.1.2",
+    "globby": "^14.0.0",
+    "tsx": "^4.6.2",
+    "typescript": "~5.3.2"
+  },
+  "files": [
+    "dist/"
+  ],
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

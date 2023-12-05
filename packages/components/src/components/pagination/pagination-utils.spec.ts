@@ -1,5 +1,11 @@
-import { createPaginationModel, getTotalPages, getCurrentActivePage, createRange, ItemType } from './pagination-utils';
-import type { PaginationItem } from './pagination-utils';
+import {
+  createPaginationItems,
+  getTotalPages,
+  getCurrentActivePage,
+  createRange,
+  ItemType,
+  type PaginationItem,
+} from './pagination-utils';
 
 const paginationModelItemToSymbolPart = (item: PaginationItem, index: number): string => {
   switch (item.type) {
@@ -12,7 +18,7 @@ const paginationModelItemToSymbolPart = (item: PaginationItem, index: number): s
   }
 };
 
-const formatPaginationModelToASCII = (items: PaginationItem[]): string[] => {
+const formatPaginationItemsToASCII = (items: PaginationItem[]): string[] => {
   return items.map((item, idx) => {
     const symbolPart = paginationModelItemToSymbolPart(item, idx);
     return [item.isActive ? '*' : '', item.value, symbolPart ? `(${symbolPart})` : ''].join('');
@@ -30,37 +36,46 @@ describe('createRange()', () => {
   });
 });
 
-describe('createPaginationModel()', () => {
-  const pageRange = 1;
-
+describe('createPaginationItems()', () => {
   describe('for showLastPage = true', () => {
     describe('for pageTotal = 1', () => {
       it('should return correct model for 1 of 1', () => {
         expect(
-          formatPaginationModelToASCII(
-            createPaginationModel({ activePage: 1, pageTotal: 1, pageRange, showLastPage: true })
-          )
+          formatPaginationItemsToASCII(createPaginationItems({ activePage: 1, pageTotal: 1, showLastPage: true }))
         ).toEqual(['1(<)', '*1', '1(>)']);
+      });
+    });
+
+    describe('for pageTotal = 6', () => {
+      it.each<[number, string[]]>([
+        [1, ['1(<)', '*1', '(<...)', '2', '3', '4', '5', '(...>)', '6', '*2(>)']],
+        [2, ['*1(<)', '1', '(<...)', '*2', '3', '4', '5', '(...>)', '6', '*3(>)']],
+        [3, ['*2(<)', '1', '(<...)', '2', '*3', '4', '5', '(...>)', '6', '*4(>)']],
+        [4, ['*3(<)', '1', '(<...)', '2', '3', '*4', '5', '(...>)', '6', '*5(>)']],
+        [5, ['*4(<)', '1', '(<...)', '2', '3', '4', '*5', '(...>)', '6', '*6(>)']],
+        [6, ['*5(<)', '1', '(<...)', '2', '3', '4', '5', '(...>)', '*6', '6(>)']],
+      ])('should return correct model for %s of 10', (activePage, result) => {
+        expect(
+          formatPaginationItemsToASCII(createPaginationItems({ activePage, pageTotal: 6, showLastPage: true }))
+        ).toEqual(result);
       });
     });
 
     describe('for pageTotal = 10', () => {
       it.each<[number, string[]]>([
-        [1, ['1(<)', '*1', '2', '3', '4', '5', '(...>)', '10', '*2(>)']],
-        [2, ['*1(<)', '1', '*2', '3', '4', '5', '(...>)', '10', '*3(>)']],
-        [3, ['*2(<)', '1', '2', '*3', '4', '5', '(...>)', '10', '*4(>)']],
-        [4, ['*3(<)', '1', '2', '3', '*4', '5', '(...>)', '10', '*5(>)']],
+        [1, ['1(<)', '*1', '(<...)', '2', '3', '4', '5', '(...>)', '10', '*2(>)']],
+        [2, ['*1(<)', '1', '(<...)', '*2', '3', '4', '5', '(...>)', '10', '*3(>)']],
+        [3, ['*2(<)', '1', '(<...)', '2', '*3', '4', '5', '(...>)', '10', '*4(>)']],
+        [4, ['*3(<)', '1', '(<...)', '2', '3', '*4', '5', '(...>)', '10', '*5(>)']],
         [5, ['*4(<)', '1', '(<...)', '4', '*5', '6', '(...>)', '10', '*6(>)']],
         [6, ['*5(<)', '1', '(<...)', '5', '*6', '7', '(...>)', '10', '*7(>)']],
-        [7, ['*6(<)', '1', '(<...)', '6', '*7', '8', '9', '10', '*8(>)']],
-        [8, ['*7(<)', '1', '(<...)', '6', '7', '*8', '9', '10', '*9(>)']],
-        [9, ['*8(<)', '1', '(<...)', '6', '7', '8', '*9', '10', '*10(>)']],
-        [10, ['*9(<)', '1', '(<...)', '6', '7', '8', '9', '*10', '10(>)']],
+        [7, ['*6(<)', '1', '(<...)', '6', '*7', '8', '9', '(...>)', '10', '*8(>)']],
+        [8, ['*7(<)', '1', '(<...)', '6', '7', '*8', '9', '(...>)', '10', '*9(>)']],
+        [9, ['*8(<)', '1', '(<...)', '6', '7', '8', '*9', '(...>)', '10', '*10(>)']],
+        [10, ['*9(<)', '1', '(<...)', '6', '7', '8', '9', '(...>)', '*10', '10(>)']],
       ])('should return correct model for %s of 10', (activePage, result) => {
         expect(
-          formatPaginationModelToASCII(
-            createPaginationModel({ activePage, pageTotal: 10, pageRange, showLastPage: true })
-          )
+          formatPaginationItemsToASCII(createPaginationItems({ activePage, pageTotal: 10, showLastPage: true }))
         ).toEqual(result);
       });
     });
@@ -70,30 +85,41 @@ describe('createPaginationModel()', () => {
     describe('for pageTotal = 1', () => {
       it('should return correct model for 1 of 1', () => {
         expect(
-          formatPaginationModelToASCII(
-            createPaginationModel({ activePage: 1, pageTotal: 1, pageRange, showLastPage: false })
-          )
+          formatPaginationItemsToASCII(createPaginationItems({ activePage: 1, pageTotal: 1, showLastPage: false }))
         ).toEqual(['1(<)', '*1', '1(>)']);
+      });
+    });
+
+    describe('for pageTotal = 6', () => {
+      it.each<[number, string[]]>([
+        [1, ['1(<)', '*1', '(<...)', '2', '3', '4', '5', '6', '(...>)', '*2(>)']],
+        [2, ['*1(<)', '1', '(<...)', '*2', '3', '4', '5', '6', '(...>)', '*3(>)']],
+        [3, ['*2(<)', '1', '(<...)', '2', '*3', '4', '5', '6', '(...>)', '*4(>)']],
+        [4, ['*3(<)', '1', '(<...)', '2', '3', '*4', '5', '6', '(...>)', '*5(>)']],
+        [5, ['*4(<)', '1', '(<...)', '2', '3', '4', '*5', '6', '(...>)', '*6(>)']],
+        [6, ['*5(<)', '1', '(<...)', '2', '3', '4', '5', '*6', '(...>)', '6(>)']],
+      ])('should return correct model for %s of 10', (activePage, result) => {
+        expect(
+          formatPaginationItemsToASCII(createPaginationItems({ activePage, pageTotal: 6, showLastPage: false }))
+        ).toEqual(result);
       });
     });
 
     describe('for pageTotal = 10', () => {
       it.each<[number, string[]]>([
-        [1, ['1(<)', '*1', '2', '3', '4', '5', '(...>)', '*2(>)']],
-        [2, ['*1(<)', '1', '*2', '3', '4', '5', '(...>)', '*3(>)']],
-        [3, ['*2(<)', '1', '2', '*3', '4', '5', '(...>)', '*4(>)']],
-        [4, ['*3(<)', '1', '2', '3', '*4', '5', '(...>)', '*5(>)']],
+        [1, ['1(<)', '*1', '(<...)', '2', '3', '4', '5', '(...>)', '*2(>)']],
+        [2, ['*1(<)', '1', '(<...)', '*2', '3', '4', '5', '(...>)', '*3(>)']],
+        [3, ['*2(<)', '1', '(<...)', '2', '*3', '4', '5', '(...>)', '*4(>)']],
+        [4, ['*3(<)', '1', '(<...)', '2', '3', '*4', '5', '(...>)', '*5(>)']],
         [5, ['*4(<)', '1', '(<...)', '4', '*5', '6', '(...>)', '*6(>)']],
         [6, ['*5(<)', '1', '(<...)', '5', '*6', '7', '(...>)', '*7(>)']],
         [7, ['*6(<)', '1', '(<...)', '6', '*7', '8', '(...>)', '*8(>)']],
-        [8, ['*7(<)', '1', '(<...)', '7', '*8', '9', '10', '*9(>)']],
-        [9, ['*8(<)', '1', '(<...)', '7', '8', '*9', '10', '*10(>)']],
-        [10, ['*9(<)', '1', '(<...)', '7', '8', '9', '*10', '10(>)']],
+        [8, ['*7(<)', '1', '(<...)', '7', '*8', '9', '10', '(...>)', '*9(>)']],
+        [9, ['*8(<)', '1', '(<...)', '7', '8', '*9', '10', '(...>)', '*10(>)']],
+        [10, ['*9(<)', '1', '(<...)', '7', '8', '9', '*10', '(...>)', '10(>)']],
       ])('should return correct model for %s of 10', (activePage, result) => {
         expect(
-          formatPaginationModelToASCII(
-            createPaginationModel({ activePage, pageTotal: 10, pageRange, showLastPage: false })
-          )
+          formatPaginationItemsToASCII(createPaginationItems({ activePage, pageTotal: 10, showLastPage: false }))
         ).toEqual(result);
       });
     });

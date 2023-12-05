@@ -5,13 +5,13 @@
   "license": "UNLICENSED",
   "scripts": {
     "start-app": "react-scripts start",
-    "build": "yarn --cwd ./projects/utilities build && yarn --cwd ./projects/styles build",
+    "build": "yarn --cwd ./projects/utilities build",
     "build-app": "react-scripts build",
     "test": "yarn test:unit",
-    "test:unit": "yarn --cwd ./projects/utilities test:unit && yarn --cwd ./projects/styles test:unit",
+    "test:unit": "yarn --cwd ./projects/utilities test:unit",
     "clean": "yarn clean:node_modules && yarn clean:build",
-    "clean:node_modules": "yarn --cwd ./projects/utilities clean:node_modules && yarn --cwd ./projects/styles clean:node_modules",
-    "clean:build": "yarn --cwd ./projects/utilities clean:build && yarn --cwd ./projects/styles clean:build"
+    "clean:node_modules": "yarn --cwd ./projects/utilities clean:node_modules",
+    "clean:build": "yarn --cwd ./projects/utilities clean:build"
   },
   "dependencies": {
     "react": "^18.2.0",
