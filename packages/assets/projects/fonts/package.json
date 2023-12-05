@@ -1,5 +1,5 @@
 {
-  "name": "@porsche-design-system/model-signatures",
+  "name": "@porsche-design-system/fonts",
   "version": "0.0.0",
   "private": true,
   "scope": "@porsche-design-system",
@@ -8,15 +8,15 @@
   "types": "dist/types/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "UNLICENSED",
-  "description": "Porsche Model Signatures",
+  "description": "Porsche Fonts",
   "keywords": [
     "porsche",
-    "model signatures"
+    "fonts"
   ],
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn build:model-sigatures && yarn build:lib",
-    "build:model-sigatures": "ts-node scripts/build.ts",
+    "build": "yarn clean:build && yarn build:fonts && yarn build:lib",
+    "build:fonts": "ts-node scripts/build.ts",
     "build:lib": "yarn build:lib:cjs && yarn build:lib:esm",
     "build:lib:cjs": "tsc --build tsconfig.lib.cjs.json",
     "build:lib:esm": "tsc --build tsconfig.lib.esm.json",
@@ -34,6 +34,6 @@
     "dist/"
   ],
   "volta": {
-    "extends": "../../package.json"
+    "extends": "../../../../package.json"
   }
 }

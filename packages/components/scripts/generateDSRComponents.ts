@@ -291,8 +291,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-inline-notification') {
         newFileContent = newFileContent.replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
       } else if (tagName === 'p-pagination') {
-        // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
-        newFileContent = newFileContent.replace(/parsedIntl/g, 'this.props.intl');
+        newFileContent = newFileContent
+          // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
+          .replace(/parsedIntl/g, 'this.props.intl')
+          // transform className objects to string
+          .replace(
+            /className=\{(\{[\S\s]+?})}/g,
+            `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
+          );
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')

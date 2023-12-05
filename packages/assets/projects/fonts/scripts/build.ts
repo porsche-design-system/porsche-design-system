@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
-import { CDN_BASE_PATH_FONTS } from '../../../cdn.config';
+import { CDN_BASE_PATH_FONTS } from '../../../../../cdn.config';
 
 type Manifest = {
   [name: string]: string;

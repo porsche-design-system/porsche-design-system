@@ -2162,10 +2162,6 @@ exports[`should match snapshot 1`] = `
         "root": "string",
       },
       "itemsPerPage": "number",
-      "maxNumberOfPageLinks": [
-        5,
-        7,
-      ],
       "showLastPage": "boolean",
       "theme": [
         "light",
@@ -2174,13 +2170,11 @@ exports[`should match snapshot 1`] = `
       ],
       "totalItemsCount": "number",
     },
-    "breakpointCustomizableProps": [
-      "maxNumberOfPageLinks",
-    ],
     "deprecatedEventNames": [
       "pageChange",
     ],
     "deprecatedProps": [
+      "maxNumberOfPageLinks",
       "allyLabel",
       "allyLabelPrev",
       "allyLabelPage",
@@ -2214,10 +2208,7 @@ exports[`should match snapshot 1`] = `
         "root": "Pagination",
       },
       "itemsPerPage": 1,
-      "maxNumberOfPageLinks": {
-        "base": 5,
-        "xs": 7,
-      },
+      "maxNumberOfPageLinks": null,
       "showLastPage": true,
       "theme": "light",
       "totalItemsCount": 1,

@@ -49,6 +49,6 @@
     "typescript": "^5.2.2"
   },
   "volta": {
-    "extends": "../../package.json"
+    "extends": "../../../../package.json"
   }
 }
