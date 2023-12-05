@@ -58,6 +58,7 @@ export const getComponentCss = (
         display: 'flex',
         position: 'relative',
         justifyContent: 'space-between',
+        alignItems: 'center',
         width: '100%',
         textDecoration: 'none',
         border: 0,

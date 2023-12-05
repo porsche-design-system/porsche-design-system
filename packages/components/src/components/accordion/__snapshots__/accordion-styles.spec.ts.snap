@@ -16,6 +16,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -113,6 +114,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -210,6 +212,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -306,6 +309,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -402,6 +406,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -500,6 +505,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -597,6 +603,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -695,6 +702,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -792,6 +800,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -888,6 +897,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -986,6 +996,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
