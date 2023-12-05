@@ -410,8 +410,8 @@ exports[`should match snapshot 1`] = `
       "disablePagination": "boolean",
       "heading": "string",
       "headingSize": [
-        "xl",
-        "xxl",
+        "x-large",
+        "xx-large",
       ],
       "intl": {
         "first": "string",
@@ -484,7 +484,7 @@ exports[`should match snapshot 1`] = `
       "description": null,
       "disablePagination": null,
       "heading": null,
-      "headingSize": "xl",
+      "headingSize": "x-large",
       "intl": null,
       "pagination": true,
       "rewind": true,
