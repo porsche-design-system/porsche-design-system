@@ -468,7 +468,7 @@
     <!--      <span></span>-->
     <!--    </div>-->
     <header>
-      <h1>Porsche Design Sysm - Playground</h1>
+      <h1>Porsche Design System - Playground</h1>
     </header>
 
     <main>
@@ -481,19 +481,24 @@
           aria="{ 'aria-label': 'Some more descriptive label' }"
           theme="dark"
         >
-          <p-tag slot="tags" color="background-base" theme="dark">New</p-tag>
-          <p-tag slot="tags" color="background-base" theme="dark">New</p-tag>
+          <div slot="header">
+            <p-tag color="background-base" theme="dark">New</p-tag>
+            <p-tag color="background-base" theme="dark">New</p-tag>
+          </div>
+          <!--          <p-tag slot="tags" color="background-base" theme="dark">New</p-tag>-->
           <img src="/assets/link-tile-product-example-02.png" alt="Some alt text" />
-          <a href="/"></a>
+          <a href="https://www.porsche.com">Product Name, 199€</a>
         </p-link-tile-product>
+
         <p-link-tile-product
           heading="Extra long product name to show whats happening when too much text is used"
           price="199,99€"
+          info="inkl. VAT"
           href="/"
           class="basic-content-one-third-follow"
         >
           <p-tag slot="header" color="background-base">New</p-tag>
-          <img src="/assets/link-tile-product-example-02.png" alt="Some alt text" />
+          <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
         </p-link-tile-product>
         <p-link-tile-product
           heading="Product Name"
@@ -524,6 +529,32 @@
             <source media="(min-width:400px)" srcset="/assets/link-tile-product-example-02.png" />
             <img
               src="/assets/link-tile-product-example-02.png"
+              style="width: 100%; height: 100%; object-fit: cover"
+              alt="Some alt text"
+            />
+          </picture>
+        </p-link-tile-product>
+        <p-link-tile-product
+          heading="Product Name"
+          price="199,99€"
+          info="inkl. VAT"
+          href="/"
+          class="basic-content-one-third-follow"
+        >
+          <p-tag slot="header" color="background-base">New</p-tag>
+        </p-link-tile-product>
+        <p-link-tile-product
+          heading="Product Name"
+          price="199,99€"
+          info="inkl. VAT"
+          href="/"
+          class="basic-content-one-third-follow"
+        >
+          <p-tag slot="header" color="background-base">New</p-tag>
+          <picture>
+            <source media="(min-width:400px)" srcset="/assets/link-tile-product-example-02-non-exis.png" />
+            <img
+              src="/assets/link-tile-product-example-02-non-exist.png"
               style="width: 100%; height: 100%; object-fit: cover"
               alt="Some alt text"
             />
