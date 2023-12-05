@@ -5,7 +5,7 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   THEMES,
-  throwIfInvalidSlottedAnchorLink,
+  throwIfInvalidLinkTileProductUsage,
   validateProps,
 } from '../../utils';
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
@@ -63,9 +63,7 @@ export class LinkTileProduct {
   @Event({ bubbles: false }) public likeChange: EventEmitter<LinkTileProductUpdateEvent>;
 
   public componentWillLoad(): void {
-    if (!this.href) {
-      throwIfInvalidSlottedAnchorLink(this.host);
-    }
+    throwIfInvalidLinkTileProductUsage(this.host, this.href);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
