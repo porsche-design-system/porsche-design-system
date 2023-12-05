@@ -20,7 +20,7 @@
     "@porsche-design-system/shared": "0.0.0"
   },
   "devDependencies": {
-    "tsx": "^4.6.1",
+    "tsx": "^4.6.2",
     "typescript": "~5.3.2"
   },
   "volta": {

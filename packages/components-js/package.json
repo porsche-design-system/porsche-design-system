@@ -79,12 +79,12 @@
     "imask": "^7.1.3"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "^0.13.2",
+    "@arethetypeswrong/core": "^0.13.3",
     "@playwright/test": "1.40.1",
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.14.3",
     "concurrently": "^8.2.2",
-    "devtools-protocol": "^0.0.1231134",
+    "devtools-protocol": "^0.0.1233178",
     "globby": "^14.0.0",
     "js-beautify": "^1.14.11",
     "jsdom": "^23.0.1",
@@ -92,7 +92,7 @@
     "mime": "^4.0.0",
     "pdf-to-png-converter": "^3.1.0",
     "terser-webpack-plugin": "^5.3.9",
-    "tsx": "^4.6.1",
+    "tsx": "^4.6.2",
     "typescript": "~5.3.2",
     "webpack": "^5.89.0",
     "webpack-bundle-analyzer": "^4.10.1",
