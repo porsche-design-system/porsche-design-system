@@ -47,7 +47,7 @@ If you want to add any additional info, use the `info` property.
 ## Framework routing (anchor nesting)
 
 To support framework routing you can provide the link as a slotted element of the component instead of using the `href`
-property.
+property. To ensure accessibility, the slotted link must be labeled with both the product name and its price.
 
 <Playground :markup="slottedLink" :config="config"></Playground>
 
@@ -79,7 +79,7 @@ export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
   imgSrc = require('@/assets/weekender.webp');
   img = `<img src="${this.imgSrc}" alt="Some alt text" />`;
-  link = `<a href="https://www.porsche.com">Some label</a>`;
+  link = `<a href="https://www.porsche.com">Some product, 911€</a>`;
   headerSlot = `<p-tag slot="header" color="background-base">New</p-tag>`;
 
   liked = false;
