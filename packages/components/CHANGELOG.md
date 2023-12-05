@@ -32,7 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- `Accordion`: Alignment of slotted heading with custom padding ([2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
+- `Accordion`: Alignment of slotted heading with custom padding ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
 
 ### [3.9.0] - 2023-11-24
 
