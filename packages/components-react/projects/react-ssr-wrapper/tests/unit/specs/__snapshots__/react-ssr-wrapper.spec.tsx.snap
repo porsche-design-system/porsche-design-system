@@ -3931,6 +3931,7 @@ dialog::backdrop {
 
     </style>
     <dialog
+      inert=""
       tabindex="-1"
     >
       <div
@@ -4316,6 +4317,7 @@ img {
     </p-button-pure>
     <div
       class="scroller"
+      inert=""
     >
       <div
         class="header"

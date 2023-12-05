@@ -520,12 +520,15 @@ $&`
       } else if (tagName === 'p-pin-code') {
         newFileContent = newFileContent.replace(/value={/, 'defaultValue={'); // fix warning about read-only field
       } else if (tagName === 'p-flyout-navigation') {
-        newFileContent = newFileContent.replace(/validateActiveIdentifier\(.*\);/g, '');
+        newFileContent = newFileContent
+          .replace(/validateActiveIdentifier\(.*\);/g, '')
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
       } else if (tagName === 'p-flyout-navigation-item') {
         newFileContent = newFileContent
           .replace(/: Theme/g, ': any')
           .replace(/this\.props\.theme(?! \|\|)/g, 'this.theme')
-          .replace(/this\.props\.open(?! \|\|)/g, 'this.open');
+          .replace(/this\.props\.open(?! \|\|)/g, 'this.open')
+          .replace(/(inert=\{this\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
           .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation
