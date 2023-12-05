@@ -5232,6 +5232,7 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   right: 0 !important;
   bottom: 0 !important;
   z-index: 1 !important;
+  text-indent: -999999px !important;
 }
 
 .link-overlay {
@@ -5262,12 +5263,11 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   right: clamp(8px, 0.5vw + 6px, 16px);
   height: fit-content;
 }
-.heading-container {
-  height: calc(calc(6px + 2.125ex) * 2);
+.text-container {
+  height: calc(calc(6px + 2.125ex) * 4);
   display: flex;
-  align-items: flex-end;
   justify-content: center;
-  overflow: hidden;
+  flex-direction: column;
 }
 .text {
   text-align: center;
@@ -5297,8 +5297,7 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  height: calc(6px + 2.125ex);
-  padding-bottom: clamp(4px, 0.25vw + 3px, 8px);
+  max-height: calc(6px + 2.125ex);
   color: #535457;
 }
 .image-container {
@@ -5323,21 +5322,21 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
         <slot />
       </div>
       <div
-        class="heading-container"
+        class="text-container"
       >
         <h3
           class="text text__heading"
           id="heading"
         />
+        <p
+          class="text text__price"
+          id="price"
+        />
+        <p
+          class="text text__info"
+          id="info"
+        />
       </div>
-      <p
-        class="text text__price"
-        id="price"
-      />
-      <p
-        class="text text__info"
-        id="info"
-      />
     </div>
     <p-button-pure
       class="like-button ssr"
