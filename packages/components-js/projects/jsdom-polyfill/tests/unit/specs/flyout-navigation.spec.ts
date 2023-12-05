@@ -8,7 +8,7 @@ it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-flyout-navigation');
   expect(await componentsReady()).toBe(4);
 
-  const els = Array.from(document.body.querySelectorAll('*'));
+  const els = Array.from(document.body.querySelectorAll('*:not(a)'));
   expect(els.length).toBe(4);
   els.forEach((el) => {
     expect(el.shadowRoot).not.toBeNull();
@@ -19,36 +19,43 @@ it('should have initialized shadow dom', async () => {
 it('should have working events', async () => {
   document.body.innerHTML =
     getMarkup('p-flyout-navigation') +
-    `<div id="debug">Active Identifier: <span>undefined</span>; Event Counter: <span>0</span>;</div>`;
+    `<div id="debug"><span id="active-identifier">Active Identifier: <span>undefined</span>;</span><span id="update-event">Update Event Counter: <span>0</span>;</span><span id="dismiss-event">Dismiss Event Counter: <span>0</span>;</span></div>`;
   await componentsReady();
 
   const debugEl = document.querySelector('#debug');
+  const debugActiveIdentifierEl = document.querySelector('#active-identifier');
+  const debugUpdateEventEl = document.querySelector('#update-event');
+  const debugDismissEventEl = document.querySelector('#dismiss-event');
 
   const el = document.body.firstElementChild;
   el.addEventListener('dismiss', () => {
-    debugEl.querySelector('span:last-child').innerHTML = `${
-      parseInt(debugEl.querySelector('span:last-child').innerHTML) + 1
+    debugDismissEventEl.querySelector('span').innerHTML = `${
+      parseInt(debugDismissEventEl.querySelector('span').innerHTML) + 1
     }`;
   });
 
   el.addEventListener('update', (e: CustomEvent) => {
-    debugEl.querySelector('span').innerHTML = e.detail.activeIdentifier;
-    debugEl.querySelector('span:last-child').innerHTML = `${
-      parseInt(debugEl.querySelector('span:last-child').innerHTML) + 1
+    debugActiveIdentifierEl.querySelector('span').innerHTML = e.detail.activeIdentifier;
+    debugUpdateEventEl.querySelector('span').innerHTML = `${
+      parseInt(debugUpdateEventEl.querySelector('span').innerHTML) + 1
     }`;
   });
 
-  expect(debugEl.innerHTML).toBe('Active Identifier: <span>undefined</span>; Event Counter: <span>0</span>;');
+  expect(debugEl.innerHTML).toBe(
+    '<span id="active-identifier">Active Identifier: <span>undefined</span>;</span><span id="update-event">Update Event Counter: <span>0</span>;</span><span id="dismiss-event">Dismiss Event Counter: <span>0</span>;</span>'
+  );
 
   const dismissButton = getByRoleShadowed('button');
   await userEvent.click(dismissButton);
 
-  expect(debugEl.innerHTML).toBe('Active Identifier: <span>undefined</span>; Event Counter: <span>1</span>;');
+  expect(debugEl.innerHTML).toBe(
+    '<span id="active-identifier">Active Identifier: <span>undefined</span>;</span><span id="update-event">Update Event Counter: <span>0</span>;</span><span id="dismiss-event">Dismiss Event Counter: <span>1</span>;</span>'
+  );
 
-  // TODO: update event test is missing
-  // const openSecondaryScrollerButton = getByRoleShadowed('button');
-  // console.log(openSecondaryScrollerButton);
-  // await userEvent.click(openSecondaryScrollerButton);
+  const openSecondaryScrollerButton = getByRoleShadowed('button', { name: 'Button 1' });
+  await userEvent.click(openSecondaryScrollerButton);
 
-  // expect(debugEl.innerHTML).toBe('Current Identifier: <span>identifier-1</span>; Event Counter: <span>1</span>;');
+  expect(debugEl.innerHTML).toBe(
+    '<span id="active-identifier">Active Identifier: <span>identifier-1</span>;</span><span id="update-event">Update Event Counter: <span>1</span>;</span><span id="dismiss-event">Dismiss Event Counter: <span>1</span>;</span>'
+  );
 });
