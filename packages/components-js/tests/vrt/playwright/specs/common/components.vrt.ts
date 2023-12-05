@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import { baseSchemes, baseThemes, baseViewportWidth, baseViewportWidths, setupScenario } from '../../helpers';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
@@ -21,9 +21,13 @@ const components = (TAG_NAMES as unknown as TagName[])
 
 const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
 
-// TODO: focus can't be reverted for flyout-navigation since it's rendered within an iframe and we don't have the possibility to evaluate when componentsReady() is resolved for all iframes used
-const revertAutoFocus = (component: string): boolean =>
-  ['banner', 'modal', 'flyout', 'flyout-navigation'].includes(component);
+// VRT pages making use of iFrames can't reliably ensure which iframe is loaded last
+// and therefore can't be sure which autofocus gets triggered
+const revertAutoFocus = async (page: Page, component: string): Promise<void> => {
+  if (['flyout-navigation'].includes(component)) {
+    await page.mouse.click(0, 0); // click top left corner of the page to remove focus
+  }
+};
 
 test(`should have certain amount of components`, () => {
   expect(components.length).toBe(52);
@@ -44,8 +48,8 @@ components.forEach((component) => {
 
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
-          revertAutoFocus: revertAutoFocus(component),
         });
+        await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${theme}.png`);
       });
     });
@@ -58,9 +62,8 @@ components.forEach((component) => {
     // regular tests on different viewports
     baseViewportWidths.forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
-        await setupScenario(page, `/${component}`, viewportWidth, {
-          revertAutoFocus: revertAutoFocus(component),
-        });
+        await setupScenario(page, `/${component}`, viewportWidth);
+        await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
       });
     });
@@ -79,8 +82,8 @@ components.forEach((component) => {
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: 'auto',
           prefersColorScheme: scheme,
-          revertAutoFocus: revertAutoFocus(component),
         });
+        await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${scheme}.png`); // fixture is aliased since result has to be equal
       });
 
@@ -91,8 +94,8 @@ components.forEach((component) => {
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forcedColorsEnabled: true,
           prefersColorScheme: scheme,
-          revertAutoFocus: revertAutoFocus(component),
         });
+        await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(
           `${component}-${baseViewportWidth}-high-contrast-scheme-${scheme}.png`
         );
@@ -103,8 +106,8 @@ components.forEach((component) => {
     test(`should have no visual regression for viewport ${baseViewportWidth} in scale mode`, async ({ page }) => {
       await setupScenario(page, `/${component}`, baseViewportWidth, {
         scalePageFontSize: true,
-        revertAutoFocus: revertAutoFocus(component),
       });
+      await revertAutoFocus(page, component);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-scale-mode.png`);
     });
 
@@ -114,8 +117,8 @@ components.forEach((component) => {
     }) => {
       await setupScenario(page, `/${component}`, baseViewportWidth, {
         forceDirMode: 'rtl',
-        revertAutoFocus: revertAutoFocus(component),
       });
+      await revertAutoFocus(page, component);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-rtl-mode.png`);
     });
 
@@ -136,8 +139,8 @@ components.forEach((component) => {
 
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
-          revertAutoFocus: revertAutoFocus(component),
         });
+        await revertAutoFocus(page, component);
 
         // get rid of header with selects
         await page.evaluate(() => document.body.querySelector('header').remove());
