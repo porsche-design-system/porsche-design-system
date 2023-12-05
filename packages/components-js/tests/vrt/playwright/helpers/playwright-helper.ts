@@ -175,6 +175,7 @@ export const setupScenario = async (
   await waitForComponentsReady(page);
   await waitForComponentsReadyWithinIFrames(page);
 
+  // PDS components have bootstrapped in the meantime which might have changed the document height
   await page.setViewportSize({
     width: viewportWidth,
     height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
