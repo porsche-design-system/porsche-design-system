@@ -9,7 +9,7 @@ test.describe(component, async () => {
 
   [1920, 2560, 3000].forEach((viewportWidth) => {
     test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
-      await setupScenario(page, `/${component}`, viewportWidth, { revertAutoFocus: true });
+      await setupScenario(page, `/${component}`, viewportWidth);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
     });
   });

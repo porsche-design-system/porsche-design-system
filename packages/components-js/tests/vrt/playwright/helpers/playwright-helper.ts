@@ -1,10 +1,9 @@
 import { type Page } from '@playwright/test';
 import {
-  getInitialStyles,
   getComponentChunkLinks,
-  getIconLinks,
-  getFontFaceStylesheet,
   getFontLinks,
+  getIconLinks,
+  getInitialStyles,
 } from '@porsche-design-system/components-js/partials';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
@@ -102,7 +101,6 @@ type SetupScenarioOptions = {
   forceComponentTheme?: Theme;
   forceDirMode?: Dir;
   emulateMediaPrint?: boolean;
-  revertAutoFocus?: boolean;
 };
 
 export const setupScenario = async (
@@ -118,7 +116,6 @@ export const setupScenario = async (
     scalePageFontSize,
     forceComponentTheme,
     forceDirMode,
-    revertAutoFocus,
   }: SetupScenarioOptions = {
     javaScriptDisabled: false,
     forcedColorsEnabled: false,
@@ -126,7 +123,6 @@ export const setupScenario = async (
     scalePageFontSize: false,
     forceComponentTheme: undefined,
     forceDirMode: undefined,
-    revertAutoFocus: false,
     ...options,
   };
   if (javaScriptDisabled) {
@@ -180,10 +176,6 @@ export const setupScenario = async (
     width: viewportWidth,
     height: await page.evaluate(() => document.body.clientHeight), // TODO: why dynamic based on content here but fixed 600 everywhere else?
   });
-
-  if (revertAutoFocus) {
-    await page.mouse.click(0, 0); // click top left corner of the page to remove focus
-  }
 };
 
 type SetContentWithDesignSystemOptions = {
