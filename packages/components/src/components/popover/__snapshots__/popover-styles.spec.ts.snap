@@ -2,10 +2,10 @@
 
 exports[`getComponentCss() should return correct css for direction: bottom, isNative: false and theme: dark 1`] = `
 ":host {
-  position: relative !important;
-  display: inline-block !important;
-  color-scheme: light dark !important;
+  display: inline-block;
   vertical-align: top;
+  position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -127,10 +127,10 @@ button:focus:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for direction: bottom, isNative: false and theme: light 1`] = `
 ":host {
-  position: relative !important;
-  display: inline-block !important;
-  color-scheme: light dark !important;
+  display: inline-block;
   vertical-align: top;
+  position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -252,10 +252,10 @@ button:focus:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for direction: left, isNative: false and theme: dark 1`] = `
 ":host {
-  position: relative !important;
-  display: inline-block !important;
-  color-scheme: light dark !important;
+  display: inline-block;
   vertical-align: top;
+  position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -377,10 +377,10 @@ button:focus:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for direction: left, isNative: false and theme: light 1`] = `
 ":host {
-  position: relative !important;
-  display: inline-block !important;
-  color-scheme: light dark !important;
+  display: inline-block;
   vertical-align: top;
+  position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -502,10 +502,10 @@ button:focus:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for direction: right, isNative: false and theme: dark 1`] = `
 ":host {
-  position: relative !important;
-  display: inline-block !important;
-  color-scheme: light dark !important;
+  display: inline-block;
   vertical-align: top;
+  position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -627,10 +627,10 @@ button:focus:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for direction: right, isNative: false and theme: light 1`] = `
 ":host {
-  position: relative !important;
-  display: inline-block !important;
-  color-scheme: light dark !important;
+  display: inline-block;
   vertical-align: top;
+  position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -752,10 +752,10 @@ button:focus:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for direction: top, isNative: false and theme: dark 1`] = `
 ":host {
-  position: relative !important;
-  display: inline-block !important;
-  color-scheme: light dark !important;
+  display: inline-block;
   vertical-align: top;
+  position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -877,10 +877,10 @@ button:focus:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for direction: top, isNative: false and theme: light 1`] = `
 ":host {
-  position: relative !important;
-  display: inline-block !important;
-  color-scheme: light dark !important;
+  display: inline-block;
   vertical-align: top;
+  position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1002,10 +1002,10 @@ button:focus:not(:focus-visible)::before {
 
 exports[`getComponentCss() should return correct css for direction: top, isNative: true and theme: light 1`] = `
 ":host {
-  position: relative !important;
-  display: inline-block !important;
-  color-scheme: light dark !important;
+  display: inline-block;
   vertical-align: top;
+  position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

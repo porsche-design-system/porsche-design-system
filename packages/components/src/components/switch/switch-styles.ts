@@ -90,16 +90,20 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
-        outline: 0, // custom element is able to delegate the focus
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
+      ':host': {
         ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           display: stretchValue ? 'block' : 'inline-block',
-          width: stretchValue ? '100%' : 'auto', // prevents adjusting its size when used as flex or grid child
-          ...(!stretchValue && { verticalAlign: 'top' }),
         })),
-      }),
+        ...addImportantToEachRule({
+          outline: 0, // custom element is able to delegate the focus
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+          ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
+            width: stretchValue ? '100%' : 'auto', // prevents adjusting its size when used as flex or grid child
+            ...(!stretchValue && { verticalAlign: 'top' }),
+          })),
+        }),
+      },
     },
     root: {
       display: 'flex',
