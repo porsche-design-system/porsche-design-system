@@ -1,14 +1,54 @@
 # Flyout Navigation
 
+The `p-flyout-navigation` component is meant for displaying a multi-level navigation structure in a flyout that overlays
+the page content from the left side of the screen. It is a controlled component that gives you flexible control over the
+navigation flyout's behavior.
+
 <Notification heading="Experimental Component" state="warning">
-  Interface of Flyout Navigation might change in the near future.
+  Interface of Flyout Navigation might change in the near future. Currently, only two navigation levels are supported.
 </Notification>
 
 <TableOfContents></TableOfContents>
 
 ## Basic
 
+The basic concept of the flyout navigation is to have a button that opens the `p-navigation-flyout` and a basic 2-level
+navigation structure. The **1st level** is generated out of custom `p-flyout-navigation-item` components which generates
+a list of toggle buttons to navigate the 2nd level. These 1st level items can be filled with anchor links as children
+which then represent the **2nd level** of the navigation. While the 1st level items are styled by the component, you
+have to take care of the styling of the 2nd level items by yourself.
+
+The most important property of p-flyout is its open attribute. When it is present the flyout will be visible.
+
+In order to get notified when the navigation flyout gets closed by clicking the x button, you need to register an event
+listener for the dismiss event which is emitted by p-flyout.
+
 <Playground :markup="basicExample" :config="config"></Playground>
+
+## With active identifier
+
+The flyout navigation can be initialized with an `active-identifier` property. This identifier is used to open the
+flyout with the corresponding 1st level navigation item expanded. The `active-identifier` is the value of the
+`identifier` property of the `p-flyout-navigation-item` component.
+
+<Playground :markup="activeIdentifierExample" :config="config"></Playground>
+
+### <A11yIcon></A11yIcon> Accessibility hints
+
+Always take care that you expose the current state of the navigation to the user. This can be done by using the
+`aria-current="page"` attribute on the corresponding anchor element.
+
+## Enhanced example with custom content
+
+To provide consistent design patterns, it is highly recommended to use the `p-link-pure` component for the 2nd level
+navigation items. To give further flexibility, e.g. if you only want to provide a direct link to a page on the 1st
+level, you can just use the `p-link-pure` component. Be aware that you have to adapt the styling of those custom 1st
+level items to match the design of the other 1st level items.
+
+Regarding individualization of the 2nd level, you can create your own custom contents and use it as a child besides the
+`p-link-pure` components.
+
+<Playground :markup="enhancedExample" :config="config"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -17,10 +57,8 @@ import Component from 'vue-class-component';
 @Component()
 export default class Code extends Vue {
   config = { themeable: true };
-  flyouts = [];
+  navigationFlyouts = [];
   
-  blindtext = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
-
   mounted() {
     this.registerEvents();
   }
@@ -31,59 +69,145 @@ export default class Code extends Vue {
   }
 
   registerEvents() {
-    this.flyouts = document.querySelectorAll('.playground .demo p-flyout-navigation');
+    this.navigationFlyouts = document.querySelectorAll('.playground .demo p-flyout-navigation');
     
     const buttonsOpen = document.querySelectorAll('.playground .demo > p-button');
     buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openFlyout(index)));
     
-    this.flyouts.forEach((flyout, index) => {
+    this.navigationFlyouts.forEach((flyout, index) => {
       flyout.addEventListener('dismiss', () => this.closeFlyout(index));
     });
   }
 
 basicExample =
-`<p-button>Open Flyout Navigation</p-button>
+`<p-button aria="{ 'aria-haspopup': 'dialog' }">Open Flyout Navigation</p-button>
 <p-flyout-navigation>
-  <div slot="level-1">
-    <p-button-pure stretch="true" align-label="start">Women</p-button-pure>
-    <p-button-pure stretch="true" align-label="start">Men</p-button-pure>
-    <p-button-pure stretch="true" align-label="start">Kids</p-button-pure>
-    <p-button-pure stretch="true" align-label="start">Accessories</p-button-pure>
-    <p-button-pure stretch="true" align-label="start">Model Cars</p-button-pure>
-    <p-button-pure stretch="true" align-label="start">Porsche Originals</p-button-pure>
-    <p-button-pure stretch="true" align-label="start">Porsche Design</p-button-pure>
-  </div>
-  <div slot="level-2">
-    <p-heading size="small">Apparel</p-heading>
-    <p-link-pure href="#" stretch="true" icon="none">Jacket</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">Polo & Shirts</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">Sweaters</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">T-Shirt</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">View all</p-link-pure>
-    <p-heading size="small">Accessories</p-heading>
-    <p-link-pure href="#" stretch="true" icon="none">Caps</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">Belts</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">Beanies, Scarves & Gloves</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">Timepieces</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">View all</p-link-pure>
-    <p-heading size="small">Collection</p-heading>
-    <p-link-pure href="#" stretch="true" icon="none">Transformers</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">MARTINI RACING</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">Dakar</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">Penske Motorsport</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">Porsche x FIN</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">Essential</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">Motorsport</p-link-pure>
-    <p-link-pure href="#" stretch="true" icon="none">View all</p-link-pure>
-  </div>
+  <p-flyout-navigation-item identifier="item-1" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-2" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-3" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-4" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-5" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-6" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+</p-flyout-navigation>`;
+
+activeIdentifierExample =
+`<p-button aria="{ 'aria-haspopup': 'dialog' }">Open Flyout Navigation</p-button>
+<p-flyout-navigation active-identifier="item-2">
+  <p-flyout-navigation-item identifier="item-1" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-2" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor" aria-current="page">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-3" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-4" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-5" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-6" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+</p-flyout-navigation>`;
+
+enhancedExample =
+`<p-button aria="{ 'aria-haspopup': 'dialog' }">Open Flyout Navigation</p-button>
+<p-flyout-navigation active-identifier="item-1">
+  <p-flyout-navigation-item identifier="item-1" label="Some Label">
+    <p-link-tile href="#" label="Some label" description="Some Description" weight="semi-bold" compact="true" aspect-ratio="1:1">
+      <img src="https://placekitten.com/400/400" alt="Some Image" />
+    </p-link-tile>
+    <p-heading tag="h5" size="small">Some Heading</p-heading>
+    <p-link-pure href="#">Some anchor</p-link-pure>
+    <p-link-pure href="#" active="true" aria="{ 'aria-current': 'page'}">Some anchor</p-link-pure>
+    <p-link-pure href="#">Some anchor</p-link-pure>
+    <p-link-pure href="#">Some anchor</p-link-pure>
+    <p-link-pure href="#">Some anchor</p-link-pure>
+    <p-heading tag="h5" size="small">Some Heading</p-heading>
+    <p-link-pure href="#">Some anchor</p-link-pure>
+    <p-link-pure href="#">Some anchor</p-link-pure>
+    <p-link-pure href="#">Some anchor</p-link-pure>
+    <p-link-pure href="#">Some anchor</p-link-pure>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-2" label="Some Label">
+    <p-link-pure href="#">Some anchor</p-link-pure>
+    <p-link-pure href="#">Some anchor</p-link-pure>
+    <p-link-pure href="#">Some anchor</p-link-pure>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-3" label="Some Label">
+    <p-link-pure href="#">Some anchor</p-link-pure>
+    <p-link-pure href="#">Some anchor</p-link-pure>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-4" label="Some Label">
+    <p-link-pure href="#">Some anchor</p-link-pure>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-5" label="Some Label">
+    <p-link-pure href="#">Some anchor</p-link-pure>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-6" label="Some Label">
+    <p-link-pure href="#">Some anchor</p-link-pure>
+    <p-link-pure href="#">Some anchor</p-link-pure>
+  </p-flyout-navigation-item>
+  <p-link-pure size="medium" href="#" stretched="true" icon="external">Some external anchor</p-link-pure>
 </p-flyout-navigation>`;
     
   openFlyout(index: number): void {
-    this.flyouts[index].open = true;
+    this.navigationFlyouts[index].open = true;
   }
 
   closeFlyout(index: number): void {
-    this.flyouts[index].open = false;
+    this.navigationFlyouts[index].open = false;
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @use '@porsche-design-system/components-js/styles' as *;
+
+  :deep(p-flyout-navigation) {
+    > p-link-pure {
+      padding: $pds-spacing-fluid-small;
+      margin: 0 calc($pds-spacing-fluid-small * -1);
+    }
+  }
+
+  :deep(p-flyout-navigation-item) {
+    > p-link-tile {
+      margin-bottom: $pds-spacing-fluid-medium;
+    }
+    > p-link-pure + p-heading {
+      margin-top: $pds-spacing-fluid-medium;
+    }
+  }
+</style>
