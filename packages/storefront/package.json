@@ -28,7 +28,6 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/browser-notification": "4.1.4",
     "@porsche-design-system/components-js": "3.9.0",
     "@porsche-design-system/fallbacks": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",

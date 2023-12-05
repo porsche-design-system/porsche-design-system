@@ -52,8 +52,8 @@ export default [
           ['dependencies', 'devDependencies', 'volta', 'scripts', 'files', 'bin'].forEach((key) => delete pkg[key]);
           return {
             ...pkg,
-            main: 'cjs/assets/src/index.cjs',
-            module: 'esm/assets/src/index.mjs',
+            main: 'cjs/src/index.cjs',
+            module: 'esm/src/index.mjs',
             types: 'esm/index.d.ts',
           };
         },

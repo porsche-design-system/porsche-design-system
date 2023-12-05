@@ -25,11 +25,14 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
-        ...getNotificationRootJssStyle(state, hasAction, hasClose, theme),
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
+      ':host': {
+        display: 'grid',
+        ...addImportantToEachRule({
+          ...getNotificationRootJssStyle(state, hasAction, hasClose, theme),
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
       h5: headingSmallStyle,
       p: textSmallStyle,
       'h5,p': {

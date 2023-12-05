@@ -112,11 +112,12 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
+        display: 'flex',
+        overflowY: 'auto', // overrideable
         ...addImportantToEachRule({
           position: 'fixed',
           ...getInsetJssStyle(),
           zIndex: MODAL_Z_INDEX,
-          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexWrap: 'wrap',
@@ -132,7 +133,6 @@ export const getComponentCss = (
           ...hostHiddenStyles,
           ...getFrostedGlassBackgroundJssStyles(isOpen, duration, theme),
         }),
-        overflowY: 'auto', // overrideable
       },
       '::slotted': addImportantToEachRule(
         mergeDeep(

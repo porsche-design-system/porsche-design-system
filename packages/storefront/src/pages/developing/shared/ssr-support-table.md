@@ -23,7 +23,7 @@
 | ✅ **Marque**               |                                                                                                                                                                                    |
 | ✅ **Modal**                |                                                                                                                                                                                    |
 | ✅ **Multi Select**         |                                                                                                                                                                                    |
-| ✅ **Pagination**           | - `max-number-of-page-links` is not supported                                                                                                                                      |
+| ✅ **Pagination**           |                                                                                                                                                                                    |
 | ✅ **Pin Code**             |                                                                                                                                                                                    |
 | ✅ **Popover**              |                                                                                                                                                                                    |
 | ✅ **Radio Button Wrapper** | - Required state is not supported                                                                                                                                                  |

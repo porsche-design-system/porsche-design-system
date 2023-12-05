@@ -1243,7 +1243,8 @@ export namespace Components {
          */
         "itemsPerPage": number;
         /**
-          * The maximum number of page links rendered.
+          * Has no effect anymore
+          * @deprecated since v3.10.0, will be removed with next major release
          */
         "maxNumberOfPageLinks"?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
         /**
@@ -1750,6 +1751,10 @@ export namespace Components {
           * The validation state.
          */
         "state"?: TextFieldWrapperState;
+        /**
+          * Show search button if wrapped inside a form.
+         */
+        "submitButton"?: boolean;
         /**
           * Adapts the color depending on the theme.
          */
@@ -3811,7 +3816,8 @@ declare namespace LocalJSX {
          */
         "itemsPerPage"?: number;
         /**
-          * The maximum number of page links rendered.
+          * Has no effect anymore
+          * @deprecated since v3.10.0, will be removed with next major release
          */
         "maxNumberOfPageLinks"?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
         /**
@@ -4382,6 +4388,10 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: TextFieldWrapperState;
+        /**
+          * Show search button if wrapped inside a form.
+         */
+        "submitButton"?: boolean;
         /**
           * Adapts the color depending on the theme.
          */

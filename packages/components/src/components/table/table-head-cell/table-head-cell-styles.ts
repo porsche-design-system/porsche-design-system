@@ -33,13 +33,15 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'table-cell',
-        padding: `2px ${spacingFluidSmall} ${spacingFluidSmall}`,
-        verticalAlign: 'bottom',
-        whiteSpace: multiline ? 'normal' : 'nowrap',
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          padding: `2px ${spacingFluidSmall} ${spacingFluidSmall}`,
+          verticalAlign: 'bottom',
+          whiteSpace: multiline ? 'normal' : 'nowrap',
+          ...hostHiddenStyles,
+        }),
+      },
       ...(sortable
         ? {
             button: {

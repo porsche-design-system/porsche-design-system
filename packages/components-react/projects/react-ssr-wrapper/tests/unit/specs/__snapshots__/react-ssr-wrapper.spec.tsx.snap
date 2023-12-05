@@ -33,7 +33,7 @@ exports[`manual test cases should pass internal props correctly to p-checkbox-wr
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-flex !important;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 1.2s) steps(50) infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 1.2s) steps(50) infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+              :host{display:inline-flex;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 1.2s) steps(50) infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 1.2s) steps(50) infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
             </style>
             <span
               aria-label="Loading state of Some label"
@@ -105,7 +105,7 @@ exports[`manual test cases should pass internal props correctly to p-checkbox-wr
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-flex !important;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 1.2s) steps(50) infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 1.2s) steps(50) infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+              :host{display:inline-flex;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 1.2s) steps(50) infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 1.2s) steps(50) infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
             </style>
             <span
               aria-label="Loading state of Some label"
@@ -154,7 +154,7 @@ exports[`manual test cases should pass internal props correctly to p-grid-item 1
     shadowrootmode="open"
   >
     <style>
-      :host{display:flex !important;flex:auto !important;width:auto !important;margin-left:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;margin-right:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;color-scheme:light dark !important;flex-direction:row !important;flex-wrap:wrap !important}:host([hidden]){display:none !important}
+      :host{display:flex;flex:auto !important;width:auto !important;margin-left:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;margin-right:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;color-scheme:light dark !important;flex-direction:row !important;flex-wrap:wrap !important}:host([hidden]){display:none !important}
     </style>
     <slot />
   </template>
@@ -200,7 +200,7 @@ exports[`manual test cases should pass internal props correctly to p-grid-item 2
     shadowrootmode="open"
   >
     <style>
-      :host{display:flex !important;flex:auto !important;width:auto !important;margin-left:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;margin-right:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;color-scheme:light dark !important;flex-direction:row !important;flex-wrap:wrap !important}:host([hidden]){display:none !important}
+      :host{display:flex;flex:auto !important;width:auto !important;margin-left:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;margin-right:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;color-scheme:light dark !important;flex-direction:row !important;flex-wrap:wrap !important}:host([hidden]){display:none !important}
     </style>
     <slot />
   </template>
@@ -944,7 +944,7 @@ exports[`manual test cases should pass internal props correctly to p-radio-butto
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-flex !important;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 1.2s) steps(50) infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 1.2s) steps(50) infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+              :host{display:inline-flex;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 1.2s) steps(50) infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 1.2s) steps(50) infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
             </style>
             <span
               aria-label="Loading state of Some label"
@@ -1027,7 +1027,7 @@ exports[`manual test cases should pass internal props correctly to p-segmented-c
     shadowrootmode="open"
   >
     <style>
-      :host{display:grid !important;grid-auto-rows:1fr !important;grid-template-columns:repeat(auto-fit, 100px) !important;gap:6px !important;color-scheme:light dark !important}:host([hidden]){display:none !important}
+      :host{display:grid;grid-auto-rows:1fr !important;grid-template-columns:repeat(auto-fit, 100px) !important;gap:6px !important;color-scheme:light dark !important}:host([hidden]){display:none !important}
     </style>
     <slot />
   </template>
@@ -1041,7 +1041,7 @@ exports[`manual test cases should pass internal props correctly to p-segmented-c
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;outline:0 !important}:host([hidden]){display:none !important}button{position:relative;display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #FBFCFF;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}
+        :host{display:block;outline:0 !important}:host([hidden]){display:none !important}button{position:relative;display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #FBFCFF;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}
       </style>
       <button
         aria-pressed="true"
@@ -1062,7 +1062,7 @@ exports[`manual test cases should pass internal props correctly to p-segmented-c
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;outline:0 !important}:host([hidden]){display:none !important}button{position:relative;display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #404044;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}
+        :host{display:block;outline:0 !important}:host([hidden]){display:none !important}button{position:relative;display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #404044;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}
       </style>
       <button
         aria-pressed="false"
@@ -1681,7 +1681,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}
+        :host{display:block;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}
       </style>
       <slot />
     </template>
@@ -1695,7 +1695,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}
+        :host{display:block;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}
       </style>
       <slot />
     </template>
@@ -1975,7 +1975,7 @@ exports[`manual test cases should pass internal props correctly to p-text-list-i
       shadowrootmode="open"
     >
       <style>
-        :host{display:grid !important;grid-template-columns:var(--p-internal-text-list-pseudo-space) 1fr !important;column-gap:16px !important;font:inherit !important;color:inherit !important}:host([hidden]){display:none !important}::slotted(*){--p-internal-text-list-unordered-grid-column:.625rem !important;--p-internal-text-list-unordered-pseudo-content:"–" !important;--p-internal-text-list-ordered-grid-column:2rem !important;--p-internal-text-list-ordered-pseudo-suffix:"" !important}::slotted(*:last-child){grid-column:2 !important}
+        :host{display:grid;grid-template-columns:var(--p-internal-text-list-pseudo-space) 1fr !important;column-gap:16px !important;font:inherit !important;color:inherit !important}:host([hidden]){display:none !important}::slotted(*){--p-internal-text-list-unordered-grid-column:.625rem !important;--p-internal-text-list-unordered-pseudo-content:"–" !important;--p-internal-text-list-ordered-grid-column:2rem !important;--p-internal-text-list-ordered-pseudo-suffix:"" !important}::slotted(*:last-child){grid-column:2 !important}
       </style>
       <span>
         <slot />
@@ -1992,7 +1992,7 @@ exports[`manual test cases should pass internal props correctly to p-text-list-i
       shadowrootmode="open"
     >
       <style>
-        :host{display:grid !important;grid-template-columns:var(--p-internal-text-list-pseudo-space) 1fr !important;column-gap:16px !important;font:inherit !important;color:inherit !important}:host([hidden]){display:none !important}::slotted(*){--p-internal-text-list-unordered-grid-column:.625rem !important;--p-internal-text-list-unordered-pseudo-content:"–" !important;--p-internal-text-list-ordered-grid-column:2rem !important;--p-internal-text-list-ordered-pseudo-suffix:"" !important}::slotted(*:last-child){grid-column:2 !important}
+        :host{display:grid;grid-template-columns:var(--p-internal-text-list-pseudo-space) 1fr !important;column-gap:16px !important;font:inherit !important;color:inherit !important}:host([hidden]){display:none !important}::slotted(*){--p-internal-text-list-unordered-grid-column:.625rem !important;--p-internal-text-list-unordered-pseudo-content:"–" !important;--p-internal-text-list-ordered-grid-column:2rem !important;--p-internal-text-list-ordered-pseudo-suffix:"" !important}::slotted(*:last-child){grid-column:2 !important}
       </style>
       <span>
         <slot />
@@ -2013,9 +2013,12 @@ exports[`should render dsr component for PAccordion 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: block;
   border-bottom: 1px solid #D8D8DB !important;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2229,7 +2232,7 @@ exports[`should render dsr component for PBanner 1`] = `
       >
         <style>
           :host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
@@ -2923,7 +2926,7 @@ exports[`should render dsr component for PCarousel 1`] = `
   >
     <style>
       :host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -3429,7 +3432,7 @@ exports[`should render dsr component for PFieldset 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -3471,7 +3474,7 @@ exports[`should render dsr component for PFieldsetWrapper 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -3513,8 +3516,8 @@ exports[`should render dsr component for PFlex 1`] = `
   >
     <style>
       :host {
+  display: flex;
   color-scheme: light dark !important;
-  display: flex !important;
   flex-wrap: nowrap !important;
   flex-direction: row !important;
   justify-content: flex-start !important;
@@ -3815,7 +3818,7 @@ exports[`should render dsr component for PGrid 1`] = `
   >
     <style>
       :host {
-  display: flex !important;
+  display: flex;
   flex: auto !important;
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
@@ -4029,7 +4032,7 @@ exports[`should render dsr component for PInlineNotification 1`] = `
   >
     <style>
       :host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
@@ -5560,20 +5563,20 @@ exports[`should render dsr component for PModal 1`] = `
   >
     <style>
       :host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -6135,7 +6138,6 @@ nav {
   display: flex;
   justify-content: center;
   user-select: none;
-  counter-reset: size 5;
 }
 ul {
   display: flex;
@@ -6176,12 +6178,6 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-@media(min-width:480px) {
-  nav {
-    counter-reset: size 7;
-  }
-}
-
 @media(min-width:760px) {
   ul {
     gap: 8px;
@@ -6191,6 +6187,9 @@ span[aria-disabled] {
   }
   li:last-child {
     margin-inline-start: 8px;
+  }
+  li.ellip {
+    display: none;
   }
 }
 
@@ -6208,7 +6207,9 @@ span[aria-disabled] {
       role="navigation"
     >
       <ul>
-        <li>
+        <li
+          class="prev"
+        >
           <span
             aria-disabled="true"
             aria-label="Previous page"
@@ -6262,7 +6263,9 @@ img {
             </p-icon>
           </span>
         </li>
-        <li>
+        <li
+          class="current"
+        >
           <span
             aria-current="page"
             aria-label="Page 1"
@@ -6272,7 +6275,9 @@ img {
             1
           </span>
         </li>
-        <li>
+        <li
+          class="next"
+        >
           <span
             aria-disabled="true"
             aria-label="Next page"
@@ -6499,10 +6504,10 @@ exports[`should render dsr component for PPopover 1`] = `
   >
     <style>
       :host {
-  position: relative !important;
-  display: inline-block !important;
-  color-scheme: light dark !important;
+  display: inline-block;
   vertical-align: top;
+  position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -7049,7 +7054,7 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
   >
     <style>
       :host {
-  display: grid !important;
+  display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(auto-fit, 100px) !important;
   gap: 6px !important;
@@ -7076,7 +7081,7 @@ exports[`should render dsr component for PSegmentedControlItem 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -7357,7 +7362,7 @@ exports[`should render dsr component for PSpinner 1`] = `
   >
     <style>
       :host {
-  display: inline-flex !important;
+  display: inline-flex;
   vertical-align: top !important;
   color-scheme: light dark !important;
 }
@@ -7836,9 +7841,9 @@ exports[`should render dsr component for PSwitch 1`] = `
   >
     <style>
       :host {
+  display: inline-block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: inline-block !important;
   width: auto !important;
   vertical-align: top !important;
 }
@@ -7939,7 +7944,7 @@ exports[`should render dsr component for PTable 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: block;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
@@ -8239,7 +8244,7 @@ exports[`should render dsr component for PTableBody 1`] = `
   >
     <style>
       :host {
-  display: table-row-group !important;
+  display: table-row-group;
 }
 :host([hidden]) {
   display: none !important;
@@ -8262,11 +8267,11 @@ exports[`should render dsr component for PTableCell 1`] = `
   >
     <style>
       :host {
-  display: table-cell !important;
+  display: table-cell;
+  vertical-align: middle;
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
   white-space: nowrap !important;
-  vertical-align: middle;
 }
 :host([hidden]) {
   display: none !important;
@@ -8289,7 +8294,7 @@ exports[`should render dsr component for PTableHead 1`] = `
   >
     <style>
       :host {
-  display: table-header-group !important;
+  display: table-header-group;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem) !important;
   line-height: calc(6px + 2.125ex) !important;
   font-weight: 600 !important;
@@ -8316,7 +8321,7 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
   >
     <style>
       :host {
-  display: table-cell !important;
+  display: table-cell;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
@@ -8344,7 +8349,7 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
   >
     <style>
       :host {
-  display: table-row !important;
+  display: table-row;
 }
 :host([hidden]) {
   display: none !important;
@@ -8367,7 +8372,7 @@ exports[`should render dsr component for PTableRow 1`] = `
   >
     <style>
       :host {
-  display: table-row !important;
+  display: table-row;
   border-top: 1px solid var(--p-internal-table-border-color) !important;
   border-bottom: 1px solid var(--p-internal-table-border-color) !important;
   transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
@@ -9134,7 +9139,7 @@ exports[`should render dsr component for PTabsItem 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: block;
   position: relative !important;
   color: #010205 !important;
   outline: 0 !important;
@@ -9572,7 +9577,7 @@ exports[`should render dsr component for PTextListItem 1`] = `
   >
     <style>
       :host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: var(--p-internal-text-list-pseudo-space) 1fr !important;
   column-gap: 16px !important;
   font: inherit !important;

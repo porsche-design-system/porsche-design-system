@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import globby from 'globby';
 import { paramCase, camelCase } from 'change-case';
-import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../cdn.config';
+import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 
 type Cdn = 'auto' | 'cn';
 

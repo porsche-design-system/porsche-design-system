@@ -1,5 +1,5 @@
 import * as sharedData from '@porsche-design-system/shared/data';
-import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
+import { themeDark, themeLight } from '@porsche-design-system/components-js/styles';
 import type {
   BackgroundColor,
   Framework,

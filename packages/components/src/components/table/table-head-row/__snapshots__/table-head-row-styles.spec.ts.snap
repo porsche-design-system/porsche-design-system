@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
-  display: table-row !important;
+  display: table-row;
 }
 :host([hidden]) {
   display: none !important;
