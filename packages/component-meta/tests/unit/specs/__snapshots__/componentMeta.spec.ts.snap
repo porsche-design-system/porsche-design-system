@@ -1949,6 +1949,7 @@ exports[`should match snapshot 1`] = `
     "requiredProps": [
       "heading",
       "price",
+      "href",
     ],
     "styling": "jss",
   },
