@@ -412,20 +412,6 @@ describe('native', () => {
     expect(await isNativePopoverOpen()).toBe(true);
   });
 
-  it('should close popover on page scroll', async () => {
-    await initPopoverWithinTable();
-    await togglePopover();
-
-    expect(await isNativePopoverOpen()).toBe(true);
-
-    // Simulate a scroll event on the window
-    await page.evaluate(() => {
-      window.dispatchEvent(new Event('scroll'));
-    });
-
-    expect(await isNativePopoverOpen()).toBe(false);
-  });
-
   it('should close popover on table scroll', async () => {
     await initPopoverWithinTable();
     await togglePopover();

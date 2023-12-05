@@ -22,11 +22,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- Hide `border-bottom` of `Accordion` if used as single item
+- `Accordion`: removed `border-bottom` if used standalone
   ([#2911](https://github.com/porsche-design-system/porsche-design-system/pull/2911))
 - `display` css property can be overridden on all components, e.g. to make use of `display: none;` within media
   queries  
   ([#2913](https://github.com/porsche-design-system/porsche-design-system/pull/2913))
+- `Pagination`: Prop `maxNumberOfPageLinks` is deprecated and has no effect anymore, instead there is responsive
+  behavior out of the box with full SSR support
+  ([#2898](https://github.com/porsche-design-system/porsche-design-system/pull/2898))
+
 
 ### [3.9.0] - 2023-11-24
 
@@ -61,6 +65,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Select Wrapper`: Select dropdown is now visible if it overflows the `Table` component
+  ([#2885](https://github.com/porsche-design-system/porsche-design-system/pull/2885))
 - `Select Wrapper` keyboard and scroll behavior
   ([#2864](https://github.com/porsche-design-system/porsche-design-system/pull/2864))
 - Safari 15 default margin of button elements in several components

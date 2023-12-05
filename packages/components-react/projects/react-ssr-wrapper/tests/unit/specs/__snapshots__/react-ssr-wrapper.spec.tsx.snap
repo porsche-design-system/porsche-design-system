@@ -6517,7 +6517,6 @@ nav {
   display: flex;
   justify-content: center;
   user-select: none;
-  counter-reset: size 5;
 }
 ul {
   display: flex;
@@ -6558,12 +6557,6 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-@media(min-width:480px) {
-  nav {
-    counter-reset: size 7;
-  }
-}
-
 @media(min-width:760px) {
   ul {
     gap: 8px;
@@ -6573,6 +6566,9 @@ span[aria-disabled] {
   }
   li:last-child {
     margin-inline-start: 8px;
+  }
+  li.ellip {
+    display: none;
   }
 }
 
@@ -6590,7 +6586,9 @@ span[aria-disabled] {
       role="navigation"
     >
       <ul>
-        <li>
+        <li
+          class="prev"
+        >
           <span
             aria-disabled="true"
             aria-label="Previous page"
@@ -6644,7 +6642,9 @@ img {
             </p-icon>
           </span>
         </li>
-        <li>
+        <li
+          class="current"
+        >
           <span
             aria-current="page"
             aria-label="Page 1"
@@ -6654,7 +6654,9 @@ img {
             1
           </span>
         </li>
-        <li>
+        <li
+          class="next"
+        >
           <span
             aria-disabled="true"
             aria-label="Next page"
