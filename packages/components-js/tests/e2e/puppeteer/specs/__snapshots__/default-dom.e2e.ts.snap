@@ -283,6 +283,8 @@ exports[`should have no basic DOM regression for p-link-tile-product 1`] = `
     <p id="info" class="text text__info">
     </p>
   </div>
+  <a class="link-overlay" href="value" target="_self" aria-labelledby="heading price" aria-describedby="header info">
+  </a>
 </div>
 <p-button-pure class="like-button hydrated" hide-label="true">
   Heart icon</p-button-pure>"
