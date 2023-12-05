@@ -97,20 +97,20 @@ const updateSelect = (id, value) => {
   window.porscheDesignSystem.waitForComponentsReadyWithinIFrames = async () => {
     return await Promise.all(
       Array.from(document.querySelectorAll('iframe')).map(async (iframe) => {
-        // we have to wait for the iframe to load before we can continue
-        await new Promise((resolve) => iframe.addEventListener('load', resolve));
-        // since `window.porscheDesignSystem.componentsReady` is inlined JavaScript in the `<head>` it's available now,
-        // but it takes some time to inject and process the HTML template as well as to bootstrap PDS, so that componentsReady() is able to find PDS components
-        const waitForComponentsReady = (resolve) =>
-          setTimeout(
-            () =>
+        const pollForComponentsReady = (resolve) =>
+          setTimeout(() => {
+            if (iframe.contentWindow.porscheDesignSystem?.componentsReady) {
               iframe.contentWindow.porscheDesignSystem
                 .componentsReady()
-                .then((r) => (r > 0 ? resolve(r) : waitForComponentsReady(resolve))),
-            0
-          );
+                // this solves a race condition where the html page with the pds markup is loaded async and componentsReady()
+                // is called before the markup is initialized, it can resolve early with 0
+                .then((res) => (res > 0 ? resolve(res) : pollForComponentsReady(resolve)));
+            } else {
+              pollForComponentsReady(resolve);
+            }
+          }, 0);
 
-        return new Promise((resolve) => waitForComponentsReady(resolve));
+        return new Promise((resolve) => pollForComponentsReady(resolve));
       })
     );
   };

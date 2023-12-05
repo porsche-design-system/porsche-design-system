@@ -50,6 +50,10 @@ export const waitForComponentsReady = async (page: Page): Promise<number> => {
   return page.evaluate(() => (window as any).porscheDesignSystem.componentsReady());
 };
 
+export const waitForComponentsReadyWithinIFrames = async (page: Page): Promise<void> => {
+  return page.evaluate(() => (window as any).porscheDesignSystem.waitForComponentsReadyWithinIFrames());
+};
+
 const waitForForcedComponentTheme = async (page: Page, forceComponentTheme: Theme): Promise<void> => {
   await page.evaluate(
     ({ forceComponentTheme, themeableTagNames }) => {
@@ -160,7 +164,16 @@ export const setupScenario = async (
   }
   const finalUrl = `${url}?${searchParams.toString()}`;
   await page.goto(finalUrl);
+
+  // we need to have the full document height containing all iframes, otherwise iframes might get loaded lazy,
+  // which causes componentsReadyWithinIFrames() to never resolve
+  await page.setViewportSize({
+    width: viewportWidth,
+    height: await page.evaluate(() => document.body.clientHeight),
+  });
+
   await waitForComponentsReady(page);
+  await waitForComponentsReadyWithinIFrames(page);
 
   await page.setViewportSize({
     width: viewportWidth,
