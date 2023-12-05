@@ -267,7 +267,7 @@ const generateComponentMeta = (): void => {
     ).map(([, propName]) => propName);
 
     const [, invalidLinkUsageProp] =
-      /throwIfInvalidLink(?:Pure)?Usage\(this\.host, this\.([a-zA-Z]+)\);/.exec(source) || [];
+      /throwIfInvalidLink(?:Pure|TileProduct)?Usage\(this\.host, this\.([a-zA-Z]+)\);/.exec(source) || [];
     if (invalidLinkUsageProp) {
       // const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
       requiredProps.push(invalidLinkUsageProp);
