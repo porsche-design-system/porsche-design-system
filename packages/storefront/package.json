@@ -20,9 +20,9 @@
     "pretest:unit": "yarn prebuild",
     "test:unit": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service test:unit",
     "test:unit:watch": "yarn test:unit --watch",
-    "test:e2e": "NODE_ENV=development yarn build && TYPE=E2E PORT=8080 jest --colors -c tests/e2e/config/jest.config.js",
-    "test:a11y": "NODE_ENV=development yarn build && TYPE=E2E PORT=8080 jest --colors -c tests/e2e/config/jest.config.a11y.js",
-    "test:vrt": "NODE_ENV=development yarn build && TYPE=VRT PORT=8080 jest --colors -c tests/vrt/config/jest.config.js",
+    "test:e2e": "NODE_ENV=development yarn build && TYPE=E2E PORT=8080 jest --colors -c tests/e2e/config/jest.config.ts",
+    "test:a11y": "NODE_ENV=development yarn build && TYPE=E2E PORT=8080 jest --colors -c tests/e2e/config/jest.config.a11y.ts",
+    "test:vrt": "NODE_ENV=development yarn build && TYPE=VRT PORT=8080 jest --colors -c tests/vrt/config/jest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
