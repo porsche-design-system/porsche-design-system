@@ -1006,6 +1006,9 @@ exports[`should match snapshot 1`] = `
   "p-flyout-navigation": {
     "allowedPropValues": {
       "activeIdentifier": "string",
+      "aria": {
+        "aria-label": "string",
+      },
       "open": "boolean",
       "theme": [
         "light",
@@ -1017,7 +1020,7 @@ exports[`should match snapshot 1`] = `
       "dismiss",
       "update",
     ],
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1030,6 +1033,7 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "activeIdentifier": null,
+      "aria": null,
       "open": false,
       "theme": "light",
     },
