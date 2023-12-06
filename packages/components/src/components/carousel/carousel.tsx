@@ -12,7 +12,6 @@ import type {
 import {
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_ARIA_ATTRIBUTES,
-  CAROUSEL_HEADING_SIZES,
   CAROUSEL_WIDTHS,
   getAmountOfPages,
   getSlidesAndAddAttributes,
@@ -54,7 +53,7 @@ import { gridGap, motionEasingBase } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
-  headingSize: AllowedTypes.oneOf<CarouselHeadingSize>(CAROUSEL_HEADING_SIZES),
+  headingSize: AllowedTypes.oneOf<CarouselHeadingSize>(['x-large', 'xx-large']),
   description: AllowedTypes.string,
   alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(CAROUSEL_ALIGN_HEADERS),
   rewind: AllowedTypes.boolean,
@@ -153,8 +152,6 @@ export class Carousel {
   private btnNext: ButtonPure;
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
-  private hasHeading: boolean;
-  private hasDescription: boolean;
 
   private get hasNavigation(): boolean {
     return this.slidesPerPage === 'auto' || this.amountOfPages > 1;
@@ -250,13 +247,13 @@ export class Carousel {
     warnIfHeadingIsMissing(this.host, this.heading);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
     this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
-    this.hasHeading = hasHeading(this.host, this.heading);
-    this.hasDescription = hasDescription(this.host, this.description);
+    const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
+    const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.hasHeading,
-      this.hasDescription,
+      hasHeadingPropOrSlot,
+      hasDescriptionPropOrSlot,
       this.headingSize,
       this.width,
       // flip boolean values of disablePagination since it is the inverse of pagination
@@ -288,8 +285,8 @@ export class Carousel {
     return (
       <Host>
         <div class="header">
-          {this.hasHeading && ((this.heading && <h2 id="heading">{this.heading}</h2>) || <slot name="heading" />)}
-          {this.hasDescription && ((this.description && <p>{this.description}</p>) || <slot name="description" />)}
+          {hasHeadingPropOrSlot && (this.heading ? <h2 id="heading">{this.heading}</h2> : <slot name="heading" />)}
+          {hasDescriptionPropOrSlot && (this.description ? <p>{this.description}</p> : <slot name="description" />)}
           {hasNamedSlot(this.host, 'header') && <slot name="header" />}
           <div class="nav">
             {this.skipLinkTarget && (

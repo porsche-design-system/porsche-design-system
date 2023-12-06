@@ -13,6 +13,8 @@ export type { TextSize } from '../components/text/text-size';
 export type { TextColor } from '../components/text/text-color';
 export type { TextWeight } from '../components/text/text-weight';
 
+export type { HeadingSize } from '../utils/typography/heading-size';
+
 export type { IconName } from '@porsche-design-system/icons';
 
 export type LinkButtonIconName = IconName | 'none';

@@ -10,6 +10,7 @@ import {
   paginationInfiniteStartCaseClass,
   paginationBulletSize,
 } from './carousel-styles';
+import { HeadingSize } from '../../types';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
@@ -22,8 +23,7 @@ export type CarouselAlignHeaderDeprecated = (typeof CAROUSEL_ALIGN_HEADERS_DEPRE
 export const CAROUSEL_ALIGN_HEADERS = ['start', 'center', ...CAROUSEL_ALIGN_HEADERS_DEPRECATED] as const;
 export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 
-export const CAROUSEL_HEADING_SIZES = ['x-large', 'xx-large'];
-export type CarouselHeadingSize = (typeof CAROUSEL_HEADING_SIZES)[number];
+export type CarouselHeadingSize = Extract<HeadingSize, 'x-large' | 'xx-large'>;
 
 export const CAROUSEL_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type CarouselAriaAttribute = (typeof CAROUSEL_ARIA_ATTRIBUTES)[number];

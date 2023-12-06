@@ -67,8 +67,9 @@ end are used to visualize it.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { HEADING_SIZES, HEADING_COLORS } from './heading-utils';
+import {  HEADING_COLORS } from './heading-utils';
 import { TYPOGRAPHY_ALIGNS, TYPOGRAPHY_ALIGNS_DEPRECATED } from '../../utils';
+import { HEADING_SIZES } from '../../utils/typography/heading-size';
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
 

@@ -225,7 +225,7 @@ import Component from 'vue-class-component';
 import type { Theme } from '@/models';
 import type { CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils'; 
 import { getCarouselCodeSamples } from '@porsche-design-system/shared';
-import { CAROUSEL_ALIGN_HEADERS, CAROUSEL_ALIGN_HEADERS_DEPRECATED, CAROUSEL_HEADING_SIZES, CAROUSEL_WIDTHS  } from './carousel-utils';
+import { CAROUSEL_ALIGN_HEADERS, CAROUSEL_ALIGN_HEADERS_DEPRECATED, CAROUSEL_WIDTHS  } from './carousel-utils';
 import { borderRadius } from '@porsche-design-system/components-js/styles';
 
 @Component
@@ -262,7 +262,7 @@ export default class Code extends Vue {
 </p-carousel>`;
 
   headingSize: CarouselHeadingSize = 'x-large';
-  headingSizes = CAROUSEL_HEADING_SIZES;
+  headingSizes = ['x-large', 'xx-large'];
   get headingSizeMarkup() {
     return `<p-carousel heading="${this.basicHeading}" heading-size="${this.headingSize}">
   <p slot="description">Some slotted description</p>
