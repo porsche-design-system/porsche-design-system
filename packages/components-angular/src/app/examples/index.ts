@@ -7,6 +7,7 @@ import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-
 import { FlyoutExampleComponent } from './flyout-example.component';
 import { FlyoutExampleSlottedComponent } from './flyout-example-slotted.component';
 import { FlyoutExampleSlottedSecondaryComponent } from './flyout-example-slotted-secondary.component';
+import { FlyoutNavigationExampleBasicComponent } from './flyout-navigation-example-basic.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
@@ -39,6 +40,7 @@ export const examples = [
   FlyoutExampleComponent,
   FlyoutExampleSlottedComponent,
   FlyoutExampleSlottedSecondaryComponent,
+  FlyoutNavigationExampleBasicComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
   ModalExampleAccessibilityComponent,
@@ -71,6 +73,7 @@ export * from './carousel-example-jump-to-slide.component';
 export * from './flyout-example.component';
 export * from './flyout-example-slotted.component';
 export * from './flyout-example-slotted-secondary.component';
+export * from './flyout-navigation-example-basic.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './modal-example-accessibility.component';

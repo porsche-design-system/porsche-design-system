@@ -5,7 +5,7 @@ the page content from the left side of the screen. It is a controlled component 
 navigation flyout's behavior.
 
 <Notification heading="Experimental Component" state="warning">
-  Interface of Flyout Navigation might change in the near future. Currently, only two navigation levels are supported.
+  Interface of Flyout Navigation might change in the near future. <br>Currently, only two navigation levels are supported, but we will offer the support of more levels in the future.
 </Notification>
 
 <TableOfContents></TableOfContents>
@@ -14,16 +14,15 @@ navigation flyout's behavior.
 
 The basic concept of the flyout navigation is to have a button that opens the `p-navigation-flyout` and a basic 2-level
 navigation structure. The **1st level** is generated out of custom `p-flyout-navigation-item` components which generates
-a list of toggle buttons to navigate the 2nd level. These 1st level items can be filled with anchor links as children
-which then represent the **2nd level** of the navigation. While the 1st level items are styled by the component, you
-have to take care of the styling of the 2nd level items by yourself.
+a list of toggle buttons to navigate the 2nd level. These 1st level items can be filled with slotted anchor links as
+children which then represent the **2nd level** of the navigation and are styled automatically by the component.
 
 The most important property of p-flyout is its open attribute. When it is present the flyout will be visible.
 
 In order to get notified when the navigation flyout gets closed by clicking the x button, you need to register an event
 listener for the dismiss event which is emitted by p-flyout.
 
-<Playground :markup="basicExample" :config="config"></Playground>
+<Playground :markup="basicExample" :frameworkMarkup="codeExample" :config="config"></Playground>
 
 ## With active identifier
 
@@ -36,28 +35,32 @@ flyout with the corresponding 1st level navigation item expanded. The `active-id
 ### <A11yIcon></A11yIcon> Accessibility hints
 
 Always take care that you expose the current state of the navigation to the user. This can be done by using the
-`aria-current="page"` attribute on the corresponding anchor element.
+`aria-current="page"` attribute on the corresponding anchor element. And this also causes automatic styling of this
+anchor.
 
 ## Enhanced example with custom content
 
-To provide consistent design patterns, it is highly recommended to use the `p-link-pure` component for the 2nd level
-navigation items. To give further flexibility, e.g. if you only want to provide a direct link to a page on the 1st
-level, you can just use the `p-link-pure` component. Be aware that you have to adapt the styling of those custom 1st
-level items to match the design of the other 1st level items.
+To give further flexibility, e.g. if you only want to provide a direct link to a page on the 1st level, you can just use
+the `p-link-pure` component. Be aware that you have to adapt the styling of those custom 1st level items to match the
+design of the other 1st level items.
 
-Regarding individualization of the 2nd level, you can create your own custom contents and use it as a child besides the
-`p-link-pure` components.
+To gain more structure on the 2nd level we also support out-of-the-box styling of `<h1> to <h6>` tags. Regarding further
+individualization of the 2nd level, you can create your own custom contents and use it as a child besides the already
+supported `<a>` and tags.
 
 <Playground :markup="enhancedExample" :config="config"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
+import { getFlyoutNavigationCodeSamples } from "@porsche-design-system/shared"; 
 
 @Component()
 export default class Code extends Vue {
   config = { themeable: true };
   navigationFlyouts = [];
+
+ codeExample = getFlyoutNavigationCodeSamples();
   
   mounted() {
     this.registerEvents();
@@ -146,38 +149,38 @@ enhancedExample =
 <p-flyout-navigation active-identifier="item-1">
   <p-flyout-navigation-item identifier="item-1" label="Some Label">
     <p-link-tile href="#" label="Some label" description="Some Description" weight="semi-bold" compact="true" aspect-ratio="1:1">
-      <img src="https://placekitten.com/400/400" alt="Some Image" />
+      <img src="${require('@/assets/image-grid.png')}" alt="Some Image" />
     </p-link-tile>
-    <p-heading tag="h5" size="small">Some Heading</p-heading>
-    <p-link-pure href="#">Some anchor</p-link-pure>
-    <p-link-pure href="#" active="true" aria="{ 'aria-current': 'page'}">Some anchor</p-link-pure>
-    <p-link-pure href="#">Some anchor</p-link-pure>
-    <p-link-pure href="#">Some anchor</p-link-pure>
-    <p-link-pure href="#">Some anchor</p-link-pure>
-    <p-heading tag="h5" size="small">Some Heading</p-heading>
-    <p-link-pure href="#">Some anchor</p-link-pure>
-    <p-link-pure href="#">Some anchor</p-link-pure>
-    <p-link-pure href="#">Some anchor</p-link-pure>
-    <p-link-pure href="#">Some anchor</p-link-pure>
+    <h3>Some Heading</h3>
+    <a href="#">Some anchor</a>
+    <a href="#" active="true" aria="{ 'aria-current': 'page'}">Some anchor</a>
+    <a href="#">Some anchor</a>
+    <a href="#">Some anchor</a>
+    <a href="#">Some anchor</a>
+    <h3>Some Heading</h3>
+    <a href="#">Some anchor</a>
+    <a href="#">Some anchor</a>
+    <a href="#">Some anchor</a>
+    <a href="#">Some anchor</a>
   </p-flyout-navigation-item>
   <p-flyout-navigation-item identifier="item-2" label="Some Label">
-    <p-link-pure href="#">Some anchor</p-link-pure>
-    <p-link-pure href="#">Some anchor</p-link-pure>
-    <p-link-pure href="#">Some anchor</p-link-pure>
+    <a href="#">Some anchor</a>
+    <a href="#">Some anchor</a>
+    <a href="#">Some anchor</a>
   </p-flyout-navigation-item>
   <p-flyout-navigation-item identifier="item-3" label="Some Label">
-    <p-link-pure href="#">Some anchor</p-link-pure>
-    <p-link-pure href="#">Some anchor</p-link-pure>
+    <a href="#">Some anchor</a>
+    <a href="#">Some anchor</a>
   </p-flyout-navigation-item>
   <p-flyout-navigation-item identifier="item-4" label="Some Label">
-    <p-link-pure href="#">Some anchor</p-link-pure>
+    <a href="#">Some anchor</a>
   </p-flyout-navigation-item>
   <p-flyout-navigation-item identifier="item-5" label="Some Label">
-    <p-link-pure href="#">Some anchor</p-link-pure>
+    <a href="#">Some anchor</a>
   </p-flyout-navigation-item>
   <p-flyout-navigation-item identifier="item-6" label="Some Label">
-    <p-link-pure href="#">Some anchor</p-link-pure>
-    <p-link-pure href="#">Some anchor</p-link-pure>
+    <a href="#">Some anchor</a>
+    <a href="#">Some anchor</a>
   </p-flyout-navigation-item>
   <p-link-pure size="medium" href="#" stretched="true" icon="external">Some external anchor</p-link-pure>
 </p-flyout-navigation>`;
@@ -199,15 +202,6 @@ enhancedExample =
     > p-link-pure {
       padding: $pds-spacing-fluid-small;
       margin: 0 calc($pds-spacing-fluid-small * -1);
-    }
-  }
-
-  :deep(p-flyout-navigation-item) {
-    > p-link-tile {
-      margin-bottom: $pds-spacing-fluid-medium;
-    }
-    > p-link-pure + p-heading {
-      margin-top: $pds-spacing-fluid-medium;
     }
   }
 </style>
