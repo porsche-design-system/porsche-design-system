@@ -3,6 +3,9 @@ import { type FlyoutNavigationItemInternalHTMLProps } from '../flyout-navigation
 import { forceUpdate } from '@stencil/core';
 import { type Class, type Theme } from '../../../types';
 
+export const FLYOUT_NAVIGATION_ARIA_ATTRIBUTES = ['aria-label'] as const;
+export type FlyoutNavigationAriaAttribute = (typeof FLYOUT_NAVIGATION_ARIA_ATTRIBUTES)[number];
+
 export const INTERNAL_UPDATE_EVENT_NAME = 'internalUpdate';
 
 export type FlyoutNavigationUpdate = {

@@ -82,7 +82,7 @@ export class FlyoutNavigationItem {
             >
               Back
             </PrefixedTagNames.pButtonPure>
-            <h4 class="heading">{this.label}</h4>
+            <h2 class="heading">{this.label}</h2>
           </div>
           <div class="content">
             <slot />

@@ -23,7 +23,7 @@ import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
-import { FlyoutNavigationUpdateEvent } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
+import { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEvent } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 import { HeadingTag } from "./components/heading/heading-tag";
@@ -83,7 +83,7 @@ export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 export { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
-export { FlyoutNavigationUpdateEvent } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
+export { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEvent } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 export { HeadingTag } from "./components/heading/heading-tag";
@@ -658,6 +658,10 @@ export namespace Components {
           * Defines which flyout-navigation-item to be visualized as opened.
          */
         "activeIdentifier"?: string | undefined;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<FlyoutNavigationAriaAttribute>;
         /**
           * If true, the flyout-navigation is visualized as opened.
          */
@@ -3189,6 +3193,10 @@ declare namespace LocalJSX {
           * Defines which flyout-navigation-item to be visualized as opened.
          */
         "activeIdentifier"?: string | undefined;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<FlyoutNavigationAriaAttribute>;
         /**
           * Emitted when the component requests to be dismissed.
          */

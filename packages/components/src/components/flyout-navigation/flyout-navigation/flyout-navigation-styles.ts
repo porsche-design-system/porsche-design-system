@@ -169,6 +169,7 @@ export const getComponentCss = (
     dismiss: {
       padding: spacingFluidSmall,
       [mediaQueryEnhancedView]: {
+        '--p-internal-icon-filter': 'invert(1)',
         margin: spacingFluidSmall,
         padding: spacingStaticSmall,
       },

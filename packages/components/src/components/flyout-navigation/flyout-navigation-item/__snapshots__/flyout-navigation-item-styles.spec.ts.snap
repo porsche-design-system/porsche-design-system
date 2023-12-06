@@ -8,6 +8,75 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  margin: 0 !important;
+  color: #010205 !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
+  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+}
+::slotted(p) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  margin: 0 !important;
+  color: #010205 !important;
+}
+::slotted(a) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  display: block !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  color: #010205 !important;
+  border-radius: 4px !important;
+  margin-left: -4px !important;
+  margin-right: -4px !important;
+  padding: 2px 4px !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+}
+::slotted(a[aria-current]) {
+  background: rgba(148, 149, 152, .18) !important;
+}
+::slotted(a:focus) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
+}
+::slotted(a:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+@media (prefers-color-scheme: dark) {
+  ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+    color: #FBFCFF !important;
+  }
+  ::slotted(p) {
+    color: #FBFCFF !important;
+  }
+  ::slotted(a) {
+    color: #FBFCFF !important;
+  }
+  ::slotted(a[aria-current]) {
+    background: rgba(148, 149, 152, .18) !important;
+  }
+  ::slotted(a:focus) {
+    outline-color: #1A44EA !important;
+  }
+}
+
+@media(hover:hover) {
+  ::slotted(a:hover) {
+    background: rgba(148, 149, 152, .18) !important;
+  }
+@media (prefers-color-scheme: dark) {
+    ::slotted(a:hover) {
+      background: rgba(148, 149, 152, .18) !important;
+    }
+}
+
+}
+
 .button {
   width: auto;
   padding: clamp(8px, 0.5vw + 6px, 16px);
@@ -106,6 +175,51 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  margin: 0 !important;
+  color: #FBFCFF !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
+  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+}
+::slotted(p) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  margin: 0 !important;
+  color: #FBFCFF !important;
+}
+::slotted(a) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  display: block !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  color: #FBFCFF !important;
+  border-radius: 4px !important;
+  margin-left: -4px !important;
+  margin-right: -4px !important;
+  padding: 2px 4px !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+}
+::slotted(a[aria-current]) {
+  background: rgba(148, 149, 152, .18) !important;
+}
+::slotted(a:focus) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
+}
+::slotted(a:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+@media(hover:hover) {
+  ::slotted(a:hover) {
+    background: rgba(148, 149, 152, .18) !important;
+  }
+}
+
 .button {
   width: auto;
   padding: clamp(8px, 0.5vw + 6px, 16px);
@@ -192,6 +306,51 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  margin: 0 !important;
+  color: #010205 !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
+  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+}
+::slotted(p) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  margin: 0 !important;
+  color: #010205 !important;
+}
+::slotted(a) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  display: block !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  color: #010205 !important;
+  border-radius: 4px !important;
+  margin-left: -4px !important;
+  margin-right: -4px !important;
+  padding: 2px 4px !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+}
+::slotted(a[aria-current]) {
+  background: rgba(148, 149, 152, .18) !important;
+}
+::slotted(a:focus) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
+}
+::slotted(a:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+@media(hover:hover) {
+  ::slotted(a:hover) {
+    background: rgba(148, 149, 152, .18) !important;
+  }
+}
+
 .button {
   width: auto;
   padding: clamp(8px, 0.5vw + 6px, 16px);
@@ -278,6 +437,75 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  margin: 0 !important;
+  color: #010205 !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
+  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+}
+::slotted(p) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  margin: 0 !important;
+  color: #010205 !important;
+}
+::slotted(a) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  display: block !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  color: #010205 !important;
+  border-radius: 4px !important;
+  margin-left: -4px !important;
+  margin-right: -4px !important;
+  padding: 2px 4px !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+}
+::slotted(a[aria-current]) {
+  background: rgba(148, 149, 152, .18) !important;
+}
+::slotted(a:focus) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
+}
+::slotted(a:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+@media (prefers-color-scheme: dark) {
+  ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+    color: #FBFCFF !important;
+  }
+  ::slotted(p) {
+    color: #FBFCFF !important;
+  }
+  ::slotted(a) {
+    color: #FBFCFF !important;
+  }
+  ::slotted(a[aria-current]) {
+    background: rgba(148, 149, 152, .18) !important;
+  }
+  ::slotted(a:focus) {
+    outline-color: #1A44EA !important;
+  }
+}
+
+@media(hover:hover) {
+  ::slotted(a:hover) {
+    background: rgba(148, 149, 152, .18) !important;
+  }
+@media (prefers-color-scheme: dark) {
+    ::slotted(a:hover) {
+      background: rgba(148, 149, 152, .18) !important;
+    }
+}
+
+}
+
 .button {
   width: auto;
   padding: clamp(8px, 0.5vw + 6px, 16px);
@@ -351,7 +579,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   }
   .content {
     padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-    transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+    transition: opacity var(--p-transition-duration, 1.2s) cubic-bezier(0,0,0.2,1);
   }
 }
 
@@ -377,6 +605,51 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  margin: 0 !important;
+  color: #FBFCFF !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
+  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+}
+::slotted(p) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  margin: 0 !important;
+  color: #FBFCFF !important;
+}
+::slotted(a) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  display: block !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  color: #FBFCFF !important;
+  border-radius: 4px !important;
+  margin-left: -4px !important;
+  margin-right: -4px !important;
+  padding: 2px 4px !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+}
+::slotted(a[aria-current]) {
+  background: rgba(148, 149, 152, .18) !important;
+}
+::slotted(a:focus) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
+}
+::slotted(a:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+@media(hover:hover) {
+  ::slotted(a:hover) {
+    background: rgba(148, 149, 152, .18) !important;
+  }
+}
+
 .button {
   width: auto;
   padding: clamp(8px, 0.5vw + 6px, 16px);
@@ -450,7 +723,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   }
   .content {
     padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-    transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+    transition: opacity var(--p-transition-duration, 1.2s) cubic-bezier(0,0,0.2,1);
   }
 }
 "
@@ -464,6 +737,51 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  margin: 0 !important;
+  color: #010205 !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
+  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+}
+::slotted(p) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  margin: 0 !important;
+  color: #010205 !important;
+}
+::slotted(a) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  display: block !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  color: #010205 !important;
+  border-radius: 4px !important;
+  margin-left: -4px !important;
+  margin-right: -4px !important;
+  padding: 2px 4px !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+}
+::slotted(a[aria-current]) {
+  background: rgba(148, 149, 152, .18) !important;
+}
+::slotted(a:focus) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
+}
+::slotted(a:focus:not(:focus-visible)) {
+  outline-color: transparent !important;
+}
+@media(hover:hover) {
+  ::slotted(a:hover) {
+    background: rgba(148, 149, 152, .18) !important;
+  }
+}
+
 .button {
   width: auto;
   padding: clamp(8px, 0.5vw + 6px, 16px);
@@ -537,7 +855,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   }
   .content {
     padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-    transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+    transition: opacity var(--p-transition-duration, 1.2s) cubic-bezier(0,0,0.2,1);
   }
 }
 "

@@ -111,6 +111,7 @@ dialog::backdrop {
     place-self: flex-start;
   }
   .dismiss {
+    --p-internal-icon-filter: invert(1);
     margin: clamp(8px, 0.5vw + 6px, 16px);
     padding: 8px;
   }
@@ -238,6 +239,7 @@ dialog::backdrop {
     place-self: flex-start;
   }
   .dismiss {
+    --p-internal-icon-filter: invert(1);
     margin: clamp(8px, 0.5vw + 6px, 16px);
     padding: 8px;
   }
@@ -356,6 +358,7 @@ dialog::backdrop {
     place-self: flex-start;
   }
   .dismiss {
+    --p-internal-icon-filter: invert(1);
     margin: clamp(8px, 0.5vw + 6px, 16px);
     padding: 8px;
   }
@@ -478,6 +481,7 @@ dialog::backdrop {
     place-self: flex-start;
   }
   .dismiss {
+    --p-internal-icon-filter: invert(1);
     margin: clamp(8px, 0.5vw + 6px, 16px);
     padding: 8px;
   }
@@ -603,6 +607,7 @@ dialog::backdrop {
     place-self: flex-start;
   }
   .dismiss {
+    --p-internal-icon-filter: invert(1);
     margin: clamp(8px, 0.5vw + 6px, 16px);
     padding: 8px;
   }
@@ -719,6 +724,7 @@ dialog::backdrop {
     place-self: flex-start;
   }
   .dismiss {
+    --p-internal-icon-filter: invert(1);
     margin: clamp(8px, 0.5vw + 6px, 16px);
     padding: 8px;
   }
@@ -841,6 +847,7 @@ dialog::backdrop {
     place-self: flex-start;
   }
   .dismiss {
+    --p-internal-icon-filter: invert(1);
     margin: clamp(8px, 0.5vw + 6px, 16px);
     padding: 8px;
   }
@@ -966,6 +973,7 @@ dialog::backdrop {
     place-self: flex-start;
   }
   .dismiss {
+    --p-internal-icon-filter: invert(1);
     margin: clamp(8px, 0.5vw + 6px, 16px);
     padding: 8px;
   }
@@ -1082,6 +1090,7 @@ dialog::backdrop {
     place-self: flex-start;
   }
   .dismiss {
+    --p-internal-icon-filter: invert(1);
     margin: clamp(8px, 0.5vw + 6px, 16px);
     padding: 8px;
   }

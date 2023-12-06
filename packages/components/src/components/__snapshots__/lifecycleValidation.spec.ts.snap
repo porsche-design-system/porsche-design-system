@@ -206,6 +206,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 exports[`should call validateProps() with correct parameters via render for p-flyout-navigation: propTypes with ValidatorFunctions 1`] = `
 {
   "activeIdentifier": "string",
+  "aria": "aria",
   "open": "boolean",
   "theme": "oneOf",
 }

@@ -1,5 +1,7 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import {
+  FLYOUT_NAVIGATION_ARIA_ATTRIBUTES,
+  type FlyoutNavigationAriaAttribute,
   type FlyoutNavigationUpdateEvent,
   INTERNAL_UPDATE_EVENT_NAME,
   syncFlyoutNavigationItemsProps,
@@ -12,16 +14,18 @@ import {
   getChildrenOfKind,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
+  parseAndGetAriaAttributes,
   setScrollLock,
   THEMES,
   validateProps,
 } from '../../../utils';
-import { type PropTypes, type Theme } from '../../../types';
+import { type PropTypes, type SelectedAriaAttributes, type Theme } from '../../../types';
 
 const propTypes: PropTypes<typeof FlyoutNavigation> = {
   activeIdentifier: AllowedTypes.string,
   open: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  aria: AllowedTypes.aria<FlyoutNavigationAriaAttribute>(FLYOUT_NAVIGATION_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -40,6 +44,9 @@ export class FlyoutNavigation {
 
   /** Adapts the flyout-navigation color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<FlyoutNavigationAriaAttribute>;
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
@@ -111,9 +118,9 @@ export class FlyoutNavigation {
           </PrefixedTagNames.pButtonPure>
         </div>
         <div class="scroller">
-          <div class="content">
+          <nav class="content" {...parseAndGetAriaAttributes(this.aria)}>
             <slot />
-          </div>
+          </nav>
         </div>
       </dialog>
     );
