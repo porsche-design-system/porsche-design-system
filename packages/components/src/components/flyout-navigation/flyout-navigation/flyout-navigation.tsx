@@ -11,9 +11,10 @@ import { getComponentCss } from './flyout-navigation-styles';
 import {
   AllowedTypes,
   attachComponentCss,
-  getChildrenOfKind,
+  getDirectChildHTMLElementOfKind,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   setScrollLock,
   THEMES,
@@ -82,6 +83,10 @@ export class FlyoutNavigation {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineFlyoutNavigationItemElements);
   }
 
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
+
   public disconnectedCallback(): void {
     setScrollLock(false);
   }
@@ -127,7 +132,7 @@ export class FlyoutNavigation {
   }
 
   private defineFlyoutNavigationItemElements = (): void => {
-    this.flyoutNavigationItemElements = getChildrenOfKind(
+    this.flyoutNavigationItemElements = getDirectChildHTMLElementOfKind(
       this.host,
       'p-flyout-navigation-item'
     ) as HTMLPFlyoutNavigationItemElement[];
