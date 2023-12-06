@@ -1,7 +1,6 @@
 import type { Options, Splide } from '@splidejs/splide';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
-import { consoleWarn, getTagNameWithoutPrefix, hasNamedSlot } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { ButtonPure } from '../button-pure/button-pure';
 import {
@@ -64,16 +63,6 @@ export const getSplideBreakpoints = (
           perPage: perPage === 'auto' ? 1 : Math.round(perPage as unknown as number),
         },
       };
-};
-
-export const warnIfHeadingIsMissing = (host: HTMLElement, heading: string): void => {
-  if (!heading && !hasNamedSlot(host, 'heading')) {
-    consoleWarn(
-      `heading has to be set via property or named slot for component ${getTagNameWithoutPrefix(
-        host
-      )} in order to ensure accessibility.`
-    );
-  }
 };
 
 export const getSlidesAndAddAttributes = (host: HTMLElement): HTMLElement[] => {

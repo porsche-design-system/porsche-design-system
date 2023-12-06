@@ -22,7 +22,6 @@ import {
   slidePrev,
   updatePagination,
   updatePrevNextButtons,
-  warnIfHeadingIsMissing,
 } from './carousel-utils';
 import { Component, Element, Event, type EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
 import { Splide } from '@splidejs/splide';
@@ -31,7 +30,6 @@ import {
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
   getPrefixedTagNames,
-  getSlotTextContent,
   hasDescription,
   hasHeading,
   hasNamedSlot,
@@ -45,6 +43,7 @@ import {
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
+  warnIfAriaAndHeadingPropsAreUndefined,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
@@ -244,11 +243,11 @@ export class Carousel {
     );
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'wrapContent');
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
-    warnIfHeadingIsMissing(this.host, this.heading);
-    this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
-    this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
     const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
     const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
+    warnIfAriaAndHeadingPropsAreUndefined(this.host, hasHeadingPropOrSlot, this.aria);
+    this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
+    this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -324,8 +323,10 @@ export class Carousel {
         <div
           id="splide"
           class="splide"
-          {...parseAndGetAriaAttributes(this.aria)}
-          aria-label={this.heading || getSlotTextContent(this.host, 'heading')}
+          {...parseAndGetAriaAttributes({
+            'aria-label': this.heading,
+            ...parseAndGetAriaAttributes(this.aria),
+          })}
           ref={(ref) => (this.container = ref)}
           onMouseDown={(e) => e.preventDefault()} // enables native click events on slotted interactive elements
           onFocusin={this.onSplideFocusIn}
