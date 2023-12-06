@@ -4,5 +4,8 @@
     "moduleResolution": "node",
     "jsx": "react-jsx"
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "ts-node": {
+    "transpileOnly": true // to ignore tons of errors in components package
+  }
 }

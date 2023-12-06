@@ -3,9 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "scope": "@porsche-design-system",
-  "main": "index.js",
-  "module": "esm/index.js",
-  "types": "index.d.ts",
+  "main": "cjs/index.cjs",
+  "module": "esm/index.mjs",
+  "types": "esm/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    "./tsconfig.json": "./tsconfig.json",
+    ".": {
+      "types": "./esm/index.d.ts",
+      "import": "./esm/index.mjs",
+      "default": "./cjs/index.cjs"
+    }
+  },
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "UNLICENSED",
   "homepage": "https://designsystem.porsche.com",

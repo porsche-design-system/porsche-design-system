@@ -14,7 +14,7 @@
     "build-app:components": "cp ./dist/components-wrapper/cjs/index.cjs ./www/index.js",
     "build-app:assets": "cp ../assets/projects/icons/dist/esm/index.js ./www/assets/icons.js",
     "build-app:imask": "cp ../../node_modules/imask/dist/imask.min.js ./www/assets/imask.min.js",
-    "build-app:shared": "cp ../shared/dist/esm/data/table-data-sorting.js ./www/assets/table-data-sorting.js && cp ../shared/dist/esm/data/table-data-basic.js ./www/assets/table-data-basic.js && cp ../shared/dist/esm/data/table-data-advanced.js ./www/assets/table-data-advanced.js && cp ../shared/dist/esm/data/table-data-vrt.js ./www/assets/table-data-vrt.js && cp ../shared/dist/css/styles.css ./www/assets/styles.css",
+    "build-app:shared": "cp ../shared/dist/esm/data/table-data-sorting.mjs ./www/assets/table-data-sorting.js && cp ../shared/dist/esm/data/table-data-basic.mjs ./www/assets/table-data-basic.js && cp ../shared/dist/esm/data/table-data-advanced.mjs ./www/assets/table-data-advanced.js && cp ../shared/dist/esm/data/table-data-vrt.mjs ./www/assets/table-data-vrt.js && cp ../shared/dist/css/styles.css ./www/assets/styles.css",
     "build-app:componentsAngularReact": "yarn generateVRTPages",
     "build:components-manager-cli": "yarn --cwd ./projects/components-manager-cli build",
     "build:components-manager-core": "yarn --cwd ./projects/components-manager-core build",
