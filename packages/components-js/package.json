@@ -50,7 +50,7 @@
     "test:vrt:playwright:chrome:states": "yarn test:vrt:playwright:chrome states",
     "test:vrt:playwright:chrome:custom": "yarn test:vrt:playwright:chrome custom",
     "test:vrt:playwright:chrome:customAndStates": "yarn test:vrt:playwright:chrome:custom && yarn test:vrt:playwright:chrome:states",
-    "posttest:vrt:playwright": "tsx tests/vrt/playwright/scripts/adjustRegressionFilenames.ts",
+    "posttest:vrt:playwright": "ts-node tests/vrt/playwright/scripts/adjustRegressionFilenames.ts",
     "test:smoke": "yarn test:smoke:node && yarn test:smoke:puppeteer",
     "test:smoke:node": "NODE_OPTIONS=--experimental-vm-modules jest --colors -c tests/smoke/config/jest.config-node.ts",
     "test:smoke:puppeteer": "jest --colors -c tests/smoke/config/jest.config-puppeteer.ts",
