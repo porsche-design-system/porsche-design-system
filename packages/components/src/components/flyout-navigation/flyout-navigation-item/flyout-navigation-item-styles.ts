@@ -1,6 +1,7 @@
 import { getCss, isThemeDark, mergeDeep } from '../../../utils';
 import {
   addImportantToEachRule,
+  addImportantToRule,
   colorSchemeStyles,
   cssVariableTransitionDuration,
   getInsetJssStyle,
@@ -178,8 +179,13 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
         boxShadow: 'none',
         insetInlineStart: `calc(${scrollerWidthEnhancedView} - 1px)`, // -1px prevents possible visible background under certain circumstances between primary and secondary scroller
         width: scrollerWidthEnhancedView,
-        transform: 'initial',
+        transform: addImportantToRule('initial'), // to overrule :dir(rtl) selector
         transition: `visibility 0s linear var(${cssVariableTransitionDuration},var(${cssVariableVisibilityTransitionDuration},0s))`,
+      },
+      '&:dir(rtl)': {
+        ...(!isSecondaryScrollerVisible && {
+          transform: 'translate3d(-100%, 0, 0)', // use correct transitions in rtl mode for mobile view
+        }),
       },
     },
     // header needs to be placed within scroller to ensure scrollbars are fully visible

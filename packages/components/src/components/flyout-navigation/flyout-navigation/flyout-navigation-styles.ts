@@ -89,6 +89,11 @@ export const getComponentCss = (
           gridTemplateRows: '100vh',
           insetInlineEnd: 'auto', // to have correct dialog dimensions for ideal transitions
         },
+        '&:dir(rtl)': {
+          ...(!isPrimaryScrollerVisible && {
+            transform: 'translate3d(100%, 0, 0)', // use correct transitions in rtl mode
+          }),
+        },
         '&:focus-visible': {
           outline: 'none', // ua-style reset
         },
