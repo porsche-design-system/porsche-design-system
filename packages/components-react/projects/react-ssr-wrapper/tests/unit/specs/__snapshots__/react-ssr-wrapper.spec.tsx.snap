@@ -784,7 +784,7 @@ exports[`manual test cases should pass internal props correctly to p-multi-selec
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
             </style>
             <img
               alt=""
@@ -1109,7 +1109,7 @@ exports[`manual test cases should pass internal props correctly to p-select-wrap
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
             </style>
             <img
               alt=""
@@ -1214,7 +1214,7 @@ exports[`manual test cases should pass internal props correctly to p-select-wrap
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
             </style>
             <img
               alt=""
@@ -1322,7 +1322,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1352,7 +1352,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1471,7 +1471,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-bar 1`
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1501,7 +1501,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-bar 1`
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1603,7 +1603,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       shadowrootmode="open"
                     >
                       <style>
-                        :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                        :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                       </style>
                       <img
                         alt=""
@@ -1633,7 +1633,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       shadowrootmode="open"
                     >
                       <style>
-                        :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                        :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                       </style>
                       <img
                         alt=""
@@ -1822,7 +1822,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1885,7 +1885,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);-webkit-animation:rerender-light-state-disabled 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-state-disabled{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%));-webkit-animation:rerender-light-state-disabled 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-state-disabled{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
             </style>
             <img
               alt=""
@@ -1922,7 +1922,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -2130,7 +2130,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -2302,7 +2302,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
+  filter: var(--p-internal-icon-filter,invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%));
   -webkit-animation: rerender-light-notification-info 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -2443,7 +2443,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -2704,7 +2704,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -3764,7 +3764,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -3858,6 +3858,9 @@ dialog {
   transform: translate3d(-100%, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
 }
+dialog:dir(rtl) {
+  transform: translate3d(100%, 0, 0);
+}
 dialog::backdrop {
   opacity: 0;
 }
@@ -3924,6 +3927,7 @@ dialog::backdrop {
     place-self: flex-start;
   }
   .dismiss {
+    --p-internal-icon-filter: invert(1);
     margin: clamp(8px, 0.5vw + 6px, 16px);
     padding: 8px;
   }
@@ -4039,7 +4043,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -4075,11 +4079,11 @@ img {
       <div
         class="scroller"
       >
-        <div
+        <nav
           class="content"
         >
           <slot />
-        </div>
+        </nav>
       </div>
     </dialog>
   </template>
@@ -4103,6 +4107,39 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  margin: 0 !important;
+  color: #010205 !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
+  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+}
+::slotted(p) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  margin: 0 !important;
+  color: #010205 !important;
+}
+::slotted(a) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  display: block !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  color: #010205 !important;
+  border-radius: 4px !important;
+  margin-left: -4px !important;
+  margin-right: -4px !important;
+  padding: 2px 4px !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+}
+::slotted(a[aria-current]) {
+  background: rgba(148, 149, 152, .18) !important;
+}
+
 .button {
   width: auto;
   padding: clamp(8px, 0.5vw + 6px, 16px);
@@ -4123,6 +4160,9 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   overflow: auto;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
   background-color: #EEEFF2;
+}
+.scroller:dir(rtl) {
+  transform: translate3d(-100%, 0, 0);
 }
 .header {
   position: sticky;
@@ -4168,7 +4208,7 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
     box-shadow: none;
     inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
     width: clamp(338px, 10.52vw + 258px, 460px);
-    transform: initial;
+    transform: initial !important;
     transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
   }
   .header {
@@ -4284,7 +4324,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -4424,7 +4464,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -4456,7 +4496,7 @@ img {
           </template>
           Back
         </p-button-pure>
-        <h4
+        <h2
           class="heading"
         />
       </div>
@@ -4659,7 +4699,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -4765,7 +4805,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
+  filter: var(--p-internal-icon-filter,invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%));
   -webkit-animation: rerender-light-notification-info 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -4906,7 +4946,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -5155,7 +5195,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -5298,7 +5338,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -6149,7 +6189,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -6431,7 +6471,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -6616,7 +6656,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
+  filter: var(--p-internal-icon-filter,invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%));
   -webkit-animation: rerender-light-state-disabled 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -6684,7 +6724,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
+  filter: var(--p-internal-icon-filter,invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%));
   -webkit-animation: rerender-light-state-disabled 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -7013,7 +7053,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -7334,7 +7374,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -7390,7 +7430,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -7654,7 +7694,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -8026,7 +8066,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -8082,7 +8122,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -8516,7 +8556,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -8572,7 +8612,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -9046,7 +9086,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -9102,7 +9142,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -9414,7 +9454,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -9470,7 +9510,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -9688,7 +9728,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
