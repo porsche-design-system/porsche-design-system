@@ -125,6 +125,17 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-flyout-navigation',
+      samples: [
+        [
+          componentsJsPath + '/flyout-navigation-example-basic.html',
+          componentsAngularPath + '/flyout-navigation-example-basic.component.ts',
+          componentsReactPath + '/FlyoutNavigationExampleBasic.tsx',
+          componentsVuePath + '/FlyoutNavigationExampleBasic.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-inline-notification',
       samples: [
         [

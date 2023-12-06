@@ -22,7 +22,7 @@ The most important property of p-flyout is its open attribute. When it is presen
 In order to get notified when the navigation flyout gets closed by clicking the x button, you need to register an event
 listener for the dismiss event which is emitted by p-flyout.
 
-<Playground :markup="basicExample" :config="config"></Playground>
+<Playground :markup="basicExample" :frameworkMarkup="codeExample" :config="config"></Playground>
 
 ## With active identifier
 
@@ -53,11 +53,14 @@ supported `<a>` and tags.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
+import { getFlyoutNavigationCodeSamples } from "@porsche-design-system/shared"; 
 
 @Component()
 export default class Code extends Vue {
   config = { themeable: true };
   navigationFlyouts = [];
+
+ codeExample = getFlyoutNavigationCodeSamples();
   
   mounted() {
     this.registerEvents();
