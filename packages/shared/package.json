@@ -38,7 +38,7 @@
     "@types/node": "^20.10.3",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "jest-puppeteer": "^9.0.1",
+    "jest-puppeteer": "^9.0.2",
     "jss": "^10.10.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0",

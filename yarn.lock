@@ -11877,10 +11877,10 @@ expand-tilde@^1.2.2:
   dependencies:
     os-homedir "^1.0.1"
 
-expect-puppeteer@^9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/expect-puppeteer/-/expect-puppeteer-9.0.1.tgz#2c2efa55984939f0d2bd8dd1443a2d3c3c26d5d0"
-  integrity sha512-LqGzoyW4XgZbfJadjllSMCwZflX9gVBqjFUg8qde+etXr/SEFWLBgn98nRAmO3hUjMRNyh5gIFcaSi4DzHAWLw==
+expect-puppeteer@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/expect-puppeteer/-/expect-puppeteer-9.0.2.tgz#ffbfe163962a607afae942bd70f7f192100000cf"
+  integrity sha512-nv3RD8MOStXOf4bLpr1wiqxPMLL7MwXvtMeZBtGvg5bubAHiHcYBcvDTJwkUjdOWz3scjOnOOl5z6KZakMobCw==
 
 expect@^29.0.0, expect@^29.7.0:
   version "29.7.0"
@@ -14891,18 +14891,18 @@ jest-config@^29.7.0:
     slash "^3.0.0"
     strip-json-comments "^3.1.1"
 
-jest-dev-server@^9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/jest-dev-server/-/jest-dev-server-9.0.1.tgz#75d50b946c94e278401158bcc9a29da23d21204d"
-  integrity sha512-eqpJKSvVl4M0ojHZUPNbka8yEzLNbIMiINXDsuMF3lYfIdRO2iPqy+ASR4wBQ6nUyR3OT24oKPWhpsfLhgAVyg==
+jest-dev-server@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/jest-dev-server/-/jest-dev-server-9.0.2.tgz#9a1ab8a8eefe76e5115c9266944b7390cd1495b3"
+  integrity sha512-Zc/JB0IlNNrpXkhBw+h86cGrde/Mey52KvF+FER2eyrtYJTHObOwW7Iarxm3rPyTKby5+3Y2QZtl8pRz/5GCxg==
   dependencies:
     chalk "^4.1.2"
     cwd "^0.10.0"
     find-process "^1.4.7"
     prompts "^2.4.2"
-    spawnd "^9.0.1"
+    spawnd "^9.0.2"
     tree-kill "^1.2.2"
-    wait-on "^7.0.1"
+    wait-on "^7.2.0"
 
 jest-diff@^24.3.0:
   version "24.9.0"
@@ -14980,15 +14980,15 @@ jest-environment-jsdom@^29.0.0, jest-environment-jsdom@^29.7.0:
     jest-mock "^29.7.0"
     jest-util "^29.7.0"
 
-jest-environment-puppeteer@^9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/jest-environment-puppeteer/-/jest-environment-puppeteer-9.0.1.tgz#1b87f07410652c5a5782ed6693bb04bed593d086"
-  integrity sha512-5WC3w2+gUNMNVNdeRwyc5xpd9lbTGTVEanESaW3bCW7SIKJKIPMDLgfXhYswW2V6VeHIisuxIDx+hx5qczt4Rw==
+jest-environment-puppeteer@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/jest-environment-puppeteer/-/jest-environment-puppeteer-9.0.2.tgz#c0a0382c8147e2e7f6fff085c3d8916ae210cbf5"
+  integrity sha512-t7+W4LUiPoOz+xpKREgnu6IElMuRthOWTkrThDZqVKPmLhwbK3yx7OCiX8xT1Pw/Cv5WnSoNhwtN7czdCC3fQg==
   dependencies:
     chalk "^4.1.2"
     cosmiconfig "^8.3.6"
     deepmerge "^4.3.1"
-    jest-dev-server "^9.0.1"
+    jest-dev-server "^9.0.2"
     jest-environment-node "^29.7.0"
 
 jest-expect-message@*:
@@ -15166,13 +15166,13 @@ jest-preset-angular@^13.1.4:
   optionalDependencies:
     esbuild ">=0.13.8"
 
-jest-puppeteer@^9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/jest-puppeteer/-/jest-puppeteer-9.0.1.tgz#a267f0f0abb67806fdede5e20ad8c968743c3781"
-  integrity sha512-lNWoUCn1zKO6vlD0uvHLBJHvgBmZ7+DKy+Kd6TkQJO4mJ5aDRqeG4XOuy43yYlS2EYVuzqEru2BgbXSpA8V8Vw==
+jest-puppeteer@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/jest-puppeteer/-/jest-puppeteer-9.0.2.tgz#c5e7d29ad4b2094a27bc20c6dffa201376111664"
+  integrity sha512-ZB0K/tH+0e7foRRn+VpKIufvkW1by8l7ifh62VOdOh5ijEf7yt8W2/PcBNNwP0RLm46AytiBkrIEenvWhxcBRQ==
   dependencies:
-    expect-puppeteer "^9.0.1"
-    jest-environment-puppeteer "^9.0.1"
+    expect-puppeteer "^9.0.2"
+    jest-environment-puppeteer "^9.0.2"
 
 jest-regex-util@^24.9.0:
   version "24.9.0"
@@ -22941,10 +22941,10 @@ spawn-command@0.0.2:
   resolved "https://registry.yarnpkg.com/spawn-command/-/spawn-command-0.0.2.tgz#9544e1a43ca045f8531aac1a48cb29bdae62338e"
   integrity sha512-zC8zGoGkmc8J9ndvml8Xksr1Amk9qBujgbF0JAIWO7kXr43w0h/0GJNM/Vustixu+YE8N/MTrQ7N31FvHUACxQ==
 
-spawnd@^9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/spawnd/-/spawnd-9.0.1.tgz#43b39b4bf5bdf6b5e38fbb7fabb2fbd0385b23b9"
-  integrity sha512-vaMk8E9CpbjTYToBxLXowDeArGf1+yI7A6PU6Nr57b2g8BVY8nRi5vTBj3bMF8UkCrMdTMyf/Lh+lrcrW2z7pw==
+spawnd@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/spawnd/-/spawnd-9.0.2.tgz#7799635d183b27552e90ca639876dac10d45f7f7"
+  integrity sha512-nl8DVHEDQ57IcKakzpjanspVChkMpGLuVwMR/eOn9cXE55Qr6luD2Kn06sA0ootRMdgrU4tInN6lA6ohTNvysw==
   dependencies:
     signal-exit "^4.1.0"
     tree-kill "^1.2.2"
@@ -25312,7 +25312,7 @@ w3c-xmlserializer@^5.0.0:
   dependencies:
     xml-name-validator "^5.0.0"
 
-wait-on@7.2.0, wait-on@^7.0.1:
+wait-on@7.2.0, wait-on@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/wait-on/-/wait-on-7.2.0.tgz#d76b20ed3fc1e2bebc051fae5c1ff93be7892928"
   integrity sha512-wCQcHkRazgjG5XoAq9jbTMLpNIjoSlZslrJ2+N9MxDsGEv1HnFoVjOCexL0ESva7Y9cu350j+DWADdk54s4AFQ==
