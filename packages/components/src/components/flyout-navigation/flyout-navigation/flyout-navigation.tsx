@@ -11,7 +11,7 @@ import { getComponentCss } from './flyout-navigation-styles';
 import {
   AllowedTypes,
   attachComponentCss,
-  getChildrenOfKind,
+  getDirectChildHTMLElementOfKind,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   parseAndGetAriaAttributes,
@@ -127,7 +127,7 @@ export class FlyoutNavigation {
   }
 
   private defineFlyoutNavigationItemElements = (): void => {
-    this.flyoutNavigationItemElements = getChildrenOfKind(
+    this.flyoutNavigationItemElements = getDirectChildHTMLElementOfKind(
       this.host,
       'p-flyout-navigation-item'
     ) as HTMLPFlyoutNavigationItemElement[];
