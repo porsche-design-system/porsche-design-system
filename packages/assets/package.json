@@ -19,7 +19,7 @@
   "scripts": {
     "start": "yarn build && node ./bin/serve-cdn.js",
     "build": "yarn clean:build && yarn build:projects && yarn build:manifest && yarn build:copyAssets",
-    "build:projects": "concurrently -n 'crest,fallbacks,fonts,icons,marque,meta-icons,model-signatures' 'yarn build:crest' 'yarn build:fallbacks' 'yarn build:fonts' 'yarn build:icons' 'yarn build:marque' 'yarn build:meta-icons' 'yarn build:model-signatures' && concurrently -n 'styles' 'yarn build:styles'",
+    "build:projects": "concurrently --kill-others-on-fail -n 'crest,fallbacks,fonts,icons,marque,meta-icons,model-signatures' 'yarn build:crest' 'yarn build:fallbacks' 'yarn build:fonts' 'yarn build:icons' 'yarn build:marque' 'yarn build:meta-icons' 'yarn build:model-signatures' && concurrently -n 'styles' 'yarn build:styles'",
     "build:crest": "yarn --cwd projects/crest build",
     "build:fallbacks": "yarn --cwd projects/fallbacks build",
     "build:fonts": "yarn --cwd projects/fonts build",
