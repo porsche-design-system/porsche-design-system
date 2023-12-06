@@ -160,10 +160,10 @@ exports[`should have no basic DOM regression for p-flyout-navigation 1`] = `
       Dismiss flyout</p-button-pure>
   </div>
   <div class="scroller">
-    <div class="content">
+    <nav class="content">
       <slot>
       </slot>
-    </div>
+    </nav>
   </div>
 </dialog>"
 `;
@@ -175,8 +175,8 @@ exports[`should have no basic DOM regression for p-flyout-navigation-item 1`] = 
   <div class="header">
     <p-button-pure class="back hydrated">
       Back</p-button-pure>
-    <h4 class="heading">
-    </h4>
+    <h2 class="heading">
+    </h2>
   </div>
   <div class="content">
     <slot>
