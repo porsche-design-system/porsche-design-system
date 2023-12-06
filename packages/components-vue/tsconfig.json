@@ -23,5 +23,13 @@
     {
       "path": "./tsconfig.config.json"
     }
-  ]
+  ],
+  // workaround for unsupported array for extends
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "verbatimModuleSyntax": false
+    },
+    "include": ["./scripts"]
+  }
 }

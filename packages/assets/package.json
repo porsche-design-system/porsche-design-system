@@ -28,7 +28,7 @@
     "build:meta-icons": "yarn --cwd projects/meta-icons build",
     "build:model-signatures": "yarn --cwd projects/model-signatures build",
     "build:styles": "yarn --cwd projects/styles build",
-    "build:copyAssets": "COMPONENTS_ONLY=${COMPONENTS_ONLY:-0} tsx scripts/copyAssets.ts",
+    "build:copyAssets": "COMPONENTS_ONLY=${COMPONENTS_ONLY:-0} ts-node scripts/copyAssets.ts",
     "build:manifest": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-cdn.js",
     "buildCopyComponentsOnly": "rm -rf ./cdn/components && COMPONENTS_ONLY=1 yarn build:copyAssets",
     "test": "yarn test:unit",
@@ -73,8 +73,8 @@
     "@types/madge": "^5.0.3",
     "http-server": "^14.1.1",
     "madge": "^6.1.0",
-    "tsx": "^4.6.2",
-    "typescript": "~5.3.2"
+    "ts-node": "^10.9.1",
+    "typescript": "~5.2.2"
   },
   "bin": {
     "serve-cdn": "./bin/serve-cdn.js"

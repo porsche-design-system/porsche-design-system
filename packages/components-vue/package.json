@@ -8,7 +8,7 @@
     "build": "yarn clean:build && yarn build:vue-wrapper && yarn build:subPackages",
     "build:vue-wrapper": "yarn build:vue-wrapper:lib && yarn build:vue-wrapper:typings",
     "build:vue-wrapper:lib": "vite build -c vite.config.package.mts",
-    "build:vue-wrapper:typings": "vue-tsc --emitDeclarationOnly && tsx scripts/addDeprecatedAnnotations.ts",
+    "build:vue-wrapper:typings": "vue-tsc --emitDeclarationOnly && ts-node scripts/addDeprecatedAnnotations.ts",
     "build:subPackages": "yarn build:subPackages:lib && yarn build:subPackages:typings",
     "build:subPackages:lib": "yarn rollup -c ./projects/vue-wrapper/rollup.config.js --bundleConfigAsCjs",
     "build:subPackages:typings": "yarn build:subPackages:typings:jsdom-polyfill && yarn build:subPackages:typings:partials && yarn build:subPackages:typings:testing && yarn build:subPackages:typings:styles",
@@ -50,11 +50,11 @@
     "eslint-plugin-vue": "^9.19.1",
     "globby": "^11.0.4",
     "local-web-server": "^5.3.0",
-    "typescript": "~5.3.2",
+    "typescript": "~5.2.2",
     "vite": "^5.0.5",
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-static-copy": "^1.0.0",
-    "vue-tsc": "^1.8.24"
+    "vue-tsc": "^1.8.25"
   },
   "volta": {
     "extends": "../../package.json"

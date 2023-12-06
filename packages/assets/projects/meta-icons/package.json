@@ -17,7 +17,7 @@
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:meta-icons && yarn build:lib",
-    "build:meta-icons": "tsx scripts/build.ts",
+    "build:meta-icons": "ts-node scripts/build.ts",
     "build:lib": "yarn build:lib:cjs && yarn build:lib:esm",
     "build:lib:cjs": "tsc --build tsconfig.lib.cjs.json",
     "build:lib:esm": "tsc --build tsconfig.lib.esm.json",
@@ -28,8 +28,8 @@
   "devDependencies": {
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
-    "tsx": "^4.6.2",
-    "typescript": "~5.3.2"
+    "ts-node": "^10.9.1",
+    "typescript": "~5.2.2"
   },
   "files": [
     "dist/"

@@ -4,5 +4,8 @@
     "strict": false,
     "moduleResolution": "node"
   },
-  "include": ["./src", "./scripts"]
+  "include": ["./src", "./scripts"],
+  "ts-node": {
+    "transpileOnly": true // to ignore error: Cannot find name 'HTMLPScrollerElement'. Did you mean 'HTMLPreElement'
+  }
 }
