@@ -14,6 +14,7 @@ import {
   getDirectChildHTMLElementOfKind,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
+  hasPropValueChanged,
   parseAndGetAriaAttributes,
   setScrollLock,
   THEMES,
@@ -80,6 +81,10 @@ export class FlyoutNavigation {
       this.setDialogVisibility(true);
     }
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineFlyoutNavigationItemElements);
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public disconnectedCallback(): void {
