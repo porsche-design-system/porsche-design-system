@@ -146,7 +146,7 @@ enhancedExample =
 <p-flyout-navigation active-identifier="item-1">
   <p-flyout-navigation-item identifier="item-1" label="Some Label">
     <p-link-tile href="#" label="Some label" description="Some Description" weight="semi-bold" compact="true" aspect-ratio="1:1">
-      <img src="${require('@/assets/dummy-image-for-link-tile.jpeg')}" alt="Some Image" />
+      <img src="${require('@/assets/image-grid.png')}" alt="Some Image" />
     </p-link-tile>
     <h3>Some Heading</h3>
     <a href="#">Some anchor</a>
