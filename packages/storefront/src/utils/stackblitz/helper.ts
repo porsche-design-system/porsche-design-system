@@ -1,4 +1,4 @@
-import * as sharedData from '@porsche-design-system/shared/esm/data';
+import * as sharedData from '@porsche-design-system/shared/data';
 import { themeDark, themeLight } from '@porsche-design-system/components-js/styles';
 import type {
   BackgroundColor,

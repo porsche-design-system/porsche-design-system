@@ -11,10 +11,22 @@ export default [
     input,
     external,
     output: {
-      dir: 'dist/esm',
-      format: 'esm',
-      entryFileNames: '[name].mjs',
+      dir: 'dist',
+      format: 'cjs',
       preserveModules: true,
+      interop: 'auto', // needed for generateScss.ts of utilities package to work with default exports of jss dependencies
+      plugins: [
+        generatePackageJson({
+          baseContents: (packageJson) => ({
+            ...packageJson,
+            name: '@porsche-design-system/shared',
+            sideEffects: false,
+            scripts: undefined,
+            devDependencies: {},
+            volta: undefined,
+          }),
+        }),
+      ],
     },
     plugins: [
       copy({
@@ -23,30 +35,16 @@ export default [
           { src: 'src/tsconfig.json', dest: 'dist' },
         ],
       }),
-      generatePackageJson({
-        outputFolder: 'dist',
-        baseContents: (packageJson) => ({
-          ...packageJson,
-          name: '@porsche-design-system/shared',
-          sideEffects: false,
-          scripts: undefined,
-          devDependencies: {},
-          volta: undefined,
-          // TODO: output dependencies are wrong and only contain 3 jss packages
-        }),
-      }),
-      typescript({ declaration: true, declarationDir: 'dist/esm', rootDir: 'src' }),
+      typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' }),
     ],
   },
   {
     input,
     external,
     output: {
-      dir: 'dist/cjs',
-      format: 'cjs',
-      entryFileNames: '[name].cjs',
+      dir: 'dist/esm',
+      format: 'esm',
       preserveModules: true,
-      interop: 'auto', // needed for generateScss.ts of utilities package to work with default exports of jss dependencies
     },
     plugins: [typescript()],
   },
@@ -57,7 +55,6 @@ export default [
     output: {
       dir: 'dist/esm/data',
       format: 'esm',
-      entryFileNames: '[name].mjs',
     },
     plugins: [typescript()],
   },
@@ -66,9 +63,8 @@ export default [
     input: 'src/data/index.ts',
     external,
     output: {
-      dir: 'dist/cjs/data',
+      dir: 'dist/data',
       format: 'cjs',
-      entryFileNames: '[name].cjs',
     },
     plugins: [typescript()],
   },
