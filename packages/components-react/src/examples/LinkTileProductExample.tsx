@@ -12,7 +12,7 @@ export const LinkTileProductExample = (): JSX.Element => {
     <PLinkTileProduct
       heading="Some product"
       price="1.911,00 €"
-      description="Some info"
+      description="Some description"
       href="https://www.porsche.com"
       liked={liked}
       onLike={handleLike}
@@ -20,7 +20,12 @@ export const LinkTileProductExample = (): JSX.Element => {
       <PTag slot="tags" color="background-base">
         New
       </PTag>
-      <img src="/assets/placeholder_800x900.svg" width="3000" height="2000" alt="Some alt text" />
+      <img
+        src="https://porsche-design-system.github.io/porsche-design-system/assets/placeholder_800x900.svg"
+        width="800"
+        height="900"
+        alt="Some alt text"
+      />
     </PLinkTileProduct>
   );
 };
