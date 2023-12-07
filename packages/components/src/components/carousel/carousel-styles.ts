@@ -79,7 +79,11 @@ export const getComponentCss = (
   } = getThemedColors('dark');
   const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
-  const array = [...(hasHeading ? [selectorHeading] :[]), ...(hasDescription ? [selectorDescription] : []), selectorHeader]
+  const array = [
+    ...(hasHeading ? [selectorHeading] : []),
+    ...(hasDescription ? [selectorDescription] : []),
+    selectorHeader,
+  ];
 
   return getCss({
     '@global': {
