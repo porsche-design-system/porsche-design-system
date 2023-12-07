@@ -130,6 +130,7 @@ export const getComponentCss = (
       display: 'flex',
       justifyContent: 'center',
       flexDirection: 'column',
+      margin: 'auto',
     },
     text: {
       textAlign: 'center',
