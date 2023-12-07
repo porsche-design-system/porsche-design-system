@@ -22,7 +22,7 @@ The most important property of p-flyout is its open attribute. When it is presen
 In order to get notified when the navigation flyout gets closed by clicking the x button, you need to register an event
 listener for the dismiss event which is emitted by p-flyout.
 
-<Playground :markup="basicExample" :frameworkMarkup="codeExample" :config="config"></Playground>
+<Playground :frameworkMarkup="codeExample" :markup="codeExample['vanilla-js']" :config="config"></Playground>
 
 ## With active identifier
 
@@ -30,7 +30,7 @@ The flyout navigation can be initialized with an `active-identifier` property. T
 flyout with the corresponding 1st level navigation item expanded. The `active-identifier` is the value of the
 `identifier` property of the `p-flyout-navigation-item` component.
 
-<Playground :markup="activeIdentifierExample" :config="config"></Playground>
+<Playground :frameworkMarkup="codeExampleActiveIdentifier" :markup="codeExampleActiveIdentifier['vanilla-js']" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
@@ -48,7 +48,7 @@ To gain more structure on the 2nd level we also support out-of-the-box styling o
 individualization of the 2nd level, you can create your own custom contents and use it as a child besides the already
 supported `<a>` and tags.
 
-<Playground :markup="enhancedExample" :config="config"></Playground>
+<Playground :frameworkMarkup="codeExampleCustomContent" :markup="codeExampleCustomContent['vanilla-js']" :config="config"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -58,9 +58,10 @@ import { getFlyoutNavigationCodeSamples } from "@porsche-design-system/shared";
 @Component()
 export default class Code extends Vue {
   config = { themeable: true };
-  navigationFlyouts = [];
-
- codeExample = getFlyoutNavigationCodeSamples();
+  flyoutNavigations = [];
+  codeExample = getFlyoutNavigationCodeSamples('default');
+  codeExampleActiveIdentifier = getFlyoutNavigationCodeSamples('example-active-identifier'); 
+  codeExampleCustomContent = getFlyoutNavigationCodeSamples('example-custom-content');
   
   mounted() {
     this.registerEvents();
@@ -72,136 +73,22 @@ export default class Code extends Vue {
   }
 
   registerEvents() {
-    this.navigationFlyouts = document.querySelectorAll('.playground .demo p-flyout-navigation');
+    this.flyoutNavigations = document.querySelectorAll('.playground .demo p-flyout-navigation');
     
     const buttonsOpen = document.querySelectorAll('.playground .demo > p-button');
     buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openFlyout(index)));
     
-    this.navigationFlyouts.forEach((flyout, index) => {
+    this.flyoutNavigations.forEach((flyout, index) => {
       flyout.addEventListener('dismiss', () => this.closeFlyout(index));
     });
   }
-
-basicExample =
-`<p-button aria="{ 'aria-haspopup': 'dialog' }">Open Flyout Navigation</p-button>
-<p-flyout-navigation>
-  <p-flyout-navigation-item identifier="item-1" label="Some Label">
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-2" label="Some Label">
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-3" label="Some Label">
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-4" label="Some Label">
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-5" label="Some Label">
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-6" label="Some Label">
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-</p-flyout-navigation>`;
-
-activeIdentifierExample =
-`<p-button aria="{ 'aria-haspopup': 'dialog' }">Open Flyout Navigation</p-button>
-<p-flyout-navigation active-identifier="item-2">
-  <p-flyout-navigation-item identifier="item-1" label="Some Label">
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-2" label="Some Label">
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor" aria-current="page">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-3" label="Some Label">
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-4" label="Some Label">
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-5" label="Some Label">
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-6" label="Some Label">
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-</p-flyout-navigation>`;
-
-enhancedExample =
-`<p-button aria="{ 'aria-haspopup': 'dialog' }">Open Flyout Navigation</p-button>
-<p-flyout-navigation active-identifier="item-1">
-  <p-flyout-navigation-item identifier="item-1" label="Some Label">
-    <p-link-tile href="#" label="Some label" description="Some Description" weight="semi-bold" compact="true" aspect-ratio="1:1">
-      <img src="${require('@/assets/image-grid.png')}" alt="Some Image" />
-    </p-link-tile>
-    <h3>Some Heading</h3>
-    <a href="#">Some anchor</a>
-    <a href="#" active="true" aria="{ 'aria-current': 'page'}">Some anchor</a>
-    <a href="#">Some anchor</a>
-    <a href="#">Some anchor</a>
-    <a href="#">Some anchor</a>
-    <h3>Some Heading</h3>
-    <a href="#">Some anchor</a>
-    <a href="#">Some anchor</a>
-    <a href="#">Some anchor</a>
-    <a href="#">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-2" label="Some Label">
-    <a href="#">Some anchor</a>
-    <a href="#">Some anchor</a>
-    <a href="#">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-3" label="Some Label">
-    <a href="#">Some anchor</a>
-    <a href="#">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-4" label="Some Label">
-    <a href="#">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-5" label="Some Label">
-    <a href="#">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-6" label="Some Label">
-    <a href="#">Some anchor</a>
-    <a href="#">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-link-pure size="medium" href="#" stretched="true" icon="external">Some external anchor</p-link-pure>
-</p-flyout-navigation>`;
     
   openFlyout(index: number): void {
-    this.navigationFlyouts[index].open = true;
+    this.flyoutNavigations[index].open = true;
   }
 
   closeFlyout(index: number): void {
-    this.navigationFlyouts[index].open = false;
+    this.flyoutNavigations[index].open = false;
   }
 }
 </script>
-
-<style scoped lang="scss">
-  @use '@porsche-design-system/components-js/styles' as *;
-
-  :deep(p-flyout-navigation) {
-    > p-link-pure {
-      padding: $pds-spacing-fluid-small;
-      margin: 0 calc($pds-spacing-fluid-small * -1);
-    }
-  }
-</style>
