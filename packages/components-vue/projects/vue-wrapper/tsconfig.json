@@ -1,7 +1,0 @@
-{
-  "extends": "@porsche-design-system/shared/tsconfig.json",
-  "compilerOptions": {
-    "jsx": "preserve"
-  },
-  "include": ["./src"]
-}

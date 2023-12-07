@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`should have correct filter for filterDarkDisabled 1`] = `"invert(52%) sepia(6%) saturate(135%) hue-rotate(187deg) brightness(94%) contrast(89%)"`;
-
-exports[`should have correct filter for filterLightDisabled 1`] = `"invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%)"`;

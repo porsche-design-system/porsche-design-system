@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`accessibility should expose correct initial accessibility tree properties 1`] = `
-{
-  "name": "Some label",
-  "role": "image",
-}
-`;

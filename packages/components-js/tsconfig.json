@@ -1,7 +1,0 @@
-{
-  "extends": "@porsche-design-system/shared/tsconfig.json",
-  "compilerOptions": {
-    "types": ["node", "jest"]
-  },
-  "include": ["./projects/components-wrapper/environment.ts"]
-}

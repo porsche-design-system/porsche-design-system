@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`should contain correct values for frostedGlassStyle 1`] = `
-{
-  "WebkitBackdropFilter": "blur(32px)",
-  "backdropFilter": "blur(32px)",
-}
-`;

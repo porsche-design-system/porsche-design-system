@@ -1,8 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "./dist/app",
-    "strict": true
-  },
-  "files": ["src/main.ts", "src/polyfills.ts"]
-}

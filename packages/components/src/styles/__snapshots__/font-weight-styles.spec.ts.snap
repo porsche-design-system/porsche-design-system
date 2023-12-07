@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`getFontWeight() should return correct numeric value for weight: bold 1`] = `700`;
-
-exports[`getFontWeight() should return correct numeric value for weight: regular 1`] = `400`;
-
-exports[`getFontWeight() should return correct numeric value for weight: semi-bold 1`] = `600`;

@@ -1,5 +1,0 @@
-{
-  // used by rollup
-  "extends": "@porsche-design-system/shared/tsconfig.json",
-  "include": ["./src/partials/index.ts", "./src/styles/index.ts", "./src/testing/index.ts"]
-}

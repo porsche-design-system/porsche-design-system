@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`buildCrestImgSrc() should return correct url 1`] = `"https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.8a292fbd35a5155789ddd011585e05c4@2x.png"`;
-
-exports[`buildCrestSrcSet() should return correct srcSet for format: png 1`] = `"https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.d76137cf8cf94822b7aedb534ba88418@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.8a292fbd35a5155789ddd011585e05c4@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.18d6f02003b0829bac939fade88fd4e6@3x.png 3x"`;
-
-exports[`buildCrestSrcSet() should return correct srcSet for format: webp 1`] = `"https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.0d0cc89ae5ee57c4c15bd0dbbcbfe5d0@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.2245c45e99be5a46b4b56e73c43d5c63@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.min.19b429278b158b5cb5aa6ce80751e3fe@3x.webp 3x"`;

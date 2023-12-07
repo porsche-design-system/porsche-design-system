@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "module": "ESNext",
-    "outDir": "./dist/library-entry"
-  },
-  "include": ["library-entry"],
-  "exclude": ["**/*.spec.ts"]
-}

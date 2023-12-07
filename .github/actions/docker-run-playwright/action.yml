@@ -1,5 +1,0 @@
-name: Docker Run
-description: Run scripts in custom docker image
-runs:
-  using: docker
-  image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.39.0-focal-test3
