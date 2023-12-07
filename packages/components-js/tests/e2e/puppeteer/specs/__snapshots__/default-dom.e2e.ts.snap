@@ -169,7 +169,7 @@ exports[`should have no basic DOM regression for p-flyout-navigation 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-flyout-navigation-item 1`] = `
-"<p-button-pure class="button hydrated">
+"<p-button-pure class="button hydrated" align-label="start">
 </p-button-pure>
 <div class="scroller" inert="">
   <div class="header">

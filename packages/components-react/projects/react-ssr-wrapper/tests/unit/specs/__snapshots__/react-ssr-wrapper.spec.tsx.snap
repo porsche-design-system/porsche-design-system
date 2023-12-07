@@ -4221,6 +4221,7 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
 
     </style>
     <p-button-pure
+      align-label="start"
       class="button ssr"
     >
       <template
@@ -4235,7 +4236,6 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   color-scheme: light dark !important;
   display: block;
   width: 100%;
-  box-sizing: border-box;
 }
 :host([hidden]) {
   display: none !important;
@@ -4280,7 +4280,7 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
-  order: -1;
+  order: 0;
 }
 .icon {
   position: relative;
