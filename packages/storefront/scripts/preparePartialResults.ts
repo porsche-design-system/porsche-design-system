@@ -42,7 +42,7 @@ export const initialStyles = ${JSON.stringify(initialStyles)};
 
   // NOTE: getInitialStyles hash would be great to use but we need 'unsafe-inline' for all our inline styles and this can't be combined with a whitelisted hash
   // for img-src `data:` is needed for inline background images, e.g. for our checkbox-wrapper and radio-button-wrapper
-  const cspMeta = `<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' 'unsafe-inline' https://cdn.ui.porsche.com; script-src 'self' https://cdn.ui.porsche.com ${scriptHashes}; img-src 'self' https://cdn.ui.porsche.com data:; connect-src 'self' ${connectUrls}" />`;
+  const cspMeta = `<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' 'unsafe-inline' https://cdn.ui.porsche.com; script-src 'self' https://cdn.ui.porsche.com ${scriptHashes}; img-src 'self' https://cdn.ui.porsche.com https://porsche-design-system.github.io/porsche-design-system data:; connect-src 'self' ${connectUrls}" />`;
   console.log(cspMeta);
 
   const placeholder = '<!-- CSP_PLACEHOLDER -->';
