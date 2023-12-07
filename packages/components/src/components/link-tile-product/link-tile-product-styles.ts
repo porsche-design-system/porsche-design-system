@@ -65,6 +65,7 @@ export const getComponentCss = (
             height: '100%',
             objectFit: 'cover',
             overflow: 'hidden',
+            borderRadius: borderRadiusLarge,
             mixBlendMode: `var(${cssVariableMixBlendMode})`,
           },
           '&(a)': {
@@ -157,14 +158,14 @@ export const getComponentCss = (
     },
     'image-container': {
       margin: `${spacingFluidSmall} auto ${spacingFluidXSmall} auto`,
+      padding: 0,
       [getMediaQueryMin('s')]: {
-        margin: `${spacingFluidSmall} max(${spacingFluidMedium}, auto) ${spacingFluidXSmall} max(${spacingFluidMedium}, auto)`,
+        padding: `0 ${spacingFluidMedium}`,
       },
       overflow: 'hidden',
       aspectRatio: '8 / 9',
       transition: getTransition('transform', 'moderate'),
       maxHeight: '100%',
-      borderRadius: borderRadiusLarge,
     },
   });
 };
