@@ -6,8 +6,9 @@ import { type FlyoutNavigationUpdateEvent } from '@porsche-design-system/compone
   styles: [
     `
       @use '@porsche-design-system/components-angular/styles' as *;
+
       p-link-pure {
-        margin: 0 calc($pds-spacing-fluid-small * -1);
+        margin: 0 calc(#{$pds-spacing-fluid-small} * -1);
         padding: $pds-spacing-fluid-small;
       }
     `,
