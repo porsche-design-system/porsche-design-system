@@ -5222,6 +5222,7 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   height: 100% !important;
   object-fit: cover !important;
   overflow: hidden !important;
+  border-radius: 12px !important;
   mix-blend-mode: var(--p-link-tile-product-mix-blend-mode) !important;
 }
 ::slotted(a) {
@@ -5268,6 +5269,7 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin: auto;
 }
 .text {
   text-align: center;
@@ -5297,15 +5299,15 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
 }
 .image-container {
   margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px) auto;
+  padding: 0;
   overflow: hidden;
   aspect-ratio: 8 / 9;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
   max-height: 100%;
-  border-radius: 12px;
 }
 @media(min-width:760px) {
   .image-container {
-    margin: clamp(8px, 0.5vw + 6px, 16px) max(clamp(16px, 1.25vw + 12px, 36px), auto) clamp(4px, 0.25vw + 3px, 8px) max(clamp(16px, 1.25vw + 12px, 36px), auto);
+    padding: 0 clamp(16px, 1.25vw + 12px, 36px);
   }
 }
 
@@ -5476,7 +5478,7 @@ img {
         />
         <p
           class="text text__info"
-          id="info"
+          id="description"
         />
       </div>
     </div>
