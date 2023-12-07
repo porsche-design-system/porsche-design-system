@@ -9,6 +9,7 @@ import {
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
+  getProperty,
   goto,
   reattachElementHandle,
   selectNode,
@@ -17,12 +18,17 @@ import {
   waitForComponentsReady,
   waitForStencilLifecycle,
 } from '../helpers';
+import type {
+  CarouselAriaAttribute,
+  SelectedAriaAttributes,
+} from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 type InitOptions = {
+  aria?: SelectedAriaAttributes<CarouselAriaAttribute>;
   slidesPerPage?: number | string;
   amountOfSlides?: number;
   withFocusableElements?: boolean;
@@ -33,6 +39,7 @@ type InitOptions = {
 
 const initCarousel = (opts?: InitOptions) => {
   const {
+    aria,
     slidesPerPage = 1,
     amountOfSlides = 3,
     withFocusableElements = false,
@@ -51,6 +58,7 @@ const initCarousel = (opts?: InitOptions) => {
   const focusableElementBefore = withFocusableElements ? '<a id="link-before" href="#">Link before</a>' : '';
   const focusableElementAfter = withFocusableElements ? '<a id="link-after" href="#">Link after</a>' : '';
   const attrs = [
+    aria && `aria="${aria}"`,
     slidesPerPage ? `slides-per-page="${slidesPerPage}"` : '',
     rewind === false ? 'rewind="false"' : '',
     activeSlideIndex ? `active-slide-index="${activeSlideIndex}"` : '',
@@ -1057,7 +1065,7 @@ describe('accessibility', () => {
     expect(await getAttribute(slide3, 'aria-hidden')).toBe(null);
   });
 
-  it('should expose correct initial accessibility tree and aria properties', async () => {
+  it('should expose correct initial accessibility tree', async () => {
     await initCarousel();
     const buttonPrev = await getButtonPrev();
     const buttonNext = await getButtonNext();
@@ -1085,5 +1093,23 @@ describe('accessibility', () => {
     expect(await getAttribute(slide3, 'role')).toBe('group');
     expect(await getAttribute(slide3, 'aria-roledescription')).toBe('slide');
     expect(await getAttribute(slide3, 'aria-label')).toBe('3 of 3');
+  });
+
+  it('should overwrite aria-label when adding aria prop', async () => {
+    await initCarousel();
+    const host = await getHost();
+    await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
+    await waitForStencilLifecycle(page);
+
+    expect(await getProperty(host, 'ariaLabel')).toBe('Other Heading');
+  });
+
+  it('should overwrite aria-label with heading when setting aria prop to undefined', async () => {
+    await initCarousel({ aria: "{'aria-label': 'Other Heading'}" });
+    const host = await getHost();
+    await setProperty(host, 'aria', undefined);
+    await waitForStencilLifecycle(page);
+
+    expect(await getProperty(host, 'ariaLabel')).toBe('Heading');
   });
 });
