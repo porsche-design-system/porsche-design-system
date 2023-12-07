@@ -15,6 +15,7 @@ import {
   LinkTileProductAspectRatio,
   LinkTileProductLikeEvent,
   LinkTileProductTarget,
+  headerSlot,
 } from './link-tile-product-utils';
 
 const propTypes: PropTypes<typeof LinkTileProduct> = {
@@ -93,7 +94,7 @@ export class LinkTileProduct {
       <Host>
         <div class="root">
           <div id={headerId} class="header">
-            <slot name="header" />
+            <slot name={headerSlot} />
             {this.likeButton && (
               <PrefixedTagNames.pButtonPure
                 class="like-button"
