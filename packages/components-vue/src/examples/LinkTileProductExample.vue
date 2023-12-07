@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import { type LinkTileProductUpdateEvent, PLinkTileProduct, PTag } from '@porsche-design-system/components-vue';
+  import { type LinkTileProductLikeEvent, PLinkTileProduct, PTag } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const liked = ref(false);
 
-  const handleLikeChange = (e: LinkTileProductUpdateEvent): void => {
+  const handleLike = (e: LinkTileProductLikeEvent): void => {
     liked.value = !e.liked;
   };
 </script>
@@ -13,10 +13,10 @@
   <PLinkTileProduct
     :heading="'Some product name'"
     :price="'1.911,00 €'"
-    :info="'Some info'"
+    :description="'Some info'"
     :href="'https://www.porsche.com'"
     :liked="liked"
-    @likeChange="handleLikeChange"
+    @like="handleLike"
   >
     <slot name="header">
       <PTag :color="'background-base'">New</PTag>

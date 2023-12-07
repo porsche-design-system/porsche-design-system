@@ -38,11 +38,11 @@ Although you can pass in anything, it is recommended to use the `p-tag` componen
 
 <Playground :markup="header" :config="config"></Playground>
 
-## Info
+## Description
 
-If you want to add any additional info, use the `info` property.
+If you want to add any additional description, use the `description` property.
 
-<Playground :markup="info" :config="config"></Playground>
+<Playground :markup="description" :config="config"></Playground>
 
 ## Framework routing (anchor nesting)
 
@@ -57,10 +57,10 @@ property. To ensure accessibility, the slotted link must be labeled with both th
     <p-link-tile-product
     :heading="'Some product'"
     :price="'1.911,00 €'"
-    :info="'Some info'"
+    :description="'Some description'"
     :href="'https://www.porsche.com'"
     :liked="liked"
-    @likeChange="handleLikeChange"
+    @like="handleLike"
     :theme="theme"
   >
     <p-tag slot="header" :color="'background-base'">New</p-tag>
@@ -80,12 +80,12 @@ export default class Code extends Vue {
   imgSrc = require('@/assets/weekender.webp');
   imgSrc2 = require('@/assets/placeholder_800x900.svg');
   img = `<img src="${this.imgSrc}" alt="Some alt text" />`;
-  link = `<a href="https://www.porsche.com">Some product, 1.911,00 €</a>`;
+  link = `<a href="https://www.porsche.com">Weekender, 1.911,00 €</a>`;
   headerSlot = `<p-tag slot="header" color="background-base">New</p-tag>`;
 
   liked = false;
 
-  handleLikeChange(e) {
+  handleLike(e) {
     e.preventDefault();
     this.liked = !e.detail.liked;
   };
@@ -97,11 +97,11 @@ export default class Code extends Vue {
 
   example = getLinkTileProductCodeSamples();
 
-  basic = `<p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
+  basic = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>
 
-<p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
+<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
   <picture>
     <source media="(min-width:400px)" srcset="${this.imgSrc}" />
     ${this.img}
@@ -111,21 +111,21 @@ export default class Code extends Vue {
   likeButton = 'false';
   likeButtons = ['true', 'false'];
   get likeButtonMarkup() {
-    return`<p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" ${this.likeButton === 'false' ? 'like-button="false"' : ''} theme="${this.theme}">
+    return`<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" ${this.likeButton === 'false' ? 'like-button="false"' : ''} theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>`;
   };
 
-  header = `<p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
+  header = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
   ${this.headerSlot}
   ${this.img}
 </p-link-tile-product>`;
 
-  info = `<p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" info="Some info" theme="${this.theme}">
+  description = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" description="incl. VAT" theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>`;
 
-  slottedLink = `<p-link-tile-product heading="Some product" price="1.911,00 €" info="Some info" theme="${this.theme}">
+  slottedLink = `<p-link-tile-product heading="Weekender" price="1.911,00 €" description="incl. VAT" theme="${this.theme}">
   ${this.link}
   ${this.img}
 </p-link-tile-product>`;
