@@ -41,7 +41,7 @@ export const FlyoutNavigationExampleCustomContentPage = (): JSX.Element => {
             description="Some Description"
             weight="semi-bold"
             compact="true"
-            aspectRatio="1:1"
+            aspectRatio={{ base: '4:3', xs: '16:9', s: '1:1' }}
           >
             <img
               srcSet="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
