@@ -6,9 +6,9 @@ import {
   PFlyoutNavigationItem,
 } from '@porsche-design-system/components-react';
 
-export const FlyoutNavigationExampleBasicPage = (): JSX.Element => {
+export const FlyoutNavigationExampleActiveIdentifierPage = (): JSX.Element => {
   const [isFlyoutNavigationOpen, setIsFlyoutNavigationOpen] = useState<boolean>(false);
-  const [flyoutNavigationActiveIdentifier, setFlyoutNavigationActiveIdentifier] = useState<string>();
+  const [flyoutNavigationActiveIdentifier, setFlyoutNavigationActiveIdentifier] = useState<string>('item-2');
   const onOpen = useCallback(() => {
     setIsFlyoutNavigationOpen(true);
   }, []);

@@ -8,6 +8,8 @@ export * from './FlyoutExample';
 export * from './FlyoutExampleSlotted';
 export * from './FlyoutExampleSlottedSecondary';
 export * from './FlyoutNavigationExampleBasic';
+export * from './FlyoutNavigationExampleActiveIdentifier';
+export * from './FlyoutNavigationExampleCustomContent';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
 export * from './ModalExampleAccessibility';
