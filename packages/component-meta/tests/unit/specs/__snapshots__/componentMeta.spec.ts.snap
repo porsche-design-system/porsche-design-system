@@ -1903,9 +1903,13 @@ exports[`should match snapshot 1`] = `
   },
   "p-link-tile-product": {
     "allowedPropValues": {
+      "aspectRatio": [
+        "3:4",
+        "9:16",
+      ],
+      "description": "string",
       "heading": "string",
       "href": "string",
-      "info": "string",
       "likeButton": "boolean",
       "liked": "boolean",
       "price": "string",
@@ -1917,8 +1921,11 @@ exports[`should match snapshot 1`] = `
         "auto",
       ],
     },
+    "breakpointCustomizableProps": [
+      "aspectRatio",
+    ],
     "eventNames": [
-      "likeChange",
+      "like",
     ],
     "hasAriaProp": false,
     "hasEvent": true,
@@ -1936,9 +1943,10 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "props": {
+      "aspectRatio": "3:4",
+      "description": null,
       "heading": null,
       "href": null,
-      "info": null,
       "likeButton": true,
       "liked": false,
       "price": null,
