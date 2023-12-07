@@ -27,7 +27,7 @@ import {
   themeLightStateFocus,
 } from '@porsche-design-system/utilities-v2';
 import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
-import { LinkTileProductAspectRatio } from './link-tile-product-utils';
+import { headerSlot, LinkTileProductAspectRatio } from './link-tile-product-utils';
 
 const cssVariableMixBlendMode = '--p-link-tile-product-mix-blend-mode';
 
@@ -113,6 +113,9 @@ export const getComponentCss = (
       display: 'flex',
       justifyContent: 'space-between',
       fontSize: fontSizeTextXSmall, // Use same font size and height as tag component
+      [`& slot[name="${headerSlot}"]`]: {
+        display: 'block', // To ensure button positioning when slot is unused
+      },
     },
     ...(hasLikeButton && {
       'like-button': {
