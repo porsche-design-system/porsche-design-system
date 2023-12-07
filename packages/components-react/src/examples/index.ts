@@ -7,7 +7,7 @@ export * from './CarouselExampleJumpToSlide';
 export * from './FlyoutExample';
 export * from './FlyoutExampleSlotted';
 export * from './FlyoutExampleSlottedSecondary';
-export * from './FlyoutNavigationExampleBasic';
+export * from './FlyoutNavigationExample';
 export * from './FlyoutNavigationExampleActiveIdentifier';
 export * from './FlyoutNavigationExampleCustomContent';
 export * from './InlineNotificationExampleActionButton';

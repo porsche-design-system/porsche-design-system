@@ -109,7 +109,7 @@ export const routes: RouteType[] = [
   {
     name: 'Flyout Navigation Example',
     path: '/flyout-navigation-example',
-    element: <fromExamples.FlyoutNavigationExampleBasicPage />,
+    element: <fromExamples.FlyoutNavigationExamplePage />,
   },
   {
     name: 'Flyout Navigation Example Active Identifier',
