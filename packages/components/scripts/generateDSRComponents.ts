@@ -552,7 +552,7 @@ $&`
           .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
       } else if (tagName === 'p-link-tile-product') {
         newFileContent = newFileContent.replace(
-          /import { LinkTileProductTarget, LinkTileProductLikeEvent } from '@porsche-design-system\/components\/dist\/utils';/,
+          /import {\s*TILE_PRODUCT_ASPECT_RATIOS,[\s\S]*?} from '@porsche-design-system\/components\/dist\/utils';/,
           ''
         );
       }
