@@ -1,4 +1,4 @@
-import { SelectedAriaAttributes } from '../../types';
+import type { SelectedAriaAttributes } from '../../types';
 import { consoleWarn } from './logger';
 import { getTagNameWithoutPrefix } from '../tag-name';
 

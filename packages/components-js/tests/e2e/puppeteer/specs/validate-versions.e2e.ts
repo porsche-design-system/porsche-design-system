@@ -7,7 +7,7 @@ import {
 } from '../helpers';
 import { version } from '@porsche-design-system/components-js/package.json';
 import type { PorscheDesignSystem } from '@porsche-design-system/components/dist/types/bundle';
-import { VERSION_VALIDATION_TIMEOUT } from '@porsche-design-system/components/src/utils';
+import { VERSION_VALIDATION_TIMEOUT } from '@porsche-design-system/components/src/utils/validation';
 
 let page: Page;
 beforeEach(async () => {
