@@ -78,7 +78,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 
 .button {
-  width: auto;
+  width: 100%;
   padding: clamp(8px, 0.5vw + 6px, 16px);
   margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
 }
@@ -224,7 +224,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 
 .button {
-  width: auto;
+  width: 100%;
   padding: clamp(8px, 0.5vw + 6px, 16px);
   margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
 }
@@ -358,7 +358,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 
 .button {
-  width: auto;
+  width: 100%;
   padding: clamp(8px, 0.5vw + 6px, 16px);
   margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
 }
@@ -516,7 +516,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 
 .button {
-  width: auto;
+  width: 100%;
   padding: clamp(8px, 0.5vw + 6px, 16px);
   margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
 }
@@ -660,7 +660,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 
 .button {
-  width: auto;
+  width: 100%;
   padding: clamp(8px, 0.5vw + 6px, 16px);
   margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
 }
@@ -792,7 +792,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 
 .button {
-  width: auto;
+  width: 100%;
   padding: clamp(8px, 0.5vw + 6px, 16px);
   margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
 }

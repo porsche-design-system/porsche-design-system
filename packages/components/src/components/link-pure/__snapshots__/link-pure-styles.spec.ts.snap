@@ -7,7 +7,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   color-scheme: light dark !important;
   display: block;
   width: 100%;
-  box-sizing: border-box;
 }
 :host([hidden]) {
   display: none !important;
@@ -24,7 +23,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   :host {
     display: block;
     width: 100%;
-    box-sizing: border-box;
   }
 }
 
@@ -40,7 +38,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   :host {
     display: block;
     width: 100%;
-    box-sizing: border-box;
   }
 }
 
@@ -1134,7 +1131,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   color-scheme: light dark !important;
   display: block;
   width: 100%;
-  box-sizing: border-box;
 }
 :host([hidden]) {
   display: none !important;
@@ -1215,7 +1211,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   color-scheme: light dark !important;
   display: block;
   width: 100%;
-  box-sizing: border-box;
 }
 :host([hidden]) {
   display: none !important;
