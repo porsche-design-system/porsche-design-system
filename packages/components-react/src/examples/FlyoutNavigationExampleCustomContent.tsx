@@ -7,6 +7,7 @@ import {
   PLinkPure,
   PLinkTile,
 } from '@porsche-design-system/components-react';
+import { spacingFluidSmall } from '@porsche-design-system/components-react/styles';
 
 export const FlyoutNavigationExampleCustomContentPage = (): JSX.Element => {
   const [isFlyoutNavigationOpen, setIsFlyoutNavigationOpen] = useState<boolean>(false);
@@ -96,7 +97,7 @@ export const FlyoutNavigationExampleCustomContentPage = (): JSX.Element => {
           size="medium"
           href="#"
           icon="external"
-          style={{ padding: 'clamp(8px, 0.5vw + 6px, 16px)', margin: '0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1)' }}
+          style={{ margin: `0 calc(${spacingFluidSmall} * -1)`, padding: spacingFluidSmall }}
         >
           Some external anchor
         </PLinkPure>
