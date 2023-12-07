@@ -13,7 +13,7 @@ import { getComponentCss } from './link-tile-product-styles';
 import {
   TILE_PRODUCT_ASPECT_RATIOS,
   LinkTileProductAspectRatio,
-  LinkTileProductLikeEvent,
+  LinkTileProductLikeUpdateEvent,
   LinkTileProductTarget,
 } from './link-tile-product-utils';
 
@@ -68,8 +68,9 @@ export class LinkTileProduct {
   /** Adapts the link-tile-product color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  // TODO: Rename type to LinkTileProductLikeEvent -> fix test in componentTypes.spec
   /** Emitted when the like button is clicked. */
-  @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeEvent>;
+  @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeUpdateEvent>;
 
   public componentWillLoad(): void {
     throwIfInvalidLinkTileProductUsage(this.host, this.href);
