@@ -64,7 +64,7 @@ export abstract class AbstractWrapperGenerator {
     const targetFile = path.resolve(this.libDir, targetFileName);
 
     fs.writeFileSync(targetFile, content);
-    console.log(`Generated shared types: ${targetFileName}`);
+    console.log(`Generated shared types: ${targetFile}`);
   }
 
   private getComponentSubDir(component: TagName): string {

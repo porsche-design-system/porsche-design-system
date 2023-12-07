@@ -1,0 +1,48 @@
+<style>
+  #app {
+    /* TODO: not needed as soon as all top layer components are refactored with iFrames */
+    transform: unset;
+  }
+</style>
+
+<button>Open Flyout Navigation</button>
+
+<p-flyout-navigation open="true">
+  <p-flyout-navigation-item identifier="item-1" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-2" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-3" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-4" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-5" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-6" label="Some Label">
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor" class="scroll-into-view">Some anchor</a>
+  </p-flyout-navigation-item>
+</p-flyout-navigation>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    const button = document.querySelector('button');
+    const flyoutNavigation = document.querySelector('p-flyout-navigation');
+
+    button.addEventListener('click', () => (flyoutNavigation.open = true));
+    flyoutNavigation.addEventListener('dismiss', () => (flyoutNavigation.open = false));
+    flyoutNavigation.addEventListener('update', (e) => (flyoutNavigation.activeIdentifier = e.detail.activeIdentifier));
+  });
+</script>

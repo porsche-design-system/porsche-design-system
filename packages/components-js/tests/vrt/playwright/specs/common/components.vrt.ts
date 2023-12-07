@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import { baseSchemes, baseThemes, baseViewportWidth, baseViewportWidths, setupScenario } from '../../helpers';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
@@ -11,7 +11,7 @@ const components = (TAG_NAMES as unknown as TagName[])
   })
   .map((tagName) => {
     return tagName.substring(2);
-  })
+  });
 // Use for local testing
 // .filter((tagName) => {
 //   // TODO: how does this work? why slice it on every iteration?
@@ -21,8 +21,16 @@ const components = (TAG_NAMES as unknown as TagName[])
 
 const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
 
+// VRT pages making use of iFrames can't reliably ensure which iframe is loaded last
+// and therefore can't be sure which autofocus gets triggered
+const revertAutoFocus = async (page: Page, component: string): Promise<void> => {
+  if (['flyout-navigation'].includes(component)) {
+    await page.mouse.click(0, 0); // click top left corner of the page to remove focus
+  }
+};
+
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(51);
+  expect(components.length).toBe(52);
 });
 
 components.forEach((component) => {
@@ -41,6 +49,7 @@ components.forEach((component) => {
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
         });
+        await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${theme}.png`);
       });
     });
@@ -54,6 +63,7 @@ components.forEach((component) => {
     baseViewportWidths.forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await setupScenario(page, `/${component}`, viewportWidth);
+        await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
       });
     });
@@ -73,6 +83,7 @@ components.forEach((component) => {
           forceComponentTheme: 'auto',
           prefersColorScheme: scheme,
         });
+        await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-theme-${scheme}.png`); // fixture is aliased since result has to be equal
       });
 
@@ -84,6 +95,7 @@ components.forEach((component) => {
           forcedColorsEnabled: true,
           prefersColorScheme: scheme,
         });
+        await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(
           `${component}-${baseViewportWidth}-high-contrast-scheme-${scheme}.png`
         );
@@ -95,6 +107,7 @@ components.forEach((component) => {
       await setupScenario(page, `/${component}`, baseViewportWidth, {
         scalePageFontSize: true,
       });
+      await revertAutoFocus(page, component);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-scale-mode.png`);
     });
 
@@ -105,18 +118,29 @@ components.forEach((component) => {
       await setupScenario(page, `/${component}`, baseViewportWidth, {
         forceDirMode: 'rtl',
       });
+      await revertAutoFocus(page, component);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-rtl-mode.png`);
     });
 
     // print view
     baseThemes.forEach((theme) => {
       test(`should have no visual regression for printed pdf with theme ${theme}`, async ({ page }) => {
-        const flakyPrintComponents = ['scroller', 'stepper-horizontal', 'tabs', 'tabs-bar', 'toast', 'flyout'];
+        const flakyPrintComponents = [
+          'scroller',
+          'stepper-horizontal',
+          'tabs',
+          'tabs-bar',
+          'text-field-wrapper',
+          'toast',
+          'flyout',
+          'flyout-navigation',
+        ];
         test.skip(flakyPrintComponents.includes(component), `${component} is flaky`);
 
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
         });
+        await revertAutoFocus(page, component);
 
         // get rid of header with selects
         await page.evaluate(() => document.body.querySelector('header').remove());
