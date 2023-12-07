@@ -89,6 +89,7 @@ import type { Theme } from '@/models';
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
   imgSrc = 'https://porsche-design-system.github.io/porsche-design-system/weekender.webp';
+  imgSrcLarge = 'https://porsche-design-system.github.io/porsche-design-system/weekender@2x.webp';
   imgSrc2 = 'https://porsche-design-system.github.io/porsche-design-system/assets/placeholder_800x900.svg';
   img = `<img src="${this.imgSrc}" alt="Some alt text" />`;
   link = `<a href="https://www.porsche.com">Weekender, 1.911,00 €</a>`;
@@ -114,7 +115,7 @@ export default class Code extends Vue {
 
 <p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
   <picture>
-    <source media="(min-width:400px)" srcset="${this.imgSrc}" />
+    <source media="(min-width:960px)" srcset="${this.imgSrcLarge}" />
     ${this.img}
   </picture>
 </p-link-tile-product>`;
