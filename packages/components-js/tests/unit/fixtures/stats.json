@@ -131,12 +131,12 @@
   },
   {
     "chunkShortName": "link-tile-product",
-    "size": 9548,
-    "gzipSize": 3636
+    "size": 6759,
+    "gzipSize": 2768
   },
   {
     "chunkShortName": "main",
-    "size": 75286,
+    "size": 75326,
     "gzipSize": 25107
   },
   {
@@ -226,8 +226,8 @@
   },
   {
     "chunkShortName": "tag",
-    "size": 5573,
-    "gzipSize": 2268
+    "size": 5446,
+    "gzipSize": 2215
   },
   {
     "chunkShortName": "tag-dismissible",
