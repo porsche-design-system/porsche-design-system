@@ -1095,21 +1095,10 @@ describe('accessibility', () => {
     expect(await getAttribute(slide3, 'aria-label')).toBe('3 of 3');
   });
 
-  it('should overwrite aria-label when adding aria prop', async () => {
-    await initCarousel();
-    const host = await getHost();
-    await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
-    await waitForStencilLifecycle(page);
-
-    expect(await getProperty(host, 'ariaLabel')).toBe('Other Heading');
-  });
-
-  it('should overwrite aria-label with heading when setting aria prop to undefined', async () => {
+  it('should expose correct initial accessibility tree when aria prop is defined', async () => {
     await initCarousel({ aria: "{'aria-label': 'Other Heading'}" });
-    const host = await getHost();
-    await setProperty(host, 'aria', undefined);
-    await waitForStencilLifecycle(page);
+    const splide = await getSplide();
 
-    expect(await getProperty(host, 'ariaLabel')).toBe('Heading');
+    await expectA11yToMatchSnapshot(page, splide, { message: 'splide', interestingOnly: false });
   });
 });

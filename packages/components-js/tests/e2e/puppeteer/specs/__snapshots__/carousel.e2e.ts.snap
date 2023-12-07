@@ -1,20 +1,102 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`accessibility should expose correct initial accessibility tree and aria properties: buttonNext 1`] = `
+exports[`accessibility should expose correct initial accessibility tree when aria prop is defined: splide 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "Slide 1",
+                      "role": "StaticText",
+                    },
+                  ],
+                  "name": "Slide 1",
+                  "role": "generic",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "name": "1 of 3",
+          "role": "group",
+          "roledescription": "slide",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "Slide 2",
+                      "role": "StaticText",
+                    },
+                  ],
+                  "name": "Slide 2",
+                  "role": "generic",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "name": "2 of 3",
+          "role": "group",
+          "roledescription": "slide",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "Slide 3",
+                      "role": "StaticText",
+                    },
+                  ],
+                  "name": "Slide 3",
+                  "role": "generic",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "name": "3 of 3",
+          "role": "group",
+          "roledescription": "slide",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+  ],
+  "name": "Other Heading",
+  "role": "region",
+  "roledescription": "carousel",
+}
+`;
+
+exports[`accessibility should expose correct initial accessibility tree: buttonNext 1`] = `
 {
   "name": "Next slide",
   "role": "button",
 }
 `;
 
-exports[`accessibility should expose correct initial accessibility tree and aria properties: buttonPrev 1`] = `
+exports[`accessibility should expose correct initial accessibility tree: buttonPrev 1`] = `
 {
   "name": "Go to last slide",
   "role": "button",
 }
 `;
 
-exports[`accessibility should expose correct initial accessibility tree and aria properties: splide 1`] = `
+exports[`accessibility should expose correct initial accessibility tree: splide 1`] = `
 {
   "children": [
     {
