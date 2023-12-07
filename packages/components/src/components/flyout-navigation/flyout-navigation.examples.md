@@ -1,33 +1,33 @@
 # Flyout Navigation
 
 The `p-flyout-navigation` component is meant for displaying a multi-level navigation structure in a flyout that overlays
-the page content from the left side of the screen. It is a controlled component that gives you flexible control over the
-navigation flyout's behavior.
+the page content from the start side of the screen. It is a controlled component that gives you flexible control over
+its behavior.
 
 <Notification heading="Experimental Component" state="warning">
-  Interface of Flyout Navigation might change in the near future. <br>Currently, only two navigation levels are supported, but we will offer the support of more levels in the future.
+  Interface of Flyout Navigation might change in the near future. In addition, animation/transition concept will change in the future. Currently, only two navigation levels are supported, but we will offer the support of more levels soon.
 </Notification>
 
 <TableOfContents></TableOfContents>
 
 ## Basic
 
-The basic concept of the flyout navigation is to have a button that opens the `p-navigation-flyout` and a basic 2-level
+The basic concept of the component is to have a button that opens the `p-navigation-flyout` and a basic 2-level
 navigation structure. The **1st level** is generated out of custom `p-flyout-navigation-item` components which generates
-a list of toggle buttons to navigate the 2nd level. These 1st level items can be filled with slotted anchor links as
-children which then represent the **2nd level** of the navigation and are styled automatically by the component.
+a list of toggle buttons to navigate the 2nd level. These items can be filled with slotted anchor links as children
+which then represent the **2nd level** of the navigation and are styled automatically by the component.
 
-The most important property of p-flyout is its open attribute. When it is present the flyout will be visible.
+The most important property of p-flyout is its `open` property. When it is set to `true` the flyout will be visible.
 
-In order to get notified when the navigation flyout gets closed by clicking the x button, you need to register an event
-listener for the dismiss event which is emitted by p-flyout.
+In order to get notified when the `p-navigation-flyout` gets closed by clicking the x button, you need to register an
+event listener for the dismiss event which is emitted by `p-navigation-flyout`.
 
 <Playground :frameworkMarkup="codeExample" :markup="codeExample['vanilla-js']" :config="config"></Playground>
 
-## With active identifier
+## Active identifier
 
-The flyout navigation can be initialized with an `active-identifier` property. This identifier is used to open the
-flyout with the corresponding 1st level navigation item expanded. The `active-identifier` is the value of the
+The `p-navigation-flyout` can be initialized with an `active-identifier` property. This identifier is used to open the
+flyout with the corresponding **2nd level** navigation item expanded. The `active-identifier` must match a value of the
 `identifier` property of the `p-flyout-navigation-item` component.
 
 <Playground :frameworkMarkup="codeExampleActiveIdentifier" :markup="codeExampleActiveIdentifier['vanilla-js']" :config="config"></Playground>
@@ -38,15 +38,15 @@ Always take care that you expose the current state of the navigation to the user
 `aria-current="page"` attribute on the corresponding anchor element. And this also causes automatic styling of this
 anchor.
 
-## Enhanced example with custom content
+## Example with custom content
 
-To give further flexibility, e.g. if you only want to provide a direct link to a page on the 1st level, you can just use
-the `p-link-pure` component. Be aware that you have to adapt the styling of those custom 1st level items to match the
-design of the other 1st level items.
+To give further flexibility, e.g. if you only want to provide a direct link to a page on the **1st level**, you can just
+use the `p-link-pure` component. Be aware that you have to adapt the styling of those custom **1st level** items to
+match the design of the other 1st level items.
 
-To gain more structure on the 2nd level we also support out-of-the-box styling of `<h1> to <h6>` tags. Regarding further
-individualization of the 2nd level, you can create your own custom contents and use it as a child besides the already
-supported `<a>` and tags.
+To gain more structure on the **2nd level** we also support out-of-the-box styling of `<h1> to <h6>`, `<p>` and `<a>`
+tags. Regarding further individualization of the **2nd level**, you can create your own custom contents and use it as a
+child besides the already supported tags.
 
 <Playground :frameworkMarkup="codeExampleCustomContent" :markup="codeExampleCustomContent['vanilla-js']" :config="config"></Playground>
 
