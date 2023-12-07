@@ -136,7 +136,7 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
       }),
     },
     button: {
-      width: 'auto',
+      width: '100%',
       padding: spacingFluidSmall,
       margin: `0 calc(${spacingFluidSmall} * -1)`,
     },
