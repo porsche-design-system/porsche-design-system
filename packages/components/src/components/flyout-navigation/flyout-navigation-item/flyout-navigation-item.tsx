@@ -55,8 +55,6 @@ export class FlyoutNavigationItem {
           type="button"
           size="medium"
           icon="arrow-head-right"
-          alignLabel="start"
-          stretch={true}
           active={this.open}
           aria={{ 'aria-expanded': this.open }}
           theme={this.theme}

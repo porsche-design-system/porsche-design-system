@@ -76,7 +76,6 @@ export const getLinkButtonPureStyles = (
         ...buildResponsiveStyles(stretch, (responsiveStretch: boolean) => ({
           display: responsiveStretch ? 'block' : 'inline-block',
           width: responsiveStretch ? '100%' : 'auto', // prevents adjusting its size when used as flex or grid child
-          boxSizing: responsiveStretch ? 'border-box' : null,
           ...(!responsiveStretch && { verticalAlign: 'top' }),
         })),
       },
