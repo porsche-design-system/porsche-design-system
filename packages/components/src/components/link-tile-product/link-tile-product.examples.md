@@ -44,6 +44,16 @@ If you want to add any additional description, use the `description` property.
 
 <Playground :markup="description" :config="config"></Playground>
 
+## Aspect Ratio
+
+While the image will always stay at an aspect ratio of `8:9`, the aspect ratio of the component itself can be configured
+using the `aspect-ratio` property to be either `3:4` or `9:16`. This can be especially useful to extend the space for
+the image by using the `9:16` aspect ratio on smaller viewports and the `3:4` and larger ones.
+
+<Playground :markup="aspectRatioMarkup">
+  <SelectOptions v-model="aspectRatio" :values="aspectRatios" name="aspectRatio"></SelectOptions>
+</Playground>
+
 ## Framework routing (anchor nesting)
 
 To support framework routing you can provide the link as a slotted element of the component instead of using the `href`
@@ -70,7 +80,8 @@ property. To ensure accessibility, the slotted link must be labeled with both th
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component'; 
+import Component from 'vue-class-component';
+import { TILE_PRODUCT_ASPECT_RATIOS } from './link-tile-product-utils'; 
 import {getLinkTileProductCodeSamples} from "shared/src"; 
 import type { Theme } from '@/models';
 
@@ -124,6 +135,15 @@ export default class Code extends Vue {
   description = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" description="incl. VAT" theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>`;
+
+  aspectRatio = '3:4';
+  aspectRatios = [...TILE_PRODUCT_ASPECT_RATIOS, "{ base: '9:16', s: '3:4' }"];
+  get aspectRatioMarkup() {
+    return`<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" description="incl. VAT" aspect-ratio="${this.aspectRatio}" theme="${this.theme}">
+  ${this.headerSlot}
+  ${this.img}
+</p-link-tile-product>`;
+  };
 
   slottedLink = `<p-link-tile-product heading="Weekender" price="1.911,00 €" description="incl. VAT" theme="${this.theme}">
   ${this.link}
