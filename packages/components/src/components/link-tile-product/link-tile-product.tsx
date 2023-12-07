@@ -87,7 +87,7 @@ export class LinkTileProduct {
     const headerId = 'header';
     const headingId = 'heading';
     const priceId = 'price';
-    const infoId = 'info';
+    const descriptionId = 'description';
 
     return (
       <Host>
@@ -117,7 +117,7 @@ export class LinkTileProduct {
             <p id={priceId} class="text text__price">
               {this.price}
             </p>
-            <p id={infoId} class="text text__info">
+            <p id={descriptionId} class="text text__info">
               {this.description}
             </p>
           </div>
@@ -128,7 +128,7 @@ export class LinkTileProduct {
               target={this.target}
               rel={this.rel}
               aria-labelledby={`${headingId} ${priceId}`}
-              aria-describedby={`${headerId} ${infoId}`}
+              aria-describedby={`${headerId} ${descriptionId}`}
             />
           )}
         </div>
