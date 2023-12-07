@@ -4221,7 +4221,6 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
 
     </style>
     <p-button-pure
-      align-label="start"
       class="button ssr"
     >
       <template
@@ -4280,7 +4279,7 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
-  order: 0;
+  order: -1;
 }
 .icon {
   position: relative;

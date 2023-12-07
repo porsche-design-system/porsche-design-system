@@ -54,7 +54,7 @@ export class FlyoutNavigationItem {
           class="button"
           type="button"
           size="medium"
-          align-label="start"
+          alignLabel="start"
           stretch={true}
           icon="arrow-head-right"
           active={this.open}
