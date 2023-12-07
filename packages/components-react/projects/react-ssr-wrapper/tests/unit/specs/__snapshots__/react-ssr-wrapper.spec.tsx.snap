@@ -5220,11 +5220,8 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   display: block !important;
   width: 100% !important;
   height: 100% !important;
-  border-radius: 12px !important;
   object-fit: cover !important;
   overflow: hidden !important;
-  aspect-ratio: 8 / 9 !important;
-  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
   mix-blend-mode: var(--p-link-tile-product-mix-blend-mode) !important;
 }
 ::slotted(a) {
@@ -5247,6 +5244,10 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   border-radius: 8px;
 }
 .root {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
   box-sizing: border-box;
   border-radius: 8px;
   padding: clamp(8px, 0.5vw + 6px, 16px);
@@ -5254,20 +5255,16 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   background-color: #EEEFF2;
 }
 .header {
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  height: calc(4px * 2 + calc(6px + 2.125ex));
-  padding-right: calc(6px + 2.125ex);
 }
 .like-button {
-  position: absolute;
-  z-index: 2;
-  top: clamp(8px, 0.5vw + 6px, 16px);
-  right: clamp(8px, 0.5vw + 6px, 16px);
   height: fit-content;
+  position: relative;
+  z-index: 2;
 }
 .text-container {
-  height: calc(calc(6px + 2.125ex) * 4);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -5278,17 +5275,13 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
 }
 .text__heading {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  max-height: calc(calc(6px + 2.125ex) * 2);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding-bottom: 2px;
+  min-height: calc(calc(6px + 2.125ex) * 2);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 .text__price, .text__info {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   font-weight: 400;
 }
 .text__price {
@@ -5300,12 +5293,22 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  max-height: calc(6px + 2.125ex);
   color: #535457;
 }
 .image-container {
-  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(16px, 1.25vw + 12px, 36px) clamp(4px, 0.25vw + 3px, 8px) clamp(16px, 1.25vw + 12px, 36px) ;
+  margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px) auto;
+  overflow: hidden;
+  aspect-ratio: 8 / 9;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+  max-height: 100%;
+  border-radius: 12px;
 }
+@media(min-width:760px) {
+  .image-container {
+    margin: clamp(8px, 0.5vw + 6px, 16px) max(clamp(16px, 1.25vw + 12px, 36px), auto) clamp(4px, 0.25vw + 3px, 8px) max(clamp(16px, 1.25vw + 12px, 36px), auto);
+  }
+}
+
 
     </style>
     <div
@@ -5318,40 +5321,17 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
         <slot
           name="header"
         />
-      </div>
-      <div
-        class="image-container"
-      >
-        <slot />
-      </div>
-      <div
-        class="text-container"
-      >
-        <h3
-          class="text text__heading"
-          id="heading"
-        />
-        <p
-          class="text text__price"
-          id="price"
-        />
-        <p
-          class="text text__info"
-          id="info"
-        />
-      </div>
-    </div>
-    <p-button-pure
-      class="like-button ssr"
-      hide-label="true"
-    >
-      <template
-        shadowroot="open"
-        shadowrootdelegatesfocus="true"
-        shadowrootmode="open"
-      >
-        <style>
-          :host {
+        <p-button-pure
+          class="like-button ssr"
+          hide-label="true"
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
   color-scheme: light dark !important;
@@ -5418,21 +5398,21 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
 }
 
 
-        </style>
-        <button
-          class="root"
-          type="button"
-        >
-          <p-icon
-            aria-hidden="true"
-            class="icon ssr"
-          >
-            <template
-              shadowroot="open"
-              shadowrootmode="open"
+            </style>
+            <button
+              class="root"
+              type="button"
             >
-              <style>
-                :host {
+              <p-icon
+                aria-hidden="true"
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -5458,25 +5438,48 @@ img {
     transform: rotateZ(0);
   }
 }
-              </style>
-              <img
-                alt=""
-                height="24"
-                loading="lazy"
-                src="http://localhost:3001/icons/heart.min.7c25821e7db007879ef53b83c116fc37.svg"
-                width="24"
-              />
-            </template>
-          </p-icon>
-          <span
-            class="label"
-          >
-            <slot />
-          </span>
-        </button>
-      </template>
-      Heart icon
-    </p-button-pure>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/heart.min.7c25821e7db007879ef53b83c116fc37.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+          </template>
+          Heart icon
+        </p-button-pure>
+      </div>
+      <div
+        class="image-container"
+      >
+        <slot />
+      </div>
+      <div
+        class="text-container"
+      >
+        <h3
+          class="text text__heading"
+          id="heading"
+        />
+        <p
+          class="text text__price"
+          id="price"
+        />
+        <p
+          class="text text__info"
+          id="info"
+        />
+      </div>
+    </div>
   </template>
   Some child
 </p-link-tile-product>
