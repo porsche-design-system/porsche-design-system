@@ -282,9 +282,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(
             /this\.props\.hasNavigation/g,
             "(this.props.slidesPerPage === 'auto' || typeof this.props.slidesPerPage === 'object' || this.props.slidesPerPage < otherChildren.length)"
-          )
-          .replace(/this\.props\.(hasHeading)/g, 'this.$1')
-          .replace(/this\.props\.(hasDescription)/g, 'this.$1');
+          );
       } else if (tagName === 'p-banner') {
         // remove warning about deprecated title slot
         newFileContent = newFileContent
