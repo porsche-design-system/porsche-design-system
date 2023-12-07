@@ -1,4 +1,4 @@
-import type { PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,15 +10,21 @@ import {
 } from '../../utils';
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 import { getComponentCss } from './link-tile-product-styles';
-import { LinkTileProductTarget, LinkTileProductUpdateEvent } from './link-tile-product-utils';
+import {
+  TILE_PRODUCT_ASPECT_RATIOS,
+  LinkTileProductAspectRatio,
+  LinkTileProductLikeEvent,
+  LinkTileProductTarget,
+} from './link-tile-product-utils';
 
 const propTypes: PropTypes<typeof LinkTileProduct> = {
   heading: AllowedTypes.string,
   price: AllowedTypes.string,
-  info: AllowedTypes.string,
+  description: AllowedTypes.string,
   likeButton: AllowedTypes.boolean,
   liked: AllowedTypes.boolean,
   href: AllowedTypes.string,
+  aspectRatio: AllowedTypes.breakpoint<LinkTileProductAspectRatio>(TILE_PRODUCT_ASPECT_RATIOS),
   target: AllowedTypes.string,
   rel: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -38,8 +44,8 @@ export class LinkTileProduct {
   /** Product price */
   @Prop() public price: string;
 
-  /** Additional product information */
-  @Prop() public info?: string;
+  /** Additional product description */
+  @Prop() public description?: string;
 
   /** A Boolean attribute indicating that a like button should be shown. */
   @Prop() public likeButton?: boolean = true;
@@ -49,6 +55,9 @@ export class LinkTileProduct {
 
   /** href of the `<a>`. */
   @Prop() public href?: string;
+
+  /** Aspect ratio of the link-tile-product. */
+  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileProductAspectRatio> = '3:4';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTileProductTarget = '_self';
@@ -60,7 +69,7 @@ export class LinkTileProduct {
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the like button is clicked. */
-  @Event({ bubbles: false }) public likeChange: EventEmitter<LinkTileProductUpdateEvent>;
+  @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeEvent>;
 
   public componentWillLoad(): void {
     throwIfInvalidLinkTileProductUsage(this.host, this.href);
@@ -72,7 +81,7 @@ export class LinkTileProduct {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.likeButton, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.likeButton, this.aspectRatio, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const headerId = 'header';
@@ -85,6 +94,18 @@ export class LinkTileProduct {
         <div class="root">
           <div id={headerId} class="header">
             <slot name="header" />
+            {this.likeButton && (
+              <PrefixedTagNames.pButtonPure
+                class="like-button"
+                type="button"
+                icon={this.liked ? 'heart-filled' : 'heart'}
+                hide-label="true"
+                onClick={this.onLikeClick}
+                theme={this.theme}
+              >
+                {this.liked ? 'Heart Filled icon' : 'Heart icon'}
+              </PrefixedTagNames.pButtonPure>
+            )}
           </div>
           <div class="image-container">
             <slot />
@@ -97,7 +118,7 @@ export class LinkTileProduct {
               {this.price}
             </p>
             <p id={infoId} class="text text__info">
-              {this.info}
+              {this.description}
             </p>
           </div>
           {this.href && (
@@ -111,24 +132,12 @@ export class LinkTileProduct {
             />
           )}
         </div>
-        {this.likeButton && (
-          <PrefixedTagNames.pButtonPure
-            class="like-button"
-            type="button"
-            icon={this.liked ? 'heart-filled' : 'heart'}
-            hide-label="true"
-            onClick={this.onLikeClick}
-            theme={this.theme}
-          >
-            {this.liked ? 'Heart Filled icon' : 'Heart icon'}
-          </PrefixedTagNames.pButtonPure>
-        )}
       </Host>
     );
   }
 
   private onLikeClick = () => {
-    this.likeChange.emit({
+    this.like.emit({
       liked: this.liked,
     });
   };

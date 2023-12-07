@@ -1,4 +1,4 @@
-import { getCss, Theme } from '../../utils';
+import { buildResponsiveStyles, getCss, Theme } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -17,6 +17,7 @@ import {
   fontSizeTextXSmall,
   fontWeightRegular,
   getFocusStyle,
+  getMediaQueryMin,
   headingSmallStyle,
   spacingFluidMedium,
   spacingFluidSmall,
@@ -25,11 +26,16 @@ import {
   textXXSmallStyle,
   themeLightStateFocus,
 } from '@porsche-design-system/utilities-v2';
-import { tagPaddingY } from '../tag/tag-styles';
+import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import { LinkTileProductAspectRatio } from './link-tile-product-utils';
 
 const cssVariableMixBlendMode = '--p-link-tile-product-mix-blend-mode';
 
-export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string => {
+export const getComponentCss = (
+  hasLikeButton: boolean,
+  aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>,
+  theme: Theme
+): string => {
   const { primaryColor, contrastHighColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
@@ -45,7 +51,7 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
           ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...hoverMediaQuery({
-            '&(:hover) ::slotted(img), &(:hover) ::slotted(picture)': {
+            '&(:hover) .image-container': {
               transform: 'scale3d(1.05,1.05,1.05)',
             },
           }),
@@ -57,11 +63,8 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
             display: 'block',
             width: '100%',
             height: '100%',
-            borderRadius: borderRadiusLarge,
             objectFit: 'cover',
             overflow: 'hidden',
-            aspectRatio: '8 / 9',
-            transition: getTransition('transform', 'moderate'),
             mixBlendMode: `var(${cssVariableMixBlendMode})`,
           },
           '&(a)': {
@@ -88,6 +91,13 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
       ...getFocusStyle({ borderRadius: 'medium' }),
     },
     root: {
+      display: 'flex',
+      flexDirection: 'column',
+      aspectRatio: '3 / 4',
+      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileProductAspectRatio) => ({
+        aspectRatio: ratio.replace(':', ' / '),
+      })),
+      overflow: 'hidden',
       boxSizing: 'border-box',
       borderRadius: borderRadiusMedium,
       padding: spacingFluidSmall,
@@ -99,20 +109,15 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
       }),
     },
     header: {
-      overflow: 'hidden',
+      display: 'flex',
+      justifyContent: 'space-between',
       fontSize: fontSizeTextXSmall, // Use same font size and height as tag component
-      height: `calc(${tagPaddingY} * 2 + ${fontLineHeight})`,
-      ...(hasLikeButton && {
-        paddingRight: fontLineHeight, // Reserve space for like button
-      }),
     },
     ...(hasLikeButton && {
       'like-button': {
-        position: 'absolute',
-        zIndex: 2, // To be on top of link
-        top: spacingFluidSmall,
-        right: spacingFluidSmall,
         height: 'fit-content',
+        position: 'relative',
+        zIndex: 2, // Necessary to be on top of anchor link
         ...hoverMediaQuery({
           '&:hover': {
             cursor: 'pointer',
@@ -121,7 +126,6 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
       },
     }),
     'text-container': {
-      height: `calc(${fontLineHeight} * 4)`,
       display: 'flex',
       justifyContent: 'center',
       flexDirection: 'column',
@@ -131,18 +135,13 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
       margin: 0,
       '&__heading': {
         ...headingSmallStyle,
-        maxHeight: `calc(${fontLineHeight} * 2)`,
-        display: '-webkit-box',
-        WebkitLineClamp: 2,
-        WebkitBoxOrient: 'vertical',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
         paddingBottom: '2px',
+        minHeight: `calc(${fontLineHeight} * 2)`,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
       },
       '&__price, &__info': {
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
         fontWeight: fontWeightRegular,
       },
       '&__price': {
@@ -150,7 +149,6 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
       },
       '&__info': {
         ...textXXSmallStyle,
-        maxHeight: fontLineHeight,
         color: contrastHighColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: contrastHighColorDark,
@@ -158,7 +156,15 @@ export const getComponentCss = (hasLikeButton: boolean, theme: Theme): string =>
       },
     },
     'image-container': {
-      padding: `${spacingFluidSmall} ${spacingFluidMedium} ${spacingFluidXSmall} ${spacingFluidMedium} `,
+      margin: `${spacingFluidSmall} auto ${spacingFluidXSmall} auto`,
+      [getMediaQueryMin('s')]: {
+        margin: `${spacingFluidSmall} max(${spacingFluidMedium}, auto) ${spacingFluidXSmall} max(${spacingFluidMedium}, auto)`,
+      },
+      overflow: 'hidden',
+      aspectRatio: '8 / 9',
+      transition: getTransition('transform', 'moderate'),
+      maxHeight: '100%',
+      borderRadius: borderRadiusLarge,
     },
   });
 };
