@@ -39,7 +39,7 @@ import { type FlyoutNavigationUpdateEvent } from '@porsche-design-system/compone
         </p-link-tile>
         <h3>Some heading</h3>
         <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
+        <a href="#some-anchor" aria-current="page">Some anchor</a>
         <a href="#some-anchor">Some anchor</a>
         <h3>Some heading</h3>
         <a href="#some-anchor">Some anchor</a>
