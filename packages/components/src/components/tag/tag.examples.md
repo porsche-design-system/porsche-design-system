@@ -11,7 +11,7 @@
 </Notification>
 
 <Playground :markup="colorMarkup" :config="{ ...config, backgroundColor }">
-  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
+  <PlaygroundSelect v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></PlaygroundSelect>
 </Playground>
 
 ## Icon
@@ -28,7 +28,7 @@ It is possible to add a `<button>` tag into the `p-tag` component. If you do thi
 clickable and no other content outside the button or link is allowed.
 
 <Playground :markup="buttonMarkup" :config="{ ...config, backgroundColor }">
-  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
+  <PlaygroundSelect v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></PlaygroundSelect>
 </Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
@@ -44,7 +44,7 @@ It is possible to add `<a>` tag into the `p-tag` component. If you do this, the 
 no other content outside the button or link is allowed.
 
 <Playground :markup="linkMarkup" :config="{ ...config, backgroundColor }">
-  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
+  <PlaygroundSelect v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></PlaygroundSelect>
 </Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints

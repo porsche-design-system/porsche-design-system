@@ -120,7 +120,7 @@ export class MultiSelect {
   @State() private hasFilterResults = true;
 
   private nativeSelect: HTMLSelectElement;
-  private multiSelectOptions: MultiSelectOption[] = [];
+  private multiPlaygroundSelect: MultiSelectOption[] = [];
   private inputContainer: HTMLDivElement;
   private inputElement: HTMLInputElement;
   private listElement: HTMLDivElement;
@@ -129,7 +129,7 @@ export class MultiSelect {
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
 
   private get currentValue(): string[] {
-    return getSelectedOptionValues(this.multiSelectOptions);
+    return getSelectedOptionValues(this.multiPlaygroundSelect);
   }
 
   @Listen('internalOptionUpdate')
@@ -145,13 +145,13 @@ export class MultiSelect {
   @Watch('value')
   public onValueChange(): void {
     // When setting initial value the watcher gets called before the options are defined
-    if (this.multiSelectOptions.length > 0) {
+    if (this.multiPlaygroundSelect.length > 0) {
       if (!this.preventOptionUpdate) {
-        setSelectedOptions(this.multiSelectOptions, this.value);
+        setSelectedOptions(this.multiPlaygroundSelect, this.value);
       }
       this.preventOptionUpdate = false;
       if (this.isWithinForm) {
-        updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
+        updateNativeOptions(this.nativeSelect, this.multiPlaygroundSelect);
       }
     }
   }
@@ -165,10 +165,10 @@ export class MultiSelect {
   public componentWillLoad(): void {
     this.updateOptions();
     // Use initial value to set options
-    setSelectedOptions(this.multiSelectOptions, this.value);
+    setSelectedOptions(this.multiPlaygroundSelect, this.value);
     if (this.isWithinForm) {
       this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
-      updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
+      updateNativeOptions(this.nativeSelect, this.multiPlaygroundSelect);
     }
   }
 
@@ -195,7 +195,7 @@ export class MultiSelect {
     attachComponentCss(
       this.host,
       getComponentCss,
-      getDropdownDirection(this.dropdownDirection, this.inputContainer, this.multiSelectOptions),
+      getDropdownDirection(this.dropdownDirection, this.inputContainer, this.multiPlaygroundSelect),
       this.isOpen,
       this.disabled,
       this.hideLabel,
@@ -203,7 +203,7 @@ export class MultiSelect {
       this.isWithinForm,
       this.theme
     );
-    syncMultiSelectOptionProps(this.multiSelectOptions, this.theme);
+    syncMultiSelectOptionProps(this.multiPlaygroundSelect, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const optionsSelectedId = 'options-selected';
@@ -224,14 +224,14 @@ export class MultiSelect {
         {/* in case, sr-only text is not placed here then the clear button is not able to focus the input for unknown reasons */}
         {this.currentValue.length > 0 && (
           <span id={optionsSelectedId} class="sr-only">
-            {getSelectedOptions(this.multiSelectOptions).length} options selected
+            {getSelectedOptions(this.multiPlaygroundSelect).length} options selected
           </span>
         )}
         <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
           <input
             id={inputId}
             role="combobox"
-            placeholder={getSelectedOptionsString(this.multiSelectOptions) || null}
+            placeholder={getSelectedOptionsString(this.multiPlaygroundSelect) || null}
             autoComplete="off"
             disabled={this.disabled}
             required={this.required}
@@ -295,27 +295,27 @@ export class MultiSelect {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    setSelectedOptions(this.multiSelectOptions, this.value);
+    setSelectedOptions(this.multiPlaygroundSelect, this.value);
     if (this.isWithinForm) {
-      updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
+      updateNativeOptions(this.nativeSelect, this.multiPlaygroundSelect);
     }
     // Necessary to update selected options in placeholder
     forceUpdate(this.host);
   };
 
   private updateOptions = (): void => {
-    this.multiSelectOptions = Array.from(this.host.children).filter(
+    this.multiPlaygroundSelect = Array.from(this.host.children).filter(
       (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
     ) as HTMLPMultiSelectOptionElement[];
-    this.multiSelectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
+    this.multiPlaygroundSelect.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
   };
 
   private onInputChange = (e: InputEvent & { target: HTMLInputElement }): void => {
     if (e.target.value.startsWith(' ')) {
       this.resetFilter();
     } else {
-      updateOptionsFilterState((e.target as HTMLInputElement).value, this.multiSelectOptions);
-      this.hasFilterResults = hasFilterOptionResults(this.multiSelectOptions);
+      updateOptionsFilterState((e.target as HTMLInputElement).value, this.multiPlaygroundSelect);
+      this.hasFilterResults = hasFilterOptionResults(this.multiPlaygroundSelect);
     }
     // in case input is focused via tab instead of click
     this.isOpen = true;
@@ -326,7 +326,7 @@ export class MultiSelect {
   };
 
   private onResetClick = (): void => {
-    resetSelectedOptions(this.multiSelectOptions);
+    resetSelectedOptions(this.multiPlaygroundSelect);
     this.value = this.currentValue;
     this.inputElement.focus();
     this.emitUpdateEvent();
@@ -342,7 +342,7 @@ export class MultiSelect {
 
   private resetFilter = (): void => {
     this.inputElement.value = '';
-    resetFilteredOptions(this.multiSelectOptions);
+    resetFilteredOptions(this.multiPlaygroundSelect);
   };
 
   private onInputKeyDown = (e: KeyboardEvent): void => {
@@ -358,7 +358,7 @@ export class MultiSelect {
         this.cycleDropdown('down');
         break;
       case 'Enter':
-        const highlightedOption = getHighlightedOption(this.multiSelectOptions);
+        const highlightedOption = getHighlightedOption(this.multiPlaygroundSelect);
         if (highlightedOption) {
           highlightedOption.selected = !highlightedOption.selected;
           this.value = this.currentValue;
@@ -378,25 +378,25 @@ export class MultiSelect {
         break;
       case 'Escape':
         this.isOpen = false;
-        resetHighlightedOptions(this.multiSelectOptions);
+        resetHighlightedOptions(this.multiPlaygroundSelect);
         break;
       case 'Tab':
         // If there is a value the reset button will be focused and the dropdown stays open
         if (!this.currentValue.length) {
           this.isOpen = false;
         }
-        resetHighlightedOptions(this.multiSelectOptions);
+        resetHighlightedOptions(this.multiPlaygroundSelect);
         break;
       case 'PageUp':
         if (this.isOpen) {
           e.preventDefault();
-          setFirstOptionHighlighted(this.listElement, this.multiSelectOptions);
+          setFirstOptionHighlighted(this.listElement, this.multiPlaygroundSelect);
         }
         break;
       case 'PageDown':
         if (this.isOpen) {
           e.preventDefault();
-          setLastOptionHighlighted(this.listElement, this.multiSelectOptions);
+          setLastOptionHighlighted(this.listElement, this.multiPlaygroundSelect);
         }
         break;
       default:
@@ -406,18 +406,18 @@ export class MultiSelect {
 
   private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
     this.isOpen = true;
-    updateHighlightedOption(this.listElement, this.multiSelectOptions, direction);
+    updateHighlightedOption(this.listElement, this.multiPlaygroundSelect, direction);
     this.updateSrHighlightedOptionText();
   }
 
   private updateSrHighlightedOptionText = (): void => {
-    const highlightedOptionIndex = getHighlightedOptionIndex(this.multiSelectOptions);
-    const highlightedOption = this.multiSelectOptions[highlightedOptionIndex];
+    const highlightedOptionIndex = getHighlightedOptionIndex(this.multiPlaygroundSelect);
+    const highlightedOption = this.multiPlaygroundSelect[highlightedOptionIndex];
     this.srHighlightedOptionText =
       highlightedOption &&
       `${highlightedOption.textContent}${highlightedOption.selected ? ', selected' : ' not selected'} (${
         highlightedOptionIndex + 1
-      } of ${this.multiSelectOptions.length})`;
+      } of ${this.multiPlaygroundSelect.length})`;
   };
 
   private emitUpdateEvent = (): void => {

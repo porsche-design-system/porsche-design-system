@@ -46,7 +46,7 @@ The background and gradient has to align with your chosen background.
 </Notification>
 
 <Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
-  <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
+  <PlaygroundSelect v-model="gradientColor" :values="gradientColors" name="gradientColor"></PlaygroundSelect>
 </Playground>
 
 ## Scroll to position

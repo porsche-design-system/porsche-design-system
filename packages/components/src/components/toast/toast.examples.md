@@ -28,7 +28,7 @@ type ToastMessage = {
 </Notification>
 
 <Playground :frameworkMarkup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
   <br><br>
   <label>
     Text:&nbsp;

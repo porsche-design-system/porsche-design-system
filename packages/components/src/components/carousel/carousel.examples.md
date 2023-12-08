@@ -27,7 +27,7 @@ The amount of slides visible at the same time can be specified by setting the `s
 The value can either be a static number, or a breakpoint customizable object.
 
 <Playground :markup="slidesPerPageMarkup" :config="config">
-  <SelectOptions v-model="slidesPerPage" :values="slidesPerPages" name="slidesPerPage"></SelectOptions>
+  <PlaygroundSelect v-model="slidesPerPage" :values="slidesPerPages" name="slidesPerPage"></PlaygroundSelect>
 </Playground>
 
 ## Slides with flexible widths
@@ -62,7 +62,7 @@ The heading and description can be aligned via `alignHeader`.
 </Notification>
 
 <Playground :markup="alignHeaderMarkup" :config="config">
-  <SelectOptions v-model="alignHeader" :values="alignHeaders" name="alignHeader"></SelectOptions>
+  <PlaygroundSelect v-model="alignHeader" :values="alignHeaders" name="alignHeader"></PlaygroundSelect>
 </Playground>
 
 ## Width
@@ -70,7 +70,7 @@ The heading and description can be aligned via `alignHeader`.
 Defines horizontal spacing which is aligned with the [Porsche Grid](styles/grid).
 
 <Playground :markup="widthMarkup" :config="config">
-  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
+  <PlaygroundSelect v-model="width" :values="widths" name="width"></PlaygroundSelect>
 </Playground>
 
 ## Wrap Content (deprecated)
@@ -98,7 +98,7 @@ The pagination indicators underneath the slides can be removed via `pagination="
 </Notification>
 
 <Playground :markup="paginationMarkup" :config="config">
-  <SelectOptions v-model="pagination" :values="paginations" name="pagination"></SelectOptions>
+  <PlaygroundSelect v-model="pagination" :values="paginations" name="pagination"></PlaygroundSelect>
 </Playground>
 
 ## Jump to slide (activeSlideIndex)
@@ -165,7 +165,7 @@ By default, every carousel item gets a predefined border radius of "large" (`12p
 CSS property (see also [Border Styles](styles/border#styles)).
 
 <Playground :markup="customBorderRadiusMarkup" :config="config">
-  <SelectOptions v-model="customBorderRadius" :values="customBorderRadii" name="borderRadius"></SelectOptions>
+  <PlaygroundSelect v-model="customBorderRadius" :values="customBorderRadii" name="borderRadius"></PlaygroundSelect>
 </Playground>
 
 ## Skip Carousel Entries

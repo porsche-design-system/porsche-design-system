@@ -14,7 +14,7 @@
   import { Prop } from 'vue-property-decorator';
 
   @Component
-  export default class SelectOptions extends Vue {
+  export default class PlaygroundSelect extends Vue {
     @Prop({ default: 'prop' }) public name!: string;
     @Prop({ default: '' }) public value!: string;
     @Prop({ default: () => [] }) public values!: string[];

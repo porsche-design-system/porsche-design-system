@@ -16,7 +16,7 @@ better accessibility whenever possible. A `label` is a caption which informs the
 interaction. When used with hidden label, it's best practice to provide a descriptive label text for screen readers.
 
 <Playground :markup="hideLabelMarkup" :config="configInline">
-  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
+  <PlaygroundSelect v-model="hideLabel" :values="hideLabels" name="hideLabel"></PlaygroundSelect>
 </Playground>
 
 ## Framework Implementations
@@ -52,7 +52,7 @@ recommended on mobile views.
 </Notification>
 
 <Playground :markup="alignLabelMarkup" :config="configInline">
-  <SelectOptions v-model="alignLabel" :values="alignLabels" name="alignLabel"></SelectOptions>
+  <PlaygroundSelect v-model="alignLabel" :values="alignLabels" name="alignLabel"></PlaygroundSelect>
 </Playground>
 
 ---

@@ -19,7 +19,7 @@ is best for a particular scenario.
 </Notification>
 
 <Playground :markup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
 </Playground>
 
 ## Without Close/Dismiss Button
@@ -45,7 +45,7 @@ It can be used to remove the component.
   <br>
   <br>
   <div id="bannerEventsWrapper" hidden>
-    <p-inline-notification :heading="defaultHeading" :description="defaultDescription"></p-inline-notification>
+    <p-inline-notification :theme="theme" :heading="defaultHeading" :description="defaultDescription"></p-inline-notification>
   </div>
 </Playground>
 
@@ -58,6 +58,7 @@ The custom event that is emitted on action button click is called `action`.
 <Playground :frameworkMarkup="actionButton" :config="config">
   <p-inline-notification
     id="bannerAction"
+    :theme="theme"
     :heading="defaultHeading"
     :description="defaultDescription"
     action-label="Retry"
@@ -80,6 +81,7 @@ import Component from 'vue-class-component';
 import { getInlineNotificationCodeSamples } from '@porsche-design-system/shared';
 import { INLINE_NOTIFICATION_STATES } from './inline-notification-utils';
 import { BANNER_STATES_DEPRECATED } from '../banner/banner-utils';
+import type { Theme } from '@/models';
 
 @Component
 export default class Code extends Vue {
@@ -89,6 +91,10 @@ export default class Code extends Vue {
   defaultDescription = 'Some description.';
   slottedHeading = 'Some slotted heading';
   slottedDescription = 'Some slotted description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.';
+
+  get theme(): Theme {
+    return this.$store.getters.playgroundTheme;
+  }
 
   basic =
 `<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}">

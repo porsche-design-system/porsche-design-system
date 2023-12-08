@@ -62,7 +62,7 @@ There are predefined text sizes for the component which should cover most use ca
 the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ### Responsive
@@ -109,7 +109,7 @@ The `label` can be aligned to the `end` (default) or to the `start` of the icon.
 </Notification>
 
 <Playground :markup="alignLabelMarkup" :config="config">
-  <SelectOptions v-model="alignLabel" :values="alignLabels" name="alignLabel"></SelectOptions>
+  <PlaygroundSelect v-model="alignLabel" :values="alignLabels" name="alignLabel"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -120,7 +120,7 @@ The `stretch` property extends the area between icon and label to the maximum av
 stretch only on `start` alignment and small viewports, e.g. mobile views.
 
 <Playground :markup="stretchMarkup" :config="config">
-  <SelectOptions v-model="stretch" :values="stretches" name="stretch and align-label"></SelectOptions>
+  <PlaygroundSelect v-model="stretch" :values="stretches" name="stretch and align-label"></PlaygroundSelect>
 </Playground>
 
 ---

@@ -17,7 +17,7 @@ social media platforms or social sharing dialogs.
 Choose between a set of pre-defined social icons.
 
 <Playground :markup="variants" :config="config">
-  <SelectOptions v-model="platform" :values="platforms" name="social platform"></SelectOptions>
+  <PlaygroundSelect v-model="platform" :values="platforms" name="social platform"></PlaygroundSelect>
 </Playground>
 
 ### Responsive
