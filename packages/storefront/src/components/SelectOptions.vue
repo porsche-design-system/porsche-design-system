@@ -28,10 +28,7 @@
     display: inline-flex;
     flex-direction: column;
     gap: 2px;
-
-    &:not(:last-of-type) {
-      margin-inline-end: $pds-spacing-fluid-small;
-    }
+    margin-inline-end: $pds-spacing-fluid-x-small;
   }
 
   select {

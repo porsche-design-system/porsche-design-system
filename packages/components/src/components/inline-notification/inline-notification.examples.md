@@ -41,7 +41,7 @@ The custom event that is emitted on close button click is called `dismiss`.
 It can be used to remove the component.
 
 <Playground :frameworkMarkup="events" :config="config">
-  <button id="bannerEventsButton" type="button">Show Inline Notification</button>
+  <PlaygroundButton id="bannerEventsButton" name="Show Inline Notification"></PlaygroundButton>
   <br>
   <br>
   <div id="bannerEventsWrapper" hidden>
@@ -64,7 +64,7 @@ The custom event that is emitted on action button click is called `action`.
     action-icon="reset"
   ></p-inline-notification>
   <br>
-  <button id="bannerActionButton" type="button">Reset `actionLoading`</button>
+  <PlaygroundButton id="bannerActionButton" name="Reset `actionLoading`"></PlaygroundButton>
 </Playground>
 
 ## Slotted Content
@@ -133,9 +133,3 @@ export default class Code extends Vue {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  button {
-    padding: .5rem 1rem;
-  }
-</style>

@@ -56,19 +56,21 @@ The `p-scroller` component provides the `scrollToPosition` property. It accepts
 
 If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
 
-<Playground :frameworkMarkup="codeExample" :config="{ themeable: false }">
-  <button id="start" @click="scrollToPosition = '{scrollPosition: 0, isSmooth: true }'">Scroll to start</button>
-  <button id="middle" @click="scrollToPosition = '{scrollPosition: 220, isSmooth: true }'">Scroll to middle</button>
-  <button id="end" @click="scrollToPosition = '{scrollPosition: 720, isSmooth: true }'">Scroll to end</button>
-
-  <div style="max-width: 400px">
-    <p-scroller class="scroller" :scroll-to-position="scrollToPosition" style="white-space: nowrap">
+<Playground :frameworkMarkup="codeExample" :config="config">
+  <PlaygroundButton name="Scroll to start" @click="scrollToPosition = '{scrollPosition: 0, isSmooth: true }'"></PlaygroundButton>
+  <PlaygroundButton name="Scroll to middle" @click="scrollToPosition = '{scrollPosition: 220, isSmooth: true }'"></PlaygroundButton>
+  <PlaygroundButton name="Scroll to end" @click="scrollToPosition = '{scrollPosition: 720, isSmooth: true }'"></PlaygroundButton>
+  <br>
+  <br>
+  <div style="max-width: 400px;">
+    <p-scroller class="scroller" :theme="theme" :scroll-to-position="scrollToPosition" style="white-space: nowrap">
       <p-tag-dismissible>START - some tag content</p-tag-dismissible>
       <p-tag-dismissible>MIDDLE - some tag content</p-tag-dismissible>
       <p-tag-dismissible>END - some tag content</p-tag-dismissible>
     </p-scroller>
-    <p-text>{{scrollToPosition}}</p-text>
   </div>
+  <br>
+  <p-text :theme="theme">{{scrollToPosition}}</p-text>
 </Playground>
 
 ## Scrollbar
@@ -219,9 +221,5 @@ export default class Code extends Vue {
     &:not(:last-child) {
       margin-inline-end: 16px;
     }
-  }
-
-  .demo > button {
-    margin: 0 16px 16px 0;
   }
 </style>
