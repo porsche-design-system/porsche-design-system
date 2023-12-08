@@ -284,6 +284,10 @@ describe('getIndexHtml()', () => {
   it('should return correct markup with styles', () => {
     expect(getIndexHtml('ltr', 'some styles')).toMatchSnapshot();
   });
+
+  it('should return correct markup with styles and rtl mode', () => {
+    expect(getIndexHtml('rtl', 'some styles')).toMatchSnapshot();
+  });
 });
 
 describe('getMainTs()', () => {

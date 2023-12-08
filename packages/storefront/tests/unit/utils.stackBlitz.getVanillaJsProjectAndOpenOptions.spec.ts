@@ -124,6 +124,17 @@ describe('getIndexHtml()', () => {
       expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
     });
 
+    it('should return correct markup with rtl mode', () => {
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+        .mockReturnValue(mockedMarkupWithLoadFunction);
+      jest
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+        .mockReturnValue(mockedMarkup);
+
+      expect(getIndexHtml(mockedMarkup, 'rtl', mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
+    });
+
     it('should return correct markup with externalDependencies', () => {
       jest
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')

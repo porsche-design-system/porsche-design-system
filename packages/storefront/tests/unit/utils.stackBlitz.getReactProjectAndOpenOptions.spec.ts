@@ -7,6 +7,7 @@ import {
   getIndexTsx,
   getAppTsx,
   applyStackBlitzFixForReact,
+  getIndexHtml,
 } from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
 import type { SharedImportKey, StackBlitzFrameworkOpts, ExternalDependency } from '../../src/utils';
 import * as getReactProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
@@ -159,6 +160,16 @@ describe('getIndexTsx()', () => {
     expect(getIndexTsx('')).toMatchSnapshot();
     expect(convertImportPathsSpy).toBeCalledTimes(1);
     expect(applyStackBlitzFixForReactSpy).toBeCalledTimes(1);
+  });
+});
+
+describe('getIndexHtml()', () => {
+  it('should return correct markup with styles', () => {
+    expect(getIndexHtml('ltr', 'some styles')).toMatchSnapshot();
+  });
+
+  it('should return correct markup with styles and rtl mode', () => {
+    expect(getIndexHtml('rtl', 'some styles')).toMatchSnapshot();
   });
 });
 
