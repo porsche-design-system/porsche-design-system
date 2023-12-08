@@ -305,7 +305,7 @@
     &--spacing-inline .demo {
       :deep(> *) {
         &:not(:last-child) {
-          margin-right: $pds-spacing-static-medium;
+          margin-inline-end: $pds-spacing-static-medium;
         }
       }
     }
@@ -358,7 +358,7 @@
   .btn-fullscreen {
     position: absolute;
     top: $pds-spacing-static-small;
-    right: $pds-spacing-static-small;
+    inset-inline-end: $pds-spacing-static-small;
     z-index: 1; // to be above certain examples
   }
 </style>

@@ -217,7 +217,7 @@ export default class Code extends Vue {
   }
   :deep(p-scroller > *) {
     &:not(:last-child) {
-      margin-right: 16px;
+      margin-inline-end: 16px;
     }
   }
 

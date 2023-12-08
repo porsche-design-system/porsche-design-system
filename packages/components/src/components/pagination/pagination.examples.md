@@ -34,11 +34,11 @@ behaviour of the pagination component can be changed.
 
 <Playground class="playground-pagination" :markup="behaviour" :config="config">
   <template v-slot:default="{ theme }">
-    <label style="display:inline-block; margin-right: 16px;">
+    <label style="display:inline-block; margin-inline-end: 16px;">
       <p-text :theme="theme" tag="span" size="x-small">Total items count</p-text>
       <input type="number" v-bind:value="totalItemsCount" v-on:input="totalItemsCount = $event.target.value" />
     </label>
-    <label style="display:inline-block; margin-right: 16px;">
+    <label style="display:inline-block; margin-inline-end: 16px;">
       <p-text :theme="theme" tag="span" size="x-small">Items per page</p-text>
       <input type="number" v-bind:value="itemsPerPage" v-on:input="itemsPerPage = $event.target.value" />
     </label>
