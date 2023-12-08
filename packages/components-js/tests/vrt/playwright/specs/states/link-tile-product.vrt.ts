@@ -28,7 +28,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   const link = '<a href="https://www.porsche.com">Some label</a>';
 
   const markup = () => `
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 16px;">
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 16px; padding-bottom: 2rem">
       <p-link-tile-product heading="Product Tile (href, img)" price="1.911,00 €" href="https://www.porsche.com">
         ${image}
       </p-link-tile-product>
@@ -54,10 +54,18 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 
   await forceHoverState(page, '.hover p-link-tile-product');
   await forceHoverState(page, '.hover p-link-tile-product >>> p-button-pure >>> .root');
-  await forceHoverState(page, '.focus p-link-tile-product');
+
   await forceFocusState(page, '.focus p-link-tile-product >>> p-button-pure >>> .root');
+  await forceFocusState(page, '.focus p-link-tile-product a');
+  await forceFocusState(page, '.focus p-link-tile-product >>> a');
+
+  // TODO: Last two tiles dont have focus outline
   await forceHoverState(page, '.focus-hover p-link-tile-product');
   await forceFocusHoverState(page, '.focus-hover p-link-tile-product >>> p-button-pure >>> .root');
+  await forceFocusState(page, '.focus-hover p-link-tile-product a');
+  await forceFocusState(page, '.focus-hover p-link-tile-product >>> a');
+  await forceFocusHoverState(page, '.focus-hover p-link-tile-product a');
+  await forceFocusHoverState(page, '.focus-hover p-link-tile-product >>> a');
 };
 
 // executed in Chrome only
