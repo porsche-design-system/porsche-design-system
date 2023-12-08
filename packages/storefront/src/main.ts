@@ -8,8 +8,9 @@ import TableOfContents from '@/components/TableOfContents.vue';
 import { componentsReady } from '@porsche-design-system/components-js';
 import A11yIcon from '@/components/A11yIcon.vue';
 import PartialDocs from '@/components/PartialDocs.vue';
-import PlaygroundSelect from '@/components/PlaygroundSelect.vue';
 import PlaygroundButton from '@/components/PlaygroundButton.vue';
+import PlaygroundInput from '@/components/PlaygroundInput.vue';
+import PlaygroundSelect from '@/components/PlaygroundSelect.vue';
 import ComponentMetaOverview from '@/components/ComponentMetaOverview.vue';
 import Notification from '@/components/Notification.vue';
 
@@ -47,8 +48,9 @@ Vue.use({
     vue.component('Notification', Notification);
     // eslint-disable-next-line vue/multi-word-component-names
     vue.component('Playground', Playground);
-    vue.component('PlaygroundSelect', PlaygroundSelect);
     vue.component('PlaygroundButton', PlaygroundButton);
+    vue.component('PlaygroundInput', PlaygroundInput);
+    vue.component('PlaygroundSelect', PlaygroundSelect);
     vue.component('TableOfContents', TableOfContents);
     vue.component('ComponentMetaOverview', ComponentMetaOverview);
   },

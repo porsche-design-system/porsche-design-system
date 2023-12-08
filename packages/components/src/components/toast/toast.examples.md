@@ -29,13 +29,12 @@ type ToastMessage = {
 
 <Playground :frameworkMarkup="stateMarkup" :config="config">
   <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
-  <br><br>
-  <label>
-    Text:&nbsp;
-    <input type="text" v-model="toastText">
-  </label>
-  <br><br>
-  <p-button type="button" :theme="theme" @click="queueToast()">Queue Toast</p-button>
+  <br>
+  <br>
+  <PlaygroundInput type="text" v-model="toastText" name="Enter a toast message"></PlaygroundInput>
+  <br>
+  <br>
+  <PlaygroundButton name="Queue Toast" type="button" @click="queueToast()"></PlaygroundButton>
   <!-- shared across playgrounds -->
   <p-toast ref="toast" :theme="theme" :style="`--p-toast-position-bottom: ${positionBottom}px`"></p-toast>
 </Playground>
@@ -53,12 +52,10 @@ understandable and usable without a toast message.
 The bottom position of the `p-toast` can be adjusted via the `--p-toast-position-bottom` CSS variable.
 
 <Playground :markup="offsetMarkup" :config="{...config, withoutDemo: true}">
-  <label>
-    Position Bottom
-    <input type="number" min="0" max="200" step="5" v-model="positionBottom">
-  </label>
-  <br><br>
-  <p-button type="button" :theme="theme" @click="queueToast()">Queue Toast</p-button>
+  <PlaygroundInput type="number" v-model="positionBottom" name="Position Bottom"></PlaygroundInput>
+  <br>
+  <br>
+  <PlaygroundButton name="Queue Toast" type="button" @click="queueToast()"></PlaygroundButton>
 </Playground>
 
 <script lang="ts">

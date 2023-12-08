@@ -70,9 +70,9 @@ choices, but can also be changed manually by using the value property. This prop
 represent the selected option values.
 
 <Playground :frameworkMarkup="dynamicExample" :config="{ ...config, withoutDemo: true }">
-  <label>
-    <input id="input-value" name="input-value" aria-label="Value" v-model="valueInput" type="text" placeholder="e.g. 1,2" />
-  </label>
+  <PlaygroundInput type="text" placeholder="e.g. 1,2" v-model="valueInput" name="Value"></PlaygroundInput>
+  <br>
+  <br>
   <PlaygroundButton name="Set Value" @click="setMultiSelectValue()"></PlaygroundButton>
   <PlaygroundButton name="Reset value" @click="valueInput = '', setMultiSelectValue()"></PlaygroundButton>
   <br>
