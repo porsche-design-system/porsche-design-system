@@ -1,14 +1,28 @@
 <template>
   <div class="playground">
-    <p-tabs-bar
-      v-if="mergedConfig.themeable"
-      :theme="$store.getters.storefrontTheme"
-      :active-tab-index="activeThemeTabIndex"
-    >
-      <button type="button" @click="switchTheme('light')">Light</button>
-      <button type="button" @click="switchTheme('dark')">Dark</button>
-      <button type="button" @click="switchTheme('auto')">Auto (sync with operating system)</button>
-    </p-tabs-bar>
+    <div class="header">
+      <p-select-wrapper
+        v-if="mergedConfig.themeable"
+        :theme="$store.getters.storefrontTheme"
+        label="Theme"
+        hide-label="true"
+      >
+        <select name="theme" v-model="selectTheme" v-on:change="switchTheme">
+          <option disabled>Select theme</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="auto">Auto (sync with operating system)</option>
+        </select>
+      </p-select-wrapper>
+      <p-select-wrapper :theme="$store.getters.storefrontTheme" label="Direction" hide-label="true">
+        <select name="dir" v-model="selectDir" v-on:change="switchDir">
+          <option disabled>Select direction</option>
+          <option value="ltr">LTR (left-to-right)</option>
+          <option value="rtl">RTL (right-to-left)</option>
+          <option value="auto">Auto</option>
+        </select>
+      </p-select-wrapper>
+    </div>
     <div
       :class="{
         example: true,
@@ -45,7 +59,7 @@
         <slot :theme="theme" />
       </div>
 
-      <div v-if="markup" ref="demo" class="demo" v-html="cleanedDemoMarkup"></div>
+      <div v-if="markup" ref="demo" class="demo" v-html="cleanedDemoMarkup" :dir="dir"></div>
 
       <template v-if="codeBlockMarkup">
         <CodeBlock
@@ -60,6 +74,7 @@
           v-if="showCodeEditor"
           :markup="cleanedEditorMarkup"
           :theme="theme"
+          :dir="dir"
           :framework="activeFramework"
           :externalStackBlitzDependencies="getExternalDependenciesOrThrow(this.externalStackBlitzDependencies)"
           :sharedImportKeys="sharedImportKeys"
@@ -78,7 +93,7 @@
   import CodeEditor from '@/components/CodeEditor.vue';
   import { cleanMarkup, patchThemeIntoMarkup } from '../utils';
   import { componentMeta } from '@porsche-design-system/component-meta';
-  import type { BackgroundColor, Framework, FrameworkMarkup, PlaygroundTheme } from '../models';
+  import type { BackgroundColor, Framework, FrameworkMarkup, PlaygroundDir, PlaygroundTheme } from '../models';
   import type { ExternalDependency, SharedImportKey } from '../utils';
   import { getExternalDependenciesOrThrow } from '@/utils/stackblitz/helper';
 
@@ -121,10 +136,15 @@
     @Prop({ default: '' }) public markup!: string;
 
     getExternalDependenciesOrThrow = getExternalDependenciesOrThrow;
+
     isFullWindow = false;
+    selectDir = 'ltr';
+    selectTheme = 'light';
 
     public mounted(): void {
+      this.selectDir = this.dir;
       if (this.config.themeable) {
+        this.selectTheme = this.theme;
         this.syncThemeIntoDemoComponents();
       }
     }
@@ -135,9 +155,13 @@
       }
     }
 
-    public switchTheme(theme: PlaygroundTheme): void {
-      this.$store.commit('setPlaygroundTheme', theme);
+    public switchTheme(e: Event): void {
+      this.$store.commit('setPlaygroundTheme', (e.target as HTMLInputElement).value);
     }
+
+    public switchDir = (e: Event): void => {
+      this.$store.commit('setPlaygroundDir', (e.target as HTMLInputElement).value);
+    };
 
     public toggleFullscreen(): void {
       this.isFullWindow = !this.isFullWindow;
@@ -193,12 +217,12 @@
       return Object.keys(this.frameworkMarkup).length !== 0;
     }
 
-    public get activeThemeTabIndex(): number {
-      return ['light', 'dark', 'auto'].indexOf(this.theme);
-    }
-
     public get theme(): PlaygroundTheme {
       return this.config.themeable ? this.$store.getters.playgroundTheme : 'light';
+    }
+
+    public get dir(): PlaygroundDir {
+      return this.$store.getters.playgroundDir || 'ltr';
     }
 
     public get sharedImportKeys(): SharedImportKey[] {
@@ -230,6 +254,16 @@
     display: flex;
     flex-direction: column;
     gap: $pds-spacing-static-small;
+  }
+
+  .header {
+    display: flex;
+    gap: $pds-spacing-fluid-x-small;
+    flex-direction: column;
+
+    @include pds-media-query-min('xs') {
+      flex-direction: row;
+    }
   }
 
   .example {

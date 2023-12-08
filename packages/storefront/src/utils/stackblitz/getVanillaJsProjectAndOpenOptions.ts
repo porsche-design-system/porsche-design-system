@@ -4,7 +4,7 @@ import {
   getSharedImportConstants,
   isStableStorefrontReleaseOrForcedPdsVersion,
 } from './helper';
-import type { StackBlitzProjectDependencies } from '../../models';
+import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
 import type { DependencyMap, ExternalDependency, GetStackBlitzProjectAndOpenOptions, SharedImportKey } from './helper';
 import { initialStyles } from '@/lib/partialResults';
 
@@ -32,6 +32,7 @@ export const getExtendedMarkupWithLoadFunction = (markup: string): string => {
 
 export const getIndexHtml = (
   markup: string,
+  dir: PlaygroundDir,
   globalStyles: string,
   externalDependencies: ExternalDependency[],
   sharedImportKeys: SharedImportKey[],
@@ -53,7 +54,7 @@ export const getIndexHtml = (
   );
 
   return `<!doctype html>
-<html dir="ltr" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - Vanilla JS</title>
@@ -67,7 +68,7 @@ export const getIndexHtml = (
       ${globalStyles}
     </style>
   </head>
-  <body>
+  <body dir="${dir}">
     ${bodyContent}
   </body>
 </html>`;
@@ -102,6 +103,7 @@ export const getDependencies = (
 export const getVanillaJsProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (opts) => {
   const {
     markup,
+    dir,
     description,
     title,
     globalStyles,
@@ -114,7 +116,7 @@ export const getVanillaJsProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptio
   return {
     files: {
       ...porscheDesignSystemBundle,
-      'index.html': getIndexHtml(markup, globalStyles, externalDependencies, sharedImportKeys, pdsVersion),
+      'index.html': getIndexHtml(markup, dir, globalStyles, externalDependencies, sharedImportKeys, pdsVersion),
       'index.js': getIndexJs(pdsVersion),
     },
     template: 'javascript',
