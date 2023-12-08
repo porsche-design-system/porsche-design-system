@@ -2,6 +2,7 @@ import type { TagName } from '@porsche-design-system/shared';
 
 export const WHITELISTED_TAG_NAMES = [
   'p-flex-item',
+  'p-flyout-navigation-item',
   'p-grid-item',
   'p-multi-select-option',
   'p-stepper-horizontal-item',
@@ -60,6 +61,17 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-flyout': `
     <p-flyout></p-flyout>
   `,
+  'p-flyout-navigation': `<p-flyout-navigation>
+    <p-flyout-navigation-item identifier="identifier-1" label="Button 1">
+      <a href="#some-anchor-1">Some anchor</a>
+    </p-flyout-navigation-item>
+    <p-flyout-navigation-item identifier="identifier-2" label="Button 2">
+      <a href="#some-anchor-2">Some anchor</a>
+    </p-flyout-navigation-item>
+    <p-flyout-navigation-item identifier="identifier-3" label="Button 3">
+      <a href="#some-anchor-3">Some anchor</a>
+    </p-flyout-navigation-item>
+</p-flyout-navigation>`,
   'p-grid': `<p-grid>
     <p-grid-item size="6"></p-grid-item>
     <p-grid-item size="6"></p-grid-item>

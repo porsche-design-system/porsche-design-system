@@ -1003,6 +1003,68 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-flyout-navigation": {
+    "allowedPropValues": {
+      "activeIdentifier": "string",
+      "aria": {
+        "aria-label": "string",
+      },
+      "open": "boolean",
+      "theme": [
+        "light",
+        "dark",
+        "auto",
+      ],
+    },
+    "eventNames": [
+      "dismiss",
+      "update",
+    ],
+    "hasAriaProp": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "props": {
+      "activeIdentifier": null,
+      "aria": null,
+      "open": false,
+      "theme": "light",
+    },
+    "styling": "jss",
+  },
+  "p-flyout-navigation-item": {
+    "allowedPropValues": {
+      "identifier": "string",
+      "label": "string",
+    },
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": false,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "props": {
+      "identifier": null,
+      "label": null,
+    },
+    "requiredParent": "p-flyout-navigation",
+    "requiredProps": [
+      "identifier",
+    ],
+    "styling": "jss",
+  },
   "p-grid": {
     "allowedPropValues": {
       "direction": [

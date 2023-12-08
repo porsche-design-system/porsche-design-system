@@ -66,6 +66,21 @@ export const routes: RouteType[] = [
     component: fromExamples.FlyoutExampleSlottedSecondary,
   },
   {
+    path: '/flyout-navigation-example',
+    name: 'Flyout Navigation Example',
+    component: fromExamples.FlyoutNavigationExample,
+  },
+  {
+    path: '/flyout-navigation-example-active-identifier',
+    name: 'Flyout Navigation Example Active Identifier',
+    component: fromExamples.FlyoutNavigationExampleActiveIdentifier,
+  },
+  {
+    path: '/flyout-navigation-example-custom-content',
+    name: 'Flyout Navigation Example Custom Content',
+    component: fromExamples.FlyoutNavigationExampleCustomContent,
+  },
+  {
     path: '/inline-notification-example-action-button',
     name: 'Inline Notification Example Action Button',
     component: fromExamples.InlineNotificationExampleActionButton,

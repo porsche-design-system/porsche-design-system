@@ -49,6 +49,11 @@ import { FieldsetComponent } from './generated/fieldset.component';
 import { FieldsetWrapperComponent } from './generated/fieldset-wrapper.component';
 import { FlexComponent } from './generated/flex.component';
 import { FlyoutComponent } from './generated/flyout.component';
+import { FlyoutNavigationComponent } from './generated/flyout-navigation.component';
+import { FlyoutNavigationActiveIdentifierComponent } from './generated/flyout-navigation-active-identifier.component';
+import { FlyoutNavigationBasicComponent } from './generated/flyout-navigation-basic.component';
+import { FlyoutNavigationPrefixedComponent } from './generated/flyout-navigation-prefixed.component';
+import { FlyoutNavigationScrolledComponent } from './generated/flyout-navigation-scrolled.component';
 import { GridComponent } from './generated/grid.component';
 import { HeadingComponent } from './generated/heading.component';
 import { HeadlineComponent } from './generated/headline.component';
@@ -115,6 +120,11 @@ export const generatedPages = [
   FieldsetWrapperComponent,
   FlexComponent,
   FlyoutComponent,
+  FlyoutNavigationComponent,
+  FlyoutNavigationActiveIdentifierComponent,
+  FlyoutNavigationBasicComponent,
+  FlyoutNavigationPrefixedComponent,
+  FlyoutNavigationScrolledComponent,
   GridComponent,
   HeadingComponent,
   HeadlineComponent,
@@ -244,6 +254,31 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout',
     path: 'flyout',
     component: FlyoutComponent,
+  },
+  {
+    name: 'Flyout Navigation',
+    path: 'flyout-navigation',
+    component: FlyoutNavigationComponent,
+  },
+  {
+    name: 'Flyout Navigation Active Identifier',
+    path: 'flyout-navigation-active-identifier',
+    component: FlyoutNavigationActiveIdentifierComponent,
+  },
+  {
+    name: 'Flyout Navigation Basic',
+    path: 'flyout-navigation-basic',
+    component: FlyoutNavigationBasicComponent,
+  },
+  {
+    name: 'Flyout Navigation Prefixed',
+    path: 'flyout-navigation-prefixed',
+    component: FlyoutNavigationPrefixedComponent,
+  },
+  {
+    name: 'Flyout Navigation Scrolled',
+    path: 'flyout-navigation-scrolled',
+    component: FlyoutNavigationScrolledComponent,
   },
   {
     name: 'Grid',
