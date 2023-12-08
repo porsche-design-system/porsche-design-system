@@ -56,6 +56,15 @@ By setting `compact` to `true` you can have a more compact accordion. It removes
 
 ---
 
+## Compact with custom clickable/focusable area
+
+Sometimes it might be useful to enlarge the clickable/focusable area to fulfill accessibility guidelines. Therefore a
+custom padding can be set on the host element in `compact` variant.
+
+<Playground :markup="clickableAreaMarkup" :config="config"></Playground>
+
+---
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
@@ -110,6 +119,17 @@ export default class Code extends Vue {
     <p-link-pure href="https://www.porsche.com" icon="none">Some label</p-link-pure>
   </p-accordion>
   <p-accordion heading="Some Heading" tag="h3" compact="true">
+    <p-link-pure href="https://www.porsche.com" icon="none">Some label</p-link-pure>
+  </p-accordion>
+</div>`;
+  }
+
+  get clickableAreaMarkup(){
+    return `<div style="max-width: 400px">
+  <p-accordion heading="Some Heading" tag="h3" compact="true" style="padding: 1rem;">
+    <p-link-pure href="https://www.porsche.com" icon="none">Some label</p-link-pure>
+  </p-accordion>
+  <p-accordion heading="Some Heading" tag="h3" compact="true" style="padding: 1rem;">
     <p-link-pure href="https://www.porsche.com" icon="none">Some label</p-link-pure>
   </p-accordion>
 </div>`;

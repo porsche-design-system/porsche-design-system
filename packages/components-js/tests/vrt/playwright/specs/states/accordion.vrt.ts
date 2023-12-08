@@ -31,6 +31,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-accordion heading="Heading (compact=true)" open="true" compact="true">
        Slotted content
     </p-accordion>
+    <p-accordion heading="Heading (compact=true and custom click-area)" open="true" compact="true">
+       Slotted content
+    </p-accordion>
     <p-accordion heading="Heading (compact=true)" open="true" compact="true">
       <p-link-pure href="https://www.porsche.com">Some link</p-link-pure>
       <br />
