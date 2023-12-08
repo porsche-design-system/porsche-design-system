@@ -36,7 +36,7 @@ clickable and no other content outside the button or link is allowed.
 Make sure to provide a **descriptive**, self explaining **aria-label** on the slotted button to describe the `onClick()`
 action.
 
-<Playground :markup="buttonAccessibility"></Playground>
+<Playground :markup="buttonAccessibility" :config="config"></Playground>
 
 ## With slotted link
 
@@ -52,7 +52,7 @@ no other content outside the button or link is allowed.
 Make sure to provide a **descriptive**, self explaining **aria-label** on the slotted anchor to describe where it leads
 to.
 
-<Playground :markup="linkAccessibility"></Playground>
+<Playground :markup="linkAccessibility" :config="config"></Playground>
 
 ## Multiline
 
