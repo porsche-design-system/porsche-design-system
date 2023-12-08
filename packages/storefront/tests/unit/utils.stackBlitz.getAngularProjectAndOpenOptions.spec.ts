@@ -282,7 +282,7 @@ describe('getAppModuleTs()', () => {
 
 describe('getIndexHtml()', () => {
   it('should return correct markup with styles', () => {
-    expect(getIndexHtml('some styles')).toMatchSnapshot();
+    expect(getIndexHtml('ltr', 'some styles')).toMatchSnapshot();
   });
 });
 
@@ -379,6 +379,7 @@ describe('getAngularProjectAndOpenOptions()', () => {
       '@porsche-design-system/components-angular/package.json': 'some package.json',
     },
     markup: 'Some markup',
+    dir: 'ltr',
     description: 'Some description',
     title: 'Some title',
     globalStyles: 'body {}',
@@ -405,7 +406,7 @@ describe('getAngularProjectAndOpenOptions()', () => {
       false
     );
     expect(getAppModuleTsSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
-    expect(getIndexHtmlSpy).toBeCalledWith(stackBlitzFrameworkOpts.globalStyles);
+    expect(getIndexHtmlSpy).toBeCalledWith(stackBlitzFrameworkOpts.dir, stackBlitzFrameworkOpts.globalStyles);
     expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
   });
 

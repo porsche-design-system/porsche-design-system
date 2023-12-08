@@ -130,7 +130,7 @@ export class AppModule {}"
 
 exports[`getIndexHtml() should return correct markup with styles 1`] = `
 <!doctype html>
-<html dir="ltr" lang="en">
+<html lang="en">
 
   <head>
     <meta charset="utf-8" />
@@ -312,7 +312,7 @@ exports[`getIndexHtml() should return correct markup with styles 1`] = `
     </style>
   </head>
 
-  <body>
+  <body dir="ltr">
     <porsche-design-system-app></porsche-design-system-app>
   </body>
 

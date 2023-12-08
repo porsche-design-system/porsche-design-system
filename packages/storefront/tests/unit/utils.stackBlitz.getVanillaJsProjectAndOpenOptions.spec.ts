@@ -102,7 +102,7 @@ describe('getIndexHtml()', () => {
       .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
       .mockReturnValue(mockedMarkup);
 
-    getIndexHtml(mockedMarkup, '', [], sharedImportKeys, '');
+    getIndexHtml(mockedMarkup, 'ltr', '', [], sharedImportKeys, '');
 
     expect(getExtendMarkupWithLoadFunctionSpy).toBeCalledWith(mockedMarkup);
     expect(replaceSharedAsyncFunctionWithConstantsSpy).toBeCalledWith(mockedMarkupWithLoadFunction, sharedImportKeys);
@@ -121,7 +121,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup with externalDependencies', () => {
@@ -132,7 +132,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys, '')).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, ['imask'], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup when chosen pds version for bug reporting', () => {
@@ -143,7 +143,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys, '1.2.3')).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, [], sharedImportKeys, '1.2.3')).toMatchSnapshot();
     });
   });
 
@@ -160,7 +160,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup with externalDependencies', () => {
@@ -171,7 +171,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, ['imask'], sharedImportKeys, '')).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, ['imask'], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup when chosen pds version for bug reporting', () => {
@@ -182,7 +182,7 @@ describe('getIndexHtml()', () => {
         .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
         .mockReturnValue(mockedMarkup);
 
-      expect(getIndexHtml(mockedMarkup, mockedGlobalStyles, [], sharedImportKeys, '1.2.3')).toMatchSnapshot();
+      expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, [], sharedImportKeys, '1.2.3')).toMatchSnapshot();
     });
   });
 });
@@ -281,6 +281,7 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
       '@porsche-design-system/components-js/package.json': 'some package.json',
     },
     markup: 'Some markup',
+    dir: 'ltr',
     description: 'Some description',
     title: 'Some title',
     globalStyles: 'body {}',
@@ -290,7 +291,7 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
   };
 
   it('should call several functions with correct parameters', () => {
-    const { markup, globalStyles, externalDependencies, sharedImportKeys } = stackBlitzFrameworkOpts;
+    const { markup, dir, globalStyles, externalDependencies, sharedImportKeys } = stackBlitzFrameworkOpts;
 
     const getIndexHtmlSpy = jest.spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getIndexHtml');
     const getDependenciesSpy = jest.spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getDependencies');
@@ -298,7 +299,7 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
 
     getVanillaJsProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(getIndexHtmlSpy).toBeCalledWith(markup, globalStyles, externalDependencies, sharedImportKeys, '');
+    expect(getIndexHtmlSpy).toBeCalledWith(markup, dir, globalStyles, externalDependencies, sharedImportKeys, '');
     expect(getDependenciesSpy).toBeCalledWith(externalDependencies, '');
     expect(getIndexJsSpy).toBeCalled();
   });

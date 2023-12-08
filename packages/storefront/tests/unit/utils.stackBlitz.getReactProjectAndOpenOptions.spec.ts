@@ -246,6 +246,7 @@ describe('getReactProjectAndOpenOptions()', () => {
       '@porsche-design-system/components-react/package.json': 'some package.json',
     },
     markup: 'Some markup',
+    dir: 'ltr',
     description: 'Some description',
     title: 'Some title',
     globalStyles: 'body {}',
@@ -290,7 +291,7 @@ describe('getReactProjectAndOpenOptions()', () => {
         ...stackBlitzFrameworkOpts.porscheDesignSystemBundle,
         'App.tsx': mockedAppTsx,
         'index.html': `<!doctype html>
-<html dir="ltr" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - React</title>
@@ -303,7 +304,7 @@ describe('getReactProjectAndOpenOptions()', () => {
       ${stackBlitzFrameworkOpts.globalStyles}
     </style>
   </head>
-  <body>
+  <body dir="ltr">
     <div id="root"></div>
   </body>
 </html>`,

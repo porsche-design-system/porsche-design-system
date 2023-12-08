@@ -36,7 +36,7 @@ exports[`getExtendedMarkupWithLoadFunction() stable storefront release (e.g. /v2
 
 exports[`getIndexHtml() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup when chosen pds version for bug reporting 1`] = `
 <!doctype html>
-<html dir="ltr" lang="en">
+<html lang="en">
 
   <head>
     <meta charset="utf-8" />
@@ -219,7 +219,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
     </style>
   </head>
 
-  <body>
+  <body dir="ltr">
     Some markup
   </body>
 
@@ -228,7 +228,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
 
 exports[`getIndexHtml() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup with externalDependencies 1`] = `
 <!doctype html>
-<html dir="ltr" lang="en">
+<html lang="en">
 
   <head>
     <meta charset="utf-8" />
@@ -450,7 +450,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         </style>
   </head>
 
-  <body>
+  <body dir="ltr">
     Some markup
   </body>
 
@@ -459,7 +459,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
 
 exports[`getIndexHtml() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct markup without externalDependencies 1`] = `
 <!doctype html>
-<html dir="ltr" lang="en">
+<html lang="en">
 
   <head>
     <meta charset="utf-8" />
@@ -642,7 +642,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
     </style>
   </head>
 
-  <body>
+  <body dir="ltr">
     Some markup
   </body>
 
@@ -651,7 +651,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
 
 exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup when chosen pds version for bug reporting 1`] = `
 <!doctype html>
-<html dir="ltr" lang="en">
+<html lang="en">
 
   <head>
     <meta charset="utf-8" />
@@ -834,7 +834,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
     </style>
   </head>
 
-  <body>
+  <body dir="ltr">
     Some markup
   </body>
 
@@ -843,7 +843,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
 
 exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup with externalDependencies 1`] = `
 <!doctype html>
-<html dir="ltr" lang="en">
+<html lang="en">
 
   <head>
     <meta charset="utf-8" />
@@ -1065,7 +1065,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
         </style>
   </head>
 
-  <body>
+  <body dir="ltr">
     Some markup
   </body>
 
@@ -1074,7 +1074,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
 
 exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should return correct markup without externalDependencies 1`] = `
 <!doctype html>
-<html dir="ltr" lang="en">
+<html lang="en">
 
   <head>
     <meta charset="utf-8" />
@@ -1257,7 +1257,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
     </style>
   </head>
 
-  <body>
+  <body dir="ltr">
     Some markup
   </body>
 
