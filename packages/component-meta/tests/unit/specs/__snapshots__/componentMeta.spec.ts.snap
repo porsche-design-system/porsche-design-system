@@ -1026,6 +1026,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "isDelegatingFocus": false,
+    "isExperimental": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -1998,9 +1999,6 @@ exports[`should match snapshot 1`] = `
     "isExperimental": true,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "header",
-    ],
     "nestedComponents": [
       "p-button-pure",
     ],
