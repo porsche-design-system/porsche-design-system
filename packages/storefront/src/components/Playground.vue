@@ -305,7 +305,7 @@
     &--spacing-inline .demo {
       :deep(> *) {
         &:not(:last-child) {
-          margin-right: $pds-spacing-static-medium;
+          margin-inline-end: $pds-spacing-static-medium;
         }
       }
     }

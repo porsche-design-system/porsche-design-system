@@ -86,7 +86,7 @@ link to another icon hosted somewhere else, just set the whole icon path to the 
   > * {
     margin-top: $p-spacing-8;
     &:not(:last-child) {
-      margin-right: $p-spacing-8;
+      margin-inline-end: $p-spacing-8;
     }
   }
 }
@@ -194,7 +194,7 @@ export default class Code extends Vue {
     > * {
       margin-top: .5rem;
       &:not(:last-child) {
-        margin-right: .5rem;
+        margin-inline-end: .5rem;
       }
     }
   }

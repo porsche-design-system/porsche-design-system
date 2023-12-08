@@ -119,7 +119,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
         <p-table-cell>
           <p-flex>
             <p-flex-item>
-              <img :src="item.imageUrl" width="80" height="45" style="margin-right: 0.5rem" alt="">
+              <img :src="item.imageUrl" width="80" height="45" style="margin-inline-end: 8px" alt="">
             </p-flex-item>
             <p-flex-item>
               <p-text :theme="theme" weight="semibold">{{ item.model }}</p-text>
