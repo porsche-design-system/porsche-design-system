@@ -89,6 +89,8 @@ const forceRerenderAnimationStyle = {
 const keyFramesLight = 'rerender-light';
 const keyFramesDark = 'rerender-dark';
 
+const cssVariableFilter = '--p-internal-icon-filter';
+
 export const getComponentCss = (
   color: Exclude<IconColor, IconColorDeprecated>,
   size: TextSize,
@@ -114,9 +116,9 @@ export const getComponentCss = (
         padding: 0,
         pointerEvents: 'none', // disable dragging/ghosting of images
         ...(!isColorInherit && {
-          filter: filterMap[theme][color],
+          filter: `var(${cssVariableFilter},${filterMap[theme][color]})`,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            filter: filterMap.dark[color],
+            filter: `var(${cssVariableFilter},${filterMap.dark[color]})`,
           }),
           ...(isHighContrastMode &&
             getSchemedHighContrastMediaQuery(

@@ -151,6 +151,38 @@ exports[`should have no basic DOM regression for p-flyout 1`] = `
 </div>"
 `;
 
+exports[`should have no basic DOM regression for p-flyout-navigation 1`] = `
+"<dialog inert="" tabindex="-1">
+  <div class="header">
+    <p-button-pure class="dismiss hydrated">
+      Dismiss flyout</p-button-pure>
+  </div>
+  <div class="scroller">
+    <nav class="content">
+      <slot>
+      </slot>
+    </nav>
+  </div>
+</dialog>"
+`;
+
+exports[`should have no basic DOM regression for p-flyout-navigation-item 1`] = `
+"<p-button-pure class="button hydrated">
+</p-button-pure>
+<div class="scroller" inert="">
+  <div class="header">
+    <p-button-pure class="back hydrated">
+      Back</p-button-pure>
+    <h2 class="heading">
+    </h2>
+  </div>
+  <div class="content">
+    <slot>
+    </slot>
+  </div>
+</div>"
+`;
+
 exports[`should have no basic DOM regression for p-grid 1`] = `
 "<slot>
 </slot>"
