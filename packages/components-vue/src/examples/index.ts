@@ -6,6 +6,9 @@ export { default as CarouselExampleJumpToSlide } from './CarouselExampleJumpToSl
 export { default as FlyoutExample } from './FlyoutExample.vue';
 export { default as FlyoutExampleSlotted } from './FlyoutExampleSlotted.vue';
 export { default as FlyoutExampleSlottedSecondary } from './FlyoutExampleSlottedSecondary.vue';
+export { default as FlyoutNavigationExample } from './FlyoutNavigationExample.vue';
+export { default as FlyoutNavigationExampleActiveIdentifier } from './FlyoutNavigationExampleActiveIdentifier.vue';
+export { default as FlyoutNavigationExampleCustomContent } from './FlyoutNavigationExampleCustomContent.vue';
 export { default as InlineNotificationExampleActionButton } from './InlineNotificationExampleActionButton.vue';
 export { default as InlineNotificationExampleEvents } from './InlineNotificationExampleEvents.vue';
 export { default as ModalExampleAccessibility } from './ModalExampleAccessibility.vue';

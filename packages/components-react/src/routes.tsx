@@ -107,6 +107,21 @@ export const routes: RouteType[] = [
     element: <fromExamples.FlyoutExamplePage />,
   },
   {
+    name: 'Flyout Navigation Example',
+    path: '/flyout-navigation-example',
+    element: <fromExamples.FlyoutNavigationExamplePage />,
+  },
+  {
+    name: 'Flyout Navigation Example Active Identifier',
+    path: '/flyout-navigation-example-active-identifier',
+    element: <fromExamples.FlyoutNavigationExampleActiveIdentifierPage />,
+  },
+  {
+    name: 'Flyout Navigation Example Custom Content',
+    path: '/flyout-navigation-example-custom-content',
+    element: <fromExamples.FlyoutNavigationExampleCustomContentPage />,
+  },
+  {
     name: 'Inline Notification Example Action Button',
     path: '/inline-notification-example-action-button',
     element: <fromExamples.InlineNotificationExampleActionButtonPage />,

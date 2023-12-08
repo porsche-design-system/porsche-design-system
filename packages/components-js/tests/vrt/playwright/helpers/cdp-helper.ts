@@ -11,7 +11,7 @@ const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
 const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 
-const PSEUDO_STATES = ['hover', 'focus', 'focus-hover'] as const;
+export const PSEUDO_STATES = ['hover', 'focus', 'focus-hover'] as const;
 
 export const getPlaygroundPseudoStatesMarkup = (
   markup: () => string,

@@ -23,6 +23,7 @@ import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
+import { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEvent } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 import { HeadingTag } from "./components/heading/heading-tag";
@@ -82,6 +83,7 @@ export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 export { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
+export { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEvent } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 export { HeadingTag } from "./components/heading/heading-tag";
@@ -650,6 +652,28 @@ export namespace Components {
           * Adapts the flyout color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PFlyoutNavigation {
+        /**
+          * Defines which flyout-navigation-item to be visualized as opened.
+         */
+        "activeIdentifier"?: string | undefined;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<FlyoutNavigationAriaAttribute>;
+        /**
+          * If true, the flyout-navigation is visualized as opened.
+         */
+        "open"?: boolean;
+        /**
+          * Adapts the flyout-navigation color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PFlyoutNavigationItem {
+        "identifier": string;
+        "label"?: string;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -1839,6 +1863,10 @@ export interface PFlyoutCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPFlyoutElement;
 }
+export interface PFlyoutNavigationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPFlyoutNavigationElement;
+}
 export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInlineNotificationElement;
@@ -2051,6 +2079,30 @@ declare global {
     var HTMLPFlyoutElement: {
         prototype: HTMLPFlyoutElement;
         new (): HTMLPFlyoutElement;
+    };
+    interface HTMLPFlyoutNavigationElementEventMap {
+        "dismiss": void;
+        "update": FlyoutNavigationUpdateEvent;
+    }
+    interface HTMLPFlyoutNavigationElement extends Components.PFlyoutNavigation, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPFlyoutNavigationElementEventMap>(type: K, listener: (this: HTMLPFlyoutNavigationElement, ev: PFlyoutNavigationCustomEvent<HTMLPFlyoutNavigationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPFlyoutNavigationElementEventMap>(type: K, listener: (this: HTMLPFlyoutNavigationElement, ev: PFlyoutNavigationCustomEvent<HTMLPFlyoutNavigationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPFlyoutNavigationElement: {
+        prototype: HTMLPFlyoutNavigationElement;
+        new (): HTMLPFlyoutNavigationElement;
+    };
+    interface HTMLPFlyoutNavigationItemElement extends Components.PFlyoutNavigationItem, HTMLStencilElement {
+    }
+    var HTMLPFlyoutNavigationItemElement: {
+        prototype: HTMLPFlyoutNavigationItemElement;
+        new (): HTMLPFlyoutNavigationItemElement;
     };
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -2531,6 +2583,8 @@ declare global {
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
         "p-flyout": HTMLPFlyoutElement;
+        "p-flyout-navigation": HTMLPFlyoutNavigationElement;
+        "p-flyout-navigation-item": HTMLPFlyoutNavigationItemElement;
         "p-grid": HTMLPGridElement;
         "p-grid-item": HTMLPGridItemElement;
         "p-heading": HTMLPHeadingElement;
@@ -3133,6 +3187,36 @@ declare namespace LocalJSX {
           * Adapts the flyout color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PFlyoutNavigation {
+        /**
+          * Defines which flyout-navigation-item to be visualized as opened.
+         */
+        "activeIdentifier"?: string | undefined;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<FlyoutNavigationAriaAttribute>;
+        /**
+          * Emitted when the component requests to be dismissed.
+         */
+        "onDismiss"?: (event: PFlyoutNavigationCustomEvent<void>) => void;
+        /**
+          * Emitted when activeIdentifier is changed.
+         */
+        "onUpdate"?: (event: PFlyoutNavigationCustomEvent<FlyoutNavigationUpdateEvent>) => void;
+        /**
+          * If true, the flyout-navigation is visualized as opened.
+         */
+        "open"?: boolean;
+        /**
+          * Adapts the flyout-navigation color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    interface PFlyoutNavigationItem {
+        "identifier"?: string;
+        "label"?: string;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -4410,6 +4494,8 @@ declare namespace LocalJSX {
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
         "p-flyout": PFlyout;
+        "p-flyout-navigation": PFlyoutNavigation;
+        "p-flyout-navigation-item": PFlyoutNavigationItem;
         "p-grid": PGrid;
         "p-grid-item": PGridItem;
         "p-heading": PHeading;
@@ -4494,6 +4580,8 @@ declare module "@stencil/core" {
              */
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
             "p-flyout": LocalJSX.PFlyout & JSXBase.HTMLAttributes<HTMLPFlyoutElement>;
+            "p-flyout-navigation": LocalJSX.PFlyoutNavigation & JSXBase.HTMLAttributes<HTMLPFlyoutNavigationElement>;
+            "p-flyout-navigation-item": LocalJSX.PFlyoutNavigationItem & JSXBase.HTMLAttributes<HTMLPFlyoutNavigationItemElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
              */

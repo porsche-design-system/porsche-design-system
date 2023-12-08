@@ -131,6 +131,21 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.FlyoutExampleComponent,
   },
   {
+    name: 'Flyout Navigation Example',
+    path: 'flyout-navigation-example',
+    component: fromExamples.FlyoutNavigationExampleComponent,
+  },
+  {
+    name: 'Flyout Navigation Example Active Identifier',
+    path: 'flyout-navigation-example-active-identifier',
+    component: fromExamples.FlyoutNavigationExampleActiveIdentifierComponent,
+  },
+  {
+    name: 'Flyout Navigation Example Custom Content',
+    path: 'flyout-navigation-example-custom-content',
+    component: fromExamples.FlyoutNavigationExampleCustomContentComponent,
+  },
+  {
     name: 'Inline Notification Example Action Button',
     path: 'inline-notification-example-action-button',
     component: fromExamples.InlineNotificationExampleActionButtonComponent,
