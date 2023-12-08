@@ -551,10 +551,12 @@ $&`
           .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
           .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
       } else if (tagName === 'p-link-tile-product') {
-        newFileContent = newFileContent.replace(
-          /import {\s*TILE_PRODUCT_ASPECT_RATIOS,[\s\S]*?} from '@porsche-design-system\/components\/dist\/utils';/,
-          ''
-        );
+        newFileContent = newFileContent
+          .replace(
+            /import {\s*TILE_PRODUCT_ASPECT_RATIOS,[\s\S]*?} from '@porsche-design-system\/components\/dist\/utils';/,
+            ''
+          )
+          .replace(/headerSlot/, '"header"');
       }
 
       return newFileContent;
