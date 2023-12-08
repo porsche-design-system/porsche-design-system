@@ -468,32 +468,157 @@
     <!--      <span></span>-->
     <!--    </div>-->
     <header>
-      <h1>Porsche Design System - Playground</h1>
+      <h1>Porsche Design Syst - Playground</h1>
     </header>
 
     <main>
+      <div class="basic-content-grid" style="margin-bottom: 2rem">
+        <p-link-tile-product
+          heading="T-Shirt Unisex - Transformers: Rise of the Beasts x Porsche"
+          price="1.199,99 €"
+          description="inkl. VAT"
+          class="basic-content-one-third-left"
+          aria="{ 'aria-label': 'Some more descriptive label' }"
+          aspect-ratio="{ base: '9:16', m: '3:4' }"
+        >
+          <!--          <div slot="header">-->
+          <!--            <p-tag color="background-base">New</p-tag>-->
+          <!--          </div>-->
+          <!--          <p-tag slot="tags" color="background-base" theme="dark">New</p-tag>-->
+          <img src="/assets/jacket.webp" alt="Some alt text" />
+          <a href="https://www.porsche.com">Product Name, 199€</a>
+        </p-link-tile-product>
+
+        <p-link-tile-product
+          heading="Fleecejacke Unisex - MARTINI RACING®"
+          price="1.199,99 €"
+          description="inkl. VAT"
+          href="/"
+          class="basic-content-one-third-follow"
+          aspect-ratio="{ base: '9:16', m: '3:4' }"
+        >
+          <p-tag slot="header" color="background-base">New</p-tag>
+          <img src="/assets/sneaker.webp" alt="Some alt text" />
+        </p-link-tile-product>
+        <p-link-tile-product
+          heading="Park Unisex - Urban Explorer"
+          price="1.199,99 €"
+          description="inkl. VAT"
+          href="/"
+          class="basic-content-one-third-follow"
+          aspect-ratio="{ base: '9:16', m: '3:4' }"
+        >
+          <p-tag slot="header" color="background-base">New</p-tag>
+          <picture>
+            <source media="(min-width:400px)" srcset="/assets/watch.webp" />
+            <img src="/assets/watch.webp" style="width: 100%; height: 100%; object-fit: cover" alt="Some alt text" />
+          </picture>
+        </p-link-tile-product>
+        <p-link-tile-product
+          heading="Jacke - Taycan"
+          price="199,99 €"
+          description="inkl. VAT"
+          href="/"
+          class="basic-content-one-third-left"
+          aspect-ratio="{ base: '9:16', m: '3:4' }"
+        >
+          <p-tag slot="header" color="background-base">New</p-tag>
+          <picture>
+            <source media="(min-width:400px)" srcset="/assets/sunglasses.webp" />
+            <img
+              src="/assets/sunglasses.webp"
+              style="width: 100%; height: 100%; object-fit: cover"
+              alt="Some alt text"
+            />
+          </picture>
+        </p-link-tile-product>
+        <p-link-tile-product
+          heading="Porsche Wappen-Schlüsselanhänger Charging Service"
+          price="199,99 €"
+          description="Lorem Ipsum dolor set"
+          href="/"
+          class="basic-content-one-third-follow"
+          aspect-ratio="{ base: '9:16', m: '3:4' }"
+        >
+          <p-tag slot="header" color="background-base">New</p-tag>
+          <img src="/assets/suitcase.webp" style="width: 100%; height: 100%; object-fit: cover" alt="Some alt text" />
+        </p-link-tile-product>
+        <p-link-tile-product
+          heading="Seitenwangen im MARTINI RACING® Design"
+          price="199,99€"
+          description="inkl. VAT"
+          href="/"
+          class="basic-content-one-third-follow"
+          aspect-ratio="{ base: '9:16', m: '3:4' }"
+        >
+          <p-tag slot="header" color="background-base">New</p-tag>
+          <picture>
+            <source media="(min-width:400px)" srcset="/assets/placeholder_800x900.svg" />
+            <img
+              src="/assets/placeholder_800x900.svg"
+              style="width: 100%; height: 100%; object-fit: cover"
+              alt="Some alt text"
+            />
+          </picture>
+        </p-link-tile-product>
+        <!--        <p-link-tile-product-->
+        <!--          heading="Product Name"-->
+        <!--          price="Extra long 199,99€ dksa fdiso fjidos jso dfkosp ddskodp sakd sakdö sa"-->
+        <!--          description="inkl. VAT dksaof sa dksa msal fsadksaop dsakd samdskao dsmakdl msad aklmsdks amdlsa "-->
+        <!--          class="basic-content-one-third-left"-->
+        <!--          aria="{ 'aria-label': 'Some more descriptive label' }"-->
+        <!--        >-->
+        <!--          <div slot="header">-->
+        <!--            <p-tag color="background-base">New</p-tag>-->
+        <!--            <p-tag color="background-base">New</p-tag>-->
+        <!--          </div>-->
+        <!--          &lt;!&ndash;          <p-tag slot="tags" color="background-base" theme="dark">New</p-tag>&ndash;&gt;-->
+        <!--          <img src="/assets/zipper.webp" alt="Some alt text" />-->
+        <!--          <a href="https://www.porsche.com">Product Name, 199€</a>-->
+        <!--        </p-link-tile-product>-->
+        <!--        <p-link-tile-product-->
+        <!--          heading="Extra long"-->
+        <!--          price="199,99€product name to show whats happening when too much text is used"-->
+        <!--          description="inkl. VAT"-->
+        <!--          href="/"-->
+        <!--          class="basic-content-one-third-follow"-->
+        <!--        >-->
+        <!--          <p-tag slot="header" color="background-base">New</p-tag>-->
+        <!--          <img src="/assets/placeholder_800x900.svg" alt="Some alt text" />-->
+        <!--        </p-link-tile-product>-->
+        <!--        <p-link-tile-product-->
+        <!--          heading="Test 123"-->
+        <!--          price="199,99€"-->
+        <!--          description="inkl. VAT Extra long product name to show whats happening when too much text is used"-->
+        <!--          href="/"-->
+        <!--          class="basic-content-one-third-follow"-->
+        <!--        >-->
+        <!--          <p-tag slot="header" color="background-base">New</p-tag>-->
+        <!--          <img src="/assets/placeholder_800x900.svg" alt="Some alt text" />-->
+        <!--        </p-link-tile-product>-->
+      </div>
+
       <div class="basic-content-grid">
         <p-link-tile-product
           heading="Product Name"
           price="Extra long 199,99€ dksa fdiso fjidos jso dfkosp ddskodp sakd sakdö sa"
-          info="inkl. VAT dksaof sa dksa msal fsadksaop dsakd samdskao dsmakdl msad aklmsdks amdlsa "
+          description="inkl. VAT dksaof sa dksa msal fsadksaop dsakd samdskao dsmakdl msad aklmsdks amdlsa "
           class="basic-content-one-third-left"
           aria="{ 'aria-label': 'Some more descriptive label' }"
-          theme="dark"
         >
           <div slot="header">
-            <p-tag color="background-base" theme="dark">New</p-tag>
-            <p-tag color="background-base" theme="dark">New</p-tag>
+            <p-tag color="background-base">New</p-tag>
+            <p-tag color="background-base">New</p-tag>
           </div>
           <!--          <p-tag slot="tags" color="background-base" theme="dark">New</p-tag>-->
-          <img src="/assets/link-tile-product-example-02.png" alt="Some alt text" />
+          <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
           <a href="https://www.porsche.com">Product Name, 199€</a>
         </p-link-tile-product>
 
         <p-link-tile-product
           heading="Extra long product name to show whats happening when too much text is used"
           price="199,99€"
-          info="inkl. VAT"
+          description="inkl. VAT"
           href="/"
           class="basic-content-one-third-follow"
         >
@@ -503,7 +628,7 @@
         <p-link-tile-product
           heading="Product Name"
           price="199,99€"
-          info="inkl. VAT"
+          description="inkl. VAT"
           href="/"
           class="basic-content-one-third-follow"
         >
@@ -520,15 +645,15 @@
         <p-link-tile-product
           heading="Product Name"
           price="199,99€"
-          info="inkl. VAT"
+          description="inkl. VAT"
           href="/"
           class="basic-content-one-third-left"
         >
           <p-tag slot="header" color="background-base">New</p-tag>
           <picture>
-            <source media="(min-width:400px)" srcset="/assets/link-tile-product-example-02.png" />
+            <source media="(min-width:400px)" srcset="/assets/link-tile-product-example-01.webp" />
             <img
-              src="/assets/link-tile-product-example-02.png"
+              src="/assets/link-tile-product-example-01.webp"
               style="width: 100%; height: 100%; object-fit: cover"
               alt="Some alt text"
             />
@@ -537,7 +662,7 @@
         <p-link-tile-product
           heading="Product Name"
           price="199,99€"
-          info="inkl. VAT"
+          description="inkl. VAT"
           href="/"
           class="basic-content-one-third-follow"
         >
@@ -546,7 +671,7 @@
         <p-link-tile-product
           heading="Product Name"
           price="199,99€"
-          info="inkl. VAT"
+          description="inkl. VAT"
           href="/"
           class="basic-content-one-third-follow"
         >
@@ -560,13 +685,56 @@
             />
           </picture>
         </p-link-tile-product>
+        <p-link-tile-product
+          heading="Product Name"
+          price="Extra long 199,99€ dksa fdiso fjidos jso dfkosp ddskodp sakd sakdö sa"
+          description="inkl. VAT dksaof sa dksa msal fsadksaop dsakd samdskao dsmakdl msad aklmsdks amdlsa "
+          class="basic-content-one-third-left"
+          aria="{ 'aria-label': 'Some more descriptive label' }"
+        >
+          <div slot="header">
+            <p-tag color="background-base">New</p-tag>
+            <p-tag color="background-base">New</p-tag>
+            <p-tag color="background-base">New</p-tag>
+            <p-tag color="background-base">New</p-tag>
+            <p-tag color="background-base">New</p-tag>
+            <p-tag color="background-base">New</p-tag>
+            <p-tag color="background-base">New</p-tag>
+            <p-tag color="background-base">New</p-tag>
+            <p-tag color="background-base">New</p-tag>
+            <p-tag color="background-base">New</p-tag>
+          </div>
+          <!--          <p-tag slot="tags" color="background-base" theme="dark">New</p-tag>-->
+          <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
+          <a href="https://www.porsche.com">Product Name, 199€</a>
+        </p-link-tile-product>
+        <p-link-tile-product
+          heading="Extra long"
+          price="199,99€product name to show whats happening when too much text is used"
+          description="inkl. VAT"
+          href="/"
+          class="basic-content-one-third-follow"
+        >
+          <p-tag slot="header" color="background-base">New</p-tag>
+          <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
+        </p-link-tile-product>
+        <p-link-tile-product
+          heading="Test 123"
+          price="199,99€"
+          description="inkl. VAT Extra long product name to show whats happening when too much text is used"
+          href="/"
+          class="basic-content-one-third-follow"
+        >
+          <p-tag slot="header" color="background-base">New</p-tag>
+          <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
+        </p-link-tile-product>
       </div>
     </main>
 
     <script>
       const productTiles = document.querySelectorAll('p-link-tile-product');
       productTiles.forEach((productTile) => {
-        productTile.addEventListener('likeChange', (e) => {
+        productTile.addEventListener('like', (e) => {
           productTile.liked = !e.detail.liked;
         });
       });
