@@ -3,6 +3,7 @@
     <div class="header">
       <p-select-wrapper
         v-if="mergedConfig.themeable"
+        class="select"
         :theme="$store.getters.storefrontTheme"
         label="Theme"
         hide-label="true"
@@ -14,7 +15,7 @@
           <option value="auto">Auto (sync with operating system)</option>
         </select>
       </p-select-wrapper>
-      <p-select-wrapper :theme="$store.getters.storefrontTheme" label="Direction" hide-label="true">
+      <p-select-wrapper class="select" :theme="$store.getters.storefrontTheme" label="Direction" hide-label="true">
         <select name="dir" v-model="selectDir" v-on:change="switchDir">
           <option disabled>Select direction</option>
           <option value="ltr">LTR (left-to-right)</option>
@@ -263,6 +264,12 @@
 
     @include pds-media-query-min('xs') {
       flex-direction: row;
+    }
+  }
+
+  .select {
+    @include pds-media-query-min('xs') {
+      width: min(calc(50% - #{$pds-spacing-fluid-x-small} / 2), 12.5rem);
     }
   }
 
