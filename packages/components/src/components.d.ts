@@ -655,6 +655,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * __Experimental__
+     */
     interface PFlyoutNavigation {
         /**
           * Defines which flyout-navigation-item to be visualized as opened.
@@ -2135,6 +2138,9 @@ declare global {
         "dismiss": void;
         "update": FlyoutNavigationUpdateEvent;
     }
+    /**
+     * __Experimental__
+     */
     interface HTMLPFlyoutNavigationElement extends Components.PFlyoutNavigation, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPFlyoutNavigationElementEventMap>(type: K, listener: (this: HTMLPFlyoutNavigationElement, ev: PFlyoutNavigationCustomEvent<HTMLPFlyoutNavigationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3260,6 +3266,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * __Experimental__
+     */
     interface PFlyoutNavigation {
         /**
           * Defines which flyout-navigation-item to be visualized as opened.
@@ -4702,6 +4711,9 @@ declare module "@stencil/core" {
              */
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
             "p-flyout": LocalJSX.PFlyout & JSXBase.HTMLAttributes<HTMLPFlyoutElement>;
+            /**
+             * __Experimental__
+             */
             "p-flyout-navigation": LocalJSX.PFlyoutNavigation & JSXBase.HTMLAttributes<HTMLPFlyoutNavigationElement>;
             "p-flyout-navigation-item": LocalJSX.PFlyoutNavigationItem & JSXBase.HTMLAttributes<HTMLPFlyoutNavigationItemElement>;
             /**
