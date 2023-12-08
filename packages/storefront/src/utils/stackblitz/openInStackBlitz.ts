@@ -31,7 +31,13 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
     markup: transformSrcAndSrcsetOfImgAndSourceTags(markup),
     title: `Porsche Design System ${framework} sandbox`,
     description: 'Porsche Design System component example',
-    globalStyles: `body { background: ${getBackgroundColor(theme, backgroundColor)}; }`,
+    globalStyles:
+      theme === 'auto'
+        ? `body { background: ${getBackgroundColor('light', backgroundColor)}; }
+          @media (prefers-color-scheme: dark) {
+            body { background: ${getBackgroundColor('dark', backgroundColor)}; }
+          }`
+        : `body { background: ${getBackgroundColor(theme, backgroundColor)}; }`,
   };
 
   const getProjectAndOpenOptionsMap: Record<
