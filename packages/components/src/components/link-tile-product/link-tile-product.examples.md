@@ -90,7 +90,7 @@ export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
   imgSrc = 'https://porsche-design-system.github.io/porsche-design-system/weekender.webp';
   imgSrcLarge = 'https://porsche-design-system.github.io/porsche-design-system/weekender@2x.webp';
-  imgSrc2 = 'https://porsche-design-system.github.io/porsche-design-system/assets/placeholder_800x900.svg';
+  imgSrc2 = 'https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg';
   img = `<img src="${this.imgSrc}" alt="Some alt text" />`;
   link = `<a href="https://www.porsche.com">Weekender, 1.911,00 €</a>`;
   headerSlot = `<p-tag slot="header" color="background-base">New</p-tag>`;

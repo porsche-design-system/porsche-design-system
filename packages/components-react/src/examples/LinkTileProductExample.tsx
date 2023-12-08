@@ -21,7 +21,7 @@ export const LinkTileProductExample = (): JSX.Element => {
         New
       </PTag>
       <img
-        src="https://porsche-design-system.github.io/porsche-design-system/assets/placeholder_800x900.svg"
+        src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
         width="800"
         height="900"
         alt="Some alt text"
