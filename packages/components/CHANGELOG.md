@@ -14,6 +14,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+
+#### Added
+
+- `Accordion`: Custom clickarea for `compact`varaint ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
+
+
+#### Fixed
+
+- `Accordion`: Alignment of slotted heading with custom padding ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
+
+
 ### [3.10.0-rc.0] - 2023-12-07
 
 #### Added
@@ -33,11 +44,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Pagination`: Prop `maxNumberOfPageLinks` is deprecated and has no effect anymore, instead there is responsive
   behavior out of the box with full SSR support
   ([#2898](https://github.com/porsche-design-system/porsche-design-system/pull/2898))
-
-
-#### Fixed
-
-- `Accordion`: Alignment of slotted heading with custom padding ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
 
 ### [3.9.0] - 2023-11-24
 
