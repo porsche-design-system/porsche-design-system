@@ -17,23 +17,7 @@ social media platforms or social sharing dialogs.
 Choose between a set of pre-defined social icons.
 
 <Playground :markup="variants" :config="config">
-  <select v-model="platform" aria-label="Select social platform">
-    <option disabled>Select social platform</option>
-    <option value="Facebook">Facebook</option>
-    <option value="Google">Google</option>
-    <option value="Instagram">Instagram</option>
-    <option value="KakaoTalk">KakaoTalk</option>
-    <option value="LinkedIn">LinkedIn</option>
-    <option value="Naver">Naver</option>
-    <option value="Pinterest">Pinterest</option>
-    <option value="Reddit">Reddit</option>
-    <option value="TikTok">TikTok</option>
-    <option value="Twitter">Twitter</option>
-    <option value="WeChat">WeChat</option>
-    <option value="WhatsApp">WhatsApp</option>
-    <option value="XING">XING</option>
-    <option value="YouTube">YouTube</option>
-  </select>
+  <SelectOptions v-model="platform" :values="platforms" name="social platform"></SelectOptions>
 </Playground>
 
 ### Responsive
@@ -116,6 +100,7 @@ import Component from 'vue-class-component';
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'inline' };
   platform = 'Facebook';
+  platforms = ['Facebook', 'Google', 'Instagram', 'KakaoTalk', 'LinkedIn', 'Naver', 'Pinterest', 'Reddit', 'TikTok', 'Twitter', 'WeChat', 'WhatsApp', 'XING', 'YouTube'];
 
   get icon() {
     return `logo-${this.platform.toLowerCase()}`;

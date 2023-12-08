@@ -379,17 +379,9 @@
     }
   }
 
-  .demo {
-    min-width: 100%;
-  }
-
-  :is(.configurator, .demo) {
-    & > :deep(label > :is(select, input)) {
-      // increase size for a11y wcag22aa compliance with scaling support
-      @include pds-text-small();
-      padding: $pds-spacing-fluid-x-small $pds-spacing-fluid-small;
-      margin-inline-end: $pds-spacing-fluid-small;
-    }
+  .demo,
+  .configurator {
+    width: 100%;
   }
 
   .code-block {
