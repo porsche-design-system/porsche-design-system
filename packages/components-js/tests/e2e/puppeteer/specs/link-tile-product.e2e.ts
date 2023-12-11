@@ -26,10 +26,7 @@ const getLikeButton = () => selectNode(page, 'p-link-tile-product >>> .like-butt
 
 type InitOptions = {
   props?: Components.PLinkTileProduct;
-  slots?: {
-    defaultSlot?: string;
-    header?: string;
-  };
+  slotted?: string;
   options?: {
     markupBefore?: string;
     markupAfter?: string;
@@ -37,14 +34,12 @@ type InitOptions = {
 };
 
 const initLinkTileProduct = (opt?: InitOptions): Promise<void> => {
-  const { props = { heading: 'Some product name', price: '1.199,00 €', href: '/' }, slots, options } = opt || {};
+  const { props = { heading: 'Some product name', price: '1.199,00 €', href: '/' }, slotted = '', options } = opt || {};
   const { markupBefore = '', markupAfter = '' } = options || {};
-  const { defaultSlot = '', header = '' } = slots || {};
 
   const markup = `${markupBefore}
       <p-link-tile-product ${getHTMLAttributes(props)}>
-        ${header}
-        ${defaultSlot}
+        ${slotted}
       </p-link-tile-product>
       ${markupAfter}`;
 
@@ -167,7 +162,7 @@ describe('focus', () => {
   it('should have correct focus order when slotted link', async () => {
     await initLinkTileProduct({
       props: { heading: 'Some product name', price: '1.199,00 €', href: undefined },
-      slots: { defaultSlot: '<a href="/">Some product name, 1.199,00 €</a>' },
+      slotted: '<a slot="anchor" href="/">Some product name, 1.199,00 €</a>',
     });
     const host = await getHost();
     await page.evaluate(() => {
