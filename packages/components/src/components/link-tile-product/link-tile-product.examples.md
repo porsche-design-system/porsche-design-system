@@ -28,7 +28,7 @@ The `heading` and `price` properties are required and a link must be provided, u
 The `likeButton` property can be used to hide the like button. By default, the like button is shown.
 
 <Playground :markup="likeButtonMarkup" :config="config">
-  <SelectOptions v-model="likeButton" :values="likeButtons" name="like-button"></SelectOptions>
+  <PlaygroundSelect v-model="likeButton" :values="likeButtons" name="like-button"></PlaygroundSelect>
 </Playground>
 
 ## Header
@@ -51,7 +51,7 @@ using the `aspect-ratio` property to be either `3:4` or `9:16`. This can be espe
 the image by using the `9:16` aspect ratio on smaller viewports and the `3:4` on larger ones.
 
 <Playground :markup="aspectRatioMarkup">
-  <SelectOptions v-model="aspectRatio" :values="aspectRatios" name="aspectRatio"></SelectOptions>
+  <PlaygroundSelect v-model="aspectRatio" :values="aspectRatios" name="aspectRatio"></PlaygroundSelect>
 </Playground>
 
 ## Framework routing (anchor nesting)
