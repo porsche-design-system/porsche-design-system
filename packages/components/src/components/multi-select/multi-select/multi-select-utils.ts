@@ -51,11 +51,8 @@ export const syncNativeSelect = (
   nativeSelect.toggleAttribute('required', required);
 };
 
-export const updateNativeOptions = (
-  nativeSelect: HTMLSelectElement,
-  multiPlaygroundSelect: MultiSelectOption[]
-): void => {
-  nativeSelect.innerHTML = getSelectedOptions(multiPlaygroundSelect)
+export const updateNativeOptions = (nativeSelect: HTMLSelectElement, multiSelectOptions: MultiSelectOption[]): void => {
+  nativeSelect.innerHTML = getSelectedOptions(multiSelectOptions)
     .map((option) => `<option value="${option.value}" selected="${option.selected}">${option.textContent}</option>`)
     .join('');
 };

@@ -30,7 +30,7 @@ import * as setAttributeUtils from '../../../utils/dom/setAttribute';
 import * as dropdownDirectionUtils from '../../../utils/select/select-dropdown';
 import type { DropdownDirectionInternal } from '../../select-wrapper/select-wrapper/select-wrapper-utils';
 
-type GenerateMultiPlaygroundSelectParams = {
+type GenerateMultiSelectOptionsParams = {
   amount: number;
   selectedIndices?: number[];
   highlightedIndex?: number;
@@ -38,14 +38,8 @@ type GenerateMultiPlaygroundSelectParams = {
   hiddenIndex?: number;
 };
 
-export const generateMultiPlaygroundSelect = (
-  {
-    amount,
-    selectedIndices = [],
-    highlightedIndex,
-    disabledIndex,
-    hiddenIndex,
-  }: GenerateMultiPlaygroundSelectParams = {
+export const generateMultiSelectOptions = (
+  { amount, selectedIndices = [], highlightedIndex, disabledIndex, hiddenIndex }: GenerateMultiSelectOptionsParams = {
     amount: 3,
     selectedIndices: [],
   }
@@ -66,7 +60,7 @@ export const generateMultiPlaygroundSelect = (
 
 describe('syncMultiSelectOptionProps', () => {
   it('should update theme and force update for mismatched options', () => {
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
     options[0].theme = 'light';
     options[1].theme = 'dark';
 
@@ -154,7 +148,7 @@ describe('updateNativeOptions()', () => {
   it('should update the innerHTML of the nativeSelect', () => {
     const nativeSelect = document.createElement('select');
     const selectedOptions = [0, 1, 2];
-    const options = generateMultiPlaygroundSelect({ amount: 4, selectedIndices: selectedOptions });
+    const options = generateMultiSelectOptions({ amount: 4, selectedIndices: selectedOptions });
 
     updateNativeOptions(nativeSelect, options);
     const optionElements = nativeSelect.querySelectorAll('option');
@@ -171,7 +165,7 @@ describe('updateNativeOptions()', () => {
 
 describe('updateOptionsFilterState()', () => {
   it('should update hidden option prop depending on search string', () => {
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
     const searchString1 = 'Option 3';
     updateOptionsFilterState(searchString1, options);
     options.forEach((option) => {
@@ -194,7 +188,7 @@ describe('updateOptionsFilterState()', () => {
 
 describe('hasFilterOptionResults()', () => {
   it('should return boolean depending if there are hidden options', () => {
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
     expect(hasFilterOptionResults(options)).toBeTruthy();
     options[0].hidden = true;
     options[1].hidden = true;
@@ -206,7 +200,7 @@ describe('hasFilterOptionResults()', () => {
 
 describe('resetFilteredOptions()', () => {
   it('should reset all options to not be hidden', () => {
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
     resetFilteredOptions(options);
     options.forEach((option) => {
       expect(option.hidden).toBeFalsy();
@@ -222,7 +216,7 @@ describe('resetFilteredOptions()', () => {
 
 describe('getSelectedOptions()', () => {
   it('should return all selected options', () => {
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
     expect(getSelectedOptions(options)).toEqual([]);
     options[0].selected = true;
     expect(getSelectedOptions(options)).toEqual([options[0]]);
@@ -233,7 +227,7 @@ describe('getSelectedOptions()', () => {
 
 describe('getSelectedOptionValues', () => {
   it('should return all selected options values', () => {
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
     expect(getSelectedOptionValues(options)).toEqual([]);
     options[0].selected = true;
     expect(getSelectedOptionValues(options)).toEqual([options[0].value]);
@@ -244,7 +238,7 @@ describe('getSelectedOptionValues', () => {
 
 describe('getSelectedOptionsString', () => {
   it('should return all selected options textContent joined to one string', () => {
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
     expect(getSelectedOptionsString(options)).toEqual('');
     options[0].selected = true;
     expect(getSelectedOptionsString(options)).toEqual(options[0].textContent);
@@ -255,7 +249,7 @@ describe('getSelectedOptionsString', () => {
 
 describe('getUsableOptions', () => {
   it('should return all options which are not disabled or hidden', () => {
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
     expect(getUsableOptions(options)).toEqual(options);
     options[0].hidden = true;
     expect(getUsableOptions(options)).toEqual([options[1], options[2]]);
@@ -266,7 +260,7 @@ describe('getUsableOptions', () => {
 
 describe('getHighlightedOption', () => {
   it('should return the highlighted option', () => {
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
     expect(getHighlightedOption(options)).toBeUndefined();
     options[0].highlighted = true;
     expect(getHighlightedOption(options)).toEqual(options[0]);
@@ -279,7 +273,7 @@ describe('getHighlightedOption', () => {
 describe('setSelectedOptions', () => {
   it('should update the selected state of options not fitting the value', () => {
     const consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation();
-    const options = generateMultiPlaygroundSelect({ amount: 5, selectedIndices: [0, 2, 3] });
+    const options = generateMultiSelectOptions({ amount: 5, selectedIndices: [0, 2, 3] });
     const value1 = ['Value 1', 'Value 2'];
 
     setSelectedOptions(options, value1);
@@ -317,7 +311,7 @@ describe('setSelectedOptions', () => {
 
 describe('setHighlightedOption', () => {
   it('should set the option highlighted', () => {
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
     expect(options[0].highlighted).toBeFalsy();
     setHighlightedOption(options[0], true);
     expect(options[0].highlighted).toBeTruthy();
@@ -328,7 +322,7 @@ describe('setHighlightedOption', () => {
 
 describe('getHighlightedOptionIndex', () => {
   it('should return the index of the highlighted option', () => {
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
     expect(getHighlightedOptionIndex(options)).toBe(-1);
     options[0].highlighted = true;
     expect(getHighlightedOptionIndex(options)).toBe(0);
@@ -342,7 +336,7 @@ describe('setNextOptionHighlighted()', () => {
   it('should set the next option highlighted', () => {
     const host = document.createElement('p-multi-select');
     const spy = jest.spyOn(multiSelectUtils, 'handleDropdownScroll');
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
     options.forEach((option) => {
       expect(option.highlighted).toBeFalsy();
     });
@@ -365,7 +359,7 @@ describe('setNextOptionHighlighted()', () => {
 describe('setFirstOptionHighlighted()', () => {
   it('should set first option highlighted', () => {
     const host = document.createElement('p-multi-select');
-    const options = generateMultiPlaygroundSelect({ amount: 5, highlightedIndex: 2 });
+    const options = generateMultiSelectOptions({ amount: 5, highlightedIndex: 2 });
     expect(options[2].highlighted).toBeTruthy();
     setFirstOptionHighlighted(host, options);
     expect(options[0].highlighted).toBeTruthy();
@@ -376,7 +370,7 @@ describe('setFirstOptionHighlighted()', () => {
 describe('setLastOptionHighlighted()', () => {
   it('should set last option highlighted', () => {
     const host = document.createElement('p-multi-select');
-    const options = generateMultiPlaygroundSelect({ amount: 5, highlightedIndex: 2 });
+    const options = generateMultiSelectOptions({ amount: 5, highlightedIndex: 2 });
     expect(options[2].highlighted).toBeTruthy();
     setLastOptionHighlighted(host, options);
     expect(options[2].highlighted).toBeFalsy();
@@ -386,7 +380,7 @@ describe('setLastOptionHighlighted()', () => {
 
 describe('resetHighlightedOptions()', () => {
   it('should reset highlighted options', () => {
-    const options = generateMultiPlaygroundSelect({ amount: 5, highlightedIndex: 2 });
+    const options = generateMultiSelectOptions({ amount: 5, highlightedIndex: 2 });
     expect(options[2].highlighted).toBeTruthy();
     resetHighlightedOptions(options);
     expect(options[2].highlighted).toBeFalsy();
@@ -398,7 +392,7 @@ describe('resetHighlightedOptions()', () => {
 
 describe('resetSelectedOptions()', () => {
   it('should reset selected options', () => {
-    const options = generateMultiPlaygroundSelect({ amount: 5, selectedIndices: [0, 1, 2] });
+    const options = generateMultiSelectOptions({ amount: 5, selectedIndices: [0, 1, 2] });
     expect(options[0].selected).toBeTruthy();
     expect(options[1].selected).toBeTruthy();
     expect(options[1].selected).toBeTruthy();
@@ -411,7 +405,7 @@ describe('resetSelectedOptions()', () => {
 
 describe('getNewOptionIndex()', () => {
   it('should return undefined if there is no valid option', () => {
-    const options = generateMultiPlaygroundSelect({ amount: 5 }).map((item) => ({
+    const options = generateMultiSelectOptions({ amount: 5 }).map((item) => ({
       ...item,
       disabled: true,
     }));
@@ -430,7 +424,7 @@ describe('getNewOptionIndex()', () => {
   ])(
     'should for highlightedIndex: %s, direction %s, amount: %s and return %s',
     (highlightedIndex, direction, amount, expected) => {
-      const options = generateMultiPlaygroundSelect({ amount, highlightedIndex });
+      const options = generateMultiSelectOptions({ amount, highlightedIndex });
       expect(getNewOptionIndex(options, direction)).toBe(expected);
     }
   );
@@ -439,7 +433,7 @@ describe('getNewOptionIndex()', () => {
 describe('updateHighlightedOption()', () => {
   it('should get new index with getNewOptionIndex() and call setNextOptionHighlighted()', () => {
     const host = document.createElement('p-multi-select');
-    const options = generateMultiPlaygroundSelect();
+    const options = generateMultiSelectOptions();
 
     const getNewOptionIndexSpy = jest.spyOn(multiSelectUtils, 'getNewOptionIndex').mockReturnValueOnce(1);
     const setNextOptionHighlightedSpy = jest.spyOn(multiSelectUtils, 'setNextOptionHighlighted');
@@ -455,7 +449,7 @@ describe('updateHighlightedOption()', () => {
 
 describe('getDropdownDirection()', () => {
   it('should return correct direction', () => {
-    const options = generateMultiPlaygroundSelect({ amount: 5, hiddenIndex: 2 });
+    const options = generateMultiSelectOptions({ amount: 5, hiddenIndex: 2 });
     const host = document.createElement('p-multi-select');
     expect(getDropdownDirection('down', host, options)).toBe('down');
     expect(getDropdownDirection('up', host, options)).toBe('up');
