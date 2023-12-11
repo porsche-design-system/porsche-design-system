@@ -16,7 +16,6 @@ exports[`getComponentCss() should return correct css for hasLikeButton: false, h
   object-fit: cover !important;
   overflow: hidden !important;
   border-radius: 12px !important;
-  mix-blend-mode: var(--p-link-tile-product-mix-blend-mode) !important;
 }
 .link-overlay {
   position: absolute;
@@ -122,7 +121,6 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   object-fit: cover !important;
   overflow: hidden !important;
   border-radius: 12px !important;
-  mix-blend-mode: var(--p-link-tile-product-mix-blend-mode) !important;
 }
 .link-overlay {
   position: absolute;
@@ -246,7 +244,6 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   object-fit: cover !important;
   overflow: hidden !important;
   border-radius: 12px !important;
-  mix-blend-mode: var(--p-link-tile-product-mix-blend-mode) !important;
 }
 .link-overlay {
   position: absolute;
@@ -360,7 +357,6 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   object-fit: cover !important;
   overflow: hidden !important;
   border-radius: 12px !important;
-  mix-blend-mode: var(--p-link-tile-product-mix-blend-mode) !important;
 }
 .link-overlay {
   position: absolute;
@@ -480,7 +476,6 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   object-fit: cover !important;
   overflow: hidden !important;
   border-radius: 12px !important;
-  mix-blend-mode: var(--p-link-tile-product-mix-blend-mode) !important;
 }
 ::slotted(a[slot='anchor']) {
   position: absolute !important;
