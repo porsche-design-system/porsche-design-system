@@ -74,7 +74,6 @@ export class LinkTileProduct {
   @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeEvent>;
 
   public componentWillLoad(): void {
-    // TODO: Check if slotted anchor is used correctly
     throwIfInvalidLinkTileProductUsage(this.host, this.href);
   }
 
@@ -124,8 +123,7 @@ export class LinkTileProduct {
               {this.description}
             </p>
           </div>
-          {!this.href && <slot name={anchorSlot}></slot>}
-          {this.href && (
+          {this.href ? (
             <a
               class="link-overlay"
               href={this.href}
@@ -134,6 +132,8 @@ export class LinkTileProduct {
               aria-labelledby={`${headingId} ${priceId}`}
               aria-describedby={`${headerId} ${descriptionId}`}
             />
+          ) : (
+            <slot name={anchorSlot}></slot>
           )}
         </div>
       </Host>
