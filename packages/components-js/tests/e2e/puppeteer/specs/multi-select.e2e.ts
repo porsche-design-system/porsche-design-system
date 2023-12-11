@@ -34,8 +34,8 @@ const getDropdownDisplay = async (): Promise<string> => await getElementStyle(aw
 const getShadowDropdownOption = (n: number) => selectNode(page, `p-multi-select >>> .listbox div:nth-child(${n})`);
 const getMultiSelectOption = (n: number) =>
   selectNode(page, `p-multi-select p-multi-select-option:nth-child(${n + 1})`); // First one is native select
-const getMultiPlaygroundSelect = () => page.$$('p-multi-select p-multi-select-option');
-const getAmountOfVisibleMultiPlaygroundSelect = async (): Promise<number> =>
+const getMultiSelectOptions = () => page.$$('p-multi-select p-multi-select-option');
+const getAmountOfVisibleMultiSelectOptions = async (): Promise<number> =>
   await page.$$eval(
     'p-multi-select p-multi-select-option',
     (options) => options.filter((option: HTMLElement) => !option.hidden).length
@@ -61,7 +61,7 @@ const getSelectedOptionIndicies = async (): Promise<number[]> =>
   );
 const getNativeSelect = () => selectNode(page, 'p-multi-select select');
 const getNativeSelectValue = async (): Promise<string> => await getProperty(await getNativeSelect(), 'value');
-const getNativePlaygroundSelect = () => page.$$('p-multi-select select option');
+const getNativeSelectOptions = () => page.$$('p-multi-select select option');
 const getLabel = () => selectNode(page, 'p-multi-select >>> label');
 const getResetButton = () => selectNode(page, 'p-multi-select >>> .button');
 const getAssertiveText = async () => await selectNode(page, 'span[aria-live="assertive"]');
@@ -179,8 +179,8 @@ describe('native select', () => {
 
   it('should be in sync with selected options when selecting option', async () => {
     await initMultiSelect();
-    const nativePlaygroundSelect = await getNativePlaygroundSelect();
-    expect(nativePlaygroundSelect.length, 'initial').toEqual(0);
+    const nativeSelectOptions = await getNativeSelectOptions();
+    expect(nativeSelectOptions.length, 'initial').toEqual(0);
 
     const inputElement = await getInput();
     await inputElement.click();
@@ -189,35 +189,35 @@ describe('native select', () => {
     const option = await getMultiSelectOption(1);
     await option.click();
     await waitForStencilLifecycle(page);
-    const nativePlaygroundSelect1 = await getNativePlaygroundSelect();
+    const nativeSelectOptions1 = await getNativeSelectOptions();
 
-    expect(nativePlaygroundSelect1[0], 'after selected').not.toBeUndefined();
-    expect(await getProperty(nativePlaygroundSelect1[0], 'value'), 'after selected').toEqual('a');
+    expect(nativeSelectOptions1[0], 'after selected').not.toBeUndefined();
+    expect(await getProperty(nativeSelectOptions1[0], 'value'), 'after selected').toEqual('a');
 
     await option.click();
     await waitForStencilLifecycle(page);
-    const nativePlaygroundSelect2 = await getNativePlaygroundSelect();
-    expect(nativePlaygroundSelect2[0], 'after unselected').toBeUndefined();
-    expect(nativePlaygroundSelect2.length, 'after unselected').toEqual(0);
+    const nativeSelectOptions2 = await getNativeSelectOptions();
+    expect(nativeSelectOptions2[0], 'after unselected').toBeUndefined();
+    expect(nativeSelectOptions2.length, 'after unselected').toEqual(0);
   });
 
   it('should be in sync with selected options when setting value', async () => {
     await initMultiSelect();
-    const nativePlaygroundSelect = await getNativePlaygroundSelect();
-    expect(nativePlaygroundSelect.length, 'initial').toEqual(0);
+    const nativeSelectOptions = await getNativeSelectOptions();
+    expect(nativeSelectOptions.length, 'initial').toEqual(0);
 
     await setValue(['a']);
     await waitForStencilLifecycle(page);
-    const nativePlaygroundSelect1 = await getNativePlaygroundSelect();
+    const nativeSelectOptions1 = await getNativeSelectOptions();
 
-    expect(nativePlaygroundSelect1[0], 'after selected').not.toBeUndefined();
-    expect(await getProperty(nativePlaygroundSelect1[0], 'value'), 'after selected').toEqual('a');
+    expect(nativeSelectOptions1[0], 'after selected').not.toBeUndefined();
+    expect(await getProperty(nativeSelectOptions1[0], 'value'), 'after selected').toEqual('a');
 
     await setValue([]);
     await waitForStencilLifecycle(page);
-    const nativePlaygroundSelect2 = await getNativePlaygroundSelect();
-    expect(nativePlaygroundSelect2[0], 'after unselected').toBeUndefined();
-    expect(nativePlaygroundSelect2.length, 'after unselected').toEqual(0);
+    const nativeSelectOptions2 = await getNativeSelectOptions();
+    expect(nativeSelectOptions2[0], 'after unselected').toBeUndefined();
+    expect(nativeSelectOptions2.length, 'after unselected').toEqual(0);
   });
 
   it('should be in sync when resetting options', async () => {
@@ -225,35 +225,35 @@ describe('native select', () => {
     await setValue(['a', 'b']);
     await waitForStencilLifecycle(page);
 
-    const nativePlaygroundSelect = await getNativePlaygroundSelect();
-    expect(nativePlaygroundSelect.length, 'initial').toEqual(2);
-    expect(await getProperty(nativePlaygroundSelect[0], 'value')).toEqual('a');
-    expect(await getProperty(nativePlaygroundSelect[1], 'value')).toEqual('b');
+    const nativeSelectOptions = await getNativeSelectOptions();
+    expect(nativeSelectOptions.length, 'initial').toEqual(2);
+    expect(await getProperty(nativeSelectOptions[0], 'value')).toEqual('a');
+    expect(await getProperty(nativeSelectOptions[1], 'value')).toEqual('b');
 
     const resetButton = await getResetButton();
     await resetButton.click();
     await waitForStencilLifecycle(page);
 
-    const nativePlaygroundSelectAfter = await getNativePlaygroundSelect();
-    expect(nativePlaygroundSelectAfter.length, 'after reset').toEqual(0);
-    expect(nativePlaygroundSelectAfter[0], 'after reset').toBeUndefined();
+    const nativeSelectOptionsAfter = await getNativeSelectOptions();
+    expect(nativeSelectOptionsAfter.length, 'after reset').toEqual(0);
+    expect(nativeSelectOptionsAfter[0], 'after reset').toBeUndefined();
   });
 
   it('should be in sync with selected options when adding new selected option', async () => {
     await initMultiSelect();
 
-    const nativePlaygroundSelect = await getNativePlaygroundSelect();
-    expect(nativePlaygroundSelect.length, 'initial').toEqual(0);
+    const nativeSelectOptions = await getNativeSelectOptions();
+    expect(nativeSelectOptions.length, 'initial').toEqual(0);
 
     await setValue(['test']);
     await waitForStencilLifecycle(page);
     await addOption('test');
     await waitForStencilLifecycle(page);
 
-    const nativePlaygroundSelectAfter = await getNativePlaygroundSelect();
+    const nativeSelectOptionsAfter = await getNativeSelectOptions();
 
-    expect(nativePlaygroundSelectAfter[0]).not.toBeUndefined();
-    expect(await getProperty(nativePlaygroundSelectAfter[0], 'value')).toEqual('test');
+    expect(nativeSelectOptionsAfter[0]).not.toBeUndefined();
+    expect(await getProperty(nativeSelectOptionsAfter[0], 'value')).toEqual('test');
   });
 
   it('should be in sync with selected options when removing selected option', async () => {
@@ -261,16 +261,16 @@ describe('native select', () => {
     await setValue(['c']);
     await waitForStencilLifecycle(page);
 
-    const nativePlaygroundSelect = await getNativePlaygroundSelect();
-    expect(nativePlaygroundSelect.length, 'initial').toEqual(1);
-    expect(await getProperty(nativePlaygroundSelect[0], 'value'), 'initial').toEqual('c');
+    const nativeSelectOptions = await getNativeSelectOptions();
+    expect(nativeSelectOptions.length, 'initial').toEqual(1);
+    expect(await getProperty(nativeSelectOptions[0], 'value'), 'initial').toEqual('c');
 
     await removeLastOption();
     await waitForStencilLifecycle(page);
 
-    const nativePlaygroundSelectAfter = await getNativePlaygroundSelect();
-    expect(nativePlaygroundSelectAfter.length, 'initial').toEqual(0);
-    expect(nativePlaygroundSelectAfter[0]).toBeUndefined();
+    const nativeSelectOptionsAfter = await getNativeSelectOptions();
+    expect(nativeSelectOptionsAfter.length, 'initial').toEqual(0);
+    expect(nativeSelectOptionsAfter[0]).toBeUndefined();
   });
 
   it('should not be rendered when used without wrapping form', async () => {
@@ -422,14 +422,14 @@ describe('outside click', () => {
     await inputElement.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getMultiPlaygroundSelect()).length, 'initial').toBe(3);
-    expect(await getAmountOfVisibleMultiPlaygroundSelect()).toBe(3);
+    expect((await getMultiSelectOptions()).length, 'initial').toBe(3);
+    expect(await getAmountOfVisibleMultiSelectOptions()).toBe(3);
 
     await inputElement.type('A');
     await waitForStencilLifecycle(page);
 
     expect(await getInputValue()).toBe('A');
-    expect(await getAmountOfVisibleMultiPlaygroundSelect(), 'after input').toBe(1);
+    expect(await getAmountOfVisibleMultiSelectOptions(), 'after input').toBe(1);
 
     await text.click();
     await waitForStencilLifecycle(page);
@@ -439,8 +439,8 @@ describe('outside click', () => {
     await inputElement.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getMultiPlaygroundSelect()).length, 'after outside click').toBe(3);
-    expect(await getAmountOfVisibleMultiPlaygroundSelect(), 'after outside click').toBe(3);
+    expect((await getMultiSelectOptions()).length, 'after outside click').toBe(3);
+    expect(await getAmountOfVisibleMultiSelectOptions(), 'after outside click').toBe(3);
   });
 });
 
@@ -584,7 +584,7 @@ describe('filter', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getDropdownDisplay(), 'after typing').toBe('flex');
-    expect(await getAmountOfVisibleMultiPlaygroundSelect(), 'amount of shown options').toBe(1);
+    expect(await getAmountOfVisibleMultiSelectOptions(), 'amount of shown options').toBe(1);
 
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
@@ -593,7 +593,7 @@ describe('filter', () => {
     await inputElement.press('Enter');
     await waitForStencilLifecycle(page);
 
-    const nativeOptions = await getNativePlaygroundSelect();
+    const nativeOptions = await getNativeSelectOptions();
 
     expect(nativeOptions.length).toBe(1);
     expect(await getProperty(nativeOptions[0], 'value')).toBe('b');
@@ -611,7 +611,7 @@ describe('filter', () => {
     const dropdownOption1 = await getShadowDropdownOption(1);
     const dropdownOption1Value = await getProperty(dropdownOption1, 'textContent');
 
-    expect(await getAmountOfVisibleMultiPlaygroundSelect()).toBe(0);
+    expect(await getAmountOfVisibleMultiSelectOptions()).toBe(0);
     expect(dropdownOption1Value).toBe('---No results found');
   });
 });
@@ -632,14 +632,14 @@ describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const value = await getMultiSelectValue();
-    const nativePlaygroundSelect = await getNativePlaygroundSelect();
+    const nativeSelectOptions = await getNativeSelectOptions();
     const filterPlaceholder = await getInputPlaceholder();
-    const selectedMultiPlaygroundSelect = await getSelectedMultiSelectOptionProperty('textContent');
+    const selectedMultiSelectOptions = await getSelectedMultiSelectOptionProperty('textContent');
 
     expect(value).toStrictEqual(['b']);
-    expect(await getProperty(nativePlaygroundSelect[0], 'value'), 'after first option selected').toEqual('b');
-    expect(selectedMultiPlaygroundSelect, 'after first option selected').toEqual(['Option B']);
-    expect(filterPlaceholder, 'after first option selected').toBe(selectedMultiPlaygroundSelect.join(', '));
+    expect(await getProperty(nativeSelectOptions[0], 'value'), 'after first option selected').toEqual('b');
+    expect(selectedMultiSelectOptions, 'after first option selected').toEqual(['Option B']);
+    expect(filterPlaceholder, 'after first option selected').toBe(selectedMultiSelectOptions.join(', '));
 
     await inputElement.press('Backspace');
     await page.keyboard.press('ArrowDown');
@@ -648,17 +648,15 @@ describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const valueAfter = await getMultiSelectValue();
-    const nativePlaygroundSelectAfter = await getNativePlaygroundSelect();
+    const nativeSelectOptionsAfter = await getNativeSelectOptions();
     const filterPlaceholderSecond = await getInputPlaceholder();
-    const selectedMultiPlaygroundSelectSecond = await getSelectedMultiSelectOptionProperty('textContent');
+    const selectedMultiSelectOptionsSecond = await getSelectedMultiSelectOptionProperty('textContent');
 
     expect(valueAfter).toStrictEqual(['b', 'c']);
-    expect(await getProperty(nativePlaygroundSelectAfter[0], 'value'), 'after second option selected').toEqual('b');
-    expect(await getProperty(nativePlaygroundSelectAfter[1], 'value'), 'after second option selected').toEqual('c');
-    expect(selectedMultiPlaygroundSelectSecond, 'after second option selected').toEqual(['Option B', 'Option C']);
-    expect(filterPlaceholderSecond, 'after second option selected').toBe(
-      selectedMultiPlaygroundSelectSecond.join(', ')
-    );
+    expect(await getProperty(nativeSelectOptionsAfter[0], 'value'), 'after second option selected').toEqual('b');
+    expect(await getProperty(nativeSelectOptionsAfter[1], 'value'), 'after second option selected').toEqual('c');
+    expect(selectedMultiSelectOptionsSecond, 'after second option selected').toEqual(['Option B', 'Option C']);
+    expect(filterPlaceholderSecond, 'after second option selected').toBe(selectedMultiSelectOptionsSecond.join(', '));
   });
 
   it('should add valid selection on click', async () => {
@@ -673,29 +671,29 @@ describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const value = await getMultiSelectValue();
-    const nativePlaygroundSelect = await getNativePlaygroundSelect();
+    const nativeSelectOptions = await getNativeSelectOptions();
     const filterPlaceholder = await getInputPlaceholder();
-    const selectedMultiPlaygroundSelect = await getSelectedMultiSelectOptionProperty('textContent');
+    const selectedMultiSelectOptions = await getSelectedMultiSelectOptionProperty('textContent');
 
     expect(value).toStrictEqual(['b']);
-    expect(await getProperty(nativePlaygroundSelect[0], 'value'), 'after first option selected').toEqual('b');
+    expect(await getProperty(nativeSelectOptions[0], 'value'), 'after first option selected').toEqual('b');
     expect(filterPlaceholder, 'after first selection').toBe('Option B');
-    expect(filterPlaceholder, 'after first selection').toEqual(selectedMultiPlaygroundSelect.join(', '));
+    expect(filterPlaceholder, 'after first selection').toEqual(selectedMultiSelectOptions.join(', '));
 
     const dropdownOption3 = await getMultiSelectOption(3);
     await dropdownOption3.click();
     await waitForStencilLifecycle(page);
 
     const valueAfter = await getMultiSelectValue();
-    const nativePlaygroundSelectAfter = await getNativePlaygroundSelect();
+    const nativeSelectOptionsAfter = await getNativeSelectOptions();
     const filterPlaceholderSecond = await getInputPlaceholder();
-    const selectedMultiPlaygroundSelectSecond = await getSelectedMultiSelectOptionProperty('textContent');
+    const selectedMultiSelectOptionsSecond = await getSelectedMultiSelectOptionProperty('textContent');
 
     expect(valueAfter).toStrictEqual(['b', 'c']);
-    expect(await getProperty(nativePlaygroundSelectAfter[0], 'value'), 'after second option selected').toEqual('b');
-    expect(await getProperty(nativePlaygroundSelectAfter[1], 'value'), 'after second option selected').toEqual('c');
+    expect(await getProperty(nativeSelectOptionsAfter[0], 'value'), 'after second option selected').toEqual('b');
+    expect(await getProperty(nativeSelectOptionsAfter[1], 'value'), 'after second option selected').toEqual('c');
     expect(filterPlaceholderSecond, 'after second selection').toBe('Option B, Option C');
-    expect(filterPlaceholderSecond, 'after second selection').toEqual(selectedMultiPlaygroundSelectSecond.join(', '));
+    expect(filterPlaceholderSecond, 'after second selection').toEqual(selectedMultiSelectOptionsSecond.join(', '));
   });
 
   it('should reset selection on reset button enter', async () => {
@@ -708,7 +706,7 @@ describe('selection', () => {
     await inputElement.press('Enter');
     await waitForStencilLifecycle(page);
 
-    expect(await getProperty((await getNativePlaygroundSelect())[0], 'value')).toEqual('a');
+    expect(await getProperty((await getNativeSelectOptions())[0], 'value')).toEqual('a');
     expect(await getMultiSelectValue()).toEqual(['a']);
     expect(await getSelectedMultiSelectOptionProperty('value')).toEqual(['a']);
 
@@ -722,7 +720,7 @@ describe('selection', () => {
     await resetButton.press('Enter');
     await waitForStencilLifecycle(page);
 
-    expect(await getNativePlaygroundSelect()).toEqual([]);
+    expect(await getNativeSelectOptions()).toEqual([]);
     expect(await getMultiSelectValue()).toEqual([]);
     expect(await getSelectedMultiSelectOptionProperty('value')).toEqual([]);
   });
@@ -739,8 +737,8 @@ describe('selection', () => {
     await option2.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getProperty((await getNativePlaygroundSelect())[0], 'value')).toEqual('a');
-    expect(await getProperty((await getNativePlaygroundSelect())[1], 'value')).toEqual('b');
+    expect(await getProperty((await getNativeSelectOptions())[0], 'value')).toEqual('a');
+    expect(await getProperty((await getNativeSelectOptions())[1], 'value')).toEqual('b');
     expect(await getMultiSelectValue()).toEqual(['a', 'b']);
     expect(await getSelectedMultiSelectOptionProperty('value')).toEqual(['a', 'b']);
 
@@ -748,7 +746,7 @@ describe('selection', () => {
     await resetButton.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getNativePlaygroundSelect()).toEqual([]);
+    expect(await getNativeSelectOptions()).toEqual([]);
     expect(await getMultiSelectValue()).toEqual([]);
     expect(await getSelectedMultiSelectOptionProperty('value')).toEqual([]);
   });
@@ -1120,7 +1118,7 @@ describe('slots', () => {
 
     await addOption('d', 'Option D');
     await waitForStencilLifecycle(page);
-    const nativeOptions = await getNativePlaygroundSelect();
+    const nativeOptions = await getNativeSelectOptions();
     const filterPlaceholder = await getInputPlaceholder();
     expect(await getProperty(nativeOptions[0], 'value'), 'after option was added').toStrictEqual('d');
     expect(filterPlaceholder, 'after option was added').toBe('Option D');
@@ -1130,7 +1128,7 @@ describe('slots', () => {
     await initMultiSelect();
     await setValue(['c']);
     await waitForStencilLifecycle(page);
-    const nativeOptions = await getNativePlaygroundSelect();
+    const nativeOptions = await getNativeSelectOptions();
     const filterPlaceholder = await getInputPlaceholder();
     expect(await getProperty(nativeOptions[0], 'value'), 'after option was added').toStrictEqual('c');
     expect(await getMultiSelectValue()).toStrictEqual(['c']);
@@ -1144,7 +1142,7 @@ describe('slots', () => {
     );
     await waitForStencilLifecycle(page);
 
-    const nativeOptionsAfter = await getNativePlaygroundSelect();
+    const nativeOptionsAfter = await getNativeSelectOptions();
     const filterPlaceholderAfter = await getInputPlaceholder();
 
     expect(nativeOptionsAfter, 'after selected option was removed').toStrictEqual([]);
