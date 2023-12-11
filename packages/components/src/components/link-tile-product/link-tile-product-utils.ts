@@ -1,5 +1,5 @@
-import { LinkTarget } from '../../utils/link-button/link-target';
-import { TileAspectRatio } from '../../utils';
+import { type LinkTarget } from '../../utils/link-button/link-target';
+import { type TileAspectRatio } from '../../utils';
 
 export type LinkTileProductTarget = LinkTarget;
 export type LinkTileProductLikeEvent = {
