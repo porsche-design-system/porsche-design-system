@@ -471,7 +471,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // replace toggle icon className
           .replace(/className=\{\{ icon: true, 'icon--rotate': this\.props\.isOpen }}/, 'className="icon"')
           .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
-          .replace(/getSelectedOptions\(this\.props\.multiPlaygroundSelect\)\.length > 0/, 'false');
+          .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
           // remove any jsx since options are not visible in closed multi-select
