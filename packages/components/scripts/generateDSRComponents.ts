@@ -566,8 +566,6 @@ $&`
           .replace(/LinkTileProductAspectRatio,/, '')
           .replace(/LinkTileProductLikeEvent,/, '')
           .replace(/LinkTileProductTarget,/, '');
-        // .replace(/headerSlot/, '"header"')
-        // .replace(/anchorSlot/, '"anchor"');
       }
 
       return newFileContent;
