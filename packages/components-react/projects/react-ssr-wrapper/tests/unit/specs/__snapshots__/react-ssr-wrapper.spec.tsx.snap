@@ -5962,6 +5962,9 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   justify-content: space-between;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
+.header slot[name="header"] {
+  display: block;
+}
 .like-button {
   height: fit-content;
   position: relative;
@@ -6129,7 +6132,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
