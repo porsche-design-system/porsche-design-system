@@ -5933,7 +5933,6 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   object-fit: cover !important;
   overflow: hidden !important;
   border-radius: 12px !important;
-  mix-blend-mode: var(--p-link-tile-product-mix-blend-mode) !important;
 }
 ::slotted(a[slot='anchor']) {
   position: absolute !important;
