@@ -70,7 +70,7 @@ exports[`getComponentCss() should return correct css for hasLikeButton: false, h
   justify-content: center;
   align-items: flex-end;
 }
-.text__price, .text__info {
+.text__price, .text__description {
   font-weight: 400;
 }
 .text__price {
@@ -78,7 +78,7 @@ exports[`getComponentCss() should return correct css for hasLikeButton: false, h
   overflow-wrap: break-word;
   hyphens: auto;
 }
-.text__info {
+.text__description {
   font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -181,7 +181,7 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   justify-content: center;
   align-items: flex-end;
 }
-.text__price, .text__info {
+.text__price, .text__description {
   font-weight: 400;
 }
 .text__price {
@@ -189,7 +189,7 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   overflow-wrap: break-word;
   hyphens: auto;
 }
-.text__info {
+.text__description {
   font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -214,7 +214,7 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
     color: #FBFCFF;
     background-color: #212225;
   }
-  .text__info {
+  .text__description {
     color: #AFB0B3;
   }
 }
@@ -305,7 +305,7 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   justify-content: center;
   align-items: flex-end;
 }
-.text__price, .text__info {
+.text__price, .text__description {
   font-weight: 400;
 }
 .text__price {
@@ -313,7 +313,7 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   overflow-wrap: break-word;
   hyphens: auto;
 }
-.text__info {
+.text__description {
   font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -419,7 +419,7 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   justify-content: center;
   align-items: flex-end;
 }
-.text__price, .text__info {
+.text__price, .text__description {
   font-weight: 400;
 }
 .text__price {
@@ -427,7 +427,7 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   overflow-wrap: break-word;
   hyphens: auto;
 }
-.text__info {
+.text__description {
   font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -482,7 +482,7 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   border-radius: 12px !important;
   mix-blend-mode: var(--p-link-tile-product-mix-blend-mode) !important;
 }
-::slotted(a) {
+::slotted(a[slot='anchor']) {
   position: absolute !important;
   border-radius: 8px !important;
   top: 0 !important;
@@ -492,11 +492,11 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   z-index: 1 !important;
   text-indent: -999999px !important;
 }
-::slotted(a:focus) {
+::slotted(a[slot='anchor']:focus) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(a:focus:not(:focus-visible)) {
+::slotted(a[slot='anchor']:focus:not(:focus-visible)) {
   outline-color: transparent !important;
 }
 .root {
@@ -541,7 +541,7 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   justify-content: center;
   align-items: flex-end;
 }
-.text__price, .text__info {
+.text__price, .text__description {
   font-weight: 400;
 }
 .text__price {
@@ -549,7 +549,7 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
   overflow-wrap: break-word;
   hyphens: auto;
 }
-.text__info {
+.text__description {
   font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;

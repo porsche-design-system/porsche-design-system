@@ -314,7 +314,7 @@ exports[`should have no basic DOM regression for p-link-tile-product 1`] = `
       value</h3>
     <p id="price" class="text text__price">
       value</p>
-    <p id="description" class="text text__info">
+    <p id="description" class="text text__description">
     </p>
   </div>
   <a class="link-overlay" href="value" target="_self" aria-labelledby="heading price" aria-describedby="header description">

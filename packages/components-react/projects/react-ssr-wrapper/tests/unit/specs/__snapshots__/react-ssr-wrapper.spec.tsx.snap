@@ -5927,7 +5927,7 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   border-radius: 12px !important;
   mix-blend-mode: var(--p-link-tile-product-mix-blend-mode) !important;
 }
-::slotted(a) {
+::slotted(a[slot='anchor']) {
   position: absolute !important;
   border-radius: 8px !important;
   top: 0 !important;
@@ -5979,7 +5979,7 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   justify-content: center;
   align-items: flex-end;
 }
-.text__price, .text__info {
+.text__price, .text__description {
   font-weight: 400;
 }
 .text__price {
@@ -5987,7 +5987,7 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   overflow-wrap: break-word;
   hyphens: auto;
 }
-.text__info {
+.text__description {
   font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -6171,7 +6171,7 @@ img {
           id="price"
         />
         <p
-          class="text text__info"
+          class="text text__description"
           id="description"
         />
       </div>
