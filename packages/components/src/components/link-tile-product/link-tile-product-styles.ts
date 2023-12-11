@@ -1,4 +1,4 @@
-import { buildResponsiveStyles, getCss, Theme } from '../../utils';
+import { buildResponsiveStyles, getCss, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -13,9 +13,7 @@ import {
   borderRadiusLarge,
   borderRadiusMedium,
   borderWidthBase,
-  fontLineHeight,
-  fontSizeTextXSmall,
-  fontWeightRegular,
+  fontHyphenationStyle,
   getFocusStyle,
   getMediaQueryMin,
   headingSmallStyle,
@@ -24,12 +22,19 @@ import {
   spacingFluidXSmall,
   textXSmallStyle,
   textXXSmallStyle,
-  themeLightStateFocus,
 } from '@porsche-design-system/utilities-v2';
-import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
-import { anchorSlot, headerSlot, LinkTileProductAspectRatio } from './link-tile-product-utils';
+import { type BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import { anchorSlot, headerSlot, type LinkTileProductAspectRatio } from './link-tile-product-utils';
+import { type JssStyle } from 'jss';
 
 const slottedAnchorSelector = `a[slot='${anchorSlot}']`;
+
+const anchorJssStyle: JssStyle = {
+  position: 'absolute',
+  ...getInsetJssStyle(),
+  zIndex: 1, // necessary to be on top of img
+  borderRadius: borderRadiusMedium,
+};
 
 export const getComponentCss = (
   hasLikeButton: boolean,
@@ -37,144 +42,133 @@ export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastHighColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { primaryColor, contrastHighColor, backgroundSurfaceColor, focusColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     contrastHighColor: contrastHighColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
+    focusColor: focusColorDark,
   } = getThemedColors('dark');
 
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
-        position: 'relative',
+        position: 'relative', // needed for ::slotted(a) to overlay correctly
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
+      [`slot[name="${headerSlot}"]`]: {
+        display: 'block', // to ensure correct like button positioning when slot is unused
+      },
       ...addImportantToEachRule({
         '::slotted': {
-          '&(img), &(picture)': {
-            display: 'block',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            overflow: 'hidden',
-            borderRadius: borderRadiusLarge,
-          },
           ...(hasSlottedAnchor && {
             [`&(${slottedAnchorSelector})`]: {
-              position: 'absolute',
-              borderRadius: borderRadiusMedium,
-              ...getInsetJssStyle(),
-              zIndex: 1, // Necessary to be on top of img
-              textIndent: '-999999px', // Hide anchor label visually but still usable for a11y
+              ...anchorJssStyle,
+              textIndent: '-999999px', // hide anchor label visually but still usable for a11y (only works in RTL-mode because of `overflow: hidden;` parent)
             },
             // TODO: Refactor getFocusStyles to support slotted selector
             [`&(${slottedAnchorSelector}:focus)`]: {
-              outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
+              outline: `${borderWidthBase} solid ${focusColor}`,
               outlineOffset: '2px',
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                outlineColor: focusColorDark,
+              }),
             },
             [`&(${slottedAnchorSelector}:focus:not(:focus-visible))`]: {
               outlineColor: 'transparent',
             },
           }),
+          [`&([slot="${headerSlot}"])`]: {
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: spacingFluidXSmall,
+          },
+          '&(img), &(picture)': {
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderRadius: borderRadiusLarge,
+          },
         },
       }),
     },
-    ...(!hasSlottedAnchor && {
-      'link-overlay': {
-        position: 'absolute',
-        ...getInsetJssStyle(),
-        ...getFocusStyle({ borderRadius: 'medium' }),
-      },
-    }),
     root: {
       display: 'flex',
       flexDirection: 'column',
-      aspectRatio: '3 / 4',
-      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileProductAspectRatio) => ({
-        aspectRatio: ratio.replace(':', ' / '),
-      })),
-      overflow: 'hidden',
+      aspectRatio: '3/4',
+      overflow: 'hidden', // TODO: discussable if we should prevent text to overflow .root, – e.g. it also prevents a popover from being shown correctly
       boxSizing: 'border-box',
       borderRadius: borderRadiusMedium,
       padding: spacingFluidSmall,
       color: primaryColor,
       backgroundColor: backgroundSurfaceColor,
+      ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileProductAspectRatio) => ({
+        aspectRatio: ratio.replace(':', '/'),
+      })),
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: primaryColorDark,
         backgroundColor: backgroundSurfaceColorDark,
       }),
+    },
+    ...(!hasSlottedAnchor && {
+      anchor: {
+        ...anchorJssStyle,
+        ...getFocusStyle({ borderRadius: 'medium' }),
+      },
+    }),
+    header: {
+      display: 'flex',
+      gap: spacingFluidSmall,
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+    },
+    ...(hasLikeButton && {
+      button: {
+        position: 'relative',
+        zIndex: 2, // Necessary to be on top of anchor link
+      },
+    }),
+    image: {
+      aspectRatio: '8/9',
+      margin: `${spacingFluidSmall} auto ${spacingFluidXSmall}`,
+      overflow: 'hidden',
+      transition: getTransition('transform', 'moderate'),
+      [getMediaQueryMin('s')]: {
+        padding: `0 ${spacingFluidMedium}`, // ensures image is not getting to large
+      },
       ...hoverMediaQuery({
-        '&:hover .image-container': {
+        '.root:hover &': {
           transform: 'scale3d(1.05,1.05,1.05)',
         },
       }),
     },
-    header: {
+    wrapper: {
       display: 'flex',
-      justifyContent: 'space-between',
-      fontSize: fontSizeTextXSmall, // Use same font size and height as tag component
-      [`& slot[name="${headerSlot}"]`]: {
-        display: 'block', // To ensure button positioning when slot is unused
-      },
-    },
-    ...(hasLikeButton && {
-      'like-button': {
-        height: 'fit-content',
-        position: 'relative',
-        zIndex: 2, // Necessary to be on top of anchor link
-        ...hoverMediaQuery({
-          '&:hover': {
-            cursor: 'pointer',
-          },
-        }),
-      },
-    }),
-    'text-container': {
-      display: 'flex',
-      justifyContent: 'center',
       flexDirection: 'column',
       margin: 'auto',
-    },
-    text: {
       textAlign: 'center',
-      margin: 0,
-      '&__heading': {
-        ...headingSmallStyle,
-        paddingBottom: '2px',
-        minHeight: `calc(${fontLineHeight} * 2)`,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
-      },
-      '&__price, &__description': {
-        fontWeight: fontWeightRegular,
-      },
-      '&__price': {
-        ...textXSmallStyle,
-      },
-      '&__description': {
-        ...textXXSmallStyle,
-        color: contrastHighColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: contrastHighColorDark,
-        }),
-      },
     },
-    'image-container': {
-      margin: `${spacingFluidSmall} auto ${spacingFluidXSmall} auto`,
-      padding: 0,
-      [getMediaQueryMin('s')]: {
-        padding: `0 ${spacingFluidMedium}`,
-      },
-      overflow: 'hidden',
-      aspectRatio: '8 / 9',
-      transition: getTransition('transform', 'moderate'),
-      maxHeight: '100%',
+    heading: {
+      ...headingSmallStyle,
+      ...fontHyphenationStyle,
+      margin: '0 0 2px',
+    },
+    price: {
+      ...textXSmallStyle,
+      margin: 0, // ua-style reset
+    },
+    description: {
+      ...textXXSmallStyle,
+      margin: 0, // ua-style reset
+      color: contrastHighColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastHighColorDark,
+      }),
     },
   });
 };
