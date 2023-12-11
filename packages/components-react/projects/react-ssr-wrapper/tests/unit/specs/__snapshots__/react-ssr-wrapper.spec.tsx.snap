@@ -5937,7 +5937,6 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   z-index: 1 !important;
   text-indent: -999999px !important;
 }
-
 .link-overlay {
   position: absolute;
   top: 0;
@@ -6030,7 +6029,6 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
         />
         <p-button-pure
           class="like-button ssr"
-          hide-label="true"
         >
           <template
             shadowroot="open"
@@ -6075,20 +6073,19 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   position: absolute;
   top: -2px;
   bottom: -2px;
-  right: -4px;
-  left: -4px;
+  right: -2px;
+  left: -2px;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label {
-  position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  white-space: nowrap;
+  text-indent: -999999px;
   order: 0;
 }
 .icon {
@@ -6186,6 +6183,9 @@ img {
           id="description"
         />
       </div>
+      <slot
+        name="anchor"
+      />
     </div>
   </template>
   Some child
