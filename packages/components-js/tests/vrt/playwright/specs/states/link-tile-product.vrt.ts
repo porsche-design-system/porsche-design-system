@@ -25,7 +25,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       <img src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg" alt="Some alt text" />
     </picture>`;
 
-  const link = '<a href="https://www.porsche.com">Some label</a>';
+  const link = '<a slot="anchor" href="https://www.porsche.com">Some label</a>';
 
   const markup = () => `
     <div style="display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 16px; padding-bottom: 2rem">
@@ -59,11 +59,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceFocusState(page, '.focus p-link-tile-product a');
   await forceFocusState(page, '.focus p-link-tile-product >>> a');
 
-  // TODO: Last two tiles dont have focus outline
-  await forceHoverState(page, '.focus-hover p-link-tile-product');
   await forceFocusHoverState(page, '.focus-hover p-link-tile-product >>> p-button-pure >>> .root');
-  await forceFocusState(page, '.focus-hover p-link-tile-product a');
-  await forceFocusState(page, '.focus-hover p-link-tile-product >>> a');
   await forceFocusHoverState(page, '.focus-hover p-link-tile-product a');
   await forceFocusHoverState(page, '.focus-hover p-link-tile-product >>> a');
 };

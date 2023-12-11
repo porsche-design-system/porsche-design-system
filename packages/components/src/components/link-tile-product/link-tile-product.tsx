@@ -11,11 +11,12 @@ import {
 import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
 import { getComponentCss } from './link-tile-product-styles';
 import {
-  TILE_PRODUCT_ASPECT_RATIOS,
+  anchorSlot,
+  headerSlot,
   LinkTileProductAspectRatio,
   LinkTileProductLikeEvent,
   LinkTileProductTarget,
-  headerSlot,
+  TILE_PRODUCT_ASPECT_RATIOS,
 } from './link-tile-product-utils';
 
 const propTypes: PropTypes<typeof LinkTileProduct> = {
@@ -73,6 +74,7 @@ export class LinkTileProduct {
   @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeEvent>;
 
   public componentWillLoad(): void {
+    // TODO: Check if slotted anchor is used correctly
     throwIfInvalidLinkTileProductUsage(this.host, this.href);
   }
 
@@ -82,7 +84,7 @@ export class LinkTileProduct {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.likeButton, this.aspectRatio, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.likeButton, !this.href, this.aspectRatio, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const headerId = 'header';
@@ -100,7 +102,7 @@ export class LinkTileProduct {
                 class="like-button"
                 type="button"
                 icon={this.liked ? 'heart-filled' : 'heart'}
-                hide-label="true"
+                hideLabel={true}
                 onClick={this.onLikeClick}
                 theme={this.theme}
               >
@@ -122,6 +124,7 @@ export class LinkTileProduct {
               {this.description}
             </p>
           </div>
+          {!this.href && <slot name={anchorSlot}></slot>}
           {this.href && (
             <a
               class="link-overlay"

@@ -33,6 +33,7 @@ const cssVariableMixBlendMode = '--p-link-tile-product-mix-blend-mode';
 
 export const getComponentCss = (
   hasLikeButton: boolean,
+  hasSlottedAnchor: boolean,
   aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>,
   theme: Theme
 ): string => {
@@ -50,11 +51,6 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...hoverMediaQuery({
-            '&(:hover) .image-container': {
-              transform: 'scale3d(1.05,1.05,1.05)',
-            },
-          }),
         }),
       },
       ...addImportantToEachRule({
@@ -68,21 +64,23 @@ export const getComponentCss = (
             borderRadius: borderRadiusLarge,
             mixBlendMode: `var(${cssVariableMixBlendMode})`,
           },
-          '&(a)': {
-            position: 'absolute',
-            borderRadius: borderRadiusMedium,
-            ...getInsetJssStyle(),
-            zIndex: 1, // Necessary to be on top of img
-            textIndent: '-999999px', // Hide anchor label visually but still usable for a11y
-          },
-          // TODO: Refactor getFocusStyles to support slotted selector
-          '&(a:focus)': {
-            outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
-            outlineOffset: '2px',
-          },
-          '&(a:focus:not(:focus-visible))': {
-            outlineColor: 'transparent',
-          },
+          ...(hasSlottedAnchor && {
+            '&(a)': {
+              position: 'absolute',
+              borderRadius: borderRadiusMedium,
+              ...getInsetJssStyle(),
+              zIndex: 1, // Necessary to be on top of img
+              textIndent: '-999999px', // Hide anchor label visually but still usable for a11y
+            },
+            // TODO: Refactor getFocusStyles to support slotted selector
+            '&(a:focus)': {
+              outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
+              outlineOffset: '2px',
+            },
+            '&(a:focus:not(:focus-visible))': {
+              outlineColor: 'transparent',
+            },
+          }),
         },
       }),
     },
@@ -107,6 +105,11 @@ export const getComponentCss = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: primaryColorDark,
         backgroundColor: backgroundSurfaceColorDark,
+      }),
+      ...hoverMediaQuery({
+        '&:hover .image-container': {
+          transform: 'scale3d(1.05,1.05,1.05)',
+        },
       }),
     },
     header: {
