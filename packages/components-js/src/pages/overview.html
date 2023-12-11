@@ -37,7 +37,9 @@
   p-link-tile-model-signature,
   my-prefix-p-link-tile,
   my-prefix-p-button-tile,
-  my-prefix-p-link-tile-model-signature {
+  my-prefix-p-link-tile-model-signature,
+  p-link-tile-product,
+  my-prefix-p-link-tile-product {
     max-width: 400px;
   }
 
@@ -376,6 +378,17 @@
     </p-link-tile-model-signature>
   </div>
 
+  <div class="playground light" title="should render default link-tile-product">
+    <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://www.porsche.com">
+      <img
+        src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
+        width="800"
+        height="900"
+        alt="Some alt text"
+      />
+    </p-link-tile-product>
+  </div>
+
   <div class="playground light" title="should render default switch">
     <p-switch>Some label</p-switch>
   </div>
@@ -699,6 +712,17 @@
       <my-prefix-p-link slot="primary" href="#primary">Some label</my-prefix-p-link>
       <my-prefix-p-link slot="secondary" href="#secondary">Some label</my-prefix-p-link>
     </my-prefix-p-link-tile-model-signature>
+  </div>
+
+  <div class="playground light" title="should render default link-tile-product with custom prefix">
+    <my-prefix-p-link-tile-product heading="Some product" price="1.911,00 €" href="https://www.porsche.com">
+      <img
+        src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
+        width="800"
+        height="900"
+        alt="Some alt text"
+      />
+    </my-prefix-p-link-tile-product>
   </div>
 
   <div class="playground light" title="should render default switch with custom prefix">
