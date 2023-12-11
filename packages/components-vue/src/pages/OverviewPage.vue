@@ -376,7 +376,7 @@
         </PButtonTile>
       </div>
 
-      <div className="playground light" title="should render default link-tile-model-signature">
+      <div class="playground light" title="should render default link-tile-model-signature">
         <!-- eslint-disable vue/no-deprecated-slot-attribute -->
         <PLinkTileModelSignature :heading="'Some Heading'" :description="'Default'">
           <img
@@ -391,7 +391,7 @@
         <!-- eslint-enable vue/no-deprecated-slot-attribute -->
       </div>
 
-      <div className="playground light" title="should render default link-tile-product">
+      <div class="playground light" title="should render default link-tile-product">
         <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://www.porsche.com'">
           <img
             src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
