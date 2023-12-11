@@ -48,7 +48,7 @@ If you want to add any additional description, use the `description` property.
 
 While the image will always stay at an aspect ratio of `8:9`, the aspect ratio of the component itself can be configured
 using the `aspect-ratio` property to be either `3:4` or `9:16`. This can be especially useful to extend the space for
-the image by using the `9:16` aspect ratio on smaller viewports and the `3:4` and larger ones.
+the image by using the `9:16` aspect ratio on smaller viewports and the `3:4` on larger ones.
 
 <Playground :markup="aspectRatioMarkup">
   <SelectOptions v-model="aspectRatio" :values="aspectRatios" name="aspectRatio"></SelectOptions>
@@ -56,8 +56,9 @@ the image by using the `9:16` aspect ratio on smaller viewports and the `3:4` an
 
 ## Framework routing (anchor nesting)
 
-To support framework routing you can provide the link as a slotted element of the component instead of using the `href`
-property. To ensure accessibility, the slotted link must be labeled with both the product name and its price.
+To support framework routing you can provide the link as a slotted element by using the `anchor` slot instead of using
+the `href` property. Ensure the named slot is directly on the anchor element, without nesting. To ensure accessibility,
+the slotted link must be labeled with both the product name and its price.
 
 <Playground :markup="slottedLink" :config="config"></Playground>
 
