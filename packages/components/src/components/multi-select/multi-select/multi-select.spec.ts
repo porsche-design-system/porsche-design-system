@@ -87,6 +87,6 @@ describe('render', () => {
     const spy = jest.spyOn(multiSelectUtils, 'syncMultiSelectOptionProps');
     const component = initComponent();
     component.render();
-    expect(spy).toBeCalledWith(component['multiPlaygroundSelect'], component.theme);
+    expect(spy).toBeCalledWith(component['multiSelectOptions'], component.theme);
   });
 });
