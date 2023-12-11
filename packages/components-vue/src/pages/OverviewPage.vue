@@ -63,6 +63,7 @@
     PStepperHorizontalItem,
     PLinkTileModelSignature,
     PLinkTile,
+    PLinkTileProduct,
     PSwitch,
   } from '@porsche-design-system/components-vue';
 </script>
@@ -390,6 +391,17 @@
         <!-- eslint-enable vue/no-deprecated-slot-attribute -->
       </div>
 
+      <div className="playground light" title="should render default link-tile-product">
+        <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://www.porsche.com'">
+          <img
+            src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
+            width="800"
+            height="900"
+            alt="Some alt text"
+          />
+        </PLinkTileProduct>
+      </div>
+
       <div class="playground light" title="should render default switch">
         <PSwitch>Some label</PSwitch>
       </div>
@@ -702,7 +714,7 @@
           </PButtonTile>
         </div>
 
-        <div className="playground light" title="should render default link-tile-model-signature with custom prefix">
+        <div class="playground light" title="should render default link-tile-model-signature with custom prefix">
           <!-- eslint-disable vue/no-deprecated-slot-attribute -->
           <PLinkTileModelSignature :heading="'Some Heading'" :description="'Default'">
             <img
@@ -715,6 +727,17 @@
             <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
           </PLinkTileModelSignature>
           <!-- eslint-enable vue/no-deprecated-slot-attribute -->
+        </div>
+
+        <div class="playground light" title="should render default link-tile-product with custom prefix">
+          <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://www.porsche.com'">
+            <img
+              src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
+              width="800"
+              height="900"
+              alt="Some alt text"
+            />
+          </PLinkTileProduct>
         </div>
 
         <div class="playground light" title="should render default switch with custom prefix">
@@ -761,9 +784,11 @@
   p-link-tile,
   p-button-tile,
   p-link-tile-model-signature,
+  p-link-tile-product,
   my-prefix-p-link-tile,
   my-prefix-p-button-tile,
-  my-prefix-p-link-tile-model-signature {
+  my-prefix-p-link-tile-model-signature,
+  my-prefix-p-link-tile-product {
     max-width: 400px;
   }
 
