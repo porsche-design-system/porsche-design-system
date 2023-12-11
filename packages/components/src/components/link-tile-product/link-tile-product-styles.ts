@@ -29,7 +29,6 @@ import {
 import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { anchorSlot, headerSlot, LinkTileProductAspectRatio } from './link-tile-product-utils';
 
-const cssVariableMixBlendMode = '--p-link-tile-product-mix-blend-mode';
 const slottedAnchorSelector = `a[slot='${anchorSlot}']`;
 
 export const getComponentCss = (
@@ -64,7 +63,6 @@ export const getComponentCss = (
             objectFit: 'cover',
             overflow: 'hidden',
             borderRadius: borderRadiusLarge,
-            mixBlendMode: `var(${cssVariableMixBlendMode})`,
           },
           ...(hasSlottedAnchor && {
             [`&(${slottedAnchorSelector})`]: {
