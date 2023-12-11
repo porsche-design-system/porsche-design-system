@@ -17,16 +17,18 @@ exports[`addImportantToEachRule() should add !important to each rule 1`] = `
 
 exports[`focusPseudoJssStyle should return correct jss style 1`] = `
 {
-  "&:focus::before": {
-    "borderRadius": "1px",
+  "&::before": {
     "bottom": 0,
     "content": """",
     "left": 0,
-    "outline": "2px solid #1A44EA",
-    "outlineOffset": "2px",
     "position": "absolute",
     "right": 0,
     "top": 0,
+  },
+  "&:focus::before": {
+    "borderRadius": "1px",
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
   },
   "&:focus:not(:focus-visible)::before": {
     "outline": 0,

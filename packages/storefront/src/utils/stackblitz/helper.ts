@@ -6,11 +6,13 @@ import type {
   StackBlitzProjectAndOpenOptions,
   StackBlitzProjectDependencies,
   PlaygroundTheme,
+  PlaygroundDir,
 } from '@/models';
 import type { OpenInStackBlitzOpts } from './openInStackBlitz';
 
 export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'backgroundColor'> & {
   title: string;
+  dir: PlaygroundDir;
   description: string;
   globalStyles: string;
 };

@@ -2,7 +2,7 @@
   <p-flyout
     :theme="this.$store.getters.storefrontTheme"
     :open="this.$store.getters.isMenuActive"
-    position="left"
+    position="start"
     @dismiss="() => this.$store.commit('setIsMenuActive', false)"
   >
     <div class="menu-mobile">

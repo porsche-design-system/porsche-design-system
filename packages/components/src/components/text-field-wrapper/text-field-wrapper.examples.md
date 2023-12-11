@@ -16,7 +16,7 @@ give the user visual cues to fill out the form.
 ## Basic example
 
 <Playground :markup="hideLabelMarkup" :config="config">
-  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
+  <PlaygroundSelect v-model="hideLabel" :values="hideLabels" name="hideLabel"></PlaygroundSelect>
 </Playground>
 
 ## With description text
@@ -64,7 +64,7 @@ in Chrome) may occur inside the input field which are explicitly not reset by th
 better accessibility it's recommended to **not** reset these browser default UI helpers.
 
 <Playground :markup="inputTypeMarkup" :config="config">
-  <SelectOptions v-model="inputType" :values="inputTypes" name="inputType"></SelectOptions>
+  <PlaygroundSelect v-model="inputType" :values="inputTypes" name="inputType"></PlaygroundSelect>
 </Playground>
 
 ## type="number"
@@ -73,7 +73,7 @@ Inputs with `type="number"` can display a unit (e.g. €, EUR, km/h, etc.) with 
 description of the used unit should be provided to ensure accessibility.
 
 <Playground :markup="unitPositionMarkup" :config="config">
-  <SelectOptions v-model="unitPosition" :values="unitPositions" name="unitPosition"></SelectOptions>
+  <PlaygroundSelect v-model="unitPosition" :values="unitPositions" name="unitPosition"></PlaygroundSelect>
 </Playground>
 
 ## type="password"
@@ -99,7 +99,7 @@ Only if used inside a form, a submit button becomes visible which can be hidden 
 input contains a value, a clear button shows up.
 
 <Playground :markup="typeSearchMarkup" :config="config">
-  <SelectOptions v-model="submitButton" :values="submitButtons" name="submitButton"></SelectOptions>
+  <PlaygroundSelect v-model="submitButton" :values="submitButtons" name="submitButton"></PlaygroundSelect>
 </Playground>
 
 ## type="search" with locate action
@@ -130,7 +130,7 @@ The `p-text-field-wrapper` component supports the visualisation of inline valida
 colored and visible/hidden depending on the defined `state`.
 
 <Playground :markup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
 </Playground>
 
 ## Slots

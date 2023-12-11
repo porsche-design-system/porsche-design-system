@@ -6,6 +6,7 @@
     </p-tabs-bar>
     <pre
       :class="highlightedLanguage"
+      dir="ltr"
       tabindex="0"
       role="region"
       aria-label="Code sample"
