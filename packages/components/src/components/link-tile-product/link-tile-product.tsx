@@ -119,7 +119,7 @@ export class LinkTileProduct {
             <p id={priceId} class="text text__price">
               {this.price}
             </p>
-            <p id={descriptionId} class="text text__info">
+            <p id={descriptionId} class="text text__description">
               {this.description}
             </p>
           </div>

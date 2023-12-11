@@ -27,9 +27,10 @@ import {
   themeLightStateFocus,
 } from '@porsche-design-system/utilities-v2';
 import { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
-import { headerSlot, LinkTileProductAspectRatio } from './link-tile-product-utils';
+import { anchorSlot, headerSlot, LinkTileProductAspectRatio } from './link-tile-product-utils';
 
 const cssVariableMixBlendMode = '--p-link-tile-product-mix-blend-mode';
+const slottedAnchorSelector = `a[slot='${anchorSlot}']`;
 
 export const getComponentCss = (
   hasLikeButton: boolean,
@@ -43,6 +44,7 @@ export const getComponentCss = (
     contrastHighColor: contrastHighColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
   } = getThemedColors('dark');
+
   return getCss({
     '@global': {
       ':host': {
@@ -65,7 +67,7 @@ export const getComponentCss = (
             mixBlendMode: `var(${cssVariableMixBlendMode})`,
           },
           ...(hasSlottedAnchor && {
-            '&(a)': {
+            [`&(${slottedAnchorSelector})`]: {
               position: 'absolute',
               borderRadius: borderRadiusMedium,
               ...getInsetJssStyle(),
@@ -73,11 +75,11 @@ export const getComponentCss = (
               textIndent: '-999999px', // Hide anchor label visually but still usable for a11y
             },
             // TODO: Refactor getFocusStyles to support slotted selector
-            '&(a:focus)': {
+            [`&(${slottedAnchorSelector}:focus)`]: {
               outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
               outlineOffset: '2px',
             },
-            '&(a:focus:not(:focus-visible))': {
+            [`&(${slottedAnchorSelector}:focus:not(:focus-visible))`]: {
               outlineColor: 'transparent',
             },
           }),
@@ -151,13 +153,13 @@ export const getComponentCss = (
         justifyContent: 'center',
         alignItems: 'flex-end',
       },
-      '&__price, &__info': {
+      '&__price, &__description': {
         fontWeight: fontWeightRegular,
       },
       '&__price': {
         ...textXSmallStyle,
       },
-      '&__info': {
+      '&__description': {
         ...textXXSmallStyle,
         color: contrastHighColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
