@@ -84,11 +84,13 @@ export const getComponentCss = (
         },
       }),
     },
-    'link-overlay': {
-      position: 'absolute',
-      ...getInsetJssStyle(),
-      ...getFocusStyle({ borderRadius: 'medium' }),
-    },
+    ...(!hasSlottedAnchor && {
+      'link-overlay': {
+        position: 'absolute',
+        ...getInsetJssStyle(),
+        ...getFocusStyle({ borderRadius: 'medium' }),
+      },
+    }),
     root: {
       display: 'flex',
       flexDirection: 'column',
