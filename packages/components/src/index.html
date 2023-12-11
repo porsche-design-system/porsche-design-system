@@ -16,247 +16,6 @@
       body {
         margin: 0;
         padding: 0;
-        font-family: 'Porsche Next', 'Arial Narrow', Arial, 'Heiti SC', SimHei, sans-serif;
-        line-height: calc(6px + 2.125ex);
-        letter-spacing: normal;
-        text-size-adjust: none;
-        -webkit-text-size-adjust: none;
-      }
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-weight: 600;
-      }
-      p {
-        hyphens: auto;
-        font-weight: 400;
-        overflow-wrap: break-word;
-      }
-      b,
-      strong {
-        font-weight: 700;
-      }
-      p-accordion,
-      p-banner,
-      p-button,
-      p-button-group,
-      p-button-pure,
-      p-button-tile,
-      p-carousel,
-      p-checkbox-wrapper,
-      p-content-wrapper,
-      p-crest,
-      p-display,
-      p-divider,
-      p-fieldset,
-      p-fieldset-wrapper,
-      p-flex,
-      p-flex-item,
-      p-flyout,
-      p-grid,
-      p-grid-item,
-      p-heading,
-      p-headline,
-      p-icon,
-      p-inline-notification,
-      p-link,
-      p-link-pure,
-      p-link-social,
-      p-link-tile,
-      p-link-tile-model-signature,
-      p-marque,
-      p-modal,
-      p-model-signature,
-      p-multi-select,
-      p-multi-select-option,
-      p-pagination,
-      p-pin-code,
-      p-popover,
-      p-radio-button-wrapper,
-      p-scroller,
-      p-segmented-control,
-      p-segmented-control-item,
-      p-select-wrapper,
-      p-spinner,
-      p-stepper-horizontal,
-      p-stepper-horizontal-item,
-      p-switch,
-      p-table,
-      p-table-body,
-      p-table-cell,
-      p-table-head,
-      p-table-head-cell,
-      p-table-head-row,
-      p-table-row,
-      p-tabs,
-      p-tabs-bar,
-      p-tabs-item,
-      p-tag,
-      p-tag-dismissible,
-      p-text,
-      p-text-field-wrapper,
-      p-text-list,
-      p-text-list-item,
-      p-textarea-wrapper,
-      p-toast,
-      p-wordmark {
-        visibility: hidden;
-      }
-      .hydrated,
-      .ssr {
-        visibility: inherit;
-      }
-      :is(
-          p-accordion,
-          p-banner,
-          p-carousel,
-          p-checkbox-wrapper,
-          p-display,
-          p-flyout,
-          p-heading,
-          p-headline,
-          p-inline-notification,
-          p-modal,
-          p-multi-select,
-          p-pin-code,
-          p-popover,
-          p-radio-button-wrapper,
-          p-select-wrapper,
-          p-switch,
-          p-table,
-          p-tabs,
-          p-text,
-          p-text-field-wrapper,
-          p-text-list,
-          p-textarea-wrapper
-        )
-        a {
-        color: currentcolor !important;
-        transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-        margin-left: -2px !important;
-        margin-right: -2px !important;
-        padding-left: 2px !important;
-        border-radius: 4px !important;
-        padding-right: 2px !important;
-        text-decoration: underline !important;
-      }
-      :is(
-          p-accordion,
-          p-banner,
-          p-carousel,
-          p-checkbox-wrapper,
-          p-display,
-          p-flyout,
-          p-heading,
-          p-headline,
-          p-inline-notification,
-          p-modal,
-          p-multi-select,
-          p-pin-code,
-          p-popover,
-          p-radio-button-wrapper,
-          p-select-wrapper,
-          p-switch,
-          p-table,
-          p-tabs,
-          p-text,
-          p-text-field-wrapper,
-          p-text-list,
-          p-textarea-wrapper
-        )
-        a:focus {
-        outline: 2px solid #1a44ea !important;
-        outline-offset: 0 !important;
-      }
-      :is(
-          p-accordion,
-          p-banner,
-          p-carousel,
-          p-checkbox-wrapper,
-          p-display,
-          p-flyout,
-          p-heading,
-          p-headline,
-          p-inline-notification,
-          p-modal,
-          p-multi-select,
-          p-pin-code,
-          p-popover,
-          p-radio-button-wrapper,
-          p-select-wrapper,
-          p-switch,
-          p-table,
-          p-tabs,
-          p-text,
-          p-text-field-wrapper,
-          p-text-list,
-          p-textarea-wrapper
-        )
-        a:focus:not(:focus-visible) {
-        outline-color: transparent !important;
-      }
-      :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
-      :is(p-text-field-wrapper) input::-webkit-inner-spin-button,
-      :is(p-text-field-wrapper) input::-webkit-search-decoration,
-      :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
-      :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
-        display: none !important;
-      }
-      :is(p-table) img {
-        vertical-align: middle !important;
-      }
-      :is(p-button-tile, p-link-tile, p-link-tile-model-signature, p-link-tile-product) picture img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-      }
-      @media (hover: hover) {
-        :is(
-            p-accordion,
-            p-banner,
-            p-carousel,
-            p-checkbox-wrapper,
-            p-display,
-            p-flyout,
-            p-heading,
-            p-headline,
-            p-inline-notification,
-            p-modal,
-            p-multi-select,
-            p-pin-code,
-            p-popover,
-            p-radio-button-wrapper,
-            p-select-wrapper,
-            p-switch,
-            p-table,
-            p-tabs,
-            p-text,
-            p-text-field-wrapper,
-            p-text-list,
-            p-textarea-wrapper
-          )
-          a:hover {
-          background: rgba(148, 149, 152, 0.18) !important;
-        }
-      }
-      p-tabs-bar ~ [tabindex='0'][role='tabpanel'] {
-        border-radius: 1px !important;
-      }
-      p-tabs-bar ~ [tabindex='0'][role='tabpanel']:focus {
-        outline: 2px solid #1a44ea !important;
-        outline-offset: 2px !important;
-      }
-      p-tabs-bar ~ [tabindex='0'][role='tabpanel']:focus:not(:focus-visible) {
-        outline-color: transparent !important;
-      }
-
-      html,
-      body {
-        margin: 0;
-        padding: 0;
       }
 
       /* Playground */
@@ -325,429 +84,78 @@
       .playground:not([class*='auto-layout'])::before {
         margin-bottom: 16px;
       }
-
-      body {
-        --pds-internal-grid-safe-zone: calc(5vw - 16px);
-        --pds-grid-basic-span-one-half: span 6;
-        --pds-grid-basic-span-one-third: span 4;
-        --pds-grid-narrow-span-one-half: span 4;
-        --pds-grid-basic-span-two-thirds: span 8;
-        --pds-grid-extended-span-one-half: span 7;
-      }
-
-      .basic-content-grid {
-        display: grid;
-        grid-gap: clamp(16px, 1.25vw + 12px, 36px);
-        max-width: 2560px;
-        min-width: 320px;
-        grid-template-columns:
-          [full-start] minmax(
-            0,
-            var(
-              --pds-internal-grid-outer-column,
-              calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
-            )
-          )
-          [wide-start] minmax(0, 1fr) [extended-start] minmax(0, 1fr) [basic-start] repeat(2, minmax(0, 1fr)) [narrow-start] repeat(
-            8,
-            minmax(0, 1fr)
-          )
-          [narrow-end] repeat(2, minmax(0, 1fr)) [basic-end] minmax(0, 1fr) [extended-end] minmax(0, 1fr) [wide-end] minmax(
-            0,
-            var(
-              --pds-internal-grid-outer-column,
-              calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
-            )
-          )
-          [full-end];
-      }
-
-      .basic-content-one-third-left {
-        grid-column: basic-start/var(--pds-grid-basic-span-one-third);
-      }
-
-      .basic-content-one-third-follow {
-        grid-column: var(--pds-grid-basic-span-one-third);
-      }
-
-      .visualize-grid {
-        z-index: 9999999;
-        margin: 0 var(--pds-internal-grid-margin, 0);
-        display: grid;
-        padding: 0 calc(50% - var(--pds-internal-grid-margin, 0px) - 1280px);
-        grid-gap: clamp(16px, 1.25vw + 12px, 36px);
-        max-width: 2560px;
-        min-width: 320px;
-        box-sizing: initial;
-        grid-template-columns:
-          [full-start] minmax(
-            0,
-            var(
-              --pds-internal-grid-outer-column,
-              calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
-            )
-          )
-          [wide-start extended-start basic-start narrow-start] repeat(6, minmax(0, 1fr))
-          [narrow-end basic-end extended-end wide-end] minmax(
-            0,
-            var(
-              --pds-internal-grid-outer-column,
-              calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
-            )
-          )
-          [full-end];
-        --pds-internal-grid-safe-zone: max(22px, 10.625vw - 12px);
-        --pds-grid-basic-span-one-half: span 3;
-        --pds-grid-basic-span-one-third: span 2;
-        --pds-grid-narrow-span-one-half: span 3;
-        --pds-grid-basic-span-two-thirds: span 4;
-        --pds-grid-extended-span-one-half: span 3;
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-      }
-
-      @media (min-width: 760px) .visualize-grid {
-        grid-template-columns:
-          [full-start] minmax(
-            0,
-            var(
-              --pds-internal-grid-outer-column,
-              calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
-            )
-          )
-          [wide-start] minmax(0, 1fr) [extended-start] minmax(0, 1fr) [basic-start] repeat(2, minmax(0, 1fr)) [narrow-start] repeat(
-            8,
-            minmax(0, 1fr)
-          )
-          [narrow-end] repeat(2, minmax(0, 1fr)) [basic-end] minmax(0, 1fr) [extended-end] minmax(0, 1fr) [wide-end] minmax(
-            0,
-            var(
-              --pds-internal-grid-outer-column,
-              calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
-            )
-          )
-          [full-end];
-        --pds-internal-grid-safe-zone: calc(5vw - 16px);
-        --pds-grid-basic-span-one-half: span 6;
-        --pds-grid-basic-span-one-third: span 4;
-        --pds-grid-narrow-span-one-half: span 4;
-        --pds-grid-basic-span-two-thirds: span 8;
-        --pds-grid-extended-span-one-half: span 7;
-      }
-
-      .visualize-grid > span:first-child,
-      .visualize-grid > span:last-child {
-        background: rgba(125, 0, 255, 0.1);
-      }
-
-      .visualize-grid > span {
-        background: rgba(0, 0, 255, 0.1);
-      }
     </style>
   </head>
   <body>
-    <!--    <div class="visualize-grid">-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--      <span></span>-->
-    <!--    </div>-->
-    <header>
-      <h1>Porsche Design Syst - Playground</h1>
+    <header dir="ltr">
+      <h1>Porsche Design System - Playground</h1>
+
+      <select id="theme" onchange="updateRoute({theme: this.value})">
+        <option disabled selected>Select a theme</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="auto">Auto</option>
+      </select>
+
+      <select id="dir" onchange="updateRoute({dir: this.value})">
+        <option disabled selected>Select a direction</option>
+        <option value="ltr">LTR (left-to-right)</option>
+        <option value="rtl">RTL (right-to-left)</option>
+        <option value="auto">Auto</option>
+      </select>
     </header>
 
-    <main>
-      <div class="basic-content-grid" style="margin-bottom: 2rem">
-        <p-link-tile-product
-          heading="T-Shirt Unisex - Transformers: Rise of the Beasts x Porsche"
-          price="1.199,99 €"
-          description="inkl. VAT"
-          class="basic-content-one-third-left"
-          aria="{ 'aria-label': 'Some more descriptive label' }"
-          aspect-ratio="{ base: '9:16', m: '3:4' }"
-        >
-          <!--          <div slot="header">-->
-          <!--            <p-tag color="background-base">New</p-tag>-->
-          <!--          </div>-->
-          <!--          <p-tag slot="tags" color="background-base" theme="dark">New</p-tag>-->
-          <img src="/assets/jacket.webp" alt="Some alt text" />
-          <a href="https://www.porsche.com">Product Name, 199€</a>
-        </p-link-tile-product>
-
-        <p-link-tile-product
-          heading="Fleecejacke Unisex - MARTINI RACING®"
-          price="1.199,99 €"
-          description="inkl. VAT"
-          href="/"
-          class="basic-content-one-third-follow"
-          aspect-ratio="{ base: '9:16', m: '3:4' }"
-        >
-          <p-tag slot="header" color="background-base">New</p-tag>
-          <img src="/assets/sneaker.webp" alt="Some alt text" />
-        </p-link-tile-product>
-        <p-link-tile-product
-          heading="Park Unisex - Urban Explorer"
-          price="1.199,99 €"
-          description="inkl. VAT"
-          href="/"
-          class="basic-content-one-third-follow"
-          aspect-ratio="{ base: '9:16', m: '3:4' }"
-        >
-          <p-tag slot="header" color="background-base">New</p-tag>
-          <picture>
-            <source media="(min-width:400px)" srcset="/assets/watch.webp" />
-            <img src="/assets/watch.webp" style="width: 100%; height: 100%; object-fit: cover" alt="Some alt text" />
-          </picture>
-        </p-link-tile-product>
-        <p-link-tile-product
-          heading="Jacke - Taycan"
-          price="199,99 €"
-          description="inkl. VAT"
-          href="/"
-          class="basic-content-one-third-left"
-          aspect-ratio="{ base: '9:16', m: '3:4' }"
-        >
-          <p-tag slot="header" color="background-base">New</p-tag>
-          <picture>
-            <source media="(min-width:400px)" srcset="/assets/sunglasses.webp" />
-            <img
-              src="/assets/sunglasses.webp"
-              style="width: 100%; height: 100%; object-fit: cover"
-              alt="Some alt text"
-            />
-          </picture>
-        </p-link-tile-product>
-        <p-link-tile-product
-          heading="Porsche Wappen-Schlüsselanhänger Charging Service"
-          price="199,99 €"
-          description="Lorem Ipsum dolor set"
-          href="/"
-          class="basic-content-one-third-follow"
-          aspect-ratio="{ base: '9:16', m: '3:4' }"
-        >
-          <p-tag slot="header" color="background-base">New</p-tag>
-          <img src="/assets/suitcase.webp" style="width: 100%; height: 100%; object-fit: cover" alt="Some alt text" />
-        </p-link-tile-product>
-        <p-link-tile-product
-          heading="Seitenwangen im MARTINI RACING® Design"
-          price="199,99€"
-          description="inkl. VAT"
-          href="/"
-          class="basic-content-one-third-follow"
-          aspect-ratio="{ base: '9:16', m: '3:4' }"
-        >
-          <p-tag slot="header" color="background-base">New</p-tag>
-          <picture>
-            <source media="(min-width:400px)" srcset="/assets/placeholder_800x900.svg" />
-            <img
-              src="/assets/placeholder_800x900.svg"
-              style="width: 100%; height: 100%; object-fit: cover"
-              alt="Some alt text"
-            />
-          </picture>
-        </p-link-tile-product>
-        <!--        <p-link-tile-product-->
-        <!--          heading="Product Name"-->
-        <!--          price="Extra long 199,99€ dksa fdiso fjidos jso dfkosp ddskodp sakd sakdö sa"-->
-        <!--          description="inkl. VAT dksaof sa dksa msal fsadksaop dsakd samdskao dsmakdl msad aklmsdks amdlsa "-->
-        <!--          class="basic-content-one-third-left"-->
-        <!--          aria="{ 'aria-label': 'Some more descriptive label' }"-->
-        <!--        >-->
-        <!--          <div slot="header">-->
-        <!--            <p-tag color="background-base">New</p-tag>-->
-        <!--            <p-tag color="background-base">New</p-tag>-->
-        <!--          </div>-->
-        <!--          &lt;!&ndash;          <p-tag slot="tags" color="background-base" theme="dark">New</p-tag>&ndash;&gt;-->
-        <!--          <img src="/assets/zipper.webp" alt="Some alt text" />-->
-        <!--          <a href="https://www.porsche.com">Product Name, 199€</a>-->
-        <!--        </p-link-tile-product>-->
-        <!--        <p-link-tile-product-->
-        <!--          heading="Extra long"-->
-        <!--          price="199,99€product name to show whats happening when too much text is used"-->
-        <!--          description="inkl. VAT"-->
-        <!--          href="/"-->
-        <!--          class="basic-content-one-third-follow"-->
-        <!--        >-->
-        <!--          <p-tag slot="header" color="background-base">New</p-tag>-->
-        <!--          <img src="/assets/placeholder_800x900.svg" alt="Some alt text" />-->
-        <!--        </p-link-tile-product>-->
-        <!--        <p-link-tile-product-->
-        <!--          heading="Test 123"-->
-        <!--          price="199,99€"-->
-        <!--          description="inkl. VAT Extra long product name to show whats happening when too much text is used"-->
-        <!--          href="/"-->
-        <!--          class="basic-content-one-third-follow"-->
-        <!--        >-->
-        <!--          <p-tag slot="header" color="background-base">New</p-tag>-->
-        <!--          <img src="/assets/placeholder_800x900.svg" alt="Some alt text" />-->
-        <!--        </p-link-tile-product>-->
-      </div>
-
-      <div class="basic-content-grid">
-        <p-link-tile-product
-          heading="Product Name"
-          price="Extra long 199,99€ dksa fdiso fjidos jso dfkosp ddskodp sakd sakdö sa"
-          description="inkl. VAT dksaof sa dksa msal fsadksaop dsakd samdskao dsmakdl msad aklmsdks amdlsa "
-          class="basic-content-one-third-left"
-          aria="{ 'aria-label': 'Some more descriptive label' }"
-        >
-          <div slot="header">
-            <p-tag color="background-base">New</p-tag>
-            <p-tag color="background-base">New</p-tag>
-          </div>
-          <!--          <p-tag slot="tags" color="background-base" theme="dark">New</p-tag>-->
-          <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
-          <a href="https://www.porsche.com">Product Name, 199€</a>
-        </p-link-tile-product>
-
-        <p-link-tile-product
-          heading="Extra long product name to show whats happening when too much text is used"
-          price="199,99€"
-          description="inkl. VAT"
-          href="/"
-          class="basic-content-one-third-follow"
-        >
-          <p-tag slot="header" color="background-base">New</p-tag>
-          <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
-        </p-link-tile-product>
-        <p-link-tile-product
-          heading="Product Name"
-          price="199,99€"
-          description="inkl. VAT"
-          href="/"
-          class="basic-content-one-third-follow"
-        >
-          <p-tag slot="header" color="background-base">New</p-tag>
-          <picture>
-            <source media="(min-width:400px)" srcset="/assets/link-tile-product-example-01.webp" />
-            <img
-              src="/assets/link-tile-product-example-01.webp"
-              style="width: 100%; height: 100%; object-fit: cover"
-              alt="Some alt text"
-            />
-          </picture>
-        </p-link-tile-product>
-        <p-link-tile-product
-          heading="Product Name"
-          price="199,99€"
-          description="inkl. VAT"
-          href="/"
-          class="basic-content-one-third-left"
-        >
-          <p-tag slot="header" color="background-base">New</p-tag>
-          <picture>
-            <source media="(min-width:400px)" srcset="/assets/link-tile-product-example-01.webp" />
-            <img
-              src="/assets/link-tile-product-example-01.webp"
-              style="width: 100%; height: 100%; object-fit: cover"
-              alt="Some alt text"
-            />
-          </picture>
-        </p-link-tile-product>
-        <p-link-tile-product
-          heading="Product Name"
-          price="199,99€"
-          description="inkl. VAT"
-          href="/"
-          class="basic-content-one-third-follow"
-        >
-          <p-tag slot="header" color="background-base">New</p-tag>
-        </p-link-tile-product>
-        <p-link-tile-product
-          heading="Product Name"
-          price="199,99€"
-          description="inkl. VAT"
-          href="/"
-          class="basic-content-one-third-follow"
-        >
-          <p-tag slot="header" color="background-base">New</p-tag>
-          <picture>
-            <source media="(min-width:400px)" srcset="/assets/link-tile-product-example-02-non-exis.png" />
-            <img
-              src="/assets/link-tile-product-example-02-non-exist.png"
-              style="width: 100%; height: 100%; object-fit: cover"
-              alt="Some alt text"
-            />
-          </picture>
-        </p-link-tile-product>
-        <p-link-tile-product
-          heading="Product Name"
-          price="Extra long 199,99€ dksa fdiso fjidos jso dfkosp ddskodp sakd sakdö sa"
-          description="inkl. VAT dksaof sa dksa msal fsadksaop dsakd samdskao dsmakdl msad aklmsdks amdlsa "
-          class="basic-content-one-third-left"
-          aria="{ 'aria-label': 'Some more descriptive label' }"
-        >
-          <div slot="header">
-            <p-tag color="background-base">New</p-tag>
-            <p-tag color="background-base">New</p-tag>
-            <p-tag color="background-base">New</p-tag>
-            <p-tag color="background-base">New</p-tag>
-            <p-tag color="background-base">New</p-tag>
-            <p-tag color="background-base">New</p-tag>
-            <p-tag color="background-base">New</p-tag>
-            <p-tag color="background-base">New</p-tag>
-            <p-tag color="background-base">New</p-tag>
-            <p-tag color="background-base">New</p-tag>
-          </div>
-          <!--          <p-tag slot="tags" color="background-base" theme="dark">New</p-tag>-->
-          <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
-          <a href="https://www.porsche.com">Product Name, 199€</a>
-        </p-link-tile-product>
-        <p-link-tile-product
-          heading="Extra long"
-          price="199,99€product name to show whats happening when too much text is used"
-          description="inkl. VAT"
-          href="/"
-          class="basic-content-one-third-follow"
-        >
-          <p-tag slot="header" color="background-base">New</p-tag>
-          <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
-        </p-link-tile-product>
-        <p-link-tile-product
-          heading="Test 123"
-          price="199,99€"
-          description="inkl. VAT Extra long product name to show whats happening when too much text is used"
-          href="/"
-          class="basic-content-one-third-follow"
-        >
-          <p-tag slot="header" color="background-base">New</p-tag>
-          <img src="/assets/link-tile-product-example-01.webp" alt="Some alt text" />
-        </p-link-tile-product>
-      </div>
-    </main>
+    <main></main>
 
     <script>
-      const productTiles = document.querySelectorAll('p-link-tile-product');
-      productTiles.forEach((productTile) => {
-        productTile.addEventListener('like', (e) => {
-          productTile.liked = !e.detail.liked;
-        });
-      });
-
-      [
-        <!-- START: keep this snippet to log component lifecycle events -->
-        ('componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'),
-      ].forEach((x) =>
+      <!-- START: keep this snippet to log component lifecycle events -->
+      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
         })
       );
+
+      const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
+      const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
+
+      const updateRoute = (opts) => {
+        if (opts) {
+          const url = new URL(location);
+          if (opts.pathname) {
+            url.pathname = opts.pathname;
+          }
+          if (opts.theme) {
+            url.searchParams.set('theme', opts.theme);
+          }
+          if (opts.dir) {
+            url.searchParams.set('dir', opts.dir);
+          }
+          history.pushState(null, '', url);
+        }
+
+        const theme = getTheme();
+        const dir = getDir();
+
+        document.querySelector('html').setAttribute('dir', dir);
+        const mainEl = document.querySelector('main');
+        mainEl.querySelectorAll('.playground').forEach((el) => {
+          el.classList.remove('light', 'dark', 'auto');
+          el.classList.add(theme);
+        });
+
+        mainEl.querySelectorAll('*').forEach((el) => (el.theme = theme));
+      };
+
+      const updateSelect = (id, value) => {
+        if (id && value) {
+          Array.from(document.querySelectorAll(`#${id} option`)).filter((e) => e.value === value)[0].selected = true;
+        }
+      };
+
+      updateSelect('theme', getTheme());
+      updateSelect('dir', getDir());
+      updateRoute();
     </script>
     <!-- /END -->
   </body>
