@@ -5937,14 +5937,6 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
   z-index: 1 !important;
   text-indent: -999999px !important;
 }
-.link-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 8px;
-}
 .root {
   display: flex;
   flex-direction: column;
