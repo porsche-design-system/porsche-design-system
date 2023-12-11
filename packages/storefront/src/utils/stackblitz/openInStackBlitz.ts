@@ -9,12 +9,13 @@ import type {
   SharedImportKey,
   ExternalDependency,
 } from '@/utils';
-import type { PlaygroundTheme, BackgroundColor, Framework } from '@/models';
+import type { PlaygroundTheme, BackgroundColor, Framework, PlaygroundDir } from '@/models';
 import type { PorscheDesignSystemBundle } from '@/utils/stackblitz/types';
 
 export type OpenInStackBlitzOpts = {
   porscheDesignSystemBundle: PorscheDesignSystemBundle;
   markup: string;
+  dir: PlaygroundDir;
   framework: Exclude<Framework, 'shared' | 'vue'>; // we don't have stackblitz integration for vue yet, therefore excluding vue
   theme: PlaygroundTheme;
   backgroundColor: BackgroundColor;
@@ -31,7 +32,13 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
     markup: transformSrcAndSrcsetOfImgAndSourceTags(markup),
     title: `Porsche Design System ${framework} sandbox`,
     description: 'Porsche Design System component example',
-    globalStyles: `body { background: ${getBackgroundColor(theme, backgroundColor)}; }`,
+    globalStyles:
+      theme === 'auto'
+        ? `body { background: ${getBackgroundColor('light', backgroundColor)}; }
+          @media (prefers-color-scheme: dark) {
+            body { background: ${getBackgroundColor('dark', backgroundColor)}; }
+          }`
+        : `body { background: ${getBackgroundColor(theme, backgroundColor)}; }`,
   };
 
   const getProjectAndOpenOptionsMap: Record<

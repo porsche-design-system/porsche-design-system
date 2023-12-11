@@ -153,7 +153,7 @@
   }
 
   .spacing-mr-8 {
-    margin-right: $pds-spacing-static-small;
+    margin-inline-end: $pds-spacing-static-small;
   }
 
   .spacing-mt-16 {
@@ -169,7 +169,7 @@
   }
 
   .spacing-mr-32 {
-    margin-right: $pds-spacing-static-large;
+    margin-inline-end: $pds-spacing-static-large;
   }
 
   .spacing-mt-48 {
@@ -190,7 +190,7 @@
   }
 
   .spacing-pr-8 {
-    padding-right: $pds-spacing-static-small;
+    padding-inline-end: $pds-spacing-static-small;
   }
 
   .spacing-pb-8 {
@@ -198,7 +198,7 @@
   }
 
   .spacing-pl-8 {
-    padding-left: $pds-spacing-static-small;
+    padding-inline-start: $pds-spacing-static-small;
   }
 
   .divider-spacing-small {
@@ -289,13 +289,13 @@
 
   // form grid
   .form-grid-item-container {
-    margin-left: -$pds-spacing-static-small;
-    margin-right: -$pds-spacing-static-small;
+    margin-inline-start: -$pds-spacing-static-small;
+    margin-inline-end: -$pds-spacing-static-small;
   }
 
   .form-grid-item {
-    padding-left: $pds-spacing-static-small;
-    padding-right: $pds-spacing-static-small;
+    padding-inline-start: $pds-spacing-static-small;
+    padding-inline-end: $pds-spacing-static-small;
   }
 
   .form-fieldset {
