@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.10.0-rc.1] - 2023-12-11
+
+#### Added
+
+- **[EXPERIMENTAL]** `Link Tile Product`
+  ([#2909](https://github.com/porsche-design-system/porsche-design-system/pull/2909))
+
 #### Fixed
 
 - `Wordmark`, `Crest` and `Marque`: custom clickable area

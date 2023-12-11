@@ -128,6 +128,10 @@ const generatedRoutes = {
     "path": "/link-tile-model-signature",
     "name": "LinkTileModelSignature"
   },
+  "linkTileProduct": {
+    "path": "/link-tile-product",
+    "name": "LinkTileProduct"
+  },
   "marque": {
     "path": "/marque",
     "name": "Marque"

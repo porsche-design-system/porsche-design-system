@@ -93,6 +93,13 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <p-link slot="primary" href="#">Some link</p-link>
     <p-link slot="secondary" href="#">Some link</p-link>
   </p-link-tile-model-signature>`,
+  'p-link-tile-product': `<p-link-tile-product
+          heading="Some product"
+          price="Some price"
+          href="https://www.porsche.com"
+        >
+    <img src="" />
+  </p-link-tile-product>`,
   'p-marque': `<p-marque></p-marque>`,
   'p-modal': `<p-modal heading="Some heading" open="true"></p-modal>`,
   'p-model-signature': `<p-model-signature></p-model-signature>`,

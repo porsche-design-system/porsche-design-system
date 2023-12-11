@@ -29,6 +29,7 @@ const propTypes: PropTypes<typeof FlyoutNavigation> = {
   aria: AllowedTypes.aria<FlyoutNavigationAriaAttribute>(FLYOUT_NAVIGATION_ARIA_ATTRIBUTES),
 };
 
+/** __Experimental__ */
 @Component({
   tag: 'p-flyout-navigation',
   shadow: true,
