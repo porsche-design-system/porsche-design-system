@@ -151,7 +151,9 @@
     }
 
     public updated(): void {
+      this.selectDir = this.dir;
       if (this.config.themeable) {
+        this.selectTheme = this.theme;
         this.syncThemeIntoDemoComponents();
       }
     }
