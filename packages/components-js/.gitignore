@@ -1,5 +1,10 @@
 /dist
 /www
+/public/assets/icons.js
+/public/assets/imask.min.js
+/public/assets/styles.css
+/public/assets/table-data*
+/public/index.js
 
 /projects/components-wrapper/environment.js
 

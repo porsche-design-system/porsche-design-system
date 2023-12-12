@@ -1,0 +1,26 @@
+<style>
+  #app {
+    /* TODO: not needed as soon as all top layer components are refactored with iFrames */
+    transform: unset;
+  }
+</style>
+
+<p-flyout-navigation open="true" active-identifier="item-6">
+  <p-flyout-navigation-item identifier="item-1" label="Some Label"></p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-2" label="Some Label"></p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-3" label="Some Label"></p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-4" label="Some Label"></p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-5" label="Some Label"></p-flyout-navigation-item>
+  <div style="height: 100px; background: deeppink"></div>
+  <p-flyout-navigation-item identifier="item-6" label="Some Label" class="scroll-into-view">
+    <a href="#some-anchor">Some anchor</a>
+    <div style="height: 210px; background: deeppink"></div>
+    <a href="#some-anchor" class="scroll-into-view">Some anchor</a>
+  </p-flyout-navigation-item>
+</p-flyout-navigation>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelectorAll('.scroll-into-view').forEach((el) => el.scrollIntoView());
+  });
+</script>

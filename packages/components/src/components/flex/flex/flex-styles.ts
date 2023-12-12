@@ -20,28 +20,31 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule(
-        mergeDeep(
-          colorSchemeStyles,
-          hostHiddenStyles,
-          buildResponsiveStyles(inline, (inlineResponsive: FlexInline) => ({
-            display: inlineResponsive ? 'inline-flex' : 'flex',
-          })),
-          buildResponsiveStyles(wrap, (flexWrapResponsive: FlexWrap) => ({ flexWrap: flexWrapResponsive })),
-          buildResponsiveStyles(direction, (flexDirectionResponsive: FlexDirection) => ({
-            flexDirection: flexDirectionResponsive,
-          })),
-          buildResponsiveStyles(justifyContent, (justifyContentResponsive: FlexJustifyContent) => ({
-            justifyContent: justifyContentResponsive,
-          })),
-          buildResponsiveStyles(alignItems, (alignItemsResponsive: FlexAlignItems) => ({
-            alignItems: alignItemsResponsive,
-          })),
-          buildResponsiveStyles(alignContent, (alignContentResponsive: FlexAlignContent) => ({
-            alignContent: alignContentResponsive,
-          }))
-        )
-      ),
+      ':host': {
+        ...buildResponsiveStyles(inline, (inlineResponsive: FlexInline) => ({
+          display: inlineResponsive ? 'inline-flex' : 'flex',
+        })),
+        ...addImportantToEachRule(
+          mergeDeep(
+            colorSchemeStyles,
+            hostHiddenStyles,
+
+            buildResponsiveStyles(wrap, (flexWrapResponsive: FlexWrap) => ({ flexWrap: flexWrapResponsive })),
+            buildResponsiveStyles(direction, (flexDirectionResponsive: FlexDirection) => ({
+              flexDirection: flexDirectionResponsive,
+            })),
+            buildResponsiveStyles(justifyContent, (justifyContentResponsive: FlexJustifyContent) => ({
+              justifyContent: justifyContentResponsive,
+            })),
+            buildResponsiveStyles(alignItems, (alignItemsResponsive: FlexAlignItems) => ({
+              alignItems: alignItemsResponsive,
+            })),
+            buildResponsiveStyles(alignContent, (alignContentResponsive: FlexAlignContent) => ({
+              alignContent: alignContentResponsive,
+            }))
+          )
+        ),
+      },
     },
   });
 };

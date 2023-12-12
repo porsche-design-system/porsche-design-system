@@ -14,6 +14,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.10.0-rc.3] - 2023-12-12
+
+### [3.10.0-rc.2] - 2023-12-12
+
+### [3.10.0-rc.1] - 2023-12-11
+
+#### Added
+
+- **[EXPERIMENTAL]** `Link Tile Product`
+  ([#2909](https://github.com/porsche-design-system/porsche-design-system/pull/2909))
+
+#### Fixed
+
+- `Wordmark`, `Crest` and `Marque`: custom clickable area
+  ([#2930](https://github.com/porsche-design-system/porsche-design-system/pull/2930))
+
+### [3.10.0-rc.0] - 2023-12-07
+
+#### Added
+
+- **[EXPERIMENTAL]** `Flyout Navigation`
+  ([#2906](https://github.com/porsche-design-system/porsche-design-system/pull/2906))
+- Prop `submit-button` to show/hide a submit button for `Text Field Wrapper` `type="search"` if wrapped inside a form
+  ([#2908](https://github.com/porsche-design-system/porsche-design-system/pull/2908))
+
+#### Changed
+
+- `Accordion`: removed `border-bottom` if used standalone
+  ([#2911](https://github.com/porsche-design-system/porsche-design-system/pull/2911))
+- `display` css property can be overridden on all components, e.g. to make use of `display: none;` within media
+  queries  
+  ([#2913](https://github.com/porsche-design-system/porsche-design-system/pull/2913))
+- `Pagination`: Prop `maxNumberOfPageLinks` is deprecated and has no effect anymore, instead there is responsive
+  behavior out of the box with full SSR support
+  ([#2898](https://github.com/porsche-design-system/porsche-design-system/pull/2898))
+
 ### [3.9.0] - 2023-11-24
 
 ### [3.9.0-rc.0] - 2023-11-23
@@ -47,6 +83,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Select Wrapper`: Select dropdown is now visible if it overflows the `Table` component
+  ([#2885](https://github.com/porsche-design-system/porsche-design-system/pull/2885))
 - `Select Wrapper` keyboard and scroll behavior
   ([#2864](https://github.com/porsche-design-system/porsche-design-system/pull/2864))
 - Safari 15 default margin of button elements in several components

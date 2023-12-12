@@ -135,6 +135,16 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/flyout/flyout.usage.md')],
       Props: [() => import('@/../../components/src/components/flyout/flyout.props.md')],
     },
+    'Flyout Navigation': {
+      Examples: [() => import('@/../../components/src/components/flyout-navigation/flyout-navigation.examples.md')],
+      Usage: [() => import('@/../../components/src/components/flyout-navigation/flyout-navigation.usage.md')],
+      Props: [
+        // prettier-ignore
+        () => import('@/../../components/src/components/flyout-navigation/flyout-navigation/flyout-navigation.props.md'),
+        // prettier-ignore
+        () => import('@/../../components/src/components/flyout-navigation/flyout-navigation-item/flyout-navigation-item.props.md'),
+      ],
+    },
     Grid: {
       Examples: [() => import('@/../../components/src/components/grid/grid.examples.md')],
       Usage: [() => import('@/../../components/src/components/grid/grid.usage.md')],
@@ -186,6 +196,11 @@ export const config: StorefrontConfig = {
       Examples: [() => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.examples.md')],
       Usage: [() => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.usage.md')],
       Props: [() => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.props.md')],
+    },
+    'Link Tile Product': {
+      Examples: [() => import('@/../../components/src/components/link-tile-product/link-tile-product.examples.md')],
+      Usage: [() => import('@/../../components/src/components/link-tile-product/link-tile-product.usage.md')],
+      Props: [() => import('@/../../components/src/components/link-tile-product/link-tile-product.props.md')],
     },
     Marque: {
       Examples: [() => import('@/../../components/src/components/marque/marque.examples.md')],

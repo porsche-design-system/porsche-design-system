@@ -1,4 +1,4 @@
-import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
+import { themeDark, themeLight } from '@porsche-design-system/components-js/styles';
 import type { PlaygroundTheme, BackgroundColor } from '../../src/models';
 import {
   getExternalDependencies,

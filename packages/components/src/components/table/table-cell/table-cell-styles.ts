@@ -6,14 +6,14 @@ export const getComponentCss = (multiline: boolean): string => {
   return getCss({
     '@global': {
       ':host': {
+        display: 'table-cell',
+        verticalAlign: 'middle',
         ...addImportantToEachRule({
-          display: 'table-cell',
           padding: spacingFluidSmall,
           margin: 0,
           whiteSpace: multiline ? 'normal' : 'nowrap',
           ...hostHiddenStyles,
         }),
-        verticalAlign: 'middle',
       },
     },
   });

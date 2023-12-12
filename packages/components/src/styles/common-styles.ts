@@ -100,11 +100,14 @@ export const getResetInitialStylesForSlottedAnchor: JssStyle = {
 
 export const focusPseudoJssStyle: JssStyle = {
   outline: 0,
-  '&:focus::before': {
+  '&::before': {
+    // needs to be defined always to have correct custom click area
     content: '""',
     position: 'absolute',
     ...getInsetJssStyle(),
-    borderRadius: '1px',
+  },
+  '&:focus::before': {
+    borderRadius: '1px', // TODO: why just 1px border-radius?
     outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
     outlineOffset: '2px',
   },

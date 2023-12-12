@@ -76,8 +76,6 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ## Remove Button from tab order
 
-**NOTICE:** The property `tabbable` is deprecated since v2.8.0 and will be removed in v3.0.0.
-
 By setting the `tabindex` attribute to `-1` you can remove the **Button** from the tab order.
 
 <Playground :markup="taborder" :config="config"></Playground>
@@ -88,7 +86,7 @@ When used as a submit button, the `name` and `value` props are submitted as a pa
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
   <form @submit.prevent="onSubmit">
-    <p-button name="option" value="A" type="submit" style="margin-right: 16px;" :theme="theme">Button A</p-button>
+    <p-button name="option" value="A" type="submit" style="margin-inline-end: 16px;" :theme="theme">Button A</p-button>
     <p-button name="option" value="B" type="submit" :theme="theme">Button B</p-button>
   </form>
   <p-text :theme="theme">{{ selectedValuesForm }}</p-text>

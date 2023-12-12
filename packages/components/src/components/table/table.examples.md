@@ -119,7 +119,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
         <p-table-cell>
           <p-flex>
             <p-flex-item>
-              <img :src="item.imageUrl" width="80" height="45" style="margin-right: 0.5rem" alt="">
+              <img :src="item.imageUrl" width="80" height="45" style="margin-inline-end: 8px" alt="">
             </p-flex-item>
             <p-flex-item>
               <p-text :theme="theme" weight="semibold">{{ item.model }}</p-text>
@@ -132,7 +132,24 @@ The appearance of a table's contents can be customized as illustrated in the fol
         <p-table-cell>{{ item.purchaseIntention }}</p-table-cell>
         <p-table-cell>{{ item.status }}</p-table-cell>
         <p-table-cell multiline="true" style="min-width: 10rem;">{{ item.comment }}</p-table-cell>
-        <p-table-cell>{{ item.leadId }}</p-table-cell>
+        <p-table-cell>{{ item.leadId }} <p-popover description="Some additional content."></p-popover></p-table-cell>
+        <p-table-cell>
+          <p-select-wrapper filter="true" label="Select Something" style="width: 160px;">
+            <select name="some-name">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+              <option value="c">Option C</option>
+              <option value="d">Option D</option>
+              <option value="e">Option E</option>
+              <option value="f">Option F</option>
+              <option value="g">Option G</option>
+              <option value="h">Option H</option>
+              <option value="i">Option I</option>
+              <option value="j">Option J</option>
+              <option value="k">Option K</option>
+            </select>
+          </p-select-wrapper>
+        </p-table-cell>
         <p-table-cell>
           <p-button-pure :theme="theme" icon="edit" style="padding: .5rem">Edit</p-button-pure>
           <p-button-pure :theme="theme" icon="delete" style="padding: .5rem">Delete</p-button-pure>
@@ -165,7 +182,7 @@ export default class Code extends Vue {
 
   basic = getTableCodeSamples('example-basic');
   sorting = getTableCodeSamples('example-sorting');
-  advanced = getTableCodeSamples('example-advanced');
+    advanced = getTableCodeSamples('example-advanced');
 
   basicTableHead = `<p-table-head>
     <p-table-head-row>

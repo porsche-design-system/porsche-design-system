@@ -33,7 +33,7 @@ exports[`manual test cases should pass internal props correctly to p-checkbox-wr
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-flex !important;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 1.2s) steps(50) infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 1.2s) steps(50) infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+              :host{display:inline-flex;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 1.2s) steps(50) infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 1.2s) steps(50) infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
             </style>
             <span
               aria-label="Loading state of Some label"
@@ -105,7 +105,7 @@ exports[`manual test cases should pass internal props correctly to p-checkbox-wr
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-flex !important;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 1.2s) steps(50) infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 1.2s) steps(50) infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+              :host{display:inline-flex;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 1.2s) steps(50) infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 1.2s) steps(50) infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
             </style>
             <span
               aria-label="Loading state of Some label"
@@ -154,7 +154,7 @@ exports[`manual test cases should pass internal props correctly to p-grid-item 1
     shadowrootmode="open"
   >
     <style>
-      :host{display:flex !important;flex:auto !important;width:auto !important;margin-left:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;margin-right:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;color-scheme:light dark !important;flex-direction:row !important;flex-wrap:wrap !important}:host([hidden]){display:none !important}
+      :host{display:flex;flex:auto !important;width:auto !important;margin-left:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;margin-right:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;color-scheme:light dark !important;flex-direction:row !important;flex-wrap:wrap !important}:host([hidden]){display:none !important}
     </style>
     <slot />
   </template>
@@ -200,7 +200,7 @@ exports[`manual test cases should pass internal props correctly to p-grid-item 2
     shadowrootmode="open"
   >
     <style>
-      :host{display:flex !important;flex:auto !important;width:auto !important;margin-left:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;margin-right:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;color-scheme:light dark !important;flex-direction:row !important;flex-wrap:wrap !important}:host([hidden]){display:none !important}
+      :host{display:flex;flex:auto !important;width:auto !important;margin-left:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;margin-right:calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;color-scheme:light dark !important;flex-direction:row !important;flex-wrap:wrap !important}:host([hidden]){display:none !important}
     </style>
     <slot />
   </template>
@@ -784,7 +784,7 @@ exports[`manual test cases should pass internal props correctly to p-multi-selec
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
             </style>
             <img
               alt=""
@@ -944,7 +944,7 @@ exports[`manual test cases should pass internal props correctly to p-radio-butto
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-flex !important;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 1.2s) steps(50) infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 1.2s) steps(50) infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+              :host{display:inline-flex;vertical-align:top !important;color-scheme:light dark !important}:host([hidden]){display:none !important}svg{display:block;fill:none;animation:rotate var(--p-animation-duration, 1.2s) steps(50) infinite}circle:first-child{stroke:#6B6D70}circle:last-child{animation:dash var(--p-animation-duration, 1.2s) steps(50) infinite;stroke:#010205;stroke-dasharray:var(--p-temporary-spinner-stroke-dasharray, 57);stroke-linecap:round}@keyframes rotate{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes dash{0%{stroke-dashoffset:57;transform:rotateZ(0)}50%, 75%{stroke-dashoffset:20;transform:rotateZ(80deg)}100%{stroke-dashoffset:57;transform:rotateZ(360deg)}}.root{display:block;height:inherit;width:inherit;stroke-width:1.5}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
             </style>
             <span
               aria-label="Loading state of Some label"
@@ -1027,7 +1027,7 @@ exports[`manual test cases should pass internal props correctly to p-segmented-c
     shadowrootmode="open"
   >
     <style>
-      :host{display:grid !important;grid-auto-rows:1fr !important;grid-template-columns:repeat(auto-fit, 100px) !important;gap:6px !important;color-scheme:light dark !important}:host([hidden]){display:none !important}
+      :host{display:grid;grid-auto-rows:1fr !important;grid-template-columns:repeat(auto-fit, 100px) !important;gap:6px !important;color-scheme:light dark !important}:host([hidden]){display:none !important}
     </style>
     <slot />
   </template>
@@ -1041,7 +1041,7 @@ exports[`manual test cases should pass internal props correctly to p-segmented-c
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;outline:0 !important}:host([hidden]){display:none !important}button{position:relative;display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #FBFCFF;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}
+        :host{display:block;outline:0 !important}:host([hidden]){display:none !important}button{position:relative;display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #FBFCFF;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}
       </style>
       <button
         aria-pressed="true"
@@ -1062,7 +1062,7 @@ exports[`manual test cases should pass internal props correctly to p-segmented-c
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;outline:0 !important}:host([hidden]){display:none !important}button{position:relative;display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #404044;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}
+        :host{display:block;outline:0 !important}:host([hidden]){display:none !important}button{position:relative;display:block;height:100%;width:100%;padding:13px 17px;margin:0;border:2px solid #404044;border-radius:4px;outline:0;background:transparent;color:#FBFCFF;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;cursor:pointer}button::before{content:"";position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border:2px solid transparent;border-radius:7px}span{display:block;font:normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:normal;hyphens:auto;color:#88898C}
       </style>
       <button
         aria-pressed="false"
@@ -1109,7 +1109,7 @@ exports[`manual test cases should pass internal props correctly to p-select-wrap
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
             </style>
             <img
               alt=""
@@ -1214,7 +1214,7 @@ exports[`manual test cases should pass internal props correctly to p-select-wrap
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
             </style>
             <img
               alt=""
@@ -1322,7 +1322,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1352,7 +1352,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1471,7 +1471,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-bar 1`
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1501,7 +1501,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-bar 1`
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1603,7 +1603,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       shadowrootmode="open"
                     >
                       <style>
-                        :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                        :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                       </style>
                       <img
                         alt=""
@@ -1633,7 +1633,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       shadowrootmode="open"
                     >
                       <style>
-                        :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                        :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                       </style>
                       <img
                         alt=""
@@ -1681,7 +1681,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}
+        :host{display:block;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}
       </style>
       <slot />
     </template>
@@ -1695,7 +1695,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
       shadowrootmode="open"
     >
       <style>
-        :host{display:block !important;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}
+        :host{display:block;position:relative !important;color:#FBFCFF !important;outline:0 !important}:host([hidden]){display:none !important}
       </style>
       <slot />
     </template>
@@ -1822,7 +1822,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1885,7 +1885,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
             shadowrootmode="open"
           >
             <style>
-              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);-webkit-animation:rerender-light-state-disabled 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-state-disabled{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+              :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%));-webkit-animation:rerender-light-state-disabled 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-state-disabled{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
             </style>
             <img
               alt=""
@@ -1922,7 +1922,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:inherit;height:inherit}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1975,7 +1975,7 @@ exports[`manual test cases should pass internal props correctly to p-text-list-i
       shadowrootmode="open"
     >
       <style>
-        :host{display:grid !important;grid-template-columns:var(--p-internal-text-list-pseudo-space) 1fr !important;column-gap:16px !important;font:inherit !important;color:inherit !important}:host([hidden]){display:none !important}::slotted(*){--p-internal-text-list-unordered-grid-column:.625rem !important;--p-internal-text-list-unordered-pseudo-content:"–" !important;--p-internal-text-list-ordered-grid-column:2rem !important;--p-internal-text-list-ordered-pseudo-suffix:"" !important}::slotted(*:last-child){grid-column:2 !important}
+        :host{display:grid;grid-template-columns:var(--p-internal-text-list-pseudo-space) 1fr !important;column-gap:16px !important;font:inherit !important;color:inherit !important}:host([hidden]){display:none !important}::slotted(*){--p-internal-text-list-unordered-grid-column:.625rem !important;--p-internal-text-list-unordered-pseudo-content:"–" !important;--p-internal-text-list-ordered-grid-column:2rem !important;--p-internal-text-list-ordered-pseudo-suffix:"" !important}::slotted(*:last-child){grid-column:2 !important}
       </style>
       <span>
         <slot />
@@ -1992,7 +1992,7 @@ exports[`manual test cases should pass internal props correctly to p-text-list-i
       shadowrootmode="open"
     >
       <style>
-        :host{display:grid !important;grid-template-columns:var(--p-internal-text-list-pseudo-space) 1fr !important;column-gap:16px !important;font:inherit !important;color:inherit !important}:host([hidden]){display:none !important}::slotted(*){--p-internal-text-list-unordered-grid-column:.625rem !important;--p-internal-text-list-unordered-pseudo-content:"–" !important;--p-internal-text-list-ordered-grid-column:2rem !important;--p-internal-text-list-ordered-pseudo-suffix:"" !important}::slotted(*:last-child){grid-column:2 !important}
+        :host{display:grid;grid-template-columns:var(--p-internal-text-list-pseudo-space) 1fr !important;column-gap:16px !important;font:inherit !important;color:inherit !important}:host([hidden]){display:none !important}::slotted(*){--p-internal-text-list-unordered-grid-column:.625rem !important;--p-internal-text-list-unordered-pseudo-content:"–" !important;--p-internal-text-list-ordered-grid-column:2rem !important;--p-internal-text-list-ordered-pseudo-suffix:"" !important}::slotted(*:last-child){grid-column:2 !important}
       </style>
       <span>
         <slot />
@@ -2013,9 +2013,12 @@ exports[`should render dsr component for PAccordion 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: block;
   border-bottom: 1px solid #D8D8DB !important;
   color-scheme: light dark !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2127,7 +2130,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -2229,7 +2232,7 @@ exports[`should render dsr component for PBanner 1`] = `
       >
         <style>
           :host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
@@ -2299,7 +2302,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
+  filter: var(--p-internal-icon-filter,invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%));
   -webkit-animation: rerender-light-notification-info 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -2440,7 +2443,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -2701,7 +2704,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -2923,7 +2926,7 @@ exports[`should render dsr component for PCarousel 1`] = `
   >
     <style>
       :host {
-  display: flex !important;
+  display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
   flex-direction: column !important;
   box-sizing: content-box !important;
@@ -3300,6 +3303,14 @@ a {
   height: inherit;
   outline: 0;
 }
+a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 picture {
   display: block;
   width: min(30px, 100%);
@@ -3429,7 +3440,7 @@ exports[`should render dsr component for PFieldset 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -3471,7 +3482,7 @@ exports[`should render dsr component for PFieldsetWrapper 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -3513,8 +3524,8 @@ exports[`should render dsr component for PFlex 1`] = `
   >
     <style>
       :host {
+  display: flex;
   color-scheme: light dark !important;
-  display: flex !important;
   flex-wrap: nowrap !important;
   flex-direction: row !important;
   justify-content: flex-start !important;
@@ -3761,7 +3772,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -3805,6 +3816,709 @@ img {
 </p-flyout>
 `;
 
+exports[`should render dsr component for PFlyoutNavigation 1`] = `
+<p-flyout-navigation
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  --p-internal-flyout-navigation-visibility: hidden !important;
+  --p-internal-flyout-navigation-visibility-transition-duration: 0.6s !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99998 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  width: auto;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  visibility: inherit;
+  background: none;
+  overflow: hidden;
+  transform: translate3d(-100%, 0, 0);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+}
+dialog:dir(rtl) {
+  transform: translate3d(100%, 0, 0);
+}
+dialog::backdrop {
+  opacity: 0;
+}
+@media(min-width:760px) {
+  dialog {
+    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
+    grid-template-rows: 100vh;
+    inset-inline-end: auto;
+  }
+}
+
+.scroller {
+  grid-area: 1/1;
+  overflow: auto;
+  visibility: var(--p-internal-flyout-navigation-visibility,visible);
+  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0.6s);
+  background-color: #FFF;
+}
+.scroller::before {
+  content: "";
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  background-color: rgba(255, 255, 255, 0.79);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+}
+.header {
+  position: relative;
+  z-index: 3;
+  grid-area: 1/1;
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+.dismiss {
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+}
+@media(min-width:760px) {
+  .scroller {
+    visibility: inherit;
+    transition: initial;
+  }
+  .scroller::before {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+  .header {
+    margin-inline-end: 0;
+    grid-area: 1/-1;
+    place-self: flex-start;
+  }
+  .dismiss {
+    --p-internal-icon-filter: invert(1);
+    margin: clamp(8px, 0.5vw + 6px, 16px);
+    padding: 8px;
+  }
+}
+
+    </style>
+    <dialog
+      inert=""
+      tabindex="-1"
+    >
+      <div
+        class="header"
+      >
+        <p-button-pure
+          class="dismiss ssr"
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  white-space: nowrap;
+  text-indent: -999999px;
+  order: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+
+            </style>
+            <button
+              class="root"
+              type="button"
+            >
+              <p-icon
+                aria-hidden="true"
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+          </template>
+          Dismiss flyout
+        </p-button-pure>
+      </div>
+      <div
+        class="scroller"
+      >
+        <nav
+          class="content"
+        >
+          <slot />
+        </nav>
+      </div>
+    </dialog>
+  </template>
+  Some child
+</p-flyout-navigation>
+`;
+
+exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
+<p-flyout-navigation-item
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  margin: 0 !important;
+  color: #010205 !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
+  margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
+}
+::slotted(p) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  margin: 0 !important;
+  color: #010205 !important;
+}
+::slotted(a) {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  align-self: flex-start !important;
+  display: block !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  color: #010205 !important;
+  border-radius: 4px !important;
+  margin-left: -4px !important;
+  margin-right: -4px !important;
+  padding: 2px 4px !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+}
+::slotted(a[aria-current]) {
+  background: rgba(148, 149, 152, .18) !important;
+}
+
+.button {
+  width: auto;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.scroller {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  transform: translate3d(100%, 0, 0);
+  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0.6s));
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: auto;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  background-color: #EEEFF2;
+}
+.scroller:dir(rtl) {
+  transform: translate3d(-100%, 0, 0);
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  padding: 0 clamp(32px, 2.75vw + 23px, 76px);
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) 4rem;
+  align-items: center;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: rgba(238, 239, 242, 0.79);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+}
+.back {
+  justify-self: flex-start;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+}
+.heading {
+  font: normal normal 600 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #010205;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  opacity: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+}
+@media(min-width:760px) {
+  .scroller {
+    box-shadow: none;
+    inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
+    width: clamp(338px, 10.52vw + 258px, 460px);
+    transform: initial !important;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  }
+  .header {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+}
+
+    </style>
+    <p-button-pure
+      class="button ssr"
+    >
+      <template
+        shadowroot="open"
+        shadowrootdelegatesfocus="true"
+        shadowrootmode="open"
+      >
+        <style>
+          :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: block;
+  width: 100%;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  order: -1;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+
+        </style>
+        <button
+          aria-expanded="false"
+          class="root"
+          type="button"
+        >
+          <p-icon
+            aria-hidden="true"
+            class="icon ssr"
+          >
+            <template
+              shadowroot="open"
+              shadowrootmode="open"
+            >
+              <style>
+                :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+              </style>
+              <img
+                alt=""
+                height="24"
+                loading="lazy"
+                src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                width="24"
+              />
+            </template>
+          </p-icon>
+          <span
+            class="label"
+          >
+            <slot />
+          </span>
+        </button>
+      </template>
+    </p-button-pure>
+    <div
+      class="scroller"
+      inert=""
+    >
+      <div
+        class="header"
+      >
+        <p-button-pure
+          class="back ssr"
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  white-space: nowrap;
+  text-indent: -999999px;
+  order: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+
+            </style>
+            <button
+              class="root"
+              type="button"
+            >
+              <p-icon
+                aria-hidden="true"
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+          </template>
+          Back
+        </p-button-pure>
+        <h2
+          class="heading"
+        />
+      </div>
+      <div
+        class="content"
+      >
+        <slot />
+      </div>
+    </div>
+  </template>
+  Some child
+</p-flyout-navigation-item>
+`;
+
 exports[`should render dsr component for PGrid 1`] = `
 <p-grid
   class="ssr"
@@ -3815,7 +4529,7 @@ exports[`should render dsr component for PGrid 1`] = `
   >
     <style>
       :host {
-  display: flex !important;
+  display: flex;
   flex: auto !important;
   width: auto !important;
   margin-left: calc(clamp(16px, 1.25vw + 12px, 36px) / -2) !important;
@@ -3993,7 +4707,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -4029,7 +4743,7 @@ exports[`should render dsr component for PInlineNotification 1`] = `
   >
     <style>
       :host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
@@ -4099,7 +4813,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%);
+  filter: var(--p-internal-icon-filter,invert(44%) sepia(100%) saturate(492%) hue-rotate(195deg) brightness(86%) contrast(221%));
   -webkit-animation: rerender-light-notification-info 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -4240,7 +4954,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -4489,7 +5203,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -4632,7 +5346,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -5195,6 +5909,297 @@ img {
 </p-link-tile-model-signature>
 `;
 
+exports[`should render dsr component for PLinkTileProduct 1`] = `
+<p-link-tile-product
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  position: relative;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot[name="header"] {
+  display: block;
+}
+::slotted(a[slot='anchor']) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 1 !important;
+  border-radius: 8px !important;
+  text-indent: -999999px !important;
+}
+::slotted([slot="header"]) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: clamp(4px, 0.25vw + 3px, 8px) !important;
+}
+::slotted(img), ::slotted(picture) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+.root {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  color: #010205;
+  background-color: #EEEFF2;
+}
+.header {
+  display: flex;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.button {
+  position: relative;
+  z-index: 2;
+}
+.image {
+  aspect-ratio: 8/9;
+  margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px);
+  overflow: hidden;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+}
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0 0 2px;
+}
+.price {
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+.description {
+  font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  color: #535457;
+}
+@media(min-width:760px) {
+  .image {
+    padding: 0 clamp(16px, 1.25vw + 12px, 36px);
+  }
+}
+
+
+    </style>
+    <div
+      class="root"
+    >
+      <slot
+        name="anchor"
+      />
+      <div
+        class="header"
+        id="header"
+      >
+        <slot
+          name="header"
+        />
+        <p-button-pure
+          class="button ssr"
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  outline: 0;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  white-space: nowrap;
+  text-indent: -999999px;
+  order: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+
+            </style>
+            <button
+              class="root"
+              type="button"
+            >
+              <p-icon
+                aria-hidden="true"
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/heart.min.7c25821e7db007879ef53b83c116fc37.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+          </template>
+          Add to wishlist
+        </p-button-pure>
+      </div>
+      <div
+        class="image"
+      >
+        <slot />
+      </div>
+      <div
+        class="wrapper"
+      >
+        <h3
+          class="heading"
+          id="heading"
+        />
+        <p
+          class="price"
+          id="price"
+        />
+        <p
+          class="description"
+          id="description"
+        />
+      </div>
+    </div>
+  </template>
+  Some child
+</p-link-tile-product>
+`;
+
 exports[`should render dsr component for PMarque 1`] = `
 <p-marque
   class="ssr"
@@ -5219,6 +6224,14 @@ a {
   display: block;
   text-decoration: none;
   outline: 0;
+}
+a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 picture {
   display: block;
@@ -5276,20 +6289,20 @@ exports[`should render dsr component for PModal 1`] = `
   >
     <style>
       :host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
   transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -5483,7 +6496,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
@@ -5765,7 +6778,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -5851,7 +6864,6 @@ nav {
   display: flex;
   justify-content: center;
   user-select: none;
-  counter-reset: size 5;
 }
 ul {
   display: flex;
@@ -5892,12 +6904,6 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-@media(min-width:480px) {
-  nav {
-    counter-reset: size 7;
-  }
-}
-
 @media(min-width:760px) {
   ul {
     gap: 8px;
@@ -5907,6 +6913,9 @@ span[aria-disabled] {
   }
   li:last-child {
     margin-inline-start: 8px;
+  }
+  li.ellip {
+    display: none;
   }
 }
 
@@ -5924,7 +6933,9 @@ span[aria-disabled] {
       role="navigation"
     >
       <ul>
-        <li>
+        <li
+          class="prev"
+        >
           <span
             aria-disabled="true"
             aria-label="Previous page"
@@ -5952,7 +6963,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
+  filter: var(--p-internal-icon-filter,invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%));
   -webkit-animation: rerender-light-state-disabled 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -5978,7 +6989,9 @@ img {
             </p-icon>
           </span>
         </li>
-        <li>
+        <li
+          class="current"
+        >
           <span
             aria-current="page"
             aria-label="Page 1"
@@ -5988,7 +7001,9 @@ img {
             1
           </span>
         </li>
-        <li>
+        <li
+          class="next"
+        >
           <span
             aria-disabled="true"
             aria-label="Next page"
@@ -6016,7 +7031,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%);
+  filter: var(--p-internal-icon-filter,invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%));
   -webkit-animation: rerender-light-state-disabled 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -6215,10 +7230,10 @@ exports[`should render dsr component for PPopover 1`] = `
   >
     <style>
       :host {
-  position: relative !important;
-  display: inline-block !important;
-  color-scheme: light dark !important;
+  display: inline-block;
   vertical-align: top;
+  position: relative !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -6345,7 +7360,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -6666,7 +7681,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -6722,7 +7737,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -6765,7 +7780,7 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
   >
     <style>
       :host {
-  display: grid !important;
+  display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(auto-fit, 100px) !important;
   gap: 6px !important;
@@ -6792,7 +7807,7 @@ exports[`should render dsr component for PSegmentedControlItem 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -6986,7 +8001,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -7073,7 +8088,7 @@ exports[`should render dsr component for PSpinner 1`] = `
   >
     <style>
       :host {
-  display: inline-flex !important;
+  display: inline-flex;
   vertical-align: top !important;
   color-scheme: light dark !important;
 }
@@ -7358,7 +8373,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -7414,7 +8429,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -7552,9 +8567,9 @@ exports[`should render dsr component for PSwitch 1`] = `
   >
     <style>
       :host {
+  display: inline-block;
   outline: 0 !important;
   color-scheme: light dark !important;
-  display: inline-block !important;
   width: auto !important;
   vertical-align: top !important;
 }
@@ -7655,7 +8670,7 @@ exports[`should render dsr component for PTable 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: block;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
@@ -7848,7 +8863,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -7904,7 +8919,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -7955,7 +8970,7 @@ exports[`should render dsr component for PTableBody 1`] = `
   >
     <style>
       :host {
-  display: table-row-group !important;
+  display: table-row-group;
 }
 :host([hidden]) {
   display: none !important;
@@ -7978,11 +8993,11 @@ exports[`should render dsr component for PTableCell 1`] = `
   >
     <style>
       :host {
-  display: table-cell !important;
+  display: table-cell;
+  vertical-align: middle;
   padding: clamp(8px, 0.5vw + 6px, 16px) !important;
   margin: 0 !important;
   white-space: nowrap !important;
-  vertical-align: middle;
 }
 :host([hidden]) {
   display: none !important;
@@ -8005,7 +9020,7 @@ exports[`should render dsr component for PTableHead 1`] = `
   >
     <style>
       :host {
-  display: table-header-group !important;
+  display: table-header-group;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem) !important;
   line-height: calc(6px + 2.125ex) !important;
   font-weight: 600 !important;
@@ -8032,7 +9047,7 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
   >
     <style>
       :host {
-  display: table-cell !important;
+  display: table-cell;
   padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
@@ -8060,7 +9075,7 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
   >
     <style>
       :host {
-  display: table-row !important;
+  display: table-row;
 }
 :host([hidden]) {
   display: none !important;
@@ -8083,7 +9098,7 @@ exports[`should render dsr component for PTableRow 1`] = `
   >
     <style>
       :host {
-  display: table-row !important;
+  display: table-row;
   border-top: 1px solid var(--p-internal-table-border-color) !important;
   border-bottom: 1px solid var(--p-internal-table-border-color) !important;
   transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
@@ -8378,7 +9393,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -8434,7 +9449,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -8746,7 +9761,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -8802,7 +9817,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -8850,7 +9865,7 @@ exports[`should render dsr component for PTabsItem 1`] = `
   >
     <style>
       :host {
-  display: block !important;
+  display: block;
   position: relative !important;
   color: #010205 !important;
   outline: 0 !important;
@@ -9020,7 +10035,7 @@ img {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
@@ -9288,7 +10303,7 @@ exports[`should render dsr component for PTextListItem 1`] = `
   >
     <style>
       :host {
-  display: grid !important;
+  display: grid;
   grid-template-columns: var(--p-internal-text-list-pseudo-space) 1fr !important;
   column-gap: 16px !important;
   font: inherit !important;
@@ -9483,6 +10498,14 @@ a, svg {
 a {
   text-decoration: none;
   outline: 0;
+}
+a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 svg {
   fill: #010205;

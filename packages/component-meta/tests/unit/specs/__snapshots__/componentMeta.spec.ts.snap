@@ -1003,6 +1003,69 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-flyout-navigation": {
+    "allowedPropValues": {
+      "activeIdentifier": "string",
+      "aria": {
+        "aria-label": "string",
+      },
+      "open": "boolean",
+      "theme": [
+        "light",
+        "dark",
+        "auto",
+      ],
+    },
+    "eventNames": [
+      "dismiss",
+      "update",
+    ],
+    "hasAriaProp": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isExperimental": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "props": {
+      "activeIdentifier": null,
+      "aria": null,
+      "open": false,
+      "theme": "light",
+    },
+    "styling": "jss",
+  },
+  "p-flyout-navigation-item": {
+    "allowedPropValues": {
+      "identifier": "string",
+      "label": "string",
+    },
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": false,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "props": {
+      "identifier": null,
+      "label": null,
+    },
+    "requiredParent": "p-flyout-navigation",
+    "requiredProps": [
+      "identifier",
+    ],
+    "styling": "jss",
+  },
   "p-grid": {
     "allowedPropValues": {
       "direction": [
@@ -1901,6 +1964,63 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-link-tile-product": {
+    "allowedPropValues": {
+      "aspectRatio": [
+        "3:4",
+        "9:16",
+      ],
+      "description": "string",
+      "heading": "string",
+      "href": "string",
+      "likeButton": "boolean",
+      "liked": "boolean",
+      "price": "string",
+      "rel": "string",
+      "target": "string",
+      "theme": [
+        "light",
+        "dark",
+        "auto",
+      ],
+    },
+    "breakpointCustomizableProps": [
+      "aspectRatio",
+    ],
+    "eventNames": [
+      "like",
+    ],
+    "hasAriaProp": false,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isDelegatingFocus": true,
+    "isExperimental": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "props": {
+      "aspectRatio": "3:4",
+      "description": null,
+      "heading": null,
+      "href": null,
+      "likeButton": true,
+      "liked": false,
+      "price": null,
+      "rel": null,
+      "target": "_self",
+      "theme": "light",
+    },
+    "requiredProps": [
+      "heading",
+      "price",
+      "href",
+    ],
+    "styling": "jss",
+  },
   "p-marque": {
     "allowedPropValues": {
       "aria": {
@@ -2162,10 +2282,6 @@ exports[`should match snapshot 1`] = `
         "root": "string",
       },
       "itemsPerPage": "number",
-      "maxNumberOfPageLinks": [
-        5,
-        7,
-      ],
       "showLastPage": "boolean",
       "theme": [
         "light",
@@ -2174,13 +2290,11 @@ exports[`should match snapshot 1`] = `
       ],
       "totalItemsCount": "number",
     },
-    "breakpointCustomizableProps": [
-      "maxNumberOfPageLinks",
-    ],
     "deprecatedEventNames": [
       "pageChange",
     ],
     "deprecatedProps": [
+      "maxNumberOfPageLinks",
       "allyLabel",
       "allyLabelPrev",
       "allyLabelPage",
@@ -2214,10 +2328,7 @@ exports[`should match snapshot 1`] = `
         "root": "Pagination",
       },
       "itemsPerPage": 1,
-      "maxNumberOfPageLinks": {
-        "base": 5,
-        "xs": 7,
-      },
+      "maxNumberOfPageLinks": null,
       "showLastPage": true,
       "theme": "light",
       "totalItemsCount": 1,
@@ -3358,6 +3469,7 @@ exports[`should match snapshot 1`] = `
         "error",
         "success",
       ],
+      "submitButton": "boolean",
       "theme": [
         "light",
         "dark",
@@ -3411,6 +3523,7 @@ exports[`should match snapshot 1`] = `
       "showCounter": true,
       "showPasswordToggle": true,
       "state": "none",
+      "submitButton": true,
       "theme": "light",
       "unit": null,
       "unitPosition": "prefix",

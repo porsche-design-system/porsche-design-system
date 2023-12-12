@@ -18,7 +18,7 @@ beforeEach(async () => {
 });
 afterEach(async () => await page.close());
 
-const filePath = path.resolve(require.resolve('@porsche-design-system/components-js'), '../../../../public/index.html');
+const filePath = path.resolve(require.resolve('@porsche-design-system/components-js'), '../../../../index.html');
 const fileContent = fs.readFileSync(filePath, 'utf8');
 
 const [, rawOptions] = /<optgroup label="Examples">.*([\s\S]*?)<\/optgroup>/.exec(fileContent) || [];

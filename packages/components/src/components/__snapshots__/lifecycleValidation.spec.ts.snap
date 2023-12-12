@@ -203,6 +203,22 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-flyout-navigation: propTypes with ValidatorFunctions 1`] = `
+{
+  "activeIdentifier": "string",
+  "aria": "aria",
+  "open": "boolean",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-flyout-navigation-item: propTypes with ValidatorFunctions 1`] = `
+{
+  "identifier": "string",
+  "label": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-grid: propTypes with ValidatorFunctions 1`] = `
 {
   "direction": "breakpoint",
@@ -343,6 +359,21 @@ exports[`should call validateProps() with correct parameters via render for p-li
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-link-tile-product: propTypes with ValidatorFunctions 1`] = `
+{
+  "aspectRatio": "breakpoint",
+  "description": "string",
+  "heading": "string",
+  "href": "string",
+  "likeButton": "boolean",
+  "liked": "boolean",
+  "price": "string",
+  "rel": "string",
+  "target": "string",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-marque: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
@@ -408,7 +439,6 @@ exports[`should call validateProps() with correct parameters via render for p-pa
   "allyLabelPrev": "string",
   "intl": "shape",
   "itemsPerPage": "number",
-  "maxNumberOfPageLinks": "breakpoint",
   "showLastPage": "boolean",
   "theme": "oneOf",
   "totalItemsCount": "number",
@@ -624,6 +654,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "showCounter": "boolean",
   "showPasswordToggle": "boolean",
   "state": "oneOf",
+  "submitButton": "boolean",
   "theme": "oneOf",
   "unit": "string",
   "unitPosition": "oneOf",

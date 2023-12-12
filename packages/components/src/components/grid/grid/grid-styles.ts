@@ -12,19 +12,21 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'flex',
-        flex: 'auto',
-        width: 'auto',
-        marginLeft: gutter,
-        marginRight: gutter,
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-        ...mergeDeep(
-          buildResponsiveStyles(direction, (flexDirection: GridDirection) => ({ flexDirection })),
-          buildResponsiveStyles(wrap, (flexWrap: GridWrap) => ({ flexWrap }))
-        ),
-      }),
+        ...addImportantToEachRule({
+          flex: 'auto',
+          width: 'auto',
+          marginLeft: gutter,
+          marginRight: gutter,
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+          ...mergeDeep(
+            buildResponsiveStyles(direction, (flexDirection: GridDirection) => ({ flexDirection })),
+            buildResponsiveStyles(wrap, (flexWrap: GridWrap) => ({ flexWrap }))
+          ),
+        }),
+      },
     },
   });
 };

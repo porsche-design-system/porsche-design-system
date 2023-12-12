@@ -60,6 +60,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+ref={.*?}/g, '') // ref props
         .replace(/\s+onMouseDown={.*?}/g, '') // onMouseDown props
         .replace(/\s+onClick={.*?}/g, '') // onClick props
+        .replace(/\s+onCancel={.*?}/g, '') // onCancel props
         .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
         .replace(/\s+onPaste={.*?}/g, '') // onPaste props
@@ -291,8 +292,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-inline-notification') {
         newFileContent = newFileContent.replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
       } else if (tagName === 'p-pagination') {
-        // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
-        newFileContent = newFileContent.replace(/parsedIntl/g, 'this.props.intl');
+        newFileContent = newFileContent
+          // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
+          .replace(/parsedIntl/g, 'this.props.intl')
+          // transform className objects to string
+          .replace(
+            /className=\{(\{[\S\s]+?})}/g,
+            `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
+          );
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')
@@ -518,6 +525,16 @@ $&`
           );
       } else if (tagName === 'p-pin-code') {
         newFileContent = newFileContent.replace(/value={/, 'defaultValue={'); // fix warning about read-only field
+      } else if (tagName === 'p-flyout-navigation') {
+        newFileContent = newFileContent
+          .replace(/validateActiveIdentifier\(.*\);/g, '')
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
+      } else if (tagName === 'p-flyout-navigation-item') {
+        newFileContent = newFileContent
+          .replace(/: Theme/g, ': any')
+          .replace(/this\.props\.theme(?! \|\|)/g, 'this.theme')
+          .replace(/this\.props\.open(?! \|\|)/g, 'this.open')
+          .replace(/(inert=\{this\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
           .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation
@@ -544,6 +561,11 @@ $&`
           ) // rewire source for linkEl
           .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
           .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
+      } else if (tagName === 'p-link-tile-product') {
+        newFileContent = newFileContent
+          .replace(/LinkTileProductAspectRatio,/, '')
+          .replace(/LinkTileProductLikeEvent,/, '')
+          .replace(/LinkTileProductTarget,/, '');
       }
 
       return newFileContent;

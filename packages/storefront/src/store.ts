@@ -2,9 +2,11 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import {
   type Framework,
+  type PlaygroundDir,
   type PlaygroundTheme,
   type StorefrontTheme,
   FRAMEWORK_TYPES,
+  PLAYGROUND_DIR_TYPES,
   PLAYGROUND_THEME_TYPES,
 } from '@/models';
 
@@ -16,11 +18,15 @@ const sanitizeSelectedFrameworkValue = (value: string | null): Framework =>
 const sanitizePlaygroundThemeValue = (value: string | null): PlaygroundTheme =>
   (PLAYGROUND_THEME_TYPES.includes(value as PlaygroundTheme) ? value : 'light') as PlaygroundTheme;
 
+const sanitizePlaygroundDirValue = (value: string | null): PlaygroundDir =>
+  (PLAYGROUND_DIR_TYPES.includes(value as PlaygroundDir) ? value : 'ltr') as PlaygroundDir;
+
 export type State = {
   isLoading: boolean;
   isMenuActive: boolean;
   isSearchActive: boolean;
   selectedFramework: Framework;
+  playgroundDir: PlaygroundDir;
   playgroundTheme: PlaygroundTheme;
   storefrontTheme: StorefrontTheme;
 };
@@ -30,6 +36,7 @@ const initialState: State = {
   isMenuActive: false,
   isSearchActive: false,
   selectedFramework: sanitizeSelectedFrameworkValue(localStorage.getItem('selectedFramework')),
+  playgroundDir: sanitizePlaygroundDirValue(localStorage.getItem('playgroundDir')),
   playgroundTheme: sanitizePlaygroundThemeValue(localStorage.getItem('playgroundTheme')),
   storefrontTheme: 'auto',
 };
@@ -49,6 +56,10 @@ export default new Vuex.Store({
     setSelectedFramework(state: State, payload: Framework): void {
       localStorage.setItem('selectedFramework', payload);
       state.selectedFramework = payload;
+    },
+    setPlaygroundDir(state: State, payload: PlaygroundDir): void {
+      localStorage.setItem('playgroundDir', payload);
+      state.playgroundDir = payload;
     },
     setPlaygroundTheme(state: State, payload: PlaygroundTheme): void {
       localStorage.setItem('playgroundTheme', payload);
@@ -70,6 +81,9 @@ export default new Vuex.Store({
     },
     selectedFramework(state: State): Framework {
       return state.selectedFramework;
+    },
+    playgroundDir(state: State): PlaygroundDir {
+      return state.playgroundDir;
     },
     playgroundTheme(state: State): PlaygroundTheme {
       return state.playgroundTheme;
