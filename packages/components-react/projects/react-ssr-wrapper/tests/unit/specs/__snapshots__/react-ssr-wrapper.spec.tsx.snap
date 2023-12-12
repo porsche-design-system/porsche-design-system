@@ -4134,6 +4134,7 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
+  align-self: flex-start !important;
   display: block !important;
   text-decoration: none !important;
   cursor: pointer !important;
@@ -4210,7 +4211,6 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
   opacity: 0;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
-  align-items: flex-start;
 }
 @media(min-width:760px) {
   .scroller {
