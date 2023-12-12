@@ -36,6 +36,15 @@ const anchorJssStyle: JssStyle = {
   borderRadius: borderRadiusMedium,
 };
 
+const getMultilineEllipsis = (lineClamp: number): JssStyle => {
+  return {
+    display: '-webkit-box',
+    WebkitLineClamp: lineClamp,
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
+  };
+};
+
 export const getComponentCss = (
   hasLikeButton: boolean,
   hasSlottedAnchor: boolean,
@@ -93,6 +102,7 @@ export const getComponentCss = (
             height: '100%',
             objectFit: 'cover',
             borderRadius: borderRadiusLarge,
+            overflow: 'hidden', // needed for picture > img to have correct border-radius
           },
         },
       }),
@@ -156,14 +166,17 @@ export const getComponentCss = (
     heading: {
       ...headingSmallStyle,
       ...fontHyphenationStyle,
+      ...getMultilineEllipsis(3),
       margin: '0 0 2px',
     },
     price: {
       ...textXSmallStyle,
+      ...getMultilineEllipsis(2),
       margin: 0, // ua-style reset
     },
     description: {
       ...textXXSmallStyle,
+      ...getMultilineEllipsis(2),
       margin: 0, // ua-style reset
       color: contrastHighColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {

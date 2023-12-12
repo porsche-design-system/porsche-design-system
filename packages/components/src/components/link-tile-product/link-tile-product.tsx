@@ -116,7 +116,7 @@ export class LinkTileProduct {
               onClick={this.onLikeClick}
               theme={this.theme}
             >
-              {this.liked ? 'Heart Filled icon' : 'Heart icon'}
+              {this.liked ? 'Remove from wishlist' : 'Add to wishlist'}
             </PrefixedTagNames.pButtonPure>
           )}
         </div>
