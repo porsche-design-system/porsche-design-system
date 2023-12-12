@@ -197,6 +197,10 @@ export const getActiveElementTagName = (page: Page): Promise<string> => {
   return page.evaluate(() => document.activeElement.tagName);
 };
 
+export const getActiveElementProp = (page: Page, prop: string): Promise<string> => {
+  return page.evaluate((prop) => document.activeElement[prop], prop);
+};
+
 type Pseudo = '::before' | '::after' | '::-webkit-search-decoration';
 type GetElementStyleOptions = {
   waitForTransition?: boolean;
