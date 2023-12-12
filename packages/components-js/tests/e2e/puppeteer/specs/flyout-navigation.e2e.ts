@@ -36,8 +36,9 @@ const waitForFlyoutTransition = async () => {
 const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve));
 
 const initBasicFlyoutNavigation = (
-  flyoutNavigationProps: Components.PFlyout = {
+  flyoutNavigationProps: Components.PFlyoutNavigation = {
     open: true,
+    activeIdentifier: undefined,
   },
   items?: {
     amount?: number;
@@ -50,15 +51,16 @@ const initBasicFlyoutNavigation = (
   const { markupBefore = '', markupAfter = '' } = other || {};
   const { amount = 3 } = items || {};
 
+  const navigationItemContent = `<h3>Some heading</h3>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>`;
+
   const flyoutMarkup = `
 <p-flyout-navigation ${getHTMLAttributes(flyoutNavigationProps)}>
-  ${[...Array(amount)].map((_, i) => `<p-flyout-navigation-item identifier="item-${i}">${links}<`)}
-  <p-flyout-navigation-item identifier="item-1">
-    <h3>Some heading</h3>
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
+  ${[...Array(amount)].map(
+    (_, i) => `<p-flyout-navigation-item identifier="item-${i + 1}">${navigationItemContent}</p-flyout-navigation-item>`
+  )}
 </p-flyout-navigation>`;
 
   return setContentWithDesignSystem(page, [markupBefore, flyoutMarkup, markupAfter].filter(Boolean).join('\n'));
@@ -240,58 +242,39 @@ fdescribe('focus behavior', () => {
   it('should have correct focus order in level 1 when level 2 is closed', async () => {
     await initBasicFlyoutNavigation({ open: false });
     await openFlyoutNavigation();
+
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused();
+
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('p-flyout-navigation-item');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
     expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
+    expect(await getActiveElementProp(page, 'identifier')).toBe('item-2');
   });
-  //   it('should have correct focus order when there are focusable elements in header, content, footer and sub-footer', async () => {
-  //     await initAdvancedFlyout();
-  //     await openFlyout();
-  //
-  //     await expectDismissButtonToBeFocused();
-  //     await page.keyboard.press('Tab');
-  //     expect(await getActiveElementId(page)).toBe('btn-header');
-  //     await page.keyboard.press('Tab');
-  //     expect(await getActiveElementId(page)).toBe('btn-content');
-  //     await page.keyboard.press('Tab');
-  //     expect(await getActiveElementId(page)).toBe('btn-footer');
-  //     await page.keyboard.press('Tab');
-  //     expect(await getActiveElementId(page)).toBe('btn-sub-footer');
-  //     await page.keyboard.press('Tab');
-  //     await expectDismissButtonToBeFocused();
-  //   });
-  //
-  //   it('should not allow focusing element behind of flyout when pressing Tab', async () => {
-  //     await initBasicFlyout({ open: false });
-  //     await addButtonsBeforeAndAfterFlyout();
-  //     await openFlyout();
-  //
-  //     await expectDismissButtonToBeFocused();
-  //     await page.keyboard.press('Tab');
-  //     await expectDismissButtonToBeFocused();
-  //     await page.keyboard.press('Tab');
-  //     await expectDismissButtonToBeFocused();
-  //   });
-  //
-  //   it('should not allow focusing element behind of flyout when pressing Shift Tab', async () => {
-  //     await initBasicFlyout({ open: false });
-  //     await addButtonsBeforeAndAfterFlyout();
-  //     await openFlyout();
-  //
-  //     await expectDismissButtonToBeFocused();
-  //     await page.keyboard.down('Shift');
-  //     await page.keyboard.press('Tab');
-  //     await expectDismissButtonToBeFocused();
-  //     await page.keyboard.press('Tab');
-  //     await expectDismissButtonToBeFocused();
-  //   });
-  //
-  //   it('should focus last focused element after flyout is dismissed', async () => {
-  //     await setContentWithDesignSystem(
-  //       page,
-  //       `
+
+  it('should have correct focus order when level 2 is open', async () => {
+    await initBasicFlyoutNavigation({ open: false, activeIdentifier: 'item-1' });
+    await openFlyoutNavigation();
+
+    await page.keyboard.press('Tab');
+    await expectDismissButtonToBeFocused();
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
+    expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('A');
+  });
+
+  // it('should focus last focused element after flyout is dismissed', async () => {
+  //   await initBasicFlyoutNavigation({ open: false });
+  //   await setContentWithDesignSystem(
+  //     page,
+  //     `
   //       <button id="btn-open"></button>
   //       <p-flyout id="flyout">
   //         Some Content
@@ -305,27 +288,27 @@ fdescribe('focus behavior', () => {
   //           flyout.open = false;
   //         });
   //       </script>`
-  //     );
-  //     await waitForStencilLifecycle(page);
+  //   );
+  //   await waitForStencilLifecycle(page);
   //
-  //     expect(await getFlyoutVisibility(), 'initial').toBe('hidden');
-  //     expect(await getActiveElementTagName(page)).toBe('BODY');
+  //   expect(await getFlyoutVisibility(), 'initial').toBe('hidden');
+  //   expect(await getActiveElementTagName(page)).toBe('BODY');
   //
-  //     await (await selectNode(page, '#btn-open')).click();
-  //     await waitForStencilLifecycle(page);
+  //   await (await selectNode(page, '#btn-open')).click();
+  //   await waitForStencilLifecycle(page);
   //
-  //     expect(await getFlyoutVisibility()).toBe('visible');
+  //   expect(await getFlyoutVisibility()).toBe('visible');
   //
-  //     await page.keyboard.press('Escape');
-  //     await waitForStencilLifecycle(page);
+  //   await page.keyboard.press('Escape');
+  //   await waitForStencilLifecycle(page);
   //
-  //     // TODO: why is timeout needed? transition durations should be overwritten with 0s
-  //     // TODO: Check why this is taking so much time?
-  //     await waitForFlyoutTransition(); // Necessary extra time
+  //   // TODO: why is timeout needed? transition durations should be overwritten with 0s
+  //   // TODO: Check why this is taking so much time?
+  //   await waitForFlyoutTransition(); // Necessary extra time
   //
-  //     expect(await getFlyoutVisibility(), 'after escape').toBe('hidden');
-  //     expect(await getActiveElementId(page)).toBe('btn-open');
-  //   });
+  //   expect(await getFlyoutVisibility(), 'after escape').toBe('hidden');
+  //   expect(await getActiveElementId(page)).toBe('btn-open');
+  // });
   //
   //   it('should focus element after flyout when open accordion contains link but flyout is not open', async () => {
   //     await initBasicFlyout(
