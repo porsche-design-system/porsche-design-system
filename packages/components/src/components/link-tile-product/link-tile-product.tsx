@@ -8,7 +8,7 @@ import {
   throwIfInvalidLinkTileProductUsage,
   validateProps,
 } from '../../utils';
-import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { getComponentCss } from './link-tile-product-styles';
 import {
   anchorSlot,
@@ -92,51 +92,49 @@ export class LinkTileProduct {
     const descriptionId = 'description';
 
     return (
-      <Host>
-        <div class="root">
-          <div id={headerId} class="header">
-            <slot name={headerSlot} />
-            {this.likeButton && (
-              <PrefixedTagNames.pButtonPure
-                class="like-button"
-                type="button"
-                icon={this.liked ? 'heart-filled' : 'heart'}
-                hideLabel={true}
-                onClick={this.onLikeClick}
-                theme={this.theme}
-              >
-                {this.liked ? 'Heart Filled icon' : 'Heart icon'}
-              </PrefixedTagNames.pButtonPure>
-            )}
-          </div>
-          <div class="image-container">
-            <slot />
-          </div>
-          <div class="text-container">
-            <h3 id={headingId} class="text text__heading">
-              {this.heading}
-            </h3>
-            <p id={priceId} class="text text__price">
-              {this.price}
-            </p>
-            <p id={descriptionId} class="text text__description">
-              {this.description}
-            </p>
-          </div>
-          {this.href ? (
-            <a
-              class="link-overlay"
-              href={this.href}
-              target={this.target}
-              rel={this.rel}
-              aria-labelledby={`${headingId} ${priceId}`}
-              aria-describedby={`${headerId} ${descriptionId}`}
-            />
-          ) : (
-            <slot name={anchorSlot}></slot>
+      <div class="root">
+        {this.href ? (
+          <a
+            class="anchor"
+            href={this.href}
+            target={this.target}
+            rel={this.rel}
+            aria-labelledby={`${headingId} ${priceId}`}
+            aria-describedby={`${headerId} ${descriptionId}`}
+          />
+        ) : (
+          <slot name={anchorSlot}></slot>
+        )}
+        <div id={headerId} class="header">
+          <slot name={headerSlot} />
+          {this.likeButton && (
+            <PrefixedTagNames.pButtonPure
+              class="button"
+              type="button"
+              icon={this.liked ? 'heart-filled' : 'heart'}
+              hideLabel={true}
+              onClick={this.onLikeClick}
+              theme={this.theme}
+            >
+              {this.liked ? 'Remove from wishlist' : 'Add to wishlist'}
+            </PrefixedTagNames.pButtonPure>
           )}
         </div>
-      </Host>
+        <div class="image">
+          <slot />
+        </div>
+        <div class="wrapper">
+          <h3 id={headingId} class="heading">
+            {this.heading}
+          </h3>
+          <p id={priceId} class="price">
+            {this.price}
+          </p>
+          <p id={descriptionId} class="description">
+            {this.description}
+          </p>
+        </div>
+      </div>
     );
   }
 

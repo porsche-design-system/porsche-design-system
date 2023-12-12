@@ -22,7 +22,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-link-tile-product');
 const getRoot = () => selectNode(page, 'p-link-tile-product >>> .root');
-const getLikeButton = () => selectNode(page, 'p-link-tile-product >>> .like-button');
+const getLikeButton = () => selectNode(page, 'p-link-tile-product >>> .button');
 
 type InitOptions = {
   props?: Components.PLinkTileProduct;
@@ -147,13 +147,13 @@ describe('focus', () => {
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page), 'active element after second tab click').toBe('P-LINK-TILE-PRODUCT');
-    expect(await getActiveElementTagNameInShadowRoot(host), 'active element after second tab click').toBe(
-      'P-BUTTON-PURE'
-    );
+    expect(await getActiveElementTagNameInShadowRoot(host), 'active element after second tab click').toBe('A');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page), 'active element after third tab click').toBe('P-LINK-TILE-PRODUCT');
-    expect(await getActiveElementTagNameInShadowRoot(host), 'active element after third tab click').toBe('A');
+    expect(await getActiveElementTagNameInShadowRoot(host), 'active element after third tab click').toBe(
+      'P-BUTTON-PURE'
+    );
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page), 'active element after fourth tab click').toBe('after');
@@ -181,13 +181,13 @@ describe('focus', () => {
     expect(await getActiveElementId(page), 'active element after first tab click').toBe('before');
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page), 'active element after second tab click').toBe('P-LINK-TILE-PRODUCT');
-    expect(await getActiveElementTagNameInShadowRoot(host), 'active element after second tab click').toBe(
-      'P-BUTTON-PURE'
-    );
+    expect(await getActiveElementTagName(page), 'active element after second tab click').toBe('A');
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page), 'active element after third tab click').toBe('A');
+    expect(await getActiveElementTagName(page), 'active element after third tab click').toBe('P-LINK-TILE-PRODUCT');
+    expect(await getActiveElementTagNameInShadowRoot(host), 'active element after third tab click').toBe(
+      'P-BUTTON-PURE'
+    );
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page), 'active element after fourth tab click').toBe('after');

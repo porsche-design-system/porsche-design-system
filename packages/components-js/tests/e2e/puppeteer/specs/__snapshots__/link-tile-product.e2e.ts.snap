@@ -4,6 +4,11 @@ exports[`accessibility should expose correct initial accessibility tree properti
 {
   "children": [
     {
+      "description": "Add to wishlist",
+      "name": "Some product name 1.199,00 €",
+      "role": "link",
+    },
+    {
       "children": [
         {
           "children": [
@@ -22,7 +27,7 @@ exports[`accessibility should expose correct initial accessibility tree properti
                     {
                       "children": [
                         {
-                          "name": "Heart icon",
+                          "name": "Add to wishlist",
                           "role": "StaticText",
                         },
                       ],
@@ -32,7 +37,7 @@ exports[`accessibility should expose correct initial accessibility tree properti
                   "role": "none",
                 },
               ],
-              "name": "Heart icon",
+              "name": "Add to wishlist",
               "role": "button",
             },
           ],
@@ -79,11 +84,6 @@ exports[`accessibility should expose correct initial accessibility tree properti
         },
       ],
       "role": "none",
-    },
-    {
-      "description": "Heart icon",
-      "name": "Some product name 1.199,00 €",
-      "role": "link",
     },
   ],
   "name": "",

@@ -4121,7 +4121,7 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   color: #010205 !important;
 }
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+  margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -4134,6 +4134,7 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
+  align-self: flex-start !important;
   display: block !important;
   text-decoration: none !important;
   cursor: pointer !important;
@@ -5926,28 +5927,36 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-::slotted(img), ::slotted(picture) {
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  overflow: hidden !important;
-  border-radius: 12px !important;
+slot[name="header"] {
+  display: block;
 }
 ::slotted(a[slot='anchor']) {
   position: absolute !important;
-  border-radius: 8px !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 1 !important;
+  border-radius: 8px !important;
   text-indent: -999999px !important;
+}
+::slotted([slot="header"]) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: clamp(4px, 0.25vw + 3px, 8px) !important;
+}
+::slotted(img), ::slotted(picture) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
 }
 .root {
   display: flex;
   flex-direction: column;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3/4;
   overflow: hidden;
   box-sizing: border-box;
   border-radius: 8px;
@@ -5957,59 +5966,59 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
 }
 .header {
   display: flex;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
   justify-content: space-between;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  align-items: flex-start;
 }
-.header slot[name="header"] {
-  display: block;
-}
-.like-button {
-  height: fit-content;
+.button {
   position: relative;
   z-index: 2;
 }
-.text-container {
+.image {
+  aspect-ratio: 8/9;
+  margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px);
+  overflow: hidden;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   margin: auto;
-}
-.text {
   text-align: center;
-  margin: 0;
 }
-.text__heading {
+.heading {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding-bottom: 2px;
-  min-height: calc(calc(6px + 2.125ex) * 2);
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0 0 2px;
 }
-.text__price, .text__description {
-  font-weight: 400;
-}
-.text__price {
+.price {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
 }
-.text__description {
+.description {
   font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
   color: #535457;
 }
-.image-container {
-  margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px) auto;
-  padding: 0;
-  overflow: hidden;
-  aspect-ratio: 8 / 9;
-  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  max-height: 100%;
-}
 @media(min-width:760px) {
-  .image-container {
+  .image {
     padding: 0 clamp(16px, 1.25vw + 12px, 36px);
   }
 }
@@ -6019,6 +6028,9 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
     <div
       class="root"
     >
+      <slot
+        name="anchor"
+      />
       <div
         class="header"
         id="header"
@@ -6027,7 +6039,7 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
           name="header"
         />
         <p-button-pure
-          class="like-button ssr"
+          class="button ssr"
         >
           <template
             shadowroot="open"
@@ -6158,33 +6170,30 @@ img {
               </span>
             </button>
           </template>
-          Heart icon
+          Add to wishlist
         </p-button-pure>
       </div>
       <div
-        class="image-container"
+        class="image"
       >
         <slot />
       </div>
       <div
-        class="text-container"
+        class="wrapper"
       >
         <h3
-          class="text text__heading"
+          class="heading"
           id="heading"
         />
         <p
-          class="text text__price"
+          class="price"
           id="price"
         />
         <p
-          class="text text__description"
+          class="description"
           id="description"
         />
       </div>
-      <slot
-        name="anchor"
-      />
     </div>
   </template>
   Some child
