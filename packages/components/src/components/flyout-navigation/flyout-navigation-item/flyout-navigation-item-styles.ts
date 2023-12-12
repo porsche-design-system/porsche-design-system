@@ -98,6 +98,7 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
       '::slotted(a)': {
         ...addImportantToEachRule({
           ...textSmallStyle,
+          alignSelf: 'flex-start',
           display: 'block',
           textDecoration: 'none',
           cursor: 'pointer',
@@ -230,6 +231,6 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
         color: primaryColorDark,
       }),
     },
-    content: mergeDeep(getContentJssStyle(), fadeInOutTransition, { alignItems: 'flex-start' }),
+    content: mergeDeep(getContentJssStyle(), fadeInOutTransition),
   });
 };
