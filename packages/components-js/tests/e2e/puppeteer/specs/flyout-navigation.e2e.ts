@@ -1,39 +1,47 @@
 import {
   addEventListener,
+  expectA11yToMatchSnapshot,
   getActiveElementClassNameInShadowRoot,
+  getActiveElementId,
   getActiveElementProp,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
+  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getHTMLAttributes,
+  getLifecycleStatus,
+  getProperty,
+  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
-import { Components } from '@porsche-design-system/components';
+import type { Components } from '@porsche-design-system/components';
 
 let page: Page;
-const CSS_TRANSITION_DURATION = 600; // motionDurationLong
-const flyoutMinWidth = 320;
-
-beforeEach(async () => (page = await browser.newPage()));
+beforeEach(async () => {
+  page = await browser.newPage();
+  // initConsoleObserver(page);
+});
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-flyout-navigation');
 const getFlyoutNavigation = () => selectNode(page, 'p-flyout-navigation >>> dialog');
+const getFlyoutNavigationContent = () => selectNode(page, 'p-flyout-navigation >>> .content');
 const getFlyoutNavigationDismissButton = () => selectNode(page, 'p-flyout-navigation >>> p-button-pure.dismiss');
 const getFlyoutNavigationDismissButtonReal = () =>
   selectNode(page, 'p-flyout-navigation >>> p-button-pure.dismiss >>> button');
-const getBodyStyle = async () => getAttribute(await selectNode(page, 'body'), 'style');
-const getFlyoutVisibility = async () => await getElementStyle(await getFlyoutNavigation(), 'visibility');
-const waitForFlyoutTransition = async () => {
-  await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
-};
-const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve));
+const getFlyoutNavigationVisibility = async () => await getElementStyle(await getFlyoutNavigation(), 'visibility');
+const getFlyoutNavigationItem = (identifier: string) =>
+  selectNode(page, `p-flyout-navigation-item[identifier="${identifier}"]`);
+const getFlyoutNavigationItemScroller = (identifier: string) =>
+  selectNode(page, `p-flyout-navigation-item[identifier="${identifier}"] >>> .scroller`);
+const getFlyoutNavigationItemVisibility = async (identifier: string) =>
+  await getElementStyle(await getFlyoutNavigationItemScroller(identifier), 'visibility');
 
 const initBasicFlyoutNavigation = (
   flyoutNavigationProps: Components.PFlyoutNavigation = {
@@ -51,16 +59,20 @@ const initBasicFlyoutNavigation = (
   const { markupBefore = '', markupAfter = '' } = other || {};
   const { amount = 3 } = items || {};
 
-  const navigationItemContent = `<h3>Some heading</h3>
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>
-    <a href="#some-anchor">Some anchor</a>`;
+  const navigationItemContent = `
+      <h3>Some heading</h3>
+      <a href="#some-anchor">Some anchor</a>
+      <a href="#some-anchor">Some anchor</a>
+      <a href="#some-anchor">Some anchor</a>`;
 
   const flyoutMarkup = `
 <p-flyout-navigation ${getHTMLAttributes(flyoutNavigationProps)}>
-  ${[...Array(amount)].map(
-    (_, i) => `<p-flyout-navigation-item identifier="item-${i + 1}">${navigationItemContent}</p-flyout-navigation-item>`
-  )}
+  ${[...Array(amount)]
+    .map(
+      (_, i) =>
+        `<p-flyout-navigation-item identifier="item-${i + 1}">${navigationItemContent}</p-flyout-navigation-item>`
+    )
+    .join('\n')}
 </p-flyout-navigation>`;
 
   return setContentWithDesignSystem(page, [markupBefore, flyoutMarkup, markupAfter].filter(Boolean).join('\n'));
@@ -106,12 +118,12 @@ const expectDismissButtonToBeFocused = async (failMessage?: string) => {
 it('should render and be visible when open', async () => {
   await initBasicFlyoutNavigation({ open: true });
   expect(await getFlyoutNavigation()).not.toBeNull();
-  expect(await getFlyoutVisibility()).toBe('visible');
+  expect(await getFlyoutNavigationVisibility()).toBe('visible');
 });
 
 it('should not be visible when not open', async () => {
   await initBasicFlyoutNavigation({ open: false });
-  expect(await getFlyoutVisibility()).toBe('hidden');
+  expect(await getFlyoutNavigationVisibility()).toBe('hidden');
 });
 
 it('should be visible after opened', async () => {
@@ -119,7 +131,7 @@ it('should be visible after opened', async () => {
   const host = await getHost();
   await setProperty(host, 'open', true);
 
-  expect(await getFlyoutVisibility()).toBe('visible');
+  expect(await getFlyoutNavigationVisibility()).toBe('visible');
 });
 
 it('should have correct transform when opened and dismissed', async () => {
@@ -142,21 +154,6 @@ it('should have correct transform when opened and dismissed', async () => {
 });
 
 describe('can be dismissed', () => {
-  it('should not be closed if content is scrollable and mousedown is inside area of scroll track', async () => {
-    await initBasicFlyoutNavigation({ open: true }, '<div style="height: 150vh;"></div>');
-
-    await addEventListener(host, 'dismiss');
-    await page.setViewport({ width: 800, height: 600 });
-    await page.mouse.move(784, 300);
-    await page.mouse.down();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
-
-    await page.mouse.up();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
-  });
-
   let host: ElementHandle;
 
   beforeEach(async () => {
@@ -185,19 +182,20 @@ describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
-  // fit('should be closable via backdrop', async () => {
-  //   await page.setViewport({ width: 800, height: 600 });
-  //   await page.mouse.move(799, 599);
-  //   await page.mouse.down();
-  //
-  //   expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(1);
-  //
-  //   await page.mouse.up();
-  //
-  //   expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
-  // });
+  it('should be closable via backdrop', async () => {
+    await page.setViewport({ width: 800, height: 600 });
+    await page.mouse.move(799, 300);
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
+
+    await page.mouse.down();
+    await page.mouse.up();
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(1);
+  });
 
   it('should not be dismissed if mousedown inside flyout', async () => {
+    await page.setViewport({ width: 800, height: 600 });
     await page.mouse.move(5, 5);
     await page.mouse.down();
 
@@ -208,30 +206,19 @@ describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
   });
 
-  // it('should not be dismissed if mousedown inside flyout and mouseup inside backdrop', async () => {
-  //   await page.mouse.move(5, 5);
-  //   await page.mouse.down();
-  //
-  //   expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
-  //
-  //   await page.mouse.move(1000, 400);
-  //   await page.mouse.up();
-  //
-  //   expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
-  // });
-  //
-  // it('should not bubble dismiss event', async () => {
-  //   const body = await selectNode(page, 'body');
-  //   await addEventListener(body, 'dismiss');
-  //   await page.mouse.move(1000, 400);
-  //   await page.mouse.down();
-  //
-  //   expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
-  //   expect((await getEventSummary(body, 'dismiss')).counter).toBe(0);
-  // });
+  it('should not bubble dismiss event', async () => {
+    const body = await selectNode(page, 'body');
+    await addEventListener(body, 'dismiss');
+
+    const dismissBtn = await getFlyoutNavigationDismissButton();
+    await dismissBtn.click();
+
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    expect((await getEventSummary(body, 'dismiss')).counter).toBe(0);
+  });
 });
 
-fdescribe('focus behavior', () => {
+describe('focus behavior', () => {
   it('should focus dismiss button after open', async () => {
     await initBasicFlyoutNavigation({ open: false });
     await openFlyoutNavigation();
@@ -270,395 +257,297 @@ fdescribe('focus behavior', () => {
     expect(await getActiveElementTagName(page)).toBe('A');
   });
 
-  // it('should focus last focused element after flyout is dismissed', async () => {
-  //   await initBasicFlyoutNavigation({ open: false });
-  //   await setContentWithDesignSystem(
-  //     page,
-  //     `
-  //       <button id="btn-open"></button>
-  //       <p-flyout id="flyout">
-  //         Some Content
-  //       </p-flyout>
-  //       <script>
-  //         const flyout = document.getElementById('flyout');
-  //         document.getElementById('btn-open').addEventListener('click', () => {
-  //           flyout.open = true;
-  //         });
-  //         flyout.addEventListener('dismiss', () => {
-  //           flyout.open = false;
-  //         });
-  //       </script>`
-  //   );
-  //   await waitForStencilLifecycle(page);
-  //
-  //   expect(await getFlyoutVisibility(), 'initial').toBe('hidden');
-  //   expect(await getActiveElementTagName(page)).toBe('BODY');
-  //
-  //   await (await selectNode(page, '#btn-open')).click();
-  //   await waitForStencilLifecycle(page);
-  //
-  //   expect(await getFlyoutVisibility()).toBe('visible');
-  //
-  //   await page.keyboard.press('Escape');
-  //   await waitForStencilLifecycle(page);
-  //
-  //   // TODO: why is timeout needed? transition durations should be overwritten with 0s
-  //   // TODO: Check why this is taking so much time?
-  //   await waitForFlyoutTransition(); // Necessary extra time
-  //
-  //   expect(await getFlyoutVisibility(), 'after escape').toBe('hidden');
-  //   expect(await getActiveElementId(page)).toBe('btn-open');
-  // });
-  //
-  //   it('should focus element after flyout when open accordion contains link but flyout is not open', async () => {
-  //     await initBasicFlyout(
-  //       { open: false },
-  //       {
-  //         content: `<p-accordion heading="Some Heading" open="true">
-  //   <a id="inside" href="#inside-flyout">Some anchor inside flyout</a>
-  // </p-accordion>`,
-  //       },
-  //       {
-  //         markupBefore: '<a id="before" href="#before-flyout">Some anchor before flyout</a>',
-  //         markupAfter: '<a id="after" href="#after-flyout">Some anchor after flyout</a>',
-  //       }
-  //     );
-  //
-  //     await page.keyboard.press('Tab');
-  //     expect(await getActiveElementId(page), 'after 1st tab').toBe('before');
-  //
-  //     await page.keyboard.press('Tab');
-  //     await page.waitForFunction(() => document.activeElement === document.querySelector('#after'));
-  //     expect(await getActiveElementId(page), 'after 2nd tab').toBe('after');
-  //   });
+  it('should have correct focus order when level 2 is opened', async () => {
+    await initBasicFlyoutNavigation({ open: false });
+    await openFlyoutNavigation();
+
+    await page.keyboard.press('Tab');
+    await expectDismissButtonToBeFocused();
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
+    expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
+    expect(await getActiveElementProp(page, 'identifier')).toBe('item-2');
+
+    await page.keyboard.press('Enter'); // Open second level
+    await waitForStencilLifecycle(page);
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('A');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('A');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('A');
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
+    expect(await getActiveElementProp(page, 'identifier')).toBe('item-3');
+  });
+
+  it('should focus last focused element after flyout is dismissed', async () => {
+    await initBasicFlyoutNavigation({ open: false }, {}, { markupBefore: '<button id="btn-open"></button>' });
+
+    expect(await getFlyoutNavigationVisibility(), 'initial').toBe('hidden');
+    expect(await getActiveElementTagName(page)).toBe('BODY');
+
+    await page.evaluate(() => {
+      const flyout: any = document.querySelector('p-flyout-navigation');
+      document.getElementById('btn-open').addEventListener('click', () => {
+        flyout.open = true;
+      });
+      flyout.addEventListener('dismiss', () => {
+        flyout.open = false;
+      });
+    });
+
+    await (await selectNode(page, '#btn-open')).click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getFlyoutNavigationVisibility()).toBe('visible');
+
+    await page.keyboard.press('Escape');
+    await waitForStencilLifecycle(page);
+
+    expect(await getFlyoutNavigationVisibility(), 'after escape').toBe('hidden');
+    expect(await getActiveElementId(page)).toBe('btn-open');
+  });
+
+  it('should not focus flyout content when not open', async () => {
+    await initBasicFlyoutNavigation(
+      { open: false },
+      {},
+      { markupBefore: '<button id="btn-before"></button>', markupAfter: '<button id="btn-after"></button>' }
+    );
+    expect(await getActiveElementTagName(page)).toBe('BODY');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('btn-before');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).toBe('btn-after');
+  });
 });
-//
-// describe('after content change', () => {
-//   it('should focus dismiss button again', async () => {
-//     await initAdvancedFlyout();
-//     await openFlyout();
-//     await expectDismissButtonToBeFocused('initially');
-//
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page), 'after 1st tab').toBe('btn-header');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page), 'after 2nd tab').toBe('btn-content');
-//
+
+describe('second level', () => {
+  it('should have hidden second level when no activeIdentifier is set', async () => {
+    await initBasicFlyoutNavigation({ open: false });
+    await openFlyoutNavigation();
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+  });
+
+  it('should have correct second level open when activeIdentifier is set', async () => {
+    await initBasicFlyoutNavigation({ open: false, activeIdentifier: 'item-2' });
+    await openFlyoutNavigation();
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('visible');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+  });
+
+  it('should change to correct second level open when activeIdentifier is changed', async () => {
+    await initBasicFlyoutNavigation({ open: false, activeIdentifier: 'item-2' });
+    await openFlyoutNavigation();
+    const host = await getHost();
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('visible');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+
+    await setProperty(host, 'activeIdentifier', 'item-3');
+    await waitForStencilLifecycle(page);
+
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('visible');
+  });
+
+  it('should open correct second level on Click', async () => {
+    await initBasicFlyoutNavigation({ open: false });
+    await openFlyoutNavigation();
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+
+    const item1 = await getFlyoutNavigationItem('item-1');
+    await item1.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('visible');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+
+    const item3 = await getFlyoutNavigationItem('item-3');
+    await item3.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('visible');
+  });
+
+  it('should open second level on Enter', async () => {
+    await initBasicFlyoutNavigation({ open: false });
+    await openFlyoutNavigation();
+    expect(await getActiveElementTagName(page)).toBe('BODY');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
+    expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('visible');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+  });
+
+  it('should open second level on Space', async () => {
+    await initBasicFlyoutNavigation({ open: false });
+    await openFlyoutNavigation();
+    expect(await getActiveElementTagName(page)).toBe('BODY');
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
+    expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+
+    await page.keyboard.press('Space');
+    await waitForStencilLifecycle(page);
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('visible');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+  });
+});
+
+describe('activeIdentifier', () => {
+  it('should emit update event when activeIdentifier changes by clicking on item', async () => {
+    await initBasicFlyoutNavigation({ open: false, activeIdentifier: 'item-2' });
+    await openFlyoutNavigation();
+    const host = await getHost();
+    await addEventListener(host, 'update');
+
+    expect((await getEventSummary(host, 'update')).counter, 'before activeIdentifier change').toBe(0);
+
+    await (await getFlyoutNavigationItem('item-1')).click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'update')).counter, 'after activeIdentifier change').toBe(1);
+    expect((await getEventSummary(host, 'update')).details, 'after activeIdentifier change').toEqual([
+      { activeIdentifier: 'item-1' },
+    ]);
+  });
+});
+
+// fdescribe('slotted', () => {
+//   it('should show correct second level when flyout-navigation-item with currently activeIdentifier is added', async () => {
+//     await initBasicFlyoutNavigation({ open: true, activeIdentifier: 'item-4' });
 //     const host = await getHost();
-//     await host.evaluate((el) => {
-//       el.innerHTML = '<button id="btn-new">New Button</button>';
-//     });
-//     await waitForSlotChange();
-//     await expectDismissButtonToBeFocused('after slot change');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page), 'after content change 1nd tab').toBe('btn-new');
-//   });
-//
-//   it('should not allow focusing element behind of flyout', async () => {
-//     await initAdvancedFlyout();
-//     await addButtonsBeforeAndAfterFlyout();
-//     await openFlyout();
-//     await expectDismissButtonToBeFocused('initially');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page), 'after 1st tab').toBe('btn-header');
-//
-//     const host = await getHost();
-//     await host.evaluate((el) => {
-//       el.innerHTML = '';
-//     });
-//     await waitForSlotChange();
-//     await expectDismissButtonToBeFocused('after content change');
-//
-//     await page.keyboard.press('Tab');
-//     await expectDismissButtonToBeFocused('after content change 1st tab');
-//
-//     await page.keyboard.press('Tab');
-//     await expectDismissButtonToBeFocused('after content change 2nd tab');
-//   });
-//
-//   it('should correctly focus dismiss button from appended focusable element', async () => {
-//     await initAdvancedFlyout();
-//     await openFlyout();
-//
-//     const host = await getHost();
-//     await host.evaluate((el) => {
-//       const button = document.createElement('button');
-//       button.innerText = 'New Button';
-//       button.id = 'btn-new';
-//       el.append(button);
-//     });
-//     await waitForSlotChange();
-//     await expectDismissButtonToBeFocused('after button appended');
-//
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-header');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-content');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-new');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-footer');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-sub-footer');
-//     await page.keyboard.press('Tab');
-//     await expectDismissButtonToBeFocused('finally');
-//   });
-// });
-//
-// describe('can be controlled via keyboard', () => {
-//   it('should cycle tab events within flyout', async () => {
-//     await initAdvancedFlyout();
-//     await openFlyout();
-//     await expectDismissButtonToBeFocused('initially');
-//
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-header');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-content');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-footer');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-sub-footer');
-//     await page.keyboard.press('Tab');
-//     await expectDismissButtonToBeFocused('finally');
-//   });
-//
-//   it('should reverse cycle tab events within flyout', async () => {
-//     await initAdvancedFlyout();
-//     await openFlyout();
-//     await expectDismissButtonToBeFocused('initially');
-//
-//     await page.keyboard.down('ShiftLeft');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-sub-footer');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-footer');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-content');
-//     await page.keyboard.press('Tab');
-//     expect(await getActiveElementId(page)).toBe('btn-header');
-//     await page.keyboard.press('Tab');
-//     await expectDismissButtonToBeFocused('finally');
-//     await page.keyboard.up('ShiftLeft');
-//   });
-// });
-//
-// it('should open flyout at scroll top position zero when its content is scrollable', async () => {
-//   await initBasicFlyout({ open: true }, { content: '<div style="height: 150vh;"></div>' });
-//
-//   const host = await getHost();
-//   const hostScrollTop = await host.evaluate((el) => el.scrollTop);
-//
-//   expect(hostScrollTop).toBe(0);
-// });
-//
-// describe('scroll lock', () => {
-//   describe('Desktop Browser', () => {
-//     const bodyLockedStyle = 'overflow: hidden;';
-//
-//     it('should prevent page from scrolling when open', async () => {
-//       await initBasicFlyout({ open: false });
-//       expect(await getBodyStyle()).toBe(null);
-//
-//       await openFlyout();
-//       expect(await getBodyStyle()).toBe(bodyLockedStyle);
-//
-//       await setProperty(await getHost(), 'open', false);
-//       await waitForStencilLifecycle(page);
-//       expect(await getBodyStyle()).toBe('');
-//     });
-//
-//     it('should prevent page from scrolling when initially open', async () => {
-//       await initBasicFlyout({ open: true });
-//       expect(await getBodyStyle()).toBe(bodyLockedStyle);
-//     });
-//
-//     it('should remove overflow hidden from body if unmounted', async () => {
-//       await initBasicFlyout({ open: true });
-//       expect(await getBodyStyle()).toBe(bodyLockedStyle);
-//
-//       await page.evaluate(() => {
-//         document.querySelector('p-flyout').remove();
-//       });
-//       await waitForStencilLifecycle(page);
-//
-//       expect(await getBodyStyle()).toBe('');
-//     });
-//   });
-//
-//   describe('iOS Safari', () => {
-//     const bodyLockedStyleIOS = 'top: 0px; overflow-y: scroll; position: fixed;';
-//
-//     it('should prevent page from scrolling when open', async () => {
-//       await page.setUserAgent(
-//         'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-//       );
-//
-//       await initBasicFlyout({ open: false });
-//       expect(await getBodyStyle()).toBe(null);
-//
-//       await openFlyout();
-//       expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
-//
-//       await setProperty(await getHost(), 'open', false);
-//       await waitForStencilLifecycle(page);
-//       expect(await getBodyStyle()).toBe('');
-//     });
-//
-//     it('should not override body styles on prop change', async () => {
-//       await page.setUserAgent(
-//         'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-//       );
-//
-//       await initBasicFlyout({ open: false }, {}, { markupBefore: '<div style="height: 2000px;"></div>' });
-//       expect(await getBodyStyle()).toBe(null);
-//
-//       await page.evaluate(() => {
-//         window.scrollTo(0, 500);
-//       });
-//
-//       await openFlyout();
-//       expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
-//
-//       await setProperty(await getHost(), 'aria', "{'aria-label': 'Other Heading'}");
-//       expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
-//     });
-//
-//     it('should not override body styles on slot change', async () => {
-//       await page.setUserAgent(
-//         'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-//       );
-//       await initBasicFlyout({ open: false }, {}, { markupBefore: '<div style="height: 2000px;"></div>' });
-//       const host = await getHost();
-//       await page.evaluate(() => {
-//         window.scrollTo(0, 500);
-//       });
-//
-//       expect(await getBodyStyle()).toBe(null);
-//
-//       await openFlyout();
-//       expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
-//
-//       await host.evaluate((el) => {
-//         el.innerHTML = '<button id="btn-new">New Button</button>';
-//       });
-//       expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
-//     });
-//
-//     it('should prevent page from scrolling when initially open', async () => {
-//       await page.setUserAgent(
-//         'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-//       );
-//
-//       await initBasicFlyout({ open: true });
-//       expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
-//     });
-//
-//     it('should remove overflowY, top and position styles from body if unmounted', async () => {
-//       await page.setUserAgent(
-//         'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-//       );
-//
-//       await initBasicFlyout({ open: true });
-//       expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
-//
-//       await page.evaluate(() => {
-//         document.querySelector('p-flyout').remove();
-//       });
-//       await waitForStencilLifecycle(page);
-//
-//       expect(await getBodyStyle()).toBe('');
-//     });
-//   });
-// });
-//
-// describe('lifecycle', () => {
-//   it('should work without unnecessary round trips on init', async () => {
-//     await initBasicFlyout();
-//     const status = await getLifecycleStatus(page);
-//
-//     expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
-//     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
-//
-//     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
-//     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-//   });
-//
-//   it('should work without unnecessary round trips after state change', async () => {
-//     await initBasicFlyout();
-//     const host = await getHost();
-//
-//     await setProperty(host, 'open', false);
-//     await waitForStencilLifecycle(page);
-//     const status = await getLifecycleStatus(page);
-//
-//     expect(status.componentDidUpdate['p-flyout'], 'componentDidUpdate: p-flyout').toBe(1);
-//
-//     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
-//     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-//   });
-// });
-//
-// describe('slotted', () => {
-//   it('should set slotted header, footer, sub-footer', async () => {
-//     const headerContent = '<h1>Sticky Heading</h1><p>Sticky header text</p>';
-//     const footerContent = '<button>Footer Button</button>';
-//     const subFooterContent = '<p>Sub Footer Content</p>';
-//     await initBasicFlyout(
-//       { open: true },
-//       {
-//         header: `<div slot="header">${headerContent}</div>`,
-//         footer: `<div slot="footer">${footerContent}</div>`,
-//         subFooter: `<div slot="sub-footer">${subFooterContent}</div>`,
-//       }
-//     );
-//     const header = await getHeader();
-//     const headerSlottedContent = await getHeaderSlottedContent();
-//     expect(await getProperty(header, 'innerHTML')).toMatchInlineSnapshot(
-//       `"<p-button-pure class="dismiss hydrated">Dismiss flyout</p-button-pure><slot name="header"></slot>"`
-//     );
-//     expect(await getProperty(headerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(
-//       `"<h1>Sticky Heading</h1><p>Sticky header text</p>"`
-//     );
-//
-//     const footer = await getFooter();
-//     const footerSlottedContent = await getFooterSlottedContent();
-//     expect(await getProperty(footer, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="footer"></slot>"`);
-//     expect(await getProperty(footerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(
-//       `"<button>Footer Button</button>"`
-//     );
-//
-//     const subFooter = await getSubFooter();
-//     const subFooterSlottedContent = await getSubFooterSlottedContent();
-//     expect(await getProperty(subFooter, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="sub-footer"></slot>"`);
-//     expect(await getProperty(subFooterSlottedContent, 'innerHTML')).toMatchInlineSnapshot(
-//       `"<p>Sub Footer Content</p>"`
-//     );
-//   });
-// });
-//
-// describe('accessibility', () => {
-//   it('should expose correct initial accessibility tree', async () => {
-//     await initBasicFlyout();
-//     const flyout = await getFlyout();
-//
-//     await expectA11yToMatchSnapshot(page, flyout, { interestingOnly: false });
-//   });
-//
-//   it('should not expose accessibility tree if flyout is hidden', async () => {
-//     await initBasicFlyout({ open: false });
-//     const flyout = await getFlyout();
-//
-//     await expectA11yToMatchSnapshot(page, flyout);
-//   });
-//
-//   it('should overwrite aria-label when adding aria prop', async () => {
-//     await initBasicFlyout({ open: false, aria: "{'aria-label': 'Some Heading'}" });
-//     const host = await getHost();
-//     const flyout = await getFlyout();
-//     await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
 //     await waitForStencilLifecycle(page);
 //
-//     expect(await getProperty(flyout, 'ariaLabel')).toBe('Other Heading');
+//     expect(getConsoleErrorsAmount()).toBe(1);
+//
+//     await host.evaluate((el) => {
+//       const newItem = document.createElement('p-flyout-navigation-item');
+//       newItem.setAttribute('active-identifier', 'item-4');
+//       el.appendChild(newItem);
+//     });
+//
+//     await waitForStencilLifecycle(page);
+//     expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+//     expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+//     expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+//     expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('visible');
 //   });
 // });
+
+describe('lifecycle', () => {
+  it('should work without unnecessary round trips on init', async () => {
+    await initBasicFlyoutNavigation();
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-flyout-navigation'], 'componentDidLoad: p-flyout-navigation').toBe(1);
+    expect(status.componentDidLoad['p-flyout-navigation-item'], 'componentDidLoad: p-flyout-navigation-item').toBe(3);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(7); // 3 item buttons + 3 back buttons + 1 dismiss button
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(7);
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(18);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+
+  it('should work without unnecessary round trips after clicking item', async () => {
+    await initBasicFlyoutNavigation();
+    const statusBefore = await getLifecycleStatus(page);
+
+    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(18);
+    expect(statusBefore.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    const item1 = await getFlyoutNavigationItem('item-1');
+    await item1.click();
+    await waitForStencilLifecycle(page);
+
+    const statusAfter = await getLifecycleStatus(page);
+
+    expect(statusAfter.componentDidUpdate['p-flyout-navigation'], 'componentDidUpdate: p-flyout-navigation').toBe(1);
+    expect(
+      statusAfter.componentDidUpdate['p-flyout-navigation-item'],
+      'componentDidUpdate: p-flyout-navigation-item'
+    ).toBe(3);
+    expect(statusAfter.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(1);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+  });
+
+  it('should work without unnecessary round trips after closing flyout', async () => {
+    await initBasicFlyoutNavigation();
+    const statusBefore = await getLifecycleStatus(page);
+
+    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(18);
+    expect(statusBefore.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    await dismissFlyoutNavigation();
+
+    const statusAfter = await getLifecycleStatus(page);
+
+    expect(statusAfter.componentDidUpdate['p-flyout-navigation'], 'componentDidUpdate: p-flyout-navigation').toBe(1);
+    expect(
+      statusAfter.componentDidUpdate['p-flyout-navigation-item'],
+      'componentDidUpdate: p-flyout-navigation-item'
+    ).toBe(3);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
+  });
+});
+
+describe('accessibility', () => {
+  it('should expose correct initial accessibility tree', async () => {
+    await initBasicFlyoutNavigation();
+    const flyout = await getFlyoutNavigation();
+
+    await expectA11yToMatchSnapshot(page, flyout, { interestingOnly: false });
+  });
+
+  it('should not expose accessibility tree if flyout is hidden', async () => {
+    await initBasicFlyoutNavigation({ open: false });
+    const flyout = await getFlyoutNavigation();
+
+    await expectA11yToMatchSnapshot(page, flyout);
+  });
+
+  it('should overwrite aria-label when adding aria prop', async () => {
+    await initBasicFlyoutNavigation({ open: false, aria: "{'aria-label': 'Some Heading'}" });
+    const host = await getHost();
+    const flyoutContent = await getFlyoutNavigationContent();
+    expect(await getProperty(flyoutContent, 'ariaLabel')).toBe('Some Heading');
+
+    await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
+    await waitForStencilLifecycle(page);
+
+    expect(await getProperty(flyoutContent, 'ariaLabel')).toBe('Other Heading');
+  });
+});
