@@ -131,6 +131,8 @@ components.forEach((component) => {
           'tabs',
           'tabs-bar',
           'text-field-wrapper',
+          'textarea-wrapper',
+          'modal',
           'toast',
           'flyout',
           'flyout-navigation',
