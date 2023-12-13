@@ -94,6 +94,32 @@
         >{{ dummyText }}</p-text
       >
     </div>
+
+    <div class="type-fallback">
+      <p-text data-font-family="Porsche Next (Latin)" weight="regular"
+        >The quick brown fox jumps over the lazy dog</p-text
+      >
+      <p-text weight="regular" data-font-family="Porsche Next (Greek & Coptic)"
+        >Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-text
+      >
+      <p-text weight="regular" data-font-family="Porsche Next (Vietnamese)"
+        >Trăm năm trong cõi người ta, chữ tài chữ phận khéo là ghét nhau. Trải qua một cuộc bể dâu, những điều trông
+        thấy mà đau đớn lòng. Lạ gì bỉ sắc tư phong, trời xanh quen với má hồng đánh ghen.</p-text
+      >
+      <p-text weight="regular" data-font-family="Porsche Next (Cyril)"
+        >Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text
+      >
+      <p-text weight="regular" data-font-family="System Fallback Font for Chinese (Heiti SC or SimHei)"
+        >保时捷驾驶体验活动在线销售通用条款与条件</p-text
+      >
+      <p-text weight="regular" data-font-family="System Fallback Font for Japanese (Heiti SC or SimHei)">
+        いろはにほへと ちりぬるを わかよたれそ つねならむ うゐのおくやま けふこえて あさきゆめみし ゑひもせす（ん）
+      </p-text>
+      <p-text weight="regular" data-font-family="System Fallback Font for Korean (Heiti SC or SimHei)"
+        >키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</p-text
+      >
+    </div>
+
     <div class="type-scale">
       <h4>References</h4>
       <ul>
@@ -108,6 +134,21 @@
         <li>
           <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units"
             >ex-unit (x-height of the element's font)</a
+          >
+        </li>
+        <li>
+          <a href="https://www.aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/#solution-2-use-the-ex-unit"
+            >https://www.aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/#solution-2-use-the-ex-unit</a
+          >
+        </li>
+        <li>
+          <a href="https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/"
+            >https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/</a
+          >
+        </li>
+        <li>
+          <a href="https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/"
+            >https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/</a
           >
         </li>
       </ul>
@@ -156,8 +197,39 @@
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
 
+  .type-fallback {
+    padding: $pds-spacing-fluid-medium;
+
+    p-text::before {
+      @include pds-text-xx-small;
+      font-size: 12px;
+      display: block;
+      color: deeppink;
+      content: attr(data-font-family) ' | formula: "Porsche Next","Arial Narrow",Arial,"Heiti SC",SimHei,sans-serif';
+    }
+  }
+
   .type-scale {
     padding: $pds-spacing-fluid-medium;
+
+    p-heading,
+    p-text {
+      &::before {
+        @include pds-text-xx-small;
+        font-size: 12px;
+        display: block;
+        content: '<p-heading size="' attr(size) '"> | font-size: ' attr(data-font-size) ' / line-height: '
+          attr(data-line-height) ' | formula: ' attr(data-font-size-formula) '/' attr(data-line-height-formula) ' | @'
+          attr(data-viewport-width) '';
+        color: deeppink;
+      }
+    }
+
+    p-text::before {
+      content: '<p-text size="' attr(size) '"> | font-size: ' attr(data-font-size) ' / line-height: '
+        attr(data-line-height) ' | formula: ' attr(data-font-size-formula) '/' attr(data-line-height-formula) ' | @'
+        attr(data-viewport-width) '';
+    }
   }
 
   ul {
@@ -166,24 +238,5 @@
 
   p-select-wrapper {
     display: inline-block;
-  }
-
-  p-heading,
-  p-text {
-    &::before {
-      @include pds-text-xx-small;
-      font-size: 12px;
-      display: block;
-      content: '<p-heading size="' attr(size) '"> | font-size: ' attr(data-font-size) ' / line-height: '
-        attr(data-line-height) ' | formula: ' attr(data-font-size-formula) '/' attr(data-line-height-formula) ' | @'
-        attr(data-viewport-width) '';
-      color: deeppink;
-    }
-  }
-
-  p-text::before {
-    content: '<p-text size="' attr(size) '"> | font-size: ' attr(data-font-size) ' / line-height: '
-      attr(data-line-height) ' | formula: ' attr(data-font-size-formula) '/' attr(data-line-height-formula) ' | @'
-      attr(data-viewport-width) '';
   }
 </style>
