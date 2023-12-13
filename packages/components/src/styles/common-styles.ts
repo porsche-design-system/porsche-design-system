@@ -2,12 +2,13 @@ import type { Theme } from '../types';
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
 import type { ThemedColors } from './';
+import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 import {
   borderWidthBase,
   frostedGlassStyle,
+  motionDurationLong,
   motionDurationModerate,
   motionDurationShort,
-  motionDurationLong,
   motionDurationVeryLong,
   motionEasingBase,
   motionEasingIn,
@@ -16,9 +17,9 @@ import {
   themeLightBackgroundShading,
   themeLightStateFocus,
 } from '@porsche-design-system/utilities-v2';
-import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 import { isThemeDark } from '../utils';
 import type * as fromMotionType from '@porsche-design-system/utilities-v2/dist/esm/motion';
+
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
 export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMotionType>;
 type WithoutMotionEasingPrefix<T> = T extends `motionEasing${infer P}` ? Uncapitalize<P> : never;
@@ -154,23 +155,47 @@ export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
 /**
  * Generates JSS styles for a frosted glass background.
  * @param {boolean} isVisible - Determines if the frosted glass effect is visible.
- * @param {Theme} theme - The theme to be used
- * @param {string} timingFn - The timing function of the transition animation. (default: 'cubic-bezier(.16,1,.3,1)')
- * @returns {JssStyle} - The JSS styles for the frosted glass background.
+ * @param {string} duration - The duration of the transition animation.
+ * @param {number} zIndex - The z-index to be used.
+ * @param {Theme} theme - The theme to be used.
+ * @returns {JssStyle} - The JSS styles for the frosted glass backdrop.
  */
-export const getFrostedGlassBackgroundJssStyles = (isVisible: boolean, theme: Theme): JssStyle => ({
-  background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,
-  ...(isVisible
-    ? {
-        opacity: 1,
-        ...frostedGlassStyle,
-      }
-    : {
-        opacity: 0,
-        backdropFilter: 'blur(0px)',
-        WebkitBackdropFilter: 'blur(0px)',
-      }),
-  ...prefersColorSchemeDarkMediaQuery(theme, {
-    background: themeDarkBackgroundShading,
-  }),
-});
+export const getBackdropJssStyle = (
+  isVisible: boolean,
+  duration: MotionDurationKey,
+  zIndex: number,
+  theme: Theme
+): JssStyle => {
+  return {
+    position: 'fixed',
+    ...getInsetJssStyle(),
+    zIndex: zIndex,
+    ...(isVisible
+      ? {
+          visibility: 'visible',
+          pointerEvents: 'auto',
+          ...frostedGlassStyle,
+          // TODO: background shading is missing in getThemedColors(theme).backgroundShading
+          background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: themeDarkBackgroundShading,
+          }),
+        }
+      : {
+          visibility: 'hidden', // element shall not be tabbable after fade out transition has finished
+          pointerEvents: 'none',
+          WebkitBackdropFilter: 'blur(0px)',
+          backdropFilter: 'blur(0px)',
+          background: 'none',
+        }),
+    transition: `${getTransition('background', duration, 'base')}, ${getTransition(
+      'backdrop-filter',
+      duration,
+      'base'
+    )}, ${getTransition(
+      '-webkit-backdrop-filter',
+      duration,
+      'base'
+    )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationLong})`,
+  };
+};

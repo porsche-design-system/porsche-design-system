@@ -1,15 +1,15 @@
 import type { JssStyle } from 'jss';
 import {
-  type MotionDurationKey,
-  motionEasingMap,
   addImportantToEachRule,
   addImportantToRule,
   focusPseudoJssStyle,
+  getBackdropJssStyle,
   getBackfaceVisibilityJssStyle,
-  getFrostedGlassBackgroundJssStyles,
   getHiddenTextJssStyle,
   getInsetJssStyle,
   getTransition,
+  type MotionDurationKey,
+  motionEasingMap,
   pxToRemWithUnit,
 } from './common-styles';
 import type { PropertiesHyphen } from 'csstype';
@@ -145,13 +145,13 @@ describe('getBackfaceVisibilityJssStyle()', () => {
   });
 });
 
-describe('getFrostedGlassBackgroundJssStyles()', () => {
-  it.each<Parameters<typeof getFrostedGlassBackgroundJssStyles>>([
-    [true, 'light'],
-    [false, 'dark'],
-    [true, 'light'],
-    [false, 'dark'],
+describe('getBackdropJssStyle()', () => {
+  it.each<Parameters<typeof getBackdropJssStyle>>([
+    [true, 'short', 9999, 'light'],
+    [false, 'moderate', 9999, 'dark'],
+    [true, 'long', 9999, 'light'],
+    [false, 'veryLong', 9999, 'dark'],
   ])('should return correct JssStyle for isVisible: %s, duration: %s and theme: %s', (...args) => {
-    expect(getFrostedGlassBackgroundJssStyles(...args)).toMatchSnapshot();
+    expect(getBackdropJssStyle(...args)).toMatchSnapshot();
   });
 });

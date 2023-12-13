@@ -4,15 +4,14 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   cssVariableTransitionDuration,
+  getBackdropJssStyle,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
-  type MotionDurationKey,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
 import {
-  frostedGlassStyle,
   getMediaQueryMin,
   motionDurationLong,
   spacingFluidLarge,
@@ -20,8 +19,6 @@ import {
   spacingFluidSmall,
   spacingFluidXSmall,
   spacingStaticSmall,
-  themeDarkBackgroundShading,
-  themeLightBackgroundShading,
 } from '@porsche-design-system/utilities-v2';
 import { FLYOUT_Z_INDEX } from '../../../constants';
 
@@ -56,7 +53,7 @@ export const getComponentCss = (
             [cssVariableVisibility]: 'hidden',
             [cssVariableVisibilityTransitionDuration]: motionDurationLong,
           }),
-          ...getBackdropJssStyle(isPrimaryScrollerVisible, 'long', theme),
+          ...getBackdropJssStyle(isPrimaryScrollerVisible, 'long', FLYOUT_Z_INDEX, theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -180,49 +177,6 @@ export const getComponentCss = (
       },
     },
   });
-};
-
-// TODO: getBackdropJssStyle can be shared with flyout and modal
-/**
- * Generates JSS styles for a frosted glass background.
- * @param {boolean} isVisible - Determines if the frosted glass effect is visible.
- * @param {string} duration - The duration of the transition animation.
- * @param {Theme} theme - The theme to be used
- * @returns {JssStyle} - The JSS styles for the frosted glass backdrop.
- */
-const getBackdropJssStyle = (isVisible: boolean, duration: MotionDurationKey, theme: Theme): JssStyle => {
-  return {
-    position: 'fixed',
-    ...getInsetJssStyle(),
-    zIndex: FLYOUT_Z_INDEX,
-    ...(isVisible
-      ? {
-          visibility: 'visible',
-          pointerEvents: 'auto',
-          ...frostedGlassStyle,
-          // TODO: background shading is missing in getThemedColors(theme).backgroundShading
-          background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: themeDarkBackgroundShading,
-          }),
-        }
-      : {
-          visibility: 'hidden', // element shall not be tabbable after fade out transition has finished
-          pointerEvents: 'none',
-          WebkitBackdropFilter: 'blur(0px)',
-          backdropFilter: 'blur(0px)',
-          background: 'none',
-        }),
-    transition: `${getTransition('background', duration, 'base')}, ${getTransition(
-      'backdrop-filter',
-      duration,
-      'base'
-    )}, ${getTransition(
-      '-webkit-backdrop-filter',
-      duration,
-      'base'
-    )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationLong})`,
-  };
 };
 
 export const getContentJssStyle = (): JssStyle => {
