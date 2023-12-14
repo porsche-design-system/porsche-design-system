@@ -26,7 +26,7 @@ import {
   headingXXLargeStyle,
   motionDurationModerate,
   spacingFluidMedium,
-  spacingFluidXSmall,
+  spacingFluidSmall,
   spacingStaticMedium,
   spacingStaticSmall,
   spacingStaticXSmall,
@@ -130,7 +130,7 @@ export const getComponentCss = (
         ...(hasDescription && {
           [selectorDescription]: {
             maxWidth: '34.375rem',
-            margin: `${spacingFluidXSmall} 0 ${spacingFluidMedium}`,
+            margin: `${spacingFluidSmall} 0 ${spacingFluidMedium}`,
             ...textSmallStyle,
           },
         }),
