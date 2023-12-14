@@ -319,6 +319,7 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
 </p-carousel>
 <p-heading id="target" tag="h2" size="x-large">Next Heading</p-heading>`;
 
+};
 </script>
 
 <style scoped lang="scss">
