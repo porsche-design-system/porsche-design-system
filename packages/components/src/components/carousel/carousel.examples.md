@@ -46,7 +46,7 @@ The `heading` of `p-carousel` can be either set via property or by having a name
 by using the property `headingSize`.
 
 <Playground :markup="headingSizeMarkup" :config="config">
-  <SelectOptions v-model="headingSize" :values="headingSizes" name="headingSize"></SelectOptions>
+  <PlaygroundSelect v-model="headingSize" :values="headingSizes" name="headingSize"></PlaygroundSelect>
 </Playground>
 
 ## Description
