@@ -85,9 +85,9 @@ end are used to visualize it.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { TEXT_SIZES } from '../../utils/typography/text-size';
-import { TEXT_WEIGHTS, TEXT_WEIGHTS_DEPRECATED } from '../../utils/typography/text-weight';
-import { TEXT_COLORS, TEXT_COLORS_DEPRECATED } from '../../utils/typography/text-color';
+import { TEXT_SIZES } from '../../utils/typography/textSize';
+import { TEXT_WEIGHTS, TEXT_WEIGHTS_DEPRECATED } from '../../utils/typography/textWeight';
+import { TEXT_COLORS, TEXT_COLORS_DEPRECATED } from '../../utils/typography/textColor';
 import { TYPOGRAPHY_ALIGNS, TYPOGRAPHY_ALIGNS_DEPRECATED } from '../../utils'; 
 
 const sentence = 'The quick brown fox jumps over the lazy dog';

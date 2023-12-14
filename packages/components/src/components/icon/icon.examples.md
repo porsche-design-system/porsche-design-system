@@ -93,8 +93,8 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { capitalCase } from 'change-case';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import { TEXT_SIZES } from '../../utils/typography/text-size';
-import { TEXT_COLORS_DEPRECATED } from '../../utils/typography/text-color'; 
+import { TEXT_SIZES } from '../../utils/typography/textSize';
+import { TEXT_COLORS_DEPRECATED } from '../../utils/typography/textColor'; 
 import { ICON_COLORS } from './icon-utils';
 
 @Component

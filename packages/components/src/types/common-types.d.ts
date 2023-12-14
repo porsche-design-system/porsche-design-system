@@ -8,9 +8,9 @@ export type { Theme } from '../utils/theme';
 
 export type { TypographyAlign, TypographyAlignDeprecated } from '../utils/typography/typography-align';
 
-export type { TextSize } from '../utils/typography/text-size';
-export type { TextColor, TextColorDeprecated } from '../utils/typography/text-color';
-export type { TextWeight, TextWeightDeprecated } from '../utils/typography/text-weight';
+export type { TextSize } from '../utils/typography/textSize';
+export type { TextColor, TextColorDeprecated } from '../utils/typography/textColor';
+export type { TextWeight, TextWeightDeprecated } from '../utils/typography/textWeight';
 
 export type { IconName } from '@porsche-design-system/icons';
 

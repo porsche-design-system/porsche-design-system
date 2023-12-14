@@ -184,7 +184,7 @@ By setting the `tabindex` attribute to `-1` you can remove the **Link Pure** fro
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { TEXT_SIZES } from '../../utils/typography/text-size';
+import { TEXT_SIZES } from '../../utils/typography/textSize';
 import { ALIGN_LABELS, ALIGN_LABELS_DEPRECATED } from '../../utils'; 
 
 @Component
