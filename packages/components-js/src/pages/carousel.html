@@ -53,6 +53,14 @@
   </p-carousel>
 </div>
 
+<div class="playground light" title="should render carousel with heading xx-large">
+  <p-carousel heading="Heading" heading-size="xx-large">
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+  </p-carousel>
+</div>
+
 <div class="playground light" title="should render carousel with description">
   <p-carousel heading="Heading" description="Description">
     <div>Slide 1</div>
@@ -63,6 +71,15 @@
 
 <div class="playground light" title="should render carousel with slotted heading">
   <p-carousel>
+    <h2 slot="heading">Slotted heading</h2>
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+  </p-carousel>
+</div>
+
+<div class="playground light" title="should render carousel with slotted heading xx-large">
+  <p-carousel heading-size="xx-large">
     <h2 slot="heading">Slotted heading</h2>
     <div>Slide 1</div>
     <div>Slide 2</div>
