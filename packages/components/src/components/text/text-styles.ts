@@ -1,6 +1,12 @@
-import type { BreakpointCustomizable, TextColor, TextSize, TextWeight, Theme } from '../../types';
-import type { TextWeightDeprecated } from './text-weight';
-import type { TextColorDeprecated } from './text-color';
+import type {
+  BreakpointCustomizable,
+  TextColor,
+  TextColorDeprecated,
+  TextSize,
+  TextWeight,
+  TextWeightDeprecated,
+  Theme,
+} from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {

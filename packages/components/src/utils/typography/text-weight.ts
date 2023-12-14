@@ -1,4 +1,3 @@
-// TODO: should be a shared type in shared types folder
 // 'thin' is deprecated and will be mapped to 'regular'
 // 'semibold' is deprecated and will be mapped to 'semi-bold'
 /** @deprecated */

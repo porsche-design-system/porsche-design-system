@@ -1,9 +1,8 @@
 import type { JssStyle } from 'jss';
-import type { TextColor, Theme, TypographyAlign } from '../types';
+import type { TextColor, TextColorDeprecated, Theme, TypographyAlign } from '../types';
 import type { HeadingColor } from '../components/heading/heading-utils';
 import type { HeadlineColor } from '../components/headline/headline-utils';
 import type { DisplayColor } from '../components/display/display-utils';
-import type { TextColorDeprecated } from '../components/text/text-color';
 import { getThemedTypographyColor } from './text-icon-styles';
 import { prefersColorSchemeDarkMediaQuery } from './prefers-color-scheme-dark-media-query';
 

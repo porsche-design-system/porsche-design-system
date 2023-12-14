@@ -1,7 +1,14 @@
-import type { BreakpointCustomizable, PropTypes, TextColor, TextSize, TextWeight, Theme } from '../../types';
+import type {
+  BreakpointCustomizable,
+  PropTypes,
+  TextColor,
+  TextColorDeprecated,
+  TextSize,
+  TextWeight,
+  TextWeightDeprecated,
+  Theme,
+} from '../../types';
 import type { TextTag, TextAlign, TextAlignDeprecated } from './text-utils';
-import type { TextColorDeprecated } from './text-color';
-import type { TextWeightDeprecated } from './text-weight';
 import { getTextTagType, TEXT_TAGS } from './text-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
