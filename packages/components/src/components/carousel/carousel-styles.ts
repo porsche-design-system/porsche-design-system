@@ -122,7 +122,7 @@ export const getComponentCss = (
         ...(hasHeading && {
           [selectorHeading]: {
             maxWidth: '56.25rem',
-            margin: 0, // ua-style reset
+            margin: `0 0 ${!hasDescription ? spacingFluidMedium : 0}`,
             ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
           },
         }),
@@ -130,7 +130,7 @@ export const getComponentCss = (
         ...(hasDescription && {
           [selectorDescription]: {
             maxWidth: '34.375rem',
-            margin: `${spacingFluidXSmall} 0 0`,
+            margin: `${spacingFluidXSmall} 0 ${spacingFluidMedium}`,
             ...textSmallStyle,
           },
         }),
