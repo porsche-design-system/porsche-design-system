@@ -36,6 +36,7 @@ import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, 
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBackground, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
+import { LinkTileProductAspectRatio, LinkTileProductLikeEvent, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -96,6 +97,7 @@ export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, 
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBackground, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
+export { LinkTileProductAspectRatio, LinkTileProductLikeEvent, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
@@ -653,6 +655,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * __Experimental__
+     */
     interface PFlyoutNavigation {
         /**
           * Defines which flyout-navigation-item to be visualized as opened.
@@ -1055,6 +1060,51 @@ export namespace Components {
           * Adapts the font weight of the heading.
          */
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
+    }
+    /**
+     * __Experimental__
+     */
+    interface PLinkTileProduct {
+        /**
+          * Aspect ratio of the link-tile-product.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkTileProductAspectRatio>;
+        /**
+          * Additional product description
+         */
+        "description"?: string;
+        /**
+          * Product heading
+         */
+        "heading": string;
+        /**
+          * href of the `<a>`.
+         */
+        "href"?: string;
+        /**
+          * A Boolean attribute indicating that a like button should be shown.
+         */
+        "likeButton"?: boolean;
+        /**
+          * A Boolean attribute indicating that a product is liked.
+         */
+        "liked"?: boolean;
+        /**
+          * Product price
+         */
+        "price": string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTileProductTarget;
+        /**
+          * Adapts the link-tile-product color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
@@ -1871,6 +1921,10 @@ export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInlineNotificationElement;
 }
+export interface PLinkTileProductCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPLinkTileProductElement;
+}
 export interface PModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPModalElement;
@@ -2084,6 +2138,9 @@ declare global {
         "dismiss": void;
         "update": FlyoutNavigationUpdateEvent;
     }
+    /**
+     * __Experimental__
+     */
     interface HTMLPFlyoutNavigationElement extends Components.PFlyoutNavigation, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPFlyoutNavigationElementEventMap>(type: K, listener: (this: HTMLPFlyoutNavigationElement, ev: PFlyoutNavigationCustomEvent<HTMLPFlyoutNavigationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2193,6 +2250,26 @@ declare global {
     var HTMLPLinkTileModelSignatureElement: {
         prototype: HTMLPLinkTileModelSignatureElement;
         new (): HTMLPLinkTileModelSignatureElement;
+    };
+    interface HTMLPLinkTileProductElementEventMap {
+        "like": LinkTileProductLikeEvent;
+    }
+    /**
+     * __Experimental__
+     */
+    interface HTMLPLinkTileProductElement extends Components.PLinkTileProduct, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPLinkTileProductElementEventMap>(type: K, listener: (this: HTMLPLinkTileProductElement, ev: PLinkTileProductCustomEvent<HTMLPLinkTileProductElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPLinkTileProductElementEventMap>(type: K, listener: (this: HTMLPLinkTileProductElement, ev: PLinkTileProductCustomEvent<HTMLPLinkTileProductElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPLinkTileProductElement: {
+        prototype: HTMLPLinkTileProductElement;
+        new (): HTMLPLinkTileProductElement;
     };
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
@@ -2596,6 +2673,7 @@ declare global {
         "p-link-social": HTMLPLinkSocialElement;
         "p-link-tile": HTMLPLinkTileElement;
         "p-link-tile-model-signature": HTMLPLinkTileModelSignatureElement;
+        "p-link-tile-product": HTMLPLinkTileProductElement;
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-model-signature": HTMLPModelSignatureElement;
@@ -3188,6 +3266,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * __Experimental__
+     */
     interface PFlyoutNavigation {
         /**
           * Defines which flyout-navigation-item to be visualized as opened.
@@ -3606,6 +3687,55 @@ declare namespace LocalJSX {
           * Adapts the font weight of the heading.
          */
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
+    }
+    /**
+     * __Experimental__
+     */
+    interface PLinkTileProduct {
+        /**
+          * Aspect ratio of the link-tile-product.
+         */
+        "aspectRatio"?: BreakpointCustomizable<LinkTileProductAspectRatio>;
+        /**
+          * Additional product description
+         */
+        "description"?: string;
+        /**
+          * Product heading
+         */
+        "heading"?: string;
+        /**
+          * href of the `<a>`.
+         */
+        "href"?: string;
+        /**
+          * A Boolean attribute indicating that a like button should be shown.
+         */
+        "likeButton"?: boolean;
+        /**
+          * A Boolean attribute indicating that a product is liked.
+         */
+        "liked"?: boolean;
+        /**
+          * Emitted when the like button is clicked.
+         */
+        "onLike"?: (event: PLinkTileProductCustomEvent<LinkTileProductLikeEvent>) => void;
+        /**
+          * Product price
+         */
+        "price"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object.
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened.
+         */
+        "target"?: LinkTileProductTarget;
+        /**
+          * Adapts the link-tile-product color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
@@ -4507,6 +4637,7 @@ declare namespace LocalJSX {
         "p-link-social": PLinkSocial;
         "p-link-tile": PLinkTile;
         "p-link-tile-model-signature": PLinkTileModelSignature;
+        "p-link-tile-product": PLinkTileProduct;
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-model-signature": PModelSignature;
@@ -4580,6 +4711,9 @@ declare module "@stencil/core" {
              */
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
             "p-flyout": LocalJSX.PFlyout & JSXBase.HTMLAttributes<HTMLPFlyoutElement>;
+            /**
+             * __Experimental__
+             */
             "p-flyout-navigation": LocalJSX.PFlyoutNavigation & JSXBase.HTMLAttributes<HTMLPFlyoutNavigationElement>;
             "p-flyout-navigation-item": LocalJSX.PFlyoutNavigationItem & JSXBase.HTMLAttributes<HTMLPFlyoutNavigationItemElement>;
             /**
@@ -4605,6 +4739,10 @@ declare module "@stencil/core" {
             "p-link-social": LocalJSX.PLinkSocial & JSXBase.HTMLAttributes<HTMLPLinkSocialElement>;
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
             "p-link-tile-model-signature": LocalJSX.PLinkTileModelSignature & JSXBase.HTMLAttributes<HTMLPLinkTileModelSignatureElement>;
+            /**
+             * __Experimental__
+             */
+            "p-link-tile-product": LocalJSX.PLinkTileProduct & JSXBase.HTMLAttributes<HTMLPLinkTileProductElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
              */

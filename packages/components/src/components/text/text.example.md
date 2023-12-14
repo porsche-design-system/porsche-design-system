@@ -18,7 +18,7 @@ There are predefined fluid text sizes for the text component which should cover 
 is needed, the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ### Responsive
@@ -45,7 +45,7 @@ Predefined colors associated with its theme are available but also inherit mode 
 </Notification>
 
 <Playground :markup="colorMarkup" :config="config">
-  <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
+  <PlaygroundSelect v-model="color" :values="colors" name="color"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -58,7 +58,7 @@ and "semibold".
 </Notification>
 
 <Playground :markup="weightMarkup" :config="config">
-  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
+  <PlaygroundSelect v-model="weight" :values="weights" name="weight"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -70,7 +70,7 @@ and "semibold".
 </Notification>
 
 <Playground :markup="alignMarkup" :config="config">
-  <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
+  <PlaygroundSelect v-model="align" :values="aligns" name="align"></PlaygroundSelect>
 </Playground>
 
 ---

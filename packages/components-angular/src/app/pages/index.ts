@@ -64,6 +64,7 @@ import { LinkPureComponent } from './generated/link-pure.component';
 import { LinkSocialComponent } from './generated/link-social.component';
 import { LinkTileComponent } from './generated/link-tile.component';
 import { LinkTileModelSignatureComponent } from './generated/link-tile-model-signature.component';
+import { LinkTileProductComponent } from './generated/link-tile-product.component';
 import { MarqueComponent } from './generated/marque.component';
 import { ModalComponent } from './generated/modal.component';
 import { ModelSignatureComponent } from './generated/model-signature.component';
@@ -134,6 +135,7 @@ export const generatedPages = [
   LinkSocialComponent,
   LinkTileComponent,
   LinkTileModelSignatureComponent,
+  LinkTileProductComponent,
   MarqueComponent,
   ModalComponent,
   ModelSignatureComponent,
@@ -327,6 +329,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Link Tile Model Signature',
     path: 'link-tile-model-signature',
     component: LinkTileModelSignatureComponent,
+  },
+  {
+    name: 'Link Tile Product',
+    path: 'link-tile-product',
+    component: LinkTileProductComponent,
   },
   {
     name: 'Marque',

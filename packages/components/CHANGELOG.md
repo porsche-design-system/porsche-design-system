@@ -25,6 +25,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Accordion`: Alignment of slotted heading with custom padding ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
 
 
+### [3.10.0-rc.3] - 2023-12-12
+
+### [3.10.0-rc.2] - 2023-12-12
+
+### [3.10.0-rc.1] - 2023-12-11
+
+#### Added
+
+- **[EXPERIMENTAL]** `Link Tile Product`
+  ([#2909](https://github.com/porsche-design-system/porsche-design-system/pull/2909))
+
+#### Fixed
+
+- `Wordmark`, `Crest` and `Marque`: custom clickable area
+  ([#2930](https://github.com/porsche-design-system/porsche-design-system/pull/2930))
+
 ### [3.10.0-rc.0] - 2023-12-07
 
 #### Added

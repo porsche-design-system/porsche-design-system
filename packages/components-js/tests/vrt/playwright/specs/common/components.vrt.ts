@@ -30,7 +30,7 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
 };
 
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(52);
+  expect(components.length).toBe(53);
 });
 
 components.forEach((component) => {
@@ -131,6 +131,8 @@ components.forEach((component) => {
           'tabs',
           'tabs-bar',
           'text-field-wrapper',
+          'textarea-wrapper',
+          'modal',
           'toast',
           'flyout',
           'flyout-navigation',

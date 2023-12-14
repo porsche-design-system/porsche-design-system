@@ -13,7 +13,7 @@ text for screen readers.
 ## Basic example
 
 <Playground :markup="hideLabelMarkup" :config="config">
-  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
+  <PlaygroundSelect v-model="hideLabel" :values="hideLabels" name="hideLabel"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -24,7 +24,7 @@ To ensure the user makes a conscious choice, use `<option></option>` as placehol
 `<option hidden></option>` to enforce a selection.
 
 <Playground :markup="requiredMarkup" :config="config">
-  <SelectOptions v-model="required" :values="requireds" name="required"></SelectOptions>
+  <PlaygroundSelect v-model="required" :values="requireds" name="required"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -48,7 +48,7 @@ first character of the options text.
 ## Dropdown direction
 
 <Playground :markup="dropdownDirectionMarkup" :config="config">
-  <SelectOptions v-model="dropdownDirection" :values="dropdownDirections" name="dropdownDirection"></SelectOptions>
+  <PlaygroundSelect v-model="dropdownDirection" :values="dropdownDirections" name="dropdownDirection"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -86,7 +86,7 @@ changes while this process is performed.
 The `p-select-wrapper` component supports the visualisation of inline validation.
 
 <Playground :markup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
 </Playground>
 
 ---

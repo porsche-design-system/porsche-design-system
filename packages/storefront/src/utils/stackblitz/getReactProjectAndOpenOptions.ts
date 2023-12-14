@@ -13,7 +13,7 @@ import type {
   SharedImportKey,
   ExternalDependency,
 } from '../../utils';
-import type { StackBlitzProjectDependencies } from '../../models';
+import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
 import { initialStyles } from '@/lib/partialResults';
 
 const componentNameRegex = /(export const )[a-zA-Z]+( = \(({[^}]+})?\): JSX.Element => {)/;
@@ -71,9 +71,9 @@ export const getAppTsx = (
   );
 };
 
-export const getIndexHtml = (globalStyles: string) => {
+export const getIndexHtml = (dir: PlaygroundDir, globalStyles: string) => {
   return `<!doctype html>
-<html dir="ltr" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - React</title>
@@ -86,7 +86,7 @@ export const getIndexHtml = (globalStyles: string) => {
       ${globalStyles}
     </style>
   </head>
-  <body>
+  <body dir="${dir}">
     <div id="root"></div>
   </body>
 </html>`;
@@ -146,6 +146,7 @@ export const getDependencies = (
 export const getReactProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (opts) => {
   const {
     markup,
+    dir,
     description,
     title,
     globalStyles,
@@ -159,7 +160,7 @@ export const getReactProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions =
     files: {
       ...porscheDesignSystemBundle,
       'App.tsx': getAppTsx(markup, !!markup.match(componentNameRegex), sharedImportKeys, pdsVersion),
-      'index.html': getIndexHtml(globalStyles),
+      'index.html': getIndexHtml(dir, globalStyles),
       'index.tsx': getIndexTsx(pdsVersion),
       'style.css': '', // empty file seems to be required
     },
