@@ -15,6 +15,7 @@ describe('openInStackBlitz()', () => {
   const sharedOpenInStackBlitzOptions: OpenInStackBlitzOpts = {
     porscheDesignSystemBundle: {},
     markup: 'Some markup',
+    dir: 'ltr',
     theme: 'light',
     framework: 'vanilla-js',
     backgroundColor: 'background-base',
@@ -28,6 +29,7 @@ describe('openInStackBlitz()', () => {
   const sharedFrameworkOptions: StackBlitzFrameworkOpts = {
     porscheDesignSystemBundle: {},
     markup: sharedOpenInStackBlitzOptions.markup,
+    dir: sharedOpenInStackBlitzOptions.dir,
     externalDependencies: sharedOpenInStackBlitzOptions.externalDependencies,
     sharedImportKeys: sharedOpenInStackBlitzOptions.sharedImportKeys,
     title: '',

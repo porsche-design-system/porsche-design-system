@@ -165,6 +165,17 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-link-tile-product',
+      samples: [
+        [
+          componentsJsPath + '/link-tile-product-example.html',
+          componentsAngularPath + '/link-tile-product-example.component.ts',
+          componentsReactPath + '/LinkTileProductExample.tsx',
+          componentsVuePath + '/LinkTileProductExample.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-modal',
       samples: [
         [

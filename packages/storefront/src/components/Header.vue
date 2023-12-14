@@ -101,12 +101,12 @@
   }
 
   .open-menu-button {
-    margin-left: -13px; // compensate alignment because of custom padding
+    margin-inline-start: -13px; // compensate alignment because of custom padding
   }
 
   .github-anchor,
   .cycle-platform-theme {
-    margin-right: -13px; // compensate alignment because of custom padding
+    margin-inline-end: -13px; // compensate alignment because of custom padding
   }
 
   // TODO: maybe conditional rendering would be more advanced

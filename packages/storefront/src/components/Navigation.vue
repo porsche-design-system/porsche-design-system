@@ -16,8 +16,10 @@
           <router-link :to="getRoute(category, page)" v-slot="{ isActive, href, navigate }">
             <p-link-pure :theme="storefrontTheme" icon="none" :active="isActive">
               <a :href="href" @click="navigate"
-                >{{ page }}<span title="deprecated">{{ getDeprecated(category, page) }}</span></a
-              >
+                >{{ page }}
+                <span v-if="isComponentWithProp(category, page, 'isDeprecated')" title="deprecated"> 🚫</span>
+                <span v-if="isComponentWithProp(category, page, 'isExperimental')" title="experimental"> 🧪</span>
+              </a>
             </p-link-pure>
           </router-link>
         </li>
@@ -35,7 +37,7 @@
   import { Route } from 'vue-router';
   import { config as storefrontConfig } from '@/../storefront.config';
   import type { TagName } from '@porsche-design-system/shared';
-  import { getComponentMeta } from '@porsche-design-system/component-meta';
+  import { ComponentMeta, getComponentMeta } from '@porsche-design-system/component-meta';
 
   @Component({
     components: {},
@@ -83,12 +85,8 @@
       this.accordion = { ...this.accordion, [category]: !this.accordion[category] };
     }
 
-    getDeprecated(category: string, page: string): string {
-      if (category === 'Components' && getComponentMeta(('p-' + paramCase(page)) as TagName)?.isDeprecated) {
-        return ' 🚫';
-      } else {
-        return '';
-      }
+    isComponentWithProp(category: string, page: string, prop: keyof ComponentMeta): string {
+      return category === 'Components' && getComponentMeta(('p-' + paramCase(page)) as TagName)?.[prop];
     }
 
     private static category(route: Route): string {

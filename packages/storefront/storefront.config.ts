@@ -197,6 +197,11 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.usage.md')],
       Props: [() => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.props.md')],
     },
+    'Link Tile Product': {
+      Examples: [() => import('@/../../components/src/components/link-tile-product/link-tile-product.examples.md')],
+      Usage: [() => import('@/../../components/src/components/link-tile-product/link-tile-product.usage.md')],
+      Props: [() => import('@/../../components/src/components/link-tile-product/link-tile-product.props.md')],
+    },
     Marque: {
       Examples: [() => import('@/../../components/src/components/marque/marque.examples.md')],
       Usage: [() => import('@/../../components/src/components/marque/marque.usage.md')],

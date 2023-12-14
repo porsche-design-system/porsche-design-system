@@ -44,6 +44,7 @@ import { LinkPurePage } from './generated/LinkPure';
 import { LinkSocialPage } from './generated/LinkSocial';
 import { LinkTilePage } from './generated/LinkTile';
 import { LinkTileModelSignaturePage } from './generated/LinkTileModelSignature';
+import { LinkTileProductPage } from './generated/LinkTileProduct';
 import { MarquePage } from './generated/Marque';
 import { ModalPage } from './generated/Modal';
 import { ModelSignaturePage } from './generated/ModelSignature';
@@ -234,6 +235,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Link Tile Model Signature',
     path: '/link-tile-model-signature',
     element: <LinkTileModelSignaturePage />,
+  },
+  {
+    name: 'Link Tile Product',
+    path: '/link-tile-product',
+    element: <LinkTileProductPage />,
   },
   {
     name: 'Marque',

@@ -5,7 +5,7 @@
       href="https://brand.porsche.com"
       target="_blank"
       icon="external"
-      align-label="left"
+      align-label="start"
     >
       brand.porsche.com
     </p-link-pure>

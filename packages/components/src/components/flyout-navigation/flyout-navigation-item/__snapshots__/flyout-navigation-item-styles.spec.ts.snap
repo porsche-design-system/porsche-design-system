@@ -14,7 +14,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   color: #010205 !important;
 }
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+  margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -27,6 +27,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
+  align-self: flex-start !important;
   display: block !important;
   text-decoration: none !important;
   cursor: pointer !important;
@@ -184,7 +185,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   color: #FBFCFF !important;
 }
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+  margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -197,6 +198,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
+  align-self: flex-start !important;
   display: block !important;
   text-decoration: none !important;
   cursor: pointer !important;
@@ -318,7 +320,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   color: #010205 !important;
 }
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+  margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -331,6 +333,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
+  align-self: flex-start !important;
   display: block !important;
   text-decoration: none !important;
   cursor: pointer !important;
@@ -452,7 +455,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   color: #010205 !important;
 }
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+  margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -465,6 +468,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
+  align-self: flex-start !important;
   display: block !important;
   text-decoration: none !important;
   cursor: pointer !important;
@@ -620,7 +624,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   color: #FBFCFF !important;
 }
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+  margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -633,6 +637,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
+  align-self: flex-start !important;
   display: block !important;
   text-decoration: none !important;
   cursor: pointer !important;
@@ -752,7 +757,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   color: #010205 !important;
 }
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
-  margin: clamp(8px, 0.5vw + 6px, 16px) 0 0 !important;
+  margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -765,6 +770,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: auto !important;
+  align-self: flex-start !important;
   display: block !important;
   text-decoration: none !important;
   cursor: pointer !important;

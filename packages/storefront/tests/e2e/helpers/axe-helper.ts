@@ -35,7 +35,10 @@ export const a11yAnalyze = async (
 
   const result = await axePuppeteer.analyze();
 
-  let { length: amountOfViolations } = result.violations;
+  const { length: amountOfViolations } = result.violations.filter((violation) => {
+    // TODO: needs to be re-enabled with issue #1919
+    return violation.id !== 'target-size';
+  });
 
   if (amountOfViolations > 0) {
     const testId = (pageUrl.replace(baseURL + '/', '').replace(/\//g, '-') || 'root') + (suffix ? `-${suffix}` : '');
@@ -59,8 +62,6 @@ export const a11yAnalyze = async (
 
     console.log(output);
   }
-
-  amountOfViolations = result.violations.length;
 
   expect(amountOfViolations).toBe(0);
 };

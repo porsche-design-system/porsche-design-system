@@ -40,7 +40,7 @@ The component takes its height from the width provided and places the image via 
 can change the height by using different aspect ratios.
 
 <Playground :markup="aspectRatioMarkup">
-  <SelectOptions v-model="aspectRatio" :values="aspectRatios" name="aspectRatio"></SelectOptions>
+  <PlaygroundSelect v-model="aspectRatio" :values="aspectRatios" name="aspectRatio"></PlaygroundSelect>
 </Playground>
 
 ## Size
@@ -48,7 +48,7 @@ can change the height by using different aspect ratios.
 The `size` property changes the font size of the description.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ## Weight
@@ -61,7 +61,7 @@ The `weight` property changes the font weight of the description.
 </Notification>
 
 <Playground :markup="weightMarkup" :config="config">
-  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
+  <PlaygroundSelect v-model="weight" :values="weights" name="weight"></PlaygroundSelect>
 </Playground>
 
 ## Gradient
@@ -72,7 +72,7 @@ underlying image provides enough contrast, you can choose to disable the gradien
 **Note:** When disabling the gradient, it must be ensured that the contrast values are accessibility compliant.
 
 <Playground :markup="gradientMarkup" :config="config">
-  <SelectOptions v-model="gradient" :values="gradients" name="gradient"></SelectOptions>
+  <PlaygroundSelect v-model="gradient" :values="gradients" name="gradient"></PlaygroundSelect>
 </Playground>
 
 ## Background
@@ -82,7 +82,7 @@ enough contrast, you can choose to set `background="light"`. The component is no
 the property is set to `background="light"`, the gradient is disabled.
 
 <Playground :markup="backgroundMarkup" :config="config">
-  <SelectOptions v-model="background" :values="backgrounds" name="background"></SelectOptions>
+  <PlaygroundSelect v-model="background" :values="backgrounds" name="background"></PlaygroundSelect>
 </Playground>
 
 ## Compact
@@ -90,7 +90,7 @@ the property is set to `background="light"`, the gradient is disabled.
 The `label` property stays mandatory when using `compact`, for **accessibility** reasons.
 
 <Playground :markup="compactMarkup">
-  <SelectOptions v-model="compact" :values="compacts" name="compact"></SelectOptions>
+  <PlaygroundSelect v-model="compact" :values="compacts" name="compact"></PlaygroundSelect>
 </Playground>
 
 ## Alignment
@@ -100,7 +100,7 @@ It is possible to align the description on top of the component.
 **Note:** This is only possible in combination with `compact="true"`
 
 <Playground :markup="alignMarkup">
-  <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
+  <PlaygroundSelect v-model="align" :values="aligns" name="align"></PlaygroundSelect>
 </Playground>
 
 ## Hyphens
@@ -111,7 +111,7 @@ to set the appropriate lang attribute on your HTML element to ensure that hyphen
 language.
 
 <Playground :markup="hyphenMarkup">
-  <SelectOptions v-model="hyphen" :values="hyphens" name="hyphens"></SelectOptions>
+  <PlaygroundSelect v-model="hyphen" :values="hyphens" name="hyphens"></PlaygroundSelect>
 </Playground>
 
 <script lang="ts">

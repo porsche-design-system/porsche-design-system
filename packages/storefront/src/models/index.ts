@@ -3,6 +3,7 @@ export * from './backgroundColor';
 export * from './framework';
 export * from './storefrontConfig';
 export * from './theme';
+export * from './dir';
 export type {
   Project as StackBlitzProject,
   ProjectDependencies as StackBlitzProjectDependencies,

@@ -21,7 +21,9 @@ import {
   motionDurationShort,
   motionEasingBase,
   spacingFluidLarge,
+  spacingFluidMedium,
   spacingFluidSmall,
+  spacingFluidXSmall,
   spacingStaticXSmall,
   textSmallStyle,
   type Theme,
@@ -82,7 +84,7 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
         }),
       }),
       '::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child))': addImportantToEachRule({
-        margin: `${spacingFluidSmall} 0 0`,
+        margin: `calc(${spacingFluidMedium} - ${spacingFluidXSmall}) 0 0`, // spacingFluidXSmall to compensate default gap
       }),
       '::slotted(p)': addImportantToEachRule({
         ...textSmallStyle,
@@ -96,6 +98,7 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
       '::slotted(a)': {
         ...addImportantToEachRule({
           ...textSmallStyle,
+          alignSelf: 'flex-start',
           display: 'block',
           textDecoration: 'none',
           cursor: 'pointer',

@@ -12,6 +12,7 @@ import { FlyoutNavigationExampleActiveIdentifierComponent } from './flyout-navig
 import { FlyoutNavigationExampleCustomContentComponent } from './flyout-navigation-example-custom-content.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
+import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
 import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
 import { MultiSelectExampleComponent } from './multi-select-example.component';
 import { MultiSelectExampleControlledComponent } from './multi-select-example-controlled.component';
@@ -47,6 +48,7 @@ export const examples = [
   FlyoutNavigationExampleCustomContentComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
+  LinkTileProductExampleComponent,
   ModalExampleAccessibilityComponent,
   MultiSelectExampleComponent,
   MultiSelectExampleControlledComponent,
@@ -82,6 +84,7 @@ export * from './flyout-navigation-example-active-identifier.component';
 export * from './flyout-navigation-example-custom-content.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
+export * from './link-tile-product-example.component';
 export * from './modal-example-accessibility.component';
 export * from './multi-select-example.component';
 export * from './multi-select-example-controlled.component';
