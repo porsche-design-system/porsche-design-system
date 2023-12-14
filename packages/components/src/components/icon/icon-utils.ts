@@ -1,6 +1,6 @@
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import type { IconName, TextSize } from '../../types';
-import { TEXT_COLORS, type TextColorDeprecated } from '../text/text-color';
+import type { IconName, TextColorDeprecated, TextSize } from '../../types';
+import { TEXT_COLORS } from '../../utils/typography/text-color';
 import { getCDNBaseURL } from '../../utils';
 
 export const ICON_ARIA_ATTRIBUTES = ['aria-label'] as const;

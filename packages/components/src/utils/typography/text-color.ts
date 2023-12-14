@@ -1,4 +1,3 @@
-// TODO: should be a shared type in shared types folder
 /** @deprecated */
 export const TEXT_COLORS_DEPRECATED = [
   'brand', // deprecated

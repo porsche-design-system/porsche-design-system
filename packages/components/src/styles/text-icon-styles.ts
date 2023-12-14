@@ -1,6 +1,5 @@
 import type { Theme } from '@porsche-design-system/utilities-v2';
-import type { TextColor } from '../types';
-import type { TextColorDeprecated } from '../components/text/text-color';
+import type { TextColor, TextColorDeprecated } from '../types';
 import type { HeadingColor } from '../components/heading/heading-utils';
 import type { HeadlineColor } from '../components/headline/headline-utils';
 import type { DisplayColor } from '../components/display/display-utils';

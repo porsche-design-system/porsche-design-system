@@ -8,10 +8,9 @@ export type { Theme } from '../utils/theme';
 
 export type { TypographyAlign, TypographyAlignDeprecated } from '../utils/typography/typography-align';
 
-// TODO: we shouldn't re-export component specific types
-export type { TextSize } from '../components/text/text-size';
-export type { TextColor } from '../components/text/text-color';
-export type { TextWeight } from '../components/text/text-weight';
+export type { TextSize } from '../utils/typography/text-size';
+export type { TextColor, TextColorDeprecated } from '../utils/typography/text-color';
+export type { TextWeight, TextWeightDeprecated } from '../utils/typography/text-weight';
 
 export type { IconName } from '@porsche-design-system/icons';
 
