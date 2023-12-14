@@ -1,20 +1,157 @@
 <template>
   <div class="main-app">
     <div class="type-scale">
-      <p-headline ref="largeTitle" variant="large-title">{{ dummyHeading }}</p-headline>
-      <p-headline ref="headline1" variant="headline-1">{{ dummyHeading }}verhaftet.</p-headline>
-      <p-headline ref="headline2" variant="headline-2">{{ dummyHeading }}</p-headline>
-      <p-headline ref="headline3" variant="headline-3">{{ dummyHeading }}</p-headline>
-      <p-headline ref="headline4" variant="headline-4">{{ dummyHeading }}</p-headline>
-      <p-headline ref="headline5" variant="headline-5">{{ dummyHeading }}</p-headline>
-      <p-headline ref="headlineInherit" variant="inherit" style="font-size: 50px">{{ dummyHeading }}</p-headline>
+      <p-select-wrapper
+        label="Choose base font-size"
+        description="Can be changed in browser settings by default (e.g. chrome://settings/fonts)"
+      >
+        <select name="font-size" v-model="fontSize">
+          <option :value="100">100% (16px)</option>
+          <option :value="150">150% (24px)</option>
+          <option :value="200">200% (32px)</option>
+        </select>
+      </p-select-wrapper>
+    </div>
+    <div class="type-scale">
+      <p-heading
+        ref="headingXXLarge"
+        size="xx-large"
+        data-font-size-formula="clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)"
+        data-line-height-formula="calc(6px + 2.125ex)"
+        >{{ dummyHeading }}</p-heading
+      >
+      <p-heading
+        ref="headingXLarge"
+        size="x-large"
+        data-font-size-formula="clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)"
+        data-line-height-formula="calc(6px + 2.125ex)"
+        >{{ dummyHeading }}</p-heading
+      >
+      <p-heading
+        ref="headingLarge"
+        size="large"
+        data-font-size-formula="clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)"
+        data-line-height-formula="calc(6px + 2.125ex)"
+        >{{ dummyHeading }}</p-heading
+      >
+      <p-heading
+        ref="headingMedium"
+        size="medium"
+        data-font-size-formula="clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)"
+        data-line-height-formula="calc(6px + 2.125ex)"
+        >{{ dummyHeading }}</p-heading
+      >
+      <p-heading
+        ref="headingSmall"
+        size="small"
+        data-font-size-formula="1rem"
+        data-line-height-formula="calc(6px + 2.125ex)"
+        >{{ dummyHeading }}</p-heading
+      >
+    </div>
 
-      <p-text ref="textXSmall" size="x-small">{{ dummyText }}</p-text>
-      <p-text ref="textSmall" size="small">{{ dummyText }}</p-text>
-      <p-text ref="textMedium" size="medium">{{ dummyText }}</p-text>
-      <p-text ref="textLarge" size="large">{{ dummyText }}</p-text>
-      <p-text ref="textXLarge" size="x-large">{{ dummyText }}</p-text>
-      <p-text ref="textInherit" size="inherit" style="font-size: 50px">{{ dummyText }}</p-text>
+    <div class="type-scale">
+      <p-text
+        ref="textXLarge"
+        size="x-large"
+        data-font-size-formula="clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)"
+        data-line-height-formula="calc(6px + 2.125ex)"
+        >{{ dummyText }}</p-text
+      >
+      <p-text
+        ref="textLarge"
+        size="large"
+        data-font-size-formula="clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)"
+        data-line-height-formula="calc(6px + 2.125ex)"
+        >{{ dummyText }}</p-text
+      >
+      <p-text
+        ref="textMedium"
+        size="medium"
+        data-font-size-formula="clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)"
+        data-line-height-formula="calc(6px + 2.125ex)"
+        >{{ dummyText }}</p-text
+      >
+      <p-text
+        ref="textSmall"
+        size="small"
+        data-font-size-formula="1rem"
+        data-line-height-formula="calc(6px + 2.125ex)"
+        >{{ dummyText }}</p-text
+      >
+      <p-text
+        ref="textXSmall"
+        size="x-small"
+        data-font-size-formula="clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)"
+        data-line-height-formula="calc(6px + 2.125ex)"
+        >{{ dummyText }}</p-text
+      >
+      <p-text
+        ref="textXXSmall"
+        size="xx-small"
+        data-font-size-formula=".75rem"
+        data-line-height-formula="calc(6px + 2.125ex)"
+        >{{ dummyText }}</p-text
+      >
+    </div>
+
+    <div class="type-fallback">
+      <p-text data-font-family="Porsche Next (Latin)" weight="regular"
+        >The quick brown fox jumps over the lazy dog</p-text
+      >
+      <p-text weight="regular" data-font-family="Porsche Next (Greek & Coptic)"
+        >Ταχίστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός</p-text
+      >
+      <p-text weight="regular" data-font-family="Porsche Next (Vietnamese)"
+        >Trăm năm trong cõi người ta, chữ tài chữ phận khéo là ghét nhau. Trải qua một cuộc bể dâu, những điều trông
+        thấy mà đau đớn lòng. Lạ gì bỉ sắc tư phong, trời xanh quen với má hồng đánh ghen.</p-text
+      >
+      <p-text weight="regular" data-font-family="Porsche Next (Cyril)"
+        >Эх, чужак, общий съём цен шляп (юфть) – вдрызг!</p-text
+      >
+      <p-text weight="regular" data-font-family="System Fallback Font for Chinese (Heiti SC or SimHei)"
+        >保时捷驾驶体验活动在线销售通用条款与条件</p-text
+      >
+      <p-text weight="regular" data-font-family="System Fallback Font for Japanese (Heiti SC or SimHei)">
+        いろはにほへと ちりぬるを わかよたれそ つねならむ うゐのおくやま けふこえて あさきゆめみし ゑひもせす（ん）
+      </p-text>
+      <p-text weight="regular" data-font-family="System Fallback Font for Korean (Heiti SC or SimHei)"
+        >키스의 고유조건은 입술끼리 만나야 하고 특별한 기술은 필요치 않다</p-text
+      >
+    </div>
+
+    <div class="type-scale">
+      <h4>References</h4>
+      <ul>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp">CSS clamp()</a>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units"
+            >rem-unit (font size of the root element)</a
+          >
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units"
+            >ex-unit (x-height of the element's font)</a
+          >
+        </li>
+        <li>
+          <a href="https://www.aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/#solution-2-use-the-ex-unit"
+            >https://www.aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/#solution-2-use-the-ex-unit</a
+          >
+        </li>
+        <li>
+          <a href="https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/"
+            >https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/</a
+          >
+        </li>
+        <li>
+          <a href="https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/"
+            >https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/</a
+          >
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -26,15 +163,18 @@
 
   @Component
   export default class ExampleTypeScale extends Vue {
-    public dummyHeading =
-      'Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens verhaftet.';
-    public dummyText =
-      'Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens verhaftet. »Wie ein Hund!« sagte er, es war, als sollte die Scham ihn überleben. Als Gregor Samsa eines Morgens aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.';
+    public dummyHeading = 'The quick brown fox jumps over the lazy dog';
+    public dummyText = 'The quick brown fox jumps over the lazy dog';
+    public fontSize = 100;
 
     async mounted(): Promise<void> {
       await componentsReady();
       this.setTypeScaleInfoOnRefs();
       window.addEventListener('resize', this.setTypeScaleInfoOnRefs);
+    }
+
+    beforeUpdate(): void {
+      (document.querySelector('html') as HTMLElement).style.fontSize = this.fontSize + '%';
     }
 
     unmounted() {
@@ -57,34 +197,46 @@
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
 
-  .type-scale {
-    @include pds-grid;
-    > * {
-      grid-column: 2 / span 14;
-    }
-    @include pds-media-query-min('l') {
-      > :nth-child(odd) {
-        grid-column: 2 / span 7;
-      }
-      > :nth-child(even) {
-        grid-column: 9 / span 7;
-      }
-    }
-  }
+  .type-fallback {
+    padding: $pds-spacing-fluid-medium;
 
-  p-headline,
-  p-text {
-    &::before {
-      @include pds-text-x-small;
+    p-text::before {
+      @include pds-text-xx-small;
+      font-size: 12px;
       display: block;
-      content: 'p-headline - variant: "' attr(variant) '" | ' attr(data-font-size) '/' attr(data-line-height) ' | '
-        attr(data-viewport-width) '';
       color: deeppink;
+      content: attr(data-font-family) ' | formula: "Porsche Next","Arial Narrow",Arial,"Heiti SC",SimHei,sans-serif';
     }
   }
 
-  p-text::before {
-    content: 'p-text - size: "' attr(size) '" | ' attr(data-font-size) '/' attr(data-line-height) ' | '
-      attr(data-viewport-width) '';
+  .type-scale {
+    padding: $pds-spacing-fluid-medium;
+
+    p-heading,
+    p-text {
+      &::before {
+        @include pds-text-xx-small;
+        font-size: 12px;
+        display: block;
+        content: '<p-heading size="' attr(size) '"> | font-size: ' attr(data-font-size) ' / line-height: '
+          attr(data-line-height) ' | formula: ' attr(data-font-size-formula) '/' attr(data-line-height-formula) ' | @'
+          attr(data-viewport-width) '';
+        color: deeppink;
+      }
+    }
+
+    p-text::before {
+      content: '<p-text size="' attr(size) '"> | font-size: ' attr(data-font-size) ' / line-height: '
+        attr(data-line-height) ' | formula: ' attr(data-font-size-formula) '/' attr(data-line-height-formula) ' | @'
+        attr(data-viewport-width) '';
+    }
+  }
+
+  ul {
+    margin-left: $pds-spacing-fluid-medium;
+  }
+
+  p-select-wrapper {
+    display: inline-block;
   }
 </style>
