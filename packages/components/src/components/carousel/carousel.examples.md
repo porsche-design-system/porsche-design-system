@@ -188,37 +188,6 @@ over all carousel entries. The skip link is only visible when it receives focus 
 
 <Playground :markup="skip" :config="config"></Playground>
 
-## Pattern with custom heading and description
-
-In the near future: `p-carousel` does not offer a slotted heading or description since it can easily be placed above the
-`p-carousel` component in form of a pattern.
-
-```scss
-.custom-header {
-  display: flex;
-  gap: $pds-spacing-fluid-medium;
-  flex-direction: column;
-
-  & div {
-    padding: 0 $pds-grid-basic-offset-base;
-
-    @include pds-media-query-min('s') {
-      padding: 0 $pds-grid-basic-offset-s;
-    }
-
-    @include pds-media-query-min('xxl') {
-      padding: 0 $pds-grid-basic-offset-xxl;
-    }
-
-    & p-text {
-      margin: $pds-spacing-static-x-small 0 0;
-    }
-  }
-}
-```
-
-<Playground :markup="pattern" :config="config"></Playground>
-
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
@@ -350,17 +319,6 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
 </p-carousel>
 <p-heading id="target" tag="h2" size="x-large">Next Heading</p-heading>`;
 
-pattern = `<div class="custom-header">
-  <div>
-    <p-heading id="target" tag="h2" size="x-large">Some Heading</p-heading>
-    <p-text size="small">Some Description</p-text>
-  </div>
-  <p-carousel>
-    ${this.getSlides(3, '\n    ')}
-  </p-carousel>
-</div>`;
-};
-
 </script>
 
 <style scoped lang="scss">
@@ -387,30 +345,7 @@ pattern = `<div class="custom-header">
     }
   }
 
-  :deep(.custom-header) {
-    display: flex;
-    gap: $pds-spacing-fluid-medium;
-    flex-direction: column;
-
-    & div {
-      padding: 0 $pds-grid-basic-offset-base;
-
-      @include pds-media-query-min('s') {
-        padding: 0 $pds-grid-basic-offset-s;
-      }
-
-      @include pds-media-query-min('xxl') {
-        padding: 0 $pds-grid-basic-offset-xxl;
-      }
-
-      & p-text{
-        margin: $pds-spacing-static-x-small 0 0;
-      }
-    }
-  }
-
   :deep(.demo) {
     width: 100%
   }
-
 </style>
