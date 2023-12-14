@@ -2938,19 +2938,12 @@ exports[`should render dsr component for PCarousel 1`] = `
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted([slot=header]) {
+. {
+  grid-column: 1/-1 !important;
   color: #010205 !important;
-  align-self: center !important;
 }
-@media(min-width:760px) {
-  ::slotted([slot=header]) {
-    grid-column: 1 / 2 !important;
-  }
-}
-
 .header {
   display: grid;
-  grid-template-rows: auto;
   padding: 0 max(22px, 10.625vw - 12px);
 }
 .nav {
@@ -3028,19 +3021,16 @@ exports[`should render dsr component for PCarousel 1`] = `
 }
 @media(min-width:760px) {
   .header {
-    font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    font-size: 1rem;
+    grid-template-columns: minmax(0px, 1fr) auto;
     column-gap: 16px;
-    grid-template-columns: minmax(0px, 1fr) calc(calc(8px * 2 + calc(6px + 2.125ex)) * 3 + 4px + 2px);
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
+    grid-row-start: 3;
+    grid-column-end: -1;
     display: flex;
     gap: 4px;
-    grid-area: 1 / 2 / 3 / auto;
-    align-items: end;
-    justify-content: end;
-    justify-self: end;
+    align-self: flex-start;
   }
   .splide__track {
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
