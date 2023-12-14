@@ -68,8 +68,6 @@ exports[`should have no basic DOM regression for p-button-tile 1`] = `
 
 exports[`should have no basic DOM regression for p-carousel 1`] = `
 "<div class="header">
-  <slot name="heading">
-  </slot>
   <div class="nav">
   </div>
 </div>

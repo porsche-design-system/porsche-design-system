@@ -5,14 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextColor, TextSize, TextWeight, Theme } from "./types";
+import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextColor, TextSize, TextWeight, Theme } from "./types";
 import { AccordionSize, AccordionTag, AccordionUpdateEvent } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-import { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
+import { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -27,7 +27,7 @@ import { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEvent } from "./co
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 import { HeadingTag } from "./components/heading/heading-tag";
-import { HeadingAlign, HeadingColor, HeadingSize } from "./components/heading/heading-utils";
+import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
@@ -66,14 +66,14 @@ import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wra
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
-export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextColor, TextSize, TextWeight, Theme } from "./types";
+export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextColor, TextSize, TextWeight, Theme } from "./types";
 export { AccordionSize, AccordionTag, AccordionUpdateEvent } from "./components/accordion/accordion-utils";
 export { BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-export { CarouselAlignHeader, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
+export { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -88,7 +88,7 @@ export { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEvent } from "./co
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 export { HeadingTag } from "./components/heading/heading-tag";
-export { HeadingAlign, HeadingColor, HeadingSize } from "./components/heading/heading-utils";
+export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
@@ -376,6 +376,10 @@ export namespace Components {
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<CarouselAriaAttribute>;
+        /**
           * Defines the description used in the carousel.
          */
         "description"?: string;
@@ -387,6 +391,10 @@ export namespace Components {
           * Defines the heading used in the carousel.
          */
         "heading"?: string;
+        /**
+          * Defines the heading size used in the carousel.
+         */
+        "headingSize"?: CarouselHeadingSize;
         /**
           * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
          */
@@ -2975,6 +2983,10 @@ declare namespace LocalJSX {
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<CarouselAriaAttribute>;
+        /**
           * Defines the description used in the carousel.
          */
         "description"?: string;
@@ -2986,6 +2998,10 @@ declare namespace LocalJSX {
           * Defines the heading used in the carousel.
          */
         "heading"?: string;
+        /**
+          * Defines the heading size used in the carousel.
+         */
+        "headingSize"?: CarouselHeadingSize;
         /**
           * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
          */

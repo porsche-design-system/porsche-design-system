@@ -1,5 +1,5 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import type { HeadingAlign, HeadingColor, HeadingSize } from './heading-utils';
+import type { BreakpointCustomizable, HeadingSize, Theme } from '../../types';
+import type { HeadingAlign, HeadingColor } from './heading-utils';
 import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
