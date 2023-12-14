@@ -1,50 +1,57 @@
 import { isParentFieldsetRequired } from './isParentFieldsetRequired';
-import type { HTMLElementWithRequiredProp } from './isRequired';
+import * as isParentOfKindUtils from '../dom/isParentOfKind';
+import * as isRequiredUtils from './isRequired';
 
-// TODO: these tests should verify that isParentOfKind() and isRequired() are called with correct parameters and return their combined result
-describe('without prefix', () => {
-  it('should return true if parent is required', () => {
-    const parent = document.createElement('p-fieldset-wrapper');
-    const child = document.createElement('div');
-    parent.appendChild(child);
-    parent['required'] = true;
+it('should call isParentOfKind with correct parameters', () => {
+  const spy = jest.spyOn(isParentOfKindUtils, 'isParentOfKind');
+  const child = document.createElement('div');
 
-    expect(isParentFieldsetRequired(child)).toBe(true);
-  });
+  isParentFieldsetRequired(child);
 
-  it('should return false if parent is not required', () => {
-    const parent = document.createElement('p-fieldset-wrapper');
-    const child = document.createElement('div');
-    parent.appendChild(child);
-
-    expect(isParentFieldsetRequired(child)).toBe(false);
-  });
-
-  it('should return false if parent is not p-fieldset-wrapper', () => {
-    const parent = document.createElement('div');
-    const child = document.createElement('div');
-    parent.appendChild(child);
-
-    expect(isParentFieldsetRequired(child)).toBe(false);
-  });
+  expect(spy).toBeCalledWith(child, 'p-fieldset');
+  expect(spy).toBeCalledWith(child, 'p-fieldset-wrapper');
+  expect(spy).toBeCalledTimes(2);
 });
 
-describe('with prefix', () => {
-  it('should return true if parent is required', () => {
-    const parent = document.createElement('prefixed-p-fieldset-wrapper') as HTMLElementWithRequiredProp;
-    const child = document.createElement('div');
-    parent.appendChild(child);
-    parent.required = true;
+it('should call isRequired with correct parameters', () => {
+  const spy = jest.spyOn(isRequiredUtils, 'isRequired');
+  const parent = document.createElement('p-fieldset-wrapper');
+  const child = document.createElement('div');
+  parent.appendChild(child);
 
-    expect(isParentFieldsetRequired(child)).toBe(true);
-  });
+  isParentFieldsetRequired(child);
 
-  it('should return false if parent is not required', () => {
-    const parent = document.createElement('prefixed-p-fieldset-wrapper') as HTMLElementWithRequiredProp;
-    const child = document.createElement('div');
-    parent.appendChild(child);
-    parent.required = false;
+  expect(spy).toBeCalledWith(parent);
+});
 
-    expect(isParentFieldsetRequired(child)).toBe(false);
-  });
+it('should return true if isRequired and isParentOfKind return true', () => {
+  jest.spyOn(isRequiredUtils, 'isRequired').mockReturnValueOnce(true);
+  jest.spyOn(isParentOfKindUtils, 'isParentOfKind').mockReturnValue(true);
+  const child = document.createElement('div');
+
+  expect(isParentFieldsetRequired(child)).toBe(true);
+});
+
+it('should return false if isRequired returns false and isParentOfKind returns true', () => {
+  jest.spyOn(isRequiredUtils, 'isRequired').mockReturnValueOnce(false);
+  jest.spyOn(isParentOfKindUtils, 'isParentOfKind').mockReturnValue(true);
+  const child = document.createElement('div');
+
+  expect(isParentFieldsetRequired(child)).toBe(false);
+});
+
+it('should return false if isRequired returns true and isParentOfKind returns false', () => {
+  jest.spyOn(isRequiredUtils, 'isRequired').mockReturnValueOnce(true);
+  jest.spyOn(isParentOfKindUtils, 'isParentOfKind').mockReturnValue(false);
+  const child = document.createElement('div');
+
+  expect(isParentFieldsetRequired(child)).toBe(false);
+});
+
+it('should return false if isRequired returns false and isParentOfKind returns false', () => {
+  jest.spyOn(isRequiredUtils, 'isRequired').mockReturnValueOnce(false);
+  jest.spyOn(isParentOfKindUtils, 'isParentOfKind').mockReturnValue(false);
+  const child = document.createElement('div');
+
+  expect(isParentFieldsetRequired(child)).toBe(false);
 });
