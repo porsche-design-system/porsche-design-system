@@ -55,6 +55,7 @@ const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }
 export const getComponentCss = (
   hasHeading: boolean,
   hasDescription: boolean,
+  hasHeaderSlot: boolean,
   headingSize: CarouselHeadingSize,
   width: CarouselWidth,
   hasPagination: BreakpointCustomizable<boolean>,
@@ -83,17 +84,19 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      ['slot[name="header"]']: {
-        display: 'block',
-        gridColumnStart: 1,
-        gridRowStart: 3,
-        alignSelf: 'center', // ensures vertical alignment to prev/next buttons
-        [getMediaQueryMax('s')]: {
-          ...(isHeaderAlignCenter && {
-            justifySelf: 'center', // relevant for horizontal alignment of header on mobile view only
-          }),
+      ...(hasHeaderSlot && {
+        ['slot[name="header"]']: {
+          display: 'block',
+          gridColumnStart: 1,
+          gridRowStart: 3,
+          alignSelf: 'center', // ensures vertical alignment to prev/next buttons
+          [getMediaQueryMax('s')]: {
+            ...(isHeaderAlignCenter && {
+              justifySelf: 'center', // relevant for horizontal alignment of header on mobile view only
+            }),
+          },
         },
-      },
+      }),
       ...addImportantToEachRule({
         '::slotted(*)': {
           borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,

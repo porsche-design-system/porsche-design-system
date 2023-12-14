@@ -245,6 +245,7 @@ export class Carousel {
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
     const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
     const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
+    const hasHeaderSlot = hasNamedSlot(this.host, 'header');
     warnIfAriaAndHeadingPropsAreUndefined(this.host, hasHeadingPropOrSlot, this.aria);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
     this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
@@ -253,6 +254,7 @@ export class Carousel {
       getComponentCss,
       hasHeadingPropOrSlot,
       hasDescriptionPropOrSlot,
+      hasHeaderSlot,
       this.headingSize,
       this.width,
       // flip boolean values of disablePagination since it is the inverse of pagination
@@ -286,7 +288,7 @@ export class Carousel {
         <div class="header">
           {hasHeadingPropOrSlot && (this.heading ? <h2 id="heading">{this.heading}</h2> : <slot name="heading" />)}
           {hasDescriptionPropOrSlot && (this.description ? <p>{this.description}</p> : <slot name="description" />)}
-          {hasNamedSlot(this.host, 'header') && <slot name="header" />}
+          {hasHeaderSlot && <slot name="header" />}
           <div class="nav">
             {this.skipLinkTarget && (
               <PrefixedTagNames.pLinkPure
