@@ -1,22 +1,4 @@
-import { clickStartedInScrollbarTrack, warnIfAriaAndHeadingPropsAreUndefined } from './modal-utils';
-
-describe('warnIfAriaAndHeadingPropsAreUndefined()', () => {
-  it('should print warning when aria and heading props are undefined', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
-    const host = document.createElement('p-modal');
-
-    warnIfAriaAndHeadingPropsAreUndefined(host, 'Heading', undefined);
-    warnIfAriaAndHeadingPropsAreUndefined(host, undefined, "{'aria-label': 'OtherHeading'}");
-    warnIfAriaAndHeadingPropsAreUndefined(host, 'Heading', "{'aria-label': 'OtherHeading'}");
-
-    expect(spy).not.toBeCalled();
-
-    warnIfAriaAndHeadingPropsAreUndefined(host, undefined, undefined);
-    warnIfAriaAndHeadingPropsAreUndefined(host, null, null);
-
-    expect(spy).toBeCalledTimes(2);
-  });
-});
+import { clickStartedInScrollbarTrack } from './modal-utils';
 
 describe('clickStartedInScrollbarTrack()', () => {
   const ev = new MouseEvent('click', { clientX: 100 });

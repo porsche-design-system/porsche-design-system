@@ -1,14 +1,17 @@
-import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme, ValidatorFunction } from '../../types';
 import type { ButtonPure } from '../button-pure/button-pure';
 import type {
   CarouselAlignHeader,
   CarouselAlignHeaderDeprecated,
+  CarouselAriaAttribute,
+  CarouselHeadingSize,
   CarouselInternationalization,
   CarouselUpdateEvent,
   CarouselWidth,
 } from './carousel-utils';
 import {
   CAROUSEL_ALIGN_HEADERS,
+  CAROUSEL_ARIA_ATTRIBUTES,
   CAROUSEL_WIDTHS,
   getAmountOfPages,
   getSlidesAndAddAttributes,
@@ -19,7 +22,6 @@ import {
   slidePrev,
   updatePagination,
   updatePrevNextButtons,
-  warnIfHeadingIsMissing,
 } from './carousel-utils';
 import { Component, Element, Event, type EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
 import { Splide } from '@splidejs/splide';
@@ -28,17 +30,20 @@ import {
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
   getPrefixedTagNames,
-  getSlotTextContent,
   hasDescription,
+  hasHeading,
+  hasNamedSlot,
   hasPropValueChanged,
   observeBreakpointChange,
   observeChildren,
+  parseAndGetAriaAttributes,
   parseJSON,
   parseJSONAttribute,
   THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
+  warnIfAriaAndHeadingPropsAreUndefined,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
@@ -47,6 +52,7 @@ import { gridGap, motionEasingBase } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
+  headingSize: AllowedTypes.oneOf<CarouselHeadingSize>(['x-large', 'xx-large']),
   description: AllowedTypes.string,
   alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(CAROUSEL_ALIGN_HEADERS),
   rewind: AllowedTypes.boolean,
@@ -58,6 +64,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   ]),
   disablePagination: AllowedTypes.breakpoint('boolean'),
   pagination: AllowedTypes.breakpoint('boolean'),
+  aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
     next: AllowedTypes.string,
@@ -80,6 +87,9 @@ export class Carousel {
 
   /** Defines the heading used in the carousel. */
   @Prop() public heading?: string;
+
+  /** Defines the heading size used in the carousel. */
+  @Prop() public headingSize?: CarouselHeadingSize = 'x-large';
 
   /** Defines the description used in the carousel. */
   @Prop() public description?: string;
@@ -109,6 +119,9 @@ export class Carousel {
 
   /** If false, the carousel will not show pagination bullets at the bottom. */
   @Prop({ mutable: true }) public pagination?: BreakpointCustomizable<boolean> = true;
+
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<CarouselAriaAttribute>;
 
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
   @Prop() public intl?: CarouselInternationalization;
@@ -230,12 +243,19 @@ export class Carousel {
     );
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'wrapContent');
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
-    warnIfHeadingIsMissing(this.host, this.heading);
+    const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
+    const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
+    const hasHeaderSlot = hasNamedSlot(this.host, 'header');
+    warnIfAriaAndHeadingPropsAreUndefined(this.host, hasHeadingPropOrSlot, this.aria);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
     this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
     attachComponentCss(
       this.host,
       getComponentCss,
+      hasHeadingPropOrSlot,
+      hasDescriptionPropOrSlot,
+      hasHeaderSlot,
+      this.headingSize,
       this.width,
       // flip boolean values of disablePagination since it is the inverse of pagination
       this.disablePagination
@@ -266,9 +286,9 @@ export class Carousel {
     return (
       <Host>
         <div class="header">
-          {this.heading ? <h2 id="heading">{this.heading}</h2> : <slot name="heading" />}
-          {hasDescription(this.host, this.description) &&
-            ((this.description && <p>{this.description}</p>) || <slot name="description" />)}
+          {hasHeadingPropOrSlot && (this.heading ? <h2 id="heading">{this.heading}</h2> : <slot name="heading" />)}
+          {hasDescriptionPropOrSlot && (this.description ? <p>{this.description}</p> : <slot name="description" />)}
+          {hasHeaderSlot && <slot name="header" />}
           <div class="nav">
             {this.skipLinkTarget && (
               <PrefixedTagNames.pLinkPure
@@ -305,7 +325,10 @@ export class Carousel {
         <div
           id="splide"
           class="splide"
-          aria-label={this.heading || getSlotTextContent(this.host, 'heading')}
+          {...parseAndGetAriaAttributes({
+            'aria-label': this.heading,
+            ...parseAndGetAriaAttributes(this.aria),
+          })}
           ref={(ref) => (this.container = ref)}
           onMouseDown={(e) => e.preventDefault()} // enables native click events on slotted interactive elements
           onFocusin={this.onSplideFocusIn}

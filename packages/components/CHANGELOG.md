@@ -14,11 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
-
 #### Added
 
+- `Carousel`: Prop `heading-size`, named slot `header`
+  ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
 - `Accordion`: Custom clickarea for `compact` variant ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
 
+#### Changed
+
+- `Carousel`: Position and width of heading and description
+  ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
 
 #### Fixed
 

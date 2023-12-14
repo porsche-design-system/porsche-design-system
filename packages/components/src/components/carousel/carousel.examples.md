@@ -42,16 +42,24 @@ In case you want to have slides with different widths you can use `slidesPerPage
 
 ## Heading
 
-In order to have an accessible `p-carousel`, it is mandatory to have a `heading` either set via property or by having a
-named slot.
+The `heading` of `p-carousel` can be either set via property or by having a named slot. The heading size can be changed
+by using the property `headingSize`.
 
-<Playground :markup="heading" :config="config"></Playground>
+<Playground :markup="headingSizeMarkup" :config="config">
+  <PlaygroundSelect v-model="headingSize" :values="headingSizes" name="headingSize"></PlaygroundSelect>
+</Playground>
 
 ## Description
 
 Right after the `heading`, an additional `description` can be added either via prop or named slot.
 
 <Playground :markup="description" :config="config"></Playground>
+
+## Header
+
+Right after the `heading` and `description` a `header` can be added via named slot.
+
+<Playground :markup="header" :config="config"></Playground>
 
 ## Align Header
 
@@ -184,9 +192,9 @@ over all carousel entries. The skip link is only visible when it receives focus 
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import type { Theme } from '@/models';
-import type { CarouselWidth, CarouselAlignHeader } from './carousel-utils'; 
+import type { CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils'; 
 import { getCarouselCodeSamples } from '@porsche-design-system/shared';
-import { CAROUSEL_WIDTHS, CAROUSEL_ALIGN_HEADERS, CAROUSEL_ALIGN_HEADERS_DEPRECATED } from './carousel-utils';
+import { CAROUSEL_ALIGN_HEADERS, CAROUSEL_ALIGN_HEADERS_DEPRECATED, CAROUSEL_WIDTHS  } from './carousel-utils';
 import { borderRadius } from '@porsche-design-system/components-js/styles';
 
 @Component
@@ -199,7 +207,7 @@ export default class Code extends Vue {
 
   basicHeading = "Some heading";
   basicDescription = "Some description";
-  getSlides = (amount = 6) => Array.from(Array(amount), (_, i) => `<div>Slide ${i+1}</div>`).join('\n  ');
+  getSlides = (amount = 6, join = '\n  ') => Array.from(Array(amount), (_, i) => `<div>Slide ${i+1}</div>`).join(join);
 
   basic = `<p-carousel heading="${this.basicHeading}">
   ${this.getSlides(4)}
@@ -222,14 +230,14 @@ export default class Code extends Vue {
   <div style="width: 50vw">Slide 6 <p>(50vw)</p></div>
 </p-carousel>`;
 
-  heading = `<p-carousel heading="${this.basicHeading}">
-  ${this.getSlides(3)}
-</p-carousel>
-
-<p-carousel>
-  <h3 slot="heading">Some slotted heading</h3>
+  headingSize: CarouselHeadingSize = 'x-large';
+  headingSizes = ['x-large', 'xx-large'];
+  get headingSizeMarkup() {
+    return `<p-carousel heading="${this.basicHeading}" heading-size="${this.headingSize}">
+  <p slot="description">Some slotted description</p>
   ${this.getSlides(3)}
 </p-carousel>`;
+}
 
   description = `<p-carousel heading="${this.basicHeading}" description="${this.basicDescription}">
   ${this.getSlides(3)}
@@ -239,6 +247,12 @@ export default class Code extends Vue {
   <p slot="description">Some slotted description</p>
   ${this.getSlides(3)}
 </p-carousel>`;
+
+  header = `<p-carousel heading="${this.basicHeading}" description="${this.basicDescription}">
+  <p slot="header">Some slotted header</p>
+  ${this.getSlides(3)}
+</p-carousel>`;
+
 
   rewind = `<p-carousel rewind="false" heading="${this.basicHeading}">
   ${this.getSlides(3)}
@@ -256,6 +270,7 @@ export default class Code extends Vue {
   alignHeaders = CAROUSEL_ALIGN_HEADERS.map(item => CAROUSEL_ALIGN_HEADERS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item)
   get alignHeaderMarkup() {
     return `<p-carousel align-header="${this.alignHeader}" heading="${this.basicHeading}" description="${this.basicDescription}">
+  <p slot="header">Some slotted header</p>  
   ${this.getSlides(3)}
 </p-carousel>`;
 }
@@ -303,7 +318,8 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
   ${this.getSlides(4)}
 </p-carousel>
 <p-heading id="target" tag="h2" size="x-large">Next Heading</p-heading>`;
-}
+
+};
 </script>
 
 <style scoped lang="scss">
@@ -328,5 +344,9 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
     + button { 
       margin: 0 0 0 .5rem;
     }
+  }
+
+  :deep(.demo) {
+    width: 100%
   }
 </style>
