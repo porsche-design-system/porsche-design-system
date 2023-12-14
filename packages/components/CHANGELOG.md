@@ -16,8 +16,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `Carousel`: Prop `heading-size`, named slot `header` ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
+- `Carousel`: Prop `heading-size`, named slot `header`
+  ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
 
+#### Changed
+
+- `Carousel`: Position and width of heading and description
+  ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
 
 ### [3.10.0-rc.3] - 2023-12-12
 
