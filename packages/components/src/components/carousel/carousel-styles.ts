@@ -1,6 +1,6 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
+import { buildResponsiveStyles, getCss, isHighContrastMode, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -108,35 +108,39 @@ export const getComponentCss = (
           }),
           outlineOffset: '2px',
         },
-        // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
-        // h2,::slotted([slot=heading]),p,::slotted([slot=description])
-        [[...(hasHeading ? [selectorHeading] : []), ...(hasDescription ? [selectorDescription] : [])].join()]: {
-          gridColumn: '1/-1',
-          color: primaryColor,
-          ...(isHeaderAlignCenter && {
-            textAlign: 'center', // relevant in case heading or description becomes multiline
-            justifySelf: 'center', // relevant for horizontal alignment of heading and description in case max-width applies
-          }),
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: primaryColorDark,
-          }),
-        },
-        // h2,::slotted([slot=heading])
-        ...(hasHeading && {
-          [selectorHeading]: {
-            maxWidth: '56.25rem',
-            margin: `0 0 ${!hasDescription ? spacingFluidMedium : 0}`,
-            ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
+        ...mergeDeep(
+          // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
+          // h2,::slotted([slot=heading]),p,::slotted([slot=description])
+          {
+            [[...(hasHeading ? [selectorHeading] : []), ...(hasDescription ? [selectorDescription] : [])].join()]: {
+              gridColumn: '1/-1',
+              color: primaryColor,
+              ...(isHeaderAlignCenter && {
+                textAlign: 'center', // relevant in case heading or description becomes multiline
+                justifySelf: 'center', // relevant for horizontal alignment of heading and description in case max-width applies
+              }),
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                color: primaryColorDark,
+              }),
+            },
           },
-        }),
-        // p,::slotted([slot=description])
-        ...(hasDescription && {
-          [selectorDescription]: {
-            maxWidth: '34.375rem',
-            margin: `${spacingFluidSmall} 0 ${spacingFluidMedium}`,
-            ...textSmallStyle,
+          // h2,::slotted([slot=heading])
+          hasHeading && {
+            [selectorHeading]: {
+              maxWidth: '56.25rem',
+              margin: `0 0 ${!hasDescription ? spacingFluidMedium : 0}`,
+              ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
+            },
           },
-        }),
+          // p,::slotted([slot=description])
+          hasDescription && {
+            [selectorDescription]: {
+              maxWidth: '34.375rem',
+              margin: `${spacingFluidSmall} 0 ${spacingFluidMedium}`,
+              ...textSmallStyle,
+            },
+          }
+        ),
       }),
     },
     header: {
