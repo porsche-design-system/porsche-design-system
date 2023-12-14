@@ -2938,10 +2938,6 @@ exports[`should render dsr component for PCarousel 1`] = `
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-. {
-  grid-column: 1/-1 !important;
-  color: #010205 !important;
-}
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
