@@ -12,6 +12,8 @@ export type { TextSize } from '../utils/typography/textSize';
 export type { TextColor, TextColorDeprecated } from '../utils/typography/textColor';
 export type { TextWeight, TextWeightDeprecated } from '../utils/typography/textWeight';
 
+export type { HeadingSize } from '../utils/typography/heading-size';
+
 export type { IconName } from '@porsche-design-system/icons';
 
 export type LinkButtonIconName = IconName | 'none';
