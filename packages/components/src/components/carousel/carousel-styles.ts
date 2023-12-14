@@ -2,23 +2,20 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
-  addImportantToRule,
   addImportantToEachRule,
+  addImportantToRule,
+  colorSchemeStyles,
   getBackfaceVisibilityJssStyle,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
-  colorSchemeStyles,
 } from '../../styles';
 import {
   borderRadiusLarge,
   borderRadiusSmall,
   borderWidthBase,
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
   getMediaQueryMax,
   getMediaQueryMin,
   gridBasicOffset,
@@ -47,14 +44,8 @@ const paginationActiveBulletSize = '20px';
 
 const selectorHeading = 'h2,::slotted([slot=heading])';
 const selectorDescription = 'p,::slotted([slot=description])';
-const selectorHeader = '::slotted([slot=header])';
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
-
-// we need an explicit grid template, therefor we need to calculate the button group width
-const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
-// + 2px, compensates hover offset of button-pure
-const buttonGroupWidth = `calc(${buttonSize} * 3 + ${spacingStaticXSmall} + 2px)`;
 
 const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }> = {
   basic: gridBasicOffset,
@@ -79,23 +70,29 @@ export const getComponentCss = (
   } = getThemedColors('dark');
   const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
-  const selectorHeadingDescriptionAndHeader = [
-    ...(hasHeading ? [selectorHeading] : []),
-    ...(hasDescription ? [selectorDescription] : []),
-    selectorHeader,
-  ];
 
   return getCss({
     '@global': {
       ':host': {
         display: 'flex',
         ...addImportantToEachRule({
-          gap: spacingFluidMedium,
+          gap: spacingFluidMedium, // TODO: maybe it's better to style by margin on .splide, then styles would be part of shadow dom
           flexDirection: 'column',
           boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
+      },
+      ['slot[name="header"]']: {
+        display: 'block',
+        gridColumnStart: 1,
+        gridRowStart: 3,
+        alignSelf: 'center', // ensures vertical alignment to prev/next buttons
+        [getMediaQueryMax('s')]: {
+          ...(isHeaderAlignCenter && {
+            justifySelf: 'center', // relevant for horizontal alignment of header on mobile view only
+          }),
+        },
       },
       ...addImportantToEachRule({
         '::slotted(*)': {
@@ -108,50 +105,43 @@ export const getComponentCss = (
           }),
           outlineOffset: '2px',
         },
-        ...(hasHeading && {
-          [selectorHeading]: {
-            ...(headingSize === 'x-large' ? headingXLargeStyle : headingXXLargeStyle),
-            maxWidth: '56.25rem',
-            margin: 0,
-          },
-        }),
-        ...(hasDescription && {
-          [selectorDescription]: {
-            ...textSmallStyle,
-            maxWidth: '34.375rem',
-            margin: `${spacingFluidXSmall} 0 0`,
-          },
-        }),
-        [selectorHeadingDescriptionAndHeader.join()]: {
+        // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
+        // h2,::slotted([slot=heading]),p,::slotted([slot=description])
+        [[...(hasHeading ? [selectorHeading] : []), ...(hasDescription ? [selectorDescription] : [])].join()]: {
+          gridColumn: '1/-1',
           color: primaryColor,
+          ...(isHeaderAlignCenter && {
+            textAlign: 'center', // relevant in case heading or description becomes multiline
+            justifySelf: 'center', // relevant for horizontal alignment of heading and description in case max-width applies
+          }),
           ...prefersColorSchemeDarkMediaQuery(theme, {
             color: primaryColorDark,
           }),
-          alignSelf: 'center', // relevant for vertical alignment of header
-          ...(isHeaderAlignCenter && {
-            justifySelf: 'center', // relevant for horizontal alignment of header
-          }),
-          [mediaQueryS]: {
-            gridColumn: '1 / 2',
-          },
         },
+        // h2,::slotted([slot=heading])
+        ...(hasHeading && {
+          [selectorHeading]: {
+            maxWidth: '56.25rem',
+            margin: 0, // ua-style reset
+            ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
+          },
+        }),
+        // p,::slotted([slot=description])
+        ...(hasDescription && {
+          [selectorDescription]: {
+            maxWidth: '34.375rem',
+            margin: `${spacingFluidXSmall} 0 0`,
+            ...textSmallStyle,
+          },
+        }),
       }),
     },
     header: {
       display: 'grid',
-      gridTemplateRows: `${hasHeading ? 'auto ' : ''}${hasDescription ? 'auto ' : ''}auto`,
       padding: `0 ${spacingMap[width].base}`,
-      ...(isHeaderAlignCenter && {
-        textAlign: 'center',
-      }),
       [mediaQueryS]: {
-        fontFamily, // relevant for button group width calculation, which is based on ex unit
-        fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
+        gridTemplateColumns: 'minmax(0px, 1fr) auto',
         columnGap: spacingStaticMedium,
-        gridTemplateColumns: `minmax(0px, 1fr) ${buttonGroupWidth}`,
-        ...(isHeaderAlignCenter && {
-          justifyItems: 'center', // relevant when max-width of heading or description is reached
-        }),
         padding: `0 ${spacingMap[width].s}`,
       },
       [mediaQueryXXL]: {
@@ -161,12 +151,11 @@ export const getComponentCss = (
     nav: {
       display: 'none',
       [mediaQueryS]: {
+        gridRowStart: '3',
+        gridColumnEnd: '-1',
         display: 'flex',
         gap: spacingStaticXSmall,
-        gridArea: `${hasHeading ? (hasDescription ? '3' : '2') : '1'} / 2 / 3 / auto`, // needed in case header height is smaller than button group
-        alignItems: 'end',
-        justifyContent: 'end',
-        justifySelf: 'end',
+        alignSelf: 'flex-start', // relevant in case slot="header" becomes higher than nav group
       },
     },
     btn: {
