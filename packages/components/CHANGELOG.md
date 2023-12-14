@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
-- `Accordion`: Custom clickarea for `compact`varaint ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
+- `Accordion`: Custom clickarea for `compact` variant ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
 
 
 #### Fixed
