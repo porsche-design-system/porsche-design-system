@@ -54,3 +54,11 @@ it('should return false if getHTMLElement returns an element not matching the pr
 
   expect(hasSpecificSlottedTag(host, tag)).toBe(false);
 });
+
+it('should return false if getHTMLElement returns null and host has no child', () => {
+  const host = document.createElement('div');
+  const tag = 'input';
+  jest.spyOn(getHTMLElementUtils, 'getHTMLElement').mockReturnValueOnce(null);
+
+  expect(hasSpecificSlottedTag(host, tag)).toBe(false);
+});
