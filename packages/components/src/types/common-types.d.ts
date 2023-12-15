@@ -8,9 +8,9 @@ export type { Theme } from '../utils/theme';
 
 export type { TypographyAlign, TypographyAlignDeprecated } from '../utils/typography/typography-align';
 
-export type { TextSize } from '../utils/typography/textSize';
-export type { TextColor, TextColorDeprecated } from '../utils/typography/textColor';
-export type { TextWeight, TextWeightDeprecated } from '../utils/typography/textWeight';
+export type { TextSize } from '../utils/typography/text-size';
+export type { TypographyTextColor, TypographyTextColorDeprecated } from '../utils/typography/typography-text-color';
+export type { TypographyTextWeight, TypographyTextWeightDeprecated } from '../utils/typography/typography-text-weight';
 
 export type { HeadingSize } from '../utils/typography/heading-size';
 

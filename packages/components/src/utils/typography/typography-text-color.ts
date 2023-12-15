@@ -1,5 +1,5 @@
 /** @deprecated */
-export const TEXT_COLORS_DEPRECATED = [
+export const TYPOGRAPHY_TEXT_COLORS_DEPRECATED = [
   'brand', // deprecated
   'default', // deprecated
   'neutral-contrast-low', // deprecated
@@ -8,8 +8,8 @@ export const TEXT_COLORS_DEPRECATED = [
   'notification-neutral', // deprecated
 ] as const;
 /** @deprecated */
-export type TextColorDeprecated = (typeof TEXT_COLORS_DEPRECATED)[number];
-export const TEXT_COLORS = [
+export type TypographyTextColorDeprecated = (typeof TYPOGRAPHY_TEXT_COLORS_DEPRECATED)[number];
+export const TYPOGRAPHY_TEXT_COLORS = [
   'primary',
   'contrast-low',
   'contrast-medium',
@@ -19,6 +19,6 @@ export const TEXT_COLORS = [
   'notification-error',
   'notification-info',
   'inherit',
-  ...TEXT_COLORS_DEPRECATED,
+  ...TYPOGRAPHY_TEXT_COLORS_DEPRECATED,
 ] as const;
-export type TextColor = (typeof TEXT_COLORS)[number];
+export type TypographyTextColor = (typeof TYPOGRAPHY_TEXT_COLORS)[number];

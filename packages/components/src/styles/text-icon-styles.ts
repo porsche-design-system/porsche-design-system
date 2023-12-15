@@ -1,5 +1,5 @@
 import type { Theme } from '@porsche-design-system/utilities-v2';
-import type { TextColor, TextColorDeprecated } from '../types';
+import type { TypographyTextColor, TypographyTextColorDeprecated } from '../types';
 import type { HeadingColor } from '../components/heading/heading-utils';
 import type { HeadlineColor } from '../components/headline/headline-utils';
 import type { DisplayColor } from '../components/display/display-utils';
@@ -7,7 +7,7 @@ import { getThemedColors } from './colors';
 
 export const getThemedTypographyColor = (
   theme: Theme,
-  textColor: Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
+  textColor: Exclude<TypographyTextColor, TypographyTextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
 ): string => {
   // TODO: don't destructure for better minification
   const {
@@ -22,7 +22,7 @@ export const getThemedTypographyColor = (
   } = getThemedColors(theme);
 
   const colorMap: Record<
-    Exclude<TextColor, TextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
+    Exclude<TypographyTextColor, TypographyTextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
     string
   > = {
     primary: primaryColor,
