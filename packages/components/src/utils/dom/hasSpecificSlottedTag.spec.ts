@@ -11,7 +11,7 @@ it('should call getHTMLElement with correct parameters', () => {
   expect(spy).toBeCalledWith(host, ':first-child');
 });
 
-it('should return true if getHTMLElement returns an element matching the provided tag param and host has only one child', () => {
+it('should return true if getHTMLElement returns an element matching the tag param and host has only one child', () => {
   const host = document.createElement('div');
   const tag = 'button';
   const child = document.createElement('button');
@@ -21,7 +21,7 @@ it('should return true if getHTMLElement returns an element matching the provide
   expect(hasSpecificSlottedTag(host, tag)).toBe(true);
 });
 
-it('should return false if getHTMLElement returns an element matching the provided tag param and host has more then one child', () => {
+it('should return false if getHTMLElement returns an element matching the tag param and host has more then one child', () => {
   const host = document.createElement('div');
   const tag = 'button';
   const child1 = document.createElement('button');
@@ -33,7 +33,7 @@ it('should return false if getHTMLElement returns an element matching the provid
   expect(hasSpecificSlottedTag(host, tag)).toBe(false);
 });
 
-it('should return false if getHTMLElement returns an element not matching the provided tag param and host has only one child', () => {
+it('should return false if getHTMLElement returns an element not matching the tag param and host has only one child', () => {
   const host = document.createElement('div');
   const tag = 'input';
   const child = document.createElement('button');
@@ -43,7 +43,7 @@ it('should return false if getHTMLElement returns an element not matching the pr
   expect(hasSpecificSlottedTag(host, tag)).toBe(false);
 });
 
-it('should return false if getHTMLElement returns an element not matching the provided tag param and host has more then one child', () => {
+it('should return false if getHTMLElement returns an element not matching the tag param and host has more then one child', () => {
   const host = document.createElement('div');
   const tag = 'input';
   const child1 = document.createElement('button');
