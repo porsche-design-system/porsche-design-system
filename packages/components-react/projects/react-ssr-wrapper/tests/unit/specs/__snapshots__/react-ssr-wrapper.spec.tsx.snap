@@ -4042,7 +4042,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
                     width="24"
                   />
                 </template>
@@ -4323,7 +4323,7 @@ img {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
                 width="24"
               />
             </template>
@@ -4463,7 +4463,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
                     width="24"
                   />
                 </template>
@@ -6131,7 +6131,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/heart.min.7c25821e7db007879ef53b83c116fc37.svg"
+                    src="http://localhost:3001/icons/heart.min.ac97f7194f77906671001ee08b9ed2a8.svg"
                     width="24"
                   />
                 </template>
