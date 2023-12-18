@@ -178,7 +178,7 @@ export const getComponentCss = (
         // ::after to be above sticky footer without z-index games
         '&:focus::after': {
           content: '""',
-          position: 'absolute',
+          position: 'fixed',
           border: `${borderWidthBase} solid`,
           pointerEvents: 'none', // fix text selection in focus state
           ...buildResponsiveStyles(isFullscreen, (fullscreenValue: boolean) => ({
