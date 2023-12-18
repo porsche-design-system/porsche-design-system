@@ -77,7 +77,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.13.3",
-    "@playwright/test": "1.40.1",
+    "@playwright/test": "1.39.0",
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.14.3",
     "concurrently": "^8.2.2",
