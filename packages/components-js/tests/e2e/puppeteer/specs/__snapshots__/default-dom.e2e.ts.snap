@@ -333,14 +333,16 @@ exports[`should have no basic DOM regression for p-marque 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-modal 1`] = `
-"<div class="root" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1" inert="">
-  <div class="controls">
-    <p-button-pure class="dismiss hydrated">
-      Dismiss modal</p-button-pure>
-  </div>
-  <div class="content">
-    <slot>
-    </slot>
+"<div class="scroll-container">
+  <div class="root" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1" inert="">
+    <div class="controls">
+      <p-button-pure class="dismiss hydrated">
+        Dismiss modal</p-button-pure>
+    </div>
+    <div class="content">
+      <slot>
+      </slot>
+    </div>
   </div>
 </div>"
 `;
