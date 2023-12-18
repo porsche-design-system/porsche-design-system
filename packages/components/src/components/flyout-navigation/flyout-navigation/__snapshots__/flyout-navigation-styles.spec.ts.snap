@@ -384,7 +384,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
-  visibility: visible !important;
+  visibility: inherit !important;
   pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
@@ -516,7 +516,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
-  visibility: visible !important;
+  visibility: inherit !important;
   pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
@@ -633,7 +633,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
-  visibility: visible !important;
+  visibility: inherit !important;
   pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
@@ -750,7 +750,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
-  visibility: visible !important;
+  visibility: inherit !important;
   pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
@@ -882,7 +882,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
-  visibility: visible !important;
+  visibility: inherit !important;
   pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
@@ -999,7 +999,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
-  visibility: visible !important;
+  visibility: inherit !important;
   pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
