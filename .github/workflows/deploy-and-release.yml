@@ -36,7 +36,7 @@ on:
         required: true
 name: 'Deploy and Release'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.40.1-focal
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.39.0-focal-test2
 jobs:
   assets-deployment:
     name: 'Assets Deployment'
