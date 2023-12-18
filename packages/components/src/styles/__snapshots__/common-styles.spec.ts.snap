@@ -37,86 +37,78 @@ exports[`focusPseudoJssStyle should return correct jss style 1`] = `
 }
 `;
 
+exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: false, duration: moderate and theme: 9999 1`] = `
+{
+  "WebkitBackdropFilter": "blur(0px)",
+  "backdropFilter": "blur(0px)",
+  "background": "none",
+  "bottom": 0,
+  "left": 0,
+  "pointerEvents": "none",
+  "position": "fixed",
+  "right": 0,
+  "top": 0,
+  "transition": "background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s)",
+  "visibility": "hidden",
+  "zIndex": 9999,
+}
+`;
+
+exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: false, duration: veryLong and theme: 9999 1`] = `
+{
+  "WebkitBackdropFilter": "blur(0px)",
+  "backdropFilter": "blur(0px)",
+  "background": "none",
+  "bottom": 0,
+  "left": 0,
+  "pointerEvents": "none",
+  "position": "fixed",
+  "right": 0,
+  "top": 0,
+  "transition": "background var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s)",
+  "visibility": "hidden",
+  "zIndex": 9999,
+}
+`;
+
+exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: true, duration: long and theme: 9999 1`] = `
+{
+  "WebkitBackdropFilter": "blur(32px)",
+  "backdropFilter": "blur(32px)",
+  "background": "rgba(1, 2, 5, 0.67)",
+  "bottom": 0,
+  "left": 0,
+  "pointerEvents": "auto",
+  "position": "fixed",
+  "right": 0,
+  "top": 0,
+  "transition": "background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s)",
+  "visibility": "visible",
+  "zIndex": 9999,
+}
+`;
+
+exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: true, duration: short and theme: 9999 1`] = `
+{
+  "WebkitBackdropFilter": "blur(32px)",
+  "backdropFilter": "blur(32px)",
+  "background": "rgba(1, 2, 5, 0.67)",
+  "bottom": 0,
+  "left": 0,
+  "pointerEvents": "auto",
+  "position": "fixed",
+  "right": 0,
+  "top": 0,
+  "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s)",
+  "visibility": "visible",
+  "zIndex": 9999,
+}
+`;
+
 exports[`getBackfaceVisibilityJssStyle() should return correct styles 1`] = `
 {
   "WebkitBackfaceVisibility": "hidden",
   "backfaceVisibility": "hidden",
-}
-`;
-
-exports[`getFrostedGlassBackgroundJssStyles() should return correct JssStyle for isVisible: false, duration: moderate and theme: dark 1`] = `
-{
-  "&::before": {
-    "WebkitBackdropFilter": "blur(0px)",
-    "backdropFilter": "blur(0px)",
-    "background": "rgba(38, 38, 41, 0.67)",
-    "bottom": 0,
-    "content": """",
-    "left": 0,
-    "opacity": 0,
-    "pointerEvents": "none",
-    "position": "fixed",
-    "right": 0,
-    "top": 0,
-    "transition": "opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1)",
-  },
-}
-`;
-
-exports[`getFrostedGlassBackgroundJssStyles() should return correct JssStyle for isVisible: false, duration: veryLong and theme: dark 1`] = `
-{
-  "&::before": {
-    "WebkitBackdropFilter": "blur(0px)",
-    "backdropFilter": "blur(0px)",
-    "background": "rgba(38, 38, 41, 0.67)",
-    "bottom": 0,
-    "content": """",
-    "left": 0,
-    "opacity": 0,
-    "pointerEvents": "none",
-    "position": "fixed",
-    "right": 0,
-    "top": 0,
-    "transition": "opacity var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1)",
-  },
-}
-`;
-
-exports[`getFrostedGlassBackgroundJssStyles() should return correct JssStyle for isVisible: true, duration: long and theme: light 1`] = `
-{
-  "&::before": {
-    "WebkitBackdropFilter": "blur(32px)",
-    "backdropFilter": "blur(32px)",
-    "background": "rgba(1, 2, 5, 0.67)",
-    "bottom": 0,
-    "content": """",
-    "left": 0,
-    "opacity": 1,
-    "pointerEvents": "none",
-    "position": "fixed",
-    "right": 0,
-    "top": 0,
-    "transition": "opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1)",
-  },
-}
-`;
-
-exports[`getFrostedGlassBackgroundJssStyles() should return correct JssStyle for isVisible: true, duration: short and theme: light 1`] = `
-{
-  "&::before": {
-    "WebkitBackdropFilter": "blur(32px)",
-    "backdropFilter": "blur(32px)",
-    "background": "rgba(1, 2, 5, 0.67)",
-    "bottom": 0,
-    "content": """",
-    "left": 0,
-    "opacity": 1,
-    "pointerEvents": "none",
-    "position": "fixed",
-    "right": 0,
-    "top": 0,
-    "transition": "opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
-  },
 }
 `;
 

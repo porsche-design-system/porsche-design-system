@@ -9,26 +9,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   z-index: 99998 !important;
   justify-content: flex-end !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
   pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -92,26 +82,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   z-index: 99998 !important;
   justify-content: flex-end !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
   pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -172,26 +152,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   z-index: 99998 !important;
   justify-content: flex-end !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
   pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -262,26 +232,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   z-index: 99998 !important;
   justify-content: flex-end !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
   pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -345,26 +305,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   z-index: 99998 !important;
   justify-content: flex-end !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
   pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -428,26 +378,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   z-index: 99998 !important;
   justify-content: flex-start !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
   pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -511,26 +451,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   z-index: 99998 !important;
   justify-content: flex-start !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
   pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -591,26 +521,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
   z-index: 99998 !important;
   justify-content: flex-start !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
   pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -680,32 +600,23 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: fixed !important;
   z-index: 99998 !important;
   justify-content: flex-end !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
+  pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 @media (prefers-color-scheme: dark) {
-  :host::before {
+  :host {
     background: rgba(38, 38, 41, 0.67) !important;
   }
 }
@@ -785,26 +696,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: fixed !important;
   z-index: 99998 !important;
   justify-content: flex-end !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
+  pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -867,26 +769,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: fixed !important;
   z-index: 99998 !important;
   justify-content: flex-end !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
+  pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -949,32 +842,23 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: fixed !important;
   z-index: 99998 !important;
   justify-content: flex-end !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
+  pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 @media (prefers-color-scheme: dark) {
-  :host::before {
+  :host {
     background: rgba(38, 38, 41, 0.67) !important;
   }
 }
@@ -1050,26 +934,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: fixed !important;
   z-index: 99998 !important;
   justify-content: flex-end !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
+  pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1142,26 +1017,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: fixed !important;
   z-index: 99998 !important;
   justify-content: flex-end !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
+  pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1234,26 +1100,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: fixed !important;
   z-index: 99998 !important;
   justify-content: flex-end !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
+  pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1323,26 +1180,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: fixed !important;
   z-index: 99998 !important;
   justify-content: flex-start !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
+  pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1405,26 +1253,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: fixed !important;
   z-index: 99998 !important;
   justify-content: flex-start !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
+  pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1487,26 +1326,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: fixed !important;
   z-index: 99998 !important;
   justify-content: flex-start !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
+  pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1579,26 +1409,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: fixed !important;
   z-index: 99998 !important;
   justify-content: flex-start !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
+  pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1671,26 +1492,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
   position: fixed !important;
   z-index: 99998 !important;
   justify-content: flex-start !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  color-scheme: light dark !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
+  pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

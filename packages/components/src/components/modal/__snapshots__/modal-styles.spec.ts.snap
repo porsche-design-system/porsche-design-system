@@ -2,7 +2,6 @@
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: false, dismissButton: false, hasHeader: true, hasFooter: false and theme: light 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -10,29 +9,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   color-scheme: light dark !important;
+  pointer-events: none !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -51,6 +37,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #010205;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #010205;
@@ -100,7 +98,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: false, dismissButton: true, hasHeader: false, hasFooter: false and theme: light 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -108,29 +105,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   color-scheme: light dark !important;
+  pointer-events: none !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -152,6 +136,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #010205;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #010205;
@@ -195,6 +191,7 @@ h2 {
   left: 8px;
   display: flex;
   justify-content: flex-end;
+  z-index: 1;
 }
 .dismiss {
   border: 2px solid #FFF;
@@ -218,7 +215,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: false, dismissButton: true, hasHeader: true, hasFooter: false and theme: dark 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -226,29 +222,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   color-scheme: light dark !important;
+  pointer-events: none !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -267,6 +250,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #FBFCFF;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #FBFCFF;
@@ -313,6 +308,7 @@ h2 {
   left: 8px;
   display: flex;
   justify-content: flex-end;
+  z-index: 1;
 }
 .dismiss {
   border: 2px solid #0E0E12;
@@ -336,7 +332,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: true, dismissButton: false, hasHeader: false, hasFooter: false and theme: light 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -344,29 +339,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   color-scheme: light dark !important;
+  pointer-events: none !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -388,6 +370,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #010205;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #010205;
@@ -434,7 +428,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: true, dismissButton: false, hasHeader: true, hasFooter: false and theme: dark 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -442,29 +435,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   color-scheme: light dark !important;
+  pointer-events: none !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -483,6 +463,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #FBFCFF;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #FBFCFF;
@@ -532,7 +524,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: true, dismissButton: true, hasHeader: false, hasFooter: false and theme: dark 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -540,29 +531,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   color-scheme: light dark !important;
+  pointer-events: none !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -584,6 +562,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #FBFCFF;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #FBFCFF;
@@ -627,6 +617,7 @@ h2 {
   left: 8px;
   display: flex;
   justify-content: flex-end;
+  z-index: 1;
 }
 .dismiss {
   border: 2px solid #0E0E12;
@@ -650,7 +641,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: true, dismissButton: true, hasHeader: true, hasFooter: false and theme: light 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -658,29 +648,16 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   color-scheme: light dark !important;
+  pointer-events: none !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+  background: none !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 0 !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -699,6 +676,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #010205;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #010205;
@@ -745,6 +734,7 @@ h2 {
   left: 8px;
   display: flex;
   justify-content: flex-end;
+  z-index: 1;
 }
 .dismiss {
   border: 2px solid #FFF;
@@ -768,7 +758,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: { base: true, xs: false, s: true, m: false, l: true, xl: false }, dismissButton: true, hasHeader: false, hasFooter: false and theme: light 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -776,28 +765,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   color-scheme: light dark !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -865,6 +842,18 @@ h2 {
   }
 }
 
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .root {
   color: #010205;
   position: relative;
@@ -907,6 +896,7 @@ h2 {
   left: 8px;
   display: flex;
   justify-content: flex-end;
+  z-index: 1;
 }
 .dismiss {
   border: 2px solid #FFF;
@@ -1014,7 +1004,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: false, hasHeader: false, hasFooter: true and theme: light 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -1022,28 +1011,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   color-scheme: light dark !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1065,6 +1042,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #010205;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #010205;
@@ -1124,7 +1113,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: false, hasHeader: true, hasFooter: false and theme: dark 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -1132,28 +1120,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   color-scheme: light dark !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1172,6 +1148,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #FBFCFF;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #FBFCFF;
@@ -1221,7 +1209,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: false, hasHeader: true, hasFooter: true and theme: dark 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -1229,28 +1216,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   color-scheme: light dark !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1269,6 +1244,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #FBFCFF;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #FBFCFF;
@@ -1331,7 +1318,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: true, hasHeader: false, hasFooter: false and theme: dark 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -1339,28 +1325,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   color-scheme: light dark !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1382,6 +1356,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #FBFCFF;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #FBFCFF;
@@ -1425,6 +1411,7 @@ h2 {
   left: 8px;
   display: flex;
   justify-content: flex-end;
+  z-index: 1;
 }
 .dismiss {
   border: 2px solid #0E0E12;
@@ -1448,7 +1435,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: true, hasHeader: true, hasFooter: false and theme: light 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -1456,28 +1442,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   color-scheme: light dark !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1496,6 +1470,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #010205;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #010205;
@@ -1542,6 +1528,7 @@ h2 {
   left: 8px;
   display: flex;
   justify-content: flex-end;
+  z-index: 1;
 }
 .dismiss {
   border: 2px solid #FFF;
@@ -1565,7 +1552,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: true, dismissButton: false, hasHeader: false, hasFooter: false and theme: dark 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -1573,28 +1559,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   color-scheme: light dark !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1616,6 +1590,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #FBFCFF;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #FBFCFF;
@@ -1662,7 +1648,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: true, dismissButton: false, hasHeader: true, hasFooter: false and theme: light 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -1670,28 +1655,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   color-scheme: light dark !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1710,6 +1683,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #010205;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #010205;
@@ -1759,7 +1744,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: true, dismissButton: true, hasHeader: false, hasFooter: false and theme: light 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -1767,28 +1751,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   color-scheme: light dark !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1810,6 +1782,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #010205;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #010205;
@@ -1853,6 +1837,7 @@ h2 {
   left: 8px;
   display: flex;
   justify-content: flex-end;
+  z-index: 1;
 }
 .dismiss {
   border: 2px solid #FFF;
@@ -1876,7 +1861,6 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: true, dismissButton: true, hasHeader: true, hasFooter: false and theme: dark 1`] = `
 ":host {
-  display: flex;
   overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
@@ -1884,28 +1868,16 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-wrap: wrap !important;
-  visibility: inherit !important;
+  visibility: visible !important;
   color-scheme: light dark !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
-}
-:host::before {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1924,6 +1896,18 @@ h2 {
   font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
   color: #FBFCFF;
+}
+.scroll-container {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: inherit;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .root {
   color: #FBFCFF;
@@ -1970,6 +1954,7 @@ h2 {
   left: 8px;
   display: flex;
   justify-content: flex-end;
+  z-index: 1;
 }
 .dismiss {
   border: 2px solid #0E0E12;
