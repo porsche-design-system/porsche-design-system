@@ -17,7 +17,7 @@ give the user visual cues to fill out the form.
 ## Basic example
 
 <Playground :markup="hideLabelMarkup" :config="config">
-  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
+  <PlaygroundSelect v-model="hideLabel" :values="hideLabels" name="hideLabel"></PlaygroundSelect>
 </Playground>
 
 ## With description text
@@ -63,7 +63,7 @@ To hide it you can set `showCounter` to `false`.
 The `p-textarea-wrapper` component supports the visualisation of inline validation.
 
 <Playground :markup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
 </Playground>
 
 ## Slots

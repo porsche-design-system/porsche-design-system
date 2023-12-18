@@ -68,6 +68,26 @@ const generatedRoutes = {
     "path": "/flyout",
     "name": "Flyout"
   },
+  "flyoutNavigation": {
+    "path": "/flyout-navigation",
+    "name": "FlyoutNavigation"
+  },
+  "flyoutNavigationActiveIdentifier": {
+    "path": "/flyout-navigation-active-identifier",
+    "name": "FlyoutNavigationActiveIdentifier"
+  },
+  "flyoutNavigationBasic": {
+    "path": "/flyout-navigation-basic",
+    "name": "FlyoutNavigationBasic"
+  },
+  "flyoutNavigationPrefixed": {
+    "path": "/flyout-navigation-prefixed",
+    "name": "FlyoutNavigationPrefixed"
+  },
+  "flyoutNavigationScrolled": {
+    "path": "/flyout-navigation-scrolled",
+    "name": "FlyoutNavigationScrolled"
+  },
   "grid": {
     "path": "/grid",
     "name": "Grid"
@@ -107,6 +127,10 @@ const generatedRoutes = {
   "linkTileModelSignature": {
     "path": "/link-tile-model-signature",
     "name": "LinkTileModelSignature"
+  },
+  "linkTileProduct": {
+    "path": "/link-tile-product",
+    "name": "LinkTileProduct"
   },
   "marque": {
     "path": "/marque",

@@ -1,0 +1,58 @@
+<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout Navigation</p-button>
+
+<p-flyout-navigation>
+  <p-flyout-navigation-item identifier="item-1" label="Some Label">
+    <h3>Some heading</h3>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <h3>Some heading</h3>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-2" label="Some Label">
+    <h3>Some heading</h3>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <h3>Some heading</h3>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-3" label="Some Label">
+    <h3>Some heading</h3>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <h3>Some heading</h3>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-4" label="Some Label">
+    <h3>Some heading</h3>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+  <p-flyout-navigation-item identifier="item-5" label="Some Label">
+    <h3>Some heading</h3>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+  </p-flyout-navigation-item>
+</p-flyout-navigation>
+
+<script>
+  const flyoutNavigation = document.querySelector('p-flyout-navigation');
+  document.querySelector('p-button').addEventListener('click', () => {
+    flyoutNavigation.open = true;
+  });
+  flyoutNavigation.addEventListener('dismiss', () => {
+    flyoutNavigation.open = false;
+  });
+  flyoutNavigation.addEventListener('update', (e) => {
+    flyoutNavigation.activeIdentifier = e.detail.activeIdentifier;
+  });
+</script>

@@ -43,6 +43,7 @@ const tagNamesWithSlottedPictureImage = joinArrayElementsToString([
   'p-button-tile',
   'p-link-tile',
   'p-link-tile-model-signature',
+  'p-link-tile-product',
 ] as TagName[]);
 const tagNamesWithSiblingTabindex = joinArrayElementsToString(['p-tabs-bar'] as TagName[]);
 

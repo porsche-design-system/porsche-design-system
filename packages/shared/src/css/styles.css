@@ -17,8 +17,16 @@ a {
 }
 
 #app {
-  /* ??? */
+  /* TODO: not needed as soon as all top layer components are refactored with iFrames */
   transform: translate(0);
+}
+
+iframe {
+  margin-inline-start: -16px;
+  width: 100vw;
+  height: 20rem;
+  border: 0;
+  box-sizing: border-box;
 }
 
 /* Playground */

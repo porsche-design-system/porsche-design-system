@@ -4,6 +4,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasHeading,
   hasNamedSlot,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
@@ -11,14 +12,11 @@ import {
   setScrollLock,
   THEMES,
   validateProps,
+  warnIfAriaAndHeadingPropsAreUndefined,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { ModalAriaAttribute } from './modal-utils';
-import {
-  MODAL_ARIA_ATTRIBUTES,
-  warnIfAriaAndHeadingPropsAreUndefined,
-  clickStartedInScrollbarTrack,
-} from './modal-utils';
+import { MODAL_ARIA_ATTRIBUTES, clickStartedInScrollbarTrack } from './modal-utils';
 import { footerShadowClass, getComponentCss } from './modal-styles';
 import { throttle } from 'throttle-debounce';
 
@@ -128,11 +126,11 @@ export class Modal {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Modal>(this, 'disableCloseButton', 'Please use dismissButton prop instead.');
-    if (this.open) {
-      warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
-    }
-    this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
+    this.hasHeader = hasHeading(this.host, this.heading);
     this.hasFooter = hasNamedSlot(this.host, 'footer');
+    if (this.open) {
+      warnIfAriaAndHeadingPropsAreUndefined(this.host, this.hasHeader, this.aria);
+    }
 
     attachComponentCss(
       this.host,

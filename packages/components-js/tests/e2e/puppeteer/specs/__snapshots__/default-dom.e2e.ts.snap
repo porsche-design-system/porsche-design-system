@@ -68,8 +68,6 @@ exports[`should have no basic DOM regression for p-button-tile 1`] = `
 
 exports[`should have no basic DOM regression for p-carousel 1`] = `
 "<div class="header">
-  <slot name="heading">
-  </slot>
   <div class="nav">
   </div>
 </div>
@@ -145,6 +143,38 @@ exports[`should have no basic DOM regression for p-flyout 1`] = `
   <div class="header">
     <p-button-pure class="dismiss hydrated">
       Dismiss flyout</p-button-pure>
+  </div>
+  <div class="content">
+    <slot>
+    </slot>
+  </div>
+</div>"
+`;
+
+exports[`should have no basic DOM regression for p-flyout-navigation 1`] = `
+"<dialog inert="" tabindex="-1">
+  <div class="header">
+    <p-button-pure class="dismiss hydrated">
+      Dismiss flyout</p-button-pure>
+  </div>
+  <div class="scroller">
+    <nav class="content">
+      <slot>
+      </slot>
+    </nav>
+  </div>
+</dialog>"
+`;
+
+exports[`should have no basic DOM regression for p-flyout-navigation-item 1`] = `
+"<p-button-pure class="button hydrated">
+</p-button-pure>
+<div class="scroller" inert="">
+  <div class="header">
+    <p-button-pure class="back hydrated">
+      Back</p-button-pure>
+    <h2 class="heading">
+    </h2>
   </div>
   <div class="content">
     <slot>
@@ -261,6 +291,31 @@ exports[`should have no basic DOM regression for p-link-tile-model-signature 1`]
       <slot name="secondary">
       </slot>
     </div>
+  </div>
+</div>"
+`;
+
+exports[`should have no basic DOM regression for p-link-tile-product 1`] = `
+"<div class="root">
+  <a class="anchor" href="value" target="_self" aria-labelledby="heading price" aria-describedby="header description">
+  </a>
+  <div id="header" class="header">
+    <slot name="header">
+    </slot>
+    <p-button-pure class="button hydrated">
+      Add to wishlist</p-button-pure>
+  </div>
+  <div class="image">
+    <slot>
+    </slot>
+  </div>
+  <div class="wrapper">
+    <h3 id="heading" class="heading">
+      value</h3>
+    <p id="price" class="price">
+      value</p>
+    <p id="description" class="description">
+    </p>
   </div>
 </div>"
 `;

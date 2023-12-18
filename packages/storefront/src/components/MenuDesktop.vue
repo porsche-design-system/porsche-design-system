@@ -51,8 +51,8 @@
       $pds-spacing-fluid-x-large $pds-grid-wide-offset-s; // Enables the scrollable area of the sidebar to the left side of the viewport while the content is still being placed on the Porsche Grid
 
     @include pds-media-query-min('xxl') {
-      margin-left: calc(#{$pds-grid-wide-offset-xxl} * -1);
-      padding-left: $pds-grid-wide-offset-xxl;
+      margin-inline-start: calc(#{$pds-grid-wide-offset-xxl} * -1);
+      padding-inline-start: $pds-grid-wide-offset-xxl;
     }
   }
 </style>
