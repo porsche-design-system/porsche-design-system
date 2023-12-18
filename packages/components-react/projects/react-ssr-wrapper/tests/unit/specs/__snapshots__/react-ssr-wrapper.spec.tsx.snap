@@ -7256,7 +7256,6 @@ button::before {
   white-space: nowrap;
 }
 .icon {
-  display: inline-block;
   transform: translate3d(0,0,0);
 }
 .spacer {
