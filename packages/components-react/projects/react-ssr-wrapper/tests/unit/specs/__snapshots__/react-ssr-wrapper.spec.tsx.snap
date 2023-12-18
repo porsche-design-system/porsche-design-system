@@ -3555,19 +3555,19 @@ exports[`should render dsr component for PFlyout 1`] = `
   display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  position: fixed !important;
-  z-index: 99998 !important;
   justify-content: flex-end !important;
-  visibility: hidden !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
+  position: fixed !important;
+  z-index: 99998 !important;
+  visibility: hidden !important;
   pointer-events: none !important;
   -webkit-backdrop-filter: blur(0px) !important;
   backdrop-filter: blur(0px) !important;
   background: none !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -6253,6 +6253,7 @@ exports[`should render dsr component for PModal 1`] = `
     <style>
       :host {
   overflow-y: auto;
+  color-scheme: light dark !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -6260,12 +6261,11 @@ exports[`should render dsr component for PModal 1`] = `
   bottom: 0 !important;
   z-index: 99999 !important;
   visibility: hidden !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
-  color-scheme: light dark !important;
   pointer-events: none !important;
   -webkit-backdrop-filter: blur(0px) !important;
   backdrop-filter: blur(0px) !important;
   background: none !important;
+  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
 }
 :host([hidden]) {
   display: none !important;
