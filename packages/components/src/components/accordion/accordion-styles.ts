@@ -58,7 +58,7 @@ export const getComponentCss = (
       },
       button: {
         display: 'flex',
-        ...(!compact && { position: 'relative' }), // relevant for custom click-area in compact variant
+        position: 'relative',
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '100%',
