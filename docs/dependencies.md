@@ -1,4 +1,4 @@
-# Dependencies 30.11.2023
+# Dependencies 18.12.2023
 
 ## Overview of Framework Versions
 
@@ -6,7 +6,14 @@
 | ------- | -------- | ---------------------- |
 | Angular | 15.2.10  | 17.0.4                 |
 | React   | 18.2.0   | 18.2.0                 |
-| Next.js | 14.0.1   | 13.4.19 (React 18.2.0) |
+| Next.js | 14.0.4   | 13.4.19 (React 18.2.0) |
+
+## Components
+
+### Affected dependencies:
+
+- `imask` uses static class properties since v7.2.0 which can't be handled by our outdated vue 2 setup without
+  additional babel plugins, this is imported via text-field-wrapper.examples.md
 
 ## Vue
 
@@ -33,6 +40,8 @@ with Vue **2** and **3**.
 - `vmark-loader`
 - `@stackblitz/sdk` uses optional chaining internally which can't be handled by webpack 4 without additional babel
   plugins
+- `imask` uses static class properties since v7.2.0 which can't be handled by our outdated vue 2 setup without
+  additional babel plugins
 
 ---
 
