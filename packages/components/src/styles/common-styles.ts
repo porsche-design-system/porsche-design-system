@@ -155,16 +155,16 @@ export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
 /**
  * Generates JSS styles for a frosted glass background.
  * @param {boolean} isVisible - Determines if the frosted glass effect is visible.
- * @param {string} duration - The duration of the transition animation.
  * @param {number} zIndex - The z-index to be used.
  * @param {Theme} theme - The theme to be used.
+ * @param {string} duration - The duration of the transition animation.
  * @returns {JssStyle} - The JSS styles for the frosted glass backdrop.
  */
 export const getBackdropJssStyle = (
   isVisible: boolean,
-  duration: MotionDurationKey,
   zIndex: number,
-  theme: Theme
+  theme: Theme,
+  duration: MotionDurationKey = 'long'
 ): JssStyle => {
   return {
     position: 'fixed',
@@ -172,7 +172,7 @@ export const getBackdropJssStyle = (
     zIndex,
     ...(isVisible
       ? {
-          visibility: 'visible',
+          visibility: 'inherit',
           pointerEvents: 'auto',
           ...frostedGlassStyle,
           // TODO: background shading is missing in getThemedColors(theme).backgroundShading
@@ -188,10 +188,7 @@ export const getBackdropJssStyle = (
           backdropFilter: 'blur(0px)',
           background: 'none',
         }),
-    transition: `${getTransition('background', duration)}, ${getTransition(
-      'backdrop-filter',
-      duration
-    )}, ${getTransition(
+    transition: `${getTransition('background', 'long')}, ${getTransition('backdrop-filter', duration)}, ${getTransition(
       '-webkit-backdrop-filter',
       duration
     )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationLong})`,

@@ -18,13 +18,11 @@ import {
   getMediaQueryMin,
   gridExtendedOffsetBase,
   headingLargeStyle,
-  motionDurationShort,
 } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  cssVariableTransitionDuration,
   getBackdropJssStyle,
   getInsetJssStyle,
   getThemedColors,
@@ -114,20 +112,9 @@ export const getComponentCss = (
       ':host': {
         overflowY: 'auto', // overrideable
         ...addImportantToEachRule({
-          position: 'fixed',
-          ...getInsetJssStyle(),
-          zIndex: MODAL_Z_INDEX,
-          ...(isOpen
-            ? {
-                visibility: 'inherit',
-              }
-            : {
-                visibility: 'hidden',
-                transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationShort})`,
-              }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...getBackdropJssStyle(isOpen, 'long', MODAL_Z_INDEX, theme),
+          ...getBackdropJssStyle(isOpen, MODAL_Z_INDEX, theme),
         }),
       },
       '::slotted': addImportantToEachRule(

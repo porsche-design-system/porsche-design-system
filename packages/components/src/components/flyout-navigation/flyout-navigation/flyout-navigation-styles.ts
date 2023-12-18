@@ -53,7 +53,7 @@ export const getComponentCss = (
             [cssVariableVisibility]: 'hidden',
             [cssVariableVisibilityTransitionDuration]: motionDurationLong,
           }),
-          ...getBackdropJssStyle(isPrimaryScrollerVisible, 'long', FLYOUT_Z_INDEX, theme),
+          ...getBackdropJssStyle(isPrimaryScrollerVisible, FLYOUT_Z_INDEX, theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
