@@ -112,15 +112,11 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        display: 'flex',
         overflowY: 'auto', // overrideable
         ...addImportantToEachRule({
           position: 'fixed',
           ...getInsetJssStyle(),
           zIndex: MODAL_Z_INDEX,
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
           ...(isOpen
             ? {
                 visibility: 'inherit',
@@ -157,6 +153,15 @@ export const getComponentCss = (
           color: primaryColorDark,
         }),
       },
+    },
+    'scroll-container': {
+      display: 'flex',
+      ...getInsetJssStyle(),
+      height: '100%',
+      overflowY: 'inherit',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
     },
     root: mergeDeep(
       {
@@ -238,6 +243,7 @@ export const getComponentCss = (
         left: '8px',
         display: 'flex',
         justifyContent: 'flex-end',
+        zIndex: 1, // To be on top of transformed full screen content
       },
       dismiss: {
         border: `2px solid ${backgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
