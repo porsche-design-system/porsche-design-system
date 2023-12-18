@@ -78,8 +78,8 @@ const generateDSRComponents = (): void => {
           group.endsWith('utils')
             ? m.replace(group, utilsBundleImportPath)
             : group.endsWith('state-message') || group.endsWith('required') || group.endsWith('label')
-              ? m.replace(group, './' + group.split('/').pop())
-              : ''
+            ? m.replace(group, './' + group.split('/').pop())
+            : ''
         )
         .replace(/.*= getPrefixedTagNames\((?:this\.)?host.*\n/g, '') // remove getPrefixedTagNames call
         // add new imports

@@ -1,7 +1,6 @@
 import type { Options, Splide } from '@splidejs/splide';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
-import { consoleWarn, getTagNameWithoutPrefix, hasNamedSlot } from '../../utils';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { ButtonPure } from '../button-pure/button-pure';
 import {
@@ -10,6 +9,7 @@ import {
   paginationInfiniteStartCaseClass,
   paginationBulletSize,
 } from './carousel-styles';
+import { HeadingSize } from '../../types';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
@@ -21,6 +21,11 @@ export const CAROUSEL_ALIGN_HEADERS_DEPRECATED = ['left'] as const;
 export type CarouselAlignHeaderDeprecated = (typeof CAROUSEL_ALIGN_HEADERS_DEPRECATED)[number];
 export const CAROUSEL_ALIGN_HEADERS = ['start', 'center', ...CAROUSEL_ALIGN_HEADERS_DEPRECATED] as const;
 export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
+
+export type CarouselHeadingSize = Extract<HeadingSize, 'x-large' | 'xx-large'>;
+
+export const CAROUSEL_ARIA_ATTRIBUTES = ['aria-label'] as const;
+export type CarouselAriaAttribute = (typeof CAROUSEL_ARIA_ATTRIBUTES)[number];
 
 // The offset value used for calculating the number of infinite bullets
 const INFINITE_BULLET_OFFSET = 2;
@@ -60,19 +65,9 @@ export const getSplideBreakpoints = (
       };
 };
 
-export const warnIfHeadingIsMissing = (host: HTMLElement, heading: string): void => {
-  if (!heading && !hasNamedSlot(host, 'heading')) {
-    consoleWarn(
-      `heading has to be set via property or named slot for component ${getTagNameWithoutPrefix(
-        host
-      )} in order to ensure accessibility.`
-    );
-  }
-};
-
 export const getSlidesAndAddAttributes = (host: HTMLElement): HTMLElement[] => {
   const slides = Array.from(host.children).filter(
-    ({ slot }) => slot !== 'heading' && slot !== 'description'
+    ({ slot }) => slot !== 'heading' && slot !== 'description' && slot !== 'header'
   ) as HTMLElement[];
   slides.forEach((el, i) => {
     el.setAttribute('slot', `slide-${i}`);

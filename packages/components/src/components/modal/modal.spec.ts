@@ -1,8 +1,9 @@
 import { Modal } from './modal';
-import * as modalUtils from './modal-utils';
 import * as focusTrapUtils from '../../utils/focusTrap';
 import * as setScrollLockUtils from '../../utils/setScrollLock';
 import * as domUtils from '../../utils/dom';
+import * as warnIfAriaAndHeadingPropsAreUndefined from '../../utils/log/warnIfAriaAndHeadingPropsAreUndefined';
+import * as hasHeading from '../../utils/form/hasHeading';
 import type { FirstAndLastFocusableElement } from '../../utils';
 
 jest.mock('../../utils/dom');
@@ -69,32 +70,37 @@ describe('render', () => {
   });
 
   it('should call warnIfAriaAndHeadingPropsAreUndefined() with correct parameters when open="true"', () => {
-    const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
+    const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(
+      warnIfAriaAndHeadingPropsAreUndefined,
+      'warnIfAriaAndHeadingPropsAreUndefined'
+    );
     component.open = true;
+    component.heading = 'Some Heading';
     component.render();
 
-    expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toBeCalledWith(component.host, component.heading, component.aria);
+    expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toBeCalledWith(component.host, true, component.aria);
   });
 
   it('should not call warnIfAriaAndHeadingPropsAreUndefined() when open="false"', () => {
-    const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(modalUtils, 'warnIfAriaAndHeadingPropsAreUndefined');
+    const warnIfAriaAndHeadingPropsAreUndefinedSpy = jest.spyOn(
+      warnIfAriaAndHeadingPropsAreUndefined,
+      'warnIfAriaAndHeadingPropsAreUndefined'
+    );
     component.open = false;
     component.render();
 
     expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).not.toBeCalled();
   });
 
-  it("should not call hasNamedSlot(this.host, 'heading') when heading is provided via prop", () => {
-    const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
+  it('should call hasHeading() with correct parameters', () => {
+    const spy = jest.spyOn(hasHeading, 'hasHeading');
     component.heading = 'Some Heading';
     component.render();
 
-    expect(hasNamedSlotSpy).not.toBeCalledWith(component.host, 'heading');
-    expect(hasNamedSlotSpy).toBeCalledWith(component.host, 'footer');
-    expect(hasNamedSlotSpy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(component.host, component.heading);
   });
 
-  it('should call hasNamedSlot() with correct parameters when no heading is provided via prop', () => {
+  it('should call hasNamedSlot() with correct parameters', () => {
     const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
     const header = document.createElement('header');
     header.slot = 'heading';
