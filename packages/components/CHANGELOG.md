@@ -24,6 +24,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Carousel`: Position and width of heading and description
   ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
 
+#### Fixed
+
+- `Modal`: Scrollbar is hidden ([#2907](https://github.com/porsche-design-system/porsche-design-system/pull/2907))
+
 ### [3.10.0-rc.3] - 2023-12-12
 
 ### [3.10.0-rc.2] - 2023-12-12
