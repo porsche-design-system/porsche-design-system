@@ -50,7 +50,7 @@ While the image will always stay at an aspect ratio of `8:9`, the aspect ratio o
 using the `aspect-ratio` property to be either `3:4` or `9:16`. This can be especially useful to extend the space for
 the image by using the `9:16` aspect ratio on smaller viewports and the `3:4` on larger ones.
 
-<Playground :markup="aspectRatioMarkup" :config="config">
+<Playground :markup="aspectRatioMarkup">
   <PlaygroundSelect v-model="aspectRatio" :values="aspectRatios" name="aspectRatio"></PlaygroundSelect>
 </Playground>
 
@@ -110,11 +110,11 @@ export default class Code extends Vue {
 
   example = getLinkTileProductCodeSamples();
 
-  basic = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com">
+  basic = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>
 
-<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com">
+<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
   <picture>
     <source media="(min-width:960px)" srcset="${this.imgSrcLarge}" />
     ${this.img}
@@ -124,30 +124,30 @@ export default class Code extends Vue {
   likeButton = 'false';
   likeButtons = ['true', 'false'];
   get likeButtonMarkup() {
-    return`<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" ${this.likeButton === 'false' ? 'like-button="false"' : ''}>
+    return`<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" ${this.likeButton === 'false' ? 'like-button="false"' : ''} theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>`;
   };
 
-  header = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com">
+  header = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" theme="${this.theme}">
   ${this.headerSlot}
   ${this.img}
 </p-link-tile-product>`;
 
-  description = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" description="incl. VAT">
+  description = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" description="incl. VAT" theme="${this.theme}">
   ${this.img}
 </p-link-tile-product>`;
 
   aspectRatio = '3:4';
   aspectRatios = [...TILE_PRODUCT_ASPECT_RATIOS, "{ base: '9:16', s: '3:4' }"];
   get aspectRatioMarkup() {
-    return`<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" description="incl. VAT" aspect-ratio="${this.aspectRatio}">
+    return`<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" description="incl. VAT" aspect-ratio="${this.aspectRatio}" theme="${this.theme}">
   ${this.headerSlot}
   ${this.img}
 </p-link-tile-product>`;
   };
 
-  slottedLink = `<p-link-tile-product heading="Weekender" price="1.911,00 €" description="incl. VAT">
+  slottedLink = `<p-link-tile-product heading="Weekender" price="1.911,00 €" description="incl. VAT" theme="${this.theme}">
   ${this.link}
   ${this.img}
 </p-link-tile-product>`;
