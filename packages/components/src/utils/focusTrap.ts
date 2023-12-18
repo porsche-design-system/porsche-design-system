@@ -35,6 +35,7 @@ export let documentKeydownListener: (e: KeyboardEvent) => void;
 export const setFocusTrap = (
   host: HTMLElement,
   isOpen: boolean,
+  firstElementChild: HTMLElement,
   closeBtn?: HTMLElement, // irrelevant for disconnectedCallback
   closeFn?: () => void // irrelevant for disconnectedCallback
 ): void => {
@@ -45,7 +46,7 @@ export const setFocusTrap = (
     focusableElements = getFirstAndLastFocusableElement(host, closeBtn);
     documentKeydownListener = (e: KeyboardEvent): void => {
       const { key, shiftKey } = e;
-      const { activeElement, firstElementChild } = host.shadowRoot;
+      const { activeElement } = host.shadowRoot;
       if (key === 'Escape') {
         closeFn();
       } else if (key === 'Tab') {

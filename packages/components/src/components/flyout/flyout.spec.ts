@@ -31,7 +31,13 @@ describe('componentDidLoad', () => {
     component.open = true;
     component.componentDidLoad();
 
-    expect(utilsSpy).toBeCalledWith(component.host, true, component['dismissBtn'], component['dismissFlyout']);
+    expect(utilsSpy).toBeCalledWith(
+      component.host,
+      true,
+      component['dialog'],
+      component['dismissBtn'],
+      component['dismissFlyout']
+    );
   });
 
   it('should call setScrollLock() with correct parameters if flyout is open', () => {
@@ -55,7 +61,7 @@ describe('disconnectedCallback', () => {
     const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
     component.disconnectedCallback();
 
-    expect(utilsSpy).toBeCalledWith(component.host, false);
+    expect(utilsSpy).toBeCalledWith(component.host, false, component['dialog']);
   });
 
   it('should call setScrollLock() with correct parameters', () => {

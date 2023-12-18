@@ -121,7 +121,13 @@ describe('this.updateFocusTrap()', () => {
     const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
     component['updateFocusTrap'](true);
 
-    expect(utilsSpy).toBeCalledWith(component.host, true, component['dismissBtn'], component['dismissModal']);
+    expect(utilsSpy).toBeCalledWith(
+      component.host,
+      true,
+      component['dialog'],
+      component['dismissBtn'],
+      component['dismissModal']
+    );
   });
 
   it('should call setScrollLock() with correct parameters for isOpen = true', () => {
@@ -135,7 +141,13 @@ describe('this.updateFocusTrap()', () => {
     const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
     component['updateFocusTrap'](false);
 
-    expect(utilsSpy).toBeCalledWith(component.host, false, component['dismissBtn'], component['dismissModal']);
+    expect(utilsSpy).toBeCalledWith(
+      component.host,
+      false,
+      component['dialog'],
+      component['dismissBtn'],
+      component['dismissModal']
+    );
   });
 
   it('should call setScrollLock() with correct parameters for isOpen = false', () => {

@@ -204,7 +204,7 @@ export class Modal {
   }
 
   private updateFocusTrap(isOpen: boolean): void {
-    setFocusTrap(this.host, isOpen, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
+    setFocusTrap(this.host, isOpen, this.dialog, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
     setScrollLock(isOpen);
   }
 
