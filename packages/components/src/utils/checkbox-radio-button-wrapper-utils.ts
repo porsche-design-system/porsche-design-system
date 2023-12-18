@@ -5,6 +5,7 @@ export const changeHandler = ({ target }: Event & { target: HTMLInputElement }):
     el.style.display = 'none';
     el.style.display = '';
     // TODO: about the described safari issue from above, why not just set the attribute like this?
+    //  -> It seems to be not enough to toggle an attribute without changing the attribute's value
     // el.toggleAttribute('checked', el === target);
   });
 };
