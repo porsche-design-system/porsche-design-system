@@ -151,7 +151,7 @@ describe('getBackdropJssStyle()', () => {
     [false, 9999, 'dark', 'moderate'],
     [true, 9999, 'light', 'long'],
     [false, 9999, 'dark', 'veryLong'],
-  ])('should return correct JssStyle for isVisible: %s, duration: %s and theme: %s', (...args) => {
+  ])('should return correct JssStyle for isVisible: %s, zIndex: %s, theme: %s and duration: %s', (...args) => {
     expect(getBackdropJssStyle(...args)).toMatchSnapshot();
   });
 });
