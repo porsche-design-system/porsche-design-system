@@ -188,7 +188,10 @@ export const getBackdropJssStyle = (
           backdropFilter: 'blur(0px)',
           background: 'none',
         }),
-    transition: `${getTransition('background', 'long')}, ${getTransition('backdrop-filter', duration)}, ${getTransition(
+    transition: `${getTransition('background', duration)}, ${getTransition(
+      'backdrop-filter',
+      duration
+    )}, ${getTransition(
       '-webkit-backdrop-filter',
       duration
     )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationLong})`,
