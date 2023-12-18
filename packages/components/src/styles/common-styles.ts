@@ -169,7 +169,7 @@ export const getBackdropJssStyle = (
   return {
     position: 'fixed',
     ...getInsetJssStyle(),
-    zIndex: zIndex,
+    zIndex,
     ...(isVisible
       ? {
           visibility: 'visible',
