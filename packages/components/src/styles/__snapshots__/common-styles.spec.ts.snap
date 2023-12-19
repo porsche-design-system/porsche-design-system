@@ -48,7 +48,7 @@ exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: fal
   "position": "fixed",
   "right": 0,
   "top": 0,
-  "transition": "background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s)",
+  "transition": "background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.4s)",
   "visibility": "hidden",
   "zIndex": 9999,
 }
@@ -65,7 +65,7 @@ exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: fal
   "position": "fixed",
   "right": 0,
   "top": 0,
-  "transition": "background var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s)",
+  "transition": "background var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 1.2s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 1.2s)",
   "visibility": "hidden",
   "zIndex": 9999,
 }

@@ -15,7 +15,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   -webkit-backdrop-filter: blur(0px) !important;
   backdrop-filter: blur(0px) !important;
   background: none !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -111,7 +111,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   -webkit-backdrop-filter: blur(0px) !important;
   backdrop-filter: blur(0px) !important;
   background: none !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -228,7 +228,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   -webkit-backdrop-filter: blur(0px) !important;
   backdrop-filter: blur(0px) !important;
   background: none !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -345,7 +345,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   -webkit-backdrop-filter: blur(0px) !important;
   backdrop-filter: blur(0px) !important;
   background: none !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -441,7 +441,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   -webkit-backdrop-filter: blur(0px) !important;
   backdrop-filter: blur(0px) !important;
   background: none !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -537,7 +537,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   -webkit-backdrop-filter: blur(0px) !important;
   backdrop-filter: blur(0px) !important;
   background: none !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -654,7 +654,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   -webkit-backdrop-filter: blur(0px) !important;
   backdrop-filter: blur(0px) !important;
   background: none !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -771,7 +771,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
   background: rgba(1, 2, 5, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  transition: background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1017,7 +1017,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
   background: rgba(1, 2, 5, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  transition: background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1126,7 +1126,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
   background: rgba(38, 38, 41, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  transition: background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1222,7 +1222,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
   background: rgba(38, 38, 41, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  transition: background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1331,7 +1331,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
   background: rgba(38, 38, 41, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  transition: background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1448,7 +1448,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
   background: rgba(1, 2, 5, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  transition: background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1565,7 +1565,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
   background: rgba(38, 38, 41, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  transition: background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1661,7 +1661,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
   background: rgba(1, 2, 5, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  transition: background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1757,7 +1757,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
   background: rgba(1, 2, 5, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  transition: background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1874,7 +1874,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
   background: rgba(38, 38, 41, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  transition: background var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
 }
 :host([hidden]) {
   display: none !important;
