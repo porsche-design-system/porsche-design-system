@@ -62,15 +62,15 @@ describe('cdn', () => {
     });
   });
 
-  const isStatusNot200 = (item: Response): boolean => item.status !== 200;
-  const isStatus400 = (item: Response): boolean => item.status === 400;
+  const isStatusNot200 = (item: ResponseType, _index: number, _arr: ResponseType[]): boolean => item.status !== 200;
+  const isStatus400 = (item: ResponseType, _index: number, _arr: ResponseType[]): boolean => item.status === 400;
   const urlIncludes =
     (str: string) =>
-    (item: Response): boolean =>
+    (item: ResponseType, _index: number, _arr: ResponseType[]): boolean =>
       item.url.includes(str);
   const urlStartsWith =
     (str: string) =>
-    (item: Response): boolean =>
+    (item: ResponseType, _index: number, _arr: ResponseType[]): boolean =>
       item.url.startsWith(str);
   const fetchUrl = (url: string): Promise<void> =>
     page.evaluate(async (url: string) => {
@@ -153,6 +153,7 @@ describe('cdn', () => {
         ((item: string) => {
           it(`should exist and have correct headers: ${item}`, async () => {
             await fetchUrl(`${baseUrl}/${item}`);
+
             expect(responses.filter(isStatusNot200).length).toBe(0);
             responses.forEach((response) => {
               const ext = item.split('.').pop();
