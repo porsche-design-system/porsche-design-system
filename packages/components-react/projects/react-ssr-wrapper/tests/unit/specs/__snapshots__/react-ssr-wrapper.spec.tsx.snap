@@ -790,7 +790,7 @@ exports[`manual test cases should pass internal props correctly to p-multi-selec
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              src="http://localhost:3001/icons/arrow-head-down.min.31c010019ab8911fed67bef461ce8b40.svg"
               width="24"
             />
           </template>
@@ -1115,7 +1115,7 @@ exports[`manual test cases should pass internal props correctly to p-select-wrap
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              src="http://localhost:3001/icons/arrow-head-down.min.31c010019ab8911fed67bef461ce8b40.svg"
               width="24"
             />
           </template>
@@ -1220,7 +1220,7 @@ exports[`manual test cases should pass internal props correctly to p-select-wrap
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              src="http://localhost:3001/icons/arrow-head-down.min.31c010019ab8911fed67bef461ce8b40.svg"
               width="24"
             />
           </template>
@@ -1328,7 +1328,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
                     width="24"
                   />
                 </template>
@@ -1358,7 +1358,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
                     width="24"
                   />
                 </template>
@@ -1477,7 +1477,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-bar 1`
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
                     width="24"
                   />
                 </template>
@@ -1507,7 +1507,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-bar 1`
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
                     width="24"
                   />
                 </template>
@@ -1609,7 +1609,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                         alt=""
                         height="24"
                         loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                        src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
                         width="24"
                       />
                     </template>
@@ -1639,7 +1639,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                         alt=""
                         height="24"
                         loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                        src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
                         width="24"
                       />
                     </template>
@@ -1828,7 +1828,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/view.min.cd78cae7309f44d941e9264047e3efa0.svg"
+                    src="http://localhost:3001/icons/view.min.d67598610da0a07bcd0c3b16b4a88d2e.svg"
                     width="24"
                   />
                 </template>
@@ -1891,7 +1891,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/search.min.f2755d61c24b6ad037f51d65588be308.svg"
+              src="http://localhost:3001/icons/search.min.55be3fdc01f61752b7b32691f8b29f3d.svg"
               width="24"
             />
           </template>
@@ -1928,7 +1928,7 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
                     width="24"
                   />
                 </template>
@@ -2150,7 +2150,7 @@ img {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/plus.min.dd34f71292a547080b9247a72c1adda2.svg"
+                src="http://localhost:3001/icons/plus.min.3fbdce4b03fe2c2d1ae489f0dd916f7b.svg"
                 width="24"
               />
             </template>
@@ -2322,7 +2322,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/information-filled.min.1055e842bb7d89c061ff1b5f47ed6169.svg"
+              src="http://localhost:3001/icons/information-filled.min.94c4e0947b6b345035405fb4523d9798.svg"
               width="24"
             />
           </template>
@@ -2462,7 +2462,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
                     width="24"
                   />
                 </template>
@@ -2723,7 +2723,7 @@ img {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+            src="http://localhost:3001/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg"
             width="24"
           />
         </template>
@@ -3764,7 +3764,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
                     width="24"
                   />
                 </template>
@@ -4043,7 +4043,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
                     width="24"
                   />
                 </template>
@@ -4324,7 +4324,7 @@ img {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
                 width="24"
               />
             </template>
@@ -4464,7 +4464,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
                     width="24"
                   />
                 </template>
@@ -4700,7 +4700,7 @@ img {
       alt=""
       height="24"
       loading="lazy"
-      src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+      src="http://localhost:3001/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg"
       width="24"
     />
   </template>
@@ -4806,7 +4806,7 @@ img {
           alt=""
           height="24"
           loading="lazy"
-          src="http://localhost:3001/icons/information-filled.min.1055e842bb7d89c061ff1b5f47ed6169.svg"
+          src="http://localhost:3001/icons/information-filled.min.94c4e0947b6b345035405fb4523d9798.svg"
           width="24"
         />
       </template>
@@ -4946,7 +4946,7 @@ img {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
                 width="24"
               />
             </template>
@@ -5195,7 +5195,7 @@ img {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+            src="http://localhost:3001/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg"
             width="24"
           />
         </template>
@@ -5338,7 +5338,7 @@ img {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+            src="http://localhost:3001/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg"
             width="24"
           />
         </template>
@@ -6132,7 +6132,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/heart.min.7c25821e7db007879ef53b83c116fc37.svg"
+                    src="http://localhost:3001/icons/heart.min.ac97f7194f77906671001ee08b9ed2a8.svg"
                     width="24"
                   />
                 </template>
@@ -6488,7 +6488,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+                    src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
                     width="24"
                   />
                 </template>
@@ -6771,7 +6771,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              src="http://localhost:3001/icons/arrow-head-down.min.31c010019ab8911fed67bef461ce8b40.svg"
               width="24"
             />
           </template>
@@ -6956,7 +6956,7 @@ img {
                   alt=""
                   height="24"
                   loading="lazy"
-                  src="http://localhost:3001/icons/arrow-left.min.24e8467ef0f8f206f228a3d8d443d70b.svg"
+                  src="http://localhost:3001/icons/arrow-left.min.06c8246bf60d457bc3f2ff8866053de2.svg"
                   width="24"
                 />
               </template>
@@ -7024,7 +7024,7 @@ img {
                   alt=""
                   height="24"
                   loading="lazy"
-                  src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg"
+                  src="http://localhost:3001/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg"
                   width="24"
                 />
               </template>
@@ -7353,7 +7353,7 @@ img {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/information.min.d387e44cc786ca3df3702f429518a1d9.svg"
+            src="http://localhost:3001/icons/information.min.6133967342679be0bee7a36a5a3659e9.svg"
             width="24"
           />
         </template>
@@ -7674,7 +7674,7 @@ img {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
                 width="24"
               />
             </template>
@@ -7730,7 +7730,7 @@ img {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
                 width="24"
               />
             </template>
@@ -7994,7 +7994,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.min.454c189f4914925447670d0ae9bd2043.svg"
+              src="http://localhost:3001/icons/arrow-head-down.min.31c010019ab8911fed67bef461ce8b40.svg"
               width="24"
             />
           </template>
@@ -8366,7 +8366,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
                     width="24"
                   />
                 </template>
@@ -8422,7 +8422,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
                     width="24"
                   />
                 </template>
@@ -8856,7 +8856,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
                     width="24"
                   />
                 </template>
@@ -8912,7 +8912,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
                     width="24"
                   />
                 </template>
@@ -9386,7 +9386,7 @@ img {
                         alt=""
                         height="24"
                         loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                        src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
                         width="24"
                       />
                     </template>
@@ -9442,7 +9442,7 @@ img {
                         alt=""
                         height="24"
                         loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                        src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
                         width="24"
                       />
                     </template>
@@ -9754,7 +9754,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.aa2da7b4dbbb8a28c046592290054e94.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
                     width="24"
                   />
                 </template>
@@ -9810,7 +9810,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.min.fb602ae5cb51970770570a70287e77e9.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
                     width="24"
                   />
                 </template>
@@ -10028,7 +10028,7 @@ img {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/close.min.eefab6ef191882058f9ed548bd5a467e.svg"
+            src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
             width="24"
           />
         </template>

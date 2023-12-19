@@ -1,10 +1,10 @@
-import * as webpack from 'webpack';
-import TerserPlugin from 'terser-webpack-plugin';
-import { cdnDistPath, deployUrl, snakeCaseVersion, version } from './environment';
+const webpack = require ('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
+const { cdnDistPath, deployUrl, snakeCaseVersion, version } = require('./environment');
 const CustomNamedChunkIdsPlugin = require('./CustomNamedChunkIdsPlugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-const config: webpack.Configuration = {
+module.exports = {
   mode: 'production',
   entry: './projects/components-wrapper/src/index.js',
   stats: {
@@ -54,4 +54,3 @@ const config: webpack.Configuration = {
   ],
 };
 
-export default config;
