@@ -8,13 +8,6 @@
 | React   | 18.2.0   | 18.2.0                 |
 | Next.js | 14.0.4   | 13.4.19 (React 18.2.0) |
 
-## Components
-
-### Affected dependencies:
-
-- `imask` uses static class properties since v7.2.0 which can't be handled by our outdated vue 2 setup without
-  additional babel plugins, this is imported via text-field-wrapper.examples.md
-
 ## Vue
 
 All Vue related dependencies can't be updated at the moment because `vue-property-decorator` and `vue-class-component`
@@ -138,3 +131,24 @@ There is an open issue about it: https://github.com/lovell/sharp/issues/3870
 ### Affected dependencies:
 
 - `sharp`
+
+---
+
+## iMask
+
+Since v7.2.0 `imask` uses static class properties which can't be handled by our outdated vue 2 setup without additional
+babel plugins, this is imported via text-field-wrapper.examples.md.
+
+### Affected dependencies:
+
+- `imask`
+
+---
+
+## Mime
+
+Since v4.0.0 `mime` decided to provide just a modern _ESM_ build with their latest npm package.
+
+### Affected dependencies:
+
+- `mime`
