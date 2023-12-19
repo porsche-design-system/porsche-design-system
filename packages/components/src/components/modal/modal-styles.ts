@@ -114,7 +114,7 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...getBackdropJssStyle(isOpen, MODAL_Z_INDEX, theme),
+          ...getBackdropJssStyle(isOpen, MODAL_Z_INDEX, theme, duration),
         }),
       },
       '::slotted': addImportantToEachRule(
