@@ -3,7 +3,7 @@ import * as path from 'path';
 import type { CommonConfig } from '../../shared-definitions/entry-config';
 import { filePathByPattern } from './file-by-pattern';
 
-const configFileName = 'cm.config.js';
+const configFileName = 'cm.config.cjs';
 const packageJsonFileName = 'package.json';
 
 type PackageJson = {

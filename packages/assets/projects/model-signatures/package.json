@@ -27,8 +27,8 @@
   "devDependencies": {
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
-    "ts-node": "^10.9.1",
-    "typescript": "~5.2.2"
+    "ts-node": "^10.9.2",
+    "typescript": "~5.3.3"
   },
   "files": [
     "dist/"

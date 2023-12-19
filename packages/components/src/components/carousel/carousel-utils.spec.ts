@@ -10,10 +10,7 @@ import {
   slidePrev,
   updatePagination,
   updatePrevNextButtons,
-  warnIfHeadingIsMissing,
 } from './carousel-utils';
-import * as hasNamedSlotUtils from '../../utils/dom/hasNamedSlot';
-import * as loggerUtils from '../../utils/log/logger';
 import type { Splide } from '@splidejs/splide';
 import { ButtonPure } from '../button-pure/button-pure';
 
@@ -35,51 +32,6 @@ describe('getSplideBreakpoints()', () => {
       480: { perPage: 3 },
       760: { perPage: 3 },
     });
-  });
-});
-
-describe('warnIfHeadingIsMissing()', () => {
-  it('should call hasNamedSlot() with correct parameters', () => {
-    jest.spyOn(global.console, 'warn').mockImplementation();
-    const spy = jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot');
-    const host = document.createElement('p-carousel');
-
-    warnIfHeadingIsMissing(host, '');
-    expect(spy).toBeCalledWith(host, 'heading');
-  });
-
-  it('should call consoleWarn() util with correct parameter if heading prop is not set or slotted heading does not exist', () => {
-    const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
-    jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot').mockReturnValue(false);
-    const host = document.createElement('p-carousel');
-
-    warnIfHeadingIsMissing(host, undefined);
-    expect(spy).toBeCalledWith(
-      'heading has to be set via property or named slot for component p-carousel in order to ensure accessibility.'
-    );
-
-    warnIfHeadingIsMissing(host, null);
-    expect(spy).toBeCalledTimes(2);
-
-    warnIfHeadingIsMissing(host, '');
-    expect(spy).toBeCalledTimes(3);
-  });
-
-  it('should not call consoleWarn() util if heading prop is set', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
-    const host = document.createElement('p-carousel');
-
-    warnIfHeadingIsMissing(host, 'some heading');
-    expect(spy).not.toBeCalled();
-  });
-
-  it('should not call consoleWarn() util if slotted heading exists', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
-    jest.spyOn(hasNamedSlotUtils, 'hasNamedSlot').mockReturnValue(true);
-    const host = document.createElement('p-carousel');
-
-    warnIfHeadingIsMissing(host, '');
-    expect(spy).not.toBeCalled();
   });
 });
 
