@@ -52,7 +52,7 @@
     "rollup-plugin-preserve-directives": "^0.2.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "rollup-plugin-terser": "^7.0.2",
-    "sharp": "0.32.0",
+    "sharp": "0.32.6",
     "ts-jest": "^29.1.1"
   },
   "devDependencies": {
