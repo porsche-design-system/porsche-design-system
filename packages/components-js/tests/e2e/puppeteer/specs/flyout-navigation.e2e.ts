@@ -7,13 +7,11 @@ import {
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
-  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -23,10 +21,7 @@ import type { ElementHandle, Page } from 'puppeteer';
 import type { Components } from '@porsche-design-system/components';
 
 let page: Page;
-beforeEach(async () => {
-  page = await browser.newPage();
-  // initConsoleObserver(page);
-});
+beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-flyout-navigation');
@@ -100,14 +95,6 @@ const addButtonsBeforeAndAfterFlyout = () =>
     buttonAfter.id = 'btn-after';
     document.body.append(buttonAfter);
   });
-
-const scrollFlyoutTo = async (selector: string) =>
-  await page.evaluate(
-    (el) => {
-      el.scrollIntoView();
-    },
-    await selectNode(page, selector)
-  );
 
 const expectDismissButtonToBeFocused = async (failMessage?: string) => {
   const host = await getHost();
@@ -219,7 +206,7 @@ describe('can be dismissed', () => {
 });
 
 describe('focus behavior', () => {
-  it('should focus dismiss button after open', async () => {
+  it('should focus dismiss button after tab press', async () => {
     await initBasicFlyoutNavigation({ open: false });
     await openFlyoutNavigation();
     await page.keyboard.press('Tab');
@@ -285,6 +272,39 @@ describe('focus behavior', () => {
     await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
     expect(await getActiveElementProp(page, 'identifier')).toBe('item-3');
+  });
+
+  // TODO: Is this the expected behavior?
+  it('should not allow focusing element behind of flyout when pressing Tab', async () => {
+    await initBasicFlyoutNavigation({ open: false }, { amount: 0 });
+    await addButtonsBeforeAndAfterFlyout();
+    await openFlyoutNavigation();
+
+    expect(await getActiveElementTagName(page)).toBe('BODY');
+    await page.keyboard.press('Tab');
+    await expectDismissButtonToBeFocused();
+    await page.keyboard.press('Tab');
+    await expectDismissButtonToBeFocused();
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('BODY');
+  });
+
+  // TODO: Is this the expected behavior?
+  it('should not allow focusing element behind of flyout when pressing Shift Tab', async () => {
+    await initBasicFlyoutNavigation({ open: false }, { amount: 0 });
+    await addButtonsBeforeAndAfterFlyout();
+    await openFlyoutNavigation();
+
+    expect(await getActiveElementTagName(page)).toBe('BODY');
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    await expectDismissButtonToBeFocused();
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    await expectDismissButtonToBeFocused();
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('BODY');
   });
 
   it('should focus last focused element after flyout is dismissed', async () => {
