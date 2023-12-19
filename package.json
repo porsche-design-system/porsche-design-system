@@ -68,7 +68,7 @@
     "start:storefront": "yarn --cwd ./packages/storefront start",
     "build": "yarn build:core-dependencies && concurrently -n 'components' 'yarn build:components' && concurrently -n 'components-js' 'yarn build:components-js' && concurrently --kill-others-on-fail -n 'components-angular,components-react,components-vue' 'yarn build:components-angular' 'yarn build:components-react' 'yarn build:components-vue' && yarn build:storefront",
     "build-prod": "yarn build:core-dependencies && concurrently -n 'components' 'yarn build:components-prod' && concurrently -n 'components-js' 'yarn build:components-js-prod' && concurrently --kill-others-on-fail -n 'components-angular,components-react,components-vue' 'yarn build:components-angular' 'yarn build:components-react' 'yarn build:components-vue' && yarn build:storefront",
-    "build:core-dependencies": "concurrently -n 'shared' 'yarn build:shared' && concurrently --kill-others-on-fail -n 'utilities' 'yarn build:utilities' && concurrently -n 'assets' 'yarn build:assets' && concurrently -n 'component-meta' 'yarn build:component-meta'",
+    "build:core-dependencies": "concurrently -n 'shared' 'yarn build:shared' && concurrently --kill-others-on-fail -n 'assets,utilities' 'yarn build:assets' 'yarn build:utilities' && concurrently -n 'component-meta' 'yarn build:component-meta'",
     "build:assets": "yarn --cwd ./packages/assets build",
     "build:assetsCopyComponentsOnly": "yarn --cwd ./packages/assets buildCopyComponentsOnly",
     "build:component-meta": "yarn --cwd ./packages/component-meta build",
@@ -165,7 +165,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.0",
-    "prettier": "^3.1.0"
+    "prettier": "^3.1.1"
   },
   "resolutions": {
     "**/react-scripts/jest": ">=29 <30",
@@ -177,9 +177,9 @@
     "**/@vue/cli-shared-utils/@achrinza/node-ipc": "^10.1.10",
     "**/eslint-config-next/eslint-plugin-react-hooks": "^4.6.0",
     "**/eslint-config-react-app/eslint-plugin-jest": "^27.6.0",
-    "**/ng-packagr/rollup": "^4.4.1",
-    "**/vite/rollup": "^4.4.1",
-    "**/workbox-build/rollup": "^4.4.1"
+    "**/ng-packagr/rollup": "^4.9.1",
+    "**/vite/rollup": "^4.9.1",
+    "**/workbox-build/rollup": "^4.9.1"
   },
   "volta": {
     "node": "18.18.1",
