@@ -194,6 +194,6 @@ export const getBackdropJssStyle = (
     )}, ${getTransition(
       '-webkit-backdrop-filter',
       duration
-    )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationLong})`,
+    )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationMap[duration]})`,
   };
 };
