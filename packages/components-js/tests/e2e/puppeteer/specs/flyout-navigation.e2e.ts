@@ -284,9 +284,9 @@ describe('focus behavior', () => {
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused();
     await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused();
-    await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('BODY');
+    await page.keyboard.press('Tab');
+    await expectDismissButtonToBeFocused();
   });
 
   // TODO: Is this the expected behavior?
@@ -301,10 +301,10 @@ describe('focus behavior', () => {
     await expectDismissButtonToBeFocused();
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused();
+    expect(await getActiveElementTagName(page)).toBe('BODY');
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('BODY');
+    await expectDismissButtonToBeFocused();
   });
 
   it('should focus last focused element after flyout is dismissed', async () => {
