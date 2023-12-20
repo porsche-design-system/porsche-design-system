@@ -170,28 +170,26 @@ export const getBackdropJssStyle = (
     position: 'fixed',
     ...getInsetJssStyle(),
     zIndex,
+    // TODO: background shading is missing in getThemedColors(theme).backgroundShading
+    background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,
+    ...prefersColorSchemeDarkMediaQuery(theme, {
+      background: themeDarkBackgroundShading,
+    }),
     ...(isVisible
       ? {
           visibility: 'inherit',
           pointerEvents: 'auto',
           ...frostedGlassStyle,
-          // TODO: background shading is missing in getThemedColors(theme).backgroundShading
-          background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: themeDarkBackgroundShading,
-          }),
+          opacity: 1,
         }
       : {
           visibility: 'hidden', // element shall not be tabbable after fade out transition has finished
           pointerEvents: 'none',
           WebkitBackdropFilter: 'blur(0px)',
           backdropFilter: 'blur(0px)',
-          background: 'none',
+          opacity: 0,
         }),
-    transition: `${getTransition('background', duration)}, ${getTransition(
-      'backdrop-filter',
-      duration
-    )}, ${getTransition(
+    transition: `${getTransition('opacity', duration)}, ${getTransition('backdrop-filter', duration)}, ${getTransition(
       '-webkit-backdrop-filter',
       duration
     )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationMap[duration]})`,
