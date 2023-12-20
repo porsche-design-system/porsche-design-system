@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, TextSize, TypographyAlign, TypographyAlignDeprecated } from '../../types';
-import { hasSpecificSlottedTag } from '../../utils';
+import { hasSpecificTag } from '../../utils';
 
 export const HEADLINE_VARIANTS = [
   'large-title',
@@ -40,7 +40,7 @@ const variantToTagMap: Record<HeadlineVariantType, string> = {
 };
 
 export const getHeadlineTagType = (host: HTMLElement, variant: HeadlineVariant, tag: HeadlineTag): string => {
-  if (hasSpecificSlottedTag(host, HEADLINE_TAGS.join())) {
+  if (hasSpecificTag(host, HEADLINE_TAGS.join())) {
     return 'div';
   } else if (tag) {
     return tag;
