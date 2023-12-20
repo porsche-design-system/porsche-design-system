@@ -43,12 +43,14 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...(!compact && {
-            borderBottom: `1px solid ${contrastLowColor}`,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: contrastLowColorDark,
-            }),
-          }),
+          ...(compact
+            ? { transform: 'translate3d(0,0,0)' } // relevant for custom click-area in compact variant
+            : {
+                borderBottom: `1px solid ${contrastLowColor}`,
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                  borderColor: contrastLowColorDark,
+                }),
+              }),
           '&(:only-of-type)': { borderBottom: 0 },
           ...colorSchemeStyles,
           ...hostHiddenStyles,
@@ -58,6 +60,7 @@ export const getComponentCss = (
         display: 'flex',
         position: 'relative',
         justifyContent: 'space-between',
+        alignItems: 'center',
         width: '100%',
         textDecoration: 'none',
         border: 0,

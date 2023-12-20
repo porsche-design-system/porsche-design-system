@@ -16,22 +16,32 @@ const component = 'accordion';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const markup = () => `
-    <p-accordion heading="Heading">
+    <p-accordion heading="Default">
       Slotted content
     </p-accordion>
-    <p-accordion heading="Heading" open="true">
+    <p-accordion heading="Default open" open="true">
       Slotted content
     </p-accordion>
-    <p-accordion heading="Heading" open="true">
+    <p-accordion heading="Default slotted content" open="true">
       Slotted content
       <span>
         and some slotted, deeply nested <a href="#">anchor</a>.
       </span>
     </p-accordion>
-    <p-accordion heading="Heading (compact=true)" open="true" compact="true">
+    <p-accordion heading="Compact" compact="true">
        Slotted content
     </p-accordion>
-    <p-accordion heading="Heading (compact=true)" open="true" compact="true">
+    <p-accordion compact="true">
+       <span slot="heading" style="padding: 1rem;">Compact and custom click-area</span>
+    </p-accordion>
+    <p-accordion heading="Compact open" open="true" compact="true">
+       Slotted content
+    </p-accordion>
+    <p-accordion open="true" compact="true" open="true">
+       <span slot="heading" style="padding: 1rem;">Compact and custom click-area open</span>
+       Slotted content
+    </p-accordion>
+    <p-accordion heading="Compact slotted content" open="true" compact="true">
       <p-link-pure href="https://www.porsche.com">Some link</p-link-pure>
       <br />
       <p-link-pure href="https://www.porsche.com">Some link</p-link-pure>
