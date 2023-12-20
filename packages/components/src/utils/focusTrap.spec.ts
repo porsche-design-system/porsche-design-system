@@ -14,13 +14,14 @@ import * as focusTrapUtils from './focusTrap';
 describe('setFocusTrap()', () => {
   const closeFn = () => {};
   const host = document.createElement('div');
+  const firstElementChild = host.firstElementChild as HTMLElement;
   host.attachShadow({ mode: 'open' });
   const closeBtn = document.createElement('button');
   closeBtn.id = 'btn-close';
 
   it('should call getFirstAndLastFocusableElement() if open = true', () => {
     const spy = jest.spyOn(focusTrapUtils, 'getFirstAndLastFocusableElement');
-    setFocusTrap(host, true, closeBtn, closeFn);
+    setFocusTrap(host, true, firstElementChild, closeBtn, closeFn);
 
     expect(spy).toBeCalledWith(host, closeBtn);
   });
@@ -33,7 +34,7 @@ describe('setFocusTrap()', () => {
     jest.spyOn(focusTrapUtils, 'getFirstAndLastFocusableElement').mockImplementationOnce(() => focusableElements);
 
     const spy = jest.spyOn(focusTrapUtils, 'setFirstAndLastFocusableElementKeydownListener');
-    setFocusTrap(host, true, closeBtn, closeFn);
+    setFocusTrap(host, true, firstElementChild, closeBtn, closeFn);
 
     expect(spy).toBeCalledWith(focusableElements);
   });
@@ -41,7 +42,7 @@ describe('setFocusTrap()', () => {
   describe('add event handlers', () => {
     it('should add keydown event handler', () => {
       const documentSpy = jest.spyOn(document, 'addEventListener');
-      setFocusTrap(host, true, closeBtn, closeFn);
+      setFocusTrap(host, true, firstElementChild, closeBtn, closeFn);
 
       expect(documentSpy).toBeCalledWith('keydown', documentKeydownListener);
     });
@@ -49,10 +50,10 @@ describe('setFocusTrap()', () => {
 
   describe('remove event handlers', () => {
     it('should remove keydown event handler', () => {
-      setFocusTrap(host, true, closeBtn, closeFn);
+      setFocusTrap(host, true, firstElementChild, closeBtn, closeFn);
       const documentAddSpy = jest.spyOn(document, 'addEventListener');
       const documentRemoveSpy = jest.spyOn(document, 'removeEventListener');
-      setFocusTrap(host, false, closeBtn, closeFn);
+      setFocusTrap(host, false, firstElementChild, closeBtn, closeFn);
 
       expect(documentRemoveSpy).toBeCalledWith('keydown', documentKeydownListener);
       expect(documentAddSpy).not.toBeCalled();
@@ -62,7 +63,7 @@ describe('setFocusTrap()', () => {
   describe('documentKeydownListener', () => {
     it('should call closeFn() via Escape key if it exists', () => {
       const closeModalMock = jest.fn();
-      setFocusTrap(host, true, closeBtn, closeModalMock);
+      setFocusTrap(host, true, firstElementChild, closeBtn, closeModalMock);
 
       documentKeydownListener(new KeyboardEvent('keydown', { key: 'Escape' }));
       expect(closeModalMock).toBeCalledWith();
@@ -71,7 +72,7 @@ describe('setFocusTrap()', () => {
     it('should call preventDefault() via Tab when no focusableElements exist', () => {
       const event = new KeyboardEvent('keydown', { key: 'Tab' });
       const spy = jest.spyOn(event, 'preventDefault');
-      setFocusTrap(host, true);
+      setFocusTrap(host, true, firstElementChild);
 
       documentKeydownListener(event);
       expect(spy).toBeCalledTimes(1);
@@ -80,7 +81,7 @@ describe('setFocusTrap()', () => {
     it('should not call preventDefault() via Tab when focusableElements exist', () => {
       const event = new KeyboardEvent('keydown', { key: 'Tab' });
       const spy = jest.spyOn(event, 'preventDefault');
-      setFocusTrap(host, true, closeBtn);
+      setFocusTrap(host, true, firstElementChild, closeBtn);
 
       documentKeydownListener(event);
       expect(spy).not.toBeCalled();

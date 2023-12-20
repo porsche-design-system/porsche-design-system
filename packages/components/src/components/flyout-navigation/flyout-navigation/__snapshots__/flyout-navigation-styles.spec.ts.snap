@@ -11,12 +11,13 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
   visibility: hidden !important;
   pointer-events: none !important;
   -webkit-backdrop-filter: blur(0px) !important;
   backdrop-filter: blur(0px) !important;
-  background: none !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  opacity: 0 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -56,6 +57,12 @@ dialog::backdrop {
     grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
     grid-template-rows: 100vh;
     inset-inline-end: auto;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    background: rgba(38, 38, 41, 0.67) !important;
   }
 }
 
@@ -142,12 +149,13 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
+  background: rgba(38, 38, 41, 0.67) !important;
   visibility: hidden !important;
   pointer-events: none !important;
   -webkit-backdrop-filter: blur(0px) !important;
   backdrop-filter: blur(0px) !important;
-  background: none !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  opacity: 0 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -264,12 +272,13 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
   visibility: hidden !important;
   pointer-events: none !important;
   -webkit-backdrop-filter: blur(0px) !important;
   backdrop-filter: blur(0px) !important;
-  background: none !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  opacity: 0 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -384,12 +393,13 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
-  visibility: visible !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  visibility: inherit !important;
   pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  opacity: 1 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -516,12 +526,13 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
-  visibility: visible !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  visibility: inherit !important;
   pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  opacity: 1 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -633,12 +644,13 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
-  visibility: visible !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  visibility: inherit !important;
   pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  opacity: 1 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -750,12 +762,13 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
-  visibility: visible !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  visibility: inherit !important;
   pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  opacity: 1 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -882,12 +895,13 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
-  visibility: visible !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  visibility: inherit !important;
   pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  opacity: 1 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -999,12 +1013,13 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99998 !important;
-  visibility: visible !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  visibility: inherit !important;
   pointer-events: auto !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  opacity: 1 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
