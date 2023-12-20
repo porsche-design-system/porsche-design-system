@@ -37,6 +37,7 @@ const getFlyoutNavigationItemScroller = (identifier: string) =>
   selectNode(page, `p-flyout-navigation-item[identifier="${identifier}"] >>> .scroller`);
 const getFlyoutNavigationItemVisibility = async (identifier: string) =>
   await getElementStyle(await getFlyoutNavigationItemScroller(identifier), 'visibility');
+const getBodyStyle = async () => getAttribute(await selectNode(page, 'body'), 'style');
 
 const initBasicFlyoutNavigation = (
   flyoutNavigationProps: Components.PFlyoutNavigation = {
@@ -45,6 +46,7 @@ const initBasicFlyoutNavigation = (
   },
   items?: {
     amount?: number;
+    content?: string[];
   },
   other?: {
     markupBefore?: string;
@@ -52,7 +54,7 @@ const initBasicFlyoutNavigation = (
   }
 ): Promise<void> => {
   const { markupBefore = '', markupAfter = '' } = other || {};
-  const { amount = 3 } = items || {};
+  const { amount = 3, content = [] } = items || {};
 
   const navigationItemContent = `
       <h3>Some heading</h3>
@@ -65,7 +67,9 @@ const initBasicFlyoutNavigation = (
   ${[...Array(amount)]
     .map(
       (_, i) =>
-        `<p-flyout-navigation-item identifier="item-${i + 1}">${navigationItemContent}</p-flyout-navigation-item>`
+        `<p-flyout-navigation-item identifier="item-${i + 1}">${
+          content[i] ? content[i] : navigationItemContent
+        }</p-flyout-navigation-item>`
     )
     .join('\n')}
 </p-flyout-navigation>`;
@@ -274,7 +278,7 @@ describe('focus behavior', () => {
     expect(await getActiveElementProp(page, 'identifier')).toBe('item-3');
   });
 
-  // TODO: Is this the expected behavior?
+  // Only works in pipeline correctly
   it('should not allow focusing element behind of flyout when pressing Tab', async () => {
     await initBasicFlyoutNavigation({ open: false }, { amount: 0 });
     await addButtonsBeforeAndAfterFlyout();
@@ -289,7 +293,7 @@ describe('focus behavior', () => {
     await expectDismissButtonToBeFocused();
   });
 
-  // TODO: Is this the expected behavior?
+  // Only works in pipeline correctly
   it('should not allow focusing element behind of flyout when pressing Shift Tab', async () => {
     await initBasicFlyoutNavigation({ open: false }, { amount: 0 });
     await addButtonsBeforeAndAfterFlyout();
@@ -346,6 +350,32 @@ describe('focus behavior', () => {
     expect(await getActiveElementId(page)).toBe('btn-before');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-after');
+  });
+
+  it('should focus element after flyout when open accordion contains link but flyout is not open', async () => {
+    await initBasicFlyoutNavigation(
+      { open: false },
+      {
+        content: [
+          `<p-accordion heading="Some Heading" open="true">
+  <a id="inside" href="#inside-flyout">Some anchor inside flyout</a>
+</p-accordion>`,
+        ],
+      },
+      {
+        markupBefore: '<a id="before" href="#before-flyout">Some anchor before flyout</a>',
+        markupAfter: '<a id="after" href="#after-flyout">Some anchor after flyout</a>',
+      }
+    );
+
+    console.log(await page.content());
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page), 'after 1st tab').toBe('before');
+
+    await page.keyboard.press('Tab');
+    await page.waitForFunction(() => document.activeElement === document.querySelector('#after'));
+    expect(await getActiveElementId(page), 'after 2nd tab').toBe('after');
   });
 });
 
@@ -487,6 +517,126 @@ describe('activeIdentifier', () => {
 //     expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('visible');
 //   });
 // });
+
+describe('scroll lock', () => {
+  describe('Desktop Browser', () => {
+    const bodyLockedStyle = 'overflow: hidden;';
+
+    it('should prevent page from scrolling when open', async () => {
+      await initBasicFlyoutNavigation({ open: false });
+      expect(await getBodyStyle()).toBe(null);
+
+      await openFlyoutNavigation();
+      expect(await getBodyStyle()).toBe(bodyLockedStyle);
+
+      await setProperty(await getHost(), 'open', false);
+      await waitForStencilLifecycle(page);
+      expect(await getBodyStyle()).toBe('');
+    });
+
+    it('should prevent page from scrolling when initially open', async () => {
+      await initBasicFlyoutNavigation({ open: true });
+      expect(await getBodyStyle()).toBe(bodyLockedStyle);
+    });
+
+    it('should remove overflow hidden from body if unmounted', async () => {
+      await initBasicFlyoutNavigation({ open: true });
+      expect(await getBodyStyle()).toBe(bodyLockedStyle);
+
+      await page.evaluate(() => {
+        document.querySelector('p-flyout-navigation').remove();
+      });
+      await waitForStencilLifecycle(page);
+
+      expect(await getBodyStyle()).toBe('');
+    });
+  });
+
+  describe('iOS Safari', () => {
+    const bodyLockedStyleIOS = 'top: 0px; overflow-y: scroll; position: fixed;';
+
+    it('should prevent page from scrolling when open', async () => {
+      await page.setUserAgent(
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+      );
+
+      await initBasicFlyoutNavigation({ open: false });
+      expect(await getBodyStyle()).toBe(null);
+
+      await openFlyoutNavigation();
+      expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
+
+      await setProperty(await getHost(), 'open', false);
+      await waitForStencilLifecycle(page);
+      expect(await getBodyStyle()).toBe('');
+    });
+
+    it('should not override body styles on prop change', async () => {
+      await page.setUserAgent(
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+      );
+
+      await initBasicFlyoutNavigation({ open: false }, {}, { markupBefore: '<div style="height: 2000px;"></div>' });
+      expect(await getBodyStyle()).toBe(null);
+
+      await page.evaluate(() => {
+        window.scrollTo(0, 500);
+      });
+
+      await openFlyoutNavigation();
+      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
+
+      await setProperty(await getHost(), 'aria', "{'aria-label': 'Other Heading'}");
+      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
+    });
+
+    it('should not override body styles on slot change', async () => {
+      await page.setUserAgent(
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+      );
+      await initBasicFlyoutNavigation({ open: false }, {}, { markupBefore: '<div style="height: 2000px;"></div>' });
+      const host = await getHost();
+      await page.evaluate(() => {
+        window.scrollTo(0, 500);
+      });
+
+      expect(await getBodyStyle()).toBe(null);
+
+      await openFlyoutNavigation();
+      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
+
+      await host.evaluate((el) => {
+        el.innerHTML = '<button id="btn-new">New Button</button>';
+      });
+      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
+    });
+
+    it('should prevent page from scrolling when initially open', async () => {
+      await page.setUserAgent(
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+      );
+
+      await initBasicFlyoutNavigation({ open: true });
+      expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
+    });
+
+    it('should remove overflowY, top and position styles from body if unmounted', async () => {
+      await page.setUserAgent(
+        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+      );
+
+      await initBasicFlyoutNavigation({ open: true });
+      expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
+
+      await page.evaluate(() => {
+        document.querySelector('p-flyout-navigation').remove();
+      });
+      await waitForStencilLifecycle(page);
+
+      expect(await getBodyStyle()).toBe('');
+    });
+  });
+});
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
