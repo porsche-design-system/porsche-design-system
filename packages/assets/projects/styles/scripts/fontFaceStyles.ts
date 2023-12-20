@@ -22,7 +22,7 @@ export type GetMinifiedPorscheNextFontFaceCssOptions = {
 // - U+1EA0-1EF1 (part of U+1E00-1EFF "Latin Extended Additional")
 
 // while persian "pe" font files exist, they are identical to pashto "pa"
-type LanguageCode = Exclude<'cy' | 'gr' | 'la' | 'ar' | 'pa' | 'pe' | 'ur', 'pe'>;
+type LanguageCode = 'cy' | 'gr' | 'la' | 'ar' | 'pa' | 'ur';
 export const unicodeRangeMap: Record<LanguageCode, string> = {
   la: 'U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0E00-0E7F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF', // latin (includes vietnamese)
   gr: 'U+0370-03FF', // greek
