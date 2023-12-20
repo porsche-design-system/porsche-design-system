@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Carousel`: Prop `heading-size`, named slot `header`
   ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
+- `Accordion`: Custom clickarea for `compact` variant ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
 
 #### Changed
 
@@ -26,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Accordion`: Alignment of slotted heading with custom padding ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
 - `Modal`: Scrollbar is hidden ([#2907](https://github.com/porsche-design-system/porsche-design-system/pull/2907))
 
 ### [3.10.0-rc.3] - 2023-12-12
