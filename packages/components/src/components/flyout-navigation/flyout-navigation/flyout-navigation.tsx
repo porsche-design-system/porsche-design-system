@@ -81,6 +81,7 @@ export class FlyoutNavigation {
       setScrollLock(true);
       this.setDialogVisibility(true);
     }
+    // TODO: Slotchange should trigger validation again (when removing item with active-identifier no warning is shown)
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineFlyoutNavigationItemElements);
   }
 
