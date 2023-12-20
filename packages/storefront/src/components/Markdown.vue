@@ -259,6 +259,9 @@
           border-radius: $pds-border-radius-medium;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
+          &:focus {
+            @include pds-focus();
+          }
         }
 
         // Tables
