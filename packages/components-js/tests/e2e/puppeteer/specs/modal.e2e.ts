@@ -26,6 +26,7 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-modal');
+const getScrollContainer = () => selectNode(page, 'p-modal >>> .scroll-container');
 const getHeader = () => selectNode(page, 'p-modal >>> .header');
 const getModal = () => selectNode(page, 'p-modal >>> .root');
 const getDismissButton = () => selectNode(page, 'p-modal >>> p-button-pure.dismiss');
@@ -749,8 +750,8 @@ describe('sticky footer', () => {
 
     expect(await getFooterBoxShadow()).toBe(expectedBoxShadow);
 
-    const host = await getHost();
-    await host.evaluate((el) => {
+    const scrollContainer = await getScrollContainer();
+    await scrollContainer.evaluate((el) => {
       el.scrollBy({ top: 1000 });
     });
 
@@ -766,14 +767,14 @@ describe('sticky footer', () => {
       hasSlottedFooter: true,
     });
 
-    const host = await getHost();
-    await host.evaluate((el) => {
+    const scrollContainer = await getScrollContainer();
+    await scrollContainer.evaluate((el) => {
       el.scrollBy({ top: 1000 }); // should be bottom
     });
 
     expect(await getFooterBoxShadow()).toBe('none');
 
-    await host.evaluate((el) => {
+    await scrollContainer.evaluate((el) => {
       el.scrollBy({ top: -81 }); // margin-bottom of modal is 80px for whatever reason, so this is the edge on when the shadow appears again
     });
 

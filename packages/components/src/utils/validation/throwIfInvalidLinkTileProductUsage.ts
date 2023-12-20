@@ -24,14 +24,14 @@ export const throwIfInvalidLinkTileProductUsage = (host: HTMLElement, hrefValue:
   }
 };
 
-const throwMissingHrefAndSlottedLinkException = (host: HTMLElement) =>
+const throwMissingHrefAndSlottedLinkException = (host: HTMLElement): void =>
   throwException(
     `usage of ${getTagNameWithoutPrefix(
       host
     )} is not valid. Please provide a href property or a single and direct <a> child element in the anchor slot.`
   );
 
-const throwMissingSlottedLinkA11yException = (host: HTMLElement) =>
+const throwMissingSlottedLinkA11yException = (host: HTMLElement): void =>
   throwException(
     `usage of ${getTagNameWithoutPrefix(
       host
