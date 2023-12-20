@@ -109,6 +109,7 @@ describe('this.activeTabIndexHandler()', () => {
     jest.spyOn(component, 'setTabElements' as any).mockImplementation();
 
     component.activeTabIndexHandler(0, 1);
+    
     expect(component['direction']).toBe('next');
   });
 
@@ -125,6 +126,7 @@ describe('this.activeTabIndexHandler()', () => {
     component['internalTabIndex'] = 1;
 
     component.activeTabIndexHandler(0, 2);
+    
     expect(component['direction']).toBe('prev');
   });
 
