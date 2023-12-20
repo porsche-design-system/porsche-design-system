@@ -17,15 +17,13 @@ import {
 import type { ElementHandle, Page } from 'puppeteer';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const CSS_TRANSITION_DURATION = 240;
-
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-text-field-wrapper');
 const getInput = () => selectNode(page, 'input');
-const getLabel = () => selectNode(page, 'p-text-field-wrapper >>> .label__text');
+const getLabel = () => selectNode(page, 'p-text-field-wrapper >>> label');
 const getCounterOrUnit = () => selectNode(page, 'p-text-field-wrapper >>> .unit');
 const getToggleOrClearButtonHost = () => selectNode(page, 'p-text-field-wrapper >>> p-button-pure');
 const getToggleOrClearButton = () => selectNode(page, 'p-text-field-wrapper >>> p-button-pure >>> button');
@@ -89,16 +87,6 @@ const initTextField = (opts?: InitOptions): Promise<void> => {
   return setContentWithDesignSystem(page, content);
 };
 
-it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
-  await initTextField();
-  const textFieldComponent = await getHost();
-  expect(await getLabel()).toBeNull();
-
-  await setProperty(textFieldComponent, 'label', 'Some label');
-  await waitForStencilLifecycle(page);
-  expect(await getLabel()).not.toBeNull();
-});
-
 describe('input type="password"', () => {
   xit('should disable input when input is disabled programmatically', async () => {
     await initTextField({ type: 'password', hasLabel: true });
@@ -109,14 +97,12 @@ describe('input type="password"', () => {
 
     await setProperty(input, 'disabled', true);
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getElementStyle(input, 'cursor'), 'disabled cursor').not.toBe(initialCursor);
     expect(await getElementStyle(input, 'borderColor'), 'disabled border').not.toBe(initialBorderColor);
 
     await setProperty(input, 'disabled', false);
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
     expect(await getElementStyle(input, 'cursor'), 'not disabled cursor').toBe(initialCursor);
     expect(await getElementStyle(input, 'borderColor'), 'not disabled borderColor').toBe(initialBorderColor);
@@ -299,13 +285,11 @@ describe('input type="search"', () => {
 
       await setProperty(input, 'disabled', true);
       await waitForStencilLifecycle(page);
-      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
       expect(await isButtonDisabled(buttonHost)).toBe(true);
 
       await setProperty(input, 'disabled', false);
       await waitForStencilLifecycle(page);
-      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
       expect(await isButtonDisabled(buttonHost)).toBe(false);
     });
@@ -319,13 +303,11 @@ describe('input type="search"', () => {
 
       await setProperty(input, 'readOnly', true);
       await waitForStencilLifecycle(page);
-      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
       expect(await isButtonDisabled(buttonHost)).toBe(true);
 
       await setProperty(input, 'readOnly', false);
       await waitForStencilLifecycle(page);
-      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION));
 
       expect(await isButtonDisabled(buttonHost)).toBe(false);
     });
@@ -585,7 +567,7 @@ describe('accessibility', () => {
   });
 
   it('should expose correct accessibility tree for input type=search with value', async () => {
-    await initTextField({ type: 'search' });
+    await initTextField({ type: 'search', hasLabel: true });
     const host = await getHost();
     const input = await getInput();
 

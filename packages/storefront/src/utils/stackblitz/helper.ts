@@ -1,16 +1,18 @@
 import * as sharedData from '@porsche-design-system/shared/data';
-import { themeDark, themeLight } from '@porsche-design-system/utilities-v2';
+import { themeDark, themeLight } from '@porsche-design-system/components-js/styles';
 import type {
   BackgroundColor,
   Framework,
   StackBlitzProjectAndOpenOptions,
   StackBlitzProjectDependencies,
   PlaygroundTheme,
+  PlaygroundDir,
 } from '@/models';
 import type { OpenInStackBlitzOpts } from './openInStackBlitz';
 
 export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | 'theme' | 'backgroundColor'> & {
   title: string;
+  dir: PlaygroundDir;
   description: string;
   globalStyles: string;
 };

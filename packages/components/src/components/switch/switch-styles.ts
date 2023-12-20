@@ -47,13 +47,13 @@ const getColors = (
           ? canvasColor
           : lightThemeBackgroundColor
         : isHighContrastMode
-        ? canvasTextColor
-        : primaryColor),
+          ? canvasTextColor
+          : primaryColor),
     toggleBackgroundColorHover: checked
       ? lightThemeBackgroundColor
       : isHighContrastMode
-      ? canvasTextColor
-      : primaryColor,
+        ? canvasTextColor
+        : primaryColor,
     textColor: disabledOrLoadingColor || primaryColor,
   };
 };
@@ -90,16 +90,20 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
-        outline: 0, // custom element is able to delegate the focus
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
+      ':host': {
         ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           display: stretchValue ? 'block' : 'inline-block',
-          width: stretchValue ? '100%' : 'auto', // prevents adjusting its size when used as flex or grid child
-          ...(!stretchValue && { verticalAlign: 'top' }),
         })),
-      }),
+        ...addImportantToEachRule({
+          outline: 0, // custom element is able to delegate the focus
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+          ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
+            width: stretchValue ? '100%' : 'auto', // prevents adjusting its size when used as flex or grid child
+            ...(!stretchValue && { verticalAlign: 'top' }),
+          })),
+        }),
+      },
     },
     root: {
       display: 'flex',
@@ -112,6 +116,7 @@ export const getComponentCss = (
       border: 0,
       textAlign: 'start',
       background: 'transparent',
+      WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       cursor: isDisabledOrLoading(disabled, loading) ? 'auto' : 'pointer',
       ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
@@ -158,7 +163,7 @@ export const getComponentCss = (
       borderRadius: '14px',
       backgroundColor: buttonBackgroundColor,
       cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
-      transition: `${getTransition('background-color')},${getTransition('border-color')},${getTransition('color')}`,
+      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         borderColor: buttonBorderColorDark,
         backgroundColor: buttonBackgroundColorDark,
@@ -177,7 +182,7 @@ export const getComponentCss = (
         backgroundColor: toggleBackgroundColorDark,
       }),
       transform: `translate3d(${checked ? '20px' : '0'}, 0, 0)`,
-      transition: `${getTransition('background-color')},${getTransition('transform')}`,
+      transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
     },
     ...(loading && {
       spinner: {

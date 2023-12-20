@@ -6,12 +6,15 @@ import * as breakpointCustomizableUtils from '../../utils/breakpoint-customizabl
 import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-utils';
 import * as jsonUtils from '../../utils/json';
 import * as splideModule from '@splidejs/splide';
-import { Splide } from '@splidejs/splide';
 import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
+import * as warnIfAriaAndHeadingPropsAreUndefined from '../../utils/log/warnIfAriaAndHeadingPropsAreUndefined';
+import { Splide } from '@splidejs/splide';
+import * as hasHeading from '../../utils/form/hasHeading';
+import * as hasDescription from '../../utils/form/hasDescription';
 
 const splideMock = {
   index: 0,
-  on: (_, __) => ({}) as Splide,
+  on: (_, __) => ({} as Splide),
   mount: () => {},
 } as Splide;
 
@@ -189,20 +192,42 @@ describe('render', () => {
     expect(spy).toBeCalledWith(component, 'wrapContent');
   });
 
-  it('should call warnIfHeadingIsMissing() with correct parameters', () => {
-    const spy = jest.spyOn(carouselUtils, 'warnIfHeadingIsMissing');
+  it('should call hasHeading() with correct parameters', () => {
+    const spy = jest.spyOn(hasHeading, 'hasHeading');
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     component.host.attachShadow({ mode: 'open' });
     component.heading = 'heading';
 
     component.render();
-    expect(spy).toBeCalledWith(component.host, 'heading');
+    expect(spy).toBeCalledWith(component.host, component.heading);
+  });
+
+  it('should call hasDescription() with correct parameters', () => {
+    const spy = jest.spyOn(hasDescription, 'hasDescription');
+    const component = new Carousel();
+    component.host = document.createElement('p-carousel');
+    component.host.attachShadow({ mode: 'open' });
+    component.description = 'description';
+
+    component.render();
+    expect(spy).toBeCalledWith(component.host, component.description);
+  });
+
+  it('should call warnIfAriaAndHeadingPropsAreUndefined() with correct parameters', () => {
+    const spy = jest.spyOn(warnIfAriaAndHeadingPropsAreUndefined, 'warnIfAriaAndHeadingPropsAreUndefined');
+    const component = new Carousel();
+    component.host = document.createElement('p-carousel');
+    component.host.attachShadow({ mode: 'open' });
+    component.heading = 'heading';
+
+    component.render();
+    expect(spy).toBeCalledWith(component.host, true, component.aria);
   });
 
   it('should call parseJSON() with correct parameter and set this.disablePagination', () => {
     jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation();
-    jest.spyOn(carouselUtils, 'warnIfHeadingIsMissing').mockImplementation();
+    jest.spyOn(warnIfAriaAndHeadingPropsAreUndefined, 'warnIfAriaAndHeadingPropsAreUndefined').mockImplementation();
     const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');

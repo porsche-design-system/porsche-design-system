@@ -2,20 +2,20 @@
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: false, dismissButton: false, hasHeader: true, hasFooter: false and theme: light 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear .2s !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -32,7 +32,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1), backdrop-filter .2s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .2s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -56,9 +56,9 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #FFF;
@@ -100,20 +100,20 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: false, dismissButton: true, hasHeader: false, hasFooter: false and theme: light 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear .2s !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -130,7 +130,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1), backdrop-filter .2s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .2s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -157,9 +157,9 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -218,20 +218,20 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: false, dismissButton: true, hasHeader: true, hasFooter: false and theme: dark 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear .2s !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -248,7 +248,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1), backdrop-filter .2s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .2s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -272,9 +272,9 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -336,20 +336,20 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: true, dismissButton: false, hasHeader: false, hasFooter: false and theme: light 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear .2s !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -366,7 +366,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1), backdrop-filter .2s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .2s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -393,9 +393,9 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #FFF;
@@ -434,20 +434,20 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: true, dismissButton: false, hasHeader: true, hasFooter: false and theme: dark 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear .2s !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -464,7 +464,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1), backdrop-filter .2s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .2s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -488,9 +488,9 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -532,20 +532,20 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: true, dismissButton: true, hasHeader: false, hasFooter: false and theme: dark 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear .2s !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -562,7 +562,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1), backdrop-filter .2s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .2s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -589,9 +589,9 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -650,20 +650,20 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: false, fullscreen: true, dismissButton: true, hasHeader: true, hasFooter: false and theme: light 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: hidden !important;
-  transition: visibility 0s linear .2s !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.25s) !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -680,7 +680,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   opacity: 0 !important;
   backdrop-filter: blur(0px) !important;
   -webkit-backdrop-filter: blur(0px) !important;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1), backdrop-filter .2s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .2s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -704,9 +704,9 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(.9,.9,1);
+  transform: translateY(25%);
   opacity: 0;
-  transition: opacity .2s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -768,19 +768,19 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: { base: true, xs: false, s: true, m: false, l: true, xl: false }, dismissButton: true, hasHeader: false, hasFooter: false and theme: light 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -797,7 +797,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1), backdrop-filter .6s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .6s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -869,9 +869,9 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -1014,19 +1014,19 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: false, hasHeader: false, hasFooter: true and theme: light 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -1043,7 +1043,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1), backdrop-filter .6s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .6s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1070,9 +1070,9 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   background: #FFF;
   outline: 0;
@@ -1124,19 +1124,19 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: false, hasHeader: true, hasFooter: false and theme: dark 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -1153,7 +1153,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1), backdrop-filter .6s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .6s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1177,9 +1177,9 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -1221,19 +1221,19 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: false, hasHeader: true, hasFooter: true and theme: dark 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -1250,7 +1250,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1), backdrop-filter .6s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .6s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1274,9 +1274,9 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   background: #0E0E12;
   outline: 0;
@@ -1331,19 +1331,19 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: true, hasHeader: false, hasFooter: false and theme: dark 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -1360,7 +1360,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1), backdrop-filter .6s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .6s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1387,9 +1387,9 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -1448,19 +1448,19 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: false, dismissButton: true, hasHeader: true, hasFooter: false and theme: light 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -1477,7 +1477,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1), backdrop-filter .6s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .6s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1501,9 +1501,9 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -1565,19 +1565,19 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: true, dismissButton: false, hasHeader: false, hasFooter: false and theme: dark 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -1594,7 +1594,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1), backdrop-filter .6s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .6s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1621,9 +1621,9 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #0E0E12;
@@ -1662,19 +1662,19 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: true, dismissButton: false, hasHeader: true, hasFooter: false and theme: light 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -1691,7 +1691,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1), backdrop-filter .6s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .6s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1715,9 +1715,9 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 32px;
   padding-bottom: 32px;
   background: #FFF;
@@ -1759,19 +1759,19 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: true, dismissButton: true, hasHeader: false, hasFooter: false and theme: light 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -1788,7 +1788,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1), backdrop-filter .6s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .6s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1815,9 +1815,9 @@ h2 {
   color: #010205;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #FFF;
@@ -1876,19 +1876,19 @@ h2 {
 
 exports[`getComponentCss() should return correct css for open: true, fullscreen: true, dismissButton: true, hasHeader: true, hasFooter: false and theme: dark 1`] = `
 ":host {
+  display: flex;
+  overflow-y: auto;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   z-index: 99999 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-wrap: wrap !important;
   visibility: inherit !important;
   color-scheme: light dark !important;
-  overflow-y: auto;
 }
 :host([hidden]) {
   display: none !important;
@@ -1905,7 +1905,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   opacity: 1 !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1), backdrop-filter .6s cubic-bezier(.16,1,.3,1), --webkit-backdrop-filter .6s cubic-bezier(.16,1,.3,1) !important;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
   width: calc(100% + 64px) !important;
@@ -1929,9 +1929,9 @@ h2 {
   color: #FBFCFF;
   position: relative;
   box-sizing: border-box;
-  transform: scale3d(1,1,1);
+  transform: translateY(0%);
   opacity: 1;
-  transition: opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   padding-top: 2rem;
   padding-bottom: 32px;
   background: #0E0E12;

@@ -62,6 +62,14 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
         {
           "children": [
             {
+              "role": "none",
+            },
+          ],
+          "role": "none",
+        },
+        {
+          "children": [
+            {
               "children": [
                 {
                   "name": "2",

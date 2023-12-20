@@ -8,7 +8,7 @@ import {
 } from './helper';
 import { convertMarkup } from '../../utils/formatting';
 import type { DependencyMap, SharedImportKey, GetStackBlitzProjectAndOpenOptions, ExternalDependency } from '@/utils';
-import type { StackBlitzProjectDependencies } from '@/models';
+import type { PlaygroundDir, StackBlitzProjectDependencies } from '@/models';
 import { initialStyles } from '@/lib/partialResults';
 
 const classNameRegex = /(export class )[a-zA-Z]+( {)/;
@@ -133,9 +133,9 @@ export class AppModule {${
   }}`;
 };
 
-export const getIndexHtml = (globalStyles: string): string => {
+export const getIndexHtml = (dir: PlaygroundDir, globalStyles: string): string => {
   return `<!doctype html>
-<html dir="ltr" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - Angular</title>
@@ -148,7 +148,7 @@ export const getIndexHtml = (globalStyles: string): string => {
       ${globalStyles}
     </style>
   </head>
-  <body>
+  <body dir="${dir}">
     <porsche-design-system-app></porsche-design-system-app>
   </body>
 </html>`;
@@ -198,6 +198,7 @@ export const getDependencies = (
 export const getAngularProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (opts) => {
   const {
     markup,
+    dir,
     description,
     title,
     globalStyles,
@@ -223,7 +224,7 @@ export const getAngularProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions
         'src/app/app.component.scss': extractInlineStyles(markup, pdsVersion),
       }),
       'src/app/app.module.ts': getAppModuleTs(externalDependencies, pdsVersion),
-      'src/index.html': getIndexHtml(globalStyles),
+      'src/index.html': getIndexHtml(dir, globalStyles),
       'src/main.ts': getMainTs(),
     },
     template: 'angular-cli',

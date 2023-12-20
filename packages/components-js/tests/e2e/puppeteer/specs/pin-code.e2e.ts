@@ -2,6 +2,7 @@ import type { ElementHandle, Page } from 'puppeteer';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
+  type ExpectToMatchSnapshotOptions,
   getAttribute,
   getElementStyle,
   getEventSummary,
@@ -23,11 +24,11 @@ beforeEach(async () => {
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-pin-code');
-const getLabel = () => selectNode(page, 'p-pin-code >>> .label__text');
+const getLabel = () => selectNode(page, 'p-pin-code >>> label');
 const getCurrentInput = () => selectNode(page, 'p-pin-code >>> #current-input');
 const getMessage = () => selectNode(page, 'p-pin-code >>> .message');
-const getHiddenInput = () => selectNode(page, 'p-pin-code input[slot="hidden-input"]');
-const getInput = (n: number) => selectNode(page, `p-pin-code >>> .input-container input:nth-child(${n})`);
+const getHiddenInput = () => selectNode(page, 'p-pin-code input[slot="internal-input"]');
+const getInput = (n: number) => selectNode(page, `p-pin-code >>> .wrapper input:nth-child(${n})`);
 const getActiveElementsAriaLabelInShadowRoot = (element: ElementHandle): Promise<string> => {
   return element.evaluate((el) => el.shadowRoot.activeElement.ariaLabel);
 };
@@ -63,17 +64,6 @@ const initPinCode = (opts?: InitOptions) => {
 };
 
 describe('label', () => {
-  it('should not render label if label prop is not defined but should render if changed programmatically', async () => {
-    await initPinCode();
-    const pinCodeComponent = await getHost();
-    expect(await getLabel()).toBeNull();
-
-    await setProperty(pinCodeComponent, 'label', 'Some label');
-    await waitForStencilLifecycle(page);
-
-    expect(await getLabel()).not.toBeNull();
-  });
-
   it('should focus input with id="current-input" when label text is clicked', async () => {
     await initPinCode({ props: { label: 'Some label' } });
     const label = await getLabel();
@@ -717,18 +707,22 @@ describe('lifecycle', () => {
 });
 
 describe('accessibility', () => {
+  const opts: ExpectToMatchSnapshotOptions = {
+    skipWaitForFunction: true,
+  };
+
   it('should expose correct initial accessibility tree', async () => {
     await initPinCode({ props: { label: 'Some label' } });
     const input = await getCurrentInput();
 
-    await expectA11yToMatchSnapshot(page, input);
+    await expectA11yToMatchSnapshot(page, input, opts);
   });
 
   it('should expose correct accessibility tree with description text', async () => {
     await initPinCode({ props: { label: 'Some label', description: 'Some description' } });
     const input = await getCurrentInput();
 
-    await expectA11yToMatchSnapshot(page, input);
+    await expectA11yToMatchSnapshot(page, input, opts);
   });
 
   it('should expose correct accessibility tree in error state', async () => {
@@ -738,8 +732,8 @@ describe('accessibility', () => {
     const input = await getCurrentInput();
     const message = await getMessage();
 
-    await expectA11yToMatchSnapshot(page, input, { message: 'Of Input' });
-    await expectA11yToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
+    await expectA11yToMatchSnapshot(page, input, { ...opts, message: 'Of Input' });
+    await expectA11yToMatchSnapshot(page, message, { ...opts, message: 'Of Message', interestingOnly: false });
   });
 
   it('should expose correct accessibility tree in disabled state', async () => {
@@ -748,7 +742,7 @@ describe('accessibility', () => {
     });
     const input = await getCurrentInput();
 
-    await expectA11yToMatchSnapshot(page, input);
+    await expectA11yToMatchSnapshot(page, input, opts);
   });
 
   it('should expose correct accessibility tree in loading state', async () => {
@@ -757,7 +751,7 @@ describe('accessibility', () => {
     });
     const input = await getCurrentInput();
 
-    await expectA11yToMatchSnapshot(page, input);
+    await expectA11yToMatchSnapshot(page, input, opts);
   });
 
   it('should expose correct accessibility tree in required state', async () => {
@@ -766,7 +760,7 @@ describe('accessibility', () => {
     });
     const input = await getCurrentInput();
 
-    await expectA11yToMatchSnapshot(page, input);
+    await expectA11yToMatchSnapshot(page, input, opts);
   });
 
   it('should add/remove accessibility tree if state changes programmatically', async () => {
@@ -780,8 +774,9 @@ describe('accessibility', () => {
     const input = await getCurrentInput();
     const message = await getMessage();
 
-    await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = error' });
+    await expectA11yToMatchSnapshot(page, input, { ...opts, message: 'Of Input when state = error' });
     await expectA11yToMatchSnapshot(page, message, {
+      ...opts,
       message: 'Of Message when state = error',
       interestingOnly: false,
     });
@@ -790,8 +785,9 @@ describe('accessibility', () => {
     await setProperty(host, 'message', 'Some success message.');
     await waitForStencilLifecycle(page);
 
-    await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = success' });
+    await expectA11yToMatchSnapshot(page, input, { ...opts, message: 'Of Input when state = success' });
     await expectA11yToMatchSnapshot(page, message, {
+      ...opts,
       message: 'Of Message when state = success',
       interestingOnly: false,
     });
@@ -800,6 +796,6 @@ describe('accessibility', () => {
     await setProperty(host, 'message', '');
     await waitForStencilLifecycle(page);
 
-    await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = none' });
+    await expectA11yToMatchSnapshot(page, input, { ...opts, message: 'Of Input when state = none' });
   });
 });

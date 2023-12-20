@@ -48,7 +48,7 @@ In some cases it might be necessary to define or change direction of the columns
 achieved by setting `reverse`.
 
 <Playground :markup="directionMarkup" :config="config">
-  <SelectOptions v-model="direction" :values="directions" name="direction"></SelectOptions>
+  <PlaygroundSelect v-model="direction" :values="directions" name="direction"></PlaygroundSelect>
 </Playground>
 
 ---

@@ -2,10 +2,10 @@
 
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
-  display: table-row !important;
+  display: table-row;
   border-top: 1px solid var(--p-internal-table-border-color) !important;
   border-bottom: 1px solid var(--p-internal-table-border-color) !important;
-  transition: background var(--p-transition-duration, .24s) ease !important;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 :host([hidden]) {
   display: none !important;

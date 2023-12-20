@@ -61,8 +61,8 @@
       }
 
       @include pds-media-query-min('s') {
-        left: 0;
-        right: calc(#{$pds-grid-extended-offset-s} * -1);
+        inset-inline-start: 0;
+        inset-inline-end: calc(#{$pds-grid-extended-offset-s} * -1);
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
         background:
           var(--theme-custom-teaser-background) no-repeat bottom -6vw right 10% / min(50%, 600px),
@@ -75,7 +75,7 @@
       }
 
       @include pds-media-query-min('m') {
-        right: calc(#{$pds-grid-wide-offset-s} * -1);
+        inset-inline-end: calc(#{$pds-grid-wide-offset-s} * -1);
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
         background:
           var(--theme-custom-teaser-background) no-repeat bottom -6vw right 10% / min(50%, 660px),
@@ -88,7 +88,52 @@
       }
 
       @include pds-media-query-min('xxl') {
-        right: calc(#{$pds-grid-wide-offset-xxl} * -1);
+        inset-inline-end: calc(#{$pds-grid-wide-offset-xxl} * -1);
+      }
+    }
+
+    // TODO: gradient needs to be mirrored too for RTL mode
+    &:dir(rtl)::before {
+      background:
+        var(--theme-custom-teaser-background) no-repeat bottom -6vw center / min(86%, 320px),
+        radial-gradient(
+          54.76% 107.92% at 64.08% 89.73%,
+          var(--theme-custom-teaser-gradient-1) 0%,
+          var(--theme-custom-teaser-gradient-2) 52.6%,
+          transparent 100%
+        );
+
+      @include pds-media-query-min('xs') {
+        background:
+          var(--theme-custom-teaser-background) no-repeat bottom -6vw center / min(70%, 380px),
+          radial-gradient(
+            54.76% 107.92% at 64.08% 89.73%,
+            var(--theme-custom-teaser-gradient-1) 0%,
+            var(--theme-custom-teaser-gradient-2) 52.6%,
+            transparent 100%
+          );
+      }
+
+      @include pds-media-query-min('s') {
+        background:
+          var(--theme-custom-teaser-background) no-repeat bottom -6vw left 10% / min(50%, 600px),
+          radial-gradient(
+            54.76% 107.92% at 64.08% 89.73%,
+            var(--theme-custom-teaser-gradient-1) 0%,
+            var(--theme-custom-teaser-gradient-2) 52.6%,
+            transparent 100%
+          );
+      }
+
+      @include pds-media-query-min('m') {
+        background:
+          var(--theme-custom-teaser-background) no-repeat bottom -6vw left 10% / min(50%, 660px),
+          radial-gradient(
+            54.76% 107.92% at 64.08% 89.73%,
+            var(--theme-custom-teaser-gradient-1) 0%,
+            var(--theme-custom-teaser-gradient-2) 52.6%,
+            transparent 100%
+          );
       }
     }
   }

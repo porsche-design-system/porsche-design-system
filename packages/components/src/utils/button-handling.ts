@@ -1,19 +1,25 @@
 import type { ButtonType } from '../types';
-import { getClosestHTMLElement } from './dom';
+import { getClosestHTMLElement, setAttributes } from './dom';
 
 export const improveButtonHandlingForCustomElement = (
   element: HTMLElement,
   getType: () => ButtonType,
-  getDisabled: () => boolean
+  getDisabled: () => boolean,
+  getName?: () => string | undefined,
+  getValue?: () => string | undefined
 ): void => {
-  element.addEventListener('click', (event) => handleButtonEvent(event, element, getType, getDisabled));
+  element.addEventListener('click', (event) =>
+    handleButtonEvent(event, element, getType, getDisabled, getName, getValue)
+  );
 };
 
 export const handleButtonEvent = (
   event: MouseEvent | KeyboardEvent,
   element: HTMLElement,
   getType: () => ButtonType,
-  getDisabled: () => boolean
+  getDisabled: () => boolean,
+  getName?: () => string | undefined,
+  getValue?: () => string | undefined
 ): void => {
   // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
   const form = getClosestHTMLElement(element, 'form');
@@ -24,8 +30,14 @@ export const handleButtonEvent = (
      */
     window.setTimeout(() => {
       if (!event.defaultPrevented) {
+        const name = getName?.();
+        const value = getValue?.();
         const fakeButton = document.createElement('button');
-        fakeButton.type = getType();
+        setAttributes(fakeButton, {
+          ...(name && { name }),
+          ...(value && { value }),
+          type: getType(),
+        });
         fakeButton.style.display = 'none';
         form.appendChild(fakeButton);
         fakeButton.addEventListener('click', (fakeButtonEvent) => {

@@ -68,6 +68,26 @@ const generatedRoutes = {
     "path": "/flyout",
     "name": "Flyout"
   },
+  "flyoutNavigation": {
+    "path": "/flyout-navigation",
+    "name": "FlyoutNavigation"
+  },
+  "flyoutNavigationActiveIdentifier": {
+    "path": "/flyout-navigation-active-identifier",
+    "name": "FlyoutNavigationActiveIdentifier"
+  },
+  "flyoutNavigationBasic": {
+    "path": "/flyout-navigation-basic",
+    "name": "FlyoutNavigationBasic"
+  },
+  "flyoutNavigationPrefixed": {
+    "path": "/flyout-navigation-prefixed",
+    "name": "FlyoutNavigationPrefixed"
+  },
+  "flyoutNavigationScrolled": {
+    "path": "/flyout-navigation-scrolled",
+    "name": "FlyoutNavigationScrolled"
+  },
   "grid": {
     "path": "/grid",
     "name": "Grid"
@@ -107,6 +127,10 @@ const generatedRoutes = {
   "linkTileModelSignature": {
     "path": "/link-tile-model-signature",
     "name": "LinkTileModelSignature"
+  },
+  "linkTileProduct": {
+    "path": "/link-tile-product",
+    "name": "LinkTileProduct"
   },
   "marque": {
     "path": "/marque",
@@ -258,6 +282,14 @@ const generatedRoutes = {
 export const sitemap = {
   home: { path: '/', name: 'Home' },
   ...generatedRoutes,
+  themeInjection: {
+    path: '/theme-injection',
+    name: 'Theme Injection',
+  },
+  modalPage: {
+    path: '/modal-standalone',
+    name: 'Modal Page',
+  },
 };
 
 export const routes = Object.values(sitemap).sort((a, b) => a.name.localeCompare(b.name));

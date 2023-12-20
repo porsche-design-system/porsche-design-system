@@ -30,7 +30,7 @@ The width of the `p-segmented-control` items can be controlled by the breakpoint
 defaults to value `auto`.
 
 <Playground :markup="columnsMarkup" :config="config">
-  <SelectOptions v-model="column" :values="columns" name="columns"></SelectOptions>
+  <PlaygroundSelect v-model="column" :values="columns" name="columns"></PlaygroundSelect>
 </Playground>
 
 ## With Labels
@@ -55,7 +55,7 @@ If used on top of a surface background color, contrast of the buttons can be twe
 property.
 
 <Playground :markup="backgroundColorMarkup" :config="{ ...config, backgroundColor }">
-  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
+  <PlaygroundSelect v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></PlaygroundSelect>
 </Playground>
 
 ## Event Handling

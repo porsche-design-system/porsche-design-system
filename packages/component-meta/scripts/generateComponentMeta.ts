@@ -40,6 +40,7 @@ const generateComponentMeta = (): void => {
     `export type ComponentMeta = {
   isDeprecated?: boolean;
   deprecationMessage?: string;
+  isExperimental?: boolean;
   isDelegatingFocus: boolean;
   isInternal: boolean;
   isThemeable: boolean;
@@ -85,6 +86,7 @@ const generateComponentMeta = (): void => {
   type ComponentMeta = {
     isDeprecated?: boolean;
     deprecationMessage?: string;
+    isExperimental?: boolean;
     isDelegatingFocus: boolean;
     isInternal: boolean;
     isThemeable: boolean;
@@ -147,6 +149,7 @@ const generateComponentMeta = (): void => {
     const [deprecated, rawDeprecationMessage] = /\/\*\* @deprecated (.*)\*\/\n@Component\({/.exec(source) || [];
     const isDeprecated = !!deprecated;
     const deprecationMessage = rawDeprecationMessage?.trim();
+    const isExperimental = !!/\/\*\* __Experimental__ \*\/\n@Component\({/.exec(source);
     const isDelegatingFocus = source.includes('delegatesFocus: true');
     const isInternal = INTERNAL_TAG_NAMES.includes(tagName);
     const isThemeable = source.includes('public theme?: Theme');
@@ -217,12 +220,12 @@ const generateComponentMeta = (): void => {
           propValue === 'true'
             ? true
             : propValue === 'false'
-            ? false
-            : // undefined values get lost in JSON.stringify, but null is allowed
-              propValue
-                ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
-                .replace(/\s+/g, ' ') // remove new lines and multiple spaces
-                .replace(/,( })/, '$1') || null; // remove trailing comma in original multiline objects
+              ? false
+              : // undefined values get lost in JSON.stringify, but null is allowed
+                propValue
+                  ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
+                  .replace(/\s+/g, ' ') // remove new lines and multiple spaces
+                  .replace(/,( })/, '$1') || null; // remove trailing comma in original multiline objects
 
         if (typeof cleanedValue === 'string') {
           if (cleanedValue.match(/^\d+$/)) {
@@ -265,7 +268,7 @@ const generateComponentMeta = (): void => {
     ).map(([, propName]) => propName);
 
     const [, invalidLinkUsageProp] =
-      /throwIfInvalidLink(?:Pure)?Usage\(this\.host, this\.([a-zA-Z]+)\);/.exec(source) || [];
+      /throwIfInvalidLink(?:Pure|TileProduct)?Usage\(this\.host, this\.([a-zA-Z]+)\);/.exec(source) || [];
     if (invalidLinkUsageProp) {
       // const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
       requiredProps.push(invalidLinkUsageProp);
@@ -471,7 +474,16 @@ const generateComponentMeta = (): void => {
     }
 
     // named slots
-    const namedSlots = Array.from(source.matchAll(/<slot name="([a-z]+)"/g)).map(([, slotName]) => slotName);
+    const namedSlots = Array.from(source.matchAll(/<slot name="((?!internal-)[a-z-]+?)"/g)).map(
+      ([, slotName]) => slotName
+    );
+
+    if (source.includes('<Label')) {
+      namedSlots.push('label');
+    }
+    if (/<Label[\s\S]+?description/.test(source)) {
+      namedSlots.push('description');
+    }
     if (source.includes('<StateMessage')) {
       namedSlots.push('message');
     }
@@ -513,6 +525,7 @@ const generateComponentMeta = (): void => {
 
     result[tagName] = {
       ...(isDeprecated && { isDeprecated, deprecationMessage }),
+      ...(isExperimental && { isExperimental }),
       isDelegatingFocus,
       isInternal,
       isThemeable,

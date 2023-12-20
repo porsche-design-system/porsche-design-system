@@ -58,6 +58,11 @@ export const routes: RouteType[] = [
     element: <fromPages.StencilLifecyclesPage />,
   },
   {
+    name: 'Theme Injection',
+    path: '/theme-injection',
+    element: <fromPages.ThemeInjectionPage />,
+  },
+  {
     name: 'Utilities',
     path: '/utilities',
     element: <fromPages.UtilitiesPage />,
@@ -75,6 +80,11 @@ export const routes: RouteType[] = [
     name: 'Banner Example',
     path: '/banner-example',
     element: <fromExamples.BannerExamplePage />,
+  },
+  {
+    name: 'Button Example Form',
+    path: '/button-example-form',
+    element: <fromExamples.ButtonExampleFormPage />,
   },
   {
     name: 'Carousel Example Dynamic Slides',
@@ -95,6 +105,21 @@ export const routes: RouteType[] = [
     name: 'Flyout Example',
     path: '/flyout-example',
     element: <fromExamples.FlyoutExamplePage />,
+  },
+  {
+    name: 'Flyout Navigation Example',
+    path: '/flyout-navigation-example',
+    element: <fromExamples.FlyoutNavigationExamplePage />,
+  },
+  {
+    name: 'Flyout Navigation Example Active Identifier',
+    path: '/flyout-navigation-example-active-identifier',
+    element: <fromExamples.FlyoutNavigationExampleActiveIdentifierPage />,
+  },
+  {
+    name: 'Flyout Navigation Example Custom Content',
+    path: '/flyout-navigation-example-custom-content',
+    element: <fromExamples.FlyoutNavigationExampleCustomContentPage />,
   },
   {
     name: 'Inline Notification Example Action Button',

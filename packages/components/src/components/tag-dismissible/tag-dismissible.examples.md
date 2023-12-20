@@ -13,7 +13,7 @@
 </Notification>
 
 <Playground :markup="colorMarkup" :config="{ ...config, backgroundColor }">
-  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
+  <PlaygroundSelect v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></PlaygroundSelect>
 </Playground>
 
 ## Label

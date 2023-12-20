@@ -37,7 +37,7 @@ You can change the divider's direction by using different major breakpoints `xs`
 Predefined colors associated with its theme are available.
 
 <Playground :markup="colorMarkup" :config="config">
-  <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
+  <PlaygroundSelect v-model="color" :values="colors" name="color"></PlaygroundSelect>
 </Playground>
 
 <script lang="ts">

@@ -5,6 +5,7 @@ export * from './Events';
 export * from './ModalFocusCycle';
 export * from './StencilLifecycles';
 export * from './Table';
+export * from './ThemeInjection';
 export * from './Utilities';
 
 /* Auto Generated Below */
@@ -28,6 +29,11 @@ import { FieldsetPage } from './generated/Fieldset';
 import { FieldsetWrapperPage } from './generated/FieldsetWrapper';
 import { FlexPage } from './generated/Flex';
 import { FlyoutPage } from './generated/Flyout';
+import { FlyoutNavigationPage } from './generated/FlyoutNavigation';
+import { FlyoutNavigationActiveIdentifierPage } from './generated/FlyoutNavigationActiveIdentifier';
+import { FlyoutNavigationBasicPage } from './generated/FlyoutNavigationBasic';
+import { FlyoutNavigationPrefixedPage } from './generated/FlyoutNavigationPrefixed';
+import { FlyoutNavigationScrolledPage } from './generated/FlyoutNavigationScrolled';
 import { GridPage } from './generated/Grid';
 import { HeadingPage } from './generated/Heading';
 import { HeadlinePage } from './generated/Headline';
@@ -38,6 +44,7 @@ import { LinkPurePage } from './generated/LinkPure';
 import { LinkSocialPage } from './generated/LinkSocial';
 import { LinkTilePage } from './generated/LinkTile';
 import { LinkTileModelSignaturePage } from './generated/LinkTileModelSignature';
+import { LinkTileProductPage } from './generated/LinkTileProduct';
 import { MarquePage } from './generated/Marque';
 import { ModalPage } from './generated/Modal';
 import { ModelSignaturePage } from './generated/ModelSignature';
@@ -155,6 +162,31 @@ export const generatedRoutes: RouteType[] = [
     element: <FlyoutPage />,
   },
   {
+    name: 'Flyout Navigation',
+    path: '/flyout-navigation',
+    element: <FlyoutNavigationPage />,
+  },
+  {
+    name: 'Flyout Navigation Active Identifier',
+    path: '/flyout-navigation-active-identifier',
+    element: <FlyoutNavigationActiveIdentifierPage />,
+  },
+  {
+    name: 'Flyout Navigation Basic',
+    path: '/flyout-navigation-basic',
+    element: <FlyoutNavigationBasicPage />,
+  },
+  {
+    name: 'Flyout Navigation Prefixed',
+    path: '/flyout-navigation-prefixed',
+    element: <FlyoutNavigationPrefixedPage />,
+  },
+  {
+    name: 'Flyout Navigation Scrolled',
+    path: '/flyout-navigation-scrolled',
+    element: <FlyoutNavigationScrolledPage />,
+  },
+  {
     name: 'Grid',
     path: '/grid',
     element: <GridPage />,
@@ -203,6 +235,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Link Tile Model Signature',
     path: '/link-tile-model-signature',
     element: <LinkTileModelSignaturePage />,
+  },
+  {
+    name: 'Link Tile Product',
+    path: '/link-tile-product',
+    element: <LinkTileProductPage />,
   },
   {
     name: 'Marque',

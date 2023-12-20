@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: false and theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -50,7 +50,7 @@ span {
 }
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-transition-duration, .24s) ease;
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     border-color: #FBFCFF;
@@ -61,7 +61,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -109,7 +109,7 @@ span {
 }
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-transition-duration, .24s) ease;
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     border-color: #010205;
@@ -120,7 +120,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true and theme: dark 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -168,7 +168,7 @@ span {
 }
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-transition-duration, .24s) ease;
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     border-color: #FBFCFF;
@@ -179,7 +179,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -227,7 +227,7 @@ span {
 }
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-transition-duration, .24s) ease;
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     border-color: #010205;
@@ -238,7 +238,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -286,7 +286,7 @@ span {
 }
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-transition-duration, .24s) ease;
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     border-color: #010205;
@@ -301,7 +301,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -349,7 +349,7 @@ span {
 }
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-transition-duration, .24s) ease;
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover {
     border-color: #010205;
@@ -365,7 +365,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: true, hasIcon: true, hasSlottedContent: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -419,7 +419,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: true, hasIcon: true, hasSlottedContent: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -474,7 +474,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: false, hasIcon: true, hasSlottedContent: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -528,7 +528,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: false, hasIcon: true, hasSlottedContent: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -583,7 +583,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: true, hasIcon: true, hasSlottedContent: false and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {
@@ -637,7 +637,7 @@ span {
 
 exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: true, hasIcon: true, hasSlottedContent: true and theme: light 1`] = `
 ":host {
-  display: block !important;
+  display: block;
   outline: 0 !important;
 }
 :host([hidden]) {

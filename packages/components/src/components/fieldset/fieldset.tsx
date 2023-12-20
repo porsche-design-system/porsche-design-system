@@ -12,7 +12,7 @@ import type { PropTypes, Theme } from '../../types';
 import type { FieldsetLabelSize, FieldsetState } from './fieldset-utils';
 import { FIELDSET_LABEL_SIZES } from './fieldset-utils';
 import { getComponentCss } from './fieldset-styles';
-import { StateMessage } from '../common/state-message/state-message';
+import { messageId, StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';
 import type { FormState } from '../../utils/form/form-state';
 
@@ -61,7 +61,6 @@ export class Fieldset {
       this.theme
     );
 
-    const messageId = 'message';
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
     return (
@@ -73,9 +72,7 @@ export class Fieldset {
           </legend>
         )}
         <slot />
-        {hasMessageValue && (
-          <StateMessage id={messageId} state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        )}
+        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </fieldset>
     );
   }

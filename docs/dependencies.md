@@ -1,12 +1,12 @@
-# Dependencies 12.10.2023
+# Dependencies 18.12.2023
 
 ## Overview of Framework Versions
 
 |         | Monorepo | Sample Integrations    |
-| ------- |----------| ---------------------- |
-| Angular | 15.2.10  | 16.2.3                 |
+| ------- | -------- | ---------------------- |
+| Angular | 15.2.10  | 17.0.4                 |
 | React   | 18.2.0   | 18.2.0                 |
-| Next.js | 13.5.4   | 13.4.19 (React 18.2.0) |
+| Next.js | 14.0.4   | 13.4.19 (React 18.2.0) |
 
 ## Vue
 
@@ -33,6 +33,8 @@ with Vue **2** and **3**.
 - `vmark-loader`
 - `@stackblitz/sdk` uses optional chaining internally which can't be handled by webpack 4 without additional babel
   plugins
+- `imask` uses static class properties since v7.2.0 which can't be handled by our outdated vue 2 setup without
+  additional babel plugins
 
 ---
 
@@ -47,6 +49,8 @@ Angular versions used to build any of its dependent libraries.
 
 We are now on `Angular v15` after conformation of our consuming teams. Before upgrading to a new version, ensure all
 consuming teams are already on the next major.
+
+Helpful overview: https://angular.io/guide/versions#actively-supported-versions
 
 ### Affected dependencies:
 
@@ -95,11 +99,56 @@ of using it with Node or TS-Node.
 
 - `globby`
 
+---
+
 ## Change Case
 
-Since v5.0.0 `change-case` decided to provide just a modern _ESM_ build with their latest npm package. Unfortunately there's
-no stable way of using it with Node or TS-Node.
+Since v5.0.0 `change-case` decided to provide just a modern _ESM_ build with their latest npm package. Unfortunately
+there's no stable way of using it with Node or TS-Node.
 
 ### Affected dependencies:
 
 - `change-case`
+
+---
+
+## Sharp
+
+Since v0.33.0 `sharp` does not work in docker anymore and outputs the following error:
+
+```
+Could not load the "sharp" module using the linux-x64 runtime
+Possible solutions:
+- Add platform-specific dependencies:
+    npm install --os=linux --cpu=x64 sharp
+  or
+    npm install --force @img/sharp-linux-x64
+- Consult the installation documentation: https://sharp.pixelplumbing.com/install
+```
+
+There is an open issue about it: https://github.com/lovell/sharp/issues/3870
+
+### Affected dependencies:
+
+- `sharp`
+
+---
+
+## iMask
+
+Since v7.2.0 `imask` uses static class properties which can't be handled by our outdated vue 2 setup without additional
+babel plugins, this is imported via text-field-wrapper.examples.md.
+
+### Affected dependencies:
+
+- `imask`
+
+---
+
+## Mime
+
+Since v4.0.0 `mime` decided to provide just a modern _ESM_ build with their latest npm package.
+
+### Affected dependencies:
+
+- `mime`

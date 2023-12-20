@@ -10,7 +10,7 @@ It can be used to overlay background images or enhance cards and teasers to be m
 The `model` prop's default is `{{ meta.props.model }}`, which can be changed to the following values.
 
 <Playground :markup="modelMarkup" :config="config">
-  <SelectOptions v-model="model" :values="models" name="model"></SelectOptions>
+  <PlaygroundSelect v-model="model" :values="models" name="model"></PlaygroundSelect>
 </Playground>
 
 ## Colors
@@ -18,7 +18,7 @@ The `model` prop's default is `{{ meta.props.model }}`, which can be changed to 
 The `color` prop's default is `{{ meta.props.color }}`, which can be changed to the following values.
 
 <Playground :markup="colorMarkup" :config="config">
-  <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
+  <PlaygroundSelect v-model="color" :values="colors" name="color"></PlaygroundSelect>
 </Playground>
 
 ## Sizes
@@ -26,7 +26,7 @@ The `color` prop's default is `{{ meta.props.color }}`, which can be changed to 
 The `size` prop's default is `{{ meta.props.size }}`, which can be changed to the following values.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ## Blend Mode

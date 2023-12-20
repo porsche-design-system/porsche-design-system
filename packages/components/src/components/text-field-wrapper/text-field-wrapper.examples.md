@@ -4,7 +4,7 @@ The `p-text-field-wrapper` component is a styling wrapper for the native HTML in
 any form.
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The
-`p-text-field-wrapper` component can be used with or without a label but it's recommended to keep the label visible for
+`p-text-field-wrapper` component can be used with or without a label, but it's recommended to keep the label visible for
 better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label
 text for screen readers.
 
@@ -16,7 +16,7 @@ give the user visual cues to fill out the form.
 ## Basic example
 
 <Playground :markup="hideLabelMarkup" :config="config">
-  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
+  <PlaygroundSelect v-model="hideLabel" :values="hideLabels" name="hideLabel"></PlaygroundSelect>
 </Playground>
 
 ## With description text
@@ -64,7 +64,7 @@ in Chrome) may occur inside the input field which are explicitly not reset by th
 better accessibility it's recommended to **not** reset these browser default UI helpers.
 
 <Playground :markup="inputTypeMarkup" :config="config">
-  <SelectOptions v-model="inputType" :values="inputTypes" name="inputType"></SelectOptions>
+  <PlaygroundSelect v-model="inputType" :values="inputTypes" name="inputType"></PlaygroundSelect>
 </Playground>
 
 ## type="number"
@@ -73,7 +73,7 @@ Inputs with `type="number"` can display a unit (e.g. €, EUR, km/h, etc.) with 
 description of the used unit should be provided to ensure accessibility.
 
 <Playground :markup="unitPositionMarkup" :config="config">
-  <SelectOptions v-model="unitPosition" :values="unitPositions" name="unitPosition"></SelectOptions>
+  <PlaygroundSelect v-model="unitPosition" :values="unitPositions" name="unitPosition"></PlaygroundSelect>
 </Playground>
 
 ## type="password"
@@ -95,9 +95,12 @@ If you want to remove the password toggle button, you can pass `showPasswordTogg
 ## type="search"
 
 Inputs with `type="search"` receive a decorative search icon when used outside a form.  
-Within a form, a submit button becomes visible. If the input contains a value, a clear button shows up.
+Only if used inside a form, a submit button becomes visible which can be hidden using `submitButton="false"`. If the
+input contains a value, a clear button shows up.
 
-<Playground :markup="typeSearch" :config="config"></Playground>
+<Playground :markup="typeSearchMarkup" :config="config">
+  <PlaygroundSelect v-model="submitButton" :values="submitButtons" name="submitButton"></PlaygroundSelect>
+</Playground>
 
 ## type="search" with locate action
 
@@ -127,7 +130,7 @@ The `p-text-field-wrapper` component supports the visualisation of inline valida
 colored and visible/hidden depending on the defined `state`.
 
 <Playground :markup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
 </Playground>
 
 ## Slots
@@ -250,16 +253,19 @@ export default class Code extends Vue {
     return this.typePassword.replace(/label="Some label"/, '$& show-password-toggle="false"');
   }
 
-  typeSearch =
-`<p-text-field-wrapper label="Some label">
+  submitButton = true;
+  submitButtons = [true, false];
+  get typeSearchMarkup() {
+    return `<p-text-field-wrapper label="Some label">
   <input type="search" name="some-name" />
 </p-text-field-wrapper>
 
 <form action="#" onsubmit="alert('submit'); return false;">
-  <p-text-field-wrapper label="Some label">
+  <p-text-field-wrapper label="Some label" submit-button="${this.submitButton}">
     <input type="search" name="some-name" />
   </p-text-field-wrapper>
 </form>`;
+  }
 
   typeSearchWithLocateAction = 
 `<p-text-field-wrapper label="Some label" action-icon="locate">

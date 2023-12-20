@@ -1,8 +1,11 @@
 import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/core';
 import {
+  addNativePopoverScrollAndResizeListeners,
   attachComponentCss,
   determineDropdownDirection,
+  findClosestComponent,
   getFilterInputAriaAttributes,
+  getHasNativePopoverSupport,
   getListAriaAttributes,
   getOptionAriaAttributes,
   getPrefixedTagNames,
@@ -39,6 +42,7 @@ import {
   setHighlightedOptionMaps,
   setLastHighlightedOptionMaps,
   setSelectedOptionMaps,
+  updateNativePopoverSelectStyles,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
@@ -69,6 +73,9 @@ export class SelectWrapperDropdown {
 
   private inputElement: HTMLInputElement;
   private listElement: HTMLUListElement;
+  private isNativePopover: boolean = false;
+  private parentTableElement: HTMLElement;
+  private popoverElement: HTMLElement;
 
   private get selectedIndex(): number {
     return this.selectRef.selectedIndex;
@@ -86,11 +93,18 @@ export class SelectWrapperDropdown {
       // therefore we do it here via attribute
       ['hidden', 'disabled', 'selected']
     );
+    this.detectNativePopoverCase();
   }
 
   public componentDidRender(): void {
     if (this.isOpen) {
       handleScroll(this.listElement, getHighlightedOptionMapIndex(this.optionMaps));
+
+      if (this.isNativePopover) {
+        addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement, () => {
+          this.setDropdownVisibility('hide');
+        });
+      }
     }
   }
 
@@ -119,9 +133,12 @@ export class SelectWrapperDropdown {
       this.state,
       this.disabled,
       this.filter,
+      this.isNativePopover,
       this.theme
     );
 
+    // TODO: part won't be needed as soon as button/input of select-wrapper-dropdown is part of shadow dom of select-wrapper itself
+    const part = 'select-wrapper-dropdown';
     const dropdownId = 'list';
     const labelId = 'label';
     const descriptionId = this.description && 'description';
@@ -153,10 +170,15 @@ export class SelectWrapperDropdown {
               onClick={() => this.setDropdownVisibility('show')}
               ref={(el) => (this.inputElement = el)}
             />,
-            <span key="span" onClick={this.disabled ? undefined : () => this.setDropdownVisibility('toggle')} />,
+            <span
+              part={part}
+              key="span"
+              onClick={this.disabled ? undefined : () => this.setDropdownVisibility('toggle')}
+            />,
           ]
         ) : (
           <button
+            part={part}
             type="button"
             role="combobox"
             id={buttonId}
@@ -182,56 +204,67 @@ export class SelectWrapperDropdown {
               {this.description}
             </div>
           ),
-          this.isOpen && (
-            <ul
-              id={dropdownId}
-              role="listbox"
-              tabIndex={-1}
-              {...getListAriaAttributes(this.label, this.required, this.filter, this.isOpen)}
-              ref={(el) => (this.listElement = el)}
-            >
-              {this.filter && !hasFilterResults(this.optionMaps) ? (
-                <li class="option" aria-live="polite" role="status">
-                  <span aria-hidden="true">---</span>
-                  <span class="option__sr">No results found</span>
-                </li>
-              ) : (
-                this.optionMaps.map((option, index) => {
-                  const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
-                  return [
-                    title && (
-                      <span class="optgroup" role="presentation">
-                        {title}
-                      </span>
-                    ),
-                    <li
-                      id={`option-${index}`}
-                      role="option"
-                      class={{
-                        option: true,
-                        'option--selected': selected,
-                        'option--highlighted': highlighted,
-                        'option--disabled': disabled,
-                        'option--hidden': hidden || initiallyHidden,
-                      }}
-                      onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
-                      {...getOptionAriaAttributes(selected, disabled, hidden, !!value)}
-                    >
-                      {value}
-                      {selected && !disabled && (
-                        <PrefixedTagNames.pIcon
-                          aria-hidden="true"
-                          name="check"
-                          color={disabled ? 'state-disabled' : 'primary'}
-                          theme={this.theme}
-                        />
-                      )}
-                    </li>,
-                  ];
-                })
-              )}
-            </ul>
-          ),
+          <div
+            {...(this.isNativePopover && {
+              popover: 'auto',
+              class: 'popover',
+              ...(this.popoverElement?.matches(':popover-open') && {
+                'popover-open': true,
+              }),
+            })}
+            ref={(el) => (this.popoverElement = el)}
+          >
+            {this.isOpen && (
+              <ul
+                id={dropdownId}
+                role="listbox"
+                tabIndex={-1}
+                {...getListAriaAttributes(this.label, this.required, this.filter, this.isOpen)}
+                ref={(el) => (this.listElement = el)}
+              >
+                {this.filter && !hasFilterResults(this.optionMaps) ? (
+                  <li class="option" aria-live="polite" role="status">
+                    <span aria-hidden="true">---</span>
+                    <span class="option__sr">No results found</span>
+                  </li>
+                ) : (
+                  this.optionMaps.map((option, index) => {
+                    const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
+                    return [
+                      title && (
+                        <span class="optgroup" role="presentation">
+                          {title}
+                        </span>
+                      ),
+                      <li
+                        id={`option-${index}`}
+                        role="option"
+                        class={{
+                          option: true,
+                          'option--selected': selected,
+                          'option--highlighted': highlighted,
+                          'option--disabled': disabled,
+                          'option--hidden': hidden || initiallyHidden,
+                        }}
+                        onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
+                        {...getOptionAriaAttributes(selected, disabled, hidden, !!value)}
+                      >
+                        {value}
+                        {selected && !disabled && (
+                          <PrefixedTagNames.pIcon
+                            aria-hidden="true"
+                            name="check"
+                            color={disabled ? 'state-disabled' : 'primary'}
+                            theme={this.theme}
+                          />
+                        )}
+                      </li>,
+                    ];
+                  })
+                )}
+              </ul>
+            )}
+          </div>,
         ]}
       </Host>
     );
@@ -259,6 +292,15 @@ export class SelectWrapperDropdown {
   private setDropdownVisibility = (type: DropdownInteractionType): void => {
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.filter && this.resetFilter);
     this.onOpenChange(this.isOpen);
+
+    if (this.isNativePopover) {
+      if (this.isOpen) {
+        updateNativePopoverSelectStyles(this.host, this.optionMaps, this.popoverElement, this.direction);
+        this.popoverElement.showPopover();
+      } else {
+        this.popoverElement.hidePopover();
+      }
+    }
   };
 
   private onComboboxKeyDown = (e: KeyboardEvent): void => {
@@ -345,9 +387,11 @@ export class SelectWrapperDropdown {
   };
 
   private cycleDropdown(direction: DropdownDirectionInternal): void {
+    if (this.isOpen) {
+      const newIndex = getNewOptionMapIndex(this.optionMaps, direction);
+      this.optionMaps = setHighlightedOptionMaps(this.optionMaps, newIndex);
+    }
     this.setDropdownVisibility('show');
-    const newIndex = getNewOptionMapIndex(this.optionMaps, direction);
-    this.optionMaps = setHighlightedOptionMaps(this.optionMaps, newIndex);
   }
 
   private resetFilter = (): void => {
@@ -368,5 +412,17 @@ export class SelectWrapperDropdown {
 
     // in case input is focused via tab instead of click
     this.setDropdownVisibility('show');
+  };
+
+  private detectNativePopoverCase = (): void => {
+    if (getHasNativePopoverSupport()) {
+      this.parentTableElement = findClosestComponent(
+        (this.host.getRootNode() as ShadowRoot).host as HTMLElement,
+        'pTable'
+      );
+      if (!!this.parentTableElement) {
+        this.isNativePopover = true;
+      }
+    }
   };
 }

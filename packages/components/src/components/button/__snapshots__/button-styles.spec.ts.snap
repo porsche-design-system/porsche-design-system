@@ -20,6 +20,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #FBFCFF;
@@ -30,7 +31,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding: 13px;
   gap: 0;
   cursor: not-allowed;
@@ -59,13 +60,13 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(min-width:480px) {
   .root {
@@ -189,6 +190,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #FBFCFF;
@@ -199,7 +201,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
@@ -227,13 +229,13 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
 }
 @media(hover:hover) {
@@ -265,6 +267,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -275,7 +278,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
@@ -303,13 +306,13 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
 }
 @media(hover:hover) {
@@ -341,6 +344,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -351,7 +355,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
@@ -379,13 +383,13 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
 }
 @media(hover:hover) {
@@ -417,6 +421,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -427,7 +432,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding: 13px 26px;
   gap: 8px;
   cursor: not-allowed;
@@ -456,14 +461,14 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   opacity: 0;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
   opacity: 0;
 }
@@ -499,6 +504,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -509,7 +515,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding: 13px 26px;
   gap: 8px;
   cursor: not-allowed;
@@ -538,13 +544,13 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }"
 `;
 
@@ -568,6 +574,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #FBFCFF;
@@ -578,7 +585,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
@@ -606,13 +613,13 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .root:hover {
@@ -645,6 +652,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -655,7 +663,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
@@ -683,13 +691,13 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .root:hover {
@@ -722,6 +730,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #FBFCFF;
@@ -732,7 +741,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
@@ -760,13 +769,13 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .root:hover {
@@ -799,6 +808,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -809,7 +819,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding: 13px 26px;
   gap: 8px;
   cursor: pointer;
@@ -837,13 +847,13 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 @media(hover:hover) {
   .root:hover {
@@ -876,6 +886,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   box-sizing: border-box;
   outline: 0;
   text-align: start;
+  -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
   border: 2px solid #010205;
@@ -886,7 +897,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: background-color var(--p-transition-duration, .24s) ease,border-color var(--p-transition-duration, .24s) ease,color var(--p-transition-duration, .24s) ease;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding: 13px 26px;
   gap: 8px;
   cursor: not-allowed;
@@ -915,7 +926,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   opacity: 0;
 }
 .spinner {
@@ -929,7 +940,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   filter: invert(1);
 }
 .icon {
-  transition: opacity var(--p-transition-duration, .24s) ease;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   opacity: 0;
 }"
 `;

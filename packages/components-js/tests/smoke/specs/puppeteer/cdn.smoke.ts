@@ -19,6 +19,7 @@ import { getFontFaceStylesheet } from '@porsche-design-system/components-js/part
 import { COMPONENT_CHUNKS_MANIFEST } from '../../../../projects/components-wrapper/lib/chunksManifest';
 import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_PATH_STYLES, CDN_BASE_URL_COM } from '../../../../../../cdn.config';
 import { setContentWithDesignSystem } from './helpers';
+import * as mime from 'mime';
 
 describe('cdn', () => {
   let page: Page;
@@ -26,7 +27,7 @@ describe('cdn', () => {
   afterEach(async () => await page.close());
 
   type RequestType = { url: string };
-  type ResponseType = { url: string; status: number };
+  type ResponseType = { url: string; status: number; headers: Record<string, string> };
   const requests: RequestType[] = [];
   const responses: ResponseType[] = [];
 
@@ -52,23 +53,24 @@ describe('cdn', () => {
     page.on('response', (resp) => {
       const url = resp.url();
       const status = resp.status();
+      const headers = resp.headers();
 
       if (url.includes('cdn.ui.porsche')) {
         // console.log(status, url);
-        responses.push({ url, status });
+        responses.push({ url, status, headers });
       }
     });
   });
 
-  const isStatusNot200 = (item: Response): boolean => item.status !== 200;
-  const isStatus400 = (item: Response): boolean => item.status === 400;
+  const isStatusNot200 = (item: ResponseType, _index: number, _arr: ResponseType[]): boolean => item.status !== 200;
+  const isStatus400 = (item: ResponseType, _index: number, _arr: ResponseType[]): boolean => item.status === 400;
   const urlIncludes =
     (str: string) =>
-    (item: Response): boolean =>
+    (item: ResponseType, _index: number, _arr: ResponseType[]): boolean =>
       item.url.includes(str);
   const urlStartsWith =
     (str: string) =>
-    (item: Response): boolean =>
+    (item: ResponseType, _index: number, _arr: ResponseType[]): boolean =>
       item.url.startsWith(str);
   const fetchUrl = (url: string): Promise<void> =>
     page.evaluate(async (url: string) => {
@@ -149,9 +151,18 @@ describe('cdn', () => {
     const bulkRequestItems = (items: string[], baseUrl: string) => {
       for (const item of items) {
         ((item: string) => {
-          it(`should exist: ${item}`, async () => {
+          it(`should exist and have correct headers: ${item}`, async () => {
             await fetchUrl(`${baseUrl}/${item}`);
+
             expect(responses.filter(isStatusNot200).length).toBe(0);
+            responses.forEach((response) => {
+              const ext = item.split('.').pop();
+              // Mime library returns application/javascript but should be text/javascript
+              // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+              const mimeType = ext === 'js' ? 'text/javascript' : mime.getType(ext);
+              expect(response.headers['content-type']).toBe(mimeType);
+              expect(response.headers['access-control-allow-origin']).toBe('*');
+            });
             responseCounter += responses.length;
 
             const responseErrors = responses.filter(isStatus400);

@@ -41,7 +41,7 @@ There are default sizes for the icon component being in sync with text component
 specific size is needed, the size can be set to `inherit` in order to specify the size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
     
 ---
@@ -62,7 +62,7 @@ apply custom coloring to take advantage of using an SVG embedded in an image tag
 </Notification>
 
 <Playground :markup="colorMarkup" :config="config">
-  <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
+  <PlaygroundSelect v-model="color" :values="colors" name="color"></PlaygroundSelect>
 </Playground>
 
 ---

@@ -15,26 +15,28 @@ export const getComponentCss = (theme: Theme): string => {
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        position: 'relative',
-        color: primaryColor, // enables color inheritance for e.g. slotted anchor
-        outline: 0,
-        ...hostHiddenStyles,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
-        '&(:focus:focus-visible)::before': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(-4),
-          border: `${borderWidthBase} solid ${focusColor}`,
-          borderRadius: borderRadiusSmall,
+        ...addImportantToEachRule({
+          position: 'relative',
+          color: primaryColor, // enables color inheritance for e.g. slotted anchor
+          outline: 0,
+          ...hostHiddenStyles,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
+            color: primaryColorDark,
           }),
-        },
-      }),
+          '&(:focus:focus-visible)::before': {
+            content: '""',
+            position: 'absolute',
+            ...getInsetJssStyle(-4),
+            border: `${borderWidthBase} solid ${focusColor}`,
+            borderRadius: borderRadiusSmall,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: focusColorDark,
+            }),
+          },
+        }),
+      },
     },
   });
 };

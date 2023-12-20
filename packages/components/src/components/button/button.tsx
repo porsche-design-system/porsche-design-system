@@ -28,6 +28,8 @@ import { getComponentCss } from './button-styles';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
+  name: AllowedTypes.string,
+  value: AllowedTypes.string,
   variant: AllowedTypes.oneOf<ButtonVariant>(LINK_BUTTON_VARIANTS),
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
@@ -47,6 +49,12 @@ export class Button {
 
   /** Specifies the type of the button. */
   @Prop() public type?: ButtonType = 'submit';
+
+  /** The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form. */
+  @Prop() public name?: string;
+
+  /** Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button. */
+  @Prop() public value?: string;
 
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
@@ -87,7 +95,9 @@ export class Button {
     improveButtonHandlingForCustomElement(
       this.host,
       () => this.type,
-      () => isDisabledOrLoading(this.disabled, this.loading)
+      () => isDisabledOrLoading(this.disabled, this.loading),
+      () => this.name,
+      () => this.value
     );
   }
 
@@ -108,7 +118,13 @@ export class Button {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <button {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)} class="root" type={this.type}>
+      <button
+        {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
+        class="root"
+        type={this.type}
+        name={this.name}
+        value={this.value}
+      >
         {this.loading && (
           <PrefixedTagNames.pSpinner
             class="spinner"

@@ -4,10 +4,10 @@ import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 export const getComponentCss = (): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'table-row-group',
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule(hostHiddenStyles),
+      },
     },
   });
 };

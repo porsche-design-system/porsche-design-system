@@ -31,6 +31,11 @@ export const routes: RouteType[] = [
     component: fromExamples.AccordionExample,
   },
   {
+    path: '/button-example-form',
+    name: 'Button Example Form',
+    component: fromExamples.ButtonExampleForm,
+  },
+  {
     path: '/carousel-example-dynamic-slides',
     name: 'Carousel Example Dynamic Slides',
     component: fromExamples.CarouselExampleDynamicSlides,
@@ -61,6 +66,21 @@ export const routes: RouteType[] = [
     component: fromExamples.FlyoutExampleSlottedSecondary,
   },
   {
+    path: '/flyout-navigation-example',
+    name: 'Flyout Navigation Example',
+    component: fromExamples.FlyoutNavigationExample,
+  },
+  {
+    path: '/flyout-navigation-example-active-identifier',
+    name: 'Flyout Navigation Example Active Identifier',
+    component: fromExamples.FlyoutNavigationExampleActiveIdentifier,
+  },
+  {
+    path: '/flyout-navigation-example-custom-content',
+    name: 'Flyout Navigation Example Custom Content',
+    component: fromExamples.FlyoutNavigationExampleCustomContent,
+  },
+  {
     path: '/inline-notification-example-action-button',
     name: 'Inline Notification Example Action Button',
     component: fromExamples.InlineNotificationExampleActionButton,
@@ -69,6 +89,11 @@ export const routes: RouteType[] = [
     path: '/inline-notification-example-events',
     name: 'Inline Notification Example Events',
     component: fromExamples.InlineNotificationExampleEvents,
+  },
+  {
+    path: '/link-tile-product-example',
+    name: 'Link Tile Product Example',
+    component: fromExamples.LinkTileProductExample,
   },
   {
     path: '/modal-example-accessibility',

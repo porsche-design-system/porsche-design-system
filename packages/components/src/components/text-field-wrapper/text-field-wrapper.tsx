@@ -1,15 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  type EventEmitter,
-  forceUpdate,
-  h,
-  Host,
-  type JSX,
-  Prop,
-  State,
-} from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop, State } from '@stencil/core';
 import {
   addInputEventListenerForCounter,
   AllowedTypes,
@@ -18,11 +7,7 @@ import {
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   handleButtonEvent,
-  hasDescription,
-  hasLabel,
-  hasMessage,
   hasPropValueChanged,
-  isRequiredAndParentNotRequired,
   isWithinForm,
   observeAttributes,
   observeProperties,
@@ -52,7 +37,7 @@ import {
   throwIfUnitLengthExceeded,
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
-import { Required } from '../common/required/required';
+import { Label } from '../common/label/label';
 
 const propTypes: PropTypes<typeof TextFieldWrapper> = {
   label: AllowedTypes.string,
@@ -66,6 +51,7 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
   showCounter: AllowedTypes.boolean,
   actionIcon: AllowedTypes.oneOf<TextFieldWrapperActionIcon>([undefined, 'locate']),
   actionLoading: AllowedTypes.boolean,
+  submitButton: AllowedTypes.boolean,
   showPasswordToggle: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -111,6 +97,9 @@ export class TextFieldWrapper {
 
   /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public actionLoading?: boolean = false;
+
+  /** Show search button if wrapped inside a form.*/
+  @Prop() public submitButton?: boolean = true;
 
   /** __Experimental__: Show or hide password toggle for `input type="password"`. */
   @Prop() public showPasswordToggle?: boolean = true;
@@ -227,14 +216,12 @@ export class TextFieldWrapper {
       this.isPassword ? 'password' : type,
       this.showPasswordToggle,
       this.isWithinForm,
+      this.submitButton,
       this.theme
     );
 
     const disabledOrReadOnly = disabled || readOnly;
 
-    const labelProps = {
-      onClick: this.onLabelClick,
-    };
     const buttonProps = {
       hideLabel: true,
       theme: this.theme,
@@ -244,28 +231,22 @@ export class TextFieldWrapper {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <div class="root">
-          <label class="label">
-            {hasLabel(this.host, this.label) && (
-              <span class="label__text" {...labelProps}>
-                {this.label || <slot name="label" />}
-                {isRequiredAndParentNotRequired(this.host, this.input) && <Required />}
-              </span>
-            )}
-            {hasDescription(this.host, this.description) && (
-              <span class="label__text" {...labelProps}>
-                {this.description || <slot name="description" />}
-              </span>
-            )}
-            {(this.hasUnit || this.isCounterVisible) && (
-              <span class="unit" ref={(el) => (this.unitOrCounterElement = el)} aria-hidden="true">
-                {this.unit}
-              </span>
-            )}
-            <slot />
-            {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
-          </label>
+      <div class="root">
+        <Label
+          host={this.host}
+          label={this.label}
+          description={this.description}
+          formElement={this.input}
+          isDisabled={disabled}
+        />
+        <div class="wrapper">
+          <slot />
+          {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
+          {(this.hasUnit || this.isCounterVisible) && (
+            <span class="unit" ref={(el) => (this.unitOrCounterElement = el)} aria-hidden="true">
+              {this.unit}
+            </span>
+          )}
           {this.isPassword && this.showPasswordToggle ? (
             <PrefixedTagNames.pButtonPure
               {...buttonProps}
@@ -290,7 +271,7 @@ export class TextFieldWrapper {
           ) : (
             this.isSearch && [
               // TODO: create an own component, which would fix SSR support too
-              this.isWithinForm ? (
+              this.isWithinForm && this.submitButton ? (
                 <PrefixedTagNames.pButtonPure
                   {...buttonProps}
                   key="btn-submit"
@@ -340,10 +321,8 @@ export class TextFieldWrapper {
             ]
           )}
         </div>
-        {hasMessage(this.host, this.message, this.state) && (
-          <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        )}
-      </Host>
+        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+      </div>
     );
   }
 

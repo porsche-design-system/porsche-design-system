@@ -27,13 +27,7 @@ describe('pagination', () => {
 
     const nav = await selectNode(page, 'p-pagination >>> nav');
     const paginationUpdateEventCounter = await selectNode(page, 'p-pagination + p');
-
-    // pagination has 2nd lifecycle to recalculate amount of pages
-    await page.waitForFunction(
-      () => document.querySelector('p-pagination').shadowRoot.querySelectorAll('nav span').length === 9
-    );
-
-    const [, secondBtn, thirdBtn, fourthBtn] = (await nav.$$('span')).slice(1, -1); // without prev and next;
+    const [, secondBtn, thirdBtn, fourthBtn] = (await nav.$$('span:not(.ellipsis)')).slice(1, -1); // without prev and next
 
     await secondBtn.click();
     expect(await getCounterValue(paginationUpdateEventCounter)).toBe('1');

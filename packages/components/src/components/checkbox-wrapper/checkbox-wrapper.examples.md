@@ -13,7 +13,7 @@ text for screen readers.
 ## Basic example
 
 <Playground :markup="hideLabelMarkup" :config="config">
-  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
+  <PlaygroundSelect v-model="hideLabel" :values="hideLabels" name="hideLabel"></PlaygroundSelect>
 </Playground>
 
 ## Indeterminate
@@ -58,7 +58,7 @@ The `p-checkbox-wrapper` component supports the visualisation of inline validati
 colored and visible/hidden depending on the defined `state`.
 
 <Playground :markup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
 </Playground>
 
 ## Slots

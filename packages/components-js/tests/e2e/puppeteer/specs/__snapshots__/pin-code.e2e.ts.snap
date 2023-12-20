@@ -109,6 +109,7 @@ exports[`accessibility should expose correct accessibility tree in error state: 
 exports[`accessibility should expose correct accessibility tree in loading state 1`] = `
 {
   "description": "Some label Some description",
+  "disabled": true,
   "name": "1-4",
   "role": "textbox",
 }

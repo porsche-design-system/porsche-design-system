@@ -42,7 +42,7 @@ clicked step.
 You can set the `size` property of the component which is breakpoint customizable.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ## Scrollable

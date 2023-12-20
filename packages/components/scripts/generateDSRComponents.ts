@@ -60,6 +60,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+ref={.*?}/g, '') // ref props
         .replace(/\s+onMouseDown={.*?}/g, '') // onMouseDown props
         .replace(/\s+onClick={.*?}/g, '') // onClick props
+        .replace(/\s+onCancel={.*?}/g, '') // onCancel props
         .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
         .replace(/\s+onPaste={.*?}/g, '') // onPaste props
@@ -76,7 +77,7 @@ const generateDSRComponents = (): void => {
         .replace(/import[\s\S]*?from '(.*)';\n/g, (m, group) =>
           group.endsWith('utils')
             ? m.replace(group, utilsBundleImportPath)
-            : group.endsWith('state-message') || group.endsWith('required')
+            : group.endsWith('state-message') || group.endsWith('required') || group.endsWith('label')
             ? m.replace(group, './' + group.split('/').pop())
             : ''
         )
@@ -191,12 +192,39 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/FunctionalComponent/, 'FC')
           .replace(/: FormState/g, ': any')
           .replace(/: Theme/g, ': any')
-          .replace(/(=.*?{.*?)(?:, )?host(.*?})/g, '$1$2') // remove unused destructured host
-          .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '');
+          .replace(/(<\/?)Fragment(>)/g, '$1$2') // replace <Fragment> with <> or </Fragment> with </>
+          .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '')
+          .replace(/&& !isParentFieldsetRequired\(.*?\)/, '/* $& */') // let's disable it for now
+          .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
+          .replace(/host,|formElement,/g, '// $&'); // don't destructure unused const
+
+        if (newFileContent.includes('export const Label:')) {
+          newFileContent = newFileContent
+            .replace(/(hasLabel)\(.*\)/, '$1') // replace function call with boolean const
+            .replace(/(hasDescription)\(.*\)/, '$1') // replace function call with boolean const
+            .replace(/(type LabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
+            .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, '); // destructure newly introduced hasLabel and hasDescription
+        }
+
+        if (newFileContent.includes('export const StateMessage:')) {
+          newFileContent = newFileContent
+            .replace(/(hasMessage)\(.*\)/, '$1') // replace function call with boolean const
+            .replace(/(type StateMessageProps = {)/, '$1 hasMessage: boolean; ') // add types for StateMessageProps
+            .replace(/(StateMessage: FC<StateMessageProps> = \({)/, '$1 hasMessage, ') // destructure newly introduced hasMessage
+            .replace(/(=.*?{.*?)(?:, )?host(.*?})/g, '$1$2'); // remove unused destructured host
+        }
       }
 
       // fix various issues
       newFileContent = newFileContent
+        .replace(
+          /(<Label(?!Props))([\s\S]*?\/>)/,
+          "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
+        )
+        .replace(
+          /(<StateMessage(?!Props))([\s\S]*?\/>)/,
+          "$1 hasMessage={(this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(this.props.state)}$2"
+        )
         .replace(/(this\.props)\.host/g, '$1') // general
         .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)/, '$1(100') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
@@ -264,8 +292,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-inline-notification') {
         newFileContent = newFileContent.replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
       } else if (tagName === 'p-pagination') {
-        // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
-        newFileContent = newFileContent.replace(/parsedIntl/g, 'this.props.intl');
+        newFileContent = newFileContent
+          // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
+          .replace(/parsedIntl/g, 'this.props.intl')
+          // transform className objects to string
+          .replace(
+            /className=\{(\{[\S\s]+?})}/g,
+            `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
+          );
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')
@@ -396,6 +430,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-select-wrapper-dropdown') {
         newFileContent = newFileContent
+          // part prop is not typed in JSX, although it's valid HTML attribute
+          .replace(/( +)part=/g, '$1/* @ts-ignore */\n$&')
           // Remove markup after button
           .replace(/\{\[\n\s*<div\s+className="sr-text"\s+id=\{labelId}>[\s\S]+?]}/, '')
           // Change isOpen, optionMaps, searchString to not be a prop
@@ -406,6 +442,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes\([^}]*\}\s*/, '');
       } else if (tagName === 'p-select-wrapper') {
         newFileContent = newFileContent
+          .replace(/(required={).*(})/, '$1false$2')
           // Add PSelectWrapperDropdown component import
           .replace(
             /(import\s*{\s*PIcon\s*}\s*from\s*'\.\.\/components';\s*)/,
@@ -425,17 +462,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // remove aria functions
           .replace(/\{\.\.\.getFilterInputAriaAttributes\([\s\S]+?\)}\s*/, '')
           .replace(/\{\.\.\.getListAriaAttributes\([\s\S]+?\)}\s*/, '')
-          // replace input-container className
-          .replace(/\{\{ 'input-container': true, disabled: this\.props\.disabled }}/, '"input-container"')
+          // replace wrapper className
+          .replace(/\{\{ wrapper: true, disabled: (this\.props\.disabled) }}/, `{\`wrapper\${$1 ? ' disabled' : ''}\`}`)
           // remove color prop
           .replace(/\s*color=\{this\.props\.disabled \? 'state-disabled' : 'primary'}\s*/, '')
           // remove placeholder
           .replace(/\s*placeholder=\{.+/, '')
           // replace toggle icon className
-          .replace(
-            /className=\{\{ icon: true, 'toggle-icon': true, 'toggle-icon--open': this\.props\.isOpen }}/,
-            'className="icon toggle-icon"'
-          )
+          .replace(/className=\{\{ icon: true, 'icon--rotate': this\.props\.isOpen }}/, 'className="icon"')
           .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
           .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false');
       } else if (tagName === 'p-multi-select-option') {
@@ -491,6 +525,16 @@ $&`
           );
       } else if (tagName === 'p-pin-code') {
         newFileContent = newFileContent.replace(/value={/, 'defaultValue={'); // fix warning about read-only field
+      } else if (tagName === 'p-flyout-navigation') {
+        newFileContent = newFileContent
+          .replace(/validateActiveIdentifier\(.*\);/g, '')
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
+      } else if (tagName === 'p-flyout-navigation-item') {
+        newFileContent = newFileContent
+          .replace(/: Theme/g, ': any')
+          .replace(/this\.props\.theme(?! \|\|)/g, 'this.theme')
+          .replace(/this\.props\.open(?! \|\|)/g, 'this.open')
+          .replace(/(inert=\{this\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
           .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation
@@ -517,6 +561,11 @@ $&`
           ) // rewire source for linkEl
           .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
           .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
+      } else if (tagName === 'p-link-tile-product') {
+        newFileContent = newFileContent
+          .replace(/LinkTileProductAspectRatio,/, '')
+          .replace(/LinkTileProductLikeEvent,/, '')
+          .replace(/LinkTileProductTarget,/, '');
       }
 
       return newFileContent;
@@ -526,7 +575,7 @@ $&`
   fs.mkdirSync(destinationDirectory, { recursive: true });
 
   componentFileContents.forEach((fileContent) => {
-    const name = /export (?:class|const) ([A-Za-z]+)/.exec(fileContent)![1];
+    const name = /export (?:class|const) ([A-Z][A-Za-z]+)/.exec(fileContent)![1];
 
     const fileName = `${paramCase(name.replace('DSR', ''))}.tsx`;
     const filePath = path.resolve(destinationDirectory, fileName);

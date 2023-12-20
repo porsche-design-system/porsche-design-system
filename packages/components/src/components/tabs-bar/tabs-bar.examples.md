@@ -75,7 +75,7 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ## Weight
@@ -86,7 +86,7 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 </Notification>
 
 <Playground :markup="weightMarkup" :config="config">
-  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
+  <PlaygroundSelect v-model="weight" :values="weights" name="weight"></PlaygroundSelect>
 </Playground>
 
 ## Gradient color
@@ -100,7 +100,7 @@ background and gradient has to align to your chosen background.
 </Notification>
 
 <Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
-  <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
+  <PlaygroundSelect v-model="gradientColor" :values="gradientColors" name="gradientColor"></PlaygroundSelect>
 </Playground>
 
 <script lang="ts">

@@ -3,6 +3,7 @@ node_modules
 /dist
 /scripts/algoliaRecords.json
 /src/lib
+/src/pages/changelog.md
 
 /public/porsche-design-system
 

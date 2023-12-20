@@ -6,10 +6,10 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.39.0-focal
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.39.0-focal-test2
 jobs:
-  assets-unit:
-    name: 'Assets Unit'
+  assets:
+    name: 'Assets'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -23,11 +23,32 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
-      - name: 'Unit Test'
+      - name: 'Unit Test Assets'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
-          args: --assets
+          args: --assets:assets
+      - name: 'Unit Test Fallbacks'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --assets:fallbacks
+      - name: 'Unit Test Styles'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --assets:styles
+      - name: 'VRT Test Fallbacks'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-vrt
+          args: --assets:fallbacks
+      - name: 'VRT Regression Fallbacks'
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: fallbacks-vrt-regression
+          path: ./packages/assets/projects/fallbacks/tests/vrt/results
   components-unit:
     name: 'Components Unit'
     runs-on: ubuntu-latest
@@ -166,8 +187,8 @@ jobs:
         with:
           name: components-js-vrt-puppeteer-regression
           path: ./packages/components-js/tests/vrt/puppeteer/results
-  components-js-vrt-playwright:
-    name: 'Components JS VRT (Playwright)'
+  components-js-common-vrt-playwright-chrome:
+    name: 'Components JS VRT Common (Playwright Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -182,12 +203,58 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
-          args: --components-js
+          args: --components-js:chrome:common
       - name: 'VRT Regression (Playwright)'
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: components-js-vrt-playwright-regression
+          name: components-js-vrt-common-playwright-chrome-regression
+          path: ./packages/components-js/tests/vrt/playwright/results
+  components-js-custom-states-vrt-playwright-chrome:
+    name: 'Components JS VRT Custom/States (Playwright Chrome)'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'VRT Test (Playwright)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-vrt-playwright
+          args: --components-js:chrome:customAndStates
+      - name: 'VRT Regression (Playwright)'
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: components-js-vrt-custom-states-playwright-chrome-regression
+          path: ./packages/components-js/tests/vrt/playwright/results
+  components-js-vrt-playwright-safari:
+    name: 'Components JS VRT (Playwright Safari)'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'VRT Test (Playwright)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-vrt-playwright
+          args: --components-js:safari
+      - name: 'VRT Regression (Playwright)'
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: components-js-vrt-playwright-safari-regression
           path: ./packages/components-js/tests/vrt/playwright/results
   components-angular:
     name: 'Components Angular'
@@ -292,6 +359,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
+      - name: 'E2E Test components-react/remix'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e
+          args: --components-react/remix
       - name: 'VRT Test components-react/remix'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -406,37 +478,6 @@ jobs:
         with:
           entrypoint: run-test-e2e
           args: --crawler
-  fallbacks:
-    name: 'Fallbacks'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v3
-      - name: 'Setup and install'
-        uses: ./.github/actions/setup-and-install
-        with:
-          github-token: ${{ secrets.github-token }}
-      - name: 'Build Shared'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --shared
-      - name: 'Unit Test'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-test-unit
-          args: --fallbacks
-      - name: 'VRT Test'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-test-vrt
-          args: --fallbacks
-      - name: 'VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: fallbacks-vrt-regression
-          path: ./packages/fallbacks/tests/vrt/results
   component-meta:
     name: 'Component Meta'
     runs-on: ubuntu-latest
@@ -715,14 +756,18 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.github-token }}
-      - name: 'Build Core Dependencies'
+      - name: 'Build Shared'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-build
-          args: --core-dependencies
+          args: --shared
+      - name: 'Build Utilities'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --utilities
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
           args: --utilities
-

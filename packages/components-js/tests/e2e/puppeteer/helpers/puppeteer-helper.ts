@@ -4,7 +4,8 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import * as beautify from 'js-beautify';
-import { getFontFaceStylesheet, getInitialStyles } from '@porsche-design-system/components-js/partials';
+import { getInitialStyles } from '@porsche-design-system/components-js/partials';
+import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
 export type ClickableTests = {
   state: string;
@@ -59,7 +60,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
               timeout = window.setTimeout(() => {
                 resolveComponentsUpdatedPromise();
                 createComponentsUpdatedPromise();
-              }, 40); // TODO: reduce this timeout once component lifecycles are working as intended
+              }, 40); // TODO: reduce or better remove this timeout for a reliable waitForStencilLifecycle() utility
             }
           };
 
@@ -284,7 +285,7 @@ export const initConsoleObserver = (page: Page): void => {
 };
 
 const getConsoleErrors = () => consoleMessages.filter((x) => x.type() === 'error');
-const getConsoleWarnings = () => consoleMessages.filter((x) => x.type() === 'warning');
+export const getConsoleWarnings = () => consoleMessages.filter((x) => x.type() === 'warning');
 export const getConsoleErrorsAmount = () => getConsoleErrors().length;
 export const getConsoleErrorMessages = () =>
   getConsoleErrors()
@@ -364,15 +365,48 @@ export const expectShadowDomToMatchSnapshot = async (host: ElementHandle): Promi
   expect(prettyHtml).toMatchSnapshot();
 };
 
-type ExpectToMatchSnapshotOptions = Omit<SnapshotOptions, 'root'> & {
+export type ExpectToMatchSnapshotOptions = Omit<SnapshotOptions, 'root'> & {
   message?: string;
+  skipWaitForFunction?: boolean;
 };
 export const expectA11yToMatchSnapshot = async (
   page: Page,
   elementHandle: ElementHandle,
   opts?: ExpectToMatchSnapshotOptions
 ): Promise<void> => {
-  const { message, ...options } = opts || {};
+  const { message, skipWaitForFunction, ...options } = opts || {};
+
+  // TODO: remove this workaround once waitForStencilLifecycle() is reliable
+  // currently it is mostly based on a 40ms timeout which isn't always enough
+  // in scenarios when multiple properties are changed after each other, e.g.
+  // await setProperty(host, 'state', 'error');
+  // await setProperty(host, 'message', 'Some error message.');
+  // then there are 2 lifecycles but waitForStencilLifecycle() can resolve after the 1st
+  if (!skipWaitForFunction && elementHandle) {
+    const tagName = (await (await elementHandle.getProperty('tagName')).jsonValue()).toLowerCase();
+    if (['input', 'select', 'textarea'].includes(tagName)) {
+      const state: FormState = await elementHandle.evaluate(
+        (el) => (el.parentElement as any)?.state || (el.getRootNode() as any).host?.state
+      );
+      if (state) {
+        await page.waitForFunction(
+          (el, state) => {
+            if (!el.ariaLabel) {
+              return true; // some nested input elements don't have/need it
+            } else if (state === 'none') {
+              return !el.ariaLabel.includes('success') && !el.ariaLabel.includes('error');
+            } else {
+              return el.ariaLabel.includes(state);
+            }
+          },
+          { timeout: 500 },
+          elementHandle,
+          state
+        );
+      }
+    }
+  }
+
   const snapshot = await page.accessibility.snapshot({
     root: elementHandle,
     ...options,
@@ -413,4 +447,14 @@ export const getHTMLAttributes = <T extends object>(props: T): string => {
       return `${attributeName}="${attributeValue}"`;
     })
     .join(' ');
+};
+
+export const getOldLoaderScriptForPrefixes = (prefixes: string[]): string => {
+  const loadCalls = prefixes.map((prefix) => `porscheDesignSystem.load(\{ prefix: '${prefix}' \});`).join('\n      ');
+  // the script below has been copied from https://designsystem.porsche.com/release/components-v3.7.0/
+  return (
+    '<script data-pds-loader-script="">var porscheDesignSystem;(()=>{"use strict";var e={d:(t,n)=>{for(var o in n)e.o(n,o)&&!e.o(t,o)&&Object.defineProperty(t,o,{enumerable:!0,get:n[o]})},o:(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r:e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}},t={};e.r(t),e.d(t,{load:()=>r});const n="porscheDesignSystem";function o(){return document[n]||(document[n]={}),document[n]}function s({script:e,version:t,prefix:s}){const r=function(e){const t=o(),{[e]:n}=t;if(!n){let n=()=>{};const o=new Promise((e=>n=e));t[e]={isInjected:!1,isReady:()=>o,readyResolve:n,prefixes:[],registerCustomElements:null}}return t[e]}(t),{isInjected:i,prefixes:c=[],registerCustomElements:d}=r,[u]=Object.entries(o()).filter((([e,n])=>e!==t&&"object"==typeof n&&n.prefixes.includes(s)));if(u)throw new Error(`[Porsche Design System v${t}] prefix \'${s}\' is already registered with version \'${u[0]}\' of the Porsche Design System. Please use a different one.\\nTake a look at document.${n} for more details.`);i||(function(e){const t=document.createElement("script");t.src=e,t.setAttribute("crossorigin",""),document.body.appendChild(t)}(e),r.isInjected=!0),c.includes(s)||(c.push(s),d&&d(s))}const r=(e={})=>{const t="PORSCHE_DESIGN_SYSTEM_CDN";window[t]=e.cdn||window[t]||(window.location.origin.match(/\\.cn$/)?"cn":"auto");const n="porscheDesignSystem";document[n]||(document[n]={}),document[n].cdn={url:"https://cdn.ui.porsche."+("cn"===window[t]?"cn":"com"),prefixes:[]},s({version:"3.7.0",script:document[n].cdn.url+"/porsche-design-system/components/porsche-design-system.v3.7.0.3c3999ee659a976cf191.js",prefix:e.prefix||""})};porscheDesignSystem=t})();' +
+    loadCalls +
+    '</script>'
+  );
 };

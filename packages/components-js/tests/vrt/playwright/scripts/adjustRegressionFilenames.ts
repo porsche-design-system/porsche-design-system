@@ -41,8 +41,19 @@ const walk = (dir: any, done: any): void => {
   });
 };
 
+const deleteRetryDirectories = (source: string): void => {
+  fs.readdirSync(source, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => {
+      if (/retry\d+$/.test(dirent.name)) {
+        fs.rmSync(`./${dirent.path}/${dirent.name}`, { recursive: true, force: true });
+      }
+    });
+};
+
 const path = 'tests/vrt/playwright/results';
 if (fs.existsSync(path)) {
+  deleteRetryDirectories(path);
   walk(path, (error: any): void => {
     if (error) {
       throw error;

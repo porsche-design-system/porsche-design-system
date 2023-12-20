@@ -1,3 +1,4 @@
+export * from './add-native-popover-scroll-and-resize-listeners';
 export * from './a11y';
 export * from './attribute-observer';
 export { parseJSON } from './breakpoint-customizable';
@@ -28,6 +29,7 @@ export * from './scroller-popover-utils';
 export * from './scrolling';
 export * from './select';
 export * from './setScrollLock';
+export * from './supportsChromiumMediaQuery';
 export * from './supportsNativePopover';
 export * from './has-document';
 export * from './has-window';

@@ -87,8 +87,22 @@
     </style>
   </head>
   <body>
-    <header>
+    <header dir="ltr">
       <h1>Porsche Design System - Playground</h1>
+
+      <select id="theme" onchange="updateRoute({theme: this.value})">
+        <option disabled selected>Select a theme</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="auto">Auto</option>
+      </select>
+
+      <select id="dir" onchange="updateRoute({dir: this.value})">
+        <option disabled selected>Select a direction</option>
+        <option value="ltr">LTR (left-to-right)</option>
+        <option value="rtl">RTL (right-to-left)</option>
+        <option value="auto">Auto</option>
+      </select>
     </header>
 
     <main></main>
@@ -101,6 +115,47 @@
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
         })
       );
+
+      const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
+      const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
+
+      const updateRoute = (opts) => {
+        if (opts) {
+          const url = new URL(location);
+          if (opts.pathname) {
+            url.pathname = opts.pathname;
+          }
+          if (opts.theme) {
+            url.searchParams.set('theme', opts.theme);
+          }
+          if (opts.dir) {
+            url.searchParams.set('dir', opts.dir);
+          }
+          history.pushState(null, '', url);
+        }
+
+        const theme = getTheme();
+        const dir = getDir();
+
+        document.querySelector('html').setAttribute('dir', dir);
+        const mainEl = document.querySelector('main');
+        mainEl.querySelectorAll('.playground').forEach((el) => {
+          el.classList.remove('light', 'dark', 'auto');
+          el.classList.add(theme);
+        });
+
+        mainEl.querySelectorAll('*').forEach((el) => (el.theme = theme));
+      };
+
+      const updateSelect = (id, value) => {
+        if (id && value) {
+          Array.from(document.querySelectorAll(`#${id} option`)).filter((e) => e.value === value)[0].selected = true;
+        }
+      };
+
+      updateSelect('theme', getTheme());
+      updateSelect('dir', getDir());
+      updateRoute();
     </script>
     <!-- /END -->
   </body>

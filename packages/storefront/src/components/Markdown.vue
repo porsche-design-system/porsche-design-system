@@ -12,15 +12,15 @@
 
   @Component
   export default class Markdown extends Vue {
-    mounted() {
+    mounted(): void {
       this.highlightDiffs();
     }
 
-    updated() {
+    updated(): void {
       this.highlightDiffs();
     }
 
-    highlightDiffs() {
+    highlightDiffs(): void {
       this.$el
         .querySelectorAll('pre[class*="diff"], code[class*="diff"]')
         .forEach((diff) => Prism.highlightElement(diff));
@@ -116,12 +116,15 @@
         h2 {
           @include pds-heading-x-large;
           margin-top: $pds-spacing-fluid-large;
+        }
 
+        h2,
+        h3 {
           // for anchor links with table of contents
           &[id] {
             p-link-pure {
               visibility: hidden;
-              margin-left: $pds-spacing-static-small;
+              margin-inline-start: $pds-spacing-static-small;
             }
 
             &:hover {
@@ -191,8 +194,8 @@
 
         // Blockquote
         blockquote {
-          padding-left: $pds-spacing-static-medium;
-          border-left: 5px solid var(--theme-contrast-low);
+          padding-inline-start: $pds-spacing-static-medium;
+          border-inline-start: 5px solid var(--theme-contrast-low);
         }
 
         // Lists
@@ -200,7 +203,7 @@
         ol {
           @include pds-text-small;
           margin-top: $pds-spacing-fluid-medium;
-          padding-left: $pds-spacing-static-large;
+          padding-inline-start: $pds-spacing-static-large;
 
           ul,
           ol {
@@ -246,6 +249,7 @@
         }
 
         pre {
+          @include pds-focus();
           margin-top: $pds-spacing-static-small;
           display: block;
           padding: $pds-spacing-static-small $pds-spacing-static-medium;
@@ -276,13 +280,13 @@
           }
 
           th {
-            text-align: left;
+            text-align: start;
             padding-bottom: $pds-spacing-static-small;
             border-bottom: 1px solid var(--theme-contrast-low);
           }
 
           td {
-            text-align: left;
+            text-align: start;
             padding: {
               top: $pds-spacing-static-small;
               bottom: $pds-spacing-static-small;
@@ -294,7 +298,7 @@
 
           th ~ th,
           td ~ td {
-            padding-left: $pds-spacing-static-medium;
+            padding-inline-start: $pds-spacing-static-medium;
           }
         }
 

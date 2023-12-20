@@ -57,7 +57,7 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 By default, the sizing is responsive, but can be changed to a static size when needed.
 
 <Playground :markup="sizeMarkup">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ---

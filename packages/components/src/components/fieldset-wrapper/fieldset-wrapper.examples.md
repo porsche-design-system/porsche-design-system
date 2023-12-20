@@ -26,7 +26,7 @@ Please use <a href="components/fieldset">p-fieldset</a> instead.
 ## Size
 
 <Playground :markup="labelSizeMarkup" :config="config">
-  <SelectOptions v-model="labelSize" :values="labelSizes" name="labelSize"></SelectOptions>
+  <PlaygroundSelect v-model="labelSize" :values="labelSizes" name="labelSize"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -44,7 +44,7 @@ set required on the input of the wrapped form elements to ensure accessibility, 
 ## State
 
 <Playground :markup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -52,7 +52,7 @@ set required on the input of the wrapped form elements to ensure accessibility, 
 ## Slotted message
 
 <Playground :markup="slottedMessageMarkup" :config="config">
-  <SelectOptions v-model="slottedMessage" :values="slottedMessages" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="slottedMessage" :values="slottedMessages" name="state"></PlaygroundSelect>
 </Playground>
 
 <script lang="ts">
