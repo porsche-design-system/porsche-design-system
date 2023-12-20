@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Carousel`: Prop `heading-size`, named slot `header`
   ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
+- `@font-face` supports Middle East languages
+- Partials: `getFontLinks` supports preloading `arabic`, `pashto` and `urdu` subsets
 
 #### Changed
 
