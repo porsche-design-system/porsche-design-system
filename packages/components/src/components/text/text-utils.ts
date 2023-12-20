@@ -1,4 +1,4 @@
-import { hasSpecificTag } from '../../utils';
+import { hasSpecificDirectChildTag } from '../../utils';
 import type {
   TypographyAlign,
   TypographyAlignDeprecated,
@@ -12,7 +12,7 @@ export const TEXT_TAGS = ['p', 'span', 'div', 'address', 'blockquote', 'figcapti
 export type TextTag = (typeof TEXT_TAGS)[number];
 
 export const getTextTagType = (host: HTMLElement, tag: TextTag): string => {
-  if (hasSpecificTag(host, TEXT_TAGS.join())) {
+  if (hasSpecificDirectChildTag(host, TEXT_TAGS.join())) {
     return 'div';
   } else {
     return tag;

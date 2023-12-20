@@ -1,7 +1,7 @@
 import type { HeadingTag } from './heading-tag';
 import { HEADING_TAGS } from './heading-tag';
 import type { BreakpointCustomizable, TypographyAlign, TypographyAlignDeprecated } from '../../types';
-import { hasSpecificTag } from '../../utils';
+import { hasSpecificDirectChildTag } from '../../utils';
 import { HeadingSize } from '../../types';
 
 export const HEADING_COLORS = ['primary', 'inherit'] as const;
@@ -25,7 +25,7 @@ export const getHeadingTagType = (
   size: BreakpointCustomizable<HeadingSize>,
   tag: HeadingTag
 ): string => {
-  if (hasSpecificTag(host, HEADING_TAGS.join())) {
+  if (hasSpecificDirectChildTag(host, HEADING_TAGS.join())) {
     return 'div';
   } else if (tag) {
     return tag;

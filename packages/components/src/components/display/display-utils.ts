@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, TypographyAlign, TypographyAlignDeprecated } from '../../types';
-import { hasSpecificTag } from '../../utils';
+import { hasSpecificDirectChildTag } from '../../utils';
 
 export const DISPLAY_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type DisplayTag = (typeof DISPLAY_TAGS)[number];
@@ -26,7 +26,7 @@ export const getDisplayTagType = (
   size: BreakpointCustomizable<DisplaySize>,
   tag: DisplayTag
 ): string => {
-  if (hasSpecificTag(host, DISPLAY_TAGS.join())) {
+  if (hasSpecificDirectChildTag(host, DISPLAY_TAGS.join())) {
     return 'div';
   } else if (tag) {
     return tag;

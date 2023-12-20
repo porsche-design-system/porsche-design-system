@@ -10,7 +10,7 @@ export * from './getShadowRootHTMLElement';
 export * from './getSlotTextContent';
 export * from './hasAttribute';
 export * from './hasNamedSlot';
-export * from './hasSpecificTag';
+export * from './hasSpecificDirectChildTag';
 export * from './isDisabledOrLoading';
 export * from './isParentOfKind';
 export * from './isShadowRootParentOfKind';
