@@ -41,10 +41,10 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover p-modal >>> p-button-pure');
   await forceHoverState(page, '.hover p-modal >>> p-button-pure >>> button');
   await forceFocusState(page, '.focus p-modal a');
-  await forceFocusState(page, '.focus p-modal >>> div');
+  await forceFocusState(page, '.focus p-modal >>> .root');
   await forceFocusState(page, '.focus p-modal >>> p-button-pure >>> button');
   await forceFocusHoverState(page, '.focus-hover p-modal a');
-  await forceFocusHoverState(page, '.focus-hover p-modal >>> div');
+  await forceFocusHoverState(page, '.focus-hover p-modal >>> .root');
   // due to custom hover state we need to set hover also on component itself
   await forceFocusHoverState(page, '.focus-hover p-modal >>> p-button-pure');
   await forceFocusHoverState(page, '.focus-hover p-modal >>> p-button-pure >>> button');

@@ -16,6 +16,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -113,6 +114,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -198,6 +200,7 @@ button:not(:focus-visible)::before {
 exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false and theme: dark 1`] = `
 ":host {
   display: block;
+  transform: translate3d(0,0,0) !important;
   color-scheme: light dark !important;
 }
 :host(:only-of-type) {
@@ -210,6 +213,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -294,6 +298,7 @@ button:not(:focus-visible)::before {
 exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false and theme: light 1`] = `
 ":host {
   display: block;
+  transform: translate3d(0,0,0) !important;
   color-scheme: light dark !important;
 }
 :host(:only-of-type) {
@@ -306,6 +311,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -390,6 +396,7 @@ button:not(:focus-visible)::before {
 exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: true and theme: light 1`] = `
 ":host {
   display: block;
+  transform: translate3d(0,0,0) !important;
   color-scheme: light dark !important;
 }
 :host(:only-of-type) {
@@ -402,6 +409,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -500,6 +508,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -597,6 +606,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -695,6 +705,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -780,6 +791,7 @@ button:not(:focus-visible)::before {
 exports[`getComponentCss() should return correct css for size: "small", compact: true, open: false and theme: light 1`] = `
 ":host {
   display: block;
+  transform: translate3d(0,0,0) !important;
   color-scheme: light dark !important;
 }
 :host(:only-of-type) {
@@ -792,6 +804,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -876,6 +889,7 @@ button:not(:focus-visible)::before {
 exports[`getComponentCss() should return correct css for size: "small", compact: true, open: true and theme: light 1`] = `
 ":host {
   display: block;
+  transform: translate3d(0,0,0) !important;
   color-scheme: light dark !important;
 }
 :host(:only-of-type) {
@@ -888,6 +902,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
@@ -986,6 +1001,7 @@ button {
   display: flex;
   position: relative;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   text-decoration: none;
   border: 0;
