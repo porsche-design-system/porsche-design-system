@@ -1,14 +1,14 @@
 import * as getHTMLElementUtils from './getHTMLElement';
-import { hasSpecificSlottedTag } from './hasSpecificSlottedTag';
+import { hasSpecificTag } from './hasSpecificTag';
 
 it('should call getHTMLElement with correct parameters', () => {
   const host = document.createElement('div');
   const tag = 'button';
   const spy = jest.spyOn(getHTMLElementUtils, 'getHTMLElement');
 
-  hasSpecificSlottedTag(host, tag);
+  hasSpecificTag(host, tag);
 
-  expect(spy).toBeCalledWith(host, ':first-child');
+  expect(spy).toBeCalledWith(host, ':only-child');
 });
 
 it('should return true if getHTMLElement returns an element matching the tag param and host has only one child', () => {
@@ -16,9 +16,8 @@ it('should return true if getHTMLElement returns an element matching the tag par
   const tag = 'button';
   const child = document.createElement('button');
   host.appendChild(child);
-  jest.spyOn(getHTMLElementUtils, 'getHTMLElement').mockReturnValueOnce(child);
 
-  expect(hasSpecificSlottedTag(host, tag)).toBe(true);
+  expect(hasSpecificTag(host, tag)).toBe(true);
 });
 
 it('should return false if getHTMLElement returns an element matching the tag param and host has more then one child', () => {
@@ -28,9 +27,8 @@ it('should return false if getHTMLElement returns an element matching the tag pa
   const child2 = document.createElement('input');
   host.appendChild(child1);
   host.appendChild(child2);
-  jest.spyOn(getHTMLElementUtils, 'getHTMLElement').mockReturnValueOnce(child1);
 
-  expect(hasSpecificSlottedTag(host, tag)).toBe(false);
+  expect(hasSpecificTag(host, tag)).toBe(false);
 });
 
 it('should return false if getHTMLElement returns an element not matching the tag param and host has only one child', () => {
@@ -38,9 +36,8 @@ it('should return false if getHTMLElement returns an element not matching the ta
   const tag = 'input';
   const child = document.createElement('button');
   host.appendChild(child);
-  jest.spyOn(getHTMLElementUtils, 'getHTMLElement').mockReturnValueOnce(child);
 
-  expect(hasSpecificSlottedTag(host, tag)).toBe(false);
+  expect(hasSpecificTag(host, tag)).toBe(false);
 });
 
 it('should return false if getHTMLElement returns an element not matching the tag param and host has more then one child', () => {
@@ -50,15 +47,13 @@ it('should return false if getHTMLElement returns an element not matching the ta
   const child2 = document.createElement('input');
   host.appendChild(child1);
   host.appendChild(child2);
-  jest.spyOn(getHTMLElementUtils, 'getHTMLElement').mockReturnValueOnce(child1);
 
-  expect(hasSpecificSlottedTag(host, tag)).toBe(false);
+  expect(hasSpecificTag(host, tag)).toBe(false);
 });
 
 it('should return false if getHTMLElement returns null and host has no child', () => {
   const host = document.createElement('div');
   const tag = 'input';
-  jest.spyOn(getHTMLElementUtils, 'getHTMLElement').mockReturnValueOnce(null);
 
-  expect(hasSpecificSlottedTag(host, tag)).toBe(false);
+  expect(hasSpecificTag(host, tag)).toBe(false);
 });
