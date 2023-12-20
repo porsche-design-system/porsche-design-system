@@ -249,6 +249,7 @@
         }
 
         pre {
+          @include pds-focus();
           margin-top: $pds-spacing-static-small;
           display: block;
           padding: $pds-spacing-static-small $pds-spacing-static-medium;
