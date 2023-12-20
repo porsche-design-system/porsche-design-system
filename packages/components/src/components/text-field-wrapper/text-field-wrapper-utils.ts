@@ -1,7 +1,7 @@
 import type { IconName } from '../../types';
 import { hasCounter, hasDocument, throwException } from '../../utils';
-import { cssVariableInputPaddingStart, cssVariableInputPaddingEnd } from './text-field-wrapper-styles';
 import type { FormState } from '../../utils/form/form-state';
+import { cssVariableInputUnitCounterTextLength } from './text-field-wrapper-styles';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
 export type TextFieldWrapperUnitPosition = (typeof UNIT_POSITIONS)[number];
@@ -17,27 +17,14 @@ export const hasUnitAndIsTypeTextOrNumber = ({ type }: HTMLInputElement, unit: s
 export const isType = (inputType: string, typeToValidate: string): boolean => inputType === typeToValidate;
 export const hasLocateAction = (icon: IconName): boolean => icon === 'locate';
 
-export const getInputPaddingLeftOrRight = (unitPosition: string, unitElementTextCount: number): string => {
-  const cssVariableInputPadding = unitPosition === 'prefix' ? cssVariableInputPaddingEnd : cssVariableInputPaddingStart;
+export const setInputStyles = (input: HTMLInputElement, unit: string, isCounterVisible: boolean): void => {
+  let text = unit;
 
-  return `calc(${unitElementTextCount}ch + var(${cssVariableInputPadding}) + 0.75ch)`;
-};
-
-export const setInputStyles = (
-  input: HTMLInputElement,
-  unitOrCounterElement: HTMLElement,
-  unitPosition: TextFieldWrapperUnitPosition
-): void => {
-  if (unitOrCounterElement) {
-    input.style.removeProperty(cssVariableInputPaddingStart);
-    input.style.removeProperty(cssVariableInputPaddingEnd);
-
-    input.style.setProperty(
-      unitPosition === 'prefix' ? cssVariableInputPaddingStart : cssVariableInputPaddingEnd,
-      getInputPaddingLeftOrRight(unitPosition, unitOrCounterElement.textContent.trim().length),
-      'important'
-    );
+  if (input.attributes.getNamedItem('maxlength') && isCounterVisible) {
+    text = `${input.value.length}/${input.attributes.getNamedItem('maxlength').value}`;
   }
+
+  input.style.setProperty(cssVariableInputUnitCounterTextLength, text.length.toString());
 };
 
 export const throwIfUnitLengthExceeded = (unit: string): void => {

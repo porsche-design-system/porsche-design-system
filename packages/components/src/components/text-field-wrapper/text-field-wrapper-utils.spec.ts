@@ -2,25 +2,19 @@ import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import {
   addInputEventListenerForSearch,
   dispatchInputEvent,
-  getInputPaddingLeftOrRight,
   hasCounterAndIsTypeText,
   hasLocateAction,
   hasUnitAndIsTypeTextOrNumber,
   isType,
   setInputStyles,
-  TextFieldWrapperUnitPosition,
   throwIfUnitLengthExceeded,
 } from './text-field-wrapper-utils';
 import * as formUtils from '../../utils/form/form-utils';
+import { cssVariableInputUnitCounterTextLength } from './text-field-wrapper-styles';
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
   el.id = 'input';
-  return el;
-};
-const getCounterElement = (): HTMLSpanElement => {
-  const el = document.createElement('span');
-  el.id = 'counter';
   return el;
 };
 
@@ -129,39 +123,13 @@ describe('hasLocateAction()', () => {
   });
 });
 
-describe('getInputPaddingLeftOrRight()', () => {
-  it.each<[number, TextFieldWrapperUnitPosition, string]>([
-    [4, 'prefix', 'calc(4ch + var(--p-internal-text-field-input-padding-end) + 5px)'],
-    [8, 'suffix', 'calc(8ch + var(--p-internal-text-field-input-padding-start) + 5px)'],
-  ])('should for unitElementTextCount: %s return %s %s', (unitElementTextCount, unitPosition, expected) => {
-    expect(getInputPaddingLeftOrRight(unitPosition, unitElementTextCount)).toBe(expected);
-  });
-});
-
 describe('setInputStyles()', () => {
-  it('should do nothing if unitOrCounterElement is undefined', () => {
+  it('should set input value length', () => {
     const input = getInputElement();
-    setInputStyles(input, undefined, 'prefix');
 
-    expect(input.style.cssText).toBe('');
-  });
+    setInputStyles(input, 'km/h', true);
 
-  it('should set inline padding-left var on input', () => {
-    const input = getInputElement();
-    const unitElement = getCounterElement();
-    Object.defineProperty(unitElement, 'offsetWidth', { value: 60 });
-    setInputStyles(input, unitElement, 'prefix');
-
-    expect(input.style.cssText).toBe('--p-internal-text-field-input-padding-start: calc(60px - 2px) !important;');
-  });
-
-  it('should set inline padding-right var on input', () => {
-    const input = getInputElement();
-    const unitElement = getCounterElement();
-    Object.defineProperty(unitElement, 'offsetWidth', { value: 60 });
-    setInputStyles(input, unitElement, 'suffix');
-
-    expect(input.style.cssText).toBe('--p-internal-text-field-input-padding-end: calc(60px - 2px) !important;');
+    expect(input.style.getPropertyValue(cssVariableInputUnitCounterTextLength)).toBe(false);
   });
 });
 

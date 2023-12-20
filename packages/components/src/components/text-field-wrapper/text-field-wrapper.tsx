@@ -356,6 +356,6 @@ export class TextFieldWrapper {
   };
 
   private setInputStyles = (): void => {
-    setInputStyles(this.input, this.unitOrCounterElement, this.isCounterVisible ? 'suffix' : this.unitPosition);
+    setInputStyles(this.input, this.unit, this.isCounterVisible);
   };
 }

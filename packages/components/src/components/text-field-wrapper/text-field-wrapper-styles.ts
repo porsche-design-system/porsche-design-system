@@ -20,6 +20,7 @@ import { getFunctionalComponentLabelStyles } from '../common/label/label-styles'
 
 export const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';
 export const cssVariableInputPaddingEnd = '--p-internal-text-field-input-padding-end';
+export const cssVariableInputUnitCounterTextLength = '--p-internal-text-field-input-unit-counter-text-length';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -42,6 +43,7 @@ export const getComponentCss = (
   const isSearchWithoutFormOrSubmitButton = isSearch && (!isWithinForm || !hasSubmitButton);
   const isSearchWithForm = isSearch && isWithinForm;
   const isCalendarOrTimeWithCustomIndicator = showCustomCalendarOrTimeIndicator(isCalendar, isTime);
+  const isUnitPositionSuffix = unitPosition === 'suffix';
 
   return getCss({
     '@global': {
@@ -63,6 +65,10 @@ export const getComponentCss = (
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
+          [isUnitPositionSuffix ? 'paddingRight' : 'paddingLeft']:
+            `calc(calc(var(${cssVariableInputUnitCounterTextLength}) * 1ch) + var(${
+              isUnitPositionSuffix ? cssVariableInputPaddingEnd : cssVariableInputPaddingStart
+            }) ${hasUnitOrVisibleCounter ? '+ 0.75ch' : ''})`,
         }),
         // TODO: move into getSlottedTextFieldTextareaSelectStyles()
         '::slotted': {
