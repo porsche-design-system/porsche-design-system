@@ -8,6 +8,7 @@ import {
   hasUnitAndIsTypeTextOrNumber,
   isType,
   setInputStyles,
+  TextFieldWrapperUnitPosition,
   throwIfUnitLengthExceeded,
 } from './text-field-wrapper-utils';
 import * as formUtils from '../../utils/form/form-utils';
@@ -129,11 +130,11 @@ describe('hasLocateAction()', () => {
 });
 
 describe('getInputPaddingLeftOrRight()', () => {
-  it.each<[number, string]>([
-    [60, 'calc(60px - 2px)'],
-    [40, 'calc(40px - 2px)'],
-  ])('should for unitElementWidth: %s return %s', (unitElementWidth, expected) => {
-    expect(getInputPaddingLeftOrRight(unitElementWidth)).toBe(expected);
+  it.each<[number, TextFieldWrapperUnitPosition, string]>([
+    [4, 'prefix', 'calc(4ch + var(--p-internal-text-field-input-padding-end) + 5px)'],
+    [8, 'suffix', 'calc(8ch + var(--p-internal-text-field-input-padding-start) + 5px)'],
+  ])('should for unitElementTextCount: %s return %s %s', (unitElementTextCount, unitPosition, expected) => {
+    expect(getInputPaddingLeftOrRight(unitPosition, unitElementTextCount)).toBe(expected);
   });
 });
 

@@ -1,6 +1,5 @@
 import type { IconName } from '../../types';
 import { hasCounter, hasDocument, throwException } from '../../utils';
-import { borderWidthBase } from '@porsche-design-system/utilities-v2';
 import { cssVariableInputPaddingStart, cssVariableInputPaddingEnd } from './text-field-wrapper-styles';
 import type { FormState } from '../../utils/form/form-state';
 
@@ -18,8 +17,10 @@ export const hasUnitAndIsTypeTextOrNumber = ({ type }: HTMLInputElement, unit: s
 export const isType = (inputType: string, typeToValidate: string): boolean => inputType === typeToValidate;
 export const hasLocateAction = (icon: IconName): boolean => icon === 'locate';
 
-export const getInputPaddingLeftOrRight = (unitElementWidth: number): string => {
-  return `calc(${unitElementWidth}px - ${borderWidthBase})`;
+export const getInputPaddingLeftOrRight = (unitPosition: string, unitElementTextCount: number): string => {
+  const cssVariableInputPadding = unitPosition === 'prefix' ? cssVariableInputPaddingEnd : cssVariableInputPaddingStart;
+
+  return `calc(${unitElementTextCount}ch + var(${cssVariableInputPadding}) + 0.75ch)`;
 };
 
 export const setInputStyles = (
@@ -33,7 +34,7 @@ export const setInputStyles = (
 
     input.style.setProperty(
       unitPosition === 'prefix' ? cssVariableInputPaddingStart : cssVariableInputPaddingEnd,
-      getInputPaddingLeftOrRight(unitOrCounterElement.offsetWidth),
+      getInputPaddingLeftOrRight(unitPosition, unitOrCounterElement.textContent.trim().length),
       'important'
     );
   }
