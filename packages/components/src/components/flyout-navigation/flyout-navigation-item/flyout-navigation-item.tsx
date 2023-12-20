@@ -26,8 +26,10 @@ const propTypes: PropTypes<typeof FlyoutNavigationItem> = {
 export class FlyoutNavigationItem {
   @Element() public host!: HTMLElement & FlyoutNavigationItemInternalHTMLProps;
 
+  /** Label of the item. */
   @Prop() public label?: string;
 
+  /** Unique identifier which controls if this item should be shown when the active-identifier on the flyout-navigation is set to this value. */
   @Prop() public identifier: string;
 
   private get theme(): Theme {
