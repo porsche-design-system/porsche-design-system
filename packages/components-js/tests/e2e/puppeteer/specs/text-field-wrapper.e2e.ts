@@ -24,7 +24,7 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-text-field-wrapper');
 const getInput = () => selectNode(page, 'input');
 const getLabel = () => selectNode(page, 'p-text-field-wrapper >>> label');
-const getCounterOrUnit = () => selectNode(page, 'p-text-field-wrapper >>> .unit');
+const getCounterOrUnit = () => selectNode(page, 'p-text-field-wrapper >>> .unit-counter');
 const getToggleOrClearButtonHost = () => selectNode(page, 'p-text-field-wrapper >>> p-button-pure');
 const getToggleOrClearButton = () => selectNode(page, 'p-text-field-wrapper >>> p-button-pure >>> button');
 const getLocateActionButton = () =>
