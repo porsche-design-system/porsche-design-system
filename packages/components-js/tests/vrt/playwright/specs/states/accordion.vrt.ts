@@ -37,7 +37,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-accordion heading="Compact open" open="true" compact="true">
        Slotted content
     </p-accordion>
-    <p-accordion open="true" compact="true">
+    <p-accordion open="true" compact="true" open="true">
        <span slot="heading" style="padding: 1rem;">Compact and custom click-area open</span>
     </p-accordion>
     <p-accordion heading="Compact slotted content" open="true" compact="true">
