@@ -103,7 +103,7 @@ describe('this.activeTabIndexHandler()', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  it('should set this.direction to "next" if oldValue is smaller then this.internalTabIndex', () => {
+  it('should set this.direction to "next" if oldValue is smaller than this.internalTabIndex', () => {
     const component = initComponent();
     component['internalTabIndex'] = 2;
     jest.spyOn(component, 'setTabElements' as any).mockImplementation();
@@ -120,7 +120,7 @@ describe('this.activeTabIndexHandler()', () => {
     expect(component['direction']).toBe('next')
   });
 
-  it('should set this.direction to "prev" if oldValue is not smaller then this.internalTabIndex', () => {
+  it('should set this.direction to "prev" if oldValue is not smaller than this.internalTabIndex', () => {
     const component = initComponent();
     component['internalTabIndex'] = 1;
 
