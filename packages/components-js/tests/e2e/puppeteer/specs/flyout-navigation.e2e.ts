@@ -40,10 +40,7 @@ const getFlyoutNavigationItemVisibility = async (identifier: string) =>
 const getBodyStyle = async () => getAttribute(await selectNode(page, 'body'), 'style');
 
 const initBasicFlyoutNavigation = (
-  flyoutNavigationProps: Components.PFlyoutNavigation = {
-    open: true,
-    activeIdentifier: undefined,
-  },
+  flyoutNavigationProps?: Components.PFlyoutNavigation,
   items?: {
     amount?: number;
     content?: string[];
@@ -148,7 +145,7 @@ describe('can be dismissed', () => {
   let host: ElementHandle;
 
   beforeEach(async () => {
-    await initBasicFlyoutNavigation();
+    await initBasicFlyoutNavigation({ open: true });
     host = await getHost();
     await addEventListener(host, 'dismiss');
   });
@@ -496,27 +493,78 @@ describe('activeIdentifier', () => {
   });
 });
 
-// fdescribe('slotted', () => {
-//   it('should show correct second level when flyout-navigation-item with currently activeIdentifier is added', async () => {
-//     await initBasicFlyoutNavigation({ open: true, activeIdentifier: 'item-4' });
-//     const host = await getHost();
-//     await waitForStencilLifecycle(page);
-//
-//     expect(getConsoleErrorsAmount()).toBe(1);
-//
-//     await host.evaluate((el) => {
-//       const newItem = document.createElement('p-flyout-navigation-item');
-//       newItem.setAttribute('active-identifier', 'item-4');
-//       el.appendChild(newItem);
-//     });
-//
-//     await waitForStencilLifecycle(page);
-//     expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-//     expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-//     expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
-//     expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('visible');
-//   });
-// });
+describe('slotted', () => {
+  it('should open second level of item when item is appended and clicked', async () => {
+    await initBasicFlyoutNavigation({ open: true });
+    const host = await getHost();
+
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+    expect(await getFlyoutNavigationItem('item-4')).toBeNull();
+
+    await host.evaluate((el) => {
+      const newItem = document.createElement('p-flyout-navigation-item');
+      newItem.innerHTML = '<a href="#some-anchor">Some anchor</a>';
+      newItem.setAttribute('identifier', 'item-4');
+      el.appendChild(newItem);
+    });
+
+    const item4 = await getFlyoutNavigationItem('item-4');
+    expect(item4).toBeDefined();
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('hidden');
+
+    await item4.click();
+    await waitForStencilLifecycle(page);
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('visible');
+  });
+
+  // TODO: Check if warning is logged when validation trigger is implemented
+  it('should close second level of active item when item is removed', async () => {
+    await initBasicFlyoutNavigation({ open: true, activeIdentifier: 'item-3' });
+    const host = await getHost();
+
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('visible');
+
+    await host.evaluate((el) => {
+      el.removeChild(el.lastElementChild);
+    });
+    await waitForStencilLifecycle(page);
+
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItem('item-3')).toBeNull();
+  });
+
+  // TODO: should this be supported?
+  // it('should show correct second level when flyout-navigation-item with currently activeIdentifier is added', async () => {
+  //   await initBasicFlyoutNavigation({ open: true, activeIdentifier: 'item-4' });
+  //   const host = await getHost();
+  //   await waitForStencilLifecycle(page);
+  //
+  //   expect(getConsoleErrorsAmount()).toBe(1);
+  //
+  //   await host.evaluate((el) => {
+  //     const newItem = document.createElement('p-flyout-navigation-item');
+  //     newItem.setAttribute('active-identifier', 'item-4');
+  //     el.appendChild(newItem);
+  //   });
+  //
+  //   await waitForStencilLifecycle(page);
+  //   expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+  //   expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+  //   expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+  //   expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('visible');
+  // });
+});
 
 describe('scroll lock', () => {
   describe('Desktop Browser', () => {
@@ -640,7 +688,7 @@ describe('scroll lock', () => {
 
 describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
-    await initBasicFlyoutNavigation();
+    await initBasicFlyoutNavigation({ open: true });
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-flyout-navigation'], 'componentDidLoad: p-flyout-navigation').toBe(1);
@@ -653,7 +701,7 @@ describe('lifecycle', () => {
   });
 
   it('should work without unnecessary round trips after clicking item', async () => {
-    await initBasicFlyoutNavigation();
+    await initBasicFlyoutNavigation({ open: true });
     const statusBefore = await getLifecycleStatus(page);
 
     expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(18);
@@ -675,7 +723,7 @@ describe('lifecycle', () => {
   });
 
   it('should work without unnecessary round trips after closing flyout', async () => {
-    await initBasicFlyoutNavigation();
+    await initBasicFlyoutNavigation({ open: true });
     const statusBefore = await getLifecycleStatus(page);
 
     expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(18);
@@ -696,7 +744,7 @@ describe('lifecycle', () => {
 
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree', async () => {
-    await initBasicFlyoutNavigation();
+    await initBasicFlyoutNavigation({ open: true });
     const flyout = await getFlyoutNavigation();
 
     await expectA11yToMatchSnapshot(page, flyout, { interestingOnly: false });
