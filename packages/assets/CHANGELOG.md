@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- Fonts for Middle East languages: Arabic, Pashto and Urdu
+
 #### Changed
 
 - Remove `EMAIL_CDN_BASE_URL` and `EMAIL_MANIFEST`
