@@ -249,6 +249,7 @@
         }
 
         pre {
+          @include pds-focus();
           margin-top: $pds-spacing-static-small;
           display: block;
           padding: $pds-spacing-static-small $pds-spacing-static-medium;
@@ -259,9 +260,6 @@
           border-radius: $pds-border-radius-medium;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
-          &:focus {
-            @include pds-focus();
-          }
         }
 
         // Tables
