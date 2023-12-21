@@ -3,10 +3,15 @@ import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getHiddenTextJssStyle,
+  getThemedColors,
+  hostHiddenStyles,
+} from '../../styles';
 import {
   formButtonOrIconPadding,
-  formElementLayeredGap,
   formElementLayeredSafeZone,
   formElementPaddingHorizontal,
   formElementPaddingVertical,
@@ -15,8 +20,9 @@ import {
   getUnitCounterJssStyle,
 } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 
 export const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';
 export const cssVariableInputPaddingEnd = '--p-internal-text-field-input-padding-end';
@@ -44,6 +50,8 @@ export const getComponentCss = (
   const isSearchWithForm = isSearch && isWithinForm;
   const isCalendarOrTimeWithCustomIndicator = showCustomCalendarOrTimeIndicator(isCalendar, isTime);
   const isUnitPositionSuffix = unitPosition === 'suffix';
+  const { contrastMediumColor } = getThemedColors(theme);
+  const { formStateColor } = getThemedFormStateColors(theme, state);
 
   return getCss({
     '@global': {
@@ -65,10 +73,19 @@ export const getComponentCss = (
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
-          [isUnitPositionSuffix ? 'paddingRight' : 'paddingLeft']:
-            `calc(calc(var(${cssVariableInputUnitCounterTextLength}) * 1ch) + var(${
-              isUnitPositionSuffix ? cssVariableInputPaddingEnd : cssVariableInputPaddingStart
-            }) ${hasUnitOrVisibleCounter ? '+ 0.75ch' : ''})`,
+          ...(hasUnitOrVisibleCounter && {
+            gridArea: isUnitPositionSuffix ? '1/1/1/4' : '1/3/1/-1',
+            ...(isUnitPositionSuffix && {
+              borderRight: 'none',
+              borderTopRightRadius: 0,
+              borderBottomRightRadius: 0,
+            }),
+            ...(!isUnitPositionSuffix && {
+              borderLeft: 'none',
+              borderTopLeftRadius: 0,
+              borderBottomLeftRadius: 0,
+            }),
+          }),
         }),
         // TODO: move into getSlottedTextFieldTextareaSelectStyles()
         '::slotted': {
@@ -93,6 +110,9 @@ export const getComponentCss = (
     wrapper: {
       display: 'grid',
       gridTemplateColumns: `${formElementLayeredSafeZone} auto minmax(0, 1fr) auto auto ${formElementLayeredSafeZone}`,
+      ...(hasUnitOrVisibleCounter && {
+        cursor: 'text',
+      }),
     },
     ...((isSearchOrPassword || isCalendarOrTimeWithCustomIndicator) && {
       // TODO: extract for multi-select, select-wrapper and text-field (not gridArea and placeSelf) like done for unit class
@@ -120,11 +140,27 @@ export const getComponentCss = (
       unit: {
         ...getUnitCounterJssStyle(isDisabled, theme),
         gridArea: `1/${unitPosition === 'suffix' ? 5 : 1}/1/${unitPosition === 'suffix' ? 7 : 3}`,
-        placeSelf: 'center',
-        paddingInline:
-          unitPosition === 'suffix'
-            ? `${formElementLayeredGap} calc(${formElementPaddingHorizontal} + ${borderWidthBase})`
-            : `calc(${formElementPaddingHorizontal} + ${borderWidthBase}) ${formElementLayeredGap}`, // padding needed for correct input padding synchronisation
+        display: 'flex',
+        alignItems: 'center',
+        cursor: 'text',
+        border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
+        borderRadius: borderRadiusSmall,
+        paddingInlineStart: `var(${cssVariableInputPaddingStart})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
+        paddingInlineEnd: `var(${cssVariableInputPaddingEnd})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
+        ...(isUnitPositionSuffix && {
+          borderLeft: 'none',
+          borderTopLeftRadius: 0,
+          borderBottomLeftRadius: 0,
+          paddingInlineStart: 0,
+          paddingInlineEnd: `var(${cssVariableInputPaddingEnd})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
+        }),
+        ...(!isUnitPositionSuffix && {
+          borderRight: 'none',
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
+          paddingInlineStart: `var(${cssVariableInputPaddingStart})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
+          paddingInlineEnd: 0,
+        }),
       },
     }),
     // TODO: maybe we should extract it as functional component too

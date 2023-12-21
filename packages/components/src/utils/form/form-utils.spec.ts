@@ -141,7 +141,7 @@ describe('addInputEventListenerForCounter()', () => {
     const counterElement = getCounterElement();
     const ariaElement = getAriaElement();
     const callback = jest.fn();
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement, callback);
+    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
 
     inputElement.dispatchEvent(new Event('input'));
     expect(callback).toBeCalledTimes(1);

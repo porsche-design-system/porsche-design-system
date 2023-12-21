@@ -6,11 +6,9 @@ import {
   hasLocateAction,
   hasUnitAndIsTypeTextOrNumber,
   isType,
-  setInputUnitCounterTextLength,
   throwIfUnitLengthExceeded,
 } from './text-field-wrapper-utils';
 import * as formUtils from '../../utils/form/form-utils';
-import { cssVariableInputUnitCounterTextLength } from './text-field-wrapper-styles';
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
@@ -120,21 +118,6 @@ describe('hasLocateAction()', () => {
   it('should return false for other values', () => {
     expect(hasLocateAction('search')).toBe(false);
     expect(hasLocateAction('arrow-head-right')).toBe(false);
-  });
-});
-
-describe('setInputUnitCounterTextLength()', () => {
-  it('should set the unit/counter text length on the input', () => {
-    const input = getInputElement();
-
-    setInputUnitCounterTextLength(input, 'km/h', true);
-    expect(input.style.getPropertyValue(cssVariableInputUnitCounterTextLength)).toBe('4');
-
-    input.value = 'Some value';
-    input.setAttribute('maxLength', '10');
-
-    setInputUnitCounterTextLength(input, '', true);
-    expect(input.style.getPropertyValue(cssVariableInputUnitCounterTextLength)).toBe('5');
   });
 });
 

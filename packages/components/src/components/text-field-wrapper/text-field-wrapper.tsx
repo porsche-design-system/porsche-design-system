@@ -32,7 +32,6 @@ import {
   hasLocateAction,
   hasUnitAndIsTypeTextOrNumber,
   isType,
-  setInputUnitCounterTextLength,
   showCustomCalendarOrTimeIndicator,
   throwIfUnitLengthExceeded,
   UNIT_POSITIONS,
@@ -164,21 +163,13 @@ export class TextFieldWrapper {
 
   public componentDidLoad(): void {
     if (this.hasCounter) {
-      addInputEventListenerForCounter(
-        this.input,
-        this.ariaElement,
-        this.isCounterVisible && this.unitOrCounterElement,
-        this.setInputStyles
-      );
+      addInputEventListenerForCounter(this.input, this.ariaElement, this.isCounterVisible && this.unitOrCounterElement);
     } else if (this.isSearch) {
       addInputEventListenerForSearch(this.input, (hasValue) => (this.isClearable = hasValue));
     }
   }
 
   public componentDidRender(): void {
-    // needs to happen after render in order to have unitOrCounterElement defined
-    this.setInputStyles();
-
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -204,6 +195,7 @@ export class TextFieldWrapper {
     );
     throwIfUnitLengthExceeded(this.unit);
     const { readOnly, disabled, type } = this.input;
+    const hasUnitOrVisibleCounter = this.hasUnit || this.isCounterVisible;
 
     attachComponentCss(
       this.host,
@@ -211,7 +203,7 @@ export class TextFieldWrapper {
       disabled,
       this.hideLabel,
       this.state,
-      this.hasUnit || this.isCounterVisible,
+      hasUnitOrVisibleCounter,
       this.isCounterVisible ? 'suffix' : this.unitPosition,
       this.isPassword ? 'password' : type,
       this.showPasswordToggle,
@@ -240,13 +232,13 @@ export class TextFieldWrapper {
           isDisabled={disabled}
         />
         <div class="wrapper">
-          <slot />
           {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
-          {(this.hasUnit || this.isCounterVisible) && (
+          {hasUnitOrVisibleCounter && (
             <span class="unit" ref={(el) => (this.unitOrCounterElement = el)} aria-hidden="true">
               {this.unit}
             </span>
           )}
+          <slot />
           {this.isPassword && this.showPasswordToggle ? (
             <PrefixedTagNames.pButtonPure
               {...buttonProps}
@@ -353,9 +345,5 @@ export class TextFieldWrapper {
 
   private observeAttributes = (): void => {
     observeAttributes(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
-  };
-
-  private setInputStyles = (): void => {
-    setInputUnitCounterTextLength(this.input, this.unit, this.isCounterVisible);
   };
 }
