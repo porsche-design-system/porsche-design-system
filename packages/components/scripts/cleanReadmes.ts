@@ -21,6 +21,7 @@ const adjustHeadline = (str: string): string => {
     'p-flex': 'Flex',
     'p-flyout-navigation': 'Flyout Navigation',
     'p-grid': 'Grid',
+    'p-multi-select': 'Multi Select',
     'p-segmented-control': 'Segmented Control',
     'p-stepper-horizontal': 'Stepper Horizontal',
     'p-table': 'Table',
@@ -33,8 +34,10 @@ const adjustHeadline = (str: string): string => {
     'p-flex-item',
     'p-flyout-navigation-item',
     'p-grid-item',
+    'p-multi-select-option',
     'p-stepper-horizontal-item',
     'p-segmented-control-item',
+    'p-table-cell',
     'p-table-head-cell',
     'p-tabs-item',
   ];
