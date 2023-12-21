@@ -2,8 +2,7 @@ import { getCss, isThemeDark, scrollShadowColor, scrollShadowColorDark, type The
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  cssVariableTransitionDuration,
-  getFrostedGlassBackgroundJssStyles,
+  getBackdropJssStyle,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
@@ -11,12 +10,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { FLYOUT_Z_INDEX } from '../../constants';
-import {
-  gridGap,
-  motionDurationLong,
-  spacingFluidLarge,
-  spacingStaticMedium,
-} from '@porsche-design-system/utilities-v2';
+import { gridGap, spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import type { FlyoutPosition } from './flyout-utils';
 
 export const headerShadowClass = 'header--shadow';
@@ -46,19 +40,9 @@ export const getComponentCss = (
           // needed for correct alignment of the Porsche Grid within the Flyout
           '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
           '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
-          position: 'fixed',
-          zIndex: FLYOUT_Z_INDEX,
           justifyContent: isPositionStart ? 'flex-start' : 'flex-end',
-          ...(isOpen
-            ? {
-                visibility: 'inherit',
-              }
-            : {
-                visibility: 'hidden',
-                transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationLong})`,
-              }),
           ...getInsetJssStyle(),
-          ...getFrostedGlassBackgroundJssStyles(isOpen, 'long', theme),
+          ...getBackdropJssStyle(isOpen, FLYOUT_Z_INDEX, theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),

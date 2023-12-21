@@ -117,7 +117,7 @@ export class Flyout {
   }
 
   public disconnectedCallback(): void {
-    setFocusTrap(this.host, false);
+    setFocusTrap(this.host, false, this.dialog);
     setScrollLock(false);
   }
 
@@ -210,7 +210,7 @@ export class Flyout {
   };
 
   private updateFocusTrap = (isOpen: boolean): void => {
-    setFocusTrap(this.host, isOpen, this.dismissBtn, this.dismissFlyout);
+    setFocusTrap(this.host, isOpen, this.dialog, this.dismissBtn, this.dismissFlyout);
   };
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
