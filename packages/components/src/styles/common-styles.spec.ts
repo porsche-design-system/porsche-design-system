@@ -1,15 +1,15 @@
 import type { JssStyle } from 'jss';
 import {
-  type MotionDurationKey,
-  motionEasingMap,
   addImportantToEachRule,
   addImportantToRule,
   focusPseudoJssStyle,
+  getBackdropJssStyle,
   getBackfaceVisibilityJssStyle,
-  getFrostedGlassBackgroundJssStyles,
   getHiddenTextJssStyle,
   getInsetJssStyle,
   getTransition,
+  type MotionDurationKey,
+  motionEasingMap,
   pxToRemWithUnit,
 } from './common-styles';
 import type { PropertiesHyphen } from 'csstype';
@@ -21,7 +21,7 @@ describe('getTransition()', () => {
       keyof PropertiesHyphen,
       MotionDurationKey,
       keyof typeof motionEasingMap,
-      MotionDurationKey
+      MotionDurationKey,
     ]
   >([
     [
@@ -145,13 +145,13 @@ describe('getBackfaceVisibilityJssStyle()', () => {
   });
 });
 
-describe('getFrostedGlassBackgroundJssStyles()', () => {
-  it.each<Parameters<typeof getFrostedGlassBackgroundJssStyles>>([
-    [true, 'short', 'light'],
-    [false, 'moderate', 'dark'],
-    [true, 'long', 'light'],
-    [false, 'veryLong', 'dark'],
-  ])('should return correct JssStyle for isVisible: %s, duration: %s and theme: %s', (...args) => {
-    expect(getFrostedGlassBackgroundJssStyles(...args)).toMatchSnapshot();
+describe('getBackdropJssStyle()', () => {
+  it.each<Parameters<typeof getBackdropJssStyle>>([
+    [true, 9999, 'light', 'short'],
+    [false, 9999, 'dark', 'moderate'],
+    [true, 9999, 'light', 'long'],
+    [false, 9999, 'dark', 'veryLong'],
+  ])('should return correct JssStyle for isVisible: %s, zIndex: %s, theme: %s and duration: %s', (...args) => {
+    expect(getBackdropJssStyle(...args)).toMatchSnapshot();
   });
 });

@@ -138,7 +138,7 @@ export class LinkTileProduct {
     );
   }
 
-  private onLikeClick = () => {
+  private onLikeClick = (): void => {
     this.like.emit({
       liked: this.liked,
     });

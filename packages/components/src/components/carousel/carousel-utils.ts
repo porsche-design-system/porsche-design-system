@@ -1,6 +1,6 @@
 import type { Options, Splide } from '@splidejs/splide';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
-import type { BreakpointCustomizable } from '../../types';
+import type { BreakpointCustomizable, HeadingSize } from '../../types';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { ButtonPure } from '../button-pure/button-pure';
 import {
@@ -9,7 +9,6 @@ import {
   paginationInfiniteStartCaseClass,
   paginationBulletSize,
 } from './carousel-styles';
-import { HeadingSize } from '../../types';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
