@@ -29,7 +29,7 @@ it.each<[boolean, boolean, boolean]>([
   [false, true, false],
   [true, false, false],
   [false, false, false],
-])('should for isRequired(): %s and isParentOfKind: %s return: %s', (isRequired, isParentOfKind, result) => {
+])('should for isRequired(): %s and isParentOfKind(): %s return: %s', (isRequired, isParentOfKind, result) => {
   jest.spyOn(isRequiredUtils, 'isRequired').mockReturnValueOnce(isRequired);
   jest.spyOn(isParentOfKindUtils, 'isParentOfKind').mockReturnValue(isParentOfKind);
   const child = document.createElement('div');
