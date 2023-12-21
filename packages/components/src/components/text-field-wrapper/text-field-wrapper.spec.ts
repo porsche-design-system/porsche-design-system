@@ -288,6 +288,10 @@ describe('componentDidRender', () => {
     const component = new TextFieldWrapper();
     const spy = jest.spyOn(textFieldWrapperUtils, 'setInputUnitCounterTextLength');
 
+    const input = document.createElement('input');
+    input.type = 'text';
+    component['input'] = input;
+
     component.componentDidRender();
     expect(spy).toBeCalledTimes(1);
   });

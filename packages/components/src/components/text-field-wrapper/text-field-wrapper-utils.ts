@@ -24,7 +24,7 @@ export const setInputUnitCounterTextLength = (
 ): void => {
   let text = unit;
 
-  if (input.attributes.getNamedItem('maxlength') && isCounterVisible) {
+  if (isCounterVisible && input.attributes.getNamedItem('maxlength')) {
     text = `${input.value.length}/${input.attributes.getNamedItem('maxlength').value}`;
   }
 
