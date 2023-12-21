@@ -17,7 +17,11 @@ export const hasUnitAndIsTypeTextOrNumber = ({ type }: HTMLInputElement, unit: s
 export const isType = (inputType: string, typeToValidate: string): boolean => inputType === typeToValidate;
 export const hasLocateAction = (icon: IconName): boolean => icon === 'locate';
 
-export const setInputStyles = (input: HTMLInputElement, unit: string, isCounterVisible: boolean): void => {
+export const setInputUnitCounterTextLength = (
+  input: HTMLInputElement,
+  unit: string,
+  isCounterVisible: boolean
+): void => {
   let text = unit;
 
   if (input.attributes.getNamedItem('maxlength') && isCounterVisible) {

@@ -286,7 +286,7 @@ describe('componentDidLoad', () => {
 describe('componentDidRender', () => {
   it('should call setInputStyles()', () => {
     const component = new TextFieldWrapper();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'setInputStyles');
+    const spy = jest.spyOn(textFieldWrapperUtils, 'setInputUnitCounterTextLength');
 
     component.componentDidRender();
     expect(spy).toBeCalledTimes(1);

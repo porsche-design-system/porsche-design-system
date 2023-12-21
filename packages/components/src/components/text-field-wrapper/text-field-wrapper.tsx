@@ -32,7 +32,7 @@ import {
   hasLocateAction,
   hasUnitAndIsTypeTextOrNumber,
   isType,
-  setInputStyles,
+  setInputUnitCounterTextLength,
   showCustomCalendarOrTimeIndicator,
   throwIfUnitLengthExceeded,
   UNIT_POSITIONS,
@@ -356,6 +356,6 @@ export class TextFieldWrapper {
   };
 
   private setInputStyles = (): void => {
-    setInputStyles(this.input, this.unit, this.isCounterVisible);
+    setInputUnitCounterTextLength(this.input, this.unit, this.isCounterVisible);
   };
 }

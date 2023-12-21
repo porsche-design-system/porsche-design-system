@@ -6,7 +6,7 @@ import {
   hasLocateAction,
   hasUnitAndIsTypeTextOrNumber,
   isType,
-  setInputStyles,
+  setInputUnitCounterTextLength,
   throwIfUnitLengthExceeded,
 } from './text-field-wrapper-utils';
 import * as formUtils from '../../utils/form/form-utils';
@@ -123,13 +123,18 @@ describe('hasLocateAction()', () => {
   });
 });
 
-describe('setInputStyles()', () => {
-  it('should set input value length', () => {
+describe('setInputUnitCounterTextLength()', () => {
+  it('should set the unit/counter text length on the input', () => {
     const input = getInputElement();
 
-    setInputStyles(input, 'km/h', true);
+    setInputUnitCounterTextLength(input, 'km/h', true);
+    expect(input.style.getPropertyValue(cssVariableInputUnitCounterTextLength)).toBe('4');
 
-    expect(input.style.getPropertyValue(cssVariableInputUnitCounterTextLength)).toBe(false);
+    input.value = 'Some value';
+    input.setAttribute('maxLength', '10');
+
+    setInputUnitCounterTextLength(input, '', true);
+    expect(input.style.getPropertyValue(cssVariableInputUnitCounterTextLength)).toBe('5');
   });
 });
 
