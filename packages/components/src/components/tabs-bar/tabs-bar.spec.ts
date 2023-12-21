@@ -119,8 +119,10 @@ describe('this.activeTabIndexHandler()', () => {
   it('should set this.direction to "next" if oldValue is undefined', () => {
     const component = initComponent();
 
-    component.activeTabIndexHandler(0, undefined);
+    component.activeTabIndexHandler(0, 1);
+    expect(component['direction']).toBe('prev');
 
+    component.activeTabIndexHandler(0, undefined);
     expect(component['direction']).toBe('next');
   });
 
