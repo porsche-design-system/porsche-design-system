@@ -2,7 +2,7 @@ import { isParentFieldsetRequired } from './isParentFieldsetRequired';
 import * as isParentOfKindUtils from '../dom/isParentOfKind';
 import * as isRequiredUtils from './isRequired';
 
-it('should call isParentOfKind with correct parameters', () => {
+it('should call isParentOfKind() with correct parameters', () => {
   const spy = jest.spyOn(isParentOfKindUtils, 'isParentOfKind');
   const child = document.createElement('div');
 
@@ -13,7 +13,7 @@ it('should call isParentOfKind with correct parameters', () => {
   expect(spy).toBeCalledTimes(2);
 });
 
-it('should call isRequired with correct parameters', () => {
+it('should call isRequired() with correct parameters', () => {
   const spy = jest.spyOn(isRequiredUtils, 'isRequired');
   const parent = document.createElement('p-fieldset-wrapper');
   const child = document.createElement('div');
@@ -24,34 +24,15 @@ it('should call isRequired with correct parameters', () => {
   expect(spy).toBeCalledWith(parent);
 });
 
-it('should return true if isRequired and isParentOfKind return true', () => {
-  jest.spyOn(isRequiredUtils, 'isRequired').mockReturnValueOnce(true);
-  jest.spyOn(isParentOfKindUtils, 'isParentOfKind').mockReturnValue(true);
+it.each<[boolean, boolean, boolean]>([
+  [true, true, true],
+  [false, true, false],
+  [true, false, false],
+  [false, false, false],
+])('should for isRequired(): %s and isParentOfKind: %s return: %s', (isRequired, isParentOfKind, result) => {
+  jest.spyOn(isRequiredUtils, 'isRequired').mockReturnValueOnce(isRequired);
+  jest.spyOn(isParentOfKindUtils, 'isParentOfKind').mockReturnValue(isParentOfKind);
   const child = document.createElement('div');
 
-  expect(isParentFieldsetRequired(child)).toBe(true);
-});
-
-it('should return false if isRequired returns false and isParentOfKind returns true', () => {
-  jest.spyOn(isRequiredUtils, 'isRequired').mockReturnValueOnce(false);
-  jest.spyOn(isParentOfKindUtils, 'isParentOfKind').mockReturnValue(true);
-  const child = document.createElement('div');
-
-  expect(isParentFieldsetRequired(child)).toBe(false);
-});
-
-it('should return false if isRequired returns true and isParentOfKind returns false', () => {
-  jest.spyOn(isRequiredUtils, 'isRequired').mockReturnValueOnce(true);
-  jest.spyOn(isParentOfKindUtils, 'isParentOfKind').mockReturnValue(false);
-  const child = document.createElement('div');
-
-  expect(isParentFieldsetRequired(child)).toBe(false);
-});
-
-it('should return false if isRequired returns false and isParentOfKind returns false', () => {
-  jest.spyOn(isRequiredUtils, 'isRequired').mockReturnValueOnce(false);
-  jest.spyOn(isParentOfKindUtils, 'isParentOfKind').mockReturnValue(false);
-  const child = document.createElement('div');
-
-  expect(isParentFieldsetRequired(child)).toBe(false);
+  expect(isParentFieldsetRequired(child)).toBe(result);
 });
