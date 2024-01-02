@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch, State } from '@stencil/core';
 import {
   FLYOUT_NAVIGATION_ARIA_ATTRIBUTES,
   type FlyoutNavigationAriaAttribute,
@@ -56,8 +56,9 @@ export class FlyoutNavigation {
   /** Emitted when activeIdentifier is changed. */
   @Event({ bubbles: false }) public update?: EventEmitter<FlyoutNavigationUpdateEvent>;
 
+  @State() private flyoutNavigationItemElements: HTMLPFlyoutNavigationItemElement[] = [];
+
   private dialog: HTMLDialogElement;
-  private flyoutNavigationItemElements: HTMLPFlyoutNavigationItemElement[] = [];
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
