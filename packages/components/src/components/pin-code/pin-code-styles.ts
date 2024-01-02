@@ -45,11 +45,12 @@ export const getComponentCss = (
           opacity: 0.2, // TODO: not in sync with e.g. checkbox/radio-button loading style
           cursor: 'not-allowed',
         }),
-        ...Object.fromEntries(
-          Array.from(Array(length)).map((_, i) => {
-            return [`&:nth-of-type(${i + 1})`, { gridArea: `1/${i + 1}` }];
-          })
-        ),
+        '&:nth-of-type(1)': { gridArea: '1/1' },
+        '&:nth-of-type(2)': { gridArea: '1/2' },
+        '&:nth-of-type(3)': { gridArea: '1/3' },
+        '&:nth-of-type(4)': { gridArea: '1/4' },
+        '&:nth-of-type(5)': { gridArea: '1/5' },
+        '&:nth-of-type(6)': { gridArea: '1/6' },
       })
     )
   );
@@ -81,12 +82,13 @@ export const getComponentCss = (
     },
     wrapper: {
       display: 'grid',
+      gridTemplateColumns: `repeat(${length}, minmax(0, 1fr))`,
       justifySelf: 'flex-start',
       gap: spacingStaticSmall,
     },
     ...(isLoading && {
       spinner: {
-        gridArea: `1/1/1/${length + 1}`,
+        gridArea: '1/1/1/-1',
         placeSelf: 'center',
         width: inputSize,
         height: inputSize,
