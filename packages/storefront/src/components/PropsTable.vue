@@ -37,7 +37,8 @@
   import { getComponentMeta, type ComponentMeta, type PropMeta } from '@porsche-design-system/component-meta';
   import type { TagName } from '@porsche-design-system/shared';
 
-  const wrapInCode = (input: string): string => `<code>${input.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code>`;
+  const wrapInCodeCode = (input: string): string =>
+    `<code>${input.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>')}</code>`;
 
   @Component
   export default class PropsTable extends Vue {
@@ -63,12 +64,26 @@
             meta.type !== 'string' && meta.type !== 'number' && meta.type !== 'boolean'
               ? `type ${meta.type} =` // literal types, etc.
               : meta.type, // simple type
-            ...(Array.isArray(meta.allowedValues) ? meta.allowedValues.map((val) => `'${val}'`) : []),
+            ...(Array.isArray(meta.allowedValues)
+              ? meta.allowedValues.map(
+                  (val) =>
+                    wrapInCodeCode(`'${val}'`) +
+                    (meta.deprecatedValues?.includes(val) ? '<span title="deprecated"> 🚫</span>' : '')
+                )
+              : []),
             ...(meta.isBreakpointCustomizable ? [`BreakpointCustomizable<${meta.type}>`] : []),
           ]
-            .map(wrapInCode)
+            .map((item) => (item.match(/<code>.+?<\/code>/) ? item : wrapInCodeCode(item)))
             .join('<br>\n')
-        : wrapInCode(meta.type);
+        : meta.isAria && typeof meta.allowedValues === 'object'
+          ? wrapInCodeCode(
+              `type ${meta.type} = {\n` +
+                Object.entries(meta.allowedValues)
+                  .map(([key, val]) => `&nbsp;&nbsp;'${key}'?: ${val};`)
+                  .join('\n') +
+                '\n}'
+            )
+          : wrapInCodeCode(meta.type);
     }
   }
 </script>
