@@ -42,7 +42,7 @@ export class FlyoutNavigation {
   @Prop() public open?: boolean = false;
 
   /** Defines which flyout-navigation-item to be visualized as opened. */
-  @Prop({ mutable: true }) public activeIdentifier?: string | undefined;
+  @Prop() public activeIdentifier?: string | undefined;
 
   /** Adapts the flyout-navigation color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -70,7 +70,6 @@ export class FlyoutNavigation {
     this.host.shadowRoot.addEventListener(INTERNAL_UPDATE_EVENT_NAME, (e: CustomEvent<FlyoutNavigationUpdateEvent>) => {
       e.stopPropagation(); // prevents internal event from bubbling further
       const activeIdentifier = e.detail.activeIdentifier;
-      this.activeIdentifier = activeIdentifier;
       this.update.emit({ activeIdentifier });
     });
   }
