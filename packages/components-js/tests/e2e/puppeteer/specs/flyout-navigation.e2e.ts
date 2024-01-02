@@ -207,19 +207,17 @@ describe('can be dismissed', () => {
 });
 
 describe('focus behavior', () => {
-  it('should focus dismiss button after tab press', async () => {
+  it('should focus dismiss button after open', async () => {
     await initBasicFlyoutNavigation({ open: false });
     await openFlyoutNavigation();
-    await page.keyboard.press('Tab');
+
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
     await expectDismissButtonToBeFocused();
   });
 
   it('should have correct focus order in level 1 when level 2 is closed', async () => {
     await initBasicFlyoutNavigation({ open: false });
     await openFlyoutNavigation();
-
-    await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused();
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
@@ -235,9 +233,6 @@ describe('focus behavior', () => {
     await openFlyoutNavigation();
 
     await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused();
-
-    await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
     expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
 
@@ -248,9 +243,7 @@ describe('focus behavior', () => {
   it('should have correct focus order when level 2 is opened', async () => {
     await initBasicFlyoutNavigation({ open: false });
     await openFlyoutNavigation();
-
-    await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused();
+    await waitForStencilLifecycle(page);
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
@@ -281,12 +274,10 @@ describe('focus behavior', () => {
     await addButtonsBeforeAndAfterFlyout();
     await openFlyoutNavigation();
 
-    expect(await getActiveElementTagName(page)).toBe('BODY');
-    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
     await expectDismissButtonToBeFocused();
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('BODY');
-    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
     await expectDismissButtonToBeFocused();
   });
 
@@ -296,15 +287,11 @@ describe('focus behavior', () => {
     await addButtonsBeforeAndAfterFlyout();
     await openFlyoutNavigation();
 
-    expect(await getActiveElementTagName(page)).toBe('BODY');
-    await page.keyboard.down('Shift');
-    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
     await expectDismissButtonToBeFocused();
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('BODY');
-    await page.keyboard.down('Shift');
-    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
     await expectDismissButtonToBeFocused();
   });
 
@@ -337,11 +324,8 @@ describe('focus behavior', () => {
   });
 
   it('should not focus flyout content when not open', async () => {
-    await initBasicFlyoutNavigation(
-      { open: false },
-      {},
-      { markupBefore: '<button id="btn-before"></button>', markupAfter: '<button id="btn-after"></button>' }
-    );
+    await initBasicFlyoutNavigation({ open: false }, {});
+    await addButtonsBeforeAndAfterFlyout();
     expect(await getActiveElementTagName(page)).toBe('BODY');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-before');
@@ -358,21 +342,13 @@ describe('focus behavior', () => {
   <a id="inside" href="#inside-flyout">Some anchor inside flyout</a>
 </p-accordion>`,
         ],
-      },
-      {
-        markupBefore: '<a id="before" href="#before-flyout">Some anchor before flyout</a>',
-        markupAfter: '<a id="after" href="#after-flyout">Some anchor after flyout</a>',
       }
     );
-
-    console.log(await page.content());
-
+    await addButtonsBeforeAndAfterFlyout();
     await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 1st tab').toBe('before');
-
+    expect(await getActiveElementId(page)).toBe('btn-before');
     await page.keyboard.press('Tab');
-    await page.waitForFunction(() => document.activeElement === document.querySelector('#after'));
-    expect(await getActiveElementId(page), 'after 2nd tab').toBe('after');
+    expect(await getActiveElementId(page)).toBe('btn-after');
   });
 });
 
@@ -436,9 +412,6 @@ describe('second level', () => {
   it('should open second level on Enter', async () => {
     await initBasicFlyoutNavigation({ open: false });
     await openFlyoutNavigation();
-    expect(await getActiveElementTagName(page)).toBe('BODY');
-
-    await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
     expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
@@ -456,9 +429,7 @@ describe('second level', () => {
   it('should open second level on Space', async () => {
     await initBasicFlyoutNavigation({ open: false });
     await openFlyoutNavigation();
-    expect(await getActiveElementTagName(page)).toBe('BODY');
 
-    await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
     expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
