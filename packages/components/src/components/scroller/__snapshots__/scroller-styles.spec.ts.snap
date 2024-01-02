@@ -130,6 +130,9 @@ button {
 .action-next button {
   margin-right: 8px;
 }
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
 @media(hover:hover) {
   .action-prev button {
     visibility: visible;
@@ -272,6 +275,9 @@ button {
 .action-next button {
   margin-right: 8px;
 }
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
 @media(hover:hover) {
   .action-prev button {
     visibility: visible;
@@ -409,6 +415,9 @@ button {
 .action-next button {
   margin-right: 8px;
 }
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
 @media(hover:hover) {
   .action-prev button {
     visibility: visible;
@@ -544,6 +553,9 @@ button {
 }
 .action-next button {
   margin-right: 8px;
+}
+.icon:dir(rtl) {
+  transform: scaleX(-1);
 }
 @media(hover:hover) {
   .action-prev button {
@@ -682,6 +694,9 @@ button {
 .action-next button {
   margin-right: 8px;
 }
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
 @media(hover:hover) {
   .action-prev button {
     visibility: visible;
@@ -818,6 +833,9 @@ button {
 }
 .action-next button {
   margin-right: 8px;
+}
+.icon:dir(rtl) {
+  transform: scaleX(-1);
 }
 @media(hover:hover) {
   .action-prev button {
@@ -960,6 +978,9 @@ button {
 .action-next button {
   margin-right: 8px;
 }
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
 @media(hover:hover) {
   .action-prev button {
     visibility: visible;
@@ -1101,6 +1122,9 @@ button {
 }
 .action-next button {
   margin-right: 8px;
+}
+.icon:dir(rtl) {
+  transform: scaleX(-1);
 }
 @media(hover:hover) {
   .action-prev button {
