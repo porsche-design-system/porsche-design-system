@@ -92,25 +92,27 @@ const keyFramesDark = 'rerender-dark';
 
 const cssVariableFilter = '--p-internal-icon-filter';
 
-const isFlippableIcon = (name: IconName): boolean => {
+const isFlippableIcon = (name: IconName, source: string): boolean => {
   return (
-    name === 'arrow-double-left' ||
-    name === 'arrow-double-right' ||
-    name === 'arrow-first' ||
-    name === 'arrow-head-left' ||
-    name === 'arrow-head-right' ||
-    name === 'arrow-last' ||
-    name === 'arrow-left' ||
-    name === 'arrow-right' ||
-    name === 'increase' ||
-    name === 'list' ||
-    name === 'logout' ||
-    name === 'send'
+    !source &&
+    (name === 'arrow-double-left' ||
+      name === 'arrow-double-right' ||
+      name === 'arrow-first' ||
+      name === 'arrow-head-left' ||
+      name === 'arrow-head-right' ||
+      name === 'arrow-last' ||
+      name === 'arrow-left' ||
+      name === 'arrow-right' ||
+      name === 'increase' ||
+      name === 'list' ||
+      name === 'logout' ||
+      name === 'send')
   );
 };
 
 export const getComponentCss = (
   name: IconName,
+  source: string,
   color: Exclude<IconColor, IconColorDeprecated>,
   size: TextSize,
   theme: Theme
@@ -160,7 +162,7 @@ export const getComponentCss = (
               height: fontLineHeight,
               font: `${sizeMap[size]} ${fontFamily}`,
             }),
-        ...(isFlippableIcon(name) && {
+        ...(isFlippableIcon(name, source) && {
           '&:dir(rtl)': {
             transform: 'scaleX(-1)',
           },

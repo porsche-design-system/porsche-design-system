@@ -84,6 +84,7 @@ export class Icon {
       this.host,
       getComponentCss,
       this.name,
+      this.source,
       (deprecationMap[this.color] || this.color) as Exclude<IconColor, IconColorDeprecated>,
       this.size,
       this.theme
