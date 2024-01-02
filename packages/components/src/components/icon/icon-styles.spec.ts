@@ -29,7 +29,7 @@ describe('getComponentCss()', () => {
     ['360', 'primary', 'inherit', 'light'],
     ['360', 'inherit', 'small', 'light'],
     ['360', 'inherit', 'small', 'dark'],
-  ])('should return correct css for color: %s, size: %s and theme: %s', (...args) => {
+  ])('should return correct css for name: %s, color: %s, size: %s and theme: %s', (...args) => {
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });
