@@ -488,7 +488,6 @@ describe('slotted', () => {
     expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('visible');
   });
 
-  // TODO: Check if warning is logged when validation trigger is implemented
   it('should close second level of active item when item is removed', async () => {
     await initBasicFlyoutNavigation({ open: true, activeIdentifier: 'item-3' });
     const host = await getHost();
@@ -519,7 +518,6 @@ describe('slotted', () => {
     });
 
     await waitForStencilLifecycle(page);
-    console.log(await page.content());
     expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
     expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
     expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
