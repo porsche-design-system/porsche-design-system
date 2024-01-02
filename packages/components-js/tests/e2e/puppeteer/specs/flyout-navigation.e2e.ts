@@ -515,26 +515,23 @@ describe('slotted', () => {
     expect(await getFlyoutNavigationItem('item-3')).toBeNull();
   });
 
-  // TODO: should this be supported?
-  // it('should show correct second level when flyout-navigation-item with currently activeIdentifier is added', async () => {
-  //   await initBasicFlyoutNavigation({ open: true, activeIdentifier: 'item-4' });
-  //   const host = await getHost();
-  //   await waitForStencilLifecycle(page);
-  //
-  //   expect(getConsoleErrorsAmount()).toBe(1);
-  //
-  //   await host.evaluate((el) => {
-  //     const newItem = document.createElement('p-flyout-navigation-item');
-  //     newItem.setAttribute('active-identifier', 'item-4');
-  //     el.appendChild(newItem);
-  //   });
-  //
-  //   await waitForStencilLifecycle(page);
-  //   expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-  //   expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-  //   expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
-  //   expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('visible');
-  // });
+  it('should show correct second level when flyout-navigation-item with currently activeIdentifier is added', async () => {
+    await initBasicFlyoutNavigation({ open: true, activeIdentifier: 'item-4' });
+    const host = await getHost();
+    await waitForStencilLifecycle(page);
+
+    await host.evaluate((el) => {
+      const newItem = document.createElement('p-flyout-navigation-item');
+      newItem.setAttribute('active-identifier', 'item-4');
+      el.appendChild(newItem);
+    });
+
+    await waitForStencilLifecycle(page);
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('visible');
+  });
 });
 
 describe('scroll lock', () => {
