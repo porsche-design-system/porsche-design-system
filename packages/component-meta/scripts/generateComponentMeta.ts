@@ -45,6 +45,7 @@ const generateComponentMeta = (): void => {
   isRequired?: boolean;
   isDeprecated?: boolean;
   isBreakpointCustomizable?: boolean;
+  isAria?: boolean;
   isArray?: boolean;
 };`,
     `export type ComponentMeta = {
@@ -103,7 +104,8 @@ const generateComponentMeta = (): void => {
     isRequired?: boolean;
     isDeprecated?: boolean;
     isBreakpointCustomizable?: boolean;
-    isArray?: boolean;
+    isAria?: boolean;
+    isArray?: boolean; // TODO: leftover?
   };
   type ComponentMeta = {
     isDeprecated?: boolean;
@@ -124,7 +126,7 @@ const generateComponentMeta = (): void => {
     requiredProps?: string[]; // array of props that are mandatory
     deprecatedProps?: string[]; // array of props that are deprecated
     breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
-    arrayProps?: string[]; // array of props that are of type array
+    arrayProps?: string[]; // array of props that are of type array // TODO: leftover?
     allowedPropValues?: {
       [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
     };
@@ -285,9 +287,10 @@ const generateComponentMeta = (): void => {
             .replace(/\*\/\n/, '')
             .replace(/\s+\*/g, '')
             .trim(),
-          type: propType.replace(/BreakpointCustomizable<(.+?)>/, '$1').trim(), // contains trailing space
+          type: propType.replace(/(?:BreakpointCustomizable|SelectedAriaAttributes)<(.+?)>/, '$1').trim(), // contains trailing space
           defaultValue: cleanedValue,
           ...(jsdoc?.match(/@deprecated/) && { isDeprecated: true }),
+          ...(propType.match(/SelectedAriaAttributes/) && { isAria: true }),
         };
 
         return {
