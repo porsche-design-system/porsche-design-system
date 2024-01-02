@@ -78,6 +78,7 @@ import { TypographyCyrilPage } from './generated/TypographyCyril';
 import { TypographyFallbackPage } from './generated/TypographyFallback';
 import { TypographyGreekAndCopticPage } from './generated/TypographyGreekAndCoptic';
 import { TypographyLatinPage } from './generated/TypographyLatin';
+import { TypographyMiddleEastPage } from './generated/TypographyMiddleEast';
 import { WordmarkPage } from './generated/Wordmark';
 
 export const generatedRoutes: RouteType[] = [
@@ -405,6 +406,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Typography Latin',
     path: '/typography-latin',
     element: <TypographyLatinPage />,
+  },
+  {
+    name: 'Typography Middle East',
+    path: '/typography-middle-east',
+    element: <TypographyMiddleEastPage />,
   },
   {
     name: 'Wordmark',

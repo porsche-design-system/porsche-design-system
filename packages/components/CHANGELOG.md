@@ -18,8 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Carousel`: Prop `heading-size`, named slot `header`
   ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
-- `Accordion`: Custom clickarea for `compact` variant
-  ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
+- `Accordion`: support for custom click area for `compact` variant ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
+- `@font-face` supports Middle East languages
+  ([#2946](https://github.com/porsche-design-system/porsche-design-system/pull/2946))
+- Partials: `getFontLinks` supports preloading `arabic`, `pashto` and `urdu` subsets
+  ([#2946](https://github.com/porsche-design-system/porsche-design-system/pull/2946))
 
 #### Changed
 

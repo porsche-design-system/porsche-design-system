@@ -100,6 +100,7 @@ import { TypographyCyrilComponent } from './generated/typography-cyril.component
 import { TypographyFallbackComponent } from './generated/typography-fallback.component';
 import { TypographyGreekAndCopticComponent } from './generated/typography-greek-and-coptic.component';
 import { TypographyLatinComponent } from './generated/typography-latin.component';
+import { TypographyMiddleEastComponent } from './generated/typography-middle-east.component';
 import { WordmarkComponent } from './generated/wordmark.component';
 
 export const generatedPages = [
@@ -171,6 +172,7 @@ export const generatedPages = [
   TypographyFallbackComponent,
   TypographyGreekAndCopticComponent,
   TypographyLatinComponent,
+  TypographyMiddleEastComponent,
   WordmarkComponent,
 ];
 
@@ -499,6 +501,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Typography Latin',
     path: 'typography-latin',
     component: TypographyLatinComponent,
+  },
+  {
+    name: 'Typography Middle East',
+    path: 'typography-middle-east',
+    component: TypographyMiddleEastComponent,
   },
   {
     name: 'Wordmark',

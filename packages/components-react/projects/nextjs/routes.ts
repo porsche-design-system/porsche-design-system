@@ -272,6 +272,10 @@ const generatedRoutes = {
     "path": "/typography-latin",
     "name": "TypographyLatin"
   },
+  "typographyMiddleEast": {
+    "path": "/typography-middle-east",
+    "name": "TypographyMiddleEast"
+  },
   "wordmark": {
     "path": "/wordmark",
     "name": "Wordmark"

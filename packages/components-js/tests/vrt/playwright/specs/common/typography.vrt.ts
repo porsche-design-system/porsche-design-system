@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { setupScenario } from '../../helpers';
 
 // executed in Chrome only
-['latin', 'greek-and-coptic', 'cyril', 'fallback'].forEach((typography) => {
+['latin', 'greek-and-coptic', 'cyril', 'middle-east', 'fallback'].forEach((typography) => {
   test.describe('typography', async () => {
     test.skip(({ browserName }) => browserName !== 'chromium');
 
