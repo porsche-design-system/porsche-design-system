@@ -242,6 +242,7 @@ describe('focus behavior', () => {
 
   it('should have correct focus order when level 2 is opened', async () => {
     await initBasicFlyoutNavigation({ open: false });
+    const host = await getHost();
     await openFlyoutNavigation();
     await waitForStencilLifecycle(page);
 
@@ -253,7 +254,7 @@ describe('focus behavior', () => {
     expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
     expect(await getActiveElementProp(page, 'identifier')).toBe('item-2');
 
-    await page.keyboard.press('Enter'); // Open second level
+    await setProperty(host, 'activeIdentifier', 'item-2'); // Open second level
     await waitForStencilLifecycle(page);
 
     await page.keyboard.press('Tab');
@@ -268,7 +269,6 @@ describe('focus behavior', () => {
     expect(await getActiveElementProp(page, 'identifier')).toBe('item-3');
   });
 
-  // Only works in pipeline correctly
   it('should not allow focusing element behind of flyout when pressing Tab', async () => {
     await initBasicFlyoutNavigation({ open: false }, { amount: 0 });
     await addButtonsBeforeAndAfterFlyout();
@@ -281,7 +281,6 @@ describe('focus behavior', () => {
     await expectDismissButtonToBeFocused();
   });
 
-  // Only works in pipeline correctly
   it('should not allow focusing element behind of flyout when pressing Shift Tab', async () => {
     await initBasicFlyoutNavigation({ open: false }, { amount: 0 });
     await addButtonsBeforeAndAfterFlyout();
@@ -369,6 +368,22 @@ describe('second level', () => {
     expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
   });
 
+  it('should open correct second level when setting activeIdentifier', async () => {
+    await initBasicFlyoutNavigation({ open: false });
+    await openFlyoutNavigation();
+    const host = await getHost();
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+
+    await setProperty(host, 'activeIdentifier', 'item-3');
+    await waitForStencilLifecycle(page);
+
+    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('visible');
+  });
+
   it('should change to correct second level open when activeIdentifier is changed', async () => {
     await initBasicFlyoutNavigation({ open: false, activeIdentifier: 'item-2' });
     await openFlyoutNavigation();
@@ -384,69 +399,10 @@ describe('second level', () => {
     expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
     expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('visible');
   });
-
-  it('should open correct second level on Click', async () => {
-    await initBasicFlyoutNavigation({ open: false });
-    await openFlyoutNavigation();
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
-
-    const item1 = await getFlyoutNavigationItem('item-1');
-    await item1.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('visible');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
-
-    const item3 = await getFlyoutNavigationItem('item-3');
-    await item3.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('visible');
-  });
-
-  it('should open second level on Enter', async () => {
-    await initBasicFlyoutNavigation({ open: false });
-    await openFlyoutNavigation();
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
-    expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
-
-    await page.keyboard.press('Enter');
-    await waitForStencilLifecycle(page);
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('visible');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
-  });
-
-  it('should open second level on Space', async () => {
-    await initBasicFlyoutNavigation({ open: false });
-    await openFlyoutNavigation();
-
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
-    expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
-
-    await page.keyboard.press('Space');
-    await waitForStencilLifecycle(page);
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('visible');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
-  });
 });
 
 describe('activeIdentifier', () => {
-  it('should emit update event when activeIdentifier changes by clicking on item', async () => {
+  it('should emit update event when clicking on a navigation-item', async () => {
     await initBasicFlyoutNavigation({ open: false, activeIdentifier: 'item-2' });
     await openFlyoutNavigation();
     const host = await getHost();
@@ -462,10 +418,46 @@ describe('activeIdentifier', () => {
       { activeIdentifier: 'item-1' },
     ]);
   });
+
+  it('should emit update event when pressing Enter on a navigation-item', async () => {
+    await initBasicFlyoutNavigation({ open: true });
+    const host = await getHost();
+    await addEventListener(host, 'update');
+
+    expect((await getEventSummary(host, 'update')).counter, 'before activeIdentifier change').toBe(0);
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
+    await page.keyboard.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'update')).counter, 'after activeIdentifier change').toBe(1);
+    expect((await getEventSummary(host, 'update')).details, 'after activeIdentifier change').toEqual([
+      { activeIdentifier: 'item-1' },
+    ]);
+  });
+
+  it('should emit update event when pressing Space on a navigation-item', async () => {
+    await initBasicFlyoutNavigation({ open: true });
+    const host = await getHost();
+    await addEventListener(host, 'update');
+
+    expect((await getEventSummary(host, 'update')).counter, 'before activeIdentifier change').toBe(0);
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION-ITEM');
+    await page.keyboard.press('Space');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'update')).counter, 'after activeIdentifier change').toBe(1);
+    expect((await getEventSummary(host, 'update')).details, 'after activeIdentifier change').toEqual([
+      { activeIdentifier: 'item-1' },
+    ]);
+  });
 });
 
 describe('slotted', () => {
-  it('should open second level of item when item is appended and clicked', async () => {
+  it('should open second level of item when item is appended and activeIdentifier is set to this item', async () => {
     await initBasicFlyoutNavigation({ open: true });
     const host = await getHost();
 
@@ -488,7 +480,7 @@ describe('slotted', () => {
     expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
     expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('hidden');
 
-    await item4.click();
+    await setProperty(host, 'activeIdentifier', 'item-4');
     await waitForStencilLifecycle(page);
     expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
     expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
@@ -522,11 +514,12 @@ describe('slotted', () => {
 
     await host.evaluate((el) => {
       const newItem = document.createElement('p-flyout-navigation-item');
-      newItem.setAttribute('active-identifier', 'item-4');
+      newItem.setAttribute('identifier', 'item-4');
       el.appendChild(newItem);
     });
 
     await waitForStencilLifecycle(page);
+    console.log(await page.content());
     expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
     expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
     expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
@@ -668,15 +661,15 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
-  it('should work without unnecessary round trips after clicking item', async () => {
+  it('should work without unnecessary round trips after setting an activeIdentifier', async () => {
     await initBasicFlyoutNavigation({ open: true });
+    const host = await getHost();
     const statusBefore = await getLifecycleStatus(page);
 
     expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(18);
     expect(statusBefore.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
-    const item1 = await getFlyoutNavigationItem('item-1');
-    await item1.click();
+    await setProperty(host, 'activeIdentifier', 'item-1');
     await waitForStencilLifecycle(page);
 
     const statusAfter = await getLifecycleStatus(page);
