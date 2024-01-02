@@ -11,6 +11,7 @@ import PartialDocs from '@/components/PartialDocs.vue';
 import PlaygroundButton from '@/components/PlaygroundButton.vue';
 import PlaygroundInput from '@/components/PlaygroundInput.vue';
 import PlaygroundSelect from '@/components/PlaygroundSelect.vue';
+import PropsTable from '@/components/PropsTable.vue';
 import ComponentMetaOverview from '@/components/ComponentMetaOverview.vue';
 import Notification from '@/components/Notification.vue';
 
@@ -51,6 +52,7 @@ Vue.use({
     vue.component('PlaygroundButton', PlaygroundButton);
     vue.component('PlaygroundInput', PlaygroundInput);
     vue.component('PlaygroundSelect', PlaygroundSelect);
+    vue.component('PropsTable', PropsTable);
     vue.component('TableOfContents', TableOfContents);
     vue.component('ComponentMetaOverview', ComponentMetaOverview);
   },
