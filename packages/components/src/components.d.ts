@@ -685,7 +685,13 @@ export namespace Components {
         "theme"?: Theme;
     }
     interface PFlyoutNavigationItem {
+        /**
+          * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-navigation is set to this value.
+         */
         "identifier": string;
+        /**
+          * Label of the item.
+         */
         "label"?: string;
     }
     /**
@@ -3312,7 +3318,13 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     interface PFlyoutNavigationItem {
+        /**
+          * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-navigation is set to this value.
+         */
         "identifier"?: string;
+        /**
+          * Label of the item.
+         */
         "label"?: string;
     }
     /**
