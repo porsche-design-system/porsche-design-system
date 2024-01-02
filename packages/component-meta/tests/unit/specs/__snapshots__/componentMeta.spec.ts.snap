@@ -307,7 +307,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<ButtonAriaAttribute>",
+        "isAria": true,
+        "type": "ButtonAriaAttribute",
       },
       "disabled": {
         "allowedValues": "boolean",
@@ -556,7 +557,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<ButtonPureAriaAttribute>",
+        "isAria": true,
+        "type": "ButtonPureAriaAttribute",
       },
       "disabled": {
         "allowedValues": "boolean",
@@ -763,7 +765,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<ButtonTileAriaAttribute>",
+        "isAria": true,
+        "type": "ButtonTileAriaAttribute",
       },
       "aspectRatio": {
         "allowedValues": [
@@ -1001,7 +1004,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<CarouselAriaAttribute>",
+        "isAria": true,
+        "type": "CarouselAriaAttribute",
       },
       "description": {
         "allowedValues": "string",
@@ -1307,7 +1311,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<CrestAriaAttribute>",
+        "isAria": true,
+        "type": "CrestAriaAttribute",
       },
       "href": {
         "allowedValues": "string",
@@ -2097,7 +2102,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<FlyoutAriaAttribute>",
+        "isAria": true,
+        "type": "FlyoutAriaAttribute",
       },
       "open": {
         "allowedValues": "boolean",
@@ -2185,7 +2191,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<FlyoutNavigationAriaAttribute>",
+        "isAria": true,
+        "type": "FlyoutNavigationAriaAttribute",
       },
       "open": {
         "allowedValues": "boolean",
@@ -2920,6 +2927,16 @@ exports[`should match snapshot 1`] = `
         "auto",
       ],
     },
+    "deprecatedPropValues": {
+      "color": [
+        "brand",
+        "default",
+        "neutral-contrast-low",
+        "neutral-contrast-medium",
+        "neutral-contrast-high",
+        "notification-neutral",
+      ],
+    },
     "deprecatedProps": [
       "lazy",
     ],
@@ -2947,7 +2964,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<IconAriaAttribute>",
+        "isAria": true,
+        "type": "IconAriaAttribute",
       },
       "color": {
         "allowedValues": [
@@ -2969,6 +2987,14 @@ exports[`should match snapshot 1`] = `
           "state-disabled",
         ],
         "defaultValue": "primary",
+        "deprecatedValues": [
+          "brand",
+          "default",
+          "neutral-contrast-low",
+          "neutral-contrast-medium",
+          "neutral-contrast-high",
+          "notification-neutral",
+        ],
         "description": "Basic color variations depending on theme property.",
         "type": "IconColor",
       },
@@ -3397,7 +3423,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<LinkAriaAttribute>",
+        "isAria": true,
+        "type": "LinkAriaAttribute",
       },
       "download": {
         "allowedValues": "string",
@@ -3590,7 +3617,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<LinkPureAriaAttribute>",
+        "isAria": true,
+        "type": "LinkPureAriaAttribute",
       },
       "download": {
         "allowedValues": "string",
@@ -3882,7 +3910,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<LinkTileAriaAttribute>",
+        "isAria": true,
+        "type": "LinkTileAriaAttribute",
       },
       "aspectRatio": {
         "allowedValues": [
@@ -4329,7 +4358,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<MarqueAriaAttribute>",
+        "isAria": true,
+        "type": "MarqueAriaAttribute",
       },
       "href": {
         "allowedValues": "string",
@@ -4433,7 +4463,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<ModalAriaAttribute>",
+        "isAria": true,
+        "type": "ModalAriaAttribute",
       },
       "disableBackdropClick": {
         "allowedValues": "boolean",
@@ -5164,7 +5195,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<PopoverAriaAttribute>",
+        "isAria": true,
+        "type": "PopoverAriaAttribute",
       },
       "description": {
         "allowedValues": "string",
@@ -5370,7 +5402,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA role.",
-        "type": "SelectedAriaAttributes<ScrollerAriaAttribute>",
+        "isAria": true,
+        "type": "ScrollerAriaAttribute",
       },
       "gradientColor": {
         "allowedValues": [
@@ -5906,7 +5939,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<SpinnerAriaAttribute>",
+        "isAria": true,
+        "type": "SpinnerAriaAttribute",
       },
       "size": {
         "allowedValues": [
@@ -6697,6 +6731,7 @@ exports[`should match snapshot 1`] = `
         "notification-warning",
         "notification-success",
         "notification-error",
+        "background-default",
       ],
     },
     "hasAriaProp": false,
@@ -6740,6 +6775,7 @@ exports[`should match snapshot 1`] = `
           "notification-warning",
           "notification-success",
           "notification-error",
+          "background-default",
         ],
         "description": "Background color variations depending on theme property.",
         "type": "TagColor",
@@ -6815,7 +6851,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<TagDismissibleAriaAttribute>",
+        "isAria": true,
+        "type": "TagDismissibleAriaAttribute",
       },
       "color": {
         "allowedValues": [
@@ -7586,7 +7623,8 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
-        "type": "SelectedAriaAttributes<WordmarkAriaAttribute>",
+        "isAria": true,
+        "type": "WordmarkAriaAttribute",
       },
       "href": {
         "allowedValues": "string",

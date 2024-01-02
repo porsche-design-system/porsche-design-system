@@ -401,6 +401,23 @@ const generateComponentMeta = (): void => {
                       deprecatedPropValues[propName] = variableModule[`${variable}_DEPRECATED`];
                     }
 
+                    // in addition, check for warnIfDeprecatedPropValueIsUsed since imports could be across multiple corner
+                    const deprecationMapRegEx = new RegExp(
+                      `warnIfDeprecatedPropValueIsUsed<.+?>\\(this, '${propName}', ([a-zA-Z]+)\\);`
+                    );
+                    if (source.match(deprecationMapRegEx)) {
+                      const [, deprecationMapVariableName] = source.match(deprecationMapRegEx) || [];
+                      const [, rawDeprecationMapVariable] =
+                        source.match(new RegExp(`const ${deprecationMapVariableName}.+=([\\s\\S]+?);`)) || [];
+
+                      const deprecationMap = eval(`(${rawDeprecationMapVariable})`) as Record<string, string>;
+
+                      deprecatedPropValues[propName] = [
+                        ...(deprecatedPropValues[propName] || []),
+                        ...Object.keys(deprecationMap),
+                      ].filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates
+                    }
+
                     // handle stuff like ICONS_MANIFEST
                     if (values.match(/^Object\.keys/)) {
                       variableValues = Object.keys(variableValues);
