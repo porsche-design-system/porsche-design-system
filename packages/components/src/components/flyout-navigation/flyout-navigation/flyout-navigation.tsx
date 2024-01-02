@@ -81,7 +81,6 @@ export class FlyoutNavigation {
       setScrollLock(true);
       this.setDialogVisibility(true);
     }
-    // TODO: Slotchange should trigger validation again (when removing item with active-identifier no warning is shown)
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineFlyoutNavigationItemElements);
   }
 
@@ -154,11 +153,14 @@ export class FlyoutNavigation {
   }
 
   private setDialogVisibility(isOpen: boolean): void {
-    if (isOpen === true) {
-      this.dialog.showModal();
-    } else {
-      this.dialog.close();
-    }
+    // showModal needs to be called after render cycle to prepare visibility states of dialog in order to focus the dismiss button correctly
+    setTimeout(() => {
+      if (isOpen === true) {
+        this.dialog.showModal();
+      } else {
+        this.dialog.close();
+      }
+    });
   }
 
   private dismissDialog = (): void => {
