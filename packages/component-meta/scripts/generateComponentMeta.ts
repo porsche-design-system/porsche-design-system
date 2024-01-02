@@ -36,7 +36,7 @@ const generateComponentMeta = (): void => {
   const imports = `import type { TagName } from '@porsche-design-system/shared';`;
 
   const types = [
-    `type PropMeta = {
+    `export type PropMeta = {
   description?: string;
   type: string;
   defaultValue: boolean | number | string | object | null;
@@ -285,7 +285,7 @@ const generateComponentMeta = (): void => {
             .replace(/\*\/\n/, '')
             .replace(/\s+\*/g, '')
             .trim(),
-          type: propType.trim(), // contains trailing space
+          type: propType.replace(/BreakpointCustomizable<(.+?)>/, '$1').trim(), // contains trailing space
           defaultValue: cleanedValue,
           ...(jsdoc?.match(/@deprecated/) && { isDeprecated: true }),
         };

@@ -84,7 +84,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "small",
         "description": "The text size.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<AccordionSize>",
+        "type": "AccordionSize",
       },
       "tag": {
         "allowedValues": [
@@ -320,7 +320,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label. For better accessibility it is recommended to show the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "icon": {
         "allowedValues": "string",
@@ -421,7 +421,7 @@ exports[`should match snapshot 1`] = `
         },
         "description": "Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<ButtonGroupDirection>",
+        "type": "ButtonGroupDirection",
       },
     },
     "styling": "jss",
@@ -545,7 +545,7 @@ exports[`should match snapshot 1`] = `
         ],
         "description": "Aligns the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<ButtonPureAlignLabel>",
+        "type": "ButtonPureAlignLabel",
       },
       "aria": {
         "allowedValues": {
@@ -569,7 +569,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label. For better accessibility it is recommended to show the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "icon": {
         "allowedValues": "string",
@@ -608,14 +608,14 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "small",
         "description": "Size of the button.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<ButtonPureSize>",
+        "type": "ButtonPureSize",
       },
       "stretch": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Stretches the area between icon and label to max available space.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "theme": {
         "allowedValues": [
@@ -776,7 +776,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "4:3",
         "description": "Aspect ratio of the button-tile.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<ButtonTileAspectRatio>",
+        "type": "ButtonTileAspectRatio",
       },
       "background": {
         "allowedValues": [
@@ -793,7 +793,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Displays the button-tile as compact version with description and button icon only.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "description": {
         "allowedValues": "string",
@@ -847,7 +847,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "default",
         "description": "Font size of the description.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<ButtonTileSize>",
+        "type": "ButtonTileSize",
       },
       "type": {
         "allowedValues": [
@@ -867,7 +867,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "semi-bold",
         "description": "Font weight of the description.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<ButtonTileWeight>",
+        "type": "ButtonTileWeight",
       },
     },
     "requiredProps": [
@@ -1015,7 +1015,7 @@ exports[`should match snapshot 1`] = `
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`pagination\` instead. If true, the carousel will not show pagination bullets at the bottom.",
         "isBreakpointCustomizable": true,
         "isDeprecated": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "heading": {
         "allowedValues": "string",
@@ -1050,7 +1050,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": true,
         "description": "If false, the carousel will not show pagination bullets at the bottom.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "rewind": {
         "allowedValues": "boolean",
@@ -1072,7 +1072,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": 1,
         "description": "Sets the amount of slides visible at the same time. Can be set to \`auto\` if you want to define different widths per slide via CSS.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<number> | 'auto'",
+        "type": "number | 'auto'",
       },
       "theme": {
         "allowedValues": [
@@ -1157,7 +1157,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label. For better accessibility it's recommended to show the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
@@ -1426,7 +1426,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "large",
         "description": "Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<DisplaySize>",
+        "type": "DisplaySize",
       },
       "tag": {
         "allowedValues": [
@@ -1535,7 +1535,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "horizontal",
         "description": "Defines direction.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<DividerDirection>",
+        "type": "DividerDirection",
       },
       "orientation": {
         "allowedValues": [
@@ -1547,7 +1547,7 @@ exports[`should match snapshot 1`] = `
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`direction\` instead. Defines orientation.",
         "isBreakpointCustomizable": true,
         "isDeprecated": true,
-        "type": "BreakpointCustomizable<DividerOrientation>",
+        "type": "DividerOrientation",
       },
       "theme": {
         "allowedValues": [
@@ -1831,7 +1831,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "stretch",
         "description": "This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<FlexAlignContent>",
+        "type": "FlexAlignContent",
       },
       "alignItems": {
         "allowedValues": [
@@ -1844,7 +1844,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "stretch",
         "description": "Defines how the flex items are aligned along the cross axis.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<FlexAlignItems>",
+        "type": "FlexAlignItems",
       },
       "direction": {
         "allowedValues": [
@@ -1856,14 +1856,14 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "row",
         "description": "Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<FlexDirection>",
+        "type": "FlexDirection",
       },
       "inline": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Defines the flex containers content flow if 2 or more containers are siblings of each other.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<FlexInline>",
+        "type": "FlexInline",
       },
       "justifyContent": {
         "allowedValues": [
@@ -1877,7 +1877,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "flex-start",
         "description": "Defines how the flex items are aligned along the main axis.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<FlexJustifyContent>",
+        "type": "FlexJustifyContent",
       },
       "wrap": {
         "allowedValues": [
@@ -1888,7 +1888,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "nowrap",
         "description": "Handles wrapping behaviour of elements.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<FlexWrap>",
+        "type": "FlexWrap",
       },
     },
     "styling": "jss",
@@ -1974,7 +1974,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<FlexItemAlignSelf>",
+        "type": "FlexItemAlignSelf",
       },
       "flex": {
         "allowedValues": [
@@ -1986,7 +1986,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "initial",
         "description": "The shorthand property for the combined definition of "shrink", "grow" and "basis"",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<FlexItemFlex>",
+        "type": "FlexItemFlex",
       },
       "grow": {
         "allowedValues": [
@@ -1996,7 +1996,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": 0,
         "description": "The ability to allow/disallow the flex child to grow.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<FlexItemGrow>",
+        "type": "FlexItemGrow",
       },
       "offset": {
         "allowedValues": [
@@ -2010,7 +2010,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "none",
         "description": "The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<FlexItemOffset>",
+        "type": "FlexItemOffset",
       },
       "shrink": {
         "allowedValues": [
@@ -2020,7 +2020,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": 1,
         "description": "The ability to allow/disallow the flex child to shrink.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<FlexItemShrink>",
+        "type": "FlexItemShrink",
       },
       "width": {
         "allowedValues": [
@@ -2035,7 +2035,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<FlexItemWidth>",
+        "type": "FlexItemWidth",
       },
     },
     "requiredParent": "p-flex",
@@ -2303,7 +2303,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "row",
         "description": "Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<GridDirection>",
+        "type": "GridDirection",
       },
       "gutter": {
         "allowedValues": [
@@ -2319,7 +2319,7 @@ exports[`should match snapshot 1`] = `
         "description": "Has no effect anymore @deprecated since v3.0.0, will be removed with next major release",
         "isBreakpointCustomizable": true,
         "isDeprecated": true,
-        "type": "BreakpointCustomizable<GridGutter>",
+        "type": "GridGutter",
       },
       "wrap": {
         "allowedValues": [
@@ -2329,7 +2329,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "wrap",
         "description": "Handles wrapping behaviour of elements.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<GridWrap>",
+        "type": "GridWrap",
       },
     },
     "styling": "jss",
@@ -2402,7 +2402,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": 0,
         "description": "The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<GridItemOffset>",
+        "type": "GridItemOffset",
       },
       "size": {
         "allowedValues": [
@@ -2422,7 +2422,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": 1,
         "description": "The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<GridItemSize>",
+        "type": "GridItemSize",
       },
     },
     "requiredParent": "p-grid",
@@ -2534,7 +2534,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "xx-large",
         "description": "Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<HeadingSize>",
+        "type": "HeadingSize",
       },
       "tag": {
         "allowedValues": [
@@ -3410,7 +3410,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label. For better accessibility it is recommended to show the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "href": {
         "allowedValues": "string",
@@ -3581,7 +3581,7 @@ exports[`should match snapshot 1`] = `
         ],
         "description": "Aligns the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<LinkPureAlignLabel>",
+        "type": "LinkPureAlignLabel",
       },
       "aria": {
         "allowedValues": {
@@ -3603,7 +3603,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label. For better accessibility it is recommended to show the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "href": {
         "allowedValues": "string",
@@ -3643,14 +3643,14 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "small",
         "description": "Size of the link.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<LinkPureSize>",
+        "type": "LinkPureSize",
       },
       "stretch": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Stretches the area between icon and label to max available space.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "target": {
         "allowedValues": "string",
@@ -3742,7 +3742,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "href": {
         "allowedValues": "string",
@@ -3895,7 +3895,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "4:3",
         "description": "Aspect ratio of the link-tile.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<LinkTileAspectRatio>",
+        "type": "LinkTileAspectRatio",
       },
       "background": {
         "allowedValues": [
@@ -3912,7 +3912,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Displays the link-tile as compact version with description and link icon only.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "description": {
         "allowedValues": "string",
@@ -3961,7 +3961,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "default",
         "description": "Font size of the description.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<LinkTileSize>",
+        "type": "LinkTileSize",
       },
       "target": {
         "allowedValues": "string",
@@ -3978,7 +3978,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "semi-bold",
         "description": "Font weight of the description.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<LinkTileWeight>",
+        "type": "LinkTileWeight",
       },
     },
     "requiredProps": [
@@ -4071,7 +4071,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "3:4",
         "description": "Aspect ratio of the link-tile-model-signature.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<LinkTileModelSignatureAspectRatio>",
+        "type": "LinkTileModelSignatureAspectRatio",
       },
       "description": {
         "allowedValues": "string",
@@ -4109,7 +4109,7 @@ exports[`should match snapshot 1`] = `
         },
         "description": "Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.   // prettier-ignore",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<LinkTileModelSignatureLinkDirection>",
+        "type": "LinkTileModelSignatureLinkDirection",
       },
       "model": {
         "allowedValues": [
@@ -4136,7 +4136,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "semi-bold",
         "description": "Adapts the font weight of the heading.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<LinkTileModelSignatureWeight>",
+        "type": "LinkTileModelSignatureWeight",
       },
     },
     "requiredNamedSlots": [
@@ -4213,7 +4213,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "3:4",
         "description": "Aspect ratio of the link-tile-product.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<LinkTileProductAspectRatio>",
+        "type": "LinkTileProductAspectRatio",
       },
       "description": {
         "allowedValues": "string",
@@ -4459,7 +4459,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "If true the modal uses max viewport height and width. Should only be used for mobile.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "heading": {
         "allowedValues": "string",
@@ -4682,7 +4682,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label. For better accessibility it is recommended to show the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
@@ -4917,7 +4917,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Has no effect anymore @deprecated since v3.10.0, will be removed with next major release",
         "isDeprecated": true,
-        "type": "BreakpointCustomizable<PaginationMaxNumberOfPageLinks>",
+        "type": "PaginationMaxNumberOfPageLinks",
       },
       "showLastPage": {
         "allowedValues": "boolean",
@@ -5039,7 +5039,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label and description text. For better accessibility it is recommended to show the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
@@ -5250,7 +5250,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label. For better accessibility it's recommended to show the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
@@ -5550,7 +5550,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Sets the amount of columns.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<SegmentedControlColumns>",
+        "type": "SegmentedControlColumns",
       },
       "theme": {
         "allowedValues": [
@@ -5736,7 +5736,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label. For better accessibility it is recommended to show the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
@@ -5918,7 +5918,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "small",
         "description": "Size of the spinner.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<SpinnerSize>",
+        "type": "SpinnerSize",
       },
       "theme": {
         "allowedValues": [
@@ -5979,7 +5979,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "small",
         "description": "The text size.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<StepperHorizontalSize>",
+        "type": "StepperHorizontalSize",
       },
       "theme": {
         "allowedValues": [
@@ -6119,7 +6119,7 @@ exports[`should match snapshot 1`] = `
         ],
         "description": "Aligns the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<SwitchAlignLabel>",
+        "type": "SwitchAlignLabel",
       },
       "checked": {
         "allowedValues": "boolean",
@@ -6138,7 +6138,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label. For better accessibility it's recommended to show the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "loading": {
         "allowedValues": "boolean",
@@ -6151,7 +6151,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Stretches the contents to max available space.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "theme": {
         "allowedValues": [
@@ -6477,7 +6477,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "small",
         "description": "The text size.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<TabsSize>",
+        "type": "TabsSize",
       },
       "theme": {
         "allowedValues": [
@@ -6604,7 +6604,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "small",
         "description": "The text size.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<TabsBarSize>",
+        "type": "TabsBarSize",
       },
       "theme": {
         "allowedValues": [
@@ -7013,7 +7013,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "small",
         "description": "Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<TextSize>",
+        "type": "TextSize",
       },
       "tag": {
         "allowedValues": [
@@ -7165,7 +7165,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label and description text. For better accessibility it is recommended to show the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
@@ -7414,7 +7414,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Show or hide label. For better accessibility it is recommended to show the label.",
         "isBreakpointCustomizable": true,
-        "type": "BreakpointCustomizable<boolean>",
+        "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
