@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- Fonts for Middle East languages: Arabic, Pashto and Urdu
+  ([#2946](https://github.com/porsche-design-system/porsche-design-system/pull/2946))
+
 #### Changed
 
 - Remove `EMAIL_CDN_BASE_URL` and `EMAIL_MANIFEST`

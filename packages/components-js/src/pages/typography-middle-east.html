@@ -1,0 +1,678 @@
+<style>
+  p-text {
+    display: inline-flex;
+    vertical-align: top;
+    align-items: center;
+    justify-content: center;
+    margin: 4px;
+    padding: 4px;
+    background: rgba(125, 125, 125, 0.1);
+    width: 36px;
+    height: 36px;
+  }
+</style>
+
+<!-- taken from https://en.wikipedia.org/wiki/Arabic_script_in_Unicode#Compact_table -->
+<div class="playground" title="should show regular typography in arabic, pashto and urdu charset (U+0600-06FF)">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>0</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>D</th>
+        <th>E</th>
+        <th>F</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>U+060x</th>
+        <td><p-text size="medium" align="center">؀</p-text></td>
+        <td><p-text size="medium" align="center">؁</p-text></td>
+        <td><p-text size="medium" align="center">؂</p-text></td>
+        <td><p-text size="medium" align="center">؃</p-text></td>
+        <td><p-text size="medium" align="center">؄</p-text></td>
+        <td><p-text size="medium" align="center">؅</p-text></td>
+        <td><p-text size="medium" align="center">؆</p-text></td>
+        <td><p-text size="medium" align="center">؇</p-text></td>
+        <td><p-text size="medium" align="center">؈</p-text></td>
+        <td><p-text size="medium" align="center">؉</p-text></td>
+        <td><p-text size="medium" align="center">؊</p-text></td>
+        <td><p-text size="medium" align="center">؋</p-text></td>
+        <td><p-text size="medium" align="center">،</p-text></td>
+        <td><p-text size="medium" align="center">؍</p-text></td>
+        <td><p-text size="medium" align="center">؎</p-text></td>
+        <td><p-text size="medium" align="center">؏</p-text></td>
+      </tr>
+      <tr>
+        <th>U+061x</th>
+        <td><p-text size="medium" align="center">ؐ</p-text></td>
+        <td><p-text size="medium" align="center">ؑ</p-text></td>
+        <td><p-text size="medium" align="center">ؒ</p-text></td>
+        <td><p-text size="medium" align="center">ؓ</p-text></td>
+        <td><p-text size="medium" align="center">ؔ</p-text></td>
+        <td><p-text size="medium" align="center">ؕ</p-text></td>
+        <td><p-text size="medium" align="center">ؖ</p-text></td>
+        <td><p-text size="medium" align="center">ؗ</p-text></td>
+        <td><p-text size="medium" align="center">ؘ</p-text></td>
+        <td><p-text size="medium" align="center">ؙ</p-text></td>
+        <td><p-text size="medium" align="center">ؚ</p-text></td>
+        <td><p-text size="medium" align="center">؛</p-text></td>
+        <td><p-text size="medium" align="center">؝</p-text></td>
+        <td><p-text size="medium" align="center">؝</p-text></td>
+        <td><p-text size="medium" align="center">؞</p-text></td>
+        <td><p-text size="medium" align="center">؟</p-text></td>
+      </tr>
+      <tr>
+        <th>U+062x</th>
+        <td><p-text size="medium" align="center">ؠ</p-text></td>
+        <td><p-text size="medium" align="center">ء</p-text></td>
+        <td><p-text size="medium" align="center">آ</p-text></td>
+        <td><p-text size="medium" align="center">أ</p-text></td>
+        <td><p-text size="medium" align="center">ؤ</p-text></td>
+        <td><p-text size="medium" align="center">إ</p-text></td>
+        <td><p-text size="medium" align="center">ئ</p-text></td>
+        <td><p-text size="medium" align="center">ا</p-text></td>
+        <td><p-text size="medium" align="center">ب</p-text></td>
+        <td><p-text size="medium" align="center">ة</p-text></td>
+        <td><p-text size="medium" align="center">ت</p-text></td>
+        <td><p-text size="medium" align="center">ث</p-text></td>
+        <td><p-text size="medium" align="center">ج</p-text></td>
+        <td><p-text size="medium" align="center">ح</p-text></td>
+        <td><p-text size="medium" align="center">خ</p-text></td>
+        <td><p-text size="medium" align="center">د</p-text></td>
+      </tr>
+      <tr>
+        <th>U+063x</th>
+        <td><p-text size="medium" align="center">ذ</p-text></td>
+        <td><p-text size="medium" align="center">ر</p-text></td>
+        <td><p-text size="medium" align="center">ز</p-text></td>
+        <td><p-text size="medium" align="center">س</p-text></td>
+        <td><p-text size="medium" align="center">ش</p-text></td>
+        <td><p-text size="medium" align="center">ص</p-text></td>
+        <td><p-text size="medium" align="center">ض</p-text></td>
+        <td><p-text size="medium" align="center">ط</p-text></td>
+        <td><p-text size="medium" align="center">ظ</p-text></td>
+        <td><p-text size="medium" align="center">ع</p-text></td>
+        <td><p-text size="medium" align="center">غ</p-text></td>
+        <td><p-text size="medium" align="center">ػ</p-text></td>
+        <td><p-text size="medium" align="center">ؼ</p-text></td>
+        <td><p-text size="medium" align="center">ؽ</p-text></td>
+        <td><p-text size="medium" align="center">ؾ</p-text></td>
+        <td><p-text size="medium" align="center">ؿ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+064x</th>
+        <td><p-text size="medium" align="center">ـ</p-text></td>
+        <td><p-text size="medium" align="center">ف</p-text></td>
+        <td><p-text size="medium" align="center">ق</p-text></td>
+        <td><p-text size="medium" align="center">ك</p-text></td>
+        <td><p-text size="medium" align="center">ل</p-text></td>
+        <td><p-text size="medium" align="center">م</p-text></td>
+        <td><p-text size="medium" align="center">ن</p-text></td>
+        <td><p-text size="medium" align="center">ه</p-text></td>
+        <td><p-text size="medium" align="center">و</p-text></td>
+        <td><p-text size="medium" align="center">ى</p-text></td>
+        <td><p-text size="medium" align="center">ي</p-text></td>
+        <td><p-text size="medium" align="center">ً</p-text></td>
+        <td><p-text size="medium" align="center">ٌ</p-text></td>
+        <td><p-text size="medium" align="center">ٍ</p-text></td>
+        <td><p-text size="medium" align="center">َ</p-text></td>
+        <td><p-text size="medium" align="center">ُ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+065x</th>
+        <td><p-text size="medium" align="center">ِ</p-text></td>
+        <td><p-text size="medium" align="center">ّ</p-text></td>
+        <td><p-text size="medium" align="center">ْ</p-text></td>
+        <td><p-text size="medium" align="center">ٓ</p-text></td>
+        <td><p-text size="medium" align="center">ٔ</p-text></td>
+        <td><p-text size="medium" align="center">ٕ</p-text></td>
+        <td><p-text size="medium" align="center">ٖ</p-text></td>
+        <td><p-text size="medium" align="center">ٗ</p-text></td>
+        <td><p-text size="medium" align="center">٘</p-text></td>
+        <td><p-text size="medium" align="center">ٙ</p-text></td>
+        <td><p-text size="medium" align="center">ٚ</p-text></td>
+        <td><p-text size="medium" align="center">ٛ</p-text></td>
+        <td><p-text size="medium" align="center">ٜ</p-text></td>
+        <td><p-text size="medium" align="center">ٝ</p-text></td>
+        <td><p-text size="medium" align="center">ٞ</p-text></td>
+        <td><p-text size="medium" align="center">ٟ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+066x</th>
+        <td><p-text size="medium" align="center">٠</p-text></td>
+        <td><p-text size="medium" align="center">١</p-text></td>
+        <td><p-text size="medium" align="center">٢</p-text></td>
+        <td><p-text size="medium" align="center">٣</p-text></td>
+        <td><p-text size="medium" align="center">٤</p-text></td>
+        <td><p-text size="medium" align="center">٥</p-text></td>
+        <td><p-text size="medium" align="center">٦</p-text></td>
+        <td><p-text size="medium" align="center">٧</p-text></td>
+        <td><p-text size="medium" align="center">٨</p-text></td>
+        <td><p-text size="medium" align="center">٩</p-text></td>
+        <td><p-text size="medium" align="center">٪</p-text></td>
+        <td><p-text size="medium" align="center">٫</p-text></td>
+        <td><p-text size="medium" align="center">٬</p-text></td>
+        <td><p-text size="medium" align="center">٭</p-text></td>
+        <td><p-text size="medium" align="center">ٮ</p-text></td>
+        <td><p-text size="medium" align="center">ٯ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+067x</th>
+        <td><p-text size="medium" align="center">ٰ</p-text></td>
+        <td><p-text size="medium" align="center">ٱ</p-text></td>
+        <td><p-text size="medium" align="center">ٲ</p-text></td>
+        <td><p-text size="medium" align="center">ٳ</p-text></td>
+        <td><p-text size="medium" align="center">ٴ</p-text></td>
+        <td><p-text size="medium" align="center">ٵ</p-text></td>
+        <td><p-text size="medium" align="center">ٶ</p-text></td>
+        <td><p-text size="medium" align="center">ٷ</p-text></td>
+        <td><p-text size="medium" align="center">ٸ</p-text></td>
+        <td><p-text size="medium" align="center">ٹ</p-text></td>
+        <td><p-text size="medium" align="center">ٺ</p-text></td>
+        <td><p-text size="medium" align="center">ٻ</p-text></td>
+        <td><p-text size="medium" align="center">ټ</p-text></td>
+        <td><p-text size="medium" align="center">ٽ</p-text></td>
+        <td><p-text size="medium" align="center">پ</p-text></td>
+        <td><p-text size="medium" align="center">ٿ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+068x</th>
+        <td><p-text size="medium" align="center">ڀ</p-text></td>
+        <td><p-text size="medium" align="center">ځ</p-text></td>
+        <td><p-text size="medium" align="center">ڂ</p-text></td>
+        <td><p-text size="medium" align="center">ڃ</p-text></td>
+        <td><p-text size="medium" align="center">ڄ</p-text></td>
+        <td><p-text size="medium" align="center">څ</p-text></td>
+        <td><p-text size="medium" align="center">چ</p-text></td>
+        <td><p-text size="medium" align="center">ڇ</p-text></td>
+        <td><p-text size="medium" align="center">ڈ</p-text></td>
+        <td><p-text size="medium" align="center">ډ</p-text></td>
+        <td><p-text size="medium" align="center">ڊ</p-text></td>
+        <td><p-text size="medium" align="center">ڋ</p-text></td>
+        <td><p-text size="medium" align="center">ڌ</p-text></td>
+        <td><p-text size="medium" align="center">ڍ</p-text></td>
+        <td><p-text size="medium" align="center">ڎ</p-text></td>
+        <td><p-text size="medium" align="center">ڏ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+069x</th>
+        <td><p-text size="medium" align="center">ڐ</p-text></td>
+        <td><p-text size="medium" align="center">ڑ</p-text></td>
+        <td><p-text size="medium" align="center">ڒ</p-text></td>
+        <td><p-text size="medium" align="center">ړ</p-text></td>
+        <td><p-text size="medium" align="center">ڔ</p-text></td>
+        <td><p-text size="medium" align="center">ڕ</p-text></td>
+        <td><p-text size="medium" align="center">ږ</p-text></td>
+        <td><p-text size="medium" align="center">ڗ</p-text></td>
+        <td><p-text size="medium" align="center">ژ</p-text></td>
+        <td><p-text size="medium" align="center">ڙ</p-text></td>
+        <td><p-text size="medium" align="center">ښ</p-text></td>
+        <td><p-text size="medium" align="center">ڛ</p-text></td>
+        <td><p-text size="medium" align="center">ڜ</p-text></td>
+        <td><p-text size="medium" align="center">ڝ</p-text></td>
+        <td><p-text size="medium" align="center">ڞ</p-text></td>
+        <td><p-text size="medium" align="center">ڟ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+06Ax</th>
+        <td><p-text size="medium" align="center">ڠ</p-text></td>
+        <td><p-text size="medium" align="center">ڡ</p-text></td>
+        <td><p-text size="medium" align="center">ڢ</p-text></td>
+        <td><p-text size="medium" align="center">ڣ</p-text></td>
+        <td><p-text size="medium" align="center">ڤ</p-text></td>
+        <td><p-text size="medium" align="center">ڥ</p-text></td>
+        <td><p-text size="medium" align="center">ڦ</p-text></td>
+        <td><p-text size="medium" align="center">ڧ</p-text></td>
+        <td><p-text size="medium" align="center">ڨ</p-text></td>
+        <td><p-text size="medium" align="center">ک</p-text></td>
+        <td><p-text size="medium" align="center">ڪ</p-text></td>
+        <td><p-text size="medium" align="center">ګ</p-text></td>
+        <td><p-text size="medium" align="center">ڬ</p-text></td>
+        <td><p-text size="medium" align="center">ڭ</p-text></td>
+        <td><p-text size="medium" align="center">ڮ</p-text></td>
+        <td><p-text size="medium" align="center">گ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+06Bx</th>
+        <td><p-text size="medium" align="center">ڰ</p-text></td>
+        <td><p-text size="medium" align="center">ڱ</p-text></td>
+        <td><p-text size="medium" align="center">ڲ</p-text></td>
+        <td><p-text size="medium" align="center">ڳ</p-text></td>
+        <td><p-text size="medium" align="center">ڴ</p-text></td>
+        <td><p-text size="medium" align="center">ڵ</p-text></td>
+        <td><p-text size="medium" align="center">ڶ</p-text></td>
+        <td><p-text size="medium" align="center">ڷ</p-text></td>
+        <td><p-text size="medium" align="center">ڸ</p-text></td>
+        <td><p-text size="medium" align="center">ڹ</p-text></td>
+        <td><p-text size="medium" align="center">ں</p-text></td>
+        <td><p-text size="medium" align="center">ڻ</p-text></td>
+        <td><p-text size="medium" align="center">ڼ</p-text></td>
+        <td><p-text size="medium" align="center">ڽ</p-text></td>
+        <td><p-text size="medium" align="center">ھ</p-text></td>
+        <td><p-text size="medium" align="center">ڿ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+06Cx</th>
+        <td><p-text size="medium" align="center">ۀ</p-text></td>
+        <td><p-text size="medium" align="center">ہ</p-text></td>
+        <td><p-text size="medium" align="center">ۂ</p-text></td>
+        <td><p-text size="medium" align="center">ۃ</p-text></td>
+        <td><p-text size="medium" align="center">ۄ</p-text></td>
+        <td><p-text size="medium" align="center">ۅ</p-text></td>
+        <td><p-text size="medium" align="center">ۆ</p-text></td>
+        <td><p-text size="medium" align="center">ۇ</p-text></td>
+        <td><p-text size="medium" align="center">ۈ</p-text></td>
+        <td><p-text size="medium" align="center">ۉ</p-text></td>
+        <td><p-text size="medium" align="center">ۊ</p-text></td>
+        <td><p-text size="medium" align="center">ۋ</p-text></td>
+        <td><p-text size="medium" align="center">ی</p-text></td>
+        <td><p-text size="medium" align="center">ۍ</p-text></td>
+        <td><p-text size="medium" align="center">ێ</p-text></td>
+        <td><p-text size="medium" align="center">ۏ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+06Dx</th>
+        <td><p-text size="medium" align="center">ې</p-text></td>
+        <td><p-text size="medium" align="center">ۑ</p-text></td>
+        <td><p-text size="medium" align="center">ے</p-text></td>
+        <td><p-text size="medium" align="center">ۓ</p-text></td>
+        <td><p-text size="medium" align="center">۔</p-text></td>
+        <td><p-text size="medium" align="center">ە</p-text></td>
+        <td><p-text size="medium" align="center">ۖ</p-text></td>
+        <td><p-text size="medium" align="center">ۗ</p-text></td>
+        <td><p-text size="medium" align="center">ۘ</p-text></td>
+        <td><p-text size="medium" align="center">ۙ</p-text></td>
+        <td><p-text size="medium" align="center">ۚ</p-text></td>
+        <td><p-text size="medium" align="center">ۛ</p-text></td>
+        <td><p-text size="medium" align="center">ۜ</p-text></td>
+        <td><p-text size="medium" align="center">۝</p-text></td>
+        <td><p-text size="medium" align="center">۞</p-text></td>
+        <td><p-text size="medium" align="center">۟</p-text></td>
+      </tr>
+      <tr>
+        <th>U+06Ex</th>
+        <td><p-text size="medium" align="center">۠</p-text></td>
+        <td><p-text size="medium" align="center">ۡ</p-text></td>
+        <td><p-text size="medium" align="center">ۢ</p-text></td>
+        <td><p-text size="medium" align="center">ۣ</p-text></td>
+        <td><p-text size="medium" align="center">ۤ</p-text></td>
+        <td><p-text size="medium" align="center">ۥ</p-text></td>
+        <td><p-text size="medium" align="center">ۦ</p-text></td>
+        <td><p-text size="medium" align="center">ۧ</p-text></td>
+        <td><p-text size="medium" align="center">ۨ</p-text></td>
+        <td><p-text size="medium" align="center">۩</p-text></td>
+        <td><p-text size="medium" align="center">۪</p-text></td>
+        <td><p-text size="medium" align="center">۫</p-text></td>
+        <td><p-text size="medium" align="center">۬</p-text></td>
+        <td><p-text size="medium" align="center">ۭ</p-text></td>
+        <td><p-text size="medium" align="center">ۮ</p-text></td>
+        <td><p-text size="medium" align="center">ۯ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+06Fx</th>
+        <td><p-text size="medium" align="center">۰</p-text></td>
+        <td><p-text size="medium" align="center">۱</p-text></td>
+        <td><p-text size="medium" align="center">۲</p-text></td>
+        <td><p-text size="medium" align="center">۳</p-text></td>
+        <td><p-text size="medium" align="center">۴</p-text></td>
+        <td><p-text size="medium" align="center">۵</p-text></td>
+        <td><p-text size="medium" align="center">۶</p-text></td>
+        <td><p-text size="medium" align="center">۷</p-text></td>
+        <td><p-text size="medium" align="center">۸</p-text></td>
+        <td><p-text size="medium" align="center">۹</p-text></td>
+        <td><p-text size="medium" align="center">ۺ</p-text></td>
+        <td><p-text size="medium" align="center">ۻ</p-text></td>
+        <td><p-text size="medium" align="center">ۼ</p-text></td>
+        <td><p-text size="medium" align="center">۽</p-text></td>
+        <td><p-text size="medium" align="center">۾</p-text></td>
+        <td><p-text size="medium" align="center">ۿ</p-text></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="playground" title="should show bold typography in arabic, pashto and urdu charset (U+0600-06FF)">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>0</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>D</th>
+        <th>E</th>
+        <th>F</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>U+060x</th>
+        <td><p-text size="medium" align="center" weight="bold">؀</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؁</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؂</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؃</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؄</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؅</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؆</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؇</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؈</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؉</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؊</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؋</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">،</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؍</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؎</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؏</p-text></td>
+      </tr>
+      <tr>
+        <th>U+061x</th>
+        <td><p-text size="medium" align="center" weight="bold">ؐ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؑ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؒ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؓ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؔ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؕ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؖ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؗ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؘ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؙ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؚ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؛</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؝</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؝</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؞</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">؟</p-text></td>
+      </tr>
+      <tr>
+        <th>U+062x</th>
+        <td><p-text size="medium" align="center" weight="bold">ؠ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ء</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">آ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">أ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؤ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">إ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ئ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ا</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ب</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ة</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ت</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ث</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ج</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ح</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">خ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">د</p-text></td>
+      </tr>
+      <tr>
+        <th>U+063x</th>
+        <td><p-text size="medium" align="center" weight="bold">ذ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ر</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ز</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">س</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ش</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ص</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ض</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ط</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ظ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ع</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">غ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ػ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؼ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؽ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؾ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ؿ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+064x</th>
+        <td><p-text size="medium" align="center" weight="bold">ـ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ف</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ق</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ك</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ل</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">م</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ن</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ه</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">و</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ى</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ي</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ً</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٌ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٍ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">َ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ُ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+065x</th>
+        <td><p-text size="medium" align="center" weight="bold">ِ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ّ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ْ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٓ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٔ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٕ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٖ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٗ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٘</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٙ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٚ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٛ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٜ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٝ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٞ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٟ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+066x</th>
+        <td><p-text size="medium" align="center" weight="bold">٠</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">١</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٢</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٣</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٤</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٥</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٦</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٧</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٨</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٩</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٪</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٫</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٬</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">٭</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٮ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٯ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+067x</th>
+        <td><p-text size="medium" align="center" weight="bold">ٰ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٱ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٲ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٳ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٴ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٵ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٶ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٷ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٸ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٹ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٺ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٻ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ټ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٽ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">پ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ٿ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+068x</th>
+        <td><p-text size="medium" align="center" weight="bold">ڀ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ځ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڂ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڃ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڄ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">څ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">چ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڇ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڈ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ډ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڊ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڋ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڌ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڍ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڎ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڏ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+069x</th>
+        <td><p-text size="medium" align="center" weight="bold">ڐ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڑ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڒ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ړ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڔ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڕ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ږ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڗ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ژ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڙ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ښ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڛ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڜ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڝ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڞ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڟ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+06Ax</th>
+        <td><p-text size="medium" align="center" weight="bold">ڠ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڡ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڢ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڣ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڤ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڥ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڦ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڧ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڨ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ک</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڪ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ګ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڬ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڭ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڮ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">گ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+06Bx</th>
+        <td><p-text size="medium" align="center" weight="bold">ڰ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڱ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڲ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڳ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڴ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڵ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڶ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڷ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڸ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڹ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ں</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڻ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڼ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڽ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ھ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ڿ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+06Cx</th>
+        <td><p-text size="medium" align="center" weight="bold">ۀ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ہ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۂ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۃ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۄ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۅ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۆ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۇ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۈ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۉ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۊ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۋ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ی</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۍ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ێ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۏ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+06Dx</th>
+        <td><p-text size="medium" align="center" weight="bold">ې</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۑ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ے</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۓ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۔</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ە</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۖ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۗ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۘ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۙ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۚ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۛ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۜ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۝</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۞</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۟</p-text></td>
+      </tr>
+      <tr>
+        <th>U+06Ex</th>
+        <td><p-text size="medium" align="center" weight="bold">۠</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۡ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۢ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۣ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۤ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۥ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۦ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۧ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۨ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۩</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۪</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۫</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۬</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۭ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۮ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۯ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+06Fx</th>
+        <td><p-text size="medium" align="center" weight="bold">۰</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۱</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۲</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۳</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۴</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۵</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۶</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۷</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۸</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۹</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۺ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۻ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۼ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۽</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">۾</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold">ۿ</p-text></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

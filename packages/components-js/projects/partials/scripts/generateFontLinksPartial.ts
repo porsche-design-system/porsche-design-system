@@ -3,7 +3,7 @@ import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { CDN_BASE_PATH_FONTS } from '../../../../../cdn.config';
 
 export const generateFontLinksPartial = (): string => {
-  const fontSubsets = ['latin', 'greek', 'cyril'];
+  const fontSubsets = ['latin', 'greek', 'cyril', 'arabic', 'pashto', 'urdu'];
   const fontWeights = ['regular', 'semi-bold', 'bold'];
 
   const types = `type FontSubset = ${fontSubsets.map((x) => `'${x}'`).join(' | ')};
@@ -31,7 +31,7 @@ export function getFontLinks(opts?: GetFontLinksOptions): string | JSX.Element {
   throwIfRunInBrowser('getFontLinks');
 
   const cdnBaseUrl = getCdnBaseUrl(cdn);
-  const fonts = {
+  const fonts: Record<FontSubset, Partial<Record<FontWeight, string>>> = {
     latin: {
       regular: '${FONTS_MANIFEST.porscheNextWLaRegular}',
       'semi-bold': '${FONTS_MANIFEST.porscheNextWLaSemiBold}',
@@ -46,6 +46,18 @@ export function getFontLinks(opts?: GetFontLinksOptions): string | JSX.Element {
       regular: '${FONTS_MANIFEST.porscheNextWCyRegular}',
       'semi-bold': '${FONTS_MANIFEST.porscheNextWCySemiBold}',
       bold: '${FONTS_MANIFEST.porscheNextWCyBold}',
+    },
+    arabic: {
+      regular: '${FONTS_MANIFEST.porscheNextWArRegular}',
+      bold: '${FONTS_MANIFEST.porscheNextWArBold}',
+    },
+    pashto: {
+      regular: '${FONTS_MANIFEST.porscheNextWPaRegular}',
+      bold: '${FONTS_MANIFEST.porscheNextWPaBold}',
+    },
+    urdu: {
+      regular: '${FONTS_MANIFEST.porscheNextWUrRegular}',
+      bold: '${FONTS_MANIFEST.porscheNextWUrBold}',
     },
   };
 
@@ -71,7 +83,7 @@ Please use only valid font weights:
   \${supportedWeights.join(', ')}\`);
   }
 
-  const urls = weights.map((weight) => \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`);
+  const urls = weights.map((weight) => fonts[subset][weight] && \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`).filter(Boolean);
   const linksHtml = urls.map((url) => \`${linkTemplate}\`).join('');
   const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="" />);
 

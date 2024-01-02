@@ -91,6 +91,11 @@ useEffect(() => {
     .replace(/(\n)( +<)/g, '$1  $2'); // fix indentation
   fileContent = fileContent.replace(templateRegEx, template);
 
+  // comments
+  fileContent = fileContent
+    .replace(/<!-- /g, '{/* ') // convert html comments
+    .replace(/ -->/g, ' */}'); // convert html comments
+
   // prefixing
   const [, prefix] = fileContent.match(/<([\w-]+)-p-[\w-]+/) || [];
   if (usesPrefixing) {
