@@ -122,7 +122,6 @@
     "test:e2e:crawler": "yarn --cwd ./packages/crawler test:e2e",
     "test:e2e:storefront": "yarn --cwd ./packages/storefront test:e2e",
     "test:a11y:storefront": "yarn --cwd ./packages/storefront test:a11y",
-    "test:vrt:puppeteer:components-js": "yarn --cwd ./packages/components-js test:vrt:puppeteer",
     "test:vrt:playwright:components-js": "yarn --cwd ./packages/components-js test:vrt:playwright",
     "test:vrt:playwright:components-js:chrome:common": "yarn --cwd ./packages/components-js test:vrt:playwright:chrome:common",
     "test:vrt:playwright:components-js:chrome:customAndStates": "yarn --cwd ./packages/components-js test:vrt:playwright:chrome:customAndStates",
@@ -182,7 +181,7 @@
     "**/workbox-build/rollup": "^4.9.1"
   },
   "volta": {
-    "node": "18.18.1",
-    "yarn": "1.22.19"
+    "node": "20.10.0",
+    "yarn": "1.22.21"
   }
 }

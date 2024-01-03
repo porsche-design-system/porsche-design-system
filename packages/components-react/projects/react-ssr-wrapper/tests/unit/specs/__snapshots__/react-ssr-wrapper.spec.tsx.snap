@@ -856,7 +856,7 @@ exports[`manual test cases should pass internal props correctly to p-pin-code 1`
     shadowrootmode="open"
   >
     <style>
-      :host{display:block;color-scheme:light dark !important}:host([hidden]){display:none !important}input{display:block;width:calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);height:calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);margin:0;outline:0;-webkit-appearance:none;appearance:none;box-sizing:border-box;border:2px solid #6B6D70;border-radius:4px;background:transparent;font:normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-indent:0;color:#010205;transition:background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);padding:8px 4px;text-align:center}input:nth-of-type(1){grid-area:1/1}input:nth-of-type(2){grid-area:1/2}input:nth-of-type(3){grid-area:1/3}input:nth-of-type(4){grid-area:1/4}input:disabled{cursor:not-allowed;color:#949598;border-color:#949598;-webkit-text-fill-color:#949598}.root{display:grid;gap:4px}.wrapper{display:grid;justify-self:flex-start;gap:8px}.label{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;cursor:pointer;justify-self:flex-start;color:#010205;transition:color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:normal}.label:empty{display:none}.label+.label{cursor:unset;margin-top:-4px;font-size:clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);color:#535457}.required{user-select:none}.message{display:flex;gap:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)}
+      :host{display:block;color-scheme:light dark !important}:host([hidden]){display:none !important}input{display:block;width:calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);height:calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);margin:0;outline:0;-webkit-appearance:none;appearance:none;box-sizing:border-box;border:2px solid #6B6D70;border-radius:4px;background:transparent;font:normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;text-indent:0;color:#010205;transition:background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);padding:8px 4px;text-align:center}input:nth-of-type(1){grid-area:1/1}input:nth-of-type(2){grid-area:1/2}input:nth-of-type(3){grid-area:1/3}input:nth-of-type(4){grid-area:1/4}input:nth-of-type(5){grid-area:1/5}input:nth-of-type(6){grid-area:1/6}input:disabled{cursor:not-allowed;color:#949598;border-color:#949598;-webkit-text-fill-color:#949598}.root{display:grid;gap:4px}.wrapper{display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));justify-self:flex-start;gap:8px}.label{font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;cursor:pointer;justify-self:flex-start;color:#010205;transition:color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:normal}.label:empty{display:none}.label+.label{cursor:unset;margin-top:-4px;font-size:clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);color:#535457}.required{user-select:none}.message{display:flex;gap:4px;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;transition:color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)}
     </style>
     <div
       class="root"
@@ -1284,7 +1284,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
         shadowrootmode="open"
       >
         <style>
-          :host{display:block;height:inherit !important;color-scheme:light dark !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#212225;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden}.root{position:relative;display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:absolute;top:0;bottom:0;direction:ltr;width:calc(calc(6px + 2.125ex) + 24px);padding:4px 0;pointer-events:none;display:flex;align-items:center;left:-1px;justify-content:flex-start;background:linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-prev button{margin-left:8px}.action-next{position:absolute;top:0;bottom:0;direction:ltr;width:calc(calc(6px + 2.125ex) + 24px);padding:4px 0;pointer-events:none;display:flex;align-items:center;right:-1px;justify-content:flex-end;background:linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-next button{margin-right:8px}
+          :host{display:block;height:inherit !important;color-scheme:light dark !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#212225;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden}.root{position:relative;display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:absolute;top:0;bottom:0;direction:ltr;width:calc(calc(6px + 2.125ex) + 24px);padding:4px 0;pointer-events:none;display:flex;align-items:center;left:-1px;justify-content:flex-start;background:linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-prev button{margin-left:8px}.action-next{position:absolute;top:0;bottom:0;direction:ltr;width:calc(calc(6px + 2.125ex) + 24px);padding:4px 0;pointer-events:none;display:flex;align-items:center;right:-1px;justify-content:flex-end;background:linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-next button{margin-right:8px}.icon:dir(rtl){transform:scaleX(-1)}
         </style>
         <div
           class="root"
@@ -1322,7 +1322,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}img:dir(rtl){transform:scaleX(-1)}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1352,7 +1352,7 @@ exports[`manual test cases should pass internal props correctly to p-stepper-hor
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}img:dir(rtl){transform:scaleX(-1)}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1434,7 +1434,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-bar 1`
         shadowrootmode="open"
       >
         <style>
-          :host{display:block;height:inherit !important;color-scheme:light dark !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#FFF;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden;box-shadow:0px 3px 8px rgba(0, 0, 0, 0.16)}.root{position:relative;display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:absolute;top:0;bottom:0;direction:ltr;width:calc(calc(6px + 2.125ex) + 24px);padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;left:-1px;justify-content:flex-start;background:linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);visibility:hidden}.action-prev button{margin-left:8px}.action-next{position:absolute;top:0;bottom:0;direction:ltr;width:calc(calc(6px + 2.125ex) + 24px);padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;right:-1px;justify-content:flex-end;background:linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);visibility:hidden}.action-next button{margin-right:8px}
+          :host{display:block;height:inherit !important;color-scheme:light dark !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#FFF;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden;box-shadow:0px 3px 8px rgba(0, 0, 0, 0.16)}.root{position:relative;display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:absolute;top:0;bottom:0;direction:ltr;width:calc(calc(6px + 2.125ex) + 24px);padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;left:-1px;justify-content:flex-start;background:linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);visibility:hidden}.action-prev button{margin-left:8px}.action-next{position:absolute;top:0;bottom:0;direction:ltr;width:calc(calc(6px + 2.125ex) + 24px);padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;right:-1px;justify-content:flex-end;background:linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);visibility:hidden}.action-next button{margin-right:8px}.icon:dir(rtl){transform:scaleX(-1)}
         </style>
         <div
           class="root"
@@ -1471,7 +1471,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-bar 1`
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}img:dir(rtl){transform:scaleX(-1)}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1501,7 +1501,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-bar 1`
                   shadowrootmode="open"
                 >
                   <style>
-                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                    :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));-webkit-animation:rerender-light-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}img:dir(rtl){transform:scaleX(-1)}@keyframes rerender-light-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                   </style>
                   <img
                     alt=""
@@ -1566,7 +1566,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
             shadowrootmode="open"
           >
             <style>
-              :host{display:block;height:inherit !important;color-scheme:light dark !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#212225;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden}.root{position:relative;display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:absolute;top:0;bottom:0;direction:ltr;width:calc(calc(6px + 2.125ex) + 24px);padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;left:-1px;justify-content:flex-start;background:linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-prev button{margin-left:8px}.action-next{position:absolute;top:0;bottom:0;direction:ltr;width:calc(calc(6px + 2.125ex) + 24px);padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;right:-1px;justify-content:flex-end;background:linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-next button{margin-right:8px}
+              :host{display:block;height:inherit !important;color-scheme:light dark !important}:host([hidden]){display:none !important}button{display:flex;pointer-events:auto;align-items:center;justify-content:center;font:normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;overflow-wrap:break-word;hyphens:auto;height:calc(calc(6px + 2.125ex) + 4px);width:calc(calc(6px + 2.125ex) + 4px);border:0;outline:0;cursor:pointer;background:#212225;border-radius:4px;-webkit-backdrop-filter:blur(32px);backdrop-filter:blur(32px);visibility:hidden}.root{position:relative;display:grid;grid-template-columns:calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);margin:0 -4px;height:inherit}.scroll-area{grid-area:1 / 1 / 1 / -1;padding:4px;overflow:auto hidden;-ms-overflow-style:none;scrollbar-width:none}.scroll-area::-webkit-scrollbar{display:none}.scroll-wrapper{position:relative;display:inline-flex;min-height:28px;min-width:100%;vertical-align:top;outline:0}.scroll-wrapper::before{content:"";position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.trigger{position:absolute;top:0;bottom:0;width:1px;visibility:hidden}.trigger:first-of-type{left:0}.trigger:last-of-type{right:0}.action-prev{position:absolute;top:0;bottom:0;direction:ltr;width:calc(calc(6px + 2.125ex) + 24px);padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;left:-1px;justify-content:flex-start;background:linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-prev button{margin-left:8px}.action-next{position:absolute;top:0;bottom:0;direction:ltr;width:calc(calc(6px + 2.125ex) + 24px);padding:4px 0;pointer-events:none;display:flex;align-items:flex-start;right:-1px;justify-content:flex-end;background:linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);visibility:hidden}.action-next button{margin-right:8px}.icon:dir(rtl){transform:scaleX(-1)}
             </style>
             <div
               class="root"
@@ -1603,7 +1603,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       shadowrootmode="open"
                     >
                       <style>
-                        :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                        :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}img:dir(rtl){transform:scaleX(-1)}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                       </style>
                       <img
                         alt=""
@@ -1633,7 +1633,7 @@ exports[`manual test cases should pass internal props correctly to p-tabs-item 1
                       shadowrootmode="open"
                     >
                       <style>
-                        :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
+                        :host{display:inline-block;vertical-align:top;color-scheme:light dark !important}:host([hidden]){display:none !important}img{display:block;margin:0;padding:0;pointer-events:none;filter:var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));-webkit-animation:rerender-dark-primary 1ms;width:calc(6px + 2.125ex);height:calc(6px + 2.125ex);font:1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif}img:dir(rtl){transform:scaleX(-1)}@keyframes rerender-dark-primary{0%{transform:rotateZ(0)}100%{transform:rotateZ(0)}}
                       </style>
                       <img
                         alt=""
@@ -2709,6 +2709,9 @@ img {
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
 }
 @keyframes rerender-light-primary {
   0% {
@@ -4303,6 +4306,9 @@ img {
   width: inherit;
   height: inherit;
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
 @keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
@@ -4442,6 +4448,9 @@ img {
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
 }
 @keyframes rerender-light-primary {
   0% {
@@ -4678,6 +4687,9 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
 }
 @keyframes rerender-light-primary {
   0% {
@@ -5174,6 +5186,9 @@ img {
   width: inherit;
   height: inherit;
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
 @keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
@@ -5316,6 +5331,9 @@ img {
   -webkit-animation: rerender-light-primary 1ms;
   width: inherit;
   height: inherit;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
 }
 @keyframes rerender-light-primary {
   0% {
@@ -6939,6 +6957,9 @@ img {
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
 @keyframes rerender-light-state-disabled {
   0% {
     transform: rotateZ(0);
@@ -7006,6 +7027,9 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
 }
 @keyframes rerender-light-state-disabled {
   0% {
@@ -7080,6 +7104,12 @@ input:nth-of-type(3) {
 input:nth-of-type(4) {
   grid-area: 1/4;
 }
+input:nth-of-type(5) {
+  grid-area: 1/5;
+}
+input:nth-of-type(6) {
+  grid-area: 1/6;
+}
 input:disabled {
   cursor: not-allowed;
   color: #949598;
@@ -7093,6 +7123,7 @@ input:disabled {
 }
 .wrapper {
   display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   justify-self: flex-start;
   gap: 8px;
 }
@@ -7601,6 +7632,9 @@ button {
 .action-next button {
   margin-right: 8px;
 }
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
 
     </style>
     <div
@@ -7657,6 +7691,9 @@ img {
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
 @keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
@@ -7712,6 +7749,9 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
 }
 @keyframes rerender-light-primary {
   0% {
@@ -8292,6 +8332,9 @@ button {
 .action-next button {
   margin-right: 8px;
 }
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
 
         </style>
         <div
@@ -8349,6 +8392,9 @@ img {
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
 @keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
@@ -8404,6 +8450,9 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
 }
 @keyframes rerender-light-primary {
   0% {
@@ -8783,6 +8832,9 @@ button {
 .action-next button {
   margin-right: 8px;
 }
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
 
         </style>
         <div
@@ -8839,6 +8891,9 @@ img {
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
 @keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
@@ -8894,6 +8949,9 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
 }
 @keyframes rerender-light-primary {
   0% {
@@ -9313,6 +9371,9 @@ button {
 .action-next button {
   margin-right: 8px;
 }
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
 
             </style>
             <div
@@ -9369,6 +9430,9 @@ img {
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
 @keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
@@ -9424,6 +9488,9 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
 }
 @keyframes rerender-light-primary {
   0% {
@@ -9681,6 +9748,9 @@ button {
 .action-next button {
   margin-right: 8px;
 }
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
 
         </style>
         <div
@@ -9737,6 +9807,9 @@ img {
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
 @keyframes rerender-light-primary {
   0% {
     transform: rotateZ(0);
@@ -9792,6 +9865,9 @@ img {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
 }
 @keyframes rerender-light-primary {
   0% {
@@ -10426,7 +10502,6 @@ exports[`should render dsr component for PToast 1`] = `
   right: max(22px, 10.625vw - 12px) !important;
   --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 56px) !important;
   bottom: var(--p-internal-toast-position-bottom) !important;
-  max-width: 42rem !important;
   z-index: 999999 !important;
   color-scheme: light dark !important;
 }
