@@ -41,8 +41,7 @@ components.forEach((component) => {
         page,
       }) => {
         test.skip(
-          ((!isComponentThemeable(component) || component === 'toast') && theme === 'dark') ||
-            component === 'stepper-horizontal',
+          (!isComponentThemeable(component) && theme === 'dark') || component === 'stepper-horizontal',
           'This component has no theme support and stepper-horizontal is flaky'
         );
 
@@ -75,7 +74,7 @@ components.forEach((component) => {
         page,
       }) => {
         test.skip(
-          !isComponentThemeable(component) || component === 'toast' || component === 'stepper-horizontal',
+          !isComponentThemeable(component) || component === 'stepper-horizontal',
           'This component has no theme support and stepper-horizontal is flaky'
         );
 

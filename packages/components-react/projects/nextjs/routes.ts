@@ -236,9 +236,9 @@ const generatedRoutes = {
     "path": "/toast",
     "name": "Toast"
   },
-  "toastBasicDark": {
-    "path": "/toast-basic-dark",
-    "name": "ToastBasicDark"
+  "toastBasic": {
+    "path": "/toast-basic",
+    "name": "ToastBasic"
   },
   "toastBasicLongText": {
     "path": "/toast-basic-long-text",
