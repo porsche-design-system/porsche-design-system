@@ -58,11 +58,11 @@ export const getComponentCss = (): string => {
         // In addition, a public css variable can be passed to overwrite the default position.
         [cssVariablePositionBottomInternal]: `var(${cssVariablePositionBottom}, 56px)`,
         bottom: `var(${cssVariablePositionBottomInternal})`,
-        maxWidth: '42rem',
         zIndex: TOAST_Z_INDEX,
         [getMediaQueryMin('s')]: {
           left: '64px',
           right: 'auto',
+          maxWidth: 'min(42rem, calc(100vw - 64px * 2))',
           [cssVariablePositionBottomInternal]: `var(${cssVariablePositionBottom}, 64px)`,
           bottom: `var(${cssVariablePositionBottomInternal})`,
         },
