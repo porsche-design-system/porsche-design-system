@@ -252,7 +252,7 @@ const generateComponentMeta = (): void => {
                 propValue
                   ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
                   .replace(/\s+/g, ' ') // remove new lines and multiple spaces
-                  .replace(/,( })/, '$1') || null; // remove trailing comma in original multiline objects
+                  .replace(/,( })/, '$1') ?? null; // remove trailing comma in original multiline objects
 
         if (typeof cleanedValue === 'string') {
           if (cleanedValue.match(/^\d+$/)) {
@@ -427,6 +427,7 @@ const generateComponentMeta = (): void => {
 
                     // aria needs to be converted to object
                     if (propType.match(/^aria/)) {
+                      // TODO: replace string values with real literal types as it really is
                       result[propName] = variableValues.reduce((res, curr) => ({ ...res, [curr]: 'string' }), {});
                     } else {
                       result[propName] = [...(result[propName] as string[]), ...variableValues];

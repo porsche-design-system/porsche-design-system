@@ -160,9 +160,9 @@ exports[`should match snapshot 1`] = `
       "p-inline-notification",
     ],
     "props": {
-      "description": null,
+      "description": "",
       "dismissButton": true,
-      "heading": null,
+      "heading": "",
       "open": false,
       "persistent": null,
       "state": "info",
@@ -172,7 +172,7 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "description": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "Description of the banner.",
         "type": "string",
       },
@@ -184,7 +184,7 @@ exports[`should match snapshot 1`] = `
       },
       "heading": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "Heading of the banner.",
         "type": "string",
       },
@@ -2337,9 +2337,9 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "hideLabel": false,
-      "label": null,
+      "label": "",
       "loading": false,
-      "message": null,
+      "message": "",
       "state": "none",
       "theme": "light",
     },
@@ -2353,7 +2353,7 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The label text.",
         "type": "string",
       },
@@ -2365,7 +2365,7 @@ exports[`should match snapshot 1`] = `
       },
       "message": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The message styled depending on validation state.",
         "type": "string",
       },
@@ -2791,9 +2791,9 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "props": {
-      "label": null,
+      "label": "",
       "labelSize": "medium",
-      "message": null,
+      "message": "",
       "required": false,
       "state": "none",
       "theme": "light",
@@ -2801,7 +2801,7 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "label": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The label text.",
         "type": "string",
       },
@@ -2816,7 +2816,7 @@ exports[`should match snapshot 1`] = `
       },
       "message": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The message styled depending on validation state.",
         "type": "string",
       },
@@ -2887,9 +2887,9 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "props": {
-      "label": null,
+      "label": "",
       "labelSize": "medium",
-      "message": null,
+      "message": "",
       "required": false,
       "state": "none",
       "theme": "light",
@@ -2897,7 +2897,7 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "label": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The label text.",
         "type": "string",
       },
@@ -2912,7 +2912,7 @@ exports[`should match snapshot 1`] = `
       },
       "message": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The message styled depending on validation state.",
         "type": "string",
       },
@@ -4675,9 +4675,9 @@ exports[`should match snapshot 1`] = `
       "actionIcon": "arrow-right",
       "actionLabel": null,
       "actionLoading": false,
-      "description": null,
+      "description": "",
       "dismissButton": true,
-      "heading": null,
+      "heading": "",
       "persistent": null,
       "state": "info",
       "theme": "light",
@@ -4901,7 +4901,7 @@ exports[`should match snapshot 1`] = `
       },
       "description": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "Description of the inline-notification.",
         "type": "string",
       },
@@ -4913,7 +4913,7 @@ exports[`should match snapshot 1`] = `
       },
       "heading": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "Heading of the inline-notification.",
         "type": "string",
       },
@@ -7453,12 +7453,12 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "props": {
-      "description": null,
+      "description": "",
       "disabled": false,
       "dropdownDirection": "auto",
       "hideLabel": false,
-      "label": null,
-      "message": null,
+      "label": "",
+      "message": "",
       "name": null,
       "required": false,
       "state": "none",
@@ -7468,7 +7468,7 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "description": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The description text.",
         "type": "string",
       },
@@ -7497,13 +7497,13 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The label text.",
         "type": "string",
       },
       "message": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The message styled depending on validation state.",
         "type": "string",
       },
@@ -7818,24 +7818,24 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "props": {
-      "description": null,
+      "description": "",
       "disabled": false,
       "hideLabel": false,
-      "label": null,
+      "label": "",
       "length": 4,
       "loading": false,
-      "message": null,
+      "message": "",
       "name": null,
       "required": false,
       "state": "none",
       "theme": "light",
       "type": "number",
-      "value": null,
+      "value": "",
     },
     "propsMeta": {
       "description": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The description text.",
         "type": "string",
       },
@@ -7854,7 +7854,7 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The label text.",
         "type": "string",
       },
@@ -7879,7 +7879,7 @@ exports[`should match snapshot 1`] = `
       },
       "message": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The message styled depending on validation state.",
         "type": "string",
       },
@@ -7926,7 +7926,7 @@ exports[`should match snapshot 1`] = `
       },
       "value": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "Sets the initial value of the Pin Code.",
         "type": "string",
       },
@@ -8050,9 +8050,9 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "hideLabel": false,
-      "label": null,
+      "label": "",
       "loading": false,
-      "message": null,
+      "message": "",
       "state": "none",
       "theme": "light",
     },
@@ -8066,7 +8066,7 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The label text.",
         "type": "string",
       },
@@ -8078,7 +8078,7 @@ exports[`should match snapshot 1`] = `
       },
       "message": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The message styled depending on validation state.",
         "type": "string",
       },
@@ -8907,12 +8907,12 @@ exports[`should match snapshot 1`] = `
       "required",
     ],
     "props": {
-      "description": null,
+      "description": "",
       "dropdownDirection": "auto",
       "filter": false,
       "hideLabel": false,
-      "label": null,
-      "message": null,
+      "label": "",
+      "message": "",
       "native": false,
       "state": "none",
       "theme": "light",
@@ -8920,7 +8920,7 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "description": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The description text.",
         "type": "string",
       },
@@ -8949,13 +8949,13 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The label text.",
         "type": "string",
       },
       "message": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The message styled depending on validation state.",
         "type": "string",
       },
@@ -10734,17 +10734,17 @@ exports[`should match snapshot 1`] = `
     "props": {
       "actionIcon": null,
       "actionLoading": false,
-      "description": null,
+      "description": "",
       "hideLabel": false,
-      "label": null,
-      "message": null,
+      "label": "",
+      "message": "",
       "showCharacterCount": null,
       "showCounter": true,
       "showPasswordToggle": true,
       "state": "none",
       "submitButton": true,
       "theme": "light",
-      "unit": null,
+      "unit": "",
       "unitPosition": "prefix",
     },
     "propsMeta": {
@@ -10765,7 +10765,7 @@ exports[`should match snapshot 1`] = `
       },
       "description": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The description text.",
         "type": "string",
       },
@@ -10778,13 +10778,13 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The label text.",
         "type": "string",
       },
       "message": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The message styled depending on validation state.",
         "type": "string",
       },
@@ -10835,7 +10835,7 @@ exports[`should match snapshot 1`] = `
       },
       "unit": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The unit text.",
         "type": "string",
       },
@@ -11002,10 +11002,10 @@ exports[`should match snapshot 1`] = `
       "required",
     ],
     "props": {
-      "description": null,
+      "description": "",
       "hideLabel": false,
-      "label": null,
-      "message": null,
+      "label": "",
+      "message": "",
       "showCharacterCount": null,
       "showCounter": true,
       "state": "none",
@@ -11014,7 +11014,7 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "description": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The description text.",
         "type": "string",
       },
@@ -11027,13 +11027,13 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The label text.",
         "type": "string",
       },
       "message": {
         "allowedValues": "string",
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "The message styled depending on validation state.",
         "type": "string",
       },
@@ -11129,7 +11129,7 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "state": "info",
-      "text": null,
+      "text": "",
       "theme": "light",
     },
     "propsMeta": {
@@ -11139,7 +11139,7 @@ exports[`should match snapshot 1`] = `
         "type": "ToastState",
       },
       "text": {
-        "defaultValue": null,
+        "defaultValue": "",
         "description": "Text of the toast-item.",
         "type": "string",
       },
