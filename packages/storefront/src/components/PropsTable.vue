@@ -1,34 +1,37 @@
 <template>
-  <table>
-    <thead>
-      <tr>
-        <th>Property</th>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(value, name, index) in propsMeta" :key="index">
-        <td>
-          <code>{{ name }}</code>
-          <span v-if="value.isDeprecated" title="deprecated"> 🚫</span>
-        </td>
-        <td>
-          <code>{{ paramCase(name) }}</code>
-          <span v-if="value.isDeprecated" title="deprecated"> 🚫</span>
-        </td>
-        <td v-html="formatDescription(value)"></td>
-        <td v-html="formatType(value)"></td>
-        <td>
-          <code>{{
-            (typeof value.defaultValue === 'string' ? `'${value.defaultValue}'` : value.defaultValue) ?? 'undefined'
-          }}</code>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div>
+    <code v-if="hasBreakpointCustomizableProp" class="code-before-table" v-html="breakpointCustomizableGeneric"></code>
+    <table>
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Attribute</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(value, name, index) in propsMeta" :key="index">
+          <td>
+            <code>{{ name }}</code>
+            <span v-if="value.isDeprecated" title="deprecated"> 🚫</span>
+          </td>
+          <td>
+            <code>{{ paramCase(name) }}</code>
+            <span v-if="value.isDeprecated" title="deprecated"> 🚫</span>
+          </td>
+          <td v-html="formatDescription(value)"></td>
+          <td v-html="formatType(value)"></td>
+          <td>
+            <code>{{
+              (typeof value.defaultValue === 'string' ? `'${value.defaultValue}'` : value.defaultValue) ?? 'undefined'
+            }}</code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script lang="ts">
@@ -49,6 +52,15 @@
     @Prop() public component!: TagName;
 
     paramCase = paramCase;
+    breakpointCustomizableGeneric = `type BreakpointCustomizable<T> = {
+  base: T;
+  xs?: T;
+  s?: T;
+  m?: T;
+  l?: T;
+  xl?: T;
+  xxl?: T;
+}`;
 
     public get propsMeta(): ComponentMeta['propsMeta'] {
       const unorderedPropsMeta = getComponentMeta(this.component)?.propsMeta;
@@ -57,6 +69,12 @@
             .sort()
             .reduce((result, key) => ({ ...result, [key]: unorderedPropsMeta[key] }), {})
         : {};
+    }
+
+    public get hasBreakpointCustomizableProp(): boolean {
+      return this.propsMeta
+        ? Object.values(this.propsMeta).some((propMeta) => propMeta.isBreakpointCustomizable)
+        : false;
     }
 
     public formatDescription(meta: PropMeta): string {
@@ -113,9 +131,24 @@ ${Object.entries(meta.allowedValues)
 
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
+  @import '../styles/shared.styles';
 
   :deep(.deprecated) {
     color: #d5001c;
     text-transform: uppercase;
+  }
+
+  table {
+    @include tableStyles;
+  }
+
+  code,
+  :deep(code) {
+    @include codeStyles;
+    @include codeHighlightStyles;
+  }
+
+  .code-before-table {
+    white-space: pre;
   }
 </style>

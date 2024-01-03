@@ -46,6 +46,7 @@
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
   @import '../styles/internal.variables';
+  @import '../styles/shared.styles';
 
   /* More information about :deep selector can be found here: https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
 * Child div selector is necessary because dynamic component loader vmark is using another <div> as component root element.
@@ -233,8 +234,7 @@
         // Code
         code,
         pre {
-          @include pds-text-x-small;
-          font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+          @include codeStyles;
         }
 
         code.readonly {
@@ -264,42 +264,7 @@
 
         // Tables
         table {
-          margin-top: $pds-spacing-fluid-medium;
-          border-collapse: collapse;
-
-          code ~ code::before {
-            content: '| ';
-          }
-
-          thead {
-            @include pds-text-small;
-          }
-
-          tbody {
-            @include pds-text-small;
-          }
-
-          th {
-            text-align: start;
-            padding-bottom: $pds-spacing-static-small;
-            border-bottom: 1px solid var(--theme-contrast-low);
-          }
-
-          td {
-            text-align: start;
-            padding: {
-              top: $pds-spacing-static-small;
-              bottom: $pds-spacing-static-small;
-            }
-            border-bottom: 1px solid var(--theme-contrast-low);
-            vertical-align: top;
-            width: 10%;
-          }
-
-          th ~ th,
-          td ~ td {
-            padding-inline-start: $pds-spacing-static-medium;
-          }
+          @include tableStyles;
         }
 
         // Links
