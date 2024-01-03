@@ -38,6 +38,7 @@ import {
   filterLightNotificationWarning,
   filterLightPrimary,
 } from '../../styles/color-filters';
+import type { IconName } from '../../types';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'xx-small': fontSizeTextXXSmall,
@@ -91,7 +92,30 @@ const keyFramesDark = 'rerender-dark';
 
 const cssVariableFilter = '--p-internal-icon-filter';
 
+const isFlippableIcon = (name: IconName, source: string): boolean => {
+  return (
+    !source &&
+    (name === 'arrow-double-left' ||
+      name === 'arrow-double-right' ||
+      name === 'arrow-first' ||
+      name === 'arrow-head-left' ||
+      name === 'arrow-head-right' ||
+      name === 'arrow-last' ||
+      name === 'arrow-left' ||
+      name === 'arrow-right' ||
+      name === 'chart' ||
+      name === 'chat' ||
+      name === 'external' ||
+      name === 'increase' ||
+      name === 'list' ||
+      name === 'logout' ||
+      name === 'send')
+  );
+};
+
 export const getComponentCss = (
+  name: IconName,
+  source: string,
   color: Exclude<IconColor, IconColorDeprecated>,
   size: TextSize,
   theme: Theme
@@ -141,6 +165,11 @@ export const getComponentCss = (
               height: fontLineHeight,
               font: `${sizeMap[size]} ${fontFamily}`,
             }),
+        ...(isFlippableIcon(name, source) && {
+          '&:dir(rtl)': {
+            transform: 'scaleX(-1)',
+          },
+        }),
       },
       ...(!isColorInherit && {
         [`@keyframes ${isDark ? keyFramesDark : keyFramesLight}-${color}`]: forceRerenderAnimationStyle,
