@@ -2,8 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby';
 import { paramCase } from 'change-case';
-import { TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import type { TagName } from '@porsche-design-system/shared';
+import { type TagName, TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 
 const glue = '\n\n';
 
@@ -403,14 +403,16 @@ const generateComponentMeta = (): void => {
 
                     // in addition, check for warnIfDeprecatedPropValueIsUsed since imports could be across multiple corner
                     const deprecationMapRegEx = new RegExp(
-                      `warnIfDeprecatedPropValueIsUsed<.+?>\\(this, '${propName}', ([a-zA-Z]+)\\);`
+                      `warnIfDeprecatedPropValueIsUsed<.+?>\\(this, '${propName}', ([\\s\\S]+?)\\);`
                     );
                     if (source.match(deprecationMapRegEx)) {
-                      const [, deprecationMapVariableName] = source.match(deprecationMapRegEx) || [];
-                      const [, rawDeprecationMapVariable] =
-                        source.match(new RegExp(`const ${deprecationMapVariableName}.+=([\\s\\S]+?);`)) || [];
+                      // can be inline object or variable reference
+                      let [, deprecationMapVariableOrName] = source.match(deprecationMapRegEx) || [];
+                      deprecationMapVariableOrName = deprecationMapVariableOrName.match(/^{/)
+                        ? deprecationMapVariableOrName // inline object
+                        : source.match(new RegExp(`const ${deprecationMapVariableOrName}.+=([\\s\\S]+?);`))?.[1]; // extract variable assignment
 
-                      const deprecationMap = eval(`(${rawDeprecationMapVariable})`) as Record<string, string>;
+                      const deprecationMap = eval(`(${deprecationMapVariableOrName})`) as Record<string, string>;
 
                       deprecatedPropValues[propName] = [
                         ...(deprecatedPropValues[propName] || []),
@@ -464,7 +466,15 @@ const generateComponentMeta = (): void => {
                   result[propName] = values;
                 }
               } else if (propType === 'boolean' || propType === 'number' || propType === 'string') {
-                result[propName] = propType;
+                // need to retrieve array of possible icons
+                if (propName === 'icon' || propName === 'actionIcon') {
+                  const supportsNone = source.match(
+                    new RegExp(`@Prop\\(\\) public ${propName}\\?: ${propsMeta[propName].type} = 'none';`)
+                  );
+                  result[propName] = [...Object.keys(ICONS_MANIFEST), ...(supportsNone ? ['none'] : [''])].sort();
+                } else {
+                  result[propName] = propType;
+                }
               } else if (propType.match(/^shape/)) {
                 const [, shapeValues] = propType.match(/({[\s\S]+?})/) || [];
                 const shapeValuesObject = eval(`(${shapeValues})`) as Record<string, string>;
