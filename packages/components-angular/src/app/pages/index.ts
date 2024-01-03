@@ -91,11 +91,12 @@ import { TextareaWrapperComponent } from './generated/textarea-wrapper.component
 import { TextFieldWrapperComponent } from './generated/text-field-wrapper.component';
 import { TextListComponent } from './generated/text-list.component';
 import { ToastComponent } from './generated/toast.component';
-import { ToastBasicDarkComponent } from './generated/toast-basic-dark.component';
-import { ToastBasicLongTextComponent } from './generated/toast-basic-long-text.component';
-import { ToastBasicStateNeutralComponent } from './generated/toast-basic-state-neutral.component';
+import { ToastBasicComponent } from './generated/toast-basic.component';
+import { ToastMultilineComponent } from './generated/toast-multiline.component';
 import { ToastOffsetComponent } from './generated/toast-offset.component';
 import { ToastPrefixedComponent } from './generated/toast-prefixed.component';
+import { ToastStateNeutralComponent } from './generated/toast-state-neutral.component';
+import { ToastStateSuccessComponent } from './generated/toast-state-success.component';
 import { TypographyCyrilComponent } from './generated/typography-cyril.component';
 import { TypographyFallbackComponent } from './generated/typography-fallback.component';
 import { TypographyGreekAndCopticComponent } from './generated/typography-greek-and-coptic.component';
@@ -163,11 +164,12 @@ export const generatedPages = [
   TextFieldWrapperComponent,
   TextListComponent,
   ToastComponent,
-  ToastBasicDarkComponent,
-  ToastBasicLongTextComponent,
-  ToastBasicStateNeutralComponent,
+  ToastBasicComponent,
+  ToastMultilineComponent,
   ToastOffsetComponent,
   ToastPrefixedComponent,
+  ToastStateNeutralComponent,
+  ToastStateSuccessComponent,
   TypographyCyrilComponent,
   TypographyFallbackComponent,
   TypographyGreekAndCopticComponent,
@@ -458,19 +460,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: ToastComponent,
   },
   {
-    name: 'Toast Basic Dark',
-    path: 'toast-basic-dark',
-    component: ToastBasicDarkComponent,
+    name: 'Toast Basic',
+    path: 'toast-basic',
+    component: ToastBasicComponent,
   },
   {
-    name: 'Toast Basic Long Text',
-    path: 'toast-basic-long-text',
-    component: ToastBasicLongTextComponent,
-  },
-  {
-    name: 'Toast Basic State Neutral',
-    path: 'toast-basic-state-neutral',
-    component: ToastBasicStateNeutralComponent,
+    name: 'Toast Multiline',
+    path: 'toast-multiline',
+    component: ToastMultilineComponent,
   },
   {
     name: 'Toast Offset',
@@ -481,6 +478,16 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Toast Prefixed',
     path: 'toast-prefixed',
     component: ToastPrefixedComponent,
+  },
+  {
+    name: 'Toast State Neutral',
+    path: 'toast-state-neutral',
+    component: ToastStateNeutralComponent,
+  },
+  {
+    name: 'Toast State Success',
+    path: 'toast-state-success',
+    component: ToastStateSuccessComponent,
   },
   {
     name: 'Typography Cyril',
