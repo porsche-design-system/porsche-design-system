@@ -103,6 +103,9 @@ const isFlippableIcon = (name: IconName, source: string): boolean => {
       name === 'arrow-last' ||
       name === 'arrow-left' ||
       name === 'arrow-right' ||
+      name === 'chart' ||
+      name === 'chat' ||
+      name === 'external' ||
       name === 'increase' ||
       name === 'list' ||
       name === 'logout' ||
