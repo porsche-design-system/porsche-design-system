@@ -80,8 +80,15 @@
             ...(Array.isArray(meta.allowedValues)
               ? meta.allowedValues.map(
                   (val) =>
-                    wrapInCodeCode(val === 'string' ? val : `'${val}'`) +
-                    (meta.deprecatedValues?.includes(val) ? '<span title="deprecated"> 🚫</span>' : '')
+                    wrapInCodeCode(
+                      val === 'string'
+                        ? val
+                        : val === null
+                          ? 'undefined'
+                          : typeof val === 'number'
+                            ? `${val}`
+                            : `'${val}'`
+                    ) + (meta.deprecatedValues?.includes(val) ? '<span title="deprecated"> 🚫</span>' : '')
                 )
               : []),
             ...(meta.isBreakpointCustomizable ? [`BreakpointCustomizable<${meta.type}>`] : []),
