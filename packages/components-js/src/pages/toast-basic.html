@@ -1,8 +1,7 @@
 <style>
-  .playground > div {
-    transform: translate(0);
-    height: 20rem;
-    margin: 0 -16px;
+  #app {
+    /* TODO: not needed as soon as all top layer components are refactored with iFrames */
+    transform: unset;
   }
 </style>
 
@@ -27,11 +26,7 @@
   <span></span>
 </div>
 
-<div class="playground light" title="should render toast">
-  <div>
-    <p-toast></p-toast>
-  </div>
-</div>
+<p-toast></p-toast>
 
 <script>
   porscheDesignSystem.componentsReady().then(() => {

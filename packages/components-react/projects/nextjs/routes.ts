@@ -240,13 +240,9 @@ const generatedRoutes = {
     "path": "/toast-basic",
     "name": "ToastBasic"
   },
-  "toastBasicLongText": {
-    "path": "/toast-basic-long-text",
-    "name": "ToastBasicLongText"
-  },
-  "toastBasicStateNeutral": {
-    "path": "/toast-basic-state-neutral",
-    "name": "ToastBasicStateNeutral"
+  "toastMultiline": {
+    "path": "/toast-multiline",
+    "name": "ToastMultiline"
   },
   "toastOffset": {
     "path": "/toast-offset",
@@ -255,6 +251,14 @@ const generatedRoutes = {
   "toastPrefixed": {
     "path": "/toast-prefixed",
     "name": "ToastPrefixed"
+  },
+  "toastStateNeutral": {
+    "path": "/toast-state-neutral",
+    "name": "ToastStateNeutral"
+  },
+  "toastStateSuccess": {
+    "path": "/toast-state-success",
+    "name": "ToastStateSuccess"
   },
   "typographyCyril": {
     "path": "/typography-cyril",

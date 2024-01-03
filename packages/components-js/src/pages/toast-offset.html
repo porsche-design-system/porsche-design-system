@@ -1,8 +1,7 @@
 <style>
-  .playground {
-    height: 300px;
-    transform: translateX(0);
-    border: 1px solid deeppink;
+  #app {
+    /* TODO: not needed as soon as all top layer components are refactored with iFrames */
+    transform: unset;
   }
 
   p-toast {
@@ -10,9 +9,7 @@
   }
 </style>
 
-<div class="playground light" title="should render toast info on light background with custom bottom position">
-  <p-toast></p-toast>
-</div>
+<p-toast></p-toast>
 
 <script>
   porscheDesignSystem.componentsReady().then(() => {

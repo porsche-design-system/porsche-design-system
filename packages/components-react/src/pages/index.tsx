@@ -70,10 +70,11 @@ import { TextFieldWrapperPage } from './generated/TextFieldWrapper';
 import { TextListPage } from './generated/TextList';
 import { ToastPage } from './generated/Toast';
 import { ToastBasicPage } from './generated/ToastBasic';
-import { ToastBasicLongTextPage } from './generated/ToastBasicLongText';
-import { ToastBasicStateNeutralPage } from './generated/ToastBasicStateNeutral';
+import { ToastMultilinePage } from './generated/ToastMultiline';
 import { ToastOffsetPage } from './generated/ToastOffset';
 import { ToastPrefixedPage } from './generated/ToastPrefixed';
+import { ToastStateNeutralPage } from './generated/ToastStateNeutral';
+import { ToastStateSuccessPage } from './generated/ToastStateSuccess';
 import { TypographyCyrilPage } from './generated/TypographyCyril';
 import { TypographyFallbackPage } from './generated/TypographyFallback';
 import { TypographyGreekAndCopticPage } from './generated/TypographyGreekAndCoptic';
@@ -368,14 +369,9 @@ export const generatedRoutes: RouteType[] = [
     element: <ToastBasicPage />,
   },
   {
-    name: 'Toast Basic Long Text',
-    path: '/toast-basic-long-text',
-    element: <ToastBasicLongTextPage />,
-  },
-  {
-    name: 'Toast Basic State Neutral',
-    path: '/toast-basic-state-neutral',
-    element: <ToastBasicStateNeutralPage />,
+    name: 'Toast Multiline',
+    path: '/toast-multiline',
+    element: <ToastMultilinePage />,
   },
   {
     name: 'Toast Offset',
@@ -386,6 +382,16 @@ export const generatedRoutes: RouteType[] = [
     name: 'Toast Prefixed',
     path: '/toast-prefixed',
     element: <ToastPrefixedPage />,
+  },
+  {
+    name: 'Toast State Neutral',
+    path: '/toast-state-neutral',
+    element: <ToastStateNeutralPage />,
+  },
+  {
+    name: 'Toast State Success',
+    path: '/toast-state-success',
+    element: <ToastStateSuccessPage />,
   },
   {
     name: 'Typography Cyril',

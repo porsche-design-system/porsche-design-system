@@ -1,19 +1,23 @@
-<style>
-  iframe {
-    height: 366px;
-    width: 100%;
-    margin-inline-start: 0;
-    padding: 16px;
-  }
-  iframe:first-of-type {
-    height: calc(20rem + 96px);
-  }
-</style>
+<div class="playground light" title="should render toast">
+  <iframe src="/toast-basic?iframe=true" loading="eager" title="fix-linter-1"></iframe>
+</div>
 
-<iframe src="/toast-basic?iframe=true" loading="eager" title="fix-linter-1"></iframe>
+<div class="playground light" title="should render toast with state neutral">
+  <iframe src="/toast-state-neutral?iframe=true" loading="eager" title="fix-linter-2"></iframe>
+</div>
 
-<iframe src="/toast-basic-long-text?iframe=true" loading="eager" title="fix-linter-2"></iframe>
+<div class="playground light" title="should render toast with state success">
+  <iframe src="/toast-state-success?iframe=true" loading="eager" title="fix-linter-3"></iframe>
+</div>
 
-<iframe src="/toast-offset?iframe=true" loading="eager" title="fix-linter-3"></iframe>
+<div class="playground light" title="should render toast multiline message">
+  <iframe src="/toast-multiline?iframe=true" loading="eager" title="fix-linter-4"></iframe>
+</div>
 
-<iframe src="/toast-prefixed?iframe=true" loading="eager" title="fix-linter-4"></iframe>
+<div class="playground light" title="should render toast with custom bottom position">
+  <iframe src="/toast-offset?iframe=true" loading="eager" title="fix-linter-5"></iframe>
+</div>
+
+<div data-prefix="my-prefix" class="playground light" title="should render prefixed toast">
+  <iframe src="/toast-prefixed?iframe=true" loading="eager" title="fix-linter-6"></iframe>
+</div>
