@@ -225,5 +225,10 @@ export const getComponentCss = (
         }),
       },
     },
+    icon: {
+      '&:dir(rtl)': {
+        transform: 'scaleX(-1)',
+      },
+    },
   });
 };
