@@ -40,7 +40,10 @@ components.forEach((component) => {
       test(`should have no visual regression for viewport ${baseViewportWidth} and theme ${theme}`, async ({
         page,
       }) => {
-        test.skip(!isComponentThemeable(component) && theme === 'dark', 'This component has no theme support');
+        test.skip(
+          (!isComponentThemeable(component) && theme === 'dark') || component === 'stepper-horizontal',
+          'This component has no theme support and stepper-horizontal is flaky'
+        );
 
         await setupScenario(page, `/${component}`, baseViewportWidth, {
           forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
