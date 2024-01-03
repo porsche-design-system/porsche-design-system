@@ -134,7 +134,7 @@ ${Object.entries(meta.allowedValues)
   @import '../styles/shared.styles';
 
   :deep(.deprecated) {
-    color: red;
+    color: #d5001c;
     text-transform: uppercase;
   }
 
