@@ -25,17 +25,16 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-flyout-navigation');
-const getFlyoutNavigation = () => selectNode(page, 'p-flyout-navigation >>> dialog');
+const getFlyoutNavigationDialog = () => selectNode(page, 'p-flyout-navigation >>> dialog');
 const getFlyoutNavigationContent = () => selectNode(page, 'p-flyout-navigation >>> .content');
 const getFlyoutNavigationDismissButton = () => selectNode(page, 'p-flyout-navigation >>> p-button-pure.dismiss');
-const getFlyoutNavigationDismissButtonReal = () =>
-  selectNode(page, 'p-flyout-navigation >>> p-button-pure.dismiss >>> button');
-const getFlyoutNavigationVisibility = async () => await getElementStyle(await getFlyoutNavigation(), 'visibility');
+const getFlyoutNavigationDialogVisibility = async () =>
+  await getElementStyle(await getFlyoutNavigationDialog(), 'visibility');
 const getFlyoutNavigationItem = (identifier: string) =>
   selectNode(page, `p-flyout-navigation-item[identifier="${identifier}"]`);
 const getFlyoutNavigationItemScroller = (identifier: string) =>
   selectNode(page, `p-flyout-navigation-item[identifier="${identifier}"] >>> .scroller`);
-const getFlyoutNavigationItemVisibility = async (identifier: string) =>
+const getFlyoutNavigationItemScrollerVisibility = async (identifier: string) =>
   await getElementStyle(await getFlyoutNavigationItemScroller(identifier), 'visibility');
 const getBodyStyle = async () => getAttribute(await selectNode(page, 'body'), 'style');
 
@@ -105,13 +104,13 @@ const expectDismissButtonToBeFocused = async (failMessage?: string) => {
 
 it('should render and be visible when open', async () => {
   await initBasicFlyoutNavigation({ open: true });
-  expect(await getFlyoutNavigation()).not.toBeNull();
-  expect(await getFlyoutNavigationVisibility()).toBe('visible');
+  expect(await getFlyoutNavigationDialog()).not.toBeNull();
+  expect(await getFlyoutNavigationDialogVisibility()).toBe('visible');
 });
 
 it('should not be visible when not open', async () => {
   await initBasicFlyoutNavigation({ open: false });
-  expect(await getFlyoutNavigationVisibility()).toBe('hidden');
+  expect(await getFlyoutNavigationDialogVisibility()).toBe('hidden');
 });
 
 it('should be visible after opened', async () => {
@@ -119,13 +118,13 @@ it('should be visible after opened', async () => {
   const host = await getHost();
   await setProperty(host, 'open', true);
 
-  expect(await getFlyoutNavigationVisibility()).toBe('visible');
+  expect(await getFlyoutNavigationDialogVisibility()).toBe('visible');
 });
 
 it('should have correct transform when opened and dismissed', async () => {
   await initBasicFlyoutNavigation({ open: false });
   const getFlyoutTransform = async () =>
-    getElementStyle(await getFlyoutNavigation(), 'transform', { waitForTransition: true });
+    getElementStyle(await getFlyoutNavigationDialog(), 'transform', { waitForTransition: true });
 
   const initialFlyoutTransform = await getFlyoutTransform();
   expect(initialFlyoutTransform).toBe(`matrix(1, 0, 0, 1, -537, 0)`);
@@ -152,10 +151,9 @@ describe('can be dismissed', () => {
 
   it('should be closable via x button', async () => {
     const dismissBtn = await getFlyoutNavigationDismissButton();
-    const dismissBtnReal = await getFlyoutNavigationDismissButtonReal();
-    expect(dismissBtn).not.toBeNull();
 
-    expect(await getAttribute(dismissBtnReal, 'type')).toBe('button');
+    expect(dismissBtn).not.toBeNull();
+    expect(await getProperty(dismissBtn, 'type')).toBe('button');
 
     await dismissBtn.click();
     await waitForStencilLifecycle(page);
@@ -174,12 +172,11 @@ describe('can be dismissed', () => {
     await page.setViewport({ width: 800, height: 600 });
     await page.mouse.move(799, 300);
 
+    await page.mouse.down();
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
 
-    await page.mouse.down();
     await page.mouse.up();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(1);
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
   });
 
   it('should not be dismissed if mousedown inside flyout', async () => {
@@ -302,7 +299,7 @@ describe('focus behavior', () => {
   it('should focus last focused element after flyout is dismissed', async () => {
     await initBasicFlyoutNavigation({ open: false }, {}, { markupBefore: '<button id="btn-open"></button>' });
 
-    expect(await getFlyoutNavigationVisibility(), 'initial').toBe('hidden');
+    expect(await getFlyoutNavigationDialogVisibility(), 'initial').toBe('hidden');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await page.evaluate(() => {
@@ -318,12 +315,13 @@ describe('focus behavior', () => {
     await (await selectNode(page, '#btn-open')).click();
     await waitForStencilLifecycle(page);
 
-    expect(await getFlyoutNavigationVisibility()).toBe('visible');
+    expect(await getFlyoutNavigationDialogVisibility()).toBe('visible');
+    await expectDismissButtonToBeFocused();
 
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
 
-    expect(await getFlyoutNavigationVisibility(), 'after escape').toBe('hidden');
+    expect(await getFlyoutNavigationDialogVisibility(), 'after escape').toBe('hidden');
     expect(await getActiveElementId(page)).toBe('btn-open');
   });
 
@@ -335,6 +333,8 @@ describe('focus behavior', () => {
     expect(await getActiveElementId(page)).toBe('btn-before');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-after');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('BODY');
   });
 
   it('should focus element after flyout when open accordion contains link but flyout is not open', async () => {
@@ -360,49 +360,49 @@ describe('second level', () => {
   it('should have hidden second level when no activeIdentifier is set', async () => {
     await initBasicFlyoutNavigation({ open: false });
     await openFlyoutNavigation();
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-3')).toBe('hidden');
   });
 
   it('should have correct second level open when activeIdentifier is set', async () => {
     await initBasicFlyoutNavigation({ open: false, activeIdentifier: 'item-2' });
     await openFlyoutNavigation();
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('visible');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-2')).toBe('visible');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-3')).toBe('hidden');
   });
 
   it('should open correct second level when setting activeIdentifier', async () => {
     await initBasicFlyoutNavigation({ open: false });
     await openFlyoutNavigation();
     const host = await getHost();
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-3')).toBe('hidden');
 
     await setProperty(host, 'activeIdentifier', 'item-3');
     await waitForStencilLifecycle(page);
 
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('visible');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-3')).toBe('visible');
   });
 
   it('should change to correct second level open when activeIdentifier is changed', async () => {
     await initBasicFlyoutNavigation({ open: false, activeIdentifier: 'item-2' });
     await openFlyoutNavigation();
     const host = await getHost();
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('visible');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-2')).toBe('visible');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-3')).toBe('hidden');
 
     await setProperty(host, 'activeIdentifier', 'item-3');
     await waitForStencilLifecycle(page);
 
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('visible');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-3')).toBe('visible');
   });
 });
 
@@ -466,9 +466,9 @@ describe('slotted', () => {
     await initBasicFlyoutNavigation({ open: true });
     const host = await getHost();
 
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-3')).toBe('hidden');
     expect(await getFlyoutNavigationItem('item-4')).toBeNull();
 
     await host.evaluate((el) => {
@@ -480,34 +480,34 @@ describe('slotted', () => {
 
     const item4 = await getFlyoutNavigationItem('item-4');
     expect(item4).toBeDefined();
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-3')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-4')).toBe('hidden');
 
     await setProperty(host, 'activeIdentifier', 'item-4');
     await waitForStencilLifecycle(page);
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('visible');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-3')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-4')).toBe('visible');
   });
 
   it('should close second level of active item when item is removed', async () => {
     await initBasicFlyoutNavigation({ open: true, activeIdentifier: 'item-3' });
     const host = await getHost();
 
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('visible');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-3')).toBe('visible');
 
     await host.evaluate((el) => {
       el.removeChild(el.lastElementChild);
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-2')).toBe('hidden');
     expect(await getFlyoutNavigationItem('item-3')).toBeNull();
   });
 
@@ -523,10 +523,10 @@ describe('slotted', () => {
     });
 
     await waitForStencilLifecycle(page);
-    expect(await getFlyoutNavigationItemVisibility('item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-3')).toBe('hidden');
-    expect(await getFlyoutNavigationItemVisibility('item-4')).toBe('visible');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-1')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-2')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-3')).toBe('hidden');
+    expect(await getFlyoutNavigationItemScrollerVisibility('item-4')).toBe('visible');
   });
 });
 
@@ -709,14 +709,14 @@ describe('lifecycle', () => {
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree', async () => {
     await initBasicFlyoutNavigation({ open: true });
-    const flyout = await getFlyoutNavigation();
+    const flyout = await getFlyoutNavigationDialog();
 
     await expectA11yToMatchSnapshot(page, flyout, { interestingOnly: false });
   });
 
   it('should not expose accessibility tree if flyout is hidden', async () => {
     await initBasicFlyoutNavigation({ open: false });
-    const flyout = await getFlyoutNavigation();
+    const flyout = await getFlyoutNavigationDialog();
 
     await expectA11yToMatchSnapshot(page, flyout);
   });
