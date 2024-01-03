@@ -7641,10 +7641,7 @@ exports[`should match snapshot 1`] = `
   "p-multi-select-option": {
     "allowedPropValues": {
       "disabled": "boolean",
-      "value": [
-        "string",
-        "number",
-      ],
+      "value": "string",
     },
     "hasAriaProp": false,
     "hasEvent": false,
@@ -7669,10 +7666,7 @@ exports[`should match snapshot 1`] = `
         "type": "boolean",
       },
       "value": {
-        "allowedValues": [
-          "string",
-          "number",
-        ],
+        "allowedValues": "string",
         "defaultValue": null,
         "description": "The option value.",
         "isRequired": true,
