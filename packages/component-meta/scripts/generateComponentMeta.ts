@@ -105,7 +105,7 @@ const generateComponentMeta = (): void => {
     isDeprecated?: boolean;
     isBreakpointCustomizable?: boolean;
     isAria?: boolean;
-    isArray?: boolean; // TODO: leftover?
+    isArray?: boolean;
   };
   type ComponentMeta = {
     isDeprecated?: boolean;
@@ -126,7 +126,7 @@ const generateComponentMeta = (): void => {
     requiredProps?: string[]; // array of props that are mandatory
     deprecatedProps?: string[]; // array of props that are deprecated
     breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
-    arrayProps?: string[]; // array of props that are of type array // TODO: leftover?
+    arrayProps?: string[]; // array of props that are of type array
     allowedPropValues?: {
       [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
     };
@@ -291,6 +291,7 @@ const generateComponentMeta = (): void => {
           defaultValue: cleanedValue,
           ...(jsdoc?.match(/@deprecated/) && { isDeprecated: true }),
           ...(propType.match(/SelectedAriaAttributes/) && { isAria: true }),
+          ...(Array.isArray(cleanedValue) && { isArray: true }),
         };
 
         return {
@@ -508,7 +509,8 @@ const generateComponentMeta = (): void => {
                 if (propType !== 'string' && propType !== 'number' && propType !== 'boolean') {
                   throw new Error(`Unsupported propType in "${tagName}" "${propName}": ${propType}`);
                 }
-                result[propName] = [propType];
+                // only arrays of same type are supported, e.g. string[], number[] or boolean[]
+                result[propName] = propType;
               } else {
                 throw new Error(`Unsupported propType in "${tagName}" "${propName}": ${propType}`);
               }

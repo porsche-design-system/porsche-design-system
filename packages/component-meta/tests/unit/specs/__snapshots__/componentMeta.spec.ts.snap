@@ -7506,9 +7506,7 @@ exports[`should match snapshot 1`] = `
         "dark",
         "auto",
       ],
-      "value": [
-        "string",
-      ],
+      "value": "string",
     },
     "arrayProps": [
       "value",
@@ -7625,11 +7623,10 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
       "value": {
-        "allowedValues": [
-          "string",
-        ],
+        "allowedValues": "string",
         "defaultValue": [],
         "description": "The selected values.",
+        "isArray": true,
         "type": "string[]",
       },
     },
