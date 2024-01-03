@@ -473,6 +473,14 @@ const generateComponentMeta = (): void => {
                     new RegExp(`@Prop\\(\\) public ${propName}\\?: ${propsMeta[propName].type} = 'none';`)
                   );
                   result[propName] = [...Object.keys(ICONS_MANIFEST), ...(supportsNone ? ['none'] : [''])].sort();
+                } else if (
+                  propName === 'target' &&
+                  propType === 'string' &&
+                  source.match(new RegExp(`@Prop\\(\\) public ${propName}\\?: ${propsMeta[propName].type} = '_self';`))
+                ) {
+                  // target props support literal type and string
+                  const utils = require(path.resolve(sourceDirectory, '../utils'));
+                  result[propName] = [...utils.LINK_TARGETS, propType];
                 } else {
                   result[propName] = propType;
                 }
