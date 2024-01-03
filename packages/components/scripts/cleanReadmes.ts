@@ -64,7 +64,7 @@ const fixMethods = (str: string): string =>
     .replace(/#+\sReturns[\s\S]*?`\n/g, ''); // remove return types
 
 const fixDeprecatedContrast = (str: string): string =>
-  str.replace(/(<span style='color:)red('>\*\*\[DEPRECATED]\*\*<\/span>)/g, '$1#d5001c$2');
+  str.replace(/(<span style="color:)red(">\*\*\[DEPRECATED]\*\*<\/span>)/g, '$1#d5001c$2');
 
 const replacePropsTable =
   (componentName: string): ((str: string) => string) =>
