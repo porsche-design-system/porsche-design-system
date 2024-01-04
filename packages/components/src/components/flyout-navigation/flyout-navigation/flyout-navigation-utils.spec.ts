@@ -59,6 +59,7 @@ describe('syncFlyoutNavigationItemsProps()', () => {
 });
 
 const errorMessage = `Invalid value '${identifier}' supplied to p-flyout-navigation for property 'activeIdentifier' because reference is not present.`;
+const errorMessageMultiple = `Found multiple matching items for value '${identifier}' supplied to p-flyout-navigation:`;
 
 class SomeInstance {
   host = document.createElement('p-flyout-navigation');
@@ -90,5 +91,14 @@ describe('validateActiveIdentifier()', () => {
     const spy = jest.spyOn(loggerUtils, 'consoleError').mockImplementation();
     validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).toHaveBeenCalledWith(errorMessage);
+  });
+
+  it("should call consoleError() util when activeIdentifier of flyout-navigation matches multiple identifier of flyout-navigation-item's", () => {
+    const instance = new SomeInstance();
+    const items = [createChild(identifier), createChild(identifier)];
+
+    const spy = jest.spyOn(loggerUtils, 'consoleError').mockImplementation();
+    validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
+    expect(spy).toHaveBeenCalledWith(errorMessageMultiple, ...items);
   });
 });

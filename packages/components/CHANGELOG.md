@@ -29,14 +29,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Flyout Navigation`: Improved validation and `activeIdentifier` isn't automatically updated anymore
+  ([#2935](https://github.com/porsche-design-system/porsche-design-system/pull/2935))
 - `Carousel`: Position and width of heading and description
   ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
 
 #### Fixed
 
+- `Flyout Navigation`: Focus dismiss button after opening
+  ([#2935](https://github.com/porsche-design-system/porsche-design-system/pull/2935))
 - `Accordion`: Alignment of slotted heading with custom padding
   ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
 - `Modal`: Scrollbar is hidden ([#2907](https://github.com/porsche-design-system/porsche-design-system/pull/2907))
+- `Toast`: `max-width` when used in scale mode
+  ([#2960](https://github.com/porsche-design-system/porsche-design-system/pull/2960))
 
 ### [3.10.0-rc.3] - 2023-12-12
 
