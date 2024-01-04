@@ -33,6 +33,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2935](https://github.com/porsche-design-system/porsche-design-system/pull/2935))
 - `Carousel`: Position and width of heading and description
   ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
+- Aligned naming of all `CustomEvent<T>` types and deprecated old ones since they are in fact typing the `detail: T`
+  property the event
+
+```diff
+- AccordionUpdateEvent
++ AccordionUpdateEventDetail
+- CarouselUpdateEvent
++ CarouselUpdateEventDetail
+- FlyoutNavigationUpdateEvent
++ FlyoutNavigationUpdateEventDetail
+- LinkTileProductLikeEvent
++ LinkTileProductLikeEventDetail
+- MultiSelectUpdateEvent
++ MultiSelectUpdateEventDetail
+- PaginationUpdateEvent
++ PaginationUpdateEventDetail
+- PinCodeUpdateEvent
++ PinCodeUpdateEventDetail
+- SegmentedControlUpdateEvent
++ SegmentedControlUpdateEventDetail
+- StepperHorizontalUpdateEvent
++ StepperHorizontalUpdateEventDetail
+- StepperHorizontalUpdateEvent
++ StepperHorizontalUpdateEventDetail
+- SwitchUpdateEvent
++ SwitchUpdateEventDetail
+- TableUpdateEvent
++ TableUpdateEventDetail
+- TableUpdateEvent
++ TableUpdateEventDetail
+- TabsUpdateEvent
++ TabsUpdateEventDetail
+- TabsBarUpdateEvent
++ TabsBarUpdateEventDetail
+```
 
 #### Fixed
 
