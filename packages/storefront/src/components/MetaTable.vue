@@ -26,7 +26,7 @@
             <span v-if="value.isDeprecated" title="deprecated"> 🚫</span>
           </td>
           <td v-html="formatDescription(value)"></td>
-          <td v-html="formatType(value)"></td>
+          <td v-html="formatPropType(value)"></td>
           <td>
             <code>{{
               (typeof value.defaultValue === 'string' ? `'${value.defaultValue}'` : value.defaultValue) ?? 'undefined'
@@ -121,7 +121,7 @@
         : '';
     }
 
-    public formatType(meta: PropMeta): string {
+    public formatPropType(meta: PropMeta): string {
       return Array.isArray(meta.allowedValues) || meta.isBreakpointCustomizable
         ? [
             ...(meta.type.includes('|')
@@ -164,18 +164,19 @@ ${Object.entries(meta.allowedValues)
     }
 
     public formatEventType(meta: EventMeta): string {
-      return [
-        ...(meta.typeDetail
-          ? [
-              `type ${meta.type} = ${meta.typeDetail
-                .replace(/[{;] /g, '$&\n&nbsp;&nbsp;')
-                .replace(/([a-z]) }$/, '$1;\n}')}`,
-            ]
-          : []),
-        `CustomEvent<${meta.type}>`,
-      ]
-        .map(wrapInCodeCode)
-        .join('<br>');
+      // single code block with line breaks to avoid `|` via code::before pseudo element
+      return wrapInCodeCode(
+        [
+          ...(meta.typeDetail
+            ? [
+                `type ${meta.type} = ${meta.typeDetail
+                  .replace(/[{;] /g, '$&\n&nbsp;&nbsp;') // make single line objects multi line
+                  .replace(/(.) }$/, '$1;\n}')}`, // add semi colon to last property and add new line
+              ]
+            : []),
+          `CustomEvent<${meta.type}>`,
+        ].join('\n')
+      );
     }
   }
 </script>
