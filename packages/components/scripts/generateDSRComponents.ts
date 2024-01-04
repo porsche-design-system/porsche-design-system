@@ -78,8 +78,8 @@ const generateDSRComponents = (): void => {
           group.endsWith('utils')
             ? m.replace(group, utilsBundleImportPath)
             : group.endsWith('state-message') || group.endsWith('required') || group.endsWith('label')
-            ? m.replace(group, './' + group.split('/').pop())
-            : ''
+              ? m.replace(group, './' + group.split('/').pop())
+              : ''
         )
         .replace(/.*= getPrefixedTagNames\((?:this\.)?host.*\n/g, '') // remove getPrefixedTagNames call
         // add new imports
@@ -563,10 +563,11 @@ $&`
           .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
           .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
       } else if (tagName === 'p-link-tile-product') {
+        // TODO: why is something like this only needed here?
         newFileContent = newFileContent
-          .replace(/LinkTileProductAspectRatio,/, '')
-          .replace(/LinkTileProductLikeEvent,/, '')
-          .replace(/LinkTileProductTarget,/, '');
+          .replace(/type LinkTileProductAspectRatio,/, '')
+          .replace(/type LinkTileProductLikeEventDetail,/, '')
+          .replace(/type LinkTileProductTarget,/, '');
       }
 
       return newFileContent;

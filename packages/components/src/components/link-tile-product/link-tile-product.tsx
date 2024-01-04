@@ -1,3 +1,4 @@
+import { Component, Element, Event, type EventEmitter, h, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
@@ -8,14 +9,13 @@ import {
   throwIfInvalidLinkTileProductUsage,
   validateProps,
 } from '../../utils';
-import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { getComponentCss } from './link-tile-product-styles';
 import {
   anchorSlot,
   headerSlot,
-  LinkTileProductAspectRatio,
-  LinkTileProductLikeEventDetail,
-  LinkTileProductTarget,
+  type LinkTileProductAspectRatio,
+  type LinkTileProductLikeEventDetail,
+  type LinkTileProductTarget,
   TILE_PRODUCT_ASPECT_RATIOS,
 } from './link-tile-product-utils';
 
