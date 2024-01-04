@@ -13,7 +13,7 @@
     >
       <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">
-          <router-link :to="getRoute(category, page)" v-slot="{ isActive, href, navigate }">
+          <router-link :to="getRoute(category, page, tabs)" v-slot="{ isActive, href, navigate }">
             <p-link-pure :theme="storefrontTheme" icon="none" :active="isActive">
               <a :href="href" @click="navigate"
                 >{{ page }}
@@ -54,8 +54,9 @@
       return this.$store.getters.isSearchActive;
     }
 
-    public getRoute(category: string, page: string): string {
-      return `/${paramCase(category)}/${paramCase(page)}`;
+    public getRoute(category: string, page: string, tabs: string[]): string {
+      const [tab] = Object.keys(tabs);
+      return `/${paramCase(category)}/${paramCase(page)}${tab !== '0' ? '/' + paramCase(tab) : ''}`;
     }
 
     private created(): void {
