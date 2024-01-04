@@ -643,26 +643,37 @@ const generateComponentMeta = (): void => {
         if (eventTypeDetail) {
           typeDetail = eventTypeDetail;
         } else {
-          // the type is imported from somewhere else
-          const [, relativeAliasTypePath] =
-            eventTypeFileContent.match(
-              new RegExp(`import [\\s\\S]+?${eventTypeAlias}[\\s\\S]+?from '([\\s\\S]+?)';`)
-            ) || [];
-          const eventAliasTypePath = path.resolve(eventTypePath, `../${relativeAliasTypePath}.ts`);
-          const eventAliasTypeFileContent = fs.readFileSync(eventAliasTypePath, 'utf8');
+          // check if the type is defined locally
+          let eventAliasTypeDetail: string;
+          let [, eventAliasTypeAlias] =
+            eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias} = ([A-Z][a-z][A-Za-z]+);`)) || [];
 
-          // alias type can be an alias of another type
-          const [, eventAliasTypeAlias] =
-            eventAliasTypeFileContent.match(new RegExp(`type ${eventTypeAlias} = ([A-Z][a-z][A-Za-z]+);`)) || [];
-          const [, eventAliasTypeDetail] =
-            eventAliasTypeFileContent.match(
+          if (
+            eventAliasTypeAlias &&
+            eventTypeFileContent.match(new RegExp(`type ${eventAliasTypeAlias} = ({[\\s\\S]+?});\\n`))
+          ) {
+            // type has local alias
+            eventAliasTypeDetail = eventTypeFileContent.match(
+              new RegExp(`type ${eventAliasTypeAlias} = ({[\\s\\S]+?});\\n`)
+            )[1];
+          } else {
+            // check if type or imported from somewhere else
+            const [, relativeAliasTypePath] =
+              eventTypeFileContent.match(
+                new RegExp(`import [\\s\\S]+?${eventAliasTypeAlias}[\\s\\S]+?from '([\\s\\S]+?)';`)
+              ) || [];
+            const eventAliasTypePath = path.resolve(eventTypePath, `../${relativeAliasTypePath}.ts`);
+            const eventAliasTypeFileContent = fs.readFileSync(eventAliasTypePath, 'utf8');
+
+            eventAliasTypeDetail = eventAliasTypeFileContent.match(
               new RegExp(`type ${eventAliasTypeAlias || eventTypeAlias} = ({[\\s\\S]+?});\\n`)
-            ) || [];
+            )?.[1];
 
-          if (!eventAliasTypeDetail) {
-            throw new Error(
-              `Couldn't find alias ${eventTypeAlias} for ${eventType} in ${eventAliasTypePath}, perhaps it is another alias which isn't supported, yet.`
-            );
+            if (!eventAliasTypeDetail) {
+              throw new Error(
+                `Couldn't find alias ${eventTypeAlias} for ${eventType} in ${eventAliasTypePath}, perhaps it is another alias which isn't supported, yet.`
+              );
+            }
           }
 
           typeDetail = eventAliasTypeDetail;
