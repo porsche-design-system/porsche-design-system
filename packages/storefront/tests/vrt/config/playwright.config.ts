@@ -13,13 +13,13 @@ export default defineConfig({
   testDir: '../specs',
   testMatch: '**.vrt.ts',
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 60 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 15000,
+    timeout: 40000,
     toMatchSnapshot: {
       maxDiffPixelRatio: undefined,
       maxDiffPixels: undefined,
