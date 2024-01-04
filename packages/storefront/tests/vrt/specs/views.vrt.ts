@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { schemes } from '../helpers';
 
 const urls = {
   home: '/',
@@ -10,7 +11,7 @@ const urls = {
 
 for (const [name, url] of Object.entries(urls)) {
   test.describe(name, async () => {
-    (['light', 'dark'] as const).forEach((scheme) => {
+    schemes.forEach((scheme) => {
       const viewportWidth = 1000;
 
       test(`should have no visual regression for viewport ${viewportWidth} and theme auto with prefers-color-scheme ${scheme}`, async ({
