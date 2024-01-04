@@ -138,7 +138,8 @@ ${Object.entries(meta.allowedValues)
     text-transform: uppercase;
   }
 
-  table {
+  table,
+  :deep(table) {
     @include tableStyles;
   }
 
