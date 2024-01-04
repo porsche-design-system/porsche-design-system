@@ -13,7 +13,10 @@
     >
       <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">
-          <router-link :to="getRoute(category, page, tabs)" v-slot="{ isActive, href, navigate }">
+          <router-link
+            :to="getRoute(category, page, !Array.isArray(tabs) && Object.keys(tabs)[0])"
+            v-slot="{ isActive, href, navigate }"
+          >
             <p-link-pure :theme="storefrontTheme" icon="none" :active="isActive">
               <a :href="href" @click="navigate"
                 >{{ page }}
@@ -55,8 +58,7 @@
     }
 
     public getRoute(category: string, page: string, tab?: string): string {
-      const [tab] = Object.keys(tabs);
-      return `/${paramCase(category)}/${paramCase(page)}${tab !== '0' ? '/' + paramCase(tab) : ''}`;
+      return `/${paramCase(category)}/${paramCase(page)}${tab ? '/' + paramCase(tab) : ''}`;
     }
 
     private created(): void {
