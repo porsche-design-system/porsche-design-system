@@ -1,11 +1,10 @@
 import { useCallback, useState } from 'react';
-import { PCarousel, PText } from '@porsche-design-system/components-react';
-import type { CarouselUpdateEvent } from '@porsche-design-system/components-react';
+import { type CarouselUpdateEventDetail, PCarousel, PText } from '@porsche-design-system/components-react';
 
 export const CarouselExampleEventsPage = (): JSX.Element => {
   const [lastEventDetail, setLastEventDetail] = useState('none');
   const onUpdate = useCallback(
-    (e: CustomEvent<CarouselUpdateEvent>) => setLastEventDetail(JSON.stringify(e.detail)),
+    (e: CustomEvent<CarouselUpdateEventDetail>) => setLastEventDetail(JSON.stringify(e.detail)),
     []
   );
 

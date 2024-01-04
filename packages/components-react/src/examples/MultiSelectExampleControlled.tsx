@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  type MultiSelectUpdateEvent,
+  type MultiSelectUpdateEventDetail,
   PMultiSelect,
   PMultiSelectOption,
   type PMultiSelectProps,
@@ -9,7 +9,7 @@ import {
 export const MultiSelectControlledExamplePage = (): JSX.Element => {
   const [selectedValues, setSelectedValues] = useState<PMultiSelectProps['value']>([]);
 
-  const handleUpdate = (e: CustomEvent<MultiSelectUpdateEvent>) => {
+  const handleUpdate = (e: CustomEvent<MultiSelectUpdateEventDetail>) => {
     setSelectedValues(e.detail.value);
   };
 

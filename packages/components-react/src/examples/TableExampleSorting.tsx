@@ -6,7 +6,7 @@ import {
   PTableHeadCell,
   PTableHeadRow,
   PTableRow,
-  type TableUpdateEvent,
+  type TableUpdateEventDetail,
 } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 import { dataSorting, type DataSorting, headSorting } from '@porsche-design-system/shared';
@@ -15,8 +15,8 @@ export const TableExampleSortingPage = (): JSX.Element => {
   const [head, setHead] = useState(headSorting);
   const [data, setData] = useState(dataSorting);
 
-  const onUpdate = useCallback((e: CustomEvent<TableUpdateEvent>) => {
-    const { id, direction } = e.detail as TableUpdateEvent & { id: keyof DataSorting };
+  const onUpdate = useCallback((e: CustomEvent<TableUpdateEventDetail>) => {
+    const { id, direction } = e.detail as TableUpdateEventDetail & { id: keyof DataSorting };
     setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
     setData((prev) =>
       [...prev].sort((a, b) => {
