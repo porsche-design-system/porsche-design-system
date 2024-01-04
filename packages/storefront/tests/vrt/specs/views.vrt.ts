@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const views = {
+const urls = {
   home: '/',
   page: '/components/pagination/examples',
   'not-found': '/404',
@@ -8,8 +8,8 @@ const views = {
   // custom: …
 } as const;
 
-for (const [view, url] of Object.entries(views)) {
-  test.describe(view, async () => {
+for (const [name, url] of Object.entries(urls)) {
+  test.describe(name, async () => {
     (['light', 'dark'] as const).forEach((scheme) => {
       const viewportWidth = 1000;
 
@@ -27,7 +27,7 @@ for (const [view, url] of Object.entries(views)) {
           width: viewportWidth,
           height: await page.evaluate(() => document.body.clientHeight),
         });
-        await expect(page.locator('#app')).toHaveScreenshot(`views-${view}-${viewportWidth}-scheme-${scheme}.png`);
+        await expect(page.locator('#app')).toHaveScreenshot(`views-${name}-${viewportWidth}-scheme-${scheme}.png`);
       });
     });
 
@@ -41,7 +41,7 @@ for (const [view, url] of Object.entries(views)) {
           width: viewportWidth,
           height: await page.evaluate(() => document.body.clientHeight),
         });
-        await expect(page.locator('#app')).toHaveScreenshot(`views-${view}-${viewportWidth}.png`);
+        await expect(page.locator('#app')).toHaveScreenshot(`views-${name}-${viewportWidth}.png`);
       });
     });
   });
