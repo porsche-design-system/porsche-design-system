@@ -36,16 +36,6 @@ export const config: Config = {
   workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'list',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: {
-    /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
-    actionTimeout: 0,
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'off', // 'on-first-retry' causes CI job to get stuck
-    viewport: null,
-  },
-
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   outputDir: '../results',
 };
