@@ -1,7 +1,11 @@
 <template>
   <div>
-    <code v-if="hasBreakpointCustomizableProp" class="code-before-table" v-html="breakpointCustomizableGeneric"></code>
-    <table>
+    <code
+      v-if="type === 'props' && hasBreakpointCustomizableProp"
+      class="code-before-table"
+      v-html="breakpointCustomizableGeneric"
+    ></code>
+    <table v-if="type === 'props'">
       <thead>
         <tr>
           <th>Property</th>
@@ -31,6 +35,26 @@
         </tr>
       </tbody>
     </table>
+
+    <table v-else-if="type === 'events'">
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Description</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(value, name, index) in eventsMeta" :key="index">
+          <td>
+            <code>{{ name }}</code>
+            <span v-if="value.isDeprecated" title="deprecated"> 🚫</span>
+          </td>
+          <td v-html="formatDescription(value)"></td>
+          <td v-html="formatEventType(value)"></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -39,7 +63,12 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import { paramCase } from 'change-case';
-  import { getComponentMeta, type ComponentMeta, type PropMeta } from '@porsche-design-system/component-meta';
+  import {
+    getComponentMeta,
+    type ComponentMeta,
+    type EventMeta,
+    type PropMeta,
+  } from '@porsche-design-system/component-meta';
   import type { TagName } from '@porsche-design-system/shared';
 
   const formatHtml = (input: string): string =>
@@ -47,9 +76,17 @@
 
   const wrapInCodeCode = (input: string): string => `<code>${formatHtml(input)}</code>`;
 
+  const sortObjectByKey = <T extends object>(input?: T): T =>
+    input
+      ? (Object.keys(input) as (keyof T)[]).sort().reduce((result, key) => ({ ...result, [key]: input[key] }), {} as T)
+      : ({} as T);
+
+  type MetaType = 'props' | 'events';
+
   @Component
-  export default class PropsTable extends Vue {
+  export default class MetaTable extends Vue {
     @Prop() public component!: TagName;
+    @Prop({ default: 'props' }) public type!: MetaType;
 
     paramCase = paramCase;
     breakpointCustomizableGeneric = `type BreakpointCustomizable<T> = {
@@ -60,15 +97,14 @@
   l?: T;
   xl?: T;
   xxl?: T;
-}`;
+};`;
 
     public get propsMeta(): ComponentMeta['propsMeta'] {
-      const unorderedPropsMeta = getComponentMeta(this.component)?.propsMeta;
-      return unorderedPropsMeta
-        ? Object.keys(unorderedPropsMeta)
-            .sort()
-            .reduce((result, key) => ({ ...result, [key]: unorderedPropsMeta[key] }), {})
-        : {};
+      return sortObjectByKey(getComponentMeta(this.component)?.propsMeta);
+    }
+
+    public get eventsMeta(): ComponentMeta['eventsMeta'] {
+      return sortObjectByKey(getComponentMeta(this.component)?.eventsMeta);
     }
 
     public get hasBreakpointCustomizableProp(): boolean {
@@ -77,7 +113,7 @@
         : false;
     }
 
-    public formatDescription(meta: PropMeta): string {
+    public formatDescription(meta: PropMeta | EventMeta): string {
       return meta.description
         ? meta.description
             .replace(/@(deprecated)/, '<strong class="deprecated">$1</strong>') // deprecated annotation
@@ -126,6 +162,21 @@ ${Object.entries(meta.allowedValues)
             )
           : wrapInCodeCode(meta.type); // all other cases
     }
+
+    public formatEventType(meta: EventMeta): string {
+      return [
+        ...(meta.typeDetail
+          ? [
+              `type ${meta.type} = ${meta.typeDetail
+                .replace(/[{;] /g, '$&\n&nbsp;&nbsp;')
+                .replace(/([a-z]) }$/, '$1;\n}')}`,
+            ]
+          : []),
+        `CustomEvent<${meta.type}>`,
+      ]
+        .map(wrapInCodeCode)
+        .join('<br>');
+    }
   }
 </script>
 
@@ -138,7 +189,8 @@ ${Object.entries(meta.allowedValues)
     text-transform: uppercase;
   }
 
-  table {
+  table,
+  :deep(table) {
     @include tableStyles;
   }
 

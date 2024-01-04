@@ -48,7 +48,7 @@ const generateComponentMeta = (): void => {
   isAria?: boolean;
   isArray?: boolean;
 };`,
-    `type EventMeta = {
+    `export type EventMeta = {
   description?: string;
   type: string;
   typeDetail?: string;
