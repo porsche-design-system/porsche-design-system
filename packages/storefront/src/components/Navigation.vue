@@ -54,7 +54,7 @@
       return this.$store.getters.isSearchActive;
     }
 
-    public getRoute(category: string, page: string, tabs: string[]): string {
+    public getRoute(category: string, page: string, tab?: string): string {
       const [tab] = Object.keys(tabs);
       return `/${paramCase(category)}/${paramCase(page)}${tab !== '0' ? '/' + paramCase(tab) : ''}`;
     }
