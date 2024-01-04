@@ -35,6 +35,19 @@ exports[`should match snapshot 1`] = `
       "accordionChange",
       "update",
     ],
+    "eventsMeta": {
+      "accordionChange": {
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when accordion state is changed.",
+        "isDeprecated": true,
+        "type": "AccordionUpdateEvent",
+        "typeDetail": "{ open: boolean }",
+      },
+      "update": {
+        "description": "Emitted when accordion state is changed.",
+        "type": "AccordionUpdateEvent",
+        "typeDetail": "{ open: boolean }",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -143,6 +156,12 @@ exports[`should match snapshot 1`] = `
     "eventNames": [
       "dismiss",
     ],
+    "eventsMeta": {
+      "dismiss": {
+        "description": "Emitted when the close button is clicked.",
+        "type": "void",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -2132,6 +2151,19 @@ exports[`should match snapshot 1`] = `
       "carouselChange",
       "update",
     ],
+    "eventsMeta": {
+      "carouselChange": {
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when carousel's content slides.",
+        "isDeprecated": true,
+        "type": "CarouselUpdateEvent",
+        "typeDetail": "{ activeIndex: number; previousIndex: number }",
+      },
+      "update": {
+        "description": "Emitted when carousel's content slides.",
+        "type": "CarouselUpdateEvent",
+        "typeDetail": "{ activeIndex: number; previousIndex: number }",
+      },
+    },
     "hasAriaProp": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -3273,6 +3305,12 @@ exports[`should match snapshot 1`] = `
     "eventNames": [
       "dismiss",
     ],
+    "eventsMeta": {
+      "dismiss": {
+        "description": "Emitted when the component requests to be dismissed.",
+        "type": "void",
+      },
+    },
     "hasAriaProp": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -3360,6 +3398,17 @@ exports[`should match snapshot 1`] = `
       "dismiss",
       "update",
     ],
+    "eventsMeta": {
+      "dismiss": {
+        "description": "Emitted when the component requests to be dismissed.",
+        "type": "void",
+      },
+      "update": {
+        "description": "Emitted when activeIdentifier is changed.",
+        "type": "FlyoutNavigationUpdateEvent",
+        "typeDetail": "{ activeIdentifier: string }",
+      },
+    },
     "hasAriaProp": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -4668,6 +4717,16 @@ exports[`should match snapshot 1`] = `
       "dismiss",
       "action",
     ],
+    "eventsMeta": {
+      "action": {
+        "description": "Emitted when the action button is clicked.",
+        "type": "void",
+      },
+      "dismiss": {
+        "description": "Emitted when the close button is clicked.",
+        "type": "void",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -7055,6 +7114,13 @@ exports[`should match snapshot 1`] = `
     "eventNames": [
       "like",
     ],
+    "eventsMeta": {
+      "like": {
+        "description": "Emitted when the like button is clicked.",
+        "type": "LinkTileProductLikeEvent",
+        "typeDetail": "{ liked: boolean }",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -7295,6 +7361,17 @@ exports[`should match snapshot 1`] = `
       "close",
       "dismiss",
     ],
+    "eventsMeta": {
+      "close": {
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`dismiss\` event instead. Emitted when the component requests to be dismissed.",
+        "isDeprecated": true,
+        "type": "void",
+      },
+      "dismiss": {
+        "description": "Emitted when the component requests to be dismissed.",
+        "type": "void",
+      },
+    },
     "hasAriaProp": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -7517,6 +7594,13 @@ exports[`should match snapshot 1`] = `
     "eventNames": [
       "update",
     ],
+    "eventsMeta": {
+      "update": {
+        "description": "Emitted when the selection is changed.",
+        "type": "MultiSelectUpdateEvent",
+        "typeDetail": "{ value: string[]; name: string }",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -7712,6 +7796,19 @@ exports[`should match snapshot 1`] = `
       "pageChange",
       "update",
     ],
+    "eventsMeta": {
+      "pageChange": {
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when the page changes.",
+        "isDeprecated": true,
+        "type": "PaginationUpdateEvent",
+        "typeDetail": "{ page: number; previousPage: number }",
+      },
+      "update": {
+        "description": "Emitted when the page changes.",
+        "type": "PaginationUpdateEvent",
+        "typeDetail": "{ page: number; previousPage: number }",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -7875,6 +7972,13 @@ exports[`should match snapshot 1`] = `
     "eventNames": [
       "update",
     ],
+    "eventsMeta": {
+      "update": {
+        "description": "Emitted when selected element changes.",
+        "type": "PinCodeUpdateEvent",
+        "typeDetail": "{ value: string; isComplete: boolean }",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -8377,6 +8481,19 @@ exports[`should match snapshot 1`] = `
       "segmentedControlChange",
       "update",
     ],
+    "eventsMeta": {
+      "segmentedControlChange": {
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when selected element changes.",
+        "isDeprecated": true,
+        "type": "SegmentedControlUpdateEvent",
+        "typeDetail": "{ value: string | number }",
+      },
+      "update": {
+        "description": "Emitted when selected element changes.",
+        "type": "SegmentedControlUpdateEvent",
+        "typeDetail": "{ value: string | number }",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -9240,6 +9357,19 @@ exports[`should match snapshot 1`] = `
       "stepChange",
       "update",
     ],
+    "eventsMeta": {
+      "stepChange": {
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when active step is changed.",
+        "isDeprecated": true,
+        "type": "StepperHorizontalUpdateEvent",
+        "typeDetail": "{ activeStepIndex: number }",
+      },
+      "update": {
+        "description": "Emitted when active step is changed.",
+        "type": "StepperHorizontalUpdateEvent",
+        "typeDetail": "{ activeStepIndex: number }",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -9369,6 +9499,19 @@ exports[`should match snapshot 1`] = `
       "switchChange",
       "update",
     ],
+    "eventsMeta": {
+      "switchChange": {
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when checked status is changed.",
+        "isDeprecated": true,
+        "type": "SwitchUpdateEvent",
+        "typeDetail": "{ checked: boolean }",
+      },
+      "update": {
+        "description": "Emitted when checked status is changed.",
+        "type": "SwitchUpdateEvent",
+        "typeDetail": "{ checked: boolean }",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -9467,6 +9610,19 @@ exports[`should match snapshot 1`] = `
       "sortingChange",
       "update",
     ],
+    "eventsMeta": {
+      "sortingChange": {
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when sorting is changed.",
+        "isDeprecated": true,
+        "type": "TableUpdateEvent",
+        "typeDetail": "{ id: string; active?: boolean; direction?: Direction }",
+      },
+      "update": {
+        "description": "Emitted when sorting is changed.",
+        "type": "TableUpdateEvent",
+        "typeDetail": "{ id: string; active?: boolean; direction?: Direction }",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -9708,6 +9864,19 @@ exports[`should match snapshot 1`] = `
       "tabChange",
       "update",
     ],
+    "eventsMeta": {
+      "tabChange": {
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when active tab is changed.",
+        "isDeprecated": true,
+        "type": "TabsUpdateEvent",
+        "typeDetail": "{ activeTabIndex: number }",
+      },
+      "update": {
+        "description": "Emitted when active tab is changed.",
+        "type": "TabsUpdateEvent",
+        "typeDetail": "{ activeTabIndex: number }",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -9835,6 +10004,19 @@ exports[`should match snapshot 1`] = `
       "tabChange",
       "update",
     ],
+    "eventsMeta": {
+      "tabChange": {
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when active tab is changed.",
+        "isDeprecated": true,
+        "type": "TabsBarUpdateEvent",
+        "typeDetail": "{ activeTabIndex: number }",
+      },
+      "update": {
+        "description": "Emitted when active tab is changed.",
+        "type": "TabsBarUpdateEvent",
+        "typeDetail": "{ activeTabIndex: number }",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -10784,6 +10966,12 @@ exports[`should match snapshot 1`] = `
     "eventNames": [
       "action",
     ],
+    "eventsMeta": {
+      "action": {
+        "description": "Emitted when the action button is clicked.",
+        "type": "void",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": true,
@@ -11190,6 +11378,12 @@ exports[`should match snapshot 1`] = `
     "eventNames": [
       "dismiss",
     ],
+    "eventsMeta": {
+      "dismiss": {
+        "description": "Emitted when the close button is clicked.",
+        "type": "void",
+      },
+    },
     "hasAriaProp": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
