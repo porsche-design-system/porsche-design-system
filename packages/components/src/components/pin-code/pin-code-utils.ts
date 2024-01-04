@@ -9,8 +9,8 @@ export const PIN_CODE_LENGTHS = [1, 2, 3, 4, 5, 6] as const;
 export type PinCodeLength = (typeof PIN_CODE_LENGTHS)[number];
 
 /** @deprecated */
-export type PinCodeUpdateEvent = PinCodeUpdateEventDetail;
-export type PinCodeUpdateEventDetail = { value: string; isComplete: boolean };
+export type PinCodeUpdateEvent = { value: string; isComplete: boolean };
+export type PinCodeUpdateEventDetail = PinCodeUpdateEvent;
 
 export type PinCodeState = FormState;
 

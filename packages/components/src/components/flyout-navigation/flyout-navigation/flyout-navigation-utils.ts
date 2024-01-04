@@ -12,8 +12,8 @@ export type FlyoutNavigationUpdate = {
   activeIdentifier: string;
 };
 /** @deprecated */
-export type FlyoutNavigationUpdateEvent = FlyoutNavigationUpdateEventDetail;
-export type FlyoutNavigationUpdateEventDetail = FlyoutNavigationUpdate; // to have consistent event types
+export type FlyoutNavigationUpdateEvent = FlyoutNavigationUpdate;
+export type FlyoutNavigationUpdateEventDetail = FlyoutNavigationUpdateEvent; // to have consistent event types
 
 export const syncFlyoutNavigationItemsProps = (
   items: HTMLPFlyoutNavigationItemElement[],

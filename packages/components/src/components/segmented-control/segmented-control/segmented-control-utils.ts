@@ -16,8 +16,8 @@ export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'backg
 export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROUND_COLORS)[number]; // 'background-color' prop is deprecated
 
 /** @deprecated */
-export type SegmentedControlUpdateEvent = SegmentedControlUpdateEventDetail;
-export type SegmentedControlUpdateEventDetail = { value: string | number };
+export type SegmentedControlUpdateEvent = { value: string | number };
+export type SegmentedControlUpdateEventDetail = SegmentedControlUpdateEvent;
 
 export const SEGMENTED_CONTROL_COLUMNS = ['auto', ...Array.from(Array(25), (_, i) => i + 1)];
 export type SegmentedControlColumns = (typeof SEGMENTED_CONTROL_COLUMNS)[number];

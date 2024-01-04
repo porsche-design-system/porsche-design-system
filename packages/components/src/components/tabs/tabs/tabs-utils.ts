@@ -15,8 +15,8 @@ export type TabsWeight = TabsBarWeight;
 export type TabsGradientColorScheme = TabsBarGradientColorScheme;
 export type TabsGradientColor = TabsBarGradientColor;
 /** @deprecated */
-export type TabsUpdateEvent = TabsUpdateEventDetail;
-export type TabsUpdateEventDetail = TabsBarUpdateEventDetail;
+export type TabsUpdateEvent = TabsBarUpdateEventDetail;
+export type TabsUpdateEventDetail = TabsUpdateEvent;
 
 export const syncTabsItemsProps = (items: HTMLPTabsItemElement[], theme: Theme): void => {
   items.forEach((item: HTMLPTabsItemElement & TabsItemInternalHTMLProps) => {

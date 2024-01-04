@@ -40,8 +40,8 @@ export type CarouselInternationalization =
   Partial<Record<'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide', string>> | string; // string to support attribute, gets removed via InputParser
 
 /** @deprecated */
-export type CarouselUpdateEvent = CarouselUpdateEventDetail;
-export type CarouselUpdateEventDetail = { activeIndex: number; previousIndex: number };
+export type CarouselUpdateEvent = { activeIndex: number; previousIndex: number };
+export type CarouselUpdateEventDetail = CarouselUpdateEvent;
 
 export type SplideBreakpoints = Options['breakpoints'];
 

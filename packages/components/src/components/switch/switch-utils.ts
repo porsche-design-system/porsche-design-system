@@ -6,8 +6,8 @@ export type SwitchAlignLabelDeprecated = AlignLabelDeprecated;
 export type SwitchAlignLabel = AlignLabel;
 
 /** @deprecated */
-export type SwitchUpdateEvent = SwitchUpdateEventDetail;
-export type SwitchUpdateEventDetail = { checked: boolean };
+export type SwitchUpdateEvent = { checked: boolean };
+export type SwitchUpdateEventDetail = SwitchUpdateEvent;
 
 export const getSwitchButtonAriaAttributes = (
   isDisabled: boolean,
