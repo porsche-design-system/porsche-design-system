@@ -11,7 +11,9 @@ export const INTERNAL_UPDATE_EVENT_NAME = 'internalUpdate';
 export type FlyoutNavigationUpdate = {
   activeIdentifier: string;
 };
-export type FlyoutNavigationUpdateEvent = FlyoutNavigationUpdate; // to have consistent event types
+/** @deprecated */
+export type FlyoutNavigationUpdateEvent = FlyoutNavigationUpdateEventDetail;
+export type FlyoutNavigationUpdateEventDetail = FlyoutNavigationUpdate; // to have consistent event types
 
 export const syncFlyoutNavigationItemsProps = (
   items: HTMLPFlyoutNavigationItemElement[],

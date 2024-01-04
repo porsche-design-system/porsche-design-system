@@ -2,7 +2,9 @@ import { type LinkTarget } from '../../utils/link-button/link-target';
 import { type TileAspectRatio } from '../../utils';
 
 export type LinkTileProductTarget = LinkTarget;
-export type LinkTileProductLikeEvent = {
+/** @deprecated */
+export type LinkTileProductLikeEvent = LinkTileProductLikeEventDetail;
+export type LinkTileProductLikeEventDetail = {
   liked: boolean;
 };
 

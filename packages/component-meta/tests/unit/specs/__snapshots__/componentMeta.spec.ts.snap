@@ -39,12 +39,12 @@ exports[`should match snapshot 1`] = `
       "accordionChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when accordion state is changed.",
         "isDeprecated": true,
-        "type": "AccordionUpdateEvent",
+        "type": "AccordionUpdateEventDetail",
         "typeDetail": "{ open: boolean }",
       },
       "update": {
         "description": "Emitted when accordion state is changed.",
-        "type": "AccordionUpdateEvent",
+        "type": "AccordionUpdateEventDetail",
         "typeDetail": "{ open: boolean }",
       },
     },
@@ -2155,12 +2155,12 @@ exports[`should match snapshot 1`] = `
       "carouselChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when carousel's content slides.",
         "isDeprecated": true,
-        "type": "CarouselUpdateEvent",
+        "type": "CarouselUpdateEventDetail",
         "typeDetail": "{ activeIndex: number; previousIndex: number }",
       },
       "update": {
         "description": "Emitted when carousel's content slides.",
-        "type": "CarouselUpdateEvent",
+        "type": "CarouselUpdateEventDetail",
         "typeDetail": "{ activeIndex: number; previousIndex: number }",
       },
     },
@@ -3405,7 +3405,7 @@ exports[`should match snapshot 1`] = `
       },
       "update": {
         "description": "Emitted when activeIdentifier is changed.",
-        "type": "FlyoutNavigationUpdateEvent",
+        "type": "FlyoutNavigationUpdateEventDetail",
         "typeDetail": "{ activeIdentifier: string }",
       },
     },
@@ -7117,7 +7117,7 @@ exports[`should match snapshot 1`] = `
     "eventsMeta": {
       "like": {
         "description": "Emitted when the like button is clicked.",
-        "type": "LinkTileProductLikeEvent",
+        "type": "LinkTileProductLikeEventDetail",
         "typeDetail": "{ liked: boolean }",
       },
     },
@@ -7597,8 +7597,8 @@ exports[`should match snapshot 1`] = `
     "eventsMeta": {
       "update": {
         "description": "Emitted when the selection is changed.",
-        "type": "MultiSelectUpdateEvent",
-        "typeDetail": "{ value: string[]; name: string }",
+        "type": "MultiSelectUpdateEventDetail",
+        "typeDetail": "{ name: string; value: string[] }",
       },
     },
     "hasAriaProp": false,
@@ -7800,12 +7800,12 @@ exports[`should match snapshot 1`] = `
       "pageChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when the page changes.",
         "isDeprecated": true,
-        "type": "PaginationUpdateEvent",
+        "type": "PaginationUpdateEventDetail",
         "typeDetail": "{ page: number; previousPage: number }",
       },
       "update": {
         "description": "Emitted when the page changes.",
-        "type": "PaginationUpdateEvent",
+        "type": "PaginationUpdateEventDetail",
         "typeDetail": "{ page: number; previousPage: number }",
       },
     },
@@ -7975,7 +7975,7 @@ exports[`should match snapshot 1`] = `
     "eventsMeta": {
       "update": {
         "description": "Emitted when selected element changes.",
-        "type": "PinCodeUpdateEvent",
+        "type": "PinCodeUpdateEventDetail",
         "typeDetail": "{ value: string; isComplete: boolean }",
       },
     },
@@ -8485,12 +8485,12 @@ exports[`should match snapshot 1`] = `
       "segmentedControlChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when selected element changes.",
         "isDeprecated": true,
-        "type": "SegmentedControlUpdateEvent",
+        "type": "SegmentedControlUpdateEventDetail",
         "typeDetail": "{ value: string | number }",
       },
       "update": {
         "description": "Emitted when selected element changes.",
-        "type": "SegmentedControlUpdateEvent",
+        "type": "SegmentedControlUpdateEventDetail",
         "typeDetail": "{ value: string | number }",
       },
     },
@@ -9361,12 +9361,12 @@ exports[`should match snapshot 1`] = `
       "stepChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when active step is changed.",
         "isDeprecated": true,
-        "type": "StepperHorizontalUpdateEvent",
+        "type": "StepperHorizontalUpdateEventDetail",
         "typeDetail": "{ activeStepIndex: number }",
       },
       "update": {
         "description": "Emitted when active step is changed.",
-        "type": "StepperHorizontalUpdateEvent",
+        "type": "StepperHorizontalUpdateEventDetail",
         "typeDetail": "{ activeStepIndex: number }",
       },
     },
@@ -9503,12 +9503,12 @@ exports[`should match snapshot 1`] = `
       "switchChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when checked status is changed.",
         "isDeprecated": true,
-        "type": "SwitchUpdateEvent",
+        "type": "SwitchUpdateEventDetail",
         "typeDetail": "{ checked: boolean }",
       },
       "update": {
         "description": "Emitted when checked status is changed.",
-        "type": "SwitchUpdateEvent",
+        "type": "SwitchUpdateEventDetail",
         "typeDetail": "{ checked: boolean }",
       },
     },
@@ -9614,12 +9614,12 @@ exports[`should match snapshot 1`] = `
       "sortingChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when sorting is changed.",
         "isDeprecated": true,
-        "type": "TableUpdateEvent",
+        "type": "TableUpdateEventDetail",
         "typeDetail": "{ id: string; active?: boolean; direction?: Direction }",
       },
       "update": {
         "description": "Emitted when sorting is changed.",
-        "type": "TableUpdateEvent",
+        "type": "TableUpdateEventDetail",
         "typeDetail": "{ id: string; active?: boolean; direction?: Direction }",
       },
     },
@@ -9868,12 +9868,12 @@ exports[`should match snapshot 1`] = `
       "tabChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when active tab is changed.",
         "isDeprecated": true,
-        "type": "TabsUpdateEvent",
+        "type": "TabsUpdateEventDetail",
         "typeDetail": "{ activeTabIndex: number }",
       },
       "update": {
         "description": "Emitted when active tab is changed.",
-        "type": "TabsUpdateEvent",
+        "type": "TabsUpdateEventDetail",
         "typeDetail": "{ activeTabIndex: number }",
       },
     },
@@ -10008,12 +10008,12 @@ exports[`should match snapshot 1`] = `
       "tabChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when active tab is changed.",
         "isDeprecated": true,
-        "type": "TabsBarUpdateEvent",
+        "type": "TabsBarUpdateEventDetail",
         "typeDetail": "{ activeTabIndex: number }",
       },
       "update": {
         "description": "Emitted when active tab is changed.",
-        "type": "TabsBarUpdateEvent",
+        "type": "TabsBarUpdateEventDetail",
         "typeDetail": "{ activeTabIndex: number }",
       },
     },

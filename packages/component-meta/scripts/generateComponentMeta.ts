@@ -672,7 +672,6 @@ const generateComponentMeta = (): void => {
           .replace(/ \/\/.+/g, '') // remove comments
           .replace(/\s+/g, ' ') // multi line to single line
           .replace(/; }/, ' }'); // remove last semi colon
-        console.log(eventType, typeDetail);
       }
 
       eventsMeta[eventName] = {

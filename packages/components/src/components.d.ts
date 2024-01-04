@@ -6,13 +6,13 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextColor, TextSize, TextWeight, Theme } from "./types";
-import { AccordionSize, AccordionTag, AccordionUpdateEvent } from "./components/accordion/accordion-utils";
+import { AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-import { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
+import { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -23,7 +23,7 @@ import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
-import { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEvent } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
+import { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEventDetail } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 import { HeadingTag } from "./components/heading/heading-tag";
@@ -36,27 +36,27 @@ import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, 
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBackground, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
-import { LinkTileProductAspectRatio, LinkTileProductLikeEvent, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
+import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEvent } from "./components/multi-select/multi-select/multi-select-utils";
-import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
-import { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEvent } from "./components/pin-code/pin-code-utils";
+import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
+import { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
+import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
-import { StepperHorizontalSize, StepperHorizontalUpdateEvent } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
+import { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
-import { SwitchAlignLabel, SwitchUpdateEvent } from "./components/switch/switch-utils";
-import { TableHeadCellSort, TableUpdateEvent } from "./components/table/table/table-utils";
-import { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEvent, TabsWeight } from "./components/tabs/tabs/tabs-utils";
-import { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEvent, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+import { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
+import { TableHeadCellSort, TableUpdateEventDetail } from "./components/table/table/table-utils";
+import { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+import { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagColor, TagIcon } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextAlign, TextTag } from "./components/text/text-utils";
@@ -67,13 +67,13 @@ import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextColor, TextSize, TextWeight, Theme } from "./types";
-export { AccordionSize, AccordionTag, AccordionUpdateEvent } from "./components/accordion/accordion-utils";
+export { AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-export { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEvent, CarouselWidth } from "./components/carousel/carousel-utils";
+export { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -84,7 +84,7 @@ export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 export { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
-export { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEvent } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
+export { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEventDetail } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 export { HeadingTag } from "./components/heading/heading-tag";
@@ -97,27 +97,27 @@ export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, 
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
 export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBackground, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, LinkTileModelSignatureLinkDirection, LinkTileModelSignatureModel, LinkTileModelSignatureWeight } from "./components/link-tile-model-signature/link-tile-model-signature-utils";
-export { LinkTileProductAspectRatio, LinkTileProductLikeEvent, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
+export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEvent } from "./components/multi-select/multi-select/multi-select-utils";
-export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEvent } from "./components/pagination/pagination-utils";
-export { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEvent } from "./components/pin-code/pin-code-utils";
+export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
+export { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEvent } from "./components/segmented-control/segmented-control/segmented-control-utils";
+export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
-export { StepperHorizontalSize, StepperHorizontalUpdateEvent } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
+export { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 export { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
-export { SwitchAlignLabel, SwitchUpdateEvent } from "./components/switch/switch-utils";
-export { TableHeadCellSort, TableUpdateEvent } from "./components/table/table/table-utils";
-export { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEvent, TabsWeight } from "./components/tabs/tabs/tabs-utils";
-export { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEvent, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+export { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
+export { TableHeadCellSort, TableUpdateEventDetail } from "./components/table/table/table-utils";
+export { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+export { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 export { TagColor, TagIcon } from "./components/tag/tag-utils";
 export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 export { TextAlign, TextTag } from "./components/text/text-utils";
@@ -1989,8 +1989,8 @@ export interface PToastItemCustomEvent<T> extends CustomEvent<T> {
 }
 declare global {
     interface HTMLPAccordionElementEventMap {
-        "accordionChange": AccordionUpdateEvent;
-        "update": AccordionUpdateEvent;
+        "accordionChange": AccordionUpdateEventDetail;
+        "update": AccordionUpdateEventDetail;
     }
     interface HTMLPAccordionElement extends Components.PAccordion, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPAccordionElementEventMap>(type: K, listener: (this: HTMLPAccordionElement, ev: PAccordionCustomEvent<HTMLPAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2048,8 +2048,8 @@ declare global {
         new (): HTMLPButtonTileElement;
     };
     interface HTMLPCarouselElementEventMap {
-        "carouselChange": CarouselUpdateEvent;
-        "update": CarouselUpdateEvent;
+        "carouselChange": CarouselUpdateEventDetail;
+        "update": CarouselUpdateEventDetail;
     }
     interface HTMLPCarouselElement extends Components.PCarousel, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPCarouselElementEventMap>(type: K, listener: (this: HTMLPCarouselElement, ev: PCarouselCustomEvent<HTMLPCarouselElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2150,7 +2150,7 @@ declare global {
     };
     interface HTMLPFlyoutNavigationElementEventMap {
         "dismiss": void;
-        "update": FlyoutNavigationUpdateEvent;
+        "update": FlyoutNavigationUpdateEventDetail;
     }
     /**
      * __Experimental__
@@ -2266,7 +2266,7 @@ declare global {
         new (): HTMLPLinkTileModelSignatureElement;
     };
     interface HTMLPLinkTileProductElementEventMap {
-        "like": LinkTileProductLikeEvent;
+        "like": LinkTileProductLikeEventDetail;
     }
     /**
      * __Experimental__
@@ -2319,7 +2319,7 @@ declare global {
         new (): HTMLPModelSignatureElement;
     };
     interface HTMLPMultiSelectElementEventMap {
-        "update": MultiSelectUpdateEvent;
+        "update": MultiSelectUpdateEventDetail;
     }
     interface HTMLPMultiSelectElement extends Components.PMultiSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPMultiSelectElementEventMap>(type: K, listener: (this: HTMLPMultiSelectElement, ev: PMultiSelectCustomEvent<HTMLPMultiSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2342,8 +2342,8 @@ declare global {
         new (): HTMLPMultiSelectOptionElement;
     };
     interface HTMLPPaginationElementEventMap {
-        "pageChange": PaginationUpdateEvent;
-        "update": PaginationUpdateEvent;
+        "pageChange": PaginationUpdateEventDetail;
+        "update": PaginationUpdateEventDetail;
     }
     interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPPaginationElementEventMap>(type: K, listener: (this: HTMLPPaginationElement, ev: PPaginationCustomEvent<HTMLPPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2360,7 +2360,7 @@ declare global {
         new (): HTMLPPaginationElement;
     };
     interface HTMLPPinCodeElementEventMap {
-        "update": PinCodeUpdateEvent;
+        "update": PinCodeUpdateEventDetail;
     }
     interface HTMLPPinCodeElement extends Components.PPinCode, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPPinCodeElementEventMap>(type: K, listener: (this: HTMLPPinCodeElement, ev: PPinCodeCustomEvent<HTMLPPinCodeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2395,8 +2395,8 @@ declare global {
         new (): HTMLPScrollerElement;
     };
     interface HTMLPSegmentedControlElementEventMap {
-        "segmentedControlChange": SegmentedControlUpdateEvent;
-        "update": SegmentedControlUpdateEvent;
+        "segmentedControlChange": SegmentedControlUpdateEventDetail;
+        "update": SegmentedControlUpdateEventDetail;
     }
     interface HTMLPSegmentedControlElement extends Components.PSegmentedControl, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPSegmentedControlElementEventMap>(type: K, listener: (this: HTMLPSegmentedControlElement, ev: PSegmentedControlCustomEvent<HTMLPSegmentedControlElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2437,8 +2437,8 @@ declare global {
         new (): HTMLPSpinnerElement;
     };
     interface HTMLPStepperHorizontalElementEventMap {
-        "stepChange": StepperHorizontalUpdateEvent;
-        "update": StepperHorizontalUpdateEvent;
+        "stepChange": StepperHorizontalUpdateEventDetail;
+        "update": StepperHorizontalUpdateEventDetail;
     }
     interface HTMLPStepperHorizontalElement extends Components.PStepperHorizontal, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPStepperHorizontalElementEventMap>(type: K, listener: (this: HTMLPStepperHorizontalElement, ev: PStepperHorizontalCustomEvent<HTMLPStepperHorizontalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2461,8 +2461,8 @@ declare global {
         new (): HTMLPStepperHorizontalItemElement;
     };
     interface HTMLPSwitchElementEventMap {
-        "switchChange": SwitchUpdateEvent;
-        "update": SwitchUpdateEvent;
+        "switchChange": SwitchUpdateEventDetail;
+        "update": SwitchUpdateEventDetail;
     }
     interface HTMLPSwitchElement extends Components.PSwitch, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPSwitchElementEventMap>(type: K, listener: (this: HTMLPSwitchElement, ev: PSwitchCustomEvent<HTMLPSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2479,8 +2479,8 @@ declare global {
         new (): HTMLPSwitchElement;
     };
     interface HTMLPTableElementEventMap {
-        "sortingChange": TableUpdateEvent;
-        "update": TableUpdateEvent;
+        "sortingChange": TableUpdateEventDetail;
+        "update": TableUpdateEventDetail;
     }
     interface HTMLPTableElement extends Components.PTable, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPTableElementEventMap>(type: K, listener: (this: HTMLPTableElement, ev: PTableCustomEvent<HTMLPTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2533,8 +2533,8 @@ declare global {
         new (): HTMLPTableRowElement;
     };
     interface HTMLPTabsElementEventMap {
-        "tabChange": TabsUpdateEvent;
-        "update": TabsUpdateEvent;
+        "tabChange": TabsUpdateEventDetail;
+        "update": TabsUpdateEventDetail;
     }
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPTabsElementEventMap>(type: K, listener: (this: HTMLPTabsElement, ev: PTabsCustomEvent<HTMLPTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2551,8 +2551,8 @@ declare global {
         new (): HTMLPTabsElement;
     };
     interface HTMLPTabsBarElementEventMap {
-        "tabChange": TabsBarUpdateEvent;
-        "update": TabsBarUpdateEvent;
+        "tabChange": TabsBarUpdateEventDetail;
+        "update": TabsBarUpdateEventDetail;
     }
     interface HTMLPTabsBarElement extends Components.PTabsBar, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPTabsBarElementEventMap>(type: K, listener: (this: HTMLPTabsBarElement, ev: PTabsBarCustomEvent<HTMLPTabsBarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2741,11 +2741,11 @@ declare namespace LocalJSX {
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when accordion state is changed.
          */
-        "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionUpdateEvent>) => void;
+        "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionUpdateEventDetail>) => void;
         /**
           * Emitted when accordion state is changed.
          */
-        "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEvent>) => void;
+        "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEventDetail>) => void;
         /**
           * Defines if accordion is open.
          */
@@ -3015,11 +3015,11 @@ declare namespace LocalJSX {
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when carousel's content slides.
          */
-        "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselUpdateEvent>) => void;
+        "onCarouselChange"?: (event: PCarouselCustomEvent<CarouselUpdateEventDetail>) => void;
         /**
           * Emitted when carousel's content slides.
          */
-        "onUpdate"?: (event: PCarouselCustomEvent<CarouselUpdateEvent>) => void;
+        "onUpdate"?: (event: PCarouselCustomEvent<CarouselUpdateEventDetail>) => void;
         /**
           * If false, the carousel will not show pagination bullets at the bottom.
          */
@@ -3307,7 +3307,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when activeIdentifier is changed.
          */
-        "onUpdate"?: (event: PFlyoutNavigationCustomEvent<FlyoutNavigationUpdateEvent>) => void;
+        "onUpdate"?: (event: PFlyoutNavigationCustomEvent<FlyoutNavigationUpdateEventDetail>) => void;
         /**
           * If true, the flyout-navigation is visualized as opened.
          */
@@ -3747,7 +3747,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the like button is clicked.
          */
-        "onLike"?: (event: PLinkTileProductCustomEvent<LinkTileProductLikeEvent>) => void;
+        "onLike"?: (event: PLinkTileProductCustomEvent<LinkTileProductLikeEventDetail>) => void;
         /**
           * Product price
          */
@@ -3887,7 +3887,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the selection is changed.
          */
-        "onUpdate"?: (event: PMultiSelectCustomEvent<MultiSelectUpdateEvent>) => void;
+        "onUpdate"?: (event: PMultiSelectCustomEvent<MultiSelectUpdateEventDetail>) => void;
         /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
          */
@@ -3952,11 +3952,11 @@ declare namespace LocalJSX {
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when the page changes.
          */
-        "onPageChange"?: (event: PPaginationCustomEvent<PaginationUpdateEvent>) => void;
+        "onPageChange"?: (event: PPaginationCustomEvent<PaginationUpdateEventDetail>) => void;
         /**
           * Emitted when the page changes.
          */
-        "onUpdate"?: (event: PPaginationCustomEvent<PaginationUpdateEvent>) => void;
+        "onUpdate"?: (event: PPaginationCustomEvent<PaginationUpdateEventDetail>) => void;
         /**
           * Show or hide the button to jump to the last page.
          */
@@ -4006,7 +4006,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when selected element changes.
          */
-        "onUpdate"?: (event: PPinCodeCustomEvent<PinCodeUpdateEvent>) => void;
+        "onUpdate"?: (event: PPinCodeCustomEvent<PinCodeUpdateEventDetail>) => void;
         /**
           * Marks the Pin Code as required.
          */
@@ -4118,11 +4118,11 @@ declare namespace LocalJSX {
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when selected element changes.
          */
-        "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEvent>) => void;
+        "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEventDetail>) => void;
         /**
           * Emitted when selected element changes.
          */
-        "onUpdate"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEvent>) => void;
+        "onUpdate"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEventDetail>) => void;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
@@ -4224,11 +4224,11 @@ declare namespace LocalJSX {
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active step is changed.
          */
-        "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEvent>) => void;
+        "onStepChange"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEventDetail>) => void;
         /**
           * Emitted when active step is changed.
          */
-        "onUpdate"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEvent>) => void;
+        "onUpdate"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEventDetail>) => void;
         /**
           * The text size.
          */
@@ -4272,11 +4272,11 @@ declare namespace LocalJSX {
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when checked status is changed.
          */
-        "onSwitchChange"?: (event: PSwitchCustomEvent<SwitchUpdateEvent>) => void;
+        "onSwitchChange"?: (event: PSwitchCustomEvent<SwitchUpdateEventDetail>) => void;
         /**
           * Emitted when checked status is changed.
          */
-        "onUpdate"?: (event: PSwitchCustomEvent<SwitchUpdateEvent>) => void;
+        "onUpdate"?: (event: PSwitchCustomEvent<SwitchUpdateEventDetail>) => void;
         /**
           * Stretches the contents to max available space.
          */
@@ -4294,11 +4294,11 @@ declare namespace LocalJSX {
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when sorting is changed.
          */
-        "onSortingChange"?: (event: PTableCustomEvent<TableUpdateEvent>) => void;
+        "onSortingChange"?: (event: PTableCustomEvent<TableUpdateEventDetail>) => void;
         /**
           * Emitted when sorting is changed.
          */
-        "onUpdate"?: (event: PTableCustomEvent<TableUpdateEvent>) => void;
+        "onUpdate"?: (event: PTableCustomEvent<TableUpdateEventDetail>) => void;
         /**
           * Adapts the color when used on dark background.
          */
@@ -4348,11 +4348,11 @@ declare namespace LocalJSX {
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active tab is changed.
          */
-        "onTabChange"?: (event: PTabsCustomEvent<TabsUpdateEvent>) => void;
+        "onTabChange"?: (event: PTabsCustomEvent<TabsUpdateEventDetail>) => void;
         /**
           * Emitted when active tab is changed.
          */
-        "onUpdate"?: (event: PTabsCustomEvent<TabsUpdateEvent>) => void;
+        "onUpdate"?: (event: PTabsCustomEvent<TabsUpdateEventDetail>) => void;
         /**
           * The text size.
          */
@@ -4382,11 +4382,11 @@ declare namespace LocalJSX {
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active tab is changed.
          */
-        "onTabChange"?: (event: PTabsBarCustomEvent<TabsBarUpdateEvent>) => void;
+        "onTabChange"?: (event: PTabsBarCustomEvent<TabsBarUpdateEventDetail>) => void;
         /**
           * Emitted when active tab is changed.
          */
-        "onUpdate"?: (event: PTabsBarCustomEvent<TabsBarUpdateEvent>) => void;
+        "onUpdate"?: (event: PTabsBarCustomEvent<TabsBarUpdateEventDetail>) => void;
         /**
           * The text size.
          */

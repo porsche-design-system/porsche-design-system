@@ -2,7 +2,7 @@ import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch,
 import {
   FLYOUT_NAVIGATION_ARIA_ATTRIBUTES,
   type FlyoutNavigationAriaAttribute,
-  type FlyoutNavigationUpdateEvent,
+  type FlyoutNavigationUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
   syncFlyoutNavigationItemsProps,
   validateActiveIdentifier,
@@ -54,7 +54,7 @@ export class FlyoutNavigation {
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   /** Emitted when activeIdentifier is changed. */
-  @Event({ bubbles: false }) public update?: EventEmitter<FlyoutNavigationUpdateEvent>;
+  @Event({ bubbles: false }) public update?: EventEmitter<FlyoutNavigationUpdateEventDetail>;
 
   @State() private flyoutNavigationItemElements: HTMLPFlyoutNavigationItemElement[] = [];
 
@@ -68,11 +68,14 @@ export class FlyoutNavigation {
   public componentWillLoad(): void {
     this.defineFlyoutNavigationItemElements();
 
-    this.host.shadowRoot.addEventListener(INTERNAL_UPDATE_EVENT_NAME, (e: CustomEvent<FlyoutNavigationUpdateEvent>) => {
-      e.stopPropagation(); // prevents internal event from bubbling further
-      const activeIdentifier = e.detail.activeIdentifier;
-      this.update.emit({ activeIdentifier });
-    });
+    this.host.shadowRoot.addEventListener(
+      INTERNAL_UPDATE_EVENT_NAME,
+      (e: CustomEvent<FlyoutNavigationUpdateEventDetail>) => {
+        e.stopPropagation(); // prevents internal event from bubbling further
+        const activeIdentifier = e.detail.activeIdentifier;
+        this.update.emit({ activeIdentifier });
+      }
+    );
   }
 
   public componentDidLoad(): void {

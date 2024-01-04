@@ -7,7 +7,9 @@ import { forceUpdate } from '@stencil/core';
 export const STEPPER_HORIZONTAL_SIZES = ['small', 'medium'] as const;
 export type StepperHorizontalSize = (typeof STEPPER_HORIZONTAL_SIZES)[number];
 
-export type StepperHorizontalUpdateEvent = { activeStepIndex: number };
+/** @deprecated */
+export type StepperHorizontalUpdateEvent = StepperHorizontalUpdateEventDetail;
+export type StepperHorizontalUpdateEventDetail = { activeStepIndex: number };
 
 export const getIndexOfStepWithStateCurrent = (stepperHorizontalItems: HTMLPStepperHorizontalItemElement[]): number => {
   return stepperHorizontalItems.findIndex((item) => item.state === 'current');

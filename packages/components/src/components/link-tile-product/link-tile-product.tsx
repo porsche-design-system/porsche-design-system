@@ -14,7 +14,7 @@ import {
   anchorSlot,
   headerSlot,
   LinkTileProductAspectRatio,
-  LinkTileProductLikeEvent,
+  LinkTileProductLikeEventDetail,
   LinkTileProductTarget,
   TILE_PRODUCT_ASPECT_RATIOS,
 } from './link-tile-product-utils';
@@ -71,7 +71,7 @@ export class LinkTileProduct {
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the like button is clicked. */
-  @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeEvent>;
+  @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeEventDetail>;
 
   public componentWillLoad(): void {
     throwIfInvalidLinkTileProductUsage(this.host, this.href);
