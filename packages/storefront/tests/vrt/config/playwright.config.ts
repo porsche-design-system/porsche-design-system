@@ -13,13 +13,13 @@ export default defineConfig({
   testDir: '../specs',
   testMatch: '**.vrt.ts',
   /* Maximum time one test can run for. */
-  timeout: 60 * 1000,
+  timeout: 30 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 60000,
+    timeout: 15000,
     toMatchSnapshot: {
       maxDiffPixelRatio: undefined,
       maxDiffPixels: undefined,
@@ -70,7 +70,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'yarn start',
+    command: 'yarn start-app',
     port: 8080,
   },
 });
