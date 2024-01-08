@@ -55,12 +55,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 + SegmentedControlUpdateEventDetail
 - StepperHorizontalUpdateEvent
 + StepperHorizontalUpdateEventDetail
-- StepperHorizontalUpdateEvent
-+ StepperHorizontalUpdateEventDetail
 - SwitchUpdateEvent
 + SwitchUpdateEventDetail
-- TableUpdateEvent
-+ TableUpdateEventDetail
 - TableUpdateEvent
 + TableUpdateEventDetail
 - TabsUpdateEvent
