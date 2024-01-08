@@ -40,7 +40,7 @@ const generateComponentMeta = (): void => {
   description?: string;
   type: string;
   defaultValue: boolean | number | string | object | null;
-  allowedValues?: 'boolean' | 'number' | 'string' | object | string[];
+  allowedValues?: 'boolean' | 'number' | 'string' | object | string[] | number[];
   deprecatedValues?: string[];
   isRequired?: boolean;
   isDeprecated?: boolean;
@@ -75,7 +75,7 @@ const generateComponentMeta = (): void => {
   breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
   arrayProps?: string[]; // array of props that are of type array
   allowedPropValues?: {
-    [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
+    [propName: string]: 'boolean' | 'number' | 'string' | object | string[] | number[];
   };
   deprecatedPropValues?: {
     [propName: string]: string[]; // array of values of a prop that are deprecated
@@ -106,7 +106,7 @@ const generateComponentMeta = (): void => {
     description?: string;
     type: string;
     defaultValue: boolean | number | string | object | null;
-    allowedValues?: 'boolean' | 'number' | 'string' | object | string[];
+    allowedValues?: 'boolean' | 'number' | 'string' | object | string[] | number[];
     deprecatedValues?: string[];
     isRequired?: boolean;
     isDeprecated?: boolean;
@@ -143,7 +143,7 @@ const generateComponentMeta = (): void => {
     breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
     arrayProps?: string[]; // array of props that are of type array
     allowedPropValues?: {
-      [propName: string]: 'boolean' | 'number' | 'string' | object | string[];
+      [propName: string]: 'boolean' | 'number' | 'string' | object | string[] | number[];
     };
     deprecatedPropValues?: {
       [propName: string]: string[]; // array of values of a prop that are deprecated
@@ -302,6 +302,7 @@ const generateComponentMeta = (): void => {
             ?.replace(/\/\*\*/, '')
             .replace(/\*\/\n/, '')
             .replace(/\s+\*/g, '')
+            .replace(/\/\/ prettier-ignore/g, '')
             .trim(),
           type: propType.replace(/(?:BreakpointCustomizable|SelectedAriaAttributes)<(.+?)>/, '$1').trim(), // contains trailing space
           defaultValue: cleanedValue,

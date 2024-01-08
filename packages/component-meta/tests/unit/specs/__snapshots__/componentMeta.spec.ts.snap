@@ -7035,7 +7035,7 @@ exports[`should match snapshot 1`] = `
           "base": "column",
           "xs": "row",
         },
-        "description": "Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.   // prettier-ignore",
+        "description": "Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.",
         "isBreakpointCustomizable": true,
         "type": "LinkTileModelSignatureLinkDirection",
       },
