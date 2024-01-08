@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import type { AccordionUpdateEvent } from '@porsche-design-system/components-react/ssr';
+import type { AccordionUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 import { PAccordion } from '@porsche-design-system/components-react/ssr';
 
 const AccordionLayoutShiftPage = (): JSX.Element => {
@@ -7,13 +7,13 @@ const AccordionLayoutShiftPage = (): JSX.Element => {
   const [isOpen2, setIsOpen2] = useState<boolean>(true);
   const [isOpen3, setIsOpen3] = useState<boolean>(true);
 
-  const onUpdate1 = useCallback((e: CustomEvent<AccordionUpdateEvent>) => {
+  const onUpdate1 = useCallback((e: CustomEvent<AccordionUpdateEventDetail>) => {
     setIsOpen1(e.detail.open);
   }, []);
-  const onUpdate2 = useCallback((e: CustomEvent<AccordionUpdateEvent>) => {
+  const onUpdate2 = useCallback((e: CustomEvent<AccordionUpdateEventDetail>) => {
     setIsOpen2(e.detail.open);
   }, []);
-  const onUpdate3 = useCallback((e: CustomEvent<AccordionUpdateEvent>) => {
+  const onUpdate3 = useCallback((e: CustomEvent<AccordionUpdateEventDetail>) => {
     setIsOpen3(e.detail.open);
   }, []);
 
