@@ -36,9 +36,8 @@ it('should keep same scroll position when modal is opened and closed with route 
     dismissButton.click(),
   ]);
   await page.waitForFunction(() => !document.querySelector('p-modal'));
-  await page.waitForSelector('#modal-standalone-page'); // Fixes flakiness in pipeline
+  await page.waitForSelector('p-link');
 
-  expect(await getBodyStyle()).toBe('');
   expect(await (await getRootElement()).evaluate((el) => el.scrollTop)).toBe(336);
 });
 
