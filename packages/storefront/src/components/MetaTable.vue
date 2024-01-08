@@ -25,7 +25,7 @@
             <code>{{ paramCase(name) }}</code>
             <span v-if="value.isDeprecated" title="deprecated"> 🚫</span>
           </td>
-          <td v-html="formatPropDescription(value)"></td>
+          <td v-html="formatDescription(value)"></td>
           <td v-html="formatPropType(value)"></td>
           <td v-html="formatPropDefaultValue(value)"></td>
         </tr>
@@ -105,7 +105,7 @@
         : false;
     }
 
-    public formatPropDescription(meta: PropMeta | EventMeta): string {
+    public formatDescription(meta: PropMeta | EventMeta): string {
       return formatPropDescription(meta);
     }
 
