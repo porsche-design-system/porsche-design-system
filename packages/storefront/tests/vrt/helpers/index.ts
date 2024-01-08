@@ -1,1 +1,1 @@
-export const mainViewSelector = '#app > main';
+export const schemes = ['light', 'dark'] as const;
