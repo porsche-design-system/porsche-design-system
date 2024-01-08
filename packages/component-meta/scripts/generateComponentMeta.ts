@@ -286,6 +286,7 @@ const generateComponentMeta = (): void => {
             ?.replace(/\/\*\*/, '')
             .replace(/\*\/\n/, '')
             .replace(/\s+\*/g, '')
+            .replace(/\/\/ prettier-ignore/g, '')
             .trim(),
           type: propType.replace(/(?:BreakpointCustomizable|SelectedAriaAttributes)<(.+?)>/, '$1').trim(), // contains trailing space
           defaultValue: cleanedValue,
