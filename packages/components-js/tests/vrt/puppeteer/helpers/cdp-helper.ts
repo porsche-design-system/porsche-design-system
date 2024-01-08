@@ -7,18 +7,10 @@ type BackendNodeId = Protocol.DOM.BackendNodeId;
 const FORCED_PSEUDO_CLASSES = ['hover', 'focus', 'focus-visible'] as const;
 type ForcedPseudoClasses = (typeof FORCED_PSEUDO_CLASSES)[number];
 
-const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
 const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
-const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
 
-export const forceHoverState = (page: Page, selector: string): Promise<void> => {
-  return forceStateOnElements(page, selector, HOVER_STATE);
-};
 export const forceFocusState = (page: Page, selector: string): Promise<void> => {
   return forceStateOnElements(page, selector, FOCUS_STATE);
-};
-export const forceFocusHoverState = (page: Page, selector: string): Promise<void> => {
-  return forceStateOnElements(page, selector, FOCUS_HOVER_STATE);
 };
 
 const forceStateOnElements = async (page: Page, selector: string, states: ForcedPseudoClasses[]): Promise<void> => {

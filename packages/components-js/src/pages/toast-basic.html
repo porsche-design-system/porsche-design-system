@@ -1,0 +1,35 @@
+<style>
+  #app {
+    /* TODO: not needed as soon as all top layer components are refactored with iFrames */
+    transform: unset;
+  }
+</style>
+
+<div class="visualize-grid">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<p-toast></p-toast>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-toast').addMessage({ text: 'Some message' });
+  });
+</script>

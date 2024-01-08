@@ -13,9 +13,8 @@ For more information and a complete overview of all available Porsche icons, hea
 ([Porsche Icons](https://icons.porsche.com)).  
 To reference an icon just use the `name` property with a predefined icon id.
 
-<Notification heading="Important note" state="error">
-  With the previous major version v2 it was possible to accidentally define an icon name with camel case syntax. 
-  This isn't possible anymore, typings have been adapted properly. Please use param case syntax instead.
+<Notification heading="RTL (right-to-left) mode" state="success">
+  Certain icons are automatically flipped when used in RTL (right-to-left) mode. For more information and best practices on this topic, see <a href="https://rtlstyling.com/posts/rtl-styling#bidirectional-icons">RTL Styling Guide</a>.
 </Notification>
 
 <Playground :markup="name" :config="config"></Playground>

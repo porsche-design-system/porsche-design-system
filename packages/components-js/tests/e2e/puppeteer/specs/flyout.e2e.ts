@@ -122,7 +122,7 @@ it('should not be visible when not open', async () => {
   expect(await getFlyoutVisibility()).toBe('hidden');
 });
 
-it('should visible after opened', async () => {
+it('should be visible after opened', async () => {
   await initBasicFlyout({ open: false });
   const host = await getHost();
   await setProperty(host, 'open', true);

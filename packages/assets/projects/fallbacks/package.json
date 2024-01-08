@@ -33,7 +33,7 @@
     "build:lib:esm": "tsc --build tsconfig.lib.esm.json",
     "build:www": "rm -rf ./www && mkdir -p ./www && cp -r ./public/. ./www && cp -r ./dist/tmp/. ./www/.",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js --coverage",
-    "test:vrt": "TYPE=VRT PORT=4201 jest --colors -c tests/vrt/config/jest.config.ts",
+    "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": " rm -rf ./cdn && rm -rf ./dist && rm -rf ./tmp && rm -rf ./www"
