@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"@deprecated since v3.0.0, will be removed with next major release, use \`dismissButton\` instead. Defines if the banner can be closed/removed by the user.","type":"boolean","defaultValue":null,"isDeprecated":true,"allowedValues":"boolean"} 1`] = `<code>null</code>`;
+
+exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"A Boolean attribute indicating that a like button should be shown.","type":"boolean","defaultValue":true,"allowedValues":"boolean"} 1`] = `<code>true</code>`;
+
+exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"Adapts the model of the component.","type":"ModelSignatureModel","defaultValue":"911","allowedValues":["718","911","boxster","cayenne","cayman","macan","panamera","taycan","turbo-s","turbo"]} 1`] = `<code>'911'</code>`;
+
+exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.   // prettier-ignore","type":"LinkTileModelSignatureLinkDirection","defaultValue":{"base":"column","xs":"row"},"isBreakpointCustomizable":true,"allowedValues":["row","column"]} 1`] = `<code>{ "base": "column", "xs": "row" }</code>`;
+
+exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"If true the modal uses max viewport height and width. Should only be used for mobile.","type":"boolean","defaultValue":false,"isBreakpointCustomizable":true,"allowedValues":"boolean"} 1`] = `<code>false</code>`;
+
+exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"The selected values.","type":"string[]","defaultValue":[],"isArray":true,"allowedValues":"string"} 1`] = `<code>[]</code>`;
+
+exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"The text size.","type":"AccordionSize","defaultValue":"small","isBreakpointCustomizable":true,"allowedValues":["small","medium"]} 1`] = `<code>'small'</code>`;
+
+exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"The total count of items.","type":"number","defaultValue":1,"isRequired":true,"allowedValues":"number"} 1`] = `<code>1</code>`;
+
+exports[`formatPropDescription() should return correctly formatted string for: {"description":"@deprecated since v3.0.0, will be removed with next major release, use \`dismissButton\` instead. Defines if the banner can be closed/removed by the user.","type":"boolean","defaultValue":null,"isDeprecated":true,"allowedValues":"boolean"} 1`] = `<strong class="deprecated">deprecated</strong> since v3.0.0, will be removed with next major release, use <code>dismissButton</code> instead. Defines if the banner can be closed/removed by the user.`;
+
+exports[`formatPropDescription() should return correctly formatted string for: {"description":"The text size.","type":"AccordionSize","defaultValue":"small","isBreakpointCustomizable":true,"allowedValues":["small","medium"]} 1`] = `"The text size."`;
+
+exports[`formatPropDescription() should return correctly formatted string for: {"description":"When providing an url then the component will be rendered as \`<a>\`.","type":"string","defaultValue":null,"allowedValues":"string"} 1`] = `"When providing an url then the component will be rendered as <code>&lt;a&gt;</code>."`;
+
+exports[`formatPropDescription() should return correctly formatted string for: {"type":"string","defaultValue":null,"allowedValues":"string"} 1`] = `""`;
+
+exports[`formatPropType() should return correctly formatted string for: {"description":"Adapts the color when used on dark background.","type":"Theme","defaultValue":"light","allowedValues":["light","dark","auto"]} 1`] = `
+<code>type Theme =</code><br>
+<code>'light'</code><br>
+<code>'dark'</code><br>
+<code>'auto'</code>
+`;
+
+exports[`formatPropType() should return correctly formatted string for: {"description":"Add ARIA attributes.","type":"SpinnerAriaAttribute","defaultValue":null,"isAria":true,"allowedValues":{"aria-label":"string"}} 1`] = `<code>type SpinnerAriaAttribute = {<br>&nbsp;&nbsp;'aria-label'?: string;<br>}</code>`;
+
+exports[`formatPropType() should return correctly formatted string for: {"description":"Add ARIA attributes.","type":"WordmarkAriaAttribute","defaultValue":null,"isAria":true,"allowedValues":{"aria-label":"string","aria-current":"string"}} 1`] = `<code>type WordmarkAriaAttribute = {<br>&nbsp;&nbsp;'aria-label'?: string;<br>&nbsp;&nbsp;'aria-current'?: string;<br>}</code>`;
+
+exports[`formatPropType() should return correctly formatted string for: {"description":"Defines if accordion is open.","type":"boolean","defaultValue":null,"allowedValues":"boolean"} 1`] = `<code>boolean</code>`;
+
+exports[`formatPropType() should return correctly formatted string for: {"description":"Defines the heading used in accordion.","type":"string","defaultValue":null,"allowedValues":"string"} 1`] = `<code>string</code>`;
+
+exports[`formatPropType() should return correctly formatted string for: {"description":"Defines which slide to be active (zero-based numbering).","type":"number","defaultValue":0,"allowedValues":"number"} 1`] = `<code>number</code>`;
+
+exports[`formatPropType() should return correctly formatted string for: {"description":"Has no effect anymore @deprecated since v3.0.0, will be removed with next major release","type":"GridGutter","defaultValue":{"base":16,"s":24,"m":36},"isDeprecated":true,"isBreakpointCustomizable":true,"allowedValues":[16,24,36]} 1`] = `
+<code>type GridGutter =</code><br>
+<code>16</code><br>
+<code>24</code><br>
+<code>36</code><br>
+<code>BreakpointCustomizable&lt;GridGutter&gt;</code>
+`;
+
+exports[`formatPropType() should return correctly formatted string for: {"description":"Sets the initial value of the segmented-control.","type":"string | number","defaultValue":null,"allowedValues":["string","number"]} 1`] = `
+<code>string</code><br>
+<code>'number'</code>
+`;
+
+exports[`formatPropType() should return correctly formatted string for: {"description":"State of the banner.","type":"BannerState","defaultValue":"info","allowedValues":["info","warning","error","neutral"],"deprecatedValues":["neutral"]} 1`] = `
+<code>type BannerState =</code><br>
+<code>'info'</code><br>
+<code>'warning'</code><br>
+<code>'error'</code><br>
+<code>'neutral'</code><span title="deprecated"> 🚫</span>
+`;
+
+exports[`formatPropType() should return correctly formatted string for: {"description":"The selected values.","type":"string[]","defaultValue":[],"isArray":true,"allowedValues":"string"} 1`] = `<code>string[]</code>`;
+
+exports[`formatPropType() should return correctly formatted string for: {"description":"The text size.","type":"AccordionSize","defaultValue":"small","isBreakpointCustomizable":true,"allowedValues":["small","medium"]} 1`] = `
+<code>type AccordionSize =</code><br>
+<code>'small'</code><br>
+<code>'medium'</code><br>
+<code>BreakpointCustomizable&lt;AccordionSize&gt;</code>
+`;
