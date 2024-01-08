@@ -56,16 +56,17 @@ export const formatHtml = (input: string): string => {
 export const wrapInCodeTag = (input: string): string => `<code>${formatHtml(input)}</code>`;
 
 export const formatPropDescription = (meta: PropMeta): string => {
-  return meta.description
-    ? meta.description
-        .replace(/@(deprecated)/, '<strong class="deprecated">$1</strong>') // deprecated annotation
-        .replace(/`(.+?)`/g, (_, g1) => `<code>${formatHtml(g1)}</code>`) // prop references in backticks
-    : '';
+  return (
+    meta.description
+      ?.replace(/@(deprecated)/, '<strong class="deprecated">$1</strong>') // deprecated annotation
+      .replace(/`(.+?)`/g, (_, g1) => `<code>${formatHtml(g1)}</code>`) || '' // prop references in backticks
+  );
 };
 
 export const formatPropType = (meta: PropMeta): string => {
-  return Array.isArray(meta.allowedValues) || meta.isBreakpointCustomizable
-    ? [
+  if (Array.isArray(meta.allowedValues) || meta.isBreakpointCustomizable) {
+    return (
+      [
         ...(meta.type.includes('|')
           ? [] // inline union type is taken care of via allowedValues
           : [
@@ -74,35 +75,41 @@ export const formatPropType = (meta: PropMeta): string => {
                 : meta.type, // simple type
             ]),
         ...(Array.isArray(meta.allowedValues)
-          ? meta.allowedValues.map(
-              (val) =>
-                wrapInCodeTag(
-                  val === 'string'
-                    ? val // `string` type is fine
-                    : val === null
-                      ? 'undefined' // `null` isn't allowed as part of validateProps, but `undefined` is
-                      : typeof val === 'number'
-                        ? `${val}` // numbers don't need string quotes, e.g. `1`, `911`
-                        : `'${val}'` // everything else is a string value, e.g. `'start'` or `'16:9'`
-                ) + (meta.deprecatedValues?.includes(val) ? '<span title="deprecated"> 🚫</span>' : '')
-            )
+          ? meta.allowedValues.map((val) => {
+              let newVal: string;
+              if (val === 'string') {
+                newVal = val; // `string` type is fine
+              } else if (val === null) {
+                newVal = 'undefined'; // `null` isn't allowed as part of validateProps, but `undefined` is
+              } else if (typeof val === 'number') {
+                newVal = `${val}`; // numbers don't need string quotes, e.g. `1`, `911`
+              } else {
+                newVal = `'${val}'`; // everything else is a string value, e.g. `'start'` or `'16:9'`
+              }
+
+              const deprecatedIcon = meta.deprecatedValues?.includes(val) ? '<span title="deprecated"> 🚫</span>' : '';
+              return wrapInCodeTag(newVal) + deprecatedIcon;
+            })
           : []),
-        ...(meta.isBreakpointCustomizable ? [`BreakpointCustomizable<${meta.type}>`] : []),
+        ...(meta.isBreakpointCustomizable ? [`BreakpointCustomizable<${meta.type}>`] : []), // BreakpointCustomizable<T> generic type
       ]
         // allowedValues are already wrapped with code tag because of trailing deprecated icon, but others are not
         .map((item) => (item.match(/<code>.+?<\/code>/) ? item : wrapInCodeTag(item)))
         .join('<br>\n')
-    : meta.isAria && typeof meta.allowedValues === 'object'
-      ? // aria props
-        wrapInCodeTag(
-          `type ${meta.type} = {
+    );
+  } else if (meta.isAria && typeof meta.allowedValues === 'object') {
+    // aria props
+    return wrapInCodeTag(
+      `type ${meta.type} = {
 ${Object.entries(meta.allowedValues)
   // possible values are output as string, even though actual types are more precise
   .map(([key, val]) => `&nbsp;&nbsp;'${key}'?: ${val};`)
   .join('\n')}
 }`
-        )
-      : wrapInCodeTag(meta.type); // all other cases
+    );
+  } else {
+    return wrapInCodeTag(meta.type); // all other cases
+  }
 };
 
 export const formatPropDefaultValue = (meta: PropMeta): string => {
