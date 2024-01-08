@@ -107,10 +107,10 @@ ${Object.entries(meta.allowedValues)
 
 export const formatPropDefaultValue = (meta: PropMeta): string => {
   return wrapInCodeTag(
-    (typeof meta.defaultValue === 'string'
+    typeof meta.defaultValue === 'string'
       ? `'${meta.defaultValue}'`
-      : typeof meta.defaultValue === 'object' || typeof meta.defaultValue === 'boolean'
+      : meta.defaultValue !== null && (typeof meta.defaultValue === 'object' || typeof meta.defaultValue === 'boolean')
         ? JSON.stringify(meta.defaultValue).replace(/[{:,]/g, '$& ').replace(/}/g, ' $&')
-        : `${meta.defaultValue}`) ?? 'undefined'
+        : `${meta.defaultValue ?? 'undefined'}`
   );
 };

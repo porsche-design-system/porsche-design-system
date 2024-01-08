@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"@deprecated since v3.0.0, will be removed with next major release, use \`dismissButton\` instead. Defines if the banner can be closed/removed by the user.","type":"boolean","defaultValue":null,"isDeprecated":true,"allowedValues":"boolean"} 1`] = `<code>null</code>`;
+exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"@deprecated since v3.0.0, will be removed with next major release, use \`dismissButton\` instead. Defines if the banner can be closed/removed by the user.","type":"boolean","defaultValue":null,"isDeprecated":true,"allowedValues":"boolean"} 1`] = `<code>undefined</code>`;
 
 exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"A Boolean attribute indicating that a like button should be shown.","type":"boolean","defaultValue":true,"allowedValues":"boolean"} 1`] = `<code>true</code>`;
 
