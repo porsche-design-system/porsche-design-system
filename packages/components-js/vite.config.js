@@ -21,7 +21,7 @@ const transformIndexHtmlPlugin = () => {
       const headPartials = [
         getInitialStyles({ prefix: ['', 'my-prefix'] }),
         getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }),
-        // Icon links produce too many requests in flyout/modal iframes page which leads to ERR_INSUFFICIENT_RESOURCES error
+        // Icon links produce too many requests in flyout iframes page which leads to ERR_INSUFFICIENT_RESOURCES error
         // getIconLinks({ icons: [...ICON_NAMES] }),
         // TODO: we should provide inline styles instead for getFontFaceStylesheet(), which is recommended by Lighthouse and we could replace cdn urls by localhost
         // getFontFaceStylesheet(),
