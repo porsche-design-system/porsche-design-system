@@ -23,7 +23,6 @@ test(`should have certain amount of components`, () => {
 const viewportWidths = [320, 480, 760, 1000, 1300, 1760] as const;
 
 components.forEach((component) => {
-  // executed in Chrome + Safari
   test.describe(component, async () => {
     viewportWidths.forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
