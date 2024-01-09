@@ -5,7 +5,7 @@ set -o pipefail
 
 if
   [[ "--components-react/nextjs" == "${1}" ]] ||
-  [[ "--components-react/remix" == "${1}" ]]
+  [[ "--components-react/remix" == "${1}" ]] ||
   [[ "--assets:fallbacks" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
