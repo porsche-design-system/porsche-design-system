@@ -236,6 +236,18 @@ describe('formatPropType()', () => {
       allowedValues: 'string',
     },
     {
+      description: 'Scrolls the scroll area to the left either smooth or immediately.',
+      type: 'ScrollerScrollToPosition',
+      defaultValue: null,
+      allowedValues: { scrollPosition: 'number', isSmooth: 'boolean' },
+    },
+    {
+      description: 'Override the default wordings that are used for aria-labels on the next/prev and page buttons.',
+      type: 'PaginationInternationalization',
+      defaultValue: { root: 'Pagination', prev: 'Previous page', next: 'Next page', page: 'Page' },
+      allowedValues: { root: 'string', prev: 'string', next: 'string', page: 'string' },
+    },
+    {
       description: 'Add ARIA attributes.',
       type: 'SpinnerAriaAttribute',
       defaultValue: null,

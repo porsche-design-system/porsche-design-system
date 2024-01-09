@@ -68,6 +68,82 @@ const generatedRoutes = {
     "path": "/flyout",
     "name": "Flyout"
   },
+  "flyoutBasic": {
+    "path": "/flyout-basic",
+    "name": "FlyoutBasic"
+  },
+  "flyoutFooter": {
+    "path": "/flyout-footer",
+    "name": "FlyoutFooter"
+  },
+  "flyoutFooterScrollableContent": {
+    "path": "/flyout-footer-scrollable-content",
+    "name": "FlyoutFooterScrollableContent"
+  },
+  "flyoutHeader": {
+    "path": "/flyout-header",
+    "name": "FlyoutHeader"
+  },
+  "flyoutHeaderFooter": {
+    "path": "/flyout-header-footer",
+    "name": "FlyoutHeaderFooter"
+  },
+  "flyoutHeaderFooterScrollableContent": {
+    "path": "/flyout-header-footer-scrollable-content",
+    "name": "FlyoutHeaderFooterScrollableContent"
+  },
+  "flyoutHeaderFooterScrolled": {
+    "path": "/flyout-header-footer-scrolled",
+    "name": "FlyoutHeaderFooterScrolled"
+  },
+  "flyoutHeaderFooterScrolledRelative": {
+    "path": "/flyout-header-footer-scrolled-relative",
+    "name": "FlyoutHeaderFooterScrolledRelative"
+  },
+  "flyoutHeaderFooterSubfooter": {
+    "path": "/flyout-header-footer-subfooter",
+    "name": "FlyoutHeaderFooterSubfooter"
+  },
+  "flyoutHeaderFooterSubfooterPositionLeft": {
+    "path": "/flyout-header-footer-subfooter-position-left",
+    "name": "FlyoutHeaderFooterSubfooterPositionLeft"
+  },
+  "flyoutHeaderFooterSubfooterPositionStart": {
+    "path": "/flyout-header-footer-subfooter-position-start",
+    "name": "FlyoutHeaderFooterSubfooterPositionStart"
+  },
+  "flyoutHeaderFooterSubfooterScrollableContent": {
+    "path": "/flyout-header-footer-subfooter-scrollable-content",
+    "name": "FlyoutHeaderFooterSubfooterScrollableContent"
+  },
+  "flyoutHeaderFooterSubfooterScrolled": {
+    "path": "/flyout-header-footer-subfooter-scrolled",
+    "name": "FlyoutHeaderFooterSubfooterScrolled"
+  },
+  "flyoutHeaderFooterSubfooterScrolledOverlap": {
+    "path": "/flyout-header-footer-subfooter-scrolled-overlap",
+    "name": "FlyoutHeaderFooterSubfooterScrolledOverlap"
+  },
+  "flyoutHeaderFooterSubfooterSlottedAnchor": {
+    "path": "/flyout-header-footer-subfooter-slotted-anchor",
+    "name": "FlyoutHeaderFooterSubfooterSlottedAnchor"
+  },
+  "flyoutHeaderScrollableContent": {
+    "path": "/flyout-header-scrollable-content",
+    "name": "FlyoutHeaderScrollableContent"
+  },
+  "flyoutMaxWidthContent": {
+    "path": "/flyout-max-width-content",
+    "name": "FlyoutMaxWidthContent"
+  },
+  "flyoutMaxWidthContentPositionLeft": {
+    "path": "/flyout-max-width-content-position-left",
+    "name": "FlyoutMaxWidthContentPositionLeft"
+  },
+  "flyoutMaxWidthContentPositionStart": {
+    "path": "/flyout-max-width-content-position-start",
+    "name": "FlyoutMaxWidthContentPositionStart"
+  },
   "flyoutNavigation": {
     "path": "/flyout-navigation",
     "name": "FlyoutNavigation"
@@ -87,6 +163,14 @@ const generatedRoutes = {
   "flyoutNavigationScrolled": {
     "path": "/flyout-navigation-scrolled",
     "name": "FlyoutNavigationScrolled"
+  },
+  "flyoutPositionLeft": {
+    "path": "/flyout-position-left",
+    "name": "FlyoutPositionLeft"
+  },
+  "flyoutPositionStart": {
+    "path": "/flyout-position-start",
+    "name": "FlyoutPositionStart"
   },
   "grid": {
     "path": "/grid",

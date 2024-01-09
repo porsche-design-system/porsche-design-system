@@ -59,9 +59,13 @@ exports[`formatPropType() should return correctly formatted string for: {"descri
 <code>BreakpointCustomizable&lt;GridGutter&gt;</code>
 `;
 
+exports[`formatPropType() should return correctly formatted string for: {"description":"Override the default wordings that are used for aria-labels on the next/prev and page buttons.","type":"PaginationInternationalization","defaultValue":{"root":"Pagination","prev":"Previous page","next":"Next page","page":"Page"},"allowedValues":{"root":"string","prev":"string","next":"string","page":"string"}} 1`] = `<code>type PaginationInternationalization = {<br>&nbsp;&nbsp;'root'?: string;<br>&nbsp;&nbsp;'prev'?: string;<br>&nbsp;&nbsp;'next'?: string;<br>&nbsp;&nbsp;'page'?: string;<br>}</code>`;
+
+exports[`formatPropType() should return correctly formatted string for: {"description":"Scrolls the scroll area to the left either smooth or immediately.","type":"ScrollerScrollToPosition","defaultValue":null,"allowedValues":{"scrollPosition":"number","isSmooth":"boolean"}} 1`] = `<code>type ScrollerScrollToPosition = {<br>&nbsp;&nbsp;'scrollPosition'?: number;<br>&nbsp;&nbsp;'isSmooth'?: boolean;<br>}</code>`;
+
 exports[`formatPropType() should return correctly formatted string for: {"description":"Sets the initial value of the segmented-control.","type":"string | number","defaultValue":null,"allowedValues":["string","number"]} 1`] = `
 <code>string</code><br>
-<code>'number'</code>
+<code>number</code>
 `;
 
 exports[`formatPropType() should return correctly formatted string for: {"description":"State of the banner.","type":"BannerState","defaultValue":"info","allowedValues":["info","warning","error","neutral"],"deprecatedValues":["neutral"]} 1`] = `

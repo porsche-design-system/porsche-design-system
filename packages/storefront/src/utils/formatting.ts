@@ -77,8 +77,8 @@ export const formatPropType = (meta: PropMeta): string => {
         ...(Array.isArray(meta.allowedValues)
           ? meta.allowedValues.map((val) => {
               let newVal: string;
-              if (val === 'string') {
-                newVal = val; // `string` type is fine
+              if (val === 'string' || val === 'number') {
+                newVal = val; // `string` and `number` types are fine
               } else if (val === null) {
                 newVal = 'undefined'; // `null` isn't allowed as part of validateProps, but `undefined` is
               } else if (typeof val === 'number') {
@@ -97,11 +97,12 @@ export const formatPropType = (meta: PropMeta): string => {
         .map((item) => (item.match(/<code>.+?<\/code>/) ? item : wrapInCodeTag(item)))
         .join('<br>\n')
     );
-  } else if (meta.isAria && typeof meta.allowedValues === 'object') {
+  } else if (meta.isAria || typeof meta.allowedValues === 'object') {
+    console.log(meta.allowedValues);
     // aria props
     return wrapInCodeTag(
       `type ${meta.type} = {
-${Object.entries(meta.allowedValues)
+${Object.entries(meta.allowedValues as object)
   // possible values are output as string, even though actual types are more precise
   .map(([key, val]) => `&nbsp;&nbsp;'${key}'?: ${val};`)
   .join('\n')}
