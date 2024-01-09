@@ -5,10 +5,7 @@ set -o pipefail
 
 if
   [[ "--components-react/nextjs" == "${1}" ]] ||
-  [[ "--components-react/remix" == "${1}" ]];
-then
-  PUPPETEER_CACHE_DIR="$PWD/node_modules/.cache/puppeteer" yarn test:vrt:${1:2} --ci
-elif
+  [[ "--components-react/remix" == "${1}" ]]
   [[ "--assets:fallbacks" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
