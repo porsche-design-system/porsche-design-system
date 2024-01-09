@@ -20,6 +20,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-button');
 const getButton = () => selectNode(page, 'p-button >>> button');
+const getLoadingMessage = async () => (await selectNode(page, 'p-button >>> .status')).evaluate((el) => el.textContent);
 
 const initButton = (opts?: { isLoading?: boolean; isDisabled?: boolean }): Promise<void> => {
   const { isLoading = false, isDisabled = false } = opts || {};
@@ -424,5 +425,33 @@ describe('accessibility', () => {
     });
     await waitForStencilLifecycle(page);
     await expectA11yToMatchSnapshot(page, button, { message: 'aria-pressed attribute' });
+  });
+
+  fit('should expose correct loading message initially: loading: false', async () => {
+    await initButton();
+
+    expect(await getLoadingMessage()).toBe('');
+  });
+
+  fit('should expose correct loading message initially: loading:true', async () => {
+    await initButton({ isLoading: true });
+
+    expect(await getLoadingMessage()).toBe('Loading');
+  });
+
+  fit('should expose correct loading message if loading is changed programmatically', async () => {
+    await initButton();
+    const host = await getHost();
+
+    expect(await getLoadingMessage()).toBe('');
+
+    await setProperty(host, 'loading', true);
+    await waitForStencilLifecycle(page);
+
+    expect(await getLoadingMessage()).toBe('Loading');
+
+    await setProperty(host, 'loading', false);
+
+    expect(await getLoadingMessage()).toBe('Loading finished');
   });
 });
