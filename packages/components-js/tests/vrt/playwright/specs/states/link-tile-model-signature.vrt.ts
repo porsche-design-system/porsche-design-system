@@ -1,6 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
 import {
-  baseViewportWidth,
+  viewportWidthM,
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
@@ -51,6 +51,6 @@ test.describe(component, async () => {
 
   test(`should have no visual regression for :hover + :focus-visible with theme light`, async ({ page }) => {
     await scenario(page, undefined);
-    await expect(page.locator('#app')).toHaveScreenshot(`${component}-${baseViewportWidth}-states-theme-light.png`);
+    await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-states-theme-light.png`);
   });
 });

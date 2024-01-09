@@ -1,8 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
+import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
-  baseSchemes,
-  baseThemes,
-  baseViewportWidth,
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
@@ -55,19 +53,19 @@ const scenario = async (
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  baseThemes.forEach((theme) => {
+  themes.forEach((theme) => {
     PSEUDO_STATES.forEach((pseudoState) => {
       test(`should have no visual regression for :${pseudoState} with theme ${theme}`, async ({ page }) => {
         await scenario(page, theme, pseudoState);
         await page.mouse.click(0, 0); // click top left corner of the page to remove autofocus
         await expect(page.locator('#app')).toHaveScreenshot(
-          `${component}-${baseViewportWidth}-states-${pseudoState}-theme-${theme}.png`
+          `${component}-${viewportWidthM}-states-${pseudoState}-theme-${theme}.png`
         );
       });
     });
   });
 
-  baseSchemes.forEach((scheme) => {
+  schemes.forEach((scheme) => {
     PSEUDO_STATES.forEach((pseudoState) => {
       test(`should have no visual regression for :${pseudoState} with theme auto and prefers-color-scheme ${scheme}`, async ({
         page,
@@ -75,7 +73,7 @@ test.describe(component, async () => {
         await scenario(page, 'auto', pseudoState, scheme);
         await page.mouse.click(0, 0); // click top left corner of the page to remove autofocus
         await expect(page.locator('#app')).toHaveScreenshot(
-          `${component}-${baseViewportWidth}-states-${pseudoState}-theme-${scheme}.png`
+          `${component}-${viewportWidthM}-states-${pseudoState}-theme-${scheme}.png`
         ); // fixture is aliased since result has to be equal
       });
     });

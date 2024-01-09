@@ -1,9 +1,15 @@
 import { expect, test } from '@playwright/test';
+import {
+  viewportWidth3XL,
+  viewportWidth4XL,
+  viewportWidths,
+  viewportWidthXXL,
+} from '@porsche-design-system/shared/testing/playwright.vrt.config';
 
 const style = 'styles-spacing';
 
 test.describe(style, async () => {
-  [320, 480, 760, 1300, 1760, 1920, 2560].forEach((viewportWidth) => {
+  ([...viewportWidths, viewportWidthXXL, viewportWidth3XL, viewportWidth4XL] as const).forEach((viewportWidth) => {
     test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
       await page.goto(`/${style}`);
       await page.setViewportSize({ width: viewportWidth, height: 600 });

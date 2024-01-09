@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 
 const components = (TAG_NAMES as unknown as TagName[])
   .filter((tagName) => {
@@ -19,8 +20,6 @@ const components = (TAG_NAMES as unknown as TagName[])
 test(`should have certain amount of components`, () => {
   expect(components.length).toBe(53);
 });
-
-const viewportWidths = [320, 480, 760, 1000, 1300, 1760] as const;
 
 components.forEach((component) => {
   test.describe(component, async () => {
