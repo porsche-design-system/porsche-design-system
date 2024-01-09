@@ -13,6 +13,9 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'off', // 'on-first-retry' causes CI job to get stuck
     viewport: null,
+
+    // disable JavaScript to simulate SSR
+    javaScriptEnabled: false,
   },
   projects: [
     {
