@@ -520,6 +520,27 @@ const generateComponentMeta = (): void => {
             {} as ComponentMeta['allowedPropValues']
           );
 
+    // custom workaround for variant prop of p-headline which isn't validated because of complexity
+    // and therefore can't be easily extracted
+    if (tagName === 'p-headline') {
+      allowedPropValues.variant = [
+        'large-title',
+        'headline-1',
+        'headline-2',
+        'headline-3',
+        'headline-4',
+        'headline-5',
+        'xx-small', // only these are breakpoint customizable
+        'x-small', // only these are breakpoint customizable
+        'small', // only these are breakpoint customizable
+        'medium', // only these are breakpoint customizable
+        'large', // only these are breakpoint customizable
+        'x-large', // only these are breakpoint customizable
+        'inherit', // only these are breakpoint customizable
+      ];
+      breakpointCustomizableProps.push('variant');
+    }
+
     // new format
     breakpointCustomizableProps.forEach((propName) => (propsMeta[propName].isBreakpointCustomizable = true));
     Object.entries(allowedPropValues).forEach(
