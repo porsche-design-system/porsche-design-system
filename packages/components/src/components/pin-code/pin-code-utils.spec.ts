@@ -328,14 +328,14 @@ describe('isCurrentInput()', () => {
     [1, ' 2  ', 4, false],
     [2, ' 2  ', 4, false],
     [3, ' 2  ', 4, false],
-    [0, '3   ', 4, false], // Some value is entered: set current-input id on the first input element which does not have a value
-    [1, '3   ', 4, true],
-    [2, '3   ', 4, false],
-    [3, '3   ', 4, false],
-    [0, '3 2 ', 4, false], // Some value is entered: set current-input id on the first input element which does not have a value
-    [1, '3 2 ', 4, true],
-    [2, '3 2 ', 4, false],
-    [3, '3 2 ', 4, false],
+    [0, '1   ', 4, false], // Some value is entered: set current-input id on the first input element which does not have a value
+    [1, '1   ', 4, true],
+    [2, '1   ', 4, false],
+    [3, '1   ', 4, false],
+    [0, '1 3 ', 4, false], // Some value is entered: set current-input id on the first input element which does not have a value
+    [1, '1 3 ', 4, true],
+    [2, '1 3 ', 4, false],
+    [3, '1 3 ', 4, false],
     [0, '123 56', 6, false], // Some value is entered: set current-input id on the first input element which does not have a value
     [1, '123 56', 6, false],
     [2, '123 56', 6, false],
