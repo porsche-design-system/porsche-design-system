@@ -69,15 +69,15 @@ it.each(cases.map((segments) => [segments.filter(Boolean).join(' > '), ...segmen
 for (const [category, pages] of Object.entries(STOREFRONT_CONFIG)) {
   for (const [page, tabs] of Object.entries(pages)) {
     ((category: string, page: string) => {
-      const [tab] = Object.keys(tabs);
-      it(`should navigate to "${category} > ${page} ${tab !== '0' ? '> ' + tab : ''}"`, async () => {
-        console.log(`${category} > ${page} ${tab !== '0' ? '> ' + tab : ''}`);
+      const tab = !Array.isArray(tabs) ? Object.keys(tabs)[0] : undefined;
+      it(`should navigate to "${category} > ${page} ${tab !== undefined ? '> ' + tab : ''}"`, async () => {
+        console.log(`${category} > ${page} ${tab !== undefined ? '> ' + tab : ''}`);
         const [accordionElement] = (await browserPage.$x(
           `//div[contains(@class, 'menu-desktop')]//nav/p-accordion[@heading='${category}']`
         )) as ElementHandle<HTMLElement>[];
         await accordionElement.click();
 
-        const href = `\/${paramCase(category)}\/${paramCase(page)}${tab !== '0' ? '/' + paramCase(tab) : ''}`;
+        const href = `\/${paramCase(category)}\/${paramCase(page)}${tab !== undefined ? '/' + paramCase(tab) : ''}`;
         const [linkPureElement] = (await browserPage.$x(
           `//div[contains(@class, 'menu-desktop')]//nav//p-link-pure/a[contains(., '${page}')][@href='${href}']/parent::p-link-pure`
         )) as ElementHandle<HTMLElement>[];
