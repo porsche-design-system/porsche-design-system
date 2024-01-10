@@ -100,7 +100,7 @@ iframe {
 select:focus,
 select {
   position: relative;
-  z-index: 999999;
+  z-index: 999;
   font: revert;
   outline: none;
   outline-offset: 0;

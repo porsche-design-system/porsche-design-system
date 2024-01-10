@@ -66,7 +66,7 @@ const updateRoute = async (opts) => {
       (await import(`./src/${directory}/${page}.html?raw`)).default
         .replace(/>(\s)*</g, '><') // trim whitespace between tags
         .replace(
-          /(<iframe.*?src=".*?\?iframe=true).*?(".*?>)/g,
+          /(<iframe.*?src=".*?\?iframe=true).*?(".*?>)/gs,
           `$1&theme=${theme}&dir=${dir}&scale=${scale}&transition=${transition}&animation=${animation}$2`
         )
         .replace(
