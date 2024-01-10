@@ -10,12 +10,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 import { COMPONENT_CHUNK_NAMES } from '../../../../projects/components-wrapper';
 import { ICON_NAMES } from '@porsche-design-system/assets';
-
-// TODO: why are the following constants prefixed with base?
-export const baseThemes = ['light', 'dark'] as const;
-export const baseSchemes = ['light', 'dark'] as const;
-export const baseViewportWidth = 1000;
-export const baseViewportWidths = [320, 480, 760, 1300, 1760] as const;
+import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 
 const themeableTagNames = (TAG_NAMES as unknown as TagName[]).filter(
   (tagName) => getComponentMeta(tagName).isThemeable
@@ -242,5 +237,5 @@ export const setContentWithDesignSystem = async (
     await waitForForcedComponentTheme(page, forceComponentTheme);
   }
 
-  await page.setViewportSize({ width: baseViewportWidth, height: 600 });
+  await page.setViewportSize({ width: viewportWidthM, height: 600 });
 };

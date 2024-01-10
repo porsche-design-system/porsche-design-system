@@ -1,9 +1,7 @@
 import { expect, test } from '@playwright/test';
+import { viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 
-const fallbacks = ['cookies', 'browser-support'] as const;
-const viewportWidths = [320, 480, 760, 1000, 1300, 1760] as const;
-
-fallbacks.forEach((fallback) => {
+(['cookies', 'browser-support'] as const).forEach((fallback) => {
   test.describe(fallback, async () => {
     viewportWidths.forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
