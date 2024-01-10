@@ -1,9 +1,11 @@
 import type { Page, ElementHandle } from '@playwright/test';
 import { expect, test } from '@playwright/test';
-import { getDSRPonyfill } from '@porsche-design-system/components-js/partials';
+import { getDSRPonyfill, getInitialStyles } from '@porsche-design-system/components-js/partials';
 import { setProperty, supportsDeclarativeShadowDOM, waitForComponentsReady, waitForStencilLifecycle } from '../utils';
 
 export const setPageWithContent = async (page: Page): Promise<void> => {
+  const headPartials = getInitialStyles();
+
   await page.setContent(
     `<!DOCTYPE html>
 <html lang="en">
@@ -16,6 +18,7 @@ export const setPageWithContent = async (page: Page): Promise<void> => {
         --p-transition-duration: 0s;
       }
     </style>
+    ${headPartials}
   </head>
   <body>
     <p-button>
@@ -102,7 +105,7 @@ test('should handle dsr ponyfill phase correctly', async ({ page }) => {
   expect(await getComputedColor(button)).toBe('');
 });
 
-test.skip('should handle hydration phase after ponyfill correctly', async ({ page }) => {
+test('should handle hydration phase after ponyfill correctly', async ({ page }) => {
   await setPageWithContent(page);
   const [buttonWithTemplate, button] = await getButtons(page);
 
@@ -111,14 +114,14 @@ test.skip('should handle hydration phase after ponyfill correctly', async ({ pag
 
   expect(await hasTemplateTag(buttonWithTemplate)).toBe(false);
   expect(await hasShadowRoot(buttonWithTemplate)).toBe(true);
-  expect(await getComputedColor(buttonWithTemplate)).toBe('rgb(50, 54, 57)');
+  expect(await getComputedColor(buttonWithTemplate)).toBe('rgb(251, 252, 255)');
 
   expect(await hasTemplateTag(button)).toBe(false);
   expect(await hasShadowRoot(button)).toBe(true);
-  expect(await getComputedColor(button)).toBe('rgb(50, 54, 57)');
+  expect(await getComputedColor(button)).toBe('rgb(251, 252, 255)');
 });
 
-test.skip('should handle prop change after ponyfill and hydration correctly', async ({ page }) => {
+test('should handle prop change after ponyfill and hydration correctly', async ({ page }) => {
   await setPageWithContent(page);
   const [buttonWithTemplate, button] = await getButtons(page);
 
@@ -132,9 +135,9 @@ test.skip('should handle prop change after ponyfill and hydration correctly', as
 
   expect(await hasTemplateTag(buttonWithTemplate)).toBe(false);
   expect(await hasShadowRoot(buttonWithTemplate)).toBe(true);
-  expect(await getComputedColor(buttonWithTemplate)).toBe('rgb(213, 0, 28)');
+  expect(await getComputedColor(buttonWithTemplate)).toBe('rgb(251, 252, 255)');
 
   expect(await hasTemplateTag(button)).toBe(false);
   expect(await hasShadowRoot(button)).toBe(true);
-  expect(await getComputedColor(button)).toBe('rgb(213, 0, 28)');
+  expect(await getComputedColor(button)).toBe('rgb(251, 252, 255)');
 });

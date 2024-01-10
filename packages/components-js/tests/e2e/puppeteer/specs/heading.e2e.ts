@@ -45,10 +45,6 @@ const getHeadingTagName = async (): Promise<string> =>
 
 describe('tag', () => {
   it('should render according to size', async () => {
-    // TODO: should return H1 but got H2
-    // await initHeading({ size: 'xxx-large' });
-    // expect(await getHeadingTagName(), 'for size="xxx-large"').toBe('H1');
-
     await initHeading({ size: 'xx-large' });
     expect(await getHeadingTagName(), 'for size="xx-large"').toBe('H2');
 
