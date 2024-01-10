@@ -255,13 +255,9 @@ const generateComponentMeta = (): void => {
                   .replace(/,( })/, '$1') ?? null; // remove trailing comma in original multiline objects
 
         if (typeof cleanedValue === 'string') {
-          if (cleanedValue.match(/^\d+$/)) {
+          if (cleanedValue.match(/^\d+$/) && !propValue.match(/^['"]\d+['"]$/)) {
             // parse numbers
             cleanedValue = parseInt(cleanedValue);
-
-            if (tagName === 'p-model-signature' && cleanedValue === 911) {
-              cleanedValue = `${cleanedValue}`; // convert it back to string
-            }
           } else if (cleanedValue.match(/^{.+}$/)) {
             // parse objects
             cleanedValue = eval(`(${cleanedValue})`);

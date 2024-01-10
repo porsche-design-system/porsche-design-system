@@ -6959,7 +6959,7 @@ exports[`should match snapshot 1`] = `
         "base": "column",
         "xs": "row",
       },
-      "model": 911,
+      "model": "911",
       "weight": "semi-bold",
     },
     "propsMeta": {
@@ -7027,7 +7027,7 @@ exports[`should match snapshot 1`] = `
           "turbo-s",
           "turbo",
         ],
-        "defaultValue": 911,
+        "defaultValue": "911",
         "description": "Adapts the model of the component.",
         "type": "LinkTileModelSignatureModel",
       },
