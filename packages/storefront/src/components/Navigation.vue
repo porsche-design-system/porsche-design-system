@@ -14,7 +14,7 @@
       <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">
           <router-link
-            :to="getRoute(category, page, !Array.isArray(tabs) && Object.keys(tabs)[0])"
+            :to="getRoute(category, page, !Array.isArray(tabs) ? Object.keys(tabs)[0] : undefined)"
             v-slot="{ isActive, href, navigate }"
           >
             <p-link-pure :theme="storefrontTheme" icon="none" :active="isActive">
@@ -58,7 +58,8 @@
     }
 
     public getRoute(category: string, page: string, tab?: string): string {
-      return `/${paramCase(category)}/${paramCase(page)}${tab ? '/' + paramCase(tab) : ''}`;
+      const params = [category, page, tab].filter((param) => param !== undefined);
+      return `/${params.map((x) => paramCase(x)).join('/')}`;
     }
 
     private created(): void {
