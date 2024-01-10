@@ -30,12 +30,11 @@ import '@porsche-design-system/components-react/jsdom-polyfill';
 // SingleComponent.tsx
 
 import { useCallback, useState } from 'react';
-import { PTabsBar } from '@porsche-design-system/components-react';
-import type { TabsBarUpdateEvent } from '@porsche-design-system/components-react';
+import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react';
 
 export const SingleComponent = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState(0);
-  const onUpdate = useCallback((e: CustomEvent<TabsBarUpdateEvent>) => {
+  const onUpdate = useCallback((e: CustomEvent<TabsBarUpdateEventDetail>) => {
     setActiveTab(e.detail.activeTabIndex);
   }, []);
 

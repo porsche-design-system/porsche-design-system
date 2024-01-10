@@ -22,7 +22,7 @@ import type {
   TabsBarGradientColor,
   TabsBarGradientColorScheme,
   TabsBarSize,
-  TabsBarUpdateEvent,
+  TabsBarUpdateEventDetail,
   TabsBarWeight,
   TabsBarWeightDeprecated,
 } from './tabs-bar-utils';
@@ -76,10 +76,10 @@ export class TabsBar {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsBarUpdateEvent>;
+  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsBarUpdateEventDetail>;
 
   /** Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public update: EventEmitter<TabsBarUpdateEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<TabsBarUpdateEventDetail>;
 
   @State() private tabElements: HTMLElement[] = [];
 

@@ -27,7 +27,7 @@ import '@porsche-design-system/components-angular/jsdom-polyfill';
 // single-component.ts
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { TabsBarUpdateEvent } from '@porsche-design-system/components-angular';
+import type { TabsBarUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'single-component',
@@ -44,7 +44,7 @@ import type { TabsBarUpdateEvent } from '@porsche-design-system/components-angul
 export class SingleComponent {
   tabIndex: number = 0;
 
-  onUpdate(e: CustomEvent<TabsBarUpdateEvent>) {
+  onUpdate(e: CustomEvent<TabsBarUpdateEventDetail>) {
     this.tabIndex = e.detail.activeTabIndex;
   }
 }

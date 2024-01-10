@@ -1,8 +1,9 @@
-import type { PropMeta } from '@porsche-design-system/component-meta';
+import type { EventMeta, PropMeta } from '@porsche-design-system/component-meta';
 import {
   cleanMarkup,
   convertMarkup,
   escapeHtml,
+  formatEventType,
   formatPropDefaultValue,
   formatPropDescription,
   formatPropType,
@@ -325,5 +326,37 @@ describe('formatPropDefaultValue()', () => {
     },
   ])('should return correctly formatted string for: %j', (meta) => {
     expect(formatPropDefaultValue(meta)).toMatchSnapshot();
+  });
+});
+
+describe('formatEventType()', () => {
+  it.each<EventMeta>([
+    {
+      description:
+        "@deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when carousel's content slides.",
+      type: 'CarouselUpdateEventDetail',
+      typeDetail: '{ activeIndex: number; previousIndex: number }',
+      isDeprecated: true,
+    },
+    {
+      description: "Emitted when carousel's content slides.",
+      type: 'CarouselUpdateEventDetail',
+      typeDetail: '{ activeIndex: number; previousIndex: number }',
+    },
+    { description: 'Emitted when the component requests to be dismissed.', type: 'void' },
+    {
+      description: 'Emitted when the like button is clicked.',
+      type: 'LinkTileProductLikeEventDetail',
+      typeDetail: '{ liked: boolean }',
+    },
+    {
+      description:
+        '@deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when sorting is changed.',
+      type: 'TableUpdateEventDetail',
+      typeDetail: '{ id: string; active?: boolean; direction?: Direction }',
+      isDeprecated: true,
+    },
+  ])('should return correctly formatted string for: %j', (meta) => {
+    expect(formatEventType(meta)).toMatchSnapshot();
   });
 });

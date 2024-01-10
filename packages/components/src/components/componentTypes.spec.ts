@@ -58,10 +58,10 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
           [];
 
         // TODO: Refactor test/event names to allow events with custom types to be called other than update
-        if (type === 'void' || type === 'LinkTileProductLikeEvent') {
+        if (type === 'void' || type === 'LinkTileProductLikeEventDetail') {
           expect(true).toBe(true);
         } else {
-          expect(type).toMatch(new RegExp(`^${pascalCase(`${componentName}UpdateEvent`)}$`));
+          expect(type).toMatch(new RegExp(`^${pascalCase(`${componentName}UpdateEventDetail`)}$`));
         }
       });
     });

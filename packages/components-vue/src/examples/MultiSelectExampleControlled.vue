@@ -1,11 +1,14 @@
 <script setup lang="ts">
-  import type { MultiSelectUpdateEvent } from '@porsche-design-system/components-vue';
-  import { PMultiSelect, PMultiSelectOption } from '@porsche-design-system/components-vue';
+  import {
+    type MultiSelectUpdateEventDetail,
+    PMultiSelect,
+    PMultiSelectOption,
+  } from '@porsche-design-system/components-vue';
   import { computed, ref } from 'vue';
 
   const selectedValues = ref<string[]>([]);
 
-  const onUpdate = (e: MultiSelectUpdateEvent) => {
+  const onUpdate = (e: MultiSelectUpdateEventDetail) => {
     selectedValues.value = e.value;
   };
 
