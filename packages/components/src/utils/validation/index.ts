@@ -17,7 +17,4 @@ export * from '../link-button/align-label';
 export * from '../link-button/button-type';
 export * from '../../components/heading/heading-tag';
 export * from '../link-button/link-button-variant';
-export * from '../typography/typography-text-color';
-export * from '../typography/text-size';
-export * from '../typography/typography-text-weight';
 export * from '../theme';
