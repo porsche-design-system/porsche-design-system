@@ -88,6 +88,16 @@ import { LinkTileModelSignatureComponent } from './generated/link-tile-model-sig
 import { LinkTileProductComponent } from './generated/link-tile-product.component';
 import { MarqueComponent } from './generated/marque.component';
 import { ModalComponent } from './generated/modal.component';
+import { ModalBasicComponent } from './generated/modal-basic.component';
+import { ModalDisableCloseButtonComponent } from './generated/modal-disable-close-button.component';
+import { ModalFullscreenComponent } from './generated/modal-fullscreen.component';
+import { ModalFullscreenResponsiveComponent } from './generated/modal-fullscreen-responsive.component';
+import { ModalScrollableComponent } from './generated/modal-scrollable.component';
+import { ModalSlottedHeadingComponent } from './generated/modal-slotted-heading.component';
+import { ModalStickyFooterComponent } from './generated/modal-sticky-footer.component';
+import { ModalStretchToFullWidthComponent } from './generated/modal-stretch-to-full-width.component';
+import { ModalWithoutDismissButtonComponent } from './generated/modal-without-dismiss-button.component';
+import { ModalWithoutHeadingComponent } from './generated/modal-without-heading.component';
 import { ModelSignatureComponent } from './generated/model-signature.component';
 import { MultiSelectComponent } from './generated/multi-select.component';
 import { OverviewComponent } from './generated/overview.component';
@@ -182,6 +192,16 @@ export const generatedPages = [
   LinkTileProductComponent,
   MarqueComponent,
   ModalComponent,
+  ModalBasicComponent,
+  ModalDisableCloseButtonComponent,
+  ModalFullscreenComponent,
+  ModalFullscreenResponsiveComponent,
+  ModalScrollableComponent,
+  ModalSlottedHeadingComponent,
+  ModalStickyFooterComponent,
+  ModalStretchToFullWidthComponent,
+  ModalWithoutDismissButtonComponent,
+  ModalWithoutHeadingComponent,
   ModelSignatureComponent,
   MultiSelectComponent,
   OverviewComponent,
@@ -495,6 +515,56 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Modal',
     path: 'modal',
     component: ModalComponent,
+  },
+  {
+    name: 'Modal Basic',
+    path: 'modal-basic',
+    component: ModalBasicComponent,
+  },
+  {
+    name: 'Modal Disable Close Button',
+    path: 'modal-disable-close-button',
+    component: ModalDisableCloseButtonComponent,
+  },
+  {
+    name: 'Modal Fullscreen',
+    path: 'modal-fullscreen',
+    component: ModalFullscreenComponent,
+  },
+  {
+    name: 'Modal Fullscreen Responsive',
+    path: 'modal-fullscreen-responsive',
+    component: ModalFullscreenResponsiveComponent,
+  },
+  {
+    name: 'Modal Scrollable',
+    path: 'modal-scrollable',
+    component: ModalScrollableComponent,
+  },
+  {
+    name: 'Modal Slotted Heading',
+    path: 'modal-slotted-heading',
+    component: ModalSlottedHeadingComponent,
+  },
+  {
+    name: 'Modal Sticky Footer',
+    path: 'modal-sticky-footer',
+    component: ModalStickyFooterComponent,
+  },
+  {
+    name: 'Modal Stretch To Full Width',
+    path: 'modal-stretch-to-full-width',
+    component: ModalStretchToFullWidthComponent,
+  },
+  {
+    name: 'Modal Without Dismiss Button',
+    path: 'modal-without-dismiss-button',
+    component: ModalWithoutDismissButtonComponent,
+  },
+  {
+    name: 'Modal Without Heading',
+    path: 'modal-without-heading',
+    component: ModalWithoutHeadingComponent,
   },
   {
     name: 'Model Signature',
