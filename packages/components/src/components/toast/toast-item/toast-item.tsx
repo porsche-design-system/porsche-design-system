@@ -37,8 +37,9 @@ export class ToastItem {
   /** Adapts the toast-item color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  // Since the event listener is registered on parent p-toast, the event needs to bubble
   /** Emitted when the close button is clicked. */
-  @Event() public dismiss?: EventEmitter<void>; // TODO: this is the only event without { bubbles: false }
+  @Event() public dismiss?: EventEmitter<void>;
 
   public connectedCallback(): void {
     throwIfRootNodeIsNotOneOfKind(this.host, ['p-toast']);

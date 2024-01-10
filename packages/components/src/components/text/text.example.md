@@ -85,9 +85,9 @@ end are used to visualize it.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { TEXT_SIZES } from './text-size';
-import { TEXT_WEIGHTS, TEXT_WEIGHTS_DEPRECATED } from './text-weight';
-import { TEXT_COLORS, TEXT_COLORS_DEPRECATED } from './text-color';
+import { TEXT_SIZES } from '../../utils/typography/text-size';
+import { TYPOGRAPHY_TEXT_WEIGHTS, TYPOGRAPHY_TEXT_WEIGHTS_DEPRECATED } from '../../utils/typography/typography-text-weight';
+import { TYPOGRAPHY_TEXT_COLORS, TYPOGRAPHY_TEXT_COLORS_DEPRECATED } from '../../utils/typography/typography-text-color';
 import { TYPOGRAPHY_ALIGNS, TYPOGRAPHY_ALIGNS_DEPRECATED } from '../../utils'; 
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
@@ -109,14 +109,14 @@ export default class Code extends Vue {
 <p-text><blockquote>${sentence}</blockquote></p-text>`;
 
   color = 'primary';
-  colors = TEXT_COLORS.map(item => TEXT_COLORS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
+  colors = TYPOGRAPHY_TEXT_COLORS.map(item => TYPOGRAPHY_TEXT_COLORS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get colorMarkup() {
     const style = this.color === 'inherit' ? ' style="color: deeppink;"' : '';
     return `<p-text color="${this.color}"${style}>${sentence}</p-text>`;
   }
   
   weight = 'bold';
-  weights = TEXT_WEIGHTS.map(item => TEXT_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
+  weights = TYPOGRAPHY_TEXT_WEIGHTS.map(item => TYPOGRAPHY_TEXT_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get weightMarkup() {
     return `<p-text weight="${this.weight}">${sentence}</p-text>`;
   }
