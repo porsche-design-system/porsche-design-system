@@ -9,7 +9,7 @@ import {
 } from '../../../utils';
 import { type PropTypes, type Theme } from '../../../types';
 import {
-  type FlyoutNavigationUpdateEvent,
+  type FlyoutNavigationUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
 } from '../flyout-navigation/flyout-navigation-utils';
 import { type FlyoutNavigationItemInternalHTMLProps } from './flyout-navigation-item-utils';
@@ -96,10 +96,10 @@ export class FlyoutNavigationItem {
 
   private onClickButton = (activeIdentifier: string | undefined): void => {
     this.host.dispatchEvent(
-      new CustomEvent<FlyoutNavigationUpdateEvent>(INTERNAL_UPDATE_EVENT_NAME, {
+      new CustomEvent<FlyoutNavigationUpdateEventDetail>(INTERNAL_UPDATE_EVENT_NAME, {
         bubbles: true,
         detail: { activeIdentifier },
-      } as CustomEventInit<FlyoutNavigationUpdateEvent>)
+      } as CustomEventInit<FlyoutNavigationUpdateEventDetail>)
     );
   };
 }

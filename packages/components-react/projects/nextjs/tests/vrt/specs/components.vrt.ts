@@ -26,6 +26,14 @@ components.forEach((component) => {
     viewportWidths.forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(`/${component}`);
+        // Remove selects in iframes
+        await page.evaluate(() => {
+          document.querySelectorAll('iframe').forEach((iframe) => {
+            iframe.contentDocument
+              .querySelectorAll('select[name="route"], select[name="theme"]')
+              .forEach((select) => select.remove());
+          });
+        });
         await page.setViewportSize({
           width: viewportWidth,
           height: await page.evaluate(() => document.body.clientHeight),

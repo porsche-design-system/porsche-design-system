@@ -428,7 +428,7 @@ exports[`should call validateProps() with correct parameters via render for p-mu
 exports[`should call validateProps() with correct parameters via render for p-multi-select-option: propTypes with ValidatorFunctions 1`] = `
 {
   "disabled": "boolean",
-  "value": "oneOf",
+  "value": "string",
 }
 `;
 

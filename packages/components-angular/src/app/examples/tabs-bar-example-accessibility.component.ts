@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { TabsBarUpdateEvent } from '@porsche-design-system/components-angular';
+import type { TabsBarUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-tabs-bar-example-accessibility',
@@ -45,7 +45,7 @@ export class TabsBarExampleAccessibilityComponent {
   tabIndex: number = 0;
   tabPanels: string[] = ['One', 'Two', 'Three'];
 
-  onUpdate(e: CustomEvent<TabsBarUpdateEvent>) {
+  onUpdate(e: CustomEvent<TabsBarUpdateEventDetail>) {
     this.tabIndex = e.detail.activeTabIndex;
   }
 }

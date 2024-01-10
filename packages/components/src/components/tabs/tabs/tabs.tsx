@@ -14,10 +14,16 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import { type TabsBarUpdateEvent, TABS_BAR_SIZES, TABS_BAR_WEIGHTS } from '../../tabs-bar/tabs-bar-utils';
+import { type TabsBarUpdateEventDetail, TABS_BAR_SIZES, TABS_BAR_WEIGHTS } from '../../tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
 import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS } from '../../scroller/scroller-utils';
-import type { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEvent, TabsWeight } from './tabs-utils';
+import type {
+  TabsGradientColor,
+  TabsGradientColorScheme,
+  TabsSize,
+  TabsUpdateEventDetail,
+  TabsWeight,
+} from './tabs-utils';
 import { syncTabsItemsProps } from './tabs-utils';
 
 const propTypes: PropTypes<typeof Tabs> = {
@@ -59,10 +65,10 @@ export class Tabs {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsUpdateEvent>;
+  @Event({ bubbles: false }) public tabChange: EventEmitter<TabsUpdateEventDetail>;
 
   /** Emitted when active tab is changed. */
-  @Event({ bubbles: false }) public update: EventEmitter<TabsUpdateEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<TabsUpdateEventDetail>;
 
   @State() private tabsItemElements: HTMLPTabsItemElement[] = [];
 
@@ -144,7 +150,7 @@ export class Tabs {
     });
   };
 
-  private onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEvent>): void => {
+  private onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEventDetail>): void => {
     e.stopPropagation(); // prevent double event emission because of identical name
     this.activeTabIndex = e.detail.activeTabIndex;
   };

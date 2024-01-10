@@ -1,5 +1,4 @@
-import { PScroller, PTagDismissible } from '@porsche-design-system/components-react';
-import type { ScrollerScrollToPosition } from '@porsche-design-system/components-react';
+import { type ScrollerScrollToPosition, PScroller, PTagDismissible } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
 export const ScrollerExamplePage = (): JSX.Element => {

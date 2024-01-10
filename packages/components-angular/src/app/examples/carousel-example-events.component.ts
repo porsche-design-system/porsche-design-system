@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { CarouselUpdateEvent } from '@porsche-design-system/components-angular';
+import type { CarouselUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-carousel-example-events',
@@ -17,7 +17,7 @@ import type { CarouselUpdateEvent } from '@porsche-design-system/components-angu
 export class CarouselExampleEventsComponent {
   lastEventDetail = 'none';
 
-  onUpdate(e: CustomEvent<CarouselUpdateEvent>) {
+  onUpdate(e: CustomEvent<CarouselUpdateEventDetail>) {
     this.lastEventDetail = JSON.stringify(e.detail);
   }
 }
