@@ -68,6 +68,16 @@ import { LinkTileModelSignaturePage } from './generated/LinkTileModelSignature';
 import { LinkTileProductPage } from './generated/LinkTileProduct';
 import { MarquePage } from './generated/Marque';
 import { ModalPage } from './generated/Modal';
+import { ModalBasicPage } from './generated/ModalBasic';
+import { ModalDisableCloseButtonPage } from './generated/ModalDisableCloseButton';
+import { ModalFullscreenPage } from './generated/ModalFullscreen';
+import { ModalFullscreenResponsivePage } from './generated/ModalFullscreenResponsive';
+import { ModalScrollablePage } from './generated/ModalScrollable';
+import { ModalSlottedHeadingPage } from './generated/ModalSlottedHeading';
+import { ModalStickyFooterPage } from './generated/ModalStickyFooter';
+import { ModalStretchToFullWidthPage } from './generated/ModalStretchToFullWidth';
+import { ModalWithoutDismissButtonPage } from './generated/ModalWithoutDismissButton';
+import { ModalWithoutHeadingPage } from './generated/ModalWithoutHeading';
 import { ModelSignaturePage } from './generated/ModelSignature';
 import { MultiSelectPage } from './generated/MultiSelect';
 import { PaginationPage } from './generated/Pagination';
@@ -378,6 +388,56 @@ export const generatedRoutes: RouteType[] = [
     name: 'Modal',
     path: '/modal',
     element: <ModalPage />,
+  },
+  {
+    name: 'Modal Basic',
+    path: '/modal-basic',
+    element: <ModalBasicPage />,
+  },
+  {
+    name: 'Modal Disable Close Button',
+    path: '/modal-disable-close-button',
+    element: <ModalDisableCloseButtonPage />,
+  },
+  {
+    name: 'Modal Fullscreen',
+    path: '/modal-fullscreen',
+    element: <ModalFullscreenPage />,
+  },
+  {
+    name: 'Modal Fullscreen Responsive',
+    path: '/modal-fullscreen-responsive',
+    element: <ModalFullscreenResponsivePage />,
+  },
+  {
+    name: 'Modal Scrollable',
+    path: '/modal-scrollable',
+    element: <ModalScrollablePage />,
+  },
+  {
+    name: 'Modal Slotted Heading',
+    path: '/modal-slotted-heading',
+    element: <ModalSlottedHeadingPage />,
+  },
+  {
+    name: 'Modal Sticky Footer',
+    path: '/modal-sticky-footer',
+    element: <ModalStickyFooterPage />,
+  },
+  {
+    name: 'Modal Stretch To Full Width',
+    path: '/modal-stretch-to-full-width',
+    element: <ModalStretchToFullWidthPage />,
+  },
+  {
+    name: 'Modal Without Dismiss Button',
+    path: '/modal-without-dismiss-button',
+    element: <ModalWithoutDismissButtonPage />,
+  },
+  {
+    name: 'Modal Without Heading',
+    path: '/modal-without-heading',
+    element: <ModalWithoutHeadingPage />,
   },
   {
     name: 'Model Signature',
