@@ -1,6 +1,5 @@
+import { type ChangeEvent, useCallback, useState } from 'react';
 import { PText, PTextFieldWrapper } from '@porsche-design-system/components-react';
-import { useCallback, useState } from 'react';
-import type { ChangeEvent } from 'react';
 
 export const TextFieldWrapperExampleSearchPage = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);

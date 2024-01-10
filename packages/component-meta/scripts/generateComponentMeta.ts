@@ -48,6 +48,12 @@ const generateComponentMeta = (): void => {
   isAria?: boolean;
   isArray?: boolean;
 };`,
+    `export type EventMeta = {
+  description?: string;
+  type: string;
+  typeDetail?: string;
+  isDeprecated?: boolean;
+};`,
     `export type ComponentMeta = {
   isDeprecated?: boolean;
   deprecationMessage?: string;
@@ -83,6 +89,7 @@ const generateComponentMeta = (): void => {
   hasSlot: boolean;
   namedSlots?: string[]; // array of named slots
   requiredNamedSlots?: { slotName: string; tagName: TagName }[]; // array of objects for each named slot with specific component tag
+  eventsMeta?: { [eventName: string]: EventMeta }; // new format
   hasEvent: boolean;
   eventNames?: string[];
   deprecatedEventNames?: string[]; // array of event names
@@ -107,6 +114,14 @@ const generateComponentMeta = (): void => {
     isAria?: boolean;
     isArray?: boolean;
   };
+
+  type EventMeta = {
+    description?: string;
+    type: string;
+    typeDetail?: string;
+    isDeprecated?: boolean;
+  };
+
   type ComponentMeta = {
     isDeprecated?: boolean;
     deprecationMessage?: string;
@@ -142,6 +157,7 @@ const generateComponentMeta = (): void => {
     hasSlot: boolean;
     namedSlots?: string[]; // array of named slots
     requiredNamedSlots?: { slotName: string; tagName: TagName }[]; // array of objects for each named slot with specific component tag
+    eventsMeta?: { [eventName: string]: EventMeta }; // new format
     hasEvent: boolean;
     eventNames?: string[];
     deprecatedEventNames?: string[]; // array of event names
@@ -615,15 +631,91 @@ const generateComponentMeta = (): void => {
     const deprecatedEventNames: ComponentMeta['deprecatedEventNames'] = [];
 
     // events
-    const eventNames = Array.from(source.matchAll(/(  \/\*\*(?:.*\n){0,3})?.+?([A-Za-z]+)\??: EventEmitter/g)).map(
-      ([, jsdoc, eventName]) => {
-        if (jsdoc?.match(/@deprecated/)) {
-          deprecatedEventNames.push(eventName);
+    const eventsMeta: ComponentMeta['eventsMeta'] = {};
+
+    const eventNames = Array.from(
+      source.matchAll(/(  \/\*\*(?:.*\n){0,3})?.+?([A-Za-z]+)\??: EventEmitter<(.+)>/g)
+    ).map(([, jsdoc, eventName, eventType]) => {
+      if (jsdoc?.match(/@deprecated/)) {
+        deprecatedEventNames.push(eventName);
+      }
+
+      let typeDetail: string;
+      if (eventType !== 'void') {
+        // let's find the file where the type is defined
+        const [, relativeEventTypePath] =
+          source.match(new RegExp(`import [\\s\\S]+?${eventType}[\\s\\S]+?from '([\\s\\S]+?)';`)) || [];
+
+        const componentSourceFilePath = componentFileNames.find((fileName) =>
+          fileName.match(new RegExp(`${tagName.replace('p-', '')}\.tsx$`))
+        );
+        const eventTypePath = path.resolve(componentSourceFilePath, `../${relativeEventTypePath}.ts`);
+        const eventTypeFileContent = fs.readFileSync(eventTypePath, 'utf8');
+
+        // type can be an alias of another type
+        const [, eventTypeAlias] =
+          eventTypeFileContent.match(new RegExp(`type ${eventType} = ([A-Z][a-z][A-Za-z]+);`)) || [];
+        let [, eventTypeDetail] =
+          eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias || eventType} = ({[\\s\\S]+?});\\n`)) || [];
+
+        if (eventTypeDetail) {
+          typeDetail = eventTypeDetail;
+        } else {
+          // check if the type is defined locally
+          let eventAliasTypeDetail: string;
+          let [, eventAliasTypeAlias] =
+            eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias} = ([A-Z][a-z][A-Za-z]+);`)) || [];
+
+          if (
+            eventAliasTypeAlias &&
+            eventTypeFileContent.match(new RegExp(`type ${eventAliasTypeAlias} = ({[\\s\\S]+?});\\n`))
+          ) {
+            // type has local alias
+            eventAliasTypeDetail = eventTypeFileContent.match(
+              new RegExp(`type ${eventAliasTypeAlias} = ({[\\s\\S]+?});\\n`)
+            )[1];
+          } else {
+            // check if type or imported from somewhere else
+            const [, relativeAliasTypePath] =
+              eventTypeFileContent.match(
+                new RegExp(`import [\\s\\S]+?${eventAliasTypeAlias}[\\s\\S]+?from '([\\s\\S]+?)';`)
+              ) || [];
+            const eventAliasTypePath = path.resolve(eventTypePath, `../${relativeAliasTypePath}.ts`);
+            const eventAliasTypeFileContent = fs.readFileSync(eventAliasTypePath, 'utf8');
+
+            eventAliasTypeDetail = eventAliasTypeFileContent.match(
+              new RegExp(`type ${eventAliasTypeAlias || eventTypeAlias} = ({[\\s\\S]+?});\\n`)
+            )?.[1];
+
+            if (!eventAliasTypeDetail) {
+              throw new Error(
+                `Couldn't find alias ${eventTypeAlias} for ${eventType} in ${eventAliasTypePath}, perhaps it is another alias which isn't supported, yet.`
+              );
+            }
+          }
+
+          typeDetail = eventAliasTypeDetail;
         }
 
-        return eventName;
+        typeDetail = typeDetail
+          .replace(/ \/\/.+/g, '') // remove comments
+          .replace(/\s+/g, ' ') // multi line to single line
+          .replace(/; }/, ' }'); // remove last semi colon
       }
-    );
+
+      eventsMeta[eventName] = {
+        description: jsdoc
+          ?.replace(/\/\*\*/, '')
+          .replace(/\*\/\n/, '')
+          .replace(/\s+\*/g, '')
+          .trim(),
+        type: eventType,
+        ...(typeDetail && { typeDetail }),
+        ...(jsdoc?.match(/@deprecated/) && { isDeprecated: true }),
+      };
+
+      return eventName;
+    });
 
     // observed attributes
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
@@ -656,6 +748,7 @@ const generateComponentMeta = (): void => {
       hasSlot,
       ...(namedSlots.length && { namedSlots }),
       ...(requiredNamedSlots.length && { requiredNamedSlots }),
+      ...(Object.keys(eventsMeta).length && { eventsMeta }), // new format
       hasEvent,
       ...(eventNames.length && { eventNames }),
       ...(deprecatedEventNames.length && { deprecatedEventNames }),

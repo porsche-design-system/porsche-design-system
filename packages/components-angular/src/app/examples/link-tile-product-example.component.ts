@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { LinkTileProductLikeEvent } from '@porsche-design-system/components-angular';
+import type { LinkTileProductLikeEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-link-tile-product-example',
@@ -25,7 +25,7 @@ import type { LinkTileProductLikeEvent } from '@porsche-design-system/components
 })
 export class LinkTileProductExampleComponent {
   liked = false;
-  handleLike(e: CustomEvent<LinkTileProductLikeEvent>) {
+  handleLike(e: CustomEvent<LinkTileProductLikeEventDetail>) {
     this.liked = !e.detail.liked;
   }
 }

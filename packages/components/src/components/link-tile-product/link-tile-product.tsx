@@ -1,3 +1,4 @@
+import { Component, Element, Event, type EventEmitter, h, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
@@ -8,14 +9,13 @@ import {
   throwIfInvalidLinkTileProductUsage,
   validateProps,
 } from '../../utils';
-import { Component, Element, Event, EventEmitter, h, Prop } from '@stencil/core';
 import { getComponentCss } from './link-tile-product-styles';
 import {
   anchorSlot,
   headerSlot,
-  LinkTileProductAspectRatio,
-  LinkTileProductLikeEvent,
-  LinkTileProductTarget,
+  type LinkTileProductAspectRatio,
+  type LinkTileProductLikeEventDetail,
+  type LinkTileProductTarget,
   TILE_PRODUCT_ASPECT_RATIOS,
 } from './link-tile-product-utils';
 
@@ -71,7 +71,7 @@ export class LinkTileProduct {
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the like button is clicked. */
-  @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeEvent>;
+  @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeEventDetail>;
 
   public componentWillLoad(): void {
     throwIfInvalidLinkTileProductUsage(this.host, this.href);

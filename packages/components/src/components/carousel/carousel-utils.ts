@@ -38,7 +38,10 @@ const INFINITE_BULLET_THRESHOLD = 5;
 export type CarouselInternationalization =
   // | Partial<Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>> | string;
   Partial<Record<'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide', string>> | string; // string to support attribute, gets removed via InputParser
+
+/** @deprecated */
 export type CarouselUpdateEvent = { activeIndex: number; previousIndex: number };
+export type CarouselUpdateEventDetail = CarouselUpdateEvent;
 
 export type SplideBreakpoints = Options['breakpoints'];
 

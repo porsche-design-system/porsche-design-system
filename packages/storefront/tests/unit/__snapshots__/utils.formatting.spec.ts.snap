@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`formatEventType() should return correctly formatted string for: {"description":"@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when carousel's content slides.","type":"CarouselUpdateEventDetail","typeDetail":"{ activeIndex: number; previousIndex: number }","isDeprecated":true} 1`] = `<code>type CarouselUpdateEventDetail = { <br>&nbsp;&nbsp;activeIndex: number; <br>&nbsp;&nbsp;previousIndex: number;<br>}<br>CustomEvent&lt;CarouselUpdateEventDetail&gt;</code>`;
+
+exports[`formatEventType() should return correctly formatted string for: {"description":"@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when sorting is changed.","type":"TableUpdateEventDetail","typeDetail":"{ id: string; active?: boolean; direction?: Direction }","isDeprecated":true} 1`] = `<code>type TableUpdateEventDetail = { <br>&nbsp;&nbsp;id: string; <br>&nbsp;&nbsp;active?: boolean; <br>&nbsp;&nbsp;direction?: Direction;<br>}<br>CustomEvent&lt;TableUpdateEventDetail&gt;</code>`;
+
+exports[`formatEventType() should return correctly formatted string for: {"description":"Emitted when carousel's content slides.","type":"CarouselUpdateEventDetail","typeDetail":"{ activeIndex: number; previousIndex: number }"} 1`] = `<code>type CarouselUpdateEventDetail = { <br>&nbsp;&nbsp;activeIndex: number; <br>&nbsp;&nbsp;previousIndex: number;<br>}<br>CustomEvent&lt;CarouselUpdateEventDetail&gt;</code>`;
+
+exports[`formatEventType() should return correctly formatted string for: {"description":"Emitted when the component requests to be dismissed.","type":"void"} 1`] = `<code>CustomEvent&lt;void&gt;</code>`;
+
+exports[`formatEventType() should return correctly formatted string for: {"description":"Emitted when the like button is clicked.","type":"LinkTileProductLikeEventDetail","typeDetail":"{ liked: boolean }"} 1`] = `<code>type LinkTileProductLikeEventDetail = { <br>&nbsp;&nbsp;liked: boolean;<br>}<br>CustomEvent&lt;LinkTileProductLikeEventDetail&gt;</code>`;
+
 exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"@deprecated since v3.0.0, will be removed with next major release, use \`dismissButton\` instead. Defines if the banner can be closed/removed by the user.","type":"boolean","defaultValue":null,"isDeprecated":true,"allowedValues":"boolean"} 1`] = `<code>undefined</code>`;
 
 exports[`formatPropDefaultValue() should return correctly formatted string for: {"description":"A Boolean attribute indicating that a like button should be shown.","type":"boolean","defaultValue":true,"allowedValues":"boolean"} 1`] = `<code>true</code>`;

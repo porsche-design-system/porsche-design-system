@@ -1,6 +1,9 @@
 <script setup lang="ts">
-  import type { MultiSelectUpdateEvent } from '@porsche-design-system/components-vue';
-  import { PMultiSelect, PMultiSelectOption } from '@porsche-design-system/components-vue';
+  import {
+    type MultiSelectUpdateEventDetail,
+    PMultiSelect,
+    PMultiSelectOption,
+  } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const selectedValues = ref<string[]>([]);
@@ -16,7 +19,7 @@
     inputValue.value = '';
   };
 
-  const handleUpdate = (e: MultiSelectUpdateEvent) => {
+  const handleUpdate = (e: MultiSelectUpdateEventDetail) => {
     selectedValues.value = e.value;
     inputValue.value = e.value.join(',');
   };

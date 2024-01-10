@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LabelState } from './stepper-horizontal-navigation-example-start.component';
+import type { LabelState } from './stepper-horizontal-navigation-example-start.component';
 
 const secondSteps: LabelState[] = [
   { label: 'One', state: 'complete' },

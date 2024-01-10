@@ -1,6 +1,6 @@
 import { paramCase } from 'change-case';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
+import { getComponentMeta, EventMeta, PropMeta } from '@porsche-design-system/component-meta';
 import { convertToAngular } from './convertToAngular';
 import { convertToReact } from './convertToReact';
 import { convertToVue } from './convertToVue';
@@ -120,5 +120,21 @@ export const formatPropDefaultValue = (meta: PropMeta): string => {
       : meta.defaultValue !== null && (typeof meta.defaultValue === 'object' || typeof meta.defaultValue === 'boolean')
         ? JSON.stringify(meta.defaultValue).replace(/[{:,]/g, '$& ').replace(/}/g, ' $&')
         : `${meta.defaultValue ?? 'undefined'}`
+  );
+};
+
+export const formatEventType = (meta: EventMeta): string => {
+  // single code block with line breaks to avoid `|` via code::before pseudo element
+  return wrapInCodeTag(
+    [
+      ...(meta.typeDetail
+        ? [
+            `type ${meta.type} = ${meta.typeDetail
+              .replace(/[{;] /g, '$&\n&nbsp;&nbsp;') // make single line objects multi line
+              .replace(/(.) }$/, '$1;\n}')}`, // add semi colon to last property and add new line
+          ]
+        : []),
+      `CustomEvent<${meta.type}>`,
+    ].join('\n')
   );
 };
