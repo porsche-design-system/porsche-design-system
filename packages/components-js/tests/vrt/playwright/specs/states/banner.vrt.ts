@@ -1,8 +1,6 @@
 import { expect, Page, test } from '@playwright/test';
+import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
-  baseSchemes,
-  baseThemes,
-  baseViewportWidth,
   forceFocusHoverState,
   forceFocusState,
   forceHoverState,
@@ -51,23 +49,19 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  baseThemes.forEach((theme) => {
+  themes.forEach((theme) => {
     test(`should have no visual regression for :hover + :focus-visible with theme ${theme}`, async ({ page }) => {
       await scenario(page, theme);
-      await expect(page.locator('#app')).toHaveScreenshot(
-        `${component}-${baseViewportWidth}-states-theme-${theme}.png`
-      );
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-states-theme-${theme}.png`);
     });
   });
 
-  baseSchemes.forEach((scheme) => {
+  schemes.forEach((scheme) => {
     test(`should have no visual regression for :hover + :focus-visible with theme auto and prefers-color-scheme ${scheme}`, async ({
       page,
     }) => {
       await scenario(page, 'auto', scheme);
-      await expect(page.locator('#app')).toHaveScreenshot(
-        `${component}-${baseViewportWidth}-states-theme-${scheme}.png`
-      ); // fixture is aliased since result has to be equal
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-states-theme-${scheme}.png`); // fixture is aliased since result has to be equal
     });
   });
 });

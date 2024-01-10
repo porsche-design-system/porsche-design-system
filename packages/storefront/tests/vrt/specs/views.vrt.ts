@@ -1,5 +1,12 @@
 import { expect, test } from '@playwright/test';
-import { schemes } from '../helpers';
+import {
+  schemes,
+  viewportWidth3XL,
+  viewportWidth4XL,
+  viewportWidthM,
+  viewportWidths,
+  viewportWidthXXL,
+} from '@porsche-design-system/shared/testing/playwright.vrt.config';
 
 const urls = {
   home: '/',
@@ -12,9 +19,7 @@ const urls = {
 for (const [name, url] of Object.entries(urls)) {
   test.describe(name, async () => {
     schemes.forEach((scheme) => {
-      const viewportWidth = 1000;
-
-      test(`should have no visual regression for viewport ${viewportWidth} and theme auto with prefers-color-scheme ${scheme}`, async ({
+      test(`should have no visual regression for viewport ${viewportWidthM} and theme auto with prefers-color-scheme ${scheme}`, async ({
         page,
       }) => {
         await page.emulateMedia({
@@ -25,14 +30,21 @@ for (const [name, url] of Object.entries(urls)) {
           (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
         );
         await page.setViewportSize({
-          width: viewportWidth,
+          width: viewportWidthM,
           height: await page.evaluate(() => document.body.clientHeight),
         });
-        await expect(page.locator('#app')).toHaveScreenshot(`views-${name}-${viewportWidth}-scheme-${scheme}.png`);
+        await expect(page.locator('#app')).toHaveScreenshot(`views-${name}-${viewportWidthM}-scheme-${scheme}.png`);
       });
     });
 
-    ([320, 480, 760, 1300, 1760, 1920, 2560, 3000] as const).forEach((viewportWidth) => {
+    (
+      [
+        ...viewportWidths.filter((x) => x !== viewportWidthM),
+        viewportWidthXXL,
+        viewportWidth3XL,
+        viewportWidth4XL,
+      ] as const
+    ).forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(url);
         await page.evaluate(() =>
