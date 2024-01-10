@@ -1,14 +1,41 @@
 <style>
-  #app {
-    /* TODO: not needed as soon as all top layer components are refactored with iFrames */
-    transform: unset;
+  p-modal {
+    mix-blend-mode: color;
+  }
+
+  div {
+    transform: translate(0);
+    height: 20rem;
   }
 </style>
 
-<p-modal
-  heading="Heading"
-  open="true"
-  fullscreen="{ base: true, xs: false, s: true, m: false, l: true, xl: false, xxl: true }"
->
-  Some Content
-</p-modal>
+<div class="visualize-grid">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div>
+  <p-modal
+    heading="Heading"
+    open="true"
+    fullscreen="{ base: true, xs: false, s: true, m: false, l: true, xl: false, xxl: true }"
+  >
+    Some Content
+  </p-modal>
+</div>

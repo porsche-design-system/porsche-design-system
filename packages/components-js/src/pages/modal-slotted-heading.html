@@ -1,17 +1,44 @@
 <style>
-  #app {
-    /* TODO: not needed as soon as all top layer components are refactored with iFrames */
-    transform: unset;
+  p-modal {
+    mix-blend-mode: color;
+  }
+
+  div {
+    transform: translate(0);
+    height: 20rem;
   }
 </style>
 
-<p-modal open="true" aria="{ 'aria-label': 'Slotted Headline' }">
-  <div slot="heading">
-    <p-text tag="div" role="doc-subtitle">Slotted Subtitle</p-text>
-    <p-heading tag="h2">Slotted heading</p-heading>
-  </div>
-  <span>
-    Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and
-    <i>italic</i> text.
-  </span>
-</p-modal>
+<div class="visualize-grid">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div>
+  <p-modal open="true" aria="{ 'aria-label': 'Slotted Headline' }">
+    <div slot="heading">
+      <p-text tag="div" role="doc-subtitle">Slotted Subtitle</p-text>
+      <p-heading tag="h2">Slotted heading</p-heading>
+    </div>
+    <span>
+      Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+      <em>emphasized</em> and <i>italic</i> text.
+    </span>
+  </p-modal>
+</div>

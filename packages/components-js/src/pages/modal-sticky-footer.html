@@ -1,11 +1,38 @@
 <style>
-  #app {
-    /* TODO: not needed as soon as all top layer components are refactored with iFrames */
-    transform: unset;
+  p-modal {
+    mix-blend-mode: color;
+  }
+
+  div {
+    transform: translate(0);
+    height: 20rem;
   }
 </style>
 
-<p-modal open="true" heading="Heading">
-  <div style="height: 110vh">Some Content</div>
-  <div slot="footer">Sticky footer</div>
-</p-modal>
+<div class="visualize-grid">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div>
+  <p-modal open="true" heading="Heading">
+    <div style="height: 110vh">Some Content</div>
+    <div slot="footer" style="height: auto">Sticky footer</div>
+  </p-modal>
+</div>
