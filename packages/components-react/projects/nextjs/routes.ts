@@ -224,6 +224,46 @@ const generatedRoutes = {
     "path": "/modal",
     "name": "Modal"
   },
+  "modalBasic": {
+    "path": "/modal-basic",
+    "name": "ModalBasic"
+  },
+  "modalDisableCloseButton": {
+    "path": "/modal-disable-close-button",
+    "name": "ModalDisableCloseButton"
+  },
+  "modalFullscreen": {
+    "path": "/modal-fullscreen",
+    "name": "ModalFullscreen"
+  },
+  "modalFullscreenResponsive": {
+    "path": "/modal-fullscreen-responsive",
+    "name": "ModalFullscreenResponsive"
+  },
+  "modalScrollable": {
+    "path": "/modal-scrollable",
+    "name": "ModalScrollable"
+  },
+  "modalSlottedHeading": {
+    "path": "/modal-slotted-heading",
+    "name": "ModalSlottedHeading"
+  },
+  "modalStickyFooter": {
+    "path": "/modal-sticky-footer",
+    "name": "ModalStickyFooter"
+  },
+  "modalStretchToFullWidth": {
+    "path": "/modal-stretch-to-full-width",
+    "name": "ModalStretchToFullWidth"
+  },
+  "modalWithoutDismissButton": {
+    "path": "/modal-without-dismiss-button",
+    "name": "ModalWithoutDismissButton"
+  },
+  "modalWithoutHeading": {
+    "path": "/modal-without-heading",
+    "name": "ModalWithoutHeading"
+  },
   "modelSignature": {
     "path": "/model-signature",
     "name": "ModelSignature"
