@@ -59,6 +59,7 @@ export const formatPropDescription = (meta: PropMeta): string => {
   return (
     meta.description
       ?.replace(/@(deprecated)/, '<strong class="deprecated">$1</strong>') // deprecated annotation
+      ?.replace(/__(experimental)__/i, '<strong class="deprecated">$1</strong>') // experimental annotation
       .replace(/`(.+?)`/g, (_, g1) => `<code>${formatHtml(g1)}</code>`) || '' // prop references in backticks
   );
 };
