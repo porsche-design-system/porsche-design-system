@@ -19,6 +19,7 @@ export * from './is-click-outside';
 export * from './is-ssr-hydration';
 export * from './jss';
 export { parseJSONAttribute } from './json';
+export * from './link-button/link-target';
 export * from './link-button-tile/link-button-tile-utils';
 export * from './tile/tile-utils';
 export * from './log';
