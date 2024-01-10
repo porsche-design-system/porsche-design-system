@@ -77,7 +77,10 @@ const generateDSRComponents = (): void => {
         .replace(/import[\s\S]*?from '(.*)';\n/g, (m, group) =>
           group.endsWith('utils')
             ? m.replace(group, utilsBundleImportPath)
-            : group.endsWith('state-message') || group.endsWith('required') || group.endsWith('label')
+            : group.endsWith('state-message') ||
+                group.endsWith('loading-message') ||
+                group.endsWith('required') ||
+                group.endsWith('label')
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )
