@@ -8,10 +8,12 @@ export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectDropdownDirection;
 export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
 
+/** @deprecated */
 export type MultiSelectUpdateEvent = {
-  value: string[];
   name: string;
+  value: string[];
 };
+export type MultiSelectUpdateEventDetail = MultiSelectUpdateEvent;
 
 export const syncMultiSelectOptionProps = (options: MultiSelectOption[], theme: Theme): void => {
   options

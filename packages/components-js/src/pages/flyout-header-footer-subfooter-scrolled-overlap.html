@@ -1,0 +1,29 @@
+<style>
+  #app {
+    /* TODO: not needed as soon as all top layer components are refactored with iFrames */
+    transform: unset;
+  }
+</style>
+
+<p-flyout open="true" position="right">
+  <div slot="header">
+    <h1>Sticky Heading</h1>
+    <p>Sticky header text</p>
+  </div>
+  <div style="height: 200px">
+    <p>Some Content</p>
+  </div>
+  <div slot="footer">
+    <p-button type="button">Footer Button</p-button>
+    <div class="scroll-into-view"></div>
+  </div>
+  <div slot="sub-footer">
+    <div style="height: 900px">Some Sub Footer Content</div>
+  </div>
+</p-flyout>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('.scroll-into-view').scrollIntoView();
+  });
+</script>

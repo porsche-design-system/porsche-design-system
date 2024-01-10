@@ -10,7 +10,7 @@ import {
   validateProps,
 } from '../../../utils';
 import { createSortedEventInitDictDetail, getAriaSort, isSortable } from './table-head-cell-utils';
-import type { Direction, TableUpdateEvent, TableHeadCellSort } from '../table/table-utils';
+import type { Direction, TableUpdateEventDetail, TableHeadCellSort } from '../table/table-utils';
 import { SORT_EVENT_NAME } from '../table/table-utils';
 import { getComponentCss } from './table-head-cell-styles';
 
@@ -74,7 +74,7 @@ export class TableHeadCell {
 
   private onButtonClick = (): void => {
     this.host.dispatchEvent(
-      new CustomEvent<TableUpdateEvent>(SORT_EVENT_NAME, createSortedEventInitDictDetail(this.sort))
+      new CustomEvent<TableUpdateEventDetail>(SORT_EVENT_NAME, createSortedEventInitDictDetail(this.sort))
     );
   };
 }

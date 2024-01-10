@@ -17,13 +17,13 @@
     PTextFieldWrapper,
   } from '@porsche-design-system/components-vue';
   import type {
-    AccordionUpdateEvent,
-    CarouselUpdateEvent,
-    PaginationUpdateEvent,
-    TableUpdateEvent,
-    SwitchUpdateEvent,
-    TabsBarUpdateEvent,
-    TabsUpdateEvent,
+    AccordionUpdateEvent, // using deprecated to verify it is still available
+    CarouselUpdateEvent, // using deprecated to verify it is still available
+    PaginationUpdateEvent, // using deprecated to verify it is still available
+    TableUpdateEvent, // using deprecated to verify it is still available
+    SwitchUpdateEvent, // using deprecated to verify it is still available
+    TabsBarUpdateEvent, // using deprecated to verify it is still available
+    TabsUpdateEvent, // using deprecated to verify it is still available
   } from '@porsche-design-system/components-vue';
 
   const accordionUpdateEventCounter = ref(0);

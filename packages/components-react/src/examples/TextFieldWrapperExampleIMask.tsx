@@ -1,5 +1,5 @@
-import { PTextFieldWrapper } from '@porsche-design-system/components-react';
 import type { LegacyRef } from 'react';
+import { PTextFieldWrapper } from '@porsche-design-system/components-react';
 import { useIMask, IMask } from 'react-imask';
 
 export const TextFieldWrapperExampleIMaskPage = (): JSX.Element => {

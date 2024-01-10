@@ -110,8 +110,7 @@ export const getComponentCss = (
       },
     }),
     ...(hasUnitOrVisibleCounter && {
-      // TODO: rename to unit-counter?
-      unit: {
+      'unit-counter': {
         ...getUnitCounterJssStyle(isDisabled, theme),
         gridArea: `1/${unitPosition === 'suffix' ? 5 : 1}/1/${unitPosition === 'suffix' ? 7 : 3}`,
         placeSelf: 'center',

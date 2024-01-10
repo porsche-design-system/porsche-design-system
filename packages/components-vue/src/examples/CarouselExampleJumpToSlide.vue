@@ -1,11 +1,10 @@
 <script setup lang="ts">
-  import type { CarouselUpdateEvent } from '@porsche-design-system/components-vue';
-  import { PCarousel } from '@porsche-design-system/components-vue';
+  import { type CarouselUpdateEventDetail, PCarousel } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const activeSlideIndex = ref(1);
 
-  const onUpdate = (e: CarouselUpdateEvent): void => {
+  const onUpdate = (e: CarouselUpdateEventDetail): void => {
     activeSlideIndex.value = e.activeIndex;
   };
   const onButtonClick = (e: MouseEvent): void => {

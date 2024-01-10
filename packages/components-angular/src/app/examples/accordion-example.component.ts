@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { AccordionUpdateEvent } from '@porsche-design-system/components-angular';
+import type { AccordionUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-accordion-example',
@@ -20,10 +20,10 @@ export class AccordionExampleComponent {
     'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et ' +
     'dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.';
 
-  onUpdate1(e: CustomEvent<AccordionUpdateEvent>) {
+  onUpdate1(e: CustomEvent<AccordionUpdateEventDetail>) {
     this.isOpen1 = e.detail.open;
   }
-  onUpdate2(e: CustomEvent<AccordionUpdateEvent>) {
+  onUpdate2(e: CustomEvent<AccordionUpdateEventDetail>) {
     this.isOpen2 = e.detail.open;
   }
 }

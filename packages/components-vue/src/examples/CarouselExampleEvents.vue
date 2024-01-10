@@ -1,10 +1,9 @@
 <script setup lang="ts">
-  import type { CarouselUpdateEvent } from '@porsche-design-system/components-vue';
-  import { PCarousel, PText } from '@porsche-design-system/components-vue';
+  import { type CarouselUpdateEventDetail, PCarousel, PText } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const lastEventDetail = ref('none');
-  const onUpdate = (e: CarouselUpdateEvent): void => {
+  const onUpdate = (e: CarouselUpdateEventDetail): void => {
     lastEventDetail.value = JSON.stringify(e);
   };
 </script>

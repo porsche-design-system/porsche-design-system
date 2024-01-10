@@ -78,8 +78,8 @@ const generateDSRComponents = (): void => {
           group.endsWith('utils')
             ? m.replace(group, utilsBundleImportPath)
             : group.endsWith('state-message') || group.endsWith('required') || group.endsWith('label')
-            ? m.replace(group, './' + group.split('/').pop())
-            : ''
+              ? m.replace(group, './' + group.split('/').pop())
+              : ''
         )
         .replace(/.*= getPrefixedTagNames\((?:this\.)?host.*\n/g, '') // remove getPrefixedTagNames call
         // add new imports
@@ -233,7 +233,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           /(getDisplayTagType|getHeadingTagType|getHeadlineTagType|getTextTagType|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
           '$1(null'
         ) // replace non-existing host element with null for display, heading, headline, text, text-list, tag
-        .replace(/TextColor|TextWeight/g, 'any') // text
+        .replace(
+          /Record<\s*(?:TextColor|TextWeight)Deprecated,\s*Exclude<(?:TextColor|TextWeight),\s*(?:TextColor|TextWeight)Deprecated>\s*>/g,
+          'Record<any, any>'
+        ) // text
         .replace(
           /Record<\s*(?:Text|Display|Heading|Headline)AlignDeprecated,\s*Exclude<(?:Text|Display|Heading|Headline)Align,\s*(?:Text|Display|Heading|Headline)AlignDeprecated>\s*>/g,
           'Record<any, any>'
@@ -246,6 +249,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           /Record<\s*CarouselAlignHeaderDeprecated,\s*Exclude<CarouselAlignHeader,\s*CarouselAlignHeaderDeprecated>\s*>/g,
           'Record<any, any>'
         ) // carousel
+        .replace(/Record<\s*IconColorDeprecated,\s*Exclude<IconColor,\s*IconColorDeprecated>\s*>/g, 'Record<any, any>') // icon
         .replace(
           /Record<\s*FlyoutPositionDeprecated,\s*Exclude<FlyoutPosition,\s*FlyoutPositionDeprecated>\s*>/g,
           'Record<any, any>'
@@ -563,10 +567,11 @@ $&`
           .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
           .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
       } else if (tagName === 'p-link-tile-product') {
+        // TODO: why is something like this only needed here?
         newFileContent = newFileContent
-          .replace(/LinkTileProductAspectRatio,/, '')
-          .replace(/LinkTileProductLikeEvent,/, '')
-          .replace(/LinkTileProductTarget,/, '');
+          .replace(/type LinkTileProductAspectRatio,/, '')
+          .replace(/type LinkTileProductLikeEventDetail,/, '')
+          .replace(/type LinkTileProductTarget,/, '');
       }
 
       return newFileContent;

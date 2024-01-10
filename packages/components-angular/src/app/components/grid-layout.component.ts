@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import type { AccordionUpdateEvent } from '@porsche-design-system/components-angular';
+import type { AccordionUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'grid-layout',
@@ -450,10 +450,10 @@ export class GridLayoutComponent {
   isAccordion1Open = false;
   isAccordion2Open = false;
 
-  onAccordion1Update(e: CustomEvent<AccordionUpdateEvent>) {
+  onAccordion1Update(e: CustomEvent<AccordionUpdateEventDetail>) {
     this.isAccordion1Open = e.detail.open;
   }
-  onAccordion2Update(e: CustomEvent<AccordionUpdateEvent>) {
+  onAccordion2Update(e: CustomEvent<AccordionUpdateEventDetail>) {
     this.isAccordion2Open = e.detail.open;
   }
 }

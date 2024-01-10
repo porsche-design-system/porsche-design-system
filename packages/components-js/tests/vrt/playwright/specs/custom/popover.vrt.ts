@@ -1,14 +1,9 @@
 import { expect, type Page, test } from '@playwright/test';
-import {
-  baseThemes,
-  openAllPopover,
-  setNativePopoversToAllowMultipleOpen,
-  setContentWithDesignSystem,
-} from '../../helpers';
+import { openAllPopover, setContentWithDesignSystem, setNativePopoversToAllowMultipleOpen } from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
+import { themes, viewportWidthXL } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 
 const component = 'popover';
-const viewportWidth = 1760;
 
 const scenario = async (page: Page, theme: Theme, withinTable: boolean = false): Promise<void> => {
   const getPopover = (direction: string, length: number = 1): string => {
@@ -147,7 +142,7 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
     });
   }
 
-  await page.setViewportSize({ width: viewportWidth, height: 600 });
+  await page.setViewportSize({ width: viewportWidthXL, height: 600 });
   await setNativePopoversToAllowMultipleOpen(page);
   await openAllPopover(page);
 };
@@ -156,22 +151,24 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  baseThemes.forEach((theme) => {
-    test(`should have no visual regression on popover-overview for viewport ${viewportWidth} with theme ${theme}`, async ({
+  themes.forEach((theme) => {
+    test(`should have no visual regression on popover-overview for viewport ${viewportWidthXL} with theme ${theme}`, async ({
       page,
     }) => {
       await scenario(page, theme);
-      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}-overview-theme-${theme}.png`);
+      await expect(page.locator('#app')).toHaveScreenshot(
+        `${component}-${viewportWidthXL}-overview-theme-${theme}.png`
+      );
     });
   });
 
-  baseThemes.forEach((theme) => {
-    test(`should have no visual regression on popover-overview within table component for viewport ${viewportWidth} with theme ${theme}`, async ({
+  themes.forEach((theme) => {
+    test(`should have no visual regression on popover-overview within table component for viewport ${viewportWidthXL} with theme ${theme}`, async ({
       page,
     }) => {
       await scenario(page, theme, true);
       await expect(page.locator('#app')).toHaveScreenshot(
-        `${component}-${viewportWidth}-overview-within-table-theme-${theme}.png`
+        `${component}-${viewportWidthXL}-overview-within-table-theme-${theme}.png`
       );
     });
   });

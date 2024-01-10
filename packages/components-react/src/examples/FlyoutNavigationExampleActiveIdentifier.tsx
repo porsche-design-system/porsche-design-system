@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import {
-  type FlyoutNavigationUpdateEvent,
+  type FlyoutNavigationUpdateEventDetail,
   PButton,
   PFlyoutNavigation,
   PFlyoutNavigationItem,
@@ -16,7 +16,8 @@ export const FlyoutNavigationExampleActiveIdentifierPage = (): JSX.Element => {
     setIsFlyoutNavigationOpen(false);
   }, []);
   const onUpdate = useCallback(
-    (e: CustomEvent<FlyoutNavigationUpdateEvent>) => setFlyoutNavigationActiveIdentifier(e.detail.activeIdentifier),
+    (e: CustomEvent<FlyoutNavigationUpdateEventDetail>) =>
+      setFlyoutNavigationActiveIdentifier(e.detail.activeIdentifier),
     []
   );
 

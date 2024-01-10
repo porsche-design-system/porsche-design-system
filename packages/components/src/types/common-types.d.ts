@@ -8,10 +8,9 @@ export type { Theme } from '../utils/theme';
 
 export type { TypographyAlign, TypographyAlignDeprecated } from '../utils/typography/typography-align';
 
-// TODO: we shouldn't re-export component specific types
-export type { TextSize } from '../components/text/text-size';
-export type { TextColor } from '../components/text/text-color';
-export type { TextWeight } from '../components/text/text-weight';
+export type { TextSize } from '../utils/typography/text-size';
+export type { TypographyTextColor, TypographyTextColorDeprecated } from '../utils/typography/typography-text-color';
+export type { TypographyTextWeight, TypographyTextWeightDeprecated } from '../utils/typography/typography-text-weight';
 
 export type { HeadingSize } from '../utils/typography/heading-size';
 

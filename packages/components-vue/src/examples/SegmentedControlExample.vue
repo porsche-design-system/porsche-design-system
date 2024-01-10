@@ -1,10 +1,14 @@
 <script setup lang="ts">
-  import type { SegmentedControlUpdateEvent } from '@porsche-design-system/components-vue';
-  import { PSegmentedControl, PSegmentedControlItem, PText } from '@porsche-design-system/components-vue';
+  import {
+    type SegmentedControlUpdateEventDetail,
+    PSegmentedControl,
+    PSegmentedControlItem,
+    PText,
+  } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const currentValue = ref(1);
-  const onUpdate = (e: SegmentedControlUpdateEvent): void => {
+  const onUpdate = (e: SegmentedControlUpdateEventDetail): void => {
     currentValue.value = e.value as number;
   };
 </script>

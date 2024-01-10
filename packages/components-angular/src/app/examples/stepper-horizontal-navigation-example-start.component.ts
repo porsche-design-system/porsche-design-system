@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
-export interface LabelState {
+export type LabelState = {
   label: string;
   state: 'complete' | 'current' | 'warning' | undefined;
-}
+};
 
 export const startSteps: LabelState[] = [
   { label: 'One', state: 'complete' },

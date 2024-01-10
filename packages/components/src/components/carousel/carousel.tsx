@@ -6,7 +6,7 @@ import type {
   CarouselAriaAttribute,
   CarouselHeadingSize,
   CarouselInternationalization,
-  CarouselUpdateEvent,
+  CarouselUpdateEventDetail,
   CarouselWidth,
 } from './carousel-utils';
 import {
@@ -138,10 +138,10 @@ export class Carousel {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when carousel's content slides. */
-  @Event({ bubbles: false }) public carouselChange: EventEmitter<CarouselUpdateEvent>;
+  @Event({ bubbles: false }) public carouselChange: EventEmitter<CarouselUpdateEventDetail>;
 
   /** Emitted when carousel's content slides. */
-  @Event({ bubbles: false }) public update: EventEmitter<CarouselUpdateEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<CarouselUpdateEventDetail>;
 
   @State() private amountOfPages: number;
 

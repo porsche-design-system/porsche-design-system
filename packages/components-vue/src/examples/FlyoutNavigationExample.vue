@@ -3,7 +3,7 @@
     PFlyoutNavigation,
     PFlyoutNavigationItem,
     PButton,
-    type FlyoutNavigationUpdateEvent,
+    type FlyoutNavigationUpdateEventDetail,
   } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
@@ -15,7 +15,7 @@
   const onDismiss = (): void => {
     isFlyoutNavigationOpen.value = false;
   };
-  const onUpdate = (e: FlyoutNavigationUpdateEvent): void => {
+  const onUpdate = (e: FlyoutNavigationUpdateEventDetail): void => {
     flyoutNavigationActiveIdentifier.value = e.activeIdentifier;
   };
 </script>
