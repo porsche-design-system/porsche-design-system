@@ -1,8 +1,8 @@
 import { expect, type Page, test } from '@playwright/test';
 import { openAllSelectWrapper, setNativePopoversToAllowMultipleOpen, setContentWithDesignSystem } from '../../helpers';
+import { viewportWidthXL } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 
 const component = 'select-wrapper';
-const viewportWidth = 1760;
 
 const scenario = async (page: Page): Promise<void> => {
   const getSelectWrapper = (direction: string, filter: string): string => {
@@ -69,7 +69,7 @@ const scenario = async (page: Page): Promise<void> => {
     window.addEventListener('scroll', (e) => e.stopImmediatePropagation(), true);
   });
 
-  await page.setViewportSize({ width: viewportWidth, height: 2500 });
+  await page.setViewportSize({ width: viewportWidthXL, height: 2500 });
   await setNativePopoversToAllowMultipleOpen(page);
   await openAllSelectWrapper(page);
 };
@@ -78,10 +78,10 @@ const scenario = async (page: Page): Promise<void> => {
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  test(`should have no visual regression on select-wrapper within table component for viewport ${viewportWidth}`, async ({
+  test(`should have no visual regression on select-wrapper within table component for viewport ${viewportWidthXL}`, async ({
     page,
   }) => {
     await scenario(page);
-    await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}-overview-within-table.png`);
+    await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthXL}-overview-within-table.png`);
   });
 });
