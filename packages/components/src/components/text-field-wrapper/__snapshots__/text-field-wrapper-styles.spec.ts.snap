@@ -466,7 +466,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;
@@ -590,7 +590,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;
@@ -714,7 +714,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;
@@ -1433,7 +1433,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;
@@ -1556,7 +1556,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;
@@ -1679,7 +1679,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;
@@ -1802,7 +1802,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;
@@ -2155,7 +2155,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;
@@ -2279,7 +2279,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;
@@ -2403,7 +2403,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;
@@ -2755,7 +2755,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;
@@ -3104,7 +3104,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;
@@ -3454,7 +3454,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   display: grid;
   grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
 }
-.unit {
+.unit-counter {
   pointer-events: none;
   max-width: 100%;
   box-sizing: border-box;

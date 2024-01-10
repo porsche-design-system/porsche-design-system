@@ -1,9 +1,9 @@
 import { expect, type Page, test } from '@playwright/test';
 import type { Theme } from '@porsche-design-system/components/dist/types/types';
 import { forceHoverState, getPlaygroundPseudoStatesMarkup, setContentWithDesignSystem } from '../../helpers';
+import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 
 const component = 'select-wrapper-dropdown';
-const viewportWidth = 1000;
 
 const scenario = async (page: Page): Promise<void> => {
   const head = `<style>
@@ -120,10 +120,10 @@ const scenario = async (page: Page): Promise<void> => {
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  test(`should have no visual regression on select-wrapper-dropdown component for viewport ${viewportWidth}`, async ({
+  test(`should have no visual regression on select-wrapper-dropdown component for viewport ${viewportWidthM}`, async ({
     page,
   }) => {
     await scenario(page);
-    await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}-states.png`);
+    await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-states.png`);
   });
 });

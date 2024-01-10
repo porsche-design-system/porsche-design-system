@@ -1,16 +1,14 @@
-import type { BreakpointCustomizable, PropTypes, TextColor, TextSize, TextWeight, Theme } from '../../types';
-import type { TextTag, TextAlign, TextAlignDeprecated } from './text-utils';
-import type { TextColorDeprecated } from './text-color';
-import type { TextWeightDeprecated } from './text-weight';
+import type { BreakpointCustomizable, PropTypes, TextSize, Theme } from '../../types';
+import type { TextTag, TextAlign, TextAlignDeprecated, TextColor, TextColorDeprecated,TextWeight, TextWeightDeprecated } from './text-utils';
 import { getTextTagType, TEXT_TAGS } from './text-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
-  TEXT_COLORS,
+  TYPOGRAPHY_TEXT_COLORS,
   TEXT_SIZES,
-  TEXT_WEIGHTS,
+  TYPOGRAPHY_TEXT_WEIGHTS,
   THEMES,
   TYPOGRAPHY_ALIGNS,
   validateProps,
@@ -21,9 +19,9 @@ import { getComponentCss } from './text-styles';
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
   size: AllowedTypes.breakpoint<TextSize>(TEXT_SIZES),
-  weight: AllowedTypes.oneOf<TextWeight>(TEXT_WEIGHTS),
+  weight: AllowedTypes.oneOf<TextWeight>(TYPOGRAPHY_TEXT_WEIGHTS),
   align: AllowedTypes.oneOf<TextAlign>(TYPOGRAPHY_ALIGNS),
-  color: AllowedTypes.oneOf<TextColor>(TEXT_COLORS),
+  color: AllowedTypes.oneOf<TextColor>(TYPOGRAPHY_TEXT_COLORS),
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };

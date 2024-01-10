@@ -134,24 +134,28 @@ describe('componentWillLoad', () => {
     expect(spy).toBeCalledWith(component['input'], ['value'], expect.any(Function));
   });
 
-  // TODO: prove connection between util actually setting member value
   it('should call hasCounterAndIsTypeText() with correct parameter and set hasCounter', () => {
     const input = document.createElement('input');
     input.type = 'text';
     input.maxLength = 20;
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounterAndIsTypeText');
+    // mock return value once to prove connection between util actually setting hasCounter
+    const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounterAndIsTypeText').mockReturnValueOnce(false);
     const component = new TextFieldWrapper();
 
     expect(component['hasCounter']).toBe(undefined);
     component.componentWillLoad();
 
     expect(spy).toBeCalledWith(input);
+    expect(component['hasCounter']).toBe(false);
+
+    component.componentWillLoad();
+
+    expect(spy).toBeCalledWith(input);
     expect(component['hasCounter']).toBe(true);
   });
 
-  // TODO: prove connection between util actually setting member value
   it('should not call hasUnitAndIsTypeTextOrNumber() when counter and unit is set and counter is visible', () => {
     const input = document.createElement('input');
     input.type = 'text';
@@ -169,14 +173,14 @@ describe('componentWillLoad', () => {
     expect(component['hasUnit']).toBe(false);
   });
 
-  // TODO: prove connection between util actually setting member value
   it('should call hasUnitAndIsTypeTextOrNumber() with correct parameters when counter and unit is set and counter is not visible', () => {
     const input = document.createElement('input');
     input.type = 'text';
     input.maxLength = 50;
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
+    // mock return value once to prove connection between util actually setting hasCounter
+    const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber').mockReturnValueOnce(false);
     const component = new TextFieldWrapper();
     component.unit = 'EUR';
     component.showCharacterCount = false;
@@ -185,10 +189,14 @@ describe('componentWillLoad', () => {
     component.componentWillLoad();
 
     expect(spy).toBeCalledWith(input, 'EUR');
+    expect(component['hasUnit']).toBe(false);
+
+    component.componentWillLoad();
+
+    expect(spy).toBeCalledWith(input, 'EUR');
     expect(component['hasUnit']).toBe(true);
   });
 
-  // TODO: prove connection between util actually setting member value
   it.each<string>(['text', 'number'])(
     'should call hasUnitAndIsTypeTextOrNumber() and set hasUnit when input type="%s"',
     (type) => {
@@ -199,11 +207,17 @@ describe('componentWillLoad', () => {
       }
       mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
-      const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
+      // mock return value once to prove connection between util actually setting hasCounter
+      const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber').mockReturnValueOnce(false);
       const component = new TextFieldWrapper();
       component.unit = 'EUR';
 
       expect(component['hasUnit']).toBe(undefined);
+      component.componentWillLoad();
+
+      expect(spy).toBeCalledWith(input, 'EUR');
+      expect(component['hasUnit']).toBe(false);
+
       component.componentWillLoad();
 
       expect(spy).toBeCalledWith(input, 'EUR');

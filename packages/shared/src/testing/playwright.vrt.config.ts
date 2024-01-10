@@ -1,5 +1,26 @@
 import { type Config } from '@playwright/test';
 
+export const themes = ['light', 'dark'] as const;
+export const schemes = ['light', 'dark'] as const;
+
+export const viewportWidthXXS = 320;
+export const viewportWidthXS = 480;
+export const viewportWidthS = 760;
+export const viewportWidthM = 1000;
+export const viewportWidthL = 1300;
+export const viewportWidthXL = 1760;
+export const viewportWidthXXL = 1920;
+export const viewportWidth3XL = 2560;
+export const viewportWidth4XL = 3000;
+export const viewportWidths = [
+  viewportWidthXXS,
+  viewportWidthXS,
+  viewportWidthS,
+  viewportWidthM,
+  viewportWidthL,
+  viewportWidthXL,
+] as const;
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
