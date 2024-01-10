@@ -32,7 +32,7 @@ export class Toast {
 
   public componentDidLoad(): void {
     this.host.addEventListener('dismiss', (e) => {
-      e.stopPropagation();
+      e.stopPropagation(); // to cancel bubbling chain from toast-item
       toastManager.dismissToastItem();
     });
   }

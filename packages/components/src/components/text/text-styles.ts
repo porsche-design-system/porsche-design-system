@@ -1,6 +1,4 @@
-import type { BreakpointCustomizable, TextColor, TextSize, TextWeight, Theme } from '../../types';
-import type { TextWeightDeprecated } from './text-weight';
-import type { TextColorDeprecated } from './text-color';
+import type { BreakpointCustomizable, TextSize, Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
@@ -14,7 +12,8 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import { TEXT_TAGS, type TextAlign } from './text-utils';
+import { TEXT_TAGS } from './text-utils';
+import type { TextAlign, TextColor, TextColorDeprecated, TextWeight, TextWeightDeprecated } from './text-utils';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'xx-small': fontSizeTextXXSmall,
