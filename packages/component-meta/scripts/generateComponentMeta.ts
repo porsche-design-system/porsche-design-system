@@ -44,6 +44,7 @@ const generateComponentMeta = (): void => {
   deprecatedValues?: string[];
   isRequired?: boolean;
   isDeprecated?: boolean;
+  isExperimental?: boolean;
   isBreakpointCustomizable?: boolean;
   isAria?: boolean;
   isArray?: boolean;
@@ -110,6 +111,7 @@ const generateComponentMeta = (): void => {
     deprecatedValues?: string[];
     isRequired?: boolean;
     isDeprecated?: boolean;
+    isExperimental?: boolean;
     isBreakpointCustomizable?: boolean;
     isAria?: boolean;
     isArray?: boolean;
@@ -190,7 +192,7 @@ const generateComponentMeta = (): void => {
     const [deprecated, rawDeprecationMessage] = /\/\*\* @deprecated (.*)\*\/\n@Component\({/.exec(source) || [];
     const isDeprecated = !!deprecated;
     const deprecationMessage = rawDeprecationMessage?.trim();
-    const isExperimental = !!/\/\*\* __Experimental__ \*\/\n@Component\({/.exec(source);
+    const isExperimental = !!source.match(/\/\*\* @experimental \*\/\n@Component\({/);
     const isDelegatingFocus = source.includes('delegatesFocus: true');
     const isInternal = INTERNAL_TAG_NAMES.includes(tagName);
     const isThemeable = source.includes('public theme?: Theme');
@@ -303,6 +305,7 @@ const generateComponentMeta = (): void => {
           type: propType.replace(/(?:BreakpointCustomizable|SelectedAriaAttributes)<(.+?)>/, '$1').trim(), // contains trailing space
           defaultValue: cleanedValue,
           ...(jsdoc?.match(/@deprecated/) && { isDeprecated: true }),
+          ...(jsdoc?.match(/__experimental__/i) && { isExperimental: true }),
           ...(propType.match(/SelectedAriaAttributes/) && { isAria: true }),
           ...(Array.isArray(cleanedValue) && { isArray: true }),
         };
