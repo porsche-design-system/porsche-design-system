@@ -13,6 +13,7 @@ import {
   getSanitisedValue,
   removeStyles,
   removeWhiteSpaces,
+  isCurrentInput,
 } from './pin-code-utils';
 import { PinCode } from './pin-code';
 
@@ -315,4 +316,41 @@ describe('syncHiddenInput()', () => {
     expect(hiddenInput.disabled).toBe(false);
     expect(hiddenInput.required).toBe(false);
   });
+});
+
+describe('isCurrentInput()', () => {
+  it.each<[...Parameters<typeof isCurrentInput>, ReturnType<typeof isCurrentInput>]>([
+    [0, '', 4, true], // No value entered at all: set current-input id on the first input element
+    [1, '', 4, false],
+    [2, '', 4, false],
+    [3, '', 4, false],
+    [0, ' 2  ', 4, true], // Some value is entered: set current-input id on the first input element which does not have a value
+    [1, ' 2  ', 4, false],
+    [2, ' 2  ', 4, false],
+    [3, ' 2  ', 4, false],
+    [0, '3   ', 4, false], // Some value is entered: set current-input id on the first input element which does not have a value
+    [1, '3   ', 4, true],
+    [2, '3   ', 4, false],
+    [3, '3   ', 4, false],
+    [0, '3 2 ', 4, false], // Some value is entered: set current-input id on the first input element which does not have a value
+    [1, '3 2 ', 4, true],
+    [2, '3 2 ', 4, false],
+    [3, '3 2 ', 4, false],
+    [0, '123 56', 6, false], // Some value is entered: set current-input id on the first input element which does not have a value
+    [1, '123 56', 6, false],
+    [2, '123 56', 6, false],
+    [3, '123 56', 6, true],
+    [4, '123 56', 6, false],
+    [5, '123 56', 6, false],
+    [0, '1234', 4, false], // All inputs have some value: set current-input id on the last input element
+    [1, '1234', 4, false],
+    [2, '1234', 4, false],
+    [3, '1234', 4, true],
+  ])(
+    'should return correct current input for index: %d, value: %s and length: %d',
+    (index, value, length, expected) => {
+      const result = isCurrentInput(index, value, length);
+      expect(result).toBe(expected);
+    }
+  );
 });
