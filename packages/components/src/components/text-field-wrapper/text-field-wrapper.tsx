@@ -243,7 +243,7 @@ export class TextFieldWrapper {
           <slot />
           {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
           {(this.hasUnit || this.isCounterVisible) && (
-            <span class="unit" ref={(el) => (this.unitOrCounterElement = el)} aria-hidden="true">
+            <span class="unit-counter" ref={(el) => (this.unitOrCounterElement = el)} aria-hidden="true">
               {this.unit}
             </span>
           )}
