@@ -103,8 +103,40 @@ describe('this.activeTabIndexHandler()', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  // TODO: missing
-  xit('should set this.direction', () => {});
+  it('should set this.direction to "next" if oldValue is smaller than this.internalTabIndex', () => {
+    const component = initComponent();
+
+    component.activeTabIndexHandler(0, 1);
+    expect(component['direction']).toBe('prev');
+
+    component['internalTabIndex'] = 2;
+    jest.spyOn(component, 'setTabElements' as any).mockImplementation();
+
+    component.activeTabIndexHandler(0, 1);
+    expect(component['direction']).toBe('next');
+  });
+
+  it('should set this.direction to "next" if oldValue is undefined', () => {
+    const component = initComponent();
+
+    component.activeTabIndexHandler(0, 1);
+    expect(component['direction']).toBe('prev');
+
+    component.activeTabIndexHandler(0, undefined);
+    expect(component['direction']).toBe('next');
+  });
+
+  it('should set this.direction to "prev" if oldValue is not smaller than this.internalTabIndex', () => {
+    const component = initComponent();
+
+    component.activeTabIndexHandler(0, undefined);
+    expect(component['direction']).toBe('next');
+
+    component['internalTabIndex'] = 1;
+
+    component.activeTabIndexHandler(0, 2);
+    expect(component['direction']).toBe('prev');
+  });
 
   it('should call this.setBarStyle()', () => {
     const component = initComponent();

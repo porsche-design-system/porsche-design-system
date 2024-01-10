@@ -209,7 +209,6 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
     },
     label: getHiddenTextJssStyle(),
     icon: {
-      display: 'inline-block', // TODO: should be changed in icon!
       transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
     },
     spacer: {

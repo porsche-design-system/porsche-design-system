@@ -233,7 +233,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           /(getDisplayTagType|getHeadingTagType|getHeadlineTagType|getTextTagType|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
           '$1(null'
         ) // replace non-existing host element with null for display, heading, headline, text, text-list, tag
-        .replace(/TextColor|TextWeight/g, 'any') // text
+        .replace(
+          /Record<\s*(?:TextColor|TextWeight)Deprecated,\s*Exclude<(?:TextColor|TextWeight),\s*(?:TextColor|TextWeight)Deprecated>\s*>/g,
+          'Record<any, any>'
+        ) // text
         .replace(
           /Record<\s*(?:Text|Display|Heading|Headline)AlignDeprecated,\s*Exclude<(?:Text|Display|Heading|Headline)Align,\s*(?:Text|Display|Heading|Headline)AlignDeprecated>\s*>/g,
           'Record<any, any>'
@@ -246,6 +249,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           /Record<\s*CarouselAlignHeaderDeprecated,\s*Exclude<CarouselAlignHeader,\s*CarouselAlignHeaderDeprecated>\s*>/g,
           'Record<any, any>'
         ) // carousel
+        .replace(/Record<\s*IconColorDeprecated,\s*Exclude<IconColor,\s*IconColorDeprecated>\s*>/g, 'Record<any, any>') // icon
         .replace(
           /Record<\s*FlyoutPositionDeprecated,\s*Exclude<FlyoutPosition,\s*FlyoutPositionDeprecated>\s*>/g,
           'Record<any, any>'
