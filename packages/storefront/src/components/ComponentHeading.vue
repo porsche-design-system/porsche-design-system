@@ -5,7 +5,7 @@
   <h1>{{ name }}<span
       v-if="getFlag('isDeprecated')"
       title="This component is deprecated and will be removed with the next major release."
-    > 🚫 </span
+    > 🚫</span
     ><span
       v-else-if="getFlag('isExperimental')"
       title="This component is experimental and might change in the future."
