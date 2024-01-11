@@ -11,7 +11,9 @@ export const INTERNAL_UPDATE_EVENT_NAME = 'internalUpdate';
 export type FlyoutNavigationUpdate = {
   activeIdentifier: string;
 };
-export type FlyoutNavigationUpdateEvent = FlyoutNavigationUpdate; // to have consistent event types
+/** @deprecated */
+export type FlyoutNavigationUpdateEvent = FlyoutNavigationUpdate;
+export type FlyoutNavigationUpdateEventDetail = FlyoutNavigationUpdateEvent; // to have consistent event types
 
 export const syncFlyoutNavigationItemsProps = (
   items: HTMLPFlyoutNavigationItemElement[],
@@ -30,11 +32,34 @@ export const validateActiveIdentifier = <T extends Class<any>>(
   items: HTMLPFlyoutNavigationItemElement[],
   activeIdentifier: string | undefined
 ): void => {
-  if (!(activeIdentifier === undefined || !!items.filter((item) => item.identifier === activeIdentifier).length)) {
-    consoleError(
-      `Invalid value '${activeIdentifier}' supplied to ${getTagNameWithoutPrefix(
-        instance.host as HTMLElement
-      )} for property 'activeIdentifier' because reference is not present.`
-    );
+  if (activeIdentifier !== undefined) {
+    const matchingItems = items.filter((item) => item.identifier === activeIdentifier);
+    if (matchingItems.length === 0) {
+      logInvalidIdentifierError(instance, activeIdentifier);
+    } else if (matchingItems.length > 1) {
+      logMultipleIdentifierError(instance, activeIdentifier, matchingItems);
+    }
   }
 };
+
+const logInvalidIdentifierError = <T extends Class<any>>(
+  instance: InstanceType<T>,
+  activeIdentifier: string | undefined
+) =>
+  consoleError(
+    `Invalid value '${activeIdentifier}' supplied to ${getTagNameWithoutPrefix(
+      instance.host as HTMLElement
+    )} for property 'activeIdentifier' because reference is not present.`
+  );
+
+const logMultipleIdentifierError = <T extends Class<any>>(
+  instance: InstanceType<T>,
+  activeIdentifier: string | undefined,
+  matchingItems: HTMLElement[]
+) =>
+  consoleError(
+    `Found multiple matching items for value '${activeIdentifier}' supplied to ${getTagNameWithoutPrefix(
+      instance.host as HTMLElement
+    )}:`,
+    ...matchingItems
+  );

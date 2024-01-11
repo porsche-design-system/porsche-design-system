@@ -1,15 +1,15 @@
 import { expect, test } from '@playwright/test';
 import { setupScenario } from '../../helpers';
+import { viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 
 // executed in Chrome only
-['latin', 'greek-and-coptic', 'cyril', 'fallback'].forEach((typography) => {
+['latin', 'greek-and-coptic', 'cyril', 'middle-east', 'fallback'].forEach((typography) => {
   test.describe('typography', async () => {
     test.skip(({ browserName }) => browserName !== 'chromium');
 
     test(`should have no visual regression for ${typography}`, async ({ page }) => {
-      const viewportWidth = 1920;
-      await setupScenario(page, `/typography-${typography}`, viewportWidth);
-      await expect(page.locator('#app')).toHaveScreenshot(`typography-${viewportWidth}-${typography}.png`);
+      await setupScenario(page, `/typography-${typography}`, viewportWidthXXL);
+      await expect(page.locator('#app')).toHaveScreenshot(`typography-${viewportWidthXXL}-${typography}.png`);
     });
   });
 });

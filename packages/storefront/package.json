@@ -22,7 +22,7 @@
     "test:unit:watch": "yarn test:unit --watch",
     "test:e2e": "NODE_ENV=development yarn build && TYPE=E2E PORT=8080 jest --colors -c tests/e2e/config/jest.config.ts",
     "test:a11y": "NODE_ENV=development yarn build && TYPE=E2E PORT=8080 jest --colors -c tests/e2e/config/jest.config.a11y.ts",
-    "test:vrt": "NODE_ENV=development yarn build && TYPE=VRT PORT=8080 jest --colors -c tests/vrt/config/jest.config.ts",
+    "test:vrt": "NODE_ENV=development yarn build && playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@axe-core/puppeteer": "^4.8.2",
+    "@playwright/test": "1.40.1",
     "@types/prismjs": "^1.26.3",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",

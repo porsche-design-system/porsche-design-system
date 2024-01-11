@@ -1,6 +1,5 @@
 <script setup lang="ts">
-  import type { ScrollerScrollToPosition } from '@porsche-design-system/components-vue';
-  import { PScroller, PTagDismissible } from '@porsche-design-system/components-vue';
+  import { type ScrollerScrollToPosition, PScroller, PTagDismissible } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const scrollToPosition = ref<ScrollerScrollToPosition>({

@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.39.0-focal-test2
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.40.1-focal-test4
 jobs:
   assets:
     name: 'Assets'
@@ -164,29 +164,6 @@ jobs:
         with:
           entrypoint: run-test-e2e-playwright
           args: --components-js
-  components-js-vrt-puppeteer:
-    name: 'Components JS VRT (Puppeteer)'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v3
-      - name: 'Setup and install'
-        uses: ./.github/actions/setup-and-install
-        with:
-          github-token: ${{ secrets.github-token }}
-      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
-        uses: ./.github/actions/build-components-js
-      - name: 'VRT Test (Puppeteer)'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-test-vrt-puppeteer
-          args: --components-js
-      - name: 'VRT Regression (Puppeteer)'
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: components-js-vrt-puppeteer-regression
-          path: ./packages/components-js/tests/vrt/puppeteer/results
   components-js-common-vrt-playwright-chrome:
     name: 'Components JS VRT Common (Playwright Chrome)'
     runs-on: ubuntu-latest

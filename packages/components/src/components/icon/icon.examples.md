@@ -13,9 +13,8 @@ For more information and a complete overview of all available Porsche icons, hea
 ([Porsche Icons](https://icons.porsche.com)).  
 To reference an icon just use the `name` property with a predefined icon id.
 
-<Notification heading="Important note" state="error">
-  With the previous major version v2 it was possible to accidentally define an icon name with camel case syntax. 
-  This isn't possible anymore, typings have been adapted properly. Please use param case syntax instead.
+<Notification heading="RTL (right-to-left) mode" state="success">
+  Certain icons are automatically flipped when used in RTL (right-to-left) mode. For more information and best practices on this topic, see <a href="https://rtlstyling.com/posts/rtl-styling#bidirectional-icons">RTL Styling Guide</a>.
 </Notification>
 
 <Playground :markup="name" :config="config"></Playground>
@@ -93,8 +92,8 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { capitalCase } from 'change-case';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import { TEXT_SIZES } from '../text/text-size';
-import { TEXT_COLORS_DEPRECATED } from '../text/text-color'; 
+import { TEXT_SIZES } from '../../utils/typography/text-size';
+import { TYPOGRAPHY_TEXT_COLORS_DEPRECATED } from '../../utils/typography/typography-text-color'; 
 import { ICON_COLORS } from './icon-utils';
 
 @Component
@@ -113,7 +112,7 @@ export default class Code extends Vue {
   }
 
   color = 'primary';
-  colors = ICON_COLORS.map(item => TEXT_COLORS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
+  colors = ICON_COLORS.map(item => TYPOGRAPHY_TEXT_COLORS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get colorMarkup() {
     const style = this.color === 'inherit' ? ' style="filter: invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)"' : '';
     return `<p-icon name="highway" color="${this.color}" aria="{ 'aria-label': 'Highway icon' }"${style}></p-icon>`

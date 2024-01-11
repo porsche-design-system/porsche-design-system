@@ -1,8 +1,8 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch, State } from '@stencil/core';
 import {
   FLYOUT_NAVIGATION_ARIA_ATTRIBUTES,
   type FlyoutNavigationAriaAttribute,
-  type FlyoutNavigationUpdateEvent,
+  type FlyoutNavigationUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
   syncFlyoutNavigationItemsProps,
   validateActiveIdentifier,
@@ -29,7 +29,7 @@ const propTypes: PropTypes<typeof FlyoutNavigation> = {
   aria: AllowedTypes.aria<FlyoutNavigationAriaAttribute>(FLYOUT_NAVIGATION_ARIA_ATTRIBUTES),
 };
 
-/** __Experimental__ */
+/** @experimental */
 @Component({
   tag: 'p-flyout-navigation',
   shadow: true,
@@ -42,7 +42,7 @@ export class FlyoutNavigation {
   @Prop() public open?: boolean = false;
 
   /** Defines which flyout-navigation-item to be visualized as opened. */
-  @Prop({ mutable: true }) public activeIdentifier?: string | undefined;
+  @Prop() public activeIdentifier?: string | undefined;
 
   /** Adapts the flyout-navigation color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -54,26 +54,28 @@ export class FlyoutNavigation {
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   /** Emitted when activeIdentifier is changed. */
-  @Event({ bubbles: false }) public update?: EventEmitter<FlyoutNavigationUpdateEvent>;
+  @Event({ bubbles: false }) public update?: EventEmitter<FlyoutNavigationUpdateEventDetail>;
+
+  @State() private flyoutNavigationItemElements: HTMLPFlyoutNavigationItemElement[] = [];
 
   private dialog: HTMLDialogElement;
-  private flyoutNavigationItemElements: HTMLPFlyoutNavigationItemElement[] = [];
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
     setScrollLock(isOpen);
-    this.setDialogVisibility(isOpen);
   }
 
   public componentWillLoad(): void {
     this.defineFlyoutNavigationItemElements();
 
-    this.host.shadowRoot.addEventListener(INTERNAL_UPDATE_EVENT_NAME, (e: CustomEvent<FlyoutNavigationUpdateEvent>) => {
-      e.stopPropagation(); // prevents internal event from bubbling further
-      const activeIdentifier = e.detail.activeIdentifier;
-      this.activeIdentifier = activeIdentifier;
-      this.update.emit({ activeIdentifier });
-    });
+    this.host.shadowRoot.addEventListener(
+      INTERNAL_UPDATE_EVENT_NAME,
+      (e: CustomEvent<FlyoutNavigationUpdateEventDetail>) => {
+        e.stopPropagation(); // prevents internal event from bubbling further
+        const activeIdentifier = e.detail.activeIdentifier;
+        this.update.emit({ activeIdentifier });
+      }
+    );
   }
 
   public componentDidLoad(): void {
@@ -90,6 +92,11 @@ export class FlyoutNavigation {
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+  }
+
+  public componentDidRender(): void {
+    // showModal needs to be called after render cycle to prepare visibility states of dialog in order to focus the dismiss button correctly
+    this.setDialogVisibility(this.open);
   }
 
   public render(): JSX.Element {
@@ -153,9 +160,11 @@ export class FlyoutNavigation {
   }
 
   private setDialogVisibility(isOpen: boolean): void {
-    if (isOpen === true) {
+    // TODO: SupportsNativeDialog check
+    // Only call showModal/close on dialog when state changes
+    if (isOpen === true && !this.dialog.open) {
       this.dialog.showModal();
-    } else {
+    } else if (isOpen === false && this.dialog.open) {
       this.dialog.close();
     }
   }

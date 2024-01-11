@@ -1,25 +1,41 @@
-import { defaultViewports, getVisualRegressionTester, vrtTest } from '@porsche-design-system/shared/testing';
-import { mainViewSelector } from '../helpers';
-import { forceFocusState } from '../../../../components-js/tests/vrt/puppeteer/helpers';
+import { expect, test } from '@playwright/test';
+import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 
-it.each(defaultViewports)('should have no visual regression for viewport %s', async (viewport) => {
-  expect(
-    await vrtTest(getVisualRegressionTester(viewport), 'markdown', '/markdown', {
-      prefersColorScheme: 'light',
-      elementSelector: mainViewSelector,
-      // focus first of two links
-      scenario: (page) => forceFocusState(page, 'a[href="https://designsystem.porsche.com/"]:not([title])'),
-    })
-  ).toBeFalsy();
-});
+test.describe('markdown', async () => {
+  schemes.forEach((scheme) => {
+    test(`should have no visual regression for viewport ${viewportWidthM} and theme auto with prefers-color-scheme ${scheme}`, async ({
+      page,
+    }) => {
+      await page.emulateMedia({
+        colorScheme: scheme,
+      });
+      await page.goto('/markdown');
+      await page.evaluate(() =>
+        (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
+      );
+      await page.focus('a[href="https://designsystem.porsche.com/"]:not([title])');
+      await page.setViewportSize({
+        width: viewportWidthM,
+        height: await page.evaluate(() => document.body.clientHeight),
+      });
+      await expect(page.locator('#app > main')).toHaveScreenshot(`markdown-${viewportWidthM}-scheme-${scheme}.png`);
+    });
+  });
 
-it('should have no visual regression for viewport 1000 in auto dark mode', async () => {
-  expect(
-    await vrtTest(getVisualRegressionTester(1000), 'markdown-dark', '/markdown', {
-      prefersColorScheme: 'dark',
-      elementSelector: mainViewSelector,
-      // focus first of two links
-      scenario: (page) => forceFocusState(page, 'a[href="https://designsystem.porsche.com/"]:not([title])'),
-    })
-  ).toBeFalsy();
+  viewportWidths
+    .filter((x) => x !== viewportWidthM)
+    .forEach((viewportWidth) => {
+      test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
+        await page.goto('/markdown');
+        await page.evaluate(() =>
+          (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
+        );
+        await page.focus('a[href="https://designsystem.porsche.com/"]:not([title])');
+        await page.setViewportSize({
+          width: viewportWidth,
+          height: await page.evaluate(() => document.body.clientHeight),
+        });
+        await expect(page.locator('#app > main')).toHaveScreenshot(`markdown-${viewportWidth}.png`);
+      });
+    });
 });

@@ -9,7 +9,7 @@ import {
 } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './table-styles';
-import type { TableUpdateEvent } from './table-utils';
+import type { TableUpdateEventDetail } from './table-utils';
 import { SORT_EVENT_NAME, warnIfCaptionIsMissing } from './table-utils';
 
 const propTypes: PropTypes<typeof Table> = {
@@ -34,14 +34,14 @@ export class Table {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when sorting is changed. */
-  @Event({ bubbles: false }) public sortingChange: EventEmitter<TableUpdateEvent>;
+  @Event({ bubbles: false }) public sortingChange: EventEmitter<TableUpdateEventDetail>;
 
   /** Emitted when sorting is changed. */
-  @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEventDetail>;
 
   public componentWillLoad(): void {
     warnIfCaptionIsMissing(this.host, this.caption);
-    this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableUpdateEvent>) => {
+    this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableUpdateEventDetail>) => {
       e.stopPropagation();
       this.update.emit(e.detail);
       this.sortingChange.emit(e.detail);

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { MultiSelectUpdateEvent } from '@porsche-design-system/components-angular';
+import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-multi-select-example-dynamic',
@@ -50,7 +50,7 @@ export class MultiSelectExampleDynamicComponent {
     this.inputValue = '';
   }
 
-  handleUpdate(e: CustomEvent<MultiSelectUpdateEvent>) {
+  handleUpdate(e: CustomEvent<MultiSelectUpdateEventDetail>) {
     this.selectedValues = e.detail.value;
     this.inputValue = e.detail.value.join(',');
   }

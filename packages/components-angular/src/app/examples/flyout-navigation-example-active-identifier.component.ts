@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { type FlyoutNavigationUpdateEvent } from '@porsche-design-system/components-angular';
+import { type FlyoutNavigationUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-flyout-navigation-example-active-identifier',
@@ -66,7 +66,7 @@ export class FlyoutNavigationExampleActiveIdentifierComponent {
   onDismiss(): void {
     this.isFlyoutNavigationOpen = false;
   }
-  onUpdate(e: CustomEvent<FlyoutNavigationUpdateEvent>): void {
+  onUpdate(e: CustomEvent<FlyoutNavigationUpdateEventDetail>): void {
     this.flyoutNavigationActiveIdentifier = e.detail.activeIdentifier;
   }
 }

@@ -16,19 +16,64 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Added
 
+- `Icon`: Auto-flipping icons (certain ones only) in RTL (right-to-left) mode
+  ([#2957](https://github.com/porsche-design-system/porsche-design-system/pull/2957))
 - `Carousel`: Prop `heading-size`, named slot `header`
   ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
-- `Accordion`: Custom clickarea for `compact` variant ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
+- `Accordion`: support for custom click area for `compact` variant
+  ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
+- `@font-face` supports Middle East languages
+  ([#2946](https://github.com/porsche-design-system/porsche-design-system/pull/2946))
+- Partials: `getFontLinks` supports preloading `arabic`, `pashto` and `urdu` subsets
+  ([#2946](https://github.com/porsche-design-system/porsche-design-system/pull/2946))
 
 #### Changed
 
+- `Flyout Navigation`: Improved validation and `activeIdentifier` isn't automatically updated anymore
+  ([#2935](https://github.com/porsche-design-system/porsche-design-system/pull/2935))
 - `Carousel`: Position and width of heading and description
   ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
+- Aligned naming of all `CustomEvent<T>` types and deprecated old ones since they are in fact typing the `detail: T`
+  property of the event
+
+```diff
+- AccordionUpdateEvent
++ AccordionUpdateEventDetail
+- CarouselUpdateEvent
++ CarouselUpdateEventDetail
+- FlyoutNavigationUpdateEvent
++ FlyoutNavigationUpdateEventDetail
+- LinkTileProductLikeEvent
++ LinkTileProductLikeEventDetail
+- MultiSelectUpdateEvent
++ MultiSelectUpdateEventDetail
+- PaginationUpdateEvent
++ PaginationUpdateEventDetail
+- PinCodeUpdateEvent
++ PinCodeUpdateEventDetail
+- SegmentedControlUpdateEvent
++ SegmentedControlUpdateEventDetail
+- StepperHorizontalUpdateEvent
++ StepperHorizontalUpdateEventDetail
+- SwitchUpdateEvent
++ SwitchUpdateEventDetail
+- TableUpdateEvent
++ TableUpdateEventDetail
+- TabsUpdateEvent
++ TabsUpdateEventDetail
+- TabsBarUpdateEvent
++ TabsBarUpdateEventDetail
+```
 
 #### Fixed
 
-- `Accordion`: Alignment of slotted heading with custom padding ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
+- `Flyout Navigation`: Focus dismiss button after opening
+  ([#2935](https://github.com/porsche-design-system/porsche-design-system/pull/2935))
+- `Accordion`: Alignment of slotted heading with custom padding
+  ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
 - `Modal`: Scrollbar is hidden ([#2907](https://github.com/porsche-design-system/porsche-design-system/pull/2907))
+- `Toast`: `max-width` when used in scale mode
+  ([#2960](https://github.com/porsche-design-system/porsche-design-system/pull/2960))
 
 ### [3.10.0-rc.3] - 2023-12-12
 

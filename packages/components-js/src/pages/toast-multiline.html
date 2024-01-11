@@ -1,0 +1,16 @@
+<style>
+  #app {
+    /* TODO: not needed as soon as all top layer components are refactored with iFrames */
+    transform: unset;
+  }
+</style>
+
+<p-toast></p-toast>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-toast').addMessage({
+      text: 'Some message with a very long text across multiple lines that will break once the max width of 42rem is exceeded.',
+    });
+  });
+</script>

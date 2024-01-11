@@ -80,6 +80,9 @@ export default class Code extends Vue {
     
     this.flyoutNavigations.forEach((flyout, index) => {
       flyout.addEventListener('dismiss', () => this.closeFlyout(index));
+      flyout.addEventListener('update', (e) => {
+        flyout.activeIdentifier = e.detail.activeIdentifier;
+      });
     });
   }
     

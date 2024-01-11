@@ -1,6 +1,7 @@
 <script setup lang="ts">
-  import type { StepperHorizontalItemState, StepperHorizontalUpdateEvent } from '@porsche-design-system/components-vue';
   import {
+    type StepperHorizontalItemState,
+    type StepperHorizontalUpdateEventDetail,
     PButton,
     PButtonGroup,
     PStepperHorizontal,
@@ -51,7 +52,7 @@
     steps.value = newState;
   };
 
-  const onUpdate = (e: StepperHorizontalUpdateEvent): void => {
+  const onUpdate = (e: StepperHorizontalUpdateEventDetail): void => {
     const { activeStepIndex } = e;
 
     const newState = [...steps.value];

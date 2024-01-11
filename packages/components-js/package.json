@@ -38,7 +38,6 @@
     "test:unit:partials": "yarn --cwd ./projects/partials test:unit",
     "test:e2e:puppeteer": "TYPE=E2E PORT=8575 jest --colors -c tests/e2e/puppeteer/config/jest.config.ts",
     "test:e2e:playwright": "playwright test --config=tests/e2e/playwright/config/playwright.config.ts",
-    "test:vrt:puppeteer": "TYPE=VRT PORT=8575 jest --colors -c tests/vrt/puppeteer/config/jest.config.ts",
     "test:vrt:playwright": "playwright test --config=tests/vrt/playwright/config/playwright.config.ts",
     "test:vrt:playwright:ui": "yarn test:vrt:playwright --ui",
     "test:vrt:playwright:safari": "yarn test:vrt:playwright --project=safari",
@@ -77,7 +76,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.13.3",
-    "@playwright/test": "1.39.0",
+    "@playwright/test": "1.40.1",
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.14.3",
     "concurrently": "^8.2.2",

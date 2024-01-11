@@ -9,8 +9,8 @@ import {
   validateProps,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { AccordionSize, AccordionUpdateEvent } from './accordion-utils';
-import { ACCORDION_SIZES, type AccordionTag } from './accordion-utils';
+import type { AccordionSize, AccordionTag, AccordionUpdateEventDetail } from './accordion-utils';
+import { ACCORDION_SIZES } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
 
 const propTypes: PropTypes<typeof Accordion> = {
@@ -50,10 +50,10 @@ export class Accordion {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when accordion state is changed. */
-  @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionUpdateEvent>;
+  @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionUpdateEventDetail>;
 
   /** Emitted when accordion state is changed. */
-  @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEventDetail>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);

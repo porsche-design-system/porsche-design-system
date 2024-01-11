@@ -86,7 +86,7 @@ export default class Code extends Vue {
   e.target.checked = e.detail.checked;
 });`,
     angular: `import { Component } from '@angular/core';
-import type { SwitchUpdateEvent } from '@porsche-design-system/components-angular';
+import type { SwitchUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'some-switch-page',
@@ -95,17 +95,17 @@ import type { SwitchUpdateEvent } from '@porsche-design-system/components-angula
 export class SomeSwitchPage {
   checked: boolean;
 
-  onUpdate(e: CustomEvent<SwitchUpdateEvent>) {
+  onUpdate(e: CustomEvent<SwitchUpdateEventDetail>) {
     this.checked = e.detail.checked;
   }
 }`,
     react: `import { useCallback, useState } from 'react';
 import { PSwitch } from '@porsche-design-system/components-react';
-import type { SwitchUpdateEvent } from '@porsche-design-system/components-react';
+import type { SwitchUpdateEventDetail } from '@porsche-design-system/components-react';
 
 const SomeSwitchPage = (): JSX.Element => {
   const [checked, setChecked] = useState<boolean>();
-  const onUpdate = useCallback((e: CustomEvent<SwitchUpdateEvent>) => {
+  const onUpdate = useCallback((e: CustomEvent<SwitchUpdateEventDetail>) => {
     setChecked(e.detail.checked);
   }, []);
 

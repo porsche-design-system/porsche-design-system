@@ -89,7 +89,7 @@ it.each(cases.map((segments) => [segments.filter((segment) => typeof segment ===
     //   accordionElement
     // );
 
-    const href = `\/${paramCase(category)}\/${paramCase(page)}`;
+    const href = `\/${paramCase(category)}\/${paramCase(page)}${tab !== undefined ? '/' + paramCase(tab) : ''}`;
     const [linkPureElement] = (await browserPage.$x(
       `//div[contains(@class, 'menu-desktop')]//nav//p-link-pure/a[contains(., '${page}')][@href='${href}']/parent::p-link-pure`
     )) as ElementHandle<HTMLElement>[];

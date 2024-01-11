@@ -1,5 +1,4 @@
-import { PAccordion, PButton } from '@porsche-design-system/components-react';
-import type { AccordionUpdateEvent } from '@porsche-design-system/components-react';
+import { type AccordionUpdateEventDetail, PAccordion, PButton } from '@porsche-design-system/components-react';
 import styled from 'styled-components';
 import {
   borderRadiusLarge,
@@ -321,18 +320,17 @@ const NarrowContentHalfRight = styled.div({
   gridColumn: `${gridNarrowSpanOneHalf} / ${gridNarrowColumnEnd}`,
 });
 
-
 type Props = {
   visualizeGrid: boolean;
-}
+};
 export const GridLayout = ({ visualizeGrid = true }: Props): JSX.Element => {
   const [isAccordion1Open, setIsAccordion1Open] = useState<boolean>(false);
   const [isAccordion2Open, setIsAccordion2Open] = useState<boolean>(false);
 
-  const onAccordion1Update = useCallback((e: CustomEvent<AccordionUpdateEvent>) => {
+  const onAccordion1Update = useCallback((e: CustomEvent<AccordionUpdateEventDetail>) => {
     setIsAccordion1Open(e.detail.open);
   }, []);
-  const onAccordion2Update = useCallback((e: CustomEvent<AccordionUpdateEvent>) => {
+  const onAccordion2Update = useCallback((e: CustomEvent<AccordionUpdateEventDetail>) => {
     setIsAccordion2Open(e.detail.open);
   }, []);
 

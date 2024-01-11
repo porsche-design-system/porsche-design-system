@@ -1,6 +1,6 @@
 import { type ChangeEvent, useState } from 'react';
 import {
-  type MultiSelectUpdateEvent,
+  type MultiSelectUpdateEventDetail,
   PMultiSelect,
   PMultiSelectOption,
   type PMultiSelectProps,
@@ -24,7 +24,7 @@ export const MultiSelectDynamicExamplePage = (): JSX.Element => {
     setInputValue('');
   };
 
-  const handleUpdate = (e: CustomEvent<MultiSelectUpdateEvent>) => {
+  const handleUpdate = (e: CustomEvent<MultiSelectUpdateEventDetail>) => {
     setSelectedValues(e.detail.value);
     setInputValue(e.detail.value.join(','));
   };
