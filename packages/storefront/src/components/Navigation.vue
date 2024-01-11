@@ -15,9 +15,9 @@
         <li v-for="(tabs, page, index) in pages" :key="index">
           <router-link
             :to="getRoute(category, page, !Array.isArray(tabs) ? Object.keys(tabs)[0] : undefined)"
-            v-slot="{ isActive, href, navigate }"
+            v-slot="{ href, navigate }"
           >
-            <p-link-pure :theme="storefrontTheme" icon="none" :active="isActive">
+            <p-link-pure :theme="storefrontTheme" icon="none" :active="isExtendedActive(page)">
               <a :href="href" @click="navigate"
                 >{{ page }}
                 <span v-if="isComponentWithProp(category, page, 'isDeprecated')" title="deprecated"> 🚫</span>
@@ -60,6 +60,10 @@
     public getRoute(category: string, page: string, tab?: string): string {
       const params = [category, page, tab].filter((param) => param !== undefined);
       return `/${params.map((x) => paramCase(x)).join('/')}`;
+    }
+
+    public isExtendedActive(page?: string) {
+      return this.$route.params.page === paramCase(page);
     }
 
     private created(): void {
