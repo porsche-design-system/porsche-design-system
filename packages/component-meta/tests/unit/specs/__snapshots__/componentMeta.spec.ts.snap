@@ -2392,7 +2392,7 @@ exports[`should match snapshot 1`] = `
       "loading": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "__Experimental__: Disables the checkbox and shows a loading indicator.",
+        "description": "@experimental Disables the checkbox and shows a loading indicator.",
         "isExperimental": true,
         "type": "boolean",
       },
@@ -8274,7 +8274,7 @@ exports[`should match snapshot 1`] = `
       "loading": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "__Experimental__: Disables the radio button and shows a loading indicator.",
+        "description": "@experimental Disables the radio button and shows a loading indicator.",
         "isExperimental": true,
         "type": "boolean",
       },
@@ -11090,7 +11090,7 @@ exports[`should match snapshot 1`] = `
       "showPasswordToggle": {
         "allowedValues": "boolean",
         "defaultValue": true,
-        "description": "__Experimental__: Show or hide password toggle for \`input type="password"\`.",
+        "description": "@experimental Show or hide password toggle for \`input type="password"\`.",
         "isExperimental": true,
         "type": "boolean",
       },
