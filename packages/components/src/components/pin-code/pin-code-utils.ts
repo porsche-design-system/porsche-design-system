@@ -123,9 +123,9 @@ export const isCurrentInput = (index: number, value: string, length: number): bo
   if (!value) {
     return index === 0; // No value entered at all: set current-input id on the first input element
   }
-  const firstWhitespaceIndex = value.split('').findIndex((char) => char === ' ');
+  const firstWhitespaceIndex = value.indexOf(' ');
   if (firstWhitespaceIndex === -1) {
-    return index === length - 1; // No whitespace found, set current-input id on the last input element
+    return index === length - 1; // All inputs have a value: set current-input id on the last input element
   }
   return index === firstWhitespaceIndex; // Some value is entered: set current-input id on the first input element which does not have a value
 };
