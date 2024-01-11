@@ -20,10 +20,12 @@
           <td>
             <code>{{ name }}</code>
             <span v-if="value.isDeprecated" title="deprecated"> 🚫</span>
+            <span v-else-if="value.isExperimental" title="experimental"> 🧪</span>
           </td>
           <td>
             <code>{{ paramCase(name) }}</code>
             <span v-if="value.isDeprecated" title="deprecated"> 🚫</span>
+            <span v-else-if="value.isExperimental" title="experimental"> 🧪</span>
           </td>
           <td v-html="formatDescription(value)"></td>
           <td v-html="formatPropType(value)"></td>

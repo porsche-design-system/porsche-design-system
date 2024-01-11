@@ -439,7 +439,7 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * __Experimental__: Disables the checkbox and shows a loading indicator.
+          * @experimental Disables the checkbox and shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -664,7 +664,7 @@ export namespace Components {
         "theme"?: Theme;
     }
     /**
-     * __Experimental__
+     * @experimental 
      */
     interface PFlyoutNavigation {
         /**
@@ -684,6 +684,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @experimental 
+     */
     interface PFlyoutNavigationItem {
         /**
           * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-navigation is set to this value.
@@ -1076,7 +1079,7 @@ export namespace Components {
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
     /**
-     * __Experimental__
+     * @experimental 
      */
     interface PLinkTileProduct {
         /**
@@ -1387,7 +1390,7 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * __Experimental__: Disables the radio button and shows a loading indicator.
+          * @experimental Disables the radio button and shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -1789,7 +1792,7 @@ export namespace Components {
          */
         "showCounter"?: boolean;
         /**
-          * __Experimental__: Show or hide password toggle for `input type="password"`.
+          * @experimental Show or hide password toggle for `input type="password"`.
          */
         "showPasswordToggle"?: boolean;
         /**
@@ -2153,7 +2156,7 @@ declare global {
         "update": FlyoutNavigationUpdateEventDetail;
     }
     /**
-     * __Experimental__
+     * @experimental 
      */
     interface HTMLPFlyoutNavigationElement extends Components.PFlyoutNavigation, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPFlyoutNavigationElementEventMap>(type: K, listener: (this: HTMLPFlyoutNavigationElement, ev: PFlyoutNavigationCustomEvent<HTMLPFlyoutNavigationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2169,6 +2172,9 @@ declare global {
         prototype: HTMLPFlyoutNavigationElement;
         new (): HTMLPFlyoutNavigationElement;
     };
+    /**
+     * @experimental 
+     */
     interface HTMLPFlyoutNavigationItemElement extends Components.PFlyoutNavigationItem, HTMLStencilElement {
     }
     var HTMLPFlyoutNavigationItemElement: {
@@ -2269,7 +2275,7 @@ declare global {
         "like": LinkTileProductLikeEventDetail;
     }
     /**
-     * __Experimental__
+     * @experimental 
      */
     interface HTMLPLinkTileProductElement extends Components.PLinkTileProduct, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPLinkTileProductElementEventMap>(type: K, listener: (this: HTMLPLinkTileProductElement, ev: PLinkTileProductCustomEvent<HTMLPLinkTileProductElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3060,7 +3066,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * __Experimental__: Disables the checkbox and shows a loading indicator.
+          * @experimental Disables the checkbox and shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -3289,7 +3295,7 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     /**
-     * __Experimental__
+     * @experimental 
      */
     interface PFlyoutNavigation {
         /**
@@ -3317,6 +3323,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @experimental 
+     */
     interface PFlyoutNavigationItem {
         /**
           * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-navigation is set to this value.
@@ -3717,7 +3726,7 @@ declare namespace LocalJSX {
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
     /**
-     * __Experimental__
+     * @experimental 
      */
     interface PLinkTileProduct {
         /**
@@ -4056,7 +4065,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * __Experimental__: Disables the radio button and shows a loading indicator.
+          * @experimental Disables the radio button and shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -4510,7 +4519,7 @@ declare namespace LocalJSX {
          */
         "showCounter"?: boolean;
         /**
-          * __Experimental__: Show or hide password toggle for `input type="password"`.
+          * @experimental Show or hide password toggle for `input type="password"`.
          */
         "showPasswordToggle"?: boolean;
         /**
@@ -4740,9 +4749,12 @@ declare module "@stencil/core" {
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
             "p-flyout": LocalJSX.PFlyout & JSXBase.HTMLAttributes<HTMLPFlyoutElement>;
             /**
-             * __Experimental__
+             * @experimental 
              */
             "p-flyout-navigation": LocalJSX.PFlyoutNavigation & JSXBase.HTMLAttributes<HTMLPFlyoutNavigationElement>;
+            /**
+             * @experimental 
+             */
             "p-flyout-navigation-item": LocalJSX.PFlyoutNavigationItem & JSXBase.HTMLAttributes<HTMLPFlyoutNavigationItemElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -4768,7 +4780,7 @@ declare module "@stencil/core" {
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
             "p-link-tile-model-signature": LocalJSX.PLinkTileModelSignature & JSXBase.HTMLAttributes<HTMLPLinkTileModelSignatureElement>;
             /**
-             * __Experimental__
+             * @experimental 
              */
             "p-link-tile-product": LocalJSX.PLinkTileProduct & JSXBase.HTMLAttributes<HTMLPLinkTileProductElement>;
             /**
