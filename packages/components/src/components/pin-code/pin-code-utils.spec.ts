@@ -346,11 +346,8 @@ describe('isCurrentInput()', () => {
     [1, '1234', 4, false],
     [2, '1234', 4, false],
     [3, '1234', 4, true],
-  ])(
-    'should return correct current input for index: %d, value: %s and length: %d',
-    (index, value, length, expected) => {
-      const result = isCurrentInput(index, value, length);
-      expect(result).toBe(expected);
-    }
-  );
+  ])("should for index: %d, value: %s and length: %d' return: %s", (index, value, length, expected) => {
+    const result = isCurrentInput(index, value, length);
+    expect(result).toBe(expected);
+  });
 });
