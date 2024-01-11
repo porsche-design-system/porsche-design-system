@@ -47,7 +47,7 @@ export class RadioButtonWrapper {
   /** Show or hide label. For better accessibility it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** __Experimental__: Disables the radio button and shows a loading indicator. */
+  /** @experimental Disables the radio button and shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
   /** Adapts the color depending on the theme. */

@@ -439,7 +439,7 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * __Experimental__: Disables the checkbox and shows a loading indicator.
+          * @experimental Disables the checkbox and shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -1390,7 +1390,7 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * __Experimental__: Disables the radio button and shows a loading indicator.
+          * @experimental Disables the radio button and shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -1792,7 +1792,7 @@ export namespace Components {
          */
         "showCounter"?: boolean;
         /**
-          * __Experimental__: Show or hide password toggle for `input type="password"`.
+          * @experimental Show or hide password toggle for `input type="password"`.
          */
         "showPasswordToggle"?: boolean;
         /**
@@ -3066,7 +3066,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * __Experimental__: Disables the checkbox and shows a loading indicator.
+          * @experimental Disables the checkbox and shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -4065,7 +4065,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * __Experimental__: Disables the radio button and shows a loading indicator.
+          * @experimental Disables the radio button and shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -4519,7 +4519,7 @@ declare namespace LocalJSX {
          */
         "showCounter"?: boolean;
         /**
-          * __Experimental__: Show or hide password toggle for `input type="password"`.
+          * @experimental Show or hide password toggle for `input type="password"`.
          */
         "showPasswordToggle"?: boolean;
         /**

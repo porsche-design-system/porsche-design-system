@@ -323,7 +323,7 @@ const generateComponentMeta = (): void => {
           type: propType.replace(/(?:BreakpointCustomizable|SelectedAriaAttributes)<(.+?)>/, '$1').trim(), // contains trailing space
           defaultValue: cleanedValue,
           ...(jsdoc?.match(/@deprecated/) && { isDeprecated: true }),
-          ...(jsdoc?.match(/__experimental__/i) && { isExperimental: true }),
+          ...(jsdoc?.match(/@experimental/) && { isExperimental: true }),
           ...(propType.match(/SelectedAriaAttributes/) && { isAria: true }),
           ...(Array.isArray(cleanedValue) && { isArray: true }),
         };
