@@ -44,6 +44,11 @@ exports[`should have only high contrast styles for p-link 1`] = `
       },
     },
   },
+  {
+    ".root": {
+      "border-color": "LinkText",
+    },
+  },
 ]
 `;
 
@@ -54,6 +59,11 @@ exports[`should have only high contrast styles for p-link-social 1`] = `
       ".root:hover": {
         "border-color": "Highlight",
       },
+    },
+  },
+  {
+    ".root": {
+      "border-color": "LinkText",
     },
   },
 ]

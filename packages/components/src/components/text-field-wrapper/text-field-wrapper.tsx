@@ -101,7 +101,7 @@ export class TextFieldWrapper {
   /** Show search button if wrapped inside a form.*/
   @Prop() public submitButton?: boolean = true;
 
-  /** __Experimental__: Show or hide password toggle for `input type="password"`. */
+  /** @experimental Show or hide password toggle for `input type="password"`. */
   @Prop() public showPasswordToggle?: boolean = true;
 
   /** Adapts the color depending on the theme. */

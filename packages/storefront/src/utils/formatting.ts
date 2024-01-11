@@ -58,7 +58,7 @@ export const wrapInCodeTag = (input: string): string => `<code>${formatHtml(inpu
 export const formatPropDescription = (meta: PropMeta): string => {
   return (
     meta.description
-      ?.replace(/@(deprecated)/, '<strong class="deprecated">$1</strong>') // deprecated annotation
+      ?.replace(/@(deprecated|experimental)/, '<strong class="deprecated">$1</strong>') // deprecated and experimental annotations
       .replace(/`(.+?)`/g, (_, g1) => `<code>${formatHtml(g1)}</code>`) || '' // prop references in backticks
   );
 };
