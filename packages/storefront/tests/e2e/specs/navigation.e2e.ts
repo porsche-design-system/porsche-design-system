@@ -43,9 +43,7 @@ const isLinkActive = (element: ElementHandle<HTMLElement> | null): Promise<boole
 };
 
 const waitForHeading = async (page: Page): Promise<ElementHandle<HTMLElement>> => {
-  const headingElementHandle = (await page.waitForSelector(
-    'main .vmark > h1, main .vmark > p-heading'
-  )) as ElementHandle<HTMLElement>;
+  const headingElementHandle = (await page.waitForSelector('main .vmark > h1')) as ElementHandle<HTMLElement>;
   // NOTE: sometimes h1 or p-heading is rendered empty for whatever reason 🤷‍
   await page.waitForFunction((headingEl) => headingEl.innerText !== '', undefined, headingElementHandle);
   return headingElementHandle;
@@ -83,11 +81,11 @@ it.each(cases.map((segments) => [segments.filter((segment) => typeof segment ===
       `//div[contains(@class, 'menu-desktop')]//nav/p-accordion[@heading='${category}']`
     )) as ElementHandle<HTMLElement>[];
     await accordionElement.click();
-    // await browserPage.waitForFunction(
-    //   (el) => getComputedStyle(el.shadowRoot.querySelector('.collapsible')).visibility === 'visible',
-    //   undefined,
-    //   accordionElement
-    // );
+    await browserPage.waitForFunction(
+      (el) => getComputedStyle(el.shadowRoot.querySelector('.collapsible')).visibility === 'visible',
+      undefined,
+      accordionElement
+    );
 
     const href = `\/${paramCase(category)}\/${paramCase(page)}${tab !== undefined ? '/' + paramCase(tab) : ''}`;
     const [linkPureElement] = (await browserPage.$x(
