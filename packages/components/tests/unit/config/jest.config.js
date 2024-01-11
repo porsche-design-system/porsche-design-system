@@ -4,6 +4,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   verbose: true,
   setupFiles: ['<rootDir>/tests/unit/config/jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/tests/unit/config/customMatchers.ts'],
   testMatch: ['**/src/**/*.spec.ts'],
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   moduleNameMapper: {
