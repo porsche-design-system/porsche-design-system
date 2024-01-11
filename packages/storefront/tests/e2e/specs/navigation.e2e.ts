@@ -124,7 +124,7 @@ it.each<[string, string, string, string | undefined, boolean]>(
   await browserPage.waitForFunction((el) => el.active, undefined, linkPureElement);
   expect(await isLinkActive(linkPureElement), 'sidebar link should be active after click').toBe(true);
 
-  const headingRegEx = new RegExp(`^${page}( 🚫|🧪)?$`); // to cover deprecated and experimental icon
+  const headingRegEx = new RegExp(`^${page}( 🚫| 🧪)?$`); // to cover deprecated and experimental icon
   expect(await getHeadingText(browserPage), 'should show correct main title for page').toMatch(headingRegEx);
   expect(await hasPageObjectObject(browserPage), 'should not contain [object Object] on page').toBe(false);
   expect(getConsoleErrorsAmount(), `Errors on ${category}/${page}`).toBe(0);
