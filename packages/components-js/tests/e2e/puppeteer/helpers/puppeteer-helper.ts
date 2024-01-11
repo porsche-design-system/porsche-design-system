@@ -6,6 +6,7 @@ import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import * as beautify from 'js-beautify';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
+import { paramCase } from 'change-case';
 
 export type ClickableTests = {
   state: string;
@@ -322,7 +323,12 @@ export const goto = async (page: Page, url: string) => {
 };
 
 export const buildDefaultComponentMarkup = (tagName: TagName): string => {
-  const { props, requiredProps, requiredChild, requiredParent, requiredNamedSlots } = getComponentMeta(tagName);
+  const {
+    requiredChild,
+    requiredParent,
+    requiredNamedSlots,
+    propsMeta, // new format
+  } = getComponentMeta(tagName);
 
   const buildChildMarkup = (requiredChild: string, requiredNamedSlots: ComponentMeta['requiredNamedSlots']): string => {
     if (requiredChild) {
@@ -348,7 +354,17 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     }
   };
 
-  const attributes = requiredProps?.map((prop) => ` ${prop}="${props[prop] ?? 'value'}"`).join() || '';
+  // add required attributes that would cause validation to throw
+  const attributes = propsMeta
+    ? Object.entries(propsMeta)
+        .map(
+          ([propName, { defaultValue, isRequired }]) =>
+            // handling all href attributes to trick throwIfInvalidLinkUsage and throwIfInvalidLinkTileProductUsage
+            (isRequired || propName === 'href') && ` ${paramCase(propName)}="${defaultValue ?? 'value'}"`
+        )
+        .filter(Boolean)
+        .join()
+    : '';
 
   const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(
     requiredChild,
