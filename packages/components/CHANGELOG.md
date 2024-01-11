@@ -68,6 +68,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Pin Code`: Focus correct input when clicking on label
+  ([#2985](https://github.com/porsche-design-system/porsche-design-system/pull/2985))
 - `Flyout Navigation`: Focus dismiss button after opening
   ([#2935](https://github.com/porsche-design-system/porsche-design-system/pull/2935))
 - `Accordion`: Alignment of slotted heading with custom padding
