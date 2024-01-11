@@ -5,6 +5,7 @@ import {
   getConcatenatedInputValues,
   getSanitisedValue,
   initHiddenInput,
+  isCurrentInput,
   isFormSubmittable,
   isInputSingleDigit,
   PIN_CODE_LENGTHS,
@@ -153,7 +154,7 @@ export class PinCode {
           {Array.from(Array(this.length), (_, index) => (
             <input
               key={index}
-              id={index === this.value.length ? currentInputId : null}
+              {...(isCurrentInput(index, this.value, this.length) && { id: currentInputId })}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby={`${labelId} ${descriptionId} ${messageId}`}
