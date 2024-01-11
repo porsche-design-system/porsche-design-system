@@ -2544,6 +2544,16 @@ exports[`should render dsr component for PButton 1`] = `
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
 }
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 
     </style>
     <button
@@ -2556,6 +2566,11 @@ exports[`should render dsr component for PButton 1`] = `
         <slot />
       </span>
     </button>
+    <span
+      class="status"
+      id="status"
+      role="status"
+    />
   </template>
   Some child
 </p-button>
@@ -2899,6 +2914,16 @@ p {
 .icon {
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 
             </style>
             <button
@@ -2911,6 +2936,11 @@ p {
                 <slot />
               </span>
             </button>
+            <span
+              class="status"
+              id="status"
+              role="status"
+            />
           </template>
         </p-button>
       </div>
