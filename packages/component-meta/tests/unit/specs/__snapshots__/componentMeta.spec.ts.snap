@@ -2175,7 +2175,7 @@ exports[`should match snapshot 1`] = `
     "namedSlots": [
       "heading",
       "description",
-      "header",
+      "controls",
     ],
     "nestedComponents": [
       "p-link-pure",
