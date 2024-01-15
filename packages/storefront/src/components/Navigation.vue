@@ -62,7 +62,7 @@
       return `/${params.map((x) => paramCase(x)).join('/')}`;
     }
 
-    public isExtendedActive(page?: string) {
+    public isExtendedActive(page: string) {
       return this.$route.params.page === paramCase(page);
     }
 
