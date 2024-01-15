@@ -55,11 +55,11 @@ Right after the `heading`, an additional `description` can be added either via p
 
 <Playground :markup="description" :config="config"></Playground>
 
-## Header
+## Controls
 
-Right after the `heading` and `description` a `header` can be added via named slot.
+Next to `prev/next` buttons, a slot `controls` can be added via named slot.
 
-<Playground :markup="header" :config="config"></Playground>
+<Playground :markup="controls" :config="config"></Playground>
 
 ## Align Header
 
@@ -248,8 +248,8 @@ export default class Code extends Vue {
   ${this.getSlides(3)}
 </p-carousel>`;
 
-  header = `<p-carousel heading="${this.basicHeading}" description="${this.basicDescription}">
-  <p slot="header">Some slotted header</p>
+  controls = `<p-carousel heading="${this.basicHeading}" description="${this.basicDescription}">
+  <div slot="controls">Some slotted controls</div>
   ${this.getSlides(3)}
 </p-carousel>`;
 
@@ -270,7 +270,7 @@ export default class Code extends Vue {
   alignHeaders = CAROUSEL_ALIGN_HEADERS.map(item => CAROUSEL_ALIGN_HEADERS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item)
   get alignHeaderMarkup() {
     return `<p-carousel align-header="${this.alignHeader}" heading="${this.basicHeading}" description="${this.basicDescription}">
-  <p slot="header">Some slotted header</p>  
+  <div slot="controls">Some slotted controls</div>  
   ${this.getSlides(3)}
 </p-carousel>`;
 }

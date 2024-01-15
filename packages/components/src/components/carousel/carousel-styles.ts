@@ -55,7 +55,7 @@ const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }
 export const getComponentCss = (
   hasHeading: boolean,
   hasDescription: boolean,
-  hasHeaderSlot: boolean,
+  hasControlsSlot: boolean,
   headingSize: CarouselHeadingSize,
   width: CarouselWidth,
   hasPagination: BreakpointCustomizable<boolean>,
@@ -84,17 +84,12 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      ...(hasHeaderSlot && {
-        ['slot[name="header"]']: {
+      ...(hasControlsSlot && {
+        ['slot[name="controls"]']: {
           display: 'block',
           gridColumnStart: 1,
           gridRowStart: 3,
           alignSelf: 'center', // ensures vertical alignment to prev/next buttons
-          ...(isHeaderAlignCenter && {
-            [getMediaQueryMax('s')]: {
-              justifySelf: 'center', // relevant for horizontal alignment of header on mobile view only
-            },
-          }),
         },
       }),
       ...addImportantToEachRule({
