@@ -146,6 +146,7 @@ it.each<[string, string, string, string | undefined, boolean]>(
       await Promise.all([browserPage.waitForNavigation(), tabElement.click()]);
 
       expect(await isTabActive(tabElement), 'should have tab active after click').toBe(true);
+      expect(await isLinkActive(linkPureElement), 'sidebar link should still be active after click').toBe(true);
 
       await waitForHeading(browserPage);
       expect(await getHeadingText(browserPage), 'should show correct main title for tab page').toMatch(headingRegEx);
