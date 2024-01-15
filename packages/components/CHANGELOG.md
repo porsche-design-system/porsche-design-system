@@ -35,9 +35,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2935](https://github.com/porsche-design-system/porsche-design-system/pull/2935))
 - `Carousel`: Position and width of heading and description
   ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
+- `Model Signature` asset for `model="macan"`
 - Aligned naming of all `CustomEvent<T>` types and deprecated old ones since they are in fact typing the `detail: T`
   property of the event
-- `Model Signature` asset for `model="macan"`
 
 ```diff
 - AccordionUpdateEvent
