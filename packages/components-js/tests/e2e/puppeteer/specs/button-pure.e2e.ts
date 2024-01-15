@@ -21,6 +21,8 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-button-pure');
 const getButton = () => selectNode(page, 'p-button-pure >>> button');
+const getLoadingStatus = () => selectNode(page, 'p-button-pure >>> .status');
+const getLoadingMessage = async () => (await getLoadingStatus()).evaluate((el) => el.textContent);
 
 const initButtonPure = (opts?: { isLoading?: boolean; isDisabled?: boolean; withSubline?: boolean }): Promise<void> => {
   const { isLoading = false, isDisabled = false, withSubline = false } = opts || {};
@@ -328,24 +330,6 @@ it('should submit form via enter key when type is submit', async () => {
   expect((await getEventSummary(form, 'submit')).counter).toBe(3);
 });
 
-it('should add aria-busy when loading and remove if finished', async () => {
-  await setContentWithDesignSystem(page, `<p-button-pure>Some label</p-button-pure>`);
-  const host = await getHost();
-  const button = await getButton();
-
-  expect(await getAttribute(button, 'aria-busy')).toBeNull();
-
-  await setProperty(host, 'loading', true);
-  await waitForStencilLifecycle(page);
-
-  expect(await getAttribute(button, 'aria-busy')).toBe('true');
-
-  await setProperty(host, 'loading', false);
-  await waitForStencilLifecycle(page);
-
-  expect(await getAttribute(button, 'aria-busy')).toBeNull();
-});
-
 describe('focus state', () => {
   it('should keep focus if state switches to loading', async () => {
     await initButtonPure();
@@ -409,8 +393,10 @@ describe('accessibility', () => {
   it('should expose correct initial accessibility tree properties', async () => {
     await initButtonPure();
     const button = await getButton();
+    const status = await getLoadingStatus();
 
     await expectA11yToMatchSnapshot(page, button);
+    await expectA11yToMatchSnapshot(page, status, { interestingOnly: false });
   });
 
   it('should expose correct accessibility name when hide-label prop is set', async () => {
@@ -449,5 +435,33 @@ describe('accessibility', () => {
     await waitForStencilLifecycle(page);
 
     await expectA11yToMatchSnapshot(page, button, { message: 'Pressed' }); // need to split the test in 2, because aria-expanded and aria-pressed are invalid if used simultaneously. Also aria-pressed removes the accessible name.
+  });
+
+  it('should expose correct loading message initially: loading: false', async () => {
+    await initButtonPure();
+
+    expect(await getLoadingMessage()).toBe('');
+  });
+
+  it('should expose correct loading message initially: loading:true', async () => {
+    await initButtonPure({ isLoading: true });
+
+    expect(await getLoadingMessage()).toBe('Loading');
+  });
+
+  it('should expose correct loading message if loading is changed programmatically', async () => {
+    await initButtonPure();
+    const host = await getHost();
+
+    expect(await getLoadingMessage()).toBe('');
+
+    await setProperty(host, 'loading', true);
+    await waitForStencilLifecycle(page);
+
+    expect(await getLoadingMessage()).toBe('Loading');
+
+    await setProperty(host, 'loading', false);
+
+    expect(await getLoadingMessage()).toBe('Loading finished');
   });
 });
