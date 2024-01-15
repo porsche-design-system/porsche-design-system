@@ -29,6 +29,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `visibility` css property can be overridden on all components, e.g. to make use of `visibility: hidden;`  
+  ([#2988](https://github.com/porsche-design-system/porsche-design-system/pull/2988))
 - `Flyout Navigation`: Improved validation and `activeIdentifier` isn't automatically updated anymore
   ([#2935](https://github.com/porsche-design-system/porsche-design-system/pull/2935))
 - `Carousel`: Position and width of heading and description
