@@ -19,6 +19,13 @@ publish_jfrog() {
 
   result=$(yarn publish --non-interactive --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/ "${PACKAGE_LOCATION}")
 
+  if [[ ${NPM_TAG_NAME} ]]; then
+      # tagging via yarn results in an error even though it seems to work, that's why we use npm
+      # https://github.com/yarnpkg/yarn/issues/7823
+      # yarn tag add --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/ ${PACKAGE_NAME}@${PACKAGE_VERSION} ${NPM_TAG_NAME}
+      npm dist-tag add --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/ ${PACKAGE_NAME}@${PACKAGE_VERSION} ${NPM_TAG_NAME}
+    fi
+
   if [[ ${result} == *"Done"* ]]; then
     return 0 # true
   else
@@ -31,6 +38,13 @@ publish_npmjs() {
   source "${SCRIPT_DIR}/../shared/ensure-npmjs-credentials.sh"
 
   result=$(yarn publish --non-interactive --registry=https://registry.npmjs.org/ --access public "${PACKAGE_LOCATION}")
+
+  if [[ ${NPM_TAG_NAME} ]]; then
+    # tagging via yarn results in an error even though it seems to work, that's why we use npm
+    # https://github.com/yarnpkg/yarn/issues/7823
+    # yarn tag add --registry=https://registry.npmjs.org/ ${PACKAGE_NAME}@${PACKAGE_VERSION} ${NPM_TAG_NAME}
+    npm dist-tag add --registry=https://registry.npmjs.org/ ${PACKAGE_NAME}@${PACKAGE_VERSION} ${NPM_TAG_NAME}
+  fi
 
   if [[ ${result} == *"Done"* ]]; then
     return 0 # true
@@ -69,6 +83,7 @@ PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
 PACKAGE_NAME=$(grep name "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/name//' | tr -d '[[:space:]]')
 PACKAGE_VERSION=$(grep version "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/version//' | tr -d '[[:space:]]')
 GIT_TAG_NAME="${PACKAGE_NAME:23}-v${PACKAGE_VERSION}"
+NPM_TAG_NAME=$(echo ${PACKAGE_VERSION} | grep -Eo '(rc|beta|alpha)')
 
 if ! is_version_published; then
   if publish_jfrog && publish_npmjs; then
