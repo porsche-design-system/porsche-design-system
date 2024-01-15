@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- `Carousel`: Named slot `header` renamed to `controls`
+  ([#2992](https://github.com/porsche-design-system/porsche-design-system/pull/2992))
+
 ### [3.10.0-rc.4] - 2024-01-15
 
 #### Added
