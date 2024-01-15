@@ -1,4 +1,4 @@
-# Tag Dismissible
+<ComponentHeading name="Tag Dismissible"></ComponentHeading>
 
 `p-tag-dismissible` is used in contexts where the user can actively remove a tag. It is often seen in filtering.
 

@@ -46,13 +46,15 @@ const adjustHeadlines = (str: string): string => {
   }
 
   let headline: string;
-  // depends on the order of components passed in the storefront.config.js
+  // depends on the order of components passed in the storefront.config.ts
   // extend the multi prop page by the multi prop category
   if (h1Replacements[pTagName]) {
-    headline = `# ${h1Replacements[pTagName]}\n\n## ${componentHeadline}`;
+    headline = `<ComponentHeading name="${h1Replacements[pTagName]}"></ComponentHeading>\n\n## ${componentHeadline}`;
     tagName = '#' + tagName;
   } else {
-    headline = `# ${componentHeadline}`;
+    headline = multiPropReplacements.includes(pTagName)
+      ? `# ${componentHeadline}`
+      : `<ComponentHeading name="${componentHeadline}"></ComponentHeading>`;
   }
 
   return str.replace(tagName, headline);

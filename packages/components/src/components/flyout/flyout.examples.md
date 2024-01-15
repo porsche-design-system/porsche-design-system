@@ -1,4 +1,4 @@
-# Flyout
+<ComponentHeading name="Flyout"></ComponentHeading>
 
 The `p-flyout` component, also known as a drawer, is a controlled component that overlays from the left or right side of
 the screen. It is commonly used as a temporary workspace that allows users to complete tasks without navigating to a new

@@ -1,4 +1,4 @@
-# Table
+<ComponentHeading name="Table"></ComponentHeading>
 
 The `p-table` component displays tabular data and offers column-wise sorting options.  
 It combines a consistent appearance together with great accessibility while not having restrictions regarding its

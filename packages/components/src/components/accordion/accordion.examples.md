@@ -1,4 +1,4 @@
-# Accordion
+<ComponentHeading name="Accordion"></ComponentHeading>
 
 The `p-accordion` is a component that reveals or hides associated sections of content.  
 Accordions are flexible in the context and can include other components of the Porsche Design System.

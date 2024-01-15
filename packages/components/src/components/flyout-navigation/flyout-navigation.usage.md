@@ -1,4 +1,4 @@
-# Flyout Navigation
+<ComponentHeading name="Flyout Navigation"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

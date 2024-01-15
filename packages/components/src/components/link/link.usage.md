@@ -1,4 +1,4 @@
-# Link
+<ComponentHeading name="Link"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

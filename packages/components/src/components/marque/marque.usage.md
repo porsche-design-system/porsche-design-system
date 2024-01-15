@@ -1,4 +1,4 @@
-# Marque
+<ComponentHeading name="Marque"></ComponentHeading>
 
 <Notification heading="Deprecation hint" state="error">
   This component is deprecated and will be removed with the next major release.

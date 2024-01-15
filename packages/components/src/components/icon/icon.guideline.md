@@ -1,4 +1,4 @@
-# Icon
+<ComponentHeading name="Icon"></ComponentHeading>
 
 We want to enable you to use the icons you need. Check the [Porsche Design System](https://icons.porsche.com/#/) for an
 appropriate icon you are looking for. If there is no match, we encourage you to build, test and use the icons you need.

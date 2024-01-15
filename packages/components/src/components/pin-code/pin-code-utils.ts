@@ -110,3 +110,22 @@ export const isFormSubmittable = (host: HTMLElement, form: HTMLFormElement): boo
     ).some((el) => (el as HTMLButtonElement).type === 'submit')
   );
 };
+
+/**
+ * Determines if the current input element corresponds to the first non-filled input
+ *
+ * @param {number} index - The index of the current input element.
+ * @param {string} value - The input value.
+ * @param {number} length - The total number of input elements.
+ * @returns {boolean} - True if the current input should have a specific identifier, indicating it corresponds to the first non-filled input; otherwise, false.
+ */
+export const isCurrentInput = (index: number, value: string, length: number): boolean => {
+  if (!value) {
+    return index === 0; // No value entered at all: set current-input id on the first input element
+  }
+  const firstWhitespaceIndex = value.indexOf(' ');
+  if (firstWhitespaceIndex === -1) {
+    return index === length - 1; // All inputs have a value: set current-input id on the last input element
+  }
+  return index === firstWhitespaceIndex; // Some value is entered: set current-input id on the first input element which does not have a value
+};

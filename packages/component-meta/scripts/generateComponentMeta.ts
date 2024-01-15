@@ -35,6 +35,7 @@ const getEvaluablePropTypeString = (propTypes: string): string => {
 const generateComponentMeta = (): void => {
   const imports = `import type { TagName } from '@porsche-design-system/shared';`;
 
+  // TODO: flag if top level / root component or even topLevelParentTagName
   const types = [
     `export type PropMeta = {
   description?: string;
@@ -44,6 +45,7 @@ const generateComponentMeta = (): void => {
   deprecatedValues?: string[];
   isRequired?: boolean;
   isDeprecated?: boolean;
+  isExperimental?: boolean;
   isBreakpointCustomizable?: boolean;
   isAria?: boolean;
   isArray?: boolean;
@@ -67,16 +69,23 @@ const generateComponentMeta = (): void => {
   requiredChildSelector?: string; // might contain multiple selectors separated by comma
   nestedComponents?: TagName[]; // array of other pds components
   propsMeta?: { [propName: string]: PropMeta }; // new format
+  /** @deprecated use \`propsMeta\` instead */
   props?: {
     [propName: string]: boolean | number | string | object | null; // value is the prop's default value
   };
+  /** @deprecated use \`propsMeta\` instead */
   requiredProps?: string[]; // array of props that are mandatory
+  /** @deprecated use \`propsMeta\` instead */
   deprecatedProps?: string[]; // array of props that are deprecated
+  /** @deprecated use \`propsMeta\` instead */
   breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
+  /** @deprecated use \`propsMeta\` instead */
   arrayProps?: string[]; // array of props that are of type array
+  /** @deprecated use \`propsMeta\` instead */
   allowedPropValues?: {
     [propName: string]: 'boolean' | 'number' | 'string' | object | string[] | number[];
   };
+  /** @deprecated use \`propsMeta\` instead */
   deprecatedPropValues?: {
     [propName: string]: string[]; // array of values of a prop that are deprecated
   };
@@ -91,7 +100,9 @@ const generateComponentMeta = (): void => {
   requiredNamedSlots?: { slotName: string; tagName: TagName }[]; // array of objects for each named slot with specific component tag
   eventsMeta?: { [eventName: string]: EventMeta }; // new format
   hasEvent: boolean;
+  /** @deprecated use \`eventsMeta\` instead */
   eventNames?: string[];
+  /** @deprecated use \`eventsMeta\` instead */
   deprecatedEventNames?: string[]; // array of event names
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
@@ -110,6 +121,7 @@ const generateComponentMeta = (): void => {
     deprecatedValues?: string[];
     isRequired?: boolean;
     isDeprecated?: boolean;
+    isExperimental?: boolean;
     isBreakpointCustomizable?: boolean;
     isAria?: boolean;
     isArray?: boolean;
@@ -135,16 +147,23 @@ const generateComponentMeta = (): void => {
     requiredChildSelector?: string; // might contain multiple selectors separated by comma
     nestedComponents?: TagName[]; // array of other pds components
     propsMeta?: { [propName: string]: PropMeta }; // new format
+    /** @deprecated use `propsMeta` instead */
     props?: {
       [propName: string]: boolean | number | string | object | null; // value is the prop's default value
     };
+    /** @deprecated use `propsMeta` instead */
     requiredProps?: string[]; // array of props that are mandatory
+    /** @deprecated use `propsMeta` instead */
     deprecatedProps?: string[]; // array of props that are deprecated
+    /** @deprecated use `propsMeta` instead */
     breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
+    /** @deprecated use `propsMeta` instead */
     arrayProps?: string[]; // array of props that are of type array
+    /** @deprecated use `propsMeta` instead */
     allowedPropValues?: {
       [propName: string]: 'boolean' | 'number' | 'string' | object | string[] | number[];
     };
+    /** @deprecated use `propsMeta` instead */
     deprecatedPropValues?: {
       [propName: string]: string[]; // array of values of a prop that are deprecated
     };
@@ -159,7 +178,9 @@ const generateComponentMeta = (): void => {
     requiredNamedSlots?: { slotName: string; tagName: TagName }[]; // array of objects for each named slot with specific component tag
     eventsMeta?: { [eventName: string]: EventMeta }; // new format
     hasEvent: boolean;
+    /** @deprecated use `eventsMeta` instead */
     eventNames?: string[];
+    /** @deprecated use `eventsMeta` instead */
     deprecatedEventNames?: string[]; // array of event names
     hasAriaProp: boolean;
     hasObserveAttributes: boolean;
@@ -190,7 +211,7 @@ const generateComponentMeta = (): void => {
     const [deprecated, rawDeprecationMessage] = /\/\*\* @deprecated (.*)\*\/\n@Component\({/.exec(source) || [];
     const isDeprecated = !!deprecated;
     const deprecationMessage = rawDeprecationMessage?.trim();
-    const isExperimental = !!/\/\*\* __Experimental__ \*\/\n@Component\({/.exec(source);
+    const isExperimental = !!source.match(/\/\*\* @experimental \*\/\n@Component\({/);
     const isDelegatingFocus = source.includes('delegatesFocus: true');
     const isInternal = INTERNAL_TAG_NAMES.includes(tagName);
     const isThemeable = source.includes('public theme?: Theme');
@@ -303,6 +324,7 @@ const generateComponentMeta = (): void => {
           type: propType.replace(/(?:BreakpointCustomizable|SelectedAriaAttributes)<(.+?)>/, '$1').trim(), // contains trailing space
           defaultValue: cleanedValue,
           ...(jsdoc?.match(/@deprecated/) && { isDeprecated: true }),
+          ...(jsdoc?.match(/@experimental/) && { isExperimental: true }),
           ...(propType.match(/SelectedAriaAttributes/) && { isAria: true }),
           ...(Array.isArray(cleanedValue) && { isArray: true }),
         };
@@ -320,13 +342,6 @@ const generateComponentMeta = (): void => {
       // similar regex as above without optional ? modifier
       source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
     ).map(([, propName]) => propName);
-
-    const [, invalidLinkUsageProp] =
-      /throwIfInvalidLink(?:Pure|TileProduct)?Usage\(this\.host, this\.([a-zA-Z]+)\);/.exec(source) || [];
-    if (invalidLinkUsageProp) {
-      // const [, propType] = new RegExp(`@Prop\\(\\) public ${invalidLinkUsageProp}\\?: (.+);`).exec(source) || [];
-      requiredProps.push(invalidLinkUsageProp);
-    }
 
     // new format
     requiredProps.forEach((propName) => (propsMeta[propName].isRequired = true));

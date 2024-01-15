@@ -159,6 +159,13 @@ describe('formatPropDescription()', () => {
       allowedValues: 'boolean',
     },
     {
+      description: '@experimental Disables the checkbox and shows a loading indicator.',
+      type: 'boolean',
+      defaultValue: false,
+      isExperimental: true,
+      allowedValues: 'boolean',
+    },
+    {
       description: 'When providing an url then the component will be rendered as `<a>`.',
       type: 'string',
       defaultValue: null,

@@ -900,6 +900,7 @@ exports[`manual test cases should pass internal props correctly to p-pin-code 1`
           aria-describedby="label description message"
           aria-label="4-4"
           autocomplete="one-time-code"
+          id="current-input"
           inputmode="numeric"
           pattern="\\d*"
           type="text"

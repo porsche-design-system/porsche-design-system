@@ -1,4 +1,4 @@
-# Modal
+<ComponentHeading name="Modal"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

@@ -142,7 +142,7 @@
   {
     "chunkShortName": "main",
     "size": 76096,
-    "gzipSize": 25460
+    "gzipSize": 25459
   },
   {
     "chunkShortName": "marque",
@@ -161,8 +161,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 22048,
-    "gzipSize": 7495
+    "size": 22024,
+    "gzipSize": 7484
   },
   {
     "chunkShortName": "pagination",
@@ -171,8 +171,8 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 12651,
-    "gzipSize": 4915
+    "size": 12761,
+    "gzipSize": 4970
   },
   {
     "chunkShortName": "popover",
