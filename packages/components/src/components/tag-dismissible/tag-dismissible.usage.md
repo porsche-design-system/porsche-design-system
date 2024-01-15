@@ -1,4 +1,4 @@
-# Tag Dismissible
+<ComponentHeading name="Tag Dismissible"></ComponentHeading>
 
 Allows users to quickly refine the result of data they want to be presented on the page.
 

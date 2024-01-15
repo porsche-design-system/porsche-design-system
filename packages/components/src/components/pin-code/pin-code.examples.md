@@ -1,7 +1,7 @@
-# Pin Code
+<ComponentHeading name="Pin Code"></ComponentHeading>
 
 The `p-pin-code` component is optimized for entering sequences of digits. The most common use case is for entering
-`one-time-passwords` (OTP) or pin codes. The input fields allow only one digit at a time. When a digit is entered, the
+one-time-passwords (OTP) or pin codes. The input fields allow only one digit at a time. When a digit is entered, the
 focus shifts automatically to the next input, until every input is filled.
 
 A few things to note:

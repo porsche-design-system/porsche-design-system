@@ -1,4 +1,4 @@
-# Link Pure
+<ComponentHeading name="Link Pure"></ComponentHeading>
 
 The `p-link-pure` component is essential for performing changes in **page routes**. A Link Pure can be used with or
 without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible. When

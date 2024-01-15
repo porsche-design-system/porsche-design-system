@@ -1,4 +1,4 @@
-# Popover
+<ComponentHeading name="Popover"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

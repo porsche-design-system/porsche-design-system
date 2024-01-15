@@ -1,4 +1,4 @@
-# Multi Select
+<ComponentHeading name="Multi Select"></ComponentHeading>
 
 The `p-multi-select` component is a versatile custom form element that facilitates the selection of multiple options. It
 can be used [within a form](components/multi-select/examples#form) or in a

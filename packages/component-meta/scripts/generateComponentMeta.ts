@@ -35,6 +35,7 @@ const getEvaluablePropTypeString = (propTypes: string): string => {
 const generateComponentMeta = (): void => {
   const imports = `import type { TagName } from '@porsche-design-system/shared';`;
 
+  // TODO: flag if top level / root component or even topLevelParentTagName
   const types = [
     `export type PropMeta = {
   description?: string;

@@ -1,4 +1,4 @@
-# Icon
+<ComponentHeading name="Icon"></ComponentHeading>
 
 Along with other Porsche basic elements - such as colors, typography and the Porsche marque - icons are core components
 of the Porsche design. The clear graphic symbols allow quick orientation and are internationally recognized. The Porsche

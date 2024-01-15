@@ -1,4 +1,4 @@
-# Text List
+<ComponentHeading name="Text List"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

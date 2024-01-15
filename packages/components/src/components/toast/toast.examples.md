@@ -1,4 +1,4 @@
-# Toast
+<ComponentHeading name="Toast"></ComponentHeading>
 
 The `p-toast` component manages both the queue and display of toast messages.  
 Therefore, you can only have a single instance of this component within in your application. We recommend rendering it

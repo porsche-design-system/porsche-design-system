@@ -1,4 +1,4 @@
-# Spinner
+<ComponentHeading name="Spinner"></ComponentHeading>
 
 There are unavoidable moments when the user has to wait for more than 1 second (for example due to technical processing
 of information or requests). These moments should be bridged with a good user feedback in order to not leave the user

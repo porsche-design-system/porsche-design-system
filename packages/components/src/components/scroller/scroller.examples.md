@@ -1,4 +1,4 @@
-# Scroller
+<ComponentHeading name="Scroller"></ComponentHeading>
 
 The `p-scroller` component forces its child nodes to be rendered horizontally next to each other. In case not enough
 viewport space is given a clickable scroll indicator is shown and the elements become scrollable.

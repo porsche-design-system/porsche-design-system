@@ -1,4 +1,4 @@
-# Flyout Navigation
+<ComponentHeading name="Flyout Navigation"></ComponentHeading>
 
 The `p-flyout-navigation` component is meant for displaying a multi-level navigation structure in a flyout that overlays
 the page content from the start side of the screen. It is a controlled component that gives you flexible control over
