@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, State, Watch } from '@stencil/core';
 import {
   FLYOUT_ARIA_ATTRIBUTES,
   FLYOUT_POSITIONS,
@@ -9,17 +9,17 @@ import {
 } from './flyout-utils';
 import { footerShadowClass, getComponentCss, headerShadowClass } from './flyout-styles';
 import {
+  AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
-  THEMES,
-  AllowedTypes,
-  validateProps,
-  setScrollLock,
   setFocusTrap,
+  setScrollLock,
+  THEMES,
+  validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
@@ -55,15 +55,17 @@ export class Flyout {
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
+  @State() private hasHeader = false;
+  @State() private hasFooter = false;
+  @State() private hasSubFooter = false;
+
   private focusedElBeforeOpen: HTMLElement;
   private dialog: HTMLElement;
   private dismissBtn: HTMLElement;
   private header: HTMLElement;
   private footer: HTMLElement;
   private subFooter: HTMLElement;
-  private hasHeader: boolean;
-  private hasFooter: boolean;
-  private hasSubFooter: boolean;
+  private slotObserver: MutationObserver;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -78,6 +80,10 @@ export class Flyout {
     } else {
       this.focusedElBeforeOpen?.focus();
     }
+  }
+
+  public componentWillLoad(): void {
+    this.updateSlots();
   }
 
   public componentDidLoad(): void {
@@ -97,6 +103,14 @@ export class Flyout {
         });
       }
     });
+
+    this.slotObserver = new MutationObserver((record) => {
+      if (record[0].removedNodes) {
+        this.updateSlots();
+      }
+    });
+
+    this.slotObserver.observe(this.host, { childList: true });
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -119,6 +133,8 @@ export class Flyout {
   public disconnectedCallback(): void {
     setFocusTrap(this.host, false, this.dialog);
     setScrollLock(false);
+
+    this.slotObserver.disconnect();
   }
 
   public render(): JSX.Element {
@@ -136,10 +152,6 @@ export class Flyout {
       'position',
       positionDeprecationMap
     );
-
-    this.hasHeader = hasNamedSlot(this.host, 'header');
-    this.hasFooter = hasNamedSlot(this.host, 'footer');
-    this.hasSubFooter = hasNamedSlot(this.host, 'sub-footer');
 
     attachComponentCss(
       this.host,
@@ -235,5 +247,11 @@ export class Flyout {
 
   private dismissFlyout = (): void => {
     this.dismiss.emit();
+  };
+
+  private updateSlots = (): void => {
+    this.hasHeader = hasNamedSlot(this.host, 'header');
+    this.hasFooter = hasNamedSlot(this.host, 'footer');
+    this.hasSubFooter = hasNamedSlot(this.host, 'sub-footer');
   };
 }
