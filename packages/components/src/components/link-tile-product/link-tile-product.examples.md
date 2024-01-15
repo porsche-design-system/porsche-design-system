@@ -1,4 +1,4 @@
-# Link Tile Product
+<ComponentHeading name="Link Tile Product"></ComponentHeading>
 
 <Notification heading="Experimental Component" state="warning">
   The <code>p-link-tile-product</code> component is experimental and might be changed or removed in a future release.
