@@ -234,7 +234,11 @@ export default class Code extends Vue {
   headingSizes = ['x-large', 'xx-large'];
   get headingSizeMarkup() {
     return `<p-carousel heading="${this.basicHeading}" heading-size="${this.headingSize}">
-  <p slot="description">Some slotted description</p>
+  ${this.getSlides(3)}
+</p-carousel>
+
+<p-carousel heading-size="${this.headingSize}">
+  <h3 slot="heading">${this.basicHeading}</h3>
   ${this.getSlides(3)}
 </p-carousel>`;
 }
@@ -325,7 +329,7 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
 
-  :deep(p-carousel div) {
+  :deep(p-carousel div:not([slot="controls"])) {
     display: flex;
     align-items: center;
     justify-content: center;
