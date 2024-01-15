@@ -1,5 +1,6 @@
 import { getButtonStyles, getComponentCss, getFilterStyles, getListStyles } from './select-wrapper-dropdown-styles';
 import { getCss } from '../../../utils';
+import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getButtonStyles()', () => {
   it.each<Parameters<typeof getButtonStyles>>([
@@ -18,7 +19,7 @@ describe('getButtonStyles()', () => {
   ])(
     'should return correct css for direction: %s, isOpen: %s, state: %s and theme: %s',
     (direction, isOpen, state, theme) => {
-      expect(getCss(getButtonStyles(direction, isOpen, state, theme))).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getCss(getButtonStyles(direction, isOpen, state, theme)));
     }
   );
 });
@@ -52,7 +53,7 @@ describe('getFilterStyles()', () => {
   ])(
     'should return correct css for direction: %s, isOpen: %s,  state: %s, disabled: %s and theme: %s',
     (direction, isOpen, state, disabled, theme) => {
-      expect(getCss(getFilterStyles(direction, isOpen, state, disabled, theme))).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getCss(getFilterStyles(direction, isOpen, state, disabled, theme)));
     }
   );
 });
@@ -64,7 +65,7 @@ describe('getListStyles()', () => {
     ['up', 'light'],
     ['up', 'dark'],
   ])('should return correct css for direction: %s and theme: %s', (direction, theme) => {
-    expect(getCss(getListStyles(direction, theme))).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getCss(getListStyles(direction, theme)));
   });
 });
 
@@ -91,7 +92,7 @@ describe('getComponentCss()', () => {
   ])(
     'should return correct css for direction: %s, isOpen: %s, state: %s, disabled: %s, filter: %s, isNativePopover: %s and theme: %s',
     (...args) => {
-      expect(getComponentCss(...args)).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

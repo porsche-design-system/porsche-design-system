@@ -1,4 +1,5 @@
 import { getComponentCss } from './flyout-navigation-item-styles';
+import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     [false, 'light'],
@@ -8,6 +9,6 @@ describe('getComponentCss()', () => {
     [false, 'auto'],
     [true, 'auto'],
   ])('should return correct css for isSecondaryScrollerVisible: %s and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

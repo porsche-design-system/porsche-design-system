@@ -1,4 +1,5 @@
 import { getComponentCss } from './model-signature-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -17,6 +18,6 @@ describe('getComponentCss()', () => {
     ['inherit', 'primary', 'dark'],
     ['inherit', 'inherit', 'dark'],
   ])('should return correct css for size: %s, color: %s and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

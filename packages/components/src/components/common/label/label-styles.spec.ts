@@ -1,5 +1,6 @@
 import { getFunctionalComponentLabelStyles } from './label-styles';
 import { getCss } from '../../../utils';
+import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getLabelStyles()', () => {
   it.each<Parameters<typeof getFunctionalComponentLabelStyles>>([
@@ -15,7 +16,7 @@ describe('getLabelStyles()', () => {
   ])(
     'should return correct css for isDisabledOrLoading: %s, hideLabel: %o, theme: %s, additionalDefaultJssStyle: %o and additionalIsShownJssStyle: %o',
     (...args) => {
-      expect(getCss(getFunctionalComponentLabelStyles(...args))).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getCss(getFunctionalComponentLabelStyles(...args)));
     }
   );
 });
