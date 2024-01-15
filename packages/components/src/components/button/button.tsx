@@ -137,7 +137,9 @@ export class Button {
           value={this.value}
           aria-describedby={this.loading ? statusId : undefined}
         >
-          {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} />}
+          {this.loading && (
+            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
+          )}
           {hasVisibleIcon(this.icon, this.iconSource) && (
             <PrefixedTagNames.pIcon
               class="icon"

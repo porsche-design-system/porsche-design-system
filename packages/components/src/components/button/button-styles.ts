@@ -96,7 +96,7 @@ export const getComponentCss = (
           opacity: 0, // use opacity for smooth transition between states
         }),
       },
-      ...mergeDeep(getFunctionalComponentLoadingMessageStyles()),
+      ...getFunctionalComponentLoadingMessageStyles(),
     })
   );
 };
