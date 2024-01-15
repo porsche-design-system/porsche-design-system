@@ -106,7 +106,7 @@ export const getComponentCss = (
       overflow: 'auto',
       // cssVariableVisibility ensures secondary scroller is not tabbable when whole flyout-navigation is closed
       // on mobile we need to decide if secondary scroller needs to be visible or not, on desktop it's not necessary but also doesn't harm
-      visibility: `var(${cssVariableVisibility},${isSecondaryScrollerVisible ? 'hidden' : 'visible'})`,
+      visibility: `var(${cssVariableVisibility},${isSecondaryScrollerVisible ? 'hidden' : 'inherit'})`,
       transition: `${getTransition(
         'left',
         'long',

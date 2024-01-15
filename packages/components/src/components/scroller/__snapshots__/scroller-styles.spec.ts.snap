@@ -107,7 +107,7 @@ button {
   left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
-  visibility: visible;
+  visibility: inherit;
 }
 .action-prev button {
   margin-left: 8px;
@@ -125,7 +125,7 @@ button {
   right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
-  visibility: visible;
+  visibility: inherit;
 }
 .action-next button {
   margin-right: 8px;
@@ -135,10 +135,10 @@ button {
 }
 @media(hover:hover) {
   .action-prev button {
-    visibility: visible;
+    visibility: inherit;
   }
   .action-next button {
-    visibility: visible;
+    visibility: inherit;
   }
 }
 "
@@ -252,7 +252,7 @@ button {
   left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
-  visibility: visible;
+  visibility: inherit;
 }
 .action-prev button {
   margin-left: 8px;
@@ -270,7 +270,7 @@ button {
   right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
-  visibility: visible;
+  visibility: inherit;
 }
 .action-next button {
   margin-right: 8px;
@@ -280,10 +280,10 @@ button {
 }
 @media(hover:hover) {
   .action-prev button {
-    visibility: visible;
+    visibility: inherit;
   }
   .action-next button {
-    visibility: visible;
+    visibility: inherit;
   }
 }
 "
@@ -392,7 +392,7 @@ button {
   left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
-  visibility: visible;
+  visibility: inherit;
 }
 .action-prev button {
   margin-left: 8px;
@@ -410,7 +410,7 @@ button {
   right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
-  visibility: visible;
+  visibility: inherit;
 }
 .action-next button {
   margin-right: 8px;
@@ -420,10 +420,10 @@ button {
 }
 @media(hover:hover) {
   .action-prev button {
-    visibility: visible;
+    visibility: inherit;
   }
   .action-next button {
-    visibility: visible;
+    visibility: inherit;
   }
 }
 "
@@ -549,7 +549,7 @@ button {
   right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
-  visibility: visible;
+  visibility: inherit;
 }
 .action-next button {
   margin-right: 8px;
@@ -562,7 +562,7 @@ button {
     visibility: hidden;
   }
   .action-next button {
-    visibility: visible;
+    visibility: inherit;
   }
 }
 "
@@ -671,7 +671,7 @@ button {
   left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
-  visibility: visible;
+  visibility: inherit;
 }
 .action-prev button {
   margin-left: 8px;
@@ -699,7 +699,7 @@ button {
 }
 @media(hover:hover) {
   .action-prev button {
-    visibility: visible;
+    visibility: inherit;
   }
   .action-next button {
     visibility: hidden;
@@ -955,7 +955,7 @@ button {
   left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(33,34,37,1) 20%,rgba(33,34,37,0.6) 48%,rgba(33,34,37,0.3) 68%,rgba(33,34,37,0) 100%);
-  visibility: visible;
+  visibility: inherit;
 }
 .action-prev button {
   margin-left: 8px;
@@ -973,7 +973,7 @@ button {
   right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(33,34,37,1) 20%,rgba(33,34,37,0.6) 48%,rgba(33,34,37,0.3) 68%,rgba(33,34,37,0) 100%);
-  visibility: visible;
+  visibility: inherit;
 }
 .action-next button {
   margin-right: 8px;
@@ -983,10 +983,10 @@ button {
 }
 @media(hover:hover) {
   .action-prev button {
-    visibility: visible;
+    visibility: inherit;
   }
   .action-next button {
-    visibility: visible;
+    visibility: inherit;
   }
 }
 "
@@ -1100,7 +1100,7 @@ button {
   left: -1px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(238,239,242,1) 20%,rgba(238,239,242,0.6) 48%,rgba(238,239,242,0.3) 68%,rgba(238,239,242,0) 100%);
-  visibility: visible;
+  visibility: inherit;
 }
 .action-prev button {
   margin-left: 8px;
@@ -1118,7 +1118,7 @@ button {
   right: -1px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(238,239,242,1) 20%,rgba(238,239,242,0.6) 48%,rgba(238,239,242,0.3) 68%,rgba(238,239,242,0) 100%);
-  visibility: visible;
+  visibility: inherit;
 }
 .action-next button {
   margin-right: 8px;
@@ -1128,10 +1128,10 @@ button {
 }
 @media(hover:hover) {
   .action-prev button {
-    visibility: visible;
+    visibility: inherit;
   }
   .action-next button {
-    visibility: visible;
+    visibility: inherit;
   }
 }
 "

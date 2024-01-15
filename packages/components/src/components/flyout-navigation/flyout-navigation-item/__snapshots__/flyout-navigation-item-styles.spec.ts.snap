@@ -532,7 +532,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   bottom: 0;
   z-index: 2;
   transform: translate3d(0, 0, 0);
-  visibility: var(--p-internal-flyout-navigation-visibility,visible);
+  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
   width: 100vw;
   box-sizing: border-box;
@@ -677,7 +677,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   bottom: 0;
   z-index: 2;
   transform: translate3d(0, 0, 0);
-  visibility: var(--p-internal-flyout-navigation-visibility,visible);
+  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
   width: 100vw;
   box-sizing: border-box;
@@ -810,7 +810,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   bottom: 0;
   z-index: 2;
   transform: translate3d(0, 0, 0);
-  visibility: var(--p-internal-flyout-navigation-visibility,visible);
+  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
   width: 100vw;
   box-sizing: border-box;

@@ -152,7 +152,7 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
         ? {
             zIndex: 2,
             transform: 'translate3d(0, 0, 0)',
-            visibility: `var(${cssVariableVisibility},visible)`,
+            visibility: `var(${cssVariableVisibility},inherit)`,
             transition: `${getTransition(
               'transform',
               'long',
