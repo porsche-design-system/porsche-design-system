@@ -98,7 +98,6 @@ export const formatPropType = (meta: PropMeta): string => {
         .join('<br>\n')
     );
   } else if (meta.isAria || typeof meta.allowedValues === 'object') {
-    console.log(meta.allowedValues);
     // aria props
     return wrapInCodeTag(
       `type ${meta.type} = {

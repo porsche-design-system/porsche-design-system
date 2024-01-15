@@ -1,4 +1,4 @@
-# Flyout
+<ComponentHeading name="Flyout"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

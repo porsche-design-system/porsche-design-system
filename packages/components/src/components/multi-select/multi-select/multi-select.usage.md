@@ -1,4 +1,4 @@
-# Multi Select
+<ComponentHeading name="Multi Select"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

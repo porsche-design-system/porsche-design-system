@@ -1,4 +1,4 @@
-# Model Signature
+<ComponentHeading name="Model Signature"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

@@ -1,4 +1,4 @@
-# Text List
+<ComponentHeading name="Text List"></ComponentHeading>
 
 The `p-text-list` component is used to display listed data in form of an unordered or ordered list. A list depends on
 two parts (like any native HTML list): A list wrapper which defines the type of the list (unordered or ordered) and the

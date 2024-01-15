@@ -1,4 +1,4 @@
-# Scroller
+<ComponentHeading name="Scroller"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

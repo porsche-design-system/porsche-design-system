@@ -1,4 +1,4 @@
-# Pin Code
+<ComponentHeading name="Pin Code"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

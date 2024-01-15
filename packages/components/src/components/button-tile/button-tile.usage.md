@@ -1,4 +1,4 @@
-# Button Tile
+<ComponentHeading name="Button Tile"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

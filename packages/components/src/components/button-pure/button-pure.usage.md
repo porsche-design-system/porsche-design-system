@@ -1,4 +1,4 @@
-# Button Pure
+<ComponentHeading name="Button Pure"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

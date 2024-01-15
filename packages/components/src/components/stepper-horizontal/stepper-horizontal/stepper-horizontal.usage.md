@@ -1,4 +1,4 @@
-# Stepper Horizontal
+<ComponentHeading name="Stepper Horizontal"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

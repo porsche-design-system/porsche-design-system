@@ -1,4 +1,4 @@
-# Content Wrapper
+<ComponentHeading name="Content Wrapper"></ComponentHeading>
 
 **The Content Wrapper enables you to …**
 
