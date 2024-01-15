@@ -3,7 +3,7 @@ import * as buttonLinkPureUtils from '../../utils/button-link-pure-utils';
 import * as throwIfInvalidLinkUsageUtils from '../../utils/validation/throwIfInvalidLinkUsage';
 
 describe('componentWillLoad', () => {
-  it('should call throwIfInvalidLinkPureUsage() with correct parameters', () => {
+  it('should call throwIfInvalidLinkUsage() with correct parameters', () => {
     const spy = jest.spyOn(throwIfInvalidLinkUsageUtils, 'throwIfInvalidLinkUsage');
 
     const component = new LinkPure();

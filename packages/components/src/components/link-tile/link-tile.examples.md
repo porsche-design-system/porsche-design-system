@@ -1,4 +1,4 @@
-# Link Tile
+<ComponentHeading name="Link Tile"></ComponentHeading>
 
 The `p-link-tile` is a navigational component that displays a provided image to tease content and navigate to further
 information within one container. In case you want the user to execute an action, you should select the

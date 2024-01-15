@@ -28,6 +28,8 @@ exports[`formatPropDefaultValue() should return correctly formatted string for: 
 
 exports[`formatPropDescription() should return correctly formatted string for: {"description":"@deprecated since v3.0.0, will be removed with next major release, use \`dismissButton\` instead. Defines if the banner can be closed/removed by the user.","type":"boolean","defaultValue":null,"isDeprecated":true,"allowedValues":"boolean"} 1`] = `<strong class="deprecated">deprecated</strong> since v3.0.0, will be removed with next major release, use <code>dismissButton</code> instead. Defines if the banner can be closed/removed by the user.`;
 
+exports[`formatPropDescription() should return correctly formatted string for: {"description":"@experimental Disables the checkbox and shows a loading indicator.","type":"boolean","defaultValue":false,"isExperimental":true,"allowedValues":"boolean"} 1`] = `<strong class="deprecated">experimental</strong> Disables the checkbox and shows a loading indicator.`;
+
 exports[`formatPropDescription() should return correctly formatted string for: {"description":"The text size.","type":"AccordionSize","defaultValue":"small","isBreakpointCustomizable":true,"allowedValues":["small","medium"]} 1`] = `"The text size."`;
 
 exports[`formatPropDescription() should return correctly formatted string for: {"description":"When providing an url then the component will be rendered as \`<a>\`.","type":"string","defaultValue":null,"allowedValues":"string"} 1`] = `"When providing an url then the component will be rendered as <code>&lt;a&gt;</code>."`;

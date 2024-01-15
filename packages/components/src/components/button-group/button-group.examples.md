@@ -1,4 +1,4 @@
-# Button Group
+<ComponentHeading name="Button Group"></ComponentHeading>
 
 The `p-button-group` is a component for wrapping multiple buttons and display them in vertical or horizontal groups with
 corresponding spacing and width. By default buttons are displayed in full-width as a vertical stacked group for mobile

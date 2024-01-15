@@ -1,4 +1,4 @@
-# Banner
+<ComponentHeading name="Banner"></ComponentHeading>
 
 Documentation for Banner has moved.
 

@@ -1,4 +1,4 @@
-# Tag
+<ComponentHeading name="Tag"></ComponentHeading>
 
 `p-tag` is used to label, categorize, or organize items by using keywords that describe them.
 

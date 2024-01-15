@@ -1,4 +1,4 @@
-# Text Field Wrapper
+<ComponentHeading name="Text Field Wrapper"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

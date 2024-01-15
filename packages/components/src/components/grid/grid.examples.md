@@ -1,4 +1,4 @@
-# Grid
+<ComponentHeading name="Grid"></ComponentHeading>
 
 The `p-grid` provides a visual structuring system for a homogeneous and balanced content placement across all Porsche
 web experiences and screen sizes. The Porsche Design System grid system is based upon a standard 12 column responsive

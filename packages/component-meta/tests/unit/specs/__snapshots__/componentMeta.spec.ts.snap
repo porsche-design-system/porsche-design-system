@@ -2392,7 +2392,8 @@ exports[`should match snapshot 1`] = `
       "loading": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "__Experimental__: Disables the checkbox and shows a loading indicator.",
+        "description": "@experimental Disables the checkbox and shows a loading indicator.",
+        "isExperimental": true,
         "type": "boolean",
       },
       "message": {
@@ -3473,6 +3474,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "isDelegatingFocus": false,
+    "isExperimental": true,
     "isInternal": false,
     "isThemeable": false,
     "nestedComponents": [
@@ -5336,7 +5338,6 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "When providing an url then the component will be rendered as \`<a>\`.",
-        "isRequired": true,
         "type": "string",
       },
       "icon": {
@@ -5588,9 +5589,6 @@ exports[`should match snapshot 1`] = `
         "type": "LinkVariant",
       },
     },
-    "requiredProps": [
-      "href",
-    ],
     "styling": "jss",
   },
   "p-link-pure": {
@@ -5938,7 +5936,6 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "When providing an url then the component will be rendered as \`<a>\`.",
-        "isRequired": true,
         "type": "string",
       },
       "icon": {
@@ -6225,9 +6222,6 @@ exports[`should match snapshot 1`] = `
         "type": "LinkPureWeight",
       },
     },
-    "requiredProps": [
-      "href",
-    ],
     "styling": "jss",
   },
   "p-link-social": {
@@ -6485,7 +6479,6 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "When providing an url then the component will be rendered as \`<a>\`.",
-        "isRequired": true,
         "type": "string",
       },
       "icon": {
@@ -6727,9 +6720,6 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
     },
-    "requiredProps": [
-      "href",
-    ],
     "styling": "jss",
   },
   "p-link-tile": {
@@ -7207,7 +7197,6 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "href of the \`<a>\`.",
-        "isRequired": true,
         "type": "string",
       },
       "likeButton": {
@@ -7261,7 +7250,6 @@ exports[`should match snapshot 1`] = `
     "requiredProps": [
       "heading",
       "price",
-      "href",
     ],
     "styling": "jss",
   },
@@ -8286,7 +8274,8 @@ exports[`should match snapshot 1`] = `
       "loading": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "__Experimental__: Disables the radio button and shows a loading indicator.",
+        "description": "@experimental Disables the radio button and shows a loading indicator.",
+        "isExperimental": true,
         "type": "boolean",
       },
       "message": {
@@ -11101,7 +11090,8 @@ exports[`should match snapshot 1`] = `
       "showPasswordToggle": {
         "allowedValues": "boolean",
         "defaultValue": true,
-        "description": "__Experimental__: Show or hide password toggle for \`input type="password"\`.",
+        "description": "@experimental Show or hide password toggle for \`input type="password"\`.",
+        "isExperimental": true,
         "type": "boolean",
       },
       "state": {

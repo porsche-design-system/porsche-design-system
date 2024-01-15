@@ -1,4 +1,4 @@
-# Divider
+<ComponentHeading name="Divider"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

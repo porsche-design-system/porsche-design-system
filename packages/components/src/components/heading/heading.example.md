@@ -1,4 +1,4 @@
-# Heading
+<ComponentHeading name="Heading"></ComponentHeading>
 
 `p-heading` is used to highlight and specify heading styling and hierarchy in documents.
 

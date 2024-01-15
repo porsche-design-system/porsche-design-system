@@ -1,4 +1,4 @@
-# Fieldset
+<ComponentHeading name="Fieldset"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

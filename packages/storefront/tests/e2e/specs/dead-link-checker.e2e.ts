@@ -21,20 +21,21 @@ const validateMarkdownLinks = async (): Promise<void> => {
 };
 
 const getHeadline = async (): Promise<string> => {
-  await page.waitForSelector('.vmark > h1'), { visible: true };
-  return page.$eval('.vmark > h1', (x) => x.innerHTML);
+  const selector = '.vmark > h1';
+  await page.waitForSelector(selector), { visible: true };
+  return page.$eval(selector, (el) => el.innerHTML);
 };
 
 const getPatternHeading = async (): Promise<string> => {
   await page.waitForSelector('html.hydrated');
   await page.waitForSelector('p-heading[tag="h1"]', { visible: true });
-  return page.$eval('p-heading[tag="h1"]', (x) => x.innerHTML);
+  return page.$eval('p-heading[tag="h1"]', (el) => el.innerHTML);
 };
 
 const getPatternStylesHeadline = async (): Promise<string> => {
   await page.waitForSelector('html.hydrated');
   await page.waitForSelector('h1.display', { visible: true });
-  return page.$eval('h1.display', (x) => x.innerHTML);
+  return page.$eval('h1.display', (el) => el.innerHTML);
 };
 
 const internalUrls = getInternalUrls();
@@ -59,8 +60,8 @@ it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
         url === '/'
           ? 'first page'
           : url.startsWith('/patterns/forms/example/') || url.startsWith('/patterns/styles/example/')
-          ? 'some pattern or style example standalone page'
-          : await getHeadline();
+            ? 'some pattern or style example standalone page'
+            : await getHeadline();
 
       expect(heading).not.toBe('404 - Page not found');
 

@@ -19,6 +19,7 @@ const propTypes: PropTypes<typeof FlyoutNavigationItem> = {
   label: AllowedTypes.string,
 };
 
+/** @experimental */
 @Component({
   tag: 'p-flyout-navigation-item',
   shadow: true,

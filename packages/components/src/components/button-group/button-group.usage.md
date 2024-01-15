@@ -1,4 +1,4 @@
-# Button Group
+<ComponentHeading name="Button Group"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

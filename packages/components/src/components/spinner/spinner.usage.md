@@ -1,4 +1,4 @@
-# Spinner
+<ComponentHeading name="Spinner"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

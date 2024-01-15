@@ -1,4 +1,4 @@
-# Tabs Bar
+<ComponentHeading name="Tabs Bar"></ComponentHeading>
 
 The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router
 to ensure your **window location** updates on tab click, use it for **hash routing** and displaying content accordingly

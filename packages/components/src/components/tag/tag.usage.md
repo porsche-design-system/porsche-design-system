@@ -1,4 +1,4 @@
-# Tag
+<ComponentHeading name="Tag"></ComponentHeading>
 
 Use tags to label, categorize, or organize items using keywords that describe them.
 
