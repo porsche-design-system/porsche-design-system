@@ -16,6 +16,7 @@ import {
   FLEX_ITEM_WIDTHS,
 } from './flex-item-utils';
 import type { BreakpointCustomizable } from '../../../types';
+import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   const dataWidth: BreakpointCustomizable<FlexItemWidth>[] = [
@@ -23,7 +24,7 @@ describe('getComponentCss()', () => {
     { base: 'auto', xs: 'half', s: 'auto', m: 'half', l: 'auto', xl: 'half' },
   ];
   it.each<BreakpointCustomizable<FlexItemWidth>>(dataWidth)('should return correct css for width: %j', (width) => {
-    expect(getComponentCss(width, 'none', 'auto', 0, 1, 'initial')).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(width, 'none', 'auto', 0, 1, 'initial'));
   });
 
   const dataOffset: BreakpointCustomizable<FlexItemOffset>[] = [
@@ -31,7 +32,7 @@ describe('getComponentCss()', () => {
     { base: 'one-third', xs: 'half', s: 'one-third', m: 'half', l: 'one-third', xl: 'half' },
   ];
   it.each<BreakpointCustomizable<FlexItemOffset>>(dataOffset)('should return correct css for offset: %j', (offset) => {
-    expect(getComponentCss('auto', offset, 'auto', 0, 1, 'initial')).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss('auto', offset, 'auto', 0, 1, 'initial'));
   });
 
   const dataAlignSelf: BreakpointCustomizable<FlexItemAlignSelf>[] = [
@@ -41,7 +42,7 @@ describe('getComponentCss()', () => {
   it.each<BreakpointCustomizable<FlexItemAlignSelf>>(dataAlignSelf)(
     'should return correct css for alignSelf: %j',
     (alignSelf) => {
-      expect(getComponentCss('auto', 'none', alignSelf, 0, 1, 'initial')).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getComponentCss('auto', 'none', alignSelf, 0, 1, 'initial'));
     }
   );
 
@@ -50,7 +51,7 @@ describe('getComponentCss()', () => {
     { base: 1, xs: 0, s: 1, m: 0, l: 1, xl: 0 },
   ];
   it.each<BreakpointCustomizable<FlexItemGrow>>(dataGrow)('should return correct css for grow: %j', (grow) => {
-    expect(getComponentCss('auto', 'none', 'auto', grow, 1, 'initial')).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss('auto', 'none', 'auto', grow, 1, 'initial'));
   });
 
   const dataShrink: BreakpointCustomizable<FlexItemShrink>[] = [
@@ -58,7 +59,7 @@ describe('getComponentCss()', () => {
     { base: 0, xs: 1, s: 0, m: 1, l: 0, xl: 1 },
   ];
   it.each<BreakpointCustomizable<FlexItemShrink>>(dataShrink)('should return correct css for shrink: %j', (shrink) => {
-    expect(getComponentCss('auto', 'none', 'auto', 0, shrink, 'initial')).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss('auto', 'none', 'auto', 0, shrink, 'initial'));
   });
 
   const dataFlex: BreakpointCustomizable<FlexItemFlex>[] = [
@@ -66,11 +67,11 @@ describe('getComponentCss()', () => {
     { base: 'auto', xs: 'equal', s: 'auto', m: 'equal', l: 'auto', xl: 'equal' },
   ];
   it.each<BreakpointCustomizable<FlexItemFlex>>(dataFlex)('should return correct css for flex: %j', (flex) => {
-    expect(getComponentCss('auto', 'none', 'auto', 0, 1, flex)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss('auto', 'none', 'auto', 0, 1, flex));
   });
 
   it('should return correct css for all props being breakpoint customizable', () => {
-    expect(
+    validateCssAndMatchSnapshot(
       getComponentCss(
         [...dataWidth].pop(),
         [...dataOffset].pop(),
@@ -79,6 +80,6 @@ describe('getComponentCss()', () => {
         [...dataShrink].pop(),
         [...dataFlex].pop()
       )
-    ).toMatchSnapshot();
+    );
   });
 });

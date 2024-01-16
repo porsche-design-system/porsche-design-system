@@ -149,7 +149,7 @@ export const getComponentCss = (
       ...(open
         ? {
             gridTemplateRows: '1fr',
-            visibility: 'visible',
+            visibility: 'inherit',
             transition: getTransition('grid-template-rows'),
             paddingBottom: compact ? spacingStaticSmall : '24px',
           }

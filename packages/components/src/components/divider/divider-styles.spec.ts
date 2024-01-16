@@ -1,4 +1,5 @@
 import { getComponentCss } from './divider-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -20,6 +21,6 @@ describe('getComponentCss()', () => {
       'light',
     ],
   ])('should return correct css for color: %s, orientation: %j and theme %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

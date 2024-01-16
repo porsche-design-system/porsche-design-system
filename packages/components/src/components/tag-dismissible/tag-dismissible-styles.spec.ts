@@ -1,4 +1,5 @@
 import { getComponentCss } from './tag-dismissible-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -9,7 +10,7 @@ describe('getComponentCss()', () => {
     ['background-base', false, 'dark'],
     ['background-surface', true, 'dark'],
   ])('should return correct css for color: %s, hasLabel: %s and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 
   // Direct child selector fixes https://github.com/porsche-design-system/porsche-design-system/pull/1941 in safari < v15.5

@@ -1,4 +1,5 @@
 import { getComponentCss } from './text-field-wrapper-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -47,7 +48,7 @@ describe('getComponentCss()', () => {
   ])(
     'should return correct css for isDisabled: %s, hideLabel: %o, state: %s, hasUnitOrVisibleCounter: %s, unitPosition: %s, inputType: %s, showPasswordToggle: %s, isWithinForm: %s, hasSubmitButton: %s, theme: %s',
     (...args) => {
-      expect(getComponentCss(...args)).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

@@ -1,4 +1,5 @@
 import { getComponentCss } from './inline-notification-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -25,6 +26,6 @@ describe('getComponentCss()', () => {
     ['neutral', false, true, 'dark'],
     ['neutral', true, true, 'dark'],
   ])('should return correct css for state: %s, hasAction: %s, hasClose: %s and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

@@ -177,7 +177,7 @@ button:not(:focus-visible)::before {
   color: #010205;
   display: grid;
   grid-template-rows: 1fr;
-  visibility: visible;
+  visibility: inherit;
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding-bottom: 24px;
 }
@@ -472,7 +472,7 @@ button:not(:focus-visible)::before {
   color: #010205;
   display: grid;
   grid-template-rows: 1fr;
-  visibility: visible;
+  visibility: inherit;
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding-bottom: 8px;
 }
@@ -669,7 +669,7 @@ button:not(:focus-visible)::before {
   color: #FBFCFF;
   display: grid;
   grid-template-rows: 1fr;
-  visibility: visible;
+  visibility: inherit;
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding-bottom: 24px;
 }
@@ -768,7 +768,7 @@ button:not(:focus-visible)::before {
   color: #010205;
   display: grid;
   grid-template-rows: 1fr;
-  visibility: visible;
+  visibility: inherit;
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding-bottom: 24px;
 }
@@ -965,7 +965,7 @@ button:not(:focus-visible)::before {
   color: #010205;
   display: grid;
   grid-template-rows: 1fr;
-  visibility: visible;
+  visibility: inherit;
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding-bottom: 8px;
 }
@@ -1099,7 +1099,7 @@ button:not(:focus-visible)::before {
   color: #FBFCFF;
   display: grid;
   grid-template-rows: 1fr;
-  visibility: visible;
+  visibility: inherit;
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   padding-bottom: 24px;
 }

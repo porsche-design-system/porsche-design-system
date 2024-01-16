@@ -133,7 +133,7 @@ export const getComponentCss = (
           ...barJssStyle,
           right: '0px',
           bottom: isHighContrastMode ? '-4px' : '-6px',
-          visibility: 'visible',
+          visibility: 'inherit',
         },
         // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
         [transformSelector('::slotted([role]:focus:focus-visible)::before')]: {
@@ -168,7 +168,7 @@ export const getComponentCss = (
       ...barJssStyle,
       width: 0, // actual width and transform is set via inline css
       bottom: isHighContrastMode ? '0' : '-2px',
-      visibility: 'visible',
+      visibility: 'inherit',
       transition: `${getTransition('transform', 'moderate')}, ${getTransition('width', 'moderate')}`,
       animation: `$hide 0s var(${cssVariableAnimationDuration},0.5s) forwards`, // auto hide bar after transition, needs to be a little longer in Safari
     },

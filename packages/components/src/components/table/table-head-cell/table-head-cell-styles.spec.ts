@@ -1,4 +1,5 @@
 import { getComponentCss } from './table-head-cell-styles';
+import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -10,6 +11,6 @@ describe('getComponentCss()', () => {
     [true, 'desc', false, false],
     [true, 'desc', false, true],
   ])('should return correct css for active: %s, direction: %s, hideLabel: %s and multiline: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });
