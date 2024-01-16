@@ -20,6 +20,9 @@ import {
   renderPagination,
   slideNext,
   slidePrev,
+  slotControls,
+  slotDescription,
+  slotHeading,
   updatePagination,
   updatePrevNextButtons,
 } from './carousel-utils';
@@ -245,7 +248,7 @@ export class Carousel {
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
     const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
     const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
-    const hasControlsSlot = hasNamedSlot(this.host, 'controls');
+    const hasControlsSlot = hasNamedSlot(this.host, slotControls);
     warnIfAriaAndHeadingPropsAreUndefined(this.host, hasHeadingPropOrSlot, this.aria);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
     this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
@@ -283,12 +286,15 @@ export class Carousel {
       // 'aria-controls': 'splide-track', // TODO: cross shadow dom? use native button tag instead of p-button-pure?
     };
 
+    const headingId = 'heading';
+
     return (
       <Host>
         <div class="header">
-          {hasHeadingPropOrSlot && (this.heading ? <h2 id="heading">{this.heading}</h2> : <slot name="heading" />)}
-          {hasDescriptionPropOrSlot && (this.description ? <p>{this.description}</p> : <slot name="description" />)}
-          {hasControlsSlot && <slot name="controls" />}
+          {hasHeadingPropOrSlot &&
+            (this.heading ? <h2 id={headingId}>{this.heading}</h2> : <slot name={slotHeading} />)}
+          {hasDescriptionPropOrSlot && (this.description ? <p>{this.description}</p> : <slot name={slotDescription} />)}
+          {hasControlsSlot && <slot name={slotControls} />}
           <div class="nav">
             {this.skipLinkTarget && (
               <PrefixedTagNames.pLinkPure
@@ -298,7 +304,7 @@ export class Carousel {
                 class="btn skip-link"
                 alignLabel="start"
                 hideLabel={true}
-                aria-describedby={this.heading ? 'heading' : null}
+                aria-describedby={this.heading ? headingId : null}
               >
                 {/* TODO: make it i18n configurable */}
                 Skip carousel entries

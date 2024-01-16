@@ -614,8 +614,11 @@ const generateComponentMeta = (): void => {
     }
 
     // named slots
-    const namedSlots = Array.from(source.matchAll(/<slot name="((?!internal-)[a-z-]+?)"/g)).map(
-      ([, slotName]) => slotName
+    const namedSlots = Array.from(source.matchAll(/<slot name=["{]((?!internal-)[A-Za-z-]+?)["}]/g)).map(
+      ([, slotName]) =>
+        slotName.match(/^[a-z]+[A-Z][a-z]+/)
+          ? slotName.replace(/slot/i, '').toLowerCase() // <slot name={slotHeading} /> let's hope its name matches the value
+          : slotName // <slot name="heading" />
     );
 
     if (source.includes('<Label')) {

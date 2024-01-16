@@ -7154,6 +7154,10 @@ exports[`should match snapshot 1`] = `
     "isExperimental": true,
     "isInternal": false,
     "isThemeable": true,
+    "namedSlots": [
+      "anchor",
+      "header",
+    ],
     "nestedComponents": [
       "p-button-pure",
     ],
