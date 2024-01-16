@@ -10,10 +10,6 @@ import {
   paginationBulletSize,
 } from './carousel-styles';
 
-export const slotControls = 'controls';
-export const slotHeading = 'heading';
-export const slotDescription = 'description';
-
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 
@@ -73,7 +69,7 @@ export const getSplideBreakpoints = (
 
 export const getSlidesAndAddAttributes = (host: HTMLElement): HTMLElement[] => {
   const slides = Array.from(host.children).filter(
-    ({ slot }) => slot !== slotHeading && slot !== slotDescription && slot !== slotControls
+    ({ slot }) => slot !== 'heading' && slot !== 'description' && slot !== 'controls'
   ) as HTMLElement[];
   slides.forEach((el, i) => {
     el.setAttribute('slot', `slide-${i}`);

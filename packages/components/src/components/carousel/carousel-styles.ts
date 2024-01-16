@@ -32,7 +32,6 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { slotControls, slotDescription, slotHeading } from './carousel-utils';
 
 export const carouselTransitionDuration = motionDurationModerate;
 export const bulletActiveClass = 'bullet--active';
@@ -43,8 +42,8 @@ export const paginationBulletSize = '8px';
 const paginationInfiniteBulletSize = '4px';
 const paginationActiveBulletSize = '20px';
 
-const selectorHeading = `h2,::slotted([slot=${slotHeading}])`;
-const selectorDescription = `p,::slotted([slot=${slotDescription}])`;
+const selectorHeading = 'h2,::slotted([slot="heading"])';
+const selectorDescription = 'p,::slotted([slot="description"])';
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
 
@@ -86,7 +85,7 @@ export const getComponentCss = (
         }),
       },
       ...(hasControlsSlot && {
-        [`slot[name="${slotControls}"]`]: {
+        ['slot[name="controls"]']: {
           display: 'block',
           gridColumnStart: 1,
           gridRowStart: 3,

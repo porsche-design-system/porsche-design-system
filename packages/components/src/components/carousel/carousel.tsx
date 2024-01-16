@@ -20,9 +20,6 @@ import {
   renderPagination,
   slideNext,
   slidePrev,
-  slotControls,
-  slotDescription,
-  slotHeading,
   updatePagination,
   updatePrevNextButtons,
 } from './carousel-utils';
@@ -248,7 +245,7 @@ export class Carousel {
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
     const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
     const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
-    const hasControlsSlot = hasNamedSlot(this.host, slotControls);
+    const hasControlsSlot = hasNamedSlot(this.host, 'controls');
     warnIfAriaAndHeadingPropsAreUndefined(this.host, hasHeadingPropOrSlot, this.aria);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
     this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
@@ -291,10 +288,9 @@ export class Carousel {
     return (
       <Host>
         <div class="header">
-          {hasHeadingPropOrSlot &&
-            (this.heading ? <h2 id={headingId}>{this.heading}</h2> : <slot name={slotHeading} />)}
-          {hasDescriptionPropOrSlot && (this.description ? <p>{this.description}</p> : <slot name={slotDescription} />)}
-          {hasControlsSlot && <slot name={slotControls} />}
+          {hasHeadingPropOrSlot && (this.heading ? <h2 id={headingId}>{this.heading}</h2> : <slot name="heading" />)}
+          {hasDescriptionPropOrSlot && (this.description ? <p>{this.description}</p> : <slot name="description" />)}
+          {hasControlsSlot && <slot name="controls" />}
           <div class="nav">
             {this.skipLinkTarget && (
               <PrefixedTagNames.pLinkPure
