@@ -10,6 +10,6 @@ describe('getComponentCss()', () => {
     ['success', 'dark'],
     ['info', 'dark'],
   ])('should return correct css for state: %s and theme: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+    validateCssAndMatchSnapshot(getComponentCss(...args), true);
   });
 });

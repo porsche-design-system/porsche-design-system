@@ -11,6 +11,6 @@ describe('getFunctionalComponentStateMessageStyles()', () => {
     ['dark', 'success'],
     ['dark', 'error'],
   ])('should return correct JssStyle for theme: %s and state: %s', (...args) => {
-    validateCssAndMatchSnapshot(getCss(getFunctionalComponentStateMessageStyles(...args)));
+    validateCssAndMatchSnapshot(getCss(getFunctionalComponentStateMessageStyles(...args)), true);
   });
 });

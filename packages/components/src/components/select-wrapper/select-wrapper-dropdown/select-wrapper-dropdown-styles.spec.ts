@@ -19,7 +19,7 @@ describe('getButtonStyles()', () => {
   ])(
     'should return correct css for direction: %s, isOpen: %s, state: %s and theme: %s',
     (direction, isOpen, state, theme) => {
-      validateCssAndMatchSnapshot(getCss(getButtonStyles(direction, isOpen, state, theme)));
+      validateCssAndMatchSnapshot(getCss(getButtonStyles(direction, isOpen, state, theme)), true);
     }
   );
 });
@@ -53,7 +53,7 @@ describe('getFilterStyles()', () => {
   ])(
     'should return correct css for direction: %s, isOpen: %s,  state: %s, disabled: %s and theme: %s',
     (direction, isOpen, state, disabled, theme) => {
-      validateCssAndMatchSnapshot(getCss(getFilterStyles(direction, isOpen, state, disabled, theme)));
+      validateCssAndMatchSnapshot(getCss(getFilterStyles(direction, isOpen, state, disabled, theme)), true);
     }
   );
 });
@@ -65,7 +65,7 @@ describe('getListStyles()', () => {
     ['up', 'light'],
     ['up', 'dark'],
   ])('should return correct css for direction: %s and theme: %s', (direction, theme) => {
-    validateCssAndMatchSnapshot(getCss(getListStyles(direction, theme)));
+    validateCssAndMatchSnapshot(getCss(getListStyles(direction, theme)), true);
   });
 });
 
@@ -92,7 +92,7 @@ describe('getComponentCss()', () => {
   ])(
     'should return correct css for direction: %s, isOpen: %s, state: %s, disabled: %s, filter: %s, isNativePopover: %s and theme: %s',
     (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+      validateCssAndMatchSnapshot(getComponentCss(...args), true);
     }
   );
 });
