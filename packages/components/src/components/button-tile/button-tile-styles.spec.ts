@@ -1,4 +1,5 @@
 import { getComponentCss } from './button-tile-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -22,7 +23,7 @@ describe('getComponentCss()', () => {
   ])(
     'should return correct css for isDisabledOrLoading: %s, aspectRatio: %j, size: %j, weight: %j, background: %s, align: %s, isCompact: %j, hasGradient: %s and isDisabled: %s',
     (...args) => {
-      expect(getComponentCss(...args)).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

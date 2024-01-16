@@ -1,4 +1,5 @@
 import { getComponentCss, getKeyframesMobile, KeyframesDirection } from './toast-styles';
+import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getKeyframesMobile()', () => {
   it.each<[KeyframesDirection, string]>([
@@ -11,6 +12,6 @@ describe('getKeyframesMobile()', () => {
 
 describe('getComponentCss()', () => {
   it('should return correct css', () => {
-    expect(getComponentCss()).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss());
   });
 });

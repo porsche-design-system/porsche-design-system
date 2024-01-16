@@ -1,4 +1,5 @@
 import { getComponentCss } from './fieldset-wrapper-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -13,6 +14,6 @@ describe('getComponentCss()', () => {
     ['error', 'medium', false, 'light'],
     ['error', 'medium', false, 'dark'],
   ])('should return correct css for state: %s, labelSize: %s, hasLabel: %s and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

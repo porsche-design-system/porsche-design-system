@@ -1,4 +1,5 @@
 import { getComponentCss } from './flyout-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     [false, 'end', false, false, 'light'],
@@ -24,7 +25,7 @@ describe('getComponentCss()', () => {
   ])(
     'should return correct css for isOpen: %s, position: %s, hasFooter: %s, hasSubFooter: %s, theme: %s',
     (...args) => {
-      expect(getComponentCss(...args)).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

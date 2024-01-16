@@ -1,5 +1,6 @@
 import { getComponentCss, isFullscreenForXl } from './modal-styles';
 import type { BreakpointCustomizable } from '../../types';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -23,7 +24,7 @@ describe('getComponentCss()', () => {
   ])(
     'should return correct css for open: %s, fullscreen: %o, dismissButton: %s, hasHeader: %s, hasFooter: %s and theme: %s',
     (...args) => {
-      expect(getComponentCss(...args)).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

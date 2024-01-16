@@ -13,6 +13,16 @@ module.exports = {
     ROLLUP_REPLACE_IS_STAGING: 'production',
     ROLLUP_REPLACE_CDN_BASE_URL: 'https://cdn.ui.porsche.com/porsche-design-system',
   },
+  transform: {
+    // '^.+\\.[tj]sx?$' to process js/ts with `ts-jest`
+    // '^.+\\.m?[tj]sx?$' to process js/ts/mjs/mts with `ts-jest`
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: 'tsconfig.test.json',
+      },
+    ],
+  },
   clearMocks: true,
   restoreMocks: true,
   prettierPath: null, // because prettier 3 doesn't work with inline snapshots: https://github.com/jestjs/jest/issues/14305
