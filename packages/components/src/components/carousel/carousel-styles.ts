@@ -32,6 +32,7 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
+import { slotControls } from './carousel-utils';
 
 export const carouselTransitionDuration = motionDurationModerate;
 export const bulletActiveClass = 'bullet--active';
@@ -85,7 +86,7 @@ export const getComponentCss = (
         }),
       },
       ...(hasControlsSlot && {
-        ['slot[name="controls"]']: {
+        [`slot[name="${slotControls}"]`]: {
           display: 'block',
           gridColumnStart: 1,
           gridRowStart: 3,

@@ -20,6 +20,7 @@ import {
   renderPagination,
   slideNext,
   slidePrev,
+  slotControls,
   updatePagination,
   updatePrevNextButtons,
 } from './carousel-utils';
@@ -245,7 +246,7 @@ export class Carousel {
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
     const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
     const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
-    const hasControlsSlot = hasNamedSlot(this.host, 'controls');
+    const hasControlsSlot = hasNamedSlot(this.host, slotControls);
     warnIfAriaAndHeadingPropsAreUndefined(this.host, hasHeadingPropOrSlot, this.aria);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
     this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
