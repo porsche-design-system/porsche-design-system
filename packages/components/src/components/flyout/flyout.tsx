@@ -1,4 +1,15 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, State, Watch } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  h,
+  Host,
+  type JSX,
+  Prop,
+  Watch,
+} from '@stencil/core';
 import {
   FLYOUT_ARIA_ATTRIBUTES,
   FLYOUT_POSITIONS,
@@ -25,6 +36,7 @@ import {
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
 import { throttle } from 'throttle-debounce';
+import { getShadowRootHTMLElements } from '../../utils/dom/getShadowRootHTMLElements';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -55,17 +67,15 @@ export class Flyout {
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  @State() private hasHeader = false;
-  @State() private hasFooter = false;
-  @State() private hasSubFooter = false;
-
   private focusedElBeforeOpen: HTMLElement;
   private dialog: HTMLElement;
   private dismissBtn: HTMLElement;
   private header: HTMLElement;
   private footer: HTMLElement;
   private subFooter: HTMLElement;
-  private slotObserver: MutationObserver;
+  private hasHeader: boolean;
+  private hasFooter: boolean;
+  private hasSubFooter: boolean;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -82,10 +92,6 @@ export class Flyout {
     }
   }
 
-  public componentWillLoad(): void {
-    this.updateSlots();
-  }
-
   public componentDidLoad(): void {
     // in case flyout is rendered with open prop
     if (this.open) {
@@ -94,23 +100,19 @@ export class Flyout {
     }
 
     // TODO: would be great to use this in jsx but that doesn't work reliable and causes focus e2e test to fail
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
-      if (this.open) {
-        // 1 tick delay is needed so that web components can be bootstrapped
-        setTimeout(() => {
-          this.updateFocusTrap(true);
-          getShadowRootHTMLElement(this.dismissBtn, 'button').focus(); // set initial focus
-        });
-      }
-    });
+    getShadowRootHTMLElements(this.host, 'slot').forEach((element) =>
+      element.addEventListener('slotchange', () => {
+        forceUpdate(this.host);
 
-    this.slotObserver = new MutationObserver((record) => {
-      if (record[0].removedNodes) {
-        this.updateSlots();
-      }
-    });
-
-    this.slotObserver.observe(this.host, { childList: true });
+        if (this.open) {
+          // 1 tick delay is needed so that web components can be bootstrapped
+          setTimeout(() => {
+            this.updateFocusTrap(true);
+            getShadowRootHTMLElement(this.dismissBtn, 'button').focus(); // set initial focus
+          });
+        }
+      })
+    );
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -133,8 +135,6 @@ export class Flyout {
   public disconnectedCallback(): void {
     setFocusTrap(this.host, false, this.dialog);
     setScrollLock(false);
-
-    this.slotObserver.disconnect();
   }
 
   public render(): JSX.Element {
@@ -152,6 +152,10 @@ export class Flyout {
       'position',
       positionDeprecationMap
     );
+
+    this.hasHeader = hasNamedSlot(this.host, 'header');
+    this.hasFooter = hasNamedSlot(this.host, 'footer');
+    this.hasSubFooter = hasNamedSlot(this.host, 'sub-footer');
 
     attachComponentCss(
       this.host,
@@ -182,7 +186,7 @@ export class Flyout {
           ref={(el) => (this.dialog = el)}
           {...(this.hasSubFooter && { onScroll: this.onScroll })} // if no sub-footer is used scroll shadows are done via CSS
         >
-          <div class="header" ref={(el) => (this.header = el)}>
+          <div key="header" class="header" ref={(el) => (this.header = el)}>
             <PrefixedTagNames.pButtonPure
               class="dismiss"
               type="button"
@@ -201,12 +205,12 @@ export class Flyout {
             <slot />
           </div>
           {this.hasFooter && (
-            <div class="footer" ref={(el) => (this.footer = el)}>
+            <div key="footer" class="footer" ref={(el) => (this.footer = el)}>
               <slot name="footer" />
             </div>
           )}
           {this.hasSubFooter && (
-            <div class="sub-footer" ref={(el) => (this.subFooter = el)}>
+            <div key="sub-footer" class="sub-footer" ref={(el) => (this.subFooter = el)}>
               <slot name="sub-footer" />
             </div>
           )}
@@ -247,11 +251,5 @@ export class Flyout {
 
   private dismissFlyout = (): void => {
     this.dismiss.emit();
-  };
-
-  private updateSlots = (): void => {
-    this.hasHeader = hasNamedSlot(this.host, 'header');
-    this.hasFooter = hasNamedSlot(this.host, 'footer');
-    this.hasSubFooter = hasNamedSlot(this.host, 'sub-footer');
   };
 }
