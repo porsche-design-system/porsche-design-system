@@ -18,7 +18,7 @@ publish_jfrog() {
   source "${SCRIPT_DIR}/../shared/ensure-artifactory-credentials.sh"
 
   if [[ ${NPM_TAG_NAME} ]]; then
-    result=$(yarn publish --tag ${NPM_TAG_NAME} --non-interactive --registry=https://registry.npmjs.org/ --access public "${PACKAGE_LOCATION}")
+    result=$(yarn publish --tag ${NPM_TAG_NAME} --non-interactive --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/ "${PACKAGE_LOCATION}")
   else
     # tagged with "latest"
     result=$(yarn publish --non-interactive --registry=https://porscheui.jfrog.io/porscheui/api/npm/npm/ "${PACKAGE_LOCATION}")
