@@ -1,4 +1,5 @@
 import { getComponentCss } from './pagination-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -23,6 +24,6 @@ describe('getComponentCss()', () => {
     [9, 10, true, 'light'],
     [10, 10, true, 'light'],
   ])('should return correct css for activePage: %s, pageTotal: %s, showLastPage: %s and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

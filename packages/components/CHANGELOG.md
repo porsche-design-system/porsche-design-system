@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- `visibility` css property can be overridden on all components, e.g. to make use of `visibility: hidden;`  
+  ([#2988](https://github.com/porsche-design-system/porsche-design-system/pull/2988))
+
 ### [3.10.0-rc.4] - 2024-01-15
 
 #### Added

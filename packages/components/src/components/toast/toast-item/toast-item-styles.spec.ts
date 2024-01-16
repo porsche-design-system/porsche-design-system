@@ -1,4 +1,5 @@
 import { getComponentCss } from './toast-item-styles';
+import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -9,6 +10,6 @@ describe('getComponentCss()', () => {
     ['success', 'dark'],
     ['info', 'dark'],
   ])('should return correct css for state: %s and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

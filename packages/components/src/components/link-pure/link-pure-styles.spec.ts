@@ -1,5 +1,6 @@
 import { getComponentCss } from './link-pure-styles';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   const breakpointCustomizableBoolean = { base: true, xs: false, s: true, m: false, l: true, xl: false };
@@ -215,7 +216,7 @@ describe('getComponentCss()', () => {
   ])(
     'should return correct css for %j',
     ({ icon, iconSource, active, stretch, size, hideLabel, alignLabel, underline, hasSlottedAnchor, theme }) => {
-      expect(
+      validateCssAndMatchSnapshot(
         getComponentCss(
           icon,
           iconSource,
@@ -228,7 +229,7 @@ describe('getComponentCss()', () => {
           hasSlottedAnchor,
           theme
         )
-      ).toMatchSnapshot();
+      );
     }
   );
 });

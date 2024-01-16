@@ -1,4 +1,5 @@
 import { getComponentCss } from './select-wrapper-styles';
+import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -19,7 +20,7 @@ describe('getComponentCss()', () => {
   ])(
     'should return correct css for disabled: %s, hasCustomDropdown: %s, hideLabel: %o, state: %s and theme: %s',
     (...args) => {
-      expect(getComponentCss(...args)).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });
