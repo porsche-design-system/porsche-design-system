@@ -38,7 +38,7 @@ describe('getComponentCss()', () => {
       'light',
     ],
   ])(
-    'should return correct css for hasHeading: %s, hasDescription: %s, hasHeader: %s, headingSize: %s, width: %s, hasPagination: %j, isInfinitePagination: %s, alignHeader: %s and theme: %s',
+    'should return correct css for hasHeading: %s, hasDescription: %s, hasControlsSlot: %s, headingSize: %s, width: %s, hasPagination: %j, isInfinitePagination: %s, alignHeader: %s and theme: %s',
     (...args) => {
       validateCssAndMatchSnapshot(getComponentCss(...args));
     }

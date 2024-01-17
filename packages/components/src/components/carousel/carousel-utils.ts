@@ -69,7 +69,7 @@ export const getSplideBreakpoints = (
 
 export const getSlidesAndAddAttributes = (host: HTMLElement): HTMLElement[] => {
   const slides = Array.from(host.children).filter(
-    ({ slot }) => slot !== 'heading' && slot !== 'description' && slot !== 'header'
+    ({ slot }) => slot !== 'heading' && slot !== 'description' && slot !== 'controls'
   ) as HTMLElement[];
   slides.forEach((el, i) => {
     el.setAttribute('slot', `slide-${i}`);

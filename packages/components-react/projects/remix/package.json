@@ -22,7 +22,7 @@
     "patchRemixRunProcessBrowserGlobalIdentifier": "ts-node ../react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.ts"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.10.0-rc.4",
+    "@porsche-design-system/components-react": "3.10.0",
     "@remix-run/node": "^2.4.0",
     "@remix-run/react": "^2.4.0",
     "@remix-run/serve": "^2.4.0",
