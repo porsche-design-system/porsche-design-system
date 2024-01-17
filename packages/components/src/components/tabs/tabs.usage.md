@@ -1,4 +1,4 @@
-# Tabs
+<ComponentHeading name="Tabs"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

@@ -199,12 +199,12 @@ export const getComponentCss = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         background: `linear-gradient(to right, ${getGradient('dark', gradientColor)} 100%)`,
       }),
-      visibility: isPrevHidden ? 'hidden' : 'visible',
+      visibility: isPrevHidden ? 'hidden' : 'inherit',
       '& button': {
         marginLeft: '8px',
         // hide buttons on mobile (actually devices not supporting hover)
         ...hoverMediaQuery({
-          visibility: isPrevHidden ? 'hidden' : 'visible',
+          visibility: isPrevHidden ? 'hidden' : 'inherit',
         }),
       },
     },
@@ -216,12 +216,12 @@ export const getComponentCss = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         background: `linear-gradient(to left, ${getGradient('dark', gradientColor)} 100%)`,
       }),
-      visibility: isNextHidden ? 'hidden' : 'visible',
+      visibility: isNextHidden ? 'hidden' : 'inherit',
       '& button': {
         marginRight: '8px',
         // hide buttons on mobile (actually devices not supporting hover)
         ...hoverMediaQuery({
-          visibility: isNextHidden ? 'hidden' : 'visible',
+          visibility: isNextHidden ? 'hidden' : 'inherit',
         }),
       },
     },

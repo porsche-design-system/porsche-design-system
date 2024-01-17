@@ -1,4 +1,4 @@
-# Button
+<ComponentHeading name="Button"></ComponentHeading>
 
 The `p-button` component is essential for performing form or **interaction** events. For an optimal user guidance and
 dedicated pursuit of business or sales goals, different types of Buttons (**Primary** and **Secondary**) are available

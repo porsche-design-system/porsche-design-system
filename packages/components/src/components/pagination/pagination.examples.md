@@ -1,4 +1,4 @@
-# Pagination
+<ComponentHeading name="Pagination"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

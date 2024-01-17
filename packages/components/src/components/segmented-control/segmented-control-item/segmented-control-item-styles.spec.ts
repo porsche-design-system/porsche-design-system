@@ -1,4 +1,5 @@
 import { getComponentCss } from './segmented-control-item-styles';
+import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -17,7 +18,7 @@ describe('getComponentCss()', () => {
   ])(
     'should return correct css for isDisabled: %s, isSelected: %s, hasIcon: %s, hasSlottedContent: %s and theme: %s',
     (...args) => {
-      expect(getComponentCss(...args)).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

@@ -1,4 +1,4 @@
-# Link Tile Model Signature
+<ComponentHeading name="Link Tile Model Signature"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

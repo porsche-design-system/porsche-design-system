@@ -1,4 +1,4 @@
-# Accordion
+<ComponentHeading name="Accordion"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

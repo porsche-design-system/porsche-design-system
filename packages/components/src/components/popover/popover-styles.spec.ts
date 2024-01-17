@@ -1,4 +1,5 @@
 import { getComponentCss } from './popover-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -12,6 +13,6 @@ describe('getComponentCss()', () => {
     ['left', false, 'dark'],
     ['top', true, 'light'],
   ])('should return correct css for direction: %s, isNative: %s and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

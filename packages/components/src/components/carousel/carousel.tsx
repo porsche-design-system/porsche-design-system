@@ -245,7 +245,7 @@ export class Carousel {
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
     const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
     const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
-    const hasHeaderSlot = hasNamedSlot(this.host, 'header');
+    const hasControlsSlot = hasNamedSlot(this.host, 'controls');
     warnIfAriaAndHeadingPropsAreUndefined(this.host, hasHeadingPropOrSlot, this.aria);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
     this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
@@ -254,7 +254,7 @@ export class Carousel {
       getComponentCss,
       hasHeadingPropOrSlot,
       hasDescriptionPropOrSlot,
-      hasHeaderSlot,
+      hasControlsSlot,
       this.headingSize,
       this.width,
       // flip boolean values of disablePagination since it is the inverse of pagination
@@ -283,12 +283,14 @@ export class Carousel {
       // 'aria-controls': 'splide-track', // TODO: cross shadow dom? use native button tag instead of p-button-pure?
     };
 
+    const headingId = 'heading';
+
     return (
       <Host>
         <div class="header">
-          {hasHeadingPropOrSlot && (this.heading ? <h2 id="heading">{this.heading}</h2> : <slot name="heading" />)}
+          {hasHeadingPropOrSlot && (this.heading ? <h2 id={headingId}>{this.heading}</h2> : <slot name="heading" />)}
           {hasDescriptionPropOrSlot && (this.description ? <p>{this.description}</p> : <slot name="description" />)}
-          {hasHeaderSlot && <slot name="header" />}
+          {hasControlsSlot && <slot name="controls" />}
           <div class="nav">
             {this.skipLinkTarget && (
               <PrefixedTagNames.pLinkPure
@@ -298,7 +300,7 @@ export class Carousel {
                 class="btn skip-link"
                 alignLabel="start"
                 hideLabel={true}
-                aria-describedby={this.heading ? 'heading' : null}
+                aria-describedby={this.heading ? headingId : null}
               >
                 {/* TODO: make it i18n configurable */}
                 Skip carousel entries

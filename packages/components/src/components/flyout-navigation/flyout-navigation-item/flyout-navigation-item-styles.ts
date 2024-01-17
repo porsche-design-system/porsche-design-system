@@ -152,6 +152,7 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
         ? {
             zIndex: 2,
             transform: 'translate3d(0, 0, 0)',
+            // TODO: Should be visibility: inherit to allow overwriting but currently not possible since it would inherit from the scroller of the p-flyout-navigation itself, which is hidden on mobile
             visibility: `var(${cssVariableVisibility},visible)`,
             transition: `${getTransition(
               'transform',

@@ -1,4 +1,4 @@
-# Link Pure
+<ComponentHeading name="Link Pure"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

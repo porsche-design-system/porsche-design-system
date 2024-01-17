@@ -1,4 +1,5 @@
 import { getComponentCss } from './spinner-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -13,6 +14,6 @@ describe('getComponentCss()', () => {
     ['inherit', 'dark'],
     [{ base: 'medium', xs: 'small', s: 'medium', m: 'small', l: 'medium', xl: 'small' }, 'dark'],
   ])('should return correct css for size: %j and theme %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

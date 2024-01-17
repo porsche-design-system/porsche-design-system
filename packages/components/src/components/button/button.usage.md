@@ -1,4 +1,4 @@
-# Button
+<ComponentHeading name="Button"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

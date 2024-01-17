@@ -1,4 +1,4 @@
-# Display
+<ComponentHeading name="Display"></ComponentHeading>
 
 `p-display` is used to highlight and specify heading styling and hierarchy in documents.
 

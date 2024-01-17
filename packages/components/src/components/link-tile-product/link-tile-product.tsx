@@ -32,7 +32,7 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
-/** __Experimental__ */
+/** @experimental */
 @Component({
   tag: 'p-link-tile-product',
   shadow: { delegatesFocus: true },

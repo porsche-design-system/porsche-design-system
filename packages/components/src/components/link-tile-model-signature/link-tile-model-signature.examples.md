@@ -1,4 +1,4 @@
-# Link Tile Model Signature
+<ComponentHeading name="Link Tile Model Signature"></ComponentHeading>
 
 The `p-link-tile-model-signature` is a navigational component that displays a provided image to tease content and
 provides two `p-link's` to navigate to further information within one container. In addition to the `p-link-tile` it

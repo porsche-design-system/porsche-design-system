@@ -14,6 +14,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.10.0] - 2024-01-17
+
+### [3.10.0-rc.5] - 2024-01-16
+
+#### Changed
+
+- `visibility` css property can be overridden on all components, e.g. to make use of `visibility: hidden;`  
+  ([#2988](https://github.com/porsche-design-system/porsche-design-system/pull/2988))
+- `Carousel`: Named slot `header` renamed to `controls`
+  ([#2992](https://github.com/porsche-design-system/porsche-design-system/pull/2992))
+
+### [3.10.0-rc.4] - 2024-01-15
+
 #### Added
 
 - `Icon`: Auto-flipping icons (certain ones only) in RTL (right-to-left) mode
@@ -33,6 +46,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#2935](https://github.com/porsche-design-system/porsche-design-system/pull/2935))
 - `Carousel`: Position and width of heading and description
   ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
+- `Model Signature` asset for `model="macan"`
 - Aligned naming of all `CustomEvent<T>` types and deprecated old ones since they are in fact typing the `detail: T`
   property of the event
 
