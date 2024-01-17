@@ -1,4 +1,4 @@
-# Popover
+<ComponentHeading name="Popover"></ComponentHeading>
 
 The `p-popover` component can be used to display some additional content on top of another in conjunction with the info
 <p-popover :theme="this.$store.getters.storefrontTheme" description="Hello World"></p-popover>-button.
@@ -43,16 +43,15 @@ It's possible to define a preferred direction in which the popover should open, 
 Otherwise, it will be opened in the direction with most available space automatically.
 
 <Playground :markup="directionMarkup" :config="config">
-  <SelectOptions v-model="direction" :values="directions" name="direction"></SelectOptions>
+  <PlaygroundSelect v-model="direction" :values="directions" name="direction"></PlaygroundSelect>
 </Playground>
 
 ## Within table
 
-When a popover is used within the `p-table` component it will automatically switch to a native popover. This will stop
-the popover from being cut off when overlapping the component scroll container. The popover will be automatically closed
-when the user scrolls the page or within the table.
-
-<Playground :markup="withinTableMarkup" :config="config"></Playground>
+When a popover is used within the `p-table` component it will automatically switch to a native popover. This will
+prevent the popover from being cut off when it overlaps with the component's scroll container. The popover will be
+automatically closed when the user scrolls within the table. Have a look at our
+[advanced example page](components/table/examples#advanced-table) of `p-table` component.
 
 <script lang="ts">
 import {POPOVER_Z_INDEX} from "../../constants";
@@ -83,19 +82,5 @@ export default class Code extends Vue {
   Some content <p-popover aria="{ 'aria-label': 'Some more descriptive label' }">${this.popoverContent}</p-popover>
 </p-text>`;
 
-  withinTableMarkup = `<p-table caption="Some caption" style="max-width: 200px">
-  <p-table-head>
-    <p-table-head-row>
-      <p-table-head-cell>
-        <span style="display: flex; align-items: flex-end"> 
-          Column 1
-          <p-popover aria="{ 'aria-label': 'Some more descriptive label' }" style="margin-left: 5px">${this.popoverContent}</p-popover>
-        </span>
-      </p-table-head-cell>
-      <p-table-head-cell>Column 2</p-table-head-cell>
-      <p-table-head-cell>Column 3</p-table-head-cell>
-    </p-table-head-row>
-  </p-table-head>
-</p-table>`;
 }
 </script>

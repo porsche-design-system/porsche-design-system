@@ -8,8 +8,12 @@ import TableOfContents from '@/components/TableOfContents.vue';
 import { componentsReady } from '@porsche-design-system/components-js';
 import A11yIcon from '@/components/A11yIcon.vue';
 import PartialDocs from '@/components/PartialDocs.vue';
-import SelectOptions from '@/components/SelectOptions.vue';
+import PlaygroundButton from '@/components/PlaygroundButton.vue';
+import PlaygroundInput from '@/components/PlaygroundInput.vue';
+import PlaygroundSelect from '@/components/PlaygroundSelect.vue';
+import ComponentHeading from '@/components/ComponentHeading.vue';
 import ComponentMetaOverview from '@/components/ComponentMetaOverview.vue';
+import MetaTable from '@/components/MetaTable.vue';
 import Notification from '@/components/Notification.vue';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -46,9 +50,13 @@ Vue.use({
     vue.component('Notification', Notification);
     // eslint-disable-next-line vue/multi-word-component-names
     vue.component('Playground', Playground);
-    vue.component('SelectOptions', SelectOptions);
+    vue.component('PlaygroundButton', PlaygroundButton);
+    vue.component('PlaygroundInput', PlaygroundInput);
+    vue.component('PlaygroundSelect', PlaygroundSelect);
     vue.component('TableOfContents', TableOfContents);
+    vue.component('ComponentHeading', ComponentHeading);
     vue.component('ComponentMetaOverview', ComponentMetaOverview);
+    vue.component('MetaTable', MetaTable);
   },
 });
 

@@ -5,6 +5,9 @@ set -o pipefail
 
 if
   [[ "--assets" == "${1}" ]] ||
+  [[ "--assets:assets" == "${1}" ]] ||
+  [[ "--assets:fallbacks" == "${1}" ]] ||
+  [[ "--assets:styles" == "${1}" ]] ||
   [[ "--component-meta" == "${1}" ]] ||
   [[ "--components" == "${1}" ]] ||
   [[ "--components-js" == "${1}" ]] ||
@@ -21,7 +24,6 @@ if
   [[ "--components-react:uxpin-wrapper" == "${1}" ]] ||
   [[ "--components-vue" == "${1}" ]] ||
   [[ "--components-vue:vue-wrapper" == "${1}" ]] ||
-  [[ "--fallbacks" == "${1}" ]] ||
   [[ "--shared" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]] ||
   [[ "--utilities" == "${1}" ]]

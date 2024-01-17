@@ -1,4 +1,4 @@
-# Link Pure
+<ComponentHeading name="Link Pure"></ComponentHeading>
 
 The `p-link-pure` component is essential for performing changes in **page routes**. A Link Pure can be used with or
 without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible. When
@@ -60,7 +60,7 @@ There are predefined text sizes for the component which should cover most use ca
 the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ### Responsive
@@ -142,7 +142,7 @@ The `label` can be aligned to the `end` (default) or to the `start` of the icon.
 </Notification>
 
 <Playground :markup="alignLabelMarkup" :config="config">
-  <SelectOptions v-model="alignLabel" :values="alignLabels" name="alignLabel"></SelectOptions>
+  <PlaygroundSelect v-model="alignLabel" :values="alignLabels" name="alignLabel"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -153,14 +153,7 @@ The `stretch` property extends the area between icon and label to the maximum av
 stretch only on `start` alignment and small viewports, e.g. mobile views.
 
 <Playground :markup="stretchMarkup" :config="config">
-  <select v-model="stretch" aria-label="Select stretch and alignment">
-    <option disabled>Select stretch and alignment</option>
-    <option value='stretch="true" align-label="start"'>stretch true, align-label start</option>
-    <option value='stretch="true" align-label="end"'>stretch true, align-label end</option>
-    <option value='stretch="false" align-label="start"'>stretch false, align-label start</option>
-    <option value='stretch="false" align-label="end"'>stretch false, align-label end</option>
-    <option value='stretch="{ base: true, l: false }" align-label="start"'>Responsive</option>
-  </select>
+  <PlaygroundSelect v-model="stretch" :values="stretches" name="stretch and align-label"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -191,7 +184,7 @@ By setting the `tabindex` attribute to `-1` you can remove the **Link Pure** fro
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { TEXT_SIZES } from '../text/text-size';
+import { TEXT_SIZES } from '../../utils/typography/text-size';
 import { ALIGN_LABELS, ALIGN_LABELS_DEPRECATED } from '../../utils'; 
 
 @Component
@@ -200,6 +193,13 @@ export default class Code extends Vue {
   configInline = { ...this.config, spacing: 'inline' };
 
   stretch = 'stretch="true" align-label="start"';
+  stretches = [
+    'stretch="true" align-label="start"',
+    'stretch="true" align-label="end"',
+    'stretch="false" align-label="start"',
+    'stretch="false" align-label="end"',
+    'stretch="{ base: true, l: false }" align-label="start"',
+  ];
 
   withLabel =
 `<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>

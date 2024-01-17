@@ -1,0 +1,1123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: false, isSecondaryScrollerVisible: false and theme: auto 1`] = `
+":host {
+  display: block;
+  --p-internal-flyout-navigation-visibility: hidden !important;
+  --p-internal-flyout-navigation-visibility-transition-duration: 0.6s !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99998 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+  opacity: 0 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  width: auto;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  visibility: inherit;
+  background: none;
+  overflow: hidden;
+  transform: translate3d(-100%, 0, 0);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+}
+dialog:dir(rtl) {
+  transform: translate3d(100%, 0, 0);
+}
+dialog:focus-visible {
+  outline: none;
+}
+dialog::backdrop {
+  opacity: 0;
+}
+@media(min-width:760px) {
+  dialog {
+    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
+    grid-template-rows: 100vh;
+    inset-inline-end: auto;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    background: rgba(38, 38, 41, 0.67) !important;
+  }
+}
+
+.scroller {
+  grid-area: 1/1;
+  overflow: auto;
+  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0.6s);
+  background-color: #FFF;
+}
+.scroller::before {
+  content: "";
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  background-color: rgba(255, 255, 255, 0.79);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+}
+.header {
+  position: relative;
+  z-index: 3;
+  grid-area: 1/1;
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+.dismiss {
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+}
+@media(min-width:760px) {
+  .scroller {
+    visibility: inherit;
+    transition: initial;
+  }
+  .scroller::before {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+  .header {
+    margin-inline-end: 0;
+    grid-area: 1/-1;
+    place-self: flex-start;
+  }
+  .dismiss {
+    --p-internal-icon-filter: invert(1);
+    margin: clamp(8px, 0.5vw + 6px, 16px);
+    padding: 8px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .scroller {
+    background-color: #0E0E12;
+  }
+  .scroller::before {
+    background-color: rgba(14, 14, 18, 0.79);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: false, isSecondaryScrollerVisible: false and theme: dark 1`] = `
+":host {
+  display: block;
+  --p-internal-flyout-navigation-visibility: hidden !important;
+  --p-internal-flyout-navigation-visibility-transition-duration: 0.6s !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99998 !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+  opacity: 0 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  width: auto;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  visibility: inherit;
+  background: none;
+  overflow: hidden;
+  transform: translate3d(-100%, 0, 0);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+}
+dialog:dir(rtl) {
+  transform: translate3d(100%, 0, 0);
+}
+dialog:focus-visible {
+  outline: none;
+}
+dialog::backdrop {
+  opacity: 0;
+}
+@media(min-width:760px) {
+  dialog {
+    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
+    grid-template-rows: 100vh;
+    inset-inline-end: auto;
+  }
+}
+
+.scroller {
+  grid-area: 1/1;
+  overflow: auto;
+  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0.6s);
+  background-color: #0E0E12;
+}
+.scroller::before {
+  content: "";
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  background-color: rgba(14, 14, 18, 0.79);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+}
+.header {
+  position: relative;
+  z-index: 3;
+  grid-area: 1/1;
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+.dismiss {
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+}
+@media(min-width:760px) {
+  .scroller {
+    visibility: inherit;
+    transition: initial;
+  }
+  .scroller::before {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+  .header {
+    margin-inline-end: 0;
+    grid-area: 1/-1;
+    place-self: flex-start;
+  }
+  .dismiss {
+    --p-internal-icon-filter: invert(1);
+    margin: clamp(8px, 0.5vw + 6px, 16px);
+    padding: 8px;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: false, isSecondaryScrollerVisible: false and theme: light 1`] = `
+":host {
+  display: block;
+  --p-internal-flyout-navigation-visibility: hidden !important;
+  --p-internal-flyout-navigation-visibility-transition-duration: 0.6s !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99998 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+  opacity: 0 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  width: auto;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  visibility: inherit;
+  background: none;
+  overflow: hidden;
+  transform: translate3d(-100%, 0, 0);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
+}
+dialog:dir(rtl) {
+  transform: translate3d(100%, 0, 0);
+}
+dialog:focus-visible {
+  outline: none;
+}
+dialog::backdrop {
+  opacity: 0;
+}
+@media(min-width:760px) {
+  dialog {
+    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
+    grid-template-rows: 100vh;
+    inset-inline-end: auto;
+  }
+}
+
+.scroller {
+  grid-area: 1/1;
+  overflow: auto;
+  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0.6s);
+  background-color: #FFF;
+}
+.scroller::before {
+  content: "";
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  background-color: rgba(255, 255, 255, 0.79);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+}
+.header {
+  position: relative;
+  z-index: 3;
+  grid-area: 1/1;
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+.dismiss {
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+}
+@media(min-width:760px) {
+  .scroller {
+    visibility: inherit;
+    transition: initial;
+  }
+  .scroller::before {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+  .header {
+    margin-inline-end: 0;
+    grid-area: 1/-1;
+    place-self: flex-start;
+  }
+  .dismiss {
+    --p-internal-icon-filter: invert(1);
+    margin: clamp(8px, 0.5vw + 6px, 16px);
+    padding: 8px;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: true, isSecondaryScrollerVisible: false and theme: auto 1`] = `
+":host {
+  display: block;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99998 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  visibility: inherit !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  opacity: 1 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  width: auto;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  visibility: inherit;
+  background: none;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog:focus-visible {
+  outline: none;
+}
+dialog::backdrop {
+  opacity: 0;
+}
+@media(min-width:760px) {
+  dialog {
+    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
+    grid-template-rows: 100vh;
+    inset-inline-end: auto;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    background: rgba(38, 38, 41, 0.67) !important;
+  }
+}
+
+.scroller {
+  grid-area: 1/1;
+  overflow: auto;
+  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0s);
+  background-color: #FFF;
+}
+.scroller::before {
+  content: "";
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  background-color: rgba(255, 255, 255, 0.79);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+}
+.header {
+  position: relative;
+  z-index: 3;
+  grid-area: 1/1;
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+.dismiss {
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+}
+@media(min-width:760px) {
+  .scroller {
+    visibility: inherit;
+    transition: initial;
+  }
+  .scroller::before {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+  .header {
+    margin-inline-end: 0;
+    grid-area: 1/-1;
+    place-self: flex-start;
+  }
+  .dismiss {
+    --p-internal-icon-filter: invert(1);
+    margin: clamp(8px, 0.5vw + 6px, 16px);
+    padding: 8px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .scroller {
+    background-color: #0E0E12;
+  }
+  .scroller::before {
+    background-color: rgba(14, 14, 18, 0.79);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: true, isSecondaryScrollerVisible: false and theme: dark 1`] = `
+":host {
+  display: block;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99998 !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  visibility: inherit !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  opacity: 1 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  width: auto;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  visibility: inherit;
+  background: none;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog:focus-visible {
+  outline: none;
+}
+dialog::backdrop {
+  opacity: 0;
+}
+@media(min-width:760px) {
+  dialog {
+    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
+    grid-template-rows: 100vh;
+    inset-inline-end: auto;
+  }
+}
+
+.scroller {
+  grid-area: 1/1;
+  overflow: auto;
+  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0s);
+  background-color: #0E0E12;
+}
+.scroller::before {
+  content: "";
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  background-color: rgba(14, 14, 18, 0.79);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+}
+.header {
+  position: relative;
+  z-index: 3;
+  grid-area: 1/1;
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+.dismiss {
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+}
+@media(min-width:760px) {
+  .scroller {
+    visibility: inherit;
+    transition: initial;
+  }
+  .scroller::before {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+  .header {
+    margin-inline-end: 0;
+    grid-area: 1/-1;
+    place-self: flex-start;
+  }
+  .dismiss {
+    --p-internal-icon-filter: invert(1);
+    margin: clamp(8px, 0.5vw + 6px, 16px);
+    padding: 8px;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: true, isSecondaryScrollerVisible: false and theme: light 1`] = `
+":host {
+  display: block;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99998 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  visibility: inherit !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  opacity: 1 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  width: auto;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  visibility: inherit;
+  background: none;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog:focus-visible {
+  outline: none;
+}
+dialog::backdrop {
+  opacity: 0;
+}
+@media(min-width:760px) {
+  dialog {
+    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
+    grid-template-rows: 100vh;
+    inset-inline-end: auto;
+  }
+}
+
+.scroller {
+  grid-area: 1/1;
+  overflow: auto;
+  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0s);
+  background-color: #FFF;
+}
+.scroller::before {
+  content: "";
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  background-color: rgba(255, 255, 255, 0.79);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+}
+.header {
+  position: relative;
+  z-index: 3;
+  grid-area: 1/1;
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+.dismiss {
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+}
+@media(min-width:760px) {
+  .scroller {
+    visibility: inherit;
+    transition: initial;
+  }
+  .scroller::before {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+  .header {
+    margin-inline-end: 0;
+    grid-area: 1/-1;
+    place-self: flex-start;
+  }
+  .dismiss {
+    --p-internal-icon-filter: invert(1);
+    margin: clamp(8px, 0.5vw + 6px, 16px);
+    padding: 8px;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: true, isSecondaryScrollerVisible: true and theme: auto 1`] = `
+":host {
+  display: block;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99998 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  visibility: inherit !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  opacity: 1 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  width: auto;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  visibility: inherit;
+  background: none;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog:focus-visible {
+  outline: none;
+}
+dialog::backdrop {
+  opacity: 0;
+}
+@media(min-width:760px) {
+  dialog {
+    grid-template-columns: repeat(2, clamp(338px, 10.52vw + 258px, 460px)) auto;
+    grid-template-rows: 100vh;
+    inset-inline-end: auto;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    background: rgba(38, 38, 41, 0.67) !important;
+  }
+}
+
+.scroller {
+  grid-area: 1/1;
+  overflow: auto;
+  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
+  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration, 0.6s);
+  background-color: #FFF;
+}
+.scroller::before {
+  content: "";
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  background-color: rgba(255, 255, 255, 0.79);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+}
+.header {
+  position: relative;
+  z-index: 3;
+  grid-area: 1/1;
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+.dismiss {
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+}
+@media(min-width:760px) {
+  .scroller {
+    visibility: inherit;
+    transition: initial;
+  }
+  .scroller::before {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+  .header {
+    margin-inline-end: 0;
+    grid-area: 1/-1;
+    place-self: flex-start;
+  }
+  .dismiss {
+    --p-internal-icon-filter: invert(1);
+    margin: clamp(8px, 0.5vw + 6px, 16px);
+    padding: 8px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .scroller {
+    background-color: #0E0E12;
+  }
+  .scroller::before {
+    background-color: rgba(14, 14, 18, 0.79);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: true, isSecondaryScrollerVisible: true and theme: dark 1`] = `
+":host {
+  display: block;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99998 !important;
+  background: rgba(38, 38, 41, 0.67) !important;
+  visibility: inherit !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  opacity: 1 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  width: auto;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  visibility: inherit;
+  background: none;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog:focus-visible {
+  outline: none;
+}
+dialog::backdrop {
+  opacity: 0;
+}
+@media(min-width:760px) {
+  dialog {
+    grid-template-columns: repeat(2, clamp(338px, 10.52vw + 258px, 460px)) auto;
+    grid-template-rows: 100vh;
+    inset-inline-end: auto;
+  }
+}
+
+.scroller {
+  grid-area: 1/1;
+  overflow: auto;
+  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
+  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration, 0.6s);
+  background-color: #0E0E12;
+}
+.scroller::before {
+  content: "";
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  background-color: rgba(14, 14, 18, 0.79);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+}
+.header {
+  position: relative;
+  z-index: 3;
+  grid-area: 1/1;
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+.dismiss {
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+}
+@media(min-width:760px) {
+  .scroller {
+    visibility: inherit;
+    transition: initial;
+  }
+  .scroller::before {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+  .header {
+    margin-inline-end: 0;
+    grid-area: 1/-1;
+    place-self: flex-start;
+  }
+  .dismiss {
+    --p-internal-icon-filter: invert(1);
+    margin: clamp(8px, 0.5vw + 6px, 16px);
+    padding: 8px;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: true, isSecondaryScrollerVisible: true and theme: light 1`] = `
+":host {
+  display: block;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99998 !important;
+  background: rgba(1, 2, 5, 0.67) !important;
+  visibility: inherit !important;
+  pointer-events: auto !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  backdrop-filter: blur(32px) !important;
+  opacity: 1 !important;
+  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  width: auto;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  visibility: inherit;
+  background: none;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog:focus-visible {
+  outline: none;
+}
+dialog::backdrop {
+  opacity: 0;
+}
+@media(min-width:760px) {
+  dialog {
+    grid-template-columns: repeat(2, clamp(338px, 10.52vw + 258px, 460px)) auto;
+    grid-template-rows: 100vh;
+    inset-inline-end: auto;
+  }
+}
+
+.scroller {
+  grid-area: 1/1;
+  overflow: auto;
+  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
+  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration, 0.6s);
+  background-color: #FFF;
+}
+.scroller::before {
+  content: "";
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+  background-color: rgba(255, 255, 255, 0.79);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.25vw + 3px, 8px);
+  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+}
+.header {
+  position: relative;
+  z-index: 3;
+  grid-area: 1/1;
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+.dismiss {
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+}
+@media(min-width:760px) {
+  .scroller {
+    visibility: inherit;
+    transition: initial;
+  }
+  .scroller::before {
+    display: none;
+  }
+  .content {
+    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+  }
+  .header {
+    margin-inline-end: 0;
+    grid-area: 1/-1;
+    place-self: flex-start;
+  }
+  .dismiss {
+    --p-internal-icon-filter: invert(1);
+    margin: clamp(8px, 0.5vw + 6px, 16px);
+    padding: 8px;
+  }
+}
+"
+`;

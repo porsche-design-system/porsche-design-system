@@ -4,7 +4,9 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import * as beautify from 'js-beautify';
-import { getFontFaceStylesheet, getInitialStyles } from '@porsche-design-system/components-js/partials';
+import { getInitialStyles } from '@porsche-design-system/components-js/partials';
+import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
+import { paramCase } from 'change-case';
 
 export type ClickableTests = {
   state: string;
@@ -59,7 +61,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
               timeout = window.setTimeout(() => {
                 resolveComponentsUpdatedPromise();
                 createComponentsUpdatedPromise();
-              }, 40); // TODO: reduce this timeout once component lifecycles are working as intended
+              }, 40); // TODO: reduce or better remove this timeout for a reliable waitForStencilLifecycle() utility
             }
           };
 
@@ -196,6 +198,10 @@ export const getActiveElementTagName = (page: Page): Promise<string> => {
   return page.evaluate(() => document.activeElement.tagName);
 };
 
+export const getActiveElementProp = (page: Page, prop: string): Promise<string> => {
+  return page.evaluate((prop) => document.activeElement[prop], prop);
+};
+
 type Pseudo = '::before' | '::after' | '::-webkit-search-decoration';
 type GetElementStyleOptions = {
   waitForTransition?: boolean;
@@ -317,7 +323,12 @@ export const goto = async (page: Page, url: string) => {
 };
 
 export const buildDefaultComponentMarkup = (tagName: TagName): string => {
-  const { props, requiredProps, requiredChild, requiredParent, requiredNamedSlots } = getComponentMeta(tagName);
+  const {
+    requiredChild,
+    requiredParent,
+    requiredNamedSlots,
+    propsMeta, // new format
+  } = getComponentMeta(tagName);
 
   const buildChildMarkup = (requiredChild: string, requiredNamedSlots: ComponentMeta['requiredNamedSlots']): string => {
     if (requiredChild) {
@@ -343,7 +354,17 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     }
   };
 
-  const attributes = requiredProps?.map((prop) => ` ${prop}="${props[prop] ?? 'value'}"`).join() || '';
+  // add required attributes that would cause validation to throw
+  const attributes = propsMeta
+    ? Object.entries(propsMeta)
+        .map(
+          ([propName, { defaultValue, isRequired }]) =>
+            // handling all href attributes to trick throwIfInvalidLinkUsage and throwIfInvalidLinkTileProductUsage
+            (isRequired || propName === 'href') && ` ${paramCase(propName)}="${defaultValue ?? 'value'}"`
+        )
+        .filter(Boolean)
+        .join()
+    : '';
 
   const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(
     requiredChild,
@@ -364,15 +385,48 @@ export const expectShadowDomToMatchSnapshot = async (host: ElementHandle): Promi
   expect(prettyHtml).toMatchSnapshot();
 };
 
-type ExpectToMatchSnapshotOptions = Omit<SnapshotOptions, 'root'> & {
+export type ExpectToMatchSnapshotOptions = Omit<SnapshotOptions, 'root'> & {
   message?: string;
+  skipWaitForFunction?: boolean;
 };
 export const expectA11yToMatchSnapshot = async (
   page: Page,
   elementHandle: ElementHandle,
   opts?: ExpectToMatchSnapshotOptions
 ): Promise<void> => {
-  const { message, ...options } = opts || {};
+  const { message, skipWaitForFunction, ...options } = opts || {};
+
+  // TODO: remove this workaround once waitForStencilLifecycle() is reliable
+  // currently it is mostly based on a 40ms timeout which isn't always enough
+  // in scenarios when multiple properties are changed after each other, e.g.
+  // await setProperty(host, 'state', 'error');
+  // await setProperty(host, 'message', 'Some error message.');
+  // then there are 2 lifecycles but waitForStencilLifecycle() can resolve after the 1st
+  if (!skipWaitForFunction && elementHandle) {
+    const tagName = (await (await elementHandle.getProperty('tagName')).jsonValue()).toLowerCase();
+    if (['input', 'select', 'textarea'].includes(tagName)) {
+      const state: FormState = await elementHandle.evaluate(
+        (el) => (el.parentElement as any)?.state || (el.getRootNode() as any).host?.state
+      );
+      if (state) {
+        await page.waitForFunction(
+          (el, state) => {
+            if (!el.ariaLabel) {
+              return true; // some nested input elements don't have/need it
+            } else if (state === 'none') {
+              return !el.ariaLabel.includes('success') && !el.ariaLabel.includes('error');
+            } else {
+              return el.ariaLabel.includes(state);
+            }
+          },
+          { timeout: 500 },
+          elementHandle,
+          state
+        );
+      }
+    }
+  }
+
   const snapshot = await page.accessibility.snapshot({
     root: elementHandle,
     ...options,

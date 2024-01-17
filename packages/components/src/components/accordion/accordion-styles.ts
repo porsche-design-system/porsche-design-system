@@ -40,21 +40,27 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        ...(!compact && {
-          borderBottom: `1px solid ${contrastLowColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: contrastLowColorDark,
-          }),
+        ...addImportantToEachRule({
+          ...(compact
+            ? { transform: 'translate3d(0,0,0)' } // relevant for custom click-area in compact variant
+            : {
+                borderBottom: `1px solid ${contrastLowColor}`,
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                  borderColor: contrastLowColorDark,
+                }),
+              }),
+          '&(:only-of-type)': { borderBottom: 0 },
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
         }),
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
+      },
       button: {
         display: 'flex',
         position: 'relative',
         justifyContent: 'space-between',
+        alignItems: 'center',
         width: '100%',
         textDecoration: 'none',
         border: 0,
@@ -143,7 +149,7 @@ export const getComponentCss = (
       ...(open
         ? {
             gridTemplateRows: '1fr',
-            visibility: 'visible',
+            visibility: 'inherit',
             transition: getTransition('grid-template-rows'),
             paddingBottom: compact ? spacingStaticSmall : '24px',
           }

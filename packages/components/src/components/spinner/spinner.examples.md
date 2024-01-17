@@ -1,4 +1,4 @@
-# Spinner
+<ComponentHeading name="Spinner"></ComponentHeading>
 
 There are unavoidable moments when the user has to wait for more than 1 second (for example due to technical processing
 of information or requests). These moments should be bridged with a good user feedback in order to not leave the user
@@ -17,7 +17,7 @@ There are predefined sizes for the component available which should cover most u
 the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ### Responsive

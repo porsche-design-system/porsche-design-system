@@ -1,4 +1,4 @@
-# Multi Select
+<ComponentHeading name="Multi Select"></ComponentHeading>
 
 The `p-multi-select` component is a versatile custom form element that facilitates the selection of multiple options. It
 can be used [within a form](components/multi-select/examples#form) or in a
@@ -29,18 +29,19 @@ it's required to provide a name attribute to the `p-multi-select` component. Thi
 the component and the form, enabling the selected values to be included in the form's data when it's submitted.
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
-<form @submit.prevent="onSubmit">
-  <p-multi-select name="options" label="Some Label" :theme="theme">
-    <p-multi-select-option value="a">Option A</p-multi-select-option>
-    <p-multi-select-option value="b">Option B</p-multi-select-option>
-    <p-multi-select-option value="c">Option C</p-multi-select-option>
-    <p-multi-select-option value="d">Option D</p-multi-select-option>
-    <p-multi-select-option value="e">Option E</p-multi-select-option>
-    <p-multi-select-option value="f">Option F</p-multi-select-option>
-  </p-multi-select>
-  <button type="submit" class="my-1">Submit</button>
-</form>
-  <p-text :theme="theme">{{ selectedValuesForm }}</p-text>
+  <form @submit.prevent="onSubmit">
+    <p-multi-select name="options" label="Some Label" :theme="theme">
+      <p-multi-select-option value="a">Option A</p-multi-select-option>
+      <p-multi-select-option value="b">Option B</p-multi-select-option>
+      <p-multi-select-option value="c">Option C</p-multi-select-option>
+      <p-multi-select-option value="d">Option D</p-multi-select-option>
+      <p-multi-select-option value="e">Option E</p-multi-select-option>
+      <p-multi-select-option value="f">Option F</p-multi-select-option>
+    </p-multi-select>
+    <br>
+    <PlaygroundButton name="Submit" type="submit"></PlaygroundButton>
+    <p-text :theme="theme" style="display: inline-block;">{{ selectedValuesForm }}</p-text>
+  </form>
 </Playground>
 
 ## Controlled
@@ -50,7 +51,7 @@ update event, allowing you to use the updated value. Internally, the value will 
 overwritten by passing in a new value.
 
 <Playground :frameworkMarkup="controlledExample" :config="{ ...config, withoutDemo: true }">
-<p-multi-select name="options" label="Some Label" :theme="theme" class="mb-1" @update="updateControlledExample">
+<p-multi-select name="options" label="Some Label" :theme="theme" @update="updateControlledExample">
   <p-multi-select-option value="a">Option A</p-multi-select-option>
   <p-multi-select-option value="b">Option B</p-multi-select-option>
   <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -58,6 +59,7 @@ overwritten by passing in a new value.
   <p-multi-select-option value="e">Option E</p-multi-select-option>
   <p-multi-select-option value="f">Option F</p-multi-select-option>
 </p-multi-select>
+<br>
 <p-text :theme="theme">{{ selectedValuesControlled }}</p-text>
 </Playground>
 
@@ -68,18 +70,18 @@ choices, but can also be changed manually by using the value property. This prop
 represent the selected option values.
 
 <Playground :frameworkMarkup="dynamicExample" :config="{ ...config, withoutDemo: true }">
-  <label>
-    <p-text :theme="theme">Value</p-text>
-    <input id="input-value" name="input-value" v-model="valueInput" type="text" placeholder="e.g. 1,2" class="my-1" />
-  </label>
-  <br />
-  <button id="btn-input-value" @click="setMultiSelectValue()">Set Value</button>
-  <button id="btn-reset" type="button" @click="valueInput = '', setMultiSelectValue()">Reset value</button>
-  
-  <p-multi-select name="options" label="Some Label" ref="multiSelect" :theme="theme" v-html="getOptions(amountOfOptions)" @update="(e) => valueInput = e.target.value" style="margin: 1rem 0">
+  <PlaygroundInput type="text" placeholder="e.g. 1,2" v-model="valueInput" name="Value"></PlaygroundInput>
+  <br>
+  <br>
+  <PlaygroundButton name="Set Value" @click="setMultiSelectValue()"></PlaygroundButton>
+  <PlaygroundButton name="Reset value" @click="valueInput = '', setMultiSelectValue()"></PlaygroundButton>
+  <br>
+  <br>
+  <p-multi-select name="options" label="Some Label" ref="multiSelect" :theme="theme" v-html="getOptions(amountOfOptions)" @update="(e) => valueInput = e.target.value">
   </p-multi-select> 
-<button type="button" @click="amountOfOptions++">Add option</button>
-  <button type="button" @click="amountOfOptions--">Remove last option</button>
+  <br>
+  <PlaygroundButton name="Add option" @click="amountOfOptions++"></PlaygroundButton>
+  <PlaygroundButton name="Remove last option" @click="amountOfOptions--"></PlaygroundButton>
 </Playground>
 
 <script lang="ts">
@@ -146,20 +148,3 @@ export default class Code extends Vue {
 
 }
 </script>
-
-<style scoped lang="scss">
-  .mb-1 {
-    margin: 0 0 0.5rem 0;
-  }
-
-  .my-1 {
-    margin: 0.5rem 0;
-  }
-
-  button {
-    padding: .5rem 1rem;
-    + button { 
-      margin: 0 0 0 .5rem;
-    }
-  }
-</style>

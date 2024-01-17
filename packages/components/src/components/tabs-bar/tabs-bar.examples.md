@@ -1,4 +1,4 @@
-# Tabs Bar
+<ComponentHeading name="Tabs Bar"></ComponentHeading>
 
 The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router
 to ensure your **window location** updates on tab click, use it for **hash routing** and displaying content accordingly
@@ -75,7 +75,7 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ## Weight
@@ -86,7 +86,7 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 </Notification>
 
 <Playground :markup="weightMarkup" :config="config">
-  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
+  <PlaygroundSelect v-model="weight" :values="weights" name="weight"></PlaygroundSelect>
 </Playground>
 
 ## Gradient color
@@ -100,7 +100,7 @@ background and gradient has to align to your chosen background.
 </Notification>
 
 <Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
-  <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
+  <PlaygroundSelect v-model="gradientColor" :values="gradientColors" name="gradientColor"></PlaygroundSelect>
 </Playground>
 
 <script lang="ts">
@@ -216,13 +216,13 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 
     /* bind tabsBars with activeTabIndex set as attribute */
     const tabsBarsWithActiveIndex = this.$el.querySelectorAll('.playground-tabs-bar .example .demo p-tabs-bar');
-    tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('update', (e: CustomEvent<TabsBarUpdateEvent>)=> {
+    tabsBarsWithActiveIndex.forEach(tabsBar => tabsBar.addEventListener('update', (e: CustomEvent<TabsBarUpdateEventDetail>)=> {
       this.onTabsBarUpdate(e);
       this.updateActiveTabIndex(e.target, e.detail.activeTabIndex);
     }));
   }
 
-  onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEvent>) => {
+  onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEventDetail>) => {
     e.target.activeTabIndex = e.detail.activeTabIndex;
   }
 }

@@ -60,6 +60,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+ref={.*?}/g, '') // ref props
         .replace(/\s+onMouseDown={.*?}/g, '') // onMouseDown props
         .replace(/\s+onClick={.*?}/g, '') // onClick props
+        .replace(/\s+onCancel={.*?}/g, '') // onCancel props
         .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
         .replace(/\s+onPaste={.*?}/g, '') // onPaste props
@@ -182,7 +183,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|footer|sub-footer)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|controls|footer|sub-footer)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -232,7 +233,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           /(getDisplayTagType|getHeadingTagType|getHeadlineTagType|getTextTagType|getHTMLElement|getClosestHTMLElement|getDirectChildHTMLElement)\(this\.props/,
           '$1(null'
         ) // replace non-existing host element with null for display, heading, headline, text, text-list, tag
-        .replace(/TextColor|TextWeight/g, 'any') // text
+        .replace(
+          /Record<\s*(?:TextColor|TextWeight)Deprecated,\s*Exclude<(?:TextColor|TextWeight),\s*(?:TextColor|TextWeight)Deprecated>\s*>/g,
+          'Record<any, any>'
+        ) // text
         .replace(
           /Record<\s*(?:Text|Display|Heading|Headline)AlignDeprecated,\s*Exclude<(?:Text|Display|Heading|Headline)Align,\s*(?:Text|Display|Heading|Headline)AlignDeprecated>\s*>/g,
           'Record<any, any>'
@@ -245,6 +249,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           /Record<\s*CarouselAlignHeaderDeprecated,\s*Exclude<CarouselAlignHeader,\s*CarouselAlignHeaderDeprecated>\s*>/g,
           'Record<any, any>'
         ) // carousel
+        .replace(/Record<\s*IconColorDeprecated,\s*Exclude<IconColor,\s*IconColorDeprecated>\s*>/g, 'Record<any, any>') // icon
         .replace(
           /Record<\s*FlyoutPositionDeprecated,\s*Exclude<FlyoutPosition,\s*FlyoutPositionDeprecated>\s*>/g,
           'Record<any, any>'
@@ -291,8 +296,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-inline-notification') {
         newFileContent = newFileContent.replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
       } else if (tagName === 'p-pagination') {
-        // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
-        newFileContent = newFileContent.replace(/parsedIntl/g, 'this.props.intl');
+        newFileContent = newFileContent
+          // parseJSON got stripped and removed the entire const parsedIntl, but parsing is pointless since we always have an object
+          .replace(/parsedIntl/g, 'this.props.intl')
+          // transform className objects to string
+          .replace(
+            /className=\{(\{[\S\s]+?})}/g,
+            `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
+          );
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')
@@ -303,7 +314,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
           )
           .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
-          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string ''
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
+          .replace(/onScroll=\{hasFooter && this\.props\.onScroll}/, '');
       } else if (tagName === 'p-flyout') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
@@ -518,6 +530,16 @@ $&`
           );
       } else if (tagName === 'p-pin-code') {
         newFileContent = newFileContent.replace(/value={/, 'defaultValue={'); // fix warning about read-only field
+      } else if (tagName === 'p-flyout-navigation') {
+        newFileContent = newFileContent
+          .replace(/validateActiveIdentifier\(.*\);/g, '')
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
+      } else if (tagName === 'p-flyout-navigation-item') {
+        newFileContent = newFileContent
+          .replace(/: Theme/g, ': any')
+          .replace(/this\.props\.theme(?! \|\|)/g, 'this.theme')
+          .replace(/this\.props\.open(?! \|\|)/g, 'this.open')
+          .replace(/(inert=\{this\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
           .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation
@@ -544,6 +566,12 @@ $&`
           ) // rewire source for linkEl
           .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
           .replace(/{this\.props\.children}/, '{manipulatedChildren}'); // apply manipulated children
+      } else if (tagName === 'p-link-tile-product') {
+        // TODO: why is something like this only needed here?
+        newFileContent = newFileContent
+          .replace(/type LinkTileProductAspectRatio,/, '')
+          .replace(/type LinkTileProductLikeEventDetail,/, '')
+          .replace(/type LinkTileProductTarget,/, '');
       }
 
       return newFileContent;

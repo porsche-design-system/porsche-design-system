@@ -1,4 +1,4 @@
-# Radio Button Wrapper
+<ComponentHeading name="Radio Button Wrapper"></ComponentHeading>
 
 The `p-radio-button-wrapper` component is a styling wrapper for the native HTML input type `radio` form element. The
 singular property of a Radio Button makes it distinct from a checkbox, which allows more than one (or no) item to be
@@ -14,7 +14,7 @@ text for screen readers.
 ## Basic examples
 
 <Playground :markup="hideLabelMarkup" :config="config">
-  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
+  <PlaygroundSelect v-model="hideLabel" :values="hideLabels" name="hideLabel"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -57,7 +57,7 @@ The `p-radio-button-wrapper` component supports the visualisation of inline vali
 colored and visible/hidden depending on the defined `state`.
 
 <Playground :markup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
 </Playground>
 
 ---

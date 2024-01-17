@@ -7,6 +7,7 @@ import {
   getIndexTsx,
   getAppTsx,
   applyStackBlitzFixForReact,
+  getIndexHtml,
 } from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
 import type { SharedImportKey, StackBlitzFrameworkOpts, ExternalDependency } from '../../src/utils';
 import * as getReactProjectAndOpenOptionsUtils from '../../src/utils/stackblitz/getReactProjectAndOpenOptions';
@@ -162,6 +163,16 @@ describe('getIndexTsx()', () => {
   });
 });
 
+describe('getIndexHtml()', () => {
+  it('should return correct markup with styles', () => {
+    expect(getIndexHtml('ltr', 'some styles')).toMatchSnapshot();
+  });
+
+  it('should return correct markup with styles and rtl mode', () => {
+    expect(getIndexHtml('rtl', 'some styles')).toMatchSnapshot();
+  });
+});
+
 describe('getDependencies()', () => {
   const expectedDefaultDependencies = {
     react: '0.0.0',
@@ -246,6 +257,7 @@ describe('getReactProjectAndOpenOptions()', () => {
       '@porsche-design-system/components-react/package.json': 'some package.json',
     },
     markup: 'Some markup',
+    dir: 'ltr',
     description: 'Some description',
     title: 'Some title',
     globalStyles: 'body {}',
@@ -290,7 +302,7 @@ describe('getReactProjectAndOpenOptions()', () => {
         ...stackBlitzFrameworkOpts.porscheDesignSystemBundle,
         'App.tsx': mockedAppTsx,
         'index.html': `<!doctype html>
-<html dir="ltr" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System - React</title>
@@ -303,7 +315,7 @@ describe('getReactProjectAndOpenOptions()', () => {
       ${stackBlitzFrameworkOpts.globalStyles}
     </style>
   </head>
-  <body>
+  <body dir="ltr">
     <div id="root"></div>
   </body>
 </html>`,

@@ -1,5 +1,6 @@
 export * from './dom-types';
 export * from './getAttribute';
+export * from './getDirectChildHTMLElementOfKind';
 export * from './getClosestHTMLElement';
 export * from './getDirectChildHTMLElement';
 export * from './getDirectChildHTMLElements';
@@ -9,7 +10,7 @@ export * from './getShadowRootHTMLElement';
 export * from './getSlotTextContent';
 export * from './hasAttribute';
 export * from './hasNamedSlot';
-export * from './hasSpecificSlottedTag';
+export * from './hasSpecificDirectChildTag';
 export * from './isDisabledOrLoading';
 export * from './isParentOfKind';
 export * from './isShadowRootParentOfKind';

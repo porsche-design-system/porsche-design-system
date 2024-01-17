@@ -1,5 +1,6 @@
 import { getButtonStyles, getComponentCss, getFilterStyles, getListStyles } from './select-wrapper-dropdown-styles';
 import { getCss } from '../../../utils';
+import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getButtonStyles()', () => {
   it.each<Parameters<typeof getButtonStyles>>([
@@ -18,7 +19,7 @@ describe('getButtonStyles()', () => {
   ])(
     'should return correct css for direction: %s, isOpen: %s, state: %s and theme: %s',
     (direction, isOpen, state, theme) => {
-      expect(getCss(getButtonStyles(direction, isOpen, state, theme))).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getCss(getButtonStyles(direction, isOpen, state, theme)));
     }
   );
 });
@@ -52,7 +53,7 @@ describe('getFilterStyles()', () => {
   ])(
     'should return correct css for direction: %s, isOpen: %s,  state: %s, disabled: %s and theme: %s',
     (direction, isOpen, state, disabled, theme) => {
-      expect(getCss(getFilterStyles(direction, isOpen, state, disabled, theme))).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getCss(getFilterStyles(direction, isOpen, state, disabled, theme)));
     }
   );
 });
@@ -60,40 +61,38 @@ describe('getFilterStyles()', () => {
 describe('getListStyles()', () => {
   it.each<Parameters<typeof getListStyles>>([
     ['down', 'light'],
-    ['down', 'light'],
-    ['down', 'dark'],
     ['down', 'dark'],
     ['up', 'light'],
-    ['up', 'light'],
     ['up', 'dark'],
-    ['up', 'dark'],
-  ])('should return correct css for direction: %s, isOpen: %s and theme: %s', (direction, theme) => {
-    expect(getCss(getListStyles(direction, theme))).toMatchSnapshot();
+  ])('should return correct css for direction: %s and theme: %s', (direction, theme) => {
+    validateCssAndMatchSnapshot(getCss(getListStyles(direction, theme)));
   });
 });
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['down', true, 'none', false, false, 'light'],
-    ['down', false, 'none', false, false, 'light'],
-    ['down', true, 'none', false, true, 'light'],
-    ['down', false, 'none', false, true, 'light'],
-    ['up', true, 'none', false, false, 'light'],
-    ['up', false, 'none', false, false, 'light'],
-    ['up', true, 'none', false, true, 'light'],
-    ['up', false, 'none', false, true, 'light'],
-    ['down', true, 'none', true, false, 'light'],
-    ['down', false, 'none', true, false, 'light'],
-    ['down', true, 'none', true, true, 'light'],
-    ['down', false, 'none', true, true, 'light'],
-    ['up', true, 'none', true, false, 'light'],
-    ['up', false, 'none', true, false, 'light'],
-    ['up', true, 'none', true, true, 'light'],
-    ['up', false, 'none', true, true, 'light'],
+    ['down', true, 'none', false, false, false, 'light'],
+    ['down', true, 'none', false, false, true, 'light'],
+    ['down', false, 'none', false, false, false, 'light'],
+    ['down', true, 'none', false, true, false, 'light'],
+    ['down', false, 'none', false, true, false, 'light'],
+    ['up', true, 'none', false, false, false, 'light'],
+    ['up', true, 'none', false, false, true, 'light'],
+    ['up', false, 'none', false, false, false, 'light'],
+    ['up', true, 'none', false, true, false, 'light'],
+    ['up', false, 'none', false, true, false, 'light'],
+    ['down', true, 'none', true, false, false, 'light'],
+    ['down', false, 'none', true, false, false, 'light'],
+    ['down', true, 'none', true, true, false, 'light'],
+    ['down', false, 'none', true, true, false, 'light'],
+    ['up', true, 'none', true, false, false, 'light'],
+    ['up', false, 'none', true, false, false, 'light'],
+    ['up', true, 'none', true, true, false, 'light'],
+    ['up', false, 'none', true, true, false, 'light'],
   ])(
-    'should return correct css for direction: %s, isOpen: %s, state: %s, disabled: %s, filter: %s and theme: %s',
+    'should return correct css for direction: %s, isOpen: %s, state: %s, disabled: %s, filter: %s, isNativePopover: %s and theme: %s',
     (...args) => {
-      expect(getComponentCss(...args)).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

@@ -1,4 +1,4 @@
-# Link
+<ComponentHeading name="Link"></ComponentHeading>
 
 The `p-link` component is essential to perform changes in **page routes**. For an optimal user guidance and dedicated
 pursuit of business or sales goals, different types of Links (**Primary** and **Secondary**) are available for usage. A

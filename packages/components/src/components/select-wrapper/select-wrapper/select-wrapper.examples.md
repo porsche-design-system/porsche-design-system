@@ -1,4 +1,4 @@
-# Select Wrapper
+<ComponentHeading name="Select Wrapper"></ComponentHeading>
 
 The `p-select-wrapper` component is a styling wrapper for the native HTML `<select>` form element. To improve
 accessibility on devices with touch support, it defaults to the native user interface behaviour.
@@ -13,7 +13,7 @@ text for screen readers.
 ## Basic example
 
 <Playground :markup="hideLabelMarkup" :config="config">
-  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
+  <PlaygroundSelect v-model="hideLabel" :values="hideLabels" name="hideLabel"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -24,7 +24,7 @@ To ensure the user makes a conscious choice, use `<option></option>` as placehol
 `<option hidden></option>` to enforce a selection.
 
 <Playground :markup="requiredMarkup" :config="config">
-  <SelectOptions v-model="required" :values="requireds" name="required"></SelectOptions>
+  <PlaygroundSelect v-model="required" :values="requireds" name="required"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -48,7 +48,7 @@ first character of the options text.
 ## Dropdown direction
 
 <Playground :markup="dropdownDirectionMarkup" :config="config">
-  <SelectOptions v-model="dropdownDirection" :values="dropdownDirections" name="dropdownDirection"></SelectOptions>
+  <PlaygroundSelect v-model="dropdownDirection" :values="dropdownDirections" name="dropdownDirection"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -86,7 +86,7 @@ changes while this process is performed.
 The `p-select-wrapper` component supports the visualisation of inline validation.
 
 <Playground :markup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -111,6 +111,15 @@ reader users the corresponding information:
 1. Add corresponding `aria-labelledby="some-label-id"` to the `select` element which points to the `label` ID
 1. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `select` element which points to
    both, the `description` ID (if set) and the `message` ID when the (error/success) message appears
+
+---
+
+## Within table
+
+When a `p-select-wrapper` is used within the `p-table` component the dropdown will automatically switch to a native
+popover behavior. This will prevent the dropdown of the `p-select-wrapper` from being cut off when it overlaps with the
+component's scroll container. The `p-select-wrapper` will be automatically closed when the user scrolls within the
+table. Have a look at our [advanced example page](components/table/examples#advanced-table) of `p-table` component.
 
 <script lang="ts">
 import Vue from 'vue';

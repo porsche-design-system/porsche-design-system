@@ -2,7 +2,6 @@ import type { Class, FunctionPropertyNames } from '../../types';
 import { getDeprecatedPropOrSlotWarningMessage } from './helper';
 import { consoleWarn } from './logger';
 
-// TODO: add missing unit test
 export const warnIfDeprecatedPropValueIsUsed = <C extends Class<any>, DeprecatedT extends string, T extends string>(
   instance: InstanceType<C>,
   prop: keyof Omit<InstanceType<C>, 'host' | FunctionPropertyNames<InstanceType<C>>>,

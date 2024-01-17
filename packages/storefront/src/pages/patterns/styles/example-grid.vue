@@ -221,7 +221,7 @@
     .hero-media &,
     .teaser-media &,
     .narrow-content & {
-      margin-left: $pds-spacing-static-small;
+      margin-inline-start: $pds-spacing-static-small;
       margin-top: $pds-spacing-static-small;
     }
   }

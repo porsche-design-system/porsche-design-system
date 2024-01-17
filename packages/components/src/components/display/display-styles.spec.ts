@@ -1,4 +1,5 @@
 import { getComponentCss } from './display-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -23,6 +24,6 @@ describe('getComponentCss()', () => {
       'dark',
     ],
   ])('should return correct css for size: %j, align: %s, color: %s, ellipsis: %o and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

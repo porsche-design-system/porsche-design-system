@@ -50,66 +50,71 @@ exports[`accessibility should expose correct accessibility tree if rendered with
     {
       "children": [
         {
-          "name": "Some optgroup label 1",
-          "role": "StaticText",
-        },
-        {
           "children": [
             {
-              "name": "Option A",
+              "name": "Some optgroup label 1",
               "role": "StaticText",
             },
             {
               "children": [
                 {
+                  "name": "Option A",
+                  "role": "StaticText",
+                },
+                {
+                  "children": [
+                    {
+                      "role": "none",
+                    },
+                  ],
                   "role": "none",
                 },
               ],
-              "role": "none",
-            },
-          ],
-          "name": "Option A",
-          "role": "option",
-          "selected": true,
-        },
-        {
-          "children": [
-            {
-              "name": "Option B",
-              "role": "StaticText",
-            },
-          ],
-          "name": "Option B",
-          "role": "option",
-        },
-        {
-          "name": "Some optgroup label 1",
-          "role": "StaticText",
-        },
-        {
-          "children": [
-            {
               "name": "Option A",
-              "role": "StaticText",
+              "role": "option",
+              "selected": true,
             },
-          ],
-          "name": "Option A",
-          "role": "option",
-        },
-        {
-          "children": [
             {
+              "children": [
+                {
+                  "name": "Option B",
+                  "role": "StaticText",
+                },
+              ],
               "name": "Option B",
+              "role": "option",
+            },
+            {
+              "name": "Some optgroup label 1",
               "role": "StaticText",
             },
+            {
+              "children": [
+                {
+                  "name": "Option A",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Option A",
+              "role": "option",
+            },
+            {
+              "children": [
+                {
+                  "name": "Option B",
+                  "role": "StaticText",
+                },
+              ],
+              "name": "Option B",
+              "role": "option",
+            },
           ],
-          "name": "Option B",
-          "role": "option",
+          "name": "Some label",
+          "orientation": "vertical",
+          "role": "listbox",
         },
       ],
-      "name": "Some label",
-      "orientation": "vertical",
-      "role": "listbox",
+      "role": "none",
     },
   ],
   "name": "",
@@ -240,47 +245,52 @@ exports[`accessibility should expose correct initial accessibility tree in open 
         {
           "children": [
             {
+              "children": [
+                {
+                  "name": "Option A",
+                  "role": "StaticText",
+                },
+                {
+                  "children": [
+                    {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
               "name": "Option A",
-              "role": "StaticText",
+              "role": "option",
+              "selected": true,
             },
             {
               "children": [
                 {
-                  "role": "none",
+                  "name": "Option B",
+                  "role": "StaticText",
                 },
               ],
-              "role": "none",
-            },
-          ],
-          "name": "Option A",
-          "role": "option",
-          "selected": true,
-        },
-        {
-          "children": [
-            {
+              "disabled": true,
               "name": "Option B",
-              "role": "StaticText",
+              "role": "option",
             },
-          ],
-          "disabled": true,
-          "name": "Option B",
-          "role": "option",
-        },
-        {
-          "children": [
             {
+              "children": [
+                {
+                  "name": "Option C",
+                  "role": "StaticText",
+                },
+              ],
               "name": "Option C",
-              "role": "StaticText",
+              "role": "option",
             },
           ],
-          "name": "Option C",
-          "role": "option",
+          "name": "Some label",
+          "orientation": "vertical",
+          "role": "listbox",
         },
       ],
-      "name": "Some label",
-      "orientation": "vertical",
-      "role": "listbox",
+      "role": "none",
     },
   ],
   "name": "",

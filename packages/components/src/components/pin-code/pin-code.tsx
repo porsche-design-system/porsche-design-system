@@ -1,10 +1,11 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEvent } from './pin-code-utils';
+import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from './pin-code-utils';
 import {
   getConcatenatedInputValues,
   getSanitisedValue,
   initHiddenInput,
+  isCurrentInput,
   isFormSubmittable,
   isInputSingleDigit,
   PIN_CODE_LENGTHS,
@@ -91,7 +92,7 @@ export class PinCode {
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when selected element changes. */
-  @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEventDetail>;
 
   private form: HTMLFormElement;
   private isWithinForm: boolean;
@@ -153,7 +154,7 @@ export class PinCode {
           {Array.from(Array(this.length), (_, index) => (
             <input
               key={index}
-              id={index === this.value.length ? currentInputId : null}
+              {...(isCurrentInput(index, this.value, this.length) && { id: currentInputId })}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby={`${labelId} ${descriptionId} ${messageId}`}

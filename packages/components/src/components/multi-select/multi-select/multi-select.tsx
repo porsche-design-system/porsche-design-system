@@ -9,7 +9,7 @@ import {
   hasFilterOptionResults,
   initNativeSelect,
   type MultiSelectOption,
-  type MultiSelectUpdateEvent,
+  type MultiSelectUpdateEventDetail,
   resetFilteredOptions,
   resetHighlightedOptions,
   resetSelectedOptions,
@@ -113,7 +113,7 @@ export class MultiSelect {
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the selection is changed. */
-  @Event({ bubbles: false }) public update: EventEmitter<MultiSelectUpdateEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<MultiSelectUpdateEventDetail>;
 
   @State() private isOpen = false;
   @State() private srHighlightedOptionText = '';

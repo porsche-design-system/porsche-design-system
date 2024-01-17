@@ -1,10 +1,9 @@
 <script setup lang="ts">
-  import type { TabsBarUpdateEvent } from '@porsche-design-system/components-vue';
-  import { PTabsBar } from '@porsche-design-system/components-vue';
+  import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const tabIndex = ref<number>(0);
-  const onUpdate = (e: TabsBarUpdateEvent): void => {
+  const onUpdate = (e: TabsBarUpdateEventDetail): void => {
     tabIndex.value = e.activeTabIndex;
   };
 </script>

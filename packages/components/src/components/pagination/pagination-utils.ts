@@ -8,9 +8,13 @@
  * https://github.com/ultimate-pagination/ultimate-pagination
  */
 
+/** @deprecated */
 export const PAGINATION_NUMBER_OF_PAGE_LINKS = [5, 7] as const;
+/** @deprecated */
 export type PaginationMaxNumberOfPageLinks = (typeof PAGINATION_NUMBER_OF_PAGE_LINKS)[number];
+/** @deprecated */
 export type PaginationUpdateEvent = { page: number; previousPage: number };
+export type PaginationUpdateEventDetail = PaginationUpdateEvent;
 
 // TODO: first and last wording similar to carousel?
 export type PaginationInternationalization = Partial<Record<'root' | 'prev' | 'next' | 'page', string>> | string; // string to support attribute, gets removed via InputParser
@@ -18,13 +22,16 @@ export type PaginationInternationalization = Partial<Record<'root' | 'prev' | 'n
 export type PaginationOptions = {
   activePage: number;
   pageTotal: number;
-  pageRange: number;
   showLastPage: boolean;
 };
 
 export type PaginationItem = {
   value?: number; // relevant for clickable elements
   isActive: boolean; // affects aria-disabled and aria-current
+  isBeforeCurrent?: boolean;
+  isBeforeBeforeCurrent?: boolean;
+  isAfterCurrent?: boolean;
+  isAfterAfterCurrent?: boolean;
   type: ItemType;
 };
 
@@ -60,65 +67,78 @@ const createNextPageLink = (options: PaginationOptions): PaginationItem => {
   };
 };
 
-const createPageFunctionFactory = (options: PaginationOptions): ((pageNumber: number) => PaginationItem) => {
+const createPageFunctionFactory = ({ activePage }: PaginationOptions): ((pageNumber: number) => PaginationItem) => {
   return (pageNumber): PaginationItem => ({
     type: ItemType.PAGE,
     value: pageNumber,
-    isActive: pageNumber === options.activePage,
+    isActive: pageNumber === activePage,
+    isBeforeCurrent: pageNumber === activePage - 1,
+    isBeforeBeforeCurrent: pageNumber === activePage - 2,
+    isAfterCurrent: pageNumber === activePage + 1,
+    isAfterAfterCurrent: pageNumber === activePage + 2,
   });
 };
 
 export const createRange = (start: number, end: number): number[] =>
   Array.from(Array(end - start + 1), (_, i) => i + start);
 
-export const createPaginationModel = (options: PaginationOptions): PaginationItem[] => {
-  const { pageTotal, activePage, pageRange, showLastPage } = options;
+export const createPaginationItems = (options: PaginationOptions): PaginationItem[] => {
+  const { pageTotal, activePage, showLastPage } = options;
 
+  const pageRange = 1;
   const boundaryPagesRange = 1;
   const ellipsisSize = 1;
-  const paginationModel: PaginationItem[] = [createPreviousPageLink(options)];
+  const paginationItems: PaginationItem[] = [createPreviousPageLink(options)];
   const createPage = createPageFunctionFactory(options);
 
   // Simplify generation of pages if number of available items is equal or greater than total pages to show
-  if (1 + 2 * ellipsisSize + 2 * pageRange + 2 * boundaryPagesRange >= pageTotal) {
+  if (1 + 2 * ellipsisSize + 2 * boundaryPagesRange >= pageTotal) {
     const allPages = createRange(1, pageTotal).map(createPage);
-    paginationModel.push(...allPages);
+    paginationItems.push(...allPages);
   } else {
     // Add first page
-    paginationModel.push(createPage(1));
+    paginationItems.push(createPage(1));
 
     // Calculate group of middle pages
     const middlePagesStart = Math.min(
       Math.max(activePage - pageRange, 2 + ellipsisSize),
-      pageTotal - ellipsisSize - 2 * pageRange - (showLastPage ? 1 : 0)
+      pageTotal - ellipsisSize - 2 - (showLastPage ? 1 : 0)
     );
-    const middlePagesEnd = middlePagesStart + 2 * pageRange;
+    const middlePagesEnd = middlePagesStart + 2;
     const middlePages = createRange(middlePagesStart, middlePagesEnd).map(createPage);
 
     // Calculate and add ellipsis before group of middle pages
     const firstEllipsisPageNumber = middlePagesStart - 1;
     const showPageInsteadOfFirstEllipsis = firstEllipsisPageNumber === 2;
     const firstEllipsisOrPage = showPageInsteadOfFirstEllipsis ? createPage(firstEllipsisPageNumber) : ellipsisItem;
-    paginationModel.push(firstEllipsisOrPage);
+
+    if (showPageInsteadOfFirstEllipsis && pageTotal > 5) {
+      paginationItems.push(ellipsisItem);
+    }
+
+    paginationItems.push(firstEllipsisOrPage);
 
     // Add group of middle pages
-    paginationModel.push(...middlePages);
+    paginationItems.push(...middlePages);
 
     // Calculate and add ellipsis after group of middle pages
     const lastEllipsisPageNumber = middlePagesEnd + 1;
     const showPageInsteadOfLastEllipsis = lastEllipsisPageNumber === pageTotal - (showLastPage ? 1 : 0);
     const lastEllipsisOrPage = showPageInsteadOfLastEllipsis ? createPage(lastEllipsisPageNumber) : ellipsisItem;
-    paginationModel.push(lastEllipsisOrPage);
+    paginationItems.push(lastEllipsisOrPage);
+
+    if (showPageInsteadOfLastEllipsis && pageTotal > 5) {
+      paginationItems.push(ellipsisItem);
+    }
 
     // Add last page
     if (showLastPage) {
-      paginationModel.push(createPage(pageTotal));
+      paginationItems.push(createPage(pageTotal));
     }
   }
 
-  paginationModel.push(createNextPageLink(options));
-
-  return paginationModel;
+  paginationItems.push(createNextPageLink(options));
+  return paginationItems;
 };
 
 export const getCurrentActivePage = (activePage: number, totalPages: number): number => {
@@ -145,10 +165,4 @@ export const getTotalPages = (totalItemsCount: number, itemsPerPage: number): nu
   }
 
   return Math.ceil(totalItemsCount / itemsPerPage);
-};
-
-// TODO: change this to a non js solution to support SSR
-export const getCounterResetValue = (element: Element): PaginationMaxNumberOfPageLinks => {
-  const [, value] = getComputedStyle(element).counterReset.split(' ');
-  return parseInt(value, 10) as PaginationMaxNumberOfPageLinks;
 };

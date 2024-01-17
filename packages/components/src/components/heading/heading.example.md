@@ -1,4 +1,4 @@
-# Heading
+<ComponentHeading name="Heading"></ComponentHeading>
 
 `p-heading` is used to highlight and specify heading styling and hierarchy in documents.
 
@@ -18,7 +18,7 @@ There are predefined fluid text sizes for the component which should cover most 
 needed, the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ### Responsive
@@ -40,7 +40,7 @@ To provide more contextual HTML semantics you can either pass them with the `tag
 Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
 <Playground :markup="colorMarkup" :config="config">
-  <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
+  <PlaygroundSelect v-model="color" :values="colors" name="color"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -52,7 +52,7 @@ Predefined colors associated with its theme are available but also inherit mode 
 </Notification>
 
 <Playground :markup="alignMarkup" :config="config">
-  <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
+  <PlaygroundSelect v-model="align" :values="aligns" name="align"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -67,8 +67,9 @@ end are used to visualize it.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { HEADING_SIZES, HEADING_COLORS } from './heading-utils';
+import { HEADING_COLORS } from './heading-utils';
 import { TYPOGRAPHY_ALIGNS, TYPOGRAPHY_ALIGNS_DEPRECATED } from '../../utils';
+import { HEADING_SIZES } from '../../utils/typography/heading-size';
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
 

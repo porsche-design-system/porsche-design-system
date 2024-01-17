@@ -1,4 +1,4 @@
-# Content Wrapper
+<ComponentHeading name="Content Wrapper"></ComponentHeading>
 
 The `p-content-wrapper` defines the outer spacings between the content area and the left and right screen sides, as well
 as centering its content and setting a max-width.
@@ -20,7 +20,7 @@ as centering its content and setting a max-width.
 ## Width
 
 <Playground :markup="widthMarkup" :config="config">
-  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
+  <PlaygroundSelect v-model="width" :values="widths" name="width"></PlaygroundSelect>
 </Playground>
 
 ## Background color
@@ -30,7 +30,7 @@ as centering its content and setting a max-width.
 </Notification>
 
 <Playground :markup="backgroundColorMarkup" class="playground-content-wrapper-background-color" :config="config">
-  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
+  <PlaygroundSelect v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></PlaygroundSelect>
 </Playground>
 
 <script lang="ts">

@@ -68,8 +68,6 @@ exports[`should have no basic DOM regression for p-button-tile 1`] = `
 
 exports[`should have no basic DOM regression for p-carousel 1`] = `
 "<div class="header">
-  <slot name="heading">
-  </slot>
   <div class="nav">
   </div>
 </div>
@@ -100,11 +98,13 @@ exports[`should have no basic DOM regression for p-content-wrapper 1`] = `
 `;
 
 exports[`should have no basic DOM regression for p-crest 1`] = `
-"<picture>
-  <source srcset="http://localhost:3001/crest/porsche-crest.min.0d0cc89ae5ee57c4c15bd0dbbcbfe5d0@1x.webp 1x,http://localhost:3001/crest/porsche-crest.min.2245c45e99be5a46b4b56e73c43d5c63@2x.webp 2x,http://localhost:3001/crest/porsche-crest.min.19b429278b158b5cb5aa6ce80751e3fe@3x.webp 3x" type="image/webp">
-  <source srcset="http://localhost:3001/crest/porsche-crest.min.d76137cf8cf94822b7aedb534ba88418@1x.png 1x,http://localhost:3001/crest/porsche-crest.min.8a292fbd35a5155789ddd011585e05c4@2x.png 2x,http://localhost:3001/crest/porsche-crest.min.18d6f02003b0829bac939fade88fd4e6@3x.png 3x" type="image/png">
-  <img src="http://localhost:3001/crest/porsche-crest.min.8a292fbd35a5155789ddd011585e05c4@2x.png" width="30" height="40" alt="Porsche">
-</picture>"
+"<a href="value" target="_self">
+  <picture>
+    <source srcset="http://localhost:3001/crest/porsche-crest.min.0d0cc89ae5ee57c4c15bd0dbbcbfe5d0@1x.webp 1x,http://localhost:3001/crest/porsche-crest.min.2245c45e99be5a46b4b56e73c43d5c63@2x.webp 2x,http://localhost:3001/crest/porsche-crest.min.19b429278b158b5cb5aa6ce80751e3fe@3x.webp 3x" type="image/webp">
+    <source srcset="http://localhost:3001/crest/porsche-crest.min.d76137cf8cf94822b7aedb534ba88418@1x.png 1x,http://localhost:3001/crest/porsche-crest.min.8a292fbd35a5155789ddd011585e05c4@2x.png 2x,http://localhost:3001/crest/porsche-crest.min.18d6f02003b0829bac939fade88fd4e6@3x.png 3x" type="image/png">
+    <img src="http://localhost:3001/crest/porsche-crest.min.8a292fbd35a5155789ddd011585e05c4@2x.png" width="30" height="40" alt="Porsche">
+  </picture>
+</a>"
 `;
 
 exports[`should have no basic DOM regression for p-display 1`] = `
@@ -153,6 +153,38 @@ exports[`should have no basic DOM regression for p-flyout 1`] = `
 </div>"
 `;
 
+exports[`should have no basic DOM regression for p-flyout-navigation 1`] = `
+"<dialog inert="" tabindex="-1">
+  <div class="header">
+    <p-button-pure class="dismiss hydrated">
+      Dismiss flyout</p-button-pure>
+  </div>
+  <div class="scroller">
+    <nav class="content">
+      <slot>
+      </slot>
+    </nav>
+  </div>
+</dialog>"
+`;
+
+exports[`should have no basic DOM regression for p-flyout-navigation-item 1`] = `
+"<p-button-pure class="button hydrated">
+</p-button-pure>
+<div class="scroller" inert="">
+  <div class="header">
+    <p-button-pure class="back hydrated">
+      Back</p-button-pure>
+    <h2 class="heading">
+    </h2>
+  </div>
+  <div class="content">
+    <slot>
+    </slot>
+  </div>
+</div>"
+`;
+
 exports[`should have no basic DOM regression for p-grid 1`] = `
 "<slot>
 </slot>"
@@ -177,7 +209,7 @@ exports[`should have no basic DOM regression for p-headline 1`] = `
 </h1>"
 `;
 
-exports[`should have no basic DOM regression for p-icon 1`] = `"<img src="http://localhost:3001/icons/arrow-right.min.8fb7b42d2d08d60f918602aa28475c0b.svg" width="24" height="24" loading="lazy" alt="">"`;
+exports[`should have no basic DOM regression for p-icon 1`] = `"<img src="http://localhost:3001/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg" width="24" height="24" loading="lazy" alt="">"`;
 
 exports[`should have no basic DOM regression for p-inline-notification 1`] = `
 "<p-icon class="icon hydrated" aria-hidden="true">
@@ -265,25 +297,54 @@ exports[`should have no basic DOM regression for p-link-tile-model-signature 1`]
 </div>"
 `;
 
+exports[`should have no basic DOM regression for p-link-tile-product 1`] = `
+"<div class="root">
+  <a class="anchor" href="value" target="_self" aria-labelledby="heading price" aria-describedby="header description">
+  </a>
+  <div id="header" class="header">
+    <slot name="header">
+    </slot>
+    <p-button-pure class="button hydrated">
+      Add to wishlist</p-button-pure>
+  </div>
+  <div class="image">
+    <slot>
+    </slot>
+  </div>
+  <div class="wrapper">
+    <h3 id="heading" class="heading">
+      value</h3>
+    <p id="price" class="price">
+      value</p>
+    <p id="description" class="description">
+    </p>
+  </div>
+</div>"
+`;
+
 exports[`should have no basic DOM regression for p-marque 1`] = `
-"<picture>
-  <source srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.min.5c6af9aa7946fea34f60c8f8c95d0188@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.fff6e9b91481cc5b1fc6c9b62987ccaf@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.f67092ff6b5f4ecb4add73d6ae153db0@3x.webp 3x" media="(min-width: 1300px)" type="image/webp">
-  <source srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.min.da075315857e239ff46bf4c150648ff0@1x.png 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.824818d15eaf445f50e0a2391613f214@3x.png 3x" media="(min-width: 1300px)" type="image/png">
-  <source srcset="http://localhost:3001/marque/porsche-marque-trademark.small.min.783639706bead66b2d56e3b8b64bd61f@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.small.min.760a57efa93d4e7e16e26128ec7ead46@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.small.min.1726036a7829347e1e24d1eb54fc0d64@3x.webp 3x" type="image/webp">
-  <source srcset="http://localhost:3001/marque/porsche-marque-trademark.small.min.020244b41a29323e2a7932a264514cdf@1x.png 1x,http://localhost:3001/marque/porsche-marque-trademark.small.min.92184fae44511ceda8320443c17110b1@2x.png 2x,http://localhost:3001/marque/porsche-marque-trademark.small.min.fd545cea4298f5d797246d5805711646@3x.png 3x" type="image/png">
-  <img src="http://localhost:3001/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png" alt="Porsche">
-</picture>"
+"<a href="value" target="_self">
+  <picture>
+    <source srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.min.5c6af9aa7946fea34f60c8f8c95d0188@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.fff6e9b91481cc5b1fc6c9b62987ccaf@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.f67092ff6b5f4ecb4add73d6ae153db0@3x.webp 3x" media="(min-width: 1300px)" type="image/webp">
+    <source srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.min.da075315857e239ff46bf4c150648ff0@1x.png 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.824818d15eaf445f50e0a2391613f214@3x.png 3x" media="(min-width: 1300px)" type="image/png">
+    <source srcset="http://localhost:3001/marque/porsche-marque-trademark.small.min.783639706bead66b2d56e3b8b64bd61f@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.small.min.760a57efa93d4e7e16e26128ec7ead46@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.small.min.1726036a7829347e1e24d1eb54fc0d64@3x.webp 3x" type="image/webp">
+    <source srcset="http://localhost:3001/marque/porsche-marque-trademark.small.min.020244b41a29323e2a7932a264514cdf@1x.png 1x,http://localhost:3001/marque/porsche-marque-trademark.small.min.92184fae44511ceda8320443c17110b1@2x.png 2x,http://localhost:3001/marque/porsche-marque-trademark.small.min.fd545cea4298f5d797246d5805711646@3x.png 3x" type="image/png">
+    <img src="http://localhost:3001/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png" alt="Porsche">
+  </picture>
+</a>"
 `;
 
 exports[`should have no basic DOM regression for p-modal 1`] = `
-"<div class="root" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1" inert="">
-  <div class="controls">
-    <p-button-pure class="dismiss hydrated">
-      Dismiss modal</p-button-pure>
-  </div>
-  <div class="content">
-    <slot>
-    </slot>
+"<div class="scroll-container">
+  <div class="root" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1" inert="">
+    <div class="controls">
+      <p-button-pure class="dismiss hydrated">
+        Dismiss modal</p-button-pure>
+    </div>
+    <div class="content">
+      <slot>
+      </slot>
+    </div>
   </div>
 </div>"
 `;
@@ -321,17 +382,17 @@ exports[`should have no basic DOM regression for p-multi-select-option 1`] = `
 exports[`should have no basic DOM regression for p-pagination 1`] = `
 "<nav role="navigation" aria-label="Pagination">
   <ul>
-    <li>
+    <li class="prev">
       <span role="button" aria-label="Previous page" aria-disabled="true">
         <p-icon aria-hidden="true" class="hydrated">
         </p-icon>
       </span>
     </li>
-    <li>
+    <li class="current">
       <span role="button" tabindex="0" aria-label="Page 1" aria-current="page">
         1</span>
     </li>
-    <li>
+    <li class="next">
       <span role="button" aria-label="Next page" aria-disabled="true">
         <p-icon aria-hidden="true" class="hydrated">
         </p-icon>
@@ -598,10 +659,12 @@ exports[`should have no basic DOM regression for p-textarea-wrapper 1`] = `
 exports[`should have no basic DOM regression for p-toast 1`] = `""`;
 
 exports[`should have no basic DOM regression for p-wordmark 1`] = `
-"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 300">
-  <title>
-    Porsche</title>
-  <path d="M502 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h434zm6-143v65c0 7.8-4.2 12-12 12H68V66h428c7.8 0 12 4.2 12 12zm228 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h417c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H736zm411-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H742c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h405zm675-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-361v79h-68V0h502c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-428v89h428zm162-81c0-48.1 25.9-74 74-74h492v56h-486c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h422c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-492v-56h486c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-422c-48.1 0-74-25.9-74-74V74zm661 0c0-48.1 25.9-74 74-74h480v66h-474c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h474v66h-480c-48.1 0-74-25.9-74-74V74zM3817 0v300h-68V183h-407v117h-68V0h68v117h407V0h68zm156 56v66h527v56h-527v66h527v56h-595V0h595v56h-527z">
-  </path>
-</svg>"
+"<a href="value" target="_self">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 300">
+    <title>
+      Porsche</title>
+    <path d="M502 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h434zm6-143v65c0 7.8-4.2 12-12 12H68V66h428c7.8 0 12 4.2 12 12zm228 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h417c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H736zm411-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H742c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h405zm675-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-361v79h-68V0h502c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-428v89h428zm162-81c0-48.1 25.9-74 74-74h492v56h-486c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h422c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-492v-56h486c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-422c-48.1 0-74-25.9-74-74V74zm661 0c0-48.1 25.9-74 74-74h480v66h-474c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h474v66h-480c-48.1 0-74-25.9-74-74V74zM3817 0v300h-68V183h-407v117h-68V0h68v117h407V0h68zm156 56v66h527v56h-527v66h527v56h-595V0h595v56h-527z">
+    </path>
+  </svg>
+</a>"
 `;

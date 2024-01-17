@@ -18,14 +18,12 @@ import {
   getMediaQueryMin,
   gridExtendedOffsetBase,
   headingLargeStyle,
-  motionDurationShort,
 } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable } from '../../types';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  cssVariableTransitionDuration,
-  getFrostedGlassBackgroundJssStyles,
+  getBackdropJssStyle,
   getInsetJssStyle,
   getThemedColors,
   getTransition,
@@ -112,27 +110,12 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
+        overflowY: 'auto', // overrideable
         ...addImportantToEachRule({
-          position: 'fixed',
-          ...getInsetJssStyle(),
-          zIndex: MODAL_Z_INDEX,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-          ...(isOpen
-            ? {
-                visibility: 'inherit',
-              }
-            : {
-                visibility: 'hidden',
-                transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationShort})`,
-              }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...getFrostedGlassBackgroundJssStyles(isOpen, duration, theme),
+          ...getBackdropJssStyle(isOpen, MODAL_Z_INDEX, theme, duration),
         }),
-        overflowY: 'auto', // overrideable
       },
       '::slotted': addImportantToEachRule(
         mergeDeep(
@@ -157,6 +140,15 @@ export const getComponentCss = (
           color: primaryColorDark,
         }),
       },
+    },
+    'scroll-container': {
+      display: 'flex',
+      ...getInsetJssStyle(),
+      height: '100%',
+      overflowY: 'inherit',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
     },
     root: mergeDeep(
       {
@@ -238,6 +230,7 @@ export const getComponentCss = (
         left: '8px',
         display: 'flex',
         justifyContent: 'flex-end',
+        zIndex: 1, // To assure controls are on top when using stretchToFullModalWidthClassName and transformed slotted content
       },
       dismiss: {
         border: `2px solid ${backgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).

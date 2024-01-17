@@ -7,7 +7,7 @@ const baseHrefCn = 'https:\\/\\/cdn\\.ui\\.porsche.cn\\/porsche-design-system\\/
 
 describe('validation', () => {
   it('should throw error on invalid font weights option', () => {
-    expect(() => getFontLinks({ weights: (['some-invalid-weight'] as any[]) })).toThrowErrorMatchingInlineSnapshot(`
+    expect(() => getFontLinks({ weights: ['some-invalid-weight'] as any[] })).toThrowErrorMatchingInlineSnapshot(`
 "[Porsche Design System] The following supplied font weights are invalid:
   some-invalid-weight
 
@@ -17,12 +17,12 @@ Please use only valid font weights:
   });
 
   it('should throw error on invalid font subset option', () => {
-    expect(() => getFontLinks({ subset: ('some-invalid-subset' as any) })).toThrowErrorMatchingInlineSnapshot(`
+    expect(() => getFontLinks({ subset: 'some-invalid-subset' as any })).toThrowErrorMatchingInlineSnapshot(`
 "[Porsche Design System] The following supplied font subset is invalid:
   some-invalid-subset
 
 Please use only valid font subset:
-  latin, greek, cyril"
+  latin, greek, cyril, arabic, pashto, urdu"
 `);
   });
 });
@@ -107,6 +107,63 @@ describe('format: html', () => {
     });
   });
 
+  describe('subset arabic', () => {
+    const regularRegex = new RegExp(
+      `^<link rel=preload href=${baseHrefCom}/porsche-next-w-ar-regular\\.min\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
+    );
+    const semiBoldRegex = new RegExp(`^$`); // we only have regular and bold
+    const boldRegex = new RegExp(
+      `^<link rel=preload href=${baseHrefCom}/porsche-next-w-ar-bold\\.min\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
+    );
+
+    it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
+      [{ subset: 'arabic', weights: ['regular'] }, regularRegex],
+      [{ subset: 'arabic', weights: ['semi-bold'] }, semiBoldRegex],
+      [{ subset: 'arabic', weights: ['bold'] }, boldRegex],
+    ])('should match regex for %j', (parameters, regex) => {
+      const result = getFontLinks(parameters);
+      expect(result).toMatch(regex);
+    });
+  });
+
+  describe('subset pashto', () => {
+    const regularRegex = new RegExp(
+      `^<link rel=preload href=${baseHrefCom}/porsche-next-w-pa-regular\\.min\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
+    );
+    const semiBoldRegex = new RegExp(`^$`); // we only have regular and bold
+    const boldRegex = new RegExp(
+      `^<link rel=preload href=${baseHrefCom}/porsche-next-w-pa-bold\\.min\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
+    );
+
+    it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
+      [{ subset: 'pashto', weights: ['regular'] }, regularRegex],
+      [{ subset: 'pashto', weights: ['semi-bold'] }, semiBoldRegex],
+      [{ subset: 'pashto', weights: ['bold'] }, boldRegex],
+    ])('should match regex for %j', (parameters, regex) => {
+      const result = getFontLinks(parameters);
+      expect(result).toMatch(regex);
+    });
+  });
+
+  describe('subset urdu', () => {
+    const regularRegex = new RegExp(
+      `^<link rel=preload href=${baseHrefCom}/porsche-next-w-ur-regular\\.min\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
+    );
+    const semiBoldRegex = new RegExp(`^$`); // we only have regular and bold
+    const boldRegex = new RegExp(
+      `^<link rel=preload href=${baseHrefCom}/porsche-next-w-ur-bold\\.min\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
+    );
+
+    it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
+      [{ subset: 'urdu', weights: ['regular'] }, regularRegex],
+      [{ subset: 'urdu', weights: ['semi-bold'] }, semiBoldRegex],
+      [{ subset: 'urdu', weights: ['bold'] }, boldRegex],
+    ])('should match regex for %j', (parameters, regex) => {
+      const result = getFontLinks(parameters);
+      expect(result).toMatch(regex);
+    });
+  });
+
   it('should return multiple links', () => {
     const result = getFontLinks({ weights: ['regular', 'semi-bold'] });
     const regex = new RegExp(
@@ -182,6 +239,63 @@ describe('format: jsx', () => {
       [{ format: 'jsx', subset: 'cyril', weights: ['regular'] }, regularRegex],
       [{ format: 'jsx', subset: 'cyril', weights: ['semi-bold'] }, semiBoldRegex],
       [{ format: 'jsx', subset: 'cyril', weights: ['bold'] }, boldRegex],
+    ])('should match regex for %j', (parameters, regex) => {
+      const result = getFontLinks(parameters) as unknown as JSX.Element;
+      expect(renderToString(result)).toMatch(regex);
+    });
+  });
+
+  describe('subset arabic', () => {
+    const regularRegex = new RegExp(
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-ar-regular\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin=""/>$`
+    );
+    const semiBoldRegex = new RegExp(`^$`); // we only have regular and bold
+    const boldRegex = new RegExp(
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-ar-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin=""/>$`
+    );
+
+    it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
+      [{ format: 'jsx', subset: 'arabic', weights: ['regular'] }, regularRegex],
+      [{ format: 'jsx', subset: 'arabic', weights: ['semi-bold'] }, semiBoldRegex],
+      [{ format: 'jsx', subset: 'arabic', weights: ['bold'] }, boldRegex],
+    ])('should match regex for %j', (parameters, regex) => {
+      const result = getFontLinks(parameters) as unknown as JSX.Element;
+      expect(renderToString(result)).toMatch(regex);
+    });
+  });
+
+  describe('subset pashto', () => {
+    const regularRegex = new RegExp(
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-pa-regular\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin=""/>$`
+    );
+    const semiBoldRegex = new RegExp(`^$`); // we only have regular and bold
+    const boldRegex = new RegExp(
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-pa-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin=""/>$`
+    );
+
+    it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
+      [{ format: 'jsx', subset: 'pashto', weights: ['regular'] }, regularRegex],
+      [{ format: 'jsx', subset: 'pashto', weights: ['semi-bold'] }, semiBoldRegex],
+      [{ format: 'jsx', subset: 'pashto', weights: ['bold'] }, boldRegex],
+    ])('should match regex for %j', (parameters, regex) => {
+      const result = getFontLinks(parameters) as unknown as JSX.Element;
+      expect(renderToString(result)).toMatch(regex);
+    });
+  });
+
+  describe('subset urdu', () => {
+    const regularRegex = new RegExp(
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-ur-regular\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin=""/>$`
+    );
+    const semiBoldRegex = new RegExp(`^$`); // we only have regular and bold
+    const boldRegex = new RegExp(
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-w-ur-bold\\.min\\.[a-z0-9]{32}\\.woff2" as="font" type="font/woff2" crossorigin=""/>$`
+    );
+
+    it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
+      [{ format: 'jsx', subset: 'urdu', weights: ['regular'] }, regularRegex],
+      [{ format: 'jsx', subset: 'urdu', weights: ['semi-bold'] }, semiBoldRegex],
+      [{ format: 'jsx', subset: 'urdu', weights: ['bold'] }, boldRegex],
     ])('should match regex for %j', (parameters, regex) => {
       const result = getFontLinks(parameters) as unknown as JSX.Element;
       expect(renderToString(result)).toMatch(regex);

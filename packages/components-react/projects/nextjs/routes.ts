@@ -68,6 +68,110 @@ const generatedRoutes = {
     "path": "/flyout",
     "name": "Flyout"
   },
+  "flyoutBasic": {
+    "path": "/flyout-basic",
+    "name": "FlyoutBasic"
+  },
+  "flyoutFooter": {
+    "path": "/flyout-footer",
+    "name": "FlyoutFooter"
+  },
+  "flyoutFooterScrollableContent": {
+    "path": "/flyout-footer-scrollable-content",
+    "name": "FlyoutFooterScrollableContent"
+  },
+  "flyoutHeader": {
+    "path": "/flyout-header",
+    "name": "FlyoutHeader"
+  },
+  "flyoutHeaderFooter": {
+    "path": "/flyout-header-footer",
+    "name": "FlyoutHeaderFooter"
+  },
+  "flyoutHeaderFooterScrollableContent": {
+    "path": "/flyout-header-footer-scrollable-content",
+    "name": "FlyoutHeaderFooterScrollableContent"
+  },
+  "flyoutHeaderFooterScrolled": {
+    "path": "/flyout-header-footer-scrolled",
+    "name": "FlyoutHeaderFooterScrolled"
+  },
+  "flyoutHeaderFooterScrolledRelative": {
+    "path": "/flyout-header-footer-scrolled-relative",
+    "name": "FlyoutHeaderFooterScrolledRelative"
+  },
+  "flyoutHeaderFooterSubfooter": {
+    "path": "/flyout-header-footer-subfooter",
+    "name": "FlyoutHeaderFooterSubfooter"
+  },
+  "flyoutHeaderFooterSubfooterPositionLeft": {
+    "path": "/flyout-header-footer-subfooter-position-left",
+    "name": "FlyoutHeaderFooterSubfooterPositionLeft"
+  },
+  "flyoutHeaderFooterSubfooterPositionStart": {
+    "path": "/flyout-header-footer-subfooter-position-start",
+    "name": "FlyoutHeaderFooterSubfooterPositionStart"
+  },
+  "flyoutHeaderFooterSubfooterScrollableContent": {
+    "path": "/flyout-header-footer-subfooter-scrollable-content",
+    "name": "FlyoutHeaderFooterSubfooterScrollableContent"
+  },
+  "flyoutHeaderFooterSubfooterScrolled": {
+    "path": "/flyout-header-footer-subfooter-scrolled",
+    "name": "FlyoutHeaderFooterSubfooterScrolled"
+  },
+  "flyoutHeaderFooterSubfooterScrolledOverlap": {
+    "path": "/flyout-header-footer-subfooter-scrolled-overlap",
+    "name": "FlyoutHeaderFooterSubfooterScrolledOverlap"
+  },
+  "flyoutHeaderFooterSubfooterSlottedAnchor": {
+    "path": "/flyout-header-footer-subfooter-slotted-anchor",
+    "name": "FlyoutHeaderFooterSubfooterSlottedAnchor"
+  },
+  "flyoutHeaderScrollableContent": {
+    "path": "/flyout-header-scrollable-content",
+    "name": "FlyoutHeaderScrollableContent"
+  },
+  "flyoutMaxWidthContent": {
+    "path": "/flyout-max-width-content",
+    "name": "FlyoutMaxWidthContent"
+  },
+  "flyoutMaxWidthContentPositionLeft": {
+    "path": "/flyout-max-width-content-position-left",
+    "name": "FlyoutMaxWidthContentPositionLeft"
+  },
+  "flyoutMaxWidthContentPositionStart": {
+    "path": "/flyout-max-width-content-position-start",
+    "name": "FlyoutMaxWidthContentPositionStart"
+  },
+  "flyoutNavigation": {
+    "path": "/flyout-navigation",
+    "name": "FlyoutNavigation"
+  },
+  "flyoutNavigationActiveIdentifier": {
+    "path": "/flyout-navigation-active-identifier",
+    "name": "FlyoutNavigationActiveIdentifier"
+  },
+  "flyoutNavigationBasic": {
+    "path": "/flyout-navigation-basic",
+    "name": "FlyoutNavigationBasic"
+  },
+  "flyoutNavigationPrefixed": {
+    "path": "/flyout-navigation-prefixed",
+    "name": "FlyoutNavigationPrefixed"
+  },
+  "flyoutNavigationScrolled": {
+    "path": "/flyout-navigation-scrolled",
+    "name": "FlyoutNavigationScrolled"
+  },
+  "flyoutPositionLeft": {
+    "path": "/flyout-position-left",
+    "name": "FlyoutPositionLeft"
+  },
+  "flyoutPositionStart": {
+    "path": "/flyout-position-start",
+    "name": "FlyoutPositionStart"
+  },
   "grid": {
     "path": "/grid",
     "name": "Grid"
@@ -108,6 +212,10 @@ const generatedRoutes = {
     "path": "/link-tile-model-signature",
     "name": "LinkTileModelSignature"
   },
+  "linkTileProduct": {
+    "path": "/link-tile-product",
+    "name": "LinkTileProduct"
+  },
   "marque": {
     "path": "/marque",
     "name": "Marque"
@@ -115,6 +223,46 @@ const generatedRoutes = {
   "modal": {
     "path": "/modal",
     "name": "Modal"
+  },
+  "modalBasic": {
+    "path": "/modal-basic",
+    "name": "ModalBasic"
+  },
+  "modalDisableCloseButton": {
+    "path": "/modal-disable-close-button",
+    "name": "ModalDisableCloseButton"
+  },
+  "modalFullscreen": {
+    "path": "/modal-fullscreen",
+    "name": "ModalFullscreen"
+  },
+  "modalFullscreenResponsive": {
+    "path": "/modal-fullscreen-responsive",
+    "name": "ModalFullscreenResponsive"
+  },
+  "modalScrollable": {
+    "path": "/modal-scrollable",
+    "name": "ModalScrollable"
+  },
+  "modalSlottedHeading": {
+    "path": "/modal-slotted-heading",
+    "name": "ModalSlottedHeading"
+  },
+  "modalStickyFooter": {
+    "path": "/modal-sticky-footer",
+    "name": "ModalStickyFooter"
+  },
+  "modalStretchToFullWidth": {
+    "path": "/modal-stretch-to-full-width",
+    "name": "ModalStretchToFullWidth"
+  },
+  "modalWithoutDismissButton": {
+    "path": "/modal-without-dismiss-button",
+    "name": "ModalWithoutDismissButton"
+  },
+  "modalWithoutHeading": {
+    "path": "/modal-without-heading",
+    "name": "ModalWithoutHeading"
   },
   "modelSignature": {
     "path": "/model-signature",
@@ -212,17 +360,13 @@ const generatedRoutes = {
     "path": "/toast",
     "name": "Toast"
   },
-  "toastBasicDark": {
-    "path": "/toast-basic-dark",
-    "name": "ToastBasicDark"
+  "toastBasic": {
+    "path": "/toast-basic",
+    "name": "ToastBasic"
   },
-  "toastBasicLongText": {
-    "path": "/toast-basic-long-text",
-    "name": "ToastBasicLongText"
-  },
-  "toastBasicStateNeutral": {
-    "path": "/toast-basic-state-neutral",
-    "name": "ToastBasicStateNeutral"
+  "toastMultiline": {
+    "path": "/toast-multiline",
+    "name": "ToastMultiline"
   },
   "toastOffset": {
     "path": "/toast-offset",
@@ -231,6 +375,14 @@ const generatedRoutes = {
   "toastPrefixed": {
     "path": "/toast-prefixed",
     "name": "ToastPrefixed"
+  },
+  "toastStateNeutral": {
+    "path": "/toast-state-neutral",
+    "name": "ToastStateNeutral"
+  },
+  "toastStateSuccess": {
+    "path": "/toast-state-success",
+    "name": "ToastStateSuccess"
   },
   "typographyCyril": {
     "path": "/typography-cyril",
@@ -247,6 +399,10 @@ const generatedRoutes = {
   "typographyLatin": {
     "path": "/typography-latin",
     "name": "TypographyLatin"
+  },
+  "typographyMiddleEast": {
+    "path": "/typography-middle-east",
+    "name": "TypographyMiddleEast"
   },
   "wordmark": {
     "path": "/wordmark",

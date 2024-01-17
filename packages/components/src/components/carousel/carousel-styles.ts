@@ -1,24 +1,21 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
-import type { CarouselAlignHeader, CarouselWidth } from './carousel-utils';
+import type { CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
-  addImportantToRule,
   addImportantToEachRule,
+  addImportantToRule,
+  colorSchemeStyles,
   getBackfaceVisibilityJssStyle,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
-  colorSchemeStyles,
 } from '../../styles';
 import {
   borderRadiusLarge,
   borderRadiusSmall,
   borderWidthBase,
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
   getMediaQueryMax,
   getMediaQueryMin,
   gridBasicOffset,
@@ -26,9 +23,10 @@ import {
   gridExtendedOffset,
   gridGap,
   headingXLargeStyle,
+  headingXXLargeStyle,
   motionDurationModerate,
   spacingFluidMedium,
-  spacingFluidXSmall,
+  spacingFluidSmall,
   spacingStaticMedium,
   spacingStaticSmall,
   spacingStaticXSmall,
@@ -44,15 +42,10 @@ export const paginationBulletSize = '8px';
 const paginationInfiniteBulletSize = '4px';
 const paginationActiveBulletSize = '20px';
 
-const selectorHeading = 'h2,::slotted([slot=heading])';
-const selectorDescription = 'p,::slotted([slot=description])';
+const selectorHeading = 'h2,::slotted([slot="heading"])';
+const selectorDescription = 'p,::slotted([slot="description"])';
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
-
-// we need an explicit grid template, therefor we need to calculate the button group width
-const buttonSize = `calc(${spacingStaticSmall} * 2 + ${fontLineHeight})`;
-// + 2px, compensates hover offset of button-pure
-const buttonGroupWidth = `calc(${buttonSize} * 3 + ${spacingStaticXSmall} + 2px)`;
 
 const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }> = {
   basic: gridBasicOffset,
@@ -60,6 +53,10 @@ const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }
 };
 
 export const getComponentCss = (
+  hasHeading: boolean,
+  hasDescription: boolean,
+  hasControlsSlot: boolean,
+  headingSize: CarouselHeadingSize,
   width: CarouselWidth,
   hasPagination: BreakpointCustomizable<boolean>,
   isInfinitePagination: boolean,
@@ -77,62 +74,74 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'flex',
-        gap: spacingFluidMedium,
-        flexDirection: 'column',
-        boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
-      '::slotted(*)': {
-        borderRadius: addImportantToRule(`var(--p-carousel-border-radius, ${borderRadiusLarge})`),
+        ...addImportantToEachRule({
+          gap: spacingFluidMedium, // TODO: maybe it's better to style by margin on .splide, then styles would be part of shadow dom
+          flexDirection: 'column',
+          boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
-      '::slotted(*:focus-visible)': addImportantToEachRule({
-        outline: `${borderWidthBase} solid ${focusColor}`,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          outlineColor: focusColorDark,
+      ...(hasControlsSlot && {
+        ['slot[name="controls"]']: {
+          display: 'block',
+          gridColumnStart: 1,
+          gridRowStart: 3,
+          alignSelf: 'center', // ensures vertical alignment to prev/next buttons
+        },
+      }),
+      ...addImportantToEachRule({
+        '::slotted(*)': {
+          borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
+        },
+        '::slotted(*:focus-visible)': {
+          outline: `${borderWidthBase} solid ${focusColor}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            outlineColor: focusColorDark,
+          }),
+          outlineOffset: '2px',
+        },
+        // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
+        // h2,::slotted([slot=heading]),p,::slotted([slot=description])
+        ...((hasHeading || hasDescription) && {
+          [`${selectorHeading},${selectorDescription}`]: {
+            gridColumn: '1/-1',
+            color: primaryColor,
+            ...(isHeaderAlignCenter && {
+              textAlign: 'center', // relevant in case heading or description becomes multiline
+              justifySelf: 'center', // relevant for horizontal alignment of heading and description in case max-width applies
+            }),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              color: primaryColorDark,
+            }),
+          },
         }),
-        outlineOffset: '2px',
-      }),
-      [selectorHeading]: addImportantToEachRule({
-        ...headingXLargeStyle,
-        maxWidth: '56.25rem',
-        margin: 0,
-      }),
-      [selectorDescription]: addImportantToEachRule({
-        ...textSmallStyle,
-        maxWidth: '34.375rem',
-        margin: `${spacingFluidXSmall} 0 0`,
-      }),
-      [`${selectorHeading},${selectorDescription}`]: addImportantToEachRule({
-        color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
+        // h2,::slotted([slot=heading])
+        ...(hasHeading && {
+          [selectorHeading]: {
+            maxWidth: '56.25rem',
+            margin: `0 0 ${!hasDescription ? spacingFluidMedium : 0}`,
+            ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
+          },
         }),
-        [mediaQueryS]: isHeaderAlignCenter
-          ? {
-              gridColumn: 2,
-            }
-          : {
-              gridColumn: '1 / 3',
-            },
+        // p,::slotted([slot=description])
+        ...(hasDescription && {
+          [selectorDescription]: {
+            maxWidth: '34.375rem',
+            margin: `${spacingFluidSmall} 0 ${spacingFluidMedium}`,
+            ...textSmallStyle,
+          },
+        }),
       }),
     },
     header: {
       display: 'grid',
       padding: `0 ${spacingMap[width].base}`,
-      ...(isHeaderAlignCenter && {
-        textAlign: 'center',
-      }),
       [mediaQueryS]: {
-        fontFamily, // relevant for button group width calculation, which is based on ex unit
-        fontSize: fontSizeTextSmall, // relevant for button group width calculation, which is based on ex unit
+        gridTemplateColumns: 'minmax(0px, 1fr) auto',
         columnGap: spacingStaticMedium,
-        gridTemplateColumns: `${buttonGroupWidth} minmax(0px, 1fr) ${buttonGroupWidth}`,
-        ...(isHeaderAlignCenter && {
-          justifyItems: 'center', // relevant when max-width of heading or description is reached
-        }),
         padding: `0 ${spacingMap[width].s}`,
       },
       [mediaQueryXXL]: {
@@ -142,12 +151,11 @@ export const getComponentCss = (
     nav: {
       display: 'none',
       [mediaQueryS]: {
+        gridRowStart: '3',
+        gridColumnEnd: '-1',
         display: 'flex',
         gap: spacingStaticXSmall,
-        gridArea: '1 / 3 / 3 / auto', // needed in case description height is smaller than button group
-        alignItems: 'end',
-        justifyContent: 'end',
-        justifySelf: 'end',
+        alignSelf: 'flex-start', // relevant in case slot="header" becomes higher than nav group
       },
     },
     btn: {

@@ -1,4 +1,4 @@
-# Tag Dismissible
+<ComponentHeading name="Tag Dismissible"></ComponentHeading>
 
 `p-tag-dismissible` is used in contexts where the user can actively remove a tag. It is often seen in filtering.
 
@@ -13,7 +13,7 @@
 </Notification>
 
 <Playground :markup="colorMarkup" :config="{ ...config, backgroundColor }">
-  <SelectOptions v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></SelectOptions>
+  <PlaygroundSelect v-model="backgroundColor" :values="backgroundColors" name="backgroundColor"></PlaygroundSelect>
 </Playground>
 
 ## Label

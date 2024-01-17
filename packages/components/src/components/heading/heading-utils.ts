@@ -1,10 +1,8 @@
 import type { HeadingTag } from './heading-tag';
 import { HEADING_TAGS } from './heading-tag';
 import type { BreakpointCustomizable, TypographyAlign, TypographyAlignDeprecated } from '../../types';
-import { hasSpecificSlottedTag } from '../../utils';
-
-export const HEADING_SIZES = ['small', 'medium', 'large', 'x-large', 'xx-large', 'inherit'] as const;
-export type HeadingSize = (typeof HEADING_SIZES)[number];
+import { hasSpecificDirectChildTag } from '../../utils';
+import { HeadingSize } from '../../types';
 
 export const HEADING_COLORS = ['primary', 'inherit'] as const;
 export type HeadingColor = (typeof HEADING_COLORS)[number];
@@ -27,7 +25,7 @@ export const getHeadingTagType = (
   size: BreakpointCustomizable<HeadingSize>,
   tag: HeadingTag
 ): string => {
-  if (hasSpecificSlottedTag(host, HEADING_TAGS.join())) {
+  if (hasSpecificDirectChildTag(host, HEADING_TAGS.join())) {
     return 'div';
   } else if (tag) {
     return tag;

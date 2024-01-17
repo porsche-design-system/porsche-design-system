@@ -1,5 +1,6 @@
 import { getComponentCss } from './switch-styles';
 import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   const breakpointCustomizableAlignLabel: BreakpointCustomizable<AlignLabel> = {
@@ -136,6 +137,6 @@ describe('getComponentCss()', () => {
       theme: 'dark',
     },
   ])('should return correct css for %j', ({ alignLabel, hideLabel, stretch, checked, disabled, loading, theme }) => {
-    expect(getComponentCss(alignLabel, hideLabel, stretch, checked, disabled, loading, theme)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(alignLabel, hideLabel, stretch, checked, disabled, loading, theme));
   });
 });

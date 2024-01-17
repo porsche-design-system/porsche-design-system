@@ -2,12 +2,13 @@ import type { Theme } from '../types';
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
 import type { ThemedColors } from './';
+import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 import {
   borderWidthBase,
   frostedGlassStyle,
+  motionDurationLong,
   motionDurationModerate,
   motionDurationShort,
-  motionDurationLong,
   motionDurationVeryLong,
   motionEasingBase,
   motionEasingIn,
@@ -16,9 +17,9 @@ import {
   themeLightBackgroundShading,
   themeLightStateFocus,
 } from '@porsche-design-system/utilities-v2';
-import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 import { isThemeDark } from '../utils';
 import type * as fromMotionType from '@porsche-design-system/utilities-v2/dist/esm/motion';
+
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
 export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMotionType>;
 type WithoutMotionEasingPrefix<T> = T extends `motionEasing${infer P}` ? Uncapitalize<P> : never;
@@ -100,11 +101,14 @@ export const getResetInitialStylesForSlottedAnchor: JssStyle = {
 
 export const focusPseudoJssStyle: JssStyle = {
   outline: 0,
-  '&:focus::before': {
+  '&::before': {
+    // needs to be defined always to have correct custom click area
     content: '""',
     position: 'absolute',
     ...getInsetJssStyle(),
-    borderRadius: '1px',
+  },
+  '&:focus::before': {
+    borderRadius: '1px', // TODO: why just 1px border-radius?
     outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
     outlineOffset: '2px',
   },
@@ -151,42 +155,43 @@ export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
 /**
  * Generates JSS styles for a frosted glass background.
  * @param {boolean} isVisible - Determines if the frosted glass effect is visible.
+ * @param {number} zIndex - The z-index to be used.
+ * @param {Theme} theme - The theme to be used.
  * @param {string} duration - The duration of the transition animation.
- * @param {Theme} theme - The theme to be used
- * @param {string} timingFn - The timing function of the transition animation. (default: 'cubic-bezier(.16,1,.3,1)')
- * @returns {JssStyle} - The JSS styles for the frosted glass background.
+ * @returns {JssStyle} - The JSS styles for the frosted glass backdrop.
  */
-export const getFrostedGlassBackgroundJssStyles = (
+export const getBackdropJssStyle = (
   isVisible: boolean,
-  duration: MotionDurationKey,
-  theme: Theme
+  zIndex: number,
+  theme: Theme,
+  duration: MotionDurationKey = 'long'
 ): JssStyle => {
   return {
-    // workaround via pseudo element to fix stacking (black) background in safari
-    '&::before': {
-      content: '""',
-      position: 'fixed',
-      ...getInsetJssStyle(),
-      background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,
-      pointerEvents: 'none',
-      ...(isVisible
-        ? {
-            opacity: 1,
-            ...frostedGlassStyle,
-          }
-        : {
-            opacity: 0,
-            backdropFilter: 'blur(0px)',
-            WebkitBackdropFilter: 'blur(0px)',
-          }),
-      transition: `${getTransition('opacity', duration, 'base')}, ${getTransition(
-        'backdrop-filter',
-        duration,
-        'base'
-      )}, ${getTransition('-webkit-backdrop-filter', duration, 'base')}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: themeDarkBackgroundShading,
-      }),
-    },
+    position: 'fixed',
+    ...getInsetJssStyle(),
+    zIndex,
+    // TODO: background shading is missing in getThemedColors(theme).backgroundShading
+    background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,
+    ...prefersColorSchemeDarkMediaQuery(theme, {
+      background: themeDarkBackgroundShading,
+    }),
+    ...(isVisible
+      ? {
+          visibility: 'inherit',
+          pointerEvents: 'auto',
+          ...frostedGlassStyle,
+          opacity: 1,
+        }
+      : {
+          visibility: 'hidden', // element shall not be tabbable after fade out transition has finished
+          pointerEvents: 'none',
+          WebkitBackdropFilter: 'blur(0px)',
+          backdropFilter: 'blur(0px)',
+          opacity: 0,
+        }),
+    transition: `${getTransition('opacity', duration)}, ${getTransition('backdrop-filter', duration)}, ${getTransition(
+      '-webkit-backdrop-filter',
+      duration
+    )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationMap[duration]})`,
   };
 };

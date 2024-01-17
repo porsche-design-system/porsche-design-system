@@ -1,11 +1,9 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, State } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
-  observeBreakpointChange,
-  parseJSON,
   parseJSONAttribute,
   THEMES,
   unobserveBreakpointChange,
@@ -14,25 +12,17 @@ import {
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type {
-  PaginationMaxNumberOfPageLinks,
-  PaginationUpdateEvent,
   PaginationInternationalization,
+  PaginationMaxNumberOfPageLinks,
+  PaginationUpdateEventDetail,
 } from './pagination-utils';
-import {
-  createPaginationModel,
-  getCounterResetValue,
-  getCurrentActivePage,
-  getTotalPages,
-  ItemType,
-  PAGINATION_NUMBER_OF_PAGE_LINKS,
-} from './pagination-utils';
+import { createPaginationItems, getCurrentActivePage, getTotalPages, ItemType } from './pagination-utils';
 import { getComponentCss } from './pagination-styles';
 
-const propTypes: PropTypes<typeof Pagination> = {
+const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   totalItemsCount: AllowedTypes.number,
   itemsPerPage: AllowedTypes.number,
   activePage: AllowedTypes.number,
-  maxNumberOfPageLinks: AllowedTypes.breakpoint<PaginationMaxNumberOfPageLinks>(PAGINATION_NUMBER_OF_PAGE_LINKS),
   showLastPage: AllowedTypes.boolean,
   allyLabel: AllowedTypes.string,
   allyLabelPrev: AllowedTypes.string,
@@ -63,11 +53,11 @@ export class Pagination {
   /** Index of the currently active page. */
   @Prop({ mutable: true }) public activePage?: number = 1;
 
-  /** The maximum number of page links rendered. */
-  @Prop() public maxNumberOfPageLinks?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks> = {
-    base: 5,
-    xs: 7,
-  };
+  /**
+   * Has no effect anymore
+   * @deprecated since v3.10.0, will be removed with next major release
+   */
+  @Prop() public maxNumberOfPageLinks?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
 
   /** Show or hide the button to jump to the last page. */
   @Prop() public showLastPage?: boolean = true;
@@ -106,26 +96,13 @@ export class Pagination {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when the page changes. */
-  @Event({ bubbles: false }) public pageChange: EventEmitter<PaginationUpdateEvent>;
+  @Event({ bubbles: false }) public pageChange: EventEmitter<PaginationUpdateEventDetail>;
 
   /** Emitted when the page changes. */
-  @Event({ bubbles: false }) public update: EventEmitter<PaginationUpdateEvent>;
-
-  @State() private breakpointMaxNumberOfPageLinks: PaginationMaxNumberOfPageLinks = 7;
-
-  private navigationElement: HTMLElement;
+  @Event({ bubbles: false }) public update: EventEmitter<PaginationUpdateEventDetail>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
-  }
-
-  public connectedCallback(): void {
-    this.observeBreakpointChange(); // on reconnect
-  }
-
-  public componentDidLoad(): void {
-    this.observeBreakpointChange(); // initially or slow prop binding
-    this.updateMaxNumberOfPageLinks(); // TODO: this causes initial rerender
   }
 
   public disconnectedCallback(): void {
@@ -134,6 +111,7 @@ export class Pagination {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof Pagination>(this, 'maxNumberOfPageLinks');
     warnIfDeprecatedPropIsUsed<typeof Pagination>(this, 'allyLabel', 'Please use intl prop with intl.root instead.');
     warnIfDeprecatedPropIsUsed<typeof Pagination>(
       this,
@@ -150,13 +128,12 @@ export class Pagination {
       'allyLabelPage',
       'Please use intl prop with intl.page instead.'
     );
-    attachComponentCss(this.host, getComponentCss, this.maxNumberOfPageLinks, this.theme);
 
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
-    const paginationModel = createPaginationModel({
+    attachComponentCss(this.host, getComponentCss, this.activePage, pageTotal, this.showLastPage, this.theme);
+    const paginationItems = createPaginationItems({
       activePage: getCurrentActivePage(this.activePage, pageTotal),
       pageTotal,
-      pageRange: this.breakpointMaxNumberOfPageLinks === 7 ? 1 : 0,
       showLastPage: this.showLastPage,
     });
     const parsedIntl = parseJSONAttribute(this.intl);
@@ -164,10 +141,18 @@ export class Pagination {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <nav role="navigation" aria-label={this.allyLabel || parsedIntl.root} ref={(el) => (this.navigationElement = el)}>
+      <nav role="navigation" aria-label={this.allyLabel || parsedIntl.root}>
         <ul>
-          {paginationModel.map((pageModel) => {
-            const { type, isActive, value } = pageModel;
+          {paginationItems.map((pageModel, index) => {
+            const {
+              type,
+              isActive,
+              value,
+              isBeforeCurrent,
+              isAfterCurrent,
+              isBeforeBeforeCurrent,
+              isAfterAfterCurrent,
+            } = pageModel;
             const spanProps = {
               role: 'button',
               tabIndex: isActive ? 0 : null,
@@ -183,27 +168,36 @@ export class Pagination {
             switch (type) {
               case ItemType.PREVIOUS:
                 return (
-                  <li key="prev">
+                  <li key="prev" class="prev">
                     <span
                       {...spanProps}
                       aria-label={this.allyLabelPrev || parsedIntl.prev}
                       aria-disabled={isActive ? null : 'true'}
                     >
-                      <PrefixedTagNames.pIcon name="arrow-left" {...iconProps} />
+                      <PrefixedTagNames.pIcon {...iconProps} name="arrow-left" />
                     </span>
                   </li>
                 );
 
               case ItemType.ELLIPSIS:
                 return (
-                  <li key="ellipsis">
+                  <li key="ellip" class={{ ellip: true, [`ellip-${index === 2 ? 'start' : 'end'}`]: true }}>
                     <span class="ellipsis" />
                   </li>
                 );
 
               case ItemType.PAGE:
                 return (
-                  <li key={value}>
+                  <li
+                    key={value}
+                    class={{
+                      current: isActive,
+                      'current-1': isBeforeCurrent,
+                      'current+1': isAfterCurrent,
+                      'current-2': isBeforeBeforeCurrent,
+                      'current+2': isAfterAfterCurrent,
+                    }}
+                  >
                     <span
                       {...spanProps}
                       tabIndex={0}
@@ -217,13 +211,13 @@ export class Pagination {
 
               case ItemType.NEXT:
                 return (
-                  <li key="next">
+                  <li key="next" class="next">
                     <span
                       {...spanProps}
                       aria-label={this.allyLabelNext || parsedIntl.next}
                       aria-disabled={isActive ? null : 'true'}
                     >
-                      <PrefixedTagNames.pIcon name="arrow-right" {...iconProps} />
+                      <PrefixedTagNames.pIcon {...iconProps} name="arrow-right" />
                     </span>
                   </li>
                 );
@@ -250,15 +244,4 @@ export class Pagination {
       this.activePage = page; // TODO: should become a controlled component
     }
   }
-
-  private updateMaxNumberOfPageLinks = (): void => {
-    // TODO: change this to a non js solution to support SSR and prevent initial rerender
-    this.breakpointMaxNumberOfPageLinks = getCounterResetValue(this.navigationElement);
-  };
-
-  private observeBreakpointChange = (): void => {
-    if (typeof parseJSON(this.maxNumberOfPageLinks) === 'object') {
-      observeBreakpointChange(this.host, this.updateMaxNumberOfPageLinks);
-    }
-  };
 }

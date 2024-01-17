@@ -1,40 +1,23 @@
-<style>
-  .playground > div {
-    transform: translate(0);
-    height: 20rem;
-    margin: 0 -16px;
-  }
-</style>
-
-<div class="visualize-grid">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-
 <div class="playground light" title="should render toast">
-  <div>
-    <p-toast></p-toast>
-  </div>
+  <iframe src="/toast-basic?iframe=true" loading="eager" title="fix-linter-1"></iframe>
 </div>
 
-<script>
-  porscheDesignSystem.componentsReady().then(() => {
-    document.querySelector('p-toast').addMessage({ text: 'Some message' });
-  });
-</script>
+<div class="playground light" title="should render toast with state neutral">
+  <iframe src="/toast-state-neutral?iframe=true" loading="eager" title="fix-linter-2"></iframe>
+</div>
+
+<div class="playground light" title="should render toast with state success">
+  <iframe src="/toast-state-success?iframe=true" loading="eager" title="fix-linter-3"></iframe>
+</div>
+
+<div class="playground light" title="should render toast multiline message">
+  <iframe src="/toast-multiline?iframe=true" loading="eager" title="fix-linter-4"></iframe>
+</div>
+
+<div class="playground light" title="should render toast with custom bottom position">
+  <iframe src="/toast-offset?iframe=true" loading="eager" title="fix-linter-5"></iframe>
+</div>
+
+<div class="playground light" title="should render prefixed toast">
+  <iframe src="/toast-prefixed?iframe=true" loading="eager" title="fix-linter-6"></iframe>
+</div>

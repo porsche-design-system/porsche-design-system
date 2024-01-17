@@ -89,9 +89,11 @@ exports[`should call validateProps() with correct parameters via render for p-ca
 {
   "activeSlideIndex": "number",
   "alignHeader": "oneOf",
+  "aria": "aria",
   "description": "string",
   "disablePagination": "breakpoint",
   "heading": "string",
+  "headingSize": "oneOf",
   "intl": "shape",
   "pagination": "breakpoint",
   "rewind": "boolean",
@@ -200,6 +202,22 @@ exports[`should call validateProps() with correct parameters via render for p-fl
   "open": "boolean",
   "position": "oneOf",
   "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-flyout-navigation: propTypes with ValidatorFunctions 1`] = `
+{
+  "activeIdentifier": "string",
+  "aria": "aria",
+  "open": "boolean",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-flyout-navigation-item: propTypes with ValidatorFunctions 1`] = `
+{
+  "identifier": "string",
+  "label": "string",
 }
 `;
 
@@ -343,6 +361,21 @@ exports[`should call validateProps() with correct parameters via render for p-li
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-link-tile-product: propTypes with ValidatorFunctions 1`] = `
+{
+  "aspectRatio": "breakpoint",
+  "description": "string",
+  "heading": "string",
+  "href": "string",
+  "likeButton": "boolean",
+  "liked": "boolean",
+  "price": "string",
+  "rel": "string",
+  "target": "string",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-marque: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
@@ -395,7 +428,7 @@ exports[`should call validateProps() with correct parameters via render for p-mu
 exports[`should call validateProps() with correct parameters via render for p-multi-select-option: propTypes with ValidatorFunctions 1`] = `
 {
   "disabled": "boolean",
-  "value": "oneOf",
+  "value": "string",
 }
 `;
 
@@ -408,7 +441,6 @@ exports[`should call validateProps() with correct parameters via render for p-pa
   "allyLabelPrev": "string",
   "intl": "shape",
   "itemsPerPage": "number",
-  "maxNumberOfPageLinks": "breakpoint",
   "showLastPage": "boolean",
   "theme": "oneOf",
   "totalItemsCount": "number",
@@ -624,6 +656,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "showCounter": "boolean",
   "showPasswordToggle": "boolean",
   "state": "oneOf",
+  "submitButton": "boolean",
   "theme": "oneOf",
   "unit": "string",
   "unitPosition": "oneOf",

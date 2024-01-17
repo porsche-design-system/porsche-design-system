@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { MultiSelectUpdateEvent } from '@porsche-design-system/components-angular';
+import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-multi-select-example-controlled',
@@ -24,7 +24,7 @@ export class MultiSelectExampleControlledComponent {
     return `Selected values: ${this.selectedValues.join(', ') || 'none'}`;
   }
 
-  handleUpdate(e: CustomEvent<MultiSelectUpdateEvent>) {
+  handleUpdate(e: CustomEvent<MultiSelectUpdateEventDetail>) {
     this.selectedValues = e.detail.value;
   }
 }

@@ -125,6 +125,29 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-flyout-navigation',
+      samples: [
+        [
+          componentsJsPath + '/flyout-navigation-example.html',
+          componentsAngularPath + '/flyout-navigation-example.component.ts',
+          componentsReactPath + '/FlyoutNavigationExample.tsx',
+          componentsVuePath + '/FlyoutNavigationExample.vue',
+        ],
+        [
+          componentsJsPath + '/flyout-navigation-example-active-identifier.html',
+          componentsAngularPath + '/flyout-navigation-example-active-identifier.component.ts',
+          componentsReactPath + '/FlyoutNavigationExampleActiveIdentifier.tsx',
+          componentsVuePath + '/FlyoutNavigationExampleActiveIdentifier.vue',
+        ],
+        [
+          componentsJsPath + '/flyout-navigation-example-custom-content.html',
+          componentsAngularPath + '/flyout-navigation-example-custom-content.component.ts',
+          componentsReactPath + '/FlyoutNavigationExampleCustomContent.tsx',
+          componentsVuePath + '/FlyoutNavigationExampleCustomContent.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-inline-notification',
       samples: [
         [
@@ -138,6 +161,17 @@ const generateCodeSamples = (): void => {
           componentsAngularPath + '/inline-notification-example-action-button.component.ts',
           componentsReactPath + '/InlineNotificationExampleActionButton.tsx',
           componentsVuePath + '/InlineNotificationExampleActionButton.vue',
+        ],
+      ],
+    },
+    {
+      component: 'p-link-tile-product',
+      samples: [
+        [
+          componentsJsPath + '/link-tile-product-example.html',
+          componentsAngularPath + '/link-tile-product-example.component.ts',
+          componentsReactPath + '/LinkTileProductExample.tsx',
+          componentsVuePath + '/LinkTileProductExample.vue',
         ],
       ],
     },

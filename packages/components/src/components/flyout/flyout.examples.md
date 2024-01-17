@@ -1,4 +1,4 @@
-# Flyout
+<ComponentHeading name="Flyout"></ComponentHeading>
 
 The `p-flyout` component, also known as a drawer, is a controlled component that overlays from the left or right side of
 the screen. It is commonly used as a temporary workspace that allows users to complete tasks without navigating to a new
@@ -39,9 +39,7 @@ The size of `p-flyout` adjusts itself to the content with a predefined min/max w
 </Notification>
 
 <Playground :frameworkMarkup="basicSample" :markup="basicSample['vanilla-js']" :config="config">
-  <div class="select-container">
-    <SelectOptions v-model="position" :values="positions" name="position"></SelectOptions>
-  </div>
+  <PlaygroundSelect v-model="position" :values="positions" name="position"></PlaygroundSelect>
 </Playground>
 
 ## Slotted header/footer/content
@@ -60,10 +58,8 @@ scrolling to the end of the flyout or when there is available space to accommoda
 Make sure to set the `aria` property with a descriptive `aria-label` value when using slotted heading.
 
 <Playground :frameworkMarkup="codeExampleSlotted" :markup="slottedSample['vanilla-js']" :config="config">
-  <div class="select-container">
-    <SelectOptions v-model="scrollable" :values="scrollables" name="scrollable"></SelectOptions>
-    <SelectOptions v-model="subFooter" :values="subFooters" name="sub-footer"></SelectOptions>
-  </div>
+  <PlaygroundSelect v-model="scrollable" :values="scrollables" name="scrollable"></PlaygroundSelect>
+  <PlaygroundSelect v-model="subFooter" :values="subFooters" name="sub-footer"></PlaygroundSelect>
 </Playground>
 
 ## Flyout with slotted Grid
@@ -175,12 +171,3 @@ export default class Code extends Vue {
 
 }
 </script>
-
-<style>
-  .select-container {
-    display: flex; 
-    column-gap: 16px; 
-    flex-wrap: wrap; 
-    padding-bottom: 16px
-  }
-</style>

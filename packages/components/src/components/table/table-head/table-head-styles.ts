@@ -5,13 +5,15 @@ import { fontLineHeight, fontSizeTextXSmall, fontWeightSemiBold } from '@porsche
 export const getComponentCss = (): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'table-header-group',
-        fontSize: fontSizeTextXSmall,
-        lineHeight: fontLineHeight,
-        fontWeight: fontWeightSemiBold,
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          fontSize: fontSizeTextXSmall,
+          lineHeight: fontLineHeight,
+          fontWeight: fontWeightSemiBold,
+          ...hostHiddenStyles,
+        }),
+      },
     },
   });
 };

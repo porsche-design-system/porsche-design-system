@@ -1,4 +1,4 @@
-# Link Tile Model Signature
+<ComponentHeading name="Link Tile Model Signature"></ComponentHeading>
 
 The `p-link-tile-model-signature` is a navigational component that displays a provided image to tease content and
 provides two `p-link's` to navigate to further information within one container. In addition to the `p-link-tile` it
@@ -39,7 +39,7 @@ If you want to add additional text like a price tag, use the `description` prope
 The `weight` property changes the font weight of the heading.
 
 <Playground :markup="weightMarkup" :config="config">
-  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
+  <PlaygroundSelect v-model="weight" :values="weights" name="weight"></PlaygroundSelect>
 </Playground>
 
 ## Link Direction
@@ -49,7 +49,7 @@ The `link-direction` property defines the direction of the main and cross axis o
 row from breakpoint `xs`.
 
 <Playground :markup="linkDirectionMarkup" :config="config">
-  <SelectOptions v-model="linkDirection" :values="linkDirections" name="linkDirection"></SelectOptions>
+  <PlaygroundSelect v-model="linkDirection" :values="linkDirections" name="linkDirection"></PlaygroundSelect>
 </Playground>
 
 ## Aspect Ratio
@@ -58,13 +58,13 @@ The component takes its height from the width provided and places the image via 
 can change the dimensions by using different aspect ratios.
 
 <Playground :markup="aspectRatioMarkup">
-  <SelectOptions v-model="aspectRatio" :values="aspectRatios" name="aspectRatio"></SelectOptions>
+  <PlaygroundSelect v-model="aspectRatio" :values="aspectRatios" name="aspectRatio"></PlaygroundSelect>
 </Playground>
 
 ## Model
 
 <Playground :markup="modelMarkup">
-  <SelectOptions v-model="model" :values="models" name="model"></SelectOptions>
+  <PlaygroundSelect v-model="model" :values="models" name="model"></PlaygroundSelect>
 </Playground>
 
 ## Hyphens
@@ -75,7 +75,7 @@ to set the appropriate lang attribute on your HTML element to ensure that hyphen
 language.
 
 <Playground :markup="hyphenMarkup">
-  <SelectOptions v-model="hyphen" :values="hyphens" name="hyphens"></SelectOptions>
+  <PlaygroundSelect v-model="hyphen" :values="hyphens" name="hyphens"></PlaygroundSelect>
 </Playground>
 
 ## Framework Routing

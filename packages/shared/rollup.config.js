@@ -93,4 +93,12 @@ export default [
     },
     plugins: [typescript()],
   },
+  {
+    input: 'src/testing/playwright.vrt.config.ts',
+    output: {
+      dir: 'dist/testing',
+      format: 'cjs',
+    },
+    plugins: [typescript()],
+  },
 ];

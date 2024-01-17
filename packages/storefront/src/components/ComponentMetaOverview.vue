@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="display: flex; justify-content: space-between; margin: 0 0 1rem">
-      <div>🚫 = deprecated<br />🛠 = breakpointCustomizable</div>
+      <div>🛠 = breakpointCustomizable<br />🚫 = deprecated<br />🧪 = experimental</div>
       <p-switch :theme="storefrontTheme" @update="toggleProps" :checked="isToggled">Show all prop values</p-switch>
     </div>
 
@@ -36,8 +36,10 @@
     get headRow(): string {
       return ['', ...tagNames]
         .map((tagName) => {
-          const { isDeprecated } = getComponentMeta(tagName as TagName) || {};
-          return `<p-table-head-cell>${tagName}${isDeprecated ? ' 🚫' : ''}</p-table-head-cell>`;
+          const { isDeprecated, isExperimental } = getComponentMeta(tagName as TagName) || {};
+          return `<p-table-head-cell>${tagName}${isDeprecated ? ' 🚫' : ''}${
+            isExperimental ? ' 🧪' : ''
+          }</p-table-head-cell>`;
         })
         .join('');
     }
@@ -54,36 +56,36 @@
       ];
 
       const content = rowKeys
-        .map((key) => {
+        .map((rowKey) => {
           const cells = tagNames
             .map((tagName) => {
               const meta = getComponentMeta(tagName);
-              let value = meta[key];
+              let value = meta[rowKey];
 
-              if (value && (key === 'props' || key === 'eventNames')) {
+              // here we need to do some mapping, all other rowKeys can be used as they are
+              if (value && (rowKey === 'props' || rowKey === 'eventNames' || rowKey === 'requiredProps')) {
                 const {
-                  deprecatedProps = [],
-                  deprecatedEventNames = [],
-                  breakpointCustomizableProps = [],
-                  allowedPropValues = {},
-                  deprecatedPropValues = {},
+                  propsMeta = {}, // new format
+                  eventsMeta = {}, // new format
                 } = meta;
 
-                if (key === 'props') {
-                  value = Object.keys(value);
-                  value = value.map((val) => {
-                    let allowedValues = allowedPropValues[val] as string;
+                if (rowKey === 'props') {
+                  const propNames = Object.keys(propsMeta);
+                  value = propNames.map((propName) => {
+                    const { allowedValues, isBreakpointCustomizable, isDeprecated, isExperimental } =
+                      propsMeta[propName];
+                    let formattedAllowedValues: string;
+
                     if (Array.isArray(allowedValues)) {
                       // props that support certain values validated with oneOf
-                      const deprecatedValues = deprecatedPropValues[val];
-                      allowedValues = allowedValues
-                        .map((x) => (x === null ? 'undefined' : x))
-                        .map((x) => (deprecatedValues?.includes(x) ? x + ' 🚫' : x))
-                        .map((x) => `– ${x}`)
+                      formattedAllowedValues = allowedValues
+                        .map((allowedValue) => (allowedValue === null ? 'undefined' : allowedValue))
+                        .map((allowedValue) => (isDeprecated ? allowedValue + ' 🚫' : allowedValue))
+                        .map((allowedValue) => `– ${allowedValue}`)
                         .join('<br>');
                     } else if (typeof allowedValues === 'object') {
                       // props that take objects like aria, intl and sort
-                      allowedValues = Object.entries(allowedValues)
+                      formattedAllowedValues = Object.entries(allowedValues)
                         .map(([key, val]) => {
                           // nested scenario like in p-table-head-cell
                           if (Array.isArray(val)) {
@@ -94,22 +96,33 @@
                         .join('<br>');
                     } else {
                       // just string, boolean or number
-                      allowedValues = `- ${allowedValues}`;
+                      formattedAllowedValues = `- ${allowedValues}`;
                     }
 
                     const propFlags = [
-                      deprecatedProps.includes(val) && ' 🚫',
-                      breakpointCustomizableProps.includes(val) && ' 🛠️',
+                      isDeprecated && ' 🚫',
+                      isBreakpointCustomizable && ' 🛠️',
+                      isExperimental && ' 🧪️',
                     ]
-                      .filter((x) => x)
+                      .filter(Boolean)
                       .join('');
+
                     return (
-                      `<span class="prop">${val}${propFlags}</span>` +
-                      (allowedValues ? `<div style="display: none;">${allowedValues}</div>` : '')
+                      `<span class="prop">${propName}${propFlags}</span>` +
+                      (formattedAllowedValues ? `<div style="display: none;">${formattedAllowedValues}</div>` : '')
                     );
                   });
-                } else if (key === 'eventNames') {
-                  value = (value as string[]).map((val) => val + (deprecatedEventNames.includes(val) ? ' 🚫' : ''));
+                } else if (rowKey === 'eventNames') {
+                  const eventNames = Object.keys(eventsMeta);
+                  value = eventNames.map((eventName) => {
+                    const { isDeprecated } = eventsMeta[eventName];
+                    return `${eventName}${isDeprecated ? ' 🚫' : ''}`;
+                  });
+                } else if (rowKey === 'requiredProps') {
+                  value = Object.entries(propsMeta)
+                    .map(([propName, { isRequired }]) => isRequired && `<code>${propName}</code>`)
+                    .filter(Boolean)
+                    .join('<br>');
                 }
               }
 
@@ -117,7 +130,7 @@
                 ? Array.isArray(value)
                   ? value
                       .sort()
-                      .map((val) => (key === 'nestedComponents' ? val : `<code>${val}</code>`))
+                      .map((val) => (rowKey === 'nestedComponents' ? val : `<code>${val}</code>`))
                       .join('<br>')
                   : value
                 : '';
@@ -128,7 +141,7 @@
             .join('');
 
           return `<p-table-row>
-    <p-table-cell>${key}</p-table-cell>
+    <p-table-cell>${rowKey}</p-table-cell>
     ${cells}
   </p-table-row>`;
         })

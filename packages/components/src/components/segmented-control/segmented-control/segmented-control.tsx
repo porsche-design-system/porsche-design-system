@@ -15,7 +15,7 @@ import { getComponentCss } from './segmented-control-styles';
 import type {
   SegmentedControlBackgroundColor,
   SegmentedControlColumns,
-  SegmentedControlUpdateEvent,
+  SegmentedControlUpdateEventDetail,
 } from './segmented-control-utils';
 import {
   getItemMaxWidth,
@@ -60,10 +60,10 @@ export class SegmentedControl {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when selected element changes. */
-  @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<SegmentedControlUpdateEvent>;
+  @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<SegmentedControlUpdateEventDetail>;
 
   /** Emitted when selected element changes. */
-  @Event({ bubbles: false }) public update: EventEmitter<SegmentedControlUpdateEvent>;
+  @Event({ bubbles: false }) public update: EventEmitter<SegmentedControlUpdateEventDetail>;
 
   public connectedCallback(): void {
     throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');

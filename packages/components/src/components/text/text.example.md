@@ -1,4 +1,4 @@
-# Text
+<ComponentHeading name="Text"></ComponentHeading>
 
 `p-text` is used to specify paragraph styling in documents.
 
@@ -18,7 +18,7 @@ There are predefined fluid text sizes for the text component which should cover 
 is needed, the size can be set to `inherit` to specify the text size from outside.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ### Responsive
@@ -45,7 +45,7 @@ Predefined colors associated with its theme are available but also inherit mode 
 </Notification>
 
 <Playground :markup="colorMarkup" :config="config">
-  <SelectOptions v-model="color" :values="colors" name="color"></SelectOptions>
+  <PlaygroundSelect v-model="color" :values="colors" name="color"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -58,7 +58,7 @@ and "semibold".
 </Notification>
 
 <Playground :markup="weightMarkup" :config="config">
-  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
+  <PlaygroundSelect v-model="weight" :values="weights" name="weight"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -70,7 +70,7 @@ and "semibold".
 </Notification>
 
 <Playground :markup="alignMarkup" :config="config">
-  <SelectOptions v-model="align" :values="aligns" name="align"></SelectOptions>
+  <PlaygroundSelect v-model="align" :values="aligns" name="align"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -85,9 +85,9 @@ end are used to visualize it.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { TEXT_SIZES } from './text-size';
-import { TEXT_WEIGHTS, TEXT_WEIGHTS_DEPRECATED } from './text-weight';
-import { TEXT_COLORS, TEXT_COLORS_DEPRECATED } from './text-color';
+import { TEXT_SIZES } from '../../utils/typography/text-size';
+import { TYPOGRAPHY_TEXT_WEIGHTS, TYPOGRAPHY_TEXT_WEIGHTS_DEPRECATED } from '../../utils/typography/typography-text-weight';
+import { TYPOGRAPHY_TEXT_COLORS, TYPOGRAPHY_TEXT_COLORS_DEPRECATED } from '../../utils/typography/typography-text-color';
 import { TYPOGRAPHY_ALIGNS, TYPOGRAPHY_ALIGNS_DEPRECATED } from '../../utils'; 
 
 const sentence = 'The quick brown fox jumps over the lazy dog';
@@ -109,14 +109,14 @@ export default class Code extends Vue {
 <p-text><blockquote>${sentence}</blockquote></p-text>`;
 
   color = 'primary';
-  colors = TEXT_COLORS.map(item => TEXT_COLORS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
+  colors = TYPOGRAPHY_TEXT_COLORS.map(item => TYPOGRAPHY_TEXT_COLORS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get colorMarkup() {
     const style = this.color === 'inherit' ? ' style="color: deeppink;"' : '';
     return `<p-text color="${this.color}"${style}>${sentence}</p-text>`;
   }
   
   weight = 'bold';
-  weights = TEXT_WEIGHTS.map(item => TEXT_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
+  weights = TYPOGRAPHY_TEXT_WEIGHTS.map(item => TYPOGRAPHY_TEXT_WEIGHTS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get weightMarkup() {
     return `<p-text weight="${this.weight}">${sentence}</p-text>`;
   }

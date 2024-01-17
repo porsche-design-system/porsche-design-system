@@ -1,4 +1,4 @@
-# Link Tile
+<ComponentHeading name="Link Tile"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

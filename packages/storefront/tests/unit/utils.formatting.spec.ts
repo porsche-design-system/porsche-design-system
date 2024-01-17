@@ -1,4 +1,14 @@
-import { cleanMarkup, convertMarkup, escapeHtml, patchThemeIntoMarkup } from '../../src/utils';
+import type { EventMeta, PropMeta } from '@porsche-design-system/component-meta';
+import {
+  cleanMarkup,
+  convertMarkup,
+  escapeHtml,
+  formatEventType,
+  formatPropDefaultValue,
+  formatPropDescription,
+  formatPropType,
+  patchThemeIntoMarkup,
+} from '../../src/utils';
 
 import * as convertToAngularUtils from '../../src/utils/convertToAngular';
 import * as convertToReactUtils from '../../src/utils/convertToReact';
@@ -128,5 +138,232 @@ describe('convertMarkup()', () => {
 
     expect(cleanedMarkup).toBe(convertMarkup(markup, 'vanilla-js'));
     expect(cleanMarkupSpy).toBeCalledWith(markup);
+  });
+});
+
+describe('formatPropDescription()', () => {
+  it.each<PropMeta>([
+    {
+      description: 'The text size.',
+      type: 'AccordionSize',
+      defaultValue: 'small',
+      isBreakpointCustomizable: true,
+      allowedValues: ['small', 'medium'],
+    },
+    {
+      description:
+        '@deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the banner can be closed/removed by the user.',
+      type: 'boolean',
+      defaultValue: null,
+      isDeprecated: true,
+      allowedValues: 'boolean',
+    },
+    {
+      description: '@experimental Disables the checkbox and shows a loading indicator.',
+      type: 'boolean',
+      defaultValue: false,
+      isExperimental: true,
+      allowedValues: 'boolean',
+    },
+    {
+      description: 'When providing an url then the component will be rendered as `<a>`.',
+      type: 'string',
+      defaultValue: null,
+      allowedValues: 'string',
+    },
+    {
+      type: 'string',
+      defaultValue: null,
+      allowedValues: 'string',
+    },
+  ])('should return correctly formatted string for: %j', (meta) => {
+    expect(formatPropDescription(meta)).toMatchSnapshot();
+  });
+});
+
+describe('formatPropType()', () => {
+  it.each<PropMeta>([
+    {
+      description: 'The text size.',
+      type: 'AccordionSize',
+      defaultValue: 'small',
+      isBreakpointCustomizable: true,
+      allowedValues: ['small', 'medium'],
+    },
+    {
+      description: 'Adapts the color when used on dark background.',
+      type: 'Theme',
+      defaultValue: 'light',
+      allowedValues: ['light', 'dark', 'auto'],
+    },
+    {
+      description: 'Defines the heading used in accordion.',
+      type: 'string',
+      defaultValue: null,
+      allowedValues: 'string',
+    },
+    {
+      description: 'Defines if accordion is open.',
+      type: 'boolean',
+      defaultValue: null,
+      allowedValues: 'boolean',
+    },
+    {
+      description: 'Defines which slide to be active (zero-based numbering).',
+      type: 'number',
+      defaultValue: 0,
+      allowedValues: 'number',
+    },
+    {
+      description: 'State of the banner.',
+      type: 'BannerState',
+      defaultValue: 'info',
+      allowedValues: ['info', 'warning', 'error', 'neutral'],
+      deprecatedValues: ['neutral'],
+    },
+    {
+      description: 'Sets the initial value of the segmented-control.',
+      type: 'string | number',
+      defaultValue: null,
+      allowedValues: ['string', 'number'],
+    },
+    {
+      description: 'Has no effect anymore @deprecated since v3.0.0, will be removed with next major release',
+      type: 'GridGutter',
+      defaultValue: { base: 16, s: 24, m: 36 },
+      isDeprecated: true,
+      isBreakpointCustomizable: true,
+      allowedValues: [16, 24, 36],
+    },
+    {
+      description: 'The selected values.',
+      type: 'string[]',
+      defaultValue: [],
+      isArray: true,
+      allowedValues: 'string',
+    },
+    {
+      description: 'Scrolls the scroll area to the left either smooth or immediately.',
+      type: 'ScrollerScrollToPosition',
+      defaultValue: null,
+      allowedValues: { scrollPosition: 'number', isSmooth: 'boolean' },
+    },
+    {
+      description: 'Override the default wordings that are used for aria-labels on the next/prev and page buttons.',
+      type: 'PaginationInternationalization',
+      defaultValue: { root: 'Pagination', prev: 'Previous page', next: 'Next page', page: 'Page' },
+      allowedValues: { root: 'string', prev: 'string', next: 'string', page: 'string' },
+    },
+    {
+      description: 'Add ARIA attributes.',
+      type: 'SpinnerAriaAttribute',
+      defaultValue: null,
+      isAria: true,
+      allowedValues: { 'aria-label': 'string' },
+    },
+    {
+      description: 'Add ARIA attributes.',
+      type: 'WordmarkAriaAttribute',
+      defaultValue: null,
+      isAria: true,
+      allowedValues: { 'aria-label': 'string', 'aria-current': 'string' },
+    },
+  ])('should return correctly formatted string for: %j', (meta) => {
+    expect(formatPropType(meta)).toMatchSnapshot();
+  });
+});
+
+describe('formatPropDefaultValue()', () => {
+  it.each<PropMeta>([
+    {
+      description: 'The text size.',
+      type: 'AccordionSize',
+      defaultValue: 'small',
+      isBreakpointCustomizable: true,
+      allowedValues: ['small', 'medium'],
+    },
+    {
+      description:
+        '@deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the banner can be closed/removed by the user.',
+      type: 'boolean',
+      defaultValue: null,
+      isDeprecated: true,
+      allowedValues: 'boolean',
+    },
+    {
+      description:
+        "Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.   // prettier-ignore",
+      type: 'LinkTileModelSignatureLinkDirection',
+      defaultValue: { base: 'column', xs: 'row' },
+      isBreakpointCustomizable: true,
+      allowedValues: ['row', 'column'],
+    },
+    {
+      description: 'A Boolean attribute indicating that a like button should be shown.',
+      type: 'boolean',
+      defaultValue: true,
+      allowedValues: 'boolean',
+    },
+    {
+      description: 'If true the modal uses max viewport height and width. Should only be used for mobile.',
+      type: 'boolean',
+      defaultValue: false,
+      isBreakpointCustomizable: true,
+      allowedValues: 'boolean',
+    },
+    {
+      description: 'Adapts the model of the component.',
+      type: 'ModelSignatureModel',
+      defaultValue: '911',
+      allowedValues: ['718', '911', 'boxster', 'cayenne', 'cayman', 'macan', 'panamera', 'taycan', 'turbo-s', 'turbo'],
+    },
+    {
+      description: 'The selected values.',
+      type: 'string[]',
+      defaultValue: [],
+      isArray: true,
+      allowedValues: 'string',
+    },
+    {
+      description: 'The total count of items.',
+      type: 'number',
+      defaultValue: 1,
+      isRequired: true,
+      allowedValues: 'number',
+    },
+  ])('should return correctly formatted string for: %j', (meta) => {
+    expect(formatPropDefaultValue(meta)).toMatchSnapshot();
+  });
+});
+
+describe('formatEventType()', () => {
+  it.each<EventMeta>([
+    {
+      description:
+        "@deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when carousel's content slides.",
+      type: 'CarouselUpdateEventDetail',
+      typeDetail: '{ activeIndex: number; previousIndex: number }',
+      isDeprecated: true,
+    },
+    {
+      description: "Emitted when carousel's content slides.",
+      type: 'CarouselUpdateEventDetail',
+      typeDetail: '{ activeIndex: number; previousIndex: number }',
+    },
+    { description: 'Emitted when the component requests to be dismissed.', type: 'void' },
+    {
+      description: 'Emitted when the like button is clicked.',
+      type: 'LinkTileProductLikeEventDetail',
+      typeDetail: '{ liked: boolean }',
+    },
+    {
+      description:
+        '@deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when sorting is changed.',
+      type: 'TableUpdateEventDetail',
+      typeDetail: '{ id: string; active?: boolean; direction?: Direction }',
+      isDeprecated: true,
+    },
+  ])('should return correctly formatted string for: %j', (meta) => {
+    expect(formatEventType(meta)).toMatchSnapshot();
   });
 });

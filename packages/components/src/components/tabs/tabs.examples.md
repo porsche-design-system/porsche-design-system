@@ -1,4 +1,4 @@
-# Tabs
+<ComponentHeading name="Tabs"></ComponentHeading>
 
 The `p-tabs` component makes it easy to explore and switch between different views. You can organize and allow
 navigation between groups of content that are related and at the same level of hierarchy. The component handles the
@@ -26,7 +26,7 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ## Weight
@@ -37,7 +37,7 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 </Notification>
 
 <Playground :markup="weightMarkup" :config="config">
-  <SelectOptions v-model="weight" :values="weights" name="weight"></SelectOptions>
+  <PlaygroundSelect v-model="weight" :values="weights" name="weight"></PlaygroundSelect>
 </Playground>
 
 ## Gradient color
@@ -51,7 +51,7 @@ background and gradient has to align to your chosen background.
 </Notification>
 
 <Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
-  <SelectOptions v-model="gradientColor" :values="gradientColors" name="gradientColor"></SelectOptions>
+  <PlaygroundSelect v-model="gradientColor" :values="gradientColors" name="gradientColor"></PlaygroundSelect>
 </Playground>
 
 ## Active Tab

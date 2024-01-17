@@ -4,6 +4,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasHeading,
   hasNamedSlot,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
@@ -11,14 +12,11 @@ import {
   setScrollLock,
   THEMES,
   validateProps,
+  warnIfAriaAndHeadingPropsAreUndefined,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { ModalAriaAttribute } from './modal-utils';
-import {
-  MODAL_ARIA_ATTRIBUTES,
-  warnIfAriaAndHeadingPropsAreUndefined,
-  clickStartedInScrollbarTrack,
-} from './modal-utils';
+import { MODAL_ARIA_ATTRIBUTES, clickStartedInScrollbarTrack } from './modal-utils';
 import { footerShadowClass, getComponentCss } from './modal-styles';
 import { throttle } from 'throttle-debounce';
 
@@ -74,6 +72,7 @@ export class Modal {
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
+  private scrollContainerEl: HTMLElement; // Necessary to avoid stacking background bug in safari
   private focusedElBeforeOpen: HTMLElement;
   private dismissBtn: HTMLElement;
   private hasHeader: boolean;
@@ -112,7 +111,7 @@ export class Modal {
     if (this.open) {
       // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed although it shouldn't
       for (let i = 0; i < 4; i++) {
-        setTimeout(() => (this.host.scrollTop = 0), i * 5);
+        setTimeout(() => (this.scrollContainerEl.scrollTop = 0), i * 5);
       }
       if (this.hasFooter) {
         this.onScroll();
@@ -128,11 +127,11 @@ export class Modal {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Modal>(this, 'disableCloseButton', 'Please use dismissButton prop instead.');
-    if (this.open) {
-      warnIfAriaAndHeadingPropsAreUndefined(this.host, this.heading, this.aria);
-    }
-    this.hasHeader = !!this.heading || hasNamedSlot(this.host, 'heading');
+    this.hasHeader = hasHeading(this.host, this.heading);
     this.hasFooter = hasNamedSlot(this.host, 'footer');
+    if (this.open) {
+      warnIfAriaAndHeadingPropsAreUndefined(this.host, this.hasHeader, this.aria);
+    }
 
     attachComponentCss(
       this.host,
@@ -148,55 +147,62 @@ export class Modal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onMouseDown={!this.disableBackdropClick && this.onMouseDown} onScroll={this.hasFooter && this.onScroll}>
+      <Host>
         <div
-          class="root"
-          role="dialog"
-          {...parseAndGetAriaAttributes({
-            'aria-modal': true,
-            'aria-label': this.heading,
-            'aria-hidden': !this.open,
-            ...parseAndGetAriaAttributes(this.aria),
-          })}
-          tabIndex={-1}
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          /* @ts-ignore */
-          inert={this.open ? null : true} // prevents focusable elements within nested open accordion
-          ref={(el) => (this.dialog = el)}
+          class="scroll-container"
+          onScroll={this.hasFooter && this.onScroll}
+          onMouseDown={!this.disableBackdropClick && this.onMouseDown}
+          ref={(el) => (this.scrollContainerEl = el)}
         >
-          {this.hasDismissButton && (
-            <div class="controls">
-              <PrefixedTagNames.pButtonPure
-                class="dismiss"
-                type="button"
-                ref={(el) => (this.dismissBtn = el)}
-                hideLabel
-                icon="close"
-                onClick={this.dismissModal}
-                theme={this.theme}
-              >
-                Dismiss modal
-              </PrefixedTagNames.pButtonPure>
+          <div
+            class="root"
+            role="dialog"
+            {...parseAndGetAriaAttributes({
+              'aria-modal': true,
+              'aria-label': this.heading,
+              'aria-hidden': !this.open,
+              ...parseAndGetAriaAttributes(this.aria),
+            })}
+            tabIndex={-1}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            /* @ts-ignore */
+            inert={this.open ? null : true} // prevents focusable elements within nested open accordion
+            ref={(el) => (this.dialog = el)}
+          >
+            {this.hasDismissButton && (
+              <div class="controls">
+                <PrefixedTagNames.pButtonPure
+                  class="dismiss"
+                  type="button"
+                  ref={(el) => (this.dismissBtn = el)}
+                  hideLabel
+                  icon="close"
+                  onClick={this.dismissModal}
+                  theme={this.theme}
+                >
+                  Dismiss modal
+                </PrefixedTagNames.pButtonPure>
+              </div>
+            )}
+            {this.hasHeader && (
+              <div class="header">{this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}</div>
+            )}
+            <div class="content">
+              <slot onSlotchange={this.onSlotChange} />
             </div>
-          )}
-          {this.hasHeader && (
-            <div class="header">{this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}</div>
-          )}
-          <div class="content">
-            <slot onSlotchange={this.onSlotChange} />
+            {this.hasFooter && (
+              <div class="footer" ref={(el) => (this.footer = el)}>
+                <slot name="footer" />
+              </div>
+            )}
           </div>
-          {this.hasFooter && (
-            <div class="footer" ref={(el) => (this.footer = el)}>
-              <slot name="footer" />
-            </div>
-          )}
         </div>
       </Host>
     );
   }
 
   private updateFocusTrap(isOpen: boolean): void {
-    setFocusTrap(this.host, isOpen, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
+    setFocusTrap(this.host, isOpen, this.dialog, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
     setScrollLock(isOpen);
   }
 
@@ -219,7 +225,7 @@ export class Modal {
     // but layout with position: fixed and flex for vertical/horizontal centering scrollable content
     // causes tons of problems, also considering fullscreen mode, etc.
     // see https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
-    const { scrollHeight, clientHeight, scrollTop } = this.host;
+    const { scrollHeight, clientHeight, scrollTop } = this.scrollContainerEl;
     if (scrollHeight > clientHeight) {
       const shouldApplyShadow =
         scrollHeight - clientHeight > scrollTop + parseInt(getComputedStyle(this.dialog).marginBottom, 10);
@@ -228,7 +234,10 @@ export class Modal {
   });
 
   private onMouseDown = (e: MouseEvent): void => {
-    if ((e.composedPath() as HTMLElement[])[0] === this.host && !clickStartedInScrollbarTrack(this.host, e)) {
+    if (
+      (e.composedPath() as HTMLElement[])[0] === this.scrollContainerEl &&
+      !clickStartedInScrollbarTrack(this.scrollContainerEl, e)
+    ) {
       this.dismissModal();
     }
   };

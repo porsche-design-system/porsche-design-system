@@ -1,7 +1,7 @@
-# Pin Code
+<ComponentHeading name="Pin Code"></ComponentHeading>
 
 The `p-pin-code` component is optimized for entering sequences of digits. The most common use case is for entering
-`one-time-passwords` (OTP) or pin codes. The input fields allow only one digit at a time. When a digit is entered, the
+one-time-passwords (OTP) or pin codes. The input fields allow only one digit at a time. When a digit is entered, the
 focus shifts automatically to the next input, until every input is filled.
 
 A few things to note:
@@ -24,7 +24,7 @@ component can be used with or without a label, but it's recommended to keep the 
 whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.
 
 <Playground :markup="hideLabelMarkup" :config="config">
-  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
+  <PlaygroundSelect v-model="hideLabel" :values="hideLabels" name="hideLabel"></PlaygroundSelect>
 </Playground>
 
 ## With description text
@@ -40,7 +40,7 @@ By default, the `p-pin-code` component renders four input fields. For other secu
 `length` prop between `1` and `6`.
 
 <Playground :markup="lengthMarkup" :config="config">
-  <SelectOptions v-model="length" :values="lengths"></SelectOptions>
+  <PlaygroundSelect v-model="length" :values="lengths"></PlaygroundSelect>
 </Playground>
 
 ## Type
@@ -50,7 +50,7 @@ setting the prop `type` to `password`. Even with `type=password`, the input fiel
 digits only.
 
 <Playground :markup="typeMarkup" :config="config">
-  <SelectOptions v-model="type" :values="types"></SelectOptions>
+  <PlaygroundSelect v-model="type" :values="types"></PlaygroundSelect>
 </Playground>
 
 ## Validation states
@@ -59,7 +59,7 @@ The `p-pin-code` component supports the visualisation of inline validation. The 
 depending on the defined `state`.
 
 <Playground :markup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
 </Playground>
 
 ## Disabled
@@ -134,7 +134,7 @@ The `p-pin-code` component performs basic validation of the pasted value:
 Try copy+paste `1234` into any of the inputs in the example below.
 
 <Playground :markup="hideLabelMarkup" :config="config">
-  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
+  <PlaygroundSelect v-model="hideLabel" :values="hideLabels" name="hideLabel"></PlaygroundSelect>
 </Playground>
 
 <script lang="ts">

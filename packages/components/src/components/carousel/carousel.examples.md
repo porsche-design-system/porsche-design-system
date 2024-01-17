@@ -1,4 +1,4 @@
-# Carousel
+<ComponentHeading name="Carousel"></ComponentHeading>
 
 The `p-carousel` component allows related or similar content to be consumed on a step by step basis with a better
 overview than just showing them in a grid or as a list. The reason for this is, that only a certain amount of slides is
@@ -27,7 +27,7 @@ The amount of slides visible at the same time can be specified by setting the `s
 The value can either be a static number, or a breakpoint customizable object.
 
 <Playground :markup="slidesPerPageMarkup" :config="config">
-  <SelectOptions v-model="slidesPerPage" :values="slidesPerPages" name="slidesPerPage"></SelectOptions>
+  <PlaygroundSelect v-model="slidesPerPage" :values="slidesPerPages" name="slidesPerPage"></PlaygroundSelect>
 </Playground>
 
 ## Slides with flexible widths
@@ -42,16 +42,24 @@ In case you want to have slides with different widths you can use `slidesPerPage
 
 ## Heading
 
-In order to have an accessible `p-carousel`, it is mandatory to have a `heading` either set via property or by having a
-named slot.
+The `heading` of `p-carousel` can be either set via property or by having a named slot. The heading size can be changed
+by using the property `headingSize`.
 
-<Playground :markup="heading" :config="config"></Playground>
+<Playground :markup="headingSizeMarkup" :config="config">
+  <PlaygroundSelect v-model="headingSize" :values="headingSizes" name="headingSize"></PlaygroundSelect>
+</Playground>
 
 ## Description
 
 Right after the `heading`, an additional `description` can be added either via prop or named slot.
 
 <Playground :markup="description" :config="config"></Playground>
+
+## Controls
+
+Next to `prev/next` buttons, a slot `controls` can be added via named slot.
+
+<Playground :markup="controls" :config="config"></Playground>
 
 ## Align Header
 
@@ -62,7 +70,7 @@ The heading and description can be aligned via `alignHeader`.
 </Notification>
 
 <Playground :markup="alignHeaderMarkup" :config="config">
-  <SelectOptions v-model="alignHeader" :values="alignHeaders" name="alignHeader"></SelectOptions>
+  <PlaygroundSelect v-model="alignHeader" :values="alignHeaders" name="alignHeader"></PlaygroundSelect>
 </Playground>
 
 ## Width
@@ -70,7 +78,7 @@ The heading and description can be aligned via `alignHeader`.
 Defines horizontal spacing which is aligned with the [Porsche Grid](styles/grid).
 
 <Playground :markup="widthMarkup" :config="config">
-  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
+  <PlaygroundSelect v-model="width" :values="widths" name="width"></PlaygroundSelect>
 </Playground>
 
 ## Wrap Content (deprecated)
@@ -98,7 +106,7 @@ The pagination indicators underneath the slides can be removed via `pagination="
 </Notification>
 
 <Playground :markup="paginationMarkup" :config="config">
-  <SelectOptions v-model="pagination" :values="paginations" name="pagination"></SelectOptions>
+  <PlaygroundSelect v-model="pagination" :values="paginations" name="pagination"></PlaygroundSelect>
 </Playground>
 
 ## Jump to slide (activeSlideIndex)
@@ -165,7 +173,7 @@ By default, every carousel item gets a predefined border radius of "large" (`12p
 CSS property (see also [Border Styles](styles/border#styles)).
 
 <Playground :markup="customBorderRadiusMarkup" :config="config">
-  <SelectOptions v-model="customBorderRadius" :values="customBorderRadii" name="borderRadius"></SelectOptions>
+  <PlaygroundSelect v-model="customBorderRadius" :values="customBorderRadii" name="borderRadius"></PlaygroundSelect>
 </Playground>
 
 ## Skip Carousel Entries
@@ -184,9 +192,9 @@ over all carousel entries. The skip link is only visible when it receives focus 
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import type { Theme } from '@/models';
-import type { CarouselWidth, CarouselAlignHeader } from './carousel-utils'; 
+import type { CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils'; 
 import { getCarouselCodeSamples } from '@porsche-design-system/shared';
-import { CAROUSEL_WIDTHS, CAROUSEL_ALIGN_HEADERS, CAROUSEL_ALIGN_HEADERS_DEPRECATED } from './carousel-utils';
+import { CAROUSEL_ALIGN_HEADERS, CAROUSEL_ALIGN_HEADERS_DEPRECATED, CAROUSEL_WIDTHS  } from './carousel-utils';
 import { borderRadius } from '@porsche-design-system/components-js/styles';
 
 @Component
@@ -199,7 +207,7 @@ export default class Code extends Vue {
 
   basicHeading = "Some heading";
   basicDescription = "Some description";
-  getSlides = (amount = 6) => Array.from(Array(amount), (_, i) => `<div>Slide ${i+1}</div>`).join('\n  ');
+  getSlides = (amount = 6, join = '\n  ') => Array.from(Array(amount), (_, i) => `<div>Slide ${i+1}</div>`).join(join);
 
   basic = `<p-carousel heading="${this.basicHeading}">
   ${this.getSlides(4)}
@@ -222,14 +230,18 @@ export default class Code extends Vue {
   <div style="width: 50vw">Slide 6 <p>(50vw)</p></div>
 </p-carousel>`;
 
-  heading = `<p-carousel heading="${this.basicHeading}">
+  headingSize: CarouselHeadingSize = 'x-large';
+  headingSizes = ['x-large', 'xx-large'];
+  get headingSizeMarkup() {
+    return `<p-carousel heading="${this.basicHeading}" heading-size="${this.headingSize}">
   ${this.getSlides(3)}
 </p-carousel>
 
-<p-carousel>
-  <h3 slot="heading">Some slotted heading</h3>
+<p-carousel heading-size="${this.headingSize}">
+  <h3 slot="heading">${this.basicHeading}</h3>
   ${this.getSlides(3)}
 </p-carousel>`;
+}
 
   description = `<p-carousel heading="${this.basicHeading}" description="${this.basicDescription}">
   ${this.getSlides(3)}
@@ -239,6 +251,12 @@ export default class Code extends Vue {
   <p slot="description">Some slotted description</p>
   ${this.getSlides(3)}
 </p-carousel>`;
+
+  controls = `<p-carousel heading="${this.basicHeading}" description="${this.basicDescription}">
+  <div slot="controls">Some slotted controls</div>
+  ${this.getSlides(3)}
+</p-carousel>`;
+
 
   rewind = `<p-carousel rewind="false" heading="${this.basicHeading}">
   ${this.getSlides(3)}
@@ -256,6 +274,7 @@ export default class Code extends Vue {
   alignHeaders = CAROUSEL_ALIGN_HEADERS.map(item => CAROUSEL_ALIGN_HEADERS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item)
   get alignHeaderMarkup() {
     return `<p-carousel align-header="${this.alignHeader}" heading="${this.basicHeading}" description="${this.basicDescription}">
+  <div slot="controls">Some slotted controls</div>  
   ${this.getSlides(3)}
 </p-carousel>`;
 }
@@ -303,13 +322,14 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
   ${this.getSlides(4)}
 </p-carousel>
 <p-heading id="target" tag="h2" size="x-large">Next Heading</p-heading>`;
-}
+
+};
 </script>
 
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
 
-  :deep(p-carousel div) {
+  :deep(p-carousel div:not([slot="controls"])) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -328,5 +348,9 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
     + button { 
       margin: 0 0 0 .5rem;
     }
+  }
+
+  :deep(.demo) {
+    width: 100%
   }
 </style>

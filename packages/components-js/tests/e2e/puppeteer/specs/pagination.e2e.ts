@@ -20,7 +20,7 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-pagination');
 const getNextButton = () => selectNode(page, 'p-pagination >>> li:last-child span');
 const getNav = () => selectNode(page, 'p-pagination >>> nav');
-const getPaginationItems = async () => (await (await getNav()).$$('span')).slice(1, -1); // without prev and next
+const getPaginationItems = async () => (await (await getNav()).$$('span:not(.ellipsis)')).slice(1, -1); // without prev and next
 
 const initPagination = (opts?: { activePage?: number }) => {
   const { activePage = 1 } = opts || {};
@@ -66,13 +66,10 @@ describe('events', () => {
   });
 });
 
-// TODO: Component has to be refactored. Test fails atm. because it updates on initial render.
-xdescribe('lifecycle', () => {
+describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
     await initPagination();
     const status = await getLifecycleStatus(page);
-
-    console.log(status);
 
     expect(status.componentDidLoad['p-pagination'], 'componentDidLoad: p-pagination').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);

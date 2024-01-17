@@ -35,6 +35,7 @@ export let documentKeydownListener: (e: KeyboardEvent) => void;
 export const setFocusTrap = (
   host: HTMLElement,
   isOpen: boolean,
+  firstFocusableElement: HTMLElement,
   closeBtn?: HTMLElement, // irrelevant for disconnectedCallback
   closeFn?: () => void // irrelevant for disconnectedCallback
 ): void => {
@@ -45,11 +46,11 @@ export const setFocusTrap = (
     focusableElements = getFirstAndLastFocusableElement(host, closeBtn);
     documentKeydownListener = (e: KeyboardEvent): void => {
       const { key, shiftKey } = e;
-      const { activeElement, firstElementChild } = host.shadowRoot;
+      const { activeElement } = host.shadowRoot;
       if (key === 'Escape') {
         closeFn();
       } else if (key === 'Tab') {
-        if (shiftKey && activeElement === firstElementChild) {
+        if (shiftKey && activeElement === firstFocusableElement) {
           // when component is opened initially, the dialog is focused and shift + tab would break out of cycle
           e.preventDefault();
           focusableElements[1]?.focus();

@@ -1,13 +1,11 @@
 <style>
-  .playground {
-    height: 300px;
-    padding: 0;
-    transform: translateX(0);
-    border: 1px solid deeppink;
+  #app {
+    /* TODO: not needed as soon as all top layer components are refactored with iFrames */
+    transform: unset;
   }
 </style>
 
-<div data-prefix="my-prefix" class="playground light" title="should render prefixed toast info on light background">
+<div data-prefix="my-prefix">
   <my-prefix-p-toast></my-prefix-p-toast>
 </div>
 

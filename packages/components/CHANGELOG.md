@@ -14,6 +14,119 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.10.0] - 2024-01-17
+
+### [3.10.0-rc.5] - 2024-01-16
+
+#### Changed
+
+- `visibility` css property can be overridden on all components, e.g. to make use of `visibility: hidden;`  
+  ([#2988](https://github.com/porsche-design-system/porsche-design-system/pull/2988))
+- `Carousel`: Named slot `header` renamed to `controls`
+  ([#2992](https://github.com/porsche-design-system/porsche-design-system/pull/2992))
+
+### [3.10.0-rc.4] - 2024-01-15
+
+#### Added
+
+- `Icon`: Auto-flipping icons (certain ones only) in RTL (right-to-left) mode
+  ([#2957](https://github.com/porsche-design-system/porsche-design-system/pull/2957))
+- `Carousel`: Prop `heading-size`, named slot `header`
+  ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
+- `Accordion`: support for custom click area for `compact` variant
+  ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
+- `@font-face` supports Middle East languages
+  ([#2946](https://github.com/porsche-design-system/porsche-design-system/pull/2946))
+- Partials: `getFontLinks` supports preloading `arabic`, `pashto` and `urdu` subsets
+  ([#2946](https://github.com/porsche-design-system/porsche-design-system/pull/2946))
+
+#### Changed
+
+- `Flyout Navigation`: Improved validation and `activeIdentifier` isn't automatically updated anymore
+  ([#2935](https://github.com/porsche-design-system/porsche-design-system/pull/2935))
+- `Carousel`: Position and width of heading and description
+  ([#2915](https://github.com/porsche-design-system/porsche-design-system/pull/2915))
+- `Model Signature` asset for `model="macan"`
+- Aligned naming of all `CustomEvent<T>` types and deprecated old ones since they are in fact typing the `detail: T`
+  property of the event
+
+```diff
+- AccordionUpdateEvent
++ AccordionUpdateEventDetail
+- CarouselUpdateEvent
++ CarouselUpdateEventDetail
+- FlyoutNavigationUpdateEvent
++ FlyoutNavigationUpdateEventDetail
+- LinkTileProductLikeEvent
++ LinkTileProductLikeEventDetail
+- MultiSelectUpdateEvent
++ MultiSelectUpdateEventDetail
+- PaginationUpdateEvent
++ PaginationUpdateEventDetail
+- PinCodeUpdateEvent
++ PinCodeUpdateEventDetail
+- SegmentedControlUpdateEvent
++ SegmentedControlUpdateEventDetail
+- StepperHorizontalUpdateEvent
++ StepperHorizontalUpdateEventDetail
+- SwitchUpdateEvent
++ SwitchUpdateEventDetail
+- TableUpdateEvent
++ TableUpdateEventDetail
+- TabsUpdateEvent
++ TabsUpdateEventDetail
+- TabsBarUpdateEvent
++ TabsBarUpdateEventDetail
+```
+
+#### Fixed
+
+- `Pin Code`: Focus correct input when clicking on label
+  ([#2985](https://github.com/porsche-design-system/porsche-design-system/pull/2985))
+- `Flyout Navigation`: Focus dismiss button after opening
+  ([#2935](https://github.com/porsche-design-system/porsche-design-system/pull/2935))
+- `Accordion`: Alignment of slotted heading with custom padding
+  ([#2920](https://github.com/porsche-design-system/porsche-design-system/pull/2920))
+- `Modal`: Scrollbar is hidden ([#2907](https://github.com/porsche-design-system/porsche-design-system/pull/2907))
+- `Toast`: `max-width` when used in scale mode
+  ([#2960](https://github.com/porsche-design-system/porsche-design-system/pull/2960))
+
+### [3.10.0-rc.3] - 2023-12-12
+
+### [3.10.0-rc.2] - 2023-12-12
+
+### [3.10.0-rc.1] - 2023-12-11
+
+#### Added
+
+- **[EXPERIMENTAL]** `Link Tile Product`
+  ([#2909](https://github.com/porsche-design-system/porsche-design-system/pull/2909))
+
+#### Fixed
+
+- `Wordmark`, `Crest` and `Marque`: custom clickable area
+  ([#2930](https://github.com/porsche-design-system/porsche-design-system/pull/2930))
+
+### [3.10.0-rc.0] - 2023-12-07
+
+#### Added
+
+- **[EXPERIMENTAL]** `Flyout Navigation`
+  ([#2906](https://github.com/porsche-design-system/porsche-design-system/pull/2906))
+- Prop `submit-button` to show/hide a submit button for `Text Field Wrapper` `type="search"` if wrapped inside a form
+  ([#2908](https://github.com/porsche-design-system/porsche-design-system/pull/2908))
+
+#### Changed
+
+- `Accordion`: removed `border-bottom` if used standalone
+  ([#2911](https://github.com/porsche-design-system/porsche-design-system/pull/2911))
+- `display` css property can be overridden on all components, e.g. to make use of `display: none;` within media
+  queries  
+  ([#2913](https://github.com/porsche-design-system/porsche-design-system/pull/2913))
+- `Pagination`: Prop `maxNumberOfPageLinks` is deprecated and has no effect anymore, instead there is responsive
+  behavior out of the box with full SSR support
+  ([#2898](https://github.com/porsche-design-system/porsche-design-system/pull/2898))
+
 ### [3.9.0] - 2023-11-24
 
 ### [3.9.0-rc.0] - 2023-11-23
@@ -47,6 +160,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Select Wrapper`: Select dropdown is now visible if it overflows the `Table` component
+  ([#2885](https://github.com/porsche-design-system/porsche-design-system/pull/2885))
 - `Select Wrapper` keyboard and scroll behavior
   ([#2864](https://github.com/porsche-design-system/porsche-design-system/pull/2864))
 - Safari 15 default margin of button elements in several components

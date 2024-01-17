@@ -1,0 +1,32 @@
+{
+  "name": "@porsche-design-system/styles",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/esm/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "yarn clean:build && yarn build:fontFace && yarn build:bundle",
+    "build:fontFace": "ts-node scripts/buildFontFace.ts",
+    "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "test": "yarn test:unit",
+    "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
+    "clean": "yarn clean:node_modules && yarn clean:build",
+    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
+    "clean:build": "rm -rf ./dist && rm -rf ./src"
+  },
+  "devDependencies": {
+    "@porsche-design-system/fonts": "0.0.0",
+    "@porsche-design-system/shared": "0.0.0",
+    "jss": "^10.10.0",
+    "jss-preset-default": "^10.10.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.3.3"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

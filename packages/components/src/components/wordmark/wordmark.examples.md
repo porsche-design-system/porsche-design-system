@@ -1,4 +1,4 @@
-# Wordmark
+<ComponentHeading name="Wordmark"></ComponentHeading>
 
 The `p-wordmark` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image
 and represents the quality of the product.
@@ -10,7 +10,7 @@ and represents the quality of the product.
 By default, the sizing is fluid, which can be changed to the following values.
 
 <Playground :markup="sizeMarkup" :config="config">
-  <SelectOptions v-model="size" :values="sizes" name="size"></SelectOptions>
+  <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
 </Playground>
 
 ---

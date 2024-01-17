@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accessibility should expose correct initial accessibility tree properties 1`] = `
+{
+  "children": [
+    {
+      "description": "Add to wishlist",
+      "name": "Some product name 1.199,00 €",
+      "role": "link",
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "Add to wishlist",
+                          "role": "StaticText",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "name": "Add to wishlist",
+              "role": "button",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+      ],
+      "role": "none",
+    },
+    {
+      "children": [
+        {
+          "role": "none",
+        },
+      ],
+      "name": "",
+      "role": "generic",
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "name": "Some product name",
+              "role": "StaticText",
+            },
+          ],
+          "level": 3,
+          "name": "Some product name",
+          "role": "heading",
+        },
+        {
+          "children": [
+            {
+              "name": "1.199,00 €",
+              "role": "StaticText",
+            },
+          ],
+          "name": "",
+          "role": "paragraph",
+        },
+        {
+          "role": "none",
+        },
+      ],
+      "role": "none",
+    },
+  ],
+  "name": "",
+  "role": "generic",
+}
+`;

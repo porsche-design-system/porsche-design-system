@@ -153,13 +153,13 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
   return getCss({
     '@global': {
       ':host': {
+        display: 'inline-block',
+        verticalAlign: 'top',
         ...addImportantToEachRule({
           position: 'relative',
-          display: 'inline-block',
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
-        verticalAlign: 'top',
       },
       p: {
         ...textSmallStyle,
@@ -209,7 +209,6 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
     },
     label: getHiddenTextJssStyle(),
     icon: {
-      display: 'inline-block', // TODO: should be changed in icon!
       transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
     },
     spacer: {

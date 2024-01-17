@@ -1,4 +1,4 @@
-# Banner
+<ComponentHeading name="Banner"></ComponentHeading>
 
 The `p-banner` component provides action-based feedback messages (e.g. after performing a task) or to convey
 informational and/or critical notification like some site related topics.
@@ -22,7 +22,7 @@ styling" section.
 </Notification>
 
 <Playground :frameworkMarkup="stateMarkup" :config="config">
-  <SelectOptions v-model="state" :values="states" name="state"></SelectOptions>
+  <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
   <br><br>
   <p-button type="button" :theme="theme" @click="isBannerStateOpen = true">Open Banner</p-button>
   <p-banner :theme="theme" :open="isBannerStateOpen" heading="Some Heading" description="Some Description" :state="state"

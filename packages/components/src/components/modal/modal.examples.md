@@ -1,4 +1,4 @@
-# Modal
+<ComponentHeading name="Modal"></ComponentHeading>
 
 The `p-modal` is a temporary overlay to focus the user's attention on one task while interactions with the underlying
 page are blocked. It is only used as highly disruptive modal notification to present important information until
@@ -41,7 +41,7 @@ key you need to register an event listener for the `dismiss` event which is emit
 The size of `p-modal` adjusts itself to the content with a predefined min/max width.
 
 <Playground :markup="widthMarkup" :config="config">
-  <SelectOptions v-model="width" :values="widths" name="width"></SelectOptions>
+  <PlaygroundSelect v-model="width" :values="widths" name="width"></PlaygroundSelect>
 </Playground>
 
 Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to

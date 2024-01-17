@@ -1,4 +1,4 @@
-# Link Social
+<ComponentHeading name="Link Social"></ComponentHeading>
 
 <Notification heading="Important note" state="error">
   The <code>link-social</code> component is <strong>deprecated</strong> and will be removed with next major release.<br>

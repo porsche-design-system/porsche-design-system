@@ -1,4 +1,4 @@
-# Pagination
+<ComponentHeading name="Pagination"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 
@@ -12,21 +12,13 @@
 To adapt the pagination to the specific viewport context, the amount of displayed page items varies between either `7`
 (desktop/tablet) or `5` (mobile). The components handles responsive viewport sizing by default.
 
-<Playground :markup="basic()" :config="config"></Playground>
+<Playground :markup="basic" :config="config"></Playground>
 
-### Max Number of Page Links: 7 (desktop)
+## Max Number of Page Links (deprecated)
 
-<Playground :markup="basic('7')" :config="config"></Playground>
-
-### Max Number of Page Links: 5 (mobile)
-
-<Playground :markup="basic('5')" :config="config"></Playground>
-
-### Responsive
-
-The settings above can also be used on different major breakpoints `xs`, `s`, `m`, `l` and `xl`.
-
-<Playground :markup="basic('{ base: 5, s: 7 }')" :config="config"></Playground>
+<Notification heading="Important note" state="warning">
+  The <code>maxNumberOfPageLinks</code> property is deprecated since v3.10.0 and has no effect anymore. Therefor, it will be removed with the next major release.
+</Notification>
 
 ## Without last page
 
@@ -42,18 +34,9 @@ behaviour of the pagination component can be changed.
 
 <Playground class="playground-pagination" :markup="behaviour" :config="config">
   <template v-slot:default="{ theme }">
-    <label style="display:inline-block; margin-right: 16px;">
-      <p-text :theme="theme" tag="span" size="x-small">Total items count</p-text>
-      <input type="number" v-bind:value="totalItemsCount" v-on:input="totalItemsCount = $event.target.value" />
-    </label>
-    <label style="display:inline-block; margin-right: 16px;">
-      <p-text :theme="theme" tag="span" size="x-small">Items per page</p-text>
-      <input type="number" v-bind:value="itemsPerPage" v-on:input="itemsPerPage = $event.target.value" />
-    </label>
-    <label style="display:inline-block">
-      <p-text :theme="theme" tag="span" size="x-small">Active page</p-text>
-      <input type="number" v-bind:value="activePage" v-on:input="activePage = $event.target.value" />
-    </label>
+    <PlaygroundInput type="number" v-model="totalItemsCount" name="Total items count"></PlaygroundInput>
+    <PlaygroundInput type="number" v-model="itemsPerPage" name="Items per page"></PlaygroundInput>
+    <PlaygroundInput type="number" v-model="activePage" name="Active page"></PlaygroundInput>
   </template>
 </Playground>
 
@@ -69,16 +52,12 @@ export default class Code extends Vue {
   itemsPerPage = 25;
   activePage = 1;
 
-  basic(max: string) {
-    const attr = max ? ` max-number-of-page-links="${max}"` : '';
-    return `<p-pagination total-items-count="500" items-per-page="25" active-page="1"${attr}></p-pagination>`;
-  }
+  basic =`<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>`;
+  withoutLastPage = this.basic.replace('>', ' show-last-page="false">');
 
   get behaviour() {
     return `<p-pagination total-items-count="${this.totalItemsCount}" items-per-page="${this.itemsPerPage}" active-page="${this.activePage}"></p-pagination>`;
   }
-
-  withoutLastPage = this.basic().replace('>', ' show-last-page="false">');
 
   mounted(){
     this.registerEvents();

@@ -7,7 +7,7 @@ import {
   hasVisibleIcon,
   parseAndGetAriaAttributes,
 } from '../../utils';
-import type { AlignLabel, AlignLabelDeprecated, ButtonType, TextWeight } from '../../types';
+import type { AlignLabel, AlignLabelDeprecated, ButtonType, TypographyTextWeight } from '../../types';
 
 export type ButtonPureType = ButtonType;
 export type ButtonPureIcon = LinkButtonIconName;
@@ -15,7 +15,7 @@ export type ButtonPureAriaAttribute = ButtonAriaAttribute;
 /** @deprecated */
 export type ButtonPureAlignLabelDeprecated = AlignLabelDeprecated;
 export type ButtonPureAlignLabel = AlignLabel;
-export type ButtonPureWeight = TextWeight;
+export type ButtonPureWeight = TypographyTextWeight;
 export type ButtonPureSize = TextSize;
 
 export const warnIfIsLoadingAndIconIsNone = (

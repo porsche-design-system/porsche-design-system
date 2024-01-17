@@ -11,7 +11,9 @@ export type TabsBarWeightDeprecated = (typeof TABS_BAR_WEIGHTS_DEPRECATED)[numbe
 export const TABS_BAR_WEIGHTS = ['regular', 'semi-bold', ...TABS_BAR_WEIGHTS_DEPRECATED] as const;
 export type TabsBarWeight = (typeof TABS_BAR_WEIGHTS)[number];
 
+/** @deprecated */
 export type TabsBarUpdateEvent = { activeTabIndex: number };
+export type TabsBarUpdateEventDetail = TabsBarUpdateEvent;
 
 /** @deprecated */
 export type TabsBarGradientColorScheme = ScrollerGradientColorScheme;

@@ -13,11 +13,16 @@
     >
       <ul>
         <li v-for="(tabs, page, index) in pages" :key="index">
-          <router-link :to="getRoute(category, page)" v-slot="{ isActive, href, navigate }">
-            <p-link-pure :theme="storefrontTheme" icon="none" :active="isActive">
+          <router-link
+            :to="getRoute(category, page, !Array.isArray(tabs) ? Object.keys(tabs)[0] : undefined)"
+            v-slot="{ href, navigate }"
+          >
+            <p-link-pure :theme="storefrontTheme" icon="none" :active="isExtendedActive(page)">
               <a :href="href" @click="navigate"
-                >{{ page }}<span title="deprecated">{{ getDeprecated(category, page) }}</span></a
-              >
+                >{{ page }}
+                <span v-if="isComponentWithProp(category, page, 'isDeprecated')" title="deprecated"> 🚫</span>
+                <span v-if="isComponentWithProp(category, page, 'isExperimental')" title="experimental"> 🧪</span>
+              </a>
             </p-link-pure>
           </router-link>
         </li>
@@ -35,7 +40,7 @@
   import { Route } from 'vue-router';
   import { config as storefrontConfig } from '@/../storefront.config';
   import type { TagName } from '@porsche-design-system/shared';
-  import { getComponentMeta } from '@porsche-design-system/component-meta';
+  import { ComponentMeta, getComponentMeta } from '@porsche-design-system/component-meta';
 
   @Component({
     components: {},
@@ -52,8 +57,13 @@
       return this.$store.getters.isSearchActive;
     }
 
-    public getRoute(category: string, page: string): string {
-      return `/${paramCase(category)}/${paramCase(page)}`;
+    public getRoute(category: string, page: string, tab?: string): string {
+      const params = [category, page, tab].filter((param) => param !== undefined);
+      return `/${params.map((x) => paramCase(x)).join('/')}`;
+    }
+
+    public isExtendedActive(page: string) {
+      return this.$route.params.page === paramCase(page);
     }
 
     private created(): void {
@@ -83,12 +93,8 @@
       this.accordion = { ...this.accordion, [category]: !this.accordion[category] };
     }
 
-    getDeprecated(category: string, page: string): string {
-      if (category === 'Components' && getComponentMeta(('p-' + paramCase(page)) as TagName)?.isDeprecated) {
-        return ' 🚫';
-      } else {
-        return '';
-      }
+    isComponentWithProp(category: string, page: string, prop: keyof ComponentMeta): string {
+      return category === 'Components' && getComponentMeta(('p-' + paramCase(page)) as TagName)?.[prop];
     }
 
     private static category(route: Route): string {

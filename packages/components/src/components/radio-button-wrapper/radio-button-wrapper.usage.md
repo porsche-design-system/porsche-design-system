@@ -1,4 +1,4 @@
-# Radio Button Wrapper
+<ComponentHeading name="Radio Button Wrapper"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 

@@ -1,44 +1,10 @@
+import { config } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import { devices, defineConfig } from '@playwright/test';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
-
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 export default defineConfig({
-  testDir: '../specs',
-  testMatch: '**.vrt.ts',
-  /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
-  expect: {
-    /**
-     * Maximum time expect() should wait for the condition to be met.
-     * For example in `await expect(locator).toHaveText();`
-     */
-    timeout: 10000,
-    toMatchSnapshot: {
-      maxDiffPixelRatio: 0,
-      maxDiffPixels: 0,
-      threshold: 0,
-    },
-  },
+  ...config,
   snapshotPathTemplate:
     '{testDir}/../../../../components-js/tests/vrt/playwright/specs/__screenshots__/{arg}-{projectName}{ext}',
-  /* Run tests in files in parallel */
-  fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : 1,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'list',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
@@ -49,8 +15,6 @@ export default defineConfig({
     trace: 'off', // 'on-first-retry' causes CI job to get stuck
     viewport: null,
   },
-
-  /* Configure projects for major browsers */
   projects: [
     {
       name: 'chrome',
@@ -60,11 +24,6 @@ export default defineConfig({
       },
     },
   ],
-
-  /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: '../results',
-
-  /* Run your local dev server before starting the tests */
   webServer: {
     command: 'yarn start-app',
     port: 4200,

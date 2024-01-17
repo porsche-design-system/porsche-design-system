@@ -1,4 +1,4 @@
-# Switch
+<ComponentHeading name="Switch"></ComponentHeading>
 
 The `p-switch` component is a control that is used to quickly switch between two possible states. A switch is only used
 for these binary actions that occur immediately after the user “flips the switch”. Commonly it is used for “on/off”
@@ -16,7 +16,7 @@ better accessibility whenever possible. A `label` is a caption which informs the
 interaction. When used with hidden label, it's best practice to provide a descriptive label text for screen readers.
 
 <Playground :markup="hideLabelMarkup" :config="configInline">
-  <SelectOptions v-model="hideLabel" :values="hideLabels" name="hideLabel"></SelectOptions>
+  <PlaygroundSelect v-model="hideLabel" :values="hideLabels" name="hideLabel"></PlaygroundSelect>
 </Playground>
 
 ## Framework Implementations
@@ -52,7 +52,7 @@ recommended on mobile views.
 </Notification>
 
 <Playground :markup="alignLabelMarkup" :config="configInline">
-  <SelectOptions v-model="alignLabel" :values="alignLabels" name="alignLabel"></SelectOptions>
+  <PlaygroundSelect v-model="alignLabel" :values="alignLabels" name="alignLabel"></PlaygroundSelect>
 </Playground>
 
 ---
@@ -86,7 +86,7 @@ export default class Code extends Vue {
   e.target.checked = e.detail.checked;
 });`,
     angular: `import { Component } from '@angular/core';
-import type { SwitchUpdateEvent } from '@porsche-design-system/components-angular';
+import type { SwitchUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'some-switch-page',
@@ -95,17 +95,17 @@ import type { SwitchUpdateEvent } from '@porsche-design-system/components-angula
 export class SomeSwitchPage {
   checked: boolean;
 
-  onUpdate(e: CustomEvent<SwitchUpdateEvent>) {
+  onUpdate(e: CustomEvent<SwitchUpdateEventDetail>) {
     this.checked = e.detail.checked;
   }
 }`,
     react: `import { useCallback, useState } from 'react';
 import { PSwitch } from '@porsche-design-system/components-react';
-import type { SwitchUpdateEvent } from '@porsche-design-system/components-react';
+import type { SwitchUpdateEventDetail } from '@porsche-design-system/components-react';
 
 const SomeSwitchPage = (): JSX.Element => {
   const [checked, setChecked] = useState<boolean>();
-  const onUpdate = useCallback((e: CustomEvent<SwitchUpdateEvent>) => {
+  const onUpdate = useCallback((e: CustomEvent<SwitchUpdateEventDetail>) => {
     setChecked(e.detail.checked);
   }, []);
 

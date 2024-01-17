@@ -16,12 +16,12 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components-js": "3.9.0",
+    "@porsche-design-system/components-js": "3.10.0",
     "@porsche-design-system/shared": "0.0.0"
   },
   "devDependencies": {
-    "ts-node": "^10.9.1",
-    "typescript": "~5.2.2"
+    "ts-node": "^10.9.2",
+    "typescript": "~5.3.3"
   },
   "volta": {
     "extends": "../../package.json"

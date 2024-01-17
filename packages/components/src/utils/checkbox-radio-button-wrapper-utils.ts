@@ -1,11 +1,12 @@
 export const changeHandler = ({ target }: Event & { target: HTMLInputElement }): void => {
-  // workaround for Safari >= 15.5 -> attribute 'checked' is only set as property and not as attribute, this leads to rendering issues with keyboard navigation
+  // workaround for Safari >= 15.5 rendering issues
+  // Checkbox/radio-button change is not rendered immediately if checkbox/radio-button or its label is still hovered.
+  // The same bug appears on keyboard navigation.
+
   // name attribute must be wrapped in quotes to allow exotic name values
   document.querySelectorAll(`input[type=${target.type}][name="${target.name}"]`).forEach((el: HTMLInputElement) => {
     el.style.display = 'none';
     el.style.display = '';
-    // TODO: about the described safari issue from above, why not just set the attribute like this?
-    // el.toggleAttribute('checked', el === target);
   });
 };
 
