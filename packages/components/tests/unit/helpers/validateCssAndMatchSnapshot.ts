@@ -6,7 +6,7 @@ import { expect } from '@jest/globals';
     should also be covered for all getComponentCss conditions
 */
 export const validateCssAndMatchSnapshot = (css: string, isInternal = false) => {
-  // We shouldn't use visibility: visible since it cannot be overwritten, use inherit instead
+  // We shouldn't use visibility: visible since it cannot be overridden, use inherit instead
   expect(css).not.toMatch(/visibility:\s*(?:var\(.+,\s*visible\s*\)|visible);/);
   // Invalid css which was produced before
   expect(css).not.toMatch('. {');
@@ -17,14 +17,9 @@ export const validateCssAndMatchSnapshot = (css: string, isInternal = false) => 
   expect(css).not.toMatch(
     /(?<=::slotted.*{[^}]*)(?<!(!important|svg\+xml|(height|min-height|resize):\s*.*));(?=[^}]*)/
   );
-  // All ":hover" pseudo selectors should be wrapped in "@media (hover: hover)" query (Match :hover style without preceding hover media query)
-  // Nested case does not work
-  // expect(css).not.toMatch(/(?<!@media\(hover:hover\)\s*{[^{}]*?):hover[^)]/);
-
   if (!isInternal) {
     // Should have ":host([hidden])" styles
     expect(css).toMatch(/:host\(\[hidden]\)\s*{\s*display:\s*none\s*!important;\s*}/);
   }
-
   expect(css).toMatchSnapshot();
 };
