@@ -306,21 +306,24 @@ export class Carousel {
                 Skip carousel entries
               </PrefixedTagNames.pLinkPure>
             )}
-            {this.hasNavigation && [
+            {/* Do not render both buttons conditional in an array, this will cause Next.js SSR to throw Warning: Each child in a list should have a unique "key" prop. */}
+            {this.hasNavigation && (
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-left"
                 ref={(ref) => (this.btnPrev = ref)}
                 onClick={() => slidePrev(this.splide, this.amountOfPages)}
-              />,
+              />
+            )}
+            {this.hasNavigation && (
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-right"
                 ref={(ref) => (this.btnNext = ref)}
                 onClick={() => slideNext(this.splide, this.amountOfPages)}
                 onKeyDown={this.onNextKeyDown}
-              />,
-            ]}
+              />
+            )}
           </div>
         </div>
 
