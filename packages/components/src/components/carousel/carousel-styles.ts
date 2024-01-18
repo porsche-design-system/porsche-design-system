@@ -34,13 +34,19 @@ import {
 } from '@porsche-design-system/utilities-v2';
 
 export const carouselTransitionDuration = motionDurationModerate;
-export const bulletActiveClass = 'bullet--active';
 export const paginationInfiniteStartCaseClass = 'pagination--infinite';
+export const bulletClass = 'bullet';
+export const bulletActiveClass = 'bullet--active';
 export const bulletInfiniteClass = 'bullet--infinite';
 
 export const paginationBulletSize = '8px';
-const paginationInfiniteBulletSize = '4px';
+export const paginationInfiniteBulletSize = '4px';
 const paginationActiveBulletSize = '20px';
+const paginationGap = spacingStaticSmall;
+const paginationVisibleBulletCount = 5;
+const paginationWidth = `calc(${paginationActiveBulletSize} + ${paginationBulletSize} * ${
+  paginationVisibleBulletCount - 1
+} + ${paginationGap} * ${paginationVisibleBulletCount - 1})`; // Width for one active bullet + width of inactive bullets + spacing
 
 const selectorHeading = 'h2,::slotted([slot="heading"])';
 const selectorDescription = 'p,::slotted([slot="description"])';
@@ -212,8 +218,8 @@ export const getComponentCss = (
         })),
         position: 'relative',
         justifyContent: isInfinitePagination ? 'flex-start' : 'center',
-        width: `calc(${paginationActiveBulletSize} + ${paginationBulletSize} * 4 + ${spacingStaticSmall} * 4)`, // Width for five bullets (one active + spacing)
-        left: 'calc(50% - 42px)',
+        width: paginationWidth,
+        left: `calc(50% - (${paginationWidth}) / 2)`,
         overflowX: 'hidden',
       },
       pagination: {
@@ -221,10 +227,10 @@ export const getComponentCss = (
         alignItems: 'center',
         width: 'fit-content',
         height: paginationBulletSize, // Needed to avoid jumping when rewinding dynamically added slides
-        gap: spacingStaticSmall,
+        gap: paginationGap,
         transition: `transform ${carouselTransitionDuration}`,
       },
-      bullet: {
+      [bulletClass]: {
         borderRadius: borderRadiusSmall,
         ...(isHighContrastMode
           ? {
@@ -250,7 +256,7 @@ export const getComponentCss = (
       },
       ...(isInfinitePagination && {
         [paginationInfiniteStartCaseClass]: {
-          '& > .bullet:nth-child(-n+4)': {
+          [`& > .${bulletClass}:nth-child(-n+4)`]: {
             width: paginationBulletSize,
             height: paginationBulletSize,
           },
@@ -261,11 +267,11 @@ export const getComponentCss = (
             width: paginationInfiniteBulletSize,
             height: paginationInfiniteBulletSize,
           }),
-          '& ~ span': {
+          [`& ~ .${bulletClass}`]: {
             width: paginationBulletSize,
             height: paginationBulletSize,
           },
-          [`& ~ .${bulletInfiniteClass} ~ span`]: {
+          [`& ~ .${bulletInfiniteClass} ~ .${bulletClass}`]: {
             width: '0px',
             height: '0px',
           },
@@ -285,11 +291,11 @@ export const getComponentCss = (
         height: paginationBulletSize,
         width: addImportantToRule(paginationActiveBulletSize),
         ...(isInfinitePagination && {
-          '& ~ span': {
+          [`& ~ .${bulletClass}`]: {
             width: paginationBulletSize,
             height: paginationBulletSize,
           },
-          [`& ~ .${bulletInfiniteClass} ~ span`]: {
+          [`& ~ .${bulletInfiniteClass} ~ .${bulletClass}`]: {
             width: '0px',
             height: '0px',
           },

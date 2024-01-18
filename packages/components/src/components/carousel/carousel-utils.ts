@@ -1,14 +1,9 @@
 import type { Options, Splide } from '@splidejs/splide';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
+import { breakpoint, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
-import { breakpoint } from '@porsche-design-system/utilities-v2';
 import { ButtonPure } from '../button-pure/button-pure';
-import {
-  bulletActiveClass,
-  bulletInfiniteClass,
-  paginationInfiniteStartCaseClass,
-  paginationBulletSize,
-} from './carousel-styles';
+import { bulletActiveClass, bulletInfiniteClass, paginationInfiniteStartCaseClass } from './carousel-styles';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
@@ -141,8 +136,17 @@ export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: numb
   const isInfiniteBulletRight = (bulletIndex: number): boolean =>
     isStartCase ? bulletIndex === startCaseInfiniteBulletIndex : bulletIndex === infiniteBulletRightIndex;
 
-  const transformValue = isEndCase ? endCaseInfiniteBulletIndex : Math.max(infiniteBulletLeftIndex, 0);
-  paginationEl.style.transform = `translateX(calc(-${transformValue} * ${paginationBulletSize}))`;
+  const getTranslateX = () => {
+    if (isStartCase) {
+      return '0';
+    } else if (isEndCase) {
+      return `calc(-${amountOfPages - INFINITE_BULLET_AMOUNT} * ${spacingStaticSmall})`;
+    } else {
+      return `calc(-${newIndex - INFINITE_BULLET_OFFSET} * ${spacingStaticSmall})`;
+    }
+  };
+
+  paginationEl.style.transform = `translateX(${getTranslateX()})`;
 
   // Only update bullets around newIndex
   for (let i = newIndex - INFINITE_BULLET_AMOUNT - 1; i < newIndex + INFINITE_BULLET_AMOUNT + 1; i++) {
