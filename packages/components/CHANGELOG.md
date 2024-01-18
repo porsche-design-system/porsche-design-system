@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Carousel`: `Each child in a list should have a unique "key" prop` warning in Next.js SSR context
+  ([#3001](https://github.com/porsche-design-system/porsche-design-system/pull/3001))
+
 ### [3.10.0] - 2024-01-17
 
 ### [3.10.0-rc.5] - 2024-01-16
