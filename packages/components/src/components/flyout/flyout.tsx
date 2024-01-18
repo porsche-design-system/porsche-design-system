@@ -103,14 +103,6 @@ export class Flyout {
     getShadowRootHTMLElements(this.host, 'slot').forEach((element) =>
       element.addEventListener('slotchange', () => {
         forceUpdate(this.host);
-
-        if (this.open) {
-          // 1 tick delay is needed so that web components can be bootstrapped
-          setTimeout(() => {
-            this.updateFocusTrap(true);
-            getShadowRootHTMLElement(this.dismissBtn, 'button').focus(); // set initial focus
-          });
-        }
       })
     );
   }
