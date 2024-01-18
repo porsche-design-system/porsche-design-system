@@ -103,6 +103,8 @@ export class Flyout {
     getShadowRootHTMLElements(this.host, 'slot').forEach((element) =>
       element.addEventListener('slotchange', () => {
         forceUpdate(this.host);
+
+        this.dismissBtn.focus();
       })
     );
   }
