@@ -14,7 +14,7 @@ import * as hasDescription from '../../utils/form/hasDescription';
 
 const splideMock = {
   index: 0,
-  on: (_, __) => ({} as Splide),
+  on: (_, __) => ({}) as Splide,
   mount: () => {},
 } as Splide;
 
@@ -309,7 +309,12 @@ describe('componentDidUpdate', () => {
     Object.defineProperty(component, 'hasNavigation', { value: true });
 
     component.componentDidUpdate();
-    expect(renderPaginationSpy).toBeCalledWith(component['paginationEl'], component['amountOfPages'], 0);
+    expect(renderPaginationSpy).toBeCalledWith(
+      component['paginationEl'],
+      component['amountOfPages'],
+      0,
+      component['splide']
+    );
   });
 
   it('should not call renderPagination when hasNavigation = false', () => {
@@ -389,7 +394,12 @@ describe('registerSplideHandlers()', () => {
 
     component['splide'].emit('mounted');
     expect(updatePrevNextButtonsSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
-    expect(renderPaginationSpy).toBeCalledWith(component['paginationEl'], component['amountOfPages'], 0);
+    expect(renderPaginationSpy).toBeCalledWith(
+      component['paginationEl'],
+      component['amountOfPages'],
+      0,
+      component['splide']
+    );
   });
 
   it('should not call updatePrevNextButtons() and renderPagination() when this.splide.options.drag = false on mounted event', () => {
@@ -527,6 +537,6 @@ describe('updateAmountOfPages()', () => {
     component['splide'] = { index: 1 } as Splide;
 
     component['updateAmountOfPages']();
-    expect(spy).toBeCalledWith(component['paginationEl'], 5, 1);
+    expect(spy).toBeCalledWith(component['paginationEl'], 5, 1, component['splide']);
   });
 });
