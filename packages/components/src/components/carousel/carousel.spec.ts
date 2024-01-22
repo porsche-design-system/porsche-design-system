@@ -6,9 +6,8 @@ import * as breakpointCustomizableUtils from '../../utils/breakpoint-customizabl
 import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-utils';
 import * as jsonUtils from '../../utils/json';
 import * as splideModule from '@splidejs/splide';
-import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
-import * as warnIfAriaAndHeadingPropsAreUndefined from '../../utils/log/warnIfAriaAndHeadingPropsAreUndefined';
 import { Splide } from '@splidejs/splide';
+import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
 import * as hasHeading from '../../utils/form/hasHeading';
 import * as hasDescription from '../../utils/form/hasDescription';
 
@@ -214,20 +213,8 @@ describe('render', () => {
     expect(spy).toBeCalledWith(component.host, component.description);
   });
 
-  it('should call warnIfAriaAndHeadingPropsAreUndefined() with correct parameters', () => {
-    const spy = jest.spyOn(warnIfAriaAndHeadingPropsAreUndefined, 'warnIfAriaAndHeadingPropsAreUndefined');
-    const component = new Carousel();
-    component.host = document.createElement('p-carousel');
-    component.host.attachShadow({ mode: 'open' });
-    component.heading = 'heading';
-
-    component.render();
-    expect(spy).toBeCalledWith(component.host, true, component.aria);
-  });
-
   it('should call parseJSON() with correct parameter and set this.disablePagination', () => {
     jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation();
-    jest.spyOn(warnIfAriaAndHeadingPropsAreUndefined, 'warnIfAriaAndHeadingPropsAreUndefined').mockImplementation();
     const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');

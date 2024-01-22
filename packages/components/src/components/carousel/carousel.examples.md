@@ -43,7 +43,8 @@ In case you want to have slides with different widths you can use `slidesPerPage
 ## Heading
 
 The `heading` of `p-carousel` can be either set via property or by having a named slot. The heading size can be changed
-by using the property `headingSize`.
+by using the property `headingSize`. If no heading is provided, the `aria` property should be used to provide an
+accessibility label e.g. `aria="{ 'aria-label': 'Some heading' }"`.
 
 <Playground :markup="headingSizeMarkup" :config="config">
   <PlaygroundSelect v-model="headingSize" :values="headingSizes" name="headingSize"></PlaygroundSelect>
