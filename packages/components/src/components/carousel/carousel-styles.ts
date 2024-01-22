@@ -10,6 +10,7 @@ import {
   getHighContrastColors,
   getThemedColors,
   hostHiddenStyles,
+  hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import {
@@ -246,14 +247,12 @@ export const getComponentCss = (
         transition: `transform ${carouselTransitionDuration}`,
       },
       [bulletClass]: {
+        // Increase clickable area on touch devices
         ['@media (pointer: coarse)']: {
           '&::before': {
             content: '""',
             position: 'absolute',
             inset: `-${paginationInset}`,
-          },
-          '&:hover': {
-            cursor: 'pointer',
           },
           position: 'relative',
         },
@@ -279,6 +278,9 @@ export const getComponentCss = (
               height: paginationBulletSize,
               transition: `background-color ${carouselTransitionDuration}, width ${carouselTransitionDuration}`,
             }),
+        ...hoverMediaQuery({
+          cursor: 'pointer',
+        }),
       },
       ...(isInfinitePagination && {
         [paginationInfiniteStartCaseClass]: {
