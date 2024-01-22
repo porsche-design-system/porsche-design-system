@@ -216,7 +216,7 @@ export class Carousel {
     this.splide.options = { drag: this.hasNavigation };
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
     if (this.hasNavigation) {
-      renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0); // update pagination in case the carousel was not draggable before
+      renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0, this.splide); // update pagination in case the carousel was not draggable before
       updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
     }
   }
@@ -362,7 +362,7 @@ export class Carousel {
     splide.on('mounted', () => {
       if (this.splide.options.drag) {
         updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-        renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
+        renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex, this.splide); // initial pagination
       }
     });
 
@@ -393,7 +393,7 @@ export class Carousel {
       // round to sanitize floating numbers
       this.slidesPerPage === 'auto' ? 1 : Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
     );
-    renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0);
+    renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0, this.splide);
   };
 
   private onNextKeyDown = (e: KeyboardEvent): void => {

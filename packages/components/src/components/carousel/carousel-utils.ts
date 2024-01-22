@@ -1,6 +1,6 @@
 import type { Options, Splide } from '@splidejs/splide';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
-import { breakpoint, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
+import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
 import { ButtonPure } from '../button-pure/button-pure';
 import { bulletActiveClass, bulletInfiniteClass, paginationInfiniteStartCaseClass } from './carousel-styles';
@@ -108,14 +108,27 @@ export const isInfinitePagination = (amountOfPages: number): boolean => {
   return amountOfPages > INFINITE_BULLET_THRESHOLD;
 };
 
-export const renderPagination = (paginationEl: HTMLElement, amountOfPages: number, activeIndex: number): void => {
+export const renderPagination = (
+  paginationEl: HTMLElement,
+  amountOfPages: number,
+  activeIndex: number,
+  splide: Splide
+): void => {
   if (paginationEl) {
     // sanitize in case of removal of slide since activeIndex is from before splide.refresh()
     activeIndex = activeIndex > amountOfPages - 1 ? amountOfPages - 1 : activeIndex;
     paginationEl.innerHTML = Array.from(
       Array(amountOfPages),
-      (_, i) => `<span class="bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}"></span>`
+      (_, i) => `<span class="bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}" role="button"></span>`
     ).join('');
+
+    const bullets = paginationEl.querySelectorAll('.bullet');
+    bullets.forEach((bullet, i) => {
+      bullet.addEventListener('click', () => {
+        splide.go(i);
+      });
+    });
+
     if (isInfinitePagination(amountOfPages)) {
       updateBulletState(paginationEl, amountOfPages, activeIndex);
     }
@@ -136,13 +149,15 @@ export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: numb
   const isInfiniteBulletRight = (bulletIndex: number): boolean =>
     isStartCase ? bulletIndex === startCaseInfiniteBulletIndex : bulletIndex === infiniteBulletRightIndex;
 
+  const paginationGap = getComputedStyle(paginationEl).columnGap; // Touch devices use a larger gap
+
   const getTranslateX = () => {
     if (isStartCase) {
       return '0';
     } else if (isEndCase) {
-      return `calc(-${amountOfPages - INFINITE_BULLET_AMOUNT} * ${spacingStaticSmall})`;
+      return `calc(-${amountOfPages - INFINITE_BULLET_AMOUNT} * ${paginationGap})`;
     } else {
-      return `calc(-${newIndex - INFINITE_BULLET_OFFSET} * ${spacingStaticSmall})`;
+      return `calc(-${newIndex - INFINITE_BULLET_OFFSET} * ${paginationGap})`;
     }
   };
 

@@ -39,14 +39,21 @@ export const bulletClass = 'bullet';
 export const bulletActiveClass = 'bullet--active';
 export const bulletInfiniteClass = 'bullet--infinite';
 
-export const paginationBulletSize = '8px';
-export const paginationInfiniteBulletSize = '4px';
-const paginationActiveBulletSize = '20px';
-const paginationGap = spacingStaticSmall;
 const paginationVisibleBulletCount = 5;
+const paginationBulletSize = '8px';
+const paginationInfiniteBulletSize = '4px';
+const paginationActiveBulletSize = '20px';
+
+const paginationGap = '8px';
 const paginationWidth = `calc(${paginationActiveBulletSize} + ${paginationBulletSize} * ${
   paginationVisibleBulletCount - 1
 } + ${paginationGap} * ${paginationVisibleBulletCount - 1})`; // Width for one active bullet + width of inactive bullets + spacing
+
+const paginationInset = '8px'; // Used to increase clickable area on touch devices
+const paginationGapLarge = '16px';
+const paginationWidthLarge = `calc(${paginationActiveBulletSize} + ${paginationBulletSize} * ${
+  paginationVisibleBulletCount - 1
+} + ${paginationGapLarge} * ${paginationVisibleBulletCount - 1} + 2 * ${paginationInset})`; // Width for one active bullet + width of inactive bullets + spacing
 
 const selectorHeading = 'h2,::slotted([slot="heading"])';
 const selectorDescription = 'p,::slotted([slot="description"])';
@@ -220,6 +227,10 @@ export const getComponentCss = (
         justifyContent: isInfinitePagination ? 'flex-start' : 'center',
         width: paginationWidth,
         left: `calc(50% - (${paginationWidth}) / 2)`,
+        ['@media (pointer: coarse)']: {
+          width: paginationWidthLarge,
+          left: `calc(50% - (${paginationWidthLarge}) / 2)`,
+        },
         overflowX: 'hidden',
       },
       pagination: {
@@ -228,9 +239,24 @@ export const getComponentCss = (
         width: 'fit-content',
         height: paginationBulletSize, // Needed to avoid jumping when rewinding dynamically added slides
         gap: paginationGap,
+        ['@media (pointer: coarse)']: {
+          height: `calc(${paginationBulletSize} + 2 * ${paginationInset})`,
+          gap: paginationGapLarge,
+        },
         transition: `transform ${carouselTransitionDuration}`,
       },
       [bulletClass]: {
+        ['@media (pointer: coarse)']: {
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: `-${paginationInset}`,
+          },
+          '&:hover': {
+            cursor: 'pointer',
+          },
+          position: 'relative',
+        },
         borderRadius: borderRadiusSmall,
         ...(isHighContrastMode
           ? {
