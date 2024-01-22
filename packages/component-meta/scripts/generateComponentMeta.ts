@@ -105,6 +105,7 @@ const generateComponentMeta = (): void => {
   /** @deprecated use \`eventsMeta\` instead */
   deprecatedEventNames?: string[]; // array of event names
   hasAriaProp: boolean;
+  wordings?: string[];
   hasObserveAttributes: boolean;
   observedAttributes?: string[];
   hasObserveChildren: boolean;
@@ -183,6 +184,7 @@ const generateComponentMeta = (): void => {
     /** @deprecated use `eventsMeta` instead */
     deprecatedEventNames?: string[]; // array of event names
     hasAriaProp: boolean;
+    wordings?: string[];
     hasObserveAttributes: boolean;
     observedAttributes?: string[];
     hasObserveChildren: boolean;
@@ -742,6 +744,18 @@ const generateComponentMeta = (): void => {
       observedAttributes = eval(rawObservedAttributes);
     }
 
+    // i18n wordings
+    const wordings = Array.from(source.matchAll(/>([A-Za-z \n]+?)<\//g))
+      .map(([, potentialWording]) => {
+        const wording = potentialWording.trim();
+        return wording.match(/[A-Za-z \n]+/) ? wording : '';
+      })
+      .filter(Boolean);
+
+    if (wordings.length) {
+      console.log(tagName);
+    }
+
     result[tagName] = {
       ...(isDeprecated && { isDeprecated, deprecationMessage }),
       ...(isExperimental && { isExperimental }),
@@ -771,6 +785,7 @@ const generateComponentMeta = (): void => {
       ...(eventNames.length && { eventNames }),
       ...(deprecatedEventNames.length && { deprecatedEventNames }),
       hasAriaProp,
+      ...(wordings.length && { wordings }),
       hasObserveAttributes,
       ...(observedAttributes.length && { observedAttributes }),
       hasObserveChildren,
