@@ -461,6 +461,7 @@ describe('accessibility', () => {
     expect(await getLoadingMessage()).toBe('Loading');
 
     await setProperty(host, 'loading', false);
+    await waitForStencilLifecycle(page);
 
     expect(await getLoadingMessage()).toBe('Loading finished');
   });
