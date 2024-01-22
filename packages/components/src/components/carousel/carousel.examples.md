@@ -188,6 +188,21 @@ over all carousel entries. The skip link is only visible when it receives focus 
 
 <Playground :markup="skip" :config="config"></Playground>
 
+## Custom styling
+
+The navigation of the `p-carousel`, which includes the prev/next buttons, has a filter property which can be overwritten
+by a CSS Custom Property (aka CSS Variable):
+
+```scss
+// default CSS variables
+--p-carousel-prev-next-filter: none;
+
+// overwrite with CSS variables
+p-carousel {
+  --p-carousel-prev-next-filter: invert(1);
+}
+```
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';

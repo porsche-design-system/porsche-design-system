@@ -34,6 +34,7 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
+const cssVariablePrevNextFilter = '--p-carousel-prev-next-filter';
 export const carouselTransitionDuration = motionDurationModerate;
 export const paginationInfiniteStartCaseClass = 'pagination--infinite';
 export const bulletClass = 'bullet';
@@ -171,6 +172,7 @@ export const getComponentCss = (
         gap: spacingStaticXSmall,
         alignSelf: 'flex-start', // relevant in case slot="header" becomes higher than nav group
       },
+      filter: `var(${cssVariablePrevNextFilter}, none)`,
     },
     btn: {
       padding: spacingStaticSmall,
