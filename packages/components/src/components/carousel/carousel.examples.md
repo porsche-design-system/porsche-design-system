@@ -194,10 +194,10 @@ The navigation of the `p-carousel`, which includes the prev/next buttons, has a 
 by a CSS Custom Property (aka CSS Variable):
 
 ```scss
-// default CSS variables
+// default CSS variable
 --p-carousel-prev-next-filter: none;
 
-// overwrite with CSS variables
+// overwrite with CSS variable
 p-carousel {
   --p-carousel-prev-next-filter: invert(1);
 }
