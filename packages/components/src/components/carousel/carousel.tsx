@@ -350,7 +350,7 @@ export class Carousel {
         </div>
 
         {(this.disablePagination ? this.disablePagination !== true : this.pagination) && this.hasNavigation && (
-          <div class="pagination-container">
+          <div class="pagination-container" aria-hidden="true">
             <div class="pagination" ref={(ref) => (this.paginationEl = ref)}></div>
           </div>
         )}

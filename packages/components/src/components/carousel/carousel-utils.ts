@@ -119,7 +119,7 @@ export const renderPagination = (
     activeIndex = activeIndex > amountOfPages - 1 ? amountOfPages - 1 : activeIndex;
     paginationEl.innerHTML = Array.from(
       Array(amountOfPages),
-      (_, i) => `<span class="bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}" role="button"></span>`
+      (_, i) => `<span class="bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}"></span>`
     ).join('');
 
     const bullets = paginationEl.querySelectorAll('.bullet');
