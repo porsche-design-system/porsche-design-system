@@ -2,6 +2,7 @@ import type { GridItemOffset, GridItemSize } from './grid-item-utils';
 import { GRID_ITEM_OFFSETS, GRID_ITEM_SIZES } from './grid-item-utils';
 import { getComponentCss } from './grid-item-styles';
 import type { BreakpointCustomizable } from '../../../types';
+import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   const dataSizes: BreakpointCustomizable<GridItemSize>[] = [
@@ -9,7 +10,7 @@ describe('getComponentCss()', () => {
     { base: 6, xs: 12, s: 6, m: 12, l: 6, xl: 12 },
   ];
   it.each<BreakpointCustomizable<GridItemSize>>(dataSizes)('should return correct css for size: %j', (size) => {
-    expect(getComponentCss(size, 0)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(size, 0));
   });
 
   const dataOffsets: BreakpointCustomizable<GridItemOffset>[] = [
@@ -17,7 +18,7 @@ describe('getComponentCss()', () => {
     { base: 6, xs: 0, s: 6, m: 0, l: 6, xl: 0 },
   ];
   it.each<BreakpointCustomizable<GridItemOffset>>(dataOffsets)('should return correct css for offset: %j', (offset) => {
-    expect(getComponentCss(1, offset)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(1, offset));
   });
 
   const dataOffsetsReversed = dataOffsets.reverse(); // revert so that size 12 and offset 0 come together
@@ -25,6 +26,6 @@ describe('getComponentCss()', () => {
   it.each<[BreakpointCustomizable<GridItemSize>, BreakpointCustomizable<GridItemOffset>]>(
     dataSizes.map((x, i) => [x, dataOffsetsReversed[i]])
   )('should return correct css for size: %j and offset: %j', (size, offset) => {
-    expect(getComponentCss(size, offset)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(size, offset));
   });
 });

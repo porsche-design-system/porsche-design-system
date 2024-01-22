@@ -1,4 +1,5 @@
 import { getComponentCss } from './textarea-wrapper-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -18,6 +19,6 @@ describe('getComponentCss()', () => {
     [false, { base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true, 'light'],
     [false, { base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true, 'dark'],
   ])('should return correct css for isDisabled: %s, hideLabel: %o, state: %s, hasCounter: %s, theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

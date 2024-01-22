@@ -5,6 +5,7 @@ import { getColors, getComponentCss } from './tag-styles';
 import { getThemedColors } from '../../styles';
 import type { Theme } from '../../types';
 import type { TagColor, TagColorDeprecated } from './tag-utils';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getColors()', () => {
   it('should for tagColor: background-surface not call getInvertedThemedColorsSpy(), but call getThemedBackgroundColor() and getThemedBackgroundHoverColor() with correct parameters', () => {
@@ -63,6 +64,6 @@ describe('getComponentCss()', () => {
     ['notification-info-soft', true, 'dark'],
     ['background-surface', true, 'dark'],
   ])('should return correct css for color: %s, isFocusable: %s and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

@@ -1,4 +1,5 @@
 import { getComponentCss } from './icon-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -31,6 +32,6 @@ describe('getComponentCss()', () => {
     ['360', '', 'inherit', 'small', 'light'],
     ['360', '', 'inherit', 'small', 'dark'],
   ])('should return correct css for name: %s, source: %s, color: %s, size: %s and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

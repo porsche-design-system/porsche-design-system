@@ -1,4 +1,5 @@
 import { getComponentCss } from './wordmark-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -7,6 +8,6 @@ describe('getComponentCss()', () => {
     ['small', 'dark'],
     ['inherit', 'dark'],
   ])('should return correct css for size: %s and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

@@ -1,4 +1,5 @@
 import { getComponentCss } from './stepper-horizontal-item-styles';
+import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -19,6 +20,6 @@ describe('getComponentCss()', () => {
     ['warning', true, 'dark'],
     ['warning', false, 'dark'],
   ])('should return correct css for state: %s, isDisabled: %s and theme: %s', (...args) => {
-    expect(getComponentCss(...args)).toMatchSnapshot();
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

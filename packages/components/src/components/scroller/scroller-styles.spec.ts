@@ -1,4 +1,5 @@
 import { getComponentCss } from './scroller-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -13,7 +14,7 @@ describe('getComponentCss()', () => {
   ])(
     'should return correct css for gradientColor: %s, isNextHidden: %s, isPrevHidden: %s, scrollIndicatorPosition: %s, hasScrollbar: %s and theme: %s',
     (...args) => {
-      expect(getComponentCss(...args)).toMatchSnapshot();
+      validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });
