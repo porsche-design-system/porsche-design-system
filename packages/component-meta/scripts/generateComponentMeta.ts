@@ -752,10 +752,6 @@ const generateComponentMeta = (): void => {
       })
       .filter(Boolean);
 
-    if (wordings.length) {
-      console.log(tagName);
-    }
-
     result[tagName] = {
       ...(isDeprecated && { isDeprecated, deprecationMessage }),
       ...(isExperimental && { isExperimental }),
