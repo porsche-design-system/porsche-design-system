@@ -12,6 +12,7 @@ test.describe(style, async () => {
   ([...viewportWidths, viewportWidthXXL, viewportWidth3XL, viewportWidth4XL] as const).forEach((viewportWidth) => {
     test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
       await page.goto(`/${style}`);
+      await page.evaluate(() => (window as any).componentsReady());
       await page.setViewportSize({
         width: viewportWidth,
         height: await page.evaluate(() => document.body.clientHeight),
