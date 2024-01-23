@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from './pin-code-utils';
 import {
@@ -28,6 +28,7 @@ import {
 import { getComponentCss } from './pin-code-styles';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, labelId, Label } from '../common/label/label';
+import { LoadingMessage } from '../common/loading-message/loading-message';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -98,6 +99,14 @@ export class PinCode {
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;
   private inputElements: HTMLInputElement[] = [];
+  private initialLoading: boolean = false;
+
+  @Watch('loading')
+  public loadingChanged(newVal: boolean): void {
+    if (newVal) {
+      this.initialLoading = true;
+    }
+  }
 
   public componentWillLoad(): void {
     this.form = getClosestHTMLElement(this.host, 'form');
@@ -171,16 +180,12 @@ export class PinCode {
             />
           ))}
           {this.loading && (
-            <PrefixedTagNames.pSpinner
-              class="spinner"
-              size="inherit"
-              theme={this.theme}
-              aria={{ 'aria-label': 'Loading state' }}
-            />
+            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         {this.isWithinForm && <slot name="internal-input" />}
+        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
     );
   }
