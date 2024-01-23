@@ -13,7 +13,6 @@ import {
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
   getPrefixedTagNames,
-  hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   hasPropValueChanged,
   isDisabledOrLoading,
@@ -21,10 +20,10 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import { Component, Element, h, type JSX, Listen, Prop } from '@stencil/core';
-import { getButtonAriaAttributes } from './button-utils';
+import { Component, Element, type JSX, Listen, Prop } from '@stencil/core';
 import type { ButtonIcon } from './button-utils';
 import { getComponentCss } from './button-styles';
+import { getJSX } from './button-render';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
@@ -115,39 +114,6 @@ export class Button {
       this.theme
     );
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
-    return (
-      <button
-        {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
-        class="root"
-        type={this.type}
-        name={this.name}
-        value={this.value}
-      >
-        {this.loading && (
-          <PrefixedTagNames.pSpinner
-            class="spinner"
-            size="inherit"
-            theme={this.theme}
-            aria={{ 'aria-label': 'Loading state' }}
-          />
-        )}
-        {hasVisibleIcon(this.icon, this.iconSource) && (
-          <PrefixedTagNames.pIcon
-            class="icon"
-            size="inherit"
-            name={this.iconSource ? undefined : this.icon}
-            source={this.iconSource}
-            color={this.disabled ? (this.variant === 'primary' ? 'contrast-high' : 'state-disabled') : 'primary'}
-            theme={this.theme}
-            aria-hidden="true"
-          />
-        )}
-        <span class="label">
-          <slot />
-        </span>
-      </button>
-    );
+    return getJSX(this, getPrefixedTagNames(this.host));
   }
 }
