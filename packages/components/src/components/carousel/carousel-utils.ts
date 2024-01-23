@@ -3,7 +3,12 @@ import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
 import { ButtonPure } from '../button-pure/button-pure';
-import { bulletActiveClass, bulletInfiniteClass, paginationInfiniteStartCaseClass } from './carousel-styles';
+import {
+  bulletActiveClass,
+  bulletClass,
+  bulletInfiniteClass,
+  paginationInfiniteStartCaseClass,
+} from './carousel-styles';
 
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
@@ -124,7 +129,7 @@ export const renderPagination = (
 
     paginationEl.addEventListener('click', (e) => {
       const target = e.composedPath()[0] as HTMLElement;
-      if (target.classList.contains('bullet')) {
+      if (target.classList.contains(bulletClass)) {
         splide.go(Array.from(paginationEl.children).indexOf(target));
       }
     });
