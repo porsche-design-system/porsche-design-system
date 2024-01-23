@@ -61,6 +61,7 @@ const selectorHeading = 'h2,::slotted([slot="heading"])';
 const selectorDescription = 'p,::slotted([slot="description"])';
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
+const mediaQueryPointerCoarse = '@media (pointer: coarse)';
 
 const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }> = {
   basic: gridBasicOffset,
@@ -230,7 +231,7 @@ export const getComponentCss = (
         justifyContent: isInfinitePagination ? 'flex-start' : 'center',
         width: paginationWidth,
         left: `calc(50% - (${paginationWidth}) / 2)`,
-        ['@media (pointer: coarse)']: {
+        [mediaQueryPointerCoarse]: {
           width: paginationWidthLarge,
           left: `calc(50% - (${paginationWidthLarge}) / 2)`,
         },
@@ -242,7 +243,7 @@ export const getComponentCss = (
         width: 'fit-content',
         height: paginationBulletSize, // Needed to avoid jumping when rewinding dynamically added slides
         gap: paginationGap,
-        ['@media (pointer: coarse)']: {
+        [mediaQueryPointerCoarse]: {
           height: `calc(${paginationBulletSize} + 2 * ${paginationInset})`,
           gap: paginationGapLarge,
         },
@@ -250,7 +251,7 @@ export const getComponentCss = (
       },
       [bulletClass]: {
         // Increase clickable area on touch devices
-        ['@media (pointer: coarse)']: {
+        [mediaQueryPointerCoarse]: {
           '&::before': {
             content: '""',
             position: 'absolute',
