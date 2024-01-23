@@ -7,9 +7,14 @@ import type { BannerStateDeprecated } from '../banner/banner-utils';
 export type InlineNotificationStateDeprecated = BannerStateDeprecated;
 
 export const INLINE_NOTIFICATION_STATES = ['success', ...BANNER_STATES] as const;
-export type InlineNotificationState = typeof INLINE_NOTIFICATION_STATES[number];
+export type InlineNotificationState = (typeof INLINE_NOTIFICATION_STATES)[number];
 
 export type InlineNotificationActionIcon = IconName;
+
+export const fallbackWordings = {
+  dismiss: 'Close notification',
+};
+export type InlineNotificationWordings = typeof fallbackWordings | string;
 
 export const getInlineNotificationIconName = (state: InlineNotificationState): IconName => {
   const stateToIconMap: Record<InlineNotificationState, IconName> = {

@@ -8,19 +8,22 @@ import {
   getPrefixedTagNames,
   hasHeading,
   THEMES,
+  translate,
   validateProps,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './inline-notification-styles';
 import {
+  fallbackWordings,
   getContentAriaAttributes,
   getInlineNotificationIconName,
   INLINE_NOTIFICATION_STATES,
 } from './inline-notification-utils';
-import type { InlineNotificationActionIcon } from './inline-notification-utils';
+import type { InlineNotificationActionIcon, InlineNotificationWordings } from './inline-notification-utils';
 
-const propTypes: PropTypes<typeof InlineNotification> = {
+// TODO: wordings prop should not be omitted, but generateComponentMeta can't handle it currently
+const propTypes: Omit<PropTypes<typeof InlineNotification>, 'wordings'> = {
   heading: AllowedTypes.string,
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<InlineNotificationState>(INLINE_NOTIFICATION_STATES),
@@ -30,6 +33,7 @@ const propTypes: PropTypes<typeof InlineNotification> = {
   actionLoading: AllowedTypes.boolean,
   actionIcon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  // wordings: AllowedTypes.shape<InlineNotificationWordings>({ dismiss: AllowedTypes.string }),
 };
 
 @Component({
@@ -67,6 +71,8 @@ export class InlineNotification {
 
   /** Adapts the inline-notification color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  @Prop() public wordings?: InlineNotificationWordings;
 
   /** Emitted when the close button is clicked. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
@@ -129,7 +135,7 @@ export class InlineNotification {
             aria-controls={bannerId}
             onClick={this.dismiss.emit}
           >
-            Close notification
+            {translate(this.wordings, fallbackWordings, 'dismiss')}
           </PrefixedTagNames.pButtonPure>
         )}
       </Host>

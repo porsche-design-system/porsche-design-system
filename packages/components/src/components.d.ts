@@ -30,7 +30,7 @@ import { HeadingTag } from "./components/heading/heading-tag";
 import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
-import { InlineNotificationActionIcon, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+import { InlineNotificationActionIcon, InlineNotificationState, InlineNotificationWordings } from "./components/inline-notification/inline-notification-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -91,7 +91,7 @@ export { HeadingTag } from "./components/heading/heading-tag";
 export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
-export { InlineNotificationActionIcon, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+export { InlineNotificationActionIcon, InlineNotificationState, InlineNotificationWordings } from "./components/inline-notification/inline-notification-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -851,6 +851,7 @@ export namespace Components {
           * Adapts the inline-notification color depending on the theme.
          */
         "theme"?: Theme;
+        "wordings"?: InlineNotificationWordings;
     }
     interface PLink {
         /**
@@ -3498,6 +3499,7 @@ declare namespace LocalJSX {
           * Adapts the inline-notification color depending on the theme.
          */
         "theme"?: Theme;
+        "wordings"?: InlineNotificationWordings;
     }
     interface PLink {
         /**

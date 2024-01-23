@@ -37,5 +37,6 @@ export * from './has-window';
 export * from './sync';
 export { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from './tag-name';
 export { isThemeDark, THEMES } from './theme';
+export * from './translate';
 export * from './typography';
 export * from './validation';
