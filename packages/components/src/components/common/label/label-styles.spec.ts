@@ -16,7 +16,7 @@ describe('getLabelStyles()', () => {
   ])(
     'should return correct css for isDisabledOrLoading: %s, hideLabel: %o, theme: %s, additionalDefaultJssStyle: %o and additionalIsShownJssStyle: %o',
     (...args) => {
-      validateCssAndMatchSnapshot(getCss(getFunctionalComponentLabelStyles(...args)), true);
+      validateCssAndMatchSnapshot(getCss(getFunctionalComponentLabelStyles(...args)));
     }
   );
 });

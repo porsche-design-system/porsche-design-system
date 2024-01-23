@@ -4,6 +4,6 @@ import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getFunctionalComponentRequiredStyles()', () => {
   it('should return correct styles', () => {
-    validateCssAndMatchSnapshot(getCss(getFunctionalComponentRequiredStyles()), true);
+    validateCssAndMatchSnapshot(getCss(getFunctionalComponentRequiredStyles()));
   });
 });
