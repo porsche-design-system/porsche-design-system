@@ -3057,7 +3057,7 @@ exports[`should render dsr component for PCarousel 1`] = `
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
-    left: calc(50% - (calc(20px + 8px * 4 + 16px * 4 + 2 * 8px)) / 2);
+    left: calc(50% - calc(20px + 8px * 4 + 16px * 4 + 2 * 8px) / 2);
   }
   .pagination {
     height: calc(8px + 2 * 8px);
