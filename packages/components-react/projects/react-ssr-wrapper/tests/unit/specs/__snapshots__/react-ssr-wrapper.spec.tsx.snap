@@ -2949,6 +2949,7 @@ exports[`should render dsr component for PCarousel 1`] = `
 }
 .nav {
   display: none;
+  filter: var(--p-carousel-prev-next-filter, none);
 }
 .btn {
   padding: 8px;
@@ -2997,7 +2998,7 @@ exports[`should render dsr component for PCarousel 1`] = `
   position: relative;
   justify-content: center;
   width: calc(20px + 8px * 4 + 8px * 4);
-  left: calc(50% - 42px);
+  left: calc(50% - (calc(20px + 8px * 4 + 8px * 4)) / 2);
   overflow-x: hidden;
 }
 .pagination {
@@ -3052,6 +3053,26 @@ exports[`should render dsr component for PCarousel 1`] = `
     padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
   }
 }
+
+@media (pointer: coarse) {
+  .pagination-container {
+    width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
+    left: calc(50% - calc(20px + 8px * 4 + 16px * 4 + 2 * 8px) / 2);
+  }
+  .pagination {
+    height: calc(8px + 2 * 8px);
+    gap: 16px;
+  }
+  .bullet {
+    position: relative;
+  }
+  .bullet::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+  }
+}
+
 
     </style>
     <div
