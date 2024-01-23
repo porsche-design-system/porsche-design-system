@@ -233,7 +233,7 @@ export const getComponentCss = (
         left: `calc(50% - (${paginationWidth}) / 2)`,
         [mediaQueryPointerCoarse]: {
           width: paginationWidthLarge,
-          left: `calc(50% - (${paginationWidthLarge}) / 2)`,
+          left: `calc(50% - ${paginationWidthLarge} / 2)`,
         },
         overflowX: 'hidden',
       },
