@@ -359,6 +359,46 @@ it('should have grab cursor when there is only more than one page', async () => 
   expect(await getElementStyle(track, 'cursor')).toBe('grab');
 });
 
+it('should navigate to slide when pagination is clicked', async () => {
+  await initCarousel();
+  const [bullet1, bullet2, bullet3] = await getPaginationBullets();
+  const [slide1, slide2, slide3] = await getSlides();
+
+  await bullet2.click();
+  await waitForSlideToBeActive(slide2);
+
+  await bullet3.click();
+  await waitForSlideToBeActive(slide3);
+
+  await bullet1.click();
+  await waitForSlideToBeActive(slide1);
+});
+
+it('should navigate to slide when infinite pagination is clicked', async () => {
+  await initCarousel();
+  await initCarousel({ amountOfSlides: 6 });
+  const bullets = await getPaginationBullets();
+  const slides = await getSlides();
+
+  await bullets[1].click();
+  await waitForSlideToBeActive(slides[1]);
+
+  await bullets[2].click();
+  await waitForSlideToBeActive(slides[2]);
+
+  await bullets[0].click();
+  await waitForSlideToBeActive(slides[0]);
+
+  await bullets[4].click();
+  await waitForSlideToBeActive(slides[4]);
+
+  await bullets[5].click();
+  await waitForSlideToBeActive(slides[5]);
+
+  await bullets[1].click();
+  await waitForSlideToBeActive(slides[1]);
+});
+
 describe('adding/removing slides', () => {
   const addSlide = (host: ElementHandle): Promise<void> => {
     return host.evaluate((host) => {
