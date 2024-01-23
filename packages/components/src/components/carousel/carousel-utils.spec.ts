@@ -205,6 +205,21 @@ describe('slideNext()', () => {
   );
 });
 
+const getSplide = (): Splide =>
+  ({
+    index: 1,
+    length: 3,
+    options: {
+      i18n: {
+        next: 'custom next',
+        prev: 'custom prev',
+        last: 'custom last',
+        first: 'custom first',
+      } as Splide['options']['i18n'],
+      perPage: 1,
+    },
+  }) as Splide;
+
 describe('updatePrevNextButtons()', () => {
   const getButtons = (): [ButtonPure, ButtonPure] => {
     const btnPrev = document.createElement('button') as HTMLButtonElement & ButtonPure;
@@ -214,21 +229,6 @@ describe('updatePrevNextButtons()', () => {
 
     return [btnPrev, btnNext];
   };
-
-  const getSplide = (): Splide =>
-    ({
-      index: 1,
-      length: 3,
-      options: {
-        i18n: {
-          next: 'custom next',
-          prev: 'custom prev',
-          last: 'custom last',
-          first: 'custom first',
-        } as Splide['options']['i18n'],
-        perPage: 1,
-      },
-    }) as Splide;
 
   it('should call isFirstPage() with correct parameter', () => {
     const spy = jest.spyOn(carouselUtils, 'isFirstPage');
@@ -299,75 +299,76 @@ const bulletActiveMarkup = '<span class="bullet bullet--active"></span>';
 const bulletInfiniteMarkup = '<span class="bullet bullet--infinite"></span>';
 
 describe('renderPagination()', () => {
+  const splide = getSplide();
   it('should render correct children of pagination', () => {
     const el = document.createElement('div');
 
-    renderPagination(el, 1, -1);
+    renderPagination(el, 1, -1, splide);
     expect(el.innerHTML).toBe(bulletMarkup);
 
-    renderPagination(el, 2, -1);
+    renderPagination(el, 2, -1, splide);
     expect(el.innerHTML).toBe([bulletMarkup, bulletMarkup].join(''));
 
-    renderPagination(el, 3, -1);
+    renderPagination(el, 3, -1, splide);
     expect(el.innerHTML).toBe([bulletMarkup, bulletMarkup, bulletMarkup].join(''));
   });
 
   it('should render correct children of pagination with activeIndex', () => {
     const el = document.createElement('div');
 
-    renderPagination(el, 1, 0);
+    renderPagination(el, 1, 0, splide);
     expect(el.innerHTML).toBe(bulletActiveMarkup);
 
-    renderPagination(el, 2, 1);
+    renderPagination(el, 2, 1, splide);
     expect(el.innerHTML).toBe([bulletMarkup, bulletActiveMarkup].join(''));
 
-    renderPagination(el, 3, 1);
+    renderPagination(el, 3, 1, splide);
     expect(el.innerHTML).toBe([bulletMarkup, bulletActiveMarkup, bulletMarkup].join(''));
   });
 
   it('should render correct children of pagination when using less or equal than 5 slides', () => {
     const el = document.createElement('div');
 
-    renderPagination(el, 4, 0);
+    renderPagination(el, 4, 0, splide);
     expect(el.innerHTML).toBe([bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletMarkup].join(''));
 
-    renderPagination(el, 5, 0);
+    renderPagination(el, 5, 0, splide);
     expect(el.innerHTML).toBe([bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletMarkup, bulletMarkup].join(''));
   });
 
   it('should render correct children of pagination when using more than 5 slides', () => {
     const el = document.createElement('div');
 
-    renderPagination(el, 6, 0);
+    renderPagination(el, 6, 0, splide);
     expect(el.innerHTML).toBe(
       [bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletMarkup, bulletInfiniteMarkup, bulletMarkup].join('')
     );
 
-    renderPagination(el, 6, 1);
+    renderPagination(el, 6, 1, splide);
     expect(el.innerHTML).toBe(
       [bulletMarkup, bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletInfiniteMarkup, bulletMarkup].join('')
     );
 
-    renderPagination(el, 6, 2);
+    renderPagination(el, 6, 2, splide);
     expect(el.innerHTML).toBe(
       [bulletInfiniteMarkup, bulletMarkup, bulletActiveMarkup, bulletMarkup, bulletInfiniteMarkup, bulletMarkup].join(
         ''
       )
     );
 
-    renderPagination(el, 6, 3);
+    renderPagination(el, 6, 3, splide);
     expect(el.innerHTML).toBe(
       [bulletMarkup, bulletInfiniteMarkup, bulletMarkup, bulletActiveMarkup, bulletMarkup, bulletInfiniteMarkup].join(
         ''
       )
     );
 
-    renderPagination(el, 6, 4);
+    renderPagination(el, 6, 4, splide);
     expect(el.innerHTML).toBe(
       [bulletMarkup, bulletInfiniteMarkup, bulletMarkup, bulletMarkup, bulletActiveMarkup, bulletMarkup].join('')
     );
 
-    renderPagination(el, 6, 5);
+    renderPagination(el, 6, 5, splide);
     expect(el.innerHTML).toBe(
       [bulletMarkup, bulletInfiniteMarkup, bulletMarkup, bulletMarkup, bulletMarkup, bulletActiveMarkup].join('')
     );

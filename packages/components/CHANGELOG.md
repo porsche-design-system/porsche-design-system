@@ -16,8 +16,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
+- `Carousel`: Carousel does not work with single pointer event on smaller touch devices
+  ([#3003](https://github.com/porsche-design-system/porsche-design-system/pull/3003))
 - `Carousel`: `Each child in a list should have a unique "key" prop` warning in Next.js SSR context
   ([#3001](https://github.com/porsche-design-system/porsche-design-system/pull/3001))
+
+#### Changed
+
+- `Carousel`: Pagination can be used for navigation & pagination has more spacing on touch devices
+  ([#3003](https://github.com/porsche-design-system/porsche-design-system/pull/3003))
 
 ### [3.10.0] - 2024-01-17
 
