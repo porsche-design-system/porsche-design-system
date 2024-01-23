@@ -27,6 +27,8 @@ const getWrapper = () => selectNode(page, 'p-radio-button-wrapper >>> .wrapper')
 const getLabel = () => selectNode(page, 'p-radio-button-wrapper >>> label');
 const getMessage = () => selectNode(page, 'p-radio-button-wrapper >>> .message');
 const getBackgroundStyle = (element: ElementHandle) => getElementStyle(element, 'background');
+const getLoadingStatus = () => selectNode(page, 'p-radio-button-wrapper >>> .status');
+const getLoadingMessage = async () => (await getLoadingStatus()).evaluate((el) => el.textContent);
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -368,8 +370,10 @@ describe('accessibility', () => {
   it('should expose correct initial accessibility tree', async () => {
     await initRadioButton();
     const input = await getInput();
+    const status = await getLoadingStatus();
 
     await expectA11yToMatchSnapshot(page, input);
+    await expectA11yToMatchSnapshot(page, status, { interestingOnly: false });
   });
 
   it('should expose correct accessibility tree properties in error state', async () => {
@@ -459,5 +463,34 @@ describe('accessibility', () => {
     const root = await getRoot();
 
     await expectA11yToMatchSnapshot(page, root, { interestingOnly: false });
+  });
+
+  it('should expose correct loading message initially: loading: false', async () => {
+    await initRadioButton();
+
+    expect(await getLoadingMessage()).toBe('');
+  });
+
+  it('should expose correct loading message initially: loading:true', async () => {
+    await initRadioButton({ loading: true });
+
+    expect(await getLoadingMessage()).toBe('Loading');
+  });
+
+  it('should expose correct loading message if loading is changed programmatically', async () => {
+    await initRadioButton();
+    const host = await getHost();
+
+    expect(await getLoadingMessage()).toBe('');
+
+    await setProperty(host, 'loading', true);
+    await waitForStencilLifecycle(page);
+
+    expect(await getLoadingMessage()).toBe('Loading');
+
+    await setProperty(host, 'loading', false);
+    await waitForStencilLifecycle(page);
+
+    expect(await getLoadingMessage()).toBe('Loading finished');
   });
 });
