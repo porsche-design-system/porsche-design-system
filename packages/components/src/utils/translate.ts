@@ -1,9 +1,9 @@
 import { parseJSONAttribute } from './json';
 
 export const translate = <T extends Record<string, string>>(
-  propValues: T | string,
-  fallbackValues: T,
   key: keyof T,
+  propValues: T | string, // string to support json like string values via attributes
+  fallbackValues: T,
   value?: string | number
 ): string => {
   const wording = (parseJSONAttribute(propValues) || fallbackValues)[key];

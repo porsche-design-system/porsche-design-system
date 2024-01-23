@@ -135,7 +135,7 @@ export class InlineNotification {
             aria-controls={bannerId}
             onClick={this.dismiss.emit}
           >
-            {translate(this.wordings, fallbackWordings, 'dismiss')}
+            {translate('dismiss', this.wordings, fallbackWordings)}
           </PrefixedTagNames.pButtonPure>
         )}
       </Host>
