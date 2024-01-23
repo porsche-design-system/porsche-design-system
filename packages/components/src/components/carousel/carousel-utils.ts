@@ -122,11 +122,11 @@ export const renderPagination = (
       (_, i) => `<span class="bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}"></span>`
     ).join('');
 
-    const bullets = paginationEl.querySelectorAll('.bullet');
-    bullets.forEach((bullet, i) => {
-      bullet.addEventListener('click', () => {
-        splide.go(i);
-      });
+    paginationEl.addEventListener('click', (e) => {
+      const target = e.composedPath()[0] as HTMLElement;
+      if (target.classList.contains('bullet')) {
+        splide.go(Array.from(paginationEl.children).indexOf(target));
+      }
     });
 
     if (isInfinitePagination(amountOfPages)) {
