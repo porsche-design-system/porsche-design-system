@@ -141,6 +141,10 @@ exports[`accessibility should expose correct accessibility tree for input type=s
                   "name": "Clear field",
                   "role": "button",
                 },
+                {
+                  "name": "",
+                  "role": "status",
+                },
               ],
               "name": "",
               "role": "generic",

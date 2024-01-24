@@ -69,6 +69,10 @@ exports[`accessibility should expose correct initial accessibility tree properti
               "name": "Some label",
               "role": "button",
             },
+            {
+              "name": "",
+              "role": "status",
+            },
           ],
           "name": "",
           "role": "generic",
