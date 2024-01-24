@@ -39,6 +39,10 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                   "name": "Some Label",
                   "role": "switch",
                 },
+                {
+                  "name": "",
+                  "role": "status",
+                },
               ],
               "name": "",
               "role": "generic",
@@ -53,5 +57,12 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
   ],
   "name": "",
   "role": "RootWebArea",
+}
+`;
+
+exports[`accessibility should expose correct initial accessibility tree 2`] = `
+{
+  "name": "",
+  "role": "status",
 }
 `;
