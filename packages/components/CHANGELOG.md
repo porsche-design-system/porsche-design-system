@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- `Toast`: Alignment reflects RTL (right-to-left) mode
 - `Carousel`: Pagination can be used for navigation & pagination has more spacing on touch devices
   ([#3003](https://github.com/porsche-design-system/porsche-design-system/pull/3003))
 
