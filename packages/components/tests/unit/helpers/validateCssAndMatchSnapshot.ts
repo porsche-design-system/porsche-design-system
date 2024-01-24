@@ -27,14 +27,14 @@ export const validateCssAndMatchSnapshot = (css: string) => {
 
 // We shouldn't use visibility: visible since it cannot be overridden, use inherit instead
 const validateVisibilityStyle = (cssObject: object) => {
-  recursivelyExpect(cssObject, (key, value) => {
+  recursivelyApply(cssObject, (key, value) => {
     if (key.includes('visibility')) {
       expect(value).not.toMatch(/visible/);
     }
   });
 };
 
-// Expect no !important rule on display style of :host selector since it should be overridable (Match all display with following !important rule)
+// Expect no !important rule on display style of :host selector since it should be overridable
 const validateHostDisplayStyle = (cssObject: object) => {
   if (cssObject[':host'].display) {
     expect(cssObject[':host'].display).not.toMatch(/!important/);
@@ -46,24 +46,17 @@ const validateHostDisplayStyle = (cssObject: object) => {
 
 // Expect all slotted styles to be !important since they shouldn't be overridable
 const validateSlottedStyles = (cssObject: object, tagName: TagName) => {
-  const unpackAndCheckObject = (obj: object): void => {
-    Object.entries(obj).forEach(([key, value]) => {
-      if (key.includes('::slotted')) {
-        Object.entries(value).forEach(([cssProp, cssValue]) => {
-          // exceptions for tagName and css property are defined here
-          if (tagName !== 'p-textarea-wrapper' || !['height', 'min-height', 'resize'].includes(cssProp)) {
-            expect(cssValue).toMatch(/ !important$/);
-          }
-        });
-      } else if (typeof value === 'object') {
-        unpackAndCheckObject(value);
+  recursivelyApplyForKey(cssObject, '::slotted', (_, value) => {
+    Object.entries(value).forEach(([cssProp, cssValue]) => {
+      // exceptions for tagName and css property are defined here
+      if (tagName !== 'p-textarea-wrapper' || !['height', 'min-height', 'resize'].includes(cssProp)) {
+        expect(cssValue).toMatch(/ !important$/);
       }
     });
-  };
-
-  unpackAndCheckObject(cssObject);
+  });
 };
 
+// All :hover styles should be wrapped in a @media(hover:hover) since they are only needed for devices which support hover
 const validateHoverMediaQuery = (cssObject: object) => {
   Object.entries(cssObject).forEach(([key, value]) => {
     // potential media query
@@ -83,12 +76,33 @@ const validateHoverMediaQuery = (cssObject: object) => {
   });
 };
 
-const recursivelyExpect = (jsonObject: object, testFn: (key: string, value: any) => void) => {
+/**
+ * Recursively applies a function to each key-value pair in a nested object.
+ * @param jsonObject - The object to traverse recursively.
+ * @param fn - The function to apply to each key-value pair.
+ */
+const recursivelyApply = (jsonObject: object, fn: (key: string, value: any) => void) => {
   for (const [key, value] of Object.entries(jsonObject)) {
-    if (typeof value === 'object' && value !== null) {
-      recursivelyExpect(value, testFn);
+    if (typeof value === 'object') {
+      recursivelyApply(value, fn);
     } else {
-      testFn(key, value);
+      fn(key, value);
+    }
+  }
+};
+
+/**
+ * Recursively applies a function to key-value pairs in a nested object based on a key selector.
+ * @param jsonObject - The object to traverse recursively.
+ * @param keySelector - The key or pattern to match for applying the function.
+ * @param fn - The function to apply to matching key-value pairs.
+ */
+const recursivelyApplyForKey = (jsonObject: object, keySelector: string, fn: (key: string, value: any) => void) => {
+  for (const [key, value] of Object.entries(jsonObject)) {
+    if (key.includes(keySelector)) {
+      fn(key, value);
+    } else if (typeof value === 'object') {
+      recursivelyApplyForKey(value, keySelector, fn);
     }
   }
 };
