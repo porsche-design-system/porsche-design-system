@@ -5,9 +5,9 @@ import { TagName } from '@porsche-design-system/shared';
 
 export const validateCssAndMatchSnapshot = (css: string) => {
   const cssObject = getCssObject(css);
-  // Extract componentMeta from testPath, if it's a functional component this will be undefined
   const componentName = expect.getState().testPath.match(/\/([^\/]+)\/[^\/]+\.spec\.ts/)[1];
   const componentTagName = `p-${componentName}` as TagName;
+  // Extract componentMeta from testPath, if it's a functional component this will be undefined
   const currentComponentMeta = componentMeta[componentTagName];
 
   expect(css).not.toMatch('. {'); // Invalid css which was produced before
