@@ -1,17 +1,41 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { SelectState, SelectDirection, SelectUpdateEventDetail } from './select-utils';
+import type { SelectDirection, SelectOption, SelectState, SelectUpdateEventDetail } from './select-utils';
+import { getSelectDropdownDirection, setSelectedOption } from './select-utils';
 
-import { Component, Element, Event, EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  forceUpdate,
+  h,
+  type JSX,
+  Listen,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
+  getClosestHTMLElement,
+  getPrefixedTagNames,
   hasPropValueChanged,
+  isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
   THEMES,
+  throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './select-styles';
+import { Label } from '../../common/label/label';
+import { StateMessage } from '../../common/state-message/state-message';
+import {
+  initNativeSelect,
+  setSelectedOptions,
+  updateNativeOptions,
+} from '../../multi-select/multi-select/multi-select-utils';
 
 const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
@@ -70,14 +94,147 @@ export class Select {
   /** Emitted when the selection is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
+  @State() private isOpen = false;
+
+  private inputContainer: HTMLDivElement;
+  private listElement: HTMLDivElement;
+  private selectOptions: SelectOption[] = [];
+  private form: HTMLFormElement;
+  private isWithinForm: boolean;
+  private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
+
+  // TODO: Similar to multi-select
+  // TODO: Pass in selected value and set new and old value
+  @Listen('internalOptionUpdate')
+  public updateOptionHandler(e: Event & { target: SelectOption }): void {
+    setSelectedOption(this.selectOptions, e.target.value, this.value);
+    this.preventOptionUpdate = true; // Avoid unnecessary looping over options in setSelectedOptions in value watcher
+    e.stopPropagation();
+    this.emitUpdateEvent();
+  }
+
+  @Watch('value')
+  public onValueChange(newValue: string, oldValue: string): void {
+    // When setting initial value the watcher gets called before the options are defined
+    if (this.selectOptions.length > 0) {
+      if (!this.preventOptionUpdate) {
+        setSelectedOption(this.selectOptions, newValue, oldValue);
+      }
+      this.preventOptionUpdate = false;
+      // if (this.isWithinForm) {
+      //   updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
+      // }
+    }
+  }
+
+  // TODO: Same as multi-select
+  public connectedCallback(): void {
+    document.addEventListener('mousedown', this.onClickOutside, true);
+    this.form = getClosestHTMLElement(this.host, 'form');
+    this.isWithinForm = !!this.form;
+  }
+
+  // TODO: Similar to multi-select
+  public componentWillLoad(): void {
+    this.updateOptions();
+    // Use initial value to set options
+    setSelectedOption(this.selectOptions, this.value);
+    // if (this.isWithinForm) {
+    //   this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
+    //   updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
+    // }
+  }
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
+  // TODO: Same as multi-select
+  public disconnectedCallback(): void {
+    document.removeEventListener('mousedown', this.onClickOutside, true);
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      getSelectDropdownDirection(this.dropdownDirection, this.inputContainer, this.selectOptions),
+      this.isOpen,
+      this.disabled,
+      this.hideLabel,
+      this.state,
+      this.isWithinForm,
+      this.theme
+    );
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    return <div class="root"></div>;
+    const buttonId = 'value';
+    const dropdownId = 'list';
+
+    return (
+      <div class="root">
+        <Label
+          host={this.host}
+          label={this.label}
+          description={this.description}
+          htmlFor={buttonId}
+          isRequired={this.required}
+          isDisabled={this.disabled}
+        />
+        <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
+          <button
+            type="button"
+            role="combobox"
+            id={buttonId}
+            disabled={this.disabled}
+            onClick={this.onInputClick}
+            onKeyDown={this.onComboboxKeyDown}
+          />
+          <PrefixedTagNames.pIcon
+            class={{ icon: true, 'icon--rotate': this.isOpen }}
+            name="arrow-head-down"
+            theme={this.theme}
+            color={this.disabled ? 'state-disabled' : 'primary'}
+            aria-hidden="true"
+          />
+          <div id={dropdownId} class="listbox" ref={(el) => (this.listElement = el)}>
+            <slot />
+          </div>
+        </div>
+        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        {this.isWithinForm && <slot name="internal-select" />}
+      </div>
+    );
   }
+
+  // TODO: Similar to multi-select
+  private updateOptions = (): void => {
+    this.selectOptions = Array.from(this.host.children).filter(
+      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+    ) as HTMLPMultiSelectOptionElement[];
+    this.selectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-select-option'));
+  };
+
+  private onInputClick = (): void => {
+    this.isOpen = true;
+  };
+
+  private onComboboxKeyDown = (e: KeyboardEvent): void => {
+    console.log(e);
+  };
+
+  // TODO: Mostly similar to multi-select
+  private onClickOutside = (e: MouseEvent): void => {
+    if (this.isOpen && isClickOutside(e, this.inputContainer) && isClickOutside(e, this.listElement)) {
+      this.isOpen = false;
+    }
+  };
+
+  private emitUpdateEvent = (): void => {
+    this.update.emit({
+      value: this.value,
+      name: this.name,
+    });
+  };
 }

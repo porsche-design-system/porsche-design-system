@@ -1,7 +1,7 @@
 import type { PropTypes } from '../../../types';
 import type { SelectOptionInternalHTMLProps } from './select-option-utils';
 
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
 import { getComponentCss } from './select-option-styles';
 
@@ -29,9 +29,31 @@ export class SelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', highlighted, hidden } = this.host;
+    const { theme = 'light', selected, highlighted } = this.host;
     attachComponentCss(this.host, getComponentCss, theme);
 
-    return <div class="root"></div>;
+    return (
+      <Host onClick={!this.disabled && this.onClick}>
+        <li
+          role="option"
+          class={{
+            option: true,
+            'option--selected': selected,
+            'option--highlighted': highlighted,
+            'option--disabled': this.disabled,
+          }}
+        >
+          <slot />
+        </li>
+      </Host>
+    );
   }
+
+  private onClick = (): void => {
+    this.host.dispatchEvent(
+      new CustomEvent('internalOptionUpdate', {
+        bubbles: true,
+      })
+    );
+  };
 }
