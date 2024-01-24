@@ -82,6 +82,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   white-space: normal;
   padding-top: 2px;
 }
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(hover:hover) {
   .root:hover .switch {
     border-color: #010205;
@@ -175,6 +185,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+}
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -258,6 +278,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+}
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .root:hover .switch {
@@ -358,6 +388,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+}
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -448,6 +488,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+}
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -538,6 +588,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+}
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -621,6 +681,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+}
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .root:hover .switch {
@@ -716,6 +786,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   white-space: normal;
   padding-top: 2px;
 }
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(hover:hover) {
   .root:hover .switch {
     border-color: #010205;
@@ -810,6 +890,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   white-space: normal;
   padding-top: 2px;
 }
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(hover:hover) {
   .root:hover .switch {
     border-color: #010205;
@@ -894,6 +984,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
   min-height: 0;
   color: #010205;
   order: -1;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.status {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1019,6 +1119,16 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   min-height: 0;
   color: #010205;
   order: -1;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.status {
   position: absolute;
   width: 1px;
   height: 1px;
