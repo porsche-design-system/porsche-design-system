@@ -168,7 +168,6 @@ export class PinCode {
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby={`${labelId} ${descriptionId} ${messageId}`}
               aria-invalid={this.state === 'error' ? 'true' : null}
-              aria-busy={this.loading ? 'true' : null}
               aria-disabled={this.loading ? 'true' : null}
               autoComplete="one-time-code"
               pattern="\d*"
