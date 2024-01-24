@@ -16,14 +16,6 @@ a {
   color-scheme: light;
 }
 
-iframe {
-  margin-inline-start: -16px;
-  width: 100vw;
-  height: 20rem;
-  border: 0;
-  box-sizing: border-box;
-}
-
 /* Playground */
 .playground {
   /* TODO: we should generate background colors with scss or js styles package */
@@ -91,14 +83,11 @@ iframe {
   margin-bottom: 16px;
 }
 
-/* Select */
-select:focus,
-select {
-  position: relative;
-  z-index: 999;
-  font: revert;
-  outline: none;
-  outline-offset: 0;
+.playground > iframe {
+  margin-inline-start: -16px;
+  width: 100vw;
+  height: 20rem;
+  border: 0;
 }
 
 /* Visualize Grid */
