@@ -107,19 +107,22 @@ select {
   inset: 0;
   pointer-events: none;
   /* TODO: we should generate visualize grid with scss or js styles package */
-  margin: 0;
+  margin: 0 var(--pds-internal-grid-margin, 0);
   display: grid;
-  padding: 0 calc(50% - 2560px / 2);
+  padding: 0 calc(50% - var(--pds-internal-grid-margin, 0px) - 1280px);
   grid-gap: clamp(16px, 1.25vw + 12px, 36px);
   max-width: 2560px;
   min-width: 320px;
   box-sizing: content-box;
   grid-template-columns:
-    [full-start] minmax(0, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))
+    [full-start] minmax(
+      0,
+      var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))
+    )
     [wide-start extended-start basic-start narrow-start] repeat(6, minmax(0, 1fr))
     [narrow-end basic-end extended-end wide-end] minmax(
       0,
-      calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
+      var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))
     )
     [full-end];
   --pds-internal-grid-safe-zone: max(22px, 10.625vw - 12px);
@@ -129,17 +132,27 @@ select {
   --pds-grid-basic-span-two-thirds: span 4;
   --pds-grid-extended-span-one-half: span 3;
 }
+
 @media (min-width: 760px) {
   .visualize-grid {
     grid-template-columns:
-      [full-start] minmax(0, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))
+      [full-start] minmax(
+        0,
+        var(
+          --pds-internal-grid-outer-column,
+          calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
+        )
+      )
       [wide-start] minmax(0, 1fr) [extended-start] minmax(0, 1fr) [basic-start] repeat(2, minmax(0, 1fr)) [narrow-start] repeat(
         8,
         minmax(0, 1fr)
       )
       [narrow-end] repeat(2, minmax(0, 1fr)) [basic-end] minmax(0, 1fr) [extended-end] minmax(0, 1fr) [wide-end] minmax(
         0,
-        calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
+        var(
+          --pds-internal-grid-outer-column,
+          calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
+        )
       )
       [full-end];
     --pds-internal-grid-safe-zone: calc(5vw - 16px);
@@ -161,8 +174,80 @@ select {
   background: rgba(0, 0, 255, 0.1);
 }
 
+.visualize-grid > span:nth-of-type(1) {
+  grid-column: 1;
+}
+
+.visualize-grid > span:nth-of-type(2) {
+  grid-column: 2;
+}
+
+.visualize-grid > span:nth-of-type(3) {
+  grid-column: 3;
+}
+
+.visualize-grid > span:nth-of-type(4) {
+  grid-column: 4;
+}
+
+.visualize-grid > span:nth-of-type(5) {
+  grid-column: 5;
+}
+
+.visualize-grid > span:nth-of-type(6) {
+  grid-column: 6;
+}
+
+.visualize-grid > span:nth-of-type(7) {
+  grid-column: 7;
+}
+
+.visualize-grid > span:nth-of-type(8) {
+  grid-column: 8;
+}
+
+.visualize-grid > span:nth-of-type(9) {
+  grid-column: 9;
+}
+
+.visualize-grid > span:nth-of-type(10) {
+  grid-column: 10;
+}
+
+.visualize-grid > span:nth-of-type(11) {
+  grid-column: 11;
+}
+
+.visualize-grid > span:nth-of-type(12) {
+  grid-column: 12;
+}
+
+.visualize-grid > span:nth-of-type(13) {
+  grid-column: 13;
+}
+
+.visualize-grid > span:nth-of-type(14) {
+  grid-column: 14;
+}
+
+.visualize-grid > span:nth-of-type(15) {
+  grid-column: 15;
+}
+
+.visualize-grid > span:nth-of-type(16) {
+  grid-column: 16;
+}
+
+.visualize-grid > span:nth-of-type(17) {
+  grid-column: 17;
+}
+
+.visualize-grid > span:nth-of-type(18) {
+  grid-column: 18;
+}
+
 @media (max-width: 759px) {
-  .visualize-grid > span:nth-child(n + 9) {
+  .visualize-grid > span:nth-of-type(n + 9) {
     display: none;
   }
 }
