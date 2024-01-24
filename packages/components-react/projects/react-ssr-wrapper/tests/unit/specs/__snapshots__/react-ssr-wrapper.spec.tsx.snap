@@ -10519,8 +10519,7 @@ exports[`should render dsr component for PToast 1`] = `
     <style>
       :host {
   position: fixed !important;
-  left: max(22px, 10.625vw - 12px) !important;
-  right: max(22px, 10.625vw - 12px) !important;
+  inset-inline: max(22px, 10.625vw - 12px) !important;
   --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 56px) !important;
   bottom: var(--p-internal-toast-position-bottom) !important;
   z-index: 999999 !important;
