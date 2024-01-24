@@ -17,40 +17,25 @@ a {
 }
 
 /* Playground */
+/* TODO: we should generate background colors with scss or js styles package */
 .playground {
-  /* TODO: we should generate background colors with scss or js styles package */
-  --theme-light-background-base: #fff;
-  --theme-light-background-surface: #eeeff2;
-  --theme-dark-background-base: #0e0e12;
-  --theme-dark-background-surface: #212225;
   padding: 16px;
+  background: var(--playground-background-base, #fff);
 }
 
-.playground.light,
-.playground.auto {
-  background: var(--theme-light-background-base);
-}
-
-.playground.light.surface,
-.playground.auto.surface {
-  background: var(--theme-light-background-surface);
+.playground.surface {
+  background: var(--playground-background-surface, #eeeff2);
 }
 
 .playground.dark {
-  background: var(--theme-dark-background-base);
-}
-
-.playground.dark.surface {
-  background: var(--theme-dark-background-surface);
+  --playground-background-base: #0e0e12;
+  --playground-background-surface: #212225;
 }
 
 @media (prefers-color-scheme: dark) {
   .playground.auto {
-    background: var(--theme-dark-background-base);
-  }
-
-  .playground.auto.surface {
-    background: var(--theme-dark-background-surface);
+    --playground-background-base: #0e0e12;
+    --playground-background-surface: #212225;
   }
 }
 
@@ -163,6 +148,8 @@ a {
   background: rgba(0, 0, 255, 0.1);
 }
 
+/* `grid-column` definition is useful in case we want to stack elements above the grid visualization like in some vrt
+scenarios for e.g. Flyout */
 .visualize-grid > span:nth-of-type(1) {
   grid-column: 1;
 }
