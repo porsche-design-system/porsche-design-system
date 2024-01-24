@@ -44,7 +44,7 @@ export const getComponentCss = (
         ...(!hasIcon &&
           isLoading && {
             label: {
-              visibility: 'hidden',
+              opacity: 0, // use opacity for smooth transition between states and to keep accessible name available
             },
             icon: {
               position: 'absolute',
