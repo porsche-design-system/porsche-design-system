@@ -25,6 +25,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - `Carousel`: Pagination can be used for navigation & pagination has more spacing on touch devices
   ([#3003](https://github.com/porsche-design-system/porsche-design-system/pull/3003))
+- `Button`, `Button Pure`, `Switch`, `Checkbox Wrapper`, `Radio Button Wrapper`: optimized announcement of loading state
+  for assistive technologies ([#3009](https://github.com/porsche-design-system/porsche-design-system/pull/3009))
 
 ### [3.10.0] - 2024-01-17
 
