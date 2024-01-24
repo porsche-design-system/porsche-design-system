@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop, Watch, Host } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
@@ -14,6 +14,7 @@ import {
 import { getComponentCss } from './switch-styles';
 import type { SwitchAlignLabel, SwitchAlignLabelDeprecated, SwitchUpdateEventDetail } from './switch-utils';
 import { getSwitchButtonAriaAttributes } from './switch-utils';
+import { LoadingMessage, statusId } from '../common/loading-message/loading-message';
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
@@ -61,10 +62,19 @@ export class Switch {
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<SwitchUpdateEventDetail>;
 
+  private initialLoading: boolean = false;
+
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
     if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
+    }
+  }
+
+  @Watch('loading')
+  public loadingChanged(newVal: boolean): void {
+    if (newVal) {
+      this.initialLoading = true;
     }
   }
 
@@ -103,30 +113,29 @@ export class Switch {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <button
-        {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
-        class="root"
-        type="button"
-        role="switch"
-        onClick={this.onSwitchClick}
-      >
-        <span class="switch">
-          {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
-          <span class="toggle">
-            {this.loading && (
-              <PrefixedTagNames.pSpinner
-                class="spinner"
-                size="inherit"
-                theme={this.theme}
-                aria={{ 'aria-label': 'Loading state' }}
-              />
-            )}
+      <Host>
+        <button
+          {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
+          class="root"
+          type="button"
+          role="switch"
+          onClick={this.onSwitchClick}
+          aria-describedby={this.loading ? statusId : undefined}
+        >
+          <span class="switch">
+            {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
+            <span class="toggle">
+              {this.loading && (
+                <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
+              )}
+            </span>
           </span>
-        </span>
-        <span class="label">
-          <slot />
-        </span>
-      </button>
+          <span class="label">
+            <slot />
+          </span>
+        </button>
+        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
+      </Host>
     );
   }
 

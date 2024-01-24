@@ -13,6 +13,7 @@ import {
   colorSchemeStyles,
 } from '../../styles';
 import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 const getColors = (
   checked: boolean,
@@ -213,5 +214,6 @@ export const getComponentCss = (
         )
       ),
     },
+    ...getFunctionalComponentLoadingMessageStyles(),
   });
 };
