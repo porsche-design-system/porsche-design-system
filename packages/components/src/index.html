@@ -105,27 +105,7 @@
       </select>
     </header>
 
-    <main>
-      <p-button type="button" loading="false">Buy a Porsche</p-button>
-      <p-button type="button" loading="true">Buy a Porsche </p-button>
-
-      <script>
-        const button = document.querySelectorAll('p-button');
-        button.forEach((el) => {
-          el.addEventListener('click', () => {
-            const getAttributeValue = el.getAttribute('loading');
-            if (getAttributeValue === 'true') {
-              el.setAttribute('loading', 'false');
-            } else {
-              el.setAttribute('loading', 'true');
-              setTimeout(() => {
-                el.setAttribute('loading', 'false');
-              }, 5000);
-            }
-          });
-        });
-      </script>
-    </main>
+    <main></main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
