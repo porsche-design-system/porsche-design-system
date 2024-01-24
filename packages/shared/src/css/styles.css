@@ -148,8 +148,7 @@ a {
   background: rgba(0, 0, 255, 0.1);
 }
 
-/* `grid-column` definition is useful in case we want to stack elements above the grid visualization like in some vrt
-scenarios for e.g. Flyout */
+/* useful to stack elements above the grid visualization like in some vrt scenarios for e.g. Flyout */
 .visualize-grid > span:nth-of-type(1) {
   grid-column: 1;
 }
