@@ -32,6 +32,7 @@ import { FlyoutPage } from './generated/Flyout';
 import { FlyoutBasicPage } from './generated/FlyoutBasic';
 import { FlyoutFooterPage } from './generated/FlyoutFooter';
 import { FlyoutFooterScrollableContentPage } from './generated/FlyoutFooterScrollableContent';
+import { FlyoutGridPage } from './generated/FlyoutGrid';
 import { FlyoutHeaderPage } from './generated/FlyoutHeader';
 import { FlyoutHeaderFooterPage } from './generated/FlyoutHeaderFooter';
 import { FlyoutHeaderFooterScrollableContentPage } from './generated/FlyoutHeaderFooterScrollableContent';
@@ -208,6 +209,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Footer Scrollable Content',
     path: '/flyout-footer-scrollable-content',
     element: <FlyoutFooterScrollableContentPage />,
+  },
+  {
+    name: 'Flyout Grid',
+    path: '/flyout-grid',
+    element: <FlyoutGridPage />,
   },
   {
     name: 'Flyout Header',
