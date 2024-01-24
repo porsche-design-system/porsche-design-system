@@ -2,19 +2,7 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { SelectDirection, SelectOption, SelectState, SelectUpdateEventDetail } from './select-utils';
 import { getSelectDropdownDirection, setSelectedOption } from './select-utils';
 
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  forceUpdate,
-  h,
-  type JSX,
-  Listen,
-  Prop,
-  State,
-  Watch,
-} from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, type JSX, Listen, Prop, State, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -31,11 +19,6 @@ import {
 import { getComponentCss } from './select-styles';
 import { Label } from '../../common/label/label';
 import { StateMessage } from '../../common/state-message/state-message';
-import {
-  initNativeSelect,
-  setSelectedOptions,
-  updateNativeOptions,
-} from '../../multi-select/multi-select/multi-select-utils';
 
 const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
