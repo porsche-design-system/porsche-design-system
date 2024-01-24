@@ -663,10 +663,7 @@ const generateComponentMeta = (): void => {
         // let's find the file where the type is defined
         const [, relativeEventTypePath] =
           source.match(new RegExp(`import [\\s\\S]+?${eventType}[\\s\\S]+?from '([\\s\\S]+?)';`)) || [];
-
-        const componentSourceFilePath = componentFileNames.find((fileName) =>
-          fileName.match(new RegExp(`${tagName.replace('p-', '')}\.tsx$`))
-        );
+        const componentSourceFilePath = getComponentFilePath(tagName);
         const eventTypePath = path.resolve(componentSourceFilePath, `../${relativeEventTypePath}.ts`);
         const eventTypeFileContent = fs.readFileSync(eventTypePath, 'utf8');
 
