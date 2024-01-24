@@ -3,8 +3,7 @@
 exports[`getComponentCss() should return correct css 1`] = `
 ":host {
   position: fixed !important;
-  left: max(22px, 10.625vw - 12px) !important;
-  right: max(22px, 10.625vw - 12px) !important;
+  inset-inline: max(22px, 10.625vw - 12px) !important;
   --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 56px) !important;
   bottom: var(--p-internal-toast-position-bottom) !important;
   z-index: 999999 !important;
@@ -35,8 +34,7 @@ exports[`getComponentCss() should return correct css 1`] = `
 }
 @media(min-width:760px) {
     :host {
-      left: 64px !important;
-      right: auto !important;
+      inset-inline: 64px auto !important;
       max-width: min(42rem, calc(100vw - 64px * 2)) !important;
       --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 64px) !important;
       bottom: var(--p-internal-toast-position-bottom) !important;
