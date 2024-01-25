@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   ([#3010](https://github.com/porsche-design-system/porsche-design-system/pull/3010))
 - `Carousel`: Pagination can be used for navigation & pagination has more spacing on touch devices
   ([#3003](https://github.com/porsche-design-system/porsche-design-system/pull/3003))
+- `Checkbox Wrapper`, `Radio Button Wrapper`, `Link`, `Popover`, `Scroller`, `Switch`: Improved focus styling
 
 ### [3.10.0] - 2024-01-17
 

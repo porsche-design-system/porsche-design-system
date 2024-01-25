@@ -1,16 +1,15 @@
 import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
-  getTransition,
+  colorSchemeStyles,
+  getHiddenTextJssStyle,
+  getHighContrastColors,
   getThemedColors,
-  getInsetJssStyle,
+  getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  getHighContrastColors,
-  getHiddenTextJssStyle,
   prefersColorSchemeDarkMediaQuery,
-  colorSchemeStyles,
 } from '../../styles';
 import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 
@@ -139,18 +138,16 @@ export const getComponentCss = (
             },
           },
         })),
-      '&:focus .switch::before': {
-        content: '""',
-        position: 'absolute',
-        ...getInsetJssStyle(-6),
-        border: `${borderWidthBase} solid ${focusColor}`,
+      // TODO: we should try to make getFocusStyle() work with custom selectors
+      '&:focus .switch': {
+        outline: `${borderWidthBase} solid ${focusColor}`,
+        outlineOffset: '2px',
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: focusColorDark,
+          outlineColor: focusColorDark,
         }),
-        borderRadius: '18px',
       },
-      '&:not(:focus-visible) .switch::before': {
-        borderColor: 'transparent',
+      '&:focus:not(:focus-visible) .switch': {
+        outlineColor: 'transparent',
       },
     },
     switch: {

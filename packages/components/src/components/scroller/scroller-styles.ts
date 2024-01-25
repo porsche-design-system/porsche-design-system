@@ -2,7 +2,6 @@ import { getCss, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -159,23 +158,17 @@ export const getComponentCss = (
       minHeight: '28px',
       minWidth: '100%',
       verticalAlign: 'top',
-      outline: 0,
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        ...getInsetJssStyle(-4),
-        border: `${borderWidthBase} solid transparent`,
-        borderRadius: borderRadiusSmall,
-        pointerEvents: 'none', // Needed to enable clicks inside of slot
-      },
-      '&:focus::before': {
-        borderColor: focusColor,
+      borderRadius: borderRadiusSmall,
+      // TODO: we should try to use getFocusStyle()
+      '&:focus': {
+        outline: `${borderWidthBase} solid ${focusColor}`,
+        outlineOffset: '2px',
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: focusColorDark,
+          outlineColor: focusColorDark,
         }),
       },
-      '&:focus:not(:focus-visible)::before': {
-        borderColor: 'transparent',
+      '&:focus:not(:focus-visible)': {
+        outlineColor: 'transparent',
       },
     },
     trigger: {

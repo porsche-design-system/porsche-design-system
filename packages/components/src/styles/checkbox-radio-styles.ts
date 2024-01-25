@@ -3,7 +3,6 @@ import { type Styles } from 'jss';
 import { isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../utils';
 import {
   getHighContrastColors,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hoverMediaQuery,
@@ -57,7 +56,6 @@ export const getSlottedCheckboxRadioButtonStyles = (
   return {
     '::slotted': {
       '&(input)': {
-        position: 'relative', // TODO: can be removed as soon as focus style was adjusted
         width: fontLineHeight,
         height: fontLineHeight,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
@@ -69,8 +67,7 @@ export const getSlottedCheckboxRadioButtonStyles = (
         boxSizing: 'content-box',
         background: `transparent 0% 0% / ${fontLineHeight}`,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-        border: `2px solid ${uncheckedColor}`,
-        outline: 0,
+        border: `${borderWidthBase} solid ${uncheckedColor}`,
         ...(disabledOrLoading
           ? {
               pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
@@ -113,18 +110,16 @@ export const getSlottedCheckboxRadioButtonStyles = (
           }),
         })),
       ...(!isDisabled && {
-        // TODO: can be done with getFocusStyle() in the meantime
-        '&(input:focus)::before': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(-6),
-          border: `${borderWidthBase} solid ${focusColor}`,
+        // TODO: we should try to make getFocusStyle() work with slotted selectors
+        '&(input:focus)': {
+          outline: `${borderWidthBase} solid ${focusColor}`,
+          outlineOffset: '2px',
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
+            outlineColor: focusColorDark,
           }),
         },
-        '&(input:focus:not(:focus-visible))::before': {
-          borderColor: 'transparent',
+        '&(input:focus:not(:focus-visible))': {
+          outlineColor: 'transparent',
         },
       }),
     },

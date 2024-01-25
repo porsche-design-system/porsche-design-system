@@ -74,12 +74,6 @@ export const doGetThemedColors = (theme: Theme = 'light'): ThemedColors => {
   return getThemedColors(theme);
 };
 
-export type GetFocusStylesOptions = {
-  color?: string;
-  offset?: number;
-  pseudo?: '::after' | '::before';
-};
-
 export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
   value = value === 0 || value === 'auto' ? value : (`${value}px` as any);
   return {

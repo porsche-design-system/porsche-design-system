@@ -1,4 +1,5 @@
 import type { PopoverDirection } from './popover-utils';
+import { safeZonePx } from './popover-utils';
 import type { JssStyle } from 'jss';
 import {
   borderRadiusSmall,
@@ -25,7 +26,6 @@ import {
 } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
 import type { Theme } from '../../types';
-import { safeZonePx } from './popover-utils';
 
 const { canvasColor, canvasTextColor } = getHighContrastColors();
 
@@ -167,7 +167,6 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
       },
       button: {
         display: 'block',
-        position: 'relative',
         WebkitAppearance: 'none', // iOS safari
         appearance: 'none',
         background: 'transparent',
@@ -179,6 +178,7 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
         width: fontLineHeight, // width needed to improve ssr support
         height: fontLineHeight, // height needed to improve ssr support
         borderRadius: '50%',
+        // TODO: we should try to use getHoverStyle()
         ...hoverMediaQuery({
           transition: getTransition('background-color'),
           '&:hover': {
@@ -189,21 +189,15 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
             }),
           },
         }),
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(-2),
-          border: `${borderWidthBase} solid transparent`,
-          borderRadius: '50%',
-        },
-        '&:focus::before': {
-          borderColor: focusColor,
+        // TODO: we should try to use getFocusStyle()
+        '&:focus': {
+          outline: `${borderWidthBase} solid ${focusColor}`,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
+            outlineColor: focusColorDark,
           }),
         },
-        '&:focus:not(:focus-visible)::before': {
-          borderColor: 'transparent',
+        '&:focus:not(:focus-visible)': {
+          outlineColor: 'transparent',
         },
       },
     },

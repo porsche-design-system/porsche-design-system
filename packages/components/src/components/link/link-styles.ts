@@ -10,7 +10,7 @@ import {
   getThemedColors,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import { borderRadiusMedium, borderWidthBase } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   icon: LinkButtonIconName,
@@ -59,21 +59,23 @@ export const getComponentCss = (
             '&(a)::before': {
               content: '""',
               position: 'fixed',
-              borderRadius: borderRadiusMedium,
-              ...getInsetJssStyle(-6),
+              ...getInsetJssStyle(-2),
+              borderRadius: borderRadiusSmall,
             },
             // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
             '&(a::-moz-focus-inner)': {
               border: 0,
             },
+            // TODO: we should try to use getFocusStyle() and get rid of ::before
             '&(a:focus)::before': {
-              border: `${borderWidthBase} solid ${focusColor}`,
+              outline: `${borderWidthBase} solid ${focusColor}`,
+              outlineOffset: '2px',
               ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: focusColorDark,
+                outlineColor: focusColorDark,
               }),
             },
             '&(a:focus:not(:focus-visible))::before': {
-              border: 0,
+              outlineColor: 'transparent',
             },
           },
         }),
