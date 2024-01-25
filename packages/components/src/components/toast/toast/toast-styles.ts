@@ -52,16 +52,14 @@ export const getComponentCss = (): string => {
     '@global': {
       ':host': addImportantToEachRule({
         position: 'fixed',
-        left: gridExtendedOffsetBase,
-        right: gridExtendedOffsetBase,
+        insetInline: gridExtendedOffsetBase,
         // Needs a not overridable internal css variable to cover default position depending on viewport size and to handle animation properly.
         // In addition, a public css variable can be passed to overwrite the default position.
         [cssVariablePositionBottomInternal]: `var(${cssVariablePositionBottom}, 56px)`,
         bottom: `var(${cssVariablePositionBottomInternal})`,
         zIndex: TOAST_Z_INDEX,
         [getMediaQueryMin('s')]: {
-          left: '64px',
-          right: 'auto',
+          insetInline: '64px auto',
           maxWidth: 'min(42rem, calc(100vw - 64px * 2))',
           [cssVariablePositionBottomInternal]: `var(${cssVariablePositionBottom}, 64px)`,
           bottom: `var(${cssVariablePositionBottomInternal})`,
