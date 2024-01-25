@@ -25,7 +25,7 @@ import { Component, Element, h, Host, type JSX, Listen, Prop, Watch } from '@ste
 import { getButtonAriaAttributes } from './button-utils';
 import type { ButtonIcon } from './button-utils';
 import { getComponentCss } from './button-styles';
-import { statusId, LoadingMessage } from '../common/loading-message/loading-message';
+import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
@@ -135,7 +135,7 @@ export class Button {
           type={this.type}
           name={this.name}
           value={this.value}
-          aria-describedby={this.loading ? statusId : undefined}
+          aria-describedby={this.loading ? loadingId : undefined}
         >
           {this.loading && (
             <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />

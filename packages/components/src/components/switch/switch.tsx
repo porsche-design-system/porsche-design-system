@@ -14,7 +14,7 @@ import {
 import { getComponentCss } from './switch-styles';
 import type { SwitchAlignLabel, SwitchAlignLabelDeprecated, SwitchUpdateEventDetail } from './switch-utils';
 import { getSwitchButtonAriaAttributes } from './switch-utils';
-import { LoadingMessage, statusId } from '../common/loading-message/loading-message';
+import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
@@ -120,7 +120,7 @@ export class Switch {
           type="button"
           role="switch"
           onClick={this.onSwitchClick}
-          aria-describedby={this.loading ? statusId : undefined}
+          aria-describedby={this.loading ? loadingId : undefined}
         >
           <span class="switch">
             {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}

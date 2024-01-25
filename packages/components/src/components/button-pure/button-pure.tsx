@@ -29,7 +29,7 @@ import type {
 } from './button-pure-utils';
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
-import { LoadingMessage, statusId } from '../common/loading-message/loading-message';
+import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
   type: AllowedTypes.oneOf<ButtonPureType>(BUTTON_TYPES),
@@ -190,7 +190,7 @@ export class ButtonPure {
           type={this.type}
           name={this.name}
           value={this.value}
-          aria-describedby={this.loading ? statusId : undefined}
+          aria-describedby={this.loading ? loadingId : undefined}
         >
           {this.loading ? (
             <PrefixedTagNames.pSpinner {...iconProps} aria-hidden="true" />

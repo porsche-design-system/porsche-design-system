@@ -5,11 +5,11 @@ type LoadingMessageProps = {
   initialLoading: boolean;
 };
 
-export const statusId = 'status';
+export const loadingId = 'loading';
 
 export const LoadingMessage: FunctionalComponent<LoadingMessageProps> = ({ loading, initialLoading }) => {
   return (
-    <span id={statusId} class="status" role="status">
+    <span id={loadingId} class="loading" role="status">
       {loading ? 'Loading' : !initialLoading ? '' : 'Loading finished'}
     </span>
   );
