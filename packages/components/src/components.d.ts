@@ -1536,7 +1536,7 @@ export namespace Components {
         /**
           * The option value.
          */
-        "value": string;
+        "value"?: string;
     }
     interface PSelectWrapper {
         /**
