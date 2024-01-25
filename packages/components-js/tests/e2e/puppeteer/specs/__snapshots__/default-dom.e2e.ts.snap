@@ -31,7 +31,7 @@ exports[`should have no basic DOM regression for p-button 1`] = `
     </slot>
   </span>
 </button>
-<span id="status" class="status" role="status">
+<span id="loading" class="loading" role="status">
 </span>"
 `;
 
@@ -51,7 +51,7 @@ exports[`should have no basic DOM regression for p-button-pure 1`] = `
     </slot>
   </span>
 </button>
-<span id="status" class="status" role="status">
+<span id="loading" class="loading" role="status">
 </span>"
 `;
 
@@ -91,7 +91,7 @@ exports[`should have no basic DOM regression for p-checkbox-wrapper 1`] = `
     <slot>
     </slot>
   </div>
-  <span id="status" class="status" role="status">
+  <span id="loading" class="loading" role="status">
   </span>
 </div>"
 `;
@@ -418,7 +418,7 @@ exports[`should have no basic DOM regression for p-pin-code 1`] = `
     <input type="text" aria-label="3-4" aria-describedby="label description message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
     <input type="text" aria-label="4-4" aria-describedby="label description message" autocomplete="one-time-code" pattern="\\d*" inputmode="numeric">
   </div>
-  <span id="status" class="status" role="status">
+  <span id="loading" class="loading" role="status">
   </span>
 </div>"
 `;
@@ -440,7 +440,7 @@ exports[`should have no basic DOM regression for p-radio-button-wrapper 1`] = `
     <slot>
     </slot>
   </div>
-  <span id="status" class="status" role="status">
+  <span id="loading" class="loading" role="status">
   </span>
 </div>"
 `;
@@ -537,7 +537,7 @@ exports[`should have no basic DOM regression for p-switch 1`] = `
     </slot>
   </span>
 </button>
-<span id="status" class="status" role="status">
+<span id="loading" class="loading" role="status">
 </span>"
 `;
 
