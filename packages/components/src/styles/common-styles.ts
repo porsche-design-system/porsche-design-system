@@ -84,6 +84,35 @@ export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
   };
 };
 
+type Options = {
+  offset?: string | 0;
+  slotted?: boolean;
+  pseudo?: boolean;
+  prefix?: string;
+  suffix?: string;
+};
+export const getFocusJssStyle = (theme: Theme, opts?: Options): JssStyle => {
+  const { offset = '2px', slotted = false, pseudo = false, prefix = '', suffix = '' } = opts || {};
+  const { focusColor } = getThemedColors(theme);
+  const { focusColor: focusColorDark } = getThemedColors('dark');
+
+  return {
+    outline: 0, // prevents :focus style
+    [slotted ? `&(${prefix}${suffix}::-moz-focus-inner)` : `&${prefix}${suffix}::-moz-focus-inner`]: {
+      border: 0,
+    },
+    [slotted
+      ? `&(${prefix}:focus-visible${suffix})${pseudo ? '::before' : ''}`
+      : `&${prefix}:focus-visible${suffix}${pseudo ? '::before' : ''}`]: {
+      outline: `${borderWidthBase} solid ${focusColor}`,
+      outlineOffset: offset,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        outlineColor: focusColorDark,
+      }),
+    },
+  };
+};
+
 // reset initial styles, e.g. in case link-pure is used with slotted anchor and nested within e.g. an accordion
 export const getResetInitialStylesForSlottedAnchor: JssStyle = {
   margin: 0,

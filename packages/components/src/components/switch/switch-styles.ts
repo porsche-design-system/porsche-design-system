@@ -3,6 +3,7 @@ import { buildResponsiveStyles, getCss, isDisabledOrLoading, isHighContrastMode,
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getFocusJssStyle,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getThemedColors,
@@ -84,8 +85,6 @@ export const getComponentCss = (
     toggleBackgroundColorHover: toggleBackgroundColorHoverDark,
     textColor: textColorDark,
   } = getColors(checked, disabled, loading, 'dark');
-  const { focusColor } = getThemedColors(theme);
-  const { focusColor: focusColorDark } = getThemedColors('dark');
 
   return getCss({
     '@global': {
@@ -138,17 +137,7 @@ export const getComponentCss = (
             },
           },
         })),
-      // TODO: we should try to make getFocusStyle() work with custom selectors
-      '&:focus .switch': {
-        outline: `${borderWidthBase} solid ${focusColor}`,
-        outlineOffset: '2px',
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          outlineColor: focusColorDark,
-        }),
-      },
-      '&:focus:not(:focus-visible) .switch': {
-        outlineColor: 'transparent',
-      },
+      ...getFocusJssStyle(theme, { suffix: ' .switch' }),
     },
     switch: {
       position: 'relative',

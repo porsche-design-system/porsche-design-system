@@ -2,6 +2,7 @@ import { getCss, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getFocusJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -12,7 +13,6 @@ import type { Theme } from '../../types';
 import type { ScrollerGradientColor, ScrollerScrollIndicatorPosition } from './scroller-utils';
 import {
   borderRadiusSmall,
-  borderWidthBase,
   dropShadowLowStyle,
   fontLineHeight,
   frostedGlassStyle,
@@ -56,11 +56,10 @@ export const getComponentCss = (
   hasScrollbar: boolean,
   theme: Theme
 ): string => {
-  const { backgroundColor, backgroundSurfaceColor, focusColor, hoverColor } = getThemedColors(theme);
+  const { backgroundColor, backgroundSurfaceColor, hoverColor } = getThemedColors(theme);
   const {
     backgroundColor: backgroundColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
-    focusColor: focusColorDark,
     hoverColor: hoverColorDark,
   } = getThemedColors('dark');
   const backgroundColorLight: Record<ScrollerGradientColor, string> = {
@@ -159,17 +158,7 @@ export const getComponentCss = (
       minWidth: '100%',
       verticalAlign: 'top',
       borderRadius: borderRadiusSmall,
-      // TODO: we should try to use getFocusStyle()
-      '&:focus': {
-        outline: `${borderWidthBase} solid ${focusColor}`,
-        outlineOffset: '2px',
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          outlineColor: focusColorDark,
-        }),
-      },
-      '&:focus:not(:focus-visible)': {
-        outlineColor: 'transparent',
-      },
+      ...getFocusJssStyle(theme),
     },
     trigger: {
       position: 'absolute',

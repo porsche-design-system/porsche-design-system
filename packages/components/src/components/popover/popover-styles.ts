@@ -3,7 +3,6 @@ import { safeZonePx } from './popover-utils';
 import type { JssStyle } from 'jss';
 import {
   borderRadiusSmall,
-  borderWidthBase,
   fontLineHeight,
   frostedGlassStyle,
   motionDurationShort,
@@ -15,6 +14,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   cssVariableAnimationDuration,
+  getFocusJssStyle,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getInsetJssStyle,
@@ -140,10 +140,9 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
 };
 
 export const getComponentCss = (direction: PopoverDirection, isNative: boolean, theme: Theme): string => {
-  const { hoverColor, focusColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { hoverColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
     hoverColor: hoverColorDark,
-    focusColor: focusColorDark,
     primaryColor: primaryColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
   } = getThemedColors('dark');
@@ -189,16 +188,7 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
             }),
           },
         }),
-        // TODO: we should try to use getFocusStyle()
-        '&:focus': {
-          outline: `${borderWidthBase} solid ${focusColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            outlineColor: focusColorDark,
-          }),
-        },
-        '&:focus:not(:focus-visible)': {
-          outlineColor: 'transparent',
-        },
+        ...getFocusJssStyle(theme, { offset: 0 }),
       },
     },
     label: getHiddenTextJssStyle(),

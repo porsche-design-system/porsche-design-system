@@ -2,6 +2,7 @@ import { type Theme } from '../types';
 import { type Styles } from 'jss';
 import { isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../utils';
 import {
+  getFocusJssStyle,
   getHighContrastColors,
   getThemedColors,
   getTransition,
@@ -19,13 +20,12 @@ export const getSlottedCheckboxRadioButtonStyles = (
   isLoading: boolean,
   theme: Theme
 ): Styles => {
-  const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     contrastMediumColor: contrastMediumColorDark,
     contrastHighColor: contrastHighColorDark,
     disabledColor: disabledColorDark,
-    focusColor: focusColorDark,
   } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
@@ -109,19 +109,7 @@ export const getSlottedCheckboxRadioButtonStyles = (
             transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
           }),
         })),
-      ...(!isDisabled && {
-        // TODO: we should try to make getFocusStyle() work with slotted selectors
-        '&(input:focus)': {
-          outline: `${borderWidthBase} solid ${focusColor}`,
-          outlineOffset: '2px',
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            outlineColor: focusColorDark,
-          }),
-        },
-        '&(input:focus:not(:focus-visible))': {
-          outlineColor: 'transparent',
-        },
-      }),
+      ...(!isDisabled && getFocusJssStyle(theme, { slotted: true, prefix: 'input' })),
     },
   };
 };
