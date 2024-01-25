@@ -4,6 +4,8 @@ import {
   determineDropdownDirection,
   SelectDropdownDirection,
   SelectDropdownDirectionInternal,
+  setAttribute,
+  setAttributes,
 } from '../../../utils';
 import { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
 import { forceUpdate } from '@stencil/core';
@@ -17,19 +19,68 @@ export type SelectUpdateEventDetail = {
   value: string;
 };
 
-export const setSelectedOption = (options: SelectOption[], newValue: string, oldValue?: string): void => {
-  const newSelectedOption = options.find((option) => option.value === newValue);
+const resetSelectedOption = (options: SelectOption[]) => {
+  const currentSelectedOption = options.find((option) => option.selected);
+  if (currentSelectedOption) {
+    currentSelectedOption.selected = false;
+    forceUpdate(currentSelectedOption);
+  }
+};
 
-  if (newSelectedOption) {
-    if (oldValue) {
-      const oldSelectedOption = options.find((option) => option.value === oldValue);
-      oldSelectedOption.selected = false;
-      forceUpdate(oldSelectedOption);
-    }
-    newSelectedOption.selected = true;
-    forceUpdate(newSelectedOption);
+export const setSelectedValue = (options: SelectOption[], value: string) => {
+  resetSelectedOption(options);
+  // TODO: Do we want to cover multiple options with the same value?
+  const optionToSelect = options.find((option) => option.value === value);
+  if (!optionToSelect) {
+    consoleWarn('The provided value is not included in the options of the p-select:', value);
   } else {
-    consoleWarn('The provided value is not included in the options of the p-select:', newValue);
+    optionToSelect.selected = true;
+    forceUpdate(optionToSelect);
+  }
+};
+
+export const setSelectedOption = (options: SelectOption[], selectedOption: SelectOption): void => {
+  resetSelectedOption(options);
+  selectedOption.selected = true;
+  forceUpdate(selectedOption);
+};
+
+// TODO: Mostly same as multi-select
+// TODO: Extract slot name into const
+export const initNativeSelect = (
+  host: HTMLElement,
+  name: string,
+  disabled: boolean,
+  required: boolean
+): HTMLSelectElement => {
+  const nativeSelect = document.createElement('select');
+  setAttributes(nativeSelect, {
+    'aria-hidden': 'true',
+    tabindex: '-1',
+    slot: 'internal-select',
+  });
+  syncNativeSelect(nativeSelect, name, disabled, required);
+  host.prepend(nativeSelect);
+  return nativeSelect;
+};
+
+// TODO: Same as multi-select
+export const syncNativeSelect = (
+  nativeSelect: HTMLSelectElement,
+  name: string,
+  disabled: boolean,
+  required: boolean
+): void => {
+  setAttribute(nativeSelect, 'name', name);
+  nativeSelect.toggleAttribute('disabled', disabled);
+  nativeSelect.toggleAttribute('required', required);
+};
+
+// TODO: Kind of similar as multi-select
+export const updateNativeOption = (nativeSelect: HTMLSelectElement, options: SelectOption[]): void => {
+  const selectedOption = options.find((option) => option.selected);
+  if (selectedOption) {
+    nativeSelect.innerHTML = `<option value="${selectedOption.value}" selected>${selectedOption.textContent}</option>`;
   }
 };
 

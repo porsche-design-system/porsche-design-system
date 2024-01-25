@@ -1,14 +1,33 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { SelectDirection, SelectOption, SelectState, SelectUpdateEventDetail } from './select-utils';
-import { getSelectDropdownDirection, setSelectedOption } from './select-utils';
+import {
+  getSelectDropdownDirection,
+  initNativeSelect,
+  setSelectedOption,
+  setSelectedValue,
+  updateNativeOption,
+} from './select-utils';
 
-import { Component, Element, Event, EventEmitter, h, type JSX, Listen, Prop, State, Watch } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  forceUpdate,
+  h,
+  type JSX,
+  Listen,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getClosestHTMLElement,
   getPrefixedTagNames,
+  getShadowRootHTMLElement,
   hasPropValueChanged,
   isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
@@ -79,6 +98,7 @@ export class Select {
 
   @State() private isOpen = false;
 
+  private nativeSelect: HTMLSelectElement;
   private inputContainer: HTMLDivElement;
   private listElement: HTMLDivElement;
   private selectOptions: SelectOption[] = [];
@@ -86,27 +106,28 @@ export class Select {
   private isWithinForm: boolean;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
 
-  // TODO: Similar to multi-select
-  // TODO: Pass in selected value and set new and old value
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
-    setSelectedOption(this.selectOptions, e.target.value, this.value);
-    this.preventOptionUpdate = true; // Avoid unnecessary looping over options in setSelectedOptions in value watcher
+    this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
+    setSelectedOption(this.selectOptions, e.target);
+    this.value = e.target.value;
     e.stopPropagation();
     this.emitUpdateEvent();
   }
 
+  // TODO: Similar to multi-select
+  // TODO: Maybe better to find selected option here and pass it into setSelectedValue & updateNativeOption
   @Watch('value')
-  public onValueChange(newValue: string, oldValue: string): void {
+  public onValueChange(): void {
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
-        setSelectedOption(this.selectOptions, newValue, oldValue);
+        setSelectedValue(this.selectOptions, this.value);
       }
       this.preventOptionUpdate = false;
-      // if (this.isWithinForm) {
-      //   updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
-      // }
+      if (this.isWithinForm) {
+        updateNativeOption(this.nativeSelect, this.selectOptions);
+      }
     }
   }
 
@@ -120,12 +141,15 @@ export class Select {
   // TODO: Similar to multi-select
   public componentWillLoad(): void {
     this.updateOptions();
-    // Use initial value to set options
-    setSelectedOption(this.selectOptions, this.value);
-    // if (this.isWithinForm) {
-    //   this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
-    //   updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
-    // }
+    setSelectedValue(this.selectOptions, this.value);
+    if (this.isWithinForm) {
+      this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
+      updateNativeOption(this.nativeSelect, this.selectOptions);
+    }
+  }
+
+  public componentDidLoad(): void {
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -190,6 +214,16 @@ export class Select {
       </div>
     );
   }
+
+  private onSlotchange = (): void => {
+    this.updateOptions();
+    setSelectedValue(this.selectOptions, this.value);
+    if (this.isWithinForm) {
+      updateNativeOption(this.nativeSelect, this.selectOptions);
+    }
+    // Necessary to update selected options in placeholder
+    forceUpdate(this.host);
+  };
 
   // TODO: Similar to multi-select
   private updateOptions = (): void => {
