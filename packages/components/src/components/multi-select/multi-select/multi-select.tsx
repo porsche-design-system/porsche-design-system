@@ -7,7 +7,7 @@ import {
   getSelectedOptionsString,
   getSelectedOptionValues,
   hasFilterOptionResults,
-  initNativeSelect,
+  initNativeMultiSelect,
   type MultiSelectOption,
   type MultiSelectUpdateEventDetail,
   resetFilteredOptions,
@@ -17,7 +17,7 @@ import {
   setLastOptionHighlighted,
   setSelectedOptions,
   syncMultiSelectOptionProps,
-  syncNativeSelect,
+  syncNativeMultiSelect,
   updateHighlightedOption,
   updateNativeOptions,
   updateOptionsFilterState,
@@ -56,7 +56,7 @@ import {
 } from '@stencil/core';
 import { getComponentCss } from './multi-select-styles';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
-import { descriptionId, labelId, Label } from '../../common/label/label';
+import { descriptionId, Label, labelId } from '../../common/label/label';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -167,7 +167,7 @@ export class MultiSelect {
     // Use initial value to set options
     setSelectedOptions(this.multiSelectOptions, this.value);
     if (this.isWithinForm) {
-      this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
+      this.nativeSelect = initNativeMultiSelect(this.host, this.name, this.disabled, this.required);
       updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }
   }
@@ -182,7 +182,7 @@ export class MultiSelect {
 
   public componentWillUpdate(): void {
     if (this.isWithinForm) {
-      syncNativeSelect(this.nativeSelect, this.name, this.disabled, this.required);
+      syncNativeMultiSelect(this.nativeSelect, this.name, this.disabled, this.required);
     }
   }
 

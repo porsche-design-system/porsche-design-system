@@ -24,7 +24,7 @@ export const syncMultiSelectOptionProps = (options: MultiSelectOption[], theme: 
     });
 };
 
-export const initNativeSelect = (
+export const initNativeMultiSelect = (
   host: HTMLElement,
   name: string,
   disabled: boolean,
@@ -37,12 +37,12 @@ export const initNativeSelect = (
     tabindex: '-1',
     slot: 'internal-select',
   });
-  syncNativeSelect(nativeSelect, name, disabled, required);
+  syncNativeMultiSelect(nativeSelect, name, disabled, required);
   host.prepend(nativeSelect);
   return nativeSelect;
 };
 
-export const syncNativeSelect = (
+export const syncNativeMultiSelect = (
   nativeSelect: HTMLSelectElement,
   name: string,
   disabled: boolean,
