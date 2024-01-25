@@ -1,11 +1,16 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { SelectDirection, SelectOption, SelectState, SelectUpdateEventDetail } from './select-utils';
 import {
+  getHighlightedSelectOption,
   getSelectDropdownDirection,
   getSelectedOptionString,
   initNativeSelect,
+  resetHighlightedSelectOption,
+  setFirstSelectOptionHighlighted,
+  setLastSelectOptionHighlighted,
   setSelectedOption,
   setSelectedValue,
+  updateHighlightedSelectOption,
   updateNativeOption,
 } from './select-utils';
 
@@ -29,9 +34,11 @@ import {
   getClosestHTMLElement,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
+  handleButtonEvent,
   hasPropValueChanged,
   isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
+  SelectDropdownDirectionInternal,
   THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
@@ -241,8 +248,63 @@ export class Select {
   };
 
   private onComboboxKeyDown = (e: KeyboardEvent): void => {
-    console.log(e);
+    switch (e.key) {
+      case 'ArrowUp':
+      case 'Up':
+        e.preventDefault();
+        this.cycleDropdown('up');
+        break;
+      case 'ArrowDown':
+      case 'Down':
+        e.preventDefault();
+        this.cycleDropdown('down');
+        break;
+      case ' ':
+      case 'Spacebar':
+      case 'Enter':
+        const highlightedOption = getHighlightedSelectOption(this.selectOptions);
+        if (highlightedOption) {
+          setSelectedOption(this.selectOptions, highlightedOption);
+          this.value = highlightedOption.value;
+          this.emitUpdateEvent();
+          forceUpdate(highlightedOption);
+        } else {
+          if (this.isWithinForm) {
+            handleButtonEvent(
+              e,
+              this.host,
+              () => 'submit',
+              () => this.disabled
+            );
+          }
+        }
+        break;
+      case 'Escape':
+      case 'Tab':
+        this.isOpen = false;
+        resetHighlightedSelectOption(this.selectOptions);
+        break;
+      case 'PageUp':
+        if (this.isOpen) {
+          e.preventDefault();
+          setFirstSelectOptionHighlighted(this.listElement, this.selectOptions);
+        }
+        break;
+      case 'PageDown':
+        if (this.isOpen) {
+          e.preventDefault();
+          setLastSelectOptionHighlighted(this.listElement, this.selectOptions);
+        }
+        break;
+      default:
+      // TODO: Do we need something here?
+    }
   };
+
+  private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
+    this.isOpen = true;
+    updateHighlightedSelectOption(this.listElement, this.selectOptions, direction);
+  }
 
   // TODO: Mostly similar to multi-select
   private onClickOutside = (e: MouseEvent): void => {

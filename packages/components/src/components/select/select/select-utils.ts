@@ -22,7 +22,7 @@ export type SelectUpdateEventDetail = {
 export const getSelectedOptionString = (options: SelectOption[]): string =>
   options.find((option) => option.selected)?.textContent ?? '';
 
-const resetSelectedOption = (options: SelectOption[]) => {
+const resetSelectedOption = (options: SelectOption[]): void => {
   const currentSelectedOption = options.find((option) => option.selected);
   if (currentSelectedOption) {
     currentSelectedOption.selected = false;
@@ -30,7 +30,7 @@ const resetSelectedOption = (options: SelectOption[]) => {
   }
 };
 
-export const setSelectedValue = (options: SelectOption[], value: string) => {
+export const setSelectedValue = (options: SelectOption[], value: string): void => {
   if (value === undefined) {
     // Option without value for empty selection
     const optionToSelect = options.find((option) => option.value === undefined);
@@ -109,5 +109,95 @@ export const getSelectDropdownDirection = (
     return determineDropdownDirection(host, visibleOptionsLength);
   } else {
     return 'down';
+  }
+};
+
+// TODO: Similar to multi-select
+export const getHighlightedSelectOptionIndex = (options: SelectOption[]): number =>
+  options.indexOf(getHighlightedSelectOption(options));
+
+// TODO: Similiar to multi-select
+export const getHighlightedSelectOption = (options: SelectOption[]): SelectOption =>
+  options.find((option) => option.highlighted);
+
+// TODO: Kind of similar to multi-select
+export const resetHighlightedSelectOption = (options: SelectOption[]): void => {
+  setHighlightedSelectOption(getHighlightedSelectOption(options), false);
+};
+
+// TODO: Similar to multi-select
+export const setHighlightedSelectOption = (option: SelectOption, highlighted: boolean): void => {
+  option.highlighted = highlighted;
+  forceUpdate(option);
+};
+
+// TODO: Similar to multi-select
+export const getUsableSelectOptions = (options: SelectOption[]): SelectOption[] =>
+  options.filter((option) => !option.hidden && !option.disabled);
+
+// TODO: Similar to multi-select
+export const setNextSelectOptionHighlighted = (host: HTMLElement, options: SelectOption[], newIndex: number): void => {
+  const oldIndex = getHighlightedSelectOptionIndex(options);
+  if (oldIndex !== -1) {
+    setHighlightedSelectOption(options[oldIndex], false);
+  }
+  setHighlightedSelectOption(options[newIndex], true);
+  handleSelectDropdownScroll(host, options[newIndex]);
+};
+
+// TODO: Similar to multi-select
+export const setFirstSelectOptionHighlighted = (host: HTMLElement, options: SelectOption[]): void => {
+  const validOptions = getUsableSelectOptions(options);
+  setNextSelectOptionHighlighted(host, options, options.indexOf(validOptions[0]));
+};
+
+// TODO: Similar to multi-select
+export const setLastSelectOptionHighlighted = (host: HTMLElement, options: SelectOption[]): void => {
+  const validOptions = getUsableSelectOptions(options);
+  setNextSelectOptionHighlighted(host, options, options.indexOf(validOptions.at(-1)));
+};
+
+// TODO: Similar to multi-select
+export const getNewSelectOptionIndex = (
+  options: SelectOption[],
+  direction: SelectDropdownDirectionInternal
+): number => {
+  const validItems = getUsableSelectOptions(options);
+  const validMax = validItems.length - 1;
+  if (validMax < 0) {
+    return;
+  }
+  const oldIndex = getHighlightedSelectOptionIndex(validItems);
+  let newIndex = oldIndex;
+  if (direction === 'down') {
+    newIndex = oldIndex < validMax ? oldIndex + 1 : 0;
+  } else if (direction === 'up') {
+    newIndex = oldIndex > 0 ? oldIndex - 1 : validMax;
+  }
+  return options.indexOf(validItems[newIndex]);
+};
+
+// TODO: Similar to multi-select
+export const updateHighlightedSelectOption = (
+  host: HTMLElement,
+  options: SelectOption[],
+  direction: SelectDropdownDirectionInternal
+): void => {
+  const newIndex = getNewSelectOptionIndex(options, direction);
+  setNextSelectOptionHighlighted(host, options, newIndex);
+};
+
+// TODO: Similar to multi-select
+/**
+ * Handles scrolling within the list to ensure that the highlighted item is always visible.
+ * @param {HTMLElement} scrollElement - The HTML element to be scrolled.
+ * @param {HTMLElement} element - The element to scroll to.
+ * @returns {void}
+ */
+export const handleSelectDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
+  const { maxHeight } = getComputedStyle(scrollElement);
+  const hostElementHeight = parseInt(maxHeight, 10);
+  if (scrollElement.scrollHeight > hostElementHeight) {
+    element.scrollIntoView();
   }
 };
