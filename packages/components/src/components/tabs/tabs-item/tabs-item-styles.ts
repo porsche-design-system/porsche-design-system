@@ -18,7 +18,6 @@ export const getComponentCss = (theme: Theme): string => {
         display: 'block',
         ...addImportantToEachRule({
           color: primaryColor, // enables color inheritance for e.g. slotted anchor
-          outline: 0, // prevents :focus
           borderRadius: '2px',
           ...hostHiddenStyles,
           ...prefersColorSchemeDarkMediaQuery(theme, {

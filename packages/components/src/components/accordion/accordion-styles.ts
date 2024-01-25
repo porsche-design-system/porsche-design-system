@@ -5,6 +5,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   cssVariableTransitionDuration,
+  getFocusJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -12,16 +13,15 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import {
-  fontWeightSemiBold,
-  fontSizeTextSmall,
+  borderRadiusSmall,
+  fontLineHeight,
   fontSizeTextMedium,
+  fontSizeTextSmall,
+  fontSizeTextXXSmall,
+  fontWeightSemiBold,
+  motionDurationShort,
   spacingStaticSmall,
   textSmallStyle,
-  fontLineHeight,
-  motionDurationShort,
-  borderRadiusSmall,
-  borderWidthBase,
-  fontSizeTextXXSmall,
 } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
@@ -30,11 +30,10 @@ export const getComponentCss = (
   open: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, hoverColor, focusColor, contrastLowColor } = getThemedColors(theme);
+  const { primaryColor, hoverColor, contrastLowColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     hoverColor: hoverColorDark,
-    focusColor: focusColorDark,
     contrastLowColor: contrastLowColorDark,
   } = getThemedColors('dark');
 
@@ -112,15 +111,7 @@ export const getComponentCss = (
             },
           })
         ),
-        '&:focus::before': {
-          border: `${borderWidthBase} solid ${focusColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
-          }),
-        },
-        '&:not(:focus-visible)::before': {
-          border: 0,
-        },
+        ...getFocusJssStyle(theme, { pseudo: true, offset: '-2px' }),
       },
     },
     heading: {
