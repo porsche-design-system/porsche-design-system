@@ -5,7 +5,6 @@ import {
   colorSchemeStyles,
   cssVariableTransitionDuration,
   getBackdropJssStyle,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -60,7 +59,7 @@ export const getComponentCss = (
       },
       dialog: {
         position: 'fixed',
-        ...getInsetJssStyle(),
+        inset: 0,
         display: 'grid', // ua-style reset
         width: 'auto', // ua-style reset and to ensure transition duration works correctly
         height: '100vh', // ua-style reset

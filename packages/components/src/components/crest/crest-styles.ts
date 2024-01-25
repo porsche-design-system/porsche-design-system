@@ -1,6 +1,6 @@
 import { getCss } from '../../utils';
 import { crestSize } from './crest-utils';
-import { addImportantToEachRule, colorSchemeStyles, focusPseudoJssStyle, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, getFocusJssStyle, hostHiddenStyles } from '../../styles';
 
 const { width, height } = crestSize;
 const getDimensionStyle = {
@@ -29,7 +29,14 @@ export const getComponentCss = (): string => {
         display: 'block',
         textDecoration: 'none',
         ...getDimensionStyle,
-        ...focusPseudoJssStyle,
+        '&::before': {
+          // needs to be defined always to have correct custom click area
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          borderRadius: '1px',
+        },
+        ...getFocusJssStyle('light', { pseudo: true }), // TODO: we need to support theme
       },
       picture: {
         display: 'block',

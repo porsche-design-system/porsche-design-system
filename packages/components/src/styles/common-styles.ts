@@ -15,7 +15,6 @@ import {
   motionEasingOut,
   themeDarkBackgroundShading,
   themeLightBackgroundShading,
-  themeLightStateFocus,
 } from '@porsche-design-system/utilities-v2';
 import { isThemeDark } from '../utils';
 import type * as fromMotionType from '@porsche-design-system/utilities-v2/dist/esm/motion';
@@ -52,8 +51,6 @@ export const getTransition = (
     delay ? ` var(${cssVariableTransitionDuration}, ${motionDurationMap[delay]})` : ''
   }`;
 
-export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
-
 export const addImportantToRule = (value: any): string => `${value} !important`;
 
 export const addImportantToEachRule = (input: JssStyle): JssStyle => {
@@ -72,16 +69,6 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
 // TODO: This mechanism needs to be investigated as part of refactoring
 export const doGetThemedColors = (theme: Theme = 'light'): ThemedColors => {
   return getThemedColors(theme);
-};
-
-export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
-  value = value === 0 || value === 'auto' ? value : (`${value}px` as any);
-  return {
-    top: value,
-    left: value,
-    right: value,
-    bottom: value,
-  };
 };
 
 type Options = {
@@ -120,24 +107,6 @@ export const getResetInitialStylesForSlottedAnchor: JssStyle = {
   outline: 0, // reset native blue outline
   borderRadius: 0,
   background: 'transparent',
-};
-
-export const focusPseudoJssStyle: JssStyle = {
-  outline: 0,
-  '&::before': {
-    // needs to be defined always to have correct custom click area
-    content: '""',
-    position: 'absolute',
-    ...getInsetJssStyle(),
-  },
-  '&:focus::before': {
-    borderRadius: '1px', // TODO: why just 1px border-radius?
-    outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
-    outlineOffset: '2px',
-  },
-  '&:focus:not(:focus-visible)::before': {
-    outline: 0,
-  },
 };
 
 /**
@@ -191,7 +160,7 @@ export const getBackdropJssStyle = (
 ): JssStyle => {
   return {
     position: 'fixed',
-    ...getInsetJssStyle(),
+    inset: 0,
     zIndex,
     // TODO: background shading is missing in getThemedColors(theme).backgroundShading
     background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,

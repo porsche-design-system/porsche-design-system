@@ -2,15 +2,12 @@ import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  focusPseudoJssStyle,
   getBackdropJssStyle,
   getBackfaceVisibilityJssStyle,
   getHiddenTextJssStyle,
-  getInsetJssStyle,
   getTransition,
   type MotionDurationKey,
   motionEasingMap,
-  pxToRemWithUnit,
 } from './common-styles';
 import type { PropertiesHyphen } from 'csstype';
 
@@ -64,19 +61,6 @@ describe('getTransition()', () => {
   });
 });
 
-describe('pxToRemWithUnit()', () => {
-  it.each([
-    [undefined, NaN + 'rem'],
-    [null, '0rem'],
-    [0, '0rem'],
-    [16, '1rem'],
-    [24, '1.5rem'],
-    [32, '2rem'],
-  ])('should for parameter %s return %s', (input: number, result: string) => {
-    expect(pxToRemWithUnit(input)).toBe(result);
-  });
-});
-
 describe('addImportantToRule()', () => {
   it.each([
     [0, '0 !important'],
@@ -110,21 +94,6 @@ describe('addImportantToEachRule()', () => {
 
   it('should have no mutation on input', () => {
     expect(addImportantToEachRule(input)).not.toEqual(input);
-  });
-});
-
-describe('getInsetJssStyle()', () => {
-  it.each<Parameters<typeof getInsetJssStyle>>([[undefined], ['auto'], [2], [-1]])(
-    'should return correct JssStyle for parameter: %o',
-    (value) => {
-      expect(getInsetJssStyle(value)).toMatchSnapshot();
-    }
-  );
-});
-
-describe('focusPseudoJssStyle', () => {
-  it('should return correct jss style', () => {
-    expect(focusPseudoJssStyle).toMatchSnapshot();
   });
 });
 

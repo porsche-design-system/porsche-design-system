@@ -4,7 +4,6 @@ import {
   addImportantToRule,
   colorSchemeStyles,
   cssVariableTransitionDuration,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -145,7 +144,7 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
     },
     scroller: {
       position: 'fixed',
-      ...getInsetJssStyle(),
+      inset: 0,
       // "cssVariableTransitionDuration" ensures closing animation of secondary scroller is given when whole flyout-navigation gets closed
       // "cssVariableVisibility" ensures secondary scroller is not tabbable when whole flyout-navigation is closed
       ...(isSecondaryScrollerVisible

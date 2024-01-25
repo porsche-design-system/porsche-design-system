@@ -2,7 +2,6 @@ import { buildResponsiveStyles, getCss, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -31,7 +30,7 @@ const slottedAnchorSelector = `a[slot='${anchorSlot}']`;
 
 const anchorJssStyle: JssStyle = {
   position: 'absolute',
-  ...getInsetJssStyle(),
+  inset: 0,
   zIndex: 1, // necessary to be on top of img
   borderRadius: borderRadiusMedium,
 };

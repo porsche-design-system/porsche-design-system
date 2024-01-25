@@ -17,7 +17,6 @@ import {
   getFocusJssStyle,
   getHiddenTextJssStyle,
   getHighContrastColors,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -204,7 +203,9 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
             margin: 0,
             padding: 0,
           }
-        : getInsetJssStyle(-safeZonePx)),
+        : {
+            inset: `${-safeZonePx}px`,
+          }),
       position: 'absolute',
       zIndex: POPOVER_Z_INDEX,
       filter: `drop-shadow(0 0 16px ${shadowColor})`,

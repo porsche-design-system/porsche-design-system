@@ -2,6 +2,7 @@ import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getFocusJssStyle,
   getInvertedThemedColors,
   getResetInitialStylesForSlottedAnchor,
   getThemedColors,
@@ -15,8 +16,7 @@ import { borderRadiusSmall, textXSmallStyle } from '@porsche-design-system/utili
 import type { TagColor, TagColorDeprecated } from './tag-utils';
 import { getThemedBackgroundHoverColor } from './tag-utils';
 import type { Theme } from '../../types';
-import type { JssStyle } from 'jss';
-import { getTagFocusJssStyle, getThemedBackgroundColor } from './tag-shared-utils';
+import { getThemedBackgroundColor } from './tag-shared-utils';
 
 export const getColors = (
   themedColors: ThemedColors,
@@ -105,11 +105,14 @@ export const getComponentCss = (
           border: 0,
           textAlign: 'start',
         },
-        // Transform selectors of getTagFocusJssStyle() to fit the ::slotted syntax
-        ...Object.entries(getTagFocusJssStyle(themedColors)).reduce((result, [key, value]) => {
-          result[key.replace(/^&([a-z:\-()]*)(::[a-z\-]+)$/, '&(a$1)$2, &(button$1)$2')] = value;
-          return result;
-        }, {} as JssStyle),
+        '&(a)::before,&(button)::before': {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          borderRadius: '4px',
+        },
+        ...getFocusJssStyle(theme, { prefix: 'a', slotted: true, pseudo: true }),
+        ...getFocusJssStyle(theme, { prefix: 'button', slotted: true, pseudo: true }),
         '&(br)': {
           display: 'none',
         },

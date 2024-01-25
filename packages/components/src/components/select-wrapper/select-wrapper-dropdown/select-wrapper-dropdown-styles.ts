@@ -5,7 +5,6 @@ import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
 import {
   addImportantToRule,
   getHighContrastColors,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hoverMediaQuery,
@@ -55,7 +54,7 @@ export const getButtonStyles = (
       // TODO: extract generic default button/anchor reset style
       button: {
         position: 'absolute',
-        ...getInsetJssStyle(),
+        inset: 0,
         width: '100%', // fixes Firefox positioning issue
         height: '100%', // fixes Firefox positioning issue
         margin: 0,
@@ -135,7 +134,7 @@ export const getFilterStyles = (
       input: {
         display: 'block',
         position: 'absolute',
-        ...getInsetJssStyle(2), // 2 = borderWidthBase
+        inset: borderWidthBase,
         width: 'calc(100% - 4px)', // fixes Firefox positioning issue, 4px = 2 x borderWidthBase
         height: 'calc(100% - 4px)', // fixes Firefox positioning issue, 4px = 2 x borderWidthBase
         zIndex: 1,
@@ -204,7 +203,7 @@ export const getFilterStyles = (
         '&+span': {
           // for focus outline and clicking arrow since input ends left of the icon
           position: 'absolute',
-          ...getInsetJssStyle(),
+          inset: 0,
           transition: getTransition('border-color'),
           pointerEvents: 'all',
           cursor: disabled ? 'not-allowed' : 'pointer',

@@ -2,7 +2,7 @@ import type { MarqueSize } from './marque-size';
 import type { JssStyle } from 'jss';
 import { getMediaQueryMin } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, focusPseudoJssStyle, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, getFocusJssStyle, hostHiddenStyles } from '../../styles';
 
 const baseSizes: Record<Exclude<MarqueSize, 'responsive'>, Pick<JssStyle, 'height' | 'width'>> = {
   small: {
@@ -31,7 +31,14 @@ export const getComponentCss = (size: MarqueSize): string => {
       a: {
         display: 'block',
         textDecoration: 'none',
-        ...focusPseudoJssStyle,
+        '&::before': {
+          // needs to be defined always to have correct custom click area
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          borderRadius: '1px',
+        },
+        ...getFocusJssStyle('light', { pseudo: true }), // TODO: we need to support theme
       },
       picture: {
         display: 'block',

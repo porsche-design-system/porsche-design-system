@@ -8,7 +8,6 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
-  pxToRemWithUnit,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -21,8 +20,8 @@ import type { Theme } from '../../../types';
 export const ITEM_PADDING = '17px';
 export const { font: BUTTON_FONT } = textSmallStyle;
 export const { font: LABEL_FONT } = textXSmallStyle;
-export const ICON_SIZE = pxToRemWithUnit(24);
-export const ICON_MARGIN = pxToRemWithUnit(4);
+export const ICON_SIZE = '1.5rem';
+export const ICON_MARGIN = '.25rem';
 
 export const getColors = (
   isDisabled: boolean,

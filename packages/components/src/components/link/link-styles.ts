@@ -6,7 +6,6 @@ import {
   addImportantToRule,
   getFocusJssStyle,
   getHighContrastColors,
-  getInsetJssStyle,
   getResetInitialStylesForSlottedAnchor,
 } from '../../styles';
 import { borderRadiusSmall } from '@porsche-design-system/utilities-v2';
@@ -56,7 +55,7 @@ export const getComponentCss = (
             '&(a)::before': {
               content: '""',
               position: 'fixed',
-              ...getInsetJssStyle(-2),
+              inset: '-2px',
               borderRadius: borderRadiusSmall,
             },
             ...getFocusJssStyle(theme, { slotted: true, pseudo: true }),

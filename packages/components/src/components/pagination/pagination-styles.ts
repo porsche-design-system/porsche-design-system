@@ -4,7 +4,6 @@ import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -143,7 +142,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         '&:not(.ellipsis):focus:focus-visible::before': {
           content: '""',
           position: 'absolute',
-          ...getInsetJssStyle(-4),
+          inset: '-4px',
           border: `${borderWidthBase} solid ${focusColor}`,
           borderRadius: borderRadiusMedium,
           ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -158,7 +157,9 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
             color: primaryColorDark,
             borderColor: primaryColorDark,
           }),
-          '&:not(.ellipsis):focus::before': getInsetJssStyle(-6), // adjust for missing 2px border
+          '&:not(.ellipsis):focus::before': {
+            inset: '-6px',
+          }, // adjust for missing 2px border
         },
         '&[aria-disabled]': {
           ...disabledCursorStyle,

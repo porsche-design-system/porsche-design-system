@@ -24,13 +24,11 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getBackdropJssStyle,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
-  pxToRemWithUnit,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
 
@@ -83,7 +81,7 @@ const getSlottedJssStyle = (marginValue: number, hasHeader: boolean, hasDismissB
     },
     ...(!hasHeader && {
       [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
-        marginTop: hasDismissButton ? pxToRemWithUnit(-marginValue) : marginPx,
+        marginTop: hasDismissButton ? `${-marginValue / 16}rem` : marginPx,
       },
     }),
     [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
@@ -143,7 +141,7 @@ export const getComponentCss = (
     },
     'scroll-container': {
       display: 'flex',
-      ...getInsetJssStyle(),
+      inset: 0, // TODO: is this still needed?
       height: '100%',
       overflowY: 'inherit',
       alignItems: 'center',
@@ -158,7 +156,7 @@ export const getComponentCss = (
         transform: isOpen ? 'translateY(0%)' : 'translateY(25%)',
         opacity: isOpen ? 1 : 0,
         transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
-        paddingTop: hasDismissButton ? pxToRemWithUnit(32) : contentPadding, // rem value needed to prevent overlapping of close button and contents in scaling mode
+        paddingTop: hasDismissButton ? '2rem' : contentPadding, // rem value needed to prevent overlapping of close button and contents in scaling mode
         ...(!hasFooter && { paddingBottom: contentPadding }),
         background: backgroundColor,
         outline: isHighContrastMode ? '1px solid transparent' : 0,
@@ -171,7 +169,7 @@ export const getComponentCss = (
           ...buildResponsiveStyles(isFullscreen, (fullscreenValue: boolean) => ({
             borderRadius: fullscreenValue ? 0 : '12px',
             borderColor: fullscreenValue ? primaryColor : darkThemePrimaryColor,
-            ...getInsetJssStyle(fullscreenValue ? 0 : -4),
+            inset: fullscreenValue ? 0 : '-4px',
             ...prefersColorSchemeDarkMediaQuery(theme, {
               borderColor: darkThemePrimaryColor,
             }),

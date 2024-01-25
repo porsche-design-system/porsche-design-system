@@ -5,7 +5,6 @@ import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, 
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -22,18 +21,19 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getFontSizeText } from './font-size-text-styles';
 
+// TODO: why not using getHiddenTextJssStyle()?
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
 const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
         position: 'absolute',
-        ...getInsetJssStyle(),
+        inset: 0,
         whiteSpace: 'nowrap',
-        textIndent: '-999999px',
+        textIndent: '-999999px', // TODO: check if text-indent still works for RTL-mode in this case
       }
     : {
         position: 'relative',
-        ...getInsetJssStyle('auto'),
+        inset: 'auto',
         whiteSpace: 'inherit',
         textIndent: 0,
         zIndex: 1, // fix Firefox bug on :hover (#2583)

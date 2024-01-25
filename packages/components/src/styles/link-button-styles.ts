@@ -4,9 +4,9 @@ import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, The
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getFocusJssStyle,
   getHiddenTextJssStyle,
   getHighContrastColors,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -14,9 +14,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from './';
 import {
-  borderRadiusMedium,
   borderRadiusSmall,
-  borderWidthBase,
   fontLineHeight,
   frostedGlassStyle,
   spacingStaticSmall,
@@ -121,18 +119,7 @@ export const getLinkButtonStyles = (
         padding: hideLabelValue ? '13px' : '13px 26px',
         gap: hideLabelValue ? 0 : spacingStaticSmall,
       })),
-      ...(!hasSlottedAnchor && {
-        '&:focus::before': {
-          content: '""',
-          position: 'fixed',
-          border: `${borderWidthBase} solid ${focusColor}`,
-          borderRadius: borderRadiusMedium,
-          ...getInsetJssStyle(-6),
-        },
-        '&:not(:focus-visible)::before': {
-          border: 0,
-        },
-      }),
+      ...(!hasSlottedAnchor && getFocusJssStyle(theme)),
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover': {
