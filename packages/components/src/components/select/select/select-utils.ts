@@ -19,6 +19,9 @@ export type SelectUpdateEventDetail = {
   value: string;
 };
 
+export const getSelectedOptionString = (options: SelectOption[]): string =>
+  options.find((option) => option.selected)?.textContent ?? '';
+
 const resetSelectedOption = (options: SelectOption[]) => {
   const currentSelectedOption = options.find((option) => option.selected);
   if (currentSelectedOption) {
@@ -28,14 +31,23 @@ const resetSelectedOption = (options: SelectOption[]) => {
 };
 
 export const setSelectedValue = (options: SelectOption[], value: string) => {
-  resetSelectedOption(options);
-  // TODO: Do we want to cover multiple options with the same value?
-  const optionToSelect = options.find((option) => option.value === value);
-  if (!optionToSelect) {
-    consoleWarn('The provided value is not included in the options of the p-select:', value);
+  if (value === undefined) {
+    // Option without value for empty selection
+    const optionToSelect = options.find((option) => option.value === undefined);
+    if (optionToSelect) {
+      optionToSelect.selected = true;
+      forceUpdate(optionToSelect);
+    }
   } else {
-    optionToSelect.selected = true;
-    forceUpdate(optionToSelect);
+    resetSelectedOption(options);
+    // TODO: Do we want to cover multiple options with the same value?
+    const optionToSelect = options.find((option) => option.value === value);
+    if (!optionToSelect) {
+      consoleWarn('The provided value is not included in the options of the p-select:', value);
+    } else {
+      optionToSelect.selected = true;
+      forceUpdate(optionToSelect);
+    }
   }
 };
 
