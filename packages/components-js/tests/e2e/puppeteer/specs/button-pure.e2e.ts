@@ -21,7 +21,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-button-pure');
 const getButton = () => selectNode(page, 'p-button-pure >>> button');
-const getLoadingStatus = () => selectNode(page, 'p-button-pure >>> .status');
+const getLoadingStatus = () => selectNode(page, 'p-button-pure >>> .loading');
 const getLoadingMessage = async () => (await getLoadingStatus()).evaluate((el) => el.textContent);
 
 const initButtonPure = (opts?: { isLoading?: boolean; isDisabled?: boolean; withSubline?: boolean }): Promise<void> => {

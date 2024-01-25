@@ -20,7 +20,7 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-switch');
 const getButton = () => selectNode(page, 'p-switch >>> button');
 const getLabel = () => selectNode(page, 'p-switch >>> .label');
-const getLoadingStatus = () => selectNode(page, 'p-switch >>> .status');
+const getLoadingStatus = () => selectNode(page, 'p-switch >>> .loading');
 const getLoadingMessage = async () => (await getLoadingStatus()).evaluate((el) => el.textContent);
 
 const clickHandlerScript = `

@@ -65,8 +65,8 @@ exports[`manual test cases should pass internal props correctly to p-checkbox-wr
         </p-spinner>
       </div>
       <span
-        class="status"
-        id="status"
+        class="loading"
+        id="loading"
         role="status"
       >
         Loading
@@ -144,8 +144,8 @@ exports[`manual test cases should pass internal props correctly to p-checkbox-wr
         </p-spinner>
       </div>
       <span
-        class="status"
-        id="status"
+        class="loading"
+        id="loading"
         role="status"
       >
         Loading
@@ -922,8 +922,8 @@ exports[`manual test cases should pass internal props correctly to p-pin-code 1`
         />
       </div>
       <span
-        class="status"
-        id="status"
+        class="loading"
+        id="loading"
         role="status"
       />
     </div>
@@ -996,8 +996,8 @@ exports[`manual test cases should pass internal props correctly to p-radio-butto
         </p-spinner>
       </div>
       <span
-        class="status"
-        id="status"
+        class="loading"
+        id="loading"
         role="status"
       >
         Loading
@@ -1036,8 +1036,8 @@ exports[`manual test cases should pass internal props correctly to p-radio-butto
         <slot />
       </div>
       <span
-        class="status"
-        id="status"
+        class="loading"
+        id="loading"
         role="status"
       />
     </div>
@@ -1872,8 +1872,8 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
               </span>
             </button>
             <span
-              class="status"
-              id="status"
+              class="loading"
+              id="loading"
               role="status"
             />
           </template>
@@ -1977,8 +1977,8 @@ exports[`manual test cases should pass internal props correctly to p-text-field-
               </span>
             </button>
             <span
-              class="status"
-              id="status"
+              class="loading"
+              id="loading"
               role="status"
             />
           </template>
@@ -2526,8 +2526,8 @@ img {
               </span>
             </button>
             <span
-              class="status"
-              id="status"
+              class="loading"
+              id="loading"
               role="status"
             />
           </template>
@@ -2624,8 +2624,8 @@ exports[`should render dsr component for PButton 1`] = `
       </span>
     </button>
     <span
-      class="status"
-      id="status"
+      class="loading"
+      id="loading"
       role="status"
     />
   </template>
@@ -2820,8 +2820,8 @@ img:dir(rtl) {
       </span>
     </button>
     <span
-      class="status"
-      id="status"
+      class="loading"
+      id="loading"
       role="status"
     />
   </template>
@@ -3009,8 +3009,8 @@ p {
               </span>
             </button>
             <span
-              class="status"
-              id="status"
+              class="loading"
+              id="loading"
               role="status"
             />
           </template>
@@ -3329,8 +3329,8 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
         <slot />
       </div>
       <span
-        class="status"
-        id="status"
+        class="loading"
+        id="loading"
         role="status"
       />
     </div>
@@ -3918,8 +3918,8 @@ img {
               </span>
             </button>
             <span
-              class="status"
-              id="status"
+              class="loading"
+              id="loading"
               role="status"
             />
           </template>
@@ -4213,8 +4213,8 @@ img {
               </span>
             </button>
             <span
-              class="status"
-              id="status"
+              class="loading"
+              id="loading"
               role="status"
             />
           </template>
@@ -4512,8 +4512,8 @@ img:dir(rtl) {
           </span>
         </button>
         <span
-          class="status"
-          id="status"
+          class="loading"
+          id="loading"
           role="status"
         />
       </template>
@@ -4670,8 +4670,8 @@ img:dir(rtl) {
               </span>
             </button>
             <span
-              class="status"
-              id="status"
+              class="loading"
+              id="loading"
               role="status"
             />
           </template>
@@ -5170,8 +5170,8 @@ img {
           </span>
         </button>
         <span
-          class="status"
-          id="status"
+          class="loading"
+          id="loading"
           role="status"
         />
       </template>
@@ -6377,8 +6377,8 @@ img {
               </span>
             </button>
             <span
-              class="status"
-              id="status"
+              class="loading"
+              id="loading"
               role="status"
             />
           </template>
@@ -6751,8 +6751,8 @@ img {
                 </span>
               </button>
               <span
-                class="status"
-                id="status"
+                class="loading"
+                id="loading"
                 role="status"
               />
             </template>
@@ -7468,8 +7468,8 @@ input:disabled {
         />
       </div>
       <span
-        class="status"
-        id="status"
+        class="loading"
+        id="loading"
         role="status"
       />
     </div>
@@ -7769,8 +7769,8 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
         <slot />
       </div>
       <span
-        class="status"
-        id="status"
+        class="loading"
+        id="loading"
         role="status"
       />
     </div>
@@ -8957,8 +8957,8 @@ exports[`should render dsr component for PSwitch 1`] = `
       </span>
     </button>
     <span
-      class="status"
-      id="status"
+      class="loading"
+      id="loading"
       role="status"
     />
   </template>

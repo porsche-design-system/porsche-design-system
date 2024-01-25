@@ -32,7 +32,7 @@ const getInput = (n: number) => selectNode(page, `p-pin-code >>> .wrapper input:
 const getActiveElementsAriaLabelInShadowRoot = (element: ElementHandle): Promise<string> => {
   return element.evaluate((el) => el.shadowRoot.activeElement.ariaLabel);
 };
-const getLoadingStatus = () => selectNode(page, 'p-pin-code >>> .status');
+const getLoadingStatus = () => selectNode(page, 'p-pin-code >>> .loading');
 const getLoadingMessage = async () => (await getLoadingStatus()).evaluate((el) => el.textContent);
 
 type InitOptions = {

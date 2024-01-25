@@ -27,7 +27,7 @@ const getWrapper = () => selectNode(page, 'p-radio-button-wrapper >>> .wrapper')
 const getLabel = () => selectNode(page, 'p-radio-button-wrapper >>> label');
 const getMessage = () => selectNode(page, 'p-radio-button-wrapper >>> .message');
 const getBackgroundStyle = (element: ElementHandle) => getElementStyle(element, 'background');
-const getLoadingStatus = () => selectNode(page, 'p-radio-button-wrapper >>> .status');
+const getLoadingStatus = () => selectNode(page, 'p-radio-button-wrapper >>> .loading');
 const getLoadingMessage = async () => (await getLoadingStatus()).evaluate((el) => el.textContent);
 
 type InitOptions = {

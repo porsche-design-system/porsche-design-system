@@ -26,7 +26,7 @@ const getInput = () => selectNode(page, 'p-checkbox-wrapper input[type="checkbox
 const getWrapper = () => selectNode(page, 'p-checkbox-wrapper >>> .wrapper');
 const getLabel = () => selectNode(page, 'p-checkbox-wrapper >>> label');
 const getMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .message');
-const getLoadingStatus = () => selectNode(page, 'p-checkbox-wrapper >>> .status');
+const getLoadingStatus = () => selectNode(page, 'p-checkbox-wrapper >>> .loading');
 const getLoadingMessage = async () => (await getLoadingStatus()).evaluate((el) => el.textContent);
 
 const setIndeterminate = async (element: ElementHandle, value: boolean) => {
