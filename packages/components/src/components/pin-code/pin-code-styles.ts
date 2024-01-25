@@ -106,7 +106,7 @@ export const getComponentCss = (
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
-    // .status
+    // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });
 };

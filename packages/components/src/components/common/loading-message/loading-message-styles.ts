@@ -1,8 +1,8 @@
 import { type Styles } from 'jss';
 import { getHiddenTextJssStyle } from '../../../styles';
 
-export const getFunctionalComponentLoadingMessageStyles = (): Styles<'status'> => {
+export const getFunctionalComponentLoadingMessageStyles = (): Styles<'loading'> => {
   return {
-    status: getHiddenTextJssStyle(),
+    loading: getHiddenTextJssStyle(),
   };
 };

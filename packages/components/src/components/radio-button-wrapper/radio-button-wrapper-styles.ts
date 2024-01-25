@@ -119,7 +119,7 @@ export const getComponentCss = (
     ...getFunctionalComponentStateMessageStyles(theme, state, {
       gridColumn: '1/3',
     }),
-    // .status
+    // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });
 };

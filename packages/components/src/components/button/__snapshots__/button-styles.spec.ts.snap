@@ -68,7 +68,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   margin-inline-start: 0;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -248,7 +248,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -335,7 +335,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -422,7 +422,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -522,7 +522,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   transform: translate(-50%, -50%);
   filter: invert(1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -602,7 +602,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -681,7 +681,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -769,7 +769,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -857,7 +857,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -945,7 +945,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1043,7 +1043,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   opacity: 0;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;

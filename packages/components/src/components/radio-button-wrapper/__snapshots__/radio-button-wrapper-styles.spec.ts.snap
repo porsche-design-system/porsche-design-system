@@ -81,7 +81,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -269,7 +269,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -386,7 +386,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -482,7 +482,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -578,7 +578,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -694,7 +694,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -810,7 +810,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -905,7 +905,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1000,7 +1000,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1117,7 +1117,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1234,7 +1234,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1330,7 +1330,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1426,7 +1426,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1549,7 +1549,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1672,7 +1672,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1774,7 +1774,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1876,7 +1876,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1998,7 +1998,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2120,7 +2120,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2221,7 +2221,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2322,7 +2322,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2445,7 +2445,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2568,7 +2568,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2670,7 +2670,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2772,7 +2772,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;

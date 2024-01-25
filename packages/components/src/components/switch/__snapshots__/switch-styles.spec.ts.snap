@@ -82,7 +82,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   white-space: normal;
   padding-top: 2px;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -186,7 +186,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   white-space: normal;
   padding-top: 2px;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -279,7 +279,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   white-space: normal;
   padding-top: 2px;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -389,7 +389,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   white-space: normal;
   padding-top: 2px;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -489,7 +489,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   white-space: normal;
   padding-top: 2px;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -589,7 +589,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   white-space: normal;
   padding-top: 2px;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -682,7 +682,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   white-space: normal;
   padding-top: 2px;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -786,7 +786,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   white-space: normal;
   padding-top: 2px;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -890,7 +890,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   white-space: normal;
   padding-top: 2px;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -993,7 +993,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1128,7 +1128,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;

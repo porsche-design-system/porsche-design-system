@@ -108,7 +108,7 @@ input:disabled {
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -292,7 +292,7 @@ input:disabled {
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -411,7 +411,7 @@ input:disabled {
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -530,7 +530,7 @@ input:disabled {
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -649,7 +649,7 @@ input:disabled {
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -774,7 +774,7 @@ input:disabled {
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -908,7 +908,7 @@ input:disabled {
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1026,7 +1026,7 @@ input:disabled {
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1144,7 +1144,7 @@ input:disabled {
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1262,7 +1262,7 @@ input:disabled {
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1380,7 +1380,7 @@ input:disabled {
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1504,7 +1504,7 @@ input:disabled {
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1636,7 +1636,7 @@ input:disabled {
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.status {
+.loading {
   position: absolute;
   width: 1px;
   height: 1px;
