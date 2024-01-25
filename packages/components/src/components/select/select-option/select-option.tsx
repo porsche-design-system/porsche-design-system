@@ -2,7 +2,13 @@ import type { PropTypes } from '../../../types';
 import type { SelectOptionInternalHTMLProps } from './select-option-utils';
 
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getPrefixedTagNames,
+  throwIfParentIsNotOfKind,
+  validateProps,
+} from '../../../utils';
 import { getComponentCss } from './select-option-styles';
 
 const propTypes: PropTypes<typeof SelectOption> = {
@@ -18,7 +24,7 @@ export class SelectOption {
   @Element() public host!: HTMLElement & SelectOptionInternalHTMLProps;
 
   /** The option value. */
-  @Prop() public value: string;
+  @Prop() public value?: string;
 
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;
@@ -31,6 +37,7 @@ export class SelectOption {
     validateProps(this, propTypes);
     const { theme = 'light', selected, highlighted } = this.host;
     attachComponentCss(this.host, getComponentCss, theme);
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host onClick={!this.disabled && this.onClick}>
@@ -44,6 +51,14 @@ export class SelectOption {
           }}
         >
           <slot />
+          {selected && !this.disabled && (
+            <PrefixedTagNames.pIcon
+              aria-hidden="true"
+              name="check"
+              color={this.disabled ? 'state-disabled' : 'primary'}
+              theme={theme}
+            />
+          )}
         </li>
       </Host>
     );

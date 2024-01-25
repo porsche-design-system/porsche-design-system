@@ -10,20 +10,15 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
-import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
+import {
+  borderRadiusSmall,
+  fontLineHeight,
+  fontWeightSemiBold,
+  spacingStaticSmall,
+} from '@porsche-design-system/utilities-v2';
+import { Styles } from 'jss';
 
 export const getComponentCss = (theme: Theme): string => {
-  const { primaryColor, contrastHighColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =
-    getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    contrastHighColor: contrastHighColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-    contrastLowColor: contrastLowColorDark,
-  } = getThemedColors('dark');
-  const { highlightColor } = getHighContrastColors();
-
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
@@ -31,16 +26,30 @@ export const getComponentCss = (theme: Theme): string => {
         ...hostHiddenStyles,
       }),
     },
+    ...getOptionStyles(theme),
+  });
+};
+
+// TODO: Copied from select-wrapper-dropdown, extract and reuse
+export const getOptionStyles = (theme: Theme): Styles => {
+  const {
+    primaryColor: primaryColorDark,
+    contrastMediumColor: contrastMediumColorDark,
+    disabledColor: disabledColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
+    contrastLowColor: contrastLowColorDark,
+  } = getThemedColors('dark');
+  const { primaryColor, contrastMediumColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =
+    getThemedColors(theme);
+  const { highlightColor } = getHighContrastColors();
+
+  return {
     option: {
       display: 'flex',
       justifyContent: 'space-between',
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
-      flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
-      color: contrastHighColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastHighColorDark,
-      }),
+      minHeight: `calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`, // TODO: Changed this line from original select-wrapper-dropdown style
       cursor: 'pointer',
       textAlign: 'start',
       wordBreak: 'break-word',
@@ -59,6 +68,8 @@ export const getComponentCss = (theme: Theme): string => {
         },
       }),
       '&--selected': {
+        cursor: 'default',
+        pointerEvents: 'none',
         background: backgroundSurfaceColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           background: backgroundSurfaceColorDark,
@@ -87,8 +98,20 @@ export const getComponentCss = (theme: Theme): string => {
         display: 'none',
       },
     },
-    checkbox: {
-      pointerEvents: 'none', // Avoid checkbox label click which updates input within p-checkbox-wrapper
+    optgroup: {
+      color: contrastMediumColor,
+      display: 'block',
+      padding: '3px 14px',
+      fontWeight: fontWeightSemiBold,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastMediumColorDark,
+      }),
+      '&:not(:first-child)': {
+        marginTop: spacingStaticSmall,
+      },
+      '&~$option': {
+        paddingLeft: '24px',
+      },
     },
-  });
+  };
 };
