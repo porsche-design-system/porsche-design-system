@@ -112,6 +112,8 @@ const getButtonStyles = (
   );
 
   return {
+    textAlign: 'start', // TODO: Newly added
+
     gridArea: '1/1/1/-1',
     flex: 1,
     minWidth: 0,
@@ -120,7 +122,7 @@ const getButtonStyles = (
     font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
     margin: 0, // necessary reset for iOS Safari 15 (and maybe other browsers)
     padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
-    paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(2),
+    paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(1),
     boxSizing: 'border-box',
     outline: 0,
     WebkitAppearance: 'none', // iOS safari

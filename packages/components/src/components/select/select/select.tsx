@@ -2,6 +2,7 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { SelectDirection, SelectOption, SelectState, SelectUpdateEventDetail } from './select-utils';
 import {
   getSelectDropdownDirection,
+  getSelectedOptionString,
   initNativeSelect,
   setSelectedOption,
   setSelectedValue,
@@ -70,7 +71,7 @@ export class Select {
   @Prop() public name: string;
 
   /** The selected value. */
-  @Prop({ mutable: true }) public value?: string = '';
+  @Prop({ mutable: true }) public value?: string;
 
   /** The validation state. */
   @Prop() public state?: SelectState = 'none';
@@ -197,7 +198,9 @@ export class Select {
             disabled={this.disabled}
             onClick={this.onInputClick}
             onKeyDown={this.onComboboxKeyDown}
-          />
+          >
+            {getSelectedOptionString(this.selectOptions)}
+          </button>
           <PrefixedTagNames.pIcon
             class={{ icon: true, 'icon--rotate': this.isOpen }}
             name="arrow-head-down"
