@@ -78,14 +78,20 @@ export class Switch {
     }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
-  }
-
-  public componentDidLoad(): void {
+  public connectedCallback(): void {
     if (this.loading) {
       this.initialLoading = true;
     }
+  }
+
+  public componentWillLoad(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

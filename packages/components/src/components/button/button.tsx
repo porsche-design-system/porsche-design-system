@@ -97,6 +97,18 @@ export class Button {
     }
   }
 
+  public connectedCallback(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
+  }
+
+  public componentWillLoad(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
+  }
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -109,9 +121,6 @@ export class Button {
       () => this.name,
       () => this.value
     );
-    if (this.loading) {
-      this.initialLoading = true;
-    }
   }
 
   public render(): JSX.Element {

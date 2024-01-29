@@ -75,12 +75,18 @@ export class CheckboxWrapper {
 
   public connectedCallback(): void {
     this.observeAttributes(); // on every reconnect
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=checkbox]');
     addChangeListener(this.input);
     this.observeAttributes(); // once initially
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -98,12 +104,6 @@ export class CheckboxWrapper {
       message: this.message,
       state: this.state,
     });
-  }
-
-  public componentDidLoad(): void {
-    if (this.loading) {
-      this.initialLoading = true;
-    }
   }
 
   public disconnectedCallback(): void {

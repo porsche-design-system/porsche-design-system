@@ -66,12 +66,18 @@ export class RadioButtonWrapper {
 
   public connectedCallback(): void {
     this.observeAttributes(); // on every reconnect
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
     addChangeListener(this.input);
     this.observeAttributes(); // once initially
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -89,12 +95,6 @@ export class RadioButtonWrapper {
       message: this.message,
       state: this.state,
     });
-  }
-
-  public componentDidLoad(): void {
-    if (this.loading) {
-      this.initialLoading = true;
-    }
   }
 
   public disconnectedCallback(): void {
