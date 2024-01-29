@@ -7,6 +7,7 @@ import {
   colorSchemeStyles,
   cssVariableAnimationDuration,
   cssVariableTransitionDuration,
+  getFocusJssStyle,
   getHighContrastColors,
   getResetInitialStylesForSlottedAnchor,
   getThemedColors,
@@ -18,7 +19,6 @@ import {
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
   borderRadiusSmall,
-  borderWidthBase,
   fontSizeText,
   frostedGlassStyle,
   motionDurationModerate,
@@ -38,12 +38,8 @@ export const getComponentCss = (
   weight: Exclude<TabsBarWeight, TabsBarWeightDeprecated>,
   theme: Theme
 ): string => {
-  const { primaryColor, hoverColor, focusColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    hoverColor: hoverColorDark,
-    focusColor: focusColorDark,
-  } = getThemedColors('dark');
+  const { primaryColor, hoverColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, hoverColor: hoverColorDark } = getThemedColors('dark');
 
   const barJssStyle: JssStyle = {
     position: 'absolute',
@@ -72,6 +68,14 @@ export const getComponentCss = (
         }),
       },
       ...addImportantToEachRule({
+        '::slotted': {
+          // TODO: although this syntax is easier to understand, it produces duplicated css code in SSR context, we
+          //  should try to make use of multiple selector `,`. Unfortunately css combinators are not allowed,
+          //  e.g. `::slotted(:is(a,button))`, even if both are direct children. Alternatively, we could use
+          //  `::slotted(*:focus-visible)` selector in this case or non at all, e.g. `::slotted(:focus-visible)`?
+          ...getFocusJssStyle(theme, { prefix: 'a', slotted: true, offset: '1px' }),
+          ...getFocusJssStyle(theme, { prefix: 'button', slotted: true, offset: '1px' }),
+        },
         // would be nice to use shared selector like '::slotted([role])'
         // but this doesn't work reliably when rendering in browser
         [transformSelector('::slotted([role])')]: {
@@ -134,13 +138,6 @@ export const getComponentCss = (
           right: '0px',
           bottom: isHighContrastMode ? '-4px' : '-6px',
           visibility: 'inherit',
-        },
-        // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
-        [transformSelector('::slotted([role]:focus:focus-visible)::before')]: {
-          border: `${borderWidthBase} solid ${focusColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
-          }),
         },
         [transformSelector('::slotted([role]:not(:last-child))')]: {
           marginInlineEnd: spacingStaticMedium,
