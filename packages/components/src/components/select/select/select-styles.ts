@@ -113,6 +113,8 @@ const getButtonStyles = (
 
   return {
     textAlign: 'start', // TODO: Newly added
+    overflowX: 'hidden', // TODO: Newly added
+    whiteSpace: 'nowrap', // TODO: Newly added
 
     gridArea: '1/1/1/-1',
     flex: 1,

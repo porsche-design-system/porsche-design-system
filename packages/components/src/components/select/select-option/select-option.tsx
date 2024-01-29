@@ -53,6 +53,7 @@ export class SelectOption {
           <slot />
           {selected && !this.disabled && (
             <PrefixedTagNames.pIcon
+              class="icon"
               aria-hidden="true"
               name="check"
               color={this.disabled ? 'state-disabled' : 'primary'}

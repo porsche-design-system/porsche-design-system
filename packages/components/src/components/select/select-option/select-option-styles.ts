@@ -22,11 +22,21 @@ export const getComponentCss = (theme: Theme): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
+        display: 'flex',
         scrollMarginTop: spacingStaticSmall, // Creates top margin when navigating with keyboard and list is scrolled automatically
         ...hostHiddenStyles,
       }),
+      ...addImportantToEachRule({
+        '::slotted(img)': {
+          height: fontLineHeight,
+          borderRadius: borderRadiusSmall,
+        },
+      }),
     },
     ...getOptionStyles(theme),
+    icon: {
+      marginInlineStart: 'auto',
+    },
   });
 };
 
@@ -46,10 +56,11 @@ export const getOptionStyles = (theme: Theme): Styles => {
   return {
     option: {
       display: 'flex',
-      justifyContent: 'space-between',
+      // justifyContent: 'space-between', // TODO: Commented out this line
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
-      minHeight: `calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`, // TODO: Changed this line from original select-wrapper-dropdown style
+      flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
+      minHeight: `calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`, // TODO: Added this line to preserve height for empty option
       cursor: 'pointer',
       textAlign: 'start',
       wordBreak: 'break-word',
