@@ -6,10 +6,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   --p-internal-flyout-navigation-visibility: hidden !important;
   --p-internal-flyout-navigation-visibility-transition-duration: 0.6s !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: hidden !important;
@@ -25,10 +22,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: grid;
   width: auto;
   height: 100vh;
@@ -144,10 +138,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   --p-internal-flyout-navigation-visibility: hidden !important;
   --p-internal-flyout-navigation-visibility-transition-duration: 0.6s !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: hidden !important;
@@ -163,10 +154,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: grid;
   width: auto;
   height: 100vh;
@@ -267,10 +255,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
   --p-internal-flyout-navigation-visibility: hidden !important;
   --p-internal-flyout-navigation-visibility-transition-duration: 0.6s !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: hidden !important;
@@ -286,10 +271,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: grid;
   width: auto;
   height: 100vh;
@@ -388,10 +370,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 ":host {
   display: block;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -407,10 +386,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: grid;
   width: auto;
   height: 100vh;
@@ -521,10 +497,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 ":host {
   display: block;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: inherit !important;
@@ -540,10 +513,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: grid;
   width: auto;
   height: 100vh;
@@ -639,10 +609,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 ":host {
   display: block;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -658,10 +625,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: grid;
   width: auto;
   height: 100vh;
@@ -757,10 +721,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 ":host {
   display: block;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -776,10 +737,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: grid;
   width: auto;
   height: 100vh;
@@ -890,10 +848,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 ":host {
   display: block;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: inherit !important;
@@ -909,10 +864,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: grid;
   width: auto;
   height: 100vh;
@@ -1008,10 +960,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 ":host {
   display: block;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -1027,10 +976,7 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: grid;
   width: auto;
   height: 100vh;

@@ -69,10 +69,8 @@ export const getComponentCss = (
       },
       ...addImportantToEachRule({
         '::slotted': {
-          // TODO: although this syntax is easier to understand, it produces duplicated css code in SSR context, we
-          //  should try to make use of multiple selector `,`. Unfortunately css combinators are not allowed,
-          //  e.g. `::slotted(:is(a,button))`, even if both are direct children. Alternatively, we could use
-          //  `::slotted(*:focus-visible)` selector in this case or non at all, e.g. `::slotted(:focus-visible)`?
+          // TODO: produces duplicated css code in SSR context, we should try to make use of multiple selector like
+          //  `::slotted(:is(a,button))`.
           ...getFocusJssStyle(theme, { prefix: 'a', slotted: true, offset: '1px' }),
           ...getFocusJssStyle(theme, { prefix: 'button', slotted: true, offset: '1px' }),
         },
@@ -84,6 +82,7 @@ export const getComponentCss = (
           position: 'relative',
           margin: '0 0 4px 0',
           verticalAlign: 'top',
+          // TODO: can we use `all: 'inherit'` instead?
           fontFamily: 'inherit',
           fontStyle: 'inherit',
           fontVariant: 'inherit',

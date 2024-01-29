@@ -85,10 +85,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .scroller {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
   transform: translate3d(100%, 0, 0);
   visibility: var(--p-internal-flyout-navigation-visibility,hidden);
@@ -232,10 +229,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .scroller {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
   transform: translate3d(100%, 0, 0);
   visibility: var(--p-internal-flyout-navigation-visibility,hidden);
@@ -367,10 +361,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .scroller {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
   transform: translate3d(100%, 0, 0);
   visibility: var(--p-internal-flyout-navigation-visibility,hidden);
@@ -526,10 +517,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .scroller {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 2;
   transform: translate3d(0, 0, 0);
   visibility: var(--p-internal-flyout-navigation-visibility,visible);
@@ -671,10 +659,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .scroller {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 2;
   transform: translate3d(0, 0, 0);
   visibility: var(--p-internal-flyout-navigation-visibility,visible);
@@ -804,10 +789,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .scroller {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 2;
   transform: translate3d(0, 0, 0);
   visibility: var(--p-internal-flyout-navigation-visibility,visible);

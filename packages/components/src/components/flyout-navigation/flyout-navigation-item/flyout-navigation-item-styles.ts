@@ -4,6 +4,7 @@ import {
   addImportantToRule,
   colorSchemeStyles,
   cssVariableTransitionDuration,
+  getFocusJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -12,7 +13,6 @@ import {
 } from '../../../styles';
 import {
   borderRadiusSmall,
-  borderWidthBase,
   dropShadowHighStyle,
   headingMediumStyle,
   headingSmallStyle,
@@ -40,11 +40,10 @@ const frostedGlassBackgroundColorLight = 'rgba(238, 239, 242, 0.79)';
 const frostedGlassBackgroundColorDark = 'rgba(33, 34, 37, 0.79)';
 
 export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Theme): string => {
-  const { primaryColor, backgroundSurfaceColor, focusColor, hoverColor } = getThemedColors(theme);
+  const { primaryColor, backgroundSurfaceColor, hoverColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
-    focusColor: focusColorDark,
     hoverColor: hoverColorDark,
   } = getThemedColors('dark');
 
@@ -85,57 +84,50 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
       '::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child))': addImportantToEachRule({
         margin: `calc(${spacingFluidMedium} - ${spacingFluidXSmall}) 0 0`, // spacingFluidXSmall to compensate default gap
       }),
-      '::slotted(p)': addImportantToEachRule({
-        ...textSmallStyle,
-        margin: 0,
-        color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
-      }),
-      // TODO: how can we easily re-use getHoverStyle() and getFocusStyle() with ::slotted(a) selector?
-      '::slotted(a)': {
-        ...addImportantToEachRule({
+      '::slotted': {
+        '&(p)': addImportantToEachRule({
           ...textSmallStyle,
-          alignSelf: 'flex-start',
-          display: 'block',
-          textDecoration: 'none',
-          cursor: 'pointer',
+          margin: 0,
           color: primaryColor,
-          borderRadius: borderRadiusSmall,
-          marginLeft: `-${spacingStaticXSmall}`,
-          marginRight: `-${spacingStaticXSmall}`,
-          padding: `2px ${spacingStaticXSmall}`,
-          transition: `background var(${cssVariableTransitionDuration}, ${motionDurationShort}) ${motionEasingBase}`,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             color: primaryColorDark,
           }),
         }),
-      },
-      ...hoverMediaQuery({
-        '::slotted(a:hover)': addImportantToEachRule({
+        '&(a)': {
+          ...addImportantToEachRule({
+            ...textSmallStyle,
+            alignSelf: 'flex-start',
+            display: 'block',
+            textDecoration: 'none',
+            cursor: 'pointer',
+            color: primaryColor,
+            borderRadius: borderRadiusSmall,
+            marginLeft: `-${spacingStaticXSmall}`,
+            marginRight: `-${spacingStaticXSmall}`,
+            padding: `2px ${spacingStaticXSmall}`,
+            transition: `background var(${cssVariableTransitionDuration}, ${motionDurationShort}) ${motionEasingBase}`,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              color: primaryColorDark,
+            }),
+          }),
+        },
+        '&(a[aria-current])': addImportantToEachRule({
           background: hoverColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             background: hoverColorDark,
           }),
         }),
-      }),
-      '::slotted(a[aria-current])': addImportantToEachRule({
-        background: hoverColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: hoverColorDark,
+        ...hoverMediaQuery({
+          // TODO: how can we easily re-use getHoverStyle() with ::slotted(a) selector?
+          '&(a:hover)': addImportantToEachRule({
+            background: hoverColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              background: hoverColorDark,
+            }),
+          }),
         }),
-      }),
-      '::slotted(a:focus)': addImportantToEachRule({
-        outline: `${borderWidthBase} solid ${focusColor}`,
-        outlineOffset: '-2px',
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          outlineColor: focusColorDark,
-        }),
-      }),
-      '::slotted(a:focus:not(:focus-visible))': addImportantToEachRule({
-        outlineColor: 'transparent',
-      }),
+        ...getFocusJssStyle(theme, { prefix: 'a', slotted: true, offset: '-2px' }),
+      },
     },
     button: {
       width: 'auto',
