@@ -3,7 +3,6 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   getBackdropJssStyle,
-  getBackfaceVisibilityJssStyle,
   getHiddenTextJssStyle,
   getTransition,
   type MotionDurationKey,
@@ -105,12 +104,6 @@ describe('getHiddenTextStyles()', () => {
     [false, { width: 'fit-content' }],
   ])('should return correct JssStyle for isHidden: %s and shownStyles: %s', (isHidden, shownStyles) => {
     expect(getHiddenTextJssStyle(isHidden, shownStyles)).toMatchSnapshot();
-  });
-});
-
-describe('getBackfaceVisibilityJssStyle()', () => {
-  it('should return correct styles', () => {
-    expect(getBackfaceVisibilityJssStyle()).toMatchSnapshot();
   });
 });
 

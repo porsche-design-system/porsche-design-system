@@ -46,10 +46,11 @@ export const getTransition = (
   duration: MotionDurationKey = 'short',
   easing: keyof typeof motionEasingMap = 'base',
   delay?: MotionDurationKey
-): string =>
-  `${cssProperty} var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}) ${motionEasingMap[easing]}${
-    delay ? ` var(${cssVariableTransitionDuration}, ${motionDurationMap[delay]})` : ''
-  }`;
+): string => {
+  return `${cssProperty} var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}) ${
+    motionEasingMap[easing]
+  }${delay ? ` var(${cssVariableTransitionDuration}, ${motionDurationMap[delay]})` : ''}`;
+};
 
 export const addImportantToRule = (value: any): string => `${value} !important`;
 
@@ -115,8 +116,8 @@ export const getResetInitialStylesForSlottedAnchor: JssStyle = {
  * @param {JssStyle} isShownJssStyle - Additional styles applied when isHidden = false
  * @returns {JssStyle} - A JSS style object containing styles depending on the value of isHidden and isShownJssStyle.
  */
-export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyle): JssStyle =>
-  isHidden
+export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyle): JssStyle => {
+  return isHidden
     ? {
         position: 'absolute',
         width: '1px',
@@ -138,12 +139,10 @@ export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyl
         whiteSpace: 'normal',
         ...isShownJssStyle,
       };
+};
 
-export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
-  backfaceVisibility: 'hidden',
-  WebkitBackfaceVisibility: 'hidden',
-});
-
+// TODO: there should be a shared style util for modal, flyout and flyout-navigation instead of having this code in the
+//  main bundle. Or don't share it at all, in case same transition concept isn't ideal to be shared from an UI point of view.
 /**
  * Generates JSS styles for a frosted glass background.
  * @param {boolean} isVisible - Determines if the frosted glass effect is visible.

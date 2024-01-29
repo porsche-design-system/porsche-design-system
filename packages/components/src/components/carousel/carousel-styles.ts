@@ -5,7 +5,6 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   colorSchemeStyles,
-  getBackfaceVisibilityJssStyle,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getThemedColors,
@@ -33,6 +32,7 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
+import type { JssStyle } from 'jss';
 
 const cssVariablePrevNextFilter = '--p-carousel-prev-next-filter';
 export const carouselTransitionDuration = motionDurationModerate;
@@ -66,6 +66,11 @@ const mediaQueryPointerCoarse = '@media (pointer: coarse)';
 const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }> = {
   basic: gridBasicOffset,
   extended: gridExtendedOffset,
+};
+
+const backfaceVisibilityJssStyle: JssStyle = {
+  backfaceVisibility: 'hidden',
+  WebkitBackfaceVisibility: 'hidden',
 };
 
 export const getComponentCss = (
@@ -212,12 +217,12 @@ export const getComponentCss = (
         },
       },
       '&__list': {
+        ...backfaceVisibilityJssStyle,
         display: 'flex',
-        ...getBackfaceVisibilityJssStyle(),
       },
       '&__slide': {
+        ...backfaceVisibilityJssStyle,
         flexShrink: 0,
-        ...getBackfaceVisibilityJssStyle(),
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
