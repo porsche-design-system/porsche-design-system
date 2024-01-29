@@ -23,6 +23,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- Scroll-lock used in `Flyout`, `Flyout-Navigation` and `Modal` is changed back to the old implementation, since the
+  advanced scroll-lock caused too many problems
+  ([#3013](https://github.com/porsche-design-system/porsche-design-system/pull/3013))
 - `Toast`: Alignment reflects RTL (right-to-left) mode
   ([#3010](https://github.com/porsche-design-system/porsche-design-system/pull/3010))
 - `Carousel`: Pagination can be used for navigation & pagination has more spacing on touch devices
