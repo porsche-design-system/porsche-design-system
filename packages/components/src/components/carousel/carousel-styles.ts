@@ -5,6 +5,7 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   colorSchemeStyles,
+  getFocusJssStyle,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getThemedColors,
@@ -15,7 +16,6 @@ import {
 import {
   borderRadiusLarge,
   borderRadiusSmall,
-  borderWidthBase,
   getMediaQueryMax,
   getMediaQueryMin,
   gridBasicOffset,
@@ -84,12 +84,8 @@ export const getComponentCss = (
   alignHeader: CarouselAlignHeader,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor, focusColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    focusColor: focusColorDark,
-  } = getThemedColors('dark');
+  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
   const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
 
@@ -114,15 +110,11 @@ export const getComponentCss = (
         },
       }),
       ...addImportantToEachRule({
-        '::slotted(*)': {
-          borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
-        },
-        '::slotted(*:focus-visible)': {
-          outline: `${borderWidthBase} solid ${focusColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            outlineColor: focusColorDark,
-          }),
-          outlineOffset: '2px',
+        '::slotted': {
+          '&(*)': {
+            borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
+          },
+          ...getFocusJssStyle(theme, { slotted: true }),
         },
         // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
         // h2,::slotted([slot=heading]),p,::slotted([slot=description])
@@ -186,6 +178,7 @@ export const getComponentCss = (
     'skip-link': {
       opacity: 0,
       pointerEvents: 'none',
+      // TODO: why isn't :focus-visible used, and can't we use getFocusJssStyle() instead or in combination?
       '&:focus': {
         opacity: 1,
         pointerEvents: 'all',

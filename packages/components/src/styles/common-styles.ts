@@ -86,12 +86,10 @@ export const getFocusJssStyle = (theme: Theme, opts?: Options): JssStyle => {
 
   return {
     outline: 0, // prevents :focus style
-    [slotted ? `&(${prefix}${suffix}::-moz-focus-inner)` : `&${prefix}${suffix}::-moz-focus-inner`]: {
+    [`&${slotted ? '(' : ''}${prefix}${prefix}${suffix}::-moz-focus-inner${slotted ? ')' : ''}`]: {
       border: 0,
     },
-    [slotted
-      ? `&(${prefix}:focus-visible${suffix})${pseudo ? '::before' : ''}`
-      : `&${prefix}:focus-visible${suffix}${pseudo ? '::before' : ''}`]: {
+    [`&${slotted ? '(' : ''}${prefix}:focus-visible${suffix}${slotted ? ')' : ''}${pseudo ? '::before' : ''}`]: {
       outline: `${borderWidthBase} solid ${focusColor}`,
       outlineOffset: offset,
       ...prefersColorSchemeDarkMediaQuery(theme, {
