@@ -100,6 +100,12 @@ export class CheckboxWrapper {
     });
   }
 
+  public componentDidLoad(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
+  }
+
   public disconnectedCallback(): void {
     unobserveAttributes(this.input);
   }

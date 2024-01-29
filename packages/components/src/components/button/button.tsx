@@ -109,6 +109,9 @@ export class Button {
       () => this.name,
       () => this.value
     );
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public render(): JSX.Element {

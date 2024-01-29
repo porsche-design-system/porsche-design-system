@@ -82,6 +82,12 @@ export class Switch {
     return hasPropValueChanged(newVal, oldVal);
   }
 
+  public componentDidLoad(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
 

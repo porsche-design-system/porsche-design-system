@@ -436,10 +436,16 @@ describe('accessibility', () => {
     expect(await getLoadingMessage()).toBe('');
   });
 
-  it('should expose correct loading message initially: loading:true', async () => {
+  it('should expose correct loading message if loading is initially true and then changed programmatically', async () => {
     await initButton({ isLoading: true });
+    const host = await getHost();
 
     expect(await getLoadingMessage()).toBe('Loading');
+
+    await setProperty(host, 'loading', false);
+    await waitForStencilLifecycle(page);
+
+    expect(await getLoadingMessage()).toBe('Loading finished');
   });
 
   it('should expose correct loading message if loading is changed programmatically', async () => {
