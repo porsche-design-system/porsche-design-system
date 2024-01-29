@@ -19,7 +19,7 @@ stay open after user interaction like submission of a form.
 <Notification heading="Scroll-lock" state="warning">
   This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
   This doesn't work completely reliable under iOS but is the most stable solution.<br>
-  Feel free to address this issue in an Open Source PR, if you can provide a better solution.<br>  
+  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b><br> 
 </Notification>
 
 <Notification heading="Recommendation" state="success">
