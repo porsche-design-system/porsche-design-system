@@ -1,5 +1,6 @@
 import type { PropTypes } from '../../../types';
 import type { SelectOptionInternalHTMLProps } from './select-option-utils';
+import { validateSelectOption } from './select-option-utils';
 
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
@@ -50,7 +51,7 @@ export class SelectOption {
             'option--disabled': this.disabled,
           }}
         >
-          <slot />
+          <slot onSlotchange={this.onSlotChange} />
           {selected && !this.disabled && (
             <PrefixedTagNames.pIcon
               class="icon"
@@ -71,5 +72,9 @@ export class SelectOption {
         bubbles: true,
       })
     );
+  };
+
+  private onSlotChange = (e: Event): void => {
+    validateSelectOption(e.target as HTMLSlotElement, this.host);
   };
 }
