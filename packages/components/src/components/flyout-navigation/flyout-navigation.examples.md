@@ -8,6 +8,12 @@ its behavior.
   Interface of Flyout Navigation might change in the near future. In addition, animation/transition concept will change in the future. Currently, only two navigation levels are supported, but we will offer the support of more levels soon.
 </Notification>
 
+<Notification heading="Scroll-lock" state="warning">
+  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
+  This doesn't work completely reliable under iOS but is the most stable solution.<br>
+  Feel free to address this issue in an Open Source PR, if you can provide a better solution.<br>  
+</Notification>
+
 <TableOfContents></TableOfContents>
 
 ## Basic

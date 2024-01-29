@@ -16,6 +16,12 @@ stay open after user interaction like submission of a form.
   Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the modal.
 </Notification>
 
+<Notification heading="Scroll-lock" state="warning">
+  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
+  This doesn't work completely reliable under iOS but is the most stable solution.<br>
+  Feel free to address this issue in an Open Source PR, if you can provide a better solution.<br>  
+</Notification>
+
 <Notification heading="Recommendation" state="success">
   You should only have a single instance of this component within your application. We recommend rendering it close to the body, e.g., in your App.tsx or app.component.ts. This way you reduce the chance of having issues with its z-index and fixed positioning. 
 </Notification>
