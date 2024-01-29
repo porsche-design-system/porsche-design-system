@@ -103,7 +103,7 @@ export const getLinkButtonStyles = (
       minWidth: '54px', // ensure space is already reserved until icon component is loaded (ssr)
       minHeight: '54px', // ensure space is already reserved until icon component is loaded (ssr)
       boxSizing: 'border-box',
-      outline: 0,
+      outline: 0, // prevents :focus style (in case getFocusJssStyle() condition is not matching)
       textAlign: 'start',
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',

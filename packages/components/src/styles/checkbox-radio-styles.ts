@@ -62,6 +62,7 @@ export const getSlottedCheckboxRadioButtonStyles = (
         display: 'block',
         margin: 0,
         padding: 0,
+        outline: 0, // prevents :focus style (in case getFocusJssStyle() condition is not matching)
         WebkitAppearance: 'none', // iOS safari
         appearance: 'none',
         boxSizing: 'content-box',
