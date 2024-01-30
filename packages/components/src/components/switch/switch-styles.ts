@@ -136,7 +136,8 @@ export const getComponentCss = (
             },
           },
         })),
-      ...getFocusJssStyle(theme, { suffix: ' .switch' }),
+      // TODO: we should try to re-work switch dom structure with <button/> + <label/> to get rid of `subsequentSelector`
+      ...getFocusJssStyle(theme, { subsequentSelector: ' .switch' }),
     },
     switch: {
       position: 'relative',
