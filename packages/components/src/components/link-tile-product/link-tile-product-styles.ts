@@ -32,7 +32,6 @@ const anchorJssStyle: JssStyle = {
   inset: 0,
   zIndex: 1, // necessary to be on top of img
   borderRadius: borderRadiusMedium,
-  outline: 0, // ua-style reset
 };
 
 const getMultilineEllipsis = (lineClamp: number): JssStyle => {

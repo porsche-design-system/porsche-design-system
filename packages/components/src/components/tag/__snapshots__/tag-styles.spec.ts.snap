@@ -53,9 +53,6 @@ span {
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -82,12 +79,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -123,9 +126,6 @@ span {
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -152,12 +152,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -193,9 +199,6 @@ span {
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -222,12 +225,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -272,9 +281,6 @@ span {
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -301,12 +307,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -351,9 +363,6 @@ span {
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -380,12 +389,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -430,9 +445,6 @@ span {
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -459,12 +471,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -509,9 +527,6 @@ span {
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -538,12 +553,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -588,9 +609,6 @@ span {
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -617,12 +635,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -667,9 +691,6 @@ span {
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -696,12 +717,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -746,9 +773,6 @@ span {
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -775,12 +799,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -825,9 +855,6 @@ span {
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -854,12 +881,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -904,9 +937,6 @@ span {
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -933,12 +963,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -983,9 +1019,6 @@ span {
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -1012,12 +1045,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -1062,9 +1101,6 @@ span {
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -1091,12 +1127,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -1141,9 +1183,6 @@ span {
   color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -1170,12 +1209,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
@@ -1220,9 +1265,6 @@ span {
   color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a), ::slotted(button) {
   margin: 0 !important;
   padding: 0 !important;
@@ -1249,12 +1291,18 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
   outline: 2px solid #1A44EA !important;

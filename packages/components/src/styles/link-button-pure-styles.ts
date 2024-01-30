@@ -89,7 +89,6 @@ export const getLinkButtonPureStyles = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
       }),
-      outline: 0,
       ...textSmallStyle,
       ...mergeDeep(
         buildResponsiveStyles(stretch, (stretchValue: boolean) => ({

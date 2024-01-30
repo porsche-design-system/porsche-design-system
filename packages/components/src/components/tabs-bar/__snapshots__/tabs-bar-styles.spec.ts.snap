@@ -9,11 +9,11 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -21,6 +21,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -122,11 +125,11 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -134,6 +137,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -235,11 +241,11 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -247,6 +253,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -348,11 +357,11 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -360,6 +369,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -461,11 +473,11 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -473,6 +485,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -574,11 +589,11 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -586,6 +601,9 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 }
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
 }
 ::slotted(button:focus-visible) {
   outline: 2px solid #1A44EA !important;

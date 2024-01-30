@@ -16,9 +16,6 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
   margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
@@ -46,6 +43,9 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -187,9 +187,6 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
   margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
@@ -217,6 +214,9 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -322,9 +322,6 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
   margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
@@ -352,6 +349,9 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -457,9 +457,6 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
   margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
@@ -487,6 +484,9 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -626,9 +626,6 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
   margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
@@ -656,6 +653,9 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -759,9 +759,6 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child)) {
   margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
@@ -789,6 +786,9 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;

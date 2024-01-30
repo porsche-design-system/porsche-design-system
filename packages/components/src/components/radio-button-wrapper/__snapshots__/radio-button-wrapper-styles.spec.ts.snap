@@ -15,7 +15,6 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -161,9 +160,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -171,7 +167,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -188,6 +183,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
 }
 ::slotted(input:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -264,9 +262,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -274,7 +269,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -291,6 +285,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
 }
 ::slotted(input:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -374,7 +371,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -459,7 +455,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -537,9 +532,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -547,7 +539,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -564,6 +555,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
 }
 ::slotted(input:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -639,9 +633,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -649,7 +640,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -666,6 +656,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
 }
 ::slotted(input:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -748,7 +741,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -832,7 +824,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -909,9 +900,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -919,7 +907,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -936,6 +923,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
 }
 ::slotted(input:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -1012,9 +1002,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1022,7 +1009,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -1039,6 +1025,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
 }
 ::slotted(input:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -1122,7 +1111,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -1207,7 +1195,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -1285,9 +1272,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1295,7 +1279,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -1313,6 +1296,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
 }
 ::slotted(input:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -1394,9 +1380,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1404,7 +1387,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -1422,6 +1404,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
 }
 ::slotted(input:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -1510,7 +1495,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -1601,7 +1585,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -1685,9 +1668,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1695,7 +1675,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -1713,6 +1692,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
 }
 ::slotted(input:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -1793,9 +1775,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1803,7 +1782,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -1821,6 +1799,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
 }
 ::slotted(input:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -1908,7 +1889,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -1998,7 +1978,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -2081,9 +2060,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -2091,7 +2067,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -2109,6 +2084,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
 }
 ::slotted(input:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -2190,9 +2168,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -2200,7 +2175,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -2218,6 +2192,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
 }
 ::slotted(input:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -2306,7 +2283,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
@@ -2397,7 +2373,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;

@@ -31,6 +31,7 @@ export const getComponentCss = (size: MarqueSize): string => {
       a: {
         display: 'block',
         textDecoration: 'none',
+        outline: 0,
         '&::before': {
           // needs to be defined always to have correct custom click area
           content: '""',

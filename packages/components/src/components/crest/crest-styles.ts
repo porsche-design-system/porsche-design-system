@@ -18,7 +18,7 @@ export const getComponentCss = (): string => {
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
-          outline: 0,
+          outline: 0, // TODO: is it still necessary?
           boxSizing: 'content-box', // needed for correct height calculation when padding is set on host (e.g. custom click area)
           ...getDimensionStyle,
           ...colorSchemeStyles,

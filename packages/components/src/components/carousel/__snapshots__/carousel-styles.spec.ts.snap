@@ -17,14 +17,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -189,14 +189,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -361,14 +361,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -557,14 +557,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -676,14 +676,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -806,14 +806,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -1042,14 +1042,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -1170,14 +1170,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -1294,14 +1294,14 @@ exports[`getComponentCss() should return correct css for hasHeading: true, hasDe
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -1482,14 +1482,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -1619,14 +1619,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -1831,14 +1831,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -2046,14 +2046,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -2234,14 +2234,14 @@ slot[name="controls"] {
   grid-row-start: 3;
   align-self: center;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 ::slotted(::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
 }
 ::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;

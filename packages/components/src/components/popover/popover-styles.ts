@@ -170,7 +170,6 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
         background: 'transparent',
         border: 0,
         padding: 0,
-        outline: 0,
         cursor: 'pointer',
         ...textSmallStyle,
         width: fontLineHeight, // width needed to improve ssr support

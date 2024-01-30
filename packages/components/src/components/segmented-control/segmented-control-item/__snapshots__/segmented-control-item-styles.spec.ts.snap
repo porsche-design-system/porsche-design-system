@@ -23,10 +23,12 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible {
   outline: 2px solid #1A44EA;
@@ -73,10 +75,12 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible {
   outline: 2px solid #1A44EA;
@@ -123,10 +127,12 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible {
   outline: 2px solid #1A44EA;
@@ -173,10 +179,12 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible {
   outline: 2px solid #1A44EA;
@@ -223,10 +231,12 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible {
   outline: 2px solid #1A44EA;
@@ -277,10 +287,12 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible {
   outline: 2px solid #1A44EA;
@@ -332,10 +344,12 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible {
   outline: 2px solid #1A44EA;
@@ -377,10 +391,12 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: pointer;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible {
   outline: 2px solid #1A44EA;
@@ -423,10 +439,12 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: not-allowed;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible {
   outline: 2px solid #1A44EA;
@@ -468,10 +486,12 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: not-allowed;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible {
   outline: 2px solid #1A44EA;
@@ -514,10 +534,12 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: not-allowed;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible {
   outline: 2px solid #1A44EA;
@@ -559,10 +581,12 @@ button {
   overflow-wrap: break-word;
   hyphens: auto;
   cursor: not-allowed;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible {
   outline: 2px solid #1A44EA;

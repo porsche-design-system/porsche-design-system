@@ -25,6 +25,9 @@ a::before {
 a::-moz-focus-inner {
   border: 0;
 }
+a:focus {
+  outline: 0;
+}
 a:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: 2px;
@@ -65,6 +68,9 @@ a::before {
 }
 a::-moz-focus-inner {
   border: 0;
+}
+a:focus {
+  outline: 0;
 }
 a:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -113,6 +119,9 @@ a::before {
 }
 a::-moz-focus-inner {
   border: 0;
+}
+a:focus {
+  outline: 0;
 }
 a:focus-visible::before {
   outline: 2px solid #1A44EA;

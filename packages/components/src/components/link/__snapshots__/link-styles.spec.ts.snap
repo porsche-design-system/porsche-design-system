@@ -18,7 +18,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -37,6 +36,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;
@@ -185,7 +187,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -204,6 +205,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;
@@ -244,9 +248,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -266,6 +267,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
@@ -278,7 +282,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -330,9 +333,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -352,6 +352,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
@@ -364,7 +367,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -416,9 +418,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -438,6 +437,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
@@ -450,7 +452,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -503,9 +504,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -525,6 +523,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
@@ -537,7 +538,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -590,9 +590,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -612,6 +609,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
@@ -624,7 +624,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -677,9 +676,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -699,6 +695,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
@@ -711,7 +710,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -764,9 +762,6 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
 :host([hidden]) {
   display: none !important;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -786,6 +781,9 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
@@ -798,7 +796,6 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;

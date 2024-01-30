@@ -126,7 +126,6 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         margin: 0, // Removes default button margin on safari 15
         background: 0,
         border: 0,
-        outline: 0,
         ...textSmallStyle,
         fontSize: 'inherit',
         width: 'max-content',

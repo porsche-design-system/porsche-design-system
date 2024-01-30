@@ -20,7 +20,6 @@ button {
   width: 100%;
   text-decoration: none;
   border: 0;
-  outline: 0;
   margin: 0;
   gap: 24px;
   background: transparent;
@@ -45,6 +44,9 @@ button::before {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -119,7 +121,6 @@ button {
   width: 100%;
   text-decoration: none;
   border: 0;
-  outline: 0;
   margin: 0;
   gap: 24px;
   background: transparent;
@@ -144,6 +145,9 @@ button::before {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -219,7 +223,6 @@ button {
   width: 100%;
   text-decoration: none;
   border: 0;
-  outline: 0;
   margin: 0;
   gap: 24px;
   background: transparent;
@@ -244,6 +247,9 @@ button::before {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -318,7 +324,6 @@ button {
   width: 100%;
   text-decoration: none;
   border: 0;
-  outline: 0;
   margin: 0;
   gap: 24px;
   background: transparent;
@@ -343,6 +348,9 @@ button::before {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -417,7 +425,6 @@ button {
   width: 100%;
   text-decoration: none;
   border: 0;
-  outline: 0;
   margin: 0;
   gap: 24px;
   background: transparent;
@@ -442,6 +449,9 @@ button::before {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -517,7 +527,6 @@ button {
   width: 100%;
   text-decoration: none;
   border: 0;
-  outline: 0;
   margin: 0;
   gap: 24px;
   background: transparent;
@@ -542,6 +551,9 @@ button::before {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -616,7 +628,6 @@ button {
   width: 100%;
   text-decoration: none;
   border: 0;
-  outline: 0;
   margin: 0;
   gap: 24px;
   background: transparent;
@@ -641,6 +652,9 @@ button::before {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -716,7 +730,6 @@ button {
   width: 100%;
   text-decoration: none;
   border: 0;
-  outline: 0;
   margin: 0;
   gap: 24px;
   background: transparent;
@@ -741,6 +754,9 @@ button::before {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -816,7 +832,6 @@ button {
   width: 100%;
   text-decoration: none;
   border: 0;
-  outline: 0;
   margin: 0;
   gap: 24px;
   background: transparent;
@@ -841,6 +856,9 @@ button::before {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -915,7 +933,6 @@ button {
   width: 100%;
   text-decoration: none;
   border: 0;
-  outline: 0;
   margin: 0;
   gap: 24px;
   background: transparent;
@@ -940,6 +957,9 @@ button::before {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -1015,7 +1035,6 @@ button {
   width: 100%;
   text-decoration: none;
   border: 0;
-  outline: 0;
   margin: 0;
   gap: 24px;
   background: transparent;
@@ -1040,6 +1059,9 @@ button::before {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
 }
 button:focus-visible::before {
   outline: 2px solid #1A44EA;

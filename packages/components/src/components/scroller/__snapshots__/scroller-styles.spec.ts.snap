@@ -63,10 +63,12 @@ button {
   min-width: 100%;
   vertical-align: top;
   border-radius: 4px;
-  outline: 0;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
+}
+.scroll-wrapper:focus {
+  outline: 0;
 }
 .scroll-wrapper:focus-visible {
   outline: 2px solid #1A44EA;
@@ -199,10 +201,12 @@ button {
   min-width: 100%;
   vertical-align: top;
   border-radius: 4px;
-  outline: 0;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
+}
+.scroll-wrapper:focus {
+  outline: 0;
 }
 .scroll-wrapper:focus-visible {
   outline: 2px solid #1A44EA;
@@ -330,10 +334,12 @@ button {
   min-width: 100%;
   vertical-align: top;
   border-radius: 4px;
-  outline: 0;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
+}
+.scroll-wrapper:focus {
+  outline: 0;
 }
 .scroll-wrapper:focus-visible {
   outline: 2px solid #1A44EA;
@@ -460,10 +466,12 @@ button {
   min-width: 100%;
   vertical-align: top;
   border-radius: 4px;
-  outline: 0;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
+}
+.scroll-wrapper:focus {
+  outline: 0;
 }
 .scroll-wrapper:focus-visible {
   outline: 2px solid #1A44EA;
@@ -591,10 +599,12 @@ button {
   min-width: 100%;
   vertical-align: top;
   border-radius: 4px;
-  outline: 0;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
+}
+.scroll-wrapper:focus {
+  outline: 0;
 }
 .scroll-wrapper:focus-visible {
   outline: 2px solid #1A44EA;
@@ -722,10 +732,12 @@ button {
   min-width: 100%;
   vertical-align: top;
   border-radius: 4px;
-  outline: 0;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
+}
+.scroll-wrapper:focus {
+  outline: 0;
 }
 .scroll-wrapper:focus-visible {
   outline: 2px solid #1A44EA;
@@ -857,10 +869,12 @@ button {
   min-width: 100%;
   vertical-align: top;
   border-radius: 4px;
-  outline: 0;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
+}
+.scroll-wrapper:focus {
+  outline: 0;
 }
 .scroll-wrapper:focus-visible {
   outline: 2px solid #1A44EA;
@@ -993,10 +1007,12 @@ button {
   min-width: 100%;
   vertical-align: top;
   border-radius: 4px;
-  outline: 0;
 }
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
+}
+.scroll-wrapper:focus {
+  outline: 0;
 }
 .scroll-wrapper:focus-visible {
   outline: 2px solid #1A44EA;

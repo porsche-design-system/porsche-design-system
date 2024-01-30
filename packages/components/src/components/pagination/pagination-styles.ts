@@ -123,7 +123,6 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         whiteSpace: 'nowrap',
         cursor: 'pointer',
         color: primaryColor,
-        outline: 0,
         borderRadius: borderRadiusSmall,
         borderColor: 'transparent', // default value is needed for smooth transition
         ...prefersColorSchemeDarkMediaQuery(theme, {

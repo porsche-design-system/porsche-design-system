@@ -22,7 +22,6 @@ a, svg {
 }
 a {
   text-decoration: none;
-  outline: 0;
 }
 a::before {
   content: "";
@@ -32,6 +31,9 @@ a::before {
 }
 a::-moz-focus-inner {
   border: 0;
+}
+a:focus {
+  outline: 0;
 }
 a:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -64,7 +66,6 @@ a, svg {
 }
 a {
   text-decoration: none;
-  outline: 0;
 }
 a::before {
   content: "";
@@ -74,6 +75,9 @@ a::before {
 }
 a::-moz-focus-inner {
   border: 0;
+}
+a:focus {
+  outline: 0;
 }
 a:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -107,7 +111,6 @@ a, svg {
 }
 a {
   text-decoration: none;
-  outline: 0;
 }
 a::before {
   content: "";
@@ -117,6 +120,9 @@ a::before {
 }
 a::-moz-focus-inner {
   border: 0;
+}
+a:focus {
+  outline: 0;
 }
 a:focus-visible::before {
   outline: 2px solid #1A44EA;
@@ -156,7 +162,6 @@ a, svg {
 }
 a {
   text-decoration: none;
-  outline: 0;
 }
 a::before {
   content: "";
@@ -166,6 +171,9 @@ a::before {
 }
 a::-moz-focus-inner {
   border: 0;
+}
+a:focus {
+  outline: 0;
 }
 a:focus-visible::before {
   outline: 2px solid #1A44EA;

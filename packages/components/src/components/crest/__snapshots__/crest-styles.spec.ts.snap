@@ -23,7 +23,6 @@ a {
   max-height: 40px;
   width: inherit;
   height: inherit;
-  outline: 0;
 }
 a::before {
   content: "";
@@ -33,6 +32,9 @@ a::before {
 }
 a::-moz-focus-inner {
   border: 0;
+}
+a:focus {
+  outline: 0;
 }
 a:focus-visible::before {
   outline: 2px solid #1A44EA;

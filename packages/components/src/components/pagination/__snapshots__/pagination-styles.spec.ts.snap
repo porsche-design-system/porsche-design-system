@@ -37,7 +37,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -54,6 +53,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -128,7 +130,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #FBFCFF;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -145,6 +146,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -219,7 +223,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -236,6 +239,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -310,7 +316,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -327,6 +332,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -407,7 +415,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -424,6 +431,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -504,7 +514,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -521,6 +530,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -601,7 +613,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -618,6 +629,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -698,7 +712,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -715,6 +728,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -795,7 +811,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -812,6 +827,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -892,7 +910,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -909,6 +926,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -989,7 +1009,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -1006,6 +1025,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -1086,7 +1108,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -1103,6 +1124,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -1183,7 +1207,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -1200,6 +1223,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -1280,7 +1306,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -1297,6 +1322,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -1374,7 +1402,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -1391,6 +1418,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -1471,7 +1501,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -1488,6 +1517,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -1565,7 +1597,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -1582,6 +1613,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -1662,7 +1696,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -1679,6 +1712,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -1762,7 +1798,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -1779,6 +1814,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;
@@ -1862,7 +1900,6 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
 }
@@ -1879,6 +1916,9 @@ span[aria-disabled] {
 }
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
 }
 span:not(.ellipsis):focus-visible {
   outline: 2px solid #1A44EA;

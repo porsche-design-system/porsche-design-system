@@ -41,10 +41,12 @@ slot[name="header"] {
   inset: 0;
   z-index: 1;
   border-radius: 8px;
-  outline: 0;
 }
 .anchor::-moz-focus-inner {
   border: 0;
+}
+.anchor:focus {
+  outline: 0;
 }
 .anchor:focus-visible {
   outline: 2px solid #1A44EA;
@@ -154,10 +156,12 @@ slot[name="header"] {
   inset: 0;
   z-index: 1;
   border-radius: 8px;
-  outline: 0;
 }
 .anchor::-moz-focus-inner {
   border: 0;
+}
+.anchor:focus {
+  outline: 0;
 }
 .anchor:focus-visible {
   outline: 2px solid #1A44EA;
@@ -284,10 +288,12 @@ slot[name="header"] {
   inset: 0;
   z-index: 1;
   border-radius: 8px;
-  outline: 0;
 }
 .anchor::-moz-focus-inner {
   border: 0;
+}
+.anchor:focus {
+  outline: 0;
 }
 .anchor:focus-visible {
   outline: 2px solid #1A44EA;
@@ -401,10 +407,12 @@ slot[name="header"] {
   inset: 0;
   z-index: 1;
   border-radius: 8px;
-  outline: 0;
 }
 .anchor::-moz-focus-inner {
   border: 0;
+}
+.anchor:focus {
+  outline: 0;
 }
 .anchor:focus-visible {
   outline: 2px solid #1A44EA;
@@ -495,19 +503,18 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
 slot[name="header"] {
   display: block;
 }
-::slotted {
-  outline: 0 !important;
-}
 ::slotted(a[slot='anchor']) {
   position: absolute !important;
   inset: 0 !important;
   z-index: 1 !important;
   border-radius: 8px !important;
-  outline: 0 !important;
   text-indent: -999999px !important;
 }
 ::slotted(a[slot='anchor']::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a[slot='anchor']:focus) {
+  outline: 0 !important;
 }
 ::slotted(a[slot='anchor']:focus-visible) {
   outline: 2px solid #1A44EA !important;

@@ -5,13 +5,15 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   display: block;
   color: #FBFCFF !important;
   border-radius: 2px !important;
-  outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 :host(::-moz-focus-inner) {
   border: 0 !important;
+}
+:host(:focus) {
+  outline: 0 !important;
 }
 :host(:focus-visible) {
   outline: 2px solid #1A44EA !important;
@@ -24,13 +26,15 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   display: block;
   color: #010205 !important;
   border-radius: 2px !important;
-  outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 :host(::-moz-focus-inner) {
   border: 0 !important;
+}
+:host(:focus) {
+  outline: 0 !important;
 }
 :host(:focus-visible) {
   outline: 2px solid #1A44EA !important;

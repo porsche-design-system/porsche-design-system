@@ -18,7 +18,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -40,6 +39,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;
@@ -182,7 +184,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -203,6 +204,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;
@@ -253,7 +257,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -274,6 +277,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;
@@ -324,7 +330,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -345,6 +350,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;
@@ -395,7 +403,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -417,6 +424,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;
@@ -472,7 +482,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -494,6 +503,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;
@@ -536,7 +548,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -557,6 +568,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;
@@ -608,7 +622,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -629,6 +642,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;
@@ -680,7 +696,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -701,6 +716,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;
@@ -752,7 +770,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -773,6 +790,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;
@@ -824,7 +844,6 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -846,6 +865,9 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
 }
 .root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
 }
 .root:focus-visible {
   outline: 2px solid #1A44EA;

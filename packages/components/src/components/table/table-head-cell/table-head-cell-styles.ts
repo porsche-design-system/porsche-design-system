@@ -53,7 +53,6 @@ export const getComponentCss = (
               padding: 0,
               font: 'inherit',
               color: 'inherit',
-              outline: 0,
               alignItems: 'flex-end',
               WebkitAppearance: 'none', // iOS safari
               appearance: 'none',
