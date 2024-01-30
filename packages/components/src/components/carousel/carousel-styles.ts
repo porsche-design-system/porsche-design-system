@@ -178,7 +178,6 @@ export const getComponentCss = (
     'skip-link': {
       opacity: 0,
       pointerEvents: 'none',
-      // TODO: why isn't :focus-visible used, and can't we use getFocusJssStyle() instead or in combination?
       '&:focus': {
         opacity: 1,
         pointerEvents: 'all',

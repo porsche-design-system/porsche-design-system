@@ -2,6 +2,7 @@ import { buildResponsiveStyles, getCss, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getFocusJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -11,9 +12,7 @@ import {
 import {
   borderRadiusLarge,
   borderRadiusMedium,
-  borderWidthBase,
   fontHyphenationStyle,
-  getFocusStyle,
   getMediaQueryMin,
   headingSmallStyle,
   spacingFluidMedium,
@@ -33,6 +32,7 @@ const anchorJssStyle: JssStyle = {
   inset: 0,
   zIndex: 1, // necessary to be on top of img
   borderRadius: borderRadiusMedium,
+  outline: 0, // ua-style reset
 };
 
 const getMultilineEllipsis = (lineClamp: number): JssStyle => {
@@ -50,12 +50,11 @@ export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastHighColor, backgroundSurfaceColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, contrastHighColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     contrastHighColor: contrastHighColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
-    focusColor: focusColorDark,
   } = getThemedColors('dark');
 
   return getCss({
@@ -78,17 +77,7 @@ export const getComponentCss = (
               ...anchorJssStyle,
               textIndent: '-999999px', // hide anchor label visually but still usable for a11y (only works in RTL-mode because of `overflow: hidden;` parent)
             },
-            // TODO: Refactor getFocusStyles to support slotted selector
-            [`&(${slottedAnchorSelector}:focus)`]: {
-              outline: `${borderWidthBase} solid ${focusColor}`,
-              outlineOffset: '2px',
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                outlineColor: focusColorDark,
-              }),
-            },
-            [`&(${slottedAnchorSelector}:focus:not(:focus-visible))`]: {
-              outlineColor: 'transparent',
-            },
+            ...getFocusJssStyle(theme, { prefix: slottedAnchorSelector, slotted: true }),
           }),
           [`&([slot="${headerSlot}"])`]: {
             display: 'flex',
@@ -127,7 +116,7 @@ export const getComponentCss = (
     ...(!hasSlottedAnchor && {
       anchor: {
         ...anchorJssStyle,
-        ...getFocusStyle({ borderRadius: 'medium' }),
+        ...getFocusJssStyle(theme),
       },
     }),
     header: {
