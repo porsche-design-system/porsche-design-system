@@ -68,6 +68,7 @@ export const getSlottedCheckboxRadioButtonStyles = (
         background: `transparent 0% 0% / ${fontLineHeight}`,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         border: `${borderWidthBase} solid ${uncheckedColor}`,
+        outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style (in case getFocusJssStyle() condition is not matching)
         ...(disabledOrLoading
           ? {
               pointerEvents: 'none', // to prevent form element becomes clickable/toggleable

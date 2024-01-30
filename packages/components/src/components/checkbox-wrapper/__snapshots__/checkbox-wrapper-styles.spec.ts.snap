@@ -21,6 +21,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -176,6 +177,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #FC4040 !important;
+  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -289,6 +291,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #CC1922 !important;
+  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -402,6 +405,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -489,6 +493,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -576,6 +581,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #88898C !important;
+  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -688,6 +694,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #6B6D70 !important;
+  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -800,6 +807,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -886,6 +894,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -972,6 +981,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #09D087 !important;
+  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1085,6 +1095,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #197E10 !important;
+  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1198,6 +1209,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1285,6 +1297,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1372,6 +1385,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #FC4040 !important;
+  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1483,6 +1497,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #CC1922 !important;
+  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1594,6 +1609,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1679,6 +1695,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1764,6 +1781,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #88898C !important;
+  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1874,6 +1892,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #6B6D70 !important;
+  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1984,6 +2003,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2083,6 +2103,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2182,6 +2203,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2266,6 +2288,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2350,6 +2373,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2439,6 +2463,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2528,6 +2553,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #09D087 !important;
+  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2639,6 +2665,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #197E10 !important;
+  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2750,6 +2777,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2835,6 +2863,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
+  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
