@@ -108,6 +108,12 @@ export class PinCode {
     }
   }
 
+  public connectedCallback(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
+  }
+
   public componentWillLoad(): void {
     this.form = getClosestHTMLElement(this.host, 'form');
     this.isWithinForm = !!this.form;
@@ -115,6 +121,9 @@ export class PinCode {
       this.hiddenInput = initHiddenInput(this.host, this.name, this.value, this.disabled, this.required);
     }
     this.value = getSanitisedValue(this.host, this.value, this.length);
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public componentWillUpdate(): void {
