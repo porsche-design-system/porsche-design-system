@@ -85,10 +85,10 @@ export const getFocusJssStyle = (theme: Theme, opts?: Options): JssStyle => {
   const { focusColor: focusColorDark } = getThemedColors('dark');
 
   return {
-    [`&${slotted ? '(' : ''}${prefix}${suffix}::-moz-focus-inner${slotted ? ')' : ''}`]: {
+    [`&${slotted ? '(' : ''}${prefix}::-moz-focus-inner${slotted ? ')' : ''}`]: {
       border: 0, // reset ua-style (for FF)
     },
-    [`&${slotted ? '(' : ''}${prefix}:focus${suffix}${slotted ? ')' : ''}`]: {
+    [`&${slotted ? '(' : ''}${prefix}:focus${slotted ? ')' : ''}`]: {
       outline: 0, // reset ua-style (for older browsers)
     },
     [`&${slotted ? '(' : ''}${prefix}:focus-visible${suffix}${slotted ? ')' : ''}${pseudo ? '::before' : ''}`]: {

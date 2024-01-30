@@ -26,10 +26,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: pointer;
   justify-content: flex-start;
 }
-.root .switch::-moz-focus-inner {
+.root::-moz-focus-inner {
   border: 0;
 }
-.root:focus .switch {
+.root:focus {
   outline: 0;
 }
 .root:focus-visible .switch {
@@ -116,10 +116,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: auto;
   justify-content: flex-start;
 }
-.root .switch::-moz-focus-inner {
+.root::-moz-focus-inner {
   border: 0;
 }
-.root:focus .switch {
+.root:focus {
   outline: 0;
 }
 .root:focus-visible .switch {
@@ -195,10 +195,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: pointer;
   justify-content: space-between;
 }
-.root .switch::-moz-focus-inner {
+.root::-moz-focus-inner {
   border: 0;
 }
-.root:focus .switch {
+.root:focus {
   outline: 0;
 }
 .root:focus-visible .switch {
@@ -284,10 +284,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: auto;
   justify-content: space-between;
 }
-.root .switch::-moz-focus-inner {
+.root::-moz-focus-inner {
   border: 0;
 }
-.root:focus .switch {
+.root:focus {
   outline: 0;
 }
 .root:focus-visible .switch {
@@ -370,10 +370,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: auto;
   justify-content: space-between;
 }
-.root .switch::-moz-focus-inner {
+.root::-moz-focus-inner {
   border: 0;
 }
-.root:focus .switch {
+.root:focus {
   outline: 0;
 }
 .root:focus-visible .switch {
@@ -456,10 +456,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: auto;
   justify-content: space-between;
 }
-.root .switch::-moz-focus-inner {
+.root::-moz-focus-inner {
   border: 0;
 }
-.root:focus .switch {
+.root:focus {
   outline: 0;
 }
 .root:focus-visible .switch {
@@ -542,10 +542,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: pointer;
   justify-content: space-between;
 }
-.root .switch::-moz-focus-inner {
+.root::-moz-focus-inner {
   border: 0;
 }
-.root:focus .switch {
+.root:focus {
   outline: 0;
 }
 .root:focus-visible .switch {
@@ -632,10 +632,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   cursor: pointer;
   justify-content: flex-start;
 }
-.root .switch::-moz-focus-inner {
+.root::-moz-focus-inner {
   border: 0;
 }
-.root:focus .switch {
+.root:focus {
   outline: 0;
 }
 .root:focus-visible .switch {
@@ -722,10 +722,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   cursor: pointer;
   justify-content: flex-start;
 }
-.root .switch::-moz-focus-inner {
+.root::-moz-focus-inner {
   border: 0;
 }
-.root:focus .switch {
+.root:focus {
   outline: 0;
 }
 .root:focus-visible .switch {
@@ -812,10 +812,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
   cursor: pointer;
   justify-content: flex-start;
 }
-.root .switch::-moz-focus-inner {
+.root::-moz-focus-inner {
   border: 0;
 }
-.root:focus .switch {
+.root:focus {
   outline: 0;
 }
 .root:focus-visible .switch {
@@ -933,10 +933,10 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   cursor: pointer;
   justify-content: flex-start;
 }
-.root .switch::-moz-focus-inner {
+.root::-moz-focus-inner {
   border: 0;
 }
-.root:focus .switch {
+.root:focus {
   outline: 0;
 }
 .root:focus-visible .switch {
