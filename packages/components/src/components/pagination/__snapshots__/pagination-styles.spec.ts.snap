@@ -39,6 +39,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -132,6 +133,7 @@ span {
   color: #FBFCFF;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -225,6 +227,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -318,6 +321,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -417,6 +421,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -516,6 +521,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -615,6 +621,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -714,6 +721,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -813,6 +821,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -912,6 +921,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1011,6 +1021,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1110,6 +1121,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1209,6 +1221,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1308,6 +1321,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1404,6 +1418,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1503,6 +1518,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1599,6 +1615,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1698,6 +1715,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1800,6 +1818,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1902,6 +1921,7 @@ span {
   color: #010205;
   border-radius: 4px;
   border-color: transparent;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;

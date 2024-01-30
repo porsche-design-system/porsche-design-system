@@ -125,6 +125,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         color: primaryColor,
         borderRadius: borderRadiusSmall,
         borderColor: 'transparent', // default value is needed for smooth transition
+        outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,
         }),
