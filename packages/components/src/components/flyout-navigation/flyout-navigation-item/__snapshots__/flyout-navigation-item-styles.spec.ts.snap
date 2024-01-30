@@ -17,7 +17,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted {
-  outline: 0;
+  outline: 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -45,18 +45,18 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   background: rgba(148, 149, 152, .18) !important;
 }
 ::slotted(aa::-moz-focus-inner) {
-  border: 0;
+  border: 0 !important;
 }
 ::slotted(a:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
 }
 @media (prefers-color-scheme: dark) {
   ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
     color: #FBFCFF !important;
   }
   ::slotted(a:focus-visible) {
-    outline-color: #1A44EA;
+    outline-color: #1A44EA !important;
   }
   ::slotted(a[aria-current]) {
     background: rgba(148, 149, 152, .18) !important;
@@ -188,7 +188,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted {
-  outline: 0;
+  outline: 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -216,11 +216,11 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   background: rgba(148, 149, 152, .18) !important;
 }
 ::slotted(aa::-moz-focus-inner) {
-  border: 0;
+  border: 0 !important;
 }
 ::slotted(a:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
 }
 @media(hover:hover) {
   ::slotted(a:hover) {
@@ -323,7 +323,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted {
-  outline: 0;
+  outline: 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -351,11 +351,11 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   background: rgba(148, 149, 152, .18) !important;
 }
 ::slotted(aa::-moz-focus-inner) {
-  border: 0;
+  border: 0 !important;
 }
 ::slotted(a:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
 }
 @media(hover:hover) {
   ::slotted(a:hover) {
@@ -458,7 +458,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted {
-  outline: 0;
+  outline: 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -486,18 +486,18 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   background: rgba(148, 149, 152, .18) !important;
 }
 ::slotted(aa::-moz-focus-inner) {
-  border: 0;
+  border: 0 !important;
 }
 ::slotted(a:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
 }
 @media (prefers-color-scheme: dark) {
   ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
     color: #FBFCFF !important;
   }
   ::slotted(a:focus-visible) {
-    outline-color: #1A44EA;
+    outline-color: #1A44EA !important;
   }
   ::slotted(a[aria-current]) {
     background: rgba(148, 149, 152, .18) !important;
@@ -627,7 +627,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted {
-  outline: 0;
+  outline: 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -655,11 +655,11 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   background: rgba(148, 149, 152, .18) !important;
 }
 ::slotted(aa::-moz-focus-inner) {
-  border: 0;
+  border: 0 !important;
 }
 ::slotted(a:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
 }
 @media(hover:hover) {
   ::slotted(a:hover) {
@@ -760,7 +760,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   margin: calc(clamp(16px, 1.25vw + 12px, 36px) - clamp(4px, 0.25vw + 3px, 8px)) 0 0 !important;
 }
 ::slotted {
-  outline: 0;
+  outline: 0 !important;
 }
 ::slotted(p) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -788,11 +788,11 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   background: rgba(148, 149, 152, .18) !important;
 }
 ::slotted(aa::-moz-focus-inner) {
-  border: 0;
+  border: 0 !important;
 }
 ::slotted(a:focus-visible) {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
 }
 @media(hover:hover) {
   ::slotted(a:hover) {
