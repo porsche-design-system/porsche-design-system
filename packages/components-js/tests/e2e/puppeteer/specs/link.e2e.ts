@@ -167,7 +167,7 @@ describe('slotted anchor', () => {
     const slottedAnchorWidthInPx = await getElementStyle(await getSlottedLink(), 'width', { pseudo: '::before' });
 
     expect(hostWidthInPx).toBe('500px');
-    expect(slottedAnchorWidthInPx).toBe('508px');
+    expect(slottedAnchorWidthInPx).toBe('500px');
   });
 });
 
