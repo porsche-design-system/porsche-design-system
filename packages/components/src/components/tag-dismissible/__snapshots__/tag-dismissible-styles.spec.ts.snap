@@ -27,7 +27,6 @@ button {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -90,7 +89,6 @@ button {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -153,7 +151,6 @@ button {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -222,7 +219,6 @@ button {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -291,7 +287,6 @@ button {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -360,7 +355,6 @@ button {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  outline: 0;
 }
 button::-moz-focus-inner {
   border: 0;

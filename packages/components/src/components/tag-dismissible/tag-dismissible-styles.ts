@@ -57,7 +57,10 @@ export const getComponentCss = (
         color: primaryColor,
         textAlign: 'start',
         ...textSmallStyle,
-        outline: isHighContrastMode ? '1px solid transparent' : 0,
+        ...(isHighContrastMode && {
+          // TODO: using border would increase the dimension but using outline interferes with the focus style
+          outline: '1px solid transparent',
+        }),
         ...prefersColorSchemeDarkMediaQuery(theme, {
           background: backgroundColorDark,
           color: primaryColorDark,
