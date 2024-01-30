@@ -214,6 +214,7 @@ export const getComponentCss = (
         )
       ),
     },
+    // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });
 };
