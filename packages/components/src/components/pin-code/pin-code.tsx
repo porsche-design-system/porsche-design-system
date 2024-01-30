@@ -104,14 +104,13 @@ export class PinCode {
   @Watch('loading')
   public loadingChanged(newVal: boolean): void {
     if (newVal) {
-      this.initialLoading = true;
+      // don't reset initialLoading to false
+      this.initialLoading = newVal;
     }
   }
 
   public connectedCallback(): void {
-    if (this.loading) {
-      this.initialLoading = true;
-    }
+    this.initialLoading = this.loading;
   }
 
   public componentWillLoad(): void {
@@ -121,9 +120,7 @@ export class PinCode {
       this.hiddenInput = initHiddenInput(this.host, this.name, this.value, this.disabled, this.required);
     }
     this.value = getSanitisedValue(this.host, this.value, this.length);
-    if (this.loading) {
-      this.initialLoading = true;
-    }
+    this.initialLoading = this.loading;
   }
 
   public componentWillUpdate(): void {

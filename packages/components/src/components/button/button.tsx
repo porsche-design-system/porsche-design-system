@@ -93,20 +93,17 @@ export class Button {
   @Watch('loading')
   public loadingChanged(newVal: boolean): void {
     if (newVal) {
-      this.initialLoading = true;
+      // don't reset initialLoading to false
+      this.initialLoading = newVal;
     }
   }
 
   public connectedCallback(): void {
-    if (this.loading) {
-      this.initialLoading = true;
-    }
+    this.initialLoading = this.loading;
   }
 
   public componentWillLoad(): void {
-    if (this.loading) {
-      this.initialLoading = true;
-    }
+    this.initialLoading = this.loading;
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
