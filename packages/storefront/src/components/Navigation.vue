@@ -17,7 +17,7 @@
             :to="getRoute(category, page, !Array.isArray(tabs) ? Object.keys(tabs)[0] : undefined)"
             v-slot="{ href, navigate }"
           >
-            <p-link-pure :theme="storefrontTheme" icon="none" :active="isExtendedActive(page)">
+            <p-link-pure :theme="storefrontTheme" icon="none" :active="isExtendedActive(category, page)">
               <a :href="href" @click="navigate"
                 >{{ page }}
                 <span v-if="isComponentWithProp(category, page, 'isDeprecated')" title="deprecated"> 🚫</span>
@@ -62,8 +62,8 @@
       return `/${params.map((x) => paramCase(x)).join('/')}`;
     }
 
-    public isExtendedActive(page: string) {
-      return this.$route.params.page === paramCase(page);
+    public isExtendedActive(category: string, page: string) {
+      return this.$route.params.category + this.$route.params.page === paramCase(category) + paramCase(page);
     }
 
     private created(): void {
