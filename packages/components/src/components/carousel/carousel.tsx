@@ -43,7 +43,6 @@ import {
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
-  warnIfAriaAndHeadingPropsAreUndefined,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
@@ -216,7 +215,7 @@ export class Carousel {
     this.splide.options = { drag: this.hasNavigation };
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
     if (this.hasNavigation) {
-      renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0); // update pagination in case the carousel was not draggable before
+      renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0, this.splide); // update pagination in case the carousel was not draggable before
       updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
     }
   }
@@ -246,7 +245,6 @@ export class Carousel {
     const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
     const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
     const hasControlsSlot = hasNamedSlot(this.host, 'controls');
-    warnIfAriaAndHeadingPropsAreUndefined(this.host, hasHeadingPropOrSlot, this.aria);
     this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
     this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
     attachComponentCss(
@@ -306,21 +304,24 @@ export class Carousel {
                 Skip carousel entries
               </PrefixedTagNames.pLinkPure>
             )}
-            {this.hasNavigation && [
+            {/* Do not render both buttons conditional in an array, this will cause Next.js SSR to throw Warning: Each child in a list should have a unique "key" prop. */}
+            {this.hasNavigation && (
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-left"
                 ref={(ref) => (this.btnPrev = ref)}
                 onClick={() => slidePrev(this.splide, this.amountOfPages)}
-              />,
+              />
+            )}
+            {this.hasNavigation && (
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-right"
                 ref={(ref) => (this.btnNext = ref)}
                 onClick={() => slideNext(this.splide, this.amountOfPages)}
                 onKeyDown={this.onNextKeyDown}
-              />,
-            ]}
+              />
+            )}
           </div>
         </div>
 
@@ -347,7 +348,7 @@ export class Carousel {
         </div>
 
         {(this.disablePagination ? this.disablePagination !== true : this.pagination) && this.hasNavigation && (
-          <div class="pagination-container">
+          <div class="pagination-container" aria-hidden="true">
             <div class="pagination" ref={(ref) => (this.paginationEl = ref)}></div>
           </div>
         )}
@@ -359,7 +360,7 @@ export class Carousel {
     splide.on('mounted', () => {
       if (this.splide.options.drag) {
         updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-        renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex); // initial pagination
+        renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex, this.splide); // initial pagination
       }
     });
 
@@ -390,7 +391,7 @@ export class Carousel {
       // round to sanitize floating numbers
       this.slidesPerPage === 'auto' ? 1 : Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
     );
-    renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0);
+    renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0, this.splide);
   };
 
   private onNextKeyDown = (e: KeyboardEvent): void => {

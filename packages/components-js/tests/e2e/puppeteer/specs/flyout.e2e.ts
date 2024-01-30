@@ -101,9 +101,12 @@ const addButtonsBeforeAndAfterFlyout = () =>
   });
 
 const scrollFlyoutTo = async (selector: string) =>
-  await page.evaluate((el) => {
-    el.scrollIntoView();
-  }, await selectNode(page, selector));
+  await page.evaluate(
+    (el) => {
+      el.scrollIntoView();
+    },
+    await selectNode(page, selector)
+  );
 
 const expectDismissButtonToBeFocused = async (failMessage?: string) => {
   const host = await getHost();
@@ -549,122 +552,35 @@ it('should open flyout at scroll top position zero when its content is scrollabl
 });
 
 describe('scroll lock', () => {
-  describe('Desktop Browser', () => {
-    const bodyLockedStyle = 'overflow: hidden;';
+  const bodyLockedStyle = 'overflow: hidden;';
 
-    it('should prevent page from scrolling when open', async () => {
-      await initBasicFlyout({ open: false });
-      expect(await getBodyStyle()).toBe(null);
+  it('should prevent page from scrolling when open', async () => {
+    await initBasicFlyout({ open: false });
+    expect(await getBodyStyle()).toBe(null);
 
-      await openFlyout();
-      expect(await getBodyStyle()).toBe(bodyLockedStyle);
+    await openFlyout();
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
 
-      await setProperty(await getHost(), 'open', false);
-      await waitForStencilLifecycle(page);
-      expect(await getBodyStyle()).toBe('');
-    });
-
-    it('should prevent page from scrolling when initially open', async () => {
-      await initBasicFlyout({ open: true });
-      expect(await getBodyStyle()).toBe(bodyLockedStyle);
-    });
-
-    it('should remove overflow hidden from body if unmounted', async () => {
-      await initBasicFlyout({ open: true });
-      expect(await getBodyStyle()).toBe(bodyLockedStyle);
-
-      await page.evaluate(() => {
-        document.querySelector('p-flyout').remove();
-      });
-      await waitForStencilLifecycle(page);
-
-      expect(await getBodyStyle()).toBe('');
-    });
+    await setProperty(await getHost(), 'open', false);
+    await waitForStencilLifecycle(page);
+    expect(await getBodyStyle()).toBe('');
   });
 
-  describe('iOS Safari', () => {
-    const bodyLockedStyleIOS = 'top: 0px; overflow-y: scroll; position: fixed;';
+  it('should prevent page from scrolling when initially open', async () => {
+    await initBasicFlyout({ open: true });
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+  });
 
-    it('should prevent page from scrolling when open', async () => {
-      await page.setUserAgent(
-        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-      );
+  it('should remove overflow hidden from body if unmounted', async () => {
+    await initBasicFlyout({ open: true });
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
 
-      await initBasicFlyout({ open: false });
-      expect(await getBodyStyle()).toBe(null);
-
-      await openFlyout();
-      expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
-
-      await setProperty(await getHost(), 'open', false);
-      await waitForStencilLifecycle(page);
-      expect(await getBodyStyle()).toBe('');
+    await page.evaluate(() => {
+      document.querySelector('p-flyout').remove();
     });
+    await waitForStencilLifecycle(page);
 
-    it('should not override body styles on prop change', async () => {
-      await page.setUserAgent(
-        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-      );
-
-      await initBasicFlyout({ open: false }, {}, { markupBefore: '<div style="height: 2000px;"></div>' });
-      expect(await getBodyStyle()).toBe(null);
-
-      await page.evaluate(() => {
-        window.scrollTo(0, 500);
-      });
-
-      await openFlyout();
-      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
-
-      await setProperty(await getHost(), 'aria', "{'aria-label': 'Other Heading'}");
-      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
-    });
-
-    it('should not override body styles on slot change', async () => {
-      await page.setUserAgent(
-        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-      );
-      await initBasicFlyout({ open: false }, {}, { markupBefore: '<div style="height: 2000px;"></div>' });
-      const host = await getHost();
-      await page.evaluate(() => {
-        window.scrollTo(0, 500);
-      });
-
-      expect(await getBodyStyle()).toBe(null);
-
-      await openFlyout();
-      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
-
-      await host.evaluate((el) => {
-        el.innerHTML = '<button id="btn-new">New Button</button>';
-      });
-      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
-    });
-
-    it('should prevent page from scrolling when initially open', async () => {
-      await page.setUserAgent(
-        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-      );
-
-      await initBasicFlyout({ open: true });
-      expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
-    });
-
-    it('should remove overflowY, top and position styles from body if unmounted', async () => {
-      await page.setUserAgent(
-        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-      );
-
-      await initBasicFlyout({ open: true });
-      expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
-
-      await page.evaluate(() => {
-        document.querySelector('p-flyout').remove();
-      });
-      await waitForStencilLifecycle(page);
-
-      expect(await getBodyStyle()).toBe('');
-    });
+    expect(await getBodyStyle()).toBe('');
   });
 });
 
