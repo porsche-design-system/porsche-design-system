@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.11.0-rc.0] - 2024-01-30
+
 #### Fixed
 
 - `Carousel`: Carousel does not work with single pointer event on smaller touch devices
@@ -23,6 +25,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- Scroll-lock used in `Flyout`, `Flyout Navigation` and `Modal` is based on `body { overflow: hidden; }` for all devices
+  ([#3013](https://github.com/porsche-design-system/porsche-design-system/pull/3013))
 - `Toast`: Alignment reflects RTL (right-to-left) mode
   ([#3010](https://github.com/porsche-design-system/porsche-design-system/pull/3010))
 - `Carousel`: Pagination can be used for navigation & pagination has more spacing on touch devices
