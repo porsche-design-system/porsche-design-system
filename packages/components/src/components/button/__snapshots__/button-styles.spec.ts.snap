@@ -38,18 +38,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border-color: #7E7F82;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: absolute;
@@ -207,18 +201,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -284,18 +272,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -361,18 +343,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -439,18 +415,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border-color: #535457;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -522,18 +492,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border-color: #949598;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -591,18 +555,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -669,18 +627,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -747,18 +699,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -825,18 +771,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -904,18 +844,12 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   border-color: #535457;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;

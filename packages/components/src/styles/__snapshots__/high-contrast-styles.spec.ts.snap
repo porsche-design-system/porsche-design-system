@@ -84,36 +84,6 @@ exports[`should have only high contrast styles for p-multi-select-option 1`] = `
 ]
 `;
 
-exports[`should have only high contrast styles for p-popover 1`] = `
-[
-  {
-    "button:focus::before": {
-      "border-color": "Highlight",
-    },
-  },
-]
-`;
-
-exports[`should have only high contrast styles for p-scroller 1`] = `
-[
-  {
-    ".scroll-wrapper:focus::before": {
-      "border-color": "Highlight",
-    },
-  },
-]
-`;
-
-exports[`should have only high contrast styles for p-segmented-control-item 1`] = `
-[
-  {
-    "button:focus::before": {
-      "border-color": "Highlight",
-    },
-  },
-]
-`;
-
 exports[`should have only high contrast styles for p-spinner 1`] = `
 [
   {

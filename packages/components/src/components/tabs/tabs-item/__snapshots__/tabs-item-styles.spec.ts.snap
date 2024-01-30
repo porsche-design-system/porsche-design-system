@@ -3,43 +3,37 @@
 exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ":host {
   display: block;
-  position: relative !important;
   color: #FBFCFF !important;
+  border-radius: 2px !important;
   outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus:focus-visible)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 4px !important;
+:host(::-moz-focus-inner) {
+  border: 0 !important;
+}
+:host(:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }"
 `;
 
 exports[`getComponentCss() should return correct css for theme: light 1`] = `
 ":host {
   display: block;
-  position: relative !important;
   color: #010205 !important;
+  border-radius: 2px !important;
   outline: 0 !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus:focus-visible)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 4px !important;
+:host(::-moz-focus-inner) {
+  border: 0 !important;
+}
+:host(:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }"
 `;

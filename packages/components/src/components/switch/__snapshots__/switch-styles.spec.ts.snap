@@ -27,18 +27,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: pointer;
   justify-content: flex-start;
 }
-.root:focus .switch::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px solid #1A44EA;
-  border-radius: 18px;
+.root .switch::-moz-focus-inner {
+  border: 0;
 }
-.root:not(:focus-visible) .switch::before {
-  border-color: transparent;
+.root:focus-visible .switch {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .switch {
   position: relative;
@@ -121,18 +115,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: auto;
   justify-content: flex-start;
 }
-.root:focus .switch::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px solid #1A44EA;
-  border-radius: 18px;
+.root .switch::-moz-focus-inner {
+  border: 0;
 }
-.root:not(:focus-visible) .switch::before {
-  border-color: transparent;
+.root:focus-visible .switch {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .switch {
   position: relative;
@@ -204,18 +192,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: pointer;
   justify-content: space-between;
 }
-.root:focus .switch::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px solid #1A44EA;
-  border-radius: 18px;
+.root .switch::-moz-focus-inner {
+  border: 0;
 }
-.root:not(:focus-visible) .switch::before {
-  border-color: transparent;
+.root:focus-visible .switch {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .switch {
   position: relative;
@@ -297,18 +279,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: auto;
   justify-content: space-between;
 }
-.root:focus .switch::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px solid #1A44EA;
-  border-radius: 18px;
+.root .switch::-moz-focus-inner {
+  border: 0;
 }
-.root:not(:focus-visible) .switch::before {
-  border-color: transparent;
+.root:focus-visible .switch {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .switch {
   position: relative;
@@ -387,18 +363,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: auto;
   justify-content: space-between;
 }
-.root:focus .switch::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px solid #1A44EA;
-  border-radius: 18px;
+.root .switch::-moz-focus-inner {
+  border: 0;
 }
-.root:not(:focus-visible) .switch::before {
-  border-color: transparent;
+.root:focus-visible .switch {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .switch {
   position: relative;
@@ -477,18 +447,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: auto;
   justify-content: space-between;
 }
-.root:focus .switch::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px solid #1A44EA;
-  border-radius: 18px;
+.root .switch::-moz-focus-inner {
+  border: 0;
 }
-.root:not(:focus-visible) .switch::before {
-  border-color: transparent;
+.root:focus-visible .switch {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .switch {
   position: relative;
@@ -567,18 +531,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   cursor: pointer;
   justify-content: space-between;
 }
-.root:focus .switch::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px solid #1A44EA;
-  border-radius: 18px;
+.root .switch::-moz-focus-inner {
+  border: 0;
 }
-.root:not(:focus-visible) .switch::before {
-  border-color: transparent;
+.root:focus-visible .switch {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .switch {
   position: relative;
@@ -661,18 +619,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   cursor: pointer;
   justify-content: flex-start;
 }
-.root:focus .switch::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px solid #1A44EA;
-  border-radius: 18px;
+.root .switch::-moz-focus-inner {
+  border: 0;
 }
-.root:not(:focus-visible) .switch::before {
-  border-color: transparent;
+.root:focus-visible .switch {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .switch {
   position: relative;
@@ -755,18 +707,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   cursor: pointer;
   justify-content: flex-start;
 }
-.root:focus .switch::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px solid #1A44EA;
-  border-radius: 18px;
+.root .switch::-moz-focus-inner {
+  border: 0;
 }
-.root:not(:focus-visible) .switch::before {
-  border-color: transparent;
+.root:focus-visible .switch {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .switch {
   position: relative;
@@ -849,18 +795,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
   cursor: pointer;
   justify-content: flex-start;
 }
-.root:focus .switch::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px solid #1A44EA;
-  border-radius: 18px;
+.root .switch::-moz-focus-inner {
+  border: 0;
 }
-.root:not(:focus-visible) .switch::before {
-  border-color: transparent;
+.root:focus-visible .switch {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .switch {
   position: relative;
@@ -974,18 +914,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   cursor: pointer;
   justify-content: flex-start;
 }
-.root:focus .switch::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 2px solid #1A44EA;
-  border-radius: 18px;
+.root .switch::-moz-focus-inner {
+  border: 0;
 }
-.root:not(:focus-visible) .switch::before {
-  border-color: transparent;
+.root:focus-visible .switch {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .switch {
   position: relative;

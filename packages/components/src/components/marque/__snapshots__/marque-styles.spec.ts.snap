@@ -19,18 +19,15 @@ a {
 a::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-a:focus::before {
+  inset: 0;
   border-radius: 1px;
+}
+a::-moz-focus-inner {
+  border: 0;
+}
+a:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: 2px;
-}
-a:focus:not(:focus-visible)::before {
-  outline: 0;
 }
 picture {
   display: block;
@@ -63,18 +60,15 @@ a {
 a::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-a:focus::before {
+  inset: 0;
   border-radius: 1px;
+}
+a::-moz-focus-inner {
+  border: 0;
+}
+a:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: 2px;
-}
-a:focus:not(:focus-visible)::before {
-  outline: 0;
 }
 picture {
   display: block;
@@ -114,18 +108,15 @@ a {
 a::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-a:focus::before {
+  inset: 0;
   border-radius: 1px;
+}
+a::-moz-focus-inner {
+  border: 0;
+}
+a:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: 2px;
-}
-a:focus:not(:focus-visible)::before {
-  outline: 0;
 }
 picture {
   display: block;

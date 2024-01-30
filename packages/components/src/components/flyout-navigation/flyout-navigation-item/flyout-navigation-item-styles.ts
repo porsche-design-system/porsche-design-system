@@ -84,17 +84,17 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
       '::slotted(:is(h1, h2, h3, h4, h5, h6):not(:first-child))': addImportantToEachRule({
         margin: `calc(${spacingFluidMedium} - ${spacingFluidXSmall}) 0 0`, // spacingFluidXSmall to compensate default gap
       }),
-      '::slotted': {
-        '&(p)': addImportantToEachRule({
+      '::slotted': addImportantToEachRule({
+        '&(p)': {
           ...textSmallStyle,
           margin: 0,
           color: primaryColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             color: primaryColorDark,
           }),
-        }),
+        },
         '&(a)': {
-          ...addImportantToEachRule({
+          ...{
             ...textSmallStyle,
             alignSelf: 'flex-start',
             display: 'block',
@@ -109,25 +109,25 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
             ...prefersColorSchemeDarkMediaQuery(theme, {
               color: primaryColorDark,
             }),
-          }),
+          },
         },
-        '&(a[aria-current])': addImportantToEachRule({
+        '&(a[aria-current])': {
           background: hoverColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             background: hoverColorDark,
           }),
-        }),
+        },
         ...hoverMediaQuery({
           // TODO: how can we easily re-use getHoverStyle() with ::slotted(a) selector?
-          '&(a:hover)': addImportantToEachRule({
+          '&(a:hover)': {
             background: hoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               background: hoverColorDark,
             }),
-          }),
+          },
         }),
         ...getFocusJssStyle(theme, { prefix: 'a', slotted: true, offset: '-2px' }),
-      },
+      }),
     },
     button: {
       width: 'auto',

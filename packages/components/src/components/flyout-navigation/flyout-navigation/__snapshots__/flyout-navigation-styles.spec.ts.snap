@@ -34,14 +34,12 @@ dialog {
   visibility: inherit;
   background: none;
   overflow: hidden;
+  outline: 0;
   transform: translate3d(-100%, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
 }
 dialog:dir(rtl) {
   transform: translate3d(100%, 0, 0);
-}
-dialog:focus-visible {
-  outline: none;
 }
 dialog::backdrop {
   opacity: 0;
@@ -166,14 +164,12 @@ dialog {
   visibility: inherit;
   background: none;
   overflow: hidden;
+  outline: 0;
   transform: translate3d(-100%, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
 }
 dialog:dir(rtl) {
   transform: translate3d(100%, 0, 0);
-}
-dialog:focus-visible {
-  outline: none;
 }
 dialog::backdrop {
   opacity: 0;
@@ -283,14 +279,12 @@ dialog {
   visibility: inherit;
   background: none;
   overflow: hidden;
+  outline: 0;
   transform: translate3d(-100%, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
 }
 dialog:dir(rtl) {
   transform: translate3d(100%, 0, 0);
-}
-dialog:focus-visible {
-  outline: none;
 }
 dialog::backdrop {
   opacity: 0;
@@ -398,11 +392,9 @@ dialog {
   visibility: inherit;
   background: none;
   overflow: hidden;
+  outline: 0;
   transform: translate3d(0, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
-}
-dialog:focus-visible {
-  outline: none;
 }
 dialog::backdrop {
   opacity: 0;
@@ -525,11 +517,9 @@ dialog {
   visibility: inherit;
   background: none;
   overflow: hidden;
+  outline: 0;
   transform: translate3d(0, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
-}
-dialog:focus-visible {
-  outline: none;
 }
 dialog::backdrop {
   opacity: 0;
@@ -637,11 +627,9 @@ dialog {
   visibility: inherit;
   background: none;
   overflow: hidden;
+  outline: 0;
   transform: translate3d(0, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
-}
-dialog:focus-visible {
-  outline: none;
 }
 dialog::backdrop {
   opacity: 0;
@@ -749,11 +737,9 @@ dialog {
   visibility: inherit;
   background: none;
   overflow: hidden;
+  outline: 0;
   transform: translate3d(0, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
-}
-dialog:focus-visible {
-  outline: none;
 }
 dialog::backdrop {
   opacity: 0;
@@ -876,11 +862,9 @@ dialog {
   visibility: inherit;
   background: none;
   overflow: hidden;
+  outline: 0;
   transform: translate3d(0, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
-}
-dialog:focus-visible {
-  outline: none;
 }
 dialog::backdrop {
   opacity: 0;
@@ -988,11 +972,9 @@ dialog {
   visibility: inherit;
   background: none;
   overflow: hidden;
+  outline: 0;
   transform: translate3d(0, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
-}
-dialog:focus-visible {
-  outline: none;
 }
 dialog::backdrop {
   opacity: 0;

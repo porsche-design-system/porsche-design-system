@@ -9,20 +9,19 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -165,21 +164,23 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #FC4040 !important;
-  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -189,18 +190,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #FC4040 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -283,21 +278,23 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #CC1922 !important;
-  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -307,18 +304,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #CC1922 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -402,20 +393,19 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -491,20 +481,19 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -579,21 +568,23 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #88898C !important;
-  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -603,18 +594,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #FBFCFF !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -696,21 +681,23 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #6B6D70 !important;
-  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -720,18 +707,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #010205 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -814,20 +795,19 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -902,20 +882,19 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -989,21 +968,23 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #09D087 !important;
-  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1013,18 +994,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #09D087 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -1107,21 +1082,23 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #197E10 !important;
-  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1131,18 +1108,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #197E10 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -1226,20 +1197,19 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1315,20 +1285,19 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1403,21 +1372,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #FC4040 !important;
-  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1427,18 +1398,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #FC4040 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -1519,21 +1484,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #CC1922 !important;
-  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1543,18 +1510,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #CC1922 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -1636,20 +1597,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1723,20 +1683,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1809,21 +1768,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #88898C !important;
-  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1833,18 +1794,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #FBFCFF !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -1924,21 +1879,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #6B6D70 !important;
-  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -1948,18 +1905,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #010205 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -2039,21 +1990,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2062,18 +2015,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: grid;
@@ -2143,21 +2090,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2166,18 +2115,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #949598 !important;
   background-color: #949598 !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: grid;
@@ -2248,20 +2191,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2334,20 +2276,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2420,20 +2361,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2511,20 +2451,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2601,21 +2540,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #09D087 !important;
-  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2625,18 +2566,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #09D087 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -2717,21 +2652,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #197E10 !important;
-  outline: 0 !important;
   cursor: pointer !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2741,18 +2678,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #197E10 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(inputinput::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -2834,20 +2765,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;
@@ -2921,20 +2851,19 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+  outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
   box-sizing: content-box !important;
   background: transparent 0% 0% / calc(6px + 2.125ex) !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   border: 2px solid #949598 !important;
-  outline: 0 !important;
   pointer-events: none !important;
   grid-area: 1/1 !important;
   border-radius: 4px !important;

@@ -43,11 +43,12 @@ button::before {
   top: 6px;
   bottom: 6px;
 }
-button:focus::before {
-  border: 2px solid #1A44EA;
-}
-button:not(:focus-visible)::before {
+button::-moz-focus-inner {
   border: 0;
+}
+button:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button::before {
@@ -141,11 +142,12 @@ button::before {
   top: 6px;
   bottom: 6px;
 }
-button:focus::before {
-  border: 2px solid #1A44EA;
-}
-button:not(:focus-visible)::before {
+button::-moz-focus-inner {
   border: 0;
+}
+button:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button::before {
@@ -240,11 +242,12 @@ button::before {
   top: 2px;
   bottom: 2px;
 }
-button:focus::before {
-  border: 2px solid #1A44EA;
-}
-button:not(:focus-visible)::before {
+button::-moz-focus-inner {
   border: 0;
+}
+button:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button::before {
@@ -338,11 +341,12 @@ button::before {
   top: 2px;
   bottom: 2px;
 }
-button:focus::before {
-  border: 2px solid #1A44EA;
-}
-button:not(:focus-visible)::before {
+button::-moz-focus-inner {
   border: 0;
+}
+button:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button::before {
@@ -436,11 +440,12 @@ button::before {
   top: 2px;
   bottom: 2px;
 }
-button:focus::before {
-  border: 2px solid #1A44EA;
-}
-button:not(:focus-visible)::before {
+button::-moz-focus-inner {
   border: 0;
+}
+button:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button::before {
@@ -535,11 +540,12 @@ button::before {
   top: 6px;
   bottom: 6px;
 }
-button:focus::before {
-  border: 2px solid #1A44EA;
-}
-button:not(:focus-visible)::before {
+button::-moz-focus-inner {
   border: 0;
+}
+button:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button::before {
@@ -633,11 +639,12 @@ button::before {
   top: 6px;
   bottom: 6px;
 }
-button:focus::before {
-  border: 2px solid #1A44EA;
-}
-button:not(:focus-visible)::before {
+button::-moz-focus-inner {
   border: 0;
+}
+button:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button::before {
@@ -732,11 +739,12 @@ button::before {
   top: 6px;
   bottom: 6px;
 }
-button:focus::before {
-  border: 2px solid #1A44EA;
-}
-button:not(:focus-visible)::before {
+button::-moz-focus-inner {
   border: 0;
+}
+button:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button::before {
@@ -831,11 +839,12 @@ button::before {
   top: 2px;
   bottom: 2px;
 }
-button:focus::before {
-  border: 2px solid #1A44EA;
-}
-button:not(:focus-visible)::before {
+button::-moz-focus-inner {
   border: 0;
+}
+button:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button::before {
@@ -929,11 +938,12 @@ button::before {
   top: 2px;
   bottom: 2px;
 }
-button:focus::before {
-  border: 2px solid #1A44EA;
-}
-button:not(:focus-visible)::before {
+button::-moz-focus-inner {
   border: 0;
+}
+button:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button::before {
@@ -1028,11 +1038,12 @@ button::before {
   top: 6px;
   bottom: 6px;
 }
-button:focus::before {
-  border: 2px solid #1A44EA;
-}
-button:not(:focus-visible)::before {
+button::-moz-focus-inner {
   border: 0;
+}
+button:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(min-width:480px) {
   button {

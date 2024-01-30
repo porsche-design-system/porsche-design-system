@@ -35,18 +35,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   padding: 13px;
   gap: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: absolute;
@@ -208,18 +202,12 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   padding: 13px 26px;
   gap: 8px;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -256,6 +244,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -269,20 +260,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  border-radius: 8px !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
+  inset: -2px !important;
+  border-radius: 4px !important;
 }
-::slotted(a::-moz-focus-inner) {
+::slotted(aa::-moz-focus-inner) {
   border: 0 !important;
 }
-::slotted(a:focus)::before {
-  border: 2px solid #1A44EA !important;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  border: 0 !important;
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: flex;
@@ -344,6 +330,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -357,20 +346,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  border-radius: 8px !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
+  inset: -2px !important;
+  border-radius: 4px !important;
 }
-::slotted(a::-moz-focus-inner) {
+::slotted(aa::-moz-focus-inner) {
   border: 0 !important;
 }
-::slotted(a:focus)::before {
-  border: 2px solid #1A44EA !important;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  border: 0 !important;
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: flex;
@@ -432,6 +416,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -445,20 +432,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  border-radius: 8px !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
+  inset: -2px !important;
+  border-radius: 4px !important;
 }
-::slotted(a::-moz-focus-inner) {
+::slotted(aa::-moz-focus-inner) {
   border: 0 !important;
 }
-::slotted(a:focus)::before {
-  border: 2px solid #1A44EA !important;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  border: 0 !important;
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: flex;
@@ -521,6 +503,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -534,20 +519,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  border-radius: 8px !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
+  inset: -2px !important;
+  border-radius: 4px !important;
 }
-::slotted(a::-moz-focus-inner) {
+::slotted(aa::-moz-focus-inner) {
   border: 0 !important;
 }
-::slotted(a:focus)::before {
-  border: 2px solid #1A44EA !important;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  border: 0 !important;
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: flex;
@@ -610,6 +590,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -623,20 +606,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  border-radius: 8px !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
+  inset: -2px !important;
+  border-radius: 4px !important;
 }
-::slotted(a::-moz-focus-inner) {
+::slotted(aa::-moz-focus-inner) {
   border: 0 !important;
 }
-::slotted(a:focus)::before {
-  border: 2px solid #1A44EA !important;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  border: 0 !important;
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: flex;
@@ -699,6 +677,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -712,20 +693,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  border-radius: 8px !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
+  inset: -2px !important;
+  border-radius: 4px !important;
 }
-::slotted(a::-moz-focus-inner) {
+::slotted(aa::-moz-focus-inner) {
   border: 0 !important;
 }
-::slotted(a:focus)::before {
-  border: 2px solid #1A44EA !important;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  border: 0 !important;
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: flex;
@@ -788,6 +764,9 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
 :host([hidden]) {
   display: none !important;
 }
+::slotted {
+  outline: 0 !important;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -801,20 +780,15 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  border-radius: 8px !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
+  inset: -2px !important;
+  border-radius: 4px !important;
 }
-::slotted(a::-moz-focus-inner) {
+::slotted(aa::-moz-focus-inner) {
   border: 0 !important;
 }
-::slotted(a:focus)::before {
-  border: 2px solid #1A44EA !important;
-}
-::slotted(a:focus:not(:focus-visible))::before {
-  border: 0 !important;
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: flex;
