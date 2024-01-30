@@ -121,6 +121,7 @@ export class Select {
     this.value = e.target.value;
     e.stopPropagation();
     this.emitUpdateEvent();
+    this.isOpen = false;
   }
 
   // TODO: Similar to multi-select
@@ -268,6 +269,7 @@ export class Select {
           this.value = highlightedOption.value;
           this.emitUpdateEvent();
           forceUpdate(highlightedOption);
+          this.isOpen = false;
         } else {
           if (this.isWithinForm) {
             handleButtonEvent(
