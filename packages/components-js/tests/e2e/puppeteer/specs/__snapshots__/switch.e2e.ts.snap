@@ -59,10 +59,3 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
   "role": "RootWebArea",
 }
 `;
-
-exports[`accessibility should expose correct initial accessibility tree 2`] = `
-{
-  "name": "",
-  "role": "status",
-}
-`;

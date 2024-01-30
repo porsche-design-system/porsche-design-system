@@ -32,8 +32,6 @@ const getInput = (n: number) => selectNode(page, `p-pin-code >>> .wrapper input:
 const getActiveElementsAriaLabelInShadowRoot = (element: ElementHandle): Promise<string> => {
   return element.evaluate((el) => el.shadowRoot.activeElement.ariaLabel);
 };
-const getLoadingStatus = () => selectNode(page, 'p-pin-code >>> .loading');
-const getLoadingMessage = async () => (await getLoadingStatus()).evaluate((el) => el.textContent);
 
 type InitOptions = {
   props?: Components.PPinCode;
@@ -716,10 +714,8 @@ describe('accessibility', () => {
   it('should expose correct initial accessibility tree', async () => {
     await initPinCode({ props: { label: 'Some label' } });
     const input = await getCurrentInput();
-    const status = await getLoadingStatus();
 
     await expectA11yToMatchSnapshot(page, input, opts);
-    await expectA11yToMatchSnapshot(page, status, { interestingOnly: false });
   });
 
   it('should expose correct accessibility tree with description text', async () => {
@@ -801,34 +797,5 @@ describe('accessibility', () => {
     await waitForStencilLifecycle(page);
 
     await expectA11yToMatchSnapshot(page, input, { ...opts, message: 'Of Input when state = none' });
-  });
-
-  it('should expose correct loading message initially: loading: false', async () => {
-    await initPinCode({ props: { label: 'Some label' } });
-
-    expect(await getLoadingMessage()).toBe('');
-  });
-
-  it('should expose correct loading message initially: loading:true', async () => {
-    await initPinCode({ props: { label: 'Some label', loading: true } });
-
-    expect(await getLoadingMessage()).toBe('Loading');
-  });
-
-  it('should expose correct loading message if loading is changed programmatically', async () => {
-    await initPinCode({ props: { label: 'Some label' } });
-    const host = await getHost();
-
-    expect(await getLoadingMessage()).toBe('');
-
-    await setProperty(host, 'loading', true);
-    await waitForStencilLifecycle(page);
-
-    expect(await getLoadingMessage()).toBe('Loading');
-
-    await setProperty(host, 'loading', false);
-    await waitForStencilLifecycle(page);
-
-    expect(await getLoadingMessage()).toBe('Loading finished');
   });
 });

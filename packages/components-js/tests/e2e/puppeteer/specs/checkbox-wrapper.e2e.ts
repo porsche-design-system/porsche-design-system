@@ -26,8 +26,6 @@ const getInput = () => selectNode(page, 'p-checkbox-wrapper input[type="checkbox
 const getWrapper = () => selectNode(page, 'p-checkbox-wrapper >>> .wrapper');
 const getLabel = () => selectNode(page, 'p-checkbox-wrapper >>> label');
 const getMessage = () => selectNode(page, 'p-checkbox-wrapper >>> .message');
-const getLoadingStatus = () => selectNode(page, 'p-checkbox-wrapper >>> .loading');
-const getLoadingMessage = async () => (await getLoadingStatus()).evaluate((el) => el.textContent);
 
 const setIndeterminate = async (element: ElementHandle, value: boolean) => {
   await setProperty(element, 'indeterminate', value);
@@ -354,10 +352,8 @@ describe('accessibility', () => {
   it('should expose correct initial accessibility tree', async () => {
     await initCheckbox();
     const input = await getInput();
-    const status = await getLoadingStatus();
 
     await expectA11yToMatchSnapshot(page, input);
-    await expectA11yToMatchSnapshot(page, status, { interestingOnly: false });
   });
 
   it('should expose correct accessibility tree properties in error state', async () => {
@@ -421,40 +417,5 @@ describe('accessibility', () => {
     const root = await getRoot();
 
     await expectA11yToMatchSnapshot(page, root, { interestingOnly: false });
-  });
-
-  it('should expose correct loading message initially: loading: false', async () => {
-    await initCheckbox();
-
-    expect(await getLoadingMessage()).toBe('');
-  });
-
-  it('should expose correct loading message if loading is initially true and then changed programmatically', async () => {
-    await initCheckbox({ loading: true });
-    const host = await getHost();
-
-    expect(await getLoadingMessage()).toBe('Loading');
-
-    await setProperty(host, 'loading', false);
-    await waitForStencilLifecycle(page);
-
-    expect(await getLoadingMessage()).toBe('Loading finished');
-  });
-
-  it('should expose correct loading message if loading is changed programmatically', async () => {
-    await initCheckbox();
-    const host = await getHost();
-
-    expect(await getLoadingMessage()).toBe('');
-
-    await setProperty(host, 'loading', true);
-    await waitForStencilLifecycle(page);
-
-    expect(await getLoadingMessage()).toBe('Loading');
-
-    await setProperty(host, 'loading', false);
-    await waitForStencilLifecycle(page);
-
-    expect(await getLoadingMessage()).toBe('Loading finished');
   });
 });

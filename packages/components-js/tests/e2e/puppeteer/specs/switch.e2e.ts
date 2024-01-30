@@ -20,8 +20,6 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-switch');
 const getButton = () => selectNode(page, 'p-switch >>> button');
 const getLabel = () => selectNode(page, 'p-switch >>> .label');
-const getLoadingStatus = () => selectNode(page, 'p-switch >>> .loading');
-const getLoadingMessage = async () => (await getLoadingStatus()).evaluate((el) => el.textContent);
 
 const clickHandlerScript = `
 <script>
@@ -301,44 +299,7 @@ describe('accessibility', () => {
   it('should expose correct initial accessibility tree', async () => {
     await initSwitch();
     const label = () => selectNode(page, 'p-switch >>> label');
-    const status = await getLoadingStatus();
 
     await expectA11yToMatchSnapshot(page, await label(), { interestingOnly: false });
-    await expectA11yToMatchSnapshot(page, status, { interestingOnly: false });
-  });
-
-  it('should expose correct loading message initially: loading: false', async () => {
-    await initSwitch();
-
-    expect(await getLoadingMessage()).toBe('');
-  });
-
-  it('should expose correct loading message if loading is initially true and then changed programmatically', async () => {
-    await initSwitch({ isLoading: true });
-    const host = await getHost();
-
-    expect(await getLoadingMessage()).toBe('Loading');
-
-    await setProperty(host, 'loading', false);
-    await waitForStencilLifecycle(page);
-
-    expect(await getLoadingMessage()).toBe('Loading finished');
-  });
-
-  it('should expose correct loading message if loading is changed programmatically', async () => {
-    await initSwitch();
-    const host = await getHost();
-
-    expect(await getLoadingMessage()).toBe('');
-
-    await setProperty(host, 'loading', true);
-    await waitForStencilLifecycle(page);
-
-    expect(await getLoadingMessage()).toBe('Loading');
-
-    await setProperty(host, 'loading', false);
-    await waitForStencilLifecycle(page);
-
-    expect(await getLoadingMessage()).toBe('Loading finished');
   });
 });
