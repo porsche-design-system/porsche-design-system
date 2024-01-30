@@ -54,6 +54,7 @@ export const getComponentCss = (
               height: fontLineHeight,
             },
           }),
+        // .loading
         ...getFunctionalComponentLoadingMessageStyles(),
       }
     )
