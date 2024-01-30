@@ -38,6 +38,7 @@ export const setSelectedValue = (options: SelectOption[], value: string): void =
       optionToSelect.selected = true;
       forceUpdate(optionToSelect);
     }
+    // TODO: Evaluate if a validation should be applied here? setting the value back to undefined when no empty option exists?
   } else {
     resetSelectedOption(options);
     // TODO: Do we want to cover multiple options with the same value?
