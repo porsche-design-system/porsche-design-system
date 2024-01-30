@@ -32,7 +32,7 @@
   });
 
   document.querySelector('#btn-remove').addEventListener('click', () => {
-    if (multiSelect.children > 0) {
+    if (multiSelect.children.length > 0) {
       multiSelect.lastChild.remove();
     }
   });
@@ -40,7 +40,7 @@
   function addOption() {
     const child = document.createElement('p-multi-select-option');
     child.innerText = `Option ${multiSelect.children.length + 1}`;
-    child.setAttribute('value', multiSelect.children.length + 1);
+    child.setAttribute('value', `${multiSelect.children.length + 1}`);
     multiSelect.append(child);
   }
 </script>
