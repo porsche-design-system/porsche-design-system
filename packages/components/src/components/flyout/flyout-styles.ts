@@ -3,7 +3,6 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getBackdropJssStyle,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -35,54 +34,68 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        display: 'flex',
+        display: 'block',
         ...addImportantToEachRule({
           // needed for correct alignment of the Porsche Grid within the Flyout
           '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
           '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
-          justifyContent: isPositionStart ? 'flex-start' : 'flex-end',
-          ...getInsetJssStyle(),
           ...getBackdropJssStyle(isOpen, FLYOUT_Z_INDEX, theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
-    },
-    root: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      boxSizing: 'border-box',
-      ...(hasSubFooter && {
-        overflowY: 'auto',
-        overscrollBehaviorY: 'none',
-      }),
-      width: 'var(--p-flyout-width, auto)',
-      height: '100%',
-      minWidth: '320px',
-      maxWidth: 'var(--p-flyout-max-width, 1180px)',
-      color: primaryColor, // enables color inheritance for slotted content
-      background: backgroundColor,
-      ...(isOpen
-        ? {
-            opacity: 1,
-            transform: 'initial',
-            transition: `${getTransition('opacity', 'long', 'in')}, ${getTransition('transform', 'long', 'in')}`,
-          }
-        : {
-            opacity: 0,
-            transform: `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
-            transition: `${getTransition('opacity', 'short', 'out', 'long')}, ${getTransition(
-              'transform',
-              'long',
-              'out'
-            )}`,
-          }),
-      boxShadow: `${isPositionStart ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: primaryColorDark,
-        background: backgroundColorDark,
-      }),
+      dialog: {
+        position: 'fixed',
+        'inset-inline': 'auto',
+        [isPositionStart ? 'left' : 'right']: 0,
+        display: 'flex', // ua-style reset
+        height: '100vh', // ua-style reset
+        maxHeight: '100vh', // ua-style reset
+        margin: 0, // ua-style reset
+        padding: 0, // ua-style reset
+        border: 0, // ua-style reset
+        visibility: 'inherit', // ua-style reset
+        overflow: 'hidden', // ua-style reset, dialog shall never become scrollable, it's handled by custom scroll areas
+        flexDirection: 'column',
+        boxSizing: 'border-box',
+        ...(hasSubFooter && {
+          overflowY: 'auto',
+          overscrollBehaviorY: 'none',
+        }),
+        width: 'var(--p-flyout-width, auto)',
+        minWidth: '320px',
+        maxWidth: 'var(--p-flyout-max-width, 1180px)',
+        color: primaryColor, // enables color inheritance for slotted content
+        background: backgroundColor,
+        ...(isOpen
+          ? {
+              opacity: 1,
+              transform: 'initial',
+              transition: `${getTransition('opacity', 'long', 'in')}, ${getTransition('transform', 'long', 'in')}`,
+            }
+          : {
+              opacity: 0,
+              transform: `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
+              transition: `${getTransition('opacity', 'short', 'out', 'long')}, ${getTransition(
+                'transform',
+                'long',
+                'out'
+              )}`,
+            }),
+        boxShadow: `${isPositionStart ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
+          background: backgroundColorDark,
+        }),
+        '&:focus-visible': {
+          outline: 'none', // ua-style reset
+        },
+        '&::backdrop': {
+          // to improve browser backwards compatibility we visually style the backdrop on the :host,
+          // although it's not on the #top-layer like it would be for modern browsers supporting ::backdrop
+          opacity: 0, // to support backdrop click for modern browsers supporting ::backdrop
+        },
+      },
     },
     header: {
       position: 'sticky',

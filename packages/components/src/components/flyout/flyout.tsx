@@ -15,6 +15,7 @@ import {
   getShadowRootHTMLElement,
   hasNamedSlot,
   hasPropValueChanged,
+  parseAndGetAriaAttributes,
   setScrollLock,
   THEMES,
   validateProps,
@@ -77,6 +78,7 @@ export class Flyout {
     // in case flyout is rendered with open prop
     if (this.open) {
       setScrollLock(true);
+
       this.setDialogVisibility(true);
     }
 
@@ -148,7 +150,6 @@ export class Flyout {
 
     return (
       <dialog
-        class="root"
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         /* @ts-ignore */
         inert={this.open ? null : true} // prevents focusable elements during fade-out transition
@@ -157,6 +158,7 @@ export class Flyout {
         onClick={(e) => this.onClickDialog(e)}
         onCancel={(e) => this.onCancelDialog(e)}
         {...(this.hasSubFooter && { onScroll: this.updateShadow })} // if no sub-footer is used scroll shadows are done via CSS
+        {...parseAndGetAriaAttributes(this.aria)}
       >
         <div key="header" class="header" ref={(el) => (this.header = el)}>
           <PrefixedTagNames.pButtonPure
@@ -194,6 +196,7 @@ export class Flyout {
   private updateShadow = throttle(100, () => {
     if (this.dialog.scrollHeight > this.dialog.clientHeight) {
       this.updateHeaderShadow();
+
       if (this.hasFooter) {
         this.updateFooterShadow();
       }
@@ -202,11 +205,13 @@ export class Flyout {
 
   private updateHeaderShadow = (): void => {
     const shouldApplyShadow = this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD;
+
     this.header.classList.toggle(headerShadowClass, shouldApplyShadow);
   };
 
   private updateFooterShadow = (): void => {
     const shouldApplyShadow = this.subFooter.offsetTop > this.dialog.clientHeight + this.dialog.scrollTop;
+
     this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
   };
 
@@ -220,6 +225,7 @@ export class Flyout {
   private onCancelDialog(e: Event): void {
     // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
     e.preventDefault();
+
     this.dismissDialog();
   }
 
