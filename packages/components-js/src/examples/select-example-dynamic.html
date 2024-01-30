@@ -1,0 +1,47 @@
+<label>Value: <input name="input-value" type="text" placeholder="e.g. 1,2" /></label>
+<button id="btn-input-value" type="button">Set Value</button>
+<button id="btn-reset" type="button">Reset value</button>
+
+<p-select name="options" label="Some Label">
+  <p-select-option value="1">Option 1</p-select-option>
+  <p-select-option value="2">Option 2</p-select-option>
+  <p-select-option value="3">Option 3</p-select-option>
+</p-select>
+
+<button id="btn-add" type="button">Add option</button>
+<button id="btn-remove" type="button">Remove last option</button>
+
+<script>
+  const input = document.querySelector('input');
+  const select = document.querySelector('p-select');
+
+  select.addEventListener('update', () => {
+    input.value = select.value;
+  });
+
+  document.querySelector('#btn-input-value').addEventListener('click', () => {
+    select.value = input.value;
+  });
+
+  document.querySelector('#btn-reset').addEventListener('click', () => {
+    select.value = undefined;
+    console.log(select.value);
+  });
+
+  document.querySelector('#btn-add').addEventListener('click', () => {
+    addOption();
+  });
+
+  document.querySelector('#btn-remove').addEventListener('click', () => {
+    if (select.children.length > 0) {
+      select.lastChild.remove();
+    }
+  });
+
+  function addOption() {
+    const child = document.createElement('p-select-option');
+    child.innerText = `Option ${select.children.length + 1}`;
+    child.setAttribute('value', `${select.children.length + 1}`);
+    select.append(child);
+  }
+</script>

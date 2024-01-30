@@ -1,0 +1,24 @@
+<p-select name="options" label="Some Label">
+  <p-select-option value="a">Option A</p-select-option>
+  <p-select-option value="b">Option B</p-select-option>
+  <p-select-option value="c">Option C</p-select-option>
+  <p-select-option value="d">Option D</p-select-option>
+  <p-select-option value="e">Option E</p-select-option>
+  <p-select-option value="f">Option F</p-select-option>
+</p-select>
+
+<p>Selected value: none</p>
+
+<script>
+  const debugElement = document.querySelector('p');
+  const select = document.querySelector('p-select');
+
+  select.addEventListener('update', (e) => {
+    e.target.value = e.detail.value;
+    setDebugText(e.detail.value);
+  });
+
+  function setDebugText(value) {
+    debugElement.innerText = `Selected value: ${value || 'none'}`;
+  }
+</script>
