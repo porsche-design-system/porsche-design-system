@@ -14,23 +14,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- All components (expect some form elements) have improved focus styling based on `:focus-visible`
+  ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
+- Several components are using CSS property `inset|inset-inline|inset-block` instead of `top|bottom|left|right` for
+  better RTL (right-to-left) support ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
+
+#### Fixed
+
+- All components are supporting focus style in High Contrast Mode correctly
+  ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
+
+### [3.11.0] - 2024-01-30
+
+### [3.11.0-rc.0] - 2024-01-30
+
 #### Fixed
 
 - `Carousel`: Carousel does not work with single pointer event on smaller touch devices
   ([#3003](https://github.com/porsche-design-system/porsche-design-system/pull/3003))
 - `Carousel`: `Each child in a list should have a unique "key" prop` warning in Next.js SSR context
   ([#3001](https://github.com/porsche-design-system/porsche-design-system/pull/3001))
-- All components are supporting focus style in High Contrast Mode correctly
-  ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
 
 #### Changed
 
+- Scroll-lock used in `Flyout`, `Flyout Navigation` and `Modal` is based on `body { overflow: hidden; }` for all devices
+  ([#3013](https://github.com/porsche-design-system/porsche-design-system/pull/3013))
 - `Toast`: Alignment reflects RTL (right-to-left) mode
   ([#3010](https://github.com/porsche-design-system/porsche-design-system/pull/3010))
 - `Carousel`: Pagination can be used for navigation & pagination has more spacing on touch devices
   ([#3003](https://github.com/porsche-design-system/porsche-design-system/pull/3003))
-- All components have improved focus styling
-  ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
 
 ### [3.10.0] - 2024-01-17
 
