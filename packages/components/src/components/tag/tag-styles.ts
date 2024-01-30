@@ -24,7 +24,6 @@ export const getColors = (
   theme: Theme
 ): {
   primaryColor: string;
-  focusColor: string;
   backgroundColor: string;
   backgroundHoverColor: string;
 } => {
@@ -32,7 +31,6 @@ export const getColors = (
 
   return {
     primaryColor,
-    focusColor: themedColors.focusColor,
     backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
     backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors, theme),
   };

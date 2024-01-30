@@ -5,6 +5,7 @@ import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, 
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getFocusJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -13,7 +14,6 @@ import {
 } from './';
 import {
   borderRadiusSmall,
-  borderWidthBase,
   fontLineHeight,
   frostedGlassStyle,
   spacingStaticXSmall,
@@ -55,12 +55,11 @@ export const getLinkButtonPureStyles = (
   hasSlottedAnchor: boolean,
   theme: Theme
 ): Styles => {
-  const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, disabledColor, hoverColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     disabledColor: disabledColorDark,
     hoverColor: hoverColorDark,
-    focusColor: focusColorDark,
   } = getThemedColors('dark');
   const hasIcon = hasVisibleIcon(icon, iconSource);
 
@@ -130,17 +129,7 @@ export const getLinkButtonPureStyles = (
             }),
           },
         })),
-      ...(!hasSlottedAnchor && {
-        '&:focus::before': {
-          border: `${borderWidthBase} solid ${focusColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
-          }),
-        },
-        '&:not(:focus-visible)::before': {
-          border: 0,
-        },
-      }),
+      ...(!hasSlottedAnchor && getFocusJssStyle(theme, { pseudo: true, offset: '-2px' })),
     },
     label: {
       position: 'relative', // needed for hover state when icon="none" is set
