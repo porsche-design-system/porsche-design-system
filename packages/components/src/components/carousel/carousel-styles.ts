@@ -178,7 +178,7 @@ export const getComponentCss = (
     'skip-link': {
       opacity: 0,
       pointerEvents: 'none',
-      '&:focus': {
+      '&:focus-visible': {
         opacity: 1,
         pointerEvents: 'all',
       },

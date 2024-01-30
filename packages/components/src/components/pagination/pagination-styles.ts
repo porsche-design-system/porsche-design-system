@@ -4,6 +4,7 @@ import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getFocusJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -11,7 +12,6 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import {
-  borderRadiusMedium,
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
@@ -38,12 +38,11 @@ const disabledCursorStyle: JssStyle = {
 const hiddenStyle: JssStyle = { display: 'none' };
 
 export const getComponentCss = (activePage: number, pageTotal: number, showLastPage: boolean, theme: Theme): string => {
-  const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, disabledColor, hoverColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     disabledColor: disabledColorDark,
     hoverColor: hoverColorDark,
-    focusColor: focusColorDark,
   } = getThemedColors('dark');
 
   return getCss({
@@ -139,16 +138,6 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
             }),
           },
         }),
-        '&:not(.ellipsis):focus:focus-visible::before': {
-          content: '""',
-          position: 'absolute',
-          inset: '-4px',
-          border: `${borderWidthBase} solid ${focusColor}`,
-          borderRadius: borderRadiusMedium,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
-          }),
-        },
         '&[aria-current]': {
           ...disabledCursorStyle,
           color: primaryColor,
@@ -157,9 +146,6 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
             color: primaryColorDark,
             borderColor: primaryColorDark,
           }),
-          '&:not(.ellipsis):focus::before': {
-            inset: '-6px',
-          }, // adjust for missing 2px border
         },
         '&[aria-disabled]': {
           ...disabledCursorStyle,
@@ -168,6 +154,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
             color: disabledColorDark,
           }),
         },
+        ...getFocusJssStyle(theme, { prefix: ':not(.ellipsis)' }),
       },
     },
     ellipsis: {

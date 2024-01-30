@@ -72,7 +72,7 @@ export const getComponentCss = (
                 transition: getTransition('background-color'),
               },
               ...hoverMediaQuery({
-                '&:hover, &:focus': {
+                '&:hover, &:focus-visible': {
                   '& .icon': {
                     opacity: 1,
                   },
