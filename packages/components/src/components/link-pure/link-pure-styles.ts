@@ -1,13 +1,8 @@
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
-import {
-  addImportantToEachRule,
-  getThemedColors,
-  getResetInitialStylesForSlottedAnchor,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
+import { addImportantToEachRule, getFocusJssStyle, getResetInitialStylesForSlottedAnchor } from '../../styles';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
-import { borderRadiusSmall, borderWidthBase } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   icon: LinkButtonIconName,
@@ -21,9 +16,6 @@ export const getComponentCss = (
   hasSlottedAnchor: boolean,
   theme: Theme
 ): string => {
-  const { focusColor } = getThemedColors(theme);
-  const { focusColor: focusColorDark } = getThemedColors('dark');
-
   return getCss(
     mergeDeep(
       getLinkButtonPureStyles(
@@ -58,23 +50,13 @@ export const getComponentCss = (
             '&(a)::before': {
               content: '""',
               position: 'fixed',
-              top: offsetVertical,
-              bottom: offsetVertical,
+              insetBlock: offsetVertical,
               borderRadius: borderRadiusSmall,
               ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-                right: hideLabelValue ? offsetVertical : offsetHorizontal,
-                left: hideLabelValue ? offsetVertical : offsetHorizontal,
+                insetInline: hideLabelValue ? offsetVertical : offsetHorizontal,
               })),
             },
-            '&(a:focus)::before': {
-              border: `${borderWidthBase} solid ${focusColor}`,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: focusColorDark,
-              }),
-            },
-            '&(a:focus:not(:focus-visible))::before': {
-              border: 0,
-            },
+            ...getFocusJssStyle(theme, { prefix: 'a', slotted: true, pseudo: true, offset: '-2px' }),
           },
         }),
       }

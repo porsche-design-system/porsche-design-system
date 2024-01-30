@@ -170,6 +170,7 @@ const getInputStyles = (
       },
     }),
     ...(!isDisabled && {
+      // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
       '&:focus': {
         borderColor: primaryColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {

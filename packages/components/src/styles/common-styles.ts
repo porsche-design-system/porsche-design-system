@@ -85,6 +85,7 @@ export const getFocusJssStyle = (theme: Theme, opts?: Options): JssStyle => {
   const { focusColor: focusColorDark } = getThemedColors('dark');
 
   return {
+    // TODO: re-think if outline reset is a good thing to abstract into a shared function.
     outline: 0, // prevents :focus style
     [`&${slotted ? '(' : ''}${prefix}${prefix}${suffix}::-moz-focus-inner${slotted ? ')' : ''}`]: {
       border: 0,

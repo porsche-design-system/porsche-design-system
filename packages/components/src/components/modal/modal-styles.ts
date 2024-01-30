@@ -160,6 +160,8 @@ export const getComponentCss = (
         ...(!hasFooter && { paddingBottom: contentPadding }),
         background: backgroundColor,
         outline: isHighContrastMode ? '1px solid transparent' : 0,
+        // TODO: getFocusJssStyle() can't be re-used atm, but as soon as component is refactored to `<dialog />` then no
+        //  focus should be necessary at all because focus is auto forwarded to dismiss button.
         // ::after to be above sticky footer without z-index games
         '&:focus::after': {
           content: '""',

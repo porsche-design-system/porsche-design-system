@@ -71,6 +71,7 @@ export const getComponentCss = (
         visibility: 'inherit', // ua-style reset
         background: 'none', // ua-style reset
         overflow: 'hidden', // ua-style reset, dialog shall never become scrollable, it's handled by custom scroll areas
+        outline: 0, // ua-style reset
         ...(isPrimaryScrollerVisible
           ? {
               transform: 'translate3d(0, 0, 0)',
@@ -89,9 +90,6 @@ export const getComponentCss = (
           ...(!isPrimaryScrollerVisible && {
             transform: 'translate3d(100%, 0, 0)', // use correct transitions in rtl mode
           }),
-        },
-        '&:focus-visible': {
-          outline: 'none', // ua-style reset
         },
         '&::backdrop': {
           // to improve browser backwards compatibility we visually style the backdrop on the :host,

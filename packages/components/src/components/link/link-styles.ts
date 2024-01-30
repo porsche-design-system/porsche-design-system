@@ -58,7 +58,7 @@ export const getComponentCss = (
               inset: '-2px',
               borderRadius: borderRadiusSmall,
             },
-            ...getFocusJssStyle(theme, { slotted: true, pseudo: true }),
+            ...getFocusJssStyle(theme, { prefix: 'a', slotted: true, pseudo: true }),
           },
         }),
       }

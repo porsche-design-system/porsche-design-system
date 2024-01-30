@@ -68,6 +68,7 @@ export const getButtonStyles = (
         ...prefersColorSchemeDarkMediaQuery(theme, {
           borderColor: isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark,
         }),
+        // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
         '&:focus, &:focus ~ ul': {
           borderColor: primaryColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
