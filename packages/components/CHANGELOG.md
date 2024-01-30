@@ -25,8 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- Scroll-lock used in `Flyout`, `Flyout-Navigation` and `Modal` is changed back to the old implementation, since the
-  advanced scroll-lock caused too many problems
+- Scroll-lock used in `Flyout`, `Flyout Navigation` and `Modal` is based on `body { overflow: hidden; }` for all devices
   ([#3013](https://github.com/porsche-design-system/porsche-design-system/pull/3013))
 - `Toast`: Alignment reflects RTL (right-to-left) mode
   ([#3010](https://github.com/porsche-design-system/porsche-design-system/pull/3010))
