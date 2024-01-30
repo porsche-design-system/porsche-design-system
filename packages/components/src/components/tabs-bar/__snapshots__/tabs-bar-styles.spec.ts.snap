@@ -12,14 +12,14 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ::slotted {
   outline: 0 !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 1px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible) {
@@ -125,14 +125,14 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 ::slotted {
   outline: 0 !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 1px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible) {
@@ -238,14 +238,14 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted {
   outline: 0 !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 1px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible) {
@@ -351,14 +351,14 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted {
   outline: 0 !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 1px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible) {
@@ -464,14 +464,14 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 ::slotted {
   outline: 0 !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 1px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible) {
@@ -577,14 +577,14 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 ::slotted {
   outline: 0 !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 1px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible) {

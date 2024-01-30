@@ -263,7 +263,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   inset: -2px !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -349,7 +349,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   inset: -2px !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -435,7 +435,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   inset: -2px !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -522,7 +522,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   inset: -2px !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -609,7 +609,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   inset: -2px !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -696,7 +696,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   inset: -2px !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -783,7 +783,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   inset: -2px !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {

@@ -79,14 +79,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -149,14 +149,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -219,14 +219,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -298,14 +298,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -377,14 +377,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -456,14 +456,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -535,14 +535,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -614,14 +614,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -693,14 +693,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -772,14 +772,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -851,14 +851,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -930,14 +930,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -1009,14 +1009,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -1088,14 +1088,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -1167,14 +1167,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {
@@ -1246,14 +1246,14 @@ span {
   inset: 0 !important;
   border-radius: 4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-::slotted(buttonbutton::-moz-focus-inner) {
+::slotted(button::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(button:focus-visible)::before {

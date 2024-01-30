@@ -506,7 +506,7 @@ slot[name="header"] {
   outline: 0 !important;
   text-indent: -999999px !important;
 }
-::slotted(a[slot='anchor']a[slot='anchor']::-moz-focus-inner) {
+::slotted(a[slot='anchor']::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a[slot='anchor']:focus-visible) {

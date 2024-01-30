@@ -186,7 +186,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -289,7 +289,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #949598 !important;
   background-color: #949598 !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -562,7 +562,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -664,7 +664,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #949598 !important;
   background-color: #949598 !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -934,7 +934,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -1037,7 +1037,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #949598 !important;
   background-color: #949598 !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -1311,7 +1311,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #FC4040 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -1420,7 +1420,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #CC1922 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -1711,7 +1711,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #FBFCFF !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -1819,7 +1819,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #010205 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -2107,7 +2107,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #09D087 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -2216,7 +2216,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #197E10 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {

@@ -44,7 +44,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(a[aria-current]) {
   background: rgba(148, 149, 152, .18) !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible) {
@@ -215,7 +215,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(a[aria-current]) {
   background: rgba(148, 149, 152, .18) !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible) {
@@ -350,7 +350,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(a[aria-current]) {
   background: rgba(148, 149, 152, .18) !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible) {
@@ -485,7 +485,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(a[aria-current]) {
   background: rgba(148, 149, 152, .18) !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible) {
@@ -654,7 +654,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(a[aria-current]) {
   background: rgba(148, 149, 152, .18) !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible) {
@@ -787,7 +787,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(a[aria-current]) {
   background: rgba(148, 149, 152, .18) !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible) {

@@ -537,7 +537,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px !important;
   inset-inline: -4px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -1011,7 +1011,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px !important;
   inset-inline: -2px !important;
 }
-::slotted(aa::-moz-focus-inner) {
+::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(a:focus-visible)::before {

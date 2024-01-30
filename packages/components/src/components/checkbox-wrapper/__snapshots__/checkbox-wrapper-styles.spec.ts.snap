@@ -190,7 +190,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #FC4040 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -304,7 +304,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #CC1922 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -594,7 +594,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #FBFCFF !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -707,7 +707,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #010205 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -994,7 +994,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #09D087 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -1108,7 +1108,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #197E10 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -1398,7 +1398,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #FC4040 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -1510,7 +1510,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #CC1922 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -1794,7 +1794,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #FBFCFF !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -1905,7 +1905,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #010205 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -2015,7 +2015,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -2115,7 +2115,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #949598 !important;
   background-color: #949598 !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -2566,7 +2566,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #09D087 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
@@ -2678,7 +2678,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #197E10 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(inputinput::-moz-focus-inner) {
+::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
 ::slotted(input:focus-visible) {
