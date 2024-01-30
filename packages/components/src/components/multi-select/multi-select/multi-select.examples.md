@@ -30,7 +30,7 @@ the component and the form, enabling the selected values to be included in the f
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
   <form @submit.prevent="onSubmit">
-    <p-multi-select name="options" label="Some Label" :theme="theme">
+    <p-multi-select name="options" label="Some Label">
       <p-multi-select-option value="a">Option A</p-multi-select-option>
       <p-multi-select-option value="b">Option B</p-multi-select-option>
       <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -46,7 +46,7 @@ the component and the form, enabling the selected values to be included in the f
 
 ## Controlled
 
-In the controlled approach, the p-multi-select component is externally controlled. Selected options trigger a custom
+In the controlled approach, the `p-multi-select` component is externally controlled. Selected options trigger a custom
 update event, allowing you to use the updated value. Internally, the value will be updated automatically but can be
 overwritten by passing in a new value.
 
