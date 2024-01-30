@@ -154,7 +154,8 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
             color: disabledColorDark,
           }),
         },
-        ...getFocusJssStyle(theme, { prefix: ':not(.ellipsis)' }),
+        // TODO :not(.ellipsis) is only needed for VRT states tests to work properly
+        '&:not(.ellipsis)': getFocusJssStyle(theme),
       },
     },
     ellipsis: {

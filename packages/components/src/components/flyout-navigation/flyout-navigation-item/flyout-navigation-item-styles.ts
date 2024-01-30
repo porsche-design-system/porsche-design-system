@@ -126,7 +126,7 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
             }),
           },
         }),
-        ...getFocusJssStyle(theme, { prefix: 'a', slotted: true, offset: '-2px' }),
+        ...getFocusJssStyle(theme, { slotted: 'a', offset: '-2px' }),
       }),
     },
     button: {

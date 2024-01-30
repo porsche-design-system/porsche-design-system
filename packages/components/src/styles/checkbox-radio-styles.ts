@@ -110,7 +110,7 @@ export const getSlottedCheckboxRadioButtonStyles = (
             transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
           }),
         })),
-      ...(!isDisabled && getFocusJssStyle(theme, { slotted: true, prefix: 'input' })),
+      ...(!isDisabled && getFocusJssStyle(theme, { slotted: 'input' })),
     },
   };
 };

@@ -56,7 +56,7 @@ export const getComponentCss = (
                 insetInline: hideLabelValue ? offsetVertical : offsetHorizontal,
               })),
             },
-            ...getFocusJssStyle(theme, { prefix: 'a', slotted: true, pseudo: true, offset: '-2px' }),
+            ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true, offset: '-2px' }),
           },
         }),
       }

@@ -71,8 +71,8 @@ export const getComponentCss = (
         '::slotted': {
           // TODO: produces duplicated css code in SSR context, we should try to make use of multiple selector like
           //  `::slotted(:is(a,button))`.
-          ...getFocusJssStyle(theme, { prefix: 'a', slotted: true, offset: '1px' }),
-          ...getFocusJssStyle(theme, { prefix: 'button', slotted: true, offset: '1px' }),
+          ...getFocusJssStyle(theme, { slotted: 'a', offset: '1px' }),
+          ...getFocusJssStyle(theme, { slotted: 'button', offset: '1px' }),
         },
         // would be nice to use shared selector like '::slotted([role])'
         // but this doesn't work reliably when rendering in browser

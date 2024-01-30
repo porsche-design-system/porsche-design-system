@@ -109,8 +109,8 @@ export const getComponentCss = (
           inset: 0,
           borderRadius: '4px',
         },
-        ...getFocusJssStyle(theme, { prefix: 'a', slotted: true, pseudo: true }),
-        ...getFocusJssStyle(theme, { prefix: 'button', slotted: true, pseudo: true }),
+        ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true }),
+        ...getFocusJssStyle(theme, { slotted: 'button', pseudo: true }),
         '&(br)': {
           display: 'none',
         },

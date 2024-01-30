@@ -76,7 +76,7 @@ export const getComponentCss = (
               ...anchorJssStyle,
               textIndent: '-999999px', // hide anchor label visually but still usable for a11y (only works in RTL-mode because of `overflow: hidden;` parent)
             },
-            ...getFocusJssStyle(theme, { prefix: slottedAnchorSelector, slotted: true }),
+            ...getFocusJssStyle(theme, { slotted: slottedAnchorSelector }),
           }),
           [`&([slot="${headerSlot}"])`]: {
             display: 'flex',

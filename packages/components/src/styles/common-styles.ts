@@ -74,30 +74,31 @@ export const doGetThemedColors = (theme: Theme = 'light'): ThemedColors => {
 
 type Options = {
   offset?: string | 0;
-  slotted?: boolean;
+  slotted?: true | string;
   pseudo?: boolean;
-  prefix?: string;
   suffix?: string;
 };
 export const getFocusJssStyle = (theme: Theme, opts?: Options): JssStyle => {
-  const { offset = '2px', slotted = false, pseudo = false, prefix = '', suffix = '' } = opts || {};
+  const { offset = '2px', slotted, pseudo = false, suffix = '' } = opts || {};
   const { focusColor } = getThemedColors(theme);
   const { focusColor: focusColorDark } = getThemedColors('dark');
+  const slottedSelector = slotted && slotted !== true ? slotted : '';
 
   return {
-    [`&${slotted ? '(' : ''}${prefix}::-moz-focus-inner${slotted ? ')' : ''}`]: {
+    [`&${slotted ? '(' : ''}${slottedSelector}::-moz-focus-inner${slotted ? ')' : ''}`]: {
       border: 0, // reset ua-style (for FF)
     },
-    [`&${slotted ? '(' : ''}${prefix}:focus${slotted ? ')' : ''}`]: {
+    [`&${slotted ? '(' : ''}${slottedSelector}:focus${slotted ? ')' : ''}`]: {
       outline: 0, // reset ua-style (for older browsers)
     },
-    [`&${slotted ? '(' : ''}${prefix}:focus-visible${suffix}${slotted ? ')' : ''}${pseudo ? '::before' : ''}`]: {
-      outline: `${borderWidthBase} solid ${focusColor}`,
-      outlineOffset: offset,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        outlineColor: focusColorDark,
-      }),
-    },
+    [`&${slotted ? '(' : ''}${slottedSelector}:focus-visible${suffix}${slotted ? ')' : ''}${pseudo ? '::before' : ''}`]:
+      {
+        outline: `${borderWidthBase} solid ${focusColor}`,
+        outlineOffset: offset,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          outlineColor: focusColorDark,
+        }),
+      },
   };
 };
 
