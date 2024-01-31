@@ -3,6 +3,7 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   getBackdropJssStyle,
+  getFocusJssStyle,
   getHiddenTextJssStyle,
   getTransition,
   type MotionDurationKey,
@@ -115,5 +116,30 @@ describe('getBackdropJssStyle()', () => {
     [false, 9999, 'dark', 'veryLong'],
   ])('should return correct JssStyle for isVisible: %s, zIndex: %s, theme: %s and duration: %s', (...args) => {
     expect(getBackdropJssStyle(...args)).toMatchSnapshot();
+  });
+});
+
+describe('getFocusJssStyle()', () => {
+  it.each<Parameters<typeof getFocusJssStyle>>([
+    ['light'],
+    ['dark'],
+    ['auto'],
+    ['light', { offset: '911px' }],
+    ['dark', { offset: '911px' }],
+    ['auto', { offset: '911px' }],
+    ['light', { slotted: true }],
+    ['dark', { slotted: true }],
+    ['auto', { slotted: true }],
+    ['light', { slotted: '.some-slotted-selector' }],
+    ['dark', { slotted: '.some-slotted-selector' }],
+    ['auto', { slotted: '.some-slotted-selector' }],
+    ['light', { slotted: true, pseudo: true }],
+    ['dark', { slotted: true, pseudo: true }],
+    ['auto', { slotted: true, pseudo: true }],
+    ['light', { slotted: '.some-slotted-selector', pseudo: true }],
+    ['dark', { slotted: '.some-slotted-selector', pseudo: true }],
+    ['auto', { slotted: '.some-slotted-selector', pseudo: true }],
+  ])('should return correct JssStyle for theme: %s and options: %o', (...args) => {
+    expect(getFocusJssStyle(...args)).toMatchSnapshot();
   });
 });

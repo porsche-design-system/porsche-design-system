@@ -75,6 +75,294 @@ exports[`getBackdropJssStyle() should return correct JssStyle for isVisible: tru
 }
 `;
 
+exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and options: %o 1`] = `
+{
+  "&::-moz-focus-inner": {
+    "border": 0,
+  },
+  "&:focus": {
+    "outline": 0,
+  },
+  "&:focus-visible": {
+    "@media (prefers-color-scheme: dark)": {
+      "outlineColor": "#1A44EA",
+    },
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and options: { offset: '911px' } 1`] = `
+{
+  "&::-moz-focus-inner": {
+    "border": 0,
+  },
+  "&:focus": {
+    "outline": 0,
+  },
+  "&:focus-visible": {
+    "@media (prefers-color-scheme: dark)": {
+      "outlineColor": "#1A44EA",
+    },
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "911px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and options: { slotted: '.some-slotted-selector' } 1`] = `
+{
+  "&(.some-slotted-selector::-moz-focus-inner)": {
+    "border": 0,
+  },
+  "&(.some-slotted-selector:focus)": {
+    "outline": 0,
+  },
+  "&(.some-slotted-selector:focus-visible)": {
+    "@media (prefers-color-scheme: dark)": {
+      "outlineColor": "#1A44EA",
+    },
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and options: { slotted: '.some-slotted-selector', pseudo: true } 1`] = `
+{
+  "&(.some-slotted-selector::-moz-focus-inner)": {
+    "border": 0,
+  },
+  "&(.some-slotted-selector:focus)": {
+    "outline": 0,
+  },
+  "&(.some-slotted-selector:focus-visible)::before": {
+    "@media (prefers-color-scheme: dark)": {
+      "outlineColor": "#1A44EA",
+    },
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and options: { slotted: true } 1`] = `
+{
+  "&(::-moz-focus-inner)": {
+    "border": 0,
+  },
+  "&(:focus)": {
+    "outline": 0,
+  },
+  "&(:focus-visible)": {
+    "@media (prefers-color-scheme: dark)": {
+      "outlineColor": "#1A44EA",
+    },
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and options: { slotted: true, pseudo: true } 1`] = `
+{
+  "&(::-moz-focus-inner)": {
+    "border": 0,
+  },
+  "&(:focus)": {
+    "outline": 0,
+  },
+  "&(:focus-visible)::before": {
+    "@media (prefers-color-scheme: dark)": {
+      "outlineColor": "#1A44EA",
+    },
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and options: %o 1`] = `
+{
+  "&::-moz-focus-inner": {
+    "border": 0,
+  },
+  "&:focus": {
+    "outline": 0,
+  },
+  "&:focus-visible": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and options: { offset: '911px' } 1`] = `
+{
+  "&::-moz-focus-inner": {
+    "border": 0,
+  },
+  "&:focus": {
+    "outline": 0,
+  },
+  "&:focus-visible": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "911px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and options: { slotted: '.some-slotted-selector' } 1`] = `
+{
+  "&(.some-slotted-selector::-moz-focus-inner)": {
+    "border": 0,
+  },
+  "&(.some-slotted-selector:focus)": {
+    "outline": 0,
+  },
+  "&(.some-slotted-selector:focus-visible)": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and options: { slotted: '.some-slotted-selector', pseudo: true } 1`] = `
+{
+  "&(.some-slotted-selector::-moz-focus-inner)": {
+    "border": 0,
+  },
+  "&(.some-slotted-selector:focus)": {
+    "outline": 0,
+  },
+  "&(.some-slotted-selector:focus-visible)::before": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and options: { slotted: true } 1`] = `
+{
+  "&(::-moz-focus-inner)": {
+    "border": 0,
+  },
+  "&(:focus)": {
+    "outline": 0,
+  },
+  "&(:focus-visible)": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and options: { slotted: true, pseudo: true } 1`] = `
+{
+  "&(::-moz-focus-inner)": {
+    "border": 0,
+  },
+  "&(:focus)": {
+    "outline": 0,
+  },
+  "&(:focus-visible)::before": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: light and options: %o 1`] = `
+{
+  "&::-moz-focus-inner": {
+    "border": 0,
+  },
+  "&:focus": {
+    "outline": 0,
+  },
+  "&:focus-visible": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: light and options: { offset: '911px' } 1`] = `
+{
+  "&::-moz-focus-inner": {
+    "border": 0,
+  },
+  "&:focus": {
+    "outline": 0,
+  },
+  "&:focus-visible": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "911px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: light and options: { slotted: '.some-slotted-selector' } 1`] = `
+{
+  "&(.some-slotted-selector::-moz-focus-inner)": {
+    "border": 0,
+  },
+  "&(.some-slotted-selector:focus)": {
+    "outline": 0,
+  },
+  "&(.some-slotted-selector:focus-visible)": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: light and options: { slotted: '.some-slotted-selector', pseudo: true } 1`] = `
+{
+  "&(.some-slotted-selector::-moz-focus-inner)": {
+    "border": 0,
+  },
+  "&(.some-slotted-selector:focus)": {
+    "outline": 0,
+  },
+  "&(.some-slotted-selector:focus-visible)::before": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: light and options: { slotted: true } 1`] = `
+{
+  "&(::-moz-focus-inner)": {
+    "border": 0,
+  },
+  "&(:focus)": {
+    "outline": 0,
+  },
+  "&(:focus-visible)": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
+exports[`getFocusJssStyle() should return correct JssStyle for theme: light and options: { slotted: true, pseudo: true } 1`] = `
+{
+  "&(::-moz-focus-inner)": {
+    "border": 0,
+  },
+  "&(:focus)": {
+    "outline": 0,
+  },
+  "&(:focus-visible)::before": {
+    "outline": "2px solid #1A44EA",
+    "outlineOffset": "2px",
+  },
+}
+`;
+
 exports[`getHiddenTextStyles() should return correct JssStyle for isHidden: false and shownStyles: { width: 'fit-content' } 1`] = `
 {
   "clip": "auto",
