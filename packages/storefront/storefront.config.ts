@@ -260,6 +260,14 @@ export const config: StorefrontConfig = {
         () => import('@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'),
       ],
     },
+    Select: {
+      Examples: [() => import('@/../../components/src/components/select/select/select.examples.md')],
+      Usage: [() => import('@/../../components/src/components/select/select/select.usage.md')],
+      Props: [
+        () => import('@/../../components/src/components/select/select/select.props.md'),
+        () => import('@/../../components/src/components/select/select-option/select-option.props.md'),
+      ],
+    },
     'Select Wrapper': {
       // prettier-ignore
       Examples: [() => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.examples.md')],
