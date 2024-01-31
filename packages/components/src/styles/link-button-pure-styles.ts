@@ -131,6 +131,7 @@ export const getLinkButtonPureStyles = (
       ...(!hasSlottedAnchor && getFocusJssStyle(theme, { pseudo: true, offset: '-2px' })),
     },
     label: {
+      transition: getTransition('opacity'),
       position: 'relative', // needed for hover state when icon="none" is set
     },
     ...(hasIcon && {

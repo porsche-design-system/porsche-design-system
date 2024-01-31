@@ -21,6 +21,7 @@ import {
   spacingStaticXSmall,
 } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 const getCheckedSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<circle fill="${fill}" cx="12" cy="12" r="6"/>`);
@@ -113,5 +114,7 @@ export const getComponentCss = (
     ...getFunctionalComponentStateMessageStyles(theme, state, {
       gridColumn: '1/3',
     }),
+    // .loading
+    ...getFunctionalComponentLoadingMessageStyles(),
   });
 };

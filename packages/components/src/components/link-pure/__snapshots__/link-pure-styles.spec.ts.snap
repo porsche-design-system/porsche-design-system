@@ -1298,6 +1298,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   outline-offset: -2px;
 }
 .label {
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
 }
 @media(hover:hover) {
@@ -1358,6 +1359,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   outline-offset: -2px;
 }
 .label {
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
 }
 @media(hover:hover) {

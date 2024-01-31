@@ -102,6 +102,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @supports (width: round(down, 1px, 1px)) {
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
@@ -282,6 +292,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @supports (width: round(down, 1px, 1px)) {
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
@@ -433,6 +453,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @supports (width: round(down, 1px, 1px)) {
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
@@ -515,6 +545,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -599,6 +639,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @supports (width: round(down, 1px, 1px)) {
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
@@ -682,6 +732,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @supports (width: round(down, 1px, 1px)) {
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
@@ -764,6 +824,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @supports (width: round(down, 1px, 1px)) {
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
@@ -845,6 +915,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -929,6 +1009,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @supports (width: round(down, 1px, 1px)) {
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
@@ -1003,6 +1093,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -1080,6 +1180,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -1165,6 +1275,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -1252,6 +1372,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @supports (width: round(down, 1px, 1px)) {
   .icon {
     width: round(down, calc(6px + 2.125ex), 1px);
@@ -1314,7 +1444,18 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   outline-offset: -2px;
 }
 .label {
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .root:hover::before {
@@ -1379,7 +1520,18 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   outline-offset: -2px;
 }
 .label {
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .root:hover::before {
@@ -1444,7 +1596,18 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   outline-offset: -2px;
 }
 .label {
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:480px) {
   .root {
@@ -1539,8 +1702,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   outline-offset: -2px;
 }
 .label {
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
-  visibility: hidden;
+  opacity: 0;
 }
 .icon {
   position: absolute;
@@ -1548,5 +1712,15 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   left: calc(50% - calc(6px + 2.125ex) / 2);
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;

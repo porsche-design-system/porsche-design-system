@@ -22,6 +22,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   better RTL (right-to-left) support ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
 - `Switch`: Improve RTL (right-to-left) mode
   ([#2992](https://github.com/porsche-design-system/porsche-design-system/pull/2992))
+- `Button`, `Button Pure`, `Switch`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Pin Code`: optimized announcement of
+  loading state for assistive technologies
+  ([#3009](https://github.com/porsche-design-system/porsche-design-system/pull/3009))
 
 #### Fixed
 
