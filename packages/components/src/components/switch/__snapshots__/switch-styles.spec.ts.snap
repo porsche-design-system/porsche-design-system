@@ -4,6 +4,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 ":host {
   display: inline-flex;
   outline: 0 !important;
+  gap: 8px !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -57,7 +58,6 @@ label {
   clip: auto;
   white-space: normal;
   padding-top: 2px;
-  padding-inline-start: 8px;
 }
 @media(hover:hover) {
   button:hover {
@@ -99,6 +99,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 ":host {
   display: inline-flex;
   outline: 0 !important;
+  gap: 8px !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -152,7 +153,6 @@ label {
   clip: auto;
   white-space: normal;
   padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .toggle {
   display: flex;
@@ -184,6 +184,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 ":host {
   display: flex;
   outline: 0 !important;
+  gap: 8px !important;
   color-scheme: light dark !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -236,7 +237,6 @@ label {
   clip: auto;
   white-space: normal;
   padding-top: 2px;
-  padding-inline-start: 8px;
 }
 @media(hover:hover) {
   button:hover {
@@ -278,6 +278,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 ":host {
   display: flex;
   outline: 0 !important;
+  gap: 8px !important;
   color-scheme: light dark !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -330,7 +331,6 @@ label {
   clip: auto;
   white-space: normal;
   padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .toggle {
   display: flex;
@@ -366,6 +366,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 ":host {
   display: flex;
   outline: 0 !important;
+  gap: 8px !important;
   color-scheme: light dark !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -418,7 +419,6 @@ label {
   clip: auto;
   white-space: normal;
   padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .toggle {
   display: flex;
@@ -454,6 +454,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 ":host {
   display: flex;
   outline: 0 !important;
+  gap: 8px !important;
   color-scheme: light dark !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -506,7 +507,6 @@ label {
   clip: auto;
   white-space: normal;
   padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .toggle {
   display: flex;
@@ -542,6 +542,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 ":host {
   display: flex;
   outline: 0 !important;
+  gap: 8px !important;
   color-scheme: light dark !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -594,7 +595,6 @@ label {
   clip: auto;
   white-space: normal;
   padding-top: 2px;
-  padding-inline-start: 8px;
 }
 @media(hover:hover) {
   button:hover {
@@ -636,6 +636,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
 ":host {
   display: inline-flex;
   outline: 0 !important;
+  gap: 8px !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -689,7 +690,6 @@ label {
   clip: auto;
   white-space: normal;
   padding-top: 2px;
-  padding-inline-start: 8px;
 }
 @media(hover:hover) {
   button:hover {
@@ -731,6 +731,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 ":host {
   display: inline-flex;
   outline: 0 !important;
+  gap: 8px !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -784,7 +785,6 @@ label {
   clip: auto;
   white-space: normal;
   padding-top: 2px;
-  padding-inline-start: 8px;
 }
 @media(hover:hover) {
   button:hover {
@@ -826,6 +826,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
 ":host {
   display: inline-flex;
   outline: 0 !important;
+  gap: 8px !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -919,6 +920,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 ":host {
   display: inline-flex;
   outline: 0 !important;
+  gap: 8px !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -988,7 +990,6 @@ label {
     clip: auto;
     white-space: normal;
     padding-top: 2px;
-    padding-inline-start: 8px;
   }
 }
 
@@ -1027,7 +1028,6 @@ label {
     clip: auto;
     white-space: normal;
     padding-top: 2px;
-    padding-inline-start: 8px;
   }
 }
 
@@ -1066,7 +1066,6 @@ label {
     clip: auto;
     white-space: normal;
     padding-top: 2px;
-    padding-inline-start: 8px;
   }
 }
 
