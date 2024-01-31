@@ -30,7 +30,7 @@ component and the form, enabling the selected value to be included in the form's
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
   <form @submit.prevent="onSubmit">
-    <p-select name="options" label="Some Label">
+    <p-select name="options" label="Some Label" value="a">
       <p-select-option value="a">Option A</p-select-option>
       <p-select-option value="b">Option B</p-select-option>
       <p-select-option value="c">Option C</p-select-option>
@@ -63,8 +63,6 @@ overwritten by passing in a new value.
 <p-text :theme="theme">{{ selectedValueControlled }}</p-text>
 </Playground>
 
-## Required / Optional
-
 ## Set Value
 
 The `p-select` component behaves like regular form elements. It updates its value automatically based on user choices,
@@ -90,7 +88,7 @@ option value.
 import Vue from 'vue';
 import { ref, onMounted } from 'vue';
 import Component from 'vue-class-component'; 
-import {getMultiSelectCodeSamples} from "shared/src"; 
+import {getSelectCodeSamples} from "shared/src"; 
 import type { Theme } from '@/models';
 
 @Component
@@ -110,12 +108,13 @@ export default class Code extends Vue {
   }
 
 
-  dynamicExample = getSelectCodeSamples('example-dynamic');
-  controlledExample = getSelectCodeSamples('example-controlled');
   formExample = getSelectCodeSamples('default');
+  requiredExample = getSelectCodeSamples('example-required');
+  dynamicExample = getSelectCodeSamples('example-dynamic');
+  controlledExample = getSelectCodeSamples('example-controlled'); 
 
   basic() {
-    return `<p-select name="name" label="Some Label" description="Some description" theme="${this.theme}" required>
+    return `<p-select name="name" label="Some Label" description="Some description" required>
   <p-select-option value="a">Option A</p-select-option>
   <p-select-option value="b">Option B</p-select-option>
   <p-select-option value="c">Option C</p-select-option>
