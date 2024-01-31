@@ -46,8 +46,8 @@ export const getComponentCss = (
       },
       dialog: {
         position: 'fixed',
-        'inset-inline': 'auto',
-        [isPositionStart ? 'left' : 'right']: 0,
+        'inset-inline': isPositionStart ? '0 0' : 'auto 0',
+        'inset-block': '0 0',
         display: 'flex', // ua-style reset
         height: '100vh', // ua-style reset
         maxHeight: '100vh', // ua-style reset
@@ -62,7 +62,7 @@ export const getComponentCss = (
           overflowY: 'auto',
           overscrollBehaviorY: 'none',
         }),
-        width: 'var(--p-flyout-width, auto)',
+        width: 'var(--p-flyout-width, fit-content)',
         minWidth: '320px',
         maxWidth: 'var(--p-flyout-max-width, 1180px)',
         color: primaryColor, // enables color inheritance for slotted content
@@ -125,6 +125,7 @@ export const getComponentCss = (
       padding: contentPadding,
       position: 'relative',
       zIndex: 0,
+      'flex-grow': 1, // stretch content to fill remaining space, so backdrop is not clicked
       backgroundColor, // to ensure scrollbar coloring is optimal for light theme
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: backgroundColorDark, // to ensure scrollbar coloring is optimal for dark theme
