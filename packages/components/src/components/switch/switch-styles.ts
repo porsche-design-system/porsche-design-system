@@ -95,6 +95,7 @@ export const getComponentCss = (
         })),
         ...addImportantToEachRule({
           outline: 0, // custom element is able to delegate the focus
+          gap: spacingStaticSmall,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
@@ -160,7 +161,6 @@ export const getComponentCss = (
           buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
             getHiddenTextJssStyle(isHidden, {
               paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
-              paddingInlineStart: spacingStaticSmall, // asymmetric padding used instead of gap to prevent not clickable area between label and button
             })
           )
         ),
