@@ -90,114 +90,103 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
-          display: stretchValue ? 'block' : 'inline-block',
+          display: stretchValue ? 'flex' : 'inline-flex',
         })),
         ...addImportantToEachRule({
           outline: 0, // custom element is able to delegate the focus
           ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
+            justifyContent: stretchValue ? 'space-between' : 'flex-start',
             width: stretchValue ? '100%' : 'auto', // prevents adjusting its size when used as flex or grid child
             ...(!stretchValue && { verticalAlign: 'top' }),
           })),
         }),
       },
-    },
-    root: {
-      display: 'flex',
-      alignItems: 'flex-start',
-      gap: spacingStaticSmall,
-      width: '100%',
-      padding: 0,
-      margin: 0, // Removes default button margin on safari 15
-      border: 0,
-      textAlign: 'start',
-      background: 'transparent',
-      WebkitAppearance: 'none', // iOS safari
-      appearance: 'none',
-      cursor: isDisabledOrLoading(disabled, loading) ? 'auto' : 'pointer',
-      ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
-        justifyContent: stretchValue ? 'space-between' : 'flex-start',
-      })),
-      ...(!isDisabledOrLoading(disabled, loading) &&
-        hoverMediaQuery({
-          '&:hover .switch': {
-            borderColor: buttonBorderColorHover,
-            backgroundColor: buttonBackgroundColorHover,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: buttonBorderColorHoverDark,
-              backgroundColor: buttonBackgroundColorHoverDark,
-            }),
-            '& .toggle': {
-              backgroundColor: toggleBackgroundColorHover,
+      button: {
+        display: 'flex',
+        alignItems: 'center',
+        flexShrink: 0,
+        width: '48px',
+        height: '28px',
+        boxSizing: 'border-box',
+        border: `${borderWidthBase} solid ${buttonBorderColor}`,
+        borderRadius: '14px',
+        backgroundColor: buttonBackgroundColor,
+        cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
+        transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: buttonBorderColorDark,
+          backgroundColor: buttonBackgroundColorDark,
+        }),
+        margin: 0, // Removes default button margin on safari 15
+        padding: 0,
+        WebkitAppearance: 'none', // iOS safari
+        appearance: 'none',
+        ...(!isDisabledOrLoading(disabled, loading) &&
+          hoverMediaQuery({
+            '&:hover': {
+              borderColor: buttonBorderColorHover,
+              backgroundColor: buttonBackgroundColorHover,
               ...prefersColorSchemeDarkMediaQuery(theme, {
-                backgroundColor: toggleBackgroundColorHoverDark,
+                borderColor: buttonBorderColorHoverDark,
+                backgroundColor: buttonBackgroundColorHoverDark,
               }),
+              '& .toggle': {
+                backgroundColor: toggleBackgroundColorHover,
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                  backgroundColor: toggleBackgroundColorHoverDark,
+                }),
+              },
             },
-          },
-        })),
-      // TODO: we should try to re-work switch dom structure with <button/> + <label/> to get rid of `subsequentSelector`
-      ...getFocusJssStyle(theme, { subsequentSelector: ' .switch' }),
-    },
-    switch: {
-      position: 'relative',
-      width: '48px',
-      height: '28px',
-      flexShrink: 0,
-      boxSizing: 'border-box',
-      border: `${borderWidthBase} solid ${buttonBorderColor}`,
-      borderRadius: '14px',
-      backgroundColor: buttonBackgroundColor,
-      cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
-      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        borderColor: buttonBorderColorDark,
-        backgroundColor: buttonBackgroundColorDark,
-      }),
+          })),
+        ...getFocusJssStyle(theme),
+      },
+      label: {
+        ...textSmallStyle,
+        minWidth: 0, // prevents flex child to overflow max available parent size
+        minHeight: 0, // prevents flex child to overflow max available parent size
+        cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
+        color: textColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: textColorDark,
+        }),
+        ...mergeDeep(
+          buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
+            // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
+            order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
+          })),
+          buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
+            getHiddenTextJssStyle(isHidden, {
+              paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
+              paddingInlineStart: spacingStaticSmall, // asymmetric padding used instead of gap to prevent not clickable area between label and button
+            })
+          )
+        ),
+      },
     },
     toggle: {
-      position: 'absolute',
-      top: '2px',
-      left: '2px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       width: '20px',
       height: '20px',
-      display: 'block',
       borderRadius: '50%',
       backgroundColor: toggleBackgroundColor,
+      transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
+      transform: `translate3d(${checked ? '22px' : '2px'}, 0, 0)`,
+      '&:dir(rtl)': {
+        transform: `translate3d(${checked ? '-22px' : '-2px'}, 0, 0)`,
+      },
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: toggleBackgroundColorDark,
       }),
-      transform: `translate3d(${checked ? '20px' : '0'}, 0, 0)`,
-      transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
     },
     ...(loading && {
       spinner: {
-        position: 'absolute',
-        top: '-4px',
-        left: '-4px',
         width: '28px',
         height: '28px',
       },
     }),
-    label: {
-      ...textSmallStyle,
-      minWidth: 0, // prevents flex child to overflow max available parent size
-      minHeight: 0, // prevents flex child to overflow max available parent size
-      color: textColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: textColorDark,
-      }),
-      ...mergeDeep(
-        buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-          // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
-          order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
-        })),
-        buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-          getHiddenTextJssStyle(isHidden, {
-            paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
-          })
-        )
-      ),
-    },
   });
 };

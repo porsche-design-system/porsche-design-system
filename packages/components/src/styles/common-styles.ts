@@ -76,10 +76,9 @@ type Options = {
   offset?: string | 0;
   slotted?: true | string;
   pseudo?: boolean;
-  subsequentSelector?: string; // TODO: get rid of `subsequentSelector` option as soon as switch-styles is refactored
 };
 export const getFocusJssStyle = (theme: Theme, opts?: Options): JssStyle => {
-  const { offset = '2px', slotted = '', pseudo = false, subsequentSelector = '' } = opts || {};
+  const { offset = '2px', slotted = '', pseudo = false } = opts || {};
   const { focusColor } = getThemedColors(theme);
   const { focusColor: focusColorDark } = getThemedColors('dark');
   const slottedSelector = slotted && slotted !== true ? slotted : '';
@@ -91,9 +90,7 @@ export const getFocusJssStyle = (theme: Theme, opts?: Options): JssStyle => {
     [`&${slotted ? '(' : ''}${slottedSelector}:focus${slotted ? ')' : ''}`]: {
       outline: 0, // reset ua-style (for older browsers)
     },
-    [`&${slotted ? '(' : ''}${slottedSelector}:focus-visible${subsequentSelector}${slotted ? ')' : ''}${
-      pseudo ? '::before' : ''
-    }`]: {
+    [`&${slotted ? '(' : ''}${slottedSelector}:focus-visible${slotted ? ')' : ''}${pseudo ? '::before' : ''}`]: {
       outline: `${borderWidthBase} solid ${focusColor}`,
       outlineOffset: offset,
       ...prefersColorSchemeDarkMediaQuery(theme, {

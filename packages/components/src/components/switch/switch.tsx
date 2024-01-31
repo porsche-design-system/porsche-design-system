@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Listen, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
@@ -103,14 +103,15 @@ export class Switch {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <button
-        {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
-        class="root"
-        type="button"
-        role="switch"
-        onClick={this.onSwitchClick}
-      >
-        <span class="switch">
+      <Host>
+        <button
+          {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
+          id="switch"
+          type="button"
+          role="switch"
+          aria-labelledby="label" // only relevant for axe-core because of https://github.com/dequelabs/axe-core/issues/1393
+          onClick={this.onSwitchClick}
+        >
           {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
           <span class="toggle">
             {this.loading && (
@@ -122,11 +123,11 @@ export class Switch {
               />
             )}
           </span>
-        </span>
-        <span class="label">
+        </button>
+        <label id="label" htmlFor="switch">
           <slot />
-        </span>
-      </button>
+        </label>
+      </Host>
     );
   }
 
