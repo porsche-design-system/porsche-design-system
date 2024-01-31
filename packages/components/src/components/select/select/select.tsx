@@ -9,9 +9,10 @@ import {
   setFirstSelectOptionHighlighted,
   setLastSelectOptionHighlighted,
   setSelectedOption,
-  setSelectedValue,
+  syncSelectOptionProps,
   updateHighlightedSelectOption,
-  updateNativeOption,
+  updateNativeSelectOption,
+  updateSelectOptions,
 } from './select-utils';
 
 import {
@@ -125,17 +126,16 @@ export class Select {
   }
 
   // TODO: Similar to multi-select
-  // TODO: Maybe better to find selected option here and pass it into setSelectedValue & updateNativeOption
   @Watch('value')
   public onValueChange(): void {
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
-        setSelectedValue(this.selectOptions, this.value);
+        updateSelectOptions(this.selectOptions, this.value);
       }
       this.preventOptionUpdate = false;
       if (this.isWithinForm) {
-        updateNativeOption(this.nativeSelect, this.selectOptions);
+        updateNativeSelectOption(this.nativeSelect, this.value);
       }
     }
   }
@@ -150,10 +150,10 @@ export class Select {
   // TODO: Similar to multi-select
   public componentWillLoad(): void {
     this.updateOptions();
-    setSelectedValue(this.selectOptions, this.value);
+    updateSelectOptions(this.selectOptions, this.value);
     if (this.isWithinForm) {
       this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
-      updateNativeOption(this.nativeSelect, this.selectOptions);
+      updateNativeSelectOption(this.nativeSelect, this.value);
     }
   }
 
@@ -183,8 +183,9 @@ export class Select {
       this.isWithinForm,
       this.theme
     );
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
+    syncSelectOptionProps(this.selectOptions, this.theme);
 
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'value';
     const dropdownId = 'list';
 
@@ -228,9 +229,9 @@ export class Select {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    setSelectedValue(this.selectOptions, this.value);
+    updateSelectOptions(this.selectOptions, this.value);
     if (this.isWithinForm) {
-      updateNativeOption(this.nativeSelect, this.selectOptions);
+      updateNativeSelectOption(this.nativeSelect, this.value);
     }
     // Necessary to update selected options in placeholder
     forceUpdate(this.host);

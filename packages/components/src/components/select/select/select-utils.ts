@@ -6,6 +6,7 @@ import {
   SelectDropdownDirectionInternal,
   setAttribute,
   setAttributes,
+  Theme,
 } from '../../../utils';
 import { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
 import { forceUpdate } from '@stencil/core';
@@ -19,6 +20,15 @@ export type SelectUpdateEventDetail = {
   value: string;
 };
 
+export const syncSelectOptionProps = (options: SelectOption[], theme: Theme): void => {
+  options
+    .filter((option) => option.theme !== theme)
+    .forEach((option) => {
+      option.theme = theme;
+      forceUpdate(option);
+    });
+};
+
 export const getSelectedOptionString = (options: SelectOption[]): string =>
   options.find((option) => option.selected)?.textContent ?? '';
 
@@ -30,7 +40,7 @@ const resetSelectedOption = (options: SelectOption[]): void => {
   }
 };
 
-export const setSelectedValue = (options: SelectOption[], value: string): void => {
+export const updateSelectOptions = (options: SelectOption[], value: string): void => {
   if (value === undefined) {
     // Option without value for empty selection
     const optionToSelect = options.find((option) => option.value === undefined);
@@ -38,7 +48,6 @@ export const setSelectedValue = (options: SelectOption[], value: string): void =
       optionToSelect.selected = true;
       forceUpdate(optionToSelect);
     }
-    // TODO: Evaluate if a validation should be applied here? setting the value back to undefined when no empty option exists?
   } else {
     resetSelectedOption(options);
     // TODO: Do we want to cover multiple options with the same value?
@@ -89,12 +98,8 @@ export const syncNativeSelect = (
   nativeSelect.toggleAttribute('required', required);
 };
 
-// TODO: Kind of similar as multi-select
-export const updateNativeOption = (nativeSelect: HTMLSelectElement, options: SelectOption[]): void => {
-  const selectedOption = options.find((option) => option.selected);
-  if (selectedOption) {
-    nativeSelect.innerHTML = `<option value="${selectedOption.value}" selected>${selectedOption.textContent}</option>`;
-  }
+export const updateNativeSelectOption = (nativeSelect: HTMLSelectElement, value: string): void => {
+  nativeSelect.innerHTML = value ? `<option value="${value}" selected></option>` : '';
 };
 
 // TODO: This is copied from multi-select, extract and reuse in both components
