@@ -2,70 +2,50 @@
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   outline: 0 !important;
   color-scheme: light dark !important;
+  justify-content: flex-start !important;
   width: auto !important;
   vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-.root {
+button {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  text-align: start;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  justify-content: flex-start;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible .switch {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.switch {
-  position: relative;
+  align-items: center;
+  flex-shrink: 0;
   width: 48px;
   height: 28px;
-  flex-shrink: 0;
   box-sizing: border-box;
   border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.toggle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 50%;
-  background-color: #010205;
-  transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+button::-moz-focus-inner {
+  border: 0;
 }
-.label {
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   min-width: 0;
   min-height: 0;
+  cursor: pointer;
   color: #010205;
   order: 0;
   position: static;
@@ -77,6 +57,31 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+  padding-inline-start: 8px;
+}
+@media(hover:hover) {
+  button:hover {
+    border-color: #010205;
+    background-color: transparent;
+  }
+  button:hover .toggle {
+    background-color: #010205;
+  }
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(2px, 0, 0);
+}
+.toggle:dir(rtl) {
+  transform: translate3d(-2px, 0, 0);
 }
 .loading {
   position: absolute;
@@ -87,85 +92,55 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .root:hover .switch {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  .root:hover .switch .toggle {
-    background-color: #010205;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":true,"loading":false,"theme":"light"} 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   outline: 0 !important;
   color-scheme: light dark !important;
+  justify-content: flex-start !important;
   width: auto !important;
   vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-.root {
+button {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  text-align: start;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: auto;
-  justify-content: flex-start;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible .switch {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.switch {
-  position: relative;
+  align-items: center;
+  flex-shrink: 0;
   width: 48px;
   height: 28px;
-  flex-shrink: 0;
   box-sizing: border-box;
   border: 2px solid #949598;
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.toggle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 50%;
-  background-color: #949598;
-  transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+button::-moz-focus-inner {
+  border: 0;
 }
-.label {
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   min-width: 0;
   min-height: 0;
+  cursor: not-allowed;
   color: #949598;
   order: 0;
   position: static;
@@ -177,6 +152,21 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+  padding-inline-start: 8px;
+}
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #949598;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(2px, 0, 0);
+}
+.toggle:dir(rtl) {
+  transform: translate3d(-2px, 0, 0);
 }
 .loading {
   position: absolute;
@@ -192,69 +182,49 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
-  display: block;
+  display: flex;
   outline: 0 !important;
   color-scheme: light dark !important;
+  justify-content: space-between !important;
   width: 100% !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-.root {
+button {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  text-align: start;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  justify-content: space-between;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible .switch {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.switch {
-  position: relative;
+  align-items: center;
+  flex-shrink: 0;
   width: 48px;
   height: 28px;
-  flex-shrink: 0;
   box-sizing: border-box;
   border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.toggle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 50%;
-  background-color: #010205;
-  transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+button::-moz-focus-inner {
+  border: 0;
 }
-.label {
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   min-width: 0;
   min-height: 0;
+  cursor: pointer;
   color: #010205;
   order: 0;
   position: static;
@@ -266,6 +236,31 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+  padding-inline-start: 8px;
+}
+@media(hover:hover) {
+  button:hover {
+    border-color: #010205;
+    background-color: transparent;
+  }
+  button:hover .toggle {
+    background-color: #010205;
+  }
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(2px, 0, 0);
+}
+.toggle:dir(rtl) {
+  transform: translate3d(-2px, 0, 0);
 }
 .loading {
   position: absolute;
@@ -276,91 +271,54 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .root:hover .switch {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  .root:hover .switch .toggle {
-    background-color: #010205;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":true,"theme":"light"} 1`] = `
 ":host {
-  display: block;
+  display: flex;
   outline: 0 !important;
   color-scheme: light dark !important;
+  justify-content: space-between !important;
   width: 100% !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-.root {
+button {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  text-align: start;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: auto;
-  justify-content: space-between;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible .switch {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.switch {
-  position: relative;
+  align-items: center;
+  flex-shrink: 0;
   width: 48px;
   height: 28px;
-  flex-shrink: 0;
   box-sizing: border-box;
   border: 2px solid #949598;
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.toggle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 50%;
-  background-color: transparent;
-  transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+button::-moz-focus-inner {
+  border: 0;
 }
-.spinner {
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  width: 28px;
-  height: 28px;
+button:focus {
+  outline: 0;
 }
-.label {
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   min-width: 0;
   min-height: 0;
+  cursor: not-allowed;
   color: #949598;
   order: 0;
   position: static;
@@ -372,6 +330,25 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+  padding-inline-start: 8px;
+}
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(2px, 0, 0);
+}
+.toggle:dir(rtl) {
+  transform: translate3d(-2px, 0, 0);
+}
+.spinner {
+  width: 28px;
+  height: 28px;
 }
 .loading {
   position: absolute;
@@ -387,76 +364,49 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"theme":"dark"} 1`] = `
 ":host {
-  display: block;
+  display: flex;
   outline: 0 !important;
   color-scheme: light dark !important;
+  justify-content: space-between !important;
   width: 100% !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-.root {
+button {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  text-align: start;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: auto;
-  justify-content: space-between;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible .switch {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.switch {
-  position: relative;
+  align-items: center;
+  flex-shrink: 0;
   width: 48px;
   height: 28px;
-  flex-shrink: 0;
   box-sizing: border-box;
   border: 2px solid #7E7F82;
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.toggle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 50%;
-  background-color: transparent;
-  transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+button::-moz-focus-inner {
+  border: 0;
 }
-.spinner {
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  width: 28px;
-  height: 28px;
+button:focus {
+  outline: 0;
 }
-.label {
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   min-width: 0;
   min-height: 0;
+  cursor: not-allowed;
   color: #7E7F82;
   order: 0;
   position: static;
@@ -468,6 +418,25 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+  padding-inline-start: 8px;
+}
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(2px, 0, 0);
+}
+.toggle:dir(rtl) {
+  transform: translate3d(-2px, 0, 0);
+}
+.spinner {
+  width: 28px;
+  height: 28px;
 }
 .loading {
   position: absolute;
@@ -483,76 +452,49 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"theme":"light"} 1`] = `
 ":host {
-  display: block;
+  display: flex;
   outline: 0 !important;
   color-scheme: light dark !important;
+  justify-content: space-between !important;
   width: 100% !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-.root {
+button {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  text-align: start;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: auto;
-  justify-content: space-between;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible .switch {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.switch {
-  position: relative;
+  align-items: center;
+  flex-shrink: 0;
   width: 48px;
   height: 28px;
-  flex-shrink: 0;
   box-sizing: border-box;
   border: 2px solid #949598;
   border-radius: 14px;
   background-color: transparent;
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.toggle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 50%;
-  background-color: transparent;
-  transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+button::-moz-focus-inner {
+  border: 0;
 }
-.spinner {
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  width: 28px;
-  height: 28px;
+button:focus {
+  outline: 0;
 }
-.label {
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   min-width: 0;
   min-height: 0;
+  cursor: not-allowed;
   color: #949598;
   order: 0;
   position: static;
@@ -564,6 +506,25 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+  padding-inline-start: 8px;
+}
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(2px, 0, 0);
+}
+.toggle:dir(rtl) {
+  transform: translate3d(-2px, 0, 0);
+}
+.spinner {
+  width: 28px;
+  height: 28px;
 }
 .loading {
   position: absolute;
@@ -579,69 +540,49 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":true,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
-  display: block;
+  display: flex;
   outline: 0 !important;
   color-scheme: light dark !important;
+  justify-content: space-between !important;
   width: 100% !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-.root {
+button {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  text-align: start;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  justify-content: space-between;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible .switch {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.switch {
-  position: relative;
+  align-items: center;
+  flex-shrink: 0;
   width: 48px;
   height: 28px;
-  flex-shrink: 0;
   box-sizing: border-box;
   border: 2px solid #197E10;
   border-radius: 14px;
   background-color: #197E10;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.toggle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 50%;
-  background-color: #FFF;
-  transform: translate3d(20px, 0, 0);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+button::-moz-focus-inner {
+  border: 0;
 }
-.label {
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   min-width: 0;
   min-height: 0;
+  cursor: pointer;
   color: #010205;
   order: 0;
   position: static;
@@ -653,6 +594,31 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+  padding-inline-start: 8px;
+}
+@media(hover:hover) {
+  button:hover {
+    border-color: #0E4809;
+    background-color: #0E4809;
+  }
+  button:hover .toggle {
+    background-color: #FFF;
+  }
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #FFF;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(22px, 0, 0);
+}
+.toggle:dir(rtl) {
+  transform: translate3d(-22px, 0, 0);
 }
 .loading {
   position: absolute;
@@ -663,85 +629,55 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .root:hover .switch {
-    border-color: #0E4809;
-    background-color: #0E4809;
-  }
-  .root:hover .switch .toggle {
-    background-color: #FFF;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"left","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   outline: 0 !important;
   color-scheme: light dark !important;
+  justify-content: flex-start !important;
   width: auto !important;
   vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-.root {
+button {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  text-align: start;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  justify-content: flex-start;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible .switch {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.switch {
-  position: relative;
+  align-items: center;
+  flex-shrink: 0;
   width: 48px;
   height: 28px;
-  flex-shrink: 0;
   box-sizing: border-box;
   border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.toggle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 50%;
-  background-color: #010205;
-  transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+button::-moz-focus-inner {
+  border: 0;
 }
-.label {
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   min-width: 0;
   min-height: 0;
+  cursor: pointer;
   color: #010205;
   order: -1;
   position: static;
@@ -753,6 +689,31 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+  padding-inline-start: 8px;
+}
+@media(hover:hover) {
+  button:hover {
+    border-color: #010205;
+    background-color: transparent;
+  }
+  button:hover .toggle {
+    background-color: #010205;
+  }
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(2px, 0, 0);
+}
+.toggle:dir(rtl) {
+  transform: translate3d(-2px, 0, 0);
 }
 .loading {
   position: absolute;
@@ -763,85 +724,55 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .root:hover .switch {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  .root:hover .switch .toggle {
-    background-color: #010205;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   outline: 0 !important;
   color-scheme: light dark !important;
+  justify-content: flex-start !important;
   width: auto !important;
   vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-.root {
+button {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  text-align: start;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  justify-content: flex-start;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible .switch {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.switch {
-  position: relative;
+  align-items: center;
+  flex-shrink: 0;
   width: 48px;
   height: 28px;
-  flex-shrink: 0;
   box-sizing: border-box;
   border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.toggle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 50%;
-  background-color: #010205;
-  transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+button::-moz-focus-inner {
+  border: 0;
 }
-.label {
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   min-width: 0;
   min-height: 0;
+  cursor: pointer;
   color: #010205;
   order: 0;
   position: static;
@@ -853,6 +784,31 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   clip: auto;
   white-space: normal;
   padding-top: 2px;
+  padding-inline-start: 8px;
+}
+@media(hover:hover) {
+  button:hover {
+    border-color: #010205;
+    background-color: transparent;
+  }
+  button:hover .toggle {
+    background-color: #010205;
+  }
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(2px, 0, 0);
+}
+.toggle:dir(rtl) {
+  transform: translate3d(-2px, 0, 0);
 }
 .loading {
   position: absolute;
@@ -863,85 +819,55 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .root:hover .switch {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  .root:hover .switch .toggle {
-    background-color: #010205;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":"start","hideLabel":true,"stretch":false,"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   outline: 0 !important;
   color-scheme: light dark !important;
+  justify-content: flex-start !important;
   width: auto !important;
   vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-.root {
+button {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  text-align: start;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  justify-content: flex-start;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible .switch {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.switch {
-  position: relative;
+  align-items: center;
+  flex-shrink: 0;
   width: 48px;
   height: 28px;
-  flex-shrink: 0;
   box-sizing: border-box;
   border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.toggle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 50%;
-  background-color: #010205;
-  transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+button::-moz-focus-inner {
+  border: 0;
 }
-.label {
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   min-width: 0;
   min-height: 0;
+  cursor: pointer;
   color: #010205;
   order: -1;
   position: absolute;
@@ -953,6 +879,30 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media(hover:hover) {
+  button:hover {
+    border-color: #010205;
+    background-color: transparent;
+  }
+  button:hover .toggle {
+    background-color: #010205;
+  }
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(2px, 0, 0);
+}
+.toggle:dir(rtl) {
+  transform: translate3d(-2px, 0, 0);
+}
 .loading {
   position: absolute;
   width: 1px;
@@ -962,117 +912,55 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .root:hover .switch {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  .root:hover .switch .toggle {
-    background-color: #010205;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"stretch":{"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true},"checked":false,"disabled":false,"loading":false,"theme":"light"} 1`] = `
 ":host {
-  display: inline-block;
+  display: inline-flex;
   outline: 0 !important;
   color-scheme: light dark !important;
+  justify-content: flex-start !important;
   width: auto !important;
   vertical-align: top !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-@media(min-width:480px) {
-  :host {
-    width: 100% !important;
-  }
-}
-
-@media(min-width:760px) {
-  :host {
-    width: auto !important;
-    vertical-align: top !important;
-  }
-}
-
-@media(min-width:1000px) {
-  :host {
-    width: 100% !important;
-  }
-}
-
-@media(min-width:1300px) {
-  :host {
-    width: auto !important;
-    vertical-align: top !important;
-  }
-}
-
-@media(min-width:1760px) {
-  :host {
-    width: 100% !important;
-  }
-}
-
-.root {
+button {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  text-align: start;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  justify-content: flex-start;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible .switch {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.switch {
-  position: relative;
+  align-items: center;
+  flex-shrink: 0;
   width: 48px;
   height: 28px;
-  flex-shrink: 0;
   box-sizing: border-box;
   border: 2px solid #6B6D70;
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.toggle {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  display: block;
-  border-radius: 50%;
-  background-color: #010205;
-  transform: translate3d(0, 0, 0);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+button::-moz-focus-inner {
+  border: 0;
 }
-.label {
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   min-width: 0;
   min-height: 0;
+  cursor: pointer;
   color: #010205;
   order: -1;
   position: absolute;
@@ -1084,21 +972,12 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
 @media(min-width:480px) {
-  .root {
-    justify-content: space-between;
+  :host {
+    justify-content: space-between !important;
+    width: 100% !important;
   }
-  .label {
+  label {
     order: 0;
     position: static;
     width: auto;
@@ -1109,14 +988,17 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
     clip: auto;
     white-space: normal;
     padding-top: 2px;
+    padding-inline-start: 8px;
   }
 }
 
 @media(min-width:760px) {
-  .root {
-    justify-content: flex-start;
+  :host {
+    justify-content: flex-start !important;
+    width: auto !important;
+    vertical-align: top !important;
   }
-  .label {
+  label {
     order: -1;
     position: absolute;
     width: 1px;
@@ -1130,10 +1012,11 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 }
 
 @media(min-width:1000px) {
-  .root {
-    justify-content: space-between;
+  :host {
+    justify-content: space-between !important;
+    width: 100% !important;
   }
-  .label {
+  label {
     order: 0;
     position: static;
     width: auto;
@@ -1144,14 +1027,17 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
     clip: auto;
     white-space: normal;
     padding-top: 2px;
+    padding-inline-start: 8px;
   }
 }
 
 @media(min-width:1300px) {
-  .root {
-    justify-content: flex-start;
+  :host {
+    justify-content: flex-start !important;
+    width: auto !important;
+    vertical-align: top !important;
   }
-  .label {
+  label {
     order: -1;
     position: absolute;
     width: 1px;
@@ -1165,10 +1051,11 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 }
 
 @media(min-width:1760px) {
-  .root {
-    justify-content: space-between;
+  :host {
+    justify-content: space-between !important;
+    width: 100% !important;
   }
-  .label {
+  label {
     order: 0;
     position: static;
     width: auto;
@@ -1179,17 +1066,42 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
     clip: auto;
     white-space: normal;
     padding-top: 2px;
+    padding-inline-start: 8px;
   }
 }
 
 @media(hover:hover) {
-  .root:hover .switch {
+  button:hover {
     border-color: #010205;
     background-color: transparent;
   }
-  .root:hover .switch .toggle {
+  button:hover .toggle {
     background-color: #010205;
   }
 }
-"
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(2px, 0, 0);
+}
+.toggle:dir(rtl) {
+  transform: translate3d(-2px, 0, 0);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}"
 `;
