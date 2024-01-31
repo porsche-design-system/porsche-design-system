@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+- `Button`, `Button Pure`, `Switch`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Pin Code`: optimized announcement of
+  loading state for assistive technologies
+  ([#3009](https://github.com/porsche-design-system/porsche-design-system/pull/3009))
+
 ### [3.11.0] - 2024-01-30
 
 ### [3.11.0-rc.0] - 2024-01-30

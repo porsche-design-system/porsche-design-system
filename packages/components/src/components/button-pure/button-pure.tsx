@@ -17,7 +17,7 @@ import {
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { Component, Element, h, type JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Listen, Prop, Watch } from '@stencil/core';
 import type {
   ButtonPureAlignLabel,
   ButtonPureAlignLabelDeprecated,
@@ -29,6 +29,7 @@ import type {
 } from './button-pure-utils';
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
+import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
   type: AllowedTypes.oneOf<ButtonPureType>(BUTTON_TYPES),
@@ -103,6 +104,8 @@ export class ButtonPure {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
 
+  private initialLoading: boolean = false;
+
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);
   }
@@ -113,6 +116,22 @@ export class ButtonPure {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
+  }
+
+  @Watch('loading')
+  public loadingChanged(newVal: boolean): void {
+    if (newVal) {
+      // don't reset initialLoading to false
+      this.initialLoading = newVal;
+    }
+  }
+
+  public connectedCallback(): void {
+    this.initialLoading = this.loading;
+  }
+
+  public componentWillLoad(): void {
+    this.initialLoading = this.loading;
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -173,31 +192,35 @@ export class ButtonPure {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <button
-        {...getButtonPureAriaAttributes(this.disabled, this.loading, this.aria)}
-        class="root"
-        type={this.type}
-        name={this.name}
-        value={this.value}
-      >
-        {this.loading ? (
-          <PrefixedTagNames.pSpinner aria={{ 'aria-label': 'Loading state' }} {...iconProps} />
-        ) : (
-          hasIcon && (
-            <PrefixedTagNames.pIcon
-              {...iconProps}
-              name={this.icon}
-              source={this.iconSource}
-              color={this.isDisabledOrLoading ? 'state-disabled' : 'primary'}
-              theme={this.theme}
-              aria-hidden="true"
-            />
-          )
-        )}
-        <span class="label">
-          <slot />
-        </span>
-      </button>
+      <Host>
+        <button
+          {...getButtonPureAriaAttributes(this.disabled, this.loading, this.aria)}
+          class="root"
+          type={this.type}
+          name={this.name}
+          value={this.value}
+          aria-describedby={this.loading ? loadingId : undefined}
+        >
+          {this.loading ? (
+            <PrefixedTagNames.pSpinner {...iconProps} aria-hidden="true" />
+          ) : (
+            hasIcon && (
+              <PrefixedTagNames.pIcon
+                {...iconProps}
+                name={this.icon}
+                source={this.iconSource}
+                color={this.isDisabledOrLoading ? 'state-disabled' : 'primary'}
+                theme={this.theme}
+                aria-hidden="true"
+              />
+            )
+          )}
+          <span class="label">
+            <slot />
+          </span>
+        </button>
+        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
+      </Host>
     );
   }
 }
